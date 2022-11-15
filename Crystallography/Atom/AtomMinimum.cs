@@ -1,4 +1,4 @@
-﻿using MessagePack;
+﻿using MemoryPack;
 using System;
 
 namespace Crystallography;
@@ -7,34 +7,28 @@ namespace Crystallography;
 /// Atoms2クラス
 /// </summary>
 [Serializable()]
-[MessagePackObject]
-public class Atoms2
+[MemoryPackable]
+public partial class Atoms2
 {
-    [Key(0)]
     public string Label;
-    [Key(1)]
+    [MemoryPackInclude]
     private byte[][] positionBytes;//x,y,z の 順番
-    [Key(3)]
+    [MemoryPackInclude]
     private byte[] occBytes;//Occ 
-    [Key(4)]
     public byte SubXray;
-    [Key(5)]
     public byte SubElectron;
-    [Key(6)]
     public byte AtomNo;//原子番号 ただし、255は重水素D
-    [Key(7)]
     public bool IsU;
-    [Key(8)]
     public bool IsIso;
-    [Key(9)]
+    [MemoryPackInclude]
     private byte[] isoBytes;//B(U)iso
-    [Key(10)]
+    [MemoryPackInclude]
     private byte[][] anisoBytes;//B(U)11, B(U)22, B(U)33, B(U)12, B(U)23, B(U)31の順番
 
     /// <summary>
     /// x,y,zの順番. 無次元
     /// </summary>
-    [IgnoreMember]
+    [MemoryPackIgnore]
     public string[] PositionTexts
     {
         get => positionBytes == null ? null : Array.ConvertAll(positionBytes, Crystal2.ToString);
@@ -48,19 +42,19 @@ public class Atoms2
     /// <summary>
     /// Occ. 無次元
     /// </summary>
-    [IgnoreMember]
+    [MemoryPackIgnore]
     public string OccText { get => Crystal2.ToString(occBytes); set => occBytes = Crystal2.ToBytes(value); }
 
     /// <summary>
     /// 単位は Å^2. 
     /// </summary>
-    [IgnoreMember]
+    [MemoryPackIgnore]
     public string IsoText { get => Crystal2.ToString(isoBytes); set => isoBytes = Crystal2.ToBytes(value); }
 
     /// <summary>
     /// Bの場合は、無次元. Uの場合、Å^2. 
     /// </summary>
-    [IgnoreMember]
+    [MemoryPackIgnore]
     public string[] AnisoTexts
     {
         get => anisoBytes == null ? null : Array.ConvertAll(anisoBytes, Crystal2.ToString);
@@ -71,6 +65,7 @@ public class Atoms2
         }
     }
 
+    [MemoryPackConstructor]
     public Atoms2() { }
     /// <summary>
     /// コンストラクタ. Uの単位はÅ

@@ -1,74 +1,54 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using MessagePack;
 using System.Drawing;
 using System.Linq;
+//using MemoryPack;
 
 namespace Crystallography
 {
     [Serializable()]
-    [MessagePackObject]
-    public class Bonds
+    //[MemoryPackable]
+    public partial class Bonds
     {
         #region フィールド
-        [Key(0)]
         public  string Element1;
-        [Key(1)]
         public string Element2;
-        [Key(2)]
         public float MinLength;//nm単位
-        [Key(3)]
         public float MaxLength;//nm単位
-        [Key(4)]
         public  float Radius;//nm単位
-        [Key(5)]
         public float BondTransParency;
-        [Key(6)]
         public int ArgbBond;
-        [Key(7)]
         public  float PolyhedronTransParency;
-        [Key(8)]
         public bool ShowPolyhedron;
-        [Key(9)]
         public bool ShowCenterAtom;
-        [Key(10)]
         public bool ShowVertexAtom;
-        [Key(11)]
         public bool ShowInnerBonds;
-        [Key(12)]
         public int ArgbPolyhedron;
-        [Key(13)]
         public bool ShowEdges;
-        [Key(14)]
         public  float EdgeLineWidth;
-        [Key(15)]
         public int ArgbEdge;
-        [Key(16)]
         public bool Enabled = true;
-        [Key(17)]
         public bool ShowBond = true;
-        [Key(18)]
         public bool UseFixedColor = false;
 
-        [IgnoreMember]
+        //[MemoryPackIgnore]
         public string[] ElementList;
 
         //2020/05/11追加 (標準の単位をnmに変更したための対処)
-        [IgnoreMember]
+        //[MemoryPackIgnore]
         public bool NanometerUnit = false;
 
 
         [XmlIgnore]
-        [IgnoreMember]
+        //[MemoryPackIgnore]
         public List<int[]> pairID = new();
 
         #endregion
 
         #region コンストラクタ
-        public Bonds()
-        {
-        }
+        //[MemoryPackConstructor]
+        public Bonds() { }
 
         public Bonds(bool enabled,
             string[] elementList, string element1, string element2, float minLength, float maxLength,

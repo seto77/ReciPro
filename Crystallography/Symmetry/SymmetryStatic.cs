@@ -12952,7 +12952,7 @@ new ushort[]{535,2,6,2,1,1}
     /// <param name="sym">対称性</param>
     /// <param name="multi">多重度</param>
     /// <returns>基底のときはtrue</returns>
-    public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym, ref int multi)
+    public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym, out int multi)
     {
         var indices = new List<(int H, int K, int L)>();
         bool result = IsRootIndex(index, sym, ref indices, false);

@@ -250,8 +250,8 @@ public partial class DataSet
             dr.PointGroup = SymmetryStatic.StrArray[c.sym][13];
             dr.SpaceGroup = SymmetryStatic.StrArray[c.sym][3];
             dr.Authors = c.auth;
-            dr.Title = Crystal2.GetFullTitle(c.sect);
-            dr.Journal = Crystal2.GetFullJournal(c.jour);
+            dr.Title = c.sect;
+            dr.Journal = c.jour;
 
             dr.Flag = true;
 

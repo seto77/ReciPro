@@ -83,7 +83,7 @@ namespace Crystallography.Controls
 
         #endregion
 
-        Stopwatch sw = new();
+        readonly Stopwatch sw = new();
         bool[] flags = Array.Empty<bool>();
         private void buttonSearch_Click(object sender, EventArgs e)
         {
@@ -127,7 +127,6 @@ namespace Crystallography.Controls
 
             int count = 0;
             Parallel.For(0, table.Count, i =>
-            //for(int i=0; i< table.Count; i++)
             {
                 var cry = table.Get(i);
 
@@ -235,8 +234,8 @@ namespace Crystallography.Controls
             var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
             var maxGnum = 8000;
             var outer = new List<(int key, double len)>() { (zeroKey, 0) };
-            var gKeys = new HashSet<int>() { zeroKey };
-            var gList = new HashSet<double>() { 0 };
+            var gKeys = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
+            var gList = new HashSet<double>((int)(maxGnum * 1.5));
             var minG = 0.0;
 
             while (gList.Count < maxGnum && (minG = outer.Min(o => o.len)) < gMax)
@@ -261,7 +260,6 @@ namespace Crystallography.Controls
                 outer.RemoveRange(0, end + 1);
                 outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
             }
-            gList.Remove(0);
             return gList.Select(g => (float)(1 / g)).ToArray();
         }
 

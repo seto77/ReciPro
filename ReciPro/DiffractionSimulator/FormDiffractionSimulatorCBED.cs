@@ -174,7 +174,7 @@ public partial class FormDiffractionSimulatorCBED : Form
 
         var current = e.ProgressPercentage;
         var message = (string)e.UserState;
-        if (message.StartsWith("Compiling disks"))
+        if (message.StartsWith("Compiling disks", StringComparison.Ordinal))
         {
             if (sw1.IsRunning)
             {

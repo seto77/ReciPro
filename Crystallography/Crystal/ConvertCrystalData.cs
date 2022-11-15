@@ -11,10 +11,13 @@ using V3 = OpenTK.Vector3d;
 using System.Diagnostics;
 using System.ComponentModel;
 
+
+
 namespace Crystallography;
 
 public class ConvertCrystalData
 {
+    static System.StringComparison Ord = System.StringComparison.Ordinal;
 
     #region CrystalList(xml形式)の読み込み/書き込み
     public static bool SaveCrystalListXml(Crystal[] crystals, string filename)
@@ -35,7 +38,7 @@ public class ConvertCrystalData
     public static Crystal[] ConvertToCrystalList(string filename)
     {
         var cry = Array.Empty<Crystal>();
-        if (filename.ToLower().EndsWith("xml"))//XML形式のリストを読み込んだとき
+        if (filename.ToLower().EndsWith("xml", Ord))//XML形式のリストを読み込んだとき
         {
             if (new FileInfo(filename).Length > 10000000)//なぜかファイルが3GBとかになったことが有ったので、それに対する対処. 10MB以上だったらスキップすることにした.
                 return cry;
@@ -94,7 +97,7 @@ public class ConvertCrystalData
             }
             catch { }
         }
-        else if (filename.EndsWith("out"))//SMAP形式を読み込んだとき
+        else if (filename.EndsWith("out", Ord))//SMAP形式を読み込んだとき
         {
             var stringList = new List<string>();
             string strTemp;
@@ -133,19 +136,19 @@ public class ConvertCrystalData
         int line = 0;
 
         for (; line < str.Length; line++)
-            if (str[line].StartsWith(" wave length"))
+            if (str[line].StartsWith(" wave length", Ord))
             {
                 wavelength = str[line];
                 break;
             }
         for (; line < str.Length; line++)
-            if (str[line].StartsWith(" Chemical Formula"))
+            if (str[line].StartsWith(" Chemical Formula", Ord))
             {
                 ChemicalFormula = str[line];
                 break;
             }
         for (; line < str.Length; line++)
-            if (str[line].StartsWith(" Cell Constants"))
+            if (str[line].StartsWith(" Cell Constants", Ord))
             {
                 string[] cellconstants = str[line + 1].Split(' ', true);
                 a = Convert.ToDouble(cellconstants[0]) / 10.0;
@@ -158,7 +161,7 @@ public class ConvertCrystalData
             }
 
         for (; line < str.Length; line++)
-            if (str[line].StartsWith(" Space Group Number"))
+            if (str[line].StartsWith(" Space Group Number", Ord))
             {
                 string s = (str[line].Split('=', true)[1]).Trim();
                 int num = Convert.ToInt32(s.Substring(1, 3));
@@ -173,7 +176,7 @@ public class ConvertCrystalData
         while (line < str.Length)
         {
             for (; line < str.Length; line++)
-                if (str[line].StartsWith("No ="))
+                if (str[line].StartsWith("No =", Ord))
                 {
                     var tempCrystal = new Crystal((a, b, c, alpha, beta, gamma), null, spaceGroupSeriesNum,
                         ChemicalFormula.Split('=', true)[1].Trim() + "-" + (n++).ToString(), Color.Blue);
@@ -239,9 +242,9 @@ public class ConvertCrystalData
         try
         {
             Crystal2 c2 = null;
-            if (fileName.EndsWith("amc"))
+            if (fileName.EndsWith("amc", Ord))
                 c2 = ConvertFromAmc(fileName);
-            else if (fileName.EndsWith("cif"))
+            else if (fileName.EndsWith("cif", Ord))
                 c2 = ConvertFromCIF(fileName);
 
             if (c2 != null)
@@ -255,7 +258,7 @@ public class ConvertCrystalData
         catch (Exception e)
         {
             if (AssemblyState.IsDebug)
-                System.Windows.Forms.MessageBox.Show(fileName + " " + e.Message);
+                _ = System.Windows.Forms.MessageBox.Show(fileName + " " + e.Message);
             return null;
         }
     }
@@ -264,9 +267,9 @@ public class ConvertCrystalData
     {
         try
         {
-            if (fileName.EndsWith("amc"))
+            if (fileName.EndsWith("amc", Ord))
                 return ConvertFromAmc(fileName).ToCrystal();
-            else if (fileName.EndsWith("cif"))
+            else if (fileName.EndsWith("cif", Ord))
                 return ConvertFromCIF(fileName).ToCrystal();
             else
                 return null;
@@ -338,15 +341,15 @@ public class ConvertCrystalData
 
         
 
-        if (Title.Contains("_cod_database_code"))
+        if (Title.Contains("_cod_database_code",Ord))
             Title = Title.Replace("_cod_database_code", "\r\n_cod_database_code");
-        else if (Title.Contains("_database_code_amcsd"))
+        else if (Title.Contains("_database_code_amcsd", Ord))
             Title = Title.Replace("_database_code_amcsd", "\r\n_database_code_amcsd");
 
         n++; if (str.Length <= n) return null;
 
         double xShift = 0, yShift = 0, zShift = 0;
-        if (!str[n].StartsWith("atom") && str[n].Split(" ", true).Length == 3)
+        if (!str[n].StartsWith("atom", Ord) && str[n].Split(" ", true).Length == 3)
         {
             xShift = ConvertToDouble(str[n].Split(" ", true)[0]);
             yShift = ConvertToDouble(str[n].Split(" ", true)[1]);
@@ -355,33 +358,33 @@ public class ConvertCrystalData
         }
 
         //2ndセッティングにもかかわらず、shift量がゼロでないときは、1stセッティングに戻す。
-        if((xShift !=0 || yShift !=0 || zShift !=0 ) && SymmetryStatic.SpaceGroupListWithoutSpace[crystal.sym].EndsWith("(2)"))
+        if((xShift !=0 || yShift !=0 || zShift !=0 ) && SymmetryStatic.SpaceGroupListWithoutSpace[crystal.sym].EndsWith("(2)", Ord))
             crystal.sym--;
 
 
         //ここから原子座標の読み取り
         bool IsOcc = false, IsisoUsed = false, IsanisoUsed = false, IsUtypeUsed = false;
-        if (str[n].Contains("occ"))
+        if (str[n].Contains("occ", Ord))
             IsOcc = true;
 
 
-        if (str[n].Contains("Uiso") || str[n].Contains("uiso"))
+        if (str[n].Contains("Uiso",Ord) || str[n].Contains("uiso", Ord))
         {
             IsisoUsed = true;
             IsUtypeUsed = true;
         }
-        else if (str[n].Contains("Biso") || str[n].Contains("biso"))
+        else if (str[n].Contains("Biso", Ord) || str[n].Contains("biso", Ord))
         {
             IsisoUsed = true;
             IsUtypeUsed = false;
         }
 
-        if (str[n].Contains("U(1,1)") || str[n].Contains("u(1,1)"))
+        if (str[n].Contains("U(1,1)", Ord) || str[n].Contains("u(1,1)", Ord))
         {
             IsanisoUsed = true;
             IsUtypeUsed = true;
         }
-        else if (str[n].Contains("B(1,1)") || str[n].Contains("b(1,1)"))
+        else if (str[n].Contains("B(1,1)", Ord) || str[n].Contains("b(1,1)", Ord))
         {
             IsanisoUsed = true;
             IsUtypeUsed = false;
@@ -525,7 +528,7 @@ public class ConvertCrystalData
         string SgName = s[6];
 
         SgName = SgName.Replace("_", "sub");
-        bool isAsterisk = SgName.Contains('*');
+        bool isAsterisk = SgName.Contains('*', Ord);
         SgName = SgName.Replace("*", "");
 
         #region 空間群の場合分け
@@ -691,7 +694,7 @@ public class ConvertCrystalData
             symmetrySeriesNumber++;
 
         //Asteriskの時(2nd setting)の処理
-        if (isAsterisk && sg[symmetrySeriesNumber].EndsWith("(1)"))
+        if (isAsterisk && sg[symmetrySeriesNumber].EndsWith("(1)", Ord))
             symmetrySeriesNumber++;
 
 
@@ -770,9 +773,11 @@ public class ConvertCrystalData
     static readonly Random r = new Random();
 
     static readonly string[] ignoreWords1 = new[] { "_shelx_hkl_", "_shelx_fab_", "_shelx_res_" };
-    static readonly string[] ignoreWords2 = new[] { "_refln", "_geom", "_platon" };
+    static readonly string[] ignoreWords2 = new[] { "_refln", "_geom", "_platon"};
     private static Crystal2 ConvertFromCIF(string fileName)
     {
+        var sb = new StringBuilder();
+
         var stringList = new List<string>();
         using (var reader = new StreamReader(fileName))
         {
@@ -789,22 +794,22 @@ public class ConvertCrystalData
         {
             int start = -1, end = -1;
             while ((start = stringList.IndexOf(word + "file")) > -1 &&
-                (end = stringList.FindIndex(s => s.StartsWith(word + "checksum"))) > -1)
-                stringList.RemoveRange(Math.Min(start, end), Math.Abs(start - end));
+                (end = stringList.FindIndex(s => s.StartsWith(word + "checksum", Ord))) > -1)
+                stringList.RemoveRange(Math.Min(start, end), Math.Abs(start - end)+1);
         }
         foreach (var word in ignoreWords2)
         {
             int start = -1;
-            while ((start = stringList.FindIndex(s => s.StartsWith(word)) - 1) > -1)
+            while ((start = stringList.FindIndex(s => s.StartsWith(word, Ord)) - 1) > -1)
             {
                 if (stringList[start] == "loop_")
                 {
                     var end = start + 1;
-                    while (stringList[end].StartsWith(word))
+                    while (stringList[end].StartsWith(word, Ord))
                         end++;
 
                     for (; end < stringList.Count; end++)
-                        if (stringList[end] == "loop_" || stringList[end].StartsWith("_") || stringList[end].StartsWith("#"))
+                        if (stringList[end] == "loop_" || stringList[end].StartsWith("_", Ord) || stringList[end].StartsWith("#", Ord))
                             break;
                     stringList.RemoveRange(start, end - start);
                 }
@@ -816,6 +821,7 @@ public class ConvertCrystalData
         return ConvertFromCIF(stringList);
     }
 
+    static string[] ignoreLabel = new[] { "_diffrn_", "_exptl_", "_refine_" , "_cell_measurement_", "_computing_data_", "_shelx_" }; 
 
     /// <summary>
     /// CIFファイルを読み込む
@@ -825,85 +831,86 @@ public class ConvertCrystalData
     private static Crystal2 ConvertFromCIF(List<string> str)
     {
         //まず ;と; で囲まれている複数にわたる行を一行にする
-        var tempStr = new List<string>();
+        //var str = new List<string>();
         var note = "";
-        if (str[0].StartsWith("data"))
+        if (str[0].StartsWith("data", Ord))
             note = str[0];
         for (int n = 0; n < str.Count; n++)
         {
-            while ((str[n].StartsWith("#") || str[n].Trim().Length == 0) && n < str.Count - 1)
-                n++;
+            while ((str[n].StartsWith("#", Ord) || str[n].Trim().Length == 0) && n < str.Count - 1)
+                str.RemoveAt(n);
+                //n++;
             //全ての先頭行の空白あるいはタブを削除する
             str[n] = str[n].Replace("\t", " ");
             str[n] = str[n].TrimEnd(' ').TrimStart(' ');
 
-            if (str[n].Trim().StartsWith(";"))//;で始まる行を見つけたら
+            if (str[n].Trim().StartsWith(";", Ord))//;で始まる行を見つけたら
             {
                 var temp = new StringBuilder();
+                int m = n;
                 //次に;が出てくるところまですすめてまとめて一行にする
                 while (true)
                 {
                     temp.Append(str[n] + " ");
                     n++;
-                    if (n > str.Count - 1 || str[n].TrimEnd(' ').StartsWith(";"))
+                    if (n > str.Count - 1 || str[n].TrimEnd(' ').StartsWith(";",Ord))
                         break;
                 }
-                tempStr.Add("'" + temp.ToString().Trim().TrimStart(';').TrimEnd(';').TrimStart(' ').TrimEnd(' ') + "'");
+                //str.Add("'" + temp.ToString().Trim().TrimStart(';').TrimEnd(';').TrimStart(' ').TrimEnd(' ') + "'");
+                str[m] = "'" + temp.ToString().Trim().TrimStart(';').TrimEnd(';').TrimStart(' ').TrimEnd(' ') + "'";
+                str.RemoveRange(m + 1, n - m);
             }
-            else
-                tempStr.Add(str[n]);
         }
 
         //次に'あるいは"で囲まれている文字列中の空白を偶然出てこないような文字列に変換する
-        for (int n = 0; n < tempStr.Count; n++)
+        for (int n = 0; n < str.Count; n++)
         {
-            if (tempStr[n].IndexOf("''") > -1)//''という文字列が含まれていたら
+            if (str[n].Contains("''"))//''という文字列が含まれていたら
             {
-                var temp = tempStr[n].Remove(0, tempStr[n].IndexOf("'"));
+                var temp = str[n].Remove(0, str[n].IndexOf("'"));
                 temp = temp.Replace("''", "薔");
-                tempStr[n] = tempStr[n].Remove(tempStr[n].IndexOf("'")) + temp;
+                str[n] = str[n].Remove(str[n].IndexOf("'")) + temp;
             }
 
-            if (tempStr[n].IndexOf("'") > -1)//'が含まれていたら
+            if (str[n].Contains('\''))//'が含まれていたら
             {
-                while (tempStr[n].IndexOf("'") > -1)
+                while (str[n].Contains('\''))
                 {
-                    var firstIndex = tempStr[n].IndexOf("'");
-                    var next = tempStr[n].IndexOf("'", firstIndex + 1);
+                    var firstIndex = str[n].IndexOf("'");
+                    var next = str[n].IndexOf("'", firstIndex + 1);
                     if (next == -1)
                         break;
-                    var substring = tempStr[n].Substring(firstIndex, next - firstIndex + 1);
+                    var substring = str[n].Substring(firstIndex, next - firstIndex + 1);
                     substring = substring.Replace(" ", "薔");
                     substring = substring.Replace("'", "");
 
-                    tempStr[n] = tempStr[n][..firstIndex] + substring + tempStr[n][(next + 1)..];
+                    str[n] = $"{str[n][..firstIndex]}{substring}{str[n][(next + 1)..]}";
                 }
             }
 
-            if (tempStr[n].IndexOf("\"") > -1)//#\"が含まれていたら
+            if (str[n].Contains('"'))//#\"が含まれていたら
             {
-                string temp = tempStr[n].Remove(0, tempStr[n].IndexOf("\""));
+                var temp = str[n].Remove(0, str[n].IndexOf("\""));
                 temp = temp.Replace("\"", "").TrimEnd(' ').TrimStart(' ').Replace(" ", "薔");
-                tempStr[n] = tempStr[n].Remove(tempStr[n].IndexOf("\"")) + temp;
+                str[n] = $"{str[n].Remove(str[n].IndexOf("\""))}{temp}";
             }
         }
 
         //次にloop_に続く行が　"label  data"だった時に対応
-        for (int n = 0; n < tempStr.Count - 1; n++)
+        for (int n = 0; n < str.Count - 1; n++)
         {
-            if (tempStr[n].StartsWith("loop_") && tempStr[n + 1].IndexOf(" ") > -1)
+            if (str[n].StartsWith("loop_", Ord) && str[n + 1].Contains(' '))
             {
-                string[] temp = tempStr[n + 1].Split(' ', true);
-                tempStr[n + 1] = temp[0];
-                tempStr.Insert(n + 2, temp[1]);
+                var temp = str[n + 1].Split(' ', true);
+                str[n + 1] = temp[0];
+                str.Insert(n + 2, temp[1]);
             }
         }
-        str = tempStr;
 
         var CIF = new List<List<(string Label, string Data)>>();
         for (int n = 0; n < str.Count; n++)
         {
-            if (str[n].Trim().StartsWith("_"))
+            if (str[n].Trim().StartsWith("_", Ord))
             {//単体アイテムのとき
                 var temp = str[n].Split(' ', true);
                 string tempLabel = temp[0], tempData;
@@ -916,22 +923,23 @@ public class ConvertCrystalData
                 }
                 else
                     tempData = "";
-                CIF.Add(new List<(string Label, string Data)>(new[] { (tempLabel, tempData.Replace("薔", " ")) }));
+                
+                if(ignoreLabel.All(s => !tempLabel.StartsWith(s,Ord)))
+                    CIF.Add(new List<(string Label, string Data)>(new[] { (tempLabel, tempData.Replace("薔", " ")) }));
             }
-            else if (str[n].Trim().StartsWith("loop_"))
+            else if (str[n].Trim().StartsWith("loop_", Ord))
             {//ループのとき
-                string[] temp;
                 var tempLoopLabels = new List<string>();
                 var tempLoopDatas = new List<string>();
                 n++;
                 //"_"で始まるラベルを数える
-                while (n < str.Count && str[n].Trim().StartsWith("_"))
+                while (n < str.Count && str[n].Trim().StartsWith("_", Ord))
                     tempLoopLabels.Add(str[n++].Trim());
 
                 //次に"_"か"loop_"か"#End of"で始まる行が出てくるまでループ
-                while (n < str.Count && !str[n].Trim().StartsWith("_") && !str[n].Trim().StartsWith("loop_") && !str[n].Trim().StartsWith("#End of"))
+                while (n < str.Count && !str[n].Trim().StartsWith("_", Ord) && !str[n].Trim().StartsWith("loop_", Ord) && !str[n].Trim().StartsWith("#End of", Ord))
                 {
-                    temp = str[n].Split(' ', true);
+                    var temp = str[n].Split(' ', true);
                     for (int i = 0; i < temp.Length; i++)
                         tempLoopDatas.Add(temp[i]);
                     n++;
@@ -967,7 +975,7 @@ public class ConvertCrystalData
                 var label = CIF[i][j].Label;
                 var data = CIF[i][j].Data;
 
-                if (label.StartsWith("_chemical_name")) name += data + " ";
+                if (label.StartsWith("_chemical_name", Ord)) name += data + " ";
 
                 //ここから格子定数
                 if (label == "_cell_length_a") a = data;
@@ -1124,9 +1132,12 @@ public class ConvertCrystalData
 
             if (shift.X != 0 || shift.Y != 0 || shift.Z != 0)
             {
-                x = Crystal2.Compose(Crystal2.Decompose(x, sgnum).Value + shift.X, Crystal2.Decompose(x, sgnum).Error);
-                y = Crystal2.Compose(Crystal2.Decompose(y, sgnum).Value + shift.Y, Crystal2.Decompose(y, sgnum).Error);
-                z = Crystal2.Compose(Crystal2.Decompose(z, sgnum).Value + shift.Z, Crystal2.Decompose(z, sgnum).Error);
+                var _x = Crystal2.Decompose(x, sgnum);
+                var _y = Crystal2.Decompose(y, sgnum);
+                var _z = Crystal2.Decompose(z, sgnum);
+                x = Crystal2.Compose(_x.Value + shift.X, _x.Error);
+                y = Crystal2.Compose(_y.Value + shift.Y, _y.Error);
+                z = Crystal2.Compose(_z.Value + shift.Z, _z.Error);
             }
 
             //次に異方性の温度散乱因子をさがす (等方性の温度因子は既に上のループで読み込まれている)
@@ -1265,54 +1276,54 @@ public class ConvertCrystalData
         SgNameHM = SgNameHM.Replace("{rhombohedral axes}", " ");
 
         SgNameHM = SgNameHM.TrimStart(' ').TrimEnd(' ');
-        if (SgNameHM.EndsWith("RS") || SgNameHM.EndsWith("HR"))
+        if (SgNameHM.EndsWith("RS",Ord) || SgNameHM.EndsWith("HR", Ord))
             SgNameHM = SgNameHM.Remove(SgNameHM.Length - 2, 2).TrimEnd(' ');
 
-        if (SgNameHM.EndsWith("H") || SgNameHM.EndsWith("h") || SgNameHM.EndsWith("R") || SgNameHM.EndsWith("r"))
+        if (SgNameHM.EndsWith("H", Ord) || SgNameHM.EndsWith("h", Ord) || SgNameHM.EndsWith("R", Ord) || SgNameHM.EndsWith("r", Ord))
             SgNameHM = SgNameHM.Remove(SgNameHM.Length - 1, 1).TrimEnd(' ');
 
-        if (SgNameHM.EndsWith(":"))
+        if (SgNameHM.EndsWith(":", Ord))
             SgNameHM = SgNameHM.Remove(SgNameHM.Length - 1, 1).TrimEnd(' ');
 
         bool IsOrigineChoice2 = false;
-        if (SgNameHM.EndsWith("Z"))//最後にZがついていたらOriginChoice2
+        if (SgNameHM.EndsWith("Z", Ord))//最後にZがついていたらOriginChoice2
         {
             IsOrigineChoice2 = true;
             SgNameHM = SgNameHM.TrimEnd('Z').TrimEnd();
         }
-        if (SgNameHM.EndsWith("S"))//最後がSだったらOriginChoice1
+        if (SgNameHM.EndsWith("S", Ord))//最後がSだったらOriginChoice1
             SgNameHM = SgNameHM.TrimEnd('S').TrimEnd();
 
-        if (SgNameHM.EndsWith("S1"))//最後がS1だったらOriginChoice1
+        if (SgNameHM.EndsWith("S1", Ord))//最後がS1だったらOriginChoice1
             SgNameHM = SgNameHM.Replace("S1", "").TrimEnd();
-        if (SgNameHM.EndsWith("Z1"))//最後がZ1だったらOriginChoice1
+        if (SgNameHM.EndsWith("Z1", Ord))//最後がZ1だったらOriginChoice1
             SgNameHM = SgNameHM.Replace("Z1", "").TrimEnd();
-        if (SgNameHM.EndsWith(":S1"))//最後が:S1だったらOriginChoice1
+        if (SgNameHM.EndsWith(":S1", Ord))//最後が:S1だったらOriginChoice1
             SgNameHM = SgNameHM.Replace(":S1", "").TrimEnd();
-        if (SgNameHM.EndsWith(":1"))//最後が:1だったらOriginChoice1
+        if (SgNameHM.EndsWith(":1", Ord))//最後が:1だったらOriginChoice1
             SgNameHM = SgNameHM.Replace(":1", "").TrimEnd();
 
-        if (SgNameHM.EndsWith("S2"))//最後がS2だったらOriginChoice2
+        if (SgNameHM.EndsWith("S2", Ord))//最後がS2だったらOriginChoice2
         {
             SgNameHM = SgNameHM.Replace("S2", "").TrimEnd();
             IsOrigineChoice2 = true;
         }
-        if (SgNameHM.EndsWith("Z2"))//最後がZ2だったらOriginChoice2
+        if (SgNameHM.EndsWith("Z2", Ord))//最後がZ2だったらOriginChoice2
         {
             SgNameHM = SgNameHM.Replace("Z2", "").TrimEnd();
             IsOrigineChoice2 = true;
         }
-        if (SgNameHM.EndsWith(":S2"))//最後が:S2だったらOriginChoice2
+        if (SgNameHM.EndsWith(":S2", Ord))//最後が:S2だったらOriginChoice2
         {
             SgNameHM = SgNameHM.Replace(":S2", "").TrimEnd();
             IsOrigineChoice2 = true;
         }
-        if (SgNameHM.EndsWith(":2"))//最後が:S2だったらOriginChoice2
+        if (SgNameHM.EndsWith(":2", Ord))//最後が:S2だったらOriginChoice2
         {
             SgNameHM = SgNameHM.Replace(":2", "").TrimEnd();
             IsOrigineChoice2 = true;
         }
-        if (SgNameHM.EndsWith("O2"))//最後が:S2だったらOriginChoice2
+        if (SgNameHM.EndsWith("O2", Ord))//最後が:S2だったらOriginChoice2
         {
             SgNameHM = SgNameHM.Replace("O2", "").TrimEnd();
             IsOrigineChoice2 = true;
@@ -1535,11 +1546,11 @@ public class ConvertCrystalData
         }
 
         //Rhombohedoralのときの処置
-        if (isRhomboShape && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("Hex", StringComparison.Ordinal))
+        if (isRhomboShape && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("Hex", Ord))
             symmetrySeriesNumber++;
 
         //originChoiceが2のときの対処
-        if (IsOrigineChoice2 && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.IndexOf("(1)") > -1)
+        if (IsOrigineChoice2 && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("(1)",Ord))
             symmetrySeriesNumber++;
 
         if (SpaceGroupNumber >= 1 && SpaceGroupNumber <= 230)
@@ -1634,9 +1645,9 @@ public class ConvertCrystalData
                     {
                         if (flag[i][j])
                         {
-                            if (xyz[j].EndsWith("+1/2")) xyz[j] = xyz[j].Replace("+1/2", "");
-                            else if (xyz[j].EndsWith("+1/4")) xyz[j] = xyz[j].Replace("+1/4", "+3/4");
-                            else if (xyz[j].EndsWith("+3/4")) xyz[j] = xyz[j].Replace("+3/4", "+1/4");
+                            if (xyz[j].EndsWith("+1/2", Ord)) xyz[j] = xyz[j].Replace("+1/2", "");
+                            else if (xyz[j].EndsWith("+1/4", Ord)) xyz[j] = xyz[j].Replace("+1/4", "+3/4");
+                            else if (xyz[j].EndsWith("+3/4", Ord)) xyz[j] = xyz[j].Replace("+3/4", "+1/4");
                             else xyz[j] += "+1/2";
                         }
                     }
@@ -1650,14 +1661,14 @@ public class ConvertCrystalData
                 string[] xyz = wp.Split(',', true);
                 xyz[0] += "+1/3";
                 xyz[1] += "+2/3";
-                if (xyz[2].EndsWith("+1/2")) xyz[2] = xyz[2].Replace("+1/2", "+1/6");
+                if (xyz[2].EndsWith("+1/2", Ord)) xyz[2] = xyz[2].Replace("+1/2", "+1/6");
                 else xyz[2] += "+2/3";
                 sb.AppendLine($"  '{xyz[0]},{xyz[1]},{xyz[2]}'");
                 //(2/3,1/3,1/3)
                 xyz = wp.Split(',', true);
                 xyz[0] += "+2/3";
                 xyz[1] += "+1/3";
-                if (xyz[2].EndsWith("+1/2")) xyz[2] = xyz[2].Replace("+1/2", "+5/6");
+                if (xyz[2].EndsWith("+1/2", Ord)) xyz[2] = xyz[2].Replace("+1/2", "+5/6");
                 else xyz[2] += "+1/3";
                 sb.AppendLine($"  '{xyz[0]},{xyz[1]},{xyz[2]}'");
             }

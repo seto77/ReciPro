@@ -60,7 +60,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Plane> Plane;
+    public List<Plane> Plane = new List<Plane>();
 
     /// <summary>
     /// 軸ベクトル配列
@@ -877,57 +877,95 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="horizontalThreshold">指定された横軸単位における差がこの閾値以下の面どうしを統合する</param>
     /// <param name="horizontalParameter">横軸が角度の時は入射線の波長を、エネルギーの時は取り出し角を指定する</param>
     public void SetPlanes(double dMax, double dMin, bool excludeEquivalentPlane, bool excludeForbiddenPlane, bool excludeSameDistance, bool combineAdjacentPeak,
-        HorizontalAxis horizontalAxis, double horizontalThreshold, double horizontalParameter)
+        HorizontalAxis horizontalAxis, double horizontalThreshold, double horizontalParameter, int _maxNum=8000)
     {
-        #region
-        if (dMin < (A + B + C) / 3 / 30)
-            dMin = (A + B + C) / 3 / 30;
-        var hMax = (int)(A / dMin);
-        var kMax = (int)(B / dMin);
-        var lMax = (int)(C / dMin);
+        if (A_Star == null) SetAxis();
 
-        var listPlane = new List<Plane>();
-        double d;
-        int multi = 1;
-        if (excludeEquivalentPlane)//等価な面を排除するとき
+        double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
+        double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
+        double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
+
+        var gMax = 1 / dMin;
+        (int h, int k, int l)[] directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
+
+        var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
+
+        var maxNum = _maxNum;
+        var zeroKey = (255 << 20) + (255 << 10) + 255;
+        var outer = new List<(int key, double len)>() { (zeroKey, 0) };
+        var gHash = new HashSet<int>((int)(maxNum * 1.5)) { zeroKey };
+        var minG = 0.0;
+        var listPlane = new List<Plane>((int)(maxNum * 1.5));
+
+        while (listPlane.Count < maxNum && (minG = outer.Min(o => o.len)) < gMax)
         {
-            for (int h = -hMax; h <= hMax; h++)//hは0からはじめる
-                for (int k = -kMax; k <= kMax; k++)
-                    for (int l = -lMax; l <= lMax; l++)
-                        if ((d = GetLengthPlane(h, k, l)) > dMin && d < dMax && SymmetryStatic.IsRootIndex((h, k, l), Symmetry, ref multi))
+            var end = outer.FindLastIndex(o => o.len - minG < shift * 2);
+            foreach (var (key1, _) in CollectionsMarshal.AsSpan(outer)[..(end + 1)])
+            {
+                var (h1, k1, l1) = decomposeKey(key1);
+                foreach ((int h2, int k2, int l2) in directions)
+                {
+                    int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
+                    if (key2 > 0 && !gHash.Contains(key2))
+                    {
+                        double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
+                        var len = Math.Sqrt(x * x + y * y + z * z);
+                        gHash.Add(key2);
+                        outer.Add((key2, len));
+                        if (len < gMax && len > 1 / dMax)
                         {
-                            var temp = new Plane();
-                            // if (!excludeForbiddenPlane | (temp.strCondition = SymmetryStatic.CheckExtinctionRule(h, k, l, Symmetry)).Length == 0)
-                            if (!excludeForbiddenPlane || (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
+                            var root = SymmetryStatic.IsRootIndex((h, k, l), Symmetry, out int multi);
+                            var extinction = Symmetry.CheckExtinctionRule(h, k, l);
+                            if ((!excludeEquivalentPlane || root) && (!excludeForbiddenPlane || extinction.Length == 0))
                             {
-                                temp.Multi[0] = multi;
-                                temp.h = h; temp.k = k; temp.l = l; temp.d = d;
-                                temp.strHKL = $"{h} {k} {l}";
-                                temp.IsRootIndex = true;
-                                listPlane.Add(temp);
+                                listPlane.Add(new Plane
+                                {
+                                    IsRootIndex = root,
+                                    h = h,
+                                    k = k,
+                                    l = l,
+                                    d = 1 / len,
+                                    strHKL = $"{h} {k} {l}",
+                                    Multi = new[] { multi },
+                                });
                             }
                         }
+                    }
+                }
+            }
+            outer.RemoveRange(0, end + 1);
+            outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
         }
-        else//等価な面を排除しないとき
-        {
-            for (int h = -hMax; h <= hMax; h++)//hは-hmaxからはじめる
-                for (int k = -kMax; k <= kMax; k++)
-                    for (int l = -lMax; l <= lMax; l++)
-                        if ((d = GetLengthPlane(h, k, l)) > dMin)
-                        {
-                            var temp = new Plane { IsRootIndex = SymmetryStatic.IsRootIndex((h, k, l), Symmetry, ref multi) };
-                            if (!excludeForbiddenPlane || (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
-                            {
-                                temp.Multi[0] = multi;
-                                temp.h = h; temp.k = k; temp.l = l; temp.d = d;
-                                temp.strHKL = $"{h} {k} {l}";
-                                listPlane.Add(temp);
-                            }
-                        }
-        }
+        listPlane.RemoveAt(0);
 
-        try { listPlane.Sort(); }
-        catch { return; }
+        #region お蔵入り
+        //if (dMin < (A + B + C) / 3 / 30)
+        //    dMin = (A + B + C) / 3 / 30;
+        //var hMax = (int)(A / dMin);
+        //var kMax = (int)(B / dMin);
+        //var lMax = (int)(C / dMin);
+
+
+
+        //for (int h = -hMax; h <= hMax; h++)//hは0からはじめる
+        //    for (int k = -kMax; k <= kMax; k++)
+        //        for (int l = -lMax; l <= lMax; l++)
+        //            if ((d = GetLengthPlane(h, k, l)) > dMin && d < dMax)
+        //                if (!excludeEquivalentPlane || SymmetryStatic.IsRootIndex((h, k, l), Symmetry, ref multi))
+        //                {
+        //                    var temp = new Plane { IsRootIndex = SymmetryStatic.IsRootIndex((h, k, l), Symmetry, ref multi) };
+        //                    if (!excludeForbiddenPlane || (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
+        //                    {
+        //                        temp.Multi[0] = multi;
+        //                        temp.h = h; temp.k = k; temp.l = l; temp.d = d;
+        //                        temp.strHKL = $"{h} {k} {l}";
+        //                        temp.IsRootIndex = true;
+        //                        listPlane.Add(temp);
+        //                    }
+        //                }
+        #endregion
+
+        listPlane.Sort();
 
         if (excludeSameDistance)//全くおなじ結晶面面間隔をもつもの(511と333とか)を排除する
         {
@@ -1024,37 +1062,38 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             }
         }
 
-        var temp_plane = listPlane.ToArray();
-        for (int n = 0; n < temp_plane.Length; n++)
+        //var temp_plane = listPlane.ToArray();
+        for (int n = 0; n < listPlane.Count; n++)
         {
-            temp_plane[n].F2[0] = -1;
-            temp_plane[n].IsFittingChecked = false;
-            temp_plane[n].IsFittingSelected = false;
-            temp_plane[n].num = n;
-            temp_plane[n].SerchRange = 0.10;
-            temp_plane[n].SerchOption = temp_plane[n].peakFunction.Option = PeakFunctionForm.PseudoVoigt;
-            temp_plane[n].Intensity = -1;
+            listPlane[n].F2[0] = -1;
+            listPlane[n].IsFittingChecked = false;
+            listPlane[n].IsFittingSelected = false;
+            listPlane[n].num = n;
+            listPlane[n].SerchRange = 0.10;
+            listPlane[n].SerchOption = listPlane[n].peakFunction.Option = PeakFunctionForm.PseudoVoigt;
+            listPlane[n].Intensity = -1;
         }
 
         if (Plane != null)
-            for (int n = 0; n < Plane.Count && n < temp_plane.Length; n++)
+            for (int n = 0; n < Plane.Count && n < listPlane.Count; n++)
             {
-                temp_plane[n].SerchRange = Plane[n].SerchRange;
-                temp_plane[n].FWHM = Plane[n].FWHM;
-                temp_plane[n].SerchOption = Plane[n].SerchOption;
-                temp_plane[n].IsFittingChecked = Plane[n].IsFittingChecked;
-                temp_plane[n].simpleParameter = Plane[n].simpleParameter;
-                temp_plane[n].peakFunction = Plane[n].peakFunction;
-                temp_plane[n].Intensity = Plane[n].Intensity;
-                temp_plane[n].observedIntensity = Plane[n].observedIntensity;
+                listPlane[n].SerchRange = Plane[n].SerchRange;
+                listPlane[n].FWHM = Plane[n].FWHM;
+                listPlane[n].SerchOption = Plane[n].SerchOption;
+                listPlane[n].IsFittingChecked = Plane[n].IsFittingChecked;
+                listPlane[n].simpleParameter = Plane[n].simpleParameter;
+                listPlane[n].peakFunction = Plane[n].peakFunction;
+                listPlane[n].Intensity = Plane[n].Intensity;
+                listPlane[n].observedIntensity = Plane[n].observedIntensity;
             }
-        Plane = new List<Plane>();
-        Plane.AddRange(temp_plane);
+        Plane.Clear();
+        Plane.AddRange(listPlane);
 
-        #endregion 面ベクトルの計算
+        
     }
+    #endregion 面ベクトルの計算
 
-    //plene[]のd値を計算する。計算する面の範囲は変えない
+    # region plene[]のd値を計算する。計算する面の範囲は変えない
     public void SetPlanes()
     {
         for (int i = 0; i < Plane.Count; i++)
@@ -1116,8 +1155,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         var maxGnum = 250000;
         var zeroKey = (255 << 20) + (255 << 10) + 255;
         var outer = new List<(int key, double len)>() { (zeroKey, 0) };
-        var gHash = new HashSet<int>(maxGnum) { zeroKey };
-        var gList=new List<(int key, double x, double y, double z, double len)>(maxGnum) { (zeroKey, 0, 0, 0, 0) };
+        var gHash = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
+        var gList=new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5));
         var minG = 0.0;
 
         while (gList.Count < maxGnum && (minG = outer.Min(o => o.len)) < gMax)
@@ -1142,7 +1181,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             outer.RemoveRange(0, end + 1);
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
         }
-        gList.RemoveAt(0);
         
         var gArray = new Vector3D[gList.Count * 2];
         Parallel.For(0, gList.Count, i =>
@@ -1220,12 +1258,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <summary>
     /// 現在の結晶構造で強度が上位最大8位までのものを検索し、返す
     /// </summary>
+    /// <param name="waveLentgh">X線の波長を指定 単位はnm </param>
+    /// <param name="count"> 計算する結晶面の数 </param>
     /// <returns></returns>
-    public float[] GetDspacingList(double waveLentgh, double d_limit, int count = 1000)
+    public float[] GetDspacingList(double waveLentgh, int count = 1000)
     {
-        SetPlanes(double.MaxValue, d_limit, true, true, true, false, 0, 0, 0);
+        SetPlanes(double.MaxValue, waveLentgh / 2, true, true, false, false, 0, 0, 0, count);
 
-        Plane = Plane.Take(Math.Min(count, Plane.Count)).ToList();
         SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLentgh, null);
 
         //強度の順にソート

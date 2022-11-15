@@ -353,7 +353,7 @@ public partial class FormImageSimulator : Form
 
 
         var message = (string)e.UserState;
-        if (message.StartsWith("Calculating I(Q)"))
+        if (message.StartsWith("Calculating I(Q)", StringComparison.Ordinal))
         {
             if (sw2.IsRunning)
             {
@@ -367,7 +367,7 @@ public partial class FormImageSimulator : Form
             toolStripStatusLabel2.Text = $"{current * 1.05 * 1.05 * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal / 1.05 / 1.05 - current) / current:f1} s.";
             //* 1.05 * 1.05が出てくるのは、1.05倍の半頂角で計算しているから。
         }
-        else if (message.StartsWith("Calculating U"))
+        else if (message.StartsWith("Calculating U", StringComparison.Ordinal))
         {
             if (sw1.IsRunning)
             {

@@ -115,9 +115,8 @@ namespace Crystallography.Controls
                 for (int i = 0; i < c.VectorOfG.Count; i++)
                 {
                     Vector3D g = c.VectorOfG[i];
-                    int multi = 0;
                     double twoTheta = 2 * Math.Asin(g.Length* waveLengthControl1.WaveLength / 2);
-                    bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, ref multi);
+                    bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, out int multi);
                     if (irreducible && !double.IsNaN(twoTheta))
                     {
                         var magnitude2 = g.F.Real * g.F.Real + g.F.Imaginary * g.F.Imaginary;
@@ -153,8 +152,7 @@ namespace Crystallography.Controls
 
             foreach (Vector3D g in c.VectorOfG)
             {
-                int multi = 0;
-                bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, ref multi);
+                bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, out int multi);
                 if (!checkBoxHideEquivalentPlane.Checked || irreducible)
                 {
                     var condition = c.Symmetry.CheckExtinctionRule(g.Index);//SymmetryStatic.CheckExtinctionRule(g.h, g.k, g.l, c.Symmetry);

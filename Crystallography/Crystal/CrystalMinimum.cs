@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using MessagePack;
+using MemoryPack;
 
 
 namespace Crystallography;
@@ -13,35 +13,23 @@ namespace Crystallography;
 //必要最小限の情報だけを保存するクラス
 //[ProtoContract]
 [Serializable()]
-[MessagePackObject]
-public class Crystal2
+[MemoryPackable]
+public partial class Crystal2
 {
-    #region フィールド シリアル化対象 [Key(#)]が必須
-    [Key(0)]
+    #region フィールド プライベートメンバーの場合[MemoryPackInclude]が必要
+    [MemoryPackInclude]
     private byte[][] cellBytes;
-    [Key(6)]
     public int argb;
-    [Key(7)]
     public float density;
-    [Key(8)]
     public string name;
-    [Key(9)]
     public string note;
-    [Key(10)]
     public string jour;
-    [Key(11)]
     public string auth;
-    [Key(12)]
     public string sect;
-    [Key(13)]
     public string formula;//計算可能な場合は。
-    [Key(14)]
     public short sym;
-    [Key(15)]
     public List<Atoms2> atoms;
-    [Key(17)]
     public float[] d;//強度8位までのd値
-    [Key(18)]
     public string fileName;
 
     #endregion
@@ -50,7 +38,7 @@ public class Crystal2
     /// <summary>
     /// a,b,c,alpha,beta,gammaの順番. 単位はAと度. エラーは 「9.726|5|」のような形式で表現
     /// </summary>
-    [IgnoreMember]
+    [MemoryPackIgnore]
     public string[] CellTexts
     {
         get => cellBytes == null ? null : Array.ConvertAll(cellBytes, ToString);
@@ -65,7 +53,7 @@ public class Crystal2
     /// <summary>
     /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位.
     /// </summary>
-    [IgnoreMember]
+    [MemoryPackIgnore]
     public ((double A, double B, double C, double Alpha, double Beta, double Gamma) Values, (double A, double B, double C, double Alpha, double Beta, double Gamma) Errors) Cell
     {
         get
@@ -79,7 +67,7 @@ public class Crystal2
     /// <summary>
     /// a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian.
     /// </summary>
-    [IgnoreMember]
+    [MemoryPackIgnore]
     public ((double A, double B, double C, double Alpha, double Beta, double Gamma) Values, (double A, double B, double C, double Alpha, double Beta, double Gamma) Errors) Cell_nm_radian
     {
         get
@@ -93,6 +81,18 @@ public class Crystal2
 
     public Crystal2()
     {
+        if (toStringDic.Count == 0)
+        {
+            for (int i = 0; i < 15; i++)
+                for (int j = 0; j < 16; j++)
+                {
+                    var s1 = toCharDic[i].ToString();
+                    var s2 = j == 15 ? "" : toCharDic[j].ToString();
+
+                    toStringDic.Add((byte)(i + j * 16), s1 + s2);
+                }
+            toStringDic.Add(255, "");
+        }
         atoms = new List<Atoms2>();
     }
 
@@ -142,7 +142,7 @@ public class Crystal2
 
         var crystal = new Crystal(cell.Values, cell.Errors,
             c.sym, c.name, System.Drawing.Color.FromArgb(c.argb), new Matrix3D(),
-            atom.ToArray(), (c.note, c.auth, GetFullJournal(c.jour), GetFullTitle(c.sect)), bonds);
+            atom.ToArray(), (c.note, c.auth, c.jour, c.sect), bonds);
 
         return crystal;
     }
@@ -157,8 +157,8 @@ public class Crystal2
             note = c.Note,
             argb = c.Argb,
             auth = c.PublAuthorName,
-            sect = GetShortTitle(c.PublSectionTitle),
-            jour = GetShortJournal(c.Journal),
+            sect = c.PublSectionTitle,
+            jour = c.Journal,
             formula = c.ChemicalFormulaSum,
             density = (float)c.Density,
             CellTexts = new[] {
@@ -199,174 +199,6 @@ public class Crystal2
             c2.atoms.Add(atom2);
         }
         return c2;
-    }
-
-    public static string GetFullJournal(string shortJournal)
-    {
-        if (shortJournal != null && shortJournal.Contains("##"))
-        {
-            string number = shortJournal.Substring(shortJournal.IndexOf("##", StringComparison.Ordinal), 4);
-            string journal = number switch
-            {
-                #region ## => 雑誌名
-                "##01" => "American Mineralogist",
-                "##02" => "Canadian Mineralogist",
-                "##03" => "Acta Crystallographica",
-                "##04" => "Bulletin de la Societe Francaise de Mineralogie et de Cristallographie",
-                "##05" => "Bulletin of the Chemical Society of Japan",
-                "##06" => "Canadian Journal of Chemistry",
-                "##07" => "Chemische Berichte",
-                "##08" => "Clays and Clay Minerals",
-                "##09" => "Comptes Rendus Hebdomadaires des Seances de l'Academie des Sciences",
-                "##10" => "Contributions to Mineralogy and Petrology",
-                "##11" => "Doklady Akademii Nauk SSSR",
-                "##12" => "Dopovidi Akademii Nauk Ukrains'koi RSR Seriya B=> Geologichni Khimichni ta Biologichni Nauki",
-                "##13" => "European Journal of Mineralogy",
-                "##14" => "Gazzetta Chimica Italiana",
-                "##15" => "Inorganic Chemistry",
-                "##16" => "Inorganica Chimica Acta",
-                "##17" => "Izvestiya Akademii Nauk SSSR Neorganicheskie Materialy",
-                "##18" => "Journal of Chemical Physics",
-                "##19" => "Journal of Inorganic and Nuclear Chemistry",
-                "##20" => "Journal of Physical Chemistry",
-                "##21" => "Journal of Solid State Chemistry",
-                "##22" => "Journal of the American Ceramic Society",
-                "##23" => "Journal of the American Chemical Society",
-                "##24" => "Journal of the Chemical Society",
-                "##25" => "Journal of the Less-Common Metals",
-                "##26" => "Kristallografiya",
-                "##27" => "Materials Research Bulletin",
-                "##28" => "Mineralogical Magazine",
-                "##29" => "Nature",
-                "##30" => "Naturwissenschaften",
-                "##31" => "Neues Jahrbuch fuer Mineralogie. Monatshefte",
-                "##32" => "Neues Jahrbuch fur Mineralogie, Monatshefte",
-                "##33" => "Physics and Chemistry of Minerals",
-                "##34" => "Zeitschrift fuer Anorganische und Allgemeine Chemie",
-                "##35" => "Zeitschrift fuer Kristallographie",
-                "##36" => "Zeitschrift fur Kristallographie",
-                "##37" => "Comptes Rendus Hebdomadaires des Seances de lAcademie des Sciences",
-                "##38" => "Dalton transactions",
-                "##39" => "Journal of Organic Chemistry",
-                "##40" => "Organic & Biomolecular Chemistry",
-                "##41" => "Organometallics",
-                "##43" => "Chemical communications(Cambridge, England)",
-                "##44" => "Materials Chemistry Frontiers",
-                "##45" => "Monatshefte fuer Chemie und verwandte Teile anderer Wissenschaften",
-                "##46" => "New Journal of Chemistry",
-                "##47" => "Organic letters",
-                _ => "",
-                #endregion
-            };
-            return shortJournal.Replace(number, journal);
-        }
-        else
-            return shortJournal;
-    }
-
-    public static string GetShortJournal(string fullJournal)
-    {
-        string journal = "";
-        if (fullJournal != null)
-            journal = fullJournal;
-        #region 雑誌名 => ##数値
-        journal = Regex.Replace(journal, "American Mineralogist", "##01", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Canadian Mineralogist", "##02", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Acta Crystallographica", "##03", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Bulletin de la Societe Francaise de Mineralogie et de Cristallographie", "##04", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Bulletin of the Chemical Society of Japan", "##05", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Canadian Journal of Chemistry", "##06", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Chemische Berichte", "##07", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Clays and Clay Minerals", "##08", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Comptes Rendus Hebdomadaires des Seances de l'Academie des Sciences", "##09", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Contributions to Mineralogy and Petrology", "##10", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Doklady Akademii Nauk SSSR", "##11", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Dopovidi Akademii Nauk Ukrains'koi RSR Seriya B: Geologichni Khimichni ta Biologichni Nauki", "##12", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "European Journal of Mineralogy", "##13", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Gazzetta Chimica Italiana", "##14", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Inorganic Chemistry", "##15", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Inorganica Chimica Acta", "##16", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Izvestiya Akademii Nauk SSSR Neorganicheskie Materialy", "##17", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Journal of Chemical Physics", "##18", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Journal of Inorganic and Nuclear Chemistry", "##19", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Journal of Physical Chemistry", "##20", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Journal of Solid State Chemistry", "##21", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Journal of the American Ceramic Society", "##22", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Journal of the American Chemical Society", "##23", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Journal of the Chemical Society", "##24", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Journal of the Less-Common Metals", "##25", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Kristallografiya", "##26", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Materials Research Bulletin", "##27", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Mineralogical Magazine", "##28", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Nature", "##29", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Naturwissenschaften", "##30", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Neues Jahrbuch fuer Mineralogie. Monatshefte", "##31", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Neues Jahrbuch fur Mineralogie, Monatshefte", "##31", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Physics and Chemistry of Minerals", "##33", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Zeitschrift fuer Anorganische und Allgemeine Chemie", "##34", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Zeitschrift fuer Kristallographie", "##35", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Zeitschrift fur Kristallographie", "##36", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Comptes Rendus Hebdomadaires des Seances de lAcademie des Sciences", "##37", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Dalton transactions", "##38", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Journal of Organic Chemistry", "##39", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Organic &amp;  Biomolecular Chemistry", "##40", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Organic &amp; Biomolecular Chemistry", "##40", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Organometallics", "##41");
-        journal = Regex.Replace(journal, "Chemical communications(Cambridge, England)", "##43", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Materials Chemistry Frontiers", "##44", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Monatshefte fuer Chemie und verwandte Teile anderer Wissenschaften", "##45", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "New Journal of Chemistry", "##46", RegexOptions.IgnoreCase);
-        journal = Regex.Replace(journal, "Organic letters", "##47", RegexOptions.IgnoreCase);
-        #endregion
-        return journal;
-    }
-
-    public static string GetFullTitle(string shortTitle)
-    {
-        string title = shortTitle;
-        if (title.Contains("##"))
-        {
-            #region ##数値 => キーワード
-            title = title.Replace("##01", "The crystal structure");
-            title = title.Replace("##02", "Crystal structure of");
-            title = title.Replace("##03", "crystal structure of");
-            title = title.Replace("##04", "powder diffraction");
-            title = title.Replace("##05", "Rietveld refinement of");
-            title = title.Replace("##06", "Second edition. Interscience Publishers, New York, New York Note:");
-            title = title.Replace("##07", "Single-crystal structure refinements");
-            title = title.Replace("##08", "Structural variation");
-            title = title.Replace("##09", "Structure refinement of");
-            title = title.Replace("##10", "Structure refinements of");
-            title = title.Replace("##11", "structure refinement of");
-            title = title.Replace("##12", "structure refinements of");
-            title = title.Replace("##13", "_cod_database_code");
-            title = title.Replace("##14", "_database_code_amcsd");
-            #endregion
-        }
-        return title;
-    }
-
-    public static string GetShortTitle(string fullTitle)
-    {
-        string title = fullTitle;
-
-        #region キーワード => ##数値
-        title = title.Replace("The crystal structure", "##01");
-        title = title.Replace("Crystal structure of", "##02");
-        title = title.Replace("crystal structure of", "##03");
-        title = title.Replace("powder diffraction", "##04");
-        title = title.Replace("Rietveld refinement of", "##05");
-        title = title.Replace("Second edition. Interscience Publishers, New York, New York Note:", "##06");
-        title = title.Replace("Single-crystal structure refinements", "##07");
-        title = title.Replace("Structural variation", "##08");
-        title = title.Replace("Structure refinement of", "##09");
-        title = title.Replace("Structure refinements of", "##10");
-        title = title.Replace("structure refinement of", "##11");
-        title = title.Replace("structure refinements of", "##12");
-        title = title.Replace("_cod_database_code", "##13");
-        title = title.Replace("_database_code_amcsd", "##14");
-        #endregion
-        return title;
     }
 
     static readonly char[] toCharDic = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '/', '-', '|', 'E' };
@@ -417,15 +249,21 @@ public class Crystal2
                 s = s.Replace("-0.", "-.");
             try
             {
-                var result = new List<byte>();
+                var result = new byte[(s.Length + 1) / 2];
                 for (int i = 0; i < s.Length; i += 2)
                 {
                     if (i + 1 < s.Length)
-                        result.Add((byte)(toByteDic[s[i]] + (toByteDic[s[i + 1]] << 4)));
+                    {
+                        if (toByteDic.TryGetValue(s[i], out var b1) && toByteDic.TryGetValue(s[i + 1], out var b2))
+                            result[i / 2] = (byte)(b1 + (b2 << 4));
+                    }
                     else
-                        result.Add((byte)(toByteDic[s[i]] + 240));
+                    {
+                        if (toByteDic.TryGetValue(s[i], out var b1))
+                            result[i / 2] = (byte)(b1 + 240);
+                    }
                 }
-                return result.ToArray();
+                return result;
             }
             catch (Exception e)
             {
@@ -442,7 +280,7 @@ public class Crystal2
             return "";
         else
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder(bytes.Length * 2);
             foreach (var b in bytes)
                 sb.Append(toStringDic[b]);
             return sb.ToString();
@@ -450,17 +288,17 @@ public class Crystal2
     }
 
     //静的コンストラクタ
-    static Crystal2()
-    {
-        for (int i = 0; i < 16; i++)
-            for (int j = 0; j < 16; j++)
-            {
-                var s1 = i == 15 ? "" : new string(new[] { toCharDic[i] });
-                var s2 = j == 15 ? "" : new string(new[] { toCharDic[j] });
+    //static Crystal2()
+    //{
+    //    for (int i = 0; i < 16; i++)
+    //        for (int j = 0; j < 16; j++)
+    //        {
+    //            var s1 = i == 15 ? "" : new string(new[] { toCharDic[i] });
+    //            var s2 = j == 15 ? "" : new string(new[] { toCharDic[j] });
 
-                toStringDic.Add((byte)(i + j * 16), s1 + s2);
-            }
-    }
+    //            toStringDic.Add((byte)(i + j * 16), s1 + s2);
+    //        }
+    //}
 
     private static (double Value, double Error) Decompose2(string str) => Decompose(str, false);
     public static (double Value, double Error) Decompose(string str, int sgnum) => Decompose(str, sgnum >= 430 && sgnum <= 488);
