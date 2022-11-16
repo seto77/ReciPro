@@ -147,7 +147,8 @@ public readonly struct WyckoffPosition
     static bool chk(in double d1, in double d2)
     {
         var d = Math.Abs(d1 - d2);
-        while (d > one_th) d = Math.Abs(d - 1);
+        if (d >= 1 || d < 0) d -= Math.Floor(d);
+        if (d > one_th) d -= 1;
         return d <= th;
     }
     #endregion

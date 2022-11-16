@@ -966,13 +966,11 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
     /// <returns></returns>
     public static Vector3D InnerLattice(Vector3D v)
     {
-        double[] d = new double[] { v.X, v.Y, v.Z };
-        for (int j = 0; j < 3; j++)
-        {
-            while (d[j] < 0) { d[j] += 1; }
-            while (d[j] >= 1) { d[j] -= 1; }
-        }
-        return new Vector3D(d[0], d[1], d[2], false);
+        double x = v.X, y = v.Y, z = v.Z;
+        if (x >= 1 || x < 0) x -= Math.Floor(x);
+        if (y >= 1 || y < 0) y -= Math.Floor(y);
+        if (z >= 1 || z < 0) z -= Math.Floor(z);
+        return new Vector3D(x, y, z, false);
     }
 
     /// <summary>
@@ -983,12 +981,9 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
     public Vector3D InnerLattice()
     {
         double x = X, y = Y, z = Z;
-        while (x < 0) x += 1;
-        while (x >= 1) x -= 1;
-        while (y < 0) y += 1;
-        while (y >= 1) y -= 1;
-        while (z < 0) z += 1;
-        while (z >= 1) z -= 1;
+        if (x >= 1 || x < 0) x -= Math.Floor(x);
+        if (y >= 1 || y < 0) y -= Math.Floor(y);
+        if (z >= 1 || z < 0) z -= Math.Floor(z);
         return new Vector3D(x, y, z, false);
     }
 
@@ -999,12 +994,9 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
     /// <returns></returns>
     public void InnerLatticeThis()
     {
-        while (X < 0) X += 1;
-        while (X >= 1) X -= 1;
-        while (Y < 0) Y += 1;
-        while (Y >= 1) Y -= 1;
-        while (Z < 0) Z += 1;
-        while (Z >= 1) Z -= 1;
+        if (X >= 1 || X < 0) X -= Math.Floor(X);
+        if (Y >= 1 || Y < 0) Y -= Math.Floor(Y);
+        if (Z >= 1 || Z < 0) Z -= Math.Floor(Z);
     }
 
     public override string ToString() => Text != "" ? Text : $"{X}, {Y}, {Z}";

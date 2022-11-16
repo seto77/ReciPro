@@ -83,15 +83,15 @@ public partial class Crystal2
     {
         if (toStringDic.Count == 0)
         {
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 16; i++)
                 for (int j = 0; j < 16; j++)
                 {
-                    var s1 = toCharDic[i].ToString();
+                    var s1 = i==15 ? "":  toCharDic[i].ToString();
                     var s2 = j == 15 ? "" : toCharDic[j].ToString();
 
                     toStringDic.Add((byte)(i + j * 16), s1 + s2);
                 }
-            toStringDic.Add(255, "");
+            //toStringDic.Add(255, "");
         }
         atoms = new List<Atoms2>();
     }
@@ -327,8 +327,7 @@ public partial class Crystal2
         if ((i = str.IndexOf("|", StringComparison.Ordinal)) > 0)
         {
             valStr = str.AsSpan()[0..i].ToString();
-
-            if (double.TryParse(str.AsSpan()[(i + 1)..^1], style, culture, out err))
+            if (str.Length - 1 > i && double.TryParse(str.AsSpan()[(i + 1)..^1], style, culture, out err))
             {
                 var j = valStr.IndexOf(".", StringComparison.Ordinal);
                 if (j >= 0 && valStr.Length - j - 1 > 0)

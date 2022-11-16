@@ -36,7 +36,7 @@ public partial class CrystalDatabaseControl : UserControl
 
     byte[] serialize<T>(T c)
     {
-        using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.Optimal);
+        using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.SmallestSize);
         MemoryPackSerializer.Serialize(compressor, c);
 
         //先頭の4バイトは、データの長さを格納する。

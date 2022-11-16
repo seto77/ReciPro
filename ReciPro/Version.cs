@@ -10,6 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
+        "\r\n ver4.840(2022/11/16)  Target framework has been changed to .Net Desktop Runtime 7.0." +
         "\r\n ver4.840(2022/11/10)  Fixed a bug that occurred when starting 'Diffraction Simulator' (see https://github.com/seto77/ReciPro/issues/16)." +
         "\r\n ver4.839(2022/11/07)  Added a function to simulate X-ray precession camara." +
         "\r\n ver4.838(2022/10/21)  Improved compatibility of importing CIF files." +
@@ -25,7 +26,7 @@ internal static class Version
         "\r\n ver4.828(2021/12/15)  Updated the crystal database." +
         "\r\n ver4.827(2021/12/01)  Fixed a CultureInfo problem. (see https://github.com/seto77/ReciPro/issues/10)" +
         "\r\n ver4.826(2021/11/18)  Fixed minor bugs." +
-        "\r\n ver4.820(2021/11/12)  Target framework has been changed to .Net 6.0." +
+        "\r\n ver4.820(2021/11/12)  Target framework has been changed to .Net Desktop Runtime 6.0." +
         "\r\n ver4.819(2021/10/27)  Improved an interface of Kikuchi line simulation. Speed up & fix bug on the dynamical diffraction simulator." +
         "\r\n ver4.817(2021/09/17)  Fixed minor bugs." +
         "\r\n ver4.815(2021/09/02)  Improved: User interfaces and tooltips." +
@@ -38,7 +39,7 @@ internal static class Version
         "\r\n ver4.808(2021/07/08)  Fixed a minor bug about a compile option for native (c++) codes." +
         "\r\n ver4.807(2021/07/06)  Fixed minor bugs. Improved a rendering speed of 'Structure Viewer'." +
         "\r\n ver4.806(2021/05/25)  Fixed a distribution failure of language resource files." +
-        "\r\n ver4.802(2021/05/24)  Target framework has been changed to .Net 5.0." +
+        "\r\n ver4.802(2021/05/24)  Target framework has been changed to .Net Desktop Runtime 5.0." +
         "\r\n ver4.800(2021/05/20)  Fixed bugs on native (c++) codes. Changed CBED interface." +
         "\r\n ver4.799(2021/05/10)  Fixed bugs on native (c++) codes." +
         "\r\n ver4.798(2021/05/03)  Fixed bugs on the 'Diffraction simulator'." +

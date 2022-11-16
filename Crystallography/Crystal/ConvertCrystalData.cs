@@ -268,9 +268,15 @@ public class ConvertCrystalData
         try
         {
             if (fileName.EndsWith("amc", Ord))
-                return ConvertFromAmc(fileName).ToCrystal();
+            {
+                var c = ConvertFromAmc(fileName);
+                return c?.ToCrystal();
+            }
             else if (fileName.EndsWith("cif", Ord))
-                return ConvertFromCIF(fileName).ToCrystal();
+            {
+                var c = ConvertFromCIF(fileName);
+                return c?.ToCrystal();
+            }
             else
                 return null;
         }
@@ -341,9 +347,9 @@ public class ConvertCrystalData
 
         
 
-        if (Title.Contains("_cod_database_code",Ord))
+        if (Title.Contains("_cod_database_code"))
             Title = Title.Replace("_cod_database_code", "\r\n_cod_database_code");
-        else if (Title.Contains("_database_code_amcsd", Ord))
+        else if (Title.Contains("_database_code_amcsd"))
             Title = Title.Replace("_database_code_amcsd", "\r\n_database_code_amcsd");
 
         n++; if (str.Length <= n) return null;
@@ -364,27 +370,27 @@ public class ConvertCrystalData
 
         //ここから原子座標の読み取り
         bool IsOcc = false, IsisoUsed = false, IsanisoUsed = false, IsUtypeUsed = false;
-        if (str[n].Contains("occ", Ord))
+        if (str[n].Contains("occ"))
             IsOcc = true;
 
 
-        if (str[n].Contains("Uiso",Ord) || str[n].Contains("uiso", Ord))
+        if (str[n].Contains("Uiso") || str[n].Contains("uiso"))
         {
             IsisoUsed = true;
             IsUtypeUsed = true;
         }
-        else if (str[n].Contains("Biso", Ord) || str[n].Contains("biso", Ord))
+        else if (str[n].Contains("Biso") || str[n].Contains("biso"))
         {
             IsisoUsed = true;
             IsUtypeUsed = false;
         }
 
-        if (str[n].Contains("U(1,1)", Ord) || str[n].Contains("u(1,1)", Ord))
+        if (str[n].Contains("U(1,1)") || str[n].Contains("u(1,1)"))
         {
             IsanisoUsed = true;
             IsUtypeUsed = true;
         }
-        else if (str[n].Contains("B(1,1)", Ord) || str[n].Contains("b(1,1)", Ord))
+        else if (str[n].Contains("B(1,1)") || str[n].Contains("b(1,1)"))
         {
             IsanisoUsed = true;
             IsUtypeUsed = false;
@@ -528,7 +534,7 @@ public class ConvertCrystalData
         string SgName = s[6];
 
         SgName = SgName.Replace("_", "sub");
-        bool isAsterisk = SgName.Contains('*', Ord);
+        bool isAsterisk = SgName.Contains('*');
         SgName = SgName.Replace("*", "");
 
         #region 空間群の場合分け
@@ -815,13 +821,11 @@ public class ConvertCrystalData
                 }
                 else
                     stringList.RemoveAt(start + 1);
-
             }
         }
         return ConvertFromCIF(stringList);
     }
 
-    static string[] ignoreLabel = new[] { "_diffrn_", "_exptl_", "_refine_" , "_cell_measurement_", "_computing_data_", "_shelx_" }; 
 
     /// <summary>
     /// CIFファイルを読み込む
@@ -839,26 +843,26 @@ public class ConvertCrystalData
         {
             while ((str[n].StartsWith("#", Ord) || str[n].Trim().Length == 0) && n < str.Count - 1)
                 str.RemoveAt(n);
-                //n++;
             //全ての先頭行の空白あるいはタブを削除する
             str[n] = str[n].Replace("\t", " ");
             str[n] = str[n].TrimEnd(' ').TrimStart(' ');
 
             if (str[n].Trim().StartsWith(";", Ord))//;で始まる行を見つけたら
             {
+                int m = n + 1;
+
                 var temp = new StringBuilder();
-                int m = n;
                 //次に;が出てくるところまですすめてまとめて一行にする
-                while (true)
+                //但し、次の行が「loop_」の場合や「_」で始まる場合は、;を一文字だけ消して終了
+                if (str[m].StartsWith("loop_", Ord) || str[m].StartsWith("_", Ord))
+                    str[n] = "";
+                else
                 {
-                    temp.Append(str[n] + " ");
-                    n++;
-                    if (n > str.Count - 1 || str[n].TrimEnd(' ').StartsWith(";",Ord))
-                        break;
+                    while (m >= str.Count || !str[m].StartsWith(";", Ord))
+                        temp.Append(str[m++] + " ");
+                    str[n] = "'" + temp.ToString().Trim().TrimEnd() + "'";
+                    str.RemoveRange(n + 1, m - n);
                 }
-                //str.Add("'" + temp.ToString().Trim().TrimStart(';').TrimEnd(';').TrimStart(' ').TrimEnd(' ') + "'");
-                str[m] = "'" + temp.ToString().Trim().TrimStart(';').TrimEnd(';').TrimStart(' ').TrimEnd(' ') + "'";
-                str.RemoveRange(m + 1, n - m);
             }
         }
 
@@ -876,8 +880,8 @@ public class ConvertCrystalData
             {
                 while (str[n].Contains('\''))
                 {
-                    var firstIndex = str[n].IndexOf("'");
-                    var next = str[n].IndexOf("'", firstIndex + 1);
+                    var firstIndex = str[n].IndexOf('\'');
+                    var next = str[n].IndexOf('\'', firstIndex + 1);
                     if (next == -1)
                         break;
                     var substring = str[n].Substring(firstIndex, next - firstIndex + 1);
@@ -888,11 +892,19 @@ public class ConvertCrystalData
                 }
             }
 
-            if (str[n].Contains('"'))//#\"が含まれていたら
+            if (str[n].Contains('"'))//\"が含まれていたら
             {
-                var temp = str[n].Remove(0, str[n].IndexOf("\""));
-                temp = temp.Replace("\"", "").TrimEnd(' ').TrimStart(' ').Replace(" ", "薔");
-                str[n] = $"{str[n].Remove(str[n].IndexOf("\""))}{temp}";
+                while (str[n].Contains('"'))
+                {
+                    var firstIndex = str[n].IndexOf('"');
+                    var next = str[n].IndexOf('"', firstIndex + 1);
+                    if (next == -1)
+                        break;
+                    var substring = str[n].Substring(firstIndex, next - firstIndex + 1);
+                    substring = substring.Replace(" ", "薔");
+                    substring = substring.Replace("\"", "");
+                    str[n] = $"{str[n][..firstIndex]}{substring}{str[n][(next + 1)..]}";
+                }
             }
         }
 
@@ -923,9 +935,7 @@ public class ConvertCrystalData
                 }
                 else
                     tempData = "";
-                
-                if(ignoreLabel.All(s => !tempLabel.StartsWith(s,Ord)))
-                    CIF.Add(new List<(string Label, string Data)>(new[] { (tempLabel, tempData.Replace("薔", " ")) }));
+                CIF.Add(new List<(string Label, string Data)>(new[] { (tempLabel, tempData.Replace("薔", " ")) }));
             }
             else if (str[n].Trim().StartsWith("loop_", Ord))
             {//ループのとき
@@ -1003,6 +1013,8 @@ public class ConvertCrystalData
                 else if (label == "_space_group_symop_operation_xyz") operations.Add(data);
                 else if (label == "_symmetry_equiv_pos_as_xyz") operations.Add(data);
             }
+
+        if (a == "" || b == "" || c == "" || alpha=="" || beta == "" || gamma == "") return null;
 
         if (name.Length == 0 || name == "?" || name == "? ?" || name.Trim().Length == 0)
             name = chemical_formula_sum;
@@ -1130,7 +1142,12 @@ public class ConvertCrystalData
                 }
             }
 
-            if (shift.X != 0 || shift.Y != 0 || shift.Z != 0)
+            if (x == "0021|" || y == "0021|" || z == "0021|")
+            {
+
+            }
+
+                if (shift.X != 0 || shift.Y != 0 || shift.Z != 0)
             {
                 var _x = Crystal2.Decompose(x, sgnum);
                 var _y = Crystal2.Decompose(y, sgnum);
@@ -1546,11 +1563,11 @@ public class ConvertCrystalData
         }
 
         //Rhombohedoralのときの処置
-        if (isRhomboShape && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("Hex", Ord))
+        if (isRhomboShape && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("Hex", StringComparison.Ordinal))
             symmetrySeriesNumber++;
 
         //originChoiceが2のときの対処
-        if (IsOrigineChoice2 && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("(1)",Ord))
+        if (IsOrigineChoice2 && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("(1)"))
             symmetrySeriesNumber++;
 
         if (SpaceGroupNumber >= 1 && SpaceGroupNumber <= 230)
