@@ -5,10 +5,9 @@
 
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
-* Runs on Windows OS with .Net Desktop Runtime 7.0 (not .Net Runtime 7.0), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/7.0).
+* *ReciPro* runs on Windows OS with .Net Desktop Runtime 7.0 (not .Net Runtime 7.0), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/7.0).
 
-* The following movie shows ReciPro running in ***real time***.
-
+##Captured screenshot
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 
 ## Manual
