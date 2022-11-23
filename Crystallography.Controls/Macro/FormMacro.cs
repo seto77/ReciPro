@@ -147,9 +147,8 @@ namespace Crystallography.Controls
                         if (!(key.StartsWith("__") && key.EndsWith("__")) && key != ScopeName)
                         {
                             var value = kv.Value.ToString();
-                            if (kv.Value is int[])
+                            if (kv.Value is int[] v)
                             {
-                                var v = (int[])kv.Value;
                                 if (v.Length != 0)
                                 {
                                     value = "";

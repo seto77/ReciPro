@@ -8,87 +8,87 @@ using System.Buffers;
 
 namespace Crystallography;
 
-public static class NativeWrapper
+public static partial class NativeWrapper
 {
-    #region DllImport
+    #region LibraryImport
     public enum Library { None, Eigen, Cuda }
 
 
     //[DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
     //public static extern IntPtr Memcpy(IntPtr dest, IntPtr src, UIntPtr count);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _PartialPivLuSolve(int dim, double* mat, double* vec, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _PartialPivLuSolve(int dim, double* mat, double* vec, double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _Blend(int dim, double* c0, double* c1, double* c2, double* c3, double r0, double r1, double r2, double r3, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _Blend(int dim, double* c0, double* c1, double* c2, double* c3, double r0, double r1, double r2, double r3, double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _BlendAndConjugate(int dim, double* c0, double* c1, double* c2, double* c3, double r0, double r1, double r2, double r3, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _BlendAndConjugate(int dim, double* c0, double* c1, double* c2, double* c3, double r0, double r1, double r2, double r3, double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _AdJointMul_Mul_Mul(int dim, double* mat1, double* mat2, double* mat3, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _AdJointMul_Mul_Mul(int dim, double* mat1, double* mat2, double* mat3, double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _BlendAdJointMul_Mul_Mul(int dim, double* c0, double* c1, double* c2, double* c3, double r0, double r1, double r2, double r3, double* mat2, double* mat3, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _BlendAdJointMul_Mul_Mul(int dim, double* c0, double* c1, double* c2, double* c3, double r0, double r1, double r2, double r3, double* mat2, double* mat3, double* result);
 
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _PointwiseMultiply(int dim,
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _PointwiseMultiply(int dim,
                                      double* mat1,
                                      double* mat2,
                                      double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _AdjointAndMultiply(int dim,
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _AdjointAndMultiply(int dim,
                                       double* mat1,
                                       double* mat2,
                                       double* result);
 
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _MultiplyMM(int dim, double* mat1, double* mat2, double* result);
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _MultiplyMV(int dim, double* mat, double* vec, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _MultiplyMM(int dim, double* mat1, double* mat2, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _MultiplyMV(int dim, double* mat, double* vec, double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _MultiplySV(int dim, double real, double imag, double* vec, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _MultiplySV(int dim, double real, double imag, double* vec, double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _DivideVV(int dim, double* vec1, double* vec2, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _DivideVV(int dim, double* vec1, double* vec2, double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _AddVV(int dim, double* vec1, double* vec2, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _AddVV(int dim, double* vec1, double* vec2, double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    unsafe private static extern void _SubtractVV(int dim, double* vec1, double* vec2, double* result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _SubtractVV(int dim, double* vec1, double* vec2, double* result);
 
 
-    [DllImport("Crystallography.Native.dll")]
-    private static extern void _Inverse(int dim, double[] mat, double[] matInv);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _Inverse(int dim, double[] mat, double[] matInv);
 
-    [DllImport("Crystallography.Native.dll")]
-    private unsafe static extern void _Inverse(int dim, double* mat, double* matInv);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _Inverse(int dim, double* mat, double* matInv);
 
-    [DllImport("Crystallography.Native.dll")]
-    private static extern void _EigenSolver(int dim, double[] mat, double[] eigenValues, double[] eigenVectors);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _EigenSolver(int dim, double[] mat, double[] eigenValues, double[] eigenVectors);
 
-    [DllImport("Crystallography.Native.dll")]
-    private unsafe static extern void _EigenSolver(int dim, double* mat, double* eigenValues, double* eigenVectors);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _EigenSolver(int dim, double* mat, double* eigenValues, double* eigenVectors);
 
-    [DllImport("Crystallography.Native.dll")]
-    private unsafe static extern void _MatrixExponential(int dim,
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _MatrixExponential(int dim,
                                            double* mat,
                                            double* results);
 
 
-    [DllImport("Crystallography.Cuda.dll")]
-    private static extern void MatrixExponential_Cuda(int dim,
+    [LibraryImport("Crystallography.Cuda.dll")]
+    private static unsafe partial void MatrixExponential_Cuda(int dim,
                                           double[] mat,
                                           double[] results);
 
-    [DllImport("Crystallography.Cuda.dll")]
-    private unsafe static extern void _CBEDSolver_MtxExp_Cuda(int gDim,
+    [LibraryImport("Crystallography.Cuda.dll")]
+    private static unsafe partial void _CBEDSolver_MtxExp_Cuda(int gDim,
                                          double[] potential,
                                          double[] phi0,
                                          int tDim,
@@ -97,8 +97,8 @@ public static class NativeWrapper
                                          double coeff,
                                          double[] result);
 
-    [DllImport("Crystallography.Native.dll")]
-    private unsafe static extern void _CBEDSolver_Eigen(int gDim,
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _CBEDSolver_Eigen(int gDim,
                                           double* potential,
                                          double* phi0,
                                          int tDim,
@@ -106,8 +106,8 @@ public static class NativeWrapper
                                          double coeff,
                                          double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    private unsafe static extern void _CBEDSolver_Eigen2(int gDim,
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _CBEDSolver_Eigen2(int gDim,
                                         double* potential,
                                         double* phi0,
                                         int tDim,
@@ -118,8 +118,8 @@ public static class NativeWrapper
                                         double* alphas,
                                         double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    private unsafe static extern void _CBEDSolver_MtxExp(int gDim,
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _CBEDSolver_MtxExp(int gDim,
                                   double* potential,
                                   double* phi0,
                                   int tDim,
@@ -128,8 +128,8 @@ public static class NativeWrapper
                                   double coeff,
                                   double* result);
 
-    [DllImport("Crystallography.Native.dll")]
-    private static unsafe extern void _HRTEMSolverQuasi(int gDim,
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _HRTEMSolverQuasi(int gDim,
                                             int lDim,
                                             int rDim,
                                             double[] gPsi,
@@ -138,8 +138,8 @@ public static class NativeWrapper
                                             double[] rVec,
                                             double[] results);
 
-    [DllImport("Crystallography.Native.dll")]
-    private static unsafe extern void _HRTEMSolverTcc(
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _HRTEMSolverTcc(
                                             int gDim,
                                             int lDim,
                                             int rDim,
@@ -150,8 +150,8 @@ public static class NativeWrapper
                                             double[] results);
 
 
-    [DllImport("Crystallography.Native.dll")]
-    private static extern void _Histogram(
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _Histogram(
                                             int width, int height,
                                             double centerX, double centerY,
                                             double pixSizeX, double pixSizeY,

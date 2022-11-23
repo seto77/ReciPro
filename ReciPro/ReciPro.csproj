@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.11.16.0341</AssemblyVersion>
-    <FileVersion>2022.11.16.0341</FileVersion>
+    <AssemblyVersion>2022.11.23.0658</AssemblyVersion>
+    <FileVersion>2022.11.23.0658</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -43,15 +43,6 @@
     <None Remove="doc\ReciProの座標系.pptx" />
     <None Remove="doc\Thumbs.db" />
     <None Remove="doc\~%24ciProManual%28en%29.docx" />
-    <None Remove="ffmpeg\avcodec-59.dll" />
-    <None Remove="ffmpeg\avdevice-59.dll" />
-    <None Remove="ffmpeg\avfilter-8.dll" />
-    <None Remove="ffmpeg\avformat-59.dll" />
-    <None Remove="ffmpeg\avutil-57.dll" />
-    <None Remove="ffmpeg\ffmpeg.exe" />
-    <None Remove="ffmpeg\postproc-56.dll" />
-    <None Remove="ffmpeg\swresample-4.dll" />
-    <None Remove="ffmpeg\swscale-6.dll" />
     <None Remove="ImagingSolution.Control.GraphicsBox.XML" />
     <None Remove="initial.xml" />
     <None Remove="StdDb.cdb3" />

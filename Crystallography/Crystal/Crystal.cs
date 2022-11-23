@@ -546,7 +546,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 break;
 
             case "trigonal":
-                switch (Symmetry.SpaceGroupHMStr.Contains("Rho") && Symmetry.SpaceGroupHMStr.Contains("R"))
+                switch (Symmetry.SpaceGroupHMStr.Contains("Rho") && Symmetry.SpaceGroupHMStr.Contains('R'))
                 {
                     case false:
                         B = A;
@@ -906,11 +906,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 foreach ((int h2, int k2, int l2) in directions)
                 {
                     int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
-                    if (key2 > 0 && !gHash.Contains(key2))
+                    if (key2 > 0 && gHash.Add(key2))
                     {
                         double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                         var len = Math.Sqrt(x * x + y * y + z * z);
-                        gHash.Add(key2);
                         outer.Add((key2, len));
                         if (len < gMax && len > 1 / dMax)
                         {
@@ -1168,11 +1167,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 foreach ((int h2, int k2, int l2) in directions)
                 {
                     int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
-                    if (key2 > 0 && !gHash.Contains(key2))
+                    if (key2 > 0 && gHash.Add(key2))
                     {
                         double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                         var len = Math.Sqrt(x * x + y * y + z * z);
-                        gHash.Add(key2);
                         gList.Add((key2, x, y, z, len));
                         outer.Add((key2, len));
                     }

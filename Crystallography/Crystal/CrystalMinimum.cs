@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MemoryPack;
-
 
 namespace Crystallography;
 
@@ -58,11 +56,20 @@ public partial class Crystal2
     {
         get
         {
-            var c = CellTexts.Select(t => Decompose2(t)).ToArray();
+            var c = CellTexts.Select(t => Decompose(t)).ToArray();
             return ((c[0].Value, c[1].Value, c[2].Value, c[3].Value, c[4].Value, c[5].Value),
                      (c[0].Error, c[1].Error, c[2].Error, c[3].Error, c[4].Error, c[5].Error));
         }
     }
+
+    /// <summary>
+    /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位. エラーの値は含まない.
+    /// </summary>
+    [MemoryPackIgnore]
+    public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellOnlyValue => ((
+                DecomposeOnlyValue(CellTexts[0]), DecomposeOnlyValue(CellTexts[1]), DecomposeOnlyValue(CellTexts[2]),
+                DecomposeOnlyValue(CellTexts[3]), DecomposeOnlyValue(CellTexts[4]), DecomposeOnlyValue(CellTexts[5])));
+
 
     /// <summary>
     /// a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian.
@@ -77,11 +84,25 @@ public partial class Crystal2
                     (Errors.A / 10, Errors.B / 10, Errors.C / 10, Errors.Alpha / 180 * Math.PI, Errors.Beta / 180 * Math.PI, Errors.Gamma / 180 * Math.PI));
         }
     }
+
+    /// <summary>
+    /// a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian. エラーの値は含まない.
+    /// </summary>
+    [MemoryPackIgnore]
+    public (double A, double B, double C, double Alpha, double Beta, double Gamma)  CellOnlyValue_nm_radian
+    {
+        get
+        {
+            var (A, B, C, Alpha, Beta, Gamma) = CellOnlyValue;
+            return ((A / 10, B / 10, C / 10, Alpha / 180 * Math.PI, Beta / 180 * Math.PI, Gamma / 180 * Math.PI));
+        }
+    }
     #endregion
 
     public Crystal2()
     {
-        if (toStringDic.Count == 0)
+        //toStringDicを最初の一回だけ初期化
+        if (toStringDic[0] == null)
         {
             for (int i = 0; i < 16; i++)
                 for (int j = 0; j < 16; j++)
@@ -89,9 +110,8 @@ public partial class Crystal2
                     var s1 = i==15 ? "":  toCharDic[i].ToString();
                     var s2 = j == 15 ? "" : toCharDic[j].ToString();
 
-                    toStringDic.Add((byte)(i + j * 16), s1 + s2);
+                    toStringDic[i + j * 16]= s1 + s2;
                 }
-            //toStringDic.Add(255, "");
         }
         atoms = new List<Atoms2>();
     }
@@ -201,9 +221,11 @@ public partial class Crystal2
         return c2;
     }
 
+    [MemoryPackIgnore]
     static readonly char[] toCharDic = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '/', '-', '|', 'E' };
-    static readonly Dictionary<byte, string> toStringDic = new();
-
+    [MemoryPackIgnore]
+    static readonly string[] toStringDic = new string[256];
+    [MemoryPackIgnore]
     static readonly Dictionary<char, byte> toByteDic = new()
     {
         { '0', 0 },
@@ -276,15 +298,10 @@ public partial class Crystal2
 
     public static string ToString(byte[] bytes)
     {
-        if (bytes.Length == 0)
-            return "";
-        else
-        {
-            var sb = new StringBuilder(bytes.Length * 2);
-            foreach (var b in bytes)
-                sb.Append(toStringDic[b]);
-            return sb.ToString();
-        }
+        var sb = new StringBuilder(bytes.Length * 2);
+        foreach (var b in bytes)
+            sb.Append(toStringDic[b]);
+        return sb.ToString();
     }
 
     //静的コンストラクタ
@@ -300,11 +317,16 @@ public partial class Crystal2
     //        }
     //}
 
-    private static (double Value, double Error) Decompose2(string str) => Decompose(str, false);
-    public static (double Value, double Error) Decompose(string str, int sgnum) => Decompose(str, sgnum >= 430 && sgnum <= 488);
+   
 
+    private static (double Value, double Error) Decompose(string str) => Decompose(str, false);
+    public static (double Value, double Error) Decompose(string str, int sgnum) => Decompose(str, sgnum >= 430 && sgnum <= 488);
+    [MemoryPackIgnore]
     private static readonly CultureInfo culture = CultureInfo.InvariantCulture;
+    [MemoryPackIgnore]
     private static readonly NumberStyles style = NumberStyles.Number;
+    [MemoryPackIgnore]
+    private static readonly StringComparison Ord = StringComparison.Ordinal;
 
     /// <summary>
     /// 9.726|5|, 1.234|12|E-6 のような文字列を、ValueとErrorに分解してタプルで返す. 
@@ -317,19 +339,19 @@ public partial class Crystal2
     {
         var expValue = 1.0;
         int i;
-        if ((i = str.IndexOf("E", StringComparison.Ordinal)) > 0)
+        if ((i = str.IndexOf("E", Ord)) > 0)
         {
             _ = double.TryParse("1" + str[i..], style, culture, out expValue);
             str = str[..i];
         }
         string valStr;
         double err;
-        if ((i = str.IndexOf("|", StringComparison.Ordinal)) > 0)
+        if ((i = str.IndexOf("|", Ord)) > 0)
         {
-            valStr = str.AsSpan()[0..i].ToString();
-            if (str.Length - 1 > i && double.TryParse(str.AsSpan()[(i + 1)..^1], style, culture, out err))
+            valStr = str[0..i];
+            if (str.Length - 1 > i && double.TryParse(str[(i + 1)..^1], style, culture, out err))
             {
-                var j = valStr.IndexOf(".", StringComparison.Ordinal);
+                var j = valStr.IndexOf(".", Ord);
                 if (j >= 0 && valStr.Length - j - 1 > 0)
                     err *= Math.Pow(10, -valStr.Length + j + 1);
             }
@@ -365,7 +387,7 @@ public partial class Crystal2
                 return (11.0 / 12.0, err);
         }
 
-        if ((i = valStr.IndexOf("/", StringComparison.Ordinal)) >= 0)
+        if ((i = valStr.IndexOf("/", Ord)) >= 0)
         {
             if (double.TryParse(valStr.AsSpan()[0..i], style, culture, out var temp0)
                 && double.TryParse(valStr.AsSpan()[(i + 1)..^0], style, culture, out var temp1))
@@ -376,6 +398,30 @@ public partial class Crystal2
 
         return double.TryParse(valStr, style, culture, out var val) ? (val * expValue, err * expValue) : (double.NaN, double.NaN);
     }
+
+    /// <summary>
+    /// 9.726|5|, 1.234|12|E-6 のような文字列を、Valueの部分だけ返す. 
+    /// 格子定数を変換するときだけに呼ばれる.
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static double DecomposeOnlyValue(string str)
+    {
+        var s = str.AsSpan();
+        var expValue = 1.0;
+        if (s.Contains('E'))
+        {
+            int i = s.IndexOf('E');
+            _ = double.TryParse("1" + s[i..].ToString(), style, culture, out expValue);
+            s = s[..i];
+        }
+
+        if (s.Contains('|'))
+            s = s[0..s.IndexOf('|')];
+
+        return double.TryParse(s, style, culture, out var val) ? val * expValue : double.NaN;
+    }
+
     public static string Compose(double val, double err = double.NaN)
     {
         if (double.IsNaN(val))
@@ -386,12 +432,12 @@ public partial class Crystal2
         {
             //まず、誤差を 23E-6 みたいな形にする
             var temp = err.ToString("E1");
-            var errStr = temp[..temp.IndexOf("E", StringComparison.Ordinal)].Replace(".", "");
-            var errLog = Convert.ToInt32(temp[(temp.IndexOf("E", StringComparison.Ordinal) + 1)..]) - 1;
+            var errStr = temp[..temp.IndexOf("E", Ord)].Replace(".", "");
+            var errLog = Convert.ToInt32(temp[(temp.IndexOf("E", Ord) + 1)..]) - 1;
 
             //vを取りあえず十分な精度で出力する
             var valStr = val.ToString("E15");
-            var valLog = Convert.ToInt32(valStr[(valStr.IndexOf("E", StringComparison.Ordinal) + 1)..]);
+            var valLog = Convert.ToInt32(valStr[(valStr.IndexOf("E", Ord) + 1)..]);
 
             var result = valLog >= errLog ? valStr[..(valLog - errLog + 2)] : val.ToString("E0")[..1];
 

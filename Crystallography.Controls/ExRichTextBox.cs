@@ -305,7 +305,7 @@ public partial class ExRichTextBox : System.Windows.Forms.RichTextBox
     private void SetAutoCompleteText()
     {
         int i = this.SelectionStart; //カレット位置
-        string s = this.Text.Substring(0, i); //カレット位置までの文字を取得
+        string s = Text[..i]; //カレット位置までの文字を取得
         int c = 0; //区切り開始位置取得用
         if (c < s.LastIndexOf(' ')) c = s.LastIndexOf(' '); //半角空白位置取得
         if (c < s.LastIndexOf('　')) c = s.LastIndexOf('　');//全角空白位置取得

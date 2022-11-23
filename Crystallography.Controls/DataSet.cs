@@ -234,7 +234,7 @@ public partial class DataSet
             }
         }
 
-        readonly object lockObj = new object();
+        readonly object lockObj = new();
         public DataTableCrystalDatabaseRow CreateRow(Crystal2 c)
         {
             DataTableCrystalDatabaseRow dr;
@@ -245,19 +245,17 @@ public partial class DataSet
             dr.Name = c.name;
             dr.Formula = c.formula;
             dr.Density = c.density;
-            (dr.A, dr.B, dr.C, dr.Alpha, dr.Beta, dr.Gamma) = c.Cell.Values;
+            (dr.A, dr.B, dr.C, dr.Alpha, dr.Beta, dr.Gamma) = c.CellOnlyValue;
             dr.CrystalSystem = SymmetryStatic.StrArray[c.sym][16];//s.CrystalSystemStr;
             dr.PointGroup = SymmetryStatic.StrArray[c.sym][13];
             dr.SpaceGroup = SymmetryStatic.StrArray[c.sym][3];
             dr.Authors = c.auth;
             dr.Title = c.sect;
             dr.Journal = c.jour;
-
             dr.Flag = true;
 
             return dr;
         }
-
 
     }
 }

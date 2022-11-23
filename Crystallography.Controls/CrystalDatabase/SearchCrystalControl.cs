@@ -159,20 +159,22 @@ namespace Crystallography.Controls
                 //格子定数
                 if (flag && checkBoxSearchCellParameter.Checked)
                 {
-                    var (Values, Errors) = cry.Cell;
-
-                    if (a != 0 && (a * (1 - lenErr) > Values.A || a * (1 + lenErr) < Values.A))
-                        flag = false;
-                    if (flag && b != 0 && (b * (1 - lenErr) > Values.B || b * (1 + lenErr) < Values.B))
-                        flag = false;
-                    if (flag && c != 0 && (c * (1 - lenErr) > Values.C || c * (1 + lenErr) < Values.C))
-                        flag = false;
-                    if (flag && alpha != 0 && (alpha - angErr > Values.Alpha || alpha + angErr < Values.Alpha))
-                        flag = false;
-                    if (flag && beta != 0 && (beta - angErr > Values.Beta || beta + angErr < Values.Beta))
-                        flag = false;
-                    if (flag && gamma != 0 && (gamma - angErr > Values.Gamma || gamma + angErr < Values.Gamma))
-                        flag = false;
+                    var Values = cry.CellOnlyValue_nm_radian;
+                    if (!double.IsNaN(Values.A))
+                    {
+                        if (a != 0 && (a * (1 - lenErr) > Values.A || a * (1 + lenErr) < Values.A))
+                            flag = false;
+                        if (flag && b != 0 && (b * (1 - lenErr) > Values.B || b * (1 + lenErr) < Values.B))
+                            flag = false;
+                        if (flag && c != 0 && (c * (1 - lenErr) > Values.C || c * (1 + lenErr) < Values.C))
+                            flag = false;
+                        if (flag && alpha != 0 && (alpha - angErr > Values.Alpha || alpha + angErr < Values.Alpha))
+                            flag = false;
+                        if (flag && beta != 0 && (beta - angErr > Values.Beta || beta + angErr < Values.Beta))
+                            flag = false;
+                        if (flag && gamma != 0 && (gamma - angErr > Values.Gamma || gamma + angErr < Values.Gamma))
+                            flag = false;
+                    }
                 }
 
                 //密度のフィルター
@@ -185,8 +187,8 @@ namespace Crystallography.Controls
                     var dArray = cry.d;
                     if (checkBoxIgnoreScatteringFactor.Checked)
                     {
-                        var (Values, Errors) = cry.Cell_nm_radian;
-                        if(!double.IsNaN( Values.A))
+                        var Values = cry.CellOnlyValue_nm_radian;
+                        if (!double.IsNaN(Values.A))
                             dArray = calcDlist(Values.A, Values.B, Values.C, Values.Alpha, Values.Beta, Values.Gamma, dMin);
                     }
 
@@ -213,8 +215,8 @@ namespace Crystallography.Controls
         static int composeKey(in int h, in int k, in int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
         static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
-        static int  zeroKey = (255 << 20) + (255 << 10) + 255;
-        static (int h, int k, int l)[] directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
+        static readonly int  zeroKey = (255 << 20) + (255 << 10) + 255;
+        static readonly (int h, int k, int l)[] directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
         static float[] calcDlist(double a, double b, double c, double alpha, double beta, double gamma, double dMin)
         {
             double SinAlfa = Math.Sin(alpha), CosAlfa = Math.Cos(alpha), CosBeta = Math.Cos(beta), CosGamma = Math.Cos(gamma);
@@ -247,11 +249,10 @@ namespace Crystallography.Controls
                     foreach ((int h2, int k2, int l2) in directions)
                     {
                         int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
-                        if (key2 > 0 && !gKeys.Contains(key2))
+                        if (key2 > 0 && gKeys.Add(key2))
                         {
                             double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                             var len = Math.Sqrt(x * x + y * y + z * z);
-                            gKeys.Add(key2);
                             gList.Add(len);
                             outer.Add((key2, len));
                         }
