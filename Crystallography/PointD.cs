@@ -72,7 +72,7 @@ public struct RectangleD
     /// 四捨五入して整数サイズに変換
     /// </summary>
     /// <returns></returns>
-    public readonly Size ToSize() => new Size((int)(Width+0.5), (int)(Height+0.5));
+    public readonly Size ToSize() => new Size((int)(Width + 0.5), (int)(Height + 0.5));
 
 }
 
@@ -191,7 +191,7 @@ public struct PointD : IComparable, IEquatable<PointD>
     /// <returns></returns>
     public override readonly string ToString() => string.Format("({0}, {1})", this.X, this.Y);
 
-    public override  bool Equals(object obj) => obj is PointD d && Equals(d);
+    public override bool Equals(object obj) => obj is PointD d && Equals(d);
 
     public bool Equals(PointD other) => X == other.X && Y == other.Y;
 

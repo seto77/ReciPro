@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
@@ -30,7 +25,7 @@ namespace Crystallography.Controls
             toolStripComboBoxMouseDirection.SelectedIndex = 0;
         }
 
-        private void smartIncrementToolStripMenuItem_CheckedChanged(object sender, EventArgs e) 
+        private void smartIncrementToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
             => SmartIncrement = smartIncrementToolStripMenuItem.Checked;
 
         private void toolStripComboBoxIncrement_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,7 +43,7 @@ namespace Crystallography.Controls
             DecimalPlaces = toolStripComboBoxDecimalPlaces.SelectedIndex - 1;
         }
 
-        private void thousandsSeparatorToolStripMenuItem_CheckedChanged(object sender, EventArgs e) 
+        private void thousandsSeparatorToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
             => ThonsandsSeparator = thousandsSeparatorToolStripMenuItem.Checked;
 
         private void toolStripMenuItemRestrictLimit_CheckedChanged(object sender, EventArgs e)
@@ -149,7 +144,7 @@ namespace Crystallography.Controls
         private void contextMenuStripBody_Opening(object sender, CancelEventArgs e)
         {
             skipEvent = true;
-            toolStripComboBoxDecimalPlaces.SelectedIndex = DecimalPlaces >= 0 ? DecimalPlaces+1: 0;
+            toolStripComboBoxDecimalPlaces.SelectedIndex = DecimalPlaces >= 0 ? DecimalPlaces + 1 : 0;
             toolStripTextBoxMaximum.Text = Maximum.ToString();
             toolStripTextBoxMimimum.Text = Minimum.ToString();
             skipEvent = false;

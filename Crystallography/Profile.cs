@@ -2,10 +2,8 @@ using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Numerics;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace Crystallography;

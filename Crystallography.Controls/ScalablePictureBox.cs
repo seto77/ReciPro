@@ -202,7 +202,7 @@ namespace Crystallography.Controls
                     drawPictureBox();//イメージを描画する
 
                     if (!SkipEvent)
-                         DrawingAreaChanged?.Invoke(this, Zoom, Center);
+                        DrawingAreaChanged?.Invoke(this, Zoom, Center);
                 }
             }
             get { return _Zoom; }
@@ -226,11 +226,11 @@ namespace Crystallography.Controls
                     checkInvalidCenter();//center位置が適切かどうかチェックする
                     skipScrollBarEvent = false;
                     drawPictureBox();//イメージを描画する
-                    if(!SkipEvent)
+                    if (!SkipEvent)
                         DrawingAreaChanged?.Invoke(this, Zoom, Center);
                 }
             }
-            get => _Center.IsNaN ? new PointD(0,0): _Center; 
+            get => _Center.IsNaN ? new PointD(0, 0) : _Center;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -340,7 +340,7 @@ namespace Crystallography.Controls
                 {
                     if (value.Width * value.Height == 0) return;
                     _pseudoBitmap = value;
-                     minZoom = Math.Min((double)(this.ClientSize.Width - 1) / _pseudoBitmap.Width, (double)(this.ClientSize.Height - 1) / _pseudoBitmap.Height);
+                    minZoom = Math.Min((double)(this.ClientSize.Width - 1) / _pseudoBitmap.Width, (double)(this.ClientSize.Height - 1) / _pseudoBitmap.Height);
                     if (!FixZoomAndCenter)
                     {
                         Zoom = minZoom;
@@ -705,7 +705,7 @@ namespace Crystallography.Controls
                         if (ShowSpots3)
                             drawSpots(e, Spots3, Spots3Label, Brushes.LightGreen, Brushes.DarkGreen, ShowSpots3Label, EmphasizeNumberOfSpots3);
               */
-            
+
         }
 
         private void drawSymbols(PaintEventArgs e, List<PointD> spot, List<string> spotLabel, Brush brush1, Brush brush2, bool showLabel, int? emphasizeNum)
@@ -870,13 +870,13 @@ namespace Crystallography.Controls
 
                 hScrollBar.Maximum = (int)(PseudoBitmap.Width - (this.ClientSize.Width - vScrollBar.Width) / 2.0 / _Zoom + 0.5) + hLargeChange - 1;//center.Xの上限値
                 hScrollBar.Minimum = (int)((this.ClientSize.Width - vScrollBar.Width) / 2.0 / _Zoom);//center.Xの下限値
-                if(hLargeChange>0)
+                if (hLargeChange > 0)
                     hScrollBar.LargeChange = hLargeChange;//移動量
 
                 int vLargeChange = (int)((this.ClientSize.Height - hScrollBar.Height) / _Zoom + 0.5);
                 vScrollBar.Maximum = (int)(PseudoBitmap.Height - (this.ClientSize.Height - hScrollBar.Height) / 2.0 / _Zoom + 0.5) + vLargeChange - 1;
                 vScrollBar.Minimum = (int)((this.ClientSize.Height - hScrollBar.Height) / 2.0 / _Zoom);
-                if(vLargeChange>0)
+                if (vLargeChange > 0)
                     vScrollBar.LargeChange = vLargeChange;
             }
         }

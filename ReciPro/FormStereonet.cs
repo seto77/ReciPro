@@ -1,9 +1,4 @@
-using Crystallography;
 using Crystallography.OpenGL;
-using MathNet.Numerics;
-using Microsoft.Win32;
-using OpenTK;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -12,8 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Xml;
-using Col4 = OpenTK.Graphics.Color4;
 using V3 = OpenTK.Vector3d;
 
 namespace ReciPro;

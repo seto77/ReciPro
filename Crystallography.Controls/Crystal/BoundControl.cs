@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
@@ -13,7 +13,7 @@ public partial class BoundControl : UserControl
 {
     #region プロパティ
     public bool SkipEvent { get; set; } = false;
-   // public Crystal Crystal { get; set; } = null;
+    // public Crystal Crystal { get; set; } = null;
 
     public Crystal Crystal
     {
@@ -31,7 +31,7 @@ public partial class BoundControl : UserControl
 
     private (int H, int K, int L) index { get => (numericBoxH.ValueInteger, numericBoxK.ValueInteger, numericBoxL.ValueInteger); }
 
-    private bool equivalency {get => checkBoxEquivalency.Checked; set => checkBoxEquivalency.Checked = value; }
+    private bool equivalency { get => checkBoxEquivalency.Checked; set => checkBoxEquivalency.Checked = value; }
 
     private readonly DataSet.DataTableBoundDataTable table;
 
@@ -82,7 +82,7 @@ public partial class BoundControl : UserControl
             Crystal.Bounds = GetAll();
             ItemsChanged?.Invoke(this, new EventArgs());
         }
-        
+
     }
 
     /// <summary>
@@ -154,7 +154,7 @@ public partial class BoundControl : UserControl
     private void buttonAdd_Click(object sender, System.EventArgs e)
     {
         var bound = GetFromInterface();
-        if (bound != null && bound.Index !=(0,0,0))
+        if (bound != null && bound.Index != (0, 0, 0))
         {
             Add(bound);
             bindingSource.Position = bindingSource.Count - 1;
@@ -190,7 +190,7 @@ public partial class BoundControl : UserControl
             Delete(pos);
             SkipEvent = false;
             bindingSource.Position = bindingSource.Count > pos ? pos : pos - 1;//選択列を選択しなおす
-            
+
         }
     }
 

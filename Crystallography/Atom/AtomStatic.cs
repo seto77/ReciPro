@@ -1,12 +1,12 @@
-﻿using MathNet.Numerics.LinearAlgebra.Double;
+﻿using MathNet.Numerics.Integration;
+using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Windows.Forms;
-using System.Linq;
 using Edge = Crystallography.XrayLineEdge;
-using MathNet.Numerics.Integration;
 
 namespace Crystallography;
 
@@ -2498,7 +2498,7 @@ new ES(4.86738014,0.319974401,4.58872425,
         /// </summary>
         public Func<double, double> Factor { get; }
 
-       
+
         //public Func<double, double, double, double> FactorImaginary { get; }
 
         /// <summary>
@@ -2579,7 +2579,7 @@ new ES(4.86738014,0.319974401,4.58872425,
 
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
-            
+
             s2 *= 0.01;//単位を修正
             m *= 100;//単位を修正
             return Prms.Sum(p1 => Prms.Sum(p2 =>
@@ -2607,7 +2607,7 @@ new ES(4.86738014,0.319974401,4.58872425,
             if (double.IsNaN(m)) m = 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
-            var gLen2= g.Length2 / 4;
+            var gLen2 = g.Length2 / 4;
             return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
             {
                 double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);

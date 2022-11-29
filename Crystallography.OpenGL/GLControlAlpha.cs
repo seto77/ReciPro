@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Management;
+using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
 using Col4 = OpenTK.Graphics.Color4;
 using Mat4d = OpenTK.Matrix4d;
@@ -13,8 +15,6 @@ using Mat4f = OpenTK.Matrix4;
 using Vec2d = OpenTK.Vector2d;
 using Vec3d = OpenTK.Vector3d;
 using Vec3f = OpenTK.Vector3;
-using System.Management;
-using System.Runtime.ExceptionServices;
 
 namespace Crystallography.OpenGL;
 

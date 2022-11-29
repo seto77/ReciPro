@@ -114,12 +114,12 @@ public class PseudoBitmap : IDisposable
 
         };
 
-        (byte R, byte G, byte B)[] setScaleLinear( (int I, byte R, byte G, byte B)[] src)
+        (byte R, byte G, byte B)[] setScaleLinear((int I, byte R, byte G, byte B)[] src)
         {
             var result = new (byte R, byte G, byte B)[65536];
             for (int j = 0; j < src.Length - 1; j++)
             {
-                (int I, byte R, byte G, byte B) a = src[j], b =src[j + 1];
+                (int I, byte R, byte G, byte B) a = src[j], b = src[j + 1];
                 for (int k = src[j].I; k < src[j + 1].I; k++)
                 {
 
@@ -198,7 +198,7 @@ public class PseudoBitmap : IDisposable
     /// <param name="scaleB"></param>
     /// <param name="realImage"></param>
     public PseudoBitmap(List<uint> valueGray, double scale, int width, byte[] scaleR = null, byte[] scaleG = null, byte[] scaleB = null, bool realImage = true)
-      :this(valueGray.Select(a => a * scale).ToArray(),width,scaleR,scaleG,scaleB,realImage)
+      : this(valueGray.Select(a => a * scale).ToArray(), width, scaleR, scaleG, scaleB, realImage)
     {
     }
 
@@ -224,14 +224,14 @@ public class PseudoBitmap : IDisposable
     /// <param name="realImage"></param>
     public PseudoBitmap(double[] values, int width, byte[] scaleR, byte[] scaleG, byte[] scaleB, bool realImage = true)
     {
-        if(scaleR==null || scaleG==null || scaleB == null || scaleR.Length != scaleG.Length || scaleG.Length != scaleB.Length || scaleR.Length<2)
+        if (scaleR == null || scaleG == null || scaleB == null || scaleR.Length != scaleG.Length || scaleG.Length != scaleB.Length || scaleR.Length < 2)
             constructor(values, width, null, realImage);
         else
         {
             var scale = new (byte R, byte G, byte B)[scaleR.Length];
             for (int i = 0; i < scale.Length; i++)
                 scale[i] = (scaleR[i], scaleG[i], scaleB[i]);
-            constructor(values,width, scale, realImage);
+            constructor(values, width, scale, realImage);
         }
     }
 
@@ -244,9 +244,9 @@ public class PseudoBitmap : IDisposable
     /// <param name="scaleG"></param>
     /// <param name="scaleB"></param>
     /// <param name="realImage"></param>
-    public PseudoBitmap(double[] values, int width, (byte R , byte G, byte B)[] scale = null, bool realImage = true)
+    public PseudoBitmap(double[] values, int width, (byte R, byte G, byte B)[] scale = null, bool realImage = true)
     {
-            constructor(values, width, scale, realImage);
+        constructor(values, width, scale, realImage);
     }
 
     private void constructor(double[] values, int width, (byte R, byte G, byte B)[] scale = null, bool realImage = true)
@@ -271,12 +271,12 @@ public class PseudoBitmap : IDisposable
         {
             ColorScale = scale;
         }
-        
-        
+
+
         initFilter();
     }
 
-  
+
     #endregion コンストラクタ
 
     #region 初期化関連
@@ -322,16 +322,16 @@ public class PseudoBitmap : IDisposable
         //}
         Filter1.Clear();
         Filter1.AddRange(new bool[Height * Width]);
-        
+
         Filter2.Clear();
         Filter2.AddRange(new bool[Height * Width]);
-        
+
         Filter3.Clear();
         Filter3.AddRange(new bool[Height * Width]);
-        
+
         Filter4.Clear();
         Filter4.AddRange(new bool[Height * Width]);
-        
+
         Filter5.Clear();
         Filter5.AddRange(new bool[Height * Width]);
 
@@ -339,7 +339,7 @@ public class PseudoBitmap : IDisposable
         FilterTemporary.AddRange(new bool[Height * Width]);
 
         if (Height * Width < 3001 * 3001)
-             FFT_Filter= Enumerable.Repeat(0f, Height * Width).ToList();
+            FFT_Filter = Enumerable.Repeat(0f, Height * Width).ToList();
 
     }
 
@@ -410,8 +410,8 @@ public class PseudoBitmap : IDisposable
                 SetScaleFire(false);
         }
     }
-    
-  
+
+
 
 
     public bool RealImage = true;
@@ -590,7 +590,7 @@ public class PseudoBitmap : IDisposable
     public double GetPixelRawValue(PointD pt) => GetPixelRawValue(pt.X, pt.Y);
 
 
-    public void SetScaleColdWarm(bool linear=true)
+    public void SetScaleColdWarm(bool linear = true)
     {
         if (linear)
             ColorScale = ColorScaleColdWarmLiner;
@@ -630,7 +630,7 @@ public class PseudoBitmap : IDisposable
 
     public void SetScaleRotation()
     {
-        ColorScale= ColorScaleRotationLiner;
+        ColorScale = ColorScaleRotationLiner;
         GrayScale = false;
     }
 
@@ -686,10 +686,10 @@ public class PseudoBitmap : IDisposable
     /// <returns></returns>
     public Bitmap GetImage()
     {
-     
+
         var bmp = GetImage(new RectangleD(0, 0, Width, Height), new Size(Width, Height));
-        
-        
+
+
         return bmp;
 
     }
@@ -701,8 +701,8 @@ public class PseudoBitmap : IDisposable
     /// <param name="zoom"></param>
     /// <param name="destSize"></param>
     /// <returns></returns>
-    public Bitmap GetImage(PointD srcCenter, double zoom, Size destSize) => srcCenter.IsNaN 
-        ? null 
+    public Bitmap GetImage(PointD srcCenter, double zoom, Size destSize) => srcCenter.IsNaN
+        ? null
         : GetImage(GetDrawingArea(srcCenter, zoom, destSize), destSize);
 
     /// <summary>
@@ -754,7 +754,7 @@ public class PseudoBitmap : IDisposable
         double zoom = (width / srcRect.Width + height / srcRect.Height) / 2.0;
 
         # region 描画する画素位置をソース画像位置に変換するローカル関数
-        double srcX = srcRect.X + 0.5, srcY = srcRect.Y + 0.5, w = srcRect.Width / width, h= srcRect.Height / height;
+        double srcX = srcRect.X + 0.5, srcY = srcRect.Y + 0.5, w = srcRect.Width / width, h = srcRect.Height / height;
         Func<int, int, (int X, int Y)> getSrcPosition;
         if (HorizontalFlip & VerticalFlip)
             getSrcPosition = (x, y) => ((int)(srcX + (width - x) * w), (int)(srcY + (height - y) * h));
@@ -768,7 +768,7 @@ public class PseudoBitmap : IDisposable
 
         #region  入力値doubleを表示する値に変換するローカル関数
         var length = ColorScale.Length;
-        var coeff = length /(MaxValue - MinValue);
+        var coeff = length / (MaxValue - MinValue);
         byte getValueR(double rawValue)
         {
             var rawIndex = (int)((rawValue - MinValue) * coeff + 0.5);
@@ -795,9 +795,9 @@ public class PseudoBitmap : IDisposable
         int nResidual = bmpData.Stride - destBmp.Width * step;
         double filter;
 
-        int thread =  Environment.ProcessorCount;
+        int thread = Environment.ProcessorCount;
 
-        
+
 #if DEBUG
         //thread = 1;
 #endif

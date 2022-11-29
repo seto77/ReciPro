@@ -1,7 +1,4 @@
-﻿using Crystallography;
-using Crystallography.Controls;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -273,7 +270,7 @@ public partial class FormImageSimulator : Form
         Enabled = true;
     }
 
-    
+
 
     #region STEMシミュレーション
 
@@ -307,7 +304,7 @@ public partial class FormImageSimulator : Form
                 directions.Add(new Vector3DBase(x, y, -Sqrt(1 - x * x - y * y)));
             }
 
-        
+
 
 
         bool inside(int i) => (i % division - radius + 0.5) * (i % division - radius + 0.5) + (i / division - radius + 0.5) * (i / division - radius + 0.5) <= radius * radius;
@@ -329,7 +326,7 @@ public partial class FormImageSimulator : Form
         this.buttonSimulateHRTEM.Visible = false;
         this.buttonStop.Visible = true;
         this.splitContainer1.Enabled = false;
-      
+
     }
     #region BackgroundWorkerからのProgressChanged, Completed
 
@@ -530,7 +527,7 @@ public partial class FormImageSimulator : Form
             //HRTEM画像を取得
             totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, defocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
             //進捗状況を報告
-            toolStripProgressBar1.Value = (int)(toolStripProgressBar1.Maximum / tLen * (t + 1) );
+            toolStripProgressBar1.Value = (int)(toolStripProgressBar1.Maximum / tLen * (t + 1));
             toolStripStatusLabel1.Text += $"{toolStripProgressBar1.Value} % completed.  ";
             if (!realtimeMode)
                 Application.DoEvents();
@@ -576,12 +573,12 @@ public partial class FormImageSimulator : Form
         //trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (trackBarAdvancedMax.Value - trackBarAdvancedMin.Value) / 100.0;
         //SkipEvent = false;
 
-        
+
 
         SendImage(tLen, dLen, totalImage, width, height);
 
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} msec.";
-        
+
     }
 
     public void SendImage(int tLen, int dLen, double[][][] totalImage, int width, int height)
@@ -1003,7 +1000,7 @@ public partial class FormImageSimulator : Form
             tabControl1.SelectedIndex = 0;
             tabControl2.SelectedIndex = 0;
             numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
-            
+
             tabPageHREM.Controls.Add(groupBoxSerialImage);
             groupBoxSerialImage.BringToFront();
             groupBoxSerialImage.Dock = DockStyle.Fill;
@@ -1026,7 +1023,7 @@ public partial class FormImageSimulator : Form
             numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
             tabControl1.SelectedIndex = 1;
             tabControl2.SelectedIndex = 2;
-            
+
             tabPageSTEM.Controls.Add(groupBoxSerialImage);
             groupBoxSerialImage.BringToFront();
             groupBoxSerialImage.Dock = DockStyle.Fill;

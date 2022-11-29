@@ -901,7 +901,7 @@ public class Disk : Polygon
     { }
 
     public Disk(V3d origin, V3d normal, double radius, float lineWidth, Material mat, DrawingMode mode, int slices = 60)
-        : this(origin,normal,radius,mat,mode,slices) 
+        : this(origin, normal, radius, mat, mode, slices)
     { LineWidth = lineWidth; }
 }
 
@@ -1102,8 +1102,8 @@ public class Ellipsoid : GLObject
                 new M3d(0, 0, 1, 0, 1, 0, -1, 0, 0),
                 new M3d(0, 0, -1, 0, 1, 0, 1, 0, 0), };
 
-        Vertices = new Vertex[rot.Length * (slices*2+1) * (slices * 2 + 1)];
-        for (int i = 0, j=0; i < rot.Length; i++)
+        Vertices = new Vertex[rot.Length * (slices * 2 + 1) * (slices * 2 + 1)];
+        for (int i = 0, j = 0; i < rot.Length; i++)
             for (int h = -slices; h <= slices; h++)
                 for (int w = -slices; w <= slices; w++)
                 {
@@ -1118,7 +1118,7 @@ public class Ellipsoid : GLObject
         types.Add(PT.Points);
         indices.Add(Enumerable.Range(0, Vertices.Length).ToArray());
 
-        var indexListSurfaces = new List<int>(16 * rot.Length  * slices * slices);
+        var indexListSurfaces = new List<int>(16 * rot.Length * slices * slices);
         var indexListEdges = new List<int>(rot.Length * 8 * (slices * slices * 2 + slices));
         for (int i = 0; i < rot.Length; i++)
             for (int h = 0; h < 2 * slices; h++)
@@ -1777,6 +1777,6 @@ public class TextObject : GLObject
             }
         }
     }
-    
+
 }
 #endregion

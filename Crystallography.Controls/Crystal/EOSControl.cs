@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
@@ -71,7 +64,7 @@ namespace Crystallography.Controls
                 int n = 0;
                 double ze = 0;
                 foreach (var atom in crystal.Atoms)
-                { 
+                {
                     n += atom.Atom.Length;
                     ze += atom.AtomicNumber * atom.Atom.Length * atom.Occ;
                 }
@@ -117,7 +110,7 @@ namespace Crystallography.Controls
             numericBoxEOS_T0.Value = crystal.EOSCondition.T0;
             numericBoxEOS_Theta0.Value = crystal.EOSCondition.Theta0;
             checkBoxUseEOS.Checked = crystal.EOSCondition.Enabled;
-            
+
             if (crystal.EOSCondition.ThermalPressureApproach == ThermalPressure.MieGruneisen)
                 radioButtonMieGruneisen.Checked = true;
             else if (crystal.EOSCondition.ThermalPressureApproach == ThermalPressure.T_dependence_BM)
@@ -183,7 +176,7 @@ namespace Crystallography.Controls
             SkipEvent = false;
         }
 
-    
+
 
         private void parameters_Changed(object sender, EventArgs e)
         {
@@ -194,7 +187,7 @@ namespace Crystallography.Controls
             numericBoxEOS_Kp0.Visible = !radioButtonEOS_Vinet3rd.Checked;
 
             numericBoxEOS_KpInfinity.Visible = radioButtonEOS_Keane.Checked;
-            
+
             numericBoxEOS_Kpp0.Visible = radioButtonEOS_FourthBirchMunaghan.Checked;
 
             crystal.EOSCondition = EOScondition;

@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Crystallography.OpenGL;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Crystallography;
-using Crystallography.Controls;
-using Crystallography.OpenGL;
 
 namespace ReciPro;
 public partial class FormMovie : Form
@@ -56,7 +47,7 @@ public partial class FormMovie : Form
         var buttons = new[] { buttonTopRight, buttonRight, buttonBottomRight, buttonBottom, buttonBottomLeft, buttonLeft, buttonTopLeft, buttonTop, buttonClock, buttonAntiClock };
 
         foreach (var b in buttons)
-                b.ForeColor = (sender as Button).Name == b.Name ? Color.Blue : Color.Gray;
+            b.ForeColor = (sender as Button).Name == b.Name ? Color.Blue : Color.Gray;
     }
 
     private void radioButtonCurrent_CheckedChanged(object sender, EventArgs e)
@@ -73,8 +64,8 @@ public partial class FormMovie : Form
 
     private void numericBoxPlaneH_ValueChanged(object sender, EventArgs e)
     {
-       var rot = new Matrix3D(A, B, C).Inverse();
-        Direction = Rot * (numericBoxPlaneH.Value * rot.Row1+ numericBoxPlaneK.Value * rot.Row2 + numericBoxPlaneL.Value * rot.Row3);
+        var rot = new Matrix3D(A, B, C).Inverse();
+        Direction = Rot * (numericBoxPlaneH.Value * rot.Row1 + numericBoxPlaneK.Value * rot.Row2 + numericBoxPlaneL.Value * rot.Row3);
     }
 
     private void buttonOK_Click(object sender, EventArgs e)
@@ -107,10 +98,10 @@ public partial class FormMovie : Form
 
                 if (Target is GLControlAlpha c)
                     bmp = c.GenerateBitmap();
-                
+
                 if (bmp.Width % 2 != 0 || bmp.Height % 2 != 0)
-                    bmp = bmp.Clone(new Rectangle(0, 0, bmp.Width - bmp.Width % 2, bmp.Height - bmp.Height % 2),bmp.PixelFormat);
-                
+                    bmp = bmp.Clone(new Rectangle(0, 0, bmp.Width - bmp.Width % 2, bmp.Height - bmp.Height % 2), bmp.PixelFormat);
+
                 bmp.Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
             }
 

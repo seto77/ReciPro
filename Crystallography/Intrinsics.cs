@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MathNet.Numerics;
+using System.Numerics;
 using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.X86;
-using System.Numerics;
-using static System.Numerics.Complex;
-using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Complex;
-using MathNet.Numerics;
 
 namespace Crystallography;
 public static class Intrinsics
@@ -94,7 +86,7 @@ public static class Intrinsics
             result[len - 1] = (c0[len - 1] * r0 + c1[len - 1] * r1 + c2[len - 1] * r2 + c3[len - 1] * r3).Conjugate();
     }
 
-    public static unsafe void Blend(int len, Complex[] c0, Complex[] c1, in double r0, in double r1,  ref Complex[] result)
+    public static unsafe void Blend(int len, Complex[] c0, Complex[] c1, in double r0, in double r1, ref Complex[] result)
     {
         var rV0 = FromArray(new Complex[] { r0, r0, r0, r0 }, 0);
         var rV1 = FromArray(new Complex[] { r1, r1, r1, r1 }, 0);
@@ -141,7 +133,7 @@ public static class Intrinsics
                     var b = Avx.LoadVector256(p1 + i + 4);
                     var c = Avx.LoadVector256(p2 + i);
                     var d = Avx.LoadVector256(p2 + i + 4);
-                    
+
                     var foo = Avx.HorizontalSubtract(Avx.Multiply(a, c), Avx.Multiply(b, d));
                     var bar = Avx.HorizontalAdd(Avx.Multiply(a, Avx.Shuffle(c, c, 5)), Avx.Multiply(b, Avx.Shuffle(d, d, 5)));
 
@@ -188,7 +180,7 @@ public static class Intrinsics
                     s = Avx.Add(s, Avx.UnpackHigh(foo, bar));
                 }
                 var real = s.GetElement(0) + s.GetElement(2);
-                var imag= s.GetElement(1)+ s.GetElement(3);
+                var imag = s.GetElement(1) + s.GetElement(3);
 
                 for (; i < len * 2; i += 2)
                 {

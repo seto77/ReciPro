@@ -20,14 +20,14 @@ namespace Crystallography
         /// <summary>
         /// /// 標準の材質のfloat配列.  [0] = Ambient = 0.2f, [1] = Diffuse = 0.5f, [2] = Specular = 0.6f, [3] = SpecularPow = 4.0f, [4] = Emission = 0.4f
         /// </summary>
-        public static float[] DefaultTextureArray => new[]{0.2f, 0.5f, 0.6f, 4.0f, 0.4f};
+        public static float[] DefaultTextureArray => new[] { 0.2f, 0.5f, 0.6f, 4.0f, 0.4f };
         #endregion
 
         #region プロパティ、フィールド
         /// <summary>
         /// Materialの色. OpenTK.Graphics.Color4 構造体. 
         /// </summary>
-        public C4 Color { get => new ((byte)(argb >> 16 & 0xff), (byte)(argb >> 8 & 0xff), (byte)(argb & 0xff), (byte)(argb >> 24 & 0xff)); set => argb = value.ToArgb(); }
+        public C4 Color { get => new((byte)(argb >> 16 & 0xff), (byte)(argb >> 8 & 0xff), (byte)(argb & 0xff), (byte)(argb >> 24 & 0xff)); set => argb = value.ToArgb(); }
         /// <summary>
         /// Materialの色を表す Argb (読み取り専用)
         /// </summary>
@@ -88,7 +88,7 @@ namespace Crystallography
             specular = toByte(_specular);
             specularPower = toByte(_specularPow);
             emission = toByte(_emission);
-            
+
         }
         public Material(in C4 color, in (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) tex, float transparency = -1f)
             : this(color, tex.Ambient, tex.Diffuse, tex.Specular, tex.SpecularPow, tex.Emission, transparency) { }
@@ -98,7 +98,8 @@ namespace Crystallography
         public Material(in C4 color, in double transparency) : this(color, DefaultTexture, (float)transparency) { }
 
         public Material(in int argb, in (float Ambient, float Diffuse, float Specular, float SpecularPow, float Emission) tex, float transparency = -1f) :
-            this(new C4((byte)(argb >>16 & 0xff), (byte)(argb >> 8 & 0xff), (byte)(argb & 0xff), (byte)(argb >>24 & 0xff)), tex, transparency) { }
+            this(new C4((byte)(argb >> 16 & 0xff), (byte)(argb >> 8 & 0xff), (byte)(argb & 0xff), (byte)(argb >> 24 & 0xff)), tex, transparency)
+        { }
 
         public Material(in int argb, in float transparency = -1f) : this(argb, DefaultTexture, transparency) { }
 

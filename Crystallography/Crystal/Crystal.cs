@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using System.Runtime.InteropServices;
 
 namespace Crystallography;
 
@@ -877,7 +877,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="horizontalThreshold">指定された横軸単位における差がこの閾値以下の面どうしを統合する</param>
     /// <param name="horizontalParameter">横軸が角度の時は入射線の波長を、エネルギーの時は取り出し角を指定する</param>
     public void SetPlanes(double dMax, double dMin, bool excludeEquivalentPlane, bool excludeForbiddenPlane, bool excludeSameDistance, bool combineAdjacentPeak,
-        HorizontalAxis horizontalAxis, double horizontalThreshold, double horizontalParameter, int _maxNum=8000)
+        HorizontalAxis horizontalAxis, double horizontalThreshold, double horizontalParameter, int _maxNum = 8000)
     {
         if (A_Star == null) SetAxis();
 
@@ -1087,7 +1087,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         Plane.Clear();
         Plane.AddRange(listPlane);
 
-        
+
     }
     #endregion 面ベクトルの計算
 
@@ -1154,7 +1154,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         var zeroKey = (255 << 20) + (255 << 10) + 255;
         var outer = new List<(int key, double len)>() { (zeroKey, 0) };
         var gHash = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
-        var gList=new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5));
+        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5));
         var minG = 0.0;
 
         while (gList.Count < maxGnum && (minG = outer.Min(o => o.len)) < gMax)
@@ -1178,7 +1178,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             outer.RemoveRange(0, end + 1);
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
         }
-        
+
         var gArray = new Vector3D[gList.Count * 2];
         Parallel.For(0, gList.Count, i =>
         {
@@ -1195,7 +1195,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             {
                 _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;
                 _g.RawIntensity = _g.F.MagnitudeSquared();// _g.F.Magnitude2();
-                });
+            });
 
             var maxIntensity = gArray.Max(v => v.RawIntensity);
             Parallel.ForEach(gArray, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
@@ -1240,7 +1240,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         {
             _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;
             _g.RawIntensity = _g.F.MagnitudeSquared();// _g.F.Magnitude2();
-            });
+        });
 
         var maxIntensity = VectorOfG_KikuchiLine.Max(v => v.RawIntensity);
         Parallel.ForEach(VectorOfG_KikuchiLine, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);

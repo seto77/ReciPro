@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace Crystallography;
@@ -70,12 +69,12 @@ public static class DiffractionOptics
         /// </summary>
         public string cameraMode;
 
-        public string FootMode="False";// 以前は SACLA_EH5 TrueであればFootモード、FalseであればDirectSpotモード
+        public string FootMode = "False";// 以前は SACLA_EH5 TrueであればFootモード、FalseであればDirectSpotモード
 
         public string DirectSpotX;//以前は centerX
         public string DirectSpotY;//以前は centerY
         public string CameraLength1;//以前は cameraLength
-        
+
         public string FootX;//以前は SACLA_EH5_FootX
         public string FootY;//以前は SACLA_EH5_FootY
         public string CameraLength2;//以前は SACLA_EH5_CameraLength2

@@ -18,7 +18,7 @@ namespace Crystallography.Controls
             get => crystal; set
             {
                 crystal = value;
-                
+
                 if (crystal != null)
                 {
                     table.Clear();
@@ -30,13 +30,13 @@ namespace Crystallography.Controls
         }
         private Crystal crystal = null;
 
-        public int SymmetrySeriesNumber { get=> crystal !=null ? crystal.SymmetrySeriesNumber: 0;} 
+        public int SymmetrySeriesNumber { get => crystal != null ? crystal.SymmetrySeriesNumber : 0; }
 
         DataSet.DataTableAtomDataTable table;
         public bool SkipEvent { get; set; } = false;
-        
 
-        
+
+
         public bool AtomicPositionError
         {
             set
@@ -462,7 +462,7 @@ namespace Crystallography.Controls
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
-      
+
 
         /// <summary>
         /// データベースの原子を削除する
@@ -496,7 +496,7 @@ namespace Crystallography.Controls
         public Atoms[] GetAll() => table.GetAll();
 
 
-        
+
 
         #endregion
 
@@ -526,7 +526,7 @@ namespace Crystallography.Controls
             UseIsotropy = atoms.Dsf.UseIso;
             UseTypeU = atoms.Dsf.OriginalType == DiffuseScatteringFactor.Type.U;
 
-         
+
             Iso = UseTypeU ? atoms.Dsf.Uiso * 100 : atoms.Dsf.Biso * 100;
             Aniso11 = UseTypeU ? atoms.Dsf.U11 * 100 : atoms.Dsf.B11;
             Aniso12 = UseTypeU ? atoms.Dsf.U12 * 100 : atoms.Dsf.B12;
@@ -534,7 +534,7 @@ namespace Crystallography.Controls
             Aniso22 = UseTypeU ? atoms.Dsf.U22 * 100 : atoms.Dsf.B22;
             Aniso23 = UseTypeU ? atoms.Dsf.U23 * 100 : atoms.Dsf.B23;
             Aniso33 = UseTypeU ? atoms.Dsf.U31 * 100 : atoms.Dsf.B31;
-          
+
             IsoErr = UseTypeU ? atoms.Dsf.Uiso_err * 100 : atoms.Dsf.Biso_err * 100;
             Aniso11Err = UseTypeU ? atoms.Dsf.U11_err * 100 : atoms.Dsf.B11_err;
             Aniso12Err = UseTypeU ? atoms.Dsf.U12_err * 100 : atoms.Dsf.B12_err;
@@ -627,7 +627,7 @@ namespace Crystallography.Controls
                     CopyAppearance(atoms, pos);
                 else if (tabControl.SelectedTab == tabPageDebyeWaller)
                     CopyDebyeWaller(atoms, pos, true);
-                
+
                 bindingSource.Position = pos;
             }
         }
@@ -671,9 +671,9 @@ namespace Crystallography.Controls
         public void CopyDebyeWaller(Atoms atoms, int i, bool onlySameElements)
         {
             var others = onlySameElements ?
-                dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber):
+                dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber) :
                 dataSet.DataTableAtom.GetAll();
-            
+
             foreach (var a in others)
                 a.Dsf = atoms.Dsf;
             ItemsChanged?.Invoke(this, new EventArgs());
@@ -770,7 +770,7 @@ namespace Crystallography.Controls
             //  this.toolTip.SetToolTip(this.listBoxAtoms, "displya element, position, symmetry seeting for each atoms.");
         }
 
-      
+
 
 
         private void buttonOriginShift_Click(object sender, EventArgs e)
@@ -810,8 +810,8 @@ namespace Crystallography.Controls
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
-               Crystal.Atoms[e.RowIndex].GLEnabled= table.Get(e.RowIndex).GLEnabled 
-                    = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                Crystal.Atoms[e.RowIndex].GLEnabled = table.Get(e.RowIndex).GLEnabled
+                     = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 GLEnableChanged?.Invoke(this, new EventArgs());
             }
         }
@@ -824,6 +824,6 @@ namespace Crystallography.Controls
                 dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
         }
 
-     
+
     }
 }

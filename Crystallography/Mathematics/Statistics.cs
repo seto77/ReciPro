@@ -102,7 +102,7 @@ namespace Crystallography
             try
             {
                 if (values1.Length != values2.Length || values2.Length < 2) return 0;
-                double AverageOfValue1 =values1.Average();
+                double AverageOfValue1 = values1.Average();
                 double AverageOfValue2 = values2.Average();
                 double Covariance = 0;
                 for (int i = 0; i < values1.Length; i++)
@@ -132,8 +132,8 @@ namespace Crystallography
         {
             if (values1.Length != values2.Length) return 0;
 
-            var AverageOfValue1 =values1.Average();
-            var AverageOfValue2 =values2.Average();
+            var AverageOfValue1 = values1.Average();
+            var AverageOfValue2 = values2.Average();
 
             double Covariance = 0;
             double Variance1 = 0;
@@ -214,7 +214,7 @@ namespace Crystallography
                 values1[i] = pt[i].X;
                 values2[i] = pt[i].Y;
             }
-            return new PointD(values1.Average(),values2.Average());
+            return new PointD(values1.Average(), values2.Average());
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace Crystallography
             return sum;
         }
 
-    
+
 
         /// <summary>
         /// •Ï—Êvalues‚Ì“ñæ˜a‚ğ‹‚ß‚Ü‚·

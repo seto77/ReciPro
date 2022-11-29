@@ -1,11 +1,9 @@
 using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Complex;
 using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DMat = MathNet.Numerics.LinearAlgebra.Double.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Double.DenseVector;
 
 namespace Crystallography;
@@ -122,9 +120,9 @@ public class Euler
         double azimuth2 = za2.tilt2;
 
         var v1 = Vector3D.Normarize(za1.u * cry.A_Axis + za1.v * cry.B_Axis + za1.w * cry.C_Axis);
-        var  v2 = Vector3D.Normarize(za2.u * cry.A_Axis + za2.v * cry.B_Axis + za2.w * cry.C_Axis);
+        var v2 = Vector3D.Normarize(za2.u * cry.A_Axis + za2.v * cry.B_Axis + za2.w * cry.C_Axis);
 
-        var  V1 = new Vector3D(-Math.Sin(tilt1), -Math.Cos(tilt1) * Math.Sin(azimuth1), Math.Cos(tilt1) * Math.Cos(azimuth1));
+        var V1 = new Vector3D(-Math.Sin(tilt1), -Math.Cos(tilt1) * Math.Sin(azimuth1), Math.Cos(tilt1) * Math.Cos(azimuth1));
         var V2 = new Vector3D(-Math.Sin(tilt2), -Math.Cos(tilt2) * Math.Sin(azimuth2), Math.Cos(tilt2) * Math.Cos(azimuth2));
 
         double Phi, phi1, phi2, PhiStart, PhiEnd, phi1Start, phi1End, phi2Start, phi2End, step, PhiBest, phi1Best, phi2Best;

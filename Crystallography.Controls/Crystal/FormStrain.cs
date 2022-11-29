@@ -77,14 +77,14 @@ public partial class FormStrain : Form
         var b = new Vector3DBase(m.E12, m.E22, m.E32);
         var c = new Vector3DBase(m.E13, m.E23, m.E33);
 
-        numericBoxA.Value = a.Length* 10;
-        numericBoxB.Value = b.Length* 10;
-        numericBoxC.Value = c.Length* 10;
+        numericBoxA.Value = a.Length * 10;
+        numericBoxB.Value = b.Length * 10;
+        numericBoxC.Value = c.Length * 10;
         numericBoxAlpha.RadianValue = Vector3DBase.AngleBetVectors(b, c);
         numericBoxBeta.RadianValue = Vector3DBase.AngleBetVectors(c, a);
         numericBoxGamma.RadianValue = Vector3DBase.AngleBetVectors(a, b);
 
-        CrystalControl.symmetryControl.CellConstants = ( numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue );
+        CrystalControl.symmetryControl.CellConstants = (numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue);
         Application.DoEvents();
         skipCrystalChangedEvent = false;
 

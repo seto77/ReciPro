@@ -167,7 +167,7 @@ public static class BitmapConverter
                 (argbValues[i + 2], argbValues[i]) = (argbValues[i], argbValues[i + 2]);
             }
         }
-        return argbValues;            
+        return argbValues;
     }
 
     public static byte[] ToByteGray(Bitmap Bmp)

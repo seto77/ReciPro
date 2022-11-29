@@ -1,13 +1,10 @@
 ﻿using Microsoft.Scripting.Hosting;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -218,7 +215,7 @@ namespace Crystallography.Controls
         }
 
         public void RunMacro() => RunMacro(exRichTextBox.Text);
-        public void RunMacro(bool _stepByStepMode) 
+        public void RunMacro(bool _stepByStepMode)
         {
             stepByStepMode = _stepByStepMode;
             RunMacro(exRichTextBox.Text);
@@ -247,7 +244,7 @@ namespace Crystallography.Controls
                 task.RunSynchronously();
             }
             catch (Microsoft.Scripting.ArgumentTypeException ex) { MessageBox.Show(ex.Message); }
-            catch (Microsoft.Scripting.SyntaxErrorException ex) { MessageBox.Show("Syntax error in line " +ex.Line.ToString()); }
+            catch (Microsoft.Scripting.SyntaxErrorException ex) { MessageBox.Show("Syntax error in line " + ex.Line.ToString()); }
             catch (MissingMemberException ex) { MessageBox.Show(ex.Message); }
             catch (Exception e) { MessageBox.Show(e.Message); }
             splitContainer2.SplitterDistance = splitContainer2.Width;
@@ -278,7 +275,7 @@ namespace Crystallography.Controls
                 readMacroFile(dlg.FileName);
         }
 
-        private void readMacroFile (string filename)
+        private void readMacroFile(string filename)
         {
             exRichTextBox.Text = "";
             var reader = new StreamReader(filename, Encoding.GetEncoding("UTF-8"));
@@ -506,7 +503,7 @@ namespace Crystallography.Controls
             public override string ToString() => Name;
         }
 
-       
-    
+
+
     }
 }

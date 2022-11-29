@@ -1,12 +1,12 @@
 using MathNet.Numerics.LinearAlgebra;
+using OpenTK;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Numerics;
 using System.Xml.Serialization;
-using OpenTK;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Crystallography;
 

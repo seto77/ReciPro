@@ -399,7 +399,7 @@ namespace Crystallography
             return new PointD(x, temp);
         }
 
-  
+
         public static void FitPeakThread(PointD[] pt, bool BackgroundFitting, double RemoveBadSN, ref PeakFunction p)
         {
             PeakFunction[] param = new PeakFunction[1];
@@ -408,7 +408,7 @@ namespace Crystallography
             p = param[0];
         }
 
-      
+
         /// <summary>
         /// 複数ピークをフィッティングする. 戻り値は、R値
         /// </summary>

@@ -133,8 +133,8 @@ public partial class PoleFigureControl : UserControl
         if (comboBoxColor.SelectedIndex == 1)
         {
             if (comboBoxScale.SelectedIndex == 0)
-                scale= PseudoBitmap.ColorScaleGrayLiner;
-             else
+                scale = PseudoBitmap.ColorScaleGrayLiner;
+            else
                 scale = PseudoBitmap.ColorScaleGrayLog;
         }
         else
@@ -301,7 +301,7 @@ public partial class PoleFigureControl : UserControl
         {
             double circumference = (i + 0.5) / radialDivision * Math.PI * 2;
             int sectorDivision = (int)Math.Round(circumference * radialDivision, MidpointRounding.ToEven);
-            pixels[i] = Enumerable.Repeat(0.0, sectorDivision).ToArray(); 
+            pixels[i] = Enumerable.Repeat(0.0, sectorDivision).ToArray();
         }
 
         //前回の条件と同じとき
@@ -373,7 +373,7 @@ public partial class PoleFigureControl : UserControl
 
             Index[i] = vectors.Where(v => v.Z > 0).Select(v =>
             {
-                var radial = (int)Math.Round(Math.Sqrt((v.X * v.X + v.Y * v.Y)/ (1 + v.Z)) * radialDivision - 0.5, MidpointRounding.ToEven);
+                var radial = (int)Math.Round(Math.Sqrt((v.X * v.X + v.Y * v.Y) / (1 + v.Z)) * radialDivision - 0.5, MidpointRounding.ToEven);
                 var sector = (int)Math.Round(Math.Atan2(v.Y, v.X) / 2 / Math.PI * pixels[radial].Length, MidpointRounding.ToEven);
                 if (sector < 0)
                     sector += pixels[radial].Length;
@@ -399,7 +399,7 @@ public partial class PoleFigureControl : UserControl
         return pixels;
     }
 
-    private IEnumerable< Vector3DBase > divideVector(Vector3DBase baseVec, Symmetry sym)
+    private IEnumerable<Vector3DBase> divideVector(Vector3DBase baseVec, Symmetry sym)
     {
         List<Vector3DBase> vec = new List<Vector3DBase>();
         double x = baseVec.X, y = baseVec.Y, z = baseVec.Z;
@@ -770,7 +770,7 @@ public partial class PoleFigureControl : UserControl
             {
                 int angle = (int)Math.Round(Math.Acos(dia) / Math.PI * 180, MidpointRounding.AwayFromZero);
                 if (angle >= 0 && angle <= 120)
-                    p.Pt[angle] += new PointD(0,1);
+                    p.Pt[angle] += new PointD(0, 1);
             }
         });
         for (int i = 0; i <= 120; i++)

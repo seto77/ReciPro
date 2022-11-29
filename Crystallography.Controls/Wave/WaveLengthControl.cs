@@ -38,7 +38,7 @@ namespace Crystallography.Controls
             set
             {
                 direction = value;
-                if(direction == FlowDirection.LeftToRight)
+                if (direction == FlowDirection.LeftToRight)
                 {
                     flowLayoutPanelWaveSource.FlowDirection = FlowDirection.TopDown;
                     flowLayoutPanelWaveSource.Dock = DockStyle.Left;
@@ -120,7 +120,7 @@ namespace Crystallography.Controls
                     numericBoxWaveLength.Value = value * 10.0;
                 }
             }
-            get=>numericBoxWaveLength.Value / 10.0;
+            get => numericBoxWaveLength.Value / 10.0;
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Crystallography.Controls
             }
             get
             {
-                
+
                 if (radioButtonXray.Checked)
                     return WaveSource.Xray;
                 else if (radioButtonElectron.Checked)
@@ -179,7 +179,7 @@ namespace Crystallography.Controls
         /// </summary>
         public XrayLine XrayWaveSourceLine
         {
-            set => comboBoxXrayLine.SelectedItem = value; 
+            set => comboBoxXrayLine.SelectedItem = value;
             get
             {
                 if (comboBoxXrayLine.SelectedItem == null)
@@ -303,7 +303,7 @@ namespace Crystallography.Controls
                     WavelengthChanged?.Invoke(this, new EventArgs());
                 }
             }
-            
+
         }
 
         /// <summary>
@@ -366,7 +366,7 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void numericBoxWaveLength_ValueChanged(object sender, EventArgs e)
         {
-            
+
             if (skipEvent) return;
 
             skipEvent = true;

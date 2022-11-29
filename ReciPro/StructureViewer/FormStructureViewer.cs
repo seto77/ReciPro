@@ -6,13 +6,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static IronPython.Modules._ast;
 using C4 = OpenTK.Graphics.Color4;
 using V3 = OpenTK.Vector3d;
 using V4 = OpenTK.Vector4d;
@@ -334,8 +331,8 @@ public partial class FormStructureViewer : Form
         axes.Row1 = new V3(Crystal.A_Axis.Y, Crystal.B_Axis.Y, Crystal.C_Axis.Y);
         axes.Row2 = new V3(Crystal.A_Axis.Z, Crystal.B_Axis.Z, Crystal.C_Axis.Z);
 
-        shift = axes.Column0 * numericBoxProjectionCenterX.Value 
-            + axes.Column1 * numericBoxProjectionCenterY.Value 
+        shift = axes.Column0 * numericBoxProjectionCenterX.Value
+            + axes.Column1 * numericBoxProjectionCenterY.Value
             + axes.Column2 * numericBoxProjectionCenterZ.Value;
     }
     #endregion
@@ -525,7 +522,7 @@ public partial class FormStructureViewer : Form
             //最初に、中心と頂点をdic1に格納する. こうしておけば、2回目に出てきたとき、再検索しなくて済む.
             foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
             {
-                dic1.Add(element, 
+                dic1.Add(element,
                     GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
                   .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
                   {
@@ -1772,7 +1769,7 @@ public partial class FormStructureViewer : Form
         else if (radioButtonProjectionCenter2.Checked)
             numericBoxProjectionCenterX.Value = numericBoxProjectionCenterY.Value = numericBoxProjectionCenterZ.Value = 0.5;
         SkipEvent = false;
-        
+
         numericBoxProjectionCenterX_ValueChanged(sender, e);
     }
 

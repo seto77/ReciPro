@@ -9,7 +9,7 @@ namespace Crystallography
     public static class Language
     {
 
-        
+
 
         public static void Change(object obj, ComponentResourceManager resources = null)
         {

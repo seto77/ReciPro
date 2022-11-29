@@ -1,8 +1,5 @@
-﻿using Crystallography;
-using Crystallography.Controls;
-using Crystallography.OpenGL;
+﻿using Crystallography.OpenGL;
 using OpenTK;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;

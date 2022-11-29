@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using System.Drawing;
 using System.Linq;
+using System.Xml.Serialization;
 //using MemoryPack;
 
 namespace Crystallography
@@ -12,21 +12,21 @@ namespace Crystallography
     public partial class Bonds
     {
         #region フィールド
-        public  string Element1;
+        public string Element1;
         public string Element2;
         public float MinLength;//nm単位
         public float MaxLength;//nm単位
-        public  float Radius;//nm単位
+        public float Radius;//nm単位
         public float BondTransParency;
         public int ArgbBond;
-        public  float PolyhedronTransParency;
+        public float PolyhedronTransParency;
         public bool ShowPolyhedron;
         public bool ShowCenterAtom;
         public bool ShowVertexAtom;
         public bool ShowInnerBonds;
         public int ArgbPolyhedron;
         public bool ShowEdges;
-        public  float EdgeLineWidth;
+        public float EdgeLineWidth;
         public int ArgbEdge;
         public bool Enabled = true;
         public bool ShowBond = true;
@@ -90,11 +90,11 @@ namespace Crystallography
            bool showBond, double radius, double bondTranParency,
            bool showPolyhedron, bool showCenterAtom, bool showVertexAtom, bool showInnerBonds,
            double polyhedronTransParency, bool showEdges, double edgeLineWidth)
-            :this(enabled,
-            elementList, element1, element2, (float) minLength, (float) maxLength,
-            showBond, (float) radius, (float) bondTranParency,
-            showPolyhedron,  showCenterAtom, showVertexAtom,showInnerBonds,
-           (float) polyhedronTransParency, showEdges, (float) edgeLineWidth)
+            : this(enabled,
+            elementList, element1, element2, (float)minLength, (float)maxLength,
+            showBond, (float)radius, (float)bondTranParency,
+            showPolyhedron, showCenterAtom, showVertexAtom, showInnerBonds,
+           (float)polyhedronTransParency, showEdges, (float)edgeLineWidth)
         { }
 
 
@@ -102,12 +102,12 @@ namespace Crystallography
 
         public Bonds(bool enabled,
              string[] elementList, string element1, string element2, float minLength, float maxLength,
-             bool showBond, float radius, float bondTranParency,Color bondColor, 
-             bool showPolyhedron,  bool showCenterAtom, bool showVertexAtom, bool showInnerBonds,
+             bool showBond, float radius, float bondTranParency, Color bondColor,
+             bool showPolyhedron, bool showCenterAtom, bool showVertexAtom, bool showInnerBonds,
              float polyhedronTransParency, Color polyhedronColor, bool showEdges, float edgeLineWidth, Color edgeColor)
-             : this(enabled,elementList, element1, element2, minLength, maxLength,
-             showBond,  radius,  bondTranParency,
-             showPolyhedron,  showCenterAtom, showVertexAtom,showInnerBonds,
+             : this(enabled, elementList, element1, element2, minLength, maxLength,
+             showBond, radius, bondTranParency,
+             showPolyhedron, showCenterAtom, showVertexAtom, showInnerBonds,
              polyhedronTransParency, showEdges, edgeLineWidth)
         {
             ArgbBond = bondColor.ToArgb();
@@ -156,7 +156,7 @@ namespace Crystallography
                     bonds.Add(new Bonds(true, list, list[list2.IndexOf(e1)], list[list2.IndexOf(e2)],
                         min / 10.0, max / 10.0, true, 0.01, 1, false, true, true, true, 0.7, true, 0));
                 }
-           
+
             //CationとAnionが両方含まれている場合は、同種原子の結合を除去
             if (VestaAnions.Any(anion => list.Contains(anion)) && VestaCations.Any(cation => list.Contains(cation)))
             {
@@ -166,7 +166,7 @@ namespace Crystallography
 
             return bonds.ToArray();
         }
-        
+
         static Bonds()
         {
             var anionNum = new List<int> { 8, 9, 16, 17, 34, 35, 52, 53 };

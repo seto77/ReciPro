@@ -104,7 +104,7 @@ public partial class NumericBox : UserControl
         get => maximum;
     }
     private double maximum = double.PositiveInfinity;
- 
+
     /// <summary>
     /// 最小値
     /// </summary>
@@ -176,7 +176,7 @@ public partial class NumericBox : UserControl
     [DefaultValue(typeof(Color), "ControlText")]
     [Category("Font && Color")]
     public Color HeaderForeColor { set => labelHeader.ForeColor = value; get => labelHeader.ForeColor; }
-   
+
     [DefaultValue(typeof(Color), "Transparent")]
     [Category("Font && Color")]
     public Color HeaderBackColor { set => labelHeader.BackColor = value; get => labelHeader.BackColor; }
@@ -198,17 +198,17 @@ public partial class NumericBox : UserControl
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
     [Localizable(true)]
     public Font FooterFont { set => labelFooter.Font = value; get => labelFooter.Font; }
-   
+
     [DefaultValue(typeof(Color), "ControlText")]
     [Category("Font && Color")]
     public Color FooterForeColor { set => labelFooter.ForeColor = value; get => labelFooter.ForeColor; }
-   
+
     [DefaultValue(typeof(Color), "Transparent")]
     [Category("Font && Color")]
     public Color FooterBackColor { set => labelFooter.BackColor = value; get => labelFooter.BackColor; }
     #endregion
 
-    
+
     [DefaultValue(typeof(Color), "WindowText")]
     [Category("Font && Color")]
     public Color TextBoxForeColor { set => textBox.ForeColor = value; get => textBox.ForeColor; }
@@ -236,8 +236,8 @@ public partial class NumericBox : UserControl
             else
             {
                 this.Height = textBox.Height;
-                MinimumSize = new Size(1, textBox.Height+2);
-                MaximumSize = new Size(1000, textBox.Height+2);
+                MinimumSize = new Size(1, textBox.Height + 2);
+                MaximumSize = new Size(1000, textBox.Height + 2);
             }
         }
         get { return textBox.Font; }
@@ -251,7 +251,7 @@ public partial class NumericBox : UserControl
     [Category("Appearance properties")]
     public bool ShowPositiveSign { set; get; } = false;
 
-    
+
 
     /// <summary>
     /// コントロールが保持している値
@@ -308,7 +308,7 @@ public partial class NumericBox : UserControl
     /// </summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
-    public bool ThonsandsSeparator { set { thonsandsSeparator = value; textBox.Text = GetString(); } get => thonsandsSeparator; } 
+    public bool ThonsandsSeparator { set { thonsandsSeparator = value; textBox.Text = GetString(); } get => thonsandsSeparator; }
     private bool thonsandsSeparator = false;
 
     /// <summary>
@@ -378,7 +378,7 @@ public partial class NumericBox : UserControl
     [DefaultValue(false)]
     public bool ShowFraction { set; get; } = false;
 
-    
+
     /// <summary>
     /// 値が三角関数に出来る場合、三角関数で表示するか
     /// </summary>
@@ -387,7 +387,8 @@ public partial class NumericBox : UserControl
     public bool ShowTrigonomeric { set; get; } = false;
 
     [DefaultValue("0")]
-    public new string Text {
+    public new string Text
+    {
         set
         {
             textBox.Text = value;
@@ -399,7 +400,7 @@ public partial class NumericBox : UserControl
             }
 
         }
-        get => numericalValue.ToString(); 
+        get => numericalValue.ToString();
     }
 
     [Category("Appearance properties")]
@@ -426,7 +427,7 @@ public partial class NumericBox : UserControl
         if ((e.KeyChar == 13 && ModifierKeys == Keys.Shift) || (e.KeyChar == 10 && ModifierKeys == Keys.Control))
             e.Handled = true;
     }
-  
+
 
     private bool skipTextChangeEvent = false;//テキストチェンジイベント自体をキャンセルする　
     private void textBox_TextChanged(object sender, EventArgs e)
@@ -501,7 +502,7 @@ public partial class NumericBox : UserControl
             this.numericalValue = d;
             if (textBox.Multiline)
             {
-                if (textBox.Text.IndexOf("\r\n", textBox.SelectionStart,StringComparison.Ordinal) >= 0)
+                if (textBox.Text.IndexOf("\r\n", textBox.SelectionStart, StringComparison.Ordinal) >= 0)
                     textBox.Text = textBox.Text.Remove(textBox.Text.IndexOf("\r\n", textBox.SelectionStart, StringComparison.Ordinal));
 
                 textBox.Text += "\r\n" + GetString();
@@ -520,14 +521,14 @@ public partial class NumericBox : UserControl
     }
 
 
-   
+
     /// <summary>
     /// 現在のnumericalValueからテキストボックスの文字列を設定する
     /// </summary>
     /// <returns></returns>
     internal string GetString()
     {
-        var threshold = DecimalPlaces >= 0  ? Math.Pow(10,-decimalPlaces) :  0.0000000001;
+        var threshold = DecimalPlaces >= 0 ? Math.Pow(10, -decimalPlaces) : 0.0000000001;
 
         if (InvokeRequired)
             return (string)Invoke(new Func<string>(GetString), null);
@@ -536,15 +537,15 @@ public partial class NumericBox : UserControl
         if (double.IsNaN(numericalValue))
             return double.NaN.ToString();
 
-        if (numericalValue!=0 && ShowFraction) //分数で表示するとき
+        if (numericalValue != 0 && ShowFraction) //分数で表示するとき
         {
             int j = (int)Math.Ceiling(numericalValue - 1);
             foreach (var denom in new[] { 2, 3, 4, 5, 6, 8, 9, 10, 11, 12 })
-                for (int i = 1; i < denom && text ==""; i++)
+                for (int i = 1; i < denom && text == ""; i++)
                     if ((i == 1 || denom % i != 0) && Math.Abs(numericalValue - j - i / (double)denom) < threshold)
                         text = $"{i + (denom * j)}/{denom}";
         }
-        if(numericalValue > -1 && numericalValue < 1 && ShowTrigonomeric && !text.Contains('/'))//三角関数で表示 (既に分数表示されているときは除く)
+        if (numericalValue > -1 && numericalValue < 1 && ShowTrigonomeric && !text.Contains('/'))//三角関数で表示 (既に分数表示されているときは除く)
         {
             //sin関数は -89 <= x <= 89の範囲で1刻み (度単位)
             foreach (var a in Enumerable.Range(-89, 179))
@@ -558,8 +559,8 @@ public partial class NumericBox : UserControl
         if (text.Length == 0)
         {
             text = numericalValue.ToString(DecimalPlaces >= 0 ? $"f{DecimalPlaces}" : "");
-            if(TrimEndZero && text.Contains('.'))
-                text=  text.TrimEnd(new[] { '0' }).TrimEnd(new[] { '.'});
+            if (TrimEndZero && text.Contains('.'))
+                text = text.TrimEnd(new[] { '0' }).TrimEnd(new[] { '.' });
 
             text = separateThousands(text);
         }

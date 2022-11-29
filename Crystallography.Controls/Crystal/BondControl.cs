@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Crystallography;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Crystallography;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
@@ -34,7 +31,7 @@ namespace Crystallography.Controls
                     }
                     table.Clear();
                     AddRange(crystal.Bonds);
-                   
+
                 }
             }
         }
@@ -44,7 +41,7 @@ namespace Crystallography.Controls
         public bool SkipEvent { get; set; } = false;
 
 
-        
+
 
         private readonly DataSet.DataTableBondDataTable table;
 
@@ -63,16 +60,16 @@ namespace Crystallography.Controls
         #region Bondsクラスを画面下部　から生成 /　にセット. 表示の単位は Å だが、中身は nm 単位.
         public Bonds GetFromInterface()
         {
-            if (ElementList.Length < 1 || comboBoxBondingAtom1.Text.Length==0 || comboBoxBondingAtom2.Text.Length == 0)
+            if (ElementList.Length < 1 || comboBoxBondingAtom1.Text.Length == 0 || comboBoxBondingAtom2.Text.Length == 0)
                 return null;
             else
                 return new Bonds(
                     true, ElementList, comboBoxBondingAtom1.Text, comboBoxBondingAtom2.Text,
                     numericBoxBondMinLength.Value / 10.0, numericBoxBondMaxLength.Value / 10.0,
                     checkBoxShowBonds.Checked, numericBoxBondRadius.Value / 10.0, numericBoxBondAlpha.Value,
-                    checkBoxShowPolyhedron.Checked, checkBoxShowCenterAtom.Checked, checkBoxShowVertexAtoms.Checked, 
-                    checkBoxShowInnerBonds.Checked, numericBoxPolyhedronAlpha.Value, 
-                    checkBoxShowEdges.Checked,numericBoxEdgeWidth.Value);
+                    checkBoxShowPolyhedron.Checked, checkBoxShowCenterAtom.Checked, checkBoxShowVertexAtoms.Checked,
+                    checkBoxShowInnerBonds.Checked, numericBoxPolyhedronAlpha.Value,
+                    checkBoxShowEdges.Checked, numericBoxEdgeWidth.Value);
         }
 
         public void SetToInterface(Bonds b)
@@ -255,7 +252,7 @@ namespace Crystallography.Controls
         private void dataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {//チェックボックスが変わると即座に反映させる
             var x = dataGridView.CurrentCellAddress.X;
-            if ((x == 0 || x==5 || x==6) && dataGridView.IsCurrentCellDirty)
+            if ((x == 0 || x == 5 || x == 6) && dataGridView.IsCurrentCellDirty)
                 dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
         }
         private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -263,20 +260,20 @@ namespace Crystallography.Controls
             if (e.RowIndex >= 0)
             {
                 if (e.ColumnIndex == 0)
-                    table.Get(bindingSource.Position).Enabled 
+                    table.Get(bindingSource.Position).Enabled
                         = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 else if (e.ColumnIndex == 5)
-                    table.Get(bindingSource.Position).ShowBond 
+                    table.Get(bindingSource.Position).ShowBond
                         = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 else if (e.ColumnIndex == 6)
-                    table.Get(bindingSource.Position).ShowPolyhedron 
+                    table.Get(bindingSource.Position).ShowPolyhedron
                         = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 ItemsChanged?.Invoke(this, new EventArgs());
-                bindingSource_PositionChanged(sender,new EventArgs());
+                bindingSource_PositionChanged(sender, new EventArgs());
             }
         }
         #endregion
 
-        
+
     }
 }

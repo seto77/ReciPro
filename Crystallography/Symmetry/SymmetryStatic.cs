@@ -4197,7 +4197,7 @@ new ushort[][]{ new ushort[]{ 915}}
 #endregion positions
         };
 
-    public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorList 
+    public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorList
         = new Func<double, double, double, (double X, double Y, double Z)>[]
         {
 			#region PositionGenerator
@@ -6172,7 +6172,7 @@ new ushort[][]{ new ushort[]{ 915}}
 (x,y,z) => (-z+d34,-y+d34,-x+d34)	//1968
 #endregion Coordinates
         };
-    
+
     public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorListA, PositionGeneratorListB, PositionGeneratorListC, PositionGeneratorListI;
     public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorListR1, PositionGeneratorListR2;
 
@@ -9239,7 +9239,7 @@ new ushort[]{0,},
 new ushort[]{0,},
             #endregion
         };
-    public static readonly SO[] OperationList 
+    public static readonly SO[] OperationList
         = new SO[]
         {
 				#region OperationList
@@ -13125,7 +13125,7 @@ new ushort[]{535,2,6,2,1,1}
                 break;
 
             case 6: //-3
-                if (sym.SpaceGroupHMsubStr != "R" )//Hexaセルの場合
+                if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                     result = (h == 0 && k == 0 && l > 0) || (h > 0 && k >= 0);
                 else//Rhomboセルの場合
                     result = (h > 0 && l == 0) || (h > 0 && k > 0 && l < 0) || (h >= k && k >= l && l > 0) || (h > l && l > k && k > 0);
@@ -13135,7 +13135,7 @@ new ushort[]{535,2,6,2,1,1}
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                     result = ((l > 0 && h >= 0 && k >= 0) || (l == 0 && h >= k && k >= 0));
                 else//Rhomboセルの場合
-                    result =  (h > 0 && h >= Math.Abs(k) && l == 0) || (h >= k && k >= l && k > 0 && l != 0);
+                    result = (h > 0 && h >= Math.Abs(k) && l == 0) || (h >= k && k >= l && k > 0 && l != 0);
                 break;
 
             case 8://6/m
@@ -13173,7 +13173,7 @@ new ushort[]{535,2,6,2,1,1}
     /// <param name="sym"></param>
     /// <param name="inversionCenter">対称心を仮定するか。デフォルトはTrue（つまりラウエ群で面を生成する）</param>
     /// <returns></returns>
-    public static (int H, int K, int L)[] GenerateEquivalentPlanes(int h, int k, int l, Symmetry sym, bool inversionCenter =true)
+    public static (int H, int K, int L)[] GenerateEquivalentPlanes(int h, int k, int l, Symmetry sym, bool inversionCenter = true)
     {
         if (h == 0 && k == 0 && l == 0) return new[] { (0, 0, 0) };
 
@@ -13517,7 +13517,7 @@ new ushort[]{535,2,6,2,1,1}
                 case 0://unknown
                     indices.Add((+h, +k, +l));
                     break;
-                
+
                 case 1://1
                     indices.Add((+h, +k, +l));
                     break;
@@ -13546,7 +13546,7 @@ new ushort[]{535,2,6,2,1,1}
                             break;
                     }
                     break;
-                    
+
                 case 4:// m
                     switch (sym.MainAxis)
                     {
@@ -13624,7 +13624,7 @@ new ushort[]{535,2,6,2,1,1}
                         indices.Add((+h, -k, +l));//
                         indices.Add((-h, -k, +l));//
                     }
-                        break;
+                    break;
 
                 case 8:// mmm
                     indices.Add((+h, +k, +l));
@@ -13706,7 +13706,7 @@ new ushort[]{535,2,6,2,1,1}
                         indices.Add((-h, -k, +l));//
                         indices.Add((+h, -k, +l));//
                         indices.Add((-h, +k, +l));//
-                        
+
                         indices.Add((-k, +h, -l));//
                         indices.Add((+k, -h, -l));//
                         indices.Add((+k, +h, -l));//

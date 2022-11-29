@@ -81,7 +81,7 @@ namespace Crystallography
         /// <returns></returns>
         unsafe static public double[] GaussianBlurFast(double[] pixels, int width, double hwhm)
         {
-            
+
             int limit = (int)(hwhm * 3) * 2 + 1;
             int height = pixels.Length / width;
 

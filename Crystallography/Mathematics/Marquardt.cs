@@ -1,5 +1,4 @@
-﻿using MathNet.Numerics;
-using MathNet.Numerics.LinearAlgebra.Double;
+﻿using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +14,8 @@ namespace Crystallography
     {
 
 
-       
-        
+
+
 
         public enum Precision { High, Medium, Low }
 
@@ -616,7 +615,7 @@ namespace Crystallography
             var d2 = d1 * (eta * l + (1 - eta) * g);
             var d3 = a * d1 * (3 * eta * l * c / lo + 2 * ln2 * (1 - eta) * g);
 
-            return new[] 
+            return new[]
             {
                 d3 * (xRot * cos * hx2Inv - yRot * sin * hy2Inv),//x0
                 d3 * (xRot * sin * hx2Inv + yRot * cos * hy2Inv),//y0

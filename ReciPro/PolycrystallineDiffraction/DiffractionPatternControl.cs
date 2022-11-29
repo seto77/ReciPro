@@ -1,6 +1,4 @@
-﻿using Crystallography;
-using MathNet.Numerics.LinearAlgebra.Double;
-using System;
+﻿using MathNet.Numerics.LinearAlgebra.Double;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;

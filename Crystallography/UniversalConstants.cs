@@ -242,7 +242,7 @@ public static class UniversalConstants
         /// </summary>
         /// <param name="kiloVoltage"></param>
         /// <returns></returns>
-        public static double ElectronWaveNumberToEnergy(in double wavenumber) 
+        public static double ElectronWaveNumberToEnergy(in double wavenumber)
             => WaveLengthToElectronEnergy(1 / wavenumber);
 
 
@@ -260,10 +260,10 @@ public static class UniversalConstants
         /// <param name="d"></param>
         /// <param name="takeoffAngle"></param>
         /// <returns></returns>
-        public static double DspacingToWaveLength(in double d, in double takeoffAngle) 
+        public static double DspacingToWaveLength(in double d, in double takeoffAngle)
             => 2.0 * d * Math.Sin(takeoffAngle / 2.0);
 
-        public static double DspacingToXrayEnergy(in double d, in double takeoffAngle) 
+        public static double DspacingToXrayEnergy(in double d, in double takeoffAngle)
             => WavelengthToXrayEnergy(DspacingToWaveLength(d, takeoffAngle));
     }
 }

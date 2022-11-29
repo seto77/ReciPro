@@ -1,5 +1,4 @@
 ﻿#region Using
-using Crystallography.Controls;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
@@ -8,9 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Windows.Forms; 
+using System.Windows.Forms;
 #endregion
 
 namespace Crystallography.Controls
@@ -96,7 +93,7 @@ namespace Crystallography.Controls
                         SetToInterface();
                     }
 
-                    CrystalChanged?.Invoke(this,new EventArgs());
+                    CrystalChanged?.Invoke(this, new EventArgs());
                 }
             }
             get => crystal;
@@ -107,7 +104,7 @@ namespace Crystallography.Controls
 
         public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellConstants
         { get => symmetryControl.CellConstants; set => symmetryControl.CellConstants = value; }
-        
+
         public double A { get => symmetryControl.A; set => symmetryControl.A = value; }
         public double B { get => symmetryControl.B; set => symmetryControl.B = value; }
         public double C { get => symmetryControl.C; set => symmetryControl.C = value; }
@@ -143,7 +140,7 @@ namespace Crystallography.Controls
             FormSymmetryInformation = new FormSymmetryInformation { CrystalControl = this, Visible = false };
             formStrain = new FormStrain { CrystalControl = this, Visible = false };
         }
-        
+
         private void CrystalForm_Load(object sender, System.EventArgs e)
         {
             textBoxTitle.Size = new Size(tabPageReference.Width - textBoxTitle.Location.X - 2, tabPageReference.Height - textBoxTitle.Location.Y - 2);
@@ -215,7 +212,7 @@ namespace Crystallography.Controls
             SkipEvent = false;
             SetToInterface(false);
 
-           CrystalChanged?.Invoke(this, new EventArgs());
+            CrystalChanged?.Invoke(this, new EventArgs());
         }
 
 
@@ -268,7 +265,7 @@ namespace Crystallography.Controls
             //EOS関連
             eosControl.Crystal = crystal;
 
-            
+
             //弾性定数関連
             elasticityControl1.Stiffness = DenseMatrix.OfArray(crystal.ElasticStiffness);
 
@@ -304,7 +301,7 @@ namespace Crystallography.Controls
         }
 
         #endregion ドラッグドロップイベント
-   
+
         #region 右クリックメニュー
 
         private void importCrystalFromCIFAMCToolStripMenuItem_Click(object sender, EventArgs e)
@@ -329,10 +326,10 @@ namespace Crystallography.Controls
             }
         }
 
-        private void scatteringFactorToolStripMenuItem_Click(object sender, EventArgs e) 
+        private void scatteringFactorToolStripMenuItem_Click(object sender, EventArgs e)
             => FormScatteringFactor.Visible = !FormScatteringFactor.Visible;
 
-        private void symmetryInformationToolStripMenuItem_Click(object sender, EventArgs e) 
+        private void symmetryInformationToolStripMenuItem_Click(object sender, EventArgs e)
             => FormSymmetryInformation.Visible = !FormSymmetryInformation.Visible;
 
         private void sendThisCrystalToOtherSoftwareToolStripMenuItem_Click(object sender, EventArgs e)
@@ -376,7 +373,7 @@ namespace Crystallography.Controls
         private void convertToSuperstructureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var dlg = new FormSuperStructure();
-            if(dlg.ShowDialog()== DialogResult.OK)
+            if (dlg.ShowDialog() == DialogResult.OK)
                 toSuperStructure(dlg.A, dlg.B, dlg.C);
         }
 
@@ -433,7 +430,7 @@ namespace Crystallography.Controls
         {
             if (e.Control && e.Shift && e.KeyCode == Keys.R)
                 crystal.Reserved = !crystal.Reserved;
-        } 
+        }
         #endregion
 
         #region EOS関連
@@ -558,7 +555,7 @@ namespace Crystallography.Controls
             if (crystal.Crystallites == null) return;
             int maxCrystallites = 499900;
 
-            var dlg = new SaveFileDialog            {                Filter = "*.ctf|*.ctf"            };
+            var dlg = new SaveFileDialog { Filter = "*.ctf|*.ctf" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 var sw = new StreamWriter(dlg.FileName);
@@ -710,9 +707,9 @@ namespace Crystallography.Controls
             if (!this.DesignMode && !registResizeEvent)
             {
                 var parent = this.Parent;
-                while (parent is not Form && parent!=null)
+                while (parent is not Form && parent != null)
                     parent = parent.Parent;
-                if (parent == null) 
+                if (parent == null)
                     return;
                 var form = parent as Form;
                 form.ResizeBegin += (s, ea) => SuspendLayout();

@@ -1,7 +1,5 @@
 ﻿#region using
-using Crystallography;
 using MathNet.Numerics;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -131,14 +129,14 @@ public partial class FormDiffractionSimulatorCBED : Form
         //    for (int w = -max; w <= max; w++)
         //            rotations.Add(Matrix3D.Rot(new Vector3DBase(h, w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * AlphaMax));
 
-        
+
         var radius = Division / 2.0;
         for (int h = 0; h < Division; h++)
             for (int w = 0; w < Division; w++)
             {
                 //double x = w - radius + 0.5, y = -(h - radius + 0.5);
                 //directions.Add(Matrix3D.Rot(new Vector3DBase(y, -x, 0), Math.Atan(Math.Sqrt(x * x + y * y) / radius * Math.Tan(AlphaMax)))*new Vector3DBase(0,0,-1));
-                
+
                 //2022/10/04 以下に変更
                 var x = (w - radius + 0.5) / (radius - 0.5) * Math.Sin(AlphaMax);
                 var y = -(h - radius + 0.5) / (radius - 0.5) * Math.Sin(AlphaMax);//結晶の座標系は、X軸が右、Y軸が上、Z軸が手前なのでYを反転
@@ -330,7 +328,7 @@ public partial class FormDiffractionSimulatorCBED : Form
             if (disks[i].Amplitudes != null)
             {
                 var v = new { x = disks[i].G.X, y = -disks[i].G.Y, z = -disks[i].G.Z };//ここでベクトルのY,Zの符号を反転
-                    var center = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
+                var center = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
                 var pbmp = new PseudoBitmap(disks[i].Amplitudes.Select(amp => amp.MagnitudeSquared()).ToArray(), pixWidth)
                 {
                     ReserveSrcValuesGrayOriginal = true,

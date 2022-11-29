@@ -18,7 +18,7 @@
                 components.Dispose();
             }
             //if (context != null)
-           //     context.Dispose();
+            //     context.Dispose();
             base.Dispose(disposing);
         }
 
@@ -1513,6 +1513,7 @@
             // 
             resources.ApplyResources(this.checkBoxExtinctionAll, "checkBoxExtinctionAll");
             this.checkBoxExtinctionAll.Name = "checkBoxExtinctionAll";
+            this.checkBoxExtinctionAll.Visible = true;
             this.toolTip.SetToolTip(this.checkBoxExtinctionAll, resources.GetString("checkBoxExtinctionAll.ToolTip"));
             this.checkBoxExtinctionAll.CheckedChanged += new System.EventHandler(this.checkBoxExtinctionAll_CheckedChanged);
             // 
@@ -1520,6 +1521,7 @@
             // 
             resources.ApplyResources(this.checkBoxExtinctionLattice, "checkBoxExtinctionLattice");
             this.checkBoxExtinctionLattice.Checked = true;
+            this.checkBoxExtinctionLattice.Visible = true;
             this.checkBoxExtinctionLattice.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxExtinctionLattice.Name = "checkBoxExtinctionLattice";
             this.toolTip.SetToolTip(this.checkBoxExtinctionLattice, resources.GetString("checkBoxExtinctionLattice.ToolTip"));
@@ -1939,6 +1941,7 @@
             // flowLayoutPanelExtinctionOption
             // 
             resources.ApplyResources(this.flowLayoutPanelExtinctionOption, "flowLayoutPanelExtinctionOption");
+            flowLayoutPanelExtinctionOption.Visible = false;
             this.flowLayoutPanelExtinctionOption.Controls.Add(this.checkBoxExtinctionAll);
             this.flowLayoutPanelExtinctionOption.Controls.Add(this.checkBoxExtinctionLattice);
             this.flowLayoutPanelExtinctionOption.Name = "flowLayoutPanelExtinctionOption";

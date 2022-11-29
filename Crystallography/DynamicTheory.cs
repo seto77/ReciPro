@@ -1,7 +1,4 @@
-﻿using System;
-using System.Numerics;
-
-namespace Crystallography
+﻿namespace Crystallography
 {
     public class DynamicTheory
     {

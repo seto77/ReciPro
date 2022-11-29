@@ -6,18 +6,17 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Crystallography;
 
 namespace Crystallography.Controls
 {
     [Serializable]
     public partial class ScalablePictureBoxAdvanced : UserControl
     {
-        public bool SkipDrawing { get => scalablePictureBox.SkipDrawing;set=> scalablePictureBox.SkipDrawing = value; }
+        public bool SkipDrawing { get => scalablePictureBox.SkipDrawing; set => scalablePictureBox.SkipDrawing = value; }
 
         public ScalablePictureBoxAdvanced()
         {
-           
+
             InitializeComponent();
 
             graphControl.LineList = new[] { new PointD(0, 0), new PointD(0, 0) };
@@ -498,7 +497,7 @@ namespace Crystallography.Controls
 
         public void DrawPictureBox()
         {
-            if(!SkipDrawing)
+            if (!SkipDrawing)
                 scalablePictureBox.drawPictureBox();
         }
 
@@ -553,7 +552,7 @@ namespace Crystallography.Controls
             sw.Restart();
             if (checkBoxGaussianBlur.Checked)
             {
-                PseudoBitmap.SetBlurImage(numericBoxGaussianFWHM.Value/2, PseudoBitmap.BlurModeEnum.Gaussian, originalFlag);
+                PseudoBitmap.SetBlurImage(numericBoxGaussianFWHM.Value / 2, PseudoBitmap.BlurModeEnum.Gaussian, originalFlag);
                 originalFlag = false;
                 StatusLabel += "Gaussian Blur: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f3") + "msec.  ";
             }

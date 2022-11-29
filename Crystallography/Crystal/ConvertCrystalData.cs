@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
-using System.Text;
-using System.Linq;
 using System.IO;
-using System.Linq.Expressions;
+using System.Linq;
 using System.Linq.Dynamic.Core;
+using System.Linq.Expressions;
+using System.Text;
 using System.Threading;
 using V3 = OpenTK.Vector3d;
-using System.Diagnostics;
-using System.ComponentModel;
 
 
 
@@ -345,7 +345,7 @@ public class ConvertCrystalData
             if (str.Length <= n) return null;
         }
 
-        
+
 
         if (Title.Contains("_cod_database_code"))
             Title = Title.Replace("_cod_database_code", "\r\n_cod_database_code");
@@ -364,7 +364,7 @@ public class ConvertCrystalData
         }
 
         //2ndセッティングにもかかわらず、shift量がゼロでないときは、1stセッティングに戻す。
-        if((xShift !=0 || yShift !=0 || zShift !=0 ) && SymmetryStatic.SpaceGroupListWithoutSpace[crystal.sym].EndsWith("(2)", Ord))
+        if ((xShift != 0 || yShift != 0 || zShift != 0) && SymmetryStatic.SpaceGroupListWithoutSpace[crystal.sym].EndsWith("(2)", Ord))
             crystal.sym--;
 
 
@@ -779,7 +779,7 @@ public class ConvertCrystalData
     static readonly Random r = new Random();
 
     static readonly string[] ignoreWords1 = new[] { "_shelx_hkl_", "_shelx_fab_", "_shelx_res_" };
-    static readonly string[] ignoreWords2 = new[] { "_refln", "_geom", "_platon"};
+    static readonly string[] ignoreWords2 = new[] { "_refln", "_geom", "_platon" };
     private static Crystal2 ConvertFromCIF(string fileName)
     {
         var sb = new StringBuilder();
@@ -801,7 +801,7 @@ public class ConvertCrystalData
             int start = -1, end = -1;
             while ((start = stringList.IndexOf(word + "file")) > -1 &&
                 (end = stringList.FindIndex(s => s.StartsWith(word + "checksum", Ord))) > -1)
-                stringList.RemoveRange(Math.Min(start, end), Math.Abs(start - end)+1);
+                stringList.RemoveRange(Math.Min(start, end), Math.Abs(start - end) + 1);
         }
         foreach (var word in ignoreWords2)
         {
@@ -1014,7 +1014,7 @@ public class ConvertCrystalData
                 else if (label == "_symmetry_equiv_pos_as_xyz") operations.Add(data);
             }
 
-        if (a == "" || b == "" || c == "" || alpha=="" || beta == "" || gamma == "") return null;
+        if (a == "" || b == "" || c == "" || alpha == "" || beta == "" || gamma == "") return null;
 
         if (name.Length == 0 || name == "?" || name == "? ?" || name.Trim().Length == 0)
             name = chemical_formula_sum;
@@ -1147,7 +1147,7 @@ public class ConvertCrystalData
 
             }
 
-                if (shift.X != 0 || shift.Y != 0 || shift.Z != 0)
+            if (shift.X != 0 || shift.Y != 0 || shift.Z != 0)
             {
                 var _x = Crystal2.Decompose(x, sgnum);
                 var _y = Crystal2.Decompose(y, sgnum);
@@ -1204,7 +1204,7 @@ public class ConvertCrystalData
                     atomicNumber = -1;
                     break;
                 }
-                else if(temp =="D")
+                else if (temp == "D")
                 {
                     atomicNumber = 255;
                     break;
@@ -1293,7 +1293,7 @@ public class ConvertCrystalData
         SgNameHM = SgNameHM.Replace("{rhombohedral axes}", " ");
 
         SgNameHM = SgNameHM.TrimStart(' ').TrimEnd(' ');
-        if (SgNameHM.EndsWith("RS",Ord) || SgNameHM.EndsWith("HR", Ord))
+        if (SgNameHM.EndsWith("RS", Ord) || SgNameHM.EndsWith("HR", Ord))
             SgNameHM = SgNameHM.Remove(SgNameHM.Length - 2, 2).TrimEnd(' ');
 
         if (SgNameHM.EndsWith("H", Ord) || SgNameHM.EndsWith("h", Ord) || SgNameHM.EndsWith("R", Ord) || SgNameHM.EndsWith("r", Ord))

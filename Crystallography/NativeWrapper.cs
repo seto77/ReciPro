@@ -1,10 +1,10 @@
 ﻿using MathNet.Numerics.LinearAlgebra.Complex;
+using System;
+using System.Buffers;
+using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using System.Linq;
-using System;
-using System.Collections.Generic;
-using System.Buffers;
 
 namespace Crystallography;
 
@@ -345,7 +345,7 @@ public static partial class NativeWrapper
             _SubtractVV(dim, p1, p2, res);
     }
 
-    
+
 
     unsafe static public void Divide(int dim, in Complex[] v1, in Complex[] v2, ref Complex[] result)
     {
@@ -474,9 +474,9 @@ public static partial class NativeWrapper
     #endregion
 
     #region Eigenライブラリーを利用して、非対称複素行列の乗算を求める
-  
 
- 
+
+
     #endregion
 
     #region 逆行列
@@ -490,7 +490,7 @@ public static partial class NativeWrapper
         var values = GC.AllocateUninitializedArray<Complex>(dim * dim);//new Complex[dim* dim];
         fixed (Complex* _values = values)
         fixed (Complex* _mat = mat)
-        _Inverse(dim, (double*)_mat, (double*)_values);
+            _Inverse(dim, (double*)_mat, (double*)_values);
         return values;
     }
 
@@ -584,7 +584,7 @@ public static partial class NativeWrapper
     /// <param name="coeff"></param>
     /// <param name="eigen"></param>
     /// <returns></returns>
-    unsafe static public (Complex[] Values, Complex[] Vectors, Complex[] Alphas, Complex[] Tg)  
+    unsafe static public (Complex[] Values, Complex[] Vectors, Complex[] Alphas, Complex[] Tg)
         CBEDSolver2(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff)
     {
         var dim = psi0.Length;
@@ -600,7 +600,7 @@ public static partial class NativeWrapper
         fixed (Complex* _Vectors = Vectors)
         fixed (Complex* _Alphas = Alphas)
             _CBEDSolver_Eigen2(dim, (double*)_potential, (double*)_psi0, thickness.Length, thickness, coeff, (double*)_Values, (double*)_Vectors, (double*)_Alphas, (double*)_Tg);
-          
+
         return (Values, Vectors, Alphas, Tg);
     }
 

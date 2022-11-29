@@ -85,7 +85,7 @@ public partial class FormSpotIDV2 : Form
     private void readImage(string fileName)
     {
         dataSet.DataTableSpot.Clear();
-        
+
         dataSet.DataTableCandidate.Clear();
         scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot);
 
@@ -149,12 +149,12 @@ public partial class FormSpotIDV2 : Form
         var dlg = new OpenFileDialog();
         if (dlg.ShowDialog() == DialogResult.OK)
         {
-           
-                if (dlg.FileName.EndsWith(".csv"))
-                    readCSV(dlg.FileName);
-                else
-                    readImage(dlg.FileName);
-           
+
+            if (dlg.FileName.EndsWith(".csv"))
+                readCSV(dlg.FileName);
+            else
+                readImage(dlg.FileName);
+
         }
     }
     #endregion
@@ -479,7 +479,7 @@ public partial class FormSpotIDV2 : Form
             }
 
         bindingSourceObsSpots.DataMember = "DataTableSpot";
-        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({ dataSet.DataTableSpot.Rows.Count} spots): { sw.ElapsedMilliseconds} ms.";
+        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
         Enabled = true;
     }
 
@@ -564,7 +564,7 @@ public partial class FormSpotIDV2 : Form
         }
         bindingSourceObsSpots.DataMember = "DataTableSpot";
 
-        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({ dataSet.DataTableSpot.Rows.Count} spots): { sw.ElapsedMilliseconds} ms.";
+        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
         Enabled = true;
     }
 
@@ -937,11 +937,11 @@ public partial class FormSpotIDV2 : Form
         }
         return candidates.OrderByDescending(c1 =>
         {
-                //var indices = new List<int>();
-                //foreach (var g in c1)
-                //    indices = indices.Union(g.Indices).ToList();
-                //return indices.Count();
-                return c1.Sum(g => g.Indices.Length);
+            //var indices = new List<int>();
+            //foreach (var g in c1)
+            //    indices = indices.Union(g.Indices).ToList();
+            //return indices.Count();
+            return c1.Sum(g => g.Indices.Length);
         }).ToList();
     }
 
@@ -1026,8 +1026,8 @@ public partial class FormSpotIDV2 : Form
                         if (backgroundWorkerSpotID.CancellationPending) break;
 
                         var obsV = rot * obsSpotsReciprocal[k];
-                            //最も近いgVectorを探す
-                            var min = double.PositiveInfinity;
+                        //最も近いgVectorを探す
+                        var min = double.PositiveInfinity;
                         Vector3D v2 = null;
                         for (int l = 0; l < gVectors[k].Count; l++)
                         {
@@ -1040,7 +1040,7 @@ public partial class FormSpotIDV2 : Form
                         }
 
                         if (v2 != null && Vector3DBase.AngleBetVectors(obsV, v2) < ToleranceAngle * 2)//許容角度であれば、リストに追加
-                            {
+                        {
                             indices.Add((k, v2.Index.h, v2.Index.k, v2.Index.l));
                             obsList.Add(obsSpotsReciprocal[k]);
                             refList.Add(v2);
@@ -1457,7 +1457,7 @@ public partial class FormSpotIDV2 : Form
         for (int h = -max; h <= max; h++)
             for (int w = max; w >= -max; w--)
                 if (h * h + w * w <= max * max)
-                    directions.Add(Matrix3D.Rot(new Vector3DBase(h, -w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * alphaMax)*new Vector3DBase(0,0,-1) );
+                    directions.Add(Matrix3D.Rot(new Vector3DBase(h, -w, 0), Math.Sqrt(w * side * w * side + h * side * h * side) * alphaMax) * new Vector3DBase(0, 0, -1));
                 else
                     directions.Add(null);
         var rotArray = directions.ToArray();
@@ -1520,7 +1520,7 @@ public partial class FormSpotIDV2 : Form
         //2022/08/04 書き直す必要あり
         //FormMain.SetRotation(bestDirection * grain.Rotation);
         FormMain.SetRotation(grain.Rotation);
-        
+
         FormMain.FormDiffractionSimulator.Thickness = bestThickness;
     }
 

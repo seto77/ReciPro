@@ -15,7 +15,7 @@ namespace Crystallography
         public double FWHM = 0.10;
         public bool IsCombined;//ほかの面と結合(＝等価)であるときTrue
 
-                               //public int multi;//多重度
+        //public int multi;//多重度
         public int[] Multi = new int[1];//多重度
 
         public bool IsRootIndex = false;//基底の面指数を持つとき
@@ -66,8 +66,8 @@ namespace Crystallography
                 else
                     return 1;
             }
-  
-            
+
+
         }
 
         public override string ToString()

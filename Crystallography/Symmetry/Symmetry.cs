@@ -434,7 +434,7 @@ public readonly struct Symmetry
                 "C" => "hkl: h+k=2n: C",
                 "I" => "hkl: h+k+l=2n: I",
                 "F" => "hkl: h+k=2n k+l=2n: F",
-                "R" => sym.SpaceGroupHMStr.Contains("Hex") ? "hkl: -h+k+l=3n: R": "",
+                "R" => sym.SpaceGroupHMStr.Contains("Hex") ? "hkl: -h+k+l=3n: R" : "",
                 _ => ""
             });
         }

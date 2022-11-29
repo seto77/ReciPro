@@ -1,79 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Globalization;
 using System.IO;
+using System.Text;
 
 namespace Crystallography
 {
-	/// <summary>
-	/// STLファイル
-	/// </summary>
-	public class StlFile
-	{
-		#region Constructions
-		/// <summary>
-		/// コンストラクタ
-		/// </summary>
-		public StlFile()
-		{
-		}
-		#endregion Constructions
+    /// <summary>
+    /// STLファイル
+    /// </summary>
+    public class StlFile
+    {
+        #region Constructions
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public StlFile()
+        {
+        }
+        #endregion Constructions
 
-		#region Constants
-		/// <summary>
-		/// バイナリ形式I/O時の有効最大ヘッダバイト数
-		/// </summary>
-		private const int HeaderLength = 80;
-		#endregion Constants
+        #region Constants
+        /// <summary>
+        /// バイナリ形式I/O時の有効最大ヘッダバイト数
+        /// </summary>
+        private const int HeaderLength = 80;
+        #endregion Constants
 
-		#region Properties
-		/// <summary>
-		/// ヘッダーテキスト
-		/// </summary>
-		/// <remarks>
-		/// 初期値は null なので必要に応じて領域確保してください
-		/// バイナリ形式のI/Oでは最大80バイトまで
-		/// </remarks>
-		public byte[] Header { get; set; }
+        #region Properties
+        /// <summary>
+        /// ヘッダーテキスト
+        /// </summary>
+        /// <remarks>
+        /// 初期値は null なので必要に応じて領域確保してください
+        /// バイナリ形式のI/Oでは最大80バイトまで
+        /// </remarks>
+        public byte[] Header { get; set; }
 
-		/// <summary>
-		/// フッターテキスト
-		/// </summary>
-		/// <remarks>
-		/// 初期値は null なので必要に応じて領域確保してください
-		/// ASCII形式のI/Oのみ利用
-		/// </remarks>
-		public byte[] Footer { get; set; }
+        /// <summary>
+        /// フッターテキスト
+        /// </summary>
+        /// <remarks>
+        /// 初期値は null なので必要に応じて領域確保してください
+        /// ASCII形式のI/Oのみ利用
+        /// </remarks>
+        public byte[] Footer { get; set; }
 
-		/// <summary>
-		/// ファセット(三角形)配列
-		/// </summary>
-		/// <remarks>
-		/// 初期値は null なので必要に応じて領域確保してください
-		/// </remarks>
-		public StlFacet[] Facets { get; set; }
-		#endregion Properties
+        /// <summary>
+        /// ファセット(三角形)配列
+        /// </summary>
+        /// <remarks>
+        /// 初期値は null なので必要に応じて領域確保してください
+        /// </remarks>
+        public StlFacet[] Facets { get; set; }
+        #endregion Properties
 
-		#region Methods
-		/// <summary>
-		/// バイナリ形式でのSTLファイル書き込み
-		/// </summary>
-		/// <param name="filePath">ファイルパス</param>
-		/// <returns>正常終了した場合は true、その他の場合は false</returns>
-		/// <remarks>前提としてリトルエンディアンとする</remarks>
-		public bool WriteBinary(string filePath)
-		{
-			// filePath が入っていない場合はエラーとする
-			if (filePath == null)
-				return false;
+        #region Methods
+        /// <summary>
+        /// バイナリ形式でのSTLファイル書き込み
+        /// </summary>
+        /// <param name="filePath">ファイルパス</param>
+        /// <returns>正常終了した場合は true、その他の場合は false</returns>
+        /// <remarks>前提としてリトルエンディアンとする</remarks>
+        public bool WriteBinary(string filePath)
+        {
+            // filePath が入っていない場合はエラーとする
+            if (filePath == null)
+                return false;
 
-			// ファセットデータが無い場合はエラー
-			if (Facets == null || Facets.Length == 0)
-				return false;
+            // ファセットデータが無い場合はエラー
+            if (Facets == null || Facets.Length == 0)
+                return false;
 
-			try
-			{
+            try
+            {
                 // バイナリファイルの書き込み
                 using var writer = new BinaryWriter(new FileStream(filePath, FileMode.Create, FileAccess.Write));
                 // ヘッダ書き込み用配列
@@ -113,27 +113,27 @@ namespace Crystallography
                     writer.Write(buff);
                 }
             }
-			catch (Exception)
-			{
-				return false;
-			}
-			return true;
-		}
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
 
-		/// <summary>
-		/// バイナリ形式でのSTLファイル読み込み
-		/// </summary>
-		/// <param name="filePath">ファイルパス</param>
-		/// <returns>正常終了した場合は true、その他の場合は false</returns>
-		/// <remarks>前提としてリトルエンディアンとする</remarks>
-		public bool ReadBinary(string filePath)
-		{
-			// filePath が null か、ファイルが存在しない場合はエラーとする
-			if (filePath == null || File.Exists(filePath) == false)
-				return false;
+        /// <summary>
+        /// バイナリ形式でのSTLファイル読み込み
+        /// </summary>
+        /// <param name="filePath">ファイルパス</param>
+        /// <returns>正常終了した場合は true、その他の場合は false</returns>
+        /// <remarks>前提としてリトルエンディアンとする</remarks>
+        public bool ReadBinary(string filePath)
+        {
+            // filePath が null か、ファイルが存在しない場合はエラーとする
+            if (filePath == null || File.Exists(filePath) == false)
+                return false;
 
-			try
-			{
+            try
+            {
                 // バイナリファイルの読み込み
                 using var reader = new BinaryReader(new FileStream(filePath, FileMode.Open, FileAccess.Read));
                 // ヘッダ読み込み
@@ -182,30 +182,30 @@ namespace Crystallography
                     );
                 }
             }
-			catch (Exception)
-			{
-				return false;
-			}
-			return true;
-		}
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
 
-		/// <summary>
-		/// テキスト(ASCII)形式でのSTLファイル書き込み
-		/// </summary>
-		/// <param name="filePath">ファイルパス</param>
-		/// <returns>正常終了した場合は true、その他の場合は false</returns>
-		public bool WriteAscii(string filePath)
-		{
-			// filePath が入っていない場合はエラーとする
-			if (filePath == null)
-				return false;
+        /// <summary>
+        /// テキスト(ASCII)形式でのSTLファイル書き込み
+        /// </summary>
+        /// <param name="filePath">ファイルパス</param>
+        /// <returns>正常終了した場合は true、その他の場合は false</returns>
+        public bool WriteAscii(string filePath)
+        {
+            // filePath が入っていない場合はエラーとする
+            if (filePath == null)
+                return false;
 
-			// ファセットデータが無い場合はエラー
-			if (Facets == null || Facets.Length == 0)
-				return false;
+            // ファセットデータが無い場合はエラー
+            if (Facets == null || Facets.Length == 0)
+                return false;
 
-			try
-			{
+            try
+            {
                 // 上書きの書き込みモードでファイルを開く
                 using var writer = new StreamWriter(filePath, false, Encoding.ASCII);
                 // ヘッダ書き込み
@@ -231,26 +231,26 @@ namespace Crystallography
                 // 頂点データをテキストに変換
                 static string ToText(in StlVertex vec) => $"{vec.X:e} {vec.Y:e} {vec.Z:e}";
             }
-			catch (Exception)
-			{
-				return false;
-			}
-			return true;
-		}
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
 
-		/// <summary>
-		/// テキスト(ASCII)形式でのSTLファイル読み込み
-		/// </summary>
-		/// <param name="filePath">ファイルパス</param>
-		/// <returns>正常終了した場合は true、その他の場合は false</returns>
-		public bool ReadAscii(string filePath)
-		{
-			// filePath が null か、ファイルが存在しない場合はエラーとする
-			if (filePath == null || File.Exists(filePath) == false)
-				return false;
+        /// <summary>
+        /// テキスト(ASCII)形式でのSTLファイル読み込み
+        /// </summary>
+        /// <param name="filePath">ファイルパス</param>
+        /// <returns>正常終了した場合は true、その他の場合は false</returns>
+        public bool ReadAscii(string filePath)
+        {
+            // filePath が null か、ファイルが存在しない場合はエラーとする
+            if (filePath == null || File.Exists(filePath) == false)
+                return false;
 
-			try
-			{
+            try
+            {
                 // テキストファイルの読み込み
                 using StreamReader reader = new StreamReader(filePath, Encoding.ASCII);
                 // ファセットデータの一時格納用リスト
@@ -321,95 +321,95 @@ namespace Crystallography
                 // ファセットデータの一時格納用リストを配列化してメンバーに設定
                 Facets = facets.ToArray();
             }
-			catch (Exception)
-			{
-				return false;
-			}
-			return true;
-		}
-		#endregion Methods
-	}
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion Methods
+    }
 
-	/// <summary>
-	/// 頂点
-	/// </summary>
-	public struct StlVertex
-	{
-		#region Constructions
-		/// <summary>
-		/// コンストラクタ
-		/// </summary>
-		public StlVertex(float x, float y, float z)
-		{
-			X = x;
-			Y = y;
-			Z = z;
-		}
-		#endregion Constructions
+    /// <summary>
+    /// 頂点
+    /// </summary>
+    public struct StlVertex
+    {
+        #region Constructions
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public StlVertex(float x, float y, float z)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+        #endregion Constructions
 
-		#region Properties
-		/// <summary>
-		/// X成分
-		/// </summary>
-		public float X { get; set; }
+        #region Properties
+        /// <summary>
+        /// X成分
+        /// </summary>
+        public float X { get; set; }
 
-		/// <summary>
-		/// Y成分
-		/// </summary>
-		public float Y { get; set; }
+        /// <summary>
+        /// Y成分
+        /// </summary>
+        public float Y { get; set; }
 
-		/// <summary>
-		/// Z成分
-		/// </summary>
-		public float Z { get; set; }
-		#endregion Properties
-	}
+        /// <summary>
+        /// Z成分
+        /// </summary>
+        public float Z { get; set; }
+        #endregion Properties
+    }
 
-	/// <summary>
-	/// ファセット（3頂点と1法線で表現する三角形）
-	/// </summary>
-	public class StlFacet
-	{
-		#region Constructions
-		/// <summary>
-		/// コンストラクタ
-		/// </summary>
-		public StlFacet()
-		{
-		}
+    /// <summary>
+    /// ファセット（3頂点と1法線で表現する三角形）
+    /// </summary>
+    public class StlFacet
+    {
+        #region Constructions
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public StlFacet()
+        {
+        }
 
-		/// <summary>
-		/// コンストラクタ
-		/// </summary>
-		public StlFacet(in StlVertex normal, in StlVertex vertex1, in StlVertex vertex2, in StlVertex vertex3)
-		{
-			Normal = normal;
-			Vertex1 = vertex1;
-			Vertex2 = vertex2;
-			Vertex3 = vertex3;
-		}
-		#endregion Constructions
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public StlFacet(in StlVertex normal, in StlVertex vertex1, in StlVertex vertex2, in StlVertex vertex3)
+        {
+            Normal = normal;
+            Vertex1 = vertex1;
+            Vertex2 = vertex2;
+            Vertex3 = vertex3;
+        }
+        #endregion Constructions
 
-		#region Properties
-		/// <summary>
-		/// 法線
-		/// </summary>
-		public StlVertex Normal;
+        #region Properties
+        /// <summary>
+        /// 法線
+        /// </summary>
+        public StlVertex Normal;
 
-		/// <summary>
-		/// 1点目頂点
-		/// </summary>
-		public StlVertex Vertex1;
+        /// <summary>
+        /// 1点目頂点
+        /// </summary>
+        public StlVertex Vertex1;
 
-		/// <summary>
-		/// 2点目頂点
-		/// </summary>
-		public StlVertex Vertex2;
+        /// <summary>
+        /// 2点目頂点
+        /// </summary>
+        public StlVertex Vertex2;
 
-		/// <summary>
-		/// 3点目頂点
-		/// </summary>
-		public StlVertex Vertex3;
-		#endregion Properties
-	}
+        /// <summary>
+        /// 3点目頂点
+        /// </summary>
+        public StlVertex Vertex3;
+        #endregion Properties
+    }
 }

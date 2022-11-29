@@ -8,29 +8,29 @@ namespace Crystallography;
 /// </summary>
 public readonly struct SymmetryOperation
 {
-    public ushort SeriesNumber { get;}
+    public ushort SeriesNumber { get; }
 
     /// <summary>
     /// 回転の次数. 1, 2, 3, 4, 6, -1, -2(=m), -3, -4, -6のいずれか
     /// </summary>
-    public short Order { get;}
+    public short Order { get; }
 
     /// <summary>
     /// 回転の方向. trueは +1か falseは -1のいずれか
     /// </summary>
-    public bool Sense { get;}
+    public bool Sense { get; }
 
     /// <summary>
     /// 回転の軸.
     /// </summary>
-    public (int U, int V, int W) Direction {get;}
+    public (int U, int V, int W) Direction { get; }
 
     /// <summary>
     /// 並進ベクトル
     /// </summary>
     public (double U, double V, double W) Translation { get; }
 
-    public SymmetryOperation(int order, int sense,in (int U, int V, int W) direction,in (double U, double V, double W) translation)
+    public SymmetryOperation(int order, int sense, in (int U, int V, int W) direction, in (double U, double V, double W) translation)
     {
         SeriesNumber = 0;
         Order = (short)order;
@@ -57,7 +57,7 @@ public readonly struct SymmetryOperation
         Translation = so.Translation;
     }
 
-    public (int H, int K, int L) ConvertPlaneIndex((int H, int K, int L) index) 
+    public (int H, int K, int L) ConvertPlaneIndex((int H, int K, int L) index)
         => ConvertPlaneIndex(index.H, index.K, index.L);
 
     public (int H, int K, int L) ConvertPlaneIndex(int h, int k, int l)

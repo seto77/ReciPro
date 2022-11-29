@@ -257,12 +257,12 @@ namespace Crystallography
 
 
 
-            /// <summary>
-            /// よく分からないファイルを読み込む
-            /// </summary>
-            /// <param name="fileName"></param>
-            /// <param name="separater"></param>
-            /// <returns></returns>
+        /// <summary>
+        /// よく分からないファイルを読み込む
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="separater"></param>
+        /// <returns></returns>
         public static DiffractionProfile ConvertUnknownFileToProfileData(string fileName, char separater)
         {
             var strArray = new List<string>();

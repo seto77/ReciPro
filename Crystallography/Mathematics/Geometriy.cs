@@ -170,8 +170,8 @@ namespace Crystallography
           ref double tau, ref double tauDev, ref double phi, ref double phiDev)
         {
             //”CˆÓ‚Ì“ñ“_‚ð‘I‚ñ‚Åoffset, tau, phi‚ðŒvŽZ‚·‚é
-            List<double> offsetXList = new(),offsetYList = new();
-            List<double> tauList = new(),phiList = new();
+            List<double> offsetXList = new(), offsetYList = new();
+            List<double> tauList = new(), phiList = new();
 
             for (int i = 0; i < EllipseCenter.Length; i++)
                 for (int j = i + 1; j < EllipseCenter.Length; j++)
@@ -681,7 +681,7 @@ namespace Crystallography
 
             if (pt.Max(p => p.Y) <= area.UpperY && pt.Min(pt => pt.Y) >= area.Y)
                 return new[] { pt.ToArray() };
-            else if(pt.Max(p => p.Y) <= area.Y || pt.Min(pt => pt.Y) >= area.UpperY)
+            else if (pt.Max(p => p.Y) <= area.Y || pt.Min(pt => pt.Y) >= area.UpperY)
                 return new[] { Array.Empty<PointD>() };
             else
             {
@@ -867,7 +867,7 @@ namespace Crystallography
             var mtx = new DenseMatrix(points.Count(), 3);
             int n = 0;
             foreach (var p in points.Select(p => p - ave))
-                mtx.SetRow(n++, new[] {p.X, p.Y, p.Z });
+                mtx.SetRow(n++, new[] { p.X, p.Y, p.Z });
 
             //var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
             var evd = mtx.TransposeThisAndMultiply(mtx).Evd(Symmetricity.Symmetric);
@@ -913,7 +913,7 @@ namespace Crystallography
                     if (Math.Abs(mtx.Determinant()) > 0.0000000001)
                     {
                         var pt = mtx.Inverse() * new Vector3DBase(-plane[3], -bounds[i][3], -bounds[j][3]);
-                        if (bounds.All(b => b[0] * pt.X + b[1] * pt.Y + b[2] * pt.Z + b[3] > -0.0000000001) && pts.All(p => (p - pt).Length2> 0.0000000001))
+                        if (bounds.All(b => b[0] * pt.X + b[1] * pt.Y + b[2] * pt.Z + b[3] > -0.0000000001) && pts.All(p => (p - pt).Length2 > 0.0000000001))
                             pts.Add(pt);
                     }
                 }
@@ -1010,7 +1010,7 @@ namespace Crystallography
                         var pts1 = new List<PointD>();
                         //var pts2 = new List<PointD>();
                         var omegaMax = Math.Log(maxWidth * Psqrt + Math.Sqrt(maxWidth * Psqrt * maxWidth * Psqrt + 1)) * 2;
-                        var sign = (tau > 0 && alpha < Math.PI/2) || (tau < 0 && alpha >= Math.PI / 2) ? 1 : -1;
+                        var sign = (tau > 0 && alpha < Math.PI / 2) || (tau < 0 && alpha >= Math.PI / 2) ? 1 : -1;
                         for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 1000)
                         {
                             double x = Math.Sinh(omega) / Psqrt, y = Math.Cosh(omega) / Qsqrt;
@@ -1020,7 +1020,7 @@ namespace Crystallography
                         }
                         tempResult.Add(pts1.Select(p => rot(p + shift)).ToList());
                         if (bothCone)
-                            tempResult.Add(pts1.Select(p => rot(new PointD( p.X,-p.Y) + shift)).ToList());
+                            tempResult.Add(pts1.Select(p => rot(new PointD(p.X, -p.Y) + shift)).ToList());
                     }
                 }
             }
@@ -1051,15 +1051,15 @@ namespace Crystallography
                             };
                         var lengthList = cross.Select(c => (c - (pts[j] + pts[j + 1]) / 2).Length2).ToList();
                         var index = lengthList.IndexOf(lengthList.Min());
-                        flags.Insert(j+1, true);
-                        pts.Insert(j+1, cross[index]);
+                        flags.Insert(j + 1, true);
+                        pts.Insert(j + 1, cross[index]);
                         if (flags[j])
                             j++;
                     }
                 }
                 for (int j = 0; j < pts.Count; j++)
                 {
-                    if(flags[j])
+                    if (flags[j])
                     {
                         result.Add(new List<PointD>());
                         for (; j < pts.Count && flags[j]; j++)

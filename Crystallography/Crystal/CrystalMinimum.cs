@@ -1,10 +1,10 @@
+using MemoryPack;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using MemoryPack;
 
 namespace Crystallography;
 
@@ -89,7 +89,7 @@ public partial class Crystal2
     /// a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian. エラーの値は含まない.
     /// </summary>
     [MemoryPackIgnore]
-    public (double A, double B, double C, double Alpha, double Beta, double Gamma)  CellOnlyValue_nm_radian
+    public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellOnlyValue_nm_radian
     {
         get
         {
@@ -134,11 +134,11 @@ public partial class Crystal2
                     new DiffuseScatteringFactor(a.IsU ? DiffuseScatteringFactor.Type.U : DiffuseScatteringFactor.Type.B, a.IsIso,
                         iso.Value, iso.Error, anisoValues, anisoErrors, cell.Values)
                     );
-            atom.Add(_atom );
+            atom.Add(_atom);
             atom[^1].ResetVesta();
 
             //AtomNoが255(重水素D)だった時の処理
-            if(atom[^1].AtomicNumber==255)
+            if (atom[^1].AtomicNumber == 255)
             {
                 atom[^1].AtomicNumber = 1;
                 atom[^1].Isotope = new[] { 0.0, 100.0, 0.0 };
@@ -564,9 +564,9 @@ public partial class Crystal2
         return sb.ToString();
     }
 
-   
 
-   
+
+
 
     private static (double Value, double Error) Decompose(string str) => Decompose(str, false);
     public static (double Value, double Error) Decompose(string str, int sgnum) => Decompose(str, sgnum >= 430 && sgnum <= 488);

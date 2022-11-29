@@ -14,7 +14,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Community.CsharpSqlite.Sqlite3.Walker;
 using Col4 = OpenTK.Graphics.Color4;
 using Vec3 = OpenTK.Vector3d;
 
@@ -1517,5 +1516,5 @@ public partial class FormMain : Form
 
     #endregion
 
-   
+
 }

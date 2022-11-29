@@ -35,7 +35,7 @@ public static class GLGeometry
         var i = lengthSquaredArray.FindIndex(len => len == maxLength);
 
         //もう一つ点を選び、直線の方程式を産出
-        var iList = new List<uint>(new[] {(uint) i });
+        var iList = new List<uint>(new[] { (uint)i });
         do
         {
             for (int j = 0; j < vXY.Count; j++)

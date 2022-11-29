@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
@@ -16,7 +13,7 @@ namespace Crystallography.Controls
         public bool SkipEvent { get; set; } = false;
         public Crystal Crystal
         {
-            get => crystal; 
+            get => crystal;
             set
             {
                 crystal = value;
@@ -70,10 +67,10 @@ namespace Crystallography.Controls
         /// <param name="bonds"></param>
         public void Add(LatticePlane plane)
         {
-            if (plane != null && plane.Index!=(0,0,0))
+            if (plane != null && plane.Index != (0, 0, 0))
             {
                 table.Add(plane);
-            crystal.LatticePlanes = GetAll();
+                crystal.LatticePlanes = GetAll();
                 ItemsChanged?.Invoke(this, new EventArgs());
             }
         }
@@ -147,7 +144,7 @@ namespace Crystallography.Controls
         private void buttonAdd_Click(object sender, System.EventArgs e)
         {
             var plane = GetFromInterface();
-            if (plane != null && plane.Index != (0,0,0))
+            if (plane != null && plane.Index != (0, 0, 0))
             {
                 Add(plane);
                 bindingSource.Position = bindingSource.Count - 1;
@@ -213,7 +210,7 @@ namespace Crystallography.Controls
                     (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 ItemsChanged?.Invoke(this, new EventArgs());
             }
-        } 
+        }
         #endregion
     }
 }

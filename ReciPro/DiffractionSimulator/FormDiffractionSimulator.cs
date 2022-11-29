@@ -1,4 +1,5 @@
 ﻿#region using
+using BitMiracle.LibTiff.Classic;
 using MathNet.Numerics;
 using System.Collections.Generic;
 using System.Data;
@@ -8,10 +9,9 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using BitMiracle.LibTiff.Classic;
-using System.Runtime.InteropServices;
 
 #endregion
 
@@ -429,12 +429,12 @@ public partial class FormDiffractionSimulator : Form
 
         #region ガウス関数で描画するローカル関数
         //int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
-        int gradation = 32; 
+        int gradation = 32;
         double fillCircleSpread(Color c, PointD pt, double intensity, double sigma)
         {
             //計算する二次元ガウス関数は、 f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
             //intensityはスポットの積分強度、sは半値幅
-            
+
             double sigma2 = sigma * sigma, coeff1 = 1 / (2 * Math.PI * sigma2);
 
             var maxI = intensity * coeff1;
@@ -577,7 +577,7 @@ public partial class FormDiffractionSimulator : Form
                         g.Tag = dev = -vec.Z;
                     else if (!bethe)//動力学電子回折ではないとき
                         g.Tag = dev = EwaldRadius - Math.Sqrt(L2 + (-vec.Z + EwaldRadius) * (-vec.Z + EwaldRadius));
-                    
+
                     var dev2 = dev * dev;
 
                     if (SinPhi * SinTau * vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
@@ -925,12 +925,12 @@ public partial class FormDiffractionSimulator : Form
         if (!originInside)
             min2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Min() / Math.PI * 180.0;
         max2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max() / Math.PI * 180.0;
-        
-        if(radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
+
+        if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
         {
             if (!originInside)
-                min2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt( p.X2Y2) / CameraLength2 / 2)).Min() / Math.PI * 180.0;
-            max2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2 )).Max() / Math.PI * 180.0;
+                min2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2)).Min() / Math.PI * 180.0;
+            max2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2)).Max() / Math.PI * 180.0;
             if (double.IsNaN(min2Theta)) min2Theta = 0;
             if (double.IsNaN(max2Theta)) max2Theta = 175;
         }
@@ -1201,7 +1201,7 @@ public partial class FormDiffractionSimulator : Form
             //  -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau  
             //この行列を(x,y,CameraLength2)に作用させればよい
     #endregion
-            radioButtonBeamPrecessionXray.Checked? new Vector3DBase(x, y, CameraLength2): DetectorRotation * new Vector3DBase(x, y, CameraLength2);
+            radioButtonBeamPrecessionXray.Checked ? new Vector3DBase(x, y, CameraLength2) : DetectorRotation * new Vector3DBase(x, y, CameraLength2);
 
     private Vector3DBase convertDetectorToReal(in PointD pt) => convertDetectorToReal(pt.X, pt.Y);
 
@@ -1215,10 +1215,11 @@ public partial class FormDiffractionSimulator : Form
     {
         if (radioButtonBeamPrecessionXray.Checked)
         {
-            var rVec = new Vector3DBase(v.X, v.Y, 0) /  CameraLength2 * EwaldRadius;
+            var rVec = new Vector3DBase(v.X, v.Y, 0) / CameraLength2 * EwaldRadius;
             return originalCoordinate ? formMain.Crystal.RotationMatrix.Inverse() * rVec : rVec;
         }
-        else {
+        else
+        {
 
             var len = Math.Sqrt(v.X2Y2);
             var twoTheta = Math.Atan2(len, v.Z);
@@ -1250,7 +1251,7 @@ public partial class FormDiffractionSimulator : Form
     /// <returns></returns>
     private PointD convertReciprocalToDetector(Vector3DBase g)
     {
-        if(radioButtonBeamPrecessionXray.Checked)//X線プリセッション。　検出器の傾きは考慮しない。
+        if (radioButtonBeamPrecessionXray.Checked)//X線プリセッション。　検出器の傾きは考慮しない。
         {
             if (g.X == 0 && g.Y == 0)
                 return new PointD(0, 0);
@@ -1722,7 +1723,7 @@ public partial class FormDiffractionSimulator : Form
             radioButtonBeamPrecessionXray.Visible = false;//歳差(X線)は非表示
             radioButtonIntensityDynamical.Visible = true;//動力学計算は表示
         }
-        else if(waveLengthControl.WaveSource == WaveSource.Xray)//X線が選択された場合
+        else if (waveLengthControl.WaveSource == WaveSource.Xray)//X線が選択された場合
         {
             radioButtonBeamConvergence.Visible = radioButtonBeamPrecessionElectron.Visible = false;//収束と歳差(電子)は非表示
             radioButtonBeamPrecessionXray.Visible = true;//歳差(X線)は表示
@@ -1790,7 +1791,7 @@ public partial class FormDiffractionSimulator : Form
             flowLayoutPanelBethe.Enabled = true;
             flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
         }
-        else if(radioButtonBeamPrecessionElectron.Checked)//歳差(電子)
+        else if (radioButtonBeamPrecessionElectron.Checked)//歳差(電子)
         {
             radioButtonIntensityExcitation.Visible = radioButtonIntensityKinematical.Visible = false;
 
@@ -1852,7 +1853,7 @@ public partial class FormDiffractionSimulator : Form
 
             flowLayoutPanelBethe.Visible = false;
         }
-        else if(radioButtonIntensityKinematical.Checked)  // 運動学的
+        else if (radioButtonIntensityKinematical.Checked)  // 運動学的
         {
             flowLayoutPanelExtinctionOption.Visible = false;
 
@@ -1864,7 +1865,7 @@ public partial class FormDiffractionSimulator : Form
             flowLayoutPanelBethe.Visible = true;
         }
 
-            SetVector();
+        SetVector();
         Draw();
     }
 
@@ -2079,7 +2080,7 @@ public partial class FormDiffractionSimulator : Form
         if (!FormDiffractionSimulatorCBED.Visible || FormDiffractionSimulatorCBED.Disks == null)
             return;
 
-        SaveFileDialog dlg = new() { Filter =  "*.tif|*.tif" };
+        SaveFileDialog dlg = new() { Filter = "*.tif|*.tif" };
         if (dlg.ShowDialog() != DialogResult.OK) return;
 
         var name = dlg.FileName[0..^4];//拡張子を除去
@@ -2116,7 +2117,7 @@ public partial class FormDiffractionSimulator : Form
                         {
                             var posX = diskCenterInPixel.X + x - diskWidthInPixel / 2;
                             var posY = diskCenterInPixel.Y + y - diskHeightInPixel / 2;
-                            if ((uint)posX  < (uint)width && (uint)posY  < (uint)height && imageArray[posY * width + posX] == 0)
+                            if ((uint)posX < (uint)width && (uint)posY < (uint)height && imageArray[posY * width + posX] == 0)
                                 imageArray[posY * width + posX] = src[y * diskWidthInPixel + x];
                         }
                 }
@@ -2303,7 +2304,7 @@ public partial class FormDiffractionSimulator : Form
 
     }
 
-  
+
 
     private void Button2_Click(object sender, EventArgs e)
     {

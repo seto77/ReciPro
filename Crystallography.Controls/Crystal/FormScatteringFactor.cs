@@ -35,8 +35,8 @@ namespace Crystallography.Controls
         //CrystalContorolÇ≈CystalÇ™ïœçXÇ≥ÇÍÇΩÇ∆Ç´
         private void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
-           
-                numericUpDownThresholdD.Minimum = (decimal)((Crystal.A + Crystal.B + Crystal.C) / 20);
+
+            numericUpDownThresholdD.Minimum = (decimal)((Crystal.A + Crystal.B + Crystal.C) / 20);
             if (this.Visible)
                 SetSortedPlanes();
         }
@@ -115,7 +115,7 @@ namespace Crystallography.Controls
                 for (int i = 0; i < c.VectorOfG.Count; i++)
                 {
                     Vector3D g = c.VectorOfG[i];
-                    double twoTheta = 2 * Math.Asin(g.Length* waveLengthControl1.WaveLength / 2);
+                    double twoTheta = 2 * Math.Asin(g.Length * waveLengthControl1.WaveLength / 2);
                     bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, out int multi);
                     if (irreducible && !double.IsNaN(twoTheta))
                     {
@@ -158,11 +158,11 @@ namespace Crystallography.Controls
                     var condition = c.Symmetry.CheckExtinctionRule(g.Index);//SymmetryStatic.CheckExtinctionRule(g.h, g.k, g.l, c.Symmetry);
                     if (!checkBoxHideProhibitedPlanes.Checked || condition.Length == 0)
                     {
-                        var d = 1 / g.Length* 10;
-                        var twoTheta = 2 * Math.Asin(g.Length* waveLengthControl1.WaveLength / 2) / Math.PI * 180;
+                        var d = 1 / g.Length * 10;
+                        var twoTheta = 2 * Math.Asin(g.Length * waveLengthControl1.WaveLength / 2) / Math.PI * 180;
                         if (double.IsNaN(twoTheta))
                             twoTheta = double.PositiveInfinity;
-                       dataSet.DataTableScatteringFactor.Add(g.Index.h, g.Index.k, g.Index.l, multi, d, twoTheta, g.F, g.RelativeIntensity, g.Extinction);
+                        dataSet.DataTableScatteringFactor.Add(g.Index.h, g.Index.k, g.Index.l, multi, d, twoTheta, g.F, g.RelativeIntensity, g.Extinction);
                     }
                 }
             }
@@ -177,6 +177,6 @@ namespace Crystallography.Controls
 
 
 
-  
+
     }
 }

@@ -1,12 +1,12 @@
 ﻿using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
-using System.Numerics;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Numerics;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using MC = Crystallography.MathematicalConstants;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace Crystallography;
 

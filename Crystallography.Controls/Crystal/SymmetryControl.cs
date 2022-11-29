@@ -1,10 +1,10 @@
-﻿using System;
-using System.Drawing;
+﻿using IronPython.Runtime.Operations;
+using System;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.ComponentModel;
-using IronPython.Runtime.Operations;
 
 namespace Crystallography.Controls;
 

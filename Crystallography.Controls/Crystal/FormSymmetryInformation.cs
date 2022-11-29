@@ -132,7 +132,7 @@ namespace Crystallography.Controls
         //Œ‹»‚ğ•ÏX‚·‚é
         public void ChangeCrystal()
         {
-            
+
             numericUpDown_ValueChanged(new object(), new EventArgs());
             SetWyckoffPosition();
 

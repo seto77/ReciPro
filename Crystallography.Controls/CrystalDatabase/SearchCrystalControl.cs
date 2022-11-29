@@ -1,5 +1,4 @@
-﻿using MathNet.Numerics.Distributions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -215,7 +214,7 @@ namespace Crystallography.Controls
         static int composeKey(in int h, in int k, in int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
         static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
-        static readonly int  zeroKey = (255 << 20) + (255 << 10) + 255;
+        static readonly int zeroKey = (255 << 20) + (255 << 10) + 255;
         static readonly (int h, int k, int l)[] directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
         static float[] calcDlist(double a, double b, double c, double alpha, double beta, double gamma, double dMin)
         {
@@ -297,7 +296,7 @@ namespace Crystallography.Controls
             if (flagCount > 0)
                 CrystalDatabaseControl.Resume();//バインディングを繋げる
 
- 
+
             this.Enabled = true;
 
             Thread.Sleep(500);

@@ -88,7 +88,7 @@ namespace Crystallography
         public LatticePlane()
         { }
 
-        public LatticePlane(bool enabled, Crystal crystal, int h, int k, int l, double translation, int argb):this()
+        public LatticePlane(bool enabled, Crystal crystal, int h, int k, int l, double translation, int argb) : this()
         {
             Enabled = enabled;
             ColorArgb = argb;

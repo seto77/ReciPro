@@ -65,7 +65,7 @@ namespace Crystallography
             int lower = 0, upper = 0;
             for (int i = 0; i < pt.Count - 1; i++)
                 for (int j = i + 1; j < pt.Count; j++)
-                    if ((tempPt[i] - tempPt[j]).Length< minDistance)
+                    if ((tempPt[i] - tempPt[j]).Length < minDistance)
                     {
                         minDistance = (tempPt[i] - tempPt[j]).Length;
                         lower = i;

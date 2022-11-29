@@ -24,26 +24,26 @@ namespace Crystallography.Controls
 
         [Category("Appearance property")]
         public Size BoxSize { get => pictureBox.Size; set => pictureBox.Size = value; }
-  
+
         [Localizable(true)]
         public string ToolTip { set => toolTip.SetToolTip(pictureBox, value); get => toolTip.GetToolTip(pictureBox); }
-      
+
         [Category("Header/footer text")]
-        [Localizable(true)] 
+        [Localizable(true)]
         public string HeaderText { set { labelHeader.Text = value; labelHeader.Visible = value != ""; } get => labelHeader.Text; }
-     
+
         [Category("Header/footer text")]
         [Localizable(true)]
         public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }
-   
+
         [Category("Header/footer text")]
         [Localizable(true)]
         public Padding HeaderMargin { set => labelHeader.Margin = value; get => labelHeader.Margin; }
 
         [Category("Header/footer text")]
         [Localizable(true)]
-        public string FooterText {set{ labelFooter.Text = value; labelFooter.Visible = value != ""; } get => labelFooter.Text; }
-      
+        public string FooterText { set { labelFooter.Text = value; labelFooter.Visible = value != ""; } get => labelFooter.Text; }
+
         [Localizable(true)]
         [Category("Header/footer text")]
         public Font FooterFont { set => labelFooter.Font = value; get => labelFooter.Font; }

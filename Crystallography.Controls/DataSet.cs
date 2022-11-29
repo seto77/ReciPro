@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Microsoft.Scripting.Utils;
+using System;
+using System.Buffers;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
-using Crystallography;
-using Microsoft.Scripting.Utils;
-using System.Buffers;
 
 namespace Crystallography.Controls;
 
@@ -210,7 +209,7 @@ public partial class DataSet
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        public Crystal2 Get(int i) =>(Crystal2)Rows[i][0];
+        public Crystal2 Get(int i) => (Crystal2)Rows[i][0];
 
         public void Add(Crystal2 crystal) => Add(CreateRow(crystal));
         public void Add(DataTableCrystalDatabaseRow row) => Rows.Add(row);

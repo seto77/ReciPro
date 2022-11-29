@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace Crystallography;
@@ -233,7 +232,7 @@ public static class ImageIO
 
         Ring.IntensityOriginal.Clear();
         Ring.IntensityOriginal.AddRange(Ring.Intensity);
-       
+
         Ring.SrcImgSizeOriginal = new Size(Ring.SrcImgSize.Width, Ring.SrcImgSize.Height);
 
         return result;
@@ -464,7 +463,7 @@ public static class ImageIO
                 accVol = (double)accF;
             else if (test is double accD)
                 accVol = accD;
-            
+
             var pixelSize = 0.1;
             //CCDカメラの場合
             if (t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag.ContainsKey("Acquisition"))
@@ -962,9 +961,9 @@ public static class ImageIO
         try
         {
             var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
-            var headers = new string( br.ReadChars(512)).Split('\n');
-            
-            int imageWidth = Convert.ToInt32( headers[4].Split(new char[] { '=', ';' })[1]);
+            var headers = new string(br.ReadChars(512)).Split('\n');
+
+            int imageWidth = Convert.ToInt32(headers[4].Split(new char[] { '=', ';' })[1]);
             int imageHeight = Convert.ToInt32(headers[5].Split(new char[] { '=', ';' })[1]);
             Ring.SrcImgSize = new Size(imageWidth, imageHeight);
 
@@ -1045,7 +1044,7 @@ public static class ImageIO
             Ring.BitsPerPixels = fileType switch { 0 => 8, 2 => 16, 3 => 32, _ => 0 };
             Ring.SequentialImageIntensities = new List<List<double>>();
             Ring.SequentialImageNames = new List<string>();
-            
+
             int n = 0;
             while (readHeader() && n < 10000)
             {

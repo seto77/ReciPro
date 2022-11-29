@@ -41,10 +41,10 @@ public partial class FormDiffractionSpotInfo : Form
             return new BetheMethod.Beam(
                 g.Index,
                 crystal.RotationMatrix * g,
-                crystal.Bethe.getU(acc,new BetheMethod.Beam(g)),
+                crystal.Bethe.getU(acc, new BetheMethod.Beam(g)),
                 crystal.Bethe.getQP(g, kvac, u0));
         }).ToArray();
-        
+
         SetTable(acc, crystal.Bethe.Beams);
     }
 
