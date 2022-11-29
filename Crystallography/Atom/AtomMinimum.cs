@@ -67,6 +67,7 @@ public partial class Atoms2
 
     [MemoryPackConstructor]
     public Atoms2() { }
+
     /// <summary>
     /// コンストラクタ. Uの単位はÅ
     /// </summary>

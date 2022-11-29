@@ -1852,14 +1852,19 @@ public partial class FormDiffractionSimulator : Form
 
             flowLayoutPanelBethe.Visible = false;
         }
-        else  // 運動学的あるいは動力学的
+        else if(radioButtonIntensityKinematical.Checked)  // 運動学的
         {
             flowLayoutPanelExtinctionOption.Visible = false;
 
             flowLayoutPanelBethe.Visible = false;
         }
-        
-        SetVector();
+        else //動力学的 
+        {
+            flowLayoutPanelExtinctionOption.Visible = false;
+            flowLayoutPanelBethe.Visible = true;
+        }
+
+            SetVector();
         Draw();
     }
 

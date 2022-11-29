@@ -10,6 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
+        "\r\n ver4.842(2022/11/29)  Fixed minor bugs." +
         "\r\n ver4.841(2022/11/16)  Target framework has been changed to .Net Desktop Runtime 7.0." +
         "\r\n ver4.840(2022/11/10)  Fixed a bug that occurred when starting 'Diffraction Simulator' (see https://github.com/seto77/ReciPro/issues/16)." +
         "\r\n ver4.839(2022/11/07)  Added a function to simulate X-ray precession camara." +

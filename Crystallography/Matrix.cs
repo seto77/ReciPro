@@ -857,7 +857,7 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
 
     public static Vector3D operator /(Vector3D v1, int d) => new(v1.X / d, v1.Y / d, v1.Z / d);
 
-    public void NormarizeThis()
+    public new void NormarizeThis()
     {
         Vector3D v = Vector3D.Normarize(this);
         X = v.X;

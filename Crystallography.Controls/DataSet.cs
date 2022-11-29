@@ -238,7 +238,7 @@ public partial class DataSet
         public DataTableCrystalDatabaseRow CreateRow(Crystal2 c)
         {
             DataTableCrystalDatabaseRow dr;
-            lock(lockObj)
+            lock (lockObj)
                 dr = NewDataTableCrystalDatabaseRow();
 
             dr.Crystal2 = c;

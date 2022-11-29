@@ -935,7 +935,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             outer.RemoveRange(0, end + 1);
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
         }
-        listPlane.RemoveAt(0);
 
         #region ‚¨‘ “ü‚è
         //if (dMin < (A + B + C) / 3 / 30)
