@@ -21,8 +21,18 @@ namespace Crystallography.Controls;
 public partial class CrystalDatabaseControl : UserControl
 {
     #region フィールド、メソッド、イベント
-    public void Supend() => bindingSource.DataMember = "";
-    public void Resume() => bindingSource.DataMember = "DataTableCrystalDatabase";
+    public void Suspend()
+    {
+        bindingSource.RaiseListChangedEvents = false;
+        bindingSource.SuspendBinding();
+    }
+
+    public void Resume()
+    {
+        bindingSource.RaiseListChangedEvents = true;
+        bindingSource.ResumeBinding();
+        bindingSource.ResetBindings(false);
+    }
 
     public string Filter { get => bindingSource.Filter; set => bindingSource.Filter = value; }
 
@@ -84,9 +94,6 @@ public partial class CrystalDatabaseControl : UserControl
         Table = dataSet.DataTableCrystalDatabase;
 
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
-
-
-
     }
     #endregion
 
@@ -116,7 +123,7 @@ public partial class CrystalDatabaseControl : UserControl
     {
         if (ReadDatabaseWorker.IsBusy) return;
 
-        bindingSource.DataMember = "";
+        Suspend();
         this.Enabled = false;
         ReadDatabaseWorker.RunWorkerAsync(filename);
     }
@@ -181,7 +188,7 @@ public partial class CrystalDatabaseControl : UserControl
     private void ReadDatabaseWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
         this.Enabled = true;
-        bindingSource.DataMember = "DataTableCrystalDatabase";
+        Resume();
         ProgressChanged?.Invoke(sender, 1, $"Total loading time: {sw.ElapsedMilliseconds / 1E3:f1} sec.");
     }
 

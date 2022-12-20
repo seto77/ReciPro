@@ -340,8 +340,8 @@ public class Tiff
             /// </summary>
             public int ImageLength;
 
-            public double XResolution;
-            public double YResolution;
+            public double ResolutionX;
+            public double ResolutionY;
 
             /// <summary>
             /// 1: 整数, 3:float
@@ -382,6 +382,11 @@ public class Tiff
 
             public string Name = "";
             public double PulsePower = double.NaN;
+
+            //TIAというソフトからエクスポートされるTEM写真(emiファイル)のピクセルサイズ
+            public double TIA_PixelSizeX;//65450
+            public double TIA_PixelSizeY;//65451
+            public int TIA_PixelSizeUnit;//65452
         }
 
         public static byte[] Read(BinaryReader br, long position, int length, TiffByteOrder byteOrder)
@@ -495,19 +500,19 @@ public class Tiff
 
                         case 282:
                             if (iFD[i].Data[0] is int n)
-                                image.XResolution = n;
+                                image.ResolutionX = n;
                             else if (iFD[i].Data[0] is float f)
-                                image.XResolution = f;
+                                image.ResolutionX = f;
                             else if (iFD[i].Data[0] is double d)
-                                image.XResolution = d;
+                                image.ResolutionX = d;
                             break;
                         case 283:
                             if (iFD[i].Data[0] is int n2)
-                                image.YResolution = n2;
+                                image.ResolutionY = n2;
                             else if (iFD[i].Data[0] is float f)
-                                image.YResolution = f;
+                                image.ResolutionY = f;
                             else if (iFD[i].Data[0] is double d)
-                                image.YResolution = d;
+                                image.ResolutionY = d;
                             break;
                         case 284:
                             image.ResolutionUnit = (int)iFD[i].Data[0]; break;
@@ -551,6 +556,13 @@ public class Tiff
 
                         case 60002:
                             image.PulsePower = (double)iFD[i].Data[0]; break;
+
+                        case 65450:
+                            image.TIA_PixelSizeX = (double)iFD[i].Data[0]; break;
+                        case 65451:
+                            image.TIA_PixelSizeY = (double)iFD[i].Data[0]; break;
+                        case 65452:
+                            image.TIA_PixelSizeUnit = (int)iFD[i].Data[0]; break;
                     }
                 #endregion
 

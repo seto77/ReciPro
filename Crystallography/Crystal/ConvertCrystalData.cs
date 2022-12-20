@@ -969,13 +969,15 @@ public class ConvertCrystalData
         }
         //ここまででCIF_Groupクラスのリストが完成
 
-        string a = "", b = "", c = "", alpha = "", beta = "", gamma = "";
+        //格子定数は、CIFファイル中に何回も記載されている場合があるため、リストにする。
+        List<(int index, string value)> aList = new(), bList = new(), cList = new(), alphaList = new(), betaList = new(), gammaList = new();
+
         string name = "", sectionTitle = "", journalNameFull = "", journalCodenASTM = "";
         string volume = "", year = "", pageFirst = "", pageLast = "", issue = "";
-        StringBuilder journal = new StringBuilder();
+        var journal = new StringBuilder();
         List<string> spaceGroupNameHM = new(), spaceGroupNameHall = new();
         string chemical_formula_sum = "", chemical_formula_structural = "";
-        int symmetry_Int_Tables_number = -1;
+        var symmetry_Int_Tables_number = -1;
         var author = new List<string>();
         var operations = new List<string>();
 
@@ -988,12 +990,13 @@ public class ConvertCrystalData
                 if (label.StartsWith("_chemical_name", Ord)) name += data + " ";
 
                 //ここから格子定数
-                if (label == "_cell_length_a") a = data;
-                else if (label == "_cell_length_b") b = data;
-                else if (label == "_cell_length_c") c = data;
-                else if (label == "_cell_angle_alpha") alpha = data;
-                else if (label == "_cell_angle_beta") beta = data;
-                else if (label == "_cell_angle_gamma") gamma = data;
+                if (label == "_cell_length_a") aList.Add((i,data));
+                else if (label == "_cell_length_b") bList.Add((i, data));
+                else if (label == "_cell_length_c") cList.Add((i, data));
+                else if (label == "_cell_angle_alpha") alphaList.Add((i, data));
+                else if (label == "_cell_angle_beta" ) betaList.Add((i, data));
+                else if (label == "_cell_angle_gamma") gammaList.Add((i, data));
+
                 //ここからジャーナル情報
                 else if (label == "_publ_author_name") author.Add(data);
                 else if (label == "_publ_section_title") sectionTitle = data;
@@ -1014,10 +1017,41 @@ public class ConvertCrystalData
                 else if (label == "_symmetry_equiv_pos_as_xyz") operations.Add(data);
             }
 
-        if (a == "" || b == "" || c == "" || alpha == "" || beta == "" || gamma == "") return null;
+        if (aList.Count == 0 || bList.Count ==0 || cList.Count ==0 || alphaList.Count ==0 || betaList.Count == 0 || gammaList.Count == 0) return null;
 
         if (name.Length == 0 || name == "?" || name == "? ?" || name.Trim().Length == 0)
             name = chemical_formula_sum;
+
+        //"_atom_site_label"というラベルを含むCIF番号をリストする。 (最初の連続した番号のみを使う)
+        //さらに、格子定数Listの中で、どれが正しい値なのかを判別する
+        string a = "", b = "", c = "", alpha = "", beta = "", gamma = "";
+        var atomCIF = new List<List<(string Label, string Data)>>();
+        bool flag = false;
+        for (int i = 0; i < CIF.Count; i++)
+            if (flag || atomCIF.Count == 0)
+            {
+                if (CIF[i].Exists(item => item.Label == "_atom_site_label"))
+                {
+                    atomCIF.Add(CIF[i]);
+                    flag = true;
+                }
+                else if(atomCIF.Count != 0)
+                {
+                    flag = false;
+                    a = aList.Count == 1 ? aList[0].value : aList.Last(e => e.index < i).value;
+                    b = bList.Count == 1 ? bList[0].value : bList.Last(e => e.index < i).value;
+                    c = cList.Count == 1 ? cList[0].value : cList.Last(e => e.index < i).value;
+                    alpha = alphaList.Count == 1 ? alphaList[0].value : alphaList.Last(e => e.index < i).value;
+                    beta = betaList.Count == 1 ? betaList[0].value : betaList.Last(e => e.index < i).value;
+                    gamma = gammaList.Count == 1 ? gammaList[0].value : gammaList.Last(e => e.index < i).value;
+                }
+            }
+        if (a == "") a = aList[0].value;
+        if (b == "") b = bList[0].value;
+        if (c == "") c = cList[0].value;
+        if (alpha == "") alpha = alphaList[0].value;
+        if (beta == "") beta = betaList[0].value;
+        if (gamma == "") gamma = gammaList[0].value;
 
         #region 空間群を調べる部分
         //空間群を検索
@@ -1097,21 +1131,6 @@ public class ConvertCrystalData
         #endregion
 
         #endregion
-
-        //"_atom_site_label"というラベルを含むCIF番号をリストする。 (最初の連続した番号のみを使う)
-        var atomCIF = new List<List<(string Label, string Data)>>();
-        bool flag = false;
-        for (int i = 0; i < CIF.Count; i++)
-            if (flag || atomCIF.Count == 0)
-            {
-                if (CIF[i].Exists(item => item.Label == "_atom_site_label"))
-                {
-                    atomCIF.Add(CIF[i]);
-                    flag = true;
-                }
-                else
-                    flag = false;
-            }
 
         var atoms = new List<Atoms2>();
         foreach (var cif in atomCIF)

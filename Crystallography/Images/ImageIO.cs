@@ -1578,10 +1578,10 @@ public static class ImageIO
             Ring.Comments = "";
             Ring.SrcImgSize = new Size(t.ImageWidth, t.ImageLength);
 
-            Ring.SequentialImageIntensities = new List<List<double>>();
-            Ring.SequentialImageEnergy = new List<double>();
-            Ring.SequentialImageNames = new List<string>();
-            Ring.SequentialImagePulsePower = new List<double>();
+            Ring.SequentialImageIntensities = new List<List<double>>(t.NumberOfFrames);
+            Ring.SequentialImageEnergy = new List<double>(t.NumberOfFrames);
+            Ring.SequentialImageNames = new List<string>(t.NumberOfFrames);
+            Ring.SequentialImagePulsePower = new List<double>(t.NumberOfFrames);
 
             for (int j = 0; j < t.NumberOfFrames; j++)
             {
@@ -1617,6 +1617,10 @@ public static class ImageIO
 
             //Ring.BitsPerPixels = t.BitsPerSampleGray;
             Ring.ImageType = Ring.ImageTypeEnum.Tiff;
+
+            //TIA経由のTiffファイルだった時
+            if (t.Images.Count > 0)
+                Ring.TIA_PixelSize = t.Images[0].TIA_PixelSizeX;
         }
         catch (Exception e)
         {

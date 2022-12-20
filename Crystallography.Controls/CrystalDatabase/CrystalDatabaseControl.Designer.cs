@@ -149,6 +149,7 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(913, 508);
             this.dataGridView.TabIndex = 76;
+            this.dataGridView.VirtualMode = true;
             // 
             // nameDataGridViewTextBoxColumn
             // 

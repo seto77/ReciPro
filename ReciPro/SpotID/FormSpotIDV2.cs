@@ -26,8 +26,6 @@ public partial class FormSpotIDV2 : Form
 
     public FormMain FormMain;
 
-    public AreaDetector Detector;
-
     private bool skipEvent = false;
     public PointD DirectSpot => dataSet.DataTableSpot.DirectSpotPosition;
 
@@ -50,11 +48,21 @@ public partial class FormSpotIDV2 : Form
     public FormSpotIDV2()
     {
         InitializeComponent();
+        
         scalablePictureBoxAdvanced.Symbols = new List<ScalablePictureBox.Symbol>();
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewSpots, true, null);
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCandidates, true, null);
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewGrains, true, null);
+
+        waveLengthControl1.WaveSource = WaveSource.Electron;
+        waveLengthControl1.Energy = 200;
+
+        numericBoxCameraLength.ValueChanged += NumericBoxCameraLength_ValueChanged;
+        numericBoxPixelSize.ValueChanged += NumericBoxPixelSize_ValueChanged;
+        waveLengthControl1.WavelengthChanged += WaveLengthControl1_WavelengthChanged;
     }
+
+   
 
     private void FormSpotID_Load(object sender, EventArgs e)
     {
@@ -124,6 +132,10 @@ public partial class FormSpotIDV2 : Form
             var r = fit(direct);
             dataSet.DataTableSpot.Add(true, area, r.PrmsPv, r.PrmsBg, r.R);
         }
+        else if(fileName.EndsWith("tif") && Ring.TIA_PixelSize!=0)
+        {
+            numericBoxPixelSize.Value = waveLengthControl1.WaveLength * CameraLength / 2 * Ring.TIA_PixelSize*1E7;
+        }
 
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
 
@@ -181,6 +193,28 @@ public partial class FormSpotIDV2 : Form
     #endregion 画像読み込み関連
 
 
+    #region カメラ長、波長、ピクセルサイズが変更されたとき 
+    private void WaveLengthControl1_WavelengthChanged(object sender, EventArgs e)
+    {
+        if (dataSet.DataTableSpot.AreaDetector != null)
+            dataSet.DataTableSpot.AreaDetector.WaveLength = waveLengthControl1.WaveLength;
+        dataSet.DataTableSpot.ResetDspacing();
+    }
+
+    private void NumericBoxPixelSize_ValueChanged(object sender, EventArgs e)
+    {
+        if (dataSet.DataTableSpot.AreaDetector != null)
+            dataSet.DataTableSpot.AreaDetector.Resolution = numericBoxPixelSize.Value;
+        dataSet.DataTableSpot.ResetDspacing();
+    }
+
+    private void NumericBoxCameraLength_ValueChanged(object sender, EventArgs e)
+    {
+        if (dataSet.DataTableSpot.AreaDetector != null)
+            dataSet.DataTableSpot.AreaDetector.CameraLength = numericBoxCameraLength.Value;
+        dataSet.DataTableSpot.ResetDspacing();
+    }
+    #endregion
 
     private bool scalablePictureBoxAdvanced1_MouseDown2(object sender, MouseEventArgs e, Crystallography.PointD pt)
     {
@@ -476,6 +510,7 @@ public partial class FormSpotIDV2 : Form
             {
                 var area = dataSet.DataTableSpot.GetPrms(i).Range;
                 dataSet.DataTableSpot.SetPrms(i, area, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
+                dataSet.DataTableSpot.ResetDspacing();
             }
 
         bindingSourceObsSpots.DataMember = "DataTableSpot";
@@ -848,7 +883,7 @@ public partial class FormSpotIDV2 : Form
     private List<List<Grain>> identifySpots(List<Crystal> crystals)
     {
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
-        Detector = new AreaDetector(p.Width, p.Height, numericBoxPixelSize.Value, dataSet.DataTableSpot.DirectSpotPosition, waveLengthControl1.Property, CameraLength);
+        var Detector = new AreaDetector(p.Width, p.Height, numericBoxPixelSize.Value, dataSet.DataTableSpot.DirectSpotPosition, waveLengthControl1.Property, CameraLength);
         Detector.setMaxReciprocalZ();
 
         var crystalCount = crystals.Count;

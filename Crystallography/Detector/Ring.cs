@@ -306,9 +306,13 @@ namespace Crystallography
 		public static PixelUnitEnum PixelUnit;
 		*/
 
+        // DMファイルの為のプロパティ
         public static DigitalMicrograph.Property DigitalMicrographProperty;
 
+        //MRCファイルの為のプロパティ
         public static MRC MRC;
+
+        public static double TIA_PixelSize;
 
         /// <summary>
         /// 生データのピクセルあたりのビット数

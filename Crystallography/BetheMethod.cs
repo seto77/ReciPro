@@ -965,7 +965,7 @@ public class BetheMethod
                     bwSTEM.ReportProgress((int)(tempCoef * Interlocked.Increment(ref count)), "Calculating U matrix");//状況を報告
                     for (int j = 0; j < bLen; j++, k++)
                         U[m][k] = getU(AccVoltage, q + Beams[j] - Beams[i], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合
-                                                                                                                     //U[m][k] = getU(AccVoltage, q , -Beams[j] + Beams[i], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
+                        //U[m][k] = getU(AccVoltage, q , -Beams[j] + Beams[i], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
 
                     //var temp = new DMat(bLen, bLen, U[m]);
                     //U[m] = temp.ToRowMajorArray();

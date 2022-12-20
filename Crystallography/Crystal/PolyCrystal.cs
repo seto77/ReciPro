@@ -201,6 +201,9 @@ namespace Crystallography
                 length = max;
             }
             crystal.SetVectorOfG(detector.WaveLength / 2 / Math.Sin(Math.Atan(length / detector.CameraLength) / 2.0), detector.WaveSource);
+            if (crystal.VectorOfG.Count == 0)
+                return;
+
             var temp = new List<Vector3D>();
             foreach (var g in crystal.VectorOfG)
                 if (removeZeroIntensity)
