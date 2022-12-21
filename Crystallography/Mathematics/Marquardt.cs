@@ -312,7 +312,7 @@ namespace Crystallography
         /// <returns>Prms[i][j]はi番目のFunctionのj番目の最適パラメータ. Errorはまだ未実装. Rは残差</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static (double[][] Prms, double[][] Error, double R)
-            Solve(IEnumerable<(double[] x, double y, double w)> obsValues, IEnumerable<Function> functions, Precision precision = Precision.Medium)
+            Solve(in (double[] x, double y, double w)[] obsValues, Function[] functions,in  Precision precision = Precision.Medium)
         {
             #region 計算精度をセット
             int countMax = 200;
@@ -332,14 +332,13 @@ namespace Crystallography
             #endregion
 
             var obs = obsValues.AsParallel();
-            var funcs = functions.ToList();
-            int valuesLength = obs.Count(), totalPrmsLength = funcs.Sum(f => f.Length), funcLength = funcs.Count;
+            int valuesLength = obs.Count(), totalPrmsLength = functions.Sum(f => f.Length), funcLength = functions.Length;
             if (valuesLength == 0) return (null, null, double.PositiveInfinity);
             var weight = new DiagonalMatrix(valuesLength, valuesLength, obs.Select(o => o.w).ToArray());
             var rambda = 10.0;
             var alpha = new DMat(totalPrmsLength, totalPrmsLength);
             var beta = new DVec(totalPrmsLength);
-            var rCur = new DVec(obs.Select(v => v.y - funcs.Sum(f => f.GetValue(v.x))).ToArray());//現在の残差を計算
+            var rCur = new DVec(obs.Select(v => v.y - functions.Sum(f => f.GetValue(v.x))).ToArray());//現在の残差を計算
             var r2Cur = rCur * weight * rCur;//残差の二乗和を計算
 
             var renewAlpha = true;
@@ -353,8 +352,8 @@ namespace Crystallography
                     var jacob = DMat.OfRowArrays(obs.Select(o =>
                     {
                         var d = new double[totalPrmsLength];
-                        for (int j = 0, n = 0; j < funcLength; n += funcs[j].PrmLength, j++)
-                            Buffer.BlockCopy(funcs[j].GetDerivative(o.x), 0, d, n * 8, funcs[j].PrmLength * 8);
+                        for (int j = 0, n = 0; j < funcLength; n += functions[j].PrmLength, j++)
+                            Buffer.BlockCopy(functions[j].GetDerivative(o.x), 0, d, n * 8, functions[j].PrmLength * 8);
                         return d;
                     }).ToArray());
 
@@ -381,7 +380,7 @@ namespace Crystallography
                 }
 
                 var alphaTemp = alpha + DMat.OfDiagonalVector(alpha.Diagonal() * rambda);//alphaの対角成分に1+rambdaを掛ける。
-                if (alphaTemp.TryInverse(out Matrix alphaInv) == false)//逆行列を計算
+                if (!alphaTemp.TryInverse(out Matrix alphaInv))//逆行列を計算
                     return (null, null, double.PositiveInfinity); //失敗した場合は終了
 
                 //deltaベクトルを計算
@@ -393,10 +392,10 @@ namespace Crystallography
                             delta.Insert(i, 0);
 
                 //パラメータを変化させる
-                for (int j = 0, n = 0; j < funcLength; n += funcs[j].PrmLength, j++)
-                    funcs[j].AddPrms(delta.Skip(n).Take(funcs[j].PrmLength).ToArray());
+                for (int j = 0, n = 0; j < funcLength; n += functions[j].PrmLength, j++)
+                    functions[j].AddPrms(delta.Skip(n).Take(functions[j].PrmLength).ToArray());
 
-                var rNew = new DVec(obs.Select(v => v.y - funcs.Sum(f => f.GetValue(v.x))).ToArray());//新しいパラメータで残差を計算
+                var rNew = new DVec(obs.Select(v => v.y - functions.Sum(f => f.GetValue(v.x))).ToArray());//新しいパラメータで残差を計算
                 var r2New = rNew * weight * rNew; //残差の二乗和を計算
 
                 renewAlpha = r2New < r2Cur;
@@ -425,7 +424,7 @@ namespace Crystallography
                     else
                     {
                         rambda *= RambdaCoeff2;
-                        funcs.ForEach(f => f.RevertPrms());
+                        foreach (var f in functions) f.RevertPrms();
                     }
                 }
             }
@@ -451,7 +450,7 @@ namespace Crystallography
         /// <param name="a">積分強度 </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Lorenzian(double x, double x0, double h, double a) => a / (pi * h) / (1 + (x - x0) / h * (x - x0) / h);
+        public static double Lorenzian(in double x, in double x0, in double h, in double a) => a / (pi * h) / (1 + (x - x0) / h * (x - x0) / h);
 
         /// <summary>
         /// ローレンツ関数 2次元 (真円)
@@ -464,7 +463,7 @@ namespace Crystallography
         /// <param name="a">積分強度 </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Lorenzian(double x, double y, double x0, double y0, double h, double a)
+        public static double Lorenzian(in double x, in double y, in double x0, in double y0, in double h, in double a)
             => a / (2 * pi * h * h) / (1 + c * (x - x0) / h * (x - x0) / h + c * (y - y0) / h * (y - y0) / h);
 
         /// <summary>
@@ -480,7 +479,7 @@ namespace Crystallography
         /// <param name="a">積分強度 </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Lorenzian(double x, double y, double x0, double y0, double h1, double h2, double t, double a)
+        public static double Lorenzian(in double x, in double y, in double x0, in double y0, in double h1, in double h2, in double t, in double a)
         {
             double x1 = x - x0, y1 = y - y0; //中心へシフト
             double cos = Cos(t), sin = Sin(t);
@@ -497,7 +496,7 @@ namespace Crystallography
         /// <param name="a">積分強度 </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Gaussian(double x, double x0, double h, double a) => a * sqrtln2 / sqrtpi / h * Math.Exp(-ln2 * (x - x0) / h * (x - x0) / h);
+        public static double Gaussian(in double x, in double x0, in double h, in double a) => a * sqrtln2 / sqrtpi / h * Math.Exp(-ln2 * (x - x0) / h * (x - x0) / h);
 
         /// <summary>
         /// ガウス関数 2次元 (真円)
@@ -510,7 +509,7 @@ namespace Crystallography
         /// <param name="a">積分強度 </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Gaussian(double x, double y, double x0, double y0, double h, double a)
+        public static double Gaussian(in double x, in double y, in double x0, in double y0, in double h, in double a)
             => a * ln2 / pi / h / h * Exp(-ln2 * ((x - x0) * (x - x0) + (y - y0) * (y - y0)) / h / h);
 
         /// <summary>
@@ -526,7 +525,7 @@ namespace Crystallography
         /// <param name="a">積分強度 </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Gaussian(double x, double y, double x0, double y0, double h1, double h2, double t, double a)
+        public static double Gaussian(in double x, in double y, in double x0, in double y0, in double h1, in double h2, in double t, in double a)
         {
             double x1 = x - x0, y1 = y - y0; //中心へシフト
             double cos = Cos(t), sin = Sin(t);
@@ -544,7 +543,7 @@ namespace Crystallography
         /// <param name="a">積分強度 </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double PseudoVoigt(double x, double x0, double h, double eta, double a)
+        public static double PseudoVoigt(in double x, in double x0, in double h, in double eta, in double a)
             => eta * Lorenzian(x, x0, h, a) + (1 - eta) * Gaussian(x, x0, h, a);
 
         /// <summary>
@@ -560,7 +559,7 @@ namespace Crystallography
         /// <param name="a">積分強度 </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double PseudoVoigt(double x, double y, double x0, double y0, double h, double eta, double a)
+        public static double PseudoVoigt(in double x, in double y, in double x0, in double y0, in double h, in double eta, in double a)
             => eta * Lorenzian(x, y, x0, y0, h, a) + (1 - eta) * Gaussian(x, y, x0, y0, h, a);
 
         /// <summary>
@@ -577,7 +576,7 @@ namespace Crystallography
         /// <param name="a">積分強度 </param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double PseudoVoigt(double[] x, double x0, double y0, double hx, double hy, double t, double eta, double a)
+        public static double PseudoVoigt(in double[] x, in double x0, in double y0, in double hx, in double hy, in double t, in double eta, in double a)
         {
             double xShift = x[0] - x0, yShift = x[1] - y0; //中心へシフト
             double cos = Cos(t), sin = Sin(t);
@@ -596,7 +595,7 @@ namespace Crystallography
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double[] PseudoVoigtDiff(double[] x, double x0, double y0, double hx, double hy, double t, double eta, double a)
+        public static double[] PseudoVoigtDiff(in double[] x, in double x0, in double y0, in double hx, in double hy, in double t, in double eta, in double a)
         {
             double cos = Cos(t), sin = Sin(t);
             double hxInv = 1 / hx, hyInv = 1 / hy;
@@ -635,10 +634,10 @@ namespace Crystallography
         }
 
         [DllImport("Crystallography.Native.dll")]
-        private static extern void _PseudoVoigtDiff(double[] x, double x0, double y0, double hx, double hy, double t, double eta, double a, double[] results);
+        private static extern void _PseudoVoigtDiff(in double[] x, in double x0, in double y0, in double hx, in double hy, in double t, in double eta, in double a, in double[] results);
 
         [DllImport("Crystallography.Native.dll")]
-        private static extern void _PseudoVoigt(double[] x, double x0, double y0, double hx, double hy, double t, double eta, double a, double[] results);
+        private static extern void _PseudoVoigt(in double[] x, double x0, in double y0, in double hx, in double hy, in double t, in double eta, in double a, in double[] results);
 
         #endregion 組み込み関数
     }

@@ -32,6 +32,8 @@ public partial class FormSpotIDV2 : Form
     public double PixelSize { set => numericBoxPixelSize.Value = value; get => numericBoxPixelSize.Value; }
     public double CameraLength { set => numericBoxCameraLength.Value = value; get => numericBoxCameraLength.Value; }
 
+    public double WaveLength => waveLengthControl1.WaveLength;
+
     public double ToleranceLength => numericBoxAcceptableError.Value * 0.01;
     public double ToleranceAngle => Math.Asin(ToleranceLength) / 2;
 
@@ -56,10 +58,6 @@ public partial class FormSpotIDV2 : Form
 
         waveLengthControl1.WaveSource = WaveSource.Electron;
         waveLengthControl1.Energy = 200;
-
-        numericBoxCameraLength.ValueChanged += NumericBoxCameraLength_ValueChanged;
-        numericBoxPixelSize.ValueChanged += NumericBoxPixelSize_ValueChanged;
-        waveLengthControl1.WavelengthChanged += WaveLengthControl1_WavelengthChanged;
     }
 
    
@@ -107,8 +105,8 @@ public partial class FormSpotIDV2 : Form
                 waveLengthControl1.Energy = Ring.DigitalMicrographProperty.AccVoltage / 1000.0;
                 numericBoxPixelSize.Value = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000.0;
                 CameraLength = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000 / Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.DigitalMicrographProperty.PixelScale / 2));
-                double pixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron;
-                double scale = Ring.DigitalMicrographProperty.PixelScale;
+                var pixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron;
+                var scale = Ring.DigitalMicrographProperty.PixelScale;
             }
         }
         else if (fileName.EndsWith("mrc"))
@@ -132,10 +130,8 @@ public partial class FormSpotIDV2 : Form
             var r = fit(direct);
             dataSet.DataTableSpot.Add(true, area, r.PrmsPv, r.PrmsBg, r.R);
         }
-        else if(fileName.EndsWith("tif") && Ring.TIA_PixelSize!=0)
-        {
-            numericBoxPixelSize.Value = waveLengthControl1.WaveLength * CameraLength / 2 * Ring.TIA_PixelSize*1E7;
-        }
+        else if (fileName.EndsWith("tif") && Ring.TIA_PixelSize != 0)
+            numericBoxPixelSize.Value = WaveLength * CameraLength / Ring.TIA_PixelSize * 1E-11;
 
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
 
@@ -403,7 +399,7 @@ public partial class FormSpotIDV2 : Form
 
         //1回目. 粗く検索
         var pixels = getPixels(srcP, radius, pt.X, pt.Y);
-        var funcs = new List<MQ.Function>
+        var funcs = new MQ.Function[]
             {
                 new MQ.Function(MQ.FuncType.PV2E, pt.X, pt.Y, 3.1, 2.9, 0, 0.5, pixels.Sum(p => p.y)),//疑フォークト
                 new MQ.Function(MQ.FuncType.Plane, 0, 0, 0)//バックグラウンド
@@ -487,8 +483,6 @@ public partial class FormSpotIDV2 : Form
         }
     }
 
-
-
     private void buttonRefit_Click(object sender, EventArgs e)
     {
         Enabled = false;
@@ -561,23 +555,23 @@ public partial class FormSpotIDV2 : Form
         var includedArea = Enumerable.Range(0, width * height).Except(excludedArea).ToList();
 
         //ここまで
-        var pixelsBG = new List<(double[] x, double y, double w)>();
+        var pixelsBGList = new List<(double[] x, double y, double w)>();
         foreach (var index in includedArea)
         {
             int x = index % width, y = index / width;
             double range = numericBoxFittingRange.Value;
             if (x > range && x < width - range && y > range && y < height - range)
-                pixelsBG.Add((new double[] { x, y }, srcValues[index], 1));
+                pixelsBGList.Add((new double[] { x, y }, srcValues[index], 1));
         }
 
         //pixelsBGの数が大きすぎる場合は時間がかかるので、減らす
-        while (pixelsBG.Count > 50000)
+        while (pixelsBGList.Count > 50000)
         {
-            pixelsBG = pixelsBG.Where((b, i) => i % 2 == 0).ToList();
+            pixelsBGList = pixelsBGList.Where((b, i) => i % 2 == 0).ToList();
 
         }
 
-        var r = MQ.Solve(pixelsBG, functions, MQ.Precision.Low);
+        var r = MQ.Solve(pixelsBGList.ToArray(), functions.ToArray(), MQ.Precision.Low);
 
         for (int i = 0; i < prmsList.Count; i++)
         {
@@ -824,7 +818,6 @@ public partial class FormSpotIDV2 : Form
     #endregion
 
     #region スポット同定
-
     private void buttonIdentifySpots_Click(object sender, EventArgs e)
     {
         sw.Restart();

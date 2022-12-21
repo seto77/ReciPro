@@ -72,7 +72,7 @@ namespace Crystallography.Controls
 
         public Type Execute<Type>(Delegate process) => Execute<Type>(context, process, null);
 
-        public void Execute(Control _context, Delegate process) => Execute(_context, process, null);
+        public static void Execute(Control _context, Delegate process) => Execute(_context, process, null);
 
         public void Execute(Delegate process) => Execute(context, process, null);
 
@@ -100,7 +100,7 @@ namespace Crystallography.Controls
                 return (Type)process.DynamicInvoke(args);
         }
 
-        public void Execute(Control _context, Delegate process, params object[] args)
+        public static void Execute(Control _context, Delegate process, params object[] args)
         {
             #region
             /*if (context == null)

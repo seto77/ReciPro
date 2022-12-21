@@ -184,7 +184,6 @@ namespace ReciPro
             // scalablePictureBoxAdvanced
             // 
             this.scalablePictureBoxAdvanced.CopyButtonVisible = true;
-            this.scalablePictureBoxAdvanced.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;
             this.scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
@@ -204,6 +203,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
             this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(604, 609);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
+            this.scalablePictureBoxAdvanced.SkipDrawing = false;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
             this.scalablePictureBoxAdvanced.StatusProgress = 0D;
             this.scalablePictureBoxAdvanced.StatusVisible = false;
@@ -218,7 +218,6 @@ namespace ReciPro
             // 
             this.panel1.Controls.Add(this.buttonPixelToPixel);
             this.panel1.Controls.Add(this.buttonCopyMetafile);
-            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
@@ -941,6 +940,7 @@ namespace ReciPro
             this.numericBoxCameraLength.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCameraLength.ThonsandsSeparator = true;
             this.numericBoxCameraLength.Value = 1000D;
+            this.numericBoxCameraLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxCameraLength_ValueChanged);
             // 
             // numericBoxPixelSize
             // 
@@ -958,6 +958,7 @@ namespace ReciPro
             this.numericBoxPixelSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelSize.ThonsandsSeparator = true;
             this.numericBoxPixelSize.Value = 0.05D;
+            this.numericBoxPixelSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxPixelSize_ValueChanged);
             // 
             // waveLengthControl1
             // 
@@ -971,6 +972,7 @@ namespace ReciPro
             this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Xray;
             this.waveLengthControl1.XrayWaveSourceElementNumber = 0;
             this.waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
+            this.waveLengthControl1.WavelengthChanged += new System.EventHandler(this.WaveLengthControl1_WavelengthChanged);
             // 
             // checkBoxShowDebyeRing
             // 
