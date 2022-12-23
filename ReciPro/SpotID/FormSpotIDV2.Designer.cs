@@ -48,9 +48,6 @@ namespace ReciPro
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonPixelToPixel = new System.Windows.Forms.Button();
-            this.buttonCopyMetafile = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonDeleteSpot = new System.Windows.Forms.Button();
@@ -97,6 +94,7 @@ namespace ReciPro
             this.numericBoxMaxNumOfG = new Crystallography.Controls.NumericBox();
             this.numericBoxAcceptableError = new Crystallography.Controls.NumericBox();
             this.numericBoxMaxGrainNum = new Crystallography.Controls.NumericBox();
+            this.checkBoxShowZoneAxis = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCalcSpotSymbol = new System.Windows.Forms.CheckBox();
             this.radioButtonMultiGrain = new System.Windows.Forms.RadioButton();
             this.radioButtonSingleGrain = new System.Windows.Forms.RadioButton();
@@ -147,7 +145,6 @@ namespace ReciPro
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).BeginInit();
@@ -176,7 +173,6 @@ namespace ReciPro
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.scalablePictureBoxAdvanced);
-            this.splitContainer1.Panel1.Controls.Add(this.panel1);
             this.splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
             // 
             // splitContainer1.Panel2
@@ -206,7 +202,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(604, 576);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(604, 602);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.SkipDrawing = false;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
@@ -218,27 +214,6 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MouseDown2 += new Crystallography.Controls.ScalablePictureBoxAdvanced.MouseEvent(this.scalablePictureBoxAdvanced1_MouseDown2);
             this.scalablePictureBoxAdvanced.StatusChanged += new System.EventHandler(this.scalablePictureBoxAdvanced_StatusChanged);
             this.scalablePictureBoxAdvanced.FilterChanged += new System.EventHandler(this.ScalablePictureBoxAdvanced_FilterChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttonPixelToPixel);
-            this.panel1.Controls.Add(this.buttonCopyMetafile);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
-            // buttonPixelToPixel
-            // 
-            resources.ApplyResources(this.buttonPixelToPixel, "buttonPixelToPixel");
-            this.buttonPixelToPixel.Name = "buttonPixelToPixel";
-            this.buttonPixelToPixel.UseVisualStyleBackColor = true;
-            this.buttonPixelToPixel.Click += new System.EventHandler(this.buttonPixelToPixel_Click);
-            // 
-            // buttonCopyMetafile
-            // 
-            resources.ApplyResources(this.buttonCopyMetafile, "buttonCopyMetafile");
-            this.buttonCopyMetafile.Name = "buttonCopyMetafile";
-            this.buttonCopyMetafile.UseVisualStyleBackColor = true;
-            this.buttonCopyMetafile.Click += new System.EventHandler(this.buttonCopyMetafile_Click);
             // 
             // groupBox1
             // 
@@ -424,7 +399,6 @@ namespace ReciPro
             this.numericBoxFittingRange.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxFittingRange, resources.GetString("numericBoxFittingRange.ToolTip"));
             this.numericBoxFittingRange.Value = 20D;
-            this.numericBoxFittingRange.Load += new System.EventHandler(this.numericBoxFittingRange_Load);
             // 
             // buttonGlobalFit
             // 
@@ -686,6 +660,7 @@ namespace ReciPro
             this.groupBox3.Controls.Add(this.numericBoxMaxNumOfG);
             this.groupBox3.Controls.Add(this.numericBoxAcceptableError);
             this.groupBox3.Controls.Add(this.numericBoxMaxGrainNum);
+            this.groupBox3.Controls.Add(this.checkBoxShowZoneAxis);
             this.groupBox3.Controls.Add(this.checkBoxShowCalcSpotSymbol);
             this.groupBox3.Controls.Add(this.radioButtonMultiGrain);
             this.groupBox3.Controls.Add(this.radioButtonSingleGrain);
@@ -777,6 +752,15 @@ namespace ReciPro
             this.numericBoxMaxGrainNum.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMaxGrainNum.ThonsandsSeparator = true;
             this.numericBoxMaxGrainNum.Value = 2D;
+            // 
+            // checkBoxShowZoneAxis
+            // 
+            resources.ApplyResources(this.checkBoxShowZoneAxis, "checkBoxShowZoneAxis");
+            this.checkBoxShowZoneAxis.Checked = true;
+            this.checkBoxShowZoneAxis.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowZoneAxis.Name = "checkBoxShowZoneAxis";
+            this.checkBoxShowZoneAxis.UseVisualStyleBackColor = true;
+            this.checkBoxShowZoneAxis.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
             // 
             // checkBoxShowCalcSpotSymbol
             // 
@@ -1160,8 +1144,6 @@ namespace ReciPro
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -1216,9 +1198,7 @@ namespace ReciPro
         private System.Windows.Forms.DataGridViewTextBoxColumn assignedSpotsDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.CheckBox checkBoxIgnoreMultipleDiffraction;
-        private System.Windows.Forms.Button buttonPixelToPixel;
         private System.Windows.Forms.CheckBox checkBoxShowDebyeRing;
-        private System.Windows.Forms.Button buttonCopyMetafile;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIdentifySpot;
         public System.Windows.Forms.BindingSource bindingSourceObsSpots;
         public DataSetReciPro dataSet;
@@ -1256,7 +1236,6 @@ namespace ReciPro
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonDonut;
         private Crystallography.Controls.NumericBox numericBoxDonut;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox checkBoxDetailsOfFunction;
@@ -1285,5 +1264,6 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyAsMetafileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyAsBitmapToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBoxShowZoneAxis;
     }
 }

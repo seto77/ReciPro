@@ -138,6 +138,8 @@ public partial class FormMain : Form
     private readonly Stopwatch sw = new();
     public bool SkipDrawing { get; set; } = false;
 
+    public string CurrentZoneAxis { get; set; } = "";
+
     #endregion
 
     #region コンストラクト、ロード
@@ -1478,6 +1480,8 @@ public partial class FormMain : Form
             labelCurrentIndexU.Text = U.ToString();
             labelCurrentIndexV.Text = V.ToString();
             labelCurrentIndexW.Text = W.ToString();
+
+            CurrentZoneAxis = $"[{U} {V} {W}]";
         }
     }
     #endregion

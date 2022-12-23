@@ -1,4 +1,5 @@
-﻿using ImagingSolution.Control;
+﻿using Crystallography.Controls;
+using ImagingSolution.Control;
 using MathNet.Numerics;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -78,7 +79,6 @@ public partial class FormSpotIDV2 : Form
     }
 
     #endregion ロード, クローズ関連
-
 
     private void clearStatusLabel() => toolStripStatusLabelFindSpot.Text = toolStripStatusLabelIdentifySpot.Text =
             toolStripStatusLabelImageFilter.Text = toolStripStatusLabelRefine.Text = "";
@@ -1114,9 +1114,9 @@ public partial class FormSpotIDV2 : Form
             });
 
             var (Phi, Theta, Psi) = Euler.GetEulerAngle(initialRotation);
-            var r = MathNet.Numerics.FindMinimum.OfFunction(func, Phi, Theta, Psi);
+            var (P0, P1, P2) = FindMinimum.OfFunction(func, Phi, Theta, Psi);
 
-            return (Euler.SetEulerAngle(r.Item1, r.Item2, r.Item3), func(r.Item1, r.Item2, r.Item3) / v1.Length);
+            return (Euler.SetEulerAngle(P0, P1, P2), func(P0, P1, P2) / v1.Length);
         }
     }
 
@@ -1336,6 +1336,9 @@ public partial class FormSpotIDV2 : Form
 
             scalablePictureBoxAdvanced.Symbols.AddRange(calcSpots);
 
+            scalablePictureBoxAdvanced.ScalablePictureBox.Title = (FormMain.CurrentZoneAxis, new Font("Arial", 20f), Color.White, Color.Red); 
+
+
             checkBoxShowObsSpots_CheckedChanged(sender, e);
             //scalablePictureBoxAdvanced.Refresh(); //上のイベントで呼ばれるので、コメントアウト
         }
@@ -1370,6 +1373,8 @@ public partial class FormSpotIDV2 : Form
                 s.LabelVisible = checkBoxShowCalcSpotLabel.Checked;
             }
         }
+        scalablePictureBoxAdvanced.ScalablePictureBox.TitleVisible = checkBoxShowZoneAxis.Checked;
+
         scalablePictureBoxAdvanced.Refresh();
     }
 
@@ -1381,9 +1386,9 @@ public partial class FormSpotIDV2 : Form
     {
         if (scalablePictureBoxAdvanced.PseudoBitmap != null && scalablePictureBoxAdvanced.PseudoBitmap.Width != 0)
         {
-            this.Size = new Size(
-                this.Size.Width - scalablePictureBoxAdvanced.PictureSize.Width + scalablePictureBoxAdvanced.PseudoBitmap.Width,
-                this.Size.Height - scalablePictureBoxAdvanced.PictureSize.Height + scalablePictureBoxAdvanced.PseudoBitmap.Height
+            Size = new Size(
+                Size.Width - scalablePictureBoxAdvanced.PictureSize.Width + scalablePictureBoxAdvanced.PseudoBitmap.Width,
+                Size.Height - scalablePictureBoxAdvanced.PictureSize.Height + scalablePictureBoxAdvanced.PseudoBitmap.Height
                 );
         }
     }
@@ -1392,12 +1397,8 @@ public partial class FormSpotIDV2 : Form
     {
         SetCrystal();
         for (int i = 0; i < scalablePictureBoxAdvanced.Symbols.Count; i++)
-        {
             if (scalablePictureBoxAdvanced.Symbols[i].Shape == ScalablePictureBox.SymbolShape.Circle)
-            {
                 scalablePictureBoxAdvanced.Symbols[i].SymbolVisible = checkBoxShowDebyeRing.Checked;
-            }
-        }
         scalablePictureBoxAdvanced.Refresh();
     }
 
@@ -1427,43 +1428,6 @@ public partial class FormSpotIDV2 : Form
         scalablePictureBoxAdvanced.Refresh();
         */
     }
-
-    #region メタファイル関連
-
-    private void buttonCopyMetafile_Click(object sender, EventArgs e)
-    {
-        var grfx = CreateGraphics();
-        var ipHdc = grfx.GetHdc();
-        var ms = new MemoryStream();
-        var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
-        grfx.ReleaseHdc(ipHdc);
-        grfx.Dispose();
-        DrawMetafile(mf);
-        ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
-    }
-
-    //MetaFileに描画
-    public void DrawMetafile(Metafile mf)
-    {
-        if (scalablePictureBoxAdvanced.PseudoBitmap == null || scalablePictureBoxAdvanced.PseudoBitmap.Width <= 0 || scalablePictureBoxAdvanced.PseudoBitmap.Height <= 0) return;
-        Graphics g = Graphics.FromImage(mf);
-        //gMain.Clear(colorControlBack.Color);
-        //gMain.SmoothingMode = SmoothingMode.AntiAlias;
-        //this.DoubleBuffered = true;
-        //gMain.FillRectangle(new SolidBrush(colorControlBack.Color), new Rectangle(0, 0, pictureBoxMain.Width, pictureBoxMain.Height));
-        //gMain.Clear(colorControlBack.Color);
-
-        float radius = 5f;
-        foreach (var s in scalablePictureBoxAdvanced.Symbols.Where(symbol => symbol.Tag == tagObsSpot))
-        {
-            g.DrawEllipse(new Pen(Color.LightGreen, 1f), new RectangleF((float)s.CrossPosition.X - radius, (float)s.CrossPosition.Y - radius, radius * 2, radius * 2));
-        }
-
-        g.Dispose();
-    }
-
-    #endregion
-
 
     #region Refine thickness and direction機能
     private void ButtonRefineThicknessAndDirection_Click(object sender, EventArgs e)
@@ -1575,10 +1539,6 @@ public partial class FormSpotIDV2 : Form
 
     #endregion
 
-    private void numericBoxFittingRange_Load(object sender, EventArgs e)
-    {
-
-    }
 
     private void buttonDonut_Click(object sender, EventArgs e)
     {
@@ -1627,29 +1587,15 @@ public partial class FormSpotIDV2 : Form
     }
 
     #region 表示画像のコピー、保存
-    private void saveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        scalablePictureBoxAdvanced.SaveAsMetafile();
-    }
+    private void saveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => scalablePictureBoxAdvanced.SaveAsMetafile();
 
-    private void saveAsBitmapToolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-        scalablePictureBoxAdvanced.SaveAsPNG();
-    }
+    private void saveAsBitmapToolStripMenuItem1_Click(object sender, EventArgs e) => scalablePictureBoxAdvanced.SaveAsPNG();
 
-    private void copyAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        scalablePictureBoxAdvanced.copyAsMetafile();
-    }
+    private void copyAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => scalablePictureBoxAdvanced.copyAsMetafile();
 
-    private void copyAsBitmapToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        scalablePictureBoxAdvanced.CopyAsBitmap();
-    }
-
-    
-
+    private void copyAsBitmapToolStripMenuItem_Click(object sender, EventArgs e) => scalablePictureBoxAdvanced.CopyAsBitmap();
 
     #endregion
 
+    
 }

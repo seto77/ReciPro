@@ -72,14 +72,14 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+    <value>0, 0</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="scalablePictureBoxAdvanced.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 751</value>
+    <value>604, 777</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="scalablePictureBoxAdvanced.TabIndex" type="System.Int32, mscorlib">
@@ -96,105 +96,6 @@
   </data>
   <data name="&gt;&gt;scalablePictureBoxAdvanced.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="buttonPixelToPixel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonPixelToPixel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonPixelToPixel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="buttonPixelToPixel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonPixelToPixel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 0</value>
-  </data>
-  <data name="buttonPixelToPixel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 26</value>
-  </data>
-  <data name="buttonPixelToPixel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="buttonPixelToPixel.Text" xml:space="preserve">
-    <value>Pixel to Pixel</value>
-  </data>
-  <data name="&gt;&gt;buttonPixelToPixel.Name" xml:space="preserve">
-    <value>buttonPixelToPixel</value>
-  </data>
-  <data name="&gt;&gt;buttonPixelToPixel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonPixelToPixel.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;buttonPixelToPixel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonCopyMetafile.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonCopyMetafile.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonCopyMetafile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="buttonCopyMetafile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonCopyMetafile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="buttonCopyMetafile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 26</value>
-  </data>
-  <data name="buttonCopyMetafile.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="buttonCopyMetafile.Text" xml:space="preserve">
-    <value>Metafile</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyMetafile.Name" xml:space="preserve">
-    <value>buttonCopyMetafile</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyMetafile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyMetafile.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyMetafile.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 26</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -1357,6 +1258,39 @@ and the fitting range in the right box .</value>
   <data name="&gt;&gt;numericBoxMaxGrainNum.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="checkBoxShowZoneAxis.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 133</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 21</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Text" xml:space="preserve">
+    <value>Show zone axis</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowZoneAxis.Name" xml:space="preserve">
+    <value>checkBoxShowZoneAxis</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowZoneAxis.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowZoneAxis.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowZoneAxis.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="checkBoxShowCalcSpotSymbol.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1364,7 +1298,7 @@ and the fitting range in the right box .</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 160</value>
+    <value>7, 133</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 21</value>
@@ -1385,7 +1319,7 @@ and the fitting range in the right box .</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;checkBoxShowCalcSpotSymbol.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="radioButtonMultiGrain.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1412,7 +1346,7 @@ and the fitting range in the right box .</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;radioButtonMultiGrain.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="radioButtonSingleGrain.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1439,7 +1373,7 @@ and the fitting range in the right box .</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;radioButtonSingleGrain.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1448,7 +1382,7 @@ and the fitting range in the right box .</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 133</value>
+    <value>24, 155</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 21</value>
@@ -1469,7 +1403,7 @@ and the fitting range in the right box .</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;checkBoxShowCalcSpotLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="dataGridViewGrains.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1511,7 +1445,7 @@ and the fitting range in the right box .</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;dataGridViewGrains.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="dataGridViewCandidates.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left</value>
@@ -1550,7 +1484,7 @@ and the fitting range in the right box .</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;dataGridViewCandidates.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1577,7 +1511,7 @@ and the fitting range in the right box .</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;checkBoxIgnoreMultipleDiffraction.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1607,7 +1541,7 @@ and the fitting range in the right box .</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;buttonRefineThicknessAndDirection.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="buttonStop.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1634,7 +1568,7 @@ and the fitting range in the right box .</value>
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 590</value>
@@ -1880,7 +1814,7 @@ and the fitting range in the right box .</value>
     <value>110, 17</value>
   </metadata>
   <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>101, 22</value>
   </data>
   <data name="readToolStripMenuItem.Text" xml:space="preserve">
     <value>Read</value>
@@ -1898,25 +1832,25 @@ and the fitting range in the right box .</value>
     <value>as Image (PNG format)</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>101, 22</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>130, 22</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>as Metafile</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>130, 22</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
     <value>as Image</value>
   </data>
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>101, 22</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy</value>

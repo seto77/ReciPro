@@ -368,6 +368,15 @@ public partial class ScalablePictureBox : UserControl
     private bool vScrollBarVisible = false;
 
     /// <summary>
+    /// クライアント領域の左上にタイトルを表示するか
+    /// </summary>
+    public bool TitleVisible { get; set; } = false;
+    public (string Text, Font Font, Color Color1, Color Color2) Title { get; set; }
+
+    
+    #endregion プロパティ
+
+    /// <summary>
     /// スクロールバーが表示されているかどうかを取得する。読み取り専用.
     /// </summary>
     public bool ScrollBarVisible => hScrollBar.Visible || vScrollBarVisible;
@@ -377,7 +386,7 @@ public partial class ScalablePictureBox : UserControl
     /// </summary>
     public RectangleD DrawingArea => PseudoBitmap.GetDrawingArea(Center, Zoom, pictureBox.ClientSize);
 
-    #endregion プロパティ
+
 
     /// <summary>
     /// centerの位置が適切かどうか(=はみ出していないか)チェックする
@@ -622,68 +631,85 @@ public partial class ScalablePictureBox : UserControl
         }
 
         //drawSymbols(e)
-        if (!this.DesignMode && Symbols != null)
-            foreach (var s in Symbols)
-            {
-                if (s.SymbolVisible)
+        if (!DesignMode)
+        {
+            if (Symbols != null)
+                foreach (var s in Symbols)
                 {
-                    var ff = new FontFamily("Arial");
-                    if (s.Shape == SymbolShape.Cross || s.Shape == SymbolShape.CircleAndCross)
+                    if (s.SymbolVisible)
                     {
-                        Pen pen1 = new(new SolidBrush(s.CrossColor1)), pen2 = new(new SolidBrush(s.CrossColor2));
-                        pen1.Width = pen2.Width = s.Bold ? 2f : 1f;
-                        var pt = ConvertToClientPt(s.CrossPosition).ToPointF();
-                        if (pt.X > -pictureBox.ClientSize.Width && pt.X < 2 * pictureBox.ClientSize.Width && pt.Y > -pictureBox.ClientSize.Height && pt.Y < 2 * pictureBox.ClientSize.Height)
+                        var ff = new FontFamily("Arial");
+                        if (s.Shape == SymbolShape.Cross || s.Shape == SymbolShape.CircleAndCross)
                         {
-                            g.DrawLine(pen2, new PointF(pt.X - s.CrossSize + 1, pt.Y - s.CrossSize - 1), new PointF(pt.X + s.CrossSize + 1, pt.Y + s.CrossSize - 1));
-                            g.DrawLine(pen2, new PointF(pt.X - s.CrossSize - 1, pt.Y - s.CrossSize + 1), new PointF(pt.X + s.CrossSize - 1, pt.Y + s.CrossSize + 1));
-                            g.DrawLine(pen2, new PointF(pt.X + s.CrossSize - 1, pt.Y - s.CrossSize - 1), new PointF(pt.X - s.CrossSize - 1, pt.Y + s.CrossSize - 1));
-                            g.DrawLine(pen2, new PointF(pt.X + s.CrossSize + 1, pt.Y - s.CrossSize + 1), new PointF(pt.X - s.CrossSize + 1, pt.Y + s.CrossSize + 1));
-
-                            g.DrawLine(pen1, new PointF(pt.X - s.CrossSize, pt.Y - s.CrossSize), new PointF(pt.X + s.CrossSize, pt.Y + s.CrossSize));
-                            g.DrawLine(pen1, new PointF(pt.X + s.CrossSize, pt.Y - s.CrossSize), new PointF(pt.X - s.CrossSize, pt.Y + s.CrossSize));
-                            pen1.Width = pen2.Width = 1f;
-                            if (s.LabelVisible)
+                            Pen pen1 = new(new SolidBrush(s.CrossColor1)), pen2 = new(new SolidBrush(s.CrossColor2));
+                            pen1.Width = pen2.Width = s.Bold ? 2f : 1f;
+                            var pt = ConvertToClientPt(s.CrossPosition).ToPointF();
+                            if (pt.X > -pictureBox.ClientSize.Width && pt.X < 2 * pictureBox.ClientSize.Width && pt.Y > -pictureBox.ClientSize.Height && pt.Y < 2 * pictureBox.ClientSize.Height)
                             {
-                                var gp = new GraphicsPath();
-                                gp.AddString(s.Label, ff, (int)FontStyle.Bold, s.Bold ? 18f : 16f, new PointF(pt.X + 5, pt.Y + 5), StringFormat.GenericDefault);
+                                g.DrawLine(pen2, new PointF(pt.X - s.CrossSize + 1, pt.Y - s.CrossSize - 1), new PointF(pt.X + s.CrossSize + 1, pt.Y + s.CrossSize - 1));
+                                g.DrawLine(pen2, new PointF(pt.X - s.CrossSize - 1, pt.Y - s.CrossSize + 1), new PointF(pt.X + s.CrossSize - 1, pt.Y + s.CrossSize + 1));
+                                g.DrawLine(pen2, new PointF(pt.X + s.CrossSize - 1, pt.Y - s.CrossSize - 1), new PointF(pt.X - s.CrossSize - 1, pt.Y + s.CrossSize - 1));
+                                g.DrawLine(pen2, new PointF(pt.X + s.CrossSize + 1, pt.Y - s.CrossSize + 1), new PointF(pt.X - s.CrossSize + 1, pt.Y + s.CrossSize + 1));
 
-                                if (s.Bold)
+                                g.DrawLine(pen1, new PointF(pt.X - s.CrossSize, pt.Y - s.CrossSize), new PointF(pt.X + s.CrossSize, pt.Y + s.CrossSize));
+                                g.DrawLine(pen1, new PointF(pt.X + s.CrossSize, pt.Y - s.CrossSize), new PointF(pt.X - s.CrossSize, pt.Y + s.CrossSize));
+                                pen1.Width = pen2.Width = 1f;
+                                if (s.LabelVisible)
                                 {
-                                    g.FillPath(new SolidBrush(s.CrossColor2), gp);
-                                    g.DrawPath(pen1, gp);
-                                }
-                                else
-                                {
-                                    g.FillPath(new SolidBrush(s.CrossColor1), gp);
-                                    g.DrawPath(pen2, gp);
+                                    var gp = new GraphicsPath();
+                                    gp.AddString(s.Label, ff, (int)FontStyle.Bold, s.Bold ? 18f : 16f, new PointF(pt.X + 5, pt.Y + 5), StringFormat.GenericDefault);
+
+                                    if (s.Bold)
+                                    {
+                                        g.FillPath(new SolidBrush(s.CrossColor2), gp);
+                                        g.DrawPath(pen1, gp);
+                                    }
+                                    else
+                                    {
+                                        g.FillPath(new SolidBrush(s.CrossColor1), gp);
+                                        g.DrawPath(pen2, gp);
+                                    }
                                 }
                             }
                         }
-                    }
-                    if (s.Shape == SymbolShape.Circle || s.Shape == SymbolShape.CircleAndCross)
-                    {
-                        var pen1 = new Pen(Color.FromArgb(128, s.CircleColor)) { Width = s.Bold ? 2f : 1f };
+                        if (s.Shape == SymbolShape.Circle || s.Shape == SymbolShape.CircleAndCross)
+                        {
+                            var pen1 = new Pen(Color.FromArgb(128, s.CircleColor)) { Width = s.Bold ? 2f : 1f };
 
-                        var pt = ConvertToClientPt(s.CircleCenter).ToPointF();
-                        if (pt.X > -pictureBox.ClientSize.Width && pt.X < 2 * pictureBox.ClientSize.Width && pt.Y > -pictureBox.ClientSize.Height && pt.Y < 2 * pictureBox.ClientSize.Height)
-                        {
-                            var rect = ConvertToClientRect(new RectangleD(s.CircleCenter.X - s.CircleRadius, s.CircleCenter.Y - s.CircleRadius, s.CircleRadius * 2, s.CircleRadius * 2)).ToRectangleF();
-                            g.DrawEllipse(pen1, rect);
+                            var pt = ConvertToClientPt(s.CircleCenter).ToPointF();
+                            if (pt.X > -pictureBox.ClientSize.Width && pt.X < 2 * pictureBox.ClientSize.Width && pt.Y > -pictureBox.ClientSize.Height && pt.Y < 2 * pictureBox.ClientSize.Height)
+                            {
+                                var rect = ConvertToClientRect(new RectangleD(s.CircleCenter.X - s.CircleRadius, s.CircleCenter.Y - s.CircleRadius, s.CircleRadius * 2, s.CircleRadius * 2)).ToRectangleF();
+                                g.DrawEllipse(pen1, rect);
+                            }
                         }
-                    }
-                    if (s.Shape == SymbolShape.Line)
-                    {
-                        var pen1 = new Pen(Color.FromArgb(128, s.LineColor)) { Width = 2f };
-                        var pt1 = ConvertToClientPt(s.LinePosition1).ToPointF();
-                        var pt2 = ConvertToClientPt(s.LinePosition2).ToPointF();
-                        if (pt1.X > -pictureBox.ClientSize.Width && pt1.X < 2 * pictureBox.ClientSize.Width && pt1.Y > -pictureBox.ClientSize.Height && pt1.Y < 2 * pictureBox.ClientSize.Height)
+                        if (s.Shape == SymbolShape.Line)
                         {
-                            g.DrawLine(pen1, pt1, pt2);
+                            var pen1 = new Pen(Color.FromArgb(128, s.LineColor)) { Width = 2f };
+                            var pt1 = ConvertToClientPt(s.LinePosition1).ToPointF();
+                            var pt2 = ConvertToClientPt(s.LinePosition2).ToPointF();
+                            if (pt1.X > -pictureBox.ClientSize.Width && pt1.X < 2 * pictureBox.ClientSize.Width && pt1.Y > -pictureBox.ClientSize.Height && pt1.Y < 2 * pictureBox.ClientSize.Height)
+                            {
+                                g.DrawLine(pen1, pt1, pt2);
+                            }
                         }
                     }
                 }
+
+            if (TitleVisible)
+            {
+                var ff = Title.Font.FontFamily;
+                var gp = new GraphicsPath();
+                gp.AddString(Title.Text, ff, (int)FontStyle.Bold, Title.Font.Size, new PointF(0, 0), StringFormat.GenericDefault);
+
+                g.FillPath(new SolidBrush(Title.Color1), gp);
+                g.DrawPath(new Pen(Title.Color2, 1f), gp);
+
+
+                //g.DrawString(Title.Text, Title.Font, Title.Brush, new Point(0, 0));
+
             }
+        }
         /*
                     if (ShowSpots1)
                         drawSpots(e, Spots1, Spots1Label,Brushes.Pink, Brushes.DarkRed, ShowSpots1Label, EmphasizeNumberOfSpots1);
