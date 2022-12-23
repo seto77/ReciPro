@@ -121,6 +121,12 @@ namespace ReciPro
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsBitmapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyAsBitmapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.doubleClickAddSpotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
@@ -183,7 +189,6 @@ namespace ReciPro
             // 
             // scalablePictureBoxAdvanced
             // 
-            this.scalablePictureBoxAdvanced.CopyButtonVisible = true;
             resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;
             this.scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
@@ -201,7 +206,7 @@ namespace ReciPro
             this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(604, 609);
+            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(604, 576);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.SkipDrawing = false;
             this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
@@ -265,7 +270,6 @@ namespace ReciPro
             this.panel2.Controls.Add(this.dataGridViewSpots);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // buttonDeleteSpot
             // 
@@ -992,7 +996,9 @@ namespace ReciPro
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.readToolStripMenuItem});
+            this.readToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.copyToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
@@ -1001,6 +1007,46 @@ namespace ReciPro
             this.readToolStripMenuItem.Name = "readToolStripMenuItem";
             resources.ApplyResources(this.readToolStripMenuItem, "readToolStripMenuItem");
             this.readToolStripMenuItem.Click += new System.EventHandler(this.readToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveAsMetafileToolStripMenuItem,
+            this.saveAsBitmapToolStripMenuItem1});
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
+            // 
+            // saveAsMetafileToolStripMenuItem
+            // 
+            this.saveAsMetafileToolStripMenuItem.Name = "saveAsMetafileToolStripMenuItem";
+            resources.ApplyResources(this.saveAsMetafileToolStripMenuItem, "saveAsMetafileToolStripMenuItem");
+            this.saveAsMetafileToolStripMenuItem.Click += new System.EventHandler(this.saveAsMetafileToolStripMenuItem_Click);
+            // 
+            // saveAsBitmapToolStripMenuItem1
+            // 
+            this.saveAsBitmapToolStripMenuItem1.Name = "saveAsBitmapToolStripMenuItem1";
+            resources.ApplyResources(this.saveAsBitmapToolStripMenuItem1, "saveAsBitmapToolStripMenuItem1");
+            this.saveAsBitmapToolStripMenuItem1.Click += new System.EventHandler(this.saveAsBitmapToolStripMenuItem1_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyAsMetafileToolStripMenuItem,
+            this.copyAsBitmapToolStripMenuItem});
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
+            // 
+            // copyAsMetafileToolStripMenuItem
+            // 
+            this.copyAsMetafileToolStripMenuItem.Name = "copyAsMetafileToolStripMenuItem";
+            resources.ApplyResources(this.copyAsMetafileToolStripMenuItem, "copyAsMetafileToolStripMenuItem");
+            this.copyAsMetafileToolStripMenuItem.Click += new System.EventHandler(this.copyAsMetafileToolStripMenuItem_Click);
+            // 
+            // copyAsBitmapToolStripMenuItem
+            // 
+            this.copyAsBitmapToolStripMenuItem.Name = "copyAsBitmapToolStripMenuItem";
+            resources.ApplyResources(this.copyAsBitmapToolStripMenuItem, "copyAsBitmapToolStripMenuItem");
+            this.copyAsBitmapToolStripMenuItem.Click += new System.EventHandler(this.copyAsBitmapToolStripMenuItem_Click);
             // 
             // shortcutHintsToolStripMenuItem
             // 
@@ -1233,5 +1279,11 @@ namespace ReciPro
         private System.Windows.Forms.DataGridViewTextBoxColumn d;
         private System.Windows.Forms.DataGridViewTextBoxColumn hkl;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsMetafileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsBitmapToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyAsMetafileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyAsBitmapToolStripMenuItem;
     }
 }

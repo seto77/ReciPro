@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics;
+﻿using ImagingSolution.Control;
+using MathNet.Numerics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,7 +51,7 @@ public partial class FormSpotIDV2 : Form
     public FormSpotIDV2()
     {
         InitializeComponent();
-        
+
         scalablePictureBoxAdvanced.Symbols = new List<ScalablePictureBox.Symbol>();
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewSpots, true, null);
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCandidates, true, null);
@@ -60,7 +61,7 @@ public partial class FormSpotIDV2 : Form
         waveLengthControl1.Energy = 200;
     }
 
-   
+
 
     private void FormSpotID_Load(object sender, EventArgs e)
     {
@@ -766,7 +767,7 @@ public partial class FormSpotIDV2 : Form
             {
                 var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
                 if (dlg.ShowDialog() == DialogResult.OK)
-                    using (var sw = new StreamWriter(dlg.FileName, false, Encoding.GetEncoding("shift_jis")))
+                    using (var sw = new StreamWriter(dlg.FileName, false, Encoding.GetEncoding("UTF-8")))
                         sw.Write(sb.ToString().Replace('\t', ','));
             }
         }
@@ -1625,10 +1626,30 @@ public partial class FormSpotIDV2 : Form
         pictureBox1.Visible = checkBoxDetailsOfFunction.Checked;
     }
 
-    private void panel2_Paint(object sender, PaintEventArgs e)
+    #region 表示画像のコピー、保存
+    private void saveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        scalablePictureBoxAdvanced.SaveAsMetafile();
     }
 
+    private void saveAsBitmapToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+        scalablePictureBoxAdvanced.SaveAsPNG();
+    }
+
+    private void copyAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        scalablePictureBoxAdvanced.copyAsMetafile();
+    }
+
+    private void copyAsBitmapToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        scalablePictureBoxAdvanced.CopyAsBitmap();
+    }
+
+    
+
+
+    #endregion
 
 }

@@ -1880,10 +1880,46 @@ and the fitting range in the right box .</value>
     <value>110, 17</value>
   </metadata>
   <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="readToolStripMenuItem.Text" xml:space="preserve">
     <value>Read</value>
+  </data>
+  <data name="saveAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>as Metafile (EMF format)</value>
+  </data>
+  <data name="saveAsBitmapToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
+    <value>as Image (PNG format)</value>
+  </data>
+  <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>as Metafile</value>
+  </data>
+  <data name="copyAsBitmapToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
+    <value>as Image</value>
+  </data>
+  <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="copyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copy</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 20</value>
@@ -2225,6 +2261,42 @@ and the fitting range in the right box .</value>
     <value>readToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;readToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;saveToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveAsMetafileToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveAsMetafileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;saveAsMetafileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveAsBitmapToolStripMenuItem1.Name" xml:space="preserve">
+    <value>saveAsBitmapToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;saveAsBitmapToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;copyToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;copyAsMetafileToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyAsMetafileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;copyAsMetafileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;copyAsBitmapToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyAsBitmapToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;copyAsBitmapToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;shortcutHintsToolStripMenuItem.Name" xml:space="preserve">

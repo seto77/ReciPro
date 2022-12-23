@@ -1650,7 +1650,6 @@ namespace ReciPro
             // 
             // scalablePictureBoxAdvanced1
             // 
-            this.scalablePictureBoxAdvanced1.CopyButtonVisible = true;
             this.scalablePictureBoxAdvanced1.FixZoomAndCenter = false;
             resources.ApplyResources(this.scalablePictureBoxAdvanced1, "scalablePictureBoxAdvanced1");
             this.scalablePictureBoxAdvanced1.FrequencyGraphVisible = true;
@@ -1680,7 +1679,6 @@ namespace ReciPro
             // 
             // scalablePictureBoxAdvanced2
             // 
-            this.scalablePictureBoxAdvanced2.CopyButtonVisible = true;
             this.scalablePictureBoxAdvanced2.FixZoomAndCenter = false;
             resources.ApplyResources(this.scalablePictureBoxAdvanced2, "scalablePictureBoxAdvanced2");
             this.scalablePictureBoxAdvanced2.FrequencyGraphVisible = true;

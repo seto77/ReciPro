@@ -56,7 +56,6 @@
             // 
             // scalablePictureBoxAdvanced
             // 
-            this.scalablePictureBoxAdvanced.CopyButtonVisible = false;
             this.scalablePictureBoxAdvanced.Cursor = System.Windows.Forms.Cursors.Default;
             this.scalablePictureBoxAdvanced.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;

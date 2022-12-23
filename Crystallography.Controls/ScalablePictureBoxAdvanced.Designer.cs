@@ -51,12 +51,22 @@
             this.checkBoxGaussianBlur = new System.Windows.Forms.CheckBox();
             this.numericBoxGaussianFWHM = new Crystallography.Controls.NumericBox();
             this.panelUpper = new System.Windows.Forms.Panel();
-            this.buttonCopyToClipBoard = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.scalablePictureBox = new Crystallography.Controls.ScalablePictureBox();
             this.graphControl = new Crystallography.Controls.GraphControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.labelResolution = new System.Windows.Forms.Label();
+            this.buttonMag1 = new System.Windows.Forms.Button();
+            this.buttonMag2 = new System.Windows.Forms.Button();
+            this.buttonMag4 = new System.Windows.Forms.Button();
+            this.buttonMag_2 = new System.Windows.Forms.Button();
+            this.buttonMag_4 = new System.Windows.Forms.Button();
+            this.buttonMag_8 = new System.Windows.Forms.Button();
+            this.buttonMag_16 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelTrackBar.SuspendLayout();
             this.flowLayoutPanelGradient.SuspendLayout();
             this.flowLayoutPanelImageFilter.SuspendLayout();
@@ -64,6 +74,7 @@
             this.flowLayoutPanelGaussianBlur2.SuspendLayout();
             this.panelUpper.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTrackBar
@@ -283,17 +294,9 @@
             // 
             // panelUpper
             // 
-            this.panelUpper.Controls.Add(this.buttonCopyToClipBoard);
             this.panelUpper.Controls.Add(this.label);
             resources.ApplyResources(this.panelUpper, "panelUpper");
             this.panelUpper.Name = "panelUpper";
-            // 
-            // buttonCopyToClipBoard
-            // 
-            resources.ApplyResources(this.buttonCopyToClipBoard, "buttonCopyToClipBoard");
-            this.buttonCopyToClipBoard.Name = "buttonCopyToClipBoard";
-            this.buttonCopyToClipBoard.UseVisualStyleBackColor = true;
-            this.buttonCopyToClipBoard.Click += new System.EventHandler(this.buttonCopyToClipBoard_Click);
             // 
             // statusStrip1
             // 
@@ -381,11 +384,91 @@
             this.graphControl.YScaleLineVisible = true;
             this.graphControl.LinePositionChanged += new Crystallography.Controls.GraphControl.LinePositionChengedEventHandler(this.graphControl_LinePositionChanged);
             // 
+            // panel1
+            // 
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.labelResolution);
+            this.panel1.Controls.Add(this.buttonMag1);
+            this.panel1.Controls.Add(this.buttonMag2);
+            this.panel1.Controls.Add(this.buttonMag4);
+            this.panel1.Controls.Add(this.buttonMag_2);
+            this.panel1.Controls.Add(this.buttonMag_4);
+            this.panel1.Controls.Add(this.buttonMag_8);
+            this.panel1.Controls.Add(this.buttonMag_16);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Name = "panel1";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // labelResolution
+            // 
+            resources.ApplyResources(this.labelResolution, "labelResolution");
+            this.labelResolution.Name = "labelResolution";
+            // 
+            // buttonMag1
+            // 
+            resources.ApplyResources(this.buttonMag1, "buttonMag1");
+            this.buttonMag1.Name = "buttonMag1";
+            this.buttonMag1.UseVisualStyleBackColor = true;
+            this.buttonMag1.Click += new System.EventHandler(this.buttonMag_Click);
+            // 
+            // buttonMag2
+            // 
+            resources.ApplyResources(this.buttonMag2, "buttonMag2");
+            this.buttonMag2.Name = "buttonMag2";
+            this.buttonMag2.UseVisualStyleBackColor = true;
+            this.buttonMag2.Click += new System.EventHandler(this.buttonMag_Click);
+            // 
+            // buttonMag4
+            // 
+            resources.ApplyResources(this.buttonMag4, "buttonMag4");
+            this.buttonMag4.Name = "buttonMag4";
+            this.buttonMag4.UseVisualStyleBackColor = true;
+            this.buttonMag4.Click += new System.EventHandler(this.buttonMag_Click);
+            // 
+            // buttonMag_2
+            // 
+            resources.ApplyResources(this.buttonMag_2, "buttonMag_2");
+            this.buttonMag_2.Name = "buttonMag_2";
+            this.buttonMag_2.UseVisualStyleBackColor = true;
+            this.buttonMag_2.Click += new System.EventHandler(this.buttonMag_Click);
+            // 
+            // buttonMag_4
+            // 
+            resources.ApplyResources(this.buttonMag_4, "buttonMag_4");
+            this.buttonMag_4.Name = "buttonMag_4";
+            this.buttonMag_4.UseVisualStyleBackColor = true;
+            this.buttonMag_4.Click += new System.EventHandler(this.buttonMag_Click);
+            // 
+            // buttonMag_8
+            // 
+            resources.ApplyResources(this.buttonMag_8, "buttonMag_8");
+            this.buttonMag_8.Name = "buttonMag_8";
+            this.buttonMag_8.UseVisualStyleBackColor = true;
+            this.buttonMag_8.Click += new System.EventHandler(this.buttonMag_Click);
+            // 
+            // buttonMag_16
+            // 
+            resources.ApplyResources(this.buttonMag_16, "buttonMag_16");
+            this.buttonMag_16.Name = "buttonMag_16";
+            this.buttonMag_16.UseVisualStyleBackColor = true;
+            this.buttonMag_16.Click += new System.EventHandler(this.buttonMag_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // ScalablePictureBoxAdvanced
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.scalablePictureBox);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelTrackBar);
             this.Controls.Add(this.graphControl);
             this.Controls.Add(this.flowLayoutPanelGradient);
@@ -409,6 +492,8 @@
             this.panelUpper.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,7 +520,6 @@
         private System.Windows.Forms.CheckBox checkBoxGaussianBlur;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelGaussianBlur2;
         private System.Windows.Forms.Panel panelUpper;
-        private System.Windows.Forms.Button buttonCopyToClipBoard;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDustScratches;
         private System.Windows.Forms.CheckBox checkBoxDustScratches;
         private NumericBox numericBoxDustScratchesThreshold;
@@ -444,5 +528,16 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label labelResolution;
+        private System.Windows.Forms.Button buttonMag1;
+        private System.Windows.Forms.Button buttonMag2;
+        private System.Windows.Forms.Button buttonMag4;
+        private System.Windows.Forms.Button buttonMag_2;
+        private System.Windows.Forms.Button buttonMag_4;
+        private System.Windows.Forms.Button buttonMag_8;
+        private System.Windows.Forms.Button buttonMag_16;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -71,22 +71,22 @@ namespace Crystallography.Controls
             set
             {
                 label.Visible = value;
-                panelUpper.Visible = MousePositionLabelVisible || CopyButtonVisible;
+                panelUpper.Visible = MousePositionLabelVisible;// || CopyButtonVisible;
             }
         }
 
         /// <summary>
         /// コピーボタンを表示するかどうか
         /// </summary>
-        public bool CopyButtonVisible
-        {
-            get => buttonCopyToClipBoard.Visible;
-            set
-            {
-                buttonCopyToClipBoard.Visible = value;
-                panelUpper.Visible = MousePositionLabelVisible || CopyButtonVisible;
-            }
-        }
+        //public bool CopyButtonVisible
+        //{
+        //    get => buttonCopyToClipBoard.Visible;
+        //    set
+        //    {
+        //        buttonCopyToClipBoard.Visible = value;
+        //        panelUpper.Visible = MousePositionLabelVisible || CopyButtonVisible;
+        //    }
+        //}
 
         /// <summary>
         /// メモリを表示するかどうか
@@ -363,6 +363,8 @@ namespace Crystallography.Controls
                 if (scalablePictureBox.PseudoBitmap.IsSrcGray)
                     text += ", Value: " + PseudoBitmap.GetPixelRawValue(pt);
                 label.Text = text;
+
+                labelResolution.Text = scalablePictureBox.Zoom.ToString("g4");
             }
             scalablePictureBox.Refresh();
             if (MouseMove2 != null)
@@ -614,8 +616,6 @@ namespace Crystallography.Controls
             e.Effect = (e.Data.GetData(DataFormats.FileDrop) != null) ? DragDropEffects.Copy : DragDropEffects.None;
         }
 
-
-
         #region 座標変換関連 scalablePictureBoxで定義されているものを呼び出すだけ
         /// <summary>
         /// クライアントのPointをソースのPointに変換
@@ -659,5 +659,36 @@ namespace Crystallography.Controls
         /// <returns></returns>
         public RectangleD ConvertToClientRect(RectangleD srcRect) => scalablePictureBox.ConvertToClientRect(srcRect);
         #endregion 座標変換関連
+
+        #region 画像の保存/コピー関連 scalablePictureBoxで定義されているものを呼び出すだけ
+        public void SaveAsPNG()=> scalablePictureBox.SaveAsPNG();
+
+        public void CopyAsBitmap()=> scalablePictureBox.CopyAsBitmap();
+
+        public void SaveAsMetafile() => scalablePictureBox.SaveAsMetafile();
+
+        public void copyAsMetafile() => scalablePictureBox.CopyAsMetafile();
+
+        #endregion
+
+        private void buttonMag_Click(object sender, EventArgs e)
+        {
+            var name = (sender as Button).Name;
+            if (name.Contains("Mag1"))
+                scalablePictureBox.Zoom = 1;
+            else if (name.Contains("Mag2"))
+                scalablePictureBox.Zoom = 2;
+            else if (name.Contains("Mag4"))
+                scalablePictureBox.Zoom = 4;
+            else if (name.Contains("Mag_2"))
+                scalablePictureBox.Zoom = 0.5;
+            else if (name.Contains("Mag_4"))
+                scalablePictureBox.Zoom = 0.25;
+            else if (name.Contains("Mag_8"))
+                scalablePictureBox.Zoom = 0.125;
+            else if (name.Contains("Mag_16"))
+                scalablePictureBox.Zoom = 0.0625;
+            labelResolution.Text = scalablePictureBox.Zoom.ToString("g4");
+        }
     }
 }

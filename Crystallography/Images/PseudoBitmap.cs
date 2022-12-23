@@ -686,12 +686,8 @@ public class PseudoBitmap : IDisposable
     /// <returns></returns>
     public Bitmap GetImage()
     {
-
         var bmp = GetImage(new RectangleD(0, 0, Width, Height), new Size(Width, Height));
-
-
         return bmp;
-
     }
 
     /// <summary>
