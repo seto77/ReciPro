@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using static IronPython.Modules._ast;
 #endregion
 
 namespace Crystallography.Controls
@@ -437,15 +438,14 @@ namespace Crystallography.Controls
                 if (spNum == n[1] && seriesNum != n[0])
                     list.Add((n[0], SymmetryStatic.StrArray[n[0]][3]));
 
-            if (list.Count == 0)
-            {
+            if (list.Count == 0 || spNum == 1 || spNum == 2)
                 MessageBox.Show("No candidate for the space group");
-                return;
+            else
+            {
+                var dlg = new FormAnotherSpaceGroup() { Candidates = list.ToArray() };
+                if (dlg.ShowDialog() == DialogResult.OK)
+                    toAnotherSpaceGroup(dlg.SeriesNum);
             }
-
-            var dlg = new FormAnotherSpaceGroup() { Candidates = list.ToArray() };
-            if (dlg.ShowDialog() == DialogResult.OK)
-                toAnotherSpaceGroup(dlg.SeriesNum);
         }
 
         public void toAnotherSpaceGroup(int destNum)
@@ -455,6 +455,30 @@ namespace Crystallography.Controls
             var sgNum = SymmetryStatic.NumArray[srcNum][1];
             var srcExtra = SymmetryStatic.StrArray[srcNum][0];
             var dstExtra = SymmetryStatic.StrArray[destNum][0];
+
+            #region monoclinicの時。軸の変換のみがあり得る。
+            if (crystalSystem == 2)
+            {
+                if (srcExtra.Length == 1) srcExtra += "1";
+                if (dstExtra.Length == 1) dstExtra += "1";
+
+                var cry = Deep.Copy(Crystal);
+                cry.SymmetrySeriesNumber = destNum;
+                cry.SetAxis();
+                foreach (var a in cry.Atoms)
+                {
+                    (a.X, a.Y, a.Z) = exchangeAtomPositionMonoclinic(a.X, a.Y, a.Z, srcExtra, false);//標準セッティングに変換
+                    (a.X, a.Y, a.Z) = exchangeAtomPositionMonoclinic(a.X, a.Y, a.Z, dstExtra, true);//目的セッティングに変換
+                }
+                var (A, B, C) = convertAxisMonoclinic(cry.A_Axis, cry.B_Axis, cry.C_Axis, srcExtra, false);//標準セッティングに変換
+                (A, B, C) = convertAxisMonoclinic(A, B, C, dstExtra, true);//目的セッティングに変換
+                cry.A = A.Length; cry.B = B.Length; cry.C = C.Length;
+                cry.Alpha = Vector3D.AngleBetVectors(B, C);
+                cry.Beta = Vector3D.AngleBetVectors(C, A);
+                cry.Gamma = Vector3D.AngleBetVectors(A, B);
+                crystal = cry;
+            }
+            #endregion
 
             #region Orhorhombicの時. 軸の変換とOrigin Choiceの変換があり得る
             if (crystalSystem == 3)
@@ -474,50 +498,142 @@ namespace Crystallography.Controls
                         (a.X, a.Y, a.Z) = shift(a.X, a.Y, a.Z, sgNum, src.Origin == 1);
                     //目的セッティングに変換
                     (a.X, a.Y, a.Z) = exchangeOrtho(a.X, a.Y, a.Z, dst.Setting, true);
-                    (a.X_err, a.Y_err, a.Z_err) = exchangeOrtho(a.X_err, a.Y_err, a.Z_err, dst.Setting,true);
+                    (a.X_err, a.Y_err, a.Z_err) = exchangeOrtho(a.X_err, a.Y_err, a.Z_err, dst.Setting, true);
                 }
                 (cry.A, cry.B, cry.C) = exchangeOrtho(cry.A, cry.B, cry.C, src.Setting, false, true);//標準セッティングに変換
                 (cry.A, cry.B, cry.C) = exchangeOrtho(cry.A, cry.B, cry.C, dst.Setting, true, true);//目的セッティングに変換
                 crystal = cry;
-                SetToInterface(true);
-                GenerateFromInterface();
             }
             #endregion
 
             #region Tetragonal か Cubicの時。 Origin Choiceの変換があり得る。
-            if (crystalSystem == 4 || crystalSystem ==7)
+            if (crystalSystem == 4 || crystalSystem == 7)
             {
                 var src = convOrtho(srcExtra);
                 var cry = Deep.Copy(Crystal);
                 cry.SymmetrySeriesNumber = destNum;
                 foreach (var a in cry.Atoms)
-                        (a.X, a.Y, a.Z) = shift(a.X, a.Y, a.Z, sgNum, src.Origin == 1);
+                    (a.X, a.Y, a.Z) = shift(a.X, a.Y, a.Z, sgNum, src.Origin == 1);
                 crystal = cry;
-                SetToInterface(true);
-                GenerateFromInterface();
             }
             #endregion
+
+            #region trigonalの時 RhomboとHexaの変換がありうる。
+            if (crystalSystem == 5)
+            {
+                var cry = Deep.Copy(Crystal);
+                cry.SymmetrySeriesNumber = destNum;
+                cry.SetAxis();
+
+                Vector3D srcA = cry.A_Axis, srcB = cry.B_Axis, srcC = cry.C_Axis, dstA, dstB, dstC;
+
+                if (srcExtra == "H")
+                {//HをRに変換
+                    foreach (var a in cry.Atoms)
+                        (a.X, a.Y, a.Z) = (a.X + a.Z, -a.X + a.Y + a.Z, a.Y + a.Z);//Rセッティングに変換
+                    (dstA, dstB, dstC) = ((2 * srcA + srcB + srcC) / 3, (-srcA + srcB + srcC) / 3, (-srcA - srcB + srcC) / 3);
+                }
+                else
+                {//RをHに変換
+                    foreach (var a in cry.Atoms)
+                        (a.X, a.Y, a.Z) = ((2 * a.X - a.Y - a.Z) / 3, (a.X + a.Y - 2 * a.Z) / 3, (a.X + a.Y + a.Z) / 3);//Hセッティングに変換
+                    (dstA, dstB, dstC) = (srcA - srcB, srcB - srcC, srcA + srcB + srcC);
+                }
+                cry.A = dstA.Length; cry.B = dstB.Length; cry.C = dstC.Length;
+                cry.Alpha = Vector3D.AngleBetVectors(dstB, dstC);
+                cry.Beta = Vector3D.AngleBetVectors(dstC, dstA);
+                cry.Gamma = Vector3D.AngleBetVectors(dstA, dstB);
+                crystal = cry;
+            }
+            #endregion
+
+            SetToInterface(true);
+            GenerateFromInterface();
         }
-        const double one4th = 1.0 / 4.0, one8th = 1.0 / 8.0, three8th = 3.0 / 8.0;
-        #region Orthorhombic 用の関数
-        (double X, double Y, double Z) shift(double x, double y, double z, int sgNum, bool to2nd) => sgNum switch
+        
+
+        #region Origin choiceを変更する関数
+        static (double X, double Y, double Z) shift(double x, double y, double z, int sgNum, bool to2nd) 
+            => sgNum switch
         {
-            48 or 86 or 126 or 201 or 222 or 224    => to2nd ? (x + one4th, y + one4th, z + one4th) : (x - one4th, y - one4th, z - one4th),
-            50 or 59 or 125                         => to2nd ? (x + one4th, y + one4th, z) : (x - one4th, y - one4th, z),
-            68                                      => to2nd ? (x, y + one4th, z + one4th) : (x, y - one4th, z - one4th),
-            70                                      => to2nd ? (x + one8th, y + one8th, z + one8th) : (x - one8th, y - one8th, z - one8th),
-            85                                      => to2nd ? (x + one4th, y - one4th, z) : (x - one4th, y + one4th, z),
-            88                                      => to2nd ? (x, y + one4th, z + one8th) : (x, y - one4th, z - one8th),
-            129 or 130                              => to2nd ? (x - one4th, y + one4th, z) : (x + one4th, y - one4th, z),
-            133 or 137 or 138                       => to2nd ? (x - one4th, y + one4th, z - one4th) : (x + one4th, y - one4th, z + one4th),
-            134                                     => to2nd ? (x + one4th, y - one4th, z + one4th) : (x - one4th, y + one4th, z - one4th),
-            141                                     => to2nd ? (x, y - one4th, z + one8th) : (x, y + one4th, z - one8th),
-            142                                     => to2nd ? (x, y + one4th, z + three8th) : (x, y - one4th, z - three8th),
-            203 or 227 or 228                       => to2nd ? (x + one8th, y + one8th, z + three8th) : (x - one8th, y - one8th, z - one8th),
+            48 or 86 or 126 or 201 or 222 or 224 => to2nd ? (x + one4th, y + one4th, z + one4th) : (x - one4th, y - one4th, z - one4th),
+            50 or 59 or 125 => to2nd ? (x + one4th, y + one4th, z) : (x - one4th, y - one4th, z),
+            68 => to2nd ? (x, y + one4th, z + one4th) : (x, y - one4th, z - one4th),
+            70 => to2nd ? (x + one8th, y + one8th, z + one8th) : (x - one8th, y - one8th, z - one8th),
+            85 => to2nd ? (x + one4th, y - one4th, z) : (x - one4th, y + one4th, z),
+            88 => to2nd ? (x, y + one4th, z + one8th) : (x, y - one4th, z - one8th),
+            129 or 130 => to2nd ? (x - one4th, y + one4th, z) : (x + one4th, y - one4th, z),
+            133 or 137 or 138 => to2nd ? (x - one4th, y + one4th, z - one4th) : (x + one4th, y - one4th, z + one4th),
+            134 => to2nd ? (x + one4th, y - one4th, z + one4th) : (x - one4th, y + one4th, z - one4th),
+            141 => to2nd ? (x, y - one4th, z + one8th) : (x, y + one4th, z - one8th),
+            142 => to2nd ? (x, y + one4th, z + three8th) : (x, y - one4th, z - three8th),
+            203 or 227 or 228 => to2nd ? (x + one8th, y + one8th, z + one8th) : (x - one8th, y - one8th, z - one8th),
             _ => (x, y, z)
         };
+        const double one4th = 1.0 / 4.0, one8th = 1.0 / 8.0, three8th = 3.0 / 8.0;
+        #endregion
 
-        (double X, double Y, double Z) exchangeOrtho(double x, double y, double z, int[] setting, bool inverse = false, bool abs = false)
+        #region Monoclinic用の関数
+        /// <summary>
+        /// 原子位置を変換。Monoclinic用。
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="setting"></param>
+        /// <param name="forward"></param>
+        /// <returns></returns>
+        static (double X, double Y, double Z) exchangeAtomPositionMonoclinic(double x, double y, double z, string setting, bool forward = true)
+            => setting switch
+            {
+                "b2" => forward ? (-z, y, x - z) : (z - x, y, -x),
+                "b3" => forward ? (z - x, y, -x) : (-z, y, x - z),
+                "-b1" => forward ? (-z, y, x) : (z, y, -x),
+                "-b2" => forward ? (x + z, y, z) : (x - z, y, z),
+                "-b3" => forward ? (-x, y, -z - x) : (-x, y, x - z),
+                "c1" => forward ? (z, x, y) : (y, z, x),
+                "c2" => forward ? (x - z, -z, y) : (x - y, z, -y),
+                "c3" => forward ? (-x, z - x, y) : (-x, z, y - x),
+                "-c1" => forward ? (x, -z, y) : (x, z, -y),
+                "-c2" => forward ? (z, x + z, y) : (y - x, z, x),
+                "-c3" => forward ? (-z - x, -x, y) : (-y, z, y - x),
+                "a1" => forward ? (y, z, x) : (z, x, y),
+                "a2" => forward ? (y, x - z, -z) : (y - z, x, -z),
+                "a3" => forward ? (y, -x, z - x) : (-y, x, z - y),
+                "-a1" => forward ? (y, x, -z) : (y, x, -z),
+                "-a2" => forward ? (y, z, x + z) : (z - y, x, y),
+                "-a3" => forward ? (y, -z - x, -x) : (-z, x, z - y),
+                _ => (x, y, z),
+            };
+
+        static (Vector3D A, Vector3D B, Vector3D C) convertAxisMonoclinic(Vector3D a, Vector3D b, Vector3D c, string setting, bool forward = true)
+            => setting switch
+            {
+                "b2" => forward ? (-c - a, b, a) : (c, b, -c - a),
+                "b3" => forward ? (c, b, -c - a) : (-c - a, b, a),
+                "-b1" => forward ? (-c, b, a) : (c, b, -a),
+                "-b2" => forward ? (a, b, c - a) : (a, b, c + a),
+                "-b3" => forward ? (c - a, b, -c) : (-c - a, b, -c),
+
+                "c1" => forward ? (c, a, b) : (b, c, a),
+                "c2" => forward ? (a, -c - a, b) : (a, c, -a - b),
+                "c3" => forward ? (-c - a, c, b) : (-a - b, c, b),
+                "-c1" => forward ? (a, -c, b) : (a, c, -b),
+                "-c2" => forward ? (c - a, a, b) : (b, c, a + b),
+                "-c3" => forward ? (-c, c - a, b) : (-a - b, c, -a),
+
+                "a1" => forward ? (b, c, a) : (c, a, b),
+                "a2" => forward ? (b, a, -c - a) : (b, a, -b - c),
+                "a3" => forward ? (b, -c - a, c) : (-b - c, a, c),
+                "-a1" => forward ? (b, a, -c) : (b, a, -c),
+                "-a2" => forward ? (b, c - a, a) : (c, a, b + c),
+                "-a3" => forward ? (b, -c, c - a) : (-b - c, a, -b),
+                _ => (a, b, c),
+            };
+        #endregion
+
+        #region Orthorhombic 用の関数
+        static (double X, double Y, double Z) exchangeOrtho(double x, double y, double z, int[] setting, bool inverse = false, bool abs = false)
         {
             double[] src = new[] { x, y, z }, dst = new double[3];
             for (int i = 0; i < 3; i++)
@@ -529,7 +645,7 @@ namespace Crystallography.Controls
             }
             return abs ? (Math.Abs(dst[0]), Math.Abs(dst[1]), Math.Abs(dst[2])) : (dst[0], dst[1], dst[2]);
         }
-        (int Origin, int[] Setting) convOrtho(string s) // extra文字列を解析可能な形に変換する。例えば2ba-cを(2, {2, 1, -3})
+        static (int Origin, int[] Setting) convOrtho(string s) // extra文字列を解析可能な形に変換する。例えば2ba-cを(2, {2, 1, -3})
         {
             if (s.Length == 0) return (1, new[] { 1, 2, 3 });
             int origin = 1;
