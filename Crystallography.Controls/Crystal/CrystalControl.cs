@@ -1,5 +1,6 @@
 ﻿#region Using
 using MathNet.Numerics.LinearAlgebra.Double;
+using Microsoft.Scripting.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -163,7 +164,6 @@ namespace Crystallography.Controls
         #endregion
 
         #region Crystalクラスを画面下部 から生成/にセット
-
 
         /// <summary>
         /// Formに入力された内容からからCrystalを生成する
@@ -421,6 +421,137 @@ namespace Crystallography.Controls
             SetToInterface(true);
             GenerateFromInterface();
         }
+
+        /// <summary>
+        /// 別の空間群に変換する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void convertToAnotherSpacegroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var seriesNum = symmetryControl.SymmetrySeriesNumber;
+            var spNum = SymmetryStatic.NumArray[seriesNum][1];
+
+            var list = new List<(int SeriesNum, string Notation)>();
+            foreach (var n in SymmetryStatic.NumArray)
+                if (spNum == n[1] && seriesNum != n[0])
+                    list.Add((n[0], SymmetryStatic.StrArray[n[0]][3]));
+
+            if (list.Count == 0)
+            {
+                MessageBox.Show("No candidate for the space group");
+                return;
+            }
+
+            var dlg = new FormAnotherSpaceGroup() { Candidates = list.ToArray() };
+            if (dlg.ShowDialog() == DialogResult.OK)
+                toAnotherSpaceGroup(dlg.SeriesNum);
+        }
+
+        public void toAnotherSpaceGroup(int destNum)
+        {
+            var srcNum = symmetryControl.SymmetrySeriesNumber;
+            var crystalSystem = SymmetryStatic.NumArray[srcNum][5];
+            var sgNum = SymmetryStatic.NumArray[srcNum][1];
+            var srcExtra = SymmetryStatic.StrArray[srcNum][0];
+            var dstExtra = SymmetryStatic.StrArray[destNum][0];
+
+            #region Orhorhombicの時. 軸の変換とOrigin Choiceの変換があり得る
+            if (crystalSystem == 3)
+            {
+                var src = convOrtho(srcExtra);
+                var dst = convOrtho(dstExtra);
+
+                var cry = Deep.Copy(Crystal);
+                cry.SymmetrySeriesNumber = destNum;
+                foreach (var a in cry.Atoms)
+                {
+                    //標準セッティングに変換
+                    (a.X, a.Y, a.Z) = exchangeOrtho(a.X, a.Y, a.Z, src.Setting);
+                    (a.X_err, a.Y_err, a.Z_err) = exchangeOrtho(a.X_err, a.Y_err, a.Z_err, src.Setting);
+                    //Originの処理
+                    if (src.Origin != dst.Origin)
+                        (a.X, a.Y, a.Z) = shift(a.X, a.Y, a.Z, sgNum, src.Origin == 1);
+                    //目的セッティングに変換
+                    (a.X, a.Y, a.Z) = exchangeOrtho(a.X, a.Y, a.Z, dst.Setting, true);
+                    (a.X_err, a.Y_err, a.Z_err) = exchangeOrtho(a.X_err, a.Y_err, a.Z_err, dst.Setting,true);
+                }
+                (cry.A, cry.B, cry.C) = exchangeOrtho(cry.A, cry.B, cry.C, src.Setting, false, true);//標準セッティングに変換
+                (cry.A, cry.B, cry.C) = exchangeOrtho(cry.A, cry.B, cry.C, dst.Setting, true, true);//目的セッティングに変換
+                crystal = cry;
+                SetToInterface(true);
+                GenerateFromInterface();
+            }
+            #endregion
+
+            #region Tetragonal か Cubicの時。 Origin Choiceの変換があり得る。
+            if (crystalSystem == 4 || crystalSystem ==7)
+            {
+                var src = convOrtho(srcExtra);
+                var cry = Deep.Copy(Crystal);
+                cry.SymmetrySeriesNumber = destNum;
+                foreach (var a in cry.Atoms)
+                        (a.X, a.Y, a.Z) = shift(a.X, a.Y, a.Z, sgNum, src.Origin == 1);
+                crystal = cry;
+                SetToInterface(true);
+                GenerateFromInterface();
+            }
+            #endregion
+        }
+        const double one4th = 1.0 / 4.0, one8th = 1.0 / 8.0, three8th = 3.0 / 8.0;
+        #region Orthorhombic 用の関数
+        (double X, double Y, double Z) shift(double x, double y, double z, int sgNum, bool to2nd) => sgNum switch
+        {
+            48 or 86 or 126 or 201 or 222 or 224    => to2nd ? (x + one4th, y + one4th, z + one4th) : (x - one4th, y - one4th, z - one4th),
+            50 or 59 or 125                         => to2nd ? (x + one4th, y + one4th, z) : (x - one4th, y - one4th, z),
+            68                                      => to2nd ? (x, y + one4th, z + one4th) : (x, y - one4th, z - one4th),
+            70                                      => to2nd ? (x + one8th, y + one8th, z + one8th) : (x - one8th, y - one8th, z - one8th),
+            85                                      => to2nd ? (x + one4th, y - one4th, z) : (x - one4th, y + one4th, z),
+            88                                      => to2nd ? (x, y + one4th, z + one8th) : (x, y - one4th, z - one8th),
+            129 or 130                              => to2nd ? (x - one4th, y + one4th, z) : (x + one4th, y - one4th, z),
+            133 or 137 or 138                       => to2nd ? (x - one4th, y + one4th, z - one4th) : (x + one4th, y - one4th, z + one4th),
+            134                                     => to2nd ? (x + one4th, y - one4th, z + one4th) : (x - one4th, y + one4th, z - one4th),
+            141                                     => to2nd ? (x, y - one4th, z + one8th) : (x, y + one4th, z - one8th),
+            142                                     => to2nd ? (x, y + one4th, z + three8th) : (x, y - one4th, z - three8th),
+            203 or 227 or 228                       => to2nd ? (x + one8th, y + one8th, z + three8th) : (x - one8th, y - one8th, z - one8th),
+            _ => (x, y, z)
+        };
+
+        (double X, double Y, double Z) exchangeOrtho(double x, double y, double z, int[] setting, bool inverse = false, bool abs = false)
+        {
+            double[] src = new[] { x, y, z }, dst = new double[3];
+            for (int i = 0; i < 3; i++)
+            {
+                if (!inverse)
+                    dst[Math.Abs(setting[i]) - 1] = setting[i] > 0 ? src[i] : -src[i];
+                else
+                    dst[i] = setting[i] > 0 ? src[Math.Abs(setting[i]) - 1] : -src[Math.Abs(setting[i]) - 1];
+            }
+            return abs ? (Math.Abs(dst[0]), Math.Abs(dst[1]), Math.Abs(dst[2])) : (dst[0], dst[1], dst[2]);
+        }
+        (int Origin, int[] Setting) convOrtho(string s) // extra文字列を解析可能な形に変換する。例えば2ba-cを(2, {2, 1, -3})
+        {
+            if (s.Length == 0) return (1, new[] { 1, 2, 3 });
+            int origin = 1;
+            if (s[0] == '1' || s[0] == '2')//OriginChoiceの変換があり得るのは、48, 50, 59, 68, 70, 
+            {
+                origin = s[0] == '1' ? 1 : 2;
+                s = s[1..];
+            }
+            if (s.Length == 0) return (origin, new[] { 1, 2, 3 });
+
+            int[] setting = new int[3];
+            for (int i = 0; i < 3; i++)
+            {
+                setting[i] = s[0] != '-' ? 1 : -1;
+                if (s[0] == '-')
+                    s = s[1..];
+                setting[i] *= s[0] switch { 'a' => 1, 'b' => 2, _ => 3 };
+                s = s[1..];
+            }
+            return (origin, setting);
+        }
+        #endregion
 
         #endregion 右クリックメニュー
 
@@ -728,5 +859,7 @@ namespace Crystallography.Controls
         {
 
         }
+
+        
     }
 }

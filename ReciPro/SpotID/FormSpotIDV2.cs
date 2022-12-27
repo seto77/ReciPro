@@ -1,12 +1,11 @@
-﻿using Crystallography.Controls;
-using ImagingSolution.Control;
+﻿#region using
 using MathNet.Numerics;
+using OpenTK.Graphics.ES11;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -15,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MQ = Crystallography.Marquardt;
+#endregion
 
 namespace ReciPro;
 
@@ -80,8 +80,11 @@ public partial class FormSpotIDV2 : Form
 
     #endregion ロード, クローズ関連
 
+    #region ステータスラベルのクリア
     private void clearStatusLabel() => toolStripStatusLabelFindSpot.Text = toolStripStatusLabelIdentifySpot.Text =
             toolStripStatusLabelImageFilter.Text = toolStripStatusLabelRefine.Text = "";
+
+    #endregion
 
     #region 画像読み込み関連
 
@@ -189,7 +192,6 @@ public partial class FormSpotIDV2 : Form
 
     #endregion 画像読み込み関連
 
-
     #region カメラ長、波長、ピクセルサイズが変更されたとき 
     private void WaveLengthControl1_WavelengthChanged(object sender, EventArgs e)
     {
@@ -213,6 +215,7 @@ public partial class FormSpotIDV2 : Form
     }
     #endregion
 
+    #region マウスイベント
     private bool scalablePictureBoxAdvanced1_MouseDown2(object sender, MouseEventArgs e, Crystallography.PointD pt)
     {
         skipEvent = false;
@@ -279,6 +282,7 @@ public partial class FormSpotIDV2 : Form
         }
         return false;
     }
+    #endregion
 
     #region 画像からスポットを検索、クリア、フィッティング
 
@@ -333,10 +337,6 @@ public partial class FormSpotIDV2 : Form
 
         bindingSourceObsSpots.DataMember = "";
 
-        //spots.RemoveRange(0,13);
-        //spots.RemoveRange(1,spots.Count-1);
-
-
         int n = 0;
         var results = spots.Select(s =>
         {
@@ -385,7 +385,6 @@ public partial class FormSpotIDV2 : Form
         //外れすぎていないかをチェックするfunc
         var exclude = new Func<double, double, bool>((x, y) => Math.Abs(pt.X - x) > 1000 || Math.Abs(pt.Y - y) > 1000 ||
                 (pt.X - x) * (pt.X - x) + (pt.Y - y) * (pt.Y - y) > radius * radius);
-
 
         //検索対象のピクセルを粗く設定
         int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
@@ -513,6 +512,7 @@ public partial class FormSpotIDV2 : Form
         Enabled = true;
     }
 
+    #region experimetal
     private void ButtonGlobalFit_Click(object sender, EventArgs e)
     {
         if (dataSet.DataTableSpot.Spots.Count == 0) return;
@@ -597,6 +597,44 @@ public partial class FormSpotIDV2 : Form
         toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
         Enabled = true;
     }
+
+    
+    private void buttonDonut_Click(object sender, EventArgs e)
+    {
+        if (dataSet.DataTableSpot.Spots.Count == 0) return;
+        Enabled = false;
+        Application.DoEvents();
+        sw.Restart();
+        bindingSourceObsSpots.DataMember = "";
+
+        int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
+        var srcValues = scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray;
+        for (int i = 0; i < dataSet.DataTableSpot.Spots.Count; i++)
+        {
+            //現在のスポットのパラメータを取得
+            var prms = dataSet.DataTableSpot.GetPrms(i);
+
+            List<double> core = new(), mantle = new();
+            double range1 = prms.Range, range2 = range1 + numericBoxDonut.Value;
+            for (int y = Math.Max(0, (int)(prms.Y0 - range2 - 2)); y < Math.Min(height, (int)(prms.Y0 + range2 + 2)); y++)
+                for (int x = Math.Max(0, (int)(prms.X0 - range2 - 2)); x < Math.Min(width, (int)(prms.X0 + range2 + 2)); x++)
+                {
+                    var r = (x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0);
+
+                    if (r < range1 * range1)
+                        core.Add(srcValues[x + y * width]);
+                    else if (r < range2 * range2)
+                        mantle.Add(srcValues[x + y * width]);
+                }
+            var intensity = core.Sum() - (mantle.Sum() * core.Count / mantle.Count);
+            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
+        }
+        bindingSourceObsSpots.DataMember = "DataTableSpot";
+        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
+        Enabled = true;
+    }
+
+    #endregion
 
     #endregion 画像からスポットを検索、クリア、フィッティング
 
@@ -1122,6 +1160,7 @@ public partial class FormSpotIDV2 : Form
 
     #endregion
 
+    #region Grain クラス
     public class Grain : IComparable
     {
         public Matrix3D Rotation;
@@ -1150,6 +1189,7 @@ public partial class FormSpotIDV2 : Form
             ID = id;
         }
     }
+    #endregion
 
     #region お蔵入り
 
@@ -1335,9 +1375,7 @@ public partial class FormSpotIDV2 : Form
             }
 
             scalablePictureBoxAdvanced.Symbols.AddRange(calcSpots);
-
-            scalablePictureBoxAdvanced.ScalablePictureBox.Title = (FormMain.CurrentZoneAxis, new Font("Arial", 20f), Color.White, Color.Red); 
-
+            scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font("Arial", 20f), Color.White, Color.Red); 
 
             checkBoxShowObsSpots_CheckedChanged(sender, e);
             //scalablePictureBoxAdvanced.Refresh(); //上のイベントで呼ばれるので、コメントアウト
@@ -1347,6 +1385,8 @@ public partial class FormSpotIDV2 : Form
 
     #endregion
 
+    #region 各種イベント
+
     /// <summary>
     /// シンボル、ラベルの表示のチェックボックスイベント
     /// </summary>
@@ -1354,10 +1394,8 @@ public partial class FormSpotIDV2 : Form
     /// <param name="e"></param>
     private void checkBoxShowObsSpots_CheckedChanged(object sender, EventArgs e)
     {
-
         checkBoxShowObsSpotLabel.Enabled = checkBoxShowObsSpotSymbol.Checked;
         checkBoxShowCalcSpotLabel.Enabled = checkBoxShowCalcSpotSymbol.Checked;
-
 
         for (int i = 0; i < scalablePictureBoxAdvanced.Symbols.Count; i++)
         {
@@ -1373,7 +1411,7 @@ public partial class FormSpotIDV2 : Form
                 s.LabelVisible = checkBoxShowCalcSpotLabel.Checked;
             }
         }
-        scalablePictureBoxAdvanced.ScalablePictureBox.TitleVisible = checkBoxShowZoneAxis.Checked;
+        scalablePictureBoxAdvanced.TitleVisible = checkBoxShowZoneAxis.Checked;
 
         scalablePictureBoxAdvanced.Refresh();
     }
@@ -1381,17 +1419,6 @@ public partial class FormSpotIDV2 : Form
     private void scalablePictureBoxAdvanced_StatusChanged(object sender, EventArgs e) => toolStripStatusLabelImageFilter.Text = scalablePictureBoxAdvanced.StatusLabel;
 
     private void radioButtonSingleGrain_CheckedChanged(object sender, EventArgs e) => numericBoxMaxGrainNum.Enabled = radioButtonMultiGrain.Checked;
-
-    private void buttonPixelToPixel_Click(object sender, EventArgs e)
-    {
-        if (scalablePictureBoxAdvanced.PseudoBitmap != null && scalablePictureBoxAdvanced.PseudoBitmap.Width != 0)
-        {
-            Size = new Size(
-                Size.Width - scalablePictureBoxAdvanced.PictureSize.Width + scalablePictureBoxAdvanced.PseudoBitmap.Width,
-                Size.Height - scalablePictureBoxAdvanced.PictureSize.Height + scalablePictureBoxAdvanced.PseudoBitmap.Height
-                );
-        }
-    }
 
     private void checkBoxShowDebyeRing_CheckedChanged(object sender, EventArgs e)
     {
@@ -1428,6 +1455,12 @@ public partial class FormSpotIDV2 : Form
         scalablePictureBoxAdvanced.Refresh();
         */
     }
+
+    private void checkBoxDetailsOfSpot_CheckedChanged(object sender, EventArgs e) => FormSpotDetails.Visible = checkBoxDetailsOfSpot.Checked;
+
+    private void checkBoxDetailsOfFunction_CheckedChanged(object sender, EventArgs e) => pictureBox1.Visible = checkBoxDetailsOfFunction.Checked;
+
+    #endregion
 
     #region Refine thickness and direction機能
     private void ButtonRefineThicknessAndDirection_Click(object sender, EventArgs e)
@@ -1538,53 +1571,6 @@ public partial class FormSpotIDV2 : Form
     }
 
     #endregion
-
-
-    private void buttonDonut_Click(object sender, EventArgs e)
-    {
-        if (dataSet.DataTableSpot.Spots.Count == 0) return;
-        Enabled = false;
-        Application.DoEvents();
-        sw.Restart();
-        bindingSourceObsSpots.DataMember = "";
-
-
-        int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
-        var srcValues = scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray;
-        for (int i = 0; i < dataSet.DataTableSpot.Spots.Count; i++)
-        {
-            //現在のスポットのパラメータを取得
-            var prms = dataSet.DataTableSpot.GetPrms(i);
-
-            List<double> core = new(), mantle = new();
-            double range1 = prms.Range, range2 = range1 + numericBoxDonut.Value;
-            for (int y = Math.Max(0, (int)(prms.Y0 - range2 - 2)); y < Math.Min(height, (int)(prms.Y0 + range2 + 2)); y++)
-                for (int x = Math.Max(0, (int)(prms.X0 - range2 - 2)); x < Math.Min(width, (int)(prms.X0 + range2 + 2)); x++)
-                {
-                    var r = (x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0);
-
-                    if (r < range1 * range1)
-                        core.Add(srcValues[x + y * width]);
-                    else if (r < range2 * range2)
-                        mantle.Add(srcValues[x + y * width]);
-                }
-            var intensity = core.Sum() - (mantle.Sum() * core.Count / mantle.Count);
-            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
-        }
-        bindingSourceObsSpots.DataMember = "DataTableSpot";
-        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
-        Enabled = true;
-    }
-
-    private void checkBoxDetailsOfSpot_CheckedChanged(object sender, EventArgs e)
-    {
-        FormSpotDetails.Visible = checkBoxDetailsOfSpot.Checked;
-    }
-
-    private void checkBoxDetailsOfFunction_CheckedChanged(object sender, EventArgs e)
-    {
-        pictureBox1.Visible = checkBoxDetailsOfFunction.Checked;
-    }
 
     #region 表示画像のコピー、保存
     private void saveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => scalablePictureBoxAdvanced.SaveAsMetafile();

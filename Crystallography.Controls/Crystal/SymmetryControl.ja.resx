@@ -79,6 +79,9 @@
   <data name="numericBoxA.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="numericBoxA.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
   <data name="label45.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 54</value>
   </data>
@@ -88,7 +91,13 @@
   <data name="numericBoxGamma.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
   <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxB.ToolTip1" xml:space="preserve">
     <value />
   </data>
   <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
@@ -101,6 +110,9 @@
     <value>16, 54</value>
   </data>
   <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxC.ToolTip1" xml:space="preserve">
     <value />
   </data>
   <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
@@ -116,6 +128,9 @@
   <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 132</value>
+  </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>格子定数</value>
   </data>
@@ -123,19 +138,19 @@
     <value>53, 74</value>
   </data>
   <data name="comboBoxSpaceGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
+    <value>211, 26</value>
   </data>
   <data name="comboBoxPointGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 45</value>
   </data>
   <data name="comboBoxPointGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
+    <value>211, 26</value>
   </data>
   <data name="comboBoxCrystalSystem.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 17</value>
   </data>
   <data name="comboBoxCrystalSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 25</value>
+    <value>211, 25</value>
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -191,7 +206,13 @@
   <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="groupBoxSymmetry.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 132</value>
+  </data>
   <data name="groupBoxSymmetry.Text" xml:space="preserve">
     <value>対称性</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 132</value>
   </data>
 </root>

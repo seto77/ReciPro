@@ -49,7 +49,6 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
 
     public string Label;
 
-    [XmlIgnore]
     public string ElementName;
 
     [XmlIgnore]
