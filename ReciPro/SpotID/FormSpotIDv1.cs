@@ -16,6 +16,8 @@ public partial class FormSpotIDv1 : Form
         photo1 = new PhotoInformation(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, true, 0, 0);
         photo2 = new PhotoInformation(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, true, 0, 0);
         photo3 = new PhotoInformation(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, true, 0, 0);
+
+        numericBoxP1Theta.ReadOnly = numericBoxP2Theta.ReadOnly = numericBoxP3Theta.ReadOnly = true;
     }
 
     //フォームクローズ時
@@ -259,12 +261,15 @@ public partial class FormSpotIDv1 : Form
 
     private void radioButtonPhoto1Mode1_CheckedChanged(object sender, EventArgs e)
     {
-        inputBoxP1L3.Enabled = numericUpDownPhoto1L3Err.Enabled = !radioButtonPhoto1Mode2.Checked;
-        numericBoxP1Theta.Enabled = numericUpDownPhoto1ThetaErr.Enabled = radioButtonPhoto1Mode2.Checked;
-        inputBoxP2L3.Enabled = numericUpDownPhoto2L3Err.Enabled = !radioButtonPhoto2Mode2.Checked;
-        numericBoxP2Theta.Enabled = numericUpDownPhoto2ThetaErr.Enabled = radioButtonPhoto2Mode2.Checked;
-        inputBoxP3L3.Enabled = numericUpDownPhoto3L3Err.Enabled = !radioButtonPhoto3Mode2.Checked;
-        numericBoxP3Theta.Enabled = numericUpDownPhoto3ThetaErr.Enabled = radioButtonPhoto3Mode2.Checked;
+        inputBoxP1L3.Enabled = numericUpDownPhoto1L3Err.Enabled = numericBoxP1Theta.ReadOnly = !radioButtonPhoto1Mode2.Checked;
+        
+      numericUpDownPhoto1ThetaErr.Enabled = radioButtonPhoto1Mode2.Checked;
+       
+        inputBoxP2L3.Enabled = numericUpDownPhoto2L3Err.Enabled = numericBoxP2Theta.ReadOnly = !radioButtonPhoto2Mode2.Checked;
+         numericUpDownPhoto2ThetaErr.Enabled = radioButtonPhoto2Mode2.Checked;
+        
+        inputBoxP3L3.Enabled = numericUpDownPhoto3L3Err.Enabled = numericBoxP3Theta.ReadOnly = !radioButtonPhoto3Mode2.Checked;
+         numericUpDownPhoto3ThetaErr.Enabled = radioButtonPhoto3Mode2.Checked;
         textBox_TextChanged(new object(), new EventArgs());
     }
 
@@ -313,6 +318,16 @@ public partial class FormSpotIDv1 : Form
         double WaveLength = 1.2264262862108010441350327657997 / Math.Sqrt((double)numericUpDownAccVol.Value * 1000 * (1 + (double)numericUpDownAccVol.Value * 0.9784753725226711491437618236159 / 1000));
         textBoxWaveLength.Text = WaveLength.ToString();
     }
+
+    #region L3のInputBoxか角度をクリックされたときの動作
+    private void inputBoxP1L3_Click(object sender, EventArgs e) => radioButtonPhoto1Mode1.Checked = true;
+    private void numericBoxP1Theta_Click2(object sender, EventArgs e) => radioButtonPhoto1Mode2.Checked = true;
+    private void inputBoxP2L3_Click2(object sender, EventArgs e) => radioButtonPhoto2Mode1.Checked = true;
+    private void numericBoxP2Theta_Click2(object sender, EventArgs e) => radioButtonPhoto2Mode2.Checked = true;
+    private void inputBoxP3L1_Click2(object sender, EventArgs e) => radioButtonPhoto3Mode1.Checked = true;
+    private void numericBoxP3Theta_Click2(object sender, EventArgs e) => radioButtonPhoto3Mode2.Checked = true;
+    #endregion
+
 
     private void textBoxTilt_TextChanged(object sender, EventArgs e)
     {

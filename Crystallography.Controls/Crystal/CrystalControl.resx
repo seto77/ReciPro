@@ -1112,28 +1112,28 @@
   <data name="&gt;&gt;tabPageElasticity.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonStressSet.Location" type="System.Drawing.Point, System.Drawing">
     <value>282, 196</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonStressSet.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonStressSet.TabIndex" type="System.Int32, mscorlib">
     <value>263</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
+  <data name="buttonStressSet.Text" xml:space="preserve">
     <value>set</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="&gt;&gt;buttonStressSet.Name" xml:space="preserve">
+    <value>buttonStressSet</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonStressSet.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonStressSet.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonStressSet.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="numericBoxStrain33.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -3027,12 +3027,6 @@
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>249, 6</value>
   </data>
-  <data name="clearAllDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
-  </data>
-  <data name="clearAllDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Reset all data</value>
-  </data>
   <data name="revertCellConstantsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 22</value>
   </data>
@@ -3070,7 +3064,7 @@
     <value>Convert to another spacegroup</value>
   </data>
   <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 286</value>
+    <value>253, 264</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip.Name" xml:space="preserve">
     <value>contextMenuStrip</value>
@@ -3405,12 +3399,6 @@
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;clearAllDataToolStripMenuItem.Name" xml:space="preserve">
-    <value>clearAllDataToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;clearAllDataToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;revertCellConstantsToolStripMenuItem.Name" xml:space="preserve">
     <value>revertCellConstantsToolStripMenuItem</value>
   </data>
@@ -3441,17 +3429,17 @@
   <data name="&gt;&gt;convertToSuperstructureToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;convertToAnotherSpacegroupToolStripMenuItem.Name" xml:space="preserve">
     <value>convertToAnotherSpacegroupToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;convertToAnotherSpacegroupToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CrystalControl</value>
