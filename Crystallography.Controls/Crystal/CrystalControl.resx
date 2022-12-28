@@ -2989,34 +2989,34 @@
     <value>96, 22</value>
   </metadata>
   <data name="scatteringFactorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="scatteringFactorToolStripMenuItem.Text" xml:space="preserve">
     <value>Scattering Factor</value>
   </data>
   <data name="symmetryInformationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="symmetryInformationToolStripMenuItem.Text" xml:space="preserve">
     <value>Symmetry Information</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 6</value>
+    <value>265, 6</value>
   </data>
   <data name="importCrystalFromCIFAMCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="importCrystalFromCIFAMCToolStripMenuItem.Text" xml:space="preserve">
     <value>Import from CIF, AMC...</value>
   </data>
   <data name="exportThisCrystalAsCIFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="exportThisCrystalAsCIFToolStripMenuItem.Text" xml:space="preserve">
     <value>Export to CIF</value>
   </data>
   <data name="sendThisCrystalToOtherSoftwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="sendThisCrystalToOtherSoftwareToolStripMenuItem.Text" xml:space="preserve">
     <value>Send this crystal to other software</value>
@@ -3025,19 +3025,19 @@
     <value>False</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 6</value>
+    <value>265, 6</value>
   </data>
   <data name="revertCellConstantsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="revertCellConstantsToolStripMenuItem.Text" xml:space="preserve">
     <value>Revert cell constants</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>249, 6</value>
+    <value>265, 6</value>
   </data>
   <data name="strainControlToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="strainControlToolStripMenuItem.Text" xml:space="preserve">
     <value>Strain Control</value>
@@ -3046,25 +3046,25 @@
     <value>False</value>
   </data>
   <data name="convertToP1SymmetryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="convertToP1SymmetryToolStripMenuItem.Text" xml:space="preserve">
     <value>Convert to P1 spacegroup</value>
   </data>
   <data name="convertToSuperstructureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="convertToSuperstructureToolStripMenuItem.Text" xml:space="preserve">
-    <value>Convert to superstructure</value>
+    <value>Convert to a superstructure</value>
   </data>
   <data name="convertToAnotherSpacegroupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="convertToAnotherSpacegroupToolStripMenuItem.Text" xml:space="preserve">
-    <value>Convert to another spacegroup</value>
+    <value>Convert to an equivalent spacegroup</value>
   </data>
   <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 264</value>
+    <value>269, 242</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip.Name" xml:space="preserve">
     <value>contextMenuStrip</value>

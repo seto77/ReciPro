@@ -891,17 +891,16 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
 
         var maxNum = _maxNum;
-        var outer = new List<((int H, int K, int L), double len)>() { ((0,0,0), 0) };
-        var gHash = new HashSet<(int H, int K, int L)>((int)(maxNum * 1.5)) { (0, 0, 0) };
+        var outer = new List<(int H, int K, int L, double len)>() { (0, 0, 0, 0) };
+        var gHash = new HashSet<(int H, int K, int L)>((int)(maxNum * 1.5)) { (0, 0, 0) }; //‘S‚Ä‚Ìhkl‚ğŒŸõ‚·‚é‚½‚ßAcompose‚ğg‚¦‚È‚¢‚±‚Æ‚É’ˆÓ
         var minG = 0.0;
         var listPlane = new List<Plane>((int)(maxNum * 1.5));
 
         while (listPlane.Count < maxNum && (minG = outer.Min(o => o.len)) < gMax)
         {
             var end = outer.FindLastIndex(o => o.len - minG < shift * 2);
-            foreach (var (key1, _) in CollectionsMarshal.AsSpan(outer)[..(end + 1)])
+            foreach (var (h1, k1, l1, _) in CollectionsMarshal.AsSpan(outer)[..(end + 1)])
             {
-                var (h1, k1, l1) =key1;
                 foreach ((int h2, int k2, int l2) in directions)
                 {
                     int h = h1 + h2, k = k1 + k2, l = l1 + l2;
@@ -909,7 +908,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                     {
                         double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                         var len = Math.Sqrt(x * x + y * y + z * z);
-                        outer.Add(((h, k, l), len));
+                        outer.Add((h, k, l, len));
                         if (len < gMax && len > 1 / dMax)
                         {
                             var root = SymmetryStatic.IsRootIndex((h, k, l), Symmetry, out int multi);
