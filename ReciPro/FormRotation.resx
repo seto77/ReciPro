@@ -57,81 +57,403 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+  <data name="panel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="checkBoxLink.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9.75pt, style=Italic</value>
+  <data name="checkBoxLink.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBoxLink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 91</value>
+  <data name="checkBoxLink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 5</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 6, 0, 0</value>
+  <data name="checkBoxLink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 15</value>
+  <data name="checkBoxLink.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
   </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>89</value>
+  <data name="checkBoxLink.Text" xml:space="preserve">
+    <value>Link</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Ψ</value>
+  <data name="checkBoxLink.ToolTip" xml:space="preserve">
+    <value>By checking, both ReciPro and Experimental coodinates are linked</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
+  <data name="&gt;&gt;checkBoxLink.Name" xml:space="preserve">
+    <value>checkBoxLink</value>
   </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;checkBoxLink.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;checkBoxLink.Parent" xml:space="preserve">
+    <value>panel2</value>
   </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;checkBoxLink.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 14</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 2</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonViewIsometric.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9.75pt, style=Italic</value>
+  <data name="buttonViewIsometric.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonViewIsometric.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonViewIsometric.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 41</value>
+  <data name="buttonViewIsometric.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 54</value>
   </data>
-  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 6, 0, 0</value>
+  <data name="buttonViewIsometric.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 25</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 15</value>
+  <data name="buttonViewIsometric.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
   </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>90</value>
+  <data name="buttonViewIsometric.Text" xml:space="preserve">
+    <value>View Isometric</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Φ</value>
+  <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
+    <value>Set the view direction isometrically</value>
   </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
+  <data name="&gt;&gt;buttonViewIsometric.Name" xml:space="preserve">
+    <value>buttonViewIsometric</value>
   </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;buttonViewIsometric.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonViewIsometric.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;buttonViewIsometric.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonViewAlongBeam.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonViewAlongBeam.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonViewAlongBeam.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonViewAlongBeam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonViewAlongBeam.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 26</value>
+  </data>
+  <data name="buttonViewAlongBeam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 25</value>
+  </data>
+  <data name="buttonViewAlongBeam.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="buttonViewAlongBeam.Text" xml:space="preserve">
+    <value>View along beam</value>
+  </data>
+  <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
+    <value>Set the view direction parallel to the beam direction</value>
+  </data>
+  <data name="&gt;&gt;buttonViewAlongBeam.Name" xml:space="preserve">
+    <value>buttonViewAlongBeam</value>
+  </data>
+  <data name="&gt;&gt;buttonViewAlongBeam.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonViewAlongBeam.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;buttonViewAlongBeam.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>417, 3</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 82</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="numericBoxPhi.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxPhi.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxPhi.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="numericBoxPhi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 35</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxPhi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxPhi.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxPhi.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxPhi.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxPhi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 27</value>
+  </data>
+  <data name="numericBoxPhi.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Euler angle Φ</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
+    <value>Euler angle Φ</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPhi.Name" xml:space="preserve">
+    <value>numericBoxPhi</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPhi.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPhi.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;numericBoxPhi.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxTheta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxTheta.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="numericBoxTheta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 61</value>
+  </data>
+  <data name="numericBoxTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxTheta.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxTheta.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxTheta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 27</value>
+  </data>
+  <data name="numericBoxTheta.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip" xml:space="preserve">
+    <value>Euler angle Θ</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
+    <value>Euler angle Θ</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTheta.Name" xml:space="preserve">
+    <value>numericBoxTheta</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTheta.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTheta.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTheta.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericBoxPsi.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxPsi.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxPsi.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="numericBoxPsi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 87</value>
+  </data>
+  <data name="numericBoxPsi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxPsi.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxPsi.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxPsi.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxPsi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 27</value>
+  </data>
+  <data name="numericBoxPsi.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip" xml:space="preserve">
+    <value>Euler angle Ψ</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
+    <value>Euler angle Ψ</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPsi.Name" xml:space="preserve">
+    <value>numericBoxPsi</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPsi.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPsi.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPsi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonPaste.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonPaste.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonPaste.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonPaste.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonPaste.Location" type="System.Drawing.Point, System.Drawing">
+    <value>287, 66</value>
+  </data>
+  <data name="buttonPaste.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="buttonPaste.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 40</value>
+  </data>
+  <data name="buttonPaste.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="buttonPaste.Text" xml:space="preserve">
+    <value>Paste from
+ Excel</value>
+  </data>
+  <data name="buttonPaste.ToolTip" xml:space="preserve">
+    <value>Paste rotation matrix values from a clipboard as Excel format</value>
+  </data>
+  <data name="&gt;&gt;buttonPaste.Name" xml:space="preserve">
+    <value>buttonPaste</value>
+  </data>
+  <data name="&gt;&gt;buttonPaste.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPaste.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;buttonPaste.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonCopy.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonCopy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonCopy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonCopy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>287, 35</value>
+  </data>
+  <data name="buttonCopy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="buttonCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 25</value>
+  </data>
+  <data name="buttonCopy.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="buttonCopy.Text" xml:space="preserve">
+    <value>Copy to Excel</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>Copy rotation matrix values to a clipboard as Excel format</value>
+  </data>
+  <data name="&gt;&gt;buttonCopy.Name" xml:space="preserve">
+    <value>buttonCopy</value>
+  </data>
+  <data name="&gt;&gt;buttonCopy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCopy.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;buttonCopy.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -168,6 +490,42 @@
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9.75pt, style=Italic</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 41</value>
+  </data>
+  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 6, 0, 0</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 15</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Φ</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
@@ -580,6 +938,42 @@
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBox11" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericBox12" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="numericBox13" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericBox21" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericBox22" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="numericBox33" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericBox23" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericBox31" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericBox32" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9.75pt, style=Italic</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 91</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 6, 0, 0</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 15</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Ψ</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -616,268 +1010,6 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="buttonCopy.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonCopy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonCopy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 35</value>
-  </data>
-  <data name="buttonCopy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="buttonCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 25</value>
-  </data>
-  <data name="buttonCopy.TabIndex" type="System.Int32, mscorlib">
-    <value>93</value>
-  </data>
-  <data name="buttonCopy.Text" xml:space="preserve">
-    <value>Copy to Excel</value>
-  </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="buttonCopy.ToolTip" xml:space="preserve">
-    <value>Copy rotation matrix values to a clipboard as Excel format</value>
-  </data>
-  <data name="&gt;&gt;buttonCopy.Name" xml:space="preserve">
-    <value>buttonCopy</value>
-  </data>
-  <data name="&gt;&gt;buttonCopy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonCopy.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;buttonCopy.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="buttonPaste.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonPaste.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonPaste.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonPaste.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 66</value>
-  </data>
-  <data name="buttonPaste.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="buttonPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 40</value>
-  </data>
-  <data name="buttonPaste.TabIndex" type="System.Int32, mscorlib">
-    <value>93</value>
-  </data>
-  <data name="buttonPaste.Text" xml:space="preserve">
-    <value>Paste from
- Excel</value>
-  </data>
-  <data name="buttonPaste.ToolTip" xml:space="preserve">
-    <value>Paste rotation matrix values from a clipboard as Excel format</value>
-  </data>
-  <data name="&gt;&gt;buttonPaste.Name" xml:space="preserve">
-    <value>buttonPaste</value>
-  </data>
-  <data name="&gt;&gt;buttonPaste.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonPaste.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;buttonPaste.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="buttonViewIsometric.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonViewIsometric.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonViewIsometric.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonViewIsometric.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 4</value>
-  </data>
-  <data name="buttonViewIsometric.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 25</value>
-  </data>
-  <data name="buttonViewIsometric.TabIndex" type="System.Int32, mscorlib">
-    <value>97</value>
-  </data>
-  <data name="buttonViewIsometric.Text" xml:space="preserve">
-    <value>View Isometric</value>
-  </data>
-  <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
-    <value>Set the view direction isometrically</value>
-  </data>
-  <data name="&gt;&gt;buttonViewIsometric.Name" xml:space="preserve">
-    <value>buttonViewIsometric</value>
-  </data>
-  <data name="&gt;&gt;buttonViewIsometric.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonViewIsometric.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;buttonViewIsometric.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="numericBoxPhi.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxPhi.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxPhi.FooterText" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="numericBoxPhi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 35</value>
-  </data>
-  <data name="numericBoxPhi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxPhi.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxPhi.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxPhi.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxPhi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
-  </data>
-  <data name="numericBoxPhi.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
-    <value>Euler angle Φ</value>
-  </data>
-  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
-    <value>Euler angle Φ</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPhi.Name" xml:space="preserve">
-    <value>numericBoxPhi</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPhi.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPhi.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPhi.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericBoxTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxTheta.FooterText" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="numericBoxTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 61</value>
-  </data>
-  <data name="numericBoxTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxTheta.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxTheta.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
-  </data>
-  <data name="numericBoxTheta.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericBoxTheta.ToolTip" xml:space="preserve">
-    <value>Euler angle Θ</value>
-  </data>
-  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
-    <value>Euler angle Θ</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTheta.Name" xml:space="preserve">
-    <value>numericBoxTheta</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTheta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTheta.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTheta.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="numericBoxPsi.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxPsi.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxPsi.FooterText" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="numericBoxPsi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 87</value>
-  </data>
-  <data name="numericBoxPsi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxPsi.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxPsi.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxPsi.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxPsi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
-  </data>
-  <data name="numericBoxPsi.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="numericBoxPsi.ToolTip" xml:space="preserve">
-    <value>Euler angle Ψ</value>
-  </data>
-  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
-    <value>Euler angle Ψ</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPsi.Name" xml:space="preserve">
-    <value>numericBoxPsi</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPsi.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPsi.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxPsi.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -888,7 +1020,7 @@
     <value>3, 3</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>409, 384</value>
+    <value>408, 384</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
@@ -906,13 +1038,62 @@
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
+  </data>
+  <data name="buttonResetExpEuler.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonResetExpEuler.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonResetExpEuler.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonResetExpEuler.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonResetExpEuler.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 66</value>
+  </data>
+  <data name="buttonResetExpEuler.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 40</value>
+  </data>
+  <data name="buttonResetExpEuler.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="buttonResetExpEuler.Text" xml:space="preserve">
+    <value>Reset
+angles</value>
+  </data>
+  <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
+    <value>Reset all angles to zero</value>
+  </data>
+  <data name="&gt;&gt;buttonResetExpEuler.Name" xml:space="preserve">
+    <value>buttonResetExpEuler</value>
+  </data>
+  <data name="&gt;&gt;buttonResetExpEuler.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonResetExpEuler.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;buttonResetExpEuler.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="radioButton1stX.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioButton1stX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton1stX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="radioButton1stX.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 4</value>
@@ -944,17 +1125,14 @@
   <data name="&gt;&gt;radioButton1stX.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
   <data name="radioButton1stY.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioButton1stY.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton1stY.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="radioButton1stY.Location" type="System.Drawing.Point, System.Drawing">
     <value>39, 4</value>
@@ -991,6 +1169,9 @@
   </data>
   <data name="radioButton1stZ.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton1stZ.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="radioButton1stZ.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 4</value>
@@ -1061,6 +1242,9 @@
   <data name="radioButton2ndX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold</value>
   </data>
+  <data name="radioButton2ndX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="radioButton2ndX.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 4</value>
   </data>
@@ -1097,6 +1281,9 @@
   <data name="radioButton2ndY.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold</value>
   </data>
+  <data name="radioButton2ndY.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="radioButton2ndY.Location" type="System.Drawing.Point, System.Drawing">
     <value>39, 4</value>
   </data>
@@ -1132,6 +1319,9 @@
   </data>
   <data name="radioButton2ndZ.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton2ndZ.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="radioButton2ndZ.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 4</value>
@@ -1202,6 +1392,9 @@
   <data name="radioButton3rdX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold</value>
   </data>
+  <data name="radioButton3rdX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="radioButton3rdX.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 4</value>
   </data>
@@ -1237,6 +1430,9 @@
   </data>
   <data name="radioButton3rdY.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton3rdY.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="radioButton3rdY.Location" type="System.Drawing.Point, System.Drawing">
     <value>39, 4</value>
@@ -1276,6 +1472,9 @@
   </data>
   <data name="radioButton3rdZ.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton3rdZ.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="radioButton3rdZ.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 4</value>
@@ -1334,81 +1533,14 @@
   <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="checkBoxLink.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxLink.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="checkBoxLink.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 14</value>
-  </data>
-  <data name="checkBoxLink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
-  </data>
-  <data name="checkBoxLink.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="checkBoxLink.Text" xml:space="preserve">
-    <value>Link</value>
-  </data>
-  <data name="checkBoxLink.ToolTip" xml:space="preserve">
-    <value>By checking, both ReciPro and Experimental coodinates are linked</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLink.Name" xml:space="preserve">
-    <value>checkBoxLink</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLink.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLink.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLink.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonResetExpEuler.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonResetExpEuler.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonResetExpEuler.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonResetExpEuler.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 70</value>
-  </data>
-  <data name="buttonResetExpEuler.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 40</value>
-  </data>
-  <data name="buttonResetExpEuler.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="buttonResetExpEuler.Text" xml:space="preserve">
-    <value>Reset
-angles</value>
-  </data>
-  <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
-    <value>Reset all angles to zero</value>
-  </data>
-  <data name="&gt;&gt;buttonResetExpEuler.Name" xml:space="preserve">
-    <value>buttonResetExpEuler</value>
-  </data>
-  <data name="&gt;&gt;buttonResetExpEuler.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonResetExpEuler.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;buttonResetExpEuler.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="checkBoxEnable3rd.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBoxEnable3rd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="checkBoxEnable3rd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="checkBoxEnable3rd.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 81</value>
@@ -1446,6 +1578,9 @@ angles</value>
   <data name="checkBoxFix3rd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
+  <data name="checkBoxFix3rd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="checkBoxFix3rd.Location" type="System.Drawing.Point, System.Drawing">
     <value>290, 84</value>
   </data>
@@ -1481,6 +1616,9 @@ angles</value>
   </data>
   <data name="checkBoxFix2nd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="checkBoxFix2nd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="checkBoxFix2nd.Location" type="System.Drawing.Point, System.Drawing">
     <value>290, 54</value>
@@ -1518,6 +1656,9 @@ angles</value>
   <data name="checkBoxFix1st.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
+  <data name="checkBoxFix1st.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="checkBoxFix1st.Location" type="System.Drawing.Point, System.Drawing">
     <value>290, 24</value>
   </data>
@@ -1553,6 +1694,9 @@ angles</value>
   </data>
   <data name="checkBoxEnable2nd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="checkBoxEnable2nd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="checkBoxEnable2nd.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 53</value>
@@ -1771,10 +1915,10 @@ angles</value>
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 446</value>
+    <value>537, 3</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>409, 384</value>
+    <value>408, 384</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -1792,91 +1936,10 @@ angles</value>
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 5</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>2, 39</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>103</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="buttonViewAlongBeam.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonViewAlongBeam.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonViewAlongBeam.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonViewAlongBeam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 4</value>
-  </data>
-  <data name="buttonViewAlongBeam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 25</value>
-  </data>
-  <data name="buttonViewAlongBeam.TabIndex" type="System.Int32, mscorlib">
-    <value>97</value>
-  </data>
-  <data name="buttonViewAlongBeam.Text" xml:space="preserve">
-    <value>View along beam</value>
-  </data>
-  <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
-    <value>Set the view direction parallel to the beam direction</value>
-  </data>
-  <data name="&gt;&gt;buttonViewAlongBeam.Name" xml:space="preserve">
-    <value>buttonViewAlongBeam</value>
-  </data>
-  <data name="&gt;&gt;buttonViewAlongBeam.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonViewAlongBeam.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;buttonViewAlongBeam.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="panel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 393</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 47</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>103</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1885,10 +1948,10 @@ angles</value>
     <value>0, 0</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 833</value>
+    <value>948, 390</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>104</value>
@@ -1906,7 +1969,7 @@ angles</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBox2" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,50,AutoSize,0,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="groupBox2" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,AutoSize,0,Percent,50" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1915,7 +1978,7 @@ angles</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>412, 833</value>
+    <value>948, 390</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>

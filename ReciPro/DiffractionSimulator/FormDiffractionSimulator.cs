@@ -158,6 +158,7 @@ public partial class FormDiffractionSimulator : Form
     public void FormElectronDiffraction_Load(object sender, EventArgs e)
     {
         comboBoxScaleColorScale.SelectedIndex = 0;
+        comboBoxCenter.SelectedIndex= 0;
 
         if (FormDiffractionSimulatorGeometry == null)
         {
@@ -1912,9 +1913,9 @@ public partial class FormDiffractionSimulator : Form
     {
         get
         {
-            if (radioButtonCenterToFoot.Checked)
+            if (comboBoxCenter.SelectedIndex==0)
                 return new PointD(0, 0);
-            else if (radioButtonCenterToDirect.Checked)
+            else if (comboBoxCenter.SelectedIndex == 1)
                 return -convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
             else
             {

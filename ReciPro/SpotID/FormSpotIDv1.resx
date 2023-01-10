@@ -155,7 +155,7 @@
     <value>True</value>
   </data>
   <data name="label53.Text" xml:space="preserve">
-    <value>}</value>
+    <value>âˆ“</value>
   </data>
   <data name="&gt;&gt;label46.Name" xml:space="preserve">
     <value>label46</value>
@@ -245,7 +245,7 @@
     <value>groupBox10</value>
   </data>
   <data name="label100.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="&gt;&gt;label55.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -299,7 +299,7 @@
     <value>0</value>
   </data>
   <data name="label43.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;pictureBoxPhoto2.Name" xml:space="preserve">
     <value>pictureBoxPhoto2</value>
@@ -377,7 +377,7 @@
     <value>152, 20</value>
   </data>
   <data name="label76.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="&gt;&gt;labelPhoto1Mode2_6.Name" xml:space="preserve">
     <value>labelPhoto1Mode2_6</value>
@@ -410,7 +410,7 @@
     <value>Arial, 9.75pt</value>
   </data>
   <data name="label59.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="label44.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -434,7 +434,7 @@
     <value>label6</value>
   </data>
   <data name="labelPhoto1Mode1_1.Text" xml:space="preserve">
-    <value>ƒÆ</value>
+    <value>Î¸</value>
   </data>
   <data name="&gt;&gt;label13.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -473,7 +473,7 @@
     <value>l3</value>
   </data>
   <data name="label54.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="labelPhoto1Mode1_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>14, 16</value>
@@ -491,7 +491,7 @@
     <value>label38</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="buttonSearchPhoto3.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 300</value>
@@ -677,7 +677,7 @@
     <value>65</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -728,7 +728,7 @@
     <value>53</value>
   </data>
   <data name="label176.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;numericUpDownPhoto3L1Err.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -809,7 +809,7 @@
     <value>groupBox9</value>
   </data>
   <data name="label101.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="&gt;&gt;pictureBoxPhoto1.Name" xml:space="preserve">
     <value>pictureBoxPhoto1</value>
@@ -830,7 +830,7 @@
     <value>1</value>
   </data>
   <data name="label98.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="&gt;&gt;buttonSearchPhoto1.Name" xml:space="preserve">
     <value>buttonSearchPhoto1</value>
@@ -1145,7 +1145,7 @@
     <value>10</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="numericBoxP3Tilt1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1244,7 +1244,7 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelPhoto1Mode1_3.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;label11.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1643,7 +1643,7 @@
     <value>True</value>
   </data>
   <data name="label57.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;buttonSearchPhoto3.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1751,7 +1751,7 @@
     <value>groupBox10</value>
   </data>
   <data name="label49.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="label176.Location" type="System.Drawing.Point, System.Drawing">
     <value>41, 403</value>
@@ -1820,7 +1820,7 @@
     <value>14</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;label98.Parent" xml:space="preserve">
     <value>groupBox10</value>
@@ -1919,7 +1919,7 @@
     <value>6, 20</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="panel6.Location" type="System.Drawing.Point, System.Drawing">
     <value>-2, 79</value>
@@ -2044,7 +2044,7 @@
     <value>40, 16</value>
   </data>
   <data name="label71.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 381</value>
@@ -2062,7 +2062,7 @@
     <value>14, 16</value>
   </data>
   <data name="label75.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
     <value>308, 65</value>
@@ -2137,7 +2137,7 @@
     <value>4, 119</value>
   </data>
   <data name="label31.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="checkBoxEquivalentPhoto1L2Photo2L2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -2194,7 +2194,7 @@
     <value>Arial, 9.75pt</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;groupBoxPhoto3.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2245,7 +2245,7 @@
     <value>50, 50</value>
   </data>
   <data name="label33.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="textBoxAngleBetween23.TabIndex" type="System.Int32, mscorlib">
     <value>70</value>
@@ -2317,7 +2317,7 @@
     <value>False</value>
   </data>
   <data name="label36.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="label98.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -2344,7 +2344,7 @@
     <value>66</value>
   </data>
   <data name="label37.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormSpotIDv1</value>
@@ -2431,7 +2431,7 @@
     <value>Photo 2</value>
   </data>
   <data name="label58.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;labelPhoto1Mode1_1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2464,7 +2464,7 @@
     <value>12, 16</value>
   </data>
   <data name="buttonSearchPhoto1.Text" xml:space="preserve">
-    <value>Search@zone axis</value>
+    <value>Searchã€€zone axis</value>
   </data>
   <data name="checkBoxPhoto2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2545,7 +2545,7 @@
     <value>numericBoxP2Theta</value>
   </data>
   <data name="labelPhoto1Mode1_4.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="radioButtonPhoto2Mode1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -2602,7 +2602,7 @@
     <value>groupBox10</value>
   </data>
   <data name="label69.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Pattern</value>
@@ -2734,7 +2734,7 @@
     <value>72</value>
   </data>
   <data name="label70.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="&gt;&gt;buttonSearchAll.Name" xml:space="preserve">
     <value>buttonSearchAll</value>
@@ -2845,7 +2845,7 @@
     <value>True</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="label58.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 16</value>
@@ -2896,7 +2896,7 @@
     <value>numericUpDownPhoto1Tilt2Err</value>
   </data>
   <data name="label77.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="label57.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 16</value>
@@ -3043,7 +3043,7 @@
     <value>l1</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="numericBoxP3Tilt2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3085,7 +3085,7 @@
     <value>groupBox3</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;label58.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -3493,7 +3493,7 @@
     <value>Arial, 9.75pt</value>
   </data>
   <data name="label78.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="label26.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3631,7 +3631,7 @@
     <value>3</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
-    <value>ƒÆ</value>
+    <value>Î¸</value>
   </data>
   <data name="&gt;&gt;labelPhoto1Mode1_4.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -3739,7 +3739,7 @@
     <value>21</value>
   </data>
   <data name="label38.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="&gt;&gt;inputBoxP2L2.Type" xml:space="preserve">
     <value>ReciPro.InputBox, ReciPro, Culture=neutral, PublicKeyToken=null</value>
@@ -3856,7 +3856,7 @@
     <value>Center</value>
   </data>
   <data name="label99.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="inputBoxP3L2.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 88</value>
@@ -3976,7 +3976,7 @@
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label39.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="labelPhoto1Mode1_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 146</value>
@@ -4165,7 +4165,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label79.Text" xml:space="preserve">
-    <value>}</value>
+    <value>Â±</value>
   </data>
   <data name="checkBoxPhoto2.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 20</value>
@@ -4273,7 +4273,7 @@
     <value>1000, 27</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="checkBoxPhoto3.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 20</value>
@@ -4387,7 +4387,7 @@
     <value>$this</value>
   </data>
   <data name="label48.Text" xml:space="preserve">
-    <value>‹</value>
+    <value>Â°</value>
   </data>
   <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -4414,7 +4414,7 @@
     <value>groupBox10</value>
   </data>
   <data name="label55.Text" xml:space="preserve">
-    <value>ƒÆ</value>
+    <value>Î¸</value>
   </data>
   <data name="numericBoxP1Tilt1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>

@@ -180,12 +180,6 @@ public partial class FormImageSimulator : Form
     {
         tabControl1.ItemSize = new Size(1, 1);
         tabControl2.ItemSize = new Size(1, 1);
-        panelDummy1.Location = tabControl1.Location;
-        panelDummy2.Location = tabControl2.Location;
-        panelDummy1.Size = new Size(30, 2);
-        panelDummy2.Size = new Size(30, 2);
-        panelDummy1.BringToFront();
-        panelDummy2.BringToFront();
         toolStripComboBoxCaclulationLibrary.SelectedIndex = 0;
 
         var width = pictureBoxPhaseScale.ClientRectangle.Width;
@@ -323,7 +317,7 @@ public partial class FormImageSimulator : Form
             radioButtonSTEM_target_Both.Checked || radioButtonSTEM_target_Inel.Checked
             );
 
-        this.buttonSimulateHRTEM.Visible = false;
+        this.buttonSimulate.Visible = false;
         this.buttonStop.Visible = true;
         this.splitContainer1.Enabled = false;
 
@@ -333,7 +327,7 @@ public partial class FormImageSimulator : Form
     private void buttonStop_Click(object sender, EventArgs e)
     {
         FormMain.Crystal.Bethe.CancelSTEM();
-        this.buttonSimulateHRTEM.Visible = true;
+        this.buttonSimulate.Visible = true;
         this.buttonStop.Visible = false;
         this.splitContainer1.Enabled = true;
     }
@@ -407,7 +401,7 @@ public partial class FormImageSimulator : Form
             toolStripStatusLabel1.Text = $"Interupted! Total ellapsed time: {(s1 + s2 + s3) / 1000.0:f1} sec.";
         }
         toolStripStatusLabel2.Text = "";
-        this.buttonSimulateHRTEM.Visible = true;
+        this.buttonSimulate.Visible = true;
         this.buttonStop.Visible = false;
         this.splitContainer1.Enabled = true;
         sw1.Stop(); sw1.Reset(); sw2.Stop(); sw2.Reset(); sw3.Reset(); sw3.Reset();
@@ -780,7 +774,6 @@ public partial class FormImageSimulator : Form
     /// <param name="e"></param>
     private void NumericBoxAccVol_ValueChanged(object sender, EventArgs e)
     {
-        textBoxRambda.Text = (Rambda * 1000).ToString("f4");
         textBoxScherzer.Text = Scherzer.ToString("f1");
         DrawLenzGraph();
         CalculateInsideSpotInfo();
@@ -884,7 +877,7 @@ public partial class FormImageSimulator : Form
 
     public void RotationChanged()
     {
-        if (checkBoxRealTimeCalculation.Checked)
+        if (checkBoxRealTimeSimulation.Checked)
         {
             if (ImageMode == ImageModes.HRTEM)
                 SimulateHRTEM(true);
@@ -994,7 +987,7 @@ public partial class FormImageSimulator : Form
     {
         if (ImageMode == ImageModes.HRTEM)
         {
-            groupBoxInherentProperty.Enabled = groupBoxLenzFunction.Enabled = groupBoxObjectAperture.Enabled = true;
+            groupBoxInherentProperty.Enabled = groupBoxLensFunction.Enabled = groupBoxObjectAperture.Enabled = true;
             groupBoxSampleProperty.Enabled = true;
             numericBoxDefocus.Enabled = true;
             tabControl1.SelectedIndex = 0;
@@ -1007,7 +1000,7 @@ public partial class FormImageSimulator : Form
         }
         else if (ImageMode == ImageModes.POTENTIAL)
         {
-            groupBoxInherentProperty.Enabled = groupBoxLenzFunction.Enabled = groupBoxObjectAperture.Enabled = false;
+            groupBoxInherentProperty.Enabled = groupBoxLensFunction.Enabled = groupBoxObjectAperture.Enabled = false;
             groupBoxSampleProperty.Enabled = false;
             numericBoxDefocus.Enabled = false;
             numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = false;
@@ -1017,7 +1010,7 @@ public partial class FormImageSimulator : Form
         }
         else if (ImageMode == ImageModes.STEM)
         {
-            groupBoxInherentProperty.Enabled = groupBoxLenzFunction.Enabled = groupBoxObjectAperture.Enabled = true;
+            groupBoxInherentProperty.Enabled = groupBoxLensFunction.Enabled = groupBoxObjectAperture.Enabled = true;
             groupBoxSampleProperty.Enabled = true;
             numericBoxDefocus.Enabled = true;
             numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
@@ -1273,6 +1266,11 @@ public partial class FormImageSimulator : Form
     }
 
     private void checkBoxIntensityMin_CheckedChanged(object sender, EventArgs e) => numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Checked;
+
+    private void checkBoxShowLensFunctionGraph_CheckedChanged(object sender, EventArgs e)
+    {
+        groupBoxLensFunction.Visible = checkBoxShowLensFunctionGraph.Checked;
+    }
 
     private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)
     {
