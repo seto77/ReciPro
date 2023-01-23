@@ -197,14 +197,13 @@ public struct PointD : IComparable, IEquatable<PointD>
 
     public override int GetHashCode() => HashCode.Combine(X, Y);
 
-
     #region 演算子のオーバーロード
 
     public static PointD operator +(in PointD p1, in PointD p2) => new(p1.X + p2.X, p1.Y + p2.Y);
 
     public static PointD operator -(in PointD p1, in PointD p2) => new(p1.X - p2.X, p1.Y - p2.Y);
 
-    public static PointD operator -(in PointD p) => new PointD(-p.X, -p.Y);
+    public static PointD operator -(in PointD p) => new(-p.X, -p.Y);
 
     public static PointD operator *(in double d, in PointD p) => new(d * p.X, d * p.Y);
 

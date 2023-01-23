@@ -145,7 +145,7 @@ public partial class FormStereonet : Form
 
         V3 conv(double x, double y, double z) => radioButtonWulff.Checked ? new V3(x, y, 0) / (1 + z) : new V3(x, y, 0) / Math.Sqrt(1 + z) * sq2 + new V3(0, 0, 1);
 
-        List<GLObject> glObjects = new List<GLObject>();
+        var glObjects = new List<GLObject>();
         glControl.DepthCueing = (true, (trackBarDepthFadingOut.Value - 10) / 2.0, 2);
         Color color10 = colorControl10DegLine.Color, color90 = colorControl90DegLine.Color;
 
@@ -259,30 +259,28 @@ public partial class FormStereonet : Form
         glControl.Refresh();
     }
 
-    private readonly List<double> sin = new();
-    private readonly List<double> cos = new();
-    private readonly List<double> tan = new();
+    private readonly List<double> sin = new(360);
+    private readonly List<double> cos = new(360);
+    private readonly List<double> tan = new(360);
 
     //ステレオネットの輪郭を描く
     private void DrawOutline(Graphics g)
     {
-        var pen1 = new Pen(new SolidBrush(colorControl1DegLine.Color), (float)(1 / mag));
-        var pen10 = new Pen(new SolidBrush(colorControl10DegLine.Color), (float)(2 / mag));
-        var pen90 = new Pen(new SolidBrush(colorControl90DegLine.Color), (float)(3 / mag));
-
         if (sin.Count == 0)
-        {
             for (int n = 0; n < 360; n++)
             {
                 sin.Add(Math.Sin(n * Math.PI / 180.0));
                 cos.Add(Math.Cos(n * Math.PI / 180.0));
                 tan.Add(Math.Tan(n * Math.PI / 180.0));
             }
-        }
+        
+        var pen1 = new Pen(new SolidBrush(colorControl1DegLine.Color), (float)(1 / mag));
+        var pen10 = new Pen(new SolidBrush(colorControl10DegLine.Color), (float)(2 / mag));
+        var pen90 = new Pen(new SolidBrush(colorControl90DegLine.Color), (float)(3 / mag));
 
         if (this.radioButtonOutlineEquator.Checked)//赤道モードのとき
         {
-            List<int> wList = new List<int>();
+            var wList = new List<int>();
             for (int i = 1; i < 90; i++)
                 if (i % 10 != 0)
                     wList.Add(i);
@@ -294,7 +292,7 @@ public partial class FormStereonet : Form
                 for (int n = 0; n < wList.Count; n++)
                 {
                     int w = wList[n];
-                    if (this.checkBox1DegLine.Checked || w % 10 == 0)
+                    if (checkBox1DegLine.Checked || w % 10 == 0)
                     {
                         g.DrawArc(w % 10 == 0 ? pen10 : pen1, -cos[w] / (1 + sin[w]), -1 / cos[w], 2 / cos[w], 2 / cos[w], (w + 90), (180 - 2 * w));
                         g.DrawArc(w % 10 == 0 ? pen10 : pen1, -cos[w] / (1 - sin[w]), -1 / cos[w], 2 / cos[w], 2 / cos[w], (w - 90), (180 - 2 * w));
@@ -320,7 +318,7 @@ public partial class FormStereonet : Form
                 for (int n = 0; n < wList.Count; n++)
                 {
                     int w = wList[n];
-                    if (this.checkBox1DegLine.Checked || w % 10 == 0)
+                    if (checkBox1DegLine.Checked || w % 10 == 0)
                     {
                         for (int i = 0; i < div; i++)
                         {
@@ -339,7 +337,7 @@ public partial class FormStereonet : Form
         }
         else//極モードのとき
         {
-            List<int> wList = new List<int>();
+            var wList = new List<int>();
             for (int i = 1; i < 180; i++)
                 if (i % 10 != 0)
                     wList.Add(i);
@@ -400,11 +398,9 @@ public partial class FormStereonet : Form
 
         for (int n = 0; n < vector.Length; n++)
         {
-            PointD srcPt;
-            if (radioButtonWulff.Checked)
-                srcPt = Stereonet.ConvertVectorToWulff(formMain.Crystal.RotationMatrix * vector[n]);
-            else
-                srcPt = Stereonet.ConvertVectorToSchmidt(formMain.Crystal.RotationMatrix * vector[n]);
+            PointD srcPt = radioButtonWulff.Checked ?
+                Stereonet.ConvertVectorToWulff(formMain.Crystal.RotationMatrix * vector[n]) :
+                Stereonet.ConvertVectorToSchmidt(formMain.Crystal.RotationMatrix * vector[n]);
 
             if (!formMain.YusaGonioMode)
             {
@@ -747,9 +743,8 @@ public partial class FormStereonet : Form
             printDocument1.PrinterSettings = pageSetupDialog1.PrinterSettings;
     }
 
-    private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e) =>
-        // 印刷プレビューを表示
-        printPreviewDialog1.ShowDialog();
+    // 印刷プレビューを表示
+    private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e) => printPreviewDialog1.ShowDialog();
 
     private void printToolStripMenuItem_Click(object sender, EventArgs e)
     {

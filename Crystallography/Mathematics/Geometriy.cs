@@ -685,7 +685,6 @@ namespace Crystallography
                 return new[] { Array.Empty<PointD>() };
             else
             {
-
                 for (int i = 0; i < pt.Count - 1; i++)
                 {
                     if (!area.IsInsde(pt[i]) || !area.IsInsde(pt[i + 1])) //‚Ç‚¿‚ç‚©‚ª”ÍˆÍŠO‚ÌŽž

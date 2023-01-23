@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#region
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using static System.Math;
-
+#endregion
 
 namespace ReciPro;
 
@@ -886,7 +887,6 @@ public partial class FormImageSimulator : Form
         }
         else
             CalculateInsideSpotInfo();
-
     }
 
 

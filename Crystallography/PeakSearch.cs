@@ -1,8 +1,10 @@
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace Crystallography
 {
@@ -62,24 +64,25 @@ namespace Crystallography
 
         public PeakFunction Copy()
         {
-            PeakFunction p = new PeakFunction();
-            p.Option = this.Option;
-            p.intensity = this.intensity;
-            p.eta = this.eta;
-            p.etaH = this.etaH;
-            p.etaL = this.etaL;
-            p.Rl = this.Rl;
-            p.Rh = this.Rh;
-            p.X = this.X;
-            p.Hk = this.Hk;
-            p.Int = this.Int;
-            p.A = this.A;//非対称パラメータ
-            p.B1 = this.B1;
-            p.B2 = this.B2;
-            p.B3 = this.B3;
-            p.m = this.m;
-            p.range = this.range;
-            return p;
+            return new PeakFunction
+            {
+                Option = this.Option,
+                intensity = this.intensity,
+                eta = this.eta,
+                etaH = this.etaH,
+                etaL = this.etaL,
+                Rl = this.Rl,
+                Rh = this.Rh,
+                X = this.X,
+                Hk = this.Hk,
+                Int = this.Int,
+                A = this.A,//非対称パラメータ
+                B1 = this.B1,
+                B2 = this.B2,
+                B3 = this.B3,
+                m = this.m,
+                range = this.range
+            };
         }
 
         public int GetParamNumber()
@@ -167,14 +170,13 @@ namespace Crystallography
                 return 0;
         }
 
-        private static readonly double SqrtLn2PI = Math.Sqrt(Math.Log(2) * Math.PI);
-        private static readonly double SqrtLn2PerPI = Math.Sqrt(Math.Log(2) / Math.PI);
-        private static readonly double Ln2 = Math.Log(2);
-        private static readonly double Ln2Pow15 = Math.Sqrt(Ln2) * Ln2;
-        private static readonly double PI = Math.PI;
-
+        private const double SqrtLn2PI = 1.4756646266356059;// Math.Sqrt(Math.Log(2) * Math.PI)
+        private const double SqrtLn2PerPI = 0.46971863934982566;// Math.Sqrt(Math.Log(2) / Math.PI);
+        private const double Ln2 = 0.69314718055994529;// Math.Log(2);
+        private const double Ln2Pow15 = 0.57708288138613972;// Math.Sqrt(Ln2) * Ln2;
+        private const double PI = Math.PI;
         //static double pi = 1 / PI;
-        private static readonly double SqrtPI = Math.Sqrt(PI);
+        private const double SqrtPI = 1.7724538509055159;// Math.Sqrt(PI);
 
         private double Z1, Z2, a1, a2, a3, a4, a5, a6, a7, a8, a9,
             b, b1, b2, b3, b4, b5, b6, b7;
@@ -182,7 +184,7 @@ namespace Crystallography
         //Pseudo Voigt ここから
         private double PseudoVoigt(double x)
         {
-            double Fourx2PerHk2 = 4 * (x - X) * (x - X) / Hk / Hk;
+            var Fourx2PerHk2 = 4 * (x - X) * (x - X) / Hk / Hk;
             return Int * ((eta / Math.PI / (1 + Fourx2PerHk2) + (1 - eta) * SqrtLn2PerPI * Math.Exp(-Ln2 * Fourx2PerHk2)) * 2 / Hk);
         }
 
@@ -400,9 +402,9 @@ namespace Crystallography
         }
 
 
-        public static void FitPeakThread(PointD[] pt, bool BackgroundFitting, double RemoveBadSN, ref PeakFunction p)
+        public static void FitPeakThread(List<PointD> pt, bool BackgroundFitting, double RemoveBadSN, ref PeakFunction p)
         {
-            PeakFunction[] param = new PeakFunction[1];
+            var param = new PeakFunction[1];
             param[0] = p;
             FitMultiPeaksThread(pt, BackgroundFitting, RemoveBadSN, ref param);
             p = param[0];
@@ -412,86 +414,79 @@ namespace Crystallography
         /// <summary>
         /// 複数ピークをフィッティングする. 戻り値は、R値
         /// </summary>
-        /// <param name="pt">フィッティング対象プロファイルのデータ配列</param>
+        /// <param name="_pt">フィッティング対象プロファイルのデータ配列</param>
         /// <param name="BackgroundFitting">バックグラウンドをフィッティングするかどうか</param>
         /// <param name="RemoveBadSN">SN比の悪いピークについてはNaNを返すかどうか</param>
-        /// <param name="p">ピーク関数 格納されている中心値、半値幅、フィッティングRangeを設定しておく</param>
-        public static double FitMultiPeaksThread(PointD[] pt, bool BackgroundFitting, double RemoveBadSN, ref PeakFunction[] p)
+        /// <param name="prms">ピーク関数 格納されている中心値、半値幅、フィッティングRangeを設定しておく</param>
+        public static double FitMultiPeaksThread(List<PointD> _pt, bool BackgroundFitting, double RemoveBadSN, ref PeakFunction[] prms)
         {
             //マルカールの方法でPseudoVoigtをとく。高速になるはず
 
-            if (p.Length == 0)
+            if (prms.Length == 0)
                 return double.PositiveInfinity;
-            if (pt == null || pt.Length < 3)
+            if (_pt == null || _pt.Count < 3)
                 return double.PositiveInfinity;
 
             //まずここからプロファイルをとる領域や強度ななどの情報を集める
-            var PtX = new List<double>();
-            var PtY = new List<double>();
+            var pt = new List<(double X, double Y)>();
+            //var PtY = new List<double>();
             double sum = 0;
             double temp = double.NegativeInfinity;
             double tempMin = double.PositiveInfinity;
 
             //指定された範囲内のプロファイルをPtX,PtYに格納
-            for (int i = 0; i < pt.Length; i++)
-                if (pt[i].X >= Math.Min(p[0].X - p[0].range, p[^1].X - p[^1].range) && pt[i].X <= Math.Max(p[0].X + p[0].range, p[^1].X + p[^1].range))
+            for (int i = 0; i < _pt.Count; i++)
+                if (_pt[i].X >= Math.Min(prms[0].X - prms[0].range, prms[^1].X - prms[^1].range) && _pt[i].X <= Math.Max(prms[0].X + prms[0].range, prms[^1].X + prms[^1].range))
                 {
-                    PtX.Add(pt[i].X);
-                    PtY.Add(pt[i].Y / 1000);
-                    sum += pt[i].Y / 1000;
-                    if (temp < pt[i].Y / 1000)
-                        temp = pt[i].Y / 1000;
+                    pt.Add((_pt[i].X, _pt[i].Y / 1000));
+                    //PtY.Add(pt[i].Y / 1000);
+                    sum += _pt[i].Y / 1000;
+                    if (temp < _pt[i].Y / 1000)
+                        temp = _pt[i].Y / 1000;
                 }
 
             //p[i].SerchPeakTop
-            for (int i = 0; i < p.Length; i++)
-                if (p[i].SerchPeakTop)
+            for (int i = 0; i < prms.Length; i++)
+                if (prms[i].SerchPeakTop)
                 {
                     double max = double.NegativeInfinity;
                     double tempX = 0;
-                    for (int j = 0; j < PtX.Count; j++)
-                        if (PtX[j] >= p[i].X - p[i].range && PtX[j] <= p[0].X + p[0].range)
-                            if (max < PtY[j])
+                    for (int j = 0; j < pt.Count; j++)
+                        if (pt[j].X >= prms[i].X - prms[i].range && pt[j].X <= prms[0].X + prms[0].range)
+                            if (max < pt[j].Y)
                             {
-                                max = PtY[j];
-                                tempX = PtX[j];
+                                max = pt[j].Y;
+                                tempX = pt[j].X;
                             }
-                    p[i].X = tempX;
+                    prms[i].X = tempX;
                 }
 
             //最も小さい強度を探す
-            for (int i = 0; i < pt.Length; i++)
-                if (pt[i].X >= Math.Min(p[0].X - p[0].range, p[^1].X - p[^1].range) && pt[i].X <= Math.Max(p[0].X + p[0].range, p[^1].X + p[^1].range))
+            for (int i = 0; i < _pt.Count; i++)
+                if (_pt[i].X >= Math.Min(prms[0].X - prms[0].range, prms[^1].X - prms[^1].range) && _pt[i].X <= Math.Max(prms[0].X + prms[0].range, prms[^1].X + prms[^1].range))
                 {
-                    if (tempMin > pt[i].Y / 1000)
-                        tempMin = pt[i].Y / 1000;
+                    if (tempMin > _pt[i].Y / 1000)
+                        tempMin = _pt[i].Y / 1000;
                 }
 
-            if (PtY.Count < 3 || /*temp <= 0 ||*/ (PtY[^1] == 0 && PtY[^2] == 0 && PtY[^3] == 0))
+            if (pt.Count < 3 || (pt[^1].Y == 0 && pt[^2].Y == 0 && pt[^3].Y == 0))
             {
-                for (int i = 0; i < p.Length; i++)
-                {
-                    p[i].X = double.NaN;
-                    p[i].Int = double.NaN;
-                }
+                for (int i = 0; i < prms.Length; i++)
+                    prms[i].X = prms[i].Int = double.NaN;
                 return double.PositiveInfinity;
             }
-
-            double[] x = PtX.ToArray();
-            double[] y = PtY.ToArray();
-            int length = x.Length;
-            //ここまででプロファイルの領域などを決定
+            int length = pt.Count;
 
             //ここから決めなければいけないパラメータの数を設定する
             int ParamNum = 0;
-            for (int i = 0; i < p.Length; i++)
-                ParamNum += p[i].GetParamNumber();
+            for (int i = 0; i < prms.Length; i++)
+                ParamNum += prms[i].GetParamNumber();
             if (ParamNum < 0)
             {
-                for (int i = 0; i < p.Length; i++)
+                for (int i = 0; i < prms.Length; i++)
                 {
-                    p[i].X = double.NaN;
-                    p[i].Int = double.NaN;
+                    prms[i].X = double.NaN;
+                    prms[i].Int = double.NaN;
                 }
                 return double.PositiveInfinity;
             }
@@ -500,393 +495,377 @@ namespace Crystallography
             var Alpha = new DenseMatrix(ParamNum + 2, ParamNum + 2);
             var Beta = new DenseMatrix(ParamNum + 2, 1);
 
-            var pCurrent = new PeakFunction[p.Length];
-            var pNew = new PeakFunction[p.Length];
-            for (int i = 0; i < p.Length; i++)
+            var pCurrent = new PeakFunction[prms.Length];
+            var pNew = new PeakFunction[prms.Length];
+            for (int i = 0; i < prms.Length; i++)
             {
                 pCurrent[i] = new PeakFunction();
                 pNew[i] = new PeakFunction();
-                pCurrent[i] = p[i].Copy();
+                pCurrent[i] = prms[i].Copy();
             }
             //ここまで
 
             //Intの値を大雑把に決める
-            var peakIntensity = new double[p.Length];
-            for (var i = 0; i < p.Length; i++)
+            var peakIntensity = new double[prms.Length];
+            for (var i = 0; i < prms.Length; i++)
             {
                 var d = double.PositiveInfinity;
-                for (int j = 0; j < PtX.Count; j++)
-                    if (d > Math.Abs(x[j] - p[i].X))
+                for (int j = 0; j < length; j++)
+                    if (d > Math.Abs(pt[j].X - prms[i].X))
                     {
-                        d = Math.Abs(x[j] - p[i].X);
-                        peakIntensity[i] = y[j];
+                        d = Math.Abs(pt[j].X - prms[i].X);
+                        peakIntensity[i] = pt[j].Y;
                     }
                 peakIntensity[i] -= tempMin;
             }
             //相対値として再配分する
             peakIntensity = Statistics.Normarize(peakIntensity);
 
-            double[] ResidualCurrent = new double[length];
-            double[] ResidualNew = new double[length];
-            double ResidualSquareCurrent;
-            double ResidualSquareNew = 0;
-            double residual;
-            double centerX = (x[0] + x[^1]) / 2;
-            double B1, B2, B1_New, B2_New;
-            B1 = B2 = 0;
+            double[]
+           ResidualCurrent = ArrayPool<double>.Shared.Rent(length),
+          ResidualNew = ArrayPool<double>.Shared.Rent(length),
+          IntCurrent = ArrayPool<double>.Shared.Rent(length),
+          IntNew = ArrayPool<double>.Shared.Rent(length);
 
-            double bestResidual = double.PositiveInfinity;
-            int bestInitial = 0;
-            int startInitial = 0;
-            int endInitial = 1;// 2;
-            int counter = 0;
-
-            for (int Initial = startInitial; Initial < endInitial; Initial++)
+            try
             {
-                double[] c = new double[3];
-                switch (Initial)
-                {
-                    case 00: c = new double[] { 1, 1, 1 }; break;
-                    case 01: c = new double[] { 1, 1, 2 }; break;
-                    case 02: c = new double[] { 1, 1, 0.5 }; break;
-                    case 03: c = new double[] { 0.5, 1, 1 }; break;
-                    case 04: c = new double[] { 0.5, 1, 2 }; break;
-                    case 05: c = new double[] { 0.5, 1, 0.5 }; break;
-                    case 06: c = new double[] { 2, 1, 1 }; break;
-                    case 07: c = new double[] { 2, 1, 0.5 }; break;
-                    case 08: c = new double[] { 2, 1, 2 }; break;
-                    case 09: c = new double[] { 1, 2, 1 }; break;
-                    case 10: c = new double[] { 1, 0.5, 1 }; break;
-                    case 11: c = new double[] { 0.5, 2, 2 }; break;
-                }
-                //ここから初期値をきめる
-                //Xはすでに代入済み
-                //Int以外のの初期値を大雑把に決める
-                for (int i = 0; i < p.Length; i++)
-                {
-                    pCurrent[i].X = p[i].X;
 
-                    if (p[i].Hk > 0)
-                        pCurrent[i].Hk = p[i].Hk * c[0];
-                    else
-                        pCurrent[i].Hk = p[i].range * 0.5 * c[0];
+                double ResidualSquareCurrent, ResidualSquareNew = 0, residual;
+                double centerX = (pt[0].X + pt[^1].X) / 2;
+                double B1=0, B2=0, B1_New, B2_New;
 
-                    pCurrent[i].eta = 0.5 * c[1];
-                    pCurrent[i].etaH = 0.5 * c[1];
-                    pCurrent[i].etaL = 0.5 * c[1];
-                    pCurrent[i].m = 2 * c[1];
-                    pCurrent[i].Rl = 2 * c[1];
-                    pCurrent[i].Rh = 2 * c[1];
-                    pCurrent[i].A = 0;
-                }
-                B1 = tempMin;
-                B2 = 0;
-                //Int
-                for (int i = 0; i < p.Length; i++)
-                {
-                    pCurrent[i].Int = 1;
-                    pCurrent[i].Int = (sum - tempMin * x.Length) * (x[1] - x[0]) * peakIntensity[i] / pCurrent[i].GetIntegral() * c[2];
-                }
-                //ここまで初期値決め
+                double bestResidual = double.PositiveInfinity;
+                int bestInitial = 0, startInitial = 0, endInitial = 1;// 2;
+                int counter = 0;
 
-                //現在の残差を計算
-                ResidualSquareCurrent = 0;
-                double[] IntCurrent = new double[x.Length];
-                double[] IntNew = new double[x.Length];
-                for (int i = 0; i < length; i++)
-                    IntCurrent[i] = B1 + B2 * (x[i] - centerX);
-                for (int j = 0; j < p.Length; j++)
+                for (int Initial = startInitial; Initial < endInitial; Initial++)
                 {
-                    pCurrent[j].RenewParameter();
-                    for (int i = 0; i < length; i++)
-                        IntCurrent[i] += pCurrent[j].GetValue(x[i], false);
-                }
-                for (int i = 0; i < length; i++)
-                {
-                    ResidualCurrent[i] = y[i] - IntCurrent[i];
-                    ResidualSquareCurrent += ResidualCurrent[i] * ResidualCurrent[i];
-                }
-
-                double ramda = 100;
-                counter = 0;
-                do
-                {
-                    counter++;
-                    //偏微分を作る
-                    int n = 0;
-                    int m = 0;
-                    for (int j = 0; j < p.Length; j++)
+                    double[] c = Initial switch
                     {
-                        n = m;
+                        00 => new double[] { 1, 1, 1 },
+                        01 => new double[] { 1, 1, 2 },
+                        02 => new double[] { 1, 1, 0.5 },
+                        03 => new double[] { 0.5, 1, 1 },
+                        04 => new double[] { 0.5, 1, 2 },
+                        05 => new double[] { 0.5, 1, 0.5 },
+                        06 => new double[] { 2, 1, 1 },
+                        07 => new double[] { 2, 1, 0.5 },
+                        08 => new double[] { 2, 1, 2 },
+                        09 => new double[] { 1, 2, 1 },
+                        10 => new double[] { 1, 0.5, 1 },
+                        _ => new double[] { 0.5, 2, 2 }
+                    };
+                    //ここから初期値をきめる
+                    //Xはすでに代入済み
+                    //Int以外のの初期値を大雑把に決める
+                    for (int i = 0; i < prms.Length; i++)
+                    {
+                        pCurrent[i].X = prms[i].X;
+                        pCurrent[i].Hk = prms[i].Hk > 0 ? prms[i].Hk * c[0] : prms[i].range * 0.5 * c[0];
+                        pCurrent[i].eta = 0.5 * c[1];
+                        pCurrent[i].etaH = 0.5 * c[1];
+                        pCurrent[i].etaL = 0.5 * c[1];
+                        pCurrent[i].m = 2 * c[1];
+                        pCurrent[i].Rl = 2 * c[1];
+                        pCurrent[i].Rh = 2 * c[1];
+                        pCurrent[i].A = 0;
+                    }
+                    B1 = tempMin;
+                    B2 = 0;
+                    //Int
+                    for (int i = 0; i < prms.Length; i++)
+                    {
+                        pCurrent[i].Int = 1; //こうしておかないと、pCurrent[i].GetIntegral()がゼロを返してしまう
+                        pCurrent[i].Int = (sum - tempMin * length) * (pt[1].X - pt[0].X) * peakIntensity[i] / pCurrent[i].GetIntegral() * c[2];
+                    }
+                    //ここまで初期値決め
+
+                    //現在の残差を計算
+                    for (int i = 0; i < length; i++)
+                        IntCurrent[i] = B1 + B2 * (pt[i].X - centerX);
+                    for (int j = 0; j < prms.Length; j++)
+                    {
                         pCurrent[j].RenewParameter();
                         for (int i = 0; i < length; i++)
+                            IntCurrent[i] += pCurrent[j].GetValue(pt[i].X, false);
+                    }
+                    for (int i = 0; i < length; i++)
+                        ResidualCurrent[i] = pt[i].Y - IntCurrent[i];
+                    ResidualSquareCurrent = ResidualCurrent.Sum(e => e * e);
+
+                    double ramda = 100;
+                    counter = 0;
+                    do
+                    {
+                        counter++;
+                        //偏微分を作る
+                        int n = 0, m = 0;
+                        for (int j = 0; j < prms.Length; j++)
                         {
-                            m = n;
-                            double[] d = pCurrent[j].GetDifferentialValue(x[i], false);
-                            for (int k = 0; k < d.Length; k++)
+                            n = m;
+                            pCurrent[j].RenewParameter();
+                            for (int i = 0; i < length; i++)
                             {
-                                diff[m, i] = d[k];
-                                m++;
+                                m = n;
+                                var d = pCurrent[j].GetDifferentialValue(pt[i].X, false);
+                                for (int k = 0; k < d.Length; k++)
+                                {
+                                    diff[m, i] = d[k];
+                                    m++;
+                                }
                             }
                         }
-                    }
-                    for (int i = 0; i < length; i++)
-                    {//バックグラウンド変数の偏微分
-                        diff[ParamNum, i] = 1;
-                        diff[ParamNum + 1, i] = x[i] - centerX;
-                    }
-                    //偏微分を作る ここまで
+                        for (int i = 0; i < length; i++)
+                        {//バックグラウンド変数の偏微分
+                            diff[ParamNum, i] = 1;
+                            diff[ParamNum + 1, i] = pt[i].X - centerX;
+                        }
+                        //偏微分を作る ここまで
 
-                    //行列Alpha, Betaを作る
-                    for (int i = 0; i < ParamNum + 2; i++)
-                    {
-                        for (int j = i; j < ParamNum + 2; j++)
+                        //行列Alpha, Betaを作る
+                        for (int i = 0; i < ParamNum + 2; i++)
                         {
-                            Alpha[i, j] = 0;
+                            for (int j = i; j < ParamNum + 2; j++)
+                            {
+                                Alpha[i, j] = 0;
+                                for (int k = 0; k < length; k++)
+                                    Alpha[i, j] += diff[i, k] * diff[j, k];
+                                Alpha[j, i] = Alpha[i, j];
+                                if (i == j)
+                                    Alpha[i, j] *= (1 + ramda);
+                            }
+                            Beta[i, 0] = 0;
                             for (int k = 0; k < length; k++)
-                                Alpha[i, j] += diff[i, k] * diff[j, k];
-                            Alpha[j, i] = Alpha[i, j];
-                            if (i == j)
-                                Alpha[i, j] *= (1 + ramda);
+                                Beta[i, 0] += ResidualCurrent[k] * diff[i, k];
                         }
-                        Beta[i, 0] = 0;
-                        for (int k = 0; k < length; k++)
-                            Beta[i, 0] += ResidualCurrent[k] * diff[i, k];
-                    }
-                    //行列Alpha、Beta、ここまで
+                        //行列Alpha、Beta、ここまで
 
-                    var alphaInv = Alpha.TryInverse();
+                        var alphaInv = Alpha.TryInverse();
 
-                    if (alphaInv == null)
-                    {
-                        for (int i = 0; i < p.Length; i++)
+                        if (alphaInv == null)
                         {
-                            p[i].X = double.NaN;
-                            p[i].Int = double.NaN;
-                        }
-                        return double.PositiveInfinity;
-                    }
-
-                    var delta = alphaInv * Beta;
-
-                    //新しいパラメータをセットして適宜修正
-                    n = 0;
-                    bool flag = true;
-                    for (int j = 0; j < p.Length; j++)
-                    {
-                        pNew[j] = pCurrent[j].Copy();
-                        if (p[j].Option == PeakFunctionForm.PseudoVoigt)//PseudoVoigt:      Int, Eta, Hk, X ;
-                        {
-                            pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
-                            pNew[j].eta = pCurrent[j].eta + delta[n++, 0];
-                            pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
-                            pNew[j].X = pCurrent[j].X + delta[n++, 0];
-
-                            //if (pNew[j].eta < 0 || pNew[j].eta > 1)
-                            //    flag = false;
-                            if (pNew[j].eta < 0)
-                                pNew[j].eta = 0;
-                            if (pNew[j].eta > 1)
-                                pNew[j].eta = 1;
-                        }
-                        else if (p[j].Option == PeakFunctionForm.Peason)//PearsonVII:       Int, Hk,  m,  X
-                        {
-                            pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
-                            pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
-                            pNew[j].m = pCurrent[j].m + delta[n++, 0];
-                            pNew[j].X = pCurrent[j].X + delta[n++, 0];
-
-                            if (pNew[j].m <= 0.5 || pNew[j].m >= 10)
-                                flag = false;
-                        }
-                        else if (p[j].Option == PeakFunctionForm.SplitPseudoVoigt)//SplitPseudoVoigt:  Int, Hk,  A,  etaL , etaH, X
-                        {
-                            pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
-                            pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
-                            pNew[j].A = pCurrent[j].A + delta[n++, 0];
-                            pNew[j].etaL = pCurrent[j].etaL + delta[n++, 0];
-                            pNew[j].etaH = pCurrent[j].etaH + delta[n++, 0];
-                            pNew[j].X = pCurrent[j].X + delta[n++, 0];
-                            if (pNew[j].etaL < 0 || pNew[j].etaL > 1)
-                                flag = false;
-                            if (pNew[j].etaH < 0 || pNew[j].etaH > 1)
-                                flag = false;
-                            if (pNew[j].A < -2 || pNew[j].A > 2)
-                                flag = false;
-                        }
-                        else if (p[j].Option == PeakFunctionForm.SplitPearson)//SplitPearsonVII:  Int, Hk,  A,  Rl , Rh, X
-                        {
-                            pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
-                            pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
-                            pNew[j].A = pCurrent[j].A + delta[n++, 0];
-                            pNew[j].Rl = pCurrent[j].Rl + delta[n++, 0];
-                            pNew[j].Rh = pCurrent[j].Rh + delta[n++, 0];
-                            pNew[j].X = pCurrent[j].X + delta[n++, 0];
-                            if (pNew[j].Rl <= 0.5 || pNew[j].Rl >= 10)
-                                flag = false;
-                            if (pNew[j].Rh <= 0.5 || pNew[j].Rh >= 10)
-                                flag = false;
-                            if (pNew[j].A < -2 || pNew[j].A > 2)
-                                flag = false;
+                            for (int i = 0; i < prms.Length; i++)
+                                prms[i].X = prms[i].Int = double.NaN;
+                            return double.PositiveInfinity;
                         }
 
-                        if (pNew[j].Hk < 0)
-                            flag = false; //pNew[j].Hk = pCurrent[j].Hk;
+                        var delta = alphaInv.Multiply(Beta);
 
-                        //2本以上のフィッティングの場合、XがRangeの1/8以上動いたらもどす
-                        if (p.Length > 1)
-                            if (pNew[j].X - p[j].X > p[j].range / 8 || pNew[j].X - p[j].X < -p[j].range / 8)
-                            { pNew[j].X = pCurrent[j].X; }
-                        //    flag = false; //pNew[j].X = p[j].X + p[j].range / 4;
-                    }
-                    B1_New = B1 + delta[ParamNum, 0];
-                    B2_New = B2 + delta[ParamNum + 1, 0];
-                    //if (B1_New + B2_New * (x[0] - centerX) < 0 || B1_New + B2_New * (x[x.Length - 1] - centerX) < 0)
-                    //    flag = false; //B1_New = B1;//B2_New = B2;
-
-                    //あたらしいパラメータでの残差を計算
-                    if (flag)
-                    {
-                        ResidualSquareNew = 0;
-                        for (int i = 0; i < length; i++)
-                            IntNew[i] = B1_New + B2_New * (x[i] - centerX);
-                        for (int j = 0; j < p.Length; j++)
+                        //新しいパラメータをセットして適宜修正
+                        n = 0;
+                        bool flag = true;
+                        for (int j = 0; j < prms.Length; j++)
                         {
-                            pNew[j].RenewParameter();
+                            pNew[j] = pCurrent[j].Copy();
+                            if (prms[j].Option == PeakFunctionForm.PseudoVoigt)//PseudoVoigt:      Int, Eta, Hk, X ;
+                            {
+                                pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
+                                pNew[j].eta = pCurrent[j].eta + delta[n++, 0];
+                                pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
+                                pNew[j].X = pCurrent[j].X + delta[n++, 0];
+
+                                if (pNew[j].eta < 0)
+                                    pNew[j].eta = 0;
+                                else if (pNew[j].eta > 1)
+                                    pNew[j].eta = 1;
+                            }
+                            else if (prms[j].Option == PeakFunctionForm.Peason)//PearsonVII:       Int, Hk,  m,  X
+                            {
+                                pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
+                                pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
+                                pNew[j].m = pCurrent[j].m + delta[n++, 0];
+                                pNew[j].X = pCurrent[j].X + delta[n++, 0];
+
+                                if (pNew[j].m <= 0.5 || pNew[j].m >= 10)
+                                    flag = false;
+                            }
+                            else if (prms[j].Option == PeakFunctionForm.SplitPseudoVoigt)//SplitPseudoVoigt:  Int, Hk,  A,  etaL , etaH, X
+                            {
+                                pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
+                                pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
+                                pNew[j].A = pCurrent[j].A + delta[n++, 0];
+                                pNew[j].etaL = pCurrent[j].etaL + delta[n++, 0];
+                                pNew[j].etaH = pCurrent[j].etaH + delta[n++, 0];
+                                pNew[j].X = pCurrent[j].X + delta[n++, 0];
+                                if (pNew[j].etaL < 0 || pNew[j].etaL > 1)
+                                    flag = false;
+                                if (pNew[j].etaH < 0 || pNew[j].etaH > 1)
+                                    flag = false;
+                                if (pNew[j].A < -2 || pNew[j].A > 2)
+                                    flag = false;
+                            }
+                            else if (prms[j].Option == PeakFunctionForm.SplitPearson)//SplitPearsonVII:  Int, Hk,  A,  Rl , Rh, X
+                            {
+                                pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
+                                pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
+                                pNew[j].A = pCurrent[j].A + delta[n++, 0];
+                                pNew[j].Rl = pCurrent[j].Rl + delta[n++, 0];
+                                pNew[j].Rh = pCurrent[j].Rh + delta[n++, 0];
+                                pNew[j].X = pCurrent[j].X + delta[n++, 0];
+                                if (pNew[j].Rl <= 0.5 || pNew[j].Rl >= 10)
+                                    flag = false;
+                                if (pNew[j].Rh <= 0.5 || pNew[j].Rh >= 10)
+                                    flag = false;
+                                if (pNew[j].A < -2 || pNew[j].A > 2)
+                                    flag = false;
+                            }
+
+                            if (pNew[j].Hk < 0)
+                                flag = false; //pNew[j].Hk = pCurrent[j].Hk;
+
+                            //2本以上のフィッティングの場合、XがRangeの1/8以上動いたらもどす
+                            if (prms.Length > 1)
+                                if (pNew[j].X - prms[j].X > prms[j].range / 8 || pNew[j].X - prms[j].X < -prms[j].range / 8)
+                                    pNew[j].X = pCurrent[j].X;
+                        }
+                        B1_New = B1 + delta[ParamNum, 0];
+                        B2_New = B2 + delta[ParamNum + 1, 0];
+
+                        //あたらしいパラメータでの残差を計算
+                        if (flag)
+                        {
                             for (int i = 0; i < length; i++)
-                                IntNew[i] += pNew[j].GetValue(x[i], false);
+                                IntNew[i] = B1_New + B2_New * (pt[i].X - centerX);
+                            for (int j = 0; j < prms.Length; j++)
+                            {
+                                pNew[j].RenewParameter();
+                                for (int i = 0; i < length; i++)
+                                    IntNew[i] += pNew[j].GetValue(pt[i].X, false);
+                            }
+                            for (int i = 0; i < length; i++)
+                                ResidualNew[i] = pt[i].Y - IntNew[i];
+                            ResidualSquareNew = ResidualNew.Sum(e => e * e);
                         }
-                        for (int i = 0; i < length; i++)
+                        //残差計算ここまで
+
+                        //新旧の値を比較
+                        if (flag && ResidualSquareCurrent >= ResidualSquareNew)
                         {
-                            ResidualNew[i] = y[i] - IntNew[i];
-                            ResidualSquareNew += ResidualNew[i] * ResidualNew[i];
+                            ramda *= 0.8;
+                            Array.Copy(ResidualNew, ResidualCurrent, length);
+                            //for (int i = 0; i < length; i++)
+                            //    ResidualCurrent[i] = ResidualNew[i];
+
+                            for (int j = 0; j < prms.Length; j++)
+                                pCurrent[j] = pNew[j].Copy();
+                            B1 = B1_New;
+                            B2 = B2_New;
+                            if (counter > 50 && (ResidualSquareCurrent - ResidualSquareNew) / ResidualSquareCurrent < 0.0000000001)
+                                break;
+                            ResidualSquareCurrent = ResidualSquareNew;
                         }
-                    }
-                    //残差計算ここまで
+                        else
+                            ramda *= 2;
+                    } while (ramda < 100000000000 && counter < 1000);
 
-                    //新旧の値を比較
-                    if (flag && ResidualSquareCurrent >= ResidualSquareNew)
-                    {
-                        ramda *= 0.8;
-                        for (int i = 0; i < length; i++)
-                            ResidualCurrent[i] = ResidualNew[i];
-                        for (int j = 0; j < p.Length; j++)
-                            pCurrent[j] = pNew[j].Copy();
-                        B1 = B1_New;
-                        B2 = B2_New;
-                        if (counter > 50 && (ResidualSquareCurrent - ResidualSquareNew) / ResidualSquareCurrent < 0.0000000001)
-                            break;
-                        ResidualSquareCurrent = ResidualSquareNew;
-                    }
-                    else
-                        ramda *= 2;
-                } while (ramda < 100000000000 && counter < 1000);
-
-                for (int i = 0; i < length; i++)
-                    IntNew[i] = B1_New + B2_New * (x[i] - centerX);
-                for (int j = 0; j < p.Length; j++)
-                {
-                    pNew[j].RenewParameter();
                     for (int i = 0; i < length; i++)
-                        IntNew[i] += pNew[j].GetValue(x[i], false);
-                }
-                residual = 0;
-                for (int i = 0; i < length; i++)
-                    residual += (IntNew[i] - y[i]) / IntNew[i] * (IntNew[i] - y[i]) / IntNew[i];
-                residual /= length;
-                if (bestResidual > residual)//最も結果のよかったカウントを格納
-                {
-                    bestResidual = residual;
-                    bestInitial = Initial;
-                }
-                if (Math.Sqrt(residual) < 0.25)//平均2乗残差が5%以下だったら終了
-                    break;
-                if (Initial == endInitial - 1 && endInitial - startInitial > 2)//5%以下のものが見つからなかったとき
-                {
-                    //50%を超えるくらいひどかったら
-                    if (Math.Sqrt(bestResidual) > 0.90)
+                        IntNew[i] = B1_New + B2_New * (pt[i].X - centerX);
+                    for (int j = 0; j < prms.Length; j++)
                     {
-                        for (int i = 0; i < p.Length; i++)
-                        {
-                            p[i].X = double.NaN;
-                            p[i].Int = double.NaN;
-                        }
-                        return double.PositiveInfinity;
+                        pNew[j].RenewParameter();
+                        for (int i = 0; i < length; i++)
+                            IntNew[i] += pNew[j].GetValue(pt[i].X, false);
                     }
-                    //一番ましな初期値でやり直す
-                    startInitial = bestInitial - 1;
-                    Initial = bestInitial - 1;
-                    endInitial = bestInitial + 1;
+                    residual = 0;
+                    for (int i = 0; i < length; i++)
+                        residual += (IntNew[i] - pt[i].Y) / IntNew[i] * (IntNew[i] - pt[i].Y) / IntNew[i];
+                    residual /= length;
+                    if (bestResidual > residual)//最も結果のよかったカウントを格納
+                    {
+                        bestResidual = residual;
+                        bestInitial = Initial;
+                    }
+                    if (Math.Sqrt(residual) < 0.25)//平均2乗残差が5%以下だったら終了
+                        break;
+                    if (Initial == endInitial - 1 && endInitial - startInitial > 2)//5%以下のものが見つからなかったとき
+                    {
+                        //50%を超えるくらいひどかったら
+                        if (Math.Sqrt(bestResidual) > 0.90)
+                        {
+                            for (int i = 0; i < prms.Length; i++)
+                                prms[i].X = prms[i].Int = double.NaN;
+                            return double.PositiveInfinity;
+                        }
+                        //一番ましな初期値でやり直す
+                        startInitial = bestInitial - 1;
+                        Initial = bestInitial - 1;
+                        endInitial = bestInitial + 1;
+                    }
                 }
-            }
 
-            //行列アルファを決める
-            //行列Alpha, Betaを作る
-            for (int i = 0; i < ParamNum + 2; i++)
-                for (int j = i; j < ParamNum + 2; j++)
+                //行列アルファを決める
+                //行列Alpha, Betaを作る
+                for (int i = 0; i < ParamNum + 2; i++)
+                    for (int j = i; j < ParamNum + 2; j++)
+                    {
+                        Alpha[i, j] = 0;
+                        for (int k = 0; k < length; k++)
+                            Alpha[i, j] += diff[i, k] * diff[j, k];
+                        Alpha[j, i] = Alpha[i, j];
+                    }
+                counter = 0;
+                //最後にそれぞれもとまった数値を入れる。
+                for (int i = 0; i < prms.Length; i++)
                 {
-                    Alpha[i, j] = 0;
-                    for (int k = 0; k < length; k++)
-                        Alpha[i, j] += diff[i, k] * diff[j, k];
-                    Alpha[j, i] = Alpha[i, j];
+                    //p[i] = pCurrent[i].Copy();
+                    prms[i].Option = pCurrent[i].Option;
+                    prms[i].intensity = pCurrent[i].intensity;
+                    prms[i].eta = pCurrent[i].eta;
+                    prms[i].etaH = pCurrent[i].etaH;
+                    prms[i].etaL = pCurrent[i].etaL;
+                    prms[i].Rl = pCurrent[i].Rl;
+                    prms[i].Rh = pCurrent[i].Rh;
+                    prms[i].X = pCurrent[i].X;
+                    prms[i].Hk = pCurrent[i].Hk;
+                    prms[i].Int = pCurrent[i].Int;
+                    prms[i].A = pCurrent[i].A;
+                    prms[i].B1 = pCurrent[i].B1;
+                    prms[i].B2 = pCurrent[i].B2;
+                    prms[i].B3 = pCurrent[i].B3;
+                    counter += prms[i].GetParamNumber();
+                    prms[i].Xerr = 1 / Math.Sqrt(Alpha[counter - 1, counter - 1]);
+                    prms[i].m = pCurrent[i].m;
+                    prms[i].range = pCurrent[i].range;
+                    prms[i].Residual = bestResidual;
+                    prms[i].Int *= 1000;
+                    prms[i].B1 = B1 + B2 * (pCurrent[i].X - centerX);
+                    prms[i].B2 = B2;
+                    prms[i].B1 *= 1000;
+                    prms[i].B2 *= 1000;
                 }
-            counter = 0;
-            //最後にそれぞれもとまった数値を入れる。
-            for (int i = 0; i < p.Length; i++)
+
+                //これより下は主にIPAからだけ呼ばれる部分
+                if (RemoveBadSN > 0)
+                {
+                    //S/N比が悪いデータは除去する
+                    double BackGround = 0;
+                    double Signal = 0;
+                    prms[0].RenewParameter();
+                    for (int i = 0; i < length; i++)
+                    {
+                        Signal += prms[0].GetValue(pt[i].X, false);
+                        BackGround += prms[0].B1 + prms[0].B2 * (prms[0].X - pt[i].X);
+                    }
+                    if (double.IsNaN(Signal / (BackGround + Signal)) || double.IsInfinity(Signal / (BackGround + Signal)) || (Signal / (BackGround + Signal)) < RemoveBadSN)
+                        prms[0].X = double.NaN;
+
+                    //中心位置が外れて過ぎても失格
+                    if (prms[0].X < pt[0].X || pt[^1].X < prms[0].X)
+                        prms[0].X = double.NaN;
+                }
+                /*if (counter < 1000)
+                    return true;
+                else
+                    return false;*/
+                return bestResidual;
+            }
+            finally
             {
-                //p[i] = pCurrent[i].Copy();
-                p[i].Option = pCurrent[i].Option;
-                p[i].intensity = pCurrent[i].intensity;
-                p[i].eta = pCurrent[i].eta;
-                p[i].etaH = pCurrent[i].etaH;
-                p[i].etaL = pCurrent[i].etaL;
-                p[i].Rl = pCurrent[i].Rl;
-                p[i].Rh = pCurrent[i].Rh;
-                p[i].X = pCurrent[i].X;
-                p[i].Hk = pCurrent[i].Hk;
-                p[i].Int = pCurrent[i].Int;
-                p[i].A = pCurrent[i].A;
-                p[i].B1 = pCurrent[i].B1;
-                p[i].B2 = pCurrent[i].B2;
-                p[i].B3 = pCurrent[i].B3;
-                counter += p[i].GetParamNumber();
-                p[i].Xerr = 1 / Math.Sqrt(Alpha[counter - 1, counter - 1]);
-                p[i].m = pCurrent[i].m;
-                p[i].range = pCurrent[i].range;
-                p[i].Residual = bestResidual;
-                p[i].Int *= 1000;
-                p[i].B1 = B1 + B2 * (pCurrent[i].X - centerX);
-                p[i].B2 = B2;
-                p[i].B1 *= 1000;
-                p[i].B2 *= 1000;
+                ArrayPool<double>.Shared.Return(ResidualCurrent);
+                ArrayPool<double>.Shared.Return(ResidualNew);
+                ArrayPool<double>.Shared.Return(ResidualCurrent);
+                ArrayPool<double>.Shared.Return(IntNew);
             }
-
-            //これより下は主にIPAからだけ呼ばれる部分
-            if (RemoveBadSN > 0)
-            {
-                //S/N比が悪いデータは除去する
-                double BackGround = 0;
-                double Signal = 0;
-                p[0].RenewParameter();
-                for (int i = 0; i < length; i++)
-                {
-                    Signal += p[0].GetValue(x[i], false);
-                    BackGround += p[0].B1 + p[0].B2 * (p[0].X - x[i]);
-                }
-                if (double.IsNaN(Signal / (BackGround + Signal)) || double.IsInfinity(Signal / (BackGround + Signal)) || (Signal / (BackGround + Signal)) < RemoveBadSN)
-                    p[0].X = double.NaN;
-
-                //中心位置が外れて過ぎても失格
-                if (p[0].X < x[0] || x[^1] < p[0].X)
-                {
-                    p[0].X = double.NaN;
-                }
-            }
-            /*if (counter < 1000)
-                return true;
-            else
-                return false;*/
-            return bestResidual;
         }
 
         public static PointD FitPeakAsPseudoVoigtByMarcal2D(double[] values, int width, PointD center, int range)

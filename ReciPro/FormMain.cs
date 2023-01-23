@@ -807,7 +807,7 @@ public partial class FormMain : Form
 
     #endregion ベクトルでの回転指定
 
-    #region オイラー角度を直接入力したばあい
+    #region オイラー角度を直接入力した場合
 
     public bool SkipEulerChange = false;
 
@@ -1270,7 +1270,7 @@ public partial class FormMain : Form
         var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };
         var color = new[] { Col4.Red, Col4.Green, Col4.Blue };
         var label = new[] { "a", "b", "c" };
-        var obj = new List<GLObject>();
+        var obj = new List<GLObject>(10);
         for (int i = 0; i < 3; i++)
         {
             obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
