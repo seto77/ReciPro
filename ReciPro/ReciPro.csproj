@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2023.1.20.0128</AssemblyVersion>
-    <FileVersion>2023.1.20.0128</FileVersion>
+    <AssemblyVersion>2023.1.24.0230</AssemblyVersion>
+    <FileVersion>2023.1.24.0230</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>

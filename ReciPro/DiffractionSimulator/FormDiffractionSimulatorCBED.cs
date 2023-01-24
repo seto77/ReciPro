@@ -399,8 +399,9 @@ public partial class FormDiffractionSimulatorCBED : Form
     }
     #endregion
 
-    private void labelDivisionNumber_Click(object sender, EventArgs e)
+    private void FormDiffractionSimulatorCBED_VisibleChanged(object sender, EventArgs e)
     {
-
+        FormDiffractionSimulator.saveCBEDPatternToolStripMenuItem.Visible = Visible;
+        FormDiffractionSimulator.copyCBEDPatternToolStripMenuItem.Visible = Visible;
     }
 }

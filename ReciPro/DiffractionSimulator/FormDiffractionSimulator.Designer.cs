@@ -108,9 +108,9 @@
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.numericBoxClientHeight = new Crystallography.Controls.NumericBox();
+            this.numericBoxClientWidth = new Crystallography.Controls.NumericBox();
             this.numericBoxResolution = new Crystallography.Controls.NumericBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericBoxClientWidth = new Crystallography.Controls.NumericBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDownCamaraLength2 = new System.Windows.Forms.NumericUpDown();
             this.buttonDetailedGeometry = new System.Windows.Forms.Button();
@@ -1090,6 +1090,26 @@
             this.numericBoxClientHeight.Value = 1000D;
             this.numericBoxClientHeight.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxClientSize_ValueChanged);
             // 
+            // numericBoxClientWidth
+            // 
+            resources.ApplyResources(this.numericBoxClientWidth, "numericBoxClientWidth");
+            this.numericBoxClientWidth.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientWidth.DecimalPlaces = 0;
+            this.numericBoxClientWidth.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxClientWidth.Maximum = 2000D;
+            this.numericBoxClientWidth.Minimum = 1D;
+            this.numericBoxClientWidth.Name = "numericBoxClientWidth";
+            this.numericBoxClientWidth.RadianValue = 17.453292519943293D;
+            this.numericBoxClientWidth.RoundErrorAccuracy = -1;
+            this.numericBoxClientWidth.ShowUpDown = true;
+            this.numericBoxClientWidth.SmartIncrement = true;
+            this.numericBoxClientWidth.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxClientWidth.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxClientWidth, resources.GetString("numericBoxClientWidth.ToolTip"));
+            this.numericBoxClientWidth.Value = 1000D;
+            this.numericBoxClientWidth.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxClientSize_ValueChanged);
+            // 
             // numericBoxResolution
             // 
             resources.ApplyResources(this.numericBoxResolution, "numericBoxResolution");
@@ -1115,26 +1135,6 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
-            // 
-            // numericBoxClientWidth
-            // 
-            resources.ApplyResources(this.numericBoxClientWidth, "numericBoxClientWidth");
-            this.numericBoxClientWidth.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxClientWidth.DecimalPlaces = 0;
-            this.numericBoxClientWidth.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxClientWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxClientWidth.Maximum = 2000D;
-            this.numericBoxClientWidth.Minimum = 1D;
-            this.numericBoxClientWidth.Name = "numericBoxClientWidth";
-            this.numericBoxClientWidth.RadianValue = 17.453292519943293D;
-            this.numericBoxClientWidth.RoundErrorAccuracy = -1;
-            this.numericBoxClientWidth.ShowUpDown = true;
-            this.numericBoxClientWidth.SmartIncrement = true;
-            this.numericBoxClientWidth.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxClientWidth.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxClientWidth, resources.GetString("numericBoxClientWidth.ToolTip"));
-            this.numericBoxClientWidth.Value = 1000D;
-            this.numericBoxClientWidth.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxClientSize_ValueChanged);
             // 
             // groupBox1
             // 
@@ -2353,7 +2353,6 @@
         private System.Windows.Forms.ToolStripMenuItem dynamicCompressionToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioButtonIntensityKinematical;
         public System.Windows.Forms.RadioButton radioButtonIntensityDynamical;
-        private System.Windows.Forms.ToolStripMenuItem saveCBEDPatternToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveCBEDasPngToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBoxFixCenter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
@@ -2444,7 +2443,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelDummy;
         private Crystallography.Controls.NumericBox numericBoxKikuchiLineThreshold;
-        private System.Windows.Forms.ToolStripMenuItem copyCBEDPatternToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyCBEDasImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asPixelByPixelImagePNGFormatToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
@@ -2456,5 +2454,7 @@
         private System.Windows.Forms.RadioButton radioButtonBeamPrecessionXray;
         private System.Windows.Forms.ComboBox comboBoxCenter;
         private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.ToolStripMenuItem saveCBEDPatternToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem copyCBEDPatternToolStripMenuItem;
     }
 }

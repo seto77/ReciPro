@@ -133,165 +133,6 @@
   <data name="&gt;&gt;checkBoxDrawGuideCircles.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;labelDivisionNumber.Name" xml:space="preserve">
-    <value>labelDivisionNumber</value>
-  </data>
-  <data name="&gt;&gt;labelDivisionNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelDivisionNumber.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;labelDivisionNumber.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSolver.Name" xml:space="preserve">
-    <value>comboBoxSolver</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSolver.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSolver.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSolver.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThread.Name" xml:space="preserve">
-    <value>numericBoxThread</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThread.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThread.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThread.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
-    <value>numericBoxThicknessStep</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessStep.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessStep.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWholeThicknessStart.Name" xml:space="preserve">
-    <value>numericBoxWholeThicknessStart</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWholeThicknessStart.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWholeThicknessStart.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWholeThicknessStart.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
-    <value>numericBoxThicknessEnd</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessEnd.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessEnd.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessEnd.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
-    <value>numericBoxMaxNumOfG</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxNumOfG.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxNumOfG.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;buttonStop.Name" xml:space="preserve">
-    <value>buttonStop</value>
-  </data>
-  <data name="&gt;&gt;buttonStop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonStop.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Name" xml:space="preserve">
-    <value>trackBarAdvancedAlphaMax</value>
-  </data>
-  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Type" xml:space="preserve">
-    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;trackBarAdvancedAlphaMax.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDivision.Name" xml:space="preserve">
-    <value>numericBoxDivision</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDivision.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDivision.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDivision.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, -1</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 180</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Input parameters</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="labelDivisionNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -313,18 +154,18 @@
   <data name="labelDivisionNumber.Text" xml:space="preserve">
     <value>Disk is divided into 31029 pixels</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;labelDivisionNumber.Name" xml:space="preserve">
+    <value>labelDivisionNumber</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="comboBoxSolver.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 8pt</value>
   </data>
@@ -356,18 +197,18 @@
     <value>Select the solver.
 All solvers produce the same results, but at different computational speeds.</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;comboBoxSolver.Name" xml:space="preserve">
+    <value>comboBoxSolver</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="numericBoxThread.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -407,18 +248,18 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThread.ToolTip1" xml:space="preserve">
     <value>Set a CPU-thread number for the CBED simulation</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;numericBoxThread.Name" xml:space="preserve">
+    <value>numericBoxThread</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="numericBoxThicknessStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -458,18 +299,18 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
     <value>Set a range and step of the sample thichnesses</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
+    <value>numericBoxThicknessStep</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="numericBoxWholeThicknessStart.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -506,18 +347,18 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
     <value>Set a range and step of the sample thichnesses</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Name" xml:space="preserve">
+    <value>numericBoxWholeThicknessStart</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="numericBoxThicknessEnd.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -554,18 +395,18 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
     <value>Set a range and step of the sample thichnesses</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
+    <value>numericBoxThicknessEnd</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="numericBoxMaxNumOfG.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -602,18 +443,18 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
     <value>Set a number of Bloch waves to be calculated</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
+    <value>numericBoxMaxNumOfG</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -635,18 +476,18 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="buttonStop.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;buttonStop.Name" xml:space="preserve">
+    <value>buttonStop</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
   <data name="trackBarAdvancedAlphaMax.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -681,18 +522,18 @@ All solvers produce the same results, but at different computational speeds.</va
     <value>Set a semiangle of the convergent electron beam.
 This value directly corresponds to the disk size.</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Name" xml:space="preserve">
+    <value>trackBarAdvancedAlphaMax</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Type" xml:space="preserve">
+    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;trackBarAdvancedAlphaMax.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="numericBoxDivision.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -734,18 +575,18 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>Set a number of divisions along the diameter.
 The number of two-dimensional divisions is displayed on the right</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;numericBoxDivision.Name" xml:space="preserve">
+    <value>numericBoxDivision</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -767,18 +608,69 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="label13.Text" xml:space="preserve">
     <value>Solver</value>
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, -1</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 180</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Input parameters</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButtonIndividualDisk.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>228, 53</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 21</value>
+  </data>
+  <data name="radioButtonIndividualDisk.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
+    <value>for individual disks.</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
+    <value>A brightness level is applied to each upper/lower limits of individual disc.</value>
+  </data>
   <data name="&gt;&gt;radioButtonIndividualDisk.Name" xml:space="preserve">
     <value>radioButtonIndividualDisk</value>
   </data>
@@ -790,6 +682,27 @@ The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;radioButtonIndividualDisk.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="radioButtonAllDisks.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAllDisks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 53</value>
+  </data>
+  <data name="radioButtonAllDisks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 21</value>
+  </data>
+  <data name="radioButtonAllDisks.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="radioButtonAllDisks.Text" xml:space="preserve">
+    <value>for all disks</value>
+  </data>
+  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
+    <value>A same brightness level (Min/Max) is applied to all discs.</value>
   </data>
   <data name="&gt;&gt;radioButtonAllDisks.Name" xml:space="preserve">
     <value>radioButtonAllDisks</value>
@@ -803,6 +716,33 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;radioButtonAllDisks.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 154</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 0</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 15</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Gradient</value>
+  </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
   </data>
@@ -814,6 +754,33 @@ The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 154</value>
+  </data>
+  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 0</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 15</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Color</value>
   </data>
   <data name="&gt;&gt;label11.Name" xml:space="preserve">
     <value>label11</value>
@@ -827,6 +794,30 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="comboBoxGradient.Items" xml:space="preserve">
+    <value>Positive</value>
+  </data>
+  <data name="comboBoxGradient.Items1" xml:space="preserve">
+    <value>Negative</value>
+  </data>
+  <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 151</value>
+  </data>
+  <data name="comboBoxGradient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxGradient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 23</value>
+  </data>
+  <data name="comboBoxGradient.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Select the gradient</value>
+  </data>
   <data name="&gt;&gt;comboBoxGradient.Name" xml:space="preserve">
     <value>comboBoxGradient</value>
   </data>
@@ -838,6 +829,36 @@ The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;comboBoxGradient.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="comboBoxScale.Items" xml:space="preserve">
+    <value>Gray</value>
+  </data>
+  <data name="comboBoxScale.Items1" xml:space="preserve">
+    <value>Cold-Warm</value>
+  </data>
+  <data name="comboBoxScale.Items2" xml:space="preserve">
+    <value>Spectrum</value>
+  </data>
+  <data name="comboBoxScale.Items3" xml:space="preserve">
+    <value>FIre</value>
+  </data>
+  <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 151</value>
+  </data>
+  <data name="comboBoxScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 23</value>
+  </data>
+  <data name="comboBoxScale.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Select a color</value>
   </data>
   <data name="&gt;&gt;comboBoxScale.Name" xml:space="preserve">
     <value>comboBoxScale</value>
@@ -851,6 +872,24 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;comboBoxScale.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="trackBarOutputThickness.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarOutputThickness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 24</value>
+  </data>
+  <data name="trackBarOutputThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 18</value>
+  </data>
+  <data name="trackBarOutputThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>Select a sample thicknes to be displayed.</value>
+  </data>
   <data name="&gt;&gt;trackBarOutputThickness.Name" xml:space="preserve">
     <value>trackBarOutputThickness</value>
   </data>
@@ -862,6 +901,25 @@ The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;trackBarOutputThickness.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="trackBarGamma.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarGamma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 127</value>
+  </data>
+  <data name="trackBarGamma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 18</value>
+  </data>
+  <data name="trackBarGamma.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="trackBarGamma.ToolTip" xml:space="preserve">
+    <value>Set an gamma value.
+The larger this value is, the brighter the outer disk appears to be.</value>
   </data>
   <data name="&gt;&gt;trackBarGamma.Name" xml:space="preserve">
     <value>trackBarGamma</value>
@@ -875,6 +933,24 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;trackBarGamma.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="trackBarIntensityBrightnessMax.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 101</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 18</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Set an intensity at which the brightness is displayed as the maximum value.</value>
+  </data>
   <data name="&gt;&gt;trackBarIntensityBrightnessMax.Name" xml:space="preserve">
     <value>trackBarIntensityBrightnessMax</value>
   </data>
@@ -886,6 +962,24 @@ The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;trackBarIntensityBrightnessMax.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 77</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 18</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Set an intensity at which the brightness is displayed as zero.</value>
   </data>
   <data name="&gt;&gt;trackBarIntensityBrightnessMin.Name" xml:space="preserve">
     <value>trackBarIntensityBrightnessMin</value>
@@ -899,6 +993,21 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;trackBarIntensityBrightnessMin.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="textBoxThickness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 21</value>
+  </data>
+  <data name="textBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 25</value>
+  </data>
+  <data name="textBoxThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="textBoxThickness.Text" xml:space="preserve">
+    <value>20</value>
+  </data>
   <data name="&gt;&gt;textBoxThickness.Name" xml:space="preserve">
     <value>textBoxThickness</value>
   </data>
@@ -910,6 +1019,27 @@ The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;textBoxThickness.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 24</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 17</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>nm</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -923,6 +1053,27 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 24</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Thickness</value>
+  </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
   </data>
@@ -934,6 +1085,27 @@ The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="labelGamma.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="labelGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGamma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 125</value>
+  </data>
+  <data name="labelGamma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 17</value>
+  </data>
+  <data name="labelGamma.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="labelGamma.Text" xml:space="preserve">
+    <value>Gamma (enhance outer diks)</value>
   </data>
   <data name="&gt;&gt;labelGamma.Name" xml:space="preserve">
     <value>labelGamma</value>
@@ -947,6 +1119,27 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;labelGamma.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 101</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 17</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Max</value>
+  </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
   </data>
@@ -958,6 +1151,27 @@ The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>14</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 77</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 17</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Min</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -971,6 +1185,27 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 55</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 17</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Adjust brightness </value>
+  </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
@@ -982,6 +1217,27 @@ The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>16</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 91</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 17</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Brightness</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -1025,613 +1281,27 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;groupBoxOutput.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="radioButtonIndividualDisk.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonIndividualDisk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 53</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 21</value>
-  </data>
-  <data name="radioButtonIndividualDisk.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
-    <value>for individual disks.</value>
-  </data>
-  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
-    <value>A brightness level is applied to each upper/lower limits of individual disc.</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="radioButtonAllDisks.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonAllDisks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 53</value>
-  </data>
-  <data name="radioButtonAllDisks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 21</value>
-  </data>
-  <data name="radioButtonAllDisks.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="radioButtonAllDisks.Text" xml:space="preserve">
-    <value>for all disks</value>
-  </data>
-  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
-    <value>A same brightness level (Min/Max) is applied to all discs.</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 154</value>
-  </data>
-  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 0</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 15</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Gradient</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label11.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 154</value>
-  </data>
-  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 0</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 15</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Color</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="comboBoxGradient.Items" xml:space="preserve">
-    <value>Positive</value>
-  </data>
-  <data name="comboBoxGradient.Items1" xml:space="preserve">
-    <value>Negative</value>
-  </data>
-  <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 151</value>
-  </data>
-  <data name="comboBoxGradient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="comboBoxGradient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 23</value>
-  </data>
-  <data name="comboBoxGradient.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
-    <value>Select the gradient</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="comboBoxScale.Items" xml:space="preserve">
-    <value>Gray</value>
-  </data>
-  <data name="comboBoxScale.Items1" xml:space="preserve">
-    <value>Cold-Warm</value>
-  </data>
-  <data name="comboBoxScale.Items2" xml:space="preserve">
-    <value>Spectrum</value>
-  </data>
-  <data name="comboBoxScale.Items3" xml:space="preserve">
-    <value>FIre</value>
-  </data>
-  <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 151</value>
-  </data>
-  <data name="comboBoxScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="comboBoxScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 23</value>
-  </data>
-  <data name="comboBoxScale.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="comboBoxScale.ToolTip" xml:space="preserve">
-    <value>Select a color</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="trackBarOutputThickness.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarOutputThickness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 24</value>
-  </data>
-  <data name="trackBarOutputThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 18</value>
-  </data>
-  <data name="trackBarOutputThickness.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
-    <value>Select a sample thicknes to be displayed.</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="trackBarGamma.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trackBarGamma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 127</value>
-  </data>
-  <data name="trackBarGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 18</value>
-  </data>
-  <data name="trackBarGamma.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="trackBarGamma.ToolTip" xml:space="preserve">
-    <value>Set an gamma value.
-The larger this value is, the brighter the outer disk appears to be.</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="trackBarIntensityBrightnessMax.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 101</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 18</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Set an intensity at which the brightness is displayed as the maximum value.</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="trackBarIntensityBrightnessMin.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 77</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 18</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Set an intensity at which the brightness is displayed as zero.</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="textBoxThickness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 21</value>
-  </data>
-  <data name="textBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 25</value>
-  </data>
-  <data name="textBoxThickness.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="textBoxThickness.Text" xml:space="preserve">
-    <value>20</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 24</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 17</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>nm</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 24</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Thickness</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="labelGamma.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="labelGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelGamma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 125</value>
-  </data>
-  <data name="labelGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 17</value>
-  </data>
-  <data name="labelGamma.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="labelGamma.Text" xml:space="preserve">
-    <value>Gamma (enhance outer diks)</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 101</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 17</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Max</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 77</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 17</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Min</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 55</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Adjust brightness </value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 91</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Brightness</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
   <metadata name="statusStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>133, 17</value>
   </metadata>
+  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 16</value>
+  </data>
+  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8pt</value>
+  </data>
+  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 17</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>    </value>
+  </data>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>   </value>
+  </data>
   <data name="statusStrip2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 181</value>
   </data>
@@ -1655,24 +1325,6 @@ The larger this value is, the brighter the outer disk appears to be.</value>
   </data>
   <data name="&gt;&gt;statusStrip2.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 16</value>
-  </data>
-  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8pt</value>
-  </data>
-  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 17</value>
-  </data>
-  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
-    <value>    </value>
-  </data>
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>   </value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

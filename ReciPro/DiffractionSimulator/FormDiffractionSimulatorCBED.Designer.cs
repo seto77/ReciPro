@@ -121,7 +121,6 @@
             this.labelDivisionNumber.BackColor = System.Drawing.Color.Transparent;
             this.labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelDivisionNumber.Name = "labelDivisionNumber";
-            this.labelDivisionNumber.Click += new System.EventHandler(this.labelDivisionNumber_Click);
             // 
             // comboBoxSolver
             // 
@@ -493,6 +492,7 @@
             this.Name = "FormDiffractionSimulatorCBED";
             this.ShowIcon = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDiffractionSimulatorMultislice_FormClosing);
+            this.VisibleChanged += new System.EventHandler(this.FormDiffractionSimulatorCBED_VisibleChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxOutput.ResumeLayout(false);
