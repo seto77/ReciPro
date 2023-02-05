@@ -115,7 +115,15 @@ extern "C" {
 		Map<Mat>((dcomplex*)result, dim, dim).noalias() = m1 * m2;
 	}
 
-	//•¡‘fs—ñ‚ÆƒxƒNƒgƒ‹‚ÌæZ‚ğ‹‚ß‚é
+	//À”s—ñ“¯m‚ÌæZ‚ğ‹‚ß‚é
+	EIGEN_FUNCS_API void _MultiplyMM_Real(int dim, double mat1[], double mat2[], double result[])
+	{
+		auto m1 = Map<MatrixXd>((double*)mat1, dim, dim);
+		auto m2 = Map<MatrixXd>((double*)mat2, dim, dim);
+		Map<MatrixXd>((double*)result, dim, dim).noalias() = m1 * m2;
+	}
+
+	//•¡‘fs—ñ‚Æ•¡‘fƒxƒNƒgƒ‹‚ÌæZ‚ğ‹‚ß‚é
 	EIGEN_FUNCS_API void _MultiplyMV(int dim, double mat[], double vec[], double result[])
 	{
 		auto m = Map<Mat>((dcomplex*)mat, dim, dim);

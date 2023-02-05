@@ -196,7 +196,6 @@ public partial class FormDiffractionSimulator : Form
     #endregion
 
     #region VisibleChanged
-
     private void FormDiffractionSimulatorGeometry_VisibleChanged(object sender, EventArgs e)
         => numericUpDownCamaraLength2.Enabled = !FormDiffractionSimulatorGeometry.Visible;
 
@@ -1221,7 +1220,6 @@ public partial class FormDiffractionSimulator : Form
         }
         else
         {
-
             var len = Math.Sqrt(v.X2Y2);
             var twoTheta = Math.Atan2(len, v.Z);
 
@@ -1266,7 +1264,6 @@ public partial class FormDiffractionSimulator : Form
             var x = CameraLength2 / EwaldRadius * len * cosθ / (cosφ * cosθ - sinφ * sinθ);
 
             return new PointD(g.X, -g.Y) / Math.Sqrt(g.X2Y2) * x;
-
         }
 
         var v = DetectorRotationInv * new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z);
@@ -1303,7 +1300,6 @@ public partial class FormDiffractionSimulator : Form
 
     private bool MouseRangingMode = false;
     private Point MouseRangeStart, MouseRangeEnd;//, startAnimation;
-
     private void graphicsBox_MouseDown(object sender, MouseEventArgs e)
     {
         graphicsBox.Focus();
@@ -1453,10 +1449,7 @@ public partial class FormDiffractionSimulator : Form
         lastMousePositionScreen = new Point(e.X, e.Y);
     }
 
-    private void graphicsBox_Resize(object sender, EventArgs e)
-    {
-        Draw();
-    }
+    private void graphicsBox_Resize(object sender, EventArgs e) => Draw();
 
     #endregion graphicsBoxのイベント
 
@@ -1905,7 +1898,6 @@ public partial class FormDiffractionSimulator : Form
     private void buttonResetCenter_Click_1(object sender, EventArgs e)
     {
         Foot = FixedCenter;
-
         Draw();
     }
 

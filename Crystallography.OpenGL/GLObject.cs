@@ -512,7 +512,8 @@ abstract public class GLObject
 
 
     /// <summary>
-    /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生. OITモードはCullFaceとDepthTestが無効、通常モードはCullFaceとDepthTestが有効
+    /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生. 
+    /// OITモードはCullFaceとDepthTestが無効、通常モードはCullFaceとDepthTestが有効
     /// </summary>
     /// <param name="clip">Clip平面</param>
     /// <param name="oit">OIT(order independent transparency)モードかどうか</param>

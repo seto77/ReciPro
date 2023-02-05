@@ -880,8 +880,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         HorizontalAxis horizontalAxis, double horizontalThreshold, double horizontalParameter, int _maxNum = 8000)
     {
         if (A_Star == null) SetAxis();
+        if (double.IsNaN(MatrixInverse.Column1.X)) return;
 
-        double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
+            double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
         double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
         double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
@@ -889,6 +890,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         (int h, int k, int l)[] directions = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };
 
         var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
+    
 
         var maxNum = _maxNum;
         var outer = new List<(int H, int K, int L, double len)>() { (0, 0, 0, 0) };

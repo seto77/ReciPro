@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace Crystallography;
-
 public static class ImageIO
 {
     public static string[] ListOfExtension =
@@ -26,7 +25,7 @@ public static class ImageIO
             "mccd",
             "his",
             "h5",
-            "dm*",
+            "dm?",
             "raw",
             "bmp",
             "jpg",
@@ -57,6 +56,7 @@ public static class ImageIO
         return ListOfExtension.Contains(ext.ToLower()) || ext.StartsWith("0") || ext.StartsWith("mar") || ext.StartsWith("dm");
     }
 
+    #region BinaryReaderから読み込んで整数や実数に変換
     public static int convertToInt(BinaryReader br)
     {
         var b = new byte[4];
@@ -70,14 +70,16 @@ public static class ImageIO
         b[3] = br.ReadByte(); b[2] = br.ReadByte(); b[1] = br.ReadByte(); b[0] = br.ReadByte();
         return BitConverter.ToSingle(b, 0);
     }
-
+    
     public static void SetBytePosition(string str, ref BinaryReader br, int count)
     {
         br.Close();
         br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
         br.ReadBytes(count);
     }
+    #endregion
 
+    #region 画像形式を判定する関数群
     public static bool IsRAxisImage(string fileName)
     {
         var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
@@ -134,6 +136,7 @@ public static class ImageIO
         return str1 == "0236" && str2 == "0052";
 
     }
+    #endregion
 
     /// <summary>
     /// 指定されたfileを読み込み、読み込んだ内容はRing.***に保存される。失敗したときはfalseを返す。flagはノーマライズするかどうか。
@@ -171,20 +174,22 @@ public static class ImageIO
                 if (strList != null && strList.Any() && strList[0].Contains("BAS_IMAGE_FILE", StringComparison.Ordinal))//BAS2000
                     result = ImageIO.BAS2000or2500(str, strList.ToArray());
                 else
+                {
                     return false;
+                }
             }
             else if (File.Exists(str.Remove(str.Length - 3, 3) + "tem"))
-                result = ImageIO.FujiFDL(str);
-            else if (ImageIO.IsRAxisImage(str))//R-Axis5
-                result = ImageIO.Raxis4(str);
-            else if (ImageIO.IsADXVImage(str))
-                result = ImageIO.ADXV(str);
-            else if (ImageIO.IsITEXImage(str))
-                result = ImageIO.ITEX(str);
-            else if (ImageIO.IsADSCImage(str))
-                result = ImageIO.ADSC(str);
-            else if (ImageIO.IsTiffImage(str))
-                result = ImageIO.Tiff(str);
+                result = FujiFDL(str);
+            else if (IsRAxisImage(str))//R-Axis5
+                result = Raxis4(str);
+            else if (IsADXVImage(str))
+                result = ADXV(str);
+            else if (IsITEXImage(str))
+                result = ITEX(str);
+            else if (IsADSCImage(str))
+                result = ADSC(str);
+            else if (IsTiffImage(str))
+                result = Tiff(str);
             else
                 return false;
         }
@@ -943,8 +948,7 @@ public static class ImageIO
 
             Ring.SrcImgSize = new Size(imageWidth, imageHeight);
             Ring.ImageType = Ring.ImageTypeEnum.HIS;
-            Ring.Comments = "Num. of Frame: " + numberOfFrame.ToString() + "\r\n"
-                + "Frame time: " + frameTimeInMilliseconds.ToString() + " ms.";
+            Ring.Comments = $"Num. of Frame: {numberOfFrame}\r\nFrame time: {frameTimeInMilliseconds} ms.";
         }
         catch (Exception e)
         {
@@ -1633,27 +1637,8 @@ public static class ImageIO
 
     public static IPAImage IPAImageGenerator(double[] data, int width, int height, PointD center, double resolution, double cameralength, WaveProperty waveProperty)
     {
-        //double maxValue = double.NegativeInfinity;
-
-        /*uint[] imageData = new uint[data.Length];
-        for (int h = 0; h < height; h++)
-            for (int w = 0; w < width; w++)
-                if (!double.IsNaN(data[h * width + w]))
-                    maxValue = Math.Max(data[h * width + w], maxValue);
-
-        for (int h = 0; h < height; h++)
-            for (int w = 0; w < width; w++)
-                if (!double.IsNaN(data[h * width + w]))
-                    imageData[h * width + w] = (uint)(data[h * width + w] / maxValue * uint.MaxValue);
-                else
-
-                    imageData[h * width + w] = 0;
-        */
-
         IPAImage ipa = new IPAImage
         {
-            //ipa.Scale = maxValue / uint.MaxValue;
-            //ipa.Intensity = imageData;
             IntensityDouble = data,
             Width = width,
             Height = height,

@@ -2,6 +2,7 @@
 using System;
 using System.Buffers;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
@@ -45,14 +46,17 @@ public static partial class NativeWrapper
                                       double* mat2,
                                       double* result);
 
-
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _MultiplyMM(int dim, double* mat1, double* mat2, double* result);
+    
+    
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _MultiplyMV(int dim, double* mat, double* vec, double* result);
 
+
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _MultiplySV(int dim, double real, double imag, double* vec, double* result);
+
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _DivideVV(int dim, double* vec1, double* vec2, double* result);
@@ -64,11 +68,14 @@ public static partial class NativeWrapper
     private static unsafe partial void _SubtractVV(int dim, double* vec1, double* vec2, double* result);
 
 
-    [LibraryImport("Crystallography.Native.dll")]
-    private static unsafe partial void _Inverse(int dim, double[] mat, double[] matInv);
+    //[LibraryImport("Crystallography.Native.dll")]
+    //private static unsafe partial void _Inverse(int dim, double[] mat, double[] matInv);
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _Inverse(int dim, double* mat, double* matInv);
+
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _Inverse_Real(int dim, double* mat, double* matInv);
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _EigenSolver(int dim, double[] mat, double[] eigenValues, double[] eigenVectors);
@@ -269,6 +276,8 @@ public static partial class NativeWrapper
     #endregion
 
     #region 単純な四則演算
+
+    #region 行列×行列
     /// <summary>
     ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める
     /// </summary>
@@ -285,11 +294,13 @@ public static partial class NativeWrapper
     }
     unsafe static public Complex[] MultiplyMxM(int dim, Complex[] matrix1, Complex[] matrix2)
     {
-        var result = GC.AllocateUninitializedArray<Complex>(dim * dim);// new Complex[dim * dim];
+        var result = GC.AllocateUninitializedArray<Complex>(dim * dim);
         MultiplyMxM(dim, matrix1, matrix2, ref result);
         return result;
     }
+    #endregion
 
+    #region 行列×ベクトル
     unsafe static public void MultiplyMxV(int dim, Complex[] matrix, Complex[] vector, ref Complex[] result)
     {
         fixed (Complex* mtx1 = matrix)
@@ -300,11 +311,13 @@ public static partial class NativeWrapper
 
     unsafe static public Complex[] MultiplyMxV(int dim, Complex[] matrix, Complex[] vector)
     {
-        var result = GC.AllocateUninitializedArray<Complex>(dim);// new Complex[dim];
+        var result = GC.AllocateUninitializedArray<Complex>(dim);
         MultiplyMxV(dim, matrix, vector, ref result);
         return result;
     }
+    #endregion
 
+    #region 数値×行列
     unsafe static public void MultiplySxV(int dim, in Complex s, in Complex[] v, ref Complex[] result)
     {
         fixed (Complex* p = v)
@@ -312,6 +325,14 @@ public static partial class NativeWrapper
             _MultiplySV(dim, s.Real, s.Imaginary, (double*)p, (double*)res);
     }
 
+    unsafe static public Complex[] MultiplySxV(int dim, in Complex s, in Complex[] v)
+    {
+        var result = GC.AllocateUninitializedArray<Complex>(dim);
+        MultiplySxV(dim, s, v, ref result);
+        return result;
+    }
+
+    #endregion
 
     unsafe static public void Add(int dim, in Complex[] v1, in Complex[] v2, ref Complex[] result)
     {
@@ -320,7 +341,6 @@ public static partial class NativeWrapper
         fixed (Complex* res = result)
             _AddVV(dim * 2, (double*)p1, (double*)p2, (double*)res);
     }
-
     unsafe static public void Add(int dim, in double[] v1, in double[] v2, ref double[] result)
     {
         fixed (double* p1 = v1)
@@ -492,6 +512,42 @@ public static partial class NativeWrapper
         fixed (Complex* _mat = mat)
             _Inverse(dim, (double*)_mat, (double*)_values);
         return values;
+    }
+
+    /// <summary>
+    /// Eigenライブラリーを利用して、非対称複素行列の逆行列を求める
+    /// </summary>
+    /// <param name="mat"></param>
+    /// <returns></returns>
+    static unsafe public Complex[] Inverse(Complex[] mat)
+    {
+        var dim = (int)Math.Sqrt(mat.Length);
+        return dim * dim == mat.Length ? Inverse(dim, mat) : null;
+    }
+
+    /// <summary>
+    /// Eigenライブラリーを利用して、実数行列の逆行列を求める
+    /// </summary>
+    /// <param name="mat"></param>
+    /// <returns></returns>
+    static unsafe public double[] Inverse(int dim, double[] mat)
+    {
+        var values = GC.AllocateUninitializedArray<double>(dim * dim);//new Complex[dim* dim];
+        fixed (double* _values = values)
+        fixed (double* _mat = mat)
+            _Inverse_Real(dim, (double*)_mat, (double*)_values);
+        return values;
+    }
+
+    /// <summary>
+    /// Eigenライブラリーを利用して、実数行列の逆行列を求める
+    /// </summary>
+    /// <param name="mat"></param>
+    /// <returns></returns>
+    static unsafe public double[] Inverse(double[] mat)
+    {
+        var dim = (int)Math.Sqrt(mat.Length);
+        return dim * dim == mat.Length ? Inverse(dim, mat) : null;
     }
 
     #endregion 逆行列

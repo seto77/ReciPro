@@ -26,9 +26,9 @@ public class MacroTriger
 public class MacroBase
 {
     public dynamic mainObject;
-    public string[] Help { get { return help.ToArray(); } }
+    public string[] Help => help.ToArray();
     public string ScopeName = "";
-    public List<string> help = new List<string>();
+    public List<string> help = new();
 
     public MacroBase(dynamic _main, string scopeName)
     {
@@ -94,10 +94,7 @@ public class MacroSub
             }
             */
         #endregion
-        if (_context.InvokeRequired)
-            return (Type)_context.Invoke(process, args);
-        else
-            return (Type)process.DynamicInvoke(args);
+        return _context.InvokeRequired ? (Type)_context.Invoke(process, args) : (Type)process.DynamicInvoke(args);
     }
 
     public static void Execute(Control _context, Delegate process, params object[] args)
@@ -142,10 +139,7 @@ public class MacroSub
             }
             */
         #endregion
-        if (context.InvokeRequired)
-            return (Type)context.Invoke(process, args);
-        else
-            return (Type)process.DynamicInvoke(args);
+        return context.InvokeRequired ? (Type)context.Invoke(process, args) : (Type)process.DynamicInvoke(args);
     }
 
     public void Execute(Delegate process, params object[] args)

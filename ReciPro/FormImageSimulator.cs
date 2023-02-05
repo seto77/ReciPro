@@ -13,7 +13,6 @@ using static System.Math;
 #endregion
 
 namespace ReciPro;
-
 public partial class FormImageSimulator : Form
 {
     #region プロパティ

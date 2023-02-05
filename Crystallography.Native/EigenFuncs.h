@@ -30,6 +30,8 @@ extern "C" {
 
 
 	EIGEN_FUNCS_API void _Inverse(int dim, double mat[], double inverse[]);
+	EIGEN_FUNCS_API void _Inverse_Real(int dim, double mat[], double inverse[]);
+	
 	EIGEN_FUNCS_API void _EigenSolver(int dim, double mat[], double eigenValues[], double eigenVectors[]);
 	EIGEN_FUNCS_API void _MatrixExponential(int dim, double mat[], double results[]);
 	EIGEN_FUNCS_API void _CBEDSolver_Eigen(int gDim, double _potential[], double _phi0[], int tDim, double thickness[], double cosTau, double result[]);
