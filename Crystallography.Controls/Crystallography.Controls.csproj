@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2023.2.5.0445</AssemblyVersion>
-    <FileVersion>2023.2.5.0445</FileVersion>
+    <AssemblyVersion>2023.2.5.0636</AssemblyVersion>
+    <FileVersion>2023.2.5.0636</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
@@ -39,4 +39,10 @@
     <ProjectReference Include="..\Crystallography\Crystallography.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Using Include="SimdLinq" />
+  </ItemGroup>
+  
+  
 </Project>

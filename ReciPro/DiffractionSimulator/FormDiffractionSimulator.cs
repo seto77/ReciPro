@@ -397,10 +397,16 @@ public partial class FormDiffractionSimulator : Form
 
     #region DrawDiffractionSpots
 
+    static Dictionary<(int Alpha, Color Color), SolidBrush> solidBrushDic = new();
+
     static void fillCircle(Graphics graphics, in Color c, in PointD pt, in double radius, in int alpha)
     {
         if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
-            graphics.FillEllipse(new SolidBrush(Color.FromArgb(alpha, c)), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
+        {
+            if (!solidBrushDic.TryGetValue((alpha, c), out var brush))
+                solidBrushDic.Add((alpha, c), brush = new SolidBrush(Color.FromArgb(alpha, c)));
+            graphics.FillEllipse(brush, (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
+        }
     }
     static void drawCircle(Graphics graphics, in Color c, in PointD pt, in double radius)
     {
@@ -707,7 +713,12 @@ public partial class FormDiffractionSimulator : Form
             if (radioButtonIntensityDynamical.Checked)
                 sb.AppendLine($"{g.RelativeIntensity * 100:#.#} %, ({g.F.Real:0.###} + {g.F.Imaginary:0.###}i)");
         }
-        graphics.DrawString(sb.ToString(), font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color)), (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
+        if (!solidBrushDic.TryGetValue(((int)(alphaCoeff * 255), colorControlString.Color), out var brush))
+        {
+            brush = new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color));
+            solidBrushDic.Add(((int)(alphaCoeff * 255), colorControlString.Color), brush);
+        }
+        graphics.DrawString(sb.ToString(), font, brush, (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
     }
 
     #endregion

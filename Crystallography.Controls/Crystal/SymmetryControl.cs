@@ -28,6 +28,7 @@ public partial class SymmetryControl : UserControl
             {
                 (int CrystalSystem, int PointGroup, int SpaceGroup) = SymmetryStatic.GetSytemAndGroupFromSeriesNumber(value);
                 SkipEvent = true;
+                SuspendLayout();
 
                 comboBoxCrystalSystem.SelectedIndex = CrystalSystem;
 
@@ -40,6 +41,7 @@ public partial class SymmetryControl : UserControl
                 comboBoxSpaceGroup.SelectedIndex = SpaceGroup;
 
                 SkipEvent = false;
+                ResumeLayout();
 
                 SetCellConstantsBySymmetry();
             }
@@ -56,6 +58,7 @@ public partial class SymmetryControl : UserControl
         get => (numericBoxA.Value / 10, numericBoxB.Value / 10, numericBoxC.Value / 10, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue);
         set
         {
+            SuspendLayout();
             SkipEvent = true;
             numericBoxA.Value = value.A * 10;
             numericBoxB.Value = value.B * 10;
@@ -64,6 +67,7 @@ public partial class SymmetryControl : UserControl
             numericBoxBeta.RadianValue = value.Beta;
             numericBoxGamma.RadianValue = value.Gamma;
             SkipEvent = false;
+            ResumeLayout();
         }
     }
 
@@ -86,12 +90,14 @@ public partial class SymmetryControl : UserControl
             numericBoxAlphaErr.RadianValue, numericBoxBetaErr.RadianValue, numericBoxGammaErr.RadianValue);
         set
         {
+            SuspendLayout();
             numericBoxAErr.Value = value.AErr * 10;
             numericBoxBErr.Value = value.BErr * 10;
             numericBoxCErr.Value = value.CErr * 10;
             numericBoxAlphaErr.RadianValue = value.AlphaErr;
             numericBoxBetaErr.RadianValue = value.BetaErr;
             numericBoxGammaErr.RadianValue = value.GammaErr;
+            ResumeLayout();
         }
     }
 
@@ -223,6 +229,7 @@ public partial class SymmetryControl : UserControl
     {
         if (SkipEvent) return;
         SkipEvent = true;
+        SuspendLayout();
 
         var tempSym = SymmetryStatic.Symmetries[SymmetrySeriesNumber];
         //いったんすべてをreadonly=falseにする
@@ -333,11 +340,12 @@ public partial class SymmetryControl : UserControl
         numericBoxAlphaErr.Enabled = numericBoxAlpha.Enabled;
         numericBoxBetaErr.Enabled = numericBoxBeta.Enabled;
         numericBoxGammaErr.Enabled = numericBoxGamma.Enabled;
-
+        ResumeLayout();
         SkipEvent = false;
 
         ItemChanged?.Invoke(this, new EventArgs());
         //GenerateFromInterface();
+        
     }
     #endregion
 

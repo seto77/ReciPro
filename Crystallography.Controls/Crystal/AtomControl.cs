@@ -15,16 +15,19 @@ namespace Crystallography.Controls
 
         public Crystal Crystal
         {
-            get => crystal; set
+            get => crystal; 
+            set
             {
                 crystal = value;
 
                 if (crystal != null)
                 {
+                    SuspendLayout();
                     table.Clear();
                     AddRange(Crystal.Atoms);
                     //なぜかEnabledカラムのVisibleが予期せず変わってしまうことがあるので、appearanceTabVisibleを使う.
                     dataGridView.Columns["enabledColumn"].Visible = appearanceTabVisible;
+                    ResumeLayout();
                 }
             }
         }
@@ -433,8 +436,10 @@ namespace Crystallography.Controls
             if (atoms != null)
             {
                 SkipEvent = true;
+                dataGridView.SuspendLayout();
                 foreach (var a in atoms)
                     table.Add(a);
+                dataGridView.ResumeLayout();
                 SkipEvent = false;
                 ItemsChanged?.Invoke(this, new EventArgs());
                 bindingSource_PositionChanged(new object(), new EventArgs());

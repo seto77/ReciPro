@@ -663,7 +663,7 @@ public partial class FormStructureViewer : Form
         GLObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));//並列化じゃなくても十分早いみたい。。。
         GLObjects.RemoveRange(0, n);
 
-        textBoxInformation.AppendText("Remove tentative atoms: " + sw.ElapsedMilliseconds + "ms.\r\n");
+        textBoxInformation.AppendText($"Remove tentative atoms: {sw.ElapsedMilliseconds}ms.\r\n");
     }
     #endregion
 
@@ -843,7 +843,7 @@ public partial class FormStructureViewer : Form
         var vec = new[] { cry.A_Axis / max, cry.B_Axis / max, cry.C_Axis / max };
         var color = new[] { C4.Red, C4.Green, C4.Blue };
 
-        var obj = new List<GLObject>();
+        var obj = new List<GLObject>(10);
         var label = new[] { "a", "b", "c" };
         for (int i = 0; i < 3; i++)
         {

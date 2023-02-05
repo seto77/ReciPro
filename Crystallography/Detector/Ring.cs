@@ -2086,7 +2086,7 @@ namespace Crystallography
             //double tau = IP.tau;
             double CL = IP.FilmDistance;
 
-            Matrix3D m1 = new Matrix3D(CosTau, SinTau * SinPhi, SinTau * CosPhi, 0, CosPhi, -SinPhi, -SinTau, CosTau * SinPhi, CosTau * CosPhi);
+            var m1 = new Matrix3D(CosTau, SinTau * SinPhi, SinTau * CosPhi, 0, CosPhi, -SinPhi, -SinTau, CosTau * SinPhi, CosTau * CosPhi);
 
             //ピクセル座標を実空間座標に変換するFunc
             Func<double, double, Vector3DBase> convPixelToReal;
@@ -2148,7 +2148,7 @@ namespace Crystallography
                 {
                     if (IsValid[x + y * width])
                     {
-                        double intensity = Intensity[x + y * width];
+                        var intensity = Intensity[x + y * width];
                         // x, yピクセル座標を実空間に変換
 
                         //四隅の2Θを求める
@@ -2158,7 +2158,9 @@ namespace Crystallography
                             twoThetaVertex[x - xMin + 1 + (y - yMin + 1) * (xMax - xMin + 1)],
                             twoThetaVertex[x - xMin + (y - yMin + 1) * (xMax - xMin + 1)]
                         };
-                        double maxTwoTheta = twoTheta.Max(), minTwoTheta = twoTheta.Min();
+
+                        var (minTwoTheta, maxTwoTheta) = twoTheta.MinMax();
+                        //double maxTwoTheta = twoTheta.Max(), minTwoTheta = twoTheta.Min();
 
                         if (maxTwoTheta > divisions[0] && minTwoTheta < divisions[length - 1])//全区切り内にピクセルが(一部でも)収まっている場合（完全に範囲外の時は除外）
                         {

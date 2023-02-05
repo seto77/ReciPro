@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2023.2.5.0445</AssemblyVersion>
-    <FileVersion>2023.2.5.0445</FileVersion>
+    <AssemblyVersion>2023.2.5.0627</AssemblyVersion>
+    <FileVersion>2023.2.5.0627</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -52,6 +52,10 @@
 
   <ItemGroup>
     <None Remove="C:\Users\seto\.nuget\packages\mathnet.numerics.mkl.win-x64\2.5.0\build\x64\MathNet.Numerics.MKL.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="SimdLinq" />
   </ItemGroup>
 
 </Project>

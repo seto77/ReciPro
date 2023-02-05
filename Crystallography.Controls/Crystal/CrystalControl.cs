@@ -226,6 +226,8 @@ public partial class CrystalControl : UserControl
         if (SkipEvent) return;
         SkipEvent = true;
 
+        SuspendLayout();
+
         colorControl.Color = Color.FromArgb(Crystal.Argb);
         textBoxName.Text = Crystal.Name;
         textBoxMemo.Text = Crystal.Note;
@@ -272,11 +274,12 @@ public partial class CrystalControl : UserControl
 
         //PolyCrystallineProperty関連
         numericUpDownAngleResolution.Value = Math.Min((decimal)crystal.AngleResolution, numericUpDownAngleResolution.Maximum);
-        numericUpDownAngleSubDivision.Value = (decimal)crystal.SubDivision;
+        numericUpDownAngleSubDivision.Value = crystal.SubDivision;
         poleFigureControl.Crystal = crystal;
 
         SkipEvent = false;
 
+        ResumeLayout();
     }
 
     #endregion
