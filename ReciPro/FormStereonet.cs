@@ -398,7 +398,7 @@ public partial class FormStereonet : Form
 
         for (int n = 0; n < vector.Length; n++)
         {
-            PointD srcPt = radioButtonWulff.Checked ?
+            var srcPt = radioButtonWulff.Checked ?
                 Stereonet.ConvertVectorToWulff(formMain.Crystal.RotationMatrix * vector[n]) :
                 Stereonet.ConvertVectorToSchmidt(formMain.Crystal.RotationMatrix * vector[n]);
 

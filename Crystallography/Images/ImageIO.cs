@@ -51,8 +51,9 @@ public static class ImageIO
         }
     }
 
-    public static bool IsReadable(string ext)
+    public static bool IsReadable(string _ext)
     {
+        var ext = _ext.StartsWith('.') ? _ext[1..] : _ext;
         return ListOfExtension.Contains(ext.ToLower()) || ext.StartsWith("0") || ext.StartsWith("mar") || ext.StartsWith("dm");
     }
 
