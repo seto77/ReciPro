@@ -6,6 +6,7 @@ namespace ReciPro;
 
 public partial class FormDiffractionSimulatorGeometry : Form
 {
+    #region フィールド、プロパティ
     public FormDiffractionSimulator FormDiffractionSimulator;
 
     public double Tau { set => numericBoxTau.RadianValue = value; get => numericBoxTau.RadianValue; }
@@ -54,6 +55,8 @@ public partial class FormDiffractionSimulatorGeometry : Form
 
     public PseudoBitmap pseudBitmap = null;
     public Bitmap OverlappedImage = null;
+
+    #endregion
 
     public FormDiffractionSimulatorGeometry() => InitializeComponent();
 
@@ -155,14 +158,9 @@ public partial class FormDiffractionSimulatorGeometry : Form
 
     private void buttonReadPicture_Click(object sender, EventArgs e)
     {
-        var dlg = new OpenFileDialog
-        {
-            Filter = "*.bmp, *.jpg, *.tif, *.ipa | *.bmp;*.jpg;*.tif;*.ipa"
-        };
+        var dlg = new OpenFileDialog { Filter = "*.bmp, *.jpg, *.tif, *.ipa | *.bmp;*.jpg;*.tif;*.ipa" };
         if (dlg.ShowDialog() == DialogResult.OK)
-        {
             ReadImage(dlg.FileName);
-        }
     }
 
     private double trackbarConstantA = 0, trackbarConstantB = 1;

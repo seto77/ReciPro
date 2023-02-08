@@ -606,8 +606,6 @@ public partial class FormRotationMatrix : Form
             v3 = new V3(0, 0, 1);
 
         return new[] { v1, v2, v3 };
-
-
     }
 
     private void GlControlReciProAxes_WorldMatrixChanged(object sender, EventArgs e)
