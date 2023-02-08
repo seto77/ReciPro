@@ -6,7 +6,6 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace ReciPro;
-
 public partial class FormDiffractionSpotInfo : Form
 {
     public double AccVol { get; set; }
@@ -26,7 +25,6 @@ public partial class FormDiffractionSpotInfo : Form
         // 対象のDataGridViewにtrueをセットする
         dgvPropertyInfo.SetValue(dataGridView, true, null);
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
-
     }
 
     public void SetTable(double acc, Crystal crystal)
@@ -101,7 +99,7 @@ public partial class FormDiffractionSpotInfo : Form
             dataGridView.Columns[12].HeaderText = "U'g im";
         }
 
-        var rows = new List<DataSetReciPro.DataTableBetheRow>();
+        var rows = new List<DataSetReciPro.DataTableBetheRow>(Beams.Length);
         for (int i = 0; i < Beams.Length; i++)
         {
             var beam = Beams[i];
@@ -170,7 +168,7 @@ public partial class FormDiffractionSpotInfo : Form
             if (checkBoxAutoRowSize.Checked)
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView.DataMember = "DataTableBethe";
-            toolStripStatusLabel1.Text += "Time for displaying table: " + sw.ElapsedMilliseconds + "ms.  ";
+            toolStripStatusLabel1.Text += $"Time for displaying table: {sw.ElapsedMilliseconds} ms.  ";
         }
     }
 
@@ -195,7 +193,7 @@ public partial class FormDiffractionSpotInfo : Form
                     if (dataGridView.Columns[i].HeaderText == "h" || dataGridView.Columns[i].HeaderText == "k")
                         sb.Append(dataGridView.Columns[i].HeaderText);
                     else
-                        sb.Append(dataGridView.Columns[i].HeaderText + "\t");
+                        sb.Append($"{dataGridView.Columns[i].HeaderText}\t");
                 }
             sb.Append("\r\n");
 
@@ -232,13 +230,11 @@ public partial class FormDiffractionSpotInfo : Form
 
     private void DataGridView_Scroll(object sender, ScrollEventArgs e)
     {
-
         if (checkBoxAutoRowSize.Checked)
         {
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
-
     }
 
     private void button1_Click(object sender, EventArgs e)

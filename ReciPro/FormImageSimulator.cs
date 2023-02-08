@@ -298,9 +298,6 @@ public partial class FormImageSimulator : Form
                 directions.Add(new Vector3DBase(x, y, -Sqrt(1 - x * x - y * y)));
             }
 
-
-
-
         bool inside(int i) => (i % division - radius + 0.5) * (i % division - radius + 0.5) + (i / division - radius + 0.5) * (i / division - radius + 0.5) <= radius * radius;
 
         stemDirectionTotal = Enumerable.Range(0, division * division).Count(i => inside(i));
@@ -412,7 +409,7 @@ public partial class FormImageSimulator : Form
 
     #endregion;
 
-
+    #region ポテンシャル
     private void simulatePotential(bool realtimeMode = false)
     {
         sw1.Restart();
@@ -489,7 +486,9 @@ public partial class FormImageSimulator : Form
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} msec.";
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
+    #endregion
 
+    #region HREM
     public void SimulateHRTEM(bool realtimeMode = false)
     {
         sw1.Restart();
@@ -529,51 +528,12 @@ public partial class FormImageSimulator : Form
         var temp = sw1.ElapsedMilliseconds;
         toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} msec,   ";
 
-        ////作成したイメージをPseudoBitmapに変換
-        //var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
-        //var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
-        //for (int t = 0; t < tLen; t++)
-        //    for (var d = 0; d < dLen; d++)
-        //    {
-        //        //ノーマライズ
-        //        totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
-        //                                                                                     //PseudoBitmapを生成
-        //        pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
-        //            = new PseudoBitmap(totalImage[t][d], width)
-        //            {
-        //                Tag = new ImageInfo(width, height, ImageResolution, mat, $"t={thicknessArray[t]}\r\nf={defocusArray[d]}"),
-        //                MaxValue = trackBarAdvancedMax.Value,
-        //                MinValue = trackBarAdvancedMin.Value,
-        //                Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
-        //            };
-        //    }
-
-        ////1列あるいは1行で、他の要素が多いときは適当に折り返し
-        //if ((dLen == 1 && tLen > 2) || (tLen == 1 && dLen > 2))
-        //{
-        //    var newCol = Ceiling(Sqrt(pseudo.Length));
-        //    var newRow = Ceiling(pseudo.Length / newCol);
-        //    var newPseudo = new PseudoBitmap[(int)newRow, (int)newCol];
-        //    var oldPseudo = pseudo.Cast<PseudoBitmap>().ToList();
-        //    for (int r = 0, n = 0; r < newRow; r++)
-        //        for (int c = 0; c < newCol; c++, n++)
-        //            newPseudo[r, c] = n < pseudo.Length ? oldPseudo[n] : null;
-        //    pseudo = newPseudo;
-        //}
-
-        //SkipEvent = true;
-        //trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = numericBoxIntensityMax.Value;
-        //trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = 0;
-        //trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (trackBarAdvancedMax.Value - trackBarAdvancedMin.Value) / 100.0;
-        //SkipEvent = false;
-
-
-
         SendImage(tLen, dLen, totalImage, width, height);
 
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} msec.";
 
     }
+    #endregion
 
     public void SendImage(int tLen, int dLen, double[][][] totalImage, int width, int height)
     {
