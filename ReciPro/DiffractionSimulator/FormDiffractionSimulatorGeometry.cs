@@ -365,8 +365,9 @@ public partial class FormDiffractionSimulatorGeometry : Form
             trackbarConstantA = Ring.Intensity.Min() - 1;
             trackbarConstantB = trackBarMaxInt.Maximum / Math.Log(Ring.Intensity.Max() - trackbarConstantA);
 
-            pseudBitmap.MaxValue = Ring.Intensity.Max();
-            pseudBitmap.MinValue = Ring.Intensity.Min();
+            var (min, max) = Ring.Intensity.MinMax();
+            pseudBitmap.MaxValue = max;
+            pseudBitmap.MinValue = min;
 
             setScale();
 
