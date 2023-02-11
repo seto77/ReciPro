@@ -7,7 +7,7 @@
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
 * *ReciPro* runs on Windows OS with .Net Desktop Runtime 7.0 (not .Net Runtime 7.0), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/7.0).
 
-## Real time video
+## Appearance
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 
 ## Manual
@@ -55,3 +55,9 @@
 
 ## Screenshots
 <img src="img/Main.png" height="320px">  <img src="img/DiffractionSimulator1.png" height="320px">　<img src="img/DiffractionSimulator2.png" height="320px">　<img src="img/StructureViewer1.png" height="320px">　<img src="img/StructureViewer2.png" height="320px"> <img src="img/ScatteringFactors.png" height="320px"> <img src="img/Stereonet.png" height="320px"> 
+
+## Quick video tutorials
+### Spot ID v2
+[Spot ID v2](https://user-images.githubusercontent.com/44538886/217707043-99662085-328c-4596-bda2-ce0fd7f76857.mp4)
+### CBED
+[CBED](https://user-images.githubusercontent.com/44538886/217710934-39f373c7-e778-4e20-8d9d-530132595f67.mp4)
