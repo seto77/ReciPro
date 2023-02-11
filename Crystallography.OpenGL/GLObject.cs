@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region using
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -6,6 +7,8 @@ using OpenTK.Graphics.OpenGL4;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Management;
+#endregion
+
 #region 定義
 using V4f = OpenTK.Vector4;
 using V4d = OpenTK.Vector4d;

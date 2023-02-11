@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿#region using
+using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL4;
 using System;
@@ -15,6 +16,7 @@ using Mat4f = OpenTK.Matrix4;
 using Vec2d = OpenTK.Vector2d;
 using Vec3d = OpenTK.Vector3d;
 using Vec3f = OpenTK.Vector3;
+#endregion
 
 namespace Crystallography.OpenGL;
 

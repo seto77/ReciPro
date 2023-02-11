@@ -1,6 +1,4 @@
 ﻿using System;
-
-//using System.Linq;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
@@ -64,7 +62,7 @@ public static class BitmapConverter
     public static byte[] ToByte(Bitmap Bmp)
     {
         var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
-        var rgbValues = new byte[bmpData.Stride * Bmp.Height];
+        var rgbValues = GC.AllocateUninitializedArray<byte>(bmpData.Stride * Bmp.Height);
         Marshal.Copy(bmpData.Scan0, rgbValues, 0, bmpData.Stride * Bmp.Height);
         Bmp.UnlockBits(bmpData);
         return rgbValues;
@@ -75,9 +73,9 @@ public static class BitmapConverter
         var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
         byte[] rgbaValues;
         if (bmpData.Stride == Bmp.Width * 3)
-            rgbaValues = new byte[bmpData.Stride / 3 * 4 * Bmp.Height];
+            rgbaValues = GC.AllocateUninitializedArray<byte>(bmpData.Stride / 3 * 4 * Bmp.Height);
         else
-            rgbaValues = new byte[bmpData.Stride * 4 * Bmp.Height];
+            rgbaValues = GC.AllocateUninitializedArray<byte>(bmpData.Stride * 4 * Bmp.Height);
         Marshal.Copy(bmpData.Scan0, rgbaValues, 0, bmpData.Stride * Bmp.Height);
         Bmp.UnlockBits(bmpData);
 
@@ -105,13 +103,13 @@ public static class BitmapConverter
         if (Bmp.PixelFormat != PixelFormat.Format24bppRgb)
             return null;
         var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
-        byte[] rgbValues = new byte[bmpData.Stride * Bmp.Height];
+        var rgbValues = GC.AllocateUninitializedArray<byte>(bmpData.Stride * Bmp.Height);
         Marshal.Copy(bmpData.Scan0, rgbValues, 0, bmpData.Stride * Bmp.Height);
         Bmp.UnlockBits(bmpData);
         byte[][] values = new byte[3][];
 
         for (int i = 0; i < 3; i++)
-            values[i] = new byte[bmpData.Stride * Bmp.Height / 3];
+            values[i] = GC.AllocateUninitializedArray<byte>(bmpData.Stride * Bmp.Height / 3);
 
         int n = 0;
         for (int y = 0; y < Bmp.Height; y++)
@@ -139,7 +137,7 @@ public static class BitmapConverter
         if (bmp.PixelFormat == PixelFormat.Format32bppArgb || bmp.PixelFormat == PixelFormat.Format32bppPArgb)
         {
             var bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
-            var argbValues = new byte[bmpData.Stride * bmp.Height];
+            var argbValues = GC.AllocateUninitializedArray<byte>(bmpData.Stride * bmp.Height);
             Marshal.Copy(bmpData.Scan0, argbValues, 0, bmpData.Stride * bmp.Height);
             bmp.UnlockBits(bmpData);
 
@@ -147,7 +145,7 @@ public static class BitmapConverter
                 return argbValues;
             else
             {
-                var values = new byte[bmp.Width * bmp.Height * 4];
+                var values = GC.AllocateUninitializedArray<byte>(bmp.Width * bmp.Height * 4);
                 for (int y = 0; y < bmp.Height; y++)
                     Array.Copy(argbValues, bmpData.Stride * y, values, y * bmp.Width * 4, bmp.Width * 4);
                 return values;
@@ -163,9 +161,7 @@ public static class BitmapConverter
         if (argbValues != null)
         {
             for (int i = 0; i < argbValues.Length; i += 4)
-            {
                 (argbValues[i + 2], argbValues[i]) = (argbValues[i], argbValues[i + 2]);
-            }
         }
         return argbValues;
     }
@@ -173,13 +169,13 @@ public static class BitmapConverter
     public static byte[] ToByteGray(Bitmap Bmp)
     {
         var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
-        byte[] rgbValues = new byte[bmpData.Stride * Bmp.Height];
+        byte[] rgbValues =GC.AllocateUninitializedArray<byte>(bmpData.Stride * Bmp.Height);
         Marshal.Copy(bmpData.Scan0, rgbValues, 0, bmpData.Stride * Bmp.Height);
         Bmp.UnlockBits(bmpData);
 
         if (Bmp.PixelFormat == PixelFormat.Format24bppRgb)
         {
-            byte[] values = new byte[Bmp.Width * Bmp.Height];
+            var values = GC.AllocateUninitializedArray<byte>(Bmp.Width * Bmp.Height);
             int n = 0;
             for (int y = 0; y < Bmp.Height; y++)
             {
@@ -194,7 +190,7 @@ public static class BitmapConverter
         }
         else if (Bmp.PixelFormat == PixelFormat.Format32bppArgb)
         {
-            byte[] values = new byte[Bmp.Width * Bmp.Height];
+            var values = GC.AllocateUninitializedArray<byte>(Bmp.Width * Bmp.Height);
             int n = 0;
             for (int y = 0; y < Bmp.Height; y++)
             {
@@ -217,8 +213,8 @@ public static class BitmapConverter
 
     public static int[] ToIntGray(Bitmap bmp)
     {
-        byte[] byteValue = ToByteGray(bmp);
-        int[] intValue = new int[byteValue.Length];
+        var byteValue = ToByteGray(bmp);
+        var intValue = GC.AllocateUninitializedArray<int>(byteValue.Length);
         for (int i = 0; i < intValue.Length; i++)
             intValue[i] = byteValue[i];
         return intValue;
@@ -236,7 +232,7 @@ public static class BitmapConverter
     {
         if (bmp.PixelFormat == PixelFormat.Format24bppRgb)//24bitカラーモードのときだけ
         {
-            byte[] rgbValues = new byte[bmp.Width * bmp.Height * 3];
+            var rgbValues = GC.AllocateUninitializedArray<byte>(bmp.Width * bmp.Height * 3);
             int n = 0;
             for (int y = 0; y < bmp.Height; y++)
             {
