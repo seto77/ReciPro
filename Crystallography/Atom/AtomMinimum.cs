@@ -10,18 +10,28 @@ namespace Crystallography;
 [MemoryPackable]
 public partial class Atoms2
 {
+    //[BrotliStringFormatter]
     public string Label;
+
     [MemoryPackInclude]
     private byte[][] positionBytes;//x,y,z の 順番
+
     [MemoryPackInclude]
     private byte[] occBytes;//Occ 
+    
     public byte SubXray;
+    
     public byte SubElectron;
+    
     public byte AtomNo;//原子番号 ただし、255は重水素D
+    
     public bool IsU;
+    
     public bool IsIso;
+
     [MemoryPackInclude]
     private byte[] isoBytes;//B(U)iso
+
     [MemoryPackInclude]
     private byte[][] anisoBytes;//B(U)11, B(U)22, B(U)33, B(U)12, B(U)23, B(U)31の順番
 

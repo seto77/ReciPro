@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Numerics;
 using System.Xml.Serialization;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Crystallography;
 
@@ -26,6 +27,16 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     {
         Atoms atoms = obj;
         return atoms.Label == Label && atoms.X == X && atoms.Y == Y && atoms.Z == Z && atoms.Occ == Occ;
+    }
+
+    public override bool Equals(object obj)
+    {
+        return Equals(obj as Atoms);
+    }
+
+    public override int GetHashCode()
+    {
+        return new { X,Y,Z,Occ,Label,WyckoffNumber,SymmetrySeriesNumber,Dsf,Atom,Texture }.GetHashCode();
     }
     #endregion
 
@@ -81,10 +92,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public Vector3DBase PositionError => new(X_err, Y_err, Z_err);
     [XmlIgnore]
     public Vector3DBase Position => new(X, Y, Z);
-
-
-
-
+    
     [XmlIgnore]
     public (float Ambient, float Diffusion, float Specular, float Shininess, float Emission) Texture
     {
@@ -519,6 +527,10 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
             try { return Convert.ToDouble(s); }
             catch { System.Windows.Forms.MessageBox.Show("êîílÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢"); return 0; }
     }
+
+
+
+
     #endregion
 }
 

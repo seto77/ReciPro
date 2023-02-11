@@ -17,17 +17,36 @@ public partial class Crystal2
     #region フィールド プライベートメンバーの場合[MemoryPackInclude]が必要
     [MemoryPackInclude]
     private byte[][] cellBytes;
+
     public int argb;
+
     public float density;
+    
+    //[BrotliStringFormatter]
     public string name;
+    
+    //[BrotliStringFormatter]
     public string note;
+    
+    //[BrotliStringFormatter]
     public string jour;
+    
+    //[BrotliStringFormatter]
     public string auth;
+    
+    //[BrotliStringFormatter]
     public string sect;
+    
+    //[BrotliStringFormatter]
     public string formula;//計算可能な場合は。
+    
     public short sym;
+    
     public List<Atoms2> atoms;
+    
     public float[] d;//強度8位までのd値
+    
+    //[BrotliStringFormatter]
     public string fileName;
 
     #endregion
