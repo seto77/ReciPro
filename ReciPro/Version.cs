@@ -10,7 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
-        "\r\n ver4.849(2023/02/11)  Improved] Overall speedup with SIMD calculation." +
+        "\r\n ver4.849(2023/02/11)  Improved: Overall speedup with SIMD calculation." +
         "\r\n ver4.848(2022/12/28)  Added the function to convert the current space group to a convertible space group. Fixed minor bugs on 'Spot ID v1'." +
         "\r\n ver4.847(2022/12/23)  Added functions to save/copy images for 'Spot ID v2'." +
         "\r\n ver4.845(2022/12/20)  Fixed minor bugs. Improved compatibility for reading Tiff format files." +
