@@ -1,5 +1,4 @@
 #region using
-using Crystallography.Controls.Numeric;
 using Crystallography.OpenGL;
 using Microsoft.Win32;
 using System.Collections.Generic;

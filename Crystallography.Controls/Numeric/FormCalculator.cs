@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Crystallography.Controls.Numeric
+namespace Crystallography.Controls
 {
     public partial class FormCalculator : Form
     {

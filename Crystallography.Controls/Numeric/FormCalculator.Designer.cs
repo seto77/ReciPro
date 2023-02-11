@@ -1,4 +1,4 @@
-﻿namespace Crystallography.Controls.Numeric
+﻿namespace Crystallography.Controls
 {
     partial class FormCalculator
     {
