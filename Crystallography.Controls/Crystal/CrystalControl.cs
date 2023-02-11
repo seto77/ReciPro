@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using static IronPython.Modules._ast;
 #endregion
 
 namespace Crystallography.Controls;
