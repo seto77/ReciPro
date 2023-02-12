@@ -8,6 +8,7 @@ namespace Crystallography;
 /// </summary>
 public readonly struct SymmetryOperation
 {
+    #region フィールド、プロパティ
     public ushort SeriesNumber { get; }
 
     /// <summary>
@@ -30,6 +31,9 @@ public readonly struct SymmetryOperation
     /// </summary>
     public (double U, double V, double W) Translation { get; }
 
+    #endregion
+
+    #region コンストラクタ
     public SymmetryOperation(int order, int sense, in (int U, int V, int W) direction, in (double U, double V, double W) translation)
     {
         SeriesNumber = 0;
@@ -57,6 +61,9 @@ public readonly struct SymmetryOperation
         Translation = so.Translation;
     }
 
+    #endregion
+
+    #region ConvertPlaneIndex
     public (int H, int K, int L) ConvertPlaneIndex((int H, int K, int L) index)
         => ConvertPlaneIndex(index.H, index.K, index.L);
 
@@ -161,4 +168,5 @@ public readonly struct SymmetryOperation
             return Order > 0 ? p : (-p.H, -p.K, -p.L);
         }
     }
+    #endregion
 }

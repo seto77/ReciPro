@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region using 
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+#endregion
 
 namespace Crystallography;
 
@@ -14,10 +16,8 @@ public class PseudoBitmap : IDisposable
 {
     public void Dispose()
     {
-        if (SrcBitmap != null)
-            SrcBitmap.Dispose();
-        if (destBmp != null)
-            destBmp.Dispose();
+        SrcBitmap?.Dispose();
+        destBmp?.Dispose();
     }
 
     #region static なコンストラクタ、フィールド
@@ -163,7 +163,6 @@ public class PseudoBitmap : IDisposable
         #endregion スケールの初期化
     }
     #endregion 
-
 
     #region コンストラクタ
 
@@ -973,8 +972,8 @@ public class PseudoBitmap : IDisposable
     /// <returns></returns>
     public void Rotate(double angle)
     {
-        Bitmap destBitmap = new Bitmap(SrcBitmap.Width, SrcBitmap.Height, PixelFormat.Format24bppRgb);
-        Graphics g = Graphics.FromImage(destBitmap);
+        var destBitmap = new Bitmap(SrcBitmap.Width, SrcBitmap.Height, PixelFormat.Format24bppRgb);
+        var g = Graphics.FromImage(destBitmap);
         g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
         g.TranslateTransform((float)SrcBitmap.Width / 2, (float)SrcBitmap.Height / 2);
         g.RotateTransform((float)(angle * 180 / Math.PI));
@@ -983,11 +982,11 @@ public class PseudoBitmap : IDisposable
         g.DrawImage(SrcBitmap, new RectangleF(0, 0, SrcBitmap.Width, SrcBitmap.Height), new RectangleF(0, 0, SrcBitmap.Width, SrcBitmap.Height), GraphicsUnit.Pixel);
 
         //SourceBitmapをロックする
-        BitmapData bitmapData = destBitmap.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.ReadWrite, SrcBitmap.PixelFormat);
+        var bitmapData = destBitmap.LockBits(new Rectangle(0, 0, Width, Height), ImageLockMode.ReadWrite, SrcBitmap.PixelFormat);
         //SouceStrideを設定しておく
         int BitmapStride = bitmapData.Stride;
         //次にその情報をargbValuesに転送
-        byte[] bitmapByteArray = new byte[bitmapData.Stride * SrcBitmap.Height];
+        byte[] bitmapByteArray = GC.AllocateUninitializedArray<byte>(bitmapData.Stride * SrcBitmap.Height);
         Marshal.Copy(bitmapData.Scan0, bitmapByteArray, 0, bitmapByteArray.Length);
         //SourceBitmapをアンロックして終了
         destBitmap.UnlockBits(bitmapData);
