@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -22,6 +24,9 @@ public class ConvertCrystalData
     #region CrystalList(xmlŒ`Ž®)‚Ì“Ç‚Ýž‚Ý/‘‚«ž‚Ý
     public static bool SaveCrystalListXml(Crystal[] crystals, string filename)
     {
+        if (crystals != null && crystals.Length != 0 && crystals[0].FlexibleMode)
+            crystals[0].FlexiblePlane = crystals[0].Plane;
+
         try
         {
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
@@ -93,7 +98,8 @@ public class ConvertCrystalData
                     Thread.Sleep(1);
                 }
 
-
+                foreach(var c in cry.Where(e=>e.FlexiblePlane!=null && e.FlexiblePlane.Count>0))
+                    c.Plane = c.FlexiblePlane;
             }
             catch { }
         }

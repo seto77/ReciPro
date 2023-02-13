@@ -124,7 +124,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Plane> Plane = new List<Plane>();
+    public List<Plane> Plane = new();
+
+    public List<Plane> FlexiblePlane = new();
 
     /// <summary>
     /// 軸ベクトル配列
@@ -543,7 +545,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         RotationMatrix = new Matrix3D(rot);
         GetFormulaAndDensity();
         Bonds = bonds;
-
     }
 
 
@@ -572,8 +573,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         EOSCondition = eos;
     }
-
-
     public Crystal(Crystal cry)
     {
         A = cry.A; B = cry.B; C = cry.C; Alpha = cry.Alpha; Beta = cry.Beta; Gamma = cry.Gamma;

@@ -79,8 +79,6 @@ public static class MathematicalConstants
 
 }
 
-
-
 public static class UniversalConstants
 {
     public enum LengthUnit

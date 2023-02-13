@@ -300,7 +300,7 @@ public class Matrix3D : ICloneable
     /// <param name="v">‰ñ“]Ž²</param>
     /// <param name="theta">‰ñ“]Šp“x</param>
     /// <returns></returns>
-    public static Matrix3D Rot(Vector3DBase v, double theta)
+    public static Matrix3D Rot(Vector3DBase v, in double theta)
     {
         //Vx*Vx*(1-cos) + cos  	    Vx*Vy*(1-cos) - Vz*sin  	Vz*Vx*(1-cos) + Vy*sin
         //Vx*Vy*(1-cos) + Vz*sin 	Vy*Vy*(1-cos) + cos 	    Vy*Vz*(1-cos) - Vx*sin
@@ -340,8 +340,7 @@ public class Matrix3D : ICloneable
 
     public static Matrix3D RotX(double theta)
     {
-        double cos = Math.Cos(theta);
-        double sin = Math.Sin(theta);
+        double cos = Math.Cos(theta),sin = Math.Sin(theta);
         return new Matrix3D()
         {
             E22 = cos,
@@ -352,8 +351,7 @@ public class Matrix3D : ICloneable
     }
     public static Matrix3D RotY(double theta)
     {
-        var cos = Math.Cos(theta);
-        var sin = Math.Sin(theta);
+        double cos = Math.Cos(theta),sin = Math.Sin(theta);
         return new Matrix3D()
         {
             E11 = cos,
@@ -364,8 +362,7 @@ public class Matrix3D : ICloneable
     }
     public static Matrix3D RotZ(double theta)
     {
-        var cos = Math.Cos(theta);
-        var sin = Math.Sin(theta);
+        double cos = Math.Cos(theta), sin = Math.Sin(theta);
         return new Matrix3D()
         {
             E11 = cos,
@@ -396,7 +393,7 @@ public class Matrix3D : ICloneable
 
 
 
-    public static Matrix3D GenerateRamdomRotationMatrix(double rn1, double rn2, double rn3)
+    public static Matrix3D GenerateRamdomRotationMatrix(in double rn1,in  double rn2, in double rn3)
     {
         double phi = rn1 * 2 * Math.PI;
         double cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
@@ -427,7 +424,7 @@ public class Matrix3D : ICloneable
     /// <param name="theta"></param>
     /// <param name="ksi"></param>
     /// <returns></returns>
-    public static Matrix3D GenerateEquiareaMatrix(double phi, double theta, double ksi)
+    public static Matrix3D GenerateEquiareaMatrix(in double phi,in double theta, in double ksi)
     {
         double cosPhi = Math.Cos(phi * 2 * Math.PI), sinPhi = Math.Sin(phi * 2 * Math.PI);
         double cosTheta = theta * 2 - 1, sinTheta = Math.Sqrt(1 - cosTheta * cosTheta);
