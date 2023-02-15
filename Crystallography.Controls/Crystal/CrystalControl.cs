@@ -18,6 +18,26 @@ public partial class CrystalControl : UserControl
 {
     #region プロパティ、フィールド、イベントハンドラ
 
+    /// <summary>
+    /// VisualStudioデザイナーの編集の時はTrue
+    /// </summary>
+    public new bool DesignMode
+    {
+        get
+        {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                return true;
+            System.Windows.Forms.Control ctrl = this;
+            while (ctrl != null)
+            {
+                if (ctrl.Site != null && ctrl.Site.DesignMode)
+                    return true;
+                ctrl = ctrl.Parent;
+            }
+            return false;
+        }
+    }
+
     public bool SkipEvent { get; set; } = false;
 
     public bool SymmetryInformationVisible { set => FormSymmetryInformation.Visible = value; get => FormSymmetryInformation.Visible; }
@@ -25,6 +45,8 @@ public partial class CrystalControl : UserControl
     public bool ScatteringFactorVisible { set { FormScatteringFactor.Visible = value; } get => FormScatteringFactor.Visible; }
 
     public bool StrainControlVisible { get => formStrain.Visible; }
+
+    public bool ColorControlVisible { get => colorControl.Visible; set => colorControl.Visible = value; }
 
     public int SymmetrySeriesNumber { get => symmetryControl.SymmetrySeriesNumber; set => symmetryControl.SymmetrySeriesNumber = value; }
 
@@ -112,8 +134,6 @@ public partial class CrystalControl : UserControl
     public double Alpha { get => symmetryControl.Alpha; set => symmetryControl.Alpha = value; }
     public double Beta { get => symmetryControl.Beta; set => symmetryControl.Beta = value; }
     public double Gamma { get => symmetryControl.Gamma; set => symmetryControl.Gamma = value; }
-
-
 
     public int DefaultTabNumber { set => tabControl.SelectedIndex = value; get => tabControl.SelectedIndex; }
 

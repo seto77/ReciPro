@@ -315,7 +315,7 @@ public class Euler
         if (EulerMatrix.E32 > 1) EulerMatrix.E32 = 1; if (EulerMatrix.E32 < -1) EulerMatrix.E32 = -1;
         if (EulerMatrix.E33 > 1) EulerMatrix.E33 = 1; if (EulerMatrix.E33 < -1) EulerMatrix.E33 = -1;
 
-        double phi = 0, theta = Math.Acos(EulerMatrix.E33), psi = 0;
+        double phi, theta = Math.Acos(EulerMatrix.E33), psi;
         double SinTheta = Math.Sqrt(1 - EulerMatrix.E33 * EulerMatrix.E33);
         if (SinTheta == 0)
         {
@@ -346,12 +346,9 @@ public class Euler
 
     public static Matrix3D SetEulerAngle(double phi, double theta, double psi)
     {
-        double cosPhi = Math.Cos(phi);
-        double sinPhi = Math.Sin(phi);
-        double cosTheta = Math.Cos(theta);
-        double sinTheta = Math.Sin(theta);
-        double cosPsi = Math.Cos(psi);
-        double sinPsi = Math.Sin(psi);
+        double cosPhi = Math.Cos(phi),sinPhi = Math.Sin(phi);
+        double cosTheta = Math.Cos(theta),sinTheta = Math.Sin(theta);
+        double cosPsi = Math.Cos(psi),sinPsi = Math.Sin(psi);
 
         return new Matrix3D(
             cosPhi * cosPsi - cosTheta * sinPhi * sinPsi,
@@ -365,7 +362,6 @@ public class Euler
             sinTheta * sinPhi,
             -sinTheta * cosPhi,
             cosTheta
-
             );
     }
 

@@ -671,6 +671,17 @@ unsafe public partial class GLControlAlpha : UserControl
         GLObject.Generate(Program, objs);
         glObjects.AddRange(objs);
     }
+    public void Replace(int i, GLObject obj)
+    {
+        if (Program < 1 || glObjects.Count == 0) return;
+        glControl.MakeCurrent();
+
+        if (i < glObjects.Count)
+        {
+            obj.Generate(Program);
+            glObjects[i] = obj;
+        }
+    }
 
     public void DeleteObjects(GLObject obj)
     {
@@ -691,6 +702,7 @@ unsafe public partial class GLControlAlpha : UserControl
         glObjects.Clear();
     }
 
+   
     #endregion
 
     #region クリップ操作

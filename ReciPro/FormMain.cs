@@ -2,6 +2,7 @@
 using Crystallography.OpenGL;
 using Microsoft.Win32;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -90,6 +91,26 @@ public partial class FormMain : Form
     #endregion クリップボード監視
 
     #region プロパティ、フィールド、イベントハンドラ
+
+    /// <summary>
+    /// VisualStudioデザイナーの編集の時はTrue
+    /// </summary>
+    public new bool DesignMode
+    {
+        get
+        {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                return true;
+            System.Windows.Forms.Control ctrl = this;
+            while (ctrl != null)
+            {
+                if (ctrl.Site != null && ctrl.Site.DesignMode)
+                    return true;
+                ctrl = ctrl.Parent;
+            }
+            return false;
+        }
+    }
 
     public FormStructureViewer FormStructureViewer;
     public FormDiffractionSimulator FormDiffractionSimulator;
@@ -223,7 +244,8 @@ public partial class FormMain : Form
                     AllowMouseTranslating = false,
                     Name = "glControlAxes",
                     ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-                    ProjWidth = 2.6,
+                    ProjWidth = 2.7,
+                    ProjCenter = new OpenTK.Vector2d(0, 0.2),
                     RotationMode = GLControlAlpha.RotationModes.Object,
                     Dock = DockStyle.Fill,
                     LightPosition = new Vec3(100, 100, 100)
@@ -242,6 +264,28 @@ public partial class FormMain : Form
                 regKey.SetValue("DisableOpenGL", true);
             }
         }
+
+        if (glControlAxes != null)
+        {
+            groupBoxCurrentDirection.Height += glControlAxes.Width - glControlAxes.Height;
+            //labelCurrentIndex.Location = new Point(glControlAxes.Location.X, glControlAxes.Location.Y + glControlAxes.Height - labelCurrentIndex.Height);
+            labelCurrentIndex.BringToFront();
+            labelCurrentIndex.BackColor = Color.White;
+        }
+        else
+        {
+            labelCurrentIndex.BringToFront();
+            numericBoxMaxUVW.BringToFront();
+            buttonReset.BringToFront();
+
+            labelCurrentIndex.Dock = DockStyle.Top;
+            numericBoxMaxUVW.Dock= DockStyle.Top;
+            buttonReset.Dock = DockStyle.Top;
+            labelCurrentIndex.BackColor = groupBoxCurrentDirection.BackColor;
+            groupBoxCurrentDirection.AutoSize = true;
+        }
+
+        
 
         commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.", 0.15);
         FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };
@@ -329,9 +373,12 @@ public partial class FormMain : Form
         commonDialog.Progress = ("Now Loading...Reading registries again.", 0.98);
         ReadInitialRegistry();
 
-        this.Text = "ReciPro  " + Version.VersionAndDate;
+        
+        Text = "ReciPro  " + Version.VersionAndDate;
+        if (glControlAxes == null)
+            Text += "  (3D rendering disable mode)";
 
-        commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
+            commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
         if (commonDialog.AutomaticallyClose)
             commonDialog.Visible = false;
 
@@ -1475,12 +1522,9 @@ public partial class FormMain : Form
         {
             double aZ = (Crystal.RotationMatrix * Crystal.A_Axis).Z, bZ = (Crystal.RotationMatrix * Crystal.B_Axis).Z, cZ = (Crystal.RotationMatrix * Crystal.C_Axis).Z;
             var (U, V, W, _) = uvwIndices.MaxBy(e => (e.U * aZ + e.V * bZ + e.W * cZ) / e.Length);
-
-            labelCurrentIndexU.Text = U.ToString();
-            labelCurrentIndexV.Text = V.ToString();
-            labelCurrentIndexW.Text = W.ToString();
-
+            
             CurrentZoneAxis = $"[{U} {V} {W}]";
+            labelCurrentIndex.Text = CurrentZoneAxis;
         }
     }
     #endregion
@@ -1517,7 +1561,11 @@ public partial class FormMain : Form
 
 
 
+
     #endregion
 
-
+    private void labelCurrentIndex_DoubleClick(object sender, EventArgs e)
+    {
+        numericBoxMaxUVW.Visible = !numericBoxMaxUVW.Visible;
+    }
 }

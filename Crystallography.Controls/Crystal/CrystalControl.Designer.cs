@@ -208,13 +208,13 @@
             // 
             // flowLayoutPanel4
             // 
+            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
             this.flowLayoutPanel4.Controls.Add(this.numericBoxVolume);
             this.flowLayoutPanel4.Controls.Add(this.numericBoxCellMass);
             this.flowLayoutPanel4.Controls.Add(this.numericBoxMolarVolume);
             this.flowLayoutPanel4.Controls.Add(this.numericBoxMolarMass);
             this.flowLayoutPanel4.Controls.Add(this.numericBoxDensity);
             this.flowLayoutPanel4.Controls.Add(this.colorControl);
-            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // numericBoxVolume

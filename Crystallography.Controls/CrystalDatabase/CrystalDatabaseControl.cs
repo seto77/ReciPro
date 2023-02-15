@@ -111,10 +111,10 @@ public partial class CrystalDatabaseControl : UserControl
         return bytes;
     }
 
-    private static void writeInt(Stream s, int v) => s.Write(BitConverter.GetBytes(v), 0, 4);
-    private static void writeLong(Stream s, long v) => s.Write(BitConverter.GetBytes(v), 0, 8);
-    private static void writeByte(Stream s, byte v) => s.WriteByte(v);
-    private static void writeBytes(Stream s, byte[] v) => s.Write(v, 0, v.Length);
+    private static void writeInt(Stream s, in int v) => s.Write(BitConverter.GetBytes(v), 0, 4);
+    private static void writeLong(Stream s, in long v) => s.Write(BitConverter.GetBytes(v), 0, 8);
+    private static void writeByte(Stream s, in byte v) => s.WriteByte(v);
+    private static void writeBytes(Stream s, in byte[] v) => s.Write(v, 0, v.Length);
 
     #endregion
 
