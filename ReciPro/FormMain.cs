@@ -23,8 +23,10 @@ namespace ReciPro;
 
 public partial class FormMain : Form
 {
-    [DllImport("user32")]
-    private static extern short GetAsyncKeyState(int nVirtKey);
+    #region LibraryImport
+    [LibraryImport("user32")]
+    private static partial short GetAsyncKeyState(int nVirtKey);
+    #endregion
 
     #region WebClientの派生クラス
     //private static readonly HttpClient httpClient = new();
@@ -101,7 +103,7 @@ public partial class FormMain : Form
         {
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
                 return true;
-            System.Windows.Forms.Control ctrl = this;
+            Control ctrl = this;
             while (ctrl != null)
             {
                 if (ctrl.Site != null && ctrl.Site.DesignMode)
@@ -623,6 +625,68 @@ public partial class FormMain : Form
 
     #endregion レジストリ操作
 
+    #region Axisの描画関連
+
+    //軸の情報を表示する部分
+    public void DrawAxes()
+    {
+        if (glControlAxes == null)
+            return;
+        glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
+    }
+
+    private void resetAxes()
+    {
+        if (glControlAxes == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0)
+            return;
+
+        var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
+        var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };
+        var color = new[] { Col4.Red, Col4.Green, Col4.Blue };
+        var label = new[] { "a", "b", "c" };
+        var obj = new List<GLObject>(10);
+        for (int i = 0; i < 3; i++)
+        {
+            obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
+            obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
+            obj.Add(new TextObject(label[i], 13, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
+        }
+        obj.Add(new Sphere(new Vec3(0, 0, 0), 0.12, new Material(Col4.Gray), DrawingMode.Surfaces));
+
+        glControlAxes.DeleteAllObjects();
+        glControlAxes.AddObjects(obj);
+        DrawAxes();
+    }
+
+    private void panelAxes_MouseDown(object sender, MouseEventArgs e)
+    {
+        if (glControlAxes == null) return;
+
+        glControlAxes.Focus();
+        if (e.Button == MouseButtons.Right && e.Clicks == 2)
+        {
+            var bmp = glControlAxes.GenerateBitmap();
+            if (bmp != null)
+                Clipboard.SetDataObject(bmp, true, 10, 100);
+        }
+    }
+
+    private Point lastPosAxes;
+
+    private void panelAxes_MouseMove(object sender, MouseEventArgs e)
+    {
+        if (glControlAxes == null) return;
+
+        if (e.Button == MouseButtons.Left)
+        {
+            int dx = e.X - lastPosAxes.X, dy = lastPosAxes.Y - e.Y;
+            Rotate((-dy, dx, 0), Math.Sqrt(dx * dx + dy * dy) / 360 * Math.PI);
+        }
+        lastPosAxes = e.Location;
+    }
+
+    #endregion Axisの描画関連
+
     #region 回転操作
 
     /// <summary>
@@ -790,7 +854,6 @@ public partial class FormMain : Form
     #endregion 回転ボタン
 
     #region ベクトルでの回転指定
-
     private void buttonSetVector_Click(object sender, EventArgs e)
     {
         if (Crystal == null) return;
@@ -1119,10 +1182,7 @@ public partial class FormMain : Form
         cry.AddRange(list);
         if (showSelectionDialog)
         {
-            var formCrystalSelection = new FormCrystalSelection
-            {
-                LoadMode = true
-            };
+            var formCrystalSelection = new FormCrystalSelection { LoadMode = true };
             formCrystalSelection.SetCrystalList(cry);
             formCrystalSelection.Location = new Point(this.Location.X + this.Width / 2 - formCrystalSelection.Width / 2, this.Location.Y + this.Height / 2 - formCrystalSelection.Height / 2);
             if (formCrystalSelection.ShowDialog() == DialogResult.OK)
@@ -1297,68 +1357,6 @@ public partial class FormMain : Form
     }
     #endregion
 
-    #region Axisの描画関連
-
-    //軸の情報を表示する部分
-    public void DrawAxes()
-    {
-        if (glControlAxes == null)
-            return;
-        glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
-    }
-
-    private void resetAxes()
-    {
-        if (glControlAxes == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0)
-            return;
-
-        var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
-        var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };
-        var color = new[] { Col4.Red, Col4.Green, Col4.Blue };
-        var label = new[] { "a", "b", "c" };
-        var obj = new List<GLObject>(10);
-        for (int i = 0; i < 3; i++)
-        {
-            obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
-            obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
-            obj.Add(new TextObject(label[i], 13, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
-        }
-        obj.Add(new Sphere(new Vec3(0, 0, 0), 0.12, new Material(Col4.Gray), DrawingMode.Surfaces));
-
-        glControlAxes.DeleteAllObjects();
-        glControlAxes.AddObjects(obj);
-        DrawAxes();
-    }
-
-    private void panelAxes_MouseDown(object sender, MouseEventArgs e)
-    {
-        if (glControlAxes == null) return;
-
-        glControlAxes.Focus();
-        if (e.Button == MouseButtons.Right && e.Clicks == 2)
-        {
-            var bmp = glControlAxes.GenerateBitmap();
-            if (bmp != null)
-                Clipboard.SetDataObject(bmp, true, 10, 100);
-        }
-    }
-
-    private Point lastPosAxes;
-
-    private void panelAxes_MouseMove(object sender, MouseEventArgs e)
-    {
-        if (glControlAxes == null) return;
-
-        if (e.Button == MouseButtons.Left)
-        {
-            int dx = e.X - lastPosAxes.X, dy = lastPosAxes.Y - e.Y;
-            Rotate((-dy, dx, 0), Math.Sqrt(dx * dx + dy * dy) / 360 * Math.PI);
-        }
-        lastPosAxes = e.Location;
-    }
-
-    #endregion Axisの描画関連
-
     #region ドラッグドロップ
     private void FormMain_DragDrop(object sender, DragEventArgs e)
     {
@@ -1478,7 +1476,10 @@ public partial class FormMain : Form
     #endregion
 
     #region 最も近いUVWを検索
-
+    private void labelCurrentIndex_DoubleClick(object sender, EventArgs e)
+    {
+        numericBoxMaxUVW.Visible = !numericBoxMaxUVW.Visible;
+    }
     private void numericBoxMaxUVW_ValueChanged(object sender, EventArgs e)
     {
         if (Crystal == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0) return;
@@ -1564,8 +1565,5 @@ public partial class FormMain : Form
 
     #endregion
 
-    private void labelCurrentIndex_DoubleClick(object sender, EventArgs e)
-    {
-        numericBoxMaxUVW.Visible = !numericBoxMaxUVW.Visible;
-    }
+  
 }

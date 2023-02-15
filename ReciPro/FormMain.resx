@@ -2035,13 +2035,13 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
   </data>
   <data name="numericBoxStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 25</value>
+    <value>130, 27</value>
   </data>
   <data name="numericBoxStep.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
