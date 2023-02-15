@@ -57,7 +57,15 @@
 <img src="img/Main.png" height="320px">  <img src="img/DiffractionSimulator1.png" height="320px">　<img src="img/DiffractionSimulator2.png" height="320px">　<img src="img/StructureViewer1.png" height="320px">　<img src="img/StructureViewer2.png" height="320px"> <img src="img/ScatteringFactors.png" height="320px"> <img src="img/Stereonet.png" height="320px"> 
 
 ## Quick video tutorials
+### Basic operations to rotate crystals
+[Rotate crystal](https://user-images.githubusercontent.com/44538886/218428232-b940b81c-6ed0-4d73-8110-69a3d5c8fd5a.mp4)
+
+### Crystal database functions
+[Crystal database](https://user-images.githubusercontent.com/44538886/218432963-fb37a2d1-2236-491a-bb96-4d1af5223519.mp4)
+
 ### Spot ID v2
 [Spot ID v2](https://user-images.githubusercontent.com/44538886/217707043-99662085-328c-4596-bda2-ce0fd7f76857.mp4)
+
 ### CBED
 [CBED](https://user-images.githubusercontent.com/44538886/217710934-39f373c7-e778-4e20-8d9d-530132595f67.mp4)
+
