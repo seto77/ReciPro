@@ -64,7 +64,7 @@
 
 ## Quick video tutorials
 ### Basic operations to rotate crystals
-[A brief tutorial of the operation of rotating crystals.](https://user-images.githubusercontent.com/44538886/218979833-ecdd3e87-bd02-4aff-bf55-aebc792f56d1.mp4)
+[A brief tutorial on the operation of rotating crystals.](https://user-images.githubusercontent.com/44538886/218983328-4e3534ed-2d5b-427a-ba83-c50d0a49a377.mp4)
 ***
 ### Crystal database functions
 [How to search for crystals in the embedded database](https://user-images.githubusercontent.com/44538886/218979766-b9596f88-79d0-4b1f-b234-4288e62393c7.mp4)
