@@ -11,7 +11,22 @@ namespace Crystallography.Controls;
 public partial class AtomControl : UserControl
 {
     #region プロパティ, フィールド, イベントハンドラ
-
+    public new bool DesignMode
+    {
+        get
+        {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                return true;
+            Control ctrl = this;
+            while (ctrl != null)
+            {
+                if (ctrl.Site != null && ctrl.Site.DesignMode)
+                    return true;
+                ctrl = ctrl.Parent;
+            }
+            return false;
+        }
+    }
     public Crystal Crystal
     {
         get => crystal; 
@@ -265,6 +280,7 @@ public partial class AtomControl : UserControl
     #region コンストラクタ
     public AtomControl()
     {
+        if(DesignMode) return;
         InitializeComponent();
         SkipEvent = true;
         table = dataSet.DataTableAtom;

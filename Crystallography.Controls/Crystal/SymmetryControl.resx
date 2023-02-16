@@ -200,7 +200,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBeta.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxBeta.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -209,7 +209,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxBeta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxBeta.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -254,7 +254,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxAlpha.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -263,7 +263,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -347,7 +347,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxGammaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxGammaErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -356,7 +356,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxGammaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxGammaErr.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -434,7 +434,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAlphaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxAlphaErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -443,7 +443,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAlphaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxAlphaErr.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -485,7 +485,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBetaErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxBetaErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -494,7 +494,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxBetaErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxBetaErr.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -533,7 +533,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxA.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxA.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -542,7 +542,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxA.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -659,7 +659,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxGamma.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxGamma.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -668,7 +668,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxGamma.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -752,7 +752,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxBErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -761,7 +761,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxBErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxBErr.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -800,7 +800,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxB.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -809,7 +809,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxB.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -998,7 +998,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxC.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxC.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1007,7 +1007,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxC.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1055,7 +1055,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxCErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxCErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1064,7 +1064,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxCErr.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1106,7 +1106,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAErr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxAErr.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1115,7 +1115,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAErr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 23</value>
+    <value>64, 25</value>
   </data>
   <data name="numericBoxAErr.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

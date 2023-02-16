@@ -51,7 +51,7 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -88,7 +88,11 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.numericBoxStep = new Crystallography.Controls.NumericBox();
             this.checkBoxAnimation = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxCurrentDirection = new System.Windows.Forms.GroupBox();
+            this.labelCurrentIndex = new System.Windows.Forms.Label();
+            this.numericBoxMaxUVW = new Crystallography.Controls.NumericBox();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDownEulerPsi = new System.Windows.Forms.NumericUpDown();
@@ -99,10 +103,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBoxCurrentDirection = new System.Windows.Forms.GroupBox();
-            this.labelCurrentIndex = new System.Windows.Forms.Label();
-            this.numericBoxMaxUVW = new Crystallography.Controls.NumericBox();
-            this.buttonReset = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
@@ -179,7 +180,7 @@
             this.flowLayoutPanel4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -190,12 +191,11 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBoxCurrentDirection.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPsi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerTheta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPhi)).BeginInit();
-            this.groupBoxCurrentDirection.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -210,7 +210,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.groupBox4);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
             resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
             resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -237,11 +237,13 @@
             // 
             // toolStripProgressBar
             // 
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
             resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
+            this.toolStripProgressBar.Margin = new System.Windows.Forms.Padding(0);
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
             // 
             // toolStripStatusLabel
             // 
+            this.toolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0);
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             resources.ApplyResources(this.toolStripStatusLabel, "toolStripStatusLabel");
             // 
@@ -405,16 +407,14 @@
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
-            // groupBox4
+            // panel1
             // 
-            this.groupBox4.Controls.Add(this.groupBox5);
-            this.groupBox4.Controls.Add(this.groupBox2);
-            this.groupBox4.Controls.Add(this.groupBox3);
-            this.groupBox4.Controls.Add(this.groupBoxCurrentDirection);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
+            this.panel1.Controls.Add(this.groupBox5);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBoxCurrentDirection);
+            this.panel1.Controls.Add(this.label8);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
             // groupBox5
             // 
@@ -726,8 +726,8 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.numericBoxStep);
             resources.ApplyResources(this.panel4, "panel4");
+            this.panel4.Controls.Add(this.numericBoxStep);
             this.panel4.Name = "panel4";
             // 
             // numericBoxStep
@@ -756,12 +756,58 @@
             this.checkBoxAnimation.UseVisualStyleBackColor = true;
             this.checkBoxAnimation.CheckedChanged += new System.EventHandler(this.checkBoxAnimation_CheckedChanged);
             // 
-            // groupBox3
+            // groupBoxCurrentDirection
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.tableLayoutPanel3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(this.groupBoxCurrentDirection, "groupBoxCurrentDirection");
+            this.groupBoxCurrentDirection.Controls.Add(this.labelCurrentIndex);
+            this.groupBoxCurrentDirection.Controls.Add(this.numericBoxMaxUVW);
+            this.groupBoxCurrentDirection.Controls.Add(this.buttonReset);
+            this.groupBoxCurrentDirection.Controls.Add(this.label7);
+            this.groupBoxCurrentDirection.Controls.Add(this.tableLayoutPanel3);
+            this.groupBoxCurrentDirection.Name = "groupBoxCurrentDirection";
+            this.groupBoxCurrentDirection.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBoxCurrentDirection, resources.GetString("groupBoxCurrentDirection.ToolTip"));
+            // 
+            // labelCurrentIndex
+            // 
+            resources.ApplyResources(this.labelCurrentIndex, "labelCurrentIndex");
+            this.labelCurrentIndex.BackColor = System.Drawing.Color.Transparent;
+            this.labelCurrentIndex.Name = "labelCurrentIndex";
+            this.toolTip.SetToolTip(this.labelCurrentIndex, resources.GetString("labelCurrentIndex.ToolTip"));
+            this.labelCurrentIndex.DoubleClick += new System.EventHandler(this.labelCurrentIndex_DoubleClick);
+            // 
+            // numericBoxMaxUVW
+            // 
+            resources.ApplyResources(this.numericBoxMaxUVW, "numericBoxMaxUVW");
+            this.numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxUVW.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxUVW.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMaxUVW.Maximum = 100D;
+            this.numericBoxMaxUVW.Minimum = 1D;
+            this.numericBoxMaxUVW.Name = "numericBoxMaxUVW";
+            this.numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
+            this.numericBoxMaxUVW.RoundErrorAccuracy = -1;
+            this.numericBoxMaxUVW.ShowUpDown = true;
+            this.numericBoxMaxUVW.SkipEventDuringInput = false;
+            this.numericBoxMaxUVW.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxMaxUVW.ThonsandsSeparator = true;
+            this.numericBoxMaxUVW.Value = 30D;
+            this.numericBoxMaxUVW.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxUVW_ValueChanged);
+            // 
+            // buttonReset
+            // 
+            resources.ApplyResources(this.buttonReset, "buttonReset");
+            this.buttonReset.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonReset.ForeColor = System.Drawing.Color.White;
+            this.buttonReset.Name = "buttonReset";
+            this.toolTip.SetToolTip(this.buttonReset, resources.GetString("buttonReset.ToolTip"));
+            this.buttonReset.UseVisualStyleBackColor = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
             // 
             // tableLayoutPanel3
             // 
@@ -856,51 +902,10 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // groupBoxCurrentDirection
+            // label8
             // 
-            resources.ApplyResources(this.groupBoxCurrentDirection, "groupBoxCurrentDirection");
-            this.groupBoxCurrentDirection.Controls.Add(this.labelCurrentIndex);
-            this.groupBoxCurrentDirection.Controls.Add(this.numericBoxMaxUVW);
-            this.groupBoxCurrentDirection.Controls.Add(this.buttonReset);
-            this.groupBoxCurrentDirection.Name = "groupBoxCurrentDirection";
-            this.groupBoxCurrentDirection.TabStop = false;
-            this.toolTip.SetToolTip(this.groupBoxCurrentDirection, resources.GetString("groupBoxCurrentDirection.ToolTip"));
-            // 
-            // labelCurrentIndex
-            // 
-            resources.ApplyResources(this.labelCurrentIndex, "labelCurrentIndex");
-            this.labelCurrentIndex.BackColor = System.Drawing.Color.Transparent;
-            this.labelCurrentIndex.Name = "labelCurrentIndex";
-            this.toolTip.SetToolTip(this.labelCurrentIndex, resources.GetString("labelCurrentIndex.ToolTip"));
-            this.labelCurrentIndex.DoubleClick += new System.EventHandler(this.labelCurrentIndex_DoubleClick);
-            // 
-            // numericBoxMaxUVW
-            // 
-            resources.ApplyResources(this.numericBoxMaxUVW, "numericBoxMaxUVW");
-            this.numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxUVW.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxUVW.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxUVW.Maximum = 100D;
-            this.numericBoxMaxUVW.Minimum = 1D;
-            this.numericBoxMaxUVW.Name = "numericBoxMaxUVW";
-            this.numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
-            this.numericBoxMaxUVW.RoundErrorAccuracy = -1;
-            this.numericBoxMaxUVW.ShowUpDown = true;
-            this.numericBoxMaxUVW.SkipEventDuringInput = false;
-            this.numericBoxMaxUVW.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxMaxUVW.ThonsandsSeparator = true;
-            this.numericBoxMaxUVW.Value = 30D;
-            this.numericBoxMaxUVW.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxUVW_ValueChanged);
-            // 
-            // buttonReset
-            // 
-            resources.ApplyResources(this.buttonReset, "buttonReset");
-            this.buttonReset.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonReset.ForeColor = System.Drawing.Color.White;
-            this.buttonReset.Name = "buttonReset";
-            this.toolTip.SetToolTip(this.buttonReset, resources.GetString("buttonReset.ToolTip"));
-            this.buttonReset.UseVisualStyleBackColor = false;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
             // toolStrip1
             // 
@@ -1354,8 +1359,8 @@
             this.flowLayoutPanel4.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -1373,15 +1378,13 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBoxCurrentDirection.ResumeLayout(false);
+            this.groupBoxCurrentDirection.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPsi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerTheta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEulerPhi)).EndInit();
-            this.groupBoxCurrentDirection.ResumeLayout(false);
-            this.groupBoxCurrentDirection.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1424,14 +1427,12 @@
         public System.Windows.Forms.Button buttonAdd;
         public System.Windows.Forms.Button buttonDelete;
         public System.Windows.Forms.Button buttonChange;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ToolStripMenuItem helpwebToolStripMenuItem;
         public Crystallography.Controls.CrystalControl crystalControl;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem toolTipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         public System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button buttonSetPlane;
         private System.Windows.Forms.SplitContainer splitContainer;
@@ -1526,6 +1527,9 @@
         private System.Windows.Forms.Label label10;
         private NumericBox numericBoxAxisV;
         private NumericBox numericBoxAxisW;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label8;
     }
 }
 

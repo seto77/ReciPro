@@ -11,7 +11,22 @@ namespace Crystallography.Controls;
 public partial class SymmetryControl : UserControl
 {
     #region プロパティ、フィールド、イベントハンドラ
-
+    public new bool DesignMode
+    {
+        get
+        {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                return true;
+            Control ctrl = this;
+            while (ctrl != null)
+            {
+                if (ctrl.Site != null && ctrl.Site.DesignMode)
+                    return true;
+                ctrl = ctrl.Parent;
+            }
+            return false;
+        }
+    }
     public bool SkipEvent { get; set; } = false;
     public int CrystalSystemIndex => comboBoxCrystalSystem.SelectedIndex;
     public int PointGroupIndex => comboBoxPointGroup.SelectedIndex;
@@ -121,6 +136,7 @@ public partial class SymmetryControl : UserControl
 
     public SymmetryControl()
     {
+        if (DesignMode) return;
         InitializeComponent();
         SymmetrySeriesNumber = 0;
         tableLayoutPanel1.ColumnStyles[2].Width = tableLayoutPanel1.ColumnStyles[6].Width = 0;

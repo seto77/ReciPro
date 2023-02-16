@@ -789,7 +789,7 @@ public class BetheMethod
     }
     public void stem_DoWork(object sender, DoWorkEventArgs e)
     {
-        //Mathネットの行列の内部は、1列目の要素、2列目の要素、という順番で格納されている
+        //MathNetの行列の内部は、1列目の要素、2列目の要素、という順番で格納されている
         var (solver, thread, cs, convergenceAngle, detAngleInner, detAngleOuter, defocusses, imageSize, resolution, calcElas, calcInel)
             = ((Solver, int, double, double, double, double, double[], Size, double, bool, bool))e.Argument;
 
@@ -995,7 +995,7 @@ public class BetheMethod
 
             Complex[] c_k = eVectors[index], α_k = αs[index], λ_k = eValues[index];
             double kz_k = k_z[index];
-            Complex[] lenz = new Complex[defocusses.Length];
+            var lenz = new Complex[defocusses.Length];
             Complex[] TDS = Shared.Rent(bLen * bLen), c_kq = Shared.Rent(bLen * bLen), λ_kq = Shared.Rent(bLen), α_kq = Shared.Rent(bLen), temp_k = Shared.Rent(bLen), temp_kq = Shared.Rent(bLen);
             try
             {
