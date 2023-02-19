@@ -548,6 +548,12 @@ public class DiffuseScatteringFactor
     /// unit: nm^2
     /// </summary>
     public double Biso => OriginalType == Type.B ? Iso : Iso * PI2 * 8;
+
+    /// <summary>
+    /// unit: nm^2. g=000の時のBiso. Acta Cryst. (1959). 12, 609 , Hamilton の式に従って、Bisoを計算
+    /// </summary>
+    public double Biso000 => (B11 * a2 + B22 * b2 + B33 * c2 + 2 * B12 * ab + 2 * B23 * bc + 2 * B31 * ca) * 4.0 / 3.0;
+
     /// <summary>
     /// unit: nm^2
     /// </summary>
@@ -600,6 +606,8 @@ public class DiffuseScatteringFactor
     /// unit: none
     /// </summary>
     public double B31_err => OriginalType == Type.B ? Aniso31_err : Aniso31_err * coeff31;
+
+  
 
     #endregion
 
@@ -691,6 +699,12 @@ public class DiffuseScatteringFactor
         set
         {
             cell = value;
+            a2 = cell.A * cell.A;
+            b2 = cell.B * cell.B;
+            c2 = cell.C * cell.C;
+            ab = cell.A * cell.B;
+            bc = cell.B * cell.C;
+            ca = cell.C * cell.A;
             var cosAlpha = Math.Cos(cell.Alpha);
             var sinAlpha = Math.Sin(cell.Alpha);
             var cosBeta = Math.Cos(cell.Beta);
@@ -698,9 +712,9 @@ public class DiffuseScatteringFactor
             var cosGamma = Math.Cos(cell.Gamma);
             var sinGamma = Math.Sin(cell.Gamma);
             var v = cell.A * cell.B * cell.C * Math.Sqrt(1 - cosAlpha * cosAlpha - cosBeta * cosBeta - cosGamma * cosGamma + 2 * cosAlpha * cosBeta * cosGamma);
-            var aStar = cell.B * cell.C * sinAlpha / v;
-            var bStar = cell.C * cell.A * sinBeta / v;
-            var cStar = cell.A * cell.B * sinGamma / v;
+            var aStar = bc * sinAlpha / v;
+            var bStar = ca * sinBeta / v;
+            var cStar = ab * sinGamma / v;
             var cosAlphaStar = (cosBeta * cosGamma - cosAlpha) / sinBeta / sinGamma;
             var cosBetaStar = (cosGamma * cosAlpha - cosBeta) / sinGamma / sinAlpha;
             var cosGammaStar = (cosAlpha * cosBeta - cosGamma) / sinAlpha / sinBeta;
@@ -714,7 +728,7 @@ public class DiffuseScatteringFactor
     }
     private (double A, double B, double C, double Alpha, double Beta, double Gamma) cell = (0, 0, 0, 0, 0, 0);
 
-    private double coeff11, coeff22, coeff33, coeff12, coeff23, coeff31;
+    private double a2, b2, c2, ab, bc, ca, coeff11, coeff22, coeff33, coeff12, coeff23, coeff31;
     #endregion
 
     #region コンストラクタ

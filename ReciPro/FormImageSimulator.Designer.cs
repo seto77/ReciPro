@@ -676,14 +676,14 @@ namespace ReciPro
             this.numericBoxThickness.Maximum = 1000D;
             this.numericBoxThickness.Minimum = 0.001D;
             this.numericBoxThickness.Name = "numericBoxThickness";
-            this.numericBoxThickness.RadianValue = 0.3490658503988659D;
+            this.numericBoxThickness.RadianValue = 0.52359877559829882D;
             this.numericBoxThickness.RoundErrorAccuracy = -1;
             this.numericBoxThickness.ShowUpDown = true;
             this.numericBoxThickness.SmartIncrement = true;
             this.numericBoxThickness.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxThickness.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
-            this.numericBoxThickness.Value = 20D;
+            this.numericBoxThickness.Value = 30D;
             this.numericBoxThickness.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxThickness_ValueChanged);
             // 
             // groupBoxOpticalProperty
@@ -1206,14 +1206,14 @@ namespace ReciPro
             this.numericBoxSTEM_DetectorOuterAngle.Maximum = 1570D;
             this.numericBoxSTEM_DetectorOuterAngle.Minimum = 0.5D;
             this.numericBoxSTEM_DetectorOuterAngle.Name = "numericBoxSTEM_DetectorOuterAngle";
-            this.numericBoxSTEM_DetectorOuterAngle.RadianValue = 0.43633231299858238D;
+            this.numericBoxSTEM_DetectorOuterAngle.RadianValue = 2.0943951023931953D;
             this.numericBoxSTEM_DetectorOuterAngle.RoundErrorAccuracy = -1;
             this.numericBoxSTEM_DetectorOuterAngle.ShowUpDown = true;
             this.numericBoxSTEM_DetectorOuterAngle.SmartIncrement = true;
             this.numericBoxSTEM_DetectorOuterAngle.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxSTEM_DetectorOuterAngle.ThonsandsSeparator = true;
             this.numericBoxSTEM_DetectorOuterAngle.UpDown_Increment = 0.5D;
-            this.numericBoxSTEM_DetectorOuterAngle.Value = 25D;
+            this.numericBoxSTEM_DetectorOuterAngle.Value = 120D;
             // 
             // numericBoxSTEM_DetectorInnerAngle
             // 
@@ -1225,6 +1225,7 @@ namespace ReciPro
             this.numericBoxSTEM_DetectorInnerAngle.Maximum = 1570D;
             this.numericBoxSTEM_DetectorInnerAngle.Minimum = 0D;
             this.numericBoxSTEM_DetectorInnerAngle.Name = "numericBoxSTEM_DetectorInnerAngle";
+            this.numericBoxSTEM_DetectorInnerAngle.RadianValue = 1.0471975511965976D;
             this.numericBoxSTEM_DetectorInnerAngle.RoundErrorAccuracy = -1;
             this.numericBoxSTEM_DetectorInnerAngle.ShowUpDown = true;
             this.numericBoxSTEM_DetectorInnerAngle.SmartIncrement = true;
@@ -1232,6 +1233,7 @@ namespace ReciPro
             this.numericBoxSTEM_DetectorInnerAngle.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxSTEM_DetectorInnerAngle, resources.GetString("numericBoxSTEM_DetectorInnerAngle.ToolTip"));
             this.numericBoxSTEM_DetectorInnerAngle.UpDown_Increment = 0.5D;
+            this.numericBoxSTEM_DetectorInnerAngle.Value = 60D;
             // 
             // panel3
             // 
@@ -1255,7 +1257,7 @@ namespace ReciPro
             this.numericBoxSTEM_ConvergenceAngle.Maximum = 1570D;
             this.numericBoxSTEM_ConvergenceAngle.Minimum = 0.1D;
             this.numericBoxSTEM_ConvergenceAngle.Name = "numericBoxSTEM_ConvergenceAngle";
-            this.numericBoxSTEM_ConvergenceAngle.RadianValue = 0.43633231299858238D;
+            this.numericBoxSTEM_ConvergenceAngle.RadianValue = 0.3490658503988659D;
             this.numericBoxSTEM_ConvergenceAngle.RoundErrorAccuracy = -1;
             this.numericBoxSTEM_ConvergenceAngle.ShowUpDown = true;
             this.numericBoxSTEM_ConvergenceAngle.SmartIncrement = true;
@@ -1263,7 +1265,7 @@ namespace ReciPro
             this.numericBoxSTEM_ConvergenceAngle.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxSTEM_ConvergenceAngle, resources.GetString("numericBoxSTEM_ConvergenceAngle.ToolTip"));
             this.numericBoxSTEM_ConvergenceAngle.UpDown_Increment = 0.5D;
-            this.numericBoxSTEM_ConvergenceAngle.Value = 25D;
+            this.numericBoxSTEM_ConvergenceAngle.Value = 20D;
             // 
             // groupBox1
             // 
@@ -1373,14 +1375,14 @@ namespace ReciPro
             this.numericBoxResolution.Maximum = 100D;
             this.numericBoxResolution.Minimum = 0.01D;
             this.numericBoxResolution.Name = "numericBoxResolution";
-            this.numericBoxResolution.RadianValue = 0.069813170079773182D;
+            this.numericBoxResolution.RadianValue = 0.034906585039886591D;
             this.numericBoxResolution.RoundErrorAccuracy = -1;
             this.numericBoxResolution.ShowUpDown = true;
             this.numericBoxResolution.SmartIncrement = true;
             this.numericBoxResolution.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxResolution.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
-            this.numericBoxResolution.Value = 4D;
+            this.numericBoxResolution.Value = 2D;
             // 
             // label35
             // 

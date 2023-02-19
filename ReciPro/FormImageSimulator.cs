@@ -541,12 +541,14 @@ public partial class FormImageSimulator : Form
         //作成したイメージをPseudoBitmapに変換
         var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
         var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
+
+        //ノーマライズ
+        totalImage = Normalize(totalImage, checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
+        
         for (int t = 0; t < tLen; t++)
             for (var d = 0; d < dLen; d++)
             {
-                //ノーマライズ
-                totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
-                                                                                             //PseudoBitmapを生成
+                //PseudoBitmapを生成
                 pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
                     = new PseudoBitmap(totalImage[t][d], width)
                     {
@@ -592,6 +594,22 @@ public partial class FormImageSimulator : Form
         else
             image = image.Select(d => d * destMax / max).ToArray();
 
+        return image;
+    }
+
+    public double[][][] Normalize(double[][][] image, bool normalizeLow = true)
+    {
+        double min = image.Min(e1=>e1.Min(e2=>e2.Min())), max = image.Max(e1 => e1.Max(e2 => e2.Max()));
+        double destMin = numericBoxIntensityMin.Value, destMax = numericBoxIntensityMax.Value;
+
+        for (int i = 0; i < image.Length; i++)
+            for (int j = 0; j < image[i].Length; j++)
+            {
+                if (normalizeLow)
+                    image[i][j] = image[i][j].Select(d => (d - min) / (max - min) * (destMax - destMin) + destMin).ToArray();
+                else
+                    image[i][j] = image[i][j].Select(d => d * destMax / max).ToArray();
+            }
         return image;
     }
 
