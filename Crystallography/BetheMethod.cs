@@ -813,7 +813,7 @@ public class BetheMethod
         #region 検証コード 30nm^-1 以上のビームは削除  25nm^-1 = 62.7mrad
         var _beam = new List<Beam>();
         foreach (var beam in Beams)
-            if (Math.Abs(beam.Vec.Z) < 1.0E-10 && beam.Vec.X2Y2 < 15 * 15)
+            if (Math.Abs(beam.Vec.Z) < 1.0E-10 && beam.Vec.X2Y2 < 25 * 25)
                 _beam.Add(beam);
         Beams =_beam.ToArray();
         #endregion
@@ -963,11 +963,14 @@ public class BetheMethod
             {
                 bwSTEM.ReportProgress((int)(1000.0 * Interlocked.Increment(ref count) / qList.Count ) , "Calculating U matrix");//状況を報告
                 if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
+
+                var gamma = 1 + UniversalConstants.e0 * AccVoltage * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
+                var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
                 U[m] = new Complex[bLen * bLen];
                 int k = 0;
                 for (int i = 0; i < bLen; i++)
                     for (int j = 0; j < bLen; j++)
-                        U[m][k++] = getU(AccVoltage, Beams[j] - Beams[i] + qList[m], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合
+                        U[m][k++] = getU(AccVoltage, Beams[j] - Beams[i] + qList[m], null, detAngleInner, detAngleOuter).Imag ;//局所形式の場合
                         //U[m][k] = getU(AccVoltage, q , -Beams[j] + Beams[i], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
             });
         #endregion
@@ -1060,9 +1063,9 @@ public class BetheMethod
                                 }
                                 Complex temp = 0.0;
                                 int l = 0;
-                                for (int j = 0; j < bLen; j++)
-                                    for (int i = 0; i < bLen; i++)
-                                        temp += -ImaginaryOne * α_k[i] * α_kq[j] * (exp_k[i] * exp_kq[j] - 1) / (λ_k[i] - λ_kq[j]) * TDS[l++];//B行列は作らず、直接アダマール積を取る どちらが正しい?
+                                for (int i = 0; i < bLen; i++)
+                                    for (int j = 0; j < bLen; j++)
+                                        temp += -ImaginaryOne * α_k[j] * α_kq[i] * (exp_k[j] * exp_kq[i] - 1) / (λ_k[j] - λ_kq[i]) * TDS[l++];//B行列は作らず、直接アダマール積を取る どちらが正しい?
                                 lock (lockObj2)
                                     for (int d = 0; d < dLen; d++)
                                         I_Inel[m, t, d] += temp / kvac * lenz[d];
