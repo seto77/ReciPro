@@ -813,7 +813,7 @@ public class BetheMethod
         #region 検証コード 30nm^-1 以上のビームは削除  25nm^-1 = 62.7mrad
         var _beam = new List<Beam>();
         foreach (var beam in Beams)
-            if (Math.Abs(beam.Vec.Z) < 1.0E-10 && beam.Vec.X2Y2 < 25 * 25)
+            if (Math.Abs(beam.Vec.Z) < 1.0E-10 && beam.Vec.X2Y2 < 15 * 15)
                 _beam.Add(beam);
         Beams =_beam.ToArray();
         #endregion
@@ -964,9 +964,10 @@ public class BetheMethod
                 bwSTEM.ReportProgress((int)(1000.0 * Interlocked.Increment(ref count) / qList.Count ) , "Calculating U matrix");//状況を報告
                 if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
                 U[m] = new Complex[bLen * bLen];
-                for (int i = 0, k = 0; i < bLen; i++)
-                    for (int j = 0; j < bLen; j++, k++)
-                        U[m][k] = getU(AccVoltage, qList[m] + Beams[j] - Beams[i], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合
+                int k = 0;
+                for (int i = 0; i < bLen; i++)
+                    for (int j = 0; j < bLen; j++)
+                        U[m][k++] = getU(AccVoltage, Beams[j] - Beams[i] + qList[m], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合
                         //U[m][k] = getU(AccVoltage, q , -Beams[j] + Beams[i], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
             });
         #endregion
@@ -1061,7 +1062,7 @@ public class BetheMethod
                                 int l = 0;
                                 for (int j = 0; j < bLen; j++)
                                     for (int i = 0; i < bLen; i++)
-                                        temp += -ImaginaryOne * α_k[j] * α_kq[i] * (exp_k[j] * exp_kq[i] - 1) / (λ_k[j] - λ_kq[i]) * TDS[l++];//B行列は作らず、直接アダマール積を取る どちらが正しい?
+                                        temp += -ImaginaryOne * α_k[i] * α_kq[j] * (exp_k[i] * exp_kq[j] - 1) / (λ_k[i] - λ_kq[j]) * TDS[l++];//B行列は作らず、直接アダマール積を取る どちらが正しい?
                                 lock (lockObj2)
                                     for (int d = 0; d < dLen; d++)
                                         I_Inel[m, t, d] += temp / kvac * lenz[d];
@@ -1080,7 +1081,7 @@ public class BetheMethod
 
         //imagesを初期化
         int width = imageSize.Width, height = imageSize.Height;
-        var images = Thicknesses.Select(e => defocusses.Select(e2 => new Complex[width * height]).ToArray()).ToArray();
+        STEM_Image = Thicknesses.Select(e => defocusses.Select(e2 => new double[width * height]).ToArray()).ToArray();
 
         #region 各ピクセルの計算
         double cX = width / 2.0, cY = height / 2.0;
@@ -1090,15 +1091,20 @@ public class BetheMethod
             for (int x = 0; x < width; x++)
             {
                 var rVec = new PointD(-resolution * (x - cX), -resolution * (height - y - 1 - cY)) + shift;
-                for (int m = 0; m < qList.Count; m++)
-                    for (int t = 0; t < tLen; t++)
-                        for (int d = 0; d < dLen; d++)
-                            images[t][d][x + y * width] += (I_Elas[m, t, d] + I_Inel[m, t, d]) * Exp(qList[m].Vec.ToPointD * rVec * TwoPiI) / radiusPix / radiusPix;
-                //images[t][d][x + y * width] += I_elas[n][t, d] * Exp(qList[n].Vec.ToPointD * rVec * TwoPiI) / radiusPix / radiusPix;
+                for (int t = 0; t < tLen; t++)
+                    for (int d = 0; d < dLen; d++)
+                    {
+                        Complex elas = new(), inel = new();
+                        for (int m = 0; m < qList.Count; m++)
+                        {
+                            var tmp = Exp(qList[m].Vec.ToPointD * rVec * TwoPiI) / radiusPix / radiusPix;
+                            elas += I_Elas[m, t, d] * tmp;
+                            inel += I_Inel[m, t, d] * tmp;
+                        }
+                        STEM_Image[t][d][x + y * width] = elas.Magnitude + inel.Magnitude;
+                    }
             }
         });
-
-        STEM_Image = images.Select(e1 => e1.Select(e2 => e2.Select(e3 => e3.Magnitude).ToArray()).ToArray()).ToArray();
         #endregion
 
         return;
