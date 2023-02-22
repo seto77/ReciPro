@@ -84,7 +84,8 @@ public partial class FormDiffractionSpotInfo : Form
         double coeff = 1 / gamma;
         if (radioButtonUnitEV.Checked)
         {
-            coeff = 1 / gamma * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733; //   coeff = 1 / gamma * UniversalConstants.h * UniversalConstants.h / 2 / UniversalConstants.m0 / UniversalConstants.e0 * 1e18
+            coeff = 1 / gamma * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733; //
+            coeff = 1 / gamma * UniversalConstants.h * UniversalConstants.h / 2 / UniversalConstants.m0 / UniversalConstants.e0 * 1e18;
             dataGridView.Columns[9].HeaderText = "Vg re";
             dataGridView.Columns[10].HeaderText = "Vg im";
             dataGridView.Columns[11].HeaderText = "V'g re";
