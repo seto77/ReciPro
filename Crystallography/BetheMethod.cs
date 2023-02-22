@@ -813,7 +813,7 @@ public class BetheMethod
         #region 検証コード 30nm^-1 以上のビームは削除  25nm^-1 = 62.7mrad
         var _beam = new List<Beam>();
         foreach (var beam in Beams)
-            if (Math.Abs(beam.Vec.Z) < 1.0E-10 && beam.Vec.X2Y2 < 25 * 25)
+            if (Math.Abs(beam.Vec.Z) < 1.0E-10 && beam.Vec.X2Y2 < 15 * 15)
                 _beam.Add(beam);
         Beams = _beam.ToArray();
         #endregion
@@ -969,8 +969,8 @@ public class BetheMethod
                 int k = 0;
                 for (int i = 0; i < bLen; i++) 
                     for (int j = 0; j < bLen; j++)
-                        U[m][k++] = getU(AccVoltage, qList[m] + Beams[j] - Beams[i], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合
-                        //U[m][k] = getU(AccVoltage, q , -Beams[j] + Beams[i], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
+                        //U[m][k++] = getU(AccVoltage, qList[m] + Beams[j] - Beams[i], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合
+                        U[m][k++] = getU(AccVoltage, qList[m], -Beams[j] + Beams[i], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
                 bwSTEM.ReportProgress((int)(1000.0 * Interlocked.Increment(ref count) / qList.Count), "Calculating U matrix");//状況を報告
                 if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
             });
@@ -989,8 +989,8 @@ public class BetheMethod
         //必要な情報だけを追加してParallelにしたtcP
         var tcP = tc.AsParallel().Select((e, i) => (index: i, result: e, K: k_xy[i])).Where(e => e.result != null && A(e.K));
         //I_Elas, I_Inelの計算
-        tcP.ForAll(_tc =>
-        //foreach (var _disk2 in disk2)
+        //tcP.ForAll(_tc =>
+        foreach (var _tc in tcP)
         {
             if (bwSTEM.CancellationPending) return;
             if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress(count, "Calculating I(Q)");//状況を報告
@@ -1080,7 +1080,7 @@ public class BetheMethod
             }
             finally { /*Shared.Return(TDS); Shared.Return(c_kq); Shared.Return(λ_kq); Shared.Return(α_kq); Shared.Return(exp_k); Shared.Return(exp_kq); */}
 
-        });
+        }//);
         #endregion
 
         if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
