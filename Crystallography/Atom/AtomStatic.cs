@@ -2621,9 +2621,9 @@ new ES(4.86738014,0.319974401,4.58872425,
                         f_kMinusG += A * Math.Exp(-kMinusG * B);
                         f_kPlusG += A * Math.Exp(-kPlusG * B);
                     }
-                    return f_kMinusG * f_kPlusG * 0.01 * (1 - Math.Exp(m * (gLen2 - kMinusG * 100 - kPlusG * 100))); ;// * sinTheta;//外に出して、少しでも早く
+                    return f_kMinusG * f_kPlusG * 0.01 * (1 - Math.Exp(m * (gLen2 - kMinusG * 100 - kPlusG * 100))); ;// * sinThetaを外に出して、少しでも早く
                 }, 0, 2 * Math.PI, 20) * sinθ;
-            }, inner, outer, 60);
+            }, inner, outer, 60) ;
         }
 
 
@@ -2642,7 +2642,7 @@ new ES(4.86738014,0.319974401,4.58872425,
             if (double.IsNaN(m)) m = 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
-            double g_h = (g - h).Length2 / 4;
+            var g_h = (g - h).Length2 / 4;
 
             return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
             {
@@ -2657,9 +2657,9 @@ new ES(4.86738014,0.319974401,4.58872425,
                         f_k_g += A * Math.Exp(-k_g * B);
                         f_k_h += A * Math.Exp(-k_h * B);
                     }
-                    return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));// * sinTheta;//外に出して、少しでも早く
+                    return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));// * sinThetaを外に出して、少しでも早く
                 }, 0, 2 * Math.PI, 20) * sinθ;
-            }, inner, outer, 60);
+            }, inner, outer, 60) ;
         }
 
         /// <summary>
