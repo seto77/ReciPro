@@ -146,9 +146,7 @@ public partial class FormImageSimulator : Form
     #region フィールド
     public FormMain FormMain;
     public FormDiffractionSpotInfo FormDiffractionSpotInfo;
-    readonly Stopwatch sw1 = new();
-    readonly Stopwatch sw2 = new();
-    readonly Stopwatch sw3 = new();
+    readonly Stopwatch sw1 = new(), sw2 = new(), sw3 = new(), sw4 = new();
     private static readonly double Pi2 = PI * PI;
 
     private ScalablePictureBox[,] pictureBoxes = new ScalablePictureBox[0, 0];
@@ -259,6 +257,7 @@ public partial class FormImageSimulator : Form
         else if (ImageMode == ImageModes.STEM)
             simulateSTEM();
 
+        
 
         toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
         Enabled = true;
@@ -271,6 +270,7 @@ public partial class FormImageSimulator : Form
     int stemDirectionTotal = 0;
     private void simulateSTEM(bool realtimeMode = false)
     {
+        sw1.Reset(); sw2.Reset(); sw3.Reset(); sw4.Reset();
         sw1.Restart();
         if (thicknessArray == null || defocusArray == null) return;
 
@@ -336,12 +336,25 @@ public partial class FormImageSimulator : Form
         if (skipProgressChangedEvent) return;
         skipProgressChangedEvent = true;
 
-        var current = e.ProgressPercentage;
-        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds;
-
+        double current = e.ProgressPercentage;
+        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds;
 
         var message = (string)e.UserState;
-        if (message.StartsWith("Calculating I(Q)", StringComparison.Ordinal))
+        if (message.StartsWith("Calculating I_inelastic(Q)", StringComparison.Ordinal))
+        {
+            if (sw3.IsRunning)
+            {
+                sw3.Stop();
+                sw4.Restart();
+            }
+            var sec = s4 / 1000.0;
+            var totalsec = sec + (s1 + s2 +s3) / 1000.0;
+            toolStripProgressBar1.Value = (int)(current / 1000.0 * toolStripProgressBar1.Maximum);
+            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 4: Calculating I_inelastic(Q).  ";
+            toolStripStatusLabel2.Text = $"{current /10.0:f1} % completed,  wait for more {sec * (1000.0 - current) / current:f1} s.";
+        }
+
+        else if (message.StartsWith("Calculating I_elastic(Q)", StringComparison.Ordinal))
         {
             if (sw2.IsRunning)
             {
@@ -351,7 +364,7 @@ public partial class FormImageSimulator : Form
             var sec = s3 / 1000.0;
             var totalsec = sec + (s1 + s2) / 1000.0;
             toolStripProgressBar1.Value = Math.Min((int)(current * 1.05 * 1.05), toolStripProgressBar1.Maximum);
-            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 3: Calculating I(Q).  ";
+            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 3: Calculating I_elastic(Q).  ";
             toolStripStatusLabel2.Text = $"{current * 1.05 * 1.05 * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal / 1.05 / 1.05 - current) / current:f1} s.";
             //* 1.05 * 1.05が出てくるのは、1.05倍の半頂角で計算しているから。
         }
@@ -371,7 +384,7 @@ public partial class FormImageSimulator : Form
         else
         {
             var sec = s1 / 1000.0;
-            toolStripProgressBar1.Value = Math.Min(current, toolStripProgressBar1.Maximum);
+            toolStripProgressBar1.Value = Math.Min((int)current, toolStripProgressBar1.Maximum);
             toolStripStatusLabel1.Text = $"Ellapsed time : {sec:f1} s.  Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
             toolStripStatusLabel2.Text = $"{current * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal - current) / current:f1} s.";
         }
@@ -383,14 +396,14 @@ public partial class FormImageSimulator : Form
     {
         FormMain.Crystal.Bethe.StemCompleted -= stemCompleted;
         FormMain.Crystal.Bethe.StemProgressChanged -= stemProgressChanged;
-        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds;
+        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4=sw4.ElapsedMilliseconds;
 
         if (!e.Cancelled)
         {
             SendImage(thicknessArray.Length, defocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
             toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
-            toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(s1 + s2 + s3) / 1000.0:f1} sec.";
-            toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} sec.  Stage 2: {s2 / 1000.0:f1} sec.  Stage 3: {s3 / 1000.0:f1} sec.";
+            toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(s1 + s2 + s3 + s4) / 1000.0:f1} sec.";
+            toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} sec.  Stage 2: {s2 / 1000.0:f1} sec.  Stage 3: {s3 / 1000.0:f1} sec.  Stage 4: {s4 / 1000.0:f1} sec.";
 
         }
         else
