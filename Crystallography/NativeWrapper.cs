@@ -591,7 +591,7 @@ public static partial class NativeWrapper
     /// <param name="val"></param>
     /// <param name="vec"></param>
     /// <param name="result"></param>
-    unsafe static public void GenerateTC(int dim, double thickness, double[] kg_z, in Complex[] val, in Complex[] vec, ref Complex[] result)
+    unsafe static public void GenerateTC(in int dim,in double thickness, double[] kg_z, in Complex[] val, in Complex[] vec, ref Complex[] result)
     {
         fixed (double* _kg_z = kg_z)
         fixed (Complex* _val = val, _vec = vec, _result = result)
@@ -606,7 +606,7 @@ public static partial class NativeWrapper
     /// <param name="sqMtx"></param>
     /// <param name="colVec"></param>
     /// <returns></returns>
-    unsafe static public Complex RowVec_SqMat_ColVec(int dim, Complex[] rowVec, Complex[] sqMtx, Complex[] colVec)
+    unsafe static public Complex RowVec_SqMat_ColVec(in int dim, Complex[] rowVec, Complex[] sqMtx, Complex[] colVec)
     {
         var result = new double[2];
         fixed (Complex* _rowVec = rowVec, _sqMtx = sqMtx, _colVec = colVec)

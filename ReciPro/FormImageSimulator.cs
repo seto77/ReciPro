@@ -257,7 +257,7 @@ public partial class FormImageSimulator : Form
         else if (ImageMode == ImageModes.STEM)
             simulateSTEM();
 
-        
+
 
         toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
         Enabled = true;
@@ -279,7 +279,7 @@ public partial class FormImageSimulator : Form
         var division = numericBoxDivisionOfIncidentElectron.ValueInteger;
         var sin = Sin(numericBoxSTEM_ConvergenceAngle.Value * 1.05 / 1000);// 収束角を1.05倍にしておく
 
-
+        #region 検証用コード
         //ゼロ次ラウエゾーンの基底ベクトルを整数分の1にしてみる
         //var kVac = UniversalConstants.Convert.EnergyToElectronWaveNumber(200);
 
@@ -287,7 +287,7 @@ public partial class FormImageSimulator : Form
         //   * 7.0009023190741639080089511108548 / 7;
         //sin = Sin(convergence);
         //division = 71;
-
+        #endregion
 
         var radius = division / 2.0;
         for (int h = 0; h < division; h++)
@@ -305,7 +305,7 @@ public partial class FormImageSimulator : Form
         toolStripProgressBar1.Maximum = stemDirectionTotal;
         FormMain.Crystal.Bethe.StemProgressChanged += stemProgressChanged;
         FormMain.Crystal.Bethe.StemCompleted += stemCompleted;
-        FormMain.Crystal.Bethe.RunSTEM(BlochNum, AccVol, Cs, ImageSize, ImageResolution, FormMain.Crystal.RotationMatrix,
+        FormMain.Crystal.Bethe.RunSTEM(BlochNum, AccVol, Cs, Delta, ImageSize, ImageResolution, FormMain.Crystal.RotationMatrix,
             thicknessArray, defocusArray, directions.ToArray(),
             numericBoxSTEM_ConvergenceAngle.Value / 1000,
             numericBoxSTEM_DetectorInnerAngle.Value / 1000,
@@ -348,9 +348,9 @@ public partial class FormImageSimulator : Form
             if (!sw4.IsRunning) sw4.Restart();
             var sec = s4 / 1000.0;
             var totalsec = sec + (s1 + s2 + s3) / 1000.0;
-            toolStripProgressBar1.Value = (int)(current / 1000.0 * toolStripProgressBar1.Maximum);
+            toolStripProgressBar1.Value = (int)(current / 1000000.0 * toolStripProgressBar1.Maximum);
             toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 4: Calculating I_inelastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current / 10.0:f1} % completed,  wait for more {sec * (1000.0 - current) / current:f1} s.";
+            toolStripStatusLabel2.Text = $"{current / 10000.0:f1} % completed,  wait for more {sec * (1000000.0 - current) / current:f1} s.";
         }
 
         else if (message.StartsWith("Calculating I_elastic(Q)", StringComparison.Ordinal))
@@ -390,7 +390,7 @@ public partial class FormImageSimulator : Form
     {
         FormMain.Crystal.Bethe.StemCompleted -= stemCompleted;
         FormMain.Crystal.Bethe.StemProgressChanged -= stemProgressChanged;
-        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4=sw4.ElapsedMilliseconds;
+        long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds;
 
         if (!e.Cancelled)
         {
@@ -551,7 +551,7 @@ public partial class FormImageSimulator : Form
 
         //全体でノーマライズ
         totalImage = Normalize(totalImage, checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
-        
+
         for (int t = 0; t < tLen; t++)
             for (var d = 0; d < dLen; d++)
             {
@@ -605,7 +605,7 @@ public partial class FormImageSimulator : Form
 
     public double[][][] Normalize(double[][][] image, bool normalizeLow = true)
     {
-        double min = image.Min(e1=>e1.Min(e2=>e2.Min())), max = image.Max(e1 => e1.Max(e2 => e2.Max()));
+        double min = image.Min(e1 => e1.Min(e2 => e2.Min())), max = image.Max(e1 => e1.Max(e2 => e2.Max()));
         double destMin = numericBoxIntensityMin.Value, destMax = numericBoxIntensityMax.Value;
 
         for (int i = 0; i < image.Length; i++)

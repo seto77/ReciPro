@@ -102,10 +102,12 @@ extern "C" {
 		auto val = (dcomplex*)_val;
 		dcomplex exp_kgz[dim];
 		dcomplex exp_val[dim];
+		auto tmp = two_pi_i * thickness;
 		for (int i = 0; i < dim; i++) {
-			exp_kgz[i] = exp(two_pi_i * kg_z[i] * thickness);
-			exp_val[i] = exp(two_pi_i * val[i] * thickness);
+			exp_kgz[i] = exp(tmp * kg_z[i]);
+			exp_val[i] = exp(tmp * val[i]);
 		}
+		
 		auto v1 = Map<Vec>(exp_kgz, dim);
 		auto v2 = Map<Vec>(exp_val, dim);
 		auto m = Map<Mat>((dcomplex*)_vec, dim, dim);
