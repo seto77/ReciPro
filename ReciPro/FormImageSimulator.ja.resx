@@ -428,10 +428,13 @@
     <value>加速電圧</value>
   </data>
   <data name="numericBoxAccVol.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 0, 0</value>
+    <value>3, 1, 0, 0</value>
   </data>
-  <data name="numericBoxAccVol.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 1, 0</value>
+  <data name="numericBoxAccVol.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxAccVol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 27</value>
   </data>
   <data name="numericBoxDefocus.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -440,16 +443,19 @@
     <value>デフォーカス Δf</value>
   </data>
   <data name="numericBoxDefocus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 23</value>
+    <value>139, 22</value>
   </data>
-  <data name="numericBoxDefocus.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 1, 0</value>
+  <data name="numericBoxDefocus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 1, 0, 0</value>
   </data>
   <data name="numericBoxDefocus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 27</value>
+    <value>180, 25</value>
+  </data>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>331, 18</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 32</value>
+    <value>122, 32</value>
   </data>
   <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
     <value />
@@ -470,14 +476,11 @@
   <data name="textBoxScherzer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
   </data>
-  <data name="textBoxScherzer.Text" xml:space="preserve">
-    <value>-40.9</value>
-  </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 8</value>
+    <value>102, 8</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 8, 0, 0</value>
@@ -572,11 +575,8 @@
   <data name="numericBoxObjAperX.Location" type="System.Drawing.Point, System.Drawing">
     <value>254, 18</value>
   </data>
-  <data name="numericBoxObjAperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
   <data name="numericBoxObjAperX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 25</value>
+    <value>107, 27</value>
   </data>
   <data name="numericBoxObjAperX.ToolTip" xml:space="preserve">
     <value />
@@ -1075,7 +1075,7 @@
     <value />
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 250</value>
+    <value>310, 250</value>
   </data>
   <data name="tabPage2.ToolTip" xml:space="preserve">
     <value />
@@ -1084,7 +1084,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 250</value>
+    <value>310, 250</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>ポテンシャルオプション</value>
@@ -1237,7 +1237,7 @@
     <value />
   </data>
   <data name="tabPageSTEM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 250</value>
+    <value>310, 250</value>
   </data>
   <data name="tabPageSTEM.ToolTip" xml:space="preserve">
     <value />
@@ -1249,7 +1249,7 @@
     <value>0, 49</value>
   </data>
   <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 44</value>
+    <value>310, 44</value>
   </data>
   <data name="groupBox10.Text" xml:space="preserve">
     <value>計算対象</value>
@@ -1300,7 +1300,7 @@
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 49</value>
+    <value>310, 49</value>
   </data>
   <data name="groupBox9.Text" xml:space="preserve">
     <value>入射電子の方位分割</value>
@@ -1332,11 +1332,11 @@
   <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
     <value>リアルタイム計算(HRTEMのみ)</value>
   </data>
-  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
-    <value>画像を保存</value>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1114, 24</value>
   </data>
-  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像をコピー</value>
+  <data name="menuStrip1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 20</value>
@@ -1344,17 +1344,17 @@
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>ファイル</value>
   </data>
+  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
+    <value>画像を保存</value>
+  </data>
+  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像をコピー</value>
+  </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 20</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>ヘルプ</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 24</value>
-  </data>
-  <data name="menuStrip1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
     <value>1018, 870</value>

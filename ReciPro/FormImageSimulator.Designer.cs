@@ -881,12 +881,14 @@ namespace ReciPro
             numericBoxDefocus.Maximum = 1000D;
             numericBoxDefocus.Minimum = -1000D;
             numericBoxDefocus.Name = "numericBoxDefocus";
+            numericBoxDefocus.RadianValue = -0.71383966406568078D;
             numericBoxDefocus.RoundErrorAccuracy = -1;
             numericBoxDefocus.ShowUpDown = true;
             numericBoxDefocus.SmartIncrement = true;
             numericBoxDefocus.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxDefocus.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
+            numericBoxDefocus.Value = -40.9D;
             numericBoxDefocus.ValueChanged += NumericBoxDefocus_ValueChanged;
             // 
             // flowLayoutPanel3
