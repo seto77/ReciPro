@@ -264,8 +264,6 @@ public partial class FormImageSimulator : Form
         Enabled = true;
     }
 
-
-
     #region STEMシミュレーション
 
     int stemDirectionTotal = 0;
@@ -306,8 +304,19 @@ public partial class FormImageSimulator : Form
         toolStripProgressBar1.Maximum = stemDirectionTotal;
         FormMain.Crystal.Bethe.StemProgressChanged += stemProgressChanged;
         FormMain.Crystal.Bethe.StemCompleted += stemCompleted;
-        FormMain.Crystal.Bethe.RunSTEM(BlochNum, AccVol, Cs, Delta, SliceThicknessForInelastic, ImageSize, ImageResolution, FormMain.Crystal.RotationMatrix,
-            thicknessArray, defocusArray, directions.ToArray(),
+
+        FormMain.Crystal.Bethe.RunSTEM(
+            BlochNum, 
+            AccVol, 
+            Cs, 
+            Delta, 
+            SliceThicknessForInelastic, 
+            ImageSize, 
+            ImageResolution, 
+            FormMain.Crystal.RotationMatrix,
+            thicknessArray, 
+            defocusArray, 
+            directions.ToArray(),
             numericBoxSTEM_ConvergenceAngle.Value / 1000,
             numericBoxSTEM_DetectorInnerAngle.Value / 1000,
             numericBoxSTEM_DetectorOuterAngle.Value / 1000,
