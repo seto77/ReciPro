@@ -2,11 +2,11 @@
 
 internal static class Version
 {
-    static public string Software =
-       "ReciPro"
-       ;
+    static public string Software = "ReciPro";
+    static public string Author = "Y. Seto && M. Ohtsuka";
 
     static public string VersionAndDate => History.Remove(0, 10).Remove(20);
+
 
     static public string History =
         "History" +

@@ -221,6 +221,7 @@ public partial class FormMain : Form
             DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Initialize,
             Software = Version.Software,
             VersionAndDate = Version.VersionAndDate,
+            Author=Version.Author,
             History = Version.History,
             Hint = Version.Hint,
         };

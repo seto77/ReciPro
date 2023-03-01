@@ -70,8 +70,11 @@
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>302, 0</value>
   </data>
-  <data name="labelCopyRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 17</value>
+  <data name="labelCopyRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 17</value>
+  </data>
+  <data name="labelCopyRight.Text" xml:space="preserve">
+    <value>Copyright (C) 2005-20## </value>
   </data>
   <data name="checkBoxCloseWindow.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -85,11 +88,35 @@
   <data name="checkBoxCloseWindow.Text" xml:space="preserve">
     <value>起動後にこのウィンドウを自動で閉じる</value>
   </data>
-  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 17</value>
-  </data>
   <data name="flowLayoutPanelSoftwareInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>378, 34</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelAuthor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelAuthor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelAuthor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelAuthor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="labelAuthor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 17</value>
+  </data>
+  <data name="labelAuthor.Text" xml:space="preserve">
+    <value>Yusuke Seto</value>
+  </data>
+  <data name="labelAuthor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 17</value>
   </data>
   <data name="panelOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 296</value>

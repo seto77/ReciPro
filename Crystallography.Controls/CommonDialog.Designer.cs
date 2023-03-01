@@ -29,116 +29,122 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommonDialog));
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.textBox = new System.Windows.Forms.TextBox();
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.labelSoftwareAndVersion = new System.Windows.Forms.Label();
-            this.labelCopyRight = new System.Windows.Forms.Label();
-            this.buttonNext = new System.Windows.Forms.Button();
-            this.checkBoxCloseWindow = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanelSoftwareInformation = new System.Windows.Forms.FlowLayoutPanel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.panelOK = new System.Windows.Forms.Panel();
-            this.flowLayoutPanelSoftwareInformation.SuspendLayout();
-            this.panelOK.SuspendLayout();
-            this.SuspendLayout();
+            progressBar = new System.Windows.Forms.ProgressBar();
+            textBox = new System.Windows.Forms.TextBox();
+            buttonOK = new System.Windows.Forms.Button();
+            labelSoftwareAndVersion = new System.Windows.Forms.Label();
+            labelCopyRight = new System.Windows.Forms.Label();
+            buttonNext = new System.Windows.Forms.Button();
+            checkBoxCloseWindow = new System.Windows.Forms.CheckBox();
+            flowLayoutPanelSoftwareInformation = new System.Windows.Forms.FlowLayoutPanel();
+            labelAuthor = new System.Windows.Forms.Label();
+            linkLabel1 = new System.Windows.Forms.LinkLabel();
+            panelOK = new System.Windows.Forms.Panel();
+            flowLayoutPanelSoftwareInformation.SuspendLayout();
+            panelOK.SuspendLayout();
+            SuspendLayout();
             // 
             // progressBar
             // 
-            resources.ApplyResources(this.progressBar, "progressBar");
-            this.progressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.progressBar.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.progressBar.ForeColor = System.Drawing.Color.Silver;
-            this.progressBar.MarqueeAnimationSpeed = 1;
-            this.progressBar.Maximum = 1000000;
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.Value = 50000;
+            progressBar.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            progressBar.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            resources.ApplyResources(progressBar, "progressBar");
+            progressBar.ForeColor = System.Drawing.Color.Silver;
+            progressBar.MarqueeAnimationSpeed = 1;
+            progressBar.Maximum = 1000000;
+            progressBar.Name = "progressBar";
+            progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            progressBar.Value = 50000;
             // 
             // textBox
             // 
-            resources.ApplyResources(this.textBox, "textBox");
-            this.textBox.BackColor = System.Drawing.Color.AliceBlue;
-            this.textBox.ForeColor = System.Drawing.Color.DarkBlue;
-            this.textBox.Name = "textBox";
-            this.textBox.ReadOnly = true;
+            textBox.BackColor = System.Drawing.Color.AliceBlue;
+            resources.ApplyResources(textBox, "textBox");
+            textBox.ForeColor = System.Drawing.Color.DarkBlue;
+            textBox.Name = "textBox";
+            textBox.ReadOnly = true;
             // 
             // buttonOK
             // 
-            resources.ApplyResources(this.buttonOK, "buttonOK");
-            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            resources.ApplyResources(buttonOK, "buttonOK");
+            buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            buttonOK.Name = "buttonOK";
+            buttonOK.UseVisualStyleBackColor = true;
+            buttonOK.Click += buttonOK_Click;
             // 
             // labelSoftwareAndVersion
             // 
-            resources.ApplyResources(this.labelSoftwareAndVersion, "labelSoftwareAndVersion");
-            this.labelSoftwareAndVersion.Name = "labelSoftwareAndVersion";
+            resources.ApplyResources(labelSoftwareAndVersion, "labelSoftwareAndVersion");
+            labelSoftwareAndVersion.Name = "labelSoftwareAndVersion";
             // 
             // labelCopyRight
             // 
-            resources.ApplyResources(this.labelCopyRight, "labelCopyRight");
-            this.labelCopyRight.Name = "labelCopyRight";
+            resources.ApplyResources(labelCopyRight, "labelCopyRight");
+            labelCopyRight.Name = "labelCopyRight";
             // 
             // buttonNext
             // 
-            resources.ApplyResources(this.buttonNext, "buttonNext");
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.UseVisualStyleBackColor = true;
-            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+            resources.ApplyResources(buttonNext, "buttonNext");
+            buttonNext.Name = "buttonNext";
+            buttonNext.UseVisualStyleBackColor = true;
+            buttonNext.Click += buttonNext_Click;
             // 
             // checkBoxCloseWindow
             // 
-            resources.ApplyResources(this.checkBoxCloseWindow, "checkBoxCloseWindow");
-            this.checkBoxCloseWindow.Checked = true;
-            this.checkBoxCloseWindow.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCloseWindow.Name = "checkBoxCloseWindow";
-            this.checkBoxCloseWindow.UseVisualStyleBackColor = true;
-            this.checkBoxCloseWindow.CheckedChanged += new System.EventHandler(this.checkBoxCloseWindow_CheckedChanged);
+            resources.ApplyResources(checkBoxCloseWindow, "checkBoxCloseWindow");
+            checkBoxCloseWindow.Checked = true;
+            checkBoxCloseWindow.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxCloseWindow.Name = "checkBoxCloseWindow";
+            checkBoxCloseWindow.UseVisualStyleBackColor = true;
+            checkBoxCloseWindow.CheckedChanged += checkBoxCloseWindow_CheckedChanged;
             // 
             // flowLayoutPanelSoftwareInformation
             // 
-            resources.ApplyResources(this.flowLayoutPanelSoftwareInformation, "flowLayoutPanelSoftwareInformation");
-            this.flowLayoutPanelSoftwareInformation.Controls.Add(this.labelSoftwareAndVersion);
-            this.flowLayoutPanelSoftwareInformation.Controls.Add(this.labelCopyRight);
-            this.flowLayoutPanelSoftwareInformation.Controls.Add(this.linkLabel1);
-            this.flowLayoutPanelSoftwareInformation.Name = "flowLayoutPanelSoftwareInformation";
+            resources.ApplyResources(flowLayoutPanelSoftwareInformation, "flowLayoutPanelSoftwareInformation");
+            flowLayoutPanelSoftwareInformation.Controls.Add(labelSoftwareAndVersion);
+            flowLayoutPanelSoftwareInformation.Controls.Add(labelCopyRight);
+            flowLayoutPanelSoftwareInformation.Controls.Add(labelAuthor);
+            flowLayoutPanelSoftwareInformation.Controls.Add(linkLabel1);
+            flowLayoutPanelSoftwareInformation.Name = "flowLayoutPanelSoftwareInformation";
+            // 
+            // labelAuthor
+            // 
+            resources.ApplyResources(labelAuthor, "labelAuthor");
+            labelAuthor.Name = "labelAuthor";
             // 
             // linkLabel1
             // 
-            resources.ApplyResources(this.linkLabel1, "linkLabel1");
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.TabStop = true;
+            resources.ApplyResources(linkLabel1, "linkLabel1");
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.TabStop = true;
             // 
             // panelOK
             // 
-            resources.ApplyResources(this.panelOK, "panelOK");
-            this.panelOK.Controls.Add(this.checkBoxCloseWindow);
-            this.panelOK.Controls.Add(this.buttonOK);
-            this.panelOK.Controls.Add(this.buttonNext);
-            this.panelOK.Name = "panelOK";
+            panelOK.Controls.Add(checkBoxCloseWindow);
+            panelOK.Controls.Add(buttonOK);
+            panelOK.Controls.Add(buttonNext);
+            resources.ApplyResources(panelOK, "panelOK");
+            panelOK.Name = "panelOK";
             // 
             // CommonDialog
             // 
-            this.AcceptButton = this.buttonOK;
+            AcceptButton = buttonOK;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.textBox);
-            this.Controls.Add(this.flowLayoutPanelSoftwareInformation);
-            this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.panelOK);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "CommonDialog";
-            this.ShowIcon = false;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CommonDialog_FormClosing);
-            this.flowLayoutPanelSoftwareInformation.ResumeLayout(false);
-            this.flowLayoutPanelSoftwareInformation.PerformLayout();
-            this.panelOK.ResumeLayout(false);
-            this.panelOK.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            Controls.Add(textBox);
+            Controls.Add(flowLayoutPanelSoftwareInformation);
+            Controls.Add(progressBar);
+            Controls.Add(panelOK);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            Name = "CommonDialog";
+            ShowIcon = false;
+            FormClosing += CommonDialog_FormClosing;
+            flowLayoutPanelSoftwareInformation.ResumeLayout(false);
+            flowLayoutPanelSoftwareInformation.PerformLayout();
+            panelOK.ResumeLayout(false);
+            panelOK.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -153,5 +159,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSoftwareInformation;
         private System.Windows.Forms.Panel panelOK;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label labelAuthor;
     }
 }

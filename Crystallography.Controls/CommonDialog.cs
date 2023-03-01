@@ -91,8 +91,13 @@ namespace Crystallography.Controls
                 labelSoftwareAndVersion.Text = software + "  " + versionAndDate;
 
                 var year = versionAndDate.Split(new[] { '/', '(' }, StringSplitOptions.RemoveEmptyEntries)[1];
-                labelCopyRight.Text = "Copyright(C) 2005-" + year + "   Yusuke Seto";
+                labelCopyRight.Text = "Copyright(C) 2005-" + year;
             }
+        }
+        public string Author
+        {
+            get => labelAuthor.Text;
+            set => labelAuthor.Text = value;
         }
 
         public string History { get; set; } = "";
