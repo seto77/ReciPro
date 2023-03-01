@@ -47,7 +47,11 @@ const std::complex<double> two_pi_i = complex<double>(0, 2 * 3.14159265358979323
 //const size_t sizeComplex = sizeof(complex<double>);
 
 #define Mat MatrixXcd
+//縦ベクトル
 #define Vec VectorXcd
+//横ベクトル
+#define VecR RowVectorXcd
+
 
 extern "C" {
 	//行列c0~c3をr0~r3の割合でブレンドする
@@ -91,6 +95,32 @@ extern "C" {
 		Map<Mat>((dcomplex*)result, dim, dim).noalias() = _mat1.adjoint() * _mat2 * _mat3;
 	}
 
+	//STEM用の特殊関数. 透過係数を求める
+	EIGEN_FUNCS_API void _GenerateTC(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double result[])
+	{
+		auto kg_z = (double*)_kg_z;
+		auto val = (dcomplex*)_val;
+		dcomplex exp_kgz[dim];
+		dcomplex exp_val[dim];
+		for (int i = 0; i < dim; i++) {
+			exp_kgz[i] = exp(two_pi_i * kg_z[i] * thickness);
+			exp_val[i] = exp(two_pi_i * val[i] * thickness);
+		}
+		auto v1 = Map<Vec>(exp_kgz, dim);
+		auto v2 = Map<Vec>(exp_val, dim);
+		auto m = Map<Mat>((dcomplex*)_vec, dim, dim);
+		Map<Vec>((dcomplex*)result, dim).noalias() = v1.asDiagonal() * m * v2;
+	}
+
+	//横ベクトル×正方行列×縦ベクトルの掛算. STEMの非弾性散乱を求めるときに使用
+	EIGEN_FUNCS_API void _RowVec_SqMat_ColVec(int dim, double rowVec[],  double sqMat[], double colVec[], double _result[])
+	{
+		auto rV = Map<VecR>((dcomplex*)rowVec, dim);
+		auto m = Map<Mat>((dcomplex*)sqMat, dim, dim);
+		auto cV = Map<Vec>((dcomplex*)colVec, dim);
+		Map<Mat>((dcomplex*)_result, 1, 1).noalias() = rV * m * cV;
+	}
+
 	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る
 	EIGEN_FUNCS_API void _PointwiseMultiply(int dim, double mat1[], double mat2[], double result[])
 	{
@@ -129,6 +159,14 @@ extern "C" {
 		auto m = Map<Mat>((dcomplex*)mat, dim, dim);
 		auto v = Map<Vec>((dcomplex*)vec, dim);
 		Map<Vec>((dcomplex*)result, dim).noalias() = m * v;
+	}
+
+	//複素ベクトル同士の乗算を求める
+	EIGEN_FUNCS_API void _MultiplyVV(int dim, double vec1[], double vec2[], double result[])
+	{
+		auto v1 = Map<VecR>((dcomplex*)vec1, dim);
+		auto v2 = Map<Vec>((dcomplex*)vec2, dim);
+		Map<Mat>((dcomplex*)result, 1, 1).noalias() = v1 * v2;
 	}
 
 	//複素数と複素ベクトルの乗算を求める

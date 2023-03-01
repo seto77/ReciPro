@@ -342,25 +342,22 @@ public partial class FormImageSimulator : Form
         var message = (string)e.UserState;
         if (message.StartsWith("Calculating I_inelastic(Q)", StringComparison.Ordinal))
         {
-            if (sw3.IsRunning)
-            {
-                sw3.Stop();
-                sw4.Restart();
-            }
+            if (sw1.IsRunning) sw1.Stop();
+            if (sw2.IsRunning) sw2.Stop();
+            if (sw3.IsRunning) sw3.Stop();
+            if (!sw4.IsRunning) sw4.Restart();
             var sec = s4 / 1000.0;
-            var totalsec = sec + (s1 + s2 +s3) / 1000.0;
+            var totalsec = sec + (s1 + s2 + s3) / 1000.0;
             toolStripProgressBar1.Value = (int)(current / 1000.0 * toolStripProgressBar1.Maximum);
             toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 4: Calculating I_inelastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current /10.0:f1} % completed,  wait for more {sec * (1000.0 - current) / current:f1} s.";
+            toolStripStatusLabel2.Text = $"{current / 10.0:f1} % completed,  wait for more {sec * (1000.0 - current) / current:f1} s.";
         }
 
         else if (message.StartsWith("Calculating I_elastic(Q)", StringComparison.Ordinal))
         {
-            if (sw2.IsRunning)
-            {
-                sw2.Stop();
-                sw3.Restart();
-            }
+            if (sw1.IsRunning) sw1.Stop();
+            if (sw2.IsRunning) sw2.Stop();
+            if (!sw3.IsRunning) sw3.Restart();
             var sec = s3 / 1000.0;
             var totalsec = sec + (s1 + s2) / 1000.0;
             toolStripProgressBar1.Value = Math.Min((int)(current * 1.05 * 1.05), toolStripProgressBar1.Maximum);
@@ -370,11 +367,8 @@ public partial class FormImageSimulator : Form
         }
         else if (message.StartsWith("Calculating U", StringComparison.Ordinal))
         {
-            if (sw1.IsRunning)
-            {
-                sw1.Stop();
-                sw2.Restart();
-            }
+            if (sw1.IsRunning) sw1.Stop();
+            if (!sw2.IsRunning) sw2.Restart();
             var sec = s2 / 1000.0;
             var totalsec = sec + s1 / 1000.0;
             toolStripProgressBar1.Value = (int)(current / 1000.0 * toolStripProgressBar1.Maximum);

@@ -21,6 +21,7 @@ extern "C" {
 	
 	EIGEN_FUNCS_API void _MultiplyMM(int dim, double mat1[], double mat2[], double result[]);
 	EIGEN_FUNCS_API void _MultiplyMV(int dim, double mat[], double vec[], double result[]);
+	EIGEN_FUNCS_API void _MultiplyVV(int dim, double vec1[], double vec2[], double result[]);
 	EIGEN_FUNCS_API void _MultiplySV(int dim, double real, double imag, double vec[], double result[]);
 
 	EIGEN_FUNCS_API void _DivideVV(int dim, double vec1[], double vec2[], double result[]);
@@ -39,5 +40,9 @@ extern "C" {
 	EIGEN_FUNCS_API void _CBEDSolver_MatExp(int gDim, double _potential[], double _phi0[], int tDim, double tStart, double tStep, double result[]);
 
 	EIGEN_FUNCS_API void _PartialPivLuSolve(int dim, double mat[], double vec[], double result[]);
+
+	EIGEN_FUNCS_API void _GenerateTC(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double result[]);
+	EIGEN_FUNCS_API void _RowVec_SqMat_ColVec(int dim, double rowVec[], double sqMat[], double colVec[], double _result[]);
+
 
 } // extern "C"
