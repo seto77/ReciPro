@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -90,6 +91,8 @@ public partial class FormImageSimulator : Form
     /// </summary>
     public double Scherzer => Cs > 0 ? -Sqrt(4.0 / 3.0 * Cs * Rambda) : Sqrt(4.0 / 3.0 * -Cs * Rambda);
 
+    public double SliceThicknessForInelastic => numericBoxSliceThicknessForInelasticSTEM.Value;
+
     /// <summary>
     /// イメージの解像度 (nm/pix)
     /// </summary>
@@ -176,8 +179,6 @@ public partial class FormImageSimulator : Form
 
     private void FormImageSimulator_Load(object sender, EventArgs e)
     {
-        tabControl1.ItemSize = new Size(1, 1);
-        tabControl2.ItemSize = new Size(1, 1);
         toolStripComboBoxCaclulationLibrary.SelectedIndex = 0;
 
         var width = pictureBoxPhaseScale.ClientRectangle.Width;
@@ -305,7 +306,7 @@ public partial class FormImageSimulator : Form
         toolStripProgressBar1.Maximum = stemDirectionTotal;
         FormMain.Crystal.Bethe.StemProgressChanged += stemProgressChanged;
         FormMain.Crystal.Bethe.StemCompleted += stemCompleted;
-        FormMain.Crystal.Bethe.RunSTEM(BlochNum, AccVol, Cs, Delta, ImageSize, ImageResolution, FormMain.Crystal.RotationMatrix,
+        FormMain.Crystal.Bethe.RunSTEM(BlochNum, AccVol, Cs, Delta, SliceThicknessForInelastic, ImageSize, ImageResolution, FormMain.Crystal.RotationMatrix,
             thicknessArray, defocusArray, directions.ToArray(),
             numericBoxSTEM_ConvergenceAngle.Value / 1000,
             numericBoxSTEM_DetectorInnerAngle.Value / 1000,
@@ -970,43 +971,45 @@ public partial class FormImageSimulator : Form
     {
         if (ImageMode == ImageModes.HRTEM)
         {
-            groupBoxInherentProperty.Enabled = groupBoxLensFunction.Enabled = groupBoxObjectAperture.Enabled = true;
+            groupBoxInherentProperty.Enabled = true;
             groupBoxSampleProperty.Enabled = true;
             numericBoxDefocus.Enabled = true;
-            tabControl1.SelectedIndex = 0;
-            tabControl2.SelectedIndex = 0;
             numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
 
-            tabPageHREM.Controls.Add(groupBoxSerialImage);
-            groupBoxSerialImage.BringToFront();
-            groupBoxSerialImage.Dock = DockStyle.Fill;
+            groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = true;
+            groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = false;
+            groupBoxPotentialOption.Visible = false;
+            groupBoxSerialImage.Visible = true;
+            panelLenz.Visible = true;
+        }
+        else if (ImageMode == ImageModes.STEM)
+        {
+            groupBoxInherentProperty.Enabled = true;
+            groupBoxSampleProperty.Enabled = true;
+            numericBoxDefocus.Enabled = true;
+            numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
+
+            groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = false;
+            groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = true;
+            groupBoxPotentialOption.Visible = false;
+            groupBoxSerialImage.Visible = true;
+            panelLenz.Visible = true;
         }
         else if (ImageMode == ImageModes.POTENTIAL)
         {
-            groupBoxInherentProperty.Enabled = groupBoxLensFunction.Enabled = groupBoxObjectAperture.Enabled = false;
+            groupBoxInherentProperty.Enabled = false;
             groupBoxSampleProperty.Enabled = false;
             numericBoxDefocus.Enabled = false;
             numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = false;
 
-
-            tabControl2.SelectedIndex = 1;
-        }
-        else if (ImageMode == ImageModes.STEM)
-        {
-            groupBoxInherentProperty.Enabled = groupBoxLensFunction.Enabled = groupBoxObjectAperture.Enabled = true;
-            groupBoxSampleProperty.Enabled = true;
-            numericBoxDefocus.Enabled = true;
-            numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
-            tabControl1.SelectedIndex = 1;
-            tabControl2.SelectedIndex = 2;
-
-            tabPageSTEM.Controls.Add(groupBoxSerialImage);
-            groupBoxSerialImage.BringToFront();
-            groupBoxSerialImage.Dock = DockStyle.Fill;
+            groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = false;
+            groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = false;
+            groupBoxPotentialOption.Visible = true;
+            groupBoxSerialImage.Visible = false;
+            panelLenz.Visible = false;
 
         }
 
-        tabControl2.SelectedIndex = ImageMode switch { ImageModes.HRTEM => 0, ImageModes.POTENTIAL => 1, _ => 2 };
     }
 
     private void ButtonPanel_Click(object sender, EventArgs e)
@@ -1309,4 +1312,8 @@ public partial class FormImageSimulator : Form
     }
     #endregion 画像の輝度、カラースケール、ガウシアンぼかし
 
+    private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
 }

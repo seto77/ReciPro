@@ -779,7 +779,7 @@ public class BetheMethod
         if (bwSTEM.IsBusy)
             bwSTEM.CancelAsync();
     }
-    public void RunSTEM(int maxNumOfBloch, double voltage, double cs, double delta, Size imageSize, double resolution,
+    public void RunSTEM(int maxNumOfBloch, double voltage, double cs, double delta, double sliceThickness, Size imageSize, double resolution,
         Matrix3D baseRotation, double[] thicknesses, double[] defocusses,
         Vector3DBase[] beamDirections, double convergenceAngle, double detAngleInner, double detAngleOuter,
         bool calcElas, bool calcInel, Solver solver = Solver.Auto, int thread = 1)
@@ -793,13 +793,13 @@ public class BetheMethod
         BeamDirections = beamDirections;
         Thicknesses = thicknesses;
         if(!bwSTEM.IsBusy) 
-            bwSTEM.RunWorkerAsync((solver, thread, cs, delta, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, calcElas, calcInel));
+            bwSTEM.RunWorkerAsync((solver, thread, cs, delta, sliceThickness, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, calcElas, calcInel));
     }
     public void stem_DoWork(object sender, DoWorkEventArgs e)
     {
         //MathNetの行列の内部は、1列目の要素、2列目の要素、という順番で格納されている
-        var (solver, thread, cs, delta, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, calcElas, calcInel)
-            = ((Solver, int, double, double, double, double, double, double[], double[], Size, double, bool, bool))e.Argument;
+        var (solver, thread, cs, delta, sliceThickness, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, calcElas, calcInel)
+            = ((Solver, int, double, double, double, double, double, double, double[], double[], Size, double, bool, bool))e.Argument;
 
         var diameterPix = (int)Math.Sqrt(BeamDirections.Length);
         var radiusPix = diameterPix / 2.0;
@@ -1049,7 +1049,7 @@ public class BetheMethod
         if (calcInel)
         {
             #region 各厚みを、0.1nm 程度で切り分ける
-            double _tStep = 0.5;
+            double _tStep = sliceThickness;
             var _thick = new List<double>[Thicknesses.Length];
             var tStep=new double[Thicknesses.Length];
             for (int t = 0; t < Thicknesses.Length; t++)
