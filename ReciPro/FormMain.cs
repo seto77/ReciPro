@@ -221,7 +221,7 @@ public partial class FormMain : Form
             DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Initialize,
             Software = Version.Software,
             VersionAndDate = Version.VersionAndDate,
-            Author=Version.Author,
+            Author = Version.Author,
             History = Version.History,
             Hint = Version.Hint,
         };
@@ -282,13 +282,13 @@ public partial class FormMain : Form
             buttonReset.BringToFront();
 
             labelCurrentIndex.Dock = DockStyle.Top;
-            numericBoxMaxUVW.Dock= DockStyle.Top;
+            numericBoxMaxUVW.Dock = DockStyle.Top;
             buttonReset.Dock = DockStyle.Top;
             labelCurrentIndex.BackColor = groupBoxCurrentDirection.BackColor;
             groupBoxCurrentDirection.AutoSize = true;
         }
 
-        
+
 
         commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.", 0.15);
         FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };
@@ -376,12 +376,12 @@ public partial class FormMain : Form
         commonDialog.Progress = ("Now Loading...Reading registries again.", 0.98);
         ReadInitialRegistry();
 
-        
+
         Text = "ReciPro  " + Version.VersionAndDate;
         if (glControlAxes == null)
             Text += "  (3D rendering disable mode)";
 
-            commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
+        commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
         if (commonDialog.AutomaticallyClose)
             commonDialog.Visible = false;
 
@@ -1524,7 +1524,7 @@ public partial class FormMain : Form
         {
             double aZ = (Crystal.RotationMatrix * Crystal.A_Axis).Z, bZ = (Crystal.RotationMatrix * Crystal.B_Axis).Z, cZ = (Crystal.RotationMatrix * Crystal.C_Axis).Z;
             var (U, V, W, _) = uvwIndices.MaxBy(e => (e.U * aZ + e.V * bZ + e.W * cZ) / e.Length);
-            
+
             CurrentZoneAxis = $"[{U} {V} {W}]";
             labelCurrentIndex.Text = CurrentZoneAxis;
         }
@@ -1566,5 +1566,5 @@ public partial class FormMain : Form
 
     #endregion
 
-  
+
 }
