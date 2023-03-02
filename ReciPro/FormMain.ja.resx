@@ -488,7 +488,7 @@
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 367</value>
+    <value>0, 370</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 126</value>
@@ -650,7 +650,7 @@
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 224</value>
+    <value>0, 227</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 143</value>
@@ -701,7 +701,10 @@
     <value>2, 104</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 22</value>
+    <value>74, 22</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>オイラー角</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
     <value />
@@ -814,11 +817,23 @@
   <data name="groupBoxCurrentDirection.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
+  <data name="groupBoxCurrentDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 20</value>
+  </data>
   <data name="groupBoxCurrentDirection.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 207</value>
   </data>
   <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
     <value>現在の結晶方位</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 20</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>回転状態表示/制御</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
     <value />
@@ -1339,7 +1354,7 @@ v2</value>
     <value>120, 6</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 600</value>
+    <value>121, 564</value>
   </data>
   <data name="toolStrip1.ToolTip" xml:space="preserve">
     <value />

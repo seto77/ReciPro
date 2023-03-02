@@ -959,17 +959,22 @@ public partial class FormImageSimulator : Form
     #endregion
 
     #region チェックボックス On/Offやボタン押下イベントに伴うパネル類のEnabled, visible設定
-    private void RadioButtonSingleMode_CheckedChanged(object sender, EventArgs e)
-    {
-        panelSerial.Enabled = radioButtonSerialMode.Checked;
-        groupBoxSampleProperty.Enabled = !radioButtonSerialMode.Checked;
-    }
 
+    /// <summary>
+    /// 連続画像モード関連のチェックボックス
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void CheckBoxSerialDefocus_CheckedChanged(object sender, EventArgs e)
     {
+        panelSerial.Enabled = radioButtonSerialMode.Checked;
+
         panelSerialThickness.Enabled = checkBoxSerialThickness.Checked;
         panelSerialDefocus.Enabled = checkBoxSerialDefocus.Checked;
         flowLayoutPanelHorizontalDirection.Enabled = checkBoxSerialThickness.Checked && checkBoxSerialDefocus.Checked;
+
+        groupBoxSampleProperty.Enabled = !(radioButtonSerialMode.Checked && checkBoxSerialThickness.Checked);
+        numericBoxDefocus.Enabled = !(radioButtonSerialMode.Checked && checkBoxSerialDefocus.Checked);
     }
 
     private void CheckBoxShowLabel_CheckedChanged(object sender, EventArgs e)

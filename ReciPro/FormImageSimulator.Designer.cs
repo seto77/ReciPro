@@ -888,7 +888,7 @@ namespace ReciPro
             radioButtonSingleMode.TabStop = true;
             toolTip.SetToolTip(radioButtonSingleMode, resources.GetString("radioButtonSingleMode.ToolTip"));
             radioButtonSingleMode.UseVisualStyleBackColor = true;
-            radioButtonSingleMode.CheckedChanged += RadioButtonSingleMode_CheckedChanged;
+            radioButtonSingleMode.CheckedChanged += CheckBoxSerialDefocus_CheckedChanged;
             // 
             // radioButtonSerialMode
             // 
