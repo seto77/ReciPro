@@ -363,9 +363,6 @@ public static partial class NativeWrapper
         fixed (double* res = result)
             _SubtractVV(dim, p1, p2, res);
     }
-
-
-
     unsafe static public void Divide(int dim, in Complex[] v1, in Complex[] v2, ref Complex[] result)
     {
         fixed (Complex* p1 = v1)
