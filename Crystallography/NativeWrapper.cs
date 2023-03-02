@@ -591,7 +591,7 @@ public static partial class NativeWrapper
     /// <param name="val"></param>
     /// <param name="vec"></param>
     /// <param name="result"></param>
-    unsafe static public void GenerateTC(in int dim,in double thickness, double[] kg_z, in Complex[] val, in Complex[] vec, ref Complex[] result)
+    unsafe static public void GenerateTC(in int dim,in double thickness, in double[] kg_z, in Complex[] val, in Complex[] vec, ref Complex[] result)
     {
         fixed (double* _kg_z = kg_z)
         fixed (Complex* _val = val, _vec = vec, _result = result)

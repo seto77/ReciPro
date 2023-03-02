@@ -98,20 +98,23 @@ extern "C" {
 	//STEM—p‚Ì“ÁêŠÖ”. “§‰ßŒW”‚ğ‹‚ß‚é
 	EIGEN_FUNCS_API void _GenerateTC(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double result[])
 	{
-		auto kg_z = (double*)_kg_z;
 		auto val = (dcomplex*)_val;
 		dcomplex exp_kgz[dim];
 		dcomplex exp_val[dim];
-		auto tmp = two_pi_i * thickness;
 		for (int i = 0; i < dim; i++) {
-			exp_kgz[i] = exp(tmp * kg_z[i]);
-			exp_val[i] = exp(tmp * val[i]);
+			exp_kgz[i] = exp(two_pi_i * (thickness * _kg_z[i]));
+			exp_val[i] = exp(two_pi_i * thickness * val[i]);
 		}
 		
 		auto v1 = Map<Vec>(exp_kgz, dim);
 		auto v2 = Map<Vec>(exp_val, dim);
 		auto m = Map<Mat>((dcomplex*)_vec, dim, dim);
 		Map<Vec>((dcomplex*)result, dim).noalias() = v1.asDiagonal() * m * v2;
+
+		/*auto v1 = Map<Vec>((dcomplex*)_kg_z, dim);
+		auto v2 = Map<Vec>((dcomplex*)_val, dim);
+		auto m = Map<Mat>((dcomplex*)_vec, dim, dim);
+		Map<Vec>((dcomplex*)result, dim).noalias() = v1.cwisePow(thickness)* (  m * v2.cwisePow(thickness));*/
 	}
 
 	//‰¡ƒxƒNƒgƒ‹~³•ûs—ñ~cƒxƒNƒgƒ‹‚ÌŠ|Z. STEM‚Ì”ñ’e«U—‚ğ‹‚ß‚é‚Æ‚«‚Ég—p

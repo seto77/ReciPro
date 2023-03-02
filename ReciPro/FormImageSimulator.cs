@@ -306,16 +306,16 @@ public partial class FormImageSimulator : Form
         FormMain.Crystal.Bethe.StemCompleted += stemCompleted;
 
         FormMain.Crystal.Bethe.RunSTEM(
-            BlochNum, 
-            AccVol, 
-            Cs, 
-            Delta, 
-            SliceThicknessForInelastic, 
-            ImageSize, 
-            ImageResolution, 
+            BlochNum,
+            AccVol,
+            Cs,
+            Delta,
+            SliceThicknessForInelastic,
+            ImageSize,
+            ImageResolution,
             FormMain.Crystal.RotationMatrix,
-            thicknessArray, 
-            defocusArray, 
+            thicknessArray,
+            defocusArray,
             directions.ToArray(),
             numericBoxSTEM_ConvergenceAngle.Value / 1000,
             numericBoxSTEM_DetectorInnerAngle.Value / 1000,
@@ -878,7 +878,8 @@ public partial class FormImageSimulator : Form
             else if (ImageMode == ImageModes.POTENTIAL)
                 simulatePotential(true);
         }
-        else
+
+        if (ImageMode == ImageModes.HRTEM)
             CalculateInsideSpotInfo();
     }
 
@@ -958,7 +959,11 @@ public partial class FormImageSimulator : Form
     #endregion
 
     #region チェックボックス On/Offやボタン押下イベントに伴うパネル類のEnabled, visible設定
-    private void RadioButtonSingleMode_CheckedChanged(object sender, EventArgs e) => panelSerial.Enabled = radioButtonSerialMode.Checked;
+    private void RadioButtonSingleMode_CheckedChanged(object sender, EventArgs e)
+    {
+        panelSerial.Enabled = radioButtonSerialMode.Checked;
+        groupBoxSampleProperty.Enabled = !radioButtonSerialMode.Checked;
+    }
 
     private void CheckBoxSerialDefocus_CheckedChanged(object sender, EventArgs e)
     {
@@ -972,53 +977,24 @@ public partial class FormImageSimulator : Form
         flowLayoutPanelLabel.Enabled = checkBoxShowLabel.Checked;
         flowLayoutPanelScale.Enabled = checkBoxShowScale.Checked;
 
-        foreach (var b in pictureBoxes)
-            b.Refresh();
+        foreach (var box in pictureBoxes)
+            box.Refresh();
     }
 
     private void RadioButtonHRTEM_CheckedChanged(object sender, EventArgs e)
     {
-        if (ImageMode == ImageModes.HRTEM)
-        {
-            groupBoxInherentProperty.Enabled = true;
-            groupBoxSampleProperty.Enabled = true;
-            numericBoxDefocus.Enabled = true;
-            numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
+        this.SuspendLayout();
+        numericBoxDefocus.Enabled = ImageMode != ImageModes.POTENTIAL;
 
-            groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = true;
-            groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = false;
-            groupBoxPotentialOption.Visible = false;
-            groupBoxSerialImage.Visible = true;
-            panelLenz.Visible = true;
-        }
-        else if (ImageMode == ImageModes.STEM)
-        {
-            groupBoxInherentProperty.Enabled = true;
-            groupBoxSampleProperty.Enabled = true;
-            numericBoxDefocus.Enabled = true;
-            numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = true;
+        groupBoxInherentProperty.Visible = groupBoxSampleProperty.Visible = groupBoxNormalization.Visible
+               = groupBoxSerialImage.Visible = panelLenz.Visible = ImageMode != ImageModes.POTENTIAL;
 
-            groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = false;
-            groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = true;
-            groupBoxPotentialOption.Visible = false;
-            groupBoxSerialImage.Visible = true;
-            panelLenz.Visible = true;
-        }
-        else if (ImageMode == ImageModes.POTENTIAL)
-        {
-            groupBoxInherentProperty.Enabled = false;
-            groupBoxSampleProperty.Enabled = false;
-            numericBoxDefocus.Enabled = false;
-            numericBoxIntensityMax.Enabled = numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Enabled = false;
+        checkBoxRealTimeSimulation.Visible = ImageMode != ImageModes.STEM;
 
-            groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = false;
-            groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = false;
-            groupBoxPotentialOption.Visible = true;
-            groupBoxSerialImage.Visible = false;
-            panelLenz.Visible = false;
-
-        }
-
+        groupBoxPotentialOption.Visible = ImageMode == ImageModes.POTENTIAL;
+        groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = ImageMode == ImageModes.HRTEM;
+        groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = ImageMode == ImageModes.STEM;
+        this.ResumeLayout(true);
     }
 
     private void ButtonPanel_Click(object sender, EventArgs e)

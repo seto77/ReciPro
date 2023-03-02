@@ -1061,7 +1061,7 @@ public class BetheMethod
             }
             #endregion
 
-            # region あらかじめeVecにαを掛けておく。
+            # region あらかじめeVecにαを掛けておく。kg_z[i]=>exp(TwoPiI*kg_z[i]),  eVal[i]=>exp(TwoPiI*eVal[i])
             Parallel.For(0, tc.Length, kIndex =>
             {
                 if (eVal[kIndex] != null)
