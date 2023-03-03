@@ -985,8 +985,8 @@ public class BetheMethod
                 int k = 0;
                 for (int i = 0; i < bLen; i++)
                     for (int j = 0; j < bLen; j++)
-                        //U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合
-                        U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合は、これでいいのか？大塚さんに要確認。
+                        U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合 i, jの順番が正解
+                        //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
                 bwSTEM.ReportProgress((int)(1000.0 * Interlocked.Increment(ref count) / qList.Count), "Calculating U matrix");//状況を報告
                 if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
             });
@@ -1048,142 +1048,206 @@ public class BetheMethod
         var I_Inel = new Complex[qList.Count, tLen, dLen];
         if (calcInel)
         {
-            #region 各厚みを、0.1nm 程度で切り分ける
-            double _tStep = sliceThickness;
-            var _thick = new List<double>[Thicknesses.Length];
-            var tStep=new double[Thicknesses.Length];
-            for (int t = 0; t < Thicknesses.Length; t++)
-            {
-                var start = t == 0 ? 0 : Thicknesses[t - 1];
-                var slices = Math.Max(1, (int)((Thicknesses[t] - start) / _tStep));
-                tStep[t] = (Thicknesses[t] - start) / slices;
-                _thick[t] = Enumerable.Range(1, slices).Select(e => start + tStep[t] * e).ToList();
-            }
+            #region 区分求積法アルゴリズム
+
+            //#region 各厚みを、0.1nm 程度で切り分ける
+            //double _tStep = sliceThickness;
+            //var _thick = new double[Thicknesses.Length][];
+            //var tStep = new double[Thicknesses.Length];
+            //for (int t = 0; t < Thicknesses.Length; t++)
+            //{
+            //    var start = t == 0 ? 0 : Thicknesses[t - 1];
+            //    var slices = Math.Max(1, (int)((Thicknesses[t] - start) / _tStep));
+            //    tStep[t] = (Thicknesses[t] - start) / slices;
+            //    _thick[t] = Enumerable.Range(1, slices).Select(e => start + tStep[t] * e).ToArray();
+            //}
+            //#endregion
+
+            //# region あらかじめeVecにαを掛けておく。kg_z[i]=>exp(TwoPiI*kg_z[i]),  eVal[i]=>exp(TwoPiI*eVal[i])
+            //Parallel.For(0, tc.Length, kIndex =>
+            //{
+            //    if (eVal[kIndex] != null)
+            //        for (int i = 0; i < bLen; i++)
+            //            for (int j = 0; j < bLen; j++)
+            //                eVec[kIndex][i * bLen + j] *= α[kIndex][i];
+            //});
+            //#endregion
+
+            //#region 各種変数の設定
+            //var sum = new Complex[qList.Count, dLen];
+
+            //var tc_k = tc.Select(e => new Complex[bLen]).ToArray();
+            //var validTc = list.Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
+
+            //var total = _thick.Sum(e => e.Length) * tcP.Count();
+            //count = 0;
+            //#endregion
+
+            //#region メインのループ
+            //for (int t = 0; t < Thicknesses.Length; t++)
+            //{
+            //    foreach (var thickness in _thick[t])
+            //    {
+            //        if (bwSTEM.CancellationPending) return;
+
+            //        #region まず厚み_thick[t][_t]における透過係数_tc_kを計算
+            //        validTc.ForAll(kIndex =>
+            //        {
+            //            #region この内容をNativeコードで実行
+            //            //Complex[] exp_kgz = new Complex[bLen], exp_λ = new Complex[bLen];
+            //            //for (int i = 0; i < bLen; i++)
+            //            //{
+            //            //    exp_kgz[i] = Exp(TwoPiI * kg_z[kIndex][i] * thickness);
+            //            //    exp_λ[i] = Exp(TwoPiI * eVal[kIndex][i] * thickness);
+            //            //    tc_k[kIndex][i] = 0;
+            //            //}
+
+            //            //for (int g = 0; g < bLen; g++)
+            //            //    for (int j = 0; j < bLen; j++)
+            //            //        tc_k[kIndex][g] += eVec[kIndex][j * bLen + g] * exp_kgz[g] * exp_λ[j];
+            //            #endregion
+            //            NativeWrapper.GenerateTC(bLen, thickness, kg_z[kIndex], eVal[kIndex], eVec[kIndex], ref tc_k[kIndex]);
+            //        });
+            //        #endregion
+
+            //        tcP.ForAll(kIndex =>
+            //        {
+            //            Complex[] TgThU2 = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);//, u_tck = Shared.Rent(list[kIndex].Count * bLen);
+            //            try
+            //            {
+            //                for (int i = 0, j = 0; i < list[kIndex].Count; i++)
+            //                {
+            //                    var (qIndex, n, r, lenz) = list[kIndex][i];
+            //                    //厚み_thick[t][_t]における透過係数_tc_kqを計算
+            //                    NativeWrapper.BlendAndConjugate(bLen, tc_k[n[0]], tc_k[n[1]], tc_k[n[2]], tc_k[n[3]], r[0], r[1], r[2], r[3], ref tc_kq);
+            //                    #region この内容をNativeコードで実行 4倍速い
+            //                    //var sum1 = new Complex(0, 0);
+            //                    //for (int h = 0; h < bLen; h++)
+            //                    //    for (int g = 0; g < bLen; g++)
+            //                    //        sum1 += tc_k[kIndex][g] * tc_kq[h] * U[qIndex][g * bLen + h];
+            //                    #endregion
+            //                    var TgThU1 = NativeWrapper.RowVec_SqMat_ColVec(bLen, tc_kq, U[qIndex], tc_k[kIndex]);
+            //                    for (int d = 0; d < dLen; d++)
+            //                        TgThU2[j++] = TgThU1 * lenz[d];
+            //                }
+            //                lock (lockObj1)
+            //                    for (int i = 0, j = 0; i < list[kIndex].Count; i++)
+            //                        for (int d = 0; d < dLen; d++)
+            //                            sum[list[kIndex][i].qIndex, d] += TgThU2[j++] * tStep[t];
+            //            }
+            //            finally { Shared.Return(tc_kq); Shared.Return(TgThU2); }
+
+            //            if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1000000.0 / total * count), "Calculating I_inelastic(Q)");//状況を報告
+            //        });
+            //    }
+
+            //    for (int qIndex = 0; qIndex < qList.Count; qIndex++)
+            //        for (int d = 0; d < dLen; d++)
+            //            I_Inel[qIndex, t, d] = sum[qIndex, d] / kvac;
+            //}
+            //#endregion
+
             #endregion
 
-            # region あらかじめeVecにαを掛けておく。kg_z[i]=>exp(TwoPiI*kg_z[i]),  eVal[i]=>exp(TwoPiI*eVal[i])
-            Parallel.For(0, tc.Length, kIndex =>
+
+            #region 解析的に非弾性を計算する場合 
+            //固有値・ベクトルをブレンドするのではなく、最後にブレンドする。
+
+            //最初に複素共役なC, λ, αを用意
+            Complex[][] C = eVec, _C = new Complex[tc.Length][], λ = eVal, _λ = new Complex[tc.Length][], _α = new Complex[tc.Length][];
+
+            list.AsParallel().Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ForAll(kIndex =>
             {
-                if (eVal[kIndex] != null)
-                    for (int i = 0; i < bLen; i++)
-                        for (int j = 0; j < bLen; j++)
-                            eVec[kIndex][i * bLen + j] *= α[kIndex][i];
+                _C[kIndex] = (new DMat(bLen, bLen, C[kIndex]).ConjugateTranspose() as DMat).Values;
+                _λ[kIndex] = (new DVec(λ[kIndex]).Conjugate() as DVec).Values;
+                _α[kIndex] = (new DVec(α[kIndex]).Conjugate() as DVec).Values;
             });
-            #endregion
-            
-            var sum = new Complex[qList.Count, dLen];
-           
-            var tc_k = tc.Select(e => new Complex[bLen]).ToArray();
-            var validTc = list.Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
 
-            var total = _thick.Sum(e => e.Count) * tcP.Count();
-            count = 0;
-            
-            //メインのループ 
-            for (int t = 0; t < Thicknesses.Length; t++)
+            var total = tcP.Count();
+            tcP.ForAll(kIndex =>
             {
-                foreach (var thickness in _thick[t])
+                if (bwSTEM.CancellationPending) return;
+                
+                Complex[] exp_k = new Complex[bLen], exp_kq = new Complex[bLen];
+                Complex[] TDS = new Complex[bLen * bLen], tmpMat = new Complex[bLen * bLen];
+
+                foreach (var (qIndex, n, r, lenz) in list[kIndex])
                 {
-                    #region まず厚み_thick[t][_t]における透過係数_tc_kを計算
-                    validTc.ForAll(kIndex =>
+                    NativeWrapper.MultiplyMxM(bLen, U[qIndex], C[kIndex], ref tmpMat);
+                    Complex[] α_k = α[kIndex], λ_k = λ[kIndex];
+                    double kz_k = -k_z[kIndex];//これはkgzにしないといけない
+                    var tmpSum = new Complex[tLen];
+                    for (int m = 0; m < n.Length; m++)
                     {
-                        #region この内容をNativeコードで実行
-                        //Complex[] exp_kgz = new Complex[bLen], exp_λ = new Complex[bLen];
-                        //for (int i = 0; i < bLen; i++)
-                        //{
-                        //    exp_kgz[i] = Exp(TwoPiI * kg_z[kIndex][i] * thickness);
-                        //    exp_λ[i] = Exp(TwoPiI * eVal[kIndex][i] * thickness);
-                        //    tc_k[kIndex][i] = 0;
-                        //}
+                        NativeWrapper.MultiplyMxM(bLen, _C[n[m]], tmpMat, ref TDS);
 
-                        //for (int g = 0; g < bLen; g++)
-                        //    for (int j = 0; j < bLen; j++)
-                        //        tc_k[kIndex][g] += eVec[kIndex][j * bLen + g] * exp_kgz[g] * exp_λ[j];
-                        #endregion
-                        NativeWrapper.GenerateTC(bLen, thickness, kg_z[kIndex], eVal[kIndex], eVec[kIndex], ref tc_k[kIndex]);
-                    });
-                    #endregion
+                        Complex[] α_kq = _α[n[m]], λ_kq = _λ[n[m]];
+                        double kz_kq = -k_z[n[m]];//これはkgzにしないといけない
 
-                    tcP.ForAll(kIndex =>
-                    {
-                        Complex[] TgThU2 = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);//, u_tck = Shared.Rent(list[kIndex].Count * bLen);
-                        try
+                        //B行列の中身を計算し、アダマール積を取る //69波、qList制限、256解像度で 5-6secくらい
+                        for (int t = 0; t < tLen; t++)
                         {
-                            for (int i = 0, j = 0; i < list[kIndex].Count; i++)
+                            for (int j = 0; j < bLen; j++)
                             {
-                                var (qIndex, n, r, lenz) = list[kIndex][i];
-                                //厚み_thick[t][_t]における透過係数_tc_kqを計算
-                                NativeWrapper.BlendAndConjugate(bLen, tc_k[n[0]], tc_k[n[1]], tc_k[n[2]], tc_k[n[3]], r[0], r[1], r[2], r[3], ref tc_kq);
-                                #region この内容をNativeコードで実行 4倍速い
-                                //var sum1 = new Complex(0, 0);
-                                //for (int h = 0; h < bLen; h++)
-                                //    for (int g = 0; g < bLen; g++)
-                                //        sum1 += tc_k[kIndex][g] * tc_kq[h] * U[qIndex][g * bLen + h];
-                                #endregion
-                                var TgThU1 = NativeWrapper.RowVec_SqMat_ColVec(bLen, tc_kq, U[qIndex], tc_k[kIndex]);
-                                for (int d = 0; d < dLen; d++)
-                                    TgThU2[j++] = TgThU1 * lenz[d];
+                                exp_k[j] = Exp(TwoPiI * (λ_k[j] + kz_k) * Thicknesses[t]);
+                                exp_kq[j] = Exp(-TwoPiI * (λ_kq[j] + kz_kq) * Thicknesses[t]);
                             }
-
-                            lock (lockObj1)
-                                for (int i = 0, j = 0; i < list[kIndex].Count; i++)
-                                    for (int d = 0; d < dLen; d++)
-                                        sum[list[kIndex][i].qIndex, d] += TgThU2[j++] * tStep[t];
+                            int l = 0;
+                            //j,iの順番が正しいようだ
+                            for (int j = 0; j < bLen; j++)
+                                for (int i = 0; i < bLen; i++)
+                                    tmpSum[t] += r[m] * (α_k[j] * α_kq[i] * (exp_k[j] * exp_kq[i] - 1) / TwoPiI / (kz_k - kz_kq + λ_k[j] - λ_kq[i])) * TDS[l++];//B行列は作らず、直接アダマール積を取る どちらが正しい?
                         }
-                        finally { Shared.Return(tc_kq); Shared.Return(TgThU2); }
-
-                        if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1000000.0 / total * count), "Calculating I_inelastic(Q)");//状況を報告
-                    });
-
-                    if (bwSTEM.CancellationPending) return;
-                    
-
+                    }
+                    lock (lockObj2)
+                        for (int t = 0; t < tLen; t++)
+                            for (int d = 0; d < dLen; d++)
+                                I_Inel[qIndex, t, d] +=  tmpSum[t] / kvac * lenz[d];
                 }
-                for (int qIndex = 0; qIndex < qList.Count; qIndex++)
-                    for (int d = 0; d < dLen; d++)
-                        I_Inel[qIndex, t, d] = sum[qIndex, d] / kvac;
-            }
+                if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1000000.0 / total * count), "Calculating I_inelastic(Q)");//状況を報告
+            });
+
+            ////C(K+Q)をブレンドし、C(K+Q)*^T × U(Q) × C(K)をTDSに格納　(ひとまとめにした関数も作ったが、別々にやった方が早い)
+            //NativeWrapper.Blend(bLen * bLen, eVec[n0], eVec[n1], eVec[n2], eVec[n3], r0, r1, r2, r3, ref c_kq);
+
+            ////NativeWrapper.AdjointMul_Mul_Mul(bLen, c_kq, U[m], c_k, ref TDS);
+            ////NativeWrapper.BlendAdjointMul_Mul_Mul(bLen, eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, U[m], c_k, ref TDS);
+
+            ////α(K+Q)*を作成
+            //NativeWrapper.Blend(bLen, α[n0], α[n1], α[n2], α[n3], r0, r1, r2, r3, ref α_kq);
+
+            ////λ(K+Q)*を作成
+            //NativeWrapper.Blend(bLen, eVal[n0], eVal[n1], eVal[n2], eVal[n3], r0, r1, r2, r3, ref λ_kq);
+
+            ////kz(K)とkz(K+Q)を作成
+            //double kz_kq = r0 * k_z[n0] + r1 * k_z[n1] + r2 * k_z[n2] + r3 * k_z[n3];
+
+            //kqの変数にあらかじめ係数を演算しておく。kの方は再利用するのでまずい。
+            //for (int i = 0; i < bLen; i++)
+            //    λ_kq[i] += -kz_kq + kz_k;//λ(K+Q)に[kz(K+Q)-kz(K)]をあらかじめ加えておく
+            //B行列の中身を計算し、アダマール積を取る //69波、qList制限、256解像度で 5-6secくらい
+            //for (int t = 0; t < tLen; t++)
+            //{
+            //    var coeff = Exp(TwoPiI * (-kz_k + kz_kq) * Thicknesses[t]);
+            //    for (int j = 0; j < bLen; j++)
+            //    {
+            //        exp_k[j] = Exp(TwoPiI * λ_k[j] * Thicknesses[t]);
+            //        exp_kq[j] = Exp(-TwoPiI * λ_kq[j] * Thicknesses[t]);
+            //    }
+            //    Complex tmp = 0.0;
+            //    int l = 0;
+            //    for (int j = 0; j < bLen; j++)
+            //        for (int i = 0; i < bLen; i++)
+            //            tmp +=  (α_k[j] * α_kq[i] * (exp_k[j] * exp_kq[i] - 1) / TwoPiI / (λ_k[j] - λ_kq[i])) * TDS[l++];//B行列は作らず、直接アダマール積を取る どちらが正しい?
+            //    lock (lockObj2)
+            //        for (int d = 0; d < dLen; d++)
+            //            I_Inel[m, t, d] += coeff * tmp / kvac * lenz[d];
+            //}
+            // }
+            #endregion
+
         }
-        #region 解析的に非弾性を計算する場合 固有値・ベクトルのブレンドがナンセンスなのでお蔵入り
-        ////C(K+Q)をブレンドし、C(K+Q)*^T × U(Q) × C(K)をTDSに格納　(ひとまとめにした関数も作ったが、別々にやった方が早い)
-        ////NativeWrapper.Blend(bLen * bLen, eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, ref c_kq);
-        //NativeWrapper.Blend(bLen * bLen, eVec[n0], eVec[n1], eVec[n2], eVec[n3], r0, r1, r2, r3, ref c_kq);
 
-        ////NativeWrapper.AdjointMul_Mul_Mul(bLen, c_kq, U[m], c_k, ref TDS);
-        ////NativeWrapper.BlendAdjointMul_Mul_Mul(bLen, eVectors[n0], eVectors[n1], eVectors[n2], eVectors[n3], r0, r1, r2, r3, U[m], c_k, ref TDS);
-
-        ////α(K+Q)*を作成
-        //NativeWrapper.Blend(bLen, α[n0], α[n1], α[n2], α[n3], r0, r1, r2, r3, ref α_kq);
-
-        ////λ(K+Q)*を作成
-        //NativeWrapper.Blend(bLen, eVal[n0], eVal[n1], eVal[n2], eVal[n3], r0, r1, r2, r3, ref λ_kq);
-
-        ////kz(K)とkz(K+Q)を作成
-        //double kz_kq = r0 * k_z[n0] + r1 * k_z[n1] + r2 * k_z[n2] + r3 * k_z[n3];
-
-        //kqの変数にあらかじめ係数を演算しておく。kの方は再利用するのでまずい。
-        //for (int i = 0; i < bLen; i++)
-        //    λ_kq[i] += -kz_kq + kz_k;//λ(K+Q)に[kz(K+Q)-kz(K)]をあらかじめ加えておく
-        //B行列の中身を計算し、アダマール積を取る //69波、qList制限、256解像度で 5-6secくらい
-        //for (int t = 0; t < tLen; t++)
-        //{
-        //    var coeff = Exp(TwoPiI * (-kz_k + kz_kq) * Thicknesses[t]);
-        //    for (int j = 0; j < bLen; j++)
-        //    {
-        //        exp_k[j] = Exp(TwoPiI * λ_k[j] * Thicknesses[t]);
-        //        exp_kq[j] = Exp(-TwoPiI * λ_kq[j] * Thicknesses[t]);
-        //    }
-        //    Complex tmp = 0.0;
-        //    int l = 0;
-        //    for (int j = 0; j < bLen; j++)
-        //        for (int i = 0; i < bLen; i++)
-        //            tmp +=  (α_k[j] * α_kq[i] * (exp_k[j] * exp_kq[i] - 1) / TwoPiI / (λ_k[j] - λ_kq[i])) * TDS[l++];//B行列は作らず、直接アダマール積を取る どちらが正しい?
-        //    lock (lockObj2)
-        //        for (int d = 0; d < dLen; d++)
-        //            I_Inel[m, t, d] += coeff * tmp / kvac * lenz[d];
-        //}
-        // }
-        #endregion
 
         #endregion
 

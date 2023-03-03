@@ -40,7 +40,10 @@ public static partial class NativeWrapper
     private static unsafe partial void _AdjointAndMultiply(int dim, double* mat1, double* mat2, double* result);
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _MultiplyMM(int dim, double* mat1, double* mat2, double* result);
-    
+
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _MultiplyMMM(int dim, double* mat1, double* mat2, double* mat3, double* result);
+
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _MultiplyMV(int dim, double* mat, double* vec, double* result);
 
@@ -279,6 +282,15 @@ public static partial class NativeWrapper
         MultiplyMxM(dim, matrix1, matrix2, ref result);
         return result;
     }
+
+    unsafe static public void MultiplyMxMxM(int dim, Complex[] matrix1, Complex[] matrix2, Complex[] matrix3, ref Complex[] result)
+    {
+        fixed (Complex* mtx1 = matrix1)
+        fixed (Complex* mtx2 = matrix2)
+        fixed (Complex* mtx3 = matrix3)
+        fixed (Complex* res = result)
+            _MultiplyMMM(dim, (double*)mtx1, (double*)mtx2, (double*)mtx3, (double*)res);
+    }
     #endregion
 
     #region 行列×ベクトル
@@ -456,6 +468,27 @@ public static partial class NativeWrapper
 
     #region Eigenライブラリーを利用して、非対称複素行列の乗算を求める
 
+
+
+    #endregion
+
+    #region 複素共役、転置
+
+    unsafe static public void Conjugate(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
+    {
+        fixed (Complex* mtx1 = matrix1)
+        fixed (Complex* mtx2 = matrix2)
+        fixed (Complex* res = result)
+            _AdjointAndMultiply(dim, (double*)mtx1, (double*)mtx2, (double*)res);
+    }
+
+    unsafe static public void Adjoint(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
+    {
+        fixed (Complex* mtx1 = matrix1)
+        fixed (Complex* mtx2 = matrix2)
+        fixed (Complex* res = result)
+            _AdjointAndMultiply(dim, (double*)mtx1, (double*)mtx2, (double*)res);
+    }
 
 
     #endregion

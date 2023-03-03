@@ -20,6 +20,7 @@ extern "C" {
 	EIGEN_FUNCS_API void _AdjointAndMultiply(int dim, double mat1[], double mat2[], double result[]);
 	
 	EIGEN_FUNCS_API void _MultiplyMM(int dim, double mat1[], double mat2[], double result[]);
+	EIGEN_FUNCS_API void _MultiplyMMM(int dim, double mat1[], double mat2[], double mat3[], double result[]);
 	EIGEN_FUNCS_API void _MultiplyMV(int dim, double mat[], double vec[], double result[]);
 	EIGEN_FUNCS_API void _MultiplyVV(int dim, double vec1[], double vec2[], double result[]);
 	EIGEN_FUNCS_API void _MultiplySV(int dim, double real, double imag, double vec[], double result[]);

@@ -150,6 +150,15 @@ extern "C" {
 		Map<Mat>((dcomplex*)result, dim, dim).noalias() = m1 * m2;
 	}
 
+	//•¡‘fs—ñ“¯m‚ÌæZ‚ğ‹‚ß‚é
+	EIGEN_FUNCS_API void _MultiplyMMM(int dim, double mat1[], double mat2[], double mat3[], double result[])
+	{
+		auto m1 = Map<Mat>((dcomplex*)mat1, dim, dim);
+		auto m2 = Map<Mat>((dcomplex*)mat2, dim, dim);
+		auto m3 = Map<Mat>((dcomplex*)mat3, dim, dim);
+		Map<Mat>((dcomplex*)result, dim, dim).noalias() = m1 * m2 * m3;
+	}
+
 	//À”s—ñ“¯m‚ÌæZ‚ğ‹‚ß‚é
 	EIGEN_FUNCS_API void _MultiplyMM_Real(int dim, double mat1[], double mat2[], double result[])
 	{
