@@ -582,7 +582,7 @@ public partial class FormImageSimulator : Form
                 totalImage[t][d] = totalImage[t][d].Reverse().ToArray();
 
                 //個別にノーマライズ
-                if (!checkBoxNormarizeIndividually.Checked)
+                if (checkBoxNormarizeIndividually.Checked)
                     totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);
 
                 //PseudoBitmapを生成

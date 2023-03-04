@@ -2598,7 +2598,7 @@ new ES(4.86738014,0.319974401,4.58872425,
         /// <param name="kV"></param>
         /// <param name="g"> g ベクトル 単位は nm </param>
         /// <param name="h"> hベクトル 単位はnm</param>
-        /// <param name="m"> U ×8×π^2 単位は nm </param>
+        /// <param name="m"> U ×8×π^2 単位は nm^2 </param>
         /// <param name="inner"> 検出器の内側 単位はラジアン</param>
         /// <param name="outer"> 検出器の外側 単位はラジアン</param>
         /// <returns></returns>
@@ -2606,7 +2606,7 @@ new ES(4.86738014,0.319974401,4.58872425,
         {
             if (double.IsNaN(m)) return 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
-            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV)*1.001;
+            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
             var gLen2 = g.Length2 / 4;//単位はnm^-2
 
             var result = GaussLegendreRule.Integrate(θ =>
@@ -2615,7 +2615,7 @@ new ES(4.86738014,0.319974401,4.58872425,
                 return GaussLegendreRule.Integrate(φ =>
                 {
                     var k = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
-                    double kMinusG = (k - g / 2).Length2 / 4, kPlusG = (k + g / 2).Length2 / 4;
+                    double kMinusG = (k - g / 2).Length2 / 4, kPlusG = (k + g / 2).Length2 / 4;//単位はnm^-2
                     double f_kMinusG = 0, f_kPlusG = 0;
                     foreach (var (A, B) in Prms)
                     {
@@ -2641,7 +2641,7 @@ new ES(4.86738014,0.319974401,4.58872425,
         /// <returns></returns>
         public double FactorImaginaryAnnular(double kV, Vector3DBase g, Vector3DBase h, double m, double inner, double outer)
         {
-            if (double.IsNaN(m)) m = 0;
+            if (double.IsNaN(m)) return 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
             var g_h = (g - h).Length2 / 4;
