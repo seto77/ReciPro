@@ -2596,18 +2596,18 @@ new ES(4.86738014,0.319974401,4.58872425,
         /// 局所形式の非弾性散乱因子 近軸近似(ビーム径射角ゼロ)
         /// </summary>
         /// <param name="kV"></param>
-        /// <param name="g"></param>
-        /// <param name="h"></param>
-        /// <param name="m"></param>
-        /// <param name="inner"></param>
-        /// <param name="outer"></param>
+        /// <param name="g"> g ベクトル 単位は nm </param>
+        /// <param name="h"> hベクトル 単位はnm</param>
+        /// <param name="m"> U ×8×π^2 単位は nm </param>
+        /// <param name="inner"> 検出器の内側 単位はラジアン</param>
+        /// <param name="outer"> 検出器の外側 単位はラジアン</param>
         /// <returns></returns>
         public double FactorImaginaryAnnular(double kV, Vector3DBase g, double m, double inner, double outer)
         {
-            if (double.IsNaN(m)) m = 0;
+            if (double.IsNaN(m)) return 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
-            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
-            var gLen2 = g.Length2 / 4;
+            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV)*1.001;
+            var gLen2 = g.Length2 / 4;//単位はnm^-2
 
             var result = GaussLegendreRule.Integrate(θ =>
             {
@@ -2615,17 +2615,17 @@ new ES(4.86738014,0.319974401,4.58872425,
                 return GaussLegendreRule.Integrate(φ =>
                 {
                     var k = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
-                    double kMinusG = (k - g / 2).Length2 / 400, kPlusG = (k + g / 2).Length2 / 400;
+                    double kMinusG = (k - g / 2).Length2 / 4, kPlusG = (k + g / 2).Length2 / 4;
                     double f_kMinusG = 0, f_kPlusG = 0;
                     foreach (var (A, B) in Prms)
                     {
-                        f_kMinusG += A * Math.Exp(-kMinusG * B);
-                        f_kPlusG += A * Math.Exp(-kPlusG * B);
+                        f_kMinusG += A * Math.Exp(-kMinusG * B / 100);
+                        f_kPlusG += A * Math.Exp(-kPlusG * B / 100);
                     }
-                    return f_kMinusG * f_kPlusG * 0.01 * (1 - Math.Exp(m * (gLen2 - kMinusG * 100 - kPlusG * 100))); ;// * sinThetaを外に出して、少しでも早く
+                    return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (gLen2 - kMinusG - kPlusG))); ;// * sinThetaを外に出して、少しでも早く
                 }, 0, 2 * Math.PI, 30) * sinθ;
             }, inner, outer, 80);
-            return gamma * k0 / 2 * result;
+            return gamma * k0 / 2 * result * 0.01;
         }
 
 
