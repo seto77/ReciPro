@@ -10,6 +10,7 @@ internal static class Version
 
     static public string History =
         "History" +
+        "\r\n ver4.852(2023/03/04)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.851(2023/03/02)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.850(2023/03/01)  Improved STEM simulation. If you find anything wrong with the SETM simulation, please report anything!" +
         "\r\n ver4.849(2023/02/11)  Improved: Overall speedup with SIMD calculation." +
