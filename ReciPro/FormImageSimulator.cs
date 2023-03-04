@@ -238,7 +238,7 @@ public partial class FormImageSimulator : Form
     }
     #endregion PseudoBitmapに格納する情報
 
-    #region Simulateボタン
+    #region Simulate
     /// <summary>
     /// Simulateボタンが押されたとき
     /// </summary>
@@ -246,8 +246,6 @@ public partial class FormImageSimulator : Form
     /// <param name="e"></param>
     private void ButtonSimulate_Click(object sender, EventArgs e)
     {
-        Enabled = false;
-
         toolStripStatusLabel1.Text = "";
         toolStripProgressBar1.Value = 0;
 
@@ -257,11 +255,6 @@ public partial class FormImageSimulator : Form
             simulatePotential();
         else if (ImageMode == ImageModes.STEM)
             simulateSTEM();
-
-
-
-        toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
-        Enabled = true;
     }
 
     #region STEMシミュレーション
@@ -435,6 +428,12 @@ public partial class FormImageSimulator : Form
 
         Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
         var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
+
+        //画像が上下左右反転しているみたいなので、処理 20230304
+        for (int i = 0; i < images.Length; i++)
+            images[i] = images[i].Reverse().ToArray();
+
+
         var temp = sw1.ElapsedMilliseconds;
         toolStripStatusLabel1.Text = $"Generation of Potential images: {temp} msec,   ";
 
@@ -454,6 +453,7 @@ public partial class FormImageSimulator : Form
         int width = ImageSize.Width, height = ImageSize.Height;
         var range = Enumerable.Range(0, 2).ToList();
         var pseudo = range.Select(_ => range.Select(_ => new PseudoBitmap()).ToList()).ToList();
+
         //振幅と位相モードの時
         if (radioButtonPotentialModeMagAndPhase.Checked)
             foreach (var (i, j, text) in new[] { (0, 0, "Ug magnitude"), (0, 1, "Ug phase"), (1, 0, "U'g magnitude"), (1, 1, "Ug phase") })
@@ -552,6 +552,18 @@ public partial class FormImageSimulator : Form
     }
     #endregion
 
+    #endregion
+
+    #region 計算結果をPictureBoxにセット
+
+    /// <summary>
+    /// PseudoBitmapを作成
+    /// </summary>
+    /// <param name="tLen"></param>
+    /// <param name="dLen"></param>
+    /// <param name="totalImage"></param>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
     public void SendImage(int tLen, int dLen, double[][][] totalImage, int width, int height)
     {
         if (totalImage == null) return;
@@ -560,22 +572,28 @@ public partial class FormImageSimulator : Form
         var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
 
         //全体でノーマライズ
-        totalImage = Normalize(totalImage, checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
+        if (!checkBoxNormarizeIndividually.Checked)
+            totalImage = Normalize(totalImage, checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
 
         for (int t = 0; t < tLen; t++)
             for (var d = 0; d < dLen; d++)
             {
+                //画像が上下左右反転しているみたいなので処理 20230304
+                totalImage[t][d] = totalImage[t][d].Reverse().ToArray();
+
                 //個別にノーマライズ
-                //totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);
+                if (!checkBoxNormarizeIndividually.Checked)
+                    totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);
+
                 //PseudoBitmapを生成
                 pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
-                    = new PseudoBitmap(totalImage[t][d], width)
-                    {
-                        Tag = new ImageInfo(width, height, ImageResolution, mat, $"t={thicknessArray[t]}\r\nf={defocusArray[d]}"),
-                        MaxValue = trackBarAdvancedMax.Value,
-                        MinValue = trackBarAdvancedMin.Value,
-                        Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
-                    };
+                = new PseudoBitmap(totalImage[t][d], width)
+                {
+                    Tag = new ImageInfo(width, height, ImageResolution, mat, $"t={thicknessArray[t]}\r\nf={defocusArray[d]}"),
+                    MaxValue = trackBarAdvancedMax.Value,
+                    MinValue = trackBarAdvancedMin.Value,
+                    Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
+                };
             }
 
         //1列あるいは1行で、他の要素が多いときは適当に折り返し
@@ -603,6 +621,7 @@ public partial class FormImageSimulator : Form
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
 
+    #region normarize関数
     public double[] Normalize(double[] image, bool normalizeLow = true)
     {
         double min = image.Min(), max = image.Max();
@@ -628,8 +647,9 @@ public partial class FormImageSimulator : Form
             }
         return image;
     }
+    #endregion
 
-    //作成したイメージをscalablePictureBoxに転送
+    //作成したPseutoBitmapをscalablePictureBoxに転送
     private void setPseudoBitamap(PseudoBitmap[,] image)
     {
         var row = image.GetLength(0);
@@ -681,7 +701,19 @@ public partial class FormImageSimulator : Form
 
         pictureBoxes[0, 0].ZoomAndCenter = (0, new PointD(0, 0));
     }
+    #endregion
 
+    #region マウス操作
+
+    private bool FormImageSimulator_MouseMove2(object sender, MouseEventArgs e, PointD pt)
+    {
+        var pseud = (sender as ScalablePictureBox).PseudoBitmap;
+        var info = pseud.Tag as ImageInfo;
+        labelMousePositionX.Text = $"X: {(pt.X - info.Width / 2.0) * info.Resolution * 1000:f2} pm";
+        labelMousePositionY.Text = $"Y: {(-pt.Y + info.Height / 2.0) * info.Resolution * 1000:f2} pm";
+        labelMousePositionValue.Text = $"Value: {pseud.GetPixelRawValue(pt):g6}";
+        return false;
+    }
     private bool FormImageSimulator_MouseDown2(object sender, MouseEventArgs e, PointD pt)
     {
         if (e.Clicks == 2 && e.Button == MouseButtons.Left)
@@ -722,34 +754,6 @@ public partial class FormImageSimulator : Form
         }
         return false;
     }
-
-    private bool FormImageSimulator_MouseMove2(object sender, MouseEventArgs e, PointD pt)
-    {
-        var pseud = (sender as ScalablePictureBox).PseudoBitmap;
-        var info = pseud.Tag as ImageInfo;
-        labelMousePositionX.Text = $"X: {(pt.X - info.Width / 2.0) * info.Resolution * 1000:f2} pm";
-        labelMousePositionY.Text = $"Y: {(-pt.Y + info.Height / 2.0) * info.Resolution * 1000:f2} pm";
-        labelMousePositionValue.Text = $"Value: {pseud.GetPixelRawValue(pt):g6}";
-        return false;
-    }
-
-    private void PictureBox_DrawingAreaChanged(object sender, double zoom, PointD center)
-    {
-        if (SkipEvent) return;
-
-        var box = sender as ScalablePictureBox;
-        if (box.PseudoBitmap.Width == 0)
-            return;
-
-        foreach (var b in pictureBoxes)
-            if (b != null && b != (ScalablePictureBox)sender)
-            {
-                b.DrawingAreaChanged -= PictureBox_DrawingAreaChanged;
-                b.ZoomAndCenter = (zoom, center);
-                b.DrawingAreaChanged += PictureBox_DrawingAreaChanged;
-            }
-    }
-
     #endregion
 
     #region 電子顕微鏡の各種光学パラメータや試料パラメータのイベント
@@ -869,6 +873,7 @@ public partial class FormImageSimulator : Form
 
     #endregion
 
+    #region 他のフォームで結晶回転状態が変更されたとき
     public void RotationChanged()
     {
         if (checkBoxRealTimeSimulation.Checked)
@@ -882,7 +887,7 @@ public partial class FormImageSimulator : Form
         if (ImageMode == ImageModes.HRTEM)
             CalculateInsideSpotInfo();
     }
-
+    #endregion
 
     #region スポット情報ボタン
     /// <summary>
@@ -1225,11 +1230,31 @@ public partial class FormImageSimulator : Form
     private void ToolStripMenuItemCopyMetafile_Click(object sender, EventArgs e) => Save(formatEnum.Meta, actionEnum.Copy);
     #endregion 画像のコピー/保存
 
+    #region その他イベント
     private void DetailsOfHRTEMSimulationToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         new FormPDF(appPath + @"\doc\hrtem.pdf").ShowDialog();
     }
+
+
+    private void PictureBox_DrawingAreaChanged(object sender, double zoom, PointD center)
+    {
+        if (SkipEvent) return;
+
+        var box = sender as ScalablePictureBox;
+        if (box.PseudoBitmap.Width == 0)
+            return;
+
+        foreach (var b in pictureBoxes)
+            if (b != null && b != (ScalablePictureBox)sender)
+            {
+                b.DrawingAreaChanged -= PictureBox_DrawingAreaChanged;
+                b.ZoomAndCenter = (zoom, center);
+                b.DrawingAreaChanged += PictureBox_DrawingAreaChanged;
+            }
+    }
+    #endregion
 
     #region 画像の輝度、カラースケール、ガウシアンぼかし
 
@@ -1287,13 +1312,13 @@ public partial class FormImageSimulator : Form
     {
         if (SkipEvent) return;
 
-        numericBoxGaussianRadius.Visible = checkBoxGaussianBlur.Checked;
+        numericBoxGaussianBlurRadius.Visible = checkBoxGaussianBlur.Checked;
 
         foreach (var box in pictureBoxes)
             if (box.PseudoBitmap.Tag != null && !(box.PseudoBitmap.Tag as ImageInfo).LockIntensity)
             {
                 if (checkBoxGaussianBlur.Checked)
-                    box.PseudoBitmap.SetBlurImage(numericBoxGaussianRadius.Value, PseudoBitmap.BlurModeEnum.Gaussian);
+                    box.PseudoBitmap.SetBlurImage(numericBoxGaussianBlurRadius.Value / numericBoxResolution.Value, PseudoBitmap.BlurModeEnum.Gaussian);
                 else
                     box.PseudoBitmap.SetOriginalGray();
 
@@ -1302,8 +1327,4 @@ public partial class FormImageSimulator : Form
     }
     #endregion 画像の輝度、カラースケール、ガウシアンぼかし
 
-    private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-    {
-
-    }
 }

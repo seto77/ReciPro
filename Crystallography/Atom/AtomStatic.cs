@@ -2608,7 +2608,8 @@ new ES(4.86738014,0.319974401,4.58872425,
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
             var gLen2 = g.Length2 / 4;
-            return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
+
+            var result = GaussLegendreRule.Integrate(θ =>
             {
                 double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
                 return GaussLegendreRule.Integrate(φ =>
@@ -2622,8 +2623,9 @@ new ES(4.86738014,0.319974401,4.58872425,
                         f_kPlusG += A * Math.Exp(-kPlusG * B);
                     }
                     return f_kMinusG * f_kPlusG * 0.01 * (1 - Math.Exp(m * (gLen2 - kMinusG * 100 - kPlusG * 100))); ;// * sinThetaを外に出して、少しでも早く
-                }, 0, 2 * Math.PI, 20) * sinθ;
-            }, inner, outer, 60) ;
+                }, 0, 2 * Math.PI, 30) * sinθ;
+            }, inner, outer, 80);
+            return gamma * k0 / 2 * result;
         }
 
 
