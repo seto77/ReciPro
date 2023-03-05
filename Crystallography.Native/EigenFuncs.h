@@ -36,8 +36,8 @@ extern "C" {
 	
 	EIGEN_FUNCS_API void _EigenSolver(int dim, double mat[], double eigenValues[], double eigenVectors[]);
 	EIGEN_FUNCS_API void _MatrixExponential(int dim, double mat[], double results[]);
-	EIGEN_FUNCS_API void _CBEDSolver_Eigen(int gDim, double _potential[], double _phi0[], int tDim, double thickness[], double cosTau, double result[]);
-	EIGEN_FUNCS_API void _CBEDSolver_Eigen2(int dim, double potential[], double psi0[], int tDim, double thickness[], double coeff, double Values[], double Vectors[], double Alphas[], double Tg[]);
+	EIGEN_FUNCS_API void _CBEDSolver_Eigen(int gDim, double _potential[], double _phi0[], int tDim, double thickness[], double result[]);
+	EIGEN_FUNCS_API void _CBEDSolver_Eigen2(int dim, double potential[], double psi0[], int tDim, double thickness[], double Values[], double Vectors[], double Alphas[], double Tg[]);
 	EIGEN_FUNCS_API void _CBEDSolver_MatExp(int gDim, double _potential[], double _phi0[], int tDim, double tStart, double tStep, double result[]);
 
 	EIGEN_FUNCS_API void _PartialPivLuSolve(int dim, double mat[], double vec[], double result[]);

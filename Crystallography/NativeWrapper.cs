@@ -1,13 +1,10 @@
 ﻿using MathNet.Numerics.LinearAlgebra.Complex;
-using OpenTK.Audio.OpenAL;
 using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static HDF.PInvoke.H5T;
 
 namespace Crystallography;
 
@@ -85,10 +82,10 @@ public static partial class NativeWrapper
     [LibraryImport("Crystallography.Cuda.dll")]
     private static unsafe partial void MatrixExponential_Cuda(int dim, double[] mat, double[] results);
     [LibraryImport("Crystallography.Cuda.dll")]
-    private static unsafe partial void _CBEDSolver_MtxExp_Cuda(int gDim, double[] potential, double[] phi0, int tDim, double tStart, double tStep, double coeff, double[] result);
+    private static unsafe partial void _CBEDSolver_MtxExp_Cuda(int gDim, double[] potential, double[] phi0, int tDim, double tStart, double tStep, double[] result);
 
     [LibraryImport("Crystallography.Native.dll")]
-    private static unsafe partial void _CBEDSolver_Eigen(int gDim, double* potential, double* phi0, int tDim, double[] thickness, double coeff, double* result);
+    private static unsafe partial void _CBEDSolver_Eigen(int gDim, double* potential, double* phi0, int tDim, double[] thickness, double* result);
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _CBEDSolver_Eigen2(int gDim,
@@ -96,7 +93,6 @@ public static partial class NativeWrapper
                                         double* phi0,
                                         int tDim,
                                         double[] thickness,
-                                        double coeff,
                                         double* values,
                                         double* vectors,
                                         double* alphas,
@@ -109,7 +105,6 @@ public static partial class NativeWrapper
                                   int tDim,
                                   double tStart,
                                   double tStep,
-                                  double coeff,
                                   double* result);
 
     [LibraryImport("Crystallography.Native.dll")]
@@ -657,8 +652,8 @@ public static partial class NativeWrapper
     /// <param name="thickness"></param>
     /// <param name="coeff"></param>
     /// <returns></returns>
-    unsafe static public Complex[] CBEDSolver_Eigen(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff)
-    => CBEDSolver(potential, psi0, thickness, coeff, true);
+    unsafe static public Complex[] CBEDSolver_Eigen(Complex[] potential, Complex[] psi0, double[] thickness)
+    => CBEDSolver(potential, psi0, thickness, true);
 
     /// <summary>
     /// Eigenライブラリーを利用してMatrix exponentialを解いて、CBEDの解を求める. 
@@ -668,21 +663,21 @@ public static partial class NativeWrapper
     /// <param name="thickness"></param>
     /// <param name="coeff"></param>
     /// <returns></returns>
-    unsafe static public Complex[] CBEDSolver_MatExp(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff)
-        => CBEDSolver(potential, psi0, thickness, coeff, false);
+    unsafe static public Complex[] CBEDSolver_MatExp(Complex[] potential, Complex[] psi0, double[] thickness)
+        => CBEDSolver(potential, psi0, thickness, false);
 
-    unsafe static private Complex[] CBEDSolver(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff, in bool eigen)
+    unsafe static private Complex[] CBEDSolver(Complex[] potential, Complex[] psi0, double[] thickness, in bool eigen)
     {
         var dim = psi0.Length;
         var result = GC.AllocateUninitializedArray<Complex>(dim * thickness.Length);// new Complex[dim * thickness.Length];
         fixed (Complex* _potential = potential, _psi0 = psi0, _result = result)
         {
             if (eigen)
-                _CBEDSolver_Eigen(dim, (double*)_potential, (double*)_psi0, thickness.Length, thickness, coeff, (double*)_result);
+                _CBEDSolver_Eigen(dim, (double*)_potential, (double*)_psi0, thickness.Length, thickness, (double*)_result);
             else
             {
                 var tStep = thickness.Length > 1 ? thickness[1] - thickness[0] : 0.0;
-                _CBEDSolver_MtxExp(dim, (double*)_potential, (double*)_psi0, thickness.Length, thickness[0], tStep, coeff, (double*)_result);
+                _CBEDSolver_MtxExp(dim, (double*)_potential, (double*)_psi0, thickness.Length, thickness[0], tStep, (double*)_result);
             }
         }
         return result;
@@ -698,7 +693,7 @@ public static partial class NativeWrapper
     /// <param name="eigen"></param>
     /// <returns></returns>
     unsafe static public (Complex[] Values, Complex[] Vectors, Complex[] Alphas, Complex[] Tg)
-        CBEDSolver2(Complex[] potential, Complex[] psi0, double[] thickness, in double coeff)
+        CBEDSolver2(Complex[] potential, Complex[] psi0, double[] thickness)
     {
         var dim = psi0.Length;
         var Values = GC.AllocateUninitializedArray<Complex>(dim);
@@ -707,7 +702,7 @@ public static partial class NativeWrapper
         var Tg = GC.AllocateUninitializedArray<Complex>(dim * thickness.Length);
 
         fixed (Complex* _potential = potential, _psi0 = psi0, _Tg = Tg, _Values = Values, _Vectors = Vectors, _Alphas = Alphas)
-            _CBEDSolver_Eigen2(dim, (double*)_potential, (double*)_psi0, thickness.Length, thickness, coeff, (double*)_Values, (double*)_Vectors, (double*)_Alphas, (double*)_Tg);
+            _CBEDSolver_Eigen2(dim, (double*)_potential, (double*)_psi0, thickness.Length, thickness, (double*)_Values, (double*)_Vectors, (double*)_Alphas, (double*)_Tg);
 
         return (Values, Vectors, Alphas, Tg);
     }

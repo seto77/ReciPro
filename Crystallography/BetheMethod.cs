@@ -245,7 +245,7 @@ public class BetheMethod
                 //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
                 //Eigen＿Eigenの場合
                 if (solver == Solver.Eigen_Eigen && EigenEnabled)
-                    result = NativeWrapper.CBEDSolver_Eigen(eigenMatrix, psi0.Values, Thicknesses, coeff);
+                    result = NativeWrapper.CBEDSolver_Eigen(eigenMatrix, psi0.Values, Thicknesses);
                 //Eigen_MKL あるいは Eigen_Managedの場合    
                 else if (solver == Solver.Eigen_MKL)
                 {
@@ -256,7 +256,7 @@ public class BetheMethod
                     for (int t = 0; t < tLen; t++)
                     {
                         //ガンマの対称行列×アルファを作成
-                        var gammmaAlpha = new DVec(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * Thicknesses[t] * coeff) * alpha[i]).ToArray());
+                        var gammmaAlpha = new DVec(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * Thicknesses[t]) * alpha[i]).ToArray());
                         //深さtにおけるψを求める
                         resultMat.SetColumn(t, evd.EigenVectors.Multiply(gammmaAlpha));
                     }
@@ -264,19 +264,19 @@ public class BetheMethod
                 }
                 //MtxExp_Eigenの場合
                 else if (solver == Solver.MtxExp_Eigen && EigenEnabled)
-                    result = NativeWrapper.CBEDSolver_MatExp(eigenMatrix, psi0.Values, Thicknesses, coeff);
+                    result = NativeWrapper.CBEDSolver_MatExp(eigenMatrix, psi0.Values, Thicknesses);
                 //MtxExp_MKLの場合 
                 else
                 {
                     var resultMat = new DMat(bLen, tLen);
-                    var matExp = (DMat)(TwoPiI * coeff * Thicknesses[0] * new DMat(bLen, bLen, eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray())).Exponential();
+                    var matExp = (DMat)(TwoPiI * Thicknesses[0] * new DMat(bLen, bLen, eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray())).Exponential();
                     var vec = matExp.Multiply(psi0);
                     resultMat.SetColumn(0, vec);
 
                     if (tLen > 1)
                     {
                         if (Thicknesses[1] - Thicknesses[0] == Thicknesses[0])
-                            matExp = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * new DMat(bLen, bLen, eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray())).Exponential();
+                            matExp = (DMat)(TwoPiI * (Thicknesses[1] - Thicknesses[0]) * new DMat(bLen, bLen, eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray())).Exponential();
                         for (int t = 1; t < tLen; t++)
                         {
                             vec = (DVec)matExp.Multiply(vec);
@@ -437,7 +437,7 @@ public class BetheMethod
             #region 各ソルバーによる計算
             //Eigen＿Eigenの場合
             if (solver == Solver.Eigen_Eigen && EigenEnabled)
-                result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
+                result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses);
             //Eigen_MKL あるいは Eigen_Managedの場合    
             else if (solver == Solver.Eigen_MKL)
             {
@@ -455,7 +455,7 @@ public class BetheMethod
             }
             //MtxExp_Eigenの場合
             else if (solver == Solver.MtxExp_Eigen && EigenEnabled)
-                result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
+                result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses);
             //MtxExp_MKLの場合 
             else
             {
@@ -900,7 +900,7 @@ public class BetheMethod
                 #region 各ソルバーによる計算
                 //Eigen＿Eigenの場合
                 if (solver == Solver.Eigen_Eigen && EigenEnabled)
-                    (eVal[i], eVec[i], α[i], result) = NativeWrapper.CBEDSolver2(eigenMatrix, psi0, thicknesses, coeff);
+                    (eVal[i], eVec[i], α[i], result) = NativeWrapper.CBEDSolver2(eigenMatrix, psi0, thicknesses);
                 //Eigen_MKL あるいは Eigen_Managedの場合    
                 else
                 {

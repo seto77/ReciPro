@@ -71,7 +71,7 @@ extern "C" {
 		auto _c1 = Map<Vec>((dcomplex*)c1, dim);
 		auto _c2 = Map<Vec>((dcomplex*)c2, dim);
 		auto _c3 = Map<Vec>((dcomplex*)c3, dim);
-		Map<Vec>((dcomplex*)result, dim).noalias() = (r0 * _c0 + r1 * _c1 + r2 * _c2 + r3 * _c3).conjugate();
+		Map<Vec>((dcomplex*)result, dim).noalias() = r0 * _c0.conjugate() + r1 * _c1.conjugate() + r2 * _c2.conjugate() + r3 * _c3.conjugate();
 	}
 
 	//STEMの非弾性散乱電子強度の計算用の特殊関数
@@ -102,7 +102,7 @@ extern "C" {
 		dcomplex exp_kgz[dim];
 		dcomplex exp_val[dim];
 		for (int i = 0; i < dim; i++) {
-			exp_kgz[i] = exp(two_pi_i * (thickness * _kg_z[i]));
+			exp_kgz[i] = exp(two_pi_i * thickness * _kg_z[i]);
 			exp_val[i] = exp(two_pi_i * thickness * val[i]);
 		}
 		
@@ -252,26 +252,25 @@ extern "C" {
 	}
 
 	//CBEDソルバー
-	EIGEN_FUNCS_API void _CBEDSolver_Eigen(int dim, double potential[], double psi0[], int tDim, double thickness[], double coeff, double result[])
+	EIGEN_FUNCS_API void _CBEDSolver_Eigen(int dim, double potential[], double psi0[], int tDim, double thickness[], double result[])
 	{
-		auto res = Map<Mat>((dcomplex*)result, dim, tDim);
-
 		ComplexEigenSolver<Mat> solver(Map<Mat>((dcomplex*)potential, dim, dim));
-		Vec values = solver.eigenvalues();
-		Mat vectors = solver.eigenvectors();
-		Vec alpha = vectors.partialPivLu().solve(Map<Vec>((dcomplex*)psi0, dim));
-		Vec gammma_alpha = Vec(dim);
+		auto values = solver.eigenvalues();
+		Mat vectors = solver.eigenvectors() * solver.eigenvectors().partialPivLu().solve(Map<Vec>((dcomplex*)psi0, dim)).asDiagonal();
+
+		Mat gamma = Mat(dim, tDim);
 		for (int t = 0; t < tDim; ++t)
 		{
-			const auto coeff2 = two_pi_i * thickness[t] * coeff;
+			const auto coeff2 = two_pi_i * thickness[t];
 			for (int g = 0; g < dim; ++g)
-				gammma_alpha[g] = exp(values[g] * coeff2) * alpha[g];
-			res.col(t).noalias() = vectors * gammma_alpha;
+				gamma(g,t) = exp(values[g] * coeff2);
 		}
+		
+		Map<Mat>((dcomplex*)result, dim, tDim).noalias() = vectors * gamma;
 	}
 
 	//CBEDソルバー. 固有値、固有ベクトル、αも返す
-	EIGEN_FUNCS_API void _CBEDSolver_Eigen2(int dim, double potential[], double psi0[], int tDim, double thickness[], double coeff, double Values[], double Vectors[], double Alphas[], double Tg[])
+	EIGEN_FUNCS_API void _CBEDSolver_Eigen2(int dim, double potential[], double psi0[], int tDim, double thickness[], double Values[], double Vectors[], double Alphas[], double Tg[])
 	{
 		auto vals = Map<Vec>((dcomplex*)Values, dim);
 		auto vecs = Map<Mat>((dcomplex*)Vectors, dim, dim);
@@ -285,7 +284,7 @@ extern "C" {
 		Vec gammma_alpha = Vec(dim);
 		for (int t = 0; t < tDim; ++t)
 		{
-			const auto coeff2 = two_pi_i * thickness[t] * coeff;
+			const auto coeff2 = two_pi_i * thickness[t];
 			for (int g = 0; g < dim; ++g)
 				gammma_alpha[g] = exp(vals[g] * coeff2) * alphas[g];
 			tg.col(t).noalias() = vecs * gammma_alpha;
@@ -293,20 +292,20 @@ extern "C" {
 	}
 
 	//CBEDソルバー
-	EIGEN_FUNCS_API void _CBEDSolver_MtxExp(int dim, double potential[], double psi0[], int tDim, double tStart, double tStep, double coeff, double result[])
+	EIGEN_FUNCS_API void _CBEDSolver_MtxExp(int dim, double potential[], double psi0[], int tDim, double tStart, double tStep, double result[])
 	{
 		auto res = Map<Mat>((dcomplex*)result, dim, tDim);
-		Mat matExp = (two_pi_i * tStart * coeff * Map<Mat>((dcomplex*)potential, dim, dim)).exp().eval();
+		Mat matExp = (two_pi_i * tStart * Map<Mat>((dcomplex*)potential, dim, dim)).exp().eval();
 		Vec vec = matExp * Map<Vec>((dcomplex*)psi0, dim);
 		res.col(0).noalias() = vec;
 		if (tStep == 0)
 			return;
 
 		if (tStart != tStep)
-			matExp = (two_pi_i * tStep * coeff * Map<Mat>((dcomplex*)potential, dim, dim)).exp().eval();
+			matExp = (two_pi_i * tStep * Map<Mat>((dcomplex*)potential, dim, dim)).exp().eval();
 		for (int t = 1; t < tDim; ++t)
 		{
-			vec = matExp * vec;
+			vec.noalias() = matExp * vec;
 			res.col(t).noalias() = vec;
 		}
 	}
