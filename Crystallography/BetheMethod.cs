@@ -635,8 +635,8 @@ public class BetheMethod
         //ガンマの対称行列×アルファを作成
         var gamma_alpha = new DVec(Enumerable.Range(0, dim).Select(n => Exp(TwoPiI * EigenValues[n] * thickness) * alpha[n]).ToArray());
 
-        //出射面での境界条件を考慮した位相にするため、以下の1行を追加 (20190827)
-        var p = new DiagonalMatrix(dim, dim, Beams.Select(b => Exp(PiI * (b.P - 2 * k_vac * Surface.Z) * thickness)).ToArray());
+        //出射面での境界条件を考慮した位相にする (20230827)
+        var p = new DiagonalMatrix(dim, dim, Beams.Select(b => Exp(PiI * b.P * thickness)).ToArray());
 
         //深さZにおけるψを求める
         var psi_atZ = p.Multiply(new DMat(dim, dim, EigenVectors).Multiply(gamma_alpha));
