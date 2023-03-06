@@ -16,8 +16,10 @@ using System.Linq;
 using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 using static System.Buffers.ArrayPool<System.Numerics.Complex>;
 using static System.Numerics.Complex;
@@ -117,9 +119,9 @@ public class BetheMethod
     static BetheMethod()
     {
         EigenEnabled = NativeWrapper.Enabled;
-        BlasEnabled = Control.TryUseNativeOpenBLAS();
-        MklEnabled = Control.TryUseNativeMKL();
-        CudaEnabled = Control.TryUseNativeCUDA();
+        BlasEnabled = MathNet.Numerics.Control.TryUseNativeOpenBLAS();
+        MklEnabled = MathNet.Numerics.Control.TryUseNativeMKL();
+        CudaEnabled = MathNet.Numerics.Control.TryUseNativeCUDA();
     }
     public BetheMethod(Crystal crystal)
     {
@@ -813,7 +815,7 @@ public class BetheMethod
         //k0ベクトルを計算
         var vecK0 = getVecK0(kvac, u0);
         //計算対象のg-Vectorsを決める。indexが小さく、かつsg(励起誤差)の小さいg-vectorを抽出する
-        Beams = Find_gVectors(BaseRotation, vecK0);
+        Beams = Find_gVectors(BaseRotation, vecK0).OrderBy(e => e.Vec.Length2).ToArray();
 
         #region 検証コード 25nm^-1 以上のビームは削除  25nm^-1 = 62.7mrad
         //var _beam = new List<Beam>();
@@ -835,16 +837,17 @@ public class BetheMethod
         //uDictionary.Clear();
         //var temp2 = new (Complex real, Complex imag)[Beams.Length * Beams.Length];
 
-        //double sum = 0;
         //uDictionary.Clear();
-        //var xx = getU(AccVoltage, Beams[5] - Beams[0],null,0.06,0.12).Imag * 1 / 1.39139014900906 * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
+        //var xx = getU(AccVoltage, Beams[0] - Beams[0], null, 0.06, 0.12).Imag * 1 / 1.39139014900906 * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
+        //uDictionary.Clear();
+        //var yy = getU(AccVoltage, Beams[0] - Beams[0], null, 0.00, 1.0).Imag * 1 / 1.39139014900906 * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
 
         //n = 0;
         //for (int i = 0; i < Beams.Length; i++)
         //    for (int j = 0; j < Beams.Length; j++)
         //    {
         //        temp2[n++] = getU(AccVoltage, Beams[i] - Beams[j], null, 0.06, 120);
-        //        sum += Math.Pow(temp2[n - 1].imag.Real - temp1[n - 1].imag.Real, 2);
+        //        _sum += Math.Pow(temp2[n - 1].imag.Real - temp1[n - 1].imag.Real, 2);
         //    }
         #endregion
 
@@ -880,8 +883,6 @@ public class BetheMethod
         //Transmission coefficient tc[k][t][g]
         var tc = BeamDirections.AsParallel().WithDegreeOfParallelism(thread).Select((beamDirection, i) =>
         {
-            var coeff = 1;// Math.Abs(1.0 / beamDirection.Z); // = 1/cosTau
-
             var vecK0 = getVecK0(kvac, u0, beamDirection);
             k_vec[i] = vecK0;
 
@@ -910,7 +911,7 @@ public class BetheMethod
                     var tg = new DMat(bLen, tLen);
                     for (int t = 0; t < tLen; t++)
                     {
-                        var gammmaAlpha = new DVec(eVal[i].Select((ev, g) => Exp(TwoPiI * ev * thicknesses[t] * coeff) * α[i][g]).ToArray());//ガンマの対称行列×アルファを作成
+                        var gammmaAlpha = new DVec(eVal[i].Select((ev, g) => Exp(TwoPiI * ev * thicknesses[t] ) * α[i][g]).ToArray());//ガンマの対称行列×アルファを作成
                         tg.SetColumn(t, evd.EigenVectors * gammmaAlpha);//深さtにおけるψを求める
                     }
                     result = tg.Values;
@@ -923,7 +924,7 @@ public class BetheMethod
                 var _tc = thicknesses.Select((thickness, t) => new Complex[bLen]).ToArray();
                 for (int t = 0; t < tLen; t++)
                     for (int g = 0; g < bLen; g++)
-                        _tc[t][g] = result[t * bLen + g] * Exp(PiI * beams[g].P * thicknesses[t]);//かなり近い
+                        _tc[t][g] = result[t * bLen + g] * Exp(TwoPiI * kg_z[i][g] * thicknesses[t]);
                 return _tc;
             }
             finally { /*Shared.Return(eigenMatrix);*/ ArrayPool<Beam>.Shared.Return(beams); }
@@ -966,12 +967,44 @@ public class BetheMethod
         //qList　計算対象のQを網羅 
         var mat = BaseRotation * Crystal.MatrixInverse.Transpose();
         var qList = Beams.AsParallel().SelectMany(e1 => Beams.Select(e2 => (e1 - e2).Index)).Distinct()
-            .Select(e => new Beam(e, mat * e)).Where(e => k_xy.Any(e2 => A(e2) && A(e2 + e.Vec.ToPointD))).OrderBy(e => e.Vec.ToPointD.Length2).ToList();
+            .Select(e => new Beam(e, mat * e)).Where(e => k_xy.Any(e2 => A(e2) && A(e2 + e.Vec.ToPointD))).OrderBy(e => e.Vec.Length2).ToList();
+        
         //if(qList.Count > Beams.Length)
         //    qList.RemoveRange(Beams.Length, qList.Count - Beams.Length);
 
         //g_q_index (あるq[m]に対して、g-qの反射は、Beams配列で何番目か)
         var g_qIndex = qList.Select(q => Beams.Select((g1, n) => (g: n, g_q: Array.FindIndex(Beams, g2 => g2.Index == (g1 - q).Index))).Where(e => e.g_q != -1).ToArray()).ToArray();
+        #endregion
+
+        #region 検証用コード
+        //var sb = new StringBuilder();
+        //foreach (var q in qList)
+        //{
+        //    sb.Append($"({q.H} {q.K} {q.L})\t");
+
+        //    uDictionary.Clear();
+        //    var (real, imag) = getU(AccVoltage, q);
+        //    real *= 1 / 1.39139014900906 * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
+        //    imag *= 1 / 1.39139014900906 * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
+        //    sb.Append($"{real.Real}\t{real.Imaginary}\t{imag.Real}\t{imag.Imaginary}\t");
+
+        //    uDictionary.Clear();
+        //    (real, imag) = getU(AccVoltage, q, null, 0.0, 1.0);
+        //    real *= 1 / 1.39139014900906 * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
+        //    imag *= 1 / 1.39139014900906 * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
+
+        //    sb.Append($"{imag.Real}\t{imag.Imaginary}\t");
+
+        //    uDictionary.Clear();
+        //    (real, imag) = getU(AccVoltage, q, null, 0.06, 0.12);
+        //    real *= 1 / 1.39139014900906 * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
+        //    imag *= 1 / 1.39139014900906 * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
+
+        //    sb.Append($"{imag.Real}\t{imag.Imaginary}\r\n");
+        //}
+        //;
+        //Clipboard.SetDataObject(sb.ToString());
+
         #endregion
 
         #region U行列の計算 
@@ -1452,8 +1485,8 @@ public class BetheMethod
             Complex fReal = 0, fImag = 0;
             foreach (var atoms in Crystal.Atoms)
             {
-                var es = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron];//5 gaussian
-                //var es = AtomStatic.ElectronScatteringEightGaussian[atoms.AtomicNumber];//8 gaussian  
+                //var es = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron];//5 gaussian
+                var es = AtomStatic.ElectronScatteringEightGaussian[atoms.AtomicNumber];//8 gaussian  
                 var real = es.Factor(s2);//弾性散乱因子
                 #region お蔵
                 //var m = atoms.Dsf.UseIso || index == (0, 0, 0) ? atoms.Dsf.Biso : 0;

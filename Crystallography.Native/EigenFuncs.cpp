@@ -281,13 +281,13 @@ extern "C" {
 		vals.noalias() = solver.eigenvalues();
 		vecs.noalias() = solver.eigenvectors();
 		alphas.noalias() = vecs.partialPivLu().solve(Map<Vec>((dcomplex*)psi0, dim));
-		Vec gammma_alpha = Vec(dim);
+		Vec gamma_alpha = Vec(dim);
 		for (int t = 0; t < tDim; ++t)
 		{
 			const auto coeff2 = two_pi_i * thickness[t];
 			for (int g = 0; g < dim; ++g)
-				gammma_alpha[g] = exp(vals[g] * coeff2) * alphas[g];
-			tg.col(t).noalias() = vecs * gammma_alpha;
+				gamma_alpha[g] = exp(vals[g] * coeff2) * alphas[g];
+			tg.col(t).noalias() = vecs * gamma_alpha;
 		}
 	}
 
@@ -305,7 +305,7 @@ extern "C" {
 			matExp = (two_pi_i * tStep * Map<Mat>((dcomplex*)potential, dim, dim)).exp().eval();
 		for (int t = 1; t < tDim; ++t)
 		{
-			vec.noalias() = matExp * vec;
+			vec = matExp * vec;
 			res.col(t).noalias() = vec;
 		}
 	}

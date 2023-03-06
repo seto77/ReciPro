@@ -1,5 +1,6 @@
 ﻿using MathNet.Numerics.Integration;
 using MathNet.Numerics.LinearAlgebra.Double;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -2565,6 +2566,9 @@ new ES(4.86738014,0.319974401,4.58872425,
             Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
         }
 
+
+        #region 非弾性散乱因子の計算
+
         /// <summary>
         /// 局所形式の非弾性散乱因子 (TDS吸収ポテンシャル) 
         /// </summary>
@@ -2590,6 +2594,46 @@ new ES(4.86738014,0.319974401,4.58872425,
                 var sum2m = sum + 2 * m;
                 return p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / sum2m) / sum2m);
             })) * Math.PI * gamma * 2 / k0;
+        }
+
+        /// <summary>
+        /// 局所形式の非弾性散乱因子 FlatEwald近似 未完成
+        /// </summary>
+        /// <param name="kV"></param>
+        /// <param name="g"> g ベクトル 単位は nm </param>
+        /// <param name="h"> hベクトル 単位はnm</param>
+        /// <param name="m"> U ×8×π^2 単位は nm^2 </param>
+        /// <param name="inner"> 検出器の内側 単位はラジアン</param>
+        /// <param name="outer"> 検出器の外側 単位はラジアン</param>
+        /// <returns></returns>
+        public double FactorImaginaryAnnularFlatEwald(double kV, Vector3DBase g, double m, double inner, double outer)
+        {
+            if (double.IsNaN(m)) return 0;
+            var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
+            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
+
+            var G = g.ToPointD;
+            var gLen2 = G.Length2;//単位はnm^-2
+
+            var result = GaussLegendreRule.Integrate(R =>
+            {
+                //double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
+                return GaussLegendreRule.Integrate(φ =>
+                {
+                    var K = R * new PointD(Math.Cos(φ), Math.Sin(φ));
+                    //var K = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
+                    double kMinusG = (K - G / 2).Length2, kPlusG = (K + G / 2).Length2;//単位はnm^-2
+                    double f_kMinusG = 0, f_kPlusG = 0;
+                    foreach (var (A, B) in Prms)
+                    {
+                        f_kMinusG += A * Math.Exp(-kMinusG / 400 * B );
+                        f_kPlusG += A * Math.Exp(-kPlusG / 400 * B );
+                    }
+                    return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (gLen2 - kMinusG - kPlusG) / 4));// * sinThetaを外に出して、少しでも早く
+                }, 0, 2 * Math.PI, 30);
+            }, k0 * Math.Sin(inner), k0 * Math.Sin(outer), 80);
+            
+            return gamma / Math.PI/Math.PI/ k0 * result * 0.01;
         }
 
         /// <summary>
@@ -2665,7 +2709,7 @@ new ES(4.86738014,0.319974401,4.58872425,
         }
 
         /// <summary>
-        /// 非局所形式の非弾性散乱因子　近軸近似(ビーム径射角ゼロ) Flat Ewald球近似
+        /// 非局所形式の非弾性散乱因子　近軸近似(ビーム径射角ゼロ) Flat Ewald球近似 遅いので、没?
         /// </summary>
         /// <param name="kV"></param>
         /// <param name="g"></param>
@@ -2689,7 +2733,7 @@ new ES(4.86738014,0.319974401,4.58872425,
             }
             , 0, 2 * Math.PI, k0 * Math.Tan(inner), k0 * Math.Tan(outer), 40) * gamma / k0 / 2;
         }
-
+        #endregion
 
         /// <summary>
         /// 電子線用のコンストラクタ (3 lorentian, 3 gaussian)
