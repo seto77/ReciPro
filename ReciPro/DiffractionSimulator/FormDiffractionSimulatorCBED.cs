@@ -18,6 +18,8 @@ public partial class FormDiffractionSimulatorCBED : Form
 
     public FormDiffractionSimulator FormDiffractionSimulator;
 
+    public bool LACBED => radioButtonLACBED.Checked;
+
     private double Voltage => FormDiffractionSimulator.waveLengthControl.Energy;
     //private double WaveLength => FormDiffractionSimulator.WaveLength;
     //private double Thickness => numericBoxWholeThicknessStart.Value;
@@ -45,7 +47,7 @@ public partial class FormDiffractionSimulatorCBED : Form
 
     //public double Defocus { get { return numericBoxDefocus.Value; } }
     //public double Cs { get { return numericBoxCs.Value; } }
-    public double AlphaMax => trackBarAdvancedAlphaMax.Value / 1000.0;
+    public double AlphaMax => numericBoxAlphaMax.Value / 1000.0;
 
     public bool DrawGuideCircles => checkBoxDrawGuideCircles.Checked;
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
@@ -152,7 +154,7 @@ public partial class FormDiffractionSimulatorCBED : Form
         else
             solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.MtxExp_MKL : BetheMethod.Solver.MtxExp_Eigen;
 
-        Crystal.Bethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, ThicknessArray, Directions, solver, numericBoxThread.ValueInteger);
+        Crystal.Bethe.RunCBED(MaxNumOfBloch, Voltage, Crystal.RotationMatrix, ThicknessArray, Directions, LACBED, solver, numericBoxThread.ValueInteger);
     }
     private void buttonStop_Click(object sender, EventArgs e)
     {
@@ -373,18 +375,15 @@ public partial class FormDiffractionSimulatorCBED : Form
     #endregion
 
     #region 入力パラメータ関連のイベント
-    private bool trackBarAdvancedAlphaMax_ValueChanged(object sender, double value)
-    {
-        FormDiffractionSimulator.Draw();
-        return false;
-    }
 
+    private void numericBoxAlphaMax_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
+    private void radioButtonCBED_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
     private void numericBoxMaxNumOfG_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
     private void CheckBoxDrawGuideCircles_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
     private void NumericBoxDivision_ValueChanged(object sender, EventArgs e) =>
-        labelDivisionNumber.Text = "disk is divided into " + DivisionNumber.ToString() + " pixels.";
+        labelDivisionNumber.Text = $"disk is divided into {DivisionNumber} pixels.";
 
     private void NumericBoxWholeThicknessStart_ValueChanged(object sender, EventArgs e)
     {
@@ -404,4 +403,6 @@ public partial class FormDiffractionSimulatorCBED : Form
         FormDiffractionSimulator.saveCBEDPatternToolStripMenuItem.Visible = Visible;
         FormDiffractionSimulator.copyCBEDPatternToolStripMenuItem.Visible = Visible;
     }
+
+
 }

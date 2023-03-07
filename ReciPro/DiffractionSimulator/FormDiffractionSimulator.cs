@@ -506,6 +506,7 @@ public partial class FormDiffractionSimulator : Form
         #endregion 3次元ガウス関数のメモ書き
 
         var spotRadiusOnDetector = CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * ExcitationError / 2));
+        var spotRadiusOnDetectorF = (float)spotRadiusOnDetector;
         var error2 = ExcitationError * ExcitationError;
         var sqrtTwoPI = Math.Sqrt(2 * Math.PI);
         var linearCoeff = Math.Pow(trackBarIntensityForPointSpread.Value / 400.0, 6) * 100;
@@ -593,11 +594,16 @@ public partial class FormDiffractionSimulator : Form
 
                         if (IsScreenArea(pt))
                         {
-                            //CBEDモードの時
+                            //CBEDモードの時,黄色いガイドサークルを表示
                             if (FormDiffractionSimulatorCBED.Visible)
                             {
-                                if (FormDiffractionSimulatorCBED.DrawGuideCircles && Math.Abs(dev) < 3 * ExcitationError)//黄色いガイドサークルを表示
-                                    drawCircle(graphics, Color.Yellow, pt, radiusCBED);
+                                if (FormDiffractionSimulatorCBED.DrawGuideCircles)
+                                {
+                                    if (!FormDiffractionSimulatorCBED.LACBED || g.Index == (0, 0, 0))
+                                        drawCircle(graphics, Color.Yellow, pt, radiusCBED);
+                                    else
+                                        graphics.DrawCross(new Pen(Color.Yellow, (float)Resolution), pt, spotRadiusOnDetector);
+                                }
                             }
                             //ダイナミックコンプレッションモードがONの時は、描画しないで強度と座標だけを格納する
                             else if (outputOnlySpotInformation && IsScreenArea(pt))
@@ -660,8 +666,6 @@ public partial class FormDiffractionSimulator : Form
         if (outputOnlySpotInformation)
             return spotInformation.ToArray();
 
-        var l = (float)spotRadiusOnDetector;
-
         graphics.SmoothingMode = SmoothingMode.HighQuality;
 
         if (FormDiffractionSimulatorCBED.Visible)//CBEDモードの時は、ここでキャンセル
@@ -671,26 +675,17 @@ public partial class FormDiffractionSimulator : Form
         var ptOrigin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
         if (IsScreenArea(ptOrigin))
         {
-            var penOrigin = new Pen(colorControlOrigin.Color, (float)Resolution);
-            graphics.DrawLine(penOrigin, ptOrigin.X - l / 2f, ptOrigin.Y - l / 2f, ptOrigin.X + l / 2f, ptOrigin.Y + l / 2f);
-            graphics.DrawLine(penOrigin, ptOrigin.X + l / 2f, ptOrigin.Y - l / 2f, ptOrigin.X - l / 2f, ptOrigin.Y + l / 2f);
-            //fillCircle(pictureBoxOrigin.BackColor, ptOrigin, l);
+            graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), ptOrigin, spotRadiusOnDetector);
             if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1 && !radioButtonIntensityDynamical.Checked)
-                graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color)), (float)(ptOrigin.X + l / 2f), (float)(ptOrigin.Y + l / 2f));
-            //ダイレクトスポットの描画ここまで
+                graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color)), (float)(ptOrigin.X + spotRadiusOnDetectorF / 2f), (float)(ptOrigin.Y + spotRadiusOnDetectorF / 2f));
         }
         //垂線の足の描画
         if (Tau != 0 && IsScreenArea(new PointD(0, 0)))
         {
-            var penFoot = new Pen(colorControlFoot.Color, (float)Resolution);
-
-            graphics.DrawLine(penFoot, -l / 2f, -l / 2f, l / 2f, l / 2f);
-            graphics.DrawLine(penFoot, +l / 2f, -l / 2f, -l / 2f, l / 2f);
-
+            graphics.DrawCross(new Pen(colorControlFoot.Color, (float)Resolution), 0, 0, spotRadiusOnDetector);
             if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1)
-                graphics.DrawString("foot", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color)), l / 2f, l / 2f);
+                graphics.DrawString("foot", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color)), spotRadiusOnDetectorF / 2f, spotRadiusOnDetectorF / 2f);
         }
-        //垂線の足の描画ここまで
         return null;
     }
     #endregion

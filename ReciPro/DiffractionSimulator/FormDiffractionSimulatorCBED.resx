@@ -57,1324 +57,1443 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonExecute.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="comboBoxGradient.Items" xml:space="preserve">
+    <value>Positive</value>
   </data>
-  <data name="buttonExecute.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonExecute.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 24</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonExecute.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
-  </data>
-  <data name="buttonExecute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 28</value>
+  <data name="groupBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 180</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonExecute.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="buttonExecute.Text" xml:space="preserve">
-    <value>Execute</value>
-  </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>249, 17</value>
-  </metadata>
-  <data name="buttonExecute.ToolTip" xml:space="preserve">
-    <value>Execute a CBED simulation</value>
-  </data>
-  <data name="&gt;&gt;buttonExecute.Name" xml:space="preserve">
-    <value>buttonExecute</value>
-  </data>
-  <data name="&gt;&gt;buttonExecute.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonExecute.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;buttonExecute.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="checkBoxDrawGuideCircles.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxDrawGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxDrawGuideCircles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxDrawGuideCircles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 61</value>
-  </data>
-  <data name="checkBoxDrawGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 21</value>
-  </data>
-  <data name="checkBoxDrawGuideCircles.TabIndex" type="System.Int32, mscorlib">
+  <data name="trackBarGamma.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="checkBoxDrawGuideCircles.Text" xml:space="preserve">
-    <value>Draw guide circles</value>
+  <data name="statusStrip2.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;checkBoxDrawGuideCircles.Name" xml:space="preserve">
-    <value>checkBoxDrawGuideCircles</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDrawGuideCircles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDrawGuideCircles.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDrawGuideCircles.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="labelDivisionNumber.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelDivisionNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="labelDivisionNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 127</value>
-  </data>
-  <data name="labelDivisionNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 15</value>
-  </data>
-  <data name="labelDivisionNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="labelDivisionNumber.Text" xml:space="preserve">
-    <value>Disk is divided into 31029 pixels</value>
-  </data>
-  <data name="&gt;&gt;labelDivisionNumber.Name" xml:space="preserve">
-    <value>labelDivisionNumber</value>
-  </data>
-  <data name="&gt;&gt;labelDivisionNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelDivisionNumber.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;labelDivisionNumber.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="comboBoxSolver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
-  </data>
-  <data name="comboBoxSolver.Items" xml:space="preserve">
-    <value>Auto</value>
-  </data>
-  <data name="comboBoxSolver.Items1" xml:space="preserve">
-    <value>Eigenproblem with Eigen lib.</value>
-  </data>
-  <data name="comboBoxSolver.Items2" xml:space="preserve">
-    <value>Eigenproblem with MKL lib.</value>
-  </data>
-  <data name="comboBoxSolver.Items3" xml:space="preserve">
-    <value>Matrix exp. with Eigen lib.</value>
-  </data>
-  <data name="comboBoxSolver.Items4" xml:space="preserve">
-    <value>Matrix exp. with MKL lib.</value>
-  </data>
-  <data name="comboBoxSolver.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 28</value>
-  </data>
-  <data name="comboBoxSolver.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 21</value>
-  </data>
-  <data name="comboBoxSolver.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="comboBoxSolver.ToolTip" xml:space="preserve">
-    <value>Select the solver.
-All solvers produce the same results, but at different computational speeds.</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSolver.Name" xml:space="preserve">
-    <value>comboBoxSolver</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSolver.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSolver.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSolver.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="numericBoxThread.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxThread.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="numericBoxThread.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxThread.HeaderText" xml:space="preserve">
-    <value>Thread</value>
-  </data>
-  <data name="numericBoxThread.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 28</value>
-  </data>
-  <data name="numericBoxThread.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxThread.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxThread.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
-  </data>
-  <data name="numericBoxThread.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxThread.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 25</value>
-  </data>
-  <data name="numericBoxThread.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="numericBoxThread.ToolTip" xml:space="preserve">
-    <value>Set a CPU-thread number for the CBED simulation</value>
-  </data>
-  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
-    <value>Set a CPU-thread number for the CBED simulation</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThread.Name" xml:space="preserve">
-    <value>numericBoxThread</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThread.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThread.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThread.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="numericBoxThicknessStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxThicknessStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxThicknessStep.FooterText" xml:space="preserve">
-    <value>nm</value>
-  </data>
-  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
-    <value>with step of</value>
-  </data>
-  <data name="numericBoxThicknessStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 150</value>
-  </data>
-  <data name="numericBoxThicknessStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxThicknessStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxThicknessStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxDivision.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
-  </data>
-  <data name="numericBoxThicknessStep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 27</value>
-  </data>
-  <data name="numericBoxThicknessStep.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
-  </data>
-  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
-    <value>numericBoxThicknessStep</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessStep.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessStep.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.HeaderText" xml:space="preserve">
-    <value>Thickness from</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 150</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 27</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWholeThicknessStart.Name" xml:space="preserve">
-    <value>numericBoxWholeThicknessStart</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWholeThicknessStart.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWholeThicknessStart.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxWholeThicknessStart.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="numericBoxThicknessEnd.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxThicknessEnd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
-    <value>to</value>
-  </data>
-  <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 150</value>
-  </data>
-  <data name="numericBoxThicknessEnd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxThicknessEnd.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxThicknessEnd.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxThicknessEnd.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxThicknessEnd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
-  </data>
-  <data name="numericBoxThicknessEnd.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
-  </data>
-  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
-    <value>numericBoxThicknessEnd</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessEnd.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessEnd.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThicknessEnd.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>Max # of Bloch waves</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 57</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 27</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
-    <value>Set a number of Bloch waves to be calculated</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
-    <value>Set a number of Bloch waves to be calculated</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
-    <value>numericBoxMaxNumOfG</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
+  <data name="numericBoxAlphaMax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel2.Name" xml:space="preserve">
+    <value>toolStripStatusLabel2</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
+    <value>Number of Bloch waves</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxWholeThicknessStart.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAlphaMax.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;numericBoxMaxNumOfG.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxWholeThicknessStart.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
-  <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="&gt;&gt;comboBoxGradient.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 24</value>
+  <data name="numericBoxDivision.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 28</value>
+  <data name="numericBoxAlphaMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 27</value>
   </data>
-  <data name="buttonStop.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="numericBoxDivision.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="buttonStop.Text" xml:space="preserve">
-    <value>Stop</value>
+  <data name="numericBoxThicknessStep.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="buttonStop.ToolTip" xml:space="preserve">
-    <value>Stop the current simulation</value>
+  <data name="radioButtonCBED.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 21</value>
   </data>
-  <data name="buttonStop.Visible" type="System.Boolean, mscorlib">
+  <data name="label3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="&gt;&gt;buttonStop.Name" xml:space="preserve">
     <value>buttonStop</value>
   </data>
-  <data name="&gt;&gt;buttonStop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;comboBoxGradient.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonStop.Parent" xml:space="preserve">
+  <data name="&gt;&gt;comboBoxSolver.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Parent" xml:space="preserve">
     <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.FooterText" xml:space="preserve">
-    <value>mrad</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.HeaderText" xml:space="preserve">
-    <value>Semiangle</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 91</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 25</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.ToolTip" xml:space="preserve">
-    <value>Set a semiangle of the convergent electron beam.
-This value directly corresponds to the disk size.</value>
-  </data>
-  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Name" xml:space="preserve">
-    <value>trackBarAdvancedAlphaMax</value>
-  </data>
-  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Type" xml:space="preserve">
-    <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;trackBarAdvancedAlphaMax.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;trackBarAdvancedAlphaMax.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="numericBoxDivision.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxDivision.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxDivision.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt</value>
-  </data>
-  <data name="numericBoxDivision.HeaderText" xml:space="preserve">
-    <value>Diameter divisions</value>
-  </data>
-  <data name="numericBoxDivision.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 122</value>
-  </data>
-  <data name="numericBoxDivision.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxDivision.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxDivision.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxDivision.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxDivision.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 27</value>
-  </data>
-  <data name="numericBoxDivision.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="numericBoxDivision.ToolTip" xml:space="preserve">
-    <value>Set a number of divisions along the diameter.
-The number of two-dimensional divisions is displayed on the right</value>
-  </data>
-  <data name="numericBoxDivision.ToolTip1" xml:space="preserve">
-    <value>Set a number of divisions along the diameter.
-The number of two-dimensional divisions is displayed on the right</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDivision.Name" xml:space="preserve">
-    <value>numericBoxDivision</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDivision.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDivision.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDivision.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 30</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
-  </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Solver</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, -1</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 180</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Input parameters</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButtonIndividualDisk.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonIndividualDisk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 53</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 21</value>
-  </data>
-  <data name="radioButtonIndividualDisk.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
-    <value>for individual disks.</value>
-  </data>
-  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
-    <value>A brightness level is applied to each upper/lower limits of individual disc.</value>
-  </data>
-  <data name="&gt;&gt;radioButtonIndividualDisk.Name" xml:space="preserve">
-    <value>radioButtonIndividualDisk</value>
-  </data>
-  <data name="&gt;&gt;radioButtonIndividualDisk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonIndividualDisk.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;radioButtonIndividualDisk.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioButtonAllDisks.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonAllDisks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 53</value>
-  </data>
-  <data name="radioButtonAllDisks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 21</value>
-  </data>
-  <data name="radioButtonAllDisks.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="radioButtonAllDisks.Text" xml:space="preserve">
-    <value>for all disks</value>
-  </data>
-  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
-    <value>A same brightness level (Min/Max) is applied to all discs.</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAllDisks.Name" xml:space="preserve">
-    <value>radioButtonAllDisks</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAllDisks.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAllDisks.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAllDisks.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 154</value>
-  </data>
-  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 0</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 15</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Gradient</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label11.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="statusStrip2.Text" xml:space="preserve">
+    <value>statusStrip2</value>
   </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 154</value>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
-  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 0</value>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
   </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 15</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="comboBoxGradient.Items" xml:space="preserve">
-    <value>Positive</value>
-  </data>
-  <data name="comboBoxGradient.Items1" xml:space="preserve">
-    <value>Negative</value>
-  </data>
-  <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 151</value>
-  </data>
-  <data name="comboBoxGradient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="comboBoxGradient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 23</value>
-  </data>
-  <data name="comboBoxGradient.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
-    <value>Select the gradient</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.Name" xml:space="preserve">
-    <value>comboBoxGradient</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;radioButtonCBED.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="&gt;&gt;groupBoxOutput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboBoxScale.Items" xml:space="preserve">
-    <value>Gray</value>
-  </data>
-  <data name="comboBoxScale.Items1" xml:space="preserve">
-    <value>Cold-Warm</value>
-  </data>
-  <data name="comboBoxScale.Items2" xml:space="preserve">
-    <value>Spectrum</value>
-  </data>
-  <data name="comboBoxScale.Items3" xml:space="preserve">
-    <value>FIre</value>
-  </data>
-  <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 151</value>
-  </data>
-  <data name="comboBoxScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="comboBoxScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 23</value>
+  <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBoxScale.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="comboBoxScale.ToolTip" xml:space="preserve">
-    <value>Select a color</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale.Name" xml:space="preserve">
-    <value>comboBoxScale</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale.Parent" xml:space="preserve">
+  <data name="&gt;&gt;trackBarGamma.Parent" xml:space="preserve">
     <value>groupBoxOutput</value>
   </data>
-  <data name="&gt;&gt;comboBoxScale.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="numericBoxThread.ToolTip" xml:space="preserve">
+    <value>Set a CPU-thread number for the CBED simulation</value>
   </data>
-  <data name="trackBarOutputThickness.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label11.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="trackBarOutputThickness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 24</value>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
-  <data name="trackBarOutputThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 18</value>
+  <data name="buttonExecute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 28</value>
   </data>
-  <data name="trackBarOutputThickness.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
-    <value>Select a sample thicknes to be displayed.</value>
+  <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;trackBarOutputThickness.Name" xml:space="preserve">
-    <value>trackBarOutputThickness</value>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
-  <data name="&gt;&gt;trackBarOutputThickness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 21</value>
   </data>
-  <data name="&gt;&gt;trackBarOutputThickness.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxAlphaMax.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>groupBoxOutput</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>787, 205</value>
   </data>
   <data name="&gt;&gt;trackBarOutputThickness.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="trackBarGamma.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="numericBoxThread.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 23</value>
   </data>
-  <data name="trackBarGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="numericBoxThicknessEnd.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAllDisks.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCBED.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="numericBoxAlphaMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, -1</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCBED.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 101</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;comboBoxScale.Name" xml:space="preserve">
+    <value>comboBoxScale</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.Text" xml:space="preserve">
+    <value>Draw guide circles</value>
+  </data>
+  <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 151</value>
+  </data>
+  <data name="numericBoxDivision.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 58</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAllDisks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 21</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 24</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndividualDisk.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxThicknessEnd.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxThread.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxSolver.ToolTip" xml:space="preserve">
+    <value>Select the solver.
+All solvers produce the same results, but at different computational speeds.</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value>Set a range and step of the sample thichnesses</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>Set a range and step of the sample thichnesses</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAlphaMax.Name" xml:space="preserve">
+    <value>numericBoxAlphaMax</value>
+  </data>
+  <data name="numericBoxThicknessStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 121</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="trackBarGamma.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 127</value>
   </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="textBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 25</value>
+  </data>
+  <data name="labelGamma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 17</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAlphaMax.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="comboBoxScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 23</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>with step of</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;groupBoxOutput.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Name" xml:space="preserve">
+    <value>numericBoxThread</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="textBoxThickness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonExecute.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 5, 3, 5</value>
+  </data>
+  <data name="labelGamma.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonStop.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 148</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>Set a range and step of the sample thichnesses</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCBED.Name" xml:space="preserve">
+    <value>radioButtonCBED</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Name" xml:space="preserve">
+    <value>numericBoxDivision</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndividualDisk.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxThicknessStep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="buttonExecute.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>Set a CPU-thread number for the CBED simulation</value>
+  </data>
+  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 16</value>
+  </data>
+  <data name="numericBoxAlphaMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuideCircles.Name" xml:space="preserve">
+    <value>checkBoxDrawGuideCircles</value>
+  </data>
+  <data name="radioButtonCBED.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxThicknessStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;toolStripProgressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="numericBoxThicknessEnd.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="comboBoxSolver.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 27</value>
+  </data>
+  <data name="numericBoxDivision.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="statusStrip2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 183</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="numericBoxThread.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;labelGamma.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>nm</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Gradient</value>
+  </data>
+  <data name="&gt;&gt;statusStrip2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuideCircles.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="numericBoxDivision.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 148</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
+    <value>Semiangle</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="trackBarIntensityBrightnessMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 18</value>
+  </data>
+  <data name="comboBoxScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Select a color</value>
+  </data>
+  <data name="labelDivisionNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 15</value>
+  </data>
+  <data name="numericBoxThread.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButtonIndividualDisk.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLACBED.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="comboBoxScale.Items2" xml:space="preserve">
+    <value>Spectrum</value>
+  </data>
+  <data name="numericBoxThread.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="comboBoxSolver.Items1" xml:space="preserve">
+    <value>Eigenproblem with Eigen lib.</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 17</value>
+  </data>
+  <data name="trackBarGamma.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>228, 53</value>
+  </data>
+  <data name="numericBoxDivision.ToolTip" xml:space="preserve">
+    <value>Set a number of divisions along the diameter.
+The number of two-dimensional divisions is displayed on the right</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxGradient.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="numericBoxAlphaMax.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="numericBoxThread.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 27</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 17</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 154</value>
+  </data>
+  <data name="radioButtonAllDisks.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="radioButtonAllDisks.Text" xml:space="preserve">
+    <value>for all disks</value>
+  </data>
+  <data name="numericBoxThicknessStep.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Name" xml:space="preserve">
+    <value>trackBarIntensityBrightnessMax</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
+    <value>A brightness level is applied to each upper/lower limits of individual disc.</value>
+  </data>
+  <data name="statusStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>787, 22</value>
+  </data>
+  <data name="numericBoxThread.HeaderText" xml:space="preserve">
+    <value>Thread</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
+    <value>toolStripStatusLabel1</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxThread.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
+    <value>A same brightness level (Min/Max) is applied to all discs.</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 77</value>
+  </data>
+  <data name="radioButtonLACBED.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;toolStripProgressBar.Name" xml:space="preserve">
+    <value>toolStripProgressBar</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="numericBoxThread.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="&gt;&gt;textBoxThickness.Name" xml:space="preserve">
+    <value>textBoxThickness</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 27</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>Output parameters</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 15</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Name" xml:space="preserve">
+    <value>labelDivisionNumber</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="comboBoxGradient.Items1" xml:space="preserve">
+    <value>Negative</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 55</value>
+  </data>
+  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Thickness</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLACBED.Name" xml:space="preserve">
+    <value>radioButtonLACBED</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAllDisks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.Name" xml:space="preserve">
+    <value>trackBarOutputThickness</value>
+  </data>
+  <data name="comboBoxSolver.Items2" xml:space="preserve">
+    <value>Eigenproblem with MKL lib.</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 17</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 77</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAllDisks.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="textBoxThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxAlphaMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
+    <value>Set a range and step of the sample thichnesses</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButtonAllDisks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 53</value>
+  </data>
+  <data name="labelGamma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 125</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="trackBarGamma.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 18</value>
   </data>
-  <data name="trackBarGamma.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Set an intensity at which the brightness is displayed as zero.</value>
+  </data>
+  <data name="comboBoxSolver.Items3" xml:space="preserve">
+    <value>Matrix exp. with Eigen lib.</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonStop.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="comboBoxGradient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 23</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 17</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxOutput.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="numericBoxThicknessStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 148</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;buttonExecute.Name" xml:space="preserve">
+    <value>buttonExecute</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBoxGradient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxDivision.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 28</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 101</value>
+  </data>
+  <data name="comboBoxScale.Items" xml:space="preserve">
+    <value>Gray</value>
+  </data>
+  <data name="buttonExecute.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 24</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 0</value>
+  </data>
+  <data name="numericBoxThread.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 25</value>
+  </data>
+  <data name="radioButtonCBED.Text" xml:space="preserve">
+    <value>CBED</value>
+  </data>
+  <data name="buttonExecute.ToolTip" xml:space="preserve">
+    <value>Execute a CBED simulation</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 27</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 29</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 151</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 91</value>
+  </data>
+  <data name="&gt;&gt;labelGamma.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Adjust brightness </value>
+  </data>
+  <data name="trackBarGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="comboBoxSolver.Items" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>CBED</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThread.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 24</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="trackBarOutputThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 18</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButtonLACBED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 58</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
+    <value>numericBoxThicknessStep</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="labelGamma.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="labelDivisionNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
+    <value>for individual disks.</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>Select a sample thicknes to be displayed.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="trackBarGamma.ToolTip" xml:space="preserve">
     <value>Set an gamma value.
 The larger this value is, the brighter the outer disk appears to be.</value>
   </data>
-  <data name="&gt;&gt;trackBarGamma.Name" xml:space="preserve">
-    <value>trackBarGamma</value>
-  </data>
-  <data name="&gt;&gt;trackBarGamma.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarGamma.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;trackBarGamma.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 101</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 18</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Set an intensity at which the brightness is displayed as the maximum value.</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Name" xml:space="preserve">
-    <value>trackBarIntensityBrightnessMax</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 77</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 18</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Set an intensity at which the brightness is displayed as zero.</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Name" xml:space="preserve">
-    <value>trackBarIntensityBrightnessMin</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="textBoxThickness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 21</value>
-  </data>
-  <data name="textBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 25</value>
-  </data>
-  <data name="textBoxThickness.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="textBoxThickness.Text" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;textBoxThickness.Name" xml:space="preserve">
-    <value>textBoxThickness</value>
-  </data>
-  <data name="&gt;&gt;textBoxThickness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxThickness.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;textBoxThickness.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 24</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 17</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>nm</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 24</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Thickness</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="labelGamma.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="labelGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelGamma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 125</value>
-  </data>
-  <data name="labelGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 17</value>
-  </data>
-  <data name="labelGamma.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="labelGamma.Text" xml:space="preserve">
-    <value>Gamma (enhance outer diks)</value>
-  </data>
-  <data name="&gt;&gt;labelGamma.Name" xml:space="preserve">
-    <value>labelGamma</value>
-  </data>
-  <data name="&gt;&gt;labelGamma.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelGamma.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;labelGamma.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 101</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 17</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Max</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
+  <data name="labelDivisionNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;label8.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
+  <data name="groupBoxOutput.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>14</value>
+  <data name="numericBoxWholeThicknessStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxMaxNumOfG.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 84</value>
   </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="trackBarIntensityBrightnessMax.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="buttonExecute.Text" xml:space="preserve">
+    <value>Execute</value>
   </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 77</value>
+  <data name="&gt;&gt;buttonStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 17</value>
+  <data name="trackBarIntensityBrightnessMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 18</value>
   </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
+  <data name="checkBoxDrawGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 21</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Min</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>15</value>
+  <data name="numericBoxThread.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 55</value>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 154</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Adjust brightness </value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 91</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 17</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Brightness</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="groupBoxOutput.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, -1</value>
-  </data>
-  <data name="groupBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>377, 180</value>
-  </data>
-  <data name="groupBoxOutput.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>Output parameters</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOutput.Name" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOutput.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOutput.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOutput.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="statusStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>133, 17</value>
-  </metadata>
-  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 16</value>
-  </data>
-  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8pt</value>
-  </data>
-  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 17</value>
-  </data>
-  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
-    <value>    </value>
-  </data>
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>   </value>
-  </data>
-  <data name="statusStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 181</value>
-  </data>
-  <data name="statusStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>787, 22</value>
-  </data>
-  <data name="statusStrip2.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="statusStrip2.Text" xml:space="preserve">
-    <value>statusStrip2</value>
-  </data>
-  <data name="&gt;&gt;statusStrip2.Name" xml:space="preserve">
-    <value>statusStrip2</value>
-  </data>
-  <data name="&gt;&gt;statusStrip2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statusStrip2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>214</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 17</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>787, 203</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt</value>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>CBED</value>
+  <data name="&gt;&gt;buttonExecute.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
-  <data name="&gt;&gt;toolStripProgressBar.Name" xml:space="preserve">
-    <value>toolStripProgressBar</value>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;toolStripProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;statusStrip2.Name" xml:space="preserve">
+    <value>statusStrip2</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel2.Name" xml:space="preserve">
-    <value>toolStripStatusLabel2</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 17</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;buttonExecute.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
-    <value>toolStripStatusLabel1</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Color</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;groupBoxOutput.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
+  <data name="radioButtonCBED.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="radioButtonLACBED.Text" xml:space="preserve">
+    <value>LACBED</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormDiffractionSimulatorCBED</value>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>Set a range and step of the sample thichnesses</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Name" xml:space="preserve">
+    <value>trackBarIntensityBrightnessMin</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 17</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 15</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="numericBoxAlphaMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>225, 84</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Set an intensity at which the brightness is displayed as the maximum value.</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 27</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Stop the current simulation</value>
+  </data>
+  <data name="numericBoxThicknessStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="&gt;&gt;comboBoxScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="trackBarOutputThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="comboBoxScale.Items3" xml:space="preserve">
+    <value>FIre</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 21</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLACBED.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 24</value>
+  </data>
+  <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxThicknessStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="labelDivisionNumber.Text" xml:space="preserve">
+    <value>Disk is divided into 31029 pixels</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.HeaderText" xml:space="preserve">
+    <value>Thickness from</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Name" xml:space="preserve">
+    <value>comboBoxSolver</value>
+  </data>
+  <data name="numericBoxDivision.HeaderText" xml:space="preserve">
+    <value>Diameter divisions</value>
+  </data>
+  <data name="radioButtonCBED.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="numericBoxAlphaMax.FooterText" xml:space="preserve">
+    <value>mrad</value>
+  </data>
+  <data name="labelGamma.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
+    <value>numericBoxThicknessEnd</value>
+  </data>
+  <data name="labelGamma.Text" xml:space="preserve">
+    <value>Gamma (enhance outer diks)</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>   </value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 17</value>
+  </data>
+  <data name="comboBoxSolver.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
+  </data>
+  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8pt</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="radioButtonCBED.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;radioButtonIndividualDisk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButtonLACBED.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxSolver.Items4" xml:space="preserve">
+    <value>Matrix exp. with MKL lib.</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 180</value>
+  </data>
+  <data name="groupBoxOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;trackBarGamma.Name" xml:space="preserve">
+    <value>trackBarGamma</value>
+  </data>
+  <data name="&gt;&gt;buttonExecute.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="trackBarOutputThickness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonLACBED.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 21</value>
+  </data>
+  <data name="labelDivisionNumber.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;trackBarOutputThickness.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="radioButtonCBED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 58</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Input parameters</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuideCircles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonStop.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="numericBoxDivision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 27</value>
+  </data>
+  <data name="radioButtonIndividualDisk.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxSolver.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 21</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormDiffractionSimulatorCBED</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="numericBoxThicknessStep.FooterText" xml:space="preserve">
+    <value>nm</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 0</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuideCircles.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
+    <value>Set a number of Bloch waves to be calculated</value>
+  </data>
+  <data name="&gt;&gt;trackBarIntensityBrightnessMin.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 24</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonExecute.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Solver</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGradient.Name" xml:space="preserve">
+    <value>comboBoxGradient</value>
+  </data>
+  <data name="comboBoxSolver.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonExecute.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="trackBarOutputThickness.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>Set a range and step of the sample thichnesses</value>
+  </data>
+  <data name="textBoxThickness.Text" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="radioButtonAllDisks.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDivision.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Set a number of Bloch waves to be calculated</value>
+  </data>
+  <data name="numericBoxThicknessEnd.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="radioButtonLACBED.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
+    <value>numericBoxMaxNumOfG</value>
+  </data>
+  <data name="groupBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, -1</value>
+  </data>
+  <data name="comboBoxScale.Items1" xml:space="preserve">
+    <value>Cold-Warm</value>
+  </data>
+  <data name="radioButtonLACBED.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;comboBoxSolver.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxNumOfG.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAllDisks.Name" xml:space="preserve">
+    <value>radioButtonAllDisks</value>
+  </data>
+  <data name="numericBoxDivision.ToolTip1" xml:space="preserve">
+    <value>Set a number of divisions along the diameter.
+The number of two-dimensional divisions is displayed on the right</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>    </value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonIndividualDisk.Name" xml:space="preserve">
+    <value>radioButtonIndividualDisk</value>
+  </data>
+  <data name="&gt;&gt;numericBoxWholeThicknessStart.Name" xml:space="preserve">
+    <value>numericBoxWholeThicknessStart</value>
+  </data>
+  <data name="&gt;&gt;labelGamma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelDivisionNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;labelDivisionNumber.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="numericBoxDivision.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;statusStrip2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 27</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Select the gradient</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxDivision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 116</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOutput.Name" xml:space="preserve">
+    <value>groupBoxOutput</value>
+  </data>
+  <data name="statusStrip2.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessStep.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;radioButtonLACBED.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;labelGamma.Name" xml:space="preserve">
+    <value>labelGamma</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThicknessEnd.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>214</value>
+  </metadata>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>249, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="statusStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>133, 17</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>ja</value>
+  </metadata>
 </root>

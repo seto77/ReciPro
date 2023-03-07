@@ -336,6 +336,18 @@ public static class GraphicsAlpha
     public static void DrawLine(this Graphics g, Pen pen, double x1, double y1, double x2, double y2)
         => g.DrawLine(pen, (float)x1, (float)y1, (float)x2, (float)y2);
 
+    #region ペケ (×) 印を描画
+    public static void DrawCross(this Graphics g, Pen pen, double x, double y, double size)
+    {
+        g.DrawLine(pen, x - size / 2, y - size / 2, x + size / 2, y + size / 2);
+        g.DrawLine(pen, x + size / 2, y - size / 2, x - size / 2, y + size / 2);
+    }
+    public static void DrawCross(this Graphics g, Pen pen, PointD p, double size)
+    {
+        g.DrawCross(pen, p.X, p.Y, size);
+    }
+    #endregion
+
     public static void FillPolygon(this Graphics g, Brush brush, PointD[] points, System.Drawing.Drawing2D.FillMode fillMode)
         => g.FillPolygon(brush, points.Select(p => p.ToPointF()).ToArray(), fillMode);
 

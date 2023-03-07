@@ -166,7 +166,8 @@ public class BetheMethod
     /// <param name="rotation">基準となる方位</param>
     /// <param name="thickness">厚みの配列</param>
     /// <param name="beamRotations">基準となる方位に乗算する方位配列</param>
-    public void RunCBED(int maxNumOfBloch, double voltage, Matrix3D rotation, double[] thickness, Vector3DBase[] beamDirections, Solver solver = Solver.Auto, int thread = 1)
+    public void RunCBED(int maxNumOfBloch, double voltage, Matrix3D rotation, 
+        double[] thickness, Vector3DBase[] beamDirections,bool LACBED, Solver solver = Solver.Auto, int thread = 1)
     {
         MaxNumOfBloch = maxNumOfBloch;
         AccVoltage = voltage;
@@ -176,7 +177,7 @@ public class BetheMethod
         Thicknesses = thickness;
 
         //var cuda = Control.TryUseNativeCUDA();
-        bwCBED.RunWorkerAsync((solver, thread));
+        bwCBED.RunWorkerAsync((LACBED, solver, thread));
     }
 
     /// <summary>
@@ -186,7 +187,7 @@ public class BetheMethod
     /// <param name="e"></param>
     private unsafe void cbed_DoWork(object sender, DoWorkEventArgs e)
     {
-        var (solver, thread) = ((Solver, int))e.Argument;
+        var (LACBED, solver, thread) = ((bool, Solver, int))e.Argument;
 
         //波数を計算
         var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
@@ -305,75 +306,97 @@ public class BetheMethod
 
         count = 0;
         bwCBED.ReportProgress(0, "Compiling disks");
-        //diskをコンパイルする
+
+
         Disks = new CBED_Disk[Thicknesses.Length][];
-        Parallel.For(0, Thicknesses.Length, t =>
+
+        if (LACBED)//LACBEDモードの時は000を作成しておしまい。
         {
-            Disks[t] = new CBED_Disk[Beams.Length];
-            for (int g = 0; g < Beams.Length; g++)
+            Parallel.For(0, Thicknesses.Length, t =>
             {
+                Disks[t] = new CBED_Disk[1];
                 var amplitudes = new Complex[BeamDirections.Length];
                 for (int r = 0; r < BeamDirections.Length; r++)
                     if (diskAmplitude[r] != null)
-                        amplitudes[r] = diskAmplitude[r][t * bLen + g];
+                        amplitudes[r] = diskAmplitude[r][t * bLen];
 
-                Disks[t][g] = new CBED_Disk(new[] { Beams[g].H, Beams[g].K, Beams[g].L }, Beams[g].Vec, Thicknesses[t], amplitudes);
-            }
-        });
+                Disks[t][0] = new CBED_Disk(new[] { Beams[0].H, Beams[0].K, Beams[0].L }, Beams[0].Vec, Thicknesses[t], amplitudes);
+                Disks[t][0].Amplitudes = amplitudes;
+            });
 
-        //ここから、diskの重なり合いを計算
-
-        //まず、各ディスクを構成するピクセルの座標を計算
-        var diskTemp = new (RectangleD Rect, PointD[] Pos)[Beams.Length];
-        Parallel.For(0, Beams.Length, g =>
-        //for(int g = 0; g < Beams.Length; g++)
+        }
+        else//通常のCBEDの場合はdiskをコンパイルする
+        {
+            Parallel.For(0, Thicknesses.Length, t =>
             {
-                if (!bwCBED.CancellationPending)
+                Disks[t] = new CBED_Disk[Beams.Length];
+                for (int g = 0; g < Beams.Length; g++)
                 {
-                    var pos = new PointD[BeamDirections.Length];
-                    for (int r = 0; r < pos.Length; r++)
-                    {
-                        //Ewald球中心(試料)から見た、逆格子ベクトルの方向
-                        var vec = kvac * BeamDirections[r] + Disks[0][g].G;
-                        //var vec = BeamDirections[r] * (new Vector3DBase(0, 0, kvac) - Disks[0][g].G);
-                        //var vec = BeamDirections[r] - Disks[0][g].G;
-                        pos[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
-                    }
-                    diskTemp[g] = (new RectangleD(new PointD(pos.Min(p => p.X), pos.Min(p => p.Y)), new PointD(pos.Max(p => p.X), pos.Max(p => p.Y))), pos);
+                    var amplitudes = new Complex[BeamDirections.Length];
+                    for (int r = 0; r < BeamDirections.Length; r++)
+                        if (diskAmplitude[r] != null)
+                            amplitudes[r] = diskAmplitude[r][t * bLen + g];
+
+                    Disks[t][g] = new CBED_Disk(new[] { Beams[g].H, Beams[g].K, Beams[g].L }, Beams[g].Vec, Thicknesses[t], amplitudes);
+
                 }
             });
 
-        //g1のディスク中のピクセル(r1)に対して、他のディスク(g2)の重なるピクセル(r2)を足し合わせていく。
-        Parallel.For(0, Beams.Length, g1 =>
-        //for(int g1=0; g1<Beams.Length;g1++)
-        {
-            if (!bwCBED.CancellationPending)
+            //ここから、diskの重なり合いを計算
+            if (!LACBED)
             {
-                var intensities = new double[Thicknesses.Length][];
-                for (int t = 0; t < Thicknesses.Length; t++)
-                    intensities[t] = Disks[t][g1].RawAmplitudes.Select(a => a.MagnitudeSquared()).ToArray();
-
-                for (int r1 = 0; r1 < BeamDirections.Length; r1++)
-                {
-                    if (Disks[0][g1].RawAmplitudes[r1] != 0)
+                //まず、各ディスクを構成するピクセルの座標を計算
+                var diskTemp = new (RectangleD Rect, PointD[] Pos)[Beams.Length];
+                Parallel.For(0, Beams.Length, g =>
                     {
-                        var pos = diskTemp[g1].Pos[r1];
-                        for (int g2 = 0; g2 < Beams.Length; g2++)
-                            if (g2 != g1 && diskTemp[g2].Rect.IsInsde(pos))
+                        if (!bwCBED.CancellationPending)
+                        {
+                            var pos = new PointD[BeamDirections.Length];
+                            for (int r = 0; r < pos.Length; r++)
                             {
-                                var r2 = getIndex(pos, diskTemp[g2].Pos, width);
-                                if (r2 >= 0 && Disks[0][g2].RawAmplitudes[r2] != 0)
-                                    for (int t = 0; t < Thicknesses.Length; t++)
-                                        intensities[t][r1] += Disks[t][g2].RawAmplitudes[r2].MagnitudeSquared();
+                                //Ewald球中心(試料)から見た、逆格子ベクトルの方向
+                                var vec = kvac * BeamDirections[r] + Disks[0][g].G;
+                                //var vec = BeamDirections[r] * (new Vector3DBase(0, 0, kvac) - Disks[0][g].G);
+                                //var vec = BeamDirections[r] - Disks[0][g].G;
+                                pos[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
                             }
-                    }
-                }
+                            diskTemp[g] = (new RectangleD(new PointD(pos.Min(p => p.X), pos.Min(p => p.Y)), new PointD(pos.Max(p => p.X), pos.Max(p => p.Y))), pos);
+                        }
+                    });
 
-                for (int t = 0; t < Thicknesses.Length; t++)
-                    Disks[t][g1].Amplitudes = intensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0)).ToArray();
+                //g1のディスク中のピクセル(r1)に対して、他のディスク(g2)の重なるピクセル(r2)を足し合わせていく。
+                Parallel.For(0, Beams.Length, g1 =>
+                //for(int g1=0; g1<Beams.Length;g1++)
+                {
+                    if (!bwCBED.CancellationPending)
+                    {
+                        var intensities = new double[Thicknesses.Length][];
+                        for (int t = 0; t < Thicknesses.Length; t++)
+                            intensities[t] = Disks[t][g1].RawAmplitudes.Select(a => a.MagnitudeSquared()).ToArray();
+
+                        for (int r1 = 0; r1 < BeamDirections.Length; r1++)
+                        {
+                            if (Disks[0][g1].RawAmplitudes[r1] != 0)
+                            {
+                                var pos = diskTemp[g1].Pos[r1];
+                                for (int g2 = 0; g2 < Beams.Length; g2++)
+                                    if (g2 != g1 && diskTemp[g2].Rect.IsInsde(pos))
+                                    {
+                                        var r2 = getIndex(pos, diskTemp[g2].Pos, width);
+                                        if (r2 >= 0 && Disks[0][g2].RawAmplitudes[r2] != 0)
+                                            for (int t = 0; t < Thicknesses.Length; t++)
+                                                intensities[t][r1] += Disks[t][g2].RawAmplitudes[r2].MagnitudeSquared();
+                                    }
+                            }
+                        }
+
+                        for (int t = 0; t < Thicknesses.Length; t++)
+                            Disks[t][g1].Amplitudes = intensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0)).ToArray();
+                    }
+                    bwCBED.ReportProgress(Interlocked.Increment(ref count) * 1000 / Beams.Length, "Compiling disks");//進捗状況を報告
+                });
             }
-            bwCBED.ReportProgress(Interlocked.Increment(ref count) * 1000 / Beams.Length, "Compiling disks");//進捗状況を報告
-        });
+        }
 
         if (bwCBED.CancellationPending)
             e.Cancel = true;
@@ -1088,13 +1111,12 @@ public class BetheMethod
             #region 区分求積法アルゴリズム
             {
                 #region 各厚みを、指定された厚み程度で切り分ける
-                double _tStep = sliceThickness;
                 var _thick = new double[Thicknesses.Length][];
                 var tStep = new double[Thicknesses.Length];
                 for (int t = 0; t < Thicknesses.Length; t++)
                 {
                     var start = t == 0 ? 0 : Thicknesses[t - 1];
-                    var slices = Math.Max(1, (int)((Thicknesses[t] - start) / _tStep));
+                    var slices = Math.Max(1, (int)((Thicknesses[t] - start) / sliceThickness));
                     tStep[t] = (Thicknesses[t] - start) / slices;
                     _thick[t] = Enumerable.Range(1, slices).Select(e => start + tStep[t] * e).ToArray();
                 }

@@ -28,484 +28,506 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorCBED));
-            this.buttonExecute = new System.Windows.Forms.Button();
-            this.checkBoxDrawGuideCircles = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelDivisionNumber = new System.Windows.Forms.Label();
-            this.comboBoxSolver = new System.Windows.Forms.ComboBox();
-            this.numericBoxThread = new Crystallography.Controls.NumericBox();
-            this.numericBoxThicknessStep = new Crystallography.Controls.NumericBox();
-            this.numericBoxWholeThicknessStart = new Crystallography.Controls.NumericBox();
-            this.numericBoxThicknessEnd = new Crystallography.Controls.NumericBox();
-            this.numericBoxMaxNumOfG = new Crystallography.Controls.NumericBox();
-            this.buttonStop = new System.Windows.Forms.Button();
-            this.trackBarAdvancedAlphaMax = new Crystallography.Controls.TrackBarAdvanced();
-            this.numericBoxDivision = new Crystallography.Controls.NumericBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.groupBoxOutput = new System.Windows.Forms.GroupBox();
-            this.radioButtonIndividualDisk = new System.Windows.Forms.RadioButton();
-            this.radioButtonAllDisks = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBoxGradient = new System.Windows.Forms.ComboBox();
-            this.comboBoxScale = new System.Windows.Forms.ComboBox();
-            this.trackBarOutputThickness = new System.Windows.Forms.TrackBar();
-            this.trackBarGamma = new System.Windows.Forms.TrackBar();
-            this.trackBarIntensityBrightnessMax = new System.Windows.Forms.TrackBar();
-            this.trackBarIntensityBrightnessMin = new System.Windows.Forms.TrackBar();
-            this.textBoxThickness = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelGamma = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox1.SuspendLayout();
-            this.groupBoxOutput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarOutputThickness)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGamma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarIntensityBrightnessMax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarIntensityBrightnessMin)).BeginInit();
-            this.statusStrip2.SuspendLayout();
-            this.SuspendLayout();
+            buttonExecute = new System.Windows.Forms.Button();
+            checkBoxDrawGuideCircles = new System.Windows.Forms.CheckBox();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            radioButtonLACBED = new System.Windows.Forms.RadioButton();
+            numericBoxAlphaMax = new NumericBox();
+            labelDivisionNumber = new System.Windows.Forms.Label();
+            radioButtonCBED = new System.Windows.Forms.RadioButton();
+            comboBoxSolver = new System.Windows.Forms.ComboBox();
+            numericBoxThread = new NumericBox();
+            numericBoxThicknessStep = new NumericBox();
+            numericBoxMaxNumOfG = new NumericBox();
+            numericBoxWholeThicknessStart = new NumericBox();
+            numericBoxThicknessEnd = new NumericBox();
+            buttonStop = new System.Windows.Forms.Button();
+            numericBoxDivision = new NumericBox();
+            label13 = new System.Windows.Forms.Label();
+            groupBoxOutput = new System.Windows.Forms.GroupBox();
+            radioButtonIndividualDisk = new System.Windows.Forms.RadioButton();
+            radioButtonAllDisks = new System.Windows.Forms.RadioButton();
+            label3 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            comboBoxGradient = new System.Windows.Forms.ComboBox();
+            comboBoxScale = new System.Windows.Forms.ComboBox();
+            trackBarOutputThickness = new System.Windows.Forms.TrackBar();
+            trackBarGamma = new System.Windows.Forms.TrackBar();
+            trackBarIntensityBrightnessMax = new System.Windows.Forms.TrackBar();
+            trackBarIntensityBrightnessMin = new System.Windows.Forms.TrackBar();
+            textBoxThickness = new System.Windows.Forms.TextBox();
+            label6 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            labelGamma = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            statusStrip2 = new System.Windows.Forms.StatusStrip();
+            toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            groupBox1.SuspendLayout();
+            groupBoxOutput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarGamma).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).BeginInit();
+            statusStrip2.SuspendLayout();
+            SuspendLayout();
             // 
             // buttonExecute
             // 
-            resources.ApplyResources(this.buttonExecute, "buttonExecute");
-            this.buttonExecute.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonExecute.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.buttonExecute.Name = "buttonExecute";
-            this.toolTip.SetToolTip(this.buttonExecute, resources.GetString("buttonExecute.ToolTip"));
-            this.buttonExecute.UseVisualStyleBackColor = false;
-            this.buttonExecute.Click += new System.EventHandler(this.buttonExecute_Click);
+            resources.ApplyResources(buttonExecute, "buttonExecute");
+            buttonExecute.BackColor = System.Drawing.Color.LightSteelBlue;
+            buttonExecute.ForeColor = System.Drawing.Color.RoyalBlue;
+            buttonExecute.Name = "buttonExecute";
+            toolTip.SetToolTip(buttonExecute, resources.GetString("buttonExecute.ToolTip"));
+            buttonExecute.UseVisualStyleBackColor = false;
+            buttonExecute.Click += buttonExecute_Click;
             // 
             // checkBoxDrawGuideCircles
             // 
-            resources.ApplyResources(this.checkBoxDrawGuideCircles, "checkBoxDrawGuideCircles");
-            this.checkBoxDrawGuideCircles.Checked = true;
-            this.checkBoxDrawGuideCircles.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDrawGuideCircles.Name = "checkBoxDrawGuideCircles";
-            this.checkBoxDrawGuideCircles.UseVisualStyleBackColor = true;
-            this.checkBoxDrawGuideCircles.CheckedChanged += new System.EventHandler(this.CheckBoxDrawGuideCircles_CheckedChanged);
+            resources.ApplyResources(checkBoxDrawGuideCircles, "checkBoxDrawGuideCircles");
+            checkBoxDrawGuideCircles.Checked = true;
+            checkBoxDrawGuideCircles.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDrawGuideCircles.Name = "checkBoxDrawGuideCircles";
+            toolTip.SetToolTip(checkBoxDrawGuideCircles, resources.GetString("checkBoxDrawGuideCircles.ToolTip"));
+            checkBoxDrawGuideCircles.UseVisualStyleBackColor = true;
+            checkBoxDrawGuideCircles.CheckedChanged += CheckBoxDrawGuideCircles_CheckedChanged;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.labelDivisionNumber);
-            this.groupBox1.Controls.Add(this.comboBoxSolver);
-            this.groupBox1.Controls.Add(this.numericBoxThread);
-            this.groupBox1.Controls.Add(this.numericBoxThicknessStep);
-            this.groupBox1.Controls.Add(this.numericBoxWholeThicknessStart);
-            this.groupBox1.Controls.Add(this.checkBoxDrawGuideCircles);
-            this.groupBox1.Controls.Add(this.numericBoxThicknessEnd);
-            this.groupBox1.Controls.Add(this.numericBoxMaxNumOfG);
-            this.groupBox1.Controls.Add(this.buttonStop);
-            this.groupBox1.Controls.Add(this.buttonExecute);
-            this.groupBox1.Controls.Add(this.trackBarAdvancedAlphaMax);
-            this.groupBox1.Controls.Add(this.numericBoxDivision);
-            this.groupBox1.Controls.Add(this.label13);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Controls.Add(radioButtonLACBED);
+            groupBox1.Controls.Add(numericBoxAlphaMax);
+            groupBox1.Controls.Add(labelDivisionNumber);
+            groupBox1.Controls.Add(checkBoxDrawGuideCircles);
+            groupBox1.Controls.Add(radioButtonCBED);
+            groupBox1.Controls.Add(comboBoxSolver);
+            groupBox1.Controls.Add(numericBoxThread);
+            groupBox1.Controls.Add(numericBoxThicknessStep);
+            groupBox1.Controls.Add(numericBoxMaxNumOfG);
+            groupBox1.Controls.Add(numericBoxWholeThicknessStart);
+            groupBox1.Controls.Add(numericBoxThicknessEnd);
+            groupBox1.Controls.Add(buttonStop);
+            groupBox1.Controls.Add(buttonExecute);
+            groupBox1.Controls.Add(numericBoxDivision);
+            groupBox1.Controls.Add(label13);
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
+            toolTip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
+            // 
+            // radioButtonLACBED
+            // 
+            resources.ApplyResources(radioButtonLACBED, "radioButtonLACBED");
+            radioButtonLACBED.Name = "radioButtonLACBED";
+            toolTip.SetToolTip(radioButtonLACBED, resources.GetString("radioButtonLACBED.ToolTip"));
+            radioButtonLACBED.UseVisualStyleBackColor = true;
+            // 
+            // numericBoxAlphaMax
+            // 
+            resources.ApplyResources(numericBoxAlphaMax, "numericBoxAlphaMax");
+            numericBoxAlphaMax.BackColor = System.Drawing.Color.Transparent;
+            numericBoxAlphaMax.DecimalPlaces = 1;
+            numericBoxAlphaMax.Maximum = 100D;
+            numericBoxAlphaMax.Minimum = 0D;
+            numericBoxAlphaMax.Name = "numericBoxAlphaMax";
+            numericBoxAlphaMax.RadianValue = 0.10471975511965977D;
+            numericBoxAlphaMax.RoundErrorAccuracy = -1;
+            numericBoxAlphaMax.ShowUpDown = true;
+            numericBoxAlphaMax.SmartIncrement = true;
+            numericBoxAlphaMax.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            toolTip.SetToolTip(numericBoxAlphaMax, resources.GetString("numericBoxAlphaMax.ToolTip"));
+            numericBoxAlphaMax.Value = 6D;
+            numericBoxAlphaMax.ValueChanged += numericBoxAlphaMax_ValueChanged;
             // 
             // labelDivisionNumber
             // 
-            resources.ApplyResources(this.labelDivisionNumber, "labelDivisionNumber");
-            this.labelDivisionNumber.BackColor = System.Drawing.Color.Transparent;
-            this.labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelDivisionNumber.Name = "labelDivisionNumber";
+            resources.ApplyResources(labelDivisionNumber, "labelDivisionNumber");
+            labelDivisionNumber.BackColor = System.Drawing.Color.Transparent;
+            labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            labelDivisionNumber.Name = "labelDivisionNumber";
+            toolTip.SetToolTip(labelDivisionNumber, resources.GetString("labelDivisionNumber.ToolTip"));
+            // 
+            // radioButtonCBED
+            // 
+            resources.ApplyResources(radioButtonCBED, "radioButtonCBED");
+            radioButtonCBED.Checked = true;
+            radioButtonCBED.Name = "radioButtonCBED";
+            radioButtonCBED.TabStop = true;
+            toolTip.SetToolTip(radioButtonCBED, resources.GetString("radioButtonCBED.ToolTip"));
+            radioButtonCBED.UseVisualStyleBackColor = true;
+            radioButtonCBED.CheckedChanged += radioButtonCBED_CheckedChanged;
             // 
             // comboBoxSolver
             // 
-            this.comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxSolver, "comboBoxSolver");
-            this.comboBoxSolver.FormattingEnabled = true;
-            this.comboBoxSolver.Items.AddRange(new object[] {
-            resources.GetString("comboBoxSolver.Items"),
-            resources.GetString("comboBoxSolver.Items1"),
-            resources.GetString("comboBoxSolver.Items2"),
-            resources.GetString("comboBoxSolver.Items3"),
-            resources.GetString("comboBoxSolver.Items4")});
-            this.comboBoxSolver.Name = "comboBoxSolver";
-            this.toolTip.SetToolTip(this.comboBoxSolver, resources.GetString("comboBoxSolver.ToolTip"));
-            this.comboBoxSolver.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSolver_SelectedIndexChanged);
+            resources.ApplyResources(comboBoxSolver, "comboBoxSolver");
+            comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxSolver.FormattingEnabled = true;
+            comboBoxSolver.Items.AddRange(new object[] { resources.GetString("comboBoxSolver.Items"), resources.GetString("comboBoxSolver.Items1"), resources.GetString("comboBoxSolver.Items2"), resources.GetString("comboBoxSolver.Items3"), resources.GetString("comboBoxSolver.Items4") });
+            comboBoxSolver.Name = "comboBoxSolver";
+            toolTip.SetToolTip(comboBoxSolver, resources.GetString("comboBoxSolver.ToolTip"));
+            comboBoxSolver.SelectedIndexChanged += ComboBoxSolver_SelectedIndexChanged;
             // 
             // numericBoxThread
             // 
-            resources.ApplyResources(this.numericBoxThread, "numericBoxThread");
-            this.numericBoxThread.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThread.DecimalPlaces = 0;
-            this.numericBoxThread.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThread.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThread.Maximum = 128D;
-            this.numericBoxThread.Minimum = 1D;
-            this.numericBoxThread.Name = "numericBoxThread";
-            this.numericBoxThread.RadianValue = 0.069813170079773182D;
-            this.numericBoxThread.RoundErrorAccuracy = -1;
-            this.numericBoxThread.ShowUpDown = true;
-            this.numericBoxThread.SmartIncrement = true;
-            this.numericBoxThread.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxThread.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxThread, resources.GetString("numericBoxThread.ToolTip"));
-            this.numericBoxThread.Value = 4D;
-            this.numericBoxThread.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxWholeThicknessStart_ValueChanged);
+            resources.ApplyResources(numericBoxThread, "numericBoxThread");
+            numericBoxThread.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxThread.DecimalPlaces = 0;
+            numericBoxThread.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThread.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThread.Maximum = 128D;
+            numericBoxThread.Minimum = 1D;
+            numericBoxThread.Name = "numericBoxThread";
+            numericBoxThread.RadianValue = 0.069813170079773182D;
+            numericBoxThread.RoundErrorAccuracy = -1;
+            numericBoxThread.ShowUpDown = true;
+            numericBoxThread.SmartIncrement = true;
+            numericBoxThread.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxThread.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip"));
+            numericBoxThread.Value = 4D;
+            numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
             // numericBoxThicknessStep
             // 
-            resources.ApplyResources(this.numericBoxThicknessStep, "numericBoxThicknessStep");
-            this.numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessStep.Maximum = 1000D;
-            this.numericBoxThicknessStep.Minimum = 1D;
-            this.numericBoxThicknessStep.Name = "numericBoxThicknessStep";
-            this.numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
-            this.numericBoxThicknessStep.RoundErrorAccuracy = -1;
-            this.numericBoxThicknessStep.ShowUpDown = true;
-            this.numericBoxThicknessStep.SmartIncrement = true;
-            this.numericBoxThicknessStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxThicknessStep.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
-            this.numericBoxThicknessStep.Value = 20D;
-            this.numericBoxThicknessStep.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxWholeThicknessStart_ValueChanged);
-            // 
-            // numericBoxWholeThicknessStart
-            // 
-            resources.ApplyResources(this.numericBoxWholeThicknessStart, "numericBoxWholeThicknessStart");
-            this.numericBoxWholeThicknessStart.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxWholeThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxWholeThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxWholeThicknessStart.Maximum = 1000D;
-            this.numericBoxWholeThicknessStart.Minimum = 1D;
-            this.numericBoxWholeThicknessStart.Name = "numericBoxWholeThicknessStart";
-            this.numericBoxWholeThicknessStart.RadianValue = 0.3490658503988659D;
-            this.numericBoxWholeThicknessStart.RoundErrorAccuracy = -1;
-            this.numericBoxWholeThicknessStart.ShowUpDown = true;
-            this.numericBoxWholeThicknessStart.SmartIncrement = true;
-            this.numericBoxWholeThicknessStart.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxWholeThicknessStart.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxWholeThicknessStart, resources.GetString("numericBoxWholeThicknessStart.ToolTip"));
-            this.numericBoxWholeThicknessStart.Value = 20D;
-            this.numericBoxWholeThicknessStart.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxWholeThicknessStart_ValueChanged);
-            // 
-            // numericBoxThicknessEnd
-            // 
-            resources.ApplyResources(this.numericBoxThicknessEnd, "numericBoxThicknessEnd");
-            this.numericBoxThicknessEnd.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessEnd.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxThicknessEnd.Maximum = 1000D;
-            this.numericBoxThicknessEnd.Minimum = 1D;
-            this.numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
-            this.numericBoxThicknessEnd.RadianValue = 3.4906585039886591D;
-            this.numericBoxThicknessEnd.RoundErrorAccuracy = -1;
-            this.numericBoxThicknessEnd.ShowUpDown = true;
-            this.numericBoxThicknessEnd.SmartIncrement = true;
-            this.numericBoxThicknessEnd.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxThicknessEnd.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
-            this.numericBoxThicknessEnd.Value = 200D;
-            this.numericBoxThicknessEnd.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxWholeThicknessStart_ValueChanged);
+            resources.ApplyResources(numericBoxThicknessStep, "numericBoxThicknessStep");
+            numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessStep.Maximum = 1000D;
+            numericBoxThicknessStep.Minimum = 1D;
+            numericBoxThicknessStep.Name = "numericBoxThicknessStep";
+            numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
+            numericBoxThicknessStep.RoundErrorAccuracy = -1;
+            numericBoxThicknessStep.ShowUpDown = true;
+            numericBoxThicknessStep.SmartIncrement = true;
+            numericBoxThicknessStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxThicknessStep.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
+            numericBoxThicknessStep.Value = 20D;
+            numericBoxThicknessStep.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
             // numericBoxMaxNumOfG
             // 
-            resources.ApplyResources(this.numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
-            this.numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxNumOfG.Maximum = 2048D;
-            this.numericBoxMaxNumOfG.Minimum = 1D;
-            this.numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
-            this.numericBoxMaxNumOfG.RadianValue = 1.1170107212763709D;
-            this.numericBoxMaxNumOfG.RoundErrorAccuracy = -1;
-            this.numericBoxMaxNumOfG.ShowUpDown = true;
-            this.numericBoxMaxNumOfG.SmartIncrement = true;
-            this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxMaxNumOfG.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
-            this.numericBoxMaxNumOfG.Value = 64D;
-            this.numericBoxMaxNumOfG.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxMaxNumOfG_ValueChanged);
+            resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
+            numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.Maximum = 2048D;
+            numericBoxMaxNumOfG.Minimum = 1D;
+            numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
+            numericBoxMaxNumOfG.RadianValue = 1.1170107212763709D;
+            numericBoxMaxNumOfG.RoundErrorAccuracy = -1;
+            numericBoxMaxNumOfG.ShowUpDown = true;
+            numericBoxMaxNumOfG.SmartIncrement = true;
+            numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxMaxNumOfG.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
+            numericBoxMaxNumOfG.Value = 64D;
+            numericBoxMaxNumOfG.ValueChanged += numericBoxMaxNumOfG_ValueChanged;
+            // 
+            // numericBoxWholeThicknessStart
+            // 
+            resources.ApplyResources(numericBoxWholeThicknessStart, "numericBoxWholeThicknessStart");
+            numericBoxWholeThicknessStart.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxWholeThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxWholeThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxWholeThicknessStart.Maximum = 1000D;
+            numericBoxWholeThicknessStart.Minimum = 1D;
+            numericBoxWholeThicknessStart.Name = "numericBoxWholeThicknessStart";
+            numericBoxWholeThicknessStart.RadianValue = 0.3490658503988659D;
+            numericBoxWholeThicknessStart.RoundErrorAccuracy = -1;
+            numericBoxWholeThicknessStart.ShowUpDown = true;
+            numericBoxWholeThicknessStart.SmartIncrement = true;
+            numericBoxWholeThicknessStart.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxWholeThicknessStart.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxWholeThicknessStart, resources.GetString("numericBoxWholeThicknessStart.ToolTip"));
+            numericBoxWholeThicknessStart.Value = 20D;
+            numericBoxWholeThicknessStart.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
+            // 
+            // numericBoxThicknessEnd
+            // 
+            resources.ApplyResources(numericBoxThicknessEnd, "numericBoxThicknessEnd");
+            numericBoxThicknessEnd.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessEnd.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessEnd.Maximum = 1000D;
+            numericBoxThicknessEnd.Minimum = 1D;
+            numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
+            numericBoxThicknessEnd.RadianValue = 3.4906585039886591D;
+            numericBoxThicknessEnd.RoundErrorAccuracy = -1;
+            numericBoxThicknessEnd.ShowUpDown = true;
+            numericBoxThicknessEnd.SmartIncrement = true;
+            numericBoxThicknessEnd.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxThicknessEnd.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
+            numericBoxThicknessEnd.Value = 200D;
+            numericBoxThicknessEnd.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
             // buttonStop
             // 
-            this.buttonStop.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonStop.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.buttonStop, "buttonStop");
-            this.buttonStop.Name = "buttonStop";
-            this.toolTip.SetToolTip(this.buttonStop, resources.GetString("buttonStop.ToolTip"));
-            this.buttonStop.UseVisualStyleBackColor = false;
-            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
-            // 
-            // trackBarAdvancedAlphaMax
-            // 
-            resources.ApplyResources(this.trackBarAdvancedAlphaMax, "trackBarAdvancedAlphaMax");
-            this.trackBarAdvancedAlphaMax.ControlHeight = 25;
-            this.trackBarAdvancedAlphaMax.DecimalPlaces = -1;
-            this.trackBarAdvancedAlphaMax.LogScrollBar = false;
-            this.trackBarAdvancedAlphaMax.Maximum = 2000D;
-            this.trackBarAdvancedAlphaMax.Minimum = 0D;
-            this.trackBarAdvancedAlphaMax.Name = "trackBarAdvancedAlphaMax";
-            this.trackBarAdvancedAlphaMax.NumericBoxSize = 155;
-            this.trackBarAdvancedAlphaMax.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBarAdvancedAlphaMax.Smart_Increment = true;
-            this.trackBarAdvancedAlphaMax.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            this.toolTip.SetToolTip(this.trackBarAdvancedAlphaMax, resources.GetString("trackBarAdvancedAlphaMax.ToolTip"));
-            this.trackBarAdvancedAlphaMax.UpDown_Increment = 1D;
-            this.trackBarAdvancedAlphaMax.Value = 6D;
-            this.trackBarAdvancedAlphaMax.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(this.trackBarAdvancedAlphaMax_ValueChanged);
+            resources.ApplyResources(buttonStop, "buttonStop");
+            buttonStop.BackColor = System.Drawing.Color.IndianRed;
+            buttonStop.ForeColor = System.Drawing.Color.White;
+            buttonStop.Name = "buttonStop";
+            toolTip.SetToolTip(buttonStop, resources.GetString("buttonStop.ToolTip"));
+            buttonStop.UseVisualStyleBackColor = false;
+            buttonStop.Click += buttonStop_Click;
             // 
             // numericBoxDivision
             // 
-            resources.ApplyResources(this.numericBoxDivision, "numericBoxDivision");
-            this.numericBoxDivision.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDivision.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDivision.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDivision.Maximum = 1024D;
-            this.numericBoxDivision.Minimum = 1D;
-            this.numericBoxDivision.Name = "numericBoxDivision";
-            this.numericBoxDivision.RadianValue = 2.2340214425527418D;
-            this.numericBoxDivision.RoundErrorAccuracy = -1;
-            this.numericBoxDivision.ShowUpDown = true;
-            this.numericBoxDivision.SkipEventDuringInput = false;
-            this.numericBoxDivision.SmartIncrement = true;
-            this.numericBoxDivision.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDivision.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxDivision, resources.GetString("numericBoxDivision.ToolTip"));
-            this.numericBoxDivision.Value = 128D;
-            this.numericBoxDivision.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxDivision_ValueChanged);
+            resources.ApplyResources(numericBoxDivision, "numericBoxDivision");
+            numericBoxDivision.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDivision.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDivision.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDivision.Maximum = 1024D;
+            numericBoxDivision.Minimum = 1D;
+            numericBoxDivision.Name = "numericBoxDivision";
+            numericBoxDivision.RadianValue = 2.2340214425527418D;
+            numericBoxDivision.RoundErrorAccuracy = -1;
+            numericBoxDivision.ShowUpDown = true;
+            numericBoxDivision.SkipEventDuringInput = false;
+            numericBoxDivision.SmartIncrement = true;
+            numericBoxDivision.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxDivision.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxDivision, resources.GetString("numericBoxDivision.ToolTip"));
+            numericBoxDivision.Value = 128D;
+            numericBoxDivision.ValueChanged += NumericBoxDivision_ValueChanged;
             // 
             // label13
             // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
+            resources.ApplyResources(label13, "label13");
+            label13.Name = "label13";
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
             // 
             // groupBoxOutput
             // 
-            this.groupBoxOutput.Controls.Add(this.radioButtonIndividualDisk);
-            this.groupBoxOutput.Controls.Add(this.radioButtonAllDisks);
-            this.groupBoxOutput.Controls.Add(this.label3);
-            this.groupBoxOutput.Controls.Add(this.label11);
-            this.groupBoxOutput.Controls.Add(this.comboBoxGradient);
-            this.groupBoxOutput.Controls.Add(this.comboBoxScale);
-            this.groupBoxOutput.Controls.Add(this.trackBarOutputThickness);
-            this.groupBoxOutput.Controls.Add(this.trackBarGamma);
-            this.groupBoxOutput.Controls.Add(this.trackBarIntensityBrightnessMax);
-            this.groupBoxOutput.Controls.Add(this.trackBarIntensityBrightnessMin);
-            this.groupBoxOutput.Controls.Add(this.textBoxThickness);
-            this.groupBoxOutput.Controls.Add(this.label6);
-            this.groupBoxOutput.Controls.Add(this.label4);
-            this.groupBoxOutput.Controls.Add(this.labelGamma);
-            this.groupBoxOutput.Controls.Add(this.label8);
-            this.groupBoxOutput.Controls.Add(this.label7);
-            this.groupBoxOutput.Controls.Add(this.label1);
-            this.groupBoxOutput.Controls.Add(this.label5);
-            resources.ApplyResources(this.groupBoxOutput, "groupBoxOutput");
-            this.groupBoxOutput.Name = "groupBoxOutput";
-            this.groupBoxOutput.TabStop = false;
+            resources.ApplyResources(groupBoxOutput, "groupBoxOutput");
+            groupBoxOutput.Controls.Add(radioButtonIndividualDisk);
+            groupBoxOutput.Controls.Add(radioButtonAllDisks);
+            groupBoxOutput.Controls.Add(label3);
+            groupBoxOutput.Controls.Add(label11);
+            groupBoxOutput.Controls.Add(comboBoxGradient);
+            groupBoxOutput.Controls.Add(comboBoxScale);
+            groupBoxOutput.Controls.Add(trackBarOutputThickness);
+            groupBoxOutput.Controls.Add(trackBarGamma);
+            groupBoxOutput.Controls.Add(trackBarIntensityBrightnessMax);
+            groupBoxOutput.Controls.Add(trackBarIntensityBrightnessMin);
+            groupBoxOutput.Controls.Add(textBoxThickness);
+            groupBoxOutput.Controls.Add(label6);
+            groupBoxOutput.Controls.Add(label4);
+            groupBoxOutput.Controls.Add(labelGamma);
+            groupBoxOutput.Controls.Add(label8);
+            groupBoxOutput.Controls.Add(label7);
+            groupBoxOutput.Controls.Add(label1);
+            groupBoxOutput.Controls.Add(label5);
+            groupBoxOutput.Name = "groupBoxOutput";
+            groupBoxOutput.TabStop = false;
+            toolTip.SetToolTip(groupBoxOutput, resources.GetString("groupBoxOutput.ToolTip"));
             // 
             // radioButtonIndividualDisk
             // 
-            resources.ApplyResources(this.radioButtonIndividualDisk, "radioButtonIndividualDisk");
-            this.radioButtonIndividualDisk.Name = "radioButtonIndividualDisk";
-            this.toolTip.SetToolTip(this.radioButtonIndividualDisk, resources.GetString("radioButtonIndividualDisk.ToolTip"));
-            this.radioButtonIndividualDisk.UseVisualStyleBackColor = true;
-            this.radioButtonIndividualDisk.CheckedChanged += new System.EventHandler(this.radioButtonAllDisks_CheckedChanged);
+            resources.ApplyResources(radioButtonIndividualDisk, "radioButtonIndividualDisk");
+            radioButtonIndividualDisk.Name = "radioButtonIndividualDisk";
+            toolTip.SetToolTip(radioButtonIndividualDisk, resources.GetString("radioButtonIndividualDisk.ToolTip"));
+            radioButtonIndividualDisk.UseVisualStyleBackColor = true;
+            radioButtonIndividualDisk.CheckedChanged += radioButtonAllDisks_CheckedChanged;
             // 
             // radioButtonAllDisks
             // 
-            resources.ApplyResources(this.radioButtonAllDisks, "radioButtonAllDisks");
-            this.radioButtonAllDisks.Checked = true;
-            this.radioButtonAllDisks.Name = "radioButtonAllDisks";
-            this.radioButtonAllDisks.TabStop = true;
-            this.toolTip.SetToolTip(this.radioButtonAllDisks, resources.GetString("radioButtonAllDisks.ToolTip"));
-            this.radioButtonAllDisks.UseVisualStyleBackColor = true;
-            this.radioButtonAllDisks.CheckedChanged += new System.EventHandler(this.radioButtonAllDisks_CheckedChanged);
+            resources.ApplyResources(radioButtonAllDisks, "radioButtonAllDisks");
+            radioButtonAllDisks.Checked = true;
+            radioButtonAllDisks.Name = "radioButtonAllDisks";
+            radioButtonAllDisks.TabStop = true;
+            toolTip.SetToolTip(radioButtonAllDisks, resources.GetString("radioButtonAllDisks.ToolTip"));
+            radioButtonAllDisks.UseVisualStyleBackColor = true;
+            radioButtonAllDisks.CheckedChanged += radioButtonAllDisks_CheckedChanged;
             // 
             // label3
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // label11
             // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
+            resources.ApplyResources(label11, "label11");
+            label11.Name = "label11";
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
             // 
             // comboBoxGradient
             // 
-            this.comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxGradient, "comboBoxGradient");
-            this.comboBoxGradient.FormattingEnabled = true;
-            this.comboBoxGradient.Items.AddRange(new object[] {
-            resources.GetString("comboBoxGradient.Items"),
-            resources.GetString("comboBoxGradient.Items1")});
-            this.comboBoxGradient.Name = "comboBoxGradient";
-            this.toolTip.SetToolTip(this.comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip"));
-            this.comboBoxGradient.SelectedIndexChanged += new System.EventHandler(this.trackBarIntensityBrightnessMax_ValueChanged);
+            resources.ApplyResources(comboBoxGradient, "comboBoxGradient");
+            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxGradient.FormattingEnabled = true;
+            comboBoxGradient.Items.AddRange(new object[] { resources.GetString("comboBoxGradient.Items"), resources.GetString("comboBoxGradient.Items1") });
+            comboBoxGradient.Name = "comboBoxGradient";
+            toolTip.SetToolTip(comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip"));
+            comboBoxGradient.SelectedIndexChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
             // comboBoxScale
             // 
-            this.comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxScale, "comboBoxScale");
-            this.comboBoxScale.FormattingEnabled = true;
-            this.comboBoxScale.Items.AddRange(new object[] {
-            resources.GetString("comboBoxScale.Items"),
-            resources.GetString("comboBoxScale.Items1"),
-            resources.GetString("comboBoxScale.Items2"),
-            resources.GetString("comboBoxScale.Items3")});
-            this.comboBoxScale.Name = "comboBoxScale";
-            this.toolTip.SetToolTip(this.comboBoxScale, resources.GetString("comboBoxScale.ToolTip"));
-            this.comboBoxScale.SelectedIndexChanged += new System.EventHandler(this.trackBarIntensityBrightnessMax_ValueChanged);
+            resources.ApplyResources(comboBoxScale, "comboBoxScale");
+            comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxScale.FormattingEnabled = true;
+            comboBoxScale.Items.AddRange(new object[] { resources.GetString("comboBoxScale.Items"), resources.GetString("comboBoxScale.Items1"), resources.GetString("comboBoxScale.Items2"), resources.GetString("comboBoxScale.Items3") });
+            comboBoxScale.Name = "comboBoxScale";
+            toolTip.SetToolTip(comboBoxScale, resources.GetString("comboBoxScale.ToolTip"));
+            comboBoxScale.SelectedIndexChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
             // trackBarOutputThickness
             // 
-            resources.ApplyResources(this.trackBarOutputThickness, "trackBarOutputThickness");
-            this.trackBarOutputThickness.LargeChange = 1;
-            this.trackBarOutputThickness.Maximum = 9;
-            this.trackBarOutputThickness.Name = "trackBarOutputThickness";
-            this.toolTip.SetToolTip(this.trackBarOutputThickness, resources.GetString("trackBarOutputThickness.ToolTip"));
-            this.trackBarOutputThickness.Scroll += new System.EventHandler(this.TrackBarOutputThickness_Scroll);
-            this.trackBarOutputThickness.ValueChanged += new System.EventHandler(this.TrackBarOutputThickness_Scroll);
+            resources.ApplyResources(trackBarOutputThickness, "trackBarOutputThickness");
+            trackBarOutputThickness.LargeChange = 1;
+            trackBarOutputThickness.Maximum = 9;
+            trackBarOutputThickness.Name = "trackBarOutputThickness";
+            toolTip.SetToolTip(trackBarOutputThickness, resources.GetString("trackBarOutputThickness.ToolTip"));
+            trackBarOutputThickness.Scroll += TrackBarOutputThickness_Scroll;
+            trackBarOutputThickness.ValueChanged += TrackBarOutputThickness_Scroll;
             // 
             // trackBarGamma
             // 
-            resources.ApplyResources(this.trackBarGamma, "trackBarGamma");
-            this.trackBarGamma.LargeChange = 200;
-            this.trackBarGamma.Maximum = 2000;
-            this.trackBarGamma.Name = "trackBarGamma";
-            this.trackBarGamma.SmallChange = 50;
-            this.trackBarGamma.TickFrequency = 50;
-            this.toolTip.SetToolTip(this.trackBarGamma, resources.GetString("trackBarGamma.ToolTip"));
-            this.trackBarGamma.ValueChanged += new System.EventHandler(this.trackBarGamma_ValueChanged);
+            resources.ApplyResources(trackBarGamma, "trackBarGamma");
+            trackBarGamma.LargeChange = 200;
+            trackBarGamma.Maximum = 2000;
+            trackBarGamma.Name = "trackBarGamma";
+            trackBarGamma.SmallChange = 50;
+            trackBarGamma.TickFrequency = 50;
+            toolTip.SetToolTip(trackBarGamma, resources.GetString("trackBarGamma.ToolTip"));
+            trackBarGamma.ValueChanged += trackBarGamma_ValueChanged;
             // 
             // trackBarIntensityBrightnessMax
             // 
-            resources.ApplyResources(this.trackBarIntensityBrightnessMax, "trackBarIntensityBrightnessMax");
-            this.trackBarIntensityBrightnessMax.LargeChange = 10000;
-            this.trackBarIntensityBrightnessMax.Maximum = 1000000;
-            this.trackBarIntensityBrightnessMax.Minimum = 1;
-            this.trackBarIntensityBrightnessMax.Name = "trackBarIntensityBrightnessMax";
-            this.trackBarIntensityBrightnessMax.SmallChange = 100000;
-            this.trackBarIntensityBrightnessMax.TickFrequency = 20000;
-            this.toolTip.SetToolTip(this.trackBarIntensityBrightnessMax, resources.GetString("trackBarIntensityBrightnessMax.ToolTip"));
-            this.trackBarIntensityBrightnessMax.Value = 1000000;
-            this.trackBarIntensityBrightnessMax.ValueChanged += new System.EventHandler(this.trackBarIntensityBrightnessMax_ValueChanged);
+            resources.ApplyResources(trackBarIntensityBrightnessMax, "trackBarIntensityBrightnessMax");
+            trackBarIntensityBrightnessMax.LargeChange = 10000;
+            trackBarIntensityBrightnessMax.Maximum = 1000000;
+            trackBarIntensityBrightnessMax.Minimum = 1;
+            trackBarIntensityBrightnessMax.Name = "trackBarIntensityBrightnessMax";
+            trackBarIntensityBrightnessMax.SmallChange = 100000;
+            trackBarIntensityBrightnessMax.TickFrequency = 20000;
+            toolTip.SetToolTip(trackBarIntensityBrightnessMax, resources.GetString("trackBarIntensityBrightnessMax.ToolTip"));
+            trackBarIntensityBrightnessMax.Value = 1000000;
+            trackBarIntensityBrightnessMax.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
             // trackBarIntensityBrightnessMin
             // 
-            resources.ApplyResources(this.trackBarIntensityBrightnessMin, "trackBarIntensityBrightnessMin");
-            this.trackBarIntensityBrightnessMin.LargeChange = 10000;
-            this.trackBarIntensityBrightnessMin.Maximum = 999999;
-            this.trackBarIntensityBrightnessMin.Name = "trackBarIntensityBrightnessMin";
-            this.trackBarIntensityBrightnessMin.SmallChange = 100000;
-            this.trackBarIntensityBrightnessMin.TickFrequency = 20000;
-            this.toolTip.SetToolTip(this.trackBarIntensityBrightnessMin, resources.GetString("trackBarIntensityBrightnessMin.ToolTip"));
-            this.trackBarIntensityBrightnessMin.ValueChanged += new System.EventHandler(this.trackBarIntensityBrightnessMax_ValueChanged);
+            resources.ApplyResources(trackBarIntensityBrightnessMin, "trackBarIntensityBrightnessMin");
+            trackBarIntensityBrightnessMin.LargeChange = 10000;
+            trackBarIntensityBrightnessMin.Maximum = 999999;
+            trackBarIntensityBrightnessMin.Name = "trackBarIntensityBrightnessMin";
+            trackBarIntensityBrightnessMin.SmallChange = 100000;
+            trackBarIntensityBrightnessMin.TickFrequency = 20000;
+            toolTip.SetToolTip(trackBarIntensityBrightnessMin, resources.GetString("trackBarIntensityBrightnessMin.ToolTip"));
+            trackBarIntensityBrightnessMin.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
             // textBoxThickness
             // 
-            resources.ApplyResources(this.textBoxThickness, "textBoxThickness");
-            this.textBoxThickness.Name = "textBoxThickness";
-            this.textBoxThickness.ReadOnly = true;
+            resources.ApplyResources(textBoxThickness, "textBoxThickness");
+            textBoxThickness.Name = "textBoxThickness";
+            textBoxThickness.ReadOnly = true;
+            toolTip.SetToolTip(textBoxThickness, resources.GetString("textBoxThickness.ToolTip"));
             // 
             // label6
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            resources.ApplyResources(label6, "label6");
+            label6.Name = "label6";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // label4
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // labelGamma
             // 
-            resources.ApplyResources(this.labelGamma, "labelGamma");
-            this.labelGamma.Name = "labelGamma";
+            resources.ApplyResources(labelGamma, "labelGamma");
+            labelGamma.Name = "labelGamma";
+            toolTip.SetToolTip(labelGamma, resources.GetString("labelGamma.ToolTip"));
             // 
             // label8
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
             // 
             // label7
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label5
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
             // 
             // statusStrip2
             // 
-            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar,
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel1});
-            this.statusStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            resources.ApplyResources(this.statusStrip2, "statusStrip2");
-            this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.SizingGrip = false;
+            resources.ApplyResources(statusStrip2, "statusStrip2");
+            statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel2, toolStripStatusLabel1 });
+            statusStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            statusStrip2.Name = "statusStrip2";
+            statusStrip2.SizingGrip = false;
+            toolTip.SetToolTip(statusStrip2, resources.GetString("statusStrip2.ToolTip"));
             // 
             // toolStripProgressBar
             // 
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
-            this.toolStripProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
-            this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
+            toolStripProgressBar.Name = "toolStripProgressBar";
+            toolStripProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // toolStripStatusLabel2
             // 
-            resources.ApplyResources(this.toolStripStatusLabel2, "toolStripStatusLabel2");
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            resources.ApplyResources(toolStripStatusLabel2, "toolStripStatusLabel2");
+            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+            resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             // 
             // FormDiffractionSimulatorCBED
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ControlBox = false;
-            this.Controls.Add(this.groupBoxOutput);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.statusStrip2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormDiffractionSimulatorCBED";
-            this.ShowIcon = false;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDiffractionSimulatorMultislice_FormClosing);
-            this.VisibleChanged += new System.EventHandler(this.FormDiffractionSimulatorCBED_VisibleChanged);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBoxOutput.ResumeLayout(false);
-            this.groupBoxOutput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarOutputThickness)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGamma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarIntensityBrightnessMax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarIntensityBrightnessMin)).EndInit();
-            this.statusStrip2.ResumeLayout(false);
-            this.statusStrip2.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ControlBox = false;
+            Controls.Add(groupBoxOutput);
+            Controls.Add(groupBox1);
+            Controls.Add(statusStrip2);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormDiffractionSimulatorCBED";
+            ShowIcon = false;
+            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
+            FormClosing += FormDiffractionSimulatorMultislice_FormClosing;
+            VisibleChanged += FormDiffractionSimulatorCBED_VisibleChanged;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBoxOutput.ResumeLayout(false);
+            groupBoxOutput.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarGamma).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).EndInit();
+            statusStrip2.ResumeLayout(false);
+            statusStrip2.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -530,7 +552,6 @@
         public System.Windows.Forms.TextBox textBoxThickness;
         private System.Windows.Forms.Label label11;
         public System.Windows.Forms.ComboBox comboBoxScale;
-        public Crystallography.Controls.TrackBarAdvanced trackBarAdvancedAlphaMax;
         public System.Windows.Forms.TrackBar trackBarOutputThickness;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.StatusStrip statusStrip2;
@@ -547,5 +568,8 @@
         private System.Windows.Forms.RadioButton radioButtonAllDisks;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip toolTip;
+        private NumericBox numericBoxAlphaMax;
+        private System.Windows.Forms.RadioButton radioButtonLACBED;
+        private System.Windows.Forms.RadioButton radioButtonCBED;
     }
 }

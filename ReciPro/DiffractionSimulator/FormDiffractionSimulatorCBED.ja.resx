@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -125,7 +65,7 @@
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="checkBoxDrawGuideCircles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 61</value>
+    <value>171, 58</value>
   </data>
   <data name="checkBoxDrawGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 24</value>
@@ -133,8 +73,44 @@
   <data name="checkBoxDrawGuideCircles.Text" xml:space="preserve">
     <value>ディスクの輪郭を描画 </value>
   </data>
+  <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonLACBED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 56</value>
+  </data>
+  <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxAlphaMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
+    <value>収束電子の半頂角</value>
+  </data>
+  <data name="numericBoxAlphaMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 84</value>
+  </data>
+  <data name="numericBoxAlphaMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxAlphaMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 25</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 127</value>
+    <value>192, 122</value>
+  </data>
+  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonCBED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 56</value>
+  </data>
+  <data name="radioButtonCBED.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBoxSolver.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 21</value>
@@ -164,10 +140,22 @@
     <value />
   </data>
   <data name="numericBoxThicknessStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>272, 152</value>
+    <value>272, 146</value>
   </data>
   <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 25</value>
+    <value>98, 27</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
+    <value>ブロッホ波の数</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 25</value>
   </data>
   <data name="numericBoxWholeThicknessStart.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -182,10 +170,10 @@
     <value>試料厚み</value>
   </data>
   <data name="numericBoxWholeThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 153</value>
+    <value>4, 147</value>
   </data>
   <data name="numericBoxWholeThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 25</value>
+    <value>133, 27</value>
   </data>
   <data name="numericBoxThicknessEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -200,28 +188,13 @@
     <value>から</value>
   </data>
   <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 153</value>
+    <value>136, 147</value>
   </data>
   <data name="numericBoxThicknessEnd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 25</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>ブロッホ波の数</value>
+    <value>132, 27</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>中止</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="trackBarAdvancedAlphaMax.HeaderText" xml:space="preserve">
-    <value>最大半角</value>
   </data>
   <data name="numericBoxDivision.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -235,14 +208,14 @@
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 29</value>
-  </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 17</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>ソルバ</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
@@ -250,17 +223,17 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>入力パラメータ</value>
   </data>
-  <data name="radioButtonIndivisualDisk.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="radioButtonIndivisualDisk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 53</value>
+  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold</value>
   </data>
-  <data name="radioButtonIndivisualDisk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 24</value>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>出力パラメータ</value>
   </data>
-  <data name="radioButtonIndivisualDisk.Text" xml:space="preserve">
-    <value>個別ディスク</value>
+  <data name="groupBoxOutput.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -286,6 +259,9 @@
   <data name="label3.Text" xml:space="preserve">
     <value>スケール</value>
   </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
@@ -297,6 +273,9 @@
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>カラー</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
     <value>122, 151</value>
@@ -319,8 +298,14 @@
   <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 25</value>
   </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 28</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -334,6 +319,9 @@
   <data name="label4.Text" xml:space="preserve">
     <value>試料の厚さ </value>
   </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
@@ -342,6 +330,9 @@
   </data>
   <data name="labelGamma.Text" xml:space="preserve">
     <value>γ (外側ディスクの強調)</value>
+  </data>
+  <data name="labelGamma.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -355,6 +346,9 @@
   <data name="label8.Text" xml:space="preserve">
     <value>最小</value>
   </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
@@ -367,6 +361,9 @@
   <data name="label7.Text" xml:space="preserve">
     <value>最大</value>
   </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
@@ -375,6 +372,9 @@
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>輝度調整</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -385,10 +385,13 @@
   <data name="label5.Text" xml:space="preserve">
     <value>輝度</value>
   </data>
-  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>出力パラメータ</value>
+  <data name="statusStrip2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

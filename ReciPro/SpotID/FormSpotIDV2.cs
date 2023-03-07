@@ -1490,7 +1490,7 @@ public partial class FormSpotIDV2 : Form
         var thicknessArray = Enumerable.Range(50, 500).Select(v => (double)v).ToArray();
 
         var g = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"];
-        FormMain.Crystal.Bethe.RunCBED(numericBoxMaxNumOfG.ValueInteger, 200, g.Rotation, thicknessArray, rotArray, BetheMethod.Solver.Auto);
+        FormMain.Crystal.Bethe.RunCBED(numericBoxMaxNumOfG.ValueInteger, 200, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto);
     }
 
     private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
