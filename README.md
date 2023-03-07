@@ -6,7 +6,7 @@
 
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
-* *ReciPro* runs on Windows OS with .Net Desktop Runtime 7.0 (not .Net Runtime 7.0), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/7.0).
+* *ReciPro* runs on Windows OS with **.Net Desktop Runtime 7.0** (not **.Net Runtime 7.0**), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/7.0).
 ***
 
 ## Appearance
