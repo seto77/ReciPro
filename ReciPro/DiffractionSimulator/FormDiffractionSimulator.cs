@@ -397,23 +397,6 @@ public partial class FormDiffractionSimulator : Form
 
     #region DrawDiffractionSpots
 
-    static Dictionary<(int Alpha, Color Color), SolidBrush> solidBrushDic = new();
-
-    static void fillCircle(Graphics graphics, in Color c, in PointD pt, in double radius, in int alpha)
-    {
-        if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
-        {
-            if (!solidBrushDic.TryGetValue((alpha, c), out var brush))
-                solidBrushDic.Add((alpha, c), brush = new SolidBrush(Color.FromArgb(alpha, c)));
-            graphics.FillEllipse(brush, (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
-        }
-    }
-    static void drawCircle(Graphics graphics, in Color c, in PointD pt, in double radius)
-    {
-        if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
-            graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
-    }
-
     /// <summary>
     /// 回折スポットおよび指数ラベルの描画
     /// </summary>
@@ -600,7 +583,7 @@ public partial class FormDiffractionSimulator : Form
                                 if (FormDiffractionSimulatorCBED.DrawGuideCircles)
                                 {
                                     if (!FormDiffractionSimulatorCBED.LACBED || g.Index == (0, 0, 0))
-                                        drawCircle(graphics, Color.Yellow, pt, radiusCBED);
+                                        graphics.DrawCircle(Color.Yellow, pt, radiusCBED);
                                     else
                                         graphics.DrawCross(new Pen(Color.Yellow, (float)Resolution), pt, spotRadiusOnDetector);
                                 }
@@ -653,7 +636,7 @@ public partial class FormDiffractionSimulator : Form
                                         sphereRadius : //ベーテ法の場合はそのまま
                                         Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only あるいは Kinematicの場合は、エワルド球に切られた断面上の、逆格子点の半径
                                     var r = CameraLength2 * WaveLength * sectionRadius;
-                                    fillCircle(graphics, Color.FromArgb(g.Argb), pt, r, (int)(alphaCoeff * 255));
+                                    graphics.FillCircle( Color.FromArgb(g.Argb), pt, r, (int)(alphaCoeff * 255));
                                     if (drawLabel && trackBarStrSize.Value != 1 && r > spotRadiusOnDetector * 0.4f)
                                         DrawDiffractionSpotsLabel(graphics, g, pt, r, (double)g.Tag);
                                 }
@@ -708,11 +691,8 @@ public partial class FormDiffractionSimulator : Form
             if (radioButtonIntensityDynamical.Checked)
                 sb.AppendLine($"{g.RelativeIntensity * 100:#.#} %, ({g.F.Real:0.###} + {g.F.Imaginary:0.###}i)");
         }
-        if (!solidBrushDic.TryGetValue(((int)(alphaCoeff * 255), colorControlString.Color), out var brush))
-        {
-            brush = new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color));
-            solidBrushDic.Add(((int)(alphaCoeff * 255), colorControlString.Color), brush);
-        }
+
+        var brush = new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color));
         graphics.DrawString(sb.ToString(), font, brush, (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
     }
 

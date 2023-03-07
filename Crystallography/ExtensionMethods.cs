@@ -356,6 +356,27 @@ public static class GraphicsAlpha
 
     public static void FillPie(this Graphics g, Brush brush, double x, double y, double width, double height, double startAngle, double sweepAngle)
         => g.FillPie(brush, (float)x, (float)y, (float)width, (float)height, (float)startAngle, (float)sweepAngle);
+
+
+    static Dictionary<(int Alpha, Color Color), SolidBrush> solidBrushDic = new();
+
+    public static void FillCircle(this Graphics graphics, in Color c, in PointD pt, in double radius, in int alpha)
+    {
+        if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
+        {
+            if (!solidBrushDic.TryGetValue((alpha, c), out var brush))
+                solidBrushDic.Add((alpha, c), brush = new SolidBrush(Color.FromArgb(alpha, c)));
+            graphics.FillEllipse(brush, (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
+        }
+    }
+    public static void DrawCircle(this Graphics graphics, in Color c, in PointD pt, in double radius)
+    {
+        if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
+            graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
+    }
+
+
+
 }
 #endregion
 
