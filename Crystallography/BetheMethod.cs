@@ -1042,7 +1042,7 @@ public class BetheMethod
                 for (int i = 0; i < bLen; i++)
                     for (int j = 0; j < bLen; j++)
                         U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合 i, jの順番が正解
-                                                                                                                              //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
+                        //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
                 bwSTEM.ReportProgress((int)(1000.0 * Interlocked.Increment(ref count) / qList.Count), "Calculating U matrix");//状況を報告
                 if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
             });

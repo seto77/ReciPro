@@ -52,8 +52,6 @@ public partial class AtomControl : UserControl
     DataSet.DataTableAtomDataTable table;
     public bool SkipEvent { get; set; } = false;
 
-
-
     public bool AtomicPositionError
     {
         set
@@ -541,7 +539,6 @@ public partial class AtomControl : UserControl
         Occ = atoms.Occ; OccErr = atoms.Occ_err;
         #endregion
 
-
         #region 温度因子関係
         UseIsotropy = atoms.Dsf.UseIso;
         UseTypeU = atoms.Dsf.OriginalType == DiffuseScatteringFactor.Type.U;
@@ -553,7 +550,7 @@ public partial class AtomControl : UserControl
         Aniso13 = UseTypeU ? atoms.Dsf.U31 * 100 : atoms.Dsf.B31;
         Aniso22 = UseTypeU ? atoms.Dsf.U22 * 100 : atoms.Dsf.B22;
         Aniso23 = UseTypeU ? atoms.Dsf.U23 * 100 : atoms.Dsf.B23;
-        Aniso33 = UseTypeU ? atoms.Dsf.U31 * 100 : atoms.Dsf.B31;
+        Aniso33 = UseTypeU ? atoms.Dsf.U33 * 100 : atoms.Dsf.B33;
 
         IsoErr = UseTypeU ? atoms.Dsf.Uiso_err * 100 : atoms.Dsf.Biso_err * 100;
         Aniso11Err = UseTypeU ? atoms.Dsf.U11_err * 100 : atoms.Dsf.B11_err;
@@ -561,7 +558,7 @@ public partial class AtomControl : UserControl
         Aniso13Err = UseTypeU ? atoms.Dsf.U31_err * 100 : atoms.Dsf.B31_err;
         Aniso22Err = UseTypeU ? atoms.Dsf.U22_err * 100 : atoms.Dsf.B22_err;
         Aniso23Err = UseTypeU ? atoms.Dsf.U23_err * 100 : atoms.Dsf.B23_err;
-        Aniso33Err = UseTypeU ? atoms.Dsf.U31_err * 100 : atoms.Dsf.B31_err;
+        Aniso33Err = UseTypeU ? atoms.Dsf.U33_err * 100 : atoms.Dsf.B33_err;
 
         #endregion
 

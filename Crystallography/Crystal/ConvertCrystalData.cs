@@ -872,6 +872,10 @@ public class ConvertCrystalData
             }
         }
 
+        if (str[^1].StartsWith("#"))
+            str[^1] = "#End of data";
+
+
         //Ÿ‚É'‚ ‚é‚¢‚Í"‚ÅˆÍ‚Ü‚ê‚Ä‚¢‚é•¶š—ñ’†‚Ì‹ó”’‚ğ‹ô‘Ro‚Ä‚±‚È‚¢‚æ‚¤‚È•¶š—ñ‚É•ÏŠ·‚·‚é
         for (int n = 0; n < str.Count; n++)
         {

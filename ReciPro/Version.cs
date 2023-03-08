@@ -2,14 +2,15 @@
 
 internal static class Version
 {
-    static public string Software = "ReciPro";
-    static public string Author = "Y. Seto && M. Ohtsuka";
+    public const string Software = "ReciPro";
+    public const string Author = "Y. Seto && M. Ohtsuka";
 
     static public string VersionAndDate => History.Remove(0, 10).Remove(20);
 
 
-    static public string History =
+    public const string History =
         "History" +
+        "\r\n ver4.852(2023/03/##)  Added LA-CBED caluculation mode." +
         "\r\n ver4.852(2023/03/04)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.851(2023/03/02)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.850(2023/03/01)  Improved STEM simulation. If you find anything wrong with the SETM simulation, please report anything!" +
@@ -368,7 +369,7 @@ internal static class Version
     /// <summary>
     /// はじめに
     /// </summary>
-    static public string Introduction =
+    public const string Introduction =
         "Introduction:"
         + "\r\nThe software “ReciPro” supports many crystallographic calculations, simulation of/indexing  diffraction pattern, and so on."
         + "\r\n - ReciPro provides many crystallographic calculations for 530 (Hall symbol) space groups."
@@ -382,7 +383,7 @@ internal static class Version
     /// <summary>
     /// 謝辞
     /// </summary>
-    static public string Acknowledge =
+    public const string Acknowledge =
         "Acknowledgement:"
         + "\r\n　Thanks to Daisuke Hamane (Tokyo Univ.), Masahiro Ohtsuka (Nagoya Univ.),  Akira Miyake (Kyoto Univ.)"
         + "Shoichi Toh (Kyushu Univ.), and many other contributers"
@@ -391,7 +392,7 @@ internal static class Version
     /// <summary>
     /// 使い方
     /// </summary>
-    static public string Manual =
+    public const string Manual =
         "Manual:"
         + "\r\n　See \"Help\" => \"Help\""
         ;
@@ -399,7 +400,7 @@ internal static class Version
     /// <summary>
     /// 著作権
     /// </summary>
-    static public string CopyRight =
+    public const string CopyRight =
         "Copyrights:"
         + "\r\n　Dr. Y. Seto holds the copyrights of ReciPro."
         ;
@@ -407,7 +408,7 @@ internal static class Version
     /// <summary>
     /// 使用条件
     /// </summary>
-    static public string Condition =
+    public const string Condition =
         "Licene:"
         + "\r\n ReciPro is a　free (non-charge) software for academic, scientific, and educational users."
         + "\r\n The people or companies engaged in commercial enterprise may also use ReciPro for their buisiness."
@@ -418,7 +419,7 @@ internal static class Version
     /// <summary>
     /// 免責事項
     /// </summary>
-    static public string Exemption =
+    public const string Exemption =
         "Disclaimer:"
         + "\r\n ReciPro is provided by the author \"as is\" and \"with all faults.\" "
         + "\r\n The author makes no warranties of any kind concerning the safety, lack of viruses, inaccuracies, or other harmful components of ReciPro."
@@ -428,11 +429,11 @@ internal static class Version
     /// <summary>
     /// 連絡先
     /// </summary>
-    static public string Adress =
+    public const string Adress =
         "Contact:"
-        + "\r\n If you find any problems of ReciPro to be improved, feel free to contact me by followin e-mail;"
-        + "\r\n mail: seto@crystal.kobe-u.ac.jp"
-        + "\r\n Home Page: http://pmsl.planet.sci.kobe-u.ac.jp/~seto/"
+        + "\r\n If you find any problems of ReciPro to be improved, feel free to contact me by following e-mail;"
+        + "\r\n mail: seto.y@omu.ac.jp"
+        + "\r\n Home Page: https://yseto.net/"
         ;
 
     static public string[] Hint = new string[]{

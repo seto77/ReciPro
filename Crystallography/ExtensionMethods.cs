@@ -248,6 +248,7 @@ public static class HKL
 {
     public static (int H, int K, int L) Plus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H + y.H, x.K + y.K, x.L + y.L);
     public static (int H, int K, int L) Minus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H - y.H, x.K - y.K, x.L - y.L);
+    public static int Multiply(ref this (int H, int K, int L) x, (int H, int K, int L) y) => x.H * y.H + x.K * y.K + x.L * y.L;
 }
 #endregion
 
@@ -342,10 +343,7 @@ public static class GraphicsAlpha
         g.DrawLine(pen, x - size / 2, y - size / 2, x + size / 2, y + size / 2);
         g.DrawLine(pen, x + size / 2, y - size / 2, x - size / 2, y + size / 2);
     }
-    public static void DrawCross(this Graphics g, Pen pen, PointD p, double size)
-    {
-        g.DrawCross(pen, p.X, p.Y, size);
-    }
+    public static void DrawCross(this Graphics g, Pen pen, PointD p, double size) => g.DrawCross(pen, p.X, p.Y, size);
     #endregion
 
     public static void FillPolygon(this Graphics g, Brush brush, PointD[] points, System.Drawing.Drawing2D.FillMode fillMode)
@@ -360,6 +358,7 @@ public static class GraphicsAlpha
 
     static Dictionary<(int Alpha, Color Color), SolidBrush> solidBrushDic = new();
 
+    #region 円の輪郭、あるいは円の塗りつぶし
     public static void FillCircle(this Graphics graphics, in Color c, in PointD pt, in double radius, in int alpha)
     {
         if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
@@ -374,7 +373,7 @@ public static class GraphicsAlpha
         if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
             graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
     }
-
+    #endregion
 
 
 }

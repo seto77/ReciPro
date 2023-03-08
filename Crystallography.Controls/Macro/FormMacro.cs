@@ -102,8 +102,11 @@ namespace Crystallography.Controls
 
             while (stepByStepMode && nextStepFlag == false)
             {
-                _cancelSource.Token.ThrowIfCancellationRequested();
-                try { Application.DoEvents(); }
+                try
+                {
+                    _cancelSource.Token.ThrowIfCancellationRequested();
+                    Application.DoEvents();
+                }
                 catch { }
                 Thread.Sleep(50);
             }
