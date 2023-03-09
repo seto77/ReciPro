@@ -94,6 +94,11 @@ public partial class FormImageSimulator : Form
     public double SliceThicknessForInelastic => numericBoxSliceThicknessForInelasticSTEM.Value;
 
     /// <summary>
+    /// 実効的光源サイズ (nm単位)
+    /// </summary>
+    public double SourceSize => numericBoxSourceSize.Value * 0.001;
+
+    /// <summary>
     /// イメージの解像度 (nm/pix)
     /// </summary>
     public double ImageResolution => numericBoxResolution.Value / 1000.0;
@@ -306,6 +311,7 @@ public partial class FormImageSimulator : Form
             SliceThicknessForInelastic,
             ImageSize,
             ImageResolution,
+            SourceSize,
             FormMain.Crystal.RotationMatrix,
             thicknessArray,
             defocusArray,
@@ -996,7 +1002,7 @@ public partial class FormImageSimulator : Form
         this.SuspendLayout();
         numericBoxDefocus.Enabled = ImageMode != ImageModes.POTENTIAL;
 
-        groupBoxInherentProperty.Visible = groupBoxSampleProperty.Visible = groupBoxNormalization.Visible
+        groupBoxSampleProperty.Visible = groupBoxNormalization.Visible
                = groupBoxSerialImage.Visible = panelLenz.Visible = ImageMode != ImageModes.POTENTIAL;
 
         checkBoxRealTimeSimulation.Visible = ImageMode != ImageModes.STEM;
@@ -1327,4 +1333,44 @@ public partial class FormImageSimulator : Form
     }
     #endregion 画像の輝度、カラースケール、ガウシアンぼかし
 
+    #region 右クリックメニュー
+    private void setoZeroDefocusToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        numericBoxDefocus.Value = 0;
+    }
+
+    private void setoScherzerDefocusToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        numericBoxDefocus.Value = Scherzer;
+    }
+
+    private void zeroAllToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        numericBoxCc.Value = numericBoxCs.Value = numericBoxBetaAgnle.Value = numericBoxDeltaV.Value = numericBoxDefocus.Value = 0;
+    }
+
+    private void typicalBF02MradToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        numericBoxSTEM_DetectorInnerAngle.Value = 0;
+        numericBoxSTEM_DetectorOuterAngle.Value = 5;
+    }
+
+    private void typicalABF1224MradToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        numericBoxSTEM_DetectorInnerAngle.Value = 12;
+        numericBoxSTEM_DetectorOuterAngle.Value = 24;
+    }
+
+    private void typicalLAADF2560MradToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        numericBoxSTEM_DetectorInnerAngle.Value = 26;
+        numericBoxSTEM_DetectorOuterAngle.Value = 60;
+    }
+
+    private void typicalHAADF80250MradToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        numericBoxSTEM_DetectorInnerAngle.Value = 80;
+        numericBoxSTEM_DetectorOuterAngle.Value = 250;
+    }
+    #endregion
 }

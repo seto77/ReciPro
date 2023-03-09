@@ -804,7 +804,7 @@ public class BetheMethod
         if (bwSTEM.IsBusy)
             bwSTEM.CancelAsync();
     }
-    public void RunSTEM(int maxNumOfBloch, double voltage, double cs, double delta, double sliceThickness, Size imageSize, double resolution,
+    public void RunSTEM(int maxNumOfBloch, double voltage, double cs, double delta, double sliceThickness, Size imageSize, double resolution, double sourceSize,
         Matrix3D baseRotation, double[] thicknesses, double[] defocusses,
         Vector3DBase[] beamDirections, double convergenceAngle, double detAngleInner, double detAngleOuter,
         bool calcElas, bool calcInel, Solver solver = Solver.Auto, int thread = 1)
@@ -818,13 +818,13 @@ public class BetheMethod
         BeamDirections = beamDirections;
         Thicknesses = thicknesses;
         if(!bwSTEM.IsBusy) 
-            bwSTEM.RunWorkerAsync((solver, thread, cs, delta, sliceThickness, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, calcElas, calcInel));
+            bwSTEM.RunWorkerAsync((solver, thread, cs, delta, sliceThickness, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, sourceSize, calcElas, calcInel));
     }
     public void stem_DoWork(object sender, DoWorkEventArgs e)
     {
         //MathNetの行列の内部は、1列目の要素、2列目の要素、という順番で格納されている
-        var (solver, thread, cs, delta, sliceThickness, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, calcElas, calcInel)
-            = ((Solver, int, double, double, double, double, double, double, double[], double[], Size, double, bool, bool))e.Argument;
+        var (solver, thread, cs, delta, sliceThickness, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, sourceSize, calcElas, calcInel)
+            = ((Solver, int, double, double, double, double, double, double, double[], double[], Size, double, double, bool, bool))e.Argument;
 
         var diameterPix = (int)Math.Sqrt(BeamDirections.Length);
         var radiusPix = diameterPix / 2.0;
@@ -877,7 +877,7 @@ public class BetheMethod
         int dLen = defocusses.Length, tLen = thicknesses.Length, bLen = Beams.Length;
 
         //入射面での波動関数を定義
-        var psi0 = Enumerable.Range(0, Beams.Length).ToList().Select(g => g == 0 ? One : 0).ToArray();
+        var psi0 = Enumerable.Range(0, Beams.Length).ToList().Select(g => g == 0 ? -One : 0).ToArray();
         //ポテンシャルマトリックスを初期化
         uDictionary.Clear();
         var potentialMatrix = getPotentialMatrix(Beams);
@@ -1041,8 +1041,14 @@ public class BetheMethod
                 int k = 0;
                 for (int i = 0; i < bLen; i++)
                     for (int j = 0; j < bLen; j++)
-                        U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合 i, jの順番が正解
+                    {
+                        //U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合 i, jの順番が正解
+                        //U[m][k++] = getU(AccVoltage, qList[m] + Beams[j] - Beams[i], null, detAngleInner, detAngleOuter).Imag;//j, iの順番。ダメ
+                        //U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役 ダメ
+                        U[m][k++] = getU(AccVoltage, qList[m] + Beams[j] - Beams[i], null, detAngleInner, detAngleOuter).Imag.Conjugate();//j, iの順番で共役。なぜかこれはいい感じ。
+
                         //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
+                    }
                 bwSTEM.ReportProgress((int)(1000.0 * Interlocked.Increment(ref count) / qList.Count), "Calculating U matrix");//状況を報告
                 if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
             });
@@ -1202,7 +1208,7 @@ public class BetheMethod
 
                     for (int qIndex = 0; qIndex < qList.Count; qIndex++)
                         for (int d = 0; d < dLen; d++)
-                            I_Inel[qIndex, t, d] = sum[qIndex, d] / kvac;
+                            I_Inel[qIndex, t, d] = sum[qIndex, d] / kvac * 2 * Math.PI;
                 }
                 #endregion
             }
@@ -1319,6 +1325,12 @@ public class BetheMethod
                     }
             }
         });
+
+        if (sourceSize > 0)
+            for (int t = 0; t < Thicknesses.Length; t++)
+                for (int d = 0; d < dLen; d++)
+                    STEM_Image[t][d] = ImageProcess.GaussianBlurFast(STEM_Image[t][d], width, sourceSize / resolution);
+
         #endregion
 
         return;
@@ -1559,7 +1571,7 @@ public class BetheMethod
             //相対論補正
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
 
-            U = (fReal * gamma / Math.PI / Crystal.Volume, fImag * gamma / Math.PI / Crystal.Volume);
+            U = (fReal* gamma / Math.PI / Crystal.Volume, fImag * gamma / Math.PI / Crystal.Volume);
             if (kV > 0)
                 lock (lockObj1)
                     uDictionary.TryAdd((key1, key2), U);
