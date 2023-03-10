@@ -1,2 +1,0 @@
-[*.{cs,vb}]
-csharp_style_namespace_declarations=file_scoped:suggestion
