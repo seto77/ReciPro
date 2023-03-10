@@ -1039,13 +1039,10 @@ public class BetheMethod
             {
                 U[m] = new Complex[bLen * bLen];
                 int k = 0;
-                for (int i = 0; i < bLen; i++)
-                    for (int j = 0; j < bLen; j++)
+                for (int j = 0; j < bLen; j++)
+                    for (int i = 0; i < bLen; i++)
                     {
-                        //U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag;//局所形式の場合 i, jの順番が正解
-                        //U[m][k++] = getU(AccVoltage, qList[m] + Beams[j] - Beams[i], null, detAngleInner, detAngleOuter).Imag;//j, iの順番。ダメ
-                        //U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役 ダメ
-                        U[m][k++] = getU(AccVoltage, qList[m] + Beams[j] - Beams[i], null, detAngleInner, detAngleOuter).Imag.Conjugate();//j, iの順番で共役。なぜかこれはいい感じ。
+                        U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//j, iの順番で共役。なぜかこれはいい感じ。
 
                         //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
                     }
@@ -1180,7 +1177,7 @@ public class BetheMethod
                             Complex[] TgThU2 = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);//, u_tck = Shared.Rent(list[kIndex].Count * bLen);
                             try
                             {
-                                for (int i = 0, j = 0; i < list[kIndex].Count; i++)
+                                for (int i = 0; i < list[kIndex].Count; i++)
                                 {
                                     var (qIndex, n, r, lenz) = list[kIndex][i];
                                     //厚み_thick[t][_t]における透過係数_tc_kqを計算
@@ -1191,14 +1188,15 @@ public class BetheMethod
                                     //    for (int g = 0; g < bLen; g++)
                                     //        sum1 += tc_k[kIndex][g] * tc_kq[h] * U[qIndex][g * bLen + h];
                                     #endregion
-                                    var TgThU1 = NativeWrapper.RowVec_SqMat_ColVec(bLen, tc_kq, U[qIndex], tc_k[kIndex]);
+                                    var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, tc_kq, U[qIndex], tc_k[kIndex]);
+
                                     for (int d = 0; d < dLen; d++)
-                                        TgThU2[j++] = TgThU1 * lenz[d];
+                                        TgThU2[i * dLen + d] = tmp * lenz[d];
                                 }
                                 lock (lockObj1)
-                                    for (int i = 0, j = 0; i < list[kIndex].Count; i++)
+                                    for (int i = 0; i < list[kIndex].Count; i++)
                                         for (int d = 0; d < dLen; d++)
-                                            sum[list[kIndex][i].qIndex, d] += TgThU2[j++] * tStep[t];
+                                            sum[list[kIndex][i].qIndex, d] += TgThU2[i * dLen + d] * tStep[t];
                             }
                             finally { Shared.Return(tc_kq); Shared.Return(TgThU2); }
 
