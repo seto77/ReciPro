@@ -52,7 +52,7 @@ public partial class FormDiffractionSimulatorCBED : Form
     public bool DrawGuideCircles => checkBoxDrawGuideCircles.Checked;
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
 
-    public int Division => numericBoxDivision.ValueInteger;
+    public int Division => (int)Math.Ceiling(numericBoxAlphaMax.Value * 2 / numericBoxDiskResolution.Value);
 
     public double[] ThicknessArray
     {
@@ -376,14 +376,19 @@ public partial class FormDiffractionSimulatorCBED : Form
 
     #region 入力パラメータ関連のイベント
 
-    private void numericBoxAlphaMax_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
+    private void numericBoxAlphaMax_ValueChanged(object sender, EventArgs e)
+    {
+        FormDiffractionSimulator.Draw();
+        NumericBoxDivision_ValueChanged(sender, e);
+    }
+
     private void radioButtonCBED_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
     private void numericBoxMaxNumOfG_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
     private void CheckBoxDrawGuideCircles_CheckedChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
     private void NumericBoxDivision_ValueChanged(object sender, EventArgs e) =>
-        labelDivisionNumber.Text = $"disk is divided into {DivisionNumber} pixels.";
+        labelDivisionNumber.Text = $"{DivisionNumber:#,0}";
 
     private void NumericBoxWholeThicknessStart_ValueChanged(object sender, EventArgs e)
     {
@@ -404,5 +409,13 @@ public partial class FormDiffractionSimulatorCBED : Form
         FormDiffractionSimulator.copyCBEDPatternToolStripMenuItem.Visible = Visible;
     }
 
+    private void labelDivisionNumber_Click(object sender, EventArgs e)
+    {
 
+    }
+
+    private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
 }

@@ -1035,20 +1035,33 @@ public class BetheMethod
         var U = new Complex[qList.Count][];
         uDictionary.Clear();
         if (calcInel) //U行列を作成
-            Parallel.For(0, qList.Count, m =>
+        {
+            var hash = new HashSet<(int q, int j, int i)>();
+            //qIndex, j, i の全ての組み合わせを作成
+            for (int q = 0; q < qList.Count; q++)
+                for (int j = 0; j < bLen; j++)
+                    for (int i = 0; i < bLen; i++)
+                        hash.Add((q, j, i));
+
+
+
+
+                        Parallel.For(0, qList.Count, qIndex =>
             {
-                U[m] = new Complex[bLen * bLen];
-                int k = 0;
+                U[qIndex] = GC.AllocateUninitializedArray<Complex>(bLen * bLen);
                 for (int j = 0; j < bLen; j++)
                     for (int i = 0; i < bLen; i++)
                     {
-                        U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
+                        U[qIndex][j * bLen + i] = getU(AccVoltage, qList[qIndex] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
 
                         //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
+
+                        if (Interlocked.Increment(ref count) % 100 == 0) bwSTEM.ReportProgress((int)(1000.0 * count / qList.Count / bLen / bLen), "Calculating U matrix");//状況を報告
                     }
-                bwSTEM.ReportProgress((int)(1000.0 * Interlocked.Increment(ref count) / qList.Count), "Calculating U matrix");//状況を報告
+
                 if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
             });
+        }
         #endregion
 
         //必要な情報だけを追加してParallelにしたtcP
@@ -1517,8 +1530,8 @@ public class BetheMethod
             Complex fReal = 0, fImag = 0;
             foreach (var atoms in Crystal.Atoms)
             {
-                //var es = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron];//5 gaussian
-                var es = AtomStatic.ElectronScatteringEightGaussian[atoms.AtomicNumber];//8 gaussian  
+                var es = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron];//5 gaussian
+                //var es = AtomStatic.ElectronScatteringEightGaussian[atoms.AtomicNumber];//8 gaussian  
                 var real = es.Factor(s2);//弾性散乱因子
                 #region お蔵
                 //var m = atoms.Dsf.UseIso || index == (0, 0, 0) ? atoms.Dsf.Biso : 0;

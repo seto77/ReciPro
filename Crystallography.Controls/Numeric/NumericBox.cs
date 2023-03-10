@@ -162,15 +162,14 @@ public partial class NumericBox : UserControl
     public string HeaderText { set => labelHeader.Text = value; get => labelHeader.Text; }
 
     [Category("Font && Color")]
+    [Localizable(true)]
     [DefaultValue(typeof(Padding), "0,0,0,0")]
-
     public Padding HeaderMargin { set => labelHeader.Margin = value; get => labelHeader.Margin; }
 
 
     [Localizable(true)]
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
     [Category("Font && Color")]
-
     public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }
 
     [DefaultValue(typeof(Color), "ControlText")]
@@ -218,6 +217,7 @@ public partial class NumericBox : UserControl
     public Color TextBoxBackColor { set => textBox.BackColor = value; get => textBox.BackColor; }
 
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
+    [Localizable(true)]
     [Category("Font && Color")]
     /// <summary>
     /// font

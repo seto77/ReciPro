@@ -273,18 +273,10 @@ public partial class FormImageSimulator : Form
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
         var directions = new List<Vector3DBase>();
-        var division = numericBoxDivisionOfIncidentElectron.ValueInteger;
-        var sin = Sin(numericBoxSTEM_ConvergenceAngle.Value * 1.05 / 1000);// 収束角を1.05倍にしておく
 
-        #region 検証用コード
-        //ゼロ次ラウエゾーンの基底ベクトルを整数分の1にしてみる
-        //var kVac = UniversalConstants.Convert.EnergyToElectronWaveNumber(200);
-
-        //var convergence = 2 * Math.Asin(UniversalConstants.Convert.EnergyToElectronWaveLength(200) * FormMain.Crystal.A_Star.Length * 2.5)
-        //   * 7.0009023190741639080089511108548 / 7;
-        //sin = Sin(convergence);
-        //division = 71;
-        #endregion
+        // 収束角を1.05倍にしておく
+        var division = (int)Math.Ceiling(numericBoxSTEM_ConvergenceAngle.Value * 2 * 1.05 / numericBoxSTEM_AngleResolution.Value);
+        var sin = Sin(numericBoxSTEM_ConvergenceAngle.Value * 1.05 / 1000);
 
         var radius = division / 2.0;
         for (int h = 0; h < division; h++)

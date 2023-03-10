@@ -76,6 +76,45 @@
   <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>入力パラメータ</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 18</value>
+  </data>
+  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 18</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>総ピクセル数:</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelDivisionNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 0</value>
+  </data>
+  <data name="labelDivisionNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 18</value>
+  </data>
+  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="radioButtonLACBED.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 56</value>
   </data>
@@ -92,18 +131,12 @@
     <value>189, 84</value>
   </data>
   <data name="numericBoxAlphaMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxAlphaMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 25</value>
+    <value>197, 27</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 122</value>
-  </data>
-  <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="radioButtonCBED.Location" type="System.Drawing.Point, System.Drawing">
@@ -124,14 +157,17 @@
   <data name="numericBoxThread.Location" type="System.Drawing.Point, System.Drawing">
     <value>283, 28</value>
   </data>
+  <data name="numericBoxThread.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
   <data name="numericBoxThread.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 25</value>
+    <value>96, 27</value>
   </data>
   <data name="numericBoxThicknessStep.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxThicknessStep.FooterText" xml:space="preserve">
-    <value>nm刻み</value>
+    <value>nm 刻み</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -143,7 +179,7 @@
     <value>272, 146</value>
   </data>
   <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 27</value>
+    <value>107, 25</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -152,10 +188,10 @@
     <value>ブロッホ波の数</value>
   </data>
   <data name="numericBoxMaxNumOfG.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxMaxNumOfG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 25</value>
+    <value>159, 27</value>
   </data>
   <data name="numericBoxWholeThicknessStart.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -171,6 +207,9 @@
   </data>
   <data name="numericBoxWholeThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 147</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxWholeThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 27</value>
@@ -190,20 +229,43 @@
   <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 147</value>
   </data>
+  <data name="numericBoxThicknessEnd.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
   <data name="numericBoxThicknessEnd.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 27</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>中止</value>
   </data>
-  <data name="numericBoxDivision.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxDiskResolution.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxDiskResolution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxDiskResolution.FooterText" xml:space="preserve">
+    <value>mrad/pix</value>
+  </data>
+  <data name="numericBoxDiskResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxDivision.HeaderText" xml:space="preserve">
-    <value>ディスク直径の分割数</value>
+  <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
+    <value>ディスクの解像度</value>
   </data>
-  <data name="numericBoxDivision.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 27</value>
+  <data name="numericBoxDiskResolution.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 116</value>
+  </data>
+  <data name="numericBoxDiskResolution.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxDiskResolution.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxDiskResolution.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 27</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
@@ -215,15 +277,6 @@
     <value>ソルバ</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>入力パラメータ</value>
-  </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
