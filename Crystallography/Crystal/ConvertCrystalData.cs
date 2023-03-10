@@ -1749,12 +1749,12 @@ public class ConvertCrystalData
             sb.AppendLine("_atom_site_aniso_U_12");
             foreach (var a in crystal.Atoms.Where(e => !e.Dsf.UseIso))
             {
-                var u11 = double.IsNaN(a.Dsf.U11) ? 0 : a.Dsf.U11;
-                var u22 = double.IsNaN(a.Dsf.U22) ? 0 : a.Dsf.U22;
-                var u33 = double.IsNaN(a.Dsf.U33) ? 0 : a.Dsf.U33;
-                var u23 = double.IsNaN(a.Dsf.U23) ? 0 : a.Dsf.U23;
-                var u31 = double.IsNaN(a.Dsf.U31) ? 0 : a.Dsf.U31;
-                var u12 = double.IsNaN(a.Dsf.U12) ? 0 : a.Dsf.U12;
+                var u11 = double.IsNaN(a.Dsf.U11) ? 0 : a.Dsf.U11 * 100;
+                var u22 = double.IsNaN(a.Dsf.U22) ? 0 : a.Dsf.U22 * 100;
+                var u33 = double.IsNaN(a.Dsf.U33) ? 0 : a.Dsf.U33 * 100;
+                var u23 = double.IsNaN(a.Dsf.U23) ? 0 : a.Dsf.U23 * 100;
+                var u31 = double.IsNaN(a.Dsf.U31) ? 0 : a.Dsf.U31 * 100;
+                var u12 = double.IsNaN(a.Dsf.U12) ? 0 : a.Dsf.U12 * 100;
                 sb.AppendLine($"{a.Label} {u11:f6} {u22:f6} {u33:f6} {u23:f6} {u31:f6} {u12:f6}");
             }
         } 

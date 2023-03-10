@@ -2,7 +2,6 @@ using System;
 using System.Drawing;
 using System.Numerics;
 using System.Xml.Serialization;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Crystallography;
 
