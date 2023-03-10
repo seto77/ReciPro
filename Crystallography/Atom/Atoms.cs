@@ -607,24 +607,64 @@ public class DiffuseScatteringFactor
     /// </summary>
     public double B31_err => OriginalType == Type.B ? Aniso31_err : Aniso31_err * coeff31;
 
-  
-
     #endregion
 
     #region U type. Getのみ
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double Uiso => OriginalType == Type.U ? Iso : Iso / PI2 / 8;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double Uiso_err => OriginalType == Type.U ? Iso_err : Iso_err / PI2 / 8;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U11 => OriginalType == Type.U ? Aniso11 : Aniso11 / coeff11;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U22 => OriginalType == Type.U ? Aniso22 : Aniso22 / coeff22;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U33 => OriginalType == Type.U ? Aniso33 : Aniso33 / coeff33;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U12 => OriginalType == Type.U ? Aniso12 : Aniso12 / coeff12;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U23 => OriginalType == Type.U ? Aniso23 : Aniso23 / coeff23;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U31 => OriginalType == Type.U ? Aniso31 : Aniso31 / coeff31;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U11_err => OriginalType == Type.U ? Aniso11_err : Aniso11_err / coeff11;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U22_err => OriginalType == Type.U ? Aniso22_err : Aniso22_err / coeff22;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U33_err => OriginalType == Type.U ? Aniso33_err : Aniso33_err / coeff33;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U12_err => OriginalType == Type.U ? Aniso12_err : Aniso12_err / coeff12;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U23_err => OriginalType == Type.U ? Aniso23_err : Aniso23_err / coeff23;
+    /// <summary>
+    /// 単位は nm^2
+    /// </summary>
     public double U31_err => OriginalType == Type.U ? Aniso31_err : Aniso31_err / coeff31;
     #endregion
 
