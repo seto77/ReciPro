@@ -628,7 +628,7 @@ public class DiffuseScatteringFactor
     public double U31_err => OriginalType == Type.U ? Aniso31_err : Aniso31_err / coeff31;
     #endregion
 
-    #region オリジナルの値
+    #region オリジナルの値 
     /// <summary>
     /// 単位は nm^2
     /// </summary>
