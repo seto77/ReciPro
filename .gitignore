@@ -7,6 +7,10 @@ Eigen/
 Crystallography.Native/Eigen/
 Crystallography.Native/unsupported/
 *.exe
+REQUIREMENT.rtf
+LICENSE.rtf
+.editorconfig
+!/.gitignore
 
 # User-specific files
 *.suo
