@@ -126,9 +126,6 @@ extern "C" {
 		Map<Mat>((dcomplex*)_result, 1, 1).noalias() = rV * m * cV;
 	}
 
-
-
-
 	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る
 	EIGEN_FUNCS_API void _PointwiseMultiply(int dim, double mat1[], double mat2[], double result[])
 	{

@@ -469,14 +469,6 @@ public static partial class NativeWrapper
 
     #region 複素共役、転置
 
-    unsafe static public void Conjugate(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
-    {
-        fixed (Complex* mtx1 = matrix1)
-        fixed (Complex* mtx2 = matrix2)
-        fixed (Complex* res = result)
-            _AdjointAndMultiply(dim, (double*)mtx1, (double*)mtx2, (double*)res);
-    }
-
     unsafe static public void Adjoint(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
     {
         fixed (Complex* mtx1 = matrix1)
