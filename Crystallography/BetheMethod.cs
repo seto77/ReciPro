@@ -1042,7 +1042,7 @@ public class BetheMethod
                 for (int j = 0; j < bLen; j++)
                     for (int i = 0; i < bLen; i++)
                     {
-                        U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//j, iの順番で共役。なぜかこれはいい感じ。
+                        U[m][k++] = getU(AccVoltage, qList[m] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
 
                         //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
                     }
@@ -1174,7 +1174,7 @@ public class BetheMethod
 
                         tcP.ForAll(kIndex =>
                         {
-                            Complex[] TgThU2 = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);//, u_tck = Shared.Rent(list[kIndex].Count * bLen);
+                            Complex[] sumTmp = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);//, u_tck = Shared.Rent(list[kIndex].Count * bLen);
                             try
                             {
                                 for (int i = 0; i < list[kIndex].Count; i++)
@@ -1191,14 +1191,14 @@ public class BetheMethod
                                     var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, tc_kq, U[qIndex], tc_k[kIndex]);
 
                                     for (int d = 0; d < dLen; d++)
-                                        TgThU2[i * dLen + d] = tmp * lenz[d];
+                                        sumTmp[i * dLen + d] = tmp * lenz[d];
                                 }
                                 lock (lockObj1)
                                     for (int i = 0; i < list[kIndex].Count; i++)
                                         for (int d = 0; d < dLen; d++)
-                                            sum[list[kIndex][i].qIndex, d] += TgThU2[i * dLen + d] * tStep[t];
+                                            sum[list[kIndex][i].qIndex, d] += sumTmp[i * dLen + d] * tStep[t];
                             }
-                            finally { Shared.Return(tc_kq); Shared.Return(TgThU2); }
+                            finally { Shared.Return(tc_kq); Shared.Return(sumTmp); }
 
                             if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1000000.0 / total * count), "Calculating I_inelastic(Q)");//状況を報告
                         });

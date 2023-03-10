@@ -10,17 +10,6 @@
 //
 
 #define EIGEN_NO_DEBUG // コード内のassertを無効化．
-//#define EIGEN_NO_STATIC_ASSERT
-//#define EIGEN_STACK_ALLOCATION_LIMIT 0
-//#define EIGEN_RUNTIME_NO_MALLOC
-
-//#define EIGEN_DONT_VECTORIZE // SIMDを無効化．
-#define EIGEN_DONT_PARALLELIZE // 並列を無効化．
-//#define EIGEN_MALLOC_ALREADY_ALIGNED 1
-//#define EIGEN_FAST_MATH 1
-#define EIGEN_STRONG_INLINE
-//#define EIGEN_INITIALIZE_MATRICES_BY_ZERO
-//#define EIGEN_USE_MKL_ALL
 
 #define EIGENFUNCS_EXPORTS
 
@@ -101,15 +90,32 @@ extern "C" {
 		auto val = (dcomplex*)_val;
 		dcomplex exp_kgz[dim];
 		dcomplex exp_val[dim];
-		for (int i = 0; i < dim; i++) {
-			exp_kgz[i] = exp(two_pi_i * thickness * _kg_z[i]);
-			exp_val[i] = exp(two_pi_i * thickness * val[i]);
+		auto tmp = two_pi_i * thickness;
+		bool flag = false;
+		for (int i = 0; i < dim; i++) 
+		{
+			if (_kg_z[i] < 1E-12)
+				exp_kgz[i] = 1;
+			else
+			{
+				flag = true;
+				exp_kgz[i] = exp(tmp * _kg_z[i]);
+			}
+		
+			exp_val[i] = exp(tmp * val[i]);
 		}
 		
-		auto v1 = Map<Vec>(exp_kgz, dim);
 		auto v2 = Map<Vec>(exp_val, dim);
 		auto m = Map<Mat>((dcomplex*)_vec, dim, dim);
-		Map<Vec>((dcomplex*)result, dim).noalias() = v1.asDiagonal() * m * v2;
+		if (flag) 
+		{
+			auto v1 = Map<Vec>(exp_kgz, dim);
+			Map<Vec>((dcomplex*)result, dim).noalias() = v1.asDiagonal() * m * v2;
+		}
+		else
+		{
+			Map<Vec>((dcomplex*)result, dim).noalias() = m * v2;
+		}
 
 		/*auto v1 = Map<Vec>((dcomplex*)_kg_z, dim);
 		auto v2 = Map<Vec>((dcomplex*)_val, dim);
