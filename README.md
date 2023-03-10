@@ -1,3 +1,5 @@
+[Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
+
 # ReciPro
 * *ReciPro* makes various crystallographic calculations, visualizes a crystal structure, simulates a diffraction pattern and high-resolution TEM image, indexes diffraction spots, plots stereographic projection, and so on.
 * *ReciPro* is developed by [Seto Y.](https://yseto.net/) (Osaka Meteropolitan University, Japan) and [Ohtsuka M.](https://profs.provost.nagoya-u.ac.jp/html/100006527_en.html) (Nagoya University, Japan). The functions and algorithms are also presented in [the paper](https://github.com/seto77/ReciPro/blob/master/ReciProSetoOhtsuka2022.pdf). If you use this software to write an academic paper, we would appreciate it if you would cite the following information. 
@@ -7,10 +9,6 @@
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
 * *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 7.0*** (not ***.Net Runtime 7.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/7.0).
-***
-
-## Appearance
-[Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 ***
 
 ## Manual
