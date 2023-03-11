@@ -1341,6 +1341,12 @@ public class BetheMethod
             }
         });
 
+        //なんかよく分からんが画像が上下左右反転している
+        for (int t = 0; t < Thicknesses.Length; t++)
+            for (int d = 0; d < dLen; d++)
+                STEM_Image[t][d] = STEM_Image[t][d].Reverse().ToArray();
+
+        //ガウスブラーを適用
         if (sourceSize > 0)
             for (int t = 0; t < Thicknesses.Length; t++)
                 for (int d = 0; d < dLen; d++)
@@ -1563,7 +1569,7 @@ public class BetheMethod
                                 h == null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
                         }
                     }
-                    var d = Exp(-m * s2 - TwoPiI * (atom * index)) * atoms.Occ;//expの中がマイナスなのが、U'マトリックスを転置させなければいけない理由かも。
+                    var d = Exp(-m * s2 - TwoPiI * (atom * index)) * atoms.Occ;//expの中がマイナスなのが、U'マトリックスを転置させなければいけない理由かも。違うか。。
                     fReal += real * d;
                     fImag += imag * d;
                 }
