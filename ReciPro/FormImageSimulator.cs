@@ -243,7 +243,7 @@ public partial class FormImageSimulator : Form
     }
     #endregion PseudoBitmapに格納する情報
 
-    #region Simulate
+    #region Simulateボタン
     /// <summary>
     /// Simulateボタンが押されたとき
     /// </summary>
@@ -252,7 +252,7 @@ public partial class FormImageSimulator : Form
     private void ButtonSimulate_Click(object sender, EventArgs e)
     {
         toolStripStatusLabel1.Text = "";
-        toolStripProgressBar1.Value = 0;
+        toolStripProgressBar.Value = 0;
 
         if (ImageMode == ImageModes.HRTEM)
             SimulateHRTEM();
@@ -261,6 +261,7 @@ public partial class FormImageSimulator : Form
         else if (ImageMode == ImageModes.STEM)
             simulateSTEM();
     }
+    #endregion
 
     #region STEMシミュレーション
 
@@ -291,7 +292,7 @@ public partial class FormImageSimulator : Form
 
         stemDirectionTotal = Enumerable.Range(0, division * division).Count(i => inside(i));
 
-        toolStripProgressBar1.Maximum = stemDirectionTotal;
+        toolStripProgressBar.Maximum = stemDirectionTotal;
         FormMain.Crystal.Bethe.StemProgressChanged += stemProgressChanged;
         FormMain.Crystal.Bethe.StemCompleted += stemCompleted;
 
@@ -349,39 +350,37 @@ public partial class FormImageSimulator : Form
             if (!sw4.IsRunning) sw4.Restart();
             var sec = s4 / 1000.0;
             var totalsec = sec + (s1 + s2 + s3) / 1000.0;
-            toolStripProgressBar1.Value = (int)(current / 1000000.0 * toolStripProgressBar1.Maximum);
+            toolStripProgressBar.Value = (int)((current / 1E6 * 0.3 + 0.7) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 4: Calculating I_inelastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current / 10000.0:f1} % completed,  wait for more {sec * (1000000.0 - current) / current:f1} s.";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
         }
-
-        else if (message.StartsWith("Calculating I_elastic(Q)", StringComparison.Ordinal))
+        else if (message.StartsWith("Calculating U", StringComparison.Ordinal))
         {
             if (sw1.IsRunning) sw1.Stop();
             if (sw2.IsRunning) sw2.Stop();
             if (!sw3.IsRunning) sw3.Restart();
             var sec = s3 / 1000.0;
             var totalsec = sec + (s1 + s2) / 1000.0;
-            toolStripProgressBar1.Value = Math.Min((int)(current * 1.05 * 1.05), toolStripProgressBar1.Maximum);
-            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 3: Calculating I_elastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current * 1.05 * 1.05 * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal / 1.05 / 1.05 - current) / current:f1} s.";
-            //* 1.05 * 1.05が出てくるのは、1.05倍の半頂角で計算しているから。
+            toolStripProgressBar.Value = (int)((current / 1E6 * 0.3 + 0.4) * toolStripProgressBar.Maximum);
+            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 3: Calculating U' matrix.  ";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
         }
-        else if (message.StartsWith("Calculating U", StringComparison.Ordinal))
+        else if (message.StartsWith("Calculating I_elastic(Q)", StringComparison.Ordinal))
         {
             if (sw1.IsRunning) sw1.Stop();
             if (!sw2.IsRunning) sw2.Restart();
             var sec = s2 / 1000.0;
             var totalsec = sec + s1 / 1000.0;
-            toolStripProgressBar1.Value = (int)(current / 1000.0 * toolStripProgressBar1.Maximum);
-            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 2: Calculating U' matrix.  ";
-            toolStripStatusLabel2.Text = $"{current / 10.0:f1} % completed,  wait for more {sec * (1000.0 - current) / current:f1} s.";
+            toolStripProgressBar.Value = (int)((current / 1E6 * 0.1 + 0.3) * toolStripProgressBar.Maximum);
+            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 2: Calculating I_elastic(Q).  ";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
         }
         else
         {
             var sec = s1 / 1000.0;
-            toolStripProgressBar1.Value = Math.Min((int)current, toolStripProgressBar1.Maximum);
+            toolStripProgressBar.Value = (int)((current / 1E6 * 0.3 + 0.0) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Ellapsed time : {sec:f1} s.  Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
-            toolStripStatusLabel2.Text = $"{current * 100.0 / stemDirectionTotal:f1} % completed,  wait for more {sec * (stemDirectionTotal - current) / current:f1} s.";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
         }
         Application.DoEvents();
         skipProgressChangedEvent = false;
@@ -396,7 +395,7 @@ public partial class FormImageSimulator : Form
         if (!e.Cancelled)
         {
             SendImage(thicknessArray.Length, defocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
-            toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
+            toolStripProgressBar.Value = toolStripProgressBar.Maximum;
             toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(s1 + s2 + s3 + s4) / 1000.0:f1} sec.";
             toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} sec.  Stage 2: {s2 / 1000.0:f1} sec.  Stage 3: {s3 / 1000.0:f1} sec.  Stage 4: {s4 / 1000.0:f1} sec.";
 
@@ -417,7 +416,54 @@ public partial class FormImageSimulator : Form
 
     #endregion;
 
-    #region ポテンシャル
+    #region HREMシミュレーション
+    public void SimulateHRTEM(bool realtimeMode = false)
+    {
+        sw1.Restart();
+
+        if (thicknessArray == null || defocusArray == null) return;
+
+        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
+
+        //LTF(レンズ伝達関数)を計算 && apertureの外にあるbeamを除外
+        BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
+        if (BeamsInside.Length < 2)//絞りに入るスポットが2未満の時は、警告を出してリターン
+        {
+            if (!realtimeMode)
+                MessageBox.Show("Obj. Aper. size is too small. Try again after increase the value!");
+            return;
+        }
+
+        int width = ImageSize.Width, height = ImageSize.Height, dLen = defocusArray.Length, tLen = thicknessArray.Length;
+        var totalImage = new double[tLen][][];
+
+        for (int t = 0; t < tLen; t++)
+        {
+            //ベーテ法で振幅を計算. t=0の時は、最初の判定の時に計算済み
+            Beams = t == 0 ? Beams : FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[t]);
+            //絞りの内側のビームを取得
+            BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
+            toolStripStatusLabel1.Text = $"Solving eigen problem: {sw1.ElapsedMilliseconds} msec.   ";
+
+            //HRTEM画像を取得
+            totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, defocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
+            //進捗状況を報告
+            toolStripProgressBar.Value = (int)(toolStripProgressBar.Maximum / tLen * (t + 1));
+            toolStripStatusLabel1.Text += $"{toolStripProgressBar.Value} % completed.  ";
+            if (!realtimeMode)
+                Application.DoEvents();
+        }
+        var temp = sw1.ElapsedMilliseconds;
+        toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} msec,   ";
+
+        SendImage(tLen, dLen, totalImage, width, height);
+
+        toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} msec.";
+
+    }
+    #endregion
+
+    #region ポテンシャルシミュレーション
     private void simulatePotential(bool realtimeMode = false)
     {
         sw1.Restart();
@@ -501,55 +547,6 @@ public partial class FormImageSimulator : Form
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} msec.";
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
-    #endregion
-
-    #region HREM
-    public void SimulateHRTEM(bool realtimeMode = false)
-    {
-        sw1.Restart();
-
-        if (thicknessArray == null || defocusArray == null) return;
-
-        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
-
-        //LTF(レンズ伝達関数)を計算 && apertureの外にあるbeamを除外
-        BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
-        if (BeamsInside.Length < 2)//絞りに入るスポットが2未満の時は、警告を出してリターン
-        {
-            if (!realtimeMode)
-                MessageBox.Show("Obj. Aper. size is too small. Try again after increase the value!");
-            return;
-        }
-
-        int width = ImageSize.Width, height = ImageSize.Height, dLen = defocusArray.Length, tLen = thicknessArray.Length;
-        var totalImage = new double[tLen][][];
-
-        for (int t = 0; t < tLen; t++)
-        {
-            //ベーテ法で振幅を計算. t=0の時は、最初の判定の時に計算済み
-            Beams = t == 0 ? Beams : FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[t]);
-            //絞りの内側のビームを取得
-            BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
-            toolStripStatusLabel1.Text = $"Solving eigen problem: {sw1.ElapsedMilliseconds} msec.   ";
-
-            //HRTEM画像を取得
-            totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, defocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
-            //進捗状況を報告
-            toolStripProgressBar1.Value = (int)(toolStripProgressBar1.Maximum / tLen * (t + 1));
-            toolStripStatusLabel1.Text += $"{toolStripProgressBar1.Value} % completed.  ";
-            if (!realtimeMode)
-                Application.DoEvents();
-        }
-        var temp = sw1.ElapsedMilliseconds;
-        toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} msec,   ";
-
-        SendImage(tLen, dLen, totalImage, width, height);
-
-        toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} msec.";
-
-    }
-    #endregion
-
     #endregion
 
     #region 計算結果をPictureBoxにセット

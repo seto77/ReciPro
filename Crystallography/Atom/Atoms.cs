@@ -554,6 +554,11 @@ public class DiffuseScatteringFactor
     public double Biso000 => (B11 * a2 + B22 * b2 + B33 * c2 + 2 * B12 * ab + 2 * B23 * bc + 2 * B31 * ca) * 4.0 / 3.0;
 
     /// <summary>
+    /// ‰·“xˆöq‚ªƒ[ƒ‚Ìê‡‚Ítrue
+    /// </summary>
+    public bool IsZero => UseIso ? Biso == 0 : B11 == 0 && B22 == 0 && B33 == 0 && B12 == 0 && B23 == 0 && B31 == 0;
+
+    /// <summary>
     /// unit: nm^2
     /// </summary>
     public double Biso_err => OriginalType == Type.B ? Iso_err : Iso_err * PI2 * 8;

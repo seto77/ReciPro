@@ -234,7 +234,7 @@ namespace ReciPro
             toolTip = new System.Windows.Forms.ToolTip(components);
             buttonStop = new System.Windows.Forms.Button();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
-            toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -1206,6 +1206,8 @@ namespace ReciPro
             // checkBoxNormarizeIndividually
             // 
             resources.ApplyResources(checkBoxNormarizeIndividually, "checkBoxNormarizeIndividually");
+            checkBoxNormarizeIndividually.Checked = true;
+            checkBoxNormarizeIndividually.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxNormarizeIndividually.Name = "checkBoxNormarizeIndividually";
             checkBoxNormarizeIndividually.UseVisualStyleBackColor = true;
             // 
@@ -2190,14 +2192,14 @@ namespace ReciPro
             // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar1, toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
             resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.Name = "statusStrip1";
             // 
-            // toolStripProgressBar1
+            // toolStripProgressBar
             // 
-            toolStripProgressBar1.Name = "toolStripProgressBar1";
-            resources.ApplyResources(toolStripProgressBar1, "toolStripProgressBar1");
+            toolStripProgressBar.Name = "toolStripProgressBar";
+            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             // 
             // toolStripStatusLabel1
             // 
@@ -2382,7 +2384,7 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.CheckBox checkBoxShowScale;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelScale;
         private Crystallography.Controls.NumericBox numericBoxScaleLength;

@@ -909,10 +909,12 @@ public class BetheMethod
             var vecK0 = getVecK0(kvac, u0, beamDirection);
             k_vec[i] = vecK0;
 
-            if (!inside(i) || bwSTEM.CancellationPending) return null;
-            if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress(count, reportString);//進捗状況を報告
+            if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / BeamDirections.Count()), reportString);//進捗状況を報告
+            if (bwSTEM.CancellationPending) { e.Cancel = true; return null; }
 
-            var eigenMatrix = new Complex[bLen * bLen];// Shared.Rent(bLen * bLen);
+            if (!inside(i)) return null;
+
+            var eigenMatrix = GC.AllocateUninitializedArray<Complex>(bLen * bLen);// Shared.Rent(bLen * bLen);
             var beams = ArrayPool<Beam>.Shared.Rent(bLen);
             try
             {
@@ -1030,40 +1032,6 @@ public class BetheMethod
 
         #endregion
 
-        #region U行列の計算 
-        count = 0;
-        var U = new Complex[qList.Count][];
-        uDictionary.Clear();
-        if (calcInel) //U行列を作成
-        {
-            var hash = new HashSet<(int q, int j, int i)>();
-            //qIndex, j, i の全ての組み合わせを作成
-            for (int q = 0; q < qList.Count; q++)
-                for (int j = 0; j < bLen; j++)
-                    for (int i = 0; i < bLen; i++)
-                        hash.Add((q, j, i));
-
-
-
-
-                        Parallel.For(0, qList.Count, qIndex =>
-            {
-                U[qIndex] = GC.AllocateUninitializedArray<Complex>(bLen * bLen);
-                for (int j = 0; j < bLen; j++)
-                    for (int i = 0; i < bLen; i++)
-                    {
-                        U[qIndex][j * bLen + i] = getU(AccVoltage, qList[qIndex] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
-
-                        //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
-
-                        if (Interlocked.Increment(ref count) % 100 == 0) bwSTEM.ReportProgress((int)(1000.0 * count / qList.Count / bLen / bLen), "Calculating U matrix");//状況を報告
-                    }
-
-                if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
-            });
-        }
-        #endregion
-
         //必要な情報だけを追加してParallelにしたtcP
         var tcP = tc.AsParallel().Select((e, i) => (index: i, result: e, xy: k_xy[i])).Where(e => e.result != null && A(e.xy)).Select(e => e.index);//.WithDegreeOfParallelism(1);
 
@@ -1112,7 +1080,7 @@ public class BetheMethod
                                 I_Elas[qIndex, t, d] += i_Elas[t] * lenz[d];
                 }
                 if (bwSTEM.CancellationPending) return;
-                if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress(count, "Calculating I_elastic(Q)");//状況を報告
+                if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6*count/tcP.Count()), "Calculating I_elastic(Q)");//状況を報告
             });
         #endregion
 
@@ -1123,6 +1091,42 @@ public class BetheMethod
 
         if (calcInel)
         {
+            #region U行列の計算 
+            count = 0;
+            var U = new Complex[qList.Count][];
+            uDictionary.Clear();
+                bwSTEM.ReportProgress(0, "Calculating U matrix");//状況を報告
+
+                //マルチスレッドの効率を上げるため、まずqList[qIndex] + Beams[i] - Beams[j]の重複を除く
+                var tmpDic = new Dictionary<(int h, int k, int l), (Beam b, int q, int i, int j)>();
+                for (int q = 0; q < qList.Count; q++)
+                    for (int j = 0; j < bLen; j++)
+                        for (int i = 0; i < bLen; i++)
+                        {
+                            var b = qList[q] + Beams[i] - Beams[j];
+                            tmpDic.TryAdd(b.Index, (b, q, i, j));
+                        }
+                tmpDic.AsParallel().ForAll(d =>
+                {
+                    getU(AccVoltage, d.Value.b, null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
+                    if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / tmpDic.Count), "Calculating U matrix");//状況を報告
+                    if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
+                });
+
+            Parallel.For(0, qList.Count, qIndex =>
+            {
+                U[qIndex] = GC.AllocateUninitializedArray<Complex>(bLen * bLen);
+                for (int j = 0; j < bLen; j++)
+                    for (int i = 0; i < bLen; i++)
+                    {
+                        U[qIndex][j * bLen + i] = getU(AccVoltage, qList[qIndex] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
+                        //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
+                    }
+            });
+            #endregion
+
+
+
             if (PiecewiseQuadrature)
             #region 区分求積法アルゴリズム
             {
@@ -1151,7 +1155,7 @@ public class BetheMethod
                 #region 各種変数の設定
                 var sum = new Complex[qList.Count, dLen];
 
-                var tc_k = tc.Select(e => new Complex[bLen]).ToArray();
+                var tc_k = tc.Select(e => GC.AllocateUninitializedArray<Complex>(bLen)).ToArray();
                 var validTc = list.Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
 
                 var total = _thick.Sum(e => e.Length) * tcP.Count();
@@ -1213,7 +1217,7 @@ public class BetheMethod
                             }
                             finally { Shared.Return(tc_kq); Shared.Return(sumTmp); }
 
-                            if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1000000.0 / total * count), "Calculating I_inelastic(Q)");//状況を報告
+                            if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1E6 / total * count), "Calculating I_inelastic(Q)");//状況を報告
                         });
                     }
 
@@ -1533,46 +1537,33 @@ public class BetheMethod
                 var es = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron];//5 gaussian
                 //var es = AtomStatic.ElectronScatteringEightGaussian[atoms.AtomicNumber];//8 gaussian  
                 var real = es.Factor(s2);//弾性散乱因子
-                #region お蔵
-                //var m = atoms.Dsf.UseIso || index == (0, 0, 0) ? atoms.Dsf.Biso : 0;
-                //if (!atoms.Dsf.UseIso && double.IsNaN(m) && index == (0, 0, 0))// 非等方でg = 0、かつmがNaNの時 Acta Cryst. (1959). 12, 609 , Hamilton の式に従って、Bisoを計算
-                //    m = (atoms.Dsf.B11 * a * a + atoms.Dsf.B22 * b * b + atoms.Dsf.B33 * c * c + 2 * atoms.Dsf.B12 * a * b + 2 * atoms.Dsf.B23 * b * c + 2 * atoms.Dsf.B31 * c * a) * 4.0 / 3.0;
 
-
-                //if (atoms.Dsf.UseIso || index == (0, 0, 0))
-                //    imag = (double.IsNaN(inner * outer)) ? es.FactorImaginary(kV, s2, m) :
-                //        h == null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
-                #endregion
-                double imag = double.NaN, m = double.NaN;
+                var dsf = atoms.Dsf;
+                var zero = dsf.IsZero;
+                double imag = zero ? 0 : double.NaN, m = zero ? 0 : double.NaN;
                 foreach (var atom in atoms.Atom)
                 {
-                    if((!atoms.Dsf.UseIso && index != (0, 0, 0)) || double.IsNaN(imag))//非等方でg≠0の時、あるいは初めての時
+                    if (!zero)
                     {
-                        if (atoms.Dsf.UseIso)
-                            m = atoms.Dsf.Biso;
-                        else if (index == (0, 0, 0))
-                            m = double.IsNaN(atoms.Dsf.Biso) ? atoms.Dsf.Biso000 : atoms.Dsf.Biso;
-                        else
+                        if ((!dsf.UseIso && index != (0, 0, 0)) || double.IsNaN(imag))//非等方でg≠0の時、あるいは初めての時
                         {
-                            var (H, K, L) = atom.Operation.ConvertPlaneIndex(index);
-                            m = (atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H) / s2;
+                            if (dsf.UseIso)
+                                m = dsf.Biso;
+                            else if (index == (0, 0, 0))
+                                m = double.IsNaN(dsf.Biso) ? dsf.Biso000 : dsf.Biso;
+                            else
+                            {
+                                var (H, K, L) = atom.Operation.ConvertPlaneIndex(index);
+                                m = (dsf.B11 * H * H + dsf.B22 * K * K + dsf.B33 * L * L + 2 * dsf.B12 * H * K + 2 * dsf.B23 * K * L + 2 * dsf.B31 * L * H) / s2;
+                            }
+                            if (double.IsNaN(m))
+                                m = 0;
+
+                            imag = m == 0 ? 0 : (double.IsNaN(inner * outer)) ? es.FactorImaginary(kV, s2, m) :
+                                h == null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
                         }
-                        if (double.IsNaN(m)) 
-                            m = 0;
-                        imag = (double.IsNaN(inner * outer)) ? es.FactorImaginary(kV, s2, m) :
-                            h == null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
                     }
-                    #region お蔵
-                    //if (!atoms.Dsf.UseIso && index != (0, 0, 0))
-                    //{
-                    //    var (H, K, L) = atom.Operation.ConvertPlaneIndex(index);
-                    //    m = (atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H) / s2;
-                    //    imag = (double.IsNaN(inner * outer)) ? es.FactorImaginary(kV, s2, m) :
-                    //        h == null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
-                    //}
-                    //if (double.IsNaN(m)) m = 0;
-                    #endregion
-                    var d = Exp(-m * s2 - TwoPiI * (atom * index)) * atoms.Occ;
+                    var d = Exp(-m * s2 - TwoPiI * (atom * index)) * atoms.Occ;//expの中がマイナスなのが、U'マトリックスを転置させなければいけない理由かも。
                     fReal += real * d;
                     fImag += imag * d;
                 }

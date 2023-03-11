@@ -89,7 +89,7 @@
     <value>20</value>
   </data>
   <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>589, 617</value>
+    <value>589, 571</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -308,7 +308,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxScaleLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxScaleLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -317,10 +317,13 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxScaleLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 27</value>
+    <value>119, 25</value>
   </data>
   <data name="numericBoxScaleLength.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
+  </data>
+  <data name="numericBoxScaleLength.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -404,7 +407,7 @@
     <value>178, 125</value>
   </data>
   <data name="flowLayoutPanelScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 27</value>
+    <value>185, 25</value>
   </data>
   <data name="flowLayoutPanelScale.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -443,7 +446,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxLabelFontSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxLabelFontSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -452,10 +455,13 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLabelFontSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 27</value>
+    <value>67, 25</value>
   </data>
   <data name="numericBoxLabelFontSize.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
+  </data>
+  <data name="numericBoxLabelFontSize.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxLabelFontSize.ToolTip" xml:space="preserve">
     <value>Set font size of label in point</value>
@@ -536,7 +542,7 @@
     <value>8, 125</value>
   </data>
   <data name="flowLayoutPanelLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 27</value>
+    <value>133, 25</value>
   </data>
   <data name="flowLayoutPanelLabel.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -648,7 +654,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -657,10 +663,13 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 27</value>
+    <value>72, 25</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
+  </data>
+  <data name="numericBoxGaussianBlurRadius.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1146,7 +1155,7 @@
     <value>Bottom</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 637</value>
+    <value>0, 591</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>589, 155</value>
@@ -1437,13 +1446,13 @@
     <value>Num</value>
   </data>
   <data name="numericBoxThicknessNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 46</value>
+    <value>60, 50</value>
   </data>
   <data name="numericBoxThicknessNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericBoxThicknessNum.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxThicknessNum.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1452,7 +1461,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericBoxThicknessNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 23</value>
+    <value>83, 25</value>
   </data>
   <data name="numericBoxThicknessNum.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1491,13 +1500,13 @@
     <value>Step</value>
   </data>
   <data name="numericBoxThicknessStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 23</value>
+    <value>60, 25</value>
   </data>
   <data name="numericBoxThicknessStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericBoxThicknessStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxThicknessStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1506,7 +1515,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 23</value>
+    <value>83, 25</value>
   </data>
   <data name="numericBoxThicknessStep.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1551,7 +1560,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericBoxThicknessStart.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 23</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxThicknessStart.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
@@ -1560,7 +1569,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericBoxThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 23</value>
+    <value>83, 25</value>
   </data>
   <data name="numericBoxThicknessStart.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3695,7 +3704,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 0, 0, 0</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 239</value>
+    <value>327, 193</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3728,7 +3737,7 @@ This model should be used for a strong scattering object which usually
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 75</value>
+    <value>3, 71</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 2, 0, 0</value>
@@ -3806,7 +3815,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxIntensityMin.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxIntensityMin.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -3815,10 +3824,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxIntensityMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 27</value>
+    <value>72, 25</value>
   </data>
   <data name="numericBoxIntensityMin.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxIntensityMin.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxIntensityMin.Name" xml:space="preserve">
     <value>numericBoxIntensityMin</value>
@@ -3836,13 +3848,13 @@ This model should be used for a strong scattering object which usually
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 48</value>
+    <value>3, 46</value>
   </data>
   <data name="flowLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 27</value>
+    <value>128, 25</value>
   </data>
   <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -3884,7 +3896,7 @@ This model should be used for a strong scattering object which usually
     <value>19, 0, 0, 0</value>
   </data>
   <data name="numericBoxIntensityMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxIntensityMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -3893,10 +3905,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxIntensityMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 27</value>
+    <value>105, 25</value>
   </data>
   <data name="numericBoxIntensityMax.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxIntensityMax.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxIntensityMax.Name" xml:space="preserve">
     <value>numericBoxIntensityMax</value>
@@ -3920,7 +3935,7 @@ This model should be used for a strong scattering object which usually
     <value>6, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 27</value>
+    <value>128, 25</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -3947,10 +3962,10 @@ This model should be used for a strong scattering object which usually
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxNormalization.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 175</value>
+    <value>0, 169</value>
   </data>
   <data name="groupBoxNormalization.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 99</value>
+    <value>134, 95</value>
   </data>
   <data name="groupBoxNormalization.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4001,7 +4016,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxWidth.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4010,10 +4025,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 27</value>
+    <value>121, 25</value>
   </data>
   <data name="numericBoxWidth.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxWidth.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxWidth.ToolTip" xml:space="preserve">
     <value>Width of the simulated Image in pixel</value>
@@ -4046,13 +4064,13 @@ This model should be used for a strong scattering object which usually
     <value>Height</value>
   </data>
   <data name="numericBoxHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 30</value>
+    <value>2, 28</value>
   </data>
   <data name="numericBoxHeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxHeight.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4061,10 +4079,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 27</value>
+    <value>124, 25</value>
   </data>
   <data name="numericBoxHeight.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxHeight.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxHeight.ToolTip" xml:space="preserve">
     <value>Height of the simulated Image in pixel</value>
@@ -4091,7 +4112,7 @@ This model should be used for a strong scattering object which usually
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 59</value>
+    <value>2, 55</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -4127,13 +4148,13 @@ This model should be used for a strong scattering object which usually
     <value>pm/pix</value>
   </data>
   <data name="numericBoxResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 76</value>
+    <value>22, 72</value>
   </data>
   <data name="numericBoxResolution.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>20, 0, 0, 0</value>
   </data>
   <data name="numericBoxResolution.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxResolution.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4142,10 +4163,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxResolution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 27</value>
+    <value>101, 25</value>
   </data>
   <data name="numericBoxResolution.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="numericBoxResolution.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
     <value>Resolution of the simulated Image in picometer/pixel</value>
@@ -4181,7 +4205,7 @@ This model should be used for a strong scattering object which usually
     <value>2, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 103</value>
+    <value>128, 97</value>
   </data>
   <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4211,7 +4235,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 48</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 127</value>
+    <value>134, 121</value>
   </data>
   <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4250,7 +4274,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxNumOfBlochWave.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxNumOfBlochWave.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4259,10 +4283,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 27</value>
+    <value>116, 25</value>
   </data>
   <data name="numericBoxNumOfBlochWave.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Maximum number of Bloch waves used in the Bethe's method</value>
@@ -4322,7 +4349,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 4, 0</value>
   </data>
   <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 239</value>
+    <value>138, 193</value>
   </data>
   <data name="panel6.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4355,7 +4382,7 @@ This model should be used for a strong scattering object which usually
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 263</value>
+    <value>477, 217</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4466,7 +4493,7 @@ This model should be used for a strong scattering object which usually
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 762</value>
+    <value>4, 716</value>
   </data>
   <data name="flowLayoutPanel12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4550,7 +4577,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4559,10 +4586,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 27</value>
+    <value>136, 25</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Name" xml:space="preserve">
     <value>numericBoxSTEM_DetectorOuterAngle</value>
@@ -4595,7 +4625,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxSourceSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxSourceSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4604,10 +4634,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxSourceSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 27</value>
+    <value>318, 25</value>
   </data>
   <data name="numericBoxSourceSize.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="numericBoxSourceSize.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxSourceSize.Name" xml:space="preserve">
     <value>numericBoxSourceSize</value>
@@ -4640,7 +4673,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4649,10 +4682,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 27</value>
+    <value>416, 25</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
     <value>Object aperture size in mrad</value>
@@ -4691,7 +4727,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4700,10 +4736,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 27</value>
+    <value>309, 25</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Object aperture size in mrad</value>
@@ -4778,7 +4817,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxObjAperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxObjAperX.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4787,10 +4826,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxObjAperX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 27</value>
+    <value>93, 25</value>
   </data>
   <data name="numericBoxObjAperX.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="numericBoxObjAperX.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxObjAperX.Name" xml:space="preserve">
     <value>numericBoxObjAperX</value>
@@ -4823,7 +4865,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxObjAperRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxObjAperRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4832,10 +4874,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxObjAperRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 27</value>
+    <value>124, 25</value>
   </data>
   <data name="numericBoxObjAperRadius.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxObjAperRadius.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Object aperture size in mrad</value>
@@ -4874,7 +4919,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxObjAperY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxObjAperY.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -4883,10 +4928,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxObjAperY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 27</value>
+    <value>98, 25</value>
   </data>
   <data name="numericBoxObjAperY.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="numericBoxObjAperY.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxObjAperY.Name" xml:space="preserve">
     <value>numericBoxObjAperY</value>
@@ -5723,7 +5771,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxCs.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxCs.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -5732,10 +5780,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 27</value>
+    <value>104, 25</value>
   </data>
   <data name="numericBoxCs.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="numericBoxCs.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxCs.ToolTip" xml:space="preserve">
     <value>Cs: Spherical aberration in mm</value>
@@ -5774,7 +5825,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxCc.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxCc.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -5783,10 +5834,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 27</value>
+    <value>104, 25</value>
   </data>
   <data name="numericBoxCc.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="numericBoxCc.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxCc.ToolTip" xml:space="preserve">
     <value>Cc: Chromatic aberration in mm</value>
@@ -5825,7 +5879,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxAccVol.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxAccVol.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -5834,10 +5888,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAccVol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 27</value>
+    <value>133, 25</value>
   </data>
   <data name="numericBoxAccVol.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxAccVol.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
     <value>Acc voltage of TEM (kV)</value>
@@ -5873,7 +5930,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxDeltaV.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxDeltaV.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -5882,10 +5939,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDeltaV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 27</value>
+    <value>74, 25</value>
   </data>
   <data name="numericBoxDeltaV.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="numericBoxDeltaV.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
     <value>ΔE: 1/e width of electron
@@ -5928,7 +5988,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxDefocus.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxDefocus.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -5937,10 +5997,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDefocus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 27</value>
+    <value>154, 25</value>
   </data>
   <data name="numericBoxDefocus.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxDefocus.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
     <value>Defocus value in nanometer</value>
@@ -5979,7 +6042,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxBetaAgnle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxBetaAgnle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -5988,10 +6051,13 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxBetaAgnle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 27</value>
+    <value>107, 25</value>
   </data>
   <data name="numericBoxBetaAgnle.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="numericBoxBetaAgnle.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxBetaAgnle.ToolTip" xml:space="preserve">
     <value>β: Illumination semiangle (mrad)
@@ -6449,6 +6515,9 @@ This model should be used for a strong scattering object which usually
   <data name="numericBoxThickness.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
+  <data name="numericBoxThickness.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
     <value>Set a sample thickness
 This value is neglected when "Serial image" mode is selected, </value>
@@ -6548,7 +6617,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 796</value>
+    <value>1086, 750</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>593</value>
@@ -6716,7 +6785,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>NoControl</value>
   </data>
   <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>989, 788</value>
+    <value>989, 742</value>
   </data>
   <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 28</value>
@@ -6748,7 +6817,7 @@ This value is neglected when "Serial image" mode is selected, </value>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>344, 17</value>
   </metadata>
-  <data name="toolStripProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 16</value>
   </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
@@ -6770,7 +6839,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>    </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 820</value>
+    <value>0, 774</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1086, 22</value>
@@ -6800,7 +6869,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 842</value>
+    <value>1086, 796</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -6976,10 +7045,10 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripProgressBar1.Name" xml:space="preserve">
-    <value>toolStripProgressBar1</value>
+  <data name="&gt;&gt;toolStripProgressBar.Name" xml:space="preserve">
+    <value>toolStripProgressBar</value>
   </data>
-  <data name="&gt;&gt;toolStripProgressBar1.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripProgressBar.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
