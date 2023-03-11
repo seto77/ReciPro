@@ -284,7 +284,7 @@ public partial class FormImageSimulator : Form
             for (int w = 0; w < division; w++)
             {
                 var x = (w - radius + 0.5) / (radius - 0.5) * sin;
-                var y = -(h - radius + 0.5) / (radius - 0.5) * sin;//結晶の座標系は、X軸が右、Y軸が上、Z軸が手前なのでYを反転
+                var y = (h - radius + 0.5) / (radius - 0.5) * sin;
                 directions.Add(new Vector3DBase(x, y, -Sqrt(1 - x * x - y * y)));
             }
 
@@ -449,7 +449,7 @@ public partial class FormImageSimulator : Form
             totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, defocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
             //進捗状況を報告
             toolStripProgressBar.Value = (int)(toolStripProgressBar.Maximum / tLen * (t + 1));
-            toolStripStatusLabel1.Text += $"{toolStripProgressBar.Value} % completed.  ";
+            toolStripStatusLabel1.Text += $"{100.0/ tLen * (t + 1):f1} % completed.  ";
             if (!realtimeMode)
                 Application.DoEvents();
         }
@@ -566,16 +566,13 @@ public partial class FormImageSimulator : Form
         var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
         var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
 
-        //全体でノーマライズ
+        //全体でノーマライズする場合
         if (!checkBoxNormarizeIndividually.Checked)
             totalImage = Normalize(totalImage, checkBoxIntensityMin.Checked);//checkBoxNormalizeHigh.Checked, checkBoxNormalizeLow.Checked);
 
         for (int t = 0; t < tLen; t++)
             for (var d = 0; d < dLen; d++)
             {
-                //画像が上下左右反転しているみたいなので処理 20230304
-                totalImage[t][d] = totalImage[t][d].Reverse().ToArray();
-
                 //個別にノーマライズ
                 if (checkBoxNormarizeIndividually.Checked)
                     totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);

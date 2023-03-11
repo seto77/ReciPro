@@ -72,6 +72,19 @@ public static class ImageProcess
         return blurTemp[0];
     }
 
+    static public double[] GaussianBlurFast(double[] pixels, int width, double hwhm)
+    {
+        var results = GC.AllocateUninitializedArray<double>(pixels.Length);
+        GaussianBlurFast(pixels, width, hwhm, results);
+        return results;
+    }
+
+    static public void GaussianBlurFast(ref double[] pixels, int width, double hwhm)
+    {
+        GaussianBlurFast(pixels, width, hwhm, pixels);
+    }
+
+
     /// <summary>
     /// GaussianBlurを施す。横方向と縦方向を分離するため、高速。
     /// </summary>
@@ -79,21 +92,22 @@ public static class ImageProcess
     /// <param name="width">画像の幅</param>
     /// <param name="radius">ピクセル単位でのフィルムにじみ半値半幅　</param>
     /// <returns></returns>
-    unsafe static public double[] GaussianBlurFast(double[] pixels, int width, double hwhm)
+    static private void GaussianBlurFast(double[] pixels, int width, double hwhm, double[] results)
     {
         int height = pixels.Length / width;
 
         int limit = (int)(hwhm * 3) * 2 + 1;
         int center = limit / 2;
 
-        var results = new double[width * height];
         if (limit == 1)
         {
-            Array.Copy(pixels, results, pixels.Length);
-            return results;
+            if (pixels != results)
+                Array.Copy(pixels, results, pixels.Length);
+            return;
         }
 
-        double[] tmpPixels = ArrayPool<double>.Shared.Rent(width * height),blurSumH = ArrayPool<double>.Shared.Rent(height), blurSumW = ArrayPool<double>.Shared.Rent(width);
+        double[] tmpPixels = ArrayPool<double>.Shared.Rent(width * height);
+        double[] blurSumH = GC.AllocateUninitializedArray<double>(height), blurSumW = GC.AllocateUninitializedArray<double>(width);
         try
         {
             var blur = new double[limit];
@@ -133,14 +147,13 @@ public static class ImageProcess
             {
                 for (int w = 0; w < width; w++)
                 {
-                    for (int n = n = Math.Max(0, center - w); n < Math.Min(blur.Length, width - w + center); n++)
+                    results[h * width + w] = 0;
+                    for (int n = Math.Max(0, center - w); n < Math.Min(blur.Length, width - w + center); n++)
                         results[h * width + w] += blur[n] / blurSumW[w] * tmpPixels[h * width + w - center + n];
                 }
             });
         }
-        finally { ArrayPool<double>.Shared.Return(tmpPixels); ArrayPool<double>.Shared.Return(blurSumH); ArrayPool<double>.Shared.Return(blurSumW); }
-
-        return results;
+        finally { ArrayPool<double>.Shared.Return(tmpPixels); }
     }
 
     /// <summary>

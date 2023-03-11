@@ -823,6 +823,7 @@ public class BetheMethod
     public void stem_DoWork(object sender, DoWorkEventArgs e)
     {
         //MathNetの行列の内部は、1列目の要素、2列目の要素、という順番で格納されている
+
         var (solver, thread, cs, delta, sliceThickness, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, sourceSize, calcElas, calcInel)
             = ((Solver, int, double, double, double, double, double, double, double[], double[], Size, double, double, bool, bool))e.Argument;
 
@@ -903,7 +904,6 @@ public class BetheMethod
         var kg_z = new double[BeamDirections.Length][];
         //進捗状況報告用の各種定数を初期化
         int count = 0;
-        //Transmission coefficient tc[k][t][g]
         var tc = BeamDirections.AsParallel().WithDegreeOfParallelism(thread).Select((beamDirection, i) =>
         {
             var vecK0 = getVecK0(kvac, u0, beamDirection);
@@ -952,12 +952,10 @@ public class BetheMethod
                         _tc[t][g] = result[t * bLen + g] * Exp(TwoPiI * kg_z[i][g] * thicknesses[t]);
                 return _tc;
             }
-            finally { /*Shared.Return(eigenMatrix);*/ ArrayPool<Beam>.Shared.Return(beams); }
+            finally { ArrayPool<Beam>.Shared.Return(beams); }
 
         }).ToArray();
         #endregion
-
-        if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
 
         var k_xy = k_vec.Select(e => e.ToPointD).ToArray();
         var k_z = k_vec.Select(e => e.Z).ToArray();
@@ -1087,8 +1085,6 @@ public class BetheMethod
         #region 非弾性散乱を計算する場合
         var I_Inel = new Complex[qList.Count, tLen, dLen];
 
-        var PiecewiseQuadrature = true;
-
         if (calcInel)
         {
             #region U行列の計算 
@@ -1125,8 +1121,7 @@ public class BetheMethod
             });
             #endregion
 
-
-
+            var PiecewiseQuadrature = true;
             if (PiecewiseQuadrature)
             #region 区分求積法アルゴリズム
             {
@@ -1314,18 +1309,18 @@ public class BetheMethod
 
         if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
 
+        #region 各ピクセルの計算
         //imagesを初期化
         int width = imageSize.Width, height = imageSize.Height;
-        STEM_Image = Thicknesses.Select(e => defocusses.Select(e2 => new double[width * height]).ToArray()).ToArray();
+        STEM_Image = Thicknesses.Select(e => defocusses.Select(e2 => GC.AllocateUninitializedArray<double>(width * height)).ToArray()).ToArray();
 
-        #region 各ピクセルの計算
         double cX = width / 2.0, cY = height / 2.0;
         var shift = (Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2).ToPointD;
         Parallel.For(0, height, y =>
         {
             for (int x = 0; x < width; x++)
             {
-                var rVec = new PointD(-resolution * (x - cX), -resolution * (height - y - 1 - cY)) + shift;
+                var rVec = new PointD(-resolution * (x - cX), resolution * (y - cY)) + shift;//X座標はマイナス。
                 for (int t = 0; t < Thicknesses.Length; t++)
                     for (int d = 0; d < dLen; d++)
                     {
@@ -1341,16 +1336,11 @@ public class BetheMethod
             }
         });
 
-        //なんかよく分からんが画像が上下左右反転している
-        for (int t = 0; t < Thicknesses.Length; t++)
-            for (int d = 0; d < dLen; d++)
-                STEM_Image[t][d] = STEM_Image[t][d].Reverse().ToArray();
-
         //ガウスブラーを適用
         if (sourceSize > 0)
             for (int t = 0; t < Thicknesses.Length; t++)
                 for (int d = 0; d < dLen; d++)
-                    STEM_Image[t][d] = ImageProcess.GaussianBlurFast(STEM_Image[t][d], width, sourceSize / resolution);
+                    ImageProcess.GaussianBlurFast(ref STEM_Image[t][d], width, sourceSize / resolution);
 
         #endregion
 
@@ -1478,7 +1468,7 @@ public class BetheMethod
             Parallel.For(0, divTotal, div =>
             {
                 int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
-                var rVec = Enumerable.Range(start, count).SelectMany(n => new[] { -res * (n % width - cX) + shift.X, -res * (height - n / width - 1 - cY) + shift.Y }).ToArray();
+                var rVec = Enumerable.Range(start, count).SelectMany(n => new[] { -res * (n % width - cX) + shift.X, res * (n / width - cY) + shift.Y }).ToArray();//X座標はマイナス。
                 var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode);
                 for (var i = 0; i < defLen; i++)
                     Array.Copy(results, i * count, images[i], start, count);
@@ -1488,7 +1478,7 @@ public class BetheMethod
         {
             Parallel.For(0, width * height, n =>
             {
-                PointD r = new(-(n % width - cX) * res + shift.X, -(height - n / width - 1 - cY) * res + shift.Y), _vec = new(double.NaN, double.NaN);
+                PointD r = new(-(n % width - cX) * res + shift.X, (n / width - cY) * res + shift.Y), _vec = new(double.NaN, double.NaN);//X座標はマイナス。
                 var sums = new Complex[defLen];
                 var exp = new Complex(0, 0);
                 foreach (var (Psi, Vec, Lenz) in gList)
@@ -1505,11 +1495,6 @@ public class BetheMethod
                     images[i][n] = quasiMode ? sums[i].MagnitudeSquared() : Math.Abs(sums[i].Real);
             });
         }
-
-        //20220519 上下左右が反転しているみたいなので、その対処
-        for (int i = 0; i < images.Length; i++)
-            Array.Reverse(images[i]);
-
         return images;
     }
     #endregion Image Simulation
