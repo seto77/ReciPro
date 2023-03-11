@@ -10,6 +10,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.854(2023/03/11)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.853(2023/03/09)  Corrected errors in formulas in STEM simulations. Added LA-CBED caluculation mode." +
         "\r\n ver4.852(2023/03/04)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.851(2023/03/02)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
