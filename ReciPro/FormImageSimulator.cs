@@ -573,9 +573,6 @@ public partial class FormImageSimulator : Form
         for (int t = 0; t < tLen; t++)
             for (var d = 0; d < dLen; d++)
             {
-                //画像が上下左右反転しているみたいなので処理 20230304
-                //totalImage[t][d] = totalImage[t][d].Reverse().ToArray();
-
                 //個別にノーマライズ
                 if (checkBoxNormarizeIndividually.Checked)
                     totalImage[t][d] = Normalize(totalImage[t][d], checkBoxIntensityMin.Checked);
