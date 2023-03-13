@@ -1,30 +1,24 @@
 ﻿#region using
-
 using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Complex;
-using OpenTK.Graphics.OpenGL;
 using System;
 using System.Buffers;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Numerics;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Xml.Serialization;
+
 using static System.Buffers.ArrayPool<System.Numerics.Complex>;
 using static System.Numerics.Complex;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
+
 #endregion
 
 namespace Crystallography;
@@ -119,9 +113,9 @@ public class BetheMethod
     static BetheMethod()
     {
         EigenEnabled = NativeWrapper.Enabled;
-        BlasEnabled = MathNet.Numerics.Control.TryUseNativeOpenBLAS();
-        MklEnabled = MathNet.Numerics.Control.TryUseNativeMKL();
-        CudaEnabled = MathNet.Numerics.Control.TryUseNativeCUDA();
+        BlasEnabled = Control.TryUseNativeOpenBLAS();
+        MklEnabled = Control.TryUseNativeMKL();
+        CudaEnabled = Control.TryUseNativeCUDA();
     }
     public BetheMethod(Crystal crystal)
     {

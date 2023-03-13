@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Crystallography;
 public static class ImageProcess
 {
+    #region Gaussian Blur
     /// <summary>
     /// GaussianBlurを施す。
     /// </summary>
@@ -72,6 +73,13 @@ public static class ImageProcess
         return blurTemp[0];
     }
 
+    /// <summary>
+    /// GaussianBlurを施す。横方向と縦方向を分離するため、高速。
+    /// </summary>
+    /// <param name="pixels">画像データの一次元配列</param>
+    /// <param name="width">画像の幅</param>
+    /// <param name="hwhm">ピクセル単位でのフィルムにじみ半値半幅</param>
+    /// <returns></returns>
     static public double[] GaussianBlurFast(double[] pixels, int width, double hwhm)
     {
         var results = GC.AllocateUninitializedArray<double>(pixels.Length);
@@ -79,11 +87,16 @@ public static class ImageProcess
         return results;
     }
 
+    /// <summary>
+    /// GaussianBlurを施す。横方向と縦方向を分離するため、高速。pixelsが直接書き換えられる。
+    /// </summary>
+    /// <param name="pixels">画像データの一次元配列</param>
+    /// <param name="width">画像の幅</param>
+    /// <param name="hwhm">ピクセル単位でのフィルムにじみ半値半幅</param>
     static public void GaussianBlurFast(ref double[] pixels, int width, double hwhm)
     {
         GaussianBlurFast(pixels, width, hwhm, pixels);
     }
-
 
     /// <summary>
     /// GaussianBlurを施す。横方向と縦方向を分離するため、高速。
@@ -155,6 +168,8 @@ public static class ImageProcess
         }
         finally { ArrayPool<double>.Shared.Return(tmpPixels); }
     }
+
+    #endregion
 
     /// <summary>
     /// 周囲のピクセルと比べて、標準偏差 × threshold以上外れたピクセルは、周囲のピクセルの平均強度にする。
