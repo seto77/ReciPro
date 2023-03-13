@@ -814,7 +814,7 @@ public class BetheMethod
         if(!bwSTEM.IsBusy) 
             bwSTEM.RunWorkerAsync((solver, thread, cs, delta, sliceThickness, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, sourceSize, calcElas, calcInel));
     }
-    public void stem_DoWork(object sender, DoWorkEventArgs e)
+    public unsafe void stem_DoWork(object sender, DoWorkEventArgs e)
     {
         //MathNetの行列の内部は、1列目の要素、2列目の要素、という順番で格納されている
 
@@ -1144,7 +1144,10 @@ public class BetheMethod
                 #region 各種変数の設定
                 var sum = new Complex[qList.Count, dLen];
 
+
                 var tc_k = tc.Select(e => GC.AllocateUninitializedArray<Complex>(bLen)).ToArray();
+                //var tc_k = new Complex[tc.Length * bLen * bLen];
+
                 var validTc = list.Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
 
                 var total = _thick.Sum(e => e.Length) * tcP.Count();
@@ -1159,8 +1162,10 @@ public class BetheMethod
                         if (bwSTEM.CancellationPending) return;
 
                         #region まず厚み_thick[t][_t]における透過係数_tc_kを計算
+                        //Parallel.ForEach(validTc, kIndex =>
                         validTc.ForAll(kIndex =>
                         {
+
                             #region この内容をNativeコードで実行
                             //Complex[] exp_kgz = new Complex[bLen], exp_λ = new Complex[bLen];
                             //for (int i = 0; i < bLen; i++)
@@ -1175,12 +1180,15 @@ public class BetheMethod
                             //        tc_k[kIndex][g] += eVec[kIndex][j * bLen + g] * exp_kgz[g] * exp_λ[j];
                             #endregion
                             NativeWrapper.GenerateTC(bLen, thickness, kg_z[kIndex], eVal[kIndex], eVec[kIndex], ref tc_k[kIndex]);
+                            //fixed (Complex* _tc_k = tc_k)
+                            //    NativeWrapper.GenerateTC(bLen, thickness, kg_z[kIndex], eVal[kIndex], eVec[kIndex], _tc_k + kIndex * bLen * bLen);
                         });
                         #endregion
 
                         tcP.ForAll(kIndex =>
                         {
                             Complex[] sumTmp = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);//, u_tck = Shared.Rent(list[kIndex].Count * bLen);
+                                                                                                                 //fixed (Complex* _tc_k = tc_k)
                             try
                             {
                                 for (int i = 0; i < list[kIndex].Count; i++)
@@ -1188,6 +1196,7 @@ public class BetheMethod
                                     var (qIndex, n, r, lenz) = list[kIndex][i];
                                     //厚み_thick[t][_t]における透過係数_tc_kqを計算
                                     NativeWrapper.BlendAndConjugate(bLen, tc_k[n[0]], tc_k[n[1]], tc_k[n[2]], tc_k[n[3]], r[0], r[1], r[2], r[3], ref tc_kq);
+                                    //NativeWrapper.BlendAndConjugate(bLen, _tc_k+n[0]*bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], ref tc_kq);
                                     #region この内容をNativeコードで実行 4倍速い
                                     //var sum1 = new Complex(0, 0);
                                     //for (int h = 0; h < bLen; h++)
@@ -1195,6 +1204,7 @@ public class BetheMethod
                                     //        sum1 += tc_k[kIndex][g] * tc_kq[h] * U[qIndex][g * bLen + h];
                                     #endregion
                                     var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, tc_kq, U[qIndex], tc_k[kIndex]);
+                                    //var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, tc_kq, U[qIndex], _tc_k + kIndex * bLen);
 
                                     for (int d = 0; d < dLen; d++)
                                         sumTmp[i * dLen + d] = tmp * lenz[d];
@@ -1204,7 +1214,7 @@ public class BetheMethod
                                         for (int d = 0; d < dLen; d++)
                                             sum[list[kIndex][i].qIndex, d] += sumTmp[i * dLen + d] * tStep[t];
                             }
-                            finally { Shared.Return(tc_kq); Shared.Return(sumTmp); }
+                            finally { Shared.Return(sumTmp); Shared.Return(tc_kq); }
 
                             if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1E6 / total * count), "Calculating I_inelastic(Q)");//状況を報告
                         });
@@ -1214,6 +1224,7 @@ public class BetheMethod
                         for (int d = 0; d < dLen; d++)
                             I_Inel[qIndex, t, d] = sum[qIndex, d] / kvac * 2 * Math.PI;
                 }
+
                 #endregion
             }
             #endregion
@@ -1237,7 +1248,7 @@ public class BetheMethod
 
                 //複素共役なC, λ, αを用意
                 Complex[][] C = eVec, _C = new Complex[tc.Length][], λ = eVal, _λ = new Complex[tc.Length][];
-                Complex[][] exp = new Complex[tc.Length][], _exp= new Complex[tc.Length][];
+                Complex[][] exp = new Complex[tc.Length][], _exp = new Complex[tc.Length][];
                 list.AsParallel().Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ForAll(kIndex =>
                 {
                     _C[kIndex] = (new DMat(bLen, bLen, C[kIndex]).ConjugateTranspose() as DMat).Values;
@@ -1283,7 +1294,7 @@ public class BetheMethod
                                     int l = 0;
                                     for (int j = 0; j < bLen; j++)
                                         for (int i = 0; i < bLen; i++)
-                                           tmpSum[t] += r[m] * ((exp_k[t * bLen + j] * exp_kq[t * bLen + i] - 1) / TwoPiI / (kz_k[j] - kz_kq[i] + λ_k[j] - λ_kq[i])) * TDS[l++];//B行列は作らず、直接アダマール積を取る
+                                            tmpSum[t] += r[m] * ((exp_k[t * bLen + j] * exp_kq[t * bLen + i] - 1) / TwoPiI / (kz_k[j] - kz_kq[i] + λ_k[j] - λ_kq[i])) * TDS[l++];//B行列は作らず、直接アダマール積を取る
                                 }
                             }
                             lock (lockObj2)

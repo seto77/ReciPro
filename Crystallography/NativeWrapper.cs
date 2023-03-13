@@ -409,6 +409,12 @@ public static partial class NativeWrapper
         fixed (Complex* res = result)
             _BlendAndConjugate(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
+
+    unsafe static public void BlendAndConjugate(in int dim, Complex* c0, in Complex* c1, in Complex* c2, in Complex* c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
+    {
+        fixed (Complex* res = result)
+            _BlendAndConjugate(dim, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
+    }
     #endregion 
 
     #region Eigenライブラリーを利用して、PartialPivLuSolveを求める
@@ -615,6 +621,13 @@ public static partial class NativeWrapper
             _GenerateTC(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_result);
     }
 
+    unsafe static public void GenerateTC(in int dim, in double thickness, in double[] kg_z, in Complex[] val, in Complex[] vec, Complex* _result)
+    {
+        fixed (double* _kg_z = kg_z)
+        fixed (Complex* _val = val, _vec = vec)
+            _GenerateTC(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_result);
+    }
+
     /// <summary>
     /// 横ベクトル×正方行列×縦ベクトルの掛算. STEMの非弾性散乱を求めるときに使用
     /// </summary>
@@ -633,8 +646,18 @@ public static partial class NativeWrapper
         return new Complex(result[0], result[1]);
     }
 
+    unsafe static public Complex RowVec_SqMat_ColVec(in int dim, Complex[] rowVec, Complex[] sqMtx, Complex* _colVec)
+    {
+        var result = new double[2];
+        fixed (Complex* _rowVec = rowVec, _sqMtx = sqMtx)
+        fixed (double* _res = result)
+            _RowVec_SqMat_ColVec(dim, (double*)_rowVec, (double*)_sqMtx, (double*)_colVec, _res);
+
+        return new Complex(result[0], result[1]);
+    }
+
     #endregion
-    
+
     #region CBED
     /// <summary>
     /// Eigenライブラリーを利用して固有値解を求めて、CBEDの解を求める
