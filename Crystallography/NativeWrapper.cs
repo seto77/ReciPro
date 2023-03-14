@@ -576,10 +576,7 @@ public static partial class NativeWrapper
 
     unsafe static public void TDS(in int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
-        fixed (Complex* _mat1 = mat1)
-        fixed (Complex* _mat2 = mat2)
-        fixed (Complex* _mat3 = mat3)
-        fixed (Complex* res = result)
+        fixed (Complex* _mat1 = mat1, _mat2 = mat2, _mat3 = mat3, res = result)
             _AdJointMul_Mul_Mul(dim, (double*)_mat1, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
