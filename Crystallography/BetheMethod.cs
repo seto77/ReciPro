@@ -1053,7 +1053,9 @@ public class BetheMethod
         });
         #endregion
 
+
         #region 弾性散乱 の計算
+        bwSTEM.ReportProgress(0, "Calculating I_elastic(Q)");//状況を報告
         Complex[,,] I_Elas = new Complex[qList.Count, tLen, dLen];
         count = 0;
         if (calcElas)
@@ -1081,13 +1083,13 @@ public class BetheMethod
 
         if (calcInel)
         {
+            bwSTEM.ReportProgress(0, "Calculating U matrix");//状況を報告
             var bLen2 = bLen * bLen;
             #region U行列の計算 
             count = 0;
             //var U = new Complex[qList.Count][];
             var U = new Complex[qList.Count * bLen2];
             uDictionary.Clear();
-            bwSTEM.ReportProgress(0, "Calculating U matrix");//状況を報告
 
             //マルチスレッドの効率を上げるため、まずqList[qIndex] + Beams[i] - Beams[j]の重複を除く
             var tmpDic = new Dictionary<(int h, int k, int l), (Beam b, int q, int i, int j)>();
@@ -1100,7 +1102,7 @@ public class BetheMethod
                     }
             tmpDic.AsParallel().ForAll(d =>
             {
-                getU(AccVoltage, d.Value.b, null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
+                getU(AccVoltage, d.Value.b, null, detAngleInner, detAngleOuter);//共役とると、なぜかいい感じ。
                 if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / tmpDic.Count), "Calculating U matrix");//状況を報告
                 if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
             });
@@ -1122,6 +1124,8 @@ public class BetheMethod
             if (PiecewiseQuadrature)
             #region 区分求積法アルゴリズム
             {
+                bwSTEM.ReportProgress(0, "Calculating I_inelastic(Q)");
+
                 #region 各厚みを、指定された厚み程度で切り分ける
                 var _thick = new double[Thicknesses.Length][];
                 var tStep = new double[Thicknesses.Length];
@@ -1164,7 +1168,6 @@ public class BetheMethod
                         if (bwSTEM.CancellationPending) return;
 
                         #region まず厚み_thick[t][_t]における透過係数_tc_kを計算
-                        //Parallel.ForEach(validTc, kIndex =>
                         validTc.ForAll(kIndex =>
                         {
                             #region この内容をNativeコードで実行
@@ -1312,9 +1315,8 @@ public class BetheMethod
             //}
             #endregion
         }
-        #endregion
-
         if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
+        #endregion
 
         #region 各ピクセルの計算
         //imagesを初期化

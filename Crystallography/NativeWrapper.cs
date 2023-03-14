@@ -383,30 +383,18 @@ public static partial class NativeWrapper
     #region Blend関数
     unsafe static public void Blend(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
-        fixed (Complex* p0 = c0)
-        fixed (Complex* p1 = c1)
-        fixed (Complex* p2 = c2)
-        fixed (Complex* p3 = c3)
-        fixed (Complex* res = result)
+        fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
             _Blend(dim * 2, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
     unsafe static public void Blend(in int dim, in double[] c0, in double[] c1, in double[] c2, in double[] c3, in double r0, in double r1, in double r2, in double r3, ref double[] result)
     {
-        fixed (double* p0 = c0)
-        fixed (double* p1 = c1)
-        fixed (double* p2 = c2)
-        fixed (double* p3 = c3)
-        fixed (double* res = result)
+        fixed (double* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
             _Blend(dim, p0, p1, p2, p3, r0, r1, r2, r3, res);
     }
 
     unsafe static public void BlendAndConjugate(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
-        fixed (Complex* p0 = c0)
-        fixed (Complex* p1 = c1)
-        fixed (Complex* p2 = c2)
-        fixed (Complex* p3 = c3)
-        fixed (Complex* res = result)
+        fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
             _BlendAndConjugate(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
 
@@ -575,23 +563,14 @@ public static partial class NativeWrapper
     #region STEMの非弾性散乱電子強度の計算用の特殊関数
     unsafe static public void AdjointMul_Mul_Mul(in int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
-        fixed (Complex* _mat1 = mat1)
-        fixed (Complex* _mat2 = mat2)
-        fixed (Complex* _mat3 = mat3)
-        fixed (Complex* res = result)
+        fixed (Complex* _mat1 = mat1, _mat2 = mat2, _mat3 = mat3, res = result)
             _AdJointMul_Mul_Mul(dim, (double*)_mat1, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
     unsafe static public void BlendAdjointMul_Mul_Mul(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3,
         in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
-        fixed (Complex* p0 = c0)
-        fixed (Complex* p1 = c1)
-        fixed (Complex* p2 = c2)
-        fixed (Complex* p3 = c3)
-        fixed (Complex* _mat2 = mat2)
-        fixed (Complex* _mat3 = mat3)
-        fixed (Complex* res = result)
+        fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, _mat2 = mat2,_mat3 = mat3, res = result)
             _BlendAdJointMul_Mul_Mul(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
@@ -635,21 +614,18 @@ public static partial class NativeWrapper
     /// <returns></returns>
     unsafe static public Complex RowVec_SqMat_ColVec(in int dim, Complex[] rowVec, Complex[] sqMtx, Complex[] colVec)
     {
-        var result = new double[2];
+        var result = new Complex();
         fixed (Complex* _rowVec = rowVec, _sqMtx = sqMtx, _colVec = colVec)
-        fixed (double* _res = result)
-            _RowVec_SqMat_ColVec(dim, (double*)_rowVec, (double*)_sqMtx, (double*)_colVec, _res);
+            _RowVec_SqMat_ColVec(dim, (double*)_rowVec, (double*)_sqMtx, (double*)_colVec, (double*)&result);
 
-        return new Complex(result[0], result[1]);
+        return result;
     }
 
     unsafe static public Complex RowVec_SqMat_ColVec(in int dim, Complex* _rowVec, Complex* _sqMtx, Complex* _colVec)
     {
-        var result = new double[2];
-        fixed (double* _res = result)
-            _RowVec_SqMat_ColVec(dim, (double*)_rowVec, (double*)_sqMtx, (double*)_colVec, _res);
-
-        return new Complex(result[0], result[1]);
+        var result = new Complex();
+        _RowVec_SqMat_ColVec(dim, (double*)_rowVec, (double*)_sqMtx, (double*)_colVec, (double*)&result);
+        return result;
     }
 
     #endregion

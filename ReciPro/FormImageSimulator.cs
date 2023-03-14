@@ -350,7 +350,7 @@ public partial class FormImageSimulator : Form
             if (!sw4.IsRunning) sw4.Restart();
             var sec = s4 / 1000.0;
             var totalsec = sec + (s1 + s2 + s3) / 1000.0;
-            toolStripProgressBar.Value = (int)((current / 1E6 * 0.3 + 0.7) * toolStripProgressBar.Maximum);
+            toolStripProgressBar.Value = (int)((current / 1E6 * 0.8 + 0.2) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 4: Calculating I_inelastic(Q).  ";
             toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
         }
@@ -361,7 +361,7 @@ public partial class FormImageSimulator : Form
             if (!sw3.IsRunning) sw3.Restart();
             var sec = s3 / 1000.0;
             var totalsec = sec + (s1 + s2) / 1000.0;
-            toolStripProgressBar.Value = (int)((current / 1E6 * 0.3 + 0.4) * toolStripProgressBar.Maximum);
+            toolStripProgressBar.Value = (int)((current / 1E6 * 0.01 + 0.19) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 3: Calculating U' matrix.  ";
             toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
         }
@@ -371,14 +371,14 @@ public partial class FormImageSimulator : Form
             if (!sw2.IsRunning) sw2.Restart();
             var sec = s2 / 1000.0;
             var totalsec = sec + s1 / 1000.0;
-            toolStripProgressBar.Value = (int)((current / 1E6 * 0.1 + 0.3) * toolStripProgressBar.Maximum);
+            toolStripProgressBar.Value = (int)((current / 1E6 * 0.01 + 0.18) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f1} s.  Stage 2: Calculating I_elastic(Q).  ";
             toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
         }
         else
         {
             var sec = s1 / 1000.0;
-            toolStripProgressBar.Value = (int)((current / 1E6 * 0.3 + 0.0) * toolStripProgressBar.Maximum);
+            toolStripProgressBar.Value = (int)((current / 1E6 * 0.18 + 0.0) * toolStripProgressBar.Maximum);
             toolStripStatusLabel1.Text = $"Ellapsed time : {sec:f1} s.  Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
             toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
         }
