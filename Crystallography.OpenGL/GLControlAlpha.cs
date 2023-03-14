@@ -93,7 +93,7 @@ unsafe public partial class GLControlAlpha : UserControl
     private readonly int depthCueingFarLocation = 0;
     private readonly int depthCueingEnabledLocation = 0;
 
-    private readonly GLControl glControl;// = new GLControl();
+    private GLControl glControl;// = new GLControl();
     private readonly Graphics glControlGraphics;
     #endregion フィールド
 
@@ -556,8 +556,17 @@ unsafe public partial class GLControlAlpha : UserControl
         setViewMatrix();
         setProjMatrix();
         setDepthCueing();
+
+        this.Disposed += GLControlAlpha_Disposed;
     }
 
+    private void GLControlAlpha_Disposed(object sender, EventArgs e)
+    {
+        Clip = null;
+        glControl = null;
+        glObjects.Clear();
+        glControlGraphics.Dispose();
+    }
 
     #region　Shaderの作成 (CreateShader)
     /// <summary>
