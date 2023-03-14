@@ -1,4 +1,4 @@
-***See also [Wiki page](https://github.com/seto77/ReciPro/wiki)! Simple instructions on how to use ReciPro.***
+***[See also Wiki page to learn how to use ReciPro!](https://github.com/seto77/ReciPro/wiki)***
 
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 
