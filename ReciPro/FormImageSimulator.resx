@@ -89,7 +89,7 @@
     <value>20</value>
   </data>
   <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>589, 571</value>
+    <value>589, 648</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -244,6 +244,12 @@
   <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
     <value>Show unit cell</value>
   </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="checkBoxShowUnitcell.ToolTip" xml:space="preserve">
+    <value>Show/hide unit cell outline</value>
+  </data>
   <data name="&gt;&gt;checkBoxShowUnitcell.Name" xml:space="preserve">
     <value>checkBoxShowUnitcell</value>
   </data>
@@ -325,9 +331,6 @@
   <data name="numericBoxScaleLength.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
     <value>Length of scale bar in nm</value>
   </data>
@@ -1155,7 +1158,7 @@
     <value>Bottom</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 591</value>
+    <value>0, 668</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>589, 155</value>
@@ -3187,6 +3190,9 @@
     <value>Angular resolution
  of incident electrons</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Angular resolution of incident electrons in mrad.</value>
+  </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
@@ -3229,6 +3235,9 @@
   <data name="radioButtonSTEM_target_Both.Text" xml:space="preserve">
     <value>Elastic &amp;&amp; Inelastic</value>
   </data>
+  <data name="radioButtonSTEM_target_Both.ToolTip" xml:space="preserve">
+    <value>Calculates both elastic and inelastic electrons.</value>
+  </data>
   <data name="&gt;&gt;radioButtonSTEM_target_Both.Name" xml:space="preserve">
     <value>radioButtonSTEM_target_Both</value>
   </data>
@@ -3261,6 +3270,9 @@
   </data>
   <data name="radioButtonSTEM_target_Elas.Text" xml:space="preserve">
     <value>Elastic</value>
+  </data>
+  <data name="radioButtonSTEM_target_Elas.ToolTip" xml:space="preserve">
+    <value>Only elastic electrons are calculated.</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM_target_Elas.Name" xml:space="preserve">
     <value>radioButtonSTEM_target_Elas</value>
@@ -3297,6 +3309,9 @@
   </data>
   <data name="radioButtonSTEM_target_Inel.Text" xml:space="preserve">
     <value>Inelastic</value>
+  </data>
+  <data name="radioButtonSTEM_target_Inel.ToolTip" xml:space="preserve">
+    <value>Only inelastic electrons are calculated.</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM_target_Inel.Name" xml:space="preserve">
     <value>radioButtonSTEM_target_Inel</value>
@@ -3365,10 +3380,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
-  </data>
-  <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+    <value>Angular resolution of incident electrons in mrad.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_AngleResolution.Name" xml:space="preserve">
     <value>numericBoxSTEM_AngleResolution</value>
@@ -3425,7 +3437,8 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxSliceThicknessForInelasticSTEM.ToolTip" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+    <value>Sets the thickness to slice the sample when calculating the inelastic electron intensity.
+Smaller values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="numericBoxSliceThicknessForInelasticSTEM.ToolTip1" xml:space="preserve">
     <value>Object aperture size in mrad</value>
@@ -3704,7 +3717,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 0, 0, 0</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 193</value>
+    <value>327, 270</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3750,6 +3763,9 @@ This model should be used for a strong scattering object which usually
   </data>
   <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
     <value>for each image</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
+    <value>If checked, intensity is normalized for individual images.</value>
   </data>
   <data name="&gt;&gt;checkBoxNormarizeIndividually.Name" xml:space="preserve">
     <value>checkBoxNormarizeIndividually</value>
@@ -3832,6 +3848,10 @@ This model should be used for a strong scattering object which usually
   <data name="numericBoxIntensityMin.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
+    <value>Minimum intensity of the simulated image
+(enabled when the left box is checked.)</value>
+  </data>
   <data name="&gt;&gt;numericBoxIntensityMin.Name" xml:space="preserve">
     <value>numericBoxIntensityMin</value>
   </data>
@@ -3912,6 +3932,9 @@ This model should be used for a strong scattering object which usually
   </data>
   <data name="numericBoxIntensityMax.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
+    <value>Maximum intensity of the simulated image.</value>
   </data>
   <data name="&gt;&gt;numericBoxIntensityMax.Name" xml:space="preserve">
     <value>numericBoxIntensityMax</value>
@@ -4292,7 +4315,8 @@ This model should be used for a strong scattering object which usually
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
-    <value>Maximum number of Bloch waves used in the Bethe's method</value>
+    <value>Maximum number of Bloch waves used in the Bethe's method.
+Larger values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
     <value>Maximum number of Bloch waves used in the Bethe's method</value>
@@ -4349,7 +4373,7 @@ This model should be used for a strong scattering object which usually
     <value>0, 0, 4, 0</value>
   </data>
   <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 193</value>
+    <value>138, 270</value>
   </data>
   <data name="panel6.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4382,7 +4406,7 @@ This model should be used for a strong scattering object which usually
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 217</value>
+    <value>477, 294</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4493,7 +4517,7 @@ This model should be used for a strong scattering object which usually
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 716</value>
+    <value>4, 793</value>
   </data>
   <data name="flowLayoutPanel12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4523,7 +4547,7 @@ This model should be used for a strong scattering object which usually
     <value>GrowAndShrink</value>
   </data>
   <metadata name="contextMenuStripSTEM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>942, 17</value>
+    <value>688, 19</value>
   </metadata>
   <data name="typicalBF02MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
@@ -4594,6 +4618,9 @@ This model should be used for a strong scattering object which usually
   <data name="numericBoxSTEM_DetectorOuterAngle.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
+    <value>Inner and outer radius of the annular detector in mrad.</value>
+  </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Name" xml:space="preserve">
     <value>numericBoxSTEM_DetectorOuterAngle</value>
   </data>
@@ -4641,6 +4668,9 @@ This model should be used for a strong scattering object which usually
   </data>
   <data name="numericBoxSourceSize.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxSourceSize.ToolTip" xml:space="preserve">
+    <value>Size of the effective electron source.</value>
   </data>
   <data name="&gt;&gt;numericBoxSourceSize.Name" xml:space="preserve">
     <value>numericBoxSourceSize</value>
@@ -4691,7 +4721,7 @@ This model should be used for a strong scattering object which usually
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+    <value>Angle of convergence of incident electrons in units of mrad.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
     <value>Object aperture size in mrad</value>
@@ -4745,7 +4775,7 @@ This model should be used for a strong scattering object which usually
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+    <value>Inner and outer radius of the annular detector in mrad.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
     <value>Object aperture size in mrad</value>
@@ -6242,6 +6272,9 @@ This model should be used for a strong scattering object which usually
   <data name="label34.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
+  <data name="label34.ToolTip" xml:space="preserve">
+    <value>ΔE: 1/e width of electron</value>
+  </data>
   <data name="&gt;&gt;label34.Name" xml:space="preserve">
     <value>label34</value>
   </data>
@@ -6351,7 +6384,7 @@ This model should be used for a strong scattering object which usually
     <value>Potential</value>
   </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
-    <value> under construction</value>
+    <value>Simulate Potential images.</value>
   </data>
   <data name="&gt;&gt;radioButtonProjectedPotential.Name" xml:space="preserve">
     <value>radioButtonProjectedPotential</value>
@@ -6393,7 +6426,7 @@ This model should be used for a strong scattering object which usually
     <value>STEM</value>
   </data>
   <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
-    <value> under construction</value>
+    <value>Simulate STEM images.</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM.Name" xml:space="preserve">
     <value>radioButtonSTEM</value>
@@ -6433,6 +6466,9 @@ This model should be used for a strong scattering object which usually
   </data>
   <data name="radioButtonHRTEM.Text" xml:space="preserve">
     <value>HRTEM</value>
+  </data>
+  <data name="radioButtonHRTEM.ToolTip" xml:space="preserve">
+    <value>Simulate HRTEM images.</value>
   </data>
   <data name="&gt;&gt;radioButtonHRTEM.Name" xml:space="preserve">
     <value>radioButtonHRTEM</value>
@@ -6519,11 +6555,7 @@ This model should be used for a strong scattering object which usually
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
-    <value>Set a sample thickness
-This value is neglected when "Serial image" mode is selected, </value>
-  </data>
-  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
-    <value>Set a sample thickness
+    <value>Sample thickness
 This value is neglected when "Serial image" mode is selected, </value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Name" xml:space="preserve">
@@ -6617,7 +6649,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 750</value>
+    <value>1086, 827</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>593</value>
@@ -6785,7 +6817,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>NoControl</value>
   </data>
   <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>989, 742</value>
+    <value>989, 819</value>
   </data>
   <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 28</value>
@@ -6839,7 +6871,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>    </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 774</value>
+    <value>0, 851</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1086, 22</value>
@@ -6869,7 +6901,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 796</value>
+    <value>1086, 873</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>

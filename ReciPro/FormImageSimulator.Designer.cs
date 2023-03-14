@@ -380,6 +380,7 @@ namespace ReciPro
             checkBoxShowUnitcell.Checked = true;
             checkBoxShowUnitcell.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowUnitcell.Name = "checkBoxShowUnitcell";
+            toolTip.SetToolTip(checkBoxShowUnitcell, resources.GetString("checkBoxShowUnitcell.ToolTip"));
             checkBoxShowUnitcell.UseVisualStyleBackColor = true;
             checkBoxShowUnitcell.CheckedChanged += CheckBoxShowLabel_CheckedChanged;
             // 
@@ -1079,6 +1080,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // flowLayoutPanel7
             // 
@@ -1094,18 +1096,21 @@ namespace ReciPro
             radioButtonSTEM_target_Both.Checked = true;
             radioButtonSTEM_target_Both.Name = "radioButtonSTEM_target_Both";
             radioButtonSTEM_target_Both.TabStop = true;
+            toolTip.SetToolTip(radioButtonSTEM_target_Both, resources.GetString("radioButtonSTEM_target_Both.ToolTip"));
             radioButtonSTEM_target_Both.UseVisualStyleBackColor = true;
             // 
             // radioButtonSTEM_target_Elas
             // 
             resources.ApplyResources(radioButtonSTEM_target_Elas, "radioButtonSTEM_target_Elas");
             radioButtonSTEM_target_Elas.Name = "radioButtonSTEM_target_Elas";
+            toolTip.SetToolTip(radioButtonSTEM_target_Elas, resources.GetString("radioButtonSTEM_target_Elas.ToolTip"));
             radioButtonSTEM_target_Elas.UseVisualStyleBackColor = true;
             // 
             // radioButtonSTEM_target_Inel
             // 
             resources.ApplyResources(radioButtonSTEM_target_Inel, "radioButtonSTEM_target_Inel");
             radioButtonSTEM_target_Inel.Name = "radioButtonSTEM_target_Inel";
+            toolTip.SetToolTip(radioButtonSTEM_target_Inel, resources.GetString("radioButtonSTEM_target_Inel.ToolTip"));
             radioButtonSTEM_target_Inel.UseVisualStyleBackColor = true;
             // 
             // numericBoxSTEM_AngleResolution
@@ -1209,6 +1214,7 @@ namespace ReciPro
             checkBoxNormarizeIndividually.Checked = true;
             checkBoxNormarizeIndividually.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxNormarizeIndividually.Name = "checkBoxNormarizeIndividually";
+            toolTip.SetToolTip(checkBoxNormarizeIndividually, resources.GetString("checkBoxNormarizeIndividually.ToolTip"));
             checkBoxNormarizeIndividually.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel6
@@ -1241,6 +1247,7 @@ namespace ReciPro
             numericBoxIntensityMin.ShowUpDown = true;
             numericBoxIntensityMin.SmartIncrement = true;
             numericBoxIntensityMin.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxIntensityMin, resources.GetString("numericBoxIntensityMin.ToolTip"));
             // 
             // flowLayoutPanel2
             // 
@@ -1263,6 +1270,7 @@ namespace ReciPro
             numericBoxIntensityMax.ShowUpDown = true;
             numericBoxIntensityMax.SmartIncrement = true;
             numericBoxIntensityMax.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxIntensityMax, resources.GetString("numericBoxIntensityMax.ToolTip"));
             numericBoxIntensityMax.Value = 1D;
             // 
             // groupBox8
@@ -1456,6 +1464,7 @@ namespace ReciPro
             numericBoxSTEM_DetectorOuterAngle.ShowUpDown = true;
             numericBoxSTEM_DetectorOuterAngle.SmartIncrement = true;
             numericBoxSTEM_DetectorOuterAngle.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxSTEM_DetectorOuterAngle, resources.GetString("numericBoxSTEM_DetectorOuterAngle.ToolTip"));
             numericBoxSTEM_DetectorOuterAngle.UpDown_Increment = 0.5D;
             numericBoxSTEM_DetectorOuterAngle.Value = 20D;
             // 
@@ -1475,6 +1484,7 @@ namespace ReciPro
             numericBoxSourceSize.ShowUpDown = true;
             numericBoxSourceSize.SmartIncrement = true;
             numericBoxSourceSize.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxSourceSize, resources.GetString("numericBoxSourceSize.ToolTip"));
             numericBoxSourceSize.UpDown_Increment = 0.1D;
             numericBoxSourceSize.Value = 20D;
             numericBoxSourceSize.ValueChanged += NumericBoxTEMproperty_ValueChanged;
@@ -1996,6 +2006,7 @@ namespace ReciPro
             resources.ApplyResources(label34, "label34");
             label34.ForeColor = System.Drawing.Color.Black;
             label34.Name = "label34";
+            toolTip.SetToolTip(label34, resources.GetString("label34.ToolTip"));
             // 
             // flowLayoutPanel14
             // 
@@ -2035,6 +2046,7 @@ namespace ReciPro
             radioButtonHRTEM.Checked = true;
             radioButtonHRTEM.Name = "radioButtonHRTEM";
             radioButtonHRTEM.TabStop = true;
+            toolTip.SetToolTip(radioButtonHRTEM, resources.GetString("radioButtonHRTEM.ToolTip"));
             radioButtonHRTEM.UseVisualStyleBackColor = true;
             radioButtonHRTEM.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
             // 
