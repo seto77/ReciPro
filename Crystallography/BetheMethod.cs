@@ -1152,7 +1152,7 @@ public class BetheMethod
                 var sum = new Complex[qList.Count, dLen];
 
                 //var tc_k = tc.Select(e => GC.AllocateUninitializedArray<Complex>(bLen)).ToArray();
-                var tc_k = new Complex[tc.Length * bLen * bLen];
+                var tc_k = new Complex[tc.Length * bLen];
 
                 var validTc = list.Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
 
@@ -1186,7 +1186,7 @@ public class BetheMethod
                             //NativeWrapper.GenerateTC(bLen, thickness, kg_z[kIndex], eVal[kIndex], eVec[kIndex], ref tc_k[kIndex]);
                             fixed (Complex* _tc_k = tc_k, _eVal = eVal[kIndex], _eVec = eVec[kIndex])
                             fixed (double* _kg_z = kg_z[kIndex])
-                                NativeWrapper.GenerateTC(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen * bLen);
+                                NativeWrapper.GenerateTC(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
                         });
                         #endregion
 
