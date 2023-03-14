@@ -1152,7 +1152,7 @@ public class BetheMethod
                 var sum = new Complex[qList.Count, dLen];
 
                 //var tc_k = tc.Select(e => GC.AllocateUninitializedArray<Complex>(bLen)).ToArray();
-                var tc_k = new Complex[tc.Length * bLen];
+                var tc_k = GC.AllocateUninitializedArray<Complex>(tc.Length * bLen);
 
                 var validTc = list.Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
 
