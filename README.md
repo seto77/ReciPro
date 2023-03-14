@@ -1,3 +1,5 @@
+***[See also Wiki page to learn how to use ReciPro!](https://github.com/seto77/ReciPro/wiki)***
+
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 
 # ReciPro
@@ -9,7 +11,6 @@
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
 * *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 7.0*** (not ***.Net Runtime 7.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/7.0).
-***
 
 ## Manual
   * Japanese version : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
@@ -59,17 +60,3 @@
 ## Screenshots
 <img src="img/Main.png" height="320px">  <img src="img/DiffractionSimulator1.png" height="320px">　<img src="img/DiffractionSimulator2.png" height="320px">　<img src="img/StructureViewer1.png" height="320px">　<img src="img/StructureViewer2.png" height="320px"> <img src="img/ScatteringFactors.png" height="320px"> <img src="img/Stereonet.png" height="320px"> 
 ***
-
-## Quick video tutorials
-### Basic operations to rotate crystals
-[A brief tutorial on the operation of rotating crystals.](https://user-images.githubusercontent.com/44538886/218983328-4e3534ed-2d5b-427a-ba83-c50d0a49a377.mp4)
-***
-### Crystal database functions
-[How to search for crystals in the embedded database](https://user-images.githubusercontent.com/44538886/218979766-b9596f88-79d0-4b1f-b234-4288e62393c7.mp4)
-***
-### CBED
-[How to simulate a CBED pattern](https://user-images.githubusercontent.com/44538886/218979683-7096bf77-0f2a-4413-a3d9-da1942a2c4af.mp4)
-***
-### Spot ID v2
-[How to index diffraction patterns taken by TEM](https://user-images.githubusercontent.com/44538886/218979927-787e3fee-ad49-4749-b376-453d0056b4d3.mp4)
-
