@@ -1,12 +1,13 @@
-﻿using MathNet.Numerics.LinearAlgebra.Complex;
+﻿#region using, namespace
+using MathNet.Numerics.LinearAlgebra.Complex;
 using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
-
 namespace Crystallography;
+#endregion
 
 public static partial class NativeWrapper
 {
