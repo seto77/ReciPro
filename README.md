@@ -1,5 +1,8 @@
 ***[See also Wiki page to learn how to use ReciPro!](https://github.com/seto77/ReciPro/wiki)***
 
+* ReciPro is MIT-licensed free software that provides a variety of crystallographic calculations and electron microscopy simulations.
+* ReciPro has been downloaded more than 10,000 times in total since its release on github (Mar 2020) and is used by many crystallographers and electron microscopists.
+
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 
 # ReciPro
