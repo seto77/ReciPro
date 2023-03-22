@@ -89,7 +89,7 @@
     <value>20</value>
   </data>
   <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>589, 648</value>
+    <value>600, 600</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -206,7 +206,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>589, 20</value>
+    <value>600, 20</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -810,7 +810,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>582, 27</value>
+    <value>593, 27</value>
   </data>
   <data name="trackBarAdvancedMax.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -885,7 +885,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>579, 27</value>
+    <value>590, 27</value>
   </data>
   <data name="trackBarAdvancedMin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1158,10 +1158,10 @@
     <value>Bottom</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 668</value>
+    <value>0, 620</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>589, 155</value>
+    <value>600, 155</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2047,7 +2047,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxSerialImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 372</value>
+    <value>3, 365</value>
   </data>
   <data name="groupBoxSerialImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3139,7 +3139,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxPotentialOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 165</value>
+    <value>3, 158</value>
   </data>
   <data name="groupBoxPotentialOption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3170,40 +3170,6 @@
   </data>
   <data name="&gt;&gt;groupBoxPotentialOption.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 41</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 30</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Angular resolution
- of incident electrons</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Angular resolution of incident electrons in mrad.</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBoxSTEMoption2</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="flowLayoutPanel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3344,7 +3310,7 @@
     <value>groupBoxSTEMoption2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel7.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -3358,8 +3324,11 @@
   <data name="numericBoxSTEM_AngleResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
+  <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
+    <value>Angular resolution of incident electrons</value>
+  </data>
   <data name="numericBoxSTEM_AngleResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 45</value>
+    <value>6, 41</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3371,7 +3340,7 @@
     <value>1, 23</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 25</value>
+    <value>304, 25</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3380,6 +3349,9 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
+    <value>Angular resolution of incident electrons in mrad.</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
     <value>Angular resolution of incident electrons in mrad.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_AngleResolution.Name" xml:space="preserve">
@@ -3392,7 +3364,7 @@
     <value>groupBoxSTEMoption2</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_AngleResolution.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="numericBoxSliceThicknessForInelasticSTEM.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3413,7 +3385,7 @@
     <value>Slice thickness for inelastic calc.</value>
   </data>
   <data name="numericBoxSliceThicknessForInelasticSTEM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 73</value>
+    <value>6, 67</value>
   </data>
   <data name="numericBoxSliceThicknessForInelasticSTEM.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -3441,7 +3413,8 @@
 Smaller values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="numericBoxSliceThicknessForInelasticSTEM.ToolTip1" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+    <value>Sets the thickness to slice the sample when calculating the inelastic electron intensity.
+Smaller values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="&gt;&gt;numericBoxSliceThicknessForInelasticSTEM.Name" xml:space="preserve">
     <value>numericBoxSliceThicknessForInelasticSTEM</value>
@@ -3453,7 +3426,7 @@ Smaller values result in slower calculation speed but higher accuracy.</value>
     <value>groupBoxSTEMoption2</value>
   </data>
   <data name="&gt;&gt;numericBoxSliceThicknessForInelasticSTEM.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanel10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3480,7 +3453,7 @@ Smaller values result in slower calculation speed but higher accuracy.</value>
     <value>groupBoxSTEMoption2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel10.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="groupBoxSTEMoption2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -3498,7 +3471,7 @@ Smaller values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxSTEMoption2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 102</value>
+    <value>307, 95</value>
   </data>
   <data name="groupBoxSTEMoption2.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -3645,7 +3618,7 @@ This model should be used for a strong scattering object which usually
     <value>NoControl</value>
   </data>
   <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 20</value>
+    <value>13, 20</value>
   </data>
   <data name="label32.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -3717,7 +3690,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 0, 0, 0</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 270</value>
+    <value>327, 240</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3750,7 +3723,10 @@ This model should be used for a strong scattering object which usually
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 75</value>
+    <value>3, 72</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 2, 0, 0</value>
@@ -3788,6 +3764,9 @@ This model should be used for a strong scattering object which usually
   <data name="checkBoxIntensityMin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBoxIntensityMin.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="checkBoxIntensityMin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3798,7 +3777,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 1, 0, 3</value>
   </data>
   <data name="checkBoxIntensityMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 21</value>
+    <value>47, 19</value>
   </data>
   <data name="checkBoxIntensityMin.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3824,8 +3803,11 @@ This model should be used for a strong scattering object which usually
   <data name="numericBoxIntensityMin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxIntensityMin.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxIntensityMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 0</value>
+    <value>50, 0</value>
   </data>
   <data name="numericBoxIntensityMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3852,6 +3834,10 @@ This model should be used for a strong scattering object which usually
     <value>Minimum intensity of the simulated image
 (enabled when the left box is checked.)</value>
   </data>
+  <data name="numericBoxIntensityMin.ToolTip1" xml:space="preserve">
+    <value>Minimum intensity of the simulated image
+(enabled when the left box is checked.)</value>
+  </data>
   <data name="&gt;&gt;numericBoxIntensityMin.Name" xml:space="preserve">
     <value>numericBoxIntensityMin</value>
   </data>
@@ -3868,7 +3854,7 @@ This model should be used for a strong scattering object which usually
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 48</value>
+    <value>3, 45</value>
   </data>
   <data name="flowLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
@@ -3906,6 +3892,9 @@ This model should be used for a strong scattering object which usually
   <data name="numericBoxIntensityMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxIntensityMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxIntensityMax.HeaderText" xml:space="preserve">
     <value>Max</value>
   </data>
@@ -3936,6 +3925,9 @@ This model should be used for a strong scattering object which usually
   <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
     <value>Maximum intensity of the simulated image.</value>
   </data>
+  <data name="numericBoxIntensityMax.ToolTip1" xml:space="preserve">
+    <value>Maximum intensity of the simulated image.</value>
+  </data>
   <data name="&gt;&gt;numericBoxIntensityMax.Name" xml:space="preserve">
     <value>numericBoxIntensityMax</value>
   </data>
@@ -3952,7 +3944,7 @@ This model should be used for a strong scattering object which usually
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 18</value>
   </data>
   <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
@@ -3985,10 +3977,16 @@ This model should be used for a strong scattering object which usually
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxNormalization.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 175</value>
+    <value>0, 172</value>
+  </data>
+  <data name="groupBoxNormalization.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="groupBoxNormalization.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 2</value>
   </data>
   <data name="groupBoxNormalization.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 99</value>
+    <value>134, 95</value>
   </data>
   <data name="groupBoxNormalization.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4222,7 +4220,7 @@ This model should be used for a strong scattering object which usually
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="flowLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>3, 18</value>
   </data>
   <data name="flowLayoutPanel9.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 0, 0</value>
@@ -4257,8 +4255,11 @@ This model should be used for a strong scattering object which usually
   <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 48</value>
   </data>
+  <data name="groupBox8.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 127</value>
+    <value>134, 124</value>
   </data>
   <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4319,7 +4320,8 @@ This model should be used for a strong scattering object which usually
 Larger values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
-    <value>Maximum number of Bloch waves used in the Bethe's method</value>
+    <value>Maximum number of Bloch waves used in the Bethe's method.
+Larger values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Name" xml:space="preserve">
     <value>numericBoxNumOfBlochWave</value>
@@ -4373,7 +4375,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 4, 0</value>
   </data>
   <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 270</value>
+    <value>138, 240</value>
   </data>
   <data name="panel6.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4397,7 +4399,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 499</value>
+    <value>4, 481</value>
   </data>
   <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4406,7 +4408,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 294</value>
+    <value>477, 264</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4517,7 +4519,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 793</value>
+    <value>4, 745</value>
   </data>
   <data name="flowLayoutPanel12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4549,38 +4551,181 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <metadata name="contextMenuStripSTEM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>688, 19</value>
   </metadata>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 6</value>
+  </data>
   <data name="typicalBF02MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="typicalBF02MradToolStripMenuItem.Text" xml:space="preserve">
-    <value>BF (0-5 mrad)</value>
+    <value>α=25mrad, BF (0-5 mrad)</value>
   </data>
   <data name="typicalABF1224MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="typicalABF1224MradToolStripMenuItem.Text" xml:space="preserve">
-    <value>ABF (12-24 mrad)</value>
+    <value>α=25mrad, ABF (12-24 mrad)</value>
   </data>
   <data name="typicalLAADF2560MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="typicalLAADF2560MradToolStripMenuItem.Text" xml:space="preserve">
-    <value>LAADF (26-60 mrad)</value>
+    <value>α=25mrad, LAADF (26-60 mrad)</value>
   </data>
   <data name="typicalHAADF80250MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="typicalHAADF80250MradToolStripMenuItem.Text" xml:space="preserve">
-    <value>HAADF (80-250 mrad)</value>
+    <value>α=25mrad, HAADF (80-250 mrad)</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 6</value>
+  </data>
+  <data name="addTheCurrentSettingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 22</value>
+  </data>
+  <data name="addTheCurrentSettingToolStripMenuItem.Text" xml:space="preserve">
+    <value>Add current values to user-defined</value>
+  </data>
+  <data name="customizeUserSettingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 22</value>
+  </data>
+  <data name="customizeUserSettingToolStripMenuItem.Text" xml:space="preserve">
+    <value>Customize user-defined</value>
   </data>
   <data name="contextMenuStripSTEM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 92</value>
+    <value>257, 148</value>
   </data>
   <data name="&gt;&gt;contextMenuStripSTEM.Name" xml:space="preserve">
     <value>contextMenuStripSTEM</value>
   </data>
   <data name="&gt;&gt;contextMenuStripSTEM.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>331, 20</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 34</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Effective source size
+ (Gaussian, FWHM)</value>
+  </data>
+  <data name="label5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Scherzer defocus value in nm</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption1</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label34.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label34.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="label34.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 34</value>
+  </data>
+  <data name="label34.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>α (convergence semi-
+angle of incident electrons)</value>
+  </data>
+  <data name="label34.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="label34.ToolTip" xml:space="preserve">
+    <value>Scherzer defocus value in nm</value>
+  </data>
+  <data name="&gt;&gt;label34.Name" xml:space="preserve">
+    <value>label34</value>
+  </data>
+  <data name="&gt;&gt;label34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption1</value>
+  </data>
+  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 19</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 17</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Detector range (radius)</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Scherzer defocus value in nm</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBoxSTEMoption1</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4595,7 +4740,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Outer</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>322, 48</value>
+    <value>182, 65</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -4610,7 +4755,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 27</value>
+    <value>135, 27</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4619,6 +4764,9 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
+    <value>Inner and outer radius of the annular detector in mrad.</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
     <value>Inner and outer radius of the annular detector in mrad.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Name" xml:space="preserve">
@@ -4631,7 +4779,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>groupBoxSTEMoption1</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="numericBoxSourceSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4642,11 +4790,8 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="numericBoxSourceSize.FooterText" xml:space="preserve">
     <value>pm</value>
   </data>
-  <data name="numericBoxSourceSize.HeaderText" xml:space="preserve">
-    <value>Effective source size (Gaussian, FWHM)</value>
-  </data>
   <data name="numericBoxSourceSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 76</value>
+    <value>360, 58</value>
   </data>
   <data name="numericBoxSourceSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -4661,7 +4806,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxSourceSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 27</value>
+    <value>84, 27</value>
   </data>
   <data name="numericBoxSourceSize.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4670,6 +4815,9 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxSourceSize.ToolTip" xml:space="preserve">
+    <value>Size of the effective electron source.</value>
+  </data>
+  <data name="numericBoxSourceSize.ToolTip1" xml:space="preserve">
     <value>Size of the effective electron source.</value>
   </data>
   <data name="&gt;&gt;numericBoxSourceSize.Name" xml:space="preserve">
@@ -4682,7 +4830,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>groupBoxSTEMoption1</value>
   </data>
   <data name="&gt;&gt;numericBoxSourceSize.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4691,13 +4839,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.FooterText" xml:space="preserve">
-    <value>mrad</value>
-  </data>
-  <data name="numericBoxSTEM_ConvergenceAngle.HeaderText" xml:space="preserve">
-    <value>Convergence angle of incident electrons (semi-angle)</value>
+    <value>mrad </value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
+    <value>36, 58</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -4712,7 +4857,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 27</value>
+    <value>103, 27</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4724,7 +4869,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Angle of convergence of incident electrons in units of mrad.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+    <value>Angle of convergence of incident electrons in units of mrad.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.Name" xml:space="preserve">
     <value>numericBoxSTEM_ConvergenceAngle</value>
@@ -4736,7 +4881,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>groupBoxSTEMoption1</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4748,10 +4893,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>mrad</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
-    <value>Detector range (semi-angle):  Inner</value>
+    <value>Inner</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 48</value>
+    <value>182, 39</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
@@ -4766,7 +4911,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 27</value>
+    <value>135, 27</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4778,7 +4923,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Inner and outer radius of the annular detector in mrad.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+    <value>Inner and outer radius of the annular detector in mrad.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Name" xml:space="preserve">
     <value>numericBoxSTEM_DetectorInnerAngle</value>
@@ -4790,7 +4935,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>groupBoxSTEMoption1</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="groupBoxSTEMoption1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -4799,7 +4944,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxSTEMoption1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 332</value>
+    <value>6, 326</value>
   </data>
   <data name="groupBoxSTEMoption1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4808,7 +4953,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxSTEMoption1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 107</value>
+    <value>465, 95</value>
   </data>
   <data name="groupBoxSTEMoption1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -4837,6 +4982,12 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="numericBoxObjAperX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxObjAperX.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxObjAperX.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxObjAperX.HeaderText" xml:space="preserve">
     <value>Shift  X</value>
   </data>
@@ -4847,22 +4998,22 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxObjAperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxObjAperX.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 23</value>
   </data>
   <data name="numericBoxObjAperX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxObjAperX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 27</value>
+    <value>93, 25</value>
   </data>
   <data name="numericBoxObjAperX.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="numericBoxObjAperX.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxObjAperX.Name" xml:space="preserve">
     <value>numericBoxObjAperX</value>
@@ -4882,8 +5033,14 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="numericBoxObjAperRadius.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxObjAperRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxObjAperRadius.FooterText" xml:space="preserve">
     <value>mrad</value>
+  </data>
+  <data name="numericBoxObjAperRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.HeaderText" xml:space="preserve">
     <value>Size</value>
@@ -4895,22 +5052,22 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxObjAperRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxObjAperRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 23</value>
   </data>
   <data name="numericBoxObjAperRadius.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxObjAperRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 27</value>
+    <value>124, 25</value>
   </data>
   <data name="numericBoxObjAperRadius.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="numericBoxObjAperRadius.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Object aperture size in mrad</value>
@@ -4936,8 +5093,14 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="numericBoxObjAperY.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxObjAperY.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxObjAperY.FooterText" xml:space="preserve">
     <value>mrad</value>
+  </data>
+  <data name="numericBoxObjAperY.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxObjAperY.HeaderText" xml:space="preserve">
     <value>Y</value>
@@ -4949,22 +5112,22 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>3, 3, 0, 0</value>
   </data>
   <data name="numericBoxObjAperY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxObjAperY.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 23</value>
   </data>
   <data name="numericBoxObjAperY.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxObjAperY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 27</value>
+    <value>98, 25</value>
   </data>
   <data name="numericBoxObjAperY.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="numericBoxObjAperY.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxObjAperY.Name" xml:space="preserve">
     <value>numericBoxObjAperY</value>
@@ -5268,7 +5431,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxHREMoption1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 252</value>
+    <value>6, 245</value>
   </data>
   <data name="groupBoxHREMoption1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5277,13 +5440,13 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxHREMoption1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 80</value>
+    <value>465, 81</value>
   </data>
   <data name="groupBoxHREMoption1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="groupBoxHREMoption1.Text" xml:space="preserve">
-    <value>Object Aperture (HRTEM option)</value>
+    <value>HRTEM option</value>
   </data>
   <data name="&gt;&gt;groupBoxHREMoption1.Name" xml:space="preserve">
     <value>groupBoxHREMoption1</value>
@@ -5346,7 +5509,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="graphControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 26</value>
+    <value>2, 24</value>
   </data>
   <data name="graphControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5355,7 +5518,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>2, 0, 0, 2</value>
   </data>
   <data name="graphControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 121</value>
+    <value>338, 119</value>
   </data>
   <data name="graphControl.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -5622,7 +5785,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Right</value>
   </data>
   <data name="panelGraphOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>332, 26</value>
+    <value>340, 24</value>
   </data>
   <data name="panelGraphOption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5631,7 +5794,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 6, 0, 0</value>
   </data>
   <data name="panelGraphOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 121</value>
+    <value>103, 119</value>
   </data>
   <data name="panelGraphOption.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -5658,13 +5821,13 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>443, 26</value>
+    <value>443, 24</value>
   </data>
   <data name="buttonPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 121</value>
+    <value>20, 119</value>
   </data>
   <data name="buttonPanel.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -5705,10 +5868,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBoxLensFunction.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 8, 2, 2</value>
+    <value>2, 6, 2, 2</value>
   </data>
   <data name="groupBoxLensFunction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 149</value>
+    <value>465, 145</value>
   </data>
   <data name="groupBoxLensFunction.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -5729,10 +5892,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Top</value>
   </data>
   <data name="panelLenz.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 103</value>
+    <value>6, 100</value>
   </data>
   <data name="panelLenz.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 149</value>
+    <value>465, 145</value>
   </data>
   <data name="panelLenz.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -5753,28 +5916,67 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>460, 17</value>
   </metadata>
   <data name="setoZeroDefocusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
+    <value>357, 22</value>
   </data>
   <data name="setoZeroDefocusToolStripMenuItem.Text" xml:space="preserve">
     <value>Seto defocus to 0 nm</value>
   </data>
   <data name="setoScherzerDefocusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
+    <value>357, 22</value>
   </data>
   <data name="setoScherzerDefocusToolStripMenuItem.Text" xml:space="preserve">
     <value>Set defocus to Scherzer value</value>
   </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 6</value>
-  </data>
   <data name="setAllAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
+    <value>357, 22</value>
   </data>
   <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
     <value>Set all aberrations to zero</value>
   </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>354, 6</value>
+  </data>
+  <data name="kVCsfreeCcToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 22</value>
+  </data>
+  <data name="kVCsfreeCcToolStripMenuItem.Text" xml:space="preserve">
+    <value>300kV Cs-free Cold-FEG (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+  </data>
+  <data name="kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 22</value>
+  </data>
+  <data name="kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Text" xml:space="preserve">
+    <value>200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F</value>
+  </data>
+  <data name="kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 22</value>
+  </data>
+  <data name="kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Text" xml:space="preserve">
+    <value>200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F</value>
+  </data>
+  <data name="kVLab6TEMCs14MmCc18mmToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 22</value>
+  </data>
+  <data name="kVLab6TEMCs14MmCc18mmToolStripMenuItem.Text" xml:space="preserve">
+    <value>200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>354, 6</value>
+  </data>
+  <data name="addTheCurrentSettingToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 22</value>
+  </data>
+  <data name="addTheCurrentSettingToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Add current values to user-defined</value>
+  </data>
+  <data name="customizeTheUserSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 22</value>
+  </data>
+  <data name="customizeTheUserSettingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Customize user-defined</value>
+  </data>
   <data name="contextMenuStripTEMcondition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 76</value>
+    <value>358, 214</value>
   </data>
   <data name="&gt;&gt;contextMenuStripTEMcondition.Name" xml:space="preserve">
     <value>contextMenuStripTEMcondition</value>
@@ -5782,58 +5984,47 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;contextMenuStripTEMcondition.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxCs.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="label35.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="numericBoxCs.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="label35.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 8pt</value>
   </data>
-  <data name="numericBoxCs.FooterText" xml:space="preserve">
-    <value>mm</value>
+  <data name="label35.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="numericBoxCs.HeaderText" xml:space="preserve">
-    <value>Cs</value>
+  <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
+    <value>330, 47</value>
   </data>
-  <data name="numericBoxCs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 52</value>
+  <data name="label35.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
   </data>
-  <data name="numericBoxCs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
+  <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 26</value>
   </data>
-  <data name="numericBoxCs.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+  <data name="label35.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
   </data>
-  <data name="numericBoxCs.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+  <data name="label35.Text" xml:space="preserve">
+    <value>ΔE
+(FWHM)</value>
   </data>
-  <data name="numericBoxCs.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
+  <data name="label35.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
-  <data name="numericBoxCs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 27</value>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>Scherzer defocus value in nm</value>
   </data>
-  <data name="numericBoxCs.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;label35.Name" xml:space="preserve">
+    <value>label35</value>
   </data>
-  <data name="numericBoxCs.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="&gt;&gt;label35.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxCs.ToolTip" xml:space="preserve">
-    <value>Cs: Spherical aberration in mm</value>
-  </data>
-  <data name="numericBoxCs.ToolTip1" xml:space="preserve">
-    <value>Cs: Spherical aberration in mm</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCs.Name" xml:space="preserve">
-    <value>numericBoxCs</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCs.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxCs.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label35.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;numericBoxCs.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="numericBoxCc.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -5849,10 +6040,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Cc</value>
   </data>
   <data name="numericBoxCc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 52</value>
+    <value>222, 50</value>
   </data>
   <data name="numericBoxCc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxCc.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -5864,7 +6055,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 27</value>
+    <value>109, 27</value>
   </data>
   <data name="numericBoxCc.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -5890,60 +6081,6 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;numericBoxCc.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxAccVol.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxAccVol.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxAccVol.FooterText" xml:space="preserve">
-    <value>kV</value>
-  </data>
-  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Acc. Vol.</value>
-  </data>
-  <data name="numericBoxAccVol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 20</value>
-  </data>
-  <data name="numericBoxAccVol.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxAccVol.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxAccVol.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxAccVol.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxAccVol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 27</value>
-  </data>
-  <data name="numericBoxAccVol.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericBoxAccVol.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
-    <value>Acc voltage of TEM (kV)</value>
-  </data>
-  <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
-    <value>Acc voltage of TEM (kV)</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAccVol.Name" xml:space="preserve">
-    <value>numericBoxAccVol</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAccVol.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAccVol.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAccVol.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="numericBoxDeltaV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -5954,10 +6091,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>eV</value>
   </data>
   <data name="numericBoxDeltaV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>386, 52</value>
+    <value>380, 50</value>
   </data>
   <data name="numericBoxDeltaV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDeltaV.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -5969,7 +6106,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDeltaV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 27</value>
+    <value>78, 27</value>
   </data>
   <data name="numericBoxDeltaV.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -5997,61 +6134,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;numericBoxDeltaV.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="numericBoxDefocus.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxDefocus.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxDefocus.FooterText" xml:space="preserve">
-    <value>nm</value>
-  </data>
-  <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
-    <value>Defocus Δf</value>
-  </data>
-  <data name="numericBoxDefocus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 20</value>
-  </data>
-  <data name="numericBoxDefocus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxDefocus.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxDefocus.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxDefocus.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxDefocus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 27</value>
-  </data>
-  <data name="numericBoxDefocus.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxDefocus.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
-    <value>Defocus value in nanometer</value>
-  </data>
-  <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
-    <value>Defocus value in nanometer</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDefocus.Name" xml:space="preserve">
-    <value>numericBoxDefocus</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDefocus.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDefocus.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDefocus.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="numericBoxBetaAgnle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -6066,10 +6149,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>β</value>
   </data>
   <data name="numericBoxBetaAgnle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 52</value>
+    <value>114, 50</value>
   </data>
   <data name="numericBoxBetaAgnle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBetaAgnle.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -6107,7 +6190,61 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;numericBoxBetaAgnle.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
+  </data>
+  <data name="numericBoxCs.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxCs.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxCs.FooterText" xml:space="preserve">
+    <value>mm</value>
+  </data>
+  <data name="numericBoxCs.HeaderText" xml:space="preserve">
+    <value>Cs</value>
+  </data>
+  <data name="numericBoxCs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 50</value>
+  </data>
+  <data name="numericBoxCs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxCs.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxCs.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxCs.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxCs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 27</value>
+  </data>
+  <data name="numericBoxCs.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericBoxCs.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxCs.ToolTip" xml:space="preserve">
+    <value>Cs: Spherical aberration in mm</value>
+  </data>
+  <data name="numericBoxCs.ToolTip1" xml:space="preserve">
+    <value>Cs: Spherical aberration in mm</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCs.Name" xml:space="preserve">
+    <value>numericBoxCs</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCs.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCs.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCs.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6161,13 +6298,13 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="textBoxScherzer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 23</value>
+    <value>40, 23</value>
   </data>
   <data name="textBoxScherzer.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
   <data name="textBoxScherzer.Text" xml:space="preserve">
-    <value>-40.9</value>
+    <value>-57.8</value>
   </data>
   <data name="textBoxScherzer.ToolTip" xml:space="preserve">
     <value>Scherzer defocus value in nm</value>
@@ -6191,7 +6328,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 2</value>
+    <value>136, 2</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -6224,13 +6361,13 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>301, 20</value>
+    <value>295, 20</value>
   </data>
   <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 23</value>
+    <value>161, 23</value>
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -6245,46 +6382,114 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
-  <data name="label34.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="numericBoxDefocus.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="label34.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxDefocus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="label34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="numericBoxDefocus.FooterText" xml:space="preserve">
+    <value>nm</value>
   </data>
-  <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
-    <value>334, 46</value>
+  <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
+    <value>Defocus Δf</value>
   </data>
-  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 30</value>
+  <data name="numericBoxDefocus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 19</value>
   </data>
-  <data name="label34.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
+  <data name="numericBoxDefocus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>ΔE
-(FWHM)</value>
+  <data name="numericBoxDefocus.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="label34.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="numericBoxDefocus.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
   </data>
-  <data name="label34.ToolTip" xml:space="preserve">
-    <value>ΔE: 1/e width of electron</value>
+  <data name="numericBoxDefocus.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
-  <data name="&gt;&gt;label34.Name" xml:space="preserve">
-    <value>label34</value>
+  <data name="numericBoxDefocus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 27</value>
   </data>
-  <data name="&gt;&gt;label34.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="numericBoxDefocus.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+  <data name="numericBoxDefocus.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
+    <value>Defocus value in nanometer</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
+    <value>Defocus value in nanometer</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDefocus.Name" xml:space="preserve">
+    <value>numericBoxDefocus</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDefocus.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDefocus.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxDefocus.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="numericBoxAccVol.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxAccVol.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxAccVol.FooterText" xml:space="preserve">
+    <value>kV</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>Acc. Vol.</value>
+  </data>
+  <data name="numericBoxAccVol.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="numericBoxAccVol.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxAccVol.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxAccVol.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxAccVol.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxAccVol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 27</value>
+  </data>
+  <data name="numericBoxAccVol.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxAccVol.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>Acc voltage of TEM (kV)</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
+    <value>Acc voltage of TEM (kV)</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAccVol.Name" xml:space="preserve">
+    <value>numericBoxAccVol</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAccVol.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAccVol.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAccVol.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <data name="groupBox4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -6297,7 +6502,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>6, 18</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 85</value>
+    <value>465, 82</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6333,7 +6538,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBoxOpticalProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 445</value>
+    <value>477, 427</value>
   </data>
   <data name="groupBoxOpticalProperty.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -6558,6 +6763,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Sample thickness
 This value is neglected when "Serial image" mode is selected, </value>
   </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>Sample thickness
+This value is neglected when "Serial image" mode is selected, </value>
+  </data>
   <data name="&gt;&gt;numericBoxThickness.Name" xml:space="preserve">
     <value>numericBoxThickness</value>
   </data>
@@ -6649,10 +6858,10 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 827</value>
+    <value>1097, 779</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>593</value>
+    <value>604</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -6787,7 +6996,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 24</value>
+    <value>1097, 24</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -6817,7 +7026,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>NoControl</value>
   </data>
   <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>989, 819</value>
+    <value>1000, 772</value>
   </data>
   <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 28</value>
@@ -6871,10 +7080,10 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>    </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 851</value>
+    <value>0, 803</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 22</value>
+    <value>1097, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -6901,7 +7110,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 873</value>
+    <value>1097, 825</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -6914,6 +7123,12 @@ This value is neglected when "Serial image" mode is selected, </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>HRTEM/STEM simulator</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
+    <value>toolStripSeparator4</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;typicalBF02MradToolStripMenuItem.Name" xml:space="preserve">
     <value>typicalBF02MradToolStripMenuItem</value>
@@ -6939,6 +7154,24 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;typicalHAADF80250MradToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
+    <value>toolStripSeparator5</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addTheCurrentSettingToolStripMenuItem.Name" xml:space="preserve">
+    <value>addTheCurrentSettingToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;addTheCurrentSettingToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;customizeUserSettingToolStripMenuItem.Name" xml:space="preserve">
+    <value>customizeUserSettingToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;customizeUserSettingToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;setoZeroDefocusToolStripMenuItem.Name" xml:space="preserve">
     <value>setoZeroDefocusToolStripMenuItem</value>
   </data>
@@ -6951,16 +7184,52 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;setoScherzerDefocusToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;setAllAToolStripMenuItem.Name" xml:space="preserve">
     <value>setAllAToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;setAllAToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
+    <value>toolStripSeparator6</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addTheCurrentSettingToolStripMenuItem1.Name" xml:space="preserve">
+    <value>addTheCurrentSettingToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;addTheCurrentSettingToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;customizeTheUserSettingsToolStripMenuItem.Name" xml:space="preserve">
+    <value>customizeTheUserSettingsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;customizeTheUserSettingsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;kVCsfreeCcToolStripMenuItem.Name" xml:space="preserve">
+    <value>kVCsfreeCcToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;kVCsfreeCcToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Name" xml:space="preserve">
+    <value>kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Name" xml:space="preserve">
+    <value>kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;kVLab6TEMCs14MmCc18mmToolStripMenuItem.Name" xml:space="preserve">
+    <value>kVLab6TEMCs14MmCc18mmToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;kVLab6TEMCs14MmCc18mmToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
@@ -7100,6 +7369,12 @@ This value is neglected when "Serial image" mode is selected, </value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
+    <value>toolStripSeparator7</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormImageSimulator</value>

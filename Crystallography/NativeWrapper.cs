@@ -146,10 +146,15 @@ public static partial class NativeWrapper
     );
 
     [LibraryImport("Crystallography.Native.dll")]
-    private static unsafe partial void _GenerateTC(int dim, double thickness, double* _kg_z, double* _val, double* _vec, double* _result);
+    private static unsafe partial void _GenerateTC1(int dim, double thickness, double* _kg_z, double* _val, double* _vec, double* _tc_k);
+
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _GenerateTC2(int dim, double thickness, double* _kg_z, double* _val, double* _vec, double* _tc_k, double* _tc_kq);
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _RowVec_SqMat_ColVec(int dim, double* _rowVec, double* _sqMat, double* _colVec, double* _result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _STEM_INEL1(int dim, double* rowVec, int* n, double* r, double* sqMat, double* colVec, double* _result);
 
     #endregion
 
@@ -387,6 +392,13 @@ public static partial class NativeWrapper
         fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
             _Blend(dim * 2, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
+
+    unsafe static public void Blend(in int dim, Complex* c0, Complex* c1, Complex* c2, Complex* c3, in double r0, in double r1, in double r2, in double r3, Complex* res)
+    {
+        //fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
+        _Blend(dim * 2, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
+    }
+
     unsafe static public void Blend(in int dim, in double[] c0, in double[] c1, in double[] c2, in double[] c3, in double r0, in double r1, in double r2, in double r3, ref double[] result)
     {
         fixed (double* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
@@ -590,16 +602,21 @@ public static partial class NativeWrapper
     /// <param name="val"></param>
     /// <param name="vec"></param>
     /// <param name="result"></param>
-    unsafe static public void GenerateTC(in int dim,in double thickness, in double[] kg_z, in Complex[] val, in Complex[] vec, ref Complex[] result)
+    //unsafe static public void GenerateTC(in int dim,in double thickness, in double[] kg_z, in Complex[] val, in Complex[] vec, ref Complex[] result)
+    //{
+    //    fixed (double* _kg_z = kg_z)
+    //    fixed (Complex* _val = val, _vec = vec, _result = result)
+    //        _GenerateTC(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_result);
+    //}
+
+    unsafe static public void GenerateTC1(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k)
     {
-        fixed (double* _kg_z = kg_z)
-        fixed (Complex* _val = val, _vec = vec, _result = result)
-            _GenerateTC(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_result);
+        _GenerateTC1(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k);
     }
 
-    unsafe static public void GenerateTC(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _result)
+    unsafe static public void GenerateTC2(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k, Complex* _tc_kq)
     {
-        _GenerateTC(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_result);
+        _GenerateTC2(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k, (double*)_tc_kq);
     }
 
     /// <summary>
@@ -623,6 +640,15 @@ public static partial class NativeWrapper
     {
         var result = new Complex();
         _RowVec_SqMat_ColVec(dim, (double*)_rowVec, (double*)_sqMtx, (double*)_colVec, (double*)&result);
+        return result;
+    }
+
+    unsafe static public Complex STEM_INEL1(in int dim, Complex* _rowVec, int[] n, double[] r, Complex* _sqMtx, Complex* _colVec)
+    {
+        var result = new Complex();
+        fixed (int* _n = n)
+        fixed (double* _r = r)
+            _STEM_INEL1(dim, (double*)_rowVec, _n, _r, (double*)_sqMtx, (double*)_colVec, (double*)&result);
         return result;
     }
 

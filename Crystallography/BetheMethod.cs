@@ -2,6 +2,7 @@
 using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Complex;
+using OpenTK.Platform.Windows;
 using System;
 using System.Buffers;
 using System.Collections.Generic;
@@ -1149,20 +1150,22 @@ public class BetheMethod
                 #endregion
 
                 #region 各種変数の設定
-                var sum = new Complex[qList.Count, dLen];
+                
 
-                //var tc_k = tc.Select(e => GC.AllocateUninitializedArray<Complex>(bLen)).ToArray();
-                var tc_k = GC.AllocateUninitializedArray<Complex>(tc.Length * bLen);
+                var tc_k =  GC.AllocateUninitializedArray<Complex>(tc.Length * bLen);
 
                 var validTc = list.Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
 
                 var total = _thick.Sum(e => e.Length) * tcP.Count();
+
+                
                 count = 0;
                 #endregion
 
                 #region メインのループ
                 for (int t = 0; t < Thicknesses.Length; t++)
                 {
+                    var sum = new Complex[qList.Count * dLen];//ゼロ初期化が必要
                     foreach (var thickness in _thick[t])
                     {
                         if (bwSTEM.CancellationPending) return;
@@ -1183,16 +1186,15 @@ public class BetheMethod
                             //    for (int j = 0; j < bLen; j++)
                             //        tc_k[kIndex][g] += eVec[kIndex][j * bLen + g] * exp_kgz[g] * exp_λ[j];
                             #endregion
-                            //NativeWrapper.GenerateTC(bLen, thickness, kg_z[kIndex], eVal[kIndex], eVec[kIndex], ref tc_k[kIndex]);
                             fixed (Complex* _tc_k = tc_k, _eVal = eVal[kIndex], _eVec = eVec[kIndex])
                             fixed (double* _kg_z = kg_z[kIndex])
-                                NativeWrapper.GenerateTC(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
+                                NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
                         });
                         #endregion
 
                         tcP.ForAll(kIndex =>
                         {
-                            Complex[] sumTmp = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);//, u_tck = Shared.Rent(list[kIndex].Count * bLen);
+                            Complex[] sumTmp = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);
                             try
                             {
                                 fixed (Complex* _tc_k = tc_k, _U = U, _tc_kq = tc_kq)
@@ -1200,34 +1202,34 @@ public class BetheMethod
                                     {
                                         var (qIndex, n, r, lenz) = list[kIndex][i];
                                         //厚み_thick[t][_t]における透過係数_tc_kqを計算
-                                        //NativeWrapper.BlendAndConjugate(bLen, tc_k[n[0]], tc_k[n[1]], tc_k[n[2]], tc_k[n[3]], r[0], r[1], r[2], r[3], ref tc_kq);
                                         NativeWrapper.BlendAndConjugate(bLen, _tc_k + n[0] * bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], _tc_kq);
-                                        #region この内容をNativeコードで実行 4倍速い
-                                        //var sum1 = new Complex(0, 0);
-                                        //for (int h = 0; h < bLen; h++)
-                                        //    for (int g = 0; g < bLen; g++)
-                                        //        sum1 += tc_k[kIndex][g] * tc_kq[h] * U[qIndex][g * bLen + h];
-                                        #endregion
-                                        //var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, tc_kq, U[qIndex], tc_k[kIndex]);
                                         var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
 
-                                        for (int d = 0; d < dLen; d++)
-                                            sumTmp[i * dLen + d] = tmp * lenz[d];
+                                        for (int dIndex = 0; dIndex < dLen; dIndex++)
+                                            sumTmp[i * dLen + dIndex] = tmp * lenz[dIndex];
                                     }
                                 lock (lockObj1)
                                     for (int i = 0; i < list[kIndex].Count; i++)
                                         for (int d = 0; d < dLen; d++)
-                                            sum[list[kIndex][i].qIndex, d] += sumTmp[i * dLen + d] * tStep[t];
+                                            sum[list[kIndex][i].qIndex * dLen + d] += sumTmp[i * dLen + d] ;
                             }
                             finally { Shared.Return(sumTmp); Shared.Return(tc_kq); }
 
                             if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1E6 / total * count), "Calculating I_inelastic(Q)");//状況を報告
                         });
+
                     }
 
-                    for (int qIndex = 0; qIndex < qList.Count; qIndex++)
-                        for (int d = 0; d < dLen; d++)
-                            I_Inel[qIndex, t, d] = sum[qIndex, d] / kvac * 2 * Math.PI;
+                    var coeff = 2 * Math.PI / kvac * tStep[t];
+                    Parallel.For(0, qList.Count, qIndex =>
+                    {
+                        for (int dIndex = 0; dIndex < dLen; dIndex++)
+                        {
+                            I_Inel[qIndex, t, dIndex] = sum[qIndex * dLen + dIndex] * coeff;
+                            if (t > 0)
+                                I_Inel[qIndex, t, dIndex] += I_Inel[qIndex, t - 1, dIndex];
+                        }
+                    });
                 }
 
                 #endregion

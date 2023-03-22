@@ -503,7 +503,6 @@
             numericBoxAxisU.RoundErrorAccuracy = -1;
             numericBoxAxisU.ShowUpDown = true;
             numericBoxAxisU.SkipEventDuringInput = false;
-            numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxAxisU.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxAxisU, resources.GetString("numericBoxAxisU.ToolTip"));
             // 
@@ -531,7 +530,6 @@
             numericBoxAxisV.RoundErrorAccuracy = -1;
             numericBoxAxisV.ShowUpDown = true;
             numericBoxAxisV.SkipEventDuringInput = false;
-            numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxAxisV.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxAxisV, resources.GetString("numericBoxAxisV.ToolTip"));
             // 
@@ -548,7 +546,6 @@
             numericBoxAxisW.RoundErrorAccuracy = -1;
             numericBoxAxisW.ShowUpDown = true;
             numericBoxAxisW.SkipEventDuringInput = false;
-            numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxAxisW.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxAxisW, resources.GetString("numericBoxAxisW.ToolTip"));
             // 
@@ -575,7 +572,6 @@
             numericBoxPlaneL.RoundErrorAccuracy = -1;
             numericBoxPlaneL.ShowUpDown = true;
             numericBoxPlaneL.SkipEventDuringInput = false;
-            numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxPlaneL.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxPlaneL, resources.GetString("numericBoxPlaneL.ToolTip"));
             // 
@@ -591,7 +587,6 @@
             numericBoxPlaneH.RoundErrorAccuracy = -1;
             numericBoxPlaneH.ShowUpDown = true;
             numericBoxPlaneH.SkipEventDuringInput = false;
-            numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxPlaneH.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxPlaneH, resources.GetString("numericBoxPlaneH.ToolTip"));
             // 
@@ -607,7 +602,6 @@
             numericBoxPlaneK.RoundErrorAccuracy = -1;
             numericBoxPlaneK.ShowUpDown = true;
             numericBoxPlaneK.SkipEventDuringInput = false;
-            numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxPlaneK.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxPlaneK, resources.GetString("numericBoxPlaneK.ToolTip"));
             // 
@@ -780,7 +774,6 @@
             numericBoxStep.RoundErrorAccuracy = -1;
             numericBoxStep.ShowUpDown = true;
             numericBoxStep.SmartIncrement = true;
-            numericBoxStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxStep.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxStep, resources.GetString("numericBoxStep.ToolTip"));
             numericBoxStep.Value = 10D;
@@ -826,7 +819,6 @@
             numericBoxMaxUVW.RoundErrorAccuracy = -1;
             numericBoxMaxUVW.ShowUpDown = true;
             numericBoxMaxUVW.SkipEventDuringInput = false;
-            numericBoxMaxUVW.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxMaxUVW.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaxUVW, resources.GetString("numericBoxMaxUVW.ToolTip"));
             numericBoxMaxUVW.Value = 30D;
@@ -874,7 +866,6 @@
             resources.ApplyResources(numericUpDownEulerPsi, "numericUpDownEulerPsi");
             numericUpDownEulerPsi.DecimalPlaces = 3;
             numericUpDownEulerPsi.Maximum = new decimal(new int[] { 360, 0, 0, 0 });
-            numericUpDownEulerPsi.Minimum = new decimal(new int[] { 360, 0, 0, int.MinValue });
             numericUpDownEulerPsi.Name = "numericUpDownEulerPsi";
             toolTip.SetToolTip(numericUpDownEulerPsi, resources.GetString("numericUpDownEulerPsi.ToolTip"));
             numericUpDownEulerPsi.ValueChanged += numericUpDownPhi_ValueChanged;
@@ -905,7 +896,6 @@
             resources.ApplyResources(numericUpDownEulerPhi, "numericUpDownEulerPhi");
             numericUpDownEulerPhi.DecimalPlaces = 3;
             numericUpDownEulerPhi.Maximum = new decimal(new int[] { 360, 0, 0, 0 });
-            numericUpDownEulerPhi.Minimum = new decimal(new int[] { 360, 0, 0, int.MinValue });
             numericUpDownEulerPhi.Name = "numericUpDownEulerPhi";
             toolTip.SetToolTip(numericUpDownEulerPhi, resources.GetString("numericUpDownEulerPhi.ToolTip"));
             numericUpDownEulerPhi.ValueChanged += numericUpDownPhi_ValueChanged;

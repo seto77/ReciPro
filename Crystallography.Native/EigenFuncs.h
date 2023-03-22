@@ -42,8 +42,11 @@ extern "C" {
 
 	EIGEN_FUNCS_API void _PartialPivLuSolve(int dim, double mat[], double vec[], double result[]);
 
-	EIGEN_FUNCS_API void _GenerateTC(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double result[]);
+	EIGEN_FUNCS_API void _GenerateTC1(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double _tc_k[]);
+	EIGEN_FUNCS_API void _GenerateTC2(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double _tc_k[], double _tc_kq[]);
 	EIGEN_FUNCS_API void _RowVec_SqMat_ColVec(int dim, double rowVec[], double sqMat[], double colVec[], double _result[]);
+
+	EIGEN_FUNCS_API void _STEM_INEL1(int dim, double rowVec[], int n[], double r[], double sqMat[], double colVec[], double _result[]);
 
 
 } // extern "C"

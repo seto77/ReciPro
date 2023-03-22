@@ -86,7 +86,7 @@ extern "C" {
 	}
 
 	//STEM—p‚Ì“ÁêŠÖ”. “§‰ßŒW”‚ğ‹‚ß‚é
-	EIGEN_FUNCS_API void _GenerateTC(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double result[])
+	EIGEN_FUNCS_API void _GenerateTC1(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double _tc_k[])
 	{
 		auto val = (dcomplex*)_val;
 
@@ -98,9 +98,28 @@ extern "C" {
 			exp_kgz[i] = exp(two_pi_i * thickness * _kg_z[i]);
 			exp_val[i] = exp(two_pi_i * thickness * val[i]);
 		}
-
 		auto m = Map<Mat>((dcomplex*)_vec, dim, dim);
-		Map<Vec>((dcomplex*)result, dim).noalias() = exp_kgz.asDiagonal() * m * exp_val;
+		Map<Vec>((dcomplex*)_tc_k, dim).noalias() = exp_kgz.asDiagonal() * m * exp_val;
+	}
+
+	//STEM—p‚Ì“ÁêŠÖ”. “§‰ßŒW”‚ğ‹‚ß‚é
+	EIGEN_FUNCS_API void _GenerateTC2(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double _tc_k[], double _tc_kq[])
+	{
+		auto val = (dcomplex*)_val;
+
+		Vec exp_kgz = Vec(dim);
+		Vec exp_val = Vec(dim);
+
+		for (int i = 0; i < dim; ++i)
+		{
+			exp_kgz[i] = exp(two_pi_i * thickness * _kg_z[i]);
+			exp_val[i] = exp(two_pi_i * thickness * val[i]);
+		}
+		auto m = Map<Mat>((dcomplex*)_vec, dim, dim);
+		auto res = exp_kgz.asDiagonal() * m * exp_val;
+		
+		Map<Vec>((dcomplex*)_tc_k, dim).noalias() = res;
+		Map<Vec>((dcomplex*)_tc_kq, dim).noalias() = res.conjugate();
 	}
 
 	//‰¡ƒxƒNƒgƒ‹~³•ûs—ñ~cƒxƒNƒgƒ‹‚ÌŠ|Z. STEM‚Ì”ñ’e«U—‚ğ‹‚ß‚é‚Æ‚«‚Ég—p
@@ -110,6 +129,17 @@ extern "C" {
 		auto m = Map<Mat>((dcomplex*)sqMat, dim, dim);
 		auto cV = Map<Vec>((dcomplex*)colVec, dim);
 		Map<Mat>((dcomplex*)_result, 1, 1).noalias() = rV * m * cV;
+	}
+
+	EIGEN_FUNCS_API void _STEM_INEL1(int dim, double rowVec[], int n[], double r[], double sqMat[], double colVec[], double _result[])
+	{
+		auto rV1 = Map<VecR>((dcomplex*)(rowVec + n[0] * dim * 2), dim);
+		auto rV2 = Map<VecR>((dcomplex*)(rowVec + n[1] * dim * 2), dim);
+		auto rV3 = Map<VecR>((dcomplex*)(rowVec + n[2] * dim * 2), dim);
+		auto rV4 = Map<VecR>((dcomplex*)(rowVec + n[3] * dim * 2), dim);
+		auto m = Map<Mat>((dcomplex*)sqMat, dim, dim);
+		auto cV = Map<Vec>((dcomplex*)colVec, dim);
+		Map<Mat>((dcomplex*)_result, 1, 1).noalias() = (r[0] * rV1 + r[1] * rV2 + r[2] * rV3 + r[3] * rV4) * m * cV;
 	}
 
 	//•¡‘f”ñ‘ÎÌs—ñ‚Ìmat1‚Æmat2‚Ì—v‘f‚²‚Æ‚ÌŠ|Z(ƒAƒ_ƒ}[ƒ‹Ï)‚ğæ‚é

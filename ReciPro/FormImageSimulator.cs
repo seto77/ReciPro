@@ -913,8 +913,8 @@ public partial class FormImageSimulator : Form
         {
             var u2 = u * u;
             kai.Add(new PointD(u, Sin(PI * Rambda * u2 * (Cs * rambda2 * u2 / 2.0 + Defocus))));//球面収差
-            es.Add(new PointD(u, Exp(-Pi2 * Beta * Beta * u2 * (Defocus + rambda2 * Cs * u2) * (Defocus + rambda2 * Cs * u2))));//時間的インコヒーレンス
-            ec.Add(new PointD(u, Exp(-Pi2 * rambda2 * delta * delta * u2 * u2 / 2/*16/Math.Log(2)*/)));//空間的インコヒーレンス
+            es.Add(new PointD(u, Exp(-Pi2 * Beta * Beta * u2 * (Defocus + rambda2 * Cs * u2) * (Defocus + rambda2 * Cs * u2))));//空間的インコヒーレンス
+            ec.Add(new PointD(u, Exp(-Pi2 * rambda2 * delta * delta * u2 * u2 / 2/*16/Math.Log(2)*/)));//時間的インコヒーレンス
             all.Add(new PointD(u, kai[^1].Y * es[^1].Y * ec[^1].Y));
         }
         graphControl.ClearProfile();
@@ -988,6 +988,9 @@ public partial class FormImageSimulator : Form
         this.SuspendLayout();
         numericBoxDefocus.Enabled = ImageMode != ImageModes.POTENTIAL;
 
+        numericBoxBetaAgnle.Enabled = ImageMode == ImageModes.HRTEM;
+
+        numericBoxCs.Enabled = numericBoxCc.Enabled = numericBoxDeltaV.Enabled =
         groupBoxSampleProperty.Visible = groupBoxNormalization.Visible
                = groupBoxSerialImage.Visible = panelLenz.Visible = ImageMode != ImageModes.POTENTIAL;
 

@@ -1032,6 +1032,7 @@ public partial class FormMain : Form
             {
                 form.Visible = true;
                 form.WindowState = FormWindowState.Normal;
+                WindowLocation.Adjust(form);
             }
             else if (form.WindowState == FormWindowState.Minimized)
                 form.WindowState = FormWindowState.Normal;

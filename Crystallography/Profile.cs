@@ -637,7 +637,7 @@ public class DiffractionProfile : ICloneable
     public int ImageWidth = 0;
     public int ImageHeight = 0;
 
-    public override string ToString() => Name.ToString();
+    public override string ToString() => Name;
 
     public DiffractionProfile()
     {

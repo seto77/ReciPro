@@ -120,7 +120,6 @@ namespace ReciPro
             checkBoxPotentialUgPrime = new System.Windows.Forms.CheckBox();
             checkBoxPotentialUg = new System.Windows.Forms.CheckBox();
             groupBoxSTEMoption2 = new System.Windows.Forms.GroupBox();
-            label1 = new System.Windows.Forms.Label();
             flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonSTEM_target_Both = new System.Windows.Forms.RadioButton();
             radioButtonSTEM_target_Elas = new System.Windows.Forms.RadioButton();
@@ -155,10 +154,17 @@ namespace ReciPro
             groupBoxOpticalProperty = new System.Windows.Forms.GroupBox();
             groupBoxSTEMoption1 = new System.Windows.Forms.GroupBox();
             contextMenuStripSTEM = new System.Windows.Forms.ContextMenuStrip(components);
+            toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             typicalBF02MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             typicalABF1224MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             typicalLAADF2560MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             typicalHAADF80250MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            addTheCurrentSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            customizeUserSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            label5 = new System.Windows.Forms.Label();
+            label34 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             numericBoxSTEM_DetectorOuterAngle = new NumericBox();
             numericBoxSourceSize = new NumericBox();
             numericBoxSTEM_ConvergenceAngle = new NumericBox();
@@ -192,19 +198,25 @@ namespace ReciPro
             contextMenuStripTEMcondition = new System.Windows.Forms.ContextMenuStrip(components);
             setoZeroDefocusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             setoScherzerDefocusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             setAllAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            numericBoxCs = new NumericBox();
+            toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            addTheCurrentSettingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            customizeTheUserSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            kVCsfreeCcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            kVLab6TEMCs14MmCc18mmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            label35 = new System.Windows.Forms.Label();
             numericBoxCc = new NumericBox();
-            numericBoxAccVol = new NumericBox();
             numericBoxDeltaV = new NumericBox();
-            numericBoxDefocus = new NumericBox();
             numericBoxBetaAgnle = new NumericBox();
+            numericBoxCs = new NumericBox();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             label3 = new System.Windows.Forms.Label();
             textBoxScherzer = new System.Windows.Forms.TextBox();
             label4 = new System.Windows.Forms.Label();
-            label34 = new System.Windows.Forms.Label();
+            numericBoxDefocus = new NumericBox();
+            numericBoxAccVol = new NumericBox();
             flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
             groupBox6 = new System.Windows.Forms.GroupBox();
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
@@ -238,6 +250,7 @@ namespace ReciPro
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -1067,7 +1080,6 @@ namespace ReciPro
             // 
             // groupBoxSTEMoption2
             // 
-            groupBoxSTEMoption2.Controls.Add(label1);
             groupBoxSTEMoption2.Controls.Add(flowLayoutPanel7);
             groupBoxSTEMoption2.Controls.Add(numericBoxSTEM_AngleResolution);
             groupBoxSTEMoption2.Controls.Add(numericBoxSliceThicknessForInelasticSTEM);
@@ -1075,12 +1087,6 @@ namespace ReciPro
             resources.ApplyResources(groupBoxSTEMoption2, "groupBoxSTEMoption2");
             groupBoxSTEMoption2.Name = "groupBoxSTEMoption2";
             groupBoxSTEMoption2.TabStop = false;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // flowLayoutPanel7
             // 
@@ -1411,6 +1417,9 @@ namespace ReciPro
             // groupBoxSTEMoption1
             // 
             groupBoxSTEMoption1.ContextMenuStrip = contextMenuStripSTEM;
+            groupBoxSTEMoption1.Controls.Add(label5);
+            groupBoxSTEMoption1.Controls.Add(label34);
+            groupBoxSTEMoption1.Controls.Add(label1);
             groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_DetectorOuterAngle);
             groupBoxSTEMoption1.Controls.Add(numericBoxSourceSize);
             groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_ConvergenceAngle);
@@ -1421,9 +1430,14 @@ namespace ReciPro
             // 
             // contextMenuStripSTEM
             // 
-            contextMenuStripSTEM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { typicalBF02MradToolStripMenuItem, typicalABF1224MradToolStripMenuItem, typicalLAADF2560MradToolStripMenuItem, typicalHAADF80250MradToolStripMenuItem });
+            contextMenuStripSTEM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripSeparator4, typicalBF02MradToolStripMenuItem, typicalABF1224MradToolStripMenuItem, typicalLAADF2560MradToolStripMenuItem, typicalHAADF80250MradToolStripMenuItem, toolStripSeparator5, addTheCurrentSettingToolStripMenuItem, customizeUserSettingToolStripMenuItem });
             contextMenuStripSTEM.Name = "contextMenuStripSTEM";
             resources.ApplyResources(contextMenuStripSTEM, "contextMenuStripSTEM");
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(toolStripSeparator4, "toolStripSeparator4");
             // 
             // typicalBF02MradToolStripMenuItem
             // 
@@ -1448,6 +1462,42 @@ namespace ReciPro
             typicalHAADF80250MradToolStripMenuItem.Name = "typicalHAADF80250MradToolStripMenuItem";
             resources.ApplyResources(typicalHAADF80250MradToolStripMenuItem, "typicalHAADF80250MradToolStripMenuItem");
             typicalHAADF80250MradToolStripMenuItem.Click += typicalHAADF80250MradToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            resources.ApplyResources(toolStripSeparator5, "toolStripSeparator5");
+            // 
+            // addTheCurrentSettingToolStripMenuItem
+            // 
+            addTheCurrentSettingToolStripMenuItem.Name = "addTheCurrentSettingToolStripMenuItem";
+            resources.ApplyResources(addTheCurrentSettingToolStripMenuItem, "addTheCurrentSettingToolStripMenuItem");
+            // 
+            // customizeUserSettingToolStripMenuItem
+            // 
+            customizeUserSettingToolStripMenuItem.Name = "customizeUserSettingToolStripMenuItem";
+            resources.ApplyResources(customizeUserSettingToolStripMenuItem, "customizeUserSettingToolStripMenuItem");
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
+            // 
+            // label34
+            // 
+            resources.ApplyResources(label34, "label34");
+            label34.ForeColor = System.Drawing.SystemColors.ControlText;
+            label34.Name = "label34";
+            toolTip.SetToolTip(label34, resources.GetString("label34.ToolTip"));
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // numericBoxSTEM_DetectorOuterAngle
             // 
@@ -1810,21 +1860,21 @@ namespace ReciPro
             // groupBox4
             // 
             groupBox4.ContextMenuStrip = contextMenuStripTEMcondition;
-            groupBox4.Controls.Add(numericBoxCs);
+            groupBox4.Controls.Add(label35);
             groupBox4.Controls.Add(numericBoxCc);
-            groupBox4.Controls.Add(numericBoxAccVol);
             groupBox4.Controls.Add(numericBoxDeltaV);
-            groupBox4.Controls.Add(numericBoxDefocus);
             groupBox4.Controls.Add(numericBoxBetaAgnle);
+            groupBox4.Controls.Add(numericBoxCs);
             groupBox4.Controls.Add(flowLayoutPanel3);
-            groupBox4.Controls.Add(label34);
+            groupBox4.Controls.Add(numericBoxDefocus);
+            groupBox4.Controls.Add(numericBoxAccVol);
             resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Name = "groupBox4";
             groupBox4.TabStop = false;
             // 
             // contextMenuStripTEMcondition
             // 
-            contextMenuStripTEMcondition.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { setoZeroDefocusToolStripMenuItem, setoScherzerDefocusToolStripMenuItem, toolStripSeparator3, setAllAToolStripMenuItem });
+            contextMenuStripTEMcondition.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { setoZeroDefocusToolStripMenuItem, setoScherzerDefocusToolStripMenuItem, setAllAToolStripMenuItem, toolStripSeparator6, kVCsfreeCcToolStripMenuItem, kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem, kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem, kVLab6TEMCs14MmCc18mmToolStripMenuItem, toolStripSeparator7, addTheCurrentSettingToolStripMenuItem1, customizeTheUserSettingsToolStripMenuItem });
             contextMenuStripTEMcondition.Name = "contextMenuStripInherentProperty";
             resources.ApplyResources(contextMenuStripTEMcondition, "contextMenuStripTEMcondition");
             // 
@@ -1840,36 +1890,53 @@ namespace ReciPro
             resources.ApplyResources(setoScherzerDefocusToolStripMenuItem, "setoScherzerDefocusToolStripMenuItem");
             setoScherzerDefocusToolStripMenuItem.Click += setoScherzerDefocusToolStripMenuItem_Click;
             // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
-            // 
             // setAllAToolStripMenuItem
             // 
             setAllAToolStripMenuItem.Name = "setAllAToolStripMenuItem";
             resources.ApplyResources(setAllAToolStripMenuItem, "setAllAToolStripMenuItem");
             setAllAToolStripMenuItem.Click += zeroAllToolStripMenuItem_Click;
             // 
-            // numericBoxCs
+            // toolStripSeparator6
             // 
-            resources.ApplyResources(numericBoxCs, "numericBoxCs");
-            numericBoxCs.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCs.DecimalPlaces = 2;
-            numericBoxCs.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCs.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCs.Maximum = 20D;
-            numericBoxCs.Minimum = -20D;
-            numericBoxCs.Name = "numericBoxCs";
-            numericBoxCs.RadianValue = 0.0087266462599716477D;
-            numericBoxCs.RoundErrorAccuracy = -1;
-            numericBoxCs.ShowUpDown = true;
-            numericBoxCs.SmartIncrement = true;
-            numericBoxCs.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCs, resources.GetString("numericBoxCs.ToolTip"));
-            numericBoxCs.UpDown_Increment = 0.1D;
-            numericBoxCs.Value = 0.5D;
-            numericBoxCs.ValueChanged += NumericBoxCs_ValueChanged;
+            toolStripSeparator6.Name = "toolStripSeparator6";
+            resources.ApplyResources(toolStripSeparator6, "toolStripSeparator6");
+            // 
+            // addTheCurrentSettingToolStripMenuItem1
+            // 
+            addTheCurrentSettingToolStripMenuItem1.Name = "addTheCurrentSettingToolStripMenuItem1";
+            resources.ApplyResources(addTheCurrentSettingToolStripMenuItem1, "addTheCurrentSettingToolStripMenuItem1");
+            // 
+            // customizeTheUserSettingsToolStripMenuItem
+            // 
+            customizeTheUserSettingsToolStripMenuItem.Name = "customizeTheUserSettingsToolStripMenuItem";
+            resources.ApplyResources(customizeTheUserSettingsToolStripMenuItem, "customizeTheUserSettingsToolStripMenuItem");
+            // 
+            // kVCsfreeCcToolStripMenuItem
+            // 
+            kVCsfreeCcToolStripMenuItem.Name = "kVCsfreeCcToolStripMenuItem";
+            resources.ApplyResources(kVCsfreeCcToolStripMenuItem, "kVCsfreeCcToolStripMenuItem");
+            // 
+            // kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem
+            // 
+            kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Name = "kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem";
+            resources.ApplyResources(kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem, "kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem");
+            // 
+            // kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem
+            // 
+            kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Name = "kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem";
+            resources.ApplyResources(kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem, "kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem");
+            // 
+            // kVLab6TEMCs14MmCc18mmToolStripMenuItem
+            // 
+            kVLab6TEMCs14MmCc18mmToolStripMenuItem.Name = "kVLab6TEMCs14MmCc18mmToolStripMenuItem";
+            resources.ApplyResources(kVLab6TEMCs14MmCc18mmToolStripMenuItem, "kVLab6TEMCs14MmCc18mmToolStripMenuItem");
+            // 
+            // label35
+            // 
+            resources.ApplyResources(label35, "label35");
+            label35.ForeColor = System.Drawing.SystemColors.ControlText;
+            label35.Name = "label35";
+            toolTip.SetToolTip(label35, resources.GetString("label35.ToolTip"));
             // 
             // numericBoxCc
             // 
@@ -1892,24 +1959,6 @@ namespace ReciPro
             numericBoxCc.Value = 1.4D;
             numericBoxCc.ValueChanged += NumericBoxTEMproperty_ValueChanged;
             // 
-            // numericBoxAccVol
-            // 
-            resources.ApplyResources(numericBoxAccVol, "numericBoxAccVol");
-            numericBoxAccVol.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAccVol.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAccVol.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAccVol.Maximum = 1000D;
-            numericBoxAccVol.Minimum = 1D;
-            numericBoxAccVol.Name = "numericBoxAccVol";
-            numericBoxAccVol.RadianValue = 3.4906585039886591D;
-            numericBoxAccVol.RoundErrorAccuracy = -1;
-            numericBoxAccVol.ShowUpDown = true;
-            numericBoxAccVol.SmartIncrement = true;
-            numericBoxAccVol.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
-            numericBoxAccVol.Value = 200D;
-            numericBoxAccVol.ValueChanged += NumericBoxAccVol_ValueChanged;
-            // 
             // numericBoxDeltaV
             // 
             resources.ApplyResources(numericBoxDeltaV, "numericBoxDeltaV");
@@ -1920,7 +1969,7 @@ namespace ReciPro
             numericBoxDeltaV.Maximum = 10D;
             numericBoxDeltaV.Minimum = 0D;
             numericBoxDeltaV.Name = "numericBoxDeltaV";
-            numericBoxDeltaV.RadianValue = 0.0017453292519943296D;
+            numericBoxDeltaV.RadianValue = 0.013962634015954637D;
             numericBoxDeltaV.RestrictLimitValue = false;
             numericBoxDeltaV.RoundErrorAccuracy = -1;
             numericBoxDeltaV.ShowUpDown = true;
@@ -1928,27 +1977,8 @@ namespace ReciPro
             numericBoxDeltaV.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxDeltaV, resources.GetString("numericBoxDeltaV.ToolTip"));
             numericBoxDeltaV.UpDown_Increment = 0.1D;
-            numericBoxDeltaV.Value = 0.1D;
+            numericBoxDeltaV.Value = 0.8D;
             numericBoxDeltaV.ValueChanged += NumericBoxTEMproperty_ValueChanged;
-            // 
-            // numericBoxDefocus
-            // 
-            resources.ApplyResources(numericBoxDefocus, "numericBoxDefocus");
-            numericBoxDefocus.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDefocus.DecimalPlaces = 1;
-            numericBoxDefocus.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDefocus.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDefocus.Maximum = 1000D;
-            numericBoxDefocus.Minimum = -1000D;
-            numericBoxDefocus.Name = "numericBoxDefocus";
-            numericBoxDefocus.RadianValue = -0.71383966406568078D;
-            numericBoxDefocus.RoundErrorAccuracy = -1;
-            numericBoxDefocus.ShowUpDown = true;
-            numericBoxDefocus.SmartIncrement = true;
-            numericBoxDefocus.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
-            numericBoxDefocus.Value = -40.9D;
-            numericBoxDefocus.ValueChanged += NumericBoxDefocus_ValueChanged;
             // 
             // numericBoxBetaAgnle
             // 
@@ -1960,15 +1990,33 @@ namespace ReciPro
             numericBoxBetaAgnle.Maximum = 100D;
             numericBoxBetaAgnle.Minimum = 0D;
             numericBoxBetaAgnle.Name = "numericBoxBetaAgnle";
-            numericBoxBetaAgnle.RadianValue = 0.0017453292519943296D;
             numericBoxBetaAgnle.RoundErrorAccuracy = -1;
             numericBoxBetaAgnle.ShowUpDown = true;
             numericBoxBetaAgnle.SmartIncrement = true;
             numericBoxBetaAgnle.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxBetaAgnle, resources.GetString("numericBoxBetaAgnle.ToolTip"));
             numericBoxBetaAgnle.UpDown_Increment = 0.05D;
-            numericBoxBetaAgnle.Value = 0.1D;
             numericBoxBetaAgnle.ValueChanged += NumericBoxTEMproperty_ValueChanged;
+            // 
+            // numericBoxCs
+            // 
+            resources.ApplyResources(numericBoxCs, "numericBoxCs");
+            numericBoxCs.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCs.DecimalPlaces = 2;
+            numericBoxCs.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCs.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCs.Maximum = 20D;
+            numericBoxCs.Minimum = -20D;
+            numericBoxCs.Name = "numericBoxCs";
+            numericBoxCs.RadianValue = 0.017453292519943295D;
+            numericBoxCs.RoundErrorAccuracy = -1;
+            numericBoxCs.ShowUpDown = true;
+            numericBoxCs.SmartIncrement = true;
+            numericBoxCs.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxCs, resources.GetString("numericBoxCs.ToolTip"));
+            numericBoxCs.UpDown_Increment = 0.1D;
+            numericBoxCs.Value = 1D;
+            numericBoxCs.ValueChanged += NumericBoxCs_ValueChanged;
             // 
             // flowLayoutPanel3
             // 
@@ -2001,12 +2049,42 @@ namespace ReciPro
             label4.Name = "label4";
             toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
-            // label34
+            // numericBoxDefocus
             // 
-            resources.ApplyResources(label34, "label34");
-            label34.ForeColor = System.Drawing.Color.Black;
-            label34.Name = "label34";
-            toolTip.SetToolTip(label34, resources.GetString("label34.ToolTip"));
+            resources.ApplyResources(numericBoxDefocus, "numericBoxDefocus");
+            numericBoxDefocus.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDefocus.DecimalPlaces = 1;
+            numericBoxDefocus.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDefocus.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDefocus.Maximum = 1000D;
+            numericBoxDefocus.Minimum = -1000D;
+            numericBoxDefocus.Name = "numericBoxDefocus";
+            numericBoxDefocus.RadianValue = -1.0088003076527223D;
+            numericBoxDefocus.RoundErrorAccuracy = -1;
+            numericBoxDefocus.ShowUpDown = true;
+            numericBoxDefocus.SmartIncrement = true;
+            numericBoxDefocus.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
+            numericBoxDefocus.Value = -57.8D;
+            numericBoxDefocus.ValueChanged += NumericBoxDefocus_ValueChanged;
+            // 
+            // numericBoxAccVol
+            // 
+            resources.ApplyResources(numericBoxAccVol, "numericBoxAccVol");
+            numericBoxAccVol.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAccVol.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAccVol.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAccVol.Maximum = 1000D;
+            numericBoxAccVol.Minimum = 1D;
+            numericBoxAccVol.Name = "numericBoxAccVol";
+            numericBoxAccVol.RadianValue = 3.4906585039886591D;
+            numericBoxAccVol.RoundErrorAccuracy = -1;
+            numericBoxAccVol.ShowUpDown = true;
+            numericBoxAccVol.SmartIncrement = true;
+            numericBoxAccVol.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
+            numericBoxAccVol.Value = 200D;
+            numericBoxAccVol.ValueChanged += NumericBoxAccVol_ValueChanged;
             // 
             // flowLayoutPanel14
             // 
@@ -2228,6 +2306,11 @@ namespace ReciPro
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
             // 
+            // toolStripSeparator7
+            // 
+            toolStripSeparator7.Name = "toolStripSeparator7";
+            resources.ApplyResources(toolStripSeparator7, "toolStripSeparator7");
+            // 
             // FormImageSimulator
             // 
             resources.ApplyResources(this, "$this");
@@ -2312,6 +2395,7 @@ namespace ReciPro
             groupBoxOpticalProperty.ResumeLayout(false);
             groupBoxOpticalProperty.PerformLayout();
             groupBoxSTEMoption1.ResumeLayout(false);
+            groupBoxSTEMoption1.PerformLayout();
             contextMenuStripSTEM.ResumeLayout(false);
             groupBoxHREMoption1.ResumeLayout(false);
             groupBoxHREMoption1.PerformLayout();
@@ -2497,7 +2581,6 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxRealTimeSimulation;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label2;
         private NumericBox numericBoxIntensityMax;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
@@ -2542,10 +2625,24 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripMenuItem typicalLAADF2560MradToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem typicalHAADF80250MradToolStripMenuItem;
         private NumericBox numericBoxSourceSize;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem setAllAToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem addTheCurrentSettingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customizeUserSettingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem addTheCurrentSettingToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem customizeTheUserSettingsToolStripMenuItem;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.ToolStripMenuItem kVCsfreeCcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kVLab6TEMCs14MmCc18mmToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
     }
 }
