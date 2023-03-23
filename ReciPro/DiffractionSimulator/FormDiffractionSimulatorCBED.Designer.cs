@@ -98,11 +98,13 @@
             checkBoxDrawGuideCircles.Checked = true;
             checkBoxDrawGuideCircles.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxDrawGuideCircles.Name = "checkBoxDrawGuideCircles";
+            toolTip.SetToolTip(checkBoxDrawGuideCircles, resources.GetString("checkBoxDrawGuideCircles.ToolTip"));
             checkBoxDrawGuideCircles.UseVisualStyleBackColor = true;
             checkBoxDrawGuideCircles.CheckedChanged += CheckBoxDrawGuideCircles_CheckedChanged;
             // 
             // groupBox1
             // 
+            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Controls.Add(flowLayoutPanel1);
             groupBox1.Controls.Add(radioButtonLACBED);
             groupBox1.Controls.Add(numericBoxAlphaMax);
@@ -118,9 +120,9 @@
             groupBox1.Controls.Add(buttonExecute);
             groupBox1.Controls.Add(numericBoxDiskResolution);
             groupBox1.Controls.Add(label13);
-            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
+            toolTip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // flowLayoutPanel1
             // 
@@ -128,6 +130,7 @@
             flowLayoutPanel1.Controls.Add(label2);
             flowLayoutPanel1.Controls.Add(labelDivisionNumber);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
+            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // label2
@@ -136,6 +139,7 @@
             label2.BackColor = System.Drawing.Color.Transparent;
             label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             label2.Click += labelDivisionNumber_Click;
             // 
             // labelDivisionNumber
@@ -144,19 +148,21 @@
             labelDivisionNumber.BackColor = System.Drawing.Color.Transparent;
             labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             labelDivisionNumber.Name = "labelDivisionNumber";
+            toolTip.SetToolTip(labelDivisionNumber, resources.GetString("labelDivisionNumber.ToolTip"));
             labelDivisionNumber.Click += labelDivisionNumber_Click;
             // 
             // radioButtonLACBED
             // 
             resources.ApplyResources(radioButtonLACBED, "radioButtonLACBED");
             radioButtonLACBED.Name = "radioButtonLACBED";
+            toolTip.SetToolTip(radioButtonLACBED, resources.GetString("radioButtonLACBED.ToolTip"));
             radioButtonLACBED.UseVisualStyleBackColor = true;
             // 
             // numericBoxAlphaMax
             // 
+            resources.ApplyResources(numericBoxAlphaMax, "numericBoxAlphaMax");
             numericBoxAlphaMax.BackColor = System.Drawing.Color.Transparent;
             numericBoxAlphaMax.DecimalPlaces = 1;
-            resources.ApplyResources(numericBoxAlphaMax, "numericBoxAlphaMax");
             numericBoxAlphaMax.Maximum = 100D;
             numericBoxAlphaMax.Minimum = 0D;
             numericBoxAlphaMax.Name = "numericBoxAlphaMax";
@@ -164,7 +170,7 @@
             numericBoxAlphaMax.RoundErrorAccuracy = -1;
             numericBoxAlphaMax.ShowUpDown = true;
             numericBoxAlphaMax.SmartIncrement = true;
-            numericBoxAlphaMax.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            toolTip.SetToolTip(numericBoxAlphaMax, resources.GetString("numericBoxAlphaMax.ToolTip"));
             numericBoxAlphaMax.Value = 6D;
             numericBoxAlphaMax.ValueChanged += numericBoxAlphaMax_ValueChanged;
             // 
@@ -174,13 +180,14 @@
             radioButtonCBED.Checked = true;
             radioButtonCBED.Name = "radioButtonCBED";
             radioButtonCBED.TabStop = true;
+            toolTip.SetToolTip(radioButtonCBED, resources.GetString("radioButtonCBED.ToolTip"));
             radioButtonCBED.UseVisualStyleBackColor = true;
             radioButtonCBED.CheckedChanged += radioButtonCBED_CheckedChanged;
             // 
             // comboBoxSolver
             // 
-            comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxSolver, "comboBoxSolver");
+            comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxSolver.FormattingEnabled = true;
             comboBoxSolver.Items.AddRange(new object[] { resources.GetString("comboBoxSolver.Items"), resources.GetString("comboBoxSolver.Items1"), resources.GetString("comboBoxSolver.Items2"), resources.GetString("comboBoxSolver.Items3"), resources.GetString("comboBoxSolver.Items4") });
             comboBoxSolver.Name = "comboBoxSolver";
@@ -201,7 +208,6 @@
             numericBoxThread.RoundErrorAccuracy = -1;
             numericBoxThread.ShowUpDown = true;
             numericBoxThread.SmartIncrement = true;
-            numericBoxThread.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxThread.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip"));
             numericBoxThread.Value = 4D;
@@ -220,7 +226,6 @@
             numericBoxThicknessStep.RoundErrorAccuracy = -1;
             numericBoxThicknessStep.ShowUpDown = true;
             numericBoxThicknessStep.SmartIncrement = true;
-            numericBoxThicknessStep.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxThicknessStep.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.Value = 20D;
@@ -239,7 +244,6 @@
             numericBoxMaxNumOfG.RoundErrorAccuracy = -1;
             numericBoxMaxNumOfG.ShowUpDown = true;
             numericBoxMaxNumOfG.SmartIncrement = true;
-            numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxMaxNumOfG.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
             numericBoxMaxNumOfG.Value = 64D;
@@ -258,7 +262,6 @@
             numericBoxWholeThicknessStart.RoundErrorAccuracy = -1;
             numericBoxWholeThicknessStart.ShowUpDown = true;
             numericBoxWholeThicknessStart.SmartIncrement = true;
-            numericBoxWholeThicknessStart.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxWholeThicknessStart.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxWholeThicknessStart, resources.GetString("numericBoxWholeThicknessStart.ToolTip"));
             numericBoxWholeThicknessStart.Value = 20D;
@@ -277,7 +280,6 @@
             numericBoxThicknessEnd.RoundErrorAccuracy = -1;
             numericBoxThicknessEnd.ShowUpDown = true;
             numericBoxThicknessEnd.SmartIncrement = true;
-            numericBoxThicknessEnd.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxThicknessEnd.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
             numericBoxThicknessEnd.Value = 200D;
@@ -285,9 +287,9 @@
             // 
             // buttonStop
             // 
+            resources.ApplyResources(buttonStop, "buttonStop");
             buttonStop.BackColor = System.Drawing.Color.IndianRed;
             buttonStop.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(buttonStop, "buttonStop");
             buttonStop.Name = "buttonStop";
             toolTip.SetToolTip(buttonStop, resources.GetString("buttonStop.ToolTip"));
             buttonStop.UseVisualStyleBackColor = false;
@@ -295,9 +297,9 @@
             // 
             // numericBoxDiskResolution
             // 
+            resources.ApplyResources(numericBoxDiskResolution, "numericBoxDiskResolution");
             numericBoxDiskResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDiskResolution.DecimalPlaces = 3;
-            resources.ApplyResources(numericBoxDiskResolution, "numericBoxDiskResolution");
             numericBoxDiskResolution.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxDiskResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDiskResolution.Maximum = 1D;
@@ -308,7 +310,6 @@
             numericBoxDiskResolution.ShowUpDown = true;
             numericBoxDiskResolution.SkipEventDuringInput = false;
             numericBoxDiskResolution.SmartIncrement = true;
-            numericBoxDiskResolution.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxDiskResolution.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxDiskResolution, resources.GetString("numericBoxDiskResolution.ToolTip"));
             numericBoxDiskResolution.Value = 0.1D;
@@ -318,9 +319,11 @@
             // 
             resources.ApplyResources(label13, "label13");
             label13.Name = "label13";
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
             // 
             // groupBoxOutput
             // 
+            resources.ApplyResources(groupBoxOutput, "groupBoxOutput");
             groupBoxOutput.Controls.Add(radioButtonIndividualDisk);
             groupBoxOutput.Controls.Add(radioButtonAllDisks);
             groupBoxOutput.Controls.Add(label3);
@@ -339,9 +342,9 @@
             groupBoxOutput.Controls.Add(label7);
             groupBoxOutput.Controls.Add(label1);
             groupBoxOutput.Controls.Add(label5);
-            resources.ApplyResources(groupBoxOutput, "groupBoxOutput");
             groupBoxOutput.Name = "groupBoxOutput";
             groupBoxOutput.TabStop = false;
+            toolTip.SetToolTip(groupBoxOutput, resources.GetString("groupBoxOutput.ToolTip"));
             // 
             // radioButtonIndividualDisk
             // 
@@ -365,16 +368,18 @@
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // label11
             // 
             resources.ApplyResources(label11, "label11");
             label11.Name = "label11";
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
             // 
             // comboBoxGradient
             // 
-            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxGradient, "comboBoxGradient");
+            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxGradient.FormattingEnabled = true;
             comboBoxGradient.Items.AddRange(new object[] { resources.GetString("comboBoxGradient.Items"), resources.GetString("comboBoxGradient.Items1") });
             comboBoxGradient.Name = "comboBoxGradient";
@@ -383,8 +388,8 @@
             // 
             // comboBoxScale
             // 
-            comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxScale, "comboBoxScale");
+            comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale.FormattingEnabled = true;
             comboBoxScale.Items.AddRange(new object[] { resources.GetString("comboBoxScale.Items"), resources.GetString("comboBoxScale.Items1"), resources.GetString("comboBoxScale.Items2"), resources.GetString("comboBoxScale.Items3") });
             comboBoxScale.Name = "comboBoxScale";
@@ -441,55 +446,64 @@
             resources.ApplyResources(textBoxThickness, "textBoxThickness");
             textBoxThickness.Name = "textBoxThickness";
             textBoxThickness.ReadOnly = true;
+            toolTip.SetToolTip(textBoxThickness, resources.GetString("textBoxThickness.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // labelGamma
             // 
             resources.ApplyResources(labelGamma, "labelGamma");
             labelGamma.Name = "labelGamma";
+            toolTip.SetToolTip(labelGamma, resources.GetString("labelGamma.ToolTip"));
             // 
             // label8
             // 
             resources.ApplyResources(label8, "label8");
             label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
             // 
             // label7
             // 
             resources.ApplyResources(label7, "label7");
             label7.Name = "label7";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label5
             // 
             resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
             // 
             // statusStrip2
             // 
+            resources.ApplyResources(statusStrip2, "statusStrip2");
             statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel2, toolStripStatusLabel1 });
             statusStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            resources.ApplyResources(statusStrip2, "statusStrip2");
             statusStrip2.Name = "statusStrip2";
             statusStrip2.SizingGrip = false;
+            toolTip.SetToolTip(statusStrip2, resources.GetString("statusStrip2.ToolTip"));
             // 
             // toolStripProgressBar
             // 
+            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             toolStripProgressBar.Name = "toolStripProgressBar";
             toolStripProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // toolStripStatusLabel2
@@ -499,8 +513,8 @@
             // 
             // toolStripStatusLabel1
             // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             // 
             // FormDiffractionSimulatorCBED
             // 
@@ -515,6 +529,7 @@
             MinimizeBox = false;
             Name = "FormDiffractionSimulatorCBED";
             ShowIcon = false;
+            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             FormClosing += FormDiffractionSimulatorMultislice_FormClosing;
             VisibleChanged += FormDiffractionSimulatorCBED_VisibleChanged;
             groupBox1.ResumeLayout(false);

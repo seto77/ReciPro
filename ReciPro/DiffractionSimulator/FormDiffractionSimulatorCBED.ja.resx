@@ -130,9 +130,6 @@
   <data name="numericBoxAlphaMax.Location" type="System.Drawing.Point, System.Drawing">
     <value>189, 84</value>
   </data>
-  <data name="numericBoxAlphaMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
   <data name="numericBoxAlphaMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 27</value>
   </data>
@@ -157,9 +154,6 @@
   <data name="numericBoxThread.Location" type="System.Drawing.Point, System.Drawing">
     <value>283, 28</value>
   </data>
-  <data name="numericBoxThread.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
   <data name="numericBoxThread.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 27</value>
   </data>
@@ -179,13 +173,13 @@
     <value>272, 146</value>
   </data>
   <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 25</value>
+    <value>107, 27</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
-    <value>ブロッホ波の数</value>
+    <value>回折波の数</value>
   </data>
   <data name="numericBoxMaxNumOfG.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -208,9 +202,6 @@
   <data name="numericBoxWholeThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 147</value>
   </data>
-  <data name="numericBoxWholeThicknessStart.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
   <data name="numericBoxWholeThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 27</value>
   </data>
@@ -228,9 +219,6 @@
   </data>
   <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 147</value>
-  </data>
-  <data name="numericBoxThicknessEnd.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
   </data>
   <data name="numericBoxThicknessEnd.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 27</value>
@@ -257,9 +245,6 @@
   <data name="numericBoxDiskResolution.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 116</value>
   </data>
-  <data name="numericBoxDiskResolution.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxDiskResolution.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -279,26 +264,29 @@
   <data name="label13.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+  <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
   </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>出力パラメータ</value>
+  <data name="radioButtonIndividualDisk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>228, 54</value>
   </data>
-  <data name="groupBoxOutput.ToolTip" xml:space="preserve">
-    <value />
+  <data name="radioButtonIndividualDisk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 24</value>
+  </data>
+  <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
+    <value>ディスクごと</value>
   </data>
   <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="radioButtonAllDisks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 53</value>
+    <value>93, 54</value>
   </data>
   <data name="radioButtonAllDisks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 24</value>
+    <value>118, 24</value>
   </data>
   <data name="radioButtonAllDisks.Text" xml:space="preserve">
-    <value>全ディスク</value>
+    <value>全ディスク共通</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -439,6 +427,15 @@
     <value>輝度</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>出力パラメータ</value>
+  </data>
+  <data name="groupBoxOutput.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="statusStrip2.ToolTip" xml:space="preserve">

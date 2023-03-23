@@ -25,7 +25,7 @@ public partial class FormDiffractionSimulator : Form
 
     public FormMain formMain;
 
-   
+
 
     public double EwaldRadius => 1 / WaveLength;
     public double WaveLength => waveLengthControl.WaveLength;
@@ -183,8 +183,8 @@ public partial class FormDiffractionSimulator : Form
     public void FormElectronDiffraction_Load(object sender, EventArgs e)
     {
         comboBoxScaleColorScale.SelectedIndex = 0;
-        comboBoxCenter.SelectedIndex= 0;
-        
+        comboBoxCenter.SelectedIndex = 0;
+
         Draw();
 
         WaveLengthControl_WaveSourceChanged(sender, e);
@@ -640,7 +640,7 @@ public partial class FormDiffractionSimulator : Form
                                         sphereRadius : //ベーテ法の場合はそのまま
                                         Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only あるいは Kinematicの場合は、エワルド球に切られた断面上の、逆格子点の半径
                                     var r = CameraLength2 * WaveLength * sectionRadius;
-                                    graphics.FillCircle( Color.FromArgb(g.Argb), pt, r, (int)(alphaCoeff * 255));
+                                    graphics.FillCircle(Color.FromArgb(g.Argb), pt, r, (int)(alphaCoeff * 255));
                                     if (drawLabel && trackBarStrSize.Value != 1 && r > spotRadiusOnDetector * 0.4f)
                                         DrawDiffractionSpotsLabel(graphics, g, pt, r, (double)g.Tag);
                                 }
@@ -1895,7 +1895,7 @@ public partial class FormDiffractionSimulator : Form
     {
         get
         {
-            if (comboBoxCenter.SelectedIndex==0)
+            if (comboBoxCenter.SelectedIndex == 0)
                 return new PointD(0, 0);
             else if (comboBoxCenter.SelectedIndex == 1)
                 return -convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
