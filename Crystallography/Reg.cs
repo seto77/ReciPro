@@ -1,12 +1,6 @@
 ﻿using MemoryPack.Compression;
 using MemoryPack;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Crystallography;
 
@@ -19,25 +13,22 @@ public static class Reg
             return;
         var prop = owner.GetType().GetProperty(propName);
         var regName = $"{prop.ReflectedType.FullName}.{propName}";
-        //try
-        //{
         if (mode == Mode.Read)
-        {
+        {//読込の時
             var buffer = (byte[])key.GetValue(regName);
             if (buffer == null)
                 return;
             using var decompressor = new BrotliDecompressor();
-            prop.SetValue(owner, MemoryPackSerializer.Deserialize<T>(decompressor.Decompress(buffer)));
+            var val = MemoryPackSerializer.Deserialize<T>(decompressor.Decompress(buffer));
+            prop.SetValue(owner, val);
         }
 
         else
-        {
+        {//書込の時
             using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.SmallestSize);
             MemoryPackSerializer.Serialize(compressor, (T)prop.GetValue(owner));
             key.SetValue(regName, compressor.ToArray());
         }
-        //}
-        //catch { MessageBox.Show("Registry I/O error!"); }
     }
 
 

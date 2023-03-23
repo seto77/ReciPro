@@ -194,7 +194,7 @@ public partial class FormMain : Form
             catch { }
         }
         InitializeComponent();
-        ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
+        ip = new Progress<(long, long, long, string)>(reportProgress);//IReport
 
         this.SetStyle(ControlStyles.ResizeRedraw, true);
         // ダブルバッファリング
@@ -211,9 +211,6 @@ public partial class FormMain : Form
     /// <param name="e"></param>
     private void FormMain_Load(object sender, EventArgs e)
     {
-        //MessageBox.Show(AutoScaleMode == AutoScaleMode.Dpi ? "DPI" : "False");
-        //MessageBox.Show(AutoScaleFactor.Width.ToString() + CurrentAutoScaleDimensions.Width.ToString());
-
         if (DesignMode) return;
 
         englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
@@ -295,8 +292,6 @@ public partial class FormMain : Form
             labelCurrentIndex.BackColor = groupBoxCurrentDirection.BackColor;
             groupBoxCurrentDirection.AutoSize = true;
         }
-
-
 
         commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.", 0.15);
         FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };
@@ -443,38 +438,38 @@ public partial class FormMain : Form
         if (FormStereonet == null)
             return;
 
-        Reg.RW<bool>(key, mode, this.commonDialog, "AutomaticallyClose");
+        Reg.RW<bool>(key, mode, commonDialog, "AutomaticallyClose");
 
-        Reg.RW<Rectangle>(key, mode, this.FormStereonet, "Bounds");
+        Reg.RW<Rectangle>(key, mode, FormStereonet, "Bounds");
 
-        Reg.RW<Rectangle>(key, mode, this.FormTEMID, "Bounds");
+        Reg.RW<Rectangle>(key, mode, FormTEMID, "Bounds");
 
         #region DiffractionSimulator
 
         FormDiffractionSimulator.CancelSetVector = true;
 
-        Reg.RW<Rectangle>(key, mode, this.FormDiffractionSimulator, "Bounds");
-        Reg.RW<double>(key, mode, this.FormDiffractionSimulator, "Resolution");
+        Reg.RW<Rectangle>(key, mode, FormDiffractionSimulator, "Bounds");
+        Reg.RW<double>(key, mode, FormDiffractionSimulator, "Resolution");
 
-        Reg.RW<WaveSource>(key, mode, this.FormDiffractionSimulator.waveLengthControl, "WaveSource");
-        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.waveLengthControl, "Energy");
-        Reg.RW<int>(key, mode, this.FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceElementNumber");
-        Reg.RW<XrayLine>(key, mode, this.FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceLine");
+        Reg.RW<WaveSource>(key, mode, FormDiffractionSimulator.waveLengthControl, "WaveSource");
+        Reg.RW<double>(key, mode, FormDiffractionSimulator.waveLengthControl, "Energy");
+        Reg.RW<int>(key, mode, FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceElementNumber");
+        Reg.RW<XrayLine>(key, mode, FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceLine");
 
         FormDiffractionSimulator.CancelSetVector = false;
 
-        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootX");
-        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootY");
-        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "CameraLength2");
-        Reg.RW<int>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorWidth");
-        Reg.RW<int>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorHeight");
-        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Tau");
-        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Phi");
+        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootX");
+        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootY");
+        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "CameraLength2");
+        Reg.RW<int>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorWidth");
+        Reg.RW<int>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorHeight");
+        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Tau");
+        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Phi");
         #endregion
 
         #region ImageSimulator
-        Reg.RW<Rectangle>(key, mode, this.FormImageSimulator, "Bounds");
-        Reg.RW<ImageSimulatorSetting>(key, mode, this.FormImageSimulator, "Setting");
+        Reg.RW<Rectangle>(key, mode, FormImageSimulator, "Bounds");
+        Reg.RW<ImageSimulatorSetting>(key, mode, FormImageSimulator, "Setting");
         Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.formPresets, "Settings");
         #endregion
     }
