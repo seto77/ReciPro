@@ -1385,7 +1385,7 @@ public partial class FormImageSimulator : Form
     {
         if (SkipEvent) return;
 
-        numericBoxGaussianBlurRadius.Visible = checkBoxGaussianBlur.Checked;
+        numericBoxGaussianBlurRadius.Enabled = checkBoxGaussianBlur.Checked;
 
         foreach (var box in pictureBoxes)
             if (box.PseudoBitmap.Tag != null && !(box.PseudoBitmap.Tag as ImageInfo).LockIntensity)
@@ -1491,6 +1491,11 @@ public partial class FormImageSimulator : Form
     }
 
     private void panel2_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
+
+    private void label34_Click(object sender, EventArgs e)
     {
 
     }

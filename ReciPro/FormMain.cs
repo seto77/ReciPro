@@ -180,20 +180,11 @@ public partial class FormMain : Form
 
         sw.Restart();
 
-        using (var regKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro"))
-        {
-            try
-            {
-                if ((ModifierKeys & Keys.Control) == Keys.Control)
-                    regKey.SetValue("DisableOpenGL", true);
+        //カルチャーを決めるため、レジストリ読込
+        Registry(Reg.Mode.Read);
 
-                var culture = (string)regKey.GetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.ToLower().StartsWith("ja") ? "ja" : "en");
-
-            }
-            catch { }
-        }
         InitializeComponent();
+
         ip = new Progress<(long, long, long, string)>(reportProgress);//IReport
 
         this.SetStyle(ControlStyles.ResizeRedraw, true);
@@ -225,22 +216,23 @@ public partial class FormMain : Form
             Author = Version.Author,
             History = Version.History,
             Hint = Version.Hint,
-            
-        };
-        
 
-        powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(sender, e);
+        };
 
         commonDialog.Show();
         if (commonDialog != null)
             commonDialog.Location = new Point(this.Location.X + this.Width / 2 - commonDialog.Width / 2, this.Location.Y + this.Height / 2 - commonDialog.Height / 2);
 
-        try { Registry( Reg.Mode.Read); }
-        catch { MessageBox.Show("failed reading registries."); }
-
         commonDialog.Progress = ("Now Loading...Initializing OpenGL.", 0.1);
 
-        //ここでglControlコントロールを追加. Mac環境の対応のため。
+        //OpenGLがDisableかどうかを決めるためレジストリ読込
+        Registry(Reg.Mode.Read);
+        if ((ModifierKeys & Keys.Control) == Keys.Control)//Controlキーが押されていた場合は強制的にOpenGLをDisableに。
+        {
+            DisableOpenGL = true;
+            Registry(Reg.Mode.Write);
+        }
+        #region ここでglControlコントロールを追加. Mac環境の対応のため。
         if (!disableOpneGLToolStripMenuItem.Checked)
         {
             try
@@ -268,8 +260,6 @@ public partial class FormMain : Form
                 MessageBox.Show("Error during initializing GLcontrol");
                 MessageBox.Show(ex.Message);
                 disableOpneGLToolStripMenuItem.Checked = true;
-                var regKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
-                regKey.SetValue("DisableOpenGL", true);
             }
         }
 
@@ -292,6 +282,7 @@ public partial class FormMain : Form
             labelCurrentIndex.BackColor = groupBoxCurrentDirection.BackColor;
             groupBoxCurrentDirection.AutoSize = true;
         }
+        #endregion
 
         commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.", 0.15);
         FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };
@@ -377,10 +368,9 @@ public partial class FormMain : Form
                 Directory.Delete(dir);
 
         commonDialog.Progress = ("Now Loading...Reading registries again.", 0.98);
+
         //ReadInitialRegistry();
         Registry(Reg.Mode.Read);
-
-
 
         Text = "ReciPro  " + Version.VersionAndDate;
         if (glControlAxes == null)
@@ -399,6 +389,7 @@ public partial class FormMain : Form
             if (glControlAxes != null)
                 glControlAxes.Visible = false;
         }
+        powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(sender, e);
 
     }
 
@@ -416,7 +407,7 @@ public partial class FormMain : Form
         e.Cancel = false;
         //SaveInitialRegistry();
         Registry(Reg.Mode.Write);
-        
+
         ChangeClipboardChain(this.Handle, NextHandle);
 
         var cry = new List<Crystal>();
@@ -432,13 +423,19 @@ public partial class FormMain : Form
         var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
         if (key == null) return;
 
+        Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
+
         Reg.RW<Rectangle>(key, mode, this, "Bounds");
+
+        if (commonDialog == null)
+            return;
+
         Reg.RW<bool>(key, mode, this, "DisableOpenGL");
+
+        Reg.RW<bool>(key, mode, commonDialog, "AutomaticallyClose");
 
         if (FormStereonet == null)
             return;
-
-        Reg.RW<bool>(key, mode, commonDialog, "AutomaticallyClose");
 
         Reg.RW<Rectangle>(key, mode, FormStereonet, "Bounds");
 
@@ -472,6 +469,8 @@ public partial class FormMain : Form
         Reg.RW<ImageSimulatorSetting>(key, mode, FormImageSimulator, "Setting");
         Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.formPresets, "Settings");
         #endregion
+
+
     }
     #endregion レジストリ操作
 
