@@ -25,6 +25,8 @@ public partial class FormDiffractionSimulator : Form
 
     public FormMain formMain;
 
+   
+
     public double EwaldRadius => 1 / WaveLength;
     public double WaveLength => waveLengthControl.WaveLength;
     public double Energy => waveLengthControl.Energy;
@@ -152,13 +154,6 @@ public partial class FormDiffractionSimulator : Form
         timerBlinkKikuchiLine.Tag = true;
         timerBlinkDebyeRing.Tag = true;
         timerBlinkScale.Tag = true;
-    }
-
-    //ロードされたとき
-    public void FormElectronDiffraction_Load(object sender, EventArgs e)
-    {
-        comboBoxScaleColorScale.SelectedIndex = 0;
-        comboBoxCenter.SelectedIndex= 0;
 
         if (FormDiffractionSimulatorGeometry == null)
         {
@@ -174,6 +169,7 @@ public partial class FormDiffractionSimulator : Form
 
             FormDiffractionSimulatorDynamicCompression = new FormDiffractionSimulatorDynamicCompression { FormDiffractionSimulator = this };
         }
+
         if (FormDiffractionSimulatorCBED == null)
             FormDiffractionSimulatorCBED = new FormDiffractionSimulatorCBED
             {
@@ -181,6 +177,14 @@ public partial class FormDiffractionSimulator : Form
                 Owner = this
             };
 
+    }
+
+    //ロードされたとき
+    public void FormElectronDiffraction_Load(object sender, EventArgs e)
+    {
+        comboBoxScaleColorScale.SelectedIndex = 0;
+        comboBoxCenter.SelectedIndex= 0;
+        
         Draw();
 
         WaveLengthControl_WaveSourceChanged(sender, e);

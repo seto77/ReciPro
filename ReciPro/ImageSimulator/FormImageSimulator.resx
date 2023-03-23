@@ -227,16 +227,16 @@
     <value>True</value>
   </data>
   <data name="checkBoxShowUnitcell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="checkBoxShowUnitcell.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowUnitcell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 123</value>
+    <value>405, 4</value>
   </data>
   <data name="checkBoxShowUnitcell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 21</value>
+    <value>100, 19</value>
   </data>
   <data name="checkBoxShowUnitcell.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -266,7 +266,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBoxScaleOfIntensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 72</value>
+    <value>160, 68</value>
   </data>
   <data name="pictureBoxScaleOfIntensity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -301,8 +301,14 @@
   <data name="numericBoxScaleLength.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxScaleLength.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxScaleLength.FooterText" xml:space="preserve">
     <value>nm</value>
+  </data>
+  <data name="numericBoxScaleLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
     <value>Length</value>
@@ -314,22 +320,22 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxScaleLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxScaleLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 23</value>
   </data>
   <data name="numericBoxScaleLength.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxScaleLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 27</value>
+    <value>119, 25</value>
   </data>
   <data name="numericBoxScaleLength.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
   </data>
   <data name="numericBoxScaleLength.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
     <value>Length of scale bar in nm</value>
@@ -359,7 +365,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="colorControlScale.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="colorControlScale.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -368,7 +374,7 @@
     <value />
   </data>
   <data name="colorControlScale.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="colorControlScale.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -383,7 +389,7 @@
     <value>3, 3, 3, 0</value>
   </data>
   <data name="colorControlScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
+    <value>56, 20</value>
   </data>
   <data name="colorControlScale.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -407,10 +413,10 @@
     <value>1</value>
   </data>
   <data name="flowLayoutPanelScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 125</value>
+    <value>414, 101</value>
   </data>
   <data name="flowLayoutPanelScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 27</value>
+    <value>181, 25</value>
   </data>
   <data name="flowLayoutPanelScale.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -439,6 +445,12 @@
   <data name="numericBoxLabelFontSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxLabelFontSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxLabelFontSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
     <value>Size</value>
   </data>
@@ -449,22 +461,22 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxLabelFontSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxLabelFontSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 23</value>
   </data>
   <data name="numericBoxLabelFontSize.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLabelFontSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 27</value>
+    <value>67, 25</value>
   </data>
   <data name="numericBoxLabelFontSize.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
   </data>
   <data name="numericBoxLabelFontSize.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxLabelFontSize.ToolTip" xml:space="preserve">
     <value>Set font size of label in point</value>
@@ -494,7 +506,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="colorControlLabel.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="colorControlLabel.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -503,7 +515,7 @@
     <value />
   </data>
   <data name="colorControlLabel.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="colorControlLabel.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -518,7 +530,7 @@
     <value>3, 3, 3, 0</value>
   </data>
   <data name="colorControlLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
+    <value>56, 20</value>
   </data>
   <data name="colorControlLabel.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -542,10 +554,10 @@
     <value>1</value>
   </data>
   <data name="flowLayoutPanelLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 125</value>
+    <value>414, 53</value>
   </data>
   <data name="flowLayoutPanelLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 27</value>
+    <value>129, 25</value>
   </data>
   <data name="flowLayoutPanelLabel.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -566,16 +578,16 @@
     <value>True</value>
   </data>
   <data name="checkBoxShowScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="checkBoxShowScale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 105</value>
+    <value>406, 81</value>
   </data>
   <data name="checkBoxShowScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 21</value>
+    <value>84, 19</value>
   </data>
   <data name="checkBoxShowScale.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -620,14 +632,13 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="checkBoxGaussianBlur.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 38</value>
+    <value>156, 21</value>
   </data>
   <data name="checkBoxGaussianBlur.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
-    <value>Gaussian Blur
- (FWHM)</value>
+    <value>Gaussian Blur (FWHM)</value>
   </data>
   <data name="&gt;&gt;checkBoxGaussianBlur.Name" xml:space="preserve">
     <value>checkBoxGaussianBlur</value>
@@ -651,7 +662,7 @@
     <value>pm</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 0</value>
+    <value>160, 0</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -690,13 +701,13 @@
     <value>1</value>
   </data>
   <data name="flowLayoutPanelGaussianBlur2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 71</value>
+    <value>11, 101</value>
   </data>
   <data name="flowLayoutPanelGaussianBlur2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelGaussianBlur2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 42</value>
+    <value>232, 27</value>
   </data>
   <data name="flowLayoutPanelGaussianBlur2.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -717,16 +728,16 @@
     <value>True</value>
   </data>
   <data name="checkBoxShowLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="checkBoxShowLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 107</value>
+    <value>406, 33</value>
   </data>
   <data name="checkBoxShowLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 21</value>
+    <value>83, 19</value>
   </data>
   <data name="checkBoxShowLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -756,7 +767,7 @@
     <value>NoControl</value>
   </data>
   <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 74</value>
+    <value>4, 70</value>
   </data>
   <data name="label25.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 0, 0</value>
@@ -792,25 +803,25 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="trackBarAdvancedMax.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="trackBarAdvancedMax.FooterText" xml:space="preserve">
     <value />
   </data>
   <data name="trackBarAdvancedMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="trackBarAdvancedMax.HeaderText" xml:space="preserve">
     <value>Max</value>
   </data>
   <data name="trackBarAdvancedMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 35</value>
+    <value>4, 32</value>
   </data>
   <data name="trackBarAdvancedMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>593, 27</value>
+    <value>384, 25</value>
   </data>
   <data name="trackBarAdvancedMax.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -834,7 +845,7 @@
     <value>Cold-Warm</value>
   </data>
   <data name="comboBoxScaleColorScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 71</value>
+    <value>45, 67</value>
   </data>
   <data name="comboBoxScaleColorScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -867,25 +878,25 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="trackBarAdvancedMin.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="trackBarAdvancedMin.FooterText" xml:space="preserve">
     <value />
   </data>
   <data name="trackBarAdvancedMin.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="trackBarAdvancedMin.HeaderText" xml:space="preserve">
     <value>Min</value>
   </data>
   <data name="trackBarAdvancedMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 5</value>
+    <value>4, 3</value>
   </data>
   <data name="trackBarAdvancedMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>590, 27</value>
+    <value>384, 25</value>
   </data>
   <data name="trackBarAdvancedMin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -912,7 +923,7 @@
     <value>NoControl</value>
   </data>
   <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, 74</value>
+    <value>360, 70</value>
   </data>
   <data name="label27.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -948,7 +959,7 @@
     <value>NoControl</value>
   </data>
   <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 74</value>
+    <value>132, 70</value>
   </data>
   <data name="label30.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -984,7 +995,7 @@
     <value>NoControl</value>
   </data>
   <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>355, 80</value>
+    <value>355, 76</value>
   </data>
   <data name="label26.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1020,7 +1031,7 @@
     <value>NoControl</value>
   </data>
   <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>306, 80</value>
+    <value>306, 76</value>
   </data>
   <data name="label28.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1056,7 +1067,7 @@
     <value>NoControl</value>
   </data>
   <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
-    <value>206, 80</value>
+    <value>206, 76</value>
   </data>
   <data name="label29.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1092,7 +1103,7 @@
     <value>NoControl</value>
   </data>
   <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 80</value>
+    <value>156, 76</value>
   </data>
   <data name="label31.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1128,7 +1139,7 @@
     <value>NoControl</value>
   </data>
   <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 80</value>
+    <value>256, 76</value>
   </data>
   <data name="label33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1161,7 +1172,7 @@
     <value>0, 620</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 155</value>
+    <value>600, 129</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1190,8 +1201,20 @@
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="panel3.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="panel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="groupBoxSerialImage.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3690,7 +3713,7 @@ This model should be used for a strong scattering object which usually
     <value>3, 0, 0, 0</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 240</value>
+    <value>327, 214</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -4375,7 +4398,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 4, 0</value>
   </data>
   <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 240</value>
+    <value>138, 214</value>
   </data>
   <data name="panel6.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -4408,7 +4431,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 264</value>
+    <value>477, 238</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4428,120 +4451,6 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flowLayoutPanel12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonSimulate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonSimulate.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonSimulate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt</value>
-  </data>
-  <data name="buttonSimulate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonSimulate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 0</value>
-  </data>
-  <data name="buttonSimulate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonSimulate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 29</value>
-  </data>
-  <data name="buttonSimulate.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="buttonSimulate.Text" xml:space="preserve">
-    <value>Simulate image</value>
-  </data>
-  <data name="buttonSimulate.ToolTip" xml:space="preserve">
-    <value>Simulate image by the above setting</value>
-  </data>
-  <data name="&gt;&gt;buttonSimulate.Name" xml:space="preserve">
-    <value>buttonSimulate</value>
-  </data>
-  <data name="&gt;&gt;buttonSimulate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonSimulate.Parent" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="&gt;&gt;buttonSimulate.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 6</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 6, 3, 3</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 21</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
-    <value>Real time simulation</value>
-  </data>
-  <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
-    <value>When checked, image is immediately caluclated as the crystal rotates</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRealTimeSimulation.Name" xml:space="preserve">
-    <value>checkBoxRealTimeSimulation</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRealTimeSimulation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRealTimeSimulation.Parent" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRealTimeSimulation.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanel12.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="flowLayoutPanel12.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>RightToLeft</value>
-  </data>
-  <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 745</value>
-  </data>
-  <data name="flowLayoutPanel12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 30</value>
-  </data>
-  <data name="flowLayoutPanel12.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.Name" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="groupBoxOpticalProperty.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4551,50 +4460,32 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <metadata name="contextMenuStripSTEM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>688, 19</value>
   </metadata>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 6</value>
-  </data>
   <data name="typicalBF02MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 22</value>
+    <value>249, 22</value>
   </data>
   <data name="typicalBF02MradToolStripMenuItem.Text" xml:space="preserve">
     <value>α=25mrad, BF (0-5 mrad)</value>
   </data>
   <data name="typicalABF1224MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 22</value>
+    <value>249, 22</value>
   </data>
   <data name="typicalABF1224MradToolStripMenuItem.Text" xml:space="preserve">
     <value>α=25mrad, ABF (12-24 mrad)</value>
   </data>
   <data name="typicalLAADF2560MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 22</value>
+    <value>249, 22</value>
   </data>
   <data name="typicalLAADF2560MradToolStripMenuItem.Text" xml:space="preserve">
     <value>α=25mrad, LAADF (26-60 mrad)</value>
   </data>
   <data name="typicalHAADF80250MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 22</value>
+    <value>249, 22</value>
   </data>
   <data name="typicalHAADF80250MradToolStripMenuItem.Text" xml:space="preserve">
     <value>α=25mrad, HAADF (80-250 mrad)</value>
   </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 6</value>
-  </data>
-  <data name="addTheCurrentSettingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 22</value>
-  </data>
-  <data name="addTheCurrentSettingToolStripMenuItem.Text" xml:space="preserve">
-    <value>Add current values to user-defined</value>
-  </data>
-  <data name="customizeUserSettingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 22</value>
-  </data>
-  <data name="customizeUserSettingToolStripMenuItem.Text" xml:space="preserve">
-    <value>Customize user-defined</value>
-  </data>
   <data name="contextMenuStripSTEM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 148</value>
+    <value>250, 92</value>
   </data>
   <data name="&gt;&gt;contextMenuStripSTEM.Name" xml:space="preserve">
     <value>contextMenuStripSTEM</value>
@@ -5936,47 +5827,32 @@ angle of incident electrons)</value>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>354, 6</value>
   </data>
-  <data name="kVCsfreeCcToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="presets1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 22</value>
   </data>
-  <data name="kVCsfreeCcToolStripMenuItem.Text" xml:space="preserve">
-    <value>300kV Cs-free Cold-FEG (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+  <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
+    <value>300kV Cold-FEG Cs-free (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
   </data>
-  <data name="kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="presets2ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 22</value>
   </data>
-  <data name="kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Text" xml:space="preserve">
+  <data name="presets2ToolStripMenuItem.Text" xml:space="preserve">
     <value>200kV Schottky-FEG UHR (Cs 0.5, Cc 1.1, ΔE 0.8) 2100F</value>
   </data>
-  <data name="kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="presets3ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 22</value>
   </data>
-  <data name="kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Text" xml:space="preserve">
+  <data name="presets3ToolStripMenuItem.Text" xml:space="preserve">
     <value>200kV Schottky-FEG HR (Cs 1.0, Cc 1.4, ΔE 0.8) 2100F</value>
   </data>
-  <data name="kVLab6TEMCs14MmCc18mmToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="presets4ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 22</value>
   </data>
-  <data name="kVLab6TEMCs14MmCc18mmToolStripMenuItem.Text" xml:space="preserve">
+  <data name="presets4ToolStripMenuItem.Text" xml:space="preserve">
     <value>200kV Lab6 HR (Cs 1.0 , Cc 1.4, ΔE 2.0) 2100</value>
   </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 6</value>
-  </data>
-  <data name="addTheCurrentSettingToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
-  </data>
-  <data name="addTheCurrentSettingToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Add current values to user-defined</value>
-  </data>
-  <data name="customizeTheUserSettingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
-  </data>
-  <data name="customizeTheUserSettingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Customize user-defined</value>
-  </data>
   <data name="contextMenuStripTEMcondition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 214</value>
+    <value>358, 164</value>
   </data>
   <data name="&gt;&gt;contextMenuStripTEMcondition.Name" xml:space="preserve">
     <value>contextMenuStripTEMcondition</value>
@@ -6033,6 +5909,9 @@ angle of incident electrons)</value>
   <data name="numericBoxCc.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxCc.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxCc.FooterText" xml:space="preserve">
     <value>mm</value>
   </data>
@@ -6040,7 +5919,7 @@ angle of incident electrons)</value>
     <value>Cc</value>
   </data>
   <data name="numericBoxCc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 50</value>
+    <value>220, 50</value>
   </data>
   <data name="numericBoxCc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6055,7 +5934,7 @@ angle of incident electrons)</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 27</value>
+    <value>105, 27</value>
   </data>
   <data name="numericBoxCc.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -6142,6 +6021,9 @@ angle of incident electrons)</value>
   <data name="numericBoxBetaAgnle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxBetaAgnle.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxBetaAgnle.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
@@ -6149,7 +6031,7 @@ angle of incident electrons)</value>
     <value>β</value>
   </data>
   <data name="numericBoxBetaAgnle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 50</value>
+    <value>109, 50</value>
   </data>
   <data name="numericBoxBetaAgnle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6164,7 +6046,7 @@ angle of incident electrons)</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxBetaAgnle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 27</value>
+    <value>104, 27</value>
   </data>
   <data name="numericBoxBetaAgnle.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -6198,6 +6080,9 @@ angle of incident electrons)</value>
   <data name="numericBoxCs.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="numericBoxCs.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="numericBoxCs.FooterText" xml:space="preserve">
     <value>mm</value>
   </data>
@@ -6220,7 +6105,7 @@ angle of incident electrons)</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxCs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 27</value>
+    <value>102, 27</value>
   </data>
   <data name="numericBoxCs.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6556,7 +6441,7 @@ angle of incident electrons)</value>
     <value>splitContainer1.Panel2</value>
   </data>
   <data name="&gt;&gt;groupBoxOpticalProperty.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="flowLayoutPanel14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6700,7 +6585,7 @@ angle of incident electrons)</value>
     <value>20, 0, 3, 3</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 49</value>
+    <value>235, 49</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6748,7 +6633,7 @@ angle of incident electrons)</value>
     <value>1, 25</value>
   </data>
   <data name="numericBoxThickness.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 0, 1, 0</value>
+    <value>10, 0, 1, 0</value>
   </data>
   <data name="numericBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 25</value>
@@ -6783,7 +6668,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxSampleProperty.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 0</value>
+    <value>244, 0</value>
   </data>
   <data name="groupBoxSampleProperty.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
@@ -6840,6 +6725,150 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>splitContainer1.Panel2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel14.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonPreset.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonPreset.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="buttonPreset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonPreset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonPreset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 30</value>
+  </data>
+  <data name="buttonPreset.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="buttonPreset.Text" xml:space="preserve">
+    <value>Preset</value>
+  </data>
+  <data name="&gt;&gt;buttonPreset.Name" xml:space="preserve">
+    <value>buttonPreset</value>
+  </data>
+  <data name="&gt;&gt;buttonPreset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPreset.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;buttonPreset.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 0</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 3, 3</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 30</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
+    <value>Real time simulation</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
+    <value>When checked, image is immediately caluclated as the crystal rotates</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRealTimeSimulation.Name" xml:space="preserve">
+    <value>checkBoxRealTimeSimulation</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRealTimeSimulation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRealTimeSimulation.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRealTimeSimulation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonSimulate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSimulate.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonSimulate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="buttonSimulate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="buttonSimulate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSimulate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>365, 0</value>
+  </data>
+  <data name="buttonSimulate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonSimulate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 30</value>
+  </data>
+  <data name="buttonSimulate.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="buttonSimulate.Text" xml:space="preserve">
+    <value>Simulate image</value>
+  </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Simulate image by the above setting</value>
+  </data>
+  <data name="&gt;&gt;buttonSimulate.Name" xml:space="preserve">
+    <value>buttonSimulate</value>
+  </data>
+  <data name="&gt;&gt;buttonSimulate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSimulate.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;buttonSimulate.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 719</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>477, 30</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="splitContainer1.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -6858,7 +6887,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1097, 779</value>
+    <value>1097, 753</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>604</value>
@@ -7026,7 +7055,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>NoControl</value>
   </data>
   <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1000, 772</value>
+    <value>1000, 746</value>
   </data>
   <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 28</value>
@@ -7080,7 +7109,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>    </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 803</value>
+    <value>0, 777</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1097, 22</value>
@@ -7110,7 +7139,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1097, 825</value>
+    <value>1097, 799</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -7123,12 +7152,6 @@ This value is neglected when "Serial image" mode is selected, </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>HRTEM/STEM simulator</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
-    <value>toolStripSeparator4</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;typicalBF02MradToolStripMenuItem.Name" xml:space="preserve">
     <value>typicalBF02MradToolStripMenuItem</value>
@@ -7152,24 +7175,6 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>typicalHAADF80250MradToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;typicalHAADF80250MradToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
-    <value>toolStripSeparator5</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addTheCurrentSettingToolStripMenuItem.Name" xml:space="preserve">
-    <value>addTheCurrentSettingToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;addTheCurrentSettingToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;customizeUserSettingToolStripMenuItem.Name" xml:space="preserve">
-    <value>customizeUserSettingToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;customizeUserSettingToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;setoZeroDefocusToolStripMenuItem.Name" xml:space="preserve">
@@ -7196,40 +7201,28 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;addTheCurrentSettingToolStripMenuItem1.Name" xml:space="preserve">
-    <value>addTheCurrentSettingToolStripMenuItem1</value>
+  <data name="&gt;&gt;presets1ToolStripMenuItem.Name" xml:space="preserve">
+    <value>presets1ToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;addTheCurrentSettingToolStripMenuItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;presets1ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;customizeTheUserSettingsToolStripMenuItem.Name" xml:space="preserve">
-    <value>customizeTheUserSettingsToolStripMenuItem</value>
+  <data name="&gt;&gt;presets2ToolStripMenuItem.Name" xml:space="preserve">
+    <value>presets2ToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;customizeTheUserSettingsToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;presets2ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;kVCsfreeCcToolStripMenuItem.Name" xml:space="preserve">
-    <value>kVCsfreeCcToolStripMenuItem</value>
+  <data name="&gt;&gt;presets3ToolStripMenuItem.Name" xml:space="preserve">
+    <value>presets3ToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;kVCsfreeCcToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;presets3ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Name" xml:space="preserve">
-    <value>kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem</value>
+  <data name="&gt;&gt;presets4ToolStripMenuItem.Name" xml:space="preserve">
+    <value>presets4ToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Name" xml:space="preserve">
-    <value>kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;kVLab6TEMCs14MmCc18mmToolStripMenuItem.Name" xml:space="preserve">
-    <value>kVLab6TEMCs14MmCc18mmToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;kVLab6TEMCs14MmCc18mmToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;presets4ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
@@ -7369,12 +7362,6 @@ This value is neglected when "Serial image" mode is selected, </value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
-    <value>toolStripSeparator7</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormImageSimulator</value>

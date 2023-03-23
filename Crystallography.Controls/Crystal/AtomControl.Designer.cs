@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AtomControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,1449 +40,1311 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.radioButtonIsotoropy = new System.Windows.Forms.RadioButton();
-            this.radioButtonAnisotropy = new System.Windows.Forms.RadioButton();
-            this.flowLayoutPanelIso = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxBiso = new Crystallography.Controls.NumericBox();
-            this.numericBoxBisoerr = new Crystallography.Controls.NumericBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelX_ = new System.Windows.Forms.Label();
-            this.flowLayoutPanelLabel = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxLabel = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxAtom = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanelPosition = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.numericBox1 = new Crystallography.Controls.NumericBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.numericBox2 = new Crystallography.Controls.NumericBox();
-            this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.numericBox3 = new Crystallography.Controls.NumericBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.numericBox4 = new Crystallography.Controls.NumericBox();
-            this.checkBoxDetailAtomicPositionError = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPageElementAndPosition = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.numericBoxOccerr = new Crystallography.Controls.NumericBox();
-            this.numericBoxOcc = new Crystallography.Controls.NumericBox();
-            this.numericBoxZ = new Crystallography.Controls.NumericBox();
-            this.numericBoxYerr = new Crystallography.Controls.NumericBox();
-            this.numericBoxXerr = new Crystallography.Controls.NumericBox();
-            this.numericBoxY = new Crystallography.Controls.NumericBox();
-            this.numericBoxX = new Crystallography.Controls.NumericBox();
-            this.numericBoxZerr = new Crystallography.Controls.NumericBox();
-            this.tabPageOriginShift = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonOriginShiftPlus = new System.Windows.Forms.RadioButton();
-            this.radioButtonOriginShiftMinus = new System.Windows.Forms.RadioButton();
-            this.buttonOriginShift1 = new System.Windows.Forms.Button();
-            this.buttonOriginShift2 = new System.Windows.Forms.Button();
-            this.buttonOriginShift8 = new System.Windows.Forms.Button();
-            this.buttonOriginShift7 = new System.Windows.Forms.Button();
-            this.buttonOriginShift6 = new System.Windows.Forms.Button();
-            this.buttonOriginShift5 = new System.Windows.Forms.Button();
-            this.buttonOriginShift4 = new System.Windows.Forms.Button();
-            this.buttonOriginShift3 = new System.Windows.Forms.Button();
-            this.buttonOriginShift9 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.buttonOriginShiftCustom = new System.Windows.Forms.Button();
-            this.numericBoxOriginShiftZ = new Crystallography.Controls.NumericBox();
-            this.numericBoxOriginShiftY = new Crystallography.Controls.NumericBox();
-            this.numericBoxOriginShiftX = new Crystallography.Controls.NumericBox();
-            this.tabPageDebyeWaller = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.labelDimension = new System.Windows.Forms.Label();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.radioButtonDebyeWallerTypeU = new System.Windows.Forms.RadioButton();
-            this.radioButtonDebyeWallerTypeB = new System.Windows.Forms.RadioButton();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.checkBoxDetailsDebyeWallerError = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanelAniso2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxB22 = new Crystallography.Controls.NumericBox();
-            this.numericBoxB22err = new Crystallography.Controls.NumericBox();
-            this.numericBoxB23 = new Crystallography.Controls.NumericBox();
-            this.numericBoxB23err = new Crystallography.Controls.NumericBox();
-            this.numericBoxB33 = new Crystallography.Controls.NumericBox();
-            this.numericBoxB33err = new Crystallography.Controls.NumericBox();
-            this.flowLayoutPanelAniso1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxB11 = new Crystallography.Controls.NumericBox();
-            this.numericBoxB11err = new Crystallography.Controls.NumericBox();
-            this.numericBoxB12 = new Crystallography.Controls.NumericBox();
-            this.numericBoxB12err = new Crystallography.Controls.NumericBox();
-            this.numericBoxB13 = new Crystallography.Controls.NumericBox();
-            this.numericBoxB13err = new Crystallography.Controls.NumericBox();
-            this.tabPageScatteringFactor = new System.Windows.Forms.TabPage();
-            this.richTextBoxIsotope = new System.Windows.Forms.RichTextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.buttonEditIsotopeAbundance = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxScatteringFactorElectron = new System.Windows.Forms.ComboBox();
-            this.comboBoxNeutron = new System.Windows.Forms.ComboBox();
-            this.comboBoxScatteringFactorXray = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tabPageAppearance = new System.Windows.Forms.TabPage();
-            this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
-            this.numericBoxEmission = new Crystallography.Controls.NumericBox();
-            this.numericBoxShininess = new Crystallography.Controls.NumericBox();
-            this.numericBoxSpecular = new Crystallography.Controls.NumericBox();
-            this.numericBoxDiffusion = new Crystallography.Controls.NumericBox();
-            this.numericBoxAmbient = new Crystallography.Controls.NumericBox();
-            this.checkBoxShowLabel = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.numericBoxAtomRadius = new Crystallography.Controls.NumericBox();
-            this.colorControlAtomColor = new Crystallography.Controls.ColorControl();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonApplyToSameElement = new System.Windows.Forms.Button();
-            this.buttonAddAtom = new System.Windows.Forms.Button();
-            this.buttonChange = new System.Windows.Forms.Button();
-            this.buttonApplyToAllElements = new System.Windows.Forms.Button();
-            this.buttonAtomUp = new System.Windows.Forms.Button();
-            this.buttonAtomDown = new System.Windows.Forms.Button();
-            this.buttonDeleteAtom = new System.Windows.Forms.Button();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.enabledColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.labelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.elementDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.occDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.multiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wyckLetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siteSymDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new Crystallography.Controls.DataSet();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowLayoutPanelIso.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel8.SuspendLayout();
-            this.flowLayoutPanel9.SuspendLayout();
-            this.tabControl.SuspendLayout();
-            this.tabPageElementAndPosition.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tabPageOriginShift.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.tabPageDebyeWaller.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanelAniso2.SuspendLayout();
-            this.flowLayoutPanelAniso1.SuspendLayout();
-            this.tabPageScatteringFactor.SuspendLayout();
-            this.tabPageAppearance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            radioButtonIsotoropy = new System.Windows.Forms.RadioButton();
+            radioButtonAnisotropy = new System.Windows.Forms.RadioButton();
+            flowLayoutPanelIso = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxBiso = new NumericBox();
+            numericBoxBisoerr = new NumericBox();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            labelX_ = new System.Windows.Forms.Label();
+            flowLayoutPanelLabel = new System.Windows.Forms.FlowLayoutPanel();
+            label1 = new System.Windows.Forms.Label();
+            textBoxLabel = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            comboBoxAtom = new System.Windows.Forms.ComboBox();
+            flowLayoutPanelPosition = new System.Windows.Forms.FlowLayoutPanel();
+            tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            label8 = new System.Windows.Forms.Label();
+            numericBox1 = new NumericBox();
+            label9 = new System.Windows.Forms.Label();
+            numericBox2 = new NumericBox();
+            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            label12 = new System.Windows.Forms.Label();
+            numericBox3 = new NumericBox();
+            label17 = new System.Windows.Forms.Label();
+            numericBox4 = new NumericBox();
+            checkBoxDetailAtomicPositionError = new System.Windows.Forms.CheckBox();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            tabControl = new System.Windows.Forms.TabControl();
+            tabPageElementAndPosition = new System.Windows.Forms.TabPage();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            numericBoxOccerr = new NumericBox();
+            numericBoxOcc = new NumericBox();
+            numericBoxZ = new NumericBox();
+            numericBoxYerr = new NumericBox();
+            numericBoxXerr = new NumericBox();
+            numericBoxY = new NumericBox();
+            numericBoxX = new NumericBox();
+            numericBoxZerr = new NumericBox();
+            tabPageOriginShift = new System.Windows.Forms.TabPage();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonOriginShiftPlus = new System.Windows.Forms.RadioButton();
+            radioButtonOriginShiftMinus = new System.Windows.Forms.RadioButton();
+            buttonOriginShift1 = new System.Windows.Forms.Button();
+            buttonOriginShift2 = new System.Windows.Forms.Button();
+            buttonOriginShift8 = new System.Windows.Forms.Button();
+            buttonOriginShift7 = new System.Windows.Forms.Button();
+            buttonOriginShift6 = new System.Windows.Forms.Button();
+            buttonOriginShift5 = new System.Windows.Forms.Button();
+            buttonOriginShift4 = new System.Windows.Forms.Button();
+            buttonOriginShift3 = new System.Windows.Forms.Button();
+            buttonOriginShift9 = new System.Windows.Forms.Button();
+            label7 = new System.Windows.Forms.Label();
+            buttonOriginShiftCustom = new System.Windows.Forms.Button();
+            numericBoxOriginShiftZ = new NumericBox();
+            numericBoxOriginShiftY = new NumericBox();
+            numericBoxOriginShiftX = new NumericBox();
+            tabPageDebyeWaller = new System.Windows.Forms.TabPage();
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            label14 = new System.Windows.Forms.Label();
+            labelDimension = new System.Windows.Forms.Label();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            label3 = new System.Windows.Forms.Label();
+            radioButtonDebyeWallerTypeU = new System.Windows.Forms.RadioButton();
+            radioButtonDebyeWallerTypeB = new System.Windows.Forms.RadioButton();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            label13 = new System.Windows.Forms.Label();
+            checkBoxDetailsDebyeWallerError = new System.Windows.Forms.CheckBox();
+            flowLayoutPanelAniso2 = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxB22 = new NumericBox();
+            numericBoxB22err = new NumericBox();
+            numericBoxB23 = new NumericBox();
+            numericBoxB23err = new NumericBox();
+            numericBoxB33 = new NumericBox();
+            numericBoxB33err = new NumericBox();
+            flowLayoutPanelAniso1 = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxB11 = new NumericBox();
+            numericBoxB11err = new NumericBox();
+            numericBoxB12 = new NumericBox();
+            numericBoxB12err = new NumericBox();
+            numericBoxB13 = new NumericBox();
+            numericBoxB13err = new NumericBox();
+            tabPageScatteringFactor = new System.Windows.Forms.TabPage();
+            richTextBoxIsotope = new System.Windows.Forms.RichTextBox();
+            label34 = new System.Windows.Forms.Label();
+            buttonEditIsotopeAbundance = new System.Windows.Forms.Button();
+            label5 = new System.Windows.Forms.Label();
+            comboBoxScatteringFactorElectron = new System.Windows.Forms.ComboBox();
+            comboBoxNeutron = new System.Windows.Forms.ComboBox();
+            comboBoxScatteringFactorXray = new System.Windows.Forms.ComboBox();
+            label6 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            tabPageAppearance = new System.Windows.Forms.TabPage();
+            numericBoxAlpha = new NumericBox();
+            numericBoxEmission = new NumericBox();
+            numericBoxShininess = new NumericBox();
+            numericBoxSpecular = new NumericBox();
+            numericBoxDiffusion = new NumericBox();
+            numericBoxAmbient = new NumericBox();
+            checkBoxShowLabel = new System.Windows.Forms.CheckBox();
+            label10 = new System.Windows.Forms.Label();
+            label37 = new System.Windows.Forms.Label();
+            label38 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            label35 = new System.Windows.Forms.Label();
+            label36 = new System.Windows.Forms.Label();
+            numericBoxAtomRadius = new NumericBox();
+            colorControlAtomColor = new ColorControl();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            buttonApplyToSameElement = new System.Windows.Forms.Button();
+            buttonAddAtom = new System.Windows.Forms.Button();
+            buttonChange = new System.Windows.Forms.Button();
+            buttonApplyToAllElements = new System.Windows.Forms.Button();
+            buttonAtomUp = new System.Windows.Forms.Button();
+            buttonAtomDown = new System.Windows.Forms.Button();
+            buttonDeleteAtom = new System.Windows.Forms.Button();
+            dataGridView = new System.Windows.Forms.DataGridView();
+            enabledColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            labelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            elementDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            yDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            zDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            occDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            multiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            wyckLetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            siteSymDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bindingSource = new System.Windows.Forms.BindingSource(components);
+            dataSet = new DataSet();
+            panel1 = new System.Windows.Forms.Panel();
+            dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            flowLayoutPanelIso.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            flowLayoutPanel8.SuspendLayout();
+            flowLayoutPanel9.SuspendLayout();
+            tabControl.SuspendLayout();
+            tabPageElementAndPosition.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tabPageOriginShift.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            tabPageDebyeWaller.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanelAniso2.SuspendLayout();
+            flowLayoutPanelAniso1.SuspendLayout();
+            tabPageScatteringFactor.SuspendLayout();
+            tabPageAppearance.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // radioButtonIsotoropy
             // 
-            resources.ApplyResources(this.radioButtonIsotoropy, "radioButtonIsotoropy");
-            this.radioButtonIsotoropy.Checked = true;
-            this.radioButtonIsotoropy.Name = "radioButtonIsotoropy";
-            this.radioButtonIsotoropy.TabStop = true;
-            this.radioButtonIsotoropy.CheckedChanged += new System.EventHandler(this.radioButtonIsotoropy_CheckedChanged);
+            resources.ApplyResources(radioButtonIsotoropy, "radioButtonIsotoropy");
+            radioButtonIsotoropy.Checked = true;
+            radioButtonIsotoropy.Name = "radioButtonIsotoropy";
+            radioButtonIsotoropy.TabStop = true;
+            radioButtonIsotoropy.CheckedChanged += radioButtonIsotoropy_CheckedChanged;
             // 
             // radioButtonAnisotropy
             // 
-            resources.ApplyResources(this.radioButtonAnisotropy, "radioButtonAnisotropy");
-            this.radioButtonAnisotropy.Name = "radioButtonAnisotropy";
-            this.radioButtonAnisotropy.CheckedChanged += new System.EventHandler(this.radioButtonIsotoropy_CheckedChanged);
+            resources.ApplyResources(radioButtonAnisotropy, "radioButtonAnisotropy");
+            radioButtonAnisotropy.Name = "radioButtonAnisotropy";
+            radioButtonAnisotropy.CheckedChanged += radioButtonIsotoropy_CheckedChanged;
             // 
             // flowLayoutPanelIso
             // 
-            resources.ApplyResources(this.flowLayoutPanelIso, "flowLayoutPanelIso");
-            this.flowLayoutPanelIso.Controls.Add(this.numericBoxBiso);
-            this.flowLayoutPanelIso.Controls.Add(this.numericBoxBisoerr);
-            this.flowLayoutPanelIso.Name = "flowLayoutPanelIso";
+            resources.ApplyResources(flowLayoutPanelIso, "flowLayoutPanelIso");
+            flowLayoutPanelIso.Controls.Add(numericBoxBiso);
+            flowLayoutPanelIso.Controls.Add(numericBoxBisoerr);
+            flowLayoutPanelIso.Name = "flowLayoutPanelIso";
             // 
             // numericBoxBiso
             // 
-            resources.ApplyResources(this.numericBoxBiso, "numericBoxBiso");
-            this.numericBoxBiso.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBiso.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBiso.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBiso.Name = "numericBoxBiso";
-            this.numericBoxBiso.RoundErrorAccuracy = -1;
-            this.numericBoxBiso.SkipEventDuringInput = false;
-            this.numericBoxBiso.SmartIncrement = true;
-            this.numericBoxBiso.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxBiso.ThonsandsSeparator = true;
+            resources.ApplyResources(numericBoxBiso, "numericBoxBiso");
+            numericBoxBiso.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxBiso.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxBiso.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxBiso.Name = "numericBoxBiso";
+            numericBoxBiso.RoundErrorAccuracy = -1;
+            numericBoxBiso.SkipEventDuringInput = false;
+            numericBoxBiso.SmartIncrement = true;
+            numericBoxBiso.ThonsandsSeparator = true;
             // 
             // numericBoxBisoerr
             // 
-            this.numericBoxBisoerr.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxBisoerr, "numericBoxBisoerr");
-            this.numericBoxBisoerr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBisoerr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBisoerr.Name = "numericBoxBisoerr";
-            this.numericBoxBisoerr.RoundErrorAccuracy = -1;
-            this.numericBoxBisoerr.SkipEventDuringInput = false;
-            this.numericBoxBisoerr.SmartIncrement = true;
-            this.numericBoxBisoerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxBisoerr.ThonsandsSeparator = true;
+            numericBoxBisoerr.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxBisoerr, "numericBoxBisoerr");
+            numericBoxBisoerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxBisoerr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxBisoerr.Name = "numericBoxBisoerr";
+            numericBoxBisoerr.RoundErrorAccuracy = -1;
+            numericBoxBisoerr.SkipEventDuringInput = false;
+            numericBoxBisoerr.SmartIncrement = true;
+            numericBoxBisoerr.ThonsandsSeparator = true;
             // 
             // flowLayoutPanel1
             // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // labelX_
             // 
-            resources.ApplyResources(this.labelX_, "labelX_");
-            this.labelX_.Name = "labelX_";
+            resources.ApplyResources(labelX_, "labelX_");
+            labelX_.Name = "labelX_";
             // 
             // flowLayoutPanelLabel
             // 
-            resources.ApplyResources(this.flowLayoutPanelLabel, "flowLayoutPanelLabel");
-            this.flowLayoutPanelLabel.Name = "flowLayoutPanelLabel";
+            resources.ApplyResources(flowLayoutPanelLabel, "flowLayoutPanelLabel");
+            flowLayoutPanelLabel.Name = "flowLayoutPanelLabel";
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // textBoxLabel
             // 
-            resources.ApplyResources(this.textBoxLabel, "textBoxLabel");
-            this.textBoxLabel.Name = "textBoxLabel";
-            this.toolTip.SetToolTip(this.textBoxLabel, resources.GetString("textBoxLabel.ToolTip"));
+            resources.ApplyResources(textBoxLabel, "textBoxLabel");
+            textBoxLabel.Name = "textBoxLabel";
+            toolTip.SetToolTip(textBoxLabel, resources.GetString("textBoxLabel.ToolTip"));
             // 
             // label2
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // comboBoxAtom
             // 
-            resources.ApplyResources(this.comboBoxAtom, "comboBoxAtom");
-            this.comboBoxAtom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxAtom.Items.AddRange(new object[] {
-            resources.GetString("comboBoxAtom.Items"),
-            resources.GetString("comboBoxAtom.Items1"),
-            resources.GetString("comboBoxAtom.Items2"),
-            resources.GetString("comboBoxAtom.Items3"),
-            resources.GetString("comboBoxAtom.Items4"),
-            resources.GetString("comboBoxAtom.Items5"),
-            resources.GetString("comboBoxAtom.Items6"),
-            resources.GetString("comboBoxAtom.Items7"),
-            resources.GetString("comboBoxAtom.Items8"),
-            resources.GetString("comboBoxAtom.Items9"),
-            resources.GetString("comboBoxAtom.Items10"),
-            resources.GetString("comboBoxAtom.Items11"),
-            resources.GetString("comboBoxAtom.Items12"),
-            resources.GetString("comboBoxAtom.Items13"),
-            resources.GetString("comboBoxAtom.Items14"),
-            resources.GetString("comboBoxAtom.Items15"),
-            resources.GetString("comboBoxAtom.Items16"),
-            resources.GetString("comboBoxAtom.Items17"),
-            resources.GetString("comboBoxAtom.Items18"),
-            resources.GetString("comboBoxAtom.Items19"),
-            resources.GetString("comboBoxAtom.Items20"),
-            resources.GetString("comboBoxAtom.Items21"),
-            resources.GetString("comboBoxAtom.Items22"),
-            resources.GetString("comboBoxAtom.Items23"),
-            resources.GetString("comboBoxAtom.Items24"),
-            resources.GetString("comboBoxAtom.Items25"),
-            resources.GetString("comboBoxAtom.Items26"),
-            resources.GetString("comboBoxAtom.Items27"),
-            resources.GetString("comboBoxAtom.Items28"),
-            resources.GetString("comboBoxAtom.Items29"),
-            resources.GetString("comboBoxAtom.Items30"),
-            resources.GetString("comboBoxAtom.Items31"),
-            resources.GetString("comboBoxAtom.Items32"),
-            resources.GetString("comboBoxAtom.Items33"),
-            resources.GetString("comboBoxAtom.Items34"),
-            resources.GetString("comboBoxAtom.Items35"),
-            resources.GetString("comboBoxAtom.Items36"),
-            resources.GetString("comboBoxAtom.Items37"),
-            resources.GetString("comboBoxAtom.Items38"),
-            resources.GetString("comboBoxAtom.Items39"),
-            resources.GetString("comboBoxAtom.Items40"),
-            resources.GetString("comboBoxAtom.Items41"),
-            resources.GetString("comboBoxAtom.Items42"),
-            resources.GetString("comboBoxAtom.Items43"),
-            resources.GetString("comboBoxAtom.Items44"),
-            resources.GetString("comboBoxAtom.Items45"),
-            resources.GetString("comboBoxAtom.Items46"),
-            resources.GetString("comboBoxAtom.Items47"),
-            resources.GetString("comboBoxAtom.Items48"),
-            resources.GetString("comboBoxAtom.Items49"),
-            resources.GetString("comboBoxAtom.Items50"),
-            resources.GetString("comboBoxAtom.Items51"),
-            resources.GetString("comboBoxAtom.Items52"),
-            resources.GetString("comboBoxAtom.Items53"),
-            resources.GetString("comboBoxAtom.Items54"),
-            resources.GetString("comboBoxAtom.Items55"),
-            resources.GetString("comboBoxAtom.Items56"),
-            resources.GetString("comboBoxAtom.Items57"),
-            resources.GetString("comboBoxAtom.Items58"),
-            resources.GetString("comboBoxAtom.Items59"),
-            resources.GetString("comboBoxAtom.Items60"),
-            resources.GetString("comboBoxAtom.Items61"),
-            resources.GetString("comboBoxAtom.Items62"),
-            resources.GetString("comboBoxAtom.Items63"),
-            resources.GetString("comboBoxAtom.Items64"),
-            resources.GetString("comboBoxAtom.Items65"),
-            resources.GetString("comboBoxAtom.Items66"),
-            resources.GetString("comboBoxAtom.Items67"),
-            resources.GetString("comboBoxAtom.Items68"),
-            resources.GetString("comboBoxAtom.Items69"),
-            resources.GetString("comboBoxAtom.Items70"),
-            resources.GetString("comboBoxAtom.Items71"),
-            resources.GetString("comboBoxAtom.Items72"),
-            resources.GetString("comboBoxAtom.Items73"),
-            resources.GetString("comboBoxAtom.Items74"),
-            resources.GetString("comboBoxAtom.Items75"),
-            resources.GetString("comboBoxAtom.Items76"),
-            resources.GetString("comboBoxAtom.Items77"),
-            resources.GetString("comboBoxAtom.Items78"),
-            resources.GetString("comboBoxAtom.Items79"),
-            resources.GetString("comboBoxAtom.Items80"),
-            resources.GetString("comboBoxAtom.Items81"),
-            resources.GetString("comboBoxAtom.Items82"),
-            resources.GetString("comboBoxAtom.Items83"),
-            resources.GetString("comboBoxAtom.Items84"),
-            resources.GetString("comboBoxAtom.Items85"),
-            resources.GetString("comboBoxAtom.Items86"),
-            resources.GetString("comboBoxAtom.Items87"),
-            resources.GetString("comboBoxAtom.Items88"),
-            resources.GetString("comboBoxAtom.Items89"),
-            resources.GetString("comboBoxAtom.Items90"),
-            resources.GetString("comboBoxAtom.Items91"),
-            resources.GetString("comboBoxAtom.Items92"),
-            resources.GetString("comboBoxAtom.Items93"),
-            resources.GetString("comboBoxAtom.Items94"),
-            resources.GetString("comboBoxAtom.Items95"),
-            resources.GetString("comboBoxAtom.Items96"),
-            resources.GetString("comboBoxAtom.Items97")});
-            this.comboBoxAtom.Name = "comboBoxAtom";
-            this.toolTip.SetToolTip(this.comboBoxAtom, resources.GetString("comboBoxAtom.ToolTip"));
-            this.comboBoxAtom.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtom_SelectedIndexChanged);
+            resources.ApplyResources(comboBoxAtom, "comboBoxAtom");
+            comboBoxAtom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxAtom.Items.AddRange(new object[] { resources.GetString("comboBoxAtom.Items"), resources.GetString("comboBoxAtom.Items1"), resources.GetString("comboBoxAtom.Items2"), resources.GetString("comboBoxAtom.Items3"), resources.GetString("comboBoxAtom.Items4"), resources.GetString("comboBoxAtom.Items5"), resources.GetString("comboBoxAtom.Items6"), resources.GetString("comboBoxAtom.Items7"), resources.GetString("comboBoxAtom.Items8"), resources.GetString("comboBoxAtom.Items9"), resources.GetString("comboBoxAtom.Items10"), resources.GetString("comboBoxAtom.Items11"), resources.GetString("comboBoxAtom.Items12"), resources.GetString("comboBoxAtom.Items13"), resources.GetString("comboBoxAtom.Items14"), resources.GetString("comboBoxAtom.Items15"), resources.GetString("comboBoxAtom.Items16"), resources.GetString("comboBoxAtom.Items17"), resources.GetString("comboBoxAtom.Items18"), resources.GetString("comboBoxAtom.Items19"), resources.GetString("comboBoxAtom.Items20"), resources.GetString("comboBoxAtom.Items21"), resources.GetString("comboBoxAtom.Items22"), resources.GetString("comboBoxAtom.Items23"), resources.GetString("comboBoxAtom.Items24"), resources.GetString("comboBoxAtom.Items25"), resources.GetString("comboBoxAtom.Items26"), resources.GetString("comboBoxAtom.Items27"), resources.GetString("comboBoxAtom.Items28"), resources.GetString("comboBoxAtom.Items29"), resources.GetString("comboBoxAtom.Items30"), resources.GetString("comboBoxAtom.Items31"), resources.GetString("comboBoxAtom.Items32"), resources.GetString("comboBoxAtom.Items33"), resources.GetString("comboBoxAtom.Items34"), resources.GetString("comboBoxAtom.Items35"), resources.GetString("comboBoxAtom.Items36"), resources.GetString("comboBoxAtom.Items37"), resources.GetString("comboBoxAtom.Items38"), resources.GetString("comboBoxAtom.Items39"), resources.GetString("comboBoxAtom.Items40"), resources.GetString("comboBoxAtom.Items41"), resources.GetString("comboBoxAtom.Items42"), resources.GetString("comboBoxAtom.Items43"), resources.GetString("comboBoxAtom.Items44"), resources.GetString("comboBoxAtom.Items45"), resources.GetString("comboBoxAtom.Items46"), resources.GetString("comboBoxAtom.Items47"), resources.GetString("comboBoxAtom.Items48"), resources.GetString("comboBoxAtom.Items49"), resources.GetString("comboBoxAtom.Items50"), resources.GetString("comboBoxAtom.Items51"), resources.GetString("comboBoxAtom.Items52"), resources.GetString("comboBoxAtom.Items53"), resources.GetString("comboBoxAtom.Items54"), resources.GetString("comboBoxAtom.Items55"), resources.GetString("comboBoxAtom.Items56"), resources.GetString("comboBoxAtom.Items57"), resources.GetString("comboBoxAtom.Items58"), resources.GetString("comboBoxAtom.Items59"), resources.GetString("comboBoxAtom.Items60"), resources.GetString("comboBoxAtom.Items61"), resources.GetString("comboBoxAtom.Items62"), resources.GetString("comboBoxAtom.Items63"), resources.GetString("comboBoxAtom.Items64"), resources.GetString("comboBoxAtom.Items65"), resources.GetString("comboBoxAtom.Items66"), resources.GetString("comboBoxAtom.Items67"), resources.GetString("comboBoxAtom.Items68"), resources.GetString("comboBoxAtom.Items69"), resources.GetString("comboBoxAtom.Items70"), resources.GetString("comboBoxAtom.Items71"), resources.GetString("comboBoxAtom.Items72"), resources.GetString("comboBoxAtom.Items73"), resources.GetString("comboBoxAtom.Items74"), resources.GetString("comboBoxAtom.Items75"), resources.GetString("comboBoxAtom.Items76"), resources.GetString("comboBoxAtom.Items77"), resources.GetString("comboBoxAtom.Items78"), resources.GetString("comboBoxAtom.Items79"), resources.GetString("comboBoxAtom.Items80"), resources.GetString("comboBoxAtom.Items81"), resources.GetString("comboBoxAtom.Items82"), resources.GetString("comboBoxAtom.Items83"), resources.GetString("comboBoxAtom.Items84"), resources.GetString("comboBoxAtom.Items85"), resources.GetString("comboBoxAtom.Items86"), resources.GetString("comboBoxAtom.Items87"), resources.GetString("comboBoxAtom.Items88"), resources.GetString("comboBoxAtom.Items89"), resources.GetString("comboBoxAtom.Items90"), resources.GetString("comboBoxAtom.Items91"), resources.GetString("comboBoxAtom.Items92"), resources.GetString("comboBoxAtom.Items93"), resources.GetString("comboBoxAtom.Items94"), resources.GetString("comboBoxAtom.Items95"), resources.GetString("comboBoxAtom.Items96"), resources.GetString("comboBoxAtom.Items97") });
+            comboBoxAtom.Name = "comboBoxAtom";
+            toolTip.SetToolTip(comboBoxAtom, resources.GetString("comboBoxAtom.ToolTip"));
+            comboBoxAtom.SelectedIndexChanged += comboBoxAtom_SelectedIndexChanged;
             // 
             // flowLayoutPanelPosition
             // 
-            resources.ApplyResources(this.flowLayoutPanelPosition, "flowLayoutPanelPosition");
-            this.flowLayoutPanelPosition.Name = "flowLayoutPanelPosition";
+            resources.ApplyResources(flowLayoutPanelPosition, "flowLayoutPanelPosition");
+            flowLayoutPanelPosition.Name = "flowLayoutPanelPosition";
             // 
             // tableLayoutPanel4
             // 
-            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel8, 3, 0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            resources.ApplyResources(tableLayoutPanel4, "tableLayoutPanel4");
+            tableLayoutPanel4.Controls.Add(flowLayoutPanel8, 3, 0);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
             // 
             // flowLayoutPanel8
             // 
-            resources.ApplyResources(this.flowLayoutPanel8, "flowLayoutPanel8");
-            this.flowLayoutPanel8.Controls.Add(this.label8);
-            this.flowLayoutPanel8.Controls.Add(this.numericBox1);
-            this.flowLayoutPanel8.Controls.Add(this.label9);
-            this.flowLayoutPanel8.Controls.Add(this.numericBox2);
-            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
+            flowLayoutPanel8.Controls.Add(label8);
+            flowLayoutPanel8.Controls.Add(numericBox1);
+            flowLayoutPanel8.Controls.Add(label9);
+            flowLayoutPanel8.Controls.Add(numericBox2);
+            flowLayoutPanel8.Name = "flowLayoutPanel8";
             // 
             // label8
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
             // 
             // numericBox1
             // 
-            this.numericBox1.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBox1, "numericBox1");
-            this.numericBox1.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox1.Name = "numericBox1";
-            this.numericBox1.RoundErrorAccuracy = -1;
-            this.numericBox1.ShowFraction = true;
-            this.numericBox1.SkipEventDuringInput = false;
-            this.numericBox1.SmartIncrement = true;
-            this.numericBox1.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBox1.ThonsandsSeparator = true;
+            numericBox1.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBox1, "numericBox1");
+            numericBox1.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBox1.Name = "numericBox1";
+            numericBox1.RoundErrorAccuracy = -1;
+            numericBox1.ShowFraction = true;
+            numericBox1.SkipEventDuringInput = false;
+            numericBox1.SmartIncrement = true;
+            numericBox1.ThonsandsSeparator = true;
             // 
             // label9
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
+            resources.ApplyResources(label9, "label9");
+            label9.Name = "label9";
             // 
             // numericBox2
             // 
-            this.numericBox2.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBox2, "numericBox2");
-            this.numericBox2.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox2.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox2.Name = "numericBox2";
-            this.numericBox2.RoundErrorAccuracy = -1;
-            this.numericBox2.ShowFraction = true;
-            this.numericBox2.SkipEventDuringInput = false;
-            this.numericBox2.SmartIncrement = true;
-            this.numericBox2.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBox2.ThonsandsSeparator = true;
+            numericBox2.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBox2, "numericBox2");
+            numericBox2.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBox2.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBox2.Name = "numericBox2";
+            numericBox2.RoundErrorAccuracy = -1;
+            numericBox2.ShowFraction = true;
+            numericBox2.SkipEventDuringInput = false;
+            numericBox2.SmartIncrement = true;
+            numericBox2.ThonsandsSeparator = true;
             // 
             // flowLayoutPanel9
             // 
-            resources.ApplyResources(this.flowLayoutPanel9, "flowLayoutPanel9");
-            this.flowLayoutPanel9.Controls.Add(this.label12);
-            this.flowLayoutPanel9.Controls.Add(this.numericBox3);
-            this.flowLayoutPanel9.Controls.Add(this.label17);
-            this.flowLayoutPanel9.Controls.Add(this.numericBox4);
-            this.flowLayoutPanel9.Name = "flowLayoutPanel9";
+            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
+            flowLayoutPanel9.Controls.Add(label12);
+            flowLayoutPanel9.Controls.Add(numericBox3);
+            flowLayoutPanel9.Controls.Add(label17);
+            flowLayoutPanel9.Controls.Add(numericBox4);
+            flowLayoutPanel9.Name = "flowLayoutPanel9";
             // 
             // label12
             // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
+            resources.ApplyResources(label12, "label12");
+            label12.Name = "label12";
             // 
             // numericBox3
             // 
-            this.numericBox3.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBox3, "numericBox3");
-            this.numericBox3.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox3.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox3.Name = "numericBox3";
-            this.numericBox3.RoundErrorAccuracy = -1;
-            this.numericBox3.ShowFraction = true;
-            this.numericBox3.SkipEventDuringInput = false;
-            this.numericBox3.SmartIncrement = true;
-            this.numericBox3.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBox3.ThonsandsSeparator = true;
+            numericBox3.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBox3, "numericBox3");
+            numericBox3.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBox3.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBox3.Name = "numericBox3";
+            numericBox3.RoundErrorAccuracy = -1;
+            numericBox3.ShowFraction = true;
+            numericBox3.SkipEventDuringInput = false;
+            numericBox3.SmartIncrement = true;
+            numericBox3.ThonsandsSeparator = true;
             // 
             // label17
             // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.Name = "label17";
+            resources.ApplyResources(label17, "label17");
+            label17.Name = "label17";
             // 
             // numericBox4
             // 
-            this.numericBox4.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBox4, "numericBox4");
-            this.numericBox4.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox4.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBox4.Name = "numericBox4";
-            this.numericBox4.RoundErrorAccuracy = -1;
-            this.numericBox4.ShowFraction = true;
-            this.numericBox4.SkipEventDuringInput = false;
-            this.numericBox4.SmartIncrement = true;
-            this.numericBox4.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBox4.ThonsandsSeparator = true;
+            numericBox4.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBox4, "numericBox4");
+            numericBox4.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBox4.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBox4.Name = "numericBox4";
+            numericBox4.RoundErrorAccuracy = -1;
+            numericBox4.ShowFraction = true;
+            numericBox4.SkipEventDuringInput = false;
+            numericBox4.SmartIncrement = true;
+            numericBox4.ThonsandsSeparator = true;
             // 
             // checkBoxDetailAtomicPositionError
             // 
-            resources.ApplyResources(this.checkBoxDetailAtomicPositionError, "checkBoxDetailAtomicPositionError");
-            this.checkBoxDetailAtomicPositionError.Name = "checkBoxDetailAtomicPositionError";
-            this.checkBoxDetailAtomicPositionError.UseVisualStyleBackColor = true;
-            this.checkBoxDetailAtomicPositionError.CheckedChanged += new System.EventHandler(this.checkBoxAtomicPositionError_CheckedChanged);
+            resources.ApplyResources(checkBoxDetailAtomicPositionError, "checkBoxDetailAtomicPositionError");
+            checkBoxDetailAtomicPositionError.Name = "checkBoxDetailAtomicPositionError";
+            checkBoxDetailAtomicPositionError.UseVisualStyleBackColor = true;
+            checkBoxDetailAtomicPositionError.CheckedChanged += checkBoxAtomicPositionError_CheckedChanged;
             // 
             // flowLayoutPanel2
             // 
-            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPageElementAndPosition);
-            this.tabControl.Controls.Add(this.tabPageOriginShift);
-            this.tabControl.Controls.Add(this.tabPageDebyeWaller);
-            this.tabControl.Controls.Add(this.tabPageScatteringFactor);
-            this.tabControl.Controls.Add(this.tabPageAppearance);
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.HotTrack = true;
-            this.tabControl.Multiline = true;
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            tabControl.Controls.Add(tabPageElementAndPosition);
+            tabControl.Controls.Add(tabPageOriginShift);
+            tabControl.Controls.Add(tabPageDebyeWaller);
+            tabControl.Controls.Add(tabPageScatteringFactor);
+            tabControl.Controls.Add(tabPageAppearance);
+            resources.ApplyResources(tabControl, "tabControl");
+            tabControl.HotTrack = true;
+            tabControl.Multiline = true;
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.SelectedIndexChanged += tabControl_SelectedIndexChanged;
             // 
             // tabPageElementAndPosition
             // 
-            this.tabPageElementAndPosition.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageElementAndPosition.Controls.Add(this.tableLayoutPanel1);
-            this.tabPageElementAndPosition.Controls.Add(this.checkBoxDetailAtomicPositionError);
-            this.tabPageElementAndPosition.Controls.Add(this.labelX_);
-            this.tabPageElementAndPosition.Controls.Add(this.flowLayoutPanelLabel);
-            this.tabPageElementAndPosition.Controls.Add(this.flowLayoutPanelPosition);
-            resources.ApplyResources(this.tabPageElementAndPosition, "tabPageElementAndPosition");
-            this.tabPageElementAndPosition.Name = "tabPageElementAndPosition";
+            tabPageElementAndPosition.BackColor = System.Drawing.Color.Transparent;
+            tabPageElementAndPosition.Controls.Add(tableLayoutPanel1);
+            tabPageElementAndPosition.Controls.Add(checkBoxDetailAtomicPositionError);
+            tabPageElementAndPosition.Controls.Add(labelX_);
+            tabPageElementAndPosition.Controls.Add(flowLayoutPanelLabel);
+            tabPageElementAndPosition.Controls.Add(flowLayoutPanelPosition);
+            resources.ApplyResources(tabPageElementAndPosition, "tabPageElementAndPosition");
+            tabPageElementAndPosition.Name = "tabPageElementAndPosition";
             // 
             // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.numericBoxOccerr, 7, 0);
-            this.tableLayoutPanel1.Controls.Add(this.numericBoxOcc, 6, 0);
-            this.tableLayoutPanel1.Controls.Add(this.numericBoxZ, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.numericBoxYerr, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.numericBoxXerr, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.numericBoxY, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.numericBoxX, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxLabel, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBoxAtom, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.numericBoxZerr, 4, 2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
+            tableLayoutPanel1.Controls.Add(numericBoxOccerr, 7, 0);
+            tableLayoutPanel1.Controls.Add(numericBoxOcc, 6, 0);
+            tableLayoutPanel1.Controls.Add(numericBoxZ, 3, 2);
+            tableLayoutPanel1.Controls.Add(numericBoxYerr, 4, 1);
+            tableLayoutPanel1.Controls.Add(numericBoxXerr, 4, 0);
+            tableLayoutPanel1.Controls.Add(numericBoxY, 3, 1);
+            tableLayoutPanel1.Controls.Add(numericBoxX, 3, 0);
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
+            tableLayoutPanel1.Controls.Add(label2, 0, 1);
+            tableLayoutPanel1.Controls.Add(textBoxLabel, 1, 0);
+            tableLayoutPanel1.Controls.Add(comboBoxAtom, 1, 1);
+            tableLayoutPanel1.Controls.Add(numericBoxZerr, 4, 2);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // numericBoxOccerr
             // 
-            this.numericBoxOccerr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOccerr.DecimalPlaces = 6;
-            resources.ApplyResources(this.numericBoxOccerr, "numericBoxOccerr");
-            this.numericBoxOccerr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOccerr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOccerr.Name = "numericBoxOccerr";
-            this.numericBoxOccerr.RoundErrorAccuracy = -1;
-            this.numericBoxOccerr.SkipEventDuringInput = false;
-            this.numericBoxOccerr.SmartIncrement = true;
-            this.numericBoxOccerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxOccerr.ThonsandsSeparator = true;
-            this.numericBoxOccerr.TrimEndZero = true;
+            numericBoxOccerr.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxOccerr.DecimalPlaces = 6;
+            resources.ApplyResources(numericBoxOccerr, "numericBoxOccerr");
+            numericBoxOccerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOccerr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOccerr.Name = "numericBoxOccerr";
+            numericBoxOccerr.RoundErrorAccuracy = -1;
+            numericBoxOccerr.SkipEventDuringInput = false;
+            numericBoxOccerr.SmartIncrement = true;
+            numericBoxOccerr.ThonsandsSeparator = true;
+            numericBoxOccerr.TrimEndZero = true;
             // 
             // numericBoxOcc
             // 
-            resources.ApplyResources(this.numericBoxOcc, "numericBoxOcc");
-            this.numericBoxOcc.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOcc.DecimalPlaces = 6;
-            this.numericBoxOcc.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOcc.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOcc.Name = "numericBoxOcc";
-            this.numericBoxOcc.RoundErrorAccuracy = -1;
-            this.numericBoxOcc.ShowFraction = true;
-            this.numericBoxOcc.SkipEventDuringInput = false;
-            this.numericBoxOcc.SmartIncrement = true;
-            this.numericBoxOcc.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxOcc.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxOcc, resources.GetString("numericBoxOcc.ToolTip"));
-            this.numericBoxOcc.TrimEndZero = true;
+            resources.ApplyResources(numericBoxOcc, "numericBoxOcc");
+            numericBoxOcc.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxOcc.DecimalPlaces = 6;
+            numericBoxOcc.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOcc.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOcc.Name = "numericBoxOcc";
+            numericBoxOcc.RoundErrorAccuracy = -1;
+            numericBoxOcc.ShowFraction = true;
+            numericBoxOcc.SkipEventDuringInput = false;
+            numericBoxOcc.SmartIncrement = true;
+            numericBoxOcc.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxOcc, resources.GetString("numericBoxOcc.ToolTip"));
+            numericBoxOcc.TrimEndZero = true;
             // 
             // numericBoxZ
             // 
-            resources.ApplyResources(this.numericBoxZ, "numericBoxZ");
-            this.numericBoxZ.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxZ.DecimalPlaces = 6;
-            this.numericBoxZ.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxZ.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxZ.Name = "numericBoxZ";
-            this.numericBoxZ.RoundErrorAccuracy = -1;
-            this.numericBoxZ.ShowFraction = true;
-            this.numericBoxZ.SkipEventDuringInput = false;
-            this.numericBoxZ.SmartIncrement = true;
-            this.numericBoxZ.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxZ.ThonsandsSeparator = true;
-            this.numericBoxZ.TrimEndZero = true;
+            resources.ApplyResources(numericBoxZ, "numericBoxZ");
+            numericBoxZ.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxZ.DecimalPlaces = 6;
+            numericBoxZ.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxZ.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxZ.Name = "numericBoxZ";
+            numericBoxZ.RoundErrorAccuracy = -1;
+            numericBoxZ.ShowFraction = true;
+            numericBoxZ.SkipEventDuringInput = false;
+            numericBoxZ.SmartIncrement = true;
+            numericBoxZ.ThonsandsSeparator = true;
+            numericBoxZ.TrimEndZero = true;
             // 
             // numericBoxYerr
             // 
-            this.numericBoxYerr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYerr.DecimalPlaces = 6;
-            resources.ApplyResources(this.numericBoxYerr, "numericBoxYerr");
-            this.numericBoxYerr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYerr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYerr.Name = "numericBoxYerr";
-            this.numericBoxYerr.RoundErrorAccuracy = -1;
-            this.numericBoxYerr.SkipEventDuringInput = false;
-            this.numericBoxYerr.SmartIncrement = true;
-            this.numericBoxYerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYerr.ThonsandsSeparator = true;
-            this.numericBoxYerr.TrimEndZero = true;
+            numericBoxYerr.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxYerr.DecimalPlaces = 6;
+            resources.ApplyResources(numericBoxYerr, "numericBoxYerr");
+            numericBoxYerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxYerr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxYerr.Name = "numericBoxYerr";
+            numericBoxYerr.RoundErrorAccuracy = -1;
+            numericBoxYerr.SkipEventDuringInput = false;
+            numericBoxYerr.SmartIncrement = true;
+            numericBoxYerr.ThonsandsSeparator = true;
+            numericBoxYerr.TrimEndZero = true;
             // 
             // numericBoxXerr
             // 
-            this.numericBoxXerr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxXerr.DecimalPlaces = 6;
-            resources.ApplyResources(this.numericBoxXerr, "numericBoxXerr");
-            this.numericBoxXerr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxXerr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxXerr.Name = "numericBoxXerr";
-            this.numericBoxXerr.RoundErrorAccuracy = -1;
-            this.numericBoxXerr.SkipEventDuringInput = false;
-            this.numericBoxXerr.SmartIncrement = true;
-            this.numericBoxXerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxXerr.ThonsandsSeparator = true;
-            this.numericBoxXerr.TrimEndZero = true;
+            numericBoxXerr.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxXerr.DecimalPlaces = 6;
+            resources.ApplyResources(numericBoxXerr, "numericBoxXerr");
+            numericBoxXerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxXerr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxXerr.Name = "numericBoxXerr";
+            numericBoxXerr.RoundErrorAccuracy = -1;
+            numericBoxXerr.SkipEventDuringInput = false;
+            numericBoxXerr.SmartIncrement = true;
+            numericBoxXerr.ThonsandsSeparator = true;
+            numericBoxXerr.TrimEndZero = true;
             // 
             // numericBoxY
             // 
-            resources.ApplyResources(this.numericBoxY, "numericBoxY");
-            this.numericBoxY.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxY.DecimalPlaces = 6;
-            this.numericBoxY.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxY.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxY.Name = "numericBoxY";
-            this.numericBoxY.RoundErrorAccuracy = -1;
-            this.numericBoxY.ShowFraction = true;
-            this.numericBoxY.SkipEventDuringInput = false;
-            this.numericBoxY.SmartIncrement = true;
-            this.numericBoxY.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxY.ThonsandsSeparator = true;
-            this.numericBoxY.TrimEndZero = true;
+            resources.ApplyResources(numericBoxY, "numericBoxY");
+            numericBoxY.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxY.DecimalPlaces = 6;
+            numericBoxY.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxY.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxY.Name = "numericBoxY";
+            numericBoxY.RoundErrorAccuracy = -1;
+            numericBoxY.ShowFraction = true;
+            numericBoxY.SkipEventDuringInput = false;
+            numericBoxY.SmartIncrement = true;
+            numericBoxY.ThonsandsSeparator = true;
+            numericBoxY.TrimEndZero = true;
             // 
             // numericBoxX
             // 
-            resources.ApplyResources(this.numericBoxX, "numericBoxX");
-            this.numericBoxX.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxX.DecimalPlaces = 6;
-            this.numericBoxX.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxX.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxX.Name = "numericBoxX";
-            this.numericBoxX.RoundErrorAccuracy = -1;
-            this.numericBoxX.ShowFraction = true;
-            this.numericBoxX.SkipEventDuringInput = false;
-            this.numericBoxX.SmartIncrement = true;
-            this.numericBoxX.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxX.ThonsandsSeparator = true;
-            this.numericBoxX.TrimEndZero = true;
+            resources.ApplyResources(numericBoxX, "numericBoxX");
+            numericBoxX.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxX.DecimalPlaces = 6;
+            numericBoxX.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxX.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxX.Name = "numericBoxX";
+            numericBoxX.RoundErrorAccuracy = -1;
+            numericBoxX.ShowFraction = true;
+            numericBoxX.SkipEventDuringInput = false;
+            numericBoxX.SmartIncrement = true;
+            numericBoxX.ThonsandsSeparator = true;
+            numericBoxX.TrimEndZero = true;
             // 
             // numericBoxZerr
             // 
-            this.numericBoxZerr.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxZerr.DecimalPlaces = 6;
-            resources.ApplyResources(this.numericBoxZerr, "numericBoxZerr");
-            this.numericBoxZerr.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxZerr.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxZerr.Name = "numericBoxZerr";
-            this.numericBoxZerr.RoundErrorAccuracy = -1;
-            this.numericBoxZerr.SkipEventDuringInput = false;
-            this.numericBoxZerr.SmartIncrement = true;
-            this.numericBoxZerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxZerr.ThonsandsSeparator = true;
-            this.numericBoxZerr.TrimEndZero = true;
+            numericBoxZerr.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxZerr.DecimalPlaces = 6;
+            resources.ApplyResources(numericBoxZerr, "numericBoxZerr");
+            numericBoxZerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxZerr.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxZerr.Name = "numericBoxZerr";
+            numericBoxZerr.RoundErrorAccuracy = -1;
+            numericBoxZerr.SkipEventDuringInput = false;
+            numericBoxZerr.SmartIncrement = true;
+            numericBoxZerr.ThonsandsSeparator = true;
+            numericBoxZerr.TrimEndZero = true;
             // 
             // tabPageOriginShift
             // 
-            this.tabPageOriginShift.Controls.Add(this.flowLayoutPanel3);
-            this.tabPageOriginShift.Controls.Add(this.label7);
-            this.tabPageOriginShift.Controls.Add(this.buttonOriginShiftCustom);
-            this.tabPageOriginShift.Controls.Add(this.numericBoxOriginShiftZ);
-            this.tabPageOriginShift.Controls.Add(this.numericBoxOriginShiftY);
-            this.tabPageOriginShift.Controls.Add(this.numericBoxOriginShiftX);
-            resources.ApplyResources(this.tabPageOriginShift, "tabPageOriginShift");
-            this.tabPageOriginShift.Name = "tabPageOriginShift";
+            tabPageOriginShift.Controls.Add(flowLayoutPanel3);
+            tabPageOriginShift.Controls.Add(label7);
+            tabPageOriginShift.Controls.Add(buttonOriginShiftCustom);
+            tabPageOriginShift.Controls.Add(numericBoxOriginShiftZ);
+            tabPageOriginShift.Controls.Add(numericBoxOriginShiftY);
+            tabPageOriginShift.Controls.Add(numericBoxOriginShiftX);
+            resources.ApplyResources(tabPageOriginShift, "tabPageOriginShift");
+            tabPageOriginShift.Name = "tabPageOriginShift";
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonOriginShiftPlus);
-            this.flowLayoutPanel3.Controls.Add(this.radioButtonOriginShiftMinus);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift1);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift2);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift8);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift7);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift6);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift5);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift4);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift3);
-            this.flowLayoutPanel3.Controls.Add(this.buttonOriginShift9);
-            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Controls.Add(radioButtonOriginShiftPlus);
+            flowLayoutPanel3.Controls.Add(radioButtonOriginShiftMinus);
+            flowLayoutPanel3.Controls.Add(buttonOriginShift1);
+            flowLayoutPanel3.Controls.Add(buttonOriginShift2);
+            flowLayoutPanel3.Controls.Add(buttonOriginShift8);
+            flowLayoutPanel3.Controls.Add(buttonOriginShift7);
+            flowLayoutPanel3.Controls.Add(buttonOriginShift6);
+            flowLayoutPanel3.Controls.Add(buttonOriginShift5);
+            flowLayoutPanel3.Controls.Add(buttonOriginShift4);
+            flowLayoutPanel3.Controls.Add(buttonOriginShift3);
+            flowLayoutPanel3.Controls.Add(buttonOriginShift9);
+            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
             // radioButtonOriginShiftPlus
             // 
-            resources.ApplyResources(this.radioButtonOriginShiftPlus, "radioButtonOriginShiftPlus");
-            this.radioButtonOriginShiftPlus.Checked = true;
-            this.radioButtonOriginShiftPlus.Name = "radioButtonOriginShiftPlus";
-            this.radioButtonOriginShiftPlus.TabStop = true;
-            this.radioButtonOriginShiftPlus.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonOriginShiftPlus, "radioButtonOriginShiftPlus");
+            radioButtonOriginShiftPlus.Checked = true;
+            radioButtonOriginShiftPlus.Name = "radioButtonOriginShiftPlus";
+            radioButtonOriginShiftPlus.TabStop = true;
+            radioButtonOriginShiftPlus.UseVisualStyleBackColor = true;
             // 
             // radioButtonOriginShiftMinus
             // 
-            resources.ApplyResources(this.radioButtonOriginShiftMinus, "radioButtonOriginShiftMinus");
-            this.radioButtonOriginShiftMinus.Name = "radioButtonOriginShiftMinus";
-            this.radioButtonOriginShiftMinus.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonOriginShiftMinus, "radioButtonOriginShiftMinus");
+            radioButtonOriginShiftMinus.Name = "radioButtonOriginShiftMinus";
+            radioButtonOriginShiftMinus.UseVisualStyleBackColor = true;
             // 
             // buttonOriginShift1
             // 
-            resources.ApplyResources(this.buttonOriginShift1, "buttonOriginShift1");
-            this.buttonOriginShift1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift1.Name = "buttonOriginShift1";
-            this.buttonOriginShift1.Tag = "0.125 0.125 0.125";
-            this.buttonOriginShift1.UseVisualStyleBackColor = false;
-            this.buttonOriginShift1.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShift1, "buttonOriginShift1");
+            buttonOriginShift1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShift1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShift1.Name = "buttonOriginShift1";
+            buttonOriginShift1.Tag = "0.125 0.125 0.125";
+            buttonOriginShift1.UseVisualStyleBackColor = false;
+            buttonOriginShift1.Click += buttonOriginShift_Click;
             // 
             // buttonOriginShift2
             // 
-            resources.ApplyResources(this.buttonOriginShift2, "buttonOriginShift2");
-            this.buttonOriginShift2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift2.Name = "buttonOriginShift2";
-            this.buttonOriginShift2.Tag = "0.25 0.25 0.25";
-            this.buttonOriginShift2.UseVisualStyleBackColor = false;
-            this.buttonOriginShift2.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShift2, "buttonOriginShift2");
+            buttonOriginShift2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShift2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShift2.Name = "buttonOriginShift2";
+            buttonOriginShift2.Tag = "0.25 0.25 0.25";
+            buttonOriginShift2.UseVisualStyleBackColor = false;
+            buttonOriginShift2.Click += buttonOriginShift_Click;
             // 
             // buttonOriginShift8
             // 
-            resources.ApplyResources(this.buttonOriginShift8, "buttonOriginShift8");
-            this.buttonOriginShift8.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift8.Name = "buttonOriginShift8";
-            this.buttonOriginShift8.Tag = "0.25 -0.25 0.25";
-            this.buttonOriginShift8.UseVisualStyleBackColor = false;
-            this.buttonOriginShift8.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShift8, "buttonOriginShift8");
+            buttonOriginShift8.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShift8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShift8.Name = "buttonOriginShift8";
+            buttonOriginShift8.Tag = "0.25 -0.25 0.25";
+            buttonOriginShift8.UseVisualStyleBackColor = false;
+            buttonOriginShift8.Click += buttonOriginShift_Click;
             // 
             // buttonOriginShift7
             // 
-            resources.ApplyResources(this.buttonOriginShift7, "buttonOriginShift7");
-            this.buttonOriginShift7.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift7.Name = "buttonOriginShift7";
-            this.buttonOriginShift7.Tag = "0.25 -0.25 0";
-            this.buttonOriginShift7.UseVisualStyleBackColor = false;
-            this.buttonOriginShift7.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShift7, "buttonOriginShift7");
+            buttonOriginShift7.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShift7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShift7.Name = "buttonOriginShift7";
+            buttonOriginShift7.Tag = "0.25 -0.25 0";
+            buttonOriginShift7.UseVisualStyleBackColor = false;
+            buttonOriginShift7.Click += buttonOriginShift_Click;
             // 
             // buttonOriginShift6
             // 
-            resources.ApplyResources(this.buttonOriginShift6, "buttonOriginShift6");
-            this.buttonOriginShift6.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift6.Name = "buttonOriginShift6";
-            this.buttonOriginShift6.Tag = "0.25 0.25 0";
-            this.buttonOriginShift6.UseVisualStyleBackColor = false;
-            this.buttonOriginShift6.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShift6, "buttonOriginShift6");
+            buttonOriginShift6.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShift6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShift6.Name = "buttonOriginShift6";
+            buttonOriginShift6.Tag = "0.25 0.25 0";
+            buttonOriginShift6.UseVisualStyleBackColor = false;
+            buttonOriginShift6.Click += buttonOriginShift_Click;
             // 
             // buttonOriginShift5
             // 
-            resources.ApplyResources(this.buttonOriginShift5, "buttonOriginShift5");
-            this.buttonOriginShift5.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift5.Name = "buttonOriginShift5";
-            this.buttonOriginShift5.Tag = "0 0.25 0.25";
-            this.buttonOriginShift5.UseVisualStyleBackColor = false;
-            this.buttonOriginShift5.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShift5, "buttonOriginShift5");
+            buttonOriginShift5.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShift5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShift5.Name = "buttonOriginShift5";
+            buttonOriginShift5.Tag = "0 0.25 0.25";
+            buttonOriginShift5.UseVisualStyleBackColor = false;
+            buttonOriginShift5.Click += buttonOriginShift_Click;
             // 
             // buttonOriginShift4
             // 
-            resources.ApplyResources(this.buttonOriginShift4, "buttonOriginShift4");
-            this.buttonOriginShift4.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift4.Name = "buttonOriginShift4";
-            this.buttonOriginShift4.Tag = "0.25 0 0.25";
-            this.buttonOriginShift4.UseVisualStyleBackColor = false;
-            this.buttonOriginShift4.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShift4, "buttonOriginShift4");
+            buttonOriginShift4.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShift4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShift4.Name = "buttonOriginShift4";
+            buttonOriginShift4.Tag = "0.25 0 0.25";
+            buttonOriginShift4.UseVisualStyleBackColor = false;
+            buttonOriginShift4.Click += buttonOriginShift_Click;
             // 
             // buttonOriginShift3
             // 
-            resources.ApplyResources(this.buttonOriginShift3, "buttonOriginShift3");
-            this.buttonOriginShift3.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift3.Name = "buttonOriginShift3";
-            this.buttonOriginShift3.Tag = "0 0.25 0.125";
-            this.buttonOriginShift3.UseVisualStyleBackColor = false;
-            this.buttonOriginShift3.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShift3, "buttonOriginShift3");
+            buttonOriginShift3.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShift3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShift3.Name = "buttonOriginShift3";
+            buttonOriginShift3.Tag = "0 0.25 0.125";
+            buttonOriginShift3.UseVisualStyleBackColor = false;
+            buttonOriginShift3.Click += buttonOriginShift_Click;
             // 
             // buttonOriginShift9
             // 
-            resources.ApplyResources(this.buttonOriginShift9, "buttonOriginShift9");
-            this.buttonOriginShift9.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShift9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShift9.Name = "buttonOriginShift9";
-            this.buttonOriginShift9.Tag = "0 0.25 -0.125";
-            this.buttonOriginShift9.UseVisualStyleBackColor = false;
-            this.buttonOriginShift9.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShift9, "buttonOriginShift9");
+            buttonOriginShift9.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShift9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShift9.Name = "buttonOriginShift9";
+            buttonOriginShift9.Tag = "0 0.25 -0.125";
+            buttonOriginShift9.UseVisualStyleBackColor = false;
+            buttonOriginShift9.Click += buttonOriginShift_Click;
             // 
             // label7
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
             // 
             // buttonOriginShiftCustom
             // 
-            resources.ApplyResources(this.buttonOriginShiftCustom, "buttonOriginShiftCustom");
-            this.buttonOriginShiftCustom.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonOriginShiftCustom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonOriginShiftCustom.Name = "buttonOriginShiftCustom";
-            this.buttonOriginShiftCustom.Tag = "+0.5";
-            this.buttonOriginShiftCustom.UseVisualStyleBackColor = false;
-            this.buttonOriginShiftCustom.Click += new System.EventHandler(this.buttonOriginShift_Click);
+            resources.ApplyResources(buttonOriginShiftCustom, "buttonOriginShiftCustom");
+            buttonOriginShiftCustom.BackColor = System.Drawing.Color.MediumSeaGreen;
+            buttonOriginShiftCustom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonOriginShiftCustom.Name = "buttonOriginShiftCustom";
+            buttonOriginShiftCustom.Tag = "+0.5";
+            buttonOriginShiftCustom.UseVisualStyleBackColor = false;
+            buttonOriginShiftCustom.Click += buttonOriginShift_Click;
             // 
             // numericBoxOriginShiftZ
             // 
-            resources.ApplyResources(this.numericBoxOriginShiftZ, "numericBoxOriginShiftZ");
-            this.numericBoxOriginShiftZ.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOriginShiftZ.DecimalPlaces = 4;
-            this.numericBoxOriginShiftZ.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOriginShiftZ.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOriginShiftZ.Maximum = 1D;
-            this.numericBoxOriginShiftZ.Minimum = -1D;
-            this.numericBoxOriginShiftZ.Name = "numericBoxOriginShiftZ";
-            this.numericBoxOriginShiftZ.RoundErrorAccuracy = -1;
-            this.numericBoxOriginShiftZ.ShowFraction = true;
-            this.numericBoxOriginShiftZ.SkipEventDuringInput = false;
-            this.numericBoxOriginShiftZ.SmartIncrement = true;
-            this.numericBoxOriginShiftZ.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxOriginShiftZ.ThonsandsSeparator = true;
+            resources.ApplyResources(numericBoxOriginShiftZ, "numericBoxOriginShiftZ");
+            numericBoxOriginShiftZ.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxOriginShiftZ.DecimalPlaces = 4;
+            numericBoxOriginShiftZ.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOriginShiftZ.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOriginShiftZ.Maximum = 1D;
+            numericBoxOriginShiftZ.Minimum = -1D;
+            numericBoxOriginShiftZ.Name = "numericBoxOriginShiftZ";
+            numericBoxOriginShiftZ.RoundErrorAccuracy = -1;
+            numericBoxOriginShiftZ.ShowFraction = true;
+            numericBoxOriginShiftZ.SkipEventDuringInput = false;
+            numericBoxOriginShiftZ.SmartIncrement = true;
+            numericBoxOriginShiftZ.ThonsandsSeparator = true;
             // 
             // numericBoxOriginShiftY
             // 
-            resources.ApplyResources(this.numericBoxOriginShiftY, "numericBoxOriginShiftY");
-            this.numericBoxOriginShiftY.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOriginShiftY.DecimalPlaces = 4;
-            this.numericBoxOriginShiftY.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOriginShiftY.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOriginShiftY.Maximum = 1D;
-            this.numericBoxOriginShiftY.Minimum = -1D;
-            this.numericBoxOriginShiftY.Name = "numericBoxOriginShiftY";
-            this.numericBoxOriginShiftY.RoundErrorAccuracy = -1;
-            this.numericBoxOriginShiftY.ShowFraction = true;
-            this.numericBoxOriginShiftY.SkipEventDuringInput = false;
-            this.numericBoxOriginShiftY.SmartIncrement = true;
-            this.numericBoxOriginShiftY.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxOriginShiftY.ThonsandsSeparator = true;
+            resources.ApplyResources(numericBoxOriginShiftY, "numericBoxOriginShiftY");
+            numericBoxOriginShiftY.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxOriginShiftY.DecimalPlaces = 4;
+            numericBoxOriginShiftY.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOriginShiftY.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOriginShiftY.Maximum = 1D;
+            numericBoxOriginShiftY.Minimum = -1D;
+            numericBoxOriginShiftY.Name = "numericBoxOriginShiftY";
+            numericBoxOriginShiftY.RoundErrorAccuracy = -1;
+            numericBoxOriginShiftY.ShowFraction = true;
+            numericBoxOriginShiftY.SkipEventDuringInput = false;
+            numericBoxOriginShiftY.SmartIncrement = true;
+            numericBoxOriginShiftY.ThonsandsSeparator = true;
             // 
             // numericBoxOriginShiftX
             // 
-            resources.ApplyResources(this.numericBoxOriginShiftX, "numericBoxOriginShiftX");
-            this.numericBoxOriginShiftX.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOriginShiftX.DecimalPlaces = 4;
-            this.numericBoxOriginShiftX.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOriginShiftX.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxOriginShiftX.Maximum = 1D;
-            this.numericBoxOriginShiftX.Minimum = -1D;
-            this.numericBoxOriginShiftX.Name = "numericBoxOriginShiftX";
-            this.numericBoxOriginShiftX.RoundErrorAccuracy = -1;
-            this.numericBoxOriginShiftX.ShowFraction = true;
-            this.numericBoxOriginShiftX.SkipEventDuringInput = false;
-            this.numericBoxOriginShiftX.SmartIncrement = true;
-            this.numericBoxOriginShiftX.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxOriginShiftX.ThonsandsSeparator = true;
+            resources.ApplyResources(numericBoxOriginShiftX, "numericBoxOriginShiftX");
+            numericBoxOriginShiftX.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxOriginShiftX.DecimalPlaces = 4;
+            numericBoxOriginShiftX.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOriginShiftX.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxOriginShiftX.Maximum = 1D;
+            numericBoxOriginShiftX.Minimum = -1D;
+            numericBoxOriginShiftX.Name = "numericBoxOriginShiftX";
+            numericBoxOriginShiftX.RoundErrorAccuracy = -1;
+            numericBoxOriginShiftX.ShowFraction = true;
+            numericBoxOriginShiftX.SkipEventDuringInput = false;
+            numericBoxOriginShiftX.SmartIncrement = true;
+            numericBoxOriginShiftX.ThonsandsSeparator = true;
             // 
             // tabPageDebyeWaller
             // 
-            this.tabPageDebyeWaller.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanel6);
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelIso);
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanel5);
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanel4);
-            this.tabPageDebyeWaller.Controls.Add(this.checkBoxDetailsDebyeWallerError);
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso2);
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso1);
-            this.tabPageDebyeWaller.Cursor = System.Windows.Forms.Cursors.Default;
-            resources.ApplyResources(this.tabPageDebyeWaller, "tabPageDebyeWaller");
-            this.tabPageDebyeWaller.Name = "tabPageDebyeWaller";
-            this.toolTip.SetToolTip(this.tabPageDebyeWaller, resources.GetString("tabPageDebyeWaller.ToolTip"));
+            tabPageDebyeWaller.BackColor = System.Drawing.Color.Transparent;
+            tabPageDebyeWaller.Controls.Add(flowLayoutPanel6);
+            tabPageDebyeWaller.Controls.Add(flowLayoutPanelIso);
+            tabPageDebyeWaller.Controls.Add(flowLayoutPanel5);
+            tabPageDebyeWaller.Controls.Add(flowLayoutPanel4);
+            tabPageDebyeWaller.Controls.Add(checkBoxDetailsDebyeWallerError);
+            tabPageDebyeWaller.Controls.Add(flowLayoutPanelAniso2);
+            tabPageDebyeWaller.Controls.Add(flowLayoutPanelAniso1);
+            resources.ApplyResources(tabPageDebyeWaller, "tabPageDebyeWaller");
+            tabPageDebyeWaller.Name = "tabPageDebyeWaller";
+            toolTip.SetToolTip(tabPageDebyeWaller, resources.GetString("tabPageDebyeWaller.ToolTip"));
             // 
             // flowLayoutPanel6
             // 
-            resources.ApplyResources(this.flowLayoutPanel6, "flowLayoutPanel6");
-            this.flowLayoutPanel6.Controls.Add(this.label14);
-            this.flowLayoutPanel6.Controls.Add(this.labelDimension);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
+            flowLayoutPanel6.Controls.Add(label14);
+            flowLayoutPanel6.Controls.Add(labelDimension);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
             // 
             // label14
             // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
+            resources.ApplyResources(label14, "label14");
+            label14.Name = "label14";
             // 
             // labelDimension
             // 
-            resources.ApplyResources(this.labelDimension, "labelDimension");
-            this.labelDimension.Name = "labelDimension";
+            resources.ApplyResources(labelDimension, "labelDimension");
+            labelDimension.Name = "labelDimension";
             // 
             // flowLayoutPanel5
             // 
-            resources.ApplyResources(this.flowLayoutPanel5, "flowLayoutPanel5");
-            this.flowLayoutPanel5.Controls.Add(this.label3);
-            this.flowLayoutPanel5.Controls.Add(this.radioButtonDebyeWallerTypeU);
-            this.flowLayoutPanel5.Controls.Add(this.radioButtonDebyeWallerTypeB);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
+            flowLayoutPanel5.Controls.Add(label3);
+            flowLayoutPanel5.Controls.Add(radioButtonDebyeWallerTypeU);
+            flowLayoutPanel5.Controls.Add(radioButtonDebyeWallerTypeB);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
             // 
             // label3
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
             // 
             // radioButtonDebyeWallerTypeU
             // 
-            resources.ApplyResources(this.radioButtonDebyeWallerTypeU, "radioButtonDebyeWallerTypeU");
-            this.radioButtonDebyeWallerTypeU.Name = "radioButtonDebyeWallerTypeU";
-            this.toolTip.SetToolTip(this.radioButtonDebyeWallerTypeU, resources.GetString("radioButtonDebyeWallerTypeU.ToolTip"));
-            this.radioButtonDebyeWallerTypeU.CheckedChanged += new System.EventHandler(this.radioButtonDebyeWallerTypeU_CheckedChanged);
+            resources.ApplyResources(radioButtonDebyeWallerTypeU, "radioButtonDebyeWallerTypeU");
+            radioButtonDebyeWallerTypeU.Name = "radioButtonDebyeWallerTypeU";
+            toolTip.SetToolTip(radioButtonDebyeWallerTypeU, resources.GetString("radioButtonDebyeWallerTypeU.ToolTip"));
+            radioButtonDebyeWallerTypeU.CheckedChanged += radioButtonDebyeWallerTypeU_CheckedChanged;
             // 
             // radioButtonDebyeWallerTypeB
             // 
-            resources.ApplyResources(this.radioButtonDebyeWallerTypeB, "radioButtonDebyeWallerTypeB");
-            this.radioButtonDebyeWallerTypeB.Checked = true;
-            this.radioButtonDebyeWallerTypeB.Name = "radioButtonDebyeWallerTypeB";
-            this.radioButtonDebyeWallerTypeB.TabStop = true;
-            this.toolTip.SetToolTip(this.radioButtonDebyeWallerTypeB, resources.GetString("radioButtonDebyeWallerTypeB.ToolTip"));
+            resources.ApplyResources(radioButtonDebyeWallerTypeB, "radioButtonDebyeWallerTypeB");
+            radioButtonDebyeWallerTypeB.Checked = true;
+            radioButtonDebyeWallerTypeB.Name = "radioButtonDebyeWallerTypeB";
+            radioButtonDebyeWallerTypeB.TabStop = true;
+            toolTip.SetToolTip(radioButtonDebyeWallerTypeB, resources.GetString("radioButtonDebyeWallerTypeB.ToolTip"));
             // 
             // flowLayoutPanel4
             // 
-            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
-            this.flowLayoutPanel4.Controls.Add(this.label13);
-            this.flowLayoutPanel4.Controls.Add(this.radioButtonIsotoropy);
-            this.flowLayoutPanel4.Controls.Add(this.radioButtonAnisotropy);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(label13);
+            flowLayoutPanel4.Controls.Add(radioButtonIsotoropy);
+            flowLayoutPanel4.Controls.Add(radioButtonAnisotropy);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // label13
             // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
+            resources.ApplyResources(label13, "label13");
+            label13.Name = "label13";
             // 
             // checkBoxDetailsDebyeWallerError
             // 
-            resources.ApplyResources(this.checkBoxDetailsDebyeWallerError, "checkBoxDetailsDebyeWallerError");
-            this.checkBoxDetailsDebyeWallerError.Name = "checkBoxDetailsDebyeWallerError";
-            this.checkBoxDetailsDebyeWallerError.UseVisualStyleBackColor = true;
-            this.checkBoxDetailsDebyeWallerError.CheckedChanged += new System.EventHandler(this.checkBoxDebyeWallerError_CheckedChanged);
+            resources.ApplyResources(checkBoxDetailsDebyeWallerError, "checkBoxDetailsDebyeWallerError");
+            checkBoxDetailsDebyeWallerError.Name = "checkBoxDetailsDebyeWallerError";
+            checkBoxDetailsDebyeWallerError.UseVisualStyleBackColor = true;
+            checkBoxDetailsDebyeWallerError.CheckedChanged += checkBoxDebyeWallerError_CheckedChanged;
             // 
             // flowLayoutPanelAniso2
             // 
-            resources.ApplyResources(this.flowLayoutPanelAniso2, "flowLayoutPanelAniso2");
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericBoxB22);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericBoxB22err);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericBoxB23);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericBoxB23err);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericBoxB33);
-            this.flowLayoutPanelAniso2.Controls.Add(this.numericBoxB33err);
-            this.flowLayoutPanelAniso2.Name = "flowLayoutPanelAniso2";
+            resources.ApplyResources(flowLayoutPanelAniso2, "flowLayoutPanelAniso2");
+            flowLayoutPanelAniso2.Controls.Add(numericBoxB22);
+            flowLayoutPanelAniso2.Controls.Add(numericBoxB22err);
+            flowLayoutPanelAniso2.Controls.Add(numericBoxB23);
+            flowLayoutPanelAniso2.Controls.Add(numericBoxB23err);
+            flowLayoutPanelAniso2.Controls.Add(numericBoxB33);
+            flowLayoutPanelAniso2.Controls.Add(numericBoxB33err);
+            flowLayoutPanelAniso2.Name = "flowLayoutPanelAniso2";
             // 
             // numericBoxB22
             // 
-            this.numericBoxB22.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB22, "numericBoxB22");
-            this.numericBoxB22.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB22.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB22.Name = "numericBoxB22";
-            this.numericBoxB22.RoundErrorAccuracy = -1;
-            this.numericBoxB22.SkipEventDuringInput = false;
-            this.numericBoxB22.SmartIncrement = true;
-            this.numericBoxB22.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB22.ThonsandsSeparator = true;
+            numericBoxB22.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB22, "numericBoxB22");
+            numericBoxB22.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB22.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB22.Name = "numericBoxB22";
+            numericBoxB22.RoundErrorAccuracy = -1;
+            numericBoxB22.SkipEventDuringInput = false;
+            numericBoxB22.SmartIncrement = true;
+            numericBoxB22.ThonsandsSeparator = true;
             // 
             // numericBoxB22err
             // 
-            this.numericBoxB22err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB22err, "numericBoxB22err");
-            this.numericBoxB22err.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB22err.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB22err.Name = "numericBoxB22err";
-            this.numericBoxB22err.RoundErrorAccuracy = -1;
-            this.numericBoxB22err.SkipEventDuringInput = false;
-            this.numericBoxB22err.SmartIncrement = true;
-            this.numericBoxB22err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB22err.ThonsandsSeparator = true;
+            numericBoxB22err.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB22err, "numericBoxB22err");
+            numericBoxB22err.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB22err.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB22err.Name = "numericBoxB22err";
+            numericBoxB22err.RoundErrorAccuracy = -1;
+            numericBoxB22err.SkipEventDuringInput = false;
+            numericBoxB22err.SmartIncrement = true;
+            numericBoxB22err.ThonsandsSeparator = true;
             // 
             // numericBoxB23
             // 
-            this.numericBoxB23.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB23, "numericBoxB23");
-            this.numericBoxB23.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB23.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB23.Name = "numericBoxB23";
-            this.numericBoxB23.RoundErrorAccuracy = -1;
-            this.numericBoxB23.SkipEventDuringInput = false;
-            this.numericBoxB23.SmartIncrement = true;
-            this.numericBoxB23.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB23.ThonsandsSeparator = true;
+            numericBoxB23.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB23, "numericBoxB23");
+            numericBoxB23.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB23.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB23.Name = "numericBoxB23";
+            numericBoxB23.RoundErrorAccuracy = -1;
+            numericBoxB23.SkipEventDuringInput = false;
+            numericBoxB23.SmartIncrement = true;
+            numericBoxB23.ThonsandsSeparator = true;
             // 
             // numericBoxB23err
             // 
-            this.numericBoxB23err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB23err, "numericBoxB23err");
-            this.numericBoxB23err.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB23err.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB23err.Name = "numericBoxB23err";
-            this.numericBoxB23err.RoundErrorAccuracy = -1;
-            this.numericBoxB23err.SkipEventDuringInput = false;
-            this.numericBoxB23err.SmartIncrement = true;
-            this.numericBoxB23err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB23err.ThonsandsSeparator = true;
+            numericBoxB23err.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB23err, "numericBoxB23err");
+            numericBoxB23err.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB23err.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB23err.Name = "numericBoxB23err";
+            numericBoxB23err.RoundErrorAccuracy = -1;
+            numericBoxB23err.SkipEventDuringInput = false;
+            numericBoxB23err.SmartIncrement = true;
+            numericBoxB23err.ThonsandsSeparator = true;
             // 
             // numericBoxB33
             // 
-            this.numericBoxB33.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB33, "numericBoxB33");
-            this.numericBoxB33.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB33.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB33.Name = "numericBoxB33";
-            this.numericBoxB33.RoundErrorAccuracy = -1;
-            this.numericBoxB33.SkipEventDuringInput = false;
-            this.numericBoxB33.SmartIncrement = true;
-            this.numericBoxB33.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB33.ThonsandsSeparator = true;
+            numericBoxB33.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB33, "numericBoxB33");
+            numericBoxB33.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB33.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB33.Name = "numericBoxB33";
+            numericBoxB33.RoundErrorAccuracy = -1;
+            numericBoxB33.SkipEventDuringInput = false;
+            numericBoxB33.SmartIncrement = true;
+            numericBoxB33.ThonsandsSeparator = true;
             // 
             // numericBoxB33err
             // 
-            this.numericBoxB33err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB33err, "numericBoxB33err");
-            this.numericBoxB33err.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB33err.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB33err.Name = "numericBoxB33err";
-            this.numericBoxB33err.RoundErrorAccuracy = -1;
-            this.numericBoxB33err.SkipEventDuringInput = false;
-            this.numericBoxB33err.SmartIncrement = true;
-            this.numericBoxB33err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB33err.ThonsandsSeparator = true;
+            numericBoxB33err.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB33err, "numericBoxB33err");
+            numericBoxB33err.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB33err.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB33err.Name = "numericBoxB33err";
+            numericBoxB33err.RoundErrorAccuracy = -1;
+            numericBoxB33err.SkipEventDuringInput = false;
+            numericBoxB33err.SmartIncrement = true;
+            numericBoxB33err.ThonsandsSeparator = true;
             // 
             // flowLayoutPanelAniso1
             // 
-            resources.ApplyResources(this.flowLayoutPanelAniso1, "flowLayoutPanelAniso1");
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericBoxB11);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericBoxB11err);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericBoxB12);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericBoxB12err);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericBoxB13);
-            this.flowLayoutPanelAniso1.Controls.Add(this.numericBoxB13err);
-            this.flowLayoutPanelAniso1.Name = "flowLayoutPanelAniso1";
+            resources.ApplyResources(flowLayoutPanelAniso1, "flowLayoutPanelAniso1");
+            flowLayoutPanelAniso1.Controls.Add(numericBoxB11);
+            flowLayoutPanelAniso1.Controls.Add(numericBoxB11err);
+            flowLayoutPanelAniso1.Controls.Add(numericBoxB12);
+            flowLayoutPanelAniso1.Controls.Add(numericBoxB12err);
+            flowLayoutPanelAniso1.Controls.Add(numericBoxB13);
+            flowLayoutPanelAniso1.Controls.Add(numericBoxB13err);
+            flowLayoutPanelAniso1.Name = "flowLayoutPanelAniso1";
             // 
             // numericBoxB11
             // 
-            this.numericBoxB11.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB11, "numericBoxB11");
-            this.numericBoxB11.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB11.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB11.Name = "numericBoxB11";
-            this.numericBoxB11.RoundErrorAccuracy = -1;
-            this.numericBoxB11.SkipEventDuringInput = false;
-            this.numericBoxB11.SmartIncrement = true;
-            this.numericBoxB11.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB11.ThonsandsSeparator = true;
+            numericBoxB11.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB11, "numericBoxB11");
+            numericBoxB11.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB11.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB11.Name = "numericBoxB11";
+            numericBoxB11.RoundErrorAccuracy = -1;
+            numericBoxB11.SkipEventDuringInput = false;
+            numericBoxB11.SmartIncrement = true;
+            numericBoxB11.ThonsandsSeparator = true;
             // 
             // numericBoxB11err
             // 
-            this.numericBoxB11err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB11err, "numericBoxB11err");
-            this.numericBoxB11err.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB11err.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB11err.Name = "numericBoxB11err";
-            this.numericBoxB11err.RoundErrorAccuracy = -1;
-            this.numericBoxB11err.SkipEventDuringInput = false;
-            this.numericBoxB11err.SmartIncrement = true;
-            this.numericBoxB11err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB11err.ThonsandsSeparator = true;
+            numericBoxB11err.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB11err, "numericBoxB11err");
+            numericBoxB11err.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB11err.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB11err.Name = "numericBoxB11err";
+            numericBoxB11err.RoundErrorAccuracy = -1;
+            numericBoxB11err.SkipEventDuringInput = false;
+            numericBoxB11err.SmartIncrement = true;
+            numericBoxB11err.ThonsandsSeparator = true;
             // 
             // numericBoxB12
             // 
-            this.numericBoxB12.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB12, "numericBoxB12");
-            this.numericBoxB12.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB12.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB12.Name = "numericBoxB12";
-            this.numericBoxB12.RoundErrorAccuracy = -1;
-            this.numericBoxB12.SkipEventDuringInput = false;
-            this.numericBoxB12.SmartIncrement = true;
-            this.numericBoxB12.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB12.ThonsandsSeparator = true;
+            numericBoxB12.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB12, "numericBoxB12");
+            numericBoxB12.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB12.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB12.Name = "numericBoxB12";
+            numericBoxB12.RoundErrorAccuracy = -1;
+            numericBoxB12.SkipEventDuringInput = false;
+            numericBoxB12.SmartIncrement = true;
+            numericBoxB12.ThonsandsSeparator = true;
             // 
             // numericBoxB12err
             // 
-            this.numericBoxB12err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB12err, "numericBoxB12err");
-            this.numericBoxB12err.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB12err.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB12err.Name = "numericBoxB12err";
-            this.numericBoxB12err.RoundErrorAccuracy = -1;
-            this.numericBoxB12err.SkipEventDuringInput = false;
-            this.numericBoxB12err.SmartIncrement = true;
-            this.numericBoxB12err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB12err.ThonsandsSeparator = true;
+            numericBoxB12err.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB12err, "numericBoxB12err");
+            numericBoxB12err.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB12err.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB12err.Name = "numericBoxB12err";
+            numericBoxB12err.RoundErrorAccuracy = -1;
+            numericBoxB12err.SkipEventDuringInput = false;
+            numericBoxB12err.SmartIncrement = true;
+            numericBoxB12err.ThonsandsSeparator = true;
             // 
             // numericBoxB13
             // 
-            this.numericBoxB13.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB13, "numericBoxB13");
-            this.numericBoxB13.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB13.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB13.Name = "numericBoxB13";
-            this.numericBoxB13.RoundErrorAccuracy = -1;
-            this.numericBoxB13.SkipEventDuringInput = false;
-            this.numericBoxB13.SmartIncrement = true;
-            this.numericBoxB13.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB13.ThonsandsSeparator = true;
+            numericBoxB13.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB13, "numericBoxB13");
+            numericBoxB13.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB13.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB13.Name = "numericBoxB13";
+            numericBoxB13.RoundErrorAccuracy = -1;
+            numericBoxB13.SkipEventDuringInput = false;
+            numericBoxB13.SmartIncrement = true;
+            numericBoxB13.ThonsandsSeparator = true;
             // 
             // numericBoxB13err
             // 
-            this.numericBoxB13err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.numericBoxB13err, "numericBoxB13err");
-            this.numericBoxB13err.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB13err.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB13err.Name = "numericBoxB13err";
-            this.numericBoxB13err.RoundErrorAccuracy = -1;
-            this.numericBoxB13err.SkipEventDuringInput = false;
-            this.numericBoxB13err.SmartIncrement = true;
-            this.numericBoxB13err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB13err.ThonsandsSeparator = true;
+            numericBoxB13err.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB13err, "numericBoxB13err");
+            numericBoxB13err.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB13err.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxB13err.Name = "numericBoxB13err";
+            numericBoxB13err.RoundErrorAccuracy = -1;
+            numericBoxB13err.SkipEventDuringInput = false;
+            numericBoxB13err.SmartIncrement = true;
+            numericBoxB13err.ThonsandsSeparator = true;
             // 
             // tabPageScatteringFactor
             // 
-            this.tabPageScatteringFactor.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageScatteringFactor.Controls.Add(this.richTextBoxIsotope);
-            this.tabPageScatteringFactor.Controls.Add(this.label34);
-            this.tabPageScatteringFactor.Controls.Add(this.buttonEditIsotopeAbundance);
-            this.tabPageScatteringFactor.Controls.Add(this.label5);
-            this.tabPageScatteringFactor.Controls.Add(this.comboBoxScatteringFactorElectron);
-            this.tabPageScatteringFactor.Controls.Add(this.comboBoxNeutron);
-            this.tabPageScatteringFactor.Controls.Add(this.comboBoxScatteringFactorXray);
-            this.tabPageScatteringFactor.Controls.Add(this.label6);
-            this.tabPageScatteringFactor.Controls.Add(this.label4);
-            this.tabPageScatteringFactor.Cursor = System.Windows.Forms.Cursors.Default;
-            resources.ApplyResources(this.tabPageScatteringFactor, "tabPageScatteringFactor");
-            this.tabPageScatteringFactor.Name = "tabPageScatteringFactor";
+            tabPageScatteringFactor.BackColor = System.Drawing.Color.Transparent;
+            tabPageScatteringFactor.Controls.Add(richTextBoxIsotope);
+            tabPageScatteringFactor.Controls.Add(label34);
+            tabPageScatteringFactor.Controls.Add(buttonEditIsotopeAbundance);
+            tabPageScatteringFactor.Controls.Add(label5);
+            tabPageScatteringFactor.Controls.Add(comboBoxScatteringFactorElectron);
+            tabPageScatteringFactor.Controls.Add(comboBoxNeutron);
+            tabPageScatteringFactor.Controls.Add(comboBoxScatteringFactorXray);
+            tabPageScatteringFactor.Controls.Add(label6);
+            tabPageScatteringFactor.Controls.Add(label4);
+            resources.ApplyResources(tabPageScatteringFactor, "tabPageScatteringFactor");
+            tabPageScatteringFactor.Name = "tabPageScatteringFactor";
             // 
             // richTextBoxIsotope
             // 
-            resources.ApplyResources(this.richTextBoxIsotope, "richTextBoxIsotope");
-            this.richTextBoxIsotope.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBoxIsotope.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxIsotope.Name = "richTextBoxIsotope";
-            this.richTextBoxIsotope.ReadOnly = true;
+            resources.ApplyResources(richTextBoxIsotope, "richTextBoxIsotope");
+            richTextBoxIsotope.BackColor = System.Drawing.SystemColors.Control;
+            richTextBoxIsotope.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            richTextBoxIsotope.Name = "richTextBoxIsotope";
+            richTextBoxIsotope.ReadOnly = true;
             // 
             // label34
             // 
-            resources.ApplyResources(this.label34, "label34");
-            this.label34.Name = "label34";
+            resources.ApplyResources(label34, "label34");
+            label34.Name = "label34";
             // 
             // buttonEditIsotopeAbundance
             // 
-            this.buttonEditIsotopeAbundance.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            resources.ApplyResources(this.buttonEditIsotopeAbundance, "buttonEditIsotopeAbundance");
-            this.buttonEditIsotopeAbundance.Name = "buttonEditIsotopeAbundance";
-            this.buttonEditIsotopeAbundance.UseVisualStyleBackColor = true;
-            this.buttonEditIsotopeAbundance.Click += new System.EventHandler(this.buttonEditIsotopeAbundance_Click);
+            buttonEditIsotopeAbundance.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            resources.ApplyResources(buttonEditIsotopeAbundance, "buttonEditIsotopeAbundance");
+            buttonEditIsotopeAbundance.Name = "buttonEditIsotopeAbundance";
+            buttonEditIsotopeAbundance.UseVisualStyleBackColor = true;
+            buttonEditIsotopeAbundance.Click += buttonEditIsotopeAbundance_Click;
             // 
             // label5
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.label5.Name = "label5";
+            resources.ApplyResources(label5, "label5");
+            label5.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            label5.Name = "label5";
             // 
             // comboBoxScatteringFactorElectron
             // 
-            this.comboBoxScatteringFactorElectron.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.comboBoxScatteringFactorElectron.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxScatteringFactorElectron.DropDownWidth = 120;
-            resources.ApplyResources(this.comboBoxScatteringFactorElectron, "comboBoxScatteringFactorElectron");
-            this.comboBoxScatteringFactorElectron.Name = "comboBoxScatteringFactorElectron";
-            this.toolTip.SetToolTip(this.comboBoxScatteringFactorElectron, resources.GetString("comboBoxScatteringFactorElectron.ToolTip"));
-            this.comboBoxScatteringFactorElectron.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
+            comboBoxScatteringFactorElectron.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            comboBoxScatteringFactorElectron.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxScatteringFactorElectron.DropDownWidth = 120;
+            resources.ApplyResources(comboBoxScatteringFactorElectron, "comboBoxScatteringFactorElectron");
+            comboBoxScatteringFactorElectron.Name = "comboBoxScatteringFactorElectron";
+            toolTip.SetToolTip(comboBoxScatteringFactorElectron, resources.GetString("comboBoxScatteringFactorElectron.ToolTip"));
+            comboBoxScatteringFactorElectron.SelectedIndexChanged += comboBoxAtomSub_SelectedIndexChanged;
             // 
             // comboBoxNeutron
             // 
-            this.comboBoxNeutron.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.comboBoxNeutron.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxNeutron.DropDownWidth = 120;
-            resources.ApplyResources(this.comboBoxNeutron, "comboBoxNeutron");
-            this.comboBoxNeutron.Items.AddRange(new object[] {
-            resources.GetString("comboBoxNeutron.Items"),
-            resources.GetString("comboBoxNeutron.Items1")});
-            this.comboBoxNeutron.Name = "comboBoxNeutron";
-            this.comboBoxNeutron.SelectedIndexChanged += new System.EventHandler(this.comboBoxNeutron_SelectedIndexChanged);
+            comboBoxNeutron.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            comboBoxNeutron.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxNeutron.DropDownWidth = 120;
+            resources.ApplyResources(comboBoxNeutron, "comboBoxNeutron");
+            comboBoxNeutron.Items.AddRange(new object[] { resources.GetString("comboBoxNeutron.Items"), resources.GetString("comboBoxNeutron.Items1") });
+            comboBoxNeutron.Name = "comboBoxNeutron";
+            comboBoxNeutron.SelectedIndexChanged += comboBoxNeutron_SelectedIndexChanged;
             // 
             // comboBoxScatteringFactorXray
             // 
-            this.comboBoxScatteringFactorXray.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.comboBoxScatteringFactorXray.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxScatteringFactorXray.DropDownWidth = 120;
-            resources.ApplyResources(this.comboBoxScatteringFactorXray, "comboBoxScatteringFactorXray");
-            this.comboBoxScatteringFactorXray.Name = "comboBoxScatteringFactorXray";
-            this.toolTip.SetToolTip(this.comboBoxScatteringFactorXray, resources.GetString("comboBoxScatteringFactorXray.ToolTip"));
-            this.comboBoxScatteringFactorXray.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
+            comboBoxScatteringFactorXray.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            comboBoxScatteringFactorXray.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxScatteringFactorXray.DropDownWidth = 120;
+            resources.ApplyResources(comboBoxScatteringFactorXray, "comboBoxScatteringFactorXray");
+            comboBoxScatteringFactorXray.Name = "comboBoxScatteringFactorXray";
+            toolTip.SetToolTip(comboBoxScatteringFactorXray, resources.GetString("comboBoxScatteringFactorXray.ToolTip"));
+            comboBoxScatteringFactorXray.SelectedIndexChanged += comboBoxAtomSub_SelectedIndexChanged;
             // 
             // label6
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.label6.Name = "label6";
+            resources.ApplyResources(label6, "label6");
+            label6.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            label6.Name = "label6";
             // 
             // label4
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.label4.Name = "label4";
+            resources.ApplyResources(label4, "label4");
+            label4.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            label4.Name = "label4";
             // 
             // tabPageAppearance
             // 
-            this.tabPageAppearance.Controls.Add(this.numericBoxAlpha);
-            this.tabPageAppearance.Controls.Add(this.numericBoxEmission);
-            this.tabPageAppearance.Controls.Add(this.numericBoxShininess);
-            this.tabPageAppearance.Controls.Add(this.numericBoxSpecular);
-            this.tabPageAppearance.Controls.Add(this.numericBoxDiffusion);
-            this.tabPageAppearance.Controls.Add(this.numericBoxAmbient);
-            this.tabPageAppearance.Controls.Add(this.checkBoxShowLabel);
-            this.tabPageAppearance.Controls.Add(this.label10);
-            this.tabPageAppearance.Controls.Add(this.label37);
-            this.tabPageAppearance.Controls.Add(this.label38);
-            this.tabPageAppearance.Controls.Add(this.label11);
-            this.tabPageAppearance.Controls.Add(this.label35);
-            this.tabPageAppearance.Controls.Add(this.label36);
-            this.tabPageAppearance.Controls.Add(this.numericBoxAtomRadius);
-            this.tabPageAppearance.Controls.Add(this.colorControlAtomColor);
-            resources.ApplyResources(this.tabPageAppearance, "tabPageAppearance");
-            this.tabPageAppearance.Name = "tabPageAppearance";
+            tabPageAppearance.Controls.Add(numericBoxAlpha);
+            tabPageAppearance.Controls.Add(numericBoxEmission);
+            tabPageAppearance.Controls.Add(numericBoxShininess);
+            tabPageAppearance.Controls.Add(numericBoxSpecular);
+            tabPageAppearance.Controls.Add(numericBoxDiffusion);
+            tabPageAppearance.Controls.Add(numericBoxAmbient);
+            tabPageAppearance.Controls.Add(checkBoxShowLabel);
+            tabPageAppearance.Controls.Add(label10);
+            tabPageAppearance.Controls.Add(label37);
+            tabPageAppearance.Controls.Add(label38);
+            tabPageAppearance.Controls.Add(label11);
+            tabPageAppearance.Controls.Add(label35);
+            tabPageAppearance.Controls.Add(label36);
+            tabPageAppearance.Controls.Add(numericBoxAtomRadius);
+            tabPageAppearance.Controls.Add(colorControlAtomColor);
+            resources.ApplyResources(tabPageAppearance, "tabPageAppearance");
+            tabPageAppearance.Name = "tabPageAppearance";
             // 
             // numericBoxAlpha
             // 
-            resources.ApplyResources(this.numericBoxAlpha, "numericBoxAlpha");
-            this.numericBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlpha.DecimalPlaces = 1;
-            this.numericBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlpha.Maximum = 1D;
-            this.numericBoxAlpha.Minimum = 0D;
-            this.numericBoxAlpha.Name = "numericBoxAlpha";
-            this.numericBoxAlpha.RoundErrorAccuracy = -1;
-            this.numericBoxAlpha.ShowUpDown = true;
-            this.numericBoxAlpha.SkipEventDuringInput = false;
-            this.numericBoxAlpha.SmartIncrement = true;
-            this.numericBoxAlpha.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxAlpha.ThonsandsSeparator = true;
-            this.numericBoxAlpha.UpDown_Increment = 0.1D;
+            resources.ApplyResources(numericBoxAlpha, "numericBoxAlpha");
+            numericBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAlpha.DecimalPlaces = 1;
+            numericBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAlpha.Maximum = 1D;
+            numericBoxAlpha.Minimum = 0D;
+            numericBoxAlpha.Name = "numericBoxAlpha";
+            numericBoxAlpha.RoundErrorAccuracy = -1;
+            numericBoxAlpha.ShowUpDown = true;
+            numericBoxAlpha.SkipEventDuringInput = false;
+            numericBoxAlpha.SmartIncrement = true;
+            numericBoxAlpha.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxAlpha.ThonsandsSeparator = true;
+            numericBoxAlpha.UpDown_Increment = 0.1D;
             // 
             // numericBoxEmission
             // 
-            resources.ApplyResources(this.numericBoxEmission, "numericBoxEmission");
-            this.numericBoxEmission.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEmission.DecimalPlaces = 1;
-            this.numericBoxEmission.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEmission.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEmission.Maximum = 1D;
-            this.numericBoxEmission.Minimum = 0D;
-            this.numericBoxEmission.Name = "numericBoxEmission";
-            this.numericBoxEmission.RoundErrorAccuracy = -1;
-            this.numericBoxEmission.ShowUpDown = true;
-            this.numericBoxEmission.SkipEventDuringInput = false;
-            this.numericBoxEmission.SmartIncrement = true;
-            this.numericBoxEmission.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxEmission.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxEmission.ThonsandsSeparator = true;
-            this.numericBoxEmission.UpDown_Increment = 0.1D;
+            resources.ApplyResources(numericBoxEmission, "numericBoxEmission");
+            numericBoxEmission.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxEmission.DecimalPlaces = 1;
+            numericBoxEmission.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEmission.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEmission.Maximum = 1D;
+            numericBoxEmission.Minimum = 0D;
+            numericBoxEmission.Name = "numericBoxEmission";
+            numericBoxEmission.RoundErrorAccuracy = -1;
+            numericBoxEmission.ShowUpDown = true;
+            numericBoxEmission.SkipEventDuringInput = false;
+            numericBoxEmission.SmartIncrement = true;
+            numericBoxEmission.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxEmission.ThonsandsSeparator = true;
+            numericBoxEmission.UpDown_Increment = 0.1D;
             // 
             // numericBoxShininess
             // 
-            resources.ApplyResources(this.numericBoxShininess, "numericBoxShininess");
-            this.numericBoxShininess.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxShininess.DecimalPlaces = 1;
-            this.numericBoxShininess.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxShininess.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxShininess.Maximum = 20D;
-            this.numericBoxShininess.Minimum = 0D;
-            this.numericBoxShininess.Name = "numericBoxShininess";
-            this.numericBoxShininess.RoundErrorAccuracy = -1;
-            this.numericBoxShininess.ShowUpDown = true;
-            this.numericBoxShininess.SkipEventDuringInput = false;
-            this.numericBoxShininess.SmartIncrement = true;
-            this.numericBoxShininess.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxShininess.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxShininess.ThonsandsSeparator = true;
-            this.numericBoxShininess.UpDown_Increment = 0.1D;
+            resources.ApplyResources(numericBoxShininess, "numericBoxShininess");
+            numericBoxShininess.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxShininess.DecimalPlaces = 1;
+            numericBoxShininess.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxShininess.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxShininess.Maximum = 20D;
+            numericBoxShininess.Minimum = 0D;
+            numericBoxShininess.Name = "numericBoxShininess";
+            numericBoxShininess.RoundErrorAccuracy = -1;
+            numericBoxShininess.ShowUpDown = true;
+            numericBoxShininess.SkipEventDuringInput = false;
+            numericBoxShininess.SmartIncrement = true;
+            numericBoxShininess.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxShininess.ThonsandsSeparator = true;
+            numericBoxShininess.UpDown_Increment = 0.1D;
             // 
             // numericBoxSpecular
             // 
-            resources.ApplyResources(this.numericBoxSpecular, "numericBoxSpecular");
-            this.numericBoxSpecular.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxSpecular.DecimalPlaces = 1;
-            this.numericBoxSpecular.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxSpecular.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxSpecular.Maximum = 1D;
-            this.numericBoxSpecular.Minimum = 0D;
-            this.numericBoxSpecular.Name = "numericBoxSpecular";
-            this.numericBoxSpecular.RoundErrorAccuracy = -1;
-            this.numericBoxSpecular.ShowUpDown = true;
-            this.numericBoxSpecular.SkipEventDuringInput = false;
-            this.numericBoxSpecular.SmartIncrement = true;
-            this.numericBoxSpecular.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxSpecular.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxSpecular.ThonsandsSeparator = true;
-            this.numericBoxSpecular.UpDown_Increment = 0.1D;
+            resources.ApplyResources(numericBoxSpecular, "numericBoxSpecular");
+            numericBoxSpecular.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxSpecular.DecimalPlaces = 1;
+            numericBoxSpecular.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxSpecular.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxSpecular.Maximum = 1D;
+            numericBoxSpecular.Minimum = 0D;
+            numericBoxSpecular.Name = "numericBoxSpecular";
+            numericBoxSpecular.RoundErrorAccuracy = -1;
+            numericBoxSpecular.ShowUpDown = true;
+            numericBoxSpecular.SkipEventDuringInput = false;
+            numericBoxSpecular.SmartIncrement = true;
+            numericBoxSpecular.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxSpecular.ThonsandsSeparator = true;
+            numericBoxSpecular.UpDown_Increment = 0.1D;
             // 
             // numericBoxDiffusion
             // 
-            resources.ApplyResources(this.numericBoxDiffusion, "numericBoxDiffusion");
-            this.numericBoxDiffusion.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDiffusion.DecimalPlaces = 1;
-            this.numericBoxDiffusion.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDiffusion.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDiffusion.Maximum = 1D;
-            this.numericBoxDiffusion.Minimum = 0D;
-            this.numericBoxDiffusion.Name = "numericBoxDiffusion";
-            this.numericBoxDiffusion.RoundErrorAccuracy = -1;
-            this.numericBoxDiffusion.ShowUpDown = true;
-            this.numericBoxDiffusion.SkipEventDuringInput = false;
-            this.numericBoxDiffusion.SmartIncrement = true;
-            this.numericBoxDiffusion.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxDiffusion.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDiffusion.ThonsandsSeparator = true;
-            this.numericBoxDiffusion.UpDown_Increment = 0.1D;
+            resources.ApplyResources(numericBoxDiffusion, "numericBoxDiffusion");
+            numericBoxDiffusion.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiffusion.DecimalPlaces = 1;
+            numericBoxDiffusion.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiffusion.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiffusion.Maximum = 1D;
+            numericBoxDiffusion.Minimum = 0D;
+            numericBoxDiffusion.Name = "numericBoxDiffusion";
+            numericBoxDiffusion.RoundErrorAccuracy = -1;
+            numericBoxDiffusion.ShowUpDown = true;
+            numericBoxDiffusion.SkipEventDuringInput = false;
+            numericBoxDiffusion.SmartIncrement = true;
+            numericBoxDiffusion.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxDiffusion.ThonsandsSeparator = true;
+            numericBoxDiffusion.UpDown_Increment = 0.1D;
             // 
             // numericBoxAmbient
             // 
-            resources.ApplyResources(this.numericBoxAmbient, "numericBoxAmbient");
-            this.numericBoxAmbient.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAmbient.DecimalPlaces = 1;
-            this.numericBoxAmbient.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAmbient.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAmbient.Maximum = 1D;
-            this.numericBoxAmbient.Minimum = 0D;
-            this.numericBoxAmbient.Name = "numericBoxAmbient";
-            this.numericBoxAmbient.RoundErrorAccuracy = -1;
-            this.numericBoxAmbient.ShowUpDown = true;
-            this.numericBoxAmbient.SkipEventDuringInput = false;
-            this.numericBoxAmbient.SmartIncrement = true;
-            this.numericBoxAmbient.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.numericBoxAmbient.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxAmbient.ThonsandsSeparator = true;
-            this.numericBoxAmbient.UpDown_Increment = 0.1D;
+            resources.ApplyResources(numericBoxAmbient, "numericBoxAmbient");
+            numericBoxAmbient.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAmbient.DecimalPlaces = 1;
+            numericBoxAmbient.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAmbient.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAmbient.Maximum = 1D;
+            numericBoxAmbient.Minimum = 0D;
+            numericBoxAmbient.Name = "numericBoxAmbient";
+            numericBoxAmbient.RoundErrorAccuracy = -1;
+            numericBoxAmbient.ShowUpDown = true;
+            numericBoxAmbient.SkipEventDuringInput = false;
+            numericBoxAmbient.SmartIncrement = true;
+            numericBoxAmbient.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxAmbient.ThonsandsSeparator = true;
+            numericBoxAmbient.UpDown_Increment = 0.1D;
             // 
             // checkBoxShowLabel
             // 
-            resources.ApplyResources(this.checkBoxShowLabel, "checkBoxShowLabel");
-            this.checkBoxShowLabel.Name = "checkBoxShowLabel";
-            this.checkBoxShowLabel.UseVisualStyleBackColor = true;
+            resources.ApplyResources(checkBoxShowLabel, "checkBoxShowLabel");
+            checkBoxShowLabel.Name = "checkBoxShowLabel";
+            checkBoxShowLabel.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
+            resources.ApplyResources(label10, "label10");
+            label10.Name = "label10";
             // 
             // label37
             // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
+            resources.ApplyResources(label37, "label37");
+            label37.Name = "label37";
             // 
             // label38
             // 
-            resources.ApplyResources(this.label38, "label38");
-            this.label38.Name = "label38";
+            resources.ApplyResources(label38, "label38");
+            label38.Name = "label38";
             // 
             // label11
             // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
+            resources.ApplyResources(label11, "label11");
+            label11.Name = "label11";
             // 
             // label35
             // 
-            resources.ApplyResources(this.label35, "label35");
-            this.label35.Name = "label35";
+            resources.ApplyResources(label35, "label35");
+            label35.Name = "label35";
             // 
             // label36
             // 
-            resources.ApplyResources(this.label36, "label36");
-            this.label36.Name = "label36";
+            resources.ApplyResources(label36, "label36");
+            label36.Name = "label36";
             // 
             // numericBoxAtomRadius
             // 
-            resources.ApplyResources(this.numericBoxAtomRadius, "numericBoxAtomRadius");
-            this.numericBoxAtomRadius.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAtomRadius.DecimalPlaces = 3;
-            this.numericBoxAtomRadius.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAtomRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAtomRadius.Name = "numericBoxAtomRadius";
-            this.numericBoxAtomRadius.RoundErrorAccuracy = -1;
-            this.numericBoxAtomRadius.ShowUpDown = true;
-            this.numericBoxAtomRadius.SkipEventDuringInput = false;
-            this.numericBoxAtomRadius.SmartIncrement = true;
-            this.numericBoxAtomRadius.TextBoxForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxAtomRadius.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxAtomRadius.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxAtomRadius, resources.GetString("numericBoxAtomRadius.ToolTip"));
+            resources.ApplyResources(numericBoxAtomRadius, "numericBoxAtomRadius");
+            numericBoxAtomRadius.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAtomRadius.DecimalPlaces = 3;
+            numericBoxAtomRadius.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAtomRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAtomRadius.Name = "numericBoxAtomRadius";
+            numericBoxAtomRadius.RoundErrorAccuracy = -1;
+            numericBoxAtomRadius.ShowUpDown = true;
+            numericBoxAtomRadius.SkipEventDuringInput = false;
+            numericBoxAtomRadius.SmartIncrement = true;
+            numericBoxAtomRadius.TextBoxForeColor = System.Drawing.SystemColors.ControlText;
+            numericBoxAtomRadius.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxAtomRadius, resources.GetString("numericBoxAtomRadius.ToolTip"));
             // 
             // colorControlAtomColor
             // 
-            this.colorControlAtomColor.Argb = -986896;
-            resources.ApplyResources(this.colorControlAtomColor, "colorControlAtomColor");
-            this.colorControlAtomColor.Blue = 240;
-            this.colorControlAtomColor.BlueF = 0.9411765F;
-            this.colorControlAtomColor.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlAtomColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.colorControlAtomColor.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlAtomColor.Green = 240;
-            this.colorControlAtomColor.GreenF = 0.9411765F;
-            this.colorControlAtomColor.Name = "colorControlAtomColor";
-            this.colorControlAtomColor.Red = 240;
-            this.colorControlAtomColor.RedF = 0.9411765F;
+            colorControlAtomColor.Argb = -986896;
+            resources.ApplyResources(colorControlAtomColor, "colorControlAtomColor");
+            colorControlAtomColor.Blue = 240;
+            colorControlAtomColor.BlueF = 0.9411765F;
+            colorControlAtomColor.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlAtomColor.Color = System.Drawing.Color.FromArgb(240, 240, 240);
+            colorControlAtomColor.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControlAtomColor.Green = 240;
+            colorControlAtomColor.GreenF = 0.9411765F;
+            colorControlAtomColor.Name = "colorControlAtomColor";
+            colorControlAtomColor.Red = 240;
+            colorControlAtomColor.RedF = 0.9411765F;
             // 
             // buttonApplyToSameElement
             // 
-            resources.ApplyResources(this.buttonApplyToSameElement, "buttonApplyToSameElement");
-            this.buttonApplyToSameElement.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonApplyToSameElement.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonApplyToSameElement.Name = "buttonApplyToSameElement";
-            this.toolTip.SetToolTip(this.buttonApplyToSameElement, resources.GetString("buttonApplyToSameElement.ToolTip"));
-            this.buttonApplyToSameElement.UseVisualStyleBackColor = false;
-            this.buttonApplyToSameElement.Click += new System.EventHandler(this.buttonChangeToSameElement_Click);
+            resources.ApplyResources(buttonApplyToSameElement, "buttonApplyToSameElement");
+            buttonApplyToSameElement.BackColor = System.Drawing.Color.SteelBlue;
+            buttonApplyToSameElement.ForeColor = System.Drawing.SystemColors.HighlightText;
+            buttonApplyToSameElement.Name = "buttonApplyToSameElement";
+            toolTip.SetToolTip(buttonApplyToSameElement, resources.GetString("buttonApplyToSameElement.ToolTip"));
+            buttonApplyToSameElement.UseVisualStyleBackColor = false;
+            buttonApplyToSameElement.Click += buttonChangeToSameElement_Click;
             // 
             // buttonAddAtom
             // 
-            resources.ApplyResources(this.buttonAddAtom, "buttonAddAtom");
-            this.buttonAddAtom.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonAddAtom.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonAddAtom.Name = "buttonAddAtom";
-            this.toolTip.SetToolTip(this.buttonAddAtom, resources.GetString("buttonAddAtom.ToolTip"));
-            this.buttonAddAtom.UseVisualStyleBackColor = false;
-            this.buttonAddAtom.Click += new System.EventHandler(this.buttonAdd_Click);
+            resources.ApplyResources(buttonAddAtom, "buttonAddAtom");
+            buttonAddAtom.BackColor = System.Drawing.Color.SteelBlue;
+            buttonAddAtom.ForeColor = System.Drawing.SystemColors.HighlightText;
+            buttonAddAtom.Name = "buttonAddAtom";
+            toolTip.SetToolTip(buttonAddAtom, resources.GetString("buttonAddAtom.ToolTip"));
+            buttonAddAtom.UseVisualStyleBackColor = false;
+            buttonAddAtom.Click += buttonAdd_Click;
             // 
             // buttonChange
             // 
-            resources.ApplyResources(this.buttonChange, "buttonChange");
-            this.buttonChange.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonChange.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonChange.Name = "buttonChange";
-            this.toolTip.SetToolTip(this.buttonChange, resources.GetString("buttonChange.ToolTip"));
-            this.buttonChange.UseVisualStyleBackColor = false;
-            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
+            resources.ApplyResources(buttonChange, "buttonChange");
+            buttonChange.BackColor = System.Drawing.Color.SteelBlue;
+            buttonChange.ForeColor = System.Drawing.SystemColors.HighlightText;
+            buttonChange.Name = "buttonChange";
+            toolTip.SetToolTip(buttonChange, resources.GetString("buttonChange.ToolTip"));
+            buttonChange.UseVisualStyleBackColor = false;
+            buttonChange.Click += buttonChange_Click;
             // 
             // buttonApplyToAllElements
             // 
-            resources.ApplyResources(this.buttonApplyToAllElements, "buttonApplyToAllElements");
-            this.buttonApplyToAllElements.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonApplyToAllElements.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.buttonApplyToAllElements.Name = "buttonApplyToAllElements";
-            this.toolTip.SetToolTip(this.buttonApplyToAllElements, resources.GetString("buttonApplyToAllElements.ToolTip"));
-            this.buttonApplyToAllElements.UseVisualStyleBackColor = false;
-            this.buttonApplyToAllElements.Click += new System.EventHandler(this.buttonApplyToAllElements_Click);
+            resources.ApplyResources(buttonApplyToAllElements, "buttonApplyToAllElements");
+            buttonApplyToAllElements.BackColor = System.Drawing.Color.SteelBlue;
+            buttonApplyToAllElements.ForeColor = System.Drawing.SystemColors.HighlightText;
+            buttonApplyToAllElements.Name = "buttonApplyToAllElements";
+            toolTip.SetToolTip(buttonApplyToAllElements, resources.GetString("buttonApplyToAllElements.ToolTip"));
+            buttonApplyToAllElements.UseVisualStyleBackColor = false;
+            buttonApplyToAllElements.Click += buttonApplyToAllElements_Click;
             // 
             // buttonAtomUp
             // 
-            resources.ApplyResources(this.buttonAtomUp, "buttonAtomUp");
-            this.buttonAtomUp.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonAtomUp.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAtomUp.Name = "buttonAtomUp";
-            this.toolTip.SetToolTip(this.buttonAtomUp, resources.GetString("buttonAtomUp.ToolTip"));
-            this.buttonAtomUp.UseVisualStyleBackColor = true;
-            this.buttonAtomUp.Click += new System.EventHandler(this.buttonUp_Click);
+            resources.ApplyResources(buttonAtomUp, "buttonAtomUp");
+            buttonAtomUp.BackColor = System.Drawing.SystemColors.Control;
+            buttonAtomUp.ForeColor = System.Drawing.SystemColors.ControlText;
+            buttonAtomUp.Name = "buttonAtomUp";
+            toolTip.SetToolTip(buttonAtomUp, resources.GetString("buttonAtomUp.ToolTip"));
+            buttonAtomUp.UseVisualStyleBackColor = true;
+            buttonAtomUp.Click += buttonUp_Click;
             // 
             // buttonAtomDown
             // 
-            resources.ApplyResources(this.buttonAtomDown, "buttonAtomDown");
-            this.buttonAtomDown.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonAtomDown.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAtomDown.Name = "buttonAtomDown";
-            this.toolTip.SetToolTip(this.buttonAtomDown, resources.GetString("buttonAtomDown.ToolTip"));
-            this.buttonAtomDown.UseVisualStyleBackColor = true;
-            this.buttonAtomDown.Click += new System.EventHandler(this.buttonDown_Click);
+            resources.ApplyResources(buttonAtomDown, "buttonAtomDown");
+            buttonAtomDown.BackColor = System.Drawing.SystemColors.Control;
+            buttonAtomDown.ForeColor = System.Drawing.SystemColors.ControlText;
+            buttonAtomDown.Name = "buttonAtomDown";
+            toolTip.SetToolTip(buttonAtomDown, resources.GetString("buttonAtomDown.ToolTip"));
+            buttonAtomDown.UseVisualStyleBackColor = true;
+            buttonAtomDown.Click += buttonDown_Click;
             // 
             // buttonDeleteAtom
             // 
-            resources.ApplyResources(this.buttonDeleteAtom, "buttonDeleteAtom");
-            this.buttonDeleteAtom.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonDeleteAtom.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteAtom.Name = "buttonDeleteAtom";
-            this.toolTip.SetToolTip(this.buttonDeleteAtom, resources.GetString("buttonDeleteAtom.ToolTip"));
-            this.buttonDeleteAtom.UseVisualStyleBackColor = false;
-            this.buttonDeleteAtom.Click += new System.EventHandler(this.buttonDelete_Click);
+            resources.ApplyResources(buttonDeleteAtom, "buttonDeleteAtom");
+            buttonDeleteAtom.BackColor = System.Drawing.Color.IndianRed;
+            buttonDeleteAtom.ForeColor = System.Drawing.Color.White;
+            buttonDeleteAtom.Name = "buttonDeleteAtom";
+            toolTip.SetToolTip(buttonDeleteAtom, resources.GetString("buttonDeleteAtom.ToolTip"));
+            buttonDeleteAtom.UseVisualStyleBackColor = false;
+            buttonDeleteAtom.Click += buttonDelete_Click;
             // 
             // dataGridView
             // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.AutoGenerateColumns = false;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1490,208 +1352,197 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.enabledColumn,
-            this.labelDataGridViewTextBoxColumn,
-            this.elementDataGridViewTextBoxColumn,
-            this.xDataGridViewTextBoxColumn,
-            this.yDataGridViewTextBoxColumn,
-            this.zDataGridViewTextBoxColumn,
-            this.occDataGridViewTextBoxColumn,
-            this.multiDataGridViewTextBoxColumn,
-            this.wyckLetDataGridViewTextBoxColumn,
-            this.siteSymDataGridViewTextBoxColumn});
-            this.dataGridView.DataSource = this.bindingSource;
-            resources.ApplyResources(this.dataGridView, "dataGridView");
-            this.dataGridView.MultiSelect = false;
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView.RowTemplate.Height = 21;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAtom_CellValueChanged);
-            this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
+            dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledColumn, labelDataGridViewTextBoxColumn, elementDataGridViewTextBoxColumn, xDataGridViewTextBoxColumn, yDataGridViewTextBoxColumn, zDataGridViewTextBoxColumn, occDataGridViewTextBoxColumn, multiDataGridViewTextBoxColumn, wyckLetDataGridViewTextBoxColumn, siteSymDataGridViewTextBoxColumn });
+            dataGridView.DataSource = bindingSource;
+            resources.ApplyResources(dataGridView, "dataGridView");
+            dataGridView.MultiSelect = false;
+            dataGridView.Name = "dataGridView";
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridView.RowTemplate.Height = 21;
+            dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.CellValueChanged += dataGridViewAtom_CellValueChanged;
+            dataGridView.CurrentCellDirtyStateChanged += dataGridView_CurrentCellDirtyStateChanged;
             // 
             // enabledColumn
             // 
-            this.enabledColumn.DataPropertyName = "Enabled";
-            resources.ApplyResources(this.enabledColumn, "enabledColumn");
-            this.enabledColumn.Name = "enabledColumn";
-            this.enabledColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            enabledColumn.DataPropertyName = "Enabled";
+            resources.ApplyResources(enabledColumn, "enabledColumn");
+            enabledColumn.Name = "enabledColumn";
+            enabledColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // labelDataGridViewTextBoxColumn
             // 
-            this.labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
+            labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
             dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
-            this.labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
-            this.labelDataGridViewTextBoxColumn.ReadOnly = true;
-            this.labelDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
+            labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
+            labelDataGridViewTextBoxColumn.ReadOnly = true;
+            labelDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // elementDataGridViewTextBoxColumn
             // 
-            this.elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
+            elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
-            this.elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
-            this.elementDataGridViewTextBoxColumn.ReadOnly = true;
-            this.elementDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.elementDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
+            elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
+            elementDataGridViewTextBoxColumn.ReadOnly = true;
+            elementDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            elementDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // xDataGridViewTextBoxColumn
             // 
-            this.xDataGridViewTextBoxColumn.DataPropertyName = "X";
+            xDataGridViewTextBoxColumn.DataPropertyName = "X";
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
-            this.xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
-            this.xDataGridViewTextBoxColumn.ReadOnly = true;
-            this.xDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
+            xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
+            xDataGridViewTextBoxColumn.ReadOnly = true;
+            xDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // yDataGridViewTextBoxColumn
             // 
-            this.yDataGridViewTextBoxColumn.DataPropertyName = "Y";
+            yDataGridViewTextBoxColumn.DataPropertyName = "Y";
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
-            this.yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
-            this.yDataGridViewTextBoxColumn.ReadOnly = true;
-            this.yDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
+            yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
+            yDataGridViewTextBoxColumn.ReadOnly = true;
+            yDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // zDataGridViewTextBoxColumn
             // 
-            this.zDataGridViewTextBoxColumn.DataPropertyName = "Z";
+            zDataGridViewTextBoxColumn.DataPropertyName = "Z";
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
-            this.zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
-            this.zDataGridViewTextBoxColumn.ReadOnly = true;
-            this.zDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
+            zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
+            zDataGridViewTextBoxColumn.ReadOnly = true;
+            zDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // occDataGridViewTextBoxColumn
             // 
-            this.occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
+            occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
             dataGridViewCellStyle7.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
-            this.occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
-            this.occDataGridViewTextBoxColumn.ReadOnly = true;
-            this.occDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
+            occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
+            occDataGridViewTextBoxColumn.ReadOnly = true;
+            occDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // multiDataGridViewTextBoxColumn
             // 
-            this.multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
+            multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
             dataGridViewCellStyle8.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
-            this.multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
-            this.multiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.multiDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
+            multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
+            multiDataGridViewTextBoxColumn.ReadOnly = true;
+            multiDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // wyckLetDataGridViewTextBoxColumn
             // 
-            this.wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
+            wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
             dataGridViewCellStyle9.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
-            resources.ApplyResources(this.wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
-            this.wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
-            this.wyckLetDataGridViewTextBoxColumn.ReadOnly = true;
-            this.wyckLetDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
+            wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
+            wyckLetDataGridViewTextBoxColumn.ReadOnly = true;
+            wyckLetDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // siteSymDataGridViewTextBoxColumn
             // 
-            this.siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
+            siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
             dataGridViewCellStyle10.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
-            resources.ApplyResources(this.siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
-            this.siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";
-            this.siteSymDataGridViewTextBoxColumn.ReadOnly = true;
-            this.siteSymDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            resources.ApplyResources(siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
+            siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";
+            siteSymDataGridViewTextBoxColumn.ReadOnly = true;
+            siteSymDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // bindingSource
             // 
-            this.bindingSource.DataMember = "DataTableAtom";
-            this.bindingSource.DataSource = this.dataSet;
-            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_PositionChanged);
-            this.bindingSource.PositionChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            bindingSource.DataMember = "DataTableAtom";
+            bindingSource.DataSource = dataSet;
+            bindingSource.CurrentChanged += bindingSource_PositionChanged;
+            bindingSource.PositionChanged += bindingSource_PositionChanged;
             // 
             // dataSet
             // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            dataSet.DataSetName = "DataSet";
+            dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
+            dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.buttonAtomUp);
-            this.panel1.Controls.Add(this.buttonAtomDown);
-            this.panel1.Controls.Add(this.buttonDeleteAtom);
-            this.panel1.Controls.Add(this.buttonApplyToAllElements);
-            this.panel1.Controls.Add(this.buttonApplyToSameElement);
-            this.panel1.Controls.Add(this.buttonChange);
-            this.panel1.Controls.Add(this.buttonAddAtom);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            panel1.Controls.Add(buttonAtomUp);
+            panel1.Controls.Add(buttonAtomDown);
+            panel1.Controls.Add(buttonDeleteAtom);
+            panel1.Controls.Add(buttonApplyToAllElements);
+            panel1.Controls.Add(buttonApplyToSameElement);
+            panel1.Controls.Add(buttonChange);
+            panel1.Controls.Add(buttonAddAtom);
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Atom";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.DataPropertyName = "Atom";
+            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // AtomControl
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.tabControl);
-            this.Name = "AtomControl";
-            this.flowLayoutPanelIso.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.flowLayoutPanel8.ResumeLayout(false);
-            this.flowLayoutPanel8.PerformLayout();
-            this.flowLayoutPanel9.ResumeLayout(false);
-            this.flowLayoutPanel9.PerformLayout();
-            this.tabControl.ResumeLayout(false);
-            this.tabPageElementAndPosition.ResumeLayout(false);
-            this.tabPageElementAndPosition.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tabPageOriginShift.ResumeLayout(false);
-            this.tabPageOriginShift.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
-            this.tabPageDebyeWaller.ResumeLayout(false);
-            this.tabPageDebyeWaller.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
-            this.flowLayoutPanelAniso2.ResumeLayout(false);
-            this.flowLayoutPanelAniso1.ResumeLayout(false);
-            this.tabPageScatteringFactor.ResumeLayout(false);
-            this.tabPageScatteringFactor.PerformLayout();
-            this.tabPageAppearance.ResumeLayout(false);
-            this.tabPageAppearance.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            Controls.Add(dataGridView);
+            Controls.Add(panel1);
+            Controls.Add(flowLayoutPanel2);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(tabControl);
+            Name = "AtomControl";
+            flowLayoutPanelIso.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel4.PerformLayout();
+            flowLayoutPanel8.ResumeLayout(false);
+            flowLayoutPanel8.PerformLayout();
+            flowLayoutPanel9.ResumeLayout(false);
+            flowLayoutPanel9.PerformLayout();
+            tabControl.ResumeLayout(false);
+            tabPageElementAndPosition.ResumeLayout(false);
+            tabPageElementAndPosition.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tabPageOriginShift.ResumeLayout(false);
+            tabPageOriginShift.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            tabPageDebyeWaller.ResumeLayout(false);
+            tabPageDebyeWaller.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanelAniso2.ResumeLayout(false);
+            flowLayoutPanelAniso1.ResumeLayout(false);
+            tabPageScatteringFactor.ResumeLayout(false);
+            tabPageScatteringFactor.PerformLayout();
+            tabPageAppearance.ResumeLayout(false);
+            tabPageAppearance.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

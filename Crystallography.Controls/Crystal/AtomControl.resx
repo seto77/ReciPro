@@ -175,6 +175,9 @@
   <data name="numericBoxBiso.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="numericBoxBiso.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxBiso.Name" xml:space="preserve">
     <value>numericBoxBiso</value>
   </data>
@@ -216,6 +219,9 @@
   </data>
   <data name="numericBoxBisoerr.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxBisoerr.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxBisoerr.Name" xml:space="preserve">
     <value>numericBoxBisoerr</value>
@@ -898,6 +904,9 @@
   <data name="numericBox1.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
   </data>
+  <data name="numericBox1.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBox1.Name" xml:space="preserve">
     <value>numericBox1</value>
   </data>
@@ -969,6 +978,9 @@
   </data>
   <data name="numericBox2.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
+  </data>
+  <data name="numericBox2.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBox2.Name" xml:space="preserve">
     <value>numericBox2</value>
@@ -1093,6 +1105,9 @@
   <data name="numericBox3.TabIndex" type="System.Int32, mscorlib">
     <value>93</value>
   </data>
+  <data name="numericBox3.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBox3.Name" xml:space="preserve">
     <value>numericBox3</value>
   </data>
@@ -1164,6 +1179,9 @@
   </data>
   <data name="numericBox4.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
+  </data>
+  <data name="numericBox4.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBox4.Name" xml:space="preserve">
     <value>numericBox4</value>
@@ -1286,6 +1304,9 @@
   <data name="numericBoxOccerr.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="numericBoxOccerr.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxOccerr.Name" xml:space="preserve">
     <value>numericBoxOccerr</value>
   </data>
@@ -1330,6 +1351,9 @@
   </data>
   <data name="numericBoxOcc.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
+  </data>
+  <data name="numericBoxOcc.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="numericBoxOcc.ToolTip" xml:space="preserve">
     <value>Site occupancy</value>
@@ -1382,6 +1406,9 @@
   <data name="numericBoxZ.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="numericBoxZ.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="numericBoxZ.ToolTip" xml:space="preserve">
     <value>Fractional coordinates of c-axis. Fractional format (e.g. 3/4) is acceptable.</value>
   </data>
@@ -1421,6 +1448,9 @@
   <data name="numericBoxYerr.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
+  <data name="numericBoxYerr.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxYerr.Name" xml:space="preserve">
     <value>numericBoxYerr</value>
   </data>
@@ -1456,6 +1486,9 @@
   </data>
   <data name="numericBoxXerr.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxXerr.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxXerr.Name" xml:space="preserve">
     <value>numericBoxXerr</value>
@@ -1501,6 +1534,9 @@
   </data>
   <data name="numericBoxY.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="numericBoxY.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="numericBoxY.ToolTip" xml:space="preserve">
     <value>Fractional coordinates of b-axis. Fractional format (e.g. 3/4) is acceptable.</value>
@@ -1550,6 +1586,9 @@
   <data name="numericBoxX.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="numericBoxX.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="numericBoxX.ToolTip" xml:space="preserve">
     <value>Fractional coordinates of a-axis. Fractional format (e.g. 3/4) is acceptable.</value>
   </data>
@@ -1588,6 +1627,9 @@
   </data>
   <data name="numericBoxZerr.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
+  </data>
+  <data name="numericBoxZerr.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxZerr.Name" xml:space="preserve">
     <value>numericBoxZerr</value>
@@ -2240,6 +2282,9 @@
   <data name="numericBoxOriginShiftZ.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="numericBoxOriginShiftZ.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxOriginShiftZ.Name" xml:space="preserve">
     <value>numericBoxOriginShiftZ</value>
   </data>
@@ -2285,6 +2330,9 @@
   <data name="numericBoxOriginShiftY.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="numericBoxOriginShiftY.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxOriginShiftY.Name" xml:space="preserve">
     <value>numericBoxOriginShiftY</value>
   </data>
@@ -2329,6 +2377,9 @@
   </data>
   <data name="numericBoxOriginShiftX.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxOriginShiftX.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftX.Name" xml:space="preserve">
     <value>numericBoxOriginShiftX</value>
@@ -2746,6 +2797,9 @@ B = 8 pi^2 * U.</value>
   <data name="numericBoxB22.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="numericBoxB22.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxB22.Name" xml:space="preserve">
     <value>numericBoxB22</value>
   </data>
@@ -2787,6 +2841,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxB22err.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxB22err.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB22err.Name" xml:space="preserve">
     <value>numericBoxB22err</value>
@@ -2830,6 +2887,9 @@ B = 8 pi^2 * U.</value>
   <data name="numericBoxB23.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="numericBoxB23.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxB23.Name" xml:space="preserve">
     <value>numericBoxB23</value>
   </data>
@@ -2871,6 +2931,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxB23err.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="numericBoxB23err.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB23err.Name" xml:space="preserve">
     <value>numericBoxB23err</value>
@@ -2914,6 +2977,9 @@ B = 8 pi^2 * U.</value>
   <data name="numericBoxB33.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="numericBoxB33.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxB33.Name" xml:space="preserve">
     <value>numericBoxB33</value>
   </data>
@@ -2955,6 +3021,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxB33err.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="numericBoxB33err.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB33err.Name" xml:space="preserve">
     <value>numericBoxB33err</value>
@@ -3025,6 +3094,9 @@ B = 8 pi^2 * U.</value>
   <data name="numericBoxB11.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="numericBoxB11.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxB11.Name" xml:space="preserve">
     <value>numericBoxB11</value>
   </data>
@@ -3066,6 +3138,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxB11err.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxB11err.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Name" xml:space="preserve">
     <value>numericBoxB11err</value>
@@ -3109,6 +3184,9 @@ B = 8 pi^2 * U.</value>
   <data name="numericBoxB12.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="numericBoxB12.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxB12.Name" xml:space="preserve">
     <value>numericBoxB12</value>
   </data>
@@ -3150,6 +3228,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxB12err.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="numericBoxB12err.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB12err.Name" xml:space="preserve">
     <value>numericBoxB12err</value>
@@ -3193,6 +3274,9 @@ B = 8 pi^2 * U.</value>
   <data name="numericBoxB13.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="numericBoxB13.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxB13.Name" xml:space="preserve">
     <value>numericBoxB13</value>
   </data>
@@ -3234,6 +3318,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxB13err.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="numericBoxB13err.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB13err.Name" xml:space="preserve">
     <value>numericBoxB13err</value>
@@ -3664,6 +3751,9 @@ B = 8 pi^2 * U.</value>
   <data name="numericBoxAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="numericBoxAlpha.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxAlpha.Name" xml:space="preserve">
     <value>numericBoxAlpha</value>
   </data>
@@ -3708,6 +3798,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxEmission.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="numericBoxEmission.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxEmission.Name" xml:space="preserve">
     <value>numericBoxEmission</value>
@@ -3754,6 +3847,9 @@ B = 8 pi^2 * U.</value>
   <data name="numericBoxShininess.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="numericBoxShininess.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxShininess.Name" xml:space="preserve">
     <value>numericBoxShininess</value>
   </data>
@@ -3798,6 +3894,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxSpecular.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="numericBoxSpecular.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxSpecular.Name" xml:space="preserve">
     <value>numericBoxSpecular</value>
@@ -3844,6 +3943,9 @@ B = 8 pi^2 * U.</value>
   <data name="numericBoxDiffusion.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="numericBoxDiffusion.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
   <data name="&gt;&gt;numericBoxDiffusion.Name" xml:space="preserve">
     <value>numericBoxDiffusion</value>
   </data>
@@ -3888,6 +3990,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxAmbient.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxAmbient.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxAmbient.Name" xml:space="preserve">
     <value>numericBoxAmbient</value>
@@ -4167,6 +4272,9 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="numericBoxAtomRadius.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="numericBoxAtomRadius.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
     <value>Radius of the sphere to be drawn</value>

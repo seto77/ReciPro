@@ -148,20 +148,13 @@ namespace ReciPro
             numericBoxResolution = new NumericBox();
             groupBox7 = new System.Windows.Forms.GroupBox();
             numericBoxNumOfBlochWave = new NumericBox();
-            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
-            buttonSimulate = new System.Windows.Forms.Button();
-            checkBoxRealTimeSimulation = new System.Windows.Forms.CheckBox();
             groupBoxOpticalProperty = new System.Windows.Forms.GroupBox();
             groupBoxSTEMoption1 = new System.Windows.Forms.GroupBox();
             contextMenuStripSTEM = new System.Windows.Forms.ContextMenuStrip(components);
-            toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             typicalBF02MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             typicalABF1224MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             typicalLAADF2560MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             typicalHAADF80250MradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            addTheCurrentSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            customizeUserSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             label5 = new System.Windows.Forms.Label();
             label34 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -200,12 +193,10 @@ namespace ReciPro
             setoScherzerDefocusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             setAllAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            addTheCurrentSettingToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            customizeTheUserSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            kVCsfreeCcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            kVLab6TEMCs14MmCc18mmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            presets1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            presets2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            presets3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            presets4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             label35 = new System.Windows.Forms.Label();
             numericBoxCc = new NumericBox();
             numericBoxDeltaV = new NumericBox();
@@ -224,6 +215,10 @@ namespace ReciPro
             radioButtonHRTEM = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             numericBoxThickness = new NumericBox();
+            panel4 = new System.Windows.Forms.Panel();
+            buttonPreset = new System.Windows.Forms.Button();
+            checkBoxRealTimeSimulation = new System.Windows.Forms.CheckBox();
+            buttonSimulate = new System.Windows.Forms.Button();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -250,7 +245,6 @@ namespace ReciPro
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -287,7 +281,6 @@ namespace ReciPro
             groupBox8.SuspendLayout();
             flowLayoutPanel9.SuspendLayout();
             groupBox7.SuspendLayout();
-            flowLayoutPanel12.SuspendLayout();
             groupBoxOpticalProperty.SuspendLayout();
             groupBoxSTEMoption1.SuspendLayout();
             contextMenuStripSTEM.SuspendLayout();
@@ -303,6 +296,7 @@ namespace ReciPro
             flowLayoutPanel14.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBoxSampleProperty.SuspendLayout();
+            panel4.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -325,9 +319,9 @@ namespace ReciPro
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(groupBox1);
-            splitContainer1.Panel2.Controls.Add(flowLayoutPanel12);
             splitContainer1.Panel2.Controls.Add(groupBoxOpticalProperty);
             splitContainer1.Panel2.Controls.Add(flowLayoutPanel14);
+            splitContainer1.Panel2.Controls.Add(panel4);
             splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
             // 
@@ -386,6 +380,7 @@ namespace ReciPro
             panel2.Controls.Add(label33);
             resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
+            panel2.Paint += panel2_Paint;
             // 
             // checkBoxShowUnitcell
             // 
@@ -551,7 +546,7 @@ namespace ReciPro
             // trackBarAdvancedMax
             // 
             resources.ApplyResources(trackBarAdvancedMax, "trackBarAdvancedMax");
-            trackBarAdvancedMax.ControlHeight = 27;
+            trackBarAdvancedMax.ControlHeight = 25;
             trackBarAdvancedMax.DecimalPlaces = -1;
             trackBarAdvancedMax.LogScrollBar = false;
             trackBarAdvancedMax.Maximum = 1D;
@@ -577,7 +572,7 @@ namespace ReciPro
             // trackBarAdvancedMin
             // 
             resources.ApplyResources(trackBarAdvancedMin, "trackBarAdvancedMin");
-            trackBarAdvancedMin.ControlHeight = 27;
+            trackBarAdvancedMin.ControlHeight = 25;
             trackBarAdvancedMin.DecimalPlaces = -1;
             trackBarAdvancedMin.LogScrollBar = false;
             trackBarAdvancedMin.Maximum = 65535D;
@@ -628,9 +623,9 @@ namespace ReciPro
             // 
             // groupBox1
             // 
+            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Controls.Add(panel3);
             groupBox1.Controls.Add(panel6);
-            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
             // 
@@ -1380,30 +1375,6 @@ namespace ReciPro
             numericBoxNumOfBlochWave.Value = 80D;
             numericBoxNumOfBlochWave.ValueChanged += NumericBoxNumOfBlochWave_ValueChanged;
             // 
-            // flowLayoutPanel12
-            // 
-            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
-            flowLayoutPanel12.Controls.Add(buttonSimulate);
-            flowLayoutPanel12.Controls.Add(checkBoxRealTimeSimulation);
-            flowLayoutPanel12.Name = "flowLayoutPanel12";
-            // 
-            // buttonSimulate
-            // 
-            resources.ApplyResources(buttonSimulate, "buttonSimulate");
-            buttonSimulate.BackColor = System.Drawing.Color.SteelBlue;
-            buttonSimulate.ForeColor = System.Drawing.Color.White;
-            buttonSimulate.Name = "buttonSimulate";
-            toolTip.SetToolTip(buttonSimulate, resources.GetString("buttonSimulate.ToolTip"));
-            buttonSimulate.UseVisualStyleBackColor = false;
-            buttonSimulate.Click += ButtonSimulate_Click;
-            // 
-            // checkBoxRealTimeSimulation
-            // 
-            resources.ApplyResources(checkBoxRealTimeSimulation, "checkBoxRealTimeSimulation");
-            checkBoxRealTimeSimulation.Name = "checkBoxRealTimeSimulation";
-            toolTip.SetToolTip(checkBoxRealTimeSimulation, resources.GetString("checkBoxRealTimeSimulation.ToolTip"));
-            checkBoxRealTimeSimulation.UseVisualStyleBackColor = true;
-            // 
             // groupBoxOpticalProperty
             // 
             resources.ApplyResources(groupBoxOpticalProperty, "groupBoxOpticalProperty");
@@ -1430,14 +1401,9 @@ namespace ReciPro
             // 
             // contextMenuStripSTEM
             // 
-            contextMenuStripSTEM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripSeparator4, typicalBF02MradToolStripMenuItem, typicalABF1224MradToolStripMenuItem, typicalLAADF2560MradToolStripMenuItem, typicalHAADF80250MradToolStripMenuItem, toolStripSeparator5, addTheCurrentSettingToolStripMenuItem, customizeUserSettingToolStripMenuItem });
+            contextMenuStripSTEM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { typicalBF02MradToolStripMenuItem, typicalABF1224MradToolStripMenuItem, typicalLAADF2560MradToolStripMenuItem, typicalHAADF80250MradToolStripMenuItem });
             contextMenuStripSTEM.Name = "contextMenuStripSTEM";
             resources.ApplyResources(contextMenuStripSTEM, "contextMenuStripSTEM");
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(toolStripSeparator4, "toolStripSeparator4");
             // 
             // typicalBF02MradToolStripMenuItem
             // 
@@ -1462,21 +1428,6 @@ namespace ReciPro
             typicalHAADF80250MradToolStripMenuItem.Name = "typicalHAADF80250MradToolStripMenuItem";
             resources.ApplyResources(typicalHAADF80250MradToolStripMenuItem, "typicalHAADF80250MradToolStripMenuItem");
             typicalHAADF80250MradToolStripMenuItem.Click += typicalHAADF80250MradToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            resources.ApplyResources(toolStripSeparator5, "toolStripSeparator5");
-            // 
-            // addTheCurrentSettingToolStripMenuItem
-            // 
-            addTheCurrentSettingToolStripMenuItem.Name = "addTheCurrentSettingToolStripMenuItem";
-            resources.ApplyResources(addTheCurrentSettingToolStripMenuItem, "addTheCurrentSettingToolStripMenuItem");
-            // 
-            // customizeUserSettingToolStripMenuItem
-            // 
-            customizeUserSettingToolStripMenuItem.Name = "customizeUserSettingToolStripMenuItem";
-            resources.ApplyResources(customizeUserSettingToolStripMenuItem, "customizeUserSettingToolStripMenuItem");
             // 
             // label5
             // 
@@ -1874,7 +1825,7 @@ namespace ReciPro
             // 
             // contextMenuStripTEMcondition
             // 
-            contextMenuStripTEMcondition.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { setoZeroDefocusToolStripMenuItem, setoScherzerDefocusToolStripMenuItem, setAllAToolStripMenuItem, toolStripSeparator6, kVCsfreeCcToolStripMenuItem, kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem, kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem, kVLab6TEMCs14MmCc18mmToolStripMenuItem, toolStripSeparator7, addTheCurrentSettingToolStripMenuItem1, customizeTheUserSettingsToolStripMenuItem });
+            contextMenuStripTEMcondition.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { setoZeroDefocusToolStripMenuItem, setoScherzerDefocusToolStripMenuItem, setAllAToolStripMenuItem, toolStripSeparator6, presets1ToolStripMenuItem, presets2ToolStripMenuItem, presets3ToolStripMenuItem, presets4ToolStripMenuItem });
             contextMenuStripTEMcondition.Name = "contextMenuStripInherentProperty";
             resources.ApplyResources(contextMenuStripTEMcondition, "contextMenuStripTEMcondition");
             // 
@@ -1901,35 +1852,29 @@ namespace ReciPro
             toolStripSeparator6.Name = "toolStripSeparator6";
             resources.ApplyResources(toolStripSeparator6, "toolStripSeparator6");
             // 
-            // addTheCurrentSettingToolStripMenuItem1
+            // presets1ToolStripMenuItem
             // 
-            addTheCurrentSettingToolStripMenuItem1.Name = "addTheCurrentSettingToolStripMenuItem1";
-            resources.ApplyResources(addTheCurrentSettingToolStripMenuItem1, "addTheCurrentSettingToolStripMenuItem1");
+            presets1ToolStripMenuItem.Name = "presets1ToolStripMenuItem";
+            resources.ApplyResources(presets1ToolStripMenuItem, "presets1ToolStripMenuItem");
+            presets1ToolStripMenuItem.Click += presets1ToolStripMenuItem_Click;
             // 
-            // customizeTheUserSettingsToolStripMenuItem
+            // presets2ToolStripMenuItem
             // 
-            customizeTheUserSettingsToolStripMenuItem.Name = "customizeTheUserSettingsToolStripMenuItem";
-            resources.ApplyResources(customizeTheUserSettingsToolStripMenuItem, "customizeTheUserSettingsToolStripMenuItem");
+            presets2ToolStripMenuItem.Name = "presets2ToolStripMenuItem";
+            resources.ApplyResources(presets2ToolStripMenuItem, "presets2ToolStripMenuItem");
+            presets2ToolStripMenuItem.Click += presets2ToolStripMenuItem_Click;
             // 
-            // kVCsfreeCcToolStripMenuItem
+            // presets3ToolStripMenuItem
             // 
-            kVCsfreeCcToolStripMenuItem.Name = "kVCsfreeCcToolStripMenuItem";
-            resources.ApplyResources(kVCsfreeCcToolStripMenuItem, "kVCsfreeCcToolStripMenuItem");
+            presets3ToolStripMenuItem.Name = "presets3ToolStripMenuItem";
+            resources.ApplyResources(presets3ToolStripMenuItem, "presets3ToolStripMenuItem");
+            presets3ToolStripMenuItem.Click += presets3ToolStripMenuItem_Click;
             // 
-            // kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem
+            // presets4ToolStripMenuItem
             // 
-            kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem.Name = "kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem";
-            resources.ApplyResources(kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem, "kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem");
-            // 
-            // kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem
-            // 
-            kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem.Name = "kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem";
-            resources.ApplyResources(kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem, "kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem");
-            // 
-            // kVLab6TEMCs14MmCc18mmToolStripMenuItem
-            // 
-            kVLab6TEMCs14MmCc18mmToolStripMenuItem.Name = "kVLab6TEMCs14MmCc18mmToolStripMenuItem";
-            resources.ApplyResources(kVLab6TEMCs14MmCc18mmToolStripMenuItem, "kVLab6TEMCs14MmCc18mmToolStripMenuItem");
+            presets4ToolStripMenuItem.Name = "presets4ToolStripMenuItem";
+            resources.ApplyResources(presets4ToolStripMenuItem, "presets4ToolStripMenuItem");
+            presets4ToolStripMenuItem.Click += presets4ToolStripMenuItem_Click;
             // 
             // label35
             // 
@@ -2154,6 +2099,38 @@ namespace ReciPro
             numericBoxThickness.Value = 20D;
             numericBoxThickness.ValueChanged += NumericBoxThickness_ValueChanged;
             // 
+            // panel4
+            // 
+            panel4.Controls.Add(buttonPreset);
+            panel4.Controls.Add(checkBoxRealTimeSimulation);
+            panel4.Controls.Add(buttonSimulate);
+            resources.ApplyResources(panel4, "panel4");
+            panel4.Name = "panel4";
+            // 
+            // buttonPreset
+            // 
+            resources.ApplyResources(buttonPreset, "buttonPreset");
+            buttonPreset.Name = "buttonPreset";
+            buttonPreset.UseVisualStyleBackColor = true;
+            buttonPreset.Click += buttonPreset_Click;
+            // 
+            // checkBoxRealTimeSimulation
+            // 
+            resources.ApplyResources(checkBoxRealTimeSimulation, "checkBoxRealTimeSimulation");
+            checkBoxRealTimeSimulation.Name = "checkBoxRealTimeSimulation";
+            toolTip.SetToolTip(checkBoxRealTimeSimulation, resources.GetString("checkBoxRealTimeSimulation.ToolTip"));
+            checkBoxRealTimeSimulation.UseVisualStyleBackColor = true;
+            // 
+            // buttonSimulate
+            // 
+            resources.ApplyResources(buttonSimulate, "buttonSimulate");
+            buttonSimulate.BackColor = System.Drawing.Color.SteelBlue;
+            buttonSimulate.ForeColor = System.Drawing.Color.White;
+            buttonSimulate.Name = "buttonSimulate";
+            toolTip.SetToolTip(buttonSimulate, resources.GetString("buttonSimulate.ToolTip"));
+            buttonSimulate.UseVisualStyleBackColor = false;
+            buttonSimulate.Click += ButtonSimulate_Click;
+            // 
             // menuStrip1
             // 
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
@@ -2306,11 +2283,6 @@ namespace ReciPro
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
             // 
-            // toolStripSeparator7
-            // 
-            toolStripSeparator7.Name = "toolStripSeparator7";
-            resources.ApplyResources(toolStripSeparator7, "toolStripSeparator7");
-            // 
             // FormImageSimulator
             // 
             resources.ApplyResources(this, "$this");
@@ -2343,6 +2315,7 @@ namespace ReciPro
             flowLayoutPanelGaussianBlur2.ResumeLayout(false);
             flowLayoutPanelGaussianBlur2.PerformLayout();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             groupBoxSerialImage.ResumeLayout(false);
@@ -2390,8 +2363,6 @@ namespace ReciPro
             flowLayoutPanel9.ResumeLayout(false);
             flowLayoutPanel9.PerformLayout();
             groupBox7.ResumeLayout(false);
-            flowLayoutPanel12.ResumeLayout(false);
-            flowLayoutPanel12.PerformLayout();
             groupBoxOpticalProperty.ResumeLayout(false);
             groupBoxOpticalProperty.PerformLayout();
             groupBoxSTEMoption1.ResumeLayout(false);
@@ -2417,6 +2388,8 @@ namespace ReciPro
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
             groupBoxSampleProperty.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
@@ -2627,22 +2600,18 @@ namespace ReciPro
         private NumericBox numericBoxSourceSize;
         private System.Windows.Forms.ToolStripMenuItem setAllAToolStripMenuItem;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem addTheCurrentSettingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customizeUserSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem addTheCurrentSettingToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem customizeTheUserSettingsToolStripMenuItem;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.ToolStripMenuItem kVCsfreeCcToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kVCsfreeSchottkyFEGCs0Cc15ΔE04ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kVSchottkyFEGUHRCs05Cc11ΔE082100FToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kVLab6TEMCs14MmCc18mmToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem presets1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem presets2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem presets3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem presets4ToolStripMenuItem;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button buttonPreset;
     }
 }

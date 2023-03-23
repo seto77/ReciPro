@@ -28,67 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NumericBox));
-            this.textBox = new System.Windows.Forms.TextBox();
-            this.labelHeader = new System.Windows.Forms.Label();
-            this.numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.labelFooter = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
-            this.SuspendLayout();
+            textBox = new System.Windows.Forms.TextBox();
+            labelHeader = new System.Windows.Forms.Label();
+            numericUpDown = new System.Windows.Forms.NumericUpDown();
+            labelFooter = new System.Windows.Forms.Label();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            ((System.ComponentModel.ISupportInitialize)numericUpDown).BeginInit();
+            SuspendLayout();
             // 
             // textBox
             // 
-            resources.ApplyResources(this.textBox, "textBox");
-            this.textBox.Name = "textBox";
-            this.textBox.Click += new System.EventHandler(this.textBox_Click);
-            this.textBox.ReadOnlyChanged += new System.EventHandler(this.textBox_ReadOnlyChanged);
-            this.textBox.FontChanged += new System.EventHandler(this.textBox_FontChanged);
-            this.textBox.TextChanged += new System.EventHandler(this.textBox_TextChanged);
-            this.textBox.Enter += new System.EventHandler(this.textBox_Enter);
-            this.textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
-            this.textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
-            this.textBox.Leave += new System.EventHandler(this.textBox_Leave);
+            resources.ApplyResources(textBox, "textBox");
+            textBox.Name = "textBox";
+            textBox.Click += textBox_Click;
+            textBox.ReadOnlyChanged += textBox_ReadOnlyChanged;
+            textBox.FontChanged += textBox_FontChanged;
+            textBox.TextChanged += textBox_TextChanged;
+            textBox.Enter += textBox_Enter;
+            textBox.KeyDown += textBox_KeyDown;
+            textBox.KeyPress += textBox_KeyPress;
+            textBox.Leave += textBox_Leave;
             // 
             // labelHeader
             // 
-            resources.ApplyResources(this.labelHeader, "labelHeader");
-            this.labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.labelHeader.Name = "labelHeader";
+            resources.ApplyResources(labelHeader, "labelHeader");
+            labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            labelHeader.Name = "labelHeader";
             // 
             // numericUpDown
             // 
-            resources.ApplyResources(this.numericUpDown, "numericUpDown");
-            this.numericUpDown.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown.Name = "numericUpDown";
-            this.numericUpDown.TabStop = false;
-            this.numericUpDown.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            resources.ApplyResources(numericUpDown, "numericUpDown");
+            numericUpDown.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
+            numericUpDown.Name = "numericUpDown";
+            numericUpDown.TabStop = false;
+            numericUpDown.ValueChanged += numericUpDown_ValueChanged;
             // 
             // labelFooter
             // 
-            resources.ApplyResources(this.labelFooter, "labelFooter");
-            this.labelFooter.Name = "labelFooter";
+            resources.ApplyResources(labelFooter, "labelFooter");
+            labelFooter.Name = "labelFooter";
             // 
             // NumericBox
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.textBox);
-            this.Controls.Add(this.numericUpDown);
-            this.Controls.Add(this.labelHeader);
-            this.Controls.Add(this.labelFooter);
-            this.Name = "NumericBox";
-            this.SizeChanged += new System.EventHandler(this.numericBox_SizeChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            BackColor = System.Drawing.Color.Transparent;
+            Controls.Add(textBox);
+            Controls.Add(numericUpDown);
+            Controls.Add(labelHeader);
+            Controls.Add(labelFooter);
+            Name = "NumericBox";
+            SizeChanged += numericBox_SizeChanged;
+            ((System.ComponentModel.ISupportInitialize)numericUpDown).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

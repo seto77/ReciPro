@@ -29,7 +29,7 @@ public partial class AtomControl : UserControl
     }
     public Crystal Crystal
     {
-        get => crystal; 
+        get => crystal;
         set
         {
             crystal = value;
@@ -278,7 +278,7 @@ public partial class AtomControl : UserControl
     #region コンストラクタ
     public AtomControl()
     {
-        if(DesignMode) return;
+        if (DesignMode) return;
         InitializeComponent();
         SkipEvent = true;
         table = dataSet.DataTableAtom;

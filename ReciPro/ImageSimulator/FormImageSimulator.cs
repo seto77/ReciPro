@@ -1,9 +1,12 @@
 ﻿#region
+using MemoryPack;
+using MemoryPack.Compression;
+using Microsoft.Scripting.Utils;
+using System.Buffers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -18,68 +21,108 @@ public partial class FormImageSimulator : Form
 {
     #region プロパティ
 
-    public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0;
-    public HRTEM_Modes HRTEM_Mode => radioButtonModeQuasiCoherent.Checked ? HRTEM_Modes.Quasi : HRTEM_Modes.TCC;
+    public ImageSimulatorSetting Setting { get => new ImageSimulatorSetting("", this); set => value.Apply(this); }
 
-    public ImageModes ImageMode => radioButtonHRTEM.Checked ? ImageModes.HRTEM : radioButtonProjectedPotential.Checked ? ImageModes.POTENTIAL : ImageModes.STEM;
+    public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0;
+    public HRTEM_Modes HRTEM_Mode
+    {
+        get => radioButtonModeQuasiCoherent.Checked ? HRTEM_Modes.Quasi : HRTEM_Modes.TCC;
+        set
+        {
+            if (value == HRTEM_Modes.Quasi)
+                radioButtonModeQuasiCoherent.Checked = true;
+            else
+                radioButtonModeTransmissionCrossCoefficient.Checked = true;
+        }
+    }
+
+    public ImageModes ImageMode
+    {
+        get => radioButtonHRTEM.Checked ? ImageModes.HRTEM : radioButtonProjectedPotential.Checked ? ImageModes.POTENTIAL : ImageModes.STEM;
+        set
+        {
+            if (value == ImageModes.HRTEM)
+                radioButtonHRTEM.Checked = true;
+            else if (value == ImageModes.POTENTIAL)
+                radioButtonProjectedPotential.Checked = true;
+            else
+                radioButtonSTEM.Checked = true;
+
+        }
+    }
 
     /// <summary>
     /// 電子の加速電圧 (kV)
     /// </summary>
-    public double AccVol => numericBoxAccVol.Value;
+    public double AccVol { get => numericBoxAccVol.Value; set => numericBoxAccVol.Value = value; }
     /// <summary>
     /// 電子の波長 (nm)
     /// </summary>
     public double Rambda => UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol);
 
     /// <summary>
-    /// 電子の加速電圧の揺らぎ (kV) numericBoxDeltaV.ValueはFWHMだが、2 * Sqrt(2 * Log(2)) で割って、σに変換する
-    /// </summary>
-    public double DeltaVol => numericBoxDeltaV.Value / 1000 / 2 / Sqrt(2 * Log(2));
-
-    /// <summary>
     /// 対物絞りのサイズ (rad)
     /// </summary>
-    public double ObjAperRadius => checkBoxOpenAperture.Checked ? double.PositiveInfinity : numericBoxObjAperRadius.Value / 1000;
+    public double ObjAperRadius
+    {
+        get => checkBoxOpenAperture.Checked ? double.PositiveInfinity : numericBoxObjAperRadius.Value / 1000;
+        set
+        {
+            if (double.IsPositiveInfinity(value))
+                checkBoxOpenAperture.Checked = true;
+            else
+            {
+                checkBoxOpenAperture.Checked = true;
+                numericBoxObjAperRadius.Value = value * 1000;
+            }
+        }
+    }
+
 
     /// <summary>
     /// 対物絞りの中心位置X (rad)
     /// </summary>
-    public double ObjAperX => numericBoxObjAperX.Value / 1000;
+    public double ObjAperX { get => numericBoxObjAperX.Value / 1000; set => numericBoxObjAperX.Value = value * 1000; }
     /// <summary>
     /// 対物絞りの中心位置Y (rad)
     /// </summary>
-    public double ObjAperY => numericBoxObjAperY.Value / 1000;
+    public double ObjAperY { get => numericBoxObjAperY.Value / 1000; set => numericBoxObjAperY.Value = value * 1000; }
 
     /// <summary>
     /// β (llumination semiangle) (rad)
     /// </summary>
-    public double Beta => numericBoxBetaAgnle.Value / 1000;
+    public double Beta { get => numericBoxBetaAgnle.Value / 1000; set => numericBoxBetaAgnle.Value = value * 1000; }
 
     /// <summary>
     /// Bloch波の数
     /// </summary>
-    public int BlochNum => numericBoxNumOfBlochWave.ValueInteger;
+    public int BlochNum { get => numericBoxNumOfBlochWave.ValueInteger; set => numericBoxNumOfBlochWave.Value = value; }
 
     /// <summary>
     /// 試料の厚み (nm) (シリアルモードではないとき)
     /// </summary>
-    public double Thickness => numericBoxThickness.Value;
+    public double Thickness { get => numericBoxThickness.Value; set => numericBoxThickness.Value = value; }
 
     /// <summary>
     /// デフォーカス値 (nm) (シリアルモードではないとき) 
     /// </summary>
-    public double Defocus => numericBoxDefocus.Value;
+    public double Defocus { get => numericBoxDefocus.Value; set => numericBoxDefocus.Value = value; }
 
     /// <summary>
     /// 球面収差 Cs (nm)
     /// </summary>
-    public double Cs => numericBoxCs.Value * 1000000;
+    public double Cs { get => numericBoxCs.Value * 1000000; set => numericBoxCs.Value = value / 1000000; }
 
     /// <summary>
     /// 色収差 Cc (nm)
     /// </summary>
-    public double Cc => numericBoxCc.Value * 1000000;
+    public double Cc { get => numericBoxCc.Value * 1000000; set => numericBoxCc.Value = value / 1000000; }
+
+    /// <summary>
+    /// 電子の加速電圧の揺らぎ (kV) numericBoxDeltaV.ValueはFWHMだが、2 * Sqrt(2 * Log(2)) で割って、σに変換する
+    /// </summary>
+    public double DeltaVol { get => numericBoxDeltaV.Value / 1000 / 2 / Sqrt(2 * Log(2)); set => numericBoxDeltaV.Value = value * 1000 * 2 * Sqrt(2 * Log(2)); }
+
 
     /// <summary>
     /// Δ
@@ -91,24 +134,27 @@ public partial class FormImageSimulator : Form
     /// </summary>
     public double Scherzer => Cs > 0 ? -Sqrt(4.0 / 3.0 * Cs * Rambda) : Sqrt(4.0 / 3.0 * -Cs * Rambda);
 
-    public double SliceThicknessForInelastic => numericBoxSliceThicknessForInelasticSTEM.Value;
+    /// <summary>
+    /// STEM Inelasticを計算する際のスライス厚み(nm単位)
+    /// </summary>
+    public double SliceThicknessForInelastic { get => numericBoxSliceThicknessForInelasticSTEM.Value; set => numericBoxSliceThicknessForInelasticSTEM.Value = value; }
 
     /// <summary>
     /// 実効的光源サイズ (nm単位)
     /// </summary>
-    public double SourceSize => numericBoxSourceSize.Value * 0.001;
+    public double SourceSize { get => numericBoxSourceSize.Value / 1000; set => numericBoxSourceSize.Value = value * 1000; }
 
     /// <summary>
     /// イメージの解像度 (nm/pix)
     /// </summary>
-    public double ImageResolution => numericBoxResolution.Value / 1000.0;
+    public double ImageResolution { get => numericBoxResolution.Value / 1000.0; set => numericBoxResolution.Value = value * 1000.0; }
 
     /// <summary>
     /// イメージサイズ 
     /// </summary>
-    public Size ImageSize => new(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger);
+    public Size ImageSize { get => new(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger); set { numericBoxWidth.Value = value.Width; numericBoxHeight.Value = value.Height; } }
 
-    private double[] thicknessArray
+    public double[] ThicknessArray
     {
         get
         {
@@ -124,9 +170,14 @@ public partial class FormImageSimulator : Form
                 return null;
             }
         }
+        set
+        {
+            if (value != null && value.Length > 0)
+                textBoxThicknessList.Text = String.Join("\r\n", value);
+        }
     }
 
-    private double[] defocusArray
+    public double[] DefocusArray
     {
         get
         {
@@ -142,7 +193,25 @@ public partial class FormImageSimulator : Form
                 return null;
             }
         }
+        set
+        {
+            if (value != null && value.Length > 0)
+                textBoxDefocusList.Text = String.Join("\r\n", value);
+        }
     }
+
+    /// <summary>
+    /// STEM検出器の内径角度 (rad)
+    /// </summary>
+    public double DetectorInnerAngle { get => numericBoxSTEM_DetectorInnerAngle.Value / 1000; set => numericBoxSTEM_DetectorInnerAngle.Value = value * 1000; }
+
+    /// <summary>
+    /// STEM検出器の外径角度 (rad)
+    /// </summary>
+    public double DetectorOuterAngle { get => numericBoxSTEM_DetectorOuterAngle.Value / 1000; set => numericBoxSTEM_DetectorOuterAngle.Value = value * 1000; }
+
+
+    public double ConvergenceAngle { get => numericBoxSTEM_ConvergenceAngle.Value / 1000; set => numericBoxSTEM_ConvergenceAngle.Value = value * 1000; }
 
     private BetheMethod.Beam[] Beams { get; set; }
 
@@ -151,9 +220,15 @@ public partial class FormImageSimulator : Form
 
     #endregion プロパティ
 
-    #region フィールド
+    #region フィールド、enum
+
+    public string SettingName = "";
+
     public FormMain FormMain;
     public FormDiffractionSpotInfo FormDiffractionSpotInfo;
+
+    public FormPresets formPresets;
+
     readonly Stopwatch sw1 = new(), sw2 = new(), sw3 = new(), sw4 = new();
     private static readonly double Pi2 = PI * PI;
 
@@ -172,6 +247,8 @@ public partial class FormImageSimulator : Form
         InitializeComponent();
 
         FormDiffractionSpotInfo = new FormDiffractionSpotInfo { Visible = false, FormImageSimulator = this };
+
+        formPresets = new FormPresets() { Visible = false, Owner = this, TopMost = true, formImageSimulator = this };
     }
 
     private void FormImageSimulator_FormClosing(object sender, FormClosingEventArgs e)
@@ -201,6 +278,7 @@ public partial class FormImageSimulator : Form
         pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();
 
         comboBoxScaleColorScale.SelectedIndex = 0;
+
     }
 
     /// <summary>
@@ -270,7 +348,7 @@ public partial class FormImageSimulator : Form
     {
         sw1.Reset(); sw2.Reset(); sw3.Reset(); sw4.Reset();
         sw1.Restart();
-        if (thicknessArray == null || defocusArray == null) return;
+        if (ThicknessArray == null || DefocusArray == null) return;
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
         var directions = new List<Vector3DBase>();
@@ -306,12 +384,12 @@ public partial class FormImageSimulator : Form
             ImageResolution,
             SourceSize,
             FormMain.Crystal.RotationMatrix,
-            thicknessArray,
-            defocusArray,
+            ThicknessArray,
+            DefocusArray,
             directions.ToArray(),
-            numericBoxSTEM_ConvergenceAngle.Value / 1000,
-            numericBoxSTEM_DetectorInnerAngle.Value / 1000,
-            numericBoxSTEM_DetectorOuterAngle.Value / 1000,
+            ConvergenceAngle,
+            DetectorInnerAngle,
+            DetectorOuterAngle,
             radioButtonSTEM_target_Both.Checked || radioButtonSTEM_target_Elas.Checked,
             radioButtonSTEM_target_Both.Checked || radioButtonSTEM_target_Inel.Checked
             );
@@ -394,7 +472,7 @@ public partial class FormImageSimulator : Form
 
         if (!e.Cancelled)
         {
-            SendImage(thicknessArray.Length, defocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
+            SendImage(ThicknessArray.Length, DefocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
             toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(s1 + s2 + s3 + s4) / 1000.0:f1} sec.";
             toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} sec.  Stage 2: {s2 / 1000.0:f1} sec.  Stage 3: {s3 / 1000.0:f1} sec.  Stage 4: {s4 / 1000.0:f1} sec.";
@@ -421,9 +499,9 @@ public partial class FormImageSimulator : Form
     {
         sw1.Restart();
 
-        if (thicknessArray == null || defocusArray == null) return;
+        if (ThicknessArray == null || DefocusArray == null) return;
 
-        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
+        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
 
         //LTF(レンズ伝達関数)を計算 && apertureの外にあるbeamを除外
         BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
@@ -434,19 +512,19 @@ public partial class FormImageSimulator : Form
             return;
         }
 
-        int width = ImageSize.Width, height = ImageSize.Height, dLen = defocusArray.Length, tLen = thicknessArray.Length;
+        int width = ImageSize.Width, height = ImageSize.Height, dLen = DefocusArray.Length, tLen = ThicknessArray.Length;
         var totalImage = new double[tLen][][];
 
         for (int t = 0; t < tLen; t++)
         {
             //ベーテ法で振幅を計算. t=0の時は、最初の判定の時に計算済み
-            Beams = t == 0 ? Beams : FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[t]);
+            Beams = t == 0 ? Beams : FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[t]);
             //絞りの内側のビームを取得
             BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
             toolStripStatusLabel1.Text = $"Solving eigen problem: {sw1.ElapsedMilliseconds} msec.   ";
 
             //HRTEM画像を取得
-            totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, defocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
+            totalImage[t] = FormMain.Crystal.Bethe.GetHRTEMImage(BeamsInside, ImageSize, ImageResolution, Cs, Beta, Delta, DefocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
             //進捗状況を報告
             toolStripProgressBar.Value = (int)(toolStripProgressBar.Maximum / tLen * (t + 1));
             toolStripStatusLabel1.Text += $"{toolStripProgressBar.Value} % completed.  ";
@@ -470,7 +548,7 @@ public partial class FormImageSimulator : Form
 
         if (!checkBoxPotentialUg.Checked && !checkBoxPotentialUgPrime.Checked) return;
 
-        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
+        Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
         var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
 
         //画像が上下左右反転しているみたいなので、処理 20230304
@@ -581,7 +659,7 @@ public partial class FormImageSimulator : Form
                 pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t]
                 = new PseudoBitmap(totalImage[t][d], width)
                 {
-                    Tag = new ImageInfo(width, height, ImageResolution, mat, $"t={thicknessArray[t]}\r\nf={defocusArray[d]}"),
+                    Tag = new ImageInfo(width, height, ImageResolution, mat, $"t={ThicknessArray[t]}\r\nf={DefocusArray[d]}"),
                     MaxValue = trackBarAdvancedMax.Value,
                     MinValue = trackBarAdvancedMin.Value,
                     Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
@@ -854,7 +932,7 @@ public partial class FormImageSimulator : Form
 
         if (FormDiffractionSpotInfo.Visible)
         {
-            Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, thicknessArray[0]);
+            Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
             BeamsInside = BetheMethod.ExtractInsideBeams(Beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
             FormDiffractionSpotInfo.SetTable(AccVol, BeamsInside);
         }
@@ -1338,28 +1416,82 @@ public partial class FormImageSimulator : Form
         numericBoxCc.Value = numericBoxCs.Value = numericBoxBetaAgnle.Value = numericBoxDeltaV.Value = numericBoxDefocus.Value = 0;
     }
 
+    private void presets1ToolStripMenuItem_Click(object sender, EventArgs e)
+    {//ARM300F
+        AccVol = 300;
+        Cs = 0 * 1000000;
+        Cc = 2.8 * 1000000;
+        DeltaVol = 0.3 / 1000 / 2 / Sqrt(2 * Log(2));
+        Defocus = Scherzer;
+
+    }
+
+    private void presets2ToolStripMenuItem_Click(object sender, EventArgs e)
+    {//Schottky JEM2100F UHR
+        AccVol = 200;
+        Cs = 0.5 * 1000000;
+        Cc = 1.1 * 1000000;
+        DeltaVol = 0.8 / 1000 / 2 / Sqrt(2 * Log(2));
+        Defocus = Scherzer;
+    }
+
+    private void presets3ToolStripMenuItem_Click(object sender, EventArgs e)
+    {//Schottky JEM2100F HR
+        AccVol = 200;
+        Cs = 1.0 * 1000000;
+        Cc = 1.4 * 1000000;
+        DeltaVol = 0.8 / 1000 / 2 / Sqrt(2 * Log(2));
+        Defocus = Scherzer;
+    }
+
+    private void presets4ToolStripMenuItem_Click(object sender, EventArgs e)
+    {//LAB6 JEM2010 HR
+        AccVol = 200;
+        Cs = 1.0 * 1000000;
+        Cc = 1.4 * 1000000;
+        DeltaVol = 2.0 / 1000 / 2 / Sqrt(2 * Log(2));
+        Defocus = Scherzer;
+    }
+
+
     private void typicalBF02MradToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        numericBoxSTEM_DetectorInnerAngle.Value = 0;
-        numericBoxSTEM_DetectorOuterAngle.Value = 5;
+        ConvergenceAngle = 25.0 / 1000;
+        DetectorInnerAngle = 0;
+        DetectorOuterAngle = 5.0 / 1000;
     }
 
     private void typicalABF1224MradToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        numericBoxSTEM_DetectorInnerAngle.Value = 12;
-        numericBoxSTEM_DetectorOuterAngle.Value = 24;
+        ConvergenceAngle = 25.0 / 1000;
+        DetectorInnerAngle = 12.0 / 1000;
+        DetectorOuterAngle = 24.0 / 1000;
     }
 
     private void typicalLAADF2560MradToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        numericBoxSTEM_DetectorInnerAngle.Value = 26;
-        numericBoxSTEM_DetectorOuterAngle.Value = 60;
+        ConvergenceAngle = 25.0 / 1000;
+        DetectorInnerAngle = 26.0 / 1000;
+        DetectorOuterAngle = 60.0 / 1000;
     }
 
     private void typicalHAADF80250MradToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        numericBoxSTEM_DetectorInnerAngle.Value = 80;
-        numericBoxSTEM_DetectorOuterAngle.Value = 250;
+        ConvergenceAngle = 25.0 / 1000;
+        DetectorInnerAngle = 80.0 / 1000;
+        DetectorOuterAngle = 250.0 / 1000;
+
     }
+
     #endregion
+
+    private void buttonPreset_Click(object sender, EventArgs e)
+    {
+        formPresets.ShowDialog();
+    }
+
+    private void panel2_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
 }

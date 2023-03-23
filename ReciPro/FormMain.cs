@@ -1,5 +1,7 @@
 #region using
 using Crystallography.OpenGL;
+using MemoryPack.Compression;
+using MemoryPack;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Col4 = OpenTK.Graphics.Color4;
 using Vec3 = OpenTK.Vector3d;
+using IronPython.Compiler.Ast;
 
 #endregion
 
@@ -128,6 +131,7 @@ public partial class FormMain : Form
     private Crystallography.Controls.CommonDialog commonDialog;
     private GLControlAlpha glControlAxes;
 
+    public bool DisableOpenGL { get => disableOpneGLToolStripMenuItem.Checked; set => disableOpneGLToolStripMenuItem.Checked = value; }
     public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
     public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
     public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
@@ -176,7 +180,7 @@ public partial class FormMain : Form
 
         sw.Restart();
 
-        using (var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro"))
+        using (var regKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro"))
         {
             try
             {
@@ -224,13 +228,17 @@ public partial class FormMain : Form
             Author = Version.Author,
             History = Version.History,
             Hint = Version.Hint,
+            
         };
+        
 
         powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(sender, e);
 
         commonDialog.Show();
+        if (commonDialog != null)
+            commonDialog.Location = new Point(this.Location.X + this.Width / 2 - commonDialog.Width / 2, this.Location.Y + this.Height / 2 - commonDialog.Height / 2);
 
-        try { ReadInitialRegistry(); }
+        try { Registry( Reg.Mode.Read); }
         catch { MessageBox.Show("failed reading registries."); }
 
         commonDialog.Progress = ("Now Loading...Initializing OpenGL.", 0.1);
@@ -263,7 +271,7 @@ public partial class FormMain : Form
                 MessageBox.Show("Error during initializing GLcontrol");
                 MessageBox.Show(ex.Message);
                 disableOpneGLToolStripMenuItem.Checked = true;
-                var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+                var regKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
                 regKey.SetValue("DisableOpenGL", true);
             }
         }
@@ -374,7 +382,9 @@ public partial class FormMain : Form
                 Directory.Delete(dir);
 
         commonDialog.Progress = ("Now Loading...Reading registries again.", 0.98);
-        ReadInitialRegistry();
+        //ReadInitialRegistry();
+        Registry(Reg.Mode.Read);
+
 
 
         Text = "ReciPro  " + Version.VersionAndDate;
@@ -394,6 +404,7 @@ public partial class FormMain : Form
             if (glControlAxes != null)
                 glControlAxes.Visible = false;
         }
+
     }
 
     /// <summary>
@@ -408,7 +419,9 @@ public partial class FormMain : Form
         //FormStructureViewer.Close();
         //FormDiffractionSimulator.Close();
         e.Cancel = false;
-        SaveInitialRegistry();
+        //SaveInitialRegistry();
+        Registry(Reg.Mode.Write);
+        
         ChangeClipboardChain(this.Handle, NextHandle);
 
         var cry = new List<Crystal>();
@@ -419,211 +432,53 @@ public partial class FormMain : Form
     #endregion
 
     #region レジストリ操作
-
-    //レジストリの読み込み
-    private void ReadInitialRegistry()
+    private void Registry(Reg.Mode mode)
     {
-        object o;
+        var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+        if (key == null) return;
 
-        RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+        Reg.RW<Rectangle>(key, mode, this, "Bounds");
+        Reg.RW<bool>(key, mode, this, "DisableOpenGL");
 
-        if (regKey == null) return;
-        if (this != null && (int)regKey.GetValue("formMainLocationX", this.Location.X) >= 0)
-        {
-            disableOpneGLToolStripMenuItem.Checked = (string)regKey.GetValue("DisableOpenGL") == "True";
+        if (FormStereonet == null)
+            return;
 
-            this.Width = (int)regKey.GetValue("formMainWidth", this.Width);
-            this.Height = (int)regKey.GetValue("formMainHeight", this.Height);
-            this.Location = new Point((int)regKey.GetValue("formMainLocationX", this.Location.X), (int)regKey.GetValue("formMainLocationY", this.Location.Y));
-        }
+        Reg.RW<bool>(key, mode, this.commonDialog, "AutomaticallyClose");
 
-        if (commonDialog != null)
-        {
-            commonDialog.Location = new Point(this.Location.X + this.Width / 2 - commonDialog.Width / 2, this.Location.Y + this.Height / 2 - commonDialog.Height / 2);
-            commonDialog.AutomaticallyClose = (string)regKey.GetValue("initialDialog.AutomaricallyClose", "False") == "True";
-        }
+        Reg.RW<Rectangle>(key, mode, this.FormStereonet, "Bounds");
 
-        powderDiffractionFunctionToolStripMenuItem.Checked = (string)regKey.GetValue("powderDiffractionFunction.Checked") == "True";
-
-        #region StructureViewer
-        if (FormStructureViewer != null && (int)regKey.GetValue("formStructureViewerLocationX", this.FormStructureViewer.Location.X) >= 0)
-        {
-            this.FormStructureViewer.Width = (int)regKey.GetValue("formStructureViewerWidth", this.FormStructureViewer.Width);
-            this.FormStructureViewer.Height = (int)regKey.GetValue("formCrystalHeight", this.FormStructureViewer.Height);
-            this.FormStructureViewer.Location = new Point((int)regKey.GetValue("formStructureViewerLocationX", this.FormStructureViewer.Location.X),
-                (int)regKey.GetValue("formStructureViewerLocationY", this.FormStructureViewer.Location.Y));
-        }
-        #endregion
-
-        #region Stereonet
-        if (FormStereonet != null && (int)regKey.GetValue("formStereonetLocationY", this.FormStereonet.Location.Y) >= 0)
-        {
-            this.FormStereonet.Width = (int)regKey.GetValue("formStereonetWidth", this.FormStereonet.Width);
-            this.FormStereonet.Height = (int)regKey.GetValue("formStereonetHeight", this.FormStereonet.Height);
-            this.FormStereonet.Location = new Point((int)regKey.GetValue("formStereonetLocationX", this.FormStereonet.Location.X),
-                (int)regKey.GetValue("formStereonetLocationY", this.FormStereonet.Location.Y));
-
-            FormStereonet.colorControl10DegLine.Argb = (int)regKey.GetValue("formStereonet.colorControl10DegLine.Argb", this.FormStereonet.colorControl10DegLine.Argb);
-            FormStereonet.colorControl1DegLine.Argb = (int)regKey.GetValue("formStereonet.colorControl1DegLine.Argb", this.FormStereonet.colorControl1DegLine.Argb);
-            FormStereonet.colorControl90DegLine.Argb = (int)regKey.GetValue("formStereonet.colorControl90DegLine.Argb", this.FormStereonet.colorControl90DegLine.Argb);
-            FormStereonet.colorControlBackGround.Argb = (int)regKey.GetValue("formStereonet.colorControlBackGround.Argb", this.FormStereonet.colorControlBackGround.Argb);
-            FormStereonet.colorControlGeneralAxis.Argb = (int)regKey.GetValue("formStereonet.colorControlGeneralAxis.Argb", this.FormStereonet.colorControlGeneralAxis.Argb);
-            FormStereonet.colorControlGeneralPlane.Argb = (int)regKey.GetValue("formStereonet.colorControlGeneralPlane.Argb", this.FormStereonet.colorControlGeneralPlane.Argb);
-            FormStereonet.colorControlGreatCircle.Argb = (int)regKey.GetValue("formStereonet.colorControlGreatCircle.Argb", this.FormStereonet.colorControlGreatCircle.Argb);
-            FormStereonet.colorControlSmallCircle.Argb = (int)regKey.GetValue("formStereonet.colorControlSmallCircle.Argb", this.FormStereonet.colorControlSmallCircle.Argb);
-            FormStereonet.colorControlString.Argb = (int)regKey.GetValue("formStereonet.colorControlString.Argb", this.FormStereonet.colorControlString.Argb);
-            FormStereonet.colorControlUniqueAxis.Argb = (int)regKey.GetValue("formStereonet.colorControlUniqueAxis.Argb", this.FormStereonet.colorControlUniqueAxis.Argb);
-            FormStereonet.colorControlUniquePlane.Argb = (int)regKey.GetValue("formStereonet.colorControlUniquePlane.Argb", this.FormStereonet.colorControlUniquePlane.Argb);
-        }
-        #endregion
+        Reg.RW<Rectangle>(key, mode, this.FormTEMID, "Bounds");
 
         #region DiffractionSimulator
-        if (FormDiffractionSimulator != null && (int)regKey.GetValue("formElectronDiffractionLocationY", this.FormDiffractionSimulator.Location.Y) >= 0)
-        {
-            var FD = FormDiffractionSimulator;
-            FD.CancelSetVector = true;
 
-            FD.Width = (int)regKey.GetValue("formElectronDiffractionWidth", FD.Width);
-            FD.Height = (int)regKey.GetValue("formElectronDiffractionHeight", FD.Height);
-            FD.Location = new Point((int)regKey.GetValue("formElectronDiffractionLocationX", FD.Location.X), (int)regKey.GetValue("formElectronDiffractionLocationY", FD.Location.Y));
+        FormDiffractionSimulator.CancelSetVector = true;
 
-            FD.colorControlBackGround.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxBackGround.BackColor", FormDiffractionSimulator.colorControlBackGround.Color.ToArgb()));
-            FD.colorControlDefectLine.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxDefectLine.BackColor", FormDiffractionSimulator.colorControlDefectLine.Color.ToArgb()));
-            FD.colorControlExcessLine.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxExcessLine.BackColor", FormDiffractionSimulator.colorControlExcessLine.Color.ToArgb()));
-            FD.colorControlForbiddenLattice.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxForbiddenLattice.BackColor", FormDiffractionSimulator.colorControlForbiddenLattice.Color.ToArgb()));
-            FD.colorControlScrewGlide.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxForbiddenScrewGlide.BackColor", FormDiffractionSimulator.colorControlScrewGlide.Color.ToArgb()));
-            FD.colorControlNoCondition.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxNoCondition.BackColor", FormDiffractionSimulator.colorControlNoCondition.Color.ToArgb()));
-            FD.colorControlOrigin.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxOrigin.BackColor", FormDiffractionSimulator.colorControlOrigin.Color.ToArgb()));
-            FD.colorControlString.Color = Color.FromArgb((int)regKey.GetValue("formElectronDiffraction.pictureBoxString.BackColor", FormDiffractionSimulator.colorControlString.Color.ToArgb()));
+        Reg.RW<Rectangle>(key, mode, this.FormDiffractionSimulator, "Bounds");
+        Reg.RW<double>(key, mode, this.FormDiffractionSimulator, "Resolution");
 
-            FormDiffractionSimulator.FormElectronDiffraction_Load(new object(), new EventArgs());//.Visible = true;
+        Reg.RW<WaveSource>(key, mode, this.FormDiffractionSimulator.waveLengthControl, "WaveSource");
+        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.waveLengthControl, "Energy");
+        Reg.RW<int>(key, mode, this.FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceElementNumber");
+        Reg.RW<XrayLine>(key, mode, this.FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceLine");
 
-            if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootX")) != null) FD.FormDiffractionSimulatorGeometry.FootX = Convert.ToDouble((string)o);
-            if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootY")) != null) FD.FormDiffractionSimulatorGeometry.FootY = Convert.ToDouble((string)o);
-            if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.CameraLength2")) != null) FD.FormDiffractionSimulatorGeometry.CameraLength2 = Convert.ToDouble((string)o);
-            if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorWidth")) != null) FD.FormDiffractionSimulatorGeometry.DetectorWidth = Convert.ToInt32((string)o);
-            if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorHeight")) != null) FD.FormDiffractionSimulatorGeometry.DetectorHeight = Convert.ToInt32((string)o);
-            if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorPixelSize")) != null) FD.FormDiffractionSimulatorGeometry.DetectorPixelSize = Convert.ToDouble((string)o);
-            if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Tau")) != null) FD.FormDiffractionSimulatorGeometry.Tau = Convert.ToDouble((string)o);
-            if ((o = regKey.GetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Phi")) != null) FD.FormDiffractionSimulatorGeometry.Phi = Convert.ToDouble((string)o);
+        FormDiffractionSimulator.CancelSetVector = false;
 
-            double resolution = Convert.ToDouble((string)regKey.GetValue("formElectronDiffraction.numericUpDownResolution.Value", FD.numericBoxResolution.Value.ToString()));
-
-            FD.numericBoxResolution.Value = Math.Min(Math.Max(FormDiffractionSimulator.numericBoxResolution.Minimum, resolution), FD.numericBoxResolution.Maximum);
-
-            var wave = FD.waveLengthControl;
-            wave.WaveSource = (WaveSource)Enum.Parse(typeof(WaveSource), (string)regKey.GetValue("formElectronDiffraction.waveLengthControl.WaveSource", wave.WaveSource.ToString()));
-            wave.Energy = Convert.ToDouble(regKey.GetValue("formElectronDiffraction.waveLengthControl.Energy", wave.Energy));
-            wave.XrayWaveSourceElementNumber = (int)regKey.GetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceElementNumber", wave.XrayWaveSourceElementNumber);
-            wave.XrayWaveSourceLine = (XrayLine)Enum.Parse(typeof(XrayLine), (string)regKey.GetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceLine", wave.XrayWaveSourceLine.ToString()));
-
-            FD.CancelSetVector = false;
-        }
+        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootX");
+        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootY");
+        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "CameraLength2");
+        Reg.RW<int>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorWidth");
+        Reg.RW<int>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorHeight");
+        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Tau");
+        Reg.RW<double>(key, mode, this.FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Phi");
         #endregion
 
-        #region TEMID
-        if (FormTEMID != null && (int)regKey.GetValue("formTEMIDLocationY", this.FormTEMID.Location.Y) >= 0)
-        {
-            this.FormTEMID.Width = (int)regKey.GetValue("formTEMIDWidth", this.FormTEMID.Width);
-            this.FormTEMID.Height = (int)regKey.GetValue("formTEMIDHeight", this.FormTEMID.Height);
-            this.FormTEMID.Location = new Point((int)regKey.GetValue("formTEMIDLocationX", this.FormTEMID.Location.X),
-            (int)regKey.GetValue("formTEMIDLocationY", this.FormTEMID.Location.Y));
-        }
-        #endregion
+        #region ImageSimulator
+        Reg.RW<Rectangle>(key, mode, this.FormImageSimulator, "Bounds");
+        Reg.RW<ImageSimulatorSetting>(key, mode, this.FormImageSimulator, "Setting");
+        Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.formPresets, "Settings");
 
-        regKey.Close();
+        #endregion
     }
-
-    //レジストリの書き込み
-    private void SaveInitialRegistry()
-    {
-        if (resetRegistryToolStripMenuItem.Checked)
-        {
-            Registry.CurrentUser.DeleteSubKey("Software\\Crystallography\\ReciPro");
-            return;
-        }
-        var regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
-
-        if (regKey == null) return;
-
-        regKey.SetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
-        regKey.SetValue("DisableOpenGL", disableOpneGLToolStripMenuItem.Checked);
-
-        regKey.SetValue("formMainWidth", this.Width);
-        regKey.SetValue("formMainHeight", this.Height);
-        regKey.SetValue("formMainLocationX", this.Location.X);
-        regKey.SetValue("formMainLocationY", this.Location.Y);
-        regKey.SetValue("initialDialog.AutomaricallyClose", commonDialog.AutomaticallyClose);
-
-        regKey.SetValue("powderDiffractionFunction.Checked", powderDiffractionFunctionToolStripMenuItem.Checked);
-
-
-        #region Structure Viewer
-        regKey.SetValue("formStructureViewerWidth", this.FormStructureViewer.Width);
-        regKey.SetValue("formStructureViewerHeight", this.FormStructureViewer.Height);
-        regKey.SetValue("formStructureViewerLocationX", this.FormStructureViewer.Location.X);
-        regKey.SetValue("formStructureViewerLocationY", this.FormStructureViewer.Location.Y);
-        regKey.SetValue("formStereonetWidth", this.FormStereonet.Width);
-        regKey.SetValue("formStereonetHeight", this.FormStereonet.Height);
-        regKey.SetValue("formStereonetLocationX", this.FormStereonet.Location.X);
-        regKey.SetValue("formStereonetLocationY", this.FormStereonet.Location.Y);
-        regKey.SetValue("formElectronDiffractionWidth", this.FormDiffractionSimulator.Width);
-        regKey.SetValue("formElectronDiffractionHeight", this.FormDiffractionSimulator.Height);
-        regKey.SetValue("formElectronDiffractionLocationX", this.FormDiffractionSimulator.Location.X);
-        regKey.SetValue("formElectronDiffractionLocationY", this.FormDiffractionSimulator.Location.Y);
-        regKey.SetValue("formTEMIDWidth", this.FormTEMID.Width);
-        regKey.SetValue("formTEMIDHeight", this.FormTEMID.Height);
-        regKey.SetValue("formTEMIDLocationX", this.FormTEMID.Location.X);
-        regKey.SetValue("formTEMIDLocationY", this.FormTEMID.Location.Y);
-        #endregion
-
-        #region Diffraction Simulator
-        regKey.SetValue("formElectronDiffraction.pictureBoxBackGround.BackColor", this.FormDiffractionSimulator.colorControlBackGround.Color.ToArgb());
-        regKey.SetValue("formElectronDiffraction.pictureBoxDefectLine.BackColor", this.FormDiffractionSimulator.colorControlDefectLine.Color.ToArgb());
-        regKey.SetValue("formElectronDiffraction.pictureBoxExcessLine.BackColor", this.FormDiffractionSimulator.colorControlExcessLine.Color.ToArgb());
-        regKey.SetValue("formElectronDiffraction.pictureBoxForbiddenLattice.BackColor", this.FormDiffractionSimulator.colorControlForbiddenLattice.Color.ToArgb());
-        regKey.SetValue("formElectronDiffraction.pictureBoxForbiddenScrewGlide.BackColor", this.FormDiffractionSimulator.colorControlScrewGlide.Color.ToArgb());
-        regKey.SetValue("formElectronDiffraction.pictureBoxNoCondition.BackColor", this.FormDiffractionSimulator.colorControlNoCondition.Color.ToArgb());
-        regKey.SetValue("formElectronDiffraction.pictureBoxOrigin.BackColor", this.FormDiffractionSimulator.colorControlOrigin.Color.ToArgb());
-        regKey.SetValue("formElectronDiffraction.pictureBoxString.BackColor", this.FormDiffractionSimulator.colorControlString.Color.ToArgb());
-
-
-        if (FormDiffractionSimulator.FormDiffractionSimulatorGeometry != null)
-        {
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootX", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootX.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.FootY", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootY.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.CameraLength2", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.CameraLength2.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorWidth", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorHeight", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorHeight.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.DetectorPixelSize", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorPixelSize.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Tau", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Tau.ToString());
-            regKey.SetValue("FormElectronDiffraction.FormDiffractionSimulatorGeometry.Phi", FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Phi.ToString());
-        }
-        //regKey.SetValue("formElectronDiffraction.numericUpDownPictureResolution.Value", formElectronDiffraction.formOverlapPicture.numericUpDownPictureResolution.Value.ToString());
-        regKey.SetValue("formElectronDiffraction.numericUpDownResolution.Value", FormDiffractionSimulator.numericBoxResolution.Value.ToString());
-
-        regKey.SetValue("formElectronDiffraction.waveLengthControl.WaveSource", FormDiffractionSimulator.waveLengthControl.WaveSource);
-        //regKey.SetValue("formElectronDiffraction.waveLengthControl.WaveLength", FormDiffractionSimulator.waveLengthControl.WaveLength);
-        regKey.SetValue("formElectronDiffraction.waveLengthControl.Energy", FormDiffractionSimulator.waveLengthControl.Energy);
-        regKey.SetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceElementNumber", FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber);
-        regKey.SetValue("formElectronDiffraction.waveLengthControl.XrayWaveSourceLine", FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine);
-        #endregion
-
-        regKey.SetValue("formStereonet.colorControl10DegLine.Argb", this.FormStereonet.colorControl10DegLine.Argb);
-        regKey.SetValue("formStereonet.colorControl1DegLine.Argb", this.FormStereonet.colorControl1DegLine.Argb);
-        regKey.SetValue("formStereonet.colorControl90DegLine.Argb", this.FormStereonet.colorControl90DegLine.Argb);
-        regKey.SetValue("formStereonet.colorControlBackGround.Argb", this.FormStereonet.colorControlBackGround.Argb);
-        regKey.SetValue("formStereonet.colorControlGeneralAxis.Argb", this.FormStereonet.colorControlGeneralAxis.Argb);
-        regKey.SetValue("formStereonet.colorControlGeneralPlane.Argb", this.FormStereonet.colorControlGeneralPlane.Argb);
-        regKey.SetValue("formStereonet.colorControlGreatCircle.Argb", this.FormStereonet.colorControlGreatCircle.Argb);
-        regKey.SetValue("formStereonet.colorControlSmallCircle.Argb", this.FormStereonet.colorControlSmallCircle.Argb);
-        regKey.SetValue("formStereonet.colorControlString.Argb", this.FormStereonet.colorControlString.Argb);
-        regKey.SetValue("formStereonet.colorControlUniqueAxis.Argb", this.FormStereonet.colorControlUniqueAxis.Argb);
-        regKey.SetValue("formStereonet.colorControlUniquePlane.Argb", this.FormStereonet.colorControlUniquePlane.Argb);
-
-        regKey.Close();
-    }
-
     #endregion レジストリ操作
 
     #region Axisの描画関連
@@ -921,7 +776,7 @@ public partial class FormMain : Form
 
     public bool SkipEulerChange = false;
 
-    private void numericUpDownPhi_ValueChanged(object sender, EventArgs e)
+    private void numericUpDownEulerAngle_ValueChanged(object sender, EventArgs e)
     {
         if (SkipEulerChange) return;
         SkipEulerChange = true;
@@ -929,6 +784,11 @@ public partial class FormMain : Form
             numericUpDownEulerPhi.Value -= 360;
         if (numericUpDownEulerPhi.Value < -180)
             numericUpDownEulerPhi.Value += 360;
+
+        if (numericUpDownEulerTheta.Value > 180)
+            numericUpDownEulerTheta.Value -= 360;
+        if (numericUpDownEulerTheta.Value < -180)
+            numericUpDownEulerTheta.Value += 360;
 
         if (numericUpDownEulerPsi.Value > 180)
             numericUpDownEulerPsi.Value -= 360;
