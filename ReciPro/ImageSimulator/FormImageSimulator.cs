@@ -21,8 +21,11 @@ public partial class FormImageSimulator : Form
 {
     #region プロパティ
 
-    public ImageSimulatorSetting Setting { get => new ImageSimulatorSetting("", this); set => value.Apply(this); }
+    public bool PresetVisible { get => checkBoxPreset.Checked; set => checkBoxPreset.Checked = value; }
 
+    public bool CTFVisible { get => checkBoxCTF.Checked; set => checkBoxCTF.Checked = value; }
+
+    public ImageSimulatorSetting Setting { get => new ImageSimulatorSetting("", this); set => value.Apply(this); }
     public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0;
     public HRTEM_Modes HRTEM_Mode
     {
@@ -58,7 +61,9 @@ public partial class FormImageSimulator : Form
     /// <summary>
     /// 電子の波長 (nm)
     /// </summary>
-    public double Rambda => UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol);
+    public double Lambda => UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol);
+
+
 
     /// <summary>
     /// 対物絞りのサイズ (rad)
@@ -119,10 +124,19 @@ public partial class FormImageSimulator : Form
     public double Cc { get => numericBoxCc.Value * 1000000; set => numericBoxCc.Value = value / 1000000; }
 
     /// <summary>
-    /// 電子の加速電圧の揺らぎ (kV) numericBoxDeltaV.ValueはFWHMだが、2 * Sqrt(2 * Log(2)) で割って、σに変換する
+    /// 電子の加速電圧の揺らぎ (kV) 表示上numericBoxDeltaV.ValueはFWHMだが、2 * Sqrt(2 * Log(2)) で割って、標準偏差に変換する
     /// </summary>
     public double DeltaVol { get => numericBoxDeltaV.Value / 1000 / 2 / Sqrt(2 * Log(2)); set => numericBoxDeltaV.Value = value * 1000 * 2 * Sqrt(2 * Log(2)); }
 
+    /// <summary>
+    /// 実効的光源サイズ (nm単位) 
+    /// </summary>
+    public double SourceSizeFWHM { get => numericBoxEffectiveSourceSize.Value / 1000; set => numericBoxEffectiveSourceSize.Value = value * 1000; }
+
+    /// <summary>
+    /// 実効光源サイズ (nm) (STEM計算に必要) 2 * Sqrt(2 * Log(2)) で割って、標準偏差に変換する
+    /// </summary>
+    public double SourceSizeSigma { get => numericBoxEffectiveSourceSize.Value / 1000 / 2 / Sqrt(2 * Log(2)); set => numericBoxEffectiveSourceSize.Value = value * 1000 * 2 * Sqrt(2 * Log(2)); }
 
     /// <summary>
     /// Δ
@@ -132,17 +146,14 @@ public partial class FormImageSimulator : Form
     /// <summary>
     /// Scherzer focus (nm)
     /// </summary>
-    public double Scherzer => Cs > 0 ? -Sqrt(4.0 / 3.0 * Cs * Rambda) : Sqrt(4.0 / 3.0 * -Cs * Rambda);
+    public double Scherzer => Cs > 0 ? -Sqrt(4.0 / 3.0 * Cs * Lambda) : Sqrt(4.0 / 3.0 * -Cs * Lambda);
 
     /// <summary>
     /// STEM Inelasticを計算する際のスライス厚み(nm単位)
     /// </summary>
     public double SliceThicknessForInelastic { get => numericBoxSliceThicknessForInelasticSTEM.Value; set => numericBoxSliceThicknessForInelasticSTEM.Value = value; }
 
-    /// <summary>
-    /// 実効的光源サイズ (nm単位)
-    /// </summary>
-    public double SourceSize { get => numericBoxSourceSize.Value / 1000; set => numericBoxSourceSize.Value = value * 1000; }
+
 
     /// <summary>
     /// イメージの解像度 (nm/pix)
@@ -210,7 +221,9 @@ public partial class FormImageSimulator : Form
     /// </summary>
     public double DetectorOuterAngle { get => numericBoxSTEM_DetectorOuterAngle.Value / 1000; set => numericBoxSTEM_DetectorOuterAngle.Value = value * 1000; }
 
-
+    /// <summary>
+    /// STEM時の収束角(rad)
+    /// </summary>
     public double ConvergenceAngle { get => numericBoxSTEM_ConvergenceAngle.Value / 1000; set => numericBoxSTEM_ConvergenceAngle.Value = value * 1000; }
 
     private BetheMethod.Beam[] Beams { get; set; }
@@ -227,7 +240,8 @@ public partial class FormImageSimulator : Form
     public FormMain FormMain;
     public FormDiffractionSpotInfo FormDiffractionSpotInfo;
 
-    public FormPresets formPresets;
+    public FormPresets FormPresets;
+    public FormCTF FormCTF;
 
     readonly Stopwatch sw1 = new(), sw2 = new(), sw3 = new(), sw4 = new();
     private static readonly double Pi2 = PI * PI;
@@ -248,7 +262,10 @@ public partial class FormImageSimulator : Form
 
         FormDiffractionSpotInfo = new FormDiffractionSpotInfo { Visible = false, FormImageSimulator = this };
 
-        formPresets = new FormPresets() { Visible = false, Owner = this, TopMost = true, formImageSimulator = this };
+        FormPresets = new FormPresets() { Visible = false, Owner = this, TopMost = true, FormImageSimulator = this };
+
+        FormCTF = new FormCTF() { Visible = false, Owner = this, TopMost = true, FormImageSimulator = this };
+
     }
 
     private void FormImageSimulator_FormClosing(object sender, FormClosingEventArgs e)
@@ -291,7 +308,8 @@ public partial class FormImageSimulator : Form
         if (this.Visible)
         {
             CalculateInsideSpotInfo();
-            DrawLenzGraph();
+            if (FormCTF.Visible)
+                FormCTF.RenewGraph();
         }
     }
     #endregion 起動、終了関連
@@ -382,7 +400,7 @@ public partial class FormImageSimulator : Form
             SliceThicknessForInelastic,
             ImageSize,
             ImageResolution,
-            SourceSize,
+            SourceSizeFWHM,
             FormMain.Crystal.RotationMatrix,
             ThicknessArray,
             DefocusArray,
@@ -833,7 +851,7 @@ public partial class FormImageSimulator : Form
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void NumericBoxTEMproperty_ValueChanged(object sender, EventArgs e) => DrawLenzGraph();
+    private void NumericBoxTEMproperty_ValueChanged(object sender, EventArgs e) => FormCTF.RenewGraph();
 
     /// <summary>
     /// 加速電圧が変更されたとき。波長を変更、シェルツァーフォーカス変更、レンズ関数描画、ビームの個数計算
@@ -843,7 +861,7 @@ public partial class FormImageSimulator : Form
     private void NumericBoxAccVol_ValueChanged(object sender, EventArgs e)
     {
         textBoxScherzer.Text = Scherzer.ToString("f1");
-        DrawLenzGraph();
+        FormCTF.RenewGraph();
         CalculateInsideSpotInfo();
     }
     /// <summary>
@@ -854,7 +872,7 @@ public partial class FormImageSimulator : Form
     private void NumericBoxCs_ValueChanged(object sender, EventArgs e)
     {
         textBoxScherzer.Text = Scherzer.ToString("f1");
-        DrawLenzGraph();
+        FormCTF.RenewGraph();
     }
     /// <summary>
     /// デフォーカスが変更されたとき。シリアルモードのデフォーカス開始値変更、レンズ関数描画
@@ -864,7 +882,7 @@ public partial class FormImageSimulator : Form
     private void NumericBoxDefocus_ValueChanged(object sender, EventArgs e)
     {
         numericBoxDefocusStart.Value = numericBoxDefocus.Value;
-        DrawLenzGraph();
+        FormCTF.RenewGraph();
     }
     /// <summary>
     /// 試料厚みが変更されたとき。シリアルモードの試料厚み開始値変更
@@ -880,9 +898,11 @@ public partial class FormImageSimulator : Form
     /// <param name="e"></param>
     private void NumericBoxObjAperRadius_ValueChanged(object sender, EventArgs e)
     {
+        FormCTF.RenewGraph();
+
         numericBoxObjAperRadius.Enabled = numericBoxObjAperX.Enabled = numericBoxObjAperY.Enabled = !checkBoxOpenAperture.Checked;
 
-        textBoxApertureRadius.Text = checkBoxOpenAperture.Checked ? ObjAperRadius.ToString() : (2 * Math.Sin(ObjAperRadius / 2) / Rambda).ToString("f4");
+        textBoxApertureRadius.Text = checkBoxOpenAperture.Checked ? ObjAperRadius.ToString() : (2 * Math.Sin(ObjAperRadius / 2) / Lambda).ToString("f4");
 
         CalculateInsideSpotInfo();
     }
@@ -926,7 +946,7 @@ public partial class FormImageSimulator : Form
     /// </summary>
     public void CalculateInsideSpotInfo()
     {
-        var beams = FormMain.Crystal.Bethe.Find_gVectors(FormMain.Crystal.RotationMatrix, new Vector3DBase(0, 0, 1 / Rambda), BlochNum);
+        var beams = FormMain.Crystal.Bethe.Find_gVectors(FormMain.Crystal.RotationMatrix, new Vector3DBase(0, 0, 1 / Lambda), BlochNum);
         BeamsInside = BetheMethod.ExtractInsideBeams(beams, AccVol, ObjAperRadius, ObjAperX, ObjAperY);
         textBoxNumOfSpots.Text = BeamsInside.Length.ToString();
 
@@ -972,67 +992,6 @@ public partial class FormImageSimulator : Form
     }
     #endregion
 
-    #region レンズ関数描画関連
-    private readonly Color colorKai = Color.Blue, colorEs = Color.Green, colorEc = Color.Red, colorAll = Color.FromArgb(128, 128, 0);
-    /// <summary>
-    /// レンズの各種関数のグラフを描画
-    /// </summary>
-    private void DrawLenzGraph()
-    {
-        checkBoxGraphPCTF.ForeColor = colorKai;
-        checkBoxGraphEs.ForeColor = colorEs;
-        checkBoxGraphEc.ForeColor = colorEc;
-        checkBoxGraphAll.ForeColor = colorAll;
-        double rambda = Rambda, rambda2 = rambda * rambda;
-
-        List<PointD> kai = new(), es = new(), ec = new(), all = new();
-        var delta = Cc * DeltaVol / AccVol;
-        for (double u = 0; u < numericBoxMaxU1.Value; u += 0.01)
-        {
-            var u2 = u * u;
-            kai.Add(new PointD(u, Sin(PI * Rambda * u2 * (Cs * rambda2 * u2 / 2.0 + Defocus))));//球面収差
-            es.Add(new PointD(u, Exp(-Pi2 * Beta * Beta * u2 * (Defocus + rambda2 * Cs * u2) * (Defocus + rambda2 * Cs * u2))));//空間的インコヒーレンス
-            ec.Add(new PointD(u, Exp(-Pi2 * rambda2 * delta * delta * u2 * u2 / 2/*16/Math.Log(2)*/)));//時間的インコヒーレンス
-            all.Add(new PointD(u, kai[^1].Y * es[^1].Y * ec[^1].Y));
-        }
-        graphControl.ClearProfile();
-        var profiles = new List<Profile>();
-        if (checkBoxGraphPCTF.Checked) profiles.Add(new Profile(kai, colorKai));
-        if (checkBoxGraphEs.Checked) profiles.Add(new Profile(es, colorEs));
-        if (checkBoxGraphEc.Checked) profiles.Add(new Profile(ec, colorEc));
-        if (checkBoxGraphAll.Checked) profiles.Add(new Profile(all, colorAll));
-        graphControl.AddProfiles(profiles.ToArray());
-    }
-    /// <summary>
-    /// グラフのコピーボタン。エクセルに張り付けられるように
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void ButtonCopyGraph_Click(object sender, EventArgs e)
-    {
-        var p = graphControl.ProfileList;
-        if (p.Length > 0)
-        {
-            var sb = new StringBuilder();
-            sb.Append("|u|");
-            if (checkBoxGraphPCTF.Checked) sb.Append("\tSin[Kai(u)]");
-            if (checkBoxGraphEs.Checked) sb.Append("\tEs(u)");
-            if (checkBoxGraphEc.Checked) sb.Append("\tEc(u)");
-            if (checkBoxGraphAll.Checked) sb.Append("\tProduct of all");
-            sb.Append("\r\n");
-
-            for (int i = 0; i < p[0].Pt.Count; i++)
-            {
-                sb.Append(p[0].Pt[i].X);
-                for (int j = 0; j < p.Length; j++)
-                    sb.Append($"\t{p[j].Pt[i].Y.ToString()}");
-                sb.Append("\r\n");
-            }
-            Clipboard.SetDataObject(sb.ToString());
-        }
-    }
-    #endregion
-
     #region チェックボックス On/Offやボタン押下イベントに伴うパネル類のEnabled, visible設定
 
     /// <summary>
@@ -1070,7 +1029,7 @@ public partial class FormImageSimulator : Form
 
         numericBoxCs.Enabled = numericBoxCc.Enabled = numericBoxDeltaV.Enabled =
         groupBoxSampleProperty.Visible = groupBoxNormalization.Visible
-               = groupBoxSerialImage.Visible = panelLenz.Visible = ImageMode != ImageModes.POTENTIAL;
+               = groupBoxSerialImage.Visible = ImageMode != ImageModes.POTENTIAL;
 
         checkBoxRealTimeSimulation.Visible = ImageMode != ImageModes.STEM;
 
@@ -1078,17 +1037,9 @@ public partial class FormImageSimulator : Form
         groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = ImageMode == ImageModes.HRTEM;
         groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = ImageMode == ImageModes.STEM;
         this.ResumeLayout(true);
-    }
 
-    private void ButtonPanel_Click(object sender, EventArgs e)
-    {
-        if (panelGraphOption.Visible)
-            buttonPanel.Text = ">\r\n>\r\n>\r\n>\r\n>\r\n>\r\n>\r\n>\r\n>\r\n>";
-        else
-            buttonPanel.Text = "<\r\n<\r\n<\r\n<\r\n<\r\n<\r\n<\r\n<\r\n<\r\n<>";
-        panelGraphOption.Visible = !panelGraphOption.Visible;
+        FormCTF.RenewGraph();
     }
-
 
     #endregion
 
@@ -1341,10 +1292,7 @@ public partial class FormImageSimulator : Form
 
     private void checkBoxIntensityMin_CheckedChanged(object sender, EventArgs e) => numericBoxIntensityMin.Enabled = checkBoxIntensityMin.Checked;
 
-    private void checkBoxShowLensFunctionGraph_CheckedChanged(object sender, EventArgs e)
-    {
-        groupBoxLensFunction.Visible = checkBoxShowLensFunctionGraph.Checked;
-    }
+
 
     private bool TrackBarAdvancedMin_ValueChanged(object sender, double value)
     {
@@ -1485,18 +1433,16 @@ public partial class FormImageSimulator : Form
 
     #endregion
 
-    private void buttonPreset_Click(object sender, EventArgs e)
+    #region プリセットフォーム、CTFグラフフォームの表示/非表示
+    private void checkBoxPreset_CheckedChanged(object sender, EventArgs e)
     {
-        formPresets.ShowDialog();
+        FormPresets.Visible = checkBoxPreset.Checked;
     }
 
-    private void panel2_Paint(object sender, PaintEventArgs e)
+    private void checkBoxShowLensFunctionGraph_CheckedChanged(object sender, EventArgs e)
     {
-
+        FormCTF.Visible = checkBoxCTF.Checked;
     }
+    #endregion
 
-    private void label34_Click(object sender, EventArgs e)
-    {
-
-    }
 }

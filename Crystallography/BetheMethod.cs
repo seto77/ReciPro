@@ -957,26 +957,26 @@ public class BetheMethod
 
         #region レンズ収差関数、収束絞り関数、検出器関数
         //レンズ収差関数 W
-        double rambda = UniversalConstants.Convert.EnergyToElectronWaveLength(AccVoltage), rambda2 = rambda * rambda;
+        double lambda = UniversalConstants.Convert.EnergyToElectronWaveLength(AccVoltage), lambda2 = lambda * lambda;
         Complex Lenz(in PointD k, in PointD kq, in double defocus)
         {
             //大塚さんの資料「瀬戸先生・質問3への回答(瀬戸追記).docx」を参照
             double k2 = k.Length2, kq2 = kq.Length2;
             //球面収差の部分
-            var tmp1 = -PiI * rambda * ((k2 - kq2) * defocus + cs * rambda2 * (k2 * k2 - kq2 * kq2) / 2);
+            var tmp1 = -PiI * lambda * ((k2 - kq2) * defocus + cs * lambda2 * (k2 * k2 - kq2 * kq2) / 2);
             //色収差の部分
-            var tmp2 = Math.PI * rambda * delta * (kq2 - k2);
+            var tmp2 = Math.PI * lambda * delta * (kq2 - k2);
             tmp2 = -tmp2 * tmp2;
             return Exp(tmp1 + tmp2);
         }
         //double W(in PointD q, in double defocus) => 0;//検証用コード
 
         //収束絞り関数 A
-        double conv = Math.Sin(convergenceAngle) / rambda, conv2 = conv * conv;
+        double conv = Math.Sin(convergenceAngle) / lambda, conv2 = conv * conv;
         bool A(in PointD k) => k.Length2 <= conv2;
 
         // 検出器関数 D
-        double inner = Math.Sin(detAngleInner) / rambda, inner2 = inner * inner, outer = Math.Sin(detAngleOuter) / rambda, outer2 = outer * outer;
+        double inner = Math.Sin(detAngleInner) / lambda, inner2 = inner * inner, outer = Math.Sin(detAngleOuter) / lambda, outer2 = outer * outer;
         bool D(in PointD k) => k.Length2 >= inner2 && k.Length2 <= outer2;
 
         #endregion
@@ -1067,8 +1067,10 @@ public class BetheMethod
                     var i_Elas = new Complex[tLen];
                     foreach (var (g, g_q) in g_qIndex[qIndex].Where(e => D(Beams[e.g].Vec.ToPointD + k_xy[kIndex])))
                         for (int t = 0; t < tLen; t++)
+                        {
+                            //i_Elas[t] += 1;
                             i_Elas[t] += tc[kIndex][t][g] * (r[0] * tc[n[0]][t][g_q] + r[1] * tc[n[1]][t][g_q] + r[2] * tc[n[2]][t][g_q] + r[3] * tc[n[3]][t][g_q]).Conjugate();
-
+                        }
                     lock (lockObj1)
                         for (int t = 0; t < tLen; t++)
                             for (int d = 0; d < dLen; d++)
@@ -1336,11 +1338,11 @@ public class BetheMethod
                     for (int d = 0; d < dLen; d++)
                     {
                         Complex elas = new(), inel = new();
-                        for (int m = 0; m < qList.Count; m++)
+                        for (int qIndex = 0; qIndex < qList.Count; qIndex++)
                         {
-                            var tmp = Exp(qList[m].Vec.ToPointD * rVec * TwoPiI) / radiusPix / radiusPix;
-                            elas += I_Elas[m, t, d] * tmp;
-                            inel += I_Inel[m, t, d] * tmp;
+                            var tmp = Exp(qList[qIndex].Vec.ToPointD * rVec * TwoPiI) / radiusPix / radiusPix;
+                            elas += I_Elas[qIndex, t, d] * tmp;
+                            inel += I_Inel[qIndex, t, d] * tmp;
                         }
                         STEM_Image[t][d][x + y * width] = elas.Magnitude + inel.Magnitude;
                     }
@@ -1354,6 +1356,12 @@ public class BetheMethod
                     ImageProcess.GaussianBlurFast(ref STEM_Image[t][d], width, sourceSize / resolution);
 
         #endregion
+
+        //var test = new SortedList<double, Complex>();
+        //for(int m=0; m<qList.Count;m++)
+        //{
+        //    test.TryAdd(qList[m].Vec.Length, I_Elas[m, 0, 0]);
+        //}
 
         return;
     }

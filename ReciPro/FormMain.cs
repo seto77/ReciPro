@@ -467,7 +467,7 @@ public partial class FormMain : Form
         #region ImageSimulator
         Reg.RW<Rectangle>(key, mode, FormImageSimulator, "Bounds");
         Reg.RW<ImageSimulatorSetting>(key, mode, FormImageSimulator, "Setting");
-        Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.formPresets, "Settings");
+        Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.FormPresets, "Settings");
         #endregion
 
 

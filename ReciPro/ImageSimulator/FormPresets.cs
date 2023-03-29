@@ -12,7 +12,7 @@ namespace ReciPro;
 public partial class FormPresets : Form
 {
     #region フィールド、プロパティ
-    public FormImageSimulator formImageSimulator;
+    public FormImageSimulator FormImageSimulator;
 
     public ImageSimulatorSetting CurrentSetting;
 
@@ -44,14 +44,14 @@ public partial class FormPresets : Form
     private void FormPresets_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = true;
-        Visible = false;
+        FormImageSimulator.PresetVisible = false;
     }
     #endregion
 
     #region Add, Replace, Rename, Deleteボタン
     public void buttonAdd_Click(object sender, EventArgs e)
     {
-        listBox.Items.Add(new ImageSimulatorSetting(PresetName, formImageSimulator));
+        listBox.Items.Add(new ImageSimulatorSetting(PresetName, FormImageSimulator));
         listBox.SelectedIndex = listBox.Items.Count - 1;
     }
 
@@ -60,7 +60,7 @@ public partial class FormPresets : Form
         if (listBox.SelectedItem != null)
         {
             var index = listBox.SelectedIndex;
-            listBox.Items.Insert(index, new ImageSimulatorSetting(PresetName, formImageSimulator));
+            listBox.Items.Insert(index, new ImageSimulatorSetting(PresetName, FormImageSimulator));
             listBox.Items.RemoveAt(index + 1);
             listBox.SelectedIndex = index;
         }
@@ -101,7 +101,7 @@ public partial class FormPresets : Form
     {
         if (Visible)
         {
-            CurrentSetting = new ImageSimulatorSetting("", formImageSimulator);
+            CurrentSetting = new ImageSimulatorSetting("", FormImageSimulator);
             listBox.SelectedIndex = -1;
         }
     }
@@ -115,7 +115,7 @@ public partial class FormPresets : Form
     private void buttonCancel_Click(object sender, EventArgs e)
     {
         Visible = false;
-        CurrentSetting.Apply(formImageSimulator);
+        CurrentSetting.Apply(FormImageSimulator);
     }
     #endregion
 
@@ -132,7 +132,7 @@ public partial class FormPresets : Form
             PresetName = ((ImageSimulatorSetting)listBox.SelectedItem).Name;
 
             if (!checkBoxManageList.Checked)
-                ((ImageSimulatorSetting)listBox.SelectedItem).Apply(formImageSimulator);
+                ((ImageSimulatorSetting)listBox.SelectedItem).Apply(FormImageSimulator);
         }
     }
 }
@@ -216,7 +216,7 @@ public partial struct ImageSimulatorSetting
         DetectorInnerAngle = f.DetectorInnerAngle;
         DetectorOuterAngle = f.DetectorOuterAngle;
         ConvergenceAngle = f.ConvergenceAngle;
-        SourceSize = f.SourceSize;
+        SourceSize = f.SourceSizeFWHM;
         SliceThicknessForInelastic = f.SliceThicknessForInelastic;
     }
 
@@ -251,7 +251,7 @@ public partial struct ImageSimulatorSetting
         f.DetectorInnerAngle = DetectorInnerAngle;
         f.DetectorOuterAngle = DetectorOuterAngle;
         f.ConvergenceAngle = ConvergenceAngle;
-        f.SourceSize = SourceSize;
+        f.SourceSizeFWHM = SourceSize;
         f.SliceThicknessForInelastic = SliceThicknessForInelastic;
     }
 }
