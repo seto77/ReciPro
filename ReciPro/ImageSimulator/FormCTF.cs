@@ -47,7 +47,7 @@ public partial class FormCTF : Form
     /// <summary>
     /// レンズの各種関数のグラフを描画
     /// </summary>
-    public void RenewGraph()
+    public void Renew()
     {
         if (Visible == false)
             return;
@@ -87,7 +87,7 @@ public partial class FormCTF : Form
             }
             if (checkBoxSinW.Checked) profiles.Add(new Profile(sinW, colorKai));
             if(ImageMode == FormImageSimulator.ImageModes.HRTEM && checkBoxEs_HRTEM.Checked) profiles.Add(new Profile(es, colorEs));
-            if(ImageMode == FormImageSimulator.ImageModes.STEM && checkBoxSTEM_Es.Checked) profiles.Add(new Profile(es, colorEs));
+            if(ImageMode == FormImageSimulator.ImageModes.STEM && checkBoxEs_STEM.Checked) profiles.Add(new Profile(es, colorEs));
             if (checkBoxEc.Checked) profiles.Add(new Profile(ec, colorEc));
             if (checkBoxCTF.Checked) profiles.Add(new Profile(all, colorAll));
         }
@@ -166,10 +166,10 @@ public partial class FormCTF : Form
             }
             else
             {
-
                 sb.Append("|u|");
                 if (checkBoxSinW.Checked) sb.Append("\tSin[W(u)]");
-                if (checkBoxEs_HRTEM.Checked) sb.Append("\tEs(u)");
+                if (ImageMode == FormImageSimulator.ImageModes.HRTEM && checkBoxEs_HRTEM.Checked) sb.Append("\tEs(u)");
+                if (ImageMode == FormImageSimulator.ImageModes.STEM && checkBoxEs_STEM.Checked) sb.Append("\tEs(u)");
                 if (checkBoxEc.Checked) sb.Append("\tEc(u)");
                 if (checkBoxCTF.Checked) sb.Append("\tProduct of all");
                 sb.Append("\r\n");
@@ -182,7 +182,6 @@ public partial class FormCTF : Form
                     sb.Append($"\t{p[j].Pt[i].Y.ToString()}");
                 sb.Append("\r\n");
             }
-
             Clipboard.SetDataObject(sb.ToString());
         }
     }
@@ -197,17 +196,17 @@ public partial class FormCTF : Form
     private void FormCTF_VisibleChanged(object sender, EventArgs e)
     {
         if (Visible)
-            RenewGraph();
+            Renew();
     }
 
     private void numericBoxMaxU1_ValueChanged(object sender, EventArgs e)
     {
-        RenewGraph();
+        Renew();
     }
 
     private void radioButtonCTF_coherent_CheckedChanged(object sender, EventArgs e)
     {
-        RenewGraph();
+        Renew();
     }
 
     public void SetControl()
@@ -220,11 +219,11 @@ public partial class FormCTF : Form
 
             checkBoxEc.Visible = checkBoxSinW.Visible = checkBoxCTF.Visible = true;
 
-            checkBoxSTEM_Es.Visible = false;
+            checkBoxEs_STEM.Visible = false;
             checkBoxEs_HRTEM.Visible = true;
 
-            pictureBoxSTEM_A.Visible = false;
-            pictureBoxHRTEM_A.Visible = true;
+            pictureBoxA_STEM.Visible = false;
+            pictureBoxA_HRTEM.Visible = true;
         }
         else if (ImageMode == FormImageSimulator.ImageModes.STEM)
         {
@@ -237,11 +236,11 @@ public partial class FormCTF : Form
 
                 checkBoxEc.Visible = checkBoxSinW.Visible = checkBoxCTF.Visible = true;
 
-                checkBoxSTEM_Es.Visible = true;
+                checkBoxEs_STEM.Visible = true;
                 checkBoxEs_HRTEM.Visible = false;
 
-                pictureBoxSTEM_A.Visible = true;
-                pictureBoxHRTEM_A.Visible = false;
+                pictureBoxA_STEM.Visible = true;
+                pictureBoxA_HRTEM.Visible = false;
 
             }
             else
@@ -250,11 +249,11 @@ public partial class FormCTF : Form
 
                 checkBoxEc.Visible = checkBoxSinW.Visible = checkBoxCTF.Visible = false;
 
-                checkBoxSTEM_Es.Visible = false;
+                checkBoxEs_STEM.Visible = false;
                 checkBoxEs_HRTEM.Visible = false;
 
-                pictureBoxSTEM_A.Visible = false;
-                pictureBoxHRTEM_A.Visible = false;
+                pictureBoxA_STEM.Visible = false;
+                pictureBoxA_HRTEM.Visible = false;
             }
 
         }
@@ -264,6 +263,6 @@ public partial class FormCTF : Form
 
     private void checkBoxSinW_CheckedChanged(object sender, EventArgs e)
     {
-        RenewGraph();
+        Renew();
     }
 }

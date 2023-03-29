@@ -41,18 +41,18 @@
             graphControl = new GraphControl();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            checkBoxSTEM_Es = new System.Windows.Forms.CheckBox();
+            checkBoxEs_STEM = new System.Windows.Forms.CheckBox();
             pictureBoxSTEM_CTFI = new System.Windows.Forms.PictureBox();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            pictureBoxSTEM_A = new System.Windows.Forms.PictureBox();
-            pictureBoxHRTEM_A = new System.Windows.Forms.PictureBox();
+            pictureBoxA_STEM = new System.Windows.Forms.PictureBox();
+            pictureBoxA_HRTEM = new System.Windows.Forms.PictureBox();
             flowLayoutPanelSTEM.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_CTFI).BeginInit();
             flowLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_A).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxHRTEM_A).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxA_STEM).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxA_HRTEM).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanelSTEM
@@ -273,7 +273,7 @@
             flowLayoutPanel2.BackColor = System.Drawing.Color.White;
             flowLayoutPanel2.Controls.Add(checkBoxSinW);
             flowLayoutPanel2.Controls.Add(checkBoxEs_HRTEM);
-            flowLayoutPanel2.Controls.Add(checkBoxSTEM_Es);
+            flowLayoutPanel2.Controls.Add(checkBoxEs_STEM);
             flowLayoutPanel2.Controls.Add(checkBoxEc);
             flowLayoutPanel2.Controls.Add(pictureBoxSTEM_CTFI);
             flowLayoutPanel2.Controls.Add(flowLayoutPanel3);
@@ -286,20 +286,20 @@
             // 
             // checkBoxSTEM_Es
             // 
-            checkBoxSTEM_Es.AutoSize = true;
-            checkBoxSTEM_Es.Checked = true;
-            checkBoxSTEM_Es.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxSTEM_Es.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            checkBoxSTEM_Es.Image = (System.Drawing.Image)resources.GetObject("checkBoxSTEM_Es.Image");
-            checkBoxSTEM_Es.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            checkBoxSTEM_Es.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxSTEM_Es.Location = new System.Drawing.Point(10, 35);
-            checkBoxSTEM_Es.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            checkBoxSTEM_Es.Name = "checkBoxSTEM_Es";
-            checkBoxSTEM_Es.Size = new System.Drawing.Size(198, 29);
-            checkBoxSTEM_Es.TabIndex = 9;
-            checkBoxSTEM_Es.UseVisualStyleBackColor = true;
-            checkBoxSTEM_Es.CheckedChanged += checkBoxSinW_CheckedChanged;
+            checkBoxEs_STEM.AutoSize = true;
+            checkBoxEs_STEM.Checked = true;
+            checkBoxEs_STEM.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxEs_STEM.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxEs_STEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxSTEM_Es.Image");
+            checkBoxEs_STEM.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            checkBoxEs_STEM.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxEs_STEM.Location = new System.Drawing.Point(10, 35);
+            checkBoxEs_STEM.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            checkBoxEs_STEM.Name = "checkBoxSTEM_Es";
+            checkBoxEs_STEM.Size = new System.Drawing.Size(198, 29);
+            checkBoxEs_STEM.TabIndex = 9;
+            checkBoxEs_STEM.UseVisualStyleBackColor = true;
+            checkBoxEs_STEM.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
             // pictureBoxSTEM_CTFI
             // 
@@ -316,8 +316,8 @@
             // 
             flowLayoutPanel3.AutoSize = true;
             flowLayoutPanel3.Controls.Add(checkBoxCTF);
-            flowLayoutPanel3.Controls.Add(pictureBoxSTEM_A);
-            flowLayoutPanel3.Controls.Add(pictureBoxHRTEM_A);
+            flowLayoutPanel3.Controls.Add(pictureBoxA_STEM);
+            flowLayoutPanel3.Controls.Add(pictureBoxA_HRTEM);
             flowLayoutPanel3.Location = new System.Drawing.Point(10, 142);
             flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -327,21 +327,21 @@
             // 
             // pictureBoxSTEM_A
             // 
-            pictureBoxSTEM_A.Image = (System.Drawing.Image)resources.GetObject("pictureBoxSTEM_A.Image");
-            pictureBoxSTEM_A.Location = new System.Drawing.Point(325, 3);
-            pictureBoxSTEM_A.Name = "pictureBoxSTEM_A";
-            pictureBoxSTEM_A.Size = new System.Drawing.Size(177, 41);
-            pictureBoxSTEM_A.TabIndex = 11;
-            pictureBoxSTEM_A.TabStop = false;
+            pictureBoxA_STEM.Image = (System.Drawing.Image)resources.GetObject("pictureBoxSTEM_A.Image");
+            pictureBoxA_STEM.Location = new System.Drawing.Point(325, 3);
+            pictureBoxA_STEM.Name = "pictureBoxSTEM_A";
+            pictureBoxA_STEM.Size = new System.Drawing.Size(177, 41);
+            pictureBoxA_STEM.TabIndex = 11;
+            pictureBoxA_STEM.TabStop = false;
             // 
             // pictureBoxHRTEM_A
             // 
-            pictureBoxHRTEM_A.Image = (System.Drawing.Image)resources.GetObject("pictureBoxHRTEM_A.Image");
-            pictureBoxHRTEM_A.Location = new System.Drawing.Point(508, 3);
-            pictureBoxHRTEM_A.Name = "pictureBoxHRTEM_A";
-            pictureBoxHRTEM_A.Size = new System.Drawing.Size(282, 41);
-            pictureBoxHRTEM_A.TabIndex = 12;
-            pictureBoxHRTEM_A.TabStop = false;
+            pictureBoxA_HRTEM.Image = (System.Drawing.Image)resources.GetObject("pictureBoxHRTEM_A.Image");
+            pictureBoxA_HRTEM.Location = new System.Drawing.Point(508, 3);
+            pictureBoxA_HRTEM.Name = "pictureBoxHRTEM_A";
+            pictureBoxA_HRTEM.Size = new System.Drawing.Size(282, 41);
+            pictureBoxA_HRTEM.TabIndex = 12;
+            pictureBoxA_HRTEM.TabStop = false;
             // 
             // FormCTF
             // 
@@ -367,8 +367,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_CTFI).EndInit();
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_A).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxHRTEM_A).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxA_STEM).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxA_HRTEM).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -387,10 +387,10 @@
         private GraphControl graphControl;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.CheckBox checkBoxSTEM_Es;
+        private System.Windows.Forms.CheckBox checkBoxEs_STEM;
         private System.Windows.Forms.PictureBox pictureBoxSTEM_CTFI;
-        private System.Windows.Forms.PictureBox pictureBoxSTEM_A;
-        private System.Windows.Forms.PictureBox pictureBoxHRTEM_A;
+        private System.Windows.Forms.PictureBox pictureBoxA_STEM;
+        private System.Windows.Forms.PictureBox pictureBoxA_HRTEM;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
     }
 }

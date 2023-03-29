@@ -309,7 +309,7 @@ public partial class FormImageSimulator : Form
         {
             CalculateInsideSpotInfo();
             if (FormCTF.Visible)
-                FormCTF.RenewGraph();
+                FormCTF.Renew();
         }
     }
     #endregion 起動、終了関連
@@ -851,7 +851,7 @@ public partial class FormImageSimulator : Form
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void NumericBoxTEMproperty_ValueChanged(object sender, EventArgs e) => FormCTF.RenewGraph();
+    private void NumericBoxTEMproperty_ValueChanged(object sender, EventArgs e) => FormCTF.Renew();
 
     /// <summary>
     /// 加速電圧が変更されたとき。波長を変更、シェルツァーフォーカス変更、レンズ関数描画、ビームの個数計算
@@ -861,7 +861,7 @@ public partial class FormImageSimulator : Form
     private void NumericBoxAccVol_ValueChanged(object sender, EventArgs e)
     {
         textBoxScherzer.Text = Scherzer.ToString("f1");
-        FormCTF.RenewGraph();
+        FormCTF.Renew();
         CalculateInsideSpotInfo();
     }
     /// <summary>
@@ -872,7 +872,7 @@ public partial class FormImageSimulator : Form
     private void NumericBoxCs_ValueChanged(object sender, EventArgs e)
     {
         textBoxScherzer.Text = Scherzer.ToString("f1");
-        FormCTF.RenewGraph();
+        FormCTF.Renew();
     }
     /// <summary>
     /// デフォーカスが変更されたとき。シリアルモードのデフォーカス開始値変更、レンズ関数描画
@@ -882,7 +882,7 @@ public partial class FormImageSimulator : Form
     private void NumericBoxDefocus_ValueChanged(object sender, EventArgs e)
     {
         numericBoxDefocusStart.Value = numericBoxDefocus.Value;
-        FormCTF.RenewGraph();
+        FormCTF.Renew();
     }
     /// <summary>
     /// 試料厚みが変更されたとき。シリアルモードの試料厚み開始値変更
@@ -898,7 +898,7 @@ public partial class FormImageSimulator : Form
     /// <param name="e"></param>
     private void NumericBoxObjAperRadius_ValueChanged(object sender, EventArgs e)
     {
-        FormCTF.RenewGraph();
+        FormCTF.Renew();
 
         numericBoxObjAperRadius.Enabled = numericBoxObjAperX.Enabled = numericBoxObjAperY.Enabled = !checkBoxOpenAperture.Checked;
 
@@ -1038,7 +1038,7 @@ public partial class FormImageSimulator : Form
         groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = ImageMode == ImageModes.STEM;
         this.ResumeLayout(true);
 
-        FormCTF.RenewGraph();
+        FormCTF.Renew();
     }
 
     #endregion
