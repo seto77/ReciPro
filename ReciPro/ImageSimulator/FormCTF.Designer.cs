@@ -73,7 +73,7 @@
             flowLayoutPanelSTEM.Dock = System.Windows.Forms.DockStyle.Top;
             flowLayoutPanelSTEM.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanelSTEM.Name = "flowLayoutPanelSTEM";
-            flowLayoutPanelSTEM.Size = new System.Drawing.Size(695, 27);
+            flowLayoutPanelSTEM.Size = new System.Drawing.Size(706, 27);
             flowLayoutPanelSTEM.TabIndex = 60;
             // 
             // radioButtonCTF_coherent
@@ -128,7 +128,7 @@
             checkBoxEs_HRTEM.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             checkBoxEs_HRTEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxEs_HRTEM.Image");
             checkBoxEs_HRTEM.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEs_HRTEM.Location = new System.Drawing.Point(3, 69);
+            checkBoxEs_HRTEM.Location = new System.Drawing.Point(201, 35);
             checkBoxEs_HRTEM.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEs_HRTEM.Name = "checkBoxEs_HRTEM";
             checkBoxEs_HRTEM.Size = new System.Drawing.Size(304, 32);
@@ -144,7 +144,7 @@
             checkBoxEc.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             checkBoxEc.Image = (System.Drawing.Image)resources.GetObject("checkBoxEc.Image");
             checkBoxEc.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEc.Location = new System.Drawing.Point(3, 35);
+            checkBoxEc.Location = new System.Drawing.Point(3, 69);
             checkBoxEc.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEc.Name = "checkBoxEc";
             checkBoxEc.Size = new System.Drawing.Size(288, 32);
@@ -175,7 +175,7 @@
             buttonCopyGraph.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonCopyGraph.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             buttonCopyGraph.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonCopyGraph.Location = new System.Drawing.Point(647, 0);
+            buttonCopyGraph.Location = new System.Drawing.Point(658, 0);
             buttonCopyGraph.Margin = new System.Windows.Forms.Padding(0);
             buttonCopyGraph.Name = "buttonCopyGraph";
             buttonCopyGraph.Size = new System.Drawing.Size(48, 27);
@@ -194,7 +194,7 @@
             numericBoxMaxU1.FooterText = "nm⁻¹";
             numericBoxMaxU1.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxU1.HeaderText = "Max u";
-            numericBoxMaxU1.Location = new System.Drawing.Point(511, 0);
+            numericBoxMaxU1.Location = new System.Drawing.Point(522, 0);
             numericBoxMaxU1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             numericBoxMaxU1.Maximum = 20D;
             numericBoxMaxU1.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -234,7 +234,7 @@
             graphControl.LeftMargin = 0F;
             graphControl.LineColor = System.Drawing.Color.Red;
             graphControl.LineWidth = 1F;
-            graphControl.Location = new System.Drawing.Point(3, 279);
+            graphControl.Location = new System.Drawing.Point(3, 280);
             graphControl.LowerX = 0D;
             graphControl.LowerY = 0D;
             graphControl.Margin = new System.Windows.Forms.Padding(0);
@@ -247,7 +247,7 @@
             graphControl.Name = "graphControl";
             graphControl.OriginPosition = new System.Drawing.Point(20, 20);
             graphControl.Padding = new System.Windows.Forms.Padding(2, 0, 0, 2);
-            graphControl.Size = new System.Drawing.Size(695, 177);
+            graphControl.Size = new System.Drawing.Size(706, 176);
             graphControl.Smoothing = false;
             graphControl.TabIndex = 57;
             graphControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -273,7 +273,7 @@
             flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new System.Drawing.Point(3, 456);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(695, 27);
+            flowLayoutPanel1.Size = new System.Drawing.Size(706, 27);
             flowLayoutPanel1.TabIndex = 62;
             // 
             // checkBoxCosW
@@ -300,7 +300,7 @@
             checkBoxEs_STEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxEs_STEM.Image");
             checkBoxEs_STEM.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             checkBoxEs_STEM.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEs_STEM.Location = new System.Drawing.Point(291, 35);
+            checkBoxEs_STEM.Location = new System.Drawing.Point(3, 35);
             checkBoxEs_STEM.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEs_STEM.Name = "checkBoxEs_STEM";
             checkBoxEs_STEM.Size = new System.Drawing.Size(198, 29);
@@ -377,7 +377,7 @@
             pictureBoxSTEM_CTFI.Location = new System.Drawing.Point(6, 0);
             pictureBoxSTEM_CTFI.Margin = new System.Windows.Forms.Padding(0);
             pictureBoxSTEM_CTFI.Name = "pictureBoxSTEM_CTFI";
-            pictureBoxSTEM_CTFI.Size = new System.Drawing.Size(683, 74);
+            pictureBoxSTEM_CTFI.Size = new System.Drawing.Size(694, 75);
             pictureBoxSTEM_CTFI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             pictureBoxSTEM_CTFI.TabIndex = 10;
             pictureBoxSTEM_CTFI.TabStop = false;
@@ -405,7 +405,7 @@
             panel2.Location = new System.Drawing.Point(3, 30);
             panel2.Name = "panel2";
             panel2.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            panel2.Size = new System.Drawing.Size(695, 249);
+            panel2.Size = new System.Drawing.Size(706, 250);
             panel2.TabIndex = 64;
             // 
             // flowLayoutPanel7
@@ -415,9 +415,9 @@
             flowLayoutPanel7.Controls.Add(pictureBoxA_STEM);
             flowLayoutPanel7.Controls.Add(pictureBoxA_HRTEM);
             flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Top;
-            flowLayoutPanel7.Location = new System.Drawing.Point(6, 176);
+            flowLayoutPanel7.Location = new System.Drawing.Point(6, 177);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
-            flowLayoutPanel7.Size = new System.Drawing.Size(683, 73);
+            flowLayoutPanel7.Size = new System.Drawing.Size(694, 73);
             flowLayoutPanel7.TabIndex = 16;
             flowLayoutPanel7.WrapContents = false;
             // 
@@ -428,21 +428,21 @@
             flowLayoutPanel6.Controls.Add(flowLayoutPanel3);
             flowLayoutPanel6.Controls.Add(checkBoxSinW);
             flowLayoutPanel6.Controls.Add(checkBoxCosW);
-            flowLayoutPanel6.Controls.Add(checkBoxEc);
             flowLayoutPanel6.Controls.Add(checkBoxEs_STEM);
             flowLayoutPanel6.Controls.Add(checkBoxEs_HRTEM);
+            flowLayoutPanel6.Controls.Add(checkBoxEc);
             flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
-            flowLayoutPanel6.Location = new System.Drawing.Point(6, 74);
+            flowLayoutPanel6.Location = new System.Drawing.Point(6, 75);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            flowLayoutPanel6.Size = new System.Drawing.Size(683, 102);
+            flowLayoutPanel6.Size = new System.Drawing.Size(694, 102);
             flowLayoutPanel6.TabIndex = 11;
             // 
             // FormCTF
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(701, 486);
+            ClientSize = new System.Drawing.Size(712, 486);
             Controls.Add(graphControl);
             Controls.Add(panel2);
             Controls.Add(flowLayoutPanel1);

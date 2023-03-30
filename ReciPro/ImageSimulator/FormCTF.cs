@@ -107,7 +107,7 @@ public partial class FormCTF : Form
         }
         else if (ImageMode == FormImageSimulator.ImageModes.STEM && radioButtonCTF_Incoherent.Checked)
         {
-            double r = 2 * Sin(Convergence / 2) / Lambda, r2 = r * r;
+            double r = Sin(Convergence) / Lambda, r2 = r * r;
 
             //レンズ関数
             var coeff1 = -PI * Complex.ImaginaryOne * Lambda;
@@ -181,10 +181,12 @@ public partial class FormCTF : Form
             {
                 sb.Append("|u|");
                 if (checkBoxSinW.Checked) sb.Append("\tSin[W(u)]");
+                if (checkBoxCosW.Checked) sb.Append("\tCos[W(u)]");
                 if (ImageMode == FormImageSimulator.ImageModes.HRTEM && checkBoxEs_HRTEM.Checked) sb.Append("\tEs(u)");
                 if (ImageMode == FormImageSimulator.ImageModes.STEM && checkBoxEs_STEM.Checked) sb.Append("\tEs(u)");
                 if (checkBoxEc.Checked) sb.Append("\tEc(u)");
-                if (checkBoxPCTF.Checked) sb.Append("\tProduct of all");
+                if (checkBoxPCTF.Checked) sb.Append("\tPCTF");
+                if (checkBoxACTF.Checked) sb.Append("\tACTF");
                 sb.Append("\r\n");
             }
 
@@ -271,8 +273,6 @@ public partial class FormCTF : Form
             }
         }
         ResumeLayout(true);
-
-
     }
 
     private void checkBoxSinW_CheckedChanged(object sender, EventArgs e)
