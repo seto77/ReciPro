@@ -659,12 +659,9 @@ public partial class FormImageSimulator : Form
 
             width = bethe.ResultSTEM.Size.Width;
             height = bethe.ResultSTEM.Size.Height;
-
             thicknesses = bethe.ResultSTEM.Thicknesses;
             defocusses = bethe.ResultSTEM.Defocusses;
-
             resolution = bethe.ResultSTEM.Resolution;
-
             rot = bethe.ResultSTEM.rot;
 
             if (radioButtonSTEM_target_both.Checked)
@@ -682,26 +679,25 @@ public partial class FormImageSimulator : Form
 
             width = bethe.ResultHRTEM.Size.Width;
             height = bethe.ResultHRTEM.Size.Height;
-
             thicknesses = bethe.ResultHRTEM.Thicknesses;
             defocusses = bethe.ResultHRTEM.Defocusses;
-
             resolution= bethe.ResultHRTEM.Resolution;
-
+            rot = bethe.ResultHRTEM.rot;
+            
             images = bethe.ResultHRTEM.Image;
         }
         else
             return;
 
         int tLen = thicknesses.Length, dLen = defocusses.Length;
-
+        
         var _images = new double[tLen][][];
         for (int t = 0; t < tLen; t++)
             _images[t] = new double[dLen][];
 
         //作成したイメージをPseudoBitmapに変換
         var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
-        var mat = FormMain.Crystal.RotationMatrix * FormMain.Crystal.MatrixReal;
+        var mat = rot * FormMain.Crystal.MatrixReal;
 
         //全体でノーマライズ
         if (!checkBoxNormarizeIndividually.Checked)
