@@ -681,16 +681,16 @@ public partial class FormImageSimulator : Form
             height = bethe.ResultHRTEM.Size.Height;
             thicknesses = bethe.ResultHRTEM.Thicknesses;
             defocusses = bethe.ResultHRTEM.Defocusses;
-            resolution= bethe.ResultHRTEM.Resolution;
+            resolution = bethe.ResultHRTEM.Resolution;
             rot = bethe.ResultHRTEM.rot;
-            
+
             images = bethe.ResultHRTEM.Image;
         }
         else
             return;
 
         int tLen = thicknesses.Length, dLen = defocusses.Length;
-        
+
         var _images = new double[tLen][][];
         for (int t = 0; t < tLen; t++)
             _images[t] = new double[dLen][];
@@ -1072,8 +1072,8 @@ public partial class FormImageSimulator : Form
 
     private void CheckBoxShowLabel_CheckedChanged(object sender, EventArgs e)
     {
-        flowLayoutPanelLabel.Enabled = checkBoxShowLabel.Checked;
-        flowLayoutPanelScale.Enabled = checkBoxShowScale.Checked;
+        colorControlLabel.Enabled = numericBoxLabelFontSize.Enabled = checkBoxShowLabel.Checked;
+        colorControlScale.Enabled = numericBoxScaleLength.Enabled = checkBoxShowScale.Checked;
 
         foreach (var box in pictureBoxes)
             box.Refresh();

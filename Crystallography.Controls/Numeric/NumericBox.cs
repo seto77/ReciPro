@@ -166,6 +166,10 @@ public partial class NumericBox : UserControl
     [DefaultValue(typeof(Padding), "0,0,0,0")]
     public Padding HeaderMargin { set => labelHeader.Margin = value; get => labelHeader.Margin; }
 
+    [Category("Font && Color")]
+    [Localizable(true)]
+    [DefaultValue(typeof(Padding), "0,0,0,0")]
+    public Padding HeaderPadding { set => labelHeader.Padding = value; get => labelHeader.Padding; }
 
     [Localizable(true)]
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
@@ -192,6 +196,11 @@ public partial class NumericBox : UserControl
     [DefaultValue(typeof(Padding), "0,0,0,0")]
     [Localizable(true)]
     public Padding FooterMargin { set => labelFooter.Margin = value; get => labelFooter.Margin; }
+
+    [Category("Font && Color")]
+    [DefaultValue(typeof(Padding), "0,0,0,0")]
+    [Localizable(true)]
+    public Padding FooterPadding { set => labelFooter.Padding = value; get => labelFooter.Padding; }
 
     [Category("Font && Color")]
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]

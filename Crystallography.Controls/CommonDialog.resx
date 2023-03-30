@@ -70,7 +70,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="progressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 22</value>
+    <value>564, 22</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="progressBar.TabIndex" type="System.Int32, mscorlib">
@@ -95,7 +95,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="textBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 39</value>
+    <value>0, 37</value>
   </data>
   <data name="textBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -107,7 +107,7 @@
     <value>Both</value>
   </data>
   <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 320</value>
+    <value>564, 259</value>
   </data>
   <data name="textBox.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -134,7 +134,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>408, 0</value>
+    <value>488, 0</value>
   </data>
   <data name="buttonOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -164,7 +164,7 @@
     <value>True</value>
   </data>
   <data name="labelSoftwareAndVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="labelSoftwareAndVersion.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -176,7 +176,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="labelSoftwareAndVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 17</value>
+    <value>118, 15</value>
   </data>
   <data name="labelSoftwareAndVersion.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -203,16 +203,16 @@
     <value>True</value>
   </data>
   <data name="labelCopyRight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="labelCopyRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 0</value>
+    <value>124, 0</value>
   </data>
   <data name="labelCopyRight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
   <data name="labelCopyRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 17</value>
+    <value>140, 15</value>
   </data>
   <data name="labelCopyRight.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -281,7 +281,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="checkBoxCloseWindow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 0</value>
+    <value>264, 0</value>
   </data>
   <data name="checkBoxCloseWindow.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -317,13 +317,13 @@
     <value>True</value>
   </data>
   <data name="labelAuthor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="labelAuthor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 0</value>
+    <value>269, 0</value>
   </data>
   <data name="labelAuthor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 17</value>
+    <value>43, 15</value>
   </data>
   <data name="labelAuthor.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -350,7 +350,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 0</value>
+    <value>318, 0</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 15</value>
@@ -380,7 +380,7 @@
     <value>0, 22</value>
   </data>
   <data name="flowLayoutPanelSoftwareInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 17</value>
+    <value>564, 15</value>
   </data>
   <data name="flowLayoutPanelSoftwareInformation.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -401,10 +401,10 @@
     <value>Bottom</value>
   </data>
   <data name="panelOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 359</value>
+    <value>0, 296</value>
   </data>
   <data name="panelOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 23</value>
+    <value>564, 23</value>
   </data>
   <data name="panelOK.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -428,7 +428,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>484, 382</value>
+    <value>564, 319</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
@@ -437,7 +437,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>500, 45</value>
+    <value>580, 45</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>

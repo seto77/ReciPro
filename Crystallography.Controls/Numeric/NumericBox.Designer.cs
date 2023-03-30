@@ -54,7 +54,7 @@
             // labelHeader
             // 
             resources.ApplyResources(labelHeader, "labelHeader");
-            labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             labelHeader.Name = "labelHeader";
             // 
             // numericUpDown
