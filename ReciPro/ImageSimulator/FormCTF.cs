@@ -43,7 +43,8 @@ public partial class FormCTF : Form
     }
 
     #region コントラスト伝達描画関連
-    private readonly Color colorKai = Color.Blue, colorEs = Color.Green, colorEc = Color.Red, colorAll = Color.FromArgb(0, 0, 0);
+    private readonly Color colorSinW = Color.FromArgb(0, 0, 255), colorCosW = Color.FromArgb(128, 0, 255),
+        colorEs = Color.Green, colorEc = Color.Red, colorPCTF = Color.FromArgb(0, 64, 128), colorACTF = Color.FromArgb(64, 0, 64);
     /// <summary>
     /// レンズの各種関数のグラフを描画
     /// </summary>
@@ -63,7 +64,7 @@ public partial class FormCTF : Form
 
         if (ImageMode == FormImageSimulator.ImageModes.HRTEM || (ImageMode == FormImageSimulator.ImageModes.STEM && radioButtonCTF_coherent.Checked))
         {
-            List<PointD> sinW = new(), es = new(), ec = new(), all = new();
+            List<PointD> sinW = new(), cosW = new(), es = new(), ec = new(), pctf = new(), actf = new();
 
             var limit = ImageMode == FormImageSimulator.ImageModes.HRTEM ?
                 2 * Sin(ObjAperRadius / 2) / Lambda :
@@ -71,10 +72,12 @@ public partial class FormCTF : Form
             if (double.IsNaN(limit))
                 limit = numericBoxMaxU1.Value;
 
-            for (double u = 0; u < numericBoxMaxU1.Value && u < limit; u += 0.01)
+            var uStep = 0.002;
+            for (double u = 0; u < numericBoxMaxU1.Value; u += uStep)
             {
                 var u2 = u * u;
                 sinW.Add(new PointD(u, Sin(PI * Lambda * u2 * (Cs * lambda2 * u2 / 2.0 + Δf))));//球面収差
+                cosW.Add(new PointD(u, Cos(PI * Lambda * u2 * (Cs * lambda2 * u2 / 2.0 + Δf))));//球面収差
 
                 if (ImageMode == FormImageSimulator.ImageModes.HRTEM)
                     es.Add(new PointD(u, Exp(-Pi2 * Beta * Beta * u2 * (Δf + lambda2 * Cs * u2) * (Δf + lambda2 * Cs * u2))));//空間的インコヒーレンス(HRTEM)
@@ -82,14 +85,25 @@ public partial class FormCTF : Form
                     es.Add(new PointD(u, Exp(-2 * Pi2 * SigmaS * SigmaS * u2)));//空間的インコヒーレンス(STEM)
 
                 ec.Add(new PointD(u, Exp(-πλδ2 * u2 * u2 / 2)));//時間的インコヒーレンス
+                if (u < limit)
+                {
+                    pctf.Add(new PointD(u, sinW[^1].Y * es[^1].Y * ec[^1].Y));
+                    actf.Add(new PointD(u, cosW[^1].Y * es[^1].Y * ec[^1].Y));
+                }
+                else
+                {
+                    pctf.Add(new PointD(u, 0));
+                    actf.Add(new PointD(u, 0));
+                }
 
-                all.Add(new PointD(u, sinW[^1].Y * es[^1].Y * ec[^1].Y));
             }
-            if (checkBoxSinW.Checked) profiles.Add(new Profile(sinW, colorKai));
-            if(ImageMode == FormImageSimulator.ImageModes.HRTEM && checkBoxEs_HRTEM.Checked) profiles.Add(new Profile(es, colorEs));
-            if(ImageMode == FormImageSimulator.ImageModes.STEM && checkBoxEs_STEM.Checked) profiles.Add(new Profile(es, colorEs));
-            if (checkBoxEc.Checked) profiles.Add(new Profile(ec, colorEc));
-            if (checkBoxCTF.Checked) profiles.Add(new Profile(all, colorAll));
+            if (checkBoxSinW.Checked) profiles.Add(new Profile(sinW, colorSinW) { LineWidth = 2 });
+            if (checkBoxCosW.Checked) profiles.Add(new Profile(cosW, colorCosW) { LineWidth = 2 });
+            if (ImageMode == FormImageSimulator.ImageModes.HRTEM && checkBoxEs_HRTEM.Checked) profiles.Add(new Profile(es, colorEs) { LineWidth = 2 });
+            if (ImageMode == FormImageSimulator.ImageModes.STEM && checkBoxEs_STEM.Checked) profiles.Add(new Profile(es, colorEs) { LineWidth = 2 });
+            if (checkBoxEc.Checked) profiles.Add(new Profile(ec, colorEc) { LineWidth = 2 });
+            if (checkBoxPCTF.Checked) profiles.Add(new Profile(pctf, colorPCTF) { LineWidth = 3 });
+            if (checkBoxACTF.Checked) profiles.Add(new Profile(actf, colorACTF) { LineWidth = 3 });
         }
         else if (ImageMode == FormImageSimulator.ImageModes.STEM && radioButtonCTF_Incoherent.Checked)
         {
@@ -138,13 +152,12 @@ public partial class FormCTF : Form
                 pts[i] = new PointD(u, result.Magnitude);
             });
 
-            profiles.Add(new Profile(pts, colorKai));
+            profiles.Add(new Profile(pts, colorSinW) { LineWidth = 3 });
         }
 
         graphControl.ClearProfile();
 
-
-
+        graphControl.UseLineWidth = false;
         graphControl.AddProfiles(profiles.ToArray());
 
     }
@@ -171,7 +184,7 @@ public partial class FormCTF : Form
                 if (ImageMode == FormImageSimulator.ImageModes.HRTEM && checkBoxEs_HRTEM.Checked) sb.Append("\tEs(u)");
                 if (ImageMode == FormImageSimulator.ImageModes.STEM && checkBoxEs_STEM.Checked) sb.Append("\tEs(u)");
                 if (checkBoxEc.Checked) sb.Append("\tEc(u)");
-                if (checkBoxCTF.Checked) sb.Append("\tProduct of all");
+                if (checkBoxPCTF.Checked) sb.Append("\tProduct of all");
                 sb.Append("\r\n");
             }
 
@@ -211,13 +224,14 @@ public partial class FormCTF : Form
 
     public void SetControl()
     {
+        SuspendLayout();
         if (ImageMode == FormImageSimulator.ImageModes.HRTEM)
         {
             flowLayoutPanelSTEM.Visible = false;
 
             pictureBoxSTEM_CTFI.Visible = false;
 
-            checkBoxEc.Visible = checkBoxSinW.Visible = checkBoxCTF.Visible = true;
+            checkBoxEc.Visible = checkBoxSinW.Visible = checkBoxCosW.Visible = checkBoxPCTF.Visible = checkBoxACTF.Visible = true;
 
             checkBoxEs_STEM.Visible = false;
             checkBoxEs_HRTEM.Visible = true;
@@ -234,7 +248,7 @@ public partial class FormCTF : Form
 
                 pictureBoxSTEM_CTFI.Visible = false;
 
-                checkBoxEc.Visible = checkBoxSinW.Visible = checkBoxCTF.Visible = true;
+                checkBoxEc.Visible = checkBoxSinW.Visible = checkBoxCosW.Visible = checkBoxPCTF.Visible = checkBoxACTF.Visible = true;
 
                 checkBoxEs_STEM.Visible = true;
                 checkBoxEs_HRTEM.Visible = false;
@@ -247,7 +261,7 @@ public partial class FormCTF : Form
             {
                 pictureBoxSTEM_CTFI.Visible = true;
 
-                checkBoxEc.Visible = checkBoxSinW.Visible = checkBoxCTF.Visible = false;
+                checkBoxEc.Visible = checkBoxSinW.Visible = checkBoxCosW.Visible = checkBoxPCTF.Visible = checkBoxACTF.Visible = false;
 
                 checkBoxEs_STEM.Visible = false;
                 checkBoxEs_HRTEM.Visible = false;
@@ -255,8 +269,8 @@ public partial class FormCTF : Form
                 pictureBoxA_STEM.Visible = false;
                 pictureBoxA_HRTEM.Visible = false;
             }
-
         }
+        ResumeLayout(true);
 
 
     }

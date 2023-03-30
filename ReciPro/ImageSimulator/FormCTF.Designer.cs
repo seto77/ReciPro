@@ -35,24 +35,33 @@
             checkBoxSinW = new System.Windows.Forms.CheckBox();
             checkBoxEs_HRTEM = new System.Windows.Forms.CheckBox();
             checkBoxEc = new System.Windows.Forms.CheckBox();
-            checkBoxCTF = new System.Windows.Forms.CheckBox();
+            checkBoxPCTF = new System.Windows.Forms.CheckBox();
             buttonCopyGraph = new System.Windows.Forms.Button();
             numericBoxMaxU1 = new NumericBox();
             graphControl = new GraphControl();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            checkBoxCosW = new System.Windows.Forms.CheckBox();
             checkBoxEs_STEM = new System.Windows.Forms.CheckBox();
-            pictureBoxSTEM_CTFI = new System.Windows.Forms.PictureBox();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            checkBoxACTF = new System.Windows.Forms.CheckBox();
             pictureBoxA_STEM = new System.Windows.Forms.PictureBox();
             pictureBoxA_HRTEM = new System.Windows.Forms.PictureBox();
+            pictureBoxSTEM_CTFI = new System.Windows.Forms.PictureBox();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            panel2 = new System.Windows.Forms.Panel();
+            flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelSTEM.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_CTFI).BeginInit();
             flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxA_STEM).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxA_HRTEM).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_CTFI).BeginInit();
+            flowLayoutPanel5.SuspendLayout();
+            panel2.SuspendLayout();
+            flowLayoutPanel7.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanelSTEM
@@ -64,7 +73,7 @@
             flowLayoutPanelSTEM.Dock = System.Windows.Forms.DockStyle.Top;
             flowLayoutPanelSTEM.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanelSTEM.Name = "flowLayoutPanelSTEM";
-            flowLayoutPanelSTEM.Size = new System.Drawing.Size(726, 27);
+            flowLayoutPanelSTEM.Size = new System.Drawing.Size(695, 27);
             flowLayoutPanelSTEM.TabIndex = 60;
             // 
             // radioButtonCTF_coherent
@@ -103,7 +112,7 @@
             checkBoxSinW.Image = (System.Drawing.Image)resources.GetObject("checkBoxSinW.Image");
             checkBoxSinW.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             checkBoxSinW.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxSinW.Location = new System.Drawing.Point(10, 1);
+            checkBoxSinW.Location = new System.Drawing.Point(3, 1);
             checkBoxSinW.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxSinW.Name = "checkBoxSinW";
             checkBoxSinW.Size = new System.Drawing.Size(312, 32);
@@ -119,7 +128,7 @@
             checkBoxEs_HRTEM.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             checkBoxEs_HRTEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxEs_HRTEM.Image");
             checkBoxEs_HRTEM.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEs_HRTEM.Location = new System.Drawing.Point(322, 1);
+            checkBoxEs_HRTEM.Location = new System.Drawing.Point(3, 69);
             checkBoxEs_HRTEM.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEs_HRTEM.Name = "checkBoxEs_HRTEM";
             checkBoxEs_HRTEM.Size = new System.Drawing.Size(304, 32);
@@ -135,30 +144,30 @@
             checkBoxEc.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             checkBoxEc.Image = (System.Drawing.Image)resources.GetObject("checkBoxEc.Image");
             checkBoxEc.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEc.Location = new System.Drawing.Point(208, 35);
+            checkBoxEc.Location = new System.Drawing.Point(3, 35);
             checkBoxEc.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEc.Name = "checkBoxEc";
-            checkBoxEc.Size = new System.Drawing.Size(287, 32);
+            checkBoxEc.Size = new System.Drawing.Size(288, 32);
             checkBoxEc.TabIndex = 7;
             checkBoxEc.UseVisualStyleBackColor = true;
             checkBoxEc.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
-            // checkBoxCTF
+            // checkBoxPCTF
             // 
-            checkBoxCTF.AutoSize = true;
-            checkBoxCTF.Checked = true;
-            checkBoxCTF.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxCTF.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            checkBoxCTF.Image = (System.Drawing.Image)resources.GetObject("checkBoxCTF.Image");
-            checkBoxCTF.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxCTF.Location = new System.Drawing.Point(0, 1);
-            checkBoxCTF.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            checkBoxCTF.Name = "checkBoxCTF";
-            checkBoxCTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            checkBoxCTF.Size = new System.Drawing.Size(322, 42);
-            checkBoxCTF.TabIndex = 8;
-            checkBoxCTF.UseVisualStyleBackColor = true;
-            checkBoxCTF.CheckedChanged += checkBoxSinW_CheckedChanged;
+            checkBoxPCTF.AutoSize = true;
+            checkBoxPCTF.Checked = true;
+            checkBoxPCTF.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxPCTF.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxPCTF.Image = (System.Drawing.Image)resources.GetObject("checkBoxPCTF.Image");
+            checkBoxPCTF.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxPCTF.Location = new System.Drawing.Point(0, 1);
+            checkBoxPCTF.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            checkBoxPCTF.Name = "checkBoxPCTF";
+            checkBoxPCTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            checkBoxPCTF.Size = new System.Drawing.Size(349, 32);
+            checkBoxPCTF.TabIndex = 8;
+            checkBoxPCTF.UseVisualStyleBackColor = true;
+            checkBoxPCTF.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
             // buttonCopyGraph
             // 
@@ -166,7 +175,7 @@
             buttonCopyGraph.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonCopyGraph.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             buttonCopyGraph.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonCopyGraph.Location = new System.Drawing.Point(678, 0);
+            buttonCopyGraph.Location = new System.Drawing.Point(647, 0);
             buttonCopyGraph.Margin = new System.Windows.Forms.Padding(0);
             buttonCopyGraph.Name = "buttonCopyGraph";
             buttonCopyGraph.Size = new System.Drawing.Size(48, 27);
@@ -185,7 +194,7 @@
             numericBoxMaxU1.FooterText = "nm⁻¹";
             numericBoxMaxU1.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxU1.HeaderText = "Max u";
-            numericBoxMaxU1.Location = new System.Drawing.Point(542, 0);
+            numericBoxMaxU1.Location = new System.Drawing.Point(511, 0);
             numericBoxMaxU1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             numericBoxMaxU1.Maximum = 20D;
             numericBoxMaxU1.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -225,7 +234,7 @@
             graphControl.LeftMargin = 0F;
             graphControl.LineColor = System.Drawing.Color.Red;
             graphControl.LineWidth = 1F;
-            graphControl.Location = new System.Drawing.Point(3, 219);
+            graphControl.Location = new System.Drawing.Point(3, 279);
             graphControl.LowerX = 0D;
             graphControl.LowerY = 0D;
             graphControl.Margin = new System.Windows.Forms.Padding(0);
@@ -238,7 +247,7 @@
             graphControl.Name = "graphControl";
             graphControl.OriginPosition = new System.Drawing.Point(20, 20);
             graphControl.Padding = new System.Windows.Forms.Padding(2, 0, 0, 2);
-            graphControl.Size = new System.Drawing.Size(726, 237);
+            graphControl.Size = new System.Drawing.Size(695, 177);
             graphControl.Smoothing = false;
             graphControl.TabIndex = 57;
             graphControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -264,92 +273,178 @@
             flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new System.Drawing.Point(3, 456);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(726, 27);
+            flowLayoutPanel1.Size = new System.Drawing.Size(695, 27);
             flowLayoutPanel1.TabIndex = 62;
             // 
-            // flowLayoutPanel2
+            // checkBoxCosW
             // 
-            flowLayoutPanel2.AutoSize = true;
-            flowLayoutPanel2.BackColor = System.Drawing.Color.White;
-            flowLayoutPanel2.Controls.Add(checkBoxSinW);
-            flowLayoutPanel2.Controls.Add(checkBoxEs_HRTEM);
-            flowLayoutPanel2.Controls.Add(checkBoxEs_STEM);
-            flowLayoutPanel2.Controls.Add(checkBoxEc);
-            flowLayoutPanel2.Controls.Add(pictureBoxSTEM_CTFI);
-            flowLayoutPanel2.Controls.Add(flowLayoutPanel3);
-            flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            flowLayoutPanel2.Location = new System.Drawing.Point(3, 30);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            flowLayoutPanel2.Size = new System.Drawing.Size(726, 189);
-            flowLayoutPanel2.TabIndex = 63;
+            checkBoxCosW.AutoSize = true;
+            checkBoxCosW.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxCosW.Image = (System.Drawing.Image)resources.GetObject("checkBoxCosW.Image");
+            checkBoxCosW.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            checkBoxCosW.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxCosW.Location = new System.Drawing.Point(315, 1);
+            checkBoxCosW.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            checkBoxCosW.Name = "checkBoxCosW";
+            checkBoxCosW.Size = new System.Drawing.Size(314, 32);
+            checkBoxCosW.TabIndex = 14;
+            checkBoxCosW.UseVisualStyleBackColor = true;
+            checkBoxCosW.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
-            // checkBoxSTEM_Es
+            // checkBoxEs_STEM
             // 
             checkBoxEs_STEM.AutoSize = true;
             checkBoxEs_STEM.Checked = true;
             checkBoxEs_STEM.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxEs_STEM.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            checkBoxEs_STEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxSTEM_Es.Image");
+            checkBoxEs_STEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxEs_STEM.Image");
             checkBoxEs_STEM.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             checkBoxEs_STEM.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEs_STEM.Location = new System.Drawing.Point(10, 35);
+            checkBoxEs_STEM.Location = new System.Drawing.Point(291, 35);
             checkBoxEs_STEM.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            checkBoxEs_STEM.Name = "checkBoxSTEM_Es";
+            checkBoxEs_STEM.Name = "checkBoxEs_STEM";
             checkBoxEs_STEM.Size = new System.Drawing.Size(198, 29);
             checkBoxEs_STEM.TabIndex = 9;
             checkBoxEs_STEM.UseVisualStyleBackColor = true;
             checkBoxEs_STEM.CheckedChanged += checkBoxSinW_CheckedChanged;
             // 
-            // pictureBoxSTEM_CTFI
-            // 
-            pictureBoxSTEM_CTFI.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            pictureBoxSTEM_CTFI.Image = (System.Drawing.Image)resources.GetObject("pictureBoxSTEM_CTFI.Image");
-            pictureBoxSTEM_CTFI.Location = new System.Drawing.Point(10, 68);
-            pictureBoxSTEM_CTFI.Margin = new System.Windows.Forms.Padding(0);
-            pictureBoxSTEM_CTFI.Name = "pictureBoxSTEM_CTFI";
-            pictureBoxSTEM_CTFI.Size = new System.Drawing.Size(685, 74);
-            pictureBoxSTEM_CTFI.TabIndex = 10;
-            pictureBoxSTEM_CTFI.TabStop = false;
-            // 
             // flowLayoutPanel3
             // 
             flowLayoutPanel3.AutoSize = true;
-            flowLayoutPanel3.Controls.Add(checkBoxCTF);
-            flowLayoutPanel3.Controls.Add(pictureBoxA_STEM);
-            flowLayoutPanel3.Controls.Add(pictureBoxA_HRTEM);
-            flowLayoutPanel3.Location = new System.Drawing.Point(10, 142);
+            flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel3.Controls.Add(flowLayoutPanel4);
+            flowLayoutPanel3.Location = new System.Drawing.Point(3, 0);
             flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new System.Drawing.Size(793, 47);
+            flowLayoutPanel3.Size = new System.Drawing.Size(0, 0);
             flowLayoutPanel3.TabIndex = 13;
             flowLayoutPanel3.WrapContents = false;
             // 
-            // pictureBoxSTEM_A
+            // flowLayoutPanel4
             // 
-            pictureBoxA_STEM.Image = (System.Drawing.Image)resources.GetObject("pictureBoxSTEM_A.Image");
-            pictureBoxA_STEM.Location = new System.Drawing.Point(325, 3);
-            pictureBoxA_STEM.Name = "pictureBoxSTEM_A";
-            pictureBoxA_STEM.Size = new System.Drawing.Size(177, 41);
+            flowLayoutPanel4.AutoSize = true;
+            flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new System.Drawing.Size(0, 0);
+            flowLayoutPanel4.TabIndex = 13;
+            flowLayoutPanel4.WrapContents = false;
+            // 
+            // checkBoxACTF
+            // 
+            checkBoxACTF.AutoSize = true;
+            checkBoxACTF.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxACTF.Image = (System.Drawing.Image)resources.GetObject("checkBoxACTF.Image");
+            checkBoxACTF.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxACTF.Location = new System.Drawing.Point(0, 35);
+            checkBoxACTF.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            checkBoxACTF.Name = "checkBoxACTF";
+            checkBoxACTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            checkBoxACTF.Size = new System.Drawing.Size(351, 31);
+            checkBoxACTF.TabIndex = 8;
+            checkBoxACTF.UseVisualStyleBackColor = true;
+            checkBoxACTF.CheckedChanged += checkBoxSinW_CheckedChanged;
+            // 
+            // pictureBoxA_STEM
+            // 
+            pictureBoxA_STEM.Image = (System.Drawing.Image)resources.GetObject("pictureBoxA_STEM.Image");
+            pictureBoxA_STEM.Location = new System.Drawing.Point(360, 15);
+            pictureBoxA_STEM.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            pictureBoxA_STEM.Name = "pictureBoxA_STEM";
+            pictureBoxA_STEM.Size = new System.Drawing.Size(178, 44);
+            pictureBoxA_STEM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             pictureBoxA_STEM.TabIndex = 11;
             pictureBoxA_STEM.TabStop = false;
             // 
-            // pictureBoxHRTEM_A
+            // pictureBoxA_HRTEM
             // 
-            pictureBoxA_HRTEM.Image = (System.Drawing.Image)resources.GetObject("pictureBoxHRTEM_A.Image");
-            pictureBoxA_HRTEM.Location = new System.Drawing.Point(508, 3);
-            pictureBoxA_HRTEM.Name = "pictureBoxHRTEM_A";
-            pictureBoxA_HRTEM.Size = new System.Drawing.Size(282, 41);
+            pictureBoxA_HRTEM.Image = (System.Drawing.Image)resources.GetObject("pictureBoxA_HRTEM.Image");
+            pictureBoxA_HRTEM.Location = new System.Drawing.Point(544, 15);
+            pictureBoxA_HRTEM.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            pictureBoxA_HRTEM.Name = "pictureBoxA_HRTEM";
+            pictureBoxA_HRTEM.Size = new System.Drawing.Size(274, 44);
+            pictureBoxA_HRTEM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             pictureBoxA_HRTEM.TabIndex = 12;
             pictureBoxA_HRTEM.TabStop = false;
+            // 
+            // pictureBoxSTEM_CTFI
+            // 
+            pictureBoxSTEM_CTFI.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            pictureBoxSTEM_CTFI.Dock = System.Windows.Forms.DockStyle.Top;
+            pictureBoxSTEM_CTFI.Image = (System.Drawing.Image)resources.GetObject("pictureBoxSTEM_CTFI.Image");
+            pictureBoxSTEM_CTFI.Location = new System.Drawing.Point(6, 0);
+            pictureBoxSTEM_CTFI.Margin = new System.Windows.Forms.Padding(0);
+            pictureBoxSTEM_CTFI.Name = "pictureBoxSTEM_CTFI";
+            pictureBoxSTEM_CTFI.Size = new System.Drawing.Size(683, 74);
+            pictureBoxSTEM_CTFI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            pictureBoxSTEM_CTFI.TabIndex = 10;
+            pictureBoxSTEM_CTFI.TabStop = false;
+            // 
+            // flowLayoutPanel5
+            // 
+            flowLayoutPanel5.AutoSize = true;
+            flowLayoutPanel5.Controls.Add(checkBoxPCTF);
+            flowLayoutPanel5.Controls.Add(checkBoxACTF);
+            flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new System.Drawing.Size(351, 67);
+            flowLayoutPanel5.TabIndex = 17;
+            flowLayoutPanel5.WrapContents = false;
+            // 
+            // panel2
+            // 
+            panel2.AutoSize = true;
+            panel2.BackColor = System.Drawing.Color.White;
+            panel2.Controls.Add(flowLayoutPanel7);
+            panel2.Controls.Add(flowLayoutPanel6);
+            panel2.Controls.Add(pictureBoxSTEM_CTFI);
+            panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            panel2.Location = new System.Drawing.Point(3, 30);
+            panel2.Name = "panel2";
+            panel2.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            panel2.Size = new System.Drawing.Size(695, 249);
+            panel2.TabIndex = 64;
+            // 
+            // flowLayoutPanel7
+            // 
+            flowLayoutPanel7.AutoSize = true;
+            flowLayoutPanel7.Controls.Add(flowLayoutPanel5);
+            flowLayoutPanel7.Controls.Add(pictureBoxA_STEM);
+            flowLayoutPanel7.Controls.Add(pictureBoxA_HRTEM);
+            flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanel7.Location = new System.Drawing.Point(6, 176);
+            flowLayoutPanel7.Name = "flowLayoutPanel7";
+            flowLayoutPanel7.Size = new System.Drawing.Size(683, 73);
+            flowLayoutPanel7.TabIndex = 16;
+            flowLayoutPanel7.WrapContents = false;
+            // 
+            // flowLayoutPanel6
+            // 
+            flowLayoutPanel6.AutoSize = true;
+            flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel6.Controls.Add(flowLayoutPanel3);
+            flowLayoutPanel6.Controls.Add(checkBoxSinW);
+            flowLayoutPanel6.Controls.Add(checkBoxCosW);
+            flowLayoutPanel6.Controls.Add(checkBoxEc);
+            flowLayoutPanel6.Controls.Add(checkBoxEs_STEM);
+            flowLayoutPanel6.Controls.Add(checkBoxEs_HRTEM);
+            flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanel6.Location = new System.Drawing.Point(6, 74);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            flowLayoutPanel6.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            flowLayoutPanel6.Size = new System.Drawing.Size(683, 102);
+            flowLayoutPanel6.TabIndex = 11;
             // 
             // FormCTF
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(732, 486);
+            ClientSize = new System.Drawing.Size(701, 486);
             Controls.Add(graphControl);
-            Controls.Add(flowLayoutPanel2);
+            Controls.Add(panel2);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(flowLayoutPanelSTEM);
             Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -362,13 +457,19 @@
             flowLayoutPanelSTEM.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_CTFI).EndInit();
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxA_STEM).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxA_HRTEM).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSTEM_CTFI).EndInit();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            flowLayoutPanel7.ResumeLayout(false);
+            flowLayoutPanel7.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -381,16 +482,22 @@
         private System.Windows.Forms.CheckBox checkBoxSinW;
         private System.Windows.Forms.CheckBox checkBoxEs_HRTEM;
         private System.Windows.Forms.CheckBox checkBoxEc;
-        private System.Windows.Forms.CheckBox checkBoxCTF;
+        private System.Windows.Forms.CheckBox checkBoxPCTF;
         private System.Windows.Forms.Button buttonCopyGraph;
         private NumericBox numericBoxMaxU1;
         private GraphControl graphControl;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.CheckBox checkBoxEs_STEM;
         private System.Windows.Forms.PictureBox pictureBoxSTEM_CTFI;
         private System.Windows.Forms.PictureBox pictureBoxA_STEM;
         private System.Windows.Forms.PictureBox pictureBoxA_HRTEM;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.CheckBox checkBoxCosW;
+        private System.Windows.Forms.CheckBox checkBoxACTF;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
     }
 }
