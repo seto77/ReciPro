@@ -1368,7 +1368,7 @@ public class BetheMethod
                 {
                     ImageProcess.GaussianBlurFast(ref image_ela[t][d], width, sourceSize / resolution);
                     ImageProcess.GaussianBlurFast(ref image_tds[t][d], width, sourceSize / resolution);
-                    ImageProcess.GaussianBlurFast(ref image_tds[t][d], width, sourceSize / resolution);
+                    ImageProcess.GaussianBlurFast(ref image_both[t][d], width, sourceSize / resolution);
                 }
 
         ResultSTEM = (new Size(width, height), resolution, thicknesses.ToArray(), defocusses.ToArray(), BaseRotation, image_both, image_ela, image_tds);

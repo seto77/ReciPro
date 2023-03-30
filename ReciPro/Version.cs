@@ -10,6 +10,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.858(2023/03/30)  Fixed a minor bug on HRTEM/STEM simulation." +
         "\r\n ver4.857(2023/03/30)  Improved several features on HRTEM/STEM simulation." +
         "\r\n ver4.856(2023/03/23)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.855(2023/03/23)  Added a feature to save simulation conditions in HRTEM/STEM simulation." +
