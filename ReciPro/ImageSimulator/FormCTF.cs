@@ -156,10 +156,10 @@ public partial class FormCTF : Form
         }
 
         graphControl.ClearProfile();
-
         graphControl.UseLineWidth = false;
         graphControl.AddProfiles(profiles.ToArray());
-
+        graphControl.MinimalX = graphControl.LowerX = 0;
+        graphControl.Draw();
     }
 
     /// <summary>
