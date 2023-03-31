@@ -163,7 +163,7 @@ public partial class NumericBox : UserControl
 
     [Category("Font && Color")]
     [Localizable(true)]
-    [DefaultValue(typeof(Padding), "0,0,0,0")]
+    [DefaultValue(typeof(Padding), "0,2,0,0")]
     public Padding HeaderPadding { set => labelHeader.Padding = value; get => labelHeader.Padding; }
 
     [Localizable(true)]
@@ -188,7 +188,7 @@ public partial class NumericBox : UserControl
     public string FooterText { set => labelFooter.Text = value; get => labelFooter.Text; }
 
     [Category("Font && Color")]
-    [DefaultValue(typeof(Padding), "0,0,0,0")]
+    [DefaultValue(typeof(Padding), "0,2,0,0")]
     [Localizable(true)]
     public Padding FooterPadding { set => labelFooter.Padding = value; get => labelFooter.Padding; }
 
