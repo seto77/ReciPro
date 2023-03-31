@@ -727,7 +727,7 @@ public partial class FormImageSimulator : Form
                     newPseudo[r, c] = n < pseudo.Length ? oldPseudo[n] : null;
             pseudo = newPseudo;
         }
-        
+
         SkipEvent = true;
         double max = checkBoxIntensityMax.Checked ? numericBoxIntensityMax.Value : _images.Max(e1 => e1.Max(e2 => e2.Max()));
         double min = checkBoxIntensityMin.Checked ? numericBoxIntensityMin.Value : _images.Min(e1 => e1.Min(e2 => e2.Min()));

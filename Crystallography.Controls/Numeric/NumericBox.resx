@@ -69,7 +69,7 @@
     <value>Disable</value>
   </data>
   <data name="textBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1</value>
+    <value>0, 0</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="textBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -113,7 +113,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="labelHeader.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1</value>
+    <value>0, 0</value>
   </data>
   <data name="labelHeader.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -146,7 +146,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 1</value>
+    <value>65, 0</value>
   </data>
   <data name="numericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 1, 0, 1</value>
@@ -185,7 +185,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelFooter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 1</value>
+    <value>83, 0</value>
   </data>
   <data name="labelFooter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -232,11 +232,8 @@
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>10, 20</value>
   </data>
-  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 0</value>
-  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 25</value>
+    <value>83, 26</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>

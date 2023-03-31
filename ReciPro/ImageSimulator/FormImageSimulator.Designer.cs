@@ -143,8 +143,8 @@ namespace ReciPro
             panel6 = new System.Windows.Forms.Panel();
             groupBox8 = new System.Windows.Forms.GroupBox();
             numericBoxHeight = new NumericBox();
-            numericBoxResolution = new NumericBox();
             numericBoxWidth = new NumericBox();
+            numericBoxResolution = new NumericBox();
             panel8 = new System.Windows.Forms.Panel();
             groupBox7 = new System.Windows.Forms.GroupBox();
             numericBoxNumOfBlochWave = new NumericBox();
@@ -245,7 +245,6 @@ namespace ReciPro
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -1392,8 +1391,8 @@ namespace ReciPro
             // 
             resources.ApplyResources(groupBox8, "groupBox8");
             groupBox8.Controls.Add(numericBoxHeight);
-            groupBox8.Controls.Add(numericBoxResolution);
             groupBox8.Controls.Add(numericBoxWidth);
+            groupBox8.Controls.Add(numericBoxResolution);
             groupBox8.Name = "groupBox8";
             groupBox8.TabStop = false;
             toolTip.SetToolTip(groupBox8, resources.GetString("groupBox8.ToolTip"));
@@ -1416,24 +1415,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxHeight, resources.GetString("numericBoxHeight.ToolTip"));
             numericBoxHeight.Value = 512D;
             // 
-            // numericBoxResolution
-            // 
-            resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
-            numericBoxResolution.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxResolution.DecimalPlaces = 3;
-            numericBoxResolution.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxResolution.Maximum = 100D;
-            numericBoxResolution.Minimum = 0.01D;
-            numericBoxResolution.Name = "numericBoxResolution";
-            numericBoxResolution.RadianValue = 0.034906585039886591D;
-            numericBoxResolution.RoundErrorAccuracy = -1;
-            numericBoxResolution.ShowUpDown = true;
-            numericBoxResolution.SmartIncrement = true;
-            numericBoxResolution.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
-            numericBoxResolution.Value = 2D;
-            // 
             // numericBoxWidth
             // 
             resources.ApplyResources(numericBoxWidth, "numericBoxWidth");
@@ -1451,6 +1432,24 @@ namespace ReciPro
             numericBoxWidth.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxWidth, resources.GetString("numericBoxWidth.ToolTip"));
             numericBoxWidth.Value = 512D;
+            // 
+            // numericBoxResolution
+            // 
+            resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
+            numericBoxResolution.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxResolution.DecimalPlaces = 3;
+            numericBoxResolution.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxResolution.Maximum = 100D;
+            numericBoxResolution.Minimum = 0.01D;
+            numericBoxResolution.Name = "numericBoxResolution";
+            numericBoxResolution.RadianValue = 0.034906585039886591D;
+            numericBoxResolution.RoundErrorAccuracy = -1;
+            numericBoxResolution.ShowUpDown = true;
+            numericBoxResolution.SmartIncrement = true;
+            numericBoxResolution.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
+            numericBoxResolution.Value = 2D;
             // 
             // panel8
             // 
@@ -1498,7 +1497,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(groupBoxSTEMoption1, "groupBoxSTEMoption1");
             groupBoxSTEMoption1.ContextMenuStrip = contextMenuStripSTEM;
-            groupBoxSTEMoption1.Controls.Add(textBox1);
             groupBoxSTEMoption1.Controls.Add(label5);
             groupBoxSTEMoption1.Controls.Add(label34);
             groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_DetectorOuterAngle);
@@ -2365,15 +2363,6 @@ namespace ReciPro
             resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             // 
-            // textBox1
-            // 
-            resources.ApplyResources(textBox1, "textBox1");
-            textBox1.BackColor = System.Drawing.SystemColors.Control;
-            textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            textBox1.Name = "textBox1";
-            toolTip.SetToolTip(textBox1, resources.GetString("textBox1.ToolTip"));
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
             // FormImageSimulator
             // 
             resources.ApplyResources(this, "$this");
@@ -2635,9 +2624,6 @@ namespace ReciPro
         private NumericBox numericBoxSTEM_AngleResolution;
         private System.Windows.Forms.GroupBox groupBoxSTEMoption2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
-        private System.Windows.Forms.RadioButton radioButtonSTEM_target_Inel;
-        private System.Windows.Forms.RadioButton radioButtonSTEM_target_Both;
-        private System.Windows.Forms.RadioButton radioButtonSTEM_target_Elas;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.CheckBox checkBoxCTF;
         private System.Windows.Forms.Label label4;
@@ -2669,9 +2655,7 @@ namespace ReciPro
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripMenuItem addTheCurrentSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem addTheCurrentSettingToolStripMenuItem1;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.ToolStripMenuItem presets1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presets2ToolStripMenuItem;
@@ -2704,6 +2688,5 @@ namespace ReciPro
         private NumericBox numericBoxHeight;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
