@@ -916,7 +916,7 @@ public class BetheMethod
             var vecK0 = getVecK0(kvac, u0, beamDirection);
             k_vec[i] = vecK0;
 
-            if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / BeamDirections.Count()), reportString);//進捗状況を報告
+            if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / BeamDirections.Length), reportString);//進捗状況を報告
             if (bwSTEM.CancellationPending) { e.Cancel = true; return null; }
 
             if (!inside(i)) return null;
@@ -1374,12 +1374,6 @@ public class BetheMethod
         ResultSTEM = (new Size(width, height), resolution, thicknesses.ToArray(), defocusses.ToArray(), BaseRotation, image_both, image_ela, image_tds);
 
         #endregion
-
-        //var test = new SortedList<double, Complex>();
-        //for(int m=0; m<qList.Count;m++)
-        //{
-        //    test.TryAdd(qList[m].Vec.Length, I_Elas[m, 0, 0]);
-        //}
 
         return;
     }

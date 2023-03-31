@@ -245,6 +245,7 @@ namespace ReciPro
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -1497,6 +1498,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(groupBoxSTEMoption1, "groupBoxSTEMoption1");
             groupBoxSTEMoption1.ContextMenuStrip = contextMenuStripSTEM;
+            groupBoxSTEMoption1.Controls.Add(textBox1);
             groupBoxSTEMoption1.Controls.Add(label5);
             groupBoxSTEMoption1.Controls.Add(label34);
             groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_DetectorOuterAngle);
@@ -2363,6 +2365,15 @@ namespace ReciPro
             resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             // 
+            // textBox1
+            // 
+            resources.ApplyResources(textBox1, "textBox1");
+            textBox1.BackColor = System.Drawing.SystemColors.Control;
+            textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            textBox1.Name = "textBox1";
+            toolTip.SetToolTip(textBox1, resources.GetString("textBox1.ToolTip"));
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
             // FormImageSimulator
             // 
             resources.ApplyResources(this, "$this");
@@ -2693,5 +2704,6 @@ namespace ReciPro
         private NumericBox numericBoxHeight;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

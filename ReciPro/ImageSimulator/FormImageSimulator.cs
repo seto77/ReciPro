@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Math;
+//using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 namespace ReciPro;
@@ -22,7 +23,7 @@ public partial class FormImageSimulator : Form
 
     public bool CTFVisible { get => checkBoxCTF.Checked; set => checkBoxCTF.Checked = value; }
 
-    public ImageSimulatorSetting Setting { get => new ImageSimulatorSetting("", this); set => value.Apply(this); }
+    public ImageSimulatorSetting Setting { get => new("", this); set => value.Apply(this); }
     public bool Native => toolStripComboBoxCaclulationLibrary.SelectedIndex == 0;
     public HRTEM_Modes HRTEM_Mode
     {
@@ -232,8 +233,6 @@ public partial class FormImageSimulator : Form
 
     #region フィールド、enum
 
-    public string SettingName = "";
-
     public FormMain FormMain;
     public FormDiffractionSpotInfo FormDiffractionSpotInfo;
 
@@ -249,10 +248,6 @@ public partial class FormImageSimulator : Form
     public enum ImageModes { HRTEM, POTENTIAL, STEM }
 
     public enum HRTEM_Modes { Quasi, TCC }
-
-    private double[][][] HRTEM_image;
-    private double[][][] STEM_Ela;
-    private double[][][] STEM_TDS;
 
     #endregion フィールド
 
@@ -713,7 +708,7 @@ public partial class FormImageSimulator : Form
                 //PseudoBitmapを生成
                 pseudo[radioButtonHorizontalDefocus.Checked ? t : d, radioButtonHorizontalDefocus.Checked ? d : t] = new PseudoBitmap(_images[t][d], width)
                 {
-                    Tag = new ImageInfo(width, height, resolution, rot, $"t={ThicknessArray[t]}\r\nf={DefocusArray[d]}"),
+                    Tag = new ImageInfo(width, height, resolution, mat, $"t={ThicknessArray[t]:f2}\r\nf={DefocusArray[d]:f2}"),
                     MaxValue = trackBarAdvancedMax.Value,
                     MinValue = trackBarAdvancedMin.Value,
                     Scale = comboBoxScaleColorScale.SelectedIndex == 0 ? PseudoBitmap.Scales.GrayLinear : PseudoBitmap.Scales.ColdWarmLinear
@@ -732,10 +727,12 @@ public partial class FormImageSimulator : Form
                     newPseudo[r, c] = n < pseudo.Length ? oldPseudo[n] : null;
             pseudo = newPseudo;
         }
-
+        
         SkipEvent = true;
-        trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = numericBoxIntensityMax.Value;
-        trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = 0;
+        double max = checkBoxIntensityMax.Checked ? numericBoxIntensityMax.Value : _images.Max(e1 => e1.Max(e2 => e2.Max()));
+        double min = checkBoxIntensityMin.Checked ? numericBoxIntensityMin.Value : _images.Min(e1 => e1.Min(e2 => e2.Min()));
+        trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = max;
+        trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = min;
         trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (trackBarAdvancedMax.Value - trackBarAdvancedMin.Value) / 100.0;
         SkipEvent = false;
 
