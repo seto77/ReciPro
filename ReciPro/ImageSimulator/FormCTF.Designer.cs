@@ -219,6 +219,8 @@
             graphControl.AxisLineColor = System.Drawing.Color.Gray;
             graphControl.AxisTextColor = System.Drawing.Color.Black;
             graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControl.AxisXTextVisible = true;
+            graphControl.AxisYTextVisible = true;
             graphControl.BackgroundColor = System.Drawing.Color.White;
             graphControl.BottomMargin = 0D;
             graphControl.DivisionLineColor = System.Drawing.Color.LightGray;
@@ -264,9 +266,7 @@
             graphControl.UpperY = 1D;
             graphControl.UseLineWidth = true;
             graphControl.VerticalLineColor = System.Drawing.Color.Red;
-            graphControl.AxisXTextVisible = true;
             graphControl.XLog = false;
-            graphControl.AxisYTextVisible = true;
             graphControl.YLog = false;
             // 
             // flowLayoutPanel1

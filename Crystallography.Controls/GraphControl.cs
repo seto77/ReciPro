@@ -91,7 +91,7 @@ public partial class GraphControl : UserControl
     /// 描画範囲の矩形
     /// </summary>
    // [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    [Browsable(false)]   
+    [Browsable(false)]
     public RectangleD DrawingRange
     {
         set
@@ -119,7 +119,7 @@ public partial class GraphControl : UserControl
     #endregion
 
     #region 上部パネル設定
-   
+
     [Category(" 上部パネル")]
     [Description("上部パネルに表示する文字のフォント")]
 
@@ -137,7 +137,7 @@ public partial class GraphControl : UserControl
     /// </summary>
     [Category(" 上部パネル")]
     [Description("上部パネル(マウス位置やラベル情報が表示される)を表示するかどうか")]
-    public bool UpperPanelVisible { set => flowLayoutPanel.Visible = value;   get => flowLayoutPanel.Visible; }
+    public bool UpperPanelVisible { set => flowLayoutPanel.Visible = value; get => flowLayoutPanel.Visible; }
 
     /// <summary>
     /// マウス位置を表示するかどうか
@@ -151,14 +151,14 @@ public partial class GraphControl : UserControl
     /// /// </summary>
     [Category(" 上部パネル")]
     [Description("マウスX位置の有効桁数 (-1で無指定)")]
-    public int MousePositionXDigit { set ; get ; } = -1;
+    public int MousePositionXDigit { set; get; } = -1;
 
     /// <summary>
     /// マウス位置の有効桁数 (-1で無指定)
     /// /// </summary>
     [Category(" 上部パネル")]
-    [Description("マウスYY位置の有効桁数 (-1で無指定)")] 
-    public int MousePositionYDigit { set ; get; } = -1;
+    [Description("マウスYY位置の有効桁数 (-1で無指定)")]
+    public int MousePositionYDigit { set; get; } = -1;
 
     /// <summary>
     /// X軸の単位
@@ -231,7 +231,7 @@ public partial class GraphControl : UserControl
         get => verticalLineList.ToArray();
     }
     private readonly List<PointD> verticalLineList = new List<PointD>();
-    
+
     /// <summary>
     /// 
     /// </summary>
@@ -449,7 +449,7 @@ public partial class GraphControl : UserControl
     /// 原点の位置(左下からのピクセル単位)
     /// </summary>
     [Category(" グラフ位置")]
-    [Description("原点の位置(左下からのピクセル単位)")] 
+    [Description("原点の位置(左下からのピクセル単位)")]
     public Point OriginPosition { set { originPosition = value; Draw(); } get => originPosition; }
     private Point originPosition = new Point(40, 20);
 
@@ -457,7 +457,7 @@ public partial class GraphControl : UserControl
     /// 下側の余白(ピクセル単位)
     /// </summary>
     [Category(" グラフ位置")]
-    [Description("下側の余白(ピクセル単位)")] 
+    [Description("下側の余白(ピクセル単位)")]
     public double BottomMargin { set { bottomMargin = value; Draw(); } get => bottomMargin; }
     private double bottomMargin = 0;
 
@@ -465,7 +465,7 @@ public partial class GraphControl : UserControl
     /// 左側の余白(ピクセル単位)
     /// </summary>
     [Category(" グラフ位置")]
-    [Description("左側の余白(ピクセル単位)")] 
+    [Description("左側の余白(ピクセル単位)")]
     public float LeftMargin { set { leftMargin = value; Draw(); } get => leftMargin; }
     private float leftMargin = 0f;
     #endregion
@@ -482,7 +482,7 @@ public partial class GraphControl : UserControl
     /// グラフの描画モード
     /// </summary>
     [Category(" その他")]
-    [Description(" グラフの描画モード")] 
+    [Description(" グラフの描画モード")]
     public DrawingMode Mode { set { mode = value; Draw(); } get { return mode; } }
     private DrawingMode mode = DrawingMode.Line;
 
@@ -715,7 +715,7 @@ public partial class GraphControl : UserControl
             return;
         }
     }
- 
+
 
     /// <summary>
     /// 描画範囲Upper,LowerをMaximal,Minimalに設定する
@@ -799,7 +799,7 @@ public partial class GraphControl : UserControl
     #endregion
 
     #region Draw
-    public void Draw(bool initialize=false)
+    public void Draw(bool initialize = false)
     {
         if (initialize)
         {
@@ -1001,12 +1001,12 @@ public partial class GraphControl : UserControl
             else if (d / unit / 5 < maxDiv) step = unit * 5;
             else if (d / unit / 10 < maxDiv) step = unit * 10;
 
-            for (int i = (int)(min / step) + 1; i < max / step; i++)
+            var startI = min > 0 ? (int)(min / step) + 1 : (int)(min / step);
+            for (int i = startI; i < max / step; i++)
             {
-                if (max > 1000 || max < 0.001)
-                    //  str = ((i * step) / Math.Pow(10, (int)Math.Log10(max) - 1)).ToString("#,#.###############") + "E" + ((int)Math.Log10(max) - 1).ToString();
+                if (min >= 0 && (max > 1000 || max < 0.001))//対数表示する場合
                     str = ((i * step) / Math.Pow(10, (int)Math.Log10(i * step))).ToString("#,#.###############") + "E" + ((int)Math.Log10(i * step)).ToString();
-                else
+                else//実数表示する場合
                     str = Math.Round(i * step, 5).ToString("#,#.###############");
                 results.Add(i * step, str);
             }

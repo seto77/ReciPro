@@ -46,12 +46,12 @@
             toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             toolStripMenuItemScaleLineX = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemScaleLineY = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             flowLayoutPanel.SuspendLayout();
             flowLayoutPanelMousePosition.SuspendLayout();
             contextMenuStripY.SuspendLayout();
-            this.panel1.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // labelBlank
@@ -95,9 +95,8 @@
             labelGraphTitle.AutoSize = true;
             labelGraphTitle.Location = new System.Drawing.Point(3, 0);
             labelGraphTitle.Name = "labelGraphTitle";
-            labelGraphTitle.Size = new System.Drawing.Size(25, 15);
+            labelGraphTitle.Size = new System.Drawing.Size(0, 15);
             labelGraphTitle.TabIndex = 8;
-            labelGraphTitle.Text = "aaa";
             // 
             // labelX
             // 
@@ -143,7 +142,7 @@
             flowLayoutPanelMousePosition.Controls.Add(labelBlank);
             flowLayoutPanelMousePosition.Controls.Add(labelY);
             flowLayoutPanelMousePosition.Controls.Add(labelYValue);
-            flowLayoutPanelMousePosition.Location = new System.Drawing.Point(34, 3);
+            flowLayoutPanelMousePosition.Location = new System.Drawing.Point(9, 3);
             flowLayoutPanelMousePosition.Name = "flowLayoutPanelMousePosition";
             flowLayoutPanelMousePosition.Size = new System.Drawing.Size(133, 15);
             flowLayoutPanelMousePosition.TabIndex = 8;
@@ -193,19 +192,19 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.pictureBox);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 179);
-            this.panel1.TabIndex = 11;
+            panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            panel1.Controls.Add(pictureBox);
+            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Location = new System.Drawing.Point(0, 21);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(400, 179);
+            panel1.TabIndex = 11;
             // 
             // GraphControl
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.panel1);
+            Controls.Add(panel1);
             Controls.Add(flowLayoutPanel);
             Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Name = "GraphControl";
@@ -217,7 +216,7 @@
             flowLayoutPanelMousePosition.ResumeLayout(false);
             flowLayoutPanelMousePosition.PerformLayout();
             contextMenuStripY.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
