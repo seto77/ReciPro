@@ -1216,16 +1216,20 @@ public partial class GraphControl : UserControl
 
         //マウスが動いたとき
         PointD pt = ConvToRealCoord(e.X, e.Y);
-        double x = pt.X;
-        x = XLog ? Math.Pow(10, x) : x;
-        x = IsIntegerX ? (int)(Math.Round(x)) : x;
 
-        double y = pt.Y;
-        y = XLog ? Math.Pow(10, y) : y;
-        y = IsIntegerY ? (int)(Math.Round(y)) : y;
+        if (UpperPanelVisible)
+        {
+            double x = pt.X;
+            x = XLog ? Math.Pow(10, x) : x;
+            x = IsIntegerX ? (int)(Math.Round(x)) : x;
 
-        labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
-        labelYValue.Text = x.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));
+            double y = pt.Y;
+            y = XLog ? Math.Pow(10, y) : y;
+            y = IsIntegerY ? (int)(Math.Round(y)) : y;
+
+            labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
+            labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));
+        }
 
         if (MouseMovingMode)
         {
@@ -1266,7 +1270,7 @@ public partial class GraphControl : UserControl
                 if (verticalLineList.Count > selectedVerticalLineIndex && selectedVerticalLineIndex >= 0)
                 {
                     //lineList[selectedLineIndex].X = x;
-                    verticalLineList[selectedVerticalLineIndex] = new PointD(x, verticalLineList[selectedVerticalLineIndex].Y);
+                    verticalLineList[selectedVerticalLineIndex] = new PointD(pt.X, verticalLineList[selectedVerticalLineIndex].Y);
 
                     Draw();
                     LinePositionChanged?.Invoke();
