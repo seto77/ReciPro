@@ -776,20 +776,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.graphControlResidual.BackgroundColor = System.Drawing.Color.White;
             this.graphControlResidual.BottomMargin = 0D;
-            this.graphControlResidual.DivisionLineColor = System.Drawing.Color.Gray;
-            this.graphControlResidual.DivisionSubLineColor = System.Drawing.Color.LightGray;
+            this.graphControlResidual.AxisLineColor = System.Drawing.Color.Gray;
+            this.graphControlResidual.DivisionLineColor = System.Drawing.Color.LightGray;
             this.graphControlResidual.FixRangeHorizontal = false;
             this.graphControlResidual.FixRangeVertical = false;
             this.graphControlResidual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlResidual.GraphName = "";
-            this.graphControlResidual.HorizontalGradiationTextVisivle = true;
+            this.graphControlResidual.GraphTitle = "";
+            this.graphControlResidual.AxisXTextVisible = true;
             this.graphControlResidual.Interpolation = false;
             this.graphControlResidual.IsIntegerX = false;
             this.graphControlResidual.IsIntegerY = false;
             this.graphControlResidual.LabelX = "X:";
             this.graphControlResidual.LabelY = "Y:";
             this.graphControlResidual.LeftMargin = 0F;
-            this.graphControlResidual.LineColor = System.Drawing.Color.Red;
+            this.graphControlResidual.VerticalLineColor = System.Drawing.Color.Red;
             this.graphControlResidual.LineWidth = 1F;
             this.graphControlResidual.Location = new System.Drawing.Point(184, 4);
             this.graphControlResidual.LowerX = 0D;
@@ -806,19 +806,18 @@
             this.graphControlResidual.Size = new System.Drawing.Size(322, 189);
             this.graphControlResidual.Smoothing = false;
             this.graphControlResidual.TabIndex = 163;
-            this.graphControlResidual.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlResidual.UpperPanelFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlResidual.UnitX = "";
             this.graphControlResidual.UnitY = "";
-            this.graphControlResidual.UpperText = "";
-            this.graphControlResidual.UpperTextVisible = false;
+            this.graphControlResidual.UpperPanelVisible = false;
             this.graphControlResidual.UpperX = 1D;
             this.graphControlResidual.UpperY = 1D;
             this.graphControlResidual.UseLineWidth = true;
-            this.graphControlResidual.VerticalGradiationTextVisivle = true;
+            this.graphControlResidual.AxisYTextVisible = true;
             this.graphControlResidual.XLog = false;
-            this.graphControlResidual.XScaleLineVisible = true;
+            this.graphControlResidual.DivisionLineXVisible = true;
             this.graphControlResidual.YLog = false;
-            this.graphControlResidual.YScaleLineVisible = true;
+            this.graphControlResidual.DivisionLineYVisible = true;
             // 
             // tabPage8
             // 

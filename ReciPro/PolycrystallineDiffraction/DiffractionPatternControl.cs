@@ -332,7 +332,7 @@ public partial class DiffractionPatternControl : UserControl
 
         graphControlFrequency.Profile = p;
         PointD[] pt = new PointD[] { new PointD((double)numericUpDownMinInt.Minimum, double.NaN), new PointD((double)numericUpDownMaxInt.Maximum, double.NaN) };
-        graphControlFrequency.LineList = pt;
+        graphControlFrequency.VerticalLines = pt;
 
         graphControlFrequency.Draw();
 
@@ -354,11 +354,11 @@ public partial class DiffractionPatternControl : UserControl
 
     private void graphControlFrequency_LinePositionChanged()
     {
-        if (graphControlFrequency.LineList.Length == 2)
+        if (graphControlFrequency.VerticalLines.Length == 2)
         {
-            if (graphControlFrequency.LineList[1].X == graphControlFrequency.LineList[0].X) return;
+            if (graphControlFrequency.VerticalLines[1].X == graphControlFrequency.VerticalLines[0].X) return;
 
-            decimal max = (int)Math.Max(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X);
+            decimal max = (int)Math.Max(graphControlFrequency.VerticalLines[0].X, graphControlFrequency.VerticalLines[1].X);
             if (numericUpDownMaxInt.Maximum < max)
                 numericUpDownMaxInt.Value = numericUpDownMaxInt.Maximum;
             else if (numericUpDownMinInt.Minimum > max)
@@ -366,7 +366,7 @@ public partial class DiffractionPatternControl : UserControl
             else
                 numericUpDownMaxInt.Value = max;
 
-            decimal min = (int)Math.Min(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X);
+            decimal min = (int)Math.Min(graphControlFrequency.VerticalLines[0].X, graphControlFrequency.VerticalLines[1].X);
             if (numericUpDownMinInt.Maximum < min)
                 numericUpDownMinInt.Value = numericUpDownMinInt.Maximum;
             else if (numericUpDownMinInt.Minimum > min)
@@ -443,9 +443,9 @@ public partial class DiffractionPatternControl : UserControl
             scalablePictureBox.PseudoBitmap.MinValue = (uint)((double)numericUpDownMinInt.Value);
             if (scalablePictureBox.PseudoBitmap.MaxValue <= scalablePictureBox.PseudoBitmap.MinValue)
                 numericUpDownMaxInt.Value = numericUpDownMinInt.Value + 1;
-            if (graphControlFrequency.LineList != null && graphControlFrequency.LineList.Length == 2)
+            if (graphControlFrequency.VerticalLines != null && graphControlFrequency.VerticalLines.Length == 2)
             {
-                graphControlFrequency.LineList[graphControlFrequency.LineList[0].X < graphControlFrequency.LineList[1].X ? 0 : 1].X = (double)numericUpDownMinInt.Value;
+                graphControlFrequency.VerticalLines[graphControlFrequency.VerticalLines[0].X < graphControlFrequency.VerticalLines[1].X ? 0 : 1].X = (double)numericUpDownMinInt.Value;
                 graphControlFrequency.Draw();
             }
             scalablePictureBox.drawPictureBox();
@@ -460,9 +460,9 @@ public partial class DiffractionPatternControl : UserControl
             if (scalablePictureBox.PseudoBitmap.MaxValue <= scalablePictureBox.PseudoBitmap.MinValue)
                 if (numericUpDownMinInt.Minimum <= numericUpDownMaxInt.Value - 1)
                     numericUpDownMinInt.Value = numericUpDownMaxInt.Value - 1;
-            if (graphControlFrequency.LineList != null && graphControlFrequency.LineList.Length == 2)
+            if (graphControlFrequency.VerticalLines != null && graphControlFrequency.VerticalLines.Length == 2)
             {
-                graphControlFrequency.LineList[graphControlFrequency.LineList[0].X < graphControlFrequency.LineList[1].X ? 1 : 0].X = (double)numericUpDownMaxInt.Value;
+                graphControlFrequency.VerticalLines[graphControlFrequency.VerticalLines[0].X < graphControlFrequency.VerticalLines[1].X ? 1 : 0].X = (double)numericUpDownMaxInt.Value;
                 graphControlFrequency.Draw();
             }
             scalablePictureBox.drawPictureBox();
@@ -1043,10 +1043,10 @@ public partial class DiffractionPatternControl : UserControl
                 graphControlFrequency.ReplaceProfile(1, p);
             graphControlFrequency.ProfileList[1].Color = Color.Green;
 
-            if (graphControlFrequency.LineList.Length == 0)
+            if (graphControlFrequency.VerticalLines.Length == 0)
             {
                 PointD[] pt = new PointD[] { new PointD((double)numericUpDownMinInt.Minimum, double.NaN), new PointD((double)numericUpDownMaxInt.Maximum, double.NaN) };
-                graphControlFrequency.LineList = pt;
+                graphControlFrequency.VerticalLines = pt;
                 numericUpDownMaxInt_ValueChanged(new object(), new EventArgs());
             }
 

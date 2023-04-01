@@ -159,6 +159,14 @@ public partial class FormCTF : Form
         graphControl.UseLineWidth = false;
         graphControl.AddProfiles(profiles.ToArray());
         graphControl.MinimalX = graphControl.LowerX = 0;
+        if (ImageMode == FormImageSimulator.ImageModes.HRTEM || (ImageMode == FormImageSimulator.ImageModes.STEM && radioButtonCTF_coherent.Checked))
+        {
+            graphControl.MinimalY = graphControl.LowerY = -1;
+            graphControl.MaximalY = graphControl.UpperY = 1.02;
+        }
+        else
+            graphControl.MinimalY = graphControl.LowerY = 0;
+
         graphControl.Draw();
     }
 

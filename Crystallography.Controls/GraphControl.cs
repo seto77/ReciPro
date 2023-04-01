@@ -20,6 +20,11 @@ public partial class GraphControl : UserControl
     private Bitmap Bmp;
     private Graphics G;
 
+    /// <summary>
+    /// グラフの描き方の列挙体
+    /// </summary>
+    public enum DrawingMode { Line, Histogram, Point }
+
     #region イベント
 
     public delegate void DrawingRangeChangedEventHandler(RectangleD rectangle);
@@ -41,34 +46,52 @@ public partial class GraphControl : UserControl
 
     #region プロパティ
 
+    #region 描画囲プロパティ
+    [Category(" 描画範囲")]
+    [Description("X軸の描画範囲")]
+    public double UpperX { get => upperX; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) upperX = value; } }
     private double upperX = 1;
-    public double UpperX { get { return upperX; } set { if (!double.IsNaN(value) && !double.IsInfinity(value)) upperX = value; } }
 
+    [Category(" 描画範囲")]
+    [Description("X軸の描画範囲")]
+    public double LowerX { get => lowerX; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) lowerX = value; } }
     private double lowerX = 0;
-    public double LowerX { get { return lowerX; } set { if (!double.IsNaN(value) && !double.IsInfinity(value)) lowerX = value; } }
 
+    [Category(" 描画範囲")]
+    [Description("Y軸の描画範囲")]
+    public double UpperY { get => upperY; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) upperY = value; } }
     private double upperY = 1;
-    public double UpperY { get { return upperY; } set { if (!double.IsNaN(value) && !double.IsInfinity(value)) upperY = value; } }
 
+    [Category(" 描画範囲")]
+    [Description("Y軸の描画範囲")]
+    public double LowerY { get => lowerY; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) lowerY = value; } }
     private double lowerY = 0;
-    public double LowerY { get { return lowerY; } set { if (!double.IsNaN(value) && !double.IsInfinity(value)) lowerY = value; } }
 
+    [Category(" 描画限度")]
+    [Description("X軸の上下限")]
+    public double MaximalX { get => maximalX; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) maximalX = value; } }
     private double maximalX = 1;
-    public double MaximalX { get { return maximalX; } set { if (!double.IsNaN(value) && !double.IsInfinity(value)) maximalX = value; } }
 
+    [Category(" 描画限度")]
+    [Description("X軸の上下限")]
+    public double MinimalX { get => minimalX; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) minimalX = value; } }
     private double minimalX = 0;
-    public double MinimalX { get { return minimalX; } set { if (!double.IsNaN(value) && !double.IsInfinity(value)) minimalX = value; } }
 
+    [Category(" 描画限度")]
+    [Description("Y軸の上下限")]
+    public double MaximalY { get => maximalY; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) maximalY = value; } }
     private double maximalY = 1;
-    public double MaximalY { get { return maximalY; } set { if (!double.IsNaN(value) && !double.IsInfinity(value)) maximalY = value; } }
 
+    [Category(" 描画限度")]
+    [Description("Y軸の上下限")]
+    public double MinimalY { get => minimalY; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) minimalY = value; } }
     private double minimalY = 0;
-    public double MinimalY { get { return minimalY; } set { if (!double.IsNaN(value) && !double.IsInfinity(value)) minimalY = value; } }
 
     /// <summary>
     /// 描画範囲の矩形
     /// </summary>
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+   // [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Browsable(false)]   
     public RectangleD DrawingRange
     {
         set
@@ -93,134 +116,145 @@ public partial class GraphControl : UserControl
                 return new RectangleD(0, 0, 1, 1);
         }
     }
+    #endregion
+
+    #region 上部パネル設定
+   
+    [Category(" 上部パネル")]
+    [Description("上部パネルに表示する文字のフォント")]
+
+    public Font UpperPanelFont { set => labelGraphTitle.Font = labelX.Font = labelXValue.Font = labelY.Font = labelYValue.Font = value; get => labelX.Font; }
 
     /// <summary>
-    /// ピクチャーボックスのクライアント領域のサイズ
+    /// グラフの名前
     /// </summary>
-    private Size PictureBoxSize
-    {
-        get { return pictureBox.ClientSize; }
-    }
-
-    private bool verticalGradiationTextVisivle = true;
-
-    public bool VerticalGradiationTextVisivle
-    {
-        set { verticalGradiationTextVisivle = value; Draw(); }
-        get { return verticalGradiationTextVisivle; }
-    }
-
-    private bool horizontalGradiationTextVisivle = true;
-
-    public bool HorizontalGradiationTextVisivle
-    {
-        set { horizontalGradiationTextVisivle = value; Draw(); }
-        get { return horizontalGradiationTextVisivle; }
-    }
-
-    public Font TextFont { set { flowLayoutPanel.Font = value; } get { return flowLayoutPanel.Font; } }
-
-    public string UpperText
-    {
-        get { return labelUpperText.Text; }
-        set { labelUpperText.Text = value; }
-    }
-
-    private bool upperTextVisible = true;
+    [Category(" 上部パネル")]
+    [Description("グラフタイトル(上部パネルの最初に表示される)")]
+    public string GraphTitle { set => labelGraphTitle.Text = value; get => labelGraphTitle.Text; }
 
     /// <summary>
-    /// グラフ上部にマウス位置やラベル情報を示すテキストを表示するかどうか
+    /// 上部パネル(マウス位置やラベル情報が表示される)を表示するかどうか
     /// </summary>
-    public bool UpperTextVisible
-    {
-        set
-        {
-            upperTextVisible = value;
-            flowLayoutPanel.Visible = upperTextVisible;
-        }
-        get { return upperTextVisible; }
-    }
+    [Category(" 上部パネル")]
+    [Description("上部パネル(マウス位置やラベル情報が表示される)を表示するかどうか")]
+    public bool UpperPanelVisible { set => flowLayoutPanel.Visible = value;   get => flowLayoutPanel.Visible; }
+
+    /// <summary>
+    /// マウス位置を表示するかどうか
+    /// </summary>
+    [Category(" 上部パネル")]
+    [Description("マウス位置を表示するかどうか")]
+    public bool MousePositionVisible { set => flowLayoutPanelMousePosition.Visible = value; get => flowLayoutPanelMousePosition.Visible; }
+
+    /// <summary>
+    /// マウス位置の有効桁数 (-1で無指定)
+    /// /// </summary>
+    [Category(" 上部パネル")]
+    [Description("マウスX位置の有効桁数 (-1で無指定)")]
+    public int MousePositionXDigit { set ; get ; } = -1;
+
+    /// <summary>
+    /// マウス位置の有効桁数 (-1で無指定)
+    /// /// </summary>
+    [Category(" 上部パネル")]
+    [Description("マウスYY位置の有効桁数 (-1で無指定)")] 
+    public int MousePositionYDigit { set ; get; } = -1;
 
     /// <summary>
     /// X軸の単位
     /// </summary>
+    [Category(" 上部パネル")]
+    [Description("X軸の単位")]
     public string UnitX { get; set; } = "";
 
     /// <summary>
     /// Y軸の単位
     /// </summary>
+    [Category(" 上部パネル")]
+    [Description("Y軸の単位")]
     public string UnitY { get; set; } = "";
 
-    private bool mousePositionVisible = true;
+    /// <summary>
+    /// X軸のラベル
+    /// </summary>
+    [Category(" 上部パネル")]
+    [Description("X軸のラベル")]
+    public string LabelX { set => labelX.Text = value; get => labelX.Text; }
 
     /// <summary>
-    /// マウス位置を表示するかどうか
+    /// Y軸のラベル
     /// </summary>
-    public bool MousePositionVisible
-    {
-        set
-        {
-            mousePositionVisible = value;
-            labelX.Visible = labelXValue.Visible = labelY.Visible = labelYLabel.Visible = mousePositionVisible;
-        }
-        get { return mousePositionVisible; }
-    }
+    [Category(" 上部パネル")]
+    [Description("Y軸のラベル")]
+    public string LabelY { set => labelY.Text = value; get => labelY.Text; }
 
-    private string graphName = "";
+    #endregion
 
-    /// <summary>
-    /// グラフの名前
-    /// </summary>
-    public string GraphName
-    {
-        set
-        {
-            graphName = value;
-            labelUpperText.Text = graphName;
-        }
-        get { return graphName; }
-    }
-
+    #region 動作プロパティ
     /// <summary>
     /// マウス操作を受け付けるかどうか
     /// </summary>
+    [Category(" 動作")]
+    [Description("マウス操作を受け付けるかどうか")]
     public bool AllowMouseOperation { get; set; } = true;
 
-    private readonly List<PointD> lineList = new List<PointD>();
+    /// <summary>
+    /// Profileを更新時、横軸を固定するかどうか(ただし、上限下限内で)
+    /// </summary>
+    [Category(" 動作")]
+    [Description("Profileを更新時、横軸を固定するかどうか(ただし、上限下限内で)")]
+    public bool FixRangeHorizontal { set; get; } = false;
+
+    /// <summary>
+    /// Profileを更新時、縦軸を固定するかどうか(ただし、上限下限内で)
+    /// </summary>
+    [Category(" 動作")]
+    [Description("Profileを更新時、縦軸を固定するかどうか(ただし、上限下限内で)")]
+    public bool FixRangeVertical { set; get; } = false;
+    #endregion
+
+    #region 垂直線
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public PointD[] LineList
+    [Category(" 垂直線")]
+    [Description("垂直線のリスト")]
+    public PointD[] VerticalLines
     {
         set
         {
             if (value != null)
             {
-                lineList.Clear();
-                lineList.AddRange(value);
+                verticalLineList.Clear();
+                verticalLineList.AddRange(value);
             }
         }
-        get { return lineList.ToArray(); }
+        get => verticalLineList.ToArray();
     }
+    private readonly List<PointD> verticalLineList = new List<PointD>();
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    [Category(" 垂直線")]
+    [Description("垂直線の色")]
+    public Color VerticalLineColor { set; get; } = Color.Red;
 
+    private int selectedVerticalLineIndex = -1;
+
+    #endregion
+
+    #region ピーク関数
+    [Browsable(false)]
+    public PeakFunction[] Peaks { set { peaks.Clear(); peaks.AddRange(value); } get => peaks.ToArray(); }
     private List<PeakFunction> peaks = new();
+    #endregion
 
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public PeakFunction[] Peaks
-    {
-        set { peaks.Clear(); peaks.AddRange(value); }
-        get { return peaks.ToArray(); }
-    }
-
-    public Color LineColor { set; get; } = Color.Red;
-
-    private int selectedLineIndex = -1;
-
-    private List<Profile> srcProfileList = new();
-
+    #region プロファイル
     /// <summary>
     /// 0番目のプロファイルを設定する。複数プロファイルが設定されている場合はひとつだけにする。
     /// </summary>
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Category(" プロファイル")]
+    [Browsable(false)]
     public Profile Profile
     {
         set
@@ -239,62 +273,120 @@ public partial class GraphControl : UserControl
                 return srcProfileList[0];
         }
     }
+    private List<Profile> srcProfileList = new();
 
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public Profile[] ProfileList
-    {
-        get { return srcProfileList.ToArray(); }
-    }
 
+    [Category(" プロファイル")]
+    [Browsable(false)]
+    public Profile[] ProfileList => srcProfileList.ToArray();
+
+    /// <summary>
+    /// 共通のプロファイル描画線の太さ (UseLineWidthがtrueの場合に有効)
+    /// </summary>
+    [Category(" プロファイル")]
+    [Description("共通のプロファイル描画線の太さ (UseLineWidthがtrueの場合に有効)")]
+    public float LineWidth { set { lineWidth = value; Draw(); } get => lineWidth; }
     private float lineWidth = 1f;
 
     /// <summary>
-    /// プロファイル描画線の太さ
+    /// 共通のプロファイル描画線太さを使うか (使わない場合は各ProfileのlineWidthを使う)
     /// </summary>
-    public float LineWidth
+    [Category(" プロファイル")]
+    [Description("共通のプロファイル描画線太さを使うか (使わない場合は各ProfileのlineWidthを使う))")]
+    public bool UseLineWidth { set { useLineWidth = value; Draw(); } get => useLineWidth; }
+    private bool useLineWidth = true;
+
+    #endregion
+
+    #region 補助線プロパティ
+    /// <summary>
+    /// 目盛補助線の色
+    /// </summary>
+    [Category(" 補助線")]
+    [Description("目盛補助線の色")]
+    public Color DivisionLineColor { set; get; } = Color.LightGray;
+
+    /// <summary>
+    /// X軸の補助目盛線を表示するかどうか
+    /// </summary>
+    [Category(" 補助線")]
+    [Description("X軸の補助目盛線を表示するかどうか")]
+    public bool DivisionLineXVisible
     {
         set
         {
-            lineWidth = value;
-            Draw();
+            if (DivisionLineXVisible != value)
+            {
+                divisionLineXVisible = value;
+                toolStripMenuItemScaleLineX.Checked = value;
+                Draw();
+            }
         }
-        get { return lineWidth; }
+        get => divisionLineXVisible;
     }
-
-    private bool useLineWidth = true;
+    private bool divisionLineXVisible = true;
 
     /// <summary>
-    /// 共通のプロファイル描画線を使うか (使わない場合は各ProfileのlineWidthを使う)
+    /// Y軸の目盛りを表示するかどうか
     /// </summary>
-    public bool UseLineWidth { set { useLineWidth = value; Draw(); } get => useLineWidth; }
+    [Category(" 補助線")]
+    [Description("Y軸の補助目盛線を表示するかどうか")]
+    public bool DivisionLineYVisible
+    {
+        set
+        {
+            if (DivisionLineYVisible != value)
+            {
+                divisionLineYVisible = value;
+                toolStripMenuItemScaleLineY.Checked = value;
+                Draw();
+            }
+        }
+        get => divisionLineYVisible;
+    }
+    private bool divisionLineYVisible = true;
 
-    private Color divisionLineColor = Color.Gray;
+    #endregion
+
+    #region 軸設定
 
     /// <summary>
     /// 目盛線の色
     /// </summary>
-    public Color DivisionLineColor { set { divisionLineColor = value; Draw(); } get => divisionLineColor; }
+    [Category(" 軸設定")]
+    [Description("軸線の色")]
+    public Color AxisLineColor { set; get; } = Color.Gray;
 
     /// <summary>
-    /// 目盛補助線の色
+    /// 軸文字の色
     /// </summary>
-    public Color DivisionSubLineColor { set; get; } = Color.LightGray;
+    [Category(" 軸設定")]
+    [Description("軸文字の色")]
+    public Color AxisTextColor { set; get; } = Color.Black;
 
     /// <summary>
-    /// 目盛文字の色
+    /// 軸文字の色
     /// </summary>
-    public SolidBrush DivisionTextBrush { set; get; } = new SolidBrush(Color.Black);
+    [Category(" 軸設定")]
+    [Description("軸文字のフォント")]
+    public Font AxisTextFont { set; get; } = new Font("Segoe UI", 9);
 
-    /// <summary>
-    /// 背景の色
-    /// </summary>
-    public Color BackgroundColor { set; get; } = Color.White;
 
-    private bool xLog = false;
+    [Category(" 軸設定")]
+    [Description("X軸上の数値を表示するかどうか")]
+    public bool AxisXTextVisible { set { horizontalGradiationTextVisivle = value; Draw(); } get => horizontalGradiationTextVisivle; }
+    private bool horizontalGradiationTextVisivle = true;
+
+    [Category(" 軸設定")]
+    [Description("Y軸上の数値を表示するかどうか")]
+    public bool AxisYTextVisible { set { verticalGradiationTextVisivle = value; Draw(); } get => verticalGradiationTextVisivle; }
+    private bool verticalGradiationTextVisivle = true;
 
     /// <summary>
     /// X軸が対数スケールかどうか
     /// </summary>
+    [Category(" 軸設定")]
+    [Description("X軸が対数スケールかどうか")]
     public bool XLog
     {
         set
@@ -311,12 +403,13 @@ public partial class GraphControl : UserControl
         }
         get => xLog;
     }
-
-    private bool yLog = false;
+    private bool xLog = false;
 
     /// <summary>
     /// Y軸が対数スケールかどうか
     /// </summary>
+    [Category(" 軸設定")]
+    [Description("Y軸が対数スケールかどうか")]
     public bool YLog
     {
         set
@@ -332,162 +425,88 @@ public partial class GraphControl : UserControl
         }
         get => yLog;
     }
-
-    private bool xScaleLineVisible = true;
-
-    /// <summary>
-    /// X軸の目盛りを表示するかどうか
-    /// </summary>
-    public bool XScaleLineVisible
-    {
-        set
-        {
-            if (XScaleLineVisible != value)
-            {
-                xScaleLineVisible = value;
-                toolStripMenuItemScaleLineX.Checked = value;
-                Draw();
-            }
-        }
-        get { return xScaleLineVisible; }
-    }
-
-    private bool yScaleLineVisible = true;
+    private bool yLog = false;
 
     /// <summary>
-    /// Y軸の目盛りを表示するかどうか
+    /// Xの値が0以上の整数値かどうか
     /// </summary>
-    public bool YScaleLineVisible
-    {
-        set
-        {
-            if (YScaleLineVisible != value)
-            {
-                yScaleLineVisible = value;
-                toolStripMenuItemScaleLineY.Checked = value;
-                Draw();
-            }
-        }
-        get => yScaleLineVisible;
-    }
-
+    [Category(" 軸設定")]
+    [Description("Xの値が0以上の整数値かどうか")]
+    public bool IsIntegerX { set { isIntegerX = value; InitializeAxis(); resetDrawRange(); Draw(); } get => isIntegerX; }
     private bool isIntegerX = false;
-
-    /// <summary>
-    /// Xの値が０以上の整数値かどうか
-    /// </summary>
-    public bool IsIntegerX
-    {
-        set { isIntegerX = value; InitializeAxis(); resetDrawRange(); Draw(); }
-        get => isIntegerX;
-    }
 
     /// <summary>
     /// Yの値が０以上の整数値かどうか
     /// </summary>
-    public bool IsIntegerY
-    {
-        set { isIntegerY = value; InitializeAxis(); resetDrawRange(); Draw(); }
-        get => isIntegerY;
-    }
-
+    [Category(" 軸設定")]
+    [Description("Yの値が0以上の整数値かどうか")]
+    public bool IsIntegerY { set { isIntegerY = value; InitializeAxis(); resetDrawRange(); Draw(); } get => isIntegerY; }
     private bool isIntegerY = false;
+    #endregion
 
-    /// <summary>
-    /// X軸の名称
-    /// </summary>
-    public string LabelX { set => labelX.Text = value; get => labelX.Text; }
-
-    /// <summary>
-    /// Y軸の名称
-    /// </summary>
-    public string LabelY { set => labelY.Text = value; get => labelY.Text; }
-
+    #region グラフ位置
     /// <summary>
     /// 原点の位置(左下からのピクセル単位)
     /// </summary>
-    public Point OriginPosition
-    {
-        set { originPosition = value; Draw(); }
-        get => originPosition;
-    }
-
+    [Category(" グラフ位置")]
+    [Description("原点の位置(左下からのピクセル単位)")] 
+    public Point OriginPosition { set { originPosition = value; Draw(); } get => originPosition; }
     private Point originPosition = new Point(40, 20);
 
     /// <summary>
     /// 下側の余白(ピクセル単位)
     /// </summary>
-    public double BottomMargin
-    {
-        set { bottomMargin = value; Draw(); }
-        get => bottomMargin;
-    }
-
+    [Category(" グラフ位置")]
+    [Description("下側の余白(ピクセル単位)")] 
+    public double BottomMargin { set { bottomMargin = value; Draw(); } get => bottomMargin; }
     private double bottomMargin = 0;
 
     /// <summary>
     /// 左側の余白(ピクセル単位)
     /// </summary>
-    public float LeftMargin
-    {
-        set { leftMargin = value; Draw(); }
-        get => leftMargin;
-    }
-
+    [Category(" グラフ位置")]
+    [Description("左側の余白(ピクセル単位)")] 
+    public float LeftMargin { set { leftMargin = value; Draw(); } get => leftMargin; }
     private float leftMargin = 0f;
+    #endregion
 
+    #region その他
+    /// <summary>
+    /// グラフの背景色
+    /// </summary>
+    [Category(" その他")]
+    [Description(" グラフの背景色")]
+    public Color BackgroundColor { set; get; } = Color.White;
+
+    /// <summary>
+    /// グラフの描画モード
+    /// </summary>
+    [Category(" その他")]
+    [Description(" グラフの描画モード")] 
+    public DrawingMode Mode { set { mode = value; Draw(); } get { return mode; } }
     private DrawingMode mode = DrawingMode.Line;
 
-    /// <summary>
-    /// trueの場合は棒グラフ状に表示する。falseの場合は線状に表示する
-    /// </summary>
-    public DrawingMode Mode
-    {
-        set { mode = value; Draw(); }
-        get { return mode; }
-    }
-
+    [Browsable(false)]
+    public bool Interpolation { set { interpolation = value; Draw(); } get => interpolation; }
     private bool interpolation = false;
-    public bool Interpolation { set { interpolation = value; Draw(); } get { return interpolation; } }
 
+    [Browsable(false)]
     public bool Smoothing { get; set; } = false;
-    private int smoothingN = 0;
-    private int smoothingM = 0;
+    private int smoothingN = 0, smoothingM = 0;
 
     /// <summary>
-    /// Profileを更新時、横軸を固定する(ただし、上限下限内で)
+    /// ピクチャーボックスのクライアント領域のサイズ
     /// </summary>
-    private bool fixRangeHorizontal = false;
+    [Browsable(false)]
+    private Size PictureBoxSize => pictureBox.ClientSize;
 
-    public bool FixRangeHorizontal
-    {
-        set { fixRangeHorizontal = value; }
-        get { return fixRangeHorizontal; }
-    }
-
-    /// <summary>
-    /// Profileを更新時、縦を固定する(ただし、上限下限内で)
-    /// </summary>
-    private bool fixRangeVertical = false;
-
-    public bool FixRangeVertical
-    {
-        set { fixRangeVertical = value; }
-        get { return fixRangeVertical; }
-    }
+    #endregion
 
     #endregion プロパティ
 
-    /// <summary>
-    /// グラフの描き方の列挙体
-    /// </summary>
-    public enum DrawingMode
-    {
-        Line, Histogram, Point
-    }
-
     private List<Profile> destProfileList = new List<Profile>();
 
+    #region プロファイルの追加、置換、スムージング
     public void AddPoint(int profileNumber, PointD pt)
     {
         srcProfileList[profileNumber].Pt.Add(pt);
@@ -550,7 +569,9 @@ public partial class GraphControl : UserControl
         LowerX = LowerY = MinimalX = MinimalY = 0;
         Draw();
     }
+    #endregion
 
+    #region 軸の初期化、変換
     public void InitializeAxis()
     {
         if (srcProfileList == null) return;
@@ -609,13 +630,9 @@ public partial class GraphControl : UserControl
         }
         return temp;
     }
+    #endregion
 
-    public void SetInitialParameter(bool xLog, bool yLog)
-    {
-        this.xLog = xLog;
-        this.yLog = yLog;
-    }
-
+    #region 描画範囲の設定
     /// <summary>
     /// 現在のプロファイルから描画範囲の上限、下限値を設定　描画範囲は変更しない
     /// </summary>
@@ -698,6 +715,7 @@ public partial class GraphControl : UserControl
             return;
         }
     }
+ 
 
     /// <summary>
     /// 描画範囲Upper,LowerをMaximal,Minimalに設定する
@@ -706,12 +724,12 @@ public partial class GraphControl : UserControl
     {
         if (destProfileList == null || destProfileList.Count == 0 || destProfileList[0] == null || destProfileList[0].Pt == null) return;
         if (PictureBoxSize.Width <= 0 || PictureBoxSize.Height <= 0) return;
-        if (!fixRangeHorizontal)
+        if (!FixRangeHorizontal)
         {
             LowerX = MinimalX;
             UpperX = MaximalX;
         }
-        if (!fixRangeVertical)
+        if (!FixRangeVertical)
         {
             LowerY = MinimalY;
             UpperY = MaximalY;
@@ -778,13 +796,10 @@ public partial class GraphControl : UserControl
 
         Draw();
     }
+    #endregion
 
-    public void Draw()
-    {
-        Draw(false);
-    }
-
-    public void Draw(bool initialize)
+    #region Draw
+    public void Draw(bool initialize=false)
     {
         if (initialize)
         {
@@ -813,7 +828,7 @@ public partial class GraphControl : UserControl
                 else if (mode == DrawingMode.Point)
                     DrawProfilePoint();
 
-                if (lineList.Any())
+                if (verticalLineList.Any())
                     DrawLine();
 
                 if (peaks.Any())
@@ -823,15 +838,17 @@ public partial class GraphControl : UserControl
         }
         catch { }
     }
+    #endregion
 
+    #region DrawLine, DrawPeaks
     /// <summary>
-    /// グラフ中に線(LineList)で定義されたを描く
+    /// グラフ中にVerticalLineListで定義された垂直線を描く
     /// </summary>
     private void DrawLine()
     {
-        for (int i = 0; i < lineList.Count; i++)
+        for (int i = 0; i < verticalLineList.Count; i++)
         {
-            double x = lineList[i].X;
+            double x = verticalLineList[i].X;
             if (xLog)
             {
                 if (x > 0)
@@ -839,12 +856,12 @@ public partial class GraphControl : UserControl
                 else
                     x = 0;
             }
-            var ptStart = ConvToPicBoxCoord(x, lineList[i].Y);
-            if (double.IsNaN(lineList[i].Y))
+            var ptStart = ConvToPicBoxCoord(x, verticalLineList[i].Y);
+            if (double.IsNaN(verticalLineList[i].Y))
                 ptStart.Y = 0;
             var ptEnd = new PointF((float)ptStart.X, (float)(pictureBox.Height - originPosition.Y));
             if (!double.IsNaN(ptStart.X) && !double.IsInfinity(ptStart.X))
-                G.DrawLine(new Pen(LineColor, selectedLineIndex == i ? 2f : 1f), ptStart, ptEnd);
+                G.DrawLine(new Pen(VerticalLineColor, selectedVerticalLineIndex == i ? 2f : 1f), ptStart, ptEnd);
         }
     }
 
@@ -858,11 +875,13 @@ public partial class GraphControl : UserControl
             double step = peaks[i].range / 100.0;
             for (double x = peaks[i].X - peaks[i].range; x < peaks[i].X + peaks[i].range; x += step)
             {
-                G.DrawLine(new Pen(LineColor, 2f), ConvToPicBoxCoord(x, peaks[i].GetValue(x, x == peaks[i].X - peaks[i].range, true)), ConvToPicBoxCoord(x + step, peaks[i].GetValue(x + step, false, true)));
+                G.DrawLine(new Pen(VerticalLineColor, 2f), ConvToPicBoxCoord(x, peaks[i].GetValue(x, x == peaks[i].X - peaks[i].range, true)), ConvToPicBoxCoord(x + step, peaks[i].GetValue(x + step, false, true)));
             }
         }
     }
+    #endregion
 
+    #region DrawProfile
     private void DrawProfilePoint()
     {
         //総和が少ないプロファイルを前面に(最後に)書く
@@ -955,7 +974,9 @@ public partial class GraphControl : UserControl
             }
         }
     }
+    #endregion
 
+    #region 目盛線
     /// <summary>
     /// 上下限値(max, min)と最大目盛り数(maxDiv)から、目盛りの位置とラベルを生成する
     /// </summary>
@@ -1029,8 +1050,9 @@ public partial class GraphControl : UserControl
 
     public void DrawDivision()
     {
-        var strFont = new Font(new FontFamily("tahoma"), 8);
-        var pen = new Pen(DivisionLineColor, 1);
+        var strFont = AxisTextFont;
+        var brush = new SolidBrush(AxisTextColor);
+        var pen = new Pen(AxisLineColor, 1);
 
         //ここよりX目盛りの描画
         G.DrawLine(pen, OriginPosition.X, pictureBox.Height - OriginPosition.Y, PictureBoxSize.Width, pictureBox.Height - OriginPosition.Y);
@@ -1038,13 +1060,13 @@ public partial class GraphControl : UserControl
         var divisions = GetDivisions(LowerX, UpperX, maxDivisionNumber, XLog);
         for (int i = 0; i < divisions.Count; i++)
         {
-            pen = new Pen(DivisionLineColor, 1);
+            pen = new Pen(AxisLineColor, 1);
             G.DrawLine(pen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - OriginPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - OriginPosition.Y + 5);
             if (horizontalGradiationTextVisivle)
-                G.DrawString(divisions.Values[i], strFont, DivisionTextBrush, ConvToPicBoxCoord(divisions.Keys[i], 0).X - 2, PictureBoxSize.Height - OriginPosition.Y + 5);
+                G.DrawString(divisions.Values[i], strFont, brush, ConvToPicBoxCoord(divisions.Keys[i], 0).X - 2, PictureBoxSize.Height - OriginPosition.Y + 5);
 
-            pen = new Pen(DivisionSubLineColor, 1);
-            if (XScaleLineVisible)
+            pen = new Pen(DivisionLineColor, 1);
+            if (DivisionLineXVisible)
                 G.DrawLine(pen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - OriginPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, 0);
         }
 
@@ -1055,17 +1077,18 @@ public partial class GraphControl : UserControl
 
         for (int i = 0; i < divisions.Count; i++)
         {
-            pen = new Pen(DivisionLineColor, 1);
+            pen = new Pen(AxisLineColor, 1);
             G.DrawLine(pen, OriginPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, OriginPosition.X, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
 
             if (horizontalGradiationTextVisivle)
-                G.DrawString(divisions.Values[i], strFont, DivisionTextBrush, 0, ConvToPicBoxCoord(0, divisions.Keys[i]).Y - 6);
+                G.DrawString(divisions.Values[i], strFont, brush, 0, ConvToPicBoxCoord(0, divisions.Keys[i]).Y - 6);
 
-            pen = new Pen(DivisionSubLineColor, 1);
-            if (YScaleLineVisible)
+            pen = new Pen(DivisionLineColor, 1);
+            if (DivisionLineYVisible)
                 G.DrawLine(pen, OriginPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, PictureBoxSize.Width, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
         }
     }
+    #endregion
 
     #region 座標変換関係
 
@@ -1090,40 +1113,6 @@ public partial class GraphControl : UserControl
 
     #endregion 座標変換関係
 
-    private void GraphControl_Resize(object sender, EventArgs e)
-    {
-        Draw();
-    }
-
-    /// <summary>
-    /// 近いラインを探す
-    /// </summary>
-    /// <param name="upperX"></param>
-    /// <param name="lowerX"></param>
-    /// <returns></returns>
-    private int serchLineIndex(double upperX, double lowerX)
-    {
-        double dev = double.PositiveInfinity;
-        int index = -1;
-        if (xLog)
-        {
-            upperX = Math.Pow(10, upperX);
-
-            if (lowerX > 0) lowerX = Math.Pow(10, lowerX);
-            else lowerX = -Math.Pow(10, lowerX);
-        }
-        for (int i = 0; i < lineList.Count; i++)
-        {
-            if (upperX > lineList[i].X && lowerX < lineList[i].X)
-                if (dev > (upperX + lowerX) / 2 - lineList[i].X)
-                {
-                    dev = (upperX + lowerX) / 2 - lineList[i].X;
-                    index = i;
-                }
-        }
-        return index;
-    }
-
     #region マウス操作関連
 
     public Point MouseRangeStart, MouseRangeEnd;
@@ -1132,31 +1121,15 @@ public partial class GraphControl : UserControl
     public bool MouseMovingMode = false;
     public bool LineSelectMode = false;
 
-    private void pictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
-    {
-    }
-
     #region コンテキストメニュー
 
-    private void toolStripMenuItemLogScaleY_Click(object sender, EventArgs e)
-    {
-        YLog = !YLog;
-    }
+    private void toolStripMenuItemLogScaleY_Click(object sender, EventArgs e) => YLog = !YLog;
 
-    private void toolStripMenuItemLogScaleX_Click(object sender, EventArgs e)
-    {
-        XLog = !XLog;
-    }
+    private void toolStripMenuItemLogScaleX_Click(object sender, EventArgs e) => XLog = !XLog;
 
-    private void toolStripMenuItemScaleLineX_Click(object sender, EventArgs e)
-    {
-        XScaleLineVisible = !XScaleLineVisible;
-    }
+    private void toolStripMenuItemScaleLineX_Click(object sender, EventArgs e) => DivisionLineXVisible = !DivisionLineXVisible;
 
-    private void toolStripMenuItemScaleLineY_Click(object sender, EventArgs e)
-    {
-        YScaleLineVisible = !YScaleLineVisible;
-    }
+    private void toolStripMenuItemScaleLineY_Click(object sender, EventArgs e) => DivisionLineYVisible = !DivisionLineYVisible;
 
     #endregion コンテキストメニュー
 
@@ -1188,7 +1161,7 @@ public partial class GraphControl : UserControl
                 if (i >= 0)
                 {
                     LineSelectMode = true;
-                    selectedLineIndex = i;
+                    selectedVerticalLineIndex = i;
                     Draw();
                 }
             }
@@ -1208,6 +1181,34 @@ public partial class GraphControl : UserControl
             }
         }
     }
+    /// <summary>
+    /// 近いラインを探す
+    /// </summary>
+    /// <param name="upperX"></param>
+    /// <param name="lowerX"></param>
+    /// <returns></returns>
+    private int serchLineIndex(double upperX, double lowerX)
+    {
+        double dev = double.PositiveInfinity;
+        int index = -1;
+        if (xLog)
+        {
+            upperX = Math.Pow(10, upperX);
+
+            if (lowerX > 0) lowerX = Math.Pow(10, lowerX);
+            else lowerX = -Math.Pow(10, lowerX);
+        }
+        for (int i = 0; i < verticalLineList.Count; i++)
+        {
+            if (upperX > verticalLineList[i].X && lowerX < verticalLineList[i].X)
+                if (dev > (upperX + lowerX) / 2 - verticalLineList[i].X)
+                {
+                    dev = (upperX + lowerX) / 2 - verticalLineList[i].X;
+                    index = i;
+                }
+        }
+        return index;
+    }
 
     private void pictureBox_MouseMove(object sender, MouseEventArgs e)
     {
@@ -1223,14 +1224,8 @@ public partial class GraphControl : UserControl
         y = XLog ? Math.Pow(10, y) : y;
         y = IsIntegerY ? (int)(Math.Round(y)) : y;
 
-        if (!XLog)
-            labelXValue.Text = x.ToString("g") + UnitX;
-        else
-            labelXValue.Text = x.ToString("E") + UnitX;
-        if (!YLog)
-            labelYLabel.Text = y.ToString("g") + UnitY;
-        else
-            labelYLabel.Text = y.ToString("E") + UnitY;
+        labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
+        labelYValue.Text = x.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));
 
         if (MouseMovingMode)
         {
@@ -1268,10 +1263,10 @@ public partial class GraphControl : UserControl
         {
             if (e.X > 3 && e.Y > 3 && e.X < PictureBoxSize.Width - 3 && e.Y < PictureBoxSize.Height - 3)
             {
-                if (lineList.Count > selectedLineIndex && selectedLineIndex >= 0)
+                if (verticalLineList.Count > selectedVerticalLineIndex && selectedVerticalLineIndex >= 0)
                 {
                     //lineList[selectedLineIndex].X = x;
-                    lineList[selectedLineIndex] = new PointD(x, lineList[selectedLineIndex].Y);
+                    verticalLineList[selectedVerticalLineIndex] = new PointD(x, verticalLineList[selectedVerticalLineIndex].Y);
 
                     Draw();
                     LinePositionChanged?.Invoke();
@@ -1348,6 +1343,7 @@ public partial class GraphControl : UserControl
 
     #endregion マウス操作関連
 
+    #region その他イベント
     private void pictureBox_Paint(object sender, PaintEventArgs e)
     {
         if (MouseRangingMode)
@@ -1358,9 +1354,17 @@ public partial class GraphControl : UserControl
         }
     }
 
+    private void GraphControl_Resize(object sender, EventArgs e) => Draw();
+
     private void toolStripMenuItemLogScaleX_CheckedChanged(object sender, EventArgs e)
     {
         XLog = toolStripMenuItemLogScaleX.Checked;
         YLog = toolStripMenuItemLogScaleY.Checked;
     }
+    public void SetInitialParameter(bool xLog, bool yLog)
+    {
+        this.xLog = xLog;
+        this.yLog = yLog;
+    }
+    #endregion
 }

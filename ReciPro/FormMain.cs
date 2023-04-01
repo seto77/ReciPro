@@ -219,6 +219,8 @@ public partial class FormMain : Form
 
         };
 
+        
+
         commonDialog.Show();
         if (commonDialog != null)
             commonDialog.Location = new Point(this.Location.X + this.Width / 2 - commonDialog.Width / 2, this.Location.Y + this.Height / 2 - commonDialog.Height / 2);
@@ -426,6 +428,7 @@ public partial class FormMain : Form
         Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
 
         Reg.RW<Rectangle>(key, mode, this, "Bounds");
+        WindowLocation.Adjust(this);
 
         if (commonDialog == null)
             return;

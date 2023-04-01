@@ -197,9 +197,9 @@
             numericBoxMaxU1.Location = new System.Drawing.Point(522, 0);
             numericBoxMaxU1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             numericBoxMaxU1.Maximum = 20D;
-            numericBoxMaxU1.MaximumSize = new System.Drawing.Size(1000, 27);
+            numericBoxMaxU1.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxMaxU1.Minimum = 0D;
-            numericBoxMaxU1.MinimumSize = new System.Drawing.Size(1, 25);
+            numericBoxMaxU1.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxMaxU1.Name = "numericBoxMaxU1";
             numericBoxMaxU1.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxMaxU1.RadianValue = 0.10471975511965977D;
@@ -216,23 +216,26 @@
             // graphControl
             // 
             graphControl.AllowMouseOperation = true;
+            graphControl.AxisLineColor = System.Drawing.Color.Gray;
+            graphControl.AxisTextColor = System.Drawing.Color.Black;
+            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             graphControl.BackgroundColor = System.Drawing.Color.White;
             graphControl.BottomMargin = 0D;
-            graphControl.DivisionLineColor = System.Drawing.Color.Gray;
-            graphControl.DivisionSubLineColor = System.Drawing.Color.LightGray;
+            graphControl.DivisionLineColor = System.Drawing.Color.LightGray;
+            graphControl.DivisionLineXVisible = true;
+            graphControl.DivisionLineYVisible = true;
             graphControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            graphControl.DrawingRange = (RectangleD)resources.GetObject("graphControl.DrawingRange");
             graphControl.FixRangeHorizontal = false;
             graphControl.FixRangeVertical = false;
             graphControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            graphControl.GraphName = "";
-            graphControl.HorizontalGradiationTextVisivle = true;
+            graphControl.GraphTitle = "";
             graphControl.Interpolation = false;
             graphControl.IsIntegerX = false;
             graphControl.IsIntegerY = false;
             graphControl.LabelX = "X:";
             graphControl.LabelY = "Y:";
             graphControl.LeftMargin = 0F;
-            graphControl.LineColor = System.Drawing.Color.Red;
             graphControl.LineWidth = 1F;
             graphControl.Location = new System.Drawing.Point(3, 280);
             graphControl.LowerX = 0D;
@@ -244,25 +247,27 @@
             graphControl.MinimalY = 0D;
             graphControl.Mode = GraphControl.DrawingMode.Line;
             graphControl.MousePositionVisible = true;
+            graphControl.MousePositionXDigit = 4;
+            graphControl.MousePositionYDigit = 4;
             graphControl.Name = "graphControl";
             graphControl.OriginPosition = new System.Drawing.Point(20, 20);
             graphControl.Padding = new System.Windows.Forms.Padding(2, 0, 0, 2);
+            graphControl.Profile = null;
             graphControl.Size = new System.Drawing.Size(706, 176);
             graphControl.Smoothing = false;
             graphControl.TabIndex = 57;
-            graphControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            graphControl.UnitX = "";
+            graphControl.UnitX = "nm⁻¹";
             graphControl.UnitY = "";
-            graphControl.UpperText = "";
-            graphControl.UpperTextVisible = false;
+            graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControl.UpperPanelVisible = true;
             graphControl.UpperX = 1D;
             graphControl.UpperY = 1D;
             graphControl.UseLineWidth = true;
-            graphControl.VerticalGradiationTextVisivle = true;
+            graphControl.VerticalLineColor = System.Drawing.Color.Red;
+            graphControl.AxisXTextVisible = true;
             graphControl.XLog = false;
-            graphControl.XScaleLineVisible = true;
+            graphControl.AxisYTextVisible = true;
             graphControl.YLog = false;
-            graphControl.YScaleLineVisible = true;
             // 
             // flowLayoutPanel1
             // 

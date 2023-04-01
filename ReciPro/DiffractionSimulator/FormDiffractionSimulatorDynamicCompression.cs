@@ -34,7 +34,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
             try
             {
                 graphControl.Profile = new Profile();
-                graphControl.LineList = null;
+                graphControl.VerticalLines = null;
 
                 var str1 = (string)Clipboard.GetDataObject().GetData(typeof(string));
 
@@ -46,7 +46,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
                     var str3 = str2[i].Split(new[] { '\t' });
                     profile.Pt.Add(new Crystallography.PointD(Convert.ToDouble(str3[0]), Convert.ToDouble(str3[1])));
                 }
-                graphControl.LineList = new PointD[] { new PointD(trackBarAdvancedFront.Value, double.NaN), new PointD(trackBarAdvancedBack.Value, double.NaN) };
+                graphControl.VerticalLines = new PointD[] { new PointD(trackBarAdvancedFront.Value, double.NaN), new PointD(trackBarAdvancedBack.Value, double.NaN) };
 
                 graphControl.Profile = profile;
 
@@ -73,7 +73,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
         {
             skipEvent = true;
 
-            graphControl.LineList = new PointD[] { new PointD(trackBarAdvancedFront.Value, double.NaN), new PointD(trackBarAdvancedBack.Value, double.NaN) };
+            graphControl.VerticalLines = new PointD[] { new PointD(trackBarAdvancedFront.Value, double.NaN), new PointD(trackBarAdvancedBack.Value, double.NaN) };
             graphControl.Draw();
             skipEvent = false;
         }
@@ -86,8 +86,8 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
         if (skipEvent) return;
 
         skipEvent = true;
-        trackBarAdvancedFront.Value = graphControl.LineList[0].X;
-        trackBarAdvancedBack.Value = graphControl.LineList[1].X;
+        trackBarAdvancedFront.Value = graphControl.VerticalLines[0].X;
+        trackBarAdvancedBack.Value = graphControl.VerticalLines[1].X;
         skipEvent = false;
     }
 
@@ -220,7 +220,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
 
         var div2 = numericBoxDivisionOfRotationAngle.ValueInteger;//回転量を分割する数
 
-        double front = graphControl.LineList[0].X, back = graphControl.LineList[1].X;
+        double front = graphControl.VerticalLines[0].X, back = graphControl.VerticalLines[1].X;
         double omegaC = numericBoxCompressedOmega.RadianValue, sigmaOmegaC = numericBoxCompressedOmegaSigma.RadianValue;
         double omegaR = numericBoxReleasedOmega.RadianValue, sigmaOmegaR = numericBoxReleasedOmegaSigma.RadianValue;
         double thetaC_A = numericBoxCompressedThetaA.RadianValue, thetaC_B = numericBoxCompressedThetaB.RadianValue;
