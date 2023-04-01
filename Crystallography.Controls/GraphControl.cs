@@ -1007,7 +1007,7 @@ public partial class GraphControl : UserControl
                 if (min >= 0 && (max > 1000 || max < 0.001))//対数表示する場合
                     str = ((i * step) / Math.Pow(10, (int)Math.Log10(i * step))).ToString("#,#.###############") + "E" + ((int)Math.Log10(i * step)).ToString();
                 else//実数表示する場合
-                    str = Math.Round(i * step, 5).ToString("#,#.###############");
+                    str = i * step == 0 ? "0" : Math.Round(i * step, 5).ToString("#,#.###############");
                 results.Add(i * step, str);
             }
         }
