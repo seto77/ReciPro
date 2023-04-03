@@ -327,8 +327,7 @@ public class BetheMethod
                     if (diskAmplitude[r] != null)
                         amplitudes[r] = diskAmplitude[r][t * bLen];
 
-                Disks[t][0] = new CBED_Disk(new[] { Beams[0].H, Beams[0].K, Beams[0].L }, Beams[0].Vec, Thicknesses[t], amplitudes);
-                Disks[t][0].Amplitudes = amplitudes;
+                Disks[t][0] = new CBED_Disk(new[] { Beams[0].H, Beams[0].K, Beams[0].L }, Beams[0].Vec, Thicknesses[t], amplitudes) { Amplitudes = amplitudes };
             });
 
         }
