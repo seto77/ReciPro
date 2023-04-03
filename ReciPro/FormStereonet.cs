@@ -604,8 +604,8 @@ public partial class FormStereonet : Form
         //formMain.ChangeRotMatrix(this);
     }
 
-    private PointD lastMousePositionSrc = new PointD();
-    private Point lastMousePositionClient = new Point();
+    private PointD lastMousePositionSrc = new();
+    private Point lastMousePositionClient = new();
 
     private void graphicsBox_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
     {

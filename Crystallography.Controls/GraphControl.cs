@@ -12,18 +12,13 @@ namespace Crystallography.Controls;
 
 public partial class GraphControl : UserControl
 {
+
+    #region コンストラクタ、ロード
     public GraphControl()
     {
         InitializeComponent();
     }
-
-    private Bitmap Bmp;
-    private Graphics G;
-
-    /// <summary>
-    /// グラフの描き方の列挙体
-    /// </summary>
-    public enum DrawingMode { Line, Histogram, Point }
+    #endregion
 
     #region イベント
 
@@ -44,7 +39,15 @@ public partial class GraphControl : UserControl
 
     #endregion イベント
 
-    #region プロパティ
+    #region プロパティ、フィールド
+    
+    /// <summary>
+    /// グラフの描き方の列挙体
+    /// </summary>
+    public enum DrawingMode { Line, Histogram, Point }
+    
+    private Bitmap Bmp;
+    private Graphics G;
 
     #region 描画囲プロパティ
     [Category(" 描画範囲")]
@@ -990,7 +993,7 @@ public partial class GraphControl : UserControl
         if (double.IsInfinity(min) || double.IsInfinity(max)) return new SortedList<double, string>();
         var results = new SortedList<double, string>();
         double d = max - min;
-        string str = "";
+        string str;
 
         if (!log)
         {
@@ -1031,8 +1034,7 @@ public partial class GraphControl : UserControl
 
             if (d < 0.5)
             {
-                double max2 = Math.Pow(10, max);
-                double min2 = Math.Pow(10, min);
+                double max2 = Math.Pow(10, max), min2 = Math.Pow(10, min);
                 double step = 1;
                 double unit = Math.Pow(10, Math.Floor(Math.Log10((max2 - min2) / maxDiv)));
                 if ((max2 - min2) / unit < maxDiv) step = unit;

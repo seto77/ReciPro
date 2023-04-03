@@ -7,7 +7,7 @@ namespace ReciPro
 {
     public partial class FormSpotIDv1Results : Form
     {
-        public FormSpotIDv1 formTEMID = new FormSpotIDv1();
+        public FormSpotIDv1 formTEMID = new();
         public List<ZoneAxes> zoneAxes;
         public List<ZoneAxis> zoneAxis;
 

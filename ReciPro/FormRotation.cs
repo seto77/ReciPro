@@ -557,7 +557,7 @@ public partial class FormRotationMatrix : Form
         }
         else if (name.Contains("2nd"))
         {
-            if (name.Contains("X"))
+            if (name.Contains('X'))
             {
                 radioButton3rdX.Enabled = false;
                 radioButton3rdY.Enabled = true;
@@ -565,7 +565,7 @@ public partial class FormRotationMatrix : Form
                 if (radioButton3rdX.Checked)
                     radioButton3rdY.Checked = true;
             }
-            else if (name.Contains("Y"))
+            else if (name.Contains('Y'))
             {
                 radioButton3rdX.Enabled = true;
                 radioButton3rdY.Enabled = false;

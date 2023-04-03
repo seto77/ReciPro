@@ -288,7 +288,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     public bool StatusVisible { set => statusStrip1.Visible = value; get => statusStrip1.Visible; }
 
 
-    public bool TitleVisible { get=> scalablePictureBox.TitleVisible; set=> scalablePictureBox.TitleVisible=value; }
+    public bool TitleVisible { get => scalablePictureBox.TitleVisible; set => scalablePictureBox.TitleVisible = value; }
     public (string Text, Font Font, Color Color1, Color Color2) Title { get => scalablePictureBox.Title; set => scalablePictureBox.Title = value; }
 
 
@@ -666,9 +666,9 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     #endregion 座標変換関連
 
     #region 画像の保存/コピー関連 scalablePictureBoxで定義されているものを呼び出すだけ
-    public void SaveAsPNG()=> scalablePictureBox.SaveAsPNG();
+    public void SaveAsPNG() => scalablePictureBox.SaveAsPNG();
 
-    public void CopyAsBitmap()=> scalablePictureBox.CopyAsBitmap();
+    public void CopyAsBitmap() => scalablePictureBox.CopyAsBitmap();
 
     public void SaveAsMetafile() => scalablePictureBox.SaveAsMetafile();
 

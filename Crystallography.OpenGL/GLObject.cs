@@ -796,9 +796,11 @@ public class Polygon : GLObject
         else
         {
             //頂点と、頂点間の中点を、交互に追加. 偶数番目が中点になるように.
-            var newVertices = new List<V3d>(srcVertex.Length + 1);
-            newVertices.Add((srcVertex[^1] + srcVertex[0]) / 2);
-            newVertices.Add(srcVertex[0]);
+            var newVertices = new List<V3d>(srcVertex.Length + 1)
+            {
+                (srcVertex[^1] + srcVertex[0]) / 2,
+                srcVertex[0]
+            };
             for (int i = 1; i < srcVertex.Length; i++)
             {
                 newVertices.Add((srcVertex[i - 1] + srcVertex[i]) / 2);

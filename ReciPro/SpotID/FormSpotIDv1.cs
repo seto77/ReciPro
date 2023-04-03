@@ -298,8 +298,7 @@ public partial class FormSpotIDv1 : Form
             MessageBox.Show("Number of candidates are over 1000. Set more limeted conditions.");
         else if (za.Count > 0)
         {
-            if (formTEMIDResults != null)
-                formTEMIDResults.Close();
+            formTEMIDResults?.Close();
             formTEMIDResults = new FormSpotIDv1Results(this);
             formTEMIDResults.Show();
             formTEMIDResults.SetDataSet(photo, za);
@@ -367,8 +366,7 @@ public partial class FormSpotIDv1 : Form
                     FindZoneAxis.GetAngleBetweenHolders(photo2.Tilt1, photo2.Tilt2, photo3.Tilt1, photo3.Tilt2),
                     FindZoneAxis.GetAngleBetweenHolders(photo3.Tilt1, photo3.Tilt2, photo1.Tilt1, photo1.Tilt2)};
 
-            if (formTEMIDResults != null)
-                formTEMIDResults.Close();
+            formTEMIDResults?.Close();
             formTEMIDResults = new FormSpotIDv1Results(this);
             formTEMIDResults.Show();
             formTEMIDResults.SetDataSet(obsAngle, candidate);

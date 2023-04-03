@@ -581,10 +581,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxDustScratchesRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -594,6 +594,9 @@
   </data>
   <data name="numericBoxDustScratchesRadius.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -629,10 +632,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 10, 0</value>
@@ -642,6 +645,9 @@
   </data>
   <data name="numericBoxDustScratchesThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -740,10 +746,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxGaussianFWHM.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxGaussianFWHM.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxGaussianFWHM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -753,6 +759,9 @@
   </data>
   <data name="numericBoxGaussianFWHM.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxGaussianFWHM.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -910,6 +919,23 @@
   <data name="scalablePictureBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="scalablePictureBox.Title" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0
+        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EEAQAAAK4DU3lzdGVtLlZh
+        bHVlVHVwbGVgNFtbU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVy
+        ZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkRyYXdpbmcu
+        Rm9udCwgU3lzdGVtLkRyYXdpbmcsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJs
+        aWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhXSxbU3lzdGVtLkRyYXdpbmcuQ29sb3IsIFN5c3RlbS5E
+        cmF3aW5nLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAz
+        ZjVmN2YxMWQ1MGEzYV0sW1N5c3RlbS5EcmF3aW5nLkNvbG9yLCBTeXN0ZW0uRHJhd2luZywgVmVyc2lv
+        bj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2Fd
+        XQQAAAAFSXRlbTEFSXRlbTIFSXRlbTMFSXRlbTQBBAQEE1N5c3RlbS5EcmF3aW5nLkZvbnQCAAAAFFN5
+        c3RlbS5EcmF3aW5nLkNvbG9yAgAAABRTeXN0ZW0uRHJhd2luZy5Db2xvcgIAAAAKCgX9////FFN5c3Rl
+        bS5EcmF3aW5nLkNvbG9yBAAAAARuYW1lBXZhbHVlCmtub3duQ29sb3IFc3RhdGUBAAAACQcHAgAAAAoA
+        AAAAAAAAAAAAAAAB/P////3///8KAAAAAAAAAAAAAAAACw==
+</value>
+  </data>
   <data name="&gt;&gt;scalablePictureBox.Name" xml:space="preserve">
     <value>scalablePictureBox</value>
   </data>
@@ -924,6 +950,10 @@
   </data>
   <data name="graphControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
+  </data>
+  <assembly alias="Crystallography" name="Crystallography, Culture=neutral, PublicKeyToken=null" />
+  <data name="graphControl.DrawingRange" type="Crystallography.RectangleD, Crystallography">
+    <value>0, 0, 1, 1</value>
   </data>
   <data name="graphControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>

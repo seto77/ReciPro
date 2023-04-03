@@ -7220,8 +7220,8 @@ new ES(4.86738014,0.319974401,4.58872425,
     public static double MassAbsorption(double energy, int z)
     {
         if (z < 1 || z > AtomStaticSub.MassAbsorptionCoefficient.Length || energy <= 0) return double.NaN;
-        if (massAbsorption[z] != null && massAbsorption[z].ContainsKey(energy))
-            return massAbsorption[z][energy];
+        if (massAbsorption[z] != null && massAbsorption[z].TryGetValue(energy, out double val))
+            return val;
 
         //どのセグメントに属するかを決める
         int segNo = 0;

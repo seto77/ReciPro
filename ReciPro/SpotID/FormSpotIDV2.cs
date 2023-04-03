@@ -992,7 +992,7 @@ public partial class FormSpotIDV2 : Form
                         else
                             for (int k = 0; k < cand.Count; k++)
                             {
-                                List<Grain> temp = new List<Grain>();
+                                var temp = new List<Grain>();
                                 for (int l = 0; l < candidates[i].Count; l++)
                                     temp.Add(candidates[i][l]);
                                 temp.Add(cand[k]);
@@ -1030,8 +1030,7 @@ public partial class FormSpotIDV2 : Form
             gVectors[i].AddRange(vectorOfG.Where(g => g.d > d * (1 - ToleranceLength) && g.d < d * (1 + ToleranceLength)).ToArray());
         }
 
-        if (exceptedIndices == null)
-            exceptedIndices = Array.Empty<int>();
+        exceptedIndices ??= Array.Empty<int>();
         var obsSpotsReciprocal2 = new List<Vector3DBase>();
         var gVectors2 = new List<List<Vector3D>>();
         for (int i = 0; i < obsSpotsReciprocal.Length; i++)
