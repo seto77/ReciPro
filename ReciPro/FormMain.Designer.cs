@@ -166,6 +166,9 @@
             japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
             timer = new System.Windows.Forms.Timer(components);
+            macroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            editorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -1027,7 +1030,7 @@
             // 
             resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, helpToolStripMenuItem, languageToolStripMenuItem });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, macroToolStripMenuItem, helpToolStripMenuItem, languageToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -1234,6 +1237,22 @@
             // 
             timer.Interval = 2;
             timer.Tick += timer_Tick;
+            // 
+            // macroToolStripMenuItem
+            // 
+            macroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { editorToolStripMenuItem, toolStripSeparator22 });
+            macroToolStripMenuItem.Name = "macroToolStripMenuItem";
+            resources.ApplyResources(macroToolStripMenuItem, "macroToolStripMenuItem");
+            // 
+            // editorToolStripMenuItem
+            // 
+            editorToolStripMenuItem.Name = "editorToolStripMenuItem";
+            resources.ApplyResources(editorToolStripMenuItem, "editorToolStripMenuItem");
+            // 
+            // toolStripSeparator22
+            // 
+            toolStripSeparator22.Name = "toolStripSeparator22";
+            resources.ApplyResources(toolStripSeparator22, "toolStripSeparator22");
             // 
             // FormMain
             // 
@@ -1442,6 +1461,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ToolStripMenuItem macroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
     }
 }
 

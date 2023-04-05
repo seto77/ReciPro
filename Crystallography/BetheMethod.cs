@@ -1160,15 +1160,9 @@ public class BetheMethod
             #endregion
 
             #region 各種変数の設定
-
-
             var tc_k = GC.AllocateUninitializedArray<Complex>(tc.Length * bLen);
-
             var validTc = list.Where(e1 => e1 != null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
-
             var total = _thick.Sum(e => e.Length) * tcP.Count();
-
-
             count = 0;
             #endregion
 
@@ -1334,9 +1328,8 @@ public class BetheMethod
         int width = imageSize.Width, height = imageSize.Height;
         var image_ela = Thicknesses.Select(e => defocusses.Select(e2 => GC.AllocateUninitializedArray<double>(width * height)).ToArray()).ToArray();
         var image_tds = Thicknesses.Select(e => defocusses.Select(e2 => GC.AllocateUninitializedArray<double>(width * height)).ToArray()).ToArray();
-        var image_both = Thicknesses.Select(e => defocusses.Select(e2 => GC.AllocateUninitializedArray<double>(width * height)).ToArray()).ToArray();
 
-        double cX = width / 2.0, cY = height / 2.0;
+        double cX = width / 2.0, cY = height / 2.0, radiusPix2 =  radiusPix * radiusPix;
         var shift = (Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2).ToPointD;
         Parallel.For(0, height, y =>
         {
@@ -1349,13 +1342,12 @@ public class BetheMethod
                         Complex elas = new(), tds = new();
                         for (int qIndex = 0; qIndex < qList.Count; qIndex++)
                         {
-                            var tmp = Exp(qList[qIndex].Vec.ToPointD * rVec * TwoPiI) / radiusPix / radiusPix;
+                            var tmp = Exp(qList[qIndex].Vec.ToPointD * rVec * TwoPiI) ;
                             elas += I_Elas[qIndex, t, d] * tmp;
                             tds += I_Inel[qIndex, t, d] * tmp;
                         }
-                        image_ela[t][d][x + y * width] = elas.Magnitude;
-                        image_tds[t][d][x + y * width] = tds.Magnitude;
-                        image_both[t][d][x + y * width] = elas.Magnitude + tds.Magnitude;
+                        image_ela[t][d][x + y * width] = elas.Magnitude / radiusPix2;
+                        image_tds[t][d][x + y * width] = tds.Magnitude / radiusPix2;
                     }
             }
         });
@@ -1367,10 +1359,16 @@ public class BetheMethod
                 {
                     ImageProcess.GaussianBlurFast(ref image_ela[t][d], width, sourceSize / resolution);
                     ImageProcess.GaussianBlurFast(ref image_tds[t][d], width, sourceSize / resolution);
-                    ImageProcess.GaussianBlurFast(ref image_both[t][d], width, sourceSize / resolution);
                 }
 
-        ResultSTEM = (new Size(width, height), resolution, thicknesses.ToArray(), defocusses.ToArray(), BaseRotation, image_both, image_ela, image_tds);
+        var image_both = Thicknesses.Select(e => defocusses.Select(e2 => GC.AllocateUninitializedArray<double>(width * height)).ToArray()).ToArray();
+        for (int t = 0; t < Thicknesses.Length; t++)
+            for (int d = 0; d < dLen; d++)
+                for (int i = 0; i < width * height; i++)
+                    image_both[t][d][i] = image_ela[t][d][i] + image_tds[t][d][i];
+
+
+                ResultSTEM = (new Size(width, height), resolution, thicknesses.ToArray(), defocusses.ToArray(), BaseRotation, image_both, image_ela, image_tds);
 
         #endregion
 

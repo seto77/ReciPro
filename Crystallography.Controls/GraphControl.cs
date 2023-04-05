@@ -262,8 +262,7 @@ public partial class GraphControl : UserControl
     {
         set
         {
-            srcProfileList = new List<Profile>();
-            srcProfileList.Add(value);
+            srcProfileList = new List<Profile> { value };
             InitializeAxis();
             resetDrawRange();
             Draw();
@@ -454,7 +453,7 @@ public partial class GraphControl : UserControl
     [Category(" グラフ位置")]
     [Description("原点の位置(左下からのピクセル単位)")]
     public Point OriginPosition { set { originPosition = value; Draw(); } get => originPosition; }
-    private Point originPosition = new Point(40, 20);
+    private Point originPosition = new(40, 20);
 
     /// <summary>
     /// 下側の余白(ピクセル単位)

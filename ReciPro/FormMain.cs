@@ -128,6 +128,7 @@ public partial class FormMain : Form
     public FormImageSimulator FormImageSimulator;
     public FormCrystalDatabase FormCrystalDatabase;
     public FormMovie FormMovie;
+    
     private Crystallography.Controls.CommonDialog commonDialog;
     private GLControlAlpha glControlAxes;
 
@@ -219,7 +220,7 @@ public partial class FormMain : Form
 
         };
 
-        
+
 
         commonDialog.Show();
         if (commonDialog != null)
