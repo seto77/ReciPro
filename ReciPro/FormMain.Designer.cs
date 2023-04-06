@@ -150,6 +150,9 @@
             disableOpneGLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             powderDiffractionFunctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            macroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            editorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
@@ -166,9 +169,6 @@
             japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
             timer = new System.Windows.Forms.Timer(components);
-            macroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            editorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.RightToolStripPanel.SuspendLayout();
@@ -1030,7 +1030,7 @@
             // 
             resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, macroToolStripMenuItem, helpToolStripMenuItem, languageToolStripMenuItem });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, helpToolStripMenuItem, languageToolStripMenuItem, macroToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -1151,6 +1151,24 @@
             resources.ApplyResources(powderDiffractionFunctionToolStripMenuItem, "powderDiffractionFunctionToolStripMenuItem");
             powderDiffractionFunctionToolStripMenuItem.CheckedChanged += powderDiffractionFunctionsToolStripMenuItem_CheckedChanged;
             // 
+            // macroToolStripMenuItem
+            // 
+            macroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { editorToolStripMenuItem, toolStripSeparator22 });
+            resources.ApplyResources(macroToolStripMenuItem, "macroToolStripMenuItem");
+            macroToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDark;
+            macroToolStripMenuItem.Name = "macroToolStripMenuItem";
+            // 
+            // editorToolStripMenuItem
+            // 
+            editorToolStripMenuItem.Name = "editorToolStripMenuItem";
+            resources.ApplyResources(editorToolStripMenuItem, "editorToolStripMenuItem");
+            editorToolStripMenuItem.Click += editorToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator22
+            // 
+            toolStripSeparator22.Name = "toolStripSeparator22";
+            resources.ApplyResources(toolStripSeparator22, "toolStripSeparator22");
+            // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { checkUpdatesToolStripMenuItem, toolStripSeparator16, hintToolStripMenuItem, versionHistoryToolStripMenuItem, licenseToolStripMenuItem, toolStripSeparator18, githubPageToolStripMenuItem, reportBugsRequestsOrCommentsToolStripMenuItem1, toolStripSeparator17, helpwebToolStripMenuItem });
@@ -1237,22 +1255,6 @@
             // 
             timer.Interval = 2;
             timer.Tick += timer_Tick;
-            // 
-            // macroToolStripMenuItem
-            // 
-            macroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { editorToolStripMenuItem, toolStripSeparator22 });
-            macroToolStripMenuItem.Name = "macroToolStripMenuItem";
-            resources.ApplyResources(macroToolStripMenuItem, "macroToolStripMenuItem");
-            // 
-            // editorToolStripMenuItem
-            // 
-            editorToolStripMenuItem.Name = "editorToolStripMenuItem";
-            resources.ApplyResources(editorToolStripMenuItem, "editorToolStripMenuItem");
-            // 
-            // toolStripSeparator22
-            // 
-            toolStripSeparator22.Name = "toolStripSeparator22";
-            resources.ApplyResources(toolStripSeparator22, "toolStripSeparator22");
             // 
             // FormMain
             // 

@@ -18,7 +18,7 @@ public partial class FormRotationMatrix : Form
     /// </summary>
     public Matrix3D RotBase { get; set; } = new Matrix3D();
 
-    public Matrix3D RotReciPro => Euler.SetEulerAngle(FormMain.Phi, FormMain.Theta, FormMain.Psi);
+    public Matrix3D RotReciPro => Euler.ToMatrix(FormMain.Phi, FormMain.Theta, FormMain.Psi);
 
     public Matrix3D RotExp
     {
@@ -250,7 +250,7 @@ public partial class FormRotationMatrix : Form
         skip = true;
 
         var rotMatrix = new Matrix3D(numericBox11.Value, numericBox21.Value, numericBox31.Value, numericBox12.Value, numericBox22.Value, numericBox32.Value, numericBox13.Value, numericBox23.Value, numericBox33.Value);
-        var (Phi, Theta, Psi) = Euler.GetEulerAngle(rotMatrix);
+        var (Phi, Theta, Psi) = Euler.FromMatrix(rotMatrix);
         numericBoxPhi.RadianValue = Phi;
         numericBoxTheta.RadianValue = Theta;
         numericBoxPsi.RadianValue = Psi;
@@ -645,7 +645,7 @@ public partial class FormRotationMatrix : Form
         if (checkBoxLink.Checked)
         {
             skip = true;
-            var (Phi, Theta, Psi) = Euler.GetEulerAngle(RotExp * RotBase);
+            var (Phi, Theta, Psi) = Euler.FromMatrix(RotExp * RotBase);
             FormMain.SkipEulerChange = true;
             FormMain.Phi = Phi;
             FormMain.Theta = Theta;

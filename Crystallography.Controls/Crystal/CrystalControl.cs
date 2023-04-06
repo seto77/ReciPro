@@ -866,7 +866,7 @@ public partial class CrystalControl : UserControl
                     seed++;
                 }
 
-                var (Phi, Theta, Psi) = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[seed]);
+                var (Phi, Theta, Psi) = Euler.FromMatrix(Crystal.Crystallites.Rotations[seed]);
                 var euler = new double[] { Phi, Theta, Psi };
                 string str = "";
                 foreach (double angle in euler)
@@ -927,7 +927,7 @@ public partial class CrystalControl : UserControl
             for (int i = 0; i < Crystal.Crystallites.TotalCrystalline; i++)
             {
                 string str = i.ToString() + "\t";
-                var (Phi, Theta, Psi) = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[index[i]]);
+                var (Phi, Theta, Psi) = Euler.FromMatrix(Crystal.Crystallites.Rotations[index[i]]);
                 var euler = new double[] { Phi, Theta, Psi };
 
                 foreach (double angle in euler)

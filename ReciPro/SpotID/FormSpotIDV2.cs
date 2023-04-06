@@ -1150,10 +1150,10 @@ public partial class FormSpotIDV2 : Form
                 }).Sum();
             });
 
-            var (Phi, Theta, Psi) = Euler.GetEulerAngle(initialRotation);
+            var (Phi, Theta, Psi) = Euler.FromMatrix(initialRotation);
             var (P0, P1, P2) = FindMinimum.OfFunction(func, Phi, Theta, Psi);
 
-            return (Euler.SetEulerAngle(P0, P1, P2), func(P0, P1, P2) / v1.Length);
+            return (Euler.ToMatrix(P0, P1, P2), func(P0, P1, P2) / v1.Length);
         }
     }
 

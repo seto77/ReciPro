@@ -16,7 +16,6 @@ using V4 = OpenTK.Vector4d;
 #endregion
 
 namespace ReciPro;
-
 public partial class FormStructureViewer : Form
 {
     #region フィールド、プロパティ、
@@ -1750,11 +1749,9 @@ public partial class FormStructureViewer : Form
     #endregion その他イベント
 
     #region 動画保存
-
     private void SaveMovieMainImageToolStripMenuItem_Click(object sender, EventArgs e)
     {
         formMain.FormMovie.Execute((sender as ToolStripMenuItem).Name.Contains("MainImage") ? glControlMain : glControlAxes, this);
-
     }
     #endregion
 

@@ -19,6 +19,7 @@ using System.Windows.Forms;
 using Col4 = OpenTK.Graphics.Color4;
 using Vec3 = OpenTK.Vector3d;
 using IronPython.Compiler.Ast;
+using IronPython.Hosting;
 
 #endregion
 
@@ -128,7 +129,9 @@ public partial class FormMain : Form
     public FormImageSimulator FormImageSimulator;
     public FormCrystalDatabase FormCrystalDatabase;
     public FormMovie FormMovie;
-    
+    private Macro macro;
+    public FormMacro FormMacro;
+
     private Crystallography.Controls.CommonDialog commonDialog;
     private GLControlAlpha glControlAxes;
 
@@ -286,6 +289,11 @@ public partial class FormMain : Form
             groupBoxCurrentDirection.AutoSize = true;
         }
         #endregion
+
+
+        commonDialog.Progress = ("Now Loading...Initializing 'Macro' form.", 0.12);
+        macro = new Macro(this);
+        FormMacro = new FormMacro(Python.CreateEngine(), macro) { Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.", 0.15);
         FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };
@@ -474,6 +482,10 @@ public partial class FormMain : Form
         Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.FormPresets, "Settings");
         #endregion
 
+        if (mode == Reg.Mode.Read)
+            FormMacro.ZippedMacros = (byte[])key.GetValue("Macro", Array.Empty<byte>());
+        else
+            key.SetValue("Macro", FormMacro.ZippedMacros);
 
     }
     #endregion レジストリ操作
@@ -617,7 +629,7 @@ public partial class FormMain : Form
 
         if (!SkipEulerChange)//Euler Angle が直接入力されてない時
         {
-            var euler = Euler.GetEulerAngle(Crystal.RotationMatrix);
+            var euler = Euler.FromMatrix(Crystal.RotationMatrix);
             SkipEulerChange = true;
             numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
             numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
@@ -629,6 +641,12 @@ public partial class FormMain : Form
 
             SetNearestUVW();
         }
+    }
+
+
+    public void SetRotation(double phi, double theta, double psi)
+    {
+        SetRotation(Matrix3D.Rot(phi, theta, psi));
     }
 
     #endregion
@@ -773,6 +791,11 @@ public partial class FormMain : Form
 
     public bool SkipEulerChange = false;
 
+    /// <summary>
+    /// オイラー角の入力ボックスからの変更イベント
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void numericUpDownEulerAngle_ValueChanged(object sender, EventArgs e)
     {
         if (SkipEulerChange) return;
@@ -796,29 +819,14 @@ public partial class FormMain : Form
         var theta = (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI;
         var psi = (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI;
 
-        double cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
-        double cosTheta = Math.Cos(theta), sinTheta = Math.Sin(theta);
-        double cosPsi = Math.Cos(psi), sinPsi = Math.Sin(psi);
-
-        var matrix = new Matrix3D(
-            cosPhi * cosPsi - cosTheta * sinPhi * sinPsi,
-            sinPhi * cosPsi + cosTheta * cosPhi * sinPsi,
-            sinPsi * sinTheta,
-
-            -cosPhi * sinPsi - cosTheta * sinPhi * cosPsi,
-            -sinPhi * sinPsi + cosTheta * cosPhi * cosPsi,
-            cosPsi * sinTheta,
-
-            sinTheta * sinPhi,
-            -sinTheta * cosPhi,
-            cosTheta
-
-            );
-        SetRotation(matrix);
+        SetRotation(Matrix3D.Rot(phi, theta, psi));
 
         SkipEulerChange = false;
         SetNearestUVW();
     }
+
+
+
 
     #endregion オイラー角度を直接入力したばあい
 
@@ -933,7 +941,7 @@ public partial class FormMain : Form
     {
         if (crystalControl.Crystal != null)
         {
-            var euler = Euler.GetEulerAngle(Crystal.RotationMatrix);
+            var euler = Euler.FromMatrix(Crystal.RotationMatrix);
             SkipEulerChange = true;
             numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
             numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
@@ -1214,6 +1222,27 @@ public partial class FormMain : Form
         if (e.KeyValue == 17)
             sw.Start();
     }
+    #endregion
+
+    #region マクロメニュー関連
+    private void editorToolStripMenuItem_Click(object sender, EventArgs e) => FormMacro.Visible = true;
+
+    public void SetMacroToMenu(string[] name)
+    {
+        if (macroToolStripMenuItem.DropDownItems.Count == 1)
+            macroToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
+        for (int i = macroToolStripMenuItem.DropDownItems.Count - 1; i > 1; i--)
+            macroToolStripMenuItem.DropDownItems.RemoveAt(i);
+
+        for (int i = 0; i < name.Length; i++)
+        {
+            var item = new ToolStripMenuItem(name[i]) { Name = name[i] };
+            item.Click += macroMenuItem_Click;
+            macroToolStripMenuItem.DropDownItems.Add(item);
+        }
+    }
+    void macroMenuItem_Click(object sender, EventArgs e) => FormMacro.RunMacroName(((ToolStripMenuItem)sender).Name, false);
+
     #endregion
 
     #region ドラッグドロップ

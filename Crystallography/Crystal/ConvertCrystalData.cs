@@ -1314,11 +1314,26 @@ public class ConvertCrystalData
             if (symmetrySeriesNumber != -1)
                 return symmetrySeriesNumber;
         }
+        
+        SgNameHM = SgNameHM.TrimStart(' ').TrimEnd(' ');
+
+
+        if (!SgNameHM.Contains(' ') && SgNameHM.Contains('_'))
+            for (int i = 1; i < SgNameHM.Length - 1; i++)
+                if (SgNameHM[i] == '_' && '0' < SgNameHM[i - 1] && '9' > SgNameHM[i - 1] && '0' < SgNameHM[i + 1] && '9' > SgNameHM[i + 1])
+                {
+                    SgNameHM = SgNameHM.Remove(i, 1);
+                    SgNameHM = SgNameHM.Insert(i, "sub");
+                    i += 3;
+                }
+
         SgNameHM = SgNameHM.Replace("_", " ");
+
         SgNameHM = SgNameHM.Replace("{hexagonalal axes}", " ");
         SgNameHM = SgNameHM.Replace("{rhombohedral axes}", " ");
 
         SgNameHM = SgNameHM.TrimStart(' ').TrimEnd(' ');
+
         if (SgNameHM.EndsWith("RS", Ord) || SgNameHM.EndsWith("HR", Ord))
             SgNameHM = SgNameHM.Remove(SgNameHM.Length - 2, 2).TrimEnd(' ');
 

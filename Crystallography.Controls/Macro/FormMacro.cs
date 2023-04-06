@@ -232,8 +232,10 @@ namespace Crystallography.Controls
                 dataGridViewDebug.Rows.Clear();
 
                 if (stepByStepMode)
+                {
                     splitContainer2.SplitterDistance = splitContainer2.Width - 220;
-                IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
+                    IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
+                }
 
                 void thread()
                 {

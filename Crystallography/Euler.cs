@@ -307,8 +307,12 @@ public class Euler
                             );
     }
 
-    //Euler角を返すメソッド
-    public static (double Phi, double Theta, double Psi) GetEulerAngle(Matrix3D EulerMatrix)
+    /// <summary>
+    /// 回転行列をEuler角(Z-X-Zセッティング)に変換
+    /// </summary>
+    /// <param name="EulerMatrix"></param>
+    /// <returns></returns>
+    public static (double Phi, double Theta, double Psi) FromMatrix(Matrix3D EulerMatrix)
     {
         if (EulerMatrix.E11 > 1) EulerMatrix.E11 = 1; if (EulerMatrix.E11 < -1) EulerMatrix.E11 = -1;
         if (EulerMatrix.E23 > 1) EulerMatrix.E23 = 1; if (EulerMatrix.E23 < -1) EulerMatrix.E23 = -1;
@@ -344,7 +348,14 @@ public class Euler
         return (phi, theta, psi);
     }
 
-    public static Matrix3D SetEulerAngle(double phi, double theta, double psi)
+    /// <summary>
+    /// Euler角(Z-X-Zセッティング)を回転行列に変換
+    /// </summary>
+    /// <param name="phi"></param>
+    /// <param name="theta"></param>
+    /// <param name="psi"></param>
+    /// <returns></returns>
+    public static Matrix3D ToMatrix(double phi, double theta, double psi)
     {
         double cosPhi = Math.Cos(phi),sinPhi = Math.Sin(phi);
         double cosTheta = Math.Cos(theta),sinTheta = Math.Sin(theta);
@@ -365,71 +376,12 @@ public class Euler
             );
     }
 
-
-
-    //public enum Setting { XYX, XYZ, XZX, XZY, YXY, YXZ, YZX, YZY, ZXY, ZXZ, ZYX, ZYZ}
-
-    /// <summary>
-    /// 任意のセッティングのオイラー角に分解する.  => MathNet.FindMinimumの方が簡単なので、お蔵入り
-    /// </summary>
-    /// <param name="rot"></param>
-    /// <param name="setting"></param>
-    /// <returns></returns>
-    //public static double[] DecomposeMatrix(Matrix3D rot, Vector3DBase v1, Vector3DBase v2, Vector3DBase v3)
-    //{
-    //    Matrix3D funcRot(double[] angle) => Matrix3D.Rot(v1, angle[0]) * Matrix3D.Rot(v2, angle[1]) * Matrix3D.Rot(v3, angle[2]);
-
-
-    //    var func = new Marquardt.Function(
-    //        new Func<double[], double[], double>((x, prm) =>
-    //        {
-    //            var res = funcRot(prm);
-    //            if (x[0] == 0.0) return res.E11;
-    //            else if (x[0] == 1.0) return res.E12;
-    //            else if (x[0] == 2.0) return res.E13;
-    //            else if (x[0] == 3.0) return res.E21;
-    //            else if (x[0] == 4.0) return res.E22;
-    //            else if (x[0] == 5.0) return res.E23;
-    //            else if (x[0] == 6.0) return res.E31;
-    //            else if (x[0] == 7.0) return res.E32;
-    //            else if (x[0] == 8.0) return res.E33;
-    //            else return 0;
-    //        }),
-    //        new[] { 0.1, 0.2, 0.3 });
-
-
-    //    var obsValues = new[] {
-    //        (new[] { 0.0 }, rot.E11, 1.0),
-    //        (new[] { 1.0 }, rot.E12, 1.0),
-    //        (new[] { 2.0 }, rot.E13, 1.0),
-    //        (new[] { 3.0 }, rot.E21, 1.0),
-    //        (new[] { 4.0 }, rot.E22, 1.0),
-    //        (new[] { 5.0 }, rot.E23, 1.0),
-    //        (new[] { 6.0 }, rot.E31, 1.0),
-    //        (new[] { 7.0 }, rot.E32, 1.0),
-    //        (new[] { 8.0 }, rot.E33, 1.0)
-
-    //    };
-
-    //    var (Prms, Error, R) = Marquardt.Solve(obsValues, new[] { func },Marquardt.Precision.High);
-
-    //    return Prms[0];
-    //}
-
-    /* public static double[] DecomposeMatrix(Matrix3D rot, Vector3d v1, Vector3d v2, Vector3d v3)
-     {
-         //return DecomposeMatrix(rot, new Vector3DBase(v1.X, v1.Y, v1.Z), new Vector3DBase(v2.X, v2.Y, v2.Z), new Vector3DBase(v3.X, v3.Y, v3.Z));
-         return DecomposeMatrix2(rot, new Vector3DBase[] { new Vector3DBase(v1.X, v1.Y, v1.Z), new Vector3DBase(v2.X, v2.Y, v2.Z), new Vector3DBase(v3.X, v3.Y, v3.Z) });
-     }
-    */
-
     /// <summary>
     /// rotに最も近い、任意のセッティングのオイラー角に分解する.
     /// </summary>
-    /// <param name="rot"></param>
-    /// <param name="setting">settings配列の長さは最大で3.
-    /// V: 回転軸、Angle: 初期(あるいは固定)角度、Variable: Trueで変数、Falseで固定</param>
-    /// <returns>戻り値は、</returns>
+    /// <param name="targetRotation"></param>
+    /// <param name="settings">settings配列の長さは最大で3. V: 回転軸、Angle: 初期(あるいは固定)角度、Variable: Trueで変数、Falseで固定</param>
+    /// <returns></returns>
     public static double[] DecomposeMatrix2(Matrix3D targetRotation, params (Vector3d Vec, double Angle, bool Variable)[] settings)
     {
         if (!settings.Any(s => s.Variable))
