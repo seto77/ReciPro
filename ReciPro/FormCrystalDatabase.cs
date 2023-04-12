@@ -30,4 +30,10 @@ public partial class FormCrystalDatabase : Form
 
     private void CrystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
         => FormMain.crystalControl.Crystal = crystalDatabaseControl.Crystal;
+
+    private void searchCrystalControl_VisibleChanged(object sender, EventArgs e)
+    {
+        if(Visible)
+            FormMain.toolStripButtonDatabase.Checked = true;
+    }
 }

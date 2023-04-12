@@ -21,23 +21,101 @@ public partial class FormDiffractionSimulator : Form
 {
     #region フィールド、プロパティ
 
-    public enum DrawingMode { None, Kinematical, BetheSAED, BetheCBED }
-
     public FormMain formMain;
+    public FormDiffractionSimulatorCBED FormDiffractionSimulatorCBED;
+    public FormDiffractionSimulatorGeometry FormDiffractionSimulatorGeometry;
+    public FormDiffractionSimulatorDynamicCompression FormDiffractionSimulatorDynamicCompression;
+    public FormDiffractionSpotInfo FormDiffractionBeamTable;
 
+    #region 計算モード
+    public enum CalcModes { Excitation, Kinematical, Dynamical }
+    /// <summary>
+    /// 計算モードを取得/設定
+    /// </summary>
+    public CalcModes CalcMode
+    {
+        get
+        {
+            if (radioButtonIntensityExcitation.Checked) return CalcModes.Excitation;
+            else if (radioButtonIntensityKinematical.Checked) return CalcModes.Kinematical;
+            else return CalcModes.Dynamical;
+        }
+        set
+        {
+            if (value == CalcModes.Excitation)
+                radioButtonIntensityExcitation.Checked = true;
+            else if (value == CalcModes.Kinematical)
+                radioButtonIntensityKinematical.Checked = true;
+            else
+            {
+                Source = WaveSource.Electron;
+                radioButtonIntensityDynamical.Checked = true;
+            }
+        }
+    }
+    #endregion
 
+    #region 光学モード
+    public enum BeamModes { Parallel, PrecessionElectron, PrecessionXray, Convergence }
+    /// <summary>
+    /// 光学系を取得/設定
+    /// </summary>
+    public BeamModes BeamMode
+    {
+        get
+        {
+            if (radioButtonBeamParallel.Checked) return BeamModes.Parallel;
+            else if (radioButtonBeamPrecessionElectron.Checked) return BeamModes.PrecessionElectron;
+            else if (radioButtonBeamPrecessionXray.Checked) return BeamModes.PrecessionElectron;
+            else return BeamModes.Convergence;
+        }
+        set
+        {
+            if(value== BeamModes.Parallel)
+                radioButtonBeamParallel.Checked = true;
+            else if(value == BeamModes.PrecessionXray)
+            {
+                Source = WaveSource.Xray;
+                radioButtonBeamPrecessionXray.Checked = true;
+            }
+            else if(value == BeamModes.PrecessionElectron)
+            {
+                Source= WaveSource.Electron;
+                radioButtonBeamPrecessionElectron.Checked = true;
+            }
+            else
+            {
+                Source = WaveSource.Electron;
+                radioButtonBeamConvergence.Checked = true;
+            }
+        }
+    }
+    #endregion
 
     public double EwaldRadius => 1 / WaveLength;
-    public double WaveLength => waveLengthControl.WaveLength;
-    public double Energy => waveLengthControl.Energy;
+    public double WaveLength { get => waveLengthControl.WaveLength; set => waveLengthControl.WaveLength = value; }
+    public double Energy { get => waveLengthControl.Energy; set=> waveLengthControl.Energy = value; }
+
+    public WaveSource Source { get => waveLengthControl.WaveSource;set => waveLengthControl.WaveSource = value; }   
+
     public double ExcitationError => numericBoxSpotRadius.Value;
-    public int ClientWidth => numericBoxClientWidth.ValueInteger;
-    public int ClientHeight => numericBoxClientHeight.ValueInteger;
 
     public double Thickness { get => numericBoxThickness.Value; set => numericBoxThickness.Value = value; }
+    public int NumberOfDiffractedWaves { get => numericBoxNumOfBlochWave.ValueInteger; set => numericBoxNumOfBlochWave.Value = value; }
 
     private Font font => new("Tahoma", (float)(trackBarStrSize.Value * Resolution / 10.0));
+    
 
+    public bool DynamicCompressionMode { get; set; } = false;
+    public List<double[]> DynamicCompression_SpotInformation = new();
+
+    /*public double CameraLength1
+    {
+        set { FormDiffractionSimulatorGeometry.CameraLength1 = value; }
+        get { return FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.CameraLength1; }
+    }*/
+
+    #region 検出器、表示画面のプロパティ
     /// <summary>
     /// 画面解像度 mm/pix
     /// </summary>
@@ -55,34 +133,8 @@ public partial class FormDiffractionSimulator : Form
         }
         get => numericBoxResolution.Value;
     }
-
-
-    public DrawingMode Mode
-    {
-        get
-        {
-            if (radioButtonIntensityExcitation.Checked) return DrawingMode.None;
-            else if (radioButtonIntensityKinematical.Checked) return DrawingMode.Kinematical;
-            else if (radioButtonIntensityDynamical.Checked) return DrawingMode.BetheSAED;
-            else return DrawingMode.BetheCBED;
-        }
-    }
-
-    public FormDiffractionSimulatorCBED FormDiffractionSimulatorCBED;
-
-    public FormDiffractionSimulatorGeometry FormDiffractionSimulatorGeometry;
-    public FormDiffractionSimulatorDynamicCompression FormDiffractionSimulatorDynamicCompression;
-
-    public FormDiffractionSpotInfo FormDiffractionBeamTable;
-
-    public bool DynamicCompressionMode { get; set; } = false;
-    public List<double[]> DynamicCompression_SpotInformation = new();
-
-    /*public double CameraLength1
-    {
-        set { FormDiffractionSimulatorGeometry.CameraLength1 = value; }
-        get { return FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.CameraLength1; }
-    }*/
+    public int ClientWidth { get => numericBoxClientWidth.ValueInteger; set => numericBoxClientWidth.Value = value; }
+    public int ClientHeight {get=> numericBoxClientHeight.ValueInteger; set => numericBoxClientHeight.Value=value; }
 
     public double CameraLength2
     {
@@ -93,7 +145,6 @@ public partial class FormDiffractionSimulator : Form
     public double Tau { set => FormDiffractionSimulatorGeometry.Tau = value; get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.Tau; }
 
     public double Phi { set => FormDiffractionSimulatorGeometry.Phi = value; get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.Phi; }
-
 
     public double CosTau => FormDiffractionSimulatorGeometry.CosTau;
     public double CosTauSquare => FormDiffractionSimulatorGeometry.CosTauSquare;
@@ -120,6 +171,8 @@ public partial class FormDiffractionSimulator : Form
     /// </summary>
     public PointD Foot { get; set; } = new PointD(0, 0);
 
+    #endregion
+
     /// <summary>
     /// コントロールイベントをスキップする
     /// </summary>
@@ -128,9 +181,14 @@ public partial class FormDiffractionSimulator : Form
 
     private bool skipDrawing = false;
     /// <summary>
-    /// 描画をスキップする (コントロールイベントをスキップする場合は、SkipEventを使う)
+    /// 描画をスキップする (Draw関数に入ったらすぐに判定) (コントロールイベントをスキップする場合は、SkipEventを使う)
     /// </summary>
     public bool SkipDrawing { set { skipDrawing = value; if (!value) Draw(); } get => skipDrawing; }
+
+    /// <summary>
+    /// スポット位置などは計算するが、最終的なレンダリングを行うかどうか。
+    /// </summary>
+    public bool SkipRendering { get; set; } = false;
 
     private Size lastPanelSize { get; set; } = new Size(0, 0);
 
@@ -190,6 +248,7 @@ public partial class FormDiffractionSimulator : Form
         WaveLengthControl_WaveSourceChanged(sender, e);
     }
 
+    //クローズ
     private void FormElectronDiffraction_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = true;
@@ -206,7 +265,7 @@ public partial class FormDiffractionSimulator : Form
     //Visibleが変更されたとき
     private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
     {
-        if (this.Visible)
+        if (Visible)
         {
             Foot = new PointD(0, 0);
             SetVector();
@@ -217,6 +276,8 @@ public partial class FormDiffractionSimulator : Form
                 FormDiffractionSimulatorCBED.Visible = true;
 
             tabControl.BringToFront();
+
+            formMain.toolStripButtonDiffractionSingle.Checked = true;
         }
         else
         {
@@ -499,7 +560,7 @@ public partial class FormDiffractionSimulator : Form
         var linearCoeff = Math.Pow(trackBarIntensityForPointSpread.Value / 400.0, 6) * 100;
         var logCoeff = 16.0 * trackBarIntensityForPointSpread.Value / trackBarIntensityForPointSpread.Maximum;
 
-        if (waveLengthControl.WaveSource == WaveSource.Xray)
+        if (Source == WaveSource.Xray)
         {
             linearCoeff *= 1000;
             logCoeff *= 1000000;
@@ -521,7 +582,7 @@ public partial class FormDiffractionSimulator : Form
                 {
                     var eigenValues = crystal.Bethe.EigenValuesPED;
 
-                    var gPED = crystal.Bethe.GetPrecessionElectronDiffraction(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, numericBoxThickness.Value,
+                    var gPED = crystal.Bethe.GetPrecessionElectronDiffraction(blochNum, Energy, crystal.RotationMatrix, numericBoxThickness.Value,
                         numericBoxPED_Semiangle.Value / 1000, numericBoxPED_Step.ValueInteger);
                     gVector = gPED.Select(g => g.ConvertToVector3D()).ToList();
 
@@ -532,7 +593,7 @@ public partial class FormDiffractionSimulator : Form
                 {
                     var eigenValues = crystal.Bethe.EigenValues;
 
-                    var gBethe = crystal.Bethe.GetDifractedBeamAmpriltudes(blochNum, waveLengthControl.Energy, crystal.RotationMatrix, numericBoxThickness.Value);
+                    var gBethe = crystal.Bethe.GetDifractedBeamAmpriltudes(blochNum, Energy, crystal.RotationMatrix, numericBoxThickness.Value);
                     gVector = gBethe.Select(g => g.ConvertToVector3D()).ToList();
 
                     if (eigenValues != crystal.Bethe.EigenValues)
@@ -555,9 +616,16 @@ public partial class FormDiffractionSimulator : Form
             else
                 gVector = crystal.VectorOfG.ToList();
 
+
+            //もしdyamicalな計算で、SkipRenderingがtrueの時はここでおしまい
+            if(SkipRendering && bethe)
+                gVector.Clear();
+
+
             gVector.ForEach(g => g.Flag2 = false);
 
             //描画するスポットを決める
+            
             foreach (var g in gVector.Where(g => g.Flag1))
             {
                 var vec = bethe ? g : crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
@@ -1069,7 +1137,6 @@ public partial class FormDiffractionSimulator : Form
                 1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height, false).Length
             }.Min();
 
-        var w = waveLengthControl.WaveSource;
         if (toolStripButtonDiffractionSpots.Checked)
         {
             if (toolStripMenuItemBackLaue.Checked)//Back Laueのとき
@@ -1077,7 +1144,7 @@ public partial class FormDiffractionSimulator : Form
 
             foreach (var crystal in formMain.Crystals)
             {
-                crystal.SetVectorOfG(minD, radioButtonIntensityKinematical.Checked ? w : WaveSource.None);
+                crystal.SetVectorOfG(minD, radioButtonIntensityKinematical.Checked ? Source : WaveSource.None);
 
                 var latticeType = crystal.Symmetry.LatticeTypeStr;
 
@@ -1107,14 +1174,14 @@ public partial class FormDiffractionSimulator : Form
         if (toolStripButtonDebyeRing.Checked)
         {
             formMain.Crystal.SetPlanes(double.PositiveInfinity, minD, true, true, false, true, HorizontalAxis.d, 0.00000000, WaveLength);
-            formMain.Crystal.SetPeakIntensity(w, WaveColor.Monochrome, WaveLength, null);
+            formMain.Crystal.SetPeakIntensity(Source, WaveColor.Monochrome, WaveLength, null);
             for (int j = 0; j < formMain.Crystal.Plane.Count; j++)
                 if (formMain.Crystal.Plane[j].Intensity < 1E-6)
                     formMain.Crystal.Plane.RemoveAt(j--);
         }
 
         if (toolStripButtonKikuchiLines.Checked)
-            formMain.Crystal.SetVectorOfG_KikuchiLine(numericBoxKikuchiLineThreshold.Value, waveLengthControl.WaveSource);
+            formMain.Crystal.SetVectorOfG_KikuchiLine(numericBoxKikuchiLineThreshold.Value, Source);
 
         toolStripStatusLabelTimeForSearchingG.Text = $"Time for searching g-vectors: {sw.ElapsedMilliseconds} ms.  ";
     }
@@ -1477,17 +1544,17 @@ public partial class FormDiffractionSimulator : Form
         var name = (sender as ToolStripMenuItem).Text.Split(" ", true);
         if (name[0].Contains("Electron"))
         {
-            waveLengthControl.WaveSource = WaveSource.Electron;
-            waveLengthControl.Energy = name[1].ToDouble();
+            Source = WaveSource.Electron;
+            Energy = name[1].ToDouble();
 
         }
         else if (name[0].Contains("X-ray"))
         {
-            waveLengthControl.WaveSource = WaveSource.Xray;
+            Source = WaveSource.Xray;
             if (name.Length == 3)
             {
                 waveLengthControl.XrayWaveSourceElementNumber = 0;
-                waveLengthControl.Energy = name[1].ToDouble();
+                Energy = name[1].ToDouble();
             }
             else
             {
@@ -1701,13 +1768,13 @@ public partial class FormDiffractionSimulator : Form
         //線源が変更されたら無条件で平行ビームに変更
         radioButtonBeamParallel.Checked = true;
 
-        if (waveLengthControl.WaveSource == WaveSource.Electron)//電子線が選択された場合
+        if (Source == WaveSource.Electron)//電子線が選択された場合
         {
             radioButtonBeamConvergence.Visible = radioButtonBeamPrecessionElectron.Visible = true;//収束と歳差(電子)は表示
             radioButtonBeamPrecessionXray.Visible = false;//歳差(X線)は非表示
             radioButtonIntensityDynamical.Visible = true;//動力学計算は表示
         }
-        else if (waveLengthControl.WaveSource == WaveSource.Xray)//X線が選択された場合
+        else if (Source == WaveSource.Xray)//X線が選択された場合
         {
             radioButtonBeamConvergence.Visible = radioButtonBeamPrecessionElectron.Visible = false;//収束と歳差(電子)は非表示
             radioButtonBeamPrecessionXray.Visible = true;//歳差(X線)は表示
@@ -1877,9 +1944,9 @@ public partial class FormDiffractionSimulator : Form
         FormDiffractionBeamTable.Visible = true;
         FormDiffractionBeamTable.BringToFront();
         if (radioButtonIntensityDynamical.Checked)
-            FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal.Bethe.Beams);
+            FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal.Bethe.Beams);
         else
-            FormDiffractionBeamTable.SetTable(waveLengthControl.Energy, formMain.Crystal);
+            FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
     }
 
     #endregion

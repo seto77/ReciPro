@@ -307,6 +307,7 @@ public partial class FormImageSimulator : Form
             CalculateInsideSpotInfo();
             if (FormCTF.Visible)
                 FormCTF.Renew();
+            FormMain.toolStripButtonImageSimulator.Checked = true;
         }
     }
     #endregion 起動、終了関連

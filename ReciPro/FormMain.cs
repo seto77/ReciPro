@@ -858,13 +858,12 @@ public partial class FormMain : Form
 
     private void CrystalControl_SymmetryInformation_VisibleChanged(object sender, EventArgs e) => toolStripButtonSymmetryInformation.Checked = crystalControl.FormSymmetryInformation.Visible;
 
-
     /// <summary>
     /// ToolStripボタンを押されたら、各機能を起動/終了する
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void toolStripButtons_MouseDown(object sender, MouseEventArgs e)
+    public void toolStripButtons_MouseDown(object sender, MouseEventArgs e)
     {
         var button = sender as ToolStripButton;
         Form form;

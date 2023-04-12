@@ -1,6 +1,11 @@
-﻿using System.IO;
+﻿using MathNet.Numerics;
+using MathNet.Numerics.Distributions;
+using System.IO;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using static Crystallography.BetheMethod;
+using static Crystallography.Ring;
 
 namespace ReciPro;
 
@@ -9,13 +14,15 @@ public class Macro : MacroBase
     #region 基底クラス
     private readonly FormMain main;
     public FileClass File;
-    public RotationClass Rotation;
+    public DirectionClass Dir;
+    public DifSimClass DifSim;
 
     public Macro(FormMain _main) : base(_main, "ReciPro")
     {
         main = _main;
         File = new FileClass(this);
-        Rotation = new RotationClass(this);
+        Dir = new DirectionClass(this);
+        DifSim = new DifSimClass(this);
         help.Add("ReciPro.Sleep(int millisec) # Sleep.");
     }
 
@@ -24,33 +31,144 @@ public class Macro : MacroBase
 
     #endregion
 
-    #region Rotationクラス
-    public class RotationClass : MacroSub
+    #region Dirクラス
+    public class DirectionClass : MacroSub
     {
         private readonly Macro p;
-        public RotationClass(Macro _p) : base(_p.main)
+        public DirectionClass(Macro _p) : base(_p.main)
         {
             this.p = _p;
-            p.help.Add("ReciPro.Rotation.Rotate() # ");
-            p.help.Add("ReciPro.Rotation.Euler(double phi, double theta, double psi) # Sets the rotation state by Euler angles.");
-            p.help.Add("ReciPro.Rotation.EulerInDegree(double phi, double theta, double psi) # Sets the rotation state by Euler angles (in degree).");
+            p.help.Add("ReciPro.Dir.Euler(double phi, double theta, double psi) # Sets the rotation state by Euler angles.");
+            p.help.Add("ReciPro.Dir.EulerInDegree(double phi, double theta, double psi) # Sets the rotation state by Euler angles (in degree).");
+            p.help.Add("ReciPro.Dir.Rotate(double vX, double vY, double vZ, double angle) # Rotate the current crystal by specifying the rotation axis and angle.");
+            p.help.Add("ReciPro.Dir.RotateAroundAxis(int u, int v, int w, double angle) # Rotate the current crystal with the crystal axis (uvw) as the rotation axis");
+            p.help.Add("ReciPro.Dir.RotateAroundPlane(int h, int k, int l, double angle) # Rotate the current crystal with the crystal plane (hkl) as the rotation axis");
         }
 
-        public void Euler(double phi, double theta, double psi)
+        public void Euler(double phi, double theta, double psi) => p.main.SetRotation(phi, theta, psi);
+
+        public void EulerInDegree(double phi, double theta, double psi) => p.main.SetRotation(phi / 180.0 * Math.PI, theta / 180.0 * Math.PI, psi / 180.0 * Math.PI);
+
+        public void Rotate(double vX, double vY, double vZ, double angle) => p.main.Rotate((vX, vY, vZ), angle);
+
+        public void RotateAroundAxis(int u, int v, int w, double angle)
         {
-            p.main.SetRotation(phi, theta, psi);
+            Vector3D a = p.main.Crystal.A_Axis, b = p.main.Crystal.B_Axis, c = p.main.Crystal.C_Axis;
+            var axis = p.main.Crystal.RotationMatrix * (u * a + v * b + w * c);
+            p.main.Rotate(axis, angle);
         }
 
-        public void EulerInDegree(double phi, double theta, double psi)
+        public void RotateAroundPlane(int h, int k, int l, double angle)
         {
-            p.main.SetRotation(phi / 180.0 * Math.PI, theta / 180.0 * Math.PI, psi / 180.0 * Math.PI);
+            var rot = p.main.Crystal.MatrixInverse;
+            var axis = p.main.Crystal.RotationMatrix * (h * rot.Row1 + k * rot.Row2 + l * rot.Row3);
+            p.main.Rotate(axis, angle);
         }
 
+    }
+    #endregion
 
-        public void Rotate(double vX, double vY, double vZ, double angle)
+    #region DiffractionSimulatorクラス
+    public class DifSimClass : MacroSub
+    {
+        private readonly Macro p;
+
+        private FormDiffractionSimulator difSim => p.main.FormDiffractionSimulator;
+        private Crystal c => p.main.Crystal;
+
+        public DifSimClass(Macro _p) : base(_p.main)
         {
-            p.main.Rotate((vX, vY, vZ), angle);
+            this.p = _p;
+
+            p.help.Add("ReciPro.DifSim.Source_Xray() # Set/Get the sample thickness.");
+            p.help.Add("ReciPro.DifSim.Source_Electron() # Set/Get the sample thickness.");
+            p.help.Add("ReciPro.DifSim.Source_Neutron() # Set/Get the sample thickness.");
+            p.help.Add("ReciPro.DifSim.Energy # Double. Set/Get the energy of incident beam. The units for X-ray and electron are keV, and for neutron are meV");
+            p.help.Add("ReciPro.DifSim.Wavelength # Double. Set/Get the wavelength of incident beam in nm.");
+
+            p.help.Add("ReciPro.DifSim.Thickness # Double. Set/Get the sample thickness.");
+            p.help.Add("ReciPro.DifSim.NumberOfDiffractedWaves # Integer. Set or get the number of diffracted waves used in the dynamic calculation.");
+
+            p.help.Add("ReciPro.DifSim.Beam_Parallel() # Set the incident beam parallel.");
+            p.help.Add("ReciPro.DifSim.Beame_PrecessionXray() # Set the incident X-ray beam precessing.");
+            p.help.Add("ReciPro.DifSim.Beam_PrecessionElectron() # Set the incident electron beam precessing.");
+            p.help.Add("ReciPro.DifSim.Beam_Convergence() # Set the incident electron beam converging.");
+
+            p.help.Add("ReciPro.DifSim.Calc_Excitation() # Calculate the spot intensities with excitation error only.");  
+            p.help.Add("ReciPro.DifSim.Calc_Kinematical() # Calculate the spot intensities using the excitation error and the structure factor.");
+            p.help.Add("ReciPro.DifSim.Calc_Dynamical() # Calculate the spot intensities  by the dynamical theory.");
+
+            p.help.Add("ReciPro.DifSim.ImageResolution # Double. Set/Get the image resolution (nm^-1/pix).");
+            p.help.Add("ReciPro.DifSim.ImageWidth # Integer. Set/Get the image width in pixel.");
+            p.help.Add("ReciPro.DifSim.ImageHeight # Integer. Set/Get the image height in pixel.");
+            p.help.Add("ReciPro.DifSim.ImageResolution # Double. Set/Get the image resolution (nm^-1/pix).");
+            p.help.Add("ReciPro.DifSim.CameraLength2 # Double. Set/Get the distance from the sample to the detector.");
+            p.help.Add("ReciPro.DifSim.Foot(double x, double y) # Set coordinates of the foot of the perpendicular line from the sample to the detector.");
+
+            p.help.Add("ReciPro.DifSim.SkipRendering # True/False. Set/get whether screen rendering is skipped or not.");
+
+
+            p.help.Add("ReciPro.DifSim.SpotInfo() # Get spot information in CSV format.");
         }
+
+        public void Open() => Execute(new Action(() => difSim.Visible = true));
+        public void Close() => Execute(new Action(() => difSim.Visible = false));
+
+        public void Source_Xray() {  difSim.Source = WaveSource.Xray; }
+        public void Source_Electron() {  difSim.Source = WaveSource.Electron; }
+        public void Source_Neutron() {  difSim.Source = WaveSource.Neutron; }
+
+        public double Energy { get => difSim.Energy; set => difSim.Energy = value; }
+        public double Wavelength { get => difSim.WaveLength; set => difSim.WaveLength = value; }
+        public double Thickness { get => difSim.Thickness; set => difSim.Thickness = value; }
+        public int NumberOfDiffractedWaves { get => difSim.NumberOfDiffractedWaves; set=> difSim.NumberOfDiffractedWaves = value; } 
+
+        public void Beam_Parallel(){ difSim.BeamMode = FormDiffractionSimulator.BeamModes.Parallel; }
+        public void Beame_PrecessionXray() { difSim.BeamMode = FormDiffractionSimulator.BeamModes.PrecessionXray; }
+        public void Beam_PrecessionElectron() { difSim.BeamMode = FormDiffractionSimulator.BeamModes.PrecessionElectron; }
+        public void Beam_Convergence() { difSim.BeamMode = FormDiffractionSimulator.BeamModes.Convergence; }
+
+        public void Calc_Excitation() { difSim.CalcMode = FormDiffractionSimulator.CalcModes.Excitation; }
+        public void Calc_Kinematical() { difSim.CalcMode = FormDiffractionSimulator.CalcModes.Kinematical; }
+        public void Calc_Dynamical() {  difSim.CalcMode = FormDiffractionSimulator.CalcModes.Dynamical; }
+
+        public double ImageResolution { get => difSim.Resolution; set => difSim.Resolution = value; }
+        public int ImageWidth { get => difSim.ClientWidth; set => difSim.ClientWidth = value; }
+        public int ImageHeight { get => difSim.ClientHeight; set => difSim.ClientHeight = value; }
+        public double CameraLength2 { get => difSim.CameraLength2; set => difSim.CameraLength2 = value; }
+        public void Foot(double x, double y) { difSim.Foot = new PointD(x, y); }
+
+        public bool SkipRendering { get => difSim.SkipRendering; set => difSim.SkipRendering = value; }
+
+        public string SpotInfo() => (Execute (() => spotInfo()));
+        public string spotInfo()
+        {
+            var gamma = 1 + UniversalConstants.e0 * Energy * 1000 / UniversalConstants.m0 / UniversalConstants.c2;
+            var coeff = 1 / gamma * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733;
+            var sb = new StringBuilder();
+            if (difSim.CalcMode == FormDiffractionSimulator.CalcModes.Dynamical)
+            {
+                sb.Append("No., R, H, K, L, d, gX, gY, gZ,|g|=1/d, Ug_re, Ug_im, U'g_re, U'g_im, Sg, Pg, Qg, φ_re, φ_im, |φ|^2\n");
+                int n = 0;
+                foreach (var b in c.Bethe.Beams)
+                {
+                    var g = b.Vec.Length;
+                    sb.Append((n++) + "," + b.Rating + "," + b.H + "," + b.K + "," + b.L + "," + (1 / g) + ",");
+                    sb.Append(b.Vec.X + "," + b.Vec.Y + "," + b.Vec.Z + "," + g + ",");
+                    sb.Append((b.Ureal.Real * coeff) + "," + (b.Ureal.Imaginary * coeff) + "," + (b.Uimag.Real * coeff) + "," + (b.Uimag.Imaginary * coeff) + ",");
+                    sb.Append(b.S + "," + b.P + "," + b.Q + ",");
+                    sb.Append(b.Psi.Real + "," + b.Psi.Imaginary + "," + b.Psi.MagnitudeSquared());
+                    sb.Append("\n");
+                }
+                return sb.ToString();
+            }
+            else
+            {
+
+            }
+            return "";
+        }
+
     }
     #endregion
 
@@ -64,14 +182,6 @@ public class Macro : MacroBase
             p.help.Add("ReciPro.File.GetFileName() # Get a file name.  \r\n Returned string is a full path of the selected file.");
             p.help.Add("ReciPro.File.GetFileNames() # Get file names.  \r\n Returned value is a string array, \r\n  each of which is a full path of selected files.");
             p.help.Add("ReciPro.File.GetDirectoryPath(string filename) # Get a directory path.\r\n Returned string is a full path to the filename.\r\n If filename is omitted, selection dialog will open.");
-
-            p.help.Add("ReciPro.File.ReadProfiles(string filename) # Read profile data. \r\n If filename is omitted, selection dialog will open.");
-            p.help.Add("ReciPro.File.SaveProfiles(string filename) # Save profile data. \r\n If filename is omitted, selection dialog will open.");
-            p.help.Add("ReciPro.File.ReadCrystals(string filename) # Read crystal data. \r\n If filename is omitted, selection dialog will open.");
-            p.help.Add("ReciPro.File.SaveCrystals(string filename) # Save crystal data. \r\n If filename is omitted, selection dialog will open.");
-            p.help.Add("ReciPro.File.SaveMetafile(string filename) # Save metafile object. \r\n If filename is omitted, selection dialog will open.");
-
-            p.help.Add("PDI.File.SaveText(string text, string filename) # Save textfile object. \r\n If filename is omitted, selection dialog will open.");
         }
 
         public string GetDirectoryPath(string filename = "") => Execute<string>(new Func<string>(() => getDirectoryPath(filename)));
@@ -102,68 +212,6 @@ public class Macro : MacroBase
             var dlg = new OpenFileDialog() { Multiselect = true };
             return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : Array.Empty<string>();
         }
-
-        public void ReadProfiles(string fileName = "") => Execute(() => readProfiles(fileName));
-        private void readProfiles(string fileName = "")
-        {
-            //if (!System.IO.File.Exists(fileName))
-            //    p.main.menuItemFileRead_Click(new object(), new EventArgs());
-            //else
-            //    p.main.readProfile(fileName);
-        }
-
-        public void SaveProfiles(string filename = "") => Execute(new Action(() => saveProfiles(filename)));
-        private void saveProfiles(string filename = "")
-        {
-            //if (filename == "")
-            //    p.main.savePatternProfileToolStripMenuItem_Click(new object(), new EventArgs());
-            //else
-            //    p.main.SaveProfile(filename);
-        }
-
-        public void ReadCrystals(string filename = "") => Execute(new Action(() => readCrystals(filename)));
-        private void readCrystals(string filename = "")
-        {
-            //if (!System.IO.File.Exists(filename))
-            //    p.main.menuItemReadCrystalData_Click(new object(), new EventArgs());
-            //else
-            //    p.main.readCrystal(filename, false, true);
-        }
-
-        public void SaveCrystals(string filename = "") => Execute(new Action(() => saveCrystals(filename)));
-        private void saveCrystals(string filename = "")
-        {
-            //if (filename == "")
-            //    p.main.menuItemSaveCrystalData_Click(new object(), new EventArgs());
-            //else
-            //    p.main.saveCrystal(filename);
-        }
-
-        public void SaveMetafile(string filename = "") { Execute(new Action(() => saveMetafile(filename))); }
-        private void saveMetafile(string filename = "")
-        {
-            //if (filename == "")
-            //    p.main.toolStripMenuItemSaveMetafile_Click(new object(), new EventArgs());
-            //else
-            //    p.main.saveMetafile(filename);
-        }
-
-        public void SaveText(string text, string filename = "") { Execute(new Action(() => saveText(text, filename))); }
-        private static void saveText(string text, string filename = "")
-        {
-            if (filename == "")
-            {
-                var dlg = new SaveFileDialog() { Filter = "*.txt|*.txt" };
-                if (dlg.ShowDialog() != DialogResult.OK)
-                    return;
-                filename = dlg.FileName;
-            }
-            var sw = new StreamWriter(filename);
-            sw.Write(text);
-            sw.Flush();
-            sw.Close();
-        }
-
     }
     #endregion
 

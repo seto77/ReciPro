@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2023.4.6.0626</AssemblyVersion>
-    <FileVersion>2023.4.6.0626</FileVersion>
+    <AssemblyVersion>2023.4.12.1206</AssemblyVersion>
+    <FileVersion>2023.4.12.1206</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>

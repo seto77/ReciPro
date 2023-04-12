@@ -28,64 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.searchCrystalControl = new Crystallography.Controls.SearchCrystalControl();
-            this.crystalDatabaseControl = new Crystallography.Controls.CrystalDatabaseControl();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            panel1 = new System.Windows.Forms.Panel();
+            searchCrystalControl = new SearchCrystalControl();
+            crystalDatabaseControl = new CrystalDatabaseControl();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.searchCrystalControl);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(727, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(188, 352);
-            this.panel1.TabIndex = 3;
+            panel1.Controls.Add(searchCrystalControl);
+            panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            panel1.Location = new System.Drawing.Point(727, 0);
+            panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(188, 352);
+            panel1.TabIndex = 3;
             // 
             // searchCrystalControl
             // 
-            this.searchCrystalControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchCrystalControl.Location = new System.Drawing.Point(0, 0);
-            this.searchCrystalControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.searchCrystalControl.Name = "searchCrystalControl";
-            this.searchCrystalControl.Size = new System.Drawing.Size(188, 352);
-            this.searchCrystalControl.TabIndex = 0;
+            searchCrystalControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            searchCrystalControl.Location = new System.Drawing.Point(0, 0);
+            searchCrystalControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            searchCrystalControl.Name = "searchCrystalControl";
+            searchCrystalControl.Size = new System.Drawing.Size(188, 352);
+            searchCrystalControl.TabIndex = 0;
+            searchCrystalControl.VisibleChanged += searchCrystalControl_VisibleChanged;
             // 
             // crystalDatabaseControl
             // 
-            this.crystalDatabaseControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalDatabaseControl.Filter = null;
-            this.crystalDatabaseControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.crystalDatabaseControl.FontSize = 9.75F;
-            this.crystalDatabaseControl.Location = new System.Drawing.Point(0, 0);
-            this.crystalDatabaseControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.crystalDatabaseControl.Name = "crystalDatabaseControl";
-            this.crystalDatabaseControl.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
-            this.crystalDatabaseControl.Size = new System.Drawing.Size(727, 352);
-            this.crystalDatabaseControl.TabIndex = 1;
-            this.crystalDatabaseControl.CrystalChanged += new System.EventHandler(this.CrystalDatabaseControl_CrystalChanged);
+            crystalDatabaseControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            crystalDatabaseControl.Filter = null;
+            crystalDatabaseControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            crystalDatabaseControl.FontSize = 9.75F;
+            crystalDatabaseControl.Location = new System.Drawing.Point(0, 0);
+            crystalDatabaseControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            crystalDatabaseControl.Name = "crystalDatabaseControl";
+            crystalDatabaseControl.Padding = new System.Windows.Forms.Padding(0, 0, 6, 0);
+            crystalDatabaseControl.Size = new System.Drawing.Size(727, 352);
+            crystalDatabaseControl.TabIndex = 1;
+            crystalDatabaseControl.CrystalChanged += CrystalDatabaseControl_CrystalChanged;
             // 
             // FormCrystalDatabase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 352);
-            this.Controls.Add(this.crystalDatabaseControl);
-            this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FormCrystalDatabase";
-            this.ShowIcon = false;
-            this.Text = "Crystal Database";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCrystalDatabase_FormClosing);
-            this.Load += new System.EventHandler(this.FormCrystalDatabase_Load);
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(915, 352);
+            Controls.Add(crystalDatabaseControl);
+            Controls.Add(panel1);
+            Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "FormCrystalDatabase";
+            ShowIcon = false;
+            Text = "Crystal Database";
+            FormClosing += FormCrystalDatabase_FormClosing;
+            Load += FormCrystalDatabase_Load;
+            panel1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

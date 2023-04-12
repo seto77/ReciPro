@@ -72,20 +72,22 @@ public partial class FormDiffractionSpotInfo : Form
 
         if (FormDiffractionSimulator != null)
         {
-            if (FormDiffractionSimulator.Mode == FormDiffractionSimulator.DrawingMode.BetheSAED)
-                textBoxThickness.Text = FormDiffractionSimulator.numericBoxThickness.Value.ToString();
-            else if (FormDiffractionSimulator.Mode == FormDiffractionSimulator.DrawingMode.BetheCBED)
+            if (FormDiffractionSimulator.CalcMode == FormDiffractionSimulator.CalcModes.Dynamical)
             {
-                textBoxThickness.Text = FormDiffractionSimulator.FormDiffractionSimulatorCBED.textBoxThickness.Text;
-                textBoxSemiangle.Text = (FormDiffractionSimulator.FormDiffractionSimulatorCBED.AlphaMax * 1000.0).ToString();
+                if (FormDiffractionSimulator.BeamMode == FormDiffractionSimulator.BeamModes.Convergence)
+                {
+                    textBoxThickness.Text = FormDiffractionSimulator.FormDiffractionSimulatorCBED.textBoxThickness.Text;
+                    textBoxSemiangle.Text = (FormDiffractionSimulator.FormDiffractionSimulatorCBED.AlphaMax * 1000.0).ToString();
+                }
+                else
+                    textBoxThickness.Text = FormDiffractionSimulator.numericBoxThickness.Value.ToString();
             }
         }
 
         double coeff = 1 / gamma;
         if (radioButtonUnitEV.Checked)
         {
-            coeff = 1 / gamma * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733; //
-            coeff = 1 / gamma * UniversalConstants.h * UniversalConstants.h / 2 / UniversalConstants.m0 / UniversalConstants.e0 * 1e18;
+            coeff = 1 / gamma * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733; //coeff = 1 / gamma * UniversalConstants.h * UniversalConstants.h / 2 / UniversalConstants.m0 / UniversalConstants.e0 * 1e18;
             dataGridView.Columns[9].HeaderText = "Vg re";
             dataGridView.Columns[10].HeaderText = "Vg im";
             dataGridView.Columns[11].HeaderText = "V'g re";

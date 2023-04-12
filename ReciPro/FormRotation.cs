@@ -54,7 +54,7 @@ public partial class FormRotationMatrix : Form
     private GLControlAlpha glControlExpGonio;
     #endregion
 
-    #region コンストラクタ
+    #region コンストラクタ、ロード、クローズ、Visible
 
     /// <summary>
     /// 起動時
@@ -185,6 +185,18 @@ public partial class FormRotationMatrix : Form
         numericBoxPhi.TextBoxForeColor = numericBoxExp1.TextBoxForeColor =
         numericBoxTheta.TextBoxForeColor = numericBoxExp2.TextBoxForeColor =
         numericBoxPsi.TextBoxForeColor = numericBoxExp3.TextBoxForeColor = Color.FromArgb(255, 255, 255, 255);
+    }
+
+    private void FormRotationMatrix_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        e.Cancel = true;
+        FormMain.toolStripButtonRotation.Checked = false;
+        this.Visible = false;
+    }
+
+    private void FormRotationMatrix_VisibleChanged(object sender, EventArgs e)
+    {
+        FormMain.toolStripButtonRotation.Checked = true;
     }
 
     #endregion
@@ -503,12 +515,7 @@ public partial class FormRotationMatrix : Form
     }
     #endregion
 
-    private void FormRotationMatrix_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        e.Cancel = true;
-        FormMain.toolStripButtonRotation.Checked = false;
-        this.Visible = false;
-    }
+  
 
     private void ButtonViewIsometric_Click(object sender, EventArgs e)
         => glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
@@ -697,4 +704,6 @@ public partial class FormRotationMatrix : Form
         skip = false;
         NumericBoxExp_ValueChanged(sender, e);
     }
+
+
 }

@@ -321,6 +321,24 @@ public partial class FormStructureViewer : Form
         numericBoxClientHeight.Value = splitContainer1.Panel1.Height;
         SkipEvent = false;
     }
+
+    private void FormStructureViewer_VisibleChanged(object sender, EventArgs e)
+    {
+        if (Visible)//現れたときメインウィンドウの結晶を表示する
+        {
+            if (formMain.crystalControl.Crystal != null)
+                SetGLObjects(formMain.crystalControl.Crystal);
+            formMain.toolStripButtonStructureViewer.Checked = true;
+        }
+        MoveAtomControl(Visible && tabControl.SelectedTab == tabPageAtom);
+    }
+    private void FormStructureViewer_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        e.Cancel = true;
+        formMain.toolStripButtonStructureViewer.Checked = false;
+        this.Visible = false;
+    }
+
     #endregion コンストラクタ
 
     #region 結晶軸行列を設定
@@ -1685,12 +1703,7 @@ public partial class FormStructureViewer : Form
     #endregion
 
     #region その他イベント
-    private void FormStructureViewer_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        e.Cancel = true;
-        formMain.toolStripButtonStructureViewer.Checked = false;
-        this.Visible = false;
-    }
+   
 
     private void FormStructureViewer_KeyDown(object sender, KeyEventArgs e)
     {
@@ -1698,14 +1711,7 @@ public partial class FormStructureViewer : Form
             Clipboard.SetDataObject(glControlMain.GenerateBitmap());
     }
 
-    private void FormStructureViewer_VisibleChanged(object sender, EventArgs e)
-    {
-        if (Visible)//現れたときメインウィンドウの結晶を表示する
-            if (formMain.crystalControl.Crystal != null)
-                SetGLObjects(formMain.crystalControl.Crystal);
-
-        MoveAtomControl(Visible && tabControl.SelectedTab == tabPageAtom);
-    }
+  
 
     /// <summary>
     /// 角度をリセットする

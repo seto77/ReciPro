@@ -181,7 +181,7 @@ namespace Crystallography.Controls
         {
             stepByStepMode = false;
 
-            buttonCancelStep.Visible = true;
+            //buttonCancelStep.Visible = true;
             buttonStepByStep.Visible = buttonRunMacro.Visible = false;
             RunMacro(exRichTextBox.Text);
             buttonCancelStep.Visible = false;
@@ -192,7 +192,8 @@ namespace Crystallography.Controls
         {
             stepByStepMode = true;
 
-            buttonCancelStep.Visible = buttonNextStep.Visible = true;
+            //buttonCancelStep.Visible = true;
+            buttonNextStep.Visible = true;
             buttonStepByStep.Visible = buttonRunMacro.Visible = false;
             try { RunMacro(exRichTextBox.Text); }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -237,15 +238,8 @@ namespace Crystallography.Controls
                     IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
                 }
 
-                void thread()
-                {
-                    try { Engine.CreateScriptSourceFromString(srcCode).Execute(Scope); }
-                    catch { }
-                }
-
                 _cancelSource = new CancellationTokenSource();
-                task = new Task(thread, _cancelSource.Token);
-
+                task = new Task(()=> Engine.CreateScriptSourceFromString(srcCode).Execute(Scope), _cancelSource.Token);
                 task.RunSynchronously();
             }
             catch (Microsoft.Scripting.ArgumentTypeException ex) { MessageBox.Show(ex.Message); }

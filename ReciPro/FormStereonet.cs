@@ -70,8 +70,6 @@ public partial class FormStereonet : Form
         this.Visible = false;
     }
 
-    #endregion
-
     private void FormStereonet_VisibleChanged(object sender, EventArgs e)
     {
         if (this.Visible)
@@ -86,8 +84,14 @@ public partial class FormStereonet : Form
 
             Draw();
             lastgraphicsBoxSize = graphicsBox.ClientSize;
+
+            formMain.toolStripButtonStereonet.Checked = true;
         }
     }
+
+    #endregion
+
+
 
     /// <summary>
     /// プロジェクション行列の設定を行う。

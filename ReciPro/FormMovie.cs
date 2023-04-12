@@ -55,17 +55,18 @@ public partial class FormMovie : Form
         tableLayoutPanelAxis.Enabled = radioButtonAxis.Checked;
         tableLayoutPanelPlane.Enabled = radioButtonPlane.Checked;
         tableLayoutPanelCurrent.Enabled = radioButtonCurrent.Checked;
+        numericBoxAxisU_ValueChanged(sender, e);
     }
 
     private void numericBoxAxisU_ValueChanged(object sender, EventArgs e)
     {
-        Direction = Rot * (numericBoxAxisU.Value * A + numericBoxAxisV.Value * B + numericBoxAxisW.Value * C);
-    }
-
-    private void numericBoxPlaneH_ValueChanged(object sender, EventArgs e)
-    {
-        var rot = new Matrix3D(A, B, C).Inverse();
-        Direction = Rot * (numericBoxPlaneH.Value * rot.Row1 + numericBoxPlaneK.Value * rot.Row2 + numericBoxPlaneL.Value * rot.Row3);
+        if (radioButtonAxis.Checked)
+            Direction = Rot * (numericBoxAxisU.Value * A + numericBoxAxisV.Value * B + numericBoxAxisW.Value * C);
+        else if (radioButtonPlane.Checked)
+        {
+            var rot = new Matrix3D(A, B, C).Inverse();
+            Direction = Rot * (numericBoxPlaneH.Value * rot.Row1 + numericBoxPlaneK.Value * rot.Row2 + numericBoxPlaneL.Value * rot.Row3);
+        }
     }
 
     private void buttonOK_Click(object sender, EventArgs e)
@@ -91,7 +92,7 @@ public partial class FormMovie : Form
                 File.Delete(pathFrom);
 
             var framerate = 30;
-            Bitmap bmp = new Bitmap(2, 2);
+            var bmp = new Bitmap(2, 2);
             for (int i = 0; i < Duration * framerate; i++)
             {
                 FormMain.Rotate(Direction, Speed * Math.PI / framerate / 180.0);
@@ -137,4 +138,8 @@ public partial class FormMovie : Form
         Visible = true;
     }
 
+    private void numericBoxAxisU_ReadOnlyChanged(object sender, EventArgs e)
+    {
+
+    }
 }
