@@ -1,13 +1,11 @@
-﻿using MathNet.Numerics;
-using MathNet.Numerics.Distributions;
-using System.IO;
+﻿#region using 
+using MathNet.Numerics;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using static Crystallography.BetheMethod;
-using static Crystallography.Ring;
 
 namespace ReciPro;
+#endregion
 
 public class Macro : MacroBase
 {
