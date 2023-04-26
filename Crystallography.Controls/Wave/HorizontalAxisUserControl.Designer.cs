@@ -28,593 +28,502 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HorizontalAxisUserControl));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonXray = new System.Windows.Forms.RadioButton();
-            this.radioButtonElectron = new System.Windows.Forms.RadioButton();
-            this.radioButtonNeutron = new System.Windows.Forms.RadioButton();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonMonochro = new System.Windows.Forms.RadioButton();
-            this.radioButtonFlatWhite = new System.Windows.Forms.RadioButton();
-            this.radioButtonCustomWhite = new System.Windows.Forms.RadioButton();
-            this.groupBoxTwoTheta = new System.Windows.Forms.GroupBox();
-            this.waveLengthControl = new Crystallography.Controls.WaveLengthControl();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel15 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonTwoTheta = new System.Windows.Forms.RadioButton();
-            this.radioButtonDspacing = new System.Windows.Forms.RadioButton();
-            this.radioButtonWavenumber = new System.Windows.Forms.RadioButton();
-            this.radioButtonEnergy = new System.Windows.Forms.RadioButton();
-            this.radioButtonTOF = new System.Windows.Forms.RadioButton();
-            this.groupBoxOption = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanelTwoTheta = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.flowLayoutPanelDspacing = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonDspacingUnitAng = new System.Windows.Forms.RadioButton();
-            this.radioButtonDspacingUnitNm = new System.Windows.Forms.RadioButton();
-            this.flowLayoutPanelWavenumber = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.flowLayoutPanelEnergy = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonEnergyUnitEv = new System.Windows.Forms.RadioButton();
-            this.radioButtonEnergyUnitKev = new System.Windows.Forms.RadioButton();
-            this.flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericBoxTwoTheta = new Crystallography.Controls.NumericBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.flowLayoutPanelNeutronTOF = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonTofUnitMicroSec = new System.Windows.Forms.RadioButton();
-            this.radioButtonTofUnitNanoSec = new System.Windows.Forms.RadioButton();
-            this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.numericBoxTofTakeOffAngle = new Crystallography.Controls.NumericBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericBoxTofDistance = new Crystallography.Controls.NumericBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.groupBox1.SuspendLayout();
-            this.flowLayoutPanel7.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.groupBoxTwoTheta.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel15.SuspendLayout();
-            this.groupBoxOption.SuspendLayout();
-            this.flowLayoutPanel12.SuspendLayout();
-            this.flowLayoutPanelTwoTheta.SuspendLayout();
-            this.flowLayoutPanelDspacing.SuspendLayout();
-            this.flowLayoutPanelWavenumber.SuspendLayout();
-            this.flowLayoutPanelEnergy.SuspendLayout();
-            this.flowLayoutPanel8.SuspendLayout();
-            this.flowLayoutPanel13.SuspendLayout();
-            this.flowLayoutPanelNeutronTOF.SuspendLayout();
-            this.flowLayoutPanel14.SuspendLayout();
-            this.flowLayoutPanel10.SuspendLayout();
-            this.flowLayoutPanel11.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
-            this.SuspendLayout();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonXray = new System.Windows.Forms.RadioButton();
+            radioButtonElectron = new System.Windows.Forms.RadioButton();
+            radioButtonNeutron = new System.Windows.Forms.RadioButton();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonMonochro = new System.Windows.Forms.RadioButton();
+            radioButtonFlatWhite = new System.Windows.Forms.RadioButton();
+            radioButtonCustomWhite = new System.Windows.Forms.RadioButton();
+            groupBoxTwoTheta = new System.Windows.Forms.GroupBox();
+            waveLengthControl = new WaveLengthControl();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel15 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonTwoTheta = new System.Windows.Forms.RadioButton();
+            radioButtonDspacing = new System.Windows.Forms.RadioButton();
+            radioButtonWavenumber = new System.Windows.Forms.RadioButton();
+            radioButtonEnergy = new System.Windows.Forms.RadioButton();
+            radioButtonTOF = new System.Windows.Forms.RadioButton();
+            groupBoxOption = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelTwoTheta = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonAngleUnitDegree = new System.Windows.Forms.RadioButton();
+            radioButtonAngleUnitRadian = new System.Windows.Forms.RadioButton();
+            flowLayoutPanelDspacing = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonDspacingUnitAng = new System.Windows.Forms.RadioButton();
+            radioButtonDspacingUnitNm = new System.Windows.Forms.RadioButton();
+            flowLayoutPanelWavenumber = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonWavenumberAngInv = new System.Windows.Forms.RadioButton();
+            radioButtonWavenumberUnitNmInv = new System.Windows.Forms.RadioButton();
+            flowLayoutPanelEnergy = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonEnergyUnitEv = new System.Windows.Forms.RadioButton();
+            radioButtonEnergyUnitKev = new System.Windows.Forms.RadioButton();
+            radioButtonEnergyUnitMev = new System.Windows.Forms.RadioButton();
+            numericBoxTwoTheta = new NumericBox();
+            flowLayoutPanelNeutronTOF = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonTofUnitMicroSec = new System.Windows.Forms.RadioButton();
+            radioButtonTofUnitNanoSec = new System.Windows.Forms.RadioButton();
+            numericBoxTofTakeOffAngle = new NumericBox();
+            numericBoxTofDistance = new NumericBox();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            groupBox1.SuspendLayout();
+            flowLayoutPanel7.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            groupBox4.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            groupBox3.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            groupBoxTwoTheta.SuspendLayout();
+            groupBox2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel15.SuspendLayout();
+            groupBoxOption.SuspendLayout();
+            flowLayoutPanel12.SuspendLayout();
+            flowLayoutPanelTwoTheta.SuspendLayout();
+            flowLayoutPanelDspacing.SuspendLayout();
+            flowLayoutPanelWavenumber.SuspendLayout();
+            flowLayoutPanelEnergy.SuspendLayout();
+            flowLayoutPanelNeutronTOF.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.flowLayoutPanel7);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Controls.Add(flowLayoutPanel7);
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
             // 
             // flowLayoutPanel7
             // 
-            resources.ApplyResources(this.flowLayoutPanel7, "flowLayoutPanel7");
-            this.flowLayoutPanel7.Controls.Add(this.flowLayoutPanel5);
-            this.flowLayoutPanel7.Controls.Add(this.groupBoxTwoTheta);
-            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            resources.ApplyResources(flowLayoutPanel7, "flowLayoutPanel7");
+            flowLayoutPanel7.Controls.Add(flowLayoutPanel5);
+            flowLayoutPanel7.Controls.Add(groupBoxTwoTheta);
+            flowLayoutPanel7.Name = "flowLayoutPanel7";
             // 
             // flowLayoutPanel5
             // 
-            resources.ApplyResources(this.flowLayoutPanel5, "flowLayoutPanel5");
-            this.flowLayoutPanel5.Controls.Add(this.groupBox4);
-            this.flowLayoutPanel5.Controls.Add(this.groupBox3);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
+            flowLayoutPanel5.Controls.Add(groupBox4);
+            flowLayoutPanel5.Controls.Add(groupBox3);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
             // 
             // groupBox4
             // 
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Controls.Add(this.flowLayoutPanel4);
-            this.groupBox4.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            this.toolTip.SetToolTip(this.groupBox4, resources.GetString("groupBox4.ToolTip"));
+            resources.ApplyResources(groupBox4, "groupBox4");
+            groupBox4.Controls.Add(flowLayoutPanel4);
+            groupBox4.Controls.Add(flowLayoutPanel1);
+            groupBox4.Name = "groupBox4";
+            groupBox4.TabStop = false;
+            toolTip.SetToolTip(groupBox4, resources.GetString("groupBox4.ToolTip"));
             // 
             // flowLayoutPanel4
             // 
-            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
-            this.flowLayoutPanel4.Controls.Add(this.radioButtonXray);
-            this.flowLayoutPanel4.Controls.Add(this.radioButtonElectron);
-            this.flowLayoutPanel4.Controls.Add(this.radioButtonNeutron);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(radioButtonXray);
+            flowLayoutPanel4.Controls.Add(radioButtonElectron);
+            flowLayoutPanel4.Controls.Add(radioButtonNeutron);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // radioButtonXray
             // 
-            resources.ApplyResources(this.radioButtonXray, "radioButtonXray");
-            this.radioButtonXray.Checked = true;
-            this.radioButtonXray.Name = "radioButtonXray";
-            this.radioButtonXray.TabStop = true;
-            this.radioButtonXray.UseVisualStyleBackColor = true;
-            this.radioButtonXray.CheckedChanged += new System.EventHandler(this.radioButtonWaveSource_CheckedChanged);
+            resources.ApplyResources(radioButtonXray, "radioButtonXray");
+            radioButtonXray.Checked = true;
+            radioButtonXray.Name = "radioButtonXray";
+            radioButtonXray.TabStop = true;
+            radioButtonXray.UseVisualStyleBackColor = true;
+            radioButtonXray.CheckedChanged += radioButtonWaveSource_CheckedChanged;
             // 
             // radioButtonElectron
             // 
-            resources.ApplyResources(this.radioButtonElectron, "radioButtonElectron");
-            this.radioButtonElectron.Name = "radioButtonElectron";
-            this.radioButtonElectron.UseVisualStyleBackColor = true;
-            this.radioButtonElectron.CheckedChanged += new System.EventHandler(this.radioButtonWaveSource_CheckedChanged);
+            resources.ApplyResources(radioButtonElectron, "radioButtonElectron");
+            radioButtonElectron.Name = "radioButtonElectron";
+            radioButtonElectron.UseVisualStyleBackColor = true;
+            radioButtonElectron.CheckedChanged += radioButtonWaveSource_CheckedChanged;
             // 
             // radioButtonNeutron
             // 
-            resources.ApplyResources(this.radioButtonNeutron, "radioButtonNeutron");
-            this.radioButtonNeutron.Name = "radioButtonNeutron";
-            this.radioButtonNeutron.UseVisualStyleBackColor = true;
-            this.radioButtonNeutron.CheckedChanged += new System.EventHandler(this.radioButtonWaveSource_CheckedChanged);
+            resources.ApplyResources(radioButtonNeutron, "radioButtonNeutron");
+            radioButtonNeutron.Name = "radioButtonNeutron";
+            radioButtonNeutron.UseVisualStyleBackColor = true;
+            radioButtonNeutron.CheckedChanged += radioButtonWaveSource_CheckedChanged;
             // 
             // flowLayoutPanel1
             // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // groupBox3
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.flowLayoutPanel2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(groupBox3, "groupBox3");
+            groupBox3.Controls.Add(flowLayoutPanel2);
+            groupBox3.Name = "groupBox3";
+            groupBox3.TabStop = false;
             // 
             // flowLayoutPanel2
             // 
-            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-            this.flowLayoutPanel2.Controls.Add(this.radioButtonMonochro);
-            this.flowLayoutPanel2.Controls.Add(this.radioButtonFlatWhite);
-            this.flowLayoutPanel2.Controls.Add(this.radioButtonCustomWhite);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(radioButtonMonochro);
+            flowLayoutPanel2.Controls.Add(radioButtonFlatWhite);
+            flowLayoutPanel2.Controls.Add(radioButtonCustomWhite);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // radioButtonMonochro
             // 
-            resources.ApplyResources(this.radioButtonMonochro, "radioButtonMonochro");
-            this.radioButtonMonochro.Checked = true;
-            this.radioButtonMonochro.Name = "radioButtonMonochro";
-            this.radioButtonMonochro.TabStop = true;
-            this.radioButtonMonochro.UseVisualStyleBackColor = true;
-            this.radioButtonMonochro.CheckedChanged += new System.EventHandler(this.radioButtonMonochro_CheckedChanged);
+            resources.ApplyResources(radioButtonMonochro, "radioButtonMonochro");
+            radioButtonMonochro.Checked = true;
+            radioButtonMonochro.Name = "radioButtonMonochro";
+            radioButtonMonochro.TabStop = true;
+            radioButtonMonochro.UseVisualStyleBackColor = true;
+            radioButtonMonochro.CheckedChanged += radioButtonMonochro_CheckedChanged;
             // 
             // radioButtonFlatWhite
             // 
-            resources.ApplyResources(this.radioButtonFlatWhite, "radioButtonFlatWhite");
-            this.radioButtonFlatWhite.Name = "radioButtonFlatWhite";
-            this.toolTip.SetToolTip(this.radioButtonFlatWhite, resources.GetString("radioButtonFlatWhite.ToolTip"));
-            this.radioButtonFlatWhite.UseVisualStyleBackColor = true;
-            this.radioButtonFlatWhite.CheckedChanged += new System.EventHandler(this.radioButtonMonochro_CheckedChanged);
+            resources.ApplyResources(radioButtonFlatWhite, "radioButtonFlatWhite");
+            radioButtonFlatWhite.Name = "radioButtonFlatWhite";
+            toolTip.SetToolTip(radioButtonFlatWhite, resources.GetString("radioButtonFlatWhite.ToolTip"));
+            radioButtonFlatWhite.UseVisualStyleBackColor = true;
+            radioButtonFlatWhite.CheckedChanged += radioButtonMonochro_CheckedChanged;
             // 
             // radioButtonCustomWhite
             // 
-            resources.ApplyResources(this.radioButtonCustomWhite, "radioButtonCustomWhite");
-            this.radioButtonCustomWhite.Name = "radioButtonCustomWhite";
-            this.radioButtonCustomWhite.UseVisualStyleBackColor = true;
-            this.radioButtonCustomWhite.CheckedChanged += new System.EventHandler(this.radioButtonMonochro_CheckedChanged);
+            resources.ApplyResources(radioButtonCustomWhite, "radioButtonCustomWhite");
+            radioButtonCustomWhite.Name = "radioButtonCustomWhite";
+            radioButtonCustomWhite.UseVisualStyleBackColor = true;
+            radioButtonCustomWhite.CheckedChanged += radioButtonMonochro_CheckedChanged;
             // 
             // groupBoxTwoTheta
             // 
-            resources.ApplyResources(this.groupBoxTwoTheta, "groupBoxTwoTheta");
-            this.groupBoxTwoTheta.Controls.Add(this.waveLengthControl);
-            this.groupBoxTwoTheta.Name = "groupBoxTwoTheta";
-            this.groupBoxTwoTheta.TabStop = false;
+            resources.ApplyResources(groupBoxTwoTheta, "groupBoxTwoTheta");
+            groupBoxTwoTheta.Controls.Add(waveLengthControl);
+            groupBoxTwoTheta.Name = "groupBoxTwoTheta";
+            groupBoxTwoTheta.TabStop = false;
             // 
             // waveLengthControl
             // 
-            resources.ApplyResources(this.waveLengthControl, "waveLengthControl");
-            this.waveLengthControl.Energy = 8.0411472130833417D;
-            this.waveLengthControl.EnergyText = "8.04114721308334";
-            this.waveLengthControl.Name = "waveLengthControl";
-            this.waveLengthControl.ShowWaveSource = false;
-            this.waveLengthControl.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.waveLengthControl.WaveLength = 0.154187106666667D;
-            this.waveLengthControl.WaveLengthText = "1.54187106666667";
-            this.waveLengthControl.WaveSource = Crystallography.WaveSource.Xray;
-            this.waveLengthControl.XrayWaveSourceElementNumber = 0;
-            this.waveLengthControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
-            this.waveLengthControl.WavelengthChanged += new System.EventHandler(this.waveLengthControl_WavelengthChanged);
+            resources.ApplyResources(waveLengthControl, "waveLengthControl");
+            waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            waveLengthControl.Energy = 8.04114721D;
+            waveLengthControl.Name = "waveLengthControl";
+            waveLengthControl.ShowWaveSource = false;
+            waveLengthControl.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            waveLengthControl.WaveLength = 0.1541871066667D;
+            waveLengthControl.WaveSource = WaveSource.Xray;
+            waveLengthControl.XrayWaveSourceElementNumber = 0;
+            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
+            waveLengthControl.WavelengthChanged += waveLengthControl_WavelengthChanged;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.flowLayoutPanel3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(groupBox2, "groupBox2");
+            groupBox2.Controls.Add(flowLayoutPanel3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.TabStop = false;
             // 
             // flowLayoutPanel3
             // 
-            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
-            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel15);
-            this.flowLayoutPanel3.Controls.Add(this.groupBoxOption);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
+            flowLayoutPanel3.Controls.Add(flowLayoutPanel15);
+            flowLayoutPanel3.Controls.Add(groupBoxOption);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
             // flowLayoutPanel15
             // 
-            resources.ApplyResources(this.flowLayoutPanel15, "flowLayoutPanel15");
-            this.flowLayoutPanel15.Controls.Add(this.radioButtonTwoTheta);
-            this.flowLayoutPanel15.Controls.Add(this.radioButtonDspacing);
-            this.flowLayoutPanel15.Controls.Add(this.radioButtonWavenumber);
-            this.flowLayoutPanel15.Controls.Add(this.radioButtonEnergy);
-            this.flowLayoutPanel15.Controls.Add(this.radioButtonTOF);
-            this.flowLayoutPanel15.Name = "flowLayoutPanel15";
+            resources.ApplyResources(flowLayoutPanel15, "flowLayoutPanel15");
+            flowLayoutPanel15.Controls.Add(radioButtonTwoTheta);
+            flowLayoutPanel15.Controls.Add(radioButtonDspacing);
+            flowLayoutPanel15.Controls.Add(radioButtonWavenumber);
+            flowLayoutPanel15.Controls.Add(radioButtonEnergy);
+            flowLayoutPanel15.Controls.Add(radioButtonTOF);
+            flowLayoutPanel15.Name = "flowLayoutPanel15";
             // 
             // radioButtonTwoTheta
             // 
-            resources.ApplyResources(this.radioButtonTwoTheta, "radioButtonTwoTheta");
-            this.radioButtonTwoTheta.Checked = true;
-            this.radioButtonTwoTheta.Name = "radioButtonTwoTheta";
-            this.radioButtonTwoTheta.TabStop = true;
-            this.radioButtonTwoTheta.UseVisualStyleBackColor = true;
-            this.radioButtonTwoTheta.CheckedChanged += new System.EventHandler(this.radioButtonTwoTheta_CheckedChanged);
+            resources.ApplyResources(radioButtonTwoTheta, "radioButtonTwoTheta");
+            radioButtonTwoTheta.Checked = true;
+            radioButtonTwoTheta.Name = "radioButtonTwoTheta";
+            radioButtonTwoTheta.TabStop = true;
+            radioButtonTwoTheta.UseVisualStyleBackColor = true;
+            radioButtonTwoTheta.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // radioButtonDspacing
             // 
-            resources.ApplyResources(this.radioButtonDspacing, "radioButtonDspacing");
-            this.radioButtonDspacing.Name = "radioButtonDspacing";
-            this.radioButtonDspacing.UseVisualStyleBackColor = true;
-            this.radioButtonDspacing.CheckedChanged += new System.EventHandler(this.radioButtonTwoTheta_CheckedChanged);
+            resources.ApplyResources(radioButtonDspacing, "radioButtonDspacing");
+            radioButtonDspacing.Name = "radioButtonDspacing";
+            radioButtonDspacing.UseVisualStyleBackColor = true;
+            radioButtonDspacing.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // radioButtonWavenumber
             // 
-            resources.ApplyResources(this.radioButtonWavenumber, "radioButtonWavenumber");
-            this.radioButtonWavenumber.Name = "radioButtonWavenumber";
-            this.radioButtonWavenumber.UseVisualStyleBackColor = true;
-            this.radioButtonWavenumber.CheckedChanged += new System.EventHandler(this.radioButtonTwoTheta_CheckedChanged);
+            resources.ApplyResources(radioButtonWavenumber, "radioButtonWavenumber");
+            radioButtonWavenumber.Name = "radioButtonWavenumber";
+            radioButtonWavenumber.UseVisualStyleBackColor = true;
+            radioButtonWavenumber.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // radioButtonEnergy
             // 
-            resources.ApplyResources(this.radioButtonEnergy, "radioButtonEnergy");
-            this.radioButtonEnergy.Name = "radioButtonEnergy";
-            this.radioButtonEnergy.UseVisualStyleBackColor = true;
-            this.radioButtonEnergy.CheckedChanged += new System.EventHandler(this.radioButtonTwoTheta_CheckedChanged);
+            resources.ApplyResources(radioButtonEnergy, "radioButtonEnergy");
+            radioButtonEnergy.Name = "radioButtonEnergy";
+            radioButtonEnergy.UseVisualStyleBackColor = true;
+            radioButtonEnergy.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // radioButtonTOF
             // 
-            resources.ApplyResources(this.radioButtonTOF, "radioButtonTOF");
-            this.radioButtonTOF.Name = "radioButtonTOF";
-            this.radioButtonTOF.UseVisualStyleBackColor = true;
-            this.radioButtonTOF.CheckedChanged += new System.EventHandler(this.radioButtonTwoTheta_CheckedChanged);
+            resources.ApplyResources(radioButtonTOF, "radioButtonTOF");
+            radioButtonTOF.Name = "radioButtonTOF";
+            radioButtonTOF.UseVisualStyleBackColor = true;
+            radioButtonTOF.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // groupBoxOption
             // 
-            resources.ApplyResources(this.groupBoxOption, "groupBoxOption");
-            this.groupBoxOption.Controls.Add(this.flowLayoutPanel12);
-            this.groupBoxOption.Name = "groupBoxOption";
-            this.groupBoxOption.TabStop = false;
+            resources.ApplyResources(groupBoxOption, "groupBoxOption");
+            groupBoxOption.Controls.Add(flowLayoutPanel12);
+            groupBoxOption.Name = "groupBoxOption";
+            groupBoxOption.TabStop = false;
             // 
             // flowLayoutPanel12
             // 
-            resources.ApplyResources(this.flowLayoutPanel12, "flowLayoutPanel12");
-            this.flowLayoutPanel12.Controls.Add(this.flowLayoutPanelTwoTheta);
-            this.flowLayoutPanel12.Controls.Add(this.flowLayoutPanelDspacing);
-            this.flowLayoutPanel12.Controls.Add(this.flowLayoutPanelWavenumber);
-            this.flowLayoutPanel12.Controls.Add(this.flowLayoutPanelEnergy);
-            this.flowLayoutPanel12.Controls.Add(this.flowLayoutPanelNeutronTOF);
-            this.flowLayoutPanel12.Name = "flowLayoutPanel12";
+            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
+            flowLayoutPanel12.Controls.Add(flowLayoutPanelTwoTheta);
+            flowLayoutPanel12.Controls.Add(flowLayoutPanelDspacing);
+            flowLayoutPanel12.Controls.Add(flowLayoutPanelWavenumber);
+            flowLayoutPanel12.Controls.Add(flowLayoutPanelEnergy);
+            flowLayoutPanel12.Controls.Add(flowLayoutPanelNeutronTOF);
+            flowLayoutPanel12.Name = "flowLayoutPanel12";
             // 
             // flowLayoutPanelTwoTheta
             // 
-            resources.ApplyResources(this.flowLayoutPanelTwoTheta, "flowLayoutPanelTwoTheta");
-            this.flowLayoutPanelTwoTheta.Controls.Add(this.radioButton4);
-            this.flowLayoutPanelTwoTheta.Name = "flowLayoutPanelTwoTheta";
+            resources.ApplyResources(flowLayoutPanelTwoTheta, "flowLayoutPanelTwoTheta");
+            flowLayoutPanelTwoTheta.Controls.Add(radioButtonAngleUnitDegree);
+            flowLayoutPanelTwoTheta.Controls.Add(radioButtonAngleUnitRadian);
+            flowLayoutPanelTwoTheta.Name = "flowLayoutPanelTwoTheta";
             // 
-            // radioButton4
+            // radioButtonAngleUnitDegree
             // 
-            resources.ApplyResources(this.radioButton4, "radioButton4");
-            this.radioButton4.Checked = true;
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.TabStop = true;
-            this.radioButton4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonAngleUnitDegree, "radioButtonAngleUnitDegree");
+            radioButtonAngleUnitDegree.Checked = true;
+            radioButtonAngleUnitDegree.Name = "radioButtonAngleUnitDegree";
+            radioButtonAngleUnitDegree.TabStop = true;
+            radioButtonAngleUnitDegree.UseVisualStyleBackColor = true;
+            radioButtonAngleUnitDegree.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
+            // 
+            // radioButtonAngleUnitRadian
+            // 
+            resources.ApplyResources(radioButtonAngleUnitRadian, "radioButtonAngleUnitRadian");
+            radioButtonAngleUnitRadian.Name = "radioButtonAngleUnitRadian";
+            radioButtonAngleUnitRadian.UseVisualStyleBackColor = true;
+            radioButtonAngleUnitRadian.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // flowLayoutPanelDspacing
             // 
-            resources.ApplyResources(this.flowLayoutPanelDspacing, "flowLayoutPanelDspacing");
-            this.flowLayoutPanelDspacing.Controls.Add(this.radioButtonDspacingUnitAng);
-            this.flowLayoutPanelDspacing.Controls.Add(this.radioButtonDspacingUnitNm);
-            this.flowLayoutPanelDspacing.Name = "flowLayoutPanelDspacing";
+            resources.ApplyResources(flowLayoutPanelDspacing, "flowLayoutPanelDspacing");
+            flowLayoutPanelDspacing.Controls.Add(radioButtonDspacingUnitAng);
+            flowLayoutPanelDspacing.Controls.Add(radioButtonDspacingUnitNm);
+            flowLayoutPanelDspacing.Name = "flowLayoutPanelDspacing";
             // 
             // radioButtonDspacingUnitAng
             // 
-            resources.ApplyResources(this.radioButtonDspacingUnitAng, "radioButtonDspacingUnitAng");
-            this.radioButtonDspacingUnitAng.Checked = true;
-            this.radioButtonDspacingUnitAng.Name = "radioButtonDspacingUnitAng";
-            this.radioButtonDspacingUnitAng.TabStop = true;
-            this.radioButtonDspacingUnitAng.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonDspacingUnitAng, "radioButtonDspacingUnitAng");
+            radioButtonDspacingUnitAng.Checked = true;
+            radioButtonDspacingUnitAng.Name = "radioButtonDspacingUnitAng";
+            radioButtonDspacingUnitAng.TabStop = true;
+            radioButtonDspacingUnitAng.UseVisualStyleBackColor = true;
+            radioButtonDspacingUnitAng.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // radioButtonDspacingUnitNm
             // 
-            resources.ApplyResources(this.radioButtonDspacingUnitNm, "radioButtonDspacingUnitNm");
-            this.radioButtonDspacingUnitNm.Name = "radioButtonDspacingUnitNm";
-            this.radioButtonDspacingUnitNm.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonDspacingUnitNm, "radioButtonDspacingUnitNm");
+            radioButtonDspacingUnitNm.Name = "radioButtonDspacingUnitNm";
+            radioButtonDspacingUnitNm.UseVisualStyleBackColor = true;
+            radioButtonDspacingUnitNm.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // flowLayoutPanelWavenumber
             // 
-            resources.ApplyResources(this.flowLayoutPanelWavenumber, "flowLayoutPanelWavenumber");
-            this.flowLayoutPanelWavenumber.Controls.Add(this.radioButton2);
-            this.flowLayoutPanelWavenumber.Controls.Add(this.radioButton1);
-            this.flowLayoutPanelWavenumber.Name = "flowLayoutPanelWavenumber";
+            resources.ApplyResources(flowLayoutPanelWavenumber, "flowLayoutPanelWavenumber");
+            flowLayoutPanelWavenumber.Controls.Add(radioButtonWavenumberAngInv);
+            flowLayoutPanelWavenumber.Controls.Add(radioButtonWavenumberUnitNmInv);
+            flowLayoutPanelWavenumber.Name = "flowLayoutPanelWavenumber";
             // 
-            // radioButton2
+            // radioButtonWavenumberAngInv
             // 
-            resources.ApplyResources(this.radioButton2, "radioButton2");
-            this.radioButton2.Checked = true;
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.TabStop = true;
-            this.radioButton2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonWavenumberAngInv, "radioButtonWavenumberAngInv");
+            radioButtonWavenumberAngInv.Checked = true;
+            radioButtonWavenumberAngInv.Name = "radioButtonWavenumberAngInv";
+            radioButtonWavenumberAngInv.TabStop = true;
+            radioButtonWavenumberAngInv.UseVisualStyleBackColor = true;
+            radioButtonWavenumberAngInv.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
-            // radioButton1
+            // radioButtonWavenumberUnitNmInv
             // 
-            resources.ApplyResources(this.radioButton1, "radioButton1");
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonWavenumberUnitNmInv, "radioButtonWavenumberUnitNmInv");
+            radioButtonWavenumberUnitNmInv.Name = "radioButtonWavenumberUnitNmInv";
+            radioButtonWavenumberUnitNmInv.UseVisualStyleBackColor = true;
+            radioButtonWavenumberUnitNmInv.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // flowLayoutPanelEnergy
             // 
-            resources.ApplyResources(this.flowLayoutPanelEnergy, "flowLayoutPanelEnergy");
-            this.flowLayoutPanelEnergy.Controls.Add(this.flowLayoutPanel8);
-            this.flowLayoutPanelEnergy.Controls.Add(this.flowLayoutPanel13);
-            this.flowLayoutPanelEnergy.Name = "flowLayoutPanelEnergy";
-            // 
-            // flowLayoutPanel8
-            // 
-            resources.ApplyResources(this.flowLayoutPanel8, "flowLayoutPanel8");
-            this.flowLayoutPanel8.Controls.Add(this.radioButtonEnergyUnitEv);
-            this.flowLayoutPanel8.Controls.Add(this.radioButtonEnergyUnitKev);
-            this.flowLayoutPanel8.Controls.Add(this.radioButton3);
-            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            resources.ApplyResources(flowLayoutPanelEnergy, "flowLayoutPanelEnergy");
+            flowLayoutPanelEnergy.Controls.Add(radioButtonEnergyUnitEv);
+            flowLayoutPanelEnergy.Controls.Add(radioButtonEnergyUnitKev);
+            flowLayoutPanelEnergy.Controls.Add(radioButtonEnergyUnitMev);
+            flowLayoutPanelEnergy.Controls.Add(numericBoxTwoTheta);
+            flowLayoutPanelEnergy.Name = "flowLayoutPanelEnergy";
             // 
             // radioButtonEnergyUnitEv
             // 
-            resources.ApplyResources(this.radioButtonEnergyUnitEv, "radioButtonEnergyUnitEv");
-            this.radioButtonEnergyUnitEv.Checked = true;
-            this.radioButtonEnergyUnitEv.Name = "radioButtonEnergyUnitEv";
-            this.radioButtonEnergyUnitEv.TabStop = true;
-            this.radioButtonEnergyUnitEv.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonEnergyUnitEv, "radioButtonEnergyUnitEv");
+            radioButtonEnergyUnitEv.Checked = true;
+            radioButtonEnergyUnitEv.Name = "radioButtonEnergyUnitEv";
+            radioButtonEnergyUnitEv.TabStop = true;
+            radioButtonEnergyUnitEv.UseVisualStyleBackColor = true;
+            radioButtonEnergyUnitEv.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // radioButtonEnergyUnitKev
             // 
-            resources.ApplyResources(this.radioButtonEnergyUnitKev, "radioButtonEnergyUnitKev");
-            this.radioButtonEnergyUnitKev.Name = "radioButtonEnergyUnitKev";
-            this.radioButtonEnergyUnitKev.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonEnergyUnitKev, "radioButtonEnergyUnitKev");
+            radioButtonEnergyUnitKev.Name = "radioButtonEnergyUnitKev";
+            radioButtonEnergyUnitKev.UseVisualStyleBackColor = true;
+            radioButtonEnergyUnitKev.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
-            // flowLayoutPanel13
+            // radioButtonEnergyUnitMev
             // 
-            resources.ApplyResources(this.flowLayoutPanel13, "flowLayoutPanel13");
-            this.flowLayoutPanel13.Controls.Add(this.label7);
-            this.flowLayoutPanel13.Controls.Add(this.numericBoxTwoTheta);
-            this.flowLayoutPanel13.Controls.Add(this.label4);
-            this.flowLayoutPanel13.Name = "flowLayoutPanel13";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            resources.ApplyResources(radioButtonEnergyUnitMev, "radioButtonEnergyUnitMev");
+            radioButtonEnergyUnitMev.Name = "radioButtonEnergyUnitMev";
+            radioButtonEnergyUnitMev.UseVisualStyleBackColor = true;
+            radioButtonEnergyUnitMev.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // numericBoxTwoTheta
             // 
-            resources.ApplyResources(this.numericBoxTwoTheta, "numericBoxTwoTheta");
-            this.numericBoxTwoTheta.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTwoTheta.DecimalPlaces = -1;
-            this.numericBoxTwoTheta.Maximum = double.PositiveInfinity;
-                                   this.numericBoxTwoTheta.Name = "numericBoxTwoTheta";
-            this.numericBoxTwoTheta.RadianValue = 0D;
-                        this.numericBoxTwoTheta.RestrictLimitValue = true;
-            
-            this.numericBoxTwoTheta.ShowPositiveSign = false;
-                        this.numericBoxTwoTheta.SkipEventDuringInput = false;
-            this.numericBoxTwoTheta.SmartIncrement = true;
-                        this.numericBoxTwoTheta.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxTwoTheta.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericBoxTwoTheta.ThonsandsSeparator = true;
-            this.numericBoxTwoTheta.UpDown_Increment = 1D;
-                                    this.numericBoxTwoTheta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxTwoTheta_ValueChanged);
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(numericBoxTwoTheta, "numericBoxTwoTheta");
+            numericBoxTwoTheta.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxTwoTheta.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTwoTheta.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTwoTheta.Name = "numericBoxTwoTheta";
+            numericBoxTwoTheta.RoundErrorAccuracy = -1;
+            numericBoxTwoTheta.SkipEventDuringInput = false;
+            numericBoxTwoTheta.SmartIncrement = true;
+            numericBoxTwoTheta.ThonsandsSeparator = true;
+            numericBoxTwoTheta.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
             // flowLayoutPanelNeutronTOF
             // 
-            resources.ApplyResources(this.flowLayoutPanelNeutronTOF, "flowLayoutPanelNeutronTOF");
-            this.flowLayoutPanelNeutronTOF.Controls.Add(this.flowLayoutPanel14);
-            this.flowLayoutPanelNeutronTOF.Controls.Add(this.flowLayoutPanel10);
-            this.flowLayoutPanelNeutronTOF.Controls.Add(this.flowLayoutPanel11);
-            this.flowLayoutPanelNeutronTOF.Name = "flowLayoutPanelNeutronTOF";
-            // 
-            // flowLayoutPanel14
-            // 
-            resources.ApplyResources(this.flowLayoutPanel14, "flowLayoutPanel14");
-            this.flowLayoutPanel14.Controls.Add(this.radioButtonTofUnitMicroSec);
-            this.flowLayoutPanel14.Controls.Add(this.radioButtonTofUnitNanoSec);
-            this.flowLayoutPanel14.Name = "flowLayoutPanel14";
+            resources.ApplyResources(flowLayoutPanelNeutronTOF, "flowLayoutPanelNeutronTOF");
+            flowLayoutPanelNeutronTOF.Controls.Add(radioButtonTofUnitMicroSec);
+            flowLayoutPanelNeutronTOF.Controls.Add(radioButtonTofUnitNanoSec);
+            flowLayoutPanelNeutronTOF.Controls.Add(numericBoxTofTakeOffAngle);
+            flowLayoutPanelNeutronTOF.Controls.Add(numericBoxTofDistance);
+            flowLayoutPanelNeutronTOF.Name = "flowLayoutPanelNeutronTOF";
             // 
             // radioButtonTofUnitMicroSec
             // 
-            resources.ApplyResources(this.radioButtonTofUnitMicroSec, "radioButtonTofUnitMicroSec");
-            this.radioButtonTofUnitMicroSec.Checked = true;
-            this.radioButtonTofUnitMicroSec.Name = "radioButtonTofUnitMicroSec";
-            this.radioButtonTofUnitMicroSec.TabStop = true;
-            this.radioButtonTofUnitMicroSec.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonTofUnitMicroSec, "radioButtonTofUnitMicroSec");
+            radioButtonTofUnitMicroSec.Checked = true;
+            radioButtonTofUnitMicroSec.Name = "radioButtonTofUnitMicroSec";
+            radioButtonTofUnitMicroSec.TabStop = true;
+            radioButtonTofUnitMicroSec.UseVisualStyleBackColor = true;
+            radioButtonTofUnitMicroSec.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // radioButtonTofUnitNanoSec
             // 
-            resources.ApplyResources(this.radioButtonTofUnitNanoSec, "radioButtonTofUnitNanoSec");
-            this.radioButtonTofUnitNanoSec.Name = "radioButtonTofUnitNanoSec";
-            this.radioButtonTofUnitNanoSec.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel10
-            // 
-            resources.ApplyResources(this.flowLayoutPanel10, "flowLayoutPanel10");
-            this.flowLayoutPanel10.Controls.Add(this.label11);
-            this.flowLayoutPanel10.Controls.Add(this.numericBoxTofTakeOffAngle);
-            this.flowLayoutPanel10.Controls.Add(this.label10);
-            this.flowLayoutPanel10.Name = "flowLayoutPanel10";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
+            resources.ApplyResources(radioButtonTofUnitNanoSec, "radioButtonTofUnitNanoSec");
+            radioButtonTofUnitNanoSec.Name = "radioButtonTofUnitNanoSec";
+            radioButtonTofUnitNanoSec.UseVisualStyleBackColor = true;
+            radioButtonTofUnitNanoSec.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
             // numericBoxTofTakeOffAngle
             // 
-            resources.ApplyResources(this.numericBoxTofTakeOffAngle, "numericBoxTofTakeOffAngle");
-            this.numericBoxTofTakeOffAngle.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTofTakeOffAngle.DecimalPlaces = -1;
-            this.numericBoxTofTakeOffAngle.Maximum = double.PositiveInfinity;
-                                   this.numericBoxTofTakeOffAngle.Name = "numericBoxTofTakeOffAngle";
-            this.numericBoxTofTakeOffAngle.RadianValue = 1.5707963267948966D;
-                        this.numericBoxTofTakeOffAngle.RestrictLimitValue = true;
-            
-            this.numericBoxTofTakeOffAngle.ShowPositiveSign = false;
-                        this.numericBoxTofTakeOffAngle.SkipEventDuringInput = false;
-            this.numericBoxTofTakeOffAngle.SmartIncrement = true;
-                        this.numericBoxTofTakeOffAngle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxTofTakeOffAngle.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericBoxTofTakeOffAngle.ThonsandsSeparator = true;
-            this.numericBoxTofTakeOffAngle.UpDown_Increment = 1D;
-            this.numericBoxTofTakeOffAngle.Value = 90D;
-                        this.numericBoxTofTakeOffAngle.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxTwoTheta_ValueChanged);
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // flowLayoutPanel11
-            // 
-            resources.ApplyResources(this.flowLayoutPanel11, "flowLayoutPanel11");
-            this.flowLayoutPanel11.Controls.Add(this.label2);
-            this.flowLayoutPanel11.Controls.Add(this.numericBoxTofDistance);
-            this.flowLayoutPanel11.Controls.Add(this.label1);
-            this.flowLayoutPanel11.Name = "flowLayoutPanel11";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(numericBoxTofTakeOffAngle, "numericBoxTofTakeOffAngle");
+            numericBoxTofTakeOffAngle.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofTakeOffAngle.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofTakeOffAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofTakeOffAngle.Name = "numericBoxTofTakeOffAngle";
+            numericBoxTofTakeOffAngle.RadianValue = 1.5707963267948966D;
+            numericBoxTofTakeOffAngle.RoundErrorAccuracy = -1;
+            numericBoxTofTakeOffAngle.SkipEventDuringInput = false;
+            numericBoxTofTakeOffAngle.SmartIncrement = true;
+            numericBoxTofTakeOffAngle.ThonsandsSeparator = true;
+            numericBoxTofTakeOffAngle.Value = 90D;
+            numericBoxTofTakeOffAngle.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
             // numericBoxTofDistance
             // 
-            resources.ApplyResources(this.numericBoxTofDistance, "numericBoxTofDistance");
-            this.numericBoxTofDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTofDistance.DecimalPlaces = -1;
-            this.numericBoxTofDistance.Maximum = double.PositiveInfinity;
-                                   this.numericBoxTofDistance.Name = "numericBoxTofDistance";
-            this.numericBoxTofDistance.RadianValue = 0.73303828583761843D;
-                        this.numericBoxTofDistance.RestrictLimitValue = true;
-            
-            this.numericBoxTofDistance.ShowPositiveSign = false;
-                        this.numericBoxTofDistance.SkipEventDuringInput = false;
-            this.numericBoxTofDistance.SmartIncrement = true;
-                        this.numericBoxTofDistance.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxTofDistance.TextFont = new System.Drawing.Font("Arial", 9.75F);
-            this.numericBoxTofDistance.ThonsandsSeparator = true;
-            this.numericBoxTofDistance.UpDown_Increment = 1D;
-            this.numericBoxTofDistance.Value = 42D;
-                        this.numericBoxTofDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxTwoTheta_ValueChanged);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(numericBoxTofDistance, "numericBoxTofDistance");
+            numericBoxTofDistance.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofDistance.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofDistance.Name = "numericBoxTofDistance";
+            numericBoxTofDistance.RadianValue = 0.73303828583761843D;
+            numericBoxTofDistance.RoundErrorAccuracy = -1;
+            numericBoxTofDistance.SkipEventDuringInput = false;
+            numericBoxTofDistance.SmartIncrement = true;
+            numericBoxTofDistance.ThonsandsSeparator = true;
+            numericBoxTofDistance.Value = 42D;
+            numericBoxTofDistance.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
             // flowLayoutPanel6
             // 
-            resources.ApplyResources(this.flowLayoutPanel6, "flowLayoutPanel6");
-            this.flowLayoutPanel6.Controls.Add(this.groupBox1);
-            this.flowLayoutPanel6.Controls.Add(this.groupBox2);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            // 
-            // radioButton3
-            // 
-            resources.ApplyResources(this.radioButton3, "radioButton3");
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
+            flowLayoutPanel6.Controls.Add(groupBox1);
+            flowLayoutPanel6.Controls.Add(groupBox2);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
             // 
             // HorizontalAxisUserControl
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.flowLayoutPanel6);
-            this.Name = "HorizontalAxisUserControl";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.flowLayoutPanel7.ResumeLayout(false);
-            this.flowLayoutPanel7.PerformLayout();
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.groupBoxTwoTheta.ResumeLayout(false);
-            this.groupBoxTwoTheta.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel15.ResumeLayout(false);
-            this.flowLayoutPanel15.PerformLayout();
-            this.groupBoxOption.ResumeLayout(false);
-            this.groupBoxOption.PerformLayout();
-            this.flowLayoutPanel12.ResumeLayout(false);
-            this.flowLayoutPanel12.PerformLayout();
-            this.flowLayoutPanelTwoTheta.ResumeLayout(false);
-            this.flowLayoutPanelTwoTheta.PerformLayout();
-            this.flowLayoutPanelDspacing.ResumeLayout(false);
-            this.flowLayoutPanelDspacing.PerformLayout();
-            this.flowLayoutPanelWavenumber.ResumeLayout(false);
-            this.flowLayoutPanelWavenumber.PerformLayout();
-            this.flowLayoutPanelEnergy.ResumeLayout(false);
-            this.flowLayoutPanelEnergy.PerformLayout();
-            this.flowLayoutPanel8.ResumeLayout(false);
-            this.flowLayoutPanel8.PerformLayout();
-            this.flowLayoutPanel13.ResumeLayout(false);
-            this.flowLayoutPanel13.PerformLayout();
-            this.flowLayoutPanelNeutronTOF.ResumeLayout(false);
-            this.flowLayoutPanelNeutronTOF.PerformLayout();
-            this.flowLayoutPanel14.ResumeLayout(false);
-            this.flowLayoutPanel14.PerformLayout();
-            this.flowLayoutPanel10.ResumeLayout(false);
-            this.flowLayoutPanel10.PerformLayout();
-            this.flowLayoutPanel11.ResumeLayout(false);
-            this.flowLayoutPanel11.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            Controls.Add(flowLayoutPanel6);
+            Name = "HorizontalAxisUserControl";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            flowLayoutPanel7.ResumeLayout(false);
+            flowLayoutPanel7.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            groupBoxTwoTheta.ResumeLayout(false);
+            groupBoxTwoTheta.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel15.ResumeLayout(false);
+            flowLayoutPanel15.PerformLayout();
+            groupBoxOption.ResumeLayout(false);
+            groupBoxOption.PerformLayout();
+            flowLayoutPanel12.ResumeLayout(false);
+            flowLayoutPanel12.PerformLayout();
+            flowLayoutPanelTwoTheta.ResumeLayout(false);
+            flowLayoutPanelTwoTheta.PerformLayout();
+            flowLayoutPanelDspacing.ResumeLayout(false);
+            flowLayoutPanelDspacing.PerformLayout();
+            flowLayoutPanelWavenumber.ResumeLayout(false);
+            flowLayoutPanelWavenumber.PerformLayout();
+            flowLayoutPanelEnergy.ResumeLayout(false);
+            flowLayoutPanelEnergy.PerformLayout();
+            flowLayoutPanelNeutronTOF.ResumeLayout(false);
+            flowLayoutPanelNeutronTOF.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -622,19 +531,15 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButtonDspacing;
         private System.Windows.Forms.RadioButton radioButtonEnergy;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBoxTwoTheta;
         private Crystallography.Controls.NumericBox numericBoxTwoTheta;
         private WaveLengthControl waveLengthControl;
         private System.Windows.Forms.RadioButton radioButtonTOF;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private NumericBox numericBoxTofDistance;
         private System.Windows.Forms.RadioButton radioButtonNeutron;
         private System.Windows.Forms.RadioButton radioButtonElectron;
         private System.Windows.Forms.RadioButton radioButtonXray;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label10;
         private NumericBox numericBoxTofTakeOffAngle;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.RadioButton radioButtonMonochro;
@@ -647,7 +552,6 @@
         private System.Windows.Forms.RadioButton radioButtonEnergyUnitKev;
         public System.Windows.Forms.RadioButton radioButtonDspacingUnitAng;
         public System.Windows.Forms.RadioButton radioButtonDspacingUnitNm;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.RadioButton radioButtonCustomWhite;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -660,21 +564,16 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDspacing;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWavenumber;
-        public System.Windows.Forms.RadioButton radioButton1;
-        public System.Windows.Forms.RadioButton radioButton2;
+        public System.Windows.Forms.RadioButton radioButtonWavenumberUnitNmInv;
+        public System.Windows.Forms.RadioButton radioButtonWavenumberAngInv;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEnergy;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel13;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNeutronTOF;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.GroupBox groupBoxOption;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelTwoTheta;
-        public System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
+        public System.Windows.Forms.RadioButton radioButtonAngleUnitRadian;
+        private System.Windows.Forms.RadioButton radioButtonEnergyUnitMev;
+        public System.Windows.Forms.RadioButton radioButtonAngleUnitDegree;
     }
 }

@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Crystallography
 {
     public static class XYFile
     {
-        public static bool SavePdiFile(DiffractionProfile[] dp, string fileName)
+        public static bool SavePdi2File(DiffractionProfile2[] dp, string fileName)
         {
             System.IO.FileStream fs = null;
             try
             {
-                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(DiffractionProfile[]));
-                fs = new System.IO.FileStream(fileName, System.IO.FileMode.Create);
+                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(DiffractionProfile2[]));
+                fs = new FileStream(fileName, FileMode.Create);
                 serializer.Serialize(fs, dp);
                 fs.Close();
                 return true;
@@ -26,7 +27,7 @@ namespace Crystallography
             }
         }
 
-        public static DiffractionProfile[] ReadPdiFile(string fileName)
+        public static DiffractionProfile2[] ReadPdi2File(string fileName, int version=2)
         {
             //OriginalFormatType  -> SrcAxisMode
             //OriginalWaveLength  -> SrcWaveLength
@@ -34,7 +35,7 @@ namespace Crystallography
             try//まずXMLのタグを変更
             {
                 using var reader = new StreamReader(fileName, Encoding.GetEncoding("UTF-8"));
-                List<string> strList = new List<string>();
+                var strList = new List<string>();
                 string tempstr;
                 while ((tempstr = reader.ReadLine()) != null)
                 {
@@ -55,26 +56,43 @@ namespace Crystallography
             }
             catch { };
 
-            System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(DiffractionProfile[]));
+           
             System.IO.FileStream fs = null;
             try
             {
-                fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
-                DiffractionProfile[] dp = (DiffractionProfile[])serializer.Deserialize(fs);
-                fs.Close();
-                if (dp.Length > 0)
-                    return dp;
-                else
-                    return Array.Empty<DiffractionProfile>();
+                if (version == 2)
+                {
+                    var serializer = new System.Xml.Serialization.XmlSerializer(typeof(DiffractionProfile2[]));
+                    fs = new FileStream(fileName, FileMode.Open);
+                    DiffractionProfile2[] dp = (DiffractionProfile2[])serializer.Deserialize(fs);
+                    fs.Close();
+                    if (dp.Length > 0)
+                        return dp;
+                    else
+                        return Array.Empty<DiffractionProfile2>();
+                }
+                else //バージョン1
+                {
+                    var serializer = new System.Xml.Serialization.XmlSerializer(typeof(DiffractionProfile[]));
+                    fs = new FileStream(fileName, FileMode.Open);
+                    DiffractionProfile[] dp = (DiffractionProfile[])serializer.Deserialize(fs);
+
+                    fs.Close();
+                    if (dp.Length > 0)
+                        return dp.Select(e => e.ConvertToDiffractionProfile2()).ToArray();
+                    else
+                        return Array.Empty<DiffractionProfile2>();
+                }
+
             }
             catch//もしシリアライズできなかったら、name部分に間違った日本語が書かれている可能性あり。
             {
-                if (fs != null)
-                    fs.Close();
+                fs?.Close();
                 try
                 {
-                    StreamReader reader = new StreamReader(fileName, Encoding.UTF8);
-                    List<string> strList = new List<string>();
+                    var serializer = new System.Xml.Serialization.XmlSerializer(typeof(DiffractionProfile[]));
+                    var reader = new StreamReader(fileName, Encoding.UTF8);
+                   var strList = new List<string>();
                     string tempstr;
                     while ((tempstr = reader.ReadLine()) != null)
                         strList.Add(tempstr);
@@ -91,11 +109,11 @@ namespace Crystallography
                     writer.Flush();
                     writer.Close();
                     fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open);
-                    DiffractionProfile[] dp = (DiffractionProfile[])serializer.Deserialize(fs);
+                    var dp = (DiffractionProfile[])serializer.Deserialize(fs);
                     fs.Close();
                     if (dp.Length > 0)
-                        return dp;
-                    else return Array.Empty<DiffractionProfile>();
+                        return dp.Select(e=> e.ConvertToDiffractionProfile2()).ToArray();
+                    else return Array.Empty<DiffractionProfile2>();
                 }
                 catch
                 {
@@ -110,9 +128,9 @@ namespace Crystallography
                             strList.Add(tempstr);
                         reader.Close();
                         if (strList.Count <= 3)
-                            return Array.Empty<DiffractionProfile>();
+                            return Array.Empty<DiffractionProfile2>();
 
-                        var diffProf = new DiffractionProfile();
+                        var diffProf = new DiffractionProfile2();
 
                         //古いヘッダの書式
                         //Wave Length (0.1nm):0.4176811455              0
@@ -125,34 +143,34 @@ namespace Crystallography
                         if (strList[0].Contains("Wave Length", StringComparison.Ordinal))
                         {
                             if (strList[0].Contains("(nm)", StringComparison.Ordinal))
-                                diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]);
+                                diffProf.SrcProperty.WaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]);
                             else if (strList[0].Contains("(0.1nm)", StringComparison.Ordinal))
-                                diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]) / 10.0;
+                                diffProf.SrcProperty.WaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]) / 10.0;
                         }
 
                         if ((strList[4].Split(':', true))[1] == "Angle")
-                            diffProf.SrcAxisMode = HorizontalAxis.Angle;
+                            diffProf.SrcProperty.AxisMode = HorizontalAxis.Angle;
                         else if ((strList[4].Split(':', true))[1] == "d-spacing")
-                            diffProf.SrcAxisMode = HorizontalAxis.d;
+                            diffProf.SrcProperty.AxisMode = HorizontalAxis.d;
                         else if ((strList[4].Split(':', true))[1] == "Energy")
-                            diffProf.SrcAxisMode = HorizontalAxis.EnergyXray;
+                            diffProf.SrcProperty.AxisMode = HorizontalAxis.EnergyXray;
                         else
-                            return Array.Empty<DiffractionProfile>();
+                            return Array.Empty<DiffractionProfile2>();
 
                         for (int i = 5; i < strList.Count; i++)
                         {
                             string[] str = strList[i].Split(',', true);
-                            diffProf.OriginalProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
+                            diffProf.SourceProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
                         }
                         diffProf.Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1);
-                        return new DiffractionProfile[] { diffProf };
+                        return new DiffractionProfile2[] { diffProf };
                     }
-                    catch { return Array.Empty<DiffractionProfile>(); }
+                    catch { return Array.Empty<DiffractionProfile2>(); }
                 }
             }
         }
 
-        public static DiffractionProfile[] ReadRasFile(string fileName)
+        public static DiffractionProfile2[] ReadRasFile(string fileName)
         {
             var strArray = new List<string>();
             var reader = new StreamReader(fileName, Encoding.GetEncoding("UTF-8"));
@@ -161,16 +179,16 @@ namespace Crystallography
                 strArray.Add(tempstr);
             reader.Close();
             if (strArray.Count <= 3)
-                return Array.Empty<DiffractionProfile>();
+                return Array.Empty<DiffractionProfile2>();
 
-            var dp = new List<DiffractionProfile>();
+            var dp = new List<DiffractionProfile2>();
 
             for (int i = 0; i < strArray.Count; i++)
             {
                 if (strArray[i] == "*RAS_INT_START")
                 {
                     i++;
-                    dp.Add(new DiffractionProfile());
+                    dp.Add(new DiffractionProfile2());
                     for (; i < strArray.Count; i++)
                     {
                         if (strArray[i] != "*RAS_INT_END")
@@ -178,7 +196,7 @@ namespace Crystallography
                             string[] tempStr = strArray[i].Split(new[] { ' ' });
                             double x = Convert.ToDouble(tempStr[0]);
                             double y = Convert.ToDouble(tempStr[1]);
-                            dp[^1].OriginalProfile.Pt.Add(new PointD(x, y));
+                            dp[^1].SourceProfile.Pt.Add(new PointD(x, y));
                         }
                         else
                             break;
@@ -191,7 +209,7 @@ namespace Crystallography
 
             if (dp.Count > 0)
                 return dp.ToArray();
-            else return Array.Empty<DiffractionProfile>();
+            else return Array.Empty<DiffractionProfile2>();
         }
 
         /// <summary>
@@ -199,7 +217,7 @@ namespace Crystallography
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static DiffractionProfile[] ReadCSVFile(string fileName)
+        public static DiffractionProfile2[] ReadCSVFile(string fileName)
         {
             var strArray = new List<string>();
             using (var reader = new StreamReader(fileName, Encoding.GetEncoding("UTF-8")))
@@ -210,10 +228,10 @@ namespace Crystallography
             }
 
             if (strArray.Count <= 3)
-                return Array.Empty<DiffractionProfile>();
+                return Array.Empty<DiffractionProfile2>();
 
             if (!strArray[1].StartsWith("X,Y,"))
-                return Array.Empty<DiffractionProfile>();
+                return Array.Empty<DiffractionProfile2>();
 
             try
             {
@@ -221,12 +239,12 @@ namespace Crystallography
                 var axis = strArray[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 var value = strArray[2].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (title.Length * 2 != axis.Length || axis.Length != value.Length)
-                    return Array.Empty<DiffractionProfile>();
+                    return Array.Empty<DiffractionProfile2>();
 
-                var dp = new DiffractionProfile[title.Length];
+                var dp = new DiffractionProfile2[title.Length];
                 for (int i = 0; i < dp.Length; i++)
                 {
-                    dp[i] = new DiffractionProfile();
+                    dp[i] = new DiffractionProfile2();
                     dp[i].Name = title[i];
                 }
                 for (int i = 2; i < strArray.Count; i++)
@@ -236,7 +254,7 @@ namespace Crystallography
                     {
                         double x = Convert.ToDouble(value[j * 2]);
                         double y = Convert.ToDouble(value[j * 2 + 1]);
-                        dp[j].OriginalProfile.Pt.Add(new PointD(x, y));
+                        dp[j].SourceProfile.Pt.Add(new PointD(x, y));
                     }
                 }
 
@@ -251,7 +269,7 @@ namespace Crystallography
             }
             catch
             {
-                return Array.Empty<DiffractionProfile>();
+                return Array.Empty<DiffractionProfile2>();
             }
         }
 
@@ -263,7 +281,7 @@ namespace Crystallography
         /// <param name="fileName"></param>
         /// <param name="separater"></param>
         /// <returns></returns>
-        public static DiffractionProfile ConvertUnknownFileToProfileData(string fileName, char separater)
+        public static DiffractionProfile2 ConvertUnknownFileToProfileData(string fileName, char separater)
         {
             var strArray = new List<string>();
             var reader = new StreamReader(fileName, Encoding.GetEncoding("UTF-8"));
@@ -383,9 +401,9 @@ namespace Crystallography
             //if (yRow == -1) return null;
 
             //最後に値を代入
-            DiffractionProfile dif = new DiffractionProfile();
+            DiffractionProfile2 dif = new DiffractionProfile2();
             for (int i = 0; i < doubleList.Count; i++)
-                dif.OriginalProfile.Pt.Add(new PointD(doubleList[i][xRow], doubleList[i][yRow]));
+                dif.SourceProfile.Pt.Add(new PointD(doubleList[i][xRow], doubleList[i][yRow]));
 
             return dif;
         }

@@ -2,14 +2,31 @@
 {
     //汎用性の高い列挙体をここで定義
 
-    public enum PixelUnitEnum
+    public enum LengthUnitEnum
     {
         None,
+        
+        Meter,
+        CentiMeter,
         MilliMeter,
         MicroMeter,
         NanoMeter,
-        MicroMeterInv,
-        NanoMeterInv
+        Angstrom,
+        PicoMeter,
+
+        MeterInverse,
+        CentiMeterInverse,
+        MilliMeterInverse,
+        MicroMeterInverse,
+        NanoMeterInverse,
+        AngstromInverse,
+        PicoMeterInverse
+    }
+
+    public enum AngleUnitEnum
+    {
+        Degree,
+        Radian
     }
 
     public enum FourierDirectionEnum
@@ -27,7 +44,16 @@
     public enum EnergyUnitEnum
     {
         eV,
-        KeV
+        KeV,
+        MeV
+    }
+
+    public enum TimeUnitEnum
+    {
+        Seccond,
+        MilliSecond,
+        MicroSecond,
+        NanoSecond
     }
 
     internal class Enum

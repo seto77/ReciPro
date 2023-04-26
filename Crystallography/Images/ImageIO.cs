@@ -480,13 +480,13 @@ public static class ImageIO
 
             var temp = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Units"].Values.Select(c => (ushort)c).ToArray();
             var units = new string(temp.Select(c => (char)c).ToArray());
-            var unit = PixelUnitEnum.None;
+            var unit = LengthUnitEnum.None;
             if (units == "1/nm")
-                unit = PixelUnitEnum.NanoMeterInv;
+                unit = LengthUnitEnum.NanoMeterInverse;
             else if (units == "µm")
-                unit = PixelUnitEnum.MicroMeter;
+                unit = LengthUnitEnum.MicroMeter;
             else if (units == "nm")
-                unit = PixelUnitEnum.NanoMeter;
+                unit = LengthUnitEnum.NanoMeter;
 
             Ring.DigitalMicrographProperty = new DigitalMicrograph.Property(accVol, pixelSize, pixelScale, unit);
 

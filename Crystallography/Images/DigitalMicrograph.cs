@@ -13,10 +13,10 @@ namespace Crystallography
         {
             public double AccVoltage { get; set; }
             public double PixelSizeInMicron { get; set; }
-            public PixelUnitEnum PixelUnit { get; set; }
+            public LengthUnitEnum PixelUnit { get; set; }
             public double PixelScale { get; set; }
 
-            public Property(double accVoltage, double pixelSizeInMicron, double pixelScale, PixelUnitEnum pixelUnit)
+            public Property(double accVoltage, double pixelSizeInMicron, double pixelScale, LengthUnitEnum pixelUnit)
             {
                 AccVoltage = accVoltage;
                 PixelSizeInMicron = pixelSizeInMicron;

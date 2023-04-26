@@ -515,7 +515,7 @@ public class PseudoBitmap : IDisposable
     /// <summary>
     /// ピクセルの単位
     /// </summary>
-    public PixelUnitEnum PixelUnit;
+    public LengthUnitEnum PixelUnit;
 
     #endregion プロパティ
 
