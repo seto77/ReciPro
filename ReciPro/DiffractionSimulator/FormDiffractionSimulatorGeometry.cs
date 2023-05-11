@@ -317,7 +317,7 @@ public partial class FormDiffractionSimulatorGeometry : Form
                 if (ImageIO.ReadImage(filename))
                 {
                     //DigitalMicroGraphデータであればスケールの情報などを取得
-                    if (Ring.DigitalMicrographProperty.PixelUnit == PixelUnitEnum.NanoMeterInv)
+                    if (Ring.DigitalMicrographProperty.PixelUnit == LengthUnitEnum.NanoMeterInverse)
                     {
                         pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width);
 

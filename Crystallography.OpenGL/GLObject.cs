@@ -424,6 +424,9 @@ abstract public class GLObject
     /// </summary>
     private void Render()
     {
+        if (Primitives == null)
+            return;
+
         if (this is TextObject text && text.TextureNum != -1)
         {
             GL.Uniform1(Location[Program].Texture, 0);
@@ -444,6 +447,7 @@ abstract public class GLObject
         GL.BindBuffer(BufferTarget.ElementArrayBuffer, Obj.EBO);
 
         int offset = 0;
+       
         foreach (var (t, len) in Primitives)
         {
             if ((t == PT.Triangles || t == PT.TriangleStrip || t == PT.TriangleFan || t == PT.Quads)
@@ -1700,7 +1704,8 @@ public class TextObject : GLObject
     public TextObject(string text, float fontSize, in V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
     {
         text = text.Trim();
-        if (text != "")
+
+        if (text != "" || fontSize > 0)
         {
             Indices = indices;
             Primitives = primitives;
@@ -1713,7 +1718,7 @@ public class TextObject : GLObject
                 TextureNum = obj.TextureNum;
                 Vertices = obj.Vertices;
             }
-            else//辞書に登録されていない場合
+            else //辞書に登録されていない場合
             {
                 var fnt = new Font("Tahoma", fontSize);//フォントオブジェクトの作成
                 var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100),
@@ -1776,12 +1781,13 @@ public class TextObject : GLObject
                         new Vertex(new V3f(+width / 2f, +height / 2f, (float)popout), new V3f() ,p10),
                         new Vertex(new V3f(+width / 2f, -height / 2f, (float)popout), new V3f() ,p11),
                         new Vertex(new V3f(-width / 2f, -height / 2f, (float)popout), new V3f() ,p01)
-                };
+                    };
 
                 //辞書に登録
                 dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, Vertices));
             }
         }
+
     }
 
 }

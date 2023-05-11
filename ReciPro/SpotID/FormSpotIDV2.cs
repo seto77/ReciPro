@@ -103,7 +103,7 @@ public partial class FormSpotIDV2 : Form
 
         if (fileName.EndsWith("dm3") || fileName.EndsWith("dm4"))
         {//DigitalMicroGraphデータであればスケールの情報などを取得
-            if (Ring.DigitalMicrographProperty.PixelUnit == PixelUnitEnum.NanoMeterInv)
+            if (Ring.DigitalMicrographProperty.PixelUnit == LengthUnitEnum.NanoMeterInverse)
             {
                 waveLengthControl1.WaveSource = WaveSource.Electron;
                 waveLengthControl1.Energy = Ring.DigitalMicrographProperty.AccVoltage / 1000.0;
