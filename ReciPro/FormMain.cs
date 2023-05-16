@@ -437,7 +437,7 @@ public partial class FormMain : Form
         var args = Environment.GetCommandLineArgs();
         if (args != null)
         {
-            if (args.Contains("/m"))
+            if (args.Contains("/m"))//mをつけるとマクロ
             {
                 var filename = args.First(a => a.EndsWith(".mcr") && File.Exists(a));
                 if (filename != null)
@@ -451,7 +451,7 @@ public partial class FormMain : Form
                 }
             }
 
-            if (args.Contains("/x"))
+            if (args.Contains("/x"))//xがあると、実行後に閉じる
                 Close();
         }
     }
