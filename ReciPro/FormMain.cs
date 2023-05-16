@@ -1,8 +1,5 @@
 #region using
 using Crystallography.OpenGL;
-using MemoryPack.Compression;
-using MemoryPack;
-using Microsoft.Win32;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,12 +15,43 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Col4 = OpenTK.Graphics.Color4;
 using Vec3 = OpenTK.Vector3d;
-using IronPython.Compiler.Ast;
 using IronPython.Hosting;
+
+using Microsoft.VisualBasic.ApplicationServices;
+using Crystallography.Controls;
+using static Community.CsharpSqlite.Sqlite3;
+using System.Text;
 
 #endregion
 
 namespace ReciPro;
+
+//class myApplication : WindowsFormsApplicationBase
+//{
+//    public myApplication() : base()
+//    {
+//        this.EnableVisualStyles = true;
+//        this.IsSingleInstance = true;
+//        this.MainForm = new FormMain();
+//        this.StartupNextInstance += new StartupNextInstanceEventHandler(myApplication_StartupNextInstance);
+//    }
+//    void myApplication_StartupNextInstance(object sender, StartupNextInstanceEventArgs e)
+//    {
+//        var form1 = (FormMain)this.MainForm;
+//        int mode = int.Parse(e.CommandLine[0]);
+//        if (mode == 1)
+//        {
+//        }
+//        else if (mode == 0)
+//        {
+//        }
+//        else if (mode == 2)
+//        {
+//        }
+
+//    }
+//}
+
 
 public partial class FormMain : Form
 {
@@ -225,6 +253,8 @@ public partial class FormMain : Form
 
 
 
+
+
         commonDialog.Show();
         if (commonDialog != null)
             commonDialog.Location = new Point(this.Location.X + this.Width / 2 - commonDialog.Width / 2, this.Location.Y + this.Height / 2 - commonDialog.Height / 2);
@@ -402,6 +432,28 @@ public partial class FormMain : Form
         }
         powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(sender, e);
 
+
+        //コマンドライン引数の解釈
+        var args = Environment.GetCommandLineArgs();
+        if (args != null)
+        {
+            if (args.Contains("/m"))
+            {
+                var filename = args.First(a => a.EndsWith(".mcr") && File.Exists(a));
+                if (filename != null)
+                {
+                    this.Visible = true;
+                    Thread.Sleep(100);
+                    Application.DoEvents();
+                    Thread.Sleep(100);
+                    var reader = new StreamReader(filename, Encoding.GetEncoding("UTF-8"));
+                    FormMacro.RunMacro(reader.ReadToEnd());
+                }
+            }
+
+            if (args.Contains("/x"))
+                Close();
+        }
     }
 
     /// <summary>
@@ -1439,17 +1491,6 @@ public partial class FormMain : Form
         if (checkBoxFixePlane.Checked)
             checkBoxFixAxis.Checked = false;
     }
-
-
-
-
-
-
-
-
-
-
-
     #endregion
 
 

@@ -10,6 +10,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.862(2023/05/16)  Fixed a minor bug. Improved macro functions. " +
         "\r\n ver4.861(2023/04/12)  Added macro functions to automate various tasks (mainly 'Diffraction Simulator' at the moment). " +
         "\r\n ver4.860(2023/04/06)  Improved CIF file loading compatibility." +
         "\r\n ver4.859(2023/03/31)  Fixed a minor bug on HRTEM/STEM simulation." +
