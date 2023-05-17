@@ -239,7 +239,7 @@
       <ConformanceMode>
       </ConformanceMode>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableParallelCodeGeneration>false</EnableParallelCodeGeneration>
@@ -254,7 +254,7 @@
       </OpenMPSupport>
       <OpenMP>
       </OpenMP>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <EnableModules>
       </EnableModules>
       <BufferSecurityCheck>
