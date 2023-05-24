@@ -207,15 +207,19 @@ public partial class FormMain : Form
     /// </summary>
     public FormMain()
     {
+        InitializeComponent();
+
         if (DesignMode)
             return;
 
         sw.Restart();
 
+        var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+        if (4.862 > Convert.ToDouble(key.GetValue("Version", "0")))
+        { }
+
         //カルチャーを決めるため、レジストリ読込
         Registry(Reg.Mode.Read);
-
-        InitializeComponent();
 
         ip = new Progress<(long, long, long, string)>(reportProgress);//IReport
 
@@ -250,10 +254,6 @@ public partial class FormMain : Form
             Hint = Version.Hint,
 
         };
-
-
-
-
 
         commonDialog.Show();
         if (commonDialog != null)
@@ -485,6 +485,9 @@ public partial class FormMain : Form
     {
         var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
         if (key == null) return;
+
+        if (mode == Reg.Mode.Write)
+            key.SetValue("Version", Version.VersionValue);
 
         Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
 

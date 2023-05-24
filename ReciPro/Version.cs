@@ -6,6 +6,7 @@ internal static class Version
     public const string Author = "Y. Seto && M. Ohtsuka";
 
     static public string VersionAndDate => History.Remove(0, 10).Remove(20);
+    static public double VersionValue => Convert.ToDouble(VersionAndDate[3..^12]);
 
 
     public const string History =

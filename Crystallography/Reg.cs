@@ -3,6 +3,7 @@ using MemoryPack;
 using Microsoft.Win32;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Crystallography;
 
@@ -14,7 +15,22 @@ public static class Reg
         if (owner == null)
             return;
         var prop = owner.GetType().GetProperty(propName);
-        var regName = $"{prop.ReflectedType.FullName}.{propName}";
+
+        string regName;
+
+        if(owner is Control c)
+        {
+            if (c.TopLevelControl != null && c.TopLevelControl.Name != c.Name)
+                regName = c.TopLevelControl.Name + "." + c.Name + "." + propName;
+            else
+                regName = c.TopLevelControl.Name + "." + propName;
+        }
+        else if (owner is ToolStripItem t)
+        {
+            regName = t.Name + "." + propName;
+        }
+        else
+            regName = $"{prop.ReflectedType.FullName}.{propName}";
 
         if (mode == Mode.Read)
         {//読込の時

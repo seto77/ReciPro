@@ -1430,7 +1430,7 @@ public record struct HorizontalAxisProperty
         WaveSource = WaveSource.Neutron;
         WaveColor = WaveColor.FlatWhite;
         TofAngle = tofAngle;
-        TofAngle = tofLength;
+        TofLength = tofLength;
         TofTimeUnit = tofTimeUnit;
     }
 
