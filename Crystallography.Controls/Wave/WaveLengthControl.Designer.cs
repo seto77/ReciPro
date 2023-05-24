@@ -49,7 +49,7 @@
             // 
             // comboBoxXRayElement
             // 
-            comboBoxXRayElement.DropDownHeight = 100;
+            comboBoxXRayElement.DropDownHeight = 200;
             comboBoxXRayElement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxXRayElement.DropDownWidth = 120;
             resources.ApplyResources(comboBoxXRayElement, "comboBoxXRayElement");

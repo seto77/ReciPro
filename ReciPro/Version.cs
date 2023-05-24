@@ -80,10 +80,10 @@ internal static class Version
         "\r\n ver4.780(2020/08/18)  Fixed a bug when exporting face-centered symmetry to CIF format. " +
         "\r\n ver4.779(2020/07/08)  Added a crystal database function, which manages 20698 crystals from AMCSD database. Fixed a bug on a dll file." +
         "\r\n ver4.778(2020/06/07)  Fixed a bug on importing CIF file." +
-        "\r\n ver4.777(2020/06/06)  Improved GUI of the main window and 'structure viwer'." +
+        "\r\n ver4.777(2020/06/06)  Improved GUI of the main window and 'structure viewer'." +
         "\r\n ver4.776(2020/05/30)  Improved: Speed up rendering of 'Structure viewer'." +
         "\r\n ver4.775(2020/05/19)  Improved: Rendering of text label in OpenGL windows. Fixed: Stereonet drawing." +
-        "\r\n ver4.774(2020/05/15)  Fixed bugs for Wykcoff position discriminator for trigonal and hexagonal symmetries." +
+        "\r\n ver4.774(2020/05/15)  Fixed bugs for Wyckoff position discriminator for trigonal and hexagonal symmetries." +
         "\r\n ver4.773(2020/05/12)  Improved importing CIF file." +
         "\r\n ver4.772(2020/05/12)  Changed: Open GL 1.5 (or higher) is required for 'Structure Viewer'." +
         "\r\n ver4.771(2020/05/10)  Changed: Open GL 3.3 (or higher) is required for 'Structure Viewer'." +
@@ -161,8 +161,8 @@ internal static class Version
         "\r\n ver4.632(2019/02/22)  Improved some functions in 'SPot ID'." +
         "\r\n ver4.631(2019/02/21)  Fixed minor bugs. (copy functions in 'Structure Viewer' and 'Spot ID')" +
         "\r\n ver4.630(2019/02/20)  Fixed a minor bug. Changed .Net framework version to 4.7.2." +
-        "\r\n ver4.629(2019/02/20)  Added a function: OpenGL can be manualy disabled by pressing 'CTRL' button on boot." +
-        "\r\n ver4.628(2019/02/19)  Fixed a bug of calculations of anisotropic Debye-Waller efects." +
+        "\r\n ver4.629(2019/02/20)  Added a function: OpenGL can be manually disabled by pressing 'CTRL' button on boot." +
+        "\r\n ver4.628(2019/02/19)  Fixed a bug of calculations of anisotropic Debye-Waller effects." +
         "\r\n ver4.627(2019/02/17)  Minor bug fixed." +
         "\r\n ver4.625(2019/02/13)  Fixed minor bugs." +
         "\r\n ver4.624(2019/02/09)  Added: Check routine of OpenGL version." +
@@ -175,14 +175,14 @@ internal static class Version
         "\r\n ver4.616(2019/01/25)  Minor bug fixed." +
         "\r\n ver4.615(2019/01/22)  Improved: A simulated CBED pattern can be saved as Tiff (32-bit float) format." +
         "\r\n ver4.614(2019/01/22)  Improved: Detailed results of the Bethe method calculation can be displayed." +
-        "\r\n ver4.613(2019/01/19)  Minor improments on dynamic compression mode." +
-        "\r\n ver4.612(2019/01/11)  Minor improments on dynamic compression mode." +
+        "\r\n ver4.613(2019/01/19)  Minor improvements on dynamic compression mode." +
+        "\r\n ver4.612(2019/01/11)  Minor improvements on dynamic compression mode." +
         "\r\n ver4.611(2019/01/08)  Fixed a minor bug on a TDS calculation." +
         "\r\n ver4.61 (2019/01/05)  Improved a dynamic simulation of electron diffraction. A TDS (thermal diffuse scattering) effect is now calculated properly" +
         "\r\n ver4.602(2018/12/23)  Improved 'Structure viewer'." +
         "\r\n ver4.601(2018/12/20)  Improved 'Structure viewer'." +
         "\r\n ver4.6  (2018/12/17)  Replaced OpenGL libraries. From this version, Open GL 4.3 (or higher) is required." +
-        "\r\n ver4.515(2018/11/20)  Modified some incosistensies." +
+        "\r\n ver4.515(2018/11/20)  Modified some inconsistencies." +
         "\r\n ver4.514(2018/10/25)  Minor bug fixed." +
         "\r\n ver4.513(2018/10/22)  Improved calculation speed for CBED." +
         "\r\n ver4.512(2018/10/19)  Added a solver library for CBED calculation." +
@@ -197,7 +197,7 @@ internal static class Version
         "\r\n ver4.362(2018/03/30)  Minor improvements." +
         "\r\n ver4.361(2018/03/23)  Minor improvements." +
         "\r\n ver4.36 (2018/03/19)  Improved: 'TEMID' is capable of selection of multiple crystals. (need Ctrl + Click)." +
-        "\r\n ver4.35 (2018/03/01)  Improved an algorythm of 'Diffraction Simulator'." +
+        "\r\n ver4.35 (2018/03/01)  Improved an algorithm of 'Diffraction Simulator'." +
         "\r\n ver4.346(2018/02/23)  Minor bug fixed." +
         "\r\n ver4.345(2018/02/22)  Minor bug fixed." +
         "\r\n ver4.344(2018/02/22)  Minor bug fixed." +
@@ -214,11 +214,11 @@ internal static class Version
         "\r\n ver4.317(2018/02/03)  Fixed minor bugs on 'Single crystal diffraction' form. " +
         "\r\n ver4.316(2018/01/26)  Fixed minor bugs on 'Single crystal diffraction' form. " +
         "\r\n ver4.312(2018/01/25)  Improved 'Single crystal diffraction' form. " +
-        "\r\n ver4.311(2018/01/20)  Improved the 'Operlap picture' function on 'Single crystal diffraction' form." +
-        "\r\n ver4.31 (2018/01/19)  Changed graphics interfcace for 'Single crystal diffraction' form from OpenGL to GDI+, and then the metafile (vector object) of diffraction patterns can be exported to your clipboard. The 'Operlap picture' function is now under construction" +
-        "\r\n ver4.30 (2017/12/24)  Changed graphics interfcace for 'Stereonet' form from OpenGL to GDI+, and then the metafile (vector object) of stereonet can be exported to your clipboard." +
+        "\r\n ver4.311(2018/01/20)  Improved the 'Overlap picture' function on 'Single crystal diffraction' form." +
+        "\r\n ver4.31 (2018/01/19)  Changed graphics interface for 'Single crystal diffraction' form from OpenGL to GDI+, and then the metafile (vector object) of diffraction patterns can be exported to your clipboard. The 'Operlap picture' function is now under construction" +
+        "\r\n ver4.30 (2017/12/24)  Changed graphics interface for 'Stereonet' form from OpenGL to GDI+, and then the metafile (vector object) of stereonet can be exported to your clipboard." +
         "\r\n ver4.29 (2017/09/01)  Added 'Point Spread' mode on 'Single Crystal Diffraction'." +
-        "\r\n ver4.283(2017/05/28)  Fixed a smoll bug on 'Strain control' function'." +
+        "\r\n ver4.283(2017/05/28)  Fixed a small bug on 'Strain control' function'." +
         "\r\n ver4.282(2017/05/26)  Added 'Strain control' function'." +
         "\r\n ver4.281(2017/04/26)  Improved SACLA simulation on 'Single Crystal Diffraction'." +
         "\r\n ver4.280(2016/12/31)  Improved a compatibility for CIF format." +
@@ -233,13 +233,13 @@ internal static class Version
         "\r\n ver4.270(2015/09/25)  Fixed a minor bug on 'Structure Viewer'.(thx Dr. Fukui)" +
         "\r\n ver4.269(2015/06/30)  Added: enable to simulate Back Laue camera." +
         "\r\n ver4.268(2015/05/13)  Fixed a minor bug on reading *.ipa files." +
-        "\r\n ver4.267(2015/03/25)  Fixed a minor bug on sigle diffraction simulation" +
-        "\r\n ver4.266(2015/03/18)  Fixed a bug on Debye-Waller factor calulations (thx Dr. Koga)" +
+        "\r\n ver4.267(2015/03/25)  Fixed a minor bug on single diffraction simulation" +
+        "\r\n ver4.266(2015/03/18)  Fixed a bug on Debye-Waller factor calculations (thx Dr. Koga)" +
         "\r\n ver4.265(2015/03/13)  Fixed a bug about the calculation of the Wyckoff position of P63/mmc. (thx Dr. Nagasako)" +
         "\r\n ver4.264(2015/03/07)  Improved 'Spot ID' function." +
         "\r\n ver4.263(2015/01/28)  Improved 'Spot ID' function." +
         "\r\n ver4.262(2015/01/26)  Updated help files." +
-        "\r\n ver4.261(2015/01/24)  Inmproved: a support of DM4 file on 'Spot ID'." +
+        "\r\n ver4.261(2015/01/24)  Improved: a support of DM4 file on 'Spot ID'." +
         "\r\n ver4.26 (2015/01/23)  Added a new function, 'Spot ID', where diffraction spots could be semi-automatically identified." +
         "\r\n ver4.252(2014/11/11)  Fixed: minor bugs." +
         "\r\n ver4.251(2014/11/10)  Fixed: minor bugs." +
@@ -248,8 +248,8 @@ internal static class Version
         "\r\n ver4.241(2014/10/21)  Fixed minor bugs on OpenGL calculations." +
         "\r\n ver4.24 (2014/07/14)  Improved 'Powder Diffraction'. (but all function are not implemented yet)" +
         "\r\n ver4.234(2013/12/17)  Improved language option" +
-        "\r\n ver4.233(2013/10/28)  Improved appearace for >100% DPI scaling" +
-        "\r\n ver4.232(2013/10/15)  Improved appearace for >100% DPI scaling" +
+        "\r\n ver4.233(2013/10/28)  Improved appearance for >100% DPI scaling" +
+        "\r\n ver4.232(2013/10/15)  Improved appearance for >100% DPI scaling" +
         "\r\n ver4.231(2013/08/10)  Fixed minor bugs on OpenGL." +
         "\r\n ver4.23 (2013/03/28)  Improved structure viewer." +
         "\r\n ver4.221(2013/02/26)  Changed adress of help page." +
@@ -266,12 +266,12 @@ internal static class Version
         "\r\n ver4.181(2012/05/31)  Bug Fix" +
         "\r\n ver4.18 (2012/05/23)  Improved: speed up of calculation of Debye ring simulation." +
         "\r\n ver4.17 (2011/12/28)  Improved: Space groups A1, B1, C1, and F1 were added." +
-        "\r\n ver4.161(2011/12/05)  Fixed: a small bug on debye ring simulation was fixed." +
+        "\r\n ver4.161(2011/12/05)  Fixed: a small bug on Debye ring simulation was fixed." +
         "\r\n ver4.16 (2011/12/04)  Improved: speed up of calculation of Debye ring simulation." +
         "\r\n ver4.15 (2011/11/24)  Improved: More strict polycrystalline diffraction pattern can be calculated considering beam convergence and monochromaticity." +
         "\r\n ver4.142(2011/11/20)  Improved: Stereonet simulator can draw vectors of specified indices selected by users." +
         "\r\n ver4.141(2011/11/07)  Fixed: PolycrystallineDiffractionSimulation" +
-        "\r\n ver4.14 (2011/11/01)  Fixed the critical mistake on polycrystalline diffraction simulation: Intenisty calculation was corrected." +
+        "\r\n ver4.14 (2011/11/01)  Fixed the critical mistake on polycrystalline diffraction simulation: Intensity calculation was corrected." +
         "\r\n ver4.131(2011/11/01)  Fixed: Y axis direction on polycrystalline diffraction simulation form was corrected." +
         "\r\n ver4.13 (2011/10/31)  Improved: Polycrystalline diffraction simulation; Fixed: File->Close function." +
         "\r\n ver4.12 (2011/10/31)  Improved: Polycrystalline diffraction simulation" +
@@ -279,7 +279,7 @@ internal static class Version
         "\r\n ver4.112(2011/10/21)  Fixed a bug when sending crystal data." +
         "\r\n ver4.111(2011/10/17)  Fixed problems on Single Crystal Diffraction form." +
         "\r\n ver4.11 (2011/10/12)  Fixed problems on import CIF format." +
-        "\r\n ver4.10 (2011/10/12)  Added language option. Englisgh and Japanese are available." +
+        "\r\n ver4.10 (2011/10/12)  Added language option. English and Japanese are available." +
         "\r\n ver4.00 (2011/07/19)  同位体組成の入出力と中性子線回折の強度計算に対応しました。" +
         "\r\n ver3.922(2011/07/05)  CrystalInformationがはみ出していたバグを修正" +
         "\r\n ver3.921(2011/07/05)  昨日の変更を微修正。空間群情報(Symmetry info.)と構造因子(Scattering factor)を分けて表示するようにしました。" +
@@ -395,7 +395,7 @@ internal static class Version
     public const string Acknowledge =
         "Acknowledgement:"
         + "\r\n　Thanks to Daisuke Hamane (Tokyo Univ.), Masahiro Ohtsuka (Nagoya Univ.),  Akira Miyake (Kyoto Univ.)"
-        + "Shoichi Toh (Kyushu Univ.), and many other contributers"
+        + "Shoichi Toh (Kyushu Univ.), and many other contributors"
         ;
 
     /// <summary>
@@ -418,7 +418,7 @@ internal static class Version
     /// 使用条件
     /// </summary>
     public const string Condition =
-        "Licene:"
+        "License:"
         + "\r\n ReciPro is a　free (non-charge) software for academic, scientific, and educational users."
         + "\r\n The people or companies engaged in commercial enterprise may also use ReciPro for their buisiness."
         + "\r\n The use of ReciPro is limited to non-military and non-illegal purposes."

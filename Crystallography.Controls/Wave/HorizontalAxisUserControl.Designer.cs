@@ -73,8 +73,8 @@
             flowLayoutPanelNeutronTOF = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonTofUnitMicroSec = new System.Windows.Forms.RadioButton();
             radioButtonTofUnitNanoSec = new System.Windows.Forms.RadioButton();
-            numericBoxTofTakeOffAngle = new NumericBox();
-            numericBoxTofDistance = new NumericBox();
+            numericBoxTofAngle = new NumericBox();
+            numericBoxTofLength = new NumericBox();
             toolTip = new System.Windows.Forms.ToolTip(components);
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             groupBox1.SuspendLayout();
@@ -421,8 +421,8 @@
             resources.ApplyResources(flowLayoutPanelNeutronTOF, "flowLayoutPanelNeutronTOF");
             flowLayoutPanelNeutronTOF.Controls.Add(radioButtonTofUnitMicroSec);
             flowLayoutPanelNeutronTOF.Controls.Add(radioButtonTofUnitNanoSec);
-            flowLayoutPanelNeutronTOF.Controls.Add(numericBoxTofTakeOffAngle);
-            flowLayoutPanelNeutronTOF.Controls.Add(numericBoxTofDistance);
+            flowLayoutPanelNeutronTOF.Controls.Add(numericBoxTofAngle);
+            flowLayoutPanelNeutronTOF.Controls.Add(numericBoxTofLength);
             flowLayoutPanelNeutronTOF.Name = "flowLayoutPanelNeutronTOF";
             // 
             // radioButtonTofUnitMicroSec
@@ -443,33 +443,33 @@
             // 
             // numericBoxTofTakeOffAngle
             // 
-            resources.ApplyResources(numericBoxTofTakeOffAngle, "numericBoxTofTakeOffAngle");
-            numericBoxTofTakeOffAngle.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxTofTakeOffAngle.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTofTakeOffAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTofTakeOffAngle.Name = "numericBoxTofTakeOffAngle";
-            numericBoxTofTakeOffAngle.RadianValue = 1.5707963267948966D;
-            numericBoxTofTakeOffAngle.RoundErrorAccuracy = -1;
-            numericBoxTofTakeOffAngle.SkipEventDuringInput = false;
-            numericBoxTofTakeOffAngle.SmartIncrement = true;
-            numericBoxTofTakeOffAngle.ThonsandsSeparator = true;
-            numericBoxTofTakeOffAngle.Value = 90D;
-            numericBoxTofTakeOffAngle.ValueChanged += numericBoxTwoTheta_ValueChanged;
+            resources.ApplyResources(numericBoxTofAngle, "numericBoxTofTakeOffAngle");
+            numericBoxTofAngle.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofAngle.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofAngle.Name = "numericBoxTofTakeOffAngle";
+            numericBoxTofAngle.RadianValue = 1.5707963267948966D;
+            numericBoxTofAngle.RoundErrorAccuracy = -1;
+            numericBoxTofAngle.SkipEventDuringInput = false;
+            numericBoxTofAngle.SmartIncrement = true;
+            numericBoxTofAngle.ThonsandsSeparator = true;
+            numericBoxTofAngle.Value = 90D;
+            numericBoxTofAngle.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
             // numericBoxTofDistance
             // 
-            resources.ApplyResources(numericBoxTofDistance, "numericBoxTofDistance");
-            numericBoxTofDistance.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxTofDistance.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTofDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTofDistance.Name = "numericBoxTofDistance";
-            numericBoxTofDistance.RadianValue = 0.73303828583761843D;
-            numericBoxTofDistance.RoundErrorAccuracy = -1;
-            numericBoxTofDistance.SkipEventDuringInput = false;
-            numericBoxTofDistance.SmartIncrement = true;
-            numericBoxTofDistance.ThonsandsSeparator = true;
-            numericBoxTofDistance.Value = 42D;
-            numericBoxTofDistance.ValueChanged += numericBoxTwoTheta_ValueChanged;
+            resources.ApplyResources(numericBoxTofLength, "numericBoxTofDistance");
+            numericBoxTofLength.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofLength.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTofLength.Name = "numericBoxTofDistance";
+            numericBoxTofLength.RadianValue = 0.73303828583761843D;
+            numericBoxTofLength.RoundErrorAccuracy = -1;
+            numericBoxTofLength.SkipEventDuringInput = false;
+            numericBoxTofLength.SmartIncrement = true;
+            numericBoxTofLength.ThonsandsSeparator = true;
+            numericBoxTofLength.Value = 42D;
+            numericBoxTofLength.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
             // flowLayoutPanel6
             // 
@@ -535,12 +535,12 @@
         private Crystallography.Controls.NumericBox numericBoxTwoTheta;
         private WaveLengthControl waveLengthControl;
         private System.Windows.Forms.RadioButton radioButtonTOF;
-        private NumericBox numericBoxTofDistance;
+        private NumericBox numericBoxTofLength;
         private System.Windows.Forms.RadioButton radioButtonNeutron;
         private System.Windows.Forms.RadioButton radioButtonElectron;
         private System.Windows.Forms.RadioButton radioButtonXray;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private NumericBox numericBoxTofTakeOffAngle;
+        private NumericBox numericBoxTofAngle;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.RadioButton radioButtonMonochro;
         private System.Windows.Forms.RadioButton radioButtonFlatWhite;

@@ -1175,7 +1175,10 @@ public class DiffractionProfile2 : ICloneable
     /// <returns></returns>
     private PointD convertSrcToDest(PointD pt)
     {
-        var x = HorizontalAxisConverter.Convert(new[] { pt.X }, SrcProperty, DstProperty)[0];
+        var pts = HorizontalAxisConverter.Convert(new[] { pt.X }, SrcProperty, DstProperty);
+        if (pts.Length==0)
+            return new PointD(0, 0);
+        var x = pts[0];
         var y = pt.Y;
         if (IsCPS && ExposureTime > 0)
             y /= ExposureTime;
@@ -1355,7 +1358,7 @@ public record struct HorizontalAxisProperty
         ElectronAccVolatage = electronAccVolatage;
         EnergyTakeoffAngle = energyTakeoffAngle;
         TofAngle = tofAngle;
-        TofAngle = tofLength;
+        TofLength = tofLength;
         TwoThetaUnit = twoThetaUnit;
         DspacingUnit = dspacingUnit;
         WaveNumberUnit = waveNumberUnit;
