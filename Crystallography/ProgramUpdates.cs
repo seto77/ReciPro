@@ -24,7 +24,7 @@ public static class ProgramUpdates
                     "This could be caused if you do not have an active internet connection, or host server may be down. ", false, "", "");
 
             var temp = System.Text.Encoding.UTF8.GetString(ver).Split(new[] { '\r', '\n' });
-            var newVersion = temp.First(s => s.Contains("ver"));
+            var newVersion = temp.First(s => s.Contains("\r\n ver", StringComparison.Ordinal));
             newVersion = newVersion.Substring(newVersion.IndexOf("ver") + 3, 5);
 
             if (Convert.ToDouble(newVersion) <= Convert.ToDouble(version.Substring(3, 5)))
