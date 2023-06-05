@@ -5,8 +5,6 @@ internal static class Version
     public const string Software = "ReciPro";
     public const string Author = "Y. Seto && M. Ohtsuka";
 
- 
-
 
     public const string History =
         "History" +
@@ -19,7 +17,7 @@ internal static class Version
         "\r\n ver4.856(2023/03/23)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.855(2023/03/23)  Added a feature to save simulation conditions in HRTEM/STEM simulation." +
         "\r\n ver4.854(2023/03/11)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
-        "\r\n ver4.853(2023/03/09)  Corrected errors in formulas in STEM simulations. Added LA-CBED caluculation mode." +
+        "\r\n ver4.853(2023/03/09)  Corrected errors in formulas in STEM simulations. Added LA-CBED calculation mode." +
         "\r\n ver4.852(2023/03/04)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.851(2023/03/02)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.850(2023/03/01)  Improved STEM simulation. If you find anything wrong with the SETM simulation, please report anything!" +
@@ -216,7 +214,7 @@ internal static class Version
         "\r\n ver4.312(2018/01/25)  Improved 'Single crystal diffraction' form. " +
         "\r\n ver4.311(2018/01/20)  Improved the 'Overlap picture' function on 'Single crystal diffraction' form." +
         "\r\n ver4.31 (2018/01/19)  Changed graphics interface for 'Single crystal diffraction' form from OpenGL to GDI+, and then the metafile (vector object) of diffraction patterns can be exported to your clipboard. The 'Operlap picture' function is now under construction" +
-        "\r\n ver4.30 (2017/12/24)  Changed graphics interface for 'Stereonet' form from OpenGL to GDI+, and then the metafile (vector object) of stereonet can be exported to your clipboard." +
+        "\r\n ver4.30 (2017/12/24)  Changed graphics interface for 'Streonet' form from OpenGL to GDI+, and then the metafile (vector object) of stereonet can be exported to your clipboard." +
         "\r\n ver4.29 (2017/09/01)  Added 'Point Spread' mode on 'Single Crystal Diffraction'." +
         "\r\n ver4.283(2017/05/28)  Fixed a small bug on 'Strain control' function'." +
         "\r\n ver4.282(2017/05/26)  Added 'Strain control' function'." +
@@ -252,12 +250,12 @@ internal static class Version
         "\r\n ver4.232(2013/10/15)  Improved appearance for >100% DPI scaling" +
         "\r\n ver4.231(2013/08/10)  Fixed minor bugs on OpenGL." +
         "\r\n ver4.23 (2013/03/28)  Improved structure viewer." +
-        "\r\n ver4.221(2013/02/26)  Changed adress of help page." +
+        "\r\n ver4.221(2013/02/26)  Changed address of help page." +
         "\r\n ver4.22 (2013/02/25)  Added: Update check function" +
         "\r\n ver4.21 (2013/02/21)  Added: CIF file export function" +
         "\r\n ver4.202(2012/12/20)  Fixed a small bug." +
         "\r\n ver4.201(2012/12/19)  Fixed a small bug." +
-        "\r\n ver4.20 (2012/12/17)  Fixed OpenGL liblary." +
+        "\r\n ver4.20 (2012/12/17)  Fixed OpenGL library." +
         "\r\n ver4.191(2012/12/05)  Fixed minor bugs." +
         "\r\n ver4.19 (2012/08/11)  Improved: appearance in TEMID window." +
         "\r\n ver4.184(2012/06/22)  Added: 'Reset registry keys' function was added in the 'Option' menu" +
@@ -395,7 +393,7 @@ internal static class Version
     /// </summary>
     public const string Acknowledge =
         "Acknowledgement:"
-        + "\r\n　Thanks to Daisuke Hamane (Tokyo Univ.), Masahiro Ohtsuka (Nagoya Univ.),  Akira Miyake (Kyoto Univ.)"
+        + "\r\n　Thanks to Daisuke Hamane (Tokyo Univ.),  Akira Miyake (Kyoto Univ.)"
         + "Shoichi Toh (Kyushu Univ.), and many other contributors"
         ;
 
