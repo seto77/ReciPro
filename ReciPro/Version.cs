@@ -5,8 +5,7 @@ internal static class Version
     public const string Software = "ReciPro";
     public const string Author = "Y. Seto && M. Ohtsuka";
 
-    static public string VersionAndDate => History.Remove(0, 10).Remove(20);
-    static public double VersionValue => Convert.ToDouble(VersionAndDate[3..^12]);
+ 
 
 
     public const string History =
@@ -374,7 +373,8 @@ internal static class Version
         "\r\n ver1.00 (2002/03/03)  暫定動作バージョンを作成"
         ;
 
-
+    static public string VersionAndDate => History.Remove(0, 10).Remove(20);
+    static public double VersionValue => Convert.ToDouble(VersionAndDate[3..^12]);
 
     /// <summary>
     /// はじめに

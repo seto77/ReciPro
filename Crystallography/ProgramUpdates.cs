@@ -20,15 +20,15 @@ public static class ProgramUpdates
 
             //V上手くダウンロードできなかった場合
             if (ver == null || ver.Length == 0)
-                return ("Error!", $"An error occured while trying to locate the update to {software}.\r\n " +
+                return ("Error!", $"An error occurred while trying to locate the update to {software}.\r\n " +
                     "This could be caused if you do not have an active internet connection, or host server may be down. ", false, "", "");
 
             var temp = System.Text.Encoding.UTF8.GetString(ver).Split(new[] { '\r', '\n' });
-            var newVersion = temp.First(s => s.Contains("\r\n ver", StringComparison.Ordinal));
+            var newVersion = temp.First(s => s.Contains(" ver", StringComparison.Ordinal));
             newVersion = newVersion.Substring(newVersion.IndexOf("ver") + 3, 5);
 
             if (Convert.ToDouble(newVersion) <= Convert.ToDouble(version.Substring(3, 5)))
-                return ("Update checked!", $"You are runnning the latest version of {software}. Thank you!", false, "", "");
+                return ("Update checked!", $"You are running the latest version of {software}. Thank you!", false, "", "");
             else
                 return ($"Update checked!", $"Now, new version {newVersion} is available.\r\n" +
                      $"If you press 'Yes', the current {software} will be closed immediately and the installer of new {software} launched.", true,
@@ -37,7 +37,7 @@ public static class ProgramUpdates
         }
         catch
         {
-            return ("Error!", "An error occured while trying to locate the update to " + software + ".\r\n" +
+            return ("Error!", "An error occurred while trying to locate the update to " + software + ".\r\n" +
                 " This could be caused if you do not have an active internet connection, administrative" +
                 " right to access to internet, or host server may be down. Sorry.", false, "", "");
         }
