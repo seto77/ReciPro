@@ -11,7 +11,6 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Math;
-//using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 namespace ReciPro;
@@ -240,7 +239,7 @@ public partial class FormImageSimulator : Form
     public FormCTF FormCTF;
 
     readonly Stopwatch sw1 = new(), sw2 = new(), sw3 = new(), sw4 = new();
-    private static readonly double Pi2 = PI * PI;
+    //private static readonly double Pi2 = PI * PI;
 
     private ScalablePictureBox[,] pictureBoxes = new ScalablePictureBox[0, 0];
 

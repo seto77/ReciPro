@@ -1387,10 +1387,14 @@ public partial class FormDiffractionSimulator : Form
             var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y + (vec.Z - EwaldRadius) * (vec.Z - EwaldRadius)));
 
             MessageBox.Show(
-                $"index: {gVector[num].Index.h} {gVector[num].Index.k} {gVector[num].Index.l}\r\n" +
+                $"Index: {gVector[num].Index.h} {gVector[num].Index.k} {gVector[num].Index.l}\r\n" +
                 $"d-spacing: {gVector[num].d:f4} nm\r\n" +
-                $"Inverse coordinate (1/nm): {vec.X:f3} ,{vec.Y:f3} ,{vec.Z:f3}\r\n"
-                + $"Exitation error: {dev:f4} /nm");
+                $"Length: {1/gVector[num].d:f4} /nm\r\n" +
+                $"Coordinate (/nm): {vec.X:f4} ,{vec.Y:f4} ,{vec.Z:f4}\r\n" +
+                $"Excitation error: {dev:f5} /nm\r\n" +
+                $"Structure factor (magnitude): {gVector[num].F.Magnitude:f5}"+
+                $"Structure factor (real, imaginary): {gVector[num].F.Real:f5},{gVector[num].F.Imaginary:f5}"
+                );
         }
     }
 

@@ -8,7 +8,6 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 namespace Crystallography;
@@ -70,7 +69,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     public static bool operator !=(Crystal left, Crystal right) => !(left == right);
 
-    public static bool operator <(Crystal left, Crystal right) => ReferenceEquals(left, null) ? right is not null : left.CompareTo(right) < 0;
+    public static bool operator <(Crystal left, Crystal right) => left is null ? right is not null : left.CompareTo(right) < 0;
 
     public static bool operator <=(Crystal left, Crystal right) => left is null || left.CompareTo(right) <= 0;
 
@@ -199,7 +198,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     [NonSerialized]
     [XmlIgnore]
-    public double CellVolumeSqure;
+    public double CellVolumeSquare;
 
     [NonSerialized]
     [XmlIgnore]
@@ -712,8 +711,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         sigma23 = a2 * B * C * (CosBeta * CosGamma - CosAlpha);
         sigma31 = A * b2 * C * (CosGamma * CosAlpha - CosBeta);
         sigma12 = A * B * c2 * (CosAlpha * CosBeta - CosGamma);
-        CellVolumeSqure = a2 * b2 * c2 * (1 - CosAlpha * CosAlpha - CosBeta * CosBeta - CosGamma * CosGamma + 2 * CosAlpha * CosBeta * CosGamma);
-        Volume = Math.Sqrt(CellVolumeSqure);
+        CellVolumeSquare = a2 * b2 * c2 * (1 - CosAlpha * CosAlpha - CosBeta * CosBeta - CosGamma * CosGamma + 2 * CosAlpha * CosBeta * CosGamma);
+        Volume = Math.Sqrt(CellVolumeSquare);
     }
     #endregion
 
@@ -728,13 +727,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <returns></returns>
     public double GetLengthPlane(int h, int k, int l)
     {
-        if ((h == 0 && k == 0 && l == 0) || A * B * C == 0 || CellVolumeSqure <= 0) return 0;
+        if ((h == 0 && k == 0 && l == 0) || A * B * C == 0 || CellVolumeSquare <= 0) return 0;
         return Symmetry.CrystalSystemStr switch//ê‡•ª‚¯‚µ‚½‚Ù‚¤‚ª‘‚¢‚©‚ÈH
         {
             "cubic" => A / Math.Sqrt(h * h + k * k + l * l),
             "tetragoanl" => 1 / Math.Sqrt((h * h + k * k) / A / A + l * l / C / C),
             "orthorhombic" => 1 / Math.Sqrt(h * h / A / A + k * k / B / B + l * l / C / C),
-            _ => Math.Sqrt(1.0 / (h * h * sigma11 + k * k * sigma22 + l * l * sigma33 + 2 * k * l * sigma23 + 2 * l * h * sigma31 + 2 * h * k * sigma12) * CellVolumeSqure),
+            _ => Math.Sqrt(1.0 / (h * h * sigma11 + k * k * sigma22 + l * l * sigma33 + 2 * k * l * sigma23 + 2 * l * h * sigma31 + 2 * h * k * sigma12) * CellVolumeSquare),
         };
     }
 
@@ -750,8 +749,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <returns></returns>
     public double GetAnglePlanes(int h1, int k1, int l1, int h2, int k2, int l2)
     {
-        if (A * B * C == 0 || (h1 == 0 && k1 == 0 && l1 == 0) || (h2 == 0 && k2 == 0 && l2 == 0) || (h1 == h2 && k1 == k2 && l1 == l2) || CellVolumeSqure <= 0) return 0;
-        double temp = GetLengthPlane(h1, k1, l1) * GetLengthPlane(h2, k2, l2) / CellVolumeSqure * (h1 * h2 * sigma11 + k1 * k2 * sigma22 + l1 * l2 * sigma33 + (k1 * l2 + l1 * k2) * sigma23 + (l1 * h2 + h1 * l2) * sigma31 + (h1 * k2 + k1 * h2) * sigma12);
+        if (A * B * C == 0 || (h1 == 0 && k1 == 0 && l1 == 0) || (h2 == 0 && k2 == 0 && l2 == 0) || (h1 == h2 && k1 == k2 && l1 == l2) || CellVolumeSquare <= 0) return 0;
+        double temp = GetLengthPlane(h1, k1, l1) * GetLengthPlane(h2, k2, l2) / CellVolumeSquare * (h1 * h2 * sigma11 + k1 * k2 * sigma22 + l1 * l2 * sigma33 + (k1 * l2 + l1 * k2) * sigma23 + (l1 * h2 + h1 * l2) * sigma31 + (h1 * k2 + k1 * h2) * sigma12);
         if (temp >= 1 || temp <= -1) return 0;
         return Math.Acos(temp);
     }
@@ -1591,20 +1590,20 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 if (waveSource == WaveSource.Xray)
                 {
                     if (waveColor == WaveColor.Monochrome)
-                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure * (1 + cosTwoTheta * cosTwoTheta) / sinTwoTheta / sinTheta;
+                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSquare * (1 + cosTwoTheta * cosTwoTheta) / sinTwoTheta / sinTheta;
                     else if (waveColor == WaveColor.FlatWhite)
-                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure * d2;
+                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSquare * d2;
                 }
                 else if (waveSource == WaveSource.Electron)
                 {
-                    Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure / sinTwoTheta / sinTheta;
+                    Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSquare / sinTwoTheta / sinTheta;
                 }
                 else if (waveSource == WaveSource.Neutron)
                 {
                     if (waveColor == WaveColor.Monochrome)
-                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure / sinTwoTheta / sinTheta;
+                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSquare / sinTwoTheta / sinTheta;
                     else
-                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSqure * d2 * d2;
+                        Plane[i].eachIntensity[j] = Plane[i].F2[j] * Plane[i].Multi[j] / CellVolumeSquare * d2 * d2;
                 }
             }
 
@@ -1769,7 +1768,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             {
                 TotalWeightPerUnitCell += AtomStatic.AtomicWeight(ElementName[i]) * ElementNum[i];
             }
-            Density = TotalWeightPerUnitCell / Math.Sqrt(CellVolumeSqure) / 6.0221367 / 100;
+            Density = TotalWeightPerUnitCell / Math.Sqrt(CellVolumeSquare) / 6.0221367 / 100;
             WeightPerFormula = TotalWeightPerUnitCell / ChemicalFormulaZ;
         }
         return;

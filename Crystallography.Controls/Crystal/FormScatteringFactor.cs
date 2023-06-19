@@ -121,9 +121,9 @@ namespace Crystallography.Controls
                     {
                         var magnitude2 = g.F.Real * g.F.Real + g.F.Imaginary * g.F.Imaginary;
                         if (waveLengthControl1.WaveSource == WaveSource.Xray)
-                            c.VectorOfG[i].RawIntensity = magnitude2 * multi / c.CellVolumeSqure * (1 + Math.Cos(twoTheta) * Math.Cos(twoTheta)) / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
+                            c.VectorOfG[i].RawIntensity = magnitude2 * multi / c.CellVolumeSquare * (1 + Math.Cos(twoTheta) * Math.Cos(twoTheta)) / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
                         else
-                            c.VectorOfG[i].RawIntensity = magnitude2 * multi / c.CellVolumeSqure / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
+                            c.VectorOfG[i].RawIntensity = magnitude2 * multi / c.CellVolumeSquare / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
 
                         max = Math.Max(max, c.VectorOfG[i].RawIntensity);
                     }

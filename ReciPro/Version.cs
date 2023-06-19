@@ -8,6 +8,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.863(2023/06/19)  Added: the length and F of the g vector are displayed when the spot is double-clicked (see https://github.com/seto77/ReciPro/issues/21)." +
         "\r\n ver4.862(2023/05/16)  Fixed minor bugs. Improved macro functions. Added command-line options." +
         "\r\n ver4.861(2023/04/12)  Added macro functions to automate various tasks (mainly 'Diffraction Simulator' at the moment). " +
         "\r\n ver4.860(2023/04/06)  Improved CIF file loading compatibility." +

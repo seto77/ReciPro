@@ -49,7 +49,7 @@ public partial class AtomControl : UserControl
 
     public int SymmetrySeriesNumber { get => crystal != null ? crystal.SymmetrySeriesNumber : 0; }
 
-    DataSet.DataTableAtomDataTable table;
+    readonly DataSet.DataTableAtomDataTable table;
     public bool SkipEvent { get; set; } = false;
 
     public bool AtomicPositionError
