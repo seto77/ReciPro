@@ -753,7 +753,7 @@ public partial class FormDiffractionSimulator : Form
         var sb = new StringBuilder();
         if (toolStripButtonIndexLabels.Checked) sb.AppendLine(g.Text);
         if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
-        if(toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1/g.d:#.###} /nm");
+        if (toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1 / g.d:#.###} /nm");
         if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
         if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm");
 

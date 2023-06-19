@@ -44,6 +44,7 @@
             toolStrip1 = new System.Windows.Forms.ToolStrip();
             toolStripButtonIndexLabels = new System.Windows.Forms.ToolStripButton();
             toolStripButtonDspacing = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonDspacingInv = new System.Windows.Forms.ToolStripButton();
             toolStripButtonDistance = new System.Windows.Forms.ToolStripButton();
             toolStripButtonExcitationError = new System.Windows.Forms.ToolStripButton();
             toolStripButtonFg = new System.Windows.Forms.ToolStripButton();
@@ -226,7 +227,6 @@
             timerBlinkKikuchiLine = new System.Windows.Forms.Timer(components);
             timerBlinkDebyeRing = new System.Windows.Forms.Timer(components);
             timerBlinkScale = new System.Windows.Forms.Timer(components);
-            toolStripButtonDspacingInv = new System.Windows.Forms.ToolStripButton();
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -398,6 +398,15 @@
             resources.ApplyResources(toolStripButtonDspacing, "toolStripButtonDspacing");
             toolStripButtonDspacing.Name = "toolStripButtonDspacing";
             toolStripButtonDspacing.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            // 
+            // toolStripButtonDspacingInv
+            // 
+            toolStripButtonDspacingInv.CheckOnClick = true;
+            toolStripButtonDspacingInv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonDspacingInv.ForeColor = System.Drawing.Color.Salmon;
+            resources.ApplyResources(toolStripButtonDspacingInv, "toolStripButtonDspacingInv");
+            toolStripButtonDspacingInv.Name = "toolStripButtonDspacingInv";
+            toolStripButtonDspacingInv.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
             // 
             // toolStripButtonDistance
             // 
@@ -1985,14 +1994,6 @@
             timerBlinkScale.Interval = 400;
             timerBlinkScale.Tag = "";
             timerBlinkScale.Tick += timerBlinkScale_Tick;
-            // 
-            // toolStripButtonDspacingInv
-            // 
-            toolStripButtonDspacingInv.CheckOnClick = true;
-            toolStripButtonDspacingInv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripButtonDspacingInv.ForeColor = System.Drawing.Color.Salmon;
-            resources.ApplyResources(toolStripButtonDspacingInv, "toolStripButtonDspacingInv");
-            toolStripButtonDspacingInv.Name = "toolStripButtonDspacingInv";
             // 
             // FormDiffractionSimulator
             // 
