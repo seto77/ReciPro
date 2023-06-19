@@ -226,6 +226,7 @@
             timerBlinkKikuchiLine = new System.Windows.Forms.Timer(components);
             timerBlinkDebyeRing = new System.Windows.Forms.Timer(components);
             timerBlinkScale = new System.Windows.Forms.Timer(components);
+            toolStripButtonDspacingInv = new System.Windows.Forms.ToolStripButton();
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -374,7 +375,7 @@
             resources.ApplyResources(toolStrip1, "toolStrip1");
             toolStrip1.BackColor = System.Drawing.SystemColors.Control;
             toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonIndexLabels, toolStripButtonDspacing, toolStripButtonDistance, toolStripButtonExcitationError, toolStripButtonFg });
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonIndexLabels, toolStripButtonDspacing, toolStripButtonDspacingInv, toolStripButtonDistance, toolStripButtonExcitationError, toolStripButtonFg });
             toolStrip1.Name = "toolStrip1";
             toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
@@ -1985,6 +1986,14 @@
             timerBlinkScale.Tag = "";
             timerBlinkScale.Tick += timerBlinkScale_Tick;
             // 
+            // toolStripButtonDspacingInv
+            // 
+            toolStripButtonDspacingInv.CheckOnClick = true;
+            toolStripButtonDspacingInv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonDspacingInv.ForeColor = System.Drawing.Color.Salmon;
+            resources.ApplyResources(toolStripButtonDspacingInv, "toolStripButtonDspacingInv");
+            toolStripButtonDspacingInv.Name = "toolStripButtonDspacingInv";
+            // 
             // FormDiffractionSimulator
             // 
             AllowDrop = true;
@@ -2129,7 +2138,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBackLaue;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TrackBar trackBarRotationSpeed;
-        public Crystallography.Controls.WaveLengthControl waveLengthControl;
+        public WaveLengthControl waveLengthControl;
         private System.Windows.Forms.Label labelD;
         private System.Windows.Forms.Label labelMousePositionDetector;
         private System.Windows.Forms.Label labelMousePositionReciprocal;
@@ -2143,7 +2152,7 @@
         private System.Windows.Forms.RadioButton radioButtonPointSpread;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button buttonResetCenter;
-        public Crystallography.Controls.NumericBox numericBoxResolution;
+        public NumericBox numericBoxResolution;
         public ImagingSolution.Control.GraphicsBox graphicsBox;
         private System.Windows.Forms.ToolStripMenuItem saveAsImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsMetafileToolStripMenuItem;
@@ -2188,13 +2197,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelTimeForBethe;
         private System.Windows.Forms.TabPage tabPageMisc;
-        public Crystallography.Controls.NumericBox numericBoxClientHeight;
-        public Crystallography.Controls.NumericBox numericBoxClientWidth;
+        public NumericBox numericBoxClientHeight;
+        public NumericBox numericBoxClientWidth;
         private System.Windows.Forms.Button button1;
-        private Crystallography.Controls.NumericBox numericBoxDev;
-        private Crystallography.Controls.NumericBox numericBoxAcc;
-        private Crystallography.Controls.NumericBox numericBoxPED_Semiangle;
-        private Crystallography.Controls.NumericBox numericBoxPED_Step;
+        private NumericBox numericBoxDev;
+        private NumericBox numericBoxAcc;
+        private NumericBox numericBoxPED_Semiangle;
+        private NumericBox numericBoxPED_Step;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPED;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Label label13;
@@ -2203,7 +2212,7 @@
         public System.Windows.Forms.RadioButton radioButtonBeamConvergence;
         private System.Windows.Forms.Label labelDinv;
         private System.Windows.Forms.Button buttonDetailsOfSpots;
-        public Crystallography.Controls.NumericBox numericBoxNumOfBlochWave;
+        public NumericBox numericBoxNumOfBlochWave;
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.ComboBox comboBoxScaleColorScale;
         private System.Windows.Forms.Button button2;
@@ -2219,21 +2228,21 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private Crystallography.Controls.NumericBox numericBoxSpotRadius;
+        private NumericBox numericBoxSpotRadius;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExtinctionOption;
         private System.Windows.Forms.GroupBox groupBox4;
-        public Crystallography.Controls.ColorControl colorControlOrigin;
-        public Crystallography.Controls.ColorControl colorControlNoCondition;
-        public Crystallography.Controls.ColorControl colorControlForbiddenLattice;
-        public Crystallography.Controls.ColorControl colorControlScrewGlide;
+        public ColorControl colorControlOrigin;
+        public ColorControl colorControlNoCondition;
+        public ColorControl colorControlForbiddenLattice;
+        public ColorControl colorControlScrewGlide;
         private System.Windows.Forms.Label label14;
-        public Crystallography.Controls.ColorControl colorControlString;
-        public Crystallography.Controls.ColorControl colorControlFoot;
-        public Crystallography.Controls.ColorControl colorControlBackGround;
-        public Crystallography.Controls.ColorControl colorControlDefectLine;
-        public Crystallography.Controls.ColorControl colorControlExcessLine;
-        public Crystallography.Controls.ColorControl colorControlDebyeRing;
-        public Crystallography.Controls.NumericBox numericBoxThickness;
+        public ColorControl colorControlString;
+        public ColorControl colorControlFoot;
+        public ColorControl colorControlBackGround;
+        public ColorControl colorControlDefectLine;
+        public ColorControl colorControlExcessLine;
+        public ColorControl colorControlDebyeRing;
+        public NumericBox numericBoxThickness;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSpotColor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPageScale;
@@ -2243,13 +2252,13 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TrackBar trackBarScaleLineWidth;
         private System.Windows.Forms.Label label16;
-        private Crystallography.Controls.ColorControl colorControlScale2Theta;
+        private ColorControl colorControlScale2Theta;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.RadioButton radioButtonScaleDivisionFine;
         private System.Windows.Forms.RadioButton radioButtonScaleDivisionMedium;
         private System.Windows.Forms.RadioButton radioButtonScaleDivisionCoarse;
         private System.Windows.Forms.Timer timerBlinkScale;
-        private Crystallography.Controls.ColorControl colorControlScaleAzimuth;
+        private ColorControl colorControlScaleAzimuth;
         private System.Windows.Forms.Label labelMousePositionReal;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox checkBoxMousePositionDetailes;
@@ -2270,7 +2279,7 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelDummy;
-        private Crystallography.Controls.NumericBox numericBoxKikuchiLineThreshold;
+        private NumericBox numericBoxKikuchiLineThreshold;
         private System.Windows.Forms.ToolStripMenuItem copyCBEDasImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asPixelByPixelImagePNGFormatToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
@@ -2284,5 +2293,6 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ToolStripMenuItem saveCBEDPatternToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem copyCBEDPatternToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDspacingInv;
     }
 }

@@ -1,4 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing"">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -279,6 +339,33 @@
   <data name="toolStripButtonDspacing.ToolTipText" xml:space="preserve">
     <value>By checking, d-spacings are displayed</value>
   </data>
+  <data name="toolStripButtonDspacingInv.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 22</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.Text" xml:space="preserve">
+    <value>1/d</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.ToolTipText" xml:space="preserve">
+    <value>By checking, inverses of d-spacing (i.e., length of g vector) are displayed</value>
+  </data>
   <data name="toolStripButtonDistance.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -364,7 +451,7 @@
     <value>287, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 25</value>
+    <value>299, 25</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -418,7 +505,7 @@
     <value>0, 25</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 22</value>
+    <value>798, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -814,10 +901,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxKikuchiLineThreshold.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxKikuchiLineThreshold.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxKikuchiLineThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 25</value>
@@ -1707,10 +1794,10 @@ Kikuchi lines under this value are simulated.
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDev.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxDev.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxDev.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1755,10 +1842,10 @@ Kikuchi lines under this value are simulated.
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAcc.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxAcc.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxAcc.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1977,7 +2064,7 @@ Kikuchi lines under this value are simulated.
     <value>0, 40, 0, 0</value>
   </data>
   <data name="graphicsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 424</value>
+    <value>798, 424</value>
   </data>
   <data name="graphicsBox.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
@@ -2018,7 +2105,7 @@ Double left click: Display the information of the g-vector</value>
     <value>0, 0</value>
   </data>
   <data name="labelDummy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 24</value>
+    <value>798, 24</value>
   </data>
   <data name="labelDummy.TabIndex" type="System.Int32, mscorlib">
     <value>67</value>
@@ -2045,7 +2132,7 @@ Double left click: Display the information of the g-vector</value>
     <value>0, 98</value>
   </data>
   <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 448</value>
+    <value>798, 448</value>
   </data>
   <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2435,7 +2522,7 @@ Double left click: Display the information of the g-vector</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panelMousePosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 72</value>
+    <value>798, 72</value>
   </data>
   <data name="panelMousePosition.TabIndex" type="System.Int32, mscorlib">
     <value>82</value>
@@ -2480,10 +2567,10 @@ Double left click: Display the information of the g-vector</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxClientHeight.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxClientHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxClientHeight.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2531,10 +2618,10 @@ Double left click: Display the information of the g-vector</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxClientWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxClientWidth.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxClientWidth.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2585,10 +2672,10 @@ Double left click: Display the information of the g-vector</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxResolution.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxResolution.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxResolution.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3029,7 +3116,7 @@ Double left click: Display the information of the g-vector</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 98</value>
+    <value>798, 98</value>
   </data>
   <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -3047,7 +3134,7 @@ Double left click: Display the information of the g-vector</value>
     <value>2</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 618</value>
+    <value>798, 618</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -3092,7 +3179,7 @@ Double left click: Display the information of the g-vector</value>
     <value>2</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 690</value>
+    <value>798, 690</value>
   </data>
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3359,7 +3446,7 @@ Double left click: Display the information of the g-vector</value>
     <value>5, 2, 0, 2</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 25</value>
+    <value>798, 25</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3658,10 +3745,10 @@ Only valid for an electron source.</value>
     <value>10, 3, 0, 0</value>
   </data>
   <data name="numericBoxPED_Semiangle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPED_Semiangle.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPED_Semiangle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3709,10 +3796,10 @@ Only valid for an electron source.</value>
     <value>10, 2, 0, 0</value>
   </data>
   <data name="numericBoxPED_Step.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPED_Step.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPED_Step.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3837,10 +3924,10 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>5, 3, 0, 0</value>
   </data>
   <data name="numericBoxNumOfBlochWave.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxNumOfBlochWave.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3891,10 +3978,10 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>5, 2, 0, 0</value>
   </data>
   <data name="numericBoxThickness.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxThickness.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -4239,10 +4326,10 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxSpotRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxSpotRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxSpotRadius.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -5527,7 +5614,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>Segoe UI Symbol, 10pt</value>
   </data>
   <data name="groupBoxSpotProperty.Location" type="System.Drawing.Point, System.Drawing">
-    <value>471, 2</value>
+    <value>804, 2</value>
   </data>
   <data name="groupBoxSpotProperty.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -5757,7 +5844,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>Right</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>467, 2</value>
+    <value>800, 2</value>
   </data>
   <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -5808,7 +5895,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>681, 694</value>
+    <value>1014, 694</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11pt</value>
@@ -6279,6 +6366,12 @@ Inciden beams along a cone are simulated for this number.</value>
   </data>
   <data name="&gt;&gt;timerBlinkScale.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDspacingInv.Name" xml:space="preserve">
+    <value>toolStripButtonDspacingInv</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDspacingInv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormDiffractionSimulator</value>

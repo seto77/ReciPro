@@ -8,10 +8,10 @@ internal static class Version
 
     public const string History =
         "History" +
-        "\r\n ver4.863(2023/06/19)  Added: the length and F of the g vector are displayed when the spot is double-clicked (see https://github.com/seto77/ReciPro/issues/21)." +
+        "\r\n ver4.864(2023/06/19)  Added: the length and F of the g vector are displayed when the spot is double-clicked (see https://github.com/seto77/ReciPro/issues/21)." +
         "\r\n ver4.862(2023/05/16)  Fixed minor bugs. Improved macro functions. Added command-line options." +
         "\r\n ver4.861(2023/04/12)  Added macro functions to automate various tasks (mainly 'Diffraction Simulator' at the moment). " +
-        "\r\n ver4.860(2023/04/06)  Improved CIF file loading compatibility." +
+        "\r\n ver4.860(2023/04/06)  Improved CIF file loading compatibility (see https://github.com/seto77/ReciPro/issues/19)." +
         "\r\n ver4.859(2023/03/31)  Fixed a minor bug on HRTEM/STEM simulation." +
         "\r\n ver4.858(2023/03/30)  Fixed a minor bug on HRTEM/STEM simulation." +
         "\r\n ver4.857(2023/03/30)  Improved several features on HRTEM/STEM simulation." +

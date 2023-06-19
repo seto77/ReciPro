@@ -71,16 +71,16 @@ public partial class FormDiffractionSimulator : Form
         }
         set
         {
-            if(value== BeamModes.Parallel)
+            if (value == BeamModes.Parallel)
                 radioButtonBeamParallel.Checked = true;
-            else if(value == BeamModes.PrecessionXray)
+            else if (value == BeamModes.PrecessionXray)
             {
                 Source = WaveSource.Xray;
                 radioButtonBeamPrecessionXray.Checked = true;
             }
-            else if(value == BeamModes.PrecessionElectron)
+            else if (value == BeamModes.PrecessionElectron)
             {
-                Source= WaveSource.Electron;
+                Source = WaveSource.Electron;
                 radioButtonBeamPrecessionElectron.Checked = true;
             }
             else
@@ -94,9 +94,9 @@ public partial class FormDiffractionSimulator : Form
 
     public double EwaldRadius => 1 / WaveLength;
     public double WaveLength { get => waveLengthControl.WaveLength; set => waveLengthControl.WaveLength = value; }
-    public double Energy { get => waveLengthControl.Energy; set=> waveLengthControl.Energy = value; }
+    public double Energy { get => waveLengthControl.Energy; set => waveLengthControl.Energy = value; }
 
-    public WaveSource Source { get => waveLengthControl.WaveSource;set => waveLengthControl.WaveSource = value; }   
+    public WaveSource Source { get => waveLengthControl.WaveSource; set => waveLengthControl.WaveSource = value; }
 
     public double ExcitationError => numericBoxSpotRadius.Value;
 
@@ -104,7 +104,7 @@ public partial class FormDiffractionSimulator : Form
     public int NumberOfDiffractedWaves { get => numericBoxNumOfBlochWave.ValueInteger; set => numericBoxNumOfBlochWave.Value = value; }
 
     private Font font => new("Tahoma", (float)(trackBarStrSize.Value * Resolution / 10.0));
-    
+
 
     public bool DynamicCompressionMode { get; set; } = false;
     public List<double[]> DynamicCompression_SpotInformation = new();
@@ -134,7 +134,7 @@ public partial class FormDiffractionSimulator : Form
         get => numericBoxResolution.Value;
     }
     public int ClientWidth { get => numericBoxClientWidth.ValueInteger; set => numericBoxClientWidth.Value = value; }
-    public int ClientHeight {get=> numericBoxClientHeight.ValueInteger; set => numericBoxClientHeight.Value=value; }
+    public int ClientHeight { get => numericBoxClientHeight.ValueInteger; set => numericBoxClientHeight.Value = value; }
 
     public double CameraLength2
     {
@@ -618,14 +618,14 @@ public partial class FormDiffractionSimulator : Form
 
 
             //もしdyamicalな計算で、SkipRenderingがtrueの時はここでおしまい
-            if(SkipRendering && bethe)
+            if (SkipRendering && bethe)
                 gVector.Clear();
 
 
             gVector.ForEach(g => g.Flag2 = false);
 
             //描画するスポットを決める
-            
+
             foreach (var g in gVector.Where(g => g.Flag1))
             {
                 var vec = bethe ? g : crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
@@ -753,6 +753,7 @@ public partial class FormDiffractionSimulator : Form
         var sb = new StringBuilder();
         if (toolStripButtonIndexLabels.Checked) sb.AppendLine(g.Text);
         if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
+        if(toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1/g.d:#.###} /nm");
         if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
         if (toolStripButtonExcitationError.Checked) sb.AppendLine($"{error:f3} /nm");
 
@@ -1389,7 +1390,7 @@ public partial class FormDiffractionSimulator : Form
             MessageBox.Show(
                 $"Index: {gVector[num].Index.h} {gVector[num].Index.k} {gVector[num].Index.l}\r\n" +
                 $"d-spacing: {gVector[num].d:f4} nm\r\n" +
-                $"Length: {1/gVector[num].d:f4} /nm\r\n" +
+                $"Length: {1 / gVector[num].d:f4} /nm\r\n" +
                 $"Coordinate (/nm): {vec.X:f4}, {vec.Y:f4}, {vec.Z:f4}\r\n" +
                 $"Excitation error: {dev:f5} /nm\r\n" +
                 $"Structure factor (magnitude): {gVector[num].F.Magnitude:f5}\r\n" +
