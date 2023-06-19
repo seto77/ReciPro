@@ -1390,11 +1390,11 @@ public partial class FormDiffractionSimulator : Form
                 $"Index: {gVector[num].Index.h} {gVector[num].Index.k} {gVector[num].Index.l}\r\n" +
                 $"d-spacing: {gVector[num].d:f4} nm\r\n" +
                 $"Length: {1/gVector[num].d:f4} /nm\r\n" +
-                $"Coordinate (/nm): {vec.X:f4} ,{vec.Y:f4} ,{vec.Z:f4}\r\n" +
+                $"Coordinate (/nm): {vec.X:f4}, {vec.Y:f4}, {vec.Z:f4}\r\n" +
                 $"Excitation error: {dev:f5} /nm\r\n" +
-                $"Structure factor (magnitude): {gVector[num].F.Magnitude:f5}"+
-                $"Structure factor (real, imaginary): {gVector[num].F.Real:f5},{gVector[num].F.Imaginary:f5}"
-                );
+                $"Structure factor (magnitude): {gVector[num].F.Magnitude:f5}\r\n" +
+                $"Structure factor (real, imaginary): {gVector[num].F.Real:f5}, {gVector[num].F.Imaginary:f5}"
+                , "Information on the clicked g vector");
         }
     }
 
