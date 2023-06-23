@@ -256,12 +256,10 @@ public partial class FormMain : Form
             Author = Version.Author,
             History = Version.History,
             Hint = Version.Hint,
-            Width = 600
+            Width = 600,
+            Location = new Point(this.Location.X, this.Location.Y)
         };
-
        
-        if (commonDialog != null)
-            commonDialog.Location = new Point(this.Location.X, this.Location.Y);
         commonDialog.Show();
 
         commonDialog.Progress = ("Now Loading...Initializing OpenGL.", 0.1);
