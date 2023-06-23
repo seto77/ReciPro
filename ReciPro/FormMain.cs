@@ -16,10 +16,6 @@ using System.Windows.Forms;
 using Col4 = OpenTK.Graphics.Color4;
 using Vec3 = OpenTK.Vector3d;
 using IronPython.Hosting;
-
-using Microsoft.VisualBasic.ApplicationServices;
-using Crystallography.Controls;
-using static Community.CsharpSqlite.Sqlite3;
 using System.Text;
 
 #endregion
@@ -207,19 +203,27 @@ public partial class FormMain : Form
     /// </summary>
     public FormMain()
     {
+        //カルチャーを決めるため、レジストリ読込 (InitializeComponentの前に読み込む)
+        if (!DesignMode)
+        {
+            //var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+            //if (4.862 > Convert.ToDouble(key.GetValue("Version", "0")))
+            //{ 
+            //}
+            Registry(Reg.Mode.Read);
+        }
+
         InitializeComponent();
 
         if (DesignMode)
             return;
 
-        sw.Restart();
-
-        var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
-        if (4.862 > Convert.ToDouble(key.GetValue("Version", "0")))
-        { }
-
-        //カルチャーを決めるため、レジストリ読込
+        //MainWindowの場所を読み込むため (InitializeComponentの後にに読み込む)
         Registry(Reg.Mode.Read);
+
+       
+
+        sw.Restart();
 
         ip = new Progress<(long, long, long, string)>(reportProgress);//IReport
 
@@ -252,12 +256,13 @@ public partial class FormMain : Form
             Author = Version.Author,
             History = Version.History,
             Hint = Version.Hint,
-
+            Width = 600
         };
 
-        commonDialog.Show();
+       
         if (commonDialog != null)
-            commonDialog.Location = new Point(this.Location.X + this.Width / 2 - commonDialog.Width / 2, this.Location.Y + this.Height / 2 - commonDialog.Height / 2);
+            commonDialog.Location = new Point(this.Location.X, this.Location.Y);
+        commonDialog.Show();
 
         commonDialog.Progress = ("Now Loading...Initializing OpenGL.", 0.1);
 
@@ -268,6 +273,7 @@ public partial class FormMain : Form
             DisableOpenGL = true;
             Registry(Reg.Mode.Write);
         }
+
         #region ここでglControlコントロールを追加. Mac環境の対応のため。
         if (!disableOpneGLToolStripMenuItem.Checked)
         {
@@ -1352,7 +1358,7 @@ public partial class FormMain : Form
                     if (ProgramUpdates.Execute(Path))
                         Close();
                     else
-                        MessageBox.Show($"Failed to downlod {Path}. \r\nSorry!", "Error!");
+                        MessageBox.Show($"Failed to download {Path}. \r\nSorry!", "Error!");
                 };
                 sw.Restart();
                 try
@@ -1378,11 +1384,11 @@ public partial class FormMain : Form
     /// <param name="interval">何回に一回更新するか</param>
     /// <param name="sleep"></param>
     /// <param name="showPercentage"></param>
-    /// <param name="showEllapsedTime"></param>
+    /// <param name="showElapsedTime"></param>
     /// <param name="showRemainTime"></param>
     /// <param name="digit"></param>
     private void reportProgress(long current, long total, long elapsedMilliseconds, string message,
-        int sleep = 0, bool showPercentage = true, bool showEllapsedTime = true, bool showRemainTime = true, int digit = 1)
+        int sleep = 0, bool showPercentage = true, bool showElapsedTime = true, bool showRemainTime = true, int digit = 1)
     {
         if (SkipProgressEvent || current > total)
             return;
@@ -1396,7 +1402,7 @@ public partial class FormMain : Form
             var format = $"f{digit}";
 
             if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
-            if (showEllapsedTime) message += $" Elappsed: {ellapsedSec.ToString(format)} s.";
+            if (showElapsedTime) message += $" Elapsed: {ellapsedSec.ToString(format)} s.";
             if (showRemainTime) message += $" Remaining: {(ellapsedSec / current * (total - current)).ToString(format)} s.";
 
             toolStripStatusLabel.Text = message;

@@ -63,12 +63,12 @@ public static class ProgramUpdates
     }
 
     public static (long Current, long Total, long ElapsedMilliseconds, string Message)
-        ProgressMessage(DownloadProgressChangedEventArgs e, Stopwatch stopwath)
+        ProgressMessage(DownloadProgressChangedEventArgs e, Stopwatch stopwatch)
     {
         var receivedMb = e.BytesReceived / 1E6;
         var totalMb = e.TotalBytesToReceive / 1E6;
         var message = $"Downloading setup file.  Received: {receivedMb:f1} MB / {totalMb:f1} MB.  ";
-        return (e.BytesReceived, e.TotalBytesToReceive, stopwath.ElapsedMilliseconds, message);
+        return (e.BytesReceived, e.TotalBytesToReceive, stopwatch.ElapsedMilliseconds, message);
     }
 
 }

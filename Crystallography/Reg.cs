@@ -34,18 +34,22 @@ public static class Reg
 
         if (mode == Mode.Read)
         {//読込の時
-
-            var buffer = (byte[])key.GetValue(regName);
-            if (buffer == null)
-                return;
-            using var decompressor = new BrotliDecompressor();
-            var val = MemoryPackSerializer.Deserialize<T>(decompressor.Decompress(buffer));
-            if (regName != "System.Globalization.CultureInfo.Name")
-                prop.SetValue(owner, val);
-            else
+            try
             {
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(val.ToString().ToLower().StartsWith("ja") ? "ja" : "en");
+                var buffer = (byte[])key.GetValue(regName);
+
+                if (buffer == null)
+                    return;
+                using var decompressor = new BrotliDecompressor();
+                var val = MemoryPackSerializer.Deserialize<T>(decompressor.Decompress(buffer));
+                if (regName != "System.Globalization.CultureInfo.Name")
+                    prop.SetValue(owner, val);
+                else
+                {
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(val.ToString().ToLower().StartsWith("ja") ? "ja" : "en");
+                }
             }
+            catch { return; }
         }
 
         else
