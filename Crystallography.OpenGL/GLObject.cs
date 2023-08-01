@@ -87,6 +87,8 @@ public readonly struct Vertex
     /// <param name="uv"></param>
     public Vertex(V3f position, V3f normal, V2f uv)
     {
+        if (GLControlAlpha.GraphicsInfo.Count == 1 && GLControlAlpha.GraphicsInfo[0].Product.Contains("AMD Radeon", StringComparison.OrdinalIgnoreCase))
+            position = new V3f(0, 0, 0);
         Position = position;
         Normal = normal;
         Argb = 0;

@@ -8,6 +8,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.866(2023/08/01)  AVX2 support temporarily suspended. Fixed a bug when using AMD Radeon GPUs." +
         "\r\n ver4.865(2023/06/23)  Fixed: GUI issues when changing language." +
         "\r\n ver4.864(2023/06/19)  Added: the length and F (structure factor) of the g vector are displayed when the spot is double-clicked (see https://github.com/seto77/ReciPro/issues/21)." +
         "\r\n ver4.862(2023/05/16)  Fixed minor bugs. Improved macro functions. Added command-line options." +

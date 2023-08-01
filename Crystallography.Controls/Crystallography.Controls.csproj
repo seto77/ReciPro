@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2023.6.23.0102</AssemblyVersion>
-    <FileVersion>2023.6.23.0102</FileVersion>
+    <AssemblyVersion>2023.8.1.1110</AssemblyVersion>
+    <FileVersion>2023.8.1.1110</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IronPython" Version="3.4.0" />
+    <PackageReference Include="IronPython" Version="3.4.1" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
