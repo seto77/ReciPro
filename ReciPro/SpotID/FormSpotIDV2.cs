@@ -7,6 +7,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Pipes;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -31,7 +32,15 @@ public partial class FormSpotIDV2 : Form
     private bool skipEvent = false;
     public PointD DirectSpot => dataSet.DataTableSpot.DirectSpotPosition;
 
-    public double PixelSize { set => numericBoxPixelSize.Value = value; get => numericBoxPixelSize.Value; }
+    public double PixelSize
+    {
+        set => numericBoxPixelSize.Value = value;
+        get {
+
+            if (radioButtonPixelSizeUnitReal.Checked) return numericBoxPixelSize.Value;
+            else return Math.Tan(2 * Math.Asin(WaveLength * numericBoxPixelSize.Value / 2)) * CameraLength;
+        } 
+    }
     public double CameraLength { set => numericBoxCameraLength.Value = value; get => numericBoxCameraLength.Value; }
 
     public double WaveLength => waveLengthControl1.WaveLength;
@@ -105,26 +114,29 @@ public partial class FormSpotIDV2 : Form
         {//DigitalMicroGraphデータであればスケールの情報などを取得
             if (Ring.DigitalMicrographProperty.PixelUnit == LengthUnitEnum.NanoMeterInverse)
             {
+                radioButtonPixelSizeUnitReal.Checked = true;
                 waveLengthControl1.WaveSource = WaveSource.Electron;
                 waveLengthControl1.Energy = Ring.DigitalMicrographProperty.AccVoltage / 1000.0;
-                numericBoxPixelSize.Value = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000.0;
+                PixelSize= Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000.0;
                 CameraLength = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000 / Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.DigitalMicrographProperty.PixelScale / 2));
-                var pixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron;
-                var scale = Ring.DigitalMicrographProperty.PixelScale;
+                //var pixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron;
+                //var scale = Ring.DigitalMicrographProperty.PixelScale;
             }
         }
         else if (fileName.EndsWith("mrc"))
         {
             if (Ring.MRC.Pixel_size_X > 1)
             {
+                radioButtonPixelSizeUnitReal.Checked = true;
                 waveLengthControl1.WaveSource = WaveSource.Electron;
                 waveLengthControl1.Energy = Ring.MRC.HT / 1000.0;
                 CameraLength = Ring.MRC.Camera_length * 1000;
-                numericBoxPixelSize.Value = CameraLength * Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.MRC.Pixel_size_X * 1E-9 / 2));
+                PixelSize = CameraLength * Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.MRC.Pixel_size_X * 1E-9 / 2));
             }
         }
         else if (fileName.EndsWith("ipa"))
         {
+            radioButtonPixelSizeUnitReal.Checked = true;
             waveLengthControl1.WaveSource = Ring.IP.WaveProperty.Source;
             waveLengthControl1.WaveLength = Ring.IP.WaveProperty.WaveLength;
             CameraLength = Ring.IP.FilmDistance;
@@ -135,7 +147,7 @@ public partial class FormSpotIDV2 : Form
             dataSet.DataTableSpot.Add(true, area, r.PrmsPv, r.PrmsBg, r.R);
         }
         else if (fileName.EndsWith("tif") && Ring.TIA_PixelSize != 0)
-            numericBoxPixelSize.Value = WaveLength * CameraLength / Ring.TIA_PixelSize * 1E-11;
+            PixelSize= WaveLength * CameraLength / Ring.TIA_PixelSize * 1E-11;
 
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
 
@@ -203,7 +215,7 @@ public partial class FormSpotIDV2 : Form
     private void NumericBoxPixelSize_ValueChanged(object sender, EventArgs e)
     {
         if (dataSet.DataTableSpot.AreaDetector != null)
-            dataSet.DataTableSpot.AreaDetector.Resolution = numericBoxPixelSize.Value;
+            dataSet.DataTableSpot.AreaDetector.Resolution = PixelSize;
         dataSet.DataTableSpot.ResetDspacing();
     }
 
@@ -598,7 +610,7 @@ public partial class FormSpotIDV2 : Form
         Enabled = true;
     }
 
-    
+
     private void buttonDonut_Click(object sender, EventArgs e)
     {
         if (dataSet.DataTableSpot.Spots.Count == 0) return;
@@ -915,7 +927,7 @@ public partial class FormSpotIDV2 : Form
     private List<List<Grain>> identifySpots(List<Crystal> crystals)
     {
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
-        var Detector = new AreaDetector(p.Width, p.Height, numericBoxPixelSize.Value, dataSet.DataTableSpot.DirectSpotPosition, waveLengthControl1.Property, CameraLength);
+        var Detector = new AreaDetector(p.Width, p.Height, PixelSize, dataSet.DataTableSpot.DirectSpotPosition, waveLengthControl1.Property, CameraLength);
         Detector.setMaxReciprocalZ();
 
         var crystalCount = crystals.Count;
@@ -1374,7 +1386,7 @@ public partial class FormSpotIDV2 : Form
             }
 
             scalablePictureBoxAdvanced.Symbols.AddRange(calcSpots);
-            scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font("Arial", 20f), Color.White, Color.Red); 
+            scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font("Arial", 20f), Color.White, Color.Red);
 
             checkBoxShowObsSpots_CheckedChanged(sender, e);
             //scalablePictureBoxAdvanced.Refresh(); //上のイベントで呼ばれるので、コメントアウト
@@ -1582,5 +1594,9 @@ public partial class FormSpotIDV2 : Form
 
     #endregion
 
-    
+
+    private void radioButtonPixelSizeUnitReal_CheckedChanged(object sender, EventArgs e)
+    {
+        numericBoxCameraLength.Enabled = radioButtonPixelSizeUnitReal.Checked;
+    }
 }

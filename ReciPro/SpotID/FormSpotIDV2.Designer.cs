@@ -30,7 +30,7 @@ namespace ReciPro
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotIDV2));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,398 +46,398 @@ namespace ReciPro
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonDeleteSpot = new System.Windows.Forms.Button();
-            this.buttonClearSpots = new System.Windows.Forms.Button();
-            this.buttonCopyToClipboad = new System.Windows.Forms.Button();
-            this.buttonSaveToFile = new System.Windows.Forms.Button();
-            this.checkBoxDetailsOfFunction = new System.Windows.Forms.CheckBox();
-            this.checkBoxDetailsOfSpot = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowObsSpotSymbol = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowObsSpotLabel = new System.Windows.Forms.CheckBox();
-            this.buttonCopmprehensiveFitting = new System.Windows.Forms.Button();
-            this.buttonResetRangeForAllSpots = new System.Windows.Forms.Button();
-            this.numericBoxNumberOfSpots = new Crystallography.Controls.NumericBox();
-            this.buttonFindSpots = new System.Windows.Forms.Button();
-            this.numericBoxNearestNeighbor = new Crystallography.Controls.NumericBox();
-            this.numericBoxFittingRange = new Crystallography.Controls.NumericBox();
-            this.buttonGlobalFit = new System.Windows.Forms.Button();
-            this.numericBoxDonut = new Crystallography.Controls.NumericBox();
-            this.buttonDonut = new System.Windows.Forms.Button();
-            this.dataGridViewSpots = new System.Windows.Forms.DataGridView();
-            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Range = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.x0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.y0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.H1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.H2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.θ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.η = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.A = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.B0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.R = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.d = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hkl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.bindingSourceObsSpots = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new ReciPro.DataSetReciPro();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.buttonIdentifySpots = new System.Windows.Forms.Button();
-            this.numericBoxSemiangle = new Crystallography.Controls.NumericBox();
-            this.numericBoxMaxNumOfG = new Crystallography.Controls.NumericBox();
-            this.numericBoxAcceptableError = new Crystallography.Controls.NumericBox();
-            this.numericBoxMaxGrainNum = new Crystallography.Controls.NumericBox();
-            this.checkBoxShowZoneAxis = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowCalcSpotSymbol = new System.Windows.Forms.CheckBox();
-            this.radioButtonMultiGrain = new System.Windows.Forms.RadioButton();
-            this.radioButtonSingleGrain = new System.Windows.Forms.RadioButton();
-            this.checkBoxShowCalcSpotLabel = new System.Windows.Forms.CheckBox();
-            this.dataGridViewGrains = new System.Windows.Forms.DataGridView();
-            this.noDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CrystalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.assignedSpotsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceGrains = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewCandidates = new System.Windows.Forms.DataGridView();
-            this.noDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AssignedSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceCandidates = new System.Windows.Forms.BindingSource(this.components);
-            this.checkBoxIgnoreMultipleDiffraction = new System.Windows.Forms.CheckBox();
-            this.buttonRefineThicknessAndDirection = new System.Windows.Forms.Button();
-            this.buttonStop = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numericBoxCameraLength = new Crystallography.Controls.NumericBox();
-            this.numericBoxPixelSize = new Crystallography.Controls.NumericBox();
-            this.waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
-            this.checkBoxShowDebyeRing = new System.Windows.Forms.CheckBox();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsBitmapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyAsBitmapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.doubleClickAddSpotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabelImageFilter = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelFindSpot = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelIdentifySpot = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelRefine = new System.Windows.Forms.ToolStripStatusLabel();
-            this.backgroundWorkerSpotID = new System.ComponentModel.BackgroundWorker();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceObsSpots)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrains)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGrains)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCandidates)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.menuStrip.SuspendLayout();
-            this.statusStrip.SuspendLayout();
-            this.SuspendLayout();
+            splitContainer1 = new System.Windows.Forms.SplitContainer();
+            scalablePictureBoxAdvanced = new ScalablePictureBoxAdvanced();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            panel2 = new System.Windows.Forms.Panel();
+            buttonDeleteSpot = new System.Windows.Forms.Button();
+            buttonClearSpots = new System.Windows.Forms.Button();
+            buttonCopyToClipboad = new System.Windows.Forms.Button();
+            buttonSaveToFile = new System.Windows.Forms.Button();
+            checkBoxDetailsOfFunction = new System.Windows.Forms.CheckBox();
+            checkBoxDetailsOfSpot = new System.Windows.Forms.CheckBox();
+            checkBoxShowObsSpotSymbol = new System.Windows.Forms.CheckBox();
+            checkBoxShowObsSpotLabel = new System.Windows.Forms.CheckBox();
+            buttonCopmprehensiveFitting = new System.Windows.Forms.Button();
+            buttonResetRangeForAllSpots = new System.Windows.Forms.Button();
+            numericBoxNumberOfSpots = new NumericBox();
+            buttonFindSpots = new System.Windows.Forms.Button();
+            numericBoxNearestNeighbor = new NumericBox();
+            numericBoxFittingRange = new NumericBox();
+            buttonGlobalFit = new System.Windows.Forms.Button();
+            numericBoxDonut = new NumericBox();
+            buttonDonut = new System.Windows.Forms.Button();
+            dataGridViewSpots = new System.Windows.Forms.DataGridView();
+            Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Range = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            x0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            y0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            H1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            H2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            θ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            η = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            A = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            B0 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Bx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            By = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            R = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            d = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            hkl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            bindingSourceObsSpots = new System.Windows.Forms.BindingSource(components);
+            dataSet = new DataSetReciPro();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            buttonIdentifySpots = new System.Windows.Forms.Button();
+            numericBoxSemiangle = new NumericBox();
+            numericBoxMaxNumOfG = new NumericBox();
+            numericBoxAcceptableError = new NumericBox();
+            numericBoxMaxGrainNum = new NumericBox();
+            checkBoxShowZoneAxis = new System.Windows.Forms.CheckBox();
+            checkBoxShowCalcSpotSymbol = new System.Windows.Forms.CheckBox();
+            radioButtonMultiGrain = new System.Windows.Forms.RadioButton();
+            radioButtonSingleGrain = new System.Windows.Forms.RadioButton();
+            checkBoxShowCalcSpotLabel = new System.Windows.Forms.CheckBox();
+            dataGridViewGrains = new System.Windows.Forms.DataGridView();
+            noDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            CrystalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            assignedSpotsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bindingSourceGrains = new System.Windows.Forms.BindingSource(components);
+            dataGridViewCandidates = new System.Windows.Forms.DataGridView();
+            noDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            AssignedSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bindingSourceCandidates = new System.Windows.Forms.BindingSource(components);
+            checkBoxIgnoreMultipleDiffraction = new System.Windows.Forms.CheckBox();
+            buttonRefineThicknessAndDirection = new System.Windows.Forms.Button();
+            buttonStop = new System.Windows.Forms.Button();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            numericBoxCameraLength = new NumericBox();
+            numericBoxPixelSize = new NumericBox();
+            waveLengthControl1 = new WaveLengthControl();
+            checkBoxShowDebyeRing = new System.Windows.Forms.CheckBox();
+            menuStrip = new System.Windows.Forms.MenuStrip();
+            fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            saveAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            saveAsBitmapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            copyAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            copyAsBitmapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            shortcutHintsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            doubleClickAddSpotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            statusStrip = new System.Windows.Forms.StatusStrip();
+            toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            toolStripStatusLabelImageFilter = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabelFindSpot = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabelIdentifySpot = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabelRefine = new System.Windows.Forms.ToolStripStatusLabel();
+            backgroundWorkerSpotID = new System.ComponentModel.BackgroundWorker();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            radioButtonPixelSizeUnitReal = new System.Windows.Forms.RadioButton();
+            radioButtonPixelSizeUnitInverse = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            groupBox1.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSpots).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceObsSpots).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewGrains).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceGrains).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCandidates).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceCandidates).BeginInit();
+            groupBox2.SuspendLayout();
+            menuStrip.SuspendLayout();
+            statusStrip.SuspendLayout();
+            SuspendLayout();
             // 
             // splitContainer1
             // 
-            this.splitContainer1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Name = "splitContainer1";
+            splitContainer1.BackColor = System.Drawing.SystemColors.Control;
+            splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
+            resources.ApplyResources(splitContainer1, "splitContainer1");
+            splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.scalablePictureBoxAdvanced);
-            this.splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
+            splitContainer1.Panel1.Controls.Add(scalablePictureBoxAdvanced);
+            splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Panel2.Controls.Add(this.checkBoxShowDebyeRing);
-            this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            splitContainer1.Panel2.Controls.Add(groupBox1);
+            splitContainer1.Panel2.Controls.Add(groupBox3);
+            splitContainer1.Panel2.Controls.Add(groupBox2);
+            splitContainer1.Panel2.Controls.Add(checkBoxShowDebyeRing);
+            splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             // 
             // scalablePictureBoxAdvanced
             // 
-            resources.ApplyResources(this.scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
-            this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;
-            this.scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
-            this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = true;
-            this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesRadius = 1.5D;
-            this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesThreshold = 3D;
-            this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesVisible = true;
-            this.scalablePictureBoxAdvanced.ImageFilter_GaussianBlur = true;
-            this.scalablePictureBoxAdvanced.ImageFilter_GaussianBlurRadius = 3D;
-            this.scalablePictureBoxAdvanced.ImageFilter_GaussianBlurVisible = true;
-            this.scalablePictureBoxAdvanced.ImageFilterVisible = true;
-            this.scalablePictureBoxAdvanced.LogScaleBar = true;
-            this.scalablePictureBoxAdvanced.LowerIntensity = 0D;
-            this.scalablePictureBoxAdvanced.MaximumIntensity = 18285.576171875D;
-            this.scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
-            this.scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
-            this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(604, 602);
-            this.scalablePictureBoxAdvanced.ShowGradiaent = true;
-            this.scalablePictureBoxAdvanced.SkipDrawing = false;
-            this.scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
-            this.scalablePictureBoxAdvanced.StatusProgress = 0D;
-            this.scalablePictureBoxAdvanced.StatusVisible = false;
-            this.scalablePictureBoxAdvanced.TrackBarVisible = true;
-            this.scalablePictureBoxAdvanced.UpperIntensity = 255D;
-            this.scalablePictureBoxAdvanced.VisibleGradient = true;
-            this.scalablePictureBoxAdvanced.MouseDown2 += new Crystallography.Controls.ScalablePictureBoxAdvanced.MouseEvent(this.scalablePictureBoxAdvanced1_MouseDown2);
-            this.scalablePictureBoxAdvanced.StatusChanged += new System.EventHandler(this.scalablePictureBoxAdvanced_StatusChanged);
-            this.scalablePictureBoxAdvanced.FilterChanged += new System.EventHandler(this.ScalablePictureBoxAdvanced_FilterChanged);
+            resources.ApplyResources(scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
+            scalablePictureBoxAdvanced.FixZoomAndCenter = false;
+            scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
+            scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = true;
+            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesRadius = 1.5D;
+            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesThreshold = 3D;
+            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesVisible = true;
+            scalablePictureBoxAdvanced.ImageFilter_GaussianBlur = true;
+            scalablePictureBoxAdvanced.ImageFilter_GaussianBlurRadius = 3D;
+            scalablePictureBoxAdvanced.ImageFilter_GaussianBlurVisible = true;
+            scalablePictureBoxAdvanced.ImageFilterVisible = true;
+            scalablePictureBoxAdvanced.LogScaleBar = true;
+            scalablePictureBoxAdvanced.LowerIntensity = 0D;
+            scalablePictureBoxAdvanced.MaximumIntensity = 18285.576171875D;
+            scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
+            scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
+            scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
+            scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(604, 602);
+            scalablePictureBoxAdvanced.ShowGradiaent = true;
+            scalablePictureBoxAdvanced.SkipDrawing = false;
+            scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
+            scalablePictureBoxAdvanced.StatusProgress = 0D;
+            scalablePictureBoxAdvanced.StatusVisible = false;
+            scalablePictureBoxAdvanced.Title = ((string, System.Drawing.Font, System.Drawing.Color, System.Drawing.Color))resources.GetObject("scalablePictureBoxAdvanced.Title");
+            scalablePictureBoxAdvanced.TitleVisible = false;
+            scalablePictureBoxAdvanced.TrackBarVisible = true;
+            scalablePictureBoxAdvanced.UpperIntensity = 255D;
+            scalablePictureBoxAdvanced.VisibleGradient = true;
+            scalablePictureBoxAdvanced.MouseDown2 += scalablePictureBoxAdvanced1_MouseDown2;
+            scalablePictureBoxAdvanced.StatusChanged += scalablePictureBoxAdvanced_StatusChanged;
+            scalablePictureBoxAdvanced.FilterChanged += ScalablePictureBoxAdvanced_FilterChanged;
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.panel2);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Controls.Add(panel2);
+            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.buttonDeleteSpot);
-            this.panel2.Controls.Add(this.buttonClearSpots);
-            this.panel2.Controls.Add(this.buttonCopyToClipboad);
-            this.panel2.Controls.Add(this.buttonSaveToFile);
-            this.panel2.Controls.Add(this.checkBoxDetailsOfFunction);
-            this.panel2.Controls.Add(this.checkBoxDetailsOfSpot);
-            this.panel2.Controls.Add(this.checkBoxShowObsSpotSymbol);
-            this.panel2.Controls.Add(this.checkBoxShowObsSpotLabel);
-            this.panel2.Controls.Add(this.buttonCopmprehensiveFitting);
-            this.panel2.Controls.Add(this.buttonResetRangeForAllSpots);
-            this.panel2.Controls.Add(this.numericBoxNumberOfSpots);
-            this.panel2.Controls.Add(this.buttonFindSpots);
-            this.panel2.Controls.Add(this.numericBoxNearestNeighbor);
-            this.panel2.Controls.Add(this.numericBoxFittingRange);
-            this.panel2.Controls.Add(this.buttonGlobalFit);
-            this.panel2.Controls.Add(this.numericBoxDonut);
-            this.panel2.Controls.Add(this.buttonDonut);
-            this.panel2.Controls.Add(this.dataGridViewSpots);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
+            panel2.Controls.Add(buttonDeleteSpot);
+            panel2.Controls.Add(buttonClearSpots);
+            panel2.Controls.Add(buttonCopyToClipboad);
+            panel2.Controls.Add(buttonSaveToFile);
+            panel2.Controls.Add(checkBoxDetailsOfFunction);
+            panel2.Controls.Add(checkBoxDetailsOfSpot);
+            panel2.Controls.Add(checkBoxShowObsSpotSymbol);
+            panel2.Controls.Add(checkBoxShowObsSpotLabel);
+            panel2.Controls.Add(buttonCopmprehensiveFitting);
+            panel2.Controls.Add(buttonResetRangeForAllSpots);
+            panel2.Controls.Add(numericBoxNumberOfSpots);
+            panel2.Controls.Add(buttonFindSpots);
+            panel2.Controls.Add(numericBoxNearestNeighbor);
+            panel2.Controls.Add(numericBoxFittingRange);
+            panel2.Controls.Add(buttonGlobalFit);
+            panel2.Controls.Add(numericBoxDonut);
+            panel2.Controls.Add(buttonDonut);
+            panel2.Controls.Add(dataGridViewSpots);
+            resources.ApplyResources(panel2, "panel2");
+            panel2.Name = "panel2";
             // 
             // buttonDeleteSpot
             // 
-            resources.ApplyResources(this.buttonDeleteSpot, "buttonDeleteSpot");
-            this.buttonDeleteSpot.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonDeleteSpot.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteSpot.Name = "buttonDeleteSpot";
-            this.toolTip.SetToolTip(this.buttonDeleteSpot, resources.GetString("buttonDeleteSpot.ToolTip"));
-            this.buttonDeleteSpot.UseVisualStyleBackColor = false;
-            this.buttonDeleteSpot.Click += new System.EventHandler(this.buttonDeleteSpot_Click);
+            resources.ApplyResources(buttonDeleteSpot, "buttonDeleteSpot");
+            buttonDeleteSpot.BackColor = System.Drawing.Color.IndianRed;
+            buttonDeleteSpot.ForeColor = System.Drawing.Color.White;
+            buttonDeleteSpot.Name = "buttonDeleteSpot";
+            toolTip.SetToolTip(buttonDeleteSpot, resources.GetString("buttonDeleteSpot.ToolTip"));
+            buttonDeleteSpot.UseVisualStyleBackColor = false;
+            buttonDeleteSpot.Click += buttonDeleteSpot_Click;
             // 
             // buttonClearSpots
             // 
-            resources.ApplyResources(this.buttonClearSpots, "buttonClearSpots");
-            this.buttonClearSpots.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonClearSpots.ForeColor = System.Drawing.Color.White;
-            this.buttonClearSpots.Name = "buttonClearSpots";
-            this.toolTip.SetToolTip(this.buttonClearSpots, resources.GetString("buttonClearSpots.ToolTip"));
-            this.buttonClearSpots.UseVisualStyleBackColor = false;
-            this.buttonClearSpots.Click += new System.EventHandler(this.buttonClearSpots_Click);
+            resources.ApplyResources(buttonClearSpots, "buttonClearSpots");
+            buttonClearSpots.BackColor = System.Drawing.Color.IndianRed;
+            buttonClearSpots.ForeColor = System.Drawing.Color.White;
+            buttonClearSpots.Name = "buttonClearSpots";
+            toolTip.SetToolTip(buttonClearSpots, resources.GetString("buttonClearSpots.ToolTip"));
+            buttonClearSpots.UseVisualStyleBackColor = false;
+            buttonClearSpots.Click += buttonClearSpots_Click;
             // 
             // buttonCopyToClipboad
             // 
-            resources.ApplyResources(this.buttonCopyToClipboad, "buttonCopyToClipboad");
-            this.buttonCopyToClipboad.Name = "buttonCopyToClipboad";
-            this.toolTip.SetToolTip(this.buttonCopyToClipboad, resources.GetString("buttonCopyToClipboad.ToolTip"));
-            this.buttonCopyToClipboad.UseVisualStyleBackColor = true;
-            this.buttonCopyToClipboad.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
+            resources.ApplyResources(buttonCopyToClipboad, "buttonCopyToClipboad");
+            buttonCopyToClipboad.Name = "buttonCopyToClipboad";
+            toolTip.SetToolTip(buttonCopyToClipboad, resources.GetString("buttonCopyToClipboad.ToolTip"));
+            buttonCopyToClipboad.UseVisualStyleBackColor = true;
+            buttonCopyToClipboad.Click += buttonCopyToClipboad_Click;
             // 
             // buttonSaveToFile
             // 
-            resources.ApplyResources(this.buttonSaveToFile, "buttonSaveToFile");
-            this.buttonSaveToFile.Name = "buttonSaveToFile";
-            this.toolTip.SetToolTip(this.buttonSaveToFile, resources.GetString("buttonSaveToFile.ToolTip"));
-            this.buttonSaveToFile.UseVisualStyleBackColor = true;
-            this.buttonSaveToFile.Click += new System.EventHandler(this.buttonCopyToClipboad_Click);
+            resources.ApplyResources(buttonSaveToFile, "buttonSaveToFile");
+            buttonSaveToFile.Name = "buttonSaveToFile";
+            toolTip.SetToolTip(buttonSaveToFile, resources.GetString("buttonSaveToFile.ToolTip"));
+            buttonSaveToFile.UseVisualStyleBackColor = true;
+            buttonSaveToFile.Click += buttonCopyToClipboad_Click;
             // 
             // checkBoxDetailsOfFunction
             // 
-            resources.ApplyResources(this.checkBoxDetailsOfFunction, "checkBoxDetailsOfFunction");
-            this.checkBoxDetailsOfFunction.Checked = true;
-            this.checkBoxDetailsOfFunction.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDetailsOfFunction.Name = "checkBoxDetailsOfFunction";
-            this.checkBoxDetailsOfFunction.UseVisualStyleBackColor = true;
-            this.checkBoxDetailsOfFunction.CheckedChanged += new System.EventHandler(this.checkBoxDetailsOfFunction_CheckedChanged);
+            resources.ApplyResources(checkBoxDetailsOfFunction, "checkBoxDetailsOfFunction");
+            checkBoxDetailsOfFunction.Checked = true;
+            checkBoxDetailsOfFunction.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDetailsOfFunction.Name = "checkBoxDetailsOfFunction";
+            checkBoxDetailsOfFunction.UseVisualStyleBackColor = true;
+            checkBoxDetailsOfFunction.CheckedChanged += checkBoxDetailsOfFunction_CheckedChanged;
             // 
             // checkBoxDetailsOfSpot
             // 
-            resources.ApplyResources(this.checkBoxDetailsOfSpot, "checkBoxDetailsOfSpot");
-            this.checkBoxDetailsOfSpot.Name = "checkBoxDetailsOfSpot";
-            this.checkBoxDetailsOfSpot.UseVisualStyleBackColor = true;
-            this.checkBoxDetailsOfSpot.CheckedChanged += new System.EventHandler(this.checkBoxDetailsOfSpot_CheckedChanged);
+            resources.ApplyResources(checkBoxDetailsOfSpot, "checkBoxDetailsOfSpot");
+            checkBoxDetailsOfSpot.Name = "checkBoxDetailsOfSpot";
+            checkBoxDetailsOfSpot.UseVisualStyleBackColor = true;
+            checkBoxDetailsOfSpot.CheckedChanged += checkBoxDetailsOfSpot_CheckedChanged;
             // 
             // checkBoxShowObsSpotSymbol
             // 
-            resources.ApplyResources(this.checkBoxShowObsSpotSymbol, "checkBoxShowObsSpotSymbol");
-            this.checkBoxShowObsSpotSymbol.Checked = true;
-            this.checkBoxShowObsSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowObsSpotSymbol.Name = "checkBoxShowObsSpotSymbol";
-            this.checkBoxShowObsSpotSymbol.UseVisualStyleBackColor = true;
-            this.checkBoxShowObsSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            resources.ApplyResources(checkBoxShowObsSpotSymbol, "checkBoxShowObsSpotSymbol");
+            checkBoxShowObsSpotSymbol.Checked = true;
+            checkBoxShowObsSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxShowObsSpotSymbol.Name = "checkBoxShowObsSpotSymbol";
+            checkBoxShowObsSpotSymbol.UseVisualStyleBackColor = true;
+            checkBoxShowObsSpotSymbol.CheckedChanged += checkBoxShowObsSpots_CheckedChanged;
             // 
             // checkBoxShowObsSpotLabel
             // 
-            resources.ApplyResources(this.checkBoxShowObsSpotLabel, "checkBoxShowObsSpotLabel");
-            this.checkBoxShowObsSpotLabel.Checked = true;
-            this.checkBoxShowObsSpotLabel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowObsSpotLabel.Name = "checkBoxShowObsSpotLabel";
-            this.checkBoxShowObsSpotLabel.UseVisualStyleBackColor = true;
-            this.checkBoxShowObsSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            resources.ApplyResources(checkBoxShowObsSpotLabel, "checkBoxShowObsSpotLabel");
+            checkBoxShowObsSpotLabel.Checked = true;
+            checkBoxShowObsSpotLabel.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxShowObsSpotLabel.Name = "checkBoxShowObsSpotLabel";
+            checkBoxShowObsSpotLabel.UseVisualStyleBackColor = true;
+            checkBoxShowObsSpotLabel.CheckedChanged += checkBoxShowObsSpots_CheckedChanged;
             // 
             // buttonCopmprehensiveFitting
             // 
-            resources.ApplyResources(this.buttonCopmprehensiveFitting, "buttonCopmprehensiveFitting");
-            this.buttonCopmprehensiveFitting.Name = "buttonCopmprehensiveFitting";
-            this.buttonCopmprehensiveFitting.UseVisualStyleBackColor = true;
-            this.buttonCopmprehensiveFitting.Click += new System.EventHandler(this.buttonRefit_Click);
+            resources.ApplyResources(buttonCopmprehensiveFitting, "buttonCopmprehensiveFitting");
+            buttonCopmprehensiveFitting.Name = "buttonCopmprehensiveFitting";
+            buttonCopmprehensiveFitting.UseVisualStyleBackColor = true;
+            buttonCopmprehensiveFitting.Click += buttonRefit_Click;
             // 
             // buttonResetRangeForAllSpots
             // 
-            resources.ApplyResources(this.buttonResetRangeForAllSpots, "buttonResetRangeForAllSpots");
-            this.buttonResetRangeForAllSpots.Name = "buttonResetRangeForAllSpots";
-            this.buttonResetRangeForAllSpots.UseVisualStyleBackColor = true;
-            this.buttonResetRangeForAllSpots.Click += new System.EventHandler(this.ButtonResetRangeForAllSpots_Click);
+            resources.ApplyResources(buttonResetRangeForAllSpots, "buttonResetRangeForAllSpots");
+            buttonResetRangeForAllSpots.Name = "buttonResetRangeForAllSpots";
+            buttonResetRangeForAllSpots.UseVisualStyleBackColor = true;
+            buttonResetRangeForAllSpots.Click += ButtonResetRangeForAllSpots_Click;
             // 
             // numericBoxNumberOfSpots
             // 
-            resources.ApplyResources(this.numericBoxNumberOfSpots, "numericBoxNumberOfSpots");
-            this.numericBoxNumberOfSpots.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumberOfSpots.DecimalPlaces = 0;
-            this.numericBoxNumberOfSpots.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumberOfSpots.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNumberOfSpots.Maximum = 1000D;
-            this.numericBoxNumberOfSpots.Minimum = 1D;
-            this.numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
-            this.numericBoxNumberOfSpots.RadianValue = 0.52359877559829882D;
-            this.numericBoxNumberOfSpots.RoundErrorAccuracy = -1;
-            this.numericBoxNumberOfSpots.ShowUpDown = true;
-            this.numericBoxNumberOfSpots.SkipEventDuringInput = false;
-            this.numericBoxNumberOfSpots.SmartIncrement = true;
-            this.numericBoxNumberOfSpots.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxNumberOfSpots.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxNumberOfSpots, resources.GetString("numericBoxNumberOfSpots.ToolTip"));
-            this.numericBoxNumberOfSpots.Value = 30D;
+            resources.ApplyResources(numericBoxNumberOfSpots, "numericBoxNumberOfSpots");
+            numericBoxNumberOfSpots.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxNumberOfSpots.DecimalPlaces = 0;
+            numericBoxNumberOfSpots.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxNumberOfSpots.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxNumberOfSpots.Maximum = 1000D;
+            numericBoxNumberOfSpots.Minimum = 1D;
+            numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
+            numericBoxNumberOfSpots.RadianValue = 0.52359877559829882D;
+            numericBoxNumberOfSpots.RoundErrorAccuracy = -1;
+            numericBoxNumberOfSpots.ShowUpDown = true;
+            numericBoxNumberOfSpots.SkipEventDuringInput = false;
+            numericBoxNumberOfSpots.SmartIncrement = true;
+            numericBoxNumberOfSpots.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxNumberOfSpots, resources.GetString("numericBoxNumberOfSpots.ToolTip"));
+            numericBoxNumberOfSpots.Value = 30D;
             // 
             // buttonFindSpots
             // 
-            resources.ApplyResources(this.buttonFindSpots, "buttonFindSpots");
-            this.buttonFindSpots.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonFindSpots.ForeColor = System.Drawing.Color.White;
-            this.buttonFindSpots.Name = "buttonFindSpots";
-            this.toolTip.SetToolTip(this.buttonFindSpots, resources.GetString("buttonFindSpots.ToolTip"));
-            this.buttonFindSpots.UseVisualStyleBackColor = false;
-            this.buttonFindSpots.Click += new System.EventHandler(this.buttonFindSpots_Click);
+            resources.ApplyResources(buttonFindSpots, "buttonFindSpots");
+            buttonFindSpots.BackColor = System.Drawing.Color.SteelBlue;
+            buttonFindSpots.ForeColor = System.Drawing.Color.White;
+            buttonFindSpots.Name = "buttonFindSpots";
+            toolTip.SetToolTip(buttonFindSpots, resources.GetString("buttonFindSpots.ToolTip"));
+            buttonFindSpots.UseVisualStyleBackColor = false;
+            buttonFindSpots.Click += buttonFindSpots_Click;
             // 
             // numericBoxNearestNeighbor
             // 
-            resources.ApplyResources(this.numericBoxNearestNeighbor, "numericBoxNearestNeighbor");
-            this.numericBoxNearestNeighbor.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNearestNeighbor.DecimalPlaces = 0;
-            this.numericBoxNearestNeighbor.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNearestNeighbor.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxNearestNeighbor.Maximum = 1000D;
-            this.numericBoxNearestNeighbor.Minimum = 1D;
-            this.numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
-            this.numericBoxNearestNeighbor.RadianValue = 0.17453292519943295D;
-            this.numericBoxNearestNeighbor.RoundErrorAccuracy = -1;
-            this.numericBoxNearestNeighbor.ShowUpDown = true;
-            this.numericBoxNearestNeighbor.SkipEventDuringInput = false;
-            this.numericBoxNearestNeighbor.SmartIncrement = true;
-            this.numericBoxNearestNeighbor.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxNearestNeighbor.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxNearestNeighbor, resources.GetString("numericBoxNearestNeighbor.ToolTip"));
-            this.numericBoxNearestNeighbor.Value = 10D;
+            resources.ApplyResources(numericBoxNearestNeighbor, "numericBoxNearestNeighbor");
+            numericBoxNearestNeighbor.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxNearestNeighbor.DecimalPlaces = 0;
+            numericBoxNearestNeighbor.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxNearestNeighbor.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxNearestNeighbor.Maximum = 1000D;
+            numericBoxNearestNeighbor.Minimum = 1D;
+            numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
+            numericBoxNearestNeighbor.RadianValue = 0.17453292519943295D;
+            numericBoxNearestNeighbor.RoundErrorAccuracy = -1;
+            numericBoxNearestNeighbor.ShowUpDown = true;
+            numericBoxNearestNeighbor.SkipEventDuringInput = false;
+            numericBoxNearestNeighbor.SmartIncrement = true;
+            numericBoxNearestNeighbor.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxNearestNeighbor, resources.GetString("numericBoxNearestNeighbor.ToolTip"));
+            numericBoxNearestNeighbor.Value = 10D;
             // 
             // numericBoxFittingRange
             // 
-            resources.ApplyResources(this.numericBoxFittingRange, "numericBoxFittingRange");
-            this.numericBoxFittingRange.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFittingRange.DecimalPlaces = 1;
-            this.numericBoxFittingRange.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFittingRange.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFittingRange.Maximum = 100D;
-            this.numericBoxFittingRange.Minimum = 0D;
-            this.numericBoxFittingRange.Name = "numericBoxFittingRange";
-            this.numericBoxFittingRange.RadianValue = 0.3490658503988659D;
-            this.numericBoxFittingRange.RoundErrorAccuracy = -1;
-            this.numericBoxFittingRange.ShowUpDown = true;
-            this.numericBoxFittingRange.SkipEventDuringInput = false;
-            this.numericBoxFittingRange.SmartIncrement = true;
-            this.numericBoxFittingRange.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxFittingRange.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxFittingRange, resources.GetString("numericBoxFittingRange.ToolTip"));
-            this.numericBoxFittingRange.Value = 20D;
+            resources.ApplyResources(numericBoxFittingRange, "numericBoxFittingRange");
+            numericBoxFittingRange.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxFittingRange.DecimalPlaces = 1;
+            numericBoxFittingRange.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxFittingRange.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxFittingRange.Maximum = 100D;
+            numericBoxFittingRange.Minimum = 0D;
+            numericBoxFittingRange.Name = "numericBoxFittingRange";
+            numericBoxFittingRange.RadianValue = 0.3490658503988659D;
+            numericBoxFittingRange.RoundErrorAccuracy = -1;
+            numericBoxFittingRange.ShowUpDown = true;
+            numericBoxFittingRange.SkipEventDuringInput = false;
+            numericBoxFittingRange.SmartIncrement = true;
+            numericBoxFittingRange.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxFittingRange, resources.GetString("numericBoxFittingRange.ToolTip"));
+            numericBoxFittingRange.Value = 20D;
             // 
             // buttonGlobalFit
             // 
-            resources.ApplyResources(this.buttonGlobalFit, "buttonGlobalFit");
-            this.buttonGlobalFit.Name = "buttonGlobalFit";
-            this.buttonGlobalFit.UseVisualStyleBackColor = true;
-            this.buttonGlobalFit.Click += new System.EventHandler(this.ButtonGlobalFit_Click);
+            resources.ApplyResources(buttonGlobalFit, "buttonGlobalFit");
+            buttonGlobalFit.Name = "buttonGlobalFit";
+            buttonGlobalFit.UseVisualStyleBackColor = true;
+            buttonGlobalFit.Click += ButtonGlobalFit_Click;
             // 
             // numericBoxDonut
             // 
-            resources.ApplyResources(this.numericBoxDonut, "numericBoxDonut");
-            this.numericBoxDonut.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDonut.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDonut.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDonut.Maximum = 100D;
-            this.numericBoxDonut.Minimum = 1D;
-            this.numericBoxDonut.Name = "numericBoxDonut";
-            this.numericBoxDonut.RadianValue = 0.087266462599716474D;
-            this.numericBoxDonut.RoundErrorAccuracy = -1;
-            this.numericBoxDonut.ShowUpDown = true;
-            this.numericBoxDonut.SkipEventDuringInput = false;
-            this.numericBoxDonut.SmartIncrement = true;
-            this.numericBoxDonut.TextFont = new System.Drawing.Font("Segoe UI Symbol", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDonut.ThonsandsSeparator = true;
-            this.numericBoxDonut.Value = 5D;
+            resources.ApplyResources(numericBoxDonut, "numericBoxDonut");
+            numericBoxDonut.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDonut.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDonut.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDonut.Maximum = 100D;
+            numericBoxDonut.Minimum = 1D;
+            numericBoxDonut.Name = "numericBoxDonut";
+            numericBoxDonut.RadianValue = 0.087266462599716474D;
+            numericBoxDonut.RoundErrorAccuracy = -1;
+            numericBoxDonut.ShowUpDown = true;
+            numericBoxDonut.SkipEventDuringInput = false;
+            numericBoxDonut.SmartIncrement = true;
+            numericBoxDonut.ThonsandsSeparator = true;
+            numericBoxDonut.Value = 5D;
             // 
             // buttonDonut
             // 
-            resources.ApplyResources(this.buttonDonut, "buttonDonut");
-            this.buttonDonut.Name = "buttonDonut";
-            this.buttonDonut.UseVisualStyleBackColor = true;
-            this.buttonDonut.Click += new System.EventHandler(this.buttonDonut_Click);
+            resources.ApplyResources(buttonDonut, "buttonDonut");
+            buttonDonut.Name = "buttonDonut";
+            buttonDonut.UseVisualStyleBackColor = true;
+            buttonDonut.Click += buttonDonut_Click;
             // 
             // dataGridViewSpots
             // 
-            this.dataGridViewSpots.AllowUserToDeleteRows = false;
-            this.dataGridViewSpots.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewSpots, "dataGridViewSpots");
-            this.dataGridViewSpots.AutoGenerateColumns = false;
+            dataGridViewSpots.AllowUserToDeleteRows = false;
+            dataGridViewSpots.AllowUserToResizeRows = false;
+            resources.ApplyResources(dataGridViewSpots, "dataGridViewSpots");
+            dataGridViewSpots.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -445,27 +445,10 @@ namespace ReciPro
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSpots.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewSpots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSpots.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.noDataGridViewTextBoxColumn,
-            this.Range,
-            this.x0,
-            this.y0,
-            this.H1,
-            this.H2,
-            this.θ,
-            this.η,
-            this.A,
-            this.B0,
-            this.Bx,
-            this.By,
-            this.R,
-            this.d,
-            this.hkl,
-            this.Column1});
-            this.dataGridViewSpots.DataSource = this.bindingSourceObsSpots;
+            dataGridViewSpots.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewSpots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSpots.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Column2, noDataGridViewTextBoxColumn, Range, x0, y0, H1, H2, θ, η, A, B0, Bx, By, R, d, hkl, Column1 });
+            dataGridViewSpots.DataSource = bindingSourceObsSpots;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle14.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -475,708 +458,693 @@ namespace ReciPro
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewSpots.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridViewSpots.MultiSelect = false;
-            this.dataGridViewSpots.Name = "dataGridViewSpots";
-            this.dataGridViewSpots.RowHeadersVisible = false;
-            this.dataGridViewSpots.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewSpots.RowTemplate.Height = 21;
-            this.dataGridViewSpots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSpots.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSpots_CellContentClick);
-            this.dataGridViewSpots.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewSpots_RowHeaderMouseDoubleClick);
+            dataGridViewSpots.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewSpots.MultiSelect = false;
+            dataGridViewSpots.Name = "dataGridViewSpots";
+            dataGridViewSpots.RowHeadersVisible = false;
+            dataGridViewSpots.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewSpots.RowTemplate.Height = 21;
+            dataGridViewSpots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewSpots.CellContentClick += dataGridViewSpots_CellContentClick;
+            dataGridViewSpots.RowHeaderMouseDoubleClick += DataGridViewSpots_RowHeaderMouseDoubleClick;
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "Direct";
-            resources.ApplyResources(this.Column2, "Column2");
-            this.Column2.Name = "Column2";
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            Column2.DataPropertyName = "Direct";
+            resources.ApplyResources(Column2, "Column2");
+            Column2.Name = "Column2";
+            Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // noDataGridViewTextBoxColumn
             // 
-            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
+            noDataGridViewTextBoxColumn.DataPropertyName = "No";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle2.Format = "N0";
             dataGridViewCellStyle2.NullValue = null;
-            this.noDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.noDataGridViewTextBoxColumn, "noDataGridViewTextBoxColumn");
-            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
-            this.noDataGridViewTextBoxColumn.ReadOnly = true;
+            noDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(noDataGridViewTextBoxColumn, "noDataGridViewTextBoxColumn");
+            noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            noDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Range
             // 
-            this.Range.DataPropertyName = "Range";
+            Range.DataPropertyName = "Range";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.Format = "N1";
             dataGridViewCellStyle3.NullValue = null;
-            this.Range.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.Range, "Range");
-            this.Range.Name = "Range";
+            Range.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(Range, "Range");
+            Range.Name = "Range";
             // 
             // x0
             // 
-            this.x0.DataPropertyName = "x0";
+            x0.DataPropertyName = "x0";
             dataGridViewCellStyle4.Format = "N1";
             dataGridViewCellStyle4.NullValue = null;
-            this.x0.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.x0, "x0");
-            this.x0.Name = "x0";
+            x0.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(x0, "x0");
+            x0.Name = "x0";
             // 
             // y0
             // 
-            this.y0.DataPropertyName = "y0";
+            y0.DataPropertyName = "y0";
             dataGridViewCellStyle5.Format = "N1";
             dataGridViewCellStyle5.NullValue = null;
-            this.y0.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.y0, "y0");
-            this.y0.Name = "y0";
+            y0.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(y0, "y0");
+            y0.Name = "y0";
             // 
             // H1
             // 
-            this.H1.DataPropertyName = "H1";
+            H1.DataPropertyName = "H1";
             dataGridViewCellStyle6.Format = "N2";
             dataGridViewCellStyle6.NullValue = null;
-            this.H1.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.H1, "H1");
-            this.H1.Name = "H1";
+            H1.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(H1, "H1");
+            H1.Name = "H1";
             // 
             // H2
             // 
-            this.H2.DataPropertyName = "H2";
+            H2.DataPropertyName = "H2";
             dataGridViewCellStyle7.Format = "N2";
             dataGridViewCellStyle7.NullValue = null;
-            this.H2.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.H2, "H2");
-            this.H2.Name = "H2";
+            H2.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(H2, "H2");
+            H2.Name = "H2";
             // 
             // θ
             // 
-            this.θ.DataPropertyName = "θ";
+            θ.DataPropertyName = "θ";
             dataGridViewCellStyle8.Format = "N1";
             dataGridViewCellStyle8.NullValue = null;
-            this.θ.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.θ, "θ");
-            this.θ.Name = "θ";
+            θ.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(θ, "θ");
+            θ.Name = "θ";
             // 
             // η
             // 
-            this.η.DataPropertyName = "η";
-            resources.ApplyResources(this.η, "η");
-            this.η.Name = "η";
+            η.DataPropertyName = "η";
+            resources.ApplyResources(η, "η");
+            η.Name = "η";
             // 
             // A
             // 
-            this.A.DataPropertyName = "A";
+            A.DataPropertyName = "A";
             dataGridViewCellStyle9.Format = "0.0000E0";
             dataGridViewCellStyle9.NullValue = null;
-            this.A.DefaultCellStyle = dataGridViewCellStyle9;
-            resources.ApplyResources(this.A, "A");
-            this.A.Name = "A";
+            A.DefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(A, "A");
+            A.Name = "A";
             // 
             // B0
             // 
-            this.B0.DataPropertyName = "B0";
-            resources.ApplyResources(this.B0, "B0");
-            this.B0.Name = "B0";
+            B0.DataPropertyName = "B0";
+            resources.ApplyResources(B0, "B0");
+            B0.Name = "B0";
             // 
             // Bx
             // 
-            this.Bx.DataPropertyName = "Bx";
+            Bx.DataPropertyName = "Bx";
             dataGridViewCellStyle10.Format = "N2";
             dataGridViewCellStyle10.NullValue = null;
-            this.Bx.DefaultCellStyle = dataGridViewCellStyle10;
-            resources.ApplyResources(this.Bx, "Bx");
-            this.Bx.Name = "Bx";
+            Bx.DefaultCellStyle = dataGridViewCellStyle10;
+            resources.ApplyResources(Bx, "Bx");
+            Bx.Name = "Bx";
             // 
             // By
             // 
-            this.By.DataPropertyName = "By";
+            By.DataPropertyName = "By";
             dataGridViewCellStyle11.Format = "N2";
             dataGridViewCellStyle11.NullValue = null;
-            this.By.DefaultCellStyle = dataGridViewCellStyle11;
-            resources.ApplyResources(this.By, "By");
-            this.By.Name = "By";
+            By.DefaultCellStyle = dataGridViewCellStyle11;
+            resources.ApplyResources(By, "By");
+            By.Name = "By";
             // 
             // R
             // 
-            this.R.DataPropertyName = "R";
-            resources.ApplyResources(this.R, "R");
-            this.R.Name = "R";
-            this.R.ReadOnly = true;
+            R.DataPropertyName = "R";
+            resources.ApplyResources(R, "R");
+            R.Name = "R";
+            R.ReadOnly = true;
             // 
             // d
             // 
-            this.d.DataPropertyName = "d";
+            d.DataPropertyName = "d";
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle12.Format = "N4";
             dataGridViewCellStyle12.NullValue = null;
-            this.d.DefaultCellStyle = dataGridViewCellStyle12;
-            resources.ApplyResources(this.d, "d");
-            this.d.Name = "d";
-            this.d.ReadOnly = true;
+            d.DefaultCellStyle = dataGridViewCellStyle12;
+            resources.ApplyResources(d, "d");
+            d.Name = "d";
+            d.ReadOnly = true;
             // 
             // hkl
             // 
-            this.hkl.DataPropertyName = "HKL";
+            hkl.DataPropertyName = "HKL";
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.hkl.DefaultCellStyle = dataGridViewCellStyle13;
-            resources.ApplyResources(this.hkl, "hkl");
-            this.hkl.Name = "hkl";
-            this.hkl.ReadOnly = true;
+            hkl.DefaultCellStyle = dataGridViewCellStyle13;
+            resources.ApplyResources(hkl, "hkl");
+            hkl.Name = "hkl";
+            hkl.ReadOnly = true;
             // 
             // Column1
             // 
-            this.Column1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            resources.ApplyResources(this.Column1, "Column1");
-            this.Column1.Name = "Column1";
-            this.Column1.Text = "Fit";
-            this.Column1.UseColumnTextForButtonValue = true;
+            Column1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            resources.ApplyResources(Column1, "Column1");
+            Column1.Name = "Column1";
+            Column1.Text = "Fit";
+            Column1.UseColumnTextForButtonValue = true;
             // 
             // bindingSourceObsSpots
             // 
-            this.bindingSourceObsSpots.DataMember = "DataTableSpot";
-            this.bindingSourceObsSpots.DataSource = this.dataSet;
-            this.bindingSourceObsSpots.CurrentChanged += new System.EventHandler(this.bindingSourceSpot_CurrentChanged);
-            this.bindingSourceObsSpots.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSourceObsSpots_ListChanged);
+            bindingSourceObsSpots.DataMember = "DataTableSpot";
+            bindingSourceObsSpots.DataSource = dataSet;
+            bindingSourceObsSpots.CurrentChanged += bindingSourceSpot_CurrentChanged;
+            bindingSourceObsSpots.ListChanged += bindingSourceObsSpots_ListChanged;
             // 
             // dataSet
             // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.Namespace = "http://tempuri.org/DataSet.xsd";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            dataSet.DataSetName = "DataSet";
+            dataSet.Namespace = "http://tempuri.org/DataSet.xsd";
+            dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Image = global::ReciPro.Properties.Resources.TwoDimensionalPseudoVoigt;
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.Image = Properties.Resources.TwoDimensionalPseudoVoigt;
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
             // 
             // groupBox3
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.buttonIdentifySpots);
-            this.groupBox3.Controls.Add(this.numericBoxSemiangle);
-            this.groupBox3.Controls.Add(this.numericBoxMaxNumOfG);
-            this.groupBox3.Controls.Add(this.numericBoxAcceptableError);
-            this.groupBox3.Controls.Add(this.numericBoxMaxGrainNum);
-            this.groupBox3.Controls.Add(this.checkBoxShowZoneAxis);
-            this.groupBox3.Controls.Add(this.checkBoxShowCalcSpotSymbol);
-            this.groupBox3.Controls.Add(this.radioButtonMultiGrain);
-            this.groupBox3.Controls.Add(this.radioButtonSingleGrain);
-            this.groupBox3.Controls.Add(this.checkBoxShowCalcSpotLabel);
-            this.groupBox3.Controls.Add(this.dataGridViewGrains);
-            this.groupBox3.Controls.Add(this.dataGridViewCandidates);
-            this.groupBox3.Controls.Add(this.checkBoxIgnoreMultipleDiffraction);
-            this.groupBox3.Controls.Add(this.buttonRefineThicknessAndDirection);
-            this.groupBox3.Controls.Add(this.buttonStop);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(groupBox3, "groupBox3");
+            groupBox3.Controls.Add(buttonIdentifySpots);
+            groupBox3.Controls.Add(numericBoxSemiangle);
+            groupBox3.Controls.Add(numericBoxMaxNumOfG);
+            groupBox3.Controls.Add(numericBoxAcceptableError);
+            groupBox3.Controls.Add(numericBoxMaxGrainNum);
+            groupBox3.Controls.Add(checkBoxShowZoneAxis);
+            groupBox3.Controls.Add(checkBoxShowCalcSpotSymbol);
+            groupBox3.Controls.Add(radioButtonMultiGrain);
+            groupBox3.Controls.Add(radioButtonSingleGrain);
+            groupBox3.Controls.Add(checkBoxShowCalcSpotLabel);
+            groupBox3.Controls.Add(dataGridViewGrains);
+            groupBox3.Controls.Add(dataGridViewCandidates);
+            groupBox3.Controls.Add(checkBoxIgnoreMultipleDiffraction);
+            groupBox3.Controls.Add(buttonRefineThicknessAndDirection);
+            groupBox3.Controls.Add(buttonStop);
+            groupBox3.Name = "groupBox3";
+            groupBox3.TabStop = false;
             // 
             // buttonIdentifySpots
             // 
-            resources.ApplyResources(this.buttonIdentifySpots, "buttonIdentifySpots");
-            this.buttonIdentifySpots.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonIdentifySpots.ForeColor = System.Drawing.Color.White;
-            this.buttonIdentifySpots.Name = "buttonIdentifySpots";
-            this.toolTip.SetToolTip(this.buttonIdentifySpots, resources.GetString("buttonIdentifySpots.ToolTip"));
-            this.buttonIdentifySpots.UseVisualStyleBackColor = false;
-            this.buttonIdentifySpots.Click += new System.EventHandler(this.buttonIdentifySpots_Click);
+            resources.ApplyResources(buttonIdentifySpots, "buttonIdentifySpots");
+            buttonIdentifySpots.BackColor = System.Drawing.Color.SteelBlue;
+            buttonIdentifySpots.ForeColor = System.Drawing.Color.White;
+            buttonIdentifySpots.Name = "buttonIdentifySpots";
+            toolTip.SetToolTip(buttonIdentifySpots, resources.GetString("buttonIdentifySpots.ToolTip"));
+            buttonIdentifySpots.UseVisualStyleBackColor = false;
+            buttonIdentifySpots.Click += buttonIdentifySpots_Click;
             // 
             // numericBoxSemiangle
             // 
-            resources.ApplyResources(this.numericBoxSemiangle, "numericBoxSemiangle");
-            this.numericBoxSemiangle.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxSemiangle.DecimalPlaces = 1;
-            this.numericBoxSemiangle.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxSemiangle.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxSemiangle.Maximum = 10D;
-            this.numericBoxSemiangle.Minimum = 1D;
-            this.numericBoxSemiangle.Name = "numericBoxSemiangle";
-            this.numericBoxSemiangle.RadianValue = 0.034906585039886591D;
-            this.numericBoxSemiangle.RoundErrorAccuracy = -1;
-            this.numericBoxSemiangle.ShowUpDown = true;
-            this.numericBoxSemiangle.SmartIncrement = true;
-            this.numericBoxSemiangle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxSemiangle.ThonsandsSeparator = true;
-            this.numericBoxSemiangle.Value = 2D;
+            resources.ApplyResources(numericBoxSemiangle, "numericBoxSemiangle");
+            numericBoxSemiangle.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxSemiangle.DecimalPlaces = 1;
+            numericBoxSemiangle.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxSemiangle.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxSemiangle.Maximum = 10D;
+            numericBoxSemiangle.Minimum = 1D;
+            numericBoxSemiangle.Name = "numericBoxSemiangle";
+            numericBoxSemiangle.RadianValue = 0.034906585039886591D;
+            numericBoxSemiangle.RoundErrorAccuracy = -1;
+            numericBoxSemiangle.ShowUpDown = true;
+            numericBoxSemiangle.SmartIncrement = true;
+            numericBoxSemiangle.ThonsandsSeparator = true;
+            numericBoxSemiangle.Value = 2D;
             // 
             // numericBoxMaxNumOfG
             // 
-            resources.ApplyResources(this.numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
-            this.numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxNumOfG.Maximum = 2048D;
-            this.numericBoxMaxNumOfG.Minimum = 1D;
-            this.numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
-            this.numericBoxMaxNumOfG.RadianValue = 6.9813170079773181D;
-            this.numericBoxMaxNumOfG.RoundErrorAccuracy = -1;
-            this.numericBoxMaxNumOfG.ShowUpDown = true;
-            this.numericBoxMaxNumOfG.SmartIncrement = true;
-            this.numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxMaxNumOfG.ThonsandsSeparator = true;
-            this.numericBoxMaxNumOfG.Value = 400D;
+            resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
+            numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.Maximum = 2048D;
+            numericBoxMaxNumOfG.Minimum = 1D;
+            numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
+            numericBoxMaxNumOfG.RadianValue = 6.9813170079773181D;
+            numericBoxMaxNumOfG.RoundErrorAccuracy = -1;
+            numericBoxMaxNumOfG.ShowUpDown = true;
+            numericBoxMaxNumOfG.SmartIncrement = true;
+            numericBoxMaxNumOfG.ThonsandsSeparator = true;
+            numericBoxMaxNumOfG.Value = 400D;
             // 
             // numericBoxAcceptableError
             // 
-            resources.ApplyResources(this.numericBoxAcceptableError, "numericBoxAcceptableError");
-            this.numericBoxAcceptableError.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAcceptableError.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAcceptableError.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAcceptableError.Maximum = 10D;
-            this.numericBoxAcceptableError.Minimum = 0.1D;
-            this.numericBoxAcceptableError.Name = "numericBoxAcceptableError";
-            this.numericBoxAcceptableError.RadianValue = 0.034906585039886591D;
-            this.numericBoxAcceptableError.RoundErrorAccuracy = -1;
-            this.numericBoxAcceptableError.ShowUpDown = true;
-            this.numericBoxAcceptableError.SkipEventDuringInput = false;
-            this.numericBoxAcceptableError.SmartIncrement = true;
-            this.numericBoxAcceptableError.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxAcceptableError.ThonsandsSeparator = true;
-            this.numericBoxAcceptableError.Value = 2D;
+            resources.ApplyResources(numericBoxAcceptableError, "numericBoxAcceptableError");
+            numericBoxAcceptableError.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAcceptableError.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAcceptableError.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAcceptableError.Maximum = 10D;
+            numericBoxAcceptableError.Minimum = 0.1D;
+            numericBoxAcceptableError.Name = "numericBoxAcceptableError";
+            numericBoxAcceptableError.RadianValue = 0.034906585039886591D;
+            numericBoxAcceptableError.RoundErrorAccuracy = -1;
+            numericBoxAcceptableError.ShowUpDown = true;
+            numericBoxAcceptableError.SkipEventDuringInput = false;
+            numericBoxAcceptableError.SmartIncrement = true;
+            numericBoxAcceptableError.ThonsandsSeparator = true;
+            numericBoxAcceptableError.Value = 2D;
             // 
             // numericBoxMaxGrainNum
             // 
-            resources.ApplyResources(this.numericBoxMaxGrainNum, "numericBoxMaxGrainNum");
-            this.numericBoxMaxGrainNum.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxGrainNum.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxGrainNum.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMaxGrainNum.Maximum = 10D;
-            this.numericBoxMaxGrainNum.Minimum = 0.1D;
-            this.numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
-            this.numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
-            this.numericBoxMaxGrainNum.RoundErrorAccuracy = -1;
-            this.numericBoxMaxGrainNum.ShowUpDown = true;
-            this.numericBoxMaxGrainNum.SkipEventDuringInput = false;
-            this.numericBoxMaxGrainNum.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxMaxGrainNum.ThonsandsSeparator = true;
-            this.numericBoxMaxGrainNum.Value = 2D;
+            resources.ApplyResources(numericBoxMaxGrainNum, "numericBoxMaxGrainNum");
+            numericBoxMaxGrainNum.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxGrainNum.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxGrainNum.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxGrainNum.Maximum = 10D;
+            numericBoxMaxGrainNum.Minimum = 0.1D;
+            numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
+            numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
+            numericBoxMaxGrainNum.RoundErrorAccuracy = -1;
+            numericBoxMaxGrainNum.ShowUpDown = true;
+            numericBoxMaxGrainNum.SkipEventDuringInput = false;
+            numericBoxMaxGrainNum.ThonsandsSeparator = true;
+            numericBoxMaxGrainNum.Value = 2D;
             // 
             // checkBoxShowZoneAxis
             // 
-            resources.ApplyResources(this.checkBoxShowZoneAxis, "checkBoxShowZoneAxis");
-            this.checkBoxShowZoneAxis.Checked = true;
-            this.checkBoxShowZoneAxis.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowZoneAxis.Name = "checkBoxShowZoneAxis";
-            this.checkBoxShowZoneAxis.UseVisualStyleBackColor = true;
-            this.checkBoxShowZoneAxis.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            resources.ApplyResources(checkBoxShowZoneAxis, "checkBoxShowZoneAxis");
+            checkBoxShowZoneAxis.Checked = true;
+            checkBoxShowZoneAxis.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxShowZoneAxis.Name = "checkBoxShowZoneAxis";
+            checkBoxShowZoneAxis.UseVisualStyleBackColor = true;
+            checkBoxShowZoneAxis.CheckedChanged += checkBoxShowObsSpots_CheckedChanged;
             // 
             // checkBoxShowCalcSpotSymbol
             // 
-            resources.ApplyResources(this.checkBoxShowCalcSpotSymbol, "checkBoxShowCalcSpotSymbol");
-            this.checkBoxShowCalcSpotSymbol.Checked = true;
-            this.checkBoxShowCalcSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowCalcSpotSymbol.Name = "checkBoxShowCalcSpotSymbol";
-            this.checkBoxShowCalcSpotSymbol.UseVisualStyleBackColor = true;
-            this.checkBoxShowCalcSpotSymbol.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            resources.ApplyResources(checkBoxShowCalcSpotSymbol, "checkBoxShowCalcSpotSymbol");
+            checkBoxShowCalcSpotSymbol.Checked = true;
+            checkBoxShowCalcSpotSymbol.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxShowCalcSpotSymbol.Name = "checkBoxShowCalcSpotSymbol";
+            checkBoxShowCalcSpotSymbol.UseVisualStyleBackColor = true;
+            checkBoxShowCalcSpotSymbol.CheckedChanged += checkBoxShowObsSpots_CheckedChanged;
             // 
             // radioButtonMultiGrain
             // 
-            resources.ApplyResources(this.radioButtonMultiGrain, "radioButtonMultiGrain");
-            this.radioButtonMultiGrain.Name = "radioButtonMultiGrain";
-            this.radioButtonMultiGrain.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonMultiGrain, "radioButtonMultiGrain");
+            radioButtonMultiGrain.Name = "radioButtonMultiGrain";
+            radioButtonMultiGrain.UseVisualStyleBackColor = true;
             // 
             // radioButtonSingleGrain
             // 
-            resources.ApplyResources(this.radioButtonSingleGrain, "radioButtonSingleGrain");
-            this.radioButtonSingleGrain.Checked = true;
-            this.radioButtonSingleGrain.Name = "radioButtonSingleGrain";
-            this.radioButtonSingleGrain.TabStop = true;
-            this.radioButtonSingleGrain.UseVisualStyleBackColor = true;
-            this.radioButtonSingleGrain.CheckedChanged += new System.EventHandler(this.radioButtonSingleGrain_CheckedChanged);
+            resources.ApplyResources(radioButtonSingleGrain, "radioButtonSingleGrain");
+            radioButtonSingleGrain.Checked = true;
+            radioButtonSingleGrain.Name = "radioButtonSingleGrain";
+            radioButtonSingleGrain.TabStop = true;
+            radioButtonSingleGrain.UseVisualStyleBackColor = true;
+            radioButtonSingleGrain.CheckedChanged += radioButtonSingleGrain_CheckedChanged;
             // 
             // checkBoxShowCalcSpotLabel
             // 
-            resources.ApplyResources(this.checkBoxShowCalcSpotLabel, "checkBoxShowCalcSpotLabel");
-            this.checkBoxShowCalcSpotLabel.Name = "checkBoxShowCalcSpotLabel";
-            this.checkBoxShowCalcSpotLabel.UseVisualStyleBackColor = true;
-            this.checkBoxShowCalcSpotLabel.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            resources.ApplyResources(checkBoxShowCalcSpotLabel, "checkBoxShowCalcSpotLabel");
+            checkBoxShowCalcSpotLabel.Name = "checkBoxShowCalcSpotLabel";
+            checkBoxShowCalcSpotLabel.UseVisualStyleBackColor = true;
+            checkBoxShowCalcSpotLabel.CheckedChanged += checkBoxShowObsSpots_CheckedChanged;
             // 
             // dataGridViewGrains
             // 
-            this.dataGridViewGrains.AllowUserToAddRows = false;
-            this.dataGridViewGrains.AllowUserToDeleteRows = false;
-            this.dataGridViewGrains.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewGrains, "dataGridViewGrains");
-            this.dataGridViewGrains.AutoGenerateColumns = false;
-            this.dataGridViewGrains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGrains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.noDataGridViewTextBoxColumn2,
-            this.CrystalName,
-            this.assignedSpotsDataGridViewTextBoxColumn});
-            this.dataGridViewGrains.DataSource = this.bindingSourceGrains;
-            this.dataGridViewGrains.Name = "dataGridViewGrains";
-            this.dataGridViewGrains.ReadOnly = true;
-            this.dataGridViewGrains.RowHeadersVisible = false;
-            this.dataGridViewGrains.RowTemplate.Height = 21;
-            this.dataGridViewGrains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewGrains.AllowUserToAddRows = false;
+            dataGridViewGrains.AllowUserToDeleteRows = false;
+            dataGridViewGrains.AllowUserToResizeRows = false;
+            resources.ApplyResources(dataGridViewGrains, "dataGridViewGrains");
+            dataGridViewGrains.AutoGenerateColumns = false;
+            dataGridViewGrains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewGrains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { noDataGridViewTextBoxColumn2, CrystalName, assignedSpotsDataGridViewTextBoxColumn });
+            dataGridViewGrains.DataSource = bindingSourceGrains;
+            dataGridViewGrains.Name = "dataGridViewGrains";
+            dataGridViewGrains.ReadOnly = true;
+            dataGridViewGrains.RowHeadersVisible = false;
+            dataGridViewGrains.RowTemplate.Height = 21;
+            dataGridViewGrains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // noDataGridViewTextBoxColumn2
             // 
-            this.noDataGridViewTextBoxColumn2.DataPropertyName = "No";
-            resources.ApplyResources(this.noDataGridViewTextBoxColumn2, "noDataGridViewTextBoxColumn2");
-            this.noDataGridViewTextBoxColumn2.Name = "noDataGridViewTextBoxColumn2";
-            this.noDataGridViewTextBoxColumn2.ReadOnly = true;
+            noDataGridViewTextBoxColumn2.DataPropertyName = "No";
+            resources.ApplyResources(noDataGridViewTextBoxColumn2, "noDataGridViewTextBoxColumn2");
+            noDataGridViewTextBoxColumn2.Name = "noDataGridViewTextBoxColumn2";
+            noDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // CrystalName
             // 
-            this.CrystalName.DataPropertyName = "CrystalName";
-            resources.ApplyResources(this.CrystalName, "CrystalName");
-            this.CrystalName.Name = "CrystalName";
-            this.CrystalName.ReadOnly = true;
+            CrystalName.DataPropertyName = "CrystalName";
+            resources.ApplyResources(CrystalName, "CrystalName");
+            CrystalName.Name = "CrystalName";
+            CrystalName.ReadOnly = true;
             // 
             // assignedSpotsDataGridViewTextBoxColumn
             // 
-            this.assignedSpotsDataGridViewTextBoxColumn.DataPropertyName = "AssignedSpots";
-            resources.ApplyResources(this.assignedSpotsDataGridViewTextBoxColumn, "assignedSpotsDataGridViewTextBoxColumn");
-            this.assignedSpotsDataGridViewTextBoxColumn.Name = "assignedSpotsDataGridViewTextBoxColumn";
-            this.assignedSpotsDataGridViewTextBoxColumn.ReadOnly = true;
+            assignedSpotsDataGridViewTextBoxColumn.DataPropertyName = "AssignedSpots";
+            resources.ApplyResources(assignedSpotsDataGridViewTextBoxColumn, "assignedSpotsDataGridViewTextBoxColumn");
+            assignedSpotsDataGridViewTextBoxColumn.Name = "assignedSpotsDataGridViewTextBoxColumn";
+            assignedSpotsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bindingSourceGrains
             // 
-            this.bindingSourceGrains.DataMember = "DataTableGrain";
-            this.bindingSourceGrains.DataSource = this.dataSet;
-            this.bindingSourceGrains.CurrentChanged += new System.EventHandler(this.bindingSourceGrains_CurrentChanged);
+            bindingSourceGrains.DataMember = "DataTableGrain";
+            bindingSourceGrains.DataSource = dataSet;
+            bindingSourceGrains.CurrentChanged += bindingSourceGrains_CurrentChanged;
             // 
             // dataGridViewCandidates
             // 
-            this.dataGridViewCandidates.AllowUserToAddRows = false;
-            this.dataGridViewCandidates.AllowUserToDeleteRows = false;
-            this.dataGridViewCandidates.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewCandidates, "dataGridViewCandidates");
-            this.dataGridViewCandidates.AutoGenerateColumns = false;
-            this.dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.noDataGridViewTextBoxColumn1,
-            this.AssignedSpots});
-            this.dataGridViewCandidates.DataSource = this.bindingSourceCandidates;
-            this.dataGridViewCandidates.MultiSelect = false;
-            this.dataGridViewCandidates.Name = "dataGridViewCandidates";
-            this.dataGridViewCandidates.ReadOnly = true;
-            this.dataGridViewCandidates.RowHeadersVisible = false;
-            this.dataGridViewCandidates.RowTemplate.Height = 21;
-            this.dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewCandidates.AllowUserToAddRows = false;
+            dataGridViewCandidates.AllowUserToDeleteRows = false;
+            dataGridViewCandidates.AllowUserToResizeRows = false;
+            resources.ApplyResources(dataGridViewCandidates, "dataGridViewCandidates");
+            dataGridViewCandidates.AutoGenerateColumns = false;
+            dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { noDataGridViewTextBoxColumn1, AssignedSpots });
+            dataGridViewCandidates.DataSource = bindingSourceCandidates;
+            dataGridViewCandidates.MultiSelect = false;
+            dataGridViewCandidates.Name = "dataGridViewCandidates";
+            dataGridViewCandidates.ReadOnly = true;
+            dataGridViewCandidates.RowHeadersVisible = false;
+            dataGridViewCandidates.RowTemplate.Height = 21;
+            dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // noDataGridViewTextBoxColumn1
             // 
-            this.noDataGridViewTextBoxColumn1.DataPropertyName = "No";
-            resources.ApplyResources(this.noDataGridViewTextBoxColumn1, "noDataGridViewTextBoxColumn1");
-            this.noDataGridViewTextBoxColumn1.Name = "noDataGridViewTextBoxColumn1";
-            this.noDataGridViewTextBoxColumn1.ReadOnly = true;
+            noDataGridViewTextBoxColumn1.DataPropertyName = "No";
+            resources.ApplyResources(noDataGridViewTextBoxColumn1, "noDataGridViewTextBoxColumn1");
+            noDataGridViewTextBoxColumn1.Name = "noDataGridViewTextBoxColumn1";
+            noDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // AssignedSpots
             // 
-            this.AssignedSpots.DataPropertyName = "AssignedSpots";
-            resources.ApplyResources(this.AssignedSpots, "AssignedSpots");
-            this.AssignedSpots.Name = "AssignedSpots";
-            this.AssignedSpots.ReadOnly = true;
+            AssignedSpots.DataPropertyName = "AssignedSpots";
+            resources.ApplyResources(AssignedSpots, "AssignedSpots");
+            AssignedSpots.Name = "AssignedSpots";
+            AssignedSpots.ReadOnly = true;
             // 
             // bindingSourceCandidates
             // 
-            this.bindingSourceCandidates.DataMember = "DataTableCandidate";
-            this.bindingSourceCandidates.DataSource = this.dataSet;
-            this.bindingSourceCandidates.CurrentChanged += new System.EventHandler(this.bindingSourceCandidates_CurrentChanged);
+            bindingSourceCandidates.DataMember = "DataTableCandidate";
+            bindingSourceCandidates.DataSource = dataSet;
+            bindingSourceCandidates.CurrentChanged += bindingSourceCandidates_CurrentChanged;
             // 
             // checkBoxIgnoreMultipleDiffraction
             // 
-            resources.ApplyResources(this.checkBoxIgnoreMultipleDiffraction, "checkBoxIgnoreMultipleDiffraction");
-            this.checkBoxIgnoreMultipleDiffraction.Name = "checkBoxIgnoreMultipleDiffraction";
-            this.checkBoxIgnoreMultipleDiffraction.UseVisualStyleBackColor = true;
-            this.checkBoxIgnoreMultipleDiffraction.CheckedChanged += new System.EventHandler(this.checkBoxShowObsSpots_CheckedChanged);
+            resources.ApplyResources(checkBoxIgnoreMultipleDiffraction, "checkBoxIgnoreMultipleDiffraction");
+            checkBoxIgnoreMultipleDiffraction.Name = "checkBoxIgnoreMultipleDiffraction";
+            checkBoxIgnoreMultipleDiffraction.UseVisualStyleBackColor = true;
+            checkBoxIgnoreMultipleDiffraction.CheckedChanged += checkBoxShowObsSpots_CheckedChanged;
             // 
             // buttonRefineThicknessAndDirection
             // 
-            resources.ApplyResources(this.buttonRefineThicknessAndDirection, "buttonRefineThicknessAndDirection");
-            this.buttonRefineThicknessAndDirection.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonRefineThicknessAndDirection.ForeColor = System.Drawing.Color.White;
-            this.buttonRefineThicknessAndDirection.Name = "buttonRefineThicknessAndDirection";
-            this.buttonRefineThicknessAndDirection.UseVisualStyleBackColor = false;
-            this.buttonRefineThicknessAndDirection.Click += new System.EventHandler(this.ButtonRefineThicknessAndDirection_Click);
+            resources.ApplyResources(buttonRefineThicknessAndDirection, "buttonRefineThicknessAndDirection");
+            buttonRefineThicknessAndDirection.BackColor = System.Drawing.Color.SteelBlue;
+            buttonRefineThicknessAndDirection.ForeColor = System.Drawing.Color.White;
+            buttonRefineThicknessAndDirection.Name = "buttonRefineThicknessAndDirection";
+            buttonRefineThicknessAndDirection.UseVisualStyleBackColor = false;
+            buttonRefineThicknessAndDirection.Click += ButtonRefineThicknessAndDirection_Click;
             // 
             // buttonStop
             // 
-            resources.ApplyResources(this.buttonStop, "buttonStop");
-            this.buttonStop.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonStop.ForeColor = System.Drawing.Color.White;
-            this.buttonStop.Name = "buttonStop";
-            this.buttonStop.UseVisualStyleBackColor = false;
-            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
+            resources.ApplyResources(buttonStop, "buttonStop");
+            buttonStop.BackColor = System.Drawing.Color.IndianRed;
+            buttonStop.ForeColor = System.Drawing.Color.White;
+            buttonStop.Name = "buttonStop";
+            buttonStop.UseVisualStyleBackColor = false;
+            buttonStop.Click += buttonStop_Click;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.numericBoxCameraLength);
-            this.groupBox2.Controls.Add(this.numericBoxPixelSize);
-            this.groupBox2.Controls.Add(this.waveLengthControl1);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(groupBox2, "groupBox2");
+            groupBox2.Controls.Add(radioButtonPixelSizeUnitInverse);
+            groupBox2.Controls.Add(radioButtonPixelSizeUnitReal);
+            groupBox2.Controls.Add(numericBoxCameraLength);
+            groupBox2.Controls.Add(numericBoxPixelSize);
+            groupBox2.Controls.Add(waveLengthControl1);
+            groupBox2.Name = "groupBox2";
+            groupBox2.TabStop = false;
             // 
             // numericBoxCameraLength
             // 
-            resources.ApplyResources(this.numericBoxCameraLength, "numericBoxCameraLength");
-            this.numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCameraLength.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCameraLength.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCameraLength.Maximum = 10000D;
-            this.numericBoxCameraLength.Minimum = 0D;
-            this.numericBoxCameraLength.Name = "numericBoxCameraLength";
-            this.numericBoxCameraLength.RadianValue = 17.453292519943293D;
-            this.numericBoxCameraLength.RoundErrorAccuracy = -1;
-            this.numericBoxCameraLength.SkipEventDuringInput = false;
-            this.numericBoxCameraLength.SmartIncrement = true;
-            this.numericBoxCameraLength.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxCameraLength.ThonsandsSeparator = true;
-            this.numericBoxCameraLength.Value = 1000D;
-            this.numericBoxCameraLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxCameraLength_ValueChanged);
+            resources.ApplyResources(numericBoxCameraLength, "numericBoxCameraLength");
+            numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCameraLength.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCameraLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCameraLength.Maximum = 10000D;
+            numericBoxCameraLength.Minimum = 0D;
+            numericBoxCameraLength.Name = "numericBoxCameraLength";
+            numericBoxCameraLength.RadianValue = 17.453292519943293D;
+            numericBoxCameraLength.RoundErrorAccuracy = -1;
+            numericBoxCameraLength.SkipEventDuringInput = false;
+            numericBoxCameraLength.SmartIncrement = true;
+            numericBoxCameraLength.ThonsandsSeparator = true;
+            numericBoxCameraLength.Value = 1000D;
+            numericBoxCameraLength.ValueChanged += NumericBoxCameraLength_ValueChanged;
             // 
             // numericBoxPixelSize
             // 
-            resources.ApplyResources(this.numericBoxPixelSize, "numericBoxPixelSize");
-            this.numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelSize.Maximum = 100D;
-            this.numericBoxPixelSize.Minimum = 0D;
-            this.numericBoxPixelSize.Name = "numericBoxPixelSize";
-            this.numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
-            this.numericBoxPixelSize.RoundErrorAccuracy = -1;
-            this.numericBoxPixelSize.SkipEventDuringInput = false;
-            this.numericBoxPixelSize.SmartIncrement = true;
-            this.numericBoxPixelSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxPixelSize.ThonsandsSeparator = true;
-            this.numericBoxPixelSize.Value = 0.05D;
-            this.numericBoxPixelSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxPixelSize_ValueChanged);
+            resources.ApplyResources(numericBoxPixelSize, "numericBoxPixelSize");
+            numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPixelSize.Maximum = 100D;
+            numericBoxPixelSize.Minimum = 0D;
+            numericBoxPixelSize.Name = "numericBoxPixelSize";
+            numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
+            numericBoxPixelSize.RoundErrorAccuracy = -1;
+            numericBoxPixelSize.SkipEventDuringInput = false;
+            numericBoxPixelSize.SmartIncrement = true;
+            numericBoxPixelSize.ThonsandsSeparator = true;
+            numericBoxPixelSize.Value = 0.05D;
+            numericBoxPixelSize.ValueChanged += NumericBoxPixelSize_ValueChanged;
             // 
             // waveLengthControl1
             // 
-            this.waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.waveLengthControl1.Energy = 494.36741737D;
-            resources.ApplyResources(this.waveLengthControl1, "waveLengthControl1");
-            this.waveLengthControl1.Name = "waveLengthControl1";
-            this.waveLengthControl1.ShowWaveSource = true;
-            this.waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.waveLengthControl1.WaveLength = 0.0025079347455D;
-            this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Xray;
-            this.waveLengthControl1.XrayWaveSourceElementNumber = 0;
-            this.waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
-            this.waveLengthControl1.WavelengthChanged += new System.EventHandler(this.WaveLengthControl1_WavelengthChanged);
+            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
+            waveLengthControl1.Energy = 494.36741737D;
+            resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
+            waveLengthControl1.Name = "waveLengthControl1";
+            waveLengthControl1.ShowWaveSource = true;
+            waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            waveLengthControl1.WaveLength = 0.0025079347455D;
+            waveLengthControl1.WaveSource = WaveSource.Xray;
+            waveLengthControl1.XrayWaveSourceElementNumber = 0;
+            waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
+            waveLengthControl1.WavelengthChanged += WaveLengthControl1_WavelengthChanged;
             // 
             // checkBoxShowDebyeRing
             // 
-            resources.ApplyResources(this.checkBoxShowDebyeRing, "checkBoxShowDebyeRing");
-            this.checkBoxShowDebyeRing.Name = "checkBoxShowDebyeRing";
-            this.checkBoxShowDebyeRing.UseVisualStyleBackColor = true;
-            this.checkBoxShowDebyeRing.CheckedChanged += new System.EventHandler(this.checkBoxShowDebyeRing_CheckedChanged);
+            resources.ApplyResources(checkBoxShowDebyeRing, "checkBoxShowDebyeRing");
+            checkBoxShowDebyeRing.Name = "checkBoxShowDebyeRing";
+            checkBoxShowDebyeRing.UseVisualStyleBackColor = true;
+            checkBoxShowDebyeRing.CheckedChanged += checkBoxShowDebyeRing_CheckedChanged;
             // 
             // menuStrip
             // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.shortcutHintsToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip, "menuStrip");
-            this.menuStrip.Name = "menuStrip";
+            menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, shortcutHintsToolStripMenuItem });
+            resources.ApplyResources(menuStrip, "menuStrip");
+            menuStrip.Name = "menuStrip";
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.readToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.copyToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { readToolStripMenuItem, saveToolStripMenuItem, copyToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // readToolStripMenuItem
             // 
-            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
-            resources.ApplyResources(this.readToolStripMenuItem, "readToolStripMenuItem");
-            this.readToolStripMenuItem.Click += new System.EventHandler(this.readToolStripMenuItem_Click);
+            readToolStripMenuItem.Name = "readToolStripMenuItem";
+            resources.ApplyResources(readToolStripMenuItem, "readToolStripMenuItem");
+            readToolStripMenuItem.Click += readToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveAsMetafileToolStripMenuItem,
-            this.saveAsBitmapToolStripMenuItem1});
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
+            saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveAsMetafileToolStripMenuItem, saveAsBitmapToolStripMenuItem1 });
+            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             // 
             // saveAsMetafileToolStripMenuItem
             // 
-            this.saveAsMetafileToolStripMenuItem.Name = "saveAsMetafileToolStripMenuItem";
-            resources.ApplyResources(this.saveAsMetafileToolStripMenuItem, "saveAsMetafileToolStripMenuItem");
-            this.saveAsMetafileToolStripMenuItem.Click += new System.EventHandler(this.saveAsMetafileToolStripMenuItem_Click);
+            saveAsMetafileToolStripMenuItem.Name = "saveAsMetafileToolStripMenuItem";
+            resources.ApplyResources(saveAsMetafileToolStripMenuItem, "saveAsMetafileToolStripMenuItem");
+            saveAsMetafileToolStripMenuItem.Click += saveAsMetafileToolStripMenuItem_Click;
             // 
             // saveAsBitmapToolStripMenuItem1
             // 
-            this.saveAsBitmapToolStripMenuItem1.Name = "saveAsBitmapToolStripMenuItem1";
-            resources.ApplyResources(this.saveAsBitmapToolStripMenuItem1, "saveAsBitmapToolStripMenuItem1");
-            this.saveAsBitmapToolStripMenuItem1.Click += new System.EventHandler(this.saveAsBitmapToolStripMenuItem1_Click);
+            saveAsBitmapToolStripMenuItem1.Name = "saveAsBitmapToolStripMenuItem1";
+            resources.ApplyResources(saveAsBitmapToolStripMenuItem1, "saveAsBitmapToolStripMenuItem1");
+            saveAsBitmapToolStripMenuItem1.Click += saveAsBitmapToolStripMenuItem1_Click;
             // 
             // copyToolStripMenuItem
             // 
-            this.copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyAsMetafileToolStripMenuItem,
-            this.copyAsBitmapToolStripMenuItem});
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
+            copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyAsMetafileToolStripMenuItem, copyAsBitmapToolStripMenuItem });
+            copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            resources.ApplyResources(copyToolStripMenuItem, "copyToolStripMenuItem");
             // 
             // copyAsMetafileToolStripMenuItem
             // 
-            this.copyAsMetafileToolStripMenuItem.Name = "copyAsMetafileToolStripMenuItem";
-            resources.ApplyResources(this.copyAsMetafileToolStripMenuItem, "copyAsMetafileToolStripMenuItem");
-            this.copyAsMetafileToolStripMenuItem.Click += new System.EventHandler(this.copyAsMetafileToolStripMenuItem_Click);
+            copyAsMetafileToolStripMenuItem.Name = "copyAsMetafileToolStripMenuItem";
+            resources.ApplyResources(copyAsMetafileToolStripMenuItem, "copyAsMetafileToolStripMenuItem");
+            copyAsMetafileToolStripMenuItem.Click += copyAsMetafileToolStripMenuItem_Click;
             // 
             // copyAsBitmapToolStripMenuItem
             // 
-            this.copyAsBitmapToolStripMenuItem.Name = "copyAsBitmapToolStripMenuItem";
-            resources.ApplyResources(this.copyAsBitmapToolStripMenuItem, "copyAsBitmapToolStripMenuItem");
-            this.copyAsBitmapToolStripMenuItem.Click += new System.EventHandler(this.copyAsBitmapToolStripMenuItem_Click);
+            copyAsBitmapToolStripMenuItem.Name = "copyAsBitmapToolStripMenuItem";
+            resources.ApplyResources(copyAsBitmapToolStripMenuItem, "copyAsBitmapToolStripMenuItem");
+            copyAsBitmapToolStripMenuItem.Click += copyAsBitmapToolStripMenuItem_Click;
             // 
             // shortcutHintsToolStripMenuItem
             // 
-            this.shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.doubleClickAddSpotToolStripMenuItem,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem3});
-            this.shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
-            resources.ApplyResources(this.shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
+            shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { doubleClickAddSpotToolStripMenuItem, toolStripMenuItem7, toolStripMenuItem1, toolStripMenuItem6, toolStripMenuItem5, toolStripMenuItem4, toolStripMenuItem3 });
+            shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
+            resources.ApplyResources(shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
             // 
             // doubleClickAddSpotToolStripMenuItem
             // 
-            resources.ApplyResources(this.doubleClickAddSpotToolStripMenuItem, "doubleClickAddSpotToolStripMenuItem");
-            this.doubleClickAddSpotToolStripMenuItem.Name = "doubleClickAddSpotToolStripMenuItem";
+            resources.ApplyResources(doubleClickAddSpotToolStripMenuItem, "doubleClickAddSpotToolStripMenuItem");
+            doubleClickAddSpotToolStripMenuItem.Name = "doubleClickAddSpotToolStripMenuItem";
             // 
             // toolStripMenuItem7
             // 
-            resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            resources.ApplyResources(toolStripMenuItem7, "toolStripMenuItem7");
+            toolStripMenuItem7.Name = "toolStripMenuItem7";
             // 
             // toolStripMenuItem1
             // 
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(toolStripMenuItem1, "toolStripMenuItem1");
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
             // 
             // toolStripMenuItem6
             // 
-            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            resources.ApplyResources(toolStripMenuItem6, "toolStripMenuItem6");
+            toolStripMenuItem6.Name = "toolStripMenuItem6";
             // 
             // toolStripMenuItem5
             // 
-            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            resources.ApplyResources(toolStripMenuItem5, "toolStripMenuItem5");
+            toolStripMenuItem5.Name = "toolStripMenuItem5";
             // 
             // toolStripMenuItem4
             // 
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(toolStripMenuItem4, "toolStripMenuItem4");
+            toolStripMenuItem4.Name = "toolStripMenuItem4";
             // 
             // toolStripMenuItem3
             // 
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(toolStripMenuItem3, "toolStripMenuItem3");
+            toolStripMenuItem3.Name = "toolStripMenuItem3";
             // 
             // statusStrip
             // 
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripProgressBar,
-            this.toolStripStatusLabelImageFilter,
-            this.toolStripStatusLabelFindSpot,
-            this.toolStripStatusLabelIdentifySpot,
-            this.toolStripStatusLabelRefine});
-            resources.ApplyResources(this.statusStrip, "statusStrip");
-            this.statusStrip.Name = "statusStrip";
+            statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabelImageFilter, toolStripStatusLabelFindSpot, toolStripStatusLabelIdentifySpot, toolStripStatusLabelRefine });
+            resources.ApplyResources(statusStrip, "statusStrip");
+            statusStrip.Name = "statusStrip";
             // 
             // toolStripProgressBar
             // 
-            this.toolStripProgressBar.Maximum = 10000;
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
+            toolStripProgressBar.Maximum = 10000;
+            toolStripProgressBar.Name = "toolStripProgressBar";
+            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             // 
             // toolStripStatusLabelImageFilter
             // 
-            this.toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
-            resources.ApplyResources(this.toolStripStatusLabelImageFilter, "toolStripStatusLabelImageFilter");
+            toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
+            resources.ApplyResources(toolStripStatusLabelImageFilter, "toolStripStatusLabelImageFilter");
             // 
             // toolStripStatusLabelFindSpot
             // 
-            this.toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
-            resources.ApplyResources(this.toolStripStatusLabelFindSpot, "toolStripStatusLabelFindSpot");
+            toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
+            resources.ApplyResources(toolStripStatusLabelFindSpot, "toolStripStatusLabelFindSpot");
             // 
             // toolStripStatusLabelIdentifySpot
             // 
-            this.toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
-            resources.ApplyResources(this.toolStripStatusLabelIdentifySpot, "toolStripStatusLabelIdentifySpot");
+            toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
+            resources.ApplyResources(toolStripStatusLabelIdentifySpot, "toolStripStatusLabelIdentifySpot");
             // 
             // toolStripStatusLabelRefine
             // 
-            this.toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
-            resources.ApplyResources(this.toolStripStatusLabelRefine, "toolStripStatusLabelRefine");
+            toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
+            resources.ApplyResources(toolStripStatusLabelRefine, "toolStripStatusLabelRefine");
             // 
             // backgroundWorkerSpotID
             // 
-            this.backgroundWorkerSpotID.WorkerReportsProgress = true;
-            this.backgroundWorkerSpotID.WorkerSupportsCancellation = true;
-            this.backgroundWorkerSpotID.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSpotID_DoWork);
-            this.backgroundWorkerSpotID.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerSpotID_ProgressChanged);
-            this.backgroundWorkerSpotID.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerSpotID_RunWorkerCompleted);
+            backgroundWorkerSpotID.WorkerReportsProgress = true;
+            backgroundWorkerSpotID.WorkerSupportsCancellation = true;
+            backgroundWorkerSpotID.DoWork += backgroundWorkerSpotID_DoWork;
+            backgroundWorkerSpotID.ProgressChanged += backgroundWorkerSpotID_ProgressChanged;
+            backgroundWorkerSpotID.RunWorkerCompleted += backgroundWorkerSpotID_RunWorkerCompleted;
+            // 
+            // radioButtonPixelSizeUnitReal
+            // 
+            resources.ApplyResources(radioButtonPixelSizeUnitReal, "radioButtonPixelSizeUnitReal");
+            radioButtonPixelSizeUnitReal.Checked = true;
+            radioButtonPixelSizeUnitReal.Name = "radioButtonPixelSizeUnitReal";
+            radioButtonPixelSizeUnitReal.TabStop = true;
+            radioButtonPixelSizeUnitReal.UseVisualStyleBackColor = true;
+            radioButtonPixelSizeUnitReal.CheckedChanged += radioButtonPixelSizeUnitReal_CheckedChanged;
+            // 
+            // radioButtonPixelSizeUnitInverse
+            // 
+            resources.ApplyResources(radioButtonPixelSizeUnitInverse, "radioButtonPixelSizeUnitInverse");
+            radioButtonPixelSizeUnitInverse.Name = "radioButtonPixelSizeUnitInverse";
+            radioButtonPixelSizeUnitInverse.UseVisualStyleBackColor = true;
             // 
             // FormSpotIDV2
             // 
-            this.AllowDrop = true;
+            AllowDrop = true;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.menuStrip);
-            this.MainMenuStrip = this.menuStrip;
-            this.Name = "FormSpotIDV2";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSpotID_FormClosing);
-            this.Load += new System.EventHandler(this.FormSpotID_Load);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormSpotID_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormSpotID_DragEnter);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpots)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceObsSpots)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGrains)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGrains)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCandidates)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCandidates)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            Controls.Add(splitContainer1);
+            Controls.Add(statusStrip);
+            Controls.Add(menuStrip);
+            MainMenuStrip = menuStrip;
+            Name = "FormSpotIDV2";
+            FormClosing += FormSpotID_FormClosing;
+            Load += FormSpotID_Load;
+            DragDrop += FormSpotID_DragDrop;
+            DragEnter += FormSpotID_DragEnter;
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSpots).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceObsSpots).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewGrains).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceGrains).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCandidates).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceCandidates).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
+            statusStrip.ResumeLayout(false);
+            statusStrip.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
-       
+
 
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem readToolStripMenuItem;
-        private Crystallography.Controls.WaveLengthControl waveLengthControl1;
+        private WaveLengthControl waveLengthControl1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private Crystallography.Controls.NumericBox numericBoxCameraLength;
-        private Crystallography.Controls.NumericBox numericBoxPixelSize;
+        private NumericBox numericBoxCameraLength;
+        private NumericBox numericBoxPixelSize;
         private System.Windows.Forms.Button buttonIdentifySpots;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridViewCandidates;
@@ -1184,14 +1152,14 @@ namespace ReciPro
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelFindSpot;
-        private Crystallography.Controls.NumericBox numericBoxAcceptableError;
+        private NumericBox numericBoxAcceptableError;
         private System.Windows.Forms.RadioButton radioButtonMultiGrain;
         private System.Windows.Forms.RadioButton radioButtonSingleGrain;
         private System.Windows.Forms.DataGridView dataGridViewGrains;
         private System.Windows.Forms.BindingSource bindingSourceGrains;
         private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn AssignedSpots;
-        private Crystallography.Controls.NumericBox numericBoxMaxGrainNum;
+        private NumericBox numericBoxMaxGrainNum;
         private System.ComponentModel.BackgroundWorker backgroundWorkerSpotID;
         private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn CrystalName;
@@ -1202,7 +1170,7 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelIdentifySpot;
         public System.Windows.Forms.BindingSource bindingSourceObsSpots;
         public DataSetReciPro dataSet;
-        public Crystallography.Controls.ScalablePictureBoxAdvanced scalablePictureBoxAdvanced;
+        public ScalablePictureBoxAdvanced scalablePictureBoxAdvanced;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem shortcutHintsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem doubleClickAddSpotToolStripMenuItem;
@@ -1215,8 +1183,8 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxShowCalcSpotSymbol;
         private System.Windows.Forms.CheckBox checkBoxShowCalcSpotLabel;
         private System.Windows.Forms.Button buttonRefineThicknessAndDirection;
-        private Crystallography.Controls.NumericBox numericBoxMaxNumOfG;
-        private Crystallography.Controls.NumericBox numericBoxSemiangle;
+        private NumericBox numericBoxMaxNumOfG;
+        private NumericBox numericBoxSemiangle;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelImageFilter;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelRefine;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1224,9 +1192,9 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxShowObsSpotSymbol;
         private System.Windows.Forms.CheckBox checkBoxShowObsSpotLabel;
         private System.Windows.Forms.Button buttonSaveToFile;
-        private Crystallography.Controls.NumericBox numericBoxNearestNeighbor;
-        private Crystallography.Controls.NumericBox numericBoxNumberOfSpots;
-        public Crystallography.Controls.NumericBox numericBoxFittingRange;
+        private NumericBox numericBoxNearestNeighbor;
+        private NumericBox numericBoxNumberOfSpots;
+        public NumericBox numericBoxFittingRange;
         private System.Windows.Forms.Button buttonCopyToClipboad;
         private System.Windows.Forms.Button buttonFindSpots;
         private System.Windows.Forms.Button buttonGlobalFit;
@@ -1235,7 +1203,7 @@ namespace ReciPro
         private System.Windows.Forms.Button buttonClearSpots;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonDonut;
-        private Crystallography.Controls.NumericBox numericBoxDonut;
+        private NumericBox numericBoxDonut;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox checkBoxDetailsOfFunction;
@@ -1265,5 +1233,7 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripMenuItem copyAsMetafileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyAsBitmapToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBoxShowZoneAxis;
+        private System.Windows.Forms.RadioButton radioButtonPixelSizeUnitInverse;
+        private System.Windows.Forms.RadioButton radioButtonPixelSizeUnitReal;
     }
 }
