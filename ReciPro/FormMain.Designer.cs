@@ -1415,7 +1415,7 @@
         public System.Windows.Forms.Button buttonDelete;
         public System.Windows.Forms.Button buttonChange;
         private System.Windows.Forms.ToolStripMenuItem helpwebToolStripMenuItem;
-        public Crystallography.Controls.CrystalControl crystalControl;
+        public CrystalControl crystalControl;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem toolTipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -1459,14 +1459,14 @@
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
-        private Crystallography.Controls.NumericBox numericBoxPlaneL;
-        private Crystallography.Controls.NumericBox numericBoxPlaneH;
-        private Crystallography.Controls.NumericBox numericBoxPlaneK;
+        private NumericBox numericBoxPlaneL;
+        private NumericBox numericBoxPlaneH;
+        private NumericBox numericBoxPlaneK;
         public System.Windows.Forms.ToolStripButton toolStripButtonSpotIDv1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label labelCurrentIndex;
-        private Crystallography.Controls.NumericBox numericBoxMaxUVW;
-        private Crystallography.Controls.NumericBox numericBoxStep;
+        private NumericBox numericBoxMaxUVW;
+        private NumericBox numericBoxStep;
         private System.Windows.Forms.CheckBox checkBoxAnimation;
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;

@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -69,12 +129,6 @@
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>926, 24</value>
-  </data>
-  <data name="statusStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="listBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 22</value>
@@ -168,9 +222,6 @@
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>643, 27</value>
   </data>
-  <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
@@ -184,29 +235,17 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>結晶リスト</value>
   </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 238</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>653, 1</value>
   </data>
-  <data name="panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer.Panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="crystalControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 25</value>
   </data>
   <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>643, 309</value>
-  </data>
-  <data name="crystalControl.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBox6.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -225,9 +264,6 @@
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>結晶情報</value>
-  </data>
-  <data name="groupBox6.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonAdd.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -265,26 +301,14 @@
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>653, 28</value>
   </data>
-  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>653, 1</value>
-  </data>
-  <data name="panel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer.Panel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
     <value>663, 611</value>
   </data>
   <data name="splitContainer.SplitterDistance" type="System.Int32, mscorlib">
     <value>239</value>
-  </data>
-  <data name="splitContainer.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="groupBox5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -315,9 +339,6 @@
   <data name="checkBoxFixAxis.Text" xml:space="preserve">
     <value>固定</value>
   </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 0</value>
   </data>
@@ -345,9 +366,6 @@
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 21</value>
   </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
@@ -356,9 +374,6 @@
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 21</value>
-  </data>
-  <data name="label10.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 0</value>
@@ -402,9 +417,6 @@
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 23</value>
   </data>
-  <data name="tableLayoutPanel5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxPlaneL.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
   </data>
@@ -416,9 +428,6 @@
   </data>
   <data name="numericBoxPlaneL.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneL.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 0</value>
@@ -456,9 +465,6 @@
   <data name="numericBoxPlaneK.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxPlaneK.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
@@ -468,17 +474,11 @@
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 21</value>
   </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 21</value>
-  </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 77</value>
@@ -517,9 +517,6 @@
   <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 22</value>
   </data>
@@ -528,9 +525,6 @@
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 102</value>
-  </data>
-  <data name="tableLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -543,9 +537,6 @@
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>軸/面投影</value>
-  </data>
-  <data name="groupBox5.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBox2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -570,9 +561,6 @@
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 22</value>
-  </data>
-  <data name="tableLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonTopLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 22</value>
@@ -643,9 +631,6 @@
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 66</value>
   </data>
-  <data name="tableLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -669,9 +654,6 @@
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 31</value>
-  </data>
-  <data name="panel4.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxAnimation.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -706,9 +688,6 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>回転</value>
   </data>
-  <data name="groupBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="labelCurrentIndex.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 22</value>
   </data>
@@ -720,9 +699,6 @@
   </data>
   <data name="numericBoxMaxUVW.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 49</value>
-  </data>
-  <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -748,17 +724,11 @@
   <data name="label7.Text" xml:space="preserve">
     <value>オイラー角</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 57</value>
   </data>
   <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
-  </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericUpDownEulerPsi.Location" type="System.Drawing.Point, System.Drawing">
     <value>28, 53</value>
@@ -781,17 +751,11 @@
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 57</value>
   </data>
   <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericUpDownEulerTheta.Location" type="System.Drawing.Point, System.Drawing">
     <value>28, 27</value>
@@ -823,26 +787,17 @@
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
   </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 5</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
   </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 31</value>
   </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 126</value>
@@ -852,9 +807,6 @@
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 79</value>
-  </data>
-  <data name="tableLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBoxCurrentDirection.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -877,23 +829,11 @@
   <data name="label8.Text" xml:space="preserve">
     <value>回転状態表示/制御</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 611</value>
   </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>805, 611</value>
-  </data>
-  <data name="toolStripContainer1.ContentPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.LeftToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="toolStripLabel1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -1398,17 +1338,8 @@ v2</value>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 564</value>
   </data>
-  <data name="toolStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.RightToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>930, 663</value>
-  </data>
-  <data name="toolStripContainer1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -1513,52 +1444,52 @@ v2</value>
     <value>オプション</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>169, 24</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>アップデート</value>
   </data>
   <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="hintToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>169, 24</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
     <value>ヒント</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>169, 24</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
     <value>バージョン履歴</value>
   </data>
   <data name="licenseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>169, 24</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>ライセンス</value>
   </data>
   <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="githubPageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>169, 24</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
     <value>Github ページ</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>169, 24</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
     <value>バグ、要望報告</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="helpwebToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>169, 24</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
     <value>使い方 (pdf)</value>
@@ -1598,23 +1529,11 @@ v2</value>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>
   </data>
-  <data name="editorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
-  </data>
   <data name="macroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 24</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>926, 28</value>
-  </data>
-  <data name="menuStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>930, 663</value>
@@ -1909,8 +1828,5 @@ v2</value>
         2gCl/yEA/gAAAAAAAAAAAAAAAAAAAPgfAADgBwAAwAMAAIABAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAgAEAAIABAADAAwAA4AcAAPgfAAA=
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

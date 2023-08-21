@@ -221,7 +221,7 @@ public partial class FormMain : Form
         //MainWindow‚ÌêŠ‚ğ“Ç‚İ‚Ş‚½‚ß (InitializeComponent‚ÌŒã‚É‚É“Ç‚İ‚Ş)
         Registry(Reg.Mode.Read);
 
-       
+
 
         sw.Restart();
 
@@ -259,7 +259,7 @@ public partial class FormMain : Form
             Width = 600,
             Location = new Point(this.Location.X, this.Location.Y)
         };
-       
+
         commonDialog.Show();
 
         commonDialog.Progress = ("Now Loading...Initializing OpenGL.", 0.1);

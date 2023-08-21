@@ -116,8 +116,8 @@ public partial class FormStereonet : Form
     {
         if (graphicsBox.Width <= 0 || graphicsBox.Height <= 0) return;
 
-        if (g == null)//グラフィックスボックスに描画する場合
-            g = graphicsBox.Graphics;
+        //グラフィックスボックスに描画する場合
+        g ??= graphicsBox.Graphics;
 
         if (!SetProjection(g))
             return;

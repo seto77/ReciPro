@@ -15,7 +15,7 @@ namespace Crystallography.Controls
         public string[] ExcludesStr => Excludes.Select(i => i.ToString("000")).ToArray();
 
 
-        private readonly List<Button> button = new List<Button>();
+        private readonly List<Button> button = new();
 
         private readonly Color ExcludeColor = Color.LightCoral;
         private readonly Color IncludeColor = Color.LightBlue;
