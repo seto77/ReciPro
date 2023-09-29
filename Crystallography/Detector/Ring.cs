@@ -226,58 +226,58 @@ public static class Ring
     }
 
     //public static WaitDlg wd;
-    public static Size SrcImgSize = new Size();
+    public static Size SrcImgSize;
 
     public static double[] R2;
-    public static List<double> Intensity = new List<double>();
-    public static List<double> IntensityOriginal = new List<double>();
-    public static Size SrcImgSizeOriginal = new Size();
+    public static List<double> Intensity = new();
+    public static List<double> IntensityOriginal = new();
+    public static Size SrcImgSizeOriginal;
 
     //バックグラウンド演算で使用
-    public static List<double> Background = new List<double>();
+    public static List<double> Background = new();
 
     public static double BackgroundCoeff = 1;
 
     //SequentialImage(*.his,*.h5)で利用する変数
-    public static List<List<double>> SequentialImageIntensities = new List<List<double>>();
+    public static List<List<double>> SequentialImageIntensities = new();
 
-    public static List<string> SequentialImageNames = new List<string>();
+    public static List<string> SequentialImageNames = new();
 
     //HDF *h5ファイルでのみに使用する
-    public static List<double> SequentialImageEnergy = new List<double>();
+    public static List<double> SequentialImageEnergy = new();
 
-    public static List<double> SequentialImagePulsePower = new List<double>();
+    public static List<double> SequentialImagePulsePower = new();
     public static bool PulsePowerNormarized = false;
-    public static List<List<double>> SequentialImageEnergySpectrum = new List<List<double>>();
+    public static List<List<double>> SequentialImageEnergySpectrum = new();
 
-    public static SortedList<uint, int> Frequency = new SortedList<uint, int>();
+    public static SortedList<uint, int> Frequency = new();
 
     public static ImageTypeEnum ImageType = ImageTypeEnum.Unknown;
 
-    public static List<bool> IsValid = new List<bool>();//有効な(マスクされていない点かどうか)
+    public static List<bool> IsValid = new ();//有効な(マスクされていない点かどうか)
                                                         //public static ParallelQuery<bool> IsValidP;
 
-    public static List<bool> IsSpots = new List<bool>();//スポット状の点かどうか
+    public static List<bool> IsSpots = new ();//スポット状の点かどうか
                                                         //public static ParallelQuery<bool> IsSpotsP;
 
-    public static List<bool> IsThresholdOver = new List<bool>();
+    public static List<bool> IsThresholdOver = new ();
     //public static ParallelQuery<bool> IsThresholdOverP;
 
-    public static List<bool> IsThresholdUnder = new List<bool>();//飽和しているかどうか
+    public static List<bool> IsThresholdUnder = new ();//飽和しているかどうか
                                                                  //public static ParallelQuery<bool> IsThresholdUnderP;
 
 
     /// <summary>
     /// 指定された積分領域(矩形、セクター)の範囲外の場合はtrue
     /// </summary>
-    public static List<bool> IsOutsideOfIntegralRegion = new List<bool>();//積分エリアの外(或いは選択領域の外)
+    public static List<bool> IsOutsideOfIntegralRegion = new();//積分エリアの外(或いは選択領域の外)
                                                                           //public static ParallelQuery<bool> IsOutsideOfIntegralRegionP;
 
 
     /// <summary>
     /// 指定された積分対象角度の範囲外の場合はtrue
     /// </summary>
-    public static List<bool> IsOutsideOfIntegralProperty = new List<bool>();//エリアの外(或いは選択領域の外)
+    public static List<bool> IsOutsideOfIntegralProperty = new ();//エリアの外(或いは選択領域の外)
                                                                             //public static ParallelQuery<bool> IsOutsideOfIntegralPropertyP;
 
 
@@ -361,7 +361,7 @@ public static class Ring
             lock (lockObj)
             {
                 foreach (uint j in freq.Keys)
-                    if (Frequency.ContainsKey(j))
+                    if ( Frequency.ContainsKey(j))
                         Frequency[j] += freq[j];
                     else
                         Frequency.Add(j, freq[j]);

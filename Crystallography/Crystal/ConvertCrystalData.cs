@@ -324,7 +324,7 @@ public class ConvertCrystalData
 
         var AuthorName = str[n];//著者の名前
         n++; if (str.Length <= n) return null;
-        while (str[n][^1] < '.' || str[n][^1] > '9')
+        while ((str[n][^1] < '.' || str[n][^1] > '9') && !str[n].Contains("doi.org") && !str[n].Contains("DOI: "))//行の最後の文字が数字ではないとき　(ただし、"doi.org"の文字列が存在するときは除外) 
         {
             AuthorName += ", " + str[n];
             n++; if (str.Length <= n) return null;
@@ -522,6 +522,9 @@ public class ConvertCrystalData
             return null;
         try
         {
+            for (int i = 0; i < 6; i++) if (s[i].EndsWith(',')) s[i] = s[i].TrimEnd(','); //最後に','が入っているときは削除
+
+
             if (Miscellaneous.IsDecimalPointComma)
                 for (int i = 0; i < 6; i++) s[i] = s[i].Replace('.', ',');
             else
@@ -561,7 +564,7 @@ public class ConvertCrystalData
         else if (SgName == "Im3m") SgName = "Im-3m";
         else if (SgName == "Ia3d") SgName = "Ia-3d";
 
-        else if (SgName == "I2sub1/a-3") SgName = "Ia3";
+        else if (SgName == "I2sub1/a-3") SgName = "Ia-3";
 
         else if (SgName == "R-32/c") SgName = "R-3c";
 
