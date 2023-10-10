@@ -167,7 +167,7 @@ public partial class ScalablePictureBox : UserControl
     public bool VerticalFlip
     {
         set { PseudoBitmap.VerticalFlip = value; drawPictureBox(); }
-        get { return PseudoBitmap.VerticalFlip; }
+        get => PseudoBitmap.VerticalFlip;
     }
 
     private bool horizontalFlip = false;
@@ -178,7 +178,7 @@ public partial class ScalablePictureBox : UserControl
     public bool HorizontalFlip
     {
         set { PseudoBitmap.HorizontalFlip = value; drawPictureBox(); }
-        get { return PseudoBitmap.HorizontalFlip; }
+        get => PseudoBitmap.HorizontalFlip;
     }
 
     private double minZoom = 0.1f;
@@ -234,9 +234,6 @@ public partial class ScalablePictureBox : UserControl
         }
         get => _Center.IsNaN ? new PointD(0, 0) : _Center;
     }
-
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    private Vector3DBase zoomAndCenter = new(1, 0, 0);
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public (double Zoom, PointD Center) ZoomAndCenter
@@ -307,7 +304,7 @@ public partial class ScalablePictureBox : UserControl
     }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    private RectangleD areaRentagle = new RectangleD();
+    private RectangleD areaRentagle = new();
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public RectangleD AreaRectangle
     {
@@ -331,7 +328,7 @@ public partial class ScalablePictureBox : UserControl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TextColor { get => label.ForeColor; set => label.ForeColor = value; }
 
-    private PseudoBitmap _pseudoBitmap = new PseudoBitmap();
+    private PseudoBitmap _pseudoBitmap = new();
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public PseudoBitmap PseudoBitmap
@@ -510,7 +507,7 @@ public partial class ScalablePictureBox : UserControl
             _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
             Zoom *= 0.5f;
         }
-        else if (e.Button == MouseButtons.Left && e.Clicks == 1)
+        else if ((e.Button == MouseButtons.Left||e.Button== MouseButtons.Middle) && e.Clicks == 1)
         {
             justBeforePoint = e.Location;
         }
@@ -538,7 +535,7 @@ public partial class ScalablePictureBox : UserControl
             mouseRangeEnd = e.Location;
             pictureBox.Refresh();
         }
-        else if (e.Button == MouseButtons.Left && MouseTranslation && justBeforePoint != e.Location)
+        else if ((e.Button == MouseButtons.Left||e.Button == MouseButtons.Middle) && MouseTranslation && justBeforePoint != e.Location)
         {
             Center = new PointD(Center.X + (justBeforePoint.X - e.Location.X) / Zoom, Center.Y + (justBeforePoint.Y - e.Location.Y) / Zoom);
             justBeforePoint = e.Location;

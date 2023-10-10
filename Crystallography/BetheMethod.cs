@@ -32,7 +32,7 @@ public class BetheMethod
 {
     #region static readonly field
     private static readonly Complex One = Complex.One;
-    private const double TwoPi = 2 * Math.PI;
+    private const double TwoPi = Constants.Pi2;
     private static readonly Complex TwoPiI = TwoPi * ImaginaryOne;
     private static readonly Complex PiI = Math.PI * ImaginaryOne;
     private const double PiSq = Math.PI * Math.PI;

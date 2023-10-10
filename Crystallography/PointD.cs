@@ -15,13 +15,10 @@ public struct RectangleD
     public double Width { set; get; }
     public double Height { set; get; }
 
-    public double UpperX { get { return X + Width; } }
-    public double UpperY { get { return Y + Height; } }
+    public readonly double UpperX => X + Width;
+    public readonly double UpperY => Y + Height;
 
-    public readonly bool IsInsde(PointD p)
-    {
-        return p.X >= X && p.X <= X + Width && p.Y >= Y && p.Y <= Y + Height;
-    }
+    public readonly bool IsInsde(PointD p) => p.X >= X && p.X <= X + Width && p.Y >= Y && p.Y <= Y + Height;
 
     public RectangleD(double x, double y, double width, double height) : this()
     {
@@ -63,16 +60,16 @@ public struct RectangleD
         Height = Math.Abs(pt2.Y - pt1.Y);
     }
 
-    public readonly RectangleF ToRectangleF() => new RectangleF((float)X, (float)Y, (float)Width, (float)Height);
+    public readonly RectangleF ToRectangleF() => new((float)X, (float)Y, (float)Width, (float)Height);
 
-    public readonly SizeD ToSizeD() => new SizeD(Width, Height);
-    public readonly SizeF ToSizeF() => new SizeF((float)Width, (float)Height);
+    public readonly SizeD ToSizeD() => new(Width, Height);
+    public readonly SizeF ToSizeF() => new((float)Width, (float)Height);
 
     /// <summary>
     /// 四捨五入して整数サイズに変換
     /// </summary>
     /// <returns></returns>
-    public readonly Size ToSize() => new Size((int)(Width + 0.5), (int)(Height + 0.5));
+    public readonly Size ToSize() => new((int)(Width + 0.5), (int)(Height + 0.5));
 
 }
 
@@ -108,27 +105,21 @@ public struct SizeD
         Height = size.Height;
     }
 
-    public readonly SizeF ToSizeF()
-    {
-        return new SizeF((float)Width, (float)Height);
-    }
+    public readonly SizeF ToSizeF() => new((float)Width, (float)Height);
 
     #region 演算子のオーバーロード
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Width, Height);
-    }
+    public override readonly int GetHashCode() => HashCode.Combine(Width, Height);
 
-    public override bool Equals(object obj) => obj is SizeD d && Equals(d);
+    public override readonly bool Equals(object obj) => obj is SizeD d && Equals(d);
 
-    public bool Equals(in SizeD other) => Width == other.Width && Height == other.Height;
+    public readonly bool Equals(in SizeD other) => Width == other.Width && Height == other.Height;
 
     public static SizeD operator +(in SizeD p1, in SizeD p2) => new(p1.Width + p2.Width, p1.Height + p2.Height);
 
     public static SizeD operator -(in SizeD p1, in SizeD p2) => new(p1.Width - p2.Width, p1.Height - p2.Height);
 
-    public static SizeD operator -(in SizeD p) => new SizeD(-p.Width, -p.Height);
+    public static SizeD operator -(in SizeD p) => new(-p.Width, -p.Height);
 
     public static SizeD operator *(in double d, in SizeD p) => new(d * p.Width, d * p.Height);
 
@@ -177,7 +168,7 @@ public struct PointD : IComparable, IEquatable<PointD>
 
     public readonly PointF ToPointF() => new((float)X, (float)Y);
 
-    public int CompareTo(object obj)
+    public readonly int CompareTo(object obj)
     {
         int value = X.CompareTo(((PointD)obj).X);
         if (value != 0)
@@ -191,11 +182,11 @@ public struct PointD : IComparable, IEquatable<PointD>
     /// <returns></returns>
     public override readonly string ToString() => string.Format("({0}, {1})", this.X, this.Y);
 
-    public override bool Equals(object obj) => obj is PointD d && Equals(d);
+    public override readonly bool Equals(object obj) => obj is PointD d && Equals(d);
 
-    public bool Equals(PointD other) => X == other.X && Y == other.Y;
+    public readonly bool Equals(PointD other) => X == other.X && Y == other.Y;
 
-    public override int GetHashCode() => HashCode.Combine(X, Y);
+    public override readonly int GetHashCode() => HashCode.Combine(X, Y);
 
     #region 演算子のオーバーロード
 
