@@ -964,7 +964,7 @@ public class BetheMethod
         #endregion
 
         var k_xy = k_vec.Select(e => e.ToPointD).ToArray();
-        var k_z = k_vec.Select(e => e.Z).ToArray();
+        //var k_z = k_vec.Select(e => e.Z).ToArray();
 
         #region レンズ収差関数、収束絞り関数、検出器関数
         //レンズ収差関数 W
@@ -1329,7 +1329,7 @@ public class BetheMethod
         var image_ela = Thicknesses.Select(e => defocusses.Select(e2 => GC.AllocateUninitializedArray<double>(width * height)).ToArray()).ToArray();
         var image_tds = Thicknesses.Select(e => defocusses.Select(e2 => GC.AllocateUninitializedArray<double>(width * height)).ToArray()).ToArray();
 
-        double cX = width / 2.0, cY = height / 2.0, radiusPix2 =  radiusPix * radiusPix;
+        double cX = width / 2.0, cY = height / 2.0, radiusPix2 = radiusPix * radiusPix;
         var shift = (Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2).ToPointD;
         Parallel.For(0, height, y =>
         {
@@ -1342,7 +1342,7 @@ public class BetheMethod
                         Complex elas = new(), tds = new();
                         for (int qIndex = 0; qIndex < qList.Count; qIndex++)
                         {
-                            var tmp = Exp(qList[qIndex].Vec.ToPointD * rVec * TwoPiI) ;
+                            var tmp = Exp(qList[qIndex].Vec.ToPointD * rVec * TwoPiI);
                             elas += I_Elas[qIndex, t, d] * tmp;
                             tds += I_Inel[qIndex, t, d] * tmp;
                         }
@@ -1367,13 +1367,13 @@ public class BetheMethod
                 for (int i = 0; i < width * height; i++)
                     image_both[t][d][i] = image_ela[t][d][i] + image_tds[t][d][i];
 
-
-                ResultSTEM = (new Size(width, height), resolution, thicknesses.ToArray(), defocusses.ToArray(), BaseRotation, image_both, image_ela, image_tds);
+        ResultSTEM = (new Size(width, height), resolution, thicknesses.ToArray(), defocusses.ToArray(), BaseRotation, image_both, image_ela, image_tds);
 
         #endregion
 
         return;
     }
+
     #endregion
 
     #region ポテンシャルイメージ
