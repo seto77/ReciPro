@@ -1098,36 +1098,41 @@ public class BetheMethod
         var bLen2 = bLen * bLen;
         #region U行列の計算 
         count = 0;
-        //var U = new Complex[qList.Count][];
         var U = new Complex[qList.Count * bLen2];
         uDictionary.Clear();
 
         //マルチスレッドの効率を上げるため、まずqList[qIndex] + Beams[i] - Beams[j]の重複を除く
-        var tmpDic = new Dictionary<(int h, int k, int l), (Beam b, int q, int i, int j)>();
-        for (int q = 0; q < qList.Count; q++)
-            for (int j = 0; j < bLen; j++)
-                for (int i = 0; i < bLen; i++)
-                {
-                    var b = qList[q] + Beams[i] - Beams[j];
-                    tmpDic.TryAdd(b.Index, (b, q, i, j));
-                }
-        tmpDic.AsParallel().ForAll(d =>
-        {
-            getU(AccVoltage, d.Value.b, null, detAngleInner, detAngleOuter);//共役とると、なぜかいい感じ。
-            if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / tmpDic.Count), "Calculating U matrix");//状況を報告
-            if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
-        });
+        //var tmpDic = new Dictionary<(int h, int k, int l), (Beam b, int q, int i, int j)>();
+        //for (int q = 0; q < qList.Count; q++)
+        //    for (int j = 0; j < bLen; j++)
+        //        for (int i = 0; i < bLen; i++)
+        //        {
+        //            var b = qList[q] + Beams[i] - Beams[j];
+        //            tmpDic.TryAdd(b.Index, (b, q, i, j));
+        //        }
+        //tmpDic.AsParallel().ForAll(d =>
+        //{
+        //    getU(AccVoltage, d.Value.b, null, detAngleInner, detAngleOuter);
+        //    if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / tmpDic.Count), "Calculating U matrix");//状況を報告
+        //    if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
+        //});
 
         Parallel.For(0, qList.Count, qIndex =>
         {
             //U[qIndex] = GC.AllocateUninitializedArray<Complex>(bLen * bLen);
             for (int j = 0; j < bLen; j++)
+            {
                 for (int i = 0; i < bLen; i++)
                 {
-                    //U[qIndex][j * bLen + i] = getU(AccVoltage, qList[qIndex] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
+                    //局所形式
                     U[qIndex * bLen2 + j * bLen + i] = getU(AccVoltage, qList[qIndex] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
-                                                                                                                                                                  //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
+                    //非局所形式
+                    //U[qIndex * bLen2 + j * bLen + i] = getU(AccVoltage, qList[qIndex], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag.Conjugate();
+                    //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
                 }
+                if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / qList.Count/bLen), "Calculating U matrix");//状況を報告
+                if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
+            }
         });
         #endregion
 
@@ -1195,7 +1200,7 @@ public class BetheMethod
                             NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
                     });
                     #endregion
-
+              
                     tcP.ForAll(kIndex =>
                     {
                         Complex[] sumTmp = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);
@@ -1207,8 +1212,9 @@ public class BetheMethod
                                     var (qIndex, n, r, lenz) = list[kIndex][i];
                                     //厚み_thick[t][_t]における透過係数_tc_kqを計算
                                     NativeWrapper.BlendAndConjugate(bLen, _tc_k + n[0] * bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], _tc_kq);
-                                    var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
 
+                                    var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
+                                    
                                     for (int dIndex = 0; dIndex < dLen; dIndex++)
                                         sumTmp[i * dLen + dIndex] = tmp * lenz[dIndex];
                                 }

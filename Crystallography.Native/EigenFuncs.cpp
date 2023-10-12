@@ -131,6 +131,14 @@ extern "C" {
 		Map<Mat>((dcomplex*)_result, 1, 1).noalias() = rV * m * cV;
 	}
 
+	//‰¡ƒxƒNƒgƒ‹~³•ûs—ñ~cƒxƒNƒgƒ‹‚ÌŠ|Z. STEM‚Ì”ñ’e«U—‚ğ‹‚ß‚é‚Æ‚«‚Ég—p
+	EIGEN_FUNCS_API void _SqMat_ColVec(int dim, double sqMat[], double colVec[], double _result[])
+	{
+		auto m = Map<Mat>((dcomplex*)sqMat, dim, dim);
+		auto cV = Map<Vec>((dcomplex*)colVec, dim);
+		Map<Vec>((dcomplex*)_result, dim).noalias() = m * cV;
+	}
+
 	EIGEN_FUNCS_API void _STEM_INEL1(int dim, double rowVec[], int n[], double r[], double sqMat[], double colVec[], double _result[])
 	{
 		auto rV1 = Map<VecR>((dcomplex*)(rowVec + n[0] * dim * 2), dim);
