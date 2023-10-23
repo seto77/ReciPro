@@ -1703,7 +1703,7 @@ public partial class FormStructureViewer : Form
     #endregion
 
     #region その他イベント
-   
+
 
     private void FormStructureViewer_KeyDown(object sender, KeyEventArgs e)
     {
@@ -1711,7 +1711,7 @@ public partial class FormStructureViewer : Form
             Clipboard.SetDataObject(glControlMain.GenerateBitmap());
     }
 
-  
+
 
     /// <summary>
     /// 角度をリセットする

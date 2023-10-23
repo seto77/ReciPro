@@ -207,6 +207,8 @@ unsafe public partial class GLControlAlpha : UserControl
 
     #endregion
 
+    public static bool DisableTextRendering { get; set; } = true;
+
     #region マウス関連
     /// <summary>
     /// マウスによる回転操作を許可するか
@@ -830,14 +832,20 @@ unsafe public partial class GLControlAlpha : UserControl
             var r = Math.Min(glControl.ClientSize.Width / 2.0, glControl.Height / 2.0);
             if (r * r * 0.7 > x * x + y * y)
             {
-                WorldMatrix *= Mat4d.CreateRotationX((float)(-dy / 100)) * Mat4d.CreateRotationY((float)(dx / 100));
+                if (RotationMode == RotationModes.Object)
+                    WorldMatrix *= Mat4d.CreateRotationX((float)(-dy / 100)) * Mat4d.CreateRotationY((float)(dx / 100));
+                else if (RotationMode == RotationModes.View)
+                ViewMatrix *= Mat4d.CreateRotationX((float)(-dy / 100)) * Mat4d.CreateRotationY((float)(dx / 100));
             }
             else
             {
                 var lastx = lastMousePosition.X - glControl.ClientSize.Width / 2.0;
                 var lasty = lastMousePosition.Y - glControl.ClientSize.Height / 2.0;
                 var angle = Math.Atan2(x, y) - Math.Atan2(lastx, lasty);
-                WorldMatrix *= Mat4d.CreateRotationZ((float)angle);
+                if (RotationMode == RotationModes.Object)
+                    WorldMatrix *= Mat4d.CreateRotationZ((float)angle);
+                else if (RotationMode == RotationModes.View)
+                    ViewMatrix *= Mat4d.CreateRotationZ((float)angle);
             }
         }
         else if (e.Button == MouseButtons.Middle && AllowMouseTranslating)

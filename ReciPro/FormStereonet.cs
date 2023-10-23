@@ -277,7 +277,7 @@ public partial class FormStereonet : Form
                 cos.Add(Math.Cos(n * Math.PI / 180.0));
                 tan.Add(Math.Tan(n * Math.PI / 180.0));
             }
-        
+
         var pen1 = new Pen(new SolidBrush(colorControl1DegLine.Color), (float)(1 / mag));
         var pen10 = new Pen(new SolidBrush(colorControl10DegLine.Color), (float)(2 / mag));
         var pen90 = new Pen(new SolidBrush(colorControl90DegLine.Color), (float)(3 / mag));
@@ -391,7 +391,7 @@ public partial class FormStereonet : Form
     //ステレオネット中の点を描く
     private void DrawStereoNet(Graphics g)
     {
-        if (formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
+        if (formMain == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
             return;
         var vector = radioButtonAxes.Checked ? formMain.Crystal.VectorOfAxis.ToArray() : formMain.Crystal.VectorOfPlane.ToArray();
         var drawString = trackBarStrSize.Value != 1;

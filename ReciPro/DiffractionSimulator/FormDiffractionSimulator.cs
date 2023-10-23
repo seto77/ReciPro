@@ -1,6 +1,9 @@
 ﻿#region using
 using BitMiracle.LibTiff.Classic;
+using Crystallography;
+using Crystallography.OpenGL;
 using MathNet.Numerics;
+using OpenTK;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -12,7 +15,9 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-
+using static ReciPro.FormDiffractionSimulatorDynamicCompression;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using V3 = OpenTK.Vector3d;
 #endregion
 
 namespace ReciPro;
@@ -26,6 +31,8 @@ public partial class FormDiffractionSimulator : Form
     public FormDiffractionSimulatorGeometry FormDiffractionSimulatorGeometry;
     public FormDiffractionSimulatorDynamicCompression FormDiffractionSimulatorDynamicCompression;
     public FormDiffractionSpotInfo FormDiffractionBeamTable;
+
+    private GLControlAlpha glControl;
 
     #region 計算モード
     public enum CalcModes { Excitation, Kinematical, Dynamical }
@@ -242,10 +249,31 @@ public partial class FormDiffractionSimulator : Form
     {
         comboBoxScaleColorScale.SelectedIndex = 0;
         comboBoxCenter.SelectedIndex = 0;
-
+        splitContainer1.SplitterDistance = splitContainer1.Width / 2;
+        splitContainer1.Panel2Collapsed = true;
         Draw();
 
         WaveLengthControl_WaveSourceChanged(sender, e);
+
+        glControl = new GLControlAlpha(GLControlAlpha.FragShaders.ZSORT)
+        {
+            AllowMouseRotation = true,
+            AllowMouseScaling = true,
+            AllowMouseTranslating = true,
+            Name = "glControlAxes",
+            ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+            ProjWidth = 15,
+            //NodeCoefficient = 30,
+            //MaxHeight = 1440,
+            //MaxWidth = 2560,
+            RotationMode = GLControlAlpha.RotationModes.Object,
+            Dock = DockStyle.Fill,
+            LightPosition = new V3(100, 100, 100),
+            BorderStyle = BorderStyle.Fixed3D
+        };
+        splitContainer1.Panel2.Controls.Add(glControl);
+        glControl.BringToFront();
+
     }
 
     //クローズ
@@ -435,6 +463,8 @@ public partial class FormDiffractionSimulator : Form
             else
                 FormDiffractionBeamTable.SetTable(Energy, formMain.Crystal);
         }
+
+        Draw3D();
     }
 
     /// <summary>
@@ -1106,8 +1136,7 @@ public partial class FormDiffractionSimulator : Form
     }
 
 
-    private void checkBoxMousePositionDetailes_CheckedChanged(object sender, EventArgs e) => labelMousePositionReciprocal.Visible =
-            labelMousePositionDetector.Visible = labelMousePositionReal.Visible = checkBoxMousePositionDetailes.Checked;
+    private void checkBoxMousePositionDetailes_CheckedChanged(object sender, EventArgs e) => tableLayoutPanelMousePotionDetailed.Visible = checkBoxMousePositionDetailes.Checked;
 
     private void numericBoxKikuchiLineThreshold_ValueChanged(object sender, EventArgs e)
     {
@@ -1446,13 +1475,13 @@ public partial class FormDiffractionSimulator : Form
         //マウスポインタの情報を表示
 
         var detectorPos = convertScreenToDetector(e.X, e.Y);
-        labelMousePositionDetector.Text = $"Detector Coord. in mm (origin: foot): ({detectorPos.X:f3}, {detectorPos.Y:f3})";
+        labelMousePositionDetector.Text = $"({detectorPos.X:f3}, {detectorPos.Y:f3})";
 
         var realPos = convertDetectorToReal(detectorPos.X, detectorPos.Y);
-        labelMousePositionReal.Text = $"Real Coord. in mm (origin: sample):　{realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3})";
+        labelMousePositionReal.Text = $"{realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3})";
 
         var invPos = convertRealToReciprocal(realPos, false);
-        labelMousePositionReciprocal.Text = $"Reciprocal Coord. in nm⁻¹: ({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
+        labelMousePositionReciprocal.Text = $"({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
 
         labelDinv.Text = $"d⁻¹: {invPos.Length:f4} nm⁻¹";
         var d = 1.0 / invPos.Length;
@@ -1462,9 +1491,9 @@ public partial class FormDiffractionSimulator : Form
         labelTwoThetaDeg.Text = $"2θ: {twoThetaDeg:g4}°";
         labelTwoThetaRad.Text = $"2θ: {(twoThetaRad < 0.1 ? $"{twoThetaRad * 1000:g4} mrad" : $"{twoThetaRad:g4} rad")}";
 
-        if (panelMain.Controls.GetChildIndex(graphicsBox) != 0 && e.X > tabControl.Width || e.Y > tabControl.Height - 20)
+        if (splitContainer1.Panel1.Controls.GetChildIndex(graphicsBox) != 0 && e.X > tabControl.Width || e.Y > tabControl.Height - 20)
         {
-            graphicsBox.BringToFront();
+            splitContainer1.BringToFront();
             graphicsBox.Refresh();
         }
 
@@ -2382,4 +2411,134 @@ public partial class FormDiffractionSimulator : Form
 
     #endregion
 
+    private void checkBoxReciprocalSpace_CheckedChanged(object sender, EventArgs e)
+    {
+        splitContainer1.Panel2Collapsed = !checkBoxReciprocalSpace.Checked;
+    }
+
+
+    private void Draw3D()
+    {
+       
+        var r = EwaldRadius;
+        var ewaldCenter = new Vector3D(0, 0, r);
+
+
+        if (glControl == null || splitContainer1.Panel2Collapsed) return;
+        glControl.DeleteAllObjects();
+
+        var glObjects = new List<GLObject>();
+        Color color10 = Color.Black, color90 = Color.Black;
+
+        List<Vector3D> gVector;
+
+        gVector = formMain.Crystal.VectorOfG.ToList();
+
+        var maxAngle = Math.Asin(Math.Sqrt(gVector.Max(g => g.Length2)) / 2 / r) * 2;
+        var shift = new V3(0, 0, -r * (1 - Math.Cos(maxAngle)) / 2);
+        #region エワルド球の描画
+        if (checkBoxShowEwaldSphere.Checked)
+        {
+            int div1 = 45, div2 = 60;
+            var sin1 = Enumerable.Range(0, div1).ToList().Select(n => Math.Sin(maxAngle / div1 * n)).ToList();
+            var cos1 = Enumerable.Range(0, div1).ToList().Select(n => Math.Cos(maxAngle / div1 * n)).ToList();
+            var rot = Enumerable.Range(0, div2 + 1).ToList().Select(n => Matrix3D.Rot(new V3(0, 0, 1), 2 * Math.PI * n / div2)).ToList();
+
+            var listTriangles = new List<Triangle>();
+            var listDisks = new List<Disk>();
+            var listLines = new List<Lines>();
+
+            for (int j = 1; j < div1; j++)
+            {
+                var mat = new Material(Color.Gray, ((float)(div1 - j) / div1 + 0.1f) / 1.1f);
+                if (j % 5 == 0)
+                    listDisks.Add(new Disk(new V3(0, 0, r * (1 - cos1[j])) + shift, new V3(0, 0, 1), r * sin1[j], 1f, mat, DrawingMode.Edges, 90));
+
+                V3 v1 = new V3(r * sin1[j - 1], 0, r * (1 - cos1[j - 1])) + shift, v2 = new V3(r * sin1[j], 0, r * (1 - cos1[j])) + shift;
+                for (int i = 0; i < div2; i++)
+                {
+                    listTriangles.Add(new Triangle(rot[i] * v1, rot[i] * v2, rot[i + 1] * v2, mat, DrawingMode.Surfaces));
+                    if (j != 1)
+                        listTriangles.Add(new Triangle(rot[i] * v1, rot[i + 1] * v1, rot[i + 1] * v2, mat, DrawingMode.Surfaces));
+
+                    if (i % 5 == 0)
+                        listLines.Add(new Lines(new V3[] { rot[i] * v1, rot[i] * v2 }, 1f, mat));
+                }
+            }
+            glObjects.AddRange(listTriangles);
+            glObjects.AddRange(listDisks);
+            glObjects.AddRange(listLines);
+        }
+        #endregion
+
+        #region 逆格子点の描画
+        var sphereList = new List<Sphere>();
+        var textList = new List<TextObject>();
+        
+        var maxF = gVector.Max(g => g.F.MagnitudeSquared());
+        sphereList.Add(new Sphere(new V3(0, 0, 0) + shift, 0.4, new Material(Color.Red.ToArgb(), 1), DrawingMode.Surfaces));
+        
+        foreach (var g in gVector.Where(g => g.Flag1))
+        {
+            var vec = formMain.Crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
+
+            //エワルド球面からの距離を透明度と色に反映  距離/半径が0.5以上のとき透明度ゼロ   
+            double dev = Math.Abs((vec - ewaldCenter).Length - r);
+            var trans = dev / r < 0.25 ? (float)(1 - dev / r * 4) : 0;
+            var col = dev < numericBoxSpotRadius.Value ?
+                Miscellaneous.BlendColor(Color.Gray, Color.Yellow, dev / numericBoxSpotRadius.Value) :
+                Color.Gray;
+
+            //逆格子点（構造因子の二乗の1/3状の半径）
+            if (g.F.MagnitudeSquared() > maxF * 0.001 && trans != 0)
+            {
+                var radius = Math.Pow(g.F.MagnitudeSquared() / maxF, 1.0 / 3.0) * 0.4;
+                sphereList.Add(new Sphere(vec.ToOpenTK() + shift, radius, new Material(col, trans), DrawingMode.Surfaces));
+                if (checkBoxShowIndices.Checked && dev < numericBoxSpotRadius.Value)
+                    textList.Add(new TextObject(g.Text, 9f, vec.ToOpenTK() + shift, radius + 1, false, new Material(Color.Black)));
+            }
+        }
+        glObjects.AddRange(sphereList);
+        glObjects.AddRange(textList);
+        #endregion
+
+        
+        glControl.AddObjects(glObjects);
+        glControl.Refresh();
+    }
+
+    private void button3_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void checkBoxShowEwaldSphere_CheckedChanged(object sender, EventArgs e)
+    {
+        Draw3D();
+    }
+
+    private void buttonTopLeft_Click(object sender, EventArgs e)
+    {
+        var v = (sender as Button).Name switch
+        {
+            "buttonTopRight" => new Vector3DBase(-1, 1, 0),
+            "buttonRight" => new Vector3DBase(0, 1, 0),
+            "buttonBottomRight" => new Vector3DBase(1, 1, 0),
+            "buttonBottom" => new Vector3DBase(1, 0, 0),
+            "buttonBottomLeft" => new Vector3DBase(1, -1, 0),
+            "buttonLeft" => new Vector3DBase(0, -1, 0),
+            "buttonTopLeft" => new Vector3DBase(-1, -1, 0),
+            "buttonTop" => new Vector3DBase(-1, 0, 0),
+            "buttonClock" => new Vector3DBase(0, 0, -1),
+            "buttonAntiClock" => new Vector3DBase(0, 0, 1),
+            _ => new Vector3DBase(0, 0, 1)
+        };
+        var rot = Matrix3D.Rot(v, numericBoxStep.RadianValue);
+        glControl.WorldMatrix *= new Matrix4d(rot.ToMatrix());
+    }
+
+    private void buttonResetAngle_Click(object sender, EventArgs e)
+    {
+        glControl.WorldMatrix = Matrix4d.Identity;
+    }
 }

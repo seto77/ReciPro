@@ -160,6 +160,7 @@ public partial class FormMain : Form
     private GLControlAlpha glControlAxes;
 
     public bool DisableOpenGL { get => disableOpneGLToolStripMenuItem.Checked; set => disableOpneGLToolStripMenuItem.Checked = value; }
+    public bool DisableTextRendering { get => toolStripMenuItemDisableTextRendering.Checked; set => toolStripMenuItemDisableTextRendering.Checked = value; }
     public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
     public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
     public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
@@ -212,6 +213,7 @@ public partial class FormMain : Form
             //}
             Registry(Reg.Mode.Read);
         }
+
 
         InitializeComponent();
 
@@ -271,6 +273,7 @@ public partial class FormMain : Form
             DisableOpenGL = true;
             Registry(Reg.Mode.Write);
         }
+        GLControlAlpha.DisableTextRendering = DisableTextRendering;
 
         #region ここでglControlコントロールを追加. Mac環境の対応のため。
         if (!disableOpneGLToolStripMenuItem.Checked)
@@ -498,10 +501,11 @@ public partial class FormMain : Form
         Reg.RW<Rectangle>(key, mode, this, "Bounds");
         WindowLocation.Adjust(this);
 
+        Reg.RW<bool>(key, mode, this, "DisableOpenGL");
+        Reg.RW<bool>(key, mode, this, "DisableTextRendering");
+
         if (commonDialog == null)
             return;
-
-        Reg.RW<bool>(key, mode, this, "DisableOpenGL");
 
         Reg.RW<bool>(key, mode, commonDialog, "AutomaticallyClose");
 

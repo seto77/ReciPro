@@ -62,7 +62,7 @@ vec4 setColor()
 	vec3 c3;
 	float a;
 	//Without texture
-	if (fWithTexture < 0)
+	if (fWithTexture < 0.0)
 	{
 		// Normalize the incoming N, L, and V vectors
 		vec3 normal = normalize(fNormal);

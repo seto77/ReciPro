@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -40,6 +41,16 @@ public struct FastSpinLock
 
 public static class Miscellaneous
 {
+    public static Color BlendColor(Color col1, Color col2, double ratio)
+    {
+        var r = ratio > 1 ? 1 : ratio < 0 ? 0 : ratio;
+        return Color.FromArgb(
+            (byte)(col1.A * r + col2.A * (1 - r)), 
+            (byte)(col1.R * r + col2.R * (1 - r)), 
+            (byte)(col1.G * r + col2.G * (1 - r)), 
+            (byte)(col1.B * r + col2.B * (1 - r)));
+    }
+
 
     /// <summary>
     /// 数字に stとかthみたいな文字を追加した文字列で返す
@@ -79,6 +90,9 @@ public static class Miscellaneous
     private static bool isDecimalPointCommaFlag = true;
     private static bool isDecimalPointComma = false;
 
+    /// <summary>
+    /// 小数点がカンマかどうかを判定する
+    /// </summary>
     public static bool IsDecimalPointComma
     {
         get

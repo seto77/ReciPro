@@ -720,7 +720,7 @@
             colorControlCellPlane.Argb = -4144960;
             colorControlCellPlane.Blue = 192;
             colorControlCellPlane.BlueF = 0.7529412F;
-            colorControlCellPlane.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlCellPlane.BoxSize = new System.Drawing.Size(17, 17);
             colorControlCellPlane.Color = System.Drawing.Color.FromArgb(192, 192, 192);
             colorControlCellPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlane.Green = 192;
@@ -745,7 +745,7 @@
             colorControlCellPlaneA.Argb = -65536;
             colorControlCellPlaneA.Blue = 0;
             colorControlCellPlaneA.BlueF = 0F;
-            colorControlCellPlaneA.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlCellPlaneA.BoxSize = new System.Drawing.Size(17, 17);
             colorControlCellPlaneA.Color = System.Drawing.Color.FromArgb(255, 0, 0);
             colorControlCellPlaneA.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlaneA.Green = 0;
@@ -762,7 +762,7 @@
             colorControlCellPlaneB.Argb = -16744448;
             colorControlCellPlaneB.Blue = 0;
             colorControlCellPlaneB.BlueF = 0F;
-            colorControlCellPlaneB.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlCellPlaneB.BoxSize = new System.Drawing.Size(17, 17);
             colorControlCellPlaneB.Color = System.Drawing.Color.FromArgb(0, 128, 0);
             colorControlCellPlaneB.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlaneB.Green = 128;
@@ -779,7 +779,7 @@
             colorControlCellPlaneC.Argb = -16776961;
             colorControlCellPlaneC.Blue = 255;
             colorControlCellPlaneC.BlueF = 1F;
-            colorControlCellPlaneC.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlCellPlaneC.BoxSize = new System.Drawing.Size(17, 17);
             colorControlCellPlaneC.Color = System.Drawing.Color.FromArgb(0, 0, 255);
             colorControlCellPlaneC.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlaneC.Green = 0;
@@ -836,7 +836,7 @@
             colorControlCellEdge.Argb = -8355712;
             colorControlCellEdge.Blue = 128;
             colorControlCellEdge.BlueF = 0.5019608F;
-            colorControlCellEdge.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlCellEdge.BoxSize = new System.Drawing.Size(17, 17);
             colorControlCellEdge.Color = System.Drawing.Color.FromArgb(128, 128, 128);
             colorControlCellEdge.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdge.Green = 128;
@@ -863,7 +863,7 @@
             colorControlCellEdgeA.Argb = -65536;
             colorControlCellEdgeA.Blue = 0;
             colorControlCellEdgeA.BlueF = 0F;
-            colorControlCellEdgeA.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlCellEdgeA.BoxSize = new System.Drawing.Size(17, 17);
             colorControlCellEdgeA.Color = System.Drawing.Color.FromArgb(255, 0, 0);
             colorControlCellEdgeA.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdgeA.Green = 0;
@@ -880,7 +880,7 @@
             colorControlCellEdgeB.Argb = -16744448;
             colorControlCellEdgeB.Blue = 0;
             colorControlCellEdgeB.BlueF = 0F;
-            colorControlCellEdgeB.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlCellEdgeB.BoxSize = new System.Drawing.Size(17, 17);
             colorControlCellEdgeB.Color = System.Drawing.Color.FromArgb(0, 128, 0);
             colorControlCellEdgeB.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdgeB.Green = 128;
@@ -897,7 +897,7 @@
             colorControlCellEdgeC.Argb = -16776961;
             colorControlCellEdgeC.Blue = 255;
             colorControlCellEdgeC.BlueF = 1F;
-            colorControlCellEdgeC.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlCellEdgeC.BoxSize = new System.Drawing.Size(17, 17);
             colorControlCellEdgeC.Color = System.Drawing.Color.FromArgb(0, 0, 255);
             colorControlCellEdgeC.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdgeC.Green = 0;
@@ -1500,7 +1500,7 @@
             colorControlLabelColor.Argb = -16777216;
             colorControlLabelColor.Blue = 0;
             colorControlLabelColor.BlueF = 0F;
-            colorControlLabelColor.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlLabelColor.BoxSize = new System.Drawing.Size(17, 17);
             colorControlLabelColor.Color = System.Drawing.Color.FromArgb(0, 0, 0);
             colorControlLabelColor.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlLabelColor.Green = 0;
@@ -1719,6 +1719,7 @@
             // menuStrip1
             // 
             resources.ApplyResources(menuStrip1, "menuStrip1");
+            menuStrip1.GripMargin = new System.Windows.Forms.Padding(2);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { saveImageToolStripMenuItem, toolToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
             toolTip.SetToolTip(menuStrip1, resources.GetString("menuStrip1.ToolTip"));
@@ -2034,7 +2035,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private Crystallography.Controls.AtomCoordinateTable atomCoordinateTable1;
+        private AtomCoordinateTable atomCoordinateTable1;
         private System.Windows.Forms.ToolStripMenuItem saveMainToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveLegendToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAxesToolStripMenuItem;
@@ -2048,14 +2049,14 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonLegend;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 
-        private Crystallography.Controls.NumericBox numericBoxCellTransrationC;
-        private Crystallography.Controls.NumericBox numericBoxCellTransrationB;
-        private Crystallography.Controls.NumericBox numericBoxCellTransrationA;
+        private NumericBox numericBoxCellTransrationC;
+        private NumericBox numericBoxCellTransrationB;
+        private NumericBox numericBoxCellTransrationA;
 
 
         private System.Windows.Forms.CheckBox checkBoxClipObjects;
         private System.Windows.Forms.CheckBox checkBoxShowBoundPlanes;
-        private Crystallography.Controls.NumericBox numericBoxBoundPlanesOpacity;
+        private NumericBox numericBoxBoundPlanesOpacity;
         private System.Windows.Forms.TabPage tabPageBounds;
         private System.Windows.Forms.CheckBox checkBoxHideAllAtoms;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
@@ -2070,12 +2071,12 @@
         private System.Windows.Forms.TabControl tabControlBoundOption;
         private System.Windows.Forms.TabPage tabPageBoundUnitcell;
         private System.Windows.Forms.TabPage tabPageBoundPlane;
-        private Crystallography.Controls.NumericBox numericBoxCRange;
-        private Crystallography.Controls.NumericBox numericBoxBRange;
-        private Crystallography.Controls.NumericBox numericBoxARange;
-        private Crystallography.Controls.NumericBox numericBoxCCenter;
-        private Crystallography.Controls.NumericBox numericBoxBCenter;
-        private Crystallography.Controls.NumericBox numericBoxACenter;
+        private NumericBox numericBoxCRange;
+        private NumericBox numericBoxBRange;
+        private NumericBox numericBoxARange;
+        private NumericBox numericBoxCCenter;
+        private NumericBox numericBoxBCenter;
+        private NumericBox numericBoxACenter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -2099,15 +2100,15 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabelStatusRendering;
         private System.Windows.Forms.Button buttonCenter2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private Crystallography.Controls.NumericBox numericBoxLatticePlaneOpacity;
-        private Crystallography.Controls.ColorControl colorControlCellPlane;
-        private Crystallography.Controls.ColorControl colorControlCellEdge;
-        private Crystallography.Controls.NumericBox numericBoxCellPlaneAlpha;
+        private NumericBox numericBoxLatticePlaneOpacity;
+        private ColorControl colorControlCellPlane;
+        private ColorControl colorControlCellEdge;
+        private NumericBox numericBoxCellPlaneAlpha;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLegend;
         private System.Windows.Forms.TabPage tabPageMisc;
-        private Crystallography.Controls.NumericBox numericBoxLightSize;
-        private Crystallography.Controls.NumericBox numericBoxAxesSize;
-        private Crystallography.Controls.NumericBox numericBoxLegendSize;
+        private NumericBox numericBoxLightSize;
+        private NumericBox numericBoxAxesSize;
+        private NumericBox numericBoxLegendSize;
         private System.Windows.Forms.Button buttonSetRange4;
         private System.Windows.Forms.ToolStripMenuItem toolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iLikeVESTAToolStripMenuItem;
@@ -2125,8 +2126,8 @@
         private System.Windows.Forms.ComboBox comboBoxProjectionMode;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox comboBoxTransparency;
-        private Crystallography.Controls.TrackBarAdvanced trackBarAdvancedDepthCueingNear;
-        private Crystallography.Controls.TrackBarAdvanced trackBarAdvancedDepthCueingFar;
+        private TrackBarAdvanced trackBarAdvancedDepthCueingNear;
+        private TrackBarAdvanced trackBarAdvancedDepthCueingFar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonSetRange0;
@@ -2134,17 +2135,17 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonResetRotation;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox checkBoxLabelWhiteEdge;
-        private Crystallography.Controls.NumericBox numericBoxLabelSize;
-        private Crystallography.Controls.ColorControl colorControlLabelColor;
+        private NumericBox numericBoxLabelSize;
+        private ColorControl colorControlLabelColor;
         private System.Windows.Forms.RadioButton radioButtonUseMaterialColor;
         private System.Windows.Forms.RadioButton radioButtonLabelUseFixedColor;
         private System.Windows.Forms.CheckBox checkBoxShowLabel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripButton toolStripButtonLikeVesta;
         private System.Windows.Forms.TrackBar trackBarCellEdgeWidth;
-        private Crystallography.Controls.ColorControl colorControlCellEdgeC;
-        private Crystallography.Controls.ColorControl colorControlCellEdgeB;
-        private Crystallography.Controls.ColorControl colorControlCellEdgeA;
+        private ColorControl colorControlCellEdgeC;
+        private ColorControl colorControlCellEdgeB;
+        private ColorControl colorControlCellEdgeA;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.RadioButton radioButtonCellEdgeColorAll;
         private System.Windows.Forms.RadioButton radioButtonCellEdgeColorEach;
@@ -2152,9 +2153,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.RadioButton radioButtonCellPlaneColorAll;
         private System.Windows.Forms.RadioButton radioButtonCellPlaneColorEach;
-        private Crystallography.Controls.ColorControl colorControlCellPlaneA;
-        private Crystallography.Controls.ColorControl colorControlCellPlaneB;
-        private Crystallography.Controls.ColorControl colorControlCellPlaneC;
+        private ColorControl colorControlCellPlaneA;
+        private ColorControl colorControlCellPlaneB;
+        private ColorControl colorControlCellPlaneC;
         public NumericBox numericBoxClientHeight;
         public NumericBox numericBoxClientWidth;
         private System.Windows.Forms.ToolStripMenuItem saveMovieToolStripMenuItem;
