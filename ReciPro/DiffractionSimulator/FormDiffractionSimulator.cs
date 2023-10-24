@@ -1406,7 +1406,7 @@ public partial class FormDiffractionSimulator : Form
             var gVector = formMain.Crystal.VectorOfG;
             int num = -1;
             var minLength = double.PositiveInfinity;
-            for (int i = 0; i < gVector.Count; i++)
+            for (int i = 0; i < gVector.Length; i++)
             {
                 if (minLength > (gVector[i] - inversePos).Length2)
                 {

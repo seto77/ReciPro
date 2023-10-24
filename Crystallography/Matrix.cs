@@ -830,14 +830,11 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
         d = Math.Sqrt(X * X + Y * Y + Z * Z);
     }
 
-    public Vector3D(in double x, in double y, in double z, in bool IsCalcD)
+    public Vector3D(in double x, in double y, in double z, in bool IsCalcD = true)
     {
         X = x; Y = y; Z = z;
         if (IsCalcD)
-        {
-            //d2 = X * X + Y * Y + Z * Z;
             d = Math.Sqrt(X * X + Y * Y + Z * Z);
-        }
     }
 
     public Vector3D(double[] v)

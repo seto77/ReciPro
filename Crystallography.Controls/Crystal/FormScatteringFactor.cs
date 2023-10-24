@@ -101,18 +101,18 @@ namespace Crystallography.Controls
 
             c.SetVectorOfG((double)numericUpDownThresholdD.Value / 10, waveLengthControl1.WaveSource, false);
 
-            c.VectorOfG.Sort((g1, g2) => g2.d.CompareTo(g1.d));
+            Array.Sort(c.VectorOfG,(g1, g2) => g2.d.CompareTo(g1.d));
 
-            if (c.VectorOfG.Count == 0) return;
+            if (c.VectorOfG.Length == 0) return;
 
             var max = c.VectorOfG.Max(g => g.RawIntensity);
-            for (int i = 0; i < c.VectorOfG.Count; i++)
+            for (int i = 0; i < c.VectorOfG.Length; i++)
                 c.VectorOfG[i].RelativeIntensity = c.VectorOfG[i].RawIntensity / max;
 
             if (checkBoxBragBrentano.Checked)
             {
                 max = double.NegativeInfinity;
-                for (int i = 0; i < c.VectorOfG.Count; i++)
+                for (int i = 0; i < c.VectorOfG.Length; i++)
                 {
                     Vector3D g = c.VectorOfG[i];
                     double twoTheta = 2 * Math.Asin(g.Length * waveLengthControl1.WaveLength / 2);
@@ -129,7 +129,7 @@ namespace Crystallography.Controls
                     }
                 }
 
-                for (int i = 0; i < c.VectorOfG.Count; i++)
+                for (int i = 0; i < c.VectorOfG.Length; i++)
                     c.VectorOfG[i].RelativeIntensity = c.VectorOfG[i].RawIntensity / max;
             }
 

@@ -953,7 +953,7 @@ public partial class FormSpotIDV2 : Form
             Detector.WaveSource = waveLengthControl1.Property.Source;//Noneから元に戻す
 
             vec.Add(new List<Vector3D>());
-            for (int i = 0; i < c.VectorOfG.Count; i++)
+            for (int i = 0; i < c.VectorOfG.Length; i++)
                 vec[j].Add(Deep.Copy(c.VectorOfG[i]));
         }
         var obsSpots = dataSet.DataTableSpot.Spots;

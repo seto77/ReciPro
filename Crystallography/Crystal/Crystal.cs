@@ -148,7 +148,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Vector3D> VectorOfG = new();
+    public Vector3D[] VectorOfG = Array.Empty<Vector3D>();
 
     /// <summary>
     /// 菊池線ベクトル
@@ -1264,10 +1264,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         var maxGnum = 250000;
         var zeroKey = (255 << 20) + (255 << 10) + 255;
         var gHash = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
-        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5)) { (zeroKey, 0, 0, 0, 0)};
+        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5)) { (zeroKey, 0, 0, 0, 0) };
         int start = 0, end = 1;
         var outer = CollectionsMarshal.AsSpan(gList)[start..end];
-        while (gList.Count < maxGnum && outer.Length >0)
+        while (gList.Count < maxGnum && outer.Length > 0)
         {
             foreach (var (key1, _, _, _, _) in outer)
             {
@@ -1286,34 +1286,33 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             start += end;
             outer = CollectionsMarshal.AsSpan(gList)[start..];
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
-            for (end = 0; end < outer.Length && outer[end].len < outer[0].len + shift * 2; end++)  
+            for (end = 0; end < outer.Length && outer[end].len < outer[0].len + shift * 2; end++)
                 ;
             outer = outer[..end];
         }
         gList.RemoveAt(0);
-        
-        var gArray = new Vector3D[gList.Count * 2];
+
+        VectorOfG = new Vector3D[gList.Count * 2];
         Parallel.For(0, gList.Count, i =>
         {
             var (key, x, y, z, glen) = gList[i];
             var (h, k, l) = decomposeKey(key);
             var extinction = Symmetry.CheckExtinctionRule(h, k, l);
-            gArray[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, Extinction = extinction, Text = $"{h} {k} {l}" };
-            gArray[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };
+            VectorOfG[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, Extinction = extinction, Text = $"{h} {k} {l}" };
+            VectorOfG[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };
         });
 
         if (wavesource != WaveSource.None)//強度計算する場合 250msくらい
         {
-            Parallel.ForEach(gArray, _g =>
+            Parallel.ForEach(VectorOfG, _g =>
             {
                 _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;
                 _g.RawIntensity = _g.F.MagnitudeSquared();// _g.F.Magnitude2();
             });
 
-            var maxIntensity = gArray.Max(v => v.RawIntensity);
-            Parallel.ForEach(gArray, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
+            var maxIntensity = VectorOfG.Max(v => v.RawIntensity);
+            Parallel.ForEach(VectorOfG, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
         }
-        VectorOfG = gArray.ToList(); //最後に値を代入
     }
 
     #endregion

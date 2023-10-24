@@ -201,7 +201,7 @@ namespace Crystallography
                 length = max;
             }
             crystal.SetVectorOfG(detector.WaveLength / 2 / Math.Sin(Math.Atan(length / detector.CameraLength) / 2.0), detector.WaveSource);
-            if (crystal.VectorOfG.Count == 0)
+            if (crystal.VectorOfG.Length == 0)
                 return;
 
             var temp = new List<Vector3D>();
@@ -218,11 +218,11 @@ namespace Crystallography
                         temp.Add(g);
                 }
 
-            crystal.VectorOfG = temp;
+            crystal.VectorOfG = temp.ToArray();
 
-            G = new (double X, double Y, double Z, double Hk1, double Hk2, double Hk3, double Intensity, double Intensity2)[crystal.VectorOfG.Count];
+            G = new (double X, double Y, double Z, double Hk1, double Hk2, double Hk3, double Intensity, double Intensity2)[crystal.VectorOfG.Length];
 
-            for (int k = 0; k < crystal.VectorOfG.Count; k++)
+            for (int k = 0; k < crystal.VectorOfG.Length; k++)
             {
                 var vec = applyTiltMatrix ?
                     TiltMatrix * crystal.VectorOfG[k] :
