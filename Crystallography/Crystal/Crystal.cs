@@ -1263,72 +1263,35 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         var maxGnum = 250000;
         var zeroKey = (255 << 20) + (255 << 10) + 255;
-        var outer = new List<(int key, double len)>() { (zeroKey, 0) };
+        //var outer = new List<(int key, double len)>() { (zeroKey, 0) };
         var gHash = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
-        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5));
-        var minG = 0.0;
-        //var thread = 16;
-        
-        while (gList.Count < maxGnum && outer.Count >0 && (minG = outer.Min(o => o.len)) < gMax)
+        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5)) { (zeroKey, 0, 0, 0, 0)};
+        int start = 0, end = 1;
+        var outer = CollectionsMarshal.AsSpan(gList)[start..end];
+        while (gList.Count < maxGnum && outer.Length >0)
         {
-            var end = outer.FindLastIndex(o => o.len < minG + shift * 2) + 1;
-        
-            foreach (var (key1, _) in CollectionsMarshal.AsSpan(outer)[..end])
+            foreach (var (key1, _, _, _, _) in outer)
             {
                 var (h1, k1, l1) = decomposeKey(key1);
-                foreach ((int h2, int k2, int l2) in directions)
+                foreach (var (h2, k2, l2) in directions)
                 {
                     int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
                     if (key2 > 0 && gHash.Add(key2))
                     {
                         double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ, len2 = x * x + y * y + z * z;
                         if (len2 < gMax2)
-                        {
-                            var len = Math.Sqrt(len2);
-                            gList.Add((key2, x, y, z, len));
-                            outer.Add((key2, len));
-                        }
+                            gList.Add((key2, x, y, z, Math.Sqrt(len2)));
                     }
                 }
             }
-
-            #region 並列化したコード 殆ど速度は変わらず
-            //var gListTmp = new List<(int key, double x, double y, double z, double len)>[thread];
-            //var gHashTmp = new HashSet<int>[thread];
-            //Parallel.For(0, thread, t =>
-            //{
-            //    gListTmp[t] = new List<(int key, double x, double y, double z, double len)>();
-            //    gHashTmp[t] = new HashSet<int>();
-            //    var test = CollectionsMarshal.AsSpan(outer)[(end * t / thread)..Math.Min(end * (t + 1) / thread, end)];
-            //    foreach (var (key1, _) in CollectionsMarshal.AsSpan(outer)[(end * t / thread)..Math.Min(end * (t + 1) / thread, end)])
-            //    {
-            //        var (h1, k1, l1) = decomposeKey(key1);
-            //        foreach ((int h2, int k2, int l2) in directions)
-            //        {
-            //            int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
-            //            if (key2 > 0 && gHashTmp[t].Add(key2))
-            //            {
-            //                double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
-            //                var len2 = x * x + y * y + z * z;
-            //                if (len2 < gMax2)
-            //                    gListTmp[t].Add((key2, x, y, z, Math.Sqrt(len2)));
-            //            }
-            //        }
-            //    }
-            //});
-            //for (int t = 0; t < thread; t++)
-            //    foreach (var e in gListTmp[t])
-            //        if (gHash.Add(e.key))
-            //        {
-            //            gList.Add(e);
-            //            outer.Add((e.key, e.len));
-            //        }
-            #endregion
-
-            outer.RemoveRange(0, end);
+            start += end;
+            outer = CollectionsMarshal.AsSpan(gList)[start..];
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
+            for (end = 0; end < outer.Length && outer[end].len < outer[0].len + shift * 2; end++)  ;
+            outer = outer[..end];
         }
-
+        gList.RemoveAt(0);
+        
         var gArray = new Vector3D[gList.Count * 2];
         Parallel.For(0, gList.Count, i =>
         {
