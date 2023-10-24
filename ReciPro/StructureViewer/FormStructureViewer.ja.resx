@@ -130,6 +130,43 @@
   <data name="flowLayoutPanelLegend.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 494</value>
   </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>712, 261</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>712, 759</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>494</value>
+  </data>
+  <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 7.2000003pt</value>
+  </data>
+  <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 230</value>
+  </data>
+  <data name="tabPageBounds.Text" xml:space="preserve">
+    <value>描画範囲</value>
+  </data>
+  <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 7.2000003pt</value>
+  </data>
+  <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="tabControlBoundOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 178</value>
+  </data>
+  <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>653, 170</value>
+  </data>
   <data name="buttonSetRange2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -298,20 +335,14 @@
   <data name="label1.Text" xml:space="preserve">
     <value>中心</value>
   </data>
-  <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>653, 170</value>
   </data>
-  <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>653, 121</value>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 203</value>
   </data>
-  <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.2000003pt</value>
-  </data>
-  <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="tabControlBoundOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 178</value>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 27</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -370,11 +401,8 @@
   <data name="checkBoxHideAllAtoms.Text" xml:space="preserve">
     <value>全ての原子を隠す</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 203</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 27</value>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 25</value>
   </data>
   <data name="radioButtonBoundUnitCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -403,27 +431,6 @@
   <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 25</value>
-  </data>
-  <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
-  </data>
-  <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
-  </data>
-  <data name="tabPageBounds.Text" xml:space="preserve">
-    <value>描画範囲</value>
-  </data>
-  <data name="labelMessage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt, style=Bold</value>
-  </data>
-  <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 30</value>
-  </data>
   <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
   </data>
@@ -435,6 +442,12 @@
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>原子情報</value>
+  </data>
+  <data name="labelMessage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt, style=Bold</value>
+  </data>
+  <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 30</value>
   </data>
   <data name="tabPageBond.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
@@ -448,6 +461,18 @@
   <data name="tabPageBond.Text" xml:space="preserve">
     <value>結合と多面体</value>
   </data>
+  <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 7.2000003pt</value>
+  </data>
+  <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 230</value>
+  </data>
+  <data name="tabPageUnitCell.Text" xml:space="preserve">
+    <value>単位格子</value>
+  </data>
   <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -456,6 +481,15 @@
   </data>
   <data name="checkBoxUnitCell.Text" xml:space="preserve">
     <value>単位格子を表示</value>
+  </data>
+  <data name="groupBoxShowUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 7.2000003pt</value>
+  </data>
+  <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>698, 222</value>
+  </data>
+  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>422, 27</value>
   </data>
   <data name="radioButtonCellPlaneColorAll.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -562,8 +596,8 @@
   <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
     <value />
   </data>
-  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>422, 27</value>
+  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>461, 26</value>
   </data>
   <data name="radioButtonCellEdgeColorAll.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -657,9 +691,6 @@
   </data>
   <data name="trackBarCellEdgeWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>371, 3</value>
-  </data>
-  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>461, 26</value>
   </data>
   <data name="numericBoxCellTransrationC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -824,23 +855,23 @@
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 18</value>
   </data>
-  <data name="groupBoxShowUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
   </data>
-  <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 222</value>
-  </data>
-  <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
-  </data>
-  <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageLatticePlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
   </data>
-  <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>704, 230</value>
   </data>
-  <data name="tabPageUnitCell.Text" xml:space="preserve">
-    <value>単位格子</value>
+  <data name="tabPageLatticePlane.Text" xml:space="preserve">
+    <value>結晶格子面</value>
+  </data>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 197</value>
+  </data>
+  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>698, 29</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -860,30 +891,6 @@
   <data name="numericBoxLatticePlaneOpacity.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 197</value>
-  </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 29</value>
-  </data>
-  <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
-  </data>
-  <data name="tabPageLatticePlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
-  </data>
-  <data name="tabPageLatticePlane.Text" xml:space="preserve">
-    <value>結晶格子面</value>
-  </data>
-  <data name="atomCoordinateTable1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
-  </data>
   <data name="tabPageCoordinateInfromatin.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
   </data>
@@ -896,8 +903,29 @@
   <data name="tabPageCoordinateInfromatin.Text" xml:space="preserve">
     <value>配位情報</value>
   </data>
+  <data name="atomCoordinateTable1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 230</value>
+  </data>
+  <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 7.2000003pt</value>
+  </data>
+  <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPageInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 230</value>
+  </data>
+  <data name="tabPageInformation.Text" xml:space="preserve">
+    <value>情報</value>
+  </data>
   <data name="textBoxInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>698, 188</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>698, 24</value>
   </data>
   <data name="numericBoxClientWidth.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -944,8 +972,11 @@
   <data name="numericBoxClientHeight.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 24</value>
+  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 215</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>698, 12</value>
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 6.4pt</value>
@@ -971,23 +1002,17 @@
   <data name="labelOpenGLversion.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 12</value>
   </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 215</value>
-  </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 12</value>
-  </data>
-  <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
-  </data>
-  <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageProjection.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
   </data>
-  <data name="tabPageInformation.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageProjection.Size" type="System.Drawing.Size, System.Drawing">
     <value>704, 230</value>
   </data>
-  <data name="tabPageInformation.Text" xml:space="preserve">
-    <value>情報</value>
+  <data name="tabPageProjection.Text" xml:space="preserve">
+    <value>投影</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>投影中心</value>
   </data>
   <data name="numericBoxProjectionCenterX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -1052,26 +1077,23 @@
   <data name="radioButtonProjectionCenter2.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 22</value>
   </data>
-  <data name="groupBox7.Text" xml:space="preserve">
-    <value>投影中心</value>
-  </data>
-  <data name="comboBoxProjectionMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 26</value>
-  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>投影方法</value>
   </data>
-  <data name="comboBoxTransparency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 26</value>
-  </data>
-  <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBoxProjectionMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 26</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
     <value>386, 61</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>透明度の計算方法</value>
+  </data>
+  <data name="comboBoxTransparency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 26</value>
+  </data>
+  <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxDepthFadingOut.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 22</value>
@@ -1082,14 +1104,14 @@
   <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>描画品質</value>
+  </data>
   <data name="comboBoxRenderignQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 26</value>
   </data>
   <data name="comboBoxRenderignQuality.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>描画品質</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
@@ -1139,14 +1161,20 @@
   <data name="label5.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="tabPageProjection.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
   </data>
-  <data name="tabPageProjection.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
     <value>704, 230</value>
   </data>
-  <data name="tabPageProjection.Text" xml:space="preserve">
-    <value>投影</value>
+  <data name="tabPageMisc.Text" xml:space="preserve">
+    <value>その他</value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 66</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>結合原子</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1157,11 +1185,8 @@
   <data name="checkBoxShowBondedAtoms.Text" xml:space="preserve">
     <value>境界外ではあるが、結合している原子を表示</value>
   </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>301, 66</value>
-  </data>
-  <data name="groupBox6.Text" xml:space="preserve">
-    <value>結合原子</value>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>ラベル</value>
   </data>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -1263,8 +1288,8 @@
     <value>(凡例をクリックして
 個別に設定可能)</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>ラベル</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>光源, 結晶軸, 凡例の設定</value>
   </data>
   <data name="checkBoxGroupByElement.Location" type="System.Drawing.Point, System.Drawing">
     <value>171, 53</value>
@@ -1365,30 +1390,11 @@
   <data name="numericBoxLightSize.ToolTip1" xml:space="preserve">
     <value />
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>光源, 結晶軸, 凡例の設定</value>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 787</value>
   </data>
-  <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
-  </data>
-  <data name="tabPageMisc.Text" xml:space="preserve">
-    <value>その他</value>
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 261</value>
-  </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 759</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>494</value>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>712, 25</value>
   </data>
   <data name="toolStripButtonCrystalAxes.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1507,14 +1513,26 @@
   <data name="toolStripButtonResetRotation.Text" xml:space="preserve">
     <value>角度をリセット</value>
   </data>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 787</value>
-  </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 25</value>
-  </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>712, 28</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 7.2000003pt</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 22</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="saveImageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 22</value>
+  </data>
+  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
+    <value>画像を保存</value>
   </data>
   <data name="saveMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 22</value>
@@ -1528,11 +1546,11 @@
   <data name="saveLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 22</value>
   </data>
-  <data name="saveImageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="copyToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 22</value>
   </data>
-  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
-    <value>画像を保存</value>
+  <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像をクリップボードにコピー</value>
   </data>
   <data name="copyMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 22</value>
@@ -1546,11 +1564,11 @@
   <data name="copyLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 22</value>
   </data>
-  <data name="copyToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="saveMovieToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 22</value>
   </data>
-  <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像をクリップボードにコピー</value>
+  <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>動画を保存</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 22</value>
@@ -1564,12 +1582,6 @@
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
     <value>結晶軸</value>
   </data>
-  <data name="saveMovieToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
-  </data>
-  <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
-    <value>動画を保存</value>
-  </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>211, 6</value>
   </data>
@@ -1582,20 +1594,17 @@
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 22</value>
   </data>
-  <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
-  </data>
-  <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 22</value>
-  </data>
-  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>ファイル</value>
-  </data>
   <data name="toolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 22</value>
   </data>
   <data name="toolToolStripMenuItem.Text" xml:space="preserve">
     <value>ツール</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 22</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>ショートカットヒント</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>616, 22</value>
@@ -1605,15 +1614,6 @@
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>616, 22</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>ショートカットヒント</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 28</value>
   </data>
   <data name="printPreviewDialog1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

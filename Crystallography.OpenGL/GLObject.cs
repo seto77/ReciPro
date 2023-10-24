@@ -1701,6 +1701,7 @@ public class TextObject : GLObject
     private static readonly (PT, int)[] primitives = new[] { (PT.Quads, 4) };
 
     public int TextureNum = -1;
+    public double Popout = 0;
 
     public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
         : this(text, fontSize, position.ToOpenTK(), popout, whiteEdge, mat) { }
@@ -1715,6 +1716,7 @@ public class TextObject : GLObject
             CircumscribedSphereCenter = new V4d(position, 1);
             ObjectMatrix = new M4f(new V4f(1, 0, 0, 0), new V4f(0, 1, 0, 0), new V4f(0, 0, 1, 0), new V4f(position.ToV3f(), 1));
             ShowClippedSection = false;//クリップ断面は表示しない
+            Popout = popout;
 
             if (dic.TryGetValue((text, fontSize, mat.Argb, whiteEdge), out var obj))//辞書に登録されている場合
             {
@@ -1784,7 +1786,7 @@ public class TextObject : GLObject
                         new Vertex(new V3f(+width / 2f, +height / 2f, (float)popout), new V3f() ,p10),
                         new Vertex(new V3f(+width / 2f, -height / 2f, (float)popout), new V3f() ,p11),
                         new Vertex(new V3f(-width / 2f, -height / 2f, (float)popout), new V3f() ,p01)
-                    };
+                 };
 
                 //辞書に登録
                 dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, Vertices));

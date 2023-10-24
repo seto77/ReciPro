@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ReciPro.FormDiffractionSimulatorDynamicCompression;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
@@ -269,7 +270,8 @@ public partial class FormDiffractionSimulator : Form
             RotationMode = GLControlAlpha.RotationModes.Object,
             Dock = DockStyle.Fill,
             LightPosition = new V3(100, 100, 100),
-            BorderStyle = BorderStyle.Fixed3D
+            BorderStyle = BorderStyle.Fixed3D,
+            BackgroundColor = colorControlBackGround.Color,
         };
         splitContainer1.Panel2.Controls.Add(glControl);
         glControl.BringToFront();
@@ -2416,106 +2418,172 @@ public partial class FormDiffractionSimulator : Form
         splitContainer1.Panel2Collapsed = !checkBoxReciprocalSpace.Checked;
     }
 
-
+    private readonly object lockObj = new();
+    private List<GLObject> ewaldList = new();
+    private (double maxAngle, double ewaldRadius, bool Precession) beforeEwald = (0, 0, false);
     private void Draw3D()
     {
-       
+
         var r = EwaldRadius;
         var ewaldCenter = new Vector3D(0, 0, r);
 
 
         if (glControl == null || splitContainer1.Panel2Collapsed) return;
         glControl.DeleteAllObjects();
+        if (glControl.BackgroundColor != colorControl3D_Background.Color)
+            glControl.BackgroundColor = colorControl3D_Background.Color;
 
         var glObjects = new List<GLObject>();
-        Color color10 = Color.Black, color90 = Color.Black;
+
+        var precession = radioButtonBeamPrecessionXray.Checked;
 
         List<Vector3D> gVector;
 
         gVector = formMain.Crystal.VectorOfG.ToList();
+        gVector.Sort((g1, g2) => g1.Length2.CompareTo(g2.Length2));
+        var maxG = Math.Sqrt(gVector.Max(g => g.Length2)) * 0.75;
+        var maxAngle = precession ? Math.Atan(maxG / r) : Math.Asin(maxG / 2 / r) * 2;
 
-        var maxAngle = Math.Asin(Math.Sqrt(gVector.Max(g => g.Length2)) / 2 / r) * 2;
-        var shift = new V3(0, 0, -r * (1 - Math.Cos(maxAngle)) / 2);
+        var shift = precession ? new V3(0, 0, 0) : new V3(0, 0, -r * (1 - Math.Cos(maxAngle)) / 2);
         #region エワルド球の描画
-        if (checkBoxShowEwaldSphere.Checked)
+        if (checkBox3D_EwaldSphere.Checked)
         {
-            int div1 = 45, div2 = 60;
-            var sin1 = Enumerable.Range(0, div1).ToList().Select(n => Math.Sin(maxAngle / div1 * n)).ToList();
-            var cos1 = Enumerable.Range(0, div1).ToList().Select(n => Math.Cos(maxAngle / div1 * n)).ToList();
-            var rot = Enumerable.Range(0, div2 + 1).ToList().Select(n => Matrix3D.Rot(new V3(0, 0, 1), 2 * Math.PI * n / div2)).ToList();
-
-            var listTriangles = new List<Triangle>();
-            var listDisks = new List<Disk>();
-            var listLines = new List<Lines>();
-
-            for (int j = 1; j < div1; j++)
+            if (beforeEwald != (maxAngle, r, precession))
             {
-                var mat = new Material(Color.Gray, ((float)(div1 - j) / div1 + 0.1f) / 1.1f);
-                if (j % 5 == 0)
-                    listDisks.Add(new Disk(new V3(0, 0, r * (1 - cos1[j])) + shift, new V3(0, 0, 1), r * sin1[j], 1f, mat, DrawingMode.Edges, 90));
+                beforeEwald = (maxAngle, r, precession);
+                ewaldList.Clear();
+                int div1 = 45, div2 = 60;
+                var rot = Enumerable.Range(0, div2 + 1).ToList().Select(n => Matrix3D.Rot(new V3(0, 0, 1), 2 * Math.PI * n / div2)).ToList();
 
-                V3 v1 = new V3(r * sin1[j - 1], 0, r * (1 - cos1[j - 1])) + shift, v2 = new V3(r * sin1[j], 0, r * (1 - cos1[j])) + shift;
-                for (int i = 0; i < div2; i++)
+                //X-ray precessionの時はsinではなくtanで計算することに注意
+                var sin = Enumerable.Range(0, div1).ToList().Select(n => precession ? Math.Tan(maxAngle / div1 * n) : Math.Sin(maxAngle / div1 * n)).ToList();
+                //X-ray precessionの時はcosではなくすべて1として計算することに注意
+                var cos = Enumerable.Range(0, div1).ToList().Select(n => precession ? 1 : Math.Cos(maxAngle / div1 * n)).ToList();
+
+                Parallel.For(1, div1, j =>
                 {
-                    listTriangles.Add(new Triangle(rot[i] * v1, rot[i] * v2, rot[i + 1] * v2, mat, DrawingMode.Surfaces));
-                    if (j != 1)
-                        listTriangles.Add(new Triangle(rot[i] * v1, rot[i + 1] * v1, rot[i + 1] * v2, mat, DrawingMode.Surfaces));
+                    var listObj = new List<GLObject>();
+                    var mat = new Material(colorControl3D_EwaldSphere.Color, ((float)(div1 - j) / div1 + 0.3f) / 1.3f);
+                    if (j % 5 == 0)
+                        listObj.Add(new Disk(new V3(0, 0, r * (1 - cos[j])) + shift, new V3(0, 0, 1), r * sin[j], 1f, mat, DrawingMode.Edges, 90));
 
-                    if (i % 5 == 0)
-                        listLines.Add(new Lines(new V3[] { rot[i] * v1, rot[i] * v2 }, 1f, mat));
-                }
+                    V3 v1 = new V3(r * sin[j - 1], 0, r * (1 - cos[j - 1])) + shift, v2 = new V3(r * sin[j], 0, r * (1 - cos[j])) + shift;
+                    for (int i = 0; i < div2; i++)
+                    {
+                        V3 rot1V1 = rot[i] * v1, rot1V2 = rot[i] * v2;
+                        if (j == 1)
+                            listObj.Add(new Triangle(rot1V1, rot1V2, rot[i + 1] * v2, mat, DrawingMode.Surfaces));
+                        else
+                            listObj.Add(new Polygon(new[] { rot1V1, rot1V2, rot[i + 1] * v2, rot[i + 1] * v1 }, mat, DrawingMode.Surfaces));
+
+                        if (i % 5 == 0)
+                            listObj.Add(new Lines(new V3[] { rot1V1, rot1V2 }, 1f, mat));
+                    }
+                    lock (lockObj)
+                        ewaldList.AddRange(listObj);
+                });
             }
-            glObjects.AddRange(listTriangles);
-            glObjects.AddRange(listDisks);
-            glObjects.AddRange(listLines);
+            glObjects.AddRange(ewaldList);
         }
         #endregion
 
         #region 逆格子点の描画
-        var sphereList = new List<Sphere>();
-        var textList = new List<TextObject>();
+        var spotList = new List<Sphere>();
+        var textList = new List<(string text, float fontSize, V3 position, double popout, bool whiteEdge, Material mat)>();
+
+        var maxF = radioButtonIntensityExcitation.Checked ? 1 : gVector.Max(g => g.F.MagnitudeSquared());
+        var spotRadius = numericBox3D_SpotRadius.Value;
+        var thredshold = numericBoxReciprocalThreshold.Value * 0.01;
+        spotList.Add(new Sphere(new V3(0, 0, 0) + shift, spotRadius, new Material(colorControl3D_Origin.Color, 1), DrawingMode.Surfaces));
+
+        Color colNear = colorControl3D_SpotsNear.Color, colFar = colorControl3D_SpotsFar.Color;
+        Color colScrewOrGlide = colorControlScrewGlide.Color, colLattice = colorControlForbiddenLattice.Color, colGeneral = colorControlNoCondition.Color;
         
-        var maxF = gVector.Max(g => g.F.MagnitudeSquared());
-        sphereList.Add(new Sphere(new V3(0, 0, 0) + shift, 0.4, new Material(Color.Red.ToArgb(), 1), DrawingMode.Surfaces));
+        var matText = new Material(colorControl3D_lText.Color);
         
-        foreach (var g in gVector.Where(g => g.Flag1))
+        var transCoef = trackBar3D_Transparency.Value* trackBar3D_Transparency.Value;
+        Parallel.ForEach(gVector.Where(g => /*g.Length2 < maxG * maxG &&*/ (g.Flag1 || radioButtonIntensityExcitation.Checked)),new ParallelOptions() { MaxDegreeOfParallelism = 1 }, g =>
         {
             var vec = formMain.Crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
+            double dev = precession ? Math.Abs(vec.Z) : Math.Abs((vec - ewaldCenter).Length - r);
 
-            //エワルド球面からの距離を透明度と色に反映  距離/半径が0.5以上のとき透明度ゼロ   
-            double dev = Math.Abs((vec - ewaldCenter).Length - r);
-            var trans = dev / r < 0.25 ? (float)(1 - dev / r * 4) : 0;
-            var col = dev < numericBoxSpotRadius.Value ?
-                Miscellaneous.BlendColor(Color.Gray, Color.Yellow, dev / numericBoxSpotRadius.Value) :
-                Color.Gray;
-
-            //逆格子点（構造因子の二乗の1/3状の半径）
-            if (g.F.MagnitudeSquared() > maxF * 0.001 && trans != 0)
+            if(g.Text=="0 0 4")
             {
-                var radius = Math.Pow(g.F.MagnitudeSquared() / maxF, 1.0 / 3.0) * 0.4;
-                sphereList.Add(new Sphere(vec.ToOpenTK() + shift, radius, new Material(col, trans), DrawingMode.Surfaces));
-                if (checkBoxShowIndices.Checked && dev < numericBoxSpotRadius.Value)
-                    textList.Add(new TextObject(g.Text, 9f, vec.ToOpenTK() + shift, radius + 1, false, new Material(Color.Black)));
+
             }
-        }
-        glObjects.AddRange(sphereList);
-        glObjects.AddRange(textList);
+
+            //スポット強度。励起誤差モードの時は、中心からの距離に比例。kinematicalモードの時は構造因子の二乗
+            var F2 = radioButtonIntensityExcitation.Checked ? Math.Max(0.1,maxF * (1 - g.Length / maxG)) : g.F.MagnitudeSquared();
+            if (F2 < maxF * thredshold || F2==0)
+                return;
+
+            var col = colFar; ;
+            if (radioButtonIntensityExcitation.Checked)
+            {
+                if (g.Extinction.Length == 0)
+                    col = colGeneral;
+                else if (g.Extinction[0].Length == 1)
+                {
+                    if (checkBoxExtinctionLattice.Checked)
+                        return;
+                    col = colLattice;
+                }
+                else
+                {
+                    if (checkBoxExtinctionAll.Checked)
+                        return;
+                    col = colScrewOrGlide;
+                }
+            }
+
+            if (checkBox3D_EwaldSphere.Checked && dev < spotRadius)
+                col = Miscellaneous.BlendColor(colFar, colNear, dev / spotRadius);
+            var trans = 1.0;
+            if (checkBox3D_MakeSpotsTransparent.Checked)
+                trans = dev / r < 100.0 / transCoef ? Math.Min(1 - dev / r * transCoef / 100.0, 1.0) : 0;
+            if (trans == 0f)
+                return;
+
+            var radius = Math.Pow(F2 / maxF, 1.0 / 3.0) * spotRadius; //逆格子点（構造因子の二乗の1/3状の半径）
+            var spot = new Sphere(vec.ToOpenTK() + shift, radius, new Material(col, trans), DrawingMode.Surfaces);
+            lock (lockObj)
+                spotList.Add(spot);
+
+            if (checkBox3D_ShowIndices.Checked && dev < spotRadius)
+                lock (lockObj)
+                    textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText));
+        });
+        glObjects.AddRange(spotList);
+        glObjects.AddRange(textList.Select(e => new TextObject(e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat)));
         #endregion
 
-        
+
+        #region ガイドの描画
+        if (checkBox3D_DirectionGuide.Checked)
+        {
+            glObjects.AddRange(new GLObject[]
+            {
+                new Cylinder(new V3(0, 0, 0.5 + spotRadius) + shift, new V3(0, 0, 2), 0.075, new Material(colorControl3D_beamDirection.Color), DrawingMode.Surfaces),
+                new Cone(new V3(0, 0, spotRadius) + shift, new V3(0, 0, 0.5), 0.2, new Material(colorControl3D_beamDirection.Color), DrawingMode.Surfaces),
+                new TextObject("Beam", 13, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText),
+
+                new Cylinder(new V3(0, 0, 0) + shift, new V3(0, 1.5, 0), 0.075, new Material(colorControl3D_topDirection.Color), DrawingMode.Surfaces),
+                new Cone(new V3(0, 2, 0) + shift, new V3(0, -0.5, 0), 0.2, new Material(colorControl3D_topDirection.Color), DrawingMode.Surfaces),
+                new TextObject("Top", 13, new V3(0, 2, 0) + shift, 5, true, matText),
+
+                new Cylinder(new V3(0, 0, 0) + shift, new V3(1.5, 0, 0), 0.075, new Material(colorControl3D_rightDirection.Color), DrawingMode.Surfaces),
+                new Cone(new V3(2, 0, 0) + shift, new V3(-0.5, 0, 0), 0.2, new Material(colorControl3D_rightDirection.Color), DrawingMode.Surfaces),
+                new TextObject("right", 13, new V3(2, 0, 0) + shift, 5, true, matText)
+            });
+        }
+
+        #endregion
+
         glControl.AddObjects(glObjects);
         glControl.Refresh();
     }
 
-    private void button3_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void checkBoxShowEwaldSphere_CheckedChanged(object sender, EventArgs e)
-    {
-        Draw3D();
-    }
+    private void checkBoxShowEwaldSphere_CheckedChanged(object sender, EventArgs e) => Draw3D();
 
     private void buttonTopLeft_Click(object sender, EventArgs e)
     {
@@ -2541,4 +2609,12 @@ public partial class FormDiffractionSimulator : Form
     {
         glControl.WorldMatrix = Matrix4d.Identity;
     }
+
+    private void colorControlReciprocalBackground_ColorChanged(object sender, EventArgs e) => Draw3D();
+
+    private void trackBar1_ValueChanged(object sender, EventArgs e) => Draw3D();
+
+    private void numericBoxReciprocalThreshold_ValueChanged(object sender, EventArgs e) => Draw3D();
+
+    private void numericBox3D_SpotRadius_ValueChanged(object sender, EventArgs e) => Draw3D();
 }

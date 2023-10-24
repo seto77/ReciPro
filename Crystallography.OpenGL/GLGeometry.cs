@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using M3d = OpenTK.Matrix3d;
 using V2d = OpenTK.Vector2d;
 using V3d = OpenTK.Vector3d;
@@ -19,6 +20,12 @@ public static class GLGeometry
     /// <returns></returns>
     public static (List<uint> Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable<V3d> points, in V3d origin)
     {
+        if (points.Count() == 3)
+        {
+            var pts = points is V3d[]? (V3d[])points : points.ToArray();
+            return (new List<uint>(new uint[] { 0, 1, 2, 0 }), (pts[0] + pts[1] + pts[2]) / 3, V3d.Cross(pts[1] - pts[0], pts[2] - pts[1]));
+        }
+
         var center = Extensions.Average(points);
         //var prm = Geometriy.GetPlaneEquationFromPoints(points.Select(p => p.ToVector3DBase()));
         var prm = Geometriy.GetPlaneEquationFromPoints(points);

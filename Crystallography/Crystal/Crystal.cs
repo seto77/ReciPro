@@ -1,11 +1,13 @@
 #region using
 using MathNet.Numerics;
+using MathNet.Numerics.LinearAlgebra.Factorization;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 #endregion
@@ -1212,6 +1214,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     static int composeKey(in int h, in int k, in int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
     static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
+    private object lockObj = new();
+
     /// <summary>
     /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
     /// </summary>
@@ -1228,7 +1232,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
         double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
-        var gMax = 1 / dMin;
+        double gMax = 1 / dMin, gMax2 = gMax * gMax;
         (int h, int k, int l)[] directions;
         #region directionを初期化
         if (excludeLatticeCondition)
@@ -1263,11 +1267,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         var gHash = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
         var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5));
         var minG = 0.0;
-
-        while (gList.Count < maxGnum && (minG = outer.Min(o => o.len)) < gMax)
+        //var thread = 16;
+        
+        while (gList.Count < maxGnum && outer.Count >0 && (minG = outer.Min(o => o.len)) < gMax)
         {
-            var end = outer.FindLastIndex(o => o.len - minG < shift * 2);
-            foreach (var (key1, _) in CollectionsMarshal.AsSpan(outer)[..(end + 1)])
+            var end = outer.FindLastIndex(o => o.len < minG + shift * 2) + 1;
+        
+            foreach (var (key1, _) in CollectionsMarshal.AsSpan(outer)[..end])
             {
                 var (h1, k1, l1) = decomposeKey(key1);
                 foreach ((int h2, int k2, int l2) in directions)
@@ -1275,14 +1281,51 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                     int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
                     if (key2 > 0 && gHash.Add(key2))
                     {
-                        double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
-                        var len = Math.Sqrt(x * x + y * y + z * z);
-                        gList.Add((key2, x, y, z, len));
-                        outer.Add((key2, len));
+                        double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ, len2 = x * x + y * y + z * z;
+                        if (len2 < gMax2)
+                        {
+                            var len = Math.Sqrt(len2);
+                            gList.Add((key2, x, y, z, len));
+                            outer.Add((key2, len));
+                        }
                     }
                 }
             }
-            outer.RemoveRange(0, end + 1);
+
+            #region 並列化したコード 殆ど速度は変わらず
+            //var gListTmp = new List<(int key, double x, double y, double z, double len)>[thread];
+            //var gHashTmp = new HashSet<int>[thread];
+            //Parallel.For(0, thread, t =>
+            //{
+            //    gListTmp[t] = new List<(int key, double x, double y, double z, double len)>();
+            //    gHashTmp[t] = new HashSet<int>();
+            //    var test = CollectionsMarshal.AsSpan(outer)[(end * t / thread)..Math.Min(end * (t + 1) / thread, end)];
+            //    foreach (var (key1, _) in CollectionsMarshal.AsSpan(outer)[(end * t / thread)..Math.Min(end * (t + 1) / thread, end)])
+            //    {
+            //        var (h1, k1, l1) = decomposeKey(key1);
+            //        foreach ((int h2, int k2, int l2) in directions)
+            //        {
+            //            int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
+            //            if (key2 > 0 && gHashTmp[t].Add(key2))
+            //            {
+            //                double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
+            //                var len2 = x * x + y * y + z * z;
+            //                if (len2 < gMax2)
+            //                    gListTmp[t].Add((key2, x, y, z, Math.Sqrt(len2)));
+            //            }
+            //        }
+            //    }
+            //});
+            //for (int t = 0; t < thread; t++)
+            //    foreach (var e in gListTmp[t])
+            //        if (gHash.Add(e.key))
+            //        {
+            //            gList.Add(e);
+            //            outer.Add((e.key, e.len));
+            //        }
+            #endregion
+
+            outer.RemoveRange(0, end);
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
         }
 

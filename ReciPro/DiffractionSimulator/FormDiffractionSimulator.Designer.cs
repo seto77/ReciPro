@@ -97,8 +97,12 @@
             splitContainer1 = new System.Windows.Forms.SplitContainer();
             graphicsBox = new ImagingSolution.Control.GraphicsBox(components);
             groupBox7 = new System.Windows.Forms.GroupBox();
-            label21 = new System.Windows.Forms.Label();
-            trackBarPerspective = new System.Windows.Forms.TrackBar();
+            colorControl3D_SpotsNear = new ColorControl();
+            numericBox3D_SpotRadius = new NumericBox();
+            trackBar3D_Transparency = new System.Windows.Forms.TrackBar();
+            colorControl3D_SpotsFar = new ColorControl();
+            colorControl3D_Background = new ColorControl();
+            numericBoxReciprocalThreshold = new NumericBox();
             groupBox8 = new System.Windows.Forms.GroupBox();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -115,8 +119,13 @@
             panel4 = new System.Windows.Forms.Panel();
             numericBoxStep = new NumericBox();
             buttonResetAngle = new System.Windows.Forms.Button();
-            checkBoxShowIndices = new System.Windows.Forms.CheckBox();
-            checkBoxShowEwaldSphere = new System.Windows.Forms.CheckBox();
+            label21 = new System.Windows.Forms.Label();
+            checkBox3D_MakeSpotsTransparent = new System.Windows.Forms.CheckBox();
+            colorControl3D_EwaldSphere = new ColorControl();
+            checkBox3D_ShowIndices = new System.Windows.Forms.CheckBox();
+            colorControl3D_Origin = new ColorControl();
+            colorControl3D_lText = new ColorControl();
+            checkBox3D_EwaldSphere = new System.Windows.Forms.CheckBox();
             panel3 = new System.Windows.Forms.Panel();
             checkBoxReciprocalSpace = new System.Windows.Forms.CheckBox();
             panelMousePosition = new System.Windows.Forms.Panel();
@@ -255,6 +264,10 @@
             timerBlinkKikuchiLine = new System.Windows.Forms.Timer(components);
             timerBlinkDebyeRing = new System.Windows.Forms.Timer(components);
             timerBlinkScale = new System.Windows.Forms.Timer(components);
+            checkBox3D_DirectionGuide = new System.Windows.Forms.CheckBox();
+            colorControl3D_beamDirection = new ColorControl();
+            colorControl3D_topDirection = new ColorControl();
+            colorControl3D_rightDirection = new ColorControl();
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -284,7 +297,7 @@
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarPerspective).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar3D_Transparency).BeginInit();
             groupBox8.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -984,29 +997,129 @@
             // 
             // groupBox7
             // 
-            groupBox7.Controls.Add(label21);
-            groupBox7.Controls.Add(trackBarPerspective);
+            groupBox7.Controls.Add(colorControl3D_SpotsNear);
+            groupBox7.Controls.Add(numericBox3D_SpotRadius);
+            groupBox7.Controls.Add(trackBar3D_Transparency);
+            groupBox7.Controls.Add(checkBox3D_ShowIndices);
+            groupBox7.Controls.Add(colorControl3D_SpotsFar);
+            groupBox7.Controls.Add(checkBox3D_MakeSpotsTransparent);
+            groupBox7.Controls.Add(colorControl3D_Background);
+            groupBox7.Controls.Add(numericBoxReciprocalThreshold);
             groupBox7.Controls.Add(groupBox8);
-            groupBox7.Controls.Add(checkBoxShowIndices);
-            groupBox7.Controls.Add(checkBoxShowEwaldSphere);
+            groupBox7.Controls.Add(label21);
+            groupBox7.Controls.Add(colorControl3D_EwaldSphere);
+            groupBox7.Controls.Add(colorControl3D_Origin);
+            groupBox7.Controls.Add(colorControl3D_rightDirection);
+            groupBox7.Controls.Add(colorControl3D_topDirection);
+            groupBox7.Controls.Add(colorControl3D_beamDirection);
+            groupBox7.Controls.Add(colorControl3D_lText);
+            groupBox7.Controls.Add(checkBox3D_DirectionGuide);
+            groupBox7.Controls.Add(checkBox3D_EwaldSphere);
             resources.ApplyResources(groupBox7, "groupBox7");
             groupBox7.Name = "groupBox7";
             groupBox7.TabStop = false;
             // 
-            // label21
+            // colorControl3D_SpotsNear
             // 
-            resources.ApplyResources(label21, "label21");
-            label21.Name = "label21";
+            colorControl3D_SpotsNear.Argb = -256;
+            resources.ApplyResources(colorControl3D_SpotsNear, "colorControl3D_SpotsNear");
+            colorControl3D_SpotsNear.Blue = 0;
+            colorControl3D_SpotsNear.BlueF = 0F;
+            colorControl3D_SpotsNear.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl3D_SpotsNear.Color = System.Drawing.Color.Yellow;
+            colorControl3D_SpotsNear.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl3D_SpotsNear.Green = 255;
+            colorControl3D_SpotsNear.GreenF = 1F;
+            colorControl3D_SpotsNear.Name = "colorControl3D_SpotsNear";
+            colorControl3D_SpotsNear.Red = 255;
+            colorControl3D_SpotsNear.RedF = 1F;
+            colorControl3D_SpotsNear.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
-            // trackBarPerspective
+            // numericBox3D_SpotRadius
             // 
-            resources.ApplyResources(trackBarPerspective, "trackBarPerspective");
-            trackBarPerspective.Maximum = 120;
-            trackBarPerspective.Name = "trackBarPerspective";
-            trackBarPerspective.SmallChange = 10;
-            trackBarPerspective.TickFrequency = 3;
-            toolTip.SetToolTip(trackBarPerspective, resources.GetString("trackBarPerspective.ToolTip"));
-            trackBarPerspective.Value = 100;
+            resources.ApplyResources(numericBox3D_SpotRadius, "numericBox3D_SpotRadius");
+            numericBox3D_SpotRadius.BackColor = System.Drawing.SystemColors.Control;
+            numericBox3D_SpotRadius.DecimalPlaces = 4;
+            numericBox3D_SpotRadius.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBox3D_SpotRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBox3D_SpotRadius.Maximum = 1D;
+            numericBox3D_SpotRadius.Minimum = 0.01D;
+            numericBox3D_SpotRadius.Name = "numericBox3D_SpotRadius";
+            numericBox3D_SpotRadius.RadianValue = 0.0034906585039886592D;
+            numericBox3D_SpotRadius.RoundErrorAccuracy = -1;
+            numericBox3D_SpotRadius.ShowUpDown = true;
+            numericBox3D_SpotRadius.SkipEventDuringInput = false;
+            numericBox3D_SpotRadius.SmartIncrement = true;
+            numericBox3D_SpotRadius.ThonsandsSeparator = true;
+            numericBox3D_SpotRadius.UpDown_Increment = 0.01D;
+            numericBox3D_SpotRadius.Value = 0.2D;
+            numericBox3D_SpotRadius.ValueChanged += numericBox3D_SpotRadius_ValueChanged;
+            // 
+            // trackBar3D_Transparency
+            // 
+            resources.ApplyResources(trackBar3D_Transparency, "trackBar3D_Transparency");
+            trackBar3D_Transparency.LargeChange = 50;
+            trackBar3D_Transparency.Maximum = 100;
+            trackBar3D_Transparency.Minimum = 1;
+            trackBar3D_Transparency.Name = "trackBar3D_Transparency";
+            trackBar3D_Transparency.SmallChange = 10;
+            trackBar3D_Transparency.TickFrequency = 500;
+            trackBar3D_Transparency.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip.SetToolTip(trackBar3D_Transparency, resources.GetString("trackBar3D_Transparency.ToolTip"));
+            trackBar3D_Transparency.Value = 25;
+            trackBar3D_Transparency.ValueChanged += trackBar1_ValueChanged;
+            // 
+            // colorControl3D_SpotsFar
+            // 
+            colorControl3D_SpotsFar.Argb = -4144960;
+            resources.ApplyResources(colorControl3D_SpotsFar, "colorControl3D_SpotsFar");
+            colorControl3D_SpotsFar.Blue = 192;
+            colorControl3D_SpotsFar.BlueF = 0.7529412F;
+            colorControl3D_SpotsFar.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl3D_SpotsFar.Color = System.Drawing.Color.FromArgb(192, 192, 192);
+            colorControl3D_SpotsFar.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl3D_SpotsFar.Green = 192;
+            colorControl3D_SpotsFar.GreenF = 0.7529412F;
+            colorControl3D_SpotsFar.Name = "colorControl3D_SpotsFar";
+            colorControl3D_SpotsFar.Red = 192;
+            colorControl3D_SpotsFar.RedF = 0.7529412F;
+            colorControl3D_SpotsFar.ColorChanged += colorControlReciprocalBackground_ColorChanged;
+            // 
+            // colorControl3D_Background
+            // 
+            colorControl3D_Background.Argb = -1;
+            resources.ApplyResources(colorControl3D_Background, "colorControl3D_Background");
+            colorControl3D_Background.Blue = 255;
+            colorControl3D_Background.BlueF = 1F;
+            colorControl3D_Background.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl3D_Background.Color = System.Drawing.Color.FromArgb(255, 255, 255);
+            colorControl3D_Background.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl3D_Background.Green = 255;
+            colorControl3D_Background.GreenF = 1F;
+            colorControl3D_Background.Name = "colorControl3D_Background";
+            colorControl3D_Background.Red = 255;
+            colorControl3D_Background.RedF = 1F;
+            toolTip.SetToolTip(colorControl3D_Background, resources.GetString("colorControl3D_Background.ToolTip"));
+            colorControl3D_Background.ColorChanged += colorControlReciprocalBackground_ColorChanged;
+            // 
+            // numericBoxReciprocalThreshold
+            // 
+            resources.ApplyResources(numericBoxReciprocalThreshold, "numericBoxReciprocalThreshold");
+            numericBoxReciprocalThreshold.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxReciprocalThreshold.DecimalPlaces = 2;
+            numericBoxReciprocalThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxReciprocalThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxReciprocalThreshold.Maximum = 100D;
+            numericBoxReciprocalThreshold.Minimum = 0D;
+            numericBoxReciprocalThreshold.Name = "numericBoxReciprocalThreshold";
+            numericBoxReciprocalThreshold.RadianValue = 0.017453292519943295D;
+            numericBoxReciprocalThreshold.RoundErrorAccuracy = -1;
+            numericBoxReciprocalThreshold.ShowUpDown = true;
+            numericBoxReciprocalThreshold.SmartIncrement = true;
+            numericBoxReciprocalThreshold.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxReciprocalThreshold, resources.GetString("numericBoxReciprocalThreshold.ToolTip"));
+            numericBoxReciprocalThreshold.Value = 1D;
+            numericBoxReciprocalThreshold.ValueChanged += numericBoxReciprocalThreshold_ValueChanged;
             // 
             // groupBox8
             // 
@@ -1148,21 +1261,85 @@
             buttonResetAngle.UseVisualStyleBackColor = true;
             buttonResetAngle.Click += buttonResetAngle_Click;
             // 
-            // checkBoxShowIndices
+            // label21
             // 
-            resources.ApplyResources(checkBoxShowIndices, "checkBoxShowIndices");
-            checkBoxShowIndices.Name = "checkBoxShowIndices";
-            checkBoxShowIndices.UseVisualStyleBackColor = true;
-            checkBoxShowIndices.CheckedChanged += checkBoxShowEwaldSphere_CheckedChanged;
+            resources.ApplyResources(label21, "label21");
+            label21.Name = "label21";
             // 
-            // checkBoxShowEwaldSphere
+            // checkBox3D_MakeSpotsTransparent
             // 
-            resources.ApplyResources(checkBoxShowEwaldSphere, "checkBoxShowEwaldSphere");
-            checkBoxShowEwaldSphere.Checked = true;
-            checkBoxShowEwaldSphere.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxShowEwaldSphere.Name = "checkBoxShowEwaldSphere";
-            checkBoxShowEwaldSphere.UseVisualStyleBackColor = true;
-            checkBoxShowEwaldSphere.CheckedChanged += checkBoxShowEwaldSphere_CheckedChanged;
+            resources.ApplyResources(checkBox3D_MakeSpotsTransparent, "checkBox3D_MakeSpotsTransparent");
+            checkBox3D_MakeSpotsTransparent.Checked = true;
+            checkBox3D_MakeSpotsTransparent.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox3D_MakeSpotsTransparent.Name = "checkBox3D_MakeSpotsTransparent";
+            checkBox3D_MakeSpotsTransparent.UseVisualStyleBackColor = true;
+            checkBox3D_MakeSpotsTransparent.CheckedChanged += checkBoxShowEwaldSphere_CheckedChanged;
+            // 
+            // colorControl3D_EwaldSphere
+            // 
+            colorControl3D_EwaldSphere.Argb = -8355585;
+            resources.ApplyResources(colorControl3D_EwaldSphere, "colorControl3D_EwaldSphere");
+            colorControl3D_EwaldSphere.Blue = 255;
+            colorControl3D_EwaldSphere.BlueF = 1F;
+            colorControl3D_EwaldSphere.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl3D_EwaldSphere.Color = System.Drawing.Color.FromArgb(128, 128, 255);
+            colorControl3D_EwaldSphere.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl3D_EwaldSphere.Green = 128;
+            colorControl3D_EwaldSphere.GreenF = 0.5019608F;
+            colorControl3D_EwaldSphere.Name = "colorControl3D_EwaldSphere";
+            colorControl3D_EwaldSphere.Red = 128;
+            colorControl3D_EwaldSphere.RedF = 0.5019608F;
+            colorControl3D_EwaldSphere.ColorChanged += colorControlReciprocalBackground_ColorChanged;
+            // 
+            // checkBox3D_ShowIndices
+            // 
+            resources.ApplyResources(checkBox3D_ShowIndices, "checkBox3D_ShowIndices");
+            checkBox3D_ShowIndices.Checked = true;
+            checkBox3D_ShowIndices.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox3D_ShowIndices.Name = "checkBox3D_ShowIndices";
+            checkBox3D_ShowIndices.UseVisualStyleBackColor = true;
+            checkBox3D_ShowIndices.CheckedChanged += checkBoxShowEwaldSphere_CheckedChanged;
+            // 
+            // colorControl3D_Origin
+            // 
+            colorControl3D_Origin.Argb = -65536;
+            resources.ApplyResources(colorControl3D_Origin, "colorControl3D_Origin");
+            colorControl3D_Origin.Blue = 0;
+            colorControl3D_Origin.BlueF = 0F;
+            colorControl3D_Origin.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl3D_Origin.Color = System.Drawing.Color.FromArgb(255, 0, 0);
+            colorControl3D_Origin.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl3D_Origin.Green = 0;
+            colorControl3D_Origin.GreenF = 0F;
+            colorControl3D_Origin.Name = "colorControl3D_Origin";
+            colorControl3D_Origin.Red = 255;
+            colorControl3D_Origin.RedF = 1F;
+            colorControl3D_Origin.ColorChanged += colorControlReciprocalBackground_ColorChanged;
+            // 
+            // colorControl3D_lText
+            // 
+            colorControl3D_lText.Argb = -16777216;
+            resources.ApplyResources(colorControl3D_lText, "colorControl3D_lText");
+            colorControl3D_lText.Blue = 0;
+            colorControl3D_lText.BlueF = 0F;
+            colorControl3D_lText.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl3D_lText.Color = System.Drawing.Color.FromArgb(0, 0, 0);
+            colorControl3D_lText.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl3D_lText.Green = 0;
+            colorControl3D_lText.GreenF = 0F;
+            colorControl3D_lText.Name = "colorControl3D_lText";
+            colorControl3D_lText.Red = 0;
+            colorControl3D_lText.RedF = 0F;
+            colorControl3D_lText.ColorChanged += colorControlReciprocalBackground_ColorChanged;
+            // 
+            // checkBox3D_EwaldSphere
+            // 
+            resources.ApplyResources(checkBox3D_EwaldSphere, "checkBox3D_EwaldSphere");
+            checkBox3D_EwaldSphere.Checked = true;
+            checkBox3D_EwaldSphere.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox3D_EwaldSphere.Name = "checkBox3D_EwaldSphere";
+            checkBox3D_EwaldSphere.UseVisualStyleBackColor = true;
+            checkBox3D_EwaldSphere.CheckedChanged += checkBoxShowEwaldSphere_CheckedChanged;
             // 
             // panel3
             // 
@@ -2270,6 +2447,63 @@
             timerBlinkScale.Tag = "";
             timerBlinkScale.Tick += timerBlinkScale_Tick;
             // 
+            // checkBox3D_DirectionGuide
+            // 
+            resources.ApplyResources(checkBox3D_DirectionGuide, "checkBox3D_DirectionGuide");
+            checkBox3D_DirectionGuide.Checked = true;
+            checkBox3D_DirectionGuide.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox3D_DirectionGuide.Name = "checkBox3D_DirectionGuide";
+            checkBox3D_DirectionGuide.UseVisualStyleBackColor = true;
+            checkBox3D_DirectionGuide.CheckedChanged += checkBoxShowEwaldSphere_CheckedChanged;
+            // 
+            // colorControl3D_beamDirection
+            // 
+            colorControl3D_beamDirection.Argb = -32768;
+            resources.ApplyResources(colorControl3D_beamDirection, "colorControl3D_beamDirection");
+            colorControl3D_beamDirection.Blue = 0;
+            colorControl3D_beamDirection.BlueF = 0F;
+            colorControl3D_beamDirection.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl3D_beamDirection.Color = System.Drawing.Color.FromArgb(255, 128, 0);
+            colorControl3D_beamDirection.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl3D_beamDirection.Green = 128;
+            colorControl3D_beamDirection.GreenF = 0.5019608F;
+            colorControl3D_beamDirection.Name = "colorControl3D_beamDirection";
+            colorControl3D_beamDirection.Red = 255;
+            colorControl3D_beamDirection.RedF = 1F;
+            colorControl3D_beamDirection.ColorChanged += colorControlReciprocalBackground_ColorChanged;
+            // 
+            // colorControl3D_topDirection
+            // 
+            colorControl3D_topDirection.Argb = -16129;
+            resources.ApplyResources(colorControl3D_topDirection, "colorControl3D_topDirection");
+            colorControl3D_topDirection.Blue = 255;
+            colorControl3D_topDirection.BlueF = 1F;
+            colorControl3D_topDirection.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl3D_topDirection.Color = System.Drawing.Color.FromArgb(255, 192, 255);
+            colorControl3D_topDirection.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl3D_topDirection.Green = 192;
+            colorControl3D_topDirection.GreenF = 0.7529412F;
+            colorControl3D_topDirection.Name = "colorControl3D_topDirection";
+            colorControl3D_topDirection.Red = 255;
+            colorControl3D_topDirection.RedF = 1F;
+            colorControl3D_topDirection.ColorChanged += colorControlReciprocalBackground_ColorChanged;
+            // 
+            // colorControl3D_rightDirection
+            // 
+            colorControl3D_rightDirection.Argb = -8323200;
+            resources.ApplyResources(colorControl3D_rightDirection, "colorControl3D_rightDirection");
+            colorControl3D_rightDirection.Blue = 128;
+            colorControl3D_rightDirection.BlueF = 0.5019608F;
+            colorControl3D_rightDirection.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl3D_rightDirection.Color = System.Drawing.Color.FromArgb(128, 255, 128);
+            colorControl3D_rightDirection.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl3D_rightDirection.Green = 255;
+            colorControl3D_rightDirection.GreenF = 1F;
+            colorControl3D_rightDirection.Name = "colorControl3D_rightDirection";
+            colorControl3D_rightDirection.Red = 128;
+            colorControl3D_rightDirection.RedF = 0.5019608F;
+            colorControl3D_rightDirection.ColorChanged += colorControlReciprocalBackground_ColorChanged;
+            // 
             // FormDiffractionSimulator
             // 
             AllowDrop = true;
@@ -2331,7 +2565,7 @@
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarPerspective).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar3D_Transparency).EndInit();
             groupBox8.ResumeLayout(false);
             groupBox8.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
@@ -2596,7 +2830,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.CheckBox checkBoxReciprocalSpace;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.CheckBox checkBoxShowEwaldSphere;
+        private System.Windows.Forms.CheckBox checkBox3D_EwaldSphere;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -2613,8 +2847,21 @@
         private System.Windows.Forms.Panel panel4;
         private NumericBox numericBoxStep;
         private System.Windows.Forms.Button buttonResetAngle;
-        private System.Windows.Forms.CheckBox checkBoxShowIndices;
+        private System.Windows.Forms.CheckBox checkBox3D_ShowIndices;
+        public ColorControl colorControl3D_EwaldSphere;
+        public ColorControl colorControl3D_Origin;
+        public ColorControl colorControl3D_SpotsFar;
+        public ColorControl colorControl3D_SpotsNear;
+        public ColorControl colorControl3D_Background;
+        public ColorControl colorControl3D_lText;
+        private System.Windows.Forms.TrackBar trackBar3D_Transparency;
+        private System.Windows.Forms.CheckBox checkBox3D_MakeSpotsTransparent;
+        public NumericBox numericBoxReciprocalThreshold;
+        private NumericBox numericBox3D_SpotRadius;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TrackBar trackBarPerspective;
+        private System.Windows.Forms.CheckBox checkBox3D_DirectionGuide;
+        public ColorControl colorControl3D_beamDirection;
+        public ColorControl colorControl3D_rightDirection;
+        public ColorControl colorControl3D_topDirection;
     }
 }

@@ -805,7 +805,17 @@ unsafe public partial class GLControlAlpha : UserControl
             if (glObjectsP.Any(o => o.Rendered && (o.Material.Color.A != 1 || o is TextObject)))
             {
                 var rot = worldMatrix.Inverted();
-                glObjectsP.ForAll(o => o.Z = o.Rendered && (o.Material.Color.A != 1 || o is TextObject) ? rot.Mult(o.CircumscribedSphereCenter).Z : double.NegativeInfinity);
+                glObjectsP.ForAll(o =>
+                {
+                    if (o.Rendered && (o.Material.Color.A != 1 || o is TextObject))
+                    {
+                        o.Z = rot.Mult(o.CircumscribedSphereCenter).Z;
+                        if (o is TextObject t)
+                            o.Z += t.Popout;
+                    }
+                    else
+                        o.Z = double.NegativeInfinity;
+                });
                 glObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));
             }
             glObjects.ForEach(o => o.Render(Clip));// draw scene
