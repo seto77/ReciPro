@@ -1263,7 +1263,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         var maxGnum = 250000;
         var zeroKey = (255 << 20) + (255 << 10) + 255;
-        //var outer = new List<(int key, double len)>() { (zeroKey, 0) };
         var gHash = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
         var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5)) { (zeroKey, 0, 0, 0, 0)};
         int start = 0, end = 1;
@@ -1287,7 +1286,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             start += end;
             outer = CollectionsMarshal.AsSpan(gList)[start..];
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
-            for (end = 0; end < outer.Length && outer[end].len < outer[0].len + shift * 2; end++)  ;
+            for (end = 0; end < outer.Length && outer[end].len < outer[0].len + shift * 2; end++)  
+                ;
             outer = outer[..end];
         }
         gList.RemoveAt(0);
