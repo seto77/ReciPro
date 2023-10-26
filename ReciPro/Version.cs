@@ -7,6 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.869(2023/10/26)  Added the function to simulate the Ewald sphere and the reciprocal vectors to 'Diffraction Simulator'." +
         "\r\n ver4.868(2023/10/23)  Fixed an issue with text rendering using OpenGL (see https://github.com/seto77/ReciPro/issues/26)." +
         "\r\n ver4.867(2023/08/04)  Improved the interface of SpotID v2 (see https://github.com/seto77/ReciPro/issues/25)." +
         "\r\n ver4.866(2023/08/01)  AVX2 support temporarily suspended. Fixed a bug when using AMD Radeon GPUs." +

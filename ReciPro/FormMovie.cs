@@ -1,4 +1,5 @@
 ﻿using Crystallography.OpenGL;
+using ImagingSolution.Control;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -12,6 +13,8 @@ public partial class FormMovie : Form
     public Form Caller;//呼び出し元
 
     public Control Target;
+
+    public Func<Bitmap> Func;
     public Vector3DBase Direction { get; set; } = new Vector3DBase(0, 1, 0);
 
     public double Speed => numericBoxSpeed.Value;
@@ -99,6 +102,8 @@ public partial class FormMovie : Form
 
                 if (Target is GLControlAlpha c)
                     bmp = c.GenerateBitmap();
+                else
+                    bmp = Func();
 
                 if (bmp.Width % 2 != 0 || bmp.Height % 2 != 0)
                     bmp = bmp.Clone(new Rectangle(0, 0, bmp.Width - bmp.Width % 2, bmp.Height - bmp.Height % 2), bmp.PixelFormat);
@@ -132,6 +137,16 @@ public partial class FormMovie : Form
     public void Execute(Control target, Form caller)
     {
         Target = target;
+        Caller = caller;
+        Location = new Point(caller.Location.X + 10, caller.Location.Y + 10);
+        TopMost = true;
+        Visible = true;
+    }
+
+    public void Execute(Func<Bitmap> func, Form caller)
+    {
+        Target = null;
+        Func = func;
         Caller = caller;
         Location = new Point(caller.Location.X + 10, caller.Location.Y + 10);
         TopMost = true;

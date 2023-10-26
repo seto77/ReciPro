@@ -191,6 +191,10 @@ namespace ReciPro
             scalablePictureBoxAdvanced2 = new ScalablePictureBoxAdvanced();
             pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             printDialog1 = new System.Windows.Forms.PrintDialog();
+            toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemSaveMovieStereonet = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemSaveMovie3D = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
@@ -1235,7 +1239,7 @@ namespace ReciPro
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveImageToolStripMenuItem, toolStripMenuItem1, toolStripSeparator1, pageSetupToolStripMenuItem, printPreviewToolStripMenuItem, printToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveImageToolStripMenuItem, toolStripMenuItem1, toolStripSeparator1, toolStripMenuItem2, toolStripSeparator2, pageSetupToolStripMenuItem, printPreviewToolStripMenuItem, printToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
@@ -1573,7 +1577,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -587857469);
+            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -1175715257);
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
             scalablePictureBoxAdvanced1.SkipDrawing = false;
             scalablePictureBoxAdvanced1.StatusLabel = " ";
@@ -1604,7 +1608,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -587857469);
+            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -1175715257);
             scalablePictureBoxAdvanced2.ShowGradiaent = true;
             scalablePictureBoxAdvanced2.SkipDrawing = false;
             scalablePictureBoxAdvanced2.StatusLabel = " ";
@@ -1624,6 +1628,29 @@ namespace ReciPro
             // 
             printDialog1.Document = printDocument1;
             printDialog1.UseEXDialog = true;
+            // 
+            // toolStripMenuItem2
+            // 
+            toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemSaveMovieStereonet, toolStripMenuItemSaveMovie3D });
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(toolStripMenuItem2, "toolStripMenuItem2");
+            // 
+            // toolStripMenuItemSaveMovieStereonet
+            // 
+            toolStripMenuItemSaveMovieStereonet.Name = "toolStripMenuItemSaveMovieStereonet";
+            resources.ApplyResources(toolStripMenuItemSaveMovieStereonet, "toolStripMenuItemSaveMovieStereonet");
+            toolStripMenuItemSaveMovieStereonet.Click += toolStripMenuItemSaveMovieStereonet_Click;
+            // 
+            // toolStripMenuItemSaveMovie3D
+            // 
+            toolStripMenuItemSaveMovie3D.Name = "toolStripMenuItemSaveMovie3D";
+            resources.ApplyResources(toolStripMenuItemSaveMovie3D, "toolStripMenuItemSaveMovie3D");
+            toolStripMenuItemSaveMovie3D.Click += toolStripMenuItemSaveMovie3D_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             // 
             // FormStereonet
             // 
@@ -1856,5 +1883,9 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBox3dOptionLabel;
         private System.Windows.Forms.CheckBox checkBox3dOptionSemisphere;
         private System.Windows.Forms.CheckBox checkBox3dOptionStereonet;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveMovieStereonet;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveMovie3D;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

@@ -1,8 +1,10 @@
 ﻿#region using
 using BitMiracle.LibTiff.Classic;
 using Crystallography;
+using Crystallography.Controls;
 using Crystallography.OpenGL;
 using MathNet.Numerics;
+using MathNet.Numerics.Providers.MKL;
 using OpenTK;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ReciPro.FormDiffractionSimulatorDynamicCompression;
@@ -34,6 +37,8 @@ public partial class FormDiffractionSimulator : Form
     public FormDiffractionSpotInfo FormDiffractionBeamTable;
 
     private GLControlAlpha glControl;
+    private GLControlAlpha glControlZsort;
+    private GLControlAlpha glControlOIT;
 
     #region 計算モード
     public enum CalcModes { Excitation, Kinematical, Dynamical }
@@ -256,26 +261,39 @@ public partial class FormDiffractionSimulator : Form
 
         WaveLengthControl_WaveSourceChanged(sender, e);
 
-        glControl = new GLControlAlpha(GLControlAlpha.FragShaders.ZSORT)
+        glControlOIT = new GLControlAlpha(GLControlAlpha.FragShaders.OIT)
         {
             AllowMouseRotation = true,
             AllowMouseScaling = true,
             AllowMouseTranslating = true,
             Name = "glControlAxes",
             ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-            ProjWidth = 15,
-            //NodeCoefficient = 30,
-            //MaxHeight = 1440,
-            //MaxWidth = 2560,
+            ProjWidth = 20,
+            NodeCoefficient = 2,
+            MaxHeight = 1440,
+            MaxWidth = 2560,
             RotationMode = GLControlAlpha.RotationModes.Object,
             Dock = DockStyle.Fill,
             LightPosition = new V3(100, 100, 100),
             BorderStyle = BorderStyle.Fixed3D,
-            BackgroundColor = colorControlBackGround.Color,
         };
+
+        glControlZsort = new GLControlAlpha(GLControlAlpha.FragShaders.ZSORT)
+        {
+            AllowMouseRotation = true,
+            AllowMouseScaling = true,
+            AllowMouseTranslating = true,
+            Name = "glControlAxes",
+            ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+            ProjWidth = 100,
+            RotationMode = GLControlAlpha.RotationModes.Object,
+            Dock = DockStyle.Fill,
+            LightPosition = new V3(100, 100, 100),
+            BorderStyle = BorderStyle.Fixed3D,
+        };
+        glControl = glControlZsort;
         splitContainer1.Panel2.Controls.Add(glControl);
         glControl.BringToFront();
-
     }
 
     //クローズ
@@ -2413,6 +2431,8 @@ public partial class FormDiffractionSimulator : Form
 
     #endregion
 
+
+    #region ReciprocalSpaceの描画関連
     private void checkBoxReciprocalSpace_CheckedChanged(object sender, EventArgs e)
     {
         splitContainer1.Panel2Collapsed = !checkBoxReciprocalSpace.Checked;
@@ -2498,23 +2518,19 @@ public partial class FormDiffractionSimulator : Form
 
         Color colNear = colorControl3D_SpotsNear.Color, colFar = colorControl3D_SpotsFar.Color;
         Color colScrewOrGlide = colorControlScrewGlide.Color, colLattice = colorControlForbiddenLattice.Color, colGeneral = colorControlNoCondition.Color;
-        
+
         var matText = new Material(colorControl3D_lText.Color);
-        
-        var transCoef = trackBar3D_Transparency.Value* trackBar3D_Transparency.Value;
-        Parallel.ForEach(gVector.Where(g => /*g.Length2 < maxG * maxG &&*/ (g.Flag1 || radioButtonIntensityExcitation.Checked)),new ParallelOptions() { MaxDegreeOfParallelism = 1 }, g =>
+
+        var transCoef = trackBar3D_Transparency.Value * trackBar3D_Transparency.Value;
+        Parallel.ForEach(gVector.Where(g => g.Length2 < maxG * maxG && (g.Flag1 || radioButtonIntensityExcitation.Checked)), new ParallelOptions() { MaxDegreeOfParallelism = 1 }, g =>
         {
             var vec = formMain.Crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
             double dev = precession ? Math.Abs(vec.Z) : Math.Abs((vec - ewaldCenter).Length - r);
 
-            if(g.Text=="0 0 4")
-            {
-
-            }
 
             //スポット強度。励起誤差モードの時は、中心からの距離に比例。kinematicalモードの時は構造因子の二乗
-            var F2 = radioButtonIntensityExcitation.Checked ? Math.Max(0.1,maxF * (1 - g.Length / maxG)) : g.F.MagnitudeSquared();
-            if (F2 < maxF * thredshold || F2==0)
+            var F2 = radioButtonIntensityExcitation.Checked ? Math.Max(0.1, maxF * (1 - g.Length / maxG)) : g.F.MagnitudeSquared();
+            if (F2 < maxF * thredshold || F2 == 0)
                 return;
 
             var col = colFar; ;
@@ -2565,20 +2581,24 @@ public partial class FormDiffractionSimulator : Form
             {
                 new Cylinder(new V3(0, 0, 0.5 + spotRadius) + shift, new V3(0, 0, 2), 0.075, new Material(colorControl3D_beamDirection.Color), DrawingMode.Surfaces),
                 new Cone(new V3(0, 0, spotRadius) + shift, new V3(0, 0, 0.5), 0.2, new Material(colorControl3D_beamDirection.Color), DrawingMode.Surfaces),
-                new TextObject("Beam", 13, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText),
 
                 new Cylinder(new V3(0, 0, 0) + shift, new V3(0, 1.5, 0), 0.075, new Material(colorControl3D_topDirection.Color), DrawingMode.Surfaces),
                 new Cone(new V3(0, 2, 0) + shift, new V3(0, -0.5, 0), 0.2, new Material(colorControl3D_topDirection.Color), DrawingMode.Surfaces),
-                new TextObject("Top", 13, new V3(0, 2, 0) + shift, 5, true, matText),
 
                 new Cylinder(new V3(0, 0, 0) + shift, new V3(1.5, 0, 0), 0.075, new Material(colorControl3D_rightDirection.Color), DrawingMode.Surfaces),
                 new Cone(new V3(2, 0, 0) + shift, new V3(-0.5, 0, 0), 0.2, new Material(colorControl3D_rightDirection.Color), DrawingMode.Surfaces),
-                new TextObject("right", 13, new V3(2, 0, 0) + shift, 5, true, matText)
             });
+
+            if (checkBox3D_ShowIndices.Checked)
+                glObjects.AddRange(new GLObject[]
+                {
+                    new TextObject("Beam", 13, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText),
+                    new TextObject("Top", 13, new V3(0, 2, 0) + shift, 5, true, matText),
+                    new TextObject("Right", 13, new V3(2, 0, 0) + shift, 5, true, matText)
+                });
         }
-
         #endregion
-
+    
         glControl.AddObjects(glObjects);
         glControl.Refresh();
     }
@@ -2617,4 +2637,55 @@ public partial class FormDiffractionSimulator : Form
     private void numericBoxReciprocalThreshold_ValueChanged(object sender, EventArgs e) => Draw3D();
 
     private void numericBox3D_SpotRadius_ValueChanged(object sender, EventArgs e) => Draw3D();
+    #endregion
+
+    #region 動画関連
+    private void toolStripMenuItemSaveMovieReciprocalSpace_Click(object sender, EventArgs e)
+    {
+        formMain.FormMovie.Execute(glControl, this);
+    }
+
+    private void toolStripMenuItemSaveMovieDiffractionPattern_Click(object sender, EventArgs e)
+    {
+        var func = new Func<Bitmap>(() =>
+        {
+            var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
+            Draw(Graphics.FromImage(bmp), true, true);
+            return bmp;
+        });
+        formMain.FormMovie.Execute(func, this);
+    }
+    #endregion
+
+    private void checkBox3D_ShowIndices_CheckedChanged(object sender, EventArgs e)
+    {
+        var swap = new Action<GLControlAlpha, GLControlAlpha>((g1, g2) =>
+        {
+            g1.ViewFrom = g2.ViewFrom;
+            g1.ViewMatrix = g2.ViewMatrix;
+            g1.WorldMatrix = g2.WorldMatrix;
+            g1.ProjMatrix = g2.ProjMatrix;
+            g1.LightPosition = g2.LightPosition;
+            g1.ProjWidth = g2.ProjWidth;
+            g1.ProjCenter = g2.ProjCenter;
+            g1.ProjectionMode = g2.ProjectionMode;
+        });
+
+        var gNew = checkBox3D_ShowIndices.Checked ? glControlZsort : glControlOIT;
+        var gOld = checkBox3D_ShowIndices.Checked ? glControlOIT : glControlZsort;
+
+        gOld.Visible = false;
+        splitContainer1.Panel2.Controls.Remove(gOld);
+
+        gNew.DeleteAllObjects();
+        gOld.DeleteAllObjects();
+
+        swap(gNew, gOld);
+
+        glControl = gNew;
+        splitContainer1.Panel2.Controls.Add(glControl);
+        glControl.BringToFront();
+        gNew.Visible = true;
+        Draw3D();
+    }
 }

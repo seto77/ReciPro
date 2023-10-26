@@ -983,4 +983,21 @@ public partial class FormStereonet : Form
     private void trackBarDepthFadingOut_Scroll(object sender, EventArgs e) => Draw3D();
 
     private void FormStereonet_Paint(object sender, PaintEventArgs e) => Draw();
+
+    private void toolStripMenuItemSaveMovieStereonet_Click(object sender, EventArgs e)
+    {
+        var func = new Func<Bitmap>(() =>
+        {
+            var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
+            var g = Graphics.FromImage(bmp);
+            Draw(g, true);
+            return bmp;
+        });
+        formMain.FormMovie.Execute(func, this);
+    }
+
+    private void toolStripMenuItemSaveMovie3D_Click(object sender, EventArgs e)
+    {
+        formMain.FormMovie.Execute(glControl, this);
+    }
 }
