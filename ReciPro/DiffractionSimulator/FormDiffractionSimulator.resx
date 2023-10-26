@@ -2267,13 +2267,13 @@ Double left click: Display the information of the g-vector</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="checkBox3D_ShowIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 19</value>
+    <value>54, 19</value>
   </data>
   <data name="checkBox3D_ShowIndices.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="checkBox3D_ShowIndices.Text" xml:space="preserve">
-    <value>Indices</value>
+    <value>Label</value>
   </data>
   <data name="&gt;&gt;checkBox3D_ShowIndices.Name" xml:space="preserve">
     <value>checkBox3D_ShowIndices</value>

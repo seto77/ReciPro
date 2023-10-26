@@ -2461,7 +2461,9 @@ public partial class FormDiffractionSimulator : Form
 
         gVector = formMain.Crystal.VectorOfG.ToList();
         gVector.Sort((g1, g2) => g1.Length2.CompareTo(g2.Length2));
-        var maxG = Math.Sqrt(gVector.Max(g => g.Length2)) * 0.75;
+
+        var maxG = gVector.Count > 0 ? Math.Sqrt(gVector.Max(g => g.Length2)) * 0.75 : Math.PI / 4;
+
         var maxAngle = precession ? Math.Atan(maxG / r) : Math.Asin(maxG / 2 / r) * 2;
 
         var shift = precession ? new V3(0, 0, 0) : new V3(0, 0, -r * (1 - Math.Cos(maxAngle)) / 2);
@@ -2507,70 +2509,76 @@ public partial class FormDiffractionSimulator : Form
         }
         #endregion
 
-        #region 逆格子点の描画
-        var spotList = new List<Sphere>();
-        var textList = new List<(string text, float fontSize, V3 position, double popout, bool whiteEdge, Material mat)>();
-
-        var maxF = radioButtonIntensityExcitation.Checked ? 1 : gVector.Max(g => g.F.MagnitudeSquared());
         var spotRadius = numericBox3D_SpotRadius.Value;
-        var thredshold = numericBoxReciprocalThreshold.Value * 0.01;
-        spotList.Add(new Sphere(new V3(0, 0, 0) + shift, spotRadius, new Material(colorControl3D_Origin.Color, 1), DrawingMode.Surfaces));
-
-        Color colNear = colorControl3D_SpotsNear.Color, colFar = colorControl3D_SpotsFar.Color;
-        Color colScrewOrGlide = colorControlScrewGlide.Color, colLattice = colorControlForbiddenLattice.Color, colGeneral = colorControlNoCondition.Color;
-
         var matText = new Material(colorControl3D_lText.Color);
 
-        var transCoef = trackBar3D_Transparency.Value * trackBar3D_Transparency.Value;
-        Parallel.ForEach(gVector.Where(g => g.Length2 < maxG * maxG && (g.Flag1 || radioButtonIntensityExcitation.Checked)), new ParallelOptions() { MaxDegreeOfParallelism = 1 }, g =>
+        #region 逆格子点の描画
+
+        if (gVector.Count > 0)
         {
-            var vec = formMain.Crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
-            double dev = precession ? Math.Abs(vec.Z) : Math.Abs((vec - ewaldCenter).Length - r);
+            var spotList = new List<Sphere>();
+            var textList = new List<(string text, float fontSize, V3 position, double popout, bool whiteEdge, Material mat)>();
 
+            var maxF = radioButtonIntensityExcitation.Checked ? 1 : gVector.Max(g => g.F.MagnitudeSquared());
 
-            //スポット強度。励起誤差モードの時は、中心からの距離に比例。kinematicalモードの時は構造因子の二乗
-            var F2 = radioButtonIntensityExcitation.Checked ? Math.Max(0.1, maxF * (1 - g.Length / maxG)) : g.F.MagnitudeSquared();
-            if (F2 < maxF * thredshold || F2 == 0)
-                return;
+            var thredshold = numericBoxReciprocalThreshold.Value * 0.01;
+            spotList.Add(new Sphere(new V3(0, 0, 0) + shift, spotRadius, new Material(colorControl3D_Origin.Color, 1), DrawingMode.Surfaces));
 
-            var col = colFar; ;
-            if (radioButtonIntensityExcitation.Checked)
+            Color colNear = colorControl3D_SpotsNear.Color, colFar = colorControl3D_SpotsFar.Color;
+            Color colScrewOrGlide = colorControlScrewGlide.Color, colLattice = colorControlForbiddenLattice.Color, colGeneral = colorControlNoCondition.Color;
+
+            var transCoef = trackBar3D_Transparency.Value * trackBar3D_Transparency.Value;
+            Parallel.ForEach(gVector.Where(g => g.Length2 < maxG * maxG && (g.Flag1 || radioButtonIntensityExcitation.Checked)), new ParallelOptions() { MaxDegreeOfParallelism = 1 }, g =>
             {
-                if (g.Extinction.Length == 0)
-                    col = colGeneral;
-                else if (g.Extinction[0].Length == 1)
+                var vec = formMain.Crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
+                double dev = precession ? Math.Abs(vec.Z) : Math.Abs((vec - ewaldCenter).Length - r);
+
+                //スポット強度。励起誤差モードの時は、中心からの距離に比例。kinematicalモードの時は構造因子の二乗
+                var F2 = radioButtonIntensityExcitation.Checked ? Math.Max(0.1, maxF * (1 - g.Length / maxG)) : g.F.MagnitudeSquared();
+                if (F2 < maxF * thredshold || F2 == 0)
+                    return;
+
+                var col = colFar; ;
+                if (radioButtonIntensityExcitation.Checked)
                 {
-                    if (checkBoxExtinctionLattice.Checked)
-                        return;
-                    col = colLattice;
+                    if (g.Extinction.Length == 0)
+                        col = colGeneral;
+                    else if (g.Extinction[0].Length == 1)
+                    {
+                        if (checkBoxExtinctionLattice.Checked)
+                            return;
+                        col = colLattice;
+                    }
+                    else
+                    {
+                        if (checkBoxExtinctionAll.Checked)
+                            return;
+                        col = colScrewOrGlide;
+                    }
                 }
-                else
-                {
-                    if (checkBoxExtinctionAll.Checked)
-                        return;
-                    col = colScrewOrGlide;
-                }
-            }
 
-            if (checkBox3D_EwaldSphere.Checked && dev < spotRadius)
-                col = Miscellaneous.BlendColor(colFar, colNear, dev / spotRadius);
-            var trans = 1.0;
-            if (checkBox3D_MakeSpotsTransparent.Checked)
-                trans = dev / r < 100.0 / transCoef ? Math.Min(1 - dev / r * transCoef / 100.0, 1.0) : 0;
-            if (trans == 0f)
-                return;
+                if (checkBox3D_EwaldSphere.Checked && dev < spotRadius)
+                    col = Miscellaneous.BlendColor(colFar, colNear, dev / spotRadius);
 
-            var radius = Math.Pow(F2 / maxF, 1.0 / 3.0) * spotRadius; //逆格子点（構造因子の二乗の1/3状の半径）
-            var spot = new Sphere(vec.ToOpenTK() + shift, radius, new Material(col, trans), DrawingMode.Surfaces);
-            lock (lockObj)
-                spotList.Add(spot);
+                var trans = dev / spotRadius > 1 && checkBox3D_MakeSpotsTransparent.Checked ? Math.Min(1 - dev / r * transCoef / 100.0, 1.0) : 1.0;
+                if (trans <= 0)
+                    return;
 
-            if (checkBox3D_ShowIndices.Checked && dev < spotRadius)
+                if (checkBox3D_EwaldSphere.Checked && dev < spotRadius)
+                    col = Miscellaneous.BlendColor(colFar, colNear, dev / spotRadius);
+
+                var radius = Math.Pow(F2 / maxF, 1.0 / 3.0) * spotRadius; //逆格子点（構造因子の二乗の1/3状の半径）
+                var spot = new Sphere(vec.ToOpenTK() + shift, radius, new Material(col, trans), DrawingMode.Surfaces);
                 lock (lockObj)
-                    textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText));
-        });
-        glObjects.AddRange(spotList);
-        glObjects.AddRange(textList.Select(e => new TextObject(e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat)));
+                    spotList.Add(spot);
+
+                if (checkBox3D_ShowIndices.Checked && dev < spotRadius)
+                    lock (lockObj)
+                        textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText));
+            });
+            glObjects.AddRange(spotList);
+            glObjects.AddRange(textList.Select(e => new TextObject(e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat)));
+        }
         #endregion
 
 
@@ -2592,13 +2600,13 @@ public partial class FormDiffractionSimulator : Form
             if (checkBox3D_ShowIndices.Checked)
                 glObjects.AddRange(new GLObject[]
                 {
-                    new TextObject("Beam", 13, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText),
-                    new TextObject("Top", 13, new V3(0, 2, 0) + shift, 5, true, matText),
-                    new TextObject("Right", 13, new V3(2, 0, 0) + shift, 5, true, matText)
+                    new TextObject("Beam", 10f, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText),
+                    new TextObject("Top", 10f, new V3(0, 2, 0) + shift, 5, true, matText),
+                    new TextObject("Right", 10f, new V3(2, 0, 0) + shift, 5, true, matText)
                 });
         }
         #endregion
-    
+
         glControl.AddObjects(glObjects);
         glControl.Refresh();
     }

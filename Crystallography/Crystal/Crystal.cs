@@ -1302,7 +1302,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             VectorOfG[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };
         });
 
-        if (wavesource != WaveSource.None)//‹­“xŒvŽZ‚·‚éê‡ 250ms‚­‚ç‚¢
+        if (VectorOfG != null && VectorOfG.Length > 0 && wavesource != WaveSource.None)//‹­“xŒvŽZ‚·‚éê‡ 250ms‚­‚ç‚¢
         {
             Parallel.ForEach(VectorOfG, _g =>
             {
