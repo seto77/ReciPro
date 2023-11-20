@@ -264,6 +264,8 @@ public partial class WaveLengthControl : UserControl
         comboBoxXRayElement.SelectedIndex = 0;
     }
 
+    
+
     /// <summary>
     /// X線のElementが変更されたとき
     /// </summary>
@@ -327,6 +329,12 @@ public partial class WaveLengthControl : UserControl
             }
         }
     }
+
+    /// <summary>
+    /// 現状の原子番号、線種で、特性X線の波長とエネルギーをリセット
+    /// </summary>
+    public void SetCharacteristicXray() => comboBoxXrayLine_SelectedIndexChanged(new object(), new EventArgs());
+
 
     /// <summary>
     /// 線源が変更されたとき

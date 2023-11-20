@@ -18,7 +18,7 @@
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
     <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing"">Blue</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
         <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
@@ -154,7 +154,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 14.625pt</value>
   </data>
   <data name="radioButtonXray.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -167,7 +167,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 21</value>
+    <value>84, 32</value>
   </data>
   <data name="radioButtonXray.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -191,19 +191,19 @@
     <value>True</value>
   </data>
   <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 14.625pt</value>
   </data>
   <data name="radioButtonElectron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonElectron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
+    <value>0, 32</value>
   </data>
   <data name="radioButtonElectron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonElectron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 21</value>
+    <value>108, 32</value>
   </data>
   <data name="radioButtonElectron.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -227,19 +227,19 @@
     <value>True</value>
   </data>
   <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 14.625pt</value>
   </data>
   <data name="radioButtonNeutron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonNeutron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 42</value>
+    <value>0, 64</value>
   </data>
   <data name="radioButtonNeutron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonNeutron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
+    <value>110, 32</value>
   </data>
   <data name="radioButtonNeutron.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -266,13 +266,13 @@
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 20</value>
+    <value>6, 29</value>
   </data>
   <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 2</value>
+    <value>3, 3, 0, 3</value>
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 63</value>
+    <value>110, 96</value>
   </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
@@ -299,10 +299,10 @@
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 18</value>
+    <value>12, 27</value>
   </data>
   <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 2, 0</value>
+    <value>0, 0, 3, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -326,19 +326,19 @@
     <value>1</value>
   </data>
   <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 14.625pt</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
+    <value>0, 4</value>
   </data>
   <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 3, 3</value>
+    <value>0, 4, 4, 4</value>
   </data>
   <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 2, 2</value>
+    <value>6, 3, 3, 3</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 85</value>
+    <value>119, 128</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
@@ -380,7 +380,7 @@
     <value>True</value>
   </data>
   <data name="radioButtonMonochro.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt</value>
+    <value>Segoe UI Symbol, 15pt</value>
   </data>
   <data name="radioButtonMonochro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -392,7 +392,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonMonochro.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 23</value>
+    <value>156, 32</value>
   </data>
   <data name="radioButtonMonochro.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -416,19 +416,19 @@
     <value>True</value>
   </data>
   <data name="radioButtonFlatWhite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt</value>
+    <value>Segoe UI Symbol, 15pt</value>
   </data>
   <data name="radioButtonFlatWhite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonFlatWhite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 23</value>
+    <value>0, 32</value>
   </data>
   <data name="radioButtonFlatWhite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonFlatWhite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 23</value>
+    <value>131, 32</value>
   </data>
   <data name="radioButtonFlatWhite.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -459,19 +459,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>False</value>
   </data>
   <data name="radioButtonCustomWhite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt</value>
+    <value>Segoe UI Symbol, 15pt</value>
   </data>
   <data name="radioButtonCustomWhite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonCustomWhite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 46</value>
+    <value>0, 64</value>
   </data>
   <data name="radioButtonCustomWhite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonCustomWhite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 23</value>
+    <value>156, 32</value>
   </data>
   <data name="radioButtonCustomWhite.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -498,13 +498,13 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 20</value>
+    <value>6, 29</value>
   </data>
   <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 2</value>
+    <value>3, 3, 0, 3</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 69</value>
+    <value>156, 69</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -525,19 +525,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0</value>
   </data>
   <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 14.625pt</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 3</value>
+    <value>127, 4</value>
   </data>
   <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 3</value>
+    <value>4, 4, 0, 4</value>
   </data>
   <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 2, 2</value>
+    <value>6, 3, 3, 3</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 91</value>
+    <value>165, 101</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -564,7 +564,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 97</value>
+    <value>292, 136</value>
   </data>
   <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
@@ -600,22 +600,22 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>Fill</value>
   </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="waveLengthControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 17</value>
+    <value>4, 25</value>
   </data>
   <data name="waveLengthControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="waveLengthControl.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>500, 500</value>
+    <value>750, 750</value>
   </data>
   <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>152, 0</value>
+    <value>228, 0</value>
   </data>
   <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 81</value>
+    <value>288, 116</value>
   </data>
   <data name="waveLengthControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -633,13 +633,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0</value>
   </data>
   <data name="groupBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+    <value>Microsoft Sans Serif, 13.5pt</value>
   </data>
   <data name="groupBoxTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 100</value>
+    <value>4, 140</value>
+  </data>
+  <data name="groupBoxTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBoxTwoTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="groupBoxTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 101</value>
+    <value>296, 145</value>
   </data>
   <data name="groupBoxTwoTheta.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -666,10 +672,13 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>4, 30</value>
+  </data>
+  <data name="flowLayoutPanel7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 372</value>
+    <value>304, 554</value>
   </data>
   <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
@@ -690,13 +699,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>Left</value>
   </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+    <value>Segoe UI Symbol, 14.625pt, style=Bold</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 4</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 396</value>
+    <value>312, 588</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
@@ -738,7 +753,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonTwoTheta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -750,7 +765,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 19</value>
+    <value>151, 29</value>
   </data>
   <data name="radioButtonTwoTheta.TabIndex" type="System.Int32, mscorlib">
     <value>87</value>
@@ -774,19 +789,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonDspacing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonDspacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 19</value>
+    <value>0, 29</value>
   </data>
   <data name="radioButtonDspacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 19</value>
+    <value>116, 29</value>
   </data>
   <data name="radioButtonDspacing.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -810,19 +825,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonWavenumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonWavenumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonWavenumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 38</value>
+    <value>0, 58</value>
   </data>
   <data name="radioButtonWavenumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonWavenumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 19</value>
+    <value>165, 29</value>
   </data>
   <data name="radioButtonWavenumber.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -849,19 +864,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>False</value>
   </data>
   <data name="radioButtonEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonEnergy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 57</value>
+    <value>0, 87</value>
   </data>
   <data name="radioButtonEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 19</value>
+    <value>91, 29</value>
   </data>
   <data name="radioButtonEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -888,19 +903,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>False</value>
   </data>
   <data name="radioButtonTOF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonTOF.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonTOF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 76</value>
+    <value>0, 116</value>
   </data>
   <data name="radioButtonTOF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonTOF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 19</value>
+    <value>139, 29</value>
   </data>
   <data name="radioButtonTOF.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -924,10 +939,13 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 4</value>
+  </data>
+  <data name="flowLayoutPanel15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanel15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 95</value>
+    <value>165, 145</value>
   </data>
   <data name="flowLayoutPanel15.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
@@ -966,7 +984,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonAngleUnitDegree.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonAngleUnitDegree.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -978,7 +996,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonAngleUnitDegree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 19</value>
+    <value>116, 29</value>
   </data>
   <data name="radioButtonAngleUnitDegree.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1002,19 +1020,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonAngleUnitRadian.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonAngleUnitRadian.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonAngleUnitRadian.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 19</value>
+    <value>0, 29</value>
   </data>
   <data name="radioButtonAngleUnitRadian.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonAngleUnitRadian.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 19</value>
+    <value>91, 29</value>
   </data>
   <data name="radioButtonAngleUnitRadian.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1038,13 +1056,16 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="flowLayoutPanelTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 4</value>
+  </data>
+  <data name="flowLayoutPanelTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanelTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 38</value>
+    <value>116, 58</value>
   </data>
   <data name="flowLayoutPanelTwoTheta.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -1071,7 +1092,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonDspacingUnitAng.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonDspacingUnitAng.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1083,7 +1104,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonDspacingUnitAng.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 19</value>
+    <value>49, 29</value>
   </data>
   <data name="radioButtonDspacingUnitAng.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1107,19 +1128,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonDspacingUnitNm.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonDspacingUnitNm.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonDspacingUnitNm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+    <value>49, 0</value>
   </data>
   <data name="radioButtonDspacingUnitNm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonDspacingUnitNm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 19</value>
+    <value>63, 29</value>
   </data>
   <data name="radioButtonDspacingUnitNm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1140,13 +1161,16 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>1</value>
   </data>
   <data name="flowLayoutPanelDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="flowLayoutPanelDspacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 47</value>
+    <value>4, 70</value>
+  </data>
+  <data name="flowLayoutPanelDspacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanelDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 19</value>
+    <value>112, 29</value>
   </data>
   <data name="flowLayoutPanelDspacing.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -1176,7 +1200,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonWavenumberAngInv.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonWavenumberAngInv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1188,7 +1212,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonWavenumberAngInv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 19</value>
+    <value>56, 29</value>
   </data>
   <data name="radioButtonWavenumberAngInv.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1212,19 +1236,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonWavenumberUnitNmInv.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonWavenumberUnitNmInv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonWavenumberUnitNmInv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 0</value>
+    <value>56, 0</value>
   </data>
   <data name="radioButtonWavenumberUnitNmInv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonWavenumberUnitNmInv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 19</value>
+    <value>70, 29</value>
   </data>
   <data name="radioButtonWavenumberUnitNmInv.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1245,13 +1269,16 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>1</value>
   </data>
   <data name="flowLayoutPanelWavenumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="flowLayoutPanelWavenumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 72</value>
+    <value>4, 107</value>
+  </data>
+  <data name="flowLayoutPanelWavenumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanelWavenumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 19</value>
+    <value>126, 29</value>
   </data>
   <data name="flowLayoutPanelWavenumber.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -1278,7 +1305,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonEnergyUnitEv.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonEnergyUnitEv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1290,7 +1317,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonEnergyUnitEv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 19</value>
+    <value>86, 44</value>
   </data>
   <data name="radioButtonEnergyUnitEv.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1314,19 +1341,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonEnergyUnitKev.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonEnergyUnitKev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonEnergyUnitKev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 0</value>
+    <value>0, 44</value>
   </data>
   <data name="radioButtonEnergyUnitKev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonEnergyUnitKev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 19</value>
+    <value>100, 44</value>
   </data>
   <data name="radioButtonEnergyUnitKev.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1350,19 +1377,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonEnergyUnitMev.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonEnergyUnitMev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonEnergyUnitMev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 19</value>
+    <value>0, 87</value>
   </data>
   <data name="radioButtonEnergyUnitMev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonEnergyUnitMev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 19</value>
+    <value>110, 44</value>
   </data>
   <data name="radioButtonEnergyUnitMev.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1386,37 +1413,49 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 14.625pt</value>
+  </data>
+  <data name="numericBoxTwoTheta.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 14.625pt</value>
+  </data>
+  <data name="numericBoxTwoTheta.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxTwoTheta.FooterText" xml:space="preserve">
     <value>°</value>
+  </data>
+  <data name="numericBoxTwoTheta.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 14.625pt</value>
+  </data>
+  <data name="numericBoxTwoTheta.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxTwoTheta.HeaderText" xml:space="preserve">
     <value>2θ</value>
   </data>
   <data name="numericBoxTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 40</value>
+    <value>0, 90</value>
   </data>
   <data name="numericBoxTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxTwoTheta.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1500, 40</value>
   </data>
   <data name="numericBoxTwoTheta.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>2, 26</value>
   </data>
   <data name="numericBoxTwoTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
+    <value>0, 0, 2, 0</value>
   </data>
   <data name="numericBoxTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>150, 33</value>
   </data>
   <data name="numericBoxTwoTheta.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
   </data>
   <data name="numericBoxTwoTheta.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Arial, 14.625pt</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
     <value>test</value>
@@ -1434,13 +1473,16 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>3</value>
   </data>
   <data name="flowLayoutPanelEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="flowLayoutPanelEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 97</value>
+    <value>4, 144</value>
+  </data>
+  <data name="flowLayoutPanelEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanelEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 66</value>
+    <value>150, 99</value>
   </data>
   <data name="flowLayoutPanelEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -1467,7 +1509,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonTofUnitMicroSec.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonTofUnitMicroSec.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1479,7 +1521,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonTofUnitMicroSec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 19</value>
+    <value>82, 44</value>
   </data>
   <data name="radioButtonTofUnitMicroSec.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1503,19 +1545,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 0</value>
+    <value>0, 44</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 19</value>
+    <value>82, 44</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1535,116 +1577,143 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
   <data name="&gt;&gt;radioButtonTofUnitNanoSec.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxTofAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="numericBoxTofAngle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 14.625pt</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.FooterText" xml:space="preserve">
+  <data name="numericBoxTofAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 14.625pt</value>
+  </data>
+  <data name="numericBoxTofAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTofAngle.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.HeaderText" xml:space="preserve">
+  <data name="numericBoxTofAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 14.625pt</value>
+  </data>
+  <data name="numericBoxTofAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTofAngle.HeaderText" xml:space="preserve">
     <value>2θ</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
+  <data name="numericBoxTofAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 61</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+  <data name="numericBoxTofAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+  <data name="numericBoxTofAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1500, 40</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+  <data name="numericBoxTofAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>2, 26</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
+  <data name="numericBoxTofAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 2, 0</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+  <data name="numericBoxTofAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 33</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxTofAngle.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+  <data name="numericBoxTofAngle.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 14.625pt</value>
   </data>
-  <data name="numericBoxTofTakeOffAngle.ToolTip" xml:space="preserve">
+  <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
     <value>test</value>
   </data>
-  <data name="&gt;&gt;numericBoxTofTakeOffAngle.Name" xml:space="preserve">
-    <value>numericBoxTofTakeOffAngle</value>
+  <data name="&gt;&gt;numericBoxTofAngle.Name" xml:space="preserve">
+    <value>numericBoxTofAngle</value>
   </data>
-  <data name="&gt;&gt;numericBoxTofTakeOffAngle.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofAngle.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxTofTakeOffAngle.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofAngle.Parent" xml:space="preserve">
     <value>flowLayoutPanelNeutronTOF</value>
   </data>
-  <data name="&gt;&gt;numericBoxTofTakeOffAngle.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofAngle.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxTofDistance.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxTofLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxTofDistance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="numericBoxTofLength.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 14.625pt</value>
   </data>
-  <data name="numericBoxTofDistance.FooterText" xml:space="preserve">
+  <data name="numericBoxTofLength.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 14.625pt</value>
+  </data>
+  <data name="numericBoxTofLength.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTofLength.FooterText" xml:space="preserve">
     <value>m</value>
   </data>
-  <data name="numericBoxTofDistance.HeaderText" xml:space="preserve">
+  <data name="numericBoxTofLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 14.625pt</value>
+  </data>
+  <data name="numericBoxTofLength.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTofLength.HeaderText" xml:space="preserve">
     <value>L</value>
   </data>
-  <data name="numericBoxTofDistance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 45</value>
+  <data name="numericBoxTofLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 97</value>
   </data>
-  <data name="numericBoxTofDistance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
+  <data name="numericBoxTofLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
   </data>
-  <data name="numericBoxTofDistance.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+  <data name="numericBoxTofLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1500, 40</value>
   </data>
-  <data name="numericBoxTofDistance.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+  <data name="numericBoxTofLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>2, 26</value>
   </data>
-  <data name="numericBoxTofDistance.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
+  <data name="numericBoxTofLength.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 2, 0</value>
   </data>
-  <data name="numericBoxTofDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+  <data name="numericBoxTofLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 33</value>
   </data>
-  <data name="numericBoxTofDistance.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxTofLength.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
   </data>
-  <data name="numericBoxTofDistance.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+  <data name="numericBoxTofLength.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 14.625pt</value>
   </data>
-  <data name="numericBoxTofDistance.ToolTip" xml:space="preserve">
+  <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
     <value>test</value>
   </data>
-  <data name="&gt;&gt;numericBoxTofDistance.Name" xml:space="preserve">
-    <value>numericBoxTofDistance</value>
+  <data name="&gt;&gt;numericBoxTofLength.Name" xml:space="preserve">
+    <value>numericBoxTofLength</value>
   </data>
-  <data name="&gt;&gt;numericBoxTofDistance.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofLength.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxTofDistance.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofLength.Parent" xml:space="preserve">
     <value>flowLayoutPanelNeutronTOF</value>
   </data>
-  <data name="&gt;&gt;numericBoxTofDistance.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTofLength.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="flowLayoutPanelNeutronTOF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 13.5pt</value>
   </data>
   <data name="flowLayoutPanelNeutronTOF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 169</value>
+    <value>4, 251</value>
+  </data>
+  <data name="flowLayoutPanelNeutronTOF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanelNeutronTOF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 69</value>
+    <value>150, 104</value>
   </data>
   <data name="flowLayoutPanelNeutronTOF.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
@@ -1671,10 +1740,13 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>4, 30</value>
+  </data>
+  <data name="flowLayoutPanel12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanel12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 241</value>
+    <value>172, 359</value>
   </data>
   <data name="flowLayoutPanel12.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
@@ -1692,16 +1764,22 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>0</value>
   </data>
   <data name="groupBoxOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 14.625pt</value>
   </data>
   <data name="groupBoxOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 104</value>
+    <value>4, 157</value>
+  </data>
+  <data name="groupBoxOption.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="groupBoxOption.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>120, 0</value>
+    <value>180, 0</value>
+  </data>
+  <data name="groupBoxOption.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="groupBoxOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 265</value>
+    <value>180, 393</value>
   </data>
   <data name="groupBoxOption.TabIndex" type="System.Int32, mscorlib">
     <value>93</value>
@@ -1728,10 +1806,13 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>4, 30</value>
+  </data>
+  <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 372</value>
+    <value>188, 554</value>
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
@@ -1752,13 +1833,19 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>Left</value>
   </data>
   <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+    <value>Segoe UI Symbol, 14.625pt, style=Bold</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 3</value>
+    <value>324, 4</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 396</value>
+    <value>196, 588</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
@@ -1787,8 +1874,11 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
   <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="flowLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 402</value>
+    <value>524, 596</value>
   </data>
   <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
@@ -1809,7 +1899,7 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
+    <value>144, 144</value>
   </data>
   <data name="$this.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1818,16 +1908,16 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+    <value>Microsoft Sans Serif, 13.5pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 3, 2, 3</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>350, 150</value>
+    <value>525, 225</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 405</value>
+    <value>528, 600</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>

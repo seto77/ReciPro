@@ -217,7 +217,7 @@
             waveLengthControl.Energy = 8.04114721D;
             waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = false;
-            waveLengthControl.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            waveLengthControl.TextFont = new System.Drawing.Font("メイリオ", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             waveLengthControl.WaveLength = 0.1541871066667D;
             waveLengthControl.WaveSource = WaveSource.Xray;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
@@ -441,13 +441,13 @@
             radioButtonTofUnitNanoSec.UseVisualStyleBackColor = true;
             radioButtonTofUnitNanoSec.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
-            // numericBoxTofTakeOffAngle
+            // numericBoxTofAngle
             // 
-            resources.ApplyResources(numericBoxTofAngle, "numericBoxTofTakeOffAngle");
+            resources.ApplyResources(numericBoxTofAngle, "numericBoxTofAngle");
             numericBoxTofAngle.BackColor = System.Drawing.SystemColors.Control;
             numericBoxTofAngle.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxTofAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTofAngle.Name = "numericBoxTofTakeOffAngle";
+            numericBoxTofAngle.Name = "numericBoxTofAngle";
             numericBoxTofAngle.RadianValue = 1.5707963267948966D;
             numericBoxTofAngle.RoundErrorAccuracy = -1;
             numericBoxTofAngle.SkipEventDuringInput = false;
@@ -456,13 +456,13 @@
             numericBoxTofAngle.Value = 90D;
             numericBoxTofAngle.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
-            // numericBoxTofDistance
+            // numericBoxTofLength
             // 
-            resources.ApplyResources(numericBoxTofLength, "numericBoxTofDistance");
+            resources.ApplyResources(numericBoxTofLength, "numericBoxTofLength");
             numericBoxTofLength.BackColor = System.Drawing.SystemColors.Control;
             numericBoxTofLength.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxTofLength.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTofLength.Name = "numericBoxTofDistance";
+            numericBoxTofLength.Name = "numericBoxTofLength";
             numericBoxTofLength.RadianValue = 0.73303828583761843D;
             numericBoxTofLength.RoundErrorAccuracy = -1;
             numericBoxTofLength.SkipEventDuringInput = false;

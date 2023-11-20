@@ -3034,7 +3034,7 @@ Ewald sphere transparent</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 22</value>
+    <value>97, 22</value>
   </data>
   <data name="numericBoxStep.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

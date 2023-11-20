@@ -42,17 +42,20 @@ public partial class HorizontalAxisUserControl : UserControl
         {
             bool tmp = SkipAxisPropertyChangedEvent;
             SkipAxisPropertyChangedEvent = true;
+
             WaveSource = value.WaveSource;
+
             WaveColor = value.WaveColor;
 
             AxisMode = value.AxisMode;
 
-            XrayNumber = value.XrayElementNumber;
-            XrayLine = value.XrayLine;
             ElectronAccVol = value.ElectronAccVolatage;
             TakeoffAngle = value.EnergyTakeoffAngle;
             TofAngle = value.TofAngle;
             TofLength = value.TofLength;
+
+            XrayNumber = value.XrayElementNumber;
+            XrayLine = value.XrayLine;
 
             TwoThetaUnit = value.TwoThetaUnit;
             DspacingUnit = value.DspacingUnit;
@@ -66,9 +69,13 @@ public partial class HorizontalAxisUserControl : UserControl
                     WaveLength = value.WaveLength;
                 else if (XrayNumber == 0)
                     WaveLength = value.WaveLength;
+                else
+                    waveLengthControl.SetCharacteristicXray();
             }
             SkipAxisPropertyChangedEvent = tmp;
-            if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+
+            if (!SkipAxisPropertyChangedEvent)
+                AxisPropertyChanged?.Invoke();
         }
     }
 
