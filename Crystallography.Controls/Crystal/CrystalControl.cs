@@ -409,7 +409,7 @@ public partial class CrystalControl : UserControl
             MessageBox.Show("No candidate for the space group");
         else
         {
-            var dlg = new FormAnotherSpaceGroup() { Candidates = list.ToArray() };
+            var dlg = new FormAnotherSpaceGroup() { Candidates = [.. list] };
             if (dlg.ShowDialog() == DialogResult.OK)
                 toAnotherSpaceGroup(dlg.SeriesNum);
         }
@@ -464,7 +464,7 @@ public partial class CrystalControl : UserControl
         crystal.A *= _u;
         crystal.B *= _v;
         crystal.C *= _w;
-        crystal.Atoms = temp_atoms.ToArray();
+        crystal.Atoms = [.. temp_atoms];
 
         SetToInterface(true);
         GenerateFromInterface();

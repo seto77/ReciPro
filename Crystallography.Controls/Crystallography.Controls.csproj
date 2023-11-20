@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net8.0-windows7.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2023.11.20.1052</AssemblyVersion>
-    <FileVersion>2023.11.20.1052</FileVersion>
+    <AssemblyVersion>2023.11.20.1241</AssemblyVersion>
+    <FileVersion>2023.11.20.1241</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>

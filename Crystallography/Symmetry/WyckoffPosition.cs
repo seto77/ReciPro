@@ -68,6 +68,8 @@ public readonly struct WyckoffPosition
     /// </summary>
     public (bool X, bool Y, bool Z) Free { get; }
 
+    private static readonly char[] separator = [','];
+
     #endregion
 
     #region コンストラクタ
@@ -93,7 +95,7 @@ public readonly struct WyckoffPosition
             Free = (true, true, true);
         else
         {
-            var tempStr = PositionStr[0].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var tempStr = PositionStr[0].Split(separator, StringSplitOptions.RemoveEmptyEntries);
             if (tempStr.Length == 3)
                 Free = (tempStr[0].Contains('x'), tempStr[1].Contains('y'), tempStr[2].Contains('z'));
             else

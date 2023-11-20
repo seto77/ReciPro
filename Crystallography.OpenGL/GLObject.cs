@@ -612,9 +612,9 @@ abstract public class GLObject
 /// </summary>
 public class Clip
 {
-    private readonly List<Quads> Planes = new();
-    private readonly List<float> PrmsF = new();
-    public List<V4d> PrmsD = new();
+    private readonly List<Quads> Planes = [];
+    private readonly List<float> PrmsF = [];
+    public List<V4d> PrmsD = [];
     private int Program = 0;
     private int ClipPlanesLocation = 0, ClipNumLocation = 0;
 
@@ -986,7 +986,7 @@ public class Polyhedron : GLObject
             offset += (uint)(cand.Length + 1);
         }
 
-        Vertices = vList.ToArray();
+        Vertices = [.. vList];
         Indices = iList2.SelectMany(i => i).ToArray();
 
         Primitives = types.Select((t, i) => (t, iList2[i].Count)).ToArray();
@@ -1039,10 +1039,9 @@ public class Polyhedron : GLObject
 /// <summary>
 /// 平行六面体(原点と3辺のベクトルで定義)
 /// </summary>
-public class Parallelepiped : Polyhedron
+public class Parallelepiped(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMode mode) 
+    : Polyhedron(new[] { o, o + a, o + b, o + c, o + a + b, o + b + c, o + c + a, o + a + b + c }, mat, mode)
 {
-    public Parallelepiped(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMode mode)
-        : base(new[] { o, o + a, o + b, o + c, o + a + b, o + b + c, o + c + a, o + a + b + c }, mat, mode) { }
 }
 
 #endregion
@@ -1494,7 +1493,7 @@ public class Cylinder : Pipe
     /// <summary>
     /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
     /// </summary>
-    static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
+    static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
 
     public new static (int Slices, int Stacks) Default { get => _Default; set { _Default = value; SetDefaultCylinder(); } }
     private static (int Slices, int Stacks) _Default = (1, 16);
@@ -1589,7 +1588,7 @@ public class Torus : GLObject
         for (int i = 0; i < slices2; i++)
             vList.Add(vList[i]);
 
-        Vertices = vList.ToArray();
+        Vertices = [.. vList];
 
         var types = new List<PT>();
         var indices = new List<int[]>();
@@ -1616,10 +1615,10 @@ public class Torus : GLObject
                 }
             }
         types.Add(PT.Quads);
-        indices.Add(indexListSurfaces.ToArray());
+        indices.Add([.. indexListSurfaces]);
 
         types.Add(PT.Lines);
-        indices.Add(indexListEdges.ToArray());
+        indices.Add([.. indexListEdges]);
 
         Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
 

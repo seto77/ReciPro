@@ -72,11 +72,11 @@ unsafe public partial class GLControlAlpha : UserControl
     private Mat4f m4id = Mat4f.Identity;
     private readonly int CounterBuffer = 0;
     private readonly int LinkedListBuffer = 1;
-    private readonly uint[] buffers = new uint[2] { 0, 0 };
+    private readonly uint[] buffers = [0, 0];
     private uint headPtrTex = 0, clearBuf = 0;
 
     private Clip Clip = null;
-    private readonly List<GLObject> glObjects = new();
+    private readonly List<GLObject> glObjects = [];
     private readonly ParallelQuery<GLObject> glObjectsP;
     private readonly GLObject quad = null;
 

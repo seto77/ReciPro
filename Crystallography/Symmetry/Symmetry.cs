@@ -788,7 +788,7 @@ public readonly struct Symmetry
 
                 break;
         }
-        return str.ToArray();
+        return [.. str];
         #endregion
     }
     #endregion

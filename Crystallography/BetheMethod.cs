@@ -768,13 +768,13 @@ public class BetheMethod
         foreach (var beamsEach in BeamsPED.Where(beams => beams != null))
             foreach (var beam in beamsEach)
             {
-                if (!compiled.ContainsKey(beam.Index))
+                if (!compiled.TryGetValue(beam.Index, out Beam value))
                 {
                     compiled.Add(beam.Index, beam);
                     compiled[beam.Index].intensity = beam.Psi.MagnitudeSquared() / step;
                 }
                 else
-                    compiled[beam.Index].intensity += beam.Psi.MagnitudeSquared() / step;
+                    value.intensity += beam.Psi.MagnitudeSquared() / step;
             }
 
         //基準の方位でP,Q,Sなどを再セット
@@ -1048,7 +1048,7 @@ public class BetheMethod
         double coeff1 = radiusPix - 0.5, coeff2 = (radiusPix - 0.5) / maxK, coeff3 = (uint)(diameterPix - 1);
         tcP.ForAll(kIndex =>
         {
-            list[kIndex] = new List<(int qIndex, int[] N, double[] R, Complex[] Lenz)>();
+            list[kIndex] = [];
             foreach (var (qIndex, KQ) in qList.Select((b, i) => (m: i, KQ: k_xy[kIndex] + b.Vec.ToPointD)).Where(e => A(e.KQ)))
             {
                 double dX = KQ.X * coeff2 + coeff1, dY = -KQ.Y * coeff2 + coeff1;//K+Q の X,Y座標(実数)

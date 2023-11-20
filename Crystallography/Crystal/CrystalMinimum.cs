@@ -1,5 +1,6 @@
 using MemoryPack;
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -153,7 +154,7 @@ public partial class Crystal2
             if (atom[^1].AtomicNumber == 255)
             {
                 atom[^1].AtomicNumber = 1;
-                atom[^1].Isotope = new[] { 0.0, 100.0, 0.0 };
+                atom[^1].Isotope = [0.0, 100.0, 0.0];
             }
         }
 
@@ -198,18 +199,18 @@ public partial class Crystal2
             };
 
             atom2.AnisoTexts = atom2.IsU ?
-                new[] { Compose(a.Dsf.Aniso11*100, a.Dsf.Aniso11_err*100),
+                [ Compose(a.Dsf.Aniso11*100, a.Dsf.Aniso11_err*100),
                             Compose(a.Dsf.Aniso22*100, a.Dsf.Aniso22_err*100),
                             Compose(a.Dsf.Aniso33*100, a.Dsf.Aniso33_err*100),
                             Compose(a.Dsf.Aniso12*100, a.Dsf.Aniso12_err*100),
                             Compose(a.Dsf.Aniso23*100, a.Dsf.Aniso23_err*100),
-                            Compose(a.Dsf.Aniso31*100, a.Dsf.Aniso31_err*100)} :
-                new[] { Compose(a.Dsf.Aniso11, a.Dsf.Aniso11_err),
+                            Compose(a.Dsf.Aniso31*100, a.Dsf.Aniso31_err*100)] :
+                [ Compose(a.Dsf.Aniso11, a.Dsf.Aniso11_err),
                             Compose(a.Dsf.Aniso22, a.Dsf.Aniso22_err),
                             Compose(a.Dsf.Aniso33, a.Dsf.Aniso33_err),
                             Compose(a.Dsf.Aniso12, a.Dsf.Aniso12_err),
                             Compose(a.Dsf.Aniso23, a.Dsf.Aniso23_err),
-                            Compose(a.Dsf.Aniso31, a.Dsf.Aniso31_err)};
+                            Compose(a.Dsf.Aniso31, a.Dsf.Aniso31_err)];
 
             c2.atoms.Add(atom2);
         }
@@ -223,8 +224,8 @@ public partial class Crystal2
     [MemoryPackIgnore]
     private static readonly StringComparison Ord = StringComparison.Ordinal;
     [MemoryPackIgnore]
-    static readonly string[] toStringDic = new string[]
-        {
+    static readonly string[] toStringDic =
+        [
             #region 
             "00"
             ,"10"
@@ -483,7 +484,8 @@ public partial class Crystal2
             ,"E"
             ,""
             #endregion
-        };
+        ];
+
     //静的コンストラクタ
     //static Crystal2()
     //{
@@ -498,7 +500,7 @@ public partial class Crystal2
     //}
 
     [MemoryPackIgnore]
-    static readonly Dictionary<char, byte> toByteDic = new()
+    static readonly FrozenDictionary<char, byte> toByteDic = new Dictionary<char, byte>()
     {
         { '0', 0 },
         { '1', 1 },
@@ -516,7 +518,7 @@ public partial class Crystal2
         { '(', 13 },
         { ')', 13 },
         { 'E', 14 },
-    };
+    }.ToFrozenDictionary();
 
     /// <summary>
     /// 
