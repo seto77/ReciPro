@@ -262,7 +262,7 @@ public partial class GraphControl : UserControl
     {
         set
         {
-            srcProfileList = new List<Profile> { value };
+            srcProfileList = [value];
             InitializeAxis();
             resetDrawRange();
             Draw();
@@ -577,11 +577,11 @@ public partial class GraphControl : UserControl
     public void InitializeAxis()
     {
         if (srcProfileList == null) return;
-        destProfileList = new List<Profile>();
+        destProfileList = [];
         for (int i = 0; i < srcProfileList.Count; i++)
         {
             var temp = new Profile();
-            if (srcProfileList[i] != null && srcProfileList[i].Pt != null && srcProfileList[i].Pt.Any())
+            if (srcProfileList[i] != null && srcProfileList[i].Pt != null && srcProfileList[i].Pt.Count != 0)
                 temp = convertAxis(srcProfileList[i]);
             destProfileList.Add(temp);
             setDrawRangeLimit();
@@ -830,10 +830,10 @@ public partial class GraphControl : UserControl
                 else if (mode == DrawingMode.Point)
                     DrawProfilePoint();
 
-                if (verticalLineList.Any())
+                if (verticalLineList.Count != 0)
                     DrawLine();
 
-                if (peaks.Any())
+                if (peaks.Count != 0)
                     DrawPeaks();
             }
             pictureBox.Image = Bmp;
@@ -1353,7 +1353,7 @@ public partial class GraphControl : UserControl
     {
         if (MouseRangingMode)
         {
-            Pen pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash };
+            Pen pen = new(Brushes.Gray) { DashStyle = DashStyle.Dash };
             e.Graphics.DrawRectangle(pen, Math.Min(MouseRangeStart.X, MouseRangeEnd.X), Math.Min(MouseRangeStart.Y, MouseRangeEnd.Y),
                 Math.Abs(MouseRangeStart.X - MouseRangeEnd.X), Math.Abs(MouseRangeStart.Y - MouseRangeEnd.Y));
         }

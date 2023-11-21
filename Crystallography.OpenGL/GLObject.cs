@@ -141,7 +141,7 @@ abstract public class GLObject
 {
     #region static private な フィールド & プロパティ
 
-    private static readonly Dictionary<int, Location> Location = new();
+    private static readonly Dictionary<int, Location> Location = [];
 
     private static readonly int sizeOfInt = sizeof(int);
     private static readonly int sizeOfUInt = sizeof(uint);
@@ -252,7 +252,7 @@ abstract public class GLObject
     static GLObject()
     {
         //ビデオカード検索
-        GraphicsInfo = new List<(string Product, string Version)>();
+        GraphicsInfo = [];
         var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
         foreach (var envVar in searcher.Get())
             GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
@@ -760,7 +760,7 @@ public class Polygon : GLObject
         for (int i = 1; i < Primitives[0].Count - 1; i++)
             inputs.Add(Vertices[Indices[i]].Position.ToV3d());
 
-        var outputs = decompose(inputs.ToArray(), order);
+        var outputs = decompose([.. inputs], order);
 
         var results = new Polygon[outputs.Length];
         for (int i = 0; i < results.Length; i++)
@@ -798,7 +798,7 @@ public class Polygon : GLObject
     {
         if (ord == 0)//ゼロの場合、これ以上分解しない
         {
-            return new[] { srcVertex };
+            return [srcVertex];
         }
         else
         {
@@ -827,10 +827,10 @@ public class Polygon : GLObject
                     if (GLGeometry.PolygonInfo(quads, V3d.Zero).Indices.Count == 5) //四角形が凸になるか判定
                         resultVertices.Add(quads);
                     else
-                        resultVertices.Add(new[] { center, newVertices[n0], newVertices[n1] });
+                        resultVertices.Add([center, newVertices[n0], newVertices[n1]]);
                 }
                 else
-                    resultVertices.Add(new[] { center, newVertices[n0], newVertices[n1] });
+                    resultVertices.Add([center, newVertices[n0], newVertices[n1]]);
 
                 if (resultVertices[^1].Length == 4)//四角形の時
                 {
@@ -857,20 +857,18 @@ public class Polygon : GLObject
 /// <summary>
 /// 三角形
 /// </summary>
-public class Triangle : Polygon
+/// <remarks>
+/// 三角形
+/// </remarks>
+/// <param name="a">頂点a</param>
+/// <param name="b">頂点b</param>
+/// <param name="c">頂点c</param>
+/// <param name="mat"></param>
+/// <param name="mode"></param>
+public class Triangle(V3d a, V3d b, V3d c, Material mat, DrawingMode mode) : Polygon(new V3d[] { a, b, c }, mat, mode)
 {
     public Triangle(Vector3DBase a, Vector3DBase b, Vector3DBase c, Material mat, DrawingMode mode)
    : this(new V3d(a.X, a.Y, a.Z), new V3d(b.X, b.Y, b.Z), new V3d(c.X, c.Y, c.Z), mat, mode) { }
-
-    /// <summary>
-    /// 三角形
-    /// </summary>
-    /// <param name="a">頂点a</param>
-    /// <param name="b">頂点b</param>
-    /// <param name="c">頂点c</param>
-    /// <param name="mat"></param>
-    /// <param name="mode"></param>
-    public Triangle(V3d a, V3d b, V3d c, Material mat, DrawingMode mode) : base(new V3d[] { a, b, c }, mat, mode) { }
 }
 
 /// <summary>
@@ -891,14 +889,8 @@ public class Quads : Polygon
 /// <summary>
 /// 円 (ディスク)
 /// </summary>
-public class Disk : Polygon
-{
-    public Disk(Vector3DBase origin, Vector3DBase normal, double radius, Material mat, DrawingMode mode, int slices = 60)
-        : this(new V3d(origin.X, origin.Y, origin.Z), new V3d(normal.X, normal.Y, normal.Z), radius, mat, mode, slices) { }
-
-    public Disk(V3d origin, V3d normal, double radius, Material mat, DrawingMode mode, int slices = 60)
-        : base(
-             Enumerable.Range(0, slices).Select(i =>
+public class Disk(V3d origin, V3d normal, double radius, Material mat, DrawingMode mode, int slices = 60) : Polygon(
+         Enumerable.Range(0, slices).Select(i =>
              {
                  var p = radius * new V2d(Math.Sin((double)i / slices * 2 * Math.PI), Math.Cos((double)i / slices * 2 * Math.PI));
                  M3d rot;
@@ -911,7 +903,9 @@ public class Disk : Polygon
                  var z = rot.M31 * p.X + rot.M32 * p.Y + origin.Z;
                  return new V3d(x, y, z);
              }).ToArray(), mat, mode)
-    { }
+{
+    public Disk(Vector3DBase origin, Vector3DBase normal, double radius, Material mat, DrawingMode mode, int slices = 60)
+        : this(new V3d(origin.X, origin.Y, origin.Z), new V3d(normal.X, normal.Y, normal.Z), radius, mat, mode, slices) { }
 
     public Disk(V3d origin, V3d normal, double radius, float lineWidth, Material mat, DrawingMode mode, int slices = 60)
         : this(origin, normal, radius, mat, mode, slices)
@@ -1004,7 +998,7 @@ public class Polyhedron : GLObject
         {
             p[i] = new Polygon(Material, Mode);
 
-            p[i].Primitives = new[] { Primitives[i * 3], Primitives[i * 3 + 1], Primitives[i * 3 + 2] };
+            p[i].Primitives = [Primitives[i * 3], Primitives[i * 3 + 1], Primitives[i * 3 + 2]];
 
             p[i].Indices = new uint[p[i].Primitives.Sum(o => o.Count)];
 
@@ -1146,10 +1140,10 @@ public class Ellipsoid : GLObject
                         indexListEdges.AddRange(new[] { current + 1, current + 2 * slices + 2 });
                 }
         types.Add(PT.Quads);
-        indices.Add(indexListSurfaces.ToArray());
+        indices.Add([.. indexListSurfaces]);
 
         types.Add(PT.Lines);
-        indices.Add(indexListEdges.ToArray());
+        indices.Add([.. indexListEdges]);
 
         Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
         Primitives = types.Select((t, i) => (t, indices[i].Length)).ToArray();
@@ -1192,7 +1186,7 @@ public class Sphere : Ellipsoid
     /// <summary>
     /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
     /// </summary>
-    static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
+    static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
 
     static Sphere() => SetDefaultSphere();
     static void SetDefaultSphere()
@@ -1302,8 +1296,8 @@ public class Pipe : GLObject
             }
         }
 
-        List<V3d> v = new(), n = new();
-        List<int> c = new();
+        List<V3d> v = [], n = [];
+        List<int> c = [];
         //まず側面
         for (int h = 0; h <= slices; h++)
             for (int t = 0; t < stacks; t++)
@@ -1331,10 +1325,10 @@ public class Pipe : GLObject
         var indices = new List<int[]>();
 
         types.Add(PT.Quads);
-        indices.Add(indiceSide.ToArray());
+        indices.Add([.. indiceSide]);
 
         types.Add(PT.LineLoop);
-        indices.Add(indiceSide.ToArray());
+        indices.Add([.. indiceSide]);
 
         types.Add(PT.Points);
         indices.Add(Enumerable.Range(0, v.Count).ToArray());
@@ -1359,7 +1353,7 @@ public class Pipe : GLObject
                 }
                 indicesTop.Add(v.Count - stacks);
                 types.Add(PT.TriangleFan);
-                indices.Add(indicesTop.ToArray());
+                indices.Add([.. indicesTop]);
             }
             //終点側
             if (r2 > 0)
@@ -1378,7 +1372,7 @@ public class Pipe : GLObject
                 }
                 indicesBottom.Add(v.Count - stacks);
                 types.Add(PT.TriangleFan);
-                indices.Add(indicesBottom.ToArray());
+                indices.Add([.. indicesBottom]);
             }
         }
 
@@ -1677,7 +1671,7 @@ public class Mesh : GLObject
                 int i = h * width + w;
                 indicesList.AddRange(new[] { i, i + 1, i + width + 1, i + width, });
             }
-        Vertices = vList.ToArray();
+        Vertices = [.. vList];
         Indices = indicesList.Select(i => (uint)i).ToArray();
         Primitives = new[] { (PT.Quads, indicesList.Count) };
 
@@ -1691,12 +1685,12 @@ public class Mesh : GLObject
 /// </summary>
 public class TextObject : GLObject
 {
-    private static readonly Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, Vertex[] Vertices)> dic = new();
+    private static readonly Dictionary<(string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, Vertex[] Vertices)> dic = [];
 
-    public static readonly Dictionary<(int Program, int TextureNum), (int VBO, int VAO, int EBO)> DefaultDictionaly = new();
+    public static readonly Dictionary<(int Program, int TextureNum), (int VBO, int VAO, int EBO)> DefaultDictionaly = [];
 
     private static readonly V2f p00 = new(0, 0), p01 = new(0, 1), p10 = new(1, 0), p11 = new(1, 1);
-    private static readonly uint[] indices = new[] { (uint)0, (uint)1, (uint)2, (uint)3 };
+    private static readonly uint[] indices = [(uint)0, (uint)1, (uint)2, (uint)3];
     private static readonly (PT, int)[] primitives = new[] { (PT.Quads, 4) };
 
     public int TextureNum = -1;
@@ -1779,13 +1773,13 @@ public class TextObject : GLObject
                 // テクスチャのアンバインド
                 GL.BindTexture(TextureTarget.Texture2D, 0);
 
-                Vertices = new[]
-                {
+                Vertices =
+                [
                         new Vertex(new V3f(-width / 2f, +height / 2f, (float)popout), new V3f() ,p00),
                         new Vertex(new V3f(+width / 2f, +height / 2f, (float)popout), new V3f() ,p10),
                         new Vertex(new V3f(+width / 2f, -height / 2f, (float)popout), new V3f() ,p11),
                         new Vertex(new V3f(-width / 2f, -height / 2f, (float)popout), new V3f() ,p01)
-                 };
+                 ];
 
                 //辞書に登録
                 dic.Add((text, fontSize, mat.Argb, whiteEdge), (TextureNum, Vertices));

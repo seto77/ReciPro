@@ -114,7 +114,7 @@
     </LinkIncremental>
     <TargetExt>.dll</TargetExt>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net8.0-windows\</OutDir>
+    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net8.0-windows10.0.22621.0\</OutDir>
     <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>

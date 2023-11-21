@@ -315,7 +315,7 @@ public partial class ScalablePictureBox : UserControl
 
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public List<Symbol> Symbols { set; get; } = new List<Symbol>();
+    public List<Symbol> Symbols { set; get; } = [];
 
     /// <summary>
     /// 左上に表示するテキスト

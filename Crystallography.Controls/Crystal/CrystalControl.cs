@@ -666,7 +666,7 @@ public partial class CrystalControl : UserControl
     #region Orthorhombic 用の関数
     static (double X, double Y, double Z) exchangeOrtho(double x, double y, double z, int[] setting, bool inverse = false, bool abs = false)
     {
-        double[] src = new[] { x, y, z }, dst = new double[3];
+        double[] src = [x, y, z], dst = new double[3];
         for (int i = 0; i < 3; i++)
         {
             if (!inverse)
@@ -920,8 +920,8 @@ public partial class CrystalControl : UserControl
             if (sender == asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem)
             {
                 Array.Sort(density, index);
-                density = density.Reverse().ToArray();
-                index = index.Reverse().ToArray();
+                density = [.. density.Reverse()];
+                index = [.. index.Reverse()];
             }
 
             for (int i = 0; i < Crystal.Crystallites.TotalCrystalline; i++)

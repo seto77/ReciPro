@@ -4198,9 +4198,9 @@ public static class SymmetryStatic
         ];
 
     public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorList
-        = new Func<double, double, double, (double X, double Y, double Z)>[]
-        {
-			#region PositionGenerator
+        =
+        [
+            #region PositionGenerator
 (_,_,_) => (0,0,0),	//0
 (_,_,_) => (0,0,d12),	//1
 (_,_,_) => (0,0,d13),	//2
@@ -6171,7 +6171,7 @@ public static class SymmetryStatic
 (x,y,z) => (-z+d34,y+d34,-x+d14),	//1967
 (x,y,z) => (-z+d34,-y+d34,-x+d34)	//1968
 #endregion Coordinates
-        };
+        ];
 
     public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorListA, PositionGeneratorListB, PositionGeneratorListC, PositionGeneratorListI;
     public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorListR1, PositionGeneratorListR2;
@@ -12172,9 +12172,9 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                 if (let > 'z')
                     let = (char)(let - 58);
 
-                wyckoff.Add(new WyckoffPosition(i, lattice, let.ToString(), j, SiteSymmetryList[SiteSymmetryDictionary[i][j]], posStr.ToArray(), PosGen.ToArray(), j == 0 ? operations.ToArray() : null));
+                wyckoff.Add(new WyckoffPosition(i, lattice, let.ToString(), j, SiteSymmetryList[SiteSymmetryDictionary[i][j]], [.. posStr], PosGen.ToArray(), j == 0 ? operations.ToArray() : null));
             }
-            WyckoffPositions[i] = wyckoff.ToArray();
+            WyckoffPositions[i] = [.. wyckoff];
         }
         #endregion
 
