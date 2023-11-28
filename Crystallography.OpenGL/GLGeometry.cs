@@ -22,7 +22,7 @@ public static class GLGeometry
     {
         if (points.Count() == 3)
         {
-            var pts = points is V3d[]? (V3d[])points : points.ToArray();
+            var pts = points is V3d[] v ? v : points.ToArray();
             return (new List<uint>(new uint[] { 0, 1, 2, 0 }), (pts[0] + pts[1] + pts[2]) / 3, V3d.Cross(pts[1] - pts[0], pts[2] - pts[1]));
         }
 

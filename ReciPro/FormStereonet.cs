@@ -182,14 +182,14 @@ public partial class FormStereonet : Form
             if (radioButtonWulff.Checked)
             {
                 glObjects.Add(new Disk(new V3(0, 0, 0), new V3(0, 0, 1), 1, new Material(Color.White, 0.5), DrawingMode.Surfaces, 60));
-                glObjects.Add(new Lines(new V3[] { new V3(-1, 0, 0.005), new V3(1, 0, 0.005) }, 3f, new Material(color90)));
-                glObjects.Add(new Lines(new V3[] { new V3(0, -1, 0.005), new V3(0, 1, 0.005) }, 3f, new Material(color90)));
+                glObjects.Add(new Lines([new(-1, 0, 0.005), new(1, 0, 0.005)], 3f, new Material(color90)));
+                glObjects.Add(new Lines([new(0, -1, 0.005), new(0, 1, 0.005)], 3f, new Material(color90)));
             }
             else
             {
                 glObjects.Add(new Disk(new V3(0, 0, 1), new V3(0, 0, 1), Math.Sqrt(2), new Material(Color.White, 0.5), DrawingMode.Surfaces, 60));
-                glObjects.Add(new Lines(new V3[] { new V3(-sq2, 0, 1.005), new V3(sq2, 0, 1.005) }, 3f, new Material(color90)));
-                glObjects.Add(new Lines(new V3[] { new V3(0, -sq2, 1.005), new V3(0, sq2, 1.005) }, 3f, new Material(color90)));
+                glObjects.Add(new Lines([new(-sq2, 0, 1.005), new(sq2, 0, 1.005)], 3f, new Material(color90)));
+                glObjects.Add(new Lines([new(0, -sq2, 1.005), new(0, sq2, 1.005)], 3f, new Material(color90)));
                 glObjects.Add(new Disk(new V3(0, 0, 1), new V3(0, 0, 1), Math.Sqrt(2), 3f, new Material(color90), DrawingMode.Edges, 60));
             }
 

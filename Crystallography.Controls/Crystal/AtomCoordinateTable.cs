@@ -155,7 +155,7 @@ namespace Crystallography.Controls
             UpperX = atoms[^1].Distance + width * 2;
             LowerY = 0;
 
-            List<ControlPoint> controlPoint = new List<ControlPoint>();
+            List<ControlPoint> controlPoint = [];
             //すべてのCoordinatedAtomにたいする始点をPositiveに、終点をNegativeに格納する
             for (int i = 0; i < atoms.Count; i++)
             {

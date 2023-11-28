@@ -120,7 +120,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
         FormDiffractionSimulator.Draw();
     }
 
-    private readonly Stopwatch sw = new Stopwatch();
+    private readonly Stopwatch sw = new();
 
     /// <summary>
     /// 実行ボタン
@@ -345,7 +345,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
         }//メインループここまで
 
         compiledImage = compiledImage.Select(intensity => intensity * 1E6).ToArray();
-        PseudoBitmap pseud = new PseudoBitmap(compiledImage, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
+        PseudoBitmap pseud = new(compiledImage, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
 
         Tiff.Writer("temp.tif", compiledImage, 2, FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
         FormDiffractionSimulator.FormDiffractionSimulatorGeometry.ReadImage("temp.tif");
