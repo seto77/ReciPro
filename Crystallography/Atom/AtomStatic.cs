@@ -1,8 +1,6 @@
 ﻿using MathNet.Numerics.Integration;
 using MathNet.Numerics.LinearAlgebra.Double;
-using Microsoft.VisualBasic;
 using System;
-using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;

@@ -175,7 +175,7 @@ public partial class FormMain : Form
         get
         {
             if (listBox.SelectedItems.Count == 1)
-                return new[] { Crystal };
+                return [Crystal];
             else
             {
                 var crystals = listBox.SelectedItems.Cast<Crystal>().ToArray();
@@ -483,7 +483,7 @@ public partial class FormMain : Form
         var cry = new List<Crystal>();
         for (int i = 0; i < listBox.Items.Count; i++)
             cry.Add((Crystal)listBox.Items[i]);
-        ConvertCrystalData.SaveCrystalListXml(cry.ToArray(), UserAppDataPath + "default.xml");
+        ConvertCrystalData.SaveCrystalListXml([.. cry], UserAppDataPath + "default.xml");
     }
     #endregion
 
@@ -1122,7 +1122,7 @@ public partial class FormMain : Form
             else return;
         }
 
-        if (cry.Any())
+        if (cry.Count != 0)
         {
             if (clearPresentList)
                 listBox.Items.Clear();
@@ -1459,7 +1459,7 @@ public partial class FormMain : Form
         SetNearestUVW();
     }
 
-    private List<(int U, int V, int W, double Length)> uvwIndices = new();
+    private List<(int U, int V, int W, double Length)> uvwIndices = [];
 
     private void SetNearestUVW()//ç≈Ç‡ãﬂÇ¢uvwÇåüçı
     {

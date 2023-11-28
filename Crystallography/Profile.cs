@@ -1527,9 +1527,9 @@ public static class HorizontalAxisConverter
         if (src.AxisMode == HorizontalAxis.d)
         {
             if (src.DspacingUnit == LengthUnitEnum.Angstrom)
-                d = x;
-            else if (src.DspacingUnit == LengthUnitEnum.NanoMeter)
                 d = x.Select(d => d * 0.1).ToArray();
+            else if (src.DspacingUnit == LengthUnitEnum.NanoMeter)
+                d = x;
         }
 
         else if (src.AxisMode == HorizontalAxis.Angle)

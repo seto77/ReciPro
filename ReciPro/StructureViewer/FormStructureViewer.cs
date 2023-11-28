@@ -20,9 +20,9 @@ public partial class FormStructureViewer : Form
 {
     #region フィールド、プロパティ、
 
-    private static readonly List<int> neighborKeys = new();
-    private static readonly List<V3> dirs = new() { new V3(1, 0, 0), new V3(-1, 0, 0), new V3(0, 1, 0), new V3(0, -1, 0), new V3(0, 0, 1), new V3(0, 0, -1) };
-    private static readonly List<V3> vrts = new() { new V3(.5, .5, .5), new V3(-.5, .5, .5), new V3(.5, -.5, .5), new V3(.5, .5, -.5), new V3(.5, -.5, -.5), new V3(-.5, .5, -.5), new V3(-.5, -.5, .5), new V3(-.5, -.5, -.5) };
+    private static readonly List<int> neighborKeys = [];
+    private static readonly List<V3> dirs = [new V3(1, 0, 0), new V3(-1, 0, 0), new V3(0, 1, 0), new V3(0, -1, 0), new V3(0, 0, 1), new V3(0, 0, -1)];
+    private static readonly List<V3> vrts = [new V3(.5, .5, .5), new V3(-.5, .5, .5), new V3(.5, -.5, .5), new V3(.5, .5, -.5), new V3(.5, -.5, -.5), new V3(-.5, .5, -.5), new V3(-.5, -.5, .5), new V3(-.5, -.5, -.5)];
 
     public Crystal Crystal;
 
@@ -37,7 +37,7 @@ public partial class FormStructureViewer : Form
     private Matrix3d axes;
     private List<(V4 prm, Color color)> bounds;
 
-    public List<GLObject> GLObjects = new();
+    public List<GLObject> GLObjects = [];
     private readonly ParallelQuery<GLObject> GLObjectsP;
 
     public readonly object lockObj1 = new();
@@ -54,9 +54,9 @@ public partial class FormStructureViewer : Form
     private AtomControl atomControl;
     private BondInputControl bondControl;
 
-    private readonly List<GLControlAlpha> legendControls = new();
-    private readonly List<Label> legendLabels = new();
-    private readonly List<FlowLayoutPanel> legendPanels = new();
+    private readonly List<GLControlAlpha> legendControls = [];
+    private readonly List<Label> legendLabels = [];
+    private readonly List<FlowLayoutPanel> legendPanels = [];
 
     private readonly Stopwatch sw = new();
 
@@ -71,39 +71,28 @@ public partial class FormStructureViewer : Form
     #endregion
 
     #region ローカルクラス
-    private class atomID
+    private class atomID(in int index, in bool isInside, in int cellKey)
     {
         /// <summary>
         /// Boundsの内部かどうか
         /// </summary>
-        public bool IsInside;
+        public bool IsInside = isInside;
         /// <summary>
         /// 結晶構造ファイルの何番目の原子か (等価なものは同じ番号になる)
         /// </summary>
-        public int Index;
+        public int Index = index;
         /// <summary>
         /// 所属しているセルの場所
         /// </summary>
-        public int CellKey;
-        public atomID(in int index, in bool isInside, in int cellKey)
-        {
-            IsInside = isInside;
-            Index = index;
-            CellKey = cellKey;
-        }
+        public int CellKey = cellKey;
+
         public static int ComposeKey(int a, int b, int c) => a * 512 * 512 + b * 512 + c;
         public static int ComposeKey(V3 v) => ComposeKey((short)v.X, (short)v.Y, (short)v.Z);
     }
 
-    private class bondID
+    private class bondID(in int serialNumber1, in int serialNumber2)
     {
-        public readonly int SerialNumber1, SerialNumber2;
-
-        public bondID(in int serialNumber1, in int serialNumber2)
-        {
-            SerialNumber1 = serialNumber1;
-            SerialNumber2 = serialNumber2;
-        }
+        public readonly int SerialNumber1 = serialNumber1, SerialNumber2 = serialNumber2;
     }
 
     private class cellID { }
@@ -361,7 +350,7 @@ public partial class FormStructureViewer : Form
     private void initBounds()
     {
         sw.Restart();
-        bounds = new List<(V4 prm, Color color)>();
+        bounds = [];
         foreach (var bc in boundControl.GetAll().Where(b => b.Enabled && b.PlaneParams != null && b.Index != (0, 0, 0)))
             foreach (var (X, Y, Z, D) in bc.PlaneParams)
                 bounds.Add((new V4(X, Y, Z, D), bc.Color));
@@ -439,8 +428,8 @@ public partial class FormStructureViewer : Form
         }
 
         //まず検索対象とするCellの範囲を決める (全ての原子位置は 0以上 1未満である)
-        var cells = new List<V3>() { new V3(0, 0, 0) };
-        var outer = new List<V3>() { new V3(0, 0, 0) };
+        List<V3> cells = [new(0, 0, 0)];
+        List<V3> outer = [new(0, 0, 0)];
         while (outer.Count != 0 && cells.Count < 1000000)
         {
             var outerOld = outer.ToList();
@@ -511,14 +500,12 @@ public partial class FormStructureViewer : Form
     /// <summary>
     /// Bondの頂点を表すためのテンポラリーなクラス
     /// </summary>
-    private readonly struct bondVertex
+    private readonly struct bondVertex(in int objIndex, in int atomIndex, in int cellKey, in V3 origin, in int serial, in double r, in Material bondMat, in Material polyMat)
     {
-        public readonly int ObjIndex, AtomIndex, Key, Serial;
-        public readonly V3 O;
-        public readonly double R;
-        public readonly Material BondMat, PolyMat;
-        public bondVertex(in int objIndex, in int atomIndex, in int cellKey, in V3 origin, in int serial, in double r, in Material bondMat, in Material polyMat)
-        { ObjIndex = objIndex; AtomIndex = atomIndex; Key = cellKey; O = origin; Serial = serial; R = r; BondMat = bondMat; PolyMat = polyMat; }
+        public readonly int ObjIndex = objIndex, AtomIndex = atomIndex, Key = cellKey, Serial = serial;
+        public readonly V3 O = origin;
+        public readonly double R = r;
+        public readonly Material BondMat = bondMat, PolyMat = polyMat;
     }
 
     /// <summary>
@@ -540,25 +527,27 @@ public partial class FormStructureViewer : Form
             foreach (var element in (new[] { bond.Element1, bond.Element2 }).Where(element => !dic1.ContainsKey(element)))
             {
                 dic1.Add(element,
-                    GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
-                  .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
-                  {
-                      var s = e.Obj as Sphere;
-                      var id = s.Tag as atomID;
-                      if (!dicMaterial.TryGetValue(id.Index, out var bondMat))
-                      {
-                          bondMat = new Material(s.Material.Color, bondTrans);
-                          lock (lockObj1)
-                              dicMaterial.TryAdd(id.Index, bondMat);
-                      }
-                      if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat))
-                      {
-                          polyMat = new Material(s.Material.Color, polyTrans);
-                          lock (lockObj1)
-                              dicMaterial.TryAdd(id.Index + 1000, polyMat);
-                      }
-                      return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
-                  }).OrderBy(o => o.Key).ToArray());
+                    [
+                        .. GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
+                        .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
+                        {
+                          var s = e.Obj as Sphere;
+                          var id = s.Tag as atomID;
+                          if (!dicMaterial.TryGetValue(id.Index, out var bondMat))
+                          {
+                              bondMat = new Material(s.Material.Color, bondTrans);
+                              lock (lockObj1)
+                                  dicMaterial.TryAdd(id.Index, bondMat);
+                          }
+                          if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat))
+                          {
+                              polyMat = new Material(s.Material.Color, polyTrans);
+                              lock (lockObj1)
+                                  dicMaterial.TryAdd(id.Index + 1000, polyMat);
+                          }
+                          return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
+                        }).OrderBy(o => o.Key),
+                    ]);
             }
 
             //中心頂点に対する、頂点のリストを一気に作成
@@ -740,15 +729,15 @@ public partial class FormStructureViewer : Form
         //エッジの描画
         if (checkBoxUnitCell.Checked && checkBoxCellShowEdge.Checked)
         {
-            var axesArray = new V3[][][] {
-                    new V3[][] { new[] { zero, c0 }, new[] { c1, c1 + c0 } , new[] { c2, c2 + c0 } , new[] { c1 + c2, c1 + c2 + c0 } },
-                    new V3[][] { new[] { zero, c1 }, new[] { c2, c2 + c1 } , new[] { c0, c0 + c1 } , new[] { c2 + c0, c2 + c0 + c1 } },
-                    new V3[][] { new[] { zero, c2 }, new[] { c0, c0 + c2 } , new[] { c1, c1 + c2 } , new[] { c0 + c1, c0 + c1 + c2 } }
-                };
+            V3[][][] axesArray = [
+                    [[zero, c0], [c1, c1 + c0] , [c2, c2 + c0] , [c1 + c2, c1 + c2 + c0]],
+                    [[zero, c1], [c2, c2 + c1] , [c0, c0 + c1] , [c2 + c0, c2 + c0 + c1]],
+                    [[zero, c2], [c0, c0 + c2] , [c1, c1 + c2] , [c0 + c1, c0 + c1 + c2]]
+                ];
 
-            var colors = radioButtonCellEdgeColorAll.Checked ?
-                new int[] { colorControlCellEdge.Argb, colorControlCellEdge.Argb, colorControlCellEdge.Argb } :
-                new int[] { colorControlCellEdgeA.Argb, colorControlCellEdgeB.Argb, colorControlCellEdgeC.Argb };
+            int[] colors = radioButtonCellEdgeColorAll.Checked ?
+                [colorControlCellEdge.Argb, colorControlCellEdge.Argb, colorControlCellEdge.Argb] :
+                [colorControlCellEdgeA.Argb, colorControlCellEdgeB.Argb, colorControlCellEdgeC.Argb];
 
             for (int i = 0; i < 3; i++)
                 foreach (var edge in axesArray[i])
@@ -762,14 +751,14 @@ public partial class FormStructureViewer : Form
         if (checkBoxUnitCell.Checked && checkBoxCellShowPlane.Checked)
         {
             //面の描画
-            var planesArray = new V3[][][] {
-                    new V3[][] { new[] { zero, c1, c1 + c2, c2 }, new[] { c0, c0 + c1, c0 + c1 + c2, c2 + c0 } },
-                    new V3[][] { new[] { zero, c2, c2 + c0, c0 }, new[] { c1, c1 + c2, c1 + c2 + c0, c0 + c1 } },
-                    new V3[][] { new[] { zero, c0, c0 + c1, c1 }, new[] { c2, c2 + c0, c2 + c0 + c1, c1 + c2 } }
-                };
-            var colors = radioButtonCellPlaneColorAll.Checked ?
-                   new int[] { colorControlCellPlane.Argb, colorControlCellPlane.Argb, colorControlCellPlane.Argb } :
-                   new int[] { colorControlCellPlaneA.Argb, colorControlCellPlaneB.Argb, colorControlCellPlaneC.Argb };
+            V3[][][] planesArray = [
+                    [[zero, c1, c1 + c2, c2], [c0, c0 + c1, c0 + c1 + c2, c2 + c0]],
+                    [[zero, c2, c2 + c0, c0], [c1, c1 + c2, c1 + c2 + c0, c0 + c1]],
+                    [[zero, c0, c0 + c1, c1], [c2, c2 + c0, c2 + c0 + c1, c1 + c2]]
+                ];
+            int[] colors = radioButtonCellPlaneColorAll.Checked ?
+                   [colorControlCellPlane.Argb, colorControlCellPlane.Argb, colorControlCellPlane.Argb] :
+                   [colorControlCellPlaneA.Argb, colorControlCellPlaneB.Argb, colorControlCellPlaneC.Argb];
 
             for (int i = 0; i < 3; i++)
                 foreach (var edge in planesArray[i])
@@ -816,7 +805,7 @@ public partial class FormStructureViewer : Form
             {
                 var verticesList = new List<double[][]>();
                 for (int i = 0; i < (n == 0 ? 1 : 2); i++)
-                    verticesList.Add(Geometriy.GetClippedPolygon(new[] { prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D }, boundArray));
+                    verticesList.Add(Geometriy.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray));
 
                 flag = false;
                 foreach (var verticesArray in verticesList.Where(v => v.Length >= 3))
@@ -1059,7 +1048,7 @@ public partial class FormStructureViewer : Form
                         if (!depthList.ContainsKey(origin.Z))
                             depthList.Add(origin.Z, i);
                 }
-            if (depthList.Any())
+            if (depthList.Count != 0)
             {
                 var sphere = GLObjects[depthList.Last().Value] as Sphere;
                 textBoxInformation.AppendText(

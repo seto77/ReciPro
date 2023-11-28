@@ -1264,6 +1264,7 @@ public static class Ring
     }
     #endregion
 
+    #region GetUnrolledImageArray 傾き補正やピクセル補正を除去して切り開き画像を作り出すメソッド
 
     /// <summary>
     /// 傾き補正やピクセル補正を除去して切り開き画像を作り出すメソッド
@@ -1311,6 +1312,7 @@ public static class Ring
 
         return destPixels;
     }
+
 
     #region UnrolledImageArray ガンドルフィ
     private static double[] GetUnrolledImageArrayGandlofi(IntegralProperty iP, int yMin, int yMax, double sectorStep, double startTheta, double endTheta, double stepTheta)
@@ -1441,6 +1443,8 @@ public static class Ring
 			}*/
         return pixels;
     }
+    #endregion
+
     #endregion
 
     #region お蔵入り GetUnrolledImageArrayThread
@@ -1802,7 +1806,7 @@ public static class Ring
             {
                 R2 = new double[(int)((IP.EndDspacing - IP.StartDspacing) / IP.StepDspacing) + 1];
                 for (int i = R2.Length - 1; i >= 0; i--)
-                    R2[R2.Length - 1 - i] = 2 * Math.Asin(IP.WaveLength / 2 / (IP.StartDspacing + (i + 0.5) * IP.StepDspacing));
+                    R2[R2.Length - 1 - i] = 2 * Math.Asin(IP.WaveLength / 2 / (IP.StartDspacing + (i - 0.5) * IP.StepDspacing));
             }
             else if (IP.Mode == HorizontalAxis.Length)
             {
@@ -2644,11 +2648,11 @@ public static class Ring
         //IPの法線ベクトル
         (double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
 
-        var pt0 = new (double X, double Y)[8];
-        var pt1 = new (double X, double Y)[8];
-        var pt2 = new (double X, double Y)[8];
-        var pt3 = new (double X, double Y)[8];
-        var pt4 = new (double X, double Y)[8];
+        Span<(double X, double Y)> pt0 = stackalloc (double X, double Y)[8];
+        Span<(double X, double Y)> pt1 = stackalloc (double X, double Y)[8];
+        Span<(double X, double Y)> pt2 = stackalloc (double X, double Y)[8];
+        Span<(double X, double Y)> pt3 = stackalloc (double X, double Y)[8];
+        Span<(double X, double Y)> pt4 = stackalloc (double X, double Y)[8];
 
         //ここから積分開始
         for (int j = yMin; j < yMax; j++)
@@ -2785,7 +2789,10 @@ public static class Ring
                                 if (n4 == 0)//次のポリゴンが無かったら終了
                                     break;
 
-                                Array.Copy(pt4, pt1, n4);
+                                //Array.Copy(pt4, pt1, n4);
+                                for (int n = 0; i < n4; i++)
+                                    pt1[n] = pt4[n];
+
                                 n1 = n4;
 
                                 if (k2 == chiDivision - 1)
@@ -2795,7 +2802,10 @@ public static class Ring
 
                         if (n2 == 0)//次のポリゴンが無かったら終了
                             break;
-                        Array.Copy(pt2, pt0, n2);
+                        //Array.Copy(pt2, pt0, n2);
+                        for (int n = 0; i < n2; i++)
+                            pt0[n] = pt2[n];
+
                         n0 = n2;
 
                         #region 20200430 上のコードで十分速度が出るので、お蔵入り 
@@ -2856,7 +2866,7 @@ public static class Ring
     /// <param name="n"></param>
     /// <param name="pt"></param>
     /// <returns></returns>
-    private static double getArea(int n, (double X, double Y)[] pt)
+    private static double getArea(int n, Span<(double X, double Y)> pt)
     {
         if (n < 3) return 0;
         var result = pt[0].X * (pt[1].Y - pt[n - 1].Y) + pt[n - 1].X * (pt[0].Y - pt[n - 2].Y);
