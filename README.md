@@ -9,7 +9,7 @@ ReciPro is free software that provides a variety of crystallographic calculation
 
 ## Install
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
-* *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 7.0*** (not ***.Net Runtime 7.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/7.0).
+* *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 8.0*** (not ***.Net Runtime 8.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 ## Manual
   * Japanese version : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
