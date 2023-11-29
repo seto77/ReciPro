@@ -7,7 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
-        "\r\n ver4.871(2023/11/29)  Fixed bugs on 'Azimuthal Division Analysis' mode." +
+        "\r\n ver4.871(2023/11/29)  Fixed bugs on 'Structure Viewer'." +
         "\r\n ver4.870(2023/11/21)  Target framework has been changed to .Net Desktop Runtime 8.0." +
         "\r\n ver4.869(2023/10/26)  Added the function to simulate the Ewald sphere and the reciprocal vectors to 'Diffraction Simulator'." +
         "\r\n ver4.868(2023/10/23)  Fixed an issue with text rendering using OpenGL (see https://github.com/seto77/ReciPro/issues/26)." +
