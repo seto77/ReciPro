@@ -398,7 +398,8 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
     }
 
     private double cosTau, sinTau, excitationError, ewaldRadius, cameraLength2, waveLength;
-    private double spotRadiusOnDetector, error2, error3, sqrt2PI = Math.Sqrt(2 * Math.PI);
+    private double spotRadiusOnDetector, error2, error3;
+    static readonly double sqrt2PI = Math.Sqrt(2 * Math.PI);
 
     private void buttonSetFolder_Click(object sender, EventArgs e) => folderBrowserDialog.ShowDialog();
 
@@ -553,11 +554,8 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
         return pt.X > startArea.X && pt.Y > startArea.Y && pt.X < endArea.X && pt.Y < endArea.Y;
     }
 
-    public struct SpotInformation
+    public struct SpotInformation(double x, double y, double intensity, double sigma)
     {
-        public double X, Y, Intensity, Sigma;
-
-        public SpotInformation(double x, double y, double intensity, double sigma)
-        { X = x; Y = y; Intensity = intensity; Sigma = sigma; }
+        public double X = x, Y = y, Intensity = intensity, Sigma = sigma;
     }
 }

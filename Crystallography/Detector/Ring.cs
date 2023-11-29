@@ -1127,8 +1127,8 @@ public static class Ring
             {
                 int rMax = (int)Math.Ceiling(r[baseIndex] * sin3theta);
 
-                List<double> blurRatio = new List<double>();
-                List<int> blurIndex = new List<int>();
+                List<double> blurRatio = [];
+                List<int> blurIndex = [];
                 for (int y = Math.Max(j - rMax, 0); y <= Math.Min(j + rMax, SrcImgSize.Height - 1); y++)
                     for (int x = Math.Max(i - rMax, 0); x <= Math.Min(i + rMax, SrcImgSize.Width - 1); x++)
                     {
