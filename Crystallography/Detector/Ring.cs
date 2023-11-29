@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,91 +8,91 @@ namespace Crystallography;
 
 public class IntegralProperty
 {
-    //ŒõŠwŒn‘S‘Ì‚ÉŠÖŒW‚·‚é‚Æ‚±‚ë
+    //å…‰å­¦ç³»å…¨ä½“ã«é–¢ä¿‚ã™ã‚‹ã¨ã“ã‚
     /// <summary>
-    /// üŒ¹‚Ì”g’·
+    /// ç·šæºã®æ³¢é•·
     /// </summary>
     public double WaveLength;
 
     public WaveProperty WaveProperty;
 
     /// <summary>
-    /// ƒJƒƒ‰’·1 (ƒTƒ“ƒvƒ‹‚©‚çƒ_ƒCƒŒƒNƒgƒXƒ|ƒbƒg‚Ü‚Å‚Ì‹——£)
+    /// ã‚«ãƒ¡ãƒ©é•·1 (ã‚µãƒ³ãƒ—ãƒ«ã‹ã‚‰ãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã‚¹ãƒãƒƒãƒˆã¾ã§ã®è·é›¢)
     /// </summary>
-    public double FilmDistance;//ƒJƒƒ‰’·
+    public double FilmDistance;//ã‚«ãƒ¡ãƒ©é•·
 
     /// <summary>
-    /// ƒJƒƒ‰’·1 (ƒTƒ“ƒvƒ‹‚©‚çƒ_ƒCƒŒƒNƒgƒXƒ|ƒbƒg‚Ü‚Å‚Ì‹——£)
+    /// ã‚«ãƒ¡ãƒ©é•·1 (ã‚µãƒ³ãƒ—ãƒ«ã‹ã‚‰ãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã‚¹ãƒãƒƒãƒˆã¾ã§ã®è·é›¢)
     /// </summary>
-    public double CameraLength1 => FilmDistance;//ƒJƒƒ‰’·
+    public double CameraLength1 => FilmDistance;//ã‚«ãƒ¡ãƒ©é•·
 
     public enum CameraEnum { FlatPanel, Gandolfi }
 
     public CameraEnum Camera { get; set; } = CameraEnum.FlatPanel;
 
-    //IP‚Ì«¿‚ÉŠÖ‚·‚é‚Æ‚±‚ë
+    //IPã®æ€§è³ªã«é–¢ã™ã‚‹ã¨ã“ã‚
 
     /// <summary>
-    /// ƒ\[ƒX‰æ‘œ‚Ì•
+    /// ã‚½ãƒ¼ã‚¹ç”»åƒã®å¹…
     /// </summary>
     public int SrcWidth;
 
     /// <summary>
-    /// ƒ\[ƒX‰æ‘œ‚Ì‚‚³
+    /// ã‚½ãƒ¼ã‚¹ç”»åƒã®é«˜ã•
     /// </summary>
     public int SrcHeight;
 
     /// <summary>
-    /// ƒZƒ“ƒ^[(Direct Spot)‚ÌxˆÊ’u
+    /// ã‚»ãƒ³ã‚¿ãƒ¼(Direct Spot)ã®xä½ç½®
     /// </summary>
     public double CenterX;
 
     /// <summary>
-    /// ƒZƒ“ƒ^[(Direct Spot)‚ÌyˆÊ’u
+    /// ã‚»ãƒ³ã‚¿ãƒ¼(Direct Spot)ã®yä½ç½®
     /// </summary>
     public double CenterY;
 
     /// <summary>
-    /// ƒsƒNƒZƒ‹ƒTƒCƒY
+    /// ãƒ”ã‚¯ã‚»ãƒ«ã‚µã‚¤ã‚º
     /// </summary>
     public double PixSizeX, PixSizeY;
 
     /// <summary>
-    /// ƒsƒNƒZƒ‹‚Ì˜c‚İŠp“x
+    /// ãƒ”ã‚¯ã‚»ãƒ«ã®æ­ªã¿è§’åº¦
     /// </summary>
     public double ksi = 0;
 
     /// <summary>
-    /// IP‚Ì‰ñ“]Šp“x
+    /// IPã®å›è»¢è§’åº¦
     /// </summary>
     public double phi;
 
     /// <summary>
-    /// IP‚Ì‰ñ“]²‚ÌŠp“x;
+    /// IPã®å›è»¢è»¸ã®è§’åº¦;
     /// </summary>
     public double tau;
 
     public double GandolfiRadius { get; set; }
 
     /// <summary>
-    /// ˜p‹Èƒpƒ‰ƒ[ƒ^
+    /// æ¹¾æ›²ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
     /// </summary>
     public double SpericalRadiusInverse { get; set; } = 0;
 
-    //ˆêŸŒ³‰»‚Ì•û–@
+    //ä¸€æ¬¡å…ƒåŒ–ã®æ–¹æ³•
 
     /// <summary>
-    /// true‚Ìê‡‚ÍƒRƒ“ƒZƒ“ƒgƒŠƒbƒNƒ‚[ƒh@false‚Ìê‡‚Íƒ‰ƒfƒBƒAƒ‹ƒ‚[ƒh
+    /// trueã®å ´åˆã¯ã‚³ãƒ³ã‚»ãƒ³ãƒˆãƒªãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰ã€€falseã®å ´åˆã¯ãƒ©ãƒ‡ã‚£ã‚¢ãƒ«ãƒ¢ãƒ¼ãƒ‰
     /// </summary>
     public bool ConcentricMode;
 
     /// <summary>
-    /// ƒRƒ“ƒZƒ“ƒgƒŠƒbƒNƒ‚[ƒh‚Ìê‡Astart, end ,step‚ªƒAƒ“ƒOƒ‹ƒ‚[ƒh‚©d’lƒ‚[ƒh‚©B@ƒ‰ƒfƒBƒAƒ‹ƒ‚[ƒh‚Ìê‡, Radius‚ÆRadiusRange‚ªƒAƒ“ƒOƒ‹ƒ‚[ƒh‚©Šp“xƒ‚[ƒh‚©
+    /// ã‚³ãƒ³ã‚»ãƒ³ãƒˆãƒªãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰ã®å ´åˆã€start, end ,stepãŒã‚¢ãƒ³ã‚°ãƒ«ãƒ¢ãƒ¼ãƒ‰ã‹då€¤ãƒ¢ãƒ¼ãƒ‰ã‹ã€‚ã€€ãƒ©ãƒ‡ã‚£ã‚¢ãƒ«ãƒ¢ãƒ¼ãƒ‰ã®å ´åˆ, Radiusã¨RadiusRangeãŒã‚¢ãƒ³ã‚°ãƒ«ãƒ¢ãƒ¼ãƒ‰ã‹è§’åº¦ãƒ¢ãƒ¼ãƒ‰ã‹
     /// </summary>
     public HorizontalAxis Mode;
 
     /// <summary>
-    /// ƒRƒ“ƒZƒ“ƒgƒŠƒbƒNAƒ‰ƒfƒBƒAƒ‹ƒ‚[ƒh—¼•û‚ÅAÏ•ª‘ÎÛ‚Æ‚È‚éŠp“x”ÍˆÍ‚ğ•\¦‚·‚é‚©‚Ç‚¤‚©
+    /// ã‚³ãƒ³ã‚»ãƒ³ãƒˆãƒªãƒƒã‚¯ã€ãƒ©ãƒ‡ã‚£ã‚¢ãƒ«ãƒ¢ãƒ¼ãƒ‰ä¸¡æ–¹ã§ã€ç©åˆ†å¯¾è±¡ã¨ãªã‚‹è§’åº¦ç¯„å›²ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹
     /// </summary>
 
     public double StepAngle, StartAngle, EndAngle;
@@ -104,30 +104,30 @@ public class IntegralProperty
     public double RadialRadiusDspacing, RadialRadiusDspacingRange;
 
     /// <summary>
-    /// true‚Ìê‡‚Í‹éŒ`ƒ‚[ƒh false‚Ìê‡‚ÍƒZƒNƒ^[ƒ‚[ƒh
+    /// trueã®å ´åˆã¯çŸ©å½¢ãƒ¢ãƒ¼ãƒ‰ falseã®å ´åˆã¯ã‚»ã‚¯ã‚¿ãƒ¼ãƒ¢ãƒ¼ãƒ‰
     /// </summary>
     public bool IsRectangle;
 
-    public int ThresholdMax, ThresholdMin;//è‡’l
+    public int ThresholdMax, ThresholdMin;//é–¾å€¤
 
     public int Edge;
     public bool DoesExcludeEdge;
 
     public bool IsTiltCorrection;
 
-    public bool IsBraggBrentanoMode;//ƒuƒ‰ƒbƒOƒuƒŒƒ“ƒ^[ƒmƒ‚[ƒh‚Åo—Í‚·‚é‚©‚Ç‚¤‚©
+    public bool IsBraggBrentanoMode;//ãƒ–ãƒ©ãƒƒã‚°ãƒ–ãƒ¬ãƒ³ã‚¿ãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰ã§å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹
 
-    //Rectangleƒ‚[ƒh‚Ì‚Æ‚«
+    //Rectangleãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
     public bool IsFull;
 
-    public double RectangleBand;//ƒoƒ“ƒh‚Ì‘¾‚³
-    public double RectangleAngle;//Šp“x
-    public bool RectangleIsBothSide;//”¼’¼ü‚©‚Ç‚¤‚©
+    public double RectangleBand;//ãƒãƒ³ãƒ‰ã®å¤ªã•
+    public double RectangleAngle;//è§’åº¦
+    public bool RectangleIsBothSide;//åŠç›´ç·šã‹ã©ã†ã‹
 
-    //Sectorƒ‚[ƒh‚Ì‚Æ‚«
-    public double SectorStartAngle;//ŠJnŠp“x
+    //Sectorãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
+    public double SectorStartAngle;//é–‹å§‹è§’åº¦
 
-    public double SectorEndAngle;//I—¹Šp“x
+    public double SectorEndAngle;//çµ‚äº†è§’åº¦
 
     public IntegralProperty()
     {
@@ -135,11 +135,11 @@ public class IntegralProperty
 }
 
 /// <summary>
-/// DebyeScherrer ‚ÌŠT—v‚Ìà–¾‚Å‚·B
+/// DebyeScherrer ã®æ¦‚è¦ã®èª¬æ˜ã§ã™ã€‚
 /// </summary>
 public static class Ring
 {
-    #region ƒtƒB[ƒ‹ƒhAƒƒ\ƒbƒhAenum
+    #region ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã€ãƒ¡ã‚½ãƒƒãƒ‰ã€enum
 
     public enum Rotation { Clockwise, Counterclockwise }
     public enum Direction { Right, Left, Top, Bottom }
@@ -149,7 +149,7 @@ public static class Ring
 
     public enum ImageTypeEnum
     {
-        #region ‰æ‘œƒ^ƒCƒv
+        #region ç”»åƒã‚¿ã‚¤ãƒ—
 
         Unknown,
         Rigaku_RAxis_IV,
@@ -159,29 +159,29 @@ public static class Ring
         Brucker_CCD,
         Fuji_FDL,
         IPAImage,
-        ITEX, //’†g‚Í’P‚È‚étiff
+        ITEX, //ä¸­èº«ã¯å˜ãªã‚‹tiff
         RayonixSX200,//
-        FLA7000, //GEƒwƒ‹ƒXƒPƒA‚ÌgelŒ`® (tiff)
-        Rigaku_RAxis_IV_Osc,//RAxisIV‚Ì—h“®
+        FLA7000, //GEãƒ˜ãƒ«ã‚¹ã‚±ã‚¢ã®gelå½¢å¼ (tiff)
+        Rigaku_RAxis_IV_Osc,//RAxisIVã®æºå‹•
         Tiff,//Tiff
 
         /// <summary>
-        /// Marresearch‚ÌMARƒtƒ@ƒCƒ‹
+        /// Marresearchã®MARãƒ•ã‚¡ã‚¤ãƒ«
         /// </summary>
         MAR,
 
         /// <summary>
-        /// Marresearch‚ÌCCD
+        /// Marresearchã®CCD
         /// </summary>
         MCCD,
 
         /// <summary>
-        /// Perkin ElmerĞ‚Ìƒtƒ‰ƒbƒgƒpƒlƒ‹
+        /// Perkin Elmerç¤¾ã®ãƒ•ãƒ©ãƒƒãƒˆãƒ‘ãƒãƒ«
         /// </summary>
         HIS,
 
         /// <summary>
-        /// HDF5Œ`® (SACLA‚Ìbl3)
+        /// HDF5å½¢å¼ (SACLAã®bl3)
         /// </summary>
         HDF5,
 
@@ -191,38 +191,38 @@ public static class Ring
         DM,
 
         /// <summary>
-        /// ADSCĞ
+        /// ADSCç¤¾
         /// </summary>
         ADSC,
 
         /// <summary>
-        /// RadIconĞ (Šg’£qraw)
+        /// RadIconç¤¾ (æ‹¡å¼µå­raw)
         /// </summary>
         RadIcon,
 
         /// <summary>
-        /// DexelaĞ, (Šg’£qSMV)
+        /// Dexelaç¤¾, (æ‹¡å¼µå­SMV)
         /// </summary>
         SMV,
 
         /// <summary>
-        /// RadIconĞAPF‚Åg—p‚³‚ê‚Ä‚¢‚é (references\ImageExsample\BL18c Äç‚³‚ñ )
+        /// RadIconç¤¾ã€PFã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ (references\ImageExsample\BL18c æŸ´å’²ã•ã‚“ )
         /// </summary>
         RadIconPF,
 
         /// <summary>
-        /// MRC2014ƒtƒ@ƒCƒ‹. FEIĞ‚ÌTEM‚ÌƒJƒƒ‰‚Åg‚í‚ê‚é. http://www.ccpem.ac.uk/mrc_format/mrc_format.php ‚¨‚æ‚Ñ \references\TalosF200\Manual ‚ğQÆ
+        /// MRC2014ãƒ•ã‚¡ã‚¤ãƒ«. FEIç¤¾ã®TEMã®ã‚«ãƒ¡ãƒ©ã§ä½¿ã‚ã‚Œã‚‹. http://www.ccpem.ac.uk/mrc_format/mrc_format.php ãŠã‚ˆã³ \references\TalosF200\Manual ã‚’å‚ç…§
         /// </summary>
         MRC,
 
         /// <summary>
-        /// PILATUS‚Åo—Í‚³‚ê‚½cbfƒtƒ@ƒCƒ‹‚ğAADXV‚Æ‚¢‚¤ƒ\ƒtƒg‚Å•ÏŠ·‚µ‚½ƒtƒH[ƒ}ƒbƒg (Šg’£qimg). (references\ImageExsample\ADXV Äç‚³‚ñ )
+        /// PILATUSã§å‡ºåŠ›ã•ã‚ŒãŸcbfãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã€ADXVã¨ã„ã†ã‚½ãƒ•ãƒˆã§å¤‰æ›ã—ãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ (æ‹¡å¼µå­img). (references\ImageExsample\ADXV æŸ´å’²ã•ã‚“ )
         /// </summary>
         ADXV
 
 
 
-        #endregion ‰æ‘œƒ^ƒCƒv
+        #endregion ç”»åƒã‚¿ã‚¤ãƒ—
     }
 
     //public static WaitDlg wd;
@@ -233,17 +233,17 @@ public static class Ring
     public static List<double> IntensityOriginal = new();
     public static Size SrcImgSizeOriginal;
 
-    //ƒoƒbƒNƒOƒ‰ƒEƒ“ƒh‰‰Z‚Åg—p
+    //ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰æ¼”ç®—ã§ä½¿ç”¨
     public static List<double> Background = new();
 
     public static double BackgroundCoeff = 1;
 
-    //SequentialImage(*.his,*.h5)‚Å—˜—p‚·‚é•Ï”
+    //SequentialImage(*.his,*.h5)ã§åˆ©ç”¨ã™ã‚‹å¤‰æ•°
     public static List<List<double>> SequentialImageIntensities = new();
 
     public static List<string> SequentialImageNames = new();
 
-    //HDF *h5ƒtƒ@ƒCƒ‹‚Å‚Ì‚İ‚Ég—p‚·‚é
+    //HDF *h5ãƒ•ã‚¡ã‚¤ãƒ«ã§ã®ã¿ã«ä½¿ç”¨ã™ã‚‹
     public static List<double> SequentialImageEnergy = new();
 
     public static List<double> SequentialImagePulsePower = new();
@@ -254,36 +254,36 @@ public static class Ring
 
     public static ImageTypeEnum ImageType = ImageTypeEnum.Unknown;
 
-    public static List<bool> IsValid = new ();//—LŒø‚È(ƒ}ƒXƒN‚³‚ê‚Ä‚¢‚È‚¢“_‚©‚Ç‚¤‚©)
-                                                        //public static ParallelQuery<bool> IsValidP;
+    public static List<bool> IsValid = new();//æœ‰åŠ¹ãª(ãƒã‚¹ã‚¯ã•ã‚Œã¦ã„ãªã„ç‚¹ã‹ã©ã†ã‹)
+                                             //public static ParallelQuery<bool> IsValidP;
 
-    public static List<bool> IsSpots = new ();//ƒXƒ|ƒbƒgó‚Ì“_‚©‚Ç‚¤‚©
-                                                        //public static ParallelQuery<bool> IsSpotsP;
+    public static List<bool> IsSpots = new();//ã‚¹ãƒãƒƒãƒˆçŠ¶ã®ç‚¹ã‹ã©ã†ã‹
+                                             //public static ParallelQuery<bool> IsSpotsP;
 
-    public static List<bool> IsThresholdOver = new ();
+    public static List<bool> IsThresholdOver = new();
     //public static ParallelQuery<bool> IsThresholdOverP;
 
-    public static List<bool> IsThresholdUnder = new ();//–O˜a‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
-                                                                 //public static ParallelQuery<bool> IsThresholdUnderP;
+    public static List<bool> IsThresholdUnder = new();//é£½å’Œã—ã¦ã„ã‚‹ã‹ã©ã†ã‹
+                                                      //public static ParallelQuery<bool> IsThresholdUnderP;
 
 
     /// <summary>
-    /// w’è‚³‚ê‚½Ï•ª—Ìˆæ(‹éŒ`AƒZƒNƒ^[)‚Ì”ÍˆÍŠO‚Ìê‡‚Ítrue
+    /// æŒ‡å®šã•ã‚ŒãŸç©åˆ†é ˜åŸŸ(çŸ©å½¢ã€ã‚»ã‚¯ã‚¿ãƒ¼)ã®ç¯„å›²å¤–ã®å ´åˆã¯true
     /// </summary>
-    public static List<bool> IsOutsideOfIntegralRegion = new();//Ï•ªƒGƒŠƒA‚ÌŠO(ˆ½‚¢‚Í‘I‘ğ—Ìˆæ‚ÌŠO)
-                                                                          //public static ParallelQuery<bool> IsOutsideOfIntegralRegionP;
+    public static List<bool> IsOutsideOfIntegralRegion = new();//ç©åˆ†ã‚¨ãƒªã‚¢ã®å¤–(æˆ–ã„ã¯é¸æŠé ˜åŸŸã®å¤–)
+                                                               //public static ParallelQuery<bool> IsOutsideOfIntegralRegionP;
 
 
     /// <summary>
-    /// w’è‚³‚ê‚½Ï•ª‘ÎÛŠp“x‚Ì”ÍˆÍŠO‚Ìê‡‚Ítrue
+    /// æŒ‡å®šã•ã‚ŒãŸç©åˆ†å¯¾è±¡è§’åº¦ã®ç¯„å›²å¤–ã®å ´åˆã¯true
     /// </summary>
-    public static List<bool> IsOutsideOfIntegralProperty = new ();//ƒGƒŠƒA‚ÌŠO(ˆ½‚¢‚Í‘I‘ğ—Ìˆæ‚ÌŠO)
-                                                                            //public static ParallelQuery<bool> IsOutsideOfIntegralPropertyP;
+    public static List<bool> IsOutsideOfIntegralProperty = new();//ã‚¨ãƒªã‚¢ã®å¤–(æˆ–ã„ã¯é¸æŠé ˜åŸŸã®å¤–)
+                                                                 //public static ParallelQuery<bool> IsOutsideOfIntegralPropertyP;
 
 
     public static string Comments = "";
 
-    //  public static double ScaleFactor = 1; //‹­“x‚Éæ‚¸‚éˆöq (“üËXü‹­“x‚Åƒm[ƒ}ƒ‰ƒCƒY‚·‚éê‡)
+    //  public static double ScaleFactor = 1; //å¼·åº¦ã«ä¹—ãšã‚‹å› å­ (å…¥å°„Xç·šå¼·åº¦ã§ãƒãƒ¼ãƒãƒ©ã‚¤ã‚ºã™ã‚‹å ´åˆ)
 
     public static bool[] IsCalcPosition;
 
@@ -297,25 +297,25 @@ public static class Ring
 
     /*
 		/// <summary>
-		/// 1ƒsƒNƒZƒ‹‚ª‘Š“–‚·‚éÀ‹óŠÔ(‚ ‚é‚¢‚Í‹t‹óŠÔ)‚Ì’·‚³ (’PˆÊ‚Í PixelUnit‚Åw’è)
+		/// 1ãƒ”ã‚¯ã‚»ãƒ«ãŒç›¸å½“ã™ã‚‹å®Ÿç©ºé–“(ã‚ã‚‹ã„ã¯é€†ç©ºé–“)ã®é•·ã• (å˜ä½ã¯ PixelUnitã§æŒ‡å®š)
 		/// </summary>
 		public static double PixelScale;
 		/// <summary>
-		/// 1ƒsƒNƒZƒ‹‚ª‘Š“–‚·‚éÀ‹óŠÔ(‚ ‚é‚¢‚Í‹t‹óŠÔ)‚Ì’PˆÊ
+		/// 1ãƒ”ã‚¯ã‚»ãƒ«ãŒç›¸å½“ã™ã‚‹å®Ÿç©ºé–“(ã‚ã‚‹ã„ã¯é€†ç©ºé–“)ã®å˜ä½
 		/// </summary>
 		public static PixelUnitEnum PixelUnit;
 		*/
 
-    // DMƒtƒ@ƒCƒ‹‚Ìˆ×‚ÌƒvƒƒpƒeƒB
+    // DMãƒ•ã‚¡ã‚¤ãƒ«ã®ç‚ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     public static DigitalMicrograph.Property DigitalMicrographProperty;
 
-    //MRCƒtƒ@ƒCƒ‹‚Ìˆ×‚ÌƒvƒƒpƒeƒB
+    //MRCãƒ•ã‚¡ã‚¤ãƒ«ã®ç‚ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     public static MRC MRC;
 
     public static double TIA_PixelSize;
 
     /// <summary>
-    /// ¶ƒf[ƒ^‚ÌƒsƒNƒZƒ‹‚ ‚½‚è‚Ìƒrƒbƒg”
+    /// ç”Ÿãƒ‡ãƒ¼ã‚¿ã®ãƒ”ã‚¯ã‚»ãƒ«ã‚ãŸã‚Šã®ãƒ“ãƒƒãƒˆæ•°
     /// </summary>
     public static int BitsPerPixels = 4;
 
@@ -335,8 +335,8 @@ public static class Ring
     }
 
 
-    #region CalcFreq@Frequency‚ğŒvZ
-    //Frequency‚ğŒvZ
+    #region CalcFreqã€€Frequencyã‚’è¨ˆç®—
+    //Frequencyã‚’è¨ˆç®—
     public static void CalcFreq()
     {
         if (Intensity == null || Intensity.Count == 0) return;
@@ -361,7 +361,7 @@ public static class Ring
             lock (lockObj)
             {
                 foreach (uint j in freq.Keys)
-                    if ( Frequency.ContainsKey(j))
+                    if (Frequency.ContainsKey(j))
                         Frequency[j] += freq[j];
                     else
                         Frequency.Add(j, freq[j]);
@@ -370,7 +370,7 @@ public static class Ring
     }
     #endregion
 
-    //ŒX‚«•â³ŒW”‚ğŒvZ
+    //å‚¾ãè£œæ­£ä¿‚æ•°ã‚’è¨ˆç®—
     public static void SetTiltParameter()
     {
         TanKsi = Math.Tan(IP.ksi);
@@ -386,7 +386,7 @@ public static class Ring
     }
 
     #region Find Spot
-    //ƒsƒNƒZƒ‹ƒXƒeƒbƒv‚Ì•½‹Ï’l‚Æ•W€•Î·‚ğ‚à‚Æ‚ß‚ÄƒXƒ|ƒbƒg‚ğŒŸo‚·‚é
+    //ãƒ”ã‚¯ã‚»ãƒ«ã‚¹ãƒ†ãƒƒãƒ—ã®å¹³å‡å€¤ã¨æ¨™æº–åå·®ã‚’ã‚‚ã¨ã‚ã¦ã‚¹ãƒãƒƒãƒˆã‚’æ¤œå‡ºã™ã‚‹
     public static void FindSpots(IntegralProperty iP, double DeviationFactor)
     {
         int i;
@@ -396,7 +396,7 @@ public static class Ring
         int h = iP.SrcHeight;
         var thread = Environment.ProcessorCount;
 
-        //ŠeƒXƒŒƒbƒh‚ÌãŒÀ‚Æ‰ºŒÀ‚ğŒˆ‚ß‚é
+        //å„ã‚¹ãƒ¬ãƒƒãƒ‰ã®ä¸Šé™ã¨ä¸‹é™ã‚’æ±ºã‚ã‚‹
         yThreadMin = new int[thread];
         yThreadMax = new int[thread];
         int yStep = IP.SrcHeight / thread;
@@ -407,7 +407,7 @@ public static class Ring
         }
         yThreadMax[thread - 1] = IP.SrcHeight;
 
-        //‚Ü‚¸‚Ç‚ÌƒsƒNƒZƒ‹‚ª‚Ç‚ÌƒXƒeƒbƒv‚É‘®‚·‚é‚©‚ğŒˆ‚ß‚é
+        //ã¾ãšã©ã®ãƒ”ã‚¯ã‚»ãƒ«ãŒã©ã®ã‚¹ãƒ†ãƒƒãƒ—ã«å±ã™ã‚‹ã‹ã‚’æ±ºã‚ã‚‹
         var r = new int[IP.SrcHeight * IP.SrcWidth];
         var rMax = int.MinValue;
         var tempRMax = new int[thread];
@@ -416,7 +416,7 @@ public static class Ring
         Parallel.For(0, thread, i => FindSpotsThread0(yThreadMin[i], yThreadMax[i], ref r, ref tempRMax[i]));
 
 
-        //rMax‚ÌÅ‘å’l‚ğ‚«‚ß‚é
+        //rMaxã®æœ€å¤§å€¤ã‚’ãã‚ã‚‹
         rMax = tempRMax.Max();
 
         if (rMax == 0)
@@ -424,7 +424,7 @@ public static class Ring
 
         rMax++;
 
-        //Profile(ŠeƒXƒeƒbƒv‚²‚Æ‚Ì‹­“x)‚ÆPixels(ŠeƒXƒeƒbƒv‚ÉŠñ—^‚µ‚½ƒsƒNƒZƒ‹”)‚ğì¬
+        //Profile(å„ã‚¹ãƒ†ãƒƒãƒ—ã”ã¨ã®å¼·åº¦)ã¨Pixels(å„ã‚¹ãƒ†ãƒƒãƒ—ã«å¯„ä¸ã—ãŸãƒ”ã‚¯ã‚»ãƒ«æ•°)ã‚’ä½œæˆ
         double[][] tempSumOfIntensity = new double[thread][];
         double[][] tempSumOfIntensitySquare = new double[thread][];
         double[][] tempContributedPixels = new double[thread][];
@@ -434,10 +434,10 @@ public static class Ring
             tempSumOfIntensitySquare[i] = new double[rMax];
             tempContributedPixels[i] = new double[rMax];
         }
-        //‚±‚±‚©‚çƒXƒŒƒbƒh1‹N“®
+        //ã“ã“ã‹ã‚‰ã‚¹ãƒ¬ãƒƒãƒ‰1èµ·å‹•
         Parallel.For(0, thread, i => FindSpotsThread1(yThreadMin[i], yThreadMax[i], r, ref tempSumOfIntensity[i], ref tempSumOfIntensitySquare[i], ref tempContributedPixels[i]));
 
-        //Thread1‚ÌŒ‹‰Ê‚ğ‚Ü‚Æ‚ß‚é
+        //Thread1ã®çµæœã‚’ã¾ã¨ã‚ã‚‹
         double[] ContributedPixels = new double[rMax];
         double[] SumOfIntensity = new double[rMax];
         double[] SumOfIntensitySquare = new double[rMax];
@@ -449,7 +449,7 @@ public static class Ring
                 ContributedPixels[i] += tempContributedPixels[t][i];
             }
 
-        //•W€•Î·‚ğ‚à‚Æ‚ß‚é
+        //æ¨™æº–åå·®ã‚’ã‚‚ã¨ã‚ã‚‹
         double tempDeviation, tempAverage;
         double[] OverLimit = new double[rMax];
         double[] UnderLimit = new double[rMax];
@@ -549,10 +549,10 @@ public static class Ring
     }
     #endregion
 
-    #region ‰æ‘œ‚Ì‰ñ“]E”½“]
+    #region ç”»åƒã®å›è»¢ãƒ»åè»¢
 
     /// <summary>
-    /// ‰æ‘œ‚ğA”½“]A‰ñ“]‚³‚¹‚é. rotate‚Í0: –³‰ñ“]A1:90“x‰ñ“], 2: 180“x‰ñ“]A 3: 270“x‰ñ“]
+    /// ç”»åƒã‚’ã€åè»¢ã€å›è»¢ã•ã›ã‚‹. rotateã¯0: ç„¡å›è»¢ã€1:90åº¦å›è»¢, 2: 180åº¦å›è»¢ã€ 3: 270åº¦å›è»¢
     /// </summary>
     /// <param name="src"></param>
     /// <param name="width"></param>
@@ -593,7 +593,7 @@ public static class Ring
     }
     #endregion
 
-    #region •ÎŒõ•â³
+    #region åå…‰è£œæ­£
     public static List<double> CorrectPolarization(int rotate, List<double> intensity = null)
     {
         intensity ??= Intensity;
@@ -604,17 +604,17 @@ public static class Ring
         double sizeX = IP.PixSizeX, sizeY = IP.PixSizeY;
         double centX = IP.CenterX, centY = IP.CenterY;
 
-        //•â³®‚ÍAIcorr = I / (sin(kai)^2 + cos(kai)^2 * cos(2th)^2 )
+        //è£œæ­£å¼ã¯ã€Icorr = I / (sin(kai)^2 + cos(kai)^2 * cos(2th)^2 )
         // sin(kai)^2 = y^2 /  (x^2 + y^2)
         // cos(2th)^2 = fd^2 / (x^2 + y^2 + fd^2)
         // cos(kai)^2 = x^2 / (x^2 + y^2)
-        //‚Ü‚Æ‚ß‚é‚Æ•ª•ê‚Ì•”•ª‚ÍA 1 - x2 / (x2 + y2 + fd2))
+        //ã¾ã¨ã‚ã‚‹ã¨åˆ†æ¯ã®éƒ¨åˆ†ã¯ã€ 1 - x2 / (x2 + y2 + fd2))
         //var coeff1 = rotate == 0 || rotate == 2 ?
         //    new Func<double, double, double>((x2, y2) => (y2+fd2)  / (x2 + y2 + fd2)) :
         //    new Func<double, double, double>((x2, y2) => (x2+fd2) / (x2 + y2 + fd2));
 
-        //20190906’Ç‹L
-        //•â³®‚ÍAIcorr = I / (sin(kai)^2 + cos(kai)^2 * cos(2th)^2 ) / cos(2th)
+        //20190906è¿½è¨˜
+        //è£œæ­£å¼ã¯ã€Icorr = I / (sin(kai)^2 + cos(kai)^2 * cos(2th)^2 ) / cos(2th)
 
         Func<double, double, double> coeff1 = rotate == 0 || rotate == 2 ?
             (x2, y2) => 2 * (y2 + fd2) / (x2 + y2 + 2 * fd2) :
@@ -623,7 +623,7 @@ public static class Ring
         //var coeff2 = new Func<double, double, double>((x2, y2) => Math.Sqrt( fd2 / (x2 + y2 + fd2)));
 
         var result = new double[intensity.Count];
-        //Parallel.For‚ğg‚í‚È‚¢‚Ù‚¤‚ª‘‚¢
+        //Parallel.Forã‚’ä½¿ã‚ãªã„ã»ã†ãŒæ—©ã„
         int i = 0;
         for (int pixY = 0; pixY < SrcImgSize.Height; pixY++)
         {
@@ -652,8 +652,8 @@ public static class Ring
     static bool[] tempArray = new bool[1];
 
     /// <summary>
-    /// ƒXƒ|ƒbƒg‚âè‡’l’´‚ÌƒsƒNƒZƒ‹‚ğƒ}ƒXƒN‚·‚éŠÖ”
-    /// ‚±‚Ìƒƒ\ƒbƒh‚Ì‘O‚É“KØ‚ÉIsInsideArea‚ªİ’è‚³‚ê‚Ä‚¢‚é•K—v‚ª‚ ‚éB
+    /// ã‚¹ãƒãƒƒãƒˆã‚„é–¾å€¤è¶…ã®ãƒ”ã‚¯ã‚»ãƒ«ã‚’ãƒã‚¹ã‚¯ã™ã‚‹é–¢æ•°
+    /// ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‰ã«é©åˆ‡ã«IsInsideAreaãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚
     /// </summary>
     /// <param name="OmitSpots"></param>
     /// <param name="OmitTheresholdMin"></param>
@@ -697,15 +697,15 @@ public static class Ring
 
     #region SetInsideArea
     /// <summary>
-    /// Ï•ª—ÌˆæˆÈŠO‚ğƒ}ƒXƒN‚·‚éŠÖ”@ƒ}ƒXƒN‚·‚é‚Ì‚ÍAŸ‚ÌO“_
-    /// Ew’è‚µ‚½‹éŒ`‚ ‚é‚¢‚ÍƒZƒNƒ^[ŠO‚Ì—Ìˆæ@
-    /// EƒGƒbƒW—Ìˆæ@
-    /// EÏ•ªŠp“x”ÍˆÍ‚ÉŠÜ‚Ü‚ê‚È‚¢—Ìˆæ
+    /// ç©åˆ†é ˜åŸŸä»¥å¤–ã‚’ãƒã‚¹ã‚¯ã™ã‚‹é–¢æ•°ã€€ãƒã‚¹ã‚¯ã™ã‚‹ã®ã¯ã€æ¬¡ã®ä¸‰ç‚¹
+    /// ãƒ»æŒ‡å®šã—ãŸçŸ©å½¢ã‚ã‚‹ã„ã¯ã‚»ã‚¯ã‚¿ãƒ¼å¤–ã®é ˜åŸŸã€€
+    /// ãƒ»ã‚¨ãƒƒã‚¸é ˜åŸŸã€€
+    /// ãƒ»ç©åˆ†è§’åº¦ç¯„å›²ã«å«ã¾ã‚Œãªã„é ˜åŸŸ
     /// </summary>
-    /// <param name="IP">IP‚ÌƒvƒƒpƒeƒB</param>
-    /// <param name="calcRegion">w’è‚µ‚½‹éŒ`‚ ‚é‚¢‚ÍƒZƒNƒ^[ŠO‚Ì—Ìˆæ‚ğŒvZ‚·‚é‚©‚Ç‚¤‚©</param>
-    /// <param name="calcEdge">ƒGƒbƒW—Ìˆæ‚ğŒvZ‚·‚é‚©‚Ç‚¤‚©</param>
-    /// <param name="calcProperty">Ï•ªŠp“x”ÍˆÍ‚ÉŠÜ‚Ü‚ê‚È‚¢—Ìˆæ‚ğŒvZ‚·‚é‚©‚Ç‚¤‚©</param>
+    /// <param name="IP">IPã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</param>
+    /// <param name="calcRegion">æŒ‡å®šã—ãŸçŸ©å½¢ã‚ã‚‹ã„ã¯ã‚»ã‚¯ã‚¿ãƒ¼å¤–ã®é ˜åŸŸã‚’è¨ˆç®—ã™ã‚‹ã‹ã©ã†ã‹</param>
+    /// <param name="calcEdge">ã‚¨ãƒƒã‚¸é ˜åŸŸã‚’è¨ˆç®—ã™ã‚‹ã‹ã©ã†ã‹</param>
+    /// <param name="calcProperty">ç©åˆ†è§’åº¦ç¯„å›²ã«å«ã¾ã‚Œãªã„é ˜åŸŸã‚’è¨ˆç®—ã™ã‚‹ã‹ã©ã†ã‹</param>
     public static void SetInsideArea(IntegralProperty IP, bool calcRegion = true, bool calcEdge = true, bool calcProperty = true)
     {
         var thread = Environment.ProcessorCount;
@@ -725,7 +725,7 @@ public static class Ring
                 var CenterY = IP.CenterY;
                 var Band = IP.RectangleBand;
                 if (IP.IsRectangle)
-                #region Rectangleƒ‚[ƒh‚Ì‚Æ‚«
+                #region Rectangleãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
                 {
                     bool IsXY = false;
                     double tan = Math.Tan(IP.RectangleAngle);
@@ -735,7 +735,7 @@ public static class Ring
                     double wy = Math.Abs(IP.RectangleBand / cos);
                     double cx, cy;
                     if (Math.Abs(tan) > 1)
-                        IsXY = true;//c•ûŒü‚É‹ß‚¢ê‡‚ÍTrue
+                        IsXY = true;//ç¸¦æ–¹å‘ã«è¿‘ã„å ´åˆã¯True
                     int jWidth;
                     int startI, endI, midI;
                     int startJ, endJ, midJ;
@@ -744,24 +744,24 @@ public static class Ring
                         double MinusCenterYPerTanPlusCenterX = -CenterY / tan + CenterX;
 
                         if (IP.RectangleIsBothSide)
-                        {//IsXY‚ªTrue‚Å‘S’¼üƒ‚[ƒh
+                        {//IsXYãŒTrueã§å…¨ç›´ç·šãƒ¢ãƒ¼ãƒ‰
                             for (int j = 0; j < Height; j++)
                             {
                                 cx = j / tan + MinusCenterYPerTanPlusCenterX;
                                 startI = Math.Max(0, (int)(cx - wx + 0.5));
                                 endI = Math.Min(Width, (int)(cx + wx + 1.5));
                                 jWidth = j * Width;
-                                for (int i = startI; i < endI; i++)//ƒoƒ“ƒh‚Ì“à‘¤‚Ì‚Æ‚«
+                                for (int i = startI; i < endI; i++)//ãƒãƒ³ãƒ‰ã®å†…å´ã®ã¨ã
                                     IsOutsideOfIntegralRegion[i + jWidth] = false;
                             }
                         }
                         else
-                        {//IsXY‚ªTrue‚Å”¼’¼üƒ‚[ƒh
+                        {//IsXYãŒTrueã§åŠç›´ç·šãƒ¢ãƒ¼ãƒ‰
                             double CenterXPerTanPlusCenterY = CenterX / tan + CenterY;
-                            if (sin > 0)//‰º‚ÉL‚Ñ‚½”¼’¼ü‚Ì‚Æ‚«‚Í
+                            if (sin > 0)//ä¸‹ã«ä¼¸ã³ãŸåŠç›´ç·šã®ã¨ãã¯
                             {
-                                startJ = Math.Max(0, (int)(CenterY - Band * Math.Abs(cos) + 0.5));//ƒXƒ^[ƒg’n“_
-                                midJ = (int)(CenterY + Band * Math.Abs(cos) + 0.5);//’†ŠÔ’n“_
+                                startJ = Math.Max(0, (int)(CenterY - Band * Math.Abs(cos) + 0.5));//ã‚¹ã‚¿ãƒ¼ãƒˆåœ°ç‚¹
+                                midJ = (int)(CenterY + Band * Math.Abs(cos) + 0.5);//ä¸­é–“åœ°ç‚¹
                                 for (int j = startJ; j < Height; j++)
                                 {
                                     cx = j / tan + MinusCenterYPerTanPlusCenterX;
@@ -769,15 +769,15 @@ public static class Ring
                                     endI = Math.Min(Width, (int)(cx + wx + 1.5));
                                     jWidth = j * Width;
                                     if (j > midJ)
-                                        for (int i = startI; i < endI; i++)//ƒoƒ“ƒh‚Ì“à‘¤‚Ì‚Æ‚«
+                                        for (int i = startI; i < endI; i++)//ãƒãƒ³ãƒ‰ã®å†…å´ã®ã¨ã
                                             IsOutsideOfIntegralRegion[i + jWidth] = false;
                                     else
-                                        for (int i = startI; i < endI; i++)//ƒoƒ“ƒh‚Ì“à‘¤‚Ì‚Æ‚«
+                                        for (int i = startI; i < endI; i++)//ãƒãƒ³ãƒ‰ã®å†…å´ã®ã¨ã
                                             if (j + i / tan > CenterXPerTanPlusCenterY)
                                                 IsOutsideOfIntegralRegion[i + jWidth] = false;
                                 }
                             }
-                            else//ã‚ÉL‚Ñ‚½”¼’¼ü‚Ì‚Æ‚«‚Í
+                            else//ä¸Šã«ä¼¸ã³ãŸåŠç›´ç·šã®ã¨ãã¯
                             {
                                 midJ = (int)(CenterY - Band * Math.Abs(cos) + 0.5);
                                 endJ = Math.Min(Height, (int)(CenterY + Band * Math.Abs(cos) + 0.5));
@@ -788,17 +788,17 @@ public static class Ring
                                     endI = Math.Min(Width, (int)(cx + wx + 1.5));
                                     jWidth = j * Width;
                                     if (j < midJ)
-                                        for (int i = startI; i < endI; i++)//ƒoƒ“ƒh‚Ì“à‘¤‚Ì‚Æ‚«
+                                        for (int i = startI; i < endI; i++)//ãƒãƒ³ãƒ‰ã®å†…å´ã®ã¨ã
                                             IsOutsideOfIntegralRegion[i + jWidth] = false;
                                     else
-                                        for (int i = startI; i < endI; i++)//ƒoƒ“ƒh‚Ì“à‘¤‚Ì‚Æ‚«
+                                        for (int i = startI; i < endI; i++)//ãƒãƒ³ãƒ‰ã®å†…å´ã®ã¨ã
                                             if (j + i / tan < CenterXPerTanPlusCenterY)
                                                 IsOutsideOfIntegralRegion[i + jWidth] = false;
                                 }
                             }
                         }
                     }
-                    else//IsXY‚ªFalse
+                    else//IsXYãŒFalse
                     {
                         double CenterYMinusTanCenterX = CenterY - tan * CenterX;
                         if (IP.RectangleIsBothSide)
@@ -808,15 +808,15 @@ public static class Ring
                                 cy = tan * i + CenterYMinusTanCenterX;
                                 startJ = Math.Max(0, (int)(cy - wy + 0.5));
                                 endJ = Math.Min(Height, (int)(cy + wy + 1.5));
-                                for (int j = startJ; j < endJ; j++)//ƒoƒ“ƒh‚Ì“à‘¤‚Ì‚Æ‚«
+                                for (int j = startJ; j < endJ; j++)//ãƒãƒ³ãƒ‰ã®å†…å´ã®ã¨ã
                                     IsOutsideOfIntegralRegion[i + j * Width] = false;
                             }
                         }
                         else
-                        {//”¼’¼üƒ‚[ƒh‚Ì‚Æ‚«
+                        {//åŠç›´ç·šãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
                             double CenterYTanPlusCenterX = CenterY * tan + CenterX;
 
-                            if (cos > 0)//‰E‚ÉL‚Ñ‚½”¼’¼ü‚Ì‚Æ‚«‚Í
+                            if (cos > 0)//å³ã«ä¼¸ã³ãŸåŠç›´ç·šã®ã¨ãã¯
                             {
                                 startI = Math.Max(0, (int)(CenterX - Band * Math.Abs(sin) + 0.5));
                                 midI = (int)(CenterX + Band * Math.Abs(sin) + 0.5);
@@ -826,7 +826,7 @@ public static class Ring
                                     startJ = Math.Max(0, (int)(cy - wy + 0.5));
                                     endJ = Math.Min(Height, (int)(cy + wy + 1.5));
                                     if (i > midI)
-                                        for (int j = startJ; j < endJ; j++)//ƒoƒ“ƒh‚Ì“à‘¤‚Ì‚Æ‚«
+                                        for (int j = startJ; j < endJ; j++)//ãƒãƒ³ãƒ‰ã®å†…å´ã®ã¨ã
                                             IsOutsideOfIntegralRegion[i + j * Width] = false;
                                     else
                                         for (int j = startJ; j < endJ; j++)
@@ -834,7 +834,7 @@ public static class Ring
                                                 IsOutsideOfIntegralRegion[i + j * Width] = false;
                                 }
                             }
-                            else//¶‚ÉL‚Ñ‚½”¼’¼ü‚Ì‚Æ‚«‚Í
+                            else//å·¦ã«ä¼¸ã³ãŸåŠç›´ç·šã®ã¨ãã¯
                             {
                                 midI = (int)(CenterX - Band * Math.Abs(sin) + 0.5);
                                 endI = Math.Max(Width, (int)(CenterX + Band * Math.Abs(sin) + 0.5));
@@ -844,7 +844,7 @@ public static class Ring
                                     startJ = Math.Max(0, (int)(cy - wy + 0.5));
                                     endJ = Math.Min(Height, (int)(cy + wy + 1.5));
                                     if (i < midI)
-                                        for (int j = startJ; j < endJ; j++)//ƒoƒ“ƒh‚Ì“à‘¤‚Ì‚Æ‚«
+                                        for (int j = startJ; j < endJ; j++)//ãƒãƒ³ãƒ‰ã®å†…å´ã®ã¨ã
                                             IsOutsideOfIntegralRegion[i + j * Width] = false;
                                     else
                                         for (int j = startJ; j < endJ; j++)
@@ -856,12 +856,12 @@ public static class Ring
                     }
                 }
 
-                #endregion Rectangleƒ‚[ƒh‚Ì‚Æ‚«
+                #endregion Rectangleãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
                 else
-                #region Sectorƒ‚[ƒh‚Ì‚Æ‚«
+                #region Sectorãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
 
                 {
-                    //ƒJƒCŠp‚ğl—¶‚µ‚ÄAStartAngle, EndAngle‚ğİ’è
+                    //ã‚«ã‚¤è§’ã‚’è€ƒæ…®ã—ã¦ã€StartAngle, EndAngleã‚’è¨­å®š
                     double startAngle = ChiRotation == Rotation.Clockwise ? IP.SectorStartAngle : -IP.SectorEndAngle;
                     double endAngle = ChiRotation == Rotation.Clockwise ? IP.SectorEndAngle : -IP.SectorStartAngle;
                     if (ChiDirection == Direction.Bottom)
@@ -880,13 +880,13 @@ public static class Ring
                         endAngle += Math.PI * 3d / 2d;
                     }
 
-                    //startAngle, endAngle‚ğ -pi‚©‚çpi‚Ì”ÍˆÍ‚É•ÏŠ·‚·‚é
+                    //startAngle, endAngleã‚’ -piã‹ã‚‰piã®ç¯„å›²ã«å¤‰æ›ã™ã‚‹
                     while (startAngle > Math.PI) startAngle -= 2 * Math.PI;
                     while (startAngle < -Math.PI) startAngle += 2 * Math.PI;
                     while (endAngle > Math.PI) endAngle -= 2 * Math.PI;
                     while (endAngle < -Math.PI || endAngle < startAngle) endAngle += 2 * Math.PI;
 
-                    //ƒsƒNƒZƒ‹À•Wx,y‚ğ ‹…–ÊÀ•W‚É•ÏŠ·‚·‚éFunc‚ğ’è‹`
+                    //ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™x,yã‚’ çƒé¢åº§æ¨™ã«å¤‰æ›ã™ã‚‹Funcã‚’å®šç¾©
                     double X1 = Math.Cos(startAngle), Y1 = Math.Sin(startAngle);
                     double X2 = Math.Cos(endAngle), Y2 = Math.Sin(endAngle);
                     Func<double, double, bool> func = endAngle - startAngle < Math.PI ?
@@ -905,44 +905,44 @@ public static class Ring
                     });
                 }
 
-                #endregion Sectorƒ‚[ƒh‚Ì‚Æ‚«
+                #endregion Sectorãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
             }
         }
 
         if (calcEdge)
-        #region ƒGƒbƒW‚ğœ‹‚·‚é‚Æ‚«
+        #region ã‚¨ãƒƒã‚¸ã‚’é™¤å»ã™ã‚‹ã¨ã
 
         {
             if (IP.DoesExcludeEdge)
             {
                 int n = IP.Edge;
-                //ã•Ó
+                //ä¸Šè¾º
                 for (int i = 0; i < Ring.IP.SrcHeight && i < n; i++)
                     for (int j = 0; j < Ring.IP.SrcWidth; j++)
                         IsOutsideOfIntegralRegion[(i * Ring.IP.SrcWidth) + j] = true;
-                //‰º•Ó
+                //ä¸‹è¾º
                 for (int i = Math.Max(0, Ring.IP.SrcHeight - n); i < Ring.IP.SrcHeight; i++)
                     for (int j = 0; j < Ring.IP.SrcWidth; j++)
                         IsOutsideOfIntegralRegion[(i * Ring.IP.SrcWidth) + j] = true;
-                //¶•Ó
+                //å·¦è¾º
                 for (int j = 0; j < Ring.IP.SrcWidth && j < n; j++)
                     for (int i = 0; i < Ring.IP.SrcHeight; i++)
                         IsOutsideOfIntegralRegion[(i * Ring.IP.SrcWidth) + j] = true;
-                //‰E•Ó
+                //å³è¾º
                 for (int j = Math.Max(0, Ring.IP.SrcWidth - n); j < Ring.IP.SrcWidth; j++)
                     for (int i = 0; i < Ring.IP.SrcHeight; i++)
                         IsOutsideOfIntegralRegion[(i * Ring.IP.SrcWidth) + j] = true;
             }
         }
-        #endregion ƒGƒbƒW‚ğœ‹‚·‚é‚Æ‚«
+        #endregion ã‚¨ãƒƒã‚¸ã‚’é™¤å»ã™ã‚‹ã¨ã
 
         if (calcProperty)
-        #region Ï•ªŠp“x”ÍˆÍ‚ğœ‹‚·‚é‚Æ‚«
+        #region ç©åˆ†è§’åº¦ç¯„å›²ã‚’é™¤å»ã™ã‚‹ã¨ã
         {
             IsOutsideOfIntegralProperty.Clear();
             IsOutsideOfIntegralProperty.AddRange(new bool[IP.SrcWidth * IP.SrcHeight]);
 
-            //ƒtƒ‰ƒbƒgƒpƒlƒ‹ƒJƒƒ‰‚Ìê‡
+            //ãƒ•ãƒ©ãƒƒãƒˆãƒ‘ãƒãƒ«ã‚«ãƒ¡ãƒ©ã®å ´åˆ
             if (IP.Camera == IntegralProperty.CameraEnum.FlatPanel)
             {
                 SetTiltParameter();
@@ -995,7 +995,7 @@ public static class Ring
 
                 Parallel.For(0, height, j =>
                 {
-                    var tempY = (j - centerY) * pixSizeY;//IP•½–Êã‚ÌÀ•WŒn‚É‚¨‚¯‚éYˆÊ’u
+                    var tempY = (j - centerY) * pixSizeY;//IPå¹³é¢ä¸Šã®åº§æ¨™ç³»ã«ãŠã‘ã‚‹Yä½ç½®
                     var tempY2TanKsi = tempY * TanKsi;
                     var numer1TempY = Numer1 * tempY;
                     var numer3TempY = Numer3 * tempY;
@@ -1004,8 +1004,8 @@ public static class Ring
 
                     for (int i = 0; i < width; i++)
                     {
-                        var tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IP•½–Êã‚ÌÀ•WŒn‚É‚¨‚¯‚éXˆÊ’u
-                                                                            //ˆÈ‰º‚Ìx,y,z‚ªƒsƒNƒZƒ‹’†S‚Ì‹óŠÔˆÊ’u
+                        var tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IPå¹³é¢ä¸Šã®åº§æ¨™ç³»ã«ãŠã‘ã‚‹Xä½ç½®
+                                                                            //ä»¥ä¸‹ã®x,y,zãŒãƒ”ã‚¯ã‚»ãƒ«ä¸­å¿ƒã®ç©ºé–“ä½ç½®
                         var x = Numer2 * tempX + numer1TempY;
                         var y = Numer1 * tempX + numer3TempY;
                         var z = Denom2 * tempX + denom1tempYFD;
@@ -1016,8 +1016,8 @@ public static class Ring
                             IsOutsideOfIntegralProperty[i + jWidth] = true;
                     }
                 });
-            }//ƒtƒ‰ƒbƒgƒpƒlƒ‹ƒ‚[ƒh‚±‚±‚Ü‚Å
-             //Gandolfiƒ‚[ƒh‚Ì
+            }//ãƒ•ãƒ©ãƒƒãƒˆãƒ‘ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ã“ã“ã¾ã§
+             //Gandolfiãƒ¢ãƒ¼ãƒ‰ã®æ™‚
             else
             {
                 SetTiltParameter();
@@ -1029,18 +1029,18 @@ public static class Ring
 
                 Matrix3D m1 = new Matrix3D(CosTau, SinTau * SinPhi, SinTau * CosPhi, 0, CosPhi, -SinPhi, -SinTau, CosTau * SinPhi, CosTau * CosPhi);
 
-                //ƒsƒNƒZƒ‹À•W‚ğÀ‹óŠÔÀ•W‚É•ÏŠ·‚·‚éFunc
+                //ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ã‚’å®Ÿç©ºé–“åº§æ¨™ã«å¤‰æ›ã™ã‚‹Func
                 var convPixelToReal = new Func<double, double, Vector3DBase>((x, y) => m1 * new Vector3DBase(
                                  Math.Sin((x - centerX) * pixSizeX / r) * r,
                                  pixSizeY * (-y + centerY),
                                  (Math.Cos((x - centerX) * pixSizeX / r) - 1) * r));
-                //À‹óŠÔÀ•W‚ğ2ƒ¦‚É•ÏŠ·‚·‚éFunc
+                //å®Ÿç©ºé–“åº§æ¨™ã‚’2Î˜ã«å¤‰æ›ã™ã‚‹Func
                 var convRealToCos = new Func<Vector3DBase, double>((v) => (v.Z + CL) / Math.Sqrt(v.X * v.X + v.Y * v.Y + (v.Z + CL) * (v.Z + CL)));
 
                 double maxCos = Math.Cos(IP.StartAngle);
                 double minCos = Math.Cos(IP.EndAngle);
 
-                //Šp“xƒXƒeƒbƒv‚Ì‹æØ‚èˆÊ’u‚ğİ’è‚·‚é
+                //è§’åº¦ã‚¹ãƒ†ãƒƒãƒ—ã®åŒºåˆ‡ã‚Šä½ç½®ã‚’è¨­å®šã™ã‚‹
                 Parallel.For(0, thread, i =>
                 {
                     int hUnit = IP.SrcHeight / thread;
@@ -1055,36 +1055,36 @@ public static class Ring
             }
         }
 
-        #endregion Ï•ªŠp“x”ÍˆÍ‚ğœ‹‚·‚é‚Æ‚«
+        #endregion ç©åˆ†è§’åº¦ç¯„å›²ã‚’é™¤å»ã™ã‚‹ã¨ã
     }
     /// <summary>
-    /// ƒsƒNƒZƒ‹À•W(detX, detY)‚ğÀ‹óŠÔÀ•W(X,Y,Z)‚É•ÏŠ·‚·‚éB–‘O‚ÉƒsƒNƒZƒ‹ƒTƒCƒY‚âASetTiltParameter‚ªİ’è‚³‚ê‚Ä‚¢‚é•K—v‚ª‚ ‚éB
+    /// ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™(detX, detY)ã‚’å®Ÿç©ºé–“åº§æ¨™(X,Y,Z)ã«å¤‰æ›ã™ã‚‹ã€‚äº‹å‰ã«ãƒ”ã‚¯ã‚»ãƒ«ã‚µã‚¤ã‚ºã‚„ã€SetTiltParameterãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚
     /// </summary>
     /// <param name="detX"></param>
     /// <param name="detY"></param>
     /// <returns></returns>
     public static (double X, double Y, double Z) ConvertCoordinateFromDetectorToRealSpace(double detX, double detY)
     {
-        var tempY = (detY - IP.CenterY) * IP.PixSizeY;//IP•½–Êã‚ÌÀ•WŒn‚É‚¨‚¯‚éYˆÊ’u
-        var tempX = (detX - IP.CenterX) * IP.PixSizeX + tempY * TanKsi;//IP•½–Êã‚ÌÀ•WŒn‚É‚¨‚¯‚éXˆÊ’u
+        var tempY = (detY - IP.CenterY) * IP.PixSizeY;//IPå¹³é¢ä¸Šã®åº§æ¨™ç³»ã«ãŠã‘ã‚‹Yä½ç½®
+        var tempX = (detX - IP.CenterX) * IP.PixSizeX + tempY * TanKsi;//IPå¹³é¢ä¸Šã®åº§æ¨™ç³»ã«ãŠã‘ã‚‹Xä½ç½®
 
-        //ˆÈ‰º‚Ìx,y,z‚ª‹óŠÔˆÊ’u
+        //ä»¥ä¸‹ã®x,y,zãŒç©ºé–“ä½ç½®
         var realX = Numer2 * tempX + Numer1 * tempY;
         var realY = Numer1 * tempX + Numer3 * tempY;
         var realZ = Denom2 * tempX + Denom1 * tempY + IP.FilmDistance;
 
-        if (IP.SpericalRadiusInverse != 0) //‹…–Ê•â³‚ª•K—v‚Èê‡
+        if (IP.SpericalRadiusInverse != 0) //çƒé¢è£œæ­£ãŒå¿…è¦ãªå ´åˆ
         {
             var fd = IP.FilmDistance;
-            //IP‚Ì–@üƒxƒNƒgƒ‹
+            //IPã®æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«
             (double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
-            //ŒŸoŠí’†S(0,0,FD)‚©‚çƒsƒNƒZƒ‹‚Ü‚Å‚Ì‹——£
+            //æ¤œå‡ºå™¨ä¸­å¿ƒ(0,0,FD)ã‹ã‚‰ãƒ”ã‚¯ã‚»ãƒ«ã¾ã§ã®è·é›¢
             double distance2 = realX * realX + realY * realY + (realZ - fd) * (realZ - fd), distance = Math.Sqrt(distance2);
-            //ŒŸoŠí‚Ìƒ_ƒCƒŒƒNƒgƒXƒ|ƒbƒg•ûŒü‚Ék‚ß‚éŠ„‡
+            //æ¤œå‡ºå™¨ã®ãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã‚¹ãƒãƒƒãƒˆæ–¹å‘ã«ç¸®ã‚ã‚‹å‰²åˆ
             double coeff_detector_palallel = Math.Sin(distance * IP.SpericalRadiusInverse) / distance / IP.SpericalRadiusInverse;
-            //ŒŸoŠí‚Ì–@ü•ûŒü‚Éi‚Ş‹——£
+            //æ¤œå‡ºå™¨ã®æ³•ç·šæ–¹å‘ã«é€²ã‚€è·é›¢
             double slide_detector_normal = (1 - Math.Cos(distance * IP.SpericalRadiusInverse)) / IP.SpericalRadiusInverse;
-            //(0,0,FD)‚©‚ç(X,Y,Z)‚ÌƒxƒNƒgƒ‹‚Écoeff_detector_palalle‚ğ‚©‚¯‚½ŒãAdetector_normal‚Ì•ûŒü‚Éslide_detector_normal‚¾‚¯i‚ß‚éB
+            //(0,0,FD)ã‹ã‚‰(X,Y,Z)ã®ãƒ™ã‚¯ãƒˆãƒ«ã«coeff_detector_palalleã‚’ã‹ã‘ãŸå¾Œã€detector_normalã®æ–¹å‘ã«slide_detector_normalã ã‘é€²ã‚ã‚‹ã€‚
             realX = realX * coeff_detector_palallel + detector_normal.X * slide_detector_normal;
             realY = realY * coeff_detector_palallel + detector_normal.Y * slide_detector_normal;
             realZ = (realZ - fd) * coeff_detector_palallel + fd + detector_normal.Z * slide_detector_normal;
@@ -1094,9 +1094,9 @@ public static class Ring
 
     #endregion
 
-    #region CircumferentialBlur ‰~ü•ûŒü‚É‚É‚¶‚Ü‚¹‚½‰æ‘œ‚ğì¬
+    #region CircumferentialBlur å††å‘¨æ–¹å‘ã«ã«ã˜ã¾ã›ãŸç”»åƒã‚’ä½œæˆ
     /// <summary>
-    /// ‰~ü•ûŒü‚É‚É‚¶‚Ü‚¹‚½‰æ‘œ‚ğì¬(Š®‘S‚É˜c‚ñ‚Å‚¢‚È‚¢³•ûŒ`ƒsƒNƒZƒ‹‚ğ‰¼’è)
+    /// å††å‘¨æ–¹å‘ã«ã«ã˜ã¾ã›ãŸç”»åƒã‚’ä½œæˆ(å®Œå…¨ã«æ­ªã‚“ã§ã„ãªã„æ­£æ–¹å½¢ãƒ”ã‚¯ã‚»ãƒ«ã‚’ä»®å®š)
     /// </summary>
     /// <param name="angle"></param>
     public static void CircumferentialBlur(double theta)
@@ -1127,8 +1127,8 @@ public static class Ring
             {
                 int rMax = (int)Math.Ceiling(r[baseIndex] * sin3theta);
 
-                List<double> blurRatio = [];
-                List<int> blurIndex = [];
+                List<double> blurRatio = new List<double>();
+                List<int> blurIndex = new List<int>();
                 for (int y = Math.Max(j - rMax, 0); y <= Math.Min(j + rMax, SrcImgSize.Height - 1); y++)
                     for (int x = Math.Max(i - rMax, 0); x <= Math.Min(i + rMax, SrcImgSize.Width - 1); x++)
                     {
@@ -1162,9 +1162,9 @@ public static class Ring
 
     #endregion
 
-    #region GetCorrectedImageArray ŒX‚«•â³‚âƒsƒNƒZƒ‹•â³‚ğœ‹‚µ‚Ä³Šm‚ÈƒCƒ[ƒW‚ğì‚èo‚·
+    #region GetCorrectedImageArray å‚¾ãè£œæ­£ã‚„ãƒ”ã‚¯ã‚»ãƒ«è£œæ­£ã‚’é™¤å»ã—ã¦æ­£ç¢ºãªã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ä½œã‚Šå‡ºã™
     /// <summary>
-    /// ŒX‚«•â³‚âƒsƒNƒZƒ‹•â³‚ğœ‹‚µ‚Ä³Šm‚ÈƒCƒ[ƒW‚ğì‚èo‚·ƒƒ\ƒbƒh
+    /// å‚¾ãè£œæ­£ã‚„ãƒ”ã‚¯ã‚»ãƒ«è£œæ­£ã‚’é™¤å»ã—ã¦æ­£ç¢ºãªã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ä½œã‚Šå‡ºã™ãƒ¡ã‚½ãƒƒãƒ‰
     /// </summary>
     /// <param name="iP"></param>
     /// <param name="newPixelSize"></param>
@@ -1201,7 +1201,7 @@ public static class Ring
             for (int i = 0; i < iP.SrcWidth; i++)
             //if (IsValid[j * IP.SrcWidth + i])
             {
-                //4‹÷‚Ì“_‚ğŒvZ
+                //4éš…ã®ç‚¹ã‚’è¨ˆç®—
                 if (i == 0)
                 {
                     tempX = (i - IP.CenterX - 0.5) * IP.PixSizeX + tempY2TanKsiUpper;
@@ -1228,7 +1228,7 @@ public static class Ring
                 int maxX = int.MinValue, minX = int.MaxValue, maxY = int.MinValue, minY = int.MaxValue;
                 foreach (PointD pt in pixelVertex)
                 {
-                    //‹‚ß‚½4‹÷‚Ì“_‚©‚çAŠ‘®‚·‚é‰Â”\«‚Ì‚ ‚éX,YƒsƒNƒZƒ‹‚ÌãŒÀA‰ºŒÀ‚ğŒˆ‚ß‚é
+                    //æ±‚ã‚ãŸ4éš…ã®ç‚¹ã‹ã‚‰ã€æ‰€å±ã™ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹X,Yãƒ”ã‚¯ã‚»ãƒ«ã®ä¸Šé™ã€ä¸‹é™ã‚’æ±ºã‚ã‚‹
                     int pixX = (int)Math.Floor(pt.X / resolution + center.X + 0.5);
                     int pixY = (int)Math.Floor(pt.Y / resolution + center.Y + 0.5);
                     minX = Math.Min(minX, pixX);
@@ -1251,7 +1251,7 @@ public static class Ring
                             tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, 0, 1, (pixY - center.Y - 0.5) * resolution);
                             tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, 0, -1, -(pixY - center.Y + 0.5) * resolution);
 
-                            //–ÊÏ”ä‚ğ‹‚ß‚Ä‹­“x‚ğŠ„‚èU‚è
+                            //é¢ç©æ¯”ã‚’æ±‚ã‚ã¦å¼·åº¦ã‚’å‰²ã‚ŠæŒ¯ã‚Š
                             double currentArea = Geometriy.GetPolygonalArea(tempPixelVertex);
                             double ratio = currentArea / totalArea;
                             pixels[pixY * size.Width + pixX] += ratio * intensity;
@@ -1264,10 +1264,9 @@ public static class Ring
     }
     #endregion
 
-    #region GetUnrolledImageArray ŒX‚«•â³‚âƒsƒNƒZƒ‹•â³‚ğœ‹‚µ‚ÄØ‚èŠJ‚«‰æ‘œ‚ğì‚èo‚·ƒƒ\ƒbƒh
 
     /// <summary>
-    /// ŒX‚«•â³‚âƒsƒNƒZƒ‹•â³‚ğœ‹‚µ‚ÄØ‚èŠJ‚«‰æ‘œ‚ğì‚èo‚·ƒƒ\ƒbƒh
+    /// å‚¾ãè£œæ­£ã‚„ãƒ”ã‚¯ã‚»ãƒ«è£œæ­£ã‚’é™¤å»ã—ã¦åˆ‡ã‚Šé–‹ãç”»åƒã‚’ä½œã‚Šå‡ºã™ãƒ¡ã‚½ãƒƒãƒ‰
     /// </summary>
     /// <param name="iP"></param>
     /// <param name="sweepDivision"></param>
@@ -1280,7 +1279,7 @@ public static class Ring
         iP.EndAngle = endTheta;
         iP.StepAngle = stepTheta;
         IP = iP;
-        //ŒX‚«•â³—pƒpƒ‰ƒ[ƒ^‚ğŒvZ
+        //å‚¾ãè£œæ­£ç”¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨ˆç®—
         SetTiltParameter();
         R2 = new double[(int)((endTheta - startTheta) / stepTheta) + 1];
         for (int i = 0; i < R2.Length; i++)
@@ -1313,8 +1312,7 @@ public static class Ring
         return destPixels;
     }
 
-
-    #region UnrolledImageArray ƒKƒ“ƒhƒ‹ƒtƒB
+    #region UnrolledImageArray ã‚¬ãƒ³ãƒ‰ãƒ«ãƒ•ã‚£
     private static double[] GetUnrolledImageArrayGandlofi(IntegralProperty iP, int yMin, int yMax, double sectorStep, double startTheta, double endTheta, double stepTheta)
     {
         int unrolledImageHeight = (int)(2 * Math.PI / sectorStep) * 2;
@@ -1326,7 +1324,7 @@ public static class Ring
 			double r = IP.GandolfiRadius;
 			double CL = IP.FilmDistance;
 			Matrix3D m1 = new Matrix3D(CosTau, SinTau * SinPhi, SinTau * CosPhi, 0, CosPhi, -SinPhi, -SinTau, CosTau * SinPhi, CosTau * CosPhi);
-			//ƒsƒNƒZƒ‹À•W‚ğÀ‹óŠÔÀ•W‚É•ÏŠ·‚·‚éFunc
+			//ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ã‚’å®Ÿç©ºé–“åº§æ¨™ã«å¤‰æ›ã™ã‚‹Func
 			Func<double, double, Vector3DBase> convPixelToReal;
 			if (SinTau == 0 && SinPhi == 0)
 				convPixelToReal = new Func<double, double, Vector3DBase>((x, y) => new Vector3DBase(
@@ -1339,13 +1337,13 @@ public static class Ring
 								 pixSizeY * (-y + centerY),
 								 (Math.Cos((x - centerX) * pixSizeX / r) - 1) * r));
 
-			//Œ…—‚¿‰ñ”ğ‚Ì‚½‚ß‚ÌŒW”
+			//æ¡è½ã¡å›é¿ã®ãŸã‚ã®ä¿‚æ•°
 			double c = 1000;
 
-			//À‹óŠÔÀ•W‚ğA‹ÉÀ•WŒn (‚·‚È‚í‚¿A2ƒÆ‚ÆƒÔ)‚É•ÏŠ·
+			//å®Ÿç©ºé–“åº§æ¨™ã‚’ã€æ¥µåº§æ¨™ç³» (ã™ãªã‚ã¡ã€2Î¸ã¨Ï‡)ã«å¤‰æ›
 			var Vector3DToPolar = new Func<Vector3DBase, PointD>((v) => new PointD(Math.Acos((v.Z + CL) / Math.Sqrt(v.X * v.X + v.Y * v.Y + (v.Z + CL) * (v.Z + CL))) * c, Math.Atan2(v.Y, v.X) + Math.PI * 2));
 
-			//ƒsƒNƒZƒ‹À•W=>À‹óŠÔ‚Ì•ÏŠ·‚ÆAÀ‹óŠÔ„2ƒ¦‚Ì•ÏŠ·‚ğæ‚É‚â‚Á‚Ä‚¨‚­
+			//ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™=>å®Ÿç©ºé–“ã®å¤‰æ›ã¨ã€å®Ÿç©ºé–“ï¼ï¼2Î˜ã®å¤‰æ›ã‚’å…ˆã«ã‚„ã£ã¦ãŠã
 			var realVertex = new Vector3DBase[(width + 1) * (yMax - yMin + 1)];
 			for (int y = yMin; y < yMax + 1; y++)
 				for (int x = 0; x < width + 1; x++)
@@ -1355,13 +1353,13 @@ public static class Ring
 			for (int i = 0; i < pixels.Length; i++)
 				pixels[i] = 0;
 
-			var pixelVertexPolar = new PointD[4];//‹ÉÀ•W
+			var pixelVertexPolar = new PointD[4];//æ¥µåº§æ¨™
 
 			for (int y = yMin; y < yMax; y++)
 			{
 				for (int x = 0; x < IP.SrcWidth; x++)
 				{
-					//l‹÷‚ÌÀ•W‚ğ‹‚ß‚é
+					//å››éš…ã®åº§æ¨™ã‚’æ±‚ã‚ã‚‹
 					var pixelVertex = new[] {
 							realVertex[x - xMin + (y - yMin) * (width + 1)],
 
@@ -1370,7 +1368,7 @@ public static class Ring
 							realVertex[x - xMin + (y - yMin + 1) * (width + 1)]
 						};
 					for (int i = 0; i < 4; i++)
-						pixelVertexPolar[i] = Vector3DToPolar(pixelVertex[i]);//‹ÉÀ•W‚É•ÏŠ·
+						pixelVertexPolar[i] = Vector3DToPolar(pixelVertex[i]);//æ¥µåº§æ¨™ã«å¤‰æ›
 
 					double max = pixelVertexPolar.Max(p => p.Y), min = pixelVertexPolar.Min(p => p.Y);
 
@@ -1380,14 +1378,14 @@ public static class Ring
 								pixelVertexPolar[i].Y += Math.PI * 2;
 
 					int maxX = int.MinValue, minX = int.MaxValue, maxY = int.MinValue, minY = int.MaxValue;
-					foreach (PointD pt in pixelVertexPolar) //‹‚ß‚½4‹÷‚Ì“_‚©‚çAŠ‘®‚·‚é‰Â”\«‚Ì‚ ‚ét,rƒsƒNƒZƒ‹‚ÌãŒÀA‰ºŒÀ‚ğŒˆ‚ß‚é
+					foreach (PointD pt in pixelVertexPolar) //æ±‚ã‚ãŸ4éš…ã®ç‚¹ã‹ã‚‰ã€æ‰€å±ã™ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹t,rãƒ”ã‚¯ã‚»ãƒ«ã®ä¸Šé™ã€ä¸‹é™ã‚’æ±ºã‚ã‚‹
 					{
-						//‚±‚±‚ÅpixY‚ÉŠÜ‚Ü‚ê‚é”ÍˆÍ‚Í (pixY-0.5)*sweepStep ‚©‚ç(pixY+0.5)*sweepStep‚Ü‚Å
+						//ã“ã“ã§pixYã«å«ã¾ã‚Œã‚‹ç¯„å›²ã¯ (pixY-0.5)*sweepStep ã‹ã‚‰(pixY+0.5)*sweepStepã¾ã§
 						int pixY = (int)Math.Floor(pt.Y / sectorStep + 0.5);
 						minY = Math.Min(minY, pixY - 0);
 						maxY = Math.Max(maxY, pixY + 0);
 
-						//‚±‚±‚ÅpixX‚ÉŠÜ‚Ü‚ê‚é”ÍˆÍ‚Í (pixX-0.5)*thetaStep ‚©‚ç(pixX+0.5)*thetaStep‚Ü‚Å
+						//ã“ã“ã§pixXã«å«ã¾ã‚Œã‚‹ç¯„å›²ã¯ (pixX-0.5)*thetaStep ã‹ã‚‰(pixX+0.5)*thetaStepã¾ã§
 						int pixX = (int)Math.Floor((pt.X / c - startTheta) / stepTheta + 0.5);
 						minX = Math.Min(minX, pixX - 0);
 						maxX = Math.Max(maxX, pixX + 0);
@@ -1399,7 +1397,7 @@ public static class Ring
 
 						double totalArea = Geometriy.GetPolygonalArea(pixelVertexPolar);
 
-						if (minX == maxX && minY == maxY)//‚·‚Á‚Û‚èû‚Ü‚Á‚½ê‡‚ÍA
+						if (minX == maxX && minY == maxY)//ã™ã£ã½ã‚Šåã¾ã£ãŸå ´åˆã¯ã€
 							pixels[minY * unrolledImageWidth + minX] += intensity;
 						else
 						{
@@ -1410,7 +1408,7 @@ public static class Ring
 									pixelVertexPolarTemp1 = pixelVertexPolar;
 								else
 								{
-									//‚Ü‚¸pixY(‚·‚È‚í‚¿ƒÔŠp)‚Å’è‹`‚³‚ê‚é•úËó‚Ì2–{‚Ì’¼ü‚Ì’è‹`
+									//ã¾ãšpixY(ã™ãªã‚ã¡Ï‡è§’)ã§å®šç¾©ã•ã‚Œã‚‹æ”¾å°„çŠ¶ã®2æœ¬ã®ç›´ç·šã®å®šç¾©
 									pixelVertexPolarTemp1 = Geometriy.GetPolygonDividedByLine(pixelVertexPolar, 0, 1, (pixY - 0.5) * sectorStep);
 									pixelVertexPolarTemp1 = Geometriy.GetPolygonDividedByLine(pixelVertexPolarTemp1, 0, -1, -(pixY + 0.5) * sectorStep);
 								}
@@ -1421,7 +1419,7 @@ public static class Ring
 										pixels[pixY * unrolledImageWidth + maxX] += Geometriy.GetPolygonalArea(pixelVertexPolarTemp1) / totalArea * intensity;
 									else
 									{
-										//‚³‚ç‚É2ƒÆ”ÍˆÍ‚ÌãŒÀA‰ºŒÀ‚ğ•\‚·“¯S‰~ó‚Ì2’¼ü‚Ì’è‹`
+										//ã•ã‚‰ã«2Î¸ç¯„å›²ã®ä¸Šé™ã€ä¸‹é™ã‚’è¡¨ã™åŒå¿ƒå††çŠ¶ã®2ç›´ç·šã®å®šç¾©
 
 										PointD[] pixelVertexPolarTemp2;
 										for (int pixX = Math.Max(0, minX); pixX <= Math.Min(unrolledImageWidth - 1, maxX); pixX++)
@@ -1431,7 +1429,7 @@ public static class Ring
 											pixelVertexPolarTemp2 = Geometriy.GetPolygonDividedByLine(pixelVertexPolarTemp1, 1, 0, minR);
 											pixelVertexPolarTemp2 = Geometriy.GetPolygonDividedByLine(pixelVertexPolarTemp2, -1, 0, -maxR);
 
-											//–ÊÏ”ä‚ğ‹‚ß‚Ä‹­“x‚ğŠ„‚èU‚è
+											//é¢ç©æ¯”ã‚’æ±‚ã‚ã¦å¼·åº¦ã‚’å‰²ã‚ŠæŒ¯ã‚Š
 											pixels[pixY * unrolledImageWidth + pixX] += Geometriy.GetPolygonalArea(pixelVertexPolarTemp2) / totalArea * intensity;
 										}
 									}
@@ -1445,11 +1443,9 @@ public static class Ring
     }
     #endregion
 
-    #endregion
-
-    #region ‚¨‘ “ü‚è GetUnrolledImageArrayThread
+    #region ãŠè”µå…¥ã‚Š GetUnrolledImageArrayThread
     /// <summary>
-    /// ŒX‚«•â³‚âƒsƒNƒZƒ‹•â³‚ğœ‹‚µ‚ÄØ‚èŠJ‚«‰æ‘œ‚ğì‚èo‚·ƒƒ\ƒbƒh‚ÌƒXƒŒƒbƒh
+    /// å‚¾ãè£œæ­£ã‚„ãƒ”ã‚¯ã‚»ãƒ«è£œæ­£ã‚’é™¤å»ã—ã¦åˆ‡ã‚Šé–‹ãç”»åƒã‚’ä½œã‚Šå‡ºã™ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚¹ãƒ¬ãƒƒãƒ‰
     /// </summary>
     /// <param name="iP"></param>
     /// <param name="sweepDivision"></param>
@@ -1483,7 +1479,7 @@ public static class Ring
                 double x, y, l2, sphericalCorrection;
                 for (int i = 0; i < IP.SrcWidth; i++)
                 {
-                    //4‹÷‚Ì“_‚ğŒvZ
+                    //4éš…ã®ç‚¹ã‚’è¨ˆç®—
                     if (i == 0)
                     {
                         tempX = (i - IP.CenterX - 0.5) * IP.PixSizeX + tempY2TanKsiUpper;
@@ -1539,14 +1535,14 @@ public static class Ring
                                 pixelVertexPolar[n].X += Math.PI * 2;
 
                     int maxX = int.MinValue, minX = int.MaxValue, maxY = int.MinValue, minY = int.MaxValue;
-                    foreach (PointD pt in pixelVertexPolar) //‹‚ß‚½4‹÷‚Ì“_‚©‚çAŠ‘®‚·‚é‰Â”\«‚Ì‚ ‚ét,rƒsƒNƒZƒ‹‚ÌãŒÀA‰ºŒÀ‚ğŒˆ‚ß‚é
+                    foreach (PointD pt in pixelVertexPolar) //æ±‚ã‚ãŸ4éš…ã®ç‚¹ã‹ã‚‰ã€æ‰€å±ã™ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹t,rãƒ”ã‚¯ã‚»ãƒ«ã®ä¸Šé™ã€ä¸‹é™ã‚’æ±ºã‚ã‚‹
                     {
-                        //‚±‚±‚ÅpixY‚ÉŠÜ‚Ü‚ê‚é”ÍˆÍ‚Í (pixY-0.5)*sweepStep ‚©‚ç(pixY+0.5)*sweepStep‚Ü‚Å
+                        //ã“ã“ã§pixYã«å«ã¾ã‚Œã‚‹ç¯„å›²ã¯ (pixY-0.5)*sweepStep ã‹ã‚‰(pixY+0.5)*sweepStepã¾ã§
                         int pixY = (int)Math.Floor(pt.X / sectorStep + 0.5);
                         minY = Math.Min(minY, pixY);
                         maxY = Math.Max(maxY, pixY);
 
-                        //‚±‚±‚ÅpixX‚ÉŠÜ‚Ü‚ê‚é”ÍˆÍ‚Í (pixX-0.5)*thetaStep ‚©‚ç(pixX+0.5)*thetaStep‚Ü‚Å
+                        //ã“ã“ã§pixXã«å«ã¾ã‚Œã‚‹ç¯„å›²ã¯ (pixX-0.5)*thetaStep ã‹ã‚‰(pixX+0.5)*thetaStepã¾ã§
                         int pixX = (int)Math.Floor((Math.Atan(pt.Y / iP.FilmDistance) - startTheta) / stepTheta + 0.5);
                         minX = Math.Min(minX, pixX);
                         maxX = Math.Max(maxX, pixX);
@@ -1568,7 +1564,7 @@ public static class Ring
                                     pixelVertex1 = pixelVertex;
                                 else
                                 {
-                                    //‚Ü‚¸pixX‚Å’è‹`‚³‚ê‚é•úËó‚Ì2–{‚Ì’¼ü‚Ì’è‹`
+                                    //ã¾ãšpixXã§å®šç¾©ã•ã‚Œã‚‹æ”¾å°„çŠ¶ã®2æœ¬ã®ç›´ç·šã®å®šç¾©
                                     a1 = -Math.Sin((pixY - 0.5) * sectorStep);
                                     b1 = Math.Cos((pixY - 0.5) * sectorStep);
                                     a2 = Math.Sin((pixY + 0.5) * sectorStep);
@@ -1583,7 +1579,7 @@ public static class Ring
                                         pixels[pixY * width + maxX] += Geometriy.GetPolygonalArea(pixelVertex1) / totalArea * intensity;
                                     else
                                     {
-                                        //‚³‚ç‚É2ƒÆ”ÍˆÍ‚ÌãŒÀA‰ºŒÀ‚ğ•\‚·“¯S‰~ó‚Ì2’¼ü‚Ì’è‹`
+                                        //ã•ã‚‰ã«2Î¸ç¯„å›²ã®ä¸Šé™ã€ä¸‹é™ã‚’è¡¨ã™åŒå¿ƒå††çŠ¶ã®2ç›´ç·šã®å®šç¾©
                                         a1 = Math.Cos(pixY * sectorStep);
                                         b1 = Math.Sin(pixY * sectorStep);
 
@@ -1594,7 +1590,7 @@ public static class Ring
                                             double maxR = Math.Tan((pixX + 0.5) * stepTheta + startTheta) * IP.FilmDistance;
                                             pixelVertex2 = Geometriy.GetPolygonDividedByLine(pixelVertex1, -a1, -b1, -maxR);
 
-                                            //–ÊÏ”ä‚ğ‹‚ß‚Ä‹­“x‚ğŠ„‚èU‚è
+                                            //é¢ç©æ¯”ã‚’æ±‚ã‚ã¦å¼·åº¦ã‚’å‰²ã‚ŠæŒ¯ã‚Š
                                             double currentArea = Geometriy.GetPolygonalArea(pixelVertex2);
                                             double ratio = (currentArea - beforeArea) / totalArea;
                                             pixels[pixY * width + pixX] += ratio * intensity;
@@ -1638,11 +1634,11 @@ public static class Ring
         }
 
         double step = iP.RadialSectorAngle / 180.0 * Math.PI;
-        //Profile(ŠeƒXƒeƒbƒv‚²‚Æ‚Ì‹­“x)‚ÆPixels(ŠeƒXƒeƒbƒv‚ÉŠñ—^‚µ‚½ƒsƒNƒZƒ‹”)‚ğì¬
+        //Profile(å„ã‚¹ãƒ†ãƒƒãƒ—ã”ã¨ã®å¼·åº¦)ã¨Pixels(å„ã‚¹ãƒ†ãƒƒãƒ—ã«å¯„ä¸ã—ãŸãƒ”ã‚¯ã‚»ãƒ«æ•°)ã‚’ä½œæˆ
         int length = (int)(360.0 / iP.RadialSectorAngle + 0.5);
-        //‚Ì‚è‚µ‚ë•”•ª‚ğì‚é‚½‚ß‚É2”{‚Ì”z—ñ‚ğŠm•Û
+        //ã®ã‚Šã—ã‚éƒ¨åˆ†ã‚’ä½œã‚‹ãŸã‚ã«2å€ã®é…åˆ—ã‚’ç¢ºä¿
         double[] tempProfileIntensity = new double[length * 2];
-        //‚±‚Ì‚Æ‚«AtempProfileIntensity[i]‚Í (i-0.5)*step‚©‚ç(i+0.5)*step‚ÌŠp“x”ÍˆÍ“à‚Ì‹­“x‚ğˆÓ–¡‚·‚é
+        //ã“ã®ã¨ãã€tempProfileIntensity[i]ã¯ (i-0.5)*stepã‹ã‚‰(i+0.5)*stepã®è§’åº¦ç¯„å›²å†…ã®å¼·åº¦ã‚’æ„å‘³ã™ã‚‹
         for (int i = 0; i < tempProfileIntensity.Length; i++)
             tempProfileIntensity[i] = 0;
 
@@ -1653,7 +1649,7 @@ public static class Ring
                 {
                     double intensity = Intensity[j * IP.SrcWidth + i];
 
-                    //4‹÷‚Ì“_‚ğŒvZ
+                    //4éš…ã®ç‚¹ã‚’è¨ˆç®—
                     PointD[] pixelVertex = new PointD[4];
                     int n = 0;
                     for (double yshift = -0.5; yshift < 0.6; yshift++)
@@ -1673,7 +1669,7 @@ public static class Ring
                     (pixelVertex[3], pixelVertex[2]) = (pixelVertex[2], pixelVertex[3]);
                     double totalArea = Geometriy.GetPolygonalArea(pixelVertex);
 
-                    //‹‚ß‚½4‹÷‚Ì“_‚©‚çAƒXƒeƒbƒv‚Ìw”‚ÌãŒÀA‰ºŒÀ‚ğİ’è
+                    //æ±‚ã‚ãŸ4éš…ã®ç‚¹ã‹ã‚‰ã€ã‚¹ãƒ†ãƒƒãƒ—ã®æŒ‡æ•°ã®ä¸Šé™ã€ä¸‹é™ã‚’è¨­å®š
                     List<double> angles = new List<double>();
                     foreach (PointD pt in pixelVertex)
                         angles.Add(Math.Atan2(pt.Y, pt.X));
@@ -1691,19 +1687,19 @@ public static class Ring
                     for (int index = startIndex; index <= endIndex; index++)
                     {
                         PointD[] tempPixelVertex;
-                        //‚Ü‚¸index‚Å’è‹`‚³‚ê‚é•úËó‚Ì2–{‚Ì’¼ü‚Ì’è‹`
+                        //ã¾ãšindexã§å®šç¾©ã•ã‚Œã‚‹æ”¾å°„çŠ¶ã®2æœ¬ã®ç›´ç·šã®å®šç¾©
                         double a1 = -Math.Sin((index - 0.5) * step), b1 = Math.Cos((index - 0.5) * step);
                         double a2 = Math.Sin((index + 0.5) * step), b2 = -Math.Cos((index + 0.5) * step);
                         tempPixelVertex = Geometriy.GetPolygonDividedByLine(pixelVertex, a1, b1, 0);
                         tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, a2, b2, 0);
 
-                        //‚³‚ç‚ÉŠp“x”ÍˆÍ‚ÌãŒÀA‰ºŒÀ‚ğ•\‚·“¯S‰~ó‚Ì2’¼ü
+                        //ã•ã‚‰ã«è§’åº¦ç¯„å›²ã®ä¸Šé™ã€ä¸‹é™ã‚’è¡¨ã™åŒå¿ƒå††çŠ¶ã®2ç›´ç·š
                         a1 = Math.Cos(index * step);
                         b1 = Math.Sin(index * step);
                         tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, a1, b1, minR);
                         tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, -a1, -b1, -maxR);
 
-                        //–ÊÏ”ä‚ğ‹‚ß‚Ä‹­“x‚ğŠ„‚èU‚è
+                        //é¢ç©æ¯”ã‚’æ±‚ã‚ã¦å¼·åº¦ã‚’å‰²ã‚ŠæŒ¯ã‚Š
                         double currentArea = Geometriy.GetPolygonalArea(tempPixelVertex);
                         double ratio = currentArea / totalArea;
                         tempProfileIntensity[index] += ratio * intensity;
@@ -1766,7 +1762,7 @@ public static class Ring
 
         IP = iP;
 
-        //Ï•ª—Ìˆæ‘S‘Ì‚ÌxãŒÀ,x‰ºŒÀ, yãŒÀAy‰ºŒÀ‚ğŒˆ‚ß‚é
+        //ç©åˆ†é ˜åŸŸå…¨ä½“ã®xä¸Šé™,xä¸‹é™, yä¸Šé™ã€yä¸‹é™ã‚’æ±ºã‚ã‚‹
         int xMin = int.MaxValue, yMin = int.MaxValue, xMax = int.MinValue, yMax = int.MinValue;
         for (int i = 0; i < IsValid.Count; i++)
             if (IsValid[i])
@@ -1779,10 +1775,10 @@ public static class Ring
 
         thread = Environment.ProcessorCount;
 #if (DEBUG)
-			thread = 1;
+        thread = 1;
 #endif
 
-        //ŠeƒXƒŒƒbƒh‚ÌãŒÀ‚Æ‰ºŒÀ‚ğŒˆ‚ß‚é
+        //å„ã‚¹ãƒ¬ãƒƒãƒ‰ã®ä¸Šé™ã¨ä¸‹é™ã‚’æ±ºã‚ã‚‹
         int[] yThreadMin = new int[thread];
         int[] yThreadMax = new int[thread];
         int yStep = (yMax - yMin) / thread;
@@ -1792,21 +1788,21 @@ public static class Ring
             yThreadMax[i] = Math.Min(yMin + (i + 1) * yStep, yMax);
         }
 
-        //ƒtƒ‰ƒbƒgƒpƒlƒ‹ƒ‚[ƒh‚Ì
+        //ãƒ•ãƒ©ãƒƒãƒˆãƒ‘ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ã®æ™‚
         if (IP.Camera == IntegralProperty.CameraEnum.FlatPanel)
         {
-            //Šp“xA‹——£Ad’lƒ‚[ƒh‚²‚Æ‚ÉAƒXƒeƒbƒv‚Ì‹æØ‚èˆÊ’u(’†S‚©‚ç‚Ì‹——£‚Ì2æ)‚ğİ’è‚·‚é
+            //è§’åº¦ã€è·é›¢ã€då€¤ãƒ¢ãƒ¼ãƒ‰ã”ã¨ã«ã€ã‚¹ãƒ†ãƒƒãƒ—ã®åŒºåˆ‡ã‚Šä½ç½®(ä¸­å¿ƒã‹ã‚‰ã®è·é›¢ã®2ä¹—)ã‚’è¨­å®šã™ã‚‹
             if (IP.Mode == HorizontalAxis.Angle)
             {
                 R2 = new double[(int)((IP.EndAngle - IP.StartAngle) / IP.StepAngle) + 1];
                 for (int i = 0; i < R2.Length; i++)
-                    R2[i] = (i + 0.5) * IP.StepAngle + IP.StartAngle;//2016/12/27 •ÏX
+                    R2[i] = (i + 0.5) * IP.StepAngle + IP.StartAngle;//2016/12/27 å¤‰æ›´
             }
-            else if (IP.Mode == HorizontalAxis.d)//d-spacing mode‚Ì‚Æ‚«
+            else if (IP.Mode == HorizontalAxis.d)//d-spacing modeã®ã¨ã
             {
                 R2 = new double[(int)((IP.EndDspacing - IP.StartDspacing) / IP.StepDspacing) + 1];
                 for (int i = R2.Length - 1; i >= 0; i--)
-                    R2[R2.Length - 1 - i] = 2 * Math.Asin(IP.WaveLength / 2 / (IP.StartDspacing + (i - 0.5) * IP.StepDspacing));
+                    R2[R2.Length - 1 - i] = 2 * Math.Asin(IP.WaveLength / 2 / (IP.StartDspacing + (i + 0.5) * IP.StepDspacing));
             }
             else if (IP.Mode == HorizontalAxis.Length)
             {
@@ -1818,16 +1814,16 @@ public static class Ring
                 }
             }
         }
-        else//ƒKƒ“ƒhƒ‹ƒtƒB[ƒ‚[ƒh‚Ì
+        else//ã‚¬ãƒ³ãƒ‰ãƒ«ãƒ•ã‚£ãƒ¼ãƒ¢ãƒ¼ãƒ‰ã®æ™‚
         {
-            //Šp“xƒXƒeƒbƒv‚Ì‹æØ‚èˆÊ’u‚ğİ’è‚·‚é
+            //è§’åº¦ã‚¹ãƒ†ãƒƒãƒ—ã®åŒºåˆ‡ã‚Šä½ç½®ã‚’è¨­å®šã™ã‚‹
             R2 = new double[(int)((IP.EndAngle - IP.StartAngle) / IP.StepAngle) + 1];
             for (int i = 0; i < R2.Length; i++)
                 R2[i] = (i - 0.5) * IP.StepAngle + IP.StartAngle;
         }
         int length = R2.Length;
 
-        //Profile(ŠeƒXƒeƒbƒv‚²‚Æ‚Ì‹­“x)‚ÆPixels(ŠeƒXƒeƒbƒv‚ÉŠñ—^‚µ‚½ƒsƒNƒZƒ‹”)‚ğì¬
+        //Profile(å„ã‚¹ãƒ†ãƒƒãƒ—ã”ã¨ã®å¼·åº¦)ã¨Pixels(å„ã‚¹ãƒ†ãƒƒãƒ—ã«å¯„ä¸ã—ãŸãƒ”ã‚¯ã‚»ãƒ«æ•°)ã‚’ä½œæˆ
         var tempProfileIntensity = new double[thread][][];
         var tempContibutedPixels = new double[thread][][];
         for (int i = 0; i < thread; i++)
@@ -1838,7 +1834,7 @@ public static class Ring
             tempContibutedPixels[i][0] = new double[length];
         }
 
-        //ŒX‚«•â³—pƒpƒ‰ƒ[ƒ^‚ğŒvZ
+        //å‚¾ãè£œæ­£ç”¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨ˆç®—
         SetTiltParameter();
 
         double[] ProfileIntensity = new double[R2.Length];
@@ -1847,7 +1843,7 @@ public static class Ring
 
         if (iP.Mode != HorizontalAxis.Angle)
         {
-            //ŒvZ‚·‚éŒğ“_‚ğ‚«‚ß‚é
+            //è¨ˆç®—ã™ã‚‹äº¤ç‚¹ã‚’ãã‚ã‚‹
             IsCalcPosition = new bool[(IP.SrcHeight + 1) * (IP.SrcWidth + 1)];
             int h = IP.SrcHeight;
             int w = IP.SrcWidth;
@@ -1864,12 +1860,12 @@ public static class Ring
             }
         }
 
-        //FlatPanelƒ‚[ƒh‚Ì
+        //FlatPanelãƒ¢ãƒ¼ãƒ‰ã®æ™‚
         if (iP.Camera == IntegralProperty.CameraEnum.FlatPanel)
         {
             if (IP.Mode == HorizontalAxis.Angle || IP.Mode == HorizontalAxis.d)
             {
-                #region ƒlƒCƒeƒBƒuƒR[ƒh‚Ív‚Á‚½‚æ‚è‘‚­‚È‚©‚Á‚½B
+                #region ãƒã‚¤ãƒ†ã‚£ãƒ–ã‚³ãƒ¼ãƒ‰ã¯æ€ã£ãŸã‚ˆã‚Šæ—©ããªã‹ã£ãŸã€‚
                 //if (NativeWrapper.Enabled)
                 //{
                 //	var intensityArray = Intensity.ToArray();
@@ -1913,11 +1909,11 @@ public static class Ring
                     ContributedPixels[j] += tempContibutedPixels[i][0][j];
                 }
         }
-        //Gandolfiƒ‚[ƒh‚Ì
+        //Gandolfiãƒ¢ãƒ¼ãƒ‰ã®æ™‚
         else
         {
             int[] xThreadMin = new int[thread], xThreadMax = new int[thread];
-            //‚Ü‚¸AIsValid‚ÈƒsƒNƒZƒ‹”‚ğƒJƒEƒ“ƒg
+            //ã¾ãšã€IsValidãªãƒ”ã‚¯ã‚»ãƒ«æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆ
             int average = IsValid.Count(b => b) / thread;
             int y = 0;
             for (int i = 0; i < thread; i++)
@@ -1962,18 +1958,18 @@ public static class Ring
             });
         }
 
-        //Profile•Ï”‚É‘ã“ü
+        //Profileå¤‰æ•°ã«ä»£å…¥
         Profile profile = new Profile();
 
-        //ƒtƒ‰ƒbƒgƒpƒlƒ‹ƒ‚[ƒh‚Ì
+        //ãƒ•ãƒ©ãƒƒãƒˆãƒ‘ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ã®æ™‚
         if (IP.Camera == IntegralProperty.CameraEnum.FlatPanel)
         {
-            if (IP.Mode == HorizontalAxis.Angle)//Šp“xƒ‚[ƒh‚Ì‚Æ‚«
+            if (IP.Mode == HorizontalAxis.Angle)//è§’åº¦ãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
                 for (int i = 0; i < length; i++)
                 {
                     //double cosTwoTheta = Math.Cos(i * IP.StepAngle + IP.StartAngle);
-                    //double temp = ProfileIntensity[i] / ContributedPixels[i] / cosTwoTheta/ cosTwoTheta/ cosTwoTheta; //cos2ƒ¦‚Ì3æ‚ÅŠ„‚é‚±‚Æ‚É‚æ‚Á‚ÄABBŒõŠwŒn‚Æˆê’v‚³‚¹‚é
-                    //20161227 •ÏX
+                    //double temp = ProfileIntensity[i] / ContributedPixels[i] / cosTwoTheta/ cosTwoTheta/ cosTwoTheta; //cos2Î˜ã®3ä¹—ã§å‰²ã‚‹ã“ã¨ã«ã‚ˆã£ã¦ã€BBå…‰å­¦ç³»ã¨ä¸€è‡´ã•ã›ã‚‹
+                    //20161227 å¤‰æ›´
                     var temp = ProfileIntensity[i] / ContributedPixels[i];
                     if (double.IsNaN(temp) || double.IsInfinity(temp))
                         temp = 0;
@@ -1981,7 +1977,7 @@ public static class Ring
                     profile.Pt.Add(new PointD(x, temp));
                     profile.Err.Add(new PointD(x, temp / Math.Sqrt(ProfileIntensity[i])));
                 }
-            else if (IP.Mode == HorizontalAxis.d)//d’l‚Ìƒ‚[ƒh‚Ì‚Æ‚«
+            else if (IP.Mode == HorizontalAxis.d)//då€¤ã®ãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
                 for (int i = 0; i < length; i++)
                 {
                     double tempD = i * IP.StepDspacing + IP.StartDspacing;
@@ -1991,7 +1987,7 @@ public static class Ring
                     profile.Pt.Add(new PointD(tempD * 10, temp));
                     profile.Err.Add(new PointD(tempD * 10, temp / Math.Sqrt(ProfileIntensity[i])));
                 }
-            else if (IP.Mode == HorizontalAxis.Length)//Lengthƒ‚[ƒh‚Ì‚Æ‚«
+            else if (IP.Mode == HorizontalAxis.Length)//Lengthãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
                 for (int i = 0; i < length; i++)
                 {
                     var temp = ProfileIntensity[i] / ContributedPixels[i];
@@ -2003,7 +1999,7 @@ public static class Ring
                 }
 
         }
-        //ƒKƒ“ƒhƒ‹ƒtƒB[ƒ‚[ƒh‚Ì
+        //ã‚¬ãƒ³ãƒ‰ãƒ«ãƒ•ã‚£ãƒ¼ãƒ¢ãƒ¼ãƒ‰ã®æ™‚
         else
         {
             for (int i = 0; i < length; i++)
@@ -2029,11 +2025,11 @@ public static class Ring
 
         R2 = new double[(int)((IP.EndAngle - IP.StartAngle) / IP.StepAngle) + 1];
         for (int i = 0; i < R2.Length; i++)
-            R2[i] = (i + 0.5) * IP.StepAngle + IP.StartAngle;//2016/12/27 •ÏX
+            R2[i] = (i + 0.5) * IP.StepAngle + IP.StartAngle;//2016/12/27 å¤‰æ›´
 
         int length = R2.Length;
 
-        //ŒX‚«•â³—pƒpƒ‰ƒ[ƒ^‚ğŒvZ
+        //å‚¾ãè£œæ­£ç”¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨ˆç®—
         SetTiltParameter();
 
         var profiles = new double[chiDivision, length];
@@ -2070,9 +2066,9 @@ public static class Ring
         return destProfiles;
     }
 
-    #region GetProfile@Gandlfi—p
+    #region GetProfileã€€Gandlfiç”¨
     /// <summary>
-    /// ƒKƒ“ƒhƒ‹ƒtƒB[ƒJƒƒ‰—p‚ÌŒvZ
+    /// ã‚¬ãƒ³ãƒ‰ãƒ«ãƒ•ã‚£ãƒ¼ã‚«ãƒ¡ãƒ©ç”¨ã®è¨ˆç®—
     /// </summary>
     /// <param name="xMin"></param>
     /// <param name="xMax"></param>
@@ -2092,7 +2088,7 @@ public static class Ring
 
         var m1 = new Matrix3D(CosTau, SinTau * SinPhi, SinTau * CosPhi, 0, CosPhi, -SinPhi, -SinTau, CosTau * SinPhi, CosTau * CosPhi);
 
-        //ƒsƒNƒZƒ‹À•W‚ğÀ‹óŠÔÀ•W‚É•ÏŠ·‚·‚éFunc
+        //ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ã‚’å®Ÿç©ºé–“åº§æ¨™ã«å¤‰æ›ã™ã‚‹Func
         Func<double, double, Vector3DBase> convPixelToReal;
         if (SinTau == 0 && SinPhi == 0)
             convPixelToReal = new Func<double, double, Vector3DBase>((x, y) => new Vector3DBase(
@@ -2104,10 +2100,10 @@ public static class Ring
                              Math.Sin((x - centerX) * pixSizeX / r) * r,
                              pixSizeY * (-y + centerY),
                              (Math.Cos((x - centerX) * pixSizeX / r) - 1) * r));
-        //À‹óŠÔÀ•W‚ğ2ƒ¦‚É•ÏŠ·‚·‚éFunc
+        //å®Ÿç©ºé–“åº§æ¨™ã‚’2Î˜ã«å¤‰æ›ã™ã‚‹Func
         var convRealToTwoTheta = new Func<Vector3DBase, double>((v) => Math.Acos((v.Z + CL) / Math.Sqrt(v.X * v.X + v.Y * v.Y + (v.Z + CL) * (v.Z + CL))));
 
-        //Šp“xƒXƒeƒbƒv‚Ì‹æØ‚èˆÊ’u‚ğİ’è‚·‚é
+        //è§’åº¦ã‚¹ãƒ†ãƒƒãƒ—ã®åŒºåˆ‡ã‚Šä½ç½®ã‚’è¨­å®šã™ã‚‹
         int length = (int)((IP.EndAngle - IP.StartAngle) / IP.StepAngle) + 1;
         var divisions = new List<double>();
         var tan = new double[length];
@@ -2119,7 +2115,7 @@ public static class Ring
             sec[i] = 1 / Math.Cos(divisions[i]) / Math.Cos(divisions[i]);
         }
 
-        //ƒsƒNƒZƒ‹À•W=>À‹óŠÔ‚Ì•ÏŠ·‚ÆAÀ‹óŠÔ„2ƒ¦‚Ì•ÏŠ·‚ğæ‚É‚â‚Á‚Ä‚¨‚­
+        //ãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™=>å®Ÿç©ºé–“ã®å¤‰æ›ã¨ã€å®Ÿç©ºé–“ï¼ï¼2Î˜ã®å¤‰æ›ã‚’å…ˆã«ã‚„ã£ã¦ãŠã
         var realCenter = new Vector3DBase[(xMax - xMin) * (yMax - yMin)];
         var realVertex = new Vector3DBase[(xMax - xMin + 1) * (yMax - yMin + 1)];
         var twoThetaCenter = new double[(xMax - xMin) * (yMax - yMin)];
@@ -2153,9 +2149,9 @@ public static class Ring
                 if (IsValid[x + y * width])
                 {
                     var intensity = Intensity[x + y * width];
-                    // x, yƒsƒNƒZƒ‹À•W‚ğÀ‹óŠÔ‚É•ÏŠ·
+                    // x, yãƒ”ã‚¯ã‚»ãƒ«åº§æ¨™ã‚’å®Ÿç©ºé–“ã«å¤‰æ›
 
-                    //l‹÷‚Ì2ƒ¦‚ğ‹‚ß‚é
+                    //å››éš…ã®2Î˜ã‚’æ±‚ã‚ã‚‹
                     var twoTheta = new[] {
                         twoThetaVertex[x - xMin + (y - yMin) * (xMax - xMin + 1)],
                         twoThetaVertex[x - xMin + 1 + (y - yMin) * (xMax - xMin + 1)],
@@ -2166,19 +2162,19 @@ public static class Ring
                     var (minTwoTheta, maxTwoTheta) = twoTheta.MinMax();
                     //double maxTwoTheta = twoTheta.Max(), minTwoTheta = twoTheta.Min();
 
-                    if (maxTwoTheta > divisions[0] && minTwoTheta < divisions[length - 1])//‘S‹æØ‚è“à‚ÉƒsƒNƒZƒ‹‚ª(ˆê•”‚Å‚à)û‚Ü‚Á‚Ä‚¢‚éê‡iŠ®‘S‚É”ÍˆÍŠO‚Ì‚ÍœŠOj
+                    if (maxTwoTheta > divisions[0] && minTwoTheta < divisions[length - 1])//å…¨åŒºåˆ‡ã‚Šå†…ã«ãƒ”ã‚¯ã‚»ãƒ«ãŒ(ä¸€éƒ¨ã§ã‚‚)åã¾ã£ã¦ã„ã‚‹å ´åˆï¼ˆå®Œå…¨ã«ç¯„å›²å¤–ã®æ™‚ã¯é™¤å¤–ï¼‰
                     {
-                        //Å¬ƒCƒ“ƒfƒbƒNƒX‚ÆÅ‘åƒCƒ“ƒfƒbƒNƒX‚ğ‹‚ß‚é
+                        //æœ€å°ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨æœ€å¤§ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æ±‚ã‚ã‚‹
                         int minIndex = Math.Max(0, divisions.FindLastIndex(d => d < minTwoTheta));
                         int maxIndex = Math.Min(length - 1, divisions.FindIndex(d => d > maxTwoTheta));
 
-                        //Å‘åƒCƒ“ƒfƒbƒNƒX‚ÆÅ¬ƒCƒ“ƒfƒbƒNƒX‚Ì·‚ª1‚Ìê‡(ƒsƒNƒZƒ‹‚ª‚·‚Á‚Û‚èˆê‚Â‚Ì‹æØ‚è“à‚Éû‚Ü‚é‚Æ‚«)
+                        //æœ€å¤§ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨æœ€å°ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å·®ãŒ1ã®å ´åˆ(ãƒ”ã‚¯ã‚»ãƒ«ãŒã™ã£ã½ã‚Šä¸€ã¤ã®åŒºåˆ‡ã‚Šå†…ã«åã¾ã‚‹ã¨ã)
                         if (maxIndex - minIndex == 1 && divisions[minIndex] < minTwoTheta && divisions[maxIndex] > maxTwoTheta)
                         {
                             profile[minIndex] += intensity;
                             pixels[minIndex] += pixSizeX * pixSizeY;
                         }
-                        //Å‘åƒCƒ“ƒfƒbƒNƒX‚ÆÅ¬ƒCƒ“ƒfƒbƒNƒX‚Ì·‚ª2ˆÈã‚Ìê‡(ƒsƒNƒZƒ‹‚ªˆê‚Â‚Ì‹æØ‚è“à‚Éû‚Ü‚ç‚È‚¢‚Æ‚«)
+                        //æœ€å¤§ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨æœ€å°ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®å·®ãŒ2ä»¥ä¸Šã®å ´åˆ(ãƒ”ã‚¯ã‚»ãƒ«ãŒä¸€ã¤ã®åŒºåˆ‡ã‚Šå†…ã«åã¾ã‚‰ãªã„ã¨ã)
                         else
                         {
                             var v = realCenter[x - xMin + (y - yMin) * (xMax - xMin)];
@@ -2246,9 +2242,9 @@ public static class Ring
     }
     #endregion
 
-    #region GetProfile ‹Œƒo[ƒWƒ‡ƒ“  FindParameter‚Åg‚¤
+    #region GetProfile æ—§ãƒãƒ¼ã‚¸ãƒ§ãƒ³  FindParameterã§ä½¿ã†
     /// <summary>
-    /// TiltCorrection‚Ì‚É‚Ì‚İŒÄ‚Î‚ê‚é 
+    /// TiltCorrectionã®æ™‚ã«ã®ã¿å‘¼ã°ã‚Œã‚‹ 
     /// </summary>
     /// <param name="iP"></param>
     /// <returns></returns>
@@ -2257,7 +2253,7 @@ public static class Ring
         var thread = Environment.ProcessorCount;
 
         int i, j;
-        //Profile(ŠeƒXƒeƒbƒv‚²‚Æ‚Ì‹­“x)‚ÆPixels(ŠeƒXƒeƒbƒv‚ÉŠñ—^‚µ‚½ƒsƒNƒZƒ‹”)‚ğì¬
+        //Profile(å„ã‚¹ãƒ†ãƒƒãƒ—ã”ã¨ã®å¼·åº¦)ã¨Pixels(å„ã‚¹ãƒ†ãƒƒãƒ—ã«å¯„ä¸ã—ãŸãƒ”ã‚¯ã‚»ãƒ«æ•°)ã‚’ä½œæˆ
         int length = R2.Length;
         double[] ProfileIntensity = new double[length];
         double[] ContributedPixels = new double[length];
@@ -2270,10 +2266,10 @@ public static class Ring
             tempContibutedPixels[i] = new double[length];
         }
 
-        //‚±‚±‚©‚çƒXƒŒƒbƒh‹N“®
+        //ã“ã“ã‹ã‚‰ã‚¹ãƒ¬ãƒƒãƒ‰èµ·å‹•
         Parallel.For(0, thread, i => GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i], ref tempContibutedPixels[i]));
 
-        //ŠeƒXƒŒƒbƒh‚ÌŒ‹‰Ê‚ğ‚Ü‚Æ‚ß‚é
+        //å„ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµæœã‚’ã¾ã¨ã‚ã‚‹
         for (i = 0; i < R2.Length; i++)
             ContributedPixels[i] = ProfileIntensity[i] = 0;
         for (i = 0; i < thread; i++)
@@ -2283,7 +2279,7 @@ public static class Ring
                 ContributedPixels[j] += tempContibutedPixels[i][j];
             }
 
-        //Profile•Ï”‚É‘ã“ü
+        //Profileå¤‰æ•°ã«ä»£å…¥
         Profile p = new Profile();
         double temp;
         for (i = 0; i < length; i++)
@@ -2299,7 +2295,7 @@ public static class Ring
     private delegate void GetProfileThreadDelegateWithTiltCorrection(int xMin, int xMax, int yMin, int yMax, ref double[] profile, ref double[] pixels);
 
     /// <summary>
-    /// 2theta-intensity histgram (‹Œƒo[ƒWƒ‡ƒ“)
+    /// 2theta-intensity histgram (æ—§ãƒãƒ¼ã‚¸ãƒ§ãƒ³)
     /// </summary>
     /// <param name="xMin"></param>
     /// <param name="xMax"></param>
@@ -2336,7 +2332,7 @@ public static class Ring
             = xxyy12 = xxyy13 = xxyy24 = xxyy34 = 0;
 
         double FD = IP.FilmDistance;
-        //ŒX‚«•â³
+        //å‚¾ãè£œæ­£
         double tempY2TanKsi, numer4;
         double tempY2numer1, tempY2numer3, tempY2denom1plusFD;
         double tempX;
@@ -2359,7 +2355,7 @@ public static class Ring
         else//
             getIndex = r => { return (int)((IP.EndDspacing - IP.WaveLength / 2 / Math.Sin(Math.Atan(Math.Sqrt(r) / FD) / 2)) / IP.StepDspacing - 1); };
 
-        //Å‰‚Ì‚Ps–Ú‚ÌInterSection‚¾‚¯Šm•Û‚µ‚Ä‚¨‚­
+        //æœ€åˆã®ï¼‘è¡Œç›®ã®InterSectionã ã‘ç¢ºä¿ã—ã¦ãŠã
         j = yMin - 1;
         tempY2 = (j - centerY + 0.5) * pixSizeY;
         tempY2TanKsi = tempY2 * TanKsi;
@@ -2376,8 +2372,8 @@ public static class Ring
                 double y = (tempX * Numer1 + tempY2numer3) * numer4;
                 double l2 = x * x + y * y;
 
-                //ˆÈ‰º‚ÍAl1(Œ©‚©‚¯‚Ìƒs[ƒNˆÊ’umm)‚Æ‚µ‚½‚Æ‚«‚Ì^‚Ì l1' = FD * sin(l1/radius) *radius / ( FD- radius * (1-cos(l1/radius)) )‚ğ•ÏŒ`
-                // sin(l1/radius) => l1/radiu,  1- cos(l1/radius) => 2 sin^2 (l1/2/radius) ‚ğ—˜—p
+                //ä»¥ä¸‹ã¯ã€l1(è¦‹ã‹ã‘ã®ãƒ”ãƒ¼ã‚¯ä½ç½®mm)ã¨ã—ãŸã¨ãã®çœŸã® l1' = FD * sin(l1/radius) *radius / ( FD- radius * (1-cos(l1/radius)) )ã‚’å¤‰å½¢
+                // sin(l1/radius) => l1/radiu,  1- cos(l1/radius) => 2 sin^2 (l1/2/radius) ã‚’åˆ©ç”¨
                 double sphericalCorrection = FD / (FD - l2 * IP.SpericalRadiusInverse / 2.0);
 
                 IntersectionPointX[m + width1] = x * sphericalCorrection;
@@ -2385,7 +2381,7 @@ public static class Ring
                 IntersectionPointR2[m + width1] = IntersectionPointX[m + width1] * IntersectionPointX[m + width1] + IntersectionPointY[m + width1] * IntersectionPointY[m + width1];
             }
 
-        //‚±‚±‚©‚çÏ•ªŠJn
+        //ã“ã“ã‹ã‚‰ç©åˆ†é–‹å§‹
         for (j = yMin; j < yMax; j++)
         {
             tempY2 = (j - centerY + 0.5) * pixSizeY;
@@ -2409,7 +2405,7 @@ public static class Ring
                     double y = (tempX * Numer1 + tempY2numer3) * numer4;
                     double l2 = x * x + y * y;
 
-                    //ˆÈ‰º‚ÍAl1(Œ©‚©‚¯‚Ìƒs[ƒNˆÊ’umm)@@l2 = FD * sin(l1/radius) *radius / ( FD- radius * (1-cos(l1/radius)) )‚ğ•ÏŒ`
+                    //ä»¥ä¸‹ã¯ã€l1(è¦‹ã‹ã‘ã®ãƒ”ãƒ¼ã‚¯ä½ç½®mm)ã€€ã€€l2 = FD * sin(l1/radius) *radius / ( FD- radius * (1-cos(l1/radius)) )ã‚’å¤‰å½¢
                     double sphericalCorrection = FD / (FD - l2 * IP.SpericalRadiusInverse / 2.0);
 
                     IntersectionPointX[m + width1] = x * sphericalCorrection;
@@ -2422,11 +2418,11 @@ public static class Ring
             jWidth = j * width;
             for (i = xMin; i < xMax; i++)
             {
-                if (IsValid[i + jWidth])//ƒ}ƒXƒN‚³‚ê‚Ä‚¢‚È‚¢‚Æ‚«
+                if (IsValid[i + jWidth])//ãƒã‚¹ã‚¯ã•ã‚Œã¦ã„ãªã„ã¨ã
                 {
                     I = Intensity[i + jWidth];
 
-                    //‘æˆêÛŒÀ‚É‚Á‚Ä‚­‚é
+                    //ç¬¬ä¸€è±¡é™ã«æŒã£ã¦ãã‚‹
                     if (IntersectionPointX[i] + IntersectionPointX[i + 1] + IntersectionPointX[i + width1] + IntersectionPointX[i + width2] > 0)
                         if (IntersectionPointY[i] + IntersectionPointY[i + 1] + IntersectionPointY[i + width1] + IntersectionPointY[i + width2] > 0)
                         {// X>0 Y>0
@@ -2458,7 +2454,7 @@ public static class Ring
                         x1 = -IntersectionPointX[i + width2]; y1 = -IntersectionPointY[i + width2]; r1 = IntersectionPointR2[i + width2];
                     }
 
-                    //’†S‚©‚ç‚ÌÅ’Z‹——£‚Í
+                    //ä¸­å¿ƒã‹ã‚‰ã®æœ€çŸ­è·é›¢ã¯
 
                     kStart = getIndex(r1);
 
@@ -2474,18 +2470,18 @@ public static class Ring
                     xy34 = x4 * y3 - x3 * y4;
                     xy24 = x4 * y2 - x2 * y4;
 
-                    //‹éŒ`‚Ì–ÊÏ
+                    //çŸ©å½¢ã®é¢ç©
                     Area = 0.5 * (xy13 - xy12 + xy34 - xy24);
 
                     for (k = kStart; k < length; k++)
                     {
-                        if (R2[k] > r1)//r1‚æ‚è‚ÍŠO‘¤‚Ì‚Æ‚«
+                        if (R2[k] > r1)//r1ã‚ˆã‚Šã¯å¤–å´ã®ã¨ã
                         {
-                            if (R2[k] > r4)//r4‚æ‚èŠO‘¤‚Ì‚Æ‚«
+                            if (R2[k] > r4)//r4ã‚ˆã‚Šå¤–å´ã®ã¨ã
                                 area1 = Area;
-                            else if (R2[k] < r2)//Pt2‚æ‚è“à‘¤‚Ì‚Æ‚«
+                            else if (R2[k] < r2)//Pt2ã‚ˆã‚Šå†…å´ã®ã¨ã
                             {
-                                //1-2‚Æ‚ÌŒğ“_
+                                //1-2ã¨ã®äº¤ç‚¹
                                 if (xx12sq == 10000000000)
                                 {
                                     xx12sq = (xx12 = x1 - x2) * xx12;
@@ -2498,8 +2494,8 @@ public static class Ring
                                 y12 = (-xy12 * xx12 - yy12 * sqrt) / xxyy12;
 
                                 if (R2[k] < r3)
-                                {//1-2 1-3 ‚Ì‚Æ‚«
-                                 //1-3‚Æ‚ÌŒğ“_
+                                {//1-2 1-3 ã®ã¨ã
+                                 //1-3ã¨ã®äº¤ç‚¹
                                     if (xx13sq == 10000000000)
                                     {
                                         xx13sq = (xx13 = x1 - x3) * xx13;
@@ -2514,8 +2510,8 @@ public static class Ring
                                     area1 = 0.5 * (x12 * y13 - x12 * y1 + x13 * y1 - x13 * y12 + x1 * y12 - x1 * y13);
                                 }
                                 else
-                                {//1-2 3-4 ‚Ì‚Æ‚«
-                                 //3-4‚Æ‚ÌŒğ“_
+                                {//1-2 3-4 ã®ã¨ã
+                                 //3-4ã¨ã®äº¤ç‚¹
                                     if (xx34sq == 10000000000)
                                     {
                                         xx34sq = (xx34 = x3 - x4) * xx34;
@@ -2530,7 +2526,7 @@ public static class Ring
                                     area1 = 0.5 * (x3 * y1 - x12 * y1 - x1 * y3 + x34 * y3 - x3 * y34 + x12 * y34 + x1 * y12 - x34 * y12);
                                 }
                             }
-                            else if (R2[k] < r3)//Pt3‚æ‚è“à‘¤‚Ì‚Æ‚«
+                            else if (R2[k] < r3)//Pt3ã‚ˆã‚Šå†…å´ã®ã¨ã
                             {//1-3 2-4
                              //1-3
                                 if (xx13sq == 10000000000)
@@ -2543,7 +2539,7 @@ public static class Ring
                                 sqrt = Math.Sqrt(R2[k] * xxyy13 - xy13sq);
                                 x13 = (xy13 * yy13 - xx13 * sqrt) / xxyy13;
                                 y13 = (-xy13 * xx13 - yy13 * sqrt) / xxyy13;
-                                //2-4‚Æ‚ÌŒğ“_
+                                //2-4ã¨ã®äº¤ç‚¹
                                 if (xx24sq == 10000000000)
                                 {
                                     xx24sq = (xx24 = x2 - x4) * xx24;
@@ -2558,8 +2554,8 @@ public static class Ring
                                 area1 = 0.5 * (x13 * y1 - x2 * y1 - x1 * y13 + x24 * y13 - x13 * y24 + x2 * y24 + x1 * y2 - x24 * y2);
                             }
                             else
-                            {//2-4 3-4‚ÅŠm’è
-                             //2-4‚Æ‚ÌŒğ“_
+                            {//2-4 3-4ã§ç¢ºå®š
+                             //2-4ã¨ã®äº¤ç‚¹
                                 if (xx24sq == 10000000000)
                                 {
                                     xx24sq = (xx24 = x2 - x4) * xx24;
@@ -2570,7 +2566,7 @@ public static class Ring
                                 sqrt = Math.Sqrt(R2[k] * xxyy24 - xy24sq);
                                 x24 = (xy24 * yy24 - xx24 * sqrt) / xxyy24;
                                 y24 = (-xy24 * xx24 - yy24 * sqrt) / xxyy24;
-                                //3-4‚Æ‚ÌŒğ“_
+                                //3-4ã¨ã®äº¤ç‚¹
                                 if (xx34sq == 10000000000)
                                 {
                                     xx34sq = (xx34 = x3 - x4) * xx34;
@@ -2606,9 +2602,9 @@ public static class Ring
 
     #endregion
 
-    #region GetProfileVƒo[ƒWƒ‡ƒ“
+    #region GetProfileæ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³
     /// <summary>
-    ///  2theta-intensity histgram (Vƒo[ƒWƒ‡ƒ“)
+    ///  2theta-intensity histgram (æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³)
     /// </summary>
     /// <param name="xMin"></param>
     /// <param name="xMax"></param>
@@ -2631,11 +2627,11 @@ public static class Ring
         int width = IP.SrcWidth;
         double centerX = IP.CenterX, centerY = IP.CenterY, pixSizeX = IP.PixSizeX, pixSizeY = IP.PixSizeY, startAngle = IP.StartAngle, stepAngle = IP.StepAngle, fd = IP.FilmDistance;
 
-        //x•ûŒü‚É0.5ƒsƒNƒZƒ‹i‚ñ‚¾‚Ì•ÀiƒxƒNƒgƒ‹
+        //xæ–¹å‘ã«0.5ãƒ”ã‚¯ã‚»ãƒ«é€²ã‚“ã æ™‚ã®ä¸¦é€²ãƒ™ã‚¯ãƒˆãƒ«
         double tX = pixSizeX / 2, tY = 0.0;
         (double X, double Y, double Z) slideX = (Numer2 * tX + Numer1 * tY, Numer1 * tX + Numer3 * tY, Denom2 * tX + Denom1 * tY);
 
-        //Y•ûŒü‚É0.5ƒsƒNƒZƒ‹i‚ñ‚¾‚Ì•ÀiƒxƒNƒgƒ‹
+        //Yæ–¹å‘ã«0.5ãƒ”ã‚¯ã‚»ãƒ«é€²ã‚“ã æ™‚ã®ä¸¦é€²ãƒ™ã‚¯ãƒˆãƒ«
         tY = pixSizeY / 2;
         tX = pixSizeY * TanKsi / 2;
 
@@ -2645,7 +2641,7 @@ public static class Ring
             (slideX.X + slideY.X, slideX.Y + slideY.Y, slideX.Z + slideY.Z),
             (slideX.X - slideY.X, slideX.Y - slideY.Y, slideX.Z - slideY.Z) };
 
-        //IP‚Ì–@üƒxƒNƒgƒ‹
+        //IPã®æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«
         (double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
 
         Span<(double X, double Y)> pt0 = stackalloc (double X, double Y)[8];
@@ -2654,10 +2650,10 @@ public static class Ring
         Span<(double X, double Y)> pt3 = stackalloc (double X, double Y)[8];
         Span<(double X, double Y)> pt4 = stackalloc (double X, double Y)[8];
 
-        //‚±‚±‚©‚çÏ•ªŠJn
+        //ã“ã“ã‹ã‚‰ç©åˆ†é–‹å§‹
         for (int j = yMin; j < yMax; j++)
         {
-            var tempY = (j - centerY) * pixSizeY;//IP•½–Êã‚ÌÀ•WŒn‚É‚¨‚¯‚éYˆÊ’u
+            var tempY = (j - centerY) * pixSizeY;//IPå¹³é¢ä¸Šã®åº§æ¨™ç³»ã«ãŠã‘ã‚‹Yä½ç½®
             var tempY2TanKsi = tempY * TanKsi;
             var numer1TempY = Numer1 * tempY;
             var numer3TempY = Numer3 * tempY;
@@ -2666,24 +2662,24 @@ public static class Ring
             var jWidth = j * width;
             for (int i = xMin; i < xMax; i++)
             {
-                if (IsValid[i + jWidth])//ƒ}ƒXƒN‚³‚ê‚Ä‚¢‚È‚¢‚Æ‚«
+                if (IsValid[i + jWidth])//ãƒã‚¹ã‚¯ã•ã‚Œã¦ã„ãªã„ã¨ã
                 {
-                    var tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IP•½–Êã‚ÌÀ•WŒn‚É‚¨‚¯‚éXˆÊ’u
-                                                                        //ˆÈ‰º‚Ìx,y,z‚ªƒsƒNƒZƒ‹’†S‚Ì‹óŠÔˆÊ’u
+                    var tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IPå¹³é¢ä¸Šã®åº§æ¨™ç³»ã«ãŠã‘ã‚‹Xä½ç½®
+                                                                        //ä»¥ä¸‹ã®x,y,zãŒãƒ”ã‚¯ã‚»ãƒ«ä¸­å¿ƒã®ç©ºé–“ä½ç½®
                     var x = Numer2 * tempX + numer1TempY;
                     var y = Numer1 * tempX + numer3TempY;
                     var z = Denom2 * tempX + denom1tempYFD;
 
-                    #region ‹…–Ê•â³‚ª•K—v‚Èê‡
-                    if (IP.SpericalRadiusInverse != 0) //‹…–Ê•â³‚ª•K—v‚Èê‡
+                    #region çƒé¢è£œæ­£ãŒå¿…è¦ãªå ´åˆ
+                    if (IP.SpericalRadiusInverse != 0) //çƒé¢è£œæ­£ãŒå¿…è¦ãªå ´åˆ
                     {
-                        //ŒŸoŠí’†S(0,0,FD)‚©‚çƒsƒNƒZƒ‹‚Ü‚Å‚Ì‹——£
+                        //æ¤œå‡ºå™¨ä¸­å¿ƒ(0,0,FD)ã‹ã‚‰ãƒ”ã‚¯ã‚»ãƒ«ã¾ã§ã®è·é›¢
                         var distance = Math.Sqrt(x * x + y * y + (z - fd) * (z - fd));
-                        //ŒŸoŠí‚Ìƒ_ƒCƒŒƒNƒgƒXƒ|ƒbƒg•ûŒü‚Ék‚ß‚éŠ„‡
+                        //æ¤œå‡ºå™¨ã®ãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã‚¹ãƒãƒƒãƒˆæ–¹å‘ã«ç¸®ã‚ã‚‹å‰²åˆ
                         var coeff_detector_palallel = Math.Sin(distance * IP.SpericalRadiusInverse) / distance / IP.SpericalRadiusInverse;
-                        //ŒŸoŠí‚Ì–@ü•ûŒü‚Éi‚Ş‹——£
+                        //æ¤œå‡ºå™¨ã®æ³•ç·šæ–¹å‘ã«é€²ã‚€è·é›¢
                         var slide_detector_normal = (1 - Math.Cos(distance * IP.SpericalRadiusInverse)) / IP.SpericalRadiusInverse;
-                        //(0,0,FD)‚©‚ç(X,Y,Z)‚ÌƒxƒNƒgƒ‹‚Écoeff_detector_palallel‚ğ‚©‚¯‚½ŒãAdetector_normal‚Ì•ûŒü‚Éslide_detector_normal‚¾‚¯i‚ß‚éB
+                        //(0,0,FD)ã‹ã‚‰(X,Y,Z)ã®ãƒ™ã‚¯ãƒˆãƒ«ã«coeff_detector_palallelã‚’ã‹ã‘ãŸå¾Œã€detector_normalã®æ–¹å‘ã«slide_detector_normalã ã‘é€²ã‚ã‚‹ã€‚
                         x = x * coeff_detector_palallel + detector_normal.X * slide_detector_normal;
                         y = y * coeff_detector_palallel + detector_normal.Y * slide_detector_normal;
                         z = (z - fd) * coeff_detector_palallel + fd + detector_normal.Z * slide_detector_normal;
@@ -2692,7 +2688,7 @@ public static class Ring
 
                     double l2 = x * x + y * y + z * z, q = Math.Sqrt(x * x + y * y), l = Math.Sqrt(l2);
 
-                    //l‹÷‚Ì’¸“_À•W‚ğŒvZ
+                    //å››éš…ã®é ‚ç‚¹åº§æ¨™ã‚’è¨ˆç®—
                     for (int k = 0; k < 2; k++)
                     {
                         double a = x + slide[k].X, b = y + slide[k].Y, c = z + slide[k].Z;
@@ -2708,11 +2704,11 @@ public static class Ring
                     }
                     var n0 = 4;
 
-                    var twoTheta = z >= 0 ? Math.Asin(q / l) : Math.PI - Math.Asin(q / l);//2ƒÆZo
+                    var twoTheta = z >= 0 ? Math.Asin(q / l) : Math.PI - Math.Asin(q / l);//2Î¸ç®—å‡º
                     int startIndex;
                     if (IP.Mode == HorizontalAxis.Angle)
                     {
-                        var devTwoTheta = Math.Atan(Math.Max(Math.Abs(pt0[0].X), Math.Abs(pt0[1].X)) / fd);//ƒsƒNƒZƒ‹“à‚Å‚Ì2ƒÆ‚Ì•Ï“®•
+                        var devTwoTheta = Math.Atan(Math.Max(Math.Abs(pt0[0].X), Math.Abs(pt0[1].X)) / fd);//ãƒ”ã‚¯ã‚»ãƒ«å†…ã§ã®2Î¸ã®å¤‰å‹•å¹…
                         startIndex = Math.Max(0, (int)((twoTheta - devTwoTheta - startAngle) / stepAngle + 0.5));
                     }
                     else
@@ -2723,74 +2719,62 @@ public static class Ring
                     }
                     var intensityPerArea = Intensity[i + jWidth] / getArea(4, pt0);
 
-                    var chiAngle = Math.Atan2(y, x); //ƒsƒNƒZƒ‹’†S‚ÌChiŠp
+                    var chiAngle = Math.Atan2(y, x); //ãƒ”ã‚¯ã‚»ãƒ«ä¸­å¿ƒã®Chiè§’
                     if (chiAngle < 0) chiAngle += 2 * Math.PI;
-                    var devChiAngle = Math.Atan(Math.Max(Math.Abs(pt0[0].Y), Math.Abs(pt0[1].Y)) / fd / q * l); //ƒsƒNƒZƒ‹“à‚Å‚ÌChi‚Ì•Ï“®•
-                    var startChiIndex = Math.Max(0, (int)((chiAngle - devChiAngle) / 2 / Math.PI * chiDivision - 0.5)); //ƒsƒNƒZƒ‹’†S‚ÌChiŠp
+                    var devChiAngle = Math.Atan(Math.Max(Math.Abs(pt0[0].Y), Math.Abs(pt0[1].Y)) / fd / q * l); //ãƒ”ã‚¯ã‚»ãƒ«å†…ã§ã®Chiã®å¤‰å‹•å¹…
+                    var startChiIndex = Math.Max(0, (int)((chiAngle - devChiAngle) / 2 / Math.PI * chiDivision - 0.5)); //ãƒ”ã‚¯ã‚»ãƒ«ä¸­å¿ƒã®Chiè§’
 
-                    //‹éŒ`‚ğ x = c ‚Ì’¼ü(2ƒV[ƒ^‚Ì•ªŠ„ü) ‚Æ y = d ‚Ì’¼ü(ƒZƒNƒ^[‚Ì•ªŠ„ü)‚ÅØ‚èæ‚èA–ÊÏ”ä‚ğŒvZ‚·‚éƒ‹[ƒv
+                    //çŸ©å½¢ã‚’ x = c ã®ç›´ç·š(2ã‚·ãƒ¼ã‚¿ã®åˆ†å‰²ç·š) ã¨ y = d ã®ç›´ç·š(ã‚»ã‚¯ã‚¿ãƒ¼ã®åˆ†å‰²ç·š)ã§åˆ‡ã‚Šå–ã‚Šã€é¢ç©æ¯”ã‚’è¨ˆç®—ã™ã‚‹ãƒ«ãƒ¼ãƒ—
                     for (int k1 = startIndex; k1 < R2.Length; k1++)
                     {
-                        //x ‚ª c1ˆÈ‰º‚Ì‹éŒ`(pt1)‚ÆAc1ˆÈã‚Ì‹éŒ`(pt2)‚ğ¶¬
+                        //x ãŒ c1ä»¥ä¸‹ã®çŸ©å½¢(pt1)ã¨ã€c1ä»¥ä¸Šã®çŸ©å½¢(pt2)ã‚’ç”Ÿæˆ
                         var c = Math.Tan(R2[k1] - twoTheta) * fd;
 
                         int n1 = 0, n2 = 0;
 
-                        for (int m = 0; m < n0; m++)//pt1‚ÍAŒ»İ‚Ì2ƒ¦”ÍˆÍ‚Ìƒ|ƒŠƒSƒ“Apt2‚ÍŸ‚Ì”ÍˆÍ‚Ìƒ|ƒŠƒSƒ“
+                        for (int m = 0; m < n0; m++)//pt1ã¯ã€ç¾åœ¨ã®2Î˜ç¯„å›²ã®ãƒãƒªã‚´ãƒ³ã€pt2ã¯æ¬¡ã®ç¯„å›²ã®ãƒãƒªã‚´ãƒ³
                         {
                             (double X, double Y) p1 = pt0[m], p2 = m == n0 - 1 ? pt0[0] : pt0[m + 1];
                             if (p1.X < c)
-                            {
                                 pt1[n1++] = p1;
-                                if (c <= p2.X)
-                                    pt1[n1++] = pt2[n2++] = (c, (c * p2.Y - c * p1.Y - p1.X * p2.Y + p2.X * p1.Y) / (p2.X - p1.X));
-                            }
                             else
-                            {
                                 pt2[n2++] = p1;
-                                if (c > p2.X)
-                                    pt1[n1++] = pt2[n2++] = (c, (c * p2.Y - c * p1.Y - p1.X * p2.Y + p2.X * p1.Y) / (p2.X - p1.X));
-                            }
+                            if( (p1.X < c && c <= p2.X) || (p1.X >= c && c > p2.X))
+                                pt1[n1++] = pt2[n2++] = (c, (c * p2.Y - c * p1.Y - p1.X * p2.Y + p2.X * p1.Y) / (p2.X - p1.X));
                         }
 
-                        if (chiDivision == 1)//ƒZƒNƒ^[•ªŠ„‚ğ‚µ‚È‚¢ê‡
+                        if (chiDivision == 1)//ã‚»ã‚¯ã‚¿ãƒ¼åˆ†å‰²ã‚’ã—ãªã„å ´åˆ
                         {
                             var area = getArea(n1, pt1);
                             pixels[0][k1] += area;
                             profile[0][k1] += area * intensityPerArea;
                         }
-                        else//ƒZƒNƒ^[•ªŠ„‚ğ‚·‚éê‡
+                        else//ã‚»ã‚¯ã‚¿ãƒ¼åˆ†å‰²ã‚’ã™ã‚‹å ´åˆ
                         {
                             for (int k2 = startChiIndex; k2 < chi.Length; k2++)
                             {
                                 var d = q / l * Math.Tan(chi[k2] - chiAngle) * fd;
-                                //‹éŒ`pt1‚ğX‚É•ªŠ„‚µ‚Ä‚¢‚­
+                                //çŸ©å½¢pt1ã‚’æ›´ã«åˆ†å‰²ã—ã¦ã„ã
                                 int n3 = 0, n4 = 0;
-                                for (int m = 0; m < n1; m++)//pt3‚ÍAŒ»İ‚Ì2ƒ¦”ÍˆÍ‚Ìƒ|ƒŠƒSƒ“Apt4‚ÍŸ‚Ì”ÍˆÍ‚Ìƒ|ƒŠƒSƒ“
+                                for (int m = 0; m < n1; m++)//pt3ã¯ã€ç¾åœ¨ã®2Î˜ç¯„å›²ã®ãƒãƒªã‚´ãƒ³ã€pt4ã¯æ¬¡ã®ç¯„å›²ã®ãƒãƒªã‚´ãƒ³
                                 {
                                     (double X, double Y) p1 = pt1[m], p2 = m == n1 - 1 ? pt1[0] : pt1[m + 1];
                                     if (p1.Y < d)
-                                    {
                                         pt3[n3++] = p1;
-                                        if (d <= p2.Y)
-                                            pt3[n3++] = pt4[n4++] = ((d * p2.X - d * p1.X - p1.Y * p2.X + p2.Y * p1.X) / (p2.Y - p1.Y), d);
-                                    }
                                     else
-                                    {
                                         pt4[n4++] = p1;
-                                        if (d > p2.Y)
-                                            pt3[n3++] = pt4[n4++] = ((d * p2.X - d * p1.X - p1.Y * p2.X + p2.Y * p1.X) / (p2.Y - p1.Y), d);
-                                    }
+                                    if((p1.Y < d && d <= p2.Y)||(p1.Y >= d && d > p2.Y))
+                                        pt3[n3++] = pt4[n4++] = ((d * p2.X - d * p1.X - p1.Y * p2.X + p2.Y * p1.X) / (p2.Y - p1.Y), d);
                                 }
                                 var area = getArea(n3, pt3);
                                 pixels[k2][k1] += area;
                                 profile[k2][k1] += area * intensityPerArea;
 
-                                if (n4 == 0)//Ÿ‚Ìƒ|ƒŠƒSƒ“‚ª–³‚©‚Á‚½‚çI—¹
+                                if (n4 == 0)//æ¬¡ã®ãƒãƒªã‚´ãƒ³ãŒç„¡ã‹ã£ãŸã‚‰çµ‚äº†
                                     break;
 
                                 //Array.Copy(pt4, pt1, n4);
-                                for (int n = 0; i < n4; i++)
+                                for (int n = 0; n < n4; n++)
                                     pt1[n] = pt4[n];
 
                                 n1 = n4;
@@ -2800,15 +2784,15 @@ public static class Ring
                             }
                         }
 
-                        if (n2 == 0)//Ÿ‚Ìƒ|ƒŠƒSƒ“‚ª–³‚©‚Á‚½‚çI—¹
+                        if (n2 == 0)//æ¬¡ã®ãƒãƒªã‚´ãƒ³ãŒç„¡ã‹ã£ãŸã‚‰çµ‚äº†
                             break;
                         //Array.Copy(pt2, pt0, n2);
-                        for (int n = 0; i < n2; i++)
+                        for (int n = 0; n < n2; n++)
                             pt0[n] = pt2[n];
 
                         n0 = n2;
 
-                        #region 20200430 ã‚ÌƒR[ƒh‚Å\•ª‘¬“x‚ªo‚é‚Ì‚ÅA‚¨‘ “ü‚è 
+                        #region 20200430 ä¸Šã®ã‚³ãƒ¼ãƒ‰ã§ååˆ†é€Ÿåº¦ãŒå‡ºã‚‹ã®ã§ã€ãŠè”µå…¥ã‚Š 
                         /*
 							if (R2[k] > twoTheta + devTwoTheta)
 							{
@@ -2834,9 +2818,9 @@ public static class Ring
 
 							var area1 = Math.Abs(n1 switch
 							{
-								3 => pt1[0].X * (pt1[1].Y - pt1[2].Y) + pt1[1].X * (pt1[2].Y - pt1[0].Y) + pt1[2].X * (pt1[0].Y - pt1[1].Y),//0 - 1 - 2 ‚ªì‚é3ŠpŒ`
-								4 => pt1[0].X * (pt1[1].Y - pt1[3].Y) + pt1[1].X * (pt1[2].Y - pt1[0].Y) + pt1[2].X * (pt1[3].Y - pt1[1].Y) + pt1[3].X * (pt1[0].Y - pt1[2].Y),// 0 - 1 - 2 -  3 ‚ªì‚é4ŠpŒ`
-								5 => pt1[0].X * (pt1[1].Y - pt1[4].Y) + pt1[1].X * (pt1[2].Y - pt1[0].Y) + pt1[2].X * (pt1[3].Y - pt1[1].Y) + pt1[3].X * (pt1[4].Y - pt1[2].Y) + pt1[4].X * (pt1[0].Y - pt1[3].Y),// 0 - 1 - 2 - 3 - 4 ‚ªì‚é5ŠpŒ`
+								3 => pt1[0].X * (pt1[1].Y - pt1[2].Y) + pt1[1].X * (pt1[2].Y - pt1[0].Y) + pt1[2].X * (pt1[0].Y - pt1[1].Y),//0 - 1 - 2 ãŒä½œã‚‹3è§’å½¢
+								4 => pt1[0].X * (pt1[1].Y - pt1[3].Y) + pt1[1].X * (pt1[2].Y - pt1[0].Y) + pt1[2].X * (pt1[3].Y - pt1[1].Y) + pt1[3].X * (pt1[0].Y - pt1[2].Y),// 0 - 1 - 2 -  3 ãŒä½œã‚‹4è§’å½¢
+								5 => pt1[0].X * (pt1[1].Y - pt1[4].Y) + pt1[1].X * (pt1[2].Y - pt1[0].Y) + pt1[2].X * (pt1[3].Y - pt1[1].Y) + pt1[3].X * (pt1[4].Y - pt1[2].Y) + pt1[4].X * (pt1[0].Y - pt1[3].Y),// 0 - 1 - 2 - 3 - 4 ãŒä½œã‚‹5è§’å½¢
 								_ => 0
 							}) * 0.5;
 
@@ -2850,18 +2834,18 @@ public static class Ring
             }
         }
 
-        var mag = 1 / (pixSizeX * pixSizeY);//ŒW”
+        var mag = 1 / (pixSizeX * pixSizeY);//ä¿‚æ•°
         for (int i = 0; i < pixels.Length; i++)
             for (int j = 0; j < pixels[i].Length; j++)
                 pixels[i][j] *= mag;
 
-        //–¢À‘• ÅŒã‚ÉChiRotation‚ÆChiDirection‚ğl—¶‚µ‚ÄAs‚ğ“ü‚ê‘Ö‚¦
+        //æœªå®Ÿè£… æœ€å¾Œã«ChiRotationã¨ChiDirectionã‚’è€ƒæ…®ã—ã¦ã€è¡Œã‚’å…¥ã‚Œæ›¿ãˆ
 
         return (profile, pixels);
     }
 
     /// <summary>
-    /// ƒ|ƒŠƒSƒ“‚Ì–ÊÏ‚ğ‹‚ß‚é
+    /// ãƒãƒªã‚´ãƒ³ã®é¢ç©ã‚’æ±‚ã‚ã‚‹
     /// </summary>
     /// <param name="n"></param>
     /// <param name="pt"></param>
@@ -2904,7 +2888,7 @@ public static class Ring
     #endregion
 
     #region SetFindTiltParameter
-    //FindTiltCorrection—p‚Ì’è”‚ğæ‚ÉŒˆ‚ß‚Ä‚¨‚­ƒƒ\ƒbƒh
+    //FindTiltCorrectionç”¨ã®å®šæ•°ã‚’å…ˆã«æ±ºã‚ã¦ãŠããƒ¡ã‚½ãƒƒãƒ‰
     public static void SetFindTiltParameter(IntegralProperty iP, double[] peaks, double serchRange)
     {
         if (double.IsNaN(IP.EndLength))
@@ -2917,18 +2901,18 @@ public static class Ring
         int h = IP.SrcHeight;
         int w = IP.SrcWidth;
 
-        //Ï•ª—Ìˆæ‘S‘Ì‚ÌyãŒÀAy‰ºŒÀ‚ğŒˆ‚ß‚é
+        //ç©åˆ†é ˜åŸŸå…¨ä½“ã®yä¸Šé™ã€yä¸‹é™ã‚’æ±ºã‚ã‚‹
         int YMin, YMax;
         YMin = YMax = 0;
         for (i = 0; i < IsValid.Count; i++)
             if (IsValid[i])
-            {//ƒ}ƒXƒN‚³‚ê‚Ä‚¢‚È‚¢ƒ|ƒCƒ“ƒg‚ªŒ©‚Â‚©‚Á‚½‚ç
+            {//ãƒã‚¹ã‚¯ã•ã‚Œã¦ã„ãªã„ãƒã‚¤ãƒ³ãƒˆãŒè¦‹ã¤ã‹ã£ãŸã‚‰
                 YMin = i / w;
                 break;
             }
         for (i = IsValid.Count - 1; i > -1; i--)
             if (IsValid[i])
-            {//ƒ}ƒXƒN‚³‚ê‚Ä‚¢‚È‚¢ƒ|ƒCƒ“ƒg‚ªŒ©‚Â‚©‚Á‚½‚ç
+            {//ãƒã‚¹ã‚¯ã•ã‚Œã¦ã„ãªã„ãƒã‚¤ãƒ³ãƒˆãŒè¦‹ã¤ã‹ã£ãŸã‚‰
                 YMax = i / w + 1;
                 break;
             }
@@ -2953,7 +2937,7 @@ public static class Ring
                     break;
                 }
 
-        //ŠeƒXƒŒƒbƒh‚ÌãŒÀ‚Æ‰ºŒÀ‚ğŒˆ‚ß‚é
+        //å„ã‚¹ãƒ¬ãƒƒãƒ‰ã®ä¸Šé™ã¨ä¸‹é™ã‚’æ±ºã‚ã‚‹
         yThreadMin = new int[thread];
         yThreadMax = new int[thread];
         int yStep = (YMax - YMin) / thread;
@@ -2964,8 +2948,8 @@ public static class Ring
         }
         yThreadMax[thread - 1] = YMax;
 
-        //ƒtƒBƒbƒeƒBƒ“ƒO‚É•K—v‚Ì‚È‚¢”ÍˆÍ‚Íƒ}ƒXƒN‚·‚é(ƒXƒŒƒbƒh‚ğ—˜—p)
-        serchRange *= 2;//ÀÛ‚ÌƒT[ƒ`ƒŒƒ“ƒW‚æ‚è‚¿‚å‚Á‚Æ‘½‚ß‚É
+        //ãƒ•ã‚£ãƒƒãƒ†ã‚£ãƒ³ã‚°ã«å¿…è¦ã®ãªã„ç¯„å›²ã¯ãƒã‚¹ã‚¯ã™ã‚‹(ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’åˆ©ç”¨)
+        serchRange *= 2;//å®Ÿéš›ã®ã‚µãƒ¼ãƒãƒ¬ãƒ³ã‚¸ã‚ˆã‚Šã¡ã‚‡ã£ã¨å¤šã‚ã«
         double[] peaksPlusRange2 = new double[peaks.Length];
         double[] peaksMinusRange2 = new double[peaks.Length];
         for (k = 0; k < peaks.Length; k++)
@@ -2974,10 +2958,10 @@ public static class Ring
             peaksMinusRange2[k] = (peaks[k] - serchRange) * (peaks[k] - serchRange);
         }
 
-        //ŒvZ‚·‚éŒğ“_‚ğ‚«‚ß‚é
+        //è¨ˆç®—ã™ã‚‹äº¤ç‚¹ã‚’ãã‚ã‚‹
         IsCalcPosition = new bool[(h + 1) * (w + 1)];
 
-        //ŒX‚«•â³ŒW”‚ğŒvZ
+        //å‚¾ãè£œæ­£ä¿‚æ•°ã‚’è¨ˆç®—
         SetTiltParameter();
 
         Parallel.For(0, thread, i => SetFindTiltParameterThread(xMin, xMax, yThreadMin[i], yThreadMax[i], peaksPlusRange2, peaksMinusRange2));
@@ -2985,7 +2969,7 @@ public static class Ring
         if (double.IsNaN(IP.EndLength))
             return;
 
-        //”z—ñR‚ğì¬@ŠeƒXƒeƒbƒv‚²‚Æ‚Ì’†S‚©‚ç‚Ì‹——£‚ğŠi”[‚·‚é”z—ñ
+        //é…åˆ—Rã‚’ä½œæˆã€€å„ã‚¹ãƒ†ãƒƒãƒ—ã”ã¨ã®ä¸­å¿ƒã‹ã‚‰ã®è·é›¢ã‚’æ ¼ç´ã™ã‚‹é…åˆ—
         R2 = new double[(int)((IP.EndLength - IP.StartLength) / IP.StepLength) + 1];
         double temp;
         for (i = 0; i < R2.Length; i++)
@@ -3047,7 +3031,7 @@ public static class Ring
 
     #endregion
 
-    #region ƒoƒbƒOƒOƒ‰ƒEƒ“ƒhŒ¸Z
+    #region ãƒãƒƒã‚°ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰æ¸›ç®—
     public static List<double> SubtractBackground(IEnumerable<double> src,
     IEnumerable<double> bg, double coeff = 1)
     {
@@ -3061,13 +3045,13 @@ public static class Ring
     }
     #endregion
 
-    #region ƒoƒbƒNƒOƒ‰ƒ“ƒhŠÖ”B –¢Š®¬
+    #region ãƒãƒƒã‚¯ã‚°ãƒ©ãƒ³ãƒ‰é–¢æ•°ã€‚ æœªå®Œæˆ
     public static double[] GetBackground(double lower, double upper)
     {
         return Intensity.ToArray();
 
         /*
-			//ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhŒ`ó‚ğ’T‚µo‚·B
+			//ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å½¢çŠ¶ã‚’æ¢ã—å‡ºã™ã€‚
 			List<PointD> pt = new List<PointD>();
 			List<double> I = new List<double>();
 			double diaX = Math.Min(IP.CenterX, IP.SrcWidth - IP.CenterX);
@@ -3114,13 +3098,13 @@ public static class Ring
 				}
 			}
 
-			//I‚ğu‚È‚ç‚·v
+			//Iã‚’ã€Œãªã‚‰ã™ã€
 			for (int j = 0; j < 5; j++)
 			{
 				double[] tempI = I.ToArray();
 				for (int i = 20; i < I.Count - 20; i++)
 				{
-					//‚à‚µƒvƒ‰ƒXƒ}ƒCƒiƒX5‚Ì“_‚ª50%‚¸‚ê‚Ä‚¢‚½‚ç
+					//ã‚‚ã—ãƒ—ãƒ©ã‚¹ãƒã‚¤ãƒŠã‚¹5ã®ç‚¹ãŒ50%ãšã‚Œã¦ã„ãŸã‚‰
 					if (Math.Abs(tempI[i - 20] + tempI[i + 20] - 2 * tempI[i]) / 2 / tempI[i] > 0.5)
 						I[i] = -1;
 				}
@@ -3142,8 +3126,8 @@ public static class Ring
 			pt.RemoveRange(0, 20);
 			pt.RemoveRange(pt.Count - 20, 20);
 
-			//ŠÖ”Œ`‚Í F0 = Ia * exp ( - 4 Log2 ( (x-X)^2 + C(y-Y)^2 ) / Ha^2 ) + Ib * exp ( - 4 Log2 ( (x-X)^2 + C(y-Y)^2 ) / Hb^2 )
-			//•]‰¿’l‚Í ƒ°1/(F-F0)^2
+			//é–¢æ•°å½¢ã¯ F0 = Ia * exp ( - 4 Log2 ( (x-X)^2 + C(y-Y)^2 ) / Ha^2 ) + Ib * exp ( - 4 Log2 ( (x-X)^2 + C(y-Y)^2 ) / Hb^2 )
+			//è©•ä¾¡å€¤ã¯ Î£1/(F-F0)^2
 
 			double Ra, Ca, Ia, Ha, Rb, Cb, Ib, Hb, Rc, Cc, Ic, Hc;
 			double Ra_new, Ca_new, Ia_new, Ha_new, Rb_new, Cb_new, Ib_new, Hb_new, Rc_new, Cc_new, Ic_new, Hc_new;
@@ -3169,7 +3153,7 @@ public static class Ring
 			int count = 0;
 			double Ln2 = Math.Log(2);
 
-			//Œ»İ‚Ìc·‚ğŒvZ
+			//ç¾åœ¨ã®æ®‹å·®ã‚’è¨ˆç®—
 			ResidualSquareCurrent = 0;
 			for (int i = 0; i < pt.Count; i++)
 			{
@@ -3192,7 +3176,7 @@ public static class Ring
 			while (ramda < 1000000000000 && count < 600)
 			{
 				count++;
-				for (int i = 0; i < pt.Count; i++)//•Î”÷•ª‚ğì‚é
+				for (int i = 0; i < pt.Count; i++)//åå¾®åˆ†ã‚’ä½œã‚‹
 				{
 					double x = pt[i].X, y = pt[i].Y;
 					double x2 = x * x, y2 = y * y;
@@ -3204,35 +3188,35 @@ public static class Ring
 					double Ab = Math.Sqrt(x2 + Cb2 * y2);
 					double Ac = Math.Sqrt(x2 + Cc2 * y2);
 
-					//İF/İIa
+					//âˆ‚F/âˆ‚Ia
 					diff[0, i] = Math.Pow(2, (-4 * (-2 * Aa * Ra + Ra2 + x2 + Ca2 * y2)) / Ha2);
-					//İF/İCa
+					//âˆ‚F/âˆ‚Ca
 					diff[1, i] = -(Math.Pow(2, 3 - (4 * (-2 * Aa * Ra + Ra2 + x2 + Ca2 * y2)) / Ha2) * Ca * Ia * Ln2 * (1 - Ra / Aa) * y2) / Ha2;
-					//İF/İRa
+					//âˆ‚F/âˆ‚Ra
 					diff[2, i] = -(Math.Pow(2, 2 - (4 * (-2 * Aa * Ra + Ra2 + x2 + Ca2 * y2)) / Ha2) * Ia * Ln2 * (-2 * Aa + 2 * Ra)) / Ha2;
-					//İF/İHa
+					//âˆ‚F/âˆ‚Ha
 					diff[3, i] = (Math.Pow(2, 3 - (4 * (-2 * Aa * Ra + Ra2 + x2 + Ca2 * y2)) / Ha2) * Ia * Ln2 * (-2 * Aa * Ra + Ra2 + x2 + Ca2 * y2)) / Ha3;
 
-					//İF/İIb
+					//âˆ‚F/âˆ‚Ib
 					diff[4, i] = Math.Pow(2, (-4 * (-2 * Ab * Rb + Rb2 + x2 + Cb2 * y2)) / Hb2);
-					//İF/İCb
+					//âˆ‚F/âˆ‚Cb
 					diff[5, i] = -(Math.Pow(2, 3 - (4 * (-2 * Ab * Rb + Rb2 + x2 + Cb2 * y2)) / Hb2) * Cb * Ib * Ln2 * (1 - Rb / Ab) * y2) / Hb2;
-					//İF/İRb
+					//âˆ‚F/âˆ‚Rb
 					diff[6, i] = -(Math.Pow(2, 2 - (4 * (-2 * Ab * Rb + Rb2 + x2 + Cb2 * y2)) / Hb2) * Ib * Ln2 * (-2 * Ab + 2 * Rb)) / Hb2;
-					//İF/İHc
+					//âˆ‚F/âˆ‚Hc
 					diff[7, i] = (Math.Pow(2, 3 - (4 * (-2 * Ab * Rb + Rb2 + x2 + Cb2 * y2)) / Hb2) * Ib * Ln2 * (-2 * Ab * Rb + Rb2 + x2 + Cb2 * y2)) / Hb3;
 
-					//İF/İIc
+					//âˆ‚F/âˆ‚Ic
 					diff[8, i] = Math.Pow(2, (-4 * (-2 * Ac * Rc + Rc2 + x2 + Cc2 * y2)) / Hc2);
-					//İF/İCc
+					//âˆ‚F/âˆ‚Cc
 					diff[9, i] = -(Math.Pow(2, 3 - (4 * (-2 * Ac * Rc + Rc2 + x2 + Cc2 * y2)) / Hc2) * Cc * Ic * Ln2 * (1 - Rc / Ac) * y2) / Hc2;
-					//İF/İRc
+					//âˆ‚F/âˆ‚Rc
 					diff[10, i] = -(Math.Pow(2, 2 - (4 * (-2 * Ac * Rc + Rc2 + x2 + Cc2 * y2)) / Hc2) * Ic * Ln2 * (-2 * Ac + 2 * Rc)) / Hc2;
-					//İF/İHc
+					//âˆ‚F/âˆ‚Hc
 					diff[11, i] = (Math.Pow(2, 3 - (4 * (-2 * Ac * Rc + Rc2 + x2 + Cc2 * y2)) / Hc2) * Ic * Ln2 * (-2 * Ac * Rc + Rc2 + x2 + Cc2 * y2)) / Hc3;
 				}
 
-				//s—ñAlpha, Beta‚ğì‚é
+				//è¡Œåˆ—Alpha, Betaã‚’ä½œã‚‹
 				for (int k = 0; k < 12; k++)
 				{
 					for (int l = 0; l < 12; l++)
@@ -3269,7 +3253,7 @@ public static class Ring
 				Rc_new = Rc + delta.E[10, 0];
 				Hc_new = Hc + delta.E[11, 0];
 
-				//‚ ‚½‚ç‚µ‚¢ƒpƒ‰ƒ[ƒ^‚Å‚Ìc·‚ğŒvZ
+				//ã‚ãŸã‚‰ã—ã„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã§ã®æ®‹å·®ã‚’è¨ˆç®—
 				ResidualSquareNew = 0;
 				for (int i = 0; i < pt.Count; i++)
 				{
