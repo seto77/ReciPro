@@ -1,11 +1,14 @@
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
+using OpenTK;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+
+using M3d = OpenTK.Matrix3d;
+using V2d = OpenTK.Vector2d;
+using V3d = OpenTK.Vector3d;
 
 namespace Crystallography;
 
@@ -619,7 +622,7 @@ public static class Geometriy
     }
 
     /// <summary>
-    /// 平面において、直線 a x + b y = c　が 点pt1とpt2を結ぶ直線と交わる交点を返す
+    /// 2次元において、直線 a x + b y = c　が 点pt1とpt2を結ぶ直線と交わる交点を返す
     /// </summary>
     /// <param name="p1"></param>
     /// <param name="p2"></param>
@@ -643,7 +646,7 @@ public static class Geometriy
     }
 
     /// <summary>
-    /// 3次元において、平面 a x + b y + c z = d (法線ベクトル(a,b,c))と、点pt1とpt2を結ぶ直線と交わる交点を返す
+    /// 3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意
     /// </summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
@@ -652,11 +655,11 @@ public static class Geometriy
     /// <param name="p1"></param>
     /// <param name="p2"></param>
     /// <returns></returns>
-    public static Vector3D GetCrossPoint(in double a, in double b, in double c, in double d, Vector3D p1, Vector3D p2) 
+    public static Vector3DBase GetCrossPoint(in double a, in double b, in double c, in double d, Vector3D p1, Vector3D p2) 
         => GetCrossPoint(a, b, c, d, new Vector3D(p1.X, p1.Y, p1.Z), new Vector3DBase(p2.X, p2.Y, p2.Z));
 
     /// <summary>
-    /// 3次元において、平面 a x + b y + c z = d (法線ベクトル(a,b,c))と、点pt1とpt2を結ぶ直線と交わる交点を返す
+    /// 3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意
     /// </summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
@@ -665,7 +668,7 @@ public static class Geometriy
     /// <param name="p1"></param>
     /// <param name="p2"></param>
     /// <returns></returns>
-    public static Vector3D GetCrossPoint(in double a, in double b, in double c, in double d, Vector3DBase p1, Vector3DBase p2)
+    public static Vector3DBase GetCrossPoint(in double a, in double b, in double c, in double d, Vector3DBase p1, Vector3DBase p2)
     {
         //次の3つの方程式を満たすx, y, z を求めればよい (2020/02/04修正)
         // a x + b y + c z = d
@@ -693,7 +696,7 @@ public static class Geometriy
 
 
     // <summary>
-    /// 3次元において、平面 a x + b y + c z = d (法線ベクトル(a,b,c))と、点(0,0,0)とptを結ぶ直線と交わる交点を返す
+    /// 3次元において、平面 a x + b y + c z = d (法線ベクトル(a,b,c))と、点(0,0,0)とptを結ぶ直線と交わる交点を返す.  平面方程式がa x + b y + c z + d = 0 ではないことに注意
     /// </summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
@@ -795,19 +798,19 @@ public static class Geometriy
                 if (double.IsInfinity(a))
                 {
                     if (p2.Y > rect.UpperY)
-                        return new[] { new PointD(p1.X, rect.UpperY) };
+                        return [new PointD(p1.X, rect.UpperY)];
                     else
-                        return new[] { new PointD(p1.X, rect.Y) };
+                        return [new PointD(p1.X, rect.Y)];
                 }
                 //x=maxXとの交点は
                 double c = a * rect.UpperX + b;
 
                 if (c < rect.Y)
-                    return new[] { new PointD((rect.Y - b) / a, rect.Y) };
+                    return [new PointD((rect.Y - b) / a, rect.Y)];
                 else if (c > rect.UpperY)
-                    return new[] { new PointD((rect.UpperY - b) / a, rect.UpperY) };
+                    return [new PointD((rect.UpperY - b) / a, rect.UpperY)];
                 else
-                    return new[] { new PointD(rect.UpperX, c) };
+                    return [new PointD(rect.UpperX, c)];
             }
         }
         else//p1が範囲外にあるとき
@@ -818,9 +821,9 @@ public static class Geometriy
                 if (double.IsInfinity(a))
                 {
                     if (p1.Y > rect.UpperY)
-                        return new[] { new PointD(p1.X, rect.UpperY) };
+                        return [new PointD(p1.X, rect.UpperY)];
                     else
-                        return new[] { new PointD(p1.X, rect.Y) };
+                        return [new PointD(p1.X, rect.Y)];
                 }
                 //x=minXとの交点は
                 double c = a * rect.X + b;
@@ -939,6 +942,8 @@ public static class Geometriy
     /// <returns></returns>
     public static bool Enclosed(double[][] bounds)
     {
+        if (bounds.Length < 4) return false;
+
         var countList = new List<int>();
 
         for (int i = 0; i < bounds.Length; i++)
@@ -946,9 +951,11 @@ public static class Geometriy
             var n = GetClippedPolygon(i, bounds).Length;
             if (n >= 3)
                 countList.Add(GetClippedPolygon(i, bounds).Length);
+            if (countList.Count >= 4)
+                return true;
         }
 
-        return countList.Count >= 4;
+        return false;
     }
 
     /// <summary>
@@ -959,20 +966,83 @@ public static class Geometriy
     /// <returns></returns>
     public static double[][] GetClippedPolygon(double[] plane, double[][] bounds)
     {
-        var pts = new List<Vector3DBase>();
-        for (int i = 0; i < bounds.Length; i++)
-            for (int j = i + 1; j < bounds.Length; j++)
+        if(bounds.Length == 0)return null;
+        //var pts = new List<Vector3DBase>();
+        //for (int i = 0; i < bounds.Length; i++)
+        //{
+        //    var mtx = new Matrix3D(plane[0], bounds[i][0], 0, plane[1], bounds[i][1], 0, plane[2], bounds[i][2], 0);
+        //    for (int j = i + 1; j < bounds.Length; j++)
+        //    {
+        //        mtx.E31 = bounds[j][0]; mtx.E32 = bounds[j][1]; mtx.E33 = bounds[j][2];
+        //        if (Math.Abs(mtx.Determinant()) > 0.0000000001)
+        //        {
+        //            var pt = mtx.Inverse() * new Vector3DBase(-plane[3], -bounds[i][3], -bounds[j][3]);
+        //            if (bounds.All(b => b[0] * pt.X + b[1] * pt.Y + b[2] * pt.Z + b[3] > -0.0000000001) && pts.All(p => (p - pt).Length2 > 0.0000000001))
+        //                pts.Add(pt);
+        //        }
+        //    }
+        //}
+
+
+        //plane上の、十分に大きい面積を持った4点を用意する
+        var maxD = bounds.Max(b => b[3]);
+        Vector3DBase temp1 = new(plane[0], plane[1], plane[2]), temp2 = new(0, 0, 1);
+        var rotAngle = Vector3DBase.AngleBetVectors(temp1, temp2);
+        var rotAxis = Vector3DBase.VectorProduct(temp1, temp2);
+        var rot = Math.Abs(rotAngle - Math.PI) < 0.000001 ? Matrix3D.Rot(new Vector3DBase(1, 0, 0), Math.PI) : Matrix3D.Rot(rotAxis, -rotAngle);
+      
+        List<Vector3DBase> vertices = [
+            rot * new Vector3DBase(maxD, maxD, -plane[3]), 
+            rot * new Vector3DBase(-maxD, maxD, -plane[3]), 
+            rot * new Vector3DBase(-maxD, -maxD, -plane[3]), 
+            rot * new Vector3DBase(maxD, -maxD, -plane[3])];
+
+        //boundsによって切り取られる座標を計算し、新しい点集合を作っていく
+        foreach (var b in bounds.Where(b => !(b[0] == plane[0] && b[1] == plane[1] && b[2] == plane[2] && b[3] == plane[3])))
+        {
+            var angle = Vector3DBase.AngleBetVectors(new Vector3DBase(b[0], b[1], b[2]), new Vector3DBase(plane[0], plane[1], plane[2]));
+
+            if (Math.Abs(angle) > 1E-8 && Math.Abs(angle - Math.PI) > 1E-8)
             {
-                var mtx = new Matrix3D(plane[0], bounds[i][0], bounds[j][0], plane[1], bounds[i][1], bounds[j][1], plane[2], bounds[i][2], bounds[j][2]);
-                if (Math.Abs(mtx.Determinant()) > 0.0000000001)
+                for (int i = 0; i < vertices.Count; i++)
                 {
-                    var pt = mtx.Inverse() * new Vector3DBase(-plane[3], -bounds[i][3], -bounds[j][3]);
-                    if (bounds.All(b => b[0] * pt.X + b[1] * pt.Y + b[2] * pt.Z + b[3] > -0.0000000001) && pts.All(p => (p - pt).Length2 > 0.0000000001))
-                        pts.Add(pt);
+                    Vector3DBase v1 = vertices[i], v2 = i < vertices.Count - 1 ? vertices[i + 1] : vertices[0];
+
+                    double r1 = v1.X * b[0] + v1.Y * b[1] + v1.Z * b[2] + b[3], r2 = v2.X * b[0] + v2.Y * b[1] + v2.Z * b[2] + b[3];
+
+                    if ((r1 < 0 && r2 > 0) || (r1 > 0 && r2 < 0))//v1とv2の間を平面bが通るとき、
+                    {
+                        var pt = GetCrossPoint(b[0], b[1], b[2], -b[3], v1, v2);//d=b[3]の符号に注意
+                        vertices.Insert(i + 1, pt);
+                        i++;
+                    }
                 }
+                for (int i = 0; i < vertices.Count; i++)
+                    if (vertices[i].X * b[0] + vertices[i].Y * b[1] + vertices[i].Z * b[2] + b[3] < -0.000001)
+                        vertices.RemoveAt(i--);
+
+                for (int i = 0; i < vertices.Count; i++)
+                    for (int j = i + 1; j < vertices.Count; j++)
+                        if ((vertices[i] - vertices[j]).Length2 < 0.00001)
+                            vertices.RemoveAt(j--);
             }
-        return pts.Select(p => p.ToDoublearray()).ToArray();
+        }
+
+        return vertices.Select(p => new double[] { p.X, p.Y, p.Z }).ToArray();
     }
+
+    const double Th = 1E-9;
+   private static M3d CreateRotationToZ(V3d v)
+    {
+        v.Normalize();
+        if (Math.Abs(v.Z - 1) < Th)
+            return M3d.Identity;
+        else if (Math.Abs(v.Z + 1) < Th)
+            return M3d.CreateRotationX(Math.PI);
+        else
+            return M3d.CreateFromAxisAngle(V3d.Cross(new V3d(0,0,1), v), V3d.CalculateAngle(new V3d(0, 0, 1), v));
+    }
+
 
     /// <summary>
     /// 境界面によって切り取られた多角形の頂点座標を求める.
@@ -982,7 +1052,7 @@ public static class Geometriy
     /// <returns></returns>
     public static double[][] GetClippedPolygon(int i, double[][] bounds)
     {
-        return GetClippedPolygon(bounds[i], bounds.Where((b, j) => i != j).ToArray());
+        return GetClippedPolygon(bounds[i], bounds);
     }
 
     /// <summary>

@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using C4 = OpenTK.Graphics.Color4;
 using V3 = OpenTK.Vector3d;
 using V4 = OpenTK.Vector4d;
+using M3d = OpenTK.Matrix3d;
 #endregion
 
 namespace ReciPro;
@@ -21,9 +22,7 @@ public partial class FormStructureViewer : Form
     #region フィールド、プロパティ、
 
     private static readonly List<int> neighborKeys = [];
-    private static readonly List<V3> dirs = [new V3(1, 0, 0), new V3(-1, 0, 0), new V3(0, 1, 0), new V3(0, -1, 0), new V3(0, 0, 1), new V3(0, 0, -1)];
-    private static readonly List<V3> vrts = [new V3(.5, .5, .5), new V3(-.5, .5, .5), new V3(.5, -.5, .5), new V3(.5, .5, -.5), new V3(.5, -.5, -.5), new V3(-.5, .5, -.5), new V3(-.5, -.5, .5), new V3(-.5, -.5, -.5)];
-
+    
     public Crystal Crystal;
 
     public FormMain formMain;
@@ -351,22 +350,50 @@ public partial class FormStructureViewer : Form
     {
         sw.Restart();
         bounds = [];
-        foreach (var bc in boundControl.GetAll().Where(b => b.Enabled && b.PlaneParams != null && b.Index != (0, 0, 0)))
-            foreach (var (X, Y, Z, D) in bc.PlaneParams)
-                bounds.Add((new V4(X, Y, Z, D), bc.Color));
 
-        if (radioButtonBoundUnitCell.Checked || !Geometriy.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))
-        {//境界条件としてUnit cellが選択されているか、Planeが選択されているが描画範囲が閉じていない場合 、単位格子を境界とする
+
+        if (radioButtonBoundUnitCell.Checked)//境界条件としてUnit cellが選択されている場合
+        {
             var inv = Matrix3d.Invert(axes);
             bounds = new List<(V4 prms, Color color)>()
                 {
-                    (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Gray),
-                    (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Gray),
-                    (new V4(inv.Row1.Normalized(),1/inv.Row1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Gray),
-                    (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Gray),
-                    (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Gray),
-                    (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Gray),
+                    (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Red),
+                    (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Red),
+                    (new V4(inv.Row1.Normalized(),1/inv.Row1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Green),
+                    (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Green),
+                    (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Blue),
+                    (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Blue),
                 };
+
+        }
+        else//Planeが選択されている場合
+        {
+            foreach (var bc in boundControl.GetAll().Where(b => b.Enabled && b.PlaneParams != null && b.Index != (0, 0, 0)))
+                foreach (var (X, Y, Z, D) in bc.PlaneParams)
+                    bounds.Add((new V4(X, Y, Z, D), bc.Color));
+            if (!Geometriy.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))//描画範囲が閉じていない場合
+            {
+                //球面に近いポリゴンを作成
+                //さいころの6面方向
+                var rot = new[] {
+                new M3d(1, 0, 0, 0, 1, 0, 0, 0, 1),
+                new M3d(1, 0, 0, 0, 0, -1, 0, 1, 0),
+                new M3d(1, 0, 0, 0, -1, 0, 0, 0, -1),
+                new M3d(1, 0, 0, 0, 0, 1, 0, -1, 0),
+                new M3d(0, 0, 1, 0, 1, 0, -1, 0, 0),
+                new M3d(0, 0, -1, 0, 1, 0, 1, 0, 0), };
+
+                var slices = 3;
+                var maxDistance = boundControl.MaximumDistance;
+                for (int i = 0; i < rot.Length; i++)
+                    for (int h = -slices; h <= slices; h++)
+                        for (int w = -slices; w <= slices; w++)
+                        {
+                            var n = new V4(V3.Normalize(rot[i].Mult(new V3(w, h, slices))), maxDistance);
+                            bounds.Add((n, Color.Gray));
+                        }
+
+            }
         }
 
         textBoxInformation.AppendText($"Initialization of bounds: {sw.ElapsedMilliseconds}ms.\r\n");
@@ -385,9 +412,10 @@ public partial class FormStructureViewer : Form
         if (bounds == null)
             return;
         //境界面を追加
-        for (int i = 0; i < bounds.Count; i++)
+        var boundsArray = bounds.Select(b => b.prm.ToArray()).ToArray();
+        Parallel.For(0, bounds.Count, i =>
         {
-            var vertices = Geometriy.GetClippedPolygon(i, bounds.Select(b => b.prm.ToArray()).ToArray());
+            var vertices = Geometriy.GetClippedPolygon(i, boundsArray);
             var mat = new Material(bounds[i].color, numericBoxBoundPlanesOpacity.Value);
             if (vertices.Length >= 3)
             {
@@ -396,10 +424,11 @@ public partial class FormStructureViewer : Form
                     Rendered = checkBoxShowBoundPlanes.Checked,
                     Tag = new boundsID()
                 }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
-
-                GLObjects.AddRange(polygon);
+                
+                lock(lockObj1)
+                    GLObjects.AddRange(polygon);
             }
-        }
+        });
         glControlMain.SetClip(checkBoxClipObjects.Checked ? new Clip(bounds.Select(b => b.prm).ToArray()) : null);
 
         textBoxInformation.AppendText($"Generation of bound planes: {sw.ElapsedMilliseconds}ms.\r\n");
@@ -418,7 +447,7 @@ public partial class FormStructureViewer : Form
 
         if (checkBoxHideAllAtoms.Checked) return;
 
-        //閾値. 描画範囲がこの数値分超えたとしても、一応原子座標は計算しておいて、ボンドの有無を考慮し、最終的には消す
+        //閾値. 描画範囲がこの数値分超えたとしても、一応原子座標は計算しておいて、ボンドの有無を考慮し、必要なければ最終的に消す
         var threshold = -0.001;
         if (checkBoxShowBondedAtoms.Checked)
         {
@@ -427,44 +456,49 @@ public partial class FormStructureViewer : Form
             threshold = Math.Max(-0.5, threshold);
         }
 
-        //まず検索対象とするCellの範囲を決める (全ての原子位置は 0以上 1未満である)
-        List<V3> cells = [new(0, 0, 0)];
+        //原子を追加
+        List<V3> dirs = [new V3(1, 0, 0), new V3(-1, 0, 0), new V3(0, 1, 0), new V3(0, -1, 0), new V3(0, 0, 1), new V3(0, 0, -1)];
         List<V3> outer = [new(0, 0, 0)];
-        while (outer.Count != 0 && cells.Count < 1000000)
+        List<V3> whole = [];
+
+        while (outer.Count != 0 && whole.Count < 10000)
         {
-            var outerOld = outer.ToList();
-            outerOld.ForEach(baseCell => dirs.Select(dir => dir + baseCell).ToList().ForEach(targetCell =>
-            {
-                if (!cells.Contains(targetCell) && vrts.Any(vrt => bounds.Min(b => V4.Dot(b.prm, new V4(axes.Mult(targetCell + vrt), 1)) > threshold)))
+            List<V3> outerNew = [];
+            foreach (var baseCell in outer)
+                foreach (var dir in whole.Count==0 ? [new V3(0,0,0)] : dirs)
                 {
-                    cells.Add(targetCell);
-                    outer.Add(targetCell);
+                    var cell = baseCell + dir;
+                    if (!whole.Contains(cell))
+                    {
+                        whole.Add(cell);
+
+                        var spheres = new List<Sphere>();
+                        enabledAtomsP.ForAll(o =>
+                        {
+                            var pos = axes.Mult(cell + o.Pos) - shift;
+                            var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
+                            if (min > threshold)
+                            {
+                                var sphere = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces)
+                                {
+                                    Rendered = min > -0.0000001,
+                                    Tag = new atomID(o.Index, min > -0.0000001, atomID.ComposeKey(cell))
+                                };
+                                lock (lockObj1)
+                                    spheres.Add(sphere);
+                            }
+                        });
+                        
+                        if (spheres.Count != 0)
+                        {
+                            outerNew.Add(cell);
+                            GLObjects.AddRange(spheres);
+                        }
+                    }
                 }
-            }));
-            outerOld.ForEach(cell => outer.Remove(cell));
+            outer = outerNew;
         }
 
-        //原子を追加
-        enabledAtomsP.ForAll(o =>
-        {
-            var spheres = new Sphere[cells.Count];
-            int n = 0;
-            for (int i = 0; i < cells.Count; i++)
-            {
-                var pos = axes.Mult(cells[i] + o.Pos) - shift;
-                var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
-                if (min > threshold)
-                {
-                    spheres[n++] = new Sphere(pos, o.Radius, o.Mat, DrawingMode.Surfaces)
-                    {
-                        Rendered = min > -0.0000001,
-                        Tag = new atomID(o.Index, min > -0.0000001, atomID.ComposeKey(cells[i]))
-                    };
-                }
-            }
-            lock (lockObj1)
-                GLObjects.AddRange(spheres[0..n]);
-        });
         textBoxInformation.AppendText($"Generation of aoms: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 

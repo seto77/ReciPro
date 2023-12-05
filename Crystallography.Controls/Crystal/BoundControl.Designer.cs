@@ -28,474 +28,507 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoundControl));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxDistanceD = new Crystallography.Controls.NumericBox();
-            this.numericBoxDistance = new Crystallography.Controls.NumericBox();
-            this.colorControl = new Crystallography.Controls.ColorControl();
-            this.numericBoxL = new Crystallography.Controls.NumericBox();
-            this.numericBoxK = new Crystallography.Controls.NumericBox();
-            this.checkBoxEquivalency = new System.Windows.Forms.CheckBox();
-            this.numericBoxH = new Crystallography.Controls.NumericBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.equivalencyDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.MultipleOfD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.distanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new Crystallography.Controls.DataSet();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonAddBond = new System.Windows.Forms.Button();
-            this.buttonChangeBond = new System.Windows.Forms.Button();
-            this.buttonDeleteBond = new System.Windows.Forms.Button();
-            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn7 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn8 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn9 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn10 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.panel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.flowLayoutPanel1);
-            this.panel2.Controls.Add(this.colorControl);
-            this.panel2.Controls.Add(this.numericBoxL);
-            this.panel2.Controls.Add(this.numericBoxK);
-            this.panel2.Controls.Add(this.checkBoxEquivalency);
-            this.panel2.Controls.Add(this.numericBoxH);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label6);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Controls.Add(this.numericBoxDistanceD);
-            this.flowLayoutPanel1.Controls.Add(this.numericBoxDistance);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // numericBoxDistanceD
-            // 
-            resources.ApplyResources(this.numericBoxDistanceD, "numericBoxDistanceD");
-            this.numericBoxDistanceD.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistanceD.DecimalPlaces = 3;
-            this.numericBoxDistanceD.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistanceD.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistanceD.Maximum = 20D;
-            this.numericBoxDistanceD.Minimum = -20D;
-            this.numericBoxDistanceD.Name = "numericBoxDistanceD";
-            this.numericBoxDistanceD.RadianValue = 0.017453292519943295D;
-            this.numericBoxDistanceD.RoundErrorAccuracy = -1;
-            this.numericBoxDistanceD.ShowUpDown = true;
-            this.numericBoxDistanceD.SkipEventDuringInput = false;
-            this.numericBoxDistanceD.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDistanceD.ThonsandsSeparator = true;
-            this.numericBoxDistanceD.UpDown_Increment = 0.1D;
-            this.numericBoxDistanceD.Value = 1D;
-            this.numericBoxDistanceD.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
-            // 
-            // numericBoxDistance
-            // 
-            resources.ApplyResources(this.numericBoxDistance, "numericBoxDistance");
-            this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.DecimalPlaces = 3;
-            this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.Maximum = 100D;
-            this.numericBoxDistance.Minimum = -100D;
-            this.numericBoxDistance.Name = "numericBoxDistance";
-            this.numericBoxDistance.RoundErrorAccuracy = -1;
-            this.numericBoxDistance.SkipEventDuringInput = false;
-            this.numericBoxDistance.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDistance.ThonsandsSeparator = true;
-            this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistance_ValueChanged);
-            // 
-            // colorControl
-            // 
-            this.colorControl.Argb = -16728064;
-            resources.ApplyResources(this.colorControl, "colorControl");
-            this.colorControl.Blue = 0;
-            this.colorControl.BlueF = 0F;
-            this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.colorControl.Green = 192;
-            this.colorControl.GreenF = 0.7529412F;
-            this.colorControl.Name = "colorControl";
-            this.colorControl.Red = 0;
-            this.colorControl.RedF = 0F;
-            // 
-            // numericBoxL
-            // 
-            resources.ApplyResources(this.numericBoxL, "numericBoxL");
-            this.numericBoxL.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxL.DecimalPlaces = 0;
-            this.numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxL.Maximum = 10D;
-            this.numericBoxL.Minimum = -10D;
-            this.numericBoxL.Name = "numericBoxL";
-            this.numericBoxL.RoundErrorAccuracy = -1;
-            this.numericBoxL.ShowUpDown = true;
-            this.numericBoxL.SkipEventDuringInput = false;
-            this.numericBoxL.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxL.ThonsandsSeparator = true;
-            this.numericBoxL.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
-            // 
-            // numericBoxK
-            // 
-            resources.ApplyResources(this.numericBoxK, "numericBoxK");
-            this.numericBoxK.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxK.DecimalPlaces = 0;
-            this.numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxK.Maximum = 10D;
-            this.numericBoxK.Minimum = -10D;
-            this.numericBoxK.Name = "numericBoxK";
-            this.numericBoxK.RoundErrorAccuracy = -1;
-            this.numericBoxK.ShowUpDown = true;
-            this.numericBoxK.SkipEventDuringInput = false;
-            this.numericBoxK.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxK.ThonsandsSeparator = true;
-            this.numericBoxK.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
-            // 
-            // checkBoxEquivalency
-            // 
-            resources.ApplyResources(this.checkBoxEquivalency, "checkBoxEquivalency");
-            this.checkBoxEquivalency.Checked = true;
-            this.checkBoxEquivalency.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxEquivalency.Name = "checkBoxEquivalency";
-            this.checkBoxEquivalency.UseVisualStyleBackColor = true;
-            this.checkBoxEquivalency.CheckedChanged += new System.EventHandler(this.checkBoxEquivalency_CheckedChanged);
-            // 
-            // numericBoxH
-            // 
-            resources.ApplyResources(this.numericBoxH, "numericBoxH");
-            this.numericBoxH.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxH.DecimalPlaces = 0;
-            this.numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxH.Maximum = 10D;
-            this.numericBoxH.Minimum = -10D;
-            this.numericBoxH.Name = "numericBoxH";
-            this.numericBoxH.RoundErrorAccuracy = -1;
-            this.numericBoxH.ShowUpDown = true;
-            this.numericBoxH.SkipEventDuringInput = false;
-            this.numericBoxH.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxH.ThonsandsSeparator = true;
-            this.numericBoxH.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDistanceD_ValueChanged);
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            dataGridView = new System.Windows.Forms.DataGridView();
+            enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            equivalencyDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            MultipleOfD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            distanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            bindingSource = new System.Windows.Forms.BindingSource(components);
+            dataSet = new DataSet();
+            panel1 = new System.Windows.Forms.Panel();
+            buttonAddBond = new System.Windows.Forms.Button();
+            numericBoxMaximumDistanceFromOrigin = new NumericBox();
+            buttonChangeBond = new System.Windows.Forms.Button();
+            buttonDeleteBond = new System.Windows.Forms.Button();
+            checkBoxImmediateUpdate = new System.Windows.Forms.CheckBox();
+            dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
+            dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
+            dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
+            dataGridViewImageColumn7 = new System.Windows.Forms.DataGridViewImageColumn();
+            dataGridViewImageColumn8 = new System.Windows.Forms.DataGridViewImageColumn();
+            dataGridViewImageColumn9 = new System.Windows.Forms.DataGridViewImageColumn();
+            dataGridViewImageColumn10 = new System.Windows.Forms.DataGridViewImageColumn();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            label6 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            numericBoxH = new NumericBox();
+            checkBoxEquivalency = new System.Windows.Forms.CheckBox();
+            numericBoxK = new NumericBox();
+            numericBoxL = new NumericBox();
+            colorControl = new ColorControl();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxDistanceD = new NumericBox();
+            numericBoxDistance = new NumericBox();
+            panel2 = new System.Windows.Forms.Panel();
+            numericBoxTranslation = new NumericBox();
+            label3 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
+            panel1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            panel2.SuspendLayout();
+            SuspendLayout();
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
+            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
+            resources.ApplyResources(dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dataGridViewImageColumn1
             // 
-            this.dataGridViewImageColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(this.dataGridViewImageColumn1, "dataGridViewImageColumn1");
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn1.DataPropertyName = "Bond color";
+            resources.ApplyResources(dataGridViewImageColumn1, "dataGridViewImageColumn1");
+            dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewImageColumn2
             // 
-            this.dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(this.dataGridViewImageColumn2, "dataGridViewImageColumn2");
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
+            resources.ApplyResources(dataGridViewImageColumn2, "dataGridViewImageColumn2");
+            dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridView
             // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeColumns = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.enabledDataGridViewCheckBoxColumn,
-            this.hDataGridViewTextBoxColumn,
-            this.kDataGridViewTextBoxColumn,
-            this.lDataGridViewTextBoxColumn,
-            this.equivalencyDataGridViewCheckBoxColumn,
-            this.MultipleOfD,
-            this.distanceDataGridViewTextBoxColumn,
-            this.colorDataGridViewTextBoxColumn});
-            this.dataGridView.DataSource = this.bindingSource;
-            resources.ApplyResources(this.dataGridView, "dataGridView");
-            this.dataGridView.MultiSelect = false;
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowTemplate.Height = 21;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
-            this.dataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView_CurrentCellDirtyStateChanged);
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToResizeColumns = false;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AutoGenerateColumns = false;
+            dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledDataGridViewCheckBoxColumn, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, equivalencyDataGridViewCheckBoxColumn, MultipleOfD, distanceDataGridViewTextBoxColumn, colorDataGridViewTextBoxColumn });
+            dataGridView.DataSource = bindingSource;
+            resources.ApplyResources(dataGridView, "dataGridView");
+            dataGridView.MultiSelect = false;
+            dataGridView.Name = "dataGridView";
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.RowTemplate.Height = 21;
+            dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.CellValueChanged += dataGridView_CellValueChanged;
+            dataGridView.CurrentCellDirtyStateChanged += dataGridView_CurrentCellDirtyStateChanged;
             // 
             // enabledDataGridViewCheckBoxColumn
             // 
-            this.enabledDataGridViewCheckBoxColumn.DataPropertyName = "Enabled";
-            resources.ApplyResources(this.enabledDataGridViewCheckBoxColumn, "enabledDataGridViewCheckBoxColumn");
-            this.enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
+            enabledDataGridViewCheckBoxColumn.DataPropertyName = "Enabled";
+            resources.ApplyResources(enabledDataGridViewCheckBoxColumn, "enabledDataGridViewCheckBoxColumn");
+            enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
             // 
             // hDataGridViewTextBoxColumn
             // 
-            this.hDataGridViewTextBoxColumn.DataPropertyName = "h";
-            resources.ApplyResources(this.hDataGridViewTextBoxColumn, "hDataGridViewTextBoxColumn");
-            this.hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
-            this.hDataGridViewTextBoxColumn.ReadOnly = true;
-            this.hDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            hDataGridViewTextBoxColumn.DataPropertyName = "h";
+            resources.ApplyResources(hDataGridViewTextBoxColumn, "hDataGridViewTextBoxColumn");
+            hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
+            hDataGridViewTextBoxColumn.ReadOnly = true;
+            hDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // kDataGridViewTextBoxColumn
             // 
-            this.kDataGridViewTextBoxColumn.DataPropertyName = "k";
-            resources.ApplyResources(this.kDataGridViewTextBoxColumn, "kDataGridViewTextBoxColumn");
-            this.kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
-            this.kDataGridViewTextBoxColumn.ReadOnly = true;
-            this.kDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            kDataGridViewTextBoxColumn.DataPropertyName = "k";
+            resources.ApplyResources(kDataGridViewTextBoxColumn, "kDataGridViewTextBoxColumn");
+            kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
+            kDataGridViewTextBoxColumn.ReadOnly = true;
+            kDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // lDataGridViewTextBoxColumn
             // 
-            this.lDataGridViewTextBoxColumn.DataPropertyName = "l";
-            resources.ApplyResources(this.lDataGridViewTextBoxColumn, "lDataGridViewTextBoxColumn");
-            this.lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
-            this.lDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            lDataGridViewTextBoxColumn.DataPropertyName = "l";
+            resources.ApplyResources(lDataGridViewTextBoxColumn, "lDataGridViewTextBoxColumn");
+            lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
+            lDataGridViewTextBoxColumn.ReadOnly = true;
+            lDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // equivalencyDataGridViewCheckBoxColumn
             // 
-            this.equivalencyDataGridViewCheckBoxColumn.DataPropertyName = "Equivalency";
-            resources.ApplyResources(this.equivalencyDataGridViewCheckBoxColumn, "equivalencyDataGridViewCheckBoxColumn");
-            this.equivalencyDataGridViewCheckBoxColumn.Name = "equivalencyDataGridViewCheckBoxColumn";
-            this.equivalencyDataGridViewCheckBoxColumn.ReadOnly = true;
+            equivalencyDataGridViewCheckBoxColumn.DataPropertyName = "Equivalency";
+            resources.ApplyResources(equivalencyDataGridViewCheckBoxColumn, "equivalencyDataGridViewCheckBoxColumn");
+            equivalencyDataGridViewCheckBoxColumn.Name = "equivalencyDataGridViewCheckBoxColumn";
+            equivalencyDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // MultipleOfD
             // 
-            this.MultipleOfD.DataPropertyName = "MultipleOfD";
-            resources.ApplyResources(this.MultipleOfD, "MultipleOfD");
-            this.MultipleOfD.Name = "MultipleOfD";
-            this.MultipleOfD.ReadOnly = true;
-            this.MultipleOfD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            MultipleOfD.DataPropertyName = "MultipleOfD";
+            resources.ApplyResources(MultipleOfD, "MultipleOfD");
+            MultipleOfD.Name = "MultipleOfD";
+            MultipleOfD.ReadOnly = true;
+            MultipleOfD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // distanceDataGridViewTextBoxColumn
             // 
-            this.distanceDataGridViewTextBoxColumn.DataPropertyName = "Distance";
-            resources.ApplyResources(this.distanceDataGridViewTextBoxColumn, "distanceDataGridViewTextBoxColumn");
-            this.distanceDataGridViewTextBoxColumn.Name = "distanceDataGridViewTextBoxColumn";
-            this.distanceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.distanceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            distanceDataGridViewTextBoxColumn.DataPropertyName = "Distance";
+            resources.ApplyResources(distanceDataGridViewTextBoxColumn, "distanceDataGridViewTextBoxColumn");
+            distanceDataGridViewTextBoxColumn.Name = "distanceDataGridViewTextBoxColumn";
+            distanceDataGridViewTextBoxColumn.ReadOnly = true;
+            distanceDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // colorDataGridViewTextBoxColumn
             // 
-            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
-            resources.ApplyResources(this.colorDataGridViewTextBoxColumn, "colorDataGridViewTextBoxColumn");
-            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
-            this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            resources.ApplyResources(colorDataGridViewTextBoxColumn, "colorDataGridViewTextBoxColumn");
+            colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // bindingSource
             // 
-            this.bindingSource.DataMember = "DataTableBound";
-            this.bindingSource.DataSource = this.dataSet;
-            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_PositionChanged);
-            this.bindingSource.PositionChanged += new System.EventHandler(this.bindingSource_PositionChanged);
+            bindingSource.DataMember = "DataTableBound";
+            bindingSource.DataSource = dataSet;
+            bindingSource.CurrentChanged += bindingSource_PositionChanged;
+            bindingSource.PositionChanged += bindingSource_PositionChanged;
             // 
             // dataSet
             // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            dataSet.DataSetName = "DataSet";
+            dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
+            dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.buttonAddBond);
-            this.panel1.Controls.Add(this.buttonChangeBond);
-            this.panel1.Controls.Add(this.buttonDeleteBond);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            panel1.Controls.Add(buttonAddBond);
+            panel1.Controls.Add(numericBoxMaximumDistanceFromOrigin);
+            panel1.Controls.Add(buttonChangeBond);
+            panel1.Controls.Add(buttonDeleteBond);
+            panel1.Controls.Add(checkBoxImmediateUpdate);
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
             // 
             // buttonAddBond
             // 
-            this.buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.buttonAddBond, "buttonAddBond");
-            this.buttonAddBond.ForeColor = System.Drawing.Color.White;
-            this.buttonAddBond.Name = "buttonAddBond";
-            this.buttonAddBond.UseVisualStyleBackColor = false;
-            this.buttonAddBond.Click += new System.EventHandler(this.buttonAdd_Click);
+            buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(buttonAddBond, "buttonAddBond");
+            buttonAddBond.ForeColor = System.Drawing.Color.White;
+            buttonAddBond.Name = "buttonAddBond";
+            buttonAddBond.UseVisualStyleBackColor = false;
+            buttonAddBond.Click += buttonAdd_Click;
+            // 
+            // numericBoxMaximumDistanceFromOrigin
+            // 
+            resources.ApplyResources(numericBoxMaximumDistanceFromOrigin, "numericBoxMaximumDistanceFromOrigin");
+            numericBoxMaximumDistanceFromOrigin.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaximumDistanceFromOrigin.DecimalPlaces = 3;
+            numericBoxMaximumDistanceFromOrigin.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaximumDistanceFromOrigin.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaximumDistanceFromOrigin.Maximum = 100D;
+            numericBoxMaximumDistanceFromOrigin.Minimum = -100D;
+            numericBoxMaximumDistanceFromOrigin.Name = "numericBoxMaximumDistanceFromOrigin";
+            numericBoxMaximumDistanceFromOrigin.RadianValue = 0.26179938779914941D;
+            numericBoxMaximumDistanceFromOrigin.RoundErrorAccuracy = -1;
+            numericBoxMaximumDistanceFromOrigin.ShowUpDown = true;
+            numericBoxMaximumDistanceFromOrigin.SkipEventDuringInput = false;
+            numericBoxMaximumDistanceFromOrigin.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxMaximumDistanceFromOrigin, resources.GetString("numericBoxMaximumDistanceFromOrigin.ToolTip"));
+            numericBoxMaximumDistanceFromOrigin.Value = 15D;
+            numericBoxMaximumDistanceFromOrigin.ValueChanged += numericBoxMaximumDistanceFromOrigin_ValueChanged;
             // 
             // buttonChangeBond
             // 
-            this.buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.buttonChangeBond, "buttonChangeBond");
-            this.buttonChangeBond.ForeColor = System.Drawing.Color.White;
-            this.buttonChangeBond.Name = "buttonChangeBond";
-            this.buttonChangeBond.UseVisualStyleBackColor = false;
-            this.buttonChangeBond.Click += new System.EventHandler(this.buttonChange_Click);
+            buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(buttonChangeBond, "buttonChangeBond");
+            buttonChangeBond.ForeColor = System.Drawing.Color.White;
+            buttonChangeBond.Name = "buttonChangeBond";
+            buttonChangeBond.UseVisualStyleBackColor = false;
+            buttonChangeBond.Click += buttonChange_Click;
             // 
             // buttonDeleteBond
             // 
-            resources.ApplyResources(this.buttonDeleteBond, "buttonDeleteBond");
-            this.buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonDeleteBond.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteBond.Name = "buttonDeleteBond";
-            this.buttonDeleteBond.UseVisualStyleBackColor = false;
-            this.buttonDeleteBond.Click += new System.EventHandler(this.buttonDelete_Click);
+            resources.ApplyResources(buttonDeleteBond, "buttonDeleteBond");
+            buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
+            buttonDeleteBond.ForeColor = System.Drawing.Color.White;
+            buttonDeleteBond.Name = "buttonDeleteBond";
+            buttonDeleteBond.UseVisualStyleBackColor = false;
+            buttonDeleteBond.Click += buttonDelete_Click;
+            // 
+            // checkBoxImmediateUpdate
+            // 
+            resources.ApplyResources(checkBoxImmediateUpdate, "checkBoxImmediateUpdate");
+            checkBoxImmediateUpdate.Name = "checkBoxImmediateUpdate";
+            checkBoxImmediateUpdate.UseVisualStyleBackColor = true;
+            checkBoxImmediateUpdate.CheckedChanged += checkBoxEquivalency_CheckedChanged;
             // 
             // dataGridViewImageColumn3
             // 
-            this.dataGridViewImageColumn3.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn3, "dataGridViewImageColumn3");
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn3.DataPropertyName = "Color";
+            resources.ApplyResources(dataGridViewImageColumn3, "dataGridViewImageColumn3");
+            dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewImageColumn4
             // 
-            this.dataGridViewImageColumn4.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn4, "dataGridViewImageColumn4");
-            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
-            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn4.DataPropertyName = "Color";
+            resources.ApplyResources(dataGridViewImageColumn4, "dataGridViewImageColumn4");
+            dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
+            dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewImageColumn5
             // 
-            this.dataGridViewImageColumn5.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn5, "dataGridViewImageColumn5");
-            this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
-            this.dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn5.DataPropertyName = "Color";
+            resources.ApplyResources(dataGridViewImageColumn5, "dataGridViewImageColumn5");
+            dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
+            dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewImageColumn6
             // 
-            this.dataGridViewImageColumn6.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn6, "dataGridViewImageColumn6");
-            this.dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
-            this.dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn6.DataPropertyName = "Color";
+            resources.ApplyResources(dataGridViewImageColumn6, "dataGridViewImageColumn6");
+            dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
+            dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewImageColumn7
             // 
-            this.dataGridViewImageColumn7.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn7, "dataGridViewImageColumn7");
-            this.dataGridViewImageColumn7.Name = "dataGridViewImageColumn7";
-            this.dataGridViewImageColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn7.DataPropertyName = "Color";
+            resources.ApplyResources(dataGridViewImageColumn7, "dataGridViewImageColumn7");
+            dataGridViewImageColumn7.Name = "dataGridViewImageColumn7";
+            dataGridViewImageColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewImageColumn8
             // 
-            this.dataGridViewImageColumn8.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn8, "dataGridViewImageColumn8");
-            this.dataGridViewImageColumn8.Name = "dataGridViewImageColumn8";
-            this.dataGridViewImageColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn8.DataPropertyName = "Color";
+            resources.ApplyResources(dataGridViewImageColumn8, "dataGridViewImageColumn8");
+            dataGridViewImageColumn8.Name = "dataGridViewImageColumn8";
+            dataGridViewImageColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewImageColumn9
             // 
-            this.dataGridViewImageColumn9.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn9, "dataGridViewImageColumn9");
-            this.dataGridViewImageColumn9.Name = "dataGridViewImageColumn9";
-            this.dataGridViewImageColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn9.DataPropertyName = "Color";
+            resources.ApplyResources(dataGridViewImageColumn9, "dataGridViewImageColumn9");
+            dataGridViewImageColumn9.Name = "dataGridViewImageColumn9";
+            dataGridViewImageColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewImageColumn10
             // 
-            this.dataGridViewImageColumn10.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn10, "dataGridViewImageColumn10");
-            this.dataGridViewImageColumn10.Name = "dataGridViewImageColumn10";
-            this.dataGridViewImageColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewImageColumn10.DataPropertyName = "Color";
+            resources.ApplyResources(dataGridViewImageColumn10, "dataGridViewImageColumn10");
+            dataGridViewImageColumn10.Name = "dataGridViewImageColumn10";
+            dataGridViewImageColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(label6, "label6");
+            label6.Name = "label6";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
+            // 
+            // numericBoxH
+            // 
+            resources.ApplyResources(numericBoxH, "numericBoxH");
+            numericBoxH.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxH.DecimalPlaces = 0;
+            numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxH.Maximum = 10D;
+            numericBoxH.Minimum = -10D;
+            numericBoxH.Name = "numericBoxH";
+            numericBoxH.RoundErrorAccuracy = -1;
+            numericBoxH.ShowUpDown = true;
+            numericBoxH.SkipEventDuringInput = false;
+            numericBoxH.ThonsandsSeparator = true;
+            numericBoxH.ValueChanged += numericBoxDistanceD_ValueChanged;
+            // 
+            // checkBoxEquivalency
+            // 
+            resources.ApplyResources(checkBoxEquivalency, "checkBoxEquivalency");
+            checkBoxEquivalency.Checked = true;
+            checkBoxEquivalency.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxEquivalency.Name = "checkBoxEquivalency";
+            checkBoxEquivalency.UseVisualStyleBackColor = true;
+            checkBoxEquivalency.CheckedChanged += checkBoxEquivalency_CheckedChanged;
+            // 
+            // numericBoxK
+            // 
+            resources.ApplyResources(numericBoxK, "numericBoxK");
+            numericBoxK.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxK.DecimalPlaces = 0;
+            numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxK.Maximum = 10D;
+            numericBoxK.Minimum = -10D;
+            numericBoxK.Name = "numericBoxK";
+            numericBoxK.RoundErrorAccuracy = -1;
+            numericBoxK.ShowUpDown = true;
+            numericBoxK.SkipEventDuringInput = false;
+            numericBoxK.ThonsandsSeparator = true;
+            numericBoxK.ValueChanged += numericBoxDistanceD_ValueChanged;
+            // 
+            // numericBoxL
+            // 
+            resources.ApplyResources(numericBoxL, "numericBoxL");
+            numericBoxL.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxL.DecimalPlaces = 0;
+            numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxL.Maximum = 10D;
+            numericBoxL.Minimum = -10D;
+            numericBoxL.Name = "numericBoxL";
+            numericBoxL.RoundErrorAccuracy = -1;
+            numericBoxL.ShowUpDown = true;
+            numericBoxL.SkipEventDuringInput = false;
+            numericBoxL.ThonsandsSeparator = true;
+            numericBoxL.ValueChanged += numericBoxDistanceD_ValueChanged;
+            // 
+            // colorControl
+            // 
+            colorControl.Argb = -16728064;
+            resources.ApplyResources(colorControl, "colorControl");
+            colorControl.Blue = 0;
+            colorControl.BlueF = 0F;
+            colorControl.BoxSize = new System.Drawing.Size(24, 24);
+            colorControl.Color = System.Drawing.Color.FromArgb(0, 192, 0);
+            colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            colorControl.Green = 192;
+            colorControl.GreenF = 0.7529412F;
+            colorControl.Name = "colorControl";
+            colorControl.Red = 0;
+            colorControl.RedF = 0F;
+            colorControl.ColorChanged += colorControl_ColorChanged;
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(numericBoxDistanceD);
+            flowLayoutPanel1.Controls.Add(numericBoxDistance);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // numericBoxDistanceD
+            // 
+            resources.ApplyResources(numericBoxDistanceD, "numericBoxDistanceD");
+            numericBoxDistanceD.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDistanceD.DecimalPlaces = 3;
+            numericBoxDistanceD.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDistanceD.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDistanceD.Maximum = 20D;
+            numericBoxDistanceD.Minimum = -20D;
+            numericBoxDistanceD.Name = "numericBoxDistanceD";
+            numericBoxDistanceD.RadianValue = 0.017453292519943295D;
+            numericBoxDistanceD.RoundErrorAccuracy = -1;
+            numericBoxDistanceD.ShowUpDown = true;
+            numericBoxDistanceD.SkipEventDuringInput = false;
+            numericBoxDistanceD.ThonsandsSeparator = true;
+            numericBoxDistanceD.UpDown_Increment = 0.1D;
+            numericBoxDistanceD.Value = 1D;
+            numericBoxDistanceD.ValueChanged += numericBoxDistanceD_ValueChanged;
+            // 
+            // numericBoxDistance
+            // 
+            resources.ApplyResources(numericBoxDistance, "numericBoxDistance");
+            numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDistance.DecimalPlaces = 3;
+            numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDistance.Maximum = 100D;
+            numericBoxDistance.Minimum = -100D;
+            numericBoxDistance.Name = "numericBoxDistance";
+            numericBoxDistance.RoundErrorAccuracy = -1;
+            numericBoxDistance.SkipEventDuringInput = false;
+            numericBoxDistance.ThonsandsSeparator = true;
+            numericBoxDistance.ValueChanged += numericBoxDistance_ValueChanged;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(numericBoxTranslation);
+            panel2.Controls.Add(flowLayoutPanel1);
+            panel2.Controls.Add(colorControl);
+            panel2.Controls.Add(numericBoxL);
+            panel2.Controls.Add(numericBoxK);
+            panel2.Controls.Add(checkBoxEquivalency);
+            panel2.Controls.Add(numericBoxH);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label6);
+            resources.ApplyResources(panel2, "panel2");
+            panel2.Name = "panel2";
+            // 
+            // numericBoxTranslation
+            // 
+            resources.ApplyResources(numericBoxTranslation, "numericBoxTranslation");
+            numericBoxTranslation.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxTranslation.DecimalPlaces = 3;
+            numericBoxTranslation.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTranslation.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTranslation.Maximum = 100D;
+            numericBoxTranslation.Minimum = -100D;
+            numericBoxTranslation.Name = "numericBoxTranslation";
+            numericBoxTranslation.RoundErrorAccuracy = -1;
+            numericBoxTranslation.ShowUpDown = true;
+            numericBoxTranslation.SkipEventDuringInput = false;
+            numericBoxTranslation.ThonsandsSeparator = true;
+            numericBoxTranslation.UpDown_Increment = 0.1D;
+            numericBoxTranslation.ValueChanged += numericBoxDistanceD_ValueChanged;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
             // 
             // BoundControl
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
-            this.Name = "BoundControl";
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            Controls.Add(dataGridView);
+            Controls.Add(panel1);
+            Controls.Add(panel2);
+            Name = "BoundControl";
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
@@ -507,25 +540,11 @@
         private System.Windows.Forms.Button buttonAddBond;
         private System.Windows.Forms.Button buttonChangeBond;
         private System.Windows.Forms.Button buttonDeleteBond;
-        private NumericBox numericBoxL;
-        private NumericBox numericBoxK;
-        private System.Windows.Forms.CheckBox checkBoxEquivalency;
-        private NumericBox numericBoxH;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private NumericBox numericBoxDistanceD;
-        private NumericBox numericBoxDistance;
-        private System.Windows.Forms.Label label6;
-        private ColorControl colorControl;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn5;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn7;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn8;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn9;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn10;
@@ -538,5 +557,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MultipleOfD;
         private System.Windows.Forms.DataGridViewTextBoxColumn distanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private NumericBox numericBoxH;
+        private System.Windows.Forms.CheckBox checkBoxEquivalency;
+        private NumericBox numericBoxK;
+        private NumericBox numericBoxL;
+        private ColorControl colorControl;
+        private NumericBox numericBoxMaximumDistanceFromOrigin;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private NumericBox numericBoxDistanceD;
+        private NumericBox numericBoxDistance;
+        private System.Windows.Forms.Panel panel2;
+        private NumericBox numericBoxTranslation;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBoxImmediateUpdate;
     }
 }

@@ -22,6 +22,11 @@ namespace Crystallography
         public double Distance { get; set; }
         public double MultipleOfD { get; set; }
 
+        /// <summary>
+        /// 平行移動量(nm)
+        /// </summary>
+        public double Translation { get; set; }
+
         public bool Enabled { get; set; } = true;
 
         public Bound()
@@ -37,13 +42,15 @@ namespace Crystallography
         /// <param name="l"></param>
         /// <param name="equivalency"></param>
         /// <param name="distance"></param>
+        /// <param name="translation"></param>
         /// <param name="argb"></param>
-        public Bound(bool enabled, Crystal crystal, int h, int k, int l, bool equivalency, double distance, int argb) : this()
+        public Bound(bool enabled, Crystal crystal, int h, int k, int l, bool equivalency, double distance,double translation, int argb) : this()
         {
             Enabled = enabled;
             ColorArgb = argb;
             Equivalency = equivalency;
             Distance = distance;
+            Translation = translation;
             Index = (h, k, l);
 
             Reset(crystal);
@@ -56,14 +63,25 @@ namespace Crystallography
 
             (int H, int K, int L)[] planes = Equivalency ?
                 SymmetryStatic.GenerateEquivalentPlanes(Index.H, Index.K, Index.L, crystal.Symmetry, false)
-                : new[] { Index };
+                : [Index];
 
-            PlaneParams = planes.Select(p =>
+            if (Equivalency && planes.Length == 2 && Translation != 0)
             {
-                var g = p.H * crystal.A_Star + p.K * crystal.B_Star + p.L * crystal.C_Star;
-                g.NormarizeThis();
-                return (g.X, g.Y, g.Z, Distance);
-            }).ToArray();
+                var g1 = planes[0].H * crystal.A_Star + planes[0].K * crystal.B_Star + planes[0].L * crystal.C_Star;
+                var g2 = planes[1].H * crystal.A_Star + planes[1].K * crystal.B_Star + planes[1].L * crystal.C_Star;
+                g1.NormarizeThis();
+                g2.NormarizeThis();
+                PlaneParams = [(g1.X, g1.Y, g1.Z, Distance + Translation), (g2.X, g2.Y, g2.Z, Distance - Translation)];
+            }
+            else
+            {
+                PlaneParams = planes.Select(p =>
+                {
+                    var g = p.H * crystal.A_Star + p.K * crystal.B_Star + p.L * crystal.C_Star;
+                    g.NormarizeThis();
+                    return (g.X, g.Y, g.Z, Distance);
+                }).ToArray();
+            }
         }
     }
 
