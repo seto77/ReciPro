@@ -967,68 +967,70 @@ public static class Geometriy
     public static double[][] GetClippedPolygon(double[] plane, double[][] bounds)
     {
         if(bounds.Length == 0)return null;
-        //var pts = new List<Vector3DBase>();
-        //for (int i = 0; i < bounds.Length; i++)
-        //{
-        //    var mtx = new Matrix3D(plane[0], bounds[i][0], 0, plane[1], bounds[i][1], 0, plane[2], bounds[i][2], 0);
-        //    for (int j = i + 1; j < bounds.Length; j++)
-        //    {
-        //        mtx.E31 = bounds[j][0]; mtx.E32 = bounds[j][1]; mtx.E33 = bounds[j][2];
-        //        if (Math.Abs(mtx.Determinant()) > 0.0000000001)
-        //        {
-        //            var pt = mtx.Inverse() * new Vector3DBase(-plane[3], -bounds[i][3], -bounds[j][3]);
-        //            if (bounds.All(b => b[0] * pt.X + b[1] * pt.Y + b[2] * pt.Z + b[3] > -0.0000000001) && pts.All(p => (p - pt).Length2 > 0.0000000001))
-        //                pts.Add(pt);
-        //        }
-        //    }
-        //}
 
+        List<Vector3DBase> pts;
 
-        //plane上の、十分に大きい面積を持った4点を用意する
-        var maxD = bounds.Max(b => b[3]);
-        Vector3DBase temp1 = new(plane[0], plane[1], plane[2]), temp2 = new(0, 0, 1);
-        var rotAngle = Vector3DBase.AngleBetVectors(temp1, temp2);
-        var rotAxis = Vector3DBase.VectorProduct(temp1, temp2);
-        var rot = Math.Abs(rotAngle - Math.PI) < 0.000001 ? Matrix3D.Rot(new Vector3DBase(1, 0, 0), Math.PI) : Matrix3D.Rot(rotAxis, -rotAngle);
-      
-        List<Vector3DBase> vertices = [
-            rot * new Vector3DBase(maxD, maxD, -plane[3]), 
-            rot * new Vector3DBase(-maxD, maxD, -plane[3]), 
-            rot * new Vector3DBase(-maxD, -maxD, -plane[3]), 
-            rot * new Vector3DBase(maxD, -maxD, -plane[3])];
-
-        //boundsによって切り取られる座標を計算し、新しい点集合を作っていく
-        foreach (var b in bounds.Where(b => !(b[0] == plane[0] && b[1] == plane[1] && b[2] == plane[2] && b[3] == plane[3])))
+        if (bounds.Length < 250)
         {
-            var angle = Vector3DBase.AngleBetVectors(new Vector3DBase(b[0], b[1], b[2]), new Vector3DBase(plane[0], plane[1], plane[2]));
-
-            if (Math.Abs(angle) > 1E-8 && Math.Abs(angle - Math.PI) > 1E-8)
+            pts = new List<Vector3DBase>();
+            for (int i = 0; i < bounds.Length; i++)
             {
-                for (int i = 0; i < vertices.Count; i++)
+                var mtx = new Matrix3D(plane[0], bounds[i][0], 0, plane[1], bounds[i][1], 0, plane[2], bounds[i][2], 0);
+                for (int j = i + 1; j < bounds.Length; j++)
                 {
-                    Vector3DBase v1 = vertices[i], v2 = i < vertices.Count - 1 ? vertices[i + 1] : vertices[0];
-
-                    double r1 = v1.X * b[0] + v1.Y * b[1] + v1.Z * b[2] + b[3], r2 = v2.X * b[0] + v2.Y * b[1] + v2.Z * b[2] + b[3];
-
-                    if ((r1 < 0 && r2 > 0) || (r1 > 0 && r2 < 0))//v1とv2の間を平面bが通るとき、
+                    mtx.E31 = bounds[j][0]; mtx.E32 = bounds[j][1]; mtx.E33 = bounds[j][2];
+                    if (Math.Abs(mtx.Determinant()) > 0.0000000001)
                     {
-                        var pt = GetCrossPoint(b[0], b[1], b[2], -b[3], v1, v2);//d=b[3]の符号に注意
-                        vertices.Insert(i + 1, pt);
-                        i++;
+                        var pt = mtx.Inverse() * new Vector3DBase(-plane[3], -bounds[i][3], -bounds[j][3]);
+                        if (bounds.All(b => b[0] * pt.X + b[1] * pt.Y + b[2] * pt.Z + b[3] > -0.0000000001) && pts.All(p => (p - pt).Length2 > 0.0000000001))
+                            pts.Add(pt);
                     }
                 }
-                for (int i = 0; i < vertices.Count; i++)
-                    if (vertices[i].X * b[0] + vertices[i].Y * b[1] + vertices[i].Z * b[2] + b[3] < -0.000001)
-                        vertices.RemoveAt(i--);
-
-                for (int i = 0; i < vertices.Count; i++)
-                    for (int j = i + 1; j < vertices.Count; j++)
-                        if ((vertices[i] - vertices[j]).Length2 < 0.00001)
-                            vertices.RemoveAt(j--);
             }
         }
+        else
+        {
+            //plane上の、十分に大きい面積を持った4点を用意する
+            var max = bounds.Max(b => b[3]);
+            Vector3DBase temp1 = new(plane[0], plane[1], plane[2]), temp2 = new(0, 0, 1);
+            var rotAngle = Vector3DBase.AngleBetVectors(temp1, temp2);
+            var rotAxis = Vector3DBase.VectorProduct(temp1, temp2);
+            var rot = Math.Abs(rotAngle - Math.PI) < 1E-10 ? Matrix3D.Rot(new Vector3DBase(1, 0, 0), Math.PI) : Matrix3D.Rot(rotAxis, -rotAngle);
 
-        return vertices.Select(p => new double[] { p.X, p.Y, p.Z }).ToArray();
+            pts = [rot * new Vector3DBase(max, max, -plane[3]), rot * new Vector3DBase(-max, max, -plane[3]), rot * new Vector3DBase(-max, -max, -plane[3]), rot * new Vector3DBase(max, -max, -plane[3])];
+
+            //boundsによって切り取られる座標を計算し、新しい点集合を作っていく
+            foreach (var b in bounds.Where(b => !(b[0] == plane[0] && b[1] == plane[1] && b[2] == plane[2] && b[3] == plane[3])))
+            {
+                var angle = Vector3DBase.AngleBetVectors(new Vector3DBase(b[0], b[1], b[2]), new Vector3DBase(plane[0], plane[1], plane[2]));
+
+                if (Math.Abs(angle) > 1E-10 && Math.Abs(angle - Math.PI) > 1E-10)
+                {
+                    for (int i = 0; i < pts.Count; i++)
+                    {
+                        Vector3DBase v1 = pts[i], v2 = i < pts.Count - 1 ? pts[i + 1] : pts[0];
+
+                        double r1 = v1.X * b[0] + v1.Y * b[1] + v1.Z * b[2] + b[3], r2 = v2.X * b[0] + v2.Y * b[1] + v2.Z * b[2] + b[3];
+
+                        if ((r1 < 0 && r2 > 0) || (r1 > 0 && r2 < 0))//v1とv2の間を平面bが通るとき、
+                        {
+                            var pt = GetCrossPoint(b[0], b[1], b[2], -b[3], v1, v2);//d=b[3]の符号に注意
+                            pts.Insert(i + 1, pt);
+                            i++;
+                        }
+                    }
+                    for (int i = 0; i < pts.Count; i++)
+                        if (pts[i].X * b[0] + pts[i].Y * b[1] + pts[i].Z * b[2] + b[3] < -1E-10)
+                            pts.RemoveAt(i--);
+
+                    for (int i = 0; i < pts.Count; i++)
+                        for (int j = i + 1; j < pts.Count; j++)
+                            if ((pts[i] - pts[j]).Length2 < 1E-10)
+                                pts.RemoveAt(j--);
+                }
+            }
+        }
+        return pts.Select(p => new double[] { p.X, p.Y, p.Z }).ToArray();
     }
 
     const double Th = 1E-9;
