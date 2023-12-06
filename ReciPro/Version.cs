@@ -7,7 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
-        "\r\n ver4.872(2023/12/06)  Improved the bounds options on 'Structure Viewer'." +
+        "\r\n ver4.873(2023/12/07)  Improved the bounds options on 'Structure Viewer'." +
         "\r\n ver4.871(2023/11/29)  Fixed bugs on 'Structure Viewer'." +
         "\r\n ver4.870(2023/11/21)  Target framework has been changed to .Net Desktop Runtime 8.0." +
         "\r\n ver4.869(2023/10/26)  Added the function to simulate the Ewald sphere and the reciprocal vectors to 'Diffraction Simulator'." +
