@@ -29,13 +29,13 @@ namespace Crystallography.Controls
                 {
                     dataGridView.Rows.Clear();
                     foreach (int z in AtomStatic.IsotopeAbundance[atomNumber].Keys)
-                        dataGridView.Rows.Add(new object[] { z.ToString(), AtomStatic.IsotopeAbundance[atomNumber][z], AtomStatic.IsotopeAbundance[atomNumber][z] });
+                        dataGridView.Rows.Add([z.ToString(), AtomStatic.IsotopeAbundance[atomNumber][z], AtomStatic.IsotopeAbundance[atomNumber][z]]);
                 }
                 else
                 {
                     int n = 0;
                     foreach (int z in AtomStatic.IsotopeAbundance[atomNumber].Keys)
-                        dataGridView.Rows.Add(new object[] { z, AtomStatic.IsotopeAbundance[atomNumber][z], isotopicComposition[n++] });
+                        dataGridView.Rows.Add([z, AtomStatic.IsotopeAbundance[atomNumber][z], isotopicComposition[n++]]);
                 }
             }
             get

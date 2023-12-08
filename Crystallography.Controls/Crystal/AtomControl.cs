@@ -587,13 +587,13 @@ public partial class AtomControl : UserControl
     private Atoms GetFromInterface()
     {
 
-        var aniso = UseTypeU ?
-            new[] { Aniso11 / 100, Aniso22 / 100, Aniso33 / 100, Aniso12 / 100, Aniso23 / 100, Aniso13 / 100 } :
+        double[] aniso = UseTypeU ?
+            [Aniso11 / 100, Aniso22 / 100, Aniso33 / 100, Aniso12 / 100, Aniso23 / 100, Aniso13 / 100] :
             new[] { Aniso11, Aniso22, Aniso33, Aniso12, Aniso23, Aniso13 };
 
-        var anisoErr = UseTypeU ?
-            new[] { Aniso11Err / 100, Aniso22Err / 100, Aniso33Err / 100, Aniso12Err / 100, Aniso23Err / 100, Aniso13Err / 100 } :
-            new[] { Aniso11Err, Aniso22Err, Aniso33Err, Aniso12Err, Aniso23Err, Aniso13Err };
+        double[] anisoErr = UseTypeU ?
+            [Aniso11Err / 100, Aniso22Err / 100, Aniso33Err / 100, Aniso12Err / 100, Aniso23Err / 100, Aniso13Err / 100] :
+            [Aniso11Err, Aniso22Err, Aniso33Err, Aniso12Err, Aniso23Err, Aniso13Err];
 
         var dsf = new DiffuseScatteringFactor(UseTypeU ? DiffuseScatteringFactor.Type.U : DiffuseScatteringFactor.Type.B,
             UseIsotropy, Iso / 100, IsoErr / 100, aniso, anisoErr, Crystal.CellValue);

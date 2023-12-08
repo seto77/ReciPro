@@ -723,7 +723,7 @@ public partial class ScalablePictureBox : UserControl
     private void drawSymbols(PaintEventArgs e, List<PointD> spot, List<string> spotLabel, Brush brush1, Brush brush2, bool showLabel, int? emphasizeNum)
     {
         var gp = new GraphicsPath();
-        FontFamily ff = new FontFamily("Arial");
+        FontFamily ff = new("Arial");
         Pen pen1 = new(brush1), pen2 = new(brush2);
         if (spot != null && spot.Count > 0)
             for (int i = 0; i < spot.Count; i++)

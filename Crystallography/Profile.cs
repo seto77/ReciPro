@@ -1,4 +1,4 @@
-using MathNet.Numerics.LinearAlgebra.Double;
+ï»¿using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,7 +11,7 @@ namespace Crystallography;
 [Serializable]
 public class Profile : ICloneable
 {
-    #region ƒvƒƒpƒeƒBAƒtƒB[ƒ‹ƒh
+    #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
     public string text;
 
     public List<PointD> Pt;
@@ -29,7 +29,7 @@ public class Profile : ICloneable
 
     #endregion
 
-    #region ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    #region ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     public Profile()
     {
         Pt = new List<PointD>();
@@ -53,7 +53,7 @@ public class Profile : ICloneable
     }
     #endregion
 
-    #region ƒNƒŠƒAAƒ\[ƒgAƒRƒs[
+    #region ã‚¯ãƒªã‚¢ã€ã‚½ãƒ¼ãƒˆã€ã‚³ãƒ”ãƒ¼
     public void Clear()
     {
         Pt = new List<PointD>();
@@ -88,13 +88,13 @@ public class Profile : ICloneable
     }
     #endregion
 
-    #region Šeíƒƒ\ƒbƒh
+    #region å„ç¨®ãƒ¡ã‚½ãƒƒãƒ‰
 
     public override string ToString() => text == null ? "" : text.ToString();
 
-    #region GetErr w’è‚³‚ê‚½x‚Ì’l‚É‘Î‚·‚éerr‚ğ•Ô‚·
+    #region GetErr æŒ‡å®šã•ã‚ŒãŸxã®å€¤ã«å¯¾ã™ã‚‹errã‚’è¿”ã™
     /// <summary>
-    /// w’è‚³‚ê‚½x‚Ì’l‚É‘Î‚·‚éerr‚ğ•Ô‚·
+    /// æŒ‡å®šã•ã‚ŒãŸxã®å€¤ã«å¯¾ã™ã‚‹errã‚’è¿”ã™
     /// </summary>
     /// <param name="x"></param>
     /// <param name="pointNum"></param>
@@ -105,7 +105,7 @@ public class Profile : ICloneable
         if (Err.Count != Pt.Count)
             return 0;
 
-        //‚Ü‚¸“_‚ÌˆÊ’u‚ğ’T‚·
+        //ã¾ãšç‚¹ã®ä½ç½®ã‚’æ¢ã™
         if (Err[0].X > x)
             return Err[0].Y;
         else if (Err[^1].X < x)
@@ -122,9 +122,9 @@ public class Profile : ICloneable
     }
     #endregion
 
-    #region  GetValue w’è‚³‚ê‚½x‚Ì’l‚É‘Î‚µ‚ÄorderŸŠÖ”‚Å•âŠÔ‚µ‚½’l‚ğ•Ô‚·
+    #region  GetValue æŒ‡å®šã•ã‚ŒãŸxã®å€¤ã«å¯¾ã—ã¦orderæ¬¡é–¢æ•°ã§è£œé–“ã—ãŸå€¤ã‚’è¿”ã™
     /// <summary>
-    /// w’è‚³‚ê‚½x‚Ì’l‚É‘Î‚µ‚ÄorderŸŠÖ”‚Å•âŠÔ‚µ‚½’l‚ğ•Ô‚·
+    /// æŒ‡å®šã•ã‚ŒãŸxã®å€¤ã«å¯¾ã—ã¦orderæ¬¡é–¢æ•°ã§è£œé–“ã—ãŸå€¤ã‚’è¿”ã™
     /// </summary>
     /// <param name="x"></param>
     /// <param name="pointNum"></param>
@@ -132,9 +132,9 @@ public class Profile : ICloneable
     /// <returns></returns>
     public double GetValue(double x, int pointNum, int order, bool eachside = false)
     {
-        if (pointNum == 2 && order == 1)//’Tõ‚·‚é“_”‚ª2, ƒI[ƒ_[‚ª1‚Ì‚ÍA‚‘¬‰»‚Ì‚½‚ßˆÈ‰º‚Ìƒ‹[ƒ`ƒ“‚Å
+        if (pointNum == 2 && order == 1)//æ¢ç´¢ã™ã‚‹ç‚¹æ•°ãŒ2, ã‚ªãƒ¼ãƒ€ãƒ¼ãŒ1ã®æ™‚ã¯ã€é«˜é€ŸåŒ–ã®ãŸã‚ä»¥ä¸‹ã®ãƒ«ãƒ¼ãƒãƒ³ã§
         {
-            int pos = 0;//‚±‚Ì’l‚ÆA‚±‚Ì’l+1‚ÌŠÔ‚Ìindex‚Éx‚ª‘¶İ‚·‚é
+            int pos = 0;//ã“ã®å€¤ã¨ã€ã“ã®å€¤+1ã®é–“ã®indexã«xãŒå­˜åœ¨ã™ã‚‹
             if (x > Pt[Pt.Count * 3 / 4].X)
                 pos = Pt.Count * 3 / 4;
             else if (x > Pt[Pt.Count / 2].X)
@@ -161,14 +161,14 @@ public class Profile : ICloneable
     }
     #endregion
 
-    #region GetValues@w’è‚³‚ê‚½x‚Ì’l‚É‘Î‚µ‚ÄorderŸŠÖ”‚Å•âŠÔ‚µ‚½’l‚ğ•Ô‚·
+    #region GetValuesã€€æŒ‡å®šã•ã‚ŒãŸxã®å€¤ã«å¯¾ã—ã¦orderæ¬¡é–¢æ•°ã§è£œé–“ã—ãŸå€¤ã‚’è¿”ã™
     /// <summary>
-    /// w’è‚³‚ê‚½x‚Ì’l‚É‘Î‚µ‚ÄorderŸŠÖ”‚Å•âŠÔ‚µ‚½’l‚ğ•Ô‚·
+    /// æŒ‡å®šã•ã‚ŒãŸxã®å€¤ã«å¯¾ã—ã¦orderæ¬¡é–¢æ•°ã§è£œé–“ã—ãŸå€¤ã‚’è¿”ã™
     /// </summary>
     /// <param name="x"></param>
-    /// <param name="pointNum">’Tõ‚·‚é“_”</param>
-    /// <param name="order">ƒtƒBƒbƒeƒBƒ“ƒO‚·‚éŸ”</param>
-    /// <param name="eachside">—¼ƒTƒCƒh‚Å‚È‚é‚×‚­‹Ï“™‚È“_”‚ğÌ—p</param>
+    /// <param name="pointNum">æ¢ç´¢ã™ã‚‹ç‚¹æ•°</param>
+    /// <param name="order">ãƒ•ã‚£ãƒƒãƒ†ã‚£ãƒ³ã‚°ã™ã‚‹æ¬¡æ•°</param>
+    /// <param name="eachside">ä¸¡ã‚µã‚¤ãƒ‰ã§ãªã‚‹ã¹ãå‡ç­‰ãªç‚¹æ•°ã‚’æ¡ç”¨</param>
     /// <param name="shareSameFunction"></param>
     /// <returns></returns>
     public double[] GetValues(double[] x, int pointNum, int order, bool eachside = false, bool shareSameFunction = false)
@@ -177,7 +177,7 @@ public class Profile : ICloneable
         if (order > pointNum - 1) order = pointNum - 1;
         double[] value = new double[x.Length];
 
-        /*   var srcPts = new List<List<PointD>>(); //X‚É“¯‚¶’l‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡(‹zû’[‚Ì‚æ‚¤‚È•s˜A‘±‚Èƒvƒƒtƒ@ƒCƒ‹)‚ğl—¶‚µ‚ÄA•ª—£‚µ‚Ä‚¨‚­
+        /*   var srcPts = new List<List<PointD>>(); //Xã«åŒã˜å€¤ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆ(å¸åç«¯ã®ã‚ˆã†ãªä¸é€£ç¶šãªãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«)ã‚’è€ƒæ…®ã—ã¦ã€åˆ†é›¢ã—ã¦ãŠã
            for (int i=0; i< Pt.Count; i++)
            {
                var temp = new List<PointD>();
@@ -192,8 +192,8 @@ public class Profile : ICloneable
         for (int n = 0; n < x.Length; n++)
         {
             bool flag = true;
-            //‚Ü‚¸“_‚ÌˆÊ’u‚ğ’T‚·
-            int position = 0;//‚±‚Ì’l‚Æ ‚±‚Ì’l+1‚ÌŠÔ‚Ìindex‚Éx‚ª‘¶İ‚·‚é
+            //ã¾ãšç‚¹ã®ä½ç½®ã‚’æ¢ã™
+            int position = 0;//ã“ã®å€¤ã¨ ã“ã®å€¤+1ã®é–“ã®indexã«xãŒå­˜åœ¨ã™ã‚‹
             if (Pt[0].X > x[n])
                 position = -1;
             else if (Pt[^1].X < x[n])
@@ -213,10 +213,10 @@ public class Profile : ICloneable
                     }
             if (flag)
             {
-                //Ÿ‚ÉA‚±‚Ì“_‚©‚ç‘OŒã‚ÉPointNum‚¾‚¯‹ß‚¢“_‚ğ’T‚·
+                //æ¬¡ã«ã€ã“ã®ç‚¹ã‹ã‚‰å‰å¾Œã«PointNumã ã‘è¿‘ã„ç‚¹ã‚’æ¢ã™
                 var pt = new List<PointD>();
 
-                if (eachside)//—¼‘¤‚Å‚È‚é‚×‚­‹Ï“™‚È“_”‚ª‚Ù‚µ‚¢‚Æ‚«
+                if (eachside)//ä¸¡å´ã§ãªã‚‹ã¹ãå‡ç­‰ãªç‚¹æ•°ãŒã»ã—ã„ã¨ã
                 {
                     int i = 1;
                     while (pt.Count < pointNum)
@@ -228,7 +228,7 @@ public class Profile : ICloneable
                         i++;
                     }
                 }
-                else//‚Æ‚É‚©‚­‹ß‚¢“_‚ğŒ©‚Â‚¯‚é‚Æ‚«
+                else//ã¨ã«ã‹ãè¿‘ã„ç‚¹ã‚’è¦‹ã¤ã‘ã‚‹ã¨ã
                 {
                     for (int i = Math.Max(position - pointNum, 0); i < Math.Min(position + pointNum + 1, Pt.Count); i++)
                         pt.Add(Pt[i]);
@@ -243,7 +243,7 @@ public class Profile : ICloneable
                         order = pointNum - 1;
                 }
 
-                //ŒvZ¸“x‚Ì‚½‚ßAx‚Ì”ÍˆÍ‚ğ1‚©‚ç+2‚É•ÏŠ·‚·‚é ®‚Í X = c1 x + c2;
+                //è¨ˆç®—ç²¾åº¦ã®ãŸã‚ã€xã®ç¯„å›²ã‚’1ã‹ã‚‰+2ã«å¤‰æ›ã™ã‚‹ å¼ã¯ X = c1 x + c2;
                 double c1 = 1.0 / (pt[^1].X - pt[0].X);
                 double c2 = 1 - pt[0].X * c1;
 
@@ -278,9 +278,9 @@ public class Profile : ICloneable
     }
     #endregion
 
-    #region SmoothingSavitzkyGolay():  Savitzky and Golay Smoothing‚ÌŒ‹‰Ê‚ğ•Ô‚·
+    #region SmoothingSavitzkyGolay():  Savitzky and Golay Smoothingã®çµæœã‚’è¿”ã™
     /// <summary>
-    /// Savitzky and Golay Smoothing‚ÌŒ‹‰Ê‚ğ•Ô‚·
+    /// Savitzky and Golay Smoothingã®çµæœã‚’è¿”ã™
     /// </summary>
     /// <param name="m"></param>
     /// <param name="n"></param>
@@ -294,9 +294,9 @@ public class Profile : ICloneable
     }
     #endregion
 
-    #region Differential: nŠK”÷•ª‚ÌŒ‹‰Ê‚ğ‚©‚¦‚·
+    #region Differential: néšå¾®åˆ†ã®çµæœã‚’ã‹ãˆã™
     /// <summary>
-    /// nŠK”÷•ª‚ÌŒ‹‰Ê‚ğ‚©‚¦‚·
+    /// néšå¾®åˆ†ã®çµæœã‚’ã‹ãˆã™
     /// </summary>
     /// <param name="n"></param>
     /// <returns></returns>
@@ -326,9 +326,9 @@ public class Profile : ICloneable
 
     public PointD[][] GetPointsWithinRectangle(RectangleD rect) => Geometriy.GetPointsWithinRectangle(this.Pt, rect);
 
-    #region ToGSAS: GSASŒ`®‚É•ÏŠ·‚·‚é
+    #region ToGSAS: GSASå½¢å¼ã«å¤‰æ›ã™ã‚‹
     /// <summary>
-    /// GSASŒ`®‚É•ÏŠ·
+    /// GSASå½¢å¼ã«å¤‰æ›
     /// </summary>
     /// <param name="name"></param>
     /// <param name="profile"></param>
@@ -339,16 +339,16 @@ public class Profile : ICloneable
         var sb = new List<string>();
         double div = axis == HorizontalAxis.NeutronTOF ? 1 : 100;
 
-        //ˆês–Ú
+        //ä¸€è¡Œç›®
         sb.Add(name);
 
-        //“ñs–Ú
+        //äºŒè¡Œç›®
         var ptCount = profile.Pt.Count;
         var startAngle = profile.Pt[0].X * div;
         var stepAngle = (profile.Pt[1].X - profile.Pt[0].X) * div;
         sb.Add($"BANK 1 {ptCount} {ptCount} CONST {startAngle:f2} {stepAngle:f2} 0 0 FXYE");
 
-        //err‚ª—LŒø‚Èƒf[ƒ^‚©‚Ç‚¤‚©‚ğ”»’è
+        //errãŒæœ‰åŠ¹ãªãƒ‡ãƒ¼ã‚¿ã‹ã©ã†ã‹ã‚’åˆ¤å®š
         bool validErr = true;
         if (profile.Err != null && profile.Err.Count == profile.Pt.Count)
         {
@@ -390,33 +390,33 @@ public class Profile : ICloneable
     #endregion
 }
 
-#region Šeí—ñ‹“
+#region å„ç¨®åˆ—æŒ™
 /// <summary>
-/// ‰¡²‚Ìí—Ş (Angle, d, WaveNumber, Length, EnergyXray, EnergyElectron, EnergyNeutron, NeutronTOF, none)
+/// æ¨ªè»¸ã®ç¨®é¡ (Angle, d, WaveNumber, Length, EnergyXray, EnergyElectron, EnergyNeutron, NeutronTOF, none)
 /// </summary>
 [Serializable]
 public enum HorizontalAxis{    Angle, d, WaveNumber, Length, EnergyXray, EnergyElectron, EnergyNeutron, NeutronTOF, None}
 
 /// <summary>
-/// ”g‚Ìí—Ş (Xray, Electron, Neutron, None)
+/// æ³¢ã®ç¨®é¡ (Xray, Electron, Neutron, None)
 /// </summary>
 [Serializable]
 public enum WaveSource{    Xray, Electron, Neutron, None}
 
 /// <summary>
-/// ”g‚ÌF (Monochrome, FlatWhite, CustomWhite, None)
+/// æ³¢ã®è‰² (Monochrome, FlatWhite, CustomWhite, None)
 /// </summary>
 [Serializable]
 public enum WaveColor{    Monochrome, FlatWhite, CustomWhite, None}
 
 /// <summary>
-/// ƒvƒƒtƒ@ƒCƒ‹ƒ‚[ƒh (Concentric, Radial)
+/// ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãƒ¢ãƒ¼ãƒ‰ (Concentric, Radial)
 /// </summary>
 [Serializable]
 public enum DiffractionProfileMode{    Concentric, Radial}
 
 /// <summary>
-/// ƒoƒbƒNƒOƒ‰ƒ“ƒhƒ‚[ƒh (BSplineCurve, ReferrenceProfile)
+/// ãƒãƒƒã‚¯ã‚°ãƒ©ãƒ³ãƒ‰ãƒ¢ãƒ¼ãƒ‰ (BSplineCurve, ReferrenceProfile)
 /// </summary>
 [Serializable]
 public enum BackgroundMode{    BSplineCurve, ReferrenceProfile}
@@ -426,7 +426,7 @@ public enum BackgroundMode{    BSplineCurve, ReferrenceProfile}
 [Serializable]
 public class DiffractionProfile2 : ICloneable
 {
-    #region ƒ}ƒXƒNŠÖ˜A‚±‚±‚©‚ç
+    #region ãƒã‚¹ã‚¯é–¢é€£ã“ã“ã‹ã‚‰
     [Serializable]
     public class MaskingRange
     {
@@ -531,76 +531,76 @@ public class DiffractionProfile2 : ICloneable
         return dp;
     }
 
-    #region ƒvƒƒpƒeƒB
+    #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 
-    #region ƒvƒƒtƒ@ƒCƒ‹
+    #region ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«
     /// <summary>
-    /// ƒ\[ƒXƒvƒƒtƒ@ƒCƒ‹ ()
+    /// ã‚½ãƒ¼ã‚¹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ« ()
     /// </summary>
     public Profile SourceProfile;
 
     public PointD[] BgPoints;
 
     /// <summary>
-    /// ²•ÏŠ·Œã‚Ìƒvƒƒtƒ@ƒCƒ‹. SetConvertedProfile()‚ğŒÄ‚Ño‚·‚±‚Æ‚Å¶¬‚³‚ê‚é.
+    /// è»¸å¤‰æ›å¾Œã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«. SetConvertedProfile()ã‚’å‘¼ã³å‡ºã™ã“ã¨ã§ç”Ÿæˆã•ã‚Œã‚‹.
     /// </summary>
     [XmlIgnore]
     public Profile ConvertedProfile;
 
     /// <summary>
-    /// •âŠ®‚³‚ê‚½ƒvƒƒtƒ@ƒCƒ‹. ConvertedProfile‚ÌŒã‚É¶¬‚³‚ê‚éB
+    /// è£œå®Œã•ã‚ŒãŸãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«. ConvertedProfileã®å¾Œã«ç”Ÿæˆã•ã‚Œã‚‹ã€‚
     /// </summary>
     [XmlIgnore]
     public Profile InterpolatedProfile;
 
     /// <summary>
-    /// ƒXƒ€[ƒWƒ“ƒO‚³‚ê‚½ƒvƒƒtƒ@ƒCƒ‹. InterpolatedProfile‚ÌŒã‚É¶¬‚³‚ê‚é.
+    /// ã‚¹ãƒ ãƒ¼ã‚¸ãƒ³ã‚°ã•ã‚ŒãŸãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«. InterpolatedProfileã®å¾Œã«ç”Ÿæˆã•ã‚Œã‚‹.
     /// </summary>
     [XmlIgnore]
     public Profile SmoothedProfile;
 
     /// <summary>
-    /// Kalpha2œ‹‚ª‚³‚ê‚½ƒvƒƒtƒ@ƒCƒ‹. SmoothedProfile‚ÌŒã‚É¶¬‚³‚ê‚é.
+    /// Kalpha2é™¤å»ãŒã•ã‚ŒãŸãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«. SmoothedProfileã®å¾Œã«ç”Ÿæˆã•ã‚Œã‚‹.
     /// </summary>
     [XmlIgnore]
     public Profile Kalpha2RemovedProfile;
 
     /// <summary>
-    /// ƒoƒbƒNƒOƒ‰ƒ“ƒhƒvƒƒtƒ@ƒCƒ‹. Kalpha2RemovedProfile‚ÌŒã‚É¶¬‚³‚ê‚é.
+    /// ãƒãƒƒã‚¯ã‚°ãƒ©ãƒ³ãƒ‰ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«. Kalpha2RemovedProfileã®å¾Œã«ç”Ÿæˆã•ã‚Œã‚‹.
     /// </summary>
     [XmlIgnore]
     public Profile BackgroundProfile;
 
     /// <summary>
-    /// ÅIƒvƒƒtƒ@ƒCƒ‹. Kalpha2RemovedProfile‚ÌŒã‚É¶¬‚³‚ê‚é.
+    /// æœ€çµ‚ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«. Kalpha2RemovedProfileã®å¾Œã«ç”Ÿæˆã•ã‚Œã‚‹.
     /// </summary>
     [XmlIgnore]
     public Profile Profile;
     #endregion
 
     /// <summary>
-    /// ƒvƒƒtƒ@ƒCƒ‹ƒ‚[ƒh
+    /// ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãƒ¢ãƒ¼ãƒ‰
     /// </summary>
     public DiffractionProfileMode Mode = DiffractionProfileMode.Concentric;
 
     /// <summary>
-    /// ƒ\[ƒXƒvƒƒtƒ@ƒCƒ‹‚ÉŠÖ‚·‚éƒvƒƒpƒeƒB
+    /// ã‚½ãƒ¼ã‚¹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã«é–¢ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     /// </summary>
     public HorizontalAxisProperty SrcProperty;
 
     /// <summary>
-    /// ÅIƒvƒƒtƒ@ƒCƒ‹‚ÌƒvƒƒpƒeƒB
+    /// æœ€çµ‚ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     /// </summary>
     public HorizontalAxisProperty DstProperty;
 
-    #region ƒm[ƒ}ƒ‰ƒCƒYŠÖ˜A
+    #region ãƒãƒ¼ãƒãƒ©ã‚¤ã‚ºé–¢é€£
     /// <summary>
-    /// ‹­“x‚Ìƒm[ƒ}ƒ‰ƒCƒY‚ğ‚·‚é‚©‚Ç‚¤‚©
+    /// å¼·åº¦ã®ãƒãƒ¼ãƒãƒ©ã‚¤ã‚ºã‚’ã™ã‚‹ã‹ã©ã†ã‹
     /// </summary>
     public bool DoesNormarizeIntensity = false;
 
     /// <summary>
-    /// c²‚É‚©‚¯‚éŒW”
+    /// ç¸¦è»¸ã«ã‹ã‘ã‚‹ä¿‚æ•°
     /// </summary>
     public double NormarizeRangeStart = 0;
 
@@ -609,34 +609,34 @@ public class DiffractionProfile2 : ICloneable
     public double NormarizeIntensity = 1000;
     #endregion
 
-    #region ƒXƒ€[ƒWƒ“ƒOŠÖ˜A
+    #region ã‚¹ãƒ ãƒ¼ã‚¸ãƒ³ã‚°é–¢é€£
     public bool DoesSmoothing = false;
 
     public int SazitkyGorayM = 3, SazitkyGorayN = 3;
     #endregion
 
-    #region 2ƒÆƒVƒtƒg
+    #region 2Î¸ã‚·ãƒ•ãƒˆ
     public bool DoesTwoThetaOffset = false;
 
     public double TwoThetaOffsetCoeff0 = 0, TwoThetaOffsetCoeff1 = 0, TwoThetaOffsetCoeff2 = 0;
     #endregion
 
-    #region Kalpha2œ‹
-    //Kalpha2œ‹‚±‚±‚©‚ç
+    #region Kalpha2é™¤å»
+    //Kalpha2é™¤å»ã“ã“ã‹ã‚‰
     public bool DoesRemoveKalpha2 = false;
 
     public double Kalpha1 = 0, Kalpha2 = 0;
     #endregion
 
-    #region ƒVƒtƒg
-    //shiftŠÖ˜A
+    #region ã‚·ãƒ•ãƒˆ
+    //shifté–¢é€£
     public bool IsShiftX = false;
 
     public double ShiftX = 0;
     #endregion
 
     #region FFT
-    //FFTŠÖ˜A
+    //FFTé–¢é€£
     public bool DoesBandpassFilter = false;
 
     public bool DoesLowPath = false, DoesHighPath = false;
@@ -644,26 +644,26 @@ public class DiffractionProfile2 : ICloneable
     #endregion
 
     /// <summary>
-    /// count per second ƒ‚[ƒh‚©‚Ç‚¤‚©
+    /// count per second ãƒ¢ãƒ¼ãƒ‰ã‹ã©ã†ã‹
     /// </summary>
     public bool IsCPS = true;
 
     /// <summary>
-    /// ˜IoŠÔ
+    /// éœ²å‡ºæ™‚é–“
     /// </summary>
     public double ExposureTime = 1;
 
     /// <summary>
-    /// c²‚ğƒƒOƒXƒP[ƒ‹‚É‚·‚é‚©‚Ç‚¤‚©
+    /// ç¸¦è»¸ã‚’ãƒ­ã‚°ã‚¹ã‚±ãƒ¼ãƒ«ã«ã™ã‚‹ã‹ã©ã†ã‹
     /// </summary>
     public bool IsLogIntensity = false;
 
-    //•`‰æü‚Ìİ’è
+    //æç”»ç·šã®è¨­å®š
     public float LineWidth = 1f;
 
     public int? ColorARGB;
 
-    #region /ƒoƒbƒNƒOƒ‰ƒ“ƒhİ’èŠÖ˜A
+    #region /ãƒãƒƒã‚¯ã‚°ãƒ©ãƒ³ãƒ‰è¨­å®šé–¢é€£
     public int BgPointsNumber = 15;
 
     public bool SubtractBackground = false;
@@ -679,7 +679,7 @@ public class DiffractionProfile2 : ICloneable
     public bool IsLPOmain = false;
     public bool IsLPOchild = false;
 
-    #region ƒCƒ[ƒWŠÖ˜A
+    #region ã‚¤ãƒ¡ãƒ¼ã‚¸é–¢é€£
     public double[] ImageArray = null;
     public double ImageScale = 0;
     public int ImageWidth = 0, ImageHeight = 0;
@@ -689,7 +689,7 @@ public class DiffractionProfile2 : ICloneable
 
     #endregion
 
-    #region ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    #region ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     public DiffractionProfile2()
     {
         BgPoints = Array.Empty<PointD>();
@@ -722,9 +722,9 @@ public class DiffractionProfile2 : ICloneable
         SubtractBackground = defaultDP.SubtractBackground;
     }
 
-    #region ƒoƒbƒNƒOƒ‰ƒEƒ“ƒh§Œä“_‚Ì’Ç‰Á/íœ
+    #region ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰åˆ¶å¾¡ç‚¹ã®è¿½åŠ /å‰Šé™¤
     /// <summary>
-    /// ƒNƒ‰ƒCƒAƒ“ƒgÀ•W‚Ìpt‚ğóæ‚èAƒIƒŠƒWƒiƒ‹À•W‚É•ÏŠ·‚µ‚Ä’Ç‰Á‚·‚é
+    /// ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåº§æ¨™ã®ptã‚’å—å–ã‚Šã€ã‚ªãƒªã‚¸ãƒŠãƒ«åº§æ¨™ã«å¤‰æ›ã—ã¦è¿½åŠ ã™ã‚‹
     /// </summary>
     /// <param name="pt"></param>
     public void AddBgPoints(PointD pt)
@@ -747,17 +747,17 @@ public class DiffractionProfile2 : ICloneable
     #endregion
 
     /// <summary>
-    /// ‰¡²ğŒ‚Í‚»‚Ì‚Ü‚Ü‚ÅAc²ƒm[ƒ}ƒ‰ƒCƒY‚ğ{‚µOriginalProfile‚©‚çConvertedProfile‚ğ¶¬‚·‚éB
+    /// æ¨ªè»¸æ¡ä»¶ã¯ãã®ã¾ã¾ã§ã€ç¸¦è»¸ãƒãƒ¼ãƒãƒ©ã‚¤ã‚ºã‚’æ–½ã—OriginalProfileã‹ã‚‰ConvertedProfileã‚’ç”Ÿæˆã™ã‚‹ã€‚
     /// </summary>
     public void SetConvertedProfile()
     {
         SetConvertedProfile(DstProperty);
     }
 
-    #region ˆê˜A‚Ì•ÏŠ· SourceProfile => MaskingProfile => SmoothingProfile =>  Kalpha2RemovedProfile => BackgroundProfile & Profile
+    #region ä¸€é€£ã®å¤‰æ› SourceProfile => MaskingProfile => SmoothingProfile =>  Kalpha2RemovedProfile => BackgroundProfile & Profile
 
     /// <summary>
-    /// ‰¡²•ÏŠ·‚¨‚æ‚Ñc²ƒm[ƒ}ƒ‰ƒCƒY‚ğ{‚µOriginalProfile‚©‚çConvertedProfile‚ğ¶¬‚·‚éBÅŒã‚ÉSetMaskingProfile()‚ğÀs‚·‚é.
+    /// æ¨ªè»¸å¤‰æ›ãŠã‚ˆã³ç¸¦è»¸ãƒãƒ¼ãƒãƒ©ã‚¤ã‚ºã‚’æ–½ã—OriginalProfileã‹ã‚‰ConvertedProfileã‚’ç”Ÿæˆã™ã‚‹ã€‚æœ€å¾Œã«SetMaskingProfile()ã‚’å®Ÿè¡Œã™ã‚‹.
     /// </summary>
     public void SetConvertedProfile(HorizontalAxisProperty property)
     {
@@ -771,7 +771,7 @@ public class DiffractionProfile2 : ICloneable
         PointD[] pt = ConvertSrcToDest(SourceProfile.Pt.ToArray());
         PointD[] err = ConvertSrcToDest(SourceProfile.Err.ToArray());
 
-        //‚±‚±‚©‚çA2ThetaOffsetˆ—
+        //ã“ã“ã‹ã‚‰ã€2ThetaOffsetå‡¦ç†
         if (IsShiftX)
         {
             for (int i = 0; i < pt.Length; i++)
@@ -794,18 +794,18 @@ public class DiffractionProfile2 : ICloneable
             }
         }
 
-        //‚±‚±‚Ü‚Å
+        //ã“ã“ã¾ã§
 
         ConvertedProfile.Pt.AddRange(pt);
         ConvertedProfile.Err.AddRange(err);
 
-        ConvertedProfile.Sort();//‚±‚±‚Ü‚Åƒvƒƒtƒ@ƒCƒ‹ƒ\[ƒg‚ğŠ®—¹
+        ConvertedProfile.Sort();//ã“ã“ã¾ã§ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã‚½ãƒ¼ãƒˆã‚’å®Œäº†
 
         SetMaskingProfile();
     }
 
     /// <summary>
-    /// Mask‚³‚ê‚½—Ìˆæ‚ğ•âŠ®‚µAConvertedProfile‚©‚çInterpolatedProfile‚ğì¬‚·‚é. ÅŒã‚ÉSetSmoothingProfile()‚ğÀs‚·‚éB
+    /// Maskã•ã‚ŒãŸé ˜åŸŸã‚’è£œå®Œã—ã€ConvertedProfileã‹ã‚‰InterpolatedProfileã‚’ä½œæˆã™ã‚‹. æœ€å¾Œã«SetSmoothingProfile()ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
     /// </summary>
     public void SetMaskingProfile()
     {
@@ -844,12 +844,12 @@ public class DiffractionProfile2 : ICloneable
     }
 
     /// <summary>
-    /// ƒXƒ€[ƒWƒ“ƒO‚ÆFFT‚ğ{‚µInterpolatedProfile‚©‚çSmoothedProfile‚ğì¬‚·‚éBÅŒã‚ÉSetKalpha2RemovedProfile()‚ğÀs‚·‚éB
+    /// ã‚¹ãƒ ãƒ¼ã‚¸ãƒ³ã‚°ã¨FFTã‚’æ–½ã—InterpolatedProfileã‹ã‚‰SmoothedProfileã‚’ä½œæˆã™ã‚‹ã€‚æœ€å¾Œã«SetKalpha2RemovedProfile()ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
     /// </summary>
     public void SetSmoothingProfile()
     {
         SmoothedProfile.Clear();
-        //ƒXƒ€[ƒWƒ“ƒOˆ—
+        //ã‚¹ãƒ ãƒ¼ã‚¸ãƒ³ã‚°å‡¦ç†
         if (DoesSmoothing)
             SmoothedProfile = Smoothing.SavitzkyGolay(InterpolatedProfile, SazitkyGorayM, SazitkyGorayN);
         else
@@ -869,7 +869,7 @@ public class DiffractionProfile2 : ICloneable
             double center = fft.Length / 2.0;
             double unit = SmoothedProfile.Pt[1].X - SmoothedProfile.Pt[0].X;
 
-            if (DoesHighPath && HighPathLimit > 0)//“Á’è‚Ìü”g”ˆÈ‰º‚ğƒJƒbƒg‚·‚é
+            if (DoesHighPath && HighPathLimit > 0)//ç‰¹å®šã®å‘¨æ³¢æ•°ä»¥ä¸‹ã‚’ã‚«ãƒƒãƒˆã™ã‚‹
             {
                 double length = HighPathLimit * src.Length * unit;
                 for (int i = 1; i < center; i++)
@@ -879,7 +879,7 @@ public class DiffractionProfile2 : ICloneable
                         fft[i] *= (i - length / 2) / (length / 2);
             }
 
-            if (DoesLowPath && LowPathLimit > 0)//“Á’è‚Ìü”g”ˆÈã‚ğƒJƒbƒg‚·‚é
+            if (DoesLowPath && LowPathLimit > 0)//ç‰¹å®šã®å‘¨æ³¢æ•°ä»¥ä¸Šã‚’ã‚«ãƒƒãƒˆã™ã‚‹
             {
                 double length = LowPathLimit * src.Length * unit;
                 for (int i = 0; i < center; i++)
@@ -905,7 +905,7 @@ public class DiffractionProfile2 : ICloneable
     }
 
     /// <summary>
-    /// Kalpha2‚ğœ‹‚·‚éBÅŒã‚ÉSetBackGroundProfile()‚ğÀs‚·‚éB
+    /// Kalpha2ã‚’é™¤å»ã™ã‚‹ã€‚æœ€å¾Œã«SetBackGroundProfile()ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
     /// </summary>
     public void SetKalpha2RemovedProfile()
     {
@@ -943,7 +943,7 @@ public class DiffractionProfile2 : ICloneable
     }
 
     /// <summary>
-    /// ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚ğ{‚µSmoothedProfile‚©‚çBackGroundProfile‚¨‚æ‚ÑProfile‚ğì¬‚·‚éB
+    /// ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ã‚’æ–½ã—SmoothedProfileã‹ã‚‰BackGroundProfileãŠã‚ˆã³Profileã‚’ä½œæˆã™ã‚‹ã€‚
     /// </summary>
     public void SetBackGroundProfile()
     {
@@ -953,10 +953,10 @@ public class DiffractionProfile2 : ICloneable
         for (int i = 0; i < Kalpha2RemovedProfile.Err.Count; i++)
             Profile.Err.Add(Kalpha2RemovedProfile.Err[i]);
 
-        //•K—v‚Å‚ ‚ê‚ÎAƒm[ƒ}ƒ‰ƒCƒYˆ—
+        //å¿…è¦ã§ã‚ã‚Œã°ã€ãƒãƒ¼ãƒãƒ©ã‚¤ã‚ºå‡¦ç†
         Normarize();
 
-        //ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—
+        //ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†
         if (BackgroundProfile.Pt == null || BackgroundProfile.Pt.Count != Profile.Pt.Count)
         {
             BackgroundProfile.Pt = new List<PointD>();
@@ -982,11 +982,11 @@ public class DiffractionProfile2 : ICloneable
                 }
             }
         }
-        //ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhˆ—‚±‚±‚Ü‚Å
+        //ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‡¦ç†ã“ã“ã¾ã§
     }
     #endregion
 
-    #region ƒm[ƒ}ƒ‰ƒCƒY
+    #region ãƒãƒ¼ãƒãƒ©ã‚¤ã‚º
     private void Normarize()
     {
         if (DoesNormarizeIntensity)
@@ -1018,22 +1018,22 @@ public class DiffractionProfile2 : ICloneable
     }
     #endregion
 
-    #region ƒoƒbƒNƒOƒ‰ƒ“ƒh§Œä“_‚ÌŒŸõ
+    #region ãƒãƒƒã‚¯ã‚°ãƒ©ãƒ³ãƒ‰åˆ¶å¾¡ç‚¹ã®æ¤œç´¢
     /// <summary>
-    /// SmoothProfile‚ğ‘ÎÛ‚ÉBgPoints‚ğ©“®‚Å’T‚·
+    /// SmoothProfileã‚’å¯¾è±¡ã«BgPointsã‚’è‡ªå‹•ã§æ¢ã™
     /// </summary>
     public void getBgPointsAuto()
     {
         int i;
         Profile p0 = Smoothing.SavitzkyGolay(SmoothedProfile, 3, 3);
 
-        //ˆêŠK”÷•ª
+        //ä¸€éšå¾®åˆ†
         Profile p1 = new Profile();
         for (i = 0; i < p0.Pt.Count - 1; i++)
             p1.Pt.Add(new PointD((p0.Pt[i].X + p0.Pt[i + 1].X) / 2, (p0.Pt[i + 1].Y - p0.Pt[i].Y) / (p0.Pt[i + 1].X - p0.Pt[i].X)));
         p1 = Smoothing.SavitzkyGolay(p1, 3, 3);
 
-        //“ñŠK”÷•ª
+        //äºŒéšå¾®åˆ†
         Profile p2 = new Profile();
         List<double> y = new List<double>();
         for (i = 0; i < p1.Pt.Count - 1; i++)
@@ -1043,12 +1043,12 @@ public class DiffractionProfile2 : ICloneable
         for (i = 0; i < p2.Pt.Count; i++)
             y.Add(p2.Pt[i].Y);
 
-        //p2‚ÌY’l‚ğ‹KŠi‰»
+        //p2ã®Yå€¤ã‚’è¦æ ¼åŒ–
         double d = Statistics.Deviation(y.ToArray());
         for (i = 0; i < p2.Pt.Count; i++)
             y[i] /= d;
 
-        //30ƒ|ƒCƒ“ƒgˆÈã¬‚³‚È’l‚ª‘±‚¢‚ÄA‚©‚Â‘OŒã100ƒ|ƒCƒ“ƒgˆÈã‚Í‚È‚ê‚Ä‚¢‚éƒ|ƒCƒ“ƒg‚ğ‚³‚ª‚·A
+        //30ãƒã‚¤ãƒ³ãƒˆä»¥ä¸Šå°ã•ãªå€¤ãŒç¶šã„ã¦ã€ã‹ã¤å‰å¾Œ100ãƒã‚¤ãƒ³ãƒˆä»¥ä¸Šã¯ãªã‚Œã¦ã„ã‚‹ãƒã‚¤ãƒ³ãƒˆã‚’ã•ãŒã™ã€
         double temp = 1;
         double tempMax = double.PositiveInfinity;
         int tempXindex = 0;
@@ -1063,7 +1063,7 @@ public class DiffractionProfile2 : ICloneable
             {
                 temp = 0;
                 flag = true;
-                //‚à‚µrange‚Ì”ÍˆÍ‚ÉŠù‚ÉXindex‚ª‚ ‚Á‚½‚çƒXƒLƒbƒv‚·‚é
+                //ã‚‚ã—rangeã®ç¯„å›²ã«æ—¢ã«XindexãŒã‚ã£ãŸã‚‰ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹
                 foreach (int xindex in Xindex)
                     if (Math.Abs(i - xindex) < range)
                     {
@@ -1091,7 +1091,7 @@ public class DiffractionProfile2 : ICloneable
 
         if (X.Count < 3)
             return;
-        else//‚R“_ˆÈãŒ©‚Â‚¯‚ç‚ê‚½‚ç
+        else//ï¼“ç‚¹ä»¥ä¸Šè¦‹ã¤ã‘ã‚‰ã‚ŒãŸã‚‰
         {
             List<PointD> bgPoints = new List<PointD>();
             X.Sort();
@@ -1100,7 +1100,7 @@ public class DiffractionProfile2 : ICloneable
             {
                 tempMax = double.PositiveInfinity;
                 temp = 0;
-                //‚Ü‚¸‚»‚Ì“_‚ÉÅ‚à‹ß‚¢p0’†‚Ì“_‚ğ‚³‚ª‚·
+                //ã¾ãšãã®ç‚¹ã«æœ€ã‚‚è¿‘ã„p0ä¸­ã®ç‚¹ã‚’ã•ãŒã™
                 int k = 0;
                 for (int j = 0; j < p0.Pt.Count; j++)
                 {
@@ -1111,7 +1111,7 @@ public class DiffractionProfile2 : ICloneable
                         k = j;
                     }
                 }
-                if (k != 0)//Œ©‚Â‚¯‚½“_‚Ìü‚è5ƒ|ƒCƒ“ƒg‚Ì•½‹Ï‚ğƒoƒbƒNƒOƒ‰ƒEƒ“ƒh‚Æ‚·‚é
+                if (k != 0)//è¦‹ã¤ã‘ãŸç‚¹ã®å‘¨ã‚Š5ãƒã‚¤ãƒ³ãƒˆã®å¹³å‡ã‚’ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã¨ã™ã‚‹
                 {
                     tempY = 0;
                     for (int l = k - 5; l <= k + 5 && l < p0.Pt.Count; l++)
@@ -1130,9 +1130,9 @@ public class DiffractionProfile2 : ICloneable
     }
     #endregion
 
-    #region Kalpha2œ‹
+    #region Kalpha2é™¤å»
     /// <summary>
-    /// Ka2‚ğœ‹‚·‚éÃ“Iƒƒ\ƒbƒhB
+    /// Ka2ã‚’é™¤å»ã™ã‚‹é™çš„ãƒ¡ã‚½ãƒƒãƒ‰ã€‚
     /// </summary>
     /// <param name="profile"></param>
     /// <param name="alpha1"></param>
@@ -1165,11 +1165,11 @@ public class DiffractionProfile2 : ICloneable
     #endregion
 
 
-    #region ‰¡²‚ğ•ÏŠ·‚·‚éƒƒ\ƒbƒhŒQ
+    #region æ¨ªè»¸ã‚’å¤‰æ›ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ç¾¤
 
-    #region X²‚Ì•ÏŠ· Src => Dest
+    #region Xè»¸ã®å¤‰æ› Src => Dest
     /// <summary>
-    /// Src‚Ì‰¡²‚ğDest‚Ì‰¡²‚É•ÏŠ·‚·‚é
+    /// Srcã®æ¨ªè»¸ã‚’Destã®æ¨ªè»¸ã«å¤‰æ›ã™ã‚‹
     /// </summary>
     /// <param name="pt"></param>
     /// <returns></returns>
@@ -1197,8 +1197,8 @@ public class DiffractionProfile2 : ICloneable
             if (!double.IsNaN(p.X) && !double.IsInfinity(p.X) && !double.IsNaN(p.Y) && !double.IsInfinity(p.Y))
                 dest.Add(p);
         }
-        #region ‚¨‘ ?
-        //‹­“x‚Ìƒm[ƒ}ƒ‰ƒCƒY@step‚ªˆê’è’l‚Å‚È‚­‚È‚Á‚½‚Ì‘Î‰
+        #region ãŠè”µ?
+        //å¼·åº¦ã®ãƒãƒ¼ãƒãƒ©ã‚¤ã‚ºã€€stepãŒä¸€å®šå€¤ã§ãªããªã£ãŸæ™‚ã®å¯¾å¿œ
         /*
         if (dest.Count> 0)
         {
@@ -1216,9 +1216,9 @@ public class DiffractionProfile2 : ICloneable
     }
     #endregion
 
-    #region X²‚Ì•ÏŠ· Dest=>Src
+    #region Xè»¸ã®å¤‰æ› Dest=>Src
     /// <summary>
-    /// Dest‚Ì‰¡²‚ğSrc‚Ì‰¡²‚É•ÏŠ·‚·‚é
+    /// Destã®æ¨ªè»¸ã‚’Srcã®æ¨ªè»¸ã«å¤‰æ›ã™ã‚‹
     /// </summary>
     /// <param name="pt"></param>
     /// <returns></returns>
@@ -1234,7 +1234,7 @@ public class DiffractionProfile2 : ICloneable
     }
 
     /// <summary>
-    /// Dest‚Ì‰¡²‚ğSrc‚Ì‰¡²‚É•ÏŠ·‚·‚é
+    /// Destã®æ¨ªè»¸ã‚’Srcã®æ¨ªè»¸ã«å¤‰æ›ã™ã‚‹
     /// </summary>
     /// <param name="pt"></param>
     /// <returns></returns>
@@ -1254,82 +1254,125 @@ public class DiffractionProfile2 : ICloneable
     #endregion
 }
 
-#region HorizontalAxisProperty ƒvƒƒtƒ@ƒCƒ‹‚Ì«¿‚ğ•\‚·\‘¢‘Ì
+#region HorizontalAxisProperty ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®æ€§è³ªã‚’è¡¨ã™æ§‹é€ ä½“
 
 [Serializable]
 public record struct HorizontalAxisProperty
 {
+    #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     /// <summary>
-    /// ‰¡²‚Ìí—Ş
+    /// æ¨ªè»¸ã®ç¨®é¡
     /// </summary>
     public HorizontalAxis AxisMode { get; set; } = HorizontalAxis.Angle;
     /// <summary>
-    /// “üË”g‚Ìí—Ş
+    /// å…¥å°„æ³¢ã®ç¨®é¡
     /// </summary>
     public WaveSource WaveSource { get; set; } = WaveSource.Xray;
     /// <summary>
-    /// “üË”g‚ÌF
+    /// å…¥å°„æ³¢ã®è‰²
     /// </summary>
     public WaveColor WaveColor { get; set; } = WaveColor.Monochrome;
     /// <summary>
-    /// “üË”g‚ªƒ‚ƒmƒNƒ‚Ì‚Ì“üË”g‚Ì”g’· (nm’PˆÊ)
+    /// å…¥å°„æ³¢ãŒãƒ¢ãƒã‚¯ãƒ­ã®æ™‚ã®å…¥å°„æ³¢ã®æ³¢é•· (nmå˜ä½)
     /// </summary>
     public double WaveLength { get; set; } = 0.4;
 
     /// <summary>
-    /// “üË”g‚ª“Á«Xü‚Ì‚Ìƒ^[ƒQƒbƒgŒ´q”Ô† (0‚ÍƒJƒXƒ^ƒ€)
+    /// å…¥å°„æ³¢ãŒç‰¹æ€§Xç·šã®æ™‚ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆåŸå­ç•ªå· (0ã¯ã‚«ã‚¹ã‚¿ãƒ )
     /// </summary>
     public int XrayElementNumber { get; set; } = 29;
     /// <summary>
-    /// “üËü‚ª“Á«Xü‚Ì‚Ìƒ‰ƒCƒ“
+    /// å…¥å°„ç·šãŒç‰¹æ€§Xç·šã®æ™‚ã®ãƒ©ã‚¤ãƒ³
     /// </summary>
     public XrayLine XrayLine { get; set; } = XrayLine.Ka1;
 
 
     /// <summary>
-    /// “üË”g‚ª“dqü‚Ìê‡‚Ì‰Á‘¬“dˆ³
+    /// å…¥å°„æ³¢ãŒé›»å­ç·šã®å ´åˆã®åŠ é€Ÿé›»åœ§
     /// </summary>
     public double ElectronAccVolatage { get; set; } = 200;
 
 
     /// <summary>
-    /// “üË”g‚ª”’F‚Ì‚Ì Takeoff angle (radian)
+    /// å…¥å°„æ³¢ãŒç™½è‰²ã®æ™‚ã® Takeoff angle (radian)
     /// </summary>
     public double EnergyTakeoffAngle { get; set; } = 5.0 / 180.0 * Math.PI;
 
     /// <summary>
-    /// ƒ\[ƒXƒvƒƒtƒ@ƒCƒ‹‚ª”’FTOF‚ÌŠp“x
+    /// ã‚½ãƒ¼ã‚¹ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãŒç™½è‰²TOFæ™‚ã®è§’åº¦
     /// </summary>
     public double TofAngle { get; set; } = Math.PI / 4;
     /// <summary>
-    /// ”’FTOF‚ÌŒŸoŠí‹——£(m)
+    /// ç™½è‰²TOFæ™‚ã®æ¤œå‡ºå™¨è·é›¢(m)
     /// </summary>
     public double TofLength { get; set; } = 25;
 
 
     /// <summary>
-    /// ‰¡²‚ªŠp“x‚Ì‚Ì2ƒÆ‚Ì‚Ì’PˆÊ
+    /// æ¨ªè»¸ãŒè§’åº¦ã®æ™‚ã®2Î¸ã®æ™‚ã®å˜ä½
     /// </summary>
     public AngleUnitEnum TwoThetaUnit { get; set; } = AngleUnitEnum.Radian;
-    /// <summary>
-    /// ‰¡²‚ªD’l‚Ì‚Ì’PˆÊ
-    /// </summary>
-    public LengthUnitEnum DspacingUnit { get; set; } = LengthUnitEnum.Angstrom;
-    /// <summary>
-    /// ‰¡²‚ª”g”(2ƒÎ/d) ‚Ì‚Ì’PˆÊ
-    /// </summary>
-    public LengthUnitEnum WaveNumberUnit { get; set; } = LengthUnitEnum.NanoMeterInverse;
-    /// <summary>
-    /// “üË”g‚ª”’F‚Ì‚ÌƒGƒlƒ‹ƒM[‚Ì’PˆÊ
-    /// </summary>
-    public EnergyUnitEnum EnergyUnit { get; set; } = EnergyUnitEnum.eV;
-    /// <summary>
-    /// ”’FTOF‚Ì ŠÔ’PˆÊ
-    /// </summary>
-    public TimeUnitEnum TofTimeUnit { get; set; } = TimeUnitEnum.MicroSecond;
+    public readonly string TwoThetaUnitText => TwoThetaUnit switch
+    {
+        AngleUnitEnum.Radian => "rad",
+        AngleUnitEnum.Degree => "Â°",
+        _ => "",
+    };
 
     /// <summary>
-    /// Šî–{ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    /// æ¨ªè»¸ãŒDå€¤ã®æ™‚ã®å˜ä½
+    /// </summary>
+    public LengthUnitEnum DspacingUnit { get; set; } = LengthUnitEnum.Angstrom;
+    public string DspacingUnitText => DspacingUnit switch
+    {
+         LengthUnitEnum.Angstrom => "â„«",
+         LengthUnitEnum.NanoMeter => "nm",
+        _ => "",
+    };
+
+    /// <summary>
+    /// æ¨ªè»¸ãŒæ³¢æ•°(2Ï€/d) ã®æ™‚ã®å˜ä½
+    /// </summary>
+    public LengthUnitEnum WaveNumberUnit { get; set; } = LengthUnitEnum.NanoMeterInverse;
+    public readonly string WaveNumberUnitText => WaveNumberUnit switch
+    {
+        LengthUnitEnum.NanoMeterInverse => "nmâ»Â¹",
+        LengthUnitEnum.AngstromInverse => "â„«â»Â¹",
+        _ => "",
+    };
+
+    /// <summary>
+    /// å…¥å°„æ³¢ãŒç™½è‰²ã®æ™‚ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼ã®å˜ä½
+    /// </summary>
+    public EnergyUnitEnum EnergyUnit { get; set; } = EnergyUnitEnum.eV;
+
+    public readonly string EnegyUnitText => EnergyUnit switch
+    {
+        EnergyUnitEnum.eV => "eV",
+        EnergyUnitEnum.KeV => "KeV",
+        EnergyUnitEnum.MeV => "MeV",
+        _ => "",
+    };
+
+
+    /// <summary>
+    /// ç™½è‰²TOFæ™‚ã® æ™‚é–“å˜ä½
+    /// </summary>
+    public TimeUnitEnum TofTimeUnit { get; set; } = TimeUnitEnum.MicroSecond;
+    public string TofTimeUnitText => TofTimeUnit switch
+    {
+       TimeUnitEnum.NanoSecond => "ns",
+       TimeUnitEnum.MicroSecond => "Âµs",
+       TimeUnitEnum.MilliSecond => "ms",
+        _ => "",
+    };
+
+
+
+    #endregion
+
+    /// <summary>
+    /// åŸºæœ¬ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     /// </summary>
     /// <param name="axisMode"></param>
     /// <param name="waveSource"></param>
@@ -1367,7 +1410,7 @@ public record struct HorizontalAxisProperty
     }
 
     /// <summary>
-    /// “Á«Xê—pƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    /// ç‰¹æ€§Xå°‚ç”¨ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     /// </summary>
     /// <param name="xrayElementNumber"></param>
     /// <param name="xrayLine"></param>
@@ -1383,7 +1426,7 @@ public record struct HorizontalAxisProperty
     }
 
     /// <summary>
-    /// ”CˆÓ‚Ì”g’·‚Ì’PFü + Šp“x•ªU‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    /// ä»»æ„ã®æ³¢é•·ã®å˜è‰²ç·š + è§’åº¦åˆ†æ•£ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     /// </summary>
     /// <param name="waveSource"></param>
     /// <param name="waveLength"></param>
@@ -1402,7 +1445,7 @@ public record struct HorizontalAxisProperty
 
 
     /// <summary>
-    /// ”’Fê—pƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    /// ç™½è‰²å°‚ç”¨ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     /// </summary>
     /// <param name="xrayElementNumber"></param>
     /// <param name="xrayLine"></param>
@@ -1437,20 +1480,20 @@ public record struct HorizontalAxisProperty
 }
 #endregion
 
-#region HorizontalAxisConverter ‰¡²‚ğ•ÏŠ·‚·‚éƒNƒ‰ƒX
+#region HorizontalAxisConverter æ¨ªè»¸ã‚’å¤‰æ›ã™ã‚‹ã‚¯ãƒ©ã‚¹
 
 /// <summary>
-/// ‰¡²‚ğ•ÏŠ·‚·‚éƒNƒ‰ƒX
+/// æ¨ªè»¸ã‚’å¤‰æ›ã™ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 public static class HorizontalAxisConverter
 {
     public static double[] Convert(double[] x, HorizontalAxisProperty src, HorizontalAxisProperty dst)
     {
-        #region ‚Í‚¶‚ß‚ÉSrc‚ÆDst‚ÌAxisƒ‚[ƒh‚ª“™‚µ‚¢‚Æ‚«‚ğƒ`ƒFƒbƒN
+        #region ã¯ã˜ã‚ã«Srcã¨Dstã®Axisãƒ¢ãƒ¼ãƒ‰ãŒç­‰ã—ã„ã¨ãã‚’ãƒã‚§ãƒƒã‚¯
 
         if (src.AxisMode == dst.AxisMode)
         {
-            //‰¡²‚ªU—Šp‚Å“üËXü‚Ì”g’·‚ª“™‚µ‚¢‚Æ‚«
+            //æ¨ªè»¸ãŒæ•£ä¹±è§’ã§å…¥å°„Xç·šã®æ³¢é•·ãŒç­‰ã—ã„ã¨ã
             if (src.AxisMode == HorizontalAxis.Angle && src.WaveLength == dst.WaveLength)
             {
                 if (src.TwoThetaUnit == dst.TwoThetaUnit)
@@ -1461,7 +1504,7 @@ public static class HorizontalAxisConverter
                     return x.Select(x => x * Math.PI / 180).ToArray();
             }
 
-            //‰¡²‚ªd’l‚Ì
+            //æ¨ªè»¸ãŒdå€¤ã®æ™‚
             if (src.AxisMode == HorizontalAxis.d)
             {
                 if (src.DspacingUnit == dst.DspacingUnit)
@@ -1472,7 +1515,7 @@ public static class HorizontalAxisConverter
                     return x.Select(x => x * 10).ToArray();
             }
 
-            //‰¡²‚ªƒGƒlƒ‹ƒM[‚ÅTakeoffAngle‚à“™‚µ‚¢‚Æ‚«
+            //æ¨ªè»¸ãŒã‚¨ãƒãƒ«ã‚®ãƒ¼ã§TakeoffAngleã‚‚ç­‰ã—ã„ã¨ã
             if ((src.AxisMode == HorizontalAxis.EnergyXray || src.AxisMode == HorizontalAxis.EnergyElectron || src.AxisMode == HorizontalAxis.EnergyNeutron) && dst.EnergyTakeoffAngle == src.EnergyTakeoffAngle)
             {
                 if (src.EnergyUnit == dst.EnergyUnit)
@@ -1485,7 +1528,7 @@ public static class HorizontalAxisConverter
                     return dst.EnergyUnit == EnergyUnitEnum.eV ? x.Select(x => x * 1_000_000).ToArray() : x.Select(x => x * 1_000).ToArray();
             }
 
-            //‰¡²‚ªNeutron TOF‚ÅATOFŠp“x‚àTOF‹——£‚à“™‚µ‚¢‚Æ‚«
+            //æ¨ªè»¸ãŒNeutron TOFã§ã€TOFè§’åº¦ã‚‚TOFè·é›¢ã‚‚ç­‰ã—ã„ã¨ã
             if (src.AxisMode == HorizontalAxis.NeutronTOF && src.TofAngle == dst.TofAngle && src.TofLength == dst.TofLength)
             {
                 if (src.TofTimeUnit == dst.TofTimeUnit)
@@ -1496,7 +1539,7 @@ public static class HorizontalAxisConverter
                     return x.Select(x => x / 1_000).ToArray();
             }
 
-            //‰¡²‚ª”g”‚Ì
+            //æ¨ªè»¸ãŒæ³¢æ•°ã®æ™‚
             if (src.AxisMode == HorizontalAxis.WaveNumber)
             {
                 if (src.WaveNumberUnit == dst.WaveNumberUnit)
@@ -1516,7 +1559,7 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// ‘S‚Ä‚Ìx‚ğ src‚ÉŠî‚Ã‚¢‚Äd’l(nm)‚É•ÏŠ·
+    /// å…¨ã¦ã®xã‚’ srcã«åŸºã¥ã„ã¦då€¤(nm)ã«å¤‰æ›
     /// </summary>
     /// <param name="x"></param>
     /// <param name="src"></param>
@@ -1577,7 +1620,7 @@ public static class HorizontalAxisConverter
         return d;
     }
     /// <summary>
-    /// x‚ğ src‚ÉŠî‚Ã‚¢‚Äd’l(nm)‚É•ÏŠ·
+    /// xã‚’ srcã«åŸºã¥ã„ã¦då€¤(nm)ã«å¤‰æ›
     /// </summary>
     /// <param name="x"></param>
     /// <param name="src"></param>
@@ -1585,14 +1628,14 @@ public static class HorizontalAxisConverter
     public static double ConvertToD(double x, HorizontalAxisProperty src) => ConvertToD(new[] { x }, src)[0];
 
     /// <summary>
-    ///  ‘S‚Ä‚Ìd’l(nm)‚ğdst‚ÉŠî‚Ã‚¢‚Ä•ÏŠ·
+    ///  å…¨ã¦ã®då€¤(nm)ã‚’dstã«åŸºã¥ã„ã¦å¤‰æ›
     /// </summary>
     /// <param name="d"></param>
     /// <param name="dst"></param>
     /// <returns></returns>
     public static double[] ConvertFromD(double[] d, HorizontalAxisProperty dst)
     {
-        #region ÅŒã‚Éd’l(nm’PˆÊ)‚ğ–Ú“I‚Ì²‚É•ÏŠ·
+        #region æœ€å¾Œã«då€¤(nmå˜ä½)ã‚’ç›®çš„ã®è»¸ã«å¤‰æ›
         if (dst.AxisMode == HorizontalAxis.Angle)
         {
             return dst.TwoThetaUnit == AngleUnitEnum.Degree ? DToTwoThetaInDegree(d, dst.WaveLength) : DToTwoThetaInRadian(d, dst.WaveLength);
@@ -1638,24 +1681,24 @@ public static class HorizontalAxisConverter
     }
 
     /// <summary>
-    /// d’l(nm)‚ğdst‚ÉŠî‚Ã‚¢‚Ä•ÏŠ·
+    /// då€¤(nm)ã‚’dstã«åŸºã¥ã„ã¦å¤‰æ›
     /// </summary>
     /// <param name="d"></param>
     /// <param name="dst"></param>
     /// <returns></returns>
     public static double ConvertFromD(double d, HorizontalAxisProperty dst) => ConvertFromD(new[] { d }, dst)[0];
 
-    #region ‰¡²‚ğ•ÏŠ·‚·‚éƒƒ\ƒbƒhŒQ
+    #region æ¨ªè»¸ã‚’å¤‰æ›ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ç¾¤
 
     /// <summary>
-    /// d -> Wavenumber  d’l(nm)‚ğ—^‚¦‚é‚ÆA”g”(2ƒÎ/nm)‚ğ•Ô‚·
+    /// d -> Wavenumber  då€¤(nm)ã‚’ä¸ãˆã‚‹ã¨ã€æ³¢æ•°(2Ï€/nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double DToWaveNumber(double d) => Math.PI * 2 / d;
     /// <summary>
-    /// d -> Wavenumber  d’l(nm)‚ğ—^‚¦‚é‚ÆA”g”(2ƒÎ/nm)‚ğ•Ô‚·
+    /// d -> Wavenumber  då€¤(nm)ã‚’ä¸ãˆã‚‹ã¨ã€æ³¢æ•°(2Ï€/nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <returns></returns>
@@ -1663,14 +1706,14 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// Wavenumber -> d   ”g”(2ƒÎ/nm)‚ğ—^‚¦‚é‚ÆA‰¼‘z“I‚Èd’l(nm)‚ğ•Ô‚·
+    /// Wavenumber -> d   æ³¢æ•°(2Ï€/nm)ã‚’ä¸ãˆã‚‹ã¨ã€ä»®æƒ³çš„ãªdå€¤(nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double WaveNumberToD(double wavenumber) => Math.PI * 2 / wavenumber;
     /// <summary>
-    /// Wavenumber -> d   ”g”(2ƒÎ/nm)‚ğ—^‚¦‚é‚ÆA‰¼‘z“I‚Èd’l(nm)‚ğ•Ô‚·
+    /// Wavenumber -> d   æ³¢æ•°(2Ï€/nm)ã‚’ä¸ãˆã‚‹ã¨ã€ä»®æƒ³çš„ãªdå€¤(nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
@@ -1679,14 +1722,14 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// TOF -> d   TOF(ƒÊs)‚Ææ‚èo‚µŠp(radian)A‹——£(m)‚ğ—^‚¦‚é‚ÆAƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·d’l(nm)‚ğ•Ô‚·
+    /// TOF -> d   TOF(Î¼s)ã¨å–ã‚Šå‡ºã—è§’(radian)ã€è·é›¢(m)ã‚’ä¸ãˆã‚‹ã¨ã€ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™då€¤(nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double NeutronTofToD(double TOF, double angle, double length) => UniversalConstants.Convert.NeutronVelocityToWavelength(length / TOF) / Math.Sin(angle / 2) / 2.0;
     /// <summary>
-    /// TOF -> d   TOF(ƒÊs)‚Ææ‚èo‚µŠp(radian)A‹——£(m)‚ğ—^‚¦‚é‚ÆAƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·d’l(nm)‚ğ•Ô‚·
+    /// TOF -> d   TOF(Î¼s)ã¨å–ã‚Šå‡ºã—è§’(radian)ã€è·é›¢(m)ã‚’ä¸ãˆã‚‹ã¨ã€ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™då€¤(nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
@@ -1695,14 +1738,14 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// d -> TOF   d’l(nm)‚Æ‰¼‘z“I‚Èæ‚èo‚µŠp(radian)A‹——£(m)‚ğ—^‚¦‚é‚ÆAƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚ÈTOF(ƒÊs)‚ğ•Ô‚·
+    /// d -> TOF   då€¤(nm)ã¨ä»®æƒ³çš„ãªå–ã‚Šå‡ºã—è§’(radian)ã€è·é›¢(m)ã‚’ä¸ãˆã‚‹ã¨ã€ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªTOF(Î¼s)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double DToTOF(double d, double angle, double length) => length / UniversalConstants.Convert.WavelengthToNeutronVelocity(2.0 * d * Math.Sin(angle / 2));
     /// <summary>
-    /// d -> TOF   d’l(nm)‚Æ‰¼‘z“I‚Èæ‚èo‚µŠp(radian)A‹——£(m)‚ğ—^‚¦‚é‚ÆAƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚ÈTOF(ƒÊs)‚ğ•Ô‚·
+    /// d -> TOF   då€¤(nm)ã¨ä»®æƒ³çš„ãªå–ã‚Šå‡ºã—è§’(radian)ã€è·é›¢(m)ã‚’ä¸ãˆã‚‹ã¨ã€ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªTOF(Î¼s)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
@@ -1711,14 +1754,14 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// d -> E   –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚Èæ‚èo‚µŠp(2ƒ¦)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È“d¥”g‚ÌƒGƒlƒ‹ƒM[(eV)‚ğ•Ô‚·
+    /// d -> E   é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå–ã‚Šå‡ºã—è§’(2Î˜)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªé›»ç£æ³¢ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double DToXrayEnergy(double d, double takeoffAngle) => UniversalConstants.Convert.WavelengthToXrayEnergy(2.0 * d * Math.Sin(takeoffAngle / 2.0));
     /// <summary>
-    /// d -> E   –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚Èæ‚èo‚µŠp(2ƒ¦)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È“d¥”g‚ÌƒGƒlƒ‹ƒM[(eV)‚ğ•Ô‚·
+    /// d -> E   é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå–ã‚Šå‡ºã—è§’(2Î˜)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªé›»ç£æ³¢ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
@@ -1727,14 +1770,14 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// d -> E   –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚Èæ‚èo‚µŠp(2ƒ¦)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È“dq‚ÌƒGƒlƒ‹ƒM[(keV)‚ğ•Ô‚·
+    /// d -> E   é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå–ã‚Šå‡ºã—è§’(2Î˜)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªé›»å­ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(keV)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double DToElectronEnergy(double d, double takeoffAngle) => UniversalConstants.Convert.WaveLengthToElectronEnergy(2.0 * d * Math.Sin(takeoffAngle / 2.0)) * 1000;
     /// <summary>
-    /// d -> E   –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚Èæ‚èo‚µŠp(2ƒ¦)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È“dq‚ÌƒGƒlƒ‹ƒM[(keV)‚ğ•Ô‚·
+    /// d -> E   é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå–ã‚Šå‡ºã—è§’(2Î˜)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªé›»å­ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(keV)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
@@ -1743,14 +1786,14 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// d -> E   –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚Èæ‚èo‚µŠp(2ƒ¦)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È’†«q‚ÌƒGƒlƒ‹ƒM[(eV)‚ğ•Ô‚·
+    /// d -> E   é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå–ã‚Šå‡ºã—è§’(2Î˜)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªä¸­æ€§å­ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double DToNeutronEnergy(double d, double takeoffAngle) => UniversalConstants.Convert.WaveLengthToNeutronEnergy(2.0 * d * Math.Sin(takeoffAngle / 2.0));
     /// <summary>
-    /// d -> E   –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚Èæ‚èo‚µŠp(2ƒ¦)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È’†«q‚ÌƒGƒlƒ‹ƒM[(eV)‚ğ•Ô‚·
+    /// d -> E   é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå–ã‚Šå‡ºã—è§’(2Î˜)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªä¸­æ€§å­ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã‚’è¿”ã™
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
@@ -1759,14 +1802,14 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// E -> d  “d¥”g‚ÌƒGƒlƒ‹ƒM[(eV)‚Ææ‚èo‚µŠp‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚Ì’l‚ğ•Ô‚·
+    /// E -> d  é›»ç£æ³¢ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã¨å–ã‚Šå‡ºã—è§’ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã®å€¤ã‚’è¿”ã™
     /// </summary>
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double XrayEnergyToD(double energy, double takeoffAngle) => UniversalConstants.Convert.EnergyToXrayWaveLength(energy) / 2.0 / Math.Sin(takeoffAngle / 2.0);
     /// <summary>
-    /// E -> d  “d¥”g‚ÌƒGƒlƒ‹ƒM[(eV)‚Ææ‚èo‚µŠp‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚Ì’l‚ğ•Ô‚·
+    /// E -> d  é›»ç£æ³¢ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã¨å–ã‚Šå‡ºã—è§’ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã®å€¤ã‚’è¿”ã™
     /// </summary>
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
@@ -1775,14 +1818,14 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// E -> d  “dq‚ÌƒGƒlƒ‹ƒM[(eV)‚Ææ‚èo‚µŠp‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚Ì’l‚ğ•Ô‚·
+    /// E -> d  é›»å­ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã¨å–ã‚Šå‡ºã—è§’ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã®å€¤ã‚’è¿”ã™
     /// </summary>
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double ElectronEnergyToD(double energy, double takeoffAngle) => UniversalConstants.Convert.EnergyToElectronWaveLength(energy / 1000) / 2.0 / Math.Sin(takeoffAngle / 2.0);
     /// <summary>
-    /// E -> d  “dq‚ÌƒGƒlƒ‹ƒM[(eV)‚Ææ‚èo‚µŠp‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚Ì’l‚ğ•Ô‚·
+    /// E -> d  é›»å­ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã¨å–ã‚Šå‡ºã—è§’ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã®å€¤ã‚’è¿”ã™
     /// </summary>
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
@@ -1791,14 +1834,14 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// E -> d  ’†«q‚ÌƒGƒlƒ‹ƒM[(eV)‚Ææ‚èo‚µŠp‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚Ì’l‚ğ•Ô‚·
+    /// E -> d  ä¸­æ€§å­ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã¨å–ã‚Šå‡ºã—è§’ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã®å€¤ã‚’è¿”ã™
     /// </summary>
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double NeutronEnergyToD(double energy, double takeoffAngle) => UniversalConstants.Convert.EnergyToNeutronWaveLength(energy) / 2.0 / Math.Sin(takeoffAngle / 2.0);
     /// <summary>
-    /// E -> d  ’†«q‚ÌƒGƒlƒ‹ƒM[(eV)‚Ææ‚èo‚µŠp‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚Ì’l‚ğ•Ô‚·
+    /// E -> d  ä¸­æ€§å­ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã¨å–ã‚Šå‡ºã—è§’ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã®å€¤ã‚’è¿”ã™
     /// </summary>
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
@@ -1810,7 +1853,7 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// E -> 2ƒÆ  “d¥”g‚ÌƒGƒlƒ‹ƒM[(eV)Aæ‚èo‚µŠp(takeoffAngle)A‰¼‘z“I‚È“üËü‚Ì”g’·(nm)‚ğ—^‚¦‚é‚Æ‰¼‘z“I‚È‰ñÜŠp‚ğ•Ô‚·
+    /// E -> 2Î¸  é›»ç£æ³¢ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã€å–ã‚Šå‡ºã—è§’(takeoffAngle)ã€ä»®æƒ³çš„ãªå…¥å°„ç·šã®æ³¢é•·(nm)ã‚’ä¸ãˆã‚‹ã¨ä»®æƒ³çš„ãªå›æŠ˜è§’ã‚’è¿”ã™
     /// </summary>
     /// <param name="energy"></param>
     /// <param name="waveLength"></param>
@@ -1818,7 +1861,7 @@ public static class HorizontalAxisConverter
     /// <returns></returns>
     public static double XrayEnergyToTwoTheta(double energy, double takeoffAngle, double waveLength) => 2 * Math.Asin(waveLength / 2.0 / XrayEnergyToD(energy, takeoffAngle));
     /// <summary>
-    /// E -> 2ƒÆ  “d¥”g‚ÌƒGƒlƒ‹ƒM[(eV)Aæ‚èo‚µŠp(takeoffAngle)A‰¼‘z“I‚È“üËü‚Ì”g’·(nm)‚ğ—^‚¦‚é‚Æ‰¼‘z“I‚È‰ñÜŠp‚ğ•Ô‚·
+    /// E -> 2Î¸  é›»ç£æ³¢ã®ã‚¨ãƒãƒ«ã‚®ãƒ¼(eV)ã€å–ã‚Šå‡ºã—è§’(takeoffAngle)ã€ä»®æƒ³çš„ãªå…¥å°„ç·šã®æ³¢é•·(nm)ã‚’ä¸ãˆã‚‹ã¨ä»®æƒ³çš„ãªå›æŠ˜è§’ã‚’è¿”ã™
     /// </summary>
     /// <param name="energy"></param>
     /// <param name="waveLength"></param>
@@ -1828,7 +1871,7 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    ///  2ƒÆ -> E  ƒuƒ‰ƒbƒOŠp‚ÆA“üËü”g’·(nm)A‰¼‘z“I‚ÈEDXæ‚èo‚µŠp(takeoffAngle)‚©‚çƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È“d¥”g”g’·(nm)‚ğ‚©‚¦‚·
+    ///  2Î¸ -> E  ãƒ–ãƒ©ãƒƒã‚°è§’ã¨ã€å…¥å°„ç·šæ³¢é•·(nm)ã€ä»®æƒ³çš„ãªEDXå–ã‚Šå‡ºã—è§’(takeoffAngle)ã‹ã‚‰ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªé›»ç£æ³¢æ³¢é•·(nm)ã‚’ã‹ãˆã™
     /// </summary>
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
@@ -1836,7 +1879,7 @@ public static class HorizontalAxisConverter
     /// <returns></returns>
     public static double TwoThetaToXrayEnergy(double twoTheta, double waveLength, double takeoffAngle) => DToXrayEnergy(waveLength / 2.0 / Math.Sin(twoTheta / 2.0), takeoffAngle);
     /// <summary>
-    ///  2ƒÆ -> E  ƒuƒ‰ƒbƒOŠp‚ÆA“üËü”g’·(nm)A‰¼‘z“I‚ÈEDXæ‚èo‚µŠp(takeoffAngle)‚©‚çƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È“d¥”g”g’·(nm)‚ğ‚©‚¦‚·
+    ///  2Î¸ -> E  ãƒ–ãƒ©ãƒƒã‚°è§’ã¨ã€å…¥å°„ç·šæ³¢é•·(nm)ã€ä»®æƒ³çš„ãªEDXå–ã‚Šå‡ºã—è§’(takeoffAngle)ã‹ã‚‰ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªé›»ç£æ³¢æ³¢é•·(nm)ã‚’ã‹ãˆã™
     /// </summary>
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
@@ -1845,14 +1888,14 @@ public static class HorizontalAxisConverter
     public static double[] TwoThetaToXrayEnergy(IEnumerable<double> twoTheta, double waveLength, double takeoffAngle) => twoTheta.Select(e => DToXrayEnergy(waveLength / 2.0 / Math.Sin(e / 2.0), takeoffAngle)).ToArray();
 
     /// <summary>
-    /// 2ƒÆ(rad) -> d(nm)   ƒuƒ‰ƒbƒOŠp(radian)‚Æ“üËü”g’·‚©‚çƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚ğ•Ô‚·
+    /// 2Î¸(rad) -> d(nm)   ãƒ–ãƒ©ãƒƒã‚°è§’(radian)ã¨å…¥å°„ç·šæ³¢é•·ã‹ã‚‰ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
     /// <returns></returns>
     public static double TwoThetaInRadianToD(double twoTheta, double waveLength) => waveLength / Math.Sin(twoTheta / 2.0) / 2.0;
     /// <summary>
-    /// 2ƒÆ(rad) -> d(nm)   ƒuƒ‰ƒbƒOŠp(radian)‚Æ“üËü”g’·‚©‚çƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚ğ•Ô‚·
+    /// 2Î¸(rad) -> d(nm)   ãƒ–ãƒ©ãƒƒã‚°è§’(radian)ã¨å…¥å°„ç·šæ³¢é•·ã‹ã‚‰ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
@@ -1860,14 +1903,14 @@ public static class HorizontalAxisConverter
     public static double[] TwoThetaInRadianToD(IEnumerable<double> twoTheta, double waveLength) => twoTheta.Select(e => waveLength / Math.Sin(e / 2.0) / 2.0).ToArray();
 
     /// <summary>
-    /// 2ƒÆ(deg) -> d(nm)   ƒuƒ‰ƒbƒOŠp(degree)‚Æ“üËü”g’·‚©‚çƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚ğ•Ô‚·
+    /// 2Î¸(deg) -> d(nm)   ãƒ–ãƒ©ãƒƒã‚°è§’(degree)ã¨å…¥å°„ç·šæ³¢é•·ã‹ã‚‰ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
     /// <returns></returns>
     public static double TwoThetaInDegreeToD(double twoTheta, double waveLength) => waveLength / Math.Sin(twoTheta / 180.0 * Math.PI / 2.0) / 2.0;
     /// <summary>
-    /// 2ƒÆ(deg) -> d(nm)   ƒuƒ‰ƒbƒOŠp(degree)‚Æ“üËü”g’·‚©‚çƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·–ÊŠÔŠud(nm)‚ğ•Ô‚·
+    /// 2Î¸(deg) -> d(nm)   ãƒ–ãƒ©ãƒƒã‚°è§’(degree)ã¨å…¥å°„ç·šæ³¢é•·ã‹ã‚‰ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™é¢é–“éš”d(nm)ã‚’è¿”ã™
     /// </summary>
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
@@ -1876,36 +1919,36 @@ public static class HorizontalAxisConverter
 
 
     /// <summary>
-    /// d(nm) -> 2ƒÆ(rad) –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚È“üËü‚Ì”g’·(nm)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È‰ñÜŠp(2ƒÆ)‚ğ•Ô‚·
+    /// d(nm) -> 2Î¸(rad) é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå…¥å°„ç·šã®æ³¢é•·(nm)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªå›æŠ˜è§’(2Î¸)ã‚’è¿”ã™
     /// </summary>
     /// <param name="wavelength"></param>
     /// <returns></returns>
     public static double DToTwoThetaInRadian(double d, double wavelength) => 2 * Math.Asin(wavelength / 2.0 / d);
     /// <summary>
-    /// d(nm) -> 2ƒÆ(rad) –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚È“üËü‚Ì”g’·(nm)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È‰ñÜŠp(2ƒÆ)‚ğ•Ô‚·
+    /// d(nm) -> 2Î¸(rad) é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå…¥å°„ç·šã®æ³¢é•·(nm)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªå›æŠ˜è§’(2Î¸)ã‚’è¿”ã™
     /// </summary>
     /// <param name="wavelength"></param>
     /// <returns></returns>
     public static double[] DToTwoThetaInRadian(IEnumerable<double> d, double wavelength) => d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e)).ToArray();
     /// <summary>
-    /// d(nm) -> 2ƒÆ(deg) –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚È“üËü‚Ì”g’·(nm)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È‰ñÜŠp(2ƒÆ)‚ğ•Ô‚·
+    /// d(nm) -> 2Î¸(deg) é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå…¥å°„ç·šã®æ³¢é•·(nm)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªå›æŠ˜è§’(2Î¸)ã‚’è¿”ã™
     /// </summary>
     /// <param name="wavelength"></param>
     /// <returns></returns>
     public static double DToTwoThetaInDegree(double d, double wavelength) => 2 * Math.Asin(wavelength / 2.0 / d) / Math.PI * 180;
     /// <summary>
-    /// d(nm) -> 2ƒÆ(deg) –ÊŠÔŠud(nm)‚Æ‰¼‘z“I‚È“üËü‚Ì”g’·(nm)‚ğ—^‚¦‚é‚Æƒuƒ‰ƒbƒOğŒ‚ğ–‚½‚·‰¼‘z“I‚È‰ñÜŠp(2ƒÆ)‚ğ•Ô‚·
+    /// d(nm) -> 2Î¸(deg) é¢é–“éš”d(nm)ã¨ä»®æƒ³çš„ãªå…¥å°„ç·šã®æ³¢é•·(nm)ã‚’ä¸ãˆã‚‹ã¨ãƒ–ãƒ©ãƒƒã‚°æ¡ä»¶ã‚’æº€ãŸã™ä»®æƒ³çš„ãªå›æŠ˜è§’(2Î¸)ã‚’è¿”ã™
     /// </summary>
     /// <param name="wavelength"></param>
     /// <returns></returns>
     public static double[] DToTwoThetaInDegree(IEnumerable<double> d, double wavelength) => d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e) / Math.PI * 180).ToArray();
 
 
-    #endregion ‰¡²‚ğ•ÏŠ·‚·‚éƒƒ\ƒbƒhŒQ
+    #endregion æ¨ªè»¸ã‚’å¤‰æ›ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ç¾¤
 }
 #endregion
 
-#region ŒÃ‚¢DiffractionProfileƒNƒ‰ƒX Œã•ûŒİŠ·«‚Ì‚½‚ß‚ÉˆÛ
+#region å¤ã„DiffractionProfileã‚¯ãƒ©ã‚¹ å¾Œæ–¹äº’æ›æ€§ã®ãŸã‚ã«ç¶­æŒ
 [Serializable]
 public class DiffractionProfile : ICloneable
 {
@@ -1922,7 +1965,7 @@ public class DiffractionProfile : ICloneable
         return dp;
     }
 
-    //MaskingŠÖ˜A‚±‚±‚©‚ç
+    //Maskingé–¢é€£ã“ã“ã‹ã‚‰
     [Serializable]
     public class MaskingRange
     {
@@ -1960,13 +2003,13 @@ public class DiffractionProfile : ICloneable
     }
 
     public bool DoesMaskAndInterpolate = false;
-    //MaskingŠÖ˜A‚±‚±‚Ü‚Å
-    public Profile OriginalProfile;//ƒ\[ƒX‚Ìƒvƒƒtƒ@ƒCƒ‹
+    //Maskingé–¢é€£ã“ã“ã¾ã§
+    public Profile OriginalProfile;//ã‚½ãƒ¼ã‚¹ã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«
 
     public PointD[] BgPoints;
 
     [XmlIgnore]
-    public Profile ConvertedProfile;//²•ÏŠ·Œã‚Ìƒvƒƒtƒ@ƒCƒ‹
+    public Profile ConvertedProfile;//è»¸å¤‰æ›å¾Œã®ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«
 
     [XmlIgnore]
     public Profile InterpolatedProfile;//
@@ -1991,7 +2034,7 @@ public class DiffractionProfile : ICloneable
     public double SrcTofLength;
 
     /// <summary>
-    /// ƒvƒƒtƒ@ƒCƒ‹ƒ‚[ƒh
+    /// ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ãƒ¢ãƒ¼ãƒ‰
     /// </summary>
     public DiffractionProfileMode Mode = DiffractionProfileMode.Concentric;
 
@@ -2001,14 +2044,14 @@ public class DiffractionProfile : ICloneable
     public double DestTofAngle;
     public double DestTofLength;
 
-    //ƒm[ƒ}ƒ‰ƒCƒYŠÖ˜A‚±‚±‚©‚ç
+    //ãƒãƒ¼ãƒãƒ©ã‚¤ã‚ºé–¢é€£ã“ã“ã‹ã‚‰
     /// <summary>
-    /// ‹­“x‚Ìƒm[ƒ}ƒ‰ƒCƒY‚ğ‚·‚é‚©‚Ç‚¤‚©
+    /// å¼·åº¦ã®ãƒãƒ¼ãƒãƒ©ã‚¤ã‚ºã‚’ã™ã‚‹ã‹ã©ã†ã‹
     /// </summary>
     public bool DoesNormarizeIntensity = false;
 
     /// <summary>
-    /// c²‚É‚©‚¯‚éŒW”
+    /// ç¸¦è»¸ã«ã‹ã‘ã‚‹ä¿‚æ•°
     /// </summary>
     public double NormarizeRangeStart = 0;
 
@@ -2016,53 +2059,53 @@ public class DiffractionProfile : ICloneable
     public bool NormarizeAsAverage = true;
     public double NormarizeIntensity = 1000;
 
-    //ƒXƒ€[ƒWƒ“ƒOŠÖ˜A‚±‚±‚©‚ç
+    //ã‚¹ãƒ ãƒ¼ã‚¸ãƒ³ã‚°é–¢é€£ã“ã“ã‹ã‚‰
     public bool DoesSmoothing = false;
 
     public int SazitkyGorayM = 3, SazitkyGorayN = 3;
 
-    //2ƒÆƒVƒtƒg‚±‚±‚©‚ç
+    //2Î¸ã‚·ãƒ•ãƒˆã“ã“ã‹ã‚‰
     public bool DoesTwoThetaOffset = false;
 
     public double TwoThetaOffsetCoeff0 = 0, TwoThetaOffsetCoeff1 = 0, TwoThetaOffsetCoeff2 = 0;
 
-    //Kalpha2œ‹‚±‚±‚©‚ç
+    //Kalpha2é™¤å»ã“ã“ã‹ã‚‰
     public bool DoesRemoveKalpha2 = false;
 
     public double Kalpha1 = 0, Kalpha2 = 0;
 
-    //shiftŠÖ˜A
+    //shifté–¢é€£
     public bool IsShiftX = false;
 
     public double ShiftX = 0;
 
-    //FFTŠÖ˜A
+    //FFTé–¢é€£
     public bool DoesBandpassFilter = false;
 
     public bool DoesLowPath = false, DoesHighPath = false;
     public double LowPathLimit = double.NaN, HighPathLimit = double.NaN;
 
     /// <summary>
-    /// count per second ƒ‚[ƒh‚©‚Ç‚¤‚©
+    /// count per second ãƒ¢ãƒ¼ãƒ‰ã‹ã©ã†ã‹
     /// </summary>
     public bool IsCPS = true;
 
     /// <summary>
-    /// ˜IoŠÔ
+    /// éœ²å‡ºæ™‚é–“
     /// </summary>
     public double ExposureTime = 1;
 
     /// <summary>
-    /// c²‚ğƒƒOƒXƒP[ƒ‹‚É‚·‚é‚©‚Ç‚¤‚©
+    /// ç¸¦è»¸ã‚’ãƒ­ã‚°ã‚¹ã‚±ãƒ¼ãƒ«ã«ã™ã‚‹ã‹ã©ã†ã‹
     /// </summary>
     public bool IsLogIntensity = false;
 
-    //•`‰æü‚Ìİ’è
+    //æç”»ç·šã®è¨­å®š
     public float LineWidth = 1f;
 
     public int? ColorARGB;
 
-    //¶ƒf[ƒ^‚Ì”g‚Ìí—ŞA”g’·‚È‚Ç
+    //ç”Ÿãƒ‡ãƒ¼ã‚¿ã®æ³¢ã®ç¨®é¡ã€æ³¢é•·ãªã©
     public WaveSource WaveSource;
 
     public WaveColor WaveColor;
@@ -2070,7 +2113,7 @@ public class DiffractionProfile : ICloneable
     public XrayLine XrayLine;
     public double ElectronAccVolatage;
 
-    //ƒoƒbƒNƒOƒ‰ƒ“ƒhİ’èŠÖ˜A
+    //ãƒãƒƒã‚¯ã‚°ãƒ©ãƒ³ãƒ‰è¨­å®šé–¢é€£
     public int BgPointsNumber = 15;
 
     public bool SubtractBackground = false;

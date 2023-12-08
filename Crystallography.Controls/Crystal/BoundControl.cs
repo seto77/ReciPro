@@ -54,8 +54,7 @@ public partial class BoundControl : UserControl
     #endregion
 
     #region　Boundを画面下部から生成 / Boundを画面下部にセット
-    public Bound GetFromInterface()
-        => new Bound(true, Crystal, index.H, index.K, index.L, equivalency, numericBoxDistance.Value / 10, numericBoxTranslation.Value / 10, colorControl.Argb);
+    public Bound GetFromInterface() => new(true, Crystal, index.H, index.K, index.L, equivalency, numericBoxDistance.Value / 10, numericBoxTranslation.Value / 10, colorControl.Argb);
 
     public void SetToInterface(Bound b)
     {
@@ -236,7 +235,7 @@ public partial class BoundControl : UserControl
 
     #endregion
 
-    #region numericBoxのイベント
+    #region numericBoxなどのイベント
     private void numericBoxDistance_ValueChanged(object sender, EventArgs e)
     {
         if (SkipEvent || index == (0, 0, 0)) return;
@@ -260,6 +259,17 @@ public partial class BoundControl : UserControl
             buttonChange_Click(sender, e);
 
     }
+
+    private void numericBoxMaximumDistanceFromOrigin_ValueChanged(object sender, EventArgs e) => ItemsChanged?.Invoke(this, new EventArgs());
+
+    private void colorControl_ColorChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent) return;
+
+        if (checkBoxImmediateUpdate.Checked)
+            buttonChange_Click(sender, e);
+    }
+
     #endregion
 
     #region dataGridViewのイベント
@@ -279,16 +289,7 @@ public partial class BoundControl : UserControl
     }
     #endregion
 
-    private void colorControl_ColorChanged(object sender, EventArgs e)
-    {
-        if (SkipEvent) return;
+  
 
-        if (checkBoxImmediateUpdate.Checked)
-            buttonChange_Click(sender, e);
-    }
-
-    private void numericBoxMaximumDistanceFromOrigin_ValueChanged(object sender, EventArgs e)
-    {
-        ItemsChanged?.Invoke(this, new EventArgs());
-    }
+   
 }

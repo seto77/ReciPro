@@ -506,7 +506,7 @@ public partial class GraphControl : UserControl
 
     #endregion プロパティ
 
-    private List<Profile> destProfileList = new List<Profile>();
+    private List<Profile> destProfileList = new();
 
     #region プロファイルの追加、置換、スムージング
     public void AddPoint(int profileNumber, PointD pt)

@@ -6,20 +6,12 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [Serializable()]
-public class MacroTriger
+public class MacroTriger(string target, bool debug, object[] obj, string macroName = "")
 {
-    public bool Debug { set; get; }
-    public string Target { set; get; }
-    public string MacroName = "";
-    public object[] Obj;
-
-    public MacroTriger(string target, bool debug, object[] obj, string macroName = "")
-    {
-        Target = target;
-        Debug = debug;
-        Obj = obj;
-        MacroName = macroName;
-    }
+    public bool Debug { set; get; } = debug;
+    public string Target { set; get; } = target;
+    public string MacroName = macroName;
+    public object[] Obj = obj;
 }
 
 [Serializable()]

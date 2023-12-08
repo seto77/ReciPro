@@ -46,9 +46,9 @@
             // 
             // progressBar
             // 
-            resources.ApplyResources(progressBar, "progressBar");
             progressBar.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
             progressBar.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            resources.ApplyResources(progressBar, "progressBar");
             progressBar.ForeColor = System.Drawing.Color.Silver;
             progressBar.MarqueeAnimationSpeed = 1;
             progressBar.Maximum = 1000000;
@@ -58,8 +58,8 @@
             // 
             // textBox
             // 
-            resources.ApplyResources(textBox, "textBox");
             textBox.BackColor = System.Drawing.Color.AliceBlue;
+            resources.ApplyResources(textBox, "textBox");
             textBox.ForeColor = System.Drawing.Color.DarkBlue;
             textBox.Name = "textBox";
             textBox.ReadOnly = true;
@@ -120,10 +120,10 @@
             // 
             // panelOK
             // 
-            resources.ApplyResources(panelOK, "panelOK");
             panelOK.Controls.Add(checkBoxCloseWindow);
             panelOK.Controls.Add(buttonOK);
             panelOK.Controls.Add(buttonNext);
+            resources.ApplyResources(panelOK, "panelOK");
             panelOK.Name = "panelOK";
             // 
             // CommonDialog

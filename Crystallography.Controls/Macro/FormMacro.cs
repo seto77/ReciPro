@@ -487,16 +487,10 @@ namespace Crystallography.Controls
             }
         }
 
-        private struct macro
+        private struct macro(string name, string body)
         {
-            public string Name;
-            public string Body;
-
-            public macro(string name, string body)
-            {
-                Name = name;
-                Body = body;
-            }
+            public string Name = name;
+            public string Body = body;
 
             public override string ToString() => Name;
         }

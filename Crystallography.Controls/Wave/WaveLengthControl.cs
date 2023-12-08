@@ -59,12 +59,16 @@ public partial class WaveLengthControl : UserControl
     }
     public FlowDirection direction = FlowDirection.TopDown;
 
+    [Localizable(true)]
     public Font TextFont
     {
         set
         {
-            numericBoxEnergy.TextFont = value;
-            numericBoxWaveLength.TextFont = value;
+            numericBoxEnergy.HeaderFont = numericBoxEnergy.FooterFont = numericBoxEnergy.TextFont = value;
+            numericBoxWaveLength.HeaderFont = numericBoxWaveLength.FooterFont = numericBoxWaveLength.TextFont = value;
+            comboBoxXRayElement.Font = comboBoxXrayLine.Font = value;
+            radioButtonElectron.Font = radioButtonNeutron.Font = radioButtonXray.Font = value;
+            label1.Font = value;
         }
         get => numericBoxWaveLength.TextFont;
     }

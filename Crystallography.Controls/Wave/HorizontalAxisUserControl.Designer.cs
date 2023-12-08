@@ -104,6 +104,7 @@
             groupBox1.Controls.Add(flowLayoutPanel7);
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
+            toolTip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // flowLayoutPanel7
             // 
@@ -111,6 +112,7 @@
             flowLayoutPanel7.Controls.Add(flowLayoutPanel5);
             flowLayoutPanel7.Controls.Add(groupBoxTwoTheta);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
+            toolTip.SetToolTip(flowLayoutPanel7, resources.GetString("flowLayoutPanel7.ToolTip"));
             // 
             // flowLayoutPanel5
             // 
@@ -118,6 +120,7 @@
             flowLayoutPanel5.Controls.Add(groupBox4);
             flowLayoutPanel5.Controls.Add(groupBox3);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
+            toolTip.SetToolTip(flowLayoutPanel5, resources.GetString("flowLayoutPanel5.ToolTip"));
             // 
             // groupBox4
             // 
@@ -135,6 +138,7 @@
             flowLayoutPanel4.Controls.Add(radioButtonElectron);
             flowLayoutPanel4.Controls.Add(radioButtonNeutron);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
+            toolTip.SetToolTip(flowLayoutPanel4, resources.GetString("flowLayoutPanel4.ToolTip"));
             // 
             // radioButtonXray
             // 
@@ -142,6 +146,7 @@
             radioButtonXray.Checked = true;
             radioButtonXray.Name = "radioButtonXray";
             radioButtonXray.TabStop = true;
+            toolTip.SetToolTip(radioButtonXray, resources.GetString("radioButtonXray.ToolTip"));
             radioButtonXray.UseVisualStyleBackColor = true;
             radioButtonXray.CheckedChanged += radioButtonWaveSource_CheckedChanged;
             // 
@@ -149,6 +154,7 @@
             // 
             resources.ApplyResources(radioButtonElectron, "radioButtonElectron");
             radioButtonElectron.Name = "radioButtonElectron";
+            toolTip.SetToolTip(radioButtonElectron, resources.GetString("radioButtonElectron.ToolTip"));
             radioButtonElectron.UseVisualStyleBackColor = true;
             radioButtonElectron.CheckedChanged += radioButtonWaveSource_CheckedChanged;
             // 
@@ -156,6 +162,7 @@
             // 
             resources.ApplyResources(radioButtonNeutron, "radioButtonNeutron");
             radioButtonNeutron.Name = "radioButtonNeutron";
+            toolTip.SetToolTip(radioButtonNeutron, resources.GetString("radioButtonNeutron.ToolTip"));
             radioButtonNeutron.UseVisualStyleBackColor = true;
             radioButtonNeutron.CheckedChanged += radioButtonWaveSource_CheckedChanged;
             // 
@@ -163,6 +170,7 @@
             // 
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             flowLayoutPanel1.Name = "flowLayoutPanel1";
+            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             // 
             // groupBox3
             // 
@@ -170,6 +178,7 @@
             groupBox3.Controls.Add(flowLayoutPanel2);
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
+            toolTip.SetToolTip(groupBox3, resources.GetString("groupBox3.ToolTip"));
             // 
             // flowLayoutPanel2
             // 
@@ -178,6 +187,7 @@
             flowLayoutPanel2.Controls.Add(radioButtonFlatWhite);
             flowLayoutPanel2.Controls.Add(radioButtonCustomWhite);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
+            toolTip.SetToolTip(flowLayoutPanel2, resources.GetString("flowLayoutPanel2.ToolTip"));
             // 
             // radioButtonMonochro
             // 
@@ -185,6 +195,7 @@
             radioButtonMonochro.Checked = true;
             radioButtonMonochro.Name = "radioButtonMonochro";
             radioButtonMonochro.TabStop = true;
+            toolTip.SetToolTip(radioButtonMonochro, resources.GetString("radioButtonMonochro.ToolTip"));
             radioButtonMonochro.UseVisualStyleBackColor = true;
             radioButtonMonochro.CheckedChanged += radioButtonMonochro_CheckedChanged;
             // 
@@ -200,6 +211,7 @@
             // 
             resources.ApplyResources(radioButtonCustomWhite, "radioButtonCustomWhite");
             radioButtonCustomWhite.Name = "radioButtonCustomWhite";
+            toolTip.SetToolTip(radioButtonCustomWhite, resources.GetString("radioButtonCustomWhite.ToolTip"));
             radioButtonCustomWhite.UseVisualStyleBackColor = true;
             radioButtonCustomWhite.CheckedChanged += radioButtonMonochro_CheckedChanged;
             // 
@@ -209,6 +221,7 @@
             groupBoxTwoTheta.Controls.Add(waveLengthControl);
             groupBoxTwoTheta.Name = "groupBoxTwoTheta";
             groupBoxTwoTheta.TabStop = false;
+            toolTip.SetToolTip(groupBoxTwoTheta, resources.GetString("groupBoxTwoTheta.ToolTip"));
             // 
             // waveLengthControl
             // 
@@ -217,7 +230,8 @@
             waveLengthControl.Energy = 8.04114721D;
             waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = false;
-            waveLengthControl.TextFont = new System.Drawing.Font("メイリオ", 13.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            waveLengthControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip"));
             waveLengthControl.WaveLength = 0.1541871066667D;
             waveLengthControl.WaveSource = WaveSource.Xray;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
@@ -230,6 +244,7 @@
             groupBox2.Controls.Add(flowLayoutPanel3);
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
+            toolTip.SetToolTip(groupBox2, resources.GetString("groupBox2.ToolTip"));
             // 
             // flowLayoutPanel3
             // 
@@ -237,6 +252,7 @@
             flowLayoutPanel3.Controls.Add(flowLayoutPanel15);
             flowLayoutPanel3.Controls.Add(groupBoxOption);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
+            toolTip.SetToolTip(flowLayoutPanel3, resources.GetString("flowLayoutPanel3.ToolTip"));
             // 
             // flowLayoutPanel15
             // 
@@ -247,6 +263,7 @@
             flowLayoutPanel15.Controls.Add(radioButtonEnergy);
             flowLayoutPanel15.Controls.Add(radioButtonTOF);
             flowLayoutPanel15.Name = "flowLayoutPanel15";
+            toolTip.SetToolTip(flowLayoutPanel15, resources.GetString("flowLayoutPanel15.ToolTip"));
             // 
             // radioButtonTwoTheta
             // 
@@ -254,6 +271,7 @@
             radioButtonTwoTheta.Checked = true;
             radioButtonTwoTheta.Name = "radioButtonTwoTheta";
             radioButtonTwoTheta.TabStop = true;
+            toolTip.SetToolTip(radioButtonTwoTheta, resources.GetString("radioButtonTwoTheta.ToolTip"));
             radioButtonTwoTheta.UseVisualStyleBackColor = true;
             radioButtonTwoTheta.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -261,6 +279,7 @@
             // 
             resources.ApplyResources(radioButtonDspacing, "radioButtonDspacing");
             radioButtonDspacing.Name = "radioButtonDspacing";
+            toolTip.SetToolTip(radioButtonDspacing, resources.GetString("radioButtonDspacing.ToolTip"));
             radioButtonDspacing.UseVisualStyleBackColor = true;
             radioButtonDspacing.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -268,6 +287,7 @@
             // 
             resources.ApplyResources(radioButtonWavenumber, "radioButtonWavenumber");
             radioButtonWavenumber.Name = "radioButtonWavenumber";
+            toolTip.SetToolTip(radioButtonWavenumber, resources.GetString("radioButtonWavenumber.ToolTip"));
             radioButtonWavenumber.UseVisualStyleBackColor = true;
             radioButtonWavenumber.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -275,6 +295,7 @@
             // 
             resources.ApplyResources(radioButtonEnergy, "radioButtonEnergy");
             radioButtonEnergy.Name = "radioButtonEnergy";
+            toolTip.SetToolTip(radioButtonEnergy, resources.GetString("radioButtonEnergy.ToolTip"));
             radioButtonEnergy.UseVisualStyleBackColor = true;
             radioButtonEnergy.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -282,6 +303,7 @@
             // 
             resources.ApplyResources(radioButtonTOF, "radioButtonTOF");
             radioButtonTOF.Name = "radioButtonTOF";
+            toolTip.SetToolTip(radioButtonTOF, resources.GetString("radioButtonTOF.ToolTip"));
             radioButtonTOF.UseVisualStyleBackColor = true;
             radioButtonTOF.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -291,6 +313,7 @@
             groupBoxOption.Controls.Add(flowLayoutPanel12);
             groupBoxOption.Name = "groupBoxOption";
             groupBoxOption.TabStop = false;
+            toolTip.SetToolTip(groupBoxOption, resources.GetString("groupBoxOption.ToolTip"));
             // 
             // flowLayoutPanel12
             // 
@@ -301,6 +324,7 @@
             flowLayoutPanel12.Controls.Add(flowLayoutPanelEnergy);
             flowLayoutPanel12.Controls.Add(flowLayoutPanelNeutronTOF);
             flowLayoutPanel12.Name = "flowLayoutPanel12";
+            toolTip.SetToolTip(flowLayoutPanel12, resources.GetString("flowLayoutPanel12.ToolTip"));
             // 
             // flowLayoutPanelTwoTheta
             // 
@@ -308,6 +332,7 @@
             flowLayoutPanelTwoTheta.Controls.Add(radioButtonAngleUnitDegree);
             flowLayoutPanelTwoTheta.Controls.Add(radioButtonAngleUnitRadian);
             flowLayoutPanelTwoTheta.Name = "flowLayoutPanelTwoTheta";
+            toolTip.SetToolTip(flowLayoutPanelTwoTheta, resources.GetString("flowLayoutPanelTwoTheta.ToolTip"));
             // 
             // radioButtonAngleUnitDegree
             // 
@@ -315,6 +340,7 @@
             radioButtonAngleUnitDegree.Checked = true;
             radioButtonAngleUnitDegree.Name = "radioButtonAngleUnitDegree";
             radioButtonAngleUnitDegree.TabStop = true;
+            toolTip.SetToolTip(radioButtonAngleUnitDegree, resources.GetString("radioButtonAngleUnitDegree.ToolTip"));
             radioButtonAngleUnitDegree.UseVisualStyleBackColor = true;
             radioButtonAngleUnitDegree.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -322,6 +348,7 @@
             // 
             resources.ApplyResources(radioButtonAngleUnitRadian, "radioButtonAngleUnitRadian");
             radioButtonAngleUnitRadian.Name = "radioButtonAngleUnitRadian";
+            toolTip.SetToolTip(radioButtonAngleUnitRadian, resources.GetString("radioButtonAngleUnitRadian.ToolTip"));
             radioButtonAngleUnitRadian.UseVisualStyleBackColor = true;
             radioButtonAngleUnitRadian.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -331,6 +358,7 @@
             flowLayoutPanelDspacing.Controls.Add(radioButtonDspacingUnitAng);
             flowLayoutPanelDspacing.Controls.Add(radioButtonDspacingUnitNm);
             flowLayoutPanelDspacing.Name = "flowLayoutPanelDspacing";
+            toolTip.SetToolTip(flowLayoutPanelDspacing, resources.GetString("flowLayoutPanelDspacing.ToolTip"));
             // 
             // radioButtonDspacingUnitAng
             // 
@@ -338,6 +366,7 @@
             radioButtonDspacingUnitAng.Checked = true;
             radioButtonDspacingUnitAng.Name = "radioButtonDspacingUnitAng";
             radioButtonDspacingUnitAng.TabStop = true;
+            toolTip.SetToolTip(radioButtonDspacingUnitAng, resources.GetString("radioButtonDspacingUnitAng.ToolTip"));
             radioButtonDspacingUnitAng.UseVisualStyleBackColor = true;
             radioButtonDspacingUnitAng.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -345,6 +374,7 @@
             // 
             resources.ApplyResources(radioButtonDspacingUnitNm, "radioButtonDspacingUnitNm");
             radioButtonDspacingUnitNm.Name = "radioButtonDspacingUnitNm";
+            toolTip.SetToolTip(radioButtonDspacingUnitNm, resources.GetString("radioButtonDspacingUnitNm.ToolTip"));
             radioButtonDspacingUnitNm.UseVisualStyleBackColor = true;
             radioButtonDspacingUnitNm.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -354,6 +384,7 @@
             flowLayoutPanelWavenumber.Controls.Add(radioButtonWavenumberAngInv);
             flowLayoutPanelWavenumber.Controls.Add(radioButtonWavenumberUnitNmInv);
             flowLayoutPanelWavenumber.Name = "flowLayoutPanelWavenumber";
+            toolTip.SetToolTip(flowLayoutPanelWavenumber, resources.GetString("flowLayoutPanelWavenumber.ToolTip"));
             // 
             // radioButtonWavenumberAngInv
             // 
@@ -361,6 +392,7 @@
             radioButtonWavenumberAngInv.Checked = true;
             radioButtonWavenumberAngInv.Name = "radioButtonWavenumberAngInv";
             radioButtonWavenumberAngInv.TabStop = true;
+            toolTip.SetToolTip(radioButtonWavenumberAngInv, resources.GetString("radioButtonWavenumberAngInv.ToolTip"));
             radioButtonWavenumberAngInv.UseVisualStyleBackColor = true;
             radioButtonWavenumberAngInv.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -368,6 +400,7 @@
             // 
             resources.ApplyResources(radioButtonWavenumberUnitNmInv, "radioButtonWavenumberUnitNmInv");
             radioButtonWavenumberUnitNmInv.Name = "radioButtonWavenumberUnitNmInv";
+            toolTip.SetToolTip(radioButtonWavenumberUnitNmInv, resources.GetString("radioButtonWavenumberUnitNmInv.ToolTip"));
             radioButtonWavenumberUnitNmInv.UseVisualStyleBackColor = true;
             radioButtonWavenumberUnitNmInv.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -379,6 +412,7 @@
             flowLayoutPanelEnergy.Controls.Add(radioButtonEnergyUnitMev);
             flowLayoutPanelEnergy.Controls.Add(numericBoxTwoTheta);
             flowLayoutPanelEnergy.Name = "flowLayoutPanelEnergy";
+            toolTip.SetToolTip(flowLayoutPanelEnergy, resources.GetString("flowLayoutPanelEnergy.ToolTip"));
             // 
             // radioButtonEnergyUnitEv
             // 
@@ -386,6 +420,7 @@
             radioButtonEnergyUnitEv.Checked = true;
             radioButtonEnergyUnitEv.Name = "radioButtonEnergyUnitEv";
             radioButtonEnergyUnitEv.TabStop = true;
+            toolTip.SetToolTip(radioButtonEnergyUnitEv, resources.GetString("radioButtonEnergyUnitEv.ToolTip"));
             radioButtonEnergyUnitEv.UseVisualStyleBackColor = true;
             radioButtonEnergyUnitEv.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -393,6 +428,7 @@
             // 
             resources.ApplyResources(radioButtonEnergyUnitKev, "radioButtonEnergyUnitKev");
             radioButtonEnergyUnitKev.Name = "radioButtonEnergyUnitKev";
+            toolTip.SetToolTip(radioButtonEnergyUnitKev, resources.GetString("radioButtonEnergyUnitKev.ToolTip"));
             radioButtonEnergyUnitKev.UseVisualStyleBackColor = true;
             radioButtonEnergyUnitKev.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -400,6 +436,7 @@
             // 
             resources.ApplyResources(radioButtonEnergyUnitMev, "radioButtonEnergyUnitMev");
             radioButtonEnergyUnitMev.Name = "radioButtonEnergyUnitMev";
+            toolTip.SetToolTip(radioButtonEnergyUnitMev, resources.GetString("radioButtonEnergyUnitMev.ToolTip"));
             radioButtonEnergyUnitMev.UseVisualStyleBackColor = true;
             radioButtonEnergyUnitMev.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -414,6 +451,7 @@
             numericBoxTwoTheta.SkipEventDuringInput = false;
             numericBoxTwoTheta.SmartIncrement = true;
             numericBoxTwoTheta.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxTwoTheta, resources.GetString("numericBoxTwoTheta.ToolTip"));
             numericBoxTwoTheta.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
             // flowLayoutPanelNeutronTOF
@@ -424,6 +462,7 @@
             flowLayoutPanelNeutronTOF.Controls.Add(numericBoxTofAngle);
             flowLayoutPanelNeutronTOF.Controls.Add(numericBoxTofLength);
             flowLayoutPanelNeutronTOF.Name = "flowLayoutPanelNeutronTOF";
+            toolTip.SetToolTip(flowLayoutPanelNeutronTOF, resources.GetString("flowLayoutPanelNeutronTOF.ToolTip"));
             // 
             // radioButtonTofUnitMicroSec
             // 
@@ -431,6 +470,7 @@
             radioButtonTofUnitMicroSec.Checked = true;
             radioButtonTofUnitMicroSec.Name = "radioButtonTofUnitMicroSec";
             radioButtonTofUnitMicroSec.TabStop = true;
+            toolTip.SetToolTip(radioButtonTofUnitMicroSec, resources.GetString("radioButtonTofUnitMicroSec.ToolTip"));
             radioButtonTofUnitMicroSec.UseVisualStyleBackColor = true;
             radioButtonTofUnitMicroSec.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -438,6 +478,7 @@
             // 
             resources.ApplyResources(radioButtonTofUnitNanoSec, "radioButtonTofUnitNanoSec");
             radioButtonTofUnitNanoSec.Name = "radioButtonTofUnitNanoSec";
+            toolTip.SetToolTip(radioButtonTofUnitNanoSec, resources.GetString("radioButtonTofUnitNanoSec.ToolTip"));
             radioButtonTofUnitNanoSec.UseVisualStyleBackColor = true;
             radioButtonTofUnitNanoSec.CheckedChanged += radioButtonTwoTheta_CheckedChanged;
             // 
@@ -453,6 +494,7 @@
             numericBoxTofAngle.SkipEventDuringInput = false;
             numericBoxTofAngle.SmartIncrement = true;
             numericBoxTofAngle.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxTofAngle, resources.GetString("numericBoxTofAngle.ToolTip"));
             numericBoxTofAngle.Value = 90D;
             numericBoxTofAngle.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
@@ -468,6 +510,7 @@
             numericBoxTofLength.SkipEventDuringInput = false;
             numericBoxTofLength.SmartIncrement = true;
             numericBoxTofLength.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxTofLength, resources.GetString("numericBoxTofLength.ToolTip"));
             numericBoxTofLength.Value = 42D;
             numericBoxTofLength.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
@@ -477,6 +520,7 @@
             flowLayoutPanel6.Controls.Add(groupBox1);
             flowLayoutPanel6.Controls.Add(groupBox2);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
+            toolTip.SetToolTip(flowLayoutPanel6, resources.GetString("flowLayoutPanel6.ToolTip"));
             // 
             // HorizontalAxisUserControl
             // 
@@ -484,6 +528,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(flowLayoutPanel6);
             Name = "HorizontalAxisUserControl";
+            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             flowLayoutPanel7.ResumeLayout(false);

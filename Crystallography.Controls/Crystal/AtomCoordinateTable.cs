@@ -10,7 +10,7 @@ namespace Crystallography.Controls
 {
     public partial class AtomCoordinateTable : UserControl
     {
-        readonly ReaderWriterLockSlim rwLock = new ReaderWriterLockSlim();
+        readonly ReaderWriterLockSlim rwLock = new();
         private bool skipEvent { get; set; } = false;
         public AtomCoordinateTable()
         {
@@ -190,16 +190,10 @@ namespace Crystallography.Controls
             pictureBox.Image = bmp;
         }
 
-        private class ControlPoint : IComparable
+        private class ControlPoint(double x, bool flag) : IComparable
         {
-            public double X;
-            public bool Flag;
-
-            public ControlPoint(double x, bool flag)
-            {
-                X = x;
-                Flag = flag;
-            }
+            public double X = x;
+            public bool Flag = flag;
 
             public int CompareTo(object obj)
             {
@@ -265,7 +259,7 @@ namespace Crystallography.Controls
             else if (d < 5.0) AngleGradiation = (float)(5 * Math.Pow(10, (int)Math.Log10(UpperX - LowerX) - 1));
             else AngleGradiation = (float)(10 * Math.Pow(10, (int)Math.Log10(UpperX - LowerX) - 1));
             g.DrawLine(new Pen(Color.Black, 1), OriginPos.X, pictureBox.Height - OriginPos.Y, pictureBox.Width, pictureBox.Height - OriginPos.Y);
-            Font strFont = new Font(new FontFamily("tahoma"), 8);
+            Font strFont = new(new FontFamily("tahoma"), 8);
             for (int i = (int)(LowerX / AngleGradiation) + 1; i < UpperX / AngleGradiation; i++)
             {
                 g.DrawLine(new Pen(Color.Black, 1), ConvToPicBoxCoord(i * AngleGradiation, 0).X, pictureBox.Height - OriginPos.Y, ConvToPicBoxCoord(i * AngleGradiation, 0).X, pictureBox.Height - OriginPos.Y + 5);
