@@ -118,8 +118,61 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="textBoxCalcInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="textBoxCalcInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 18</value>
+  </data>
+  <data name="textBoxCalcInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 194</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 18</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>パフォーマンスログ</value>
+  </data>
+  <data name="textBoxAtomInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Courier New, 9pt</value>
+  </data>
+  <data name="textBoxAtomInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 18</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBoxAtomInformation.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <data name="textBoxAtomInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>437, 194</value>
+  </data>
+  <data name="textBoxAtomInformation.Text" xml:space="preserve">
+    <value>aaaa 0.0023Å
+1234
+5678
+ijkl</value>
+  </data>
+  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 18</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>選択した原子の情報</value>
+  </data>
+  <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>698, 212</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
+    <value>257</value>
+  </data>
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
+    <value>0, 52</value>
   </data>
   <data name="flowLayoutPanelLegend.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -128,7 +181,7 @@
     <value>658, 0</value>
   </data>
   <data name="flowLayoutPanelLegend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 494</value>
+    <value>54, 470</value>
   </data>
   <data name="buttonSetRange2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -163,15 +216,6 @@
   <data name="numericBoxCRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCRange.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxCRange.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxCRange.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxBRange.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
@@ -179,15 +223,6 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxBRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxBRange.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxBRange.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxBRange.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxARange.Font" type="System.Drawing.Font, System.Drawing">
@@ -199,15 +234,6 @@
   <data name="numericBoxARange.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxARange.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxARange.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxARange.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxCCenter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
@@ -215,15 +241,6 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxCCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxCCenter.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxCCenter.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxCCenter.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxBCenter.Font" type="System.Drawing.Font, System.Drawing">
@@ -235,15 +252,6 @@
   <data name="numericBoxBCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxBCenter.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxBCenter.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxBCenter.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxACenter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
@@ -251,15 +259,6 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxACenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxACenter.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxACenter.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxACenter.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
@@ -302,7 +301,7 @@
     <value>653, 170</value>
   </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>653, 121</value>
+    <value>653, 170</value>
   </data>
   <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.2000003pt</value>
@@ -336,15 +335,6 @@
   </data>
   <data name="numericBoxBoundPlanesOpacity.Location" type="System.Drawing.Point, System.Drawing">
     <value>108, 0</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxBoundPlanesOpacity.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxClipObjects.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -475,9 +465,6 @@
   <data name="colorControlCellPlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>98, 3</value>
   </data>
-  <data name="colorControlCellPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
-  </data>
   <data name="radioButtonCellPlaneColorEach.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -526,9 +513,6 @@
   <data name="colorControlCellPlaneC.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="colorControlCellPlaneC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 3</value>
-  </data>
   <data name="colorControlCellPlaneC.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 18</value>
   </data>
@@ -546,15 +530,6 @@
   </data>
   <data name="numericBoxCellPlaneAlpha.Location" type="System.Drawing.Point, System.Drawing">
     <value>309, 0</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxCellPlaneAlpha.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
     <value />
@@ -582,9 +557,6 @@
   </data>
   <data name="colorControlCellEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>98, 3</value>
-  </data>
-  <data name="colorControlCellEdge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
   </data>
   <data name="radioButtonCellEdgeColorEach.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -670,15 +642,6 @@
   <data name="numericBoxCellTransrationC.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCellTransrationC.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxCellTransrationC.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxCellTransrationC.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxCellTransrationC.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -694,15 +657,6 @@
   <data name="numericBoxCellTransrationB.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCellTransrationB.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxCellTransrationB.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxCellTransrationB.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxCellTransrationB.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -716,15 +670,6 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxCellTransrationA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxCellTransrationA.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxCellTransrationA.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxCellTransrationA.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxCellTransrationA.ToolTip" xml:space="preserve">
@@ -851,15 +796,6 @@
   <data name="numericBoxLatticePlaneOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxLatticePlaneOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxLatticePlaneOpacity.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 197</value>
   </data>
@@ -895,57 +831,6 @@
   </data>
   <data name="tabPageCoordinateInfromatin.Text" xml:space="preserve">
     <value>配位情報</value>
-  </data>
-  <data name="textBoxInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 188</value>
-  </data>
-  <data name="numericBoxClientWidth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
-  </data>
-  <data name="numericBoxClientWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxClientWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxClientWidth.HeaderText" xml:space="preserve">
-    <value>サイズ (W×H): </value>
-  </data>
-  <data name="numericBoxClientWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxClientWidth.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxClientWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 25</value>
-  </data>
-  <data name="numericBoxClientWidth.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxClientHeight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
-  </data>
-  <data name="numericBoxClientHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxClientHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxClientHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 0</value>
-  </data>
-  <data name="numericBoxClientHeight.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxClientHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxClientHeight.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 24</value>
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 6.4pt</value>
@@ -998,6 +883,9 @@
   <data name="numericBoxProjectionCenterX.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
+  <data name="numericBoxProjectionCenterX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
   <data name="numericBoxProjectionCenterX.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 17</value>
   </data>
@@ -1013,6 +901,9 @@
   <data name="numericBoxProjectionCenterY.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
+  <data name="numericBoxProjectionCenterY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
   <data name="numericBoxProjectionCenterY.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 17</value>
   </data>
@@ -1027,6 +918,9 @@
   </data>
   <data name="numericBoxProjectionCenterZ.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxProjectionCenterZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 17</value>
@@ -1166,9 +1060,6 @@
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
-  <data name="colorControlLabelColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 17</value>
-  </data>
   <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 20</value>
   </data>
@@ -1220,17 +1111,8 @@
   <data name="numericBoxLabelSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 22</value>
   </data>
-  <data name="numericBoxLabelSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxLabelSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
   <data name="numericBoxLabelSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 27</value>
-  </data>
-  <data name="numericBoxLabelSize.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxLabelSize.ToolTip" xml:space="preserve">
     <value />
@@ -1290,15 +1172,6 @@
   <data name="numericBoxLegendSize.HeaderText" xml:space="preserve">
     <value>凡例のサイズ</value>
   </data>
-  <data name="numericBoxLegendSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxLegendSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxLegendSize.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxLegendSize.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -1320,17 +1193,8 @@
   <data name="numericBoxAxesSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 50</value>
   </data>
-  <data name="numericBoxAxesSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxAxesSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
   <data name="numericBoxAxesSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 27</value>
-  </data>
-  <data name="numericBoxAxesSize.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
     <value />
@@ -1349,15 +1213,6 @@
   </data>
   <data name="numericBoxLightSize.HeaderText" xml:space="preserve">
     <value>光源球のサイズ</value>
-  </data>
-  <data name="numericBoxLightSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxLightSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxLightSize.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxLightSize.ToolTip" xml:space="preserve">
     <value />
@@ -1384,11 +1239,10 @@
     <value>712, 261</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 759</value>
+    <value>712, 735</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>494</value>
+    <value>470</value>
   </data>
   <data name="toolStripButtonCrystalAxes.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1615,6 +1469,33 @@
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>712, 28</value>
   </data>
+  <data name="numericBoxClientHeight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 7.8pt</value>
+  </data>
+  <data name="numericBoxClientHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxClientHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxClientHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 0</value>
+  </data>
+  <data name="numericBoxClientWidth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 7.8pt</value>
+  </data>
+  <data name="numericBoxClientWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxClientWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxClientWidth.HeaderText" xml:space="preserve">
+    <value>サイズ (W×H): </value>
+  </data>
+  <data name="numericBoxClientWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 25</value>
+  </data>
   <data name="printPreviewDialog1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAICAQAAAAAADoAgAAZgAAABAQEAAAAAAAKAEAAE4DAAAgIAAAAQAIAKgIAAB2BAAAEBAAAAEA
@@ -1787,6 +1668,12 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAgAEAALQF
         wf+0BQAAgAUAAIAFAACAAQAAgAHB/4ABAACAAQAAgAEAALwBAAC8AQAAvAHB/4ABbP///5H/
 </value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>712, 24</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>

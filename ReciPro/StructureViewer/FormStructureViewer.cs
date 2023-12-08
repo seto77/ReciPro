@@ -14,6 +14,8 @@ using C4 = OpenTK.Graphics.Color4;
 using V3 = OpenTK.Vector3d;
 using V4 = OpenTK.Vector4d;
 using M3d = OpenTK.Matrix3d;
+using System.CodeDom.Compiler;
+using IronPython.Runtime.Operations;
 #endregion
 
 namespace ReciPro;
@@ -396,7 +398,7 @@ public partial class FormStructureViewer : Form
             }
         }
 
-        textBoxInformation.AppendText($"Initialization of bounds: {sw.ElapsedMilliseconds}ms.\r\n");
+        textBoxCalcInformation.AppendText($"Initialization of bounds: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
     #endregion
@@ -417,7 +419,7 @@ public partial class FormStructureViewer : Form
         {
             var vertices = Geometriy.GetClippedPolygon(i, boundsArray);
             var mat = new Material(bounds[i].color, numericBoxBoundPlanesOpacity.Value);
-            if (vertices.Length >= 3)
+            if (vertices!=null &&vertices.Length >= 3)
             {
                 var polygon = new Polygon(vertices.Select(v => new V3(v[0], v[1], v[2])).ToArray(), mat, DrawingMode.SurfacesAndEdges)
                 {
@@ -431,7 +433,7 @@ public partial class FormStructureViewer : Form
         });
         glControlMain.SetClip(checkBoxClipObjects.Checked ? new Clip(bounds.Select(b => b.prm).ToArray()) : null);
 
-        textBoxInformation.AppendText($"Generation of bound planes: {sw.ElapsedMilliseconds}ms.\r\n");
+        textBoxCalcInformation.AppendText($"Generation of bound planes: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
     #endregion
@@ -499,7 +501,7 @@ public partial class FormStructureViewer : Form
             outer = outerNew;
         }
 
-        textBoxInformation.AppendText($"Generation of aoms: {sw.ElapsedMilliseconds}ms.\r\n");
+        textBoxCalcInformation.AppendText($"Generation of aoms: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
     public void SetAtomsP()
@@ -524,7 +526,7 @@ public partial class FormStructureViewer : Form
         }
         enabledAtomsP = list.AsParallel();
 
-        textBoxInformation.AppendText($"Selection of enabled aoms: {sw.ElapsedMilliseconds}ms.\r\n");
+        textBoxCalcInformation.AppendText($"Selection of enabled aoms: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
     #endregion
@@ -669,7 +671,7 @@ public partial class FormStructureViewer : Form
             });
         });
 
-        textBoxInformation.AppendText($"Generation of bonds & polyhedra: {sw.ElapsedMilliseconds}ms.\r\n");
+        textBoxCalcInformation.AppendText($"Generation of bonds & polyhedra: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
     #endregion
@@ -703,7 +705,7 @@ public partial class FormStructureViewer : Form
         GLObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));//並列化じゃなくても十分早いみたい。。。
         GLObjects.RemoveRange(0, n);
 
-        textBoxInformation.AppendText($"Remove tentative atoms: {sw.ElapsedMilliseconds}ms.\r\n");
+        textBoxCalcInformation.AppendText($"Remove tentative atoms: {sw.ElapsedMilliseconds}ms.\r\n");
     }
     #endregion
 
@@ -723,7 +725,7 @@ public partial class FormStructureViewer : Form
             var text = new TextObject(enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat) { Rendered = enabledAtoms[index].ShowLabel };
             GLObjects.Add(text);
         }
-        textBoxInformation.AppendText($"Generation of label objects: {sw.ElapsedMilliseconds}ms.\r\n");
+        textBoxCalcInformation.AppendText($"Generation of label objects: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
     #endregion
@@ -738,7 +740,7 @@ public partial class FormStructureViewer : Form
         glControlMain.DeleteAllObjects();
         glControlMain.AddObjects(GLObjects);
         toolStripLabelStatusInitialization.Text += $" and sent to OpenGL ({sw.ElapsedMilliseconds} ms.)  ";
-        textBoxInformation.AppendText($"Trasfer: {sw.ElapsedMilliseconds}ms.\r\n");
+        textBoxCalcInformation.AppendText($"Trasfer: {sw.ElapsedMilliseconds}ms.\r\n");
 
     }
     #endregion
@@ -803,7 +805,7 @@ public partial class FormStructureViewer : Form
                     glControlMain.AddObjects(plane);
                 }
         }
-        textBoxInformation.AppendText("Generation of cell planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
+        textBoxCalcInformation.AppendText("Generation of cell planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
 
     }
     #endregion
@@ -865,7 +867,7 @@ public partial class FormStructureViewer : Form
                 n++;
             }
         }
-        textBoxInformation.AppendText("Generation of lattice planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
+        textBoxCalcInformation.AppendText("Generation of lattice planes: " + sw.ElapsedMilliseconds + "ms.\r\n");
     }
     #endregion
 
@@ -908,7 +910,7 @@ public partial class FormStructureViewer : Form
     {
         if (skipSetCrystal) return;
 
-        textBoxInformation.Clear();
+        textBoxCalcInformation.Clear();
 
         var sw = new Stopwatch();
         sw.Start();
@@ -918,7 +920,7 @@ public partial class FormStructureViewer : Form
         if (_crystal != null)
         {
             atomCoordinateTable1.Crystal = Crystal;
-            textBoxInformation.AppendText($"Calculate coordinates table: {sw.ElapsedMilliseconds} ms.\r\n");
+            textBoxCalcInformation.AppendText($"Calculate coordinates table: {sw.ElapsedMilliseconds} ms.\r\n");
         }
 
         GLObjects.Clear(); //GLObjectsを初期化
@@ -1050,47 +1052,74 @@ public partial class FormStructureViewer : Form
     }
 
     /// <summary>
-    /// ピクチャーボックスをクリックしたとき
+    /// ピクチャーボックスをクリックしたとき原子の配位環境などを表示する
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void glControlMain_MouseDown(object sender, MouseEventArgs e)
     {
-        if ((e.Button == MouseButtons.Left && e.Clicks == 2) || (e.Button == MouseButtons.Right && e.Clicks == 1))
+        if (e.Button == MouseButtons.Left && e.Clicks == 2)
         {
-            //「幾何学」フォルダの「直線と点の距離.docx」を参照
-            var ex = 2.0 * e.X / glControlMain.ClientSize.Width - 1;
-            var ey = 1 - 2.0 * e.Y / glControlMain.ClientSize.Height;
-
-            var m = Matrix4d.Transpose(glControlMain.ViewMatrix * glControlMain.ProjMatrix);
-            double M11 = m.M11 - ex * m.M41, M12 = m.M12 - ex * m.M42, M13 = m.M13 - ex * m.M43, M14 = m.M14 - ex * m.M44;
-            double M21 = m.M21 - ey * m.M41, M22 = m.M22 - ey * m.M42, M23 = m.M23 - ey * m.M43, M24 = m.M24 - ey * m.M44;
-
-            double p = M13 * M22 - M23 * M12, q = M23 * M11 - M13 * M21, r = M12 * M21 - M22 * M11;
-            double a = (M14 * M22 - M12 * M24) / r, b = (M24 * M11 - M14 * M21) / r, c = 0;
-            double p2 = p * p, q2 = q * q, r2 = r * r, pq = p * q, qr = q * r, rp = r * p;
-
-            var rot = Matrix4d.Transpose(glControlMain.WorldMatrix);
-
-            var depthList = new SortedList<double, int>();
-            for (int i = 0; i < GLObjects.Count; i++)
-                if (GLObjects[i] is Sphere sphere)
-                {
-                    var origin = rot.Mult(new V4(sphere.Origin, 1));
-                    double x = origin.X - a, y = origin.Y - b, z = origin.Z - c;
-                    if (sphere.Radius * sphere.Radius > ((q2 + r2) * x * x + (r2 + p2) * y * y + (p2 + q2) * z * z - 2 * (pq * x * y + qr * y * z + rp * z * x)) / (p2 + q2 + r2))
-                        if (!depthList.ContainsKey(origin.Z))
-                            depthList.Add(origin.Z, i);
-                }
-            if (depthList.Count != 0)
+            var index = SearchAtom(e.X, e.Y);
+            if (index > 0)
             {
-                var sphere = GLObjects[depthList.Last().Value] as Sphere;
-                textBoxInformation.AppendText(
-                    enabledAtoms[(sphere.Tag as atomID).Index].Label
-                    + " (" + sphere.Origin.X + ", " + sphere.Origin.Y + ", " + sphere.Origin.Z + ")\r\n");
-                //sphere.Mode = sphere.Mode == DrawingMode.SurfacesAndEdges ? DrawingMode.Surfaces : DrawingMode.SurfacesAndEdges;
+                tabControl.SelectedIndex = 6;
+
+                List<string> result = [];
+                var atom = GLObjects[index] as Sphere;
+                var label = enabledAtoms[(atom.Tag as atomID).Index].Label.TrimStart().TrimEnd();
+
+                result.Add($"\r\n\r\n");
+                result.Add($"Selected Atom: {label} ({atom.Origin.X * 10:f3}, {atom.Origin.Y * 10:f3}, {atom.Origin.Z * 10:f3}) \t・・・0\r\n\r\n");
+
+                //最近接原子を探索
+                var tmp = Crystal.Search(enabledAtoms[(atom.Tag as atomID).Index], 1);
+                for(int i= 0; i < tmp.Count-1; i++)
+                    if (tmp[i].X == tmp[i + 1].X && tmp[i].Y == tmp[i + 1].Y && tmp[i].Z == tmp[i + 1].Z)
+                        tmp.RemoveAt(i--);
+
+
+                tmp = tmp.Select(t => (t.X * 10, t.Y * 10, t.Z * 10, t.Distance * 10, t.Label.TrimStart().TrimEnd())).ToList();
+
+                result.Add("(The following coordinates are relative to the selected atom) \r\n");
+
+                int n = 1;//0番目は自分自身なので、1からはじめる
+                int count = 0;//結合角を求める上限数
+                for (int i = 1; n < 9 || i < 3; i++)
+                {
+                    result.Add($"{Miscellaneous.Ordinal(i)} nearest: {tmp[n].Distance:f3} Å");
+                    do
+                    {
+                        result.Add($"\t{tmp[n].Label} ({tmp[n].X:f3}, {tmp[n].Y:f3}, {tmp[n].Z:f3}) \t・・・{n} \r\n");
+                        n++;
+                    } while (tmp[n].Distance - tmp[n - 1].Distance < 1E-4);
+
+                    if (count == 0 || tmp[n - 1].Distance / tmp[1].Distance < 1.2)
+                        count = n;
+                }
+
+                for (int i = 1; i < result.Count; i++)
+                    if (result[i - 1].StartsWith('\t') && result[i].StartsWith('\t'))
+                        result[i] = result[i].Insert(0, "\t\t");
+
+                result.Add($"\r\n");
+                result.Add($"Bond angles");
+                for (int i = 1; i < Math.Max(count,3); i++)
+                {
+                    for (int j = i + 1; j < Math.Max(count, 3); j++)
+                    {
+                        var angle = Vector3DBase.AngleBetVectors(new Vector3DBase(tmp[i].X, tmp[i].Y, tmp[i].Z), new Vector3DBase(tmp[j].X, tmp[j].Y, tmp[j].Z));
+                        result.Add(i == 1 && j == 2 ? "\t\t" : "\t\t\t");
+                        result.Add($"{tmp[i].Label}({i})-{label}(0)-{tmp[j].Label}({j}): {angle / Math.PI * 180:f2}°\r\n");
+                    }
+                }
+
+                foreach (var res in result)
+                    textBoxAtomInformation.AppendText(res);
+
                 glControlMain.Render();
             }
+
         }
         #region お蔵入り ?
 
@@ -1215,6 +1244,39 @@ public partial class FormStructureViewer : Form
         }
         */
         #endregion
+    }
+
+    private int SearchAtom(int X, int Y)
+    {
+        //「幾何学」フォルダの「直線と点の距離.docx」を参照
+        var ex = 2.0 * X / glControlMain.ClientSize.Width - 1;
+        var ey = 1 - 2.0 * Y / glControlMain.ClientSize.Height;
+
+        var m = Matrix4d.Transpose(glControlMain.ViewMatrix * glControlMain.ProjMatrix);
+        double M11 = m.M11 - ex * m.M41, M12 = m.M12 - ex * m.M42, M13 = m.M13 - ex * m.M43, M14 = m.M14 - ex * m.M44;
+        double M21 = m.M21 - ey * m.M41, M22 = m.M22 - ey * m.M42, M23 = m.M23 - ey * m.M43, M24 = m.M24 - ey * m.M44;
+
+        double p = M13 * M22 - M23 * M12, q = M23 * M11 - M13 * M21, r = M12 * M21 - M22 * M11;
+        double a = (M14 * M22 - M12 * M24) / r, b = (M24 * M11 - M14 * M21) / r, c = 0;
+        double p2 = p * p, q2 = q * q, r2 = r * r, pq = p * q, qr = q * r, rp = r * p;
+
+        var rot = Matrix4d.Transpose(glControlMain.WorldMatrix);
+
+        var depthList = new SortedList<double, int>();
+        for (int i = 0; i < GLObjects.Count; i++)
+            if (GLObjects[i] is Sphere sphere)
+            {
+                var origin = rot.Mult(new V4(sphere.Origin, 1));
+                double x = origin.X - a, y = origin.Y - b, z = origin.Z - c;
+                if (sphere.Radius * sphere.Radius > ((q2 + r2) * x * x + (r2 + p2) * y * y + (p2 + q2) * z * z - 2 * (pq * x * y + qr * y * z + rp * z * x)) / (p2 + q2 + r2))
+                    if (!depthList.ContainsKey(origin.Z))
+                        depthList.Add(origin.Z, i);
+            }
+        if (depthList.Count != 0)
+            return depthList.Last().Value;
+        else 
+            return -1;
+
     }
 
     #endregion マウスイベント
@@ -1527,7 +1589,7 @@ public partial class FormStructureViewer : Form
             glControlMain.SkipRendering = false;
         }
 
-        textBoxInformation.AppendText($"Generation of legend control: {sw.ElapsedMilliseconds}ms.\r\n");
+        textBoxCalcInformation.AppendText($"Generation of legend control: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
     private void legendControl_MouseClick(object sender, MouseEventArgs e)

@@ -229,6 +229,9 @@ public class Matrix3D : ICloneable
     public static Vector3DBase operator *(Matrix3D m, Vector3DBase v)
         => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
+    public static Vector3DBase operator *(Matrix3D m, (double X, double Y, double Z) v)
+         => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+
     /// <summary>
     /// Matrix3Dとタプル(x,y,z)の乗算. (x,y,z)を縦方向のベクトルとして計算する。
     /// </summary>
@@ -294,13 +297,22 @@ public class Matrix3D : ICloneable
 
     public static Matrix3D ExchangeZ_X_Y(Matrix3D m) => new(-m.E31, m.E11, -m.E21, -m.E32, m.E12, -m.E22, -m.E33, m.E13, -m.E23);
 
+
     /// <summary>
     /// ベクトルvの方向の周りに,thetaだけ回転させる行列を生成する
     /// </summary>
     /// <param name="v">回転軸</param>
     /// <param name="theta">回転角度</param>
     /// <returns></returns>
-    public static Matrix3D Rot(Vector3DBase v, in double theta)
+    public static Matrix3D Rot(Vector3DBase v, in double theta) => Rot((v.X, v.Y, v.Z), theta);
+
+    /// <summary>
+    /// ベクトルvの方向の周りに,thetaだけ回転させる行列を生成する
+    /// </summary>
+    /// <param name="v">回転軸</param>
+    /// <param name="theta">回転角度</param>
+    /// <returns></returns>
+    public static Matrix3D Rot((double X, double Y, double Z) v, in double theta)
     {
         //Vx*Vx*(1-cos) + cos  	    Vx*Vy*(1-cos) - Vz*sin  	Vz*Vx*(1-cos) + Vy*sin
         //Vx*Vy*(1-cos) + Vz*sin 	Vy*Vy*(1-cos) + cos 	    Vy*Vz*(1-cos) - Vx*sin
@@ -571,6 +583,11 @@ public class Vector3DBase : ICloneable
         X = x; Y = y; Z = z;
     }
 
+    public Vector3DBase((double X, double Y, double Z) v)
+    {
+        X = v.X; Y = v.Y; Z = v.Z;
+    }
+
     public Vector3DBase(double[] v)
     {
         if (v.Length == 3)
@@ -695,6 +712,12 @@ public class Vector3DBase : ICloneable
         return l > 0 ? new Vector3DBase(v.X / l, v.Y / l, v.Z / l) : v;
     }
 
+    internal static (double X, double Y, double Z) Normarize((double X, double Y, double Z) v)
+    {
+        double l = Math.Sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
+        return l > 0 ? (v.X / l, v.Y / l, v.Z / l) : (v);
+    }
+
     public Vector3DBase Normarize() => Normarize(this);
 
     public void NormarizeThis()
@@ -740,7 +763,8 @@ public class Vector3DBase : ICloneable
         var aCos = Normarize(v1) * Normarize(v2);
         if (aCos > 1)
             return 0;
-        else return aCos < -1 ? Math.PI / 2 : Math.Acos(aCos);
+        else 
+            return aCos < -1 ? Math.PI / 2 : Math.Acos(aCos);
     }
 
     /// <summary>

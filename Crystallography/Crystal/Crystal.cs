@@ -1,6 +1,7 @@
 #region using
 using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra.Factorization;
+using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -1824,4 +1825,50 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     }
     #endregion
 
+
+    /// <summary>
+    /// 指定した原子(target)の近辺にある原子を探索し、相対座標、距離、ラベルを返す. (絶対座標でないことに注意)
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="maxLength"> nm 単位</param>
+    /// <returns></returns>
+    public List<(double X, double Y, double Z, double Distance, string Label)> Search(Atoms target, double maxLength)
+    {
+        Vector3DBase pos = MatrixReal * target.Atom[0];
+        var maxLen2 = maxLength * maxLength;
+        var result = new List<(double X, double Y, double Z, double Distance, string Label)>();
+        //まず、隣り合った単位格子の原子位置をすべて探索してCoordinatedAtom型のリストに全部入れる
+        for (int max = 0; max < 8; max++)
+        {
+            bool flag = false;
+            Parallel.For(-max, max + 1, xShift =>
+            {
+                for (int yShift = -max; yShift <= max; yShift++)
+                    for (int zShift = -max; zShift <= max; zShift++)
+                    {
+                        if (Math.Abs(xShift) == max || Math.Abs(yShift) == max || Math.Abs(zShift) == max)
+                        {
+                            foreach (var atm in Atoms)
+                                foreach (var v in atm.Atom)
+                                {
+                                    var diffPos = MatrixReal * (v + new Vector3DBase(xShift, yShift, zShift)) - pos;
+                                    if (maxLen2 > (diffPos ).Length2)
+                                    {
+
+                                        lock (lockObj)
+                                        {
+                                            result.Add((diffPos.X, diffPos.Y, diffPos.Z, diffPos.Length, atm.Label));
+                                            flag = true;//一個でも見つけられたら続行
+                                        }
+                                    }
+                                }
+                        }
+                    }
+            });
+            if (flag == false && max > 2)
+                break;
+        }
+        result.Sort((a1, a2) => a1.Distance.CompareTo(a2.Distance));
+        return result;
+    }
 }

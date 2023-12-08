@@ -28,8 +28,8 @@ public static class GLGeometry
 
         var center = Extensions.Average(points);
         //var prm = Geometriy.GetPlaneEquationFromPoints(points.Select(p => p.ToVector3DBase()));
-        var prm = Geometriy.GetPlaneEquationFromPoints(points);
-        var norm = new V3d(prm[0], prm[1], prm[2]);
+        var (A, B, C, _) = Geometriy.GetPlaneEquationFromPoints(points);
+        var norm = new V3d(A, B, C);
         if (V3d.Dot(norm, center - origin) < 0)
             norm = -norm;
 

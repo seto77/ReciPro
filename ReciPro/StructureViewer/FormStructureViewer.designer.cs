@@ -31,6 +31,11 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStructureViewer));
+            splitContainer2 = new System.Windows.Forms.SplitContainer();
+            textBoxCalcInformation = new System.Windows.Forms.TextBox();
+            label11 = new System.Windows.Forms.Label();
+            textBoxAtomInformation = new System.Windows.Forms.TextBox();
+            label13 = new System.Windows.Forms.Label();
             splitContainer1 = new System.Windows.Forms.SplitContainer();
             flowLayoutPanelLegend = new System.Windows.Forms.FlowLayoutPanel();
             tabControl = new System.Windows.Forms.TabControl();
@@ -106,10 +111,6 @@
             tabPageCoordinateInfromatin = new System.Windows.Forms.TabPage();
             atomCoordinateTable1 = new AtomCoordinateTable();
             tabPageInformation = new System.Windows.Forms.TabPage();
-            textBoxInformation = new System.Windows.Forms.TextBox();
-            panel1 = new System.Windows.Forms.Panel();
-            numericBoxClientWidth = new NumericBox();
-            numericBoxClientHeight = new NumericBox();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             labelGraphicsCard = new System.Windows.Forms.Label();
             labelGraphicsDriver = new System.Windows.Forms.Label();
@@ -188,9 +189,12 @@
             cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            numericBoxClientHeight = new NumericBox();
+            numericBoxClientWidth = new NumericBox();
             printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             tabPageCrystal = new System.Windows.Forms.TabPage();
+            panel1 = new System.Windows.Forms.Panel();
             timer = new System.Windows.Forms.Timer(components);
             printDialog1 = new System.Windows.Forms.PrintDialog();
             pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
@@ -198,6 +202,10 @@
             dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -221,7 +229,6 @@
             flowLayoutPanel3.SuspendLayout();
             tabPageCoordinateInfromatin.SuspendLayout();
             tabPageInformation.SuspendLayout();
-            panel1.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
             tabPageProjection.SuspendLayout();
             groupBox7.SuspendLayout();
@@ -237,7 +244,54 @@
             groupBox2.SuspendLayout();
             toolStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // splitContainer2
+            // 
+            resources.ApplyResources(splitContainer2, "splitContainer2");
+            splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            resources.ApplyResources(splitContainer2.Panel1, "splitContainer2.Panel1");
+            splitContainer2.Panel1.Controls.Add(textBoxCalcInformation);
+            splitContainer2.Panel1.Controls.Add(label11);
+            toolTip.SetToolTip(splitContainer2.Panel1, resources.GetString("splitContainer2.Panel1.ToolTip"));
+            // 
+            // splitContainer2.Panel2
+            // 
+            resources.ApplyResources(splitContainer2.Panel2, "splitContainer2.Panel2");
+            splitContainer2.Panel2.Controls.Add(textBoxAtomInformation);
+            splitContainer2.Panel2.Controls.Add(label13);
+            toolTip.SetToolTip(splitContainer2.Panel2, resources.GetString("splitContainer2.Panel2.ToolTip"));
+            toolTip.SetToolTip(splitContainer2, resources.GetString("splitContainer2.ToolTip"));
+            // 
+            // textBoxCalcInformation
+            // 
+            resources.ApplyResources(textBoxCalcInformation, "textBoxCalcInformation");
+            textBoxCalcInformation.Name = "textBoxCalcInformation";
+            textBoxCalcInformation.ReadOnly = true;
+            toolTip.SetToolTip(textBoxCalcInformation, resources.GetString("textBoxCalcInformation.ToolTip"));
+            // 
+            // label11
+            // 
+            resources.ApplyResources(label11, "label11");
+            label11.Name = "label11";
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
+            // 
+            // textBoxAtomInformation
+            // 
+            resources.ApplyResources(textBoxAtomInformation, "textBoxAtomInformation");
+            textBoxAtomInformation.Name = "textBoxAtomInformation";
+            textBoxAtomInformation.ReadOnly = true;
+            toolTip.SetToolTip(textBoxAtomInformation, resources.GetString("textBoxAtomInformation.ToolTip"));
+            // 
+            // label13
+            // 
+            resources.ApplyResources(label13, "label13");
+            label13.Name = "label13";
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
             // 
             // splitContainer1
             // 
@@ -1107,64 +1161,10 @@
             // tabPageInformation
             // 
             resources.ApplyResources(tabPageInformation, "tabPageInformation");
-            tabPageInformation.Controls.Add(textBoxInformation);
-            tabPageInformation.Controls.Add(panel1);
+            tabPageInformation.Controls.Add(splitContainer2);
             tabPageInformation.Controls.Add(flowLayoutPanel4);
             tabPageInformation.Name = "tabPageInformation";
             toolTip.SetToolTip(tabPageInformation, resources.GetString("tabPageInformation.ToolTip"));
-            // 
-            // textBoxInformation
-            // 
-            resources.ApplyResources(textBoxInformation, "textBoxInformation");
-            textBoxInformation.Name = "textBoxInformation";
-            textBoxInformation.ReadOnly = true;
-            toolTip.SetToolTip(textBoxInformation, resources.GetString("textBoxInformation.ToolTip"));
-            // 
-            // panel1
-            // 
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Controls.Add(numericBoxClientWidth);
-            panel1.Controls.Add(numericBoxClientHeight);
-            panel1.Name = "panel1";
-            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
-            // 
-            // numericBoxClientWidth
-            // 
-            resources.ApplyResources(numericBoxClientWidth, "numericBoxClientWidth");
-            numericBoxClientWidth.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientWidth.DecimalPlaces = 0;
-            numericBoxClientWidth.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientWidth.Maximum = 4000D;
-            numericBoxClientWidth.Minimum = 1D;
-            numericBoxClientWidth.Name = "numericBoxClientWidth";
-            numericBoxClientWidth.RadianValue = 17.453292519943293D;
-            numericBoxClientWidth.RoundErrorAccuracy = -1;
-            numericBoxClientWidth.ShowUpDown = true;
-            numericBoxClientWidth.SmartIncrement = true;
-            numericBoxClientWidth.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxClientWidth, resources.GetString("numericBoxClientWidth.ToolTip"));
-            numericBoxClientWidth.Value = 1000D;
-            numericBoxClientWidth.ValueChanged += numericBoxClientWidth_ValueChanged;
-            // 
-            // numericBoxClientHeight
-            // 
-            resources.ApplyResources(numericBoxClientHeight, "numericBoxClientHeight");
-            numericBoxClientHeight.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientHeight.DecimalPlaces = 0;
-            numericBoxClientHeight.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientHeight.Maximum = 4000D;
-            numericBoxClientHeight.Minimum = 1D;
-            numericBoxClientHeight.Name = "numericBoxClientHeight";
-            numericBoxClientHeight.RadianValue = 17.453292519943293D;
-            numericBoxClientHeight.RoundErrorAccuracy = -1;
-            numericBoxClientHeight.ShowUpDown = true;
-            numericBoxClientHeight.SmartIncrement = true;
-            numericBoxClientHeight.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxClientHeight, resources.GetString("numericBoxClientHeight.ToolTip"));
-            numericBoxClientHeight.Value = 1000D;
-            numericBoxClientHeight.ValueChanged += numericBoxClientWidth_ValueChanged;
             // 
             // flowLayoutPanel4
             // 
@@ -1872,6 +1872,44 @@
             toolTip.IsBalloon = true;
             toolTip.ReshowDelay = 100;
             // 
+            // numericBoxClientHeight
+            // 
+            resources.ApplyResources(numericBoxClientHeight, "numericBoxClientHeight");
+            numericBoxClientHeight.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxClientHeight.DecimalPlaces = 0;
+            numericBoxClientHeight.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxClientHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxClientHeight.Maximum = 4000D;
+            numericBoxClientHeight.Minimum = 1D;
+            numericBoxClientHeight.Name = "numericBoxClientHeight";
+            numericBoxClientHeight.RadianValue = 17.453292519943293D;
+            numericBoxClientHeight.RoundErrorAccuracy = -1;
+            numericBoxClientHeight.ShowUpDown = true;
+            numericBoxClientHeight.SmartIncrement = true;
+            numericBoxClientHeight.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxClientHeight, resources.GetString("numericBoxClientHeight.ToolTip"));
+            numericBoxClientHeight.Value = 1000D;
+            numericBoxClientHeight.ValueChanged += numericBoxClientWidth_ValueChanged;
+            // 
+            // numericBoxClientWidth
+            // 
+            resources.ApplyResources(numericBoxClientWidth, "numericBoxClientWidth");
+            numericBoxClientWidth.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxClientWidth.DecimalPlaces = 0;
+            numericBoxClientWidth.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxClientWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxClientWidth.Maximum = 4000D;
+            numericBoxClientWidth.Minimum = 1D;
+            numericBoxClientWidth.Name = "numericBoxClientWidth";
+            numericBoxClientWidth.RadianValue = 17.453292519943293D;
+            numericBoxClientWidth.RoundErrorAccuracy = -1;
+            numericBoxClientWidth.ShowUpDown = true;
+            numericBoxClientWidth.SmartIncrement = true;
+            numericBoxClientWidth.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxClientWidth, resources.GetString("numericBoxClientWidth.ToolTip"));
+            numericBoxClientWidth.Value = 1000D;
+            numericBoxClientWidth.ValueChanged += numericBoxClientWidth_ValueChanged;
+            // 
             // printPreviewDialog1
             // 
             resources.ApplyResources(printPreviewDialog1, "printPreviewDialog1");
@@ -1888,6 +1926,14 @@
             resources.ApplyResources(tabPageCrystal, "tabPageCrystal");
             tabPageCrystal.Name = "tabPageCrystal";
             toolTip.SetToolTip(tabPageCrystal, resources.GetString("tabPageCrystal.ToolTip"));
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Controls.Add(numericBoxClientWidth);
+            panel1.Controls.Add(numericBoxClientHeight);
+            panel1.Name = "panel1";
+            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // printDialog1
             // 
@@ -1928,6 +1974,7 @@
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(splitContainer1);
+            Controls.Add(panel1);
             Controls.Add(menuStrip1);
             Controls.Add(toolStrip1);
             KeyPreview = true;
@@ -1940,6 +1987,12 @@
             ResizeEnd += FormStructureViewer_ResizeEnd;
             VisibleChanged += FormStructureViewer_VisibleChanged;
             KeyDown += FormStructureViewer_KeyDown;
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel1.PerformLayout();
+            splitContainer2.Panel2.ResumeLayout(false);
+            splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -1974,7 +2027,6 @@
             tabPageCoordinateInfromatin.ResumeLayout(false);
             tabPageInformation.ResumeLayout(false);
             tabPageInformation.PerformLayout();
-            panel1.ResumeLayout(false);
             flowLayoutPanel4.ResumeLayout(false);
             flowLayoutPanel4.PerformLayout();
             tabPageProjection.ResumeLayout(false);
@@ -1999,22 +2051,15 @@
             toolStrip1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBoxShowUnitCell;
-        private System.Windows.Forms.CheckBox checkBoxUnitCell;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox checkBoxCellShowPlane;
-        private System.Windows.Forms.CheckBox checkBoxCellShowEdge;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
         public System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPageLatticePlane;
-        private System.Windows.Forms.TabPage tabPageUnitCell;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
@@ -2027,15 +2072,6 @@
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.CheckBox checkBoxShowSubCell;
-        private System.Windows.Forms.NumericUpDown numericUpDownSubCellB;
-        private System.Windows.Forms.NumericUpDown numericUpDownSubCellC;
-        private System.Windows.Forms.NumericUpDown numericUpDownSubCellA;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private AtomCoordinateTable atomCoordinateTable1;
         private System.Windows.Forms.ToolStripMenuItem saveMainToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveLegendToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAxesToolStripMenuItem;
@@ -2048,131 +2084,149 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonLightDirection;
         private System.Windows.Forms.ToolStripButton toolStripButtonLegend;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-
-        private NumericBox numericBoxCellTransrationC;
-        private NumericBox numericBoxCellTransrationB;
-        private NumericBox numericBoxCellTransrationA;
-
-
-        private System.Windows.Forms.CheckBox checkBoxClipObjects;
-        private System.Windows.Forms.CheckBox checkBoxShowBoundPlanes;
-        private NumericBox numericBoxBoundPlanesOpacity;
-        private System.Windows.Forms.TabPage tabPageBounds;
-        private System.Windows.Forms.CheckBox checkBoxHideAllAtoms;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.TabPage tabPageCoordinateInfromatin;
-        private System.Windows.Forms.TabPage tabPageAtom;
-        private System.Windows.Forms.TabPage tabPageBond;
-        private System.Windows.Forms.RadioButton radioButtonBoundPlane;
-        private System.Windows.Forms.RadioButton radioButtonBoundUnitCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.TabPage tabPageCrystal;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelStatusInitialization;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelStatusRendering;
+        private System.Windows.Forms.ToolStripMenuItem toolToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iLikeVESTAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButtonResetRotation;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLikeVesta;
+        private System.Windows.Forms.ToolStripMenuItem saveMovieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveMovieMainImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveMovieCrystalAxesToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPageBounds;
         private System.Windows.Forms.TabControl tabControlBoundOption;
         private System.Windows.Forms.TabPage tabPageBoundUnitcell;
-        private System.Windows.Forms.TabPage tabPageBoundPlane;
+        private System.Windows.Forms.Button buttonSetRange2;
+        private System.Windows.Forms.Button buttonSetRange4;
+        private System.Windows.Forms.Button buttonSetRange3;
+        private System.Windows.Forms.Button buttonSetCenter1;
+        private System.Windows.Forms.Button buttonCenter2;
+        private System.Windows.Forms.Button buttonSetCenter3;
+        private System.Windows.Forms.Button buttonSetRange0;
+        private System.Windows.Forms.Button buttonSetRange1;
         private NumericBox numericBoxCRange;
         private NumericBox numericBoxBRange;
         private NumericBox numericBoxARange;
         private NumericBox numericBoxCCenter;
         private NumericBox numericBoxBCenter;
         private NumericBox numericBoxACenter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.TabPage tabPageCrystal;
-        private System.Windows.Forms.Label labelMessage;
-        private System.Windows.Forms.TabPage tabPageInformation;
-        private System.Windows.Forms.TextBox textBoxInformation;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button buttonSetRange2;
-        private System.Windows.Forms.Button buttonSetRange3;
-        private System.Windows.Forms.Button buttonSetCenter1;
-        private System.Windows.Forms.Button buttonSetCenter3;
-        private System.Windows.Forms.Button buttonSetRange1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabelStatusInitialization;
-        private System.Windows.Forms.ToolStripLabel toolStripLabelStatusRendering;
-        private System.Windows.Forms.Button buttonCenter2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private NumericBox numericBoxLatticePlaneOpacity;
-        private ColorControl colorControlCellPlane;
-        private ColorControl colorControlCellEdge;
-        private NumericBox numericBoxCellPlaneAlpha;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLegend;
-        private System.Windows.Forms.TabPage tabPageMisc;
-        private NumericBox numericBoxLightSize;
-        private NumericBox numericBoxAxesSize;
-        private NumericBox numericBoxLegendSize;
-        private System.Windows.Forms.Button buttonSetRange4;
-        private System.Windows.Forms.ToolStripMenuItem toolToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem iLikeVESTAToolStripMenuItem;
-        private System.Windows.Forms.Label labelGraphicsDriver;
-        private System.Windows.Forms.Label labelGraphicsCard;
-        private System.Windows.Forms.Label labelOpenGLversion;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TrackBar trackBarPerspective;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.CheckBox checkBoxDepthFadingOut;
-        private System.Windows.Forms.GroupBox groupBoxDepthCueing;
-        private System.Windows.Forms.ComboBox comboBoxRenderignQuality;
-        private System.Windows.Forms.ComboBox comboBoxProjectionMode;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ComboBox comboBoxTransparency;
-        private TrackBarAdvanced trackBarAdvancedDepthCueingNear;
-        private TrackBarAdvanced trackBarAdvancedDepthCueingFar;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button buttonSetRange0;
-        private System.Windows.Forms.CheckBox checkBoxGroupByElement;
-        private System.Windows.Forms.ToolStripButton toolStripButtonResetRotation;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckBox checkBoxLabelWhiteEdge;
-        private NumericBox numericBoxLabelSize;
-        private ColorControl colorControlLabelColor;
-        private System.Windows.Forms.RadioButton radioButtonUseMaterialColor;
-        private System.Windows.Forms.RadioButton radioButtonLabelUseFixedColor;
-        private System.Windows.Forms.CheckBox checkBoxShowLabel;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ToolStripButton toolStripButtonLikeVesta;
-        private System.Windows.Forms.TrackBar trackBarCellEdgeWidth;
-        private ColorControl colorControlCellEdgeC;
-        private ColorControl colorControlCellEdgeB;
-        private ColorControl colorControlCellEdgeA;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
-        private System.Windows.Forms.RadioButton radioButtonCellEdgeColorAll;
-        private System.Windows.Forms.RadioButton radioButtonCellEdgeColorEach;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPageBoundPlane;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.CheckBox checkBoxShowBoundPlanes;
+        private NumericBox numericBoxBoundPlanesOpacity;
+        private System.Windows.Forms.CheckBox checkBoxClipObjects;
+        private System.Windows.Forms.CheckBox checkBoxHideAllAtoms;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.RadioButton radioButtonBoundUnitCell;
+        private System.Windows.Forms.RadioButton radioButtonBoundPlane;
+        private System.Windows.Forms.TabPage tabPageAtom;
+        private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.TabPage tabPageBond;
+        private System.Windows.Forms.TabPage tabPageUnitCell;
+        private System.Windows.Forms.CheckBox checkBoxUnitCell;
+        private System.Windows.Forms.GroupBox groupBoxShowUnitCell;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.RadioButton radioButtonCellPlaneColorAll;
+        private ColorControl colorControlCellPlane;
         private System.Windows.Forms.RadioButton radioButtonCellPlaneColorEach;
         private ColorControl colorControlCellPlaneA;
         private ColorControl colorControlCellPlaneB;
         private ColorControl colorControlCellPlaneC;
-        public NumericBox numericBoxClientHeight;
-        public NumericBox numericBoxClientWidth;
-        private System.Windows.Forms.ToolStripMenuItem saveMovieToolStripMenuItem;
+        private NumericBox numericBoxCellPlaneAlpha;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.RadioButton radioButtonCellEdgeColorAll;
+        private ColorControl colorControlCellEdge;
+        private System.Windows.Forms.RadioButton radioButtonCellEdgeColorEach;
+        private ColorControl colorControlCellEdgeA;
+        private ColorControl colorControlCellEdgeB;
+        private ColorControl colorControlCellEdgeC;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TrackBar trackBarCellEdgeWidth;
+        private NumericBox numericBoxCellTransrationC;
+        private NumericBox numericBoxCellTransrationB;
+        private NumericBox numericBoxCellTransrationA;
+        private System.Windows.Forms.CheckBox checkBoxShowSubCell;
+        private System.Windows.Forms.CheckBox checkBoxCellShowEdge;
+        private System.Windows.Forms.NumericUpDown numericUpDownSubCellB;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox checkBoxCellShowPlane;
+        private System.Windows.Forms.NumericUpDown numericUpDownSubCellC;
+        private System.Windows.Forms.NumericUpDown numericUpDownSubCellA;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TabPage tabPageLatticePlane;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private NumericBox numericBoxLatticePlaneOpacity;
+        private System.Windows.Forms.TabPage tabPageCoordinateInfromatin;
+        private AtomCoordinateTable atomCoordinateTable1;
+        private System.Windows.Forms.TabPage tabPageInformation;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxCalcInformation;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStripMenuItem SaveMovieMainImageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem SaveMovieCrystalAxesToolStripMenuItem;
-        private System.Windows.Forms.CheckBox checkBoxShowBondedAtoms;
-        private System.Windows.Forms.RadioButton radioButtonProjectionCenter1;
-        private System.Windows.Forms.RadioButton radioButtonProjectionCenter2;
+        public NumericBox numericBoxClientWidth;
+        public NumericBox numericBoxClientHeight;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Label labelGraphicsCard;
+        private System.Windows.Forms.Label labelGraphicsDriver;
+        private System.Windows.Forms.Label labelOpenGLversion;
         private System.Windows.Forms.TabPage tabPageProjection;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.RadioButton radioButtonProjectionCenterCustom;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProjectionCenter;
-        private NumericBox numericBoxProjectionCenterZ;
-        private NumericBox numericBoxProjectionCenterY;
         private NumericBox numericBoxProjectionCenterX;
+        private NumericBox numericBoxProjectionCenterY;
+        private NumericBox numericBoxProjectionCenterZ;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton radioButtonProjectionCenterCustom;
+        private System.Windows.Forms.RadioButton radioButtonProjectionCenter1;
+        private System.Windows.Forms.RadioButton radioButtonProjectionCenter2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox comboBoxProjectionMode;
+        private System.Windows.Forms.TrackBar trackBarPerspective;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox comboBoxTransparency;
+        private System.Windows.Forms.CheckBox checkBoxDepthFadingOut;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox comboBoxRenderignQuality;
+        private System.Windows.Forms.GroupBox groupBoxDepthCueing;
+        private TrackBarAdvanced trackBarAdvancedDepthCueingNear;
+        private System.Windows.Forms.Label label6;
+        private TrackBarAdvanced trackBarAdvancedDepthCueingFar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPageMisc;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox checkBoxShowBondedAtoms;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private ColorControl colorControlLabelColor;
+        private System.Windows.Forms.CheckBox checkBoxShowLabel;
+        private System.Windows.Forms.RadioButton radioButtonUseMaterialColor;
+        private System.Windows.Forms.RadioButton radioButtonLabelUseFixedColor;
+        private NumericBox numericBoxLabelSize;
+        private System.Windows.Forms.CheckBox checkBoxLabelWhiteEdge;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox checkBoxGroupByElement;
+        private NumericBox numericBoxLegendSize;
+        private NumericBox numericBoxAxesSize;
+        private NumericBox numericBoxLightSize;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLegend;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox textBoxAtomInformation;
+        private System.Windows.Forms.Label label13;
     }
 }

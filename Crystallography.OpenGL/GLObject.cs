@@ -1656,7 +1656,7 @@ public class Mesh : GLObject
                         pts.Add(new Vector3DBase(positions[i].X, positions[i].Y, positions[i].Z));
                     var param = Geometriy.GetPlaneEquationFromPoints(pts);
 
-                    norm = new V3f((float)param[0], (float)param[1], (float)param[2]);
+                    norm = new V3f((float)param.A, (float)param.B, (float)param.C);
                     if (norm[2] < 0)
                         norm = -norm;
                 }
