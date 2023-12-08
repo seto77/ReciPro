@@ -119,13 +119,13 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="textBoxCalcInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 7.5pt</value>
   </data>
   <data name="textBoxCalcInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 18</value>
   </data>
   <data name="textBoxCalcInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 194</value>
+    <value>210, 194</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -147,29 +147,23 @@
     <value>Both</value>
   </data>
   <data name="textBoxAtomInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 194</value>
-  </data>
-  <data name="textBoxAtomInformation.Text" xml:space="preserve">
-    <value>aaaa 0.0023Å
-1234
-5678
-ijkl</value>
+    <value>453, 194</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 18</value>
+    <value>214, 18</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>選択した原子の情報</value>
+    <value>選択した原子の情報 (座標の単位はÅ)</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 212</value>
+    <value>667, 212</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>257</value>
+    <value>210</value>
   </data>
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 52</value>
@@ -178,7 +172,7 @@ ijkl</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="flowLayoutPanelLegend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>658, 0</value>
+    <value>627, 0</value>
   </data>
   <data name="flowLayoutPanelLegend.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 470</value>
@@ -298,10 +292,10 @@ ijkl</value>
     <value>中心</value>
   </data>
   <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>653, 170</value>
+    <value>622, 170</value>
   </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>653, 170</value>
+    <value>622, 170</value>
   </data>
   <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.2000003pt</value>
@@ -310,7 +304,7 @@ ijkl</value>
     <value>0, 25</value>
   </data>
   <data name="tabControlBoundOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 178</value>
+    <value>673, 178</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -364,7 +358,7 @@ ijkl</value>
     <value>0, 203</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 27</value>
+    <value>673, 27</value>
   </data>
   <data name="radioButtonBoundUnitCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -394,7 +388,7 @@ ijkl</value>
     <value />
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 25</value>
+    <value>673, 25</value>
   </data>
   <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
@@ -403,7 +397,7 @@ ijkl</value>
     <value>4, 27</value>
   </data>
   <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageBounds.Text" xml:space="preserve">
     <value>描画範囲</value>
@@ -421,7 +415,7 @@ ijkl</value>
     <value>4, 27</value>
   </data>
   <data name="tabPageAtom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>原子情報</value>
@@ -433,7 +427,7 @@ ijkl</value>
     <value>4, 27</value>
   </data>
   <data name="tabPageBond.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageBond.Text" xml:space="preserve">
     <value>結合と多面体</value>
@@ -773,7 +767,7 @@ ijkl</value>
     <value>メイリオ, 7.2000003pt</value>
   </data>
   <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 222</value>
+    <value>667, 222</value>
   </data>
   <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
@@ -782,7 +776,7 @@ ijkl</value>
     <value>4, 27</value>
   </data>
   <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageUnitCell.Text" xml:space="preserve">
     <value>単位格子</value>
@@ -800,7 +794,7 @@ ijkl</value>
     <value>3, 197</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 29</value>
+    <value>667, 29</value>
   </data>
   <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
@@ -809,7 +803,7 @@ ijkl</value>
     <value>4, 27</value>
   </data>
   <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageLatticePlane.Text" xml:space="preserve">
     <value>結晶格子面</value>
@@ -818,7 +812,7 @@ ijkl</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageCoordinateInfromatin.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
@@ -827,7 +821,7 @@ ijkl</value>
     <value>4, 27</value>
   </data>
   <data name="tabPageCoordinateInfromatin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageCoordinateInfromatin.Text" xml:space="preserve">
     <value>配位情報</value>
@@ -860,7 +854,7 @@ ijkl</value>
     <value>3, 215</value>
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 12</value>
+    <value>667, 12</value>
   </data>
   <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
@@ -869,7 +863,7 @@ ijkl</value>
     <value>4, 27</value>
   </data>
   <data name="tabPageInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageInformation.Text" xml:space="preserve">
     <value>情報</value>
@@ -1037,7 +1031,7 @@ ijkl</value>
     <value>4, 27</value>
   </data>
   <data name="tabPageProjection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageProjection.Text" xml:space="preserve">
     <value>投影</value>
@@ -1227,7 +1221,7 @@ ijkl</value>
     <value>4, 27</value>
   </data>
   <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 230</value>
+    <value>673, 230</value>
   </data>
   <data name="tabPageMisc.Text" xml:space="preserve">
     <value>その他</value>
@@ -1236,10 +1230,10 @@ ijkl</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 261</value>
+    <value>681, 261</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 735</value>
+    <value>681, 735</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>470</value>
@@ -1365,7 +1359,7 @@ ijkl</value>
     <value>0, 787</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 25</value>
+    <value>681, 25</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1467,7 +1461,7 @@ ijkl</value>
     <value>ショートカットヒント</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 28</value>
+    <value>681, 28</value>
   </data>
   <data name="numericBoxClientHeight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -1673,7 +1667,7 @@ ijkl</value>
     <value>0, 28</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>712, 24</value>
+    <value>681, 24</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1688,7 +1682,7 @@ ijkl</value>
     <value>6</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>712, 812</value>
+    <value>681, 812</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11pt</value>
