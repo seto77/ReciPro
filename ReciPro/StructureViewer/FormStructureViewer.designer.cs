@@ -732,7 +732,7 @@
             resources.ApplyResources(colorControlCellPlane, "colorControlCellPlane");
             colorControlCellPlane.Blue = 192;
             colorControlCellPlane.BlueF = 0.7529412F;
-            colorControlCellPlane.BoxSize = new System.Drawing.Size(17, 17);
+            colorControlCellPlane.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlane.Color = System.Drawing.Color.FromArgb(192, 192, 192);
             colorControlCellPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlane.Green = 192;
@@ -757,7 +757,7 @@
             resources.ApplyResources(colorControlCellPlaneA, "colorControlCellPlaneA");
             colorControlCellPlaneA.Blue = 0;
             colorControlCellPlaneA.BlueF = 0F;
-            colorControlCellPlaneA.BoxSize = new System.Drawing.Size(17, 17);
+            colorControlCellPlaneA.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlaneA.Color = System.Drawing.Color.FromArgb(255, 0, 0);
             colorControlCellPlaneA.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlaneA.Green = 0;
@@ -774,7 +774,7 @@
             resources.ApplyResources(colorControlCellPlaneB, "colorControlCellPlaneB");
             colorControlCellPlaneB.Blue = 0;
             colorControlCellPlaneB.BlueF = 0F;
-            colorControlCellPlaneB.BoxSize = new System.Drawing.Size(17, 17);
+            colorControlCellPlaneB.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlaneB.Color = System.Drawing.Color.FromArgb(0, 128, 0);
             colorControlCellPlaneB.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlaneB.Green = 128;
@@ -791,7 +791,7 @@
             resources.ApplyResources(colorControlCellPlaneC, "colorControlCellPlaneC");
             colorControlCellPlaneC.Blue = 255;
             colorControlCellPlaneC.BlueF = 1F;
-            colorControlCellPlaneC.BoxSize = new System.Drawing.Size(17, 17);
+            colorControlCellPlaneC.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlaneC.Color = System.Drawing.Color.FromArgb(0, 0, 255);
             colorControlCellPlaneC.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlaneC.Green = 0;
@@ -847,7 +847,7 @@
             resources.ApplyResources(colorControlCellEdge, "colorControlCellEdge");
             colorControlCellEdge.Blue = 128;
             colorControlCellEdge.BlueF = 0.5019608F;
-            colorControlCellEdge.BoxSize = new System.Drawing.Size(17, 17);
+            colorControlCellEdge.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdge.Color = System.Drawing.Color.FromArgb(128, 128, 128);
             colorControlCellEdge.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdge.Green = 128;
@@ -874,7 +874,7 @@
             resources.ApplyResources(colorControlCellEdgeA, "colorControlCellEdgeA");
             colorControlCellEdgeA.Blue = 0;
             colorControlCellEdgeA.BlueF = 0F;
-            colorControlCellEdgeA.BoxSize = new System.Drawing.Size(17, 17);
+            colorControlCellEdgeA.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdgeA.Color = System.Drawing.Color.FromArgb(255, 0, 0);
             colorControlCellEdgeA.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdgeA.Green = 0;
@@ -891,7 +891,7 @@
             resources.ApplyResources(colorControlCellEdgeB, "colorControlCellEdgeB");
             colorControlCellEdgeB.Blue = 0;
             colorControlCellEdgeB.BlueF = 0F;
-            colorControlCellEdgeB.BoxSize = new System.Drawing.Size(17, 17);
+            colorControlCellEdgeB.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdgeB.Color = System.Drawing.Color.FromArgb(0, 128, 0);
             colorControlCellEdgeB.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdgeB.Green = 128;
@@ -908,7 +908,7 @@
             resources.ApplyResources(colorControlCellEdgeC, "colorControlCellEdgeC");
             colorControlCellEdgeC.Blue = 255;
             colorControlCellEdgeC.BlueF = 1F;
-            colorControlCellEdgeC.BoxSize = new System.Drawing.Size(17, 17);
+            colorControlCellEdgeC.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdgeC.Color = System.Drawing.Color.FromArgb(0, 0, 255);
             colorControlCellEdgeC.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdgeC.Green = 0;
@@ -1335,13 +1335,13 @@
             // trackBarAdvancedDepthCueingNear
             // 
             resources.ApplyResources(trackBarAdvancedDepthCueingNear, "trackBarAdvancedDepthCueingNear");
-            trackBarAdvancedDepthCueingNear.ControlHeight = 25;
+            trackBarAdvancedDepthCueingNear.ControlHeight = 31;
             trackBarAdvancedDepthCueingNear.DecimalPlaces = 1;
             trackBarAdvancedDepthCueingNear.LogScrollBar = false;
             trackBarAdvancedDepthCueingNear.Maximum = 30D;
             trackBarAdvancedDepthCueingNear.Minimum = -30D;
             trackBarAdvancedDepthCueingNear.Name = "trackBarAdvancedDepthCueingNear";
-            trackBarAdvancedDepthCueingNear.NumericBoxSize = 84;
+            trackBarAdvancedDepthCueingNear.NumericBoxSize = 105;
             trackBarAdvancedDepthCueingNear.Orientation = System.Windows.Forms.Orientation.Vertical;
             trackBarAdvancedDepthCueingNear.Smart_Increment = true;
             trackBarAdvancedDepthCueingNear.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
@@ -1359,13 +1359,13 @@
             // trackBarAdvancedDepthCueingFar
             // 
             resources.ApplyResources(trackBarAdvancedDepthCueingFar, "trackBarAdvancedDepthCueingFar");
-            trackBarAdvancedDepthCueingFar.ControlHeight = 25;
+            trackBarAdvancedDepthCueingFar.ControlHeight = 31;
             trackBarAdvancedDepthCueingFar.DecimalPlaces = 1;
             trackBarAdvancedDepthCueingFar.LogScrollBar = false;
             trackBarAdvancedDepthCueingFar.Maximum = 30D;
             trackBarAdvancedDepthCueingFar.Minimum = -30D;
             trackBarAdvancedDepthCueingFar.Name = "trackBarAdvancedDepthCueingFar";
-            trackBarAdvancedDepthCueingFar.NumericBoxSize = 84;
+            trackBarAdvancedDepthCueingFar.NumericBoxSize = 105;
             trackBarAdvancedDepthCueingFar.Orientation = System.Windows.Forms.Orientation.Vertical;
             trackBarAdvancedDepthCueingFar.Smart_Increment = true;
             trackBarAdvancedDepthCueingFar.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
@@ -1423,7 +1423,7 @@
             resources.ApplyResources(colorControlLabelColor, "colorControlLabelColor");
             colorControlLabelColor.Blue = 0;
             colorControlLabelColor.BlueF = 0F;
-            colorControlLabelColor.BoxSize = new System.Drawing.Size(17, 17);
+            colorControlLabelColor.BoxSize = new System.Drawing.Size(20, 20);
             colorControlLabelColor.Color = System.Drawing.Color.FromArgb(0, 0, 0);
             colorControlLabelColor.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlLabelColor.Green = 0;
@@ -1564,6 +1564,7 @@
             // toolStrip1
             // 
             resources.ApplyResources(toolStrip1, "toolStrip1");
+            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonCrystalAxes, toolStripButtonLightDirection, toolStripButtonLegend, toolStripSeparator3, toolStripLabelStatusInitialization, toolStripLabelStatusRendering, toolStripButtonLikeVesta, toolStripButtonResetRotation });
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Stretch = true;
@@ -1639,6 +1640,7 @@
             // 
             resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.GripMargin = new System.Windows.Forms.Padding(2);
+            menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { saveImageToolStripMenuItem, toolToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
             // 

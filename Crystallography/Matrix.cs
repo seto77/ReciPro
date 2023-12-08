@@ -229,8 +229,6 @@ public class Matrix3D : ICloneable
     public static Vector3DBase operator *(Matrix3D m, Vector3DBase v)
         => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
-    public static Vector3DBase operator *(Matrix3D m, (double X, double Y, double Z) v)
-         => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
 
     /// <summary>
     /// Matrix3Dとタプル(x,y,z)の乗算. (x,y,z)を縦方向のベクトルとして計算する。
