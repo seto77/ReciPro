@@ -694,6 +694,42 @@ public static class Geometriy
         return new Vector3DBase(x, y, z);
     }
 
+    /// <summary>
+    /// 3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <param name="c"></param>
+    /// <param name="d"></param>
+    /// <param name="p1"></param>
+    /// <param name="p2"></param>
+    /// <returns></returns>
+    public static Vector3d GetCrossPoint(in double a, in double b, in double c, in double d, in V3d p1, in V3d p2)
+    {
+        //次の3つの方程式を満たすx, y, z を求めればよい (2020/02/04修正)
+        // a x + b y + c z = d
+        //(y1 - y2) x - (x1 - x2) y = x2 y1 - x1 y2 
+        //(z1 - z2) y - (y1 - y2) z = y2 z1 - y1 z2
+
+        //double denom = a * (p1.X - p2.X) + b * (p1.Y - p2.Y) + c * (p1.Z - p2.Z);
+        //double x = (d * (p1.X - p2.X) - b * (p1.X * p2.Y - p1.Y * p2.X) - c * (p1.X * p2.Z - p1.Z * p2.X)) / denom;
+        //double y = (d * (p1.Y - p2.Y) - c * (p1.Y * p2.Z - p1.Z * p2.Y) - a * (p1.Y * p2.X - p1.X * p2.Y)) / denom;
+        //double z = (d * (p1.Z - p2.Z) - a * (p1.Z * p2.X - p1.X * p2.Z) - b * (p1.Z * p2.Y - p1.Y * p2.Z)) / denom;
+
+        double dx = p1.X - p2.X, dy = p1.Y - p2.Y, dz = p1.Z - p2.Z;
+
+        var uz = p1.X * p2.Y - p1.Y * p2.X;
+        var ux = p1.Y * p2.Z - p1.Z * p2.Y;
+        var uy = p1.Z * p2.X - p1.X * p2.Z;
+
+        var denom = a * dx + b * dy + c * dz;
+        var x = (d * dx - b * uz + c * uy) / denom;
+        var y = (d * dy - c * ux + a * uz) / denom;
+        var z = (d * dz - a * uy + b * ux) / denom;
+
+        return new V3d(x, y, z);
+    }
+
 
     // <summary>
     /// 3次元において、平面 a x + b y + c z = d (法線ベクトル(a,b,c))と、点(0,0,0)とptを結ぶ直線と交わる交点を返す.  平面方程式がa x + b y + c z + d = 0 ではないことに注意
@@ -966,11 +1002,11 @@ public static class Geometriy
     /// <returns></returns>
     public static double[][] GetClippedPolygon(double[] p, double[][] bounds)
     {
-        if(bounds.Length == 0)return null;
+        if (bounds.Length == 0) return null;
 
-        List<Vector3DBase> pts;
+        List<Vector3d> pts;
 
-        if (bounds.Length < 250)
+        if (bounds.Length < 250)//boundsが少ない場合は正攻法で解く
         {
             pts = [];
             for (int i = 0; i < bounds.Length; i++)
@@ -981,14 +1017,14 @@ public static class Geometriy
                     mtx.E31 = bounds[j][0]; mtx.E32 = bounds[j][1]; mtx.E33 = bounds[j][2];
                     if (Math.Abs(mtx.Determinant()) > 0.0000000001)
                     {
-                        var pt = mtx.Inverse() * (-p[3], -bounds[i][3], -bounds[j][3]);
-                        if (bounds.All(b => b[0] * pt.X + b[1] * pt.Y + b[2] * pt.Z + b[3] > -0.0000000001) && pts.All(p => (p - pt).Length2 > 0.0000000001))
+                        var pt = (mtx.Inverse() * (-p[3], -bounds[i][3], -bounds[j][3])).ToOpenTK();
+                        if (bounds.All(b => b[0] * pt.X + b[1] * pt.Y + b[2] * pt.Z + b[3] > -0.0000000001) && pts.All(p => (p - pt).LengthSquared > 0.0000000001))
                             pts.Add(pt);
                     }
                 }
             }
         }
-        else
+        else//boundsが多い場合は、大きな矩形を徐々に切り取るようなアルゴリズム
         {
             var p2 = p[0] * p[0] + p[1] * p[1] + p[2] * p[2];
 
@@ -999,43 +1035,43 @@ public static class Geometriy
             var rotAxis = Vector3DBase.VectorProduct(temp1, temp2);
             var rot = Math.Abs(rotAngle - Math.PI) < 1E-10 ? Matrix3D.Rot((1, 0, 0), Math.PI) : Matrix3D.Rot(rotAxis, -rotAngle);
 
-            pts = [rot * (max, max, -p[3]), rot * (-max, max, -p[3]), rot * (-max, -max, -p[3]), rot * (max, -max, -p[3])];
+            pts = [(rot * (max, max, -p[3])).ToOpenTK(), (rot * (-max, max, -p[3])).ToOpenTK(), (rot * (-max, -max, -p[3])).ToOpenTK(), (rot * (max, -max, -p[3])).ToOpenTK()];
 
             //boundsによって切り取られる座標を計算し、新しい点集合を作っていく
             foreach (var b in bounds.Where(b => !(b[0] == p[0] && b[1] == p[1] && b[2] == p[2] && b[3] == p[3])))
             {
                 var b2 = b[0] * b[0] + b[1] * b[1] + b[2] * b[2];
                 var pb = b[0] * p[0] + b[1] * p[1] + b[2] * p[2];
-                
-                if (pb * pb / p2 / b2 > 1 - 1E10)// bとplaneが平行ではない場合
+
+                if (pb * pb / p2 / b2 < 1 - 1E-10)// bとplaneが平行ではない場合
                 {
+                    var ptsNew = new List<V3d>(pts.Count + 1);
+                    var v1 = pts[^1];
+                    var r1 = v1.X * b[0] + v1.Y * b[1] + v1.Z * b[2] + b[3];
                     for (int i = 0; i < pts.Count; i++)
                     {
-                        Vector3DBase v1 = pts[i], v2 = i < pts.Count - 1 ? pts[i + 1] : pts[0];
-
-                        double r1 = v1.X * b[0] + v1.Y * b[1] + v1.Z * b[2] + b[3], r2 = v2.X * b[0] + v2.Y * b[1] + v2.Z * b[2] + b[3];
-
-                        if ((r1 < 0 && r2 > 0) || (r1 > 0 && r2 < 0))//v1とv2の間を平面bが通るとき、
+                        var v2 = pts[i];
+                        var r2 = v2.X * b[0] + v2.Y * b[1] + v2.Z * b[2] + b[3];
+                        if (r1 > -1E-10)
+                            ptsNew.Add(v1);
+                        if (Math.Abs(r1) > 1E-10 && Math.Abs(r2) > 1E-10 && r1 * r2 < 0) //v1とv2の間を平面bが通るとき、
                         {
                             var pt = GetCrossPoint(b[0], b[1], b[2], -b[3], v1, v2);//d=b[3]の符号に注意
-                            if ((pt - v1).Length2 > 1E-10 && (pt - v2).Length2 > 1E-10)
-                            {
-                                pts.Insert(i + 1, pt);
-                                i++;
-                            }
+                            if ((pt - v1).LengthSquared > 1E-10 && (pt - v2).LengthSquared > 1E-10)
+                                ptsNew.Add(pt);
                         }
+                        v1 = v2;
+                        r1 = r2;
                     }
-                    for (int i = 0; i < pts.Count; i++)
-                        if (pts[i].X * b[0] + pts[i].Y * b[1] + pts[i].Z * b[2] + b[3] < -1E-10)
-                            pts.RemoveAt(i--);
-
-                    if (pts.Count < 3)
+                    if (ptsNew.Count < 3)
                         return null;
+                    pts = ptsNew;
                 }
                 else if ((pb > 0 && b[3] < p[3]) || (pb < 0 && b[3] < p[3]))  //bとPlaneが平行な場合、法線の向きに注意してnullを返す
                     return null;
             }
         }
+
         return pts.Select(p => new double[] { p.X, p.Y, p.Z }).ToArray();
     }
 

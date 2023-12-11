@@ -414,23 +414,26 @@ public partial class FormStructureViewer : Form
         if (bounds == null)
             return;
         //‹«ŠE–Ê‚ð’Ç‰Á
-        var boundsArray = bounds.Select(b => b.prm.ToArray()).ToArray();
-        Parallel.For(0, bounds.Count, i =>
+        //if (checkBoxShowBoundPlanes.Checked)
         {
-            var vertices = Geometriy.GetClippedPolygon(i, boundsArray);
-            var mat = new Material(bounds[i].color, numericBoxBoundPlanesOpacity.Value);
-            if (vertices!=null &&vertices.Length >= 3)
+            var boundsArray = bounds.Select(b => b.prm.ToArray()).ToArray();
+            Parallel.For(0, bounds.Count, i =>
             {
-                var polygon = new Polygon(vertices.Select(v => new V3(v[0], v[1], v[2])).ToArray(), mat, DrawingMode.SurfacesAndEdges)
+                var vertices = Geometriy.GetClippedPolygon(i, boundsArray);
+                var mat = new Material(bounds[i].color, numericBoxBoundPlanesOpacity.Value);
+                if (vertices != null && vertices.Length >= 3)
                 {
-                    Rendered = checkBoxShowBoundPlanes.Checked,
-                    Tag = new boundsID()
-                }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
-                
-                lock(lockObj1)
-                    GLObjects.AddRange(polygon);
-            }
-        });
+                    var polygon = new Polygon(vertices.Select(v => new V3(v[0], v[1], v[2])).ToArray(), mat, DrawingMode.SurfacesAndEdges)
+                    {
+                        Rendered = checkBoxShowBoundPlanes.Checked,
+                        Tag = new boundsID()
+                    }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
+
+                    lock (lockObj1)
+                        GLObjects.AddRange(polygon);
+                }
+            });
+        }
         glControlMain.SetClip(checkBoxClipObjects.Checked ? new Clip(bounds.Select(b => b.prm).ToArray()) : null);
 
         textBoxCalcInformation.AppendText($"Generation of bound planes: {sw.ElapsedMilliseconds}ms.\r\n");

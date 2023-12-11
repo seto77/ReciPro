@@ -538,54 +538,57 @@ abstract public class GLObject
         }
         else if (!clip.PrmsD.Any(p => V4d.Dot(p, CircumscribedSphereCenter) + CircumscribedSphereRadius < 0))//クリップ有効でクリップ面を切るようなオブジェクトの場合
         {
-            //クリップ対象となるクリップ平面を検索
-            var indices = clip.PrmsD.Select((p, i) => Math.Abs(V4d.Dot(p, CircumscribedSphereCenter)) < CircumscribedSphereRadius ? i : -1).Where(i => i != -1);
-            if (!ShowClippedSection)//クリップセクションを表示しない場合
+            if (clip.PrmsD.Count < 200)//クリップ面が多すぎる場合は計算しない
             {
-                clip.EnableClips(indices);//全クリップ有効化
-                Render(); //物体全体の描画
-                Clip.DisableAllClips();//全クリップ無効化
-            }
-            else///クリップセクションを表示する場合
-            {
-                GL.Enable(EnableCap.StencilTest);//Stencilテスト有効
-                foreach (var i in indices)
+                //クリップ対象となるクリップ平面を検索
+                var indices = clip.PrmsD.Select((p, i) => Math.Abs(V4d.Dot(p, CircumscribedSphereCenter)) < CircumscribedSphereRadius ? i : -1).Where(i => i != -1);
+                if (!ShowClippedSection)//クリップセクションを表示しない場合
                 {
-                    DepthTest(false);//Depthテスト無効
-
-                    if (Location[Program].PassNormalIndex != -1)//OITモードの場合は
-                        GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[Program].PassNormalIndex);//サブルーチンをNormalにする
-
-                    GL.Clear(ClearBufferMask.StencilBufferBit);//ステンシルバッファークリア
-                    GL.ColorMask(false, false, false, false); //色は全くかきこまない
-                    GL.Enable(EnableCap.CullFace);//CullFace有効
-                    GL.StencilFunc(StencilFunction.Always, 0, 0);//Stencil Funcを設定 (Always)
-                    clip.EnableClips(new[] { i });//i番目のクリップのみ有効化
-                                                  //裏面のみ描画(ステンシル値だけ書き込む)
-                    GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.IncrWrap);//ステンシル値「+1」
-                    GL.CullFace(CullFaceMode.Front); //表面をカリング
-                    Render();
-                    //表面のみ描画(→差分をとってマスク画像にする)
-                    GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.DecrWrap);//ステンシル値「-1」
-                    GL.CullFace(CullFaceMode.Back);//裏面をカリング
-                    Render();
-                    //ここまででステンシル完成(0以外が有効)
-
-                    //ここからクリップ平面を描画
-                    if (Location[Program].PassOIT1Index != -1)//OITモードの場合は
-                        GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[Program].PassOIT1Index);//サブルーチンをOIT1に戻す
-
-                    GL.ColorMask(true, true, true, true);
-                    GL.StencilFunc(StencilFunction.Notequal, 0, ~0); //ステンシル値が0でない部分が描画(切断面の描画). ~0 は補数(11111111)
-                    GL.Disable(EnableCap.CullFace);//CullFace無効化
-                    clip.EnableClips(indices.Where(j => j != i));//i番目のクリップ以外を有効化
-                    DepthTest(Location[Program].PassNormalIndex == -1);//Depthテストを元に戻す (Z-sortモードは有効)
-                    clip.Render(i, Material);//i番目のクリップ面を描画
+                    clip.EnableClips(indices);//全クリップ有効化
+                    Render(); //物体全体の描画
+                    Clip.DisableAllClips();//全クリップ無効化
                 }
-                GL.Disable(EnableCap.StencilTest);//Stencilテスト無効化
-                clip.EnableClips(indices);//全クリップ有効化
-                Render(); //物体全体の描画
-                Clip.DisableAllClips();//全クリップ無効化
+                else///クリップセクションを表示する場合
+                {
+                    GL.Enable(EnableCap.StencilTest);//Stencilテスト有効
+                    foreach (var i in indices)
+                    {
+                        DepthTest(false);//Depthテスト無効
+
+                        if (Location[Program].PassNormalIndex != -1)//OITモードの場合は
+                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[Program].PassNormalIndex);//サブルーチンをNormalにする
+
+                        GL.Clear(ClearBufferMask.StencilBufferBit);//ステンシルバッファークリア
+                        GL.ColorMask(false, false, false, false); //色は全くかきこまない
+                        GL.Enable(EnableCap.CullFace);//CullFace有効
+                        GL.StencilFunc(StencilFunction.Always, 0, 0);//Stencil Funcを設定 (Always)
+                        clip.EnableClips(new[] { i });//i番目のクリップのみ有効化
+                                                      //裏面のみ描画(ステンシル値だけ書き込む)
+                        GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.IncrWrap);//ステンシル値「+1」
+                        GL.CullFace(CullFaceMode.Front); //表面をカリング
+                        Render();
+                        //表面のみ描画(→差分をとってマスク画像にする)
+                        GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.DecrWrap);//ステンシル値「-1」
+                        GL.CullFace(CullFaceMode.Back);//裏面をカリング
+                        Render();
+                        //ここまででステンシル完成(0以外が有効)
+
+                        //ここからクリップ平面を描画
+                        if (Location[Program].PassOIT1Index != -1)//OITモードの場合は
+                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[Program].PassOIT1Index);//サブルーチンをOIT1に戻す
+
+                        GL.ColorMask(true, true, true, true);
+                        GL.StencilFunc(StencilFunction.Notequal, 0, ~0); //ステンシル値が0でない部分が描画(切断面の描画). ~0 は補数(11111111)
+                        GL.Disable(EnableCap.CullFace);//CullFace無効化
+                        clip.EnableClips(indices.Where(j => j != i));//i番目のクリップ以外を有効化
+                        DepthTest(Location[Program].PassNormalIndex == -1);//Depthテストを元に戻す (Z-sortモードは有効)
+                        clip.Render(i, Material);//i番目のクリップ面を描画
+                    }
+                    GL.Disable(EnableCap.StencilTest);//Stencilテスト無効化
+                    clip.EnableClips(indices);//全クリップ有効化
+                    Render(); //物体全体の描画
+                    Clip.DisableAllClips();//全クリップ無効化
+                }
             }
         }
     }
