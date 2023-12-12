@@ -891,10 +891,10 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAxisU.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 32</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxAxisU.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxAxisU.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -904,9 +904,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxAxisU.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="numericBoxAxisU.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
     <value>Set crystal plane</value>
@@ -1020,10 +1017,10 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAxisV.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 32</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxAxisV.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxAxisV.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1033,9 +1030,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxAxisV.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxAxisV.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
     <value>Set crystal plane</value>
@@ -1071,10 +1065,10 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAxisW.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 32</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxAxisW.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxAxisW.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1084,9 +1078,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxAxisW.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxAxisW.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
     <value>Set crystal plane</value>
@@ -1157,12 +1148,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneL.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 5.76pt</value>
   </data>
-  <data name="numericBoxPlaneL.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 6.2400002pt</value>
-  </data>
-  <data name="numericBoxPlaneL.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 6.2400002pt</value>
-  </data>
   <data name="numericBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
     <value>89, 0</value>
   </data>
@@ -1170,10 +1155,10 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPlaneL.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 32</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPlaneL.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPlaneL.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1183,9 +1168,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxPlaneL.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxPlaneL.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneL.Name" xml:space="preserve">
     <value>numericBoxPlaneL</value>
@@ -1208,12 +1190,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneH.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 5.76pt</value>
   </data>
-  <data name="numericBoxPlaneH.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 6.2400002pt</value>
-  </data>
-  <data name="numericBoxPlaneH.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 6.2400002pt</value>
-  </data>
   <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 0</value>
   </data>
@@ -1221,10 +1197,10 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPlaneH.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 32</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPlaneH.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPlaneH.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1234,9 +1210,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxPlaneH.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="numericBoxPlaneH.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
     <value>Set crystal plane</value>
@@ -1265,12 +1238,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="numericBoxPlaneK.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 5.76pt</value>
   </data>
-  <data name="numericBoxPlaneK.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 6.2400002pt</value>
-  </data>
-  <data name="numericBoxPlaneK.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 6.2400002pt</value>
-  </data>
   <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 0</value>
   </data>
@@ -1278,10 +1245,10 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPlaneK.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 32</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPlaneK.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPlaneK.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1291,9 +1258,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   </data>
   <data name="numericBoxPlaneK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxPlaneK.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneK.Name" xml:space="preserve">
     <value>numericBoxPlaneK</value>
@@ -2146,19 +2110,16 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 32</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 24</value>
   </data>
   <data name="numericBoxStep.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="numericBoxStep.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
     <value>Set angle step for above buttons, or rotatian speed</value>
@@ -2347,19 +2308,16 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMaxUVW.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 32</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMaxUVW.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMaxUVW.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 24</value>
   </data>
   <data name="numericBoxMaxUVW.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxMaxUVW.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxMaxUVW.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
