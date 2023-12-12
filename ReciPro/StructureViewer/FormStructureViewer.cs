@@ -414,7 +414,7 @@ public partial class FormStructureViewer : Form
         if (bounds == null)
             return;
         //‹«ŠE–Ê‚ð’Ç‰Á
-        //if (checkBoxShowBoundPlanes.Checked)
+        if (checkBoxShowBoundPlanes.Checked)
         {
             var boundsArray = bounds.Select(b => b.prm.ToArray()).ToArray();
             Parallel.For(0, bounds.Count, i =>

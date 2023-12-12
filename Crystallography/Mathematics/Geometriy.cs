@@ -1050,10 +1050,12 @@ public static class Geometriy
                     var r1 = v1.X * b[0] + v1.Y * b[1] + v1.Z * b[2] + b[3];
                     for (int i = 0; i < pts.Count; i++)
                     {
-                        var v2 = pts[i];
-                        var r2 = v2.X * b[0] + v2.Y * b[1] + v2.Z * b[2] + b[3];
                         if (r1 > -1E-10)
                             ptsNew.Add(v1);
+
+                        var v2 = pts[i];
+                        var r2 = v2.X * b[0] + v2.Y * b[1] + v2.Z * b[2] + b[3];
+                        
                         if (Math.Abs(r1) > 1E-10 && Math.Abs(r2) > 1E-10 && r1 * r2 < 0) //v1‚Æv2‚ÌŠÔ‚ð•½–Êb‚ª’Ê‚é‚Æ‚«A
                         {
                             var pt = GetCrossPoint(b[0], b[1], b[2], -b[3], v1, v2);//d=b[3]‚Ì•„†‚É’ˆÓ
