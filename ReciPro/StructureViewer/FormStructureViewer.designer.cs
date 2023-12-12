@@ -1335,7 +1335,7 @@
             // trackBarAdvancedDepthCueingNear
             // 
             resources.ApplyResources(trackBarAdvancedDepthCueingNear, "trackBarAdvancedDepthCueingNear");
-            trackBarAdvancedDepthCueingNear.ControlHeight = 31;
+            trackBarAdvancedDepthCueingNear.ControlHeight = 25;
             trackBarAdvancedDepthCueingNear.DecimalPlaces = 1;
             trackBarAdvancedDepthCueingNear.LogScrollBar = false;
             trackBarAdvancedDepthCueingNear.Maximum = 30D;
@@ -1359,7 +1359,7 @@
             // trackBarAdvancedDepthCueingFar
             // 
             resources.ApplyResources(trackBarAdvancedDepthCueingFar, "trackBarAdvancedDepthCueingFar");
-            trackBarAdvancedDepthCueingFar.ControlHeight = 31;
+            trackBarAdvancedDepthCueingFar.ControlHeight = 25;
             trackBarAdvancedDepthCueingFar.DecimalPlaces = 1;
             trackBarAdvancedDepthCueingFar.LogScrollBar = false;
             trackBarAdvancedDepthCueingFar.Maximum = 30D;

@@ -14,8 +14,6 @@ using C4 = OpenTK.Graphics.Color4;
 using V3 = OpenTK.Vector3d;
 using V4 = OpenTK.Vector4d;
 using M3d = OpenTK.Matrix3d;
-using System.CodeDom.Compiler;
-using IronPython.Runtime.Operations;
 #endregion
 
 namespace ReciPro;
@@ -434,8 +432,9 @@ public partial class FormStructureViewer : Form
                 }
             });
         }
-        glControlMain.SetClip(checkBoxClipObjects.Checked ? new Clip(bounds.Select(b => b.prm).ToArray()) : null);
 
+        glControlMain.SetClip(checkBoxClipObjects.Checked ? new Clip(bounds.Select(b => b.prm).ToArray()) : null);
+        
         textBoxCalcInformation.AppendText($"Generation of bound planes: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
@@ -1072,7 +1071,7 @@ public partial class FormStructureViewer : Form
                 var atom = GLObjects[index] as Sphere;
                 var label = enabledAtoms[(atom.Tag as atomID).Index].Label.TrimStart().TrimEnd();
 
-                result.Add($"\r\n\r\n");
+                result.Add($"\r\n--------------------------------------------------------------\r\n");
                 result.Add($"Selected Atom: {label} ({atom.Origin.X * 10:f3}, {atom.Origin.Y * 10:f3}, {atom.Origin.Z * 10:f3}) \t・・・0\r\n\r\n");
 
                 //最近接原子を探索
@@ -1083,8 +1082,7 @@ public partial class FormStructureViewer : Form
 
 
                 tmp = tmp.Select(t => (t.X * 10, t.Y * 10, t.Z * 10, t.Distance * 10, t.Label.TrimStart().TrimEnd())).ToList();
-
-                result.Add("(The following coordinates are relative to the selected atom) \r\n");
+                result.Add("(The following coordinates are relative to the selected atom)\r\n");
 
                 int n = 1;//0番目は自分自身なので、1からはじめる
                 int count = 0;//結合角を求める上限数
@@ -1275,10 +1273,8 @@ public partial class FormStructureViewer : Form
                     if (!depthList.ContainsKey(origin.Z))
                         depthList.Add(origin.Z, i);
             }
-        if (depthList.Count != 0)
-            return depthList.Last().Value;
-        else 
-            return -1;
+
+        return depthList.Count != 0 ? depthList.Last().Value : -1;
 
     }
 

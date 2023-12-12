@@ -239,7 +239,7 @@ public partial class NumericBox : UserControl
                 MaximumSize = new Size(1000, textBox.Height + 5);
             }
         }
-        get { return textBox.Font; }
+        get => textBox.Font;
     }
 
 
