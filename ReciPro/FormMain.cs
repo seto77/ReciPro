@@ -126,6 +126,7 @@ public partial class FormMain : Form
     public FormImageSimulator FormImageSimulator;
     public FormCrystalDatabase FormCrystalDatabase;
     public FormMovie FormMovie;
+    public FormEBSD FormEBSD;
     private Macro macro;
     public FormMacro FormMacro;
 
@@ -305,37 +306,40 @@ public partial class FormMain : Form
         macro = new Macro(this);
         FormMacro = new FormMacro(Python.CreateEngine(), macro) { Visible = false };
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.", 0.15);
+        commonDialog.Progress = ("Now Loading...Initializing 'Rotation' form.", 0.14);
         FormRotation = new FormRotationMatrix { FormMain = this, Visible = false };
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Structure Viewer' form.", 0.2);
+        commonDialog.Progress = ("Now Loading...Initializing 'Structure Viewer' form.", 0.18);
         FormStructureViewer = new FormStructureViewer { formMain = this, Visible = false };
         FormStructureViewer.KeyDown += new KeyEventHandler(FormMain_KeyDown);
         FormStructureViewer.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Stereonet' form.", 0.3);
+        commonDialog.Progress = ("Now Loading...Initializing 'Stereonet' form.", 0.25);
         FormStereonet = new FormStereonet { formMain = this, Visible = false };
         FormStereonet.KeyDown += new KeyEventHandler(FormMain_KeyDown);
         FormStereonet.KeyUp += new KeyEventHandler(FormMain_KeyUp);
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Crystal database' form.", 0.35);
+        commonDialog.Progress = ("Now Loading...Initializing 'Crystal database' form.", 0.30);
         FormCrystalDatabase = new FormCrystalDatabase { FormMain = this, Visible = false };
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Crystal diffraction' form.", 0.4);
+        commonDialog.Progress = ("Now Loading...Initializing 'Crystal diffraction' form.", 0.35);
         FormDiffractionSimulator = new FormDiffractionSimulator { formMain = this, Visible = false };
         FormDiffractionSimulator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
         FormDiffractionSimulator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
         FormDiffractionSimulator.VisibleChanged += FormElectronDiffraction_VisibleChanged;
 
-        commonDialog.Progress = ("Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.", 0.45);
+        commonDialog.Progress = ("Now Loading...Initializing 'HRTEM/STEM Image Simulator' form.", 0.40);
         FormImageSimulator = new FormImageSimulator { FormMain = this, Visible = false };
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Powder diffraction' form.", 0.5);
+        commonDialog.Progress = ("Now Loading...Initializing 'Powder diffraction' form.", 0.45);
         FormPolycrystallineDiffractionSimulator = new FormPolycrystallineDiffractionSimulator { formMain = this, Visible = false };
         FormPolycrystallineDiffractionSimulator.VisibleChanged += formPolycrystallineDiffractionSimulator_VisibleChanged;
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Moovie' form.", 0.5);
+        commonDialog.Progress = ("Now Loading...Initializing 'Movie' form.", 0.5);
         FormMovie = new FormMovie() { FormMain = this, Visible = false };
+
+        commonDialog.Progress = ("Now Loading...Initializing 'Movie' form.", 0.55);
+        FormEBSD = new FormEBSD() { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
         FormTEMID = new FormSpotIDv1 { formMain = this, Visible = false };
@@ -344,22 +348,22 @@ public partial class FormMain : Form
         FormTEMID.Visible = false;
         FormTEMID.VisibleChanged += FormTEMID_VisibleChanged;
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.7);
+        commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.65);
         FormSpotID = new FormSpotIDV2 { FormMain = this, Visible = false };
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.8);
+        commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.70);
         FormCalculator = new FormCalculator { Owner = this, Visible = false };
         FormCalculator.KeyDown += new KeyEventHandler(FormMain_KeyDown);
         FormCalculator.KeyUp += new KeyEventHandler(FormMain_KeyUp);
         FormCalculator.FormClosing += new FormClosingEventHandler(formCalculator_FormClosing);
 
-        commonDialog.Progress = ("Now Loading...Initializing clipboard viewer.", 0.9);
+        commonDialog.Progress = ("Now Loading...Initializing clipboard viewer.", 0.75);
         NextHandle = SetClipboardViewer(this.Handle);
 
-        commonDialog.Progress = ("Now Loading...Initialize Crystal class.", 0.92);
+        commonDialog.Progress = ("Now Loading...Initialize Crystal class.", 0.80);
         Crystal = new Crystal();
 
-        commonDialog.Progress = ("Now Loading...Setting default crystal list.", 0.94);
+        commonDialog.Progress = ("Now Loading...Setting default crystal list.", 0.85);
         var appPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\";
         //default.xmlをinitial.xmlとしてコピー
         //if (!File.Exists(UserAppDataPath + "initial.xml"))
@@ -380,6 +384,7 @@ public partial class FormMain : Form
         if (File.Exists(UserAppDataPath + "ReciProSetup.msi"))
             File.Delete(UserAppDataPath + "ReciProSetup.msi");
 
+        commonDialog.Progress = ("Now Loading...Setting crystal database.", 0.90);
         //StdDbをコピー
         File.Copy(appPath + "StdDb.cdb3", UserAppDataPath + "StdDb.cdb3", true);
 
@@ -387,6 +392,7 @@ public partial class FormMain : Form
         foreach (var dir in Directory.GetDirectories(UserAppDataPath))
             if (!Directory.EnumerateFileSystemEntries(dir).Any())
                 Directory.Delete(dir);
+
 
         commonDialog.Progress = ("Now Loading...Reading registries again.", 0.98);
 
@@ -923,6 +929,8 @@ public partial class FormMain : Form
             form = FormTEMID;
         else if (button.Name.Contains("SpotIDv2"))
             form = FormSpotID;
+        else if (button.Name.Contains("EBSD"))
+            form = FormEBSD;
         else
             form = FormPolycrystallineDiffractionSimulator;
 
