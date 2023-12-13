@@ -12,7 +12,7 @@ namespace Crystallography;
 public static class ImageIO
 {
     public static string[] ListOfExtension =
-    {
+    [
             "img",
             "stl",
             "ccd",
@@ -34,7 +34,7 @@ public static class ImageIO
             "png",
             "smv",
             "mrc",
-        };
+        ];
 
     public static string FilterString
     {
@@ -317,12 +317,13 @@ public static class ImageIO
     }
     #endregion
 
-    #region RadIcon rawファイル
+    #region  rawファイル (RadIcon など)
     public static bool RadIcon(string str)
     {
         try
         {
-            if (new FileInfo(str).Length == 6390144)//2064*1548のサイズを持つ検出器 (SACLA EH5の場合)
+            #region 2064*1548のサイズを持つ検出器 (SACLA EH5の場合)
+            if (new FileInfo(str).Length == 6390144)
             {
                 var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
                 int imageWidth = 2064, imageHeight = 1548, length = imageWidth * imageHeight;
@@ -335,9 +336,8 @@ public static class ImageIO
                 }
                 else
                 {
-                    for (int y = 0, n = 0; y < imageHeight; y++)
-                        for (int x = 0; x < imageWidth; x++, n++)
-                            Ring.Intensity[n++] = 256 * br.ReadByte() + br.ReadByte();
+                    for (int n = 0; n<length; n++)
+                            Ring.Intensity[n] = 256 * br.ReadByte() + br.ReadByte();
                 }
                 br.Close();
 
@@ -346,9 +346,11 @@ public static class ImageIO
                 Ring.ImageType = Ring.ImageTypeEnum.RadIcon;
                 Ring.Comments = "";
 
+                return true;
             }
+            #endregion
 
-            //2020年に導入された、PFのRAWファイル形式 (references\ImageExsample\BL18c 柴咲さん  を参考せよ)
+            #region 2020年に導入された、PFのRAWファイル形式 (references\ImageExsample\BL18c 柴咲さん  を参考せよ)
             else if (Check_PF_RAW(str))
             {
                 var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
@@ -438,9 +440,8 @@ public static class ImageIO
 
                 return true;
             }
-
-
-
+            #endregion
+          
             return false;
 
 

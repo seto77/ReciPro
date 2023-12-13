@@ -211,13 +211,13 @@ public partial class NumericBox : UserControl
     [Category("Font && Color")]
     public Color TextBoxForeColor { set => textBox.ForeColor = value; get => textBox.ForeColor; }
 
-    [DefaultValue(typeof(Color), "Window")]
     [Category("Font && Color")]
+    [DefaultValue(typeof(Color), "Window")]
     public Color TextBoxBackColor { set => textBox.BackColor = value; get => textBox.BackColor; }
 
-    [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
     [Localizable(true)]
     [Category("Font && Color")]
+    [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
     /// <summary>
     /// font
     /// </summary>
@@ -519,8 +519,6 @@ public partial class NumericBox : UserControl
         }
     }
 
-
-
     /// <summary>
     /// 現在のnumericalValueからテキストボックスの文字列を設定する
     /// </summary>
@@ -559,11 +557,11 @@ public partial class NumericBox : UserControl
         {
             text = numericalValue.ToString(DecimalPlaces >= 0 ? $"f{DecimalPlaces}" : "");
             if (TrimEndZero && text.Contains('.'))
-                text = text.TrimEnd(new[] { '0' }).TrimEnd(new[] { '.' });
+                text = text.TrimEnd(['0']).TrimEnd(['.']);
 
             text = separateThousands(text);
         }
-        if (!text.StartsWith("-") && ShowPositiveSign && text != "0")
+        if (!text.StartsWith('-') && ShowPositiveSign && text != "0")
             text = "+" + text;
 
         return text;
@@ -575,7 +573,7 @@ public partial class NumericBox : UserControl
         if (valueString.Contains(','))
             decimalPoint = ',';
 
-        var integer = valueString.Split(new[] { decimalPoint });
+        var integer = valueString.Split([decimalPoint]);
         for (int i = integer[0].Length - 3; i > 0; i -= 3)
         {
             if (integer[0][i - 1] != '-')

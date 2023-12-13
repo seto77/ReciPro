@@ -22,33 +22,6 @@ using System.Text;
 
 namespace ReciPro;
 
-//class myApplication : WindowsFormsApplicationBase
-//{
-//    public myApplication() : base()
-//    {
-//        this.EnableVisualStyles = true;
-//        this.IsSingleInstance = true;
-//        this.MainForm = new FormMain();
-//        this.StartupNextInstance += new StartupNextInstanceEventHandler(myApplication_StartupNextInstance);
-//    }
-//    void myApplication_StartupNextInstance(object sender, StartupNextInstanceEventArgs e)
-//    {
-//        var form1 = (FormMain)this.MainForm;
-//        int mode = int.Parse(e.CommandLine[0]);
-//        if (mode == 1)
-//        {
-//        }
-//        else if (mode == 0)
-//        {
-//        }
-//        else if (mode == 2)
-//        {
-//        }
-
-//    }
-//}
-
-
 public partial class FormMain : Form
 {
     #region LibraryImport
@@ -1503,6 +1476,5 @@ public partial class FormMain : Form
             checkBoxFixAxis.Checked = false;
     }
     #endregion
-
 
 }

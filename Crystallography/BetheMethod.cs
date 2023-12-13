@@ -5,6 +5,7 @@ using MathNet.Numerics.LinearAlgebra.Complex;
 using OpenTK.Platform.Windows;
 using System;
 using System.Buffers;
+using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -327,7 +328,7 @@ public class BetheMethod
                     if (diskAmplitude[r] != null)
                         amplitudes[r] = diskAmplitude[r][t * bLen];
 
-                Disks[t][0] = new CBED_Disk(new[] { Beams[0].H, Beams[0].K, Beams[0].L }, Beams[0].Vec, Thicknesses[t], amplitudes) { Amplitudes = amplitudes };
+                Disks[t][0] = new CBED_Disk([Beams[0].H, Beams[0].K, Beams[0].L], Beams[0].Vec, Thicknesses[t], amplitudes) { Amplitudes = amplitudes };
             });
 
         }
@@ -468,7 +469,7 @@ public class BetheMethod
             #region 各ソルバーによる計算
             //Eigen＿Eigenの場合
             if (solver == Solver.Eigen_Eigen && EigenEnabled)
-                result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses);
+                result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, [.. psi0], Thicknesses);
             //Eigen_MKL あるいは Eigen_Managedの場合    
             else if (solver == Solver.Eigen_MKL)
             {
@@ -564,8 +565,8 @@ public class BetheMethod
         Disks = new CBED_Disk[Thicknesses.Length][];
         for (int t = 0; t < Thicknesses.Length; t++)
         {
-            Disks[t] = new[] { new CBED_Disk(new[] { 0, 0, 0 }, new Vector3DBase(0,0,0), Thicknesses[t],
-                    directDiskIntensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0)).ToArray()) };
+            Disks[t] = [new CBED_Disk([0, 0, 0], new Vector3DBase(0, 0, 0), Thicknesses[t],
+                    directDiskIntensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0)).ToArray())];
             Disks[t][0].Amplitudes = Disks[t][0].RawAmplitudes;
         }
 
@@ -1065,7 +1066,6 @@ public class BetheMethod
         });
         #endregion
 
-
         #region 弾性散乱 の計算
         bwSTEM.ReportProgress(0, "Calculating I_elastic(Q)");//状況を報告
         Complex[,,] I_Elas = new Complex[qList.Count, tLen, dLen];
@@ -1130,7 +1130,7 @@ public class BetheMethod
                     //U[qIndex * bLen2 + j * bLen + i] = getU(AccVoltage, qList[qIndex], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag.Conjugate();
                     //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
                 }
-                if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / qList.Count/bLen), "Calculating U matrix");//状況を報告
+                if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / qList.Count / bLen), "Calculating U matrix");//状況を報告
                 if (bwSTEM.CancellationPending) { e.Cancel = true; return; }
             }
         });
@@ -1200,7 +1200,7 @@ public class BetheMethod
                             NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
                     });
                     #endregion
-              
+
                     tcP.ForAll(kIndex =>
                     {
                         Complex[] sumTmp = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);
@@ -1214,7 +1214,7 @@ public class BetheMethod
                                     NativeWrapper.BlendAndConjugate(bLen, _tc_k + n[0] * bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], _tc_kq);
 
                                     var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
-                                    
+
                                     for (int dIndex = 0; dIndex < dLen; dIndex++)
                                         sumTmp[i * dLen + dIndex] = tmp * lenz[dIndex];
                                 }
@@ -1692,16 +1692,16 @@ public class BetheMethod
     #endregion
 
     #region 候補となるg vectorsの検索
-    static readonly (int h, int k, int l)[] directionF = new[] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) };
-    static readonly (int h, int k, int l)[] directionA = new[] { (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 0), (-1, 0, 0) };
-    static readonly (int h, int k, int l)[] directionB = new[] { (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1), (0, 1, 0), (0, -1, 0) };
-    static readonly (int h, int k, int l)[] directionC = new[] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 0, 1), (0, 0, -1) };
-    static readonly (int h, int k, int l)[] directionI = new[] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1) };
-    static readonly (int h, int k, int l)[] directionRH = new[] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) };
-    static readonly (int h, int k, int l)[] directionHex = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) };
-    static readonly (int h, int k, int l)[] directionP = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };
+    static readonly FrozenSet<(int h, int k, int l)> directionF = new [] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) }.ToFrozenSet();
+    static readonly FrozenSet<(int h, int k, int l)> directionA = new [] { (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 0), (-1, 0, 0) }.ToFrozenSet();
+    static readonly FrozenSet<(int h, int k, int l)> directionB = new [] { (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1), (0, 1, 0), (0, -1, 0) }.ToFrozenSet();
+    static readonly FrozenSet<(int h, int k, int l)> directionC = new [] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 0, 1), (0, 0, -1) }.ToFrozenSet();
+    static readonly FrozenSet<(int h, int k, int l)> directionI = new [] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1) }.ToFrozenSet();
+    static readonly FrozenSet<(int h, int k, int l)> directionRH = new [] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) }.ToFrozenSet();
+    static readonly FrozenSet<(int h, int k, int l)> directionHex = new [] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) }.ToFrozenSet();
+    static readonly FrozenSet<(int h, int k, int l)> directionP = new [] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) }.ToFrozenSet();
 
-    readonly Dictionary<(int H, int K, int L), Vector3DBase> gDic = new();
+    readonly Dictionary<(int H, int K, int L), Vector3DBase> gDic = [];
     static int compose(in int h, in int k, in int l) => ((h + 255) << 20) + ((k + 255) << 10) + l + 255;
     static int compose(in (int h, int k, int l) index) => ((index.h + 255) << 20) + ((index.k + 255) << 10) + index.l + 255;
     static (int h, int k, int l) decompose(in int key) => ((key >> 20) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
@@ -1722,7 +1722,7 @@ public class BetheMethod
         if (maxNumOfBloch == -1)
             maxNumOfBloch = MaxNumOfBloch;
         var mat = baseRotation * Crystal.MatrixInverse.Transpose();
-        var direction = Array.Empty<(int h, int k, int l)>();
+        FrozenSet<(int h, int k, int l)> direction;
 
         #region directionを初期化
         if (Crystal.Symmetry.LatticeTypeStr == "F") direction = directionF;
@@ -1818,7 +1818,7 @@ public class BetheMethod
             }
         beams.RemoveRange(n, beams.Count - n);
 
-        return beams.ToArray();
+        return [.. beams];
     }
 
     #endregion
@@ -2023,37 +2023,26 @@ public class BetheMethod
     #endregion
 
     #region CBED_Diskクラス
-    public class CBED_Disk
+    public class CBED_Disk(int[] hkl, Vector3DBase vec, double thickness, Complex[] amplitudes)
     {
         /// <summary>
         /// 指数
         /// </summary>
-        public readonly int H, K, L;
+        public readonly int H = hkl[0], K = hkl[1], L = hkl[2];
 
         /// <summary>
         /// 厚み
         /// </summary>
-        public readonly double Thickness;
+        public readonly double Thickness = thickness;
 
-        public readonly Vector3DBase G;
+        public readonly Vector3DBase G = vec;
 
         /// <summary>
         /// 振幅を格納した配列
         /// </summary>
         public Complex[] Amplitudes;
 
-        public readonly Complex[] RawAmplitudes;
-
-        public CBED_Disk(int[] hkl, Vector3DBase vec, double thickness, Complex[] amplitudes)
-        {
-            H = hkl[0];
-            K = hkl[1];
-            L = hkl[2];
-            G = vec;
-            Thickness = thickness;
-            //Amplitudes = amplitudes;
-            RawAmplitudes = amplitudes;
-        }
+        public readonly Complex[] RawAmplitudes = amplitudes;
     }
     #endregion
 

@@ -3,6 +3,7 @@ using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra.Factorization;
 using Microsoft.VisualBasic.Devices;
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -1234,10 +1235,12 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
         double gMax = 1 / dMin, gMax2 = gMax * gMax;
-        (int h, int k, int l)[] directions;
+
         #region directionÇèâä˙âª
-        if (excludeLatticeCondition)
-        {
+        var directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) }.ToFrozenSet();
+
+        //if (excludeLatticeCondition)
+        //{
             //if (Symmetry.LatticeTypeStr == "F")
             //    directions = new [] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) };
             //else if (Symmetry.LatticeTypeStr == "A")
@@ -1253,10 +1256,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             //else if (Symmetry.CrystalSystemStr == "trigonal" || Symmetry.CrystalSystemStr == "hexagonal")
             //    directions = new [] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) };
             //else
-            directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)ÇÕèúÇ¢ÇƒÇ®Ç≠
-        }
-        else
-            directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)ÇÕèúÇ¢ÇƒÇ®Ç≠
+            //directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)ÇÕèúÇ¢ÇƒÇ®Ç≠
+        //}
+        //else
+           // directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)ÇÕèúÇ¢ÇƒÇ®Ç≠
 
         #endregion
 

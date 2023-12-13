@@ -34,6 +34,7 @@ public static partial class NativeWrapper
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _PointwiseMultiply(int dim, double* mat1, double* mat2, double* result);
+    
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _AdjointAndMultiply(int dim, double* mat1, double* mat2, double* result);
     [LibraryImport("Crystallography.Native.dll")]
@@ -71,8 +72,8 @@ public static partial class NativeWrapper
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _Inverse_Real(int dim, double* mat, double* matInv);
 
-    [LibraryImport("Crystallography.Native.dll")]
-    private static unsafe partial void _EigenSolver(int dim, double[] mat, double[] eigenValues, double[] eigenVectors);
+    //[LibraryImport("Crystallography.Native.dll")]
+    //private static unsafe partial void _EigenSolver(int dim, in double[] mat, in double[] eigenValues, double[] eigenVectors);
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _EigenSolver(int dim, double* mat, double* eigenValues, double* eigenVectors);
