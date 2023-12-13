@@ -125,6 +125,7 @@ public partial class SymmetryControl : UserControl
             checkBoxShowError.Checked = value;
             SkipEvent = false;
             tableLayoutPanel1.ColumnStyles[2].Width = tableLayoutPanel1.ColumnStyles[6].Width = checkBoxShowError.Checked ? 25 : 0;
+            numericBoxAErr.TabStop = numericBoxBErr.TabStop = numericBoxCErr.TabStop = numericBoxAlphaErr.TabStop = numericBoxBetaErr.TabStop = numericBoxGammaErr.TabStop = value;
         }
     }
 

@@ -1828,9 +1828,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     }
     #endregion
 
-
+    #region 指定した原子(target)の近辺にある原子を探索し、相対座標、距離、ラベルを返す. (絶対座標でないことに注意)
     /// <summary>
-    /// 指定した原子(target)の近辺にある原子を探索し、相対座標、距離、ラベルを返す. (絶対座標でないことに注意)
+    /// 指定した原子(target)の近辺にある原子を探索し、相対座標(絶対座標でないことに注意)、距離、ラベルを返す. 
     /// </summary>
     /// <param name="target"></param>
     /// <param name="maxLength"> nm 単位</param>
@@ -1840,7 +1840,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         Vector3DBase pos = MatrixReal * target.Atom[0];
         var maxLen2 = maxLength * maxLength;
         var result = new List<(double X, double Y, double Z, double Distance, string Label)>();
-        //まず、隣り合った単位格子の原子位置をすべて探索してCoordinatedAtom型のリストに全部入れる
+        //まず、隣り合った単位格子の原子位置をすべて探索してresultリストに全部入れる
         for (int max = 0; max < 8; max++)
         {
             bool flag = false;
@@ -1857,7 +1857,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                                     var diffPos = MatrixReal * (v + new Vector3DBase(xShift, yShift, zShift)) - pos;
                                     if (maxLen2 > (diffPos ).Length2)
                                     {
-
                                         lock (lockObj)
                                         {
                                             result.Add((diffPos.X, diffPos.Y, diffPos.Z, diffPos.Length, atm.Label));
@@ -1874,4 +1873,5 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         result.Sort((a1, a2) => a1.Distance.CompareTo(a2.Distance));
         return result;
     }
+    #endregion
 }

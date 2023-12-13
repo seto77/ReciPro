@@ -51,6 +51,7 @@ public partial class NumericBox : UserControl
     /// </summary>
     public int RoundErrorAccuracy { get; set; } = -1;
 
+
     /// <summary>
     /// UpDownƒ{ƒ^ƒ“‚ð—LŒø‚É‚·‚é‚©‚Ç‚¤‚©
     /// </summary>

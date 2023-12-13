@@ -1,4 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -89,10 +149,10 @@
     <value>10, 0, 0, 0</value>
   </data>
   <data name="numericBoxVolume.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxVolume.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxVolume.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -102,6 +162,9 @@
   </data>
   <data name="numericBoxVolume.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
+  </data>
+  <data name="numericBoxVolume.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -149,10 +212,10 @@
     <value>10, 0, 0, 0</value>
   </data>
   <data name="numericBoxCellMass.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxCellMass.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxCellMass.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -162,6 +225,9 @@
   </data>
   <data name="numericBoxCellMass.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
+  </data>
+  <data name="numericBoxCellMass.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCellMass.ToolTip" xml:space="preserve">
     <value>Cell mass in 10⁻²⁴ g</value>
@@ -206,10 +272,10 @@
     <value>10, 0, 0, 0</value>
   </data>
   <data name="numericBoxMolarVolume.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxMolarVolume.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxMolarVolume.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -219,6 +285,9 @@
   </data>
   <data name="numericBoxMolarVolume.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
+  </data>
+  <data name="numericBoxMolarVolume.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxMolarVolume.ToolTip" xml:space="preserve">
     <value>Molar Volume in cm³/mol</value>
@@ -263,10 +332,10 @@
     <value>10, 0, 0, 0</value>
   </data>
   <data name="numericBoxMolarMass.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxMolarMass.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxMolarMass.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -276,6 +345,9 @@
   </data>
   <data name="numericBoxMolarMass.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
+  </data>
+  <data name="numericBoxMolarMass.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxMolarMass.ToolTip" xml:space="preserve">
     <value>Molar Mass in g/mol</value>
@@ -320,10 +392,10 @@
     <value>10, 0, 0, 0</value>
   </data>
   <data name="numericBoxDensity.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxDensity.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxDensity.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -333,6 +405,9 @@
   </data>
   <data name="numericBoxDensity.TabIndex" type="System.Int32, mscorlib">
     <value>95</value>
+  </data>
+  <data name="numericBoxDensity.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxDensity.ToolTip" xml:space="preserve">
     <value>Density in g/cm³</value>
@@ -1152,10 +1227,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStrain33.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStrain33.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1165,6 +1240,9 @@
   </data>
   <data name="numericBoxStrain33.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="numericBoxStrain33.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain33.Name" xml:space="preserve">
     <value>numericBoxStrain33</value>
@@ -1191,10 +1269,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxHill.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxHill.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxHill.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1204,6 +1282,9 @@
   </data>
   <data name="numericBoxHill.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
+  </data>
+  <data name="numericBoxHill.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxHill.Name" xml:space="preserve">
     <value>numericBoxHill</value>
@@ -1807,10 +1888,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStress33.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStress33.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1820,6 +1901,9 @@
   </data>
   <data name="numericBoxStress33.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
+  </data>
+  <data name="numericBoxStress33.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStress33.Name" xml:space="preserve">
     <value>numericBoxStress33</value>
@@ -1846,10 +1930,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStress22.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStress22.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1859,6 +1943,9 @@
   </data>
   <data name="numericBoxStress22.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
+  </data>
+  <data name="numericBoxStress22.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStress22.Name" xml:space="preserve">
     <value>numericBoxStress22</value>
@@ -1885,10 +1972,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStress11.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStress11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1898,6 +1985,9 @@
   </data>
   <data name="numericBoxStress11.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="numericBoxStress11.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStress11.Name" xml:space="preserve">
     <value>numericBoxStress11</value>
@@ -1924,10 +2014,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStress23.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStress23.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1937,6 +2027,9 @@
   </data>
   <data name="numericBoxStress23.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxStress23.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStress23.Name" xml:space="preserve">
     <value>numericBoxStress23</value>
@@ -1963,10 +2056,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStress13.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStress13.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1976,6 +2069,9 @@
   </data>
   <data name="numericBoxStress13.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
+  </data>
+  <data name="numericBoxStress13.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStress13.Name" xml:space="preserve">
     <value>numericBoxStress13</value>
@@ -2002,10 +2098,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStress12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStress12.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStress12.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2015,6 +2111,9 @@
   </data>
   <data name="numericBoxStress12.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="numericBoxStress12.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStress12.Name" xml:space="preserve">
     <value>numericBoxStress12</value>
@@ -2041,10 +2140,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStrain11.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStrain11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2054,6 +2153,9 @@
   </data>
   <data name="numericBoxStrain11.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="numericBoxStrain11.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain11.Name" xml:space="preserve">
     <value>numericBoxStrain11</value>
@@ -2080,10 +2182,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStrain22.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStrain22.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2093,6 +2195,9 @@
   </data>
   <data name="numericBoxStrain22.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="numericBoxStrain22.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain22.Name" xml:space="preserve">
     <value>numericBoxStrain22</value>
@@ -2119,10 +2224,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStrain12.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStrain12.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2132,6 +2237,9 @@
   </data>
   <data name="numericBoxStrain12.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxStrain12.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain12.Name" xml:space="preserve">
     <value>numericBoxStrain12</value>
@@ -2158,10 +2266,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStrain23.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStrain23.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2171,6 +2279,9 @@
   </data>
   <data name="numericBoxStrain23.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="numericBoxStrain23.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain23.Name" xml:space="preserve">
     <value>numericBoxStrain23</value>
@@ -2197,10 +2308,10 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxStrain13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxStrain13.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxStrain13.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2210,6 +2321,9 @@
   </data>
   <data name="numericBoxStrain13.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="numericBoxStrain13.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain13.Name" xml:space="preserve">
     <value>numericBoxStrain13</value>
@@ -2887,10 +3001,10 @@
     <value>4, 0, 0, 0</value>
   </data>
   <data name="numericBoxZnumber.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxZnumber.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxZnumber.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2900,6 +3014,9 @@
   </data>
   <data name="numericBoxZnumber.TabIndex" type="System.Int32, mscorlib">
     <value>95</value>
+  </data>
+  <data name="numericBoxZnumber.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
     <value>Z (Number of formula in the unit cell)</value>

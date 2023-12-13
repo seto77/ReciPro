@@ -28,1245 +28,1168 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalControl));
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPageBasicInfo = new System.Windows.Forms.TabPage();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.numericBoxVolume = new Crystallography.Controls.NumericBox();
-            this.numericBoxCellMass = new Crystallography.Controls.NumericBox();
-            this.numericBoxMolarVolume = new Crystallography.Controls.NumericBox();
-            this.numericBoxMolarMass = new Crystallography.Controls.NumericBox();
-            this.numericBoxDensity = new Crystallography.Controls.NumericBox();
-            this.colorControl = new Crystallography.Controls.ColorControl();
-            this.symmetryControl = new Crystallography.Controls.SymmetryControl();
-            this.tabPageAtom = new System.Windows.Forms.TabPage();
-            this.atomControl = new Crystallography.Controls.AtomControl();
-            this.panelAtom = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPageBondsPolyhedra = new System.Windows.Forms.TabPage();
-            this.bondControl = new Crystallography.Controls.BondInputControl();
-            this.tabPageReference = new System.Windows.Forms.TabPage();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBoxTitle = new System.Windows.Forms.TextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBoxAuthor = new System.Windows.Forms.TextBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.textBoxJournal = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBoxMemo = new System.Windows.Forms.TextBox();
-            this.tabPageEOS = new System.Windows.Forms.TabPage();
-            this.eosControl = new Crystallography.Controls.EOSControl();
-            this.tabPageElasticity = new System.Windows.Forms.TabPage();
-            this.elasticityControl1 = new Crystallography.Controls.ElasticityControl();
-            this.tabPageStrainStress = new System.Windows.Forms.TabPage();
-            this.buttonStressSet = new System.Windows.Forms.Button();
-            this.numericBoxStrain33 = new Crystallography.Controls.NumericBox();
-            this.numericBoxHill = new Crystallography.Controls.NumericBox();
-            this.label116 = new System.Windows.Forms.Label();
-            this.label117 = new System.Windows.Forms.Label();
-            this.label109 = new System.Windows.Forms.Label();
-            this.label110 = new System.Windows.Forms.Label();
-            this.label111 = new System.Windows.Forms.Label();
-            this.label112 = new System.Windows.Forms.Label();
-            this.label113 = new System.Windows.Forms.Label();
-            this.label114 = new System.Windows.Forms.Label();
-            this.label115 = new System.Windows.Forms.Label();
-            this.label102 = new System.Windows.Forms.Label();
-            this.label103 = new System.Windows.Forms.Label();
-            this.label104 = new System.Windows.Forms.Label();
-            this.label105 = new System.Windows.Forms.Label();
-            this.label106 = new System.Windows.Forms.Label();
-            this.label107 = new System.Windows.Forms.Label();
-            this.label108 = new System.Windows.Forms.Label();
-            this.numericBoxStress33 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStress22 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStress11 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStress23 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStress13 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStress12 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStrain11 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStrain22 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStrain12 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStrain23 = new Crystallography.Controls.NumericBox();
-            this.numericBoxStrain13 = new Crystallography.Controls.NumericBox();
-            this.tabPagePolycrystalline = new System.Windows.Forms.TabPage();
-            this.contextMenuStripPoleFigure = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asTXTFileAllEulerAngleAndDensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.poleFigureControl = new Crystallography.Controls.PoleFigureControl();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonGenerateRandomOrientations = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDownAngleResolution = new System.Windows.Forms.NumericUpDown();
-            this.label29 = new System.Windows.Forms.Label();
-            this.numericUpDownAngleSubDivision = new System.Windows.Forms.NumericUpDown();
-            this.label101 = new System.Windows.Forms.Label();
-            this.numericUpDownCrystallineSize = new System.Windows.Forms.NumericUpDown();
-            this.label99 = new System.Windows.Forms.Label();
-            this.tabPageBounds = new System.Windows.Forms.TabPage();
-            this.boundControl = new Crystallography.Controls.BoundControl();
-            this.tabPageLatticePlane = new System.Windows.Forms.TabPage();
-            this.latticePlaneControl = new Crystallography.Controls.LatticePlaneControl();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBoxFormula = new System.Windows.Forms.TextBox();
-            this.numericBoxZnumber = new Crystallography.Controls.NumericBox();
-            this.label90 = new System.Windows.Forms.Label();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.scatteringFactorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.symmetryInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.importCrystalFromCIFAMCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportThisCrystalAsCIFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sendThisCrystalToOtherSoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.revertCellConstantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.strainControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.convertToP1SymmetryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.convertToSuperstructureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.convertToAnotherSpacegroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonScatteringFactor = new System.Windows.Forms.Button();
-            this.buttonSymmetryInfo = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.tabControl.SuspendLayout();
-            this.tabPageBasicInfo.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            this.tabPageAtom.SuspendLayout();
-            this.panelAtom.SuspendLayout();
-            this.contextMenuStrip2.SuspendLayout();
-            this.tabPageBondsPolyhedra.SuspendLayout();
-            this.tabPageReference.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.tabPageEOS.SuspendLayout();
-            this.tabPageElasticity.SuspendLayout();
-            this.tabPageStrainStress.SuspendLayout();
-            this.tabPagePolycrystalline.SuspendLayout();
-            this.contextMenuStripPoleFigure.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAngleResolution)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAngleSubDivision)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCrystallineSize)).BeginInit();
-            this.tabPageBounds.SuspendLayout();
-            this.tabPageLatticePlane.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.contextMenuStrip.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.SuspendLayout();
+            tabControl = new System.Windows.Forms.TabControl();
+            tabPageBasicInfo = new System.Windows.Forms.TabPage();
+            panel5 = new System.Windows.Forms.Panel();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxVolume = new NumericBox();
+            numericBoxCellMass = new NumericBox();
+            numericBoxMolarVolume = new NumericBox();
+            numericBoxMolarMass = new NumericBox();
+            numericBoxDensity = new NumericBox();
+            colorControl = new ColorControl();
+            symmetryControl = new SymmetryControl();
+            tabPageAtom = new System.Windows.Forms.TabPage();
+            atomControl = new AtomControl();
+            panelAtom = new System.Windows.Forms.Panel();
+            panel3 = new System.Windows.Forms.Panel();
+            contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(components);
+            resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            tabPageBondsPolyhedra = new System.Windows.Forms.TabPage();
+            bondControl = new BondInputControl();
+            tabPageReference = new System.Windows.Forms.TabPage();
+            groupBox8 = new System.Windows.Forms.GroupBox();
+            textBoxTitle = new System.Windows.Forms.TextBox();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            textBoxAuthor = new System.Windows.Forms.TextBox();
+            groupBox7 = new System.Windows.Forms.GroupBox();
+            textBoxJournal = new System.Windows.Forms.TextBox();
+            groupBox5 = new System.Windows.Forms.GroupBox();
+            textBoxMemo = new System.Windows.Forms.TextBox();
+            tabPageEOS = new System.Windows.Forms.TabPage();
+            eosControl = new EOSControl();
+            tabPageElasticity = new System.Windows.Forms.TabPage();
+            elasticityControl1 = new ElasticityControl();
+            tabPageStrainStress = new System.Windows.Forms.TabPage();
+            buttonStressSet = new System.Windows.Forms.Button();
+            numericBoxStrain33 = new NumericBox();
+            numericBoxHill = new NumericBox();
+            label116 = new System.Windows.Forms.Label();
+            label117 = new System.Windows.Forms.Label();
+            label109 = new System.Windows.Forms.Label();
+            label110 = new System.Windows.Forms.Label();
+            label111 = new System.Windows.Forms.Label();
+            label112 = new System.Windows.Forms.Label();
+            label113 = new System.Windows.Forms.Label();
+            label114 = new System.Windows.Forms.Label();
+            label115 = new System.Windows.Forms.Label();
+            label102 = new System.Windows.Forms.Label();
+            label103 = new System.Windows.Forms.Label();
+            label104 = new System.Windows.Forms.Label();
+            label105 = new System.Windows.Forms.Label();
+            label106 = new System.Windows.Forms.Label();
+            label107 = new System.Windows.Forms.Label();
+            label108 = new System.Windows.Forms.Label();
+            numericBoxStress33 = new NumericBox();
+            numericBoxStress22 = new NumericBox();
+            numericBoxStress11 = new NumericBox();
+            numericBoxStress23 = new NumericBox();
+            numericBoxStress13 = new NumericBox();
+            numericBoxStress12 = new NumericBox();
+            numericBoxStrain11 = new NumericBox();
+            numericBoxStrain22 = new NumericBox();
+            numericBoxStrain12 = new NumericBox();
+            numericBoxStrain23 = new NumericBox();
+            numericBoxStrain13 = new NumericBox();
+            tabPagePolycrystalline = new System.Windows.Forms.TabPage();
+            contextMenuStripPoleFigure = new System.Windows.Forms.ContextMenuStrip(components);
+            readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            asTXTFileAllEulerAngleAndDensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            poleFigureControl = new PoleFigureControl();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            buttonGenerateRandomOrientations = new System.Windows.Forms.Button();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            label5 = new System.Windows.Forms.Label();
+            numericUpDownAngleResolution = new System.Windows.Forms.NumericUpDown();
+            label29 = new System.Windows.Forms.Label();
+            numericUpDownAngleSubDivision = new System.Windows.Forms.NumericUpDown();
+            label101 = new System.Windows.Forms.Label();
+            numericUpDownCrystallineSize = new System.Windows.Forms.NumericUpDown();
+            label99 = new System.Windows.Forms.Label();
+            tabPageBounds = new System.Windows.Forms.TabPage();
+            boundControl = new BoundControl();
+            tabPageLatticePlane = new System.Windows.Forms.TabPage();
+            latticePlaneControl = new LatticePlaneControl();
+            panel1 = new System.Windows.Forms.Panel();
+            textBoxFormula = new System.Windows.Forms.TextBox();
+            numericBoxZnumber = new NumericBox();
+            label90 = new System.Windows.Forms.Label();
+            contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
+            scatteringFactorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            symmetryInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            importCrystalFromCIFAMCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            exportThisCrystalAsCIFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            sendThisCrystalToOtherSoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            revertCellConstantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            strainControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            convertToP1SymmetryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            convertToSuperstructureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            convertToAnotherSpacegroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            textBoxName = new System.Windows.Forms.TextBox();
+            label22 = new System.Windows.Forms.Label();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            buttonScatteringFactor = new System.Windows.Forms.Button();
+            buttonSymmetryInfo = new System.Windows.Forms.Button();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            panel4 = new System.Windows.Forms.Panel();
+            tabControl.SuspendLayout();
+            tabPageBasicInfo.SuspendLayout();
+            panel5.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            tabPageAtom.SuspendLayout();
+            panelAtom.SuspendLayout();
+            contextMenuStrip2.SuspendLayout();
+            tabPageBondsPolyhedra.SuspendLayout();
+            tabPageReference.SuspendLayout();
+            groupBox8.SuspendLayout();
+            groupBox6.SuspendLayout();
+            groupBox7.SuspendLayout();
+            groupBox5.SuspendLayout();
+            tabPageEOS.SuspendLayout();
+            tabPageElasticity.SuspendLayout();
+            tabPageStrainStress.SuspendLayout();
+            tabPagePolycrystalline.SuspendLayout();
+            contextMenuStripPoleFigure.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAngleResolution).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAngleSubDivision).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownCrystallineSize).BeginInit();
+            tabPageBounds.SuspendLayout();
+            tabPageLatticePlane.SuspendLayout();
+            panel1.SuspendLayout();
+            contextMenuStrip.SuspendLayout();
+            panel4.SuspendLayout();
+            SuspendLayout();
             // 
             // tabControl
             // 
-            this.tabControl.AllowDrop = true;
-            this.tabControl.Controls.Add(this.tabPageBasicInfo);
-            this.tabControl.Controls.Add(this.tabPageAtom);
-            this.tabControl.Controls.Add(this.tabPageBondsPolyhedra);
-            this.tabControl.Controls.Add(this.tabPageReference);
-            this.tabControl.Controls.Add(this.tabPageEOS);
-            this.tabControl.Controls.Add(this.tabPageElasticity);
-            this.tabControl.Controls.Add(this.tabPageStrainStress);
-            this.tabControl.Controls.Add(this.tabPagePolycrystalline);
-            this.tabControl.Controls.Add(this.tabPageBounds);
-            this.tabControl.Controls.Add(this.tabPageLatticePlane);
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.HotTrack = true;
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormCrystal_DragDrop);
-            this.tabControl.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormCrystal_DragEnter);
+            tabControl.AllowDrop = true;
+            tabControl.Controls.Add(tabPageBasicInfo);
+            tabControl.Controls.Add(tabPageAtom);
+            tabControl.Controls.Add(tabPageBondsPolyhedra);
+            tabControl.Controls.Add(tabPageReference);
+            tabControl.Controls.Add(tabPageEOS);
+            tabControl.Controls.Add(tabPageElasticity);
+            tabControl.Controls.Add(tabPageStrainStress);
+            tabControl.Controls.Add(tabPagePolycrystalline);
+            tabControl.Controls.Add(tabPageBounds);
+            tabControl.Controls.Add(tabPageLatticePlane);
+            resources.ApplyResources(tabControl, "tabControl");
+            tabControl.HotTrack = true;
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.DragDrop += FormCrystal_DragDrop;
+            tabControl.DragEnter += FormCrystal_DragEnter;
             // 
             // tabPageBasicInfo
             // 
-            this.tabPageBasicInfo.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageBasicInfo.Controls.Add(this.panel5);
-            resources.ApplyResources(this.tabPageBasicInfo, "tabPageBasicInfo");
-            this.tabPageBasicInfo.Name = "tabPageBasicInfo";
-            this.toolTip.SetToolTip(this.tabPageBasicInfo, resources.GetString("tabPageBasicInfo.ToolTip"));
+            tabPageBasicInfo.BackColor = System.Drawing.SystemColors.Control;
+            tabPageBasicInfo.Controls.Add(panel5);
+            resources.ApplyResources(tabPageBasicInfo, "tabPageBasicInfo");
+            tabPageBasicInfo.Name = "tabPageBasicInfo";
+            toolTip.SetToolTip(tabPageBasicInfo, resources.GetString("tabPageBasicInfo.ToolTip"));
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.flowLayoutPanel4);
-            this.panel5.Controls.Add(this.symmetryControl);
-            resources.ApplyResources(this.panel5, "panel5");
-            this.panel5.Name = "panel5";
+            panel5.Controls.Add(flowLayoutPanel4);
+            panel5.Controls.Add(symmetryControl);
+            resources.ApplyResources(panel5, "panel5");
+            panel5.Name = "panel5";
             // 
             // flowLayoutPanel4
             // 
-            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
-            this.flowLayoutPanel4.Controls.Add(this.numericBoxVolume);
-            this.flowLayoutPanel4.Controls.Add(this.numericBoxCellMass);
-            this.flowLayoutPanel4.Controls.Add(this.numericBoxMolarVolume);
-            this.flowLayoutPanel4.Controls.Add(this.numericBoxMolarMass);
-            this.flowLayoutPanel4.Controls.Add(this.numericBoxDensity);
-            this.flowLayoutPanel4.Controls.Add(this.colorControl);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(numericBoxVolume);
+            flowLayoutPanel4.Controls.Add(numericBoxCellMass);
+            flowLayoutPanel4.Controls.Add(numericBoxMolarVolume);
+            flowLayoutPanel4.Controls.Add(numericBoxMolarMass);
+            flowLayoutPanel4.Controls.Add(numericBoxDensity);
+            flowLayoutPanel4.Controls.Add(colorControl);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // numericBoxVolume
             // 
-            resources.ApplyResources(this.numericBoxVolume, "numericBoxVolume");
-            this.numericBoxVolume.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxVolume.DecimalPlaces = 4;
-            this.numericBoxVolume.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxVolume.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxVolume.Name = "numericBoxVolume";
-            this.numericBoxVolume.ReadOnly = true;
-            this.numericBoxVolume.RestrictLimitValue = false;
-            this.numericBoxVolume.RoundErrorAccuracy = -1;
-            this.numericBoxVolume.SkipEventDuringInput = false;
-            this.numericBoxVolume.SmartIncrement = true;
-            this.numericBoxVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxVolume.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolTip.SetToolTip(this.numericBoxVolume, resources.GetString("numericBoxVolume.ToolTip"));
+            resources.ApplyResources(numericBoxVolume, "numericBoxVolume");
+            numericBoxVolume.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxVolume.DecimalPlaces = 4;
+            numericBoxVolume.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxVolume.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxVolume.Name = "numericBoxVolume";
+            numericBoxVolume.ReadOnly = true;
+            numericBoxVolume.RestrictLimitValue = false;
+            numericBoxVolume.RoundErrorAccuracy = -1;
+            numericBoxVolume.SkipEventDuringInput = false;
+            numericBoxVolume.SmartIncrement = true;
+            numericBoxVolume.TabStop = false;
+            numericBoxVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            toolTip.SetToolTip(numericBoxVolume, resources.GetString("numericBoxVolume.ToolTip"));
             // 
             // numericBoxCellMass
             // 
-            resources.ApplyResources(this.numericBoxCellMass, "numericBoxCellMass");
-            this.numericBoxCellMass.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellMass.DecimalPlaces = 4;
-            this.numericBoxCellMass.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellMass.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellMass.Name = "numericBoxCellMass";
-            this.numericBoxCellMass.ReadOnly = true;
-            this.numericBoxCellMass.RestrictLimitValue = false;
-            this.numericBoxCellMass.RoundErrorAccuracy = -1;
-            this.numericBoxCellMass.SkipEventDuringInput = false;
-            this.numericBoxCellMass.SmartIncrement = true;
-            this.numericBoxCellMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellMass.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolTip.SetToolTip(this.numericBoxCellMass, resources.GetString("numericBoxCellMass.ToolTip"));
+            resources.ApplyResources(numericBoxCellMass, "numericBoxCellMass");
+            numericBoxCellMass.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellMass.DecimalPlaces = 4;
+            numericBoxCellMass.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellMass.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellMass.Name = "numericBoxCellMass";
+            numericBoxCellMass.ReadOnly = true;
+            numericBoxCellMass.RestrictLimitValue = false;
+            numericBoxCellMass.RoundErrorAccuracy = -1;
+            numericBoxCellMass.SkipEventDuringInput = false;
+            numericBoxCellMass.SmartIncrement = true;
+            numericBoxCellMass.TabStop = false;
+            numericBoxCellMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            toolTip.SetToolTip(numericBoxCellMass, resources.GetString("numericBoxCellMass.ToolTip"));
             // 
             // numericBoxMolarVolume
             // 
-            resources.ApplyResources(this.numericBoxMolarVolume, "numericBoxMolarVolume");
-            this.numericBoxMolarVolume.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarVolume.DecimalPlaces = 4;
-            this.numericBoxMolarVolume.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarVolume.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarVolume.Name = "numericBoxMolarVolume";
-            this.numericBoxMolarVolume.ReadOnly = true;
-            this.numericBoxMolarVolume.RestrictLimitValue = false;
-            this.numericBoxMolarVolume.RoundErrorAccuracy = -1;
-            this.numericBoxMolarVolume.SkipEventDuringInput = false;
-            this.numericBoxMolarVolume.SmartIncrement = true;
-            this.numericBoxMolarVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarVolume.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolTip.SetToolTip(this.numericBoxMolarVolume, resources.GetString("numericBoxMolarVolume.ToolTip"));
+            resources.ApplyResources(numericBoxMolarVolume, "numericBoxMolarVolume");
+            numericBoxMolarVolume.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMolarVolume.DecimalPlaces = 4;
+            numericBoxMolarVolume.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMolarVolume.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMolarVolume.Name = "numericBoxMolarVolume";
+            numericBoxMolarVolume.ReadOnly = true;
+            numericBoxMolarVolume.RestrictLimitValue = false;
+            numericBoxMolarVolume.RoundErrorAccuracy = -1;
+            numericBoxMolarVolume.SkipEventDuringInput = false;
+            numericBoxMolarVolume.SmartIncrement = true;
+            numericBoxMolarVolume.TabStop = false;
+            numericBoxMolarVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            toolTip.SetToolTip(numericBoxMolarVolume, resources.GetString("numericBoxMolarVolume.ToolTip"));
             // 
             // numericBoxMolarMass
             // 
-            resources.ApplyResources(this.numericBoxMolarMass, "numericBoxMolarMass");
-            this.numericBoxMolarMass.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarMass.DecimalPlaces = 4;
-            this.numericBoxMolarMass.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarMass.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarMass.Name = "numericBoxMolarMass";
-            this.numericBoxMolarMass.ReadOnly = true;
-            this.numericBoxMolarMass.RestrictLimitValue = false;
-            this.numericBoxMolarMass.RoundErrorAccuracy = -1;
-            this.numericBoxMolarMass.SkipEventDuringInput = false;
-            this.numericBoxMolarMass.SmartIncrement = true;
-            this.numericBoxMolarMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolTip.SetToolTip(this.numericBoxMolarMass, resources.GetString("numericBoxMolarMass.ToolTip"));
+            resources.ApplyResources(numericBoxMolarMass, "numericBoxMolarMass");
+            numericBoxMolarMass.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMolarMass.DecimalPlaces = 4;
+            numericBoxMolarMass.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMolarMass.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMolarMass.Name = "numericBoxMolarMass";
+            numericBoxMolarMass.ReadOnly = true;
+            numericBoxMolarMass.RestrictLimitValue = false;
+            numericBoxMolarMass.RoundErrorAccuracy = -1;
+            numericBoxMolarMass.SkipEventDuringInput = false;
+            numericBoxMolarMass.SmartIncrement = true;
+            numericBoxMolarMass.TabStop = false;
+            numericBoxMolarMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            toolTip.SetToolTip(numericBoxMolarMass, resources.GetString("numericBoxMolarMass.ToolTip"));
             // 
             // numericBoxDensity
             // 
-            resources.ApplyResources(this.numericBoxDensity, "numericBoxDensity");
-            this.numericBoxDensity.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxDensity.DecimalPlaces = 4;
-            this.numericBoxDensity.Name = "numericBoxDensity";
-            this.numericBoxDensity.ReadOnly = true;
-            this.numericBoxDensity.RoundErrorAccuracy = -1;
-            this.numericBoxDensity.SkipEventDuringInput = false;
-            this.numericBoxDensity.SmartIncrement = true;
-            this.numericBoxDensity.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDensity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDensity.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
+            resources.ApplyResources(numericBoxDensity, "numericBoxDensity");
+            numericBoxDensity.BackColor = System.Drawing.Color.Transparent;
+            numericBoxDensity.DecimalPlaces = 4;
+            numericBoxDensity.Name = "numericBoxDensity";
+            numericBoxDensity.ReadOnly = true;
+            numericBoxDensity.RoundErrorAccuracy = -1;
+            numericBoxDensity.SkipEventDuringInput = false;
+            numericBoxDensity.SmartIncrement = true;
+            numericBoxDensity.TabStop = false;
+            numericBoxDensity.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDensity.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
             // 
             // colorControl
             // 
-            this.colorControl.Argb = -986896;
-            resources.ApplyResources(this.colorControl, "colorControl");
-            this.colorControl.Blue = 240;
-            this.colorControl.BlueF = 0.9411765F;
-            this.colorControl.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControl.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.colorControl.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControl.Green = 240;
-            this.colorControl.GreenF = 0.9411765F;
-            this.colorControl.Name = "colorControl";
-            this.colorControl.Red = 240;
-            this.colorControl.RedF = 0.9411765F;
-            this.toolTip.SetToolTip(this.colorControl, resources.GetString("colorControl.ToolTip1"));
+            colorControl.Argb = -986896;
+            resources.ApplyResources(colorControl, "colorControl");
+            colorControl.Blue = 240;
+            colorControl.BlueF = 0.9411765F;
+            colorControl.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl.Color = System.Drawing.Color.FromArgb(240, 240, 240);
+            colorControl.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl.Green = 240;
+            colorControl.GreenF = 0.9411765F;
+            colorControl.Name = "colorControl";
+            colorControl.Red = 240;
+            colorControl.RedF = 0.9411765F;
+            toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip1"));
             // 
             // symmetryControl
             // 
-            this.symmetryControl.A = 0D;
-            this.symmetryControl.Alpha = 0D;
-            this.symmetryControl.B = 0D;
-            this.symmetryControl.Beta = 0D;
-            this.symmetryControl.C = 0D;
-            resources.ApplyResources(this.symmetryControl, "symmetryControl");
-            this.symmetryControl.Gamma = 0D;
-            this.symmetryControl.Name = "symmetryControl";
-            this.symmetryControl.ShowError = false;
-            this.symmetryControl.SkipEvent = false;
-            this.symmetryControl.SymmetrySeriesNumber = 0;
-            this.symmetryControl.ItemChanged += new System.EventHandler(this.symmetryControl_ItemChanged);
+            symmetryControl.A = 0D;
+            symmetryControl.Alpha = 0D;
+            symmetryControl.B = 0D;
+            symmetryControl.Beta = 0D;
+            symmetryControl.C = 0D;
+            resources.ApplyResources(symmetryControl, "symmetryControl");
+            symmetryControl.Gamma = 0D;
+            symmetryControl.Name = "symmetryControl";
+            symmetryControl.ShowError = false;
+            symmetryControl.SkipEvent = false;
+            symmetryControl.SymmetrySeriesNumber = 0;
+            symmetryControl.ItemChanged += symmetryControl_ItemChanged;
             // 
             // tabPageAtom
             // 
-            this.tabPageAtom.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageAtom.Controls.Add(this.atomControl);
-            this.tabPageAtom.Controls.Add(this.panelAtom);
-            resources.ApplyResources(this.tabPageAtom, "tabPageAtom");
-            this.tabPageAtom.Name = "tabPageAtom";
-            this.toolTip.SetToolTip(this.tabPageAtom, resources.GetString("tabPageAtom.ToolTip"));
+            tabPageAtom.BackColor = System.Drawing.SystemColors.Control;
+            tabPageAtom.Controls.Add(atomControl);
+            tabPageAtom.Controls.Add(panelAtom);
+            resources.ApplyResources(tabPageAtom, "tabPageAtom");
+            tabPageAtom.Name = "tabPageAtom";
+            toolTip.SetToolTip(tabPageAtom, resources.GetString("tabPageAtom.ToolTip"));
             // 
             // atomControl
             // 
-            this.atomControl.Alpha = 0F;
-            this.atomControl.Ambient = 0F;
-            this.atomControl.Aniso11 = 0D;
-            this.atomControl.Aniso11Err = 0D;
-            this.atomControl.Aniso12 = 0D;
-            this.atomControl.Aniso12Err = 0D;
-            this.atomControl.Aniso13 = 0D;
-            this.atomControl.Aniso13Err = 0D;
-            this.atomControl.Aniso22 = 0D;
-            this.atomControl.Aniso22Err = 0D;
-            this.atomControl.Aniso23 = 0D;
-            this.atomControl.Aniso23Err = 0D;
-            this.atomControl.Aniso33 = 0D;
-            this.atomControl.Aniso33Err = 0D;
-            this.atomControl.AppearanceTabVisible = false;
-            this.atomControl.AtomColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.atomControl.AtomicPositionError = false;
-            this.atomControl.AtomNo = 0;
-            this.atomControl.AtomSubNoElectron = -1;
-            this.atomControl.AtomSubNoXray = -1;
-            resources.ApplyResources(this.atomControl, "atomControl");
-            this.atomControl.Crystal = null;
-            this.atomControl.DebyeWallerError = false;
-            this.atomControl.DebyeWallerTabVisible = true;
-            this.atomControl.Diffusion = 0F;
-            this.atomControl.ElementAndPositionTabVisible = true;
-            this.atomControl.Emission = 0F;
-            this.atomControl.Iso = 0D;
-            this.atomControl.IsoErr = 0D;
-            this.atomControl.IsotopicComposition = null;
-            this.atomControl.Label = "";
-            this.atomControl.Name = "atomControl";
-            this.atomControl.Occ = 0D;
-            this.atomControl.OccErr = 0D;
-            this.atomControl.OriginShiftVisible = true;
-            this.atomControl.Radius = 0D;
-            this.atomControl.ScatteringFactorTabVisible = true;
-            this.atomControl.SelectedTabIndex = 0;
-            this.atomControl.Shininess = 0F;
-            this.atomControl.ShowLabel = false;
-            this.atomControl.SkipEvent = false;
-            this.atomControl.Specular = 0F;
-            this.atomControl.UseIsotropy = false;
-            this.atomControl.UseTypeU = false;
-            this.atomControl.X = 0D;
-            this.atomControl.XErr = 0D;
-            this.atomControl.Y = 0D;
-            this.atomControl.YErr = 0D;
-            this.atomControl.Z = 0D;
-            this.atomControl.ZErr = 0D;
-            this.atomControl.ItemsChanged += new System.EventHandler(this.atomControl_AtomsChanged);
+            atomControl.Alpha = 0F;
+            atomControl.Ambient = 0F;
+            atomControl.Aniso11 = 0D;
+            atomControl.Aniso11Err = 0D;
+            atomControl.Aniso12 = 0D;
+            atomControl.Aniso12Err = 0D;
+            atomControl.Aniso13 = 0D;
+            atomControl.Aniso13Err = 0D;
+            atomControl.Aniso22 = 0D;
+            atomControl.Aniso22Err = 0D;
+            atomControl.Aniso23 = 0D;
+            atomControl.Aniso23Err = 0D;
+            atomControl.Aniso33 = 0D;
+            atomControl.Aniso33Err = 0D;
+            atomControl.AppearanceTabVisible = false;
+            atomControl.AtomColor = System.Drawing.Color.FromArgb(240, 240, 240);
+            atomControl.AtomicPositionError = false;
+            atomControl.AtomNo = 0;
+            atomControl.AtomSubNoElectron = -1;
+            atomControl.AtomSubNoXray = -1;
+            resources.ApplyResources(atomControl, "atomControl");
+            atomControl.Crystal = null;
+            atomControl.DebyeWallerError = false;
+            atomControl.DebyeWallerTabVisible = true;
+            atomControl.Diffusion = 0F;
+            atomControl.ElementAndPositionTabVisible = true;
+            atomControl.Emission = 0F;
+            atomControl.Iso = 0D;
+            atomControl.IsoErr = 0D;
+            atomControl.IsotopicComposition = null;
+            atomControl.Label = "";
+            atomControl.Name = "atomControl";
+            atomControl.Occ = 0D;
+            atomControl.OccErr = 0D;
+            atomControl.OriginShiftVisible = true;
+            atomControl.Radius = 0D;
+            atomControl.ScatteringFactorTabVisible = true;
+            atomControl.SelectedTabIndex = 0;
+            atomControl.Shininess = 0F;
+            atomControl.ShowLabel = false;
+            atomControl.SkipEvent = false;
+            atomControl.Specular = 0F;
+            atomControl.UseIsotropy = false;
+            atomControl.UseTypeU = false;
+            atomControl.X = 0D;
+            atomControl.XErr = 0D;
+            atomControl.Y = 0D;
+            atomControl.YErr = 0D;
+            atomControl.Z = 0D;
+            atomControl.ZErr = 0D;
+            atomControl.ItemsChanged += atomControl_AtomsChanged;
             // 
             // panelAtom
             // 
-            resources.ApplyResources(this.panelAtom, "panelAtom");
-            this.panelAtom.Controls.Add(this.panel3);
-            this.panelAtom.Name = "panelAtom";
+            resources.ApplyResources(panelAtom, "panelAtom");
+            panelAtom.Controls.Add(panel3);
+            panelAtom.Name = "panelAtom";
             // 
             // panel3
             // 
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.ContextMenuStrip = this.contextMenuStrip2;
-            this.panel3.Name = "panel3";
+            resources.ApplyResources(panel3, "panel3");
+            panel3.ContextMenuStrip = contextMenuStrip2;
+            panel3.Name = "panel3";
             // 
             // contextMenuStrip2
             // 
-            resources.ApplyResources(this.contextMenuStrip2, "contextMenuStrip2");
-            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resetToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            resources.ApplyResources(contextMenuStrip2, "contextMenuStrip2");
+            contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { resetToolStripMenuItem });
+            contextMenuStrip2.Name = "contextMenuStrip2";
             // 
             // resetToolStripMenuItem
             // 
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            resources.ApplyResources(this.resetToolStripMenuItem, "resetToolStripMenuItem");
-            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            resources.ApplyResources(resetToolStripMenuItem, "resetToolStripMenuItem");
+            resetToolStripMenuItem.Click += resetToolStripMenuItem_Click;
             // 
             // tabPageBondsPolyhedra
             // 
-            this.tabPageBondsPolyhedra.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageBondsPolyhedra.Controls.Add(this.bondControl);
-            resources.ApplyResources(this.tabPageBondsPolyhedra, "tabPageBondsPolyhedra");
-            this.tabPageBondsPolyhedra.Name = "tabPageBondsPolyhedra";
+            tabPageBondsPolyhedra.BackColor = System.Drawing.SystemColors.Control;
+            tabPageBondsPolyhedra.Controls.Add(bondControl);
+            resources.ApplyResources(tabPageBondsPolyhedra, "tabPageBondsPolyhedra");
+            tabPageBondsPolyhedra.Name = "tabPageBondsPolyhedra";
             // 
             // bondControl
             // 
-            resources.ApplyResources(this.bondControl, "bondControl");
-            this.bondControl.Crystal = null;
-            this.bondControl.ElementList = null;
-            this.bondControl.Name = "bondControl";
-            this.bondControl.SkipEvent = false;
+            resources.ApplyResources(bondControl, "bondControl");
+            bondControl.Crystal = null;
+            bondControl.ElementList = null;
+            bondControl.Name = "bondControl";
+            bondControl.SkipEvent = false;
             // 
             // tabPageReference
             // 
-            this.tabPageReference.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageReference.Controls.Add(this.groupBox8);
-            this.tabPageReference.Controls.Add(this.groupBox6);
-            this.tabPageReference.Controls.Add(this.groupBox7);
-            this.tabPageReference.Controls.Add(this.groupBox5);
-            resources.ApplyResources(this.tabPageReference, "tabPageReference");
-            this.tabPageReference.Name = "tabPageReference";
+            tabPageReference.BackColor = System.Drawing.SystemColors.Control;
+            tabPageReference.Controls.Add(groupBox8);
+            tabPageReference.Controls.Add(groupBox6);
+            tabPageReference.Controls.Add(groupBox7);
+            tabPageReference.Controls.Add(groupBox5);
+            resources.ApplyResources(tabPageReference, "tabPageReference");
+            tabPageReference.Name = "tabPageReference";
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.textBoxTitle);
-            resources.ApplyResources(this.groupBox8, "groupBox8");
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.TabStop = false;
+            groupBox8.Controls.Add(textBoxTitle);
+            resources.ApplyResources(groupBox8, "groupBox8");
+            groupBox8.Name = "groupBox8";
+            groupBox8.TabStop = false;
             // 
             // textBoxTitle
             // 
-            this.textBoxTitle.AcceptsReturn = true;
-            resources.ApplyResources(this.textBoxTitle, "textBoxTitle");
-            this.textBoxTitle.Name = "textBoxTitle";
+            textBoxTitle.AcceptsReturn = true;
+            resources.ApplyResources(textBoxTitle, "textBoxTitle");
+            textBoxTitle.Name = "textBoxTitle";
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.textBoxAuthor);
-            resources.ApplyResources(this.groupBox6, "groupBox6");
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.TabStop = false;
+            groupBox6.Controls.Add(textBoxAuthor);
+            resources.ApplyResources(groupBox6, "groupBox6");
+            groupBox6.Name = "groupBox6";
+            groupBox6.TabStop = false;
             // 
             // textBoxAuthor
             // 
-            this.textBoxAuthor.AcceptsReturn = true;
-            resources.ApplyResources(this.textBoxAuthor, "textBoxAuthor");
-            this.textBoxAuthor.Name = "textBoxAuthor";
+            textBoxAuthor.AcceptsReturn = true;
+            resources.ApplyResources(textBoxAuthor, "textBoxAuthor");
+            textBoxAuthor.Name = "textBoxAuthor";
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.textBoxJournal);
-            resources.ApplyResources(this.groupBox7, "groupBox7");
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.TabStop = false;
+            groupBox7.Controls.Add(textBoxJournal);
+            resources.ApplyResources(groupBox7, "groupBox7");
+            groupBox7.Name = "groupBox7";
+            groupBox7.TabStop = false;
             // 
             // textBoxJournal
             // 
-            this.textBoxJournal.AcceptsReturn = true;
-            resources.ApplyResources(this.textBoxJournal, "textBoxJournal");
-            this.textBoxJournal.Name = "textBoxJournal";
+            textBoxJournal.AcceptsReturn = true;
+            resources.ApplyResources(textBoxJournal, "textBoxJournal");
+            textBoxJournal.Name = "textBoxJournal";
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBoxMemo);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
+            groupBox5.Controls.Add(textBoxMemo);
+            resources.ApplyResources(groupBox5, "groupBox5");
+            groupBox5.Name = "groupBox5";
+            groupBox5.TabStop = false;
             // 
             // textBoxMemo
             // 
-            resources.ApplyResources(this.textBoxMemo, "textBoxMemo");
-            this.textBoxMemo.Name = "textBoxMemo";
+            resources.ApplyResources(textBoxMemo, "textBoxMemo");
+            textBoxMemo.Name = "textBoxMemo";
             // 
             // tabPageEOS
             // 
-            this.tabPageEOS.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageEOS.Controls.Add(this.eosControl);
-            resources.ApplyResources(this.tabPageEOS, "tabPageEOS");
-            this.tabPageEOS.Name = "tabPageEOS";
+            tabPageEOS.BackColor = System.Drawing.SystemColors.Control;
+            tabPageEOS.Controls.Add(eosControl);
+            resources.ApplyResources(tabPageEOS, "tabPageEOS");
+            tabPageEOS.Name = "tabPageEOS";
             // 
             // eosControl
             // 
-            this.eosControl.Crystal = null;
-            resources.ApplyResources(this.eosControl, "eosControl");
-            this.eosControl.Name = "eosControl";
-            this.eosControl.SkipEvent = false;
+            eosControl.Crystal = null;
+            resources.ApplyResources(eosControl, "eosControl");
+            eosControl.Name = "eosControl";
+            eosControl.SkipEvent = false;
             // 
             // tabPageElasticity
             // 
-            this.tabPageElasticity.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageElasticity.Controls.Add(this.elasticityControl1);
-            resources.ApplyResources(this.tabPageElasticity, "tabPageElasticity");
-            this.tabPageElasticity.Name = "tabPageElasticity";
+            tabPageElasticity.BackColor = System.Drawing.SystemColors.Control;
+            tabPageElasticity.Controls.Add(elasticityControl1);
+            resources.ApplyResources(tabPageElasticity, "tabPageElasticity");
+            tabPageElasticity.Name = "tabPageElasticity";
             // 
             // elasticityControl1
             // 
-            resources.ApplyResources(this.elasticityControl1, "elasticityControl1");
-            this.elasticityControl1.Mode = Crystallography.Elasticity.Mode.Stiffness;
-            this.elasticityControl1.Name = "elasticityControl1";
-            this.elasticityControl1.SymmetrySeriesNumber = 1;
-            this.elasticityControl1.ValueChanged += new Crystallography.Controls.ElasticityControl.MyEventHandler(this.elasticityControl1_ValueChanged);
+            resources.ApplyResources(elasticityControl1, "elasticityControl1");
+            elasticityControl1.Mode = Elasticity.Mode.Stiffness;
+            elasticityControl1.Name = "elasticityControl1";
+            elasticityControl1.SymmetrySeriesNumber = 1;
+            elasticityControl1.ValueChanged += elasticityControl1_ValueChanged;
             // 
             // tabPageStrainStress
             // 
-            this.tabPageStrainStress.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageStrainStress.Controls.Add(this.buttonStressSet);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStrain33);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxHill);
-            this.tabPageStrainStress.Controls.Add(this.label116);
-            this.tabPageStrainStress.Controls.Add(this.label117);
-            this.tabPageStrainStress.Controls.Add(this.label109);
-            this.tabPageStrainStress.Controls.Add(this.label110);
-            this.tabPageStrainStress.Controls.Add(this.label111);
-            this.tabPageStrainStress.Controls.Add(this.label112);
-            this.tabPageStrainStress.Controls.Add(this.label113);
-            this.tabPageStrainStress.Controls.Add(this.label114);
-            this.tabPageStrainStress.Controls.Add(this.label115);
-            this.tabPageStrainStress.Controls.Add(this.label102);
-            this.tabPageStrainStress.Controls.Add(this.label103);
-            this.tabPageStrainStress.Controls.Add(this.label104);
-            this.tabPageStrainStress.Controls.Add(this.label105);
-            this.tabPageStrainStress.Controls.Add(this.label106);
-            this.tabPageStrainStress.Controls.Add(this.label107);
-            this.tabPageStrainStress.Controls.Add(this.label108);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStress33);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStress22);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStress11);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStress23);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStress13);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStress12);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStrain11);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStrain22);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStrain12);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStrain23);
-            this.tabPageStrainStress.Controls.Add(this.numericBoxStrain13);
-            resources.ApplyResources(this.tabPageStrainStress, "tabPageStrainStress");
-            this.tabPageStrainStress.Name = "tabPageStrainStress";
+            tabPageStrainStress.BackColor = System.Drawing.SystemColors.Control;
+            tabPageStrainStress.Controls.Add(buttonStressSet);
+            tabPageStrainStress.Controls.Add(numericBoxStrain33);
+            tabPageStrainStress.Controls.Add(numericBoxHill);
+            tabPageStrainStress.Controls.Add(label116);
+            tabPageStrainStress.Controls.Add(label117);
+            tabPageStrainStress.Controls.Add(label109);
+            tabPageStrainStress.Controls.Add(label110);
+            tabPageStrainStress.Controls.Add(label111);
+            tabPageStrainStress.Controls.Add(label112);
+            tabPageStrainStress.Controls.Add(label113);
+            tabPageStrainStress.Controls.Add(label114);
+            tabPageStrainStress.Controls.Add(label115);
+            tabPageStrainStress.Controls.Add(label102);
+            tabPageStrainStress.Controls.Add(label103);
+            tabPageStrainStress.Controls.Add(label104);
+            tabPageStrainStress.Controls.Add(label105);
+            tabPageStrainStress.Controls.Add(label106);
+            tabPageStrainStress.Controls.Add(label107);
+            tabPageStrainStress.Controls.Add(label108);
+            tabPageStrainStress.Controls.Add(numericBoxStress33);
+            tabPageStrainStress.Controls.Add(numericBoxStress22);
+            tabPageStrainStress.Controls.Add(numericBoxStress11);
+            tabPageStrainStress.Controls.Add(numericBoxStress23);
+            tabPageStrainStress.Controls.Add(numericBoxStress13);
+            tabPageStrainStress.Controls.Add(numericBoxStress12);
+            tabPageStrainStress.Controls.Add(numericBoxStrain11);
+            tabPageStrainStress.Controls.Add(numericBoxStrain22);
+            tabPageStrainStress.Controls.Add(numericBoxStrain12);
+            tabPageStrainStress.Controls.Add(numericBoxStrain23);
+            tabPageStrainStress.Controls.Add(numericBoxStrain13);
+            resources.ApplyResources(tabPageStrainStress, "tabPageStrainStress");
+            tabPageStrainStress.Name = "tabPageStrainStress";
             // 
             // buttonStressSet
             // 
-            resources.ApplyResources(this.buttonStressSet, "buttonStressSet");
-            this.buttonStressSet.Name = "buttonStressSet";
-            this.buttonStressSet.UseVisualStyleBackColor = true;
-            this.buttonStressSet.Click += new System.EventHandler(this.buttonStressSet_Click);
+            resources.ApplyResources(buttonStressSet, "buttonStressSet");
+            buttonStressSet.Name = "buttonStressSet";
+            buttonStressSet.UseVisualStyleBackColor = true;
+            buttonStressSet.Click += buttonStressSet_Click;
             // 
             // numericBoxStrain33
             // 
-            resources.ApplyResources(this.numericBoxStrain33, "numericBoxStrain33");
-            this.numericBoxStrain33.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain33.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain33.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain33.Name = "numericBoxStrain33";
-            this.numericBoxStrain33.RestrictLimitValue = false;
-            this.numericBoxStrain33.RoundErrorAccuracy = -1;
-            this.numericBoxStrain33.SkipEventDuringInput = false;
-            this.numericBoxStrain33.SmartIncrement = true;
-            this.numericBoxStrain33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStrain33, "numericBoxStrain33");
+            numericBoxStrain33.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain33.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain33.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain33.Name = "numericBoxStrain33";
+            numericBoxStrain33.RestrictLimitValue = false;
+            numericBoxStrain33.RoundErrorAccuracy = -1;
+            numericBoxStrain33.SkipEventDuringInput = false;
+            numericBoxStrain33.SmartIncrement = true;
             // 
             // numericBoxHill
             // 
-            resources.ApplyResources(this.numericBoxHill, "numericBoxHill");
-            this.numericBoxHill.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxHill.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxHill.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxHill.Name = "numericBoxHill";
-            this.numericBoxHill.RadianValue = 0.017453292519943295D;
-            this.numericBoxHill.RestrictLimitValue = false;
-            this.numericBoxHill.RoundErrorAccuracy = -1;
-            this.numericBoxHill.SkipEventDuringInput = false;
-            this.numericBoxHill.SmartIncrement = true;
-            this.numericBoxHill.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxHill.Value = 1D;
+            resources.ApplyResources(numericBoxHill, "numericBoxHill");
+            numericBoxHill.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxHill.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxHill.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxHill.Name = "numericBoxHill";
+            numericBoxHill.RadianValue = 0.017453292519943295D;
+            numericBoxHill.RestrictLimitValue = false;
+            numericBoxHill.RoundErrorAccuracy = -1;
+            numericBoxHill.SkipEventDuringInput = false;
+            numericBoxHill.SmartIncrement = true;
+            numericBoxHill.Value = 1D;
             // 
             // label116
             // 
-            resources.ApplyResources(this.label116, "label116");
-            this.label116.Name = "label116";
+            resources.ApplyResources(label116, "label116");
+            label116.Name = "label116";
             // 
             // label117
             // 
-            resources.ApplyResources(this.label117, "label117");
-            this.label117.Name = "label117";
+            resources.ApplyResources(label117, "label117");
+            label117.Name = "label117";
             // 
             // label109
             // 
-            resources.ApplyResources(this.label109, "label109");
-            this.label109.Name = "label109";
+            resources.ApplyResources(label109, "label109");
+            label109.Name = "label109";
             // 
             // label110
             // 
-            resources.ApplyResources(this.label110, "label110");
-            this.label110.Name = "label110";
+            resources.ApplyResources(label110, "label110");
+            label110.Name = "label110";
             // 
             // label111
             // 
-            resources.ApplyResources(this.label111, "label111");
-            this.label111.Name = "label111";
+            resources.ApplyResources(label111, "label111");
+            label111.Name = "label111";
             // 
             // label112
             // 
-            resources.ApplyResources(this.label112, "label112");
-            this.label112.Name = "label112";
+            resources.ApplyResources(label112, "label112");
+            label112.Name = "label112";
             // 
             // label113
             // 
-            resources.ApplyResources(this.label113, "label113");
-            this.label113.Name = "label113";
+            resources.ApplyResources(label113, "label113");
+            label113.Name = "label113";
             // 
             // label114
             // 
-            resources.ApplyResources(this.label114, "label114");
-            this.label114.Name = "label114";
+            resources.ApplyResources(label114, "label114");
+            label114.Name = "label114";
             // 
             // label115
             // 
-            resources.ApplyResources(this.label115, "label115");
-            this.label115.Name = "label115";
+            resources.ApplyResources(label115, "label115");
+            label115.Name = "label115";
             // 
             // label102
             // 
-            resources.ApplyResources(this.label102, "label102");
-            this.label102.Name = "label102";
+            resources.ApplyResources(label102, "label102");
+            label102.Name = "label102";
             // 
             // label103
             // 
-            resources.ApplyResources(this.label103, "label103");
-            this.label103.Name = "label103";
+            resources.ApplyResources(label103, "label103");
+            label103.Name = "label103";
             // 
             // label104
             // 
-            resources.ApplyResources(this.label104, "label104");
-            this.label104.Name = "label104";
+            resources.ApplyResources(label104, "label104");
+            label104.Name = "label104";
             // 
             // label105
             // 
-            resources.ApplyResources(this.label105, "label105");
-            this.label105.Name = "label105";
+            resources.ApplyResources(label105, "label105");
+            label105.Name = "label105";
             // 
             // label106
             // 
-            resources.ApplyResources(this.label106, "label106");
-            this.label106.Name = "label106";
+            resources.ApplyResources(label106, "label106");
+            label106.Name = "label106";
             // 
             // label107
             // 
-            resources.ApplyResources(this.label107, "label107");
-            this.label107.Name = "label107";
+            resources.ApplyResources(label107, "label107");
+            label107.Name = "label107";
             // 
             // label108
             // 
-            resources.ApplyResources(this.label108, "label108");
-            this.label108.Name = "label108";
+            resources.ApplyResources(label108, "label108");
+            label108.Name = "label108";
             // 
             // numericBoxStress33
             // 
-            resources.ApplyResources(this.numericBoxStress33, "numericBoxStress33");
-            this.numericBoxStress33.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress33.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress33.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress33.Name = "numericBoxStress33";
-            this.numericBoxStress33.RestrictLimitValue = false;
-            this.numericBoxStress33.RoundErrorAccuracy = -1;
-            this.numericBoxStress33.SkipEventDuringInput = false;
-            this.numericBoxStress33.SmartIncrement = true;
-            this.numericBoxStress33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStress33, "numericBoxStress33");
+            numericBoxStress33.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress33.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress33.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress33.Name = "numericBoxStress33";
+            numericBoxStress33.RestrictLimitValue = false;
+            numericBoxStress33.RoundErrorAccuracy = -1;
+            numericBoxStress33.SkipEventDuringInput = false;
+            numericBoxStress33.SmartIncrement = true;
             // 
             // numericBoxStress22
             // 
-            resources.ApplyResources(this.numericBoxStress22, "numericBoxStress22");
-            this.numericBoxStress22.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress22.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress22.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress22.Name = "numericBoxStress22";
-            this.numericBoxStress22.RestrictLimitValue = false;
-            this.numericBoxStress22.RoundErrorAccuracy = -1;
-            this.numericBoxStress22.SkipEventDuringInput = false;
-            this.numericBoxStress22.SmartIncrement = true;
-            this.numericBoxStress22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStress22, "numericBoxStress22");
+            numericBoxStress22.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress22.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress22.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress22.Name = "numericBoxStress22";
+            numericBoxStress22.RestrictLimitValue = false;
+            numericBoxStress22.RoundErrorAccuracy = -1;
+            numericBoxStress22.SkipEventDuringInput = false;
+            numericBoxStress22.SmartIncrement = true;
             // 
             // numericBoxStress11
             // 
-            resources.ApplyResources(this.numericBoxStress11, "numericBoxStress11");
-            this.numericBoxStress11.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress11.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress11.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress11.Name = "numericBoxStress11";
-            this.numericBoxStress11.RestrictLimitValue = false;
-            this.numericBoxStress11.RoundErrorAccuracy = -1;
-            this.numericBoxStress11.SkipEventDuringInput = false;
-            this.numericBoxStress11.SmartIncrement = true;
-            this.numericBoxStress11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStress11, "numericBoxStress11");
+            numericBoxStress11.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress11.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress11.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress11.Name = "numericBoxStress11";
+            numericBoxStress11.RestrictLimitValue = false;
+            numericBoxStress11.RoundErrorAccuracy = -1;
+            numericBoxStress11.SkipEventDuringInput = false;
+            numericBoxStress11.SmartIncrement = true;
             // 
             // numericBoxStress23
             // 
-            resources.ApplyResources(this.numericBoxStress23, "numericBoxStress23");
-            this.numericBoxStress23.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress23.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress23.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress23.Name = "numericBoxStress23";
-            this.numericBoxStress23.RestrictLimitValue = false;
-            this.numericBoxStress23.RoundErrorAccuracy = -1;
-            this.numericBoxStress23.SkipEventDuringInput = false;
-            this.numericBoxStress23.SmartIncrement = true;
-            this.numericBoxStress23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStress23, "numericBoxStress23");
+            numericBoxStress23.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress23.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress23.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress23.Name = "numericBoxStress23";
+            numericBoxStress23.RestrictLimitValue = false;
+            numericBoxStress23.RoundErrorAccuracy = -1;
+            numericBoxStress23.SkipEventDuringInput = false;
+            numericBoxStress23.SmartIncrement = true;
             // 
             // numericBoxStress13
             // 
-            resources.ApplyResources(this.numericBoxStress13, "numericBoxStress13");
-            this.numericBoxStress13.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress13.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress13.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress13.Name = "numericBoxStress13";
-            this.numericBoxStress13.RestrictLimitValue = false;
-            this.numericBoxStress13.RoundErrorAccuracy = -1;
-            this.numericBoxStress13.SkipEventDuringInput = false;
-            this.numericBoxStress13.SmartIncrement = true;
-            this.numericBoxStress13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStress13, "numericBoxStress13");
+            numericBoxStress13.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress13.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress13.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress13.Name = "numericBoxStress13";
+            numericBoxStress13.RestrictLimitValue = false;
+            numericBoxStress13.RoundErrorAccuracy = -1;
+            numericBoxStress13.SkipEventDuringInput = false;
+            numericBoxStress13.SmartIncrement = true;
             // 
             // numericBoxStress12
             // 
-            resources.ApplyResources(this.numericBoxStress12, "numericBoxStress12");
-            this.numericBoxStress12.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress12.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress12.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress12.Name = "numericBoxStress12";
-            this.numericBoxStress12.RestrictLimitValue = false;
-            this.numericBoxStress12.RoundErrorAccuracy = -1;
-            this.numericBoxStress12.SkipEventDuringInput = false;
-            this.numericBoxStress12.SmartIncrement = true;
-            this.numericBoxStress12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStress12, "numericBoxStress12");
+            numericBoxStress12.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress12.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress12.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStress12.Name = "numericBoxStress12";
+            numericBoxStress12.RestrictLimitValue = false;
+            numericBoxStress12.RoundErrorAccuracy = -1;
+            numericBoxStress12.SkipEventDuringInput = false;
+            numericBoxStress12.SmartIncrement = true;
             // 
             // numericBoxStrain11
             // 
-            resources.ApplyResources(this.numericBoxStrain11, "numericBoxStrain11");
-            this.numericBoxStrain11.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain11.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain11.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain11.Name = "numericBoxStrain11";
-            this.numericBoxStrain11.RestrictLimitValue = false;
-            this.numericBoxStrain11.RoundErrorAccuracy = -1;
-            this.numericBoxStrain11.SkipEventDuringInput = false;
-            this.numericBoxStrain11.SmartIncrement = true;
-            this.numericBoxStrain11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStrain11, "numericBoxStrain11");
+            numericBoxStrain11.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain11.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain11.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain11.Name = "numericBoxStrain11";
+            numericBoxStrain11.RestrictLimitValue = false;
+            numericBoxStrain11.RoundErrorAccuracy = -1;
+            numericBoxStrain11.SkipEventDuringInput = false;
+            numericBoxStrain11.SmartIncrement = true;
             // 
             // numericBoxStrain22
             // 
-            resources.ApplyResources(this.numericBoxStrain22, "numericBoxStrain22");
-            this.numericBoxStrain22.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain22.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain22.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain22.Name = "numericBoxStrain22";
-            this.numericBoxStrain22.RestrictLimitValue = false;
-            this.numericBoxStrain22.RoundErrorAccuracy = -1;
-            this.numericBoxStrain22.SkipEventDuringInput = false;
-            this.numericBoxStrain22.SmartIncrement = true;
-            this.numericBoxStrain22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStrain22, "numericBoxStrain22");
+            numericBoxStrain22.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain22.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain22.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain22.Name = "numericBoxStrain22";
+            numericBoxStrain22.RestrictLimitValue = false;
+            numericBoxStrain22.RoundErrorAccuracy = -1;
+            numericBoxStrain22.SkipEventDuringInput = false;
+            numericBoxStrain22.SmartIncrement = true;
             // 
             // numericBoxStrain12
             // 
-            resources.ApplyResources(this.numericBoxStrain12, "numericBoxStrain12");
-            this.numericBoxStrain12.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain12.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain12.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain12.Name = "numericBoxStrain12";
-            this.numericBoxStrain12.RestrictLimitValue = false;
-            this.numericBoxStrain12.RoundErrorAccuracy = -1;
-            this.numericBoxStrain12.SkipEventDuringInput = false;
-            this.numericBoxStrain12.SmartIncrement = true;
-            this.numericBoxStrain12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStrain12, "numericBoxStrain12");
+            numericBoxStrain12.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain12.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain12.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain12.Name = "numericBoxStrain12";
+            numericBoxStrain12.RestrictLimitValue = false;
+            numericBoxStrain12.RoundErrorAccuracy = -1;
+            numericBoxStrain12.SkipEventDuringInput = false;
+            numericBoxStrain12.SmartIncrement = true;
             // 
             // numericBoxStrain23
             // 
-            resources.ApplyResources(this.numericBoxStrain23, "numericBoxStrain23");
-            this.numericBoxStrain23.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain23.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain23.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain23.Name = "numericBoxStrain23";
-            this.numericBoxStrain23.RestrictLimitValue = false;
-            this.numericBoxStrain23.RoundErrorAccuracy = -1;
-            this.numericBoxStrain23.SkipEventDuringInput = false;
-            this.numericBoxStrain23.SmartIncrement = true;
-            this.numericBoxStrain23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStrain23, "numericBoxStrain23");
+            numericBoxStrain23.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain23.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain23.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain23.Name = "numericBoxStrain23";
+            numericBoxStrain23.RestrictLimitValue = false;
+            numericBoxStrain23.RoundErrorAccuracy = -1;
+            numericBoxStrain23.SkipEventDuringInput = false;
+            numericBoxStrain23.SmartIncrement = true;
             // 
             // numericBoxStrain13
             // 
-            resources.ApplyResources(this.numericBoxStrain13, "numericBoxStrain13");
-            this.numericBoxStrain13.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain13.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain13.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain13.Name = "numericBoxStrain13";
-            this.numericBoxStrain13.RestrictLimitValue = false;
-            this.numericBoxStrain13.RoundErrorAccuracy = -1;
-            this.numericBoxStrain13.SkipEventDuringInput = false;
-            this.numericBoxStrain13.SmartIncrement = true;
-            this.numericBoxStrain13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            resources.ApplyResources(numericBoxStrain13, "numericBoxStrain13");
+            numericBoxStrain13.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain13.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain13.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxStrain13.Name = "numericBoxStrain13";
+            numericBoxStrain13.RestrictLimitValue = false;
+            numericBoxStrain13.RoundErrorAccuracy = -1;
+            numericBoxStrain13.SkipEventDuringInput = false;
+            numericBoxStrain13.SmartIncrement = true;
             // 
             // tabPagePolycrystalline
             // 
-            this.tabPagePolycrystalline.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPagePolycrystalline.ContextMenuStrip = this.contextMenuStripPoleFigure;
-            this.tabPagePolycrystalline.Controls.Add(this.poleFigureControl);
-            this.tabPagePolycrystalline.Controls.Add(this.flowLayoutPanel3);
-            this.tabPagePolycrystalline.Controls.Add(this.flowLayoutPanel2);
-            resources.ApplyResources(this.tabPagePolycrystalline, "tabPagePolycrystalline");
-            this.tabPagePolycrystalline.Name = "tabPagePolycrystalline";
+            tabPagePolycrystalline.BackColor = System.Drawing.SystemColors.Control;
+            tabPagePolycrystalline.ContextMenuStrip = contextMenuStripPoleFigure;
+            tabPagePolycrystalline.Controls.Add(poleFigureControl);
+            tabPagePolycrystalline.Controls.Add(flowLayoutPanel3);
+            tabPagePolycrystalline.Controls.Add(flowLayoutPanel2);
+            resources.ApplyResources(tabPagePolycrystalline, "tabPagePolycrystalline");
+            tabPagePolycrystalline.Name = "tabPagePolycrystalline";
             // 
             // contextMenuStripPoleFigure
             // 
-            this.contextMenuStripPoleFigure.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStripPoleFigure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.readToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.exportToolStripMenuItem});
-            this.contextMenuStripPoleFigure.Name = "contextMenuStripPoleFigure";
-            resources.ApplyResources(this.contextMenuStripPoleFigure, "contextMenuStripPoleFigure");
+            contextMenuStripPoleFigure.ImageScalingSize = new System.Drawing.Size(20, 20);
+            contextMenuStripPoleFigure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { readToolStripMenuItem, saveToolStripMenuItem, exportToolStripMenuItem });
+            contextMenuStripPoleFigure.Name = "contextMenuStripPoleFigure";
+            resources.ApplyResources(contextMenuStripPoleFigure, "contextMenuStripPoleFigure");
             // 
             // readToolStripMenuItem
             // 
-            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
-            resources.ApplyResources(this.readToolStripMenuItem, "readToolStripMenuItem");
-            this.readToolStripMenuItem.Click += new System.EventHandler(this.readToolStripMenuItem_Click);
+            readToolStripMenuItem.Name = "readToolStripMenuItem";
+            resources.ApplyResources(readToolStripMenuItem, "readToolStripMenuItem");
+            readToolStripMenuItem.Click += readToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
+            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // exportToolStripMenuItem
             // 
-            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem,
-            this.asTXTFileAllEulerAngleAndDensityToolStripMenuItem,
-            this.asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem});
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            resources.ApplyResources(this.exportToolStripMenuItem, "exportToolStripMenuItem");
+            exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem, asTXTFileAllEulerAngleAndDensityToolStripMenuItem, asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem });
+            exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            resources.ApplyResources(exportToolStripMenuItem, "exportToolStripMenuItem");
             // 
             // asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem
             // 
-            this.asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Name = "asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem";
-            resources.ApplyResources(this.asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem, "asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem");
-            this.asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Click += new System.EventHandler(this.asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem_Click);
+            asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Name = "asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem";
+            resources.ApplyResources(asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem, "asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem");
+            asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Click += asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem_Click;
             // 
             // asTXTFileAllEulerAngleAndDensityToolStripMenuItem
             // 
-            this.asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Name = "asTXTFileAllEulerAngleAndDensityToolStripMenuItem";
-            resources.ApplyResources(this.asTXTFileAllEulerAngleAndDensityToolStripMenuItem, "asTXTFileAllEulerAngleAndDensityToolStripMenuItem");
-            this.asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Click += new System.EventHandler(this.asTXTFileAllEulerAngleAndDensityToolStripMenuItem_Click);
+            asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Name = "asTXTFileAllEulerAngleAndDensityToolStripMenuItem";
+            resources.ApplyResources(asTXTFileAllEulerAngleAndDensityToolStripMenuItem, "asTXTFileAllEulerAngleAndDensityToolStripMenuItem");
+            asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Click += asTXTFileAllEulerAngleAndDensityToolStripMenuItem_Click;
             // 
             // asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem
             // 
-            this.asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Name = "asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem";
-            resources.ApplyResources(this.asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem, "asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem");
-            this.asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Click += new System.EventHandler(this.asTXTFileAllEulerAngleAndDensityToolStripMenuItem_Click);
+            asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Name = "asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem";
+            resources.ApplyResources(asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem, "asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem");
+            asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Click += asTXTFileAllEulerAngleAndDensityToolStripMenuItem_Click;
             // 
             // poleFigureControl
             // 
-            this.poleFigureControl.Crystal = null;
-            resources.ApplyResources(this.poleFigureControl, "poleFigureControl");
-            this.poleFigureControl.Name = "poleFigureControl";
+            poleFigureControl.Crystal = null;
+            resources.ApplyResources(poleFigureControl, "poleFigureControl");
+            poleFigureControl.Name = "poleFigureControl";
             // 
             // flowLayoutPanel3
             // 
-            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
-            this.flowLayoutPanel3.Controls.Add(this.buttonGenerateRandomOrientations);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
+            flowLayoutPanel3.Controls.Add(buttonGenerateRandomOrientations);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
             // buttonGenerateRandomOrientations
             // 
-            resources.ApplyResources(this.buttonGenerateRandomOrientations, "buttonGenerateRandomOrientations");
-            this.buttonGenerateRandomOrientations.Name = "buttonGenerateRandomOrientations";
-            this.buttonGenerateRandomOrientations.UseVisualStyleBackColor = true;
-            this.buttonGenerateRandomOrientations.Click += new System.EventHandler(this.buttonGenerateRandomOrientations_Click);
+            resources.ApplyResources(buttonGenerateRandomOrientations, "buttonGenerateRandomOrientations");
+            buttonGenerateRandomOrientations.Name = "buttonGenerateRandomOrientations";
+            buttonGenerateRandomOrientations.UseVisualStyleBackColor = true;
+            buttonGenerateRandomOrientations.Click += buttonGenerateRandomOrientations_Click;
             // 
             // flowLayoutPanel2
             // 
-            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-            this.flowLayoutPanel2.Controls.Add(this.label5);
-            this.flowLayoutPanel2.Controls.Add(this.numericUpDownAngleResolution);
-            this.flowLayoutPanel2.Controls.Add(this.label29);
-            this.flowLayoutPanel2.Controls.Add(this.numericUpDownAngleSubDivision);
-            this.flowLayoutPanel2.Controls.Add(this.label101);
-            this.flowLayoutPanel2.Controls.Add(this.numericUpDownCrystallineSize);
-            this.flowLayoutPanel2.Controls.Add(this.label99);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(label5);
+            flowLayoutPanel2.Controls.Add(numericUpDownAngleResolution);
+            flowLayoutPanel2.Controls.Add(label29);
+            flowLayoutPanel2.Controls.Add(numericUpDownAngleSubDivision);
+            flowLayoutPanel2.Controls.Add(label101);
+            flowLayoutPanel2.Controls.Add(numericUpDownCrystallineSize);
+            flowLayoutPanel2.Controls.Add(label99);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // label5
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
             // 
             // numericUpDownAngleResolution
             // 
-            this.numericUpDownAngleResolution.DecimalPlaces = 1;
-            resources.ApplyResources(this.numericUpDownAngleResolution, "numericUpDownAngleResolution");
-            this.numericUpDownAngleResolution.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDownAngleResolution.Maximum = new decimal(new int[] {
-            45,
-            0,
-            0,
-            0});
-            this.numericUpDownAngleResolution.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDownAngleResolution.Name = "numericUpDownAngleResolution";
-            this.numericUpDownAngleResolution.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownAngleResolution.ValueChanged += new System.EventHandler(this.numericUpDownAngleResolution_ValueChanged);
+            numericUpDownAngleResolution.DecimalPlaces = 1;
+            resources.ApplyResources(numericUpDownAngleResolution, "numericUpDownAngleResolution");
+            numericUpDownAngleResolution.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
+            numericUpDownAngleResolution.Maximum = new decimal(new int[] { 45, 0, 0, 0 });
+            numericUpDownAngleResolution.Minimum = new decimal(new int[] { 5, 0, 0, 65536 });
+            numericUpDownAngleResolution.Name = "numericUpDownAngleResolution";
+            numericUpDownAngleResolution.Value = new decimal(new int[] { 2, 0, 0, 0 });
+            numericUpDownAngleResolution.ValueChanged += numericUpDownAngleResolution_ValueChanged;
             // 
             // label29
             // 
-            resources.ApplyResources(this.label29, "label29");
-            this.label29.Name = "label29";
+            resources.ApplyResources(label29, "label29");
+            label29.Name = "label29";
             // 
             // numericUpDownAngleSubDivision
             // 
-            resources.ApplyResources(this.numericUpDownAngleSubDivision, "numericUpDownAngleSubDivision");
-            this.numericUpDownAngleSubDivision.Maximum = new decimal(new int[] {
-            45,
-            0,
-            0,
-            0});
-            this.numericUpDownAngleSubDivision.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAngleSubDivision.Name = "numericUpDownAngleSubDivision";
-            this.numericUpDownAngleSubDivision.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.numericUpDownAngleSubDivision.ValueChanged += new System.EventHandler(this.numericUpDownAngleResolution_ValueChanged);
+            resources.ApplyResources(numericUpDownAngleSubDivision, "numericUpDownAngleSubDivision");
+            numericUpDownAngleSubDivision.Maximum = new decimal(new int[] { 45, 0, 0, 0 });
+            numericUpDownAngleSubDivision.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDownAngleSubDivision.Name = "numericUpDownAngleSubDivision";
+            numericUpDownAngleSubDivision.Value = new decimal(new int[] { 4, 0, 0, 0 });
+            numericUpDownAngleSubDivision.ValueChanged += numericUpDownAngleResolution_ValueChanged;
             // 
             // label101
             // 
-            resources.ApplyResources(this.label101, "label101");
-            this.label101.Name = "label101";
+            resources.ApplyResources(label101, "label101");
+            label101.Name = "label101";
             // 
             // numericUpDownCrystallineSize
             // 
-            resources.ApplyResources(this.numericUpDownCrystallineSize, "numericUpDownCrystallineSize");
-            this.numericUpDownCrystallineSize.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownCrystallineSize.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownCrystallineSize.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownCrystallineSize.Name = "numericUpDownCrystallineSize";
-            this.numericUpDownCrystallineSize.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDownCrystallineSize.ValueChanged += new System.EventHandler(this.numericUpDownAngleResolution_ValueChanged);
+            resources.ApplyResources(numericUpDownCrystallineSize, "numericUpDownCrystallineSize");
+            numericUpDownCrystallineSize.Increment = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDownCrystallineSize.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            numericUpDownCrystallineSize.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDownCrystallineSize.Name = "numericUpDownCrystallineSize";
+            numericUpDownCrystallineSize.Value = new decimal(new int[] { 100, 0, 0, 0 });
+            numericUpDownCrystallineSize.ValueChanged += numericUpDownAngleResolution_ValueChanged;
             // 
             // label99
             // 
-            resources.ApplyResources(this.label99, "label99");
-            this.label99.Name = "label99";
+            resources.ApplyResources(label99, "label99");
+            label99.Name = "label99";
             // 
             // tabPageBounds
             // 
-            this.tabPageBounds.Controls.Add(this.boundControl);
-            resources.ApplyResources(this.tabPageBounds, "tabPageBounds");
-            this.tabPageBounds.Name = "tabPageBounds";
+            tabPageBounds.Controls.Add(boundControl);
+            resources.ApplyResources(tabPageBounds, "tabPageBounds");
+            tabPageBounds.Name = "tabPageBounds";
             // 
             // boundControl
             // 
-            this.boundControl.Crystal = null;
-            resources.ApplyResources(this.boundControl, "boundControl");
-            this.boundControl.Name = "boundControl";
-            this.boundControl.SkipEvent = false;
+            boundControl.Crystal = null;
+            resources.ApplyResources(boundControl, "boundControl");
+            boundControl.Name = "boundControl";
+            boundControl.SkipEvent = false;
             // 
             // tabPageLatticePlane
             // 
-            this.tabPageLatticePlane.Controls.Add(this.latticePlaneControl);
-            resources.ApplyResources(this.tabPageLatticePlane, "tabPageLatticePlane");
-            this.tabPageLatticePlane.Name = "tabPageLatticePlane";
+            tabPageLatticePlane.Controls.Add(latticePlaneControl);
+            resources.ApplyResources(tabPageLatticePlane, "tabPageLatticePlane");
+            tabPageLatticePlane.Name = "tabPageLatticePlane";
             // 
             // latticePlaneControl
             // 
-            this.latticePlaneControl.Crystal = null;
-            resources.ApplyResources(this.latticePlaneControl, "latticePlaneControl");
-            this.latticePlaneControl.Name = "latticePlaneControl";
-            this.latticePlaneControl.SkipEvent = false;
+            latticePlaneControl.Crystal = null;
+            resources.ApplyResources(latticePlaneControl, "latticePlaneControl");
+            latticePlaneControl.Name = "latticePlaneControl";
+            latticePlaneControl.SkipEvent = false;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBoxFormula);
-            this.panel1.Controls.Add(this.numericBoxZnumber);
-            this.panel1.Controls.Add(this.label90);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            panel1.Controls.Add(textBoxFormula);
+            panel1.Controls.Add(numericBoxZnumber);
+            panel1.Controls.Add(label90);
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
             // 
             // textBoxFormula
             // 
-            resources.ApplyResources(this.textBoxFormula, "textBoxFormula");
-            this.textBoxFormula.Name = "textBoxFormula";
-            this.textBoxFormula.ReadOnly = true;
-            this.toolTip.SetToolTip(this.textBoxFormula, resources.GetString("textBoxFormula.ToolTip"));
+            resources.ApplyResources(textBoxFormula, "textBoxFormula");
+            textBoxFormula.Name = "textBoxFormula";
+            textBoxFormula.ReadOnly = true;
+            textBoxFormula.TabStop = false;
+            toolTip.SetToolTip(textBoxFormula, resources.GetString("textBoxFormula.ToolTip"));
             // 
             // numericBoxZnumber
             // 
-            resources.ApplyResources(this.numericBoxZnumber, "numericBoxZnumber");
-            this.numericBoxZnumber.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxZnumber.Name = "numericBoxZnumber";
-            this.numericBoxZnumber.ReadOnly = true;
-            this.numericBoxZnumber.RoundErrorAccuracy = -1;
-            this.numericBoxZnumber.SkipEventDuringInput = false;
-            this.numericBoxZnumber.SmartIncrement = true;
-            this.numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxZnumber.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxZnumber.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxZnumber, resources.GetString("numericBoxZnumber.ToolTip"));
+            resources.ApplyResources(numericBoxZnumber, "numericBoxZnumber");
+            numericBoxZnumber.BackColor = System.Drawing.Color.Transparent;
+            numericBoxZnumber.Name = "numericBoxZnumber";
+            numericBoxZnumber.ReadOnly = true;
+            numericBoxZnumber.RoundErrorAccuracy = -1;
+            numericBoxZnumber.SkipEventDuringInput = false;
+            numericBoxZnumber.SmartIncrement = true;
+            numericBoxZnumber.TabStop = false;
+            numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxZnumber.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxZnumber, resources.GetString("numericBoxZnumber.ToolTip"));
             // 
             // label90
             // 
-            resources.ApplyResources(this.label90, "label90");
-            this.label90.Name = "label90";
-            this.toolTip.SetToolTip(this.label90, resources.GetString("label90.ToolTip"));
+            resources.ApplyResources(label90, "label90");
+            label90.Name = "label90";
+            toolTip.SetToolTip(label90, resources.GetString("label90.ToolTip"));
             // 
             // contextMenuStrip
             // 
-            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.scatteringFactorToolStripMenuItem,
-            this.symmetryInformationToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.importCrystalFromCIFAMCToolStripMenuItem,
-            this.exportThisCrystalAsCIFToolStripMenuItem,
-            this.sendThisCrystalToOtherSoftwareToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.revertCellConstantsToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.strainControlToolStripMenuItem,
-            this.convertToP1SymmetryToolStripMenuItem,
-            this.convertToSuperstructureToolStripMenuItem,
-            this.convertToAnotherSpacegroupToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip1";
-            resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
+            contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { scatteringFactorToolStripMenuItem, symmetryInformationToolStripMenuItem, toolStripSeparator2, importCrystalFromCIFAMCToolStripMenuItem, exportThisCrystalAsCIFToolStripMenuItem, sendThisCrystalToOtherSoftwareToolStripMenuItem, toolStripSeparator1, revertCellConstantsToolStripMenuItem, toolStripSeparator3, strainControlToolStripMenuItem, convertToP1SymmetryToolStripMenuItem, convertToSuperstructureToolStripMenuItem, convertToAnotherSpacegroupToolStripMenuItem });
+            contextMenuStrip.Name = "contextMenuStrip1";
+            resources.ApplyResources(contextMenuStrip, "contextMenuStrip");
             // 
             // scatteringFactorToolStripMenuItem
             // 
-            this.scatteringFactorToolStripMenuItem.Name = "scatteringFactorToolStripMenuItem";
-            resources.ApplyResources(this.scatteringFactorToolStripMenuItem, "scatteringFactorToolStripMenuItem");
-            this.scatteringFactorToolStripMenuItem.Click += new System.EventHandler(this.scatteringFactorToolStripMenuItem_Click);
+            scatteringFactorToolStripMenuItem.Name = "scatteringFactorToolStripMenuItem";
+            resources.ApplyResources(scatteringFactorToolStripMenuItem, "scatteringFactorToolStripMenuItem");
+            scatteringFactorToolStripMenuItem.Click += scatteringFactorToolStripMenuItem_Click;
             // 
             // symmetryInformationToolStripMenuItem
             // 
-            this.symmetryInformationToolStripMenuItem.Name = "symmetryInformationToolStripMenuItem";
-            resources.ApplyResources(this.symmetryInformationToolStripMenuItem, "symmetryInformationToolStripMenuItem");
-            this.symmetryInformationToolStripMenuItem.Click += new System.EventHandler(this.symmetryInformationToolStripMenuItem_Click);
+            symmetryInformationToolStripMenuItem.Name = "symmetryInformationToolStripMenuItem";
+            resources.ApplyResources(symmetryInformationToolStripMenuItem, "symmetryInformationToolStripMenuItem");
+            symmetryInformationToolStripMenuItem.Click += symmetryInformationToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             // 
             // importCrystalFromCIFAMCToolStripMenuItem
             // 
-            this.importCrystalFromCIFAMCToolStripMenuItem.Name = "importCrystalFromCIFAMCToolStripMenuItem";
-            resources.ApplyResources(this.importCrystalFromCIFAMCToolStripMenuItem, "importCrystalFromCIFAMCToolStripMenuItem");
-            this.importCrystalFromCIFAMCToolStripMenuItem.Click += new System.EventHandler(this.importCrystalFromCIFAMCToolStripMenuItem_Click);
+            importCrystalFromCIFAMCToolStripMenuItem.Name = "importCrystalFromCIFAMCToolStripMenuItem";
+            resources.ApplyResources(importCrystalFromCIFAMCToolStripMenuItem, "importCrystalFromCIFAMCToolStripMenuItem");
+            importCrystalFromCIFAMCToolStripMenuItem.Click += importCrystalFromCIFAMCToolStripMenuItem_Click;
             // 
             // exportThisCrystalAsCIFToolStripMenuItem
             // 
-            this.exportThisCrystalAsCIFToolStripMenuItem.Name = "exportThisCrystalAsCIFToolStripMenuItem";
-            resources.ApplyResources(this.exportThisCrystalAsCIFToolStripMenuItem, "exportThisCrystalAsCIFToolStripMenuItem");
-            this.exportThisCrystalAsCIFToolStripMenuItem.Click += new System.EventHandler(this.exportThisCrystalAsCIFToolStripMenuItem_Click);
+            exportThisCrystalAsCIFToolStripMenuItem.Name = "exportThisCrystalAsCIFToolStripMenuItem";
+            resources.ApplyResources(exportThisCrystalAsCIFToolStripMenuItem, "exportThisCrystalAsCIFToolStripMenuItem");
+            exportThisCrystalAsCIFToolStripMenuItem.Click += exportThisCrystalAsCIFToolStripMenuItem_Click;
             // 
             // sendThisCrystalToOtherSoftwareToolStripMenuItem
             // 
-            this.sendThisCrystalToOtherSoftwareToolStripMenuItem.Name = "sendThisCrystalToOtherSoftwareToolStripMenuItem";
-            resources.ApplyResources(this.sendThisCrystalToOtherSoftwareToolStripMenuItem, "sendThisCrystalToOtherSoftwareToolStripMenuItem");
-            this.sendThisCrystalToOtherSoftwareToolStripMenuItem.Click += new System.EventHandler(this.sendThisCrystalToOtherSoftwareToolStripMenuItem_Click);
+            sendThisCrystalToOtherSoftwareToolStripMenuItem.Name = "sendThisCrystalToOtherSoftwareToolStripMenuItem";
+            resources.ApplyResources(sendThisCrystalToOtherSoftwareToolStripMenuItem, "sendThisCrystalToOtherSoftwareToolStripMenuItem");
+            sendThisCrystalToOtherSoftwareToolStripMenuItem.Click += sendThisCrystalToOtherSoftwareToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
             // 
             // revertCellConstantsToolStripMenuItem
             // 
-            this.revertCellConstantsToolStripMenuItem.Name = "revertCellConstantsToolStripMenuItem";
-            resources.ApplyResources(this.revertCellConstantsToolStripMenuItem, "revertCellConstantsToolStripMenuItem");
-            this.revertCellConstantsToolStripMenuItem.Click += new System.EventHandler(this.revertCellConstantsToolStripMenuItem_Click);
+            revertCellConstantsToolStripMenuItem.Name = "revertCellConstantsToolStripMenuItem";
+            resources.ApplyResources(revertCellConstantsToolStripMenuItem, "revertCellConstantsToolStripMenuItem");
+            revertCellConstantsToolStripMenuItem.Click += revertCellConstantsToolStripMenuItem_Click;
             // 
             // toolStripSeparator3
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
             // 
             // strainControlToolStripMenuItem
             // 
-            this.strainControlToolStripMenuItem.Name = "strainControlToolStripMenuItem";
-            resources.ApplyResources(this.strainControlToolStripMenuItem, "strainControlToolStripMenuItem");
-            this.strainControlToolStripMenuItem.Click += new System.EventHandler(this.strainControlToolStripMenuItem_Click);
+            strainControlToolStripMenuItem.Name = "strainControlToolStripMenuItem";
+            resources.ApplyResources(strainControlToolStripMenuItem, "strainControlToolStripMenuItem");
+            strainControlToolStripMenuItem.Click += strainControlToolStripMenuItem_Click;
             // 
             // convertToP1SymmetryToolStripMenuItem
             // 
-            this.convertToP1SymmetryToolStripMenuItem.Name = "convertToP1SymmetryToolStripMenuItem";
-            resources.ApplyResources(this.convertToP1SymmetryToolStripMenuItem, "convertToP1SymmetryToolStripMenuItem");
-            this.convertToP1SymmetryToolStripMenuItem.Click += new System.EventHandler(this.convertToP1ToolStripMenuItem_Click);
+            convertToP1SymmetryToolStripMenuItem.Name = "convertToP1SymmetryToolStripMenuItem";
+            resources.ApplyResources(convertToP1SymmetryToolStripMenuItem, "convertToP1SymmetryToolStripMenuItem");
+            convertToP1SymmetryToolStripMenuItem.Click += convertToP1ToolStripMenuItem_Click;
             // 
             // convertToSuperstructureToolStripMenuItem
             // 
-            this.convertToSuperstructureToolStripMenuItem.Name = "convertToSuperstructureToolStripMenuItem";
-            resources.ApplyResources(this.convertToSuperstructureToolStripMenuItem, "convertToSuperstructureToolStripMenuItem");
-            this.convertToSuperstructureToolStripMenuItem.Click += new System.EventHandler(this.convertToSuperstructureToolStripMenuItem_Click);
+            convertToSuperstructureToolStripMenuItem.Name = "convertToSuperstructureToolStripMenuItem";
+            resources.ApplyResources(convertToSuperstructureToolStripMenuItem, "convertToSuperstructureToolStripMenuItem");
+            convertToSuperstructureToolStripMenuItem.Click += convertToSuperstructureToolStripMenuItem_Click;
             // 
             // convertToAnotherSpacegroupToolStripMenuItem
             // 
-            this.convertToAnotherSpacegroupToolStripMenuItem.Name = "convertToAnotherSpacegroupToolStripMenuItem";
-            resources.ApplyResources(this.convertToAnotherSpacegroupToolStripMenuItem, "convertToAnotherSpacegroupToolStripMenuItem");
-            this.convertToAnotherSpacegroupToolStripMenuItem.Click += new System.EventHandler(this.convertToAnotherSpacegroupToolStripMenuItem_Click);
+            convertToAnotherSpacegroupToolStripMenuItem.Name = "convertToAnotherSpacegroupToolStripMenuItem";
+            resources.ApplyResources(convertToAnotherSpacegroupToolStripMenuItem, "convertToAnotherSpacegroupToolStripMenuItem");
+            convertToAnotherSpacegroupToolStripMenuItem.Click += convertToAnotherSpacegroupToolStripMenuItem_Click;
             // 
             // textBoxName
             // 
-            resources.ApplyResources(this.textBoxName, "textBoxName");
-            this.textBoxName.Name = "textBoxName";
-            this.toolTip.SetToolTip(this.textBoxName, resources.GetString("textBoxName.ToolTip"));
+            resources.ApplyResources(textBoxName, "textBoxName");
+            textBoxName.Name = "textBoxName";
+            toolTip.SetToolTip(textBoxName, resources.GetString("textBoxName.ToolTip"));
             // 
             // label22
             // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
+            resources.ApplyResources(label22, "label22");
+            label22.Name = "label22";
             // 
             // buttonScatteringFactor
             // 
-            resources.ApplyResources(this.buttonScatteringFactor, "buttonScatteringFactor");
-            this.buttonScatteringFactor.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonScatteringFactor.ForeColor = System.Drawing.Color.White;
-            this.buttonScatteringFactor.Name = "buttonScatteringFactor";
-            this.toolTip.SetToolTip(this.buttonScatteringFactor, resources.GetString("buttonScatteringFactor.ToolTip"));
-            this.buttonScatteringFactor.UseVisualStyleBackColor = false;
-            this.buttonScatteringFactor.Click += new System.EventHandler(this.buttonScatteringFactor_Click);
+            resources.ApplyResources(buttonScatteringFactor, "buttonScatteringFactor");
+            buttonScatteringFactor.BackColor = System.Drawing.Color.SteelBlue;
+            buttonScatteringFactor.ForeColor = System.Drawing.Color.White;
+            buttonScatteringFactor.Name = "buttonScatteringFactor";
+            toolTip.SetToolTip(buttonScatteringFactor, resources.GetString("buttonScatteringFactor.ToolTip"));
+            buttonScatteringFactor.UseVisualStyleBackColor = false;
+            buttonScatteringFactor.Click += buttonScatteringFactor_Click;
             // 
             // buttonSymmetryInfo
             // 
-            resources.ApplyResources(this.buttonSymmetryInfo, "buttonSymmetryInfo");
-            this.buttonSymmetryInfo.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonSymmetryInfo.ForeColor = System.Drawing.Color.White;
-            this.buttonSymmetryInfo.Name = "buttonSymmetryInfo";
-            this.toolTip.SetToolTip(this.buttonSymmetryInfo, resources.GetString("buttonSymmetryInfo.ToolTip"));
-            this.buttonSymmetryInfo.UseVisualStyleBackColor = false;
-            this.buttonSymmetryInfo.Click += new System.EventHandler(this.buttonSymmetryInfo_Click);
+            resources.ApplyResources(buttonSymmetryInfo, "buttonSymmetryInfo");
+            buttonSymmetryInfo.BackColor = System.Drawing.Color.SteelBlue;
+            buttonSymmetryInfo.ForeColor = System.Drawing.Color.White;
+            buttonSymmetryInfo.Name = "buttonSymmetryInfo";
+            toolTip.SetToolTip(buttonSymmetryInfo, resources.GetString("buttonSymmetryInfo.ToolTip"));
+            buttonSymmetryInfo.UseVisualStyleBackColor = false;
+            buttonSymmetryInfo.Click += buttonSymmetryInfo_Click;
             // 
             // flowLayoutPanel1
             // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.textBoxName);
-            this.panel4.Controls.Add(this.buttonSymmetryInfo);
-            this.panel4.Controls.Add(this.buttonScatteringFactor);
-            this.panel4.Controls.Add(this.label22);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
+            panel4.Controls.Add(textBoxName);
+            panel4.Controls.Add(buttonSymmetryInfo);
+            panel4.Controls.Add(buttonScatteringFactor);
+            panel4.Controls.Add(label22);
+            resources.ApplyResources(panel4, "panel4");
+            panel4.Name = "panel4";
             // 
             // CrystalControl
             // 
-            this.AllowDrop = true;
+            AllowDrop = true;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ContextMenuStrip = this.contextMenuStrip;
-            this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.DoubleBuffered = true;
-            this.Name = "CrystalControl";
-            this.Load += new System.EventHandler(this.CrystalForm_Load);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormCrystal_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormCrystal_DragEnter);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CrystalControl_KeyDown);
-            this.Resize += new System.EventHandler(this.CrystalControl_Resize_1);
-            this.tabControl.ResumeLayout(false);
-            this.tabPageBasicInfo.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
-            this.tabPageAtom.ResumeLayout(false);
-            this.tabPageAtom.PerformLayout();
-            this.panelAtom.ResumeLayout(false);
-            this.panelAtom.PerformLayout();
-            this.contextMenuStrip2.ResumeLayout(false);
-            this.tabPageBondsPolyhedra.ResumeLayout(false);
-            this.tabPageBondsPolyhedra.PerformLayout();
-            this.tabPageReference.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.tabPageEOS.ResumeLayout(false);
-            this.tabPageElasticity.ResumeLayout(false);
-            this.tabPageElasticity.PerformLayout();
-            this.tabPageStrainStress.ResumeLayout(false);
-            this.tabPageStrainStress.PerformLayout();
-            this.tabPagePolycrystalline.ResumeLayout(false);
-            this.tabPagePolycrystalline.PerformLayout();
-            this.contextMenuStripPoleFigure.ResumeLayout(false);
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAngleResolution)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAngleSubDivision)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCrystallineSize)).EndInit();
-            this.tabPageBounds.ResumeLayout(false);
-            this.tabPageLatticePlane.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.contextMenuStrip.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ContextMenuStrip = contextMenuStrip;
+            Controls.Add(tabControl);
+            Controls.Add(panel1);
+            Controls.Add(panel4);
+            Controls.Add(flowLayoutPanel1);
+            DoubleBuffered = true;
+            Name = "CrystalControl";
+            Load += CrystalForm_Load;
+            DragDrop += FormCrystal_DragDrop;
+            DragEnter += FormCrystal_DragEnter;
+            KeyDown += CrystalControl_KeyDown;
+            Resize += CrystalControl_Resize_1;
+            tabControl.ResumeLayout(false);
+            tabPageBasicInfo.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            tabPageAtom.ResumeLayout(false);
+            tabPageAtom.PerformLayout();
+            panelAtom.ResumeLayout(false);
+            panelAtom.PerformLayout();
+            contextMenuStrip2.ResumeLayout(false);
+            tabPageBondsPolyhedra.ResumeLayout(false);
+            tabPageBondsPolyhedra.PerformLayout();
+            tabPageReference.ResumeLayout(false);
+            groupBox8.ResumeLayout(false);
+            groupBox8.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            tabPageEOS.ResumeLayout(false);
+            tabPageElasticity.ResumeLayout(false);
+            tabPageElasticity.PerformLayout();
+            tabPageStrainStress.ResumeLayout(false);
+            tabPageStrainStress.PerformLayout();
+            tabPagePolycrystalline.ResumeLayout(false);
+            tabPagePolycrystalline.PerformLayout();
+            contextMenuStripPoleFigure.ResumeLayout(false);
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAngleResolution).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAngleSubDivision).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownCrystallineSize).EndInit();
+            tabPageBounds.ResumeLayout(false);
+            tabPageLatticePlane.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            contextMenuStrip.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

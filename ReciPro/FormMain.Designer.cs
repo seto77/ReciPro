@@ -129,6 +129,7 @@
             toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             toolStripButtonDiffractionPoly = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
+            toolStripButtonEBSD = new System.Windows.Forms.ToolStripButton();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             readCrystalDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -887,7 +888,7 @@
             resources.ApplyResources(toolStrip1, "toolStrip1");
             toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripLabel1, toolStripSeparator15, toolStripButtonDatabase, toolStripSeparator14, toolStripButtonSymmetryInformation, toolStripSeparator9, toolStripButtonScatteringFactor, toolStripSeparator12, toolStripButtonRotation, toolStripSeparator8, toolStripButtonStructureViewer, toolStripSeparator1, toolStripButtonStereonet, toolStripSeparator7, toolStripButtonDiffractionSingle, toolStripSeparator4, toolStripButtonImageSimulator, toolStripSeparator13, toolStripButtonSpotIDv1, toolStripSeparator2, toolStripButtonSpotIDv2, toolStripSeparator10, toolStripButtonDiffractionPoly, toolStripSeparator19 });
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripLabel1, toolStripSeparator15, toolStripButtonDatabase, toolStripSeparator14, toolStripButtonSymmetryInformation, toolStripSeparator9, toolStripButtonScatteringFactor, toolStripSeparator12, toolStripButtonRotation, toolStripSeparator8, toolStripButtonStructureViewer, toolStripSeparator1, toolStripButtonStereonet, toolStripSeparator7, toolStripButtonDiffractionSingle, toolStripSeparator4, toolStripButtonImageSimulator, toolStripSeparator13, toolStripButtonSpotIDv1, toolStripSeparator2, toolStripButtonSpotIDv2, toolStripSeparator10, toolStripButtonDiffractionPoly, toolStripSeparator19, toolStripButtonEBSD });
             toolStrip1.Name = "toolStrip1";
             toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
@@ -1026,6 +1027,11 @@
             // 
             toolStripSeparator19.Name = "toolStripSeparator19";
             resources.ApplyResources(toolStripSeparator19, "toolStripSeparator19");
+            // 
+            // toolStripButtonEBSD
+            // 
+            resources.ApplyResources(toolStripButtonEBSD, "toolStripButtonEBSD");
+            toolStripButtonEBSD.Name = "toolStripButtonEBSD";
             // 
             // menuStrip1
             // 
@@ -1474,6 +1480,7 @@
         private System.Windows.Forms.ToolStripMenuItem editorToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDisableTextRendering;
+        public System.Windows.Forms.ToolStripButton toolStripButtonEBSD;
     }
 }
 
