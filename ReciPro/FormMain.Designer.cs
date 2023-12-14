@@ -121,13 +121,13 @@
             toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             toolStripButtonDiffractionSingle = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            toolStripButtonEBSD = new System.Windows.Forms.ToolStripButton();
+            toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             toolStripButtonImageSimulator = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             toolStripButtonSpotIDv1 = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             toolStripButtonSpotIDv2 = new System.Windows.Forms.ToolStripButton();
-            toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            toolStripButtonEBSD = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             toolStripButtonDiffractionPoly = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator23 = new System.Windows.Forms.ToolStripSeparator();
@@ -984,6 +984,17 @@
             toolStripSeparator4.Name = "toolStripSeparator4";
             resources.ApplyResources(toolStripSeparator4, "toolStripSeparator4");
             // 
+            // toolStripButtonEBSD
+            // 
+            resources.ApplyResources(toolStripButtonEBSD, "toolStripButtonEBSD");
+            toolStripButtonEBSD.Name = "toolStripButtonEBSD";
+            toolStripButtonEBSD.MouseDown += toolStripButtons_MouseDown;
+            // 
+            // toolStripSeparator10
+            // 
+            toolStripSeparator10.Name = "toolStripSeparator10";
+            resources.ApplyResources(toolStripSeparator10, "toolStripSeparator10");
+            // 
             // toolStripButtonImageSimulator
             // 
             resources.ApplyResources(toolStripButtonImageSimulator, "toolStripButtonImageSimulator");
@@ -1011,17 +1022,6 @@
             resources.ApplyResources(toolStripButtonSpotIDv2, "toolStripButtonSpotIDv2");
             toolStripButtonSpotIDv2.Name = "toolStripButtonSpotIDv2";
             toolStripButtonSpotIDv2.MouseDown += toolStripButtons_MouseDown;
-            // 
-            // toolStripSeparator10
-            // 
-            toolStripSeparator10.Name = "toolStripSeparator10";
-            resources.ApplyResources(toolStripSeparator10, "toolStripSeparator10");
-            // 
-            // toolStripButtonEBSD
-            // 
-            resources.ApplyResources(toolStripButtonEBSD, "toolStripButtonEBSD");
-            toolStripButtonEBSD.Name = "toolStripButtonEBSD";
-            toolStripButtonEBSD.MouseDown += toolStripButtons_MouseDown;
             // 
             // toolStripSeparator19
             // 

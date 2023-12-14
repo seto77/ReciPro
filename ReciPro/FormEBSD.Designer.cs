@@ -29,12 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEBSD));
+            waveLengthControl1 = new WaveLengthControl();
             SuspendLayout();
+            // 
+            // waveLengthControl1
+            // 
+            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            waveLengthControl1.Energy = 20D;
+            resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
+            waveLengthControl1.Name = "waveLengthControl1";
+            waveLengthControl1.ShowWaveSource = false;
+            waveLengthControl1.WaveLength = 0.0085885141045000009D;
+            waveLengthControl1.WaveSource = WaveSource.Electron;
+            waveLengthControl1.XrayWaveSourceElementNumber = 0;
+            waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
             // 
             // FormEBSD
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(waveLengthControl1);
             Name = "FormEBSD";
             FormClosing += FormEBSD_FormClosing;
             Load += FormEBSD_Load;
@@ -42,5 +56,7 @@
         }
 
         #endregion
+
+        private WaveLengthControl waveLengthControl1;
     }
 }
