@@ -637,7 +637,7 @@ public class Clip
             {
                 UseFixedArgb = true,
                 IgnoreNormalSides = false,
-                Primitives = new (PT Type, int Count)[] { (PT.TriangleFan, 0) }
+                Primitives = [(PT.TriangleFan, 0)]
             };
             Planes.Add(obj);
             PrmsF.AddRange(prms.ToArrayF());
@@ -999,9 +999,10 @@ public class Polyhedron : GLObject
 
         for (int i = 0, offsetIndices = 0, offsetVetices = 0; i < p.Length; i++)
         {
-            p[i] = new Polygon(Material, Mode);
-
-            p[i].Primitives = [Primitives[i * 3], Primitives[i * 3 + 1], Primitives[i * 3 + 2]];
+            p[i] = new Polygon(Material, Mode)
+            {
+                Primitives = [Primitives[i * 3], Primitives[i * 3 + 1], Primitives[i * 3 + 2]]
+            };
 
             p[i].Indices = new uint[p[i].Primitives.Sum(o => o.Count)];
 
@@ -1103,13 +1104,13 @@ public class Ellipsoid : GLObject
         var transMat = new M4d { Column0 = new V4d(v1, 0), Column1 = new V4d(v2, 0), Column2 = new V4d(v3, 0), Column3 = new V4d(o, 1) };
 
         //さいころの6面方向
-        var rot = new[] {
+        M3d[] rot = [
                 new M3d(1, 0, 0, 0, 1, 0, 0, 0, 1),
                 new M3d(1, 0, 0, 0, 0, -1, 0, 1, 0),
                 new M3d(1, 0, 0, 0, -1, 0, 0, 0, -1),
                 new M3d(1, 0, 0, 0, 0, 1, 0, -1, 0),
                 new M3d(0, 0, 1, 0, 1, 0, -1, 0, 0),
-                new M3d(0, 0, -1, 0, 1, 0, 1, 0, 0), };
+                new M3d(0, 0, -1, 0, 1, 0, 1, 0, 0), ];
 
         Vertices = new Vertex[rot.Length * (slices * 2 + 1) * (slices * 2 + 1)];
         for (int i = 0, j = 0; i < rot.Length; i++)
@@ -1398,7 +1399,7 @@ public class Cone : Pipe
     /// <summary>
     /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
     /// </summary>
-    static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = new Dictionary<int, (int VBO, int VAO, int EBO)>();
+    static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
 
     private static (int Slices, int Stacks) _Default = (1, 16);
     public new static (int Slices, int Stacks) Default
@@ -1694,7 +1695,7 @@ public class TextObject : GLObject
 
     private static readonly V2f p00 = new(0, 0), p01 = new(0, 1), p10 = new(1, 0), p11 = new(1, 1);
     private static readonly uint[] indices = [(uint)0, (uint)1, (uint)2, (uint)3];
-    private static readonly (PT, int)[] primitives = new[] { (PT.Quads, 4) };
+    private static readonly (PT, int)[] primitives = [(PT.Quads, 4)];
 
     public int TextureNum = -1;
     public double Popout = 0;

@@ -309,7 +309,7 @@ unsafe public partial class GLControlAlpha : UserControl
             }
         }
     }
-    public static List<(string Product, string Version)> GraphicsInfo { get; set; } = new List<(string Product, string Version)>();
+    public static List<(string Product, string Version)> GraphicsInfo { get; set; } = [];
 
     /// <summary>
     /// カメラの位置
@@ -409,7 +409,7 @@ unsafe public partial class GLControlAlpha : UserControl
     {
         try
         {
-            var ver = GL.GetString(StringName.Version)[..5].Split(new[] { '.', ' ' });
+            var ver = GL.GetString(StringName.Version)[..5].Split(['.', ' ']);
             return ver.Length != 3 ? null : ver;
         }
         catch { throw new Exception(); }

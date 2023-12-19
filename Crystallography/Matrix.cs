@@ -1010,10 +1010,8 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
     }
 
     //2つのベクトルの外積を返す
-    public static Vector3D VectorProduct(Vector3D v1, Vector3D v2)
-    {
-        return new Vector3D(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
-    }
+    public static Vector3D VectorProduct(Vector3D v1, Vector3D v2) 
+        => new Vector3D(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 
     /// <summary>
     /// 座標一ずつを加減算し、0から1の範囲内に収める

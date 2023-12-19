@@ -429,29 +429,19 @@ public class PseudoBitmap : IDisposable
     public Complex[][] ComplexG;//元画像Gの複素数;
     public Complex[][] ComplexB;//元画像Bの複素数;
 
-    public List<float> FFT_Filter = new();
-    public List<bool> FilterTemporary = new();
-    public List<bool> Filter1 = new();
-    public List<bool> Filter2 = new();
-    public List<bool> Filter3 = new();
-    public List<bool> Filter4 = new();
-    public List<bool> Filter5 = new();
-    public bool Filter1Visible = true;
-    public bool Filter2Visible = true;
-    public bool Filter3Visible = true;
-    public bool Filter4Visible = true;
-    public bool Filter5Visible = true;
+    public List<float> FFT_Filter = [];
+    public List<bool> FilterTemporary = [];
+    public List<bool> Filter1 = [], Filter2 = [], Filter3 = [], Filter4 = [], Filter5 = [];
+    public bool Filter1Visible = true, Filter2Visible = true, Filter3Visible = true, Filter4Visible = true, Filter5Visible = true;
 
     /// <summary>
     /// 透明度フィルター. 0が透明、255が不透明. AlphaEnabledがTrueの時だけ使われる.
     /// </summary>
-    public List<byte> FilterAlfha { get; set; } = new List<byte>();
+    public List<byte> FilterAlfha { get; set; } = [];
 
     public (byte R, byte G, byte B)[] ColorScale;
 
-    public List<uint> SrcValuesR = new();
-    public List<uint> SrcValuesG = new();
-    public List<uint> SrcValuesB = new();
+    public List<uint> SrcValuesR = [], SrcValuesG = [], SrcValuesB = [];
 
     /// <summary>
     /// グレースケールの画像データ (BlurModeが有効の時は、フィルター後のデータ)
@@ -588,7 +578,6 @@ public class PseudoBitmap : IDisposable
 
     public double GetPixelRawValue(PointD pt) => GetPixelRawValue(pt.X, pt.Y);
 
-
     public void SetScaleColdWarm(bool linear = true)
     {
         if (linear)
@@ -633,8 +622,6 @@ public class PseudoBitmap : IDisposable
         GrayScale = false;
     }
 
-
-
     /// <summary>
     /// グレースケールの時のx, y位置の生の強度を返す. グレースケールではなかったら常に0を返す.
     /// </summary>
@@ -666,12 +653,10 @@ public class PseudoBitmap : IDisposable
     /// <returns></returns>
     public Complex[] GetPixelComplex(int x, int y)
     {
-        if (x < 0 || Width <= x || y < 0 || Height <= y || this.RealImage == true) return new Complex[] { new Complex(), new Complex(), new Complex() };
-
-        if (this.GrayScale == true)
-            return new Complex[] { ComplexGray[y][x], ComplexGray[y][x], ComplexGray[y][x] };
+        if (x < 0 || Width <= x || y < 0 || Height <= y || this.RealImage == true) 
+            return [new(), new(), new()];
         else
-            return new Complex[] { ComplexR[y][x], ComplexG[y][x], ComplexB[y][x] };
+            return this.GrayScale ? ([ComplexGray[y][x], ComplexGray[y][x], ComplexGray[y][x]]) : ([ComplexR[y][x], ComplexG[y][x], ComplexB[y][x]]);
     }
 
     public Complex[] GetPixelComplex(double x, double y) => GetPixelComplex((int)Math.Round(x), (int)Math.Round(y));
@@ -708,7 +693,7 @@ public class PseudoBitmap : IDisposable
     /// <param name="destSize"></param>
     /// <returns></returns>
     public static RectangleD GetDrawingArea(PointD srcCenter, double zoom, Size destSize)
-        => new RectangleD(srcCenter.X - destSize.Width / zoom / 2.0, srcCenter.Y - destSize.Height / zoom / 2.0, destSize.Width / zoom, destSize.Height / zoom);
+        => new(srcCenter.X - destSize.Width / zoom / 2.0, srcCenter.Y - destSize.Height / zoom / 2.0, destSize.Width / zoom, destSize.Height / zoom);
 
     private Bitmap destBmp;
 
@@ -716,8 +701,8 @@ public class PseudoBitmap : IDisposable
 
     public delegate byte GetValue(double value, byte[] scale);
 
-    private RectangleD justBeforeSrcRect = new RectangleD();
-    private Size justBeforeDestSize = new Size();
+    private RectangleD justBeforeSrcRect;
+    private Size justBeforeDestSize;
 
     /// <summary>
     /// 指定された範囲のイメージを取得する
