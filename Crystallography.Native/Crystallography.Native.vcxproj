@@ -54,6 +54,7 @@
     <UseILP64Interfaces>false</UseILP64Interfaces>
     <InterproceduralOptimization>true</InterproceduralOptimization>
     <SpectreMitigation />
+    <LLVMToolsVersion>16</LLVMToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -101,7 +102,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net7.0-windows</OutDir>
+    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net8.0-windows10.0.22621.0\</OutDir>
     <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -255,7 +256,7 @@
       </OpenMPSupport>
       <OpenMP>
       </OpenMP>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>
       </EnableModules>
       <BufferSecurityCheck>
