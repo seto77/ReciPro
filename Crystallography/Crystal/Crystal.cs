@@ -1,7 +1,5 @@
 #region using
 using MathNet.Numerics;
-using MathNet.Numerics.LinearAlgebra.Factorization;
-using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
@@ -9,7 +7,6 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 #endregion
@@ -220,42 +217,42 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public Vector3D A_Axis;
+    public Vector3DBase A_Axis;
 
     /// <summary>
     /// b軸ベクトル
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public Vector3D B_Axis;
+    public Vector3DBase B_Axis;
 
     /// <summary>
     /// c軸ベクトル
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public Vector3D C_Axis;
+    public Vector3DBase C_Axis;
 
     /// <summary>
     /// a*軸ベクトル
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public Vector3D A_Star;
+    public Vector3DBase A_Star;
 
     /// <summary>
     /// b*軸ベクトル
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public Vector3D B_Star;
+    public Vector3DBase B_Star;
 
     /// <summary>
     /// c*軸ベクトル
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public Vector3D C_Star;
+    public Vector3DBase C_Star;
 
     /// <summary>
     /// 逆格子行列 (1行目にa*, 2行目にb*, 3行目にｃ*)
@@ -885,11 +882,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         if (A_Axis == null) return;
         VectorOfAxis = [];
         foreach (var (U, V, W) in indices)
-        {
-            var vec = U * A_Axis + V * B_Axis + W * C_Axis;
-            vec.Text = $"[{U}{V}{W}]";
-            VectorOfAxis.Add(vec);
-        }
+            VectorOfAxis.Add(new Vector3D(U * A_Axis + V * B_Axis + W * C_Axis) { Text = $"[{U}{V}{W}]" });
     }
 
     /// <summary>
@@ -902,23 +895,19 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     {
         if (A_Axis == null) return;
         VectorOfAxis = [];
-        var vec = new Vector3D();
-        vec = A_Axis; vec.Text = "[100]"; VectorOfAxis.Add(vec);
-        vec = B_Axis; vec.Text = "[010]"; VectorOfAxis.Add(vec);
-        vec = C_Axis; vec.Text = "[001]"; VectorOfAxis.Add(vec);
-        vec = -A_Axis; vec.Text = "[-100]"; VectorOfAxis.Add(vec);
-        vec = -B_Axis; vec.Text = "[0-10]"; VectorOfAxis.Add(vec);
-        vec = -C_Axis; vec.Text = "[00-1]"; VectorOfAxis.Add(vec);
+
+        VectorOfAxis.Add(new Vector3D(A_Axis) { Text = "[100]" });
+        VectorOfAxis.Add(new Vector3D(B_Axis) { Text = "[010]" });
+        VectorOfAxis.Add(new Vector3D(C_Axis) { Text = "[001]" });
+        VectorOfAxis.Add(new Vector3D(-A_Axis) { Text = "[-100]" });
+        VectorOfAxis.Add(new Vector3D(-B_Axis) { Text = "[0-10]" });
+        VectorOfAxis.Add(new Vector3D(-C_Axis) { Text = "[00-1]" });
 
         for (int u = -uMax; u <= uMax; u++)
             for (int v = -vMax; v <= vMax; v++)
                 for (int w = -wMax; w <= wMax; w++)
                     if (CheckIrreducible(u, v, w) && !(u * v == 0 && v * w == 0 && w * u == 0))
-                    {
-                        vec = u * A_Axis + v * B_Axis + w * C_Axis;
-                        vec.Text = $"[{u}{v}{w}]";
-                        VectorOfAxis.Add(vec);
-                    }
+                        VectorOfAxis.Add(new Vector3D(u * A_Axis + v * B_Axis + w * C_Axis) { Text = $"[{u}{v}{w}]" });
     }
 
     #endregion 軸ベクトルの計算
@@ -933,11 +922,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     {
         VectorOfPlane = [];
         foreach (var (H, K, L) in indices)
-        {
-            var vec = H * A_Star + K * B_Star + L * C_Star;
-            vec.Text = $"({H}{K}{L})";
-            VectorOfPlane.Add(vec);
-        }
+            VectorOfPlane.Add(new Vector3D(H * A_Star + K * B_Star + L * C_Star) { Text = $"({H}{K}{L})" });
     }
 
     /// <summary>
@@ -1335,11 +1320,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             for (int k = h == 0 ? 0 : -kMax; k <= kMax; k++)
                 for (int l = (h == 0 && k == 0) ? 1 : -lMax; l <= lMax; l++)
                 {
-                    Vector3D temp = h * A_Star + k * B_Star + l * C_Star;
+                    var temp = (h * A_Star + k * B_Star + l * C_Star).ToVector3D();
                     if ((temp.d = temp.Length) < 1 / d_limit)
                     {
-                        //temp.Theta = waveLength / 2 * temp.Length;
-                        //temp.TanTheta = Math.Tan(temp.Theta);
                         temp.d = 1 / temp.Length;
                         temp.Text = $"{h} {k} {l}";
                         temp.Index = (h, k, l);
@@ -1840,7 +1823,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         Vector3DBase pos = MatrixReal * target.Atom[0];
         var maxLen2 = maxLength * maxLength;
         var result = new List<(double X, double Y, double Z, double Distance, string Label)>();
-        //まず、隣り合った単位格子の原子位置をすべて探索してresultリストに全部入れる
+        //まず、隣り合った単位格子の原子位置をすべて探索してresultリストに全部入れる 
         for (int max = 0; max < 8; max++)
         {
             bool flag = false;
@@ -1860,7 +1843,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                                         lock (lockObj)
                                         {
                                             result.Add((diffPos.X, diffPos.Y, diffPos.Z, diffPos.Length, atm.Label));
-                                            flag = true;//一個でも見つけられたら続行
+                                            flag = true;//一個でも見つけられたら続行　
                                         }
                                     }
                                 }
@@ -1870,6 +1853,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             if (flag == false && max > 2)
                 break;
         }
+
         result.Sort((a1, a2) => a1.Distance.CompareTo(a2.Distance));
         return result;
     }

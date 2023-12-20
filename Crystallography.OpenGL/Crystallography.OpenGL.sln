@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32721.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.OpenGL", "Crystallography.OpenGL\Crystallography.OpenGL.csproj", "{68D48BDB-22DE-474A-B1DB-BC6CC26927C6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{917D0C38-6D23-4142-AFCB-CC94C9EB0ABF} = {917D0C38-6D23-4142-AFCB-CC94C9EB0ABF}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography", "Crystallography\Crystallography.csproj", "{917D0C38-6D23-4142-AFCB-CC94C9EB0ABF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68D48BDB-22DE-474A-B1DB-BC6CC26927C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D48BDB-22DE-474A-B1DB-BC6CC26927C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D48BDB-22DE-474A-B1DB-BC6CC26927C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D48BDB-22DE-474A-B1DB-BC6CC26927C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917D0C38-6D23-4142-AFCB-CC94C9EB0ABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917D0C38-6D23-4142-AFCB-CC94C9EB0ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917D0C38-6D23-4142-AFCB-CC94C9EB0ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917D0C38-6D23-4142-AFCB-CC94C9EB0ABF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15E9010B-CFFE-4BDA-9132-DE3FCDF07E9B}
+	EndGlobalSection
+EndGlobal

@@ -722,7 +722,7 @@ public partial class ScalablePictureBox : UserControl
 
     private void drawSymbols(PaintEventArgs e, List<PointD> spot, List<string> spotLabel, Brush brush1, Brush brush2, bool showLabel, int? emphasizeNum)
     {
-        var gp = new GraphicsPath();
+        GraphicsPath gp;
         FontFamily ff = new("Arial");
         Pen pen1 = new(brush1), pen2 = new(brush2);
         if (spot != null && spot.Count > 0)
@@ -765,10 +765,7 @@ public partial class ScalablePictureBox : UserControl
     /// </summary>
     public event PaintEventHandler PaintControl;
 
-    private void ScalablePictureBox_Paint(object sender, PaintEventArgs e)
-    {
-        PaintControl?.Invoke(sender, e);
-    }
+    private void ScalablePictureBox_Paint(object sender, PaintEventArgs e) => PaintControl?.Invoke(sender, e);
 
     /// <summary>
     /// コントロール全体がリサイズされたとき
@@ -1030,15 +1027,9 @@ public partial class ScalablePictureBox : UserControl
         Clipboard.SetDataObject(GetBitmapImage(),true);
     }
 
-    public void SaveAsMetafile()
-    {
-        metafile(true);
-    }
+    public void SaveAsMetafile() => metafile(true);
 
-    public void CopyAsMetafile()
-    {
-        metafile(false);
-    }
+    public void CopyAsMetafile() => metafile(false);
 
     private void metafile(bool save)
     {
@@ -1076,12 +1067,6 @@ public partial class ScalablePictureBox : UserControl
         else
             ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
     }
-
-
-
-
-
-
 
     //このコントロールがフォーカスを浴びた時の処理
     private void ScalablePictureBox_Enter(object sender, EventArgs e)

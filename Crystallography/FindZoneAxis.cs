@@ -157,8 +157,8 @@ namespace Crystallography
                 //if (zoneAxis1[n].plane1.IsRootIndex)
                 for (int m = 0; m < zoneAxis2.Length; m++)
                 {
-                    Vector3D v1 = zoneAxis1[n].u * cry.A_Axis + zoneAxis1[n].v * cry.B_Axis + zoneAxis1[n].w * cry.C_Axis;
-                    Vector3D v2 = zoneAxis2[m].u * cry.A_Axis + zoneAxis2[m].v * cry.B_Axis + zoneAxis2[m].w * cry.C_Axis;
+                    var v1= zoneAxis1[n].u * cry.A_Axis + zoneAxis1[n].v * cry.B_Axis + zoneAxis1[n].w * cry.C_Axis;
+                    var v2 = zoneAxis2[m].u * cry.A_Axis + zoneAxis2[m].v * cry.B_Axis + zoneAxis2[m].w * cry.C_Axis;
                     double calcAngle = Vector3D.AngleBetVectors(v1, v2);
                     if (angleMax >= calcAngle && angleMin <= calcAngle)
                     {
@@ -191,7 +191,7 @@ namespace Crystallography
                             }
                         }
 
-            return zoneAxes.ToArray();
+            return [.. zoneAxes];
         }
 
         public static ZoneAxes[] ZoneAxisFromThreeZoneAxis(Crystal cry, PhotoInformation photo1, PhotoInformation photo2, PhotoInformation photo3, bool excludeEquivalence)

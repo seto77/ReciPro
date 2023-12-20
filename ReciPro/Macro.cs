@@ -51,7 +51,7 @@ public class Macro : MacroBase
 
         public void RotateAroundAxis(int u, int v, int w, double angle)
         {
-            Vector3D a = p.main.Crystal.A_Axis, b = p.main.Crystal.B_Axis, c = p.main.Crystal.C_Axis;
+            Vector3DBase a = p.main.Crystal.A_Axis, b = p.main.Crystal.B_Axis, c = p.main.Crystal.C_Axis;
             var axis = p.main.Crystal.RotationMatrix * (u * a + v * b + w * c);
             p.main.Rotate(axis, angle);
         }

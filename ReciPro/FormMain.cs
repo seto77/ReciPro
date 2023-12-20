@@ -773,8 +773,8 @@ public partial class FormMain : Form
         double u = numericBoxAxisU.Value, v = numericBoxAxisV.Value, w = numericBoxAxisW.Value;
         double h = numericBoxPlaneH.Value, k = numericBoxPlaneK.Value, l = numericBoxPlaneL.Value;
 
-        Vector3D xVector, yVector, zVector;
-        Vector3D aAxis = Crystal.A_Axis, bAxis = Crystal.B_Axis, cAxis = Crystal.C_Axis;
+        Vector3DBase xVector, yVector, zVector;
+        Vector3DBase aAxis = Crystal.A_Axis, bAxis = Crystal.B_Axis, cAxis = Crystal.C_Axis;
         var matrixInverse = Matrix3D.Inverse(new Matrix3D(aAxis, bAxis, cAxis));
         var aStar = new Vector3D(matrixInverse.E11, matrixInverse.E12, matrixInverse.E13);
         var bStar = new Vector3D(matrixInverse.E21, matrixInverse.E22, matrixInverse.E23);

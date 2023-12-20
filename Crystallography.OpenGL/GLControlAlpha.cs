@@ -372,7 +372,7 @@ unsafe public partial class GLControlAlpha : UserControl
     /// 投影面のアスペクト比
     /// </summary>
     [Category("Geometry")]
-    private double ProjAspect { get => glControl == null ? 0 : (double)glControl.ClientSize.Height / glControl.ClientSize.Width; }
+    private double ProjAspect => glControl == null ? 0 : (double)glControl.ClientSize.Height / glControl.ClientSize.Width;
 
     /// <summary>
     /// プロジェクション(投影)マトリックス

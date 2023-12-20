@@ -554,7 +554,7 @@ public partial class CrystalControl : UserControl
             cry.SymmetrySeriesNumber = destNum;
             cry.SetAxis();
 
-            Vector3D srcA = cry.A_Axis, srcB = cry.B_Axis, srcC = cry.C_Axis, dstA, dstB, dstC;
+            Vector3DBase srcA = cry.A_Axis, srcB = cry.B_Axis, srcC = cry.C_Axis, dstA, dstB, dstC;
 
             if (srcExtra == "H")
             {//HをRに変換
@@ -637,7 +637,7 @@ public partial class CrystalControl : UserControl
             _ => (x, y, z),
         };
 
-    static (Vector3D A, Vector3D B, Vector3D C) convertAxisMonoclinic(Vector3D a, Vector3D b, Vector3D c, string setting, bool forward = true)
+    static (Vector3DBase A, Vector3DBase B, Vector3DBase C) convertAxisMonoclinic(Vector3DBase a, Vector3DBase b, Vector3DBase c, string setting, bool forward = true)
         => setting switch
         {
             "b2" => forward ? (-c - a, b, a) : (c, b, -c - a),

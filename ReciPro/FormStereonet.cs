@@ -788,8 +788,7 @@ public partial class FormStereonet : Form
             var v = (int)numericUpDownCircleV.Value;
             var w = (int)numericUpDownCircleW.Value;
             if (u == 0 && v == 0 && w == 0) return;
-            var vec = (u * formMain.Crystal.A_Axis) + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis;
-            vec.Text = "[" + u.ToString() + " " + v.ToString() + " " + w.ToString() + "]";
+            var vec =new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"[{u} {v} {w}]" };
             formMain.Crystal.VectorOfPole.Add(vec);
             checkedListBoxCircles.Items.Add(vec, true);
             Draw();
@@ -808,9 +807,8 @@ public partial class FormStereonet : Form
             var w = h1 * k2 - h2 * k1;
             if (u == 0 && v == 0 && w == 0) return;
 
-            var vec = u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis;
+            var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"({h1} {k1} {l1}) & ({h2} {k2} {l2})" };
 
-            vec.Text = $"({h1} {k1} {l1}) & ({h2} {k2} {l2})";
             formMain.Crystal.VectorOfPole.Add(vec);
             checkedListBoxCircles.Items.Add(vec, true);
             Draw();

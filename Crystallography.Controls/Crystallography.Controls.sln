@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32721.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.Controls", "Crystallography.Controls\Crystallography.Controls.csproj", "{9146B807-6430-487A-AF4A-445A027D25D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography", "..\Crystallography\Crystallography\Crystallography.csproj", "{7A2E2FF5-0BFE-4AF4-A653-E51770C78478}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9146B807-6430-487A-AF4A-445A027D25D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9146B807-6430-487A-AF4A-445A027D25D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9146B807-6430-487A-AF4A-445A027D25D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9146B807-6430-487A-AF4A-445A027D25D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A2E2FF5-0BFE-4AF4-A653-E51770C78478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2E2FF5-0BFE-4AF4-A653-E51770C78478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2E2FF5-0BFE-4AF4-A653-E51770C78478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A2E2FF5-0BFE-4AF4-A653-E51770C78478}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC9639A6-F177-4227-81D4-6EFAE829FC8C}
+	EndGlobalSection
+EndGlobal

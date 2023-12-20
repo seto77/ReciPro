@@ -344,7 +344,7 @@ public class BetheMethod
                         if (diskAmplitude[r] != null)
                             amplitudes[r] = diskAmplitude[r][t * bLen + g];
 
-                    Disks[t][g] = new CBED_Disk(new[] { Beams[g].H, Beams[g].K, Beams[g].L }, Beams[g].Vec, Thicknesses[t], amplitudes);
+                    Disks[t][g] = new CBED_Disk([Beams[g].H, Beams[g].K, Beams[g].L], Beams[g].Vec, Thicknesses[t], amplitudes);
 
                 }
             });
@@ -408,7 +408,9 @@ public class BetheMethod
         if (bwCBED.CancellationPending)
             e.Cancel = true;
     }
+    #endregion
 
+    #region EBSD
     /// <summary>
     /// EBSD計算用
     /// </summary>
@@ -487,7 +489,7 @@ public class BetheMethod
             }
             //MtxExp_Eigenの場合
             else if (solver == Solver.MtxExp_Eigen && EigenEnabled)
-                result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses);
+                result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, [.. psi0], Thicknesses);
             //MtxExp_MKLの場合 
             else
             {
@@ -637,7 +639,7 @@ public class BetheMethod
             //計算対象のg-Vectorsを決める。
             Beams = Find_gVectors(BaseRotation, vecK0);
 
-            if (Beams == null || Beams.Length == 0) return Array.Empty<Beam>();
+            if (Beams == null || Beams.Length == 0) return [];
 
             var potentialMatrix = getEigenMatrix(Beams);
             dim = Beams.Length;
@@ -795,7 +797,7 @@ public class BetheMethod
             var c = a.Rating - b.Rating;
             return (c > 0) ? 1 : (c < 0) ? -1 : 0;
         });
-        Beams = beams.ToArray();
+        Beams = [.. beams];
         return Beams;
     }
 
@@ -846,7 +848,7 @@ public class BetheMethod
         //k0ベクトルを計算
         var vecK0 = getVecK0(kvac, u0);
         //計算対象のg-Vectorsを決める。indexが小さく、かつsg(励起誤差)の小さいg-vectorを抽出する
-        Beams = Find_gVectors(BaseRotation, vecK0).OrderBy(e => e.Vec.Length2).ToArray();
+        Beams = [.. Find_gVectors(BaseRotation, vecK0).OrderBy(e => e.Vec.Length2)];
 
         #region 検証コード 25nm^-1 以上のビームは削除  25nm^-1 = 62.7mrad
         //var _beam = new List<Beam>();
@@ -1634,7 +1636,7 @@ public class BetheMethod
     /// <returns></returns>
     public (Complex Real, Complex Imag) getU(double voltage) => getU(voltage, new Beam((0, 0, 0), new Vector3DBase(0, 0, 0)));
 
-    private readonly Dictionary<(int Key1, int Key2), (Complex Real, Complex Imag)> uDictionary = new();
+    private readonly Dictionary<(int Key1, int Key2), (Complex Real, Complex Imag)> uDictionary = [];
     #endregion
 
     #region ポテンシャルのマトリックス
@@ -1827,7 +1829,7 @@ public class BetheMethod
     public static Beam[] ExtractInsideBeams(Beam[] beams, double acc, double radius, double shiftX, double shiftY)
     {
         if (double.IsInfinity(radius))
-            return beams.ToArray();
+            return [.. beams];
         else
         {
             var rambda = UniversalConstants.Convert.EnergyToElectronWaveLength(acc);

@@ -729,6 +729,8 @@ public class Vector3DBase : ICloneable
         }
     }
 
+    public Vector3D ToVector3D() => new(X, Y, Z);
+
 
     /// <summary>
     /// 2つのベクトルの外積を返す
@@ -790,7 +792,7 @@ public class Vector3DBase : ICloneable
 /// 3次元ベクトルと静的関数を提供
 /// </summary>
 [Serializable()]
-public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
+public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
 {
     public new object Clone() => (Vector3D)this.MemberwiseClone();
 
@@ -831,10 +833,10 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
         if (d != v.d)
             return -d.CompareTo(v.d);
         else if (X != v.X)
-            return -X.CompareTo(((Vector3D)v).X);
+            return -X.CompareTo(v.X);
         else if (Y != v.Y)
             return -Y.CompareTo(v.Y);
-        else if (Z != ((Vector3D)v).Z)
+        else if (Z != v.Z)
             return -Z.CompareTo(v.Z);
         else
             return 0;
@@ -855,6 +857,13 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
     public Vector3D(in double x, in double y, in double z, in bool IsCalcD = true)
     {
         X = x; Y = y; Z = z;
+        if (IsCalcD)
+            d = Math.Sqrt(X * X + Y * Y + Z * Z);
+    }
+
+    public Vector3D(Vector3DBase v, in bool IsCalcD = true)
+    {
+        X = v.X; Y = v.Y; Z = v.Z;
         if (IsCalcD)
             d = Math.Sqrt(X * X + Y * Y + Z * Z);
     }
@@ -917,7 +926,7 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
 
     public new void NormarizeThis()
     {
-        Vector3D v = Vector3D.Normarize(this);
+        Vector3D v = Normarize(this);
         X = v.X;
         Y = v.Y;
         Z = v.Z;
@@ -942,7 +951,7 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
     /// <returns></returns>
     public static double LengthSquareBetVectors(Vector3D v1, Vector3D v2)
     {
-        return Math.Sqrt((v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y) + (v1.Z - v2.Z) * (v1.Z - v2.Z));
+        return (v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y) + (v1.Z - v2.Z) * (v1.Z - v2.Z);
     }
 
     /// <summary>

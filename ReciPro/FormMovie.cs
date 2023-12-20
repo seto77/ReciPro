@@ -20,9 +20,9 @@ public partial class FormMovie : Form
     public double Speed => numericBoxSpeed.Value;
     public double Duration => numericBoxDuration.Value;
 
-    public Vector3D A => FormMain.Crystal.A_Axis;
-    public Vector3D B => FormMain.Crystal.B_Axis;
-    public Vector3D C => FormMain.Crystal.C_Axis;
+    public Vector3DBase A => FormMain.Crystal.A_Axis;
+    public Vector3DBase B => FormMain.Crystal.B_Axis;
+    public Vector3DBase C => FormMain.Crystal.C_Axis;
 
     public Matrix3D Rot => FormMain.Crystal.RotationMatrix;
 
