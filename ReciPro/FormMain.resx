@@ -3825,7 +3825,7 @@ development)</value>
     <value>287, 22</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Github page</value>
+    <value>Github page repository</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>287, 22</value>
@@ -3841,6 +3841,12 @@ development)</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
     <value>Help (PDF)</value>
+  </data>
+  <data name="githubWikiToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 22</value>
+  </data>
+  <data name="githubWikiToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help (Wiki)</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 21</value>
@@ -4637,6 +4643,12 @@ development)</value>
     <value>helpwebToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;helpwebToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;githubWikiToolStripMenuItem.Name" xml:space="preserve">
+    <value>githubWikiToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;githubWikiToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;languageToolStripMenuItem.Name" xml:space="preserve">

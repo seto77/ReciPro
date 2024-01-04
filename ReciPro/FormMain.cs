@@ -1208,6 +1208,9 @@ public partial class FormMain : Form
     private void reportBugsRequestsOrCommentsToolStripMenuItem1_Click(object sender, EventArgs e)
         => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro/issues") { UseShellExecute = true });
 
+    private void githubWikiToolStripMenuItem_Click(object sender, EventArgs e)
+        => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro/wiki") { UseShellExecute = true });
+
     #endregion FileMenu
 
     #region キーストロークイベント
@@ -1485,4 +1488,5 @@ public partial class FormMain : Form
     }
     #endregion
 
+  
 }
