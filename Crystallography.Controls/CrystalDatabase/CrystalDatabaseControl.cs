@@ -231,7 +231,7 @@ public partial class CrystalDatabaseControl : UserControl
 
             //最後まで来ている時で、かつ閾値以下の容量で、かつこれまで一度も分割もしていない場合
             if (i + division >= total && byteList.Count <= thresholdBytes && filecounter == 0)
-                fs.Write(byteList.ToArray(), 0, byteList.Count);//最初のファイルに書き込んで終了
+                fs.Write([.. byteList], 0, byteList.Count);//最初のファイルに書き込んで終了
 
             //最後まで来ている時か、閾値以上の容量の場合
             else if (i + division >= total || byteList.Count > thresholdBytes)
@@ -239,7 +239,7 @@ public partial class CrystalDatabaseControl : UserControl
                 if (filecounter == 0)
                     Directory.CreateDirectory(fn.Remove(fn.Length - 5, 5));
                 using (var fs1 = new FileStream(header + filecounter.ToString("000"), FileMode.Create, FileAccess.Write))
-                    fs1.Write(byteList.ToArray(), 0, byteList.Count);
+                    fs1.Write([.. byteList], 0, byteList.Count);
                 fileSize.Add(byteList.Count);
                 byteList.Clear();
 

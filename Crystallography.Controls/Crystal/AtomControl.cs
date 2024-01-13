@@ -589,7 +589,7 @@ public partial class AtomControl : UserControl
 
         double[] aniso = UseTypeU ?
             [Aniso11 / 100, Aniso22 / 100, Aniso33 / 100, Aniso12 / 100, Aniso23 / 100, Aniso13 / 100] :
-            new[] { Aniso11, Aniso22, Aniso33, Aniso12, Aniso23, Aniso13 };
+            [Aniso11, Aniso22, Aniso33, Aniso12, Aniso23, Aniso13];
 
         double[] anisoErr = UseTypeU ?
             [Aniso11Err / 100, Aniso22Err / 100, Aniso33Err / 100, Aniso12Err / 100, Aniso23Err / 100, Aniso13Err / 100] :

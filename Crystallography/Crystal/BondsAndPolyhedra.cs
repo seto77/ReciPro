@@ -42,7 +42,7 @@ namespace Crystallography
 
         [XmlIgnore]
         //[MemoryPackIgnore]
-        public List<int[]> pairID = new();
+        public List<int[]> pairID = [];
 
         #endregion
 
@@ -164,7 +164,7 @@ namespace Crystallography
                 VestaCations.ForEach(cation => bonds.Remove(bonds.Find(b => b.Element1 == cation && b.Element2 == cation)));
             }
 
-            return bonds.ToArray();
+            return [.. bonds];
         }
 
         static Bonds()

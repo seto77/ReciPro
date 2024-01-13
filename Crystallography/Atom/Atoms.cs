@@ -44,7 +44,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public int ID;
 
     [XmlIgnore]
-    public Vector3D[] Atom = Array.Empty<Vector3D>();
+    public Vector3D[] Atom = [];
 
     public double X, Y, Z;
     public double X_err, Y_err, Z_err;
@@ -197,7 +197,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
 
         SubNumberXray = subXray;
         SubNumberElectron = subElectron;
-        Isotope = isotope ?? Array.Empty<double>();
+        Isotope = isotope ?? [];
         AtomicNumber = atomicNumber;
         ElementName = AtomicNumber.ToString() + ": " + AtomStatic.AtomicName(atomicNumber);
     }

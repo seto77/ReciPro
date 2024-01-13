@@ -442,9 +442,9 @@ public class ConvertCrystalData
 
             if (xShift != 0 || yShift != 0 || zShift != 0)
             {
-                x = (x.ToDouble() + xShift).ToString("f8").TrimEnd(new[] { '0' });
-                y = (y.ToDouble() + yShift).ToString("f8").TrimEnd(new[] { '0' });
-                z = (z.ToDouble() + zShift).ToString("f8").TrimEnd(new[] { '0' });
+                x = (x.ToDouble() + xShift).ToString("f8").TrimEnd(['0']);
+                y = (y.ToDouble() + yShift).ToString("f8").TrimEnd(['0']);
+                z = (z.ToDouble() + zShift).ToString("f8").TrimEnd(['0']);
             }
 
             var occ = "1";
@@ -495,14 +495,14 @@ public class ConvertCrystalData
             }
             else if (atomicNumber == -1)//"OH"のときの対処
             {
-                atoms.Add(new Atoms2(label, 1, 0, 0, new[] { x, y, z }, occ, IsIso, IsUtypeUsed, iso, aniso));
-                atoms.Add(new Atoms2(label, 8, 0, 0, new[] { x, y, z }, occ, IsIso, IsUtypeUsed, iso, aniso));
+                atoms.Add(new Atoms2(label, 1, 0, 0, [x, y, z], occ, IsIso, IsUtypeUsed, iso, aniso));
+                atoms.Add(new Atoms2(label, 8, 0, 0, [x, y, z], occ, IsIso, IsUtypeUsed, iso, aniso));
             }
             else if (atomicNumber == -2)//"Wat"水のときの対処
             {
-                atoms.Add(new Atoms2(label, 1, 0, 0, new[] { x, y, z }, occ, IsIso, IsUtypeUsed, iso, aniso));
-                atoms.Add(new Atoms2(label, 1, 0, 0, new[] { x, y, z }, occ, IsIso, IsUtypeUsed, iso, aniso));
-                atoms.Add(new Atoms2(label, 8, 0, 0, new[] { x, y, z }, occ, IsIso, IsUtypeUsed, iso, aniso));
+                atoms.Add(new Atoms2(label, 1, 0, 0, [x, y, z], occ, IsIso, IsUtypeUsed, iso, aniso));
+                atoms.Add(new Atoms2(label, 1, 0, 0, [x, y, z], occ, IsIso, IsUtypeUsed, iso, aniso));
+                atoms.Add(new Atoms2(label, 8, 0, 0, [x, y, z], occ, IsIso, IsUtypeUsed, iso, aniso));
             }
         }
         crystal.name = Name;
@@ -716,7 +716,7 @@ public class ConvertCrystalData
             return new Crystal2
             {
 
-                CellTexts = new[] { s[0], s[1], s[2], s[3], s[4], s[5] },
+                CellTexts = [s[0], s[1], s[2], s[3], s[4], s[5]],
                 sym = (short)symmetrySeriesNumber,
                 argb = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)).ToArgb()
             };
@@ -782,10 +782,10 @@ public class ConvertCrystalData
     #endregion
 
     #region CIFファイルの読み込み
-    static readonly Random r = new Random();
+    static readonly Random r = new();
 
-    static readonly string[] ignoreWords1 = new[] { "_shelx_hkl_", "_shelx_fab_", "_shelx_res_" };
-    static readonly string[] ignoreWords2 = new[] { "_refln", "_geom", "_platon" };
+    static readonly string[] ignoreWords1 = ["_shelx_hkl_", "_shelx_fab_", "_shelx_res_"];
+    static readonly string[] ignoreWords2 = ["_refln", "_geom", "_platon"];
     private static Crystal2 ConvertFromCIF(string fileName)
     {
         var sb = new StringBuilder();
@@ -799,7 +799,7 @@ public class ConvertCrystalData
             if (strTemp.Contains('\r'))
                 strTemp = strTemp.Replace("\r", "\n");
 
-            stringList = strTemp.Split('\n', true).ToList();
+            stringList = [.. strTemp.Split('\n', true)];
         }
 
         foreach (var word in ignoreWords1)
@@ -980,12 +980,12 @@ public class ConvertCrystalData
         //ここまででCIF_Groupクラスのリストが完成
 
         //格子定数は、CIFファイル中に何回も記載されている場合があるため、リストにする。
-        List<(int index, string value)> aList = new(), bList = new(), cList = new(), alphaList = new(), betaList = new(), gammaList = new();
+        List<(int index, string value)> aList = [], bList = [], cList = [], alphaList = [], betaList = [], gammaList = [];
 
         string name = "", sectionTitle = "", journalNameFull = "", journalCodenASTM = "";
         string volume = "", year = "", pageFirst = "", pageLast = "", issue = "";
         var journal = new StringBuilder();
-        List<string> spaceGroupNameHM = new(), spaceGroupNameHall = new();
+        List<string> spaceGroupNameHM = [], spaceGroupNameHall = [];
         string chemical_formula_sum = "", chemical_formula_structural = "";
         var symmetry_Int_Tables_number = -1;
         var author = new List<string>();
@@ -1098,7 +1098,7 @@ public class ConvertCrystalData
             {
                 try
                 {
-                    sExpr = sExpr.Replace(" ", "").Replace(",+", ",").TrimStart(new[] { '+' });
+                    sExpr = sExpr.Replace(" ", "").Replace(",+", ",").TrimStart(['+']);
                     sExpr = "new [] {" + sExpr.Replace("/", ".0/").Replace(".0.0", ".0") + "}";//分子に小数点を加える
 
                     var f = DynamicExpressionParser.ParseLambda(prms, typeof(double[]), sExpr).Compile() as Func<double, double, double, double[]>;
@@ -1252,16 +1252,16 @@ public class ConvertCrystalData
             if (iso.Length == 0)
                 iso = "0";
 
-            var aniso = isU ? //11, 22, 33, 12, 23, 31の順番
-                new[] { u11, u22, u33, u12, u23, u13 } :
-                new[] { b11, b22, b33, b12, b23, b13 };
+            string[] aniso = isU ? //11, 22, 33, 12, 23, 31の順番
+                [u11, u22, u33, u12, u23, u13] :
+                [b11, b22, b33, b12, b23, b13];
 
             if (atomicNumber > 0)
-                atoms.Add(new Atoms2(atomLabel, atomicNumber, 0, 0, new[] { x, y, z }, occ, isIso, isU, iso, aniso));
+                atoms.Add(new Atoms2(atomLabel, atomicNumber, 0, 0, [x, y, z], occ, isIso, isU, iso, aniso));
             else if (atomicNumber == -1)//"OH"のときの対処
             {
-                atoms.Add(new Atoms2(atomLabel, 1, 0, 0, new[] { x, y, z }, occ, isIso, isU, iso, aniso));
-                atoms.Add(new Atoms2(atomLabel, 8, 0, 0, new[] { x, y, z }, occ, isIso, isU, iso, aniso));
+                atoms.Add(new Atoms2(atomLabel, 1, 0, 0, [x, y, z], occ, isIso, isU, iso, aniso));
+                atoms.Add(new Atoms2(atomLabel, 8, 0, 0, [x, y, z], occ, isIso, isU, iso, aniso));
             }
         }
 
@@ -1278,7 +1278,7 @@ public class ConvertCrystalData
 
         return new Crystal2
         {
-            CellTexts = new[] { a, b, c, alpha, beta, gamma },
+            CellTexts = [a, b, c, alpha, beta, gamma],
             sym = (short)sgnum,
             name = name,
             atoms = atoms,
@@ -1690,12 +1690,12 @@ public class ConvertCrystalData
         sb.AppendLine("loop_");
         sb.AppendLine("_symmetry_equiv_pos_as_xyz");
         bool[][] flag = Array.Empty<bool[]>();
-        if (sym.LatticeTypeStr == "P") flag = new[] { new[] { false, false, false } };
-        else if (sym.LatticeTypeStr == "A") flag = new[] { new[] { false, false, false }, new[] { false, true, true } };
-        else if (sym.LatticeTypeStr == "B") flag = new[] { new[] { false, false, false }, new[] { true, false, true } };
-        else if (sym.LatticeTypeStr == "C") flag = new[] { new[] { false, false, false }, new[] { true, true, false } };
-        else if (sym.LatticeTypeStr == "I") flag = new[] { new[] { false, false, false }, new[] { true, true, true } };
-        else if (sym.LatticeTypeStr == "F") flag = new[] { new[] { false, false, false }, new[] { false, true, true }, new[] { true, false, true }, new[] { true, true, false } };
+        if (sym.LatticeTypeStr == "P") flag = [[false, false, false]];
+        else if (sym.LatticeTypeStr == "A") flag = [[false, false, false], [false, true, true]];
+        else if (sym.LatticeTypeStr == "B") flag = [[false, false, false], [true, false, true]];
+        else if (sym.LatticeTypeStr == "C") flag = [[false, false, false], [true, true, false]];
+        else if (sym.LatticeTypeStr == "I") flag = [[false, false, false], [true, true, true]];
+        else if (sym.LatticeTypeStr == "F") flag = [[false, false, false], [false, true, true], [true, false, true], [true, true, false]];
 
         foreach (string wp in SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber][0].PositionStr)
         {

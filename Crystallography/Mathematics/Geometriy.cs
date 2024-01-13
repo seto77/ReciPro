@@ -90,7 +90,7 @@ public static class Geometriy
         double d = C[3];
         double e = C[4];
 
-        return new double[] { a, b, c, d, e };
+        return [a, b, c, d, e];
     }
 
     /// <summary>
@@ -170,8 +170,8 @@ public static class Geometriy
       ref double tau, ref double tauDev, ref double phi, ref double phiDev)
     {
         //”CˆÓ‚Ì“ñ“_‚ð‘I‚ñ‚Åoffset, tau, phi‚ðŒvŽZ‚·‚é
-        List<double> offsetXList = new(), offsetYList = new();
-        List<double> tauList = new(), phiList = new();
+        List<double> offsetXList = [], offsetYList = [];
+        List<double> tauList = [], phiList = [];
 
         for (int i = 0; i < EllipseCenter.Length; i++)
             for (int j = i + 1; j < EllipseCenter.Length; j++)
@@ -189,15 +189,15 @@ public static class Geometriy
                 tauList.Add(tauTemp);
                 phiList.Add(phiTemp);
             }
-        offsetDev = new PointD(Statistics.Deviation(offsetXList.ToArray()), Statistics.Deviation(offsetYList.ToArray()));
-        tauDev = Statistics.Deviation(tauList.ToArray());
+        offsetDev = new PointD(Statistics.Deviation([.. offsetXList]), Statistics.Deviation([.. offsetYList]));
+        tauDev = Statistics.Deviation([.. tauList]);
 
         double phiDev1, phiDev2;
 
-        phiDev1 = Statistics.Deviation(phiList.ToArray());
+        phiDev1 = Statistics.Deviation([.. phiList]);
         for (int i = 0; i < phiList.Count; i++)
             if (phiList[i] < 0) phiList[i] += Math.PI;
-        phiDev2 = Statistics.Deviation(phiList.ToArray());
+        phiDev2 = Statistics.Deviation([.. phiList]);
 
         phiDev = Math.Min(phiDev1, phiDev2);
 
@@ -461,13 +461,13 @@ public static class Geometriy
         }
 
         PixX = tempPixX.Average();
-        PixXDev = Statistics.Deviation(tempPixX.ToArray());
+        PixXDev = Statistics.Deviation([.. tempPixX]);
         PixY = tempPixY.Average();
-        PixYDev = Statistics.Deviation(tempPixY.ToArray());
+        PixYDev = Statistics.Deviation([.. tempPixY]);
         if (distortion)
         {
             Ksi = tempKsi.Average();
-            KsiDev = Statistics.Deviation(tempKsi.ToArray());
+            KsiDev = Statistics.Deviation([.. tempKsi]);
         }
     }
 
@@ -599,7 +599,7 @@ public static class Geometriy
 
         //‚·‚×‚Ä‚ª”ÍˆÍŠO‚È‚çnull‚ð•Ô‚·
         if (flag2)
-            return Array.Empty<(double X, double Y)>();
+            return [];
 
         for (int i = 0; i < ptAlpha.Count; i++)
         {
@@ -618,7 +618,7 @@ public static class Geometriy
             if (ptAlpha[i].Flag)
                 ptBeta.Add((ptAlpha[i].X, ptAlpha[i].Y));
 
-        return ptBeta.ToArray();
+        return [.. ptBeta];
     }
 
     /// <summary>
@@ -774,9 +774,9 @@ public static class Geometriy
             pt.RemoveRange(last, pt.Count - last);
 
         if (pt.Max(p => p.Y) <= area.UpperY && pt.Min(pt => pt.Y) >= area.Y)
-            return new[] { pt.ToArray() };
+            return [[.. pt]];
         else if (pt.Max(p => p.Y) <= area.Y || pt.Min(pt => pt.Y) >= area.UpperY)
-            return new[] { Array.Empty<PointD>() };
+            return [[]];
         else
         {
             for (int i = 0; i < pt.Count - 1; i++)
@@ -1213,7 +1213,7 @@ public static class Geometriy
             {
                 if (flags[j])
                 {
-                    result.Add(new List<PointD>());
+                    result.Add([]);
                     for (; j < pts.Count && flags[j]; j++)
                         result[^1].Add(pts[j]);
                 }

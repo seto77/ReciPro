@@ -221,9 +221,9 @@ public class Euler
         var v2 = Vector3DBase.Normarize(za2.u * cry.A_Axis + za2.v * cry.B_Axis + za2.w * cry.C_Axis);
         var v3 = Vector3DBase.Normarize(za3.u * cry.A_Axis + za3.v * cry.B_Axis + za3.w * cry.C_Axis);
 
-        Vector3D V1 = new Vector3D(-Math.Sin(tilt1), -Math.Cos(tilt1) * Math.Sin(azimuth1), Math.Cos(tilt1) * Math.Cos(azimuth1));
-        Vector3D V2 = new Vector3D(-Math.Sin(tilt2), -Math.Cos(tilt2) * Math.Sin(azimuth2), Math.Cos(tilt2) * Math.Cos(azimuth2));
-        Vector3D V3 = new Vector3D(-Math.Sin(tilt3), -Math.Cos(tilt3) * Math.Sin(azimuth3), Math.Cos(tilt3) * Math.Cos(azimuth3));
+        Vector3D V1 = new(-Math.Sin(tilt1), -Math.Cos(tilt1) * Math.Sin(azimuth1), Math.Cos(tilt1) * Math.Cos(azimuth1));
+        Vector3D V2 = new(-Math.Sin(tilt2), -Math.Cos(tilt2) * Math.Sin(azimuth2), Math.Cos(tilt2) * Math.Cos(azimuth2));
+        Vector3D V3 = new(-Math.Sin(tilt3), -Math.Cos(tilt3) * Math.Sin(azimuth3), Math.Cos(tilt3) * Math.Cos(azimuth3));
 
         double Phi, phi1, phi2, PhiStart, PhiEnd, phi1Start, phi1End, phi2Start, phi2End, step, PhiBest, phi1Best, phi2Best;
         double dev, devTemp;
@@ -415,18 +415,18 @@ public class Euler
             return -(mat * rotInv).SumOfDiagonalCompenent();
         });
 
-        var temp = func(new DVec(initialAngles.ToArray()));
+        var temp = func(new DVec([.. initialAngles]));
         try
         {
-            var result = FindMinimum.OfFunction(func, new DVec(initialAngles.ToArray()), 1e-12, 100000).ToList();
+            var result = FindMinimum.OfFunction(func, new DVec([.. initialAngles]), 1e-12, 100000).ToList();
             for (int i = 0; i < settings.Length; i++)
                 if (!settings[i].Variable)
                     result.Insert(i, settings[i].Angle);
-            return result.ToArray();
+            return [.. result];
         }
         catch
         {
-            return initialAngles.ToArray();
+            return [.. initialAngles];
         }
     }
 

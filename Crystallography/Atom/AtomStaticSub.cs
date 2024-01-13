@@ -11,7 +11,7 @@ public static class AtomStaticSub
     #region
 [
     [
-    System.Array.Empty<(double X, double Y)>()
+    []
     ],
 
 [
