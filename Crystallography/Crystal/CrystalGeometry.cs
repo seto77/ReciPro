@@ -83,6 +83,6 @@ public static class CrystalGeometry
             v_err = Math.Sqrt(ValVstar2) * v * v * v / 2;
         }
 
-        return new double[] { a, b, c, alpha, beta, gamma, v, a_err, b_err, c_err, alpha_err, beta_err, gamma_err, v_err };
+        return [a, b, c, alpha, beta, gamma, v, a_err, b_err, c_err, alpha_err, beta_err, gamma_err, v_err];
     }
 }

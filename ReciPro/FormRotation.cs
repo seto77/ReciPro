@@ -285,7 +285,7 @@ public partial class FormRotationMatrix : Form
         if (checkBoxEnable3rd.Checked)
             settings.Add((dir[2], numericBoxExp3.RadianValue, !checkBoxFix3rd.Checked));
 
-        var angles = Euler.DecomposeMatrix2(rot * RotBase.Inverse(), settings.ToArray());
+        var angles = Euler.DecomposeMatrix2(rot * RotBase.Inverse(), [.. settings]);
         skip = true;
         numericBoxExp1.RadianValue = angles[0];
         if (checkBoxEnable2nd.Checked)
@@ -332,7 +332,7 @@ public partial class FormRotationMatrix : Form
             settings.Add((dir[1], numericBoxExp2.RadianValue, !checkBoxFix2nd.Checked));
             settings.Add((dir[2], numericBoxExp3.RadianValue, !checkBoxFix3rd.Checked));
 
-            var angles = Euler.DecomposeMatrix2(RotReciPro * RotBase.Inverse(), settings.ToArray());
+            var angles = Euler.DecomposeMatrix2(RotReciPro * RotBase.Inverse(), [.. settings]);
             numericBoxExp1.RadianValue = angles[0];
             numericBoxExp2.RadianValue = angles[1];
             numericBoxExp3.RadianValue = angles[2];
@@ -612,7 +612,7 @@ public partial class FormRotationMatrix : Form
         else if (radioButton3rdZ.Checked)
             v3 = new V3(0, 0, 1);
 
-        return new[] { v1, v2, v3 };
+        return [v1, v2, v3];
     }
 
     private void GlControlReciProAxes_WorldMatrixChanged(object sender, EventArgs e)

@@ -195,7 +195,7 @@ public partial class FormStereonet : Form
 
             for (int i = 10; i < 90; i += 10)
             {
-                List<V3> pts1 = new(), pts2 = new();
+                List<V3> pts1 = [], pts2 = [];
                 for (int j = 0; j <= 180; j++)
                 {
                     if (radioButtonOutlinePole.Checked)
@@ -209,9 +209,9 @@ public partial class FormStereonet : Form
                         pts2.Add(conv(sin[i] * sin[j], cos[j], cos[i] * sin[j]));
                     }
                 }
-                glObjects.Add(new Lines(pts1.ToArray(), 2f, new Material(color10)));
+                glObjects.Add(new Lines([.. pts1], 2f, new Material(color10)));
                 glObjects.Add(new Lines(pts1.Select(v => new V3(v.X, -v.Y, v.Z)).ToArray(), 2f, new Material(color10)));
-                glObjects.Add(new Lines(pts2.ToArray(), 2f, new Material(color10)));
+                glObjects.Add(new Lines([.. pts2], 2f, new Material(color10)));
                 glObjects.Add(new Lines(pts2.Select(v => new V3(-v.X, v.Y, v.Z)).ToArray(), 2f, new Material(color10)));
             }
         }
@@ -220,7 +220,7 @@ public partial class FormStereonet : Form
         # region 面、軸ベクトル
         var unique = radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color;
         var general = radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color;
-        var vector = radioButtonAxes.Checked ? formMain.Crystal.VectorOfAxis.ToArray() : formMain.Crystal.VectorOfPlane.ToArray();
+        Vector3D[] vector = radioButtonAxes.Checked ? [.. formMain.Crystal.VectorOfAxis] : [.. formMain.Crystal.VectorOfPlane];
         var radius = pointSize * 0.004;
         for (int i = 0; i < vector.Length; i++)
         {
@@ -241,7 +241,7 @@ public partial class FormStereonet : Form
                 if (checkBox3dOptionProjectionLine.Checked)
                 {
                     if (radioButtonWulff.Checked)
-                        glObjects.Add(new Lines(new[] { new V3(0, 0, -1), new V3(v.X, v.Y, v.Z) }, 1f, new Material(color, 0.5)));
+                        glObjects.Add(new Lines([new V3(0, 0, -1), new V3(v.X, v.Y, v.Z)], 1f, new Material(color, 0.5)));
                     else
                     {
                         var div = 100;
@@ -251,7 +251,7 @@ public partial class FormStereonet : Form
                         var pts = new List<V3>();
                         for (int j = 0; j < div; j++)
                             pts.Add(new V3(0, 0, 1) + r * rot.Mult(new V3(Math.Cos(sweep * j / div), 0, -Math.Sin(sweep * j / div))));
-                        glObjects.Add(new Lines(pts.ToArray(), 1f, new Material(color, 0.5)));
+                        glObjects.Add(new Lines([.. pts], 1f, new Material(color, 0.5)));
                     }
                 }
             }
@@ -393,7 +393,7 @@ public partial class FormStereonet : Form
     {
         if (formMain == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
             return;
-        var vector = radioButtonAxes.Checked ? formMain.Crystal.VectorOfAxis.ToArray() : formMain.Crystal.VectorOfPlane.ToArray();
+        Vector3D[] vector = radioButtonAxes.Checked ? [.. formMain.Crystal.VectorOfAxis] : [.. formMain.Crystal.VectorOfPlane];
         var drawString = trackBarStrSize.Value != 1;
         var unique = radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color;
         var general = radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color;
@@ -510,7 +510,7 @@ public partial class FormStereonet : Form
                 var axisIndices = new List<(int U, int V, int W)>();
                 foreach (object o in listBoxSpecifiedIndices.Items)
                 {
-                    string[] str = ((string)o).Split(new char[] { ' ' });
+                    var str = ((string)o).Split([' ']);
                     int x = Convert.ToInt32(str[0]), y = Convert.ToInt32(str[1]), z = Convert.ToInt32(str[2]);
                     if (!checkBoxIncludingEquivalentPlanes.Checked)
                     {
@@ -523,8 +523,8 @@ public partial class FormStereonet : Form
                         planeIndices.AddRange(SymmetryStatic.GenerateEquivalentPlanes(x, y, z, formMain.Crystal.Symmetry));
                     }
                 }
-                formMain.Crystal.SetVectorOfAxis(axisIndices.ToArray());
-                formMain.Crystal.SetVectorOfPlane(planeIndices.ToArray());
+                formMain.Crystal.SetVectorOfAxis([.. axisIndices]);
+                formMain.Crystal.SetVectorOfPlane([.. planeIndices]);
             }
         }
     }
@@ -675,7 +675,7 @@ public partial class FormStereonet : Form
 
         checkedListBoxCircles.Items.Clear();
         if (formMain.Crystal.VectorOfPole == null)
-            formMain.Crystal.VectorOfPole = new List<Vector3D>();
+            formMain.Crystal.VectorOfPole = [];
         else
             for (int i = 0; i < formMain.Crystal.VectorOfPole.Count; i++)
                 checkedListBoxCircles.Items.Add(formMain.Crystal.VectorOfPole[i], true);
@@ -830,14 +830,14 @@ public partial class FormStereonet : Form
 
     private void colorControl_ColorChanged(object sender, EventArgs e) => Draw();
 
-    private List<List<PointD>> positionRecorder = new();
+    private List<List<PointD>> positionRecorder = [];
 
     private void buttonYusaModeStart_Click(object sender, EventArgs e)
     {
         setVector();
-        positionRecorder = new List<List<PointD>>();
+        positionRecorder = [];
         for (int i = 0; i < (radioButtonPlanes.Checked ? formMain.Crystal.VectorOfPlane.Count : formMain.Crystal.VectorOfAxis.Count); i++)
-            positionRecorder.Add(new List<PointD>());
+            positionRecorder.Add([]);
 
         //formMain.OriginalRotation = (Matrix3D)formMain.RotMatrix.Clone();
         formMain.YusaGonioMode = true;
@@ -908,7 +908,7 @@ public partial class FormStereonet : Form
 
     private void button1_Click(object sender, EventArgs e)
     {
-        formMain.Crystal.VectorOfAxis = new List<Vector3D>();
+        formMain.Crystal.VectorOfAxis = [];
         int div = 30;
         for (double i = -div; i < div; i++)
             for (double j = -div; j < div; j++)

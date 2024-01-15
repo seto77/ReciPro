@@ -229,55 +229,50 @@ public static class Ring
     public static Size SrcImgSize;
 
     public static double[] R2;
-    public static List<double> Intensity = new();
-    public static List<double> IntensityOriginal = new();
+    public static List<double> Intensity = [];
+    public static List<double> IntensityOriginal = [];
     public static Size SrcImgSizeOriginal;
 
     //バックグラウンド演算で使用
-    public static List<double> Background = new();
+    public static List<double> Background = [];
 
     public static double BackgroundCoeff = 1;
 
     //SequentialImage(*.his,*.h5)で利用する変数
-    public static List<List<double>> SequentialImageIntensities = new();
+    public static List<List<double>> SequentialImageIntensities = [];
 
-    public static List<string> SequentialImageNames = new();
+    public static List<string> SequentialImageNames = [];
 
     //HDF *h5ファイルでのみに使用する
-    public static List<double> SequentialImageEnergy = new();
+    public static List<double> SequentialImageEnergy = [];
 
-    public static List<double> SequentialImagePulsePower = new();
+    public static List<double> SequentialImagePulsePower = [];
     public static bool PulsePowerNormarized = false;
-    public static List<List<double>> SequentialImageEnergySpectrum = new();
+    public static List<List<double>> SequentialImageEnergySpectrum = [];
 
-    public static SortedList<uint, int> Frequency = new();
+    public static SortedList<uint, int> Frequency = [];
 
     public static ImageTypeEnum ImageType = ImageTypeEnum.Unknown;
 
-    public static List<bool> IsValid = new();//有効な(マスクされていない点かどうか)
-                                             //public static ParallelQuery<bool> IsValidP;
+    public static List<bool> IsValid = [];//有効な(マスクされていない点かどうか)
 
-    public static List<bool> IsSpots = new();//スポット状の点かどうか
-                                             //public static ParallelQuery<bool> IsSpotsP;
+    public static List<bool> IsSpots = [];//スポット状の点かどうか
 
-    public static List<bool> IsThresholdOver = new();
-    //public static ParallelQuery<bool> IsThresholdOverP;
+    public static List<bool> IsThresholdOver = [];
 
-    public static List<bool> IsThresholdUnder = new();//飽和しているかどうか
-                                                      //public static ParallelQuery<bool> IsThresholdUnderP;
+    public static List<bool> IsThresholdUnder = [];//飽和しているかどうか
 
 
     /// <summary>
     /// 指定された積分領域(矩形、セクター)の範囲外の場合はtrue
     /// </summary>
-    public static List<bool> IsOutsideOfIntegralRegion = new();//積分エリアの外(或いは選択領域の外)
-                                                               //public static ParallelQuery<bool> IsOutsideOfIntegralRegionP;
+    public static List<bool> IsOutsideOfIntegralRegion = [];//積分エリアの外(或いは選択領域の外)
 
 
     /// <summary>
     /// 指定された積分対象角度の範囲外の場合はtrue
     /// </summary>
-    public static List<bool> IsOutsideOfIntegralProperty = new();//エリアの外(或いは選択領域の外)
+    public static List<bool> IsOutsideOfIntegralProperty = [];//エリアの外(或いは選択領域の外)
                                                                  //public static ParallelQuery<bool> IsOutsideOfIntegralPropertyP;
 
 
@@ -1027,7 +1022,7 @@ public static class Ring
                 double r = IP.GandolfiRadius;
                 double CL = IP.FilmDistance;
 
-                Matrix3D m1 = new Matrix3D(CosTau, SinTau * SinPhi, SinTau * CosPhi, 0, CosPhi, -SinPhi, -SinTau, CosTau * SinPhi, CosTau * CosPhi);
+                var m1 = new Matrix3D(CosTau, SinTau * SinPhi, SinTau * CosPhi, 0, CosPhi, -SinPhi, -SinTau, CosTau * SinPhi, CosTau * CosPhi);
 
                 //ピクセル座標を実空間座標に変換するFunc
                 var convPixelToReal = new Func<double, double, Vector3DBase>((x, y) => m1 * new Vector3DBase(
@@ -1127,8 +1122,8 @@ public static class Ring
             {
                 int rMax = (int)Math.Ceiling(r[baseIndex] * sin3theta);
 
-                List<double> blurRatio = new List<double>();
-                List<int> blurIndex = new List<int>();
+                List<double> blurRatio = [];
+                List<int> blurIndex = [];
                 for (int y = Math.Max(j - rMax, 0); y <= Math.Min(j + rMax, SrcImgSize.Height - 1); y++)
                     for (int x = Math.Max(i - rMax, 0); x <= Math.Min(i + rMax, SrcImgSize.Width - 1); x++)
                     {
@@ -1149,7 +1144,7 @@ public static class Ring
                             }
                         }
                     }
-                double[] blur = Statistics.Normarize(blurRatio.ToArray());
+                double[] blur = Statistics.Normarize([.. blurRatio]);
                 for (int k = 0; k < blur.Length; k++)
                     pixels[baseIndex] += Intensity[blurIndex[k]] * blur[k];
                 baseIndex++;
@@ -1670,7 +1665,7 @@ public static class Ring
                     double totalArea = Geometriy.GetPolygonalArea(pixelVertex);
 
                     //求めた4隅の点から、ステップの指数の上限、下限を設定
-                    List<double> angles = new List<double>();
+                    List<double> angles = [];
                     foreach (PointD pt in pixelVertex)
                         angles.Add(Math.Atan2(pt.Y, pt.X));
                     angles.Sort();
@@ -1959,7 +1954,7 @@ public static class Ring
         }
 
         //Profile変数に代入
-        Profile profile = new Profile();
+        Profile profile = new();
 
         //フラットパネルモードの時
         if (IP.Camera == IntegralProperty.CameraEnum.FlatPanel)
@@ -2280,7 +2275,7 @@ public static class Ring
             }
 
         //Profile変数に代入
-        Profile p = new Profile();
+        Profile p = new();
         double temp;
         for (i = 0; i < length; i++)
         {
@@ -3048,7 +3043,7 @@ public static class Ring
     #region バックグランド関数。 未完成
     public static double[] GetBackground(double lower, double upper)
     {
-        return Intensity.ToArray();
+        return [.. Intensity];
 
         /*
 			//バックグラウンド形状を探し出す。

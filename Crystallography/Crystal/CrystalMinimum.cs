@@ -160,7 +160,7 @@ public partial class Crystal2
 
         var bonds = Bonds.GetVestaBonds(atom.Select(a => a.AtomicNumber));
 
-        return new Crystal(cell.Values, cell.Errors, c.sym, c.name, System.Drawing.Color.FromArgb(c.argb), new Matrix3D(), atom.ToArray(), (c.note, c.auth, c.jour, c.sect), bonds);
+        return new Crystal(cell.Values, cell.Errors, c.sym, c.name, System.Drawing.Color.FromArgb(c.argb), new Matrix3D(), [.. atom], (c.note, c.auth, c.jour, c.sect), bonds);
     } 
 
     public static Crystal2 FromCrystal(Crystal c)
@@ -177,10 +177,10 @@ public partial class Crystal2
             jour = c.Journal,
             formula = c.ChemicalFormulaSum,
             density = (float)c.Density,
-            CellTexts = new[] {
+            CellTexts = [
                 Compose(c.A * 10, c.A_err * 10), Compose(c.B * 10, c.B_err * 10), Compose(c.C * 10, c.C_err * 10),
-                Compose(c.Alpha /Math.PI*180, c.Alpha_err/Math.PI*180), Compose(c.Beta /Math.PI*180, c.Beta_err/Math.PI*180), Compose(c.Gamma /Math.PI*180, c.Gamma_err/Math.PI*180) },
-            atoms = new List<Atoms2>()
+                Compose(c.Alpha /Math.PI*180, c.Alpha_err/Math.PI*180), Compose(c.Beta /Math.PI*180, c.Beta_err/Math.PI*180), Compose(c.Gamma /Math.PI*180, c.Gamma_err/Math.PI*180) ],
+            atoms = []
         };
 
         foreach (Atoms a in c.Atoms)
@@ -191,7 +191,7 @@ public partial class Crystal2
                 AtomNo = (byte)a.AtomicNumber,
                 SubXray = (byte)a.SubNumberXray,
                 SubElectron = (byte)a.SubNumberElectron,
-                PositionTexts = new[] { Compose(a.X, a.X_err), Compose(a.Y, a.Y_err), Compose(a.Z, a.Z_err) },
+                PositionTexts = [Compose(a.X, a.X_err), Compose(a.Y, a.Y_err), Compose(a.Z, a.Z_err)],
                 OccText = Compose(a.Occ, a.Occ_err),
                 IsIso = a.Dsf.UseIso,
                 IsU = a.Dsf.OriginalType == DiffuseScatteringFactor.Type.U,
@@ -529,9 +529,9 @@ public partial class Crystal2
     {
         s = s.Trim().TrimEnd().Replace('e', 'E');
         if (s.Length == 0 || s == "?" || s == "NaN")
-            return new[] { (byte)255 };
+            return [(byte)255];
         else if (s == "0")
-            return new[] { (byte)(240 + 0) };
+            return [(byte)(240 + 0)];
         else
         {
             if (s.StartsWith("0.", Ord))
@@ -565,7 +565,7 @@ public partial class Crystal2
             {
                 if (AssemblyState.IsDebug)
                     MessageBox.Show(e.ToString());
-                return new[] { (byte)255 };
+                return [(byte)255];
             }
         }
     }

@@ -120,7 +120,7 @@ public partial class FormDiffractionSimulator : Form
 
 
     public bool DynamicCompressionMode { get; set; } = false;
-    public List<double[]> DynamicCompression_SpotInformation = new();
+    public List<double[]> DynamicCompression_SpotInformation = [];
 
     /*public double CameraLength1
     {
@@ -411,7 +411,7 @@ public partial class FormDiffractionSimulator : Form
             cm.Matrix33 = fdsg.ImageOpacity;
             var ia = new ImageAttributes();//ImageAttributesオブジェクトの作成
             ia.SetColorMatrix(cm);  //ColorMatrixを設定する
-            var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//左上、右上、左下の順番
+            var dest = new PointF[] { start.ToPointF(), new((float)end.X, (float)start.Y), new((float)start.X, (float)end.Y) };//左上、右上、左下の順番
             g.DrawImage(fdsg.OverlappedImage, dest, new RectangleF(0, 0, fdsg.OverlappedImage.Width, fdsg.OverlappedImage.Height), GraphicsUnit.Pixel, ia);
         }
 
@@ -422,7 +422,7 @@ public partial class FormDiffractionSimulator : Form
             {
                 start = disk.Center - disk.Size / 2;
                 end = disk.Center + disk.Size / 2; ;
-                var dest = new PointF[] { start.ToPointF(), new PointF((float)end.X, (float)start.Y), new PointF((float)start.X, (float)end.Y) };//左上、右上、左下の順番
+                var dest = new PointF[] { start.ToPointF(), new((float)end.X, (float)start.Y), new((float)start.X, (float)end.Y) };//左上、右上、左下の順番
                 g.DrawImage(disk.Bitmap, dest, new RectangleF(0, 0, disk.PixelSize.Width, disk.PixelSize.Width), GraphicsUnit.Pixel);
             }
         }
@@ -664,7 +664,7 @@ public partial class FormDiffractionSimulator : Form
                         g.Argb = crystal.Argb;
             }
             else
-                gVector = crystal.VectorOfG.ToList();
+                gVector = [.. crystal.VectorOfG];
 
 
             //もしdyamicalな計算で、SkipRenderingがtrueの時はここでおしまい
@@ -769,7 +769,7 @@ public partial class FormDiffractionSimulator : Form
             }
         }
         if (outputOnlySpotInformation)
-            return spotInformation.ToArray();
+            return [.. spotInformation];
 
         graphics.SmoothingMode = SmoothingMode.HighQuality;
 
@@ -865,7 +865,7 @@ public partial class FormDiffractionSimulator : Form
                 {
                     // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
                     double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
-                    List<PointF> pts1 = new(), pts2 = new();
+                    List<PointF> pts1 = [], pts2 = [];
                     for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
                     {
                         float x = (float)(Math.Sinh(omega) / Psqrt), y = (float)(Math.Cosh(omega) / Qsqrt);
@@ -1070,8 +1070,10 @@ public partial class FormDiffractionSimulator : Form
             var ptsArray = Geometriy.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
             if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
             {
-                ptsArray = new List<List<PointD>>();
-                ptsArray.Add(Enumerable.Range(0, 3600).Select(i => 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI) * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI))).ToList());
+                ptsArray =
+                [
+                    Enumerable.Range(0, 3600).Select(i => 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI) * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI))).ToList(),
+                ];
             }
 
             foreach (var pts in ptsArray)
@@ -2459,7 +2461,7 @@ public partial class FormDiffractionSimulator : Form
 
         List<Vector3D> gVector;
 
-        gVector = formMain.Crystal.VectorOfG.ToList();
+        gVector = [.. formMain.Crystal.VectorOfG];
         gVector.Sort((g1, g2) => g1.Length2.CompareTo(g2.Length2));
 
         var maxG = gVector.Count > 0 ? Math.Sqrt(gVector.Max(g => g.Length2)) * 0.75 : Math.PI / 4;
@@ -2499,7 +2501,7 @@ public partial class FormDiffractionSimulator : Form
                             listObj.Add(new Polygon(new[] { rot1V1, rot1V2, rot[i + 1] * v2, rot[i + 1] * v1 }, mat, DrawingMode.Surfaces));
 
                         if (i % 5 == 0)
-                            listObj.Add(new Lines(new V3[] { rot1V1, rot1V2 }, 1f, mat));
+                            listObj.Add(new Lines([rot1V1, rot1V2], 1f, mat));
                     }
                     lock (lockObj)
                         ewaldList.AddRange(listObj);

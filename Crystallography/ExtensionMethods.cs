@@ -356,7 +356,7 @@ public static class GraphicsAlpha
         => g.FillPie(brush, (float)x, (float)y, (float)width, (float)height, (float)startAngle, (float)sweepAngle);
 
 
-    static Dictionary<(int Alpha, Color Color), SolidBrush> solidBrushDic = new();
+    static Dictionary<(int Alpha, Color Color), SolidBrush> solidBrushDic = [];
 
     #region 円の輪郭、あるいは円の塗りつぶし
     public static void FillCircle(this Graphics graphics, in Color c, in PointD pt, in double radius, in int alpha)

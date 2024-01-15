@@ -41,7 +41,7 @@ public class Plane : IComparable
     public double XCalc;
     public double Weight;
     public string strHKL, strD;
-    public string[] strCondition = Array.Empty<string>();
+    public string[] strCondition = [];
     public string str;
     public int num;
 
