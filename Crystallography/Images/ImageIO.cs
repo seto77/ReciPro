@@ -161,7 +161,7 @@ public static class ImageIO
 
         bool result = true;
 
-        string ext = Path.GetExtension(str).TrimStart(new char[] { '.' });
+        string ext = Path.GetExtension(str).TrimStart(['.']);
         if (str.EndsWith("img"))//R-Axis5 or Fuji BAS or Fuji FDL
         {
             if (File.Exists(str.Remove(str.Length - 3, 3) + "inf"))
@@ -748,8 +748,7 @@ public static class ImageIO
     {
         try
         {
-            if (Ring.IP == null)
-                Ring.IP = new IntegralProperty();
+            Ring.IP ??= new IntegralProperty();
 
             var hdf = new HDF(str);
 
@@ -868,8 +867,7 @@ public static class ImageIO
                     Ring.SequentialImageIntensities.Add(new List<double>());
 
                 //強度をノーマライズする場合
-                if (normarize == null)
-                    normarize = MessageBox.Show("Normarize intensities by pulse power?", "HDF file option", MessageBoxButtons.YesNo) == DialogResult.Yes;
+                normarize ??= MessageBox.Show("Normarize intensities by pulse power?", "HDF file option", MessageBoxButtons.YesNo) == DialogResult.Yes;
 
                 if (normarize == true && dataPulsePower[i] > 0)
                     Ring.SequentialImageIntensities[i] = Ring.SequentialImageIntensities[i].Select(d => d / (double)dataPulsePower[i] / 10000).ToList();
@@ -1719,7 +1717,7 @@ public static class ImageIO
 
             Ring.ImageType = Ring.ImageTypeEnum.IPAImage;
             Ring.BitsPerPixels = 16;
-            if (Ring.IP == null) Ring.IP = new IntegralProperty();
+            Ring.IP ??= new IntegralProperty();
             Ring.IP.FilmDistance = ipa.CameraLength;
             Ring.IP.PixSizeX = Ring.IP.PixSizeY = ipa.Resolution;
             Ring.IP.CenterX = ipa.Center.X;

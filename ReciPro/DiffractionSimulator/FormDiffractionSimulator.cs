@@ -241,8 +241,7 @@ public partial class FormDiffractionSimulator : Form
             FormDiffractionSimulatorDynamicCompression = new FormDiffractionSimulatorDynamicCompression { FormDiffractionSimulator = this };
         }
 
-        if (FormDiffractionSimulatorCBED == null)
-            FormDiffractionSimulatorCBED = new FormDiffractionSimulatorCBED
+        FormDiffractionSimulatorCBED ??= new FormDiffractionSimulatorCBED
             {
                 FormDiffractionSimulator = this,
                 Owner = this
@@ -380,9 +379,9 @@ public partial class FormDiffractionSimulator : Form
 
         if (formMain == null || formMain.Crystal == null || FormDiffractionSimulatorGeometry == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
             return;
-
-        if (g == null)//グラフィックスボックスに描画する場合
-            g = graphicsBox.Graphics;
+        
+        //グラフィックスボックスに描画する場合
+        g ??= graphicsBox.Graphics;
 
         if (!SetProjection(g))
             return;
