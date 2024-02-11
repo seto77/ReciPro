@@ -7,7 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
-        "\r\n ver4.877(2024/02/11)  Added: Back Laue camera mode (X-ray diffraction) (see https://github.com/seto77/ReciPro/issues/28). Improved registry read/write behavior at startup." +
+        "\r\n ver4.877(2024/02/11)  Added: Back Laue camera mode (X-ray diffraction) (see https://github.com/seto77/ReciPro/issues/28). Improved registry read/write behaviour at startup." +
         "\r\n ver4.876(2023/12/21)  Fixed an issue where icon images were not displayed correctly." +
         "\r\n ver4.874(2023/12/08)  Improved 'Structure Viewer': Double-clicking on an atom to display its coordination environment, etc." +
         "\r\n ver4.873(2023/12/07)  Improved the bounds options on 'Structure Viewer'." +
