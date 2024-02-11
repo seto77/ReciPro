@@ -6,6 +6,7 @@ using Crystallography.Mathematics;
 using Crystallography.OpenGL;
 using MathNet.Numerics;
 using MathNet.Numerics.Providers.MKL;
+using Microsoft.Scripting.Utils;
 using OpenTK;
 using System.Collections.Generic;
 using System.Data;
@@ -666,6 +667,11 @@ public partial class FormDiffractionSimulator : Form
                             }
                         }
                     }
+                    //ここでX,Yを検出器上の点に変換してしまう。
+                    var cosTwoTheta = 2 * (g.Z * g.Z / g.Length2) - 1;
+                    var scale = CameraLength2 * Math.Sqrt((1 - cosTwoTheta * cosTwoTheta) / g.X2Y2) / cosTwoTheta;
+                    g.X *= scale;
+                    g.Y *= -scale;
                 });
 
                 gVector = gVector.Where(g => g.Flag1).ToList();
@@ -677,9 +683,7 @@ public partial class FormDiffractionSimulator : Form
                 var color = colorControlNoCondition.Color;
                 foreach (var g in gVector.Where(g => g.RelativeIntensity > 0))
                 {
-                    var cosTwoTheta = 2 * (g.Z * g.Z / g.Length2) - 1;
-                    var scale = CameraLength2 * Math.Sqrt((1 - cosTwoTheta * cosTwoTheta) / g.X2Y2) / cosTwoTheta;
-                    var pt = new PointD(g.X * scale, -g.Y * scale);
+                    var pt = new PointD(g.X, g.Y);
                     if (IsScreenArea(pt))
                     {
                         if (radioButtonPointSpread.Checked)//点広がり関数
@@ -1256,10 +1260,7 @@ public partial class FormDiffractionSimulator : Form
         Draw();
     }
 
-    private void checkBoxKikuchiLine_Kinematical_CheckedChanged(object sender, EventArgs e)
-    {
-        Draw();
-    }
+    private void checkBoxKikuchiLine_Kinematical_CheckedChanged(object sender, EventArgs e) => Draw();
 
     #endregion
 
@@ -1495,48 +1496,87 @@ public partial class FormDiffractionSimulator : Form
     }
     #endregion
 
-    #region graphicsBoxのイベント
+    #region graphicsBoxのイベント (graphicsBox上のマウスイベントも含む)
 
     private bool MouseRangingMode = false;
     private Point MouseRangeStart, MouseRangeEnd;//, startAnimation;
     private void graphicsBox_MouseDown(object sender, MouseEventArgs e)
     {
         graphicsBox.Focus();
+        //範囲選択拡大縮小モード
         if (e.Button == MouseButtons.Right && e.Button != MouseButtons.Left)
         {
             MouseRangingMode = true;
             MouseRangeStart = new Point(e.X, e.Y);
             return;
         }
+        //スポット情報表示
         else if (e.Button == MouseButtons.Left && e.Button != MouseButtons.Right && e.Clicks == 2)
         {
-            //まずフィルム上の位置を逆空間点に変換
-            var inversePos = convertScreenToReciprocal(e.X, e.Y, true);
-            //座標を反転
-            var gVector = formMain.Crystal.VectorOfG;
-            int num = -1;
-            var minLength = double.PositiveInfinity;
-            for (int i = 0; i < gVector.Length; i++)
+            if (!radioButtonBeamBackLaue.Checked)//バックラウエ以外の時
             {
-                if (minLength > (gVector[i] - inversePos).Length2)
-                {
-                    minLength = (gVector[i] - inversePos).Length2;
-                    num = i;
-                }
+                //フィルム上の位置を逆空間点に変換
+                var inversePos = convertScreenToReciprocal(e.X, e.Y, true);
+                //上で求めた逆空間点と、もっとも近い逆格子点を検索
+                var g = formMain.Crystal.VectorOfG.MinBy(g => (g - inversePos).Length2);
+
+                var vec = formMain.Crystal.RotationMatrix * g;
+                var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.Length2 - 2 * vec.Z * EwaldRadius + EwaldRadius * EwaldRadius));
+
+                MessageBox.Show(
+                    $"Index: g = {g.Index.h} {g.Index.k} {g.Index.l}\r\n" +
+                    $"d-spacing: {g.d:f4} nm\r\n" +
+                    $"Length: {1 / g.d:f4} nm⁻¹\r\n" +
+                    $"Coordinate (nm⁻¹): {vec.X:f4}, {vec.Y:f4}, {vec.Z:f4}\r\n" +
+                    $"Excitation error: {dev:f5} nm⁻¹\r\n" +
+                    $"F (magnitude): {g.F.Magnitude:f5}\r\n" +
+                    $"F (real, imaginary): {g.F.Real:f5}, {g.F.Imaginary:f5}\r\n" +
+                    $"F²: {g.F.MagnitudeSquared():f5}",
+                    "Information on the clicked g vector");
             }
+            else//バックラウエの時
+            {
+                //検出器座標に変換
+                var detPos = convertScreenToDetector(e.X, e.Y);
+                var v = new Vector3DBase(detPos.X, -detPos.Y, CameraLength2).Normarize() * EwaldRadius + new Vector3DBase(0, 0, EwaldRadius);
 
-            var vec = formMain.Crystal.RotationMatrix * gVector[num];
-            var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y + (vec.Z - EwaldRadius) * (vec.Z - EwaldRadius)));
+                //最も方向が近くて、逆格子原点からも近い点を表示
+                #region 最大θを検索
+                var L = new double[]{
+                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
+                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
+                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length,
+                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length}.Max();
+                var maxTwoTheta = Math.Atan(L / CameraLength2);
+                var minCosTheta = Math.Cos(maxTwoTheta / 2);
+                #endregion
 
-            MessageBox.Show(
-                $"Index: {gVector[num].Index.h} {gVector[num].Index.k} {gVector[num].Index.l}\r\n" +
-                $"d-spacing: {gVector[num].d:f4} nm\r\n" +
-                $"Length: {1 / gVector[num].d:f4} /nm\r\n" +
-                $"Coordinate (/nm): {vec.X:f4}, {vec.Y:f4}, {vec.Z:f4}\r\n" +
-                $"Excitation error: {dev:f5} /nm\r\n" +
-                $"Structure factor (magnitude): {gVector[num].F.Magnitude:f5}\r\n" +
-                $"Structure factor (real, imaginary): {gVector[num].F.Real:f5}, {gVector[num].F.Imaginary:f5}"
-                , "Information on the clicked g vector");
+                var maxEwaldR = 1 / UniversalConstants.Convert.EnergyToXrayWaveLength(50_000);
+                var crystal = formMain.Crystal;
+                var gVector = crystal.VectorOfG_P
+                  .Where(g => g.Flag1)//Flag1がtrueのものだけを取り出し、
+                  .Select(g => new Vector3D(crystal.RotationMatrix * g) { Index = g.Index, Flag1 = true, RelativeIntensity = g.RelativeIntensity, F = g.F, Text = g.Text })//回転させて新しいリストを作る
+                  .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta).ToList();//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
+                if (gVector.Count == 0) return;
+
+                //原点を通る直線状にある逆格子ベクトルをまとめる
+                var tmp = gVector.OrderByDescending(g => g * v / g.Length).ToList();
+                var dev = tmp[0] * v / tmp[0].Length;
+                var list = new List<Vector3D>();
+
+                for (int i = 0; i < tmp.Count; i++)
+                    if (dev - tmp[i] * v / tmp[i].Length < 1E-8)
+                        list.Add(tmp[i]);
+                list = list.OrderBy(g => g.Length2).ToList();
+
+                var sb = new StringBuilder();
+                sb.Append($"The spot is a supoerposition of mutiple of g = {list[0].Index.h} {list[0].Index.k} {list[0].Index.l}\r\n");
+                sb.Append($"Coordinates of g = {list[0].Index.h} {list[0].Index.k} {list[0].Index.l}: ({list[0].X:f4}, {list[0].Y:f4}, {list[0].Z:f4})  in nm⁻¹\r\n");
+                for (int i = 0; i < list.Count; i++)
+                    sb.Append($"  {i}   g = {list[i].Index.h} {list[i].Index.k} {list[i].Index.l};   F² = {list[i].F.MagnitudeSquared():f4}\r\n");
+
+                MessageBox.Show(sb.ToString(), "Information on the clicked g vector");
+            }
         }
     }
 
@@ -1593,11 +1633,11 @@ public partial class FormDiffractionSimulator : Form
         labelMousePositionReal.Text = $"{realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3})";
 
         var invPos = convertRealToReciprocal(realPos, false);
-        labelMousePositionReciprocal.Text = $"({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
+        labelMousePositionReciprocal.Text = radioButtonBeamBackLaue.Checked ? $"(-, -, -)": $"({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
 
-        labelDinv.Text = $"d⁻¹: {invPos.Length:f4} nm⁻¹";
+        labelDinv.Text = radioButtonBeamBackLaue.Checked? "$d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹";
         var d = 1.0 / invPos.Length;
-        labelD.Text = $"d: {d:f4} nm";
+        labelD.Text = radioButtonBeamBackLaue.Checked ? "$\"d: - nm\" " : $"d: {d:f4} nm";
         var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
         var twoThetaDeg = twoThetaRad / Math.PI * 180;
         labelTwoThetaDeg.Text = $"2θ: {twoThetaDeg:g4}°";
