@@ -285,7 +285,7 @@ public class ConvertCrystalData
         }
         catch (Exception e)
         {
-            if (Crystallography.AssemblyState.IsDebug)
+            if (AssemblyState.IsDebug)
                 System.Windows.Forms.MessageBox.Show(e.Message);
             return null;
         }

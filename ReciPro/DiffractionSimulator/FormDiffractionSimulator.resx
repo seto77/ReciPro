@@ -5282,6 +5282,12 @@ tails</value>
   <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="waveLengthControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="waveLengthControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
@@ -5294,11 +5300,17 @@ tails</value>
   <data name="waveLengthControl.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>500, 500</value>
   </data>
+  <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>210, 0</value>
+  </data>
   <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 111</value>
+    <value>210, 122</value>
   </data>
   <data name="waveLengthControl.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
     <value>waveLengthControl</value>
@@ -5632,7 +5644,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelPED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 753</value>
+    <value>0, 785</value>
   </data>
   <data name="flowLayoutPanelPED.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 74</value>
@@ -5812,7 +5824,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelBethe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 679</value>
+    <value>0, 711</value>
   </data>
   <data name="flowLayoutPanelBethe.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6796,7 +6808,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 395</value>
+    <value>0, 427</value>
   </data>
   <data name="flowLayoutPanelAppearance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -7028,7 +7040,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 237</value>
+    <value>0, 269</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 158</value>
@@ -7135,45 +7147,6 @@ Inciden beams along a cone are simulated for this number.</value>
   <data name="&gt;&gt;radioButtonBeamParallel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="radioButtonBeamPrecessionElectron.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonBeamPrecessionElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonBeamPrecessionElectron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonBeamPrecessionElectron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 21</value>
-  </data>
-  <data name="radioButtonBeamPrecessionElectron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 3, 0</value>
-  </data>
-  <data name="radioButtonBeamPrecessionElectron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 21</value>
-  </data>
-  <data name="radioButtonBeamPrecessionElectron.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="radioButtonBeamPrecessionElectron.Text" xml:space="preserve">
-    <value>Precession (electron)</value>
-  </data>
-  <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
-    <value>Precession beam mode (i.e. PED mode)</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.Name" xml:space="preserve">
-    <value>radioButtonBeamPrecessionElectron</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.Parent" xml:space="preserve">
-    <value>flowLayoutPanel10</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="radioButtonBeamPrecessionXray.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -7184,7 +7157,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 42</value>
+    <value>2, 21</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 3, 0</value>
@@ -7211,7 +7184,88 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>flowLayoutPanel10</value>
   </data>
   <data name="&gt;&gt;radioButtonBeamPrecessionXray.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 42</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 3, 0</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 21</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.Text" xml:space="preserve">
+    <value>Back Laue (X-ray)</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.ToolTip" xml:space="preserve">
+    <value>Precession beam mode (X-ray ZOLZ)</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBeamBackLaue.Name" xml:space="preserve">
+    <value>radioButtonBeamBackLaue</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBeamBackLaue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBeamBackLaue.Parent" xml:space="preserve">
+    <value>flowLayoutPanel10</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBeamBackLaue.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 63</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 3, 0</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 21</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Text" xml:space="preserve">
+    <value>Precession (electron)</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
+    <value>Precession beam mode (i.e. PED mode)</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.Name" xml:space="preserve">
+    <value>radioButtonBeamPrecessionElectron</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel10</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="radioButtonBeamConvergence.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7223,7 +7277,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonBeamConvergence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 63</value>
+    <value>2, 84</value>
   </data>
   <data name="radioButtonBeamConvergence.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 3, 0</value>
@@ -7250,7 +7304,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>flowLayoutPanel10</value>
   </data>
   <data name="&gt;&gt;radioButtonBeamConvergence.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="flowLayoutPanel10.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -7262,7 +7316,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 84</value>
+    <value>194, 105</value>
   </data>
   <data name="flowLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -7286,13 +7340,13 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 132</value>
+    <value>0, 143</value>
   </data>
   <data name="flowLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 105</value>
+    <value>187, 126</value>
   </data>
   <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -7358,7 +7412,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>0, 0</value>
   </data>
   <data name="flowLayoutPanel11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 132</value>
+    <value>187, 143</value>
   </data>
   <data name="flowLayoutPanel11.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>

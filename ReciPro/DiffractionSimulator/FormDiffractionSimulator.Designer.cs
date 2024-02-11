@@ -192,7 +192,6 @@
             printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItemBackLaue = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             dynamicCompressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -257,8 +256,9 @@
             label13 = new System.Windows.Forms.Label();
             flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonBeamParallel = new System.Windows.Forms.RadioButton();
-            radioButtonBeamPrecessionElectron = new System.Windows.Forms.RadioButton();
             radioButtonBeamPrecessionXray = new System.Windows.Forms.RadioButton();
+            radioButtonBeamBackLaue = new System.Windows.Forms.RadioButton();
+            radioButtonBeamPrecessionElectron = new System.Windows.Forms.RadioButton();
             radioButtonBeamConvergence = new System.Windows.Forms.RadioButton();
             flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             label3 = new System.Windows.Forms.Label();
@@ -1840,16 +1840,9 @@
             // 
             // optionToolStripMenuItem
             // 
-            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemBackLaue, toolStripSeparator4, dynamicCompressionToolStripMenuItem, toolStripSeparator5 });
+            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripSeparator4, dynamicCompressionToolStripMenuItem, toolStripSeparator5 });
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             resources.ApplyResources(optionToolStripMenuItem, "optionToolStripMenuItem");
-            // 
-            // toolStripMenuItemBackLaue
-            // 
-            toolStripMenuItemBackLaue.CheckOnClick = true;
-            toolStripMenuItemBackLaue.Name = "toolStripMenuItemBackLaue";
-            resources.ApplyResources(toolStripMenuItemBackLaue, "toolStripMenuItemBackLaue");
-            toolStripMenuItemBackLaue.CheckedChanged += Draw;
             // 
             // toolStripSeparator4
             // 
@@ -1934,12 +1927,12 @@
             // 
             // waveLengthControl
             // 
+            resources.ApplyResources(waveLengthControl, "waveLengthControl");
             waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 200D;
-            resources.ApplyResources(waveLengthControl, "waveLengthControl");
+            waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = true;
-            waveLengthControl.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             waveLengthControl.WaveLength = 0.0025079347455D;
             waveLengthControl.WaveSource = WaveSource.Electron;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
@@ -2422,8 +2415,9 @@
             // 
             resources.ApplyResources(flowLayoutPanel10, "flowLayoutPanel10");
             flowLayoutPanel10.Controls.Add(radioButtonBeamParallel);
-            flowLayoutPanel10.Controls.Add(radioButtonBeamPrecessionElectron);
             flowLayoutPanel10.Controls.Add(radioButtonBeamPrecessionXray);
+            flowLayoutPanel10.Controls.Add(radioButtonBeamBackLaue);
+            flowLayoutPanel10.Controls.Add(radioButtonBeamPrecessionElectron);
             flowLayoutPanel10.Controls.Add(radioButtonBeamConvergence);
             flowLayoutPanel10.Name = "flowLayoutPanel10";
             // 
@@ -2437,14 +2431,6 @@
             radioButtonBeamParallel.UseVisualStyleBackColor = true;
             radioButtonBeamParallel.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
             // 
-            // radioButtonBeamPrecessionElectron
-            // 
-            resources.ApplyResources(radioButtonBeamPrecessionElectron, "radioButtonBeamPrecessionElectron");
-            radioButtonBeamPrecessionElectron.Name = "radioButtonBeamPrecessionElectron";
-            toolTip.SetToolTip(radioButtonBeamPrecessionElectron, resources.GetString("radioButtonBeamPrecessionElectron.ToolTip"));
-            radioButtonBeamPrecessionElectron.UseVisualStyleBackColor = true;
-            radioButtonBeamPrecessionElectron.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
-            // 
             // radioButtonBeamPrecessionXray
             // 
             resources.ApplyResources(radioButtonBeamPrecessionXray, "radioButtonBeamPrecessionXray");
@@ -2452,6 +2438,22 @@
             toolTip.SetToolTip(radioButtonBeamPrecessionXray, resources.GetString("radioButtonBeamPrecessionXray.ToolTip"));
             radioButtonBeamPrecessionXray.UseVisualStyleBackColor = true;
             radioButtonBeamPrecessionXray.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
+            // 
+            // radioButtonBeamBackLaue
+            // 
+            resources.ApplyResources(radioButtonBeamBackLaue, "radioButtonBeamBackLaue");
+            radioButtonBeamBackLaue.Name = "radioButtonBeamBackLaue";
+            toolTip.SetToolTip(radioButtonBeamBackLaue, resources.GetString("radioButtonBeamBackLaue.ToolTip"));
+            radioButtonBeamBackLaue.UseVisualStyleBackColor = true;
+            radioButtonBeamBackLaue.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
+            // 
+            // radioButtonBeamPrecessionElectron
+            // 
+            resources.ApplyResources(radioButtonBeamPrecessionElectron, "radioButtonBeamPrecessionElectron");
+            radioButtonBeamPrecessionElectron.Name = "radioButtonBeamPrecessionElectron";
+            toolTip.SetToolTip(radioButtonBeamPrecessionElectron, resources.GetString("radioButtonBeamPrecessionElectron.ToolTip"));
+            radioButtonBeamPrecessionElectron.UseVisualStyleBackColor = true;
+            radioButtonBeamPrecessionElectron.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
             // 
             // radioButtonBeamConvergence
             // 
@@ -2690,7 +2692,6 @@
         private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelTimeForSearchingG;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBackLaue;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TrackBar trackBarRotationSpeed;
         public WaveLengthControl waveLengthControl;
@@ -2895,5 +2896,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveMovieDiffractionPattern;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveMovieReciprocalSpace;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.RadioButton radioButtonBeamBackLaue;
     }
 }

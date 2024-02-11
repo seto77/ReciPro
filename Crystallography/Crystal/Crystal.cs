@@ -150,6 +150,14 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public Vector3D[] VectorOfG = [];
 
     /// <summary>
+    /// 逆格子点ベクトル (kinematical)のパラレルクエリ。VectorOfGを初期化すると、これもセットで初期化される。
+    /// </summary>
+    [NonSerialized]
+    [XmlIgnore]
+    public ParallelQuery<Vector3D> VectorOfG_P; 
+
+
+    /// <summary>
     /// 菊池線ベクトル
     /// </summary>
     [NonSerialized]
@@ -1302,6 +1310,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             var maxIntensity = VectorOfG.Max(v => v.RawIntensity);
             Parallel.ForEach(VectorOfG, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
         }
+        VectorOfG_P = VectorOfG.AsParallel();
     }
 
     #endregion

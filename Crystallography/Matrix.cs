@@ -828,6 +828,9 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
     [XmlIgnore]
     public SymmetryOperation Operation { get; set; }
 
+    [XmlIgnore]
+    public Vector3DBase Coordinates { get => new(X, Y, Z); set { X = value.X; Y = value.Y; Z = value.Z; } }
+
     public int CompareTo(Vector3D v)
     {
         if (d != v.d)

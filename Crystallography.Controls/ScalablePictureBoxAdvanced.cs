@@ -594,10 +594,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
         if (ImageIO.ReadImage(fileName))
         {
             PseudoBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width);
-
             ProcessImageFilter();
-
-
         }
     }
 

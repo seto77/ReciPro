@@ -2,6 +2,7 @@
 using BitMiracle.LibTiff.Classic;
 using Crystallography;
 using Crystallography.Controls;
+using Crystallography.Mathematics;
 using Crystallography.OpenGL;
 using MathNet.Numerics;
 using MathNet.Numerics.Providers.MKL;
@@ -19,6 +20,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Windows.ApplicationModel.Activation;
+using static IronPython.Modules._ast;
 using static ReciPro.FormDiffractionSimulatorDynamicCompression;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using V3 = OpenTK.Vector3d;
@@ -621,6 +624,95 @@ public partial class FormDiffractionSimulator : Form
         {
             List<Vector3D> gVector;
 
+            //BackLaueの場合
+            if (radioButtonBeamBackLaue.Checked)
+            {
+                #region BackLaue
+                # region 最大θを検索
+                var L = new double[]{ 
+                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
+                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
+                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length,
+                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length}.Max();
+                var maxTwoTheta = Math.Atan(L / CameraLength2);
+                var minCosTheta = Math.Cos(maxTwoTheta / 2);
+                #endregion
+
+                var maxEwaldR = 1 / UniversalConstants.Convert.EnergyToXrayWaveLength(50_000);
+                //Flag1がtrueのものだけを取り出し、
+                gVector = crystal.VectorOfG_P
+                    .Where(g => g.Flag1)//Flag1がtrueのものだけを取り出し、
+                    .Select(g => new Vector3D(crystal.RotationMatrix * g) { Index = g.Index, Flag1 = true, RelativeIntensity = g.RelativeIntensity, Text = g.Text })//回転させて新しいリストを作る
+                    .Where(g => g.Length2 -2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta).ToList();//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
+                if (gVector.Count == 0) return null;
+                //indexだけを保存するリストも作成しておく (高速化のため)
+                var indexList = gVector.Select(g => g.Index).ToList();
+                //原点を通る直線状にある逆格子ベクトルをまとめる
+                Parallel.ForEach(gVector, g =>
+                {
+                    var n = Algebra.Irreducible(g.Index);
+                    if (n != 1)
+                    {
+                        int h = g.Index.h / n, k = g.Index.k / n, l = g.Index.l / n;//既約なh,k,lを計算
+                        for (int m = 1; m < n; m++)//既約なh,k,lが存在するとは限らないので、h,k,lを整数倍して探索する
+                        {
+                            var j = indexList.IndexOf((m * h, m * k, m * l));
+                            if (j != -1)
+                            {
+                                g.Flag1 = false;
+                                lock (lockObj)
+                                    gVector[j].RelativeIntensity += g.RelativeIntensity;
+                                break;
+                            }
+                        }
+                    }
+                });
+
+                gVector = gVector.Where(g => g.Flag1).ToList();
+                if (gVector.Count == 0) return null;
+                var maxIntensity = gVector.Max(g => g.RelativeIntensity);
+                Parallel.ForEach(gVector, g => g.RelativeIntensity /= maxIntensity);
+
+                //スポットを描画
+                var color = colorControlNoCondition.Color;
+                foreach (var g in gVector.Where(g => g.RelativeIntensity > 0))
+                {
+                    var cosTwoTheta = 2 * (g.Z * g.Z / g.Length2) - 1;
+                    var scale = CameraLength2 * Math.Sqrt((1 - cosTwoTheta * cosTwoTheta) / g.X2Y2) / cosTwoTheta;
+                    var pt = new PointD(g.X * scale, -g.Y * scale);
+                    if (IsScreenArea(pt))
+                    {
+                        if (radioButtonPointSpread.Checked)//点広がり関数
+                        {
+                            //もしg.RelativeIntensity=1で、かつcoeff=1の時、sigmaの半分のところで強度が255になるように関数の形を調整
+                            double sigma = spotRadiusOnDetector;
+                            double intensity = !logScale ? g.RelativeIntensity / (sigma * sqrtTwoPI) * linearCoeff : (Math.Log10(g.RelativeIntensity) + logCoeff) / (sigma * sqrtTwoPI);
+                            if (!double.IsNaN(intensity))
+                            {
+                                var radius = fillCircleSpread(color, pt, intensity, sigma);
+                                if (drawLabel && trackBarStrSize.Value != 1 && intensity / (2 * Math.PI * sigma * sigma) > 0.5)
+                                    DrawDiffractionSpotsLabel(graphics, g, pt, radius, 0);
+                            }
+                        }
+                        else//円で塗りつぶすとき
+                        {
+                            var sectionRadius = ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//逆空間における逆格子点の半径 相対強度の1/3乗
+                            var r = CameraLength2 * WaveLength * sectionRadius;
+                            graphics.FillCircle(color, pt, r, (int)(alphaCoeff * 255));
+                            if (drawLabel && trackBarStrSize.Value != 1 && sectionRadius > 0.3f * ExcitationError)
+                                DrawDiffractionSpotsLabel(graphics, g, pt, r, 0);
+                        }
+                    }
+                }
+
+                //ダイレクトスポットの描画
+                var origin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+                if (IsScreenArea(origin))
+                    graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), origin, spotRadiusOnDetector);
+                return null;
+                #endregion
+            }
+
             if (bethe)//ベーテ法による動力学回折の場合
             {
                 sw.Start();
@@ -673,8 +765,7 @@ public partial class FormDiffractionSimulator : Form
 
             gVector.ForEach(g => g.Flag2 = false);
 
-            //描画するスポットを決める
-
+            
             foreach (var g in gVector.Where(g => g.Flag1))
             {
                 var vec = bethe ? g : crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
@@ -1190,8 +1281,8 @@ public partial class FormDiffractionSimulator : Form
 
         if (toolStripButtonDiffractionSpots.Checked)
         {
-            if (toolStripMenuItemBackLaue.Checked)//Back Laueのとき
-                minD = WaveLength / 2;
+            if (radioButtonBeamBackLaue.Checked)//Back Laueのとき
+                minD = UniversalConstants.Convert.EnergyToXrayWaveLength(50_000)/2;//取りあえず80kV
 
             foreach (var crystal in formMain.Crystals)
             {
@@ -1827,13 +1918,16 @@ public partial class FormDiffractionSimulator : Form
         {
             radioButtonBeamConvergence.Visible = radioButtonBeamPrecessionElectron.Visible = true;//収束と歳差(電子)は表示
             radioButtonBeamPrecessionXray.Visible = false;//歳差(X線)は非表示
+            radioButtonBeamBackLaue.Visible = false;//バックラウエは非表示
             radioButtonIntensityDynamical.Visible = true;//動力学計算は表示
         }
         else if (Source == WaveSource.Xray)//X線が選択された場合
         {
             radioButtonBeamConvergence.Visible = radioButtonBeamPrecessionElectron.Visible = false;//収束と歳差(電子)は非表示
             radioButtonBeamPrecessionXray.Visible = true;//歳差(X線)は表示
+            radioButtonBeamBackLaue.Visible = true;//バックラウエは表示
             radioButtonIntensityDynamical.Visible = false;//動力学計算は非表示
+
             if (radioButtonIntensityDynamical.Checked)//動力学計算が選択されていた場合は運動学に変更
                 radioButtonIntensityKinematical.Checked = true;
         }
@@ -1841,6 +1935,7 @@ public partial class FormDiffractionSimulator : Form
         {
             radioButtonBeamConvergence.Visible = radioButtonBeamPrecessionElectron.Visible = false;//収束と歳差(電子)は非表示
             radioButtonBeamPrecessionXray.Visible = false;//歳差(X線)は非表示
+            radioButtonBeamBackLaue.Visible = false;//バックラウエは表示
             radioButtonIntensityDynamical.Visible = false;//動力学計算は非表示
             if (radioButtonIntensityDynamical.Checked)//動力学計算が選択されていた場合は運動学に変更
                 radioButtonIntensityKinematical.Checked = true;
@@ -1889,6 +1984,8 @@ public partial class FormDiffractionSimulator : Form
     {
         if (radioButtonBeamParallel.Checked)//平行
         {
+            waveLengthControl.Monochrome = true;
+
             radioButtonIntensityExcitation.Visible = radioButtonIntensityKinematical.Visible = true;
 
             flowLayoutPanelPED.Visible = false;
@@ -1899,6 +1996,8 @@ public partial class FormDiffractionSimulator : Form
         }
         else if (radioButtonBeamPrecessionElectron.Checked)//歳差(電子)
         {
+            waveLengthControl.Monochrome = true;
+
             radioButtonIntensityExcitation.Visible = radioButtonIntensityKinematical.Visible = false;
 
             radioButtonIntensityDynamical.Checked = true;
@@ -1910,6 +2009,8 @@ public partial class FormDiffractionSimulator : Form
         }
         else if (radioButtonBeamConvergence.Checked)//収束
         {
+            waveLengthControl.Monochrome = true;
+
             radioButtonIntensityExcitation.Visible = radioButtonIntensityKinematical.Visible = false;
 
             radioButtonIntensityDynamical.Checked = true;
@@ -1922,12 +2023,25 @@ public partial class FormDiffractionSimulator : Form
         }
         else if (radioButtonBeamPrecessionXray.Checked)//歳差(X線)
         {
+            waveLengthControl.Monochrome = true;
+            
             radioButtonIntensityExcitation.Visible = true;
             radioButtonIntensityKinematical.Visible = true;
 
             flowLayoutPanelPED.Visible = false;
 
             FormDiffractionSimulatorCBED.Visible = false;
+            flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
+        }
+        else if (radioButtonBeamBackLaue.Checked)
+        {
+            waveLengthControl.Monochrome = false;
+
+            radioButtonIntensityExcitation.Visible = true;
+            radioButtonIntensityKinematical.Visible = true;
+            flowLayoutPanelPED.Visible = false;
+            FormDiffractionSimulatorCBED.Visible = false;
+
             flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
         }
 
@@ -2432,7 +2546,6 @@ public partial class FormDiffractionSimulator : Form
 
     #endregion
 
-
     #region ReciprocalSpaceの描画関連
     private void checkBoxReciprocalSpace_CheckedChanged(object sender, EventArgs e)
     {
@@ -2646,25 +2759,6 @@ public partial class FormDiffractionSimulator : Form
     private void numericBoxReciprocalThreshold_ValueChanged(object sender, EventArgs e) => Draw3D();
 
     private void numericBox3D_SpotRadius_ValueChanged(object sender, EventArgs e) => Draw3D();
-    #endregion
-
-    #region 動画関連
-    private void toolStripMenuItemSaveMovieReciprocalSpace_Click(object sender, EventArgs e)
-    {
-        formMain.FormMovie.Execute(glControl, this);
-    }
-
-    private void toolStripMenuItemSaveMovieDiffractionPattern_Click(object sender, EventArgs e)
-    {
-        var func = new Func<Bitmap>(() =>
-        {
-            var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
-            Draw(Graphics.FromImage(bmp), true, true);
-            return bmp;
-        });
-        formMain.FormMovie.Execute(func, this);
-    }
-    #endregion
 
     private void checkBox3D_ShowIndices_CheckedChanged(object sender, EventArgs e)
     {
@@ -2697,4 +2791,25 @@ public partial class FormDiffractionSimulator : Form
         gNew.Visible = true;
         Draw3D();
     }
+    #endregion
+
+    #region 動画関連
+    private void toolStripMenuItemSaveMovieReciprocalSpace_Click(object sender, EventArgs e)
+    {
+        formMain.FormMovie.Execute(glControl, this);
+    }
+
+    private void toolStripMenuItemSaveMovieDiffractionPattern_Click(object sender, EventArgs e)
+    {
+        var func = new Func<Bitmap>(() =>
+        {
+            var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
+            Draw(Graphics.FromImage(bmp), true, true);
+            return bmp;
+        });
+        formMain.FormMovie.Execute(func, this);
+    }
+    #endregion
+
+    
 }

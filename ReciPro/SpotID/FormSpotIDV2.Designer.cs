@@ -112,6 +112,8 @@ namespace ReciPro
             buttonRefineThicknessAndDirection = new System.Windows.Forms.Button();
             buttonStop = new System.Windows.Forms.Button();
             groupBox2 = new System.Windows.Forms.GroupBox();
+            radioButtonPixelSizeUnitInverse = new System.Windows.Forms.RadioButton();
+            radioButtonPixelSizeUnitReal = new System.Windows.Forms.RadioButton();
             numericBoxCameraLength = new NumericBox();
             numericBoxPixelSize = new NumericBox();
             waveLengthControl1 = new WaveLengthControl();
@@ -141,8 +143,6 @@ namespace ReciPro
             toolStripStatusLabelRefine = new System.Windows.Forms.ToolStripStatusLabel();
             backgroundWorkerSpotID = new System.ComponentModel.BackgroundWorker();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            radioButtonPixelSizeUnitReal = new System.Windows.Forms.RadioButton();
-            radioButtonPixelSizeUnitInverse = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -440,7 +440,7 @@ namespace ReciPro
             dataGridViewSpots.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -451,7 +451,7 @@ namespace ReciPro
             dataGridViewSpots.DataSource = bindingSourceObsSpots;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("メイリオ", 9F);
             dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle14.Format = "N2";
             dataGridViewCellStyle14.NullValue = null;
@@ -888,6 +888,21 @@ namespace ReciPro
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
             // 
+            // radioButtonPixelSizeUnitInverse
+            // 
+            resources.ApplyResources(radioButtonPixelSizeUnitInverse, "radioButtonPixelSizeUnitInverse");
+            radioButtonPixelSizeUnitInverse.Name = "radioButtonPixelSizeUnitInverse";
+            radioButtonPixelSizeUnitInverse.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPixelSizeUnitReal
+            // 
+            resources.ApplyResources(radioButtonPixelSizeUnitReal, "radioButtonPixelSizeUnitReal");
+            radioButtonPixelSizeUnitReal.Checked = true;
+            radioButtonPixelSizeUnitReal.Name = "radioButtonPixelSizeUnitReal";
+            radioButtonPixelSizeUnitReal.TabStop = true;
+            radioButtonPixelSizeUnitReal.UseVisualStyleBackColor = true;
+            radioButtonPixelSizeUnitReal.CheckedChanged += radioButtonPixelSizeUnitReal_CheckedChanged;
+            // 
             // numericBoxCameraLength
             // 
             resources.ApplyResources(numericBoxCameraLength, "numericBoxCameraLength");
@@ -924,12 +939,12 @@ namespace ReciPro
             // 
             // waveLengthControl1
             // 
+            resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
             waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl1.Energy = 494.36741737D;
-            resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
+            waveLengthControl1.Monochrome = true;
             waveLengthControl1.Name = "waveLengthControl1";
             waveLengthControl1.ShowWaveSource = true;
-            waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             waveLengthControl1.WaveLength = 0.0025079347455D;
             waveLengthControl1.WaveSource = WaveSource.Xray;
             waveLengthControl1.XrayWaveSourceElementNumber = 0;
@@ -1077,21 +1092,6 @@ namespace ReciPro
             backgroundWorkerSpotID.DoWork += backgroundWorkerSpotID_DoWork;
             backgroundWorkerSpotID.ProgressChanged += backgroundWorkerSpotID_ProgressChanged;
             backgroundWorkerSpotID.RunWorkerCompleted += backgroundWorkerSpotID_RunWorkerCompleted;
-            // 
-            // radioButtonPixelSizeUnitReal
-            // 
-            resources.ApplyResources(radioButtonPixelSizeUnitReal, "radioButtonPixelSizeUnitReal");
-            radioButtonPixelSizeUnitReal.Checked = true;
-            radioButtonPixelSizeUnitReal.Name = "radioButtonPixelSizeUnitReal";
-            radioButtonPixelSizeUnitReal.TabStop = true;
-            radioButtonPixelSizeUnitReal.UseVisualStyleBackColor = true;
-            radioButtonPixelSizeUnitReal.CheckedChanged += radioButtonPixelSizeUnitReal_CheckedChanged;
-            // 
-            // radioButtonPixelSizeUnitInverse
-            // 
-            resources.ApplyResources(radioButtonPixelSizeUnitInverse, "radioButtonPixelSizeUnitInverse");
-            radioButtonPixelSizeUnitInverse.Name = "radioButtonPixelSizeUnitInverse";
-            radioButtonPixelSizeUnitInverse.UseVisualStyleBackColor = true;
             // 
             // FormSpotIDV2
             // 

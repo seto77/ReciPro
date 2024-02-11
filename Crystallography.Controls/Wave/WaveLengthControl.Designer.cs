@@ -35,16 +35,18 @@
             radioButtonElectron = new System.Windows.Forms.RadioButton();
             comboBoxXrayLine = new System.Windows.Forms.ComboBox();
             numericBoxEnergy = new NumericBox();
-            flowLayoutPanelElement = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
             numericBoxWaveLength = new NumericBox();
             radioButtonNeutron = new System.Windows.Forms.RadioButton();
-            flowLayoutPanelWaveSource = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelMain = new System.Windows.Forms.FlowLayoutPanel();
+            labelFlatWhite = new System.Windows.Forms.Label();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            flowLayoutPanelElement.SuspendLayout();
+            flowLayoutPanelWaveSource = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelElement = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            panel1 = new System.Windows.Forms.Panel();
             flowLayoutPanelWaveSource.SuspendLayout();
-            flowLayoutPanelMain.SuspendLayout();
+            flowLayoutPanelElement.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // comboBoxXRayElement
@@ -96,16 +98,8 @@
             numericBoxEnergy.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergy.Name = "numericBoxEnergy";
             numericBoxEnergy.RoundErrorAccuracy = 8;
-            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip"));
+            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip1"));
             numericBoxEnergy.ValueChanged += numericBoxEnergy_ValueChanged;
-            // 
-            // flowLayoutPanelElement
-            // 
-            resources.ApplyResources(flowLayoutPanelElement, "flowLayoutPanelElement");
-            flowLayoutPanelElement.Controls.Add(label1);
-            flowLayoutPanelElement.Controls.Add(comboBoxXRayElement);
-            flowLayoutPanelElement.Controls.Add(comboBoxXrayLine);
-            flowLayoutPanelElement.Name = "flowLayoutPanelElement";
             // 
             // label1
             // 
@@ -120,7 +114,7 @@
             numericBoxWaveLength.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxWaveLength.Name = "numericBoxWaveLength";
             numericBoxWaveLength.RoundErrorAccuracy = 12;
-            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip"));
+            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip1"));
             numericBoxWaveLength.ValueChanged += numericBoxWaveLength_ValueChanged;
             // 
             // radioButtonNeutron
@@ -131,6 +125,11 @@
             radioButtonNeutron.UseVisualStyleBackColor = true;
             radioButtonNeutron.CheckedChanged += radioButtonWaveSource_CheckedChanged;
             // 
+            // labelFlatWhite
+            // 
+            resources.ApplyResources(labelFlatWhite, "labelFlatWhite");
+            labelFlatWhite.Name = "labelFlatWhite";
+            // 
             // flowLayoutPanelWaveSource
             // 
             resources.ApplyResources(flowLayoutPanelWaveSource, "flowLayoutPanelWaveSource");
@@ -138,29 +137,43 @@
             flowLayoutPanelWaveSource.Controls.Add(radioButtonElectron);
             flowLayoutPanelWaveSource.Controls.Add(radioButtonNeutron);
             flowLayoutPanelWaveSource.Name = "flowLayoutPanelWaveSource";
-            toolTip.SetToolTip(flowLayoutPanelWaveSource, resources.GetString("flowLayoutPanelWaveSource.ToolTip"));
             // 
-            // flowLayoutPanelMain
+            // flowLayoutPanelElement
             // 
-            resources.ApplyResources(flowLayoutPanelMain, "flowLayoutPanelMain");
-            flowLayoutPanelMain.Controls.Add(flowLayoutPanelElement);
-            flowLayoutPanelMain.Controls.Add(numericBoxEnergy);
-            flowLayoutPanelMain.Controls.Add(numericBoxWaveLength);
-            flowLayoutPanelMain.Name = "flowLayoutPanelMain";
+            resources.ApplyResources(flowLayoutPanelElement, "flowLayoutPanelElement");
+            flowLayoutPanelElement.Controls.Add(label1);
+            flowLayoutPanelElement.Controls.Add(comboBoxXRayElement);
+            flowLayoutPanelElement.Controls.Add(comboBoxXrayLine);
+            flowLayoutPanelElement.Name = "flowLayoutPanelElement";
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(flowLayoutPanelElement);
+            flowLayoutPanel2.Controls.Add(numericBoxEnergy);
+            flowLayoutPanel2.Controls.Add(numericBoxWaveLength);
+            flowLayoutPanel2.Controls.Add(labelFlatWhite);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
             // 
             // WaveLengthControl
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            Controls.Add(flowLayoutPanelMain);
+            Controls.Add(panel1);
+            Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanelWaveSource);
             Name = "WaveLengthControl";
-            flowLayoutPanelElement.ResumeLayout(false);
-            flowLayoutPanelElement.PerformLayout();
             flowLayoutPanelWaveSource.ResumeLayout(false);
             flowLayoutPanelWaveSource.PerformLayout();
-            flowLayoutPanelMain.ResumeLayout(false);
-            flowLayoutPanelMain.PerformLayout();
+            flowLayoutPanelElement.ResumeLayout(false);
+            flowLayoutPanelElement.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -173,12 +186,14 @@
         private System.Windows.Forms.RadioButton radioButtonElectron;
         private System.Windows.Forms.ComboBox comboBoxXrayLine;
         private NumericBox numericBoxEnergy;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelElement;
         // private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelXray;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButtonNeutron;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWaveSource;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMain;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Label labelFlatWhite;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWaveSource;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelElement;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

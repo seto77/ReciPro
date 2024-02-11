@@ -205,9 +205,9 @@ public partial class FormRotationMatrix : Form
     private void buttonCopy_Click(object sender, EventArgs e)
     {
         var str =
-            numericBox11.Value.ToString() + "\t" + numericBox12.Value.ToString() + "\t" + numericBox13.Value.ToString() + "\n" +
-            numericBox21.Value.ToString() + "\t" + numericBox22.Value.ToString() + "\t" + numericBox23.Value.ToString() + "\n" +
-            numericBox31.Value.ToString() + "\t" + numericBox32.Value.ToString() + "\t" + numericBox33.Value.ToString();
+            $"{numericBox11.Value}\t{numericBox12.Value}\t{numericBox13.Value}\n" +
+            $"{numericBox21.Value}\t{numericBox22.Value}\t{numericBox23.Value}\n" +
+            $"{numericBox31.Value}\t{numericBox32.Value}\t{numericBox33.Value}";
         Clipboard.SetDataObject(str);
     }
 

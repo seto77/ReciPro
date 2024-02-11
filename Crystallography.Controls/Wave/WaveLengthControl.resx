@@ -423,7 +423,7 @@
     <value>98:  Cf</value>
   </data>
   <data name="comboBoxXRayElement.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 2</value>
+    <value>54, 0</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="comboBoxXRayElement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -508,13 +508,16 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonElectron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 0</value>
+    <value>58, 0</value>
   </data>
   <data name="radioButtonElectron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 0, 0</value>
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonElectron.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 0, 0</value>
   </data>
   <data name="radioButtonElectron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 21</value>
+    <value>77, 21</value>
   </data>
   <data name="radioButtonElectron.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -571,7 +574,7 @@
     <value>Lβ2</value>
   </data>
   <data name="comboBoxXrayLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 2</value>
+    <value>126, 0</value>
   </data>
   <data name="comboBoxXrayLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 0, 0</value>
@@ -613,7 +616,7 @@
     <value>Energy</value>
   </data>
   <data name="numericBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 27</value>
+    <value>5, 25</value>
   </data>
   <data name="numericBoxEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
@@ -628,13 +631,10 @@
     <value>0, 2, 1, 0</value>
   </data>
   <data name="numericBoxEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 27</value>
+    <value>158, 27</value>
   </data>
   <data name="numericBoxEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
-  </data>
-  <data name="numericBoxEnergy.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
     <value>Inuput wave energy</value>
@@ -649,58 +649,10 @@
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEnergy.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;numericBoxEnergy.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="flowLayoutPanelElement.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelElement.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>flowLayoutPanelElement</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelElement.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 0</value>
-  </data>
-  <data name="flowLayoutPanelElement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelElement.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelElement.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 27</value>
-  </data>
-  <data name="flowLayoutPanelElement.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="flowLayoutPanelElement.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelElement.Name" xml:space="preserve">
-    <value>flowLayoutPanelElement</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelElement.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelElement.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelElement.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -712,7 +664,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 5</value>
+    <value>0, 3</value>
   </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -751,7 +703,7 @@
     <value>Wavelength</value>
   </data>
   <data name="numericBoxWaveLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 54</value>
+    <value>5, 52</value>
   </data>
   <data name="numericBoxWaveLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
@@ -771,9 +723,6 @@
   <data name="numericBoxWaveLength.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
-  <data name="numericBoxWaveLength.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
     <value>Input wave length</value>
   </data>
@@ -787,7 +736,7 @@
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxWaveLength.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;numericBoxWaveLength.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -802,13 +751,16 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonNeutron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 0</value>
+    <value>136, 0</value>
   </data>
   <data name="radioButtonNeutron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 0, 0, 0</value>
   </data>
+  <data name="radioButtonNeutron.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 4, 0</value>
+  </data>
   <data name="radioButtonNeutron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
+    <value>78, 21</value>
   </data>
   <data name="radioButtonNeutron.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -831,6 +783,42 @@
   <data name="&gt;&gt;radioButtonNeutron.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="labelFlatWhite.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFlatWhite.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="labelFlatWhite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 79</value>
+  </data>
+  <data name="labelFlatWhite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
+  </data>
+  <data name="labelFlatWhite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 17</value>
+  </data>
+  <data name="labelFlatWhite.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="labelFlatWhite.Text" xml:space="preserve">
+    <value>Flat white</value>
+  </data>
+  <data name="labelFlatWhite.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;labelFlatWhite.Name" xml:space="preserve">
+    <value>labelFlatWhite</value>
+  </data>
+  <data name="&gt;&gt;labelFlatWhite.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFlatWhite.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;labelFlatWhite.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="flowLayoutPanelWaveSource.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -843,20 +831,11 @@
   <data name="flowLayoutPanelWaveSource.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="flowLayoutPanelWaveSource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 3</value>
-  </data>
   <data name="flowLayoutPanelWaveSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 24</value>
+    <value>210, 21</value>
   </data>
   <data name="flowLayoutPanelWaveSource.TabIndex" type="System.Int32, mscorlib">
-    <value>109</value>
-  </data>
-  <data name="flowLayoutPanelWaveSource.ToolTip" xml:space="preserve">
-    <value>Select wave source</value>
+    <value>115</value>
   </data>
   <data name="flowLayoutPanelWaveSource.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -871,49 +850,115 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelWaveSource.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <data name="flowLayoutPanelMain.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelElement.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanelMain.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelElement.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="flowLayoutPanelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="flowLayoutPanelElement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
   </data>
-  <data name="flowLayoutPanelMain.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
+  <data name="flowLayoutPanelElement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+  <data name="flowLayoutPanelElement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 25</value>
   </data>
-  <data name="flowLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 83</value>
+  <data name="flowLayoutPanelElement.TabIndex" type="System.Int32, mscorlib">
+    <value>117</value>
   </data>
-  <data name="flowLayoutPanelMain.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
+  <data name="&gt;&gt;flowLayoutPanelElement.Name" xml:space="preserve">
+    <value>flowLayoutPanelElement</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelMain.Name" xml:space="preserve">
-    <value>flowLayoutPanelMain</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelMain.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelElement.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelMain.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;flowLayoutPanelElement.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelMain.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelElement.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>ja</value>
-  </metadata>
+  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel2.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 21</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 96</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="flowLayoutPanel2.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 117</value>
+  </data>
+  <data name="panel1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 1</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 1</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>119</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -924,8 +969,11 @@
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>500, 500</value>
   </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>210, 0</value>
+  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 107</value>
+    <value>210, 118</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>

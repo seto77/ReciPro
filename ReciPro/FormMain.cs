@@ -197,8 +197,6 @@ public partial class FormMain : Form
         //MainWindowの場所を読み込むため (InitializeComponentの後にに読み込む)
         Registry(Reg.Mode.Read);
 
-
-
         sw.Restart();
 
         ip = new Progress<(long, long, long, string)>(reportProgress);//IReport
@@ -380,9 +378,9 @@ public partial class FormMain : Form
         if (listBox.Items.Count == 0)
             readCrystalList(UserAppDataPath + "initial.xml", false, true);
 
-        //ReciProSetup.msiは削除
-        if (File.Exists(UserAppDataPath + "ReciProSetup.msi"))
-            File.Delete(UserAppDataPath + "ReciProSetup.msi");
+        //ReciProSetup.msiは削除 アンインストール出来なくなるかもしれないので、削除はやめた方がいいかも 20240208
+        //if (File.Exists(UserAppDataPath + "ReciProSetup.msi"))
+        //    File.Delete(UserAppDataPath + "ReciProSetup.msi");
 
         commonDialog.Progress = ("Now Loading...Setting crystal database.", 0.90);
         //StdDbをコピー
@@ -469,65 +467,73 @@ public partial class FormMain : Form
     #region レジストリ操作
     private void Registry(Reg.Mode mode)
     {
-        var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
-        if (key == null) return;
+        using var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
+        try
+        {
+            if (key == null) return;
 
-        if (mode == Reg.Mode.Write)
-            key.SetValue("Version", Version.VersionValue);
+            if (mode == Reg.Mode.Write)
+                key.SetValue("Version", Version.VersionValue);
 
-        Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
+            Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
 
-        Reg.RW<Rectangle>(key, mode, this, "Bounds");
-        WindowLocation.Adjust(this);
+            Reg.RW<Rectangle>(key, mode, this, "Bounds");
+            WindowLocation.Adjust(this);
 
-        Reg.RW<bool>(key, mode, this, "DisableOpenGL");
-        Reg.RW<bool>(key, mode, this, "DisableTextRendering");
+            Reg.RW<bool>(key, mode, this, "DisableOpenGL");
+            Reg.RW<bool>(key, mode, this, "DisableTextRendering");
 
-        if (commonDialog == null)
-            return;
+            if (commonDialog == null)
+                return;
 
-        Reg.RW<bool>(key, mode, commonDialog, "AutomaticallyClose");
+            Reg.RW<bool>(key, mode, commonDialog, "AutomaticallyClose");
 
-        if (FormStereonet == null)
-            return;
+            if (FormStereonet == null)
+                return;
 
-        Reg.RW<Rectangle>(key, mode, FormStereonet, "Bounds");
+            Reg.RW<Rectangle>(key, mode, FormStereonet, "Bounds");
 
-        Reg.RW<Rectangle>(key, mode, FormTEMID, "Bounds");
+            Reg.RW<Rectangle>(key, mode, FormTEMID, "Bounds");
 
-        #region DiffractionSimulator
+            #region DiffractionSimulator
 
-        FormDiffractionSimulator.CancelSetVector = true;
+            FormDiffractionSimulator.CancelSetVector = true;
 
-        Reg.RW<Rectangle>(key, mode, FormDiffractionSimulator, "Bounds");
-        Reg.RW<double>(key, mode, FormDiffractionSimulator, "Resolution");
+            Reg.RW<Rectangle>(key, mode, FormDiffractionSimulator, "Bounds");
+            Reg.RW<double>(key, mode, FormDiffractionSimulator, "Resolution");
 
-        Reg.RW<WaveSource>(key, mode, FormDiffractionSimulator.waveLengthControl, "WaveSource");
-        Reg.RW<double>(key, mode, FormDiffractionSimulator.waveLengthControl, "Energy");
-        Reg.RW<int>(key, mode, FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceElementNumber");
-        Reg.RW<XrayLine>(key, mode, FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceLine");
+            Reg.RW<WaveSource>(key, mode, FormDiffractionSimulator.waveLengthControl, "WaveSource");
+            Reg.RW<double>(key, mode, FormDiffractionSimulator.waveLengthControl, "Energy");
+            Reg.RW<int>(key, mode, FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceElementNumber");
+            Reg.RW<XrayLine>(key, mode, FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceLine");
 
-        FormDiffractionSimulator.CancelSetVector = false;
+            FormDiffractionSimulator.CancelSetVector = false;
 
-        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootX");
-        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootY");
-        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "CameraLength2");
-        Reg.RW<int>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorWidth");
-        Reg.RW<int>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorHeight");
-        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Tau");
-        Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Phi");
-        #endregion
+            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootX");
+            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootY");
+            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "CameraLength2");
+            Reg.RW<int>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorWidth");
+            Reg.RW<int>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorHeight");
+            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Tau");
+            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Phi");
+            #endregion
 
-        #region ImageSimulator
-        Reg.RW<Rectangle>(key, mode, FormImageSimulator, "Bounds");
-        Reg.RW<ImageSimulatorSetting>(key, mode, FormImageSimulator, "Setting");
-        Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.FormPresets, "Settings");
-        #endregion
+            #region ImageSimulator
+            Reg.RW<Rectangle>(key, mode, FormImageSimulator, "Bounds");
+            Reg.RW<ImageSimulatorSetting>(key, mode, FormImageSimulator, "Setting");
+            Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.FormPresets, "Settings");
+            #endregion
 
-        if (mode == Reg.Mode.Read)
-            FormMacro.ZippedMacros = (byte[])key.GetValue("Macro", Array.Empty<byte>());
-        else
-            key.SetValue("Macro", FormMacro.ZippedMacros);
+            if (mode == Reg.Mode.Read)
+                FormMacro.ZippedMacros = (byte[])key.GetValue("Macro", Array.Empty<byte>());
+            else
+                key.SetValue("Macro", FormMacro.ZippedMacros);
+        }
+        finally
+        {
+            key.Close();
+            key.Dispose();
+        }
 
     }
     #endregion レジストリ操作

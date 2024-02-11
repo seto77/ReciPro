@@ -7471,7 +7471,7 @@ new(4.86738014,0.319974401,4.58872425,
             {
                 sbAbsorption.AppendLine("new PointD[]{");
                 for (int k = 0; k < pf[j].Pt.Count; k++)
-                    sbAbsorption.AppendLine("new PointD(" + pf[j].Pt[k].X.ToString("E6") + "," + pf[j].Pt[k].Y.ToString("E6") + (k == pf[j].Pt.Count - 1 ? ")" : "),"));
+                    sbAbsorption.AppendLine($"new PointD({pf[j].Pt[k].X.ToString("E6")},{pf[j].Pt[k].Y.ToString("E6")}{(k == pf[j].Pt.Count - 1 ? ")" : "),")}");
                 sbAbsorption.AppendLine("}" + (j == pf.Count - 1 ? "" : ","));
             }
             sbAbsorption.AppendLine("}" + (fileName.Contains("92") ? "" : ","));

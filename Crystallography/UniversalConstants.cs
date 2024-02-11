@@ -173,7 +173,7 @@ public static class UniversalConstants
             => n0 * velocity * velocity / 2.0 / eV_joule;
 
         /// <summary>
-        /// 波長(nm)を電子線のエネルギー(kV)に変換
+        /// 電子の波長(nm)をエネルギー(kV)に変換
         /// </summary>
         /// <param name="kiloVoltage"></param>
         /// <returns></returns>
@@ -181,14 +181,14 @@ public static class UniversalConstants
         {
             //U =voltage
             //WaveLength = h / Math.Sqrt ( 2 * m0 * e0 * U * ( 1 + e0 * U / 2 / m0 / c^2 ) )
-            double b = 1000;
-            double a = 0.9784753725226711491437618236159;
-            double c = -1.2264262862108010441350327657997 / waveLength;
-            return (-b + Math.Sqrt(b * b + 4 * a * c * c)) / 2 / a;
+            const double b = 1000;
+            const double a = 0.9784753725226711491437618236159;
+            const double c = -1.2264262862108010441350327657997;
+            return (-b + Math.Sqrt(b * b + 4 * a * c / waveLength * c / waveLength)) / 2 / a;
         }
 
         /// <summary>
-        /// 波長(nm)を電磁波のエネルギー(eV)に変換
+        /// 電磁波の波長(nm)をエネルギー(eV)に変換
         /// </summary>
         /// <param name="waveLength"></param>
         /// <returns></returns>
@@ -196,7 +196,7 @@ public static class UniversalConstants
             => 6.62606896 / 1.60217733 * 2.99792458 / waveLength * 100.0;
 
         /// <summary>
-        /// 波長(nm)を中性子のエネルギー(eV)に変換
+        /// 中性子の波長(nm)をエネルギー(eV)に変換
         /// </summary>
         /// <param name="velocity"></param>
         /// <returns></returns>
@@ -204,7 +204,7 @@ public static class UniversalConstants
             => 6.62606896 * 6.62606896 / 1.674927351 / wavelength / wavelength / 2.0 / 1.602176565 * 1.0E5;
 
         /// <summary>
-        /// エネルギーを電磁波の波長(nm)に変換
+        /// 電磁波のエネルギー(ev)を波長(nm)に変換
         /// </summary>
         /// <param name="energy"></param>
         /// <returns></returns>
@@ -212,7 +212,7 @@ public static class UniversalConstants
             => 6.62606896 / 1.60217733 * 2.99792458 / energy * 100.0;
 
         /// <summary>
-        /// エネルギー(kV)を電子線の波長(nm)に変換
+        /// 電子線のエネルギー(kV)を波長(nm)に変換
         /// </summary>
         /// <param name="kiloVoltage"></param>
         /// <returns></returns>
@@ -224,7 +224,7 @@ public static class UniversalConstants
         }
 
         /// <summary>
-        /// エネルギー(kV)を電子線の波数(nm^-1)に変換 (2πで割った数値では無い)
+        /// 電子線のエネルギー(kV)を波数(nm^-1)に変換 (2πで割った数値では無い)
         /// </summary>
         /// <param name="kiloVoltage"></param>
         /// <returns></returns>
@@ -245,7 +245,7 @@ public static class UniversalConstants
 
 
         /// <summary>
-        /// エネルギー(kV)を中性子の波長(nm)に変換
+        /// 中性子のエネルギー(kV)を波長(nm)に変換
         /// </summary>
         /// <param name="energy"></param>
         /// <returns></returns>

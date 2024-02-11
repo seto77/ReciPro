@@ -2,7 +2,7 @@
 
 public static class AssemblyState
 {
-    public const bool IsDebug =
+    public static bool IsDebug =>
 #if DEBUG
 	true;
 #else

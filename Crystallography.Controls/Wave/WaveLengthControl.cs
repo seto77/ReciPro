@@ -40,11 +40,14 @@ public partial class WaveLengthControl : UserControl
             direction = value;
             if (direction == FlowDirection.LeftToRight)
             {
+                this.AutoSize = false;
                 flowLayoutPanelWaveSource.FlowDirection = FlowDirection.TopDown;
                 flowLayoutPanelWaveSource.Dock = DockStyle.Left;
+
             }
             else
             {
+                this.AutoSize = true;
                 flowLayoutPanelWaveSource.FlowDirection = FlowDirection.LeftToRight;
                 flowLayoutPanelWaveSource.Dock = DockStyle.Top;
             }
@@ -59,7 +62,16 @@ public partial class WaveLengthControl : UserControl
     }
     public FlowDirection direction = FlowDirection.TopDown;
 
-    [Localizable(true)]
+    public bool Monochrome
+    {
+        set 
+        { numericBoxEnergy.Visible = numericBoxWaveLength.Visible = value;
+            flowLayoutPanelElement.Visible = WaveSource == WaveSource.Xray && value; 
+            labelFlatWhite.Visible = !value; }
+        get => numericBoxEnergy.Visible;
+    }
+
+[Localizable(true)]
     public Font TextFont
     {
         set

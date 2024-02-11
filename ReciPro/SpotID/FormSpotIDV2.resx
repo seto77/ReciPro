@@ -1848,6 +1848,9 @@ and the fitting range in the right box .</value>
   <data name="&gt;&gt;numericBoxPixelSize.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="waveLengthControl1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
@@ -1868,6 +1871,9 @@ and the fitting range in the right box .</value>
   </data>
   <data name="waveLengthControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="waveLengthControl1.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.Name" xml:space="preserve">
     <value>waveLengthControl1</value>
