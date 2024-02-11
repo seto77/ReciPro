@@ -701,7 +701,7 @@ public partial class FormDiffractionSimulator : Form
                         else//円で塗りつぶすとき
                         {
                             var sectionRadius = ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//逆空間における逆格子点の半径 相対強度の1/3乗
-                            var r = CameraLength2 * WaveLength * sectionRadius;
+                            var r = CameraLength2 * 0.07 * sectionRadius;
                             graphics.FillCircle(color, pt, r, (int)(alphaCoeff * 255));
                             if (drawLabel && trackBarStrSize.Value != 1 && sectionRadius > 0.3f * ExcitationError)
                                 DrawDiffractionSpotsLabel(graphics, g, pt, r, 0);
@@ -2032,6 +2032,8 @@ public partial class FormDiffractionSimulator : Form
 
             flowLayoutPanelBethe.Enabled = true;
             flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
+
+            numericBoxSpotRadius.FooterText = "nm⁻¹";
         }
         else if (radioButtonBeamPrecessionElectron.Checked)//歳差(電子)
         {
@@ -2045,6 +2047,8 @@ public partial class FormDiffractionSimulator : Form
             FormDiffractionSimulatorCBED.Visible = false;
 
             flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
+
+            numericBoxSpotRadius.FooterText = "nm⁻¹";
         }
         else if (radioButtonBeamConvergence.Checked)//収束
         {
@@ -2059,6 +2063,8 @@ public partial class FormDiffractionSimulator : Form
             FormDiffractionSimulatorCBED.Visible = true;
 
             flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = false;
+
+            numericBoxSpotRadius.FooterText = "nm⁻¹";
         }
         else if (radioButtonBeamPrecessionXray.Checked)//歳差(X線)
         {
@@ -2071,6 +2077,8 @@ public partial class FormDiffractionSimulator : Form
 
             FormDiffractionSimulatorCBED.Visible = false;
             flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
+
+            numericBoxSpotRadius.FooterText = "nm⁻¹";
         }
         else if (radioButtonBeamBackLaue.Checked)
         {
@@ -2082,6 +2090,8 @@ public partial class FormDiffractionSimulator : Form
             FormDiffractionSimulatorCBED.Visible = false;
 
             flowLayoutPanelBethe.Enabled = flowLayoutPanelAppearance.Enabled = true;
+
+            numericBoxSpotRadius.FooterText = "";
         }
 
         //PEDラジオボタンのチェック状況によって、PED設定パネルの表示変更
