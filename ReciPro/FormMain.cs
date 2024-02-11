@@ -180,13 +180,7 @@ public partial class FormMain : Form
     {
         //カルチャーを決めるため、レジストリ読込 (InitializeComponentの前に読み込む)
         if (!DesignMode)
-        {
-            //var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
-            //if (4.862 > Convert.ToDouble(key.GetValue("Version", "0")))
-            //{ 
-            //}
             Registry(Reg.Mode.Read);
-        }
 
 
         InitializeComponent();
@@ -1493,6 +1487,4 @@ public partial class FormMain : Form
             checkBoxFixAxis.Checked = false;
     }
     #endregion
-
-  
 }
