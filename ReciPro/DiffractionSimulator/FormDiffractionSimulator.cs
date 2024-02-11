@@ -1415,7 +1415,7 @@ public partial class FormDiffractionSimulator : Form
     {
         if (radioButtonBeamPrecessionXray.Checked)
         {
-            var rVec = new Vector3DBase(v.X, v.Y, 0) / CameraLength2 * EwaldRadius;
+            var rVec = new Vector3DBase(v.X, -v.Y, 0) / CameraLength2 * EwaldRadius;
             return originalCoordinate ? formMain.Crystal.RotationMatrix.Inverse() * rVec : rVec;
         }
         else
@@ -1513,28 +1513,8 @@ public partial class FormDiffractionSimulator : Form
         //スポット情報表示
         else if (e.Button == MouseButtons.Left && e.Button != MouseButtons.Right && e.Clicks == 2)
         {
-            if (!radioButtonBeamBackLaue.Checked)//バックラウエ以外の時
-            {
-                //フィルム上の位置を逆空間点に変換
-                var inversePos = convertScreenToReciprocal(e.X, e.Y, true);
-                //上で求めた逆空間点と、もっとも近い逆格子点を検索
-                var g = formMain.Crystal.VectorOfG.MinBy(g => (g - inversePos).Length2);
-
-                var vec = formMain.Crystal.RotationMatrix * g;
-                var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.Length2 - 2 * vec.Z * EwaldRadius + EwaldRadius * EwaldRadius));
-
-                MessageBox.Show(
-                    $"Index: g = {g.Index.h} {g.Index.k} {g.Index.l}\r\n" +
-                    $"d-spacing: {g.d:f4} nm\r\n" +
-                    $"Length: {1 / g.d:f4} nm⁻¹\r\n" +
-                    $"Coordinate (nm⁻¹): {vec.X:f4}, {vec.Y:f4}, {vec.Z:f4}\r\n" +
-                    $"Excitation error: {dev:f5} nm⁻¹\r\n" +
-                    $"F (magnitude): {g.F.Magnitude:f5}\r\n" +
-                    $"F (real, imaginary): {g.F.Real:f5}, {g.F.Imaginary:f5}\r\n" +
-                    $"F²: {g.F.MagnitudeSquared():f5}",
-                    "Information on the clicked g vector");
-            }
-            else//バックラウエの時
+            //バックラウエの時
+            if (radioButtonBeamBackLaue.Checked)
             {
                 //検出器座標に変換
                 var detPos = convertScreenToDetector(e.X, e.Y);
@@ -1556,17 +1536,15 @@ public partial class FormDiffractionSimulator : Form
                 var gVector = crystal.VectorOfG_P
                   .Where(g => g.Flag1)//Flag1がtrueのものだけを取り出し、
                   .Select(g => new Vector3D(crystal.RotationMatrix * g) { Index = g.Index, Flag1 = true, RelativeIntensity = g.RelativeIntensity, F = g.F, Text = g.Text })//回転させて新しいリストを作る
-                  .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta).ToList();//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
+                  .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta)//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
+                  .OrderByDescending(g => g * v / g.Length).ToList();//ベクトルv に近いもの順に並び替え
                 if (gVector.Count == 0) return;
 
-                //原点を通る直線状にある逆格子ベクトルをまとめる
-                var tmp = gVector.OrderByDescending(g => g * v / g.Length).ToList();
-                var dev = tmp[0] * v / tmp[0].Length;
+                var dev = gVector[0] * v / gVector[0].Length;
                 var list = new List<Vector3D>();
-
-                for (int i = 0; i < tmp.Count; i++)
-                    if (dev - tmp[i] * v / tmp[i].Length < 1E-8)
-                        list.Add(tmp[i]);
+                for (int i = 0; i < gVector.Count; i++)
+                    if (dev - gVector[i] * v / gVector[i].Length < 1E-8)
+                        list.Add(gVector[i]);
                 list = list.OrderBy(g => g.Length2).ToList();
 
                 var sb = new StringBuilder();
@@ -1576,6 +1554,27 @@ public partial class FormDiffractionSimulator : Form
                     sb.Append($"  {i}   g = {list[i].Index.h} {list[i].Index.k} {list[i].Index.l};   F² = {list[i].F.MagnitudeSquared():f4}\r\n");
 
                 MessageBox.Show(sb.ToString(), "Information on the clicked g vector");
+            }
+            else//バックラウエ以外の時
+            {
+                //フィルム上の位置を逆空間点に変換
+                var inversePos = convertScreenToReciprocal(e.X, e.Y, true);
+                //上で求めた逆空間点と、もっとも近い逆格子点を検索
+                var g = formMain.Crystal.VectorOfG.MinBy(g => (g - inversePos).Length2);
+
+                var vec = formMain.Crystal.RotationMatrix * g;
+                var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.Length2 - 2 * vec.Z * EwaldRadius + EwaldRadius * EwaldRadius));
+
+                MessageBox.Show(
+                    $"Index: g = {g.Index.h} {g.Index.k} {g.Index.l}\r\n" +
+                    $"d-spacing: {g.d:f4} nm\r\n" +
+                    $"Length: {1 / g.d:f4} nm⁻¹\r\n" +
+                    $"Coordinate (nm⁻¹): {vec.X:f4}, {vec.Y:f4}, {vec.Z:f4}\r\n" +
+                    $"Excitation error: {dev:f5} nm⁻¹\r\n" +
+                    $"F (magnitude): {g.F.Magnitude:f5}\r\n" +
+                    $"F (real, imaginary): {g.F.Real:f5}, {g.F.Imaginary:f5}\r\n" +
+                    $"F²: {g.F.MagnitudeSquared():f5}",
+                    "Information on the clicked g vector");
             }
         }
     }
