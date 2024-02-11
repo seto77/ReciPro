@@ -81,7 +81,6 @@
   <ItemGroup>
     <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.649" />
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="3.0.0" />
-    <PackageReference Include="MathNet.Numerics.OpenBLAS.Win" Version="0.3.0-beta1" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
   </ItemGroup>
 
