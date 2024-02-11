@@ -631,12 +631,11 @@ public partial class FormDiffractionSimulator : Form
                 #region BackLaue
                 # region 最大θを検索
                 var L = new double[]{ 
-                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
-                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, +graphicsBox.ClientSize.Height)).Length,
-                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length,
-                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width, -graphicsBox.ClientSize.Height)).Length}.Max();
-                var maxTwoTheta = Math.Atan(L / CameraLength2);
-                var minCosTheta = Math.Cos(maxTwoTheta / 2);
+                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width/2, +graphicsBox.ClientSize.Height/2)).Length,
+                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width/2, +graphicsBox.ClientSize.Height/2)).Length,
+                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width/2, -graphicsBox.ClientSize.Height/2)).Length,
+                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width/2, -graphicsBox.ClientSize.Height/2)).Length}.Max();
+                var minCosTheta = Math.Cos(Math.Atan(L / CameraLength2) / 2);
                 #endregion
 
                 var maxEwaldR = 1 / UniversalConstants.Convert.EnergyToXrayWaveLength(50_000);
