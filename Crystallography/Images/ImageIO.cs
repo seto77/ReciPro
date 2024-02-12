@@ -51,6 +51,8 @@ public static class ImageIO
         }
     }
 
+    private static readonly char[] separator = ['='];
+
     public static bool IsReadable(string _ext)
     {
         var ext = _ext.StartsWith('.') ? _ext[1..] : _ext;
@@ -172,8 +174,8 @@ public static class ImageIO
                 while ((tempstr = reader.ReadLine()) != null)
                     strList.Add(tempstr);
 
-                if (strList != null && strList.Any() && strList[0].Contains("BAS_IMAGE_FILE", StringComparison.Ordinal))//BAS2000
-                    result = ImageIO.BAS2000or2500(str, strList.ToArray());
+                if (strList != null && strList.Count != 0 && strList[0].Contains("BAS_IMAGE_FILE", StringComparison.Ordinal))//BAS2000
+                    result = BAS2000or2500(str, [.. strList]);
                 else
                 {
                     return false;
@@ -198,7 +200,7 @@ public static class ImageIO
             result = Raxis4(str);
         else if (str.ToLower().EndsWith("osc"))//Rigaku R-Axis4_Osc
             result = Raxis4(str);
-        else if (Path.GetExtension(str).TrimStart(new char[] { '.' }).StartsWith("0") && ImageIO.IsTiffImage(str))
+        else if (Path.GetExtension(str).TrimStart(['.']).StartsWith('0') && IsTiffImage(str))
             result = RayonixSX200(str);
         else if (str.ToLower().EndsWith(".ccd"))//Bruker CCD
             result = Brucker(str);
@@ -257,17 +259,17 @@ public static class ImageIO
                 var str = sr.ReadLine();
                 if (!str.StartsWith("HEADER_BYTES="))
                     return false;
-                headersize = Convert.ToInt32(str.Split(new[] { '=', ';' })[1]);
+                headersize = Convert.ToInt32(str.Split(['=', ';'])[1]);
             }
 
-            using BinaryReader br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read));
+            using BinaryReader br = new(new FileStream(filename, FileMode.Open, FileAccess.Read));
             var headers = new string(br.ReadChars(headersize)).Split(new[] { '{', '}', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries);
-            var little_endian = headers.First(h => h.StartsWith("BYTE_ORDER=")).Split(new[] { '=' })[1] == "little_endian";
-            var type = headers.First(h => h.StartsWith("TYPE=")).Split(new[] { '=' })[1];
-            var size1 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE1=")).Split(new[] { '=' })[1]);
-            var size2 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE2=")).Split(new[] { '=' })[1]);
-            var size3 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE3=")).Split(new[] { '=' })[1]);
-            var size4 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE4=")).Split(new[] { '=' })[1]);
+            var little_endian = headers.First(h => h.StartsWith("BYTE_ORDER=")).Split(['='])[1] == "little_endian";
+            var type = headers.First(h => h.StartsWith("TYPE=")).Split(separator)[1];
+            var size1 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE1=")).Split(['='])[1]);
+            var size2 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE2=")).Split(['='])[1]);
+            var size3 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE3=")).Split(['='])[1]);
+            var size4 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE4=")).Split(['='])[1]);
 
             if (type != "UNSIGNED_SHORT" && type != "float")
                 return false;
@@ -276,14 +278,14 @@ public static class ImageIO
             int numberOfFrame = size3;
             long length = imageWidth * imageHeight;
 
-            Ring.SequentialImageIntensities = new List<List<double>>();
-            Ring.SequentialImageNames = new List<string>();
+            Ring.SequentialImageIntensities = [];
+            Ring.SequentialImageNames = [];
 
             var read = type == "UNSIGNED_SHORT" ? new Func<double>(() => br.ReadUInt16()) : new Func<double>(() => br.ReadSingle());
 
             for (int j = 0; j < numberOfFrame; j++)
             {
-                Ring.SequentialImageIntensities.Add(new List<double>());
+                Ring.SequentialImageIntensities.Add([]);
                 br.BaseStream.Position = headersize + j * length * (type == "UNSIGNED_SHORT" ? 2 : 4);
                 for (int i = 0; i < length; i++)
                     Ring.SequentialImageIntensities[j].Add(read());
@@ -386,14 +388,14 @@ public static class ImageIO
                 //格納画像枚数 Number of stored images
                 var num_of_stored_images = new string(br.ReadChars(4)).ToInt();
                 //使用画素欠陥データ ファイル名
-                var filename_pixel_defects = System.Text.Encoding.UTF8.GetString(br.ReadBytes(32));
+                var filename_pixel_defects = Encoding.UTF8.GetString(br.ReadBytes(32));
                 //使用暗電流データ ファイル名
-                var filename_dark = System.Text.Encoding.UTF8.GetString(br.ReadBytes(32));
+                var filename_dark = Encoding.UTF8.GetString(br.ReadBytes(32));
                 //使用感度補正データ ファイル名
-                var filename_correction = System.Text.Encoding.UTF8.GetString(br.ReadBytes(32));
+                var filename_correction = Encoding.UTF8.GetString(br.ReadBytes(32));
 
-                Ring.SequentialImageIntensities = new List<List<double>>();
-                Ring.SequentialImageNames = new List<string>();
+                Ring.SequentialImageIntensities = [];
+                Ring.SequentialImageNames = [];
 
                 var read = bitLength == "7" ? new Func<double>(() => br.ReadByte()) : new Func<double>(() => br.ReadInt16());
 
@@ -410,7 +412,7 @@ public static class ImageIO
                     var option = Encoding.UTF8.GetString(br.ReadBytes(32));
 
                     Ring.SequentialImageNames.Add(num.ToString());
-                    Ring.SequentialImageIntensities.Add(new List<double>());
+                    Ring.SequentialImageIntensities.Add([]);
                     for (int y = 0; y < height; y++)
                         for (int x = 0; x < width; x++)
                             Ring.SequentialImageIntensities[i].Add(read());
@@ -568,7 +570,7 @@ public static class ImageIO
                 br.BaseStream.Position = n++;
                 try
                 {
-                    string s = new string(br.ReadChars(17));
+                    string s = new(br.ReadChars(17));
                     if (s.StartsWith("CCP4 packed image"))
                     {
                         if (br.ReadChar() == ',')
@@ -629,7 +631,7 @@ public static class ImageIO
     {
         try
         {
-            Tiff.Loader t = new Tiff.Loader(str);
+            Tiff.Loader t = new(str);
             if (t.IsGray == false || t.NumberOfFrames != 1)
                 return false;
             Ring.Comments = "";
@@ -656,7 +658,7 @@ public static class ImageIO
     {
         try
         {
-            Tiff.Loader t = new Tiff.Loader(str);
+            Tiff.Loader t = new(str);
             if (t.IsGray == false || t.NumberOfFrames != 1)
                 return false;
             Ring.Comments = "";
@@ -759,7 +761,7 @@ public static class ImageIO
             (float[] dataPulsePower, _) = hdf.GetValue1<float>(groupID2name + "/event_info/bl_3/oh_2/bm_2_pulse_energy_in_joule");
             if (dataPulsePower != null)
             {
-                Ring.SequentialImagePulsePower = new List<double>();
+                Ring.SequentialImagePulsePower = [];
                 for (int i = 0; i < dataPulsePower.Length; i++)
                     Ring.SequentialImagePulsePower.Add(dataPulsePower[i]);
             }
@@ -770,7 +772,7 @@ public static class ImageIO
             (float[] dataPhotonEnergy, _) = hdf.GetValue1<float>(groupID2name + "/event_info/bl_3/oh_2/photon_energy_in_eV");
             if (dataPhotonEnergy != null)
             {
-                Ring.SequentialImageEnergy = new List<double>();
+                Ring.SequentialImageEnergy = [];
                 for (int i = 0; i < dataPhotonEnergy.Length; i++)
                     Ring.SequentialImageEnergy.Add(dataPhotonEnergy[i]);
             }
@@ -832,8 +834,8 @@ public static class ImageIO
             }
 
             //各tagの画像を読み込み
-            Ring.SequentialImageIntensities = new List<List<double>>();
-            Ring.SequentialImageNames = new List<string>();
+            Ring.SequentialImageIntensities = [];
+            Ring.SequentialImageNames = [];
             int imageWidth = 1024, imageHeight = 1024;
             for (int i = 0; i < tag.Count; i++)
             {
@@ -864,7 +866,7 @@ public static class ImageIO
                             Ring.SequentialImageIntensities[i].Add(dataImageLeft[h][w]);
                 }
                 else
-                    Ring.SequentialImageIntensities.Add(new List<double>());
+                    Ring.SequentialImageIntensities.Add([]);
 
                 //強度をノーマライズする場合
                 normarize ??= MessageBox.Show("Normarize intensities by pulse power?", "HDF file option", MessageBoxButtons.YesNo) == DialogResult.Yes;
@@ -906,7 +908,7 @@ public static class ImageIO
         try
         {
             var img = Array.Empty<uint>();
-            BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
+            BinaryReader br = new(new FileStream(str, FileMode.Open, FileAccess.Read));
 
             int ID = br.ReadUInt16();
             int headerSize = br.ReadUInt16();
@@ -935,12 +937,12 @@ public static class ImageIO
             //int numberOfFrame = br.ReadUInt16();
 
             int imageWidth = BRX - ULX + 1, imageHeight = BRY - ULY + 1;
-            Ring.SequentialImageIntensities = new List<List<double>>();
-            Ring.SequentialImageNames = new List<string>();
+            Ring.SequentialImageIntensities = [];
+            Ring.SequentialImageNames = [];
 
             for (int j = 0; j < numberOfFrame; j++)
             {
-                Ring.SequentialImageIntensities.Add(new List<double>());
+                Ring.SequentialImageIntensities.Add([]);
                 br.BaseStream.Position = headerSize + imageHeaderSize + j * imageWidth * imageHeight * 2;
                 for (int i = 0; i < imageHeight * imageWidth; i++)
                     Ring.SequentialImageIntensities[j].Add(br.ReadUInt16());
@@ -982,8 +984,8 @@ public static class ImageIO
             var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
             var headers = new string(br.ReadChars(512)).Split('\n');
 
-            int imageWidth = Convert.ToInt32(headers[4].Split(new char[] { '=', ';' })[1]);
-            int imageHeight = Convert.ToInt32(headers[5].Split(new char[] { '=', ';' })[1]);
+            int imageWidth = Convert.ToInt32(headers[4].Split(['=', ';'])[1]);
+            int imageHeight = Convert.ToInt32(headers[5].Split(['=', ';'])[1]);
 
 
             var data_length = 0; // 0 は ushort (16bit), 1 は uint (32bit), それ以外は無効
@@ -1067,13 +1069,13 @@ public static class ImageIO
             });
 
             Ring.BitsPerPixels = fileType switch { 0 => 8, 2 => 16, 3 => 32, _ => 0 };
-            Ring.SequentialImageIntensities = new List<List<double>>();
-            Ring.SequentialImageNames = new List<string>();
+            Ring.SequentialImageIntensities = [];
+            Ring.SequentialImageNames = [];
 
             int n = 0;
             while (readHeader() && n < 10000)
             {
-                Ring.SequentialImageIntensities.Add(new List<double>());
+                Ring.SequentialImageIntensities.Add([]);
                 for (int i = 0; i < length; i++)
                     Ring.SequentialImageIntensities[n].Add(readData());
                 Ring.SequentialImageNames.Add(n.ToString("0000"));
@@ -1106,7 +1108,7 @@ public static class ImageIO
         StringBuilder sb = new() { Capacity = 100000 };
         try
         {
-            BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
+            BinaryReader br = new(new FileStream(str, FileMode.Open, FileAccess.Read));
 
             //ヘッダ部分読み込み { から }までを読み込む
             br.BaseStream.Position = 2;
@@ -1120,9 +1122,9 @@ public static class ImageIO
             var tags = new Dictionary<string, string>();
             foreach (var tag in sb.ToString().Split(new char[] { ';', '\n' }, StringSplitOptions.RemoveEmptyEntries))
             {
-                var temp = tag.Split(new char[] { '=' });
+                var temp = tag.Split(['=']);
                 if (temp.Length == 2)
-                    tags.Add(tag.Split(new char[] { '=' })[0], tag.Split(new char[] { '=' })[1]);
+                    tags.Add(tag.Split(['='])[0], tag.Split(['='])[1]);
             }
 
             int imageWidth = Convert.ToInt32(tags["SIZE1"]);
@@ -1278,7 +1280,7 @@ public static class ImageIO
     {
         try
         {
-            BinaryReader br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
+            BinaryReader br = new(new FileStream(str, FileMode.Open, FileAccess.Read));
             Ring.Comments = "";
             //ヘッダ部分読み込み
             br.ReadBytes(8); var format = new string(br.ReadChars(72));
@@ -1610,7 +1612,7 @@ public static class ImageIO
 
             for (int j = 0; j < t.NumberOfFrames; j++)
             {
-                Ring.SequentialImageIntensities.Add(new List<double>());
+                Ring.SequentialImageIntensities.Add([]);
                 if (t.Images[j].Value != null)
                     Ring.SequentialImageIntensities[j].AddRange(t.Images[j].Value);
 
@@ -1658,7 +1660,7 @@ public static class ImageIO
 
     public static IPAImage IPAImageGenerator(double[] data, int width, int height, PointD center, double resolution, double cameralength, WaveProperty waveProperty)
     {
-        IPAImage ipa = new IPAImage
+        IPAImage ipa = new()
         {
             IntensityDouble = data,
             Width = width,

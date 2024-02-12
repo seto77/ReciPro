@@ -110,12 +110,13 @@ public partial class FormMovie : Form
 
                 bmp.Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
             }
+            var codec = radioButtonH264.Checked ? "libx264" : "libx265";
 
             var p = Process.Start(new ProcessStartInfo()
             {
                 WorkingDirectory = path + "ffmpeg",
                 FileName = path + "ffmpeg\\ffmpeg.exe",
-                Arguments = "-framerate 30 -i %04d.png -c:v libx264 -pix_fmt yuv420p -y out.mp4",
+                Arguments = "-framerate 30 -i %04d.png -c:v "+codec+" -pix_fmt yuv420p -y out.mp4",
                 WindowStyle = ProcessWindowStyle.Minimized,
             });
             p.WaitForExit(120000);
