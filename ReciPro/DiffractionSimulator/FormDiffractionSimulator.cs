@@ -329,6 +329,11 @@ public partial class FormDiffractionSimulator : Form
             tabControl.BringToFront();
 
             formMain.toolStripButtonDiffractionSingle.Checked = true;
+
+            SkipEvent = true;
+            numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
+            numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
+            SkipEvent = false;
         }
         else
         {
@@ -629,21 +634,15 @@ public partial class FormDiffractionSimulator : Form
             if (radioButtonBeamBackLaue.Checked)
             {
                 #region BackLaue
-                # region 最大θを検索
-                var L = new double[]{ 
-                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width/2, +graphicsBox.ClientSize.Height/2)).Length,
-                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width/2, +graphicsBox.ClientSize.Height/2)).Length,
-                    convertScreenToDetector(new Point(+graphicsBox.ClientSize.Width/2, -graphicsBox.ClientSize.Height/2)).Length,
-                    convertScreenToDetector(new Point(-graphicsBox.ClientSize.Width/2, -graphicsBox.ClientSize.Height/2)).Length}.Max();
-                var minCosTheta = Math.Cos(Math.Atan(L / CameraLength2) / 2);
-                #endregion
+                var (_, max2Thta) = get2ThetaRange();
+                double minCosTheta = Math.Cos(max2Thta / 2), minCosTheta2 = minCosTheta * minCosTheta;
 
                 var maxEwaldR = 1 / UniversalConstants.Convert.EnergyToXrayWaveLength(50_000);
                 //Flag1がtrueのものだけを取り出し、
                 gVector = crystal.VectorOfG_P
                     .Where(g => g.Flag1)//Flag1がtrueのものだけを取り出し、
                     .Select(g => new Vector3D(crystal.RotationMatrix * g) { Index = g.Index, Flag1 = true, RelativeIntensity = g.RelativeIntensity, Text = g.Text })//回転させて新しいリストを作る
-                    .Where(g => g.Length2 -2 * g.Z * maxEwaldR < 0 && g.Z * g.Z / g.Length2 > minCosTheta).ToList();//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
+                    .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z2 / g.Length2 > minCosTheta2).ToList();//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
                 if (gVector.Count == 0) return null;
                 //indexだけを保存するリストも作成しておく (高速化のため)
                 var indexList = gVector.Select(g => g.Index).ToList();
@@ -715,8 +714,8 @@ public partial class FormDiffractionSimulator : Form
                 return null;
                 #endregion
             }
-
-            if (bethe)//ベーテ法による動力学回折の場合
+            //ベーテ法による動力学回折の場合
+            else if (bethe)
             {
                 sw.Start();
 
@@ -760,20 +759,17 @@ public partial class FormDiffractionSimulator : Form
             else
                 gVector = [.. crystal.VectorOfG];
 
-
             //もしdyamicalな計算で、SkipRenderingがtrueの時はここでおしまい
             if (SkipRendering && bethe)
                 gVector.Clear();
 
-
             gVector.ForEach(g => g.Flag2 = false);
-
             
             foreach (var g in gVector.Where(g => g.Flag1))
             {
                 var vec = bethe ? g : crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
 
-                //逆空間 <=>実空間で、Y,Zの符号が反転していることに注意
+                //逆空間 <=> 実空間で、Y,Zの符号が反転していることに注意
                 if (-vec.Z < (radioButtonPointSpread.Checked ? 3 * ExcitationError : ExcitationError))
                 {
                     double L2 = (vec.X * vec.X) + (vec.Y * vec.Y), dev = 0.0;
@@ -1118,26 +1114,9 @@ public partial class FormDiffractionSimulator : Form
         //ここから2θのスケールラインの描画
 
         //2θの最大/最小値
-        double max2Theta = 0, min2Theta = 0.0;
-        var edges = new List<Vector3DBase>();
-        edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, 0)));
-        edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, height)));
-        edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(0, h)));
-        edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(width, h)));
-        if (!originInside)
-            min2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Min() / Math.PI * 180.0;
-        max2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max() / Math.PI * 180.0;
-
-        if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
-        {
-            if (!originInside)
-                min2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2)).Min() / Math.PI * 180.0;
-            max2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2)).Max() / Math.PI * 180.0;
-            if (double.IsNaN(min2Theta)) min2Theta = 0;
-            if (double.IsNaN(max2Theta)) max2Theta = 175;
-        }
-
-        //2θの最大/最小値　ここまで
+        var (min2Theta, max2Theta) = get2ThetaRange();
+        max2Theta *= 180 / Math.PI;
+        min2Theta *= 180 / Math.PI;
 
         //分割幅をきめる　ここから
         //fineのときは20分割以上、mediumは10分割以上、coarseは5分割以上になるように調節
@@ -1162,13 +1141,11 @@ public partial class FormDiffractionSimulator : Form
             var twoTheta = n * stepInteger * Math.Pow(10, stepPow);
             var ptsArray = Geometriy.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
             if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
-            {
                 ptsArray =
                 [
                     Enumerable.Range(0, 3600).Select(i => 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI) * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI))).ToList(),
                 ];
-            }
-
+            
             foreach (var pts in ptsArray)
                 g.DrawLines(pen, pts.ToArray());
 
@@ -1329,7 +1306,41 @@ public partial class FormDiffractionSimulator : Form
     }
     #endregion
 
-    #region 座標変換
+    #region 座標変換関連の関数
+
+    /// <summary>
+    /// 画面の中で最大と最小の2θを返す
+    /// </summary>
+    private (double min2Theta, double max2Theta) get2ThetaRange()
+    {
+        int width = graphicsBox.ClientSize.Width, height = graphicsBox.ClientSize.Height;
+        if (width == 0 || height == 0)
+            return (0, 0);
+
+        var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+        var originInside = IsScreenArea(originSrc);
+
+        var edges = new List<Vector3DBase>();
+        edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, 0)));
+        edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, height)));
+        edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(0, h)));
+        edges.AddRange(Enumerable.Range(0, height).Select(h => convertScreenToReal(width, h)));
+
+        double min2Theta, max2Theta;
+        if (radioButtonBeamPrecessionXray.Checked)
+        {
+            min2Theta = originInside ? 0 : edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2)).Min();
+            max2Theta = edges.Select(p => 2 * Math.Asin(Math.Sqrt(p.X2Y2) / CameraLength2 / 2)).Max();
+        }
+        else
+        {
+            min2Theta = originInside ? 0 : edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Min();
+            max2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max();
+        }
+        if (double.IsNaN(min2Theta)) min2Theta = 0;
+        if (double.IsNaN(max2Theta)) max2Theta = 175 / 180.0 * Math.PI;
+        return (min2Theta, max2Theta);
+    }
 
     /// <summary>
     /// 座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換
@@ -1347,6 +1358,8 @@ public partial class FormDiffractionSimulator : Form
     /// <param name="p"></param>
     /// <returns></returns>
     private PointD convertScreenToDetector(in Point p) => convertScreenToDetector(p.X, p.Y);
+
+    
 
     /// <summary>
     /// 座標変換 画面(Screen)上の点(pixel) を 実空間座標(mm, ３次元座標)に変換
@@ -1464,10 +1477,16 @@ public partial class FormDiffractionSimulator : Form
 
             return new PointD(g.X, -g.Y) / Math.Sqrt(g.X2Y2) * x;
         }
-
-        var v = DetectorRotationInv * new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z);
-        var coeff = CameraLength2 / v.Z;
-        return new PointD(v.X * coeff, v.Y * coeff);
+        else if (radioButtonBeamBackLaue.Checked)//バックラウエの場合
+        {
+            return new PointD(0, 0);
+        }
+        else//通常の平面検出器の場合
+        {
+            var v = DetectorRotationInv * new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z);
+            var coeff = CameraLength2 / v.Z;
+            return new PointD(v.X * coeff, v.Y * coeff);
+        }
     }
 
 
@@ -2858,6 +2877,5 @@ public partial class FormDiffractionSimulator : Form
         formMain.FormMovie.Execute(func, this);
     }
     #endregion
-
     
 }
