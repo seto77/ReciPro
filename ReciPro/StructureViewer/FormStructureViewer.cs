@@ -1589,6 +1589,11 @@ public partial class FormStructureViewer : Form
         }
 
         textBoxCalcInformation.AppendText($"Generation of legend control: {sw.ElapsedMilliseconds}ms.\r\n");
+        
+        SkipEvent = true;
+        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
+        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        SkipEvent = false;
     }
 
     private void legendControl_MouseClick(object sender, MouseEventArgs e)
@@ -1818,10 +1823,7 @@ public partial class FormStructureViewer : Form
     }
     private void splitContainer1_Panel1_ClientSizeChanged(object sender, EventArgs e)
     {
-        SkipEvent = true;
-        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
-        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
-        SkipEvent = false;
+ 
     }
 
     private void numericBoxClientWidth_ValueChanged(object sender, EventArgs e)
