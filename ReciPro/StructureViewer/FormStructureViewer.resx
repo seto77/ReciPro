@@ -664,6 +664,9 @@
   <data name="numericBoxCRange.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="numericBoxCRange.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>
   </metadata>
@@ -715,6 +718,9 @@
   <data name="numericBoxBRange.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="numericBoxBRange.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="numericBoxBRange.ToolTip" xml:space="preserve">
     <value>Set a drawing range</value>
   </data>
@@ -762,6 +768,9 @@
   </data>
   <data name="numericBoxARange.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="numericBoxARange.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxARange.ToolTip" xml:space="preserve">
     <value>Set a drawing range</value>
@@ -811,6 +820,9 @@
   <data name="numericBoxCCenter.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="numericBoxCCenter.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
     <value>Set a center position</value>
   </data>
@@ -859,6 +871,9 @@
   <data name="numericBoxBCenter.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="numericBoxBCenter.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
     <value>Set a center position</value>
   </data>
@@ -906,6 +921,9 @@
   </data>
   <data name="numericBoxACenter.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="numericBoxACenter.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
     <value>Set a center position</value>
@@ -1091,7 +1109,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>741, 180</value>
+    <value>741, 182</value>
   </data>
   <data name="tabPageBoundPlane.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1215,6 +1233,9 @@
   </data>
   <data name="numericBoxBoundPlanesOpacity.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Name" xml:space="preserve">
     <value>numericBoxBoundPlanesOpacity</value>
@@ -2965,6 +2986,9 @@
   </data>
   <data name="numericBoxLatticePlaneOpacity.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Name" xml:space="preserve">
     <value>numericBoxLatticePlaneOpacity</value>

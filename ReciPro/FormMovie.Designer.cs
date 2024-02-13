@@ -62,6 +62,8 @@ partial class FormMovie
         groupBox1 = new System.Windows.Forms.GroupBox();
         radioButtonH264 = new System.Windows.Forms.RadioButton();
         radioButtonH265 = new System.Windows.Forms.RadioButton();
+        comboBoxSpeed = new System.Windows.Forms.ComboBox();
+        label1 = new System.Windows.Forms.Label();
         tableLayoutPanelCurrent.SuspendLayout();
         tableLayoutPanel2.SuspendLayout();
         tableLayoutPanelAxis.SuspendLayout();
@@ -72,7 +74,7 @@ partial class FormMovie
         // buttonOK
         // 
         buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-        buttonOK.Location = new System.Drawing.Point(100, 341);
+        buttonOK.Location = new System.Drawing.Point(100, 377);
         buttonOK.Name = "buttonOK";
         buttonOK.Size = new System.Drawing.Size(75, 23);
         buttonOK.TabIndex = 0;
@@ -83,7 +85,7 @@ partial class FormMovie
         // buttonCancel
         // 
         buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        buttonCancel.Location = new System.Drawing.Point(100, 318);
+        buttonCancel.Location = new System.Drawing.Point(100, 354);
         buttonCancel.Name = "buttonCancel";
         buttonCancel.Size = new System.Drawing.Size(75, 23);
         buttonCancel.TabIndex = 0;
@@ -665,7 +667,7 @@ partial class FormMovie
         // 
         radioButtonH265.AutoSize = true;
         radioButtonH265.Checked = true;
-        radioButtonH265.Location = new System.Drawing.Point(12, 343);
+        radioButtonH265.Location = new System.Drawing.Point(70, 319);
         radioButtonH265.Name = "radioButtonH265";
         radioButtonH265.Size = new System.Drawing.Size(52, 19);
         radioButtonH265.TabIndex = 90;
@@ -673,14 +675,35 @@ partial class FormMovie
         radioButtonH265.Text = "H265";
         radioButtonH265.UseVisualStyleBackColor = true;
         // 
+        // comboBoxSpeed
+        // 
+        comboBoxSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        comboBoxSpeed.FormattingEnabled = true;
+        comboBoxSpeed.Items.AddRange(new object[] { "ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow", "placebo" });
+        comboBoxSpeed.Location = new System.Drawing.Point(9, 366);
+        comboBoxSpeed.Name = "comboBoxSpeed";
+        comboBoxSpeed.Size = new System.Drawing.Size(75, 23);
+        comboBoxSpeed.TabIndex = 91;
+        // 
+        // label1
+        // 
+        label1.AutoSize = true;
+        label1.Location = new System.Drawing.Point(9, 348);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(80, 15);
+        label1.TabIndex = 92;
+        label1.Text = "Encode speed";
+        // 
         // FormMovie
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         AutoSize = true;
         AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        ClientSize = new System.Drawing.Size(180, 367);
+        ClientSize = new System.Drawing.Size(180, 401);
         ControlBox = false;
+        Controls.Add(label1);
+        Controls.Add(comboBoxSpeed);
         Controls.Add(radioButtonH265);
         Controls.Add(radioButtonH264);
         Controls.Add(groupBox1);
@@ -743,4 +766,6 @@ partial class FormMovie
     private System.Windows.Forms.GroupBox groupBox1;
     private System.Windows.Forms.RadioButton radioButtonH264;
     private System.Windows.Forms.RadioButton radioButtonH265;
+    private System.Windows.Forms.ComboBox comboBoxSpeed;
+    private System.Windows.Forms.Label label1;
 }

@@ -29,6 +29,7 @@ public partial class FormMovie : Form
     public FormMovie()
     {
         InitializeComponent();
+        comboBoxSpeed.SelectedIndex = 7;
     }
 
     private void buttonDirection_Click(object sender, EventArgs e)
@@ -111,12 +112,14 @@ public partial class FormMovie : Form
                 bmp.Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
             }
             var codec = radioButtonH264.Checked ? "libx264" : "libx265";
-
+            var speed = (string)comboBoxSpeed.SelectedItem;
+            
             var p = Process.Start(new ProcessStartInfo()
             {
                 WorkingDirectory = path + "ffmpeg",
                 FileName = path + "ffmpeg\\ffmpeg.exe",
-                Arguments = "-framerate 30 -i %04d.png -c:v "+codec+" -pix_fmt yuv420p -y out.mp4",
+                Arguments = "-framerate 30 -i %04d.png -c:v " + codec + " -pix_fmt yuv420p -preset " + speed + " -tune animation -y out.mp4",
+                //Arguments = "-framerate 30 -i %04d.png -c:v " + codec + " -y out.mp4",
                 WindowStyle = ProcessWindowStyle.Minimized,
             });
             p.WaitForExit(120000);
@@ -130,10 +133,7 @@ public partial class FormMovie : Form
         }
     }
 
-    private void buttonCancel_Click(object sender, EventArgs e)
-    {
-        Visible = false;
-    }
+    private void buttonCancel_Click(object sender, EventArgs e) => Visible = false;
 
     public void Execute(Control target, Form caller)
     {

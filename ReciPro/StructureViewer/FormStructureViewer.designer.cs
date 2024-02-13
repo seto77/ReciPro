@@ -294,6 +294,7 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(flowLayoutPanelLegend);
+            splitContainer1.Panel1.ClientSizeChanged += splitContainer1_Panel1_ClientSizeChanged;
             // 
             // splitContainer1.Panel2
             // 

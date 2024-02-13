@@ -7832,6 +7832,66 @@ Inciden beams along a cone are simulated for this number.</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Diffraction Simulator</value>
   </data>
+  <data name="&gt;&gt;toolStripStatusLabelTimeForSearchingG.Name" xml:space="preserve">
+    <value>toolStripStatusLabelTimeForSearchingG</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabelTimeForSearchingG.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabelTimeForDrawing.Name" xml:space="preserve">
+    <value>toolStripStatusLabelTimeForDrawing</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabelTimeForDrawing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabelTimeForBethe.Name" xml:space="preserve">
+    <value>toolStripStatusLabelTimeForBethe</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabelTimeForBethe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel3.Name" xml:space="preserve">
+    <value>toolStripStatusLabel3</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonIndexLabels.Name" xml:space="preserve">
+    <value>toolStripButtonIndexLabels</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonIndexLabels.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDspacing.Name" xml:space="preserve">
+    <value>toolStripButtonDspacing</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDspacing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDspacingInv.Name" xml:space="preserve">
+    <value>toolStripButtonDspacingInv</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDspacingInv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDistance.Name" xml:space="preserve">
+    <value>toolStripButtonDistance</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDistance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonExcitationError.Name" xml:space="preserve">
+    <value>toolStripButtonExcitationError</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonExcitationError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonFg.Name" xml:space="preserve">
+    <value>toolStripButtonFg</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonFg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripButtonDiffractionSpots.Name" xml:space="preserve">
     <value>toolStripButtonDiffractionSpots</value>
   </data>
@@ -7873,66 +7933,6 @@ Inciden beams along a cone are simulated for this number.</value>
   </data>
   <data name="&gt;&gt;toolStripButtonScale.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonIndexLabels.Name" xml:space="preserve">
-    <value>toolStripButtonIndexLabels</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonIndexLabels.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonDspacing.Name" xml:space="preserve">
-    <value>toolStripButtonDspacing</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonDspacing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonDspacingInv.Name" xml:space="preserve">
-    <value>toolStripButtonDspacingInv</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonDspacingInv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonDistance.Name" xml:space="preserve">
-    <value>toolStripButtonDistance</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonDistance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonExcitationError.Name" xml:space="preserve">
-    <value>toolStripButtonExcitationError</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonExcitationError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonFg.Name" xml:space="preserve">
-    <value>toolStripButtonFg</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonFg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabelTimeForSearchingG.Name" xml:space="preserve">
-    <value>toolStripStatusLabelTimeForSearchingG</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabelTimeForSearchingG.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabelTimeForDrawing.Name" xml:space="preserve">
-    <value>toolStripStatusLabelTimeForDrawing</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabelTimeForDrawing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabelTimeForBethe.Name" xml:space="preserve">
-    <value>toolStripStatusLabelTimeForBethe</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabelTimeForBethe.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabel3.Name" xml:space="preserve">
-    <value>toolStripStatusLabel3</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>

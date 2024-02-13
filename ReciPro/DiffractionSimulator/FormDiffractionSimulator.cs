@@ -246,10 +246,10 @@ public partial class FormDiffractionSimulator : Form
         }
 
         FormDiffractionSimulatorCBED ??= new FormDiffractionSimulatorCBED
-            {
-                FormDiffractionSimulator = this,
-                Owner = this
-            };
+        {
+            FormDiffractionSimulator = this,
+            Owner = this
+        };
 
     }
 
@@ -388,7 +388,7 @@ public partial class FormDiffractionSimulator : Form
 
         if (formMain == null || formMain.Crystal == null || FormDiffractionSimulatorGeometry == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
             return;
-        
+
         //グラフィックスボックスに描画する場合
         g ??= graphicsBox.Graphics;
 
@@ -764,7 +764,7 @@ public partial class FormDiffractionSimulator : Form
                 gVector.Clear();
 
             gVector.ForEach(g => g.Flag2 = false);
-            
+
             foreach (var g in gVector.Where(g => g.Flag1))
             {
                 var vec = bethe ? g : crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
@@ -1145,7 +1145,7 @@ public partial class FormDiffractionSimulator : Form
                 [
                     Enumerable.Range(0, 3600).Select(i => 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI) * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI))).ToList(),
                 ];
-            
+
             foreach (var pts in ptsArray)
                 g.DrawLines(pen, pts.ToArray());
 
@@ -1179,6 +1179,14 @@ public partial class FormDiffractionSimulator : Form
 
         lastPanelSize = graphicsBox.ClientSize;
 
+    }
+
+    private void graphicsBox_ClientSizeChanged(object sender, EventArgs e)
+    {
+        SkipEvent = true;
+        numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
+        numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
+        SkipEvent = false;
     }
     #endregion
 
@@ -1259,7 +1267,7 @@ public partial class FormDiffractionSimulator : Form
         if (toolStripButtonDiffractionSpots.Checked)
         {
             if (radioButtonBeamBackLaue.Checked)//Back Laueのとき
-                minD = UniversalConstants.Convert.EnergyToXrayWaveLength(50_000)/2;//取りあえず80kV
+                minD = UniversalConstants.Convert.EnergyToXrayWaveLength(50_000) / 2;//取りあえず80kV
 
             foreach (var crystal in formMain.Crystals)
             {
@@ -1359,7 +1367,7 @@ public partial class FormDiffractionSimulator : Form
     /// <returns></returns>
     private PointD convertScreenToDetector(in Point p) => convertScreenToDetector(p.X, p.Y);
 
-    
+
 
     /// <summary>
     /// 座標変換 画面(Screen)上の点(pixel) を 実空間座標(mm, ３次元座標)に変換
@@ -1650,9 +1658,9 @@ public partial class FormDiffractionSimulator : Form
         labelMousePositionReal.Text = $"{realPos.X:f3}, {realPos.Y:f3}, {realPos.Z:f3})";
 
         var invPos = convertRealToReciprocal(realPos, false);
-        labelMousePositionReciprocal.Text = radioButtonBeamBackLaue.Checked ? $"(-, -, -)": $"({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
+        labelMousePositionReciprocal.Text = radioButtonBeamBackLaue.Checked ? $"(-, -, -)" : $"({invPos.X:f3}, {invPos.Y:f3}, {invPos.Z:f3})";
 
-        labelDinv.Text = radioButtonBeamBackLaue.Checked? "$d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹";
+        labelDinv.Text = radioButtonBeamBackLaue.Checked ? "$d⁻¹: - nm⁻¹" : $"d⁻¹: {invPos.Length:f4} nm⁻¹";
         var d = 1.0 / invPos.Length;
         labelD.Text = radioButtonBeamBackLaue.Checked ? "$\"d: - nm\" " : $"d: {d:f4} nm";
         var twoThetaRad = 2 * Math.Asin(WaveLength / 2 / d);
@@ -2087,7 +2095,7 @@ public partial class FormDiffractionSimulator : Form
         else if (radioButtonBeamPrecessionXray.Checked)//歳差(X線)
         {
             waveLengthControl.Monochrome = true;
-            
+
             radioButtonIntensityExcitation.Visible = true;
             radioButtonIntensityKinematical.Visible = true;
 
@@ -2877,5 +2885,6 @@ public partial class FormDiffractionSimulator : Form
         formMain.FormMovie.Execute(func, this);
     }
     #endregion
-    
+
+  
 }

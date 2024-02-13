@@ -22,7 +22,7 @@ public partial class FormStructureViewer : Form
     #region フィールド、プロパティ、
 
     private static readonly List<int> neighborKeys = [];
-    
+
     public Crystal Crystal;
 
     public FormMain formMain;
@@ -434,7 +434,7 @@ public partial class FormStructureViewer : Form
         }
 
         glControlMain.SetClip(checkBoxClipObjects.Checked ? new Clip(bounds.Select(b => b.prm).ToArray()) : null);
-        
+
         textBoxCalcInformation.AppendText($"Generation of bound planes: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
@@ -469,7 +469,7 @@ public partial class FormStructureViewer : Form
         {
             List<V3> outerNew = [];
             foreach (var baseCell in outer)
-                foreach (var dir in whole.Count==0 ? [new V3(0,0,0)] : dirs)
+                foreach (var dir in whole.Count == 0 ? [new V3(0, 0, 0)] : dirs)
                 {
                     var cell = baseCell + dir;
                     if (!whole.Contains(cell))
@@ -492,7 +492,7 @@ public partial class FormStructureViewer : Form
                                     spheres.Add(sphere);
                             }
                         });
-                        
+
                         if (spheres.Count != 0)
                         {
                             outerNew.Add(cell);
@@ -569,21 +569,21 @@ public partial class FormStructureViewer : Form
                         .. GLObjectsP.Select((GLObject Obj, int ObjIndex) => (Obj, ObjIndex))
                         .Where(e => e.Obj.Tag is atomID id && enabledAtoms[id.Index].ElementName == element).Select(e =>
                         {
-                          var s = e.Obj as Sphere;
-                          var id = s.Tag as atomID;
-                          if (!dicMaterial.TryGetValue(id.Index, out var bondMat))
-                          {
-                              bondMat = new Material(s.Material.Color, bondTrans);
-                              lock (lockObj1)
-                                  dicMaterial.TryAdd(id.Index, bondMat);
-                          }
-                          if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat))
-                          {
-                              polyMat = new Material(s.Material.Color, polyTrans);
-                              lock (lockObj1)
-                                  dicMaterial.TryAdd(id.Index + 1000, polyMat);
-                          }
-                          return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
+                            var s = e.Obj as Sphere;
+                            var id = s.Tag as atomID;
+                            if (!dicMaterial.TryGetValue(id.Index, out var bondMat))
+                            {
+                                bondMat = new Material(s.Material.Color, bondTrans);
+                                lock (lockObj1)
+                                    dicMaterial.TryAdd(id.Index, bondMat);
+                            }
+                            if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat))
+                            {
+                                polyMat = new Material(s.Material.Color, polyTrans);
+                                lock (lockObj1)
+                                    dicMaterial.TryAdd(id.Index + 1000, polyMat);
+                            }
+                            return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
                         }).OrderBy(o => o.Key),
                     ]);
             }
@@ -768,9 +768,9 @@ public partial class FormStructureViewer : Form
         if (checkBoxUnitCell.Checked && checkBoxCellShowEdge.Checked)
         {
             V3[][][] axesArray = [
-                    [[zero, c0], [c1, c1 + c0] , [c2, c2 + c0] , [c1 + c2, c1 + c2 + c0]],
-                    [[zero, c1], [c2, c2 + c1] , [c0, c0 + c1] , [c2 + c0, c2 + c0 + c1]],
-                    [[zero, c2], [c0, c0 + c2] , [c1, c1 + c2] , [c0 + c1, c0 + c1 + c2]]
+                    [[zero, c0], [c1, c1 + c0], [c2, c2 + c0], [c1 + c2, c1 + c2 + c0]],
+                [[zero, c1], [c2, c2 + c1], [c0, c0 + c1], [c2 + c0, c2 + c0 + c1]],
+                [[zero, c2], [c0, c0 + c2], [c1, c1 + c2], [c0 + c1, c0 + c1 + c2]]
                 ];
 
             int[] colors = radioButtonCellEdgeColorAll.Checked ?
@@ -791,8 +791,8 @@ public partial class FormStructureViewer : Form
             //面の描画
             V3[][][] planesArray = [
                     [[zero, c1, c1 + c2, c2], [c0, c0 + c1, c0 + c1 + c2, c2 + c0]],
-                    [[zero, c2, c2 + c0, c0], [c1, c1 + c2, c1 + c2 + c0, c0 + c1]],
-                    [[zero, c0, c0 + c1, c1], [c2, c2 + c0, c2 + c0 + c1, c1 + c2]]
+                [[zero, c2, c2 + c0, c0], [c1, c1 + c2, c1 + c2 + c0, c0 + c1]],
+                [[zero, c0, c0 + c1, c1], [c2, c2 + c0, c2 + c0 + c1, c1 + c2]]
                 ];
             int[] colors = radioButtonCellPlaneColorAll.Checked ?
                    [colorControlCellPlane.Argb, colorControlCellPlane.Argb, colorControlCellPlane.Argb] :
@@ -1076,7 +1076,7 @@ public partial class FormStructureViewer : Form
 
                 //最近接原子を探索
                 var tmp = Crystal.Search(enabledAtoms[(atom.Tag as atomID).Index], 1);
-                for(int i= 0; i < tmp.Count-1; i++)
+                for (int i = 0; i < tmp.Count - 1; i++)
                     if (tmp[i].X == tmp[i + 1].X && tmp[i].Y == tmp[i + 1].Y && tmp[i].Z == tmp[i + 1].Z)
                         tmp.RemoveAt(i--);
 
@@ -1105,7 +1105,7 @@ public partial class FormStructureViewer : Form
 
                 result.Add($"\r\n");
                 result.Add($"Bond angles");
-                for (int i = 1; i < Math.Max(count,3); i++)
+                for (int i = 1; i < Math.Max(count, 3); i++)
                 {
                     for (int j = i + 1; j < Math.Max(count, 3); j++)
                     {
@@ -1795,8 +1795,6 @@ public partial class FormStructureViewer : Form
             Clipboard.SetDataObject(glControlMain.GenerateBitmap());
     }
 
-
-
     /// <summary>
     /// 角度をリセットする
     /// </summary>
@@ -1806,7 +1804,6 @@ public partial class FormStructureViewer : Form
 
     private void FormStructureViewer_ResizeBegin(object sender, EventArgs e)
     {
-
         SuspendLayout();
     }
 
@@ -1819,6 +1816,14 @@ public partial class FormStructureViewer : Form
         numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
         SkipEvent = false;
     }
+    private void splitContainer1_Panel1_ClientSizeChanged(object sender, EventArgs e)
+    {
+        SkipEvent = true;
+        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
+        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        SkipEvent = false;
+    }
+
     private void numericBoxClientWidth_ValueChanged(object sender, EventArgs e)
     {
         if (SkipEvent) return;
@@ -1873,4 +1878,6 @@ public partial class FormStructureViewer : Form
         SetGLObjects();
     }
     #endregion
+
+ 
 }
