@@ -119,7 +119,6 @@ public partial class FormMovie : Form
                 WorkingDirectory = path + "ffmpeg",
                 FileName = path + "ffmpeg\\ffmpeg.exe",
                 Arguments = "-framerate 30 -i %04d.png -c:v " + codec + " -pix_fmt yuv420p -preset " + speed + " -tune animation -y out.mp4",
-                //Arguments = "-framerate 30 -i %04d.png -c:v " + codec + " -y out.mp4",
                 WindowStyle = ProcessWindowStyle.Minimized,
             });
             p.WaitForExit(120000);
