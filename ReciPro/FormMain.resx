@@ -1569,7 +1569,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 467</value>
+    <value>0, 344</value>
   </data>
   <data name="groupBox5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2233,7 +2233,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 327</value>
+    <value>0, 204</value>
   </data>
   <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2262,182 +2262,17 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="groupBoxCurrentDirection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="groupBoxCurrentDirection.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="labelCurrentIndex.AutoSize" type="System.Boolean, mscorlib">
+  <data name="panelCrystalDirection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelCurrentIndex.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="labelCurrentIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="labelCurrentIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelCurrentIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 20</value>
-  </data>
-  <data name="labelCurrentIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="labelCurrentIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 17</value>
-  </data>
-  <data name="labelCurrentIndex.TabIndex" type="System.Int32, mscorlib">
-    <value>82</value>
-  </data>
-  <data name="labelCurrentIndex.Text" xml:space="preserve">
-    <value>[0 0 0]</value>
-  </data>
-  <data name="labelCurrentIndex.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
-    <value>Approximate index of zone axis</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndex.Name" xml:space="preserve">
-    <value>labelCurrentIndex</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndex.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;labelCurrentIndex.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericBoxMaxUVW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="panelCrystalDirection.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxMaxUVW.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="numericBoxMaxUVW.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxMaxUVW.HeaderText" xml:space="preserve">
-    <value>|u| + |v| + |w| &lt;</value>
-  </data>
-  <data name="numericBoxMaxUVW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 162</value>
-  </data>
-  <data name="numericBoxMaxUVW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxMaxUVW.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxMaxUVW.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxMaxUVW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 24</value>
-  </data>
-  <data name="numericBoxMaxUVW.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericBoxMaxUVW.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxMaxUVW.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.Name" xml:space="preserve">
-    <value>numericBoxMaxUVW</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMaxUVW.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonReset.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonReset.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonReset.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="buttonReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 186</value>
-  </data>
-  <data name="buttonReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 27</value>
-  </data>
-  <data name="buttonReset.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="buttonReset.Text" xml:space="preserve">
-    <value>Reset Rotation</value>
-  </data>
-  <data name="buttonReset.ToolTip" xml:space="preserve">
-    <value>Reset rotation state to initial orientation</value>
-  </data>
-  <data name="&gt;&gt;buttonReset.Name" xml:space="preserve">
-    <value>buttonReset</value>
-  </data>
-  <data name="&gt;&gt;buttonReset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonReset.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;buttonReset.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 213</value>
-  </data>
-  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 0</value>
-  </data>
-  <data name="label7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 19</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>85</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Euler angles</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="tableLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2761,13 +2596,13 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>8</value>
   </data>
   <data name="tableLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+    <value>Top</value>
   </data>
   <data name="tableLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 6.2400002pt</value>
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 232</value>
+    <value>0, 70</value>
   </data>
   <data name="tableLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2791,13 +2626,211 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
-    <value>groupBoxCurrentDirection</value>
+    <value>panelCrystalDirection</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label6" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDownEulerPsi" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDownEulerTheta" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="numericUpDownEulerPhi" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,33.33333,Percent,33.33333,Percent,33.33333" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 51</value>
+  </data>
+  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 0</value>
+  </data>
+  <data name="label7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 19</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Euler angles</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>panelCrystalDirection</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonReset.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonReset.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonReset.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="buttonReset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 27</value>
+  </data>
+  <data name="buttonReset.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonReset.Text" xml:space="preserve">
+    <value>Reset Rotation</value>
+  </data>
+  <data name="buttonReset.ToolTip" xml:space="preserve">
+    <value>Reset rotation state to initial orientation</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Name" xml:space="preserve">
+    <value>buttonReset</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.Parent" xml:space="preserve">
+    <value>panelCrystalDirection</value>
+  </data>
+  <data name="&gt;&gt;buttonReset.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="numericBoxMaxUVW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxMaxUVW.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericBoxMaxUVW.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxMaxUVW.HeaderText" xml:space="preserve">
+    <value>|u| + |v| + |w| &lt;</value>
+  </data>
+  <data name="numericBoxMaxUVW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="numericBoxMaxUVW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxMaxUVW.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxMaxUVW.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxMaxUVW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 24</value>
+  </data>
+  <data name="numericBoxMaxUVW.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxMaxUVW.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxMaxUVW.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxUVW.Name" xml:space="preserve">
+    <value>numericBoxMaxUVW</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxUVW.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxUVW.Parent" xml:space="preserve">
+    <value>panelCrystalDirection</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMaxUVW.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panelCrystalDirection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panelCrystalDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 39</value>
+  </data>
+  <data name="panelCrystalDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 146</value>
+  </data>
+  <data name="panelCrystalDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="&gt;&gt;panelCrystalDirection.Name" xml:space="preserve">
+    <value>panelCrystalDirection</value>
+  </data>
+  <data name="&gt;&gt;panelCrystalDirection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelCrystalDirection.Parent" xml:space="preserve">
+    <value>groupBoxCurrentDirection</value>
+  </data>
+  <data name="&gt;&gt;panelCrystalDirection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelCurrentIndex.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelCurrentIndex.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelCurrentIndex.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt</value>
+  </data>
+  <data name="labelCurrentIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelCurrentIndex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 20</value>
+  </data>
+  <data name="labelCurrentIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="labelCurrentIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 19</value>
+  </data>
+  <data name="labelCurrentIndex.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="labelCurrentIndex.Text" xml:space="preserve">
+    <value>[0 0 0]</value>
+  </data>
+  <data name="labelCurrentIndex.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
+    <value>Approximate index of zone axis</value>
+  </data>
+  <data name="&gt;&gt;labelCurrentIndex.Name" xml:space="preserve">
+    <value>labelCurrentIndex</value>
+  </data>
+  <data name="&gt;&gt;labelCurrentIndex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCurrentIndex.Parent" xml:space="preserve">
+    <value>groupBoxCurrentDirection</value>
+  </data>
+  <data name="&gt;&gt;labelCurrentIndex.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="groupBoxCurrentDirection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -2815,7 +2848,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBoxCurrentDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 310</value>
+    <value>142, 187</value>
   </data>
   <data name="groupBoxCurrentDirection.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

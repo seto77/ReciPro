@@ -195,6 +195,7 @@ namespace ReciPro
             presets3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             presets4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             label35 = new System.Windows.Forms.Label();
+            checkBoxCTF = new System.Windows.Forms.CheckBox();
             numericBoxCc = new NumericBox();
             numericBoxDeltaV = new NumericBox();
             numericBoxBetaAgnle = new NumericBox();
@@ -213,10 +214,8 @@ namespace ReciPro
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             numericBoxThickness = new NumericBox();
-            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
-            checkBoxPreset = new System.Windows.Forms.CheckBox();
-            checkBoxCTF = new System.Windows.Forms.CheckBox();
             panel4 = new System.Windows.Forms.Panel();
+            checkBoxPreset = new System.Windows.Forms.CheckBox();
             checkBoxRealTimeSimulation = new System.Windows.Forms.CheckBox();
             buttonSimulate = new System.Windows.Forms.Button();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -294,7 +293,6 @@ namespace ReciPro
             groupBox6.SuspendLayout();
             flowLayoutPanel16.SuspendLayout();
             groupBoxSampleProperty.SuspendLayout();
-            flowLayoutPanel12.SuspendLayout();
             panel4.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -323,7 +321,6 @@ namespace ReciPro
             splitContainer1.Panel2.Controls.Add(groupBox1);
             splitContainer1.Panel2.Controls.Add(groupBoxOpticalProperty);
             splitContainer1.Panel2.Controls.Add(flowLayoutPanel14);
-            splitContainer1.Panel2.Controls.Add(flowLayoutPanel12);
             splitContainer1.Panel2.Controls.Add(panel4);
             splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             toolTip.SetToolTip(splitContainer1.Panel2, resources.GetString("splitContainer1.Panel2.ToolTip"));
@@ -1861,6 +1858,7 @@ namespace ReciPro
             resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.ContextMenuStrip = contextMenuStripTEMcondition;
             groupBox4.Controls.Add(label35);
+            groupBox4.Controls.Add(checkBoxCTF);
             groupBox4.Controls.Add(numericBoxCc);
             groupBox4.Controls.Add(numericBoxDeltaV);
             groupBox4.Controls.Add(numericBoxBetaAgnle);
@@ -1932,6 +1930,14 @@ namespace ReciPro
             label35.ForeColor = System.Drawing.SystemColors.ControlText;
             label35.Name = "label35";
             toolTip.SetToolTip(label35, resources.GetString("label35.ToolTip"));
+            // 
+            // checkBoxCTF
+            // 
+            resources.ApplyResources(checkBoxCTF, "checkBoxCTF");
+            checkBoxCTF.Name = "checkBoxCTF";
+            toolTip.SetToolTip(checkBoxCTF, resources.GetString("checkBoxCTF.ToolTip"));
+            checkBoxCTF.UseVisualStyleBackColor = true;
+            checkBoxCTF.CheckedChanged += checkBoxShowLensFunctionGraph_CheckedChanged;
             // 
             // numericBoxCc
             // 
@@ -2160,13 +2166,14 @@ namespace ReciPro
             numericBoxThickness.Value = 20D;
             numericBoxThickness.ValueChanged += NumericBoxThickness_ValueChanged;
             // 
-            // flowLayoutPanel12
+            // panel4
             // 
-            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
-            flowLayoutPanel12.Controls.Add(checkBoxPreset);
-            flowLayoutPanel12.Controls.Add(checkBoxCTF);
-            flowLayoutPanel12.Name = "flowLayoutPanel12";
-            toolTip.SetToolTip(flowLayoutPanel12, resources.GetString("flowLayoutPanel12.ToolTip"));
+            resources.ApplyResources(panel4, "panel4");
+            panel4.Controls.Add(checkBoxPreset);
+            panel4.Controls.Add(checkBoxRealTimeSimulation);
+            panel4.Controls.Add(buttonSimulate);
+            panel4.Name = "panel4";
+            toolTip.SetToolTip(panel4, resources.GetString("panel4.ToolTip"));
             // 
             // checkBoxPreset
             // 
@@ -2175,22 +2182,6 @@ namespace ReciPro
             toolTip.SetToolTip(checkBoxPreset, resources.GetString("checkBoxPreset.ToolTip"));
             checkBoxPreset.UseVisualStyleBackColor = true;
             checkBoxPreset.CheckedChanged += checkBoxPreset_CheckedChanged;
-            // 
-            // checkBoxCTF
-            // 
-            resources.ApplyResources(checkBoxCTF, "checkBoxCTF");
-            checkBoxCTF.Name = "checkBoxCTF";
-            toolTip.SetToolTip(checkBoxCTF, resources.GetString("checkBoxCTF.ToolTip"));
-            checkBoxCTF.UseVisualStyleBackColor = true;
-            checkBoxCTF.CheckedChanged += checkBoxShowLensFunctionGraph_CheckedChanged;
-            // 
-            // panel4
-            // 
-            resources.ApplyResources(panel4, "panel4");
-            panel4.Controls.Add(checkBoxRealTimeSimulation);
-            panel4.Controls.Add(buttonSimulate);
-            panel4.Name = "panel4";
-            toolTip.SetToolTip(panel4, resources.GetString("panel4.ToolTip"));
             // 
             // checkBoxRealTimeSimulation
             // 
@@ -2463,8 +2454,6 @@ namespace ReciPro
             flowLayoutPanel16.ResumeLayout(false);
             flowLayoutPanel16.PerformLayout();
             groupBoxSampleProperty.ResumeLayout(false);
-            flowLayoutPanel12.ResumeLayout(false);
-            flowLayoutPanel12.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             menuStrip1.ResumeLayout(false);
@@ -2666,7 +2655,6 @@ namespace ReciPro
         private System.Windows.Forms.GroupBox groupBoxSTEMoption3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
         private System.Windows.Forms.CheckBox checkBoxPreset;
         private System.Windows.Forms.RadioButton radioButtonSTEM_target_TDS;
         private System.Windows.Forms.RadioButton radioButtonSTEM_target_elas;

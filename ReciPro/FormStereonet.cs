@@ -695,10 +695,8 @@ public partial class FormStereonet : Form
     private void radioButtonAxes_CheckedChanged(object sender, EventArgs e)
     {
         Draw();
-        if (radioButtonAxes.Checked)
-            labelHU.Text = "u            v             w";
-        else
-            labelHU.Text = "h            k             l";
+        if (radioButtonAxes.Checked) { labelHU.Text = "u"; labelKV.Text = "v"; labelLW.Text = "w"; }
+        else { labelHU.Text = "h"; labelKV.Text = "k"; labelLW.Text = "l"; }
     }
 
     private void saveImageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -788,7 +786,7 @@ public partial class FormStereonet : Form
             var v = (int)numericUpDownCircleV.Value;
             var w = (int)numericUpDownCircleW.Value;
             if (u == 0 && v == 0 && w == 0) return;
-            var vec =new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"[{u} {v} {w}]" };
+            var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"[{u} {v} {w}]" };
             formMain.Crystal.VectorOfPole.Add(vec);
             checkedListBoxCircles.Items.Add(vec, true);
             Draw();
@@ -965,7 +963,7 @@ public partial class FormStereonet : Form
     private void checkBoxDisplay3D_CheckedChanged(object sender, EventArgs e)
     {
         splitContainer1.Panel2Collapsed = !checkBoxDisplay3D.Checked;
-        panel3DOption.Visible = checkBoxDisplay3D.Checked;
+        groupBox3DOptions.Visible = checkBoxDisplay3D.Checked;
     }
 
     private void button3D_reset_Click(object sender, EventArgs e)
@@ -997,5 +995,10 @@ public partial class FormStereonet : Form
     private void toolStripMenuItemSaveMovie3D_Click(object sender, EventArgs e)
     {
         formMain.FormMovie.Execute(glControl, this);
+    }
+
+    private void groupBox6_Enter(object sender, EventArgs e)
+    {
+
     }
 }

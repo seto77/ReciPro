@@ -329,18 +329,22 @@ public static class ImageIO
             {
                 var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
                 int imageWidth = 2064, imageHeight = 1548, length = imageWidth * imageHeight;
-                if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-                {
+                var sameSize = Ring.Intensity.Count == length;
+
+                if (!sameSize)//前回と同じサイズではないとき
                     Ring.Intensity.Clear();
-                    for (int y = 0; y < imageHeight; y++)
-                        for (int x = 0; x < imageWidth; x++)
-                            Ring.Intensity.Add(256 * br.ReadByte() + br.ReadByte());
-                }
-                else
+                
+                for (int n = 0; n < length; n++)
                 {
-                    for (int n = 0; n<length; n++)
-                            Ring.Intensity[n] = 256 * br.ReadByte() + br.ReadByte();
+                    //マイナスの値が入ることを考慮した変更 2024/02/27 辻野さんからのメール参考
+                    var val = (short)(256 * br.ReadByte() + br.ReadByte());
+
+                    if (sameSize)
+                        Ring.Intensity[n] = val;
+                    else
+                        Ring.Intensity.Add(val);
                 }
+
                 br.Close();
 
                 Ring.BitsPerPixels = 16;

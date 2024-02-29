@@ -1092,6 +1092,11 @@ public partial class FormImageSimulator : Form
         groupBoxPotentialOption.Visible = ImageMode == ImageModes.POTENTIAL;
         groupBoxHREMoption1.Visible = groupBoxHREMoption2.Visible = ImageMode == ImageModes.HRTEM;
         groupBoxSTEMoption1.Visible = groupBoxSTEMoption2.Visible = groupBoxSTEMoption3.Visible = ImageMode == ImageModes.STEM;
+
+        if(ImageMode == ImageModes.POTENTIAL)
+            checkBoxCTF.Checked = false;
+        checkBoxCTF.Enabled = ImageMode != ImageModes.POTENTIAL;
+
         this.ResumeLayout(true);
 
         FormCTF.Renew();

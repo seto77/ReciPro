@@ -256,13 +256,13 @@ public partial class FormMain : Form
                     ProjWidth = 2.7,
                     ProjCenter = new OpenTK.Vector2d(0, 0.2),
                     RotationMode = GLControlAlpha.RotationModes.Object,
-                    Dock = DockStyle.Fill,
-                    LightPosition = new Vec3(100, 100, 100)
+                    LightPosition = new Vec3(100, 100, 100),
                 };
                 glControlAxes.MouseDown += new MouseEventHandler(panelAxes_MouseDown);
                 glControlAxes.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
                 groupBoxCurrentDirection.Controls.Add(glControlAxes);
-                glControlAxes.BringToFront();
+                //glControlAxes.BringToFront();
+                
             }
             catch (Exception ex)
             {
@@ -274,23 +274,16 @@ public partial class FormMain : Form
 
         if (glControlAxes != null)
         {
-            groupBoxCurrentDirection.Height += glControlAxes.Width - glControlAxes.Height;
-            //labelCurrentIndex.Location = new Point(glControlAxes.Location.X, glControlAxes.Location.Y + glControlAxes.Height - labelCurrentIndex.Height);
-            labelCurrentIndex.BringToFront();
-            labelCurrentIndex.BackColor = Color.White;
-        }
-        else
-        {
-            labelCurrentIndex.BringToFront();
-            numericBoxMaxUVW.BringToFront();
-            buttonReset.BringToFront();
+            labelCurrentIndex.Dock = DockStyle.None;
+            
+            glControlAxes.Dock = DockStyle.Top;
+            glControlAxes.Height = glControlAxes.Width+20;
+            glControlAxes.SendToBack();
 
-            labelCurrentIndex.Dock = DockStyle.Top;
-            numericBoxMaxUVW.Dock = DockStyle.Top;
-            buttonReset.Dock = DockStyle.Top;
-            labelCurrentIndex.BackColor = groupBoxCurrentDirection.BackColor;
-            groupBoxCurrentDirection.AutoSize = true;
+            labelCurrentIndex.BackColor = Color.White;
+            labelCurrentIndex.BringToFront();
         }
+        
         #endregion
 
 

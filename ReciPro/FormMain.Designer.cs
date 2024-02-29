@@ -89,10 +89,7 @@
             numericBoxStep = new NumericBox();
             checkBoxAnimation = new System.Windows.Forms.CheckBox();
             groupBoxCurrentDirection = new System.Windows.Forms.GroupBox();
-            labelCurrentIndex = new System.Windows.Forms.Label();
-            numericBoxMaxUVW = new NumericBox();
-            buttonReset = new System.Windows.Forms.Button();
-            label7 = new System.Windows.Forms.Label();
+            panelCrystalDirection = new System.Windows.Forms.Panel();
             tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             label6 = new System.Windows.Forms.Label();
             numericUpDownEulerPsi = new System.Windows.Forms.NumericUpDown();
@@ -103,6 +100,10 @@
             label5 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            buttonReset = new System.Windows.Forms.Button();
+            numericBoxMaxUVW = new NumericBox();
+            labelCurrentIndex = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             toolStrip1 = new System.Windows.Forms.ToolStrip();
             toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -199,6 +200,7 @@
             tableLayoutPanel2.SuspendLayout();
             panel4.SuspendLayout();
             groupBoxCurrentDirection.SuspendLayout();
+            panelCrystalDirection.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownEulerPsi).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownEulerTheta).BeginInit();
@@ -757,54 +759,20 @@
             // groupBoxCurrentDirection
             // 
             resources.ApplyResources(groupBoxCurrentDirection, "groupBoxCurrentDirection");
+            groupBoxCurrentDirection.Controls.Add(panelCrystalDirection);
             groupBoxCurrentDirection.Controls.Add(labelCurrentIndex);
-            groupBoxCurrentDirection.Controls.Add(numericBoxMaxUVW);
-            groupBoxCurrentDirection.Controls.Add(buttonReset);
-            groupBoxCurrentDirection.Controls.Add(label7);
-            groupBoxCurrentDirection.Controls.Add(tableLayoutPanel3);
             groupBoxCurrentDirection.Name = "groupBoxCurrentDirection";
             groupBoxCurrentDirection.TabStop = false;
             toolTip.SetToolTip(groupBoxCurrentDirection, resources.GetString("groupBoxCurrentDirection.ToolTip"));
             // 
-            // labelCurrentIndex
+            // panelCrystalDirection
             // 
-            resources.ApplyResources(labelCurrentIndex, "labelCurrentIndex");
-            labelCurrentIndex.BackColor = System.Drawing.Color.Transparent;
-            labelCurrentIndex.Name = "labelCurrentIndex";
-            toolTip.SetToolTip(labelCurrentIndex, resources.GetString("labelCurrentIndex.ToolTip"));
-            labelCurrentIndex.DoubleClick += labelCurrentIndex_DoubleClick;
-            // 
-            // numericBoxMaxUVW
-            // 
-            resources.ApplyResources(numericBoxMaxUVW, "numericBoxMaxUVW");
-            numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxUVW.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxUVW.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxUVW.Maximum = 100D;
-            numericBoxMaxUVW.Minimum = 1D;
-            numericBoxMaxUVW.Name = "numericBoxMaxUVW";
-            numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
-            numericBoxMaxUVW.RoundErrorAccuracy = -1;
-            numericBoxMaxUVW.ShowUpDown = true;
-            numericBoxMaxUVW.SkipEventDuringInput = false;
-            numericBoxMaxUVW.ThonsandsSeparator = true;
-            numericBoxMaxUVW.Value = 30D;
-            numericBoxMaxUVW.ValueChanged += numericBoxMaxUVW_ValueChanged;
-            // 
-            // buttonReset
-            // 
-            resources.ApplyResources(buttonReset, "buttonReset");
-            buttonReset.BackColor = System.Drawing.Color.IndianRed;
-            buttonReset.ForeColor = System.Drawing.Color.White;
-            buttonReset.Name = "buttonReset";
-            toolTip.SetToolTip(buttonReset, resources.GetString("buttonReset.ToolTip"));
-            buttonReset.UseVisualStyleBackColor = false;
-            buttonReset.Click += buttonReset_Click;
-            // 
-            // label7
-            // 
-            resources.ApplyResources(label7, "label7");
-            label7.Name = "label7";
+            resources.ApplyResources(panelCrystalDirection, "panelCrystalDirection");
+            panelCrystalDirection.Controls.Add(tableLayoutPanel3);
+            panelCrystalDirection.Controls.Add(label7);
+            panelCrystalDirection.Controls.Add(buttonReset);
+            panelCrystalDirection.Controls.Add(numericBoxMaxUVW);
+            panelCrystalDirection.Name = "panelCrystalDirection";
             // 
             // tableLayoutPanel3
             // 
@@ -879,6 +847,46 @@
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            // 
+            // buttonReset
+            // 
+            resources.ApplyResources(buttonReset, "buttonReset");
+            buttonReset.BackColor = System.Drawing.Color.IndianRed;
+            buttonReset.ForeColor = System.Drawing.Color.White;
+            buttonReset.Name = "buttonReset";
+            toolTip.SetToolTip(buttonReset, resources.GetString("buttonReset.ToolTip"));
+            buttonReset.UseVisualStyleBackColor = false;
+            buttonReset.Click += buttonReset_Click;
+            // 
+            // numericBoxMaxUVW
+            // 
+            resources.ApplyResources(numericBoxMaxUVW, "numericBoxMaxUVW");
+            numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxUVW.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxUVW.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxUVW.Maximum = 100D;
+            numericBoxMaxUVW.Minimum = 1D;
+            numericBoxMaxUVW.Name = "numericBoxMaxUVW";
+            numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
+            numericBoxMaxUVW.RoundErrorAccuracy = -1;
+            numericBoxMaxUVW.ShowUpDown = true;
+            numericBoxMaxUVW.SkipEventDuringInput = false;
+            numericBoxMaxUVW.ThonsandsSeparator = true;
+            numericBoxMaxUVW.Value = 30D;
+            numericBoxMaxUVW.ValueChanged += numericBoxMaxUVW_ValueChanged;
+            // 
+            // labelCurrentIndex
+            // 
+            resources.ApplyResources(labelCurrentIndex, "labelCurrentIndex");
+            labelCurrentIndex.BackColor = System.Drawing.Color.Transparent;
+            labelCurrentIndex.Name = "labelCurrentIndex";
+            toolTip.SetToolTip(labelCurrentIndex, resources.GetString("labelCurrentIndex.ToolTip"));
+            labelCurrentIndex.DoubleClick += labelCurrentIndex_DoubleClick;
             // 
             // label8
             // 
@@ -1341,6 +1349,8 @@
             panel4.ResumeLayout(false);
             groupBoxCurrentDirection.ResumeLayout(false);
             groupBoxCurrentDirection.PerformLayout();
+            panelCrystalDirection.ResumeLayout(false);
+            panelCrystalDirection.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownEulerPsi).EndInit();
@@ -1497,6 +1507,7 @@
         public System.Windows.Forms.ToolStripButton toolStripButtonEBSD;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;
         private System.Windows.Forms.ToolStripMenuItem githubWikiToolStripMenuItem;
+        private System.Windows.Forms.Panel panelCrystalDirection;
     }
 }
 
