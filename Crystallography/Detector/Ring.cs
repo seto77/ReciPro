@@ -273,7 +273,7 @@ public static class Ring
     /// 指定された積分対象角度の範囲外の場合はtrue
     /// </summary>
     public static List<bool> IsOutsideOfIntegralProperty = [];//エリアの外(或いは選択領域の外)
-                                                                 //public static ParallelQuery<bool> IsOutsideOfIntegralPropertyP;
+                                                              //public static ParallelQuery<bool> IsOutsideOfIntegralPropertyP;
 
 
     public static string Comments = "";
@@ -2734,7 +2734,7 @@ public static class Ring
                                 pt1[n1++] = p1;
                             else
                                 pt2[n2++] = p1;
-                            if( (p1.X < c && c <= p2.X) || (p1.X >= c && c > p2.X))
+                            if ((p1.X < c && c <= p2.X) || (p1.X >= c && c > p2.X))
                                 pt1[n1++] = pt2[n2++] = (c, (c * p2.Y - c * p1.Y - p1.X * p2.Y + p2.X * p1.Y) / (p2.X - p1.X));
                         }
 
@@ -2758,7 +2758,7 @@ public static class Ring
                                         pt3[n3++] = p1;
                                     else
                                         pt4[n4++] = p1;
-                                    if((p1.Y < d && d <= p2.Y)||(p1.Y >= d && d > p2.Y))
+                                    if ((p1.Y < d && d <= p2.Y) || (p1.Y >= d && d > p2.Y))
                                         pt3[n3++] = pt4[n4++] = ((d * p2.X - d * p1.X - p1.Y * p2.X + p2.Y * p1.X) / (p2.Y - p1.Y), d);
                                 }
                                 var area = getArea(n3, pt3);

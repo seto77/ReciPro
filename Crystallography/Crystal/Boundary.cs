@@ -44,7 +44,7 @@ namespace Crystallography
         /// <param name="distance"></param>
         /// <param name="translation"></param>
         /// <param name="argb"></param>
-        public Bound(bool enabled, Crystal crystal, int h, int k, int l, bool equivalency, double distance,double translation, int argb) : this()
+        public Bound(bool enabled, Crystal crystal, int h, int k, int l, bool equivalency, double distance, double translation, int argb) : this()
         {
             Enabled = enabled;
             ColorArgb = argb;

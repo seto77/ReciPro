@@ -27,7 +27,7 @@ public static class XYFile
         }
     }
 
-    public static DiffractionProfile2[] ReadPdi2File(string fileName, int version=2)
+    public static DiffractionProfile2[] ReadPdi2File(string fileName, int version = 2)
     {
         //OriginalFormatType  -> SrcAxisMode
         //OriginalWaveLength  -> SrcWaveLength
@@ -56,7 +56,7 @@ public static class XYFile
         }
         catch { };
 
-       
+
         System.IO.FileStream fs = null;
         try
         {
@@ -92,7 +92,7 @@ public static class XYFile
             {
                 var serializer = new System.Xml.Serialization.XmlSerializer(typeof(DiffractionProfile[]));
                 var reader = new StreamReader(fileName, Encoding.UTF8);
-               var strList = new List<string>();
+                var strList = new List<string>();
                 string tempstr;
                 while ((tempstr = reader.ReadLine()) != null)
                     strList.Add(tempstr);
@@ -112,7 +112,7 @@ public static class XYFile
                 var dp = (DiffractionProfile[])serializer.Deserialize(fs);
                 fs.Close();
                 if (dp.Length > 0)
-                    return dp.Select(e=> e.ConvertToDiffractionProfile2()).ToArray();
+                    return dp.Select(e => e.ConvertToDiffractionProfile2()).ToArray();
                 else return Array.Empty<DiffractionProfile2>();
             }
             catch

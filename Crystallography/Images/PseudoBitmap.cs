@@ -653,7 +653,7 @@ public class PseudoBitmap : IDisposable
     /// <returns></returns>
     public Complex[] GetPixelComplex(int x, int y)
     {
-        if (x < 0 || Width <= x || y < 0 || Height <= y || this.RealImage == true) 
+        if (x < 0 || Width <= x || y < 0 || Height <= y || this.RealImage == true)
             return [new(), new(), new()];
         else
             return this.GrayScale ? ([ComplexGray[y][x], ComplexGray[y][x], ComplexGray[y][x]]) : ([ComplexR[y][x], ComplexG[y][x], ComplexB[y][x]]);

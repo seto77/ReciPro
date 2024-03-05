@@ -620,14 +620,14 @@ public partial class CrystalControl : UserControl
             "-b1" => forward ? (-z, y, x) : (z, y, -x),
             "-b2" => forward ? (x + z, y, z) : (x - z, y, z),
             "-b3" => forward ? (-x, y, -z - x) : (-x, y, x - z),
-            
+
             "c1" => forward ? (z, x, y) : (y, z, x),
             "c2" => forward ? (x - z, -z, y) : (x - y, z, -y),
             "c3" => forward ? (-x, z - x, y) : (-x, z, y - x),
             "-c1" => forward ? (x, -z, y) : (x, z, -y),
             "-c2" => forward ? (z, x + z, y) : (y - x, z, x),
             "-c3" => forward ? (-z - x, -x, y) : (-y, z, y - x),
-            
+
             "a1" => forward ? (y, z, x) : (z, x, y),
             "a2" => forward ? (y, x - z, -z) : (y - z, x, -z),
             "a3" => forward ? (y, -x, z - x) : (-y, x, z - y),

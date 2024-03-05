@@ -22,25 +22,25 @@ public partial class Crystal2
     public int argb;
 
     public float density;
-    
+
     public string name;
-    
+
     public string note;
-    
+
     public string jour;
-    
+
     public string auth;
-    
+
     public string sect;
-    
+
     public string formula;//計算可能な場合は。
-    
+
     public short sym;
-    
+
     public List<Atoms2> atoms;
-    
+
     public float[] d;//強度8位までのd値
-    
+
     public string fileName;
 
     #endregion
@@ -161,7 +161,7 @@ public partial class Crystal2
         var bonds = Bonds.GetVestaBonds(atom.Select(a => a.AtomicNumber));
 
         return new Crystal(cell.Values, cell.Errors, c.sym, c.name, System.Drawing.Color.FromArgb(c.argb), new Matrix3D(), [.. atom], (c.note, c.auth, c.jour, c.sect), bonds);
-    } 
+    }
 
     public static Crystal2 FromCrystal(Crystal c)
     {

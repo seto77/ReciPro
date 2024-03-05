@@ -395,31 +395,31 @@ public class Profile : ICloneable
 /// 横軸の種類 (Angle, d, WaveNumber, Length, EnergyXray, EnergyElectron, EnergyNeutron, NeutronTOF, none)
 /// </summary>
 [Serializable]
-public enum HorizontalAxis{    Angle, d, WaveNumber, Length, EnergyXray, EnergyElectron, EnergyNeutron, NeutronTOF, None}
+public enum HorizontalAxis { Angle, d, WaveNumber, Length, EnergyXray, EnergyElectron, EnergyNeutron, NeutronTOF, None }
 
 /// <summary>
 /// 波の種類 (Xray, Electron, Neutron, None)
 /// </summary>
 [Serializable]
-public enum WaveSource{    Xray, Electron, Neutron, None}
+public enum WaveSource { Xray, Electron, Neutron, None }
 
 /// <summary>
 /// 波の色 (Monochrome, FlatWhite, CustomWhite, None)
 /// </summary>
 [Serializable]
-public enum WaveColor{    Monochrome, FlatWhite, CustomWhite, None}
+public enum WaveColor { Monochrome, FlatWhite, CustomWhite, None }
 
 /// <summary>
 /// プロファイルモード (Concentric, Radial)
 /// </summary>
 [Serializable]
-public enum DiffractionProfileMode{    Concentric, Radial}
+public enum DiffractionProfileMode { Concentric, Radial }
 
 /// <summary>
 /// バックグランドモード (BSplineCurve, ReferrenceProfile)
 /// </summary>
 [Serializable]
-public enum BackgroundMode{    BSplineCurve, ReferrenceProfile}
+public enum BackgroundMode { BSplineCurve, ReferrenceProfile }
 
 #endregion
 
@@ -1176,7 +1176,7 @@ public class DiffractionProfile2 : ICloneable
     private PointD convertSrcToDest(PointD pt)
     {
         var pts = HorizontalAxisConverter.Convert(new[] { pt.X }, SrcProperty, DstProperty);
-        if (pts.Length==0)
+        if (pts.Length == 0)
             return new PointD(0, 0);
         var x = pts[0];
         var y = pt.Y;
@@ -1224,7 +1224,7 @@ public class DiffractionProfile2 : ICloneable
     /// <returns></returns>
     public PointD ConvertDestToSrc(PointD pt)
     {
-        var x =HorizontalAxisConverter.Convert(new[] { pt.X }, DstProperty,SrcProperty)[0];
+        var x = HorizontalAxisConverter.Convert(new[] { pt.X }, DstProperty, SrcProperty)[0];
         var y = pt.Y;
         if (IsCPS && ExposureTime != 0)
             y *= ExposureTime;
@@ -1325,8 +1325,8 @@ public record struct HorizontalAxisProperty
     public LengthUnitEnum DspacingUnit { get; set; } = LengthUnitEnum.Angstrom;
     public string DspacingUnitText => DspacingUnit switch
     {
-         LengthUnitEnum.Angstrom => "Å",
-         LengthUnitEnum.NanoMeter => "nm",
+        LengthUnitEnum.Angstrom => "Å",
+        LengthUnitEnum.NanoMeter => "nm",
         _ => "",
     };
 
@@ -1361,9 +1361,9 @@ public record struct HorizontalAxisProperty
     public TimeUnitEnum TofTimeUnit { get; set; } = TimeUnitEnum.MicroSecond;
     public string TofTimeUnitText => TofTimeUnit switch
     {
-       TimeUnitEnum.NanoSecond => "ns",
-       TimeUnitEnum.MicroSecond => "µs",
-       TimeUnitEnum.MilliSecond => "ms",
+        TimeUnitEnum.NanoSecond => "ns",
+        TimeUnitEnum.MicroSecond => "µs",
+        TimeUnitEnum.MilliSecond => "ms",
         _ => "",
     };
 
@@ -1467,7 +1467,7 @@ public record struct HorizontalAxisProperty
     }
 
 
-    public HorizontalAxisProperty(double tofAngle, double tofLength,  TimeUnitEnum tofTimeUnit)
+    public HorizontalAxisProperty(double tofAngle, double tofLength, TimeUnitEnum tofTimeUnit)
     {
         AxisMode = HorizontalAxis.NeutronTOF;
         WaveSource = WaveSource.Neutron;
@@ -1718,7 +1718,7 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double[] WaveNumberToD(IEnumerable<double> wavenumber) =>wavenumber.Select(e=>  Math.PI * 2 / e).ToArray();
+    public static double[] WaveNumberToD(IEnumerable<double> wavenumber) => wavenumber.Select(e => Math.PI * 2 / e).ToArray();
 
 
     /// <summary>
@@ -1782,7 +1782,7 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double[] DToElectronEnergy(IEnumerable<double> d, double takeoffAngle) =>d.Select(e=> UniversalConstants.Convert.WaveLengthToElectronEnergy(2.0 * e * Math.Sin(takeoffAngle / 2.0)) * 1000).ToArray();
+    public static double[] DToElectronEnergy(IEnumerable<double> d, double takeoffAngle) => d.Select(e => UniversalConstants.Convert.WaveLengthToElectronEnergy(2.0 * e * Math.Sin(takeoffAngle / 2.0)) * 1000).ToArray();
 
 
     /// <summary>
@@ -1798,7 +1798,7 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double[] DToNeutronEnergy(IEnumerable<double> d, double takeoffAngle) =>d.Select(e=> UniversalConstants.Convert.WaveLengthToNeutronEnergy(2.0 * e * Math.Sin(takeoffAngle / 2.0))).ToArray();
+    public static double[] DToNeutronEnergy(IEnumerable<double> d, double takeoffAngle) => d.Select(e => UniversalConstants.Convert.WaveLengthToNeutronEnergy(2.0 * e * Math.Sin(takeoffAngle / 2.0))).ToArray();
 
 
     /// <summary>
@@ -1814,7 +1814,7 @@ public static class HorizontalAxisConverter
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double[] XrayEnergyToD(IEnumerable<double> energy, double takeoffAngle) =>energy.Select(e=> UniversalConstants.Convert.EnergyToXrayWaveLength(e) / 2.0 / Math.Sin(takeoffAngle / 2.0)).ToArray();
+    public static double[] XrayEnergyToD(IEnumerable<double> energy, double takeoffAngle) => energy.Select(e => UniversalConstants.Convert.EnergyToXrayWaveLength(e) / 2.0 / Math.Sin(takeoffAngle / 2.0)).ToArray();
 
 
     /// <summary>
@@ -1830,7 +1830,7 @@ public static class HorizontalAxisConverter
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double[] ElectronEnergyToD(IEnumerable<double> energy, double takeoffAngle) =>energy.Select(e=> UniversalConstants.Convert.EnergyToElectronWaveLength(e / 1000) / 2.0 / Math.Sin(takeoffAngle / 2.0)).ToArray();
+    public static double[] ElectronEnergyToD(IEnumerable<double> energy, double takeoffAngle) => energy.Select(e => UniversalConstants.Convert.EnergyToElectronWaveLength(e / 1000) / 2.0 / Math.Sin(takeoffAngle / 2.0)).ToArray();
 
 
     /// <summary>
@@ -1849,7 +1849,7 @@ public static class HorizontalAxisConverter
     public static double[] NeutronEnergyToD(IEnumerable<double> energy, double takeoffAngle) => energy.Select(e => UniversalConstants.Convert.EnergyToNeutronWaveLength(e) / 2.0 / Math.Sin(takeoffAngle / 2.0)).ToArray();
 
 
-   
+
 
 
     /// <summary>

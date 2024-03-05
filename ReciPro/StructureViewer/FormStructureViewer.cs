@@ -11,9 +11,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using C4 = OpenTK.Graphics.Color4;
+using M3d = OpenTK.Matrix3d;
 using V3 = OpenTK.Vector3d;
 using V4 = OpenTK.Vector4d;
-using M3d = OpenTK.Matrix3d;
 #endregion
 
 namespace ReciPro;
@@ -1589,7 +1589,7 @@ public partial class FormStructureViewer : Form
         }
 
         textBoxCalcInformation.AppendText($"Generation of legend control: {sw.ElapsedMilliseconds}ms.\r\n");
-        
+
         SkipEvent = true;
         numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
         numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
@@ -1823,7 +1823,7 @@ public partial class FormStructureViewer : Form
     }
     private void splitContainer1_Panel1_ClientSizeChanged(object sender, EventArgs e)
     {
- 
+
     }
 
     private void numericBoxClientWidth_ValueChanged(object sender, EventArgs e)
@@ -1881,5 +1881,5 @@ public partial class FormStructureViewer : Form
     }
     #endregion
 
- 
+
 }

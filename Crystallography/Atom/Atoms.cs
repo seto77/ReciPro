@@ -35,7 +35,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
 
     public override int GetHashCode()
     {
-        return new { X,Y,Z,Occ,Label,WyckoffNumber,SymmetrySeriesNumber,Dsf,Atom,Texture }.GetHashCode();
+        return new { X, Y, Z, Occ, Label, WyckoffNumber, SymmetrySeriesNumber, Dsf, Atom, Texture }.GetHashCode();
     }
     #endregion
 
@@ -91,7 +91,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public Vector3DBase PositionError => new(X_err, Y_err, Z_err);
     [XmlIgnore]
     public Vector3DBase Position => new(X, Y, Z);
-    
+
     [XmlIgnore]
     public (float Ambient, float Diffusion, float Specular, float Shininess, float Emission) Texture
     {

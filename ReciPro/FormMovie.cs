@@ -1,5 +1,4 @@
 ﻿using Crystallography.OpenGL;
-using ImagingSolution.Control;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -113,7 +112,7 @@ public partial class FormMovie : Form
             }
             var codec = radioButtonH264.Checked ? "libx264" : "libx265";
             var speed = (string)comboBoxSpeed.SelectedItem;
-            
+
             var p = Process.Start(new ProcessStartInfo()
             {
                 WorkingDirectory = path + "ffmpeg",

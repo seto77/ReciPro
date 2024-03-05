@@ -1,13 +1,11 @@
 ﻿#region using
 using MathNet.Numerics;
-using OpenTK.Graphics.ES11;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.IO.Pipes;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -35,11 +33,12 @@ public partial class FormSpotIDV2 : Form
     public double PixelSize
     {
         set => numericBoxPixelSize.Value = value;
-        get {
+        get
+        {
 
             if (radioButtonPixelSizeUnitReal.Checked) return numericBoxPixelSize.Value;
             else return Math.Tan(2 * Math.Asin(WaveLength * numericBoxPixelSize.Value / 2)) * CameraLength;
-        } 
+        }
     }
     public double CameraLength { set => numericBoxCameraLength.Value = value; get => numericBoxCameraLength.Value; }
 
@@ -117,7 +116,7 @@ public partial class FormSpotIDV2 : Form
                 radioButtonPixelSizeUnitReal.Checked = true;
                 waveLengthControl1.WaveSource = WaveSource.Electron;
                 waveLengthControl1.Energy = Ring.DigitalMicrographProperty.AccVoltage / 1000.0;
-                PixelSize= Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000.0;
+                PixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000.0;
                 CameraLength = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000 / Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.DigitalMicrographProperty.PixelScale / 2));
                 //var pixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron;
                 //var scale = Ring.DigitalMicrographProperty.PixelScale;
@@ -147,7 +146,7 @@ public partial class FormSpotIDV2 : Form
             dataSet.DataTableSpot.Add(true, area, r.PrmsPv, r.PrmsBg, r.R);
         }
         else if (fileName.EndsWith("tif") && Ring.TIA_PixelSize != 0)
-            PixelSize= WaveLength * CameraLength / Ring.TIA_PixelSize * 1E-11;
+            PixelSize = WaveLength * CameraLength / Ring.TIA_PixelSize * 1E-11;
 
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
 

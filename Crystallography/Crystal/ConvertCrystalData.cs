@@ -95,7 +95,7 @@ public class ConvertCrystalData
                     Thread.Sleep(1);
                 }
 
-                foreach(var c in cry.Where(e=>e.FlexiblePlane!=null && e.FlexiblePlane.Count>0))
+                foreach (var c in cry.Where(e => e.FlexiblePlane != null && e.FlexiblePlane.Count > 0))
                     c.Plane = c.FlexiblePlane;
             }
             catch { }
@@ -1000,11 +1000,11 @@ public class ConvertCrystalData
                 if (label.StartsWith("_chemical_name", Ord)) name += data + " ";
 
                 //ここから格子定数
-                if (label == "_cell_length_a") aList.Add((i,data));
+                if (label == "_cell_length_a") aList.Add((i, data));
                 else if (label == "_cell_length_b") bList.Add((i, data));
                 else if (label == "_cell_length_c") cList.Add((i, data));
                 else if (label == "_cell_angle_alpha") alphaList.Add((i, data));
-                else if (label == "_cell_angle_beta" ) betaList.Add((i, data));
+                else if (label == "_cell_angle_beta") betaList.Add((i, data));
                 else if (label == "_cell_angle_gamma") gammaList.Add((i, data));
 
                 //ここからジャーナル情報
@@ -1027,7 +1027,7 @@ public class ConvertCrystalData
                 else if (label == "_symmetry_equiv_pos_as_xyz") operations.Add(data);
             }
 
-        if (aList.Count == 0 || bList.Count ==0 || cList.Count ==0 || alphaList.Count ==0 || betaList.Count == 0 || gammaList.Count == 0) return null;
+        if (aList.Count == 0 || bList.Count == 0 || cList.Count == 0 || alphaList.Count == 0 || betaList.Count == 0 || gammaList.Count == 0) return null;
 
         if (name.Length == 0 || name == "?" || name == "? ?" || name.Trim().Length == 0)
             name = chemical_formula_sum;
@@ -1045,7 +1045,7 @@ public class ConvertCrystalData
                     atomCIF.Add(CIF[i]);
                     flag = true;
                 }
-                else if(atomCIF.Count != 0)
+                else if (atomCIF.Count != 0)
                 {
                     flag = false;
                     a = aList.Count == 1 ? aList[0].value : aList.Last(e => e.index < i).value;
@@ -1317,7 +1317,7 @@ public class ConvertCrystalData
             if (symmetrySeriesNumber != -1)
                 return symmetrySeriesNumber;
         }
-        
+
         SgNameHM = SgNameHM.TrimStart(' ').TrimEnd(' ');
 
 
@@ -1775,7 +1775,7 @@ public class ConvertCrystalData
                 var u12 = double.IsNaN(a.Dsf.U12) ? 0 : a.Dsf.U12 * 100;
                 sb.AppendLine($"{a.Label} {u11:f6} {u22:f6} {u33:f6} {u23:f6} {u31:f6} {u12:f6}");
             }
-        } 
+        }
         #endregion
 
         return sb.ToString();

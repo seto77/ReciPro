@@ -305,7 +305,7 @@ public class Marquardt
     /// <returns>Prms[i][j]はi番目のFunctionのj番目の最適パラメータ. Errorはまだ未実装. Rは残差</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static (double[][] Prms, double[][] Error, double R)
-        Solve(in (double[] x, double y, double w)[] obsValues, Function[] functions,in  Precision precision = Precision.Medium)
+        Solve(in (double[] x, double y, double w)[] obsValues, Function[] functions, in Precision precision = Precision.Medium)
     {
         #region 計算精度をセット
         int countMax = 200;

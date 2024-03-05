@@ -295,7 +295,7 @@ public partial class SearchCrystalControl : UserControl
         //if (flagCount == 0)
         //    CrystalDatabaseControl.Suspend();
         //else
-            CrystalDatabaseControl.Resume();//バインディングを繋げる
+        CrystalDatabaseControl.Resume();//バインディングを繋げる
 
 
         this.Enabled = true;

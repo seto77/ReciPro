@@ -22,7 +22,7 @@ public static class SymmetryStatic
     #endregion
 
     #region　static fields
-    public static readonly ushort[][][] PositionsDictionary = 
+    public static readonly ushort[][][] PositionsDictionary =
         [
 				#region positions
 //0 unk
@@ -8152,7 +8152,7 @@ public static class SymmetryStatic
             #endregion CoodStr
         ];
 
-    public static readonly ushort[][] OperationDictionary = 
+    public static readonly ushort[][] OperationDictionary =
         [
 				#region OperationDictionary
  //0	Unknown
@@ -9239,7 +9239,7 @@ public static class SymmetryStatic
 [0,],
             #endregion
         ];
-    public static readonly SO[] OperationList  = 
+    public static readonly SO[] OperationList =
         [
 				#region OperationList
 
@@ -9727,7 +9727,7 @@ new(-2,+1,(1,0,1),(d14,d14,d34)),
 new(-4,+1,(0,1,0),(0,d12,d14)),
             #endregion
         ];
-    public static readonly byte[][] SiteSymmetryDictionary = 
+    public static readonly byte[][] SiteSymmetryDictionary =
         [
 				#region siteSymmetry
 //0  unk
@@ -10815,7 +10815,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
 #endregion
         ];
 
-    public static readonly string[] SiteSymmetryList = 
+    public static readonly string[] SiteSymmetryList =
         [
 				#region siteSymmetryList
 "1",
@@ -10901,7 +10901,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     public static readonly ushort[][][] BelongingNumberOfSymmetry = [
 				#region BelongingNumberOfSymmetry
 					[
-						[0]
+                        [0]
                     ],
 					//triclinic
 					[

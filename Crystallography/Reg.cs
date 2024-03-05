@@ -1,8 +1,7 @@
-﻿using MemoryPack.Compression;
-using MemoryPack;
+﻿using MemoryPack;
+using MemoryPack.Compression;
 using Microsoft.Win32;
 using System.Threading;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Crystallography;
@@ -18,7 +17,7 @@ public static class Reg
 
         string regName;
 
-        if(owner is Control c)
+        if (owner is Control c)
         {
             if (c.TopLevelControl != null && c.TopLevelControl.Name != c.Name)
                 regName = c.TopLevelControl.Name + "." + c.Name + "." + propName;

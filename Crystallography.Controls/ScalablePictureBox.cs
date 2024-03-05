@@ -370,7 +370,7 @@ public partial class ScalablePictureBox : UserControl
     public bool TitleVisible { get; set; } = false;
     public (string Text, Font Font, Color Color1, Color Color2) Title { get; set; }
 
-    
+
     #endregion プロパティ
 
     /// <summary>
@@ -507,12 +507,12 @@ public partial class ScalablePictureBox : UserControl
             _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
             Zoom *= 0.5f;
         }
-        else if ((e.Button == MouseButtons.Left||e.Button== MouseButtons.Middle) && e.Clicks == 1)
+        else if ((e.Button == MouseButtons.Left || e.Button == MouseButtons.Middle) && e.Clicks == 1)
         {
             justBeforePoint = e.Location;
         }
     }
-    
+
 
     private bool manualSpotMode = false;
 
@@ -535,7 +535,7 @@ public partial class ScalablePictureBox : UserControl
             mouseRangeEnd = e.Location;
             pictureBox.Refresh();
         }
-        else if ((e.Button == MouseButtons.Left||e.Button == MouseButtons.Middle) && MouseTranslation && justBeforePoint != e.Location)
+        else if ((e.Button == MouseButtons.Left || e.Button == MouseButtons.Middle) && MouseTranslation && justBeforePoint != e.Location)
         {
             Center = new PointD(Center.X + (justBeforePoint.X - e.Location.X) / Zoom, Center.Y + (justBeforePoint.Y - e.Location.Y) / Zoom);
             justBeforePoint = e.Location;
@@ -1018,13 +1018,13 @@ public partial class ScalablePictureBox : UserControl
     public void SaveAsPNG()
     {
         var dlg = new SaveFileDialog() { Filter = "*.png|*.png" };
-        if(dlg.ShowDialog()== DialogResult.OK)
+        if (dlg.ShowDialog() == DialogResult.OK)
             GetBitmapImage().Save(dlg.FileName);
     }
 
     public void CopyAsBitmap()
     {
-        Clipboard.SetDataObject(GetBitmapImage(),true);
+        Clipboard.SetDataObject(GetBitmapImage(), true);
     }
 
     public void SaveAsMetafile() => metafile(true);

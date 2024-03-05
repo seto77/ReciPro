@@ -1,11 +1,9 @@
-﻿using MemoryPack.Compression;
-using MemoryPack;
+﻿using MemoryPack;
 using System.Buffers;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using static ReciPro.FormImageSimulator;
-using System.Linq;
-using ReciPro.Properties;
 
 namespace ReciPro;
 

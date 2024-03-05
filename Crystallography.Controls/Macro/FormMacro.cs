@@ -239,7 +239,7 @@ namespace Crystallography.Controls
                 }
 
                 _cancelSource = new CancellationTokenSource();
-                task = new Task(()=> Engine.CreateScriptSourceFromString(srcCode).Execute(Scope), _cancelSource.Token);
+                task = new Task(() => Engine.CreateScriptSourceFromString(srcCode).Execute(Scope), _cancelSource.Token);
                 task.RunSynchronously();
             }
             catch (Microsoft.Scripting.ArgumentTypeException ex) { MessageBox.Show(ex.Message); }

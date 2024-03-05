@@ -45,9 +45,9 @@ public static class Miscellaneous
     {
         var r = ratio > 1 ? 1 : ratio < 0 ? 0 : ratio;
         return Color.FromArgb(
-            (byte)(col1.A * r + col2.A * (1 - r)), 
-            (byte)(col1.R * r + col2.R * (1 - r)), 
-            (byte)(col1.G * r + col2.G * (1 - r)), 
+            (byte)(col1.A * r + col2.A * (1 - r)),
+            (byte)(col1.R * r + col2.R * (1 - r)),
+            (byte)(col1.G * r + col2.G * (1 - r)),
             (byte)(col1.B * r + col2.B * (1 - r)));
     }
 

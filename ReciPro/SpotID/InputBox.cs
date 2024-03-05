@@ -6,7 +6,7 @@ public partial class InputBox : UserControl
 {
     public InputBox() => InitializeComponent();
 
-    public double WaveLength    {get;set;    }
+    public double WaveLength { get; set; }
 
     public double CameraLength { get; set; } = 0;
 

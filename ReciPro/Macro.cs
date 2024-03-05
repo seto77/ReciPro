@@ -92,7 +92,7 @@ public class Macro : MacroBase
             p.help.Add("ReciPro.DifSim.Beam_PrecessionElectron() # Set the incident electron beam precessing.");
             p.help.Add("ReciPro.DifSim.Beam_Convergence() # Set the incident electron beam converging.");
 
-            p.help.Add("ReciPro.DifSim.Calc_Excitation() # Calculate the spot intensities with excitation error only.");  
+            p.help.Add("ReciPro.DifSim.Calc_Excitation() # Calculate the spot intensities with excitation error only.");
             p.help.Add("ReciPro.DifSim.Calc_Kinematical() # Calculate the spot intensities using the excitation error and the structure factor.");
             p.help.Add("ReciPro.DifSim.Calc_Dynamical() # Calculate the spot intensities  by the dynamical theory.");
 
@@ -112,23 +112,23 @@ public class Macro : MacroBase
         public void Open() => Execute(new Action(() => difSim.Visible = true));
         public void Close() => Execute(new Action(() => difSim.Visible = false));
 
-        public void Source_Xray() {  difSim.Source = WaveSource.Xray; }
-        public void Source_Electron() {  difSim.Source = WaveSource.Electron; }
-        public void Source_Neutron() {  difSim.Source = WaveSource.Neutron; }
+        public void Source_Xray() { difSim.Source = WaveSource.Xray; }
+        public void Source_Electron() { difSim.Source = WaveSource.Electron; }
+        public void Source_Neutron() { difSim.Source = WaveSource.Neutron; }
 
         public double Energy { get => difSim.Energy; set => difSim.Energy = value; }
         public double Wavelength { get => difSim.WaveLength; set => difSim.WaveLength = value; }
         public double Thickness { get => difSim.Thickness; set => difSim.Thickness = value; }
-        public int NumberOfDiffractedWaves { get => difSim.NumberOfDiffractedWaves; set=> difSim.NumberOfDiffractedWaves = value; } 
+        public int NumberOfDiffractedWaves { get => difSim.NumberOfDiffractedWaves; set => difSim.NumberOfDiffractedWaves = value; }
 
-        public void Beam_Parallel(){ difSim.BeamMode = FormDiffractionSimulator.BeamModes.Parallel; }
+        public void Beam_Parallel() { difSim.BeamMode = FormDiffractionSimulator.BeamModes.Parallel; }
         public void Beame_PrecessionXray() { difSim.BeamMode = FormDiffractionSimulator.BeamModes.PrecessionXray; }
         public void Beam_PrecessionElectron() { difSim.BeamMode = FormDiffractionSimulator.BeamModes.PrecessionElectron; }
         public void Beam_Convergence() { difSim.BeamMode = FormDiffractionSimulator.BeamModes.Convergence; }
 
         public void Calc_Excitation() { difSim.CalcMode = FormDiffractionSimulator.CalcModes.Excitation; }
         public void Calc_Kinematical() { difSim.CalcMode = FormDiffractionSimulator.CalcModes.Kinematical; }
-        public void Calc_Dynamical() {  difSim.CalcMode = FormDiffractionSimulator.CalcModes.Dynamical; }
+        public void Calc_Dynamical() { difSim.CalcMode = FormDiffractionSimulator.CalcModes.Dynamical; }
 
         public double ImageResolution { get => difSim.Resolution; set => difSim.Resolution = value; }
         public int ImageWidth { get => difSim.ClientWidth; set => difSim.ClientWidth = value; }
@@ -138,7 +138,7 @@ public class Macro : MacroBase
 
         public bool SkipRendering { get => difSim.SkipRendering; set => difSim.SkipRendering = value; }
 
-        public string SpotInfo() => (Execute (() => spotInfo()));
+        public string SpotInfo() => (Execute(() => spotInfo()));
         public string spotInfo()
         {
             var gamma = 1 + UniversalConstants.e0 * Energy * 1000 / UniversalConstants.m0 / UniversalConstants.c2;

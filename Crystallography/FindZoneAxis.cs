@@ -157,7 +157,7 @@ namespace Crystallography
                 //if (zoneAxis1[n].plane1.IsRootIndex)
                 for (int m = 0; m < zoneAxis2.Length; m++)
                 {
-                    var v1= zoneAxis1[n].u * cry.A_Axis + zoneAxis1[n].v * cry.B_Axis + zoneAxis1[n].w * cry.C_Axis;
+                    var v1 = zoneAxis1[n].u * cry.A_Axis + zoneAxis1[n].v * cry.B_Axis + zoneAxis1[n].w * cry.C_Axis;
                     var v2 = zoneAxis2[m].u * cry.A_Axis + zoneAxis2[m].v * cry.B_Axis + zoneAxis2[m].w * cry.C_Axis;
                     double calcAngle = Vector3D.AngleBetVectors(v1, v2);
                     if (angleMax >= calcAngle && angleMin <= calcAngle)

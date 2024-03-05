@@ -40,12 +40,12 @@ public partial class GraphControl : UserControl
     #endregion イベント
 
     #region プロパティ、フィールド
-    
+
     /// <summary>
     /// グラフの描き方の列挙体
     /// </summary>
     public enum DrawingMode { Line, Histogram, Point }
-    
+
     private Bitmap Bmp;
     private Graphics G;
 

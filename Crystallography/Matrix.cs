@@ -383,7 +383,7 @@ public class Matrix3D : ICloneable
     /// <returns></returns>
     public static Matrix3D RotX(double theta)
     {
-        double cos = Math.Cos(theta),sin = Math.Sin(theta);
+        double cos = Math.Cos(theta), sin = Math.Sin(theta);
         return new Matrix3D()
         {
             E22 = cos,
@@ -400,7 +400,7 @@ public class Matrix3D : ICloneable
     /// <returns></returns>
     public static Matrix3D RotY(double theta)
     {
-        double cos = Math.Cos(theta),sin = Math.Sin(theta);
+        double cos = Math.Cos(theta), sin = Math.Sin(theta);
         return new Matrix3D()
         {
             E11 = cos,
@@ -446,7 +446,7 @@ public class Matrix3D : ICloneable
         return GenerateRamdomRotationMatrix(rn1, rn2, rn3);
     }
 
-    public static Matrix3D GenerateRamdomRotationMatrix(in double rn1,in  double rn2, in double rn3)
+    public static Matrix3D GenerateRamdomRotationMatrix(in double rn1, in double rn2, in double rn3)
     {
         double phi = rn1 * 2 * Math.PI;
         double cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
@@ -477,7 +477,7 @@ public class Matrix3D : ICloneable
     /// <param name="theta"></param>
     /// <param name="ksi"></param>
     /// <returns></returns>
-    public static Matrix3D GenerateEquiareaMatrix(in double phi,in double theta, in double ksi)
+    public static Matrix3D GenerateEquiareaMatrix(in double phi, in double theta, in double ksi)
     {
         double cosPhi = Math.Cos(phi * 2 * Math.PI), sinPhi = Math.Sin(phi * 2 * Math.PI);
         double cosTheta = theta * 2 - 1, sinTheta = Math.Sqrt(1 - cosTheta * cosTheta);
@@ -763,7 +763,7 @@ public class Vector3DBase : ICloneable
         var aCos = Normarize(v1) * Normarize(v2);
         if (aCos > 1)
             return 0;
-        else 
+        else
             return aCos < -1 ? Math.PI / 2 : Math.Acos(aCos);
     }
 
@@ -1022,7 +1022,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
     }
 
     //2つのベクトルの外積を返す
-    public static Vector3D VectorProduct(Vector3D v1, Vector3D v2) 
+    public static Vector3D VectorProduct(Vector3D v1, Vector3D v2)
         => new Vector3D(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 
     /// <summary>

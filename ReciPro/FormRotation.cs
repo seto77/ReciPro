@@ -515,7 +515,7 @@ public partial class FormRotationMatrix : Form
     }
     #endregion
 
-  
+
 
     private void ButtonViewIsometric_Click(object sender, EventArgs e)
         => glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);

@@ -101,7 +101,7 @@ namespace Crystallography.Controls
 
             c.SetVectorOfG((double)numericUpDownThresholdD.Value / 10, waveLengthControl1.WaveSource, false);
 
-            Array.Sort(c.VectorOfG,(g1, g2) => g2.d.CompareTo(g1.d));
+            Array.Sort(c.VectorOfG, (g1, g2) => g2.d.CompareTo(g1.d));
 
             if (c.VectorOfG.Length == 0) return;
 

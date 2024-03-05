@@ -169,7 +169,7 @@ public static class BitmapConverter
     public static byte[] ToByteGray(Bitmap Bmp)
     {
         var bmpData = Bmp.LockBits(new Rectangle(0, 0, Bmp.Width, Bmp.Height), ImageLockMode.ReadOnly, Bmp.PixelFormat);
-        byte[] rgbValues =GC.AllocateUninitializedArray<byte>(bmpData.Stride * Bmp.Height);
+        byte[] rgbValues = GC.AllocateUninitializedArray<byte>(bmpData.Stride * Bmp.Height);
         Marshal.Copy(bmpData.Scan0, rgbValues, 0, bmpData.Stride * Bmp.Height);
         Bmp.UnlockBits(bmpData);
 

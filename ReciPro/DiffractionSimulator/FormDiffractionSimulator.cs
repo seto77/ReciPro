@@ -1,11 +1,8 @@
 ﻿#region using
 using BitMiracle.LibTiff.Classic;
-using Crystallography;
-using Crystallography.Controls;
 using Crystallography.Mathematics;
 using Crystallography.OpenGL;
 using MathNet.Numerics;
-using MathNet.Numerics.Providers.MKL;
 using Microsoft.Scripting.Utils;
 using OpenTK;
 using System.Collections.Generic;
@@ -18,13 +15,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Windows.ApplicationModel.Activation;
-using static IronPython.Modules._ast;
-using static ReciPro.FormDiffractionSimulatorDynamicCompression;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using V3 = OpenTK.Vector3d;
 #endregion
 
@@ -2886,5 +2878,5 @@ public partial class FormDiffractionSimulator : Form
     }
     #endregion
 
-  
+
 }

@@ -20,7 +20,7 @@ public partial class FormAnotherSpaceGroup : Form
         }
     }
     public int SeriesNum => candidates[listBox.SelectedIndex].SeriesNum;
-    
+
 
     public FormAnotherSpaceGroup()
     {

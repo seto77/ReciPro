@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using M3d = OpenTK.Matrix3d;
 using V2d = OpenTK.Vector2d;
 using V3d = OpenTK.Vector3d;

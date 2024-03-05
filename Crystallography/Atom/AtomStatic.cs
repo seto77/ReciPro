@@ -569,7 +569,7 @@ public static class AtomStatic
     /// <summary>
     /// X線による原子散乱因子 XrayScattering[AtomicNumber][SubNumber]
     /// </summary>
-    public static readonly ES[][] XrayScattering = 
+    public static readonly ES[][] XrayScattering =
         [
     
 			#region
@@ -1216,7 +1216,7 @@ public static class AtomStatic
     /// Peng 1996,1998
     /// a1,a2,a3,a4,a5,b1,b2,b3,b4,b5,valence,method 
     /// </summary>
-    public static readonly ES[][] ElectronScatteringPeng = 
+    public static readonly ES[][] ElectronScatteringPeng =
         [
 			#region
 	[
@@ -1530,7 +1530,7 @@ public static class AtomStatic
     /// 電子線による原子散乱因子 ElectronScattering[AtomicNumber]  8 gaussian
     /// a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8
     /// </summary>
-    public static readonly ES[] ElectronScatteringEightGaussian = 
+    public static readonly ES[] ElectronScatteringEightGaussian =
     [
 			#region
 new(0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0 ,   0   ),
@@ -2068,7 +2068,7 @@ new(4.86738014,0.319974401,4.58872425,
     /// <summary>
     /// 中性子の散乱長 単位はfm
     /// </summary>
-    public static readonly Complex[][] NeutronCoherentScattering = 
+    public static readonly Complex[][] NeutronCoherentScattering =
         [
 			#region 単位はfm
 					[new(0 ,   0   )],
@@ -2520,7 +2520,7 @@ new(4.86738014,0.319974401,4.58872425,
         {
             Valence = valence;
             Method = methods;
-            Prms = [(a1, b1), (a2, b2), (a3, b3), (a4, b4) ];
+            Prms = [(a1, b1), (a2, b2), (a3, b3), (a4, b4)];
             Factor = new Func<double, double>(s2 => (Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) + c) * 0.1);
         }
 
@@ -2627,14 +2627,14 @@ new(4.86738014,0.319974401,4.58872425,
                     double f_kMinusG = 0, f_kPlusG = 0;
                     foreach (var (A, B) in Prms)
                     {
-                        f_kMinusG += A * Math.Exp(-kMinusG / 400 * B );
-                        f_kPlusG += A * Math.Exp(-kPlusG / 400 * B );
+                        f_kMinusG += A * Math.Exp(-kMinusG / 400 * B);
+                        f_kPlusG += A * Math.Exp(-kPlusG / 400 * B);
                     }
                     return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (gLen2 - kMinusG - kPlusG) / 4));// * sinThetaを外に出して、少しでも早く
                 }, 0, 2 * Math.PI, 30);
             }, k0 * Math.Sin(inner), k0 * Math.Sin(outer), 80);
-            
-            return gamma / Math.PI/Math.PI/ k0 * result * 0.01;
+
+            return gamma / Math.PI / Math.PI / k0 * result * 0.01;
         }
 
         /// <summary>
@@ -2706,7 +2706,7 @@ new(4.86738014,0.319974401,4.58872425,
                     }
                     return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));// * sinThetaを外に出して、少しでも早く
                 }, 0, 2 * Math.PI, 20) * sinθ;
-            }, inner, outer, 60) ;
+            }, inner, outer, 60);
         }
 
         /// <summary>
@@ -7199,7 +7199,7 @@ new(4.86738014,0.319974401,4.58872425,
 
     public static PointD[] MassAbsorptionCoefficient(int z)
     {
-        List<PointD> pt =[];
+        List<PointD> pt = [];
         for (int n = 0; n < AtomStaticSub.MassAbsorptionCoefficient[z].Length; n++)
             pt.AddRange(AtomStaticSub.MassAbsorptionCoefficient[z][n].Select(e => new PointD(e)));
         return [.. pt];
@@ -7387,8 +7387,8 @@ new(4.86738014,0.319974401,4.58872425,
             reader.Close();
 
             int i = 0;
-            int z = Convert.ToInt32(str[1].Split([ ',' ])[0].Replace("<b>Z=", ""));//2行目から原子番号を読み取る
-                                                                                              //edgeの値を読み取る
+            int z = Convert.ToInt32(str[1].Split([','])[0].Replace("<b>Z=", ""));//2行目から原子番号を読み取る
+                                                                                 //edgeの値を読み取る
             while (!str[i].Contains("edge")) i++;
             var edgeNo = Convert.ToInt32(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0]);
             i += 2;

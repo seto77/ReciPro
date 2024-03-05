@@ -1,6 +1,4 @@
 ﻿using MathNet.Numerics;
-using System;
-using System.Drawing.Printing;
 using System.Numerics;
 using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.X86;

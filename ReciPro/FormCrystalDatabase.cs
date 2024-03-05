@@ -33,7 +33,7 @@ public partial class FormCrystalDatabase : Form
 
     private void searchCrystalControl_VisibleChanged(object sender, EventArgs e)
     {
-        if(Visible)
+        if (Visible)
             FormMain.toolStripButtonDatabase.Checked = true;
     }
 }

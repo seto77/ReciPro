@@ -1,17 +1,10 @@
-﻿using MathNet.Numerics.Integration;
-using Microsoft.VisualBasic;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Crystallography.AtomStatic;
-using static IronPython.Modules._ast;
-using static OpenTK.Graphics.OpenGL.GL;
 using static System.Math;
 
 namespace ReciPro;

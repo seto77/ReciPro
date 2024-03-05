@@ -34,7 +34,7 @@ public static partial class NativeWrapper
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _PointwiseMultiply(int dim, double* mat1, double* mat2, double* result);
-    
+
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _AdjointAndMultiply(int dim, double* mat1, double* mat2, double* result);
     [LibraryImport("Crystallography.Native.dll")]
@@ -568,7 +568,7 @@ public static partial class NativeWrapper
     #endregion 固有値
 
     #region 行列指数関数
-    static public DenseMatrix MatrixExponential(DenseMatrix mat) 
+    static public DenseMatrix MatrixExponential(DenseMatrix mat)
         => new(mat.ColumnCount, mat.ColumnCount, MatrixExponential(mat.ColumnCount, mat.Values));
 
     static unsafe public Complex[] MatrixExponential(in int dim, Complex[] mat)
@@ -596,7 +596,7 @@ public static partial class NativeWrapper
     unsafe static public void BlendAdjointMul_Mul_Mul(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3,
         in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
-        fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, _mat2 = mat2,_mat3 = mat3, res = result)
+        fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, _mat2 = mat2, _mat3 = mat3, res = result)
             _BlendAdJointMul_Mul_Mul(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
@@ -805,7 +805,7 @@ public static partial class NativeWrapper
         return (profile, pixels);
     }
 
-  
+
 
 
     #endregion

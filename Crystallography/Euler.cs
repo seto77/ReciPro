@@ -357,9 +357,9 @@ public class Euler
     /// <returns></returns>
     public static Matrix3D ToMatrix(double phi, double theta, double psi)
     {
-        double cosPhi = Math.Cos(phi),sinPhi = Math.Sin(phi);
-        double cosTheta = Math.Cos(theta),sinTheta = Math.Sin(theta);
-        double cosPsi = Math.Cos(psi),sinPsi = Math.Sin(psi);
+        double cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
+        double cosTheta = Math.Cos(theta), sinTheta = Math.Sin(theta);
+        double cosPsi = Math.Cos(psi), sinPsi = Math.Sin(psi);
 
         return new Matrix3D(
             cosPhi * cosPsi - cosTheta * sinPhi * sinPsi,

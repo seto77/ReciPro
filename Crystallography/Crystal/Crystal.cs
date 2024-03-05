@@ -86,7 +86,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #region プロパティ、フィールド
 
     #region PDIndexer関連
-    
+
     /// <summary>
     /// フレキシブルモード. PDIndexerで利用
     /// </summary>
@@ -154,7 +154,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public ParallelQuery<Vector3D> VectorOfG_P; 
+    public ParallelQuery<Vector3D> VectorOfG_P;
 
 
     /// <summary>
@@ -1234,25 +1234,25 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         //if (excludeLatticeCondition)
         //{
-            //if (Symmetry.LatticeTypeStr == "F")
-            //    directions = new [] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) };
-            //else if (Symmetry.LatticeTypeStr == "A")
-            //    directions = new [] { (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 0), (-1, 0, 0) };
-            //else if (Symmetry.LatticeTypeStr == "B")
-            //    directions = new [] { (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1), (0, 1, 0), (0, -1, 0) };
-            //else if (Symmetry.LatticeTypeStr == "C")
-            //    directions = new [] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 0, 1), (0, 0, -1) };
-            //else if (Symmetry.LatticeTypeStr == "I")
-            //    directions = new [] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1) };
-            //else if (Symmetry.LatticeTypeStr == "R" && Symmetry.SpaceGroupHMsubStr == "H")
-            //    directions = new [] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) };
-            //else if (Symmetry.CrystalSystemStr == "trigonal" || Symmetry.CrystalSystemStr == "hexagonal")
-            //    directions = new [] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) };
-            //else
-            //directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
+        //if (Symmetry.LatticeTypeStr == "F")
+        //    directions = new [] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) };
+        //else if (Symmetry.LatticeTypeStr == "A")
+        //    directions = new [] { (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 0), (-1, 0, 0) };
+        //else if (Symmetry.LatticeTypeStr == "B")
+        //    directions = new [] { (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1), (0, 1, 0), (0, -1, 0) };
+        //else if (Symmetry.LatticeTypeStr == "C")
+        //    directions = new [] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 0, 1), (0, 0, -1) };
+        //else if (Symmetry.LatticeTypeStr == "I")
+        //    directions = new [] { (1, 1, 0), (1, -1, 0), (-1, 1, 0), (-1, -1, 0), (0, 1, 1), (0, 1, -1), (0, -1, 1), (0, -1, -1), (1, 0, 1), (1, 0, -1), (-1, 0, 1), (-1, 0, -1) };
+        //else if (Symmetry.LatticeTypeStr == "R" && Symmetry.SpaceGroupHMsubStr == "H")
+        //    directions = new [] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) };
+        //else if (Symmetry.CrystalSystemStr == "trigonal" || Symmetry.CrystalSystemStr == "hexagonal")
+        //    directions = new [] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) };
+        //else
+        //directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
         //}
         //else
-           // directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
+        // directions = new[] { (1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };//(-1, 0, 0)は除いておく
 
         #endregion
 
@@ -1847,7 +1847,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                                 foreach (var v in atm.Atom)
                                 {
                                     var diffPos = MatrixReal * (v + new Vector3DBase(xShift, yShift, zShift)) - pos;
-                                    if (maxLen2 > (diffPos ).Length2)
+                                    if (maxLen2 > (diffPos).Length2)
                                     {
                                         lock (lockObj)
                                         {

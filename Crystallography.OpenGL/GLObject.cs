@@ -87,8 +87,8 @@ public readonly struct Vertex
     /// <param name="uv"></param>
     public Vertex(V3f position, V3f normal, V2f uv)
     {
-        if (GLControlAlpha.DisableTextRendering  
-            ||(GLControlAlpha.GraphicsInfo.Count == 1 && GLControlAlpha.GraphicsInfo[0].Product.Contains("AMD Radeon", StringComparison.OrdinalIgnoreCase)))
+        if (GLControlAlpha.DisableTextRendering
+            || (GLControlAlpha.GraphicsInfo.Count == 1 && GLControlAlpha.GraphicsInfo[0].Product.Contains("AMD Radeon", StringComparison.OrdinalIgnoreCase)))
             position = new V3f(0, 0, 0);
         Position = position;
         Normal = normal;
@@ -450,7 +450,7 @@ abstract public class GLObject
         GL.BindBuffer(BufferTarget.ElementArrayBuffer, Obj.EBO);
 
         int offset = 0;
-       
+
         foreach (var (t, len) in Primitives)
         {
             if ((t == PT.Triangles || t == PT.TriangleStrip || t == PT.TriangleFan || t == PT.Quads)
@@ -1037,7 +1037,7 @@ public class Polyhedron : GLObject
 /// <summary>
 /// 平行六面体(原点と3辺のベクトルで定義)
 /// </summary>
-public class Parallelepiped(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMode mode) 
+public class Parallelepiped(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMode mode)
     : Polyhedron(new[] { o, o + a, o + b, o + c, o + a + b, o + b + c, o + c + a, o + a + b + c }, mat, mode)
 {
 }

@@ -16,7 +16,7 @@ static public class Algebra
         //絶対値を小さい順に並び変え
         var vals = new[] { Math.Abs(h), Math.Abs(k), Math.Abs(l) };
         Array.Sort(vals);
-        
+
         if (vals[0] == 1 || vals[1] == 1 || vals[2] < 2)
             return 1;
 

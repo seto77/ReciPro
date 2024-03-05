@@ -64,14 +64,16 @@ public partial class WaveLengthControl : UserControl
 
     public bool Monochrome
     {
-        set 
-        { numericBoxEnergy.Visible = numericBoxWaveLength.Visible = value;
-            flowLayoutPanelElement.Visible = WaveSource == WaveSource.Xray && value; 
-            labelFlatWhite.Visible = !value; }
+        set
+        {
+            numericBoxEnergy.Visible = numericBoxWaveLength.Visible = value;
+            flowLayoutPanelElement.Visible = WaveSource == WaveSource.Xray && value;
+            labelFlatWhite.Visible = !value;
+        }
         get => numericBoxEnergy.Visible;
     }
 
-[Localizable(true)]
+    [Localizable(true)]
     public Font TextFont
     {
         set
@@ -280,7 +282,7 @@ public partial class WaveLengthControl : UserControl
         comboBoxXRayElement.SelectedIndex = 0;
     }
 
-    
+
 
     /// <summary>
     /// X線のElementが変更されたとき

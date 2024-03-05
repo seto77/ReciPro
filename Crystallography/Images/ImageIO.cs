@@ -73,7 +73,7 @@ public static class ImageIO
         b[3] = br.ReadByte(); b[2] = br.ReadByte(); b[1] = br.ReadByte(); b[0] = br.ReadByte();
         return BitConverter.ToSingle(b, 0);
     }
-    
+
     public static void SetBytePosition(string str, ref BinaryReader br, int count)
     {
         br.Close();
@@ -333,7 +333,7 @@ public static class ImageIO
 
                 if (!sameSize)//前回と同じサイズではないとき
                     Ring.Intensity.Clear();
-                
+
                 for (int n = 0; n < length; n++)
                 {
                     //マイナスの値が入ることを考慮した変更 2024/02/27 辻野さんからのメール参考
@@ -447,7 +447,7 @@ public static class ImageIO
                 return true;
             }
             #endregion
-          
+
             return false;
 
 
@@ -847,7 +847,7 @@ public static class ImageIO
 
                 (float[][] dataImageRight, _) = hdf.GetValue2<float>($"{groupID2name}/detector_2d_{rightDetector}/{tag[i]}/detector_data");
 
-                
+
 
                 if (dataImageLeft != null && dataImageRight != null)
                 {
@@ -993,7 +993,7 @@ public static class ImageIO
 
 
             var data_length = 0; // 0 は ushort (16bit), 1 は uint (32bit), それ以外は無効
-            if (headers.Length>13 && headers[13] == "TYPE=long_integer;")
+            if (headers.Length > 13 && headers[13] == "TYPE=long_integer;")
                 data_length = 1;
 
             Ring.SrcImgSize = new Size(imageWidth, imageHeight);
@@ -1005,21 +1005,21 @@ public static class ImageIO
             br.BaseStream.Position = 512;
             int length = imageWidth * imageHeight;
 
-                Ring.Intensity.Clear();
-                if (data_length == 0)
-                    for (int i = 0; i < length; i++)
-                        Ring.Intensity.Add(br.ReadUInt16());
-                else
-                    for (int i = 0; i < length; i++)
-                    {
-                        var val = br.ReadUInt32();
-                        if (val > uint.MaxValue/2)
-                            val= 0;
-                        Ring.Intensity.Add(val);
-                     }
+            Ring.Intensity.Clear();
+            if (data_length == 0)
+                for (int i = 0; i < length; i++)
+                    Ring.Intensity.Add(br.ReadUInt16());
+            else
+                for (int i = 0; i < length; i++)
+                {
+                    var val = br.ReadUInt32();
+                    if (val > uint.MaxValue / 2)
+                        val = 0;
+                    Ring.Intensity.Add(val);
+                }
 
-                
-            Ring.BitsPerPixels = data_length == 0 ? 16:32;
+
+            Ring.BitsPerPixels = data_length == 0 ? 16 : 32;
 
 
             Ring.ImageType = Ring.ImageTypeEnum.ADXV;

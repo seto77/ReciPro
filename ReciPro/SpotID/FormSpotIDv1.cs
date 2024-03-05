@@ -262,14 +262,14 @@ public partial class FormSpotIDv1 : Form
     private void radioButtonPhoto1Mode1_CheckedChanged(object sender, EventArgs e)
     {
         inputBoxP1L3.Enabled = numericUpDownPhoto1L3Err.Enabled = numericBoxP1Theta.ReadOnly = !radioButtonPhoto1Mode2.Checked;
-        
-      numericUpDownPhoto1ThetaErr.Enabled = radioButtonPhoto1Mode2.Checked;
-       
+
+        numericUpDownPhoto1ThetaErr.Enabled = radioButtonPhoto1Mode2.Checked;
+
         inputBoxP2L3.Enabled = numericUpDownPhoto2L3Err.Enabled = numericBoxP2Theta.ReadOnly = !radioButtonPhoto2Mode2.Checked;
-         numericUpDownPhoto2ThetaErr.Enabled = radioButtonPhoto2Mode2.Checked;
-        
+        numericUpDownPhoto2ThetaErr.Enabled = radioButtonPhoto2Mode2.Checked;
+
         inputBoxP3L3.Enabled = numericUpDownPhoto3L3Err.Enabled = numericBoxP3Theta.ReadOnly = !radioButtonPhoto3Mode2.Checked;
-         numericUpDownPhoto3ThetaErr.Enabled = radioButtonPhoto3Mode2.Checked;
+        numericUpDownPhoto3ThetaErr.Enabled = radioButtonPhoto3Mode2.Checked;
         textBox_TextChanged(new object(), new EventArgs());
     }
 

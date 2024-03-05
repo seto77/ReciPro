@@ -1,5 +1,6 @@
 #region using
 using Crystallography.OpenGL;
+using IronPython.Hosting;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,13 +11,12 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Col4 = OpenTK.Graphics.Color4;
 using Vec3 = OpenTK.Vector3d;
-using IronPython.Hosting;
-using System.Text;
 
 #endregion
 
@@ -262,7 +262,7 @@ public partial class FormMain : Form
                 glControlAxes.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
                 groupBoxCurrentDirection.Controls.Add(glControlAxes);
                 //glControlAxes.BringToFront();
-                
+
             }
             catch (Exception ex)
             {
@@ -275,15 +275,15 @@ public partial class FormMain : Form
         if (glControlAxes != null)
         {
             labelCurrentIndex.Dock = DockStyle.None;
-            
+
             glControlAxes.Dock = DockStyle.Top;
-            glControlAxes.Height = glControlAxes.Width+20;
+            glControlAxes.Height = glControlAxes.Width + 20;
             glControlAxes.SendToBack();
 
             labelCurrentIndex.BackColor = Color.White;
             labelCurrentIndex.BringToFront();
         }
-        
+
         #endregion
 
 

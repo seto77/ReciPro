@@ -5,9 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-
-using M3d = OpenTK.Matrix3d;
-using V2d = OpenTK.Vector2d;
 using V3d = OpenTK.Vector3d;
 
 namespace Crystallography;
@@ -655,7 +652,7 @@ public static class Geometriy
     /// <param name="p1"></param>
     /// <param name="p2"></param>
     /// <returns></returns>
-    public static Vector3DBase GetCrossPoint(in double a, in double b, in double c, in double d, Vector3D p1, Vector3D p2) 
+    public static Vector3DBase GetCrossPoint(in double a, in double b, in double c, in double d, Vector3D p1, Vector3D p2)
         => GetCrossPoint(a, b, c, d, new Vector3D(p1.X, p1.Y, p1.Z), new Vector3DBase(p2.X, p2.Y, p2.Z));
 
     /// <summary>
@@ -924,7 +921,7 @@ public static class Geometriy
     /// </summary>
     /// <param name="points"></param>
     /// <returns>double[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0)</returns>
-    public static (double A, double B, double C, double D ) GetPlaneEquationFromPoints(IEnumerable<Vector3DBase> points)
+    public static (double A, double B, double C, double D) GetPlaneEquationFromPoints(IEnumerable<Vector3DBase> points)
     {
         //http://sysplan.nams.kyushu-u.ac.jp/gen/edu/Algorithms/PlaneFitting/index.html
         //pdfはCrystallograpy/資料フォルダ
@@ -1055,7 +1052,7 @@ public static class Geometriy
 
                         var v2 = pts[i];
                         var r2 = v2.X * b[0] + v2.Y * b[1] + v2.Z * b[2] + b[3];
-                        
+
                         if (Math.Abs(r1) > 1E-10 && Math.Abs(r2) > 1E-10 && r1 * r2 < 0) //v1とv2の間を平面bが通るとき、
                         {
                             var pt = GetCrossPoint(b[0], b[1], b[2], -b[3], v1, v2);//d=b[3]の符号に注意

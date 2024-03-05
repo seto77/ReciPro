@@ -180,7 +180,7 @@ public class PeakFunction : IComparable
         var tmp2 = Hk * Hk;
         var tmp1 = tmp3 / tmp2;
         var tmp4 = 1 / (1 + tmp1);
-        var tmp5 = SqrtLn2PI * Math.Exp(- Ln2 * tmp1);
+        var tmp5 = SqrtLn2PI * Math.Exp(-Ln2 * tmp1);
         var tmp6 = 2.0 / Hk / PI;
         var _eta = 1 - eta;
         return new double[] {
@@ -417,7 +417,7 @@ public class FittingPeak
         var _prms = prms;
         double Failed()//失敗した時に呼び出すローカル関数. パラメータにNaNを代入してから無限大を返す。　
         {
-            foreach(var p in _prms)
+            foreach (var p in _prms)
             {
                 p.X = double.NaN;
                 p.intensity = double.NaN;

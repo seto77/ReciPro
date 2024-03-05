@@ -362,7 +362,7 @@ public partial class SymmetryControl : UserControl
 
         ItemChanged?.Invoke(this, new EventArgs());
         //GenerateFromInterface();
-        
+
     }
     #endregion
 

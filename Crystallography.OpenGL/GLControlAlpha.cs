@@ -713,7 +713,7 @@ unsafe public partial class GLControlAlpha : UserControl
         glObjects.Clear();
     }
 
-   
+
     #endregion
 
     #region クリップ操作
@@ -845,7 +845,7 @@ unsafe public partial class GLControlAlpha : UserControl
                 if (RotationMode == RotationModes.Object)
                     WorldMatrix *= Mat4d.CreateRotationX((float)(-dy / 100)) * Mat4d.CreateRotationY((float)(dx / 100));
                 else if (RotationMode == RotationModes.View)
-                ViewMatrix *= Mat4d.CreateRotationX((float)(-dy / 100)) * Mat4d.CreateRotationY((float)(dx / 100));
+                    ViewMatrix *= Mat4d.CreateRotationX((float)(-dy / 100)) * Mat4d.CreateRotationY((float)(dx / 100));
             }
             else
             {
