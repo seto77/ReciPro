@@ -300,31 +300,27 @@ namespace ReciPro
             // 
             // splitContainer1
             // 
-            resources.ApplyResources(splitContainer1, "splitContainer1");
             splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
+            resources.ApplyResources(splitContainer1, "splitContainer1");
             splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            resources.ApplyResources(splitContainer1.Panel1, "splitContainer1.Panel1");
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel);
             splitContainer1.Panel1.Controls.Add(panel1);
             splitContainer1.Panel1.Controls.Add(panel2);
             splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            toolTip.SetToolTip(splitContainer1.Panel1, resources.GetString("splitContainer1.Panel1.ToolTip"));
             // 
             // splitContainer1.Panel2
             // 
-            resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
             splitContainer1.Panel2.Controls.Add(groupBox1);
             splitContainer1.Panel2.Controls.Add(groupBoxOpticalProperty);
             splitContainer1.Panel2.Controls.Add(flowLayoutPanel14);
             splitContainer1.Panel2.Controls.Add(panel4);
             splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            toolTip.SetToolTip(splitContainer1.Panel2, resources.GetString("splitContainer1.Panel2.ToolTip"));
-            toolTip.SetToolTip(splitContainer1, resources.GetString("splitContainer1.ToolTip"));
+            resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
             // 
             // tableLayoutPanel
             // 
@@ -333,13 +329,11 @@ namespace ReciPro
             tableLayoutPanel.CausesValidation = false;
             tableLayoutPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             tableLayoutPanel.Name = "tableLayoutPanel";
-            toolTip.SetToolTip(tableLayoutPanel, resources.GetString("tableLayoutPanel.ToolTip"));
             tableLayoutPanel.Enter += tableLayoutPanel_Enter;
             tableLayoutPanel.Leave += tableLayoutPanel_Leave;
             // 
             // panel1
             // 
-            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(pictureBoxScaleOfIntensity);
             panel1.Controls.Add(labelMousePositionValue);
             panel1.Controls.Add(label33);
@@ -351,100 +345,87 @@ namespace ReciPro
             panel1.Controls.Add(label29);
             panel1.Controls.Add(label26);
             panel1.Controls.Add(label28);
+            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // pictureBoxScaleOfIntensity
             // 
             resources.ApplyResources(pictureBoxScaleOfIntensity, "pictureBoxScaleOfIntensity");
             pictureBoxScaleOfIntensity.Name = "pictureBoxScaleOfIntensity";
             pictureBoxScaleOfIntensity.TabStop = false;
-            toolTip.SetToolTip(pictureBoxScaleOfIntensity, resources.GetString("pictureBoxScaleOfIntensity.ToolTip"));
             // 
             // labelMousePositionValue
             // 
             resources.ApplyResources(labelMousePositionValue, "labelMousePositionValue");
             labelMousePositionValue.Name = "labelMousePositionValue";
-            toolTip.SetToolTip(labelMousePositionValue, resources.GetString("labelMousePositionValue.ToolTip"));
             // 
             // label33
             // 
             resources.ApplyResources(label33, "label33");
             label33.Name = "label33";
-            toolTip.SetToolTip(label33, resources.GetString("label33.ToolTip"));
             // 
             // labelMousePositionY
             // 
             resources.ApplyResources(labelMousePositionY, "labelMousePositionY");
             labelMousePositionY.Name = "labelMousePositionY";
-            toolTip.SetToolTip(labelMousePositionY, resources.GetString("labelMousePositionY.ToolTip"));
             // 
             // labelMousePositionX
             // 
             resources.ApplyResources(labelMousePositionX, "labelMousePositionX");
             labelMousePositionX.Name = "labelMousePositionX";
-            toolTip.SetToolTip(labelMousePositionX, resources.GetString("labelMousePositionX.ToolTip"));
             // 
             // label31
             // 
             resources.ApplyResources(label31, "label31");
             label31.Name = "label31";
-            toolTip.SetToolTip(label31, resources.GetString("label31.ToolTip"));
             // 
             // label27
             // 
             resources.ApplyResources(label27, "label27");
             label27.Name = "label27";
-            toolTip.SetToolTip(label27, resources.GetString("label27.ToolTip"));
             // 
             // label30
             // 
             resources.ApplyResources(label30, "label30");
             label30.Name = "label30";
-            toolTip.SetToolTip(label30, resources.GetString("label30.ToolTip"));
             // 
             // label29
             // 
             resources.ApplyResources(label29, "label29");
             label29.Name = "label29";
-            toolTip.SetToolTip(label29, resources.GetString("label29.ToolTip"));
             // 
             // label26
             // 
             resources.ApplyResources(label26, "label26");
             label26.Name = "label26";
-            toolTip.SetToolTip(label26, resources.GetString("label26.ToolTip"));
             // 
             // label28
             // 
             resources.ApplyResources(label28, "label28");
             label28.Name = "label28";
-            toolTip.SetToolTip(label28, resources.GetString("label28.ToolTip"));
             // 
             // panel2
             // 
-            resources.ApplyResources(panel2, "panel2");
             panel2.Controls.Add(groupBox3);
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(groupBoxNormalization);
             panel2.Controls.Add(panel9);
             panel2.Controls.Add(groupBoxSTEMoption3);
             panel2.Controls.Add(groupBox2);
+            resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
-            toolTip.SetToolTip(panel2, resources.GetString("panel2.ToolTip"));
             // 
             // groupBox3
             // 
-            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Controls.Add(numericBoxGaussianBlurRadius);
             groupBox3.Controls.Add(trackBarAdvancedMax);
             groupBox3.Controls.Add(trackBarAdvancedMin);
             groupBox3.Controls.Add(checkBoxGaussianBlur);
             groupBox3.Controls.Add(label25);
             groupBox3.Controls.Add(comboBoxScaleColorScale);
+            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
-            toolTip.SetToolTip(groupBox3, resources.GetString("groupBox3.ToolTip"));
             // 
             // numericBoxGaussianBlurRadius
             // 
@@ -462,7 +443,6 @@ namespace ReciPro
             numericBoxGaussianBlurRadius.SkipEventDuringInput = false;
             numericBoxGaussianBlurRadius.SmartIncrement = true;
             numericBoxGaussianBlurRadius.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxGaussianBlurRadius, resources.GetString("numericBoxGaussianBlurRadius.ToolTip"));
             numericBoxGaussianBlurRadius.Value = 20D;
             numericBoxGaussianBlurRadius.ValueChanged += CheckBoxGaussianBlur_CheckedChanged;
             // 
@@ -479,7 +459,6 @@ namespace ReciPro
             trackBarAdvancedMax.Orientation = System.Windows.Forms.Orientation.Vertical;
             trackBarAdvancedMax.Smart_Increment = true;
             trackBarAdvancedMax.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            toolTip.SetToolTip(trackBarAdvancedMax, resources.GetString("trackBarAdvancedMax.ToolTip"));
             trackBarAdvancedMax.UpDown_Increment = 0.01D;
             trackBarAdvancedMax.Value = 1D;
             trackBarAdvancedMax.ValueChanged += TrackBarAdvancedMin_ValueChanged;
@@ -497,7 +476,6 @@ namespace ReciPro
             trackBarAdvancedMin.Orientation = System.Windows.Forms.Orientation.Vertical;
             trackBarAdvancedMin.Smart_Increment = true;
             trackBarAdvancedMin.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            toolTip.SetToolTip(trackBarAdvancedMin, resources.GetString("trackBarAdvancedMin.ToolTip"));
             trackBarAdvancedMin.UpDown_Increment = 1D;
             trackBarAdvancedMin.Value = 0D;
             trackBarAdvancedMin.ValueChanged += TrackBarAdvancedMin_ValueChanged;
@@ -506,7 +484,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(checkBoxGaussianBlur, "checkBoxGaussianBlur");
             checkBoxGaussianBlur.Name = "checkBoxGaussianBlur";
-            toolTip.SetToolTip(checkBoxGaussianBlur, resources.GetString("checkBoxGaussianBlur.ToolTip"));
             checkBoxGaussianBlur.UseVisualStyleBackColor = true;
             checkBoxGaussianBlur.CheckedChanged += CheckBoxGaussianBlur_CheckedChanged;
             // 
@@ -514,23 +491,20 @@ namespace ReciPro
             // 
             resources.ApplyResources(label25, "label25");
             label25.Name = "label25";
-            toolTip.SetToolTip(label25, resources.GetString("label25.ToolTip"));
             // 
             // comboBoxScaleColorScale
             // 
-            resources.ApplyResources(comboBoxScaleColorScale, "comboBoxScaleColorScale");
             comboBoxScaleColorScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(comboBoxScaleColorScale, "comboBoxScaleColorScale");
             comboBoxScaleColorScale.FormattingEnabled = true;
             comboBoxScaleColorScale.Items.AddRange(new object[] { resources.GetString("comboBoxScaleColorScale.Items"), resources.GetString("comboBoxScaleColorScale.Items1") });
             comboBoxScaleColorScale.Name = "comboBoxScaleColorScale";
-            toolTip.SetToolTip(comboBoxScaleColorScale, resources.GetString("comboBoxScaleColorScale.ToolTip"));
             comboBoxScaleColorScale.SelectedIndexChanged += ComboBoxScaleColorScale_SelectedIndexChanged;
             // 
             // panel7
             // 
             resources.ApplyResources(panel7, "panel7");
             panel7.Name = "panel7";
-            toolTip.SetToolTip(panel7, resources.GetString("panel7.ToolTip"));
             // 
             // groupBoxNormalization
             // 
@@ -539,7 +513,6 @@ namespace ReciPro
             groupBoxNormalization.Controls.Add(flowLayoutPanel6);
             groupBoxNormalization.Name = "groupBoxNormalization";
             groupBoxNormalization.TabStop = false;
-            toolTip.SetToolTip(groupBoxNormalization, resources.GetString("groupBoxNormalization.ToolTip"));
             // 
             // checkBoxNormarizeIndividually
             // 
@@ -559,7 +532,6 @@ namespace ReciPro
             flowLayoutPanel6.Controls.Add(checkBoxIntensityMax);
             flowLayoutPanel6.Controls.Add(numericBoxIntensityMax);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
-            toolTip.SetToolTip(flowLayoutPanel6, resources.GetString("flowLayoutPanel6.ToolTip"));
             // 
             // checkBoxIntensityMin
             // 
@@ -567,7 +539,6 @@ namespace ReciPro
             checkBoxIntensityMin.Checked = true;
             checkBoxIntensityMin.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxIntensityMin.Name = "checkBoxIntensityMin";
-            toolTip.SetToolTip(checkBoxIntensityMin, resources.GetString("checkBoxIntensityMin.ToolTip"));
             checkBoxIntensityMin.UseVisualStyleBackColor = true;
             checkBoxIntensityMin.CheckedChanged += checkBoxIntensityMin_CheckedChanged;
             // 
@@ -594,7 +565,6 @@ namespace ReciPro
             checkBoxIntensityMax.Checked = true;
             checkBoxIntensityMax.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxIntensityMax.Name = "checkBoxIntensityMax";
-            toolTip.SetToolTip(checkBoxIntensityMax, resources.GetString("checkBoxIntensityMax.ToolTip"));
             checkBoxIntensityMax.UseVisualStyleBackColor = true;
             checkBoxIntensityMax.CheckedChanged += checkBoxIntensityMin_CheckedChanged;
             // 
@@ -621,17 +591,15 @@ namespace ReciPro
             // 
             resources.ApplyResources(panel9, "panel9");
             panel9.Name = "panel9";
-            toolTip.SetToolTip(panel9, resources.GetString("panel9.ToolTip"));
             // 
             // groupBoxSTEMoption3
             // 
-            resources.ApplyResources(groupBoxSTEMoption3, "groupBoxSTEMoption3");
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_TDS);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_elas);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_both);
+            resources.ApplyResources(groupBoxSTEMoption3, "groupBoxSTEMoption3");
             groupBoxSTEMoption3.Name = "groupBoxSTEMoption3";
             groupBoxSTEMoption3.TabStop = false;
-            toolTip.SetToolTip(groupBoxSTEMoption3, resources.GetString("groupBoxSTEMoption3.ToolTip"));
             // 
             // radioButtonSTEM_target_TDS
             // 
@@ -661,7 +629,6 @@ namespace ReciPro
             // 
             // groupBox2
             // 
-            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Controls.Add(colorControlScale);
             groupBox2.Controls.Add(numericBoxScaleLength);
             groupBox2.Controls.Add(checkBoxShowScale);
@@ -669,14 +636,14 @@ namespace ReciPro
             groupBox2.Controls.Add(numericBoxLabelFontSize);
             groupBox2.Controls.Add(checkBoxShowLabel);
             groupBox2.Controls.Add(checkBoxShowUnitcell);
+            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
-            toolTip.SetToolTip(groupBox2, resources.GetString("groupBox2.ToolTip"));
             // 
             // colorControlScale
             // 
-            resources.ApplyResources(colorControlScale, "colorControlScale");
             colorControlScale.Argb = -7877126;
+            resources.ApplyResources(colorControlScale, "colorControlScale");
             colorControlScale.Blue = 250;
             colorControlScale.BlueF = 0.980392158F;
             colorControlScale.BoxSize = new System.Drawing.Size(20, 20);
@@ -722,8 +689,8 @@ namespace ReciPro
             // 
             // colorControlLabel
             // 
-            resources.ApplyResources(colorControlLabel, "colorControlLabel");
             colorControlLabel.Argb = -5374161;
+            resources.ApplyResources(colorControlLabel, "colorControlLabel");
             colorControlLabel.Blue = 47;
             colorControlLabel.BlueF = 0.184313729F;
             colorControlLabel.BoxSize = new System.Drawing.Size(20, 20);
@@ -782,7 +749,6 @@ namespace ReciPro
             groupBox1.Controls.Add(panel3);
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
-            toolTip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // panel3
             // 
@@ -793,7 +759,6 @@ namespace ReciPro
             panel3.Controls.Add(groupBoxHREMoption2);
             panel3.Controls.Add(panel6);
             panel3.Name = "panel3";
-            toolTip.SetToolTip(panel3, resources.GetString("panel3.ToolTip"));
             // 
             // groupBoxSerialImage
             // 
@@ -802,27 +767,24 @@ namespace ReciPro
             groupBoxSerialImage.Controls.Add(flowLayoutPanel4);
             groupBoxSerialImage.Name = "groupBoxSerialImage";
             groupBoxSerialImage.TabStop = false;
-            toolTip.SetToolTip(groupBoxSerialImage, resources.GetString("groupBoxSerialImage.ToolTip"));
             // 
             // panelSerial
             // 
-            resources.ApplyResources(panelSerial, "panelSerial");
             panelSerial.Controls.Add(panelSerialDefocus);
             panelSerial.Controls.Add(panelSerialThickness);
             panelSerial.Controls.Add(panel5);
             panelSerial.Controls.Add(flowLayoutPanelHorizontalDirection);
+            resources.ApplyResources(panelSerial, "panelSerial");
             panelSerial.Name = "panelSerial";
-            toolTip.SetToolTip(panelSerial, resources.GetString("panelSerial.ToolTip"));
             // 
             // panelSerialDefocus
             // 
-            resources.ApplyResources(panelSerialDefocus, "panelSerialDefocus");
             panelSerialDefocus.Controls.Add(numericBoxDefocusNum);
             panelSerialDefocus.Controls.Add(numericBoxDefocusStep);
             panelSerialDefocus.Controls.Add(numericBoxDefocusStart);
             panelSerialDefocus.Controls.Add(textBoxDefocusList);
+            resources.ApplyResources(panelSerialDefocus, "panelSerialDefocus");
             panelSerialDefocus.Name = "panelSerialDefocus";
-            toolTip.SetToolTip(panelSerialDefocus, resources.GetString("panelSerialDefocus.ToolTip"));
             // 
             // numericBoxDefocusNum
             // 
@@ -838,7 +800,6 @@ namespace ReciPro
             numericBoxDefocusNum.RoundErrorAccuracy = -1;
             numericBoxDefocusNum.ShowUpDown = true;
             numericBoxDefocusNum.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxDefocusNum, resources.GetString("numericBoxDefocusNum.ToolTip"));
             numericBoxDefocusNum.Value = 4D;
             numericBoxDefocusNum.ValueChanged += NumericBoxDefocusSerial_ValueChanged;
             // 
@@ -856,7 +817,6 @@ namespace ReciPro
             numericBoxDefocusStep.RoundErrorAccuracy = -1;
             numericBoxDefocusStep.ShowUpDown = true;
             numericBoxDefocusStep.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxDefocusStep, resources.GetString("numericBoxDefocusStep.ToolTip"));
             numericBoxDefocusStep.UpDown_Increment = 10D;
             numericBoxDefocusStep.Value = -20D;
             numericBoxDefocusStep.ValueChanged += NumericBoxDefocusSerial_ValueChanged;
@@ -875,7 +835,6 @@ namespace ReciPro
             numericBoxDefocusStart.RoundErrorAccuracy = -1;
             numericBoxDefocusStart.ShowUpDown = true;
             numericBoxDefocusStart.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxDefocusStart, resources.GetString("numericBoxDefocusStart.ToolTip"));
             numericBoxDefocusStart.UpDown_Increment = 10D;
             numericBoxDefocusStart.Value = -70D;
             numericBoxDefocusStart.ValueChanged += NumericBoxDefocusSerial_ValueChanged;
@@ -884,17 +843,15 @@ namespace ReciPro
             // 
             resources.ApplyResources(textBoxDefocusList, "textBoxDefocusList");
             textBoxDefocusList.Name = "textBoxDefocusList";
-            toolTip.SetToolTip(textBoxDefocusList, resources.GetString("textBoxDefocusList.ToolTip"));
             // 
             // panelSerialThickness
             // 
-            resources.ApplyResources(panelSerialThickness, "panelSerialThickness");
             panelSerialThickness.Controls.Add(numericBoxThicknessNum);
             panelSerialThickness.Controls.Add(numericBoxThicknessStep);
             panelSerialThickness.Controls.Add(numericBoxThicknessStart);
             panelSerialThickness.Controls.Add(textBoxThicknessList);
+            resources.ApplyResources(panelSerialThickness, "panelSerialThickness");
             panelSerialThickness.Name = "panelSerialThickness";
-            toolTip.SetToolTip(panelSerialThickness, resources.GetString("panelSerialThickness.ToolTip"));
             // 
             // numericBoxThicknessNum
             // 
@@ -910,7 +867,6 @@ namespace ReciPro
             numericBoxThicknessNum.RoundErrorAccuracy = -1;
             numericBoxThicknessNum.ShowUpDown = true;
             numericBoxThicknessNum.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxThicknessNum, resources.GetString("numericBoxThicknessNum.ToolTip"));
             numericBoxThicknessNum.Value = 4D;
             numericBoxThicknessNum.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
             // 
@@ -928,7 +884,6 @@ namespace ReciPro
             numericBoxThicknessStep.RoundErrorAccuracy = -1;
             numericBoxThicknessStep.ShowUpDown = true;
             numericBoxThicknessStep.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.UpDown_Increment = 10D;
             numericBoxThicknessStep.Value = 20D;
             numericBoxThicknessStep.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
@@ -947,7 +902,6 @@ namespace ReciPro
             numericBoxThicknessStart.RoundErrorAccuracy = -1;
             numericBoxThicknessStart.ShowUpDown = true;
             numericBoxThicknessStart.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip"));
             numericBoxThicknessStart.UpDown_Increment = 10D;
             numericBoxThicknessStart.Value = 20D;
             numericBoxThicknessStart.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
@@ -956,7 +910,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(textBoxThicknessList, "textBoxThicknessList");
             textBoxThicknessList.Name = "textBoxThicknessList";
-            toolTip.SetToolTip(textBoxThicknessList, resources.GetString("textBoxThicknessList.ToolTip"));
             // 
             // panel5
             // 
@@ -964,7 +917,6 @@ namespace ReciPro
             panel5.Controls.Add(checkBoxSerialThickness);
             panel5.Controls.Add(checkBoxSerialDefocus);
             panel5.Name = "panel5";
-            toolTip.SetToolTip(panel5, resources.GetString("panel5.ToolTip"));
             // 
             // checkBoxSerialThickness
             // 
@@ -972,7 +924,6 @@ namespace ReciPro
             checkBoxSerialThickness.Checked = true;
             checkBoxSerialThickness.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSerialThickness.Name = "checkBoxSerialThickness";
-            toolTip.SetToolTip(checkBoxSerialThickness, resources.GetString("checkBoxSerialThickness.ToolTip"));
             checkBoxSerialThickness.UseVisualStyleBackColor = true;
             checkBoxSerialThickness.CheckedChanged += CheckBoxSerialDefocus_CheckedChanged;
             // 
@@ -982,7 +933,6 @@ namespace ReciPro
             checkBoxSerialDefocus.Checked = true;
             checkBoxSerialDefocus.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSerialDefocus.Name = "checkBoxSerialDefocus";
-            toolTip.SetToolTip(checkBoxSerialDefocus, resources.GetString("checkBoxSerialDefocus.ToolTip"));
             checkBoxSerialDefocus.UseVisualStyleBackColor = true;
             checkBoxSerialDefocus.CheckedChanged += CheckBoxSerialDefocus_CheckedChanged;
             // 
@@ -993,14 +943,12 @@ namespace ReciPro
             flowLayoutPanelHorizontalDirection.Controls.Add(radioButtonHorizontalDefocus);
             flowLayoutPanelHorizontalDirection.Controls.Add(radioButtonHorizontalThickness);
             flowLayoutPanelHorizontalDirection.Name = "flowLayoutPanelHorizontalDirection";
-            toolTip.SetToolTip(flowLayoutPanelHorizontalDirection, resources.GetString("flowLayoutPanelHorizontalDirection.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
             label6.ForeColor = System.Drawing.Color.Black;
             label6.Name = "label6";
-            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // radioButtonHorizontalDefocus
             // 
@@ -1008,14 +956,12 @@ namespace ReciPro
             radioButtonHorizontalDefocus.Checked = true;
             radioButtonHorizontalDefocus.Name = "radioButtonHorizontalDefocus";
             radioButtonHorizontalDefocus.TabStop = true;
-            toolTip.SetToolTip(radioButtonHorizontalDefocus, resources.GetString("radioButtonHorizontalDefocus.ToolTip"));
             radioButtonHorizontalDefocus.UseVisualStyleBackColor = true;
             // 
             // radioButtonHorizontalThickness
             // 
             resources.ApplyResources(radioButtonHorizontalThickness, "radioButtonHorizontalThickness");
             radioButtonHorizontalThickness.Name = "radioButtonHorizontalThickness";
-            toolTip.SetToolTip(radioButtonHorizontalThickness, resources.GetString("radioButtonHorizontalThickness.ToolTip"));
             radioButtonHorizontalThickness.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel4
@@ -1024,7 +970,6 @@ namespace ReciPro
             flowLayoutPanel4.Controls.Add(radioButtonSingleMode);
             flowLayoutPanel4.Controls.Add(radioButtonSerialMode);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            toolTip.SetToolTip(flowLayoutPanel4, resources.GetString("flowLayoutPanel4.ToolTip"));
             // 
             // radioButtonSingleMode
             // 
@@ -1032,7 +977,6 @@ namespace ReciPro
             radioButtonSingleMode.Checked = true;
             radioButtonSingleMode.Name = "radioButtonSingleMode";
             radioButtonSingleMode.TabStop = true;
-            toolTip.SetToolTip(radioButtonSingleMode, resources.GetString("radioButtonSingleMode.ToolTip"));
             radioButtonSingleMode.UseVisualStyleBackColor = true;
             radioButtonSingleMode.CheckedChanged += CheckBoxSerialDefocus_CheckedChanged;
             // 
@@ -1040,7 +984,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(radioButtonSerialMode, "radioButtonSerialMode");
             radioButtonSerialMode.Name = "radioButtonSerialMode";
-            toolTip.SetToolTip(radioButtonSerialMode, resources.GetString("radioButtonSerialMode.ToolTip"));
             radioButtonSerialMode.UseVisualStyleBackColor = true;
             // 
             // groupBoxPotentialOption
@@ -1051,7 +994,6 @@ namespace ReciPro
             groupBoxPotentialOption.Controls.Add(checkBoxPotentialUg);
             groupBoxPotentialOption.Name = "groupBoxPotentialOption";
             groupBoxPotentialOption.TabStop = false;
-            toolTip.SetToolTip(groupBoxPotentialOption, resources.GetString("groupBoxPotentialOption.ToolTip"));
             // 
             // flowLayoutPanel11
             // 
@@ -1062,7 +1004,6 @@ namespace ReciPro
             flowLayoutPanel11.Controls.Add(radioButtonPotentialModeRealAndImag);
             flowLayoutPanel11.Controls.Add(flowLayoutPanelRealAndImaiginary);
             flowLayoutPanel11.Name = "flowLayoutPanel11";
-            toolTip.SetToolTip(flowLayoutPanel11, resources.GetString("flowLayoutPanel11.ToolTip"));
             // 
             // radioButtonPotentialModeMagAndPhase
             // 
@@ -1070,7 +1011,6 @@ namespace ReciPro
             radioButtonPotentialModeMagAndPhase.Checked = true;
             radioButtonPotentialModeMagAndPhase.Name = "radioButtonPotentialModeMagAndPhase";
             radioButtonPotentialModeMagAndPhase.TabStop = true;
-            toolTip.SetToolTip(radioButtonPotentialModeMagAndPhase, resources.GetString("radioButtonPotentialModeMagAndPhase.ToolTip"));
             radioButtonPotentialModeMagAndPhase.UseVisualStyleBackColor = true;
             radioButtonPotentialModeMagAndPhase.CheckedChanged += RadioButtonPotentialAsMagnitudeAndPhase_CheckedChanged;
             // 
@@ -1081,7 +1021,6 @@ namespace ReciPro
             flowLayoutPanelMagAndPhase.Controls.Add(radioButtonPotentialShowMag);
             flowLayoutPanelMagAndPhase.Controls.Add(radioButtonPotentialShowPhase);
             flowLayoutPanelMagAndPhase.Name = "flowLayoutPanelMagAndPhase";
-            toolTip.SetToolTip(flowLayoutPanelMagAndPhase, resources.GetString("flowLayoutPanelMagAndPhase.ToolTip"));
             // 
             // radioButtonPotentialShowMagAndPhase
             // 
@@ -1089,14 +1028,12 @@ namespace ReciPro
             radioButtonPotentialShowMagAndPhase.Checked = true;
             radioButtonPotentialShowMagAndPhase.Name = "radioButtonPotentialShowMagAndPhase";
             radioButtonPotentialShowMagAndPhase.TabStop = true;
-            toolTip.SetToolTip(radioButtonPotentialShowMagAndPhase, resources.GetString("radioButtonPotentialShowMagAndPhase.ToolTip"));
             radioButtonPotentialShowMagAndPhase.UseVisualStyleBackColor = true;
             // 
             // radioButtonPotentialShowMag
             // 
             resources.ApplyResources(radioButtonPotentialShowMag, "radioButtonPotentialShowMag");
             radioButtonPotentialShowMag.Name = "radioButtonPotentialShowMag";
-            toolTip.SetToolTip(radioButtonPotentialShowMag, resources.GetString("radioButtonPotentialShowMag.ToolTip"));
             radioButtonPotentialShowMag.UseVisualStyleBackColor = true;
             // 
             // radioButtonPotentialShowPhase
@@ -1104,7 +1041,6 @@ namespace ReciPro
             resources.ApplyResources(radioButtonPotentialShowPhase, "radioButtonPotentialShowPhase");
             radioButtonPotentialShowPhase.ForeColor = System.Drawing.SystemColors.ControlText;
             radioButtonPotentialShowPhase.Name = "radioButtonPotentialShowPhase";
-            toolTip.SetToolTip(radioButtonPotentialShowPhase, resources.GetString("radioButtonPotentialShowPhase.ToolTip"));
             radioButtonPotentialShowPhase.UseVisualStyleBackColor = true;
             // 
             // panelPhaseScale
@@ -1127,110 +1063,92 @@ namespace ReciPro
             panelPhaseScale.Controls.Add(label13);
             panelPhaseScale.Controls.Add(label10);
             panelPhaseScale.Name = "panelPhaseScale";
-            toolTip.SetToolTip(panelPhaseScale, resources.GetString("panelPhaseScale.ToolTip"));
             // 
             // label24
             // 
             resources.ApplyResources(label24, "label24");
             label24.Name = "label24";
-            toolTip.SetToolTip(label24, resources.GetString("label24.ToolTip"));
             // 
             // label23
             // 
             resources.ApplyResources(label23, "label23");
             label23.Name = "label23";
-            toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip"));
             // 
             // label22
             // 
             resources.ApplyResources(label22, "label22");
             label22.Name = "label22";
-            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip"));
             // 
             // label21
             // 
             resources.ApplyResources(label21, "label21");
             label21.Name = "label21";
-            toolTip.SetToolTip(label21, resources.GetString("label21.ToolTip"));
             // 
             // label20
             // 
             resources.ApplyResources(label20, "label20");
             label20.Name = "label20";
-            toolTip.SetToolTip(label20, resources.GetString("label20.ToolTip"));
             // 
             // label19
             // 
             resources.ApplyResources(label19, "label19");
             label19.Name = "label19";
-            toolTip.SetToolTip(label19, resources.GetString("label19.ToolTip"));
             // 
             // label18
             // 
             resources.ApplyResources(label18, "label18");
             label18.Name = "label18";
-            toolTip.SetToolTip(label18, resources.GetString("label18.ToolTip"));
             // 
             // pictureBoxPhaseScale
             // 
             resources.ApplyResources(pictureBoxPhaseScale, "pictureBoxPhaseScale");
             pictureBoxPhaseScale.Name = "pictureBoxPhaseScale";
             pictureBoxPhaseScale.TabStop = false;
-            toolTip.SetToolTip(pictureBoxPhaseScale, resources.GetString("pictureBoxPhaseScale.ToolTip"));
             // 
             // label17
             // 
             resources.ApplyResources(label17, "label17");
             label17.Name = "label17";
-            toolTip.SetToolTip(label17, resources.GetString("label17.ToolTip"));
             // 
             // label16
             // 
             resources.ApplyResources(label16, "label16");
             label16.Name = "label16";
-            toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip"));
             // 
             // label15
             // 
             resources.ApplyResources(label15, "label15");
             label15.Name = "label15";
-            toolTip.SetToolTip(label15, resources.GetString("label15.ToolTip"));
             // 
             // label14
             // 
             resources.ApplyResources(label14, "label14");
             label14.Name = "label14";
-            toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip"));
             // 
             // label11
             // 
             resources.ApplyResources(label11, "label11");
             label11.Name = "label11";
-            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
             // 
             // label12
             // 
             resources.ApplyResources(label12, "label12");
             label12.Name = "label12";
-            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip"));
             // 
             // label13
             // 
             resources.ApplyResources(label13, "label13");
             label13.Name = "label13";
-            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
             // 
             // label10
             // 
             resources.ApplyResources(label10, "label10");
             label10.Name = "label10";
-            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip"));
             // 
             // radioButtonPotentialModeRealAndImag
             // 
             resources.ApplyResources(radioButtonPotentialModeRealAndImag, "radioButtonPotentialModeRealAndImag");
             radioButtonPotentialModeRealAndImag.Name = "radioButtonPotentialModeRealAndImag";
-            toolTip.SetToolTip(radioButtonPotentialModeRealAndImag, resources.GetString("radioButtonPotentialModeRealAndImag.ToolTip"));
             radioButtonPotentialModeRealAndImag.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelRealAndImaiginary
@@ -1240,7 +1158,6 @@ namespace ReciPro
             flowLayoutPanelRealAndImaiginary.Controls.Add(radioButtonPotentialShowReal);
             flowLayoutPanelRealAndImaiginary.Controls.Add(radioButtonPotentialShowImag);
             flowLayoutPanelRealAndImaiginary.Name = "flowLayoutPanelRealAndImaiginary";
-            toolTip.SetToolTip(flowLayoutPanelRealAndImaiginary, resources.GetString("flowLayoutPanelRealAndImaiginary.ToolTip"));
             // 
             // radioButtonPotentialShowRealAndImag
             // 
@@ -1248,21 +1165,18 @@ namespace ReciPro
             radioButtonPotentialShowRealAndImag.Checked = true;
             radioButtonPotentialShowRealAndImag.Name = "radioButtonPotentialShowRealAndImag";
             radioButtonPotentialShowRealAndImag.TabStop = true;
-            toolTip.SetToolTip(radioButtonPotentialShowRealAndImag, resources.GetString("radioButtonPotentialShowRealAndImag.ToolTip"));
             radioButtonPotentialShowRealAndImag.UseVisualStyleBackColor = true;
             // 
             // radioButtonPotentialShowReal
             // 
             resources.ApplyResources(radioButtonPotentialShowReal, "radioButtonPotentialShowReal");
             radioButtonPotentialShowReal.Name = "radioButtonPotentialShowReal";
-            toolTip.SetToolTip(radioButtonPotentialShowReal, resources.GetString("radioButtonPotentialShowReal.ToolTip"));
             radioButtonPotentialShowReal.UseVisualStyleBackColor = true;
             // 
             // radioButtonPotentialShowImag
             // 
             resources.ApplyResources(radioButtonPotentialShowImag, "radioButtonPotentialShowImag");
             radioButtonPotentialShowImag.Name = "radioButtonPotentialShowImag";
-            toolTip.SetToolTip(radioButtonPotentialShowImag, resources.GetString("radioButtonPotentialShowImag.ToolTip"));
             radioButtonPotentialShowImag.UseVisualStyleBackColor = true;
             // 
             // checkBoxPotentialUgPrime
@@ -1271,7 +1185,6 @@ namespace ReciPro
             checkBoxPotentialUgPrime.Checked = true;
             checkBoxPotentialUgPrime.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxPotentialUgPrime.Name = "checkBoxPotentialUgPrime";
-            toolTip.SetToolTip(checkBoxPotentialUgPrime, resources.GetString("checkBoxPotentialUgPrime.ToolTip"));
             checkBoxPotentialUgPrime.UseVisualStyleBackColor = true;
             // 
             // checkBoxPotentialUg
@@ -1280,24 +1193,22 @@ namespace ReciPro
             checkBoxPotentialUg.Checked = true;
             checkBoxPotentialUg.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxPotentialUg.Name = "checkBoxPotentialUg";
-            toolTip.SetToolTip(checkBoxPotentialUg, resources.GetString("checkBoxPotentialUg.ToolTip"));
             checkBoxPotentialUg.UseVisualStyleBackColor = true;
             // 
             // groupBoxSTEMoption2
             // 
-            resources.ApplyResources(groupBoxSTEMoption2, "groupBoxSTEMoption2");
             groupBoxSTEMoption2.Controls.Add(numericBoxSTEM_AngleResolution);
             groupBoxSTEMoption2.Controls.Add(numericBoxSliceThicknessForInelasticSTEM);
             groupBoxSTEMoption2.Controls.Add(flowLayoutPanel10);
+            resources.ApplyResources(groupBoxSTEMoption2, "groupBoxSTEMoption2");
             groupBoxSTEMoption2.Name = "groupBoxSTEMoption2";
             groupBoxSTEMoption2.TabStop = false;
-            toolTip.SetToolTip(groupBoxSTEMoption2, resources.GetString("groupBoxSTEMoption2.ToolTip"));
             // 
             // numericBoxSTEM_AngleResolution
             // 
-            resources.ApplyResources(numericBoxSTEM_AngleResolution, "numericBoxSTEM_AngleResolution");
             numericBoxSTEM_AngleResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_AngleResolution.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxSTEM_AngleResolution, "numericBoxSTEM_AngleResolution");
             numericBoxSTEM_AngleResolution.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_AngleResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_AngleResolution.Maximum = 1D;
@@ -1333,7 +1244,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(flowLayoutPanel10, "flowLayoutPanel10");
             flowLayoutPanel10.Name = "flowLayoutPanel10";
-            toolTip.SetToolTip(flowLayoutPanel10, resources.GetString("flowLayoutPanel10.ToolTip"));
             // 
             // groupBoxHREMoption2
             // 
@@ -1342,7 +1252,6 @@ namespace ReciPro
             groupBoxHREMoption2.Controls.Add(label32);
             groupBoxHREMoption2.Name = "groupBoxHREMoption2";
             groupBoxHREMoption2.TabStop = false;
-            toolTip.SetToolTip(groupBoxHREMoption2, resources.GetString("groupBoxHREMoption2.ToolTip"));
             // 
             // flowLayoutPanel8
             // 
@@ -1350,7 +1259,6 @@ namespace ReciPro
             flowLayoutPanel8.Controls.Add(radioButtonModeQuasiCoherent);
             flowLayoutPanel8.Controls.Add(radioButtonModeTransmissionCrossCoefficient);
             flowLayoutPanel8.Name = "flowLayoutPanel8";
-            toolTip.SetToolTip(flowLayoutPanel8, resources.GetString("flowLayoutPanel8.ToolTip"));
             // 
             // radioButtonModeQuasiCoherent
             // 
@@ -1373,7 +1281,6 @@ namespace ReciPro
             resources.ApplyResources(label32, "label32");
             label32.ForeColor = System.Drawing.Color.Black;
             label32.Name = "label32";
-            toolTip.SetToolTip(label32, resources.GetString("label32.ToolTip"));
             // 
             // panel6
             // 
@@ -1382,7 +1289,6 @@ namespace ReciPro
             panel6.Controls.Add(panel8);
             panel6.Controls.Add(groupBox7);
             panel6.Name = "panel6";
-            toolTip.SetToolTip(panel6, resources.GetString("panel6.ToolTip"));
             // 
             // groupBox8
             // 
@@ -1392,7 +1298,6 @@ namespace ReciPro
             groupBox8.Controls.Add(numericBoxResolution);
             groupBox8.Name = "groupBox8";
             groupBox8.TabStop = false;
-            toolTip.SetToolTip(groupBox8, resources.GetString("groupBox8.ToolTip"));
             // 
             // numericBoxHeight
             // 
@@ -1452,7 +1357,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(panel8, "panel8");
             panel8.Name = "panel8";
-            toolTip.SetToolTip(panel8, resources.GetString("panel8.ToolTip"));
             // 
             // groupBox7
             // 
@@ -1460,7 +1364,6 @@ namespace ReciPro
             groupBox7.Controls.Add(numericBoxNumOfBlochWave);
             groupBox7.Name = "groupBox7";
             groupBox7.TabStop = false;
-            toolTip.SetToolTip(groupBox7, resources.GetString("groupBox7.ToolTip"));
             // 
             // numericBoxNumOfBlochWave
             // 
@@ -1488,11 +1391,9 @@ namespace ReciPro
             groupBoxOpticalProperty.Controls.Add(groupBox4);
             groupBoxOpticalProperty.Name = "groupBoxOpticalProperty";
             groupBoxOpticalProperty.TabStop = false;
-            toolTip.SetToolTip(groupBoxOpticalProperty, resources.GetString("groupBoxOpticalProperty.ToolTip"));
             // 
             // groupBoxSTEMoption1
             // 
-            resources.ApplyResources(groupBoxSTEMoption1, "groupBoxSTEMoption1");
             groupBoxSTEMoption1.ContextMenuStrip = contextMenuStripSTEM;
             groupBoxSTEMoption1.Controls.Add(label5);
             groupBoxSTEMoption1.Controls.Add(label34);
@@ -1504,39 +1405,38 @@ namespace ReciPro
             groupBoxSTEMoption1.Controls.Add(flowLayoutPanel2);
             groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_DetectorInnerAngle);
             groupBoxSTEMoption1.Controls.Add(label1);
+            resources.ApplyResources(groupBoxSTEMoption1, "groupBoxSTEMoption1");
             groupBoxSTEMoption1.Name = "groupBoxSTEMoption1";
             groupBoxSTEMoption1.TabStop = false;
-            toolTip.SetToolTip(groupBoxSTEMoption1, resources.GetString("groupBoxSTEMoption1.ToolTip"));
             // 
             // contextMenuStripSTEM
             // 
-            resources.ApplyResources(contextMenuStripSTEM, "contextMenuStripSTEM");
             contextMenuStripSTEM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { typicalBF02MradToolStripMenuItem, typicalABF1224MradToolStripMenuItem, typicalLAADF2560MradToolStripMenuItem, typicalHAADF80250MradToolStripMenuItem });
             contextMenuStripSTEM.Name = "contextMenuStripSTEM";
-            toolTip.SetToolTip(contextMenuStripSTEM, resources.GetString("contextMenuStripSTEM.ToolTip"));
+            resources.ApplyResources(contextMenuStripSTEM, "contextMenuStripSTEM");
             // 
             // typicalBF02MradToolStripMenuItem
             // 
-            resources.ApplyResources(typicalBF02MradToolStripMenuItem, "typicalBF02MradToolStripMenuItem");
             typicalBF02MradToolStripMenuItem.Name = "typicalBF02MradToolStripMenuItem";
+            resources.ApplyResources(typicalBF02MradToolStripMenuItem, "typicalBF02MradToolStripMenuItem");
             typicalBF02MradToolStripMenuItem.Click += typicalBF02MradToolStripMenuItem_Click;
             // 
             // typicalABF1224MradToolStripMenuItem
             // 
-            resources.ApplyResources(typicalABF1224MradToolStripMenuItem, "typicalABF1224MradToolStripMenuItem");
             typicalABF1224MradToolStripMenuItem.Name = "typicalABF1224MradToolStripMenuItem";
+            resources.ApplyResources(typicalABF1224MradToolStripMenuItem, "typicalABF1224MradToolStripMenuItem");
             typicalABF1224MradToolStripMenuItem.Click += typicalABF1224MradToolStripMenuItem_Click;
             // 
             // typicalLAADF2560MradToolStripMenuItem
             // 
-            resources.ApplyResources(typicalLAADF2560MradToolStripMenuItem, "typicalLAADF2560MradToolStripMenuItem");
             typicalLAADF2560MradToolStripMenuItem.Name = "typicalLAADF2560MradToolStripMenuItem";
+            resources.ApplyResources(typicalLAADF2560MradToolStripMenuItem, "typicalLAADF2560MradToolStripMenuItem");
             typicalLAADF2560MradToolStripMenuItem.Click += typicalLAADF2560MradToolStripMenuItem_Click;
             // 
             // typicalHAADF80250MradToolStripMenuItem
             // 
-            resources.ApplyResources(typicalHAADF80250MradToolStripMenuItem, "typicalHAADF80250MradToolStripMenuItem");
             typicalHAADF80250MradToolStripMenuItem.Name = "typicalHAADF80250MradToolStripMenuItem";
+            resources.ApplyResources(typicalHAADF80250MradToolStripMenuItem, "typicalHAADF80250MradToolStripMenuItem");
             typicalHAADF80250MradToolStripMenuItem.Click += typicalHAADF80250MradToolStripMenuItem_Click;
             // 
             // label5
@@ -1620,23 +1520,20 @@ namespace ReciPro
             flowLayoutPanel15.Controls.Add(textBoxOuterRadius);
             flowLayoutPanel15.Controls.Add(label38);
             flowLayoutPanel15.Name = "flowLayoutPanel15";
-            toolTip.SetToolTip(flowLayoutPanel15, resources.GetString("flowLayoutPanel15.ToolTip"));
             // 
             // textBoxOuterRadius
             // 
-            resources.ApplyResources(textBoxOuterRadius, "textBoxOuterRadius");
             textBoxOuterRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            resources.ApplyResources(textBoxOuterRadius, "textBoxOuterRadius");
             textBoxOuterRadius.ForeColor = System.Drawing.Color.DimGray;
             textBoxOuterRadius.Name = "textBoxOuterRadius";
             textBoxOuterRadius.ReadOnly = true;
-            toolTip.SetToolTip(textBoxOuterRadius, resources.GetString("textBoxOuterRadius.ToolTip"));
             // 
             // label38
             // 
             resources.ApplyResources(label38, "label38");
             label38.ForeColor = System.Drawing.Color.Black;
             label38.Name = "label38";
-            toolTip.SetToolTip(label38, resources.GetString("label38.ToolTip"));
             // 
             // flowLayoutPanel9
             // 
@@ -1644,23 +1541,20 @@ namespace ReciPro
             flowLayoutPanel9.Controls.Add(textBoxInnerRadius);
             flowLayoutPanel9.Controls.Add(label37);
             flowLayoutPanel9.Name = "flowLayoutPanel9";
-            toolTip.SetToolTip(flowLayoutPanel9, resources.GetString("flowLayoutPanel9.ToolTip"));
             // 
             // textBoxInnerRadius
             // 
-            resources.ApplyResources(textBoxInnerRadius, "textBoxInnerRadius");
             textBoxInnerRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            resources.ApplyResources(textBoxInnerRadius, "textBoxInnerRadius");
             textBoxInnerRadius.ForeColor = System.Drawing.Color.DimGray;
             textBoxInnerRadius.Name = "textBoxInnerRadius";
             textBoxInnerRadius.ReadOnly = true;
-            toolTip.SetToolTip(textBoxInnerRadius, resources.GetString("textBoxInnerRadius.ToolTip"));
             // 
             // label37
             // 
             resources.ApplyResources(label37, "label37");
             label37.ForeColor = System.Drawing.Color.Black;
             label37.Name = "label37";
-            toolTip.SetToolTip(label37, resources.GetString("label37.ToolTip"));
             // 
             // flowLayoutPanel2
             // 
@@ -1668,23 +1562,20 @@ namespace ReciPro
             flowLayoutPanel2.Controls.Add(textBoxConvRadius);
             flowLayoutPanel2.Controls.Add(label36);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            toolTip.SetToolTip(flowLayoutPanel2, resources.GetString("flowLayoutPanel2.ToolTip"));
             // 
             // textBoxConvRadius
             // 
-            resources.ApplyResources(textBoxConvRadius, "textBoxConvRadius");
             textBoxConvRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            resources.ApplyResources(textBoxConvRadius, "textBoxConvRadius");
             textBoxConvRadius.ForeColor = System.Drawing.Color.DimGray;
             textBoxConvRadius.Name = "textBoxConvRadius";
             textBoxConvRadius.ReadOnly = true;
-            toolTip.SetToolTip(textBoxConvRadius, resources.GetString("textBoxConvRadius.ToolTip"));
             // 
             // label36
             // 
             resources.ApplyResources(label36, "label36");
             label36.ForeColor = System.Drawing.Color.Black;
             label36.Name = "label36";
-            toolTip.SetToolTip(label36, resources.GetString("label36.ToolTip"));
             // 
             // numericBoxSTEM_DetectorInnerAngle
             // 
@@ -1713,7 +1604,6 @@ namespace ReciPro
             // 
             // groupBoxHREMoption1
             // 
-            resources.ApplyResources(groupBoxHREMoption1, "groupBoxHREMoption1");
             groupBoxHREMoption1.Controls.Add(checkBoxOpenAperture);
             groupBoxHREMoption1.Controls.Add(numericBoxObjAperX);
             groupBoxHREMoption1.Controls.Add(numericBoxObjAperRadius);
@@ -1721,15 +1611,14 @@ namespace ReciPro
             groupBoxHREMoption1.Controls.Add(flowLayoutPanel1);
             groupBoxHREMoption1.Controls.Add(flowLayoutPanel5);
             groupBoxHREMoption1.Controls.Add(label8);
+            resources.ApplyResources(groupBoxHREMoption1, "groupBoxHREMoption1");
             groupBoxHREMoption1.Name = "groupBoxHREMoption1";
             groupBoxHREMoption1.TabStop = false;
-            toolTip.SetToolTip(groupBoxHREMoption1, resources.GetString("groupBoxHREMoption1.ToolTip"));
             // 
             // checkBoxOpenAperture
             // 
             resources.ApplyResources(checkBoxOpenAperture, "checkBoxOpenAperture");
             checkBoxOpenAperture.Name = "checkBoxOpenAperture";
-            toolTip.SetToolTip(checkBoxOpenAperture, resources.GetString("checkBoxOpenAperture.ToolTip"));
             checkBoxOpenAperture.UseVisualStyleBackColor = true;
             checkBoxOpenAperture.CheckedChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
@@ -1747,7 +1636,6 @@ namespace ReciPro
             numericBoxObjAperX.ShowUpDown = true;
             numericBoxObjAperX.SmartIncrement = true;
             numericBoxObjAperX.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxObjAperX, resources.GetString("numericBoxObjAperX.ToolTip"));
             numericBoxObjAperX.UpDown_Increment = 0.5D;
             numericBoxObjAperX.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
@@ -1785,7 +1673,6 @@ namespace ReciPro
             numericBoxObjAperY.ShowUpDown = true;
             numericBoxObjAperY.SmartIncrement = true;
             numericBoxObjAperY.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxObjAperY, resources.GetString("numericBoxObjAperY.ToolTip"));
             numericBoxObjAperY.UpDown_Increment = 0.5D;
             numericBoxObjAperY.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
@@ -1796,29 +1683,25 @@ namespace ReciPro
             flowLayoutPanel1.Controls.Add(label9);
             flowLayoutPanel1.Controls.Add(buttonDetailsOfSpots);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             // 
             // textBoxNumOfSpots
             // 
-            resources.ApplyResources(textBoxNumOfSpots, "textBoxNumOfSpots");
             textBoxNumOfSpots.BackColor = System.Drawing.SystemColors.InactiveCaption;
             textBoxNumOfSpots.ForeColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(textBoxNumOfSpots, "textBoxNumOfSpots");
             textBoxNumOfSpots.Name = "textBoxNumOfSpots";
             textBoxNumOfSpots.ReadOnly = true;
-            toolTip.SetToolTip(textBoxNumOfSpots, resources.GetString("textBoxNumOfSpots.ToolTip"));
             // 
             // label9
             // 
             resources.ApplyResources(label9, "label9");
             label9.ForeColor = System.Drawing.Color.Black;
             label9.Name = "label9";
-            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip"));
             // 
             // buttonDetailsOfSpots
             // 
             resources.ApplyResources(buttonDetailsOfSpots, "buttonDetailsOfSpots");
             buttonDetailsOfSpots.Name = "buttonDetailsOfSpots";
-            toolTip.SetToolTip(buttonDetailsOfSpots, resources.GetString("buttonDetailsOfSpots.ToolTip"));
             buttonDetailsOfSpots.UseVisualStyleBackColor = true;
             buttonDetailsOfSpots.Click += ButtonDetailsOfSpots_Click;
             // 
@@ -1828,34 +1711,29 @@ namespace ReciPro
             flowLayoutPanel5.Controls.Add(textBoxObjAperRadius);
             flowLayoutPanel5.Controls.Add(label7);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            toolTip.SetToolTip(flowLayoutPanel5, resources.GetString("flowLayoutPanel5.ToolTip"));
             // 
             // textBoxObjAperRadius
             // 
-            resources.ApplyResources(textBoxObjAperRadius, "textBoxObjAperRadius");
             textBoxObjAperRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            resources.ApplyResources(textBoxObjAperRadius, "textBoxObjAperRadius");
             textBoxObjAperRadius.ForeColor = System.Drawing.Color.DimGray;
             textBoxObjAperRadius.Name = "textBoxObjAperRadius";
             textBoxObjAperRadius.ReadOnly = true;
-            toolTip.SetToolTip(textBoxObjAperRadius, resources.GetString("textBoxObjAperRadius.ToolTip"));
             // 
             // label7
             // 
             resources.ApplyResources(label7, "label7");
             label7.ForeColor = System.Drawing.Color.Black;
             label7.Name = "label7";
-            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
             // 
             // label8
             // 
             resources.ApplyResources(label8, "label8");
             label8.ForeColor = System.Drawing.Color.DimGray;
             label8.Name = "label8";
-            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
             // 
             // groupBox4
             // 
-            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.ContextMenuStrip = contextMenuStripTEMcondition;
             groupBox4.Controls.Add(label35);
             groupBox4.Controls.Add(checkBoxCTF);
@@ -1866,62 +1744,61 @@ namespace ReciPro
             groupBox4.Controls.Add(numericBoxDefocus);
             groupBox4.Controls.Add(numericBoxAccVol);
             groupBox4.Controls.Add(flowLayoutPanel3);
+            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Name = "groupBox4";
             groupBox4.TabStop = false;
-            toolTip.SetToolTip(groupBox4, resources.GetString("groupBox4.ToolTip"));
             // 
             // contextMenuStripTEMcondition
             // 
-            resources.ApplyResources(contextMenuStripTEMcondition, "contextMenuStripTEMcondition");
             contextMenuStripTEMcondition.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { setoZeroDefocusToolStripMenuItem, setoScherzerDefocusToolStripMenuItem, setAllAToolStripMenuItem, toolStripSeparator6, presets1ToolStripMenuItem, presets2ToolStripMenuItem, presets3ToolStripMenuItem, presets4ToolStripMenuItem });
             contextMenuStripTEMcondition.Name = "contextMenuStripInherentProperty";
-            toolTip.SetToolTip(contextMenuStripTEMcondition, resources.GetString("contextMenuStripTEMcondition.ToolTip"));
+            resources.ApplyResources(contextMenuStripTEMcondition, "contextMenuStripTEMcondition");
             // 
             // setoZeroDefocusToolStripMenuItem
             // 
-            resources.ApplyResources(setoZeroDefocusToolStripMenuItem, "setoZeroDefocusToolStripMenuItem");
             setoZeroDefocusToolStripMenuItem.Name = "setoZeroDefocusToolStripMenuItem";
+            resources.ApplyResources(setoZeroDefocusToolStripMenuItem, "setoZeroDefocusToolStripMenuItem");
             setoZeroDefocusToolStripMenuItem.Click += setoZeroDefocusToolStripMenuItem_Click;
             // 
             // setoScherzerDefocusToolStripMenuItem
             // 
-            resources.ApplyResources(setoScherzerDefocusToolStripMenuItem, "setoScherzerDefocusToolStripMenuItem");
             setoScherzerDefocusToolStripMenuItem.Name = "setoScherzerDefocusToolStripMenuItem";
+            resources.ApplyResources(setoScherzerDefocusToolStripMenuItem, "setoScherzerDefocusToolStripMenuItem");
             setoScherzerDefocusToolStripMenuItem.Click += setoScherzerDefocusToolStripMenuItem_Click;
             // 
             // setAllAToolStripMenuItem
             // 
-            resources.ApplyResources(setAllAToolStripMenuItem, "setAllAToolStripMenuItem");
             setAllAToolStripMenuItem.Name = "setAllAToolStripMenuItem";
+            resources.ApplyResources(setAllAToolStripMenuItem, "setAllAToolStripMenuItem");
             setAllAToolStripMenuItem.Click += zeroAllToolStripMenuItem_Click;
             // 
             // toolStripSeparator6
             // 
-            resources.ApplyResources(toolStripSeparator6, "toolStripSeparator6");
             toolStripSeparator6.Name = "toolStripSeparator6";
+            resources.ApplyResources(toolStripSeparator6, "toolStripSeparator6");
             // 
             // presets1ToolStripMenuItem
             // 
-            resources.ApplyResources(presets1ToolStripMenuItem, "presets1ToolStripMenuItem");
             presets1ToolStripMenuItem.Name = "presets1ToolStripMenuItem";
+            resources.ApplyResources(presets1ToolStripMenuItem, "presets1ToolStripMenuItem");
             presets1ToolStripMenuItem.Click += presets1ToolStripMenuItem_Click;
             // 
             // presets2ToolStripMenuItem
             // 
-            resources.ApplyResources(presets2ToolStripMenuItem, "presets2ToolStripMenuItem");
             presets2ToolStripMenuItem.Name = "presets2ToolStripMenuItem";
+            resources.ApplyResources(presets2ToolStripMenuItem, "presets2ToolStripMenuItem");
             presets2ToolStripMenuItem.Click += presets2ToolStripMenuItem_Click;
             // 
             // presets3ToolStripMenuItem
             // 
-            resources.ApplyResources(presets3ToolStripMenuItem, "presets3ToolStripMenuItem");
             presets3ToolStripMenuItem.Name = "presets3ToolStripMenuItem";
+            resources.ApplyResources(presets3ToolStripMenuItem, "presets3ToolStripMenuItem");
             presets3ToolStripMenuItem.Click += presets3ToolStripMenuItem_Click;
             // 
             // presets4ToolStripMenuItem
             // 
-            resources.ApplyResources(presets4ToolStripMenuItem, "presets4ToolStripMenuItem");
             presets4ToolStripMenuItem.Name = "presets4ToolStripMenuItem";
+            resources.ApplyResources(presets4ToolStripMenuItem, "presets4ToolStripMenuItem");
             presets4ToolStripMenuItem.Click += presets4ToolStripMenuItem_Click;
             // 
             // label35
@@ -1935,7 +1812,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(checkBoxCTF, "checkBoxCTF");
             checkBoxCTF.Name = "checkBoxCTF";
-            toolTip.SetToolTip(checkBoxCTF, resources.GetString("checkBoxCTF.ToolTip"));
             checkBoxCTF.UseVisualStyleBackColor = true;
             checkBoxCTF.CheckedChanged += checkBoxShowLensFunctionGraph_CheckedChanged;
             // 
@@ -2064,7 +1940,6 @@ namespace ReciPro
             flowLayoutPanel3.Controls.Add(label4);
             flowLayoutPanel3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            toolTip.SetToolTip(flowLayoutPanel3, resources.GetString("flowLayoutPanel3.ToolTip"));
             // 
             // label3
             // 
@@ -2075,8 +1950,8 @@ namespace ReciPro
             // 
             // textBoxScherzer
             // 
-            resources.ApplyResources(textBoxScherzer, "textBoxScherzer");
             textBoxScherzer.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            resources.ApplyResources(textBoxScherzer, "textBoxScherzer");
             textBoxScherzer.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             textBoxScherzer.Name = "textBoxScherzer";
             toolTip.SetToolTip(textBoxScherzer, resources.GetString("textBoxScherzer.ToolTip"));
@@ -2094,15 +1969,13 @@ namespace ReciPro
             flowLayoutPanel14.Controls.Add(groupBox6);
             flowLayoutPanel14.Controls.Add(groupBoxSampleProperty);
             flowLayoutPanel14.Name = "flowLayoutPanel14";
-            toolTip.SetToolTip(flowLayoutPanel14, resources.GetString("flowLayoutPanel14.ToolTip"));
             // 
             // groupBox6
             // 
-            resources.ApplyResources(groupBox6, "groupBox6");
             groupBox6.Controls.Add(flowLayoutPanel16);
+            resources.ApplyResources(groupBox6, "groupBox6");
             groupBox6.Name = "groupBox6";
             groupBox6.TabStop = false;
-            toolTip.SetToolTip(groupBox6, resources.GetString("groupBox6.ToolTip"));
             // 
             // flowLayoutPanel16
             // 
@@ -2111,7 +1984,6 @@ namespace ReciPro
             flowLayoutPanel16.Controls.Add(radioButtonSTEM);
             flowLayoutPanel16.Controls.Add(radioButtonProjectedPotential);
             flowLayoutPanel16.Name = "flowLayoutPanel16";
-            toolTip.SetToolTip(flowLayoutPanel16, resources.GetString("flowLayoutPanel16.ToolTip"));
             // 
             // radioButtonHRTEM
             // 
@@ -2141,11 +2013,10 @@ namespace ReciPro
             // 
             // groupBoxSampleProperty
             // 
-            resources.ApplyResources(groupBoxSampleProperty, "groupBoxSampleProperty");
             groupBoxSampleProperty.Controls.Add(numericBoxThickness);
+            resources.ApplyResources(groupBoxSampleProperty, "groupBoxSampleProperty");
             groupBoxSampleProperty.Name = "groupBoxSampleProperty";
             groupBoxSampleProperty.TabStop = false;
-            toolTip.SetToolTip(groupBoxSampleProperty, resources.GetString("groupBoxSampleProperty.ToolTip"));
             // 
             // numericBoxThickness
             // 
@@ -2168,18 +2039,16 @@ namespace ReciPro
             // 
             // panel4
             // 
-            resources.ApplyResources(panel4, "panel4");
             panel4.Controls.Add(checkBoxPreset);
             panel4.Controls.Add(checkBoxRealTimeSimulation);
             panel4.Controls.Add(buttonSimulate);
+            resources.ApplyResources(panel4, "panel4");
             panel4.Name = "panel4";
-            toolTip.SetToolTip(panel4, resources.GetString("panel4.ToolTip"));
             // 
             // checkBoxPreset
             // 
             resources.ApplyResources(checkBoxPreset, "checkBoxPreset");
             checkBoxPreset.Name = "checkBoxPreset";
-            toolTip.SetToolTip(checkBoxPreset, resources.GetString("checkBoxPreset.ToolTip"));
             checkBoxPreset.UseVisualStyleBackColor = true;
             checkBoxPreset.CheckedChanged += checkBoxPreset_CheckedChanged;
             // 
@@ -2202,79 +2071,78 @@ namespace ReciPro
             // 
             // menuStrip1
             // 
-            resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
+            resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.Name = "menuStrip1";
-            toolTip.SetToolTip(menuStrip1, resources.GetString("menuStrip1.ToolTip"));
             // 
             // fileToolStripMenuItem
             // 
-            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemSave, copyImageToolStripMenuItem, toolStripMenuItemOverprintSymbols, toolStripSeparator1, readTEMParameterToolStripMenuItem, saveTEMParametersToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // toolStripMenuItemSave
             // 
-            resources.ApplyResources(toolStripMenuItemSave, "toolStripMenuItemSave");
             toolStripMenuItemSave.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemSavePNG, toolStripMenuItemSaveTIFF, toolStripMenuItemSaveMetafile, toolStripMenuItemSaveIndividually });
             toolStripMenuItemSave.Name = "toolStripMenuItemSave";
+            resources.ApplyResources(toolStripMenuItemSave, "toolStripMenuItemSave");
             // 
             // toolStripMenuItemSavePNG
             // 
-            resources.ApplyResources(toolStripMenuItemSavePNG, "toolStripMenuItemSavePNG");
             toolStripMenuItemSavePNG.Name = "toolStripMenuItemSavePNG";
+            resources.ApplyResources(toolStripMenuItemSavePNG, "toolStripMenuItemSavePNG");
             toolStripMenuItemSavePNG.Click += ToolStripMenuItemSavePNG_Click;
             // 
             // toolStripMenuItemSaveTIFF
             // 
-            resources.ApplyResources(toolStripMenuItemSaveTIFF, "toolStripMenuItemSaveTIFF");
             toolStripMenuItemSaveTIFF.Name = "toolStripMenuItemSaveTIFF";
+            resources.ApplyResources(toolStripMenuItemSaveTIFF, "toolStripMenuItemSaveTIFF");
             toolStripMenuItemSaveTIFF.Click += ToolStripMenuItemSaveTIFF_Click;
             // 
             // toolStripMenuItemSaveMetafile
             // 
-            resources.ApplyResources(toolStripMenuItemSaveMetafile, "toolStripMenuItemSaveMetafile");
             toolStripMenuItemSaveMetafile.Name = "toolStripMenuItemSaveMetafile";
+            resources.ApplyResources(toolStripMenuItemSaveMetafile, "toolStripMenuItemSaveMetafile");
             toolStripMenuItemSaveMetafile.Click += ToolStripMenuItemSaveMetafile_Click;
             // 
             // toolStripMenuItemSaveIndividually
             // 
-            resources.ApplyResources(toolStripMenuItemSaveIndividually, "toolStripMenuItemSaveIndividually");
             toolStripMenuItemSaveIndividually.Checked = true;
             toolStripMenuItemSaveIndividually.CheckOnClick = true;
             toolStripMenuItemSaveIndividually.CheckState = System.Windows.Forms.CheckState.Checked;
             toolStripMenuItemSaveIndividually.Name = "toolStripMenuItemSaveIndividually";
+            resources.ApplyResources(toolStripMenuItemSaveIndividually, "toolStripMenuItemSaveIndividually");
             // 
             // copyImageToolStripMenuItem
             // 
-            resources.ApplyResources(copyImageToolStripMenuItem, "copyImageToolStripMenuItem");
             copyImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemCopyImage, toolStripMenuItemCopyMetafile });
             copyImageToolStripMenuItem.Name = "copyImageToolStripMenuItem";
+            resources.ApplyResources(copyImageToolStripMenuItem, "copyImageToolStripMenuItem");
             // 
             // toolStripMenuItemCopyImage
             // 
-            resources.ApplyResources(toolStripMenuItemCopyImage, "toolStripMenuItemCopyImage");
             toolStripMenuItemCopyImage.Name = "toolStripMenuItemCopyImage";
+            resources.ApplyResources(toolStripMenuItemCopyImage, "toolStripMenuItemCopyImage");
             toolStripMenuItemCopyImage.Click += ToolStripMenuItemCopyImage_Click;
             // 
             // toolStripMenuItemCopyMetafile
             // 
-            resources.ApplyResources(toolStripMenuItemCopyMetafile, "toolStripMenuItemCopyMetafile");
             toolStripMenuItemCopyMetafile.Name = "toolStripMenuItemCopyMetafile";
+            resources.ApplyResources(toolStripMenuItemCopyMetafile, "toolStripMenuItemCopyMetafile");
             toolStripMenuItemCopyMetafile.Click += ToolStripMenuItemCopyMetafile_Click;
             // 
             // toolStripMenuItemOverprintSymbols
             // 
-            resources.ApplyResources(toolStripMenuItemOverprintSymbols, "toolStripMenuItemOverprintSymbols");
             toolStripMenuItemOverprintSymbols.Checked = true;
             toolStripMenuItemOverprintSymbols.CheckOnClick = true;
             toolStripMenuItemOverprintSymbols.CheckState = System.Windows.Forms.CheckState.Checked;
             toolStripMenuItemOverprintSymbols.Name = "toolStripMenuItemOverprintSymbols";
+            resources.ApplyResources(toolStripMenuItemOverprintSymbols, "toolStripMenuItemOverprintSymbols");
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
             toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
             // 
             // readTEMParameterToolStripMenuItem
             // 
@@ -2288,34 +2156,34 @@ namespace ReciPro
             // 
             // helpToolStripMenuItem
             // 
-            resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
             helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { detailsOfHRTEMSimulationToolStripMenuItem, toolStripSeparator2, calculationLibraryToolStripMenuItem, toolStripComboBoxCaclulationLibrary });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
             // detailsOfHRTEMSimulationToolStripMenuItem
             // 
-            resources.ApplyResources(detailsOfHRTEMSimulationToolStripMenuItem, "detailsOfHRTEMSimulationToolStripMenuItem");
             detailsOfHRTEMSimulationToolStripMenuItem.Name = "detailsOfHRTEMSimulationToolStripMenuItem";
+            resources.ApplyResources(detailsOfHRTEMSimulationToolStripMenuItem, "detailsOfHRTEMSimulationToolStripMenuItem");
             detailsOfHRTEMSimulationToolStripMenuItem.Click += DetailsOfHRTEMSimulationToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
-            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             // 
             // calculationLibraryToolStripMenuItem
             // 
-            resources.ApplyResources(calculationLibraryToolStripMenuItem, "calculationLibraryToolStripMenuItem");
             calculationLibraryToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             calculationLibraryToolStripMenuItem.Name = "calculationLibraryToolStripMenuItem";
+            resources.ApplyResources(calculationLibraryToolStripMenuItem, "calculationLibraryToolStripMenuItem");
             // 
             // toolStripComboBoxCaclulationLibrary
             // 
-            resources.ApplyResources(toolStripComboBoxCaclulationLibrary, "toolStripComboBoxCaclulationLibrary");
             toolStripComboBoxCaclulationLibrary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             toolStripComboBoxCaclulationLibrary.Items.AddRange(new object[] { resources.GetString("toolStripComboBoxCaclulationLibrary.Items"), resources.GetString("toolStripComboBoxCaclulationLibrary.Items1") });
             toolStripComboBoxCaclulationLibrary.Margin = new System.Windows.Forms.Padding(20, 2, 2, 2);
             toolStripComboBoxCaclulationLibrary.Name = "toolStripComboBoxCaclulationLibrary";
+            resources.ApplyResources(toolStripComboBoxCaclulationLibrary, "toolStripComboBoxCaclulationLibrary");
             // 
             // buttonStop
             // 
@@ -2329,30 +2197,29 @@ namespace ReciPro
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
+            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.Name = "statusStrip1";
-            toolTip.SetToolTip(statusStrip1, resources.GetString("statusStrip1.ToolTip"));
             // 
             // toolStripProgressBar
             // 
-            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             toolStripProgressBar.Name = "toolStripProgressBar";
+            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             // 
             // toolStripStatusLabel1
             // 
-            resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
             // toolStripStatusLabel2
             // 
-            resources.ApplyResources(toolStripStatusLabel2, "toolStripStatusLabel2");
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            resources.ApplyResources(toolStripStatusLabel2, "toolStripStatusLabel2");
             // 
             // toolStripStatusLabel3
             // 
-            resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
             // 
             // FormImageSimulator
             // 
@@ -2365,7 +2232,6 @@ namespace ReciPro
             DoubleBuffered = true;
             KeyPreview = true;
             Name = "FormImageSimulator";
-            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             FormClosing += FormImageSimulator_FormClosing;
             Load += FormImageSimulator_Load;
             VisibleChanged += FormImageSimulator_VisibleChanged;
