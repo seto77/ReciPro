@@ -1161,10 +1161,16 @@ public partial class FormMain : Form
 
     private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
-        var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        var f = new FormPDF(appPath + fn) { Text = "ReciPro manual" };
-        f.Show();
+        if (Language != Languages.English)
+            Process.Start(new ProcessStartInfo("https://yseto.net/soft/recipro/") { UseShellExecute = true });
+        else
+        {
+
+            var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
+            var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var f = new FormPDF(appPath + fn) { Text = "ReciPro manual" };
+            f.Show();
+        }
     }
     private void hintToolStripMenuItem_Click(object sender, EventArgs e)
     {

@@ -312,27 +312,14 @@ public partial class FormImageSimulator : Form
     #endregion 起動、終了関連
 
     #region PseudoBitmapに格納する情報
-    public class ImageInfo
+    public class ImageInfo(int width, int height, double resolution, Matrix3D mat, string text, bool lockIntensity = false)
     {
-        public int Width, Height;
-        public double Resolution;
-        public PointD A, B, C;
-        public Matrix3D Mat;
-        public string Text;
-        public bool LockIntensity;
-
-        public ImageInfo(int width, int height, double resolution, Matrix3D mat, string text, bool lockIntensity = false)
-        {
-            Width = width;
-            Height = height;
-            Resolution = resolution;
-            Mat = mat;
-            A = new PointD(mat.E11, mat.E21);
-            B = new PointD(mat.E12, mat.E22);
-            C = new PointD(mat.E13, mat.E23);
-            Text = text;
-            LockIntensity = lockIntensity;
-        }
+        public int Width = width, Height = height;
+        public double Resolution = resolution;
+        public PointD A = new(mat.E11, mat.E21), B = new(mat.E12, mat.E22), C = new(mat.E13, mat.E23);
+        public Matrix3D Mat = mat;
+        public string Text = text;
+        public bool LockIntensity = lockIntensity;
     }
     #endregion PseudoBitmapに格納する情報
 

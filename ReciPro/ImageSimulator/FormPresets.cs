@@ -176,7 +176,7 @@ public partial struct ImageSimulatorSetting
     public double SliceThicknessForInelastic;
     #endregion
 
-    override public string ToString() => Name;
+    public override readonly string ToString() => Name;
 
     [MemoryPackConstructor]
     public ImageSimulatorSetting() { }
@@ -218,7 +218,7 @@ public partial struct ImageSimulatorSetting
         SliceThicknessForInelastic = f.SliceThicknessForInelastic;
     }
 
-    public void Apply(FormImageSimulator f)
+    public readonly void Apply(FormImageSimulator f)
     {
         //共通
 
