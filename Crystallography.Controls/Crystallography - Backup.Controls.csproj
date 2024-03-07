@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <PackageReference Include="IronPython" Version="2.7.12" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
   <ItemGroup>
