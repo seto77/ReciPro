@@ -167,7 +167,7 @@ public partial class FormImageSimulator : Form
         get
         {
             if (radioButtonSingleMode.Checked || !checkBoxSerialThickness.Checked)
-                return new[] { numericBoxThickness.Value };
+                return [numericBoxThickness.Value];
             try
             {
                 return textBoxThicknessList.Text.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Select(str => Convert.ToDouble(str)).ToArray();
@@ -190,7 +190,7 @@ public partial class FormImageSimulator : Form
         get
         {
             if (radioButtonSingleMode.Checked || !checkBoxSerialDefocus.Checked)
-                return new[] { numericBoxDefocus.Value };
+                return [numericBoxDefocus.Value];
             try
             {
                 return textBoxDefocusList.Text.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Select(str => Convert.ToDouble(str)).ToArray();
@@ -388,7 +388,7 @@ public partial class FormImageSimulator : Form
             FormMain.Crystal.RotationMatrix,
             ThicknessArray,
             DefocusArray,
-            directions.ToArray(),
+            [.. directions],
             ConvergenceAngle,
             DetectorInnerAngle,
             DetectorOuterAngle
@@ -539,7 +539,7 @@ public partial class FormImageSimulator : Form
 
         //画像が上下左右反転しているみたいなので、処理 20230304
         for (int i = 0; i < images.Length; i++)
-            images[i] = images[i].Reverse().ToArray();
+            images[i] = [.. images[i].Reverse()];
 
 
         var temp = sw1.ElapsedMilliseconds;
@@ -733,7 +733,7 @@ public partial class FormImageSimulator : Form
     public double[] Normalize(double[] image, bool normalizeMin, bool normalizeMax)
     {
         if (!normalizeMin && !normalizeMax)
-            return image.ToArray();
+            return [.. image];
 
         double min = image.Min(), max = image.Max();
         double destMin = normalizeMin ? numericBoxIntensityMin.Value : min;
@@ -757,7 +757,7 @@ public partial class FormImageSimulator : Form
                 if (normalizeMin || normalizeMax)
                     _image[i][j] = image[i][j].Select(d => (d - min) / (max - min) * (destMax - destMin) + destMin).ToArray();
                 else
-                    _image[i][j] = image[i][j].ToArray();
+                    _image[i][j] = [.. image[i][j]];
         }
         return _image;
     }

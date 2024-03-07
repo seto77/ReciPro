@@ -1270,8 +1270,8 @@ public partial class GraphControl : UserControl
             {
                 if (verticalLineList.Count > selectedVerticalLineIndex && selectedVerticalLineIndex >= 0)
                 {
-                    //lineList[selectedLineIndex].X = x;
-                    verticalLineList[selectedVerticalLineIndex] = new PointD(pt.X, verticalLineList[selectedVerticalLineIndex].Y);
+                    var x = XLog ? Math.Pow(10,pt.X) : pt.X;
+                    verticalLineList[selectedVerticalLineIndex] = new PointD(x, verticalLineList[selectedVerticalLineIndex].Y);
 
                     Draw();
                     LinePositionChanged?.Invoke();

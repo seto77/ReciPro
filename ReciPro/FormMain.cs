@@ -1442,7 +1442,7 @@ public partial class FormMain : Form
         SetNearestUVW();
     }
 
-    private List<(int U, int V, int W, double Length)> uvwIndices = [];
+    private readonly List<(int U, int V, int W, double Length)> uvwIndices = [];
 
     private void SetNearestUVW()//Å‚à‹ß‚¢uvw‚ğŒŸõ
     {
