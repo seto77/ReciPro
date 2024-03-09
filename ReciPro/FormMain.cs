@@ -1165,7 +1165,6 @@ public partial class FormMain : Form
             Process.Start(new ProcessStartInfo("https://yseto.net/soft/recipro/") { UseShellExecute = true });
         else
         {
-
             var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
             var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var f = new FormPDF(appPath + fn) { Text = "ReciPro manual" };

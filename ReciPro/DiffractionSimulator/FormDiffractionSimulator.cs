@@ -8,6 +8,7 @@ using OpenTK;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -132,15 +133,30 @@ public partial class FormDiffractionSimulator : Form
     {
         set
         {
-            if (value > numericBoxResolution.Maximum)
+            var val = radioButtonResoUnitNanometerInv.Checked ?
+                WaveLength / 2.0 / Math.Sin(Math.Atan(value / CameraLength2) / 2.0) : value;
+
+            skipDrawing = true;
+            if (val > numericBoxResolution.Maximum)
                 numericBoxResolution.Value = numericBoxResolution.Maximum;
-            else if (value < numericBoxResolution.Minimum)
+            else if (val < numericBoxResolution.Minimum)
                 numericBoxResolution.Value = numericBoxResolution.Minimum;
             else
-                numericBoxResolution.Value = value;
+                numericBoxResolution.Value = val;
+            skipDrawing = false;
+
+            SetProjection();
+            SetVector();
             Draw();
         }
-        get => numericBoxResolution.Value;
+        get
+        {
+            if (radioButtonResoUnitMilliMeter.Checked)//単位がmm/pixの時はそのまま返す
+                return numericBoxResolution.Value;
+            else//単位が nm^-1/pixの時
+                return CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / numericBoxResolution.Value / 2.0));
+
+        }
     }
     public int ClientWidth { get => numericBoxClientWidth.ValueInteger; set => numericBoxClientWidth.Value = value; }
     public int ClientHeight { get => numericBoxClientHeight.ValueInteger; set => numericBoxClientHeight.Value = value; }
@@ -805,6 +821,10 @@ public partial class FormDiffractionSimulator : Form
                                 if (bethe || Math.Abs(dev) < 3 * ExcitationError)
                                 {
                                     g.Flag2 = true;
+
+                                    if (checkBoxDrawSameSize.Checked && Math.Abs(dev) < 3 * ExcitationError)//全て同一サイズで描画する場合はここで dev2=0
+                                        dev2 = 0;
+
                                     //もしg.RelativeIntensity=1で、かつcoeff=1の時、sigmaの半分のところで強度が255になるように関数の形を調整
                                     double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma, intensity;
                                     if (!logScale)
@@ -835,6 +855,10 @@ public partial class FormDiffractionSimulator : Form
                                 if (bethe || Math.Abs(dev) < sphereRadius)
                                 {
                                     g.Flag2 = true;
+                                    
+                                    if (checkBoxDrawSameSize.Checked)//全て同一サイズで描画する場合はここで dev2=0
+                                        dev2 = 0;
+
                                     var sectionRadius = bethe ?
                                         sphereRadius : //ベーテ法の場合はそのまま
                                         Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only あるいは Kinematicの場合は、エワルド球に切られた断面上の、逆格子点の半径
@@ -1189,7 +1213,8 @@ public partial class FormDiffractionSimulator : Form
     //解像度が変更されたときに逆格子点を計算しなおす
     private void numericUpDownResolution_ValueChanged(object sender, EventArgs e)
     {
-        if (Visible == false) return;
+        if (Visible == false || SkipEvent) return;
+
         SetProjection();
         SetVector();
         Draw();
@@ -1806,11 +1831,11 @@ public partial class FormDiffractionSimulator : Form
 
         if (printDocument1.PrinterSettings.DefaultPageSettings.Landscape)
             (height, width) = (width, height);//縦横を逆転
-        double originalReso = numericBoxResolution.Value;
+        double originalReso = Resolution;
         switch (MessageBox.Show("Real scale printing ?", "Print Option", MessageBoxButtons.YesNoCancel))
         {
             case DialogResult.Yes:
-                numericBoxResolution.Value = (300 / 25.4);
+                Resolution = (300 / 25.4);
                 break;
 
             case DialogResult.Cancel: return;
@@ -2139,17 +2164,25 @@ public partial class FormDiffractionSimulator : Form
             flowLayoutPanelExtinctionOption.Visible = true;
 
             flowLayoutPanelBethe.Visible = false;
+
+            checkBoxDrawSameSize.Visible = true;
         }
         else if (radioButtonIntensityKinematical.Checked)  // 運動学的
         {
             flowLayoutPanelExtinctionOption.Visible = false;
 
             flowLayoutPanelBethe.Visible = false;
+
+            checkBoxDrawSameSize.Visible = false;
+
         }
         else //動力学的 
         {
             flowLayoutPanelExtinctionOption.Visible = false;
             flowLayoutPanelBethe.Visible = true;
+
+            checkBoxDrawSameSize.Visible = false;
+
         }
 
         SetVector();
@@ -2879,4 +2912,30 @@ public partial class FormDiffractionSimulator : Form
     #endregion
 
 
+    private void radioButtonResoUnit_CheckedChanged(object sender, EventArgs e)
+    {
+        if (sender is RadioButton a && a.Checked)
+        {
+            skipDrawing = true;
+            SkipEvent = true;
+            var val = numericBoxResolution.Value;
+
+            if (radioButtonResoUnitMilliMeter.Checked)
+            {
+                numericBoxResolution.Maximum = 1E1;
+                numericBoxResolution.Minimum = 1E-5;
+                numericBoxResolution.Value = Math.Tan(2 * Math.Asin(WaveLength / val / 2.0)) * CameraLength2;
+                
+            }
+            else
+            {
+                numericBoxResolution.Maximum = 1E7;
+                numericBoxResolution.Minimum = 1E-3;
+                numericBoxResolution.Value = WaveLength / 2.0 / Math.Sin( Math.Atan(val / CameraLength2) /2.0 );
+            }
+            SkipEvent = false;
+
+            skipDrawing = false;
+        }
+    }
 }

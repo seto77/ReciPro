@@ -7,7 +7,8 @@ internal static class Version
 
     public const string History =
         "History" +
-        "\r\n ver4.879(2024/03/05)  Fixed GUI in the HRTEM/STEM simulator. (see https://github.com/seto77/ReciPro/issues/29, thanks to JingshanDu-san)" +
+        "\r\n ver4.880(2024/03/09)  Improved GUI in the 'Diffraction simulator'. (see https://github.com/seto77/ReciPro/issues/30, thanks to lukmuk-san)" +
+        "\r\n ver4.879(2024/03/05)  Fixed GUI in the 'HRTEM/STEM simulator'. (see https://github.com/seto77/ReciPro/issues/29, thanks to JingshanDu-san)" +
         "\r\n ver4.878(2024/02/13)  Added options for saving movies." +
         "\r\n ver4.877(2024/02/11)  Added: Back Laue camera mode (X-ray diffraction) (see https://github.com/seto77/ReciPro/issues/28). Improved registry read/write behaviour at startup." +
         "\r\n ver4.876(2023/12/21)  Fixed an issue where icon images were not displayed correctly." +
