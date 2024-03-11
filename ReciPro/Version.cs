@@ -7,6 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.881(2024/03/11)  Checked security problem." +
         "\r\n ver4.880(2024/03/09)  Improved GUI in the 'Diffraction simulator'. (see https://github.com/seto77/ReciPro/issues/30, thanks to lukmuk-san)" +
         "\r\n ver4.879(2024/03/05)  Fixed GUI in the 'HRTEM/STEM simulator'. (see https://github.com/seto77/ReciPro/issues/29, thanks to JingshanDu-san)" +
         "\r\n ver4.878(2024/02/13)  Added options for saving movies." +
