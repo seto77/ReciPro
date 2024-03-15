@@ -33,6 +33,18 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulator));
             toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            statusStrip1 = new System.Windows.Forms.StatusStrip();
+            toolStripStatusLabelTimeForSearchingG = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabelTimeForDrawing = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabelTimeForBethe = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStrip1 = new System.Windows.Forms.ToolStrip();
+            toolStripButtonIndexLabels = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonDspacing = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonDspacingInv = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonDistance = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonExcitationError = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonFg = new System.Windows.Forms.ToolStripButton();
             toolStrip3 = new System.Windows.Forms.ToolStrip();
             toolStripButtonDiffractionSpots = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -41,18 +53,6 @@
             toolStripButtonDebyeRing = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             toolStripButtonScale = new System.Windows.Forms.ToolStripButton();
-            toolStrip1 = new System.Windows.Forms.ToolStrip();
-            toolStripButtonIndexLabels = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonDspacing = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonDspacingInv = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonDistance = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonExcitationError = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonFg = new System.Windows.Forms.ToolStripButton();
-            statusStrip1 = new System.Windows.Forms.StatusStrip();
-            toolStripStatusLabelTimeForSearchingG = new System.Windows.Forms.ToolStripStatusLabel();
-            toolStripStatusLabelTimeForDrawing = new System.Windows.Forms.ToolStripStatusLabel();
-            toolStripStatusLabelTimeForBethe = new System.Windows.Forms.ToolStripStatusLabel();
-            toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             panelMain = new System.Windows.Forms.Panel();
             tabControl = new System.Windows.Forms.TabControl();
             tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -281,9 +281,9 @@
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
             toolStripContainer1.SuspendLayout();
-            toolStrip3.SuspendLayout();
-            toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
+            toolStrip1.SuspendLayout();
+            toolStrip3.SuspendLayout();
             panelMain.SuspendLayout();
             tabControl.SuspendLayout();
             tabPageGeneral.SuspendLayout();
@@ -380,6 +380,101 @@
             toolStripContainer1.TopToolStripPanel.Controls.Add(menuStrip1);
             toolTip.SetToolTip(toolStripContainer1.TopToolStripPanel, resources.GetString("toolStripContainer1.TopToolStripPanel.ToolTip"));
             // 
+            // statusStrip1
+            // 
+            resources.ApplyResources(statusStrip1, "statusStrip1");
+            statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabelTimeForSearchingG, toolStripStatusLabelTimeForDrawing, toolStripStatusLabelTimeForBethe, toolStripStatusLabel3 });
+            statusStrip1.Name = "statusStrip1";
+            toolTip.SetToolTip(statusStrip1, resources.GetString("statusStrip1.ToolTip"));
+            statusStrip1.MouseDown += statusStrip1_MouseDown;
+            // 
+            // toolStripStatusLabelTimeForSearchingG
+            // 
+            resources.ApplyResources(toolStripStatusLabelTimeForSearchingG, "toolStripStatusLabelTimeForSearchingG");
+            toolStripStatusLabelTimeForSearchingG.Name = "toolStripStatusLabelTimeForSearchingG";
+            // 
+            // toolStripStatusLabelTimeForDrawing
+            // 
+            resources.ApplyResources(toolStripStatusLabelTimeForDrawing, "toolStripStatusLabelTimeForDrawing");
+            toolStripStatusLabelTimeForDrawing.Name = "toolStripStatusLabelTimeForDrawing";
+            // 
+            // toolStripStatusLabelTimeForBethe
+            // 
+            resources.ApplyResources(toolStripStatusLabelTimeForBethe, "toolStripStatusLabelTimeForBethe");
+            toolStripStatusLabelTimeForBethe.Name = "toolStripStatusLabelTimeForBethe";
+            // 
+            // toolStripStatusLabel3
+            // 
+            resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
+            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            // 
+            // toolStrip1
+            // 
+            resources.ApplyResources(toolStrip1, "toolStrip1");
+            toolStrip1.BackColor = System.Drawing.SystemColors.Control;
+            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonIndexLabels, toolStripButtonDspacing, toolStripButtonDspacingInv, toolStripButtonDistance, toolStripButtonExcitationError, toolStripButtonFg });
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            toolTip.SetToolTip(toolStrip1, resources.GetString("toolStrip1.ToolTip"));
+            // 
+            // toolStripButtonIndexLabels
+            // 
+            resources.ApplyResources(toolStripButtonIndexLabels, "toolStripButtonIndexLabels");
+            toolStripButtonIndexLabels.Checked = true;
+            toolStripButtonIndexLabels.CheckOnClick = true;
+            toolStripButtonIndexLabels.CheckState = System.Windows.Forms.CheckState.Checked;
+            toolStripButtonIndexLabels.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonIndexLabels.ForeColor = System.Drawing.Color.Salmon;
+            toolStripButtonIndexLabels.Name = "toolStripButtonIndexLabels";
+            toolStripButtonIndexLabels.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            // 
+            // toolStripButtonDspacing
+            // 
+            resources.ApplyResources(toolStripButtonDspacing, "toolStripButtonDspacing");
+            toolStripButtonDspacing.CheckOnClick = true;
+            toolStripButtonDspacing.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonDspacing.ForeColor = System.Drawing.Color.Salmon;
+            toolStripButtonDspacing.Name = "toolStripButtonDspacing";
+            toolStripButtonDspacing.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            // 
+            // toolStripButtonDspacingInv
+            // 
+            resources.ApplyResources(toolStripButtonDspacingInv, "toolStripButtonDspacingInv");
+            toolStripButtonDspacingInv.CheckOnClick = true;
+            toolStripButtonDspacingInv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonDspacingInv.ForeColor = System.Drawing.Color.Salmon;
+            toolStripButtonDspacingInv.Name = "toolStripButtonDspacingInv";
+            toolStripButtonDspacingInv.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            // 
+            // toolStripButtonDistance
+            // 
+            resources.ApplyResources(toolStripButtonDistance, "toolStripButtonDistance");
+            toolStripButtonDistance.CheckOnClick = true;
+            toolStripButtonDistance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonDistance.ForeColor = System.Drawing.Color.Salmon;
+            toolStripButtonDistance.Name = "toolStripButtonDistance";
+            toolStripButtonDistance.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            // 
+            // toolStripButtonExcitationError
+            // 
+            resources.ApplyResources(toolStripButtonExcitationError, "toolStripButtonExcitationError");
+            toolStripButtonExcitationError.CheckOnClick = true;
+            toolStripButtonExcitationError.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonExcitationError.ForeColor = System.Drawing.Color.Salmon;
+            toolStripButtonExcitationError.Name = "toolStripButtonExcitationError";
+            toolStripButtonExcitationError.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            // 
+            // toolStripButtonFg
+            // 
+            resources.ApplyResources(toolStripButtonFg, "toolStripButtonFg");
+            toolStripButtonFg.CheckOnClick = true;
+            toolStripButtonFg.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonFg.ForeColor = System.Drawing.Color.Salmon;
+            toolStripButtonFg.Name = "toolStripButtonFg";
+            toolStripButtonFg.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            // 
             // toolStrip3
             // 
             resources.ApplyResources(toolStrip3, "toolStrip3");
@@ -449,101 +544,6 @@
             toolStripButtonScale.Name = "toolStripButtonScale";
             toolStripButtonScale.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
             toolStripButtonScale.MouseDown += toolStripButtonDiffractionSpots_MouseDown;
-            // 
-            // toolStrip1
-            // 
-            resources.ApplyResources(toolStrip1, "toolStrip1");
-            toolStrip1.BackColor = System.Drawing.SystemColors.Control;
-            toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonIndexLabels, toolStripButtonDspacing, toolStripButtonDspacingInv, toolStripButtonDistance, toolStripButtonExcitationError, toolStripButtonFg });
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            toolTip.SetToolTip(toolStrip1, resources.GetString("toolStrip1.ToolTip"));
-            // 
-            // toolStripButtonIndexLabels
-            // 
-            resources.ApplyResources(toolStripButtonIndexLabels, "toolStripButtonIndexLabels");
-            toolStripButtonIndexLabels.Checked = true;
-            toolStripButtonIndexLabels.CheckOnClick = true;
-            toolStripButtonIndexLabels.CheckState = System.Windows.Forms.CheckState.Checked;
-            toolStripButtonIndexLabels.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripButtonIndexLabels.ForeColor = System.Drawing.Color.Salmon;
-            toolStripButtonIndexLabels.Name = "toolStripButtonIndexLabels";
-            toolStripButtonIndexLabels.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
-            // 
-            // toolStripButtonDspacing
-            // 
-            resources.ApplyResources(toolStripButtonDspacing, "toolStripButtonDspacing");
-            toolStripButtonDspacing.CheckOnClick = true;
-            toolStripButtonDspacing.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripButtonDspacing.ForeColor = System.Drawing.Color.Salmon;
-            toolStripButtonDspacing.Name = "toolStripButtonDspacing";
-            toolStripButtonDspacing.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
-            // 
-            // toolStripButtonDspacingInv
-            // 
-            resources.ApplyResources(toolStripButtonDspacingInv, "toolStripButtonDspacingInv");
-            toolStripButtonDspacingInv.CheckOnClick = true;
-            toolStripButtonDspacingInv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripButtonDspacingInv.ForeColor = System.Drawing.Color.Salmon;
-            toolStripButtonDspacingInv.Name = "toolStripButtonDspacingInv";
-            toolStripButtonDspacingInv.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
-            // 
-            // toolStripButtonDistance
-            // 
-            resources.ApplyResources(toolStripButtonDistance, "toolStripButtonDistance");
-            toolStripButtonDistance.CheckOnClick = true;
-            toolStripButtonDistance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripButtonDistance.ForeColor = System.Drawing.Color.Salmon;
-            toolStripButtonDistance.Name = "toolStripButtonDistance";
-            toolStripButtonDistance.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
-            // 
-            // toolStripButtonExcitationError
-            // 
-            resources.ApplyResources(toolStripButtonExcitationError, "toolStripButtonExcitationError");
-            toolStripButtonExcitationError.CheckOnClick = true;
-            toolStripButtonExcitationError.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripButtonExcitationError.ForeColor = System.Drawing.Color.Salmon;
-            toolStripButtonExcitationError.Name = "toolStripButtonExcitationError";
-            toolStripButtonExcitationError.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
-            // 
-            // toolStripButtonFg
-            // 
-            resources.ApplyResources(toolStripButtonFg, "toolStripButtonFg");
-            toolStripButtonFg.CheckOnClick = true;
-            toolStripButtonFg.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripButtonFg.ForeColor = System.Drawing.Color.Salmon;
-            toolStripButtonFg.Name = "toolStripButtonFg";
-            toolStripButtonFg.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
-            // 
-            // statusStrip1
-            // 
-            resources.ApplyResources(statusStrip1, "statusStrip1");
-            statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabelTimeForSearchingG, toolStripStatusLabelTimeForDrawing, toolStripStatusLabelTimeForBethe, toolStripStatusLabel3 });
-            statusStrip1.Name = "statusStrip1";
-            toolTip.SetToolTip(statusStrip1, resources.GetString("statusStrip1.ToolTip"));
-            statusStrip1.MouseDown += statusStrip1_MouseDown;
-            // 
-            // toolStripStatusLabelTimeForSearchingG
-            // 
-            resources.ApplyResources(toolStripStatusLabelTimeForSearchingG, "toolStripStatusLabelTimeForSearchingG");
-            toolStripStatusLabelTimeForSearchingG.Name = "toolStripStatusLabelTimeForSearchingG";
-            // 
-            // toolStripStatusLabelTimeForDrawing
-            // 
-            resources.ApplyResources(toolStripStatusLabelTimeForDrawing, "toolStripStatusLabelTimeForDrawing");
-            toolStripStatusLabelTimeForDrawing.Name = "toolStripStatusLabelTimeForDrawing";
-            // 
-            // toolStripStatusLabelTimeForBethe
-            // 
-            resources.ApplyResources(toolStripStatusLabelTimeForBethe, "toolStripStatusLabelTimeForBethe");
-            toolStripStatusLabelTimeForBethe.Name = "toolStripStatusLabelTimeForBethe";
-            // 
-            // toolStripStatusLabel3
-            // 
-            resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
-            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             // 
             // panelMain
             // 
@@ -1617,7 +1617,7 @@
             // 
             resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxResolution.DecimalPlaces = 5;
+            numericBoxResolution.DecimalPlaces = 8;
             numericBoxResolution.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxResolution.Maximum = 10D;
@@ -2721,12 +2721,12 @@
             toolStripContainer1.TopToolStripPanel.PerformLayout();
             toolStripContainer1.ResumeLayout(false);
             toolStripContainer1.PerformLayout();
-            toolStrip3.ResumeLayout(false);
-            toolStrip3.PerformLayout();
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            toolStrip3.ResumeLayout(false);
+            toolStrip3.PerformLayout();
             panelMain.ResumeLayout(false);
             tabControl.ResumeLayout(false);
             tabPageGeneral.ResumeLayout(false);

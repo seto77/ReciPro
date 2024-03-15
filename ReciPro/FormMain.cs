@@ -487,7 +487,7 @@ public partial class FormMain : Form
             FormDiffractionSimulator.CancelSetVector = true;
 
             Reg.RW<Rectangle>(key, mode, FormDiffractionSimulator, "Bounds");
-            Reg.RW<double>(key, mode, FormDiffractionSimulator, "Resolution");
+
 
             Reg.RW<WaveSource>(key, mode, FormDiffractionSimulator.waveLengthControl, "WaveSource");
             Reg.RW<double>(key, mode, FormDiffractionSimulator.waveLengthControl, "Energy");
@@ -503,6 +503,10 @@ public partial class FormMain : Form
             Reg.RW<int>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorHeight");
             Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Tau");
             Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Phi");
+
+            Reg.RW<double>(key, mode, FormDiffractionSimulator, "Resolution");
+            Reg.RW<LengthUnitEnum>(key, mode, FormDiffractionSimulator, "ResolutionUnit");
+
             #endregion
 
             #region ImageSimulator

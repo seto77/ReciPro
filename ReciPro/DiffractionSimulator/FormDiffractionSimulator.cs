@@ -133,8 +133,8 @@ public partial class FormDiffractionSimulator : Form
     {
         set
         {
-            var val = radioButtonResoUnitNanometerInv.Checked ?
-                WaveLength / 2.0 / Math.Sin(Math.Atan(value / CameraLength2) / 2.0) : value;
+            var val = radioButtonResoUnitMilliMeter.Checked ? value:
+                 2.0 * Math.Sin(Math.Atan(value / CameraLength2) / 2.0) / WaveLength;
 
             skipDrawing = true;
             if (val > numericBoxResolution.Maximum)
@@ -154,10 +154,28 @@ public partial class FormDiffractionSimulator : Form
             if (radioButtonResoUnitMilliMeter.Checked)//単位がmm/pixの時はそのまま返す
                 return numericBoxResolution.Value;
             else//単位が nm^-1/pixの時
-                return CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / numericBoxResolution.Value / 2.0));
+                return CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * numericBoxResolution.Value / 2.0));
 
         }
     }
+    public LengthUnitEnum ResolutionUnit
+    {
+        get => radioButtonResoUnitMilliMeter.Checked ? LengthUnitEnum.MilliMeter : LengthUnitEnum.NanoMeterInverse;
+        set
+        {
+            if (value == LengthUnitEnum.MilliMeter)
+            {
+                radioButtonResoUnitNanometerInv.Checked = false;
+                radioButtonResoUnitMilliMeter.Checked = true;
+            }
+            else
+            {
+                radioButtonResoUnitMilliMeter.Checked = false;
+                radioButtonResoUnitNanometerInv.Checked = true;
+            }
+        }
+    }
+
     public int ClientWidth { get => numericBoxClientWidth.ValueInteger; set => numericBoxClientWidth.Value = value; }
     public int ClientHeight { get => numericBoxClientHeight.ValueInteger; set => numericBoxClientHeight.Value = value; }
 
@@ -2922,16 +2940,12 @@ public partial class FormDiffractionSimulator : Form
 
             if (radioButtonResoUnitMilliMeter.Checked)
             {
-                numericBoxResolution.Maximum = 1E1;
-                numericBoxResolution.Minimum = 1E-5;
-                numericBoxResolution.Value = Math.Tan(2 * Math.Asin(WaveLength / val / 2.0)) * CameraLength2;
+                numericBoxResolution.Value = CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * val / 2.0))  ;
                 
             }
             else
             {
-                numericBoxResolution.Maximum = 1E7;
-                numericBoxResolution.Minimum = 1E-3;
-                numericBoxResolution.Value = WaveLength / 2.0 / Math.Sin( Math.Atan(val / CameraLength2) /2.0 );
+                numericBoxResolution.Value = 2.0 * Math.Sin(Math.Atan(val / CameraLength2) / 2.0) / WaveLength;
             }
             SkipEvent = false;
 
