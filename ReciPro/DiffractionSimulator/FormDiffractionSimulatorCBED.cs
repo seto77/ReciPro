@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 #endregion
@@ -31,13 +32,19 @@ public partial class FormDiffractionSimulatorCBED : Form
         {
             int count = 0;
             double radius = Division / 2.0;
-            for (int h = 0; h < Division; h++)
+            if (radius > 3000)
+                return -1;
+            double radius2 = radius * radius;
+            Parallel.For(0, Division, h =>
+            {
+                double pY = h - radius + 0.5, pY2 = pY * pY;
                 for (int w = 0; w < Division; w++)
                 {
-                    double pX = w - radius + 0.5, pY = h - radius + 0.5;
-                    if (pX * pX + pY * pY <= radius * radius)
-                        count++;
+                    double pX = w - radius + 0.5;
+                    if (pX * pX + pY2 <= radius2)
+                        Interlocked.Increment(ref count);
                 }
+            });
             return count;
         }
     }

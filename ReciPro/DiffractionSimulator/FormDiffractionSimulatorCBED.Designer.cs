@@ -308,7 +308,6 @@
             numericBoxDiskResolution.RadianValue = 0.0017453292519943296D;
             numericBoxDiskResolution.RoundErrorAccuracy = -1;
             numericBoxDiskResolution.ShowUpDown = true;
-            numericBoxDiskResolution.SkipEventDuringInput = false;
             numericBoxDiskResolution.SmartIncrement = true;
             numericBoxDiskResolution.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxDiskResolution, resources.GetString("numericBoxDiskResolution.ToolTip"));
@@ -493,6 +492,7 @@
             // statusStrip2
             // 
             resources.ApplyResources(statusStrip2, "statusStrip2");
+            statusStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel2, toolStripStatusLabel1 });
             statusStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             statusStrip2.Name = "statusStrip2";
