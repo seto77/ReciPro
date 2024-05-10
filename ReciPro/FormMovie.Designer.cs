@@ -656,7 +656,7 @@ partial class FormMovie
         // radioButtonH264
         // 
         radioButtonH264.AutoSize = true;
-        radioButtonH264.Location = new System.Drawing.Point(12, 318);
+        radioButtonH264.Location = new System.Drawing.Point(8, 318);
         radioButtonH264.Name = "radioButtonH264";
         radioButtonH264.Size = new System.Drawing.Size(52, 19);
         radioButtonH264.TabIndex = 90;
@@ -667,11 +667,10 @@ partial class FormMovie
         // 
         radioButtonH265.AutoSize = true;
         radioButtonH265.Checked = true;
-        radioButtonH265.Location = new System.Drawing.Point(70, 319);
+        radioButtonH265.Location = new System.Drawing.Point(66, 319);
         radioButtonH265.Name = "radioButtonH265";
         radioButtonH265.Size = new System.Drawing.Size(52, 19);
         radioButtonH265.TabIndex = 90;
-        radioButtonH265.TabStop = true;
         radioButtonH265.Text = "H265";
         radioButtonH265.UseVisualStyleBackColor = true;
         // 
