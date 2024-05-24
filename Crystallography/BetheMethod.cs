@@ -1603,7 +1603,7 @@ public class BetheMethod
                                 h == null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
                         }
                     }
-                    var d = Exp(-m * s2 - TwoPiI * (atom * index)) * atoms.Occ;//expの中がマイナスなのが、U'マトリックスを転置させなければいけない理由かも。違うか。。
+                    var d = Exp(-m * s2 + TwoPiI * (atom * index)) * atoms.Occ;
                     fReal += real * d;
                     fImag += imag * d;
                 }

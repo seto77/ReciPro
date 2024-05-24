@@ -7,6 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.884(2024/05/24)  Fixed a bug in the calculations of dynamical theory." +
         "\r\n ver4.883(2024/04/06)  Fixed minor bugs in the 'CBED setting'. Update bundled libraries." +
         "\r\n ver4.882(2024/03/16)  Improved GUI in the 'Diffraction simulator'. (see https://github.com/seto77/ReciPro/issues/30, thanks to lukmuk-san)" +
         "\r\n ver4.881(2024/03/11)  Checked security problem ((see https://github.com/seto77/ReciPro/issues/31)." +
