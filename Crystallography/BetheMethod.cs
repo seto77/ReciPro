@@ -1603,7 +1603,7 @@ public class BetheMethod
                                 h == null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
                         }
                     }
-                    var d = Exp(-m * s2 + TwoPiI * (atom * index)) * atoms.Occ;
+                    var d = Exp(-m * s2 + TwoPiI * (atom * index)) * atoms.Occ; //20240524 位相項 (TwoPiI・・・)の符号をプラスに変更 (これで、対称心の結晶の計算が上手くいくはず 三菱・中村)
                     fReal += real * d;
                     fImag += imag * d;
                 }
