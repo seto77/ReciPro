@@ -28,955 +28,928 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxWaveLength = new System.Windows.Forms.TextBox();
-            this.buttonCopyToClipboard = new System.Windows.Forms.Button();
-            this.textBoxGamma = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxBeta = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxAccVoltage = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxLatticeVolume = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBoxThickness = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButtonUnitEV = new System.Windows.Forms.RadioButton();
-            this.radioButtonUnitNM = new System.Windows.Forms.RadioButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.rDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gXDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gYDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gZDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ugReDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ugImDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ugReDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ugImDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.φReDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.φImDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.φ2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.σΦ2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new ReciPro.DataSetReciPro();
-            this.label16 = new System.Windows.Forms.Label();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBoxSemiangle = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.rDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gZDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ugReDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ugImDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ugReDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ugImDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.φReDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.φImDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.φ2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.checkBoxAutoRowSize = new System.Windows.Forms.CheckBox();
-            this.numericBoxEffectiveDigit = new Crystallography.Controls.NumericBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            textBoxWaveLength = new System.Windows.Forms.TextBox();
+            buttonCopyToClipboard = new System.Windows.Forms.Button();
+            textBoxGamma = new System.Windows.Forms.TextBox();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            textBoxBeta = new System.Windows.Forms.TextBox();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            textBoxAccVoltage = new System.Windows.Forms.TextBox();
+            label7 = new System.Windows.Forms.Label();
+            textBoxLatticeVolume = new System.Windows.Forms.TextBox();
+            label8 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            textBoxThickness = new System.Windows.Forms.TextBox();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonUnitEV = new System.Windows.Forms.RadioButton();
+            radioButtonUnitNM = new System.Windows.Forms.RadioButton();
+            label15 = new System.Windows.Forms.Label();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            label14 = new System.Windows.Forms.Label();
+            dataGridView = new System.Windows.Forms.DataGridView();
+            rDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gXDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gYDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gZDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugReDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugImDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugReDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugImDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            sgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            pgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            qgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φReDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φImDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φ2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            σΦ2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataSetBindingSource = new System.Windows.Forms.BindingSource(components);
+            dataSet = new DataSetReciPro();
+            label16 = new System.Windows.Forms.Label();
+            pictureBox = new System.Windows.Forms.PictureBox();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            label10 = new System.Windows.Forms.Label();
+            textBoxSemiangle = new System.Windows.Forms.TextBox();
+            label11 = new System.Windows.Forms.Label();
+            rDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gZDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugReDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugImDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugReDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugImDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            sgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            pgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            qgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φReDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φImDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φ2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            statusStrip1 = new System.Windows.Forms.StatusStrip();
+            toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            checkBoxAutoRowSize = new System.Windows.Forms.CheckBox();
+            numericBoxEffectiveDigit = new NumericBox();
+            button1 = new System.Windows.Forms.Button();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataSetBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            flowLayoutPanel5.SuspendLayout();
+            statusStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(207, 5);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 5, 0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Wavelength (= 1/k_vac): ";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label1.Location = new System.Drawing.Point(207, 5);
+            label1.Margin = new System.Windows.Forms.Padding(8, 5, 0, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(157, 17);
+            label1.TabIndex = 2;
+            label1.Text = "Wavelength (= 1/k_vac): ";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(0, 5);
-            this.label2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "m/m0 (= 1+e0×E/m0/c²): ";
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label2.Location = new System.Drawing.Point(0, 5);
+            label2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(158, 17);
+            label2.TabIndex = 2;
+            label2.Text = "m/m0 (= 1+e0×E/m0/c²): ";
             // 
             // textBoxWaveLength
             // 
-            this.textBoxWaveLength.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxWaveLength.Location = new System.Drawing.Point(364, 0);
-            this.textBoxWaveLength.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxWaveLength.Name = "textBoxWaveLength";
-            this.textBoxWaveLength.ReadOnly = true;
-            this.textBoxWaveLength.Size = new System.Drawing.Size(101, 24);
-            this.textBoxWaveLength.TabIndex = 4;
+            textBoxWaveLength.Font = new System.Drawing.Font("Times New Roman", 11F);
+            textBoxWaveLength.Location = new System.Drawing.Point(364, 0);
+            textBoxWaveLength.Margin = new System.Windows.Forms.Padding(0);
+            textBoxWaveLength.Name = "textBoxWaveLength";
+            textBoxWaveLength.ReadOnly = true;
+            textBoxWaveLength.Size = new System.Drawing.Size(101, 24);
+            textBoxWaveLength.TabIndex = 4;
             // 
             // buttonCopyToClipboard
             // 
-            this.buttonCopyToClipboard.AutoSize = true;
-            this.buttonCopyToClipboard.Font = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCopyToClipboard.Location = new System.Drawing.Point(948, 267);
-            this.buttonCopyToClipboard.Name = "buttonCopyToClipboard";
-            this.buttonCopyToClipboard.Size = new System.Drawing.Size(139, 30);
-            this.buttonCopyToClipboard.TabIndex = 5;
-            this.buttonCopyToClipboard.Text = "Copy to clipboard";
-            this.buttonCopyToClipboard.UseVisualStyleBackColor = true;
-            this.buttonCopyToClipboard.Click += new System.EventHandler(this.buttonCopyToClipboard_Click);
+            buttonCopyToClipboard.AutoSize = true;
+            buttonCopyToClipboard.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            buttonCopyToClipboard.Location = new System.Drawing.Point(948, 267);
+            buttonCopyToClipboard.Name = "buttonCopyToClipboard";
+            buttonCopyToClipboard.Size = new System.Drawing.Size(139, 30);
+            buttonCopyToClipboard.TabIndex = 5;
+            buttonCopyToClipboard.Text = "Copy to clipboard";
+            buttonCopyToClipboard.UseVisualStyleBackColor = true;
+            buttonCopyToClipboard.Click += buttonCopyToClipboard_Click;
             // 
             // textBoxGamma
             // 
-            this.textBoxGamma.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxGamma.Location = new System.Drawing.Point(158, 0);
-            this.textBoxGamma.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxGamma.Name = "textBoxGamma";
-            this.textBoxGamma.ReadOnly = true;
-            this.textBoxGamma.Size = new System.Drawing.Size(83, 24);
-            this.textBoxGamma.TabIndex = 4;
+            textBoxGamma.Font = new System.Drawing.Font("Times New Roman", 11F);
+            textBoxGamma.Location = new System.Drawing.Point(158, 0);
+            textBoxGamma.Margin = new System.Windows.Forms.Padding(0);
+            textBoxGamma.Name = "textBoxGamma";
+            textBoxGamma.ReadOnly = true;
+            textBoxGamma.Size = new System.Drawing.Size(83, 24);
+            textBoxGamma.TabIndex = 4;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(465, 5);
-            this.label3.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "nm";
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label3.Location = new System.Drawing.Point(465, 5);
+            label3.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(26, 17);
+            label3.TabIndex = 2;
+            label3.Text = "nm";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(247, 5);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 17);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "v/c: ";
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label4.Location = new System.Drawing.Point(247, 5);
+            label4.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(33, 17);
+            label4.TabIndex = 2;
+            label4.Text = "v/c: ";
             // 
             // textBoxBeta
             // 
-            this.textBoxBeta.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxBeta.Location = new System.Drawing.Point(280, 0);
-            this.textBoxBeta.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxBeta.Name = "textBoxBeta";
-            this.textBoxBeta.ReadOnly = true;
-            this.textBoxBeta.Size = new System.Drawing.Size(83, 24);
-            this.textBoxBeta.TabIndex = 4;
+            textBoxBeta.Font = new System.Drawing.Font("Times New Roman", 11F);
+            textBoxBeta.Location = new System.Drawing.Point(280, 0);
+            textBoxBeta.Margin = new System.Windows.Forms.Padding(0);
+            textBoxBeta.Name = "textBoxBeta";
+            textBoxBeta.ReadOnly = true;
+            textBoxBeta.Size = new System.Drawing.Size(83, 24);
+            textBoxBeta.TabIndex = 4;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(0, 5);
-            this.label5.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 17);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Acc. voltage: ";
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label5.Location = new System.Drawing.Point(0, 5);
+            label5.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(90, 17);
+            label5.TabIndex = 2;
+            label5.Text = "Acc. voltage: ";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(173, 5);
-            this.label6.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 17);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "kV";
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label6.Location = new System.Drawing.Point(173, 5);
+            label6.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(26, 17);
+            label6.TabIndex = 2;
+            label6.Text = "kV";
             // 
             // textBoxAccVoltage
             // 
-            this.textBoxAccVoltage.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAccVoltage.Location = new System.Drawing.Point(90, 0);
-            this.textBoxAccVoltage.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxAccVoltage.Name = "textBoxAccVoltage";
-            this.textBoxAccVoltage.ReadOnly = true;
-            this.textBoxAccVoltage.Size = new System.Drawing.Size(83, 24);
-            this.textBoxAccVoltage.TabIndex = 4;
+            textBoxAccVoltage.Font = new System.Drawing.Font("Times New Roman", 11F);
+            textBoxAccVoltage.Location = new System.Drawing.Point(90, 0);
+            textBoxAccVoltage.Margin = new System.Windows.Forms.Padding(0);
+            textBoxAccVoltage.Name = "textBoxAccVoltage";
+            textBoxAccVoltage.ReadOnly = true;
+            textBoxAccVoltage.Size = new System.Drawing.Size(83, 24);
+            textBoxAccVoltage.TabIndex = 4;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(0, 5);
-            this.label7.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 17);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Lattice volume: ";
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label7.Location = new System.Drawing.Point(0, 5);
+            label7.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(102, 17);
+            label7.TabIndex = 2;
+            label7.Text = "Lattice volume: ";
             // 
             // textBoxLatticeVolume
             // 
-            this.textBoxLatticeVolume.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxLatticeVolume.Location = new System.Drawing.Point(102, 0);
-            this.textBoxLatticeVolume.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxLatticeVolume.Name = "textBoxLatticeVolume";
-            this.textBoxLatticeVolume.ReadOnly = true;
-            this.textBoxLatticeVolume.Size = new System.Drawing.Size(83, 24);
-            this.textBoxLatticeVolume.TabIndex = 4;
+            textBoxLatticeVolume.Font = new System.Drawing.Font("Times New Roman", 11F);
+            textBoxLatticeVolume.Location = new System.Drawing.Point(102, 0);
+            textBoxLatticeVolume.Margin = new System.Windows.Forms.Padding(0);
+            textBoxLatticeVolume.Name = "textBoxLatticeVolume";
+            textBoxLatticeVolume.ReadOnly = true;
+            textBoxLatticeVolume.Size = new System.Drawing.Size(83, 24);
+            textBoxLatticeVolume.TabIndex = 4;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(185, 5);
-            this.label8.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(31, 17);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "nm³";
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label8.Location = new System.Drawing.Point(185, 5);
+            label8.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(31, 17);
+            label8.TabIndex = 2;
+            label8.Text = "nm³";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(468, 205);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(445, 51);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Vg or Ug : Crystal potential for elastic scattering.\r\nVg\' or Ug\': Imaginary  (abs" +
-    "orption) potential for thermal diffuse scattering.\r\nΦ: Amplitude of the diffract" +
-    "ed wave on the exit surface.";
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            label9.Location = new System.Drawing.Point(468, 205);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(445, 51);
+            label9.TabIndex = 2;
+            label9.Text = "Vg or Ug : Crystal potential for elastic scattering.\r\nVg' or Ug': Imaginary  (absorption) potential for thermal diffuse scattering.\r\nΦ: Amplitude of the diffracted wave on the exit surface.";
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(222, 5);
-            this.label12.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(74, 17);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Thickness: ";
+            label12.AutoSize = true;
+            label12.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label12.Location = new System.Drawing.Point(222, 5);
+            label12.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(74, 17);
+            label12.TabIndex = 2;
+            label12.Text = "Thickness: ";
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(379, 5);
-            this.label13.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(26, 17);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "nm";
+            label13.AutoSize = true;
+            label13.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label13.Location = new System.Drawing.Point(379, 5);
+            label13.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(26, 17);
+            label13.TabIndex = 2;
+            label13.Text = "nm";
             // 
             // textBoxThickness
             // 
-            this.textBoxThickness.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxThickness.Location = new System.Drawing.Point(296, 0);
-            this.textBoxThickness.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxThickness.Name = "textBoxThickness";
-            this.textBoxThickness.ReadOnly = true;
-            this.textBoxThickness.Size = new System.Drawing.Size(83, 24);
-            this.textBoxThickness.TabIndex = 4;
+            textBoxThickness.Font = new System.Drawing.Font("Times New Roman", 11F);
+            textBoxThickness.Location = new System.Drawing.Point(296, 0);
+            textBoxThickness.Margin = new System.Windows.Forms.Padding(0);
+            textBoxThickness.Name = "textBoxThickness";
+            textBoxThickness.ReadOnly = true;
+            textBoxThickness.Size = new System.Drawing.Size(83, 24);
+            textBoxThickness.TabIndex = 4;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.label5);
-            this.flowLayoutPanel1.Controls.Add(this.textBoxAccVoltage);
-            this.flowLayoutPanel1.Controls.Add(this.label6);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.textBoxWaveLength);
-            this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(468, 24);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(491, 24);
-            this.flowLayoutPanel1.TabIndex = 6;
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel1.Controls.Add(label5);
+            flowLayoutPanel1.Controls.Add(textBoxAccVoltage);
+            flowLayoutPanel1.Controls.Add(label6);
+            flowLayoutPanel1.Controls.Add(label1);
+            flowLayoutPanel1.Controls.Add(textBoxWaveLength);
+            flowLayoutPanel1.Controls.Add(label3);
+            flowLayoutPanel1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanel1.Location = new System.Drawing.Point(468, 24);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(491, 24);
+            flowLayoutPanel1.TabIndex = 6;
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.Controls.Add(this.label2);
-            this.flowLayoutPanel2.Controls.Add(this.textBoxGamma);
-            this.flowLayoutPanel2.Controls.Add(this.label4);
-            this.flowLayoutPanel2.Controls.Add(this.textBoxBeta);
-            this.flowLayoutPanel2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(468, 49);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(363, 24);
-            this.flowLayoutPanel2.TabIndex = 7;
+            flowLayoutPanel2.AutoSize = true;
+            flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel2.Controls.Add(label2);
+            flowLayoutPanel2.Controls.Add(textBoxGamma);
+            flowLayoutPanel2.Controls.Add(label4);
+            flowLayoutPanel2.Controls.Add(textBoxBeta);
+            flowLayoutPanel2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanel2.Location = new System.Drawing.Point(468, 49);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new System.Drawing.Size(363, 24);
+            flowLayoutPanel2.TabIndex = 7;
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel3.Controls.Add(this.label7);
-            this.flowLayoutPanel3.Controls.Add(this.textBoxLatticeVolume);
-            this.flowLayoutPanel3.Controls.Add(this.label8);
-            this.flowLayoutPanel3.Controls.Add(this.label12);
-            this.flowLayoutPanel3.Controls.Add(this.textBoxThickness);
-            this.flowLayoutPanel3.Controls.Add(this.label13);
-            this.flowLayoutPanel3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(468, 74);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(405, 24);
-            this.flowLayoutPanel3.TabIndex = 8;
+            flowLayoutPanel3.AutoSize = true;
+            flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel3.Controls.Add(label7);
+            flowLayoutPanel3.Controls.Add(textBoxLatticeVolume);
+            flowLayoutPanel3.Controls.Add(label8);
+            flowLayoutPanel3.Controls.Add(label12);
+            flowLayoutPanel3.Controls.Add(textBoxThickness);
+            flowLayoutPanel3.Controls.Add(label13);
+            flowLayoutPanel3.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanel3.Location = new System.Drawing.Point(468, 74);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new System.Drawing.Size(405, 24);
+            flowLayoutPanel3.TabIndex = 8;
             // 
             // radioButtonUnitEV
             // 
-            this.radioButtonUnitEV.AutoSize = true;
-            this.radioButtonUnitEV.Checked = true;
-            this.radioButtonUnitEV.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButtonUnitEV.Location = new System.Drawing.Point(117, 3);
-            this.radioButtonUnitEV.Name = "radioButtonUnitEV";
-            this.radioButtonUnitEV.Size = new System.Drawing.Size(76, 21);
-            this.radioButtonUnitEV.TabIndex = 9;
-            this.radioButtonUnitEV.TabStop = true;
-            this.radioButtonUnitEV.Text = "Vg [eV]";
-            this.radioButtonUnitEV.UseVisualStyleBackColor = true;
-            this.radioButtonUnitEV.CheckedChanged += new System.EventHandler(this.radioButtonUnitEV_CheckedChanged);
+            radioButtonUnitEV.AutoSize = true;
+            radioButtonUnitEV.Checked = true;
+            radioButtonUnitEV.Font = new System.Drawing.Font("Times New Roman", 11F);
+            radioButtonUnitEV.Location = new System.Drawing.Point(114, 3);
+            radioButtonUnitEV.Name = "radioButtonUnitEV";
+            radioButtonUnitEV.Size = new System.Drawing.Size(76, 21);
+            radioButtonUnitEV.TabIndex = 9;
+            radioButtonUnitEV.TabStop = true;
+            radioButtonUnitEV.Text = "Vg [eV]";
+            radioButtonUnitEV.UseVisualStyleBackColor = true;
+            radioButtonUnitEV.CheckedChanged += radioButtonUnitEV_CheckedChanged;
             // 
             // radioButtonUnitNM
             // 
-            this.radioButtonUnitNM.AutoSize = true;
-            this.radioButtonUnitNM.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButtonUnitNM.Location = new System.Drawing.Point(199, 3);
-            this.radioButtonUnitNM.Name = "radioButtonUnitNM";
-            this.radioButtonUnitNM.Size = new System.Drawing.Size(86, 21);
-            this.radioButtonUnitNM.TabIndex = 9;
-            this.radioButtonUnitNM.Text = "Ug [nm⁻²]";
-            this.radioButtonUnitNM.UseVisualStyleBackColor = true;
+            radioButtonUnitNM.AutoSize = true;
+            radioButtonUnitNM.Font = new System.Drawing.Font("Times New Roman", 11F);
+            radioButtonUnitNM.Location = new System.Drawing.Point(196, 3);
+            radioButtonUnitNM.Name = "radioButtonUnitNM";
+            radioButtonUnitNM.Size = new System.Drawing.Size(86, 21);
+            radioButtonUnitNM.TabIndex = 9;
+            radioButtonUnitNM.Text = "Ug [nm⁻²]";
+            radioButtonUnitNM.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(3, 5);
-            this.label15.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(108, 17);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Unit of poteintial:";
+            label15.AutoSize = true;
+            label15.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label15.Location = new System.Drawing.Point(3, 5);
+            label15.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(105, 17);
+            label15.TabIndex = 2;
+            label15.Text = "Unit of potential:";
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.AutoSize = true;
-            this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel4.Controls.Add(this.label15);
-            this.flowLayoutPanel4.Controls.Add(this.radioButtonUnitEV);
-            this.flowLayoutPanel4.Controls.Add(this.radioButtonUnitNM);
-            this.flowLayoutPanel4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(468, 151);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(288, 27);
-            this.flowLayoutPanel4.TabIndex = 10;
+            flowLayoutPanel4.AutoSize = true;
+            flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel4.Controls.Add(label15);
+            flowLayoutPanel4.Controls.Add(radioButtonUnitEV);
+            flowLayoutPanel4.Controls.Add(radioButtonUnitNM);
+            flowLayoutPanel4.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanel4.Location = new System.Drawing.Point(468, 151);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new System.Drawing.Size(285, 27);
+            flowLayoutPanel4.TabIndex = 10;
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(481, 180);
-            this.label14.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(357, 17);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Ug [nm⁻²] = 2 × m₀[kg] / h[eV・s] / h[J・s] × Vg[eV] × 10¹⁸";
+            label14.AutoSize = true;
+            label14.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            label14.Location = new System.Drawing.Point(481, 180);
+            label14.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(357, 17);
+            label14.TabIndex = 2;
+            label14.Text = "Ug [nm⁻²] = 2 × m₀[kg] / h[eV・s] / h[J・s] × Vg[eV] × 10¹⁸";
             // 
             // dataGridView
             // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView.AutoGenerateColumns = false;
-            this.dataGridView.ColumnHeadersHeight = 30;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.rDataGridViewTextBoxColumn1,
-            this.hDataGridViewTextBoxColumn,
-            this.kDataGridViewTextBoxColumn,
-            this.lDataGridViewTextBoxColumn,
-            this.dDataGridViewTextBoxColumn1,
-            this.gXDataGridViewTextBoxColumn1,
-            this.gYDataGridViewTextBoxColumn1,
-            this.gZDataGridViewTextBoxColumn1,
-            this.gDataGridViewTextBoxColumn1,
-            this.ugReDataGridViewTextBoxColumn2,
-            this.ugImDataGridViewTextBoxColumn2,
-            this.ugReDataGridViewTextBoxColumn3,
-            this.ugImDataGridViewTextBoxColumn3,
-            this.sgDataGridViewTextBoxColumn1,
-            this.pgDataGridViewTextBoxColumn1,
-            this.qgDataGridViewTextBoxColumn1,
-            this.φReDataGridViewTextBoxColumn1,
-            this.φImDataGridViewTextBoxColumn1,
-            this.φ2DataGridViewTextBoxColumn1,
-            this.σΦ2DataGridViewTextBoxColumn});
-            this.dataGridView.DataMember = "DataTableBethe";
-            this.dataGridView.DataSource = this.dataSetBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Format = "g4";
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView.Location = new System.Drawing.Point(1, 298);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView.MultiSelect = false;
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView.RowTemplate.Height = 21;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1085, 272);
-            this.dataGridView.TabIndex = 0;
-            this.dataGridView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.DataGridView_Scroll);
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridView.AutoGenerateColumns = false;
+            dataGridView.ColumnHeadersHeight = 30;
+            dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { rDataGridViewTextBoxColumn1, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, dDataGridViewTextBoxColumn1, gXDataGridViewTextBoxColumn1, gYDataGridViewTextBoxColumn1, gZDataGridViewTextBoxColumn1, gDataGridViewTextBoxColumn1, ugReDataGridViewTextBoxColumn2, ugImDataGridViewTextBoxColumn2, ugReDataGridViewTextBoxColumn3, ugImDataGridViewTextBoxColumn3, sgDataGridViewTextBoxColumn1, pgDataGridViewTextBoxColumn1, qgDataGridViewTextBoxColumn1, φReDataGridViewTextBoxColumn1, φImDataGridViewTextBoxColumn1, φ2DataGridViewTextBoxColumn1, σΦ2DataGridViewTextBoxColumn });
+            dataGridView.DataMember = "DataTableBethe";
+            dataGridView.DataSource = dataSetBindingSource;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Format = "g4";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView.Location = new System.Drawing.Point(1, 298);
+            dataGridView.Margin = new System.Windows.Forms.Padding(0);
+            dataGridView.MultiSelect = false;
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridView.RowTemplate.Height = 21;
+            dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.Size = new System.Drawing.Size(1085, 272);
+            dataGridView.TabIndex = 0;
+            dataGridView.Scroll += DataGridView_Scroll;
             // 
             // rDataGridViewTextBoxColumn1
             // 
-            this.rDataGridViewTextBoxColumn1.DataPropertyName = "R";
-            this.rDataGridViewTextBoxColumn1.HeaderText = "R";
-            this.rDataGridViewTextBoxColumn1.Name = "rDataGridViewTextBoxColumn1";
-            this.rDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.rDataGridViewTextBoxColumn1.Width = 43;
+            rDataGridViewTextBoxColumn1.DataPropertyName = "R";
+            rDataGridViewTextBoxColumn1.HeaderText = "R";
+            rDataGridViewTextBoxColumn1.Name = "rDataGridViewTextBoxColumn1";
+            rDataGridViewTextBoxColumn1.ReadOnly = true;
+            rDataGridViewTextBoxColumn1.Width = 43;
             // 
             // hDataGridViewTextBoxColumn
             // 
-            this.hDataGridViewTextBoxColumn.DataPropertyName = "h";
-            this.hDataGridViewTextBoxColumn.HeaderText = "h";
-            this.hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
-            this.hDataGridViewTextBoxColumn.ReadOnly = true;
-            this.hDataGridViewTextBoxColumn.Width = 40;
+            hDataGridViewTextBoxColumn.DataPropertyName = "h";
+            hDataGridViewTextBoxColumn.HeaderText = "h";
+            hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
+            hDataGridViewTextBoxColumn.ReadOnly = true;
+            hDataGridViewTextBoxColumn.Width = 40;
             // 
             // kDataGridViewTextBoxColumn
             // 
-            this.kDataGridViewTextBoxColumn.DataPropertyName = "k";
-            this.kDataGridViewTextBoxColumn.HeaderText = "k";
-            this.kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
-            this.kDataGridViewTextBoxColumn.ReadOnly = true;
-            this.kDataGridViewTextBoxColumn.Width = 40;
+            kDataGridViewTextBoxColumn.DataPropertyName = "k";
+            kDataGridViewTextBoxColumn.HeaderText = "k";
+            kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
+            kDataGridViewTextBoxColumn.ReadOnly = true;
+            kDataGridViewTextBoxColumn.Width = 40;
             // 
             // lDataGridViewTextBoxColumn
             // 
-            this.lDataGridViewTextBoxColumn.DataPropertyName = "l";
-            this.lDataGridViewTextBoxColumn.HeaderText = "l";
-            this.lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
-            this.lDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lDataGridViewTextBoxColumn.Width = 36;
+            lDataGridViewTextBoxColumn.DataPropertyName = "l";
+            lDataGridViewTextBoxColumn.HeaderText = "l";
+            lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
+            lDataGridViewTextBoxColumn.ReadOnly = true;
+            lDataGridViewTextBoxColumn.Width = 36;
             // 
             // dDataGridViewTextBoxColumn1
             // 
-            this.dDataGridViewTextBoxColumn1.DataPropertyName = "d";
-            this.dDataGridViewTextBoxColumn1.HeaderText = "d";
-            this.dDataGridViewTextBoxColumn1.Name = "dDataGridViewTextBoxColumn1";
-            this.dDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dDataGridViewTextBoxColumn1.Width = 40;
+            dDataGridViewTextBoxColumn1.DataPropertyName = "d";
+            dDataGridViewTextBoxColumn1.HeaderText = "d";
+            dDataGridViewTextBoxColumn1.Name = "dDataGridViewTextBoxColumn1";
+            dDataGridViewTextBoxColumn1.ReadOnly = true;
+            dDataGridViewTextBoxColumn1.Width = 40;
             // 
             // gXDataGridViewTextBoxColumn1
             // 
-            this.gXDataGridViewTextBoxColumn1.DataPropertyName = "gX";
-            this.gXDataGridViewTextBoxColumn1.HeaderText = "gX";
-            this.gXDataGridViewTextBoxColumn1.Name = "gXDataGridViewTextBoxColumn1";
-            this.gXDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.gXDataGridViewTextBoxColumn1.Width = 50;
+            gXDataGridViewTextBoxColumn1.DataPropertyName = "gX";
+            gXDataGridViewTextBoxColumn1.HeaderText = "gX";
+            gXDataGridViewTextBoxColumn1.Name = "gXDataGridViewTextBoxColumn1";
+            gXDataGridViewTextBoxColumn1.ReadOnly = true;
+            gXDataGridViewTextBoxColumn1.Width = 50;
             // 
             // gYDataGridViewTextBoxColumn1
             // 
-            this.gYDataGridViewTextBoxColumn1.DataPropertyName = "gY";
-            this.gYDataGridViewTextBoxColumn1.HeaderText = "gY";
-            this.gYDataGridViewTextBoxColumn1.Name = "gYDataGridViewTextBoxColumn1";
-            this.gYDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.gYDataGridViewTextBoxColumn1.Width = 51;
+            gYDataGridViewTextBoxColumn1.DataPropertyName = "gY";
+            gYDataGridViewTextBoxColumn1.HeaderText = "gY";
+            gYDataGridViewTextBoxColumn1.Name = "gYDataGridViewTextBoxColumn1";
+            gYDataGridViewTextBoxColumn1.ReadOnly = true;
+            gYDataGridViewTextBoxColumn1.Width = 51;
             // 
             // gZDataGridViewTextBoxColumn1
             // 
-            this.gZDataGridViewTextBoxColumn1.DataPropertyName = "gZ";
-            this.gZDataGridViewTextBoxColumn1.HeaderText = "gZ";
-            this.gZDataGridViewTextBoxColumn1.Name = "gZDataGridViewTextBoxColumn1";
-            this.gZDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.gZDataGridViewTextBoxColumn1.Width = 49;
+            gZDataGridViewTextBoxColumn1.DataPropertyName = "gZ";
+            gZDataGridViewTextBoxColumn1.HeaderText = "gZ";
+            gZDataGridViewTextBoxColumn1.Name = "gZDataGridViewTextBoxColumn1";
+            gZDataGridViewTextBoxColumn1.ReadOnly = true;
+            gZDataGridViewTextBoxColumn1.Width = 49;
             // 
             // gDataGridViewTextBoxColumn1
             // 
-            this.gDataGridViewTextBoxColumn1.DataPropertyName = "|g|";
-            this.gDataGridViewTextBoxColumn1.HeaderText = "|g|";
-            this.gDataGridViewTextBoxColumn1.Name = "gDataGridViewTextBoxColumn1";
-            this.gDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.gDataGridViewTextBoxColumn1.Width = 46;
+            gDataGridViewTextBoxColumn1.DataPropertyName = "|g|";
+            gDataGridViewTextBoxColumn1.HeaderText = "|g|";
+            gDataGridViewTextBoxColumn1.Name = "gDataGridViewTextBoxColumn1";
+            gDataGridViewTextBoxColumn1.ReadOnly = true;
+            gDataGridViewTextBoxColumn1.Width = 46;
             // 
             // ugReDataGridViewTextBoxColumn2
             // 
-            this.ugReDataGridViewTextBoxColumn2.DataPropertyName = "Ug re";
-            this.ugReDataGridViewTextBoxColumn2.HeaderText = "Ug re";
-            this.ugReDataGridViewTextBoxColumn2.Name = "ugReDataGridViewTextBoxColumn2";
-            this.ugReDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.ugReDataGridViewTextBoxColumn2.Width = 67;
+            ugReDataGridViewTextBoxColumn2.DataPropertyName = "Ug re";
+            ugReDataGridViewTextBoxColumn2.HeaderText = "Ug re";
+            ugReDataGridViewTextBoxColumn2.Name = "ugReDataGridViewTextBoxColumn2";
+            ugReDataGridViewTextBoxColumn2.ReadOnly = true;
+            ugReDataGridViewTextBoxColumn2.Width = 67;
             // 
             // ugImDataGridViewTextBoxColumn2
             // 
-            this.ugImDataGridViewTextBoxColumn2.DataPropertyName = "Ug im";
-            this.ugImDataGridViewTextBoxColumn2.HeaderText = "Ug im";
-            this.ugImDataGridViewTextBoxColumn2.Name = "ugImDataGridViewTextBoxColumn2";
-            this.ugImDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.ugImDataGridViewTextBoxColumn2.Width = 69;
+            ugImDataGridViewTextBoxColumn2.DataPropertyName = "Ug im";
+            ugImDataGridViewTextBoxColumn2.HeaderText = "Ug im";
+            ugImDataGridViewTextBoxColumn2.Name = "ugImDataGridViewTextBoxColumn2";
+            ugImDataGridViewTextBoxColumn2.ReadOnly = true;
+            ugImDataGridViewTextBoxColumn2.Width = 69;
             // 
             // ugReDataGridViewTextBoxColumn3
             // 
-            this.ugReDataGridViewTextBoxColumn3.DataPropertyName = "U\'g re";
-            this.ugReDataGridViewTextBoxColumn3.HeaderText = "U\'g re";
-            this.ugReDataGridViewTextBoxColumn3.Name = "ugReDataGridViewTextBoxColumn3";
-            this.ugReDataGridViewTextBoxColumn3.ReadOnly = true;
-            this.ugReDataGridViewTextBoxColumn3.Width = 70;
+            ugReDataGridViewTextBoxColumn3.DataPropertyName = "U'g re";
+            ugReDataGridViewTextBoxColumn3.HeaderText = "U'g re";
+            ugReDataGridViewTextBoxColumn3.Name = "ugReDataGridViewTextBoxColumn3";
+            ugReDataGridViewTextBoxColumn3.ReadOnly = true;
+            ugReDataGridViewTextBoxColumn3.Width = 70;
             // 
             // ugImDataGridViewTextBoxColumn3
             // 
-            this.ugImDataGridViewTextBoxColumn3.DataPropertyName = "U\'g im";
-            this.ugImDataGridViewTextBoxColumn3.HeaderText = "U\'g im";
-            this.ugImDataGridViewTextBoxColumn3.Name = "ugImDataGridViewTextBoxColumn3";
-            this.ugImDataGridViewTextBoxColumn3.ReadOnly = true;
-            this.ugImDataGridViewTextBoxColumn3.Width = 72;
+            ugImDataGridViewTextBoxColumn3.DataPropertyName = "U'g im";
+            ugImDataGridViewTextBoxColumn3.HeaderText = "U'g im";
+            ugImDataGridViewTextBoxColumn3.Name = "ugImDataGridViewTextBoxColumn3";
+            ugImDataGridViewTextBoxColumn3.ReadOnly = true;
+            ugImDataGridViewTextBoxColumn3.Width = 72;
             // 
             // sgDataGridViewTextBoxColumn1
             // 
-            this.sgDataGridViewTextBoxColumn1.DataPropertyName = "Sg";
-            this.sgDataGridViewTextBoxColumn1.HeaderText = "Sg";
-            this.sgDataGridViewTextBoxColumn1.Name = "sgDataGridViewTextBoxColumn1";
-            this.sgDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.sgDataGridViewTextBoxColumn1.Width = 48;
+            sgDataGridViewTextBoxColumn1.DataPropertyName = "Sg";
+            sgDataGridViewTextBoxColumn1.HeaderText = "Sg";
+            sgDataGridViewTextBoxColumn1.Name = "sgDataGridViewTextBoxColumn1";
+            sgDataGridViewTextBoxColumn1.ReadOnly = true;
+            sgDataGridViewTextBoxColumn1.Width = 48;
             // 
             // pgDataGridViewTextBoxColumn1
             // 
-            this.pgDataGridViewTextBoxColumn1.DataPropertyName = "Pg";
-            this.pgDataGridViewTextBoxColumn1.HeaderText = "Pg";
-            this.pgDataGridViewTextBoxColumn1.Name = "pgDataGridViewTextBoxColumn1";
-            this.pgDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.pgDataGridViewTextBoxColumn1.Width = 49;
+            pgDataGridViewTextBoxColumn1.DataPropertyName = "Pg";
+            pgDataGridViewTextBoxColumn1.HeaderText = "Pg";
+            pgDataGridViewTextBoxColumn1.Name = "pgDataGridViewTextBoxColumn1";
+            pgDataGridViewTextBoxColumn1.ReadOnly = true;
+            pgDataGridViewTextBoxColumn1.Width = 49;
             // 
             // qgDataGridViewTextBoxColumn1
             // 
-            this.qgDataGridViewTextBoxColumn1.DataPropertyName = "Qg";
-            this.qgDataGridViewTextBoxColumn1.HeaderText = "Qg";
-            this.qgDataGridViewTextBoxColumn1.Name = "qgDataGridViewTextBoxColumn1";
-            this.qgDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.qgDataGridViewTextBoxColumn1.Width = 51;
+            qgDataGridViewTextBoxColumn1.DataPropertyName = "Qg";
+            qgDataGridViewTextBoxColumn1.HeaderText = "Qg";
+            qgDataGridViewTextBoxColumn1.Name = "qgDataGridViewTextBoxColumn1";
+            qgDataGridViewTextBoxColumn1.ReadOnly = true;
+            qgDataGridViewTextBoxColumn1.Width = 51;
             // 
             // φReDataGridViewTextBoxColumn1
             // 
-            this.φReDataGridViewTextBoxColumn1.DataPropertyName = "Φ re";
-            this.φReDataGridViewTextBoxColumn1.HeaderText = "Φ re";
-            this.φReDataGridViewTextBoxColumn1.Name = "φReDataGridViewTextBoxColumn1";
-            this.φReDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.φReDataGridViewTextBoxColumn1.Width = 60;
+            φReDataGridViewTextBoxColumn1.DataPropertyName = "Φ re";
+            φReDataGridViewTextBoxColumn1.HeaderText = "Φ re";
+            φReDataGridViewTextBoxColumn1.Name = "φReDataGridViewTextBoxColumn1";
+            φReDataGridViewTextBoxColumn1.ReadOnly = true;
+            φReDataGridViewTextBoxColumn1.Width = 60;
             // 
             // φImDataGridViewTextBoxColumn1
             // 
-            this.φImDataGridViewTextBoxColumn1.DataPropertyName = "Φ im";
-            this.φImDataGridViewTextBoxColumn1.HeaderText = "Φ im";
-            this.φImDataGridViewTextBoxColumn1.Name = "φImDataGridViewTextBoxColumn1";
-            this.φImDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.φImDataGridViewTextBoxColumn1.Width = 62;
+            φImDataGridViewTextBoxColumn1.DataPropertyName = "Φ im";
+            φImDataGridViewTextBoxColumn1.HeaderText = "Φ im";
+            φImDataGridViewTextBoxColumn1.Name = "φImDataGridViewTextBoxColumn1";
+            φImDataGridViewTextBoxColumn1.ReadOnly = true;
+            φImDataGridViewTextBoxColumn1.Width = 62;
             // 
             // φ2DataGridViewTextBoxColumn1
             // 
-            this.φ2DataGridViewTextBoxColumn1.DataPropertyName = "|Φ|^2";
-            this.φ2DataGridViewTextBoxColumn1.HeaderText = "|Φ|^2";
-            this.φ2DataGridViewTextBoxColumn1.Name = "φ2DataGridViewTextBoxColumn1";
-            this.φ2DataGridViewTextBoxColumn1.ReadOnly = true;
-            this.φ2DataGridViewTextBoxColumn1.Width = 63;
+            φ2DataGridViewTextBoxColumn1.DataPropertyName = "|Φ|^2";
+            φ2DataGridViewTextBoxColumn1.HeaderText = "|Φ|^2";
+            φ2DataGridViewTextBoxColumn1.Name = "φ2DataGridViewTextBoxColumn1";
+            φ2DataGridViewTextBoxColumn1.ReadOnly = true;
+            φ2DataGridViewTextBoxColumn1.Width = 63;
             // 
             // σΦ2DataGridViewTextBoxColumn
             // 
-            this.σΦ2DataGridViewTextBoxColumn.DataPropertyName = "Σ|Φ|^2";
-            this.σΦ2DataGridViewTextBoxColumn.HeaderText = "Σ|Φ|^2";
-            this.σΦ2DataGridViewTextBoxColumn.Name = "σΦ2DataGridViewTextBoxColumn";
-            this.σΦ2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.σΦ2DataGridViewTextBoxColumn.Width = 72;
+            σΦ2DataGridViewTextBoxColumn.DataPropertyName = "Σ|Φ|^2";
+            σΦ2DataGridViewTextBoxColumn.HeaderText = "Σ|Φ|^2";
+            σΦ2DataGridViewTextBoxColumn.Name = "σΦ2DataGridViewTextBoxColumn";
+            σΦ2DataGridViewTextBoxColumn.ReadOnly = true;
+            σΦ2DataGridViewTextBoxColumn.Width = 72;
             // 
             // dataSetBindingSource
             // 
-            this.dataSetBindingSource.DataSource = this.dataSet;
-            this.dataSetBindingSource.Position = 0;
+            dataSetBindingSource.DataSource = dataSet;
+            dataSetBindingSource.Position = 0;
             // 
             // dataSet
             // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.Namespace = "http://tempuri.org/DataSet.xsd";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            dataSet.DataSetName = "DataSet";
+            dataSet.Namespace = "http://tempuri.org/DataSet.xsd";
+            dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label16
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(403, 2);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(569, 19);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Note 1: Unit of length is \"nm\", not \"Å\".   Note 2: Unit of wavenumber  is \"1/nm\"," +
-    " not \"2π/nm\".";
+            label16.AutoSize = true;
+            label16.Font = new System.Drawing.Font("Times New Roman", 12F);
+            label16.ForeColor = System.Drawing.Color.Red;
+            label16.Location = new System.Drawing.Point(403, 2);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(569, 19);
+            label16.TabIndex = 2;
+            label16.Text = "Note 1: Unit of length is \"nm\", not \"Å\".   Note 2: Unit of wavenumber  is \"1/nm\", not \"2π/nm\".";
             // 
             // pictureBox
             // 
-            this.pictureBox.Image = global::ReciPro.Properties.Resources.bethe;
-            this.pictureBox.Location = new System.Drawing.Point(-7, -8);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(455, 311);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox.TabIndex = 1;
-            this.pictureBox.TabStop = false;
+            pictureBox.Image = Properties.Resources.bethe;
+            pictureBox.Location = new System.Drawing.Point(-7, -8);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new System.Drawing.Size(455, 311);
+            pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            pictureBox.TabIndex = 1;
+            pictureBox.TabStop = false;
             // 
             // flowLayoutPanel5
             // 
-            this.flowLayoutPanel5.AutoSize = true;
-            this.flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel5.Controls.Add(this.label10);
-            this.flowLayoutPanel5.Controls.Add(this.textBoxSemiangle);
-            this.flowLayoutPanel5.Controls.Add(this.label11);
-            this.flowLayoutPanel5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(468, 99);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(424, 24);
-            this.flowLayoutPanel5.TabIndex = 8;
+            flowLayoutPanel5.AutoSize = true;
+            flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel5.Controls.Add(label10);
+            flowLayoutPanel5.Controls.Add(textBoxSemiangle);
+            flowLayoutPanel5.Controls.Add(label11);
+            flowLayoutPanel5.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanel5.Location = new System.Drawing.Point(468, 99);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new System.Drawing.Size(424, 24);
+            flowLayoutPanel5.TabIndex = 8;
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(6, 5);
-            this.label10.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(297, 17);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Max semiangle of electron beam (CBED mode): ";
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label10.Location = new System.Drawing.Point(6, 5);
+            label10.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(297, 17);
+            label10.TabIndex = 2;
+            label10.Text = "Max semiangle of electron beam (CBED mode): ";
             // 
             // textBoxSemiangle
             // 
-            this.textBoxSemiangle.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxSemiangle.Location = new System.Drawing.Point(303, 0);
-            this.textBoxSemiangle.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxSemiangle.Name = "textBoxSemiangle";
-            this.textBoxSemiangle.ReadOnly = true;
-            this.textBoxSemiangle.Size = new System.Drawing.Size(83, 24);
-            this.textBoxSemiangle.TabIndex = 4;
+            textBoxSemiangle.Font = new System.Drawing.Font("Times New Roman", 11F);
+            textBoxSemiangle.Location = new System.Drawing.Point(303, 0);
+            textBoxSemiangle.Margin = new System.Windows.Forms.Padding(0);
+            textBoxSemiangle.Name = "textBoxSemiangle";
+            textBoxSemiangle.ReadOnly = true;
+            textBoxSemiangle.Size = new System.Drawing.Size(83, 24);
+            textBoxSemiangle.TabIndex = 4;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(386, 5);
-            this.label11.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(38, 17);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "mrad";
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Times New Roman", 11F);
+            label11.Location = new System.Drawing.Point(386, 5);
+            label11.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(38, 17);
+            label11.TabIndex = 2;
+            label11.Text = "mrad";
             // 
             // rDataGridViewTextBoxColumn
             // 
-            this.rDataGridViewTextBoxColumn.DataPropertyName = "R";
-            this.rDataGridViewTextBoxColumn.HeaderText = "R";
-            this.rDataGridViewTextBoxColumn.Name = "rDataGridViewTextBoxColumn";
-            this.rDataGridViewTextBoxColumn.ReadOnly = true;
-            this.rDataGridViewTextBoxColumn.Width = 43;
+            rDataGridViewTextBoxColumn.DataPropertyName = "R";
+            rDataGridViewTextBoxColumn.HeaderText = "R";
+            rDataGridViewTextBoxColumn.Name = "rDataGridViewTextBoxColumn";
+            rDataGridViewTextBoxColumn.ReadOnly = true;
+            rDataGridViewTextBoxColumn.Width = 43;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "h";
-            this.dataGridViewTextBoxColumn1.HeaderText = "h";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 40;
+            dataGridViewTextBoxColumn1.DataPropertyName = "h";
+            dataGridViewTextBoxColumn1.HeaderText = "h";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.Width = 40;
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "k";
-            this.dataGridViewTextBoxColumn2.HeaderText = "k";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 40;
+            dataGridViewTextBoxColumn2.DataPropertyName = "k";
+            dataGridViewTextBoxColumn2.HeaderText = "k";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.Width = 40;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "l";
-            this.dataGridViewTextBoxColumn3.HeaderText = "l";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 36;
+            dataGridViewTextBoxColumn3.DataPropertyName = "l";
+            dataGridViewTextBoxColumn3.HeaderText = "l";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumn3.Width = 36;
             // 
             // dDataGridViewTextBoxColumn
             // 
-            this.dDataGridViewTextBoxColumn.DataPropertyName = "d";
-            this.dDataGridViewTextBoxColumn.HeaderText = "d";
-            this.dDataGridViewTextBoxColumn.Name = "dDataGridViewTextBoxColumn";
-            this.dDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dDataGridViewTextBoxColumn.Width = 40;
+            dDataGridViewTextBoxColumn.DataPropertyName = "d";
+            dDataGridViewTextBoxColumn.HeaderText = "d";
+            dDataGridViewTextBoxColumn.Name = "dDataGridViewTextBoxColumn";
+            dDataGridViewTextBoxColumn.ReadOnly = true;
+            dDataGridViewTextBoxColumn.Width = 40;
             // 
             // gXDataGridViewTextBoxColumn
             // 
-            this.gXDataGridViewTextBoxColumn.DataPropertyName = "gX";
-            this.gXDataGridViewTextBoxColumn.HeaderText = "gX";
-            this.gXDataGridViewTextBoxColumn.Name = "gXDataGridViewTextBoxColumn";
-            this.gXDataGridViewTextBoxColumn.ReadOnly = true;
-            this.gXDataGridViewTextBoxColumn.Width = 50;
+            gXDataGridViewTextBoxColumn.DataPropertyName = "gX";
+            gXDataGridViewTextBoxColumn.HeaderText = "gX";
+            gXDataGridViewTextBoxColumn.Name = "gXDataGridViewTextBoxColumn";
+            gXDataGridViewTextBoxColumn.ReadOnly = true;
+            gXDataGridViewTextBoxColumn.Width = 50;
             // 
             // gYDataGridViewTextBoxColumn
             // 
-            this.gYDataGridViewTextBoxColumn.DataPropertyName = "gY";
-            this.gYDataGridViewTextBoxColumn.HeaderText = "gY";
-            this.gYDataGridViewTextBoxColumn.Name = "gYDataGridViewTextBoxColumn";
-            this.gYDataGridViewTextBoxColumn.ReadOnly = true;
-            this.gYDataGridViewTextBoxColumn.Width = 51;
+            gYDataGridViewTextBoxColumn.DataPropertyName = "gY";
+            gYDataGridViewTextBoxColumn.HeaderText = "gY";
+            gYDataGridViewTextBoxColumn.Name = "gYDataGridViewTextBoxColumn";
+            gYDataGridViewTextBoxColumn.ReadOnly = true;
+            gYDataGridViewTextBoxColumn.Width = 51;
             // 
             // gZDataGridViewTextBoxColumn
             // 
-            this.gZDataGridViewTextBoxColumn.DataPropertyName = "gZ";
-            this.gZDataGridViewTextBoxColumn.HeaderText = "gZ";
-            this.gZDataGridViewTextBoxColumn.Name = "gZDataGridViewTextBoxColumn";
-            this.gZDataGridViewTextBoxColumn.ReadOnly = true;
-            this.gZDataGridViewTextBoxColumn.Width = 49;
+            gZDataGridViewTextBoxColumn.DataPropertyName = "gZ";
+            gZDataGridViewTextBoxColumn.HeaderText = "gZ";
+            gZDataGridViewTextBoxColumn.Name = "gZDataGridViewTextBoxColumn";
+            gZDataGridViewTextBoxColumn.ReadOnly = true;
+            gZDataGridViewTextBoxColumn.Width = 49;
             // 
             // gDataGridViewTextBoxColumn
             // 
-            this.gDataGridViewTextBoxColumn.DataPropertyName = "|g|";
-            this.gDataGridViewTextBoxColumn.HeaderText = "|g|";
-            this.gDataGridViewTextBoxColumn.Name = "gDataGridViewTextBoxColumn";
-            this.gDataGridViewTextBoxColumn.ReadOnly = true;
-            this.gDataGridViewTextBoxColumn.Width = 46;
+            gDataGridViewTextBoxColumn.DataPropertyName = "|g|";
+            gDataGridViewTextBoxColumn.HeaderText = "|g|";
+            gDataGridViewTextBoxColumn.Name = "gDataGridViewTextBoxColumn";
+            gDataGridViewTextBoxColumn.ReadOnly = true;
+            gDataGridViewTextBoxColumn.Width = 46;
             // 
             // ugReDataGridViewTextBoxColumn
             // 
-            this.ugReDataGridViewTextBoxColumn.DataPropertyName = "Ug re";
-            this.ugReDataGridViewTextBoxColumn.HeaderText = "Ug re";
-            this.ugReDataGridViewTextBoxColumn.Name = "ugReDataGridViewTextBoxColumn";
-            this.ugReDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ugReDataGridViewTextBoxColumn.Width = 67;
+            ugReDataGridViewTextBoxColumn.DataPropertyName = "Ug re";
+            ugReDataGridViewTextBoxColumn.HeaderText = "Ug re";
+            ugReDataGridViewTextBoxColumn.Name = "ugReDataGridViewTextBoxColumn";
+            ugReDataGridViewTextBoxColumn.ReadOnly = true;
+            ugReDataGridViewTextBoxColumn.Width = 67;
             // 
             // ugImDataGridViewTextBoxColumn
             // 
-            this.ugImDataGridViewTextBoxColumn.DataPropertyName = "Ug im";
-            this.ugImDataGridViewTextBoxColumn.HeaderText = "Ug im";
-            this.ugImDataGridViewTextBoxColumn.Name = "ugImDataGridViewTextBoxColumn";
-            this.ugImDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ugImDataGridViewTextBoxColumn.Width = 69;
+            ugImDataGridViewTextBoxColumn.DataPropertyName = "Ug im";
+            ugImDataGridViewTextBoxColumn.HeaderText = "Ug im";
+            ugImDataGridViewTextBoxColumn.Name = "ugImDataGridViewTextBoxColumn";
+            ugImDataGridViewTextBoxColumn.ReadOnly = true;
+            ugImDataGridViewTextBoxColumn.Width = 69;
             // 
             // ugReDataGridViewTextBoxColumn1
             // 
-            this.ugReDataGridViewTextBoxColumn1.DataPropertyName = "U\'g re";
-            this.ugReDataGridViewTextBoxColumn1.HeaderText = "U\'g re";
-            this.ugReDataGridViewTextBoxColumn1.Name = "ugReDataGridViewTextBoxColumn1";
-            this.ugReDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.ugReDataGridViewTextBoxColumn1.Width = 70;
+            ugReDataGridViewTextBoxColumn1.DataPropertyName = "U'g re";
+            ugReDataGridViewTextBoxColumn1.HeaderText = "U'g re";
+            ugReDataGridViewTextBoxColumn1.Name = "ugReDataGridViewTextBoxColumn1";
+            ugReDataGridViewTextBoxColumn1.ReadOnly = true;
+            ugReDataGridViewTextBoxColumn1.Width = 70;
             // 
             // ugImDataGridViewTextBoxColumn1
             // 
-            this.ugImDataGridViewTextBoxColumn1.DataPropertyName = "U\'g im";
-            this.ugImDataGridViewTextBoxColumn1.HeaderText = "U\'g im";
-            this.ugImDataGridViewTextBoxColumn1.Name = "ugImDataGridViewTextBoxColumn1";
-            this.ugImDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.ugImDataGridViewTextBoxColumn1.Width = 72;
+            ugImDataGridViewTextBoxColumn1.DataPropertyName = "U'g im";
+            ugImDataGridViewTextBoxColumn1.HeaderText = "U'g im";
+            ugImDataGridViewTextBoxColumn1.Name = "ugImDataGridViewTextBoxColumn1";
+            ugImDataGridViewTextBoxColumn1.ReadOnly = true;
+            ugImDataGridViewTextBoxColumn1.Width = 72;
             // 
             // sgDataGridViewTextBoxColumn
             // 
-            this.sgDataGridViewTextBoxColumn.DataPropertyName = "Sg";
-            this.sgDataGridViewTextBoxColumn.HeaderText = "Sg";
-            this.sgDataGridViewTextBoxColumn.Name = "sgDataGridViewTextBoxColumn";
-            this.sgDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sgDataGridViewTextBoxColumn.Width = 48;
+            sgDataGridViewTextBoxColumn.DataPropertyName = "Sg";
+            sgDataGridViewTextBoxColumn.HeaderText = "Sg";
+            sgDataGridViewTextBoxColumn.Name = "sgDataGridViewTextBoxColumn";
+            sgDataGridViewTextBoxColumn.ReadOnly = true;
+            sgDataGridViewTextBoxColumn.Width = 48;
             // 
             // pgDataGridViewTextBoxColumn
             // 
-            this.pgDataGridViewTextBoxColumn.DataPropertyName = "Pg";
-            this.pgDataGridViewTextBoxColumn.HeaderText = "Pg";
-            this.pgDataGridViewTextBoxColumn.Name = "pgDataGridViewTextBoxColumn";
-            this.pgDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pgDataGridViewTextBoxColumn.Width = 49;
+            pgDataGridViewTextBoxColumn.DataPropertyName = "Pg";
+            pgDataGridViewTextBoxColumn.HeaderText = "Pg";
+            pgDataGridViewTextBoxColumn.Name = "pgDataGridViewTextBoxColumn";
+            pgDataGridViewTextBoxColumn.ReadOnly = true;
+            pgDataGridViewTextBoxColumn.Width = 49;
             // 
             // qgDataGridViewTextBoxColumn
             // 
-            this.qgDataGridViewTextBoxColumn.DataPropertyName = "Qg";
-            this.qgDataGridViewTextBoxColumn.HeaderText = "Qg";
-            this.qgDataGridViewTextBoxColumn.Name = "qgDataGridViewTextBoxColumn";
-            this.qgDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qgDataGridViewTextBoxColumn.Width = 51;
+            qgDataGridViewTextBoxColumn.DataPropertyName = "Qg";
+            qgDataGridViewTextBoxColumn.HeaderText = "Qg";
+            qgDataGridViewTextBoxColumn.Name = "qgDataGridViewTextBoxColumn";
+            qgDataGridViewTextBoxColumn.ReadOnly = true;
+            qgDataGridViewTextBoxColumn.Width = 51;
             // 
             // φReDataGridViewTextBoxColumn
             // 
-            this.φReDataGridViewTextBoxColumn.DataPropertyName = "Φ re";
-            this.φReDataGridViewTextBoxColumn.HeaderText = "Φ re";
-            this.φReDataGridViewTextBoxColumn.Name = "φReDataGridViewTextBoxColumn";
-            this.φReDataGridViewTextBoxColumn.ReadOnly = true;
-            this.φReDataGridViewTextBoxColumn.Width = 60;
+            φReDataGridViewTextBoxColumn.DataPropertyName = "Φ re";
+            φReDataGridViewTextBoxColumn.HeaderText = "Φ re";
+            φReDataGridViewTextBoxColumn.Name = "φReDataGridViewTextBoxColumn";
+            φReDataGridViewTextBoxColumn.ReadOnly = true;
+            φReDataGridViewTextBoxColumn.Width = 60;
             // 
             // φImDataGridViewTextBoxColumn
             // 
-            this.φImDataGridViewTextBoxColumn.DataPropertyName = "Φ im";
-            this.φImDataGridViewTextBoxColumn.HeaderText = "Φ im";
-            this.φImDataGridViewTextBoxColumn.Name = "φImDataGridViewTextBoxColumn";
-            this.φImDataGridViewTextBoxColumn.ReadOnly = true;
-            this.φImDataGridViewTextBoxColumn.Width = 62;
+            φImDataGridViewTextBoxColumn.DataPropertyName = "Φ im";
+            φImDataGridViewTextBoxColumn.HeaderText = "Φ im";
+            φImDataGridViewTextBoxColumn.Name = "φImDataGridViewTextBoxColumn";
+            φImDataGridViewTextBoxColumn.ReadOnly = true;
+            φImDataGridViewTextBoxColumn.Width = 62;
             // 
             // φ2DataGridViewTextBoxColumn
             // 
-            this.φ2DataGridViewTextBoxColumn.DataPropertyName = "|Φ|^2";
-            this.φ2DataGridViewTextBoxColumn.HeaderText = "|Φ|^2";
-            this.φ2DataGridViewTextBoxColumn.Name = "φ2DataGridViewTextBoxColumn";
-            this.φ2DataGridViewTextBoxColumn.ReadOnly = true;
-            this.φ2DataGridViewTextBoxColumn.Width = 63;
+            φ2DataGridViewTextBoxColumn.DataPropertyName = "|Φ|^2";
+            φ2DataGridViewTextBoxColumn.HeaderText = "|Φ|^2";
+            φ2DataGridViewTextBoxColumn.Name = "φ2DataGridViewTextBoxColumn";
+            φ2DataGridViewTextBoxColumn.ReadOnly = true;
+            φ2DataGridViewTextBoxColumn.Width = 63;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 570);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1087, 22);
-            this.statusStrip1.TabIndex = 11;
-            this.statusStrip1.Text = "statusStrip1";
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabel1 });
+            statusStrip1.Location = new System.Drawing.Point(0, 570);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new System.Drawing.Size(1087, 22);
+            statusStrip1.TabIndex = 11;
+            statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(22, 17);
-            this.toolStripStatusLabel1.Text = "     ";
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new System.Drawing.Size(22, 17);
+            toolStripStatusLabel1.Text = "     ";
             // 
             // checkBoxAutoRowSize
             // 
-            this.checkBoxAutoRowSize.AutoSize = true;
-            this.checkBoxAutoRowSize.Location = new System.Drawing.Point(454, 272);
-            this.checkBoxAutoRowSize.Name = "checkBoxAutoRowSize";
-            this.checkBoxAutoRowSize.Size = new System.Drawing.Size(161, 23);
-            this.checkBoxAutoRowSize.TabIndex = 12;
-            this.checkBoxAutoRowSize.Text = "Auto resize row width";
-            this.checkBoxAutoRowSize.UseVisualStyleBackColor = true;
-            this.checkBoxAutoRowSize.CheckedChanged += new System.EventHandler(this.CheckBoxAutoRowSize_CheckedChanged);
+            checkBoxAutoRowSize.AutoSize = true;
+            checkBoxAutoRowSize.Location = new System.Drawing.Point(454, 272);
+            checkBoxAutoRowSize.Name = "checkBoxAutoRowSize";
+            checkBoxAutoRowSize.Size = new System.Drawing.Size(161, 23);
+            checkBoxAutoRowSize.TabIndex = 12;
+            checkBoxAutoRowSize.Text = "Auto resize row width";
+            checkBoxAutoRowSize.UseVisualStyleBackColor = true;
+            checkBoxAutoRowSize.CheckedChanged += CheckBoxAutoRowSize_CheckedChanged;
             // 
             // numericBoxEffectiveDigit
             // 
-            this.numericBoxEffectiveDigit.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxEffectiveDigit.Font = new System.Drawing.Font("Segoe UI Symbol", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxEffectiveDigit.FooterFont = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxEffectiveDigit.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxEffectiveDigit.HeaderText = "Effective digit";
-            this.numericBoxEffectiveDigit.Location = new System.Drawing.Point(656, 270);
-            this.numericBoxEffectiveDigit.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxEffectiveDigit.Maximum = 16D;
-            this.numericBoxEffectiveDigit.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxEffectiveDigit.Minimum = 1D;
-            this.numericBoxEffectiveDigit.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
-            this.numericBoxEffectiveDigit.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxEffectiveDigit.RadianValue = 0.069813170079773182D;
-            this.numericBoxEffectiveDigit.RoundErrorAccuracy = -1;
-            this.numericBoxEffectiveDigit.ShowUpDown = true;
-            this.numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 27);
-            this.numericBoxEffectiveDigit.SkipEventDuringInput = false;
-            this.numericBoxEffectiveDigit.TabIndex = 3;
-            this.numericBoxEffectiveDigit.TextFont = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxEffectiveDigit.ThonsandsSeparator = true;
-            this.numericBoxEffectiveDigit.Value = 4D;
-            this.numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEffectiveDigit_ValueChanged);
+            numericBoxEffectiveDigit.BackColor = System.Drawing.Color.Transparent;
+            numericBoxEffectiveDigit.Font = new System.Drawing.Font("Segoe UI Symbol", 11F);
+            numericBoxEffectiveDigit.FooterFont = new System.Drawing.Font("Times New Roman", 9.75F);
+            numericBoxEffectiveDigit.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            numericBoxEffectiveDigit.HeaderText = "Effective digit";
+            numericBoxEffectiveDigit.Location = new System.Drawing.Point(656, 270);
+            numericBoxEffectiveDigit.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxEffectiveDigit.Maximum = 16D;
+            numericBoxEffectiveDigit.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxEffectiveDigit.Minimum = 1D;
+            numericBoxEffectiveDigit.MinimumSize = new System.Drawing.Size(1, 20);
+            numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
+            numericBoxEffectiveDigit.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            numericBoxEffectiveDigit.RadianValue = 0.069813170079773182D;
+            numericBoxEffectiveDigit.RoundErrorAccuracy = -1;
+            numericBoxEffectiveDigit.ShowUpDown = true;
+            numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 27);
+            numericBoxEffectiveDigit.SkipEventDuringInput = false;
+            numericBoxEffectiveDigit.TabIndex = 3;
+            numericBoxEffectiveDigit.TextFont = new System.Drawing.Font("Times New Roman", 11.25F);
+            numericBoxEffectiveDigit.ThonsandsSeparator = true;
+            numericBoxEffectiveDigit.Value = 4D;
+            numericBoxEffectiveDigit.ValueChanged += numericBoxEffectiveDigit_ValueChanged;
             // 
             // button1
             // 
-            this.button1.AutoSize = true;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(996, 197);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 30);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.AutoSize = true;
+            button1.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            button1.Location = new System.Drawing.Point(996, 197);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(79, 30);
+            button1.TabIndex = 5;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Visible = false;
+            button1.Click += button1_Click;
             // 
             // FormDiffractionSpotInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1087, 592);
-            this.Controls.Add(this.checkBoxAutoRowSize);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.flowLayoutPanel4);
-            this.Controls.Add(this.flowLayoutPanel5);
-            this.Controls.Add(this.flowLayoutPanel3);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonCopyToClipboard);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.numericBoxEffectiveDigit);
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.pictureBox);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Name = "FormDiffractionSpotInfo";
-            this.Text = "Diffraction Spot Information";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDiffractionSimulatorTable_FormClosing);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ClientSize = new System.Drawing.Size(1087, 592);
+            Controls.Add(checkBoxAutoRowSize);
+            Controls.Add(statusStrip1);
+            Controls.Add(label14);
+            Controls.Add(flowLayoutPanel4);
+            Controls.Add(flowLayoutPanel5);
+            Controls.Add(flowLayoutPanel3);
+            Controls.Add(flowLayoutPanel2);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(button1);
+            Controls.Add(buttonCopyToClipboard);
+            Controls.Add(label16);
+            Controls.Add(label9);
+            Controls.Add(numericBoxEffectiveDigit);
+            Controls.Add(dataGridView);
+            Controls.Add(pictureBox);
+            Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            Name = "FormDiffractionSpotInfo";
+            Text = "Diffraction Spot Information";
+            FormClosing += FormDiffractionSimulatorTable_FormClosing;
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataSetBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -986,7 +986,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
         var gMax = 1 / dMin;
-        (int h, int k, int l)[] directions = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };
+        (int h, int k, int l)[] directions = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)];
 
         var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
 
@@ -1211,13 +1211,23 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     private readonly object lockObj = new();
 
+
+    /// <summary>
+    /// dMin以上の逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
+    /// </summary>
+    /// <param name="dMin"></param>
+    /// <param name="wavesource"></param>
+    /// <param name="excludeLatticeCondition"></param>
+    public void SetVectorOfG(double dMin, WaveSource wavesource, bool excludeLatticeCondition = true)
+        => SetVectorOfG(dMin,double.PositiveInfinity,wavesource,excludeLatticeCondition);
+
     /// <summary>
     /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
     /// </summary>
     /// <param name="dMin"></param>
     /// <param name="dMax"></param>
     /// <param name="wavesource"></param>
-    public void SetVectorOfG(double dMin, WaveSource wavesource, bool excludeLatticeCondition = true)
+    public void SetVectorOfG(double dMin, double dMax, WaveSource wavesource, bool excludeLatticeCondition = true)
     {
         if (double.IsNaN(dMin)) return;
 
@@ -1287,8 +1297,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 ;
             outer = outer[..end];
         }
-        gList.RemoveAt(0);
-
+        gList.RemoveAt(0);// 000スポットを削除
+        if (!double.IsInfinity(dMax))
+        {
+            var i = gList.FindIndex(g => g.len > 1 / dMax);
+            if (i > 0)
+                gList.RemoveRange(0, i);
+        }
         VectorOfG = new Vector3D[gList.Count * 2];
         Parallel.For(0, gList.Count, i =>
         {

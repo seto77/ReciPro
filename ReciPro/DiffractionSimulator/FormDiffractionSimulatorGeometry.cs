@@ -119,7 +119,7 @@ public partial class FormDiffractionSimulatorGeometry : Form
             );
 
         DetectorRotationInv = DetectorRotation.Inverse();
-
+        FormDiffractionSimulator.SetVector();
         FormDiffractionSimulator.Draw();
     }
 

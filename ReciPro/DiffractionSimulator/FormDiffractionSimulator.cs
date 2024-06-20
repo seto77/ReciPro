@@ -807,7 +807,7 @@ public partial class FormDiffractionSimulator : Form
 
                     var dev2 = dev * dev;
 
-                    if (SinPhi * SinTau * vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
+                    //if (SinPhi * SinTau * vec.X + CosPhi * SinTau * vec.Y + CosTau * (-vec.Z + EwaldRadius) > 0)
                     //(vec.X, -vec.Y, -vec.Z + EwaldRadius) と(SinPhi*SinTau, -CosPhi*sinTau, cosTau) の内積が0より大きい = 前方散乱)
                     {
                         var pt = convertReciprocalToDetector(vec);
@@ -1170,9 +1170,13 @@ public partial class FormDiffractionSimulator : Form
 
         pen.Brush = new SolidBrush(colorControlScale2Theta.Color);
 
+        if(originSrc.IsNaN) 
+            originSrc= convertReciprocalToDetector(new Vector3DBase(0, 0, 2*EwaldRadius));
+
         for (double n = Math.Max(1, startN); n < endN; n++)
         {
             var twoTheta = n * stepInteger * Math.Pow(10, stepPow);
+            if (twoTheta == 180) break;
             var ptsArray = Geometriy.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
             if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
                 ptsArray =
@@ -1183,6 +1187,7 @@ public partial class FormDiffractionSimulator : Form
             foreach (var pts in ptsArray)
                 g.DrawLines(pen, pts.ToArray());
 
+            //var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
             var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
             if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
                 g.DrawString(twoTheta.ToString("g12") + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
@@ -1292,21 +1297,44 @@ public partial class FormDiffractionSimulator : Form
         var sw = new Stopwatch();
         sw.Start();
 
-        var minD = new[] {
-                1 / convertScreenToReciprocal(0, 0, false).Length,
-                1 / convertScreenToReciprocal(0, graphicsBox.ClientSize.Height, false).Length,
-                1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, 0, false).Length,
-                1 / convertScreenToReciprocal(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height, false).Length
-            }.Min();
+        int width = graphicsBox.ClientSize.Width, height = graphicsBox.ClientSize.Height;
+
+        //最大、最小のd値を決定
+        double minD, maxD;
+        //180°散乱が画面内に含まれる場合
+        if (IsScreenArea(convertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius))))
+            minD = WaveLength / 2;
+        else
+            minD = 1 / (new[] {
+             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Max(),
+             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Max(),
+             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Max(),
+             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Max(),
+            }.Max());
+
+        //ダイレクトスポットが画面内に含まれる場合
+        if (IsScreenArea(convertReciprocalToDetector(new Vector3DBase(0, 0, 0))))
+            maxD = double.PositiveInfinity;
+        else
+            maxD = 1 / (new[] {
+             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Min(),
+             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Min(),
+             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Min(),
+             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Min(),
+            }.Min());
+        //最大、最小のd値を決定 ここまで
 
         if (toolStripButtonDiffractionSpots.Checked)
         {
             if (radioButtonBeamBackLaue.Checked)//Back Laueのとき
-                minD = UniversalConstants.Convert.EnergyToXrayWaveLength(50_000) / 2;//取りあえず80kV
+            {
+                maxD = double.PositiveInfinity;
+                minD = UniversalConstants.Convert.EnergyToXrayWaveLength(50_000) / 2;//取りあえず50kV
+            }
 
             foreach (var crystal in formMain.Crystals)
             {
-                crystal.SetVectorOfG(minD, radioButtonIntensityKinematical.Checked ? Source : WaveSource.None);
+                crystal.SetVectorOfG(minD, maxD, radioButtonIntensityKinematical.Checked ? Source : WaveSource.None);
 
                 var latticeType = crystal.Symmetry.LatticeTypeStr;
 
@@ -1360,8 +1388,11 @@ public partial class FormDiffractionSimulator : Form
         if (width == 0 || height == 0)
             return (0, 0);
 
-        var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
-        var originInside = IsScreenArea(originSrc);
+        var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));//逆空間原点の検出器座標
+        var originInside = IsScreenArea(originSrc);//逆空間原点が検出器内にいるか
+
+        var originInverseSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 2*EwaldRadius));//逆空間原点と反対向き（すなわち入射ビームの反対向き）の検出器座標
+        var originInverseInside = IsScreenArea(originInverseSrc);//逆空間原点と反対向きの点が検出器内にいるか
 
         var edges = new List<Vector3DBase>();
         edges.AddRange(Enumerable.Range(0, width).Select(w => convertScreenToReal(w, 0)));
@@ -1378,7 +1409,7 @@ public partial class FormDiffractionSimulator : Form
         else
         {
             min2Theta = originInside ? 0 : edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Min();
-            max2Theta = edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max();
+            max2Theta = originInverseInside ? Math.PI : edges.Select(p => Math.Atan2(Math.Sqrt(p.X2Y2), p.Z)).Max();
         }
         if (double.IsNaN(min2Theta)) min2Theta = 0;
         if (double.IsNaN(max2Theta)) max2Theta = 175 / 180.0 * Math.PI;
@@ -1527,8 +1558,12 @@ public partial class FormDiffractionSimulator : Form
         else//通常の平面検出器の場合
         {
             var v = DetectorRotationInv * new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z);
-            var coeff = CameraLength2 / v.Z;
-            return new PointD(v.X * coeff, v.Y * coeff);
+            if (v.Z < 0) return new PointD(double.NaN, double.NaN);
+            else
+            {
+                var coeff = CameraLength2 / v.Z;
+                return new PointD(v.X * coeff, v.Y * coeff);
+            }
         }
     }
 
@@ -1606,7 +1641,7 @@ public partial class FormDiffractionSimulator : Form
                 for (int i = 0; i < gVector.Count; i++)
                     if (dev - gVector[i] * v / gVector[i].Length < 1E-8)
                         list.Add(gVector[i]);
-                list = list.OrderBy(g => g.Length2).ToList();
+                list = [.. list.OrderBy(g => g.Length2)];
 
                 var sb = new StringBuilder();
                 sb.Append($"The spot is a supoerposition of mutiple of g = {list[0].Index.h} {list[0].Index.k} {list[0].Index.l}\r\n");
@@ -2671,7 +2706,7 @@ public partial class FormDiffractionSimulator : Form
     }
 
     private readonly object lockObj = new();
-    private List<GLObject> ewaldList = new();
+    private List<GLObject> ewaldList = [];
     private (double maxAngle, double ewaldRadius, bool Precession) beforeEwald = (0, 0, false);
     private void Draw3D()
     {
@@ -2817,8 +2852,8 @@ public partial class FormDiffractionSimulator : Form
         #region ガイドの描画
         if (checkBox3D_DirectionGuide.Checked)
         {
-            glObjects.AddRange(new GLObject[]
-            {
+            glObjects.AddRange(
+            [
                 new Cylinder(new V3(0, 0, 0.5 + spotRadius) + shift, new V3(0, 0, 2), 0.075, new Material(colorControl3D_beamDirection.Color), DrawingMode.Surfaces),
                 new Cone(new V3(0, 0, spotRadius) + shift, new V3(0, 0, 0.5), 0.2, new Material(colorControl3D_beamDirection.Color), DrawingMode.Surfaces),
 
@@ -2827,15 +2862,15 @@ public partial class FormDiffractionSimulator : Form
 
                 new Cylinder(new V3(0, 0, 0) + shift, new V3(1.5, 0, 0), 0.075, new Material(colorControl3D_rightDirection.Color), DrawingMode.Surfaces),
                 new Cone(new V3(2, 0, 0) + shift, new V3(-0.5, 0, 0), 0.2, new Material(colorControl3D_rightDirection.Color), DrawingMode.Surfaces),
-            });
+            ]);
 
             if (checkBox3D_ShowIndices.Checked)
-                glObjects.AddRange(new GLObject[]
-                {
+                glObjects.AddRange(
+                [
                     new TextObject("Beam", 10f, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText),
                     new TextObject("Top", 10f, new V3(0, 2, 0) + shift, 5, true, matText),
                     new TextObject("Right", 10f, new V3(2, 0, 0) + shift, 5, true, matText)
-                });
+                ]);
         }
         #endregion
 
@@ -2929,27 +2964,19 @@ public partial class FormDiffractionSimulator : Form
     }
     #endregion
 
-
     private void radioButtonResoUnit_CheckedChanged(object sender, EventArgs e)
     {
         if (sender is RadioButton a && a.Checked)
         {
-            skipDrawing = true;
-            SkipEvent = true;
+            skipDrawing = SkipEvent = true;
+            
             var val = numericBoxResolution.Value;
-
             if (radioButtonResoUnitMilliMeter.Checked)
-            {
                 numericBoxResolution.Value = CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * val / 2.0))  ;
-                
-            }
             else
-            {
                 numericBoxResolution.Value = 2.0 * Math.Sin(Math.Atan(val / CameraLength2) / 2.0) / WaveLength;
-            }
-            SkipEvent = false;
-
-            skipDrawing = false;
+            
+            SkipEvent = skipDrawing = false;
         }
     }
 }
