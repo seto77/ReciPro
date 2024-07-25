@@ -18,6 +18,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static IronPython.Modules._ast;
 using V3 = OpenTK.Vector3d;
 #endregion
 
@@ -113,7 +114,7 @@ public partial class FormDiffractionSimulator : Form
     public double Thickness { get => numericBoxThickness.Value; set => numericBoxThickness.Value = value; }
     public int NumberOfDiffractedWaves { get => numericBoxNumOfBlochWave.ValueInteger; set => numericBoxNumOfBlochWave.Value = value; }
 
-    private Font font => new("Tahoma", (float)(trackBarStrSize.Value * Resolution / 10.0));
+    private Font font => new("Tahoma", (float)(trackBarStrSize.Value / 8.0/* * Resolution */));
 
 
     public bool DynamicCompressionMode { get; set; } = false;
@@ -127,13 +128,60 @@ public partial class FormDiffractionSimulator : Form
 
     #region 検出器、表示画面のプロパティ
     /// <summary>
+    /// シミュレーション画像を水平反転するかどうか
+    /// </summary>
+    public bool FlipHorizontally
+    {
+        get => checkBoxFlipHorizontally.Checked;
+        set
+        {
+            if (checkBoxFlipHorizontally.Checked != value)
+            {
+                checkBoxFlipHorizontally.Checked = value;
+                Draw();
+            }
+        }
+    }
+    /// <summary>
+    /// シミュレーション画像を上下反転するかどうか
+    /// </summary>
+    public bool FlipVertically
+    {
+        get => checkBoxFlipVertically.Checked;
+        set
+        {
+            if (checkBoxFlipVertically.Checked != value)
+            {
+                checkBoxFlipVertically.Checked = value;
+                Draw();
+            }
+        }
+    }
+
+    /// <summary>
+    /// シミュレーション画像を明暗反転させるかどうか
+    /// </summary>
+    public bool NegativeImage
+    {
+        get => checkBoxNegativeImage.Checked;
+        set
+        {
+            if (checkBoxNegativeImage.Checked != value)
+            {
+                checkBoxNegativeImage.Checked = value;
+                Draw();
+            }
+        }
+    }
+
+    /// <summary>
     /// 画面解像度 mm/pix
     /// </summary>
     public double Resolution
     {
         set
         {
-            var val = radioButtonResoUnitMilliMeter.Checked ? value:
+            var val = radioButtonResoUnitMilliMeter.Checked ? value :
                  2.0 * Math.Sin(Math.Atan(value / CameraLength2) / 2.0) / WaveLength;
 
             skipDrawing = true;
@@ -145,7 +193,7 @@ public partial class FormDiffractionSimulator : Form
                 numericBoxResolution.Value = val;
             skipDrawing = false;
 
-            SetProjection();
+            //SetProjection();
             SetVector();
             Draw();
         }
@@ -376,13 +424,16 @@ public partial class FormDiffractionSimulator : Form
     /// </summary>
     public bool SetProjection(Graphics g = null)
     {
+        float xSign = FlipHorizontally ? -1 : 1;
+        float ySign = FlipVertically ? -1 : 1;
+
         if (g != null && graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
             try
             {
                 g.Transform = new Matrix(
-                (float)(1 / Resolution), 0, 0, (float)(1 / Resolution),
-                (float)(graphicsBox.ClientSize.Width / 2.0 + Foot.X / Resolution),
-                (float)(graphicsBox.ClientSize.Height / 2.0 + Foot.Y / Resolution));
+                (float)(xSign / Resolution), 0, 0, (float)(ySign / Resolution),
+                (float)(graphicsBox.ClientSize.Width / 2.0 + xSign*Foot.X / Resolution),
+                (float)(graphicsBox.ClientSize.Height / 2.0 + ySign* Foot.Y / Resolution));
             }
             catch { return false; }
         return true;
@@ -426,7 +477,14 @@ public partial class FormDiffractionSimulator : Form
         {
             var topleft = convertScreenToDetector(new Point(0, 0));
             var bottomright = convertScreenToDetector(new Point(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height));
-            g.FillRectangle(new SolidBrush(colorControlBackGround.Color), new RectangleF((float)topleft.X, (float)topleft.Y, (float)(bottomright.X - topleft.X), (float)(bottomright.Y - topleft.Y)));
+            
+            var left = (float)Math.Min(topleft.X, bottomright.X);
+            var top = (float)Math.Min(topleft.Y, bottomright.Y);
+            var width = (float)Math.Abs(topleft.X - bottomright.X);
+            var height = (float)Math.Abs(topleft.Y - bottomright.Y);
+            
+            g.FillRectangle(new SolidBrush(colorControlBackGround.Color), new RectangleF(left, top, width, height));
+            //g.Clear(colorControlBackGround.Color);
         }
 
         g.SmoothingMode = SmoothingMode.None;
@@ -769,7 +827,8 @@ public partial class FormDiffractionSimulator : Form
                         toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects: {sw.ElapsedMilliseconds} ms.  ";
                 }
                 var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
-                //gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToList();//20220915以下に変更。合ってるかな。
+                //gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToList();
+                //20220915以下に変更。合ってるかな。
                 gVector.ForEach(g => g.RelativeIntensity = g.RawIntensity / max);
 
                 if (formMain.Crystals.Length == 1)
@@ -789,9 +848,12 @@ public partial class FormDiffractionSimulator : Form
             if (SkipRendering && bethe)
                 gVector.Clear();
 
-            gVector.ForEach(g => g.Flag2 = false);
+            if (gVector == null)
+                break;
 
-            foreach (var g in gVector.Where(g => g.Flag1))
+            gVector.ForEach(g => { if (g != null) g.Flag2 = false; });
+
+            foreach (var g in gVector.Where(g => g != null && g.Flag1))
             {
                 var vec = bethe ? g : crystal.RotationMatrix * g;//ベーテ法で計算する際には、すでに回転後の座標になっている。
 
@@ -873,7 +935,7 @@ public partial class FormDiffractionSimulator : Form
                                 if (bethe || Math.Abs(dev) < sphereRadius)
                                 {
                                     g.Flag2 = true;
-                                    
+
                                     if (checkBoxDrawSameSize.Checked)//全て同一サイズで描画する場合はここで dev2=0
                                         dev2 = 0;
 
@@ -905,14 +967,22 @@ public partial class FormDiffractionSimulator : Form
         {
             graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), ptOrigin, spotRadiusOnDetector);
             if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1 && !radioButtonIntensityDynamical.Checked)
-                graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color)), (float)(ptOrigin.X + spotRadiusOnDetectorF / 2f), (float)(ptOrigin.Y + spotRadiusOnDetectorF / 2f));
+            {
+                var pt = convertDetectorToScreen(ptOrigin) + new PointD(spotRadiusOnDetectorF / 2.0, spotRadiusOnDetectorF / 2f) / Resolution;
+                graphics.DrawString("0 0 0", font, Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color), pt, true);
+                //graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color)), (float)(ptOrigin.X + spotRadiusOnDetectorF / 2f), (float)(ptOrigin.Y + spotRadiusOnDetectorF / 2f));
+            }
         }
         //垂線の足の描画
         if (Tau != 0 && IsScreenArea(new PointD(0, 0)))
         {
             graphics.DrawCross(new Pen(colorControlFoot.Color, (float)Resolution), 0, 0, spotRadiusOnDetector);
             if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1)
-                graphics.DrawString("foot", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color)), spotRadiusOnDetectorF / 2f, spotRadiusOnDetectorF / 2f);
+            {
+                var pt = new PointD(spotRadiusOnDetectorF / 2.0, spotRadiusOnDetectorF / 2f) / Resolution;
+                graphics.DrawString("foot", font, Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color), pt, true);
+                //graphics.DrawString("foot", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color)), spotRadiusOnDetectorF / 2f, spotRadiusOnDetectorF / 2f);
+            }
         }
         return null;
     }
@@ -938,8 +1008,11 @@ public partial class FormDiffractionSimulator : Form
                 sb.AppendLine($"{g.RelativeIntensity * 100:#.#} %, ({g.F.Real:0.###} + {g.F.Imaginary:0.###}i)");
         }
 
-        var brush = new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color));
-        graphics.DrawString(sb.ToString(), font, brush, (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
+        var p = convertDetectorToScreen(pt) + new PointD(radius / 1.4142 / Resolution + 3, radius / 1.4142 / Resolution + 3);
+        graphics.DrawString(sb.ToString(), font, Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color), p, true);
+
+        //var brush = new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color));
+        //graphics.DrawString(sb.ToString(), font, brush, (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
     }
 
     #endregion
@@ -1056,6 +1129,17 @@ public partial class FormDiffractionSimulator : Form
             return;
 
         var cornerDetector = new[] { convertScreenToDetector(0, 0), convertScreenToDetector(width, 0), convertScreenToDetector(width, height), convertScreenToDetector(0, height) };
+        if(FlipHorizontally)
+        {
+            (cornerDetector[0], cornerDetector[1]) = (cornerDetector[1],cornerDetector[0]);
+            (cornerDetector[2], cornerDetector[3]) = (cornerDetector[3],cornerDetector[2]);
+        }
+        if (FlipVertically)
+        {
+            (cornerDetector[1], cornerDetector[2]) = (cornerDetector[2], cornerDetector[1]);
+            (cornerDetector[0], cornerDetector[3]) = (cornerDetector[3], cornerDetector[0]);
+        }
+
         var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
 
         int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
@@ -1080,7 +1164,12 @@ public partial class FormDiffractionSimulator : Form
 
             var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 5)), originSrc, -90);
             if (checkBoxDebyeRingLabel.Checked && !double.IsNaN(labelPosition.X))
-                g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, new SolidBrush(colorControlString.Color), labelPosition.ToPointF());
+            {
+
+                g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, colorControlString.Color, convertDetectorToScreen( labelPosition),true);
+                //g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, new SolidBrush(colorControlString.Color), labelPosition.ToPointF());
+
+            }
         }
     }
     #endregion
@@ -1094,6 +1183,21 @@ public partial class FormDiffractionSimulator : Form
 
         var cornerDetector = new[] { convertScreenToDetector(0, 0), convertScreenToDetector(width, 0), convertScreenToDetector(width, height), convertScreenToDetector(0, height) };
         var cornerReals = new[] { convertScreenToReal(0, 0), convertScreenToReal(width, 0), convertScreenToReal(width, height), convertScreenToReal(0, height) };
+        if (FlipHorizontally)
+        {
+            (cornerDetector[0], cornerDetector[1]) = (cornerDetector[1], cornerDetector[0]);
+            (cornerDetector[2], cornerDetector[3]) = (cornerDetector[3], cornerDetector[2]);
+            (cornerReals[0], cornerReals[1]) = (cornerReals[1], cornerReals[0]);
+            (cornerReals[2], cornerReals[3]) = (cornerReals[3], cornerReals[2]);
+        }
+        if (FlipVertically)
+        {
+            (cornerDetector[1], cornerDetector[2]) = (cornerDetector[2], cornerDetector[1]);
+            (cornerDetector[0], cornerDetector[3]) = (cornerDetector[3], cornerDetector[0]);
+            (cornerReals[1], cornerReals[2]) = (cornerReals[2], cornerReals[1]);
+            (cornerReals[0], cornerReals[3]) = (cornerReals[3], cornerReals[0]);
+        }
+
         var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
         var originInside = IsScreenArea(originSrc);
 
@@ -1135,8 +1239,16 @@ public partial class FormDiffractionSimulator : Form
                         {
                             double xx = pt.X - originSrc.X, yy = pt.X - originSrc.X;
                             var str = (xx > 1E-6) || (xx > -1E-6 && yy > 1E-6) ? n.ToString("g12") : (n - 180).ToString("g12");
-                            var shift = new PointD(index == 1 ? -3 : 0, index == 2 ? -2 : 0) * font.Size;
-                            g.DrawString(str + "°", font, new SolidBrush(colorControlScaleAzimuth.Color), (pt + shift).ToPointF());
+                            var shiftX = (!FlipHorizontally && index == 1) || (FlipHorizontally && index == 3) ? -3 * font.Size:0;
+                            var shiftY = (!FlipVertically && index == 2) || (FlipVertically && index == 0) ? -2 * font.Size:0;
+
+
+                            //var shift = new PointD(index == 1 ? -3 : 0, index == 2 ? -2 : 0) * font.Size;
+                            //if (FlipHorizontally) shift.X = -shift.X;
+                            //if (FlipVertically) shift.Y = -shift.Y;
+
+                            g.DrawString(str + "°", font, colorControlScaleAzimuth.Color, convertDetectorToScreen(pt) + new PointD(shiftX,shiftY),true);
+                            //g.DrawString(str + "°", font, new SolidBrush(colorControlScaleAzimuth.Color), (pt + shift).ToPointF());
                         }
                     }
                     break;
@@ -1170,8 +1282,8 @@ public partial class FormDiffractionSimulator : Form
 
         pen.Brush = new SolidBrush(colorControlScale2Theta.Color);
 
-        if(originSrc.IsNaN) 
-            originSrc= convertReciprocalToDetector(new Vector3DBase(0, 0, 2*EwaldRadius));
+        if (originSrc.IsNaN)
+            originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius));
 
         for (double n = Math.Max(1, startN); n < endN; n++)
         {
@@ -1190,7 +1302,11 @@ public partial class FormDiffractionSimulator : Form
             //var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
             var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
             if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
-                g.DrawString(twoTheta.ToString("g12") + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
+            {
+                g.DrawString(twoTheta.ToString("g12") + "°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true);
+                //g.DrawString(twoTheta.ToString("g12") + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
+            }
+               
         }
     }
     #endregion
@@ -1238,7 +1354,7 @@ public partial class FormDiffractionSimulator : Form
     {
         if (Visible == false || SkipEvent) return;
 
-        SetProjection();
+        //SetProjection();
         SetVector();
         Draw();
     }
@@ -1391,7 +1507,7 @@ public partial class FormDiffractionSimulator : Form
         var originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));//逆空間原点の検出器座標
         var originInside = IsScreenArea(originSrc);//逆空間原点が検出器内にいるか
 
-        var originInverseSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 2*EwaldRadius));//逆空間原点と反対向き（すなわち入射ビームの反対向き）の検出器座標
+        var originInverseSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius));//逆空間原点と反対向き（すなわち入射ビームの反対向き）の検出器座標
         var originInverseInside = IsScreenArea(originInverseSrc);//逆空間原点と反対向きの点が検出器内にいるか
 
         var edges = new List<Vector3DBase>();
@@ -1422,9 +1538,14 @@ public partial class FormDiffractionSimulator : Form
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
-    private PointD convertScreenToDetector(in int x, in int y) => new(
+    private PointD convertScreenToDetector(int x, int y)
+    {
+        if (FlipHorizontally) x = graphicsBox.ClientSize.Width - x;
+        if ((FlipVertically)) y = graphicsBox.ClientSize.Height - y;
+        return new(
             (x - graphicsBox.ClientSize.Width / 2.0) * Resolution - Foot.X,
             (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - Foot.Y);
+    }
 
     /// <summary>
     /// 座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換
@@ -1462,9 +1583,15 @@ public partial class FormDiffractionSimulator : Form
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
-    private PointD convertDetectorToScreen(in double x, in double y) => new(
-            (x + Foot.X) / Resolution + graphicsBox.ClientSize.Width / 2.0,
-            (y + Foot.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0);
+    private PointD convertDetectorToScreen(in double x, in double y)
+    {
+        double px = (x + Foot.X) / Resolution + graphicsBox.ClientSize.Width / 2.0;
+        double py = (y + Foot.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0;
+        if (FlipHorizontally) px = graphicsBox.ClientSize.Width - px;
+        if (FlipVertically) py = graphicsBox.ClientSize.Height - py;
+
+        return new(px, py);
+    }
 
     /// <summary>
     /// 検出器(Detector)上の位置 (mm)を画面(Screen)上の点(pixel)に変換
@@ -2969,14 +3096,30 @@ public partial class FormDiffractionSimulator : Form
         if (sender is RadioButton a && a.Checked)
         {
             skipDrawing = SkipEvent = true;
-            
+
             var val = numericBoxResolution.Value;
             if (radioButtonResoUnitMilliMeter.Checked)
-                numericBoxResolution.Value = CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * val / 2.0))  ;
+                numericBoxResolution.Value = CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * val / 2.0));
             else
                 numericBoxResolution.Value = 2.0 * Math.Sin(Math.Atan(val / CameraLength2) / 2.0) / WaveLength;
-            
+
             SkipEvent = skipDrawing = false;
         }
+    }
+
+    private void checkBoxFlipHorizontally_CheckedChanged(object sender, EventArgs e)
+    {
+        //SetProjection();
+        SetVector();
+        Draw();
+    }
+
+    private void checkBoxNegativeImage_CheckedChanged(object sender, EventArgs e)
+    {
+        colorControlBackGround.Inversion = colorControlNoCondition.Inversion = colorControlString.Inversion=
+            colorControlDefectLine.Inversion = colorControlExcessLine.Inversion =
+            checkBoxNegativeImage.Checked;
+        SetVector();
+        Draw();
     }
 }

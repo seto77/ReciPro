@@ -507,6 +507,10 @@ public partial class FormMain : Form
             Reg.RW<double>(key, mode, FormDiffractionSimulator, "Resolution");
             Reg.RW<LengthUnitEnum>(key, mode, FormDiffractionSimulator, "ResolutionUnit");
 
+            Reg.RW<bool>(key, mode, FormDiffractionSimulator, "FlipHorizontally");
+            Reg.RW<bool>(key, mode, FormDiffractionSimulator, "FlipVertically");
+            Reg.RW<bool>(key, mode, FormDiffractionSimulator, "NegativeImage");
+
             #endregion
 
             #region ImageSimulator

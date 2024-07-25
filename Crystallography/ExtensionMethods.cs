@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using Windows.Media.Audio;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using MC = Crystallography.MathematicalConstants;
 
@@ -373,6 +374,32 @@ public static class GraphicsAlpha
         if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
             graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
     }
+
+    /// <summary>
+    /// 拡張メソッド
+    /// </summary>
+    /// <param name="graphics"></param>
+    /// <param name="s"></param>
+    /// <param name="font"></param>
+    /// <param name="color"></param>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="resetTransform"></param>
+    public static void DrawString(this Graphics graphics, string s, Font font, Color color, double x, double y, bool resetTransform=false)
+    {
+        var transform = graphics.Transform;
+        if (resetTransform)
+            graphics.Transform = new System.Drawing.Drawing2D.Matrix(1, 0, 0, 1, 1, 1);
+
+        graphics.DrawString(s, font, new SolidBrush(color), (float)x, (float)y);
+
+        if (resetTransform)
+            graphics.Transform = transform;
+    }
+
+    public static void DrawString(this Graphics graphics, string s, Font font, Color color, PointD pt, bool resetTransform = false)
+        =>DrawString(graphics,s,font,color, pt.X, pt.Y, resetTransform);
+
     #endregion
 
 
