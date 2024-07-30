@@ -484,6 +484,7 @@ namespace ReciPro
             colorControlSmallCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlSmallCircle.Green = 192;
             colorControlSmallCircle.GreenF = 0.7529412F;
+            colorControlSmallCircle.Inversion = false;
             colorControlSmallCircle.Name = "colorControlSmallCircle";
             colorControlSmallCircle.Red = 255;
             colorControlSmallCircle.RedF = 1F;
@@ -501,6 +502,7 @@ namespace ReciPro
             colorControlGreatCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlGreatCircle.Green = 128;
             colorControlGreatCircle.GreenF = 0.5019608F;
+            colorControlGreatCircle.Inversion = false;
             colorControlGreatCircle.Name = "colorControlGreatCircle";
             colorControlGreatCircle.Red = 255;
             colorControlGreatCircle.RedF = 1F;
@@ -525,6 +527,7 @@ namespace ReciPro
             colorControlString.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlString.Green = 0;
             colorControlString.GreenF = 0F;
+            colorControlString.Inversion = false;
             colorControlString.Name = "colorControlString";
             colorControlString.Red = 0;
             colorControlString.RedF = 0F;
@@ -544,6 +547,7 @@ namespace ReciPro
             colorControlUniqueAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlUniqueAxis.Green = 0;
             colorControlUniqueAxis.GreenF = 0F;
+            colorControlUniqueAxis.Inversion = false;
             colorControlUniqueAxis.Name = "colorControlUniqueAxis";
             colorControlUniqueAxis.Red = 139;
             colorControlUniqueAxis.RedF = 0.545098066F;
@@ -563,6 +567,7 @@ namespace ReciPro
             colorControlUniquePlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlUniquePlane.Green = 100;
             colorControlUniquePlane.GreenF = 0.392156869F;
+            colorControlUniquePlane.Inversion = false;
             colorControlUniquePlane.Name = "colorControlUniquePlane";
             colorControlUniquePlane.Red = 0;
             colorControlUniquePlane.RedF = 0F;
@@ -588,6 +593,7 @@ namespace ReciPro
             colorControlGeneralAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlGeneralAxis.Green = 0;
             colorControlGeneralAxis.GreenF = 0F;
+            colorControlGeneralAxis.Inversion = false;
             colorControlGeneralAxis.Name = "colorControlGeneralAxis";
             colorControlGeneralAxis.Red = 255;
             colorControlGeneralAxis.RedF = 1F;
@@ -625,6 +631,7 @@ namespace ReciPro
             colorControlGeneralPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlGeneralPlane.Green = 139;
             colorControlGeneralPlane.GreenF = 0.545098066F;
+            colorControlGeneralPlane.Inversion = false;
             colorControlGeneralPlane.Name = "colorControlGeneralPlane";
             colorControlGeneralPlane.Red = 33;
             colorControlGeneralPlane.RedF = 0.129411772F;
@@ -644,6 +651,7 @@ namespace ReciPro
             colorControlBackGround.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlBackGround.Green = 255;
             colorControlBackGround.GreenF = 1F;
+            colorControlBackGround.Inversion = false;
             colorControlBackGround.Name = "colorControlBackGround";
             colorControlBackGround.Red = 255;
             colorControlBackGround.RedF = 1F;
@@ -669,6 +677,7 @@ namespace ReciPro
             colorControl90DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControl90DegLine.Green = 0;
             colorControl90DegLine.GreenF = 0F;
+            colorControl90DegLine.Inversion = false;
             colorControl90DegLine.Name = "colorControl90DegLine";
             colorControl90DegLine.Red = 0;
             colorControl90DegLine.RedF = 0F;
@@ -700,6 +709,7 @@ namespace ReciPro
             colorControl10DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControl10DegLine.Green = 128;
             colorControl10DegLine.GreenF = 0.5019608F;
+            colorControl10DegLine.Inversion = false;
             colorControl10DegLine.Name = "colorControl10DegLine";
             colorControl10DegLine.Red = 128;
             colorControl10DegLine.RedF = 0.5019608F;
@@ -725,6 +735,7 @@ namespace ReciPro
             colorControl1DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControl1DegLine.Green = 192;
             colorControl1DegLine.GreenF = 0.7529412F;
+            colorControl1DegLine.Inversion = false;
             colorControl1DegLine.Name = "colorControl1DegLine";
             colorControl1DegLine.Red = 192;
             colorControl1DegLine.RedF = 0.7529412F;
@@ -1741,7 +1752,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -926598846);
+            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -1853198011);
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
             scalablePictureBoxAdvanced1.SkipDrawing = false;
             scalablePictureBoxAdvanced1.StatusLabel = " ";
@@ -1773,7 +1784,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -926598846);
+            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -1853198011);
             scalablePictureBoxAdvanced2.ShowGradiaent = true;
             scalablePictureBoxAdvanced2.SkipDrawing = false;
             scalablePictureBoxAdvanced2.StatusLabel = " ";

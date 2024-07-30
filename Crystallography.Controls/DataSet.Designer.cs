@@ -712,11 +712,11 @@ namespace Crystallography.Controls {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnH = new global::System.Data.DataColumn("H", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnH = new global::System.Data.DataColumn("H", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnH);
-                this.columnK = new global::System.Data.DataColumn("K", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnK = new global::System.Data.DataColumn("K", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnK);
-                this.columnL = new global::System.Data.DataColumn("L", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnL = new global::System.Data.DataColumn("L", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnL);
                 this.columnMulti = new global::System.Data.DataColumn("Multi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMulti);

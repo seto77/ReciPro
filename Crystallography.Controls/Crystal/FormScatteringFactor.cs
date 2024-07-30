@@ -1,8 +1,10 @@
+using MathNet.Numerics;
 using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using static IronPython.Modules._ast;
 
 namespace Crystallography.Controls
 {
@@ -97,6 +99,12 @@ namespace Crystallography.Controls
 
         private void SetSortedPlanes()
         {
+            if (checkBoxTest.Checked)
+            {
+                numericBoxH_min_ValueChanged(new object(), new EventArgs());
+                return;
+            }
+
             var c = (Crystal)Crystal.Clone();
 
             c.SetVectorOfG((double)numericUpDownThresholdD.Value / 10, waveLengthControl1.WaveSource, false);
@@ -166,6 +174,7 @@ namespace Crystallography.Controls
                     }
                 }
             }
+            dataGridView2.DefaultCellStyle.Format = "";
             dataGridView2.VirtualMode = true;
 
             bindingSourceScatteringFactor.DataMember = dataMember;
@@ -174,9 +183,48 @@ namespace Crystallography.Controls
             //dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
         }
 
+        /// <summary>
+        /// テストコード
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void numericBoxH_min_ValueChanged(object sender, EventArgs e)
+        {
+            var c = (Crystal)Crystal.Clone();
 
+            //一旦bindingSourceを解除
+            var dataMember = bindingSourceScatteringFactor.DataMember;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            bindingSourceScatteringFactor.DataMember = "";
 
+            dataSet.DataTableScatteringFactor.Clear();
+            for (int i = 0; i < dataGridView2.Columns.Count; i++)
+                this.dataGridView2.Columns[i].Visible = true;
 
+            for (double h = numericBoxH_min.Value; h <= numericBoxH_max.Value + 1e-10; h += numericBoxH_step.Value)
+                for (double k = numericBoxK_min.Value; k <= numericBoxK_max.Value + 1e-10; k += numericBoxK_step.Value)
+                    for (double l = numericBoxL_min.Value; l <= numericBoxL_max.Value + 1e-10; l += numericBoxL_step.Value)
+                    {
+                        var gLength = (h * c.A_Star + k * c.B_Star + l * c.C_Star).Length;
+                        var d = 1 / gLength;
+                        var twoTheta = 2 * Math.Asin(gLength * waveLengthControl1.WaveLength / 2) / Math.PI * 180;
+                        var F = Crystal.GetStructureFactor(waveLengthControl1.WaveSource, c.Atoms, (h, k, l), 1 / d / d / 4.0);
 
+                        dataSet.DataTableScatteringFactor.Add(h, k, l, 1, d, twoTheta, F, F.MagnitudeSquared(), []);
+                    }
+            dataGridView2.DefaultCellStyle.Format = "g8";
+            dataGridView2.VirtualMode = true;
+            bindingSourceScatteringFactor.DataMember = dataMember;
+        }
+
+        private void checkBoxTest_CheckedChanged(object sender, EventArgs e)
+        {
+            panel1.Visible=checkBoxTest.Checked;
+            if (panel1.Visible)
+                numericBoxH_min_ValueChanged(sender, e);
+            else
+                SetSortedPlanes();
+        }
     }
 }

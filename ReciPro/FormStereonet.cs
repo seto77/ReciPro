@@ -815,9 +815,17 @@ public partial class FormStereonet : Form
 
     private void buttonDeleteCircle_Click(object sender, EventArgs e)
     {
-        if (checkedListBoxCircles.SelectedIndex > -1)
+        var i = checkedListBoxCircles.SelectedIndex;
+        if (i > -1)
+        {
             formMain.Crystal.VectorOfPole.Remove((Vector3D)checkedListBoxCircles.SelectedItem);
-        checkedListBoxCircles.Items.RemoveAt(checkedListBoxCircles.SelectedIndex);
+            checkedListBoxCircles.Items.RemoveAt(checkedListBoxCircles.SelectedIndex);
+
+            if (checkedListBoxCircles.Items.Count > i)
+                checkedListBoxCircles.SelectedIndex = i;
+            else
+                checkedListBoxCircles.SelectedIndex = i - 1;
+        }
     }
 
     private void radioButtonCircleByAxis_CheckedChanged(object sender, EventArgs e)

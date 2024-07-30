@@ -1498,6 +1498,77 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     [XmlIgnore]
     private static readonly Complex TwoPiI = 2 * Complex.ImaginaryOne * Math.PI;
 
+    //(h,k,l)の構造散乱因子(熱散漫散乱込み)のF (複素数) を計算する (h, k, lが非整数の場合に対応させたテストコード)
+    /// <summary>
+    /// 構造因子を求める s2の単位はnm^-2
+    /// </summary>
+    /// <param name="wave"></param>
+    /// <param name="atomsArray"></param>
+    /// <param name="h"></param>
+    /// <param name="k"></param>
+    /// <param name="l"></param>
+    /// <param name="s2">単位はnm^-2</param>
+    /// <returns></returns>
+    public static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (double h, double k, double l) index, double s2)
+    {
+        #region
+        (double h, double k, double l) = index;
+        //s2 = (sin(theta)/ramda)^2 = 1 / 4 /d^2
+        if (atomsArray.Length == 0)
+            return new Complex(0, 0);
+        Complex F = 0, f = 0;
+        int atomicNum = -1, subNum = -1;
+
+        foreach (var atoms in atomsArray)
+        {
+            if (wave == WaveSource.Electron)
+            {
+                if (atoms.AtomicNumber != atomicNum || atoms.SubNumberElectron != subNum)
+                {
+                    f = new Complex(atoms.GetAtomicScatteringFactorForElectron(s2), 0);
+                    atomicNum = atoms.AtomicNumber;
+                    subNum = atoms.SubNumberElectron;
+                }
+            }
+            else if (wave == WaveSource.Xray)
+            {
+                if (atoms.AtomicNumber != atomicNum || atoms.SubNumberXray != subNum)
+                {
+                    f = new Complex(atoms.GetAtomicScatteringFactorForXray(s2), 0);
+                    atomicNum = atoms.AtomicNumber;
+                    subNum = atoms.SubNumberXray;
+                }
+            }
+            else
+                f = atoms.GetAtomicScatteringFactorForNeutron();
+
+
+            if (atoms.Dsf.UseIso)
+            {
+                var T = Math.Exp(-atoms.Dsf.Biso * s2);
+                if (double.IsNaN(T))
+                    T = 1;
+                foreach (var atom in atoms.Atom)
+                    F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z));
+            }
+            else
+            {
+                foreach (var atom in atoms.Atom)
+                {
+                    var (H, K, L) = atom.Operation.ConvertPlaneIndex(h, k, l);
+                    var T = Math.Exp(-(atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L
+                        + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H));
+                    if (double.IsNaN(T))
+                        T = 1;
+                    F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z));
+                }
+            }
+        }
+        return F;// Complex(Real, Inverse);
+        #endregion
+    }
+
+
     //(h,k,l)の構造散乱因子(熱散漫散乱込み)のF (複素数) を計算する
     /// <summary>
     /// 構造因子を求める s2の単位はnm^-2

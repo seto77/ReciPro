@@ -7,6 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.887(2024/07/30)  Fix a minor bug." +
         "\r\n ver4.886(2024/07/20)  Added horizontal/vertical flip and color inversion functions for 'Diffraction Simulator'  (see https://github.com/seto77/ReciPro/issues/35)." +
         "\r\n ver4.885(2024/06/20)  Fixed a bug and typo in the 'Diffraction Spot Information' (see https://github.com/seto77/ReciPro/issues/34, thanks to tianyu-liu-san)." +
         "\r\n ver4.884(2024/05/24)  Fixed a bug in the calculations of dynamical theory." +

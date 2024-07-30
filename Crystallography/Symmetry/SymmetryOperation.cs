@@ -67,6 +67,8 @@ public readonly struct SymmetryOperation
     public (int H, int K, int L) ConvertPlaneIndex((int H, int K, int L) index)
         => ConvertPlaneIndex(index.H, index.K, index.L);
 
+  
+
     public (int H, int K, int L) ConvertPlaneIndex(int h, int k, int l)
     {
         if (Order == 1)
@@ -168,5 +170,113 @@ public readonly struct SymmetryOperation
             return Order > 0 ? p : (-p.H, -p.K, -p.L);
         }
     }
+
+    #region h,k,lを整数から実数に拡張したテストコード
+    public (double H, double K, double L) ConvertPlaneIndex((double H, double K, double L) index)
+      => ConvertPlaneIndex(index.H, index.K, index.L);
+
+    public (double H, double K, double L) ConvertPlaneIndex(double h, double k, double l)
+    {
+        if (Order == 1)
+            return (h, k, l);
+        else if (Order == -1)
+            return (-h, -k, -l);
+        else
+        {
+            (double H, double K, double L) p = (0, 0, 0);
+
+            if (SymmetryStatic.NumArray[SeriesNumber][5] == 5 || SymmetryStatic.NumArray[SeriesNumber][5] == 6)
+            {//trigonalかHexagonalの場合
+                if (SymmetryStatic.NumArray[SeriesNumber][2] == 1)
+                {//Hexaセッティングの時
+                    if (Math.Abs(Order) == 2)
+                    {
+                        p = Direction switch
+                        {
+                            (0, 0, 1) => (-h, -k, l),
+                            (1, 0, 0) => (h, -h - k, -l),
+                            (0, 1, 0) => (-h - k, k, -l),
+                            (1, 1, 0) => (k, h, -l),
+                            (1, -1, 0) => (-k, -h, -l),
+                            (2, 1, 0) => (-h, h + k, -l),
+                            (1, 2, 0) => (h + k, -k, -l),
+                            _ => (0, 0, 0)
+                        };
+                    }
+                    else if (Math.Abs(Order) == 3)
+                    {
+                        if (Direction == (0, 0, 1))
+                            p = Sense ? (k, -h - k, l) : (-h - k, h, l);
+                    }
+                    else if (Math.Abs(Order) == 6)
+                    {
+                        if (Direction == (0, 0, 1))
+                            p = Sense ? (h + k, -h, l) : (-k, h + k, l);
+                    }
+                }
+                else
+                {//Rhomboセッティングの時
+                    if (Math.Abs(Order) == 2)
+                    {
+                        p = Direction switch
+                        {
+                            (0, 1, -1) => (-h, -l, -k),
+                            (-1, 0, 1) => (-l, -k, -h),
+                            (1, -1, 0) => (-k, -h, -l),
+                            _ => (0, 0, 0)
+                        };
+                    }
+                    else if (Math.Abs(Order) == 3)
+                    {
+                        if (Direction == (1, 1, 1))
+                            p = Sense ? (k, l, h) : (l, h, k);
+                    }
+                }
+            }
+            else
+            {//trigonalでもHexagonalでもない場合
+                if (Math.Abs(Order) == 2)
+                {
+                    p = Direction switch
+                    {
+                        (1, 0, 0) => (h, -k, -l),
+                        (0, 1, 0) => (-h, k, -l),
+                        (0, 0, 1) => (-h, -k, l),
+                        (0, 1, 1) => (-h, l, k),
+                        (1, 0, 1) => (l, -k, h),
+                        (1, 1, 0) => (k, h, -l),
+                        (0, 1, -1) => (-h, -l, -k),
+                        (-1, 0, 1) => (-l, -k, -h),
+                        (1, -1, 0) => (-k, -h, -l),
+                        _ => (0, 0, 0)
+                    };
+                }
+                else if (Math.Abs(Order) == 3)
+                {
+                    p = Direction switch
+                    {
+                        (+1, +1, +1) => Sense ? (+k, +l, +h) : (+l, +h, +k),
+                        (+1, -1, -1) => Sense ? (-k, +l, -h) : (-l, -h, +k),
+                        (-1, +1, -1) => Sense ? (-k, -l, +h) : (+l, -h, -k),
+                        (-1, -1, +1) => Sense ? (+k, -l, -h) : (-l, +h, -k),
+                        _ => (0, 0, 0)
+                    };
+                }
+                else if (Math.Abs(Order) == 4)
+                {
+                    p = Direction switch
+                    {
+                        (1, 0, 0) => Sense ? (h, l, -k) : (h, -l, k),
+                        (0, 1, 0) => Sense ? (-l, k, h) : (l, k, -h),
+                        (0, 0, 1) => Sense ? (k, -h, l) : (-k, h, l),
+                        _ => (0, 0, 0)
+                    };
+                }
+            }
+            return Order > 0 ? p : (-p.H, -p.K, -p.L);
+        }
+    }
+    #endregion
+
     #endregion
 }
