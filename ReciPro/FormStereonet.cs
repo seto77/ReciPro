@@ -61,6 +61,8 @@ public partial class FormStereonet : Form
 
         splitContainer1.SplitterDistance = splitContainer1.Width / 2;
         splitContainer1.Panel2Collapsed = true;
+
+        tabControl.TabPages.Remove(tabPage3);
     }
 
     private void FormStereonet_FormClosing(object sender, FormClosingEventArgs e)

@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScatteringFactor));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             dataGridView2 = new System.Windows.Forms.DataGridView();
             dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             K = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,18 +93,16 @@
             // 
             // dataGridView2
             // 
+            resources.ApplyResources(dataGridView2, "dataGridView2");
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.AllowUserToDeleteRows = false;
             dataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { dataGridViewTextBoxColumn1, K, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, F, dataGridViewTextBoxColumn11, RelInt, Condition });
             dataGridView2.DataSource = bindingSourceScatteringFactor;
-            dataGridView2.Location = new System.Drawing.Point(3, 110);
-            dataGridView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dataGridView2.MultiSelect = false;
             dataGridView2.Name = "dataGridView2";
             dataGridView2.ReadOnly = true;
@@ -111,133 +110,119 @@
             dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView2.RowTemplate.Height = 21;
             dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.Size = new System.Drawing.Size(824, 284);
-            dataGridView2.TabIndex = 0;
+            toolTip.SetToolTip(dataGridView2, resources.GetString("dataGridView2.ToolTip"));
             // 
             // dataGridViewTextBoxColumn1
             // 
             dataGridViewTextBoxColumn1.DataPropertyName = "H";
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewTextBoxColumn1.HeaderText = "h";
+            dataGridViewCellStyle13.NullValue = null;
+            dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle13;
+            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Width = 30;
             // 
             // K
             // 
             K.DataPropertyName = "K";
-            K.HeaderText = "k";
+            resources.ApplyResources(K, "K");
             K.Name = "K";
             K.ReadOnly = true;
-            K.Width = 30;
             // 
             // dataGridViewTextBoxColumn3
             // 
             dataGridViewTextBoxColumn3.DataPropertyName = "L";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewTextBoxColumn3.HeaderText = "l";
+            dataGridViewCellStyle14.NullValue = null;
+            dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle14;
+            resources.ApplyResources(dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 30;
             // 
             // dataGridViewTextBoxColumn4
             // 
             dataGridViewTextBoxColumn4.DataPropertyName = "Multi";
-            dataGridViewTextBoxColumn4.HeaderText = "Multi.";
+            resources.ApplyResources(dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 45;
             // 
             // dataGridViewTextBoxColumn5
             // 
             dataGridViewTextBoxColumn5.DataPropertyName = "D";
-            dataGridViewCellStyle4.Format = "G7";
-            dataGridViewCellStyle4.NullValue = null;
-            dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewTextBoxColumn5.HeaderText = "d (Å)";
+            dataGridViewCellStyle15.Format = "G7";
+            dataGridViewCellStyle15.NullValue = null;
+            dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle15;
+            resources.ApplyResources(dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             dataGridViewTextBoxColumn5.ReadOnly = true;
-            dataGridViewTextBoxColumn5.Width = 70;
             // 
             // dataGridViewTextBoxColumn6
             // 
             dataGridViewTextBoxColumn6.DataPropertyName = "Q";
-            dataGridViewCellStyle5.Format = "G7";
-            dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewTextBoxColumn6.HeaderText = "q (2π/d)";
+            dataGridViewCellStyle16.Format = "G7";
+            dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle16;
+            resources.ApplyResources(dataGridViewTextBoxColumn6, "dataGridViewTextBoxColumn6");
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             dataGridViewTextBoxColumn6.ReadOnly = true;
-            dataGridViewTextBoxColumn6.Width = 75;
             // 
             // dataGridViewTextBoxColumn7
             // 
             dataGridViewTextBoxColumn7.DataPropertyName = "TwoTheta";
-            dataGridViewCellStyle6.Format = "G7";
-            dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle6;
-            dataGridViewTextBoxColumn7.HeaderText = "2θ (°)";
+            dataGridViewCellStyle17.Format = "G7";
+            dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle17;
+            resources.ApplyResources(dataGridViewTextBoxColumn7, "dataGridViewTextBoxColumn7");
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             dataGridViewTextBoxColumn7.ReadOnly = true;
-            dataGridViewTextBoxColumn7.Width = 70;
             // 
             // dataGridViewTextBoxColumn9
             // 
             dataGridViewTextBoxColumn9.DataPropertyName = "F_real";
-            dataGridViewCellStyle7.Format = "G7";
-            dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewTextBoxColumn9.HeaderText = "F_real";
+            dataGridViewCellStyle18.Format = "G7";
+            dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle18;
+            resources.ApplyResources(dataGridViewTextBoxColumn9, "dataGridViewTextBoxColumn9");
             dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             dataGridViewTextBoxColumn9.ReadOnly = true;
-            dataGridViewTextBoxColumn9.Width = 70;
             // 
             // dataGridViewTextBoxColumn10
             // 
             dataGridViewTextBoxColumn10.DataPropertyName = "F_inv";
-            dataGridViewCellStyle8.Format = "G7";
-            dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle8;
-            dataGridViewTextBoxColumn10.HeaderText = "F_inv";
+            dataGridViewCellStyle19.Format = "G7";
+            dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle19;
+            resources.ApplyResources(dataGridViewTextBoxColumn10, "dataGridViewTextBoxColumn10");
             dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             dataGridViewTextBoxColumn10.ReadOnly = true;
-            dataGridViewTextBoxColumn10.Width = 70;
             // 
             // F
             // 
             F.DataPropertyName = "F";
-            dataGridViewCellStyle9.Format = "G7";
-            F.DefaultCellStyle = dataGridViewCellStyle9;
-            F.HeaderText = "|F|";
+            dataGridViewCellStyle20.Format = "G7";
+            F.DefaultCellStyle = dataGridViewCellStyle20;
+            resources.ApplyResources(F, "F");
             F.Name = "F";
             F.ReadOnly = true;
-            F.Width = 70;
             // 
             // dataGridViewTextBoxColumn11
             // 
             dataGridViewTextBoxColumn11.DataPropertyName = "F2";
-            dataGridViewCellStyle10.Format = "G7";
-            dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle10;
-            dataGridViewTextBoxColumn11.HeaderText = "F^2";
+            dataGridViewCellStyle21.Format = "G7";
+            dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle21;
+            resources.ApplyResources(dataGridViewTextBoxColumn11, "dataGridViewTextBoxColumn11");
             dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             dataGridViewTextBoxColumn11.ReadOnly = true;
-            dataGridViewTextBoxColumn11.Width = 70;
             // 
             // RelInt
             // 
             RelInt.DataPropertyName = "RelInt";
-            dataGridViewCellStyle11.Format = "G7";
-            RelInt.DefaultCellStyle = dataGridViewCellStyle11;
-            RelInt.HeaderText = "Rel. Int. (%)";
+            dataGridViewCellStyle22.Format = "G7";
+            RelInt.DefaultCellStyle = dataGridViewCellStyle22;
+            resources.ApplyResources(RelInt, "RelInt");
             RelInt.Name = "RelInt";
             RelInt.ReadOnly = true;
-            RelInt.Width = 90;
             // 
             // Condition
             // 
             Condition.DataPropertyName = "Condition";
-            Condition.HeaderText = "Condition";
+            resources.ApplyResources(Condition, "Condition");
             Condition.Name = "Condition";
             Condition.ReadOnly = true;
-            Condition.Width = 80;
             // 
             // bindingSourceScatteringFactor
             // 
@@ -252,116 +237,76 @@
             // 
             // numericUpDownThresholdD
             // 
+            resources.ApplyResources(numericUpDownThresholdD, "numericUpDownThresholdD");
             numericUpDownThresholdD.DecimalPlaces = 4;
-            numericUpDownThresholdD.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             numericUpDownThresholdD.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            numericUpDownThresholdD.Location = new System.Drawing.Point(505, 36);
-            numericUpDownThresholdD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             numericUpDownThresholdD.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             numericUpDownThresholdD.Minimum = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownThresholdD.Name = "numericUpDownThresholdD";
-            numericUpDownThresholdD.Size = new System.Drawing.Size(61, 25);
-            numericUpDownThresholdD.TabIndex = 5;
+            toolTip.SetToolTip(numericUpDownThresholdD, resources.GetString("numericUpDownThresholdD.ToolTip"));
             numericUpDownThresholdD.Value = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDownThresholdD.ValueChanged += numericUpDownThresholdD_ValueChanged;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label2.Location = new System.Drawing.Point(440, 14);
+            resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(144, 17);
-            label2.TabIndex = 6;
-            label2.Text = "Threshold of d-spacing";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // checkBoxHideProhibitedPlanes
             // 
-            checkBoxHideProhibitedPlanes.AutoSize = true;
+            resources.ApplyResources(checkBoxHideProhibitedPlanes, "checkBoxHideProhibitedPlanes");
             checkBoxHideProhibitedPlanes.Checked = true;
             checkBoxHideProhibitedPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxHideProhibitedPlanes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            checkBoxHideProhibitedPlanes.Location = new System.Drawing.Point(239, 78);
-            checkBoxHideProhibitedPlanes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             checkBoxHideProhibitedPlanes.Name = "checkBoxHideProhibitedPlanes";
-            checkBoxHideProhibitedPlanes.Size = new System.Drawing.Size(161, 21);
-            checkBoxHideProhibitedPlanes.TabIndex = 8;
-            checkBoxHideProhibitedPlanes.Text = "Hide prohibited planes";
+            toolTip.SetToolTip(checkBoxHideProhibitedPlanes, resources.GetString("checkBoxHideProhibitedPlanes.ToolTip"));
             checkBoxHideProhibitedPlanes.CheckedChanged += numericUpDownThresholdD_ValueChanged;
             // 
             // checkBoxHideEquivalentPlane
             // 
-            checkBoxHideEquivalentPlane.AutoSize = true;
+            resources.ApplyResources(checkBoxHideEquivalentPlane, "checkBoxHideEquivalentPlane");
             checkBoxHideEquivalentPlane.Checked = true;
             checkBoxHideEquivalentPlane.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxHideEquivalentPlane.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            checkBoxHideEquivalentPlane.Location = new System.Drawing.Point(239, 53);
-            checkBoxHideEquivalentPlane.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             checkBoxHideEquivalentPlane.Name = "checkBoxHideEquivalentPlane";
-            checkBoxHideEquivalentPlane.Size = new System.Drawing.Size(159, 21);
-            checkBoxHideEquivalentPlane.TabIndex = 8;
-            checkBoxHideEquivalentPlane.Text = "Hide equivalent planes";
+            toolTip.SetToolTip(checkBoxHideEquivalentPlane, resources.GetString("checkBoxHideEquivalentPlane.ToolTip"));
             checkBoxHideEquivalentPlane.CheckedChanged += numericUpDownThresholdD_ValueChanged;
             // 
             // label13
             // 
-            label13.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label13.Location = new System.Drawing.Point(567, 40);
+            resources.ApplyResources(label13, "label13");
             label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(28, 20);
-            label13.TabIndex = 6;
-            label13.Text = "Å";
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
             // 
             // buttonCopyClipboard
             // 
-            buttonCopyClipboard.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            buttonCopyClipboard.Location = new System.Drawing.Point(440, 78);
-            buttonCopyClipboard.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(buttonCopyClipboard, "buttonCopyClipboard");
             buttonCopyClipboard.Name = "buttonCopyClipboard";
-            buttonCopyClipboard.Size = new System.Drawing.Size(141, 28);
-            buttonCopyClipboard.TabIndex = 8;
-            buttonCopyClipboard.Text = "Copy to Clipboard";
+            toolTip.SetToolTip(buttonCopyClipboard, resources.GetString("buttonCopyClipboard.ToolTip"));
             buttonCopyClipboard.UseVisualStyleBackColor = true;
             buttonCopyClipboard.Click += buttonCopyClipBoard_Click;
             // 
             // label18
             // 
-            label18.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label18.Location = new System.Drawing.Point(487, 38);
+            resources.ApplyResources(label18, "label18");
             label18.Name = "label18";
-            label18.Size = new System.Drawing.Size(17, 20);
-            label18.TabIndex = 6;
-            label18.Text = "<";
+            toolTip.SetToolTip(label18, resources.GetString("label18.ToolTip"));
             // 
             // checkBoxBragBrentano
             // 
-            checkBoxBragBrentano.AutoSize = true;
-            checkBoxBragBrentano.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            checkBoxBragBrentano.Location = new System.Drawing.Point(238, 1);
-            checkBoxBragBrentano.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(checkBoxBragBrentano, "checkBoxBragBrentano");
             checkBoxBragBrentano.Name = "checkBoxBragBrentano";
-            checkBoxBragBrentano.Size = new System.Drawing.Size(199, 38);
-            checkBoxBragBrentano.TabIndex = 8;
-            checkBoxBragBrentano.Text = "Powder diffraction intensities \r\n(Bragg Brentano optics)";
+            toolTip.SetToolTip(checkBoxBragBrentano, resources.GetString("checkBoxBragBrentano.ToolTip"));
             checkBoxBragBrentano.CheckedChanged += checkBoxBragBrentano_CheckedChanged;
             // 
             // waveLengthControl1
             // 
-            waveLengthControl1.AutoSize = true;
-            waveLengthControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
             waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl1.Energy = 8.04114721D;
-            waveLengthControl1.Font = new System.Drawing.Font("Arial", 9F);
-            waveLengthControl1.Location = new System.Drawing.Point(10, 2);
-            waveLengthControl1.Margin = new System.Windows.Forms.Padding(0);
-            waveLengthControl1.MaximumSize = new System.Drawing.Size(500, 500);
-            waveLengthControl1.MinimumSize = new System.Drawing.Size(200, 0);
             waveLengthControl1.Monochrome = true;
             waveLengthControl1.Name = "waveLengthControl1";
             waveLengthControl1.ShowWaveSource = true;
-            waveLengthControl1.Size = new System.Drawing.Size(200, 103);
-            waveLengthControl1.TabIndex = 9;
-            waveLengthControl1.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
             waveLengthControl1.WaveLength = 0.1541871066667D;
             waveLengthControl1.WaveSource = WaveSource.Xray;
             waveLengthControl1.XrayWaveSourceElementNumber = 29;
@@ -370,77 +315,51 @@
             // 
             // checkBoxTest
             // 
-            checkBoxTest.AutoSize = true;
-            checkBoxTest.Location = new System.Drawing.Point(600, 2);
+            resources.ApplyResources(checkBoxTest, "checkBoxTest");
             checkBoxTest.Name = "checkBoxTest";
-            checkBoxTest.Size = new System.Drawing.Size(48, 21);
-            checkBoxTest.TabIndex = 10;
-            checkBoxTest.Text = "test";
+            toolTip.SetToolTip(checkBoxTest, resources.GetString("checkBoxTest.ToolTip"));
             checkBoxTest.UseVisualStyleBackColor = true;
             checkBoxTest.CheckedChanged += checkBoxTest_CheckedChanged;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label1.Location = new System.Drawing.Point(30, 0);
+            resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(30, 17);
-            label1.TabIndex = 6;
-            label1.Text = "Min";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label3.Location = new System.Drawing.Point(80, 0);
+            resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(33, 17);
-            label3.TabIndex = 6;
-            label3.Text = "Max";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label4.Location = new System.Drawing.Point(129, 0);
+            resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(34, 17);
-            label4.TabIndex = 6;
-            label4.Text = "Step";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label5.Location = new System.Drawing.Point(9, 22);
+            resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(15, 17);
-            label5.TabIndex = 6;
-            label5.Text = "h";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label6.Location = new System.Drawing.Point(9, 47);
+            resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(14, 17);
-            label6.TabIndex = 6;
-            label6.Text = "k";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label7.Location = new System.Drawing.Point(9, 72);
+            resources.ApplyResources(label7, "label7");
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(11, 17);
-            label7.TabIndex = 6;
-            label7.Text = "l";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
             // 
             // panel1
             // 
+            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(numericBoxL_step);
             panel1.Controls.Add(numericBoxK_step);
             panel1.Controls.Add(numericBoxH_step);
@@ -456,196 +375,123 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label3);
-            panel1.Location = new System.Drawing.Point(617, 8);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(202, 97);
-            panel1.TabIndex = 12;
-            panel1.Visible = false;
+            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // numericBoxL_step
             // 
+            resources.ApplyResources(numericBoxL_step, "numericBoxL_step");
             numericBoxL_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxL_step.DecimalPlaces = 3;
-            numericBoxL_step.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxL_step.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxL_step.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxL_step.Location = new System.Drawing.Point(131, 69);
-            numericBoxL_step.Margin = new System.Windows.Forms.Padding(0);
             numericBoxL_step.Maximum = 1D;
-            numericBoxL_step.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxL_step.Minimum = 0.01D;
-            numericBoxL_step.MinimumSize = new System.Drawing.Size(1, 18);
+            numericBoxL_step.Minimum = 0.001D;
             numericBoxL_step.Name = "numericBoxL_step";
             numericBoxL_step.RadianValue = 0.00017453292519943296D;
             numericBoxL_step.RoundErrorAccuracy = -1;
             numericBoxL_step.ShowUpDown = true;
-            numericBoxL_step.Size = new System.Drawing.Size(68, 24);
-            numericBoxL_step.TabIndex = 7;
-            numericBoxL_step.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxL_step.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxL_step, resources.GetString("numericBoxL_step.ToolTip"));
             numericBoxL_step.Value = 0.01D;
             numericBoxL_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxK_step
             // 
+            resources.ApplyResources(numericBoxK_step, "numericBoxK_step");
             numericBoxK_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxK_step.DecimalPlaces = 3;
-            numericBoxK_step.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxK_step.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxK_step.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxK_step.Location = new System.Drawing.Point(131, 45);
-            numericBoxK_step.Margin = new System.Windows.Forms.Padding(0);
             numericBoxK_step.Maximum = 1D;
-            numericBoxK_step.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxK_step.Minimum = 0.01D;
-            numericBoxK_step.MinimumSize = new System.Drawing.Size(1, 18);
+            numericBoxK_step.Minimum = 0.001D;
             numericBoxK_step.Name = "numericBoxK_step";
             numericBoxK_step.RadianValue = 0.00017453292519943296D;
             numericBoxK_step.RoundErrorAccuracy = -1;
             numericBoxK_step.ShowUpDown = true;
-            numericBoxK_step.Size = new System.Drawing.Size(68, 24);
-            numericBoxK_step.TabIndex = 7;
-            numericBoxK_step.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxK_step.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxK_step, resources.GetString("numericBoxK_step.ToolTip"));
             numericBoxK_step.Value = 0.01D;
             numericBoxK_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_step
             // 
+            resources.ApplyResources(numericBoxH_step, "numericBoxH_step");
             numericBoxH_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxH_step.DecimalPlaces = 3;
-            numericBoxH_step.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxH_step.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxH_step.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxH_step.Location = new System.Drawing.Point(131, 20);
-            numericBoxH_step.Margin = new System.Windows.Forms.Padding(0);
             numericBoxH_step.Maximum = 1D;
-            numericBoxH_step.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxH_step.Minimum = 0.01D;
-            numericBoxH_step.MinimumSize = new System.Drawing.Size(1, 18);
+            numericBoxH_step.Minimum = 0.001D;
             numericBoxH_step.Name = "numericBoxH_step";
             numericBoxH_step.RadianValue = 0.00017453292519943296D;
             numericBoxH_step.RoundErrorAccuracy = -1;
             numericBoxH_step.ShowUpDown = true;
-            numericBoxH_step.Size = new System.Drawing.Size(68, 24);
-            numericBoxH_step.TabIndex = 7;
-            numericBoxH_step.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxH_step.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxH_step, resources.GetString("numericBoxH_step.ToolTip"));
             numericBoxH_step.Value = 0.01D;
             numericBoxH_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxL_max
             // 
+            resources.ApplyResources(numericBoxL_max, "numericBoxL_max");
             numericBoxL_max.BackColor = System.Drawing.Color.Transparent;
-            numericBoxL_max.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxL_max.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxL_max.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxL_max.Location = new System.Drawing.Point(80, 69);
-            numericBoxL_max.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxL_max.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxL_max.MinimumSize = new System.Drawing.Size(1, 18);
             numericBoxL_max.Name = "numericBoxL_max";
             numericBoxL_max.RadianValue = 0.017453292519943295D;
             numericBoxL_max.RoundErrorAccuracy = -1;
             numericBoxL_max.ShowUpDown = true;
-            numericBoxL_max.Size = new System.Drawing.Size(40, 24);
-            numericBoxL_max.TabIndex = 7;
-            numericBoxL_max.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            toolTip.SetToolTip(numericBoxL_max, resources.GetString("numericBoxL_max.ToolTip"));
             numericBoxL_max.Value = 1D;
             numericBoxL_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxK_max
             // 
+            resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
             numericBoxK_max.BackColor = System.Drawing.Color.Transparent;
-            numericBoxK_max.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxK_max.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxK_max.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxK_max.Location = new System.Drawing.Point(80, 45);
-            numericBoxK_max.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxK_max.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxK_max.MinimumSize = new System.Drawing.Size(1, 18);
             numericBoxK_max.Name = "numericBoxK_max";
             numericBoxK_max.RoundErrorAccuracy = -1;
             numericBoxK_max.ShowUpDown = true;
-            numericBoxK_max.Size = new System.Drawing.Size(40, 24);
-            numericBoxK_max.TabIndex = 7;
-            numericBoxK_max.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            toolTip.SetToolTip(numericBoxK_max, resources.GetString("numericBoxK_max.ToolTip"));
             numericBoxK_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxL_min
             // 
+            resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
             numericBoxL_min.BackColor = System.Drawing.Color.Transparent;
-            numericBoxL_min.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxL_min.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxL_min.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxL_min.Location = new System.Drawing.Point(29, 69);
-            numericBoxL_min.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxL_min.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxL_min.MinimumSize = new System.Drawing.Size(1, 18);
             numericBoxL_min.Name = "numericBoxL_min";
             numericBoxL_min.RoundErrorAccuracy = -1;
             numericBoxL_min.ShowUpDown = true;
-            numericBoxL_min.Size = new System.Drawing.Size(40, 24);
-            numericBoxL_min.TabIndex = 7;
-            numericBoxL_min.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            toolTip.SetToolTip(numericBoxL_min, resources.GetString("numericBoxL_min.ToolTip"));
             numericBoxL_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxK_min
             // 
+            resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
             numericBoxK_min.BackColor = System.Drawing.Color.Transparent;
-            numericBoxK_min.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxK_min.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxK_min.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxK_min.Location = new System.Drawing.Point(29, 45);
-            numericBoxK_min.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxK_min.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxK_min.MinimumSize = new System.Drawing.Size(1, 18);
             numericBoxK_min.Name = "numericBoxK_min";
             numericBoxK_min.RoundErrorAccuracy = -1;
             numericBoxK_min.ShowUpDown = true;
-            numericBoxK_min.Size = new System.Drawing.Size(40, 24);
-            numericBoxK_min.TabIndex = 7;
-            numericBoxK_min.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            toolTip.SetToolTip(numericBoxK_min, resources.GetString("numericBoxK_min.ToolTip"));
             numericBoxK_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_max
             // 
+            resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
             numericBoxH_max.BackColor = System.Drawing.Color.Transparent;
-            numericBoxH_max.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxH_max.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxH_max.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxH_max.Location = new System.Drawing.Point(80, 20);
-            numericBoxH_max.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxH_max.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxH_max.MinimumSize = new System.Drawing.Size(1, 18);
             numericBoxH_max.Name = "numericBoxH_max";
             numericBoxH_max.RoundErrorAccuracy = -1;
             numericBoxH_max.ShowUpDown = true;
-            numericBoxH_max.Size = new System.Drawing.Size(40, 24);
-            numericBoxH_max.TabIndex = 7;
-            numericBoxH_max.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            toolTip.SetToolTip(numericBoxH_max, resources.GetString("numericBoxH_max.ToolTip"));
             numericBoxH_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_min
             // 
+            resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
             numericBoxH_min.BackColor = System.Drawing.Color.Transparent;
-            numericBoxH_min.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxH_min.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxH_min.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxH_min.Location = new System.Drawing.Point(29, 20);
-            numericBoxH_min.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxH_min.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxH_min.MinimumSize = new System.Drawing.Size(1, 18);
             numericBoxH_min.Name = "numericBoxH_min";
             numericBoxH_min.RoundErrorAccuracy = -1;
             numericBoxH_min.ShowUpDown = true;
-            numericBoxH_min.Size = new System.Drawing.Size(40, 24);
-            numericBoxH_min.TabIndex = 7;
-            numericBoxH_min.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            toolTip.SetToolTip(numericBoxH_min, resources.GetString("numericBoxH_min.ToolTip"));
             numericBoxH_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // FormScatteringFactor
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            ClientSize = new System.Drawing.Size(831, 398);
             Controls.Add(checkBoxTest);
             Controls.Add(waveLengthControl1);
             Controls.Add(buttonCopyClipboard);
@@ -658,12 +504,9 @@
             Controls.Add(checkBoxBragBrentano);
             Controls.Add(checkBoxHideEquivalentPlane);
             Controls.Add(panel1);
-            Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "FormScatteringFactor";
             ShowIcon = false;
-            StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            Text = "Scattering Factor";
+            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             FormClosing += FormCrystallographicInformation_FormClosing;
             Load += FormCrystallographicInformation_Load;
             VisibleChanged += FormScatteringFactor_VisibleChanged;
