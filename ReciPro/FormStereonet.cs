@@ -1,3 +1,4 @@
+#region using
 using Crystallography.OpenGL;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,11 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using V3 = OpenTK.Vector3d;
-
+#endregion
 namespace ReciPro;
 
 public partial class FormStereonet : Form
 {
+    #region フィールド、プロパティ
     public FormMain formMain;
 
     private Font strFont;
@@ -24,6 +26,8 @@ public partial class FormStereonet : Form
     private GLControlAlpha glControl;
 
     public Matrix3D RotationMatrix => formMain.Crystal.RotationMatrix;
+
+    #endregion
 
     #region 起動、終了
     public FormStereonet()
@@ -62,6 +66,7 @@ public partial class FormStereonet : Form
         splitContainer1.SplitterDistance = splitContainer1.Width / 2;
         splitContainer1.Panel2Collapsed = true;
 
+        //YusaGonioのタブページを削除
         tabControl.TabPages.Remove(tabPage3);
     }
 
@@ -93,7 +98,7 @@ public partial class FormStereonet : Form
 
     #endregion
 
-
+    #region 描画関連
 
     /// <summary>
     /// プロジェクション行列の設定を行う。
@@ -490,70 +495,7 @@ public partial class FormStereonet : Form
 
     private PointD convertClientToSrc(int x, int y) => convertClientToSrc(new Point(x, y));
 
-    //指数範囲が変更されたとき
-    private void numericUpDown_ValueChanged(object sender, EventArgs e)
-    {
-        setVector();
-        Draw();
-    }
-
-    private void setVector()
-    {
-        if (formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C != 0)
-        {
-            if (radioButtonRange.Checked)
-            {
-                formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
-                formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
-            }
-            else if (radioButtonSpecifiedIndices.Checked)
-            {
-                var planeIndices = new List<(int H, int K, int L)>();
-                var axisIndices = new List<(int U, int V, int W)>();
-                foreach (object o in listBoxSpecifiedIndices.Items)
-                {
-                    var str = ((string)o).Split([' ']);
-                    int x = Convert.ToInt32(str[0]), y = Convert.ToInt32(str[1]), z = Convert.ToInt32(str[2]);
-                    if (!checkBoxIncludingEquivalentPlanes.Checked)
-                    {
-                        planeIndices.Add((x, y, z));
-                        axisIndices.Add((x, y, z));
-                    }
-                    else
-                    {
-                        axisIndices.AddRange(SymmetryStatic.GenerateEquivalentAxes(x, y, z, formMain.Crystal.Symmetry));
-                        planeIndices.AddRange(SymmetryStatic.GenerateEquivalentPlanes(x, y, z, formMain.Crystal.Symmetry));
-                    }
-                }
-                formMain.Crystal.SetVectorOfAxis([.. axisIndices]);
-                formMain.Crystal.SetVectorOfPlane([.. planeIndices]);
-            }
-        }
-    }
-
-    //フォームの大きさが変更されたとき
-
-    private Size lastgraphicsBoxSize = new(0, 0);
-
-    private void formStereonet_Resize(object sender, EventArgs e)
-    {
-        if (graphicsBox.ClientSize.Width > 0 && graphicsBox.ClientSize.Height > 0 && lastgraphicsBoxSize.Width > 0 && lastgraphicsBoxSize.Height > 0)
-            mag *= ((double)graphicsBox.ClientSize.Width / lastgraphicsBoxSize.Width + (double)graphicsBox.ClientSize.Height / lastgraphicsBoxSize.Height) / 2.0;
-
-        if (mag > 10000 || double.IsNaN(mag))
-            mag = 10000;
-        else if (mag < Math.Max(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4))
-        {
-            centerPt = new PointD(0, 0);
-            mag = Math.Min(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4);
-        }
-
-        Draw();
-        if (graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
-            lastgraphicsBoxSize = graphicsBox.ClientSize;
-    }
-
-
+    #endregion
 
     #region ピクチャーボックスのイベント関連
 
@@ -663,17 +605,92 @@ public partial class FormStereonet : Form
 
     #endregion ピクチャーボックスのイベント関連
 
+    #region タブコントロールのイベント
+    private void tabControl_Click(object sender, EventArgs e)
+    {
+        splitContainer1.SendToBack();
+        graphicsBox.Refresh();
+    }
+
+    #region Appearanceタブ関連
     private void trackBarStrSize_Scroll(object sender, EventArgs e)
     {
         strFont = new Font("Tahoma", trackBarStrSize.Value / 9f);
         pointSize = trackBarPointSize.Value;
         Draw();
     }
+    private void radioButtonOutlineEquator_CheckedChanged(object sender, EventArgs e) => Draw();
 
+    private void checkBox1DegLine_CheckedChanged(object sender, EventArgs e) => Draw();
+    private void colorControl_ColorChanged(object sender, EventArgs e) => Draw();
+    #endregion
+
+    #region 大円タブ関連
+    private void buttonAddCircle_Click(object sender, EventArgs e)
+    {
+        if (radioButtonCircleByAxis.Checked)
+        {
+            var u = (int)numericUpDownCircleU.Value;
+            var v = (int)numericUpDownCircleV.Value;
+            var w = (int)numericUpDownCircleW.Value;
+            if (u == 0 && v == 0 && w == 0) return;
+            var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"[{u} {v} {w}]" };
+            formMain.Crystal.VectorOfPole.Add(vec);
+            checkedListBoxCircles.Items.Add(vec, true);
+            Draw();
+        }
+        else if (radioButtonCircleByPlanes.Checked)
+        {
+            var h1 = (int)numericUpDownCircleH1.Value;
+            var h2 = (int)numericUpDownCircleH2.Value;
+            var k1 = (int)numericUpDownCircleK1.Value;
+            var k2 = (int)numericUpDownCircleK2.Value;
+            var l1 = (int)numericUpDownCircleL1.Value;
+            var l2 = (int)numericUpDownCircleL2.Value;
+
+            var u = k1 * l2 - k2 * l1;
+            var v = l1 * h2 - l2 * h1;
+            var w = h1 * k2 - h2 * k1;
+            if (u == 0 && v == 0 && w == 0) return;
+
+            var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"({h1} {k1} {l1}) & ({h2} {k2} {l2})" };
+
+            formMain.Crystal.VectorOfPole.Add(vec);
+            checkedListBoxCircles.Items.Add(vec, true);
+            Draw();
+        }
+    }
+
+    private void buttonDeleteCircle_Click(object sender, EventArgs e)
+    {
+        var i = checkedListBoxCircles.SelectedIndex;
+        if (i > -1)
+        {
+            formMain.Crystal.VectorOfPole.Remove((Vector3D)checkedListBoxCircles.SelectedItem);
+            checkedListBoxCircles.Items.RemoveAt(checkedListBoxCircles.SelectedIndex);
+
+            if (checkedListBoxCircles.Items.Count > i)
+                checkedListBoxCircles.SelectedIndex = i;
+            else
+                checkedListBoxCircles.SelectedIndex = i - 1;
+        }
+    }
+
+    private void radioButtonCircleByAxis_CheckedChanged(object sender, EventArgs e)
+    {
+        panelAxis.Enabled = radioButtonCircleByAxis.Checked;
+        panelPlanes.Enabled = radioButtonCircleByPlanes.Checked;
+    }
+    #endregion
+
+    #endregion
+
+    #region メインで結晶が変更されたとき
     public void SetCrystal()
     {
-        formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
-        formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
+        setVector();
+        //formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
+        //formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
 
         checkedListBoxCircles.Items.Clear();
         if (formMain.Crystal.VectorOfPole == null)
@@ -683,24 +700,31 @@ public partial class FormStereonet : Form
                 checkedListBoxCircles.Items.Add(formMain.Crystal.VectorOfPole[i], true);
         Draw();
     }
+    #endregion
 
-    private void tabControl_Click(object sender, EventArgs e)
-    {
-        splitContainer1.SendToBack();
-        graphicsBox.Refresh();
-    }
-
-    private void radioButtonOutlineEquator_CheckedChanged(object sender, EventArgs e) => Draw();
-
-    private void checkBox1DegLine_CheckedChanged(object sender, EventArgs e) => Draw();
-
+    #region 描画対象が変更されたとき
     private void radioButtonAxes_CheckedChanged(object sender, EventArgs e)
     {
-        Draw();
-        if (radioButtonAxes.Checked) { labelHU.Text = "u"; labelKV.Text = "v"; labelLW.Text = "w"; }
-        else { labelHU.Text = "h"; labelKV.Text = "k"; labelLW.Text = "l"; }
-    }
+        if (!((RadioButton)sender).Checked) return;
+      
+        if (radioButtonAxes.Checked)
+        {
+            labelHU.Text = "u"; labelKV.Text = "v"; labelLW.Text = "w";
+            radioButtonHighStructureFactor.Visible = false;
+            if (radioButtonHighStructureFactor.Checked)
+                radioButtonRange.Checked = true;
+        }
+        else
+        {
+            labelHU.Text = "h"; labelKV.Text = "k"; labelLW.Text = "l";
+            radioButtonHighStructureFactor.Visible = true;
+        }
 
+        Draw();
+    }
+    #endregion
+
+    #region ファイルメニュー
     private void saveImageToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
@@ -780,66 +804,27 @@ public partial class FormStereonet : Form
         //glString.Font = new Font("Tahoma", trackBarStrSize.Value / 10f);
     }
 
-    private void buttonAddCircle_Click(object sender, EventArgs e)
+    private void toolStripMenuItemSaveMovie3D_Click(object sender, EventArgs e)
     {
-        if (radioButtonCircleByAxis.Checked)
+        formMain.FormMovie.Execute(glControl, this);
+    }
+    private void toolStripMenuItemSaveMovieStereonet_Click(object sender, EventArgs e)
+    {
+        var func = new Func<Bitmap>(() =>
         {
-            var u = (int)numericUpDownCircleU.Value;
-            var v = (int)numericUpDownCircleV.Value;
-            var w = (int)numericUpDownCircleW.Value;
-            if (u == 0 && v == 0 && w == 0) return;
-            var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"[{u} {v} {w}]" };
-            formMain.Crystal.VectorOfPole.Add(vec);
-            checkedListBoxCircles.Items.Add(vec, true);
-            Draw();
-        }
-        else if (radioButtonCircleByPlanes.Checked)
-        {
-            var h1 = (int)numericUpDownCircleH1.Value;
-            var h2 = (int)numericUpDownCircleH2.Value;
-            var k1 = (int)numericUpDownCircleK1.Value;
-            var k2 = (int)numericUpDownCircleK2.Value;
-            var l1 = (int)numericUpDownCircleL1.Value;
-            var l2 = (int)numericUpDownCircleL2.Value;
-
-            var u = k1 * l2 - k2 * l1;
-            var v = l1 * h2 - l2 * h1;
-            var w = h1 * k2 - h2 * k1;
-            if (u == 0 && v == 0 && w == 0) return;
-
-            var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"({h1} {k1} {l1}) & ({h2} {k2} {l2})" };
-
-            formMain.Crystal.VectorOfPole.Add(vec);
-            checkedListBoxCircles.Items.Add(vec, true);
-            Draw();
-        }
+            var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
+            var g = Graphics.FromImage(bmp);
+            Draw(g, true);
+            return bmp;
+        });
+        formMain.FormMovie.Execute(func, this);
     }
 
-    private void buttonDeleteCircle_Click(object sender, EventArgs e)
-    {
-        var i = checkedListBoxCircles.SelectedIndex;
-        if (i > -1)
-        {
-            formMain.Crystal.VectorOfPole.Remove((Vector3D)checkedListBoxCircles.SelectedItem);
-            checkedListBoxCircles.Items.RemoveAt(checkedListBoxCircles.SelectedIndex);
+    #endregion
 
-            if (checkedListBoxCircles.Items.Count > i)
-                checkedListBoxCircles.SelectedIndex = i;
-            else
-                checkedListBoxCircles.SelectedIndex = i - 1;
-        }
-    }
-
-    private void radioButtonCircleByAxis_CheckedChanged(object sender, EventArgs e)
-    {
-        panelAxis.Enabled = radioButtonCircleByAxis.Checked;
-        panelPlanes.Enabled = radioButtonCircleByPlanes.Checked;
-    }
-
-    private void colorControl_ColorChanged(object sender, EventArgs e) => Draw();
+    #region YusaGonio
 
     private List<List<PointD>> positionRecorder = [];
-
     private void buttonYusaModeStart_Click(object sender, EventArgs e)
     {
         setVector();
@@ -875,22 +860,47 @@ public partial class FormStereonet : Form
             Clipboard.SetDataObject(sb.ToString());
         }
     }
+    #endregion
 
+    #region 描画対象の面・軸指数の設定
     private void radioButtonRange_CheckedChanged(object sender, EventArgs e)
     {
+        if (!((RadioButton)sender).Checked) return;
+
         numericBox1.HeaderText = numericBox2.HeaderText = numericBox3.HeaderText =
             radioButtonRange.Checked ? "±" : "";
-        panelSpecifiedIndices.Visible = !radioButtonRange.Checked;
 
-        if (radioButtonRange.Checked)
+        if (radioButtonRange.Checked) 
+        { 
             numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = 0;
-        else
-            numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = -numericBox1.Maximum;
+            tableLayoutPanel3.Visible = true;
+            numericBoxHighStructureFactor.Visible = false;
+            panelSpecifiedIndices.Visible = false;
 
+        }
+        else if (radioButtonSpecifiedIndices.Checked) 
+        { 
+            numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = -numericBox1.Maximum;
+            tableLayoutPanel3.Visible = true;
+            numericBoxHighStructureFactor.Visible = false;
+            panelSpecifiedIndices.Visible = true;
+        }
+        else//構造因子順の場合
+        {
+            tableLayoutPanel3.Visible = false;
+            numericBoxHighStructureFactor.Visible = true;
+            panelSpecifiedIndices.Visible = false;
+        }
         setVector();
         Draw();
     }
 
+    //指数範囲が変更されたとき
+    private void numericUpDown_ValueChanged(object sender, EventArgs e)
+    {
+        setVector();
+        Draw();
+    }
     private void buttonAddIndex_Click(object sender, EventArgs e)
     {
         int index1 = (int)numericBox1.Value, index2 = (int)numericBox2.Value, index3 = (int)numericBox3.Value;
@@ -914,6 +924,45 @@ public partial class FormStereonet : Form
         Draw();
     }
 
+    #region 面、軸のベクトルを計算
+    private void setVector()
+    {
+        if (formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C != 0)
+        {
+            if (radioButtonRange.Checked)
+            {
+                formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
+                formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
+            }
+            else if (radioButtonSpecifiedIndices.Checked)
+            {
+                var planeIndices = new List<(int H, int K, int L)>();
+                var axisIndices = new List<(int U, int V, int W)>();
+                foreach (object o in listBoxSpecifiedIndices.Items)
+                {
+                    var str = ((string)o).Split([' ']);
+                    int x = Convert.ToInt32(str[0]), y = Convert.ToInt32(str[1]), z = Convert.ToInt32(str[2]);
+                    if (!checkBoxIncludingEquivalentPlanes.Checked)
+                    {
+                        planeIndices.Add((x, y, z));
+                        axisIndices.Add((x, y, z));
+                    }
+                    else
+                    {
+                        axisIndices.AddRange(SymmetryStatic.GenerateEquivalentAxes(x, y, z, formMain.Crystal.Symmetry));
+                        planeIndices.AddRange(SymmetryStatic.GenerateEquivalentPlanes(x, y, z, formMain.Crystal.Symmetry));
+                    }
+                }
+                formMain.Crystal.SetVectorOfAxis([.. axisIndices]);
+                formMain.Crystal.SetVectorOfPlane([.. planeIndices]);
+            }
+        }
+    }
+    #endregion
+
+    #endregion
+
+    #region テストコード
     private void button1_Click(object sender, EventArgs e)
     {
         formMain.Crystal.VectorOfAxis = [];
@@ -969,7 +1018,9 @@ public partial class FormStereonet : Form
 
         Draw();
     }
+    #endregion
 
+    #region 3D描画の設定
     private void checkBoxDisplay3D_CheckedChanged(object sender, EventArgs e)
     {
         splitContainer1.Panel2Collapsed = !checkBoxDisplay3D.Checked;
@@ -987,28 +1038,32 @@ public partial class FormStereonet : Form
     private void checkBox3dOptionProjectionLine_CheckedChanged(object sender, EventArgs e) => Draw3D();
 
     private void trackBarDepthFadingOut_Scroll(object sender, EventArgs e) => Draw3D();
+    #endregion
 
+    #region フォーム全体のイベント
     private void FormStereonet_Paint(object sender, PaintEventArgs e) => Draw();
 
-    private void toolStripMenuItemSaveMovieStereonet_Click(object sender, EventArgs e)
+    //フォームの大きさが変更されたとき
+
+    private Size lastgraphicsBoxSize = new(0, 0);
+
+    private void formStereonet_Resize(object sender, EventArgs e)
     {
-        var func = new Func<Bitmap>(() =>
+        if (graphicsBox.ClientSize.Width > 0 && graphicsBox.ClientSize.Height > 0 && lastgraphicsBoxSize.Width > 0 && lastgraphicsBoxSize.Height > 0)
+            mag *= ((double)graphicsBox.ClientSize.Width / lastgraphicsBoxSize.Width + (double)graphicsBox.ClientSize.Height / lastgraphicsBoxSize.Height) / 2.0;
+
+        if (mag > 10000 || double.IsNaN(mag))
+            mag = 10000;
+        else if (mag < Math.Max(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4))
         {
-            var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
-            var g = Graphics.FromImage(bmp);
-            Draw(g, true);
-            return bmp;
-        });
-        formMain.FormMovie.Execute(func, this);
+            centerPt = new PointD(0, 0);
+            mag = Math.Min(graphicsBox.ClientSize.Width / 2.4, graphicsBox.ClientSize.Height / 2.4);
+        }
+
+        Draw();
+        if (graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
+            lastgraphicsBoxSize = graphicsBox.ClientSize;
     }
 
-    private void toolStripMenuItemSaveMovie3D_Click(object sender, EventArgs e)
-    {
-        formMain.FormMovie.Execute(glControl, this);
-    }
-
-    private void groupBox6_Enter(object sender, EventArgs e)
-    {
-
-    }
+    #endregion
 }

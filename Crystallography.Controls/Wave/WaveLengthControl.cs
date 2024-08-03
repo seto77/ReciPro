@@ -33,6 +33,9 @@ public partial class WaveLengthControl : UserControl
         }
     }
 
+    /// <summary>
+    /// コントロールの配置をLeftToRightか、TopDownにするか
+    /// </summary>
     public FlowDirection Direction
     {
         set
@@ -62,15 +65,21 @@ public partial class WaveLengthControl : UserControl
     }
     public FlowDirection direction = FlowDirection.TopDown;
 
+    
+    bool monochrome = true;
+    /// <summary>
+    /// 単色モードかどうか falseの場合は白色モード
+    /// </summary>
     public bool Monochrome
     {
         set
         {
-            numericBoxEnergy.Visible = numericBoxWaveLength.Visible = value;
-            flowLayoutPanelElement.Visible = WaveSource == WaveSource.Xray && value;
-            labelFlatWhite.Visible = !value;
+            monochrome = value;
+            numericBoxEnergy.Visible = numericBoxWaveLength.Visible = monochrome;
+            flowLayoutPanelElement.Visible = WaveSource == WaveSource.Xray && monochrome;
+            labelFlatWhite.Visible = !monochrome;
         }
-        get => numericBoxEnergy.Visible;
+        get => monochrome;
     }
 
     [Localizable(true)]
@@ -88,7 +97,6 @@ public partial class WaveLengthControl : UserControl
     }
 
     public bool showWaveSource = true;
-
     /// <summary>
     /// WaveSourceを表示するかどうか
     /// </summary>
@@ -141,6 +149,7 @@ public partial class WaveLengthControl : UserControl
         get => numericBoxWaveLength.Value / 10.0;
     }
 
+    WaveSource waveSource = WaveSource.Xray;
     /// <summary>
     /// 線源を取得/設定
     /// </summary>
@@ -148,16 +157,16 @@ public partial class WaveLengthControl : UserControl
     {
         set
         {
-            if (value == WaveSource.Xray)
+         waveSource = value;
+            if (waveSource == WaveSource.Xray)
                 radioButtonXray.Checked = true;
-            else if (value == WaveSource.Electron)
+            else if (waveSource == WaveSource.Electron)
                 radioButtonElectron.Checked = true;
-            else if (value == WaveSource.Neutron)
+            else
                 radioButtonNeutron.Checked = true;
         }
         get
         {
-
             if (radioButtonXray.Checked)
                 return WaveSource.Xray;
             else if (radioButtonElectron.Checked)
