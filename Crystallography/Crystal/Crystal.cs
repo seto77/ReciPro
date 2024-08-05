@@ -3,6 +3,7 @@ using MathNet.Numerics;
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
@@ -877,6 +878,43 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return true;
     }
 
+    /// <summary>
+    /// 二組の(hkl)が既約かどうかを判定
+    /// </summary>
+    /// <param name="index1"></param>
+    /// <param name="index2"></param>
+    /// <returns></returns>
+    public static bool CheckIrreducible((int h, int k, int l) index1, (int h, int k, int l) index2)
+    {
+        if (index1.h == index2.h && index1.k == index2.k && index1.l == index2.l)
+            return false;
+
+        int coeff1 = 0, coeff2 = 0;
+        if (index1.h != 0 && index2.h != 0)
+        {
+            coeff1 = index1.h / index2.h;
+            coeff2 = index2.h / index1.h;
+        }
+        else if (index1.k != 0 && index2.k != 0)
+        {
+            coeff1 = index1.k / index2.k;
+            coeff2 = index2.k / index1.k;
+        }
+        else if (index1.l != 0 && index2.l != 0)
+        {
+            coeff1 = index1.l / index2.l;
+            coeff2 = index2.l / index1.l;
+        }
+
+        if (Math.Abs(coeff1) > 1)
+            return !(index2.h * coeff1 == index1.h && index2.k * coeff1 == index1.k && index2.l * coeff1 == index1.l);
+        else if (Math.Abs(coeff2) > 1)
+            return !(index1.h * coeff2 == index2.h && index1.k * coeff2 == index2.k && index1.l * coeff2 == index2.l);
+        else
+            return true;
+    }
+
+
     #endregion 結晶幾何学関連
 
     #region 軸ベクトルの計算
@@ -1218,8 +1256,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="dMin"></param>
     /// <param name="wavesource"></param>
     /// <param name="excludeLatticeCondition"></param>
-    public void SetVectorOfG(double dMin, WaveSource wavesource, bool excludeLatticeCondition = true)
-        => SetVectorOfG(dMin,double.PositiveInfinity,wavesource,excludeLatticeCondition);
+    public void SetVectorOfG(double dMin, WaveSource wavesource, int maxNum = 25000)
+        => SetVectorOfG(dMin,double.PositiveInfinity,wavesource, maxNum);
 
     /// <summary>
     /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
@@ -1227,7 +1265,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="dMin"></param>
     /// <param name="dMax"></param>
     /// <param name="wavesource"></param>
-    public void SetVectorOfG(double dMin, double dMax, WaveSource wavesource, bool excludeLatticeCondition = true)
+    public void SetVectorOfG(double dMin, double dMax, WaveSource wavesource, int maxNum=25000)
     {
         if (double.IsNaN(dMin)) return;
 
@@ -1268,13 +1306,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
 
-        var maxGnum = 250000;
+        //var maxNum = 250000;
         var zeroKey = (255 << 20) + (255 << 10) + 255;
-        var gHash = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
-        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5)) { (zeroKey, 0, 0, 0, 0) };
+        var gHash = new HashSet<int>((int)(maxNum * 1.5)) { zeroKey };
+        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxNum * 1.5)) { (zeroKey, 0, 0, 0, 0) };
         int start = 0, end = 1;
         var outer = CollectionsMarshal.AsSpan(gList)[start..end];
-        while (gList.Count < maxGnum && outer.Length > 0)
+        while (gList.Count < maxNum && outer.Length > 0)
         {
             foreach (var (key1, _, _, _, _) in outer)
             {

@@ -405,10 +405,14 @@ public partial class FormStereonet : Form
         var unique = radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color;
         var general = radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color;
         var font = new Font("Tahoma", trackBarStrSize.Value / (float)mag / 7f);
-        var radius = pointSize / mag;
+       
 
         for (int n = 0; n < vector.Length; n++)
         {
+            var radius = pointSize / mag;
+            if (radioButtonPlanes.Checked)
+                radius *= Math.Sqrt(vector[n].RelativeIntensity);
+
             var srcPt = radioButtonWulff.Checked ?
                 Stereonet.ConvertVectorToWulff(formMain.Crystal.RotationMatrix * vector[n]) :
                 Stereonet.ConvertVectorToSchmidt(formMain.Crystal.RotationMatrix * vector[n]);
@@ -706,7 +710,7 @@ public partial class FormStereonet : Form
     private void radioButtonAxes_CheckedChanged(object sender, EventArgs e)
     {
         if (!((RadioButton)sender).Checked) return;
-      
+
         if (radioButtonAxes.Checked)
         {
             labelHU.Text = "u"; labelKV.Text = "v"; labelLW.Text = "w";
@@ -870,16 +874,16 @@ public partial class FormStereonet : Form
         numericBox1.HeaderText = numericBox2.HeaderText = numericBox3.HeaderText =
             radioButtonRange.Checked ? "±" : "";
 
-        if (radioButtonRange.Checked) 
-        { 
+        if (radioButtonRange.Checked)
+        {
             numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = 0;
             tableLayoutPanel3.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
             panelSpecifiedIndices.Visible = false;
 
         }
-        else if (radioButtonSpecifiedIndices.Checked) 
-        { 
+        else if (radioButtonSpecifiedIndices.Checked)
+        {
             numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = -numericBox1.Maximum;
             tableLayoutPanel3.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
@@ -924,6 +928,12 @@ public partial class FormStereonet : Form
         Draw();
     }
 
+    private void numericBoxHighStructureFactor_ValueChanged(object sender, EventArgs e)
+    {
+        setVector();
+        Draw();
+    }
+
     #region 面、軸のベクトルを計算
     private void setVector()
     {
@@ -955,6 +965,41 @@ public partial class FormStereonet : Form
                 }
                 formMain.Crystal.SetVectorOfAxis([.. axisIndices]);
                 formMain.Crystal.SetVectorOfPlane([.. planeIndices]);
+            }
+            else
+            {
+                int n = numericBoxHighStructureFactor.ValueInteger;
+
+                formMain.Crystal.SetVectorOfG(0.0001, waveLengthControl.WaveSource, n * 40);
+                var vec = formMain.Crystal.VectorOfG;
+                Array.Sort(vec, (g1, g2) => g2.RawIntensity.CompareTo(g1.RawIntensity));
+                var maxIntenxity = vec[0].RawIntensity;
+                foreach(var v in vec) {v.RelativeIntensity=v.RawIntensity/maxIntenxity; }
+
+                formMain.Crystal.VectorOfPlane = [];
+
+                if (radioButtonPlanes.Checked)
+                    for (int i = 1; i < n * 10; i++)
+                        for (int j = 0; j < i; j++)
+                            if (!Crystal.CheckIrreducible(vec[i].Index, vec[j].Index))
+                            {
+                                vec[i].Flag1 = true;
+                                break;
+                            }
+
+                
+                for (int i = 0; i < vec.Length; i++)
+                    if (!vec[i].Flag1)
+                    {
+                        if (formMain.Crystal.VectorOfPlane.Count < n)
+                            formMain.Crystal.VectorOfPlane.Add(vec[i]);
+                        else
+                        {
+                            while((vec[i - 1].RawIntensity - vec[i].RawIntensity) / vec[i - 1].RawIntensity < 1E-8)
+                                formMain.Crystal.VectorOfPlane.Add(vec[i++]);
+                            break;
+                        }
+                    }
             }
         }
     }
@@ -1066,4 +1111,6 @@ public partial class FormStereonet : Form
     }
 
     #endregion
+
+   
 }

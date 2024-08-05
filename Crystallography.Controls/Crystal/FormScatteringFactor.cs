@@ -107,7 +107,7 @@ namespace Crystallography.Controls
 
             var c = (Crystal)Crystal.Clone();
 
-            c.SetVectorOfG((double)numericUpDownThresholdD.Value / 10, waveLengthControl1.WaveSource, false);
+            c.SetVectorOfG((double)numericUpDownThresholdD.Value / 10, waveLengthControl1.WaveSource);
 
             Array.Sort(c.VectorOfG, (g1, g2) => g2.d.CompareTo(g1.d));
 
