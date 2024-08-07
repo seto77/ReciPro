@@ -12,10 +12,10 @@ public static class Stereonet
     /// </summary>
     /// <param name="vec"></param>
     /// <returns></returns>
-    public static PointD ConvertVectorToWulff(Vector3D vec)
+    public static PointD ConvertVectorToWulff(Vector3DBase vec)
     {
         if (vec == null) return new PointD(-100, -100);
-        var v = Vector3D.Normarize(vec);
+        var v = Vector3DBase.Normarize(vec);
         return v.Z >= -0.999999 ? new PointD(v.X / (1 + v.Z), v.Y / (1 + v.Z)) : new PointD(-100, -100);
     }
 

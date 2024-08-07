@@ -36,18 +36,24 @@ namespace ReciPro
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStereonet));
             splitContainer1 = new System.Windows.Forms.SplitContainer();
             graphicsBox = new ImagingSolution.Control.GraphicsBox(components);
+            label18 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
             trackBarStrSize = new System.Windows.Forms.TrackBar();
             trackBarPointSize = new System.Windows.Forms.TrackBar();
             groupBox2 = new System.Windows.Forms.GroupBox();
+            groupBox9 = new System.Windows.Forms.GroupBox();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonWulff = new System.Windows.Forms.RadioButton();
             radioButtonSchmidt = new System.Windows.Forms.RadioButton();
+            groupBox8 = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButton2 = new System.Windows.Forms.RadioButton();
+            radioButton3 = new System.Windows.Forms.RadioButton();
+            groupBox7 = new System.Windows.Forms.GroupBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonAxes = new System.Windows.Forms.RadioButton();
             radioButtonPlanes = new System.Windows.Forms.RadioButton();
             radioButton1 = new System.Windows.Forms.RadioButton();
-            label19 = new System.Windows.Forms.Label();
-            label18 = new System.Windows.Forms.Label();
             labelYpos = new System.Windows.Forms.Label();
             labelXpos = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
@@ -58,30 +64,20 @@ namespace ReciPro
             radioButtonOutlineEquator = new System.Windows.Forms.RadioButton();
             tabControl = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            checkBoxReflectStructureFactor = new System.Windows.Forms.CheckBox();
             groupBox4 = new System.Windows.Forms.GroupBox();
             groupBox1 = new System.Windows.Forms.GroupBox();
-            colorControlSmallCircle = new ColorControl();
-            colorControlGreatCircle = new ColorControl();
-            label4 = new System.Windows.Forms.Label();
             colorControlString = new ColorControl();
+            colorControl1 = new ColorControl();
             colorControlUniqueAxis = new ColorControl();
-            colorControlUniquePlane = new ColorControl();
-            labelUniqueAxis = new System.Windows.Forms.Label();
             colorControlGeneralAxis = new ColorControl();
-            labelGeneralAxis = new System.Windows.Forms.Label();
-            labelUniquePlane = new System.Windows.Forms.Label();
-            labelGeneralPlane = new System.Windows.Forms.Label();
-            colorControlGeneralPlane = new ColorControl();
             colorControlBackGround = new ColorControl();
-            labelBackGround = new System.Windows.Forms.Label();
-            colorControl90DegLine = new ColorControl();
-            label90DegLine = new System.Windows.Forms.Label();
-            label10DegLine = new System.Windows.Forms.Label();
+            colorControlUniquePlane = new ColorControl();
             colorControl10DegLine = new ColorControl();
-            label1DegLine = new System.Windows.Forms.Label();
+            colorControlGeneralPlane = new ColorControl();
             colorControl1DegLine = new ColorControl();
-            labelString = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
+            colorControl90DegLine = new ColorControl();
             tabPage2 = new System.Windows.Forms.TabPage();
             panelPlanes = new System.Windows.Forms.Panel();
             label12 = new System.Windows.Forms.Label();
@@ -96,6 +92,7 @@ namespace ReciPro
             numericUpDownCircleL1 = new System.Windows.Forms.NumericUpDown();
             numericUpDownCircleK1 = new System.Windows.Forms.NumericUpDown();
             numericUpDownCircleK2 = new System.Windows.Forms.NumericUpDown();
+            colorControlGreatCircle = new ColorControl();
             panelAxis = new System.Windows.Forms.Panel();
             label11 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -206,16 +203,22 @@ namespace ReciPro
             printDialog1 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
             groupBox2.SuspendLayout();
+            groupBox9.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
+            groupBox8.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            groupBox7.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             groupBox3.SuspendLayout();
             tabControl.SuspendLayout();
             tabPage1.SuspendLayout();
+            groupBox6.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -253,6 +256,11 @@ namespace ReciPro
             // 
             splitContainer1.Panel1.Controls.Add(graphicsBox);
             // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(label18);
+            splitContainer1.Panel2.Controls.Add(label3);
+            // 
             // graphicsBox
             // 
             graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -264,6 +272,18 @@ namespace ReciPro
             graphicsBox.MouseMove += graphicsBox_MouseMove;
             graphicsBox.MouseUp += graphicsBox_MouseUp;
             graphicsBox.Resize += formStereonet_Resize;
+            // 
+            // label18
+            // 
+            resources.ApplyResources(label18, "label18");
+            label18.Name = "label18";
+            label18.Click += label18_Click;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
+            label3.Click += label18_Click;
             // 
             // trackBarStrSize
             // 
@@ -289,13 +309,19 @@ namespace ReciPro
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(flowLayoutPanel2);
-            groupBox2.Controls.Add(flowLayoutPanel1);
-            groupBox2.Controls.Add(label19);
-            groupBox2.Controls.Add(label18);
+            groupBox2.Controls.Add(groupBox9);
+            groupBox2.Controls.Add(groupBox8);
+            groupBox2.Controls.Add(groupBox7);
             resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
+            // 
+            // groupBox9
+            // 
+            groupBox9.Controls.Add(flowLayoutPanel2);
+            resources.ApplyResources(groupBox9, "groupBox9");
+            groupBox9.Name = "groupBox9";
+            groupBox9.TabStop = false;
             // 
             // flowLayoutPanel2
             // 
@@ -311,13 +337,50 @@ namespace ReciPro
             radioButtonWulff.Name = "radioButtonWulff";
             radioButtonWulff.TabStop = true;
             toolTip.SetToolTip(radioButtonWulff, resources.GetString("radioButtonWulff.ToolTip"));
-            radioButtonWulff.CheckedChanged += radioButtonAxes_CheckedChanged;
+            radioButtonWulff.CheckedChanged += radioButtonWulff_CheckedChanged;
             // 
             // radioButtonSchmidt
             // 
             resources.ApplyResources(radioButtonSchmidt, "radioButtonSchmidt");
             radioButtonSchmidt.Name = "radioButtonSchmidt";
             toolTip.SetToolTip(radioButtonSchmidt, resources.GetString("radioButtonSchmidt.ToolTip"));
+            // 
+            // groupBox8
+            // 
+            groupBox8.Controls.Add(flowLayoutPanel4);
+            resources.ApplyResources(groupBox8, "groupBox8");
+            groupBox8.Name = "groupBox8";
+            groupBox8.TabStop = false;
+            // 
+            // flowLayoutPanel4
+            // 
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(radioButton2);
+            flowLayoutPanel4.Controls.Add(radioButton3);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            // 
+            // radioButton2
+            // 
+            resources.ApplyResources(radioButton2, "radioButton2");
+            radioButton2.Checked = true;
+            radioButton2.Name = "radioButton2";
+            radioButton2.TabStop = true;
+            toolTip.SetToolTip(radioButton2, resources.GetString("radioButton2.ToolTip"));
+            radioButton2.CheckedChanged += radioButtonAxes_CheckedChanged;
+            // 
+            // radioButton3
+            // 
+            resources.ApplyResources(radioButton3, "radioButton3");
+            radioButton3.Name = "radioButton3";
+            toolTip.SetToolTip(radioButton3, resources.GetString("radioButton3.ToolTip"));
+            radioButton3.CheckedChanged += radioButtonAxes_CheckedChanged;
+            // 
+            // groupBox7
+            // 
+            resources.ApplyResources(groupBox7, "groupBox7");
+            groupBox7.Controls.Add(flowLayoutPanel1);
+            groupBox7.Name = "groupBox7";
+            groupBox7.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
@@ -349,16 +412,6 @@ namespace ReciPro
             radioButton1.Name = "radioButton1";
             toolTip.SetToolTip(radioButton1, resources.GetString("radioButton1.ToolTip"));
             radioButton1.CheckedChanged += radioButtonAxes_CheckedChanged;
-            // 
-            // label19
-            // 
-            resources.ApplyResources(label19, "label19");
-            label19.Name = "label19";
-            // 
-            // label18
-            // 
-            resources.ApplyResources(label18, "label18");
-            label18.Name = "label18";
             // 
             // labelYpos
             // 
@@ -406,8 +459,8 @@ namespace ReciPro
             // 
             // radioButtonOutlineEquator
             // 
-            radioButtonOutlineEquator.Checked = true;
             resources.ApplyResources(radioButtonOutlineEquator, "radioButtonOutlineEquator");
+            radioButtonOutlineEquator.Checked = true;
             radioButtonOutlineEquator.Name = "radioButtonOutlineEquator";
             radioButtonOutlineEquator.TabStop = true;
             toolTip.SetToolTip(radioButtonOutlineEquator, resources.GetString("radioButtonOutlineEquator.ToolTip"));
@@ -427,90 +480,52 @@ namespace ReciPro
             // tabPage1
             // 
             tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            tabPage1.Controls.Add(groupBox6);
             tabPage1.Controls.Add(groupBox4);
-            tabPage1.Controls.Add(groupBox1);
             tabPage1.Controls.Add(groupBox3);
+            tabPage1.Controls.Add(groupBox1);
             resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.Name = "tabPage1";
             // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(checkBoxReflectStructureFactor);
+            resources.ApplyResources(groupBox6, "groupBox6");
+            groupBox6.Name = "groupBox6";
+            groupBox6.TabStop = false;
+            // 
+            // checkBoxReflectStructureFactor
+            // 
+            resources.ApplyResources(checkBoxReflectStructureFactor, "checkBoxReflectStructureFactor");
+            checkBoxReflectStructureFactor.Name = "checkBoxReflectStructureFactor";
+            checkBoxReflectStructureFactor.CheckedChanged += checkBoxReflectStructureFactor_CheckedChanged;
+            // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(trackBarPointSize);
             groupBox4.Controls.Add(label1);
-            groupBox4.Controls.Add(trackBarStrSize);
             groupBox4.Controls.Add(label6);
+            groupBox4.Controls.Add(trackBarPointSize);
+            groupBox4.Controls.Add(trackBarStrSize);
             resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Name = "groupBox4";
             groupBox4.TabStop = false;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(colorControlSmallCircle);
-            groupBox1.Controls.Add(colorControlGreatCircle);
-            groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(colorControlString);
+            groupBox1.Controls.Add(colorControl1);
             groupBox1.Controls.Add(colorControlUniqueAxis);
-            groupBox1.Controls.Add(colorControlUniquePlane);
-            groupBox1.Controls.Add(labelUniqueAxis);
             groupBox1.Controls.Add(colorControlGeneralAxis);
-            groupBox1.Controls.Add(labelGeneralAxis);
-            groupBox1.Controls.Add(labelUniquePlane);
-            groupBox1.Controls.Add(labelGeneralPlane);
-            groupBox1.Controls.Add(colorControlGeneralPlane);
             groupBox1.Controls.Add(colorControlBackGround);
-            groupBox1.Controls.Add(labelBackGround);
-            groupBox1.Controls.Add(colorControl90DegLine);
-            groupBox1.Controls.Add(label90DegLine);
-            groupBox1.Controls.Add(label10DegLine);
+            groupBox1.Controls.Add(colorControlUniquePlane);
             groupBox1.Controls.Add(colorControl10DegLine);
-            groupBox1.Controls.Add(label1DegLine);
+            groupBox1.Controls.Add(colorControlGeneralPlane);
             groupBox1.Controls.Add(colorControl1DegLine);
-            groupBox1.Controls.Add(labelString);
-            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(colorControl90DegLine);
             resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
             toolTip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
-            // 
-            // colorControlSmallCircle
-            // 
-            colorControlSmallCircle.Argb = -16256;
-            resources.ApplyResources(colorControlSmallCircle, "colorControlSmallCircle");
-            colorControlSmallCircle.Blue = 128;
-            colorControlSmallCircle.BlueF = 0.5019608F;
-            colorControlSmallCircle.BoxSize = new System.Drawing.Size(24, 24);
-            colorControlSmallCircle.Color = System.Drawing.Color.FromArgb(255, 192, 128);
-            colorControlSmallCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            colorControlSmallCircle.Green = 192;
-            colorControlSmallCircle.GreenF = 0.7529412F;
-            colorControlSmallCircle.Inversion = false;
-            colorControlSmallCircle.Name = "colorControlSmallCircle";
-            colorControlSmallCircle.Red = 255;
-            colorControlSmallCircle.RedF = 1F;
-            colorControlSmallCircle.ColorChanged += colorControl_ColorChanged;
-            // 
-            // colorControlGreatCircle
-            // 
-            colorControlGreatCircle.Argb = -32768;
-            resources.ApplyResources(colorControlGreatCircle, "colorControlGreatCircle");
-            colorControlGreatCircle.Blue = 0;
-            colorControlGreatCircle.BlueF = 0F;
-            colorControlGreatCircle.BoxSize = new System.Drawing.Size(24, 24);
-            colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(255, 128, 0);
-            colorControlGreatCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            colorControlGreatCircle.Green = 128;
-            colorControlGreatCircle.GreenF = 0.5019608F;
-            colorControlGreatCircle.Inversion = false;
-            colorControlGreatCircle.Name = "colorControlGreatCircle";
-            colorControlGreatCircle.Red = 255;
-            colorControlGreatCircle.RedF = 1F;
-            colorControlGreatCircle.ColorChanged += colorControl_ColorChanged;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(label4, "label4");
-            label4.Name = "label4";
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // colorControlString
             // 
@@ -519,7 +534,7 @@ namespace ReciPro
             colorControlString.BackColor = System.Drawing.Color.Black;
             colorControlString.Blue = 0;
             colorControlString.BlueF = 0F;
-            colorControlString.BoxSize = new System.Drawing.Size(24, 24);
+            colorControlString.BoxSize = new System.Drawing.Size(22, 20);
             colorControlString.Color = System.Drawing.Color.FromArgb(0, 0, 0);
             colorControlString.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlString.Green = 0;
@@ -532,6 +547,25 @@ namespace ReciPro
             toolTip.SetToolTip(colorControlString, resources.GetString("colorControlString.ToolTip"));
             colorControlString.ColorChanged += colorControl_ColorChanged;
             // 
+            // colorControl1
+            // 
+            colorControl1.Argb = -32768;
+            resources.ApplyResources(colorControl1, "colorControl1");
+            colorControl1.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            colorControl1.Blue = 0;
+            colorControl1.BlueF = 0F;
+            colorControl1.BoxSize = new System.Drawing.Size(22, 20);
+            colorControl1.Color = System.Drawing.Color.FromArgb(255, 128, 0);
+            colorControl1.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl1.Green = 128;
+            colorControl1.GreenF = 0.5019608F;
+            colorControl1.Inversion = false;
+            colorControl1.Name = "colorControl1";
+            colorControl1.Red = 255;
+            colorControl1.RedF = 1F;
+            colorControl1.TabStop = false;
+            colorControl1.ColorChanged += colorControl_ColorChanged;
+            // 
             // colorControlUniqueAxis
             // 
             colorControlUniqueAxis.Argb = -7667712;
@@ -539,7 +573,7 @@ namespace ReciPro
             colorControlUniqueAxis.BackColor = System.Drawing.Color.Red;
             colorControlUniqueAxis.Blue = 0;
             colorControlUniqueAxis.BlueF = 0F;
-            colorControlUniqueAxis.BoxSize = new System.Drawing.Size(24, 24);
+            colorControlUniqueAxis.BoxSize = new System.Drawing.Size(22, 20);
             colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(139, 0, 0);
             colorControlUniqueAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlUniqueAxis.Green = 0;
@@ -552,32 +586,6 @@ namespace ReciPro
             toolTip.SetToolTip(colorControlUniqueAxis, resources.GetString("colorControlUniqueAxis.ToolTip"));
             colorControlUniqueAxis.ColorChanged += colorControl_ColorChanged;
             // 
-            // colorControlUniquePlane
-            // 
-            colorControlUniquePlane.Argb = -16751616;
-            resources.ApplyResources(colorControlUniquePlane, "colorControlUniquePlane");
-            colorControlUniquePlane.BackColor = System.Drawing.Color.Lime;
-            colorControlUniquePlane.Blue = 0;
-            colorControlUniquePlane.BlueF = 0F;
-            colorControlUniquePlane.BoxSize = new System.Drawing.Size(24, 24);
-            colorControlUniquePlane.Color = System.Drawing.Color.FromArgb(0, 100, 0);
-            colorControlUniquePlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            colorControlUniquePlane.Green = 100;
-            colorControlUniquePlane.GreenF = 0.392156869F;
-            colorControlUniquePlane.Inversion = false;
-            colorControlUniquePlane.Name = "colorControlUniquePlane";
-            colorControlUniquePlane.Red = 0;
-            colorControlUniquePlane.RedF = 0F;
-            colorControlUniquePlane.TabStop = false;
-            toolTip.SetToolTip(colorControlUniquePlane, resources.GetString("colorControlUniquePlane.ToolTip"));
-            colorControlUniquePlane.ColorChanged += colorControl_ColorChanged;
-            // 
-            // labelUniqueAxis
-            // 
-            resources.ApplyResources(labelUniqueAxis, "labelUniqueAxis");
-            labelUniqueAxis.Name = "labelUniqueAxis";
-            toolTip.SetToolTip(labelUniqueAxis, resources.GetString("labelUniqueAxis.ToolTip"));
-            // 
             // colorControlGeneralAxis
             // 
             colorControlGeneralAxis.Argb = -65536;
@@ -585,7 +593,7 @@ namespace ReciPro
             colorControlGeneralAxis.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             colorControlGeneralAxis.Blue = 0;
             colorControlGeneralAxis.BlueF = 0F;
-            colorControlGeneralAxis.BoxSize = new System.Drawing.Size(24, 24);
+            colorControlGeneralAxis.BoxSize = new System.Drawing.Size(22, 20);
             colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(255, 0, 0);
             colorControlGeneralAxis.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlGeneralAxis.Green = 0;
@@ -597,43 +605,6 @@ namespace ReciPro
             colorControlGeneralAxis.TabStop = false;
             colorControlGeneralAxis.ColorChanged += colorControl_ColorChanged;
             // 
-            // labelGeneralAxis
-            // 
-            resources.ApplyResources(labelGeneralAxis, "labelGeneralAxis");
-            labelGeneralAxis.Name = "labelGeneralAxis";
-            toolTip.SetToolTip(labelGeneralAxis, resources.GetString("labelGeneralAxis.ToolTip"));
-            // 
-            // labelUniquePlane
-            // 
-            resources.ApplyResources(labelUniquePlane, "labelUniquePlane");
-            labelUniquePlane.Name = "labelUniquePlane";
-            toolTip.SetToolTip(labelUniquePlane, resources.GetString("labelUniquePlane.ToolTip"));
-            // 
-            // labelGeneralPlane
-            // 
-            resources.ApplyResources(labelGeneralPlane, "labelGeneralPlane");
-            labelGeneralPlane.Name = "labelGeneralPlane";
-            toolTip.SetToolTip(labelGeneralPlane, resources.GetString("labelGeneralPlane.ToolTip"));
-            // 
-            // colorControlGeneralPlane
-            // 
-            colorControlGeneralPlane.Argb = -14578910;
-            resources.ApplyResources(colorControlGeneralPlane, "colorControlGeneralPlane");
-            colorControlGeneralPlane.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            colorControlGeneralPlane.Blue = 34;
-            colorControlGeneralPlane.BlueF = 0.13333334F;
-            colorControlGeneralPlane.BoxSize = new System.Drawing.Size(24, 24);
-            colorControlGeneralPlane.Color = System.Drawing.Color.FromArgb(33, 139, 34);
-            colorControlGeneralPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            colorControlGeneralPlane.Green = 139;
-            colorControlGeneralPlane.GreenF = 0.545098066F;
-            colorControlGeneralPlane.Inversion = false;
-            colorControlGeneralPlane.Name = "colorControlGeneralPlane";
-            colorControlGeneralPlane.Red = 33;
-            colorControlGeneralPlane.RedF = 0.129411772F;
-            colorControlGeneralPlane.TabStop = false;
-            colorControlGeneralPlane.ColorChanged += colorControl_ColorChanged;
-            // 
             // colorControlBackGround
             // 
             colorControlBackGround.Argb = -1;
@@ -641,7 +612,7 @@ namespace ReciPro
             colorControlBackGround.BackColor = System.Drawing.Color.White;
             colorControlBackGround.Blue = 255;
             colorControlBackGround.BlueF = 1F;
-            colorControlBackGround.BoxSize = new System.Drawing.Size(24, 24);
+            colorControlBackGround.BoxSize = new System.Drawing.Size(22, 20);
             colorControlBackGround.Color = System.Drawing.Color.FromArgb(255, 255, 255);
             colorControlBackGround.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlBackGround.Green = 255;
@@ -654,43 +625,25 @@ namespace ReciPro
             toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
             colorControlBackGround.ColorChanged += colorControl_ColorChanged;
             // 
-            // labelBackGround
+            // colorControlUniquePlane
             // 
-            resources.ApplyResources(labelBackGround, "labelBackGround");
-            labelBackGround.Name = "labelBackGround";
-            toolTip.SetToolTip(labelBackGround, resources.GetString("labelBackGround.ToolTip"));
-            // 
-            // colorControl90DegLine
-            // 
-            colorControl90DegLine.Argb = -16776961;
-            resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
-            colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
-            colorControl90DegLine.Blue = 255;
-            colorControl90DegLine.BlueF = 1F;
-            colorControl90DegLine.BoxSize = new System.Drawing.Size(24, 24);
-            colorControl90DegLine.Color = System.Drawing.Color.FromArgb(0, 0, 255);
-            colorControl90DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            colorControl90DegLine.Green = 0;
-            colorControl90DegLine.GreenF = 0F;
-            colorControl90DegLine.Inversion = false;
-            colorControl90DegLine.Name = "colorControl90DegLine";
-            colorControl90DegLine.Red = 0;
-            colorControl90DegLine.RedF = 0F;
-            colorControl90DegLine.TabStop = false;
-            toolTip.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip"));
-            colorControl90DegLine.ColorChanged += colorControl_ColorChanged;
-            // 
-            // label90DegLine
-            // 
-            resources.ApplyResources(label90DegLine, "label90DegLine");
-            label90DegLine.Name = "label90DegLine";
-            toolTip.SetToolTip(label90DegLine, resources.GetString("label90DegLine.ToolTip"));
-            // 
-            // label10DegLine
-            // 
-            resources.ApplyResources(label10DegLine, "label10DegLine");
-            label10DegLine.Name = "label10DegLine";
-            toolTip.SetToolTip(label10DegLine, resources.GetString("label10DegLine.ToolTip"));
+            colorControlUniquePlane.Argb = -16751616;
+            resources.ApplyResources(colorControlUniquePlane, "colorControlUniquePlane");
+            colorControlUniquePlane.BackColor = System.Drawing.Color.Lime;
+            colorControlUniquePlane.Blue = 0;
+            colorControlUniquePlane.BlueF = 0F;
+            colorControlUniquePlane.BoxSize = new System.Drawing.Size(22, 20);
+            colorControlUniquePlane.Color = System.Drawing.Color.FromArgb(0, 100, 0);
+            colorControlUniquePlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControlUniquePlane.Green = 100;
+            colorControlUniquePlane.GreenF = 0.392156869F;
+            colorControlUniquePlane.Inversion = false;
+            colorControlUniquePlane.Name = "colorControlUniquePlane";
+            colorControlUniquePlane.Red = 0;
+            colorControlUniquePlane.RedF = 0F;
+            colorControlUniquePlane.TabStop = false;
+            toolTip.SetToolTip(colorControlUniquePlane, resources.GetString("colorControlUniquePlane.ToolTip"));
+            colorControlUniquePlane.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl10DegLine
             // 
@@ -699,7 +652,7 @@ namespace ReciPro
             colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(128, 128, 255);
             colorControl10DegLine.Blue = 255;
             colorControl10DegLine.BlueF = 1F;
-            colorControl10DegLine.BoxSize = new System.Drawing.Size(24, 24);
+            colorControl10DegLine.BoxSize = new System.Drawing.Size(22, 20);
             colorControl10DegLine.Color = System.Drawing.Color.FromArgb(128, 128, 255);
             colorControl10DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControl10DegLine.Green = 128;
@@ -712,11 +665,24 @@ namespace ReciPro
             toolTip.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip"));
             colorControl10DegLine.ColorChanged += colorControl_ColorChanged;
             // 
-            // label1DegLine
+            // colorControlGeneralPlane
             // 
-            resources.ApplyResources(label1DegLine, "label1DegLine");
-            label1DegLine.Name = "label1DegLine";
-            toolTip.SetToolTip(label1DegLine, resources.GetString("label1DegLine.ToolTip"));
+            colorControlGeneralPlane.Argb = -14578910;
+            resources.ApplyResources(colorControlGeneralPlane, "colorControlGeneralPlane");
+            colorControlGeneralPlane.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            colorControlGeneralPlane.Blue = 34;
+            colorControlGeneralPlane.BlueF = 0.13333334F;
+            colorControlGeneralPlane.BoxSize = new System.Drawing.Size(22, 20);
+            colorControlGeneralPlane.Color = System.Drawing.Color.FromArgb(33, 139, 34);
+            colorControlGeneralPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControlGeneralPlane.Green = 139;
+            colorControlGeneralPlane.GreenF = 0.545098066F;
+            colorControlGeneralPlane.Inversion = false;
+            colorControlGeneralPlane.Name = "colorControlGeneralPlane";
+            colorControlGeneralPlane.Red = 33;
+            colorControlGeneralPlane.RedF = 0.129411772F;
+            colorControlGeneralPlane.TabStop = false;
+            colorControlGeneralPlane.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl1DegLine
             // 
@@ -725,7 +691,7 @@ namespace ReciPro
             colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(192, 192, 255);
             colorControl1DegLine.Blue = 255;
             colorControl1DegLine.BlueF = 1F;
-            colorControl1DegLine.BoxSize = new System.Drawing.Size(24, 24);
+            colorControl1DegLine.BoxSize = new System.Drawing.Size(22, 20);
             colorControl1DegLine.Color = System.Drawing.Color.FromArgb(192, 192, 255);
             colorControl1DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControl1DegLine.Green = 192;
@@ -738,22 +704,31 @@ namespace ReciPro
             toolTip.SetToolTip(colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip"));
             colorControl1DegLine.ColorChanged += colorControl_ColorChanged;
             // 
-            // labelString
+            // colorControl90DegLine
             // 
-            resources.ApplyResources(labelString, "labelString");
-            labelString.Name = "labelString";
-            toolTip.SetToolTip(labelString, resources.GetString("labelString.ToolTip"));
-            // 
-            // label3
-            // 
-            resources.ApplyResources(label3, "label3");
-            label3.Name = "label3";
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
+            colorControl90DegLine.Argb = -16776961;
+            resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
+            colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
+            colorControl90DegLine.Blue = 255;
+            colorControl90DegLine.BlueF = 1F;
+            colorControl90DegLine.BoxSize = new System.Drawing.Size(22, 20);
+            colorControl90DegLine.Color = System.Drawing.Color.FromArgb(0, 0, 255);
+            colorControl90DegLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControl90DegLine.Green = 0;
+            colorControl90DegLine.GreenF = 0F;
+            colorControl90DegLine.Inversion = false;
+            colorControl90DegLine.Name = "colorControl90DegLine";
+            colorControl90DegLine.Red = 0;
+            colorControl90DegLine.RedF = 0F;
+            colorControl90DegLine.TabStop = false;
+            toolTip.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip"));
+            colorControl90DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // tabPage2
             // 
             tabPage2.BackColor = System.Drawing.SystemColors.Control;
             tabPage2.Controls.Add(panelPlanes);
+            tabPage2.Controls.Add(colorControlGreatCircle);
             tabPage2.Controls.Add(panelAxis);
             tabPage2.Controls.Add(radioButtonCircleByPlanes);
             tabPage2.Controls.Add(radioButtonCircleByAxis);
@@ -857,6 +832,24 @@ namespace ReciPro
             numericUpDownCircleK2.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
             numericUpDownCircleK2.Name = "numericUpDownCircleK2";
             numericUpDownCircleK2.ValueChanged += numericUpDown_ValueChanged;
+            // 
+            // colorControlGreatCircle
+            // 
+            colorControlGreatCircle.Argb = -32768;
+            resources.ApplyResources(colorControlGreatCircle, "colorControlGreatCircle");
+            colorControlGreatCircle.BackColor = System.Drawing.SystemColors.Control;
+            colorControlGreatCircle.Blue = 0;
+            colorControlGreatCircle.BlueF = 0F;
+            colorControlGreatCircle.BoxSize = new System.Drawing.Size(24, 24);
+            colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(255, 128, 0);
+            colorControlGreatCircle.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControlGreatCircle.Green = 128;
+            colorControlGreatCircle.GreenF = 0.5019608F;
+            colorControlGreatCircle.Inversion = false;
+            colorControlGreatCircle.Name = "colorControlGreatCircle";
+            colorControlGreatCircle.Red = 255;
+            colorControlGreatCircle.RedF = 1F;
+            colorControlGreatCircle.ColorChanged += colorControl_ColorChanged;
             // 
             // panelAxis
             // 
@@ -1705,7 +1698,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -309094647);
+            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 962371858);
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
             scalablePictureBoxAdvanced1.SkipDrawing = false;
             scalablePictureBoxAdvanced1.StatusLabel = " ";
@@ -1736,7 +1729,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -309094647);
+            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 962371858);
             scalablePictureBoxAdvanced2.ShowGradiaent = true;
             scalablePictureBoxAdvanced2.SkipDrawing = false;
             scalablePictureBoxAdvanced2.StatusLabel = " ";
@@ -1775,21 +1768,34 @@ namespace ReciPro
             VisibleChanged += FormStereonet_VisibleChanged;
             Paint += FormStereonet_Paint;
             splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
             groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            groupBox9.ResumeLayout(false);
+            groupBox9.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel2.PerformLayout();
+            groupBox8.ResumeLayout(false);
+            groupBox8.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             tabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
             groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             tabPage2.ResumeLayout(false);
@@ -1851,17 +1857,6 @@ namespace ReciPro
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label labelUniqueAxis;
-        private System.Windows.Forms.Label labelGeneralAxis;
-        private System.Windows.Forms.Label labelUniquePlane;
-        private System.Windows.Forms.Label labelGeneralPlane;
-        private System.Windows.Forms.Label labelBackGround;
-        private System.Windows.Forms.Label label90DegLine;
-        private System.Windows.Forms.Label label10DegLine;
-        private System.Windows.Forms.Label label1DegLine;
-        private System.Windows.Forms.Label labelString;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -1911,12 +1906,10 @@ namespace ReciPro
         public ColorControl colorControl10DegLine;
         public ColorControl colorControl1DegLine;
         public ColorControl colorControlGreatCircle;
-        public ColorControl colorControlSmallCircle;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.RadioButton radioButtonSchmidt;
         private System.Windows.Forms.RadioButton radioButtonWulff;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.CheckBox checkBox3;
@@ -2005,5 +1998,15 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonHighStructureFactor;
         private NumericBox numericBoxHighStructureFactor;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox checkBoxReflectStructureFactor;
+        public ColorControl colorControl1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox9;
     }
 }
