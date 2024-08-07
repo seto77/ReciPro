@@ -964,11 +964,25 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// 引数で指定された指数の面ベクトルを計算し、VectorOfPlaneに格納
     /// </summary>
     /// <param name="indices"></param>
-    public void SetVectorOfPlane((int H, int K, int L)[] indices)
+    public void SetVectorOfPlane((int h, int k, int l)[] indices, WaveSource waveSource)
     {
         VectorOfPlane = [];
-        foreach (var (H, K, L) in indices)
-            VectorOfPlane.Add(new Vector3D(H * A_Star + K * B_Star + L * C_Star) { Text = $"({H}{K}{L})" });
+        foreach (var (h, k, l) in indices)
+        {
+            var vec = new Vector3D(h * A_Star + k * B_Star + l * C_Star);
+            vec.F = GetStructureFactor(waveSource, Atoms, (h, k, l), vec.Length2 / 4.0);
+            vec.RawIntensity = vec.F.MagnitudeSquared();
+            vec.Text = $"({h}{k}{l})";
+            vec.Index = (h, k, l);
+            VectorOfPlane.Add(vec);
+        }
+
+        if (VectorOfPlane.Count > 0)
+        {
+            var max = VectorOfPlane.Max(v => v.RawIntensity);
+            if (max > 0)
+                VectorOfPlane.ForEach(v => v.RelativeIntensity = v.RawIntensity / max);
+        }
     }
 
     /// <summary>
@@ -977,28 +991,16 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="hMax"></param>
     /// <param name="kMax"></param>
     /// <param name="lMax"></param>
-    public void SetVectorOfPlane(int hMax, int kMax, int lMax)
+    public void SetVectorOfPlane(int hMax, int kMax, int lMax, WaveSource waveSource)
     {
-        VectorOfPlane = [];
-        Vector3D vec;
-
-        vec = CalcHklVector(1, 0, 0); vec = vec * GetLengthPlane(1, 0, 0) / vec.d; vec.Text = "(100)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(0, 1, 0); vec = vec * GetLengthPlane(0, 1, 0) / vec.d; vec.Text = "(010)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(0, 0, 1); vec = vec * GetLengthPlane(0, 0, 1) / vec.d; vec.Text = "(001)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(-1, 0, 0); vec = vec * GetLengthPlane(-1, 0, 0) / vec.d; vec.Text = "(-100)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(0, -1, 0); vec = vec * GetLengthPlane(0, -1, 0) / vec.d; vec.Text = "(0-10)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(0, 0, -1); vec = vec * GetLengthPlane(0, 0, -1) / vec.d; vec.Text = "(00-1)"; VectorOfPlane.Add(vec);
+        var indices = new List<(int h, int k, int l)> { (1, 0, 0), (0, 1, 0), (0, 0, 1), (-1, 0, 0), (0, -1, 0), (0, 0, -1) };
         for (int h = -hMax; h <= hMax; h++)
             for (int k = -kMax; k <= kMax; k++)
                 for (int l = -lMax; l <= lMax; l++)
-
                     if (CheckIrreducible(h, k, l) && !(h * k == 0 && k * l == 0 && l * h == 0))
-                    {
-                        vec = CalcHklVector(h, k, l);
-                        vec = vec * GetLengthPlane(h, k, l) / vec.d;
-                        vec.Text = $"({h}{k}{l})";
-                        VectorOfPlane.Add(vec);
-                    }
+                        indices.Add((h, k, l));
+
+        SetVectorOfPlane([.. indices], waveSource);
     }
 
     /// <summary>
@@ -1027,7 +1029,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         (int h, int k, int l)[] directions = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)];
 
         var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
-
 
         var maxNum = _maxNum;
         var outer = new List<(int H, int K, int L, double len)>() { (0, 0, 0, 0) };
