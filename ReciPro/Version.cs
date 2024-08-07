@@ -7,7 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
-        "\r\n ver4.888(2024/08/07)  Added the 'Kikuchi line pairs' projection mode to 'Streonet' simulation. (see https://github.com/seto77/ReciPro/issues/35)" +
+        "\r\n ver4.888(2024/08/07)  Added the 'Kikuchi line pairs' projection mode to the 'Stereonet' simulation. (see https://github.com/seto77/ReciPro/issues/35)" +
         "\r\n ver4.887(2024/07/30)  Fixed a minor bug." +
         "\r\n ver4.886(2024/07/20)  Added horizontal/vertical flip and color inversion functions for 'Diffraction Simulator'  (see https://github.com/seto77/ReciPro/issues/35)." +
         "\r\n ver4.885(2024/06/20)  Fixed a bug and typo in the 'Diffraction Spot Information' (see https://github.com/seto77/ReciPro/issues/34, thanks to tianyu-liu-san)." +
