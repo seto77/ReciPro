@@ -3,7 +3,6 @@ using MathNet.Numerics;
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
@@ -1258,7 +1257,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="wavesource"></param>
     /// <param name="excludeLatticeCondition"></param>
     public void SetVectorOfG(double dMin, WaveSource wavesource, int maxNum = 25000)
-        => SetVectorOfG(dMin,double.PositiveInfinity,wavesource, maxNum);
+        => SetVectorOfG(dMin, double.PositiveInfinity, wavesource, maxNum);
 
     /// <summary>
     /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
@@ -1266,7 +1265,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="dMin"></param>
     /// <param name="dMax"></param>
     /// <param name="wavesource"></param>
-    public void SetVectorOfG(double dMin, double dMax, WaveSource wavesource, int maxNum=25000)
+    public void SetVectorOfG(double dMin, double dMax, WaveSource wavesource, int maxNum = 25000)
     {
         if (double.IsNaN(dMin)) return;
 

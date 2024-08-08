@@ -67,7 +67,7 @@ public readonly struct SymmetryOperation
     public (int H, int K, int L) ConvertPlaneIndex((int H, int K, int L) index)
         => ConvertPlaneIndex(index.H, index.K, index.L);
 
-  
+
 
     public (int H, int K, int L) ConvertPlaneIndex(int h, int k, int l)
     {

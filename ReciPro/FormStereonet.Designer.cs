@@ -67,7 +67,7 @@ namespace ReciPro
             groupBox4 = new System.Windows.Forms.GroupBox();
             groupBox1 = new System.Windows.Forms.GroupBox();
             colorControlString = new ColorControl();
-            colorControl1 = new ColorControl();
+            colorControlKikuchi = new ColorControl();
             colorControlUniqueAxis = new ColorControl();
             colorControlGeneralAxis = new ColorControl();
             colorControlBackGround = new ColorControl();
@@ -517,7 +517,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Controls.Add(colorControlString);
-            groupBox1.Controls.Add(colorControl1);
+            groupBox1.Controls.Add(colorControlKikuchi);
             groupBox1.Controls.Add(colorControlUniqueAxis);
             groupBox1.Controls.Add(colorControlGeneralAxis);
             groupBox1.Controls.Add(colorControlBackGround);
@@ -552,23 +552,23 @@ namespace ReciPro
             // 
             // colorControl1
             // 
-            resources.ApplyResources(colorControl1, "colorControl1");
-            colorControl1.Argb = -32768;
-            colorControl1.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            colorControl1.Blue = 0;
-            colorControl1.BlueF = 0F;
-            colorControl1.BoxSize = new System.Drawing.Size(22, 20);
-            colorControl1.Color = System.Drawing.Color.FromArgb(255, 128, 0);
-            colorControl1.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            colorControl1.Green = 128;
-            colorControl1.GreenF = 0.5019608F;
-            colorControl1.Inversion = false;
-            colorControl1.Name = "colorControl1";
-            colorControl1.Red = 255;
-            colorControl1.RedF = 1F;
-            colorControl1.TabStop = false;
-            toolTip.SetToolTip(colorControl1, resources.GetString("colorControl1.ToolTip"));
-            colorControl1.ColorChanged += colorControl_ColorChanged;
+            resources.ApplyResources(colorControlKikuchi, "colorControl1");
+            colorControlKikuchi.Argb = -32768;
+            colorControlKikuchi.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
+            colorControlKikuchi.Blue = 0;
+            colorControlKikuchi.BlueF = 0F;
+            colorControlKikuchi.BoxSize = new System.Drawing.Size(22, 20);
+            colorControlKikuchi.Color = System.Drawing.Color.FromArgb(255, 128, 0);
+            colorControlKikuchi.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControlKikuchi.Green = 128;
+            colorControlKikuchi.GreenF = 0.5019608F;
+            colorControlKikuchi.Inversion = false;
+            colorControlKikuchi.Name = "colorControl1";
+            colorControlKikuchi.Red = 255;
+            colorControlKikuchi.RedF = 1F;
+            colorControlKikuchi.TabStop = false;
+            toolTip.SetToolTip(colorControlKikuchi, resources.GetString("colorControl1.ToolTip"));
+            colorControlKikuchi.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControlUniqueAxis
             // 
@@ -1345,6 +1345,8 @@ namespace ReciPro
             waveLengthControl.WaveSource = WaveSource.Electron;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
             waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
+            waveLengthControl.WavelengthChanged += waveLengthControl_WaveSourceChanged;
+            waveLengthControl.WaveSourceChanged += waveLengthControl_WaveSourceChanged;
             // 
             // menuStrip1
             // 
@@ -1796,7 +1798,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 1241843762);
+            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 1344813268);
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
             scalablePictureBoxAdvanced1.SkipDrawing = false;
             scalablePictureBoxAdvanced1.StatusLabel = " ";
@@ -1828,7 +1830,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 1241843762);
+            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 1344813268);
             scalablePictureBoxAdvanced2.ShowGradiaent = true;
             scalablePictureBoxAdvanced2.SkipDrawing = false;
             scalablePictureBoxAdvanced2.StatusLabel = " ";
@@ -2093,7 +2095,7 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonHighStructureFactor;
         private NumericBox numericBoxHighStructureFactor;
         private System.Windows.Forms.CheckBox checkBoxReflectStructureFactor;
-        public ColorControl colorControl1;
+        public ColorControl colorControlKikuchi;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.RadioButton radioButtonUpperSphere;
         private System.Windows.Forms.RadioButton radioButtonLowerSphere;

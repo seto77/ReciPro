@@ -12,8 +12,8 @@ public partial class FormDiffractionSpotInfo : Form
     public BetheMethod.Beam[] Beams { get; set; }
     public FormDiffractionSimulator FormDiffractionSimulator = null;
     public FormImageSimulator FormImageSimulator = null;
-    
-    public enum UnitOfPotentialEnum { Ug,Vg};
+
+    public enum UnitOfPotentialEnum { Ug, Vg };
     public UnitOfPotentialEnum UnitOfPotential
     {
         get => radioButtonUnitEV.Checked ? UnitOfPotentialEnum.Vg : UnitOfPotentialEnum.Ug;

@@ -8,7 +8,6 @@ using OpenTK;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -18,7 +17,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static IronPython.Modules._ast;
 using V3 = OpenTK.Vector3d;
 #endregion
 
@@ -432,8 +430,8 @@ public partial class FormDiffractionSimulator : Form
             {
                 g.Transform = new Matrix(
                 (float)(xSign / Resolution), 0, 0, (float)(ySign / Resolution),
-                (float)(graphicsBox.ClientSize.Width / 2.0 + xSign*Foot.X / Resolution),
-                (float)(graphicsBox.ClientSize.Height / 2.0 + ySign* Foot.Y / Resolution));
+                (float)(graphicsBox.ClientSize.Width / 2.0 + xSign * Foot.X / Resolution),
+                (float)(graphicsBox.ClientSize.Height / 2.0 + ySign * Foot.Y / Resolution));
             }
             catch { return false; }
         return true;
@@ -477,12 +475,12 @@ public partial class FormDiffractionSimulator : Form
         {
             var topleft = convertScreenToDetector(new Point(0, 0));
             var bottomright = convertScreenToDetector(new Point(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height));
-            
+
             var left = (float)Math.Min(topleft.X, bottomright.X);
             var top = (float)Math.Min(topleft.Y, bottomright.Y);
             var width = (float)Math.Abs(topleft.X - bottomright.X);
             var height = (float)Math.Abs(topleft.Y - bottomright.Y);
-            
+
             g.FillRectangle(new SolidBrush(colorControlBackGround.Color), new RectangleF(left, top, width, height));
             //g.Clear(colorControlBackGround.Color);
         }
@@ -1129,10 +1127,10 @@ public partial class FormDiffractionSimulator : Form
             return;
 
         var cornerDetector = new[] { convertScreenToDetector(0, 0), convertScreenToDetector(width, 0), convertScreenToDetector(width, height), convertScreenToDetector(0, height) };
-        if(FlipHorizontally)
+        if (FlipHorizontally)
         {
-            (cornerDetector[0], cornerDetector[1]) = (cornerDetector[1],cornerDetector[0]);
-            (cornerDetector[2], cornerDetector[3]) = (cornerDetector[3],cornerDetector[2]);
+            (cornerDetector[0], cornerDetector[1]) = (cornerDetector[1], cornerDetector[0]);
+            (cornerDetector[2], cornerDetector[3]) = (cornerDetector[3], cornerDetector[2]);
         }
         if (FlipVertically)
         {
@@ -1166,7 +1164,7 @@ public partial class FormDiffractionSimulator : Form
             if (checkBoxDebyeRingLabel.Checked && !double.IsNaN(labelPosition.X))
             {
 
-                g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, colorControlString.Color, convertDetectorToScreen( labelPosition),true);
+                g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, colorControlString.Color, convertDetectorToScreen(labelPosition), true);
                 //g.DrawString("{" + formMain.Crystal.Plane[n].strHKL.Replace(" + ", "} + {") + "}", font, new SolidBrush(colorControlString.Color), labelPosition.ToPointF());
 
             }
@@ -1239,15 +1237,15 @@ public partial class FormDiffractionSimulator : Form
                         {
                             double xx = pt.X - originSrc.X, yy = pt.X - originSrc.X;
                             var str = (xx > 1E-6) || (xx > -1E-6 && yy > 1E-6) ? n.ToString("g12") : (n - 180).ToString("g12");
-                            var shiftX = (!FlipHorizontally && index == 1) || (FlipHorizontally && index == 3) ? -3 * font.Size:0;
-                            var shiftY = (!FlipVertically && index == 2) || (FlipVertically && index == 0) ? -2 * font.Size:0;
+                            var shiftX = (!FlipHorizontally && index == 1) || (FlipHorizontally && index == 3) ? -3 * font.Size : 0;
+                            var shiftY = (!FlipVertically && index == 2) || (FlipVertically && index == 0) ? -2 * font.Size : 0;
 
 
                             //var shift = new PointD(index == 1 ? -3 : 0, index == 2 ? -2 : 0) * font.Size;
                             //if (FlipHorizontally) shift.X = -shift.X;
                             //if (FlipVertically) shift.Y = -shift.Y;
 
-                            g.DrawString(str + "°", font, colorControlScaleAzimuth.Color, convertDetectorToScreen(pt) + new PointD(shiftX,shiftY),true);
+                            g.DrawString(str + "°", font, colorControlScaleAzimuth.Color, convertDetectorToScreen(pt) + new PointD(shiftX, shiftY), true);
                             //g.DrawString(str + "°", font, new SolidBrush(colorControlScaleAzimuth.Color), (pt + shift).ToPointF());
                         }
                     }
@@ -1306,7 +1304,7 @@ public partial class FormDiffractionSimulator : Form
                 g.DrawString(twoTheta.ToString("g12") + "°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true);
                 //g.DrawString(twoTheta.ToString("g12") + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
             }
-               
+
         }
     }
     #endregion
@@ -3116,7 +3114,7 @@ public partial class FormDiffractionSimulator : Form
 
     private void checkBoxNegativeImage_CheckedChanged(object sender, EventArgs e)
     {
-        colorControlBackGround.Inversion = colorControlNoCondition.Inversion = colorControlString.Inversion=
+        colorControlBackGround.Inversion = colorControlNoCondition.Inversion = colorControlString.Inversion =
             colorControlDefectLine.Inversion = colorControlExcessLine.Inversion =
             checkBoxNegativeImage.Checked;
         SetVector();

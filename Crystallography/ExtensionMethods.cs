@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
-using Windows.Media.Audio;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using MC = Crystallography.MathematicalConstants;
 
@@ -385,7 +384,7 @@ public static class GraphicsAlpha
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <param name="resetTransform"></param>
-    public static void DrawString(this Graphics graphics, string s, Font font, Color color, double x, double y, bool resetTransform=false)
+    public static void DrawString(this Graphics graphics, string s, Font font, Color color, double x, double y, bool resetTransform = false)
     {
         var transform = graphics.Transform;
         if (resetTransform)
@@ -398,7 +397,7 @@ public static class GraphicsAlpha
     }
 
     public static void DrawString(this Graphics graphics, string s, Font font, Color color, PointD pt, bool resetTransform = false)
-        =>DrawString(graphics,s,font,color, pt.X, pt.Y, resetTransform);
+        => DrawString(graphics, s, font, color, pt.X, pt.Y, resetTransform);
 
     #endregion
 

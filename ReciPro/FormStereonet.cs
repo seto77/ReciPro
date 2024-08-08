@@ -1,6 +1,7 @@
 #region using
 using Crystallography.Mathematics;
 using Crystallography.OpenGL;
+using MathNet.Numerics;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -443,7 +444,7 @@ public partial class FormStereonet : Form
                             g.DrawString(vector[n].Text, font, brush, (float)(srcPt.X + radius), (float)(-srcPt.Y + radius));
                     }
                 }
-                else
+                else//YusaGonio
                 {
                     positionRecorder[n].Add(srcPt);
                     for (int i = 0; i < positionRecorder[n].Count; i++)
@@ -457,29 +458,19 @@ public partial class FormStereonet : Form
             //ãeírê¸ÉÇÅ[ÉhÇÃÇ∆Ç´
             else
             {
-                var c = checkBoxReflectStructureFactor.Checked ?
-                    Color.FromArgb((int)(vector[n].RelativeIntensity * 255), colorControl1.Color) :
-                    colorControl1.Color;
-                var pen = new Pen(c, 2f / (float)mag);
                 var v = rot * vector[n];
                 if (radioButtonLowerSphere.Checked)
                     v.Z = -v.Z;
 
-                var sinÉ∆ = waveLengthControl.WaveLength * v.Length / 2;
-                var cosÉ∆ = Math.Sqrt(1 - sinÉ∆ * sinÉ∆);
-
                 // Zé≤Ç vÇ…åXÇØÇÈçsóÒÇåvéZ
                 var mat = GLGeometry.CreateRotationToZ(new V3(v.X, v.Y, v.Z)).ToMatrix3D();
+                double sinÉ∆ = waveLengthControl.WaveLength * v.Length / 2, cosÉ∆ = Math.Sqrt(1 - sinÉ∆ * sinÉ∆);
 
-                var div = 720;
-                var vecs = new Vector3D[div];
-                for (int i = 0; i < div; i++)
-                {
-                    var É÷ = i * 2.0 * Math.PI / div;
-                    vecs[i] = mat * new Vector3D(cosÉ∆ * Math.Sin(É÷), cosÉ∆ * Math.Cos(É÷), sinÉ∆);
-                }
-                var pts = vecs.Select(v => conv(v)).Select(p => new PointF(-(float)p.X, (float)p.Y)).ToArray();
+                var pts = Enumerable.Range(0, sin.Count)
+                    .Select(i => conv(mat * new Vector3D(cosÉ∆ * sin[i], cosÉ∆ * cos[i], sinÉ∆)))
+                    .Select(p => new PointF(-(float)p.X, (float)p.Y)).ToArray();
 
+                //óLå¯Ç»ì_Çíäèo
                 int validStart1 = -1, validStart2 = -1, validEnd1 = -1, validEnd2 = -1;
                 for (int i = 0; i < pts.Length; i++)
                     if (pts[i].X * pts[i].X + pts[i].Y * pts[i].Y <= 1.05)
@@ -495,21 +486,21 @@ public partial class FormStereonet : Form
                             validEnd2 = i;
                     }
 
+                var col = checkBoxReflectStructureFactor.Checked ? Color.FromArgb((int)(vector[n].RelativeIntensity * 255), colorControlKikuchi.Color) : colorControlKikuchi.Color;
+                var pen = new Pen(col, 2f / (float)mag);
                 if (validEnd1 - validStart1 != 0)
                 {
-                    if (validStart1 != -1 && validStart2 == -1)
-                        g.DrawLines(pen, pts[validStart1..(validEnd1 + 1)]);
-                    else
-                        g.DrawLines(pen, [.. pts[validStart2..(validEnd2 + 1)], .. pts[validStart1..(validEnd1 + 1)]]);
+                    pts = validStart1 != -1 && validStart2 == -1 ? pts[validStart1..(validEnd1 + 1)] : [.. pts[validStart2..(validEnd2 + 1)], .. pts[validStart1..(validEnd1 + 1)]];
+                    g.DrawLines(pen, pts);
                 }
             }
         }
 
         //ãeírê¸ÉÇÅ[ÉhÇÃÇ∆Ç´ÇÕèªë—é≤ÇÃéwêîÇãLì¸
-        if (radioButtonKikuchiLinePairs.Checked && drawString)
+        if (radioButtonKikuchiLinePairs.Checked)
         {
             var dic = new Dictionary<(int u, int v, int w), int>();
-            for (int i = 0; i < vector.Length; i++)
+            for (int i = 0; i < vector.Length-1; i++)
                 for (int j = i + 1; j < vector.Length; j++)
                 {
                     var (h1, k1, l1) = vector[i].Index;
@@ -528,34 +519,40 @@ public partial class FormStereonet : Form
                             dic.Add((u, v, w), 1);
                     }
                 }
+
             var list = dic.OrderByDescending(e => e.Value).ToArray();
             var max = Math.Min(vector.Length / 2, list.Length);
             while (max + 1 < list.Length && list[max - 1].Value == list[max].Value)
                 max++;
 
-            var radius = 1.5f / (float)mag;
-            var brush = new SolidBrush(colorControlString.Color);
+            var radius = 2f / (float)mag;
+            var brushLabel = new SolidBrush(colorControlString.Color);
+            var brushPt = new SolidBrush(colorControlKikuchi.Color);
+            var penPt = new Pen(colorControlKikuchi.Color, 2f / (float)mag);
             for (int i = 0; i < max; i++)
             {
                 var (u, v, w) = list[i].Key;
                 for (int j = 0; j < 2; j++)
                 {
-                    if (j == 1) { u = -u; v = -v; w = -w; }
+                    if (j == 1) 
+                    { u = -u; v = -v; w = -w; }
                     var vec = rot * (u * crystal.A_Axis + v * crystal.B_Axis + w * crystal.C_Axis);
                     if (radioButtonLowerSphere.Checked)
                         vec.Z = -vec.Z;
-                    var pt = conv(vec);
+                    var pt = conv(vec).ToPointF();
 
                     if (pt.X * pt.X + pt.Y * pt.Y <= 1.05)
                     {
-                        float x = (float)pt.X, y = (float)pt.Y;
-                        g.DrawString($"[{u}{v}{w}]", font, brush, x, -y);
-                        g.FillEllipse(brush, new RectangleF(x - radius, -y - radius, radius * 2, radius * 2));
+                        if(drawString)
+                            g.DrawString($"[{u}{v}{w}]", font, brushLabel, pt.X, -pt.Y);
+                        if (radioButtonUpperSphere.Checked)
+                            g.FillEllipse(brushPt, new RectangleF(pt.X - radius, -pt.Y - radius, radius * 2, radius * 2));
+                        else
+                            g.DrawEllipse(penPt, new RectangleF(pt.X - radius, -pt.Y - radius, radius * 2, radius * 2));
                     }
                 }
             }
         }
-
     }
 
     /// <summary>
@@ -1070,8 +1067,11 @@ public partial class FormStereonet : Form
         Draw();
     }
 
-    private void radioButtonUpperSphere_CheckedChanged(object sender, EventArgs e)
+    private void radioButtonUpperSphere_CheckedChanged(object sender, EventArgs e) => Draw();
+
+    private void waveLengthControl_WaveSourceChanged(object sender, EventArgs e)
     {
+        setVector();
         Draw();
     }
 
@@ -1255,6 +1255,4 @@ public partial class FormStereonet : Form
     }
 
     #endregion
-
-
 }
