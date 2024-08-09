@@ -1,5 +1,6 @@
 ﻿#region using
 using BitMiracle.LibTiff.Classic;
+using Crystallography;
 using Crystallography.Mathematics;
 using Crystallography.OpenGL;
 using MathNet.Numerics;
@@ -13,6 +14,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -332,6 +334,9 @@ public partial class FormDiffractionSimulator : Form
         comboBoxCenter.SelectedIndex = 0;
         splitContainer1.SplitterDistance = splitContainer1.Width / 2;
         splitContainer1.Panel2Collapsed = true;
+
+        numericBoxKikuchiThresholdOfLength.ReadOnly = false;
+
         Draw();
 
         WaveLengthControl_WaveSourceChanged(sender, e);
@@ -1020,85 +1025,76 @@ public partial class FormDiffractionSimulator : Form
     private void DrawKikuchiLine(Graphics graphics)
     {
         var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
-        var penDefect = new Pen(new SolidBrush(colorControlDefectLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
         var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
+        var font = new Font("Tahoma", (float)(trackBarStrSize.Value / 8.0 * Resolution));
+        var brush = new SolidBrush(colorControlString.Color);
+        foreach (var g in formMain.Crystal.VectorOfG_KikuchiLine)
+        {
+            double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
 
-        foreach (var crystal in formMain.Crystals)
-            foreach (var g in crystal.VectorOfG_KikuchiLine)
+            Vector3DBase vec1 = formMain.Crystal.RotationMatrix * g;
+
+            //bool excess は、excess の時に+1, そうでないときはfalse
+            int sign = Math.Abs(vec1.Z) < 1E-4 ? 0 : (vec1.Z > 0 ? 1 : -1);
+
+            //vec2は、検出器法線がZ軸と一致するようにX軸を回転軸に回転させたベクトル
+            var vec2 = Matrix3D.Rot(new Vector3DBase(1, 0, 0), Tau) * vec1;
+
+            //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
+            var psi = Math.Atan2(vec2.X, vec2.Y);
+            double sinPsi=Math.Sin(psi),cosPsi=Math.Cos(psi);
+            var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
+
+            //vec3normは、vec3を規格化したベクトル
+            var vec3norm = vec3.Normarize();
+            double sinPhi = vec3norm.Y, sin2Phi = sinPhi * sinPhi;
+            double cosPhi = vec3norm.Z;
+
+            double P = (sin2Phi - sin2Theta) / (CameraLength2 * CameraLength2 * (1 - sin2Theta)), Psqrt = Math.Sqrt(P);
+            double Q = P * (sin2Phi - sin2Theta) / sin2Theta, Qsqrt = Math.Sqrt(Q);
+            double Y = CameraLength2 * sinPhi * cosPhi / (sin2Phi - sin2Theta);
+
+            //現在のMatrixを保存
+            if (!double.IsNaN(Psqrt) && !double.IsNaN(Qsqrt))
             {
-                double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
-
-                Vector3DBase vec1 = crystal.RotationMatrix * g;
-
-                //bool excess は、excess の時に+1, そうでないときはfalse
-                int sign = Math.Abs(vec1.Z) < 1E-4 ? 0 : (vec1.Z > 0 ? 1 : -1);
-
-                //vec2は、検出器法線がZ軸と一致するようにX軸を回転軸に回転させたベクトル
-                var vec2 = Matrix3D.Rot(new Vector3DBase(1, 0, 0), Tau) * vec1;
-
-                //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
-                var psi = Math.Atan2(vec2.X, vec2.Y);
-                var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
-
-                //vec3normは、vec3を規格化したベクトル
-                var vec3norm = vec3.Normarize();
-                double sinPhi = vec3norm.Y, sin2Phi = sinPhi * sinPhi;
-                double cosPhi = vec3norm.Z, cos2Phi = cosPhi * cosPhi;
-
-                double P = (sin2Phi - sin2Theta) / (CameraLength2 * CameraLength2 * (1 - sin2Theta)), Psqrt = Math.Sqrt(P);
-                double Q = P * (sin2Phi - sin2Theta) / sin2Theta, Qsqrt = Math.Sqrt(Q);
-                double Y = CameraLength2 * sinPhi * cosPhi / (sin2Phi - sin2Theta);
-
-                //現在のMatrixを保存
-                var original = graphics.Transform;
-
-                graphics.RotateTransform((float)(psi / Math.PI * 180));
-                graphics.TranslateTransform(0, -(float)Y);
-
-                if (!double.IsNaN(Psqrt) && !double.IsNaN(Qsqrt))
+                // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
+                double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
+                var pts = new List<PointD>();
+                for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
                 {
-                    // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
-                    double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
-                    List<PointF> pts1 = [], pts2 = [];
-                    for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
-                    {
-                        float x = (float)(Math.Sinh(omega) / Psqrt), y = (float)(Math.Cosh(omega) / Qsqrt);
-                        pts1.Add(new PointF(x, y));
-                        pts2.Add(new PointF(x, -y));
-                    }
-                    try
-                    {
-                        if (!checkBoxKikuchiLine_Kinematical.Checked)
-                            _draw(sign, pts1, pts2, g.Text);
-                        else if (g.RelativeIntensity > 0)
-                        {
-                            penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
-                            penDefect.Color = Blend(colorControlDefectLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
-                            _draw(sign, pts1, pts2, g.Text);
-                        }
-                    }
-                    catch { }
+                    double x = Math.Sinh(omega) / Psqrt, y = -Math.Cosh(omega) / Qsqrt;
+                    var pt = new PointD(cosPsi * x - sinPsi * (y - Y), sinPsi * x + cosPsi * (y - Y));
+                    if (IsScreenArea(pt))
+                        pts.Add(pt);
                 }
 
-                graphics.Transform = original;
+                if (pts.Count > 1)
+                {
+                    if (checkBoxKikuchiLine_Kinematical.Checked)
+                        penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
+                    graphics.DrawLines(penExcess, pts.ToArray());
+
+                    //ラベル描画
+                    if (toolStripButtonIndexLabels.Checked)
+                    {
+                        //まず傾きをみて線のどちら側にラベルを付けるかを決める。θは -π ~ +πの範囲で調節
+                        var original = graphics.Transform;
+                        var θ = Math.Atan2(pts[^1].Y - pts[0].Y, pts[^1].X - pts[0].X);
+                        if (-Math.PI / 2 < θ && θ < Math.PI / 2)
+                        {
+                            graphics.TranslateTransform(pts[0].X, pts[0].Y);
+                            graphics.RotateTransform(θ);
+                        }
+                        else
+                        {
+                            graphics.TranslateTransform(pts[^1].X, pts[^1].Y);
+                            graphics.RotateTransform(θ + Math.PI);
+                        }
+                        graphics.DrawString(g.Text, font, brush, new PointF(0, 0));
+                        graphics.Transform = original;
+                    }
+                }
             }
-        //菊池線とラベルを描画するローカル関数
-        void _draw(int sign, List<PointF> pts1, List<PointF> pts2, string label)
-        {
-            // if (sign == 0)
-            {
-                graphics.DrawLines(penDefect, pts1.Select(p => new PointF(p.X, p.Y + (float)Resolution)).ToArray());
-                graphics.DrawLines(penDefect, pts2.Select(p => new PointF(p.X, p.Y - (float)Resolution)).ToArray());
-                graphics.DrawLines(penExcess, pts1.Select(p => new PointF(p.X, p.Y - (float)Resolution)).ToArray());
-                graphics.DrawLines(penExcess, pts2.Select(p => new PointF(p.X, p.Y + (float)Resolution)).ToArray());
-            }
-            //else
-            //{
-            //    graphics.DrawLines(sign > 0 ? penExcess : penDefect, pts1.ToArray());
-            //    graphics.DrawLines(sign > 0 ? penDefect : penExcess, pts2.ToArray());
-            //}
-            //if (toolStripButtonIndexLabels.Checked)
-            //    graphics.DrawString(label, font, new SolidBrush(colorControlString.Color), sign > 0 ? pts1[pts1.Count / 2]: pts2[pts2.Count / 2]);
         }
 
     }
@@ -1402,7 +1398,7 @@ public partial class FormDiffractionSimulator : Form
 
     #endregion
 
-    #region 逆格子ベクトルを初期化. 
+    #region 逆格子ベクトル, 菊池線, デバイリングの初期化
     //逆格子ベクトルを設定する
     public void SetVector(bool renewCrystal = false)
     {
@@ -1485,8 +1481,29 @@ public partial class FormDiffractionSimulator : Form
         }
 
         if (toolStripButtonKikuchiLines.Checked)
-            formMain.Crystal.SetVectorOfG_KikuchiLine(numericBoxKikuchiLineThreshold.Value, Source);
+        {
+            if (radioButtonKikuchiThresholdOfLength.Checked)
+            {
+                formMain.Crystal.VectorOfG_KikuchiLine =
+                formMain.Crystal.VectorOfG.Where(g => g.Length < numericBoxKikuchiThresholdOfLength.Value).OrderByDescending(g=>g.Length).ToList();
+            }
+            else
+            {
+                var list = formMain.Crystal.VectorOfG.OrderByDescending(g => g.RelativeIntensity).ToList();
+                var max = Math.Min(numericBoxKikuchiThreadSholdOfStructureFactor.ValueInteger, formMain.Crystal.VectorOfG.Length);
+                while (max + 1 < formMain.Crystal.VectorOfG.Length)
+                {
+                    if (SymmetryStatic.CheckEquivalentPlanes(list[max-1].Index, list[max].Index,formMain.Crystal.Symmetry))
 
+                        //(list[max - 1].RelativeIntensity - list[max].RelativeIntensity) / list[max].RelativeIntensity < 1E-6)
+                        max++;
+                    else
+                        break;
+                }
+                formMain.Crystal.VectorOfG_KikuchiLine = list[0..max];
+                formMain.Crystal.VectorOfG_KikuchiLine.Reverse();
+            }
+        }
         toolStripStatusLabelTimeForSearchingG.Text = $"Time for searching g-vectors: {sw.ElapsedMilliseconds} ms.  ";
     }
     #endregion
@@ -1691,7 +1708,6 @@ public partial class FormDiffractionSimulator : Form
             }
         }
     }
-
 
     /// <summary>
     /// 検出器座標で与えられた座標ptが、画面内に含まれるかどうかを返す
@@ -3114,10 +3130,21 @@ public partial class FormDiffractionSimulator : Form
 
     private void checkBoxNegativeImage_CheckedChanged(object sender, EventArgs e)
     {
-        colorControlBackGround.Inversion = colorControlNoCondition.Inversion = colorControlString.Inversion =
-            colorControlDefectLine.Inversion = colorControlExcessLine.Inversion =
+        colorControlBackGround.Inversion = colorControlNoCondition.Inversion = colorControlString.Inversion = colorControlExcessLine.Inversion =
             checkBoxNegativeImage.Checked;
         SetVector();
         Draw();
     }
+
+    #region 菊池線
+    private void radioButtonKikuchiThresholdOfLength_CheckedChanged(object sender, EventArgs e)
+    {
+        if (!(sender as RadioButton).Checked) return;
+        numericBoxKikuchiThreadSholdOfStructureFactor.ReadOnly = !radioButtonKikuchiThresholdOfStructureFactor.Checked;
+        numericBoxKikuchiThresholdOfLength.ReadOnly = !radioButtonKikuchiThresholdOfLength.Checked;
+        SetVector();
+        Draw();
+    }
+
+    #endregion
 }

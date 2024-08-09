@@ -328,6 +328,13 @@ public static class DoubleEx
 /// </summary>
 public static class GraphicsAlpha
 {
+
+    public static void TranslateTransform(this Graphics g, double x, double y)
+        => g.TranslateTransform((float)x, (float)y);
+
+    public static void RotateTransform(this Graphics g, double angle_radians)
+     => g.RotateTransform((float)(angle_radians / Math.PI * 180));
+
     public static void DrawArc(this Graphics g, Pen pen, double x, double y, double width, double height, double startAngle, double sweepAngle)
         => g.DrawArc(pen, (float)x, (float)y, (float)width, (float)height, (float)startAngle, (float)sweepAngle);
 
