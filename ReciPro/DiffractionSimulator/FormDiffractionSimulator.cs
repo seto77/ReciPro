@@ -1394,6 +1394,15 @@ public partial class FormDiffractionSimulator : Form
         Draw();
     }
 
+    private void radioButtonKikuchiThresholdOfLength_CheckedChanged(object sender, EventArgs e)
+    {
+        if (!(sender as RadioButton).Checked) return;
+        numericBoxKikuchiThreadSholdOfStructureFactor.ReadOnly = !radioButtonKikuchiThresholdOfStructureFactor.Checked;
+        numericBoxKikuchiThresholdOfLength.ReadOnly = !radioButtonKikuchiThresholdOfLength.Checked;
+        SetVector();
+        Draw();
+    }
+
     private void checkBoxKikuchiLine_Kinematical_CheckedChanged(object sender, EventArgs e) => Draw();
 
     #endregion
@@ -1494,8 +1503,6 @@ public partial class FormDiffractionSimulator : Form
                 while (max + 1 < formMain.Crystal.VectorOfG.Length)
                 {
                     if (SymmetryStatic.CheckEquivalentPlanes(list[max-1].Index, list[max].Index,formMain.Crystal.Symmetry))
-
-                        //(list[max - 1].RelativeIntensity - list[max].RelativeIntensity) / list[max].RelativeIntensity < 1E-6)
                         max++;
                     else
                         break;
@@ -3105,6 +3112,7 @@ public partial class FormDiffractionSimulator : Form
     }
     #endregion
 
+    #region 解像度
     private void radioButtonResoUnit_CheckedChanged(object sender, EventArgs e)
     {
         if (sender is RadioButton a && a.Checked)
@@ -3120,10 +3128,11 @@ public partial class FormDiffractionSimulator : Form
             SkipEvent = skipDrawing = false;
         }
     }
+    #endregion
 
+    #region 水平/垂直反転、ネガ/ポジ
     private void checkBoxFlipHorizontally_CheckedChanged(object sender, EventArgs e)
     {
-        //SetProjection();
         SetVector();
         Draw();
     }
@@ -3135,16 +3144,6 @@ public partial class FormDiffractionSimulator : Form
         SetVector();
         Draw();
     }
-
-    #region 菊池線
-    private void radioButtonKikuchiThresholdOfLength_CheckedChanged(object sender, EventArgs e)
-    {
-        if (!(sender as RadioButton).Checked) return;
-        numericBoxKikuchiThreadSholdOfStructureFactor.ReadOnly = !radioButtonKikuchiThresholdOfStructureFactor.Checked;
-        numericBoxKikuchiThresholdOfLength.ReadOnly = !radioButtonKikuchiThresholdOfLength.Checked;
-        SetVector();
-        Draw();
-    }
-
     #endregion
+
 }

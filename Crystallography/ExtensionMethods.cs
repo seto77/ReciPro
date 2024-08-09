@@ -1,4 +1,6 @@
-﻿using MathNet.Numerics.LinearAlgebra;
+﻿#region using
+
+using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,8 @@ using System.Linq;
 using System.Numerics;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using MC = Crystallography.MathematicalConstants;
+
+#endregion
 
 namespace Crystallography;
 
@@ -249,6 +253,9 @@ public static class HKL
     public static (int H, int K, int L) Plus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H + y.H, x.K + y.K, x.L + y.L);
     public static (int H, int K, int L) Minus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H - y.H, x.K - y.K, x.L - y.L);
     public static int Multiply(ref this (int H, int K, int L) x, (int H, int K, int L) y) => x.H * y.H + x.K * y.K + x.L * y.L;
+
+    public static (int H, int K, int L) Cross(ref this (int H, int K, int L) x, (int H, int K, int L) y)
+        => (x.K * y.L - x.L * y.K, x.L * y.H - x.H * y.L, x.H * y.K - x.K * y.H);
 }
 #endregion
 
@@ -328,12 +335,11 @@ public static class DoubleEx
 /// </summary>
 public static class GraphicsAlpha
 {
+    #region 座標変換
+    public static void TranslateTransform(this Graphics g, double x, double y)        => g.TranslateTransform((float)x, (float)y);
 
-    public static void TranslateTransform(this Graphics g, double x, double y)
-        => g.TranslateTransform((float)x, (float)y);
-
-    public static void RotateTransform(this Graphics g, double angle_radians)
-     => g.RotateTransform((float)(angle_radians / Math.PI * 180));
+    public static void RotateTransform(this Graphics g, double angle_radians)     => g.RotateTransform((float)(angle_radians / Math.PI * 180));
+    #endregion
 
     public static void DrawArc(this Graphics g, Pen pen, double x, double y, double width, double height, double startAngle, double sweepAngle)
         => g.DrawArc(pen, (float)x, (float)y, (float)width, (float)height, (float)startAngle, (float)sweepAngle);
