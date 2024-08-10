@@ -61,7 +61,10 @@
             groupBox3 = new System.Windows.Forms.GroupBox();
             colorControlString = new ColorControl();
             label14 = new System.Windows.Forms.Label();
+            colorControlOrigin = new ColorControl();
             colorControlFoot = new ColorControl();
+            checkBoxShowFootPosition = new System.Windows.Forms.CheckBox();
+            checkBoxShowDirectPosition = new System.Windows.Forms.CheckBox();
             colorControlBackGround = new ColorControl();
             tabPageKikuchi = new System.Windows.Forms.TabPage();
             radioButtonKikuchiThresholdOfStructureFactor = new System.Windows.Forms.RadioButton();
@@ -252,7 +255,6 @@
             flowLayoutPanelColorScale = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelSpotColor = new System.Windows.Forms.FlowLayoutPanel();
             label2 = new System.Windows.Forms.Label();
-            colorControlOrigin = new ColorControl();
             colorControlNoCondition = new ColorControl();
             colorControlScrewGlide = new ColorControl();
             colorControlForbiddenLattice = new ColorControl();
@@ -612,7 +614,10 @@
             resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Controls.Add(colorControlString);
             groupBox3.Controls.Add(label14);
+            groupBox3.Controls.Add(colorControlOrigin);
             groupBox3.Controls.Add(colorControlFoot);
+            groupBox3.Controls.Add(checkBoxShowFootPosition);
+            groupBox3.Controls.Add(checkBoxShowDirectPosition);
             groupBox3.Controls.Add(colorControlBackGround);
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
@@ -643,6 +648,25 @@
             label14.Name = "label14";
             toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip"));
             // 
+            // colorControlOrigin
+            // 
+            resources.ApplyResources(colorControlOrigin, "colorControlOrigin");
+            colorControlOrigin.Argb = -65536;
+            colorControlOrigin.BackColor = System.Drawing.Color.Transparent;
+            colorControlOrigin.Blue = 0;
+            colorControlOrigin.BlueF = 0F;
+            colorControlOrigin.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlOrigin.Color = System.Drawing.Color.FromArgb(255, 0, 0);
+            colorControlOrigin.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControlOrigin.Green = 0;
+            colorControlOrigin.GreenF = 0F;
+            colorControlOrigin.Inversion = false;
+            colorControlOrigin.Name = "colorControlOrigin";
+            colorControlOrigin.Red = 255;
+            colorControlOrigin.RedF = 1F;
+            toolTip.SetToolTip(colorControlOrigin, resources.GetString("colorControlOrigin.ToolTip"));
+            colorControlOrigin.ColorChanged += Draw;
+            // 
             // colorControlFoot
             // 
             resources.ApplyResources(colorControlFoot, "colorControlFoot");
@@ -661,6 +685,26 @@
             colorControlFoot.RedF = 0F;
             toolTip.SetToolTip(colorControlFoot, resources.GetString("colorControlFoot.ToolTip"));
             colorControlFoot.ColorChanged += Draw;
+            // 
+            // checkBoxShowFootPosition
+            // 
+            resources.ApplyResources(checkBoxShowFootPosition, "checkBoxShowFootPosition");
+            checkBoxShowFootPosition.Checked = true;
+            checkBoxShowFootPosition.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxShowFootPosition.Name = "checkBoxShowFootPosition";
+            toolTip.SetToolTip(checkBoxShowFootPosition, resources.GetString("checkBoxShowFootPosition.ToolTip"));
+            checkBoxShowFootPosition.UseVisualStyleBackColor = true;
+            checkBoxShowFootPosition.CheckedChanged += Draw;
+            // 
+            // checkBoxShowDirectPosition
+            // 
+            resources.ApplyResources(checkBoxShowDirectPosition, "checkBoxShowDirectPosition");
+            checkBoxShowDirectPosition.Checked = true;
+            checkBoxShowDirectPosition.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxShowDirectPosition.Name = "checkBoxShowDirectPosition";
+            toolTip.SetToolTip(checkBoxShowDirectPosition, resources.GetString("checkBoxShowDirectPosition.ToolTip"));
+            checkBoxShowDirectPosition.UseVisualStyleBackColor = true;
+            checkBoxShowDirectPosition.CheckedChanged += Draw;
             // 
             // colorControlBackGround
             // 
@@ -2496,7 +2540,6 @@
             flowLayoutPanelSpotColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             flowLayoutPanelSpotColor.Controls.Add(label2);
             flowLayoutPanelSpotColor.Controls.Add(checkBoxUseCrystalColor);
-            flowLayoutPanelSpotColor.Controls.Add(colorControlOrigin);
             flowLayoutPanelSpotColor.Controls.Add(colorControlNoCondition);
             flowLayoutPanelSpotColor.Controls.Add(colorControlScrewGlide);
             flowLayoutPanelSpotColor.Controls.Add(colorControlForbiddenLattice);
@@ -2508,25 +2551,6 @@
             resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
             toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
-            // 
-            // colorControlOrigin
-            // 
-            resources.ApplyResources(colorControlOrigin, "colorControlOrigin");
-            colorControlOrigin.Argb = -65536;
-            colorControlOrigin.BackColor = System.Drawing.Color.Transparent;
-            colorControlOrigin.Blue = 0;
-            colorControlOrigin.BlueF = 0F;
-            colorControlOrigin.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlOrigin.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlOrigin.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            colorControlOrigin.Green = 0;
-            colorControlOrigin.GreenF = 0F;
-            colorControlOrigin.Inversion = false;
-            colorControlOrigin.Name = "colorControlOrigin";
-            colorControlOrigin.Red = 255;
-            colorControlOrigin.RedF = 1F;
-            toolTip.SetToolTip(colorControlOrigin, resources.GetString("colorControlOrigin.ToolTip1"));
-            colorControlOrigin.ColorChanged += Draw;
             // 
             // colorControlNoCondition
             // 
@@ -3157,5 +3181,7 @@
         private NumericBox numericBoxKikuchiThresholdOfLength;
         private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfStructureFactor;
         private NumericBox numericBoxKikuchiThreadSholdOfStructureFactor;
+        private System.Windows.Forms.CheckBox checkBoxShowDirectPosition;
+        private System.Windows.Forms.CheckBox checkBoxShowFootPosition;
     }
 }

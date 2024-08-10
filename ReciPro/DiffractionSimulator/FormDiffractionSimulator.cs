@@ -174,6 +174,36 @@ public partial class FormDiffractionSimulator : Form
         }
     }
 
+    public double ResolutionInNMinv 
+    {
+        set
+        {
+            var val = radioButtonResoUnitMilliMeter.Checked ? CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * value / 2.0)) :
+                 value;
+
+            skipDrawing = true;
+            if (val > numericBoxResolution.Maximum)
+                numericBoxResolution.Value = numericBoxResolution.Maximum;
+            else if (val < numericBoxResolution.Minimum)
+                numericBoxResolution.Value = numericBoxResolution.Minimum;
+            else
+                numericBoxResolution.Value = val;
+            skipDrawing = false;
+
+            //SetProjection();
+            SetVector();
+            Draw();
+        }
+        get
+        {
+            if (radioButtonResoUnitNanometerInv.Checked)//単位がnm^-1/pixの時はそのまま返す
+                return numericBoxResolution.Value;
+            else//GUI上での表示単位が nm^-1/pixの時
+                return 2.0 * Math.Sin(Math.Atan(numericBoxResolution.Value / CameraLength2) / 2.0) / WaveLength;
+        }
+
+    }
+
     /// <summary>
     /// 画面解像度 mm/pix
     /// </summary>
@@ -201,7 +231,7 @@ public partial class FormDiffractionSimulator : Form
         {
             if (radioButtonResoUnitMilliMeter.Checked)//単位がmm/pixの時はそのまま返す
                 return numericBoxResolution.Value;
-            else//単位が nm^-1/pixの時
+            else//GUI上での表示単位が nm^-1/pixの時
                 return CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength * numericBoxResolution.Value / 2.0));
 
         }
@@ -229,7 +259,12 @@ public partial class FormDiffractionSimulator : Form
 
     public double CameraLength2
     {
-        set { FormDiffractionSimulatorGeometry.CameraLength2 = value; Draw(); }
+        set
+        {
+            numericUpDownCamaraLength2.Value = (decimal)value;
+            FormDiffractionSimulatorGeometry.CameraLength2 = value; 
+            Draw();
+        }
         get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.CameraLength2;
     }
 
@@ -965,26 +1000,33 @@ public partial class FormDiffractionSimulator : Form
             return null;
 
         //ダイレクトスポットの描画
-        var ptOrigin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
-        if (IsScreenArea(ptOrigin))
+        if (checkBoxShowDirectPosition.Checked)
         {
-            graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), ptOrigin, spotRadiusOnDetector);
-            if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1 && !radioButtonIntensityDynamical.Checked)
+            var ptOrigin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+            if (IsScreenArea(ptOrigin))
             {
-                var pt = convertDetectorToScreen(ptOrigin) + new PointD(spotRadiusOnDetectorF / 2.0, spotRadiusOnDetectorF / 2f) / Resolution;
-                graphics.DrawString("0 0 0", font, Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color), pt, true);
-                //graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color)), (float)(ptOrigin.X + spotRadiusOnDetectorF / 2f), (float)(ptOrigin.Y + spotRadiusOnDetectorF / 2f));
+                graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), ptOrigin, spotRadiusOnDetector);
+                if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1 && !radioButtonIntensityDynamical.Checked)
+                {
+                    var pt = convertDetectorToScreen(ptOrigin) + new PointD(spotRadiusOnDetectorF / 2.0, spotRadiusOnDetectorF / 2f) / Resolution;
+                    graphics.DrawString("0 0 0", font, Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color), pt, true);
+                    //graphics.DrawString("0 0 0", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlOrigin.Color)), (float)(ptOrigin.X + spotRadiusOnDetectorF / 2f), (float)(ptOrigin.Y + spotRadiusOnDetectorF / 2f));
+                }
             }
         }
+
         //垂線の足の描画
-        if (Tau != 0 && IsScreenArea(new PointD(0, 0)))
+        if (checkBoxShowFootPosition.Checked)
         {
-            graphics.DrawCross(new Pen(colorControlFoot.Color, (float)Resolution), 0, 0, spotRadiusOnDetector);
-            if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1)
+            if (Tau != 0 && IsScreenArea(new PointD(0, 0)))
             {
-                var pt = new PointD(spotRadiusOnDetectorF / 2.0, spotRadiusOnDetectorF / 2f) / Resolution;
-                graphics.DrawString("foot", font, Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color), pt, true);
-                //graphics.DrawString("foot", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color)), spotRadiusOnDetectorF / 2f, spotRadiusOnDetectorF / 2f);
+                graphics.DrawCross(new Pen(colorControlFoot.Color, (float)Resolution), 0, 0, spotRadiusOnDetector);
+                if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1)
+                {
+                    var pt = new PointD(spotRadiusOnDetectorF / 2.0, spotRadiusOnDetectorF / 2f) / Resolution;
+                    graphics.DrawString("foot", font, Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color), pt, true);
+                    //graphics.DrawString("foot", font, new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlFoot.Color)), spotRadiusOnDetectorF / 2f, spotRadiusOnDetectorF / 2f);
+                }
             }
         }
         return null;
@@ -2672,7 +2714,7 @@ public partial class FormDiffractionSimulator : Form
     //private void copyCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
     private void saveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
 
-    private void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage)
+    public void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage, string filename = "")
     {
         if (isImage)
         {
@@ -2683,9 +2725,18 @@ public partial class FormDiffractionSimulator : Form
             {
                 if (save)
                 {
-                    SaveFileDialog dlg = new() { Filter = "*.png|*.png" };
-                    if (dlg.ShowDialog() == DialogResult.OK)
-                        bmp.Save(dlg.FileName, ImageFormat.Png);
+                    if (filename == "")
+                    {
+                        SaveFileDialog dlg = new() { Filter = "*.png|*.png" };
+                        if (dlg.ShowDialog() == DialogResult.OK)
+                            filename = dlg.FileName;
+                    }
+
+                    if (!filename.EndsWith(".png"))
+                        filename += ".png";
+
+                    if (Path.Exists(Path.GetDirectoryName( filename)))
+                        bmp.Save(filename, ImageFormat.Png);
                 }
                 else
                 {
@@ -2707,13 +2758,19 @@ public partial class FormDiffractionSimulator : Form
 
             if (save)
             {
-                SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" };
-                if (dlg.ShowDialog() == DialogResult.OK)
+                if (filename == "")
                 {
-                    FileStream fsm = new(dlg.FileName, FileMode.Create, FileAccess.Write);
-                    fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
-                    fsm.Close();
+                    SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" };
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                        filename = dlg.FileName;
                 }
+                if (filename.EndsWith(".emf"))
+                    filename += ".emf";
+
+                FileStream fsm = new(filename, FileMode.Create, FileAccess.Write);
+                fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
+                fsm.Close();
+
             }
             else
                 ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);

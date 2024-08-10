@@ -365,16 +365,16 @@
     <value />
   </data>
   <data name="trackBarStrSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 26</value>
+    <value>8, 21</value>
   </data>
   <data name="trackBarStrSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 16</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>261, 0</value>
+    <value>291, 0</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 56</value>
+    <value>120, 51</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>文字のサイズ</value>
@@ -386,7 +386,7 @@
     <value>文字色</value>
   </data>
   <data name="colorControlString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 21</value>
+    <value>11, 48</value>
   </data>
   <data name="colorControlString.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 20</value>
@@ -395,7 +395,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 43</value>
+    <value>136, 40</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 36</value>
@@ -404,11 +404,29 @@
     <value>試料から検出器へ
 下ろした垂線の足</value>
   </data>
+  <data name="colorControlOrigin.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlOrigin.FooterText" xml:space="preserve">
+    <value>ダイレクトスポット位置</value>
+  </data>
+  <data name="colorControlOrigin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 19</value>
+  </data>
+  <data name="colorControlOrigin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 20</value>
+  </data>
   <data name="colorControlFoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 49</value>
+    <value>116, 49</value>
   </data>
   <data name="colorControlFoot.ToolTip1" xml:space="preserve">
     <value />
+  </data>
+  <data name="checkBoxShowFootPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 51</value>
+  </data>
+  <data name="checkBoxShowDirectPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 22</value>
   </data>
   <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -417,13 +435,13 @@
     <value>背景</value>
   </data>
   <data name="colorControlBackGround.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 23</value>
+    <value>12, 21</value>
   </data>
   <data name="colorControlBackGround.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 20</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 81</value>
+    <value>282, 81</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>色</value>
@@ -507,9 +525,7 @@
     <value />
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
-    <value>Set a threshold of d-spacings of Kikuchi lines.
-Kikuchi lines under this value are simulated. 
-</value>
+    <value />
   </data>
   <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -2061,18 +2077,6 @@ Kikuchi lines under this value are simulated.
   <data name="label2.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="colorControlOrigin.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="colorControlOrigin.FooterText" xml:space="preserve">
-    <value>ダイレクト</value>
-  </data>
-  <data name="colorControlOrigin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 27</value>
-  </data>
-  <data name="colorControlOrigin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 20</value>
-  </data>
   <data name="colorControlNoCondition.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -2080,7 +2084,7 @@ Kikuchi lines under this value are simulated.
     <value>一般反射</value>
   </data>
   <data name="colorControlNoCondition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 27</value>
+    <value>5, 27</value>
   </data>
   <data name="colorControlNoCondition.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 20</value>

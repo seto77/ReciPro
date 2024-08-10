@@ -43,9 +43,17 @@ public class Macro : MacroBase
             p.help.Add("ReciPro.Dir.RotateAroundPlane(int h, int k, int l, double angle) # Rotate the current crystal with the crystal plane (hkl) as the rotation axis");
         }
 
-        public void Euler(double phi, double theta, double psi) => p.main.SetRotation(phi, theta, psi);
+        public void Euler(double phi, double theta, double psi)
+        {
+            p.main.SetRotation(phi, theta, psi);
+            Application.DoEvents();
+        }
 
-        public void EulerInDegree(double phi, double theta, double psi) => p.main.SetRotation(phi / 180.0 * Math.PI, theta / 180.0 * Math.PI, psi / 180.0 * Math.PI);
+        public void EulerInDegree(double phi, double theta, double psi)
+        {
+            p.main.SetRotation(phi / 180.0 * Math.PI, theta / 180.0 * Math.PI, psi / 180.0 * Math.PI);
+            Application.DoEvents();
+        }
 
         public void Rotate(double vX, double vY, double vZ, double angle) => p.main.Rotate((vX, vY, vZ), angle);
 
@@ -96,21 +104,25 @@ public class Macro : MacroBase
             p.help.Add("ReciPro.DifSim.Calc_Kinematical() # Calculate the spot intensities using the excitation error and the structure factor.");
             p.help.Add("ReciPro.DifSim.Calc_Dynamical() # Calculate the spot intensities  by the dynamical theory.");
 
-            p.help.Add("ReciPro.DifSim.ImageResolution # Double. Set/Get the image resolution (nm^-1/pix).");
             p.help.Add("ReciPro.DifSim.ImageWidth # Integer. Set/Get the image width in pixel.");
             p.help.Add("ReciPro.DifSim.ImageHeight # Integer. Set/Get the image height in pixel.");
-            p.help.Add("ReciPro.DifSim.ImageResolution # Double. Set/Get the image resolution (nm^-1/pix).");
+            p.help.Add("ReciPro.DifSim.ImageResolutionInMM # Double. Set/Get the image resolution (mm/pix).");
+            p.help.Add("ReciPro.DifSim.ImageResolutionInNMinv # Double. Set/Get the image resolution (nm^-1/pix).");
             p.help.Add("ReciPro.DifSim.CameraLength2 # Double. Set/Get the distance from the sample to the detector.");
             p.help.Add("ReciPro.DifSim.Foot(double x, double y) # Set coordinates of the foot of the perpendicular line from the sample to the detector.");
 
             p.help.Add("ReciPro.DifSim.SkipRendering # True/False. Set/get whether screen rendering is skipped or not.");
 
-
             p.help.Add("ReciPro.DifSim.SpotInfo() # Get spot information in CSV format.");
+
+            p.help.Add("ReciPro.DifSim.SaveAsPng(string filename) # Save the current simulation pattern as png format file. If filename is omitted, a dialog will open.");
+
         }
 
         public void Open() => Execute(new Action(() => difSim.Visible = true));
         public void Close() => Execute(new Action(() => difSim.Visible = false));
+
+        public void SaveAsPng(string filename = "") => difSim.SaveOrCopy(true, true, true, filename);
 
         public void Source_Xray() { difSim.Source = WaveSource.Xray; }
         public void Source_Electron() { difSim.Source = WaveSource.Electron; }
@@ -130,7 +142,32 @@ public class Macro : MacroBase
         public void Calc_Kinematical() { difSim.CalcMode = FormDiffractionSimulator.CalcModes.Kinematical; }
         public void Calc_Dynamical() { difSim.CalcMode = FormDiffractionSimulator.CalcModes.Dynamical; }
 
-        public double ImageResolution { get => difSim.Resolution; set => difSim.Resolution = value; }
+        public double ImageResolutionInMM
+        {
+            get 
+            {
+                difSim.ResolutionUnit = LengthUnitEnum.MilliMeter;
+                return difSim.Resolution; 
+            }
+            set
+            {
+                difSim.ResolutionUnit = LengthUnitEnum.MilliMeter;
+                difSim.Resolution = value;
+            }
+        }
+        public double ImageResolutionInNMinv
+        {
+            get
+            {
+                difSim.ResolutionUnit = LengthUnitEnum.NanoMeterInverse; 
+                return difSim.ResolutionInNMinv;
+            }
+            set
+            {
+                difSim.ResolutionUnit = LengthUnitEnum.NanoMeterInverse;
+                difSim.ResolutionInNMinv = value;
+            }
+        }
         public int ImageWidth { get => difSim.ClientWidth; set => difSim.ClientWidth = value; }
         public int ImageHeight { get => difSim.ClientHeight; set => difSim.ClientHeight = value; }
         public double CameraLength2 { get => difSim.CameraLength2; set => difSim.CameraLength2 = value; }

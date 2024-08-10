@@ -7,6 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.890(2024/08/10)  Improved 'Macro' functions." +
         "\r\n ver4.889(2024/08/09)  Fixed bugs on the 'Diffraction Simulator'." +
         "\r\n ver4.888(2024/08/07)  Added the 'Kikuchi line pairs' projection mode to the 'Stereonet' simulation. (see https://github.com/seto77/ReciPro/issues/35)" +
         "\r\n ver4.887(2024/07/30)  Fixed a minor bug." +
