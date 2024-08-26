@@ -21,6 +21,8 @@ using M4d = OpenTK.Matrix4d;
 using M4f = OpenTK.Matrix4;
 using M3d = OpenTK.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
+using MathNet.Numerics.Distributions;
+using static System.Windows.Forms.DataFormats;
 #endregion 定義
 
 namespace Crystallography.OpenGL;
@@ -693,7 +695,7 @@ public class Lines : GLObject
         CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
         Vertices = vertices.Select(v => new Vertex(v.ToV3f(), mat.Argb)).ToArray();
         Indices = Enumerable.Range(0, vertices.Length).Select(i => (uint)i).ToArray();
-        Primitives = new[] { (PT.LineStrip, vertices.Length) };
+        Primitives = [(PT.LineStrip, vertices.Length)];
     }
 }
 
@@ -868,7 +870,7 @@ public class Polygon : GLObject
 /// <param name="c">頂点c</param>
 /// <param name="mat"></param>
 /// <param name="mode"></param>
-public class Triangle(V3d a, V3d b, V3d c, Material mat, DrawingMode mode) : Polygon(new V3d[] { a, b, c }, mat, mode)
+public class Triangle(V3d a, V3d b, V3d c, Material mat, DrawingMode mode) : Polygon([a, b, c], mat, mode)
 {
     public Triangle(Vector3DBase a, Vector3DBase b, Vector3DBase c, Material mat, DrawingMode mode)
    : this(new V3d(a.X, a.Y, a.Z), new V3d(b.X, b.Y, b.Z), new V3d(c.X, c.Y, c.Z), mat, mode) { }
@@ -912,6 +914,82 @@ public class Disk(V3d origin, V3d normal, double radius, Material mat, DrawingMo
 
     public Disk(V3d origin, V3d normal, double radius, float lineWidth, Material mat, DrawingMode mode, int slices = 60)
         : this(origin, normal, radius, mat, mode, slices)
+    { LineWidth = lineWidth; }
+}
+
+/// <summary>
+/// 穴あきディスク
+/// </summary>
+public class HoledDisk : GLObject
+{
+    public double RadiusInner, RadiusOuter;
+
+    public V3d Origin, Normal;
+    public HoledDisk(V3d origin, V3d normal, double radius1, double radius2, Material mat, DrawingMode mode, int slices = 60):base(mat,mode)
+    {
+        RadiusInner=Math.Min(radius1, radius2);
+        RadiusOuter=Math.Max(radius1, radius2);
+        Origin = origin;
+        Normal = normal;
+
+        CircumscribedSphereCenter = new V4d(origin, 1);
+        CircumscribedSphereRadius = RadiusOuter;
+
+        var sins = Enumerable.Range(0, slices).Select(i => Math.Sin((double)i / slices * 2 * Math.PI)).ToArray();
+        var coss = Enumerable.Range(0, slices).Select(i => Math.Cos((double)i / slices * 2 * Math.PI)).ToArray();
+
+        IgnoreNormalSides = true;
+
+        M3d rotMat;
+        if (normal == vZ)
+            rotMat = M3d.Identity;
+        else
+            rotMat = M3d.CreateFromAxisAngle(V3d.Cross(normal, vZ), V3d.CalculateAngle(vZ, normal));
+
+        var vertices = new V3d[slices * 2];
+
+        for (int i = 0; i < slices; i++)
+        {
+            vertices[i] = new V3d(RadiusOuter * sins[i], RadiusOuter * coss[i], 0);
+            vertices[i+slices] = new V3d(RadiusInner * sins[i], RadiusInner * coss[i], 0);
+        }
+
+        List<int> indicesTmp = [];
+        for (int i = 0; i < slices; i++)
+        {
+            if (i < slices - 1)
+                indicesTmp.AddRange([i, i + 1, i + slices + 1, i + slices]);
+            else
+                indicesTmp.AddRange([i, 0, slices + 1, i + slices]);
+        }
+        var types = new List<PT>();
+        var indices = new List<int[]>();
+
+        types.Add(PT.Quads);
+        indices.Add([.. indicesTmp]);
+
+        types.Add(PT.LineLoop);
+        indices.Add([.. indicesTmp]);
+
+        types.Add(PT.Points);
+        indices.Add(Enumerable.Range(0, vertices.Length).ToArray());
+
+        Vertices = new Vertex[vertices.Length];
+        for (int i = 0; i < vertices.Length; i++)
+            Vertices[i] = new Vertex((rotMat.Mult(vertices[i]) + origin).ToV3f(), normal.ToV3f(), mat.Argb);
+
+        Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
+
+        Primitives = types.Select((t, i) => (t, indices[i].Length)).ToArray();
+
+
+    }
+
+    public HoledDisk(Vector3DBase origin, Vector3DBase normal, double radius1, double radius2, Material mat, DrawingMode mode, int slices = 60)
+        : this(new V3d(origin.X, origin.Y, origin.Z), new V3d(normal.X, normal.Y, normal.Z), radius1, radius2, mat, mode, slices) { }
+
+    public HoledDisk(V3d origin, V3d normal, double radius1, double radius2, float lineWidth, Material mat, DrawingMode mode, int slices = 60)
+        : this(origin, normal, radius1, radius2, mat, mode, slices)
     { LineWidth = lineWidth; }
 }
 
@@ -1235,7 +1313,8 @@ public class Pipe : GLObject
     /// <param name="vec">始点から終点へのベクトル</param>
     /// <param name="r1">始点側の半径</param>
     /// <param name="r2">終点側の半径</param>
-    /// <param name="mat">素材</param>
+    /// <param name="mat1">素材</param>
+    /// <param name="mat2">素材 (指定しない場合はmat1と同じ, 指定した場合は半分がこれになる)</param>
     /// <param name="mode">描画モード</param>
     /// <param name="sole">trueの場合は底面を描画する</param>
     /// <param name="slices">高さの分割数</param>
@@ -1321,9 +1400,9 @@ public class Pipe : GLObject
             {
                 current = h * stacks + t;
                 if (t < stacks - 1)
-                    indiceSide.AddRange(new[] { current, current + stacks, current + 1 + stacks, current + 1 });
+                    indiceSide.AddRange([current, current + stacks, current + 1 + stacks, current + 1]);
                 else
-                    indiceSide.AddRange(new[] { current, current + stacks, current + 1, current + 1 - stacks });
+                    indiceSide.AddRange([current, current + stacks, current + 1, current + 1 - stacks]);
             }
         var types = new List<PT>();
         var indices = new List<int[]>();

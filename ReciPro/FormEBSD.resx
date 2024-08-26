@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="waveLengthControl1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="waveLengthControl1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -131,10 +139,12 @@
   <data name="waveLengthControl1.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>500, 500</value>
   </data>
-  <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 58</value>
+  <data name="waveLengthControl1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>210, 0</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 55</value>
+  </data>
   <data name="waveLengthControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -151,7 +161,187 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="panelGeometry.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 67</value>
+  </data>
+  <data name="panelGeometry.Size" type="System.Drawing.Size, System.Drawing">
+    <value>378, 328</value>
+  </data>
+  <data name="panelGeometry.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panelGeometry.Name" xml:space="preserve">
+    <value>panelGeometry</value>
+  </data>
+  <data name="&gt;&gt;panelGeometry.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelGeometry.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelGeometry.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>431, 172</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 24</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericBoxSampleTilt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxSampleTilt.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
+    <value>Sample tilt</value>
+  </data>
+  <data name="numericBoxSampleTilt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 9</value>
+  </data>
+  <data name="numericBoxSampleTilt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxSampleTilt.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxSampleTilt.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxSampleTilt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 30</value>
+  </data>
+  <data name="numericBoxSampleTilt.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericBoxSampleTilt.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSampleTilt.Name" xml:space="preserve">
+    <value>numericBoxSampleTilt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSampleTilt.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSampleTilt.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericBoxSampleTilt.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonViewIsometric.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonViewIsometric.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonViewIsometric.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonViewIsometric.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonViewIsometric.Location" type="System.Drawing.Point, System.Drawing">
+    <value>400, 98</value>
+  </data>
+  <data name="buttonViewIsometric.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 25</value>
+  </data>
+  <data name="buttonViewIsometric.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="buttonViewIsometric.Text" xml:space="preserve">
+    <value>View Isometric</value>
+  </data>
+  <data name="&gt;&gt;buttonViewIsometric.Name" xml:space="preserve">
+    <value>buttonViewIsometric</value>
+  </data>
+  <data name="&gt;&gt;buttonViewIsometric.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonViewIsometric.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonViewIsometric.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="buttonViewAlongBeam.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonViewAlongBeam.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonViewAlongBeam.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonViewAlongBeam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonViewAlongBeam.Location" type="System.Drawing.Point, System.Drawing">
+    <value>396, 70</value>
+  </data>
+  <data name="buttonViewAlongBeam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 25</value>
+  </data>
+  <data name="buttonViewAlongBeam.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="buttonViewAlongBeam.Text" xml:space="preserve">
+    <value>View along beam</value>
+  </data>
+  <data name="&gt;&gt;buttonViewAlongBeam.Name" xml:space="preserve">
+    <value>buttonViewAlongBeam</value>
+  </data>
+  <data name="&gt;&gt;buttonViewAlongBeam.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonViewAlongBeam.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonViewAlongBeam.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="paneltTrajectory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 411</value>
+  </data>
+  <data name="paneltTrajectory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>378, 328</value>
+  </data>
+  <data name="paneltTrajectory.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;paneltTrajectory.Name" xml:space="preserve">
+    <value>paneltTrajectory</value>
+  </data>
+  <data name="&gt;&gt;paneltTrajectory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;paneltTrajectory.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;paneltTrajectory.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -160,7 +350,7 @@
     <value>7, 17</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 510</value>
+    <value>1059, 845</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>

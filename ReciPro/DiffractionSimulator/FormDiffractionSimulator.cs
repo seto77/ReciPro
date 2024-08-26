@@ -2915,7 +2915,6 @@ public partial class FormDiffractionSimulator : Form
     private (double maxAngle, double ewaldRadius, bool Precession) beforeEwald = (0, 0, false);
     private void Draw3D()
     {
-
         var r = EwaldRadius;
         var ewaldCenter = new Vector3D(0, 0, r);
 
