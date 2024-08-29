@@ -84,7 +84,7 @@ public static class UniversalConstants
     public enum LengthUnit { km, m, cm, mm, um, nm, pm, fm }
 
     /// <summary>
-    /// アボガドロ数 (g)
+    /// アボガドロ数 (1/mol)
     /// </summary>
     public const double A = 6.0221367E23;
 
@@ -143,8 +143,57 @@ public static class UniversalConstants
     /// </summary>
     public const double Ry = 13.60569253;
 
+    /// <summary>
+    /// 真空の誘電率 (permittivity) of vacuum ε0 (F/m = C^2×s^2 /kg/m^3 ) 
+    /// c^2 = 1/ε0/μ0の関係がある。
+    /// </summary>
+    public const double ε0 = 8.8541878188E-12;
+
+    /// <summary>
+    /// 真空の透磁率 (permeability in vacuum) μ0 (N/A^2)
+    /// c^2 = 1/ε0/μ0の関係がある。
+    /// </summary>
+    public const double μ0 = 1.25663706127E-6;
+
+    
+
     public static class Convert
     {
+        /// <summary>
+        /// エネルギー(kev)を与えて電子の速度(m/s)を返す
+        /// </summary>
+        /// <param name="kev"></param>
+        /// <returns></returns>
+        public static double EnergyToElectronVelosity(in double kev)
+        {
+            //return c * Math.Sqrt(1 - 1 / Math.Pow(1 + e0 * kev * 1000 / m0 / c / c, 2));
+            var tmp = 1 + kev * 0.0019569507450453425;
+            return c * Math.Sqrt(1 - 1 / tmp / tmp);
+        }
+
+        /// <summary>
+        /// エネルギー(kev)を与えて電子の速度の2乗(m^2/s^2)を返す
+        /// </summary>
+        /// <param name="kev"></param>
+        /// <returns></returns>
+        public static double EnergyToElectronVelositySquared(in double kev)
+        {
+            var tmp = 1 + kev * 0.0019569507450453425;
+            return c2 * (1 - 1 / tmp / tmp);
+        }
+
+        /// <summary>
+        /// エネルギー(kev)を与えて電子の重量(kg)を返す
+        /// </summary>
+        /// <param name="kev"></param>
+        /// <returns></returns>
+        public static double EnergyToElectronMass(in double kev)
+        {
+            //var r = EnergyToElectronVelosity(kev) / c;
+            //return m0 / Math.Sqrt(1 - r * r);
+            return m0 * (1 + kev * 0.0019569507450453425);
+        }
+
         /// <summary>
         /// 中性子の速度(m/μs)を与えて波長(nm)を返す
         /// </summary>
