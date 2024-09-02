@@ -20,9 +20,8 @@ public partial class FormEBSD : Form
 {
     public FormMain FormMain;
 
-    private GLControlAlpha glControlGeometry;
+    // private GLControlAlpha glControlGeometry;
     private GLControlAlpha glControlTrajectory;
-
 
     object lockObj = new object();
 
@@ -36,22 +35,22 @@ public partial class FormEBSD : Form
 
     private void FormEBSD_Load(object sender, EventArgs e)
     {
-        glControlGeometry = new GLControlAlpha(GLControlAlpha.FragShaders.OIT)
-        {
-            AllowMouseRotation = true,
-            AllowMouseScaling = true,
-            AllowMouseTranslating = false,
-            Name = "glControlAxes",
-            ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-            ProjWidth = 8.0,
-            RotationMode = GLControlAlpha.RotationModes.Object,
-            Dock = DockStyle.Fill,
-            LightPosition = new V3(100, 100, 100),
-            BorderStyle = BorderStyle.Fixed3D,
+        //glControlGeometry = new GLControlAlpha(GLControlAlpha.FragShaders.OIT)
+        //{
+        //    AllowMouseRotation = true,
+        //    AllowMouseScaling = true,
+        //    AllowMouseTranslating = false,
+        //    Name = "glControlAxes",
+        //    ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+        //    ProjWidth = 8.0,
+        //    RotationMode = GLControlAlpha.RotationModes.Object,
+        //    Dock = DockStyle.Fill,
+        //    LightPosition = new V3(100, 100, 100),
+        //    BorderStyle = BorderStyle.Fixed3D,
 
-            WorldMatrix =/* Matrix4d.CreateRotationZ(-Math.PI / 8) * */Matrix4d.CreateRotationX(-0.5 * Math.PI)
-        };
-        panelGeometry.Controls.Add(glControlGeometry);
+        //    WorldMatrix =/* Matrix4d.CreateRotationZ(-Math.PI / 8) * */Matrix4d.CreateRotationX(-0.5 * Math.PI)
+        //};
+        //panelGeometry.Controls.Add(glControlGeometry);
 
         glControlTrajectory = new GLControlAlpha()
         {
@@ -73,7 +72,7 @@ public partial class FormEBSD : Form
         paneltTrajectory.Controls.Add(glControlTrajectory);
 
 
-        DrawGeometry();
+       // DrawGeometry();
         DrawTrajectory();
     }
 
@@ -90,57 +89,57 @@ public partial class FormEBSD : Form
     private void button1_Click(object sender, EventArgs e)
     {
         DrawTrajectory();
-        DrawGeometry();
+       // DrawGeometry();
     }
 
     private void buttonViewIsometric_Click(object sender, EventArgs e)
         => glControlTrajectory.WorldMatrix = Matrix4d.CreateRotationY(-Math.PI / 2) *  Matrix4d.CreateRotationZ(-Math.PI / 2);
     private void buttonViewAlongBeam_Click(object sender, EventArgs e) => glControlTrajectory.WorldMatrix = Matrix4d.Identity;
 
-    private void numericBoxSampleTilt_ValueChanged(object sender, EventArgs e) => DrawGeometry();
+   // private void numericBoxSampleTilt_ValueChanged(object sender, EventArgs e) => DrawGeometry();
 
 
     #region 入射電子、試料、検出器の幾何学を3Dで表示
     /// <summary>
     /// 試料と電子線が交差する位置は常に(0,0,0)
     /// </summary>
-    public void DrawGeometry()
-    {
-        var glObjects = new List<GLObject>();
+    //public void DrawGeometry()
+    //{
+    //    var glObjects = new List<GLObject>();
 
-        //試料の傾き
-        var rot = Matrix3D.RotY(numericBoxSampleTilt.RadianValue);
+    //    //試料の傾き
+    //    var rot = Matrix3D.RotY(numericBoxSampleTilt.RadianValue);
 
-        //試料を示す直方体
-        var sample = new Parallelepiped(rot * new V3(-1, -1, -0.2), rot * new V3(2, 0, 0), rot * new V3(0, 2, 0), rot * new V3(0, 0, 0.2), new Material(Color4.AliceBlue), DrawingMode.SurfacesAndEdges);
-        glObjects.Add(sample);
+    //    //試料を示す直方体
+    //    var sample = new Parallelepiped(rot * new V3(-1, -1, -0.2), rot * new V3(2, 0, 0), rot * new V3(0, 2, 0), rot * new V3(0, 0, 0.2), new Material(Color4.AliceBlue), DrawingMode.SurfacesAndEdges);
+    //    glObjects.Add(sample);
 
-        //検出器面
-        var detector = new Parallelepiped(new V3(2.99, -1.5, -1.5), new V3(0, 3, 0), new V3(0, 0, 3), new V3(0.2, 0, 0), new Material(Color4.GreenYellow, 0.7), DrawingMode.Surfaces);
-        glObjects.Add(detector);
+    //    //検出器面
+    //    var detector = new Parallelepiped(new V3(2.99, -1.5, -1.5), new V3(0, 3, 0), new V3(0, 0, 3), new V3(0.2, 0, 0), new Material(Color4.GreenYellow, 0.7), DrawingMode.Surfaces);
+    //    glObjects.Add(detector);
 
-        //ポールピース
-        glObjects.AddRange(
-            [
-            new Pipe(new V3(0,0,2), new V3(0,0,1), 0.15,0.16,new Material(Color4.Gray), DrawingMode.Surfaces,false){ IgnoreNormalSides=true},
-            new Pipe(new V3(0,0,2), new V3(0,0,1), 0.30,1.5,new Material(Color4.Gray), DrawingMode.Surfaces,false){ IgnoreNormalSides=true},
-            new HoledDisk(new V3(0,0,2), new V3(0,0,1),0.15,0.3, new Material(Color4.Gray),    DrawingMode.Surfaces){ IgnoreNormalSides=true},
-            new HoledDisk(new V3(0,0,3), new V3(0,0,1),0.15,1.5, new Material(Color4.Gray),    DrawingMode.Surfaces){ IgnoreNormalSides=true},
-            ]);
+    //    //ポールピース
+    //    glObjects.AddRange(
+    //        [
+    //        new Pipe(new V3(0,0,2), new V3(0,0,1), 0.15,0.16,new Material(Color4.Gray), DrawingMode.Surfaces,false){ IgnoreNormalSides=true},
+    //        new Pipe(new V3(0,0,2), new V3(0,0,1), 0.30,1.5,new Material(Color4.Gray), DrawingMode.Surfaces,false){ IgnoreNormalSides=true},
+    //        new HoledDisk(new V3(0,0,2), new V3(0,0,1),0.15,0.3, new Material(Color4.Gray),    DrawingMode.Surfaces){ IgnoreNormalSides=true},
+    //        new HoledDisk(new V3(0,0,3), new V3(0,0,1),0.15,1.5, new Material(Color4.Gray),    DrawingMode.Surfaces){ IgnoreNormalSides=true},
+    //        ]);
 
-        //電子線方向を示す矢印
-        glObjects.AddRange(
-            [
-                new Cone(new V3(0, 0, 0), new V3(0, 0, 2.5), 0.1, new Material(Color4.Yellow,0.7), DrawingMode.Surfaces){ IgnoreNormalSides=true},
-                new Cone(new V3(0, 0, 0), new V3(3, 0, 0), 1, new Material(Color4.Yellow, 0.7), DrawingMode.Surfaces) { IgnoreNormalSides = true }
-            ]);
+    //    //電子線方向を示す矢印
+    //    glObjects.AddRange(
+    //        [
+    //            new Cone(new V3(0, 0, 0), new V3(0, 0, 2.5), 0.1, new Material(Color4.Yellow,0.7), DrawingMode.Surfaces){ IgnoreNormalSides=true},
+    //            new Cone(new V3(0, 0, 0), new V3(3, 0, 0), 1, new Material(Color4.Yellow, 0.7), DrawingMode.Surfaces) { IgnoreNormalSides = true }
+    //        ]);
 
-        //結晶のa, b, c軸を表す矢印
+    //    //結晶のa, b, c軸を表す矢印
 
-        glControlGeometry.DeleteAllObjects();
-        glControlGeometry.AddObjects(glObjects);
-        glControlGeometry.Refresh();
-    }
+    //    glControlGeometry.DeleteAllObjects();
+    //    glControlGeometry.AddObjects(glObjects);
+    //    glControlGeometry.Refresh();
+    //}
     #endregion
 
     #region 試料内で電子が散乱する様子をモンテカルロシミュレーション
@@ -165,8 +164,9 @@ public partial class FormEBSD : Form
 
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
 
-        var list = new List<(V3 p, double e)[]>();
+        //飛程計算ループ
         sw.Restart();
+        var list = new List<(V3 p, double e)[]>();
         Parallel.For(0, numericBoxCalcNum.ValueInteger, i =>//for (int i = 0; i < 10000; i++)
         {
             var trajectry = MonteCarlo.GetTrajectories(Z, A, ρ, energy, tilt, threshold);
@@ -175,6 +175,7 @@ public partial class FormEBSD : Form
                     list.Add(trajectry);
         });
         toolStripStatusLabel1.Text = $"{sw.ElapsedMilliseconds} msec. ellapsed for {numericBoxCalcNum.ValueInteger} trajectories.";
+        //ここまで
 
         //エネルギー分布を描画 ここから
         {
@@ -193,7 +194,7 @@ public partial class FormEBSD : Form
         }
         //エネルギー分布を描画 ここまで
 
-        double maxLength = 0;
+       
         //最大深さ分布　ここから
         {
             var depths = list.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
@@ -206,7 +207,7 @@ public partial class FormEBSD : Form
                 pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / list.Count));
             graphControlDepthProfile.ClearProfile();
             graphControlDepthProfile.Profile = new Profile(pts);
-            maxLength = upper;
+
         }
         //ここまで
 
@@ -230,8 +231,8 @@ public partial class FormEBSD : Form
         {
             var distances = list.Select(e1 => e1.Max(e2 =>
             {
-                var x = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
-                return Math.Sqrt(x * x + e2.p.Z * e2.p.Z);
+                var y = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
+                return Math.Sqrt(e2.p.X * e2.p.X + y * y);
             }));
 
             double lower = 0, upper = distances.Max();
@@ -243,9 +244,9 @@ public partial class FormEBSD : Form
                 pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / list.Count));
             graphControlDistance.ClearProfile();
             graphControlDistance.Profile = new Profile(pts);
-            maxLength = Math.Max(upper, maxLength);
         }
         //ここまで
+      
 
         //ここから OpenGL描画
         List<GLObject> glObjects = [];
@@ -277,15 +278,20 @@ public partial class FormEBSD : Form
 
         var circleArray = Enumerable.Range(0, 361)
             .Select(e => new V3(Math.Cos(e / 180.0 * Math.PI), Math.Sin(e / 180.0 * Math.PI) * cosTilt, Math.Sin(e / 180.0 * Math.PI) * sinTilt));
-        
-        var scaleStep = maxLength < 1 ? 0.02 : 0.05;
+
+        double maxLength = list[..numericBoxDrawNum.ValueInteger].Max(e1 => e1.Max(e2 =>
+        {
+            var y = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
+            return Math.Sqrt(e2.p.X * e2.p.X + y * y);
+        }));
+        var scaleStep = maxLength < 1 ? 0.01 : 0.05;
         var limit = (int)(maxLength / scaleStep + 1);
         
         for (int i = 1; i <= limit; i++)
         {
             glObjects.Add(new Lines(circleArray.Select(e => e * i * scaleStep).ToArray(), i % 5 == 0 ? 2f : 1f, new Material(Color4.LightGray)));
             if (i % 10 == 0)
-                glObjects.Add(new TextObject((i * scaleStep).ToString() + " µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 10, true, new Material(Color4.Black)));
+                glObjects.Add(new TextObject($"{i * scaleStep:0.0} µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black)));
         }
 
         glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, 2)], 2f, new Material(Color4.YellowGreen)));

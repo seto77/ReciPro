@@ -91,7 +91,6 @@
             numericBoxSampleTilt.RoundErrorAccuracy = -1;
             numericBoxSampleTilt.ShowUpDown = true;
             numericBoxSampleTilt.Value = 70D;
-            numericBoxSampleTilt.ValueChanged += numericBoxSampleTilt_ValueChanged;
             // 
             // buttonViewIsometric
             // 
