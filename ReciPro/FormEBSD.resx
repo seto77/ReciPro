@@ -161,13 +161,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="panelGeometry.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 67</value>
+    <value>800, 708</value>
   </data>
   <data name="panelGeometry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 328</value>
+    <value>53, 66</value>
   </data>
   <data name="panelGeometry.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -182,31 +182,31 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panelGeometry.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>431, 172</value>
+  <data name="buttonCalc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>533, 9</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonCalc.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 24</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonCalc.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
+  <data name="buttonCalc.Text" xml:space="preserve">
     <value>button1</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="&gt;&gt;buttonCalc.Name" xml:space="preserve">
+    <value>buttonCalc</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonCalc.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonCalc.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;buttonCalc.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="numericBoxSampleTilt.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -248,7 +248,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericBoxSampleTilt.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="buttonViewIsometric.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -263,7 +263,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonViewIsometric.Location" type="System.Drawing.Point, System.Drawing">
-    <value>400, 98</value>
+    <value>396, 39</value>
   </data>
   <data name="buttonViewIsometric.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 25</value>
@@ -284,7 +284,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonViewIsometric.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="buttonViewAlongBeam.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -299,7 +299,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonViewAlongBeam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 70</value>
+    <value>396, 9</value>
   </data>
   <data name="buttonViewAlongBeam.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 25</value>
@@ -320,13 +320,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonViewAlongBeam.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="paneltTrajectory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 411</value>
+    <value>8, 67</value>
   </data>
   <data name="paneltTrajectory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 328</value>
+    <value>600, 600</value>
   </data>
   <data name="paneltTrajectory.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -341,37 +341,37 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;paneltTrajectory.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
-  <data name="graphControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="graphControlEnergyProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <assembly alias="Crystallography" name="Crystallography, Culture=neutral, PublicKeyToken=null" />
-  <data name="graphControl1.DrawingRange" type="Crystallography.RectangleD, Crystallography">
+  <data name="graphControlEnergyProfile.DrawingRange" type="Crystallography.RectangleD, Crystallography">
     <value>0, 0, 1, 1</value>
   </data>
-  <data name="graphControl1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="graphControlEnergyProfile.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="graphControl1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="graphControlEnergyProfile.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
   </data>
-  <data name="graphControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 207</value>
+  <data name="graphControlEnergyProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 182</value>
   </data>
-  <data name="graphControl1.TabIndex" type="System.Int32, mscorlib">
+  <data name="graphControlEnergyProfile.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
-  <data name="&gt;&gt;graphControl1.Name" xml:space="preserve">
-    <value>graphControl1</value>
+  <data name="&gt;&gt;graphControlEnergyProfile.Name" xml:space="preserve">
+    <value>graphControlEnergyProfile</value>
   </data>
-  <data name="&gt;&gt;graphControl1.Type" xml:space="preserve">
+  <data name="&gt;&gt;graphControlEnergyProfile.Type" xml:space="preserve">
     <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;graphControl1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;graphControlEnergyProfile.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;graphControl1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;graphControlEnergyProfile.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="numericBoxCalcNum.Font" type="System.Drawing.Font, System.Drawing">
@@ -381,7 +381,7 @@
     <value>Number of trajectories to calulate</value>
   </data>
   <data name="numericBoxCalcNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>400, 411</value>
+    <value>611, 9</value>
   </data>
   <data name="numericBoxCalcNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -411,7 +411,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericBoxCalcNum.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="numericBoxDrawNum.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -420,7 +420,7 @@
     <value>Maximum number of trajectories to draw</value>
   </data>
   <data name="numericBoxDrawNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>400, 442</value>
+    <value>12, 724</value>
   </data>
   <data name="numericBoxDrawNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -450,19 +450,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericBoxDrawNum.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>411, 495</value>
+    <value>871, 53</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 231</value>
+    <value>421, 206</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Energy distribution of backscattered electrons</value>
+    <value>Energy distribution of BSEs</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -474,31 +474,49 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;graphControl2.Name" xml:space="preserve">
-    <value>graphControl2</value>
+  <data name="graphControlDepthProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;graphControl2.Type" xml:space="preserve">
+  <data name="graphControlDepthProfile.DrawingRange" type="Crystallography.RectangleD, Crystallography">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="graphControlDepthProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="graphControlDepthProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="graphControlDepthProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 182</value>
+  </data>
+  <data name="graphControlDepthProfile.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthProfile.Name" xml:space="preserve">
+    <value>graphControlDepthProfile</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthProfile.Type" xml:space="preserve">
     <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;graphControl2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;graphControlDepthProfile.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;graphControl2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;graphControlDepthProfile.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>738, 495</value>
+    <value>868, 407</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 231</value>
+    <value>421, 206</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
-    <value>Energy distribution of backscattered electrons</value>
+    <value>Maximum depth of BSEs</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
@@ -510,37 +528,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="graphControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="graphControl2.DrawingRange" type="Crystallography.RectangleD, Crystallography">
-    <value>0, 0, 1, 1</value>
-  </data>
-  <data name="graphControl2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="graphControl2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="graphControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 207</value>
-  </data>
-  <data name="graphControl2.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;graphControl2.Name" xml:space="preserve">
-    <value>graphControl2</value>
-  </data>
-  <data name="&gt;&gt;graphControl2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;graphControl2.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;graphControl2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -574,6 +562,114 @@
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="graphControlDepthEBSD.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="graphControlDepthEBSD.DrawingRange" type="Crystallography.RectangleD, Crystallography">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="graphControlDepthEBSD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="graphControlDepthEBSD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="graphControlDepthEBSD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 182</value>
+  </data>
+  <data name="graphControlDepthEBSD.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthEBSD.Name" xml:space="preserve">
+    <value>graphControlDepthEBSD</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthEBSD.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthEBSD.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthEBSD.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>874, 614</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>421, 206</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Depth at which electrons contributing to diffraction are emitted</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="graphControlDistance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="graphControlDistance.DrawingRange" type="Crystallography.RectangleD, Crystallography">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="graphControlDistance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="graphControlDistance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 182</value>
+  </data>
+  <data name="graphControlDistance.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;graphControlDistance.Name" xml:space="preserve">
+    <value>graphControlDistance</value>
+  </data>
+  <data name="&gt;&gt;graphControlDistance.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControlDistance.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;graphControlDistance.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>871, 195</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>421, 206</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Maximum distance parallel to the surface of BSEs</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
