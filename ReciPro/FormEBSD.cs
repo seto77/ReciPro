@@ -71,8 +71,6 @@ public partial class FormEBSD : Form
         };
         paneltTrajectory.Controls.Add(glControlTrajectory);
 
-
-       // DrawGeometry();
         DrawTrajectory();
     }
 
@@ -89,14 +87,13 @@ public partial class FormEBSD : Form
     private void button1_Click(object sender, EventArgs e)
     {
         DrawTrajectory();
-       // DrawGeometry();
     }
 
     private void buttonViewIsometric_Click(object sender, EventArgs e)
         => glControlTrajectory.WorldMatrix = Matrix4d.CreateRotationY(-Math.PI / 2) *  Matrix4d.CreateRotationZ(-Math.PI / 2);
     private void buttonViewAlongBeam_Click(object sender, EventArgs e) => glControlTrajectory.WorldMatrix = Matrix4d.Identity;
 
-   // private void numericBoxSampleTilt_ValueChanged(object sender, EventArgs e) => DrawGeometry();
+    // private void numericBoxSampleTilt_ValueChanged(object sender, EventArgs e) => DrawGeometry();
 
 
     #region 入射電子、試料、検出器の幾何学を3Dで表示
@@ -149,8 +146,8 @@ public partial class FormEBSD : Form
         var cry = FormMain.Crystal;
         cry.GetFormulaAndDensity();
         var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
-        var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity );
-        var sum3 = cry.Atoms.Sum(a =>  a.Multiplicity );
+        var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
+        var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
         //試料の平均原子番号. 各元素の重量比で加重平均//double Z = 79;// 79 29 13;
         double Z = sum1 / sum2;
         //試料の平均原子量 (g/mol)
@@ -194,7 +191,7 @@ public partial class FormEBSD : Form
         }
         //エネルギー分布を描画 ここまで
 
-       
+
         //最大深さ分布　ここから
         {
             var depths = list.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
@@ -246,7 +243,7 @@ public partial class FormEBSD : Form
             graphControlDistance.Profile = new Profile(pts);
         }
         //ここまで
-      
+
 
         //ここから OpenGL描画
         List<GLObject> glObjects = [];
@@ -270,7 +267,7 @@ public partial class FormEBSD : Form
             if (trajectry.Length > 1)
             {
                 var r = trajectry[^2].e / waveLengthControl1.Energy;
-                var v = (trajectry[^1].p - trajectry[^2].p).Normalized()*0.1 * r;
+                var v = (trajectry[^1].p - trajectry[^2].p).Normalized() * 0.1 * r;
                 var matBackScattered = new Material(new Color4((byte)(255 * (1 - r)), (byte)(255 * (1 - r)), 255, (byte)(255 * r)));
                 glObjects.Add(new Lines([trajectry[^2].p, trajectry[^2].p + v], 1f, matBackScattered));
             }
@@ -286,7 +283,7 @@ public partial class FormEBSD : Form
         }));
         var scaleStep = maxLength < 1 ? 0.01 : 0.05;
         var limit = (int)(maxLength / scaleStep + 1);
-        
+
         for (int i = 1; i <= limit; i++)
         {
             glObjects.Add(new Lines(circleArray.Select(e => e * i * scaleStep).ToArray(), i % 5 == 0 ? 2f : 1f, new Material(Color4.LightGray)));
@@ -294,13 +291,39 @@ public partial class FormEBSD : Form
                 glObjects.Add(new TextObject($"{i * scaleStep:0.0} µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black)));
         }
 
-        glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, 2)], 2f, new Material(Color4.YellowGreen)));
+
+        if (checkBox1.Checked)
+        {
+            var len = limit * scaleStep * 0.5;
+            //X軸
+            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(len, 0, 0)], 3f, new Material(Color4.OrangeRed)));
+            glObjects.Add(new TextObject("+X", 10f, new V3(len, 0,  0), 1000, true, new Material(Color4.OrangeRed)));
+
+            //Y軸
+            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, len, 0)], 3f, new Material(Color4.YellowGreen)));
+            glObjects.Add(new TextObject("+Y", 10f, new V3(0,  len, 0), 1000, true, new Material(Color4.YellowGreen)));
+
+            //Z軸 = beam
+            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, len)], 3f, new Material(Color4.MediumPurple)));
+            glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, len), 1000, true, new Material(Color4.MediumPurple)));
+        }
 
         glControlTrajectory.ProjWidth = maxLength * 2;
         glControlTrajectory.DeleteAllObjects();
         glControlTrajectory.AddObjects(glObjects);
         glControlTrajectory.Refresh();
         //OpenGLここまで
+
+        //ステレオネット描画
+        var rot = Matrix3d.CreateRotationX(tilt);
+        poleFigureControl.Symbols = [
+            (Stereonet.ConvertVectorToSchmidt(new Vector3DBase(1, 0,0)), 0.02, Color.OrangeRed, true, "+X"),
+            (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, -1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "-Y"), 
+            (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "+Y"),
+            (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 0, 1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "+Z (=beam)")
+            ];
+
+        poleFigureControl.Vectors = list.Select(e => rot.Mult(e[^1].p - e[^2].p)).ToArray();
     }
     #endregion
 

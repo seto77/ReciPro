@@ -161,40 +161,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
-  <data name="panelGeometry.Location" type="System.Drawing.Point, System.Drawing">
-    <value>800, 708</value>
-  </data>
-  <data name="panelGeometry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 66</value>
-  </data>
-  <data name="panelGeometry.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panelGeometry.Name" xml:space="preserve">
-    <value>panelGeometry</value>
-  </data>
-  <data name="&gt;&gt;panelGeometry.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelGeometry.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panelGeometry.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="buttonCalc.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="buttonCalc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>533, 9</value>
+    <value>533, 7</value>
   </data>
   <data name="buttonCalc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 24</value>
+    <value>139, 27</value>
   </data>
   <data name="buttonCalc.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="buttonCalc.Text" xml:space="preserve">
-    <value>button1</value>
+    <value>Calculate trajectories</value>
   </data>
   <data name="&gt;&gt;buttonCalc.Name" xml:space="preserve">
     <value>buttonCalc</value>
@@ -206,7 +188,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonCalc.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="numericBoxSampleTilt.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -218,7 +200,7 @@
     <value>Sample tilt</value>
   </data>
   <data name="numericBoxSampleTilt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 9</value>
+    <value>219, 9</value>
   </data>
   <data name="numericBoxSampleTilt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -248,7 +230,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericBoxSampleTilt.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="buttonViewIsometric.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -284,7 +266,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonViewIsometric.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="buttonViewAlongBeam.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -320,13 +302,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonViewAlongBeam.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="paneltTrajectory.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 67</value>
   </data>
   <data name="paneltTrajectory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 600</value>
+    <value>640, 640</value>
   </data>
   <data name="paneltTrajectory.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -341,7 +323,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;paneltTrajectory.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="graphControlEnergyProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -357,7 +339,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlEnergyProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 182</value>
+    <value>414, 136</value>
   </data>
   <data name="graphControlEnergyProfile.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -378,10 +360,10 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxCalcNum.HeaderText" xml:space="preserve">
-    <value>Number of trajectories to calulate</value>
+    <value>Number of trajectories</value>
   </data>
   <data name="numericBoxCalcNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>611, 9</value>
+    <value>533, 36</value>
   </data>
   <data name="numericBoxCalcNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -393,7 +375,7 @@
     <value>1, 20</value>
   </data>
   <data name="numericBoxCalcNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 25</value>
+    <value>212, 25</value>
   </data>
   <data name="numericBoxCalcNum.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
@@ -411,7 +393,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericBoxCalcNum.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>15</value>
   </data>
   <data name="numericBoxDrawNum.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -420,7 +402,7 @@
     <value>Maximum number of trajectories to draw</value>
   </data>
   <data name="numericBoxDrawNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 724</value>
+    <value>9, 710</value>
   </data>
   <data name="numericBoxDrawNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -450,13 +432,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericBoxDrawNum.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>871, 53</value>
+    <value>656, 68</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 206</value>
+    <value>420, 160</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -474,7 +456,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="graphControlDepthProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -489,7 +471,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlDepthProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 182</value>
+    <value>414, 136</value>
   </data>
   <data name="graphControlDepthProfile.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -507,10 +489,10 @@
     <value>0</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>868, 407</value>
+    <value>656, 394</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 206</value>
+    <value>420, 160</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -528,7 +510,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -540,10 +522,10 @@
     <value>     </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 823</value>
+    <value>0, 742</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1397, 22</value>
+    <value>1421, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
@@ -561,7 +543,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="graphControlDepthEBSD.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -576,7 +558,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlDepthEBSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 182</value>
+    <value>414, 136</value>
   </data>
   <data name="graphControlDepthEBSD.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -594,10 +576,10 @@
     <value>0</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>874, 614</value>
+    <value>656, 557</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 206</value>
+    <value>420, 160</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -615,7 +597,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="graphControlDistance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -630,7 +612,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 182</value>
+    <value>414, 136</value>
   </data>
   <data name="graphControlDistance.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -648,10 +630,10 @@
     <value>0</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>871, 195</value>
+    <value>656, 231</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 206</value>
+    <value>420, 160</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -669,7 +651,91 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="poleFigureControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1095, 49</value>
+  </data>
+  <data name="poleFigureControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>324, 473</value>
+  </data>
+  <data name="poleFigureControl.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="&gt;&gt;poleFigureControl.Name" xml:space="preserve">
+    <value>poleFigureControl</value>
+  </data>
+  <data name="&gt;&gt;poleFigureControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.PoleFigureControl2, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;poleFigureControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;poleFigureControl.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxDrawAxes.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDrawAxes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>339, 710</value>
+  </data>
+  <data name="checkBoxDrawAxes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 21</value>
+  </data>
+  <data name="checkBoxDrawAxes.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="checkBoxDrawAxes.Text" xml:space="preserve">
+    <value>Draw axes</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxes.Name" xml:space="preserve">
+    <value>checkBoxDrawAxes</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxes.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxes.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>432, 710</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 21</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
+    <value>Draw guide circles</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuidCircles.Name" xml:space="preserve">
+    <value>checkBoxDrawGuidCircles</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuidCircles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuidCircles.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawGuidCircles.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -678,7 +744,7 @@
     <value>7, 17</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1397, 845</value>
+    <value>1421, 764</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>

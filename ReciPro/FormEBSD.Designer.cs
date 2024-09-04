@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEBSD));
             waveLengthControl1 = new WaveLengthControl();
-            panelGeometry = new System.Windows.Forms.Panel();
             buttonCalc = new System.Windows.Forms.Button();
             numericBoxSampleTilt = new NumericBox();
             buttonViewIsometric = new System.Windows.Forms.Button();
@@ -48,6 +47,9 @@
             graphControlDepthEBSD = new GraphControl();
             groupBox4 = new System.Windows.Forms.GroupBox();
             graphControlDistance = new GraphControl();
+            poleFigureControl = new PoleFigureControl2();
+            this.checkBoxDrawAxes = new System.Windows.Forms.CheckBox();
+            checkBoxDrawGuidCircles = new System.Windows.Forms.CheckBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -67,11 +69,6 @@
             waveLengthControl1.WaveSource = WaveSource.Electron;
             waveLengthControl1.XrayWaveSourceElementNumber = 0;
             waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
-            // 
-            // panelGeometry
-            // 
-            resources.ApplyResources(panelGeometry, "panelGeometry");
-            panelGeometry.Name = "panelGeometry";
             // 
             // buttonCalc
             // 
@@ -378,24 +375,48 @@
             graphControlDistance.XLog = false;
             graphControlDistance.YLog = false;
             // 
+            // poleFigureControl
+            // 
+            resources.ApplyResources(poleFigureControl, "poleFigureControl");
+            poleFigureControl.Name = "poleFigureControl";
+            poleFigureControl.Vectors = null;
+            // 
+            // checkBoxDrawAxes
+            // 
+            resources.ApplyResources(this.checkBoxDrawAxes, "checkBoxDrawAxes");
+            this.checkBoxDrawAxes.Checked = true;
+            this.checkBoxDrawAxes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDrawAxes.Name = "checkBoxDrawAxes";
+            this.checkBoxDrawAxes.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDrawGuidCircles
+            // 
+            resources.ApplyResources(checkBoxDrawGuidCircles, "checkBoxDrawGuidCircles");
+            checkBoxDrawGuidCircles.Checked = true;
+            checkBoxDrawGuidCircles.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDrawGuidCircles.Name = "checkBoxDrawGuidCircles";
+            checkBoxDrawGuidCircles.UseVisualStyleBackColor = true;
+            // 
             // FormEBSD
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(checkBoxDrawGuidCircles);
+            Controls.Add(this.checkBoxDrawAxes);
+            Controls.Add(poleFigureControl);
             Controls.Add(statusStrip1);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(numericBoxDrawNum);
-            Controls.Add(numericBoxCalcNum);
             Controls.Add(buttonViewIsometric);
             Controls.Add(buttonViewAlongBeam);
             Controls.Add(numericBoxSampleTilt);
             Controls.Add(buttonCalc);
             Controls.Add(paneltTrajectory);
-            Controls.Add(panelGeometry);
             Controls.Add(waveLengthControl1);
+            Controls.Add(numericBoxCalcNum);
             Name = "FormEBSD";
             FormClosing += FormEBSD_FormClosing;
             Load += FormEBSD_Load;
@@ -412,7 +433,6 @@
         #endregion
 
         private WaveLengthControl waveLengthControl1;
-        private System.Windows.Forms.Panel panelGeometry;
         private System.Windows.Forms.Button buttonCalc;
         private NumericBox numericBoxSampleTilt;
         private System.Windows.Forms.Button buttonViewIsometric;
@@ -430,5 +450,9 @@
         private GraphControl graphControlDepthEBSD;
         private System.Windows.Forms.GroupBox groupBox4;
         private GraphControl graphControlDistance;
+        private PoleFigureControl2 poleFigureControl;
+        private System.Windows.Forms.Panel panelAxes;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxDrawGuidCircles;
     }
 }
