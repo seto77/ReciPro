@@ -36,7 +36,6 @@
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             numericUpDownFullscale = new System.Windows.Forms.NumericUpDown();
-            label4 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             textBox1 = new System.Windows.Forms.TextBox();
             groupBox3 = new System.Windows.Forms.GroupBox();
@@ -70,8 +69,8 @@
             // 
             // numericUpDownResolution
             // 
-            numericUpDownResolution.DecimalPlaces = 2;
             resources.ApplyResources(numericUpDownResolution, "numericUpDownResolution");
+            numericUpDownResolution.DecimalPlaces = 2;
             numericUpDownResolution.Maximum = new decimal(new int[] { 30, 0, 0, 0 });
             numericUpDownResolution.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDownResolution.Name = "numericUpDownResolution";
@@ -100,15 +99,10 @@
             numericUpDownFullscale.Value = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDownFullscale.ValueChanged += numericUpDownFullScale_ValueChanged;
             // 
-            // label4
-            // 
-            resources.ApplyResources(label4, "label4");
-            label4.Name = "label4";
-            // 
             // pictureBox1
             // 
-            pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
             // 
@@ -120,6 +114,7 @@
             // 
             // groupBox3
             // 
+            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Controls.Add(label7);
             groupBox3.Controls.Add(comboBoxScale);
             groupBox3.Controls.Add(numericUpDownResolution);
@@ -128,10 +123,8 @@
             groupBox3.Controls.Add(comboBoxColor);
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(label2);
-            groupBox3.Controls.Add(label4);
             groupBox3.Controls.Add(numericUpDownFullscale);
             groupBox3.Controls.Add(label3);
-            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
             // 
@@ -142,10 +135,10 @@
             // 
             // comboBoxScale
             // 
+            resources.ApplyResources(comboBoxScale, "comboBoxScale");
             comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale.FormattingEnabled = true;
             comboBoxScale.Items.AddRange(new object[] { resources.GetString("comboBoxScale.Items"), resources.GetString("comboBoxScale.Items1") });
-            resources.ApplyResources(comboBoxScale, "comboBoxScale");
             comboBoxScale.Name = "comboBoxScale";
             comboBoxScale.SelectedIndexChanged += Combobox_SelectedIndexChanged;
             // 
@@ -156,10 +149,10 @@
             // 
             // comboBoxColor
             // 
+            resources.ApplyResources(comboBoxColor, "comboBoxColor");
             comboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxColor.FormattingEnabled = true;
             comboBoxColor.Items.AddRange(new object[] { resources.GetString("comboBoxColor.Items"), resources.GetString("comboBoxColor.Items1") });
-            resources.ApplyResources(comboBoxColor, "comboBoxColor");
             comboBoxColor.Name = "comboBoxColor";
             comboBoxColor.SelectedIndexChanged += Combobox_SelectedIndexChanged;
             // 
@@ -192,7 +185,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.NumericUpDown numericUpDownFullscale;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox3;

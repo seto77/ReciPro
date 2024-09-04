@@ -130,7 +130,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="waveLengthControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 9</value>
+    <value>142, 7</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="waveLengthControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -161,13 +161,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>6</value>
   </data>
   <data name="buttonCalc.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="buttonCalc.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="buttonCalc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>533, 7</value>
+    <value>0, 2</value>
   </data>
   <data name="buttonCalc.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 27</value>
@@ -188,7 +191,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonCalc.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="numericBoxSampleTilt.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -200,7 +203,7 @@
     <value>Sample tilt</value>
   </data>
   <data name="numericBoxSampleTilt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 9</value>
+    <value>2, 32</value>
   </data>
   <data name="numericBoxSampleTilt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -212,7 +215,7 @@
     <value>1, 20</value>
   </data>
   <data name="numericBoxSampleTilt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 30</value>
+    <value>137, 26</value>
   </data>
   <data name="numericBoxSampleTilt.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -230,7 +233,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericBoxSampleTilt.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>5</value>
   </data>
   <data name="buttonViewIsometric.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -245,16 +248,19 @@
     <value>NoControl</value>
   </data>
   <data name="buttonViewIsometric.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 39</value>
+    <value>178, 0</value>
+  </data>
+  <data name="buttonViewIsometric.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonViewIsometric.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 25</value>
+    <value>154, 25</value>
   </data>
   <data name="buttonViewIsometric.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
   </data>
   <data name="buttonViewIsometric.Text" xml:space="preserve">
-    <value>View Isometric</value>
+    <value>From X-axis (rotation axis)</value>
   </data>
   <data name="&gt;&gt;buttonViewIsometric.Name" xml:space="preserve">
     <value>buttonViewIsometric</value>
@@ -263,10 +269,10 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonViewIsometric.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonViewIsometric.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>1</value>
   </data>
   <data name="buttonViewAlongBeam.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -281,16 +287,19 @@
     <value>NoControl</value>
   </data>
   <data name="buttonViewAlongBeam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 9</value>
+    <value>0, 0</value>
+  </data>
+  <data name="buttonViewAlongBeam.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonViewAlongBeam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 25</value>
+    <value>178, 25</value>
   </data>
   <data name="buttonViewAlongBeam.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
   </data>
   <data name="buttonViewAlongBeam.Text" xml:space="preserve">
-    <value>View along beam</value>
+    <value>From Z-axis (=beam direction)</value>
   </data>
   <data name="&gt;&gt;buttonViewAlongBeam.Name" xml:space="preserve">
     <value>buttonViewAlongBeam</value>
@@ -299,16 +308,16 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonViewAlongBeam.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonViewAlongBeam.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>0</value>
   </data>
   <data name="paneltTrajectory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 67</value>
+    <value>4, 64</value>
   </data>
   <data name="paneltTrajectory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>640, 640</value>
+    <value>512, 512</value>
   </data>
   <data name="paneltTrajectory.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -323,7 +332,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;paneltTrajectory.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="graphControlEnergyProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -339,7 +348,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlEnergyProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>414, 136</value>
+    <value>394, 132</value>
   </data>
   <data name="graphControlEnergyProfile.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -359,11 +368,8 @@
   <data name="numericBoxCalcNum.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCalcNum.HeaderText" xml:space="preserve">
-    <value>Number of trajectories</value>
-  </data>
   <data name="numericBoxCalcNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>533, 36</value>
+    <value>426, 28</value>
   </data>
   <data name="numericBoxCalcNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -375,7 +381,7 @@
     <value>1, 20</value>
   </data>
   <data name="numericBoxCalcNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 25</value>
+    <value>82, 26</value>
   </data>
   <data name="numericBoxCalcNum.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
@@ -393,16 +399,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericBoxCalcNum.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>3</value>
   </data>
   <data name="numericBoxDrawNum.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxDrawNum.HeaderText" xml:space="preserve">
-    <value>Maximum number of trajectories to draw</value>
+    <value>Number of trajectories to draw</value>
   </data>
   <data name="numericBoxDrawNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 710</value>
+    <value>2, 606</value>
   </data>
   <data name="numericBoxDrawNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -414,7 +420,7 @@
     <value>1, 20</value>
   </data>
   <data name="numericBoxDrawNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>317, 25</value>
+    <value>238, 25</value>
   </data>
   <data name="numericBoxDrawNum.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
@@ -432,13 +438,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericBoxDrawNum.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>656, 68</value>
+    <value>3, 3</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>420, 160</value>
+    <value>400, 156</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -453,10 +459,10 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>0</value>
   </data>
   <data name="graphControlDepthProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -471,7 +477,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlDepthProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>414, 136</value>
+    <value>394, 132</value>
   </data>
   <data name="graphControlDepthProfile.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -489,10 +495,10 @@
     <value>0</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>656, 394</value>
+    <value>3, 327</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>420, 160</value>
+    <value>400, 156</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -507,10 +513,10 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>2</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -522,10 +528,10 @@
     <value>     </value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 742</value>
+    <value>0, 658</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1421, 22</value>
+    <value>1274, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
@@ -543,7 +549,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>14</value>
   </data>
   <data name="graphControlDepthEBSD.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -558,7 +564,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlDepthEBSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>414, 136</value>
+    <value>394, 132</value>
   </data>
   <data name="graphControlDepthEBSD.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -576,10 +582,10 @@
     <value>0</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>656, 557</value>
+    <value>3, 489</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>420, 160</value>
+    <value>400, 156</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -594,10 +600,10 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="graphControlDistance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -612,7 +618,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>414, 136</value>
+    <value>394, 132</value>
   </data>
   <data name="graphControlDistance.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -630,10 +636,10 @@
     <value>0</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>656, 231</value>
+    <value>3, 165</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>420, 160</value>
+    <value>400, 156</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -648,22 +654,22 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="poleFigureControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1095, 49</value>
+    <value>6, 44</value>
   </data>
   <data name="poleFigureControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
   <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 473</value>
+    <value>322, 453</value>
   </data>
   <data name="poleFigureControl.TabIndex" type="System.Int32, mscorlib">
     <value>104</value>
@@ -675,16 +681,16 @@
     <value>Crystallography.Controls.PoleFigureControl2, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;poleFigureControl.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;poleFigureControl.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="checkBoxDrawAxes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBoxDrawAxes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 710</value>
+    <value>265, 609</value>
   </data>
   <data name="checkBoxDrawAxes.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 21</value>
@@ -705,7 +711,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxDrawAxes.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>10</value>
   </data>
   <data name="checkBoxDrawGuidCircles.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -714,7 +720,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>432, 710</value>
+    <value>358, 610</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 21</value>
@@ -735,7 +741,390 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxDrawGuidCircles.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="button1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>332, 0</value>
+  </data>
+  <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 25</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>From the surface normal</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 579</value>
+  </data>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>479, 25</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>337, 8</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 34</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Number of trajectories
+ to calculate</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanel2.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>863, 2</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>406, 648</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 634</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.Size" type="System.Drawing.Size, System.Drawing">
+    <value>289, 21</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.Text" xml:space="preserve">
+    <value>Draw the trajectories absorved in the sample</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAbsorved.Name" xml:space="preserve">
+    <value>checkBoxDrawAbsorved</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAbsorved.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAbsorved.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAbsorved.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 496</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 21</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
+    <value>Draw axes</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxesInStereonet.Name" xml:space="preserve">
+    <value>checkBoxDrawAxesInStereonet</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxesInStereonet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxesInStereonet.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxesInStereonet.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>522, 120</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 525</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Direction distribution of BSEs (the center of stereonet corresponds to the surface normal direction)</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelBSEenergy.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBSEenergy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelBSEenergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 64</value>
+  </data>
+  <data name="labelBSEenergy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="labelBSEenergy.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="labelBSEenergy.Text" xml:space="preserve">
+    <value>##.## kev</value>
+  </data>
+  <data name="&gt;&gt;labelBSEenergy.Name" xml:space="preserve">
+    <value>labelBSEenergy</value>
+  </data>
+  <data name="&gt;&gt;labelBSEenergy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBSEenergy.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;labelBSEenergy.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelBSEratio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBSEratio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelBSEratio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 32</value>
+  </data>
+  <data name="labelBSEratio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 17</value>
+  </data>
+  <data name="labelBSEratio.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelBSEratio.Text" xml:space="preserve">
+    <value>##.## %</value>
+  </data>
+  <data name="&gt;&gt;labelBSEratio.Name" xml:space="preserve">
+    <value>labelBSEratio</value>
+  </data>
+  <data name="&gt;&gt;labelBSEratio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBSEratio.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;labelBSEratio.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 64</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 17</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Average energy of the BSEs</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 34</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Ratio of the electrons 
+ escaping from the sample (BSEs)</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>522, 5</value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 109</value>
+  </data>
+  <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.Location" type="System.Drawing.Point, System.Drawing">
+    <value>299, 634</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 21</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.Text" xml:space="preserve">
+    <value>Draw the path after escaping</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawPathAfterEscape.Name" xml:space="preserve">
+    <value>checkBoxDrawPathAfterEscape</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawPathAfterEscape.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawPathAfterEscape.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawPathAfterEscape.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -744,7 +1133,7 @@
     <value>7, 17</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1421, 764</value>
+    <value>1274, 680</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>

@@ -250,9 +250,9 @@ public partial class PoleFigureControl2 : UserControl
     public void DrawSymbols(Graphics g)
     {
         if (Symbols != null)
-            foreach (var s in Symbols.Where(s=>s.Point.Length2<=1))
+            foreach (var s in Symbols.Where(s => s.Point.Length2 <= 1))
             {
-                var p = new PointD(s.Point.X,-s.Point.Y);
+                var p = new PointD(s.Point.X, -s.Point.Y);
                 if (s.Fill)
                     g.FillCircle(s.Color, p, s.Radius, 255);
                 else

@@ -48,13 +48,30 @@
             groupBox4 = new System.Windows.Forms.GroupBox();
             graphControlDistance = new GraphControl();
             poleFigureControl = new PoleFigureControl2();
-            this.checkBoxDrawAxes = new System.Windows.Forms.CheckBox();
+            checkBoxDrawAxes = new System.Windows.Forms.CheckBox();
             checkBoxDrawGuidCircles = new System.Windows.Forms.CheckBox();
+            button1 = new System.Windows.Forms.Button();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            label1 = new System.Windows.Forms.Label();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            checkBoxDrawAbsorved = new System.Windows.Forms.CheckBox();
+            groupBox5 = new System.Windows.Forms.GroupBox();
+            checkBoxDrawAxesInStereonet = new System.Windows.Forms.CheckBox();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            labelBSEenergy = new System.Windows.Forms.Label();
+            labelBSEratio = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            checkBoxDrawPathAfterEscape = new System.Windows.Forms.CheckBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             statusStrip1.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox6.SuspendLayout();
             SuspendLayout();
             // 
             // waveLengthControl1
@@ -73,9 +90,11 @@
             // buttonCalc
             // 
             resources.ApplyResources(buttonCalc, "buttonCalc");
+            buttonCalc.BackColor = System.Drawing.Color.SteelBlue;
+            buttonCalc.ForeColor = System.Drawing.Color.White;
             buttonCalc.Name = "buttonCalc";
-            buttonCalc.UseVisualStyleBackColor = true;
-            buttonCalc.Click += button1_Click;
+            buttonCalc.UseVisualStyleBackColor = false;
+            buttonCalc.Click += buttonCaluculate_Click;
             // 
             // numericBoxSampleTilt
             // 
@@ -185,6 +204,7 @@
             numericBoxDrawNum.ShowUpDown = true;
             numericBoxDrawNum.SmartIncrement = true;
             numericBoxDrawNum.Value = 500D;
+            numericBoxDrawNum.ValueChanged += checkBoxDrawAxes_CheckedChanged;
             // 
             // groupBox1
             // 
@@ -383,11 +403,12 @@
             // 
             // checkBoxDrawAxes
             // 
-            resources.ApplyResources(this.checkBoxDrawAxes, "checkBoxDrawAxes");
-            this.checkBoxDrawAxes.Checked = true;
-            this.checkBoxDrawAxes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDrawAxes.Name = "checkBoxDrawAxes";
-            this.checkBoxDrawAxes.UseVisualStyleBackColor = true;
+            resources.ApplyResources(checkBoxDrawAxes, "checkBoxDrawAxes");
+            checkBoxDrawAxes.Checked = true;
+            checkBoxDrawAxes.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDrawAxes.Name = "checkBoxDrawAxes";
+            checkBoxDrawAxes.UseVisualStyleBackColor = true;
+            checkBoxDrawAxes.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
             // 
             // checkBoxDrawGuidCircles
             // 
@@ -396,27 +417,120 @@
             checkBoxDrawGuidCircles.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxDrawGuidCircles.Name = "checkBoxDrawGuidCircles";
             checkBoxDrawGuidCircles.UseVisualStyleBackColor = true;
+            checkBoxDrawGuidCircles.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
+            // 
+            // button1
+            // 
+            resources.ApplyResources(button1, "button1");
+            button1.Name = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(buttonViewAlongBeam);
+            flowLayoutPanel1.Controls.Add(buttonViewIsometric);
+            flowLayoutPanel1.Controls.Add(button1);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(groupBox1);
+            flowLayoutPanel2.Controls.Add(groupBox4);
+            flowLayoutPanel2.Controls.Add(groupBox2);
+            flowLayoutPanel2.Controls.Add(groupBox3);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // checkBoxDrawAbsorved
+            // 
+            resources.ApplyResources(checkBoxDrawAbsorved, "checkBoxDrawAbsorved");
+            checkBoxDrawAbsorved.Name = "checkBoxDrawAbsorved";
+            checkBoxDrawAbsorved.UseVisualStyleBackColor = true;
+            checkBoxDrawAbsorved.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(poleFigureControl);
+            groupBox5.Controls.Add(checkBoxDrawAxesInStereonet);
+            resources.ApplyResources(groupBox5, "groupBox5");
+            groupBox5.Name = "groupBox5";
+            groupBox5.TabStop = false;
+            // 
+            // checkBoxDrawAxesInStereonet
+            // 
+            resources.ApplyResources(checkBoxDrawAxesInStereonet, "checkBoxDrawAxesInStereonet");
+            checkBoxDrawAxesInStereonet.Checked = true;
+            checkBoxDrawAxesInStereonet.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDrawAxesInStereonet.Name = "checkBoxDrawAxesInStereonet";
+            checkBoxDrawAxesInStereonet.UseVisualStyleBackColor = true;
+            checkBoxDrawAxesInStereonet.CheckedChanged += checkBoxDrawAxesInStereonet_CheckedChanged;
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(labelBSEenergy);
+            groupBox6.Controls.Add(labelBSEratio);
+            groupBox6.Controls.Add(label3);
+            groupBox6.Controls.Add(label2);
+            resources.ApplyResources(groupBox6, "groupBox6");
+            groupBox6.Name = "groupBox6";
+            groupBox6.TabStop = false;
+            // 
+            // labelBSEenergy
+            // 
+            resources.ApplyResources(labelBSEenergy, "labelBSEenergy");
+            labelBSEenergy.Name = "labelBSEenergy";
+            // 
+            // labelBSEratio
+            // 
+            resources.ApplyResources(labelBSEratio, "labelBSEratio");
+            labelBSEratio.Name = "labelBSEratio";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
+            // 
+            // checkBoxDrawPathAfterEscape
+            // 
+            resources.ApplyResources(checkBoxDrawPathAfterEscape, "checkBoxDrawPathAfterEscape");
+            checkBoxDrawPathAfterEscape.Checked = true;
+            checkBoxDrawPathAfterEscape.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDrawPathAfterEscape.Name = "checkBoxDrawPathAfterEscape";
+            checkBoxDrawPathAfterEscape.UseVisualStyleBackColor = true;
+            checkBoxDrawPathAfterEscape.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
             // 
             // FormEBSD
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            Controls.Add(checkBoxDrawGuidCircles);
-            Controls.Add(this.checkBoxDrawAxes);
-            Controls.Add(poleFigureControl);
-            Controls.Add(statusStrip1);
-            Controls.Add(groupBox4);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
-            Controls.Add(numericBoxDrawNum);
-            Controls.Add(buttonViewIsometric);
-            Controls.Add(buttonViewAlongBeam);
-            Controls.Add(numericBoxSampleTilt);
-            Controls.Add(buttonCalc);
-            Controls.Add(paneltTrajectory);
-            Controls.Add(waveLengthControl1);
+            Controls.Add(groupBox6);
+            Controls.Add(groupBox5);
+            Controls.Add(flowLayoutPanel2);
             Controls.Add(numericBoxCalcNum);
+            Controls.Add(label1);
+            Controls.Add(numericBoxSampleTilt);
+            Controls.Add(waveLengthControl1);
+            Controls.Add(checkBoxDrawPathAfterEscape);
+            Controls.Add(checkBoxDrawAbsorved);
+            Controls.Add(checkBoxDrawGuidCircles);
+            Controls.Add(checkBoxDrawAxes);
+            Controls.Add(numericBoxDrawNum);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(buttonCalc);
+            Controls.Add(statusStrip1);
+            Controls.Add(paneltTrajectory);
             Name = "FormEBSD";
             FormClosing += FormEBSD_FormClosing;
             Load += FormEBSD_Load;
@@ -426,6 +540,13 @@
             statusStrip1.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -452,7 +573,20 @@
         private GraphControl graphControlDistance;
         private PoleFigureControl2 poleFigureControl;
         private System.Windows.Forms.Panel panelAxes;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxDrawAxes;
         private System.Windows.Forms.CheckBox checkBoxDrawGuidCircles;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.CheckBox checkBoxDrawAbsorved;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox checkBoxDrawAxesInStereonet;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelBSEratio;
+        private System.Windows.Forms.Label labelBSEenergy;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBoxDrawPathAfterEscape;
     }
 }
