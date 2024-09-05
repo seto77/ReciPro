@@ -11,6 +11,38 @@ namespace Crystallography
 {
     public class MonteCarlo
     {
+
+        public static (double CrossSection, double MeanFreePath, double StoppingPower) GetParameters(double Z, double A, double ρ, double kev)
+        {
+            //トータル散乱断面積の計算中に出てくる定数
+            var coeff1 = Z * UniversalConstants.e0 * UniversalConstants.e0 / (8.0 * Math.PI * UniversalConstants.ε0);
+            //平均自由行程のところに出てくる定数
+            var coeff2 = A / UniversalConstants.A / ρ * 1E21;// / Math.PI;
+            //阻止能の計算中に出てくる定数
+            var coeff3 = -Z * UniversalConstants.A * ρ * 1E3 / (A * 1E-3) * Math.Pow(UniversalConstants.e0, 4)
+                / 4 / Math.PI / UniversalConstants.ε0 / UniversalConstants.ε0 / UniversalConstants.eV_joule * 1E-9 * 1E-3;
+            //阻止能の計算中に出てくる物質依存の定数 k    Joy and Luo (1989)によれば 6C:0.77, 13Al: 0.815, 14Si: 0.822, 28Ni: 0.83, 29Cu: 0.83,  47Ag:0.852, 79Au: 0.851
+            //取りあえず対数近似した値を使う
+            var k = 0.0299 * Math.Log(Z) + 0.7307;
+            //阻止能の計算中に出てくる物質依存の定数 J (eV) Z<=12の時は J=11.5evにするらしい (Joy&Luo 1989)
+            var J = Z <= 12 ? 11.5 * Z : (9.76 * Z + 58.5 / Math.Pow(Z, 0.19));
+
+            //電子の質量 (kg) × 電子の速度の2乗 (m^2/s^2)
+            var mv2 = UniversalConstants.Convert.EnergyToElectronMass(kev) * UniversalConstants.Convert.EnergyToElectronVelositySquared(kev);
+            //散乱係数
+            var α = 0.0034 * Math.Pow(Z, 2.0 / 3.0) / kev;
+            //トータル散乱断面積 (nm^2)
+            var t1 = coeff1 / mv2;
+            var σ_E = t1 * t1 * 4 * Math.PI / α / (α + 1) * 1E18;
+            //弾性散乱平均自由行程 (nm) 
+            var λ_el = coeff2 / σ_E;
+            //阻止能 (Joy and Luo 1989) (kev/nm単位)
+            var sp = coeff3 / mv2 * Math.Log(1.166 * k + 0.583 * mv2 / UniversalConstants.eV_joule / J);
+            return (σ_E, λ_el, sp);
+        }
+
+
+
         public static int seed = 0;
 
         /// <summary>

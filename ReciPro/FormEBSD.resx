@@ -464,6 +464,42 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;graphControlDepthProfile.Name" xml:space="preserve">
+    <value>graphControlDepthProfile</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthProfile.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthProfile.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthProfile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 327</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 156</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Maximum depth penetration of BSEs</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="graphControlDepthProfile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -494,39 +530,9 @@
   <data name="&gt;&gt;graphControlDepthProfile.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 327</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 156</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Maximum depth of BSEs</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 17</value>
-  </data>
-  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>     </value>
-  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 658</value>
   </data>
@@ -551,23 +557,11 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="graphControlDepthEBSD.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 17</value>
   </data>
-  <data name="graphControlDepthEBSD.DrawingRange" type="Crystallography.RectangleD, Crystallography">
-    <value>0, 0, 1, 1</value>
-  </data>
-  <data name="graphControlDepthEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="graphControlDepthEBSD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="graphControlDepthEBSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 132</value>
-  </data>
-  <data name="graphControlDepthEBSD.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>     </value>
   </data>
   <data name="&gt;&gt;graphControlDepthEBSD.Name" xml:space="preserve">
     <value>graphControlDepthEBSD</value>
@@ -605,23 +599,35 @@
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="graphControlDistance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="graphControlDepthEBSD.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="graphControlDistance.DrawingRange" type="Crystallography.RectangleD, Crystallography">
+  <data name="graphControlDepthEBSD.DrawingRange" type="Crystallography.RectangleD, Crystallography">
     <value>0, 0, 1, 1</value>
   </data>
-  <data name="graphControlDistance.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="graphControlDepthEBSD.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="graphControlDistance.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="graphControlDepthEBSD.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
   </data>
-  <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="graphControlDepthEBSD.Size" type="System.Drawing.Size, System.Drawing">
     <value>394, 132</value>
   </data>
-  <data name="graphControlDistance.TabIndex" type="System.Int32, mscorlib">
+  <data name="graphControlDepthEBSD.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthEBSD.Name" xml:space="preserve">
+    <value>graphControlDepthEBSD</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthEBSD.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthEBSD.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;graphControlDepthEBSD.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;graphControlDistance.Name" xml:space="preserve">
     <value>graphControlDistance</value>
@@ -659,6 +665,36 @@
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="graphControlDistance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="graphControlDistance.DrawingRange" type="Crystallography.RectangleD, Crystallography">
+    <value>0, 0, 1, 1</value>
+  </data>
+  <data name="graphControlDistance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="graphControlDistance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 132</value>
+  </data>
+  <data name="graphControlDistance.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;graphControlDistance.Name" xml:space="preserve">
+    <value>graphControlDistance</value>
+  </data>
+  <data name="&gt;&gt;graphControlDistance.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControlDistance.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;graphControlDistance.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
@@ -669,7 +705,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 453</value>
+    <value>322, 433</value>
   </data>
   <data name="poleFigureControl.TabIndex" type="System.Int32, mscorlib">
     <value>104</value>
@@ -900,6 +936,42 @@
   <data name="&gt;&gt;checkBoxDrawAbsorved.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="&gt;&gt;checkBoxDrawAxesInStereonet.Name" xml:space="preserve">
+    <value>checkBoxDrawAxesInStereonet</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxesInStereonet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxesInStereonet.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDrawAxesInStereonet.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>522, 148</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 503</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Direction distribution of BSEs (the center of stereonet corresponds to the surface normal direction)</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="checkBoxDrawAxesInStereonet.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -907,7 +979,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 496</value>
+    <value>6, 476</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 21</value>
@@ -930,30 +1002,6 @@
   <data name="&gt;&gt;checkBoxDrawAxesInStereonet.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 120</value>
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 525</value>
-  </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Direction distribution of BSEs (the center of stereonet corresponds to the surface normal direction)</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="labelBSEenergy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -961,7 +1009,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelBSEenergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 64</value>
+    <value>241, 86</value>
   </data>
   <data name="labelBSEenergy.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 17</value>
@@ -984,6 +1032,66 @@
   <data name="&gt;&gt;labelBSEenergy.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="labelStoppingPower.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelStoppingPower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelStoppingPower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 44</value>
+  </data>
+  <data name="labelStoppingPower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 17</value>
+  </data>
+  <data name="labelStoppingPower.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelStoppingPower.Text" xml:space="preserve">
+    <value>##.## ev/nm @ ## kev</value>
+  </data>
+  <data name="&gt;&gt;labelStoppingPower.Name" xml:space="preserve">
+    <value>labelStoppingPower</value>
+  </data>
+  <data name="&gt;&gt;labelStoppingPower.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelStoppingPower.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;labelStoppingPower.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelMeanFreePath.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelMeanFreePath.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelMeanFreePath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 24</value>
+  </data>
+  <data name="labelMeanFreePath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 17</value>
+  </data>
+  <data name="labelMeanFreePath.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelMeanFreePath.Text" xml:space="preserve">
+    <value>##.## nm @ ## kev</value>
+  </data>
+  <data name="&gt;&gt;labelMeanFreePath.Name" xml:space="preserve">
+    <value>labelMeanFreePath</value>
+  </data>
+  <data name="&gt;&gt;labelMeanFreePath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMeanFreePath.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;labelMeanFreePath.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="labelBSEratio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -991,7 +1099,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelBSEratio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 32</value>
+    <value>241, 67</value>
   </data>
   <data name="labelBSEratio.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 17</value>
@@ -1012,7 +1120,7 @@
     <value>groupBox6</value>
   </data>
   <data name="&gt;&gt;labelBSEratio.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1021,7 +1129,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 64</value>
+    <value>6, 86</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 17</value>
@@ -1042,23 +1150,82 @@
     <value>groupBox6</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 44</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 17</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>The stopping power, dE/ds</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 24</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 17</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Elastic mean free path, λ</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 20</value>
+    <value>6, 65</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 34</value>
+    <value>216, 17</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Ratio of the electrons 
- escaping from the sample (BSEs)</value>
+    <value>Backscattered electron coefficient, η</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -1070,13 +1237,13 @@
     <value>groupBox6</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 5</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 109</value>
+    <value>333, 137</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>

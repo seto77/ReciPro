@@ -63,6 +63,10 @@
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             checkBoxDrawPathAfterEscape = new System.Windows.Forms.CheckBox();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            labelMeanFreePath = new System.Windows.Forms.Label();
+            labelStoppingPower = new System.Windows.Forms.Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -475,8 +479,12 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(labelBSEenergy);
+            groupBox6.Controls.Add(labelStoppingPower);
+            groupBox6.Controls.Add(labelMeanFreePath);
             groupBox6.Controls.Add(labelBSEratio);
             groupBox6.Controls.Add(label3);
+            groupBox6.Controls.Add(label5);
+            groupBox6.Controls.Add(label4);
             groupBox6.Controls.Add(label2);
             resources.ApplyResources(groupBox6, "groupBox6");
             groupBox6.Name = "groupBox6";
@@ -510,6 +518,26 @@
             checkBoxDrawPathAfterEscape.Name = "checkBoxDrawPathAfterEscape";
             checkBoxDrawPathAfterEscape.UseVisualStyleBackColor = true;
             checkBoxDrawPathAfterEscape.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
+            // 
+            // label4
+            // 
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            // 
+            // labelMeanFreePath
+            // 
+            resources.ApplyResources(labelMeanFreePath, "labelMeanFreePath");
+            labelMeanFreePath.Name = "labelMeanFreePath";
+            // 
+            // labelStoppingPower
+            // 
+            resources.ApplyResources(labelStoppingPower, "labelStoppingPower");
+            labelStoppingPower.Name = "labelStoppingPower";
             // 
             // FormEBSD
             // 
@@ -588,5 +616,9 @@
         private System.Windows.Forms.Label labelBSEenergy;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxDrawPathAfterEscape;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelMeanFreePath;
+        private System.Windows.Forms.Label labelStoppingPower;
     }
 }
