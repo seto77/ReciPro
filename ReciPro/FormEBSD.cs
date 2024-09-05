@@ -161,6 +161,11 @@ public partial class FormEBSD : Form
         //入射電子のエネルギー (kev)
         double energy = waveLengthControl1.Energy;
 
+        var (CrossSection, MeanFreePath, StoppingPower) = MonteCarlo.GetParameters(Z, A, ρ, energy);
+        labelCrossSection.Text = $"{CrossSection:g3} nm² @ {energy} kev"; 
+        labelMeanFreePath.Text = $"{MeanFreePath:f2} nm @ {energy} kev";
+        labelStoppingPower.Text = $"{StoppingPower*1000:f2} ev/nm @ {energy} kev";
+
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
 
         //飛程計算ループ
@@ -183,6 +188,8 @@ public partial class FormEBSD : Form
     {
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
         double energy = waveLengthControl1.Energy;
+
+        
 
         var BSEs = Trajectories.Where(e => e[^1].e > EnergyThreshold);
         var count = BSEs.Count();
@@ -326,7 +333,16 @@ public partial class FormEBSD : Form
             var y = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
             return Math.Sqrt(e2.p.X * e2.p.X + y * y);
         }));
-        var scaleStep = maxLength < 1 ? 0.01 : 0.05;
+        var scaleStep = maxLength switch
+        {
+             < 1 => 0.01,
+             < 5 => 0.05,
+             < 10 => 0.1,
+             < 50 => 0.5,
+             < 100 => 1,
+            _=>5
+        };
+       
         var limit = (int)(maxLength / scaleStep + 1);
 
         if (checkBoxDrawGuidCircles.Checked)

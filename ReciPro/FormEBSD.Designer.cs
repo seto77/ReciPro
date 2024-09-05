@@ -59,14 +59,16 @@
             checkBoxDrawAxesInStereonet = new System.Windows.Forms.CheckBox();
             groupBox6 = new System.Windows.Forms.GroupBox();
             labelBSEenergy = new System.Windows.Forms.Label();
+            labelStoppingPower = new System.Windows.Forms.Label();
+            labelCrossSection = new System.Windows.Forms.Label();
+            labelMeanFreePath = new System.Windows.Forms.Label();
             labelBSEratio = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             checkBoxDrawPathAfterEscape = new System.Windows.Forms.CheckBox();
-            label4 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
-            labelMeanFreePath = new System.Windows.Forms.Label();
-            labelStoppingPower = new System.Windows.Forms.Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -107,10 +109,9 @@
             numericBoxSampleTilt.Maximum = 90D;
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
-            numericBoxSampleTilt.RadianValue = 1.2217304763960306D;
             numericBoxSampleTilt.RoundErrorAccuracy = -1;
             numericBoxSampleTilt.ShowUpDown = true;
-            numericBoxSampleTilt.Value = 70D;
+            numericBoxSampleTilt.UpDown_Increment = 10D;
             // 
             // buttonViewIsometric
             // 
@@ -189,11 +190,11 @@
             numericBoxCalcNum.Maximum = 1000000D;
             numericBoxCalcNum.Minimum = 100D;
             numericBoxCalcNum.Name = "numericBoxCalcNum";
-            numericBoxCalcNum.RadianValue = 872.66462599716476D;
+            numericBoxCalcNum.RadianValue = 1745.3292519943295D;
             numericBoxCalcNum.RoundErrorAccuracy = -1;
             numericBoxCalcNum.ShowUpDown = true;
             numericBoxCalcNum.SmartIncrement = true;
-            numericBoxCalcNum.Value = 50000D;
+            numericBoxCalcNum.Value = 100000D;
             // 
             // numericBoxDrawNum
             // 
@@ -201,7 +202,7 @@
             numericBoxDrawNum.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxDrawNum, "numericBoxDrawNum");
             numericBoxDrawNum.Maximum = 100000D;
-            numericBoxDrawNum.Minimum = 100D;
+            numericBoxDrawNum.Minimum = 1D;
             numericBoxDrawNum.Name = "numericBoxDrawNum";
             numericBoxDrawNum.RadianValue = 8.7266462599716466D;
             numericBoxDrawNum.RoundErrorAccuracy = -1;
@@ -480,9 +481,11 @@
             // 
             groupBox6.Controls.Add(labelBSEenergy);
             groupBox6.Controls.Add(labelStoppingPower);
+            groupBox6.Controls.Add(labelCrossSection);
             groupBox6.Controls.Add(labelMeanFreePath);
             groupBox6.Controls.Add(labelBSEratio);
             groupBox6.Controls.Add(label3);
+            groupBox6.Controls.Add(label6);
             groupBox6.Controls.Add(label5);
             groupBox6.Controls.Add(label4);
             groupBox6.Controls.Add(label2);
@@ -495,6 +498,21 @@
             resources.ApplyResources(labelBSEenergy, "labelBSEenergy");
             labelBSEenergy.Name = "labelBSEenergy";
             // 
+            // labelStoppingPower
+            // 
+            resources.ApplyResources(labelStoppingPower, "labelStoppingPower");
+            labelStoppingPower.Name = "labelStoppingPower";
+            // 
+            // labelCrossSection
+            // 
+            resources.ApplyResources(labelCrossSection, "labelCrossSection");
+            labelCrossSection.Name = "labelCrossSection";
+            // 
+            // labelMeanFreePath
+            // 
+            resources.ApplyResources(labelMeanFreePath, "labelMeanFreePath");
+            labelMeanFreePath.Name = "labelMeanFreePath";
+            // 
             // labelBSEratio
             // 
             resources.ApplyResources(labelBSEratio, "labelBSEratio");
@@ -504,6 +522,21 @@
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(label6, "label6");
+            label6.Name = "label6";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
             // 
             // label2
             // 
@@ -518,26 +551,6 @@
             checkBoxDrawPathAfterEscape.Name = "checkBoxDrawPathAfterEscape";
             checkBoxDrawPathAfterEscape.UseVisualStyleBackColor = true;
             checkBoxDrawPathAfterEscape.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(label4, "label4");
-            label4.Name = "label4";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(label5, "label5");
-            label5.Name = "label5";
-            // 
-            // labelMeanFreePath
-            // 
-            resources.ApplyResources(labelMeanFreePath, "labelMeanFreePath");
-            labelMeanFreePath.Name = "labelMeanFreePath";
-            // 
-            // labelStoppingPower
-            // 
-            resources.ApplyResources(labelStoppingPower, "labelStoppingPower");
-            labelStoppingPower.Name = "labelStoppingPower";
             // 
             // FormEBSD
             // 
@@ -620,5 +633,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelMeanFreePath;
         private System.Windows.Forms.Label labelStoppingPower;
+        private System.Windows.Forms.Label labelCrossSection;
+        private System.Windows.Forms.Label label6;
     }
 }
