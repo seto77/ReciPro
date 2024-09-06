@@ -25,7 +25,7 @@ public partial class FormTrajectory : Form
 
     private object lockObj = new();
 
-    List<(V3 p, double e)[]> Trajectories = [];
+    (V3 p, double e)[][] Trajectories = [];
     private double EnergyThreshold = 2;
     private readonly Stopwatch sw = new();
     #endregion
@@ -103,25 +103,22 @@ public partial class FormTrajectory : Form
 
         //入射電子のエネルギー (kev)
         double energy = waveLengthControl1.Energy;
+        
+        //サンプルの傾き
+        double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
 
-        var (CrossSection, MeanFreePath, StoppingPower) = MonteCarlo.GetParameters(Z, A, ρ, energy);
+        var monte = new MonteCarlo(Z, A, ρ, energy, tilt);
+
+        var (_, CrossSection, MeanFreePath, StoppingPower) = monte.GetParameters(energy);
         labelCrossSection.Text = $"{CrossSection:g3} nm² @ {energy} kev";
         labelMeanFreePath.Text = $"{MeanFreePath:f2} nm @ {energy} kev";
         labelStoppingPower.Text = $"{StoppingPower * 1000:f2} ev/nm @ {energy} kev";
 
-        double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
-
         //飛程計算ループ
         sw.Restart();
-        //var list = new List<(V3 p, double e)[]>();
-        Trajectories = [];
-        Parallel.For(0, numericBoxCalcNum.ValueInteger, i =>//for (int i = 0; i < 10000; i++)
-        {
-            var trajectry = MonteCarlo.GetTrajectories(Z, A, ρ, energy, tilt, EnergyThreshold);
-            //if (trajectry[^1].e > threshold)
-            lock (lockObj)
-                Trajectories.Add(trajectry);
-        });
+        Trajectories = new (V3 p, double e)[numericBoxCalcNum.ValueInteger][];
+        Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectories());
+        
         toolStripStatusLabel1.Text = $"{sw.ElapsedMilliseconds} msec. ellapsed for {numericBoxCalcNum.ValueInteger} trajectories.";
     }
     #endregion
@@ -135,7 +132,7 @@ public partial class FormTrajectory : Form
         var BSEs = Trajectories.Where(e => e[^1].e > EnergyThreshold);
         var count = BSEs.Count();
 
-        labelBSEratio.Text = $"{100.0 * count / Trajectories.Count:f2} %";
+        labelBSEratio.Text = $"{100.0 * count / Trajectories.Length:f2} %";
         labelBSEenergy.Text = $"{BSEs.Average(e => e[^1].e):f2} kev";
 
         //エネルギー分布を描画 ここから
@@ -247,7 +244,7 @@ public partial class FormTrajectory : Form
         double energy = waveLengthControl1.Energy;
 
         var list = new List<(V3 p, double e)[]>();
-        for (int i = 0; i < Trajectories.Count && list.Count < numericBoxDrawNum.ValueInteger; i++)
+        for (int i = 0; i < Trajectories.Length && list.Count < numericBoxDrawNum.ValueInteger; i++)
         {
             if (checkBoxDrawAbsorved.Checked || Trajectories[i][^1].e > EnergyThreshold)
                 list.Add(Trajectories[i]);
@@ -290,19 +287,8 @@ public partial class FormTrajectory : Form
             }
         }
 
-        
-        var scaleStep = maxLength switch
-        {
-            < 1 => 0.01,
-            < 5 => 0.05,
-            < 10 => 0.1,
-            < 50 => 0.5,
-            < 100 => 1,
-            _ => 5
-        };
-
+        var scaleStep = maxLength switch { < 1 => 0.01, < 5 => 0.05, < 10 => 0.1, < 50 => 0.5, < 100 => 1, _ => 5 };
         var limit = (int)(maxLength / scaleStep + 1);
-
         if (checkBoxDrawGuidCircles.Checked)
         {
             var circleArray = Enumerable.Range(0, 361)
@@ -310,8 +296,9 @@ public partial class FormTrajectory : Form
             for (int i = 1; i <= limit; i++)
             {
                 glObjects.Add(new Lines(circleArray.Select(e => e * i * scaleStep).ToArray(), i % 5 == 0 ? 2f : 1f, new Material(Color4.LightGray)));
-                //if (i % 10 == 0)
-                //    glObjects.Add(new TextObject($"{i * scaleStep:0.0} µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black)));
+                glControlTrajectory.MakeCurrent();
+                if (i % 10 == 0)
+                    glObjects.Add(new TextObject($"{i * scaleStep:0.0} µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black)));
             }
         }
 
@@ -320,18 +307,18 @@ public partial class FormTrajectory : Form
             var len = limit * scaleStep * 0.5;
             //X軸
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(len, 0, 0)], 3f, new Material(Color4.OrangeRed)));
-            //glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 1000, true, new Material(Color4.OrangeRed)));
+            glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 1000, true, new Material(Color4.OrangeRed)));
 
             //Y軸
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, len, 0)], 3f, new Material(Color4.YellowGreen)));
-            //glObjects.Add(new TextObject("+Y", 10f, new V3(0, len, 0), 1000, true, new Material(Color4.YellowGreen)));
+            glObjects.Add(new TextObject("+Y", 10f, new V3(0, len, 0), 1000, true, new Material(Color4.YellowGreen)));
 
             //Z軸 = beam
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, len)], 3f, new Material(Color4.MediumPurple)));
-            //glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, len), 1000, true, new Material(Color4.MediumPurple)));
+            glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, len), 1000, true, new Material(Color4.MediumPurple)));
         }
 
-        glControlTrajectory.ProjWidth = maxLength * 2;
+        glControlTrajectory.ProjWidth = maxLength * 2.05;
         glControlTrajectory.DeleteAllObjects();
         glControlTrajectory.AddObjects(glObjects);
         glControlTrajectory.Refresh();

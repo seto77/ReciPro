@@ -155,7 +155,7 @@
     <value>4, 63</value>
   </data>
   <data name="graphControlEnergyProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 131</value>
+    <value>394, 134</value>
   </data>
   <data name="numericBoxDrawNum.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -170,49 +170,49 @@
     <value>168, 25</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 155</value>
+    <value>400, 158</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>後方散乱電子のエネルギー分布</value>
   </data>
+  <data name="graphControlDepthProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 134</value>
+  </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 325</value>
+    <value>3, 331</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 155</value>
+    <value>400, 158</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>表面に垂直な方向の最大深さ  (後方散乱電子のみ)</value>
   </data>
-  <data name="graphControlDepthProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 131</value>
-  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 665</value>
   </data>
+  <data name="graphControlDepthEBSD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 134</value>
+  </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 486</value>
+    <value>3, 495</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 155</value>
+    <value>400, 158</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>後方散乱電子の脱出直前の深さ</value>
   </data>
-  <data name="graphControlDepthEBSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 131</value>
+  <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>394, 134</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 164</value>
+    <value>3, 167</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 155</value>
+    <value>400, 158</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>表面に平行な方向の最大広がり (後方散乱電子のみ)</value>
-  </data>
-  <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 131</value>
   </data>
   <data name="poleFigureControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 71</value>
@@ -263,7 +263,7 @@
     <value>計算する飛程の総数</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 644</value>
+    <value>406, 656</value>
   </data>
   <data name="checkBoxDrawAbsorved.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 638</value>
@@ -273,15 +273,6 @@
   </data>
   <data name="checkBoxDrawAbsorved.Text" xml:space="preserve">
     <value>試料内で吸収された電子の飛程を描画</value>
-  </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 147</value>
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 513</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>後方散乱電子の方位分布 (ネットの中心は表面法線方向)</value>
   </data>
   <data name="radioButtonStandardDeviation.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 46</value>
@@ -319,11 +310,14 @@
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>軸を描画</value>
   </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 136</value>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>522, 147</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
-    <value>統計情報</value>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 513</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>後方散乱電子の方位分布 (ネットの中心は表面法線方向)</value>
   </data>
   <data name="labelBSEenergy.Location" type="System.Drawing.Point, System.Drawing">
     <value>201, 110</value>
@@ -399,6 +393,12 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>後方散乱電子係数, η</value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 136</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>統計情報</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.Location" type="System.Drawing.Point, System.Drawing">
     <value>241, 638</value>

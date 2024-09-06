@@ -549,6 +549,7 @@ public partial class FormMain : Form
 
     private void resetAxes()
     {
+        glControlAxes.MakeCurrent();
         if (glControlAxes == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0)
             return;
 
