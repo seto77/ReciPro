@@ -69,11 +69,11 @@ public partial class FormEBSD : Form
         var rot = Matrix3D.RotY(numericBoxSampleTilt.RadianValue);
 
         //試料を示す直方体
-        var sample = new Parallelepiped(rot * new V3(-1, -1, -0.2), rot * new V3(2, 0, 0), rot * new V3(0, 2, 0), rot * new V3(0, 0, 0.2), new Material(Color4.AliceBlue), DrawingMode.SurfacesAndEdges);
+        var sample = new Parallelepiped(rot * new V3(-1, -1, -0.2), rot * new V3(2, 0, 0), rot * new V3(0, 2, 0), rot * new V3(0, 0, 0.2), new Material(C4.AliceBlue), DrawingMode.SurfacesAndEdges);
         glObjects.Add(sample);
 
         //検出器面
-        var detector = new Parallelepiped(new V3(2.99, -1.5, -1.5), new V3(0, 3, 0), new V3(0, 0, 3), new V3(0.2, 0, 0), new Material(Color4.GreenYellow, 0.7), DrawingMode.Surfaces);
+        var detector = new Parallelepiped(new V3(2.99, -1.5, -1.5), new V3(0, 3, 0), new V3(0, 0, 3), new V3(0.2, 0, 0), new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces);
         glObjects.Add(detector);
 
         //ポールピース
@@ -100,4 +100,8 @@ public partial class FormEBSD : Form
     }
     #endregion
 
+    private void button2_Click(object sender, EventArgs e)
+    {
+        DrawGeometry();
+    }
 }
