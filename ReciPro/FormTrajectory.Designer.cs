@@ -1,6 +1,6 @@
 ﻿namespace ReciPro
 {
-    partial class FormEBSD
+    partial class FormTrajectory
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEBSD));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTrajectory));
             waveLengthControl1 = new WaveLengthControl();
             buttonCalc = new System.Windows.Forms.Button();
             numericBoxSampleTilt = new NumericBox();
@@ -56,6 +56,9 @@
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxDrawAbsorved = new System.Windows.Forms.CheckBox();
             groupBox5 = new System.Windows.Forms.GroupBox();
+            radioButtonStandardDeviation = new System.Windows.Forms.RadioButton();
+            radioButtonAverageEnergy = new System.Windows.Forms.RadioButton();
+            radioButtonFrequency = new System.Windows.Forms.RadioButton();
             checkBoxDrawAxesInStereonet = new System.Windows.Forms.CheckBox();
             groupBox6 = new System.Windows.Forms.GroupBox();
             labelBSEenergy = new System.Windows.Forms.Label();
@@ -462,11 +465,39 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(radioButtonStandardDeviation);
+            groupBox5.Controls.Add(radioButtonAverageEnergy);
+            groupBox5.Controls.Add(radioButtonFrequency);
             groupBox5.Controls.Add(poleFigureControl);
             groupBox5.Controls.Add(checkBoxDrawAxesInStereonet);
             resources.ApplyResources(groupBox5, "groupBox5");
             groupBox5.Name = "groupBox5";
             groupBox5.TabStop = false;
+            // 
+            // radioButtonStandardDeviation
+            // 
+            resources.ApplyResources(radioButtonStandardDeviation, "radioButtonStandardDeviation");
+            radioButtonStandardDeviation.Name = "radioButtonStandardDeviation";
+            radioButtonStandardDeviation.TabStop = true;
+            radioButtonStandardDeviation.UseVisualStyleBackColor = true;
+            radioButtonStandardDeviation.CheckedChanged += radioButtonFrequency_CheckedChanged;
+            // 
+            // radioButtonAverageEnergy
+            // 
+            resources.ApplyResources(radioButtonAverageEnergy, "radioButtonAverageEnergy");
+            radioButtonAverageEnergy.Name = "radioButtonAverageEnergy";
+            radioButtonAverageEnergy.TabStop = true;
+            radioButtonAverageEnergy.UseVisualStyleBackColor = true;
+            radioButtonAverageEnergy.CheckedChanged += radioButtonFrequency_CheckedChanged;
+            // 
+            // radioButtonFrequency
+            // 
+            resources.ApplyResources(radioButtonFrequency, "radioButtonFrequency");
+            radioButtonFrequency.Checked = true;
+            radioButtonFrequency.Name = "radioButtonFrequency";
+            radioButtonFrequency.TabStop = true;
+            radioButtonFrequency.UseVisualStyleBackColor = true;
+            radioButtonFrequency.CheckedChanged += radioButtonFrequency_CheckedChanged;
             // 
             // checkBoxDrawAxesInStereonet
             // 
@@ -635,5 +666,8 @@
         private System.Windows.Forms.Label labelStoppingPower;
         private System.Windows.Forms.Label labelCrossSection;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton radioButtonStandardDeviation;
+        private System.Windows.Forms.RadioButton radioButtonAverageEnergy;
+        private System.Windows.Forms.RadioButton radioButtonFrequency;
     }
 }

@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2024.9.5.0242</AssemblyVersion>
-    <FileVersion>2024.9.5.0242</FileVersion>
+    <AssemblyVersion>2024.9.6.0556</AssemblyVersion>
+    <FileVersion>2024.9.6.0556</FileVersion>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 

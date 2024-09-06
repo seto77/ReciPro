@@ -126,7 +126,7 @@ public partial class FormMain : Form
     public FormImageSimulator FormImageSimulator;
     public FormCrystalDatabase FormCrystalDatabase;
     public FormMovie FormMovie;
-    public FormEBSD FormEBSD;
+    public FormTrajectory FormTrajectory;
     private Macro macro;
     public FormMacro FormMacro;
 
@@ -324,7 +324,7 @@ public partial class FormMain : Form
         FormMovie = new FormMovie() { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'Movie' form.", 0.55);
-        FormEBSD = new FormEBSD() { FormMain = this, Visible = false };
+        FormTrajectory = new FormTrajectory() { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
         FormTEMID = new FormSpotIDv1 { formMain = this, Visible = false };
@@ -930,8 +930,10 @@ public partial class FormMain : Form
             form = FormTEMID;
         else if (button.Name.Contains("SpotIDv2"))
             form = FormSpotID;
-        else if (button.Name.Contains("EBSD"))
-            form = FormEBSD;
+        else if (button.Name.Contains("Trajectory"))
+            form = FormTrajectory;
+        //else if (button.Name.Contains("EBSD"))
+        //    form = FormEBSD;
         else
             form = FormPolycrystallineDiffractionSimulator;
 

@@ -118,49 +118,82 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 53</value>
+  <data name="numericBoxResolution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericUpDownResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 51</value>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>解像度</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 53</value>
+  <data name="numericBoxResolution.Location" type="System.Drawing.Point, System.Drawing">
+    <value>152, 385</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 51</value>
+  <data name="numericBoxResolution.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 26</value>
   </data>
-  <data name="numericUpDownFullscale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 48</value>
-  </data>
-  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 324</value>
-  </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 77</value>
-  </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 25</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 22</value>
-  </data>
-  <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 19</value>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 22</value>
+    <value>152, 361</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 18</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>色</value>
   </data>
   <data name="comboBoxColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 19</value>
+    <value>205, 358</value>
   </data>
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt</value>
+  <data name="comboBoxColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 23</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 108</value>
+  <data name="numericBoxMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 450</value>
+  <data name="numericBoxMax.HeaderText" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="numericBoxMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 385</value>
+  </data>
+  <data name="numericBoxMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 26</value>
+  </data>
+  <data name="numericBoxMin.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxMin.HeaderText" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="numericBoxMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 359</value>
+  </data>
+  <data name="numericBoxMin.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxMin.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 26</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 13</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Min: ##.##,  Max ####.##</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
 </root>

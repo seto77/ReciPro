@@ -1,12 +1,23 @@
 ﻿using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using V3 = OpenTK.Vector3d;
+using V4 = OpenTK.Vector4d;
 
 namespace Crystallography.Controls;
 
 public partial class PoleFigureControl2 : UserControl
 {
+    /// <summary>
+    /// Histogram:方位ベクトルの頻度,  Average: 方位ベクトルが持つ値の平均値,  Sigma: 方位ベクトルが持つ値の標準偏差 
+    /// </summary>
+    public enum DrawingModeEnum { Histogram, Average, Sigma }
+
+    public DrawingModeEnum DrawingMode = DrawingModeEnum.Histogram;
+
     private StereonetProjectionMode stereonetProjectionMode = StereonetProjectionMode.Schmidt;
     private StereonetDirection stereonetDirecion = StereonetDirection.Equrtor;
     private bool showOneDeg = false;
@@ -17,11 +28,11 @@ public partial class PoleFigureControl2 : UserControl
     private Color TenDegColor = Color.FromArgb(128, 128, 255);
     private Color NinetyDegColor = Color.FromArgb(0, 0, 255);
 
-    private OpenTK.Vector3d[] vectors = null;
+    private V4[] vectors = null;
     /// <summary>
     /// 
     /// </summary>
-    public OpenTK.Vector3d[] Vectors
+    public V4[] Vectors
     {
         get => vectors;
         set
@@ -40,13 +51,14 @@ public partial class PoleFigureControl2 : UserControl
     private double magnification = 1;
     private PointD center = new(0, 0);
 
-    public (PointD Point, double Radius, Color Color, bool Fill, string Text)[] Symbols = null;
+    //記号や線など
+    public (PointD Point, double Radius, Color Color, bool Fill, string Text)[] Circles = null;
+    public (PointD[] Point, double LineWidth, Color Color)[] Lines = null;
 
 
     public PoleFigureControl2()
     {
         InitializeComponent();
-        comboBoxScale.SelectedIndex = 0;
         comboBoxColor.SelectedIndex = 0;
     }
 
@@ -96,10 +108,10 @@ public partial class PoleFigureControl2 : UserControl
     /// </summary>
     private void GeneratePixels()
     {
-        if(vectors == null) return; 
+        if (vectors == null) return;
 
         //まず、指定された解像度でpixelsを生成
-        var div1 =  (int) (90.0/(double)numericUpDownResolution.Value);//放射方向の分割数
+        var div1 = (int)(90.0 / numericBoxResolution.Value);//放射方向の分割数
         Pixels = new double[div1][];
         var areas = new double[div1];
         for (int i = 0; i < div1; i++)
@@ -110,60 +122,102 @@ public partial class PoleFigureControl2 : UserControl
             areas[i] = Math.PI * (2 * i + 1) / div1 / div1 / div2;
         }
 
-        foreach (var v in vectors.Where(v => v.Z >= 0))
+        //ベクトルからPixelのインデックスを計算するファンクション
+        var f = new Func<V3, (int i, int j)>(v =>
         {
-            // vが単位ベクトルの時、 (v.X / Sqrt(1 + v.Z), v.Y / Sqrt(1 + v.Z) )が シュミットネット上の点
             v.Normalize();
-
+            // vが単位ベクトルの時、 (v.X / Sqrt(1 + v.Z), v.Y / Sqrt(1 + v.Z) )が シュミットネット上の点
             var (x, y) = (v.X / Math.Sqrt(1 + v.Z), v.Y / Math.Sqrt(1 + v.Z));
-
             var i = (int)(Math.Sqrt(x * x + y * y) * div1);
             i = Math.Min(Math.Max(i, 0), div1 - 1);
             var j = (int)((Math.Atan2(y, x) + Math.PI) / 2 / Math.PI * Pixels[i].Length);
             j = Math.Min(Math.Max(j, 0), Pixels[i].Length - 1);
+            return (i, j);
+        });
 
-            Pixels[i][j] += 1 / areas[i];
+        if (DrawingMode == DrawingModeEnum.Histogram)
+        {
+            foreach (var v in vectors.Select(v => new V3(v.X, v.Y, v.Z)).Where(v => v.Z >= 0))
+            {
+                var (i, j) = f(v);
+                Pixels[i][j] += 1 / areas[i];
+            }
         }
+        else if (DrawingMode == DrawingModeEnum.Average)
+        {
+            var count = new int[Pixels.Length][];
+            for (int i = 0; i < count.Length; i++)
+                count[i] = new int[Pixels[i].Length];
+
+            foreach (var v in vectors.Where(v => v.Z >= 0))
+            {
+                var (i, j) = f(new(v.X, v.Y, v.Z));
+                Pixels[i][j] += v.W;
+                count[i][j]++;
+            }
+            for (int i = 0; i < div1; i++)
+                for (int j = 0; j < Pixels[i].Length; j++)
+                    if (count[i][j]!=0)
+                    Pixels[i][j] /= count[i][j];
+        }
+        else
+        {
+           var tmp = new List<double> [Pixels.Length][];
+            for (int i = 0; i < tmp.Length; i++)
+            {
+                tmp[i] = new List<double>[Pixels[i].Length];
+                for (int j = 0; j < tmp[i].Length; j++)
+                    tmp[i][j] = [];
+            }
+
+            foreach (var v in vectors.Where(v => v.Z >= 0))
+            {
+                var (i, j) = f(new(v.X, v.Y, v.Z));
+                tmp[i][j].Add(v.W);
+            }
+            for (int i = 0; i < div1; i++)
+                for (int j = 0; j < Pixels[i].Length; j++)
+                    if (tmp[i][j].Count > 1)
+                        Pixels[i][j] = Statistics.Deviation([.. tmp[i][j]]);
+        }
+
+        numericBoxMax.Value = Pixels.Max(e => e.Max());
+        numericBoxMin.Value = Pixels.Min(e => e.Min());
+
+
     }
 
     public void DrawDensity(Graphics g, double[][] pixels)
     {
         if (pixels == null) return;
-
-        var average = pixels.Sum(e => e.Sum()) / pixels.Sum(e => e.Length);
-        var max = pixels.Max(e=>e.Max() / average);
-        var min = pixels.Min(e => e.Min() / average);
-        double fullScale = average * Math.Pow(10, (double)numericUpDownFullscale.Value);
-        textBox1.Text = "Max: " + max.ToString("g3") + ";   Min: " + min.ToString("g3");
+        var max = pixels.Max(e => e.Max());
+        var min = pixels.Min(e => e.Min());
+        label1.Text = "Max: " + max.ToString("g5") + ";   Min: " + min.ToString("g5");
 
         //最大値をaverage*設定値に規格化して塗りつぶし
-        (byte R, byte G, byte B)[] scale;
-        if (comboBoxColor.SelectedIndex == 1)
-            scale = comboBoxScale.SelectedIndex == 0 ? PseudoBitmap.ColorScaleGrayLiner : PseudoBitmap.ColorScaleGrayLog;
-        else
-            scale = comboBoxScale.SelectedIndex == 0 ? PseudoBitmap.ColorScaleColdWarmLiner : PseudoBitmap.ColorScaleColdWarmLog;
+        var scale = comboBoxColor.SelectedIndex == 0 ? PseudoBitmap.ColorScaleColdWarmLiner : PseudoBitmap.ColorScaleGrayLiner;
 
         for (int i = pixels.Length - 1; i >= 0; i--)
             for (int j = 0; j < pixels[i].Length; j++)
             {
-                int density = Math.Min(65535, Math.Max((int)(pixels[i][j] / fullScale * 65535), 0));
+                var val = (pixels[i][j] - numericBoxMin.Value) / (numericBoxMax.Value - numericBoxMin.Value);
+
+                int density = Math.Min(65535, Math.Max((int)(val * 65535), 0));
 
                 g.FillPie(new SolidBrush(Color.FromArgb(scale[density].R, scale[density].G, scale[density].B)),
                     -(i + 1.0) / pixels.Length, -(i + 1.0) / pixels.Length, (i + 1.0) / pixels.Length * 2, (i + 1.0) / pixels.Length * 2,
                     (double)j / pixels[i].Length * 360.0, 1.0 / pixels[i].Length * 360.0);
             }
 
-        if(Symbols !=null)
-            foreach (var s in Symbols)
+        if (Circles != null)
+            foreach (var s in Circles)
             {
-                var p = new PointD(s.Point.X,-s.Point.Y);
+                var p = new PointD(s.Point.X, -s.Point.Y);
                 if (s.Fill)
                     g.FillCircle(s.Color, p, s.Radius, 255);
                 if (s.Text != "")
                     g.DrawString(s.Text, new Font("Tahoma", 0.08f), new SolidBrush(s.Color), p.ToPointF());
             }
-
-        
     }
 
     #region DrawOutline 輪郭を描画する)
@@ -249,8 +303,8 @@ public partial class PoleFigureControl2 : UserControl
 
     public void DrawSymbols(Graphics g)
     {
-        if (Symbols != null)
-            foreach (var s in Symbols.Where(s => s.Point.Length2 <= 1))
+        if (Circles != null)
+            foreach (var s in Circles.Where(s => s.Point.Length2 <= 1))
             {
                 var p = new PointD(s.Point.X, -s.Point.Y);
                 if (s.Fill)
@@ -260,47 +314,49 @@ public partial class PoleFigureControl2 : UserControl
                 if (s.Text != "")
                     g.DrawString(s.Text, new Font("Tahoma", 0.08f), new SolidBrush(s.Color), p.ToPointF());
             }
+        if (Lines != null)
+            foreach (var l in Lines)
+                g.DrawLines(new Pen(l.Color, (float)(l.LineWidth / magnification)), l.Point.Select(e => new PointD(e.X, -e.Y)).ToArray());
     }
 
 
     public void DrawColorScale()
     {
-        Bitmap bmp = new Bitmap(pictureBox1.ClientSize.Width, pictureBox1.ClientSize.Height);
+        //横 320 縦 35で描画
+        Bitmap bmp = new(pictureBox1.ClientSize.Width, pictureBox1.ClientSize.Height);
         Graphics gScale = Graphics.FromImage(bmp);
+        gScale.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 
-        (byte R, byte G, byte B)[] scale;
-        if (comboBoxColor.SelectedIndex == 1)
-            scale = comboBoxScale.SelectedIndex == 0 ? PseudoBitmap.ColorScaleGrayLiner : PseudoBitmap.ColorScaleGrayLog;
-        else
-            scale = comboBoxScale.SelectedIndex == 0 ? PseudoBitmap.ColorScaleColdWarmLiner : PseudoBitmap.ColorScaleColdWarmLog;
-        
-        for (int i = 0; i < pictureBox1.ClientSize.Width; i++)
+        var scale = comboBoxColor.SelectedIndex == 0 ? PseudoBitmap.ColorScaleColdWarmLiner : PseudoBitmap.ColorScaleGrayLiner;
+        int scaleWidth = 280, scaleHeight = 15, leftMargin = 20, barLength = 5;
+        for (int i = 0; i < scaleWidth; i++)
         {
-            int dens = (int)((double)i / (double)pictureBox1.ClientSize.Width * 65536);
-            gScale.DrawLine(new Pen(Color.FromArgb(scale[dens].R, scale[dens].G, scale[dens].B)), new Point(i, 0), new Point(i, pictureBox.ClientSize.Height));
+            int dens = (int)(65536.0 * i / scaleWidth);
+            gScale.DrawLine(new Pen(Color.FromArgb(scale[dens].R, scale[dens].G, scale[dens].B)), new Point(leftMargin + i, 0), new Point(leftMargin + i, scaleHeight));
         }
-        pictureBox1.Image= bmp;
 
+        for (int i = 0; i < 5; i++)
+        {
+            var x = i / 4f * scaleWidth;
+            var val = (numericBoxMax.Value - numericBoxMin.Value) * i / 4.0 + numericBoxMin.Value;
+            gScale.DrawLine(new Pen(Color.Black), new PointF(leftMargin + x, scaleHeight), new PointF(leftMargin + x, scaleHeight + barLength));
+            gScale.DrawStringWithAlignment($"{val:g6}", new Font("Tahoma", 8f), Color.Black,
+                new PointD(leftMargin + x, scaleHeight + barLength), new Size(100, 20)
+                , HorizontalAlignment.Center, System.Windows.Forms.VisualStyles.VerticalAlignment.Top);
+        }
+        pictureBox1.Image = bmp;
     }
 
     public object lockObject = new();
-
-    private void numericUpDownResolution_ValueChanged(object sender, EventArgs e)
-    {
-        numericUpDownResolution.Increment = (decimal)Math.Pow(10, Math.Floor(Math.Log10((double)numericUpDownResolution.Value)));
-        Draw();
-    }
 
     private void numericUpDownResolution_Click(object sender, EventArgs e)
     {
         GeneratePixels();
         Draw();
     }
-
-    private void numericUpDownFullScale_ValueChanged(object sender, EventArgs e) => Draw();
-
     private void Combobox_SelectedIndexChanged(object sender, EventArgs e) => Draw();
 
+    private void numericBoxMax_ValueChanged(object sender, EventArgs e) => Draw();
 
 
 }

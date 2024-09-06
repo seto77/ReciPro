@@ -11,10 +11,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using V3 = OpenTK.Vector3d;
+using V4 = OpenTK.Vector4d;
 #endregion
 
 namespace ReciPro;
-public partial class FormEBSD : Form
+public partial class FormTrajectory : Form
 {
     #region フィールド、プロパティ
     public FormMain FormMain;
@@ -30,7 +31,7 @@ public partial class FormEBSD : Form
     #endregion
 
     #region コンストラクタ、Load, Closing
-    public FormEBSD()
+    public FormTrajectory()
     {
         InitializeComponent();
     }
@@ -77,7 +78,7 @@ public partial class FormEBSD : Form
     private void FormEBSD_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = true;
-        FormMain.toolStripButtonEBSD.Checked = false;
+        FormMain.toolStripButtonTrajectorySimulator.Checked = false;
         this.Visible = false;
     }
     #endregion
@@ -162,9 +163,9 @@ public partial class FormEBSD : Form
         double energy = waveLengthControl1.Energy;
 
         var (CrossSection, MeanFreePath, StoppingPower) = MonteCarlo.GetParameters(Z, A, ρ, energy);
-        labelCrossSection.Text = $"{CrossSection:g3} nm² @ {energy} kev"; 
+        labelCrossSection.Text = $"{CrossSection:g3} nm² @ {energy} kev";
         labelMeanFreePath.Text = $"{MeanFreePath:f2} nm @ {energy} kev";
-        labelStoppingPower.Text = $"{StoppingPower*1000:f2} ev/nm @ {energy} kev";
+        labelStoppingPower.Text = $"{StoppingPower * 1000:f2} ev/nm @ {energy} kev";
 
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
 
@@ -188,8 +189,6 @@ public partial class FormEBSD : Form
     {
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
         double energy = waveLengthControl1.Energy;
-
-        
 
         var BSEs = Trajectories.Where(e => e[^1].e > EnergyThreshold);
         var count = BSEs.Count();
@@ -268,20 +267,36 @@ public partial class FormEBSD : Form
         //ここまで
 
         //ステレオネット描画
+        if (radioButtonFrequency.Checked)
+            poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
+        else if (radioButtonAverageEnergy.Checked)
+            poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Average;
+        else
+            poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Sigma;
+
         var rot = Matrix3d.CreateRotationX(tilt);
         if (checkBoxDrawAxesInStereonet.Checked)
-            poleFigureControl.Symbols = [
+            poleFigureControl.Circles = [
                 (Stereonet.ConvertVectorToSchmidt(new Vector3DBase(1, 0,0)), 0.02, Color.OrangeRed, true, "+X"),
-            (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, -1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "-Y"),
-            (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "+Y"),
-            (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 0, 1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "+Z (=beam)")
+                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, -1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "-Y"),
+                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "+Y"),
+                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 0, 1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "+Z (=beam)")
                 ];
         else
-            poleFigureControl.Symbols = [];
+            poleFigureControl.Circles = [];
 
-        poleFigureControl.Vectors = BSEs.Select(e => rot.Mult(e[^1].p - e[^2].p)).ToArray();
+        //検出器の四隅
+        
+        V3 p1 = new(15, -10, 0), p2 = new(-15, -10, 0), p3 = new(-15, -10, -10), p4 = new(15, -10, -10);
+        var f = new Func<V3, V3, double, PointD>((p1, p2, r) => Stereonet.ConvertVectorToSchmidt(rot.Mult(p1 * r + p2 * (1 - r))));
+        poleFigureControl.Lines = [
+            (Enumerable.Range(0,100).Select(i=>  f(p1,p2,i/100.0)).ToArray(),1,Color.Red),
+            (Enumerable.Range(0,100).Select(i=>  f(p2,p3,i/100.0)).ToArray(),1,Color.Red),
+            (Enumerable.Range(0,100).Select(i=>  f(p3,p4,i/100.0)).ToArray(),1,Color.Red),
+            (Enumerable.Range(0,100).Select(i=>  f(p4,p1,i/100.0)).ToArray(),1,Color.Red)
+            ];
+        poleFigureControl.Vectors = BSEs.Select(e => new V4(rot.Mult(e[^1].p - e[^2].p), e[^1].e)).ToArray();
     }
-
     #endregion
 
     #region OpenGLを用いて三次元の飛程を表示
@@ -296,6 +311,12 @@ public partial class FormEBSD : Form
             if (checkBoxDrawAbsorved.Checked || Trajectories[i][^1].e > EnergyThreshold)
                 list.Add(Trajectories[i]);
         }
+
+        double maxLength = list.Max(e1 => e1.Max(e2 =>
+        {
+            var y = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
+            return Math.Sqrt(e2.p.X * e2.p.X + y * y);
+        }));
 
         //ここから OpenGL描画
         List<GLObject> glObjects = [];
@@ -322,27 +343,23 @@ public partial class FormEBSD : Form
             if (checkBoxDrawPathAfterEscape.Checked && trajectry[^1].e > EnergyThreshold && trajectry.Length > 1)
             {
                 var r = trajectry[^2].e / waveLengthControl1.Energy;
-                var v = (trajectry[^1].p - trajectry[^2].p).Normalized() * 0.1 * r;
-                var matBackScattered = new Material(new Color4(255, (byte)(128 * (1 - r)+127), (byte)(255 * (1 - r)), (byte)(200 * r )));
+                var v = (trajectry[^1].p - trajectry[^2].p).Normalized() * r * maxLength / 2;
+                var matBackScattered = new Material(new Color4(255, (byte)(128 * (1 - r) + 127), (byte)(255 * (1 - r)), (byte)(200 * r)));
                 glObjects.Add(new Lines([trajectry[^2].p, trajectry[^2].p + v], 1f, matBackScattered));
             }
         }
 
-        double maxLength = list[..numericBoxDrawNum.ValueInteger].Max(e1 => e1.Max(e2 =>
-        {
-            var y = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
-            return Math.Sqrt(e2.p.X * e2.p.X + y * y);
-        }));
+        
         var scaleStep = maxLength switch
         {
-             < 1 => 0.01,
-             < 5 => 0.05,
-             < 10 => 0.1,
-             < 50 => 0.5,
-             < 100 => 1,
-            _=>5
+            < 1 => 0.01,
+            < 5 => 0.05,
+            < 10 => 0.1,
+            < 50 => 0.5,
+            < 100 => 1,
+            _ => 5
         };
-       
+
         var limit = (int)(maxLength / scaleStep + 1);
 
         if (checkBoxDrawGuidCircles.Checked)
@@ -352,8 +369,8 @@ public partial class FormEBSD : Form
             for (int i = 1; i <= limit; i++)
             {
                 glObjects.Add(new Lines(circleArray.Select(e => e * i * scaleStep).ToArray(), i % 5 == 0 ? 2f : 1f, new Material(Color4.LightGray)));
-                if (i % 10 == 0)
-                    glObjects.Add(new TextObject($"{i * scaleStep:0.0} µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black)));
+                //if (i % 10 == 0)
+                //    glObjects.Add(new TextObject($"{i * scaleStep:0.0} µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black)));
             }
         }
 
@@ -362,15 +379,15 @@ public partial class FormEBSD : Form
             var len = limit * scaleStep * 0.5;
             //X軸
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(len, 0, 0)], 3f, new Material(Color4.OrangeRed)));
-            glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 1000, true, new Material(Color4.OrangeRed)));
+            //glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 1000, true, new Material(Color4.OrangeRed)));
 
             //Y軸
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, len, 0)], 3f, new Material(Color4.YellowGreen)));
-            glObjects.Add(new TextObject("+Y", 10f, new V3(0, len, 0), 1000, true, new Material(Color4.YellowGreen)));
+            //glObjects.Add(new TextObject("+Y", 10f, new V3(0, len, 0), 1000, true, new Material(Color4.YellowGreen)));
 
             //Z軸 = beam
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, len)], 3f, new Material(Color4.MediumPurple)));
-            glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, len), 1000, true, new Material(Color4.MediumPurple)));
+            //glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, len), 1000, true, new Material(Color4.MediumPurple)));
         }
 
         glControlTrajectory.ProjWidth = maxLength * 2;
@@ -383,4 +400,10 @@ public partial class FormEBSD : Form
 
     private void checkBoxDrawAxes_CheckedChanged(object sender, EventArgs e) => Draw3D();
     private void checkBoxDrawAxesInStereonet_CheckedChanged(object sender, EventArgs e) => DrawStatistics();
+
+    private void radioButtonFrequency_CheckedChanged(object sender, EventArgs e)
+    {
+        if (sender is RadioButton radioButton && radioButton.Checked)
+            DrawStatistics();
+    }
 }
