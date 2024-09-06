@@ -38,23 +38,6 @@ public partial class FormTrajectory : Form
 
     private void FormEBSD_Load(object sender, EventArgs e)
     {
-        //glControlGeometry = new GLControlAlpha(GLControlAlpha.FragShaders.OIT)
-        //{
-        //    AllowMouseRotation = true,
-        //    AllowMouseScaling = true,
-        //    AllowMouseTranslating = false,
-        //    Name = "glControlAxes",
-        //    ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-        //    ProjWidth = 8.0,
-        //    RotationMode = GLControlAlpha.RotationModes.Object,
-        //    Dock = DockStyle.Fill,
-        //    LightPosition = new V3(100, 100, 100),
-        //    BorderStyle = BorderStyle.Fixed3D,
-
-        //    WorldMatrix =/* Matrix4d.CreateRotationZ(-Math.PI / 8) * */Matrix4d.CreateRotationX(-0.5 * Math.PI)
-        //};
-        //panelGeometry.Controls.Add(glControlGeometry);
-
         glControlTrajectory = new GLControlAlpha()
         {
             AllowMouseRotation = true,
@@ -101,48 +84,7 @@ public partial class FormTrajectory : Form
 
     #endregion
 
-    #region 入射電子、試料、検出器の幾何学を3Dで表示
-    /// <summary>
-    /// 試料と電子線が交差する位置は常に(0,0,0)
-    /// </summary>
-    //public void DrawGeometry()
-    //{
-    //    var glObjects = new List<GLObject>();
-
-    //    //試料の傾き
-    //    var rot = Matrix3D.RotY(numericBoxSampleTilt.RadianValue);
-
-    //    //試料を示す直方体
-    //    var sample = new Parallelepiped(rot * new V3(-1, -1, -0.2), rot * new V3(2, 0, 0), rot * new V3(0, 2, 0), rot * new V3(0, 0, 0.2), new Material(Color4.AliceBlue), DrawingMode.SurfacesAndEdges);
-    //    glObjects.Add(sample);
-
-    //    //検出器面
-    //    var detector = new Parallelepiped(new V3(2.99, -1.5, -1.5), new V3(0, 3, 0), new V3(0, 0, 3), new V3(0.2, 0, 0), new Material(Color4.GreenYellow, 0.7), DrawingMode.Surfaces);
-    //    glObjects.Add(detector);
-
-    //    //ポールピース
-    //    glObjects.AddRange(
-    //        [
-    //        new Pipe(new V3(0,0,2), new V3(0,0,1), 0.15,0.16,new Material(Color4.Gray), DrawingMode.Surfaces,false){ IgnoreNormalSides=true},
-    //        new Pipe(new V3(0,0,2), new V3(0,0,1), 0.30,1.5,new Material(Color4.Gray), DrawingMode.Surfaces,false){ IgnoreNormalSides=true},
-    //        new HoledDisk(new V3(0,0,2), new V3(0,0,1),0.15,0.3, new Material(Color4.Gray),    DrawingMode.Surfaces){ IgnoreNormalSides=true},
-    //        new HoledDisk(new V3(0,0,3), new V3(0,0,1),0.15,1.5, new Material(Color4.Gray),    DrawingMode.Surfaces){ IgnoreNormalSides=true},
-    //        ]);
-
-    //    //電子線方向を示す矢印
-    //    glObjects.AddRange(
-    //        [
-    //            new Cone(new V3(0, 0, 0), new V3(0, 0, 2.5), 0.1, new Material(Color4.Yellow,0.7), DrawingMode.Surfaces){ IgnoreNormalSides=true},
-    //            new Cone(new V3(0, 0, 0), new V3(3, 0, 0), 1, new Material(Color4.Yellow, 0.7), DrawingMode.Surfaces) { IgnoreNormalSides = true }
-    //        ]);
-
-    //    //結晶のa, b, c軸を表す矢印
-
-    //    glControlGeometry.DeleteAllObjects();
-    //    glControlGeometry.AddObjects(glObjects);
-    //    glControlGeometry.Refresh();
-    //}
-    #endregion
+  
 
     #region 指定した条件でモンテカルロ法による飛程計算をおこなう。結果はList<(V3 p, double e)[]> Trajectories に格納される
     public void CalcMonteCarlo()
@@ -213,7 +155,6 @@ public partial class FormTrajectory : Form
         }
         //エネルギー分布を描画 ここまで
 
-
         //最大深さ分布　ここから
         {
             var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
@@ -229,7 +170,6 @@ public partial class FormTrajectory : Form
 
         }
         //ここまで
-
 
         //EBSDに寄与する電子深さ分布　ここから
         {
@@ -287,14 +227,15 @@ public partial class FormTrajectory : Form
 
         //検出器の四隅
         
-        V3 p1 = new(15, -10, 0), p2 = new(-15, -10, 0), p3 = new(-15, -10, -10), p4 = new(15, -10, -10);
-        var f = new Func<V3, V3, double, PointD>((p1, p2, r) => Stereonet.ConvertVectorToSchmidt(rot.Mult(p1 * r + p2 * (1 - r))));
-        poleFigureControl.Lines = [
-            (Enumerable.Range(0,100).Select(i=>  f(p1,p2,i/100.0)).ToArray(),1,Color.Red),
-            (Enumerable.Range(0,100).Select(i=>  f(p2,p3,i/100.0)).ToArray(),1,Color.Red),
-            (Enumerable.Range(0,100).Select(i=>  f(p3,p4,i/100.0)).ToArray(),1,Color.Red),
-            (Enumerable.Range(0,100).Select(i=>  f(p4,p1,i/100.0)).ToArray(),1,Color.Red)
-            ];
+        //V3 p1 = new(15, -10, 0), p2 = new(-15, -10, 0), p3 = new(-15, -10, -10), p4 = new(15, -10, -10);
+        //var f = new Func<V3, V3, double, PointD>((p1, p2, r) => Stereonet.ConvertVectorToSchmidt(rot.Mult(p1 * r + p2 * (1 - r))));
+        //poleFigureControl.Lines = [
+        //    (Enumerable.Range(0,100).Select(i=>  f(p1,p2,i/100.0)).ToArray(),1,Color.Red),
+        //    (Enumerable.Range(0,100).Select(i=>  f(p2,p3,i/100.0)).ToArray(),1,Color.Red),
+        //    (Enumerable.Range(0,100).Select(i=>  f(p3,p4,i/100.0)).ToArray(),1,Color.Red),
+        //    (Enumerable.Range(0,100).Select(i=>  f(p4,p1,i/100.0)).ToArray(),1,Color.Red)
+        //    ];
+
         poleFigureControl.Vectors = BSEs.Select(e => new V4(rot.Mult(e[^1].p - e[^2].p), e[^1].e)).ToArray();
     }
     #endregion
@@ -396,8 +337,9 @@ public partial class FormTrajectory : Form
         glControlTrajectory.Refresh();
         //OpenGLここまで
     }
-    #endregion 
+    #endregion
 
+    #region イベント処理
     private void checkBoxDrawAxes_CheckedChanged(object sender, EventArgs e) => Draw3D();
     private void checkBoxDrawAxesInStereonet_CheckedChanged(object sender, EventArgs e) => DrawStatistics();
 
@@ -406,4 +348,5 @@ public partial class FormTrajectory : Form
         if (sender is RadioButton radioButton && radioButton.Checked)
             DrawStatistics();
     }
+    #endregion
 }

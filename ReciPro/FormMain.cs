@@ -129,6 +129,7 @@ public partial class FormMain : Form
     public FormTrajectory FormTrajectory;
     private Macro macro;
     public FormMacro FormMacro;
+    public FormEBSD FormEBSD;
 
     private Crystallography.Controls.CommonDialog commonDialog;
     private GLControlAlpha glControlAxes;
@@ -323,8 +324,11 @@ public partial class FormMain : Form
         commonDialog.Progress = ("Now Loading...Initializing 'Movie' form.", 0.5);
         FormMovie = new FormMovie() { FormMain = this, Visible = false };
 
-        commonDialog.Progress = ("Now Loading...Initializing 'Movie' form.", 0.55);
+        commonDialog.Progress = ("Now Loading...Initializing 'Trajectory Simulator' form.", 0.53);
         FormTrajectory = new FormTrajectory() { FormMain = this, Visible = false };
+
+        commonDialog.Progress = ("Now Loading...Initializing 'EBSD Simulator' form.", 0.57);
+        FormEBSD = new FormEBSD() { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
         FormTEMID = new FormSpotIDv1 { formMain = this, Visible = false };
@@ -932,8 +936,8 @@ public partial class FormMain : Form
             form = FormSpotID;
         else if (button.Name.Contains("Trajectory"))
             form = FormTrajectory;
-        //else if (button.Name.Contains("EBSD"))
-        //    form = FormEBSD;
+        else if (button.Name.Contains("EBSD"))
+            form = FormEBSD;
         else
             form = FormPolycrystallineDiffractionSimulator;
 
