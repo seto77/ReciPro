@@ -7,6 +7,9 @@ using M3 = OpenTK.Matrix3d;
 
 namespace Crystallography
 {
+
+    //Electron beam-specimen interactions and simulation methods in microscopy 2018
+    //Eqs (2.38), (2.41), (2.42) などを参考
     public class MonteCarlo
     {
         public static int seed = 0;
@@ -30,9 +33,6 @@ namespace Crystallography
         /// <param name="thresholdKev">飛程計算を打ち切るエネルギー (kev)</param>
         public MonteCarlo( double z, double a, double _ρ, double kev, double tilt, double thresholdKev=2)
         {
-            //Electron beam-specimen interactions and simulation methods in microscopy 2018
-            //Eqs (2.38), (2.41), (2.42) などを参考
-
             Z = z;
             A = a;
             Tilt = tilt;
@@ -87,7 +87,7 @@ namespace Crystallography
             //電子エネルギーがThresholdKev以下になるか、試料を脱出するまでループ
             while (trajectory[^1].e > ThresholdKev && trajectory[^1].p.Y * tan >= trajectory[^1].p.Z)
             {
-                var (α, σ_E, λ_el, sp) = GetParameters(trajectory[^1].e);
+                var (α, _, λ_el, sp) = GetParameters(trajectory[^1].e);
 
                 //飛行距離 s
                 var s = -λ_el * Math.Log(r.NextDouble());
@@ -109,6 +109,45 @@ namespace Crystallography
                 }
             }
             return trajectory.Select(e => (e.p / 1000, e.e)).ToArray();
+        }
+
+        /// <summary>
+        /// 電子線の飛程を計算する. 電子は -Z軸に沿って入射し、試料と(0,0,0)の座標で衝突したあと、thresholdで指定したエネルギーまで減衰するか、
+        /// 試料表面を脱出するまでの飛程を計算する。返り値は、座標 p (µm単位)と エネルギー e (kev単位) のタプル配列
+        /// </summary>
+        /// <returns>返り値は、座標 p (µm単位)と エネルギー e (kev単位) のタプル配列</returns>
+        public (V3 p, double e) GetBackscatteredElectrons()
+        {
+            var r = new Random(Interlocked.Increment(ref seed));
+            var trajectory = new List<(V3 p, double e)>() { (new V3(0, 0, 0), InitialKev) };
+            var vec = new V3(0, 0, -1);
+
+            //電子エネルギーがThresholdKev以下になるか、試料を脱出するまでループ
+            while (trajectory[^1].e > ThresholdKev && trajectory[^1].p.Y * tan >= trajectory[^1].p.Z)
+            {
+                var (α, _, λ_el, sp) = GetParameters(trajectory[^1].e);
+
+                //飛行距離 s
+                var s = -λ_el * Math.Log(r.NextDouble());
+
+                if (trajectory.Count == 1)
+                    trajectory.Add((s * vec, trajectory[^1].e + s * sp));
+                else
+                {
+                    double rnd2 = r.NextDouble(), rnd3 = r.NextDouble();
+                    double cosθ = 1 - 2 * α * rnd2 / (1 + α - rnd2), sinθ = Math.Sqrt(1 - cosθ * cosθ);
+                    double φ = 2 * Math.PI * rnd3, cosφ = Math.Cos(φ), sinφ = Math.Sin(φ);
+                    var rot = CreateRotationFromZ(vec);
+                    vec = new V3(
+                        rot.M11 * sinθ * cosφ + rot.M12 * sinθ * sinφ + rot.M13 * cosθ,
+                        rot.M21 * sinθ * cosφ + rot.M22 * sinθ * sinφ + rot.M23 * cosθ,
+                        rot.M31 * sinθ * cosφ + rot.M32 * sinθ * sinφ + rot.M33 * cosθ
+                                );
+                    trajectory.Add((trajectory[^1].p + s * vec, trajectory[^1].e + s * sp));
+                }
+            }
+            //return trajectory.Select(e => (e.p / 1000, e.e)).ToArray();
+            return (new V3(), 0);
         }
 
 

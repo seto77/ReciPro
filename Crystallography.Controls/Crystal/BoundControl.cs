@@ -17,7 +17,8 @@ public partial class BoundControl : UserControl
 
     public Crystal Crystal
     {
-        get => crystal; set
+        get => crystal; 
+        set
         {
             crystal = value;
             if (crystal != null)
@@ -78,9 +79,9 @@ public partial class BoundControl : UserControl
 
     #region データベース操作
     /// <summary>
-    /// データベースにbondsを追加する
+    /// データベースにboundsを追加する
     /// </summary>
-    /// <param name="bonds"></param>
+    /// <param name="bounds"></param>
     public void Add(Bound bounds)
     {
         if (bounds != null && bounds.Index != (0, 0, 0))
@@ -93,7 +94,7 @@ public partial class BoundControl : UserControl
     }
 
     /// <summary>
-    /// データベースに原子を追加する
+    /// データベースにboundsを追加する
     /// </summary>
     /// <param name="bounds"></param>
     public void AddRange(IEnumerable<Bound> bounds)
@@ -147,7 +148,13 @@ public partial class BoundControl : UserControl
     /// データベース中の全ての境界面を取得
     /// </summary>
     /// <returns></returns>
-    public Bound[] GetAll() => table.GetAll();
+    public Bound[] GetAll()
+    {
+        var bounds = table.GetAll();
+        for (int i = 0; i < bounds.Length; i++)
+            bounds[i].Reset(Crystal);
+        return bounds;
+    }
 
     #endregion
 

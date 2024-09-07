@@ -843,8 +843,11 @@ public partial class FormStructureViewer : Form
             {
                 var verticesList = new List<double[][]>();
                 for (int i = 0; i < (n == 0 ? 1 : 2); i++)
-                    verticesList.Add(Geometriy.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray));
-
+                {
+                    var vertices = Geometriy.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray);
+                    if(vertices!=null)
+                        verticesList.Add(vertices);
+                }
                 flag = false;
                 foreach (var verticesArray in verticesList.Where(v => v.Length >= 3))
                 {
