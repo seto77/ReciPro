@@ -107,26 +107,26 @@
             // 
             // numericBoxSampleTilt
             // 
-            resources.ApplyResources(numericBoxSampleTilt, "numericBoxSampleTilt");
             numericBoxSampleTilt.BackColor = System.Drawing.Color.Transparent;
-            numericBoxSampleTilt.Maximum = 90D;
+            resources.ApplyResources(numericBoxSampleTilt, "numericBoxSampleTilt");
+            numericBoxSampleTilt.Maximum = 0D;
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
             numericBoxSampleTilt.RoundErrorAccuracy = -1;
             numericBoxSampleTilt.ShowUpDown = true;
             numericBoxSampleTilt.UpDown_Increment = 10D;
             // 
-            // buttonViewIsometric
+            // buttonViewFromX
             // 
-            resources.ApplyResources(buttonViewFromX, "buttonViewIsometric");
-            buttonViewFromX.Name = "buttonViewIsometric";
+            resources.ApplyResources(buttonViewFromX, "buttonViewFromX");
+            buttonViewFromX.Name = "buttonViewFromX";
             buttonViewFromX.UseVisualStyleBackColor = true;
             buttonViewFromX.Click += buttonViewFromX_Click;
             // 
-            // buttonViewAlongBeam
+            // buttonViewFromZ
             // 
-            resources.ApplyResources(buttonViewFromZ, "buttonViewAlongBeam");
-            buttonViewFromZ.Name = "buttonViewAlongBeam";
+            resources.ApplyResources(buttonViewFromZ, "buttonViewFromZ");
+            buttonViewFromZ.Name = "buttonViewFromZ";
             buttonViewFromZ.UseVisualStyleBackColor = true;
             buttonViewFromZ.Click += buttonViewFromZ_Click;
             // 
@@ -137,7 +137,6 @@
             // 
             // graphControlEnergyProfile
             // 
-            resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
             graphControlEnergyProfile.AllowMouseOperation = true;
             graphControlEnergyProfile.AxisLineColor = System.Drawing.Color.Gray;
             graphControlEnergyProfile.AxisTextColor = System.Drawing.Color.Black;
@@ -149,6 +148,7 @@
             graphControlEnergyProfile.DivisionLineColor = System.Drawing.Color.LightGray;
             graphControlEnergyProfile.DivisionLineXVisible = true;
             graphControlEnergyProfile.DivisionLineYVisible = true;
+            resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
             graphControlEnergyProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlEnergyProfile.DrawingRange");
             graphControlEnergyProfile.FixRangeHorizontal = false;
             graphControlEnergyProfile.FixRangeVertical = false;
@@ -187,9 +187,9 @@
             // 
             // numericBoxCalcNum
             // 
-            resources.ApplyResources(numericBoxCalcNum, "numericBoxCalcNum");
             numericBoxCalcNum.BackColor = System.Drawing.Color.Transparent;
             numericBoxCalcNum.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxCalcNum, "numericBoxCalcNum");
             numericBoxCalcNum.Maximum = 1000000D;
             numericBoxCalcNum.Minimum = 100D;
             numericBoxCalcNum.Name = "numericBoxCalcNum";
@@ -201,9 +201,9 @@
             // 
             // numericBoxDrawNum
             // 
-            resources.ApplyResources(numericBoxDrawNum, "numericBoxDrawNum");
             numericBoxDrawNum.BackColor = System.Drawing.Color.Transparent;
             numericBoxDrawNum.DecimalPlaces = 0;
+            resources.ApplyResources(numericBoxDrawNum, "numericBoxDrawNum");
             numericBoxDrawNum.Maximum = 100000D;
             numericBoxDrawNum.Minimum = 1D;
             numericBoxDrawNum.Name = "numericBoxDrawNum";
@@ -216,21 +216,20 @@
             // 
             // groupBox1
             // 
-            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Controls.Add(graphControlEnergyProfile);
+            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Controls.Add(graphControlDepthProfile);
+            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
             // 
             // graphControlDepthProfile
             // 
-            resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
             graphControlDepthProfile.AllowMouseOperation = true;
             graphControlDepthProfile.AxisLineColor = System.Drawing.Color.Gray;
             graphControlDepthProfile.AxisTextColor = System.Drawing.Color.Black;
@@ -242,6 +241,7 @@
             graphControlDepthProfile.DivisionLineColor = System.Drawing.Color.LightGray;
             graphControlDepthProfile.DivisionLineXVisible = true;
             graphControlDepthProfile.DivisionLineYVisible = true;
+            resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
             graphControlDepthProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlDepthProfile.DrawingRange");
             graphControlDepthProfile.FixRangeHorizontal = false;
             graphControlDepthProfile.FixRangeVertical = false;
@@ -280,25 +280,24 @@
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabel1 });
+            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.Name = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
             // groupBox3
             // 
-            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Controls.Add(graphControlDepthEBSD);
+            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
             // 
             // graphControlDepthEBSD
             // 
-            resources.ApplyResources(graphControlDepthEBSD, "graphControlDepthEBSD");
             graphControlDepthEBSD.AllowMouseOperation = true;
             graphControlDepthEBSD.AxisLineColor = System.Drawing.Color.Gray;
             graphControlDepthEBSD.AxisTextColor = System.Drawing.Color.Black;
@@ -310,6 +309,7 @@
             graphControlDepthEBSD.DivisionLineColor = System.Drawing.Color.LightGray;
             graphControlDepthEBSD.DivisionLineXVisible = true;
             graphControlDepthEBSD.DivisionLineYVisible = true;
+            resources.ApplyResources(graphControlDepthEBSD, "graphControlDepthEBSD");
             graphControlDepthEBSD.DrawingRange = (RectangleD)resources.GetObject("graphControlDepthEBSD.DrawingRange");
             graphControlDepthEBSD.FixRangeHorizontal = false;
             graphControlDepthEBSD.FixRangeVertical = false;
@@ -348,14 +348,13 @@
             // 
             // groupBox4
             // 
-            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Controls.Add(graphControlDistance);
+            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Name = "groupBox4";
             groupBox4.TabStop = false;
             // 
             // graphControlDistance
             // 
-            resources.ApplyResources(graphControlDistance, "graphControlDistance");
             graphControlDistance.AllowMouseOperation = true;
             graphControlDistance.AxisLineColor = System.Drawing.Color.Gray;
             graphControlDistance.AxisTextColor = System.Drawing.Color.Black;
@@ -367,6 +366,7 @@
             graphControlDistance.DivisionLineColor = System.Drawing.Color.LightGray;
             graphControlDistance.DivisionLineXVisible = true;
             graphControlDistance.DivisionLineYVisible = true;
+            resources.ApplyResources(graphControlDistance, "graphControlDistance");
             graphControlDistance.DrawingRange = (RectangleD)resources.GetObject("graphControlDistance.DrawingRange");
             graphControlDistance.FixRangeHorizontal = false;
             graphControlDistance.FixRangeVertical = false;
@@ -427,10 +427,10 @@
             checkBoxDrawGuidCircles.UseVisualStyleBackColor = true;
             checkBoxDrawGuidCircles.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
             // 
-            // button1
+            // buttonSurfaceNormal
             // 
-            resources.ApplyResources(buttonSurfaceNormal, "button1");
-            buttonSurfaceNormal.Name = "button1";
+            resources.ApplyResources(buttonSurfaceNormal, "buttonSurfaceNormal");
+            buttonSurfaceNormal.Name = "buttonSurfaceNormal";
             buttonSurfaceNormal.UseVisualStyleBackColor = true;
             buttonSurfaceNormal.Click += buttonViewFromSurfaceNormal_Click;
             // 
@@ -465,12 +465,12 @@
             // 
             // groupBox5
             // 
-            resources.ApplyResources(groupBox5, "groupBox5");
             groupBox5.Controls.Add(radioButtonStandardDeviation);
             groupBox5.Controls.Add(radioButtonAverageEnergy);
             groupBox5.Controls.Add(radioButtonFrequency);
             groupBox5.Controls.Add(poleFigureControl);
             groupBox5.Controls.Add(checkBoxDrawAxesInStereonet);
+            resources.ApplyResources(groupBox5, "groupBox5");
             groupBox5.Name = "groupBox5";
             groupBox5.TabStop = false;
             // 
@@ -510,7 +510,6 @@
             // 
             // groupBox6
             // 
-            resources.ApplyResources(groupBox6, "groupBox6");
             groupBox6.Controls.Add(labelBSEenergy);
             groupBox6.Controls.Add(labelStoppingPower);
             groupBox6.Controls.Add(labelCrossSection);
@@ -521,6 +520,7 @@
             groupBox6.Controls.Add(label5);
             groupBox6.Controls.Add(label4);
             groupBox6.Controls.Add(label2);
+            resources.ApplyResources(groupBox6, "groupBox6");
             groupBox6.Name = "groupBox6";
             groupBox6.TabStop = false;
             // 

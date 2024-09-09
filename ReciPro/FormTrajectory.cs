@@ -214,10 +214,11 @@ public partial class FormTrajectory : Form
         var rot = Matrix3d.CreateRotationX(tilt);
         if (checkBoxDrawAxesInStereonet.Checked)
             poleFigureControl.Circles = [
-                (Stereonet.ConvertVectorToSchmidt(new Vector3DBase(1, 0,0)), 0.02, Color.OrangeRed, true, "+X"),
-                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, -1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "-Y"),
-                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "+Y"),
-                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 0, 1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "+Z (=beam)")
+                (Stereonet.ConvertVectorToSchmidt(new Vector3DBase(-1, 0,0)), 0.02, Color.OrangeRed, true, "+X"),
+                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, -1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "+Y"),
+                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "-Y"),
+                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 0, -1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "+Z"),
+                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 0, 1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "-Z")
                 ];
         else
             poleFigureControl.Circles = [];
@@ -302,14 +303,14 @@ public partial class FormTrajectory : Form
             glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 1000, true, new Material(Color4.OrangeRed)));
 
             //Y軸
-            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, len, 0)], 3f, new Material(Color4.YellowGreen)));
+            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, -len, 0)], 3f, new Material(Color4.YellowGreen)));
             glControlTrajectory.MakeCurrent();
-            glObjects.Add(new TextObject("+Y", 10f, new V3(0, len, 0), 1000, true, new Material(Color4.YellowGreen)));
+            glObjects.Add(new TextObject("+Y", 10f, new V3(0, -len, 0), 1000, true, new Material(Color4.YellowGreen)));
 
             //Z軸 = beam
-            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, len)], 3f, new Material(Color4.MediumPurple)));
+            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, -len)], 3f, new Material(Color4.MediumPurple)));
             glControlTrajectory.MakeCurrent();
-            glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, len), 1000, true, new Material(Color4.MediumPurple)));
+            glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, -len), 1000, true, new Material(Color4.MediumPurple)));
         }
 
         glControlTrajectory.ProjWidth = maxLength * 2.05;

@@ -204,7 +204,6 @@ public partial class PoleFigureControl2 : UserControl
         var min = pixels.Min(e => e.Min());
         label1.Text = "Max: " + max.ToString("g5") + ";   Min: " + min.ToString("g5");
 
-        //最大値をaverage*設定値に規格化して塗りつぶし
         var scale = comboBoxColor.SelectedIndex == 0 ? PseudoBitmap.ColorScaleColdWarmLiner : PseudoBitmap.ColorScaleGrayLiner;
 
         for (int i = pixels.Length - 1; i >= 0; i--)
@@ -216,17 +215,7 @@ public partial class PoleFigureControl2 : UserControl
 
                 g.FillPie(new SolidBrush(Color.FromArgb(scale[density].R, scale[density].G, scale[density].B)),
                     -(i + 1.0) / pixels.Length, -(i + 1.0) / pixels.Length, (i + 1.0) / pixels.Length * 2, (i + 1.0) / pixels.Length * 2,
-                    (double)j / pixels[i].Length * 360.0, 1.0 / pixels[i].Length * 360.0);
-            }
-
-        if (Circles != null)
-            foreach (var s in Circles)
-            {
-                var p = new PointD(s.Point.X, -s.Point.Y);
-                if (s.Fill)
-                    g.FillCircle(s.Color, p, s.Radius, 255);
-                if (s.Text != "")
-                    g.DrawString(s.Text, new Font("Tahoma", 0.08f), new SolidBrush(s.Color), p.ToPointF());
+                    -(double)j / pixels[i].Length * 360.0, 1.0 / pixels[i].Length * 360.0);
             }
     }
 
@@ -316,7 +305,7 @@ public partial class PoleFigureControl2 : UserControl
         if (Circles != null)
             foreach (var s in Circles.Where(s => s.Point.Length2 <= 1))
             {
-                var p = new PointD(s.Point.X, -s.Point.Y);
+                var p = new PointD(s.Point.X, s.Point.Y);
                 if (s.Fill)
                     g.FillCircle(s.Color, p, s.Radius, 255);
                 else
@@ -326,7 +315,7 @@ public partial class PoleFigureControl2 : UserControl
             }
         if (Lines != null)
             foreach (var l in Lines)
-                g.DrawLines(new Pen(l.Color, (float)(l.LineWidth / magnification)), l.Point.Select(e => new PointD(e.X, -e.Y)).ToArray());
+                g.DrawLines(new Pen(l.Color, (float)(l.LineWidth / magnification)), l.Point.Select(e => new PointD(e.X, e.Y)).ToArray());
     }
 
 

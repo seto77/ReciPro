@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             panelGeometry = new System.Windows.Forms.Panel();
             numericBoxSampleTilt = new NumericBox();
-            waveLengthControl1 = new WaveLengthControl();
+            waveLengthControl = new WaveLengthControl();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             buttonFromX = new System.Windows.Forms.Button();
             buttonViewFromZ = new System.Windows.Forms.Button();
@@ -45,16 +45,32 @@
             checkBoxDrawAxesInStereonet = new System.Windows.Forms.CheckBox();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            numericBoxDetectorTilt = new NumericBox();
+            numericBoxDetTilt = new NumericBox();
             numericBoxDetRadius = new NumericBox();
             numericBoxZofDet = new NumericBox();
             numericBoxYofDet = new NumericBox();
             label2 = new System.Windows.Forms.Label();
             graphicsBox = new ImagingSolution.Control.GraphicsBox(components);
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            trackBarStrSize = new System.Windows.Forms.TrackBar();
+            colorControlExcessLine = new ColorControl();
+            trackBarLineWidth = new System.Windows.Forms.TrackBar();
+            label11 = new System.Windows.Forms.Label();
+            colorControlString = new ColorControl();
+            colorControlBackGround = new ColorControl();
+            radioButtonKikuchiThresholdOfStructureFactor = new System.Windows.Forms.RadioButton();
+            checkBoxKikuchiLine_Kinematical = new System.Windows.Forms.CheckBox();
+            radioButtonKikuchiThresholdOfLength = new System.Windows.Forms.RadioButton();
+            numericBoxKikuchiThreadSholdOfStructureFactor = new NumericBox();
+            numericBoxKikuchiThresholdOfLength = new NumericBox();
+            button1 = new System.Windows.Forms.Button();
             flowLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
+            groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).BeginInit();
             SuspendLayout();
             // 
             // panelGeometry
@@ -72,42 +88,42 @@
             numericBoxSampleTilt.HeaderText = "Sample tilt";
             numericBoxSampleTilt.Location = new System.Drawing.Point(3, 9);
             numericBoxSampleTilt.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxSampleTilt.Maximum = 90D;
+            numericBoxSampleTilt.Maximum = 0D;
             numericBoxSampleTilt.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
-            numericBoxSampleTilt.RadianValue = 1.2217304763960306D;
+            numericBoxSampleTilt.RadianValue = -1.2217304763960306D;
             numericBoxSampleTilt.RoundErrorAccuracy = -1;
             numericBoxSampleTilt.ShowUpDown = true;
             numericBoxSampleTilt.Size = new System.Drawing.Size(128, 26);
             numericBoxSampleTilt.TabIndex = 111;
             numericBoxSampleTilt.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxSampleTilt.UpDown_Increment = 10D;
-            numericBoxSampleTilt.Value = 70D;
+            numericBoxSampleTilt.Value = -70D;
             numericBoxSampleTilt.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
-            // waveLengthControl1
+            // waveLengthControl
             // 
-            waveLengthControl1.AutoSize = true;
-            waveLengthControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.TopDown;
-            waveLengthControl1.Energy = 20D;
-            waveLengthControl1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            waveLengthControl1.Location = new System.Drawing.Point(663, 9);
-            waveLengthControl1.Margin = new System.Windows.Forms.Padding(0);
-            waveLengthControl1.MaximumSize = new System.Drawing.Size(500, 500);
-            waveLengthControl1.MinimumSize = new System.Drawing.Size(210, 0);
-            waveLengthControl1.Monochrome = true;
-            waveLengthControl1.Name = "waveLengthControl1";
-            waveLengthControl1.ShowWaveSource = false;
-            waveLengthControl1.Size = new System.Drawing.Size(210, 55);
-            waveLengthControl1.TabIndex = 109;
-            waveLengthControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            waveLengthControl1.WaveLength = 0.0085885141045000009D;
-            waveLengthControl1.WaveSource = WaveSource.Electron;
-            waveLengthControl1.XrayWaveSourceElementNumber = 0;
-            waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
+            waveLengthControl.AutoSize = true;
+            waveLengthControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            waveLengthControl.Energy = 20D;
+            waveLengthControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            waveLengthControl.Location = new System.Drawing.Point(663, 9);
+            waveLengthControl.Margin = new System.Windows.Forms.Padding(0);
+            waveLengthControl.MaximumSize = new System.Drawing.Size(500, 500);
+            waveLengthControl.MinimumSize = new System.Drawing.Size(210, 0);
+            waveLengthControl.Monochrome = true;
+            waveLengthControl.Name = "waveLengthControl";
+            waveLengthControl.ShowWaveSource = false;
+            waveLengthControl.Size = new System.Drawing.Size(210, 55);
+            waveLengthControl.TabIndex = 109;
+            waveLengthControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            waveLengthControl.WaveLength = 0.0085885141045000009D;
+            waveLengthControl.WaveSource = WaveSource.Electron;
+            waveLengthControl.XrayWaveSourceElementNumber = 0;
+            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
             // 
             // flowLayoutPanel1
             // 
@@ -266,28 +282,28 @@
             toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
-            // numericBoxDetectorTilt
+            // numericBoxDetTilt
             // 
-            numericBoxDetectorTilt.BackColor = System.Drawing.Color.Transparent;
-            numericBoxDetectorTilt.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxDetectorTilt.FooterText = "°";
-            numericBoxDetectorTilt.HeaderText = "Detector tilt";
-            numericBoxDetectorTilt.Location = new System.Drawing.Point(142, 9);
-            numericBoxDetectorTilt.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxDetectorTilt.Maximum = 180D;
-            numericBoxDetectorTilt.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxDetectorTilt.Minimum = 0D;
-            numericBoxDetectorTilt.MinimumSize = new System.Drawing.Size(1, 20);
-            numericBoxDetectorTilt.Name = "numericBoxDetectorTilt";
-            numericBoxDetectorTilt.RadianValue = 1.5707963267948966D;
-            numericBoxDetectorTilt.RoundErrorAccuracy = -1;
-            numericBoxDetectorTilt.ShowUpDown = true;
-            numericBoxDetectorTilt.Size = new System.Drawing.Size(137, 26);
-            numericBoxDetectorTilt.TabIndex = 111;
-            numericBoxDetectorTilt.TextFont = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxDetectorTilt.UpDown_Increment = 10D;
-            numericBoxDetectorTilt.Value = 90D;
-            numericBoxDetectorTilt.ValueChanged += numericBoxDetRadius_ValueChanged;
+            numericBoxDetTilt.BackColor = System.Drawing.Color.Transparent;
+            numericBoxDetTilt.Font = new System.Drawing.Font("メイリオ", 9F);
+            numericBoxDetTilt.FooterText = "°";
+            numericBoxDetTilt.HeaderText = "Detector tilt";
+            numericBoxDetTilt.Location = new System.Drawing.Point(142, 9);
+            numericBoxDetTilt.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxDetTilt.Maximum = 180D;
+            numericBoxDetTilt.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxDetTilt.Minimum = 0D;
+            numericBoxDetTilt.MinimumSize = new System.Drawing.Size(1, 20);
+            numericBoxDetTilt.Name = "numericBoxDetTilt";
+            numericBoxDetTilt.RadianValue = 1.5707963267948966D;
+            numericBoxDetTilt.RoundErrorAccuracy = -1;
+            numericBoxDetTilt.ShowUpDown = true;
+            numericBoxDetTilt.Size = new System.Drawing.Size(137, 26);
+            numericBoxDetTilt.TabIndex = 111;
+            numericBoxDetTilt.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            numericBoxDetTilt.UpDown_Increment = 10D;
+            numericBoxDetTilt.Value = 90D;
+            numericBoxDetTilt.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // numericBoxDetRadius
             // 
@@ -325,14 +341,12 @@
             numericBoxZofDet.Minimum = -1000D;
             numericBoxZofDet.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxZofDet.Name = "numericBoxZofDet";
-            numericBoxZofDet.RadianValue = -0.3490658503988659D;
             numericBoxZofDet.RoundErrorAccuracy = -1;
             numericBoxZofDet.ShowUpDown = true;
             numericBoxZofDet.Size = new System.Drawing.Size(102, 25);
             numericBoxZofDet.TabIndex = 111;
             numericBoxZofDet.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxZofDet.UpDown_Increment = 10D;
-            numericBoxZofDet.Value = -20D;
             numericBoxZofDet.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // numericBoxYofDet
@@ -381,11 +395,254 @@
             graphicsBox.TabStop = false;
             graphicsBox.WaitOnLoad = true;
             // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(trackBarStrSize);
+            groupBox4.Location = new System.Drawing.Point(1174, 30);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new System.Drawing.Size(110, 56);
+            groupBox4.TabIndex = 118;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "String size";
+            // 
+            // trackBarStrSize
+            // 
+            trackBarStrSize.AutoSize = false;
+            trackBarStrSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            trackBarStrSize.LargeChange = 50;
+            trackBarStrSize.Location = new System.Drawing.Point(9, 27);
+            trackBarStrSize.Maximum = 200;
+            trackBarStrSize.Minimum = 1;
+            trackBarStrSize.Name = "trackBarStrSize";
+            trackBarStrSize.Size = new System.Drawing.Size(95, 20);
+            trackBarStrSize.SmallChange = 10;
+            trackBarStrSize.TabIndex = 0;
+            trackBarStrSize.TickFrequency = 500;
+            trackBarStrSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            trackBarStrSize.Value = 80;
+            // 
+            // colorControlExcessLine
+            // 
+            colorControlExcessLine.Argb = -2039584;
+            colorControlExcessLine.AutoSize = true;
+            colorControlExcessLine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
+            colorControlExcessLine.Blue = 224;
+            colorControlExcessLine.BlueF = 0.8784314F;
+            colorControlExcessLine.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlExcessLine.Color = System.Drawing.Color.FromArgb(224, 224, 224);
+            colorControlExcessLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControlExcessLine.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            colorControlExcessLine.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            colorControlExcessLine.FooterMargin = new System.Windows.Forms.Padding(0);
+            colorControlExcessLine.FooterText = "Kikuchi line color";
+            colorControlExcessLine.Green = 224;
+            colorControlExcessLine.GreenF = 0.8784314F;
+            colorControlExcessLine.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            colorControlExcessLine.HeaderMargin = new System.Windows.Forms.Padding(0);
+            colorControlExcessLine.HeaderText = "";
+            colorControlExcessLine.Inversion = false;
+            colorControlExcessLine.Location = new System.Drawing.Point(1174, 199);
+            colorControlExcessLine.Margin = new System.Windows.Forms.Padding(0);
+            colorControlExcessLine.Name = "colorControlExcessLine";
+            colorControlExcessLine.Red = 224;
+            colorControlExcessLine.RedF = 0.8784314F;
+            colorControlExcessLine.Size = new System.Drawing.Size(126, 20);
+            colorControlExcessLine.TabIndex = 119;
+            colorControlExcessLine.ToolTip = "";
+            // 
+            // trackBarLineWidth
+            // 
+            trackBarLineWidth.AutoSize = false;
+            trackBarLineWidth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            trackBarLineWidth.Location = new System.Drawing.Point(1249, 128);
+            trackBarLineWidth.Maximum = 10000;
+            trackBarLineWidth.Minimum = 1;
+            trackBarLineWidth.Name = "trackBarLineWidth";
+            trackBarLineWidth.Size = new System.Drawing.Size(70, 16);
+            trackBarLineWidth.TabIndex = 120;
+            trackBarLineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
+            trackBarLineWidth.Value = 4000;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label11.Location = new System.Drawing.Point(1174, 127);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(69, 17);
+            label11.TabIndex = 121;
+            label11.Text = "Line Width";
+            // 
+            // colorControlString
+            // 
+            colorControlString.Argb = -1;
+            colorControlString.AutoSize = true;
+            colorControlString.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            colorControlString.BackColor = System.Drawing.SystemColors.Control;
+            colorControlString.Blue = 255;
+            colorControlString.BlueF = 1F;
+            colorControlString.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlString.Color = System.Drawing.Color.FromArgb(255, 255, 255);
+            colorControlString.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControlString.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            colorControlString.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            colorControlString.FooterMargin = new System.Windows.Forms.Padding(0);
+            colorControlString.FooterText = "Text";
+            colorControlString.Green = 255;
+            colorControlString.GreenF = 1F;
+            colorControlString.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            colorControlString.HeaderMargin = new System.Windows.Forms.Padding(0);
+            colorControlString.HeaderText = "";
+            colorControlString.Inversion = false;
+            colorControlString.Location = new System.Drawing.Point(1174, 157);
+            colorControlString.Margin = new System.Windows.Forms.Padding(0);
+            colorControlString.Name = "colorControlString";
+            colorControlString.Red = 255;
+            colorControlString.RedF = 1F;
+            colorControlString.Size = new System.Drawing.Size(49, 20);
+            colorControlString.TabIndex = 122;
+            colorControlString.ToolTip = "Set a color of strings";
+            // 
+            // colorControlBackGround
+            // 
+            colorControlBackGround.Argb = -14671840;
+            colorControlBackGround.AutoSize = true;
+            colorControlBackGround.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            colorControlBackGround.BackColor = System.Drawing.SystemColors.Control;
+            colorControlBackGround.Blue = 32;
+            colorControlBackGround.BlueF = 0.1254902F;
+            colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlBackGround.Color = System.Drawing.Color.FromArgb(32, 32, 32);
+            colorControlBackGround.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            colorControlBackGround.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            colorControlBackGround.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            colorControlBackGround.FooterMargin = new System.Windows.Forms.Padding(0);
+            colorControlBackGround.FooterText = "Background";
+            colorControlBackGround.Green = 32;
+            colorControlBackGround.GreenF = 0.1254902F;
+            colorControlBackGround.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            colorControlBackGround.HeaderMargin = new System.Windows.Forms.Padding(0);
+            colorControlBackGround.HeaderText = "";
+            colorControlBackGround.Inversion = false;
+            colorControlBackGround.Location = new System.Drawing.Point(1174, 179);
+            colorControlBackGround.Margin = new System.Windows.Forms.Padding(0);
+            colorControlBackGround.Name = "colorControlBackGround";
+            colorControlBackGround.Red = 32;
+            colorControlBackGround.RedF = 0.1254902F;
+            colorControlBackGround.Size = new System.Drawing.Size(91, 20);
+            colorControlBackGround.TabIndex = 123;
+            colorControlBackGround.ToolTip = "Set a background color";
+            // 
+            // radioButtonKikuchiThresholdOfStructureFactor
+            // 
+            radioButtonKikuchiThresholdOfStructureFactor.AutoSize = true;
+            radioButtonKikuchiThresholdOfStructureFactor.Checked = true;
+            radioButtonKikuchiThresholdOfStructureFactor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            radioButtonKikuchiThresholdOfStructureFactor.Location = new System.Drawing.Point(1158, 242);
+            radioButtonKikuchiThresholdOfStructureFactor.Name = "radioButtonKikuchiThresholdOfStructureFactor";
+            radioButtonKikuchiThresholdOfStructureFactor.Size = new System.Drawing.Size(107, 19);
+            radioButtonKikuchiThresholdOfStructureFactor.TabIndex = 127;
+            radioButtonKikuchiThresholdOfStructureFactor.TabStop = true;
+            radioButtonKikuchiThresholdOfStructureFactor.Text = "Structure factor";
+            radioButtonKikuchiThresholdOfStructureFactor.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxKikuchiLine_Kinematical
+            // 
+            checkBoxKikuchiLine_Kinematical.AutoSize = true;
+            checkBoxKikuchiLine_Kinematical.Checked = true;
+            checkBoxKikuchiLine_Kinematical.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxKikuchiLine_Kinematical.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxKikuchiLine_Kinematical.Location = new System.Drawing.Point(1165, 296);
+            checkBoxKikuchiLine_Kinematical.Name = "checkBoxKikuchiLine_Kinematical";
+            checkBoxKikuchiLine_Kinematical.Size = new System.Drawing.Size(166, 34);
+            checkBoxKikuchiLine_Kinematical.TabIndex = 126;
+            checkBoxKikuchiLine_Kinematical.Text = "Reflect the structure factor\r\n in the Kikuchi line density";
+            checkBoxKikuchiLine_Kinematical.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonKikuchiThresholdOfLength
+            // 
+            radioButtonKikuchiThresholdOfLength.AutoSize = true;
+            radioButtonKikuchiThresholdOfLength.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            radioButtonKikuchiThresholdOfLength.Location = new System.Drawing.Point(1158, 269);
+            radioButtonKikuchiThresholdOfLength.Name = "radioButtonKikuchiThresholdOfLength";
+            radioButtonKikuchiThresholdOfLength.Size = new System.Drawing.Size(113, 19);
+            radioButtonKikuchiThresholdOfLength.TabIndex = 128;
+            radioButtonKikuchiThresholdOfLength.Text = "Threshold of 1/d";
+            radioButtonKikuchiThresholdOfLength.UseVisualStyleBackColor = true;
+            // 
+            // numericBoxKikuchiThreadSholdOfStructureFactor
+            // 
+            numericBoxKikuchiThreadSholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
+            numericBoxKikuchiThreadSholdOfStructureFactor.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxKikuchiThreadSholdOfStructureFactor.HeaderText = "Top";
+            numericBoxKikuchiThreadSholdOfStructureFactor.Location = new System.Drawing.Point(1273, 242);
+            numericBoxKikuchiThreadSholdOfStructureFactor.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxKikuchiThreadSholdOfStructureFactor.Maximum = 1000D;
+            numericBoxKikuchiThreadSholdOfStructureFactor.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxKikuchiThreadSholdOfStructureFactor.Minimum = 1D;
+            numericBoxKikuchiThreadSholdOfStructureFactor.MinimumSize = new System.Drawing.Size(1, 20);
+            numericBoxKikuchiThreadSholdOfStructureFactor.Name = "numericBoxKikuchiThreadSholdOfStructureFactor";
+            numericBoxKikuchiThreadSholdOfStructureFactor.RadianValue = 1.7453292519943295D;
+            numericBoxKikuchiThreadSholdOfStructureFactor.RoundErrorAccuracy = -1;
+            numericBoxKikuchiThreadSholdOfStructureFactor.ShowUpDown = true;
+            numericBoxKikuchiThreadSholdOfStructureFactor.Size = new System.Drawing.Size(102, 25);
+            numericBoxKikuchiThreadSholdOfStructureFactor.SmartIncrement = true;
+            numericBoxKikuchiThreadSholdOfStructureFactor.TabIndex = 124;
+            numericBoxKikuchiThreadSholdOfStructureFactor.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            numericBoxKikuchiThreadSholdOfStructureFactor.Value = 100D;
+            // 
+            // numericBoxKikuchiThresholdOfLength
+            // 
+            numericBoxKikuchiThresholdOfLength.BackColor = System.Drawing.Color.Transparent;
+            numericBoxKikuchiThresholdOfLength.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxKikuchiThresholdOfLength.FooterText = "nm⁻¹";
+            numericBoxKikuchiThresholdOfLength.HeaderText = "<";
+            numericBoxKikuchiThresholdOfLength.Location = new System.Drawing.Point(1279, 268);
+            numericBoxKikuchiThresholdOfLength.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxKikuchiThresholdOfLength.Maximum = 100D;
+            numericBoxKikuchiThresholdOfLength.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxKikuchiThresholdOfLength.Minimum = 0D;
+            numericBoxKikuchiThresholdOfLength.MinimumSize = new System.Drawing.Size(1, 20);
+            numericBoxKikuchiThresholdOfLength.Name = "numericBoxKikuchiThresholdOfLength";
+            numericBoxKikuchiThresholdOfLength.RadianValue = 0.17453292519943295D;
+            numericBoxKikuchiThresholdOfLength.RoundErrorAccuracy = -1;
+            numericBoxKikuchiThresholdOfLength.ShowUpDown = true;
+            numericBoxKikuchiThresholdOfLength.Size = new System.Drawing.Size(105, 25);
+            numericBoxKikuchiThresholdOfLength.SmartIncrement = true;
+            numericBoxKikuchiThresholdOfLength.TabIndex = 125;
+            numericBoxKikuchiThresholdOfLength.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            numericBoxKikuchiThresholdOfLength.ToolTip = "Set a threshold of d-spacings of Kikuchi lines.\r\nKikuchi lines under this value are simulated. \r\n";
+            numericBoxKikuchiThresholdOfLength.Value = 10D;
+            // 
+            // button1
+            // 
+            button1.Location = new System.Drawing.Point(958, 21);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(75, 23);
+            button1.TabIndex = 129;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FormEBSD
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1382, 579);
+            Controls.Add(button1);
+            Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
+            Controls.Add(checkBoxKikuchiLine_Kinematical);
+            Controls.Add(radioButtonKikuchiThresholdOfLength);
+            Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
+            Controls.Add(numericBoxKikuchiThresholdOfLength);
+            Controls.Add(colorControlBackGround);
+            Controls.Add(colorControlString);
+            Controls.Add(trackBarLineWidth);
+            Controls.Add(label11);
+            Controls.Add(colorControlExcessLine);
+            Controls.Add(groupBox4);
             Controls.Add(graphicsBox);
             Controls.Add(label2);
             Controls.Add(statusStrip1);
@@ -395,9 +652,9 @@
             Controls.Add(numericBoxYofDet);
             Controls.Add(numericBoxZofDet);
             Controls.Add(numericBoxDetRadius);
-            Controls.Add(numericBoxDetectorTilt);
+            Controls.Add(numericBoxDetTilt);
             Controls.Add(numericBoxSampleTilt);
-            Controls.Add(waveLengthControl1);
+            Controls.Add(waveLengthControl);
             Controls.Add(panelGeometry);
             Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             Name = "FormEBSD";
@@ -410,6 +667,9 @@
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
+            groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -418,7 +678,7 @@
 
         private System.Windows.Forms.Panel panelGeometry;
         private NumericBox numericBoxSampleTilt;
-        private WaveLengthControl waveLengthControl1;
+        private WaveLengthControl waveLengthControl;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonViewFromZ;
         private System.Windows.Forms.Button buttonFromX;
@@ -432,11 +692,24 @@
         private System.Windows.Forms.CheckBox checkBoxDrawAxesInStereonet;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private NumericBox numericBoxDetectorTilt;
+        private NumericBox numericBoxDetTilt;
         private NumericBox numericBoxDetRadius;
         private NumericBox numericBoxZofDet;
         private NumericBox numericBoxYofDet;
         private System.Windows.Forms.Label label2;
         public ImagingSolution.Control.GraphicsBox graphicsBox;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TrackBar trackBarStrSize;
+        public ColorControl colorControlExcessLine;
+        private System.Windows.Forms.TrackBar trackBarLineWidth;
+        private System.Windows.Forms.Label label11;
+        public ColorControl colorControlString;
+        public ColorControl colorControlBackGround;
+        private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfStructureFactor;
+        private System.Windows.Forms.CheckBox checkBoxKikuchiLine_Kinematical;
+        private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfLength;
+        private NumericBox numericBoxKikuchiThreadSholdOfStructureFactor;
+        private NumericBox numericBoxKikuchiThresholdOfLength;
+        private System.Windows.Forms.Button button1;
     }
 }

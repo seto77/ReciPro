@@ -167,10 +167,10 @@
     <value>189, 84</value>
   </data>
   <data name="numericBoxAlphaMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>778, 22</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxAlphaMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 15</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxAlphaMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 22</value>
@@ -191,10 +191,10 @@
     <value>283, 28</value>
   </data>
   <data name="numericBoxThread.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>778, 22</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxThread.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 15</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxThread.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 22</value>
@@ -215,10 +215,10 @@
     <value>272, 146</value>
   </data>
   <data name="numericBoxThicknessStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>778, 22</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxThicknessStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 15</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 22</value>
@@ -230,10 +230,10 @@
     <value>回折波の数</value>
   </data>
   <data name="numericBoxMaxNumOfG.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>778, 22</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMaxNumOfG.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 15</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMaxNumOfG.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 22</value>
@@ -254,10 +254,10 @@
     <value>4, 147</value>
   </data>
   <data name="numericBoxWholeThicknessStart.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>778, 22</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxWholeThicknessStart.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 15</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxWholeThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 22</value>
@@ -278,10 +278,10 @@
     <value>136, 147</value>
   </data>
   <data name="numericBoxThicknessEnd.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>778, 22</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxThicknessEnd.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 15</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxThicknessEnd.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 22</value>
@@ -309,10 +309,10 @@
     <value>6, 116</value>
   </data>
   <data name="numericBoxDiskResolution.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>778, 22</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxDiskResolution.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 15</value>
+    <value>1, 20</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxDiskResolution.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">

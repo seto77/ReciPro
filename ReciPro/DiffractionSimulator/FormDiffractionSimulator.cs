@@ -1080,7 +1080,7 @@ public partial class FormDiffractionSimulator : Form
             int sign = Math.Abs(vec1.Z) < 1E-4 ? 0 : (vec1.Z > 0 ? 1 : -1);
 
             //vec2は、検出器法線がZ軸と一致するようにX軸を回転軸に回転させたベクトル
-            var vec2 = Matrix3D.Rot(new Vector3DBase(1, 0, 0), Tau) * vec1;
+            var vec2 = Matrix3D.Rot(new Vector3DBase(Math.Cos(Phi), -Math.Sin(Phi), 0), -Tau) * vec1;
 
             //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
             var psi = Math.Atan2(vec2.X, vec2.Y);
