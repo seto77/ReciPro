@@ -74,12 +74,12 @@ public partial class FormTrajectory : Form
     }
 
     #region 3D描画をどの方向から眺めるかのボタン
-    private void buttonViewIsometric_Click(object sender, EventArgs e)
+    private void buttonViewFromX_Click(object sender, EventArgs e)
         => glControlTrajectory.WorldMatrix = Matrix4d.CreateRotationY(-Math.PI / 2) * Matrix4d.CreateRotationZ(-Math.PI / 2);
-    private void buttonViewAlongBeam_Click(object sender, EventArgs e)
+    private void buttonViewFromZ_Click(object sender, EventArgs e)
         => glControlTrajectory.WorldMatrix = Matrix4d.Identity;
 
-    private void button1_Click(object sender, EventArgs e)
+    private void buttonViewFromSurfaceNormal_Click(object sender, EventArgs e)
         => glControlTrajectory.WorldMatrix = Matrix4d.CreateRotationX(-numericBoxSampleTilt.RadianValue);
 
     #endregion
@@ -222,16 +222,7 @@ public partial class FormTrajectory : Form
         else
             poleFigureControl.Circles = [];
 
-        //検出器の四隅
-        
-        //V3 p1 = new(15, -10, 0), p2 = new(-15, -10, 0), p3 = new(-15, -10, -10), p4 = new(15, -10, -10);
-        //var f = new Func<V3, V3, double, PointD>((p1, p2, r) => Stereonet.ConvertVectorToSchmidt(rot.Mult(p1 * r + p2 * (1 - r))));
-        //poleFigureControl.Lines = [
-        //    (Enumerable.Range(0,100).Select(i=>  f(p1,p2,i/100.0)).ToArray(),1,Color.Red),
-        //    (Enumerable.Range(0,100).Select(i=>  f(p2,p3,i/100.0)).ToArray(),1,Color.Red),
-        //    (Enumerable.Range(0,100).Select(i=>  f(p3,p4,i/100.0)).ToArray(),1,Color.Red),
-        //    (Enumerable.Range(0,100).Select(i=>  f(p4,p1,i/100.0)).ToArray(),1,Color.Red)
-        //    ];
+       
 
         poleFigureControl.Vectors = BSEs.Select(e => new V4(rot.Mult(e[^1].p - e[^2].p), e[^1].e)).ToArray();
     }
@@ -307,14 +298,17 @@ public partial class FormTrajectory : Form
             var len = limit * scaleStep * 0.5;
             //X軸
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(len, 0, 0)], 3f, new Material(Color4.OrangeRed)));
+            glControlTrajectory.MakeCurrent();
             glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 1000, true, new Material(Color4.OrangeRed)));
 
             //Y軸
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, len, 0)], 3f, new Material(Color4.YellowGreen)));
+            glControlTrajectory.MakeCurrent();
             glObjects.Add(new TextObject("+Y", 10f, new V3(0, len, 0), 1000, true, new Material(Color4.YellowGreen)));
 
             //Z軸 = beam
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, len)], 3f, new Material(Color4.MediumPurple)));
+            glControlTrajectory.MakeCurrent();
             glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, len), 1000, true, new Material(Color4.MediumPurple)));
         }
 

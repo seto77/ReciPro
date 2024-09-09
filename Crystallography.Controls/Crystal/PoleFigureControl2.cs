@@ -181,8 +181,18 @@ public partial class PoleFigureControl2 : UserControl
                         Pixels[i][j] = Statistics.Deviation([.. tmp[i][j]]);
         }
 
-        numericBoxMax.Value = Pixels.Max(e => e.Max());
-        numericBoxMin.Value = Pixels.Min(e => e.Min());
+        var max = Pixels.Max(e => e.Max());
+        var log10 = Math.Floor(Math.Log10(max));
+        max = (int)(max / Math.Pow(10, log10 - 3) + 0.5) * Math.Pow(10, log10 - 3);
+        numericBoxMax.Value = max;
+
+        var min = Pixels.Min(e => e.Min());
+        if(min>0)
+        {
+            log10 = Math.Floor(Math.Log10(min));
+            min = (int)(min / Math.Pow(10, log10 - 3) - 0.5) * Math.Pow(10, log10 - 3);
+        }
+        numericBoxMin.Value = min;
 
 
     }

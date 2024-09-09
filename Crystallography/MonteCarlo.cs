@@ -14,13 +14,13 @@ namespace Crystallography
     {
         public static int seed = 0;
 
-        public double Z, A, ρ;
-        public double InitialKev, Tilt;
-        public double coeff1, coeff2, coeff3;
+        public readonly double Z, A, ρ;
+        public readonly double InitialKev, Tilt;
+        public readonly double coeff1, coeff2, coeff3;
      
-        public double k, J, tan;
+        public readonly double k, J, tan;
 
-        public double ThresholdKev;
+        public readonly double ThresholdKev;
 
         /// <summary>
         /// コンストラクタ
@@ -31,7 +31,7 @@ namespace Crystallography
         /// <param name="kev">入射電子エネルギー (kev)</param>
         /// <param name="tilt">試料表面の傾き (rad, X軸で回転)</param>
         /// <param name="thresholdKev">飛程計算を打ち切るエネルギー (kev)</param>
-        public MonteCarlo( double z, double a, double _ρ, double kev, double tilt, double thresholdKev=2)
+        public MonteCarlo(double z, double a, double _ρ, double kev, double tilt, double thresholdKev = 2)
         {
             Z = z;
             A = a;
@@ -48,7 +48,7 @@ namespace Crystallography
             //阻止能の計算中に出てくる定数
             coeff3 = -Z * UniversalConstants.A * ρ * 1E3 / (A * 1E-3) * Math.Pow(UniversalConstants.e0, 4)
                 / 4 / Math.PI / UniversalConstants.ε0 / UniversalConstants.ε0 / UniversalConstants.eV_joule * 1E-9 * 1E-3;
-            
+
             //阻止能の計算中に出てくる物質依存の定数 k    Joy and Luo (1989)によれば 6C:0.77, 13Al: 0.815, 14Si: 0.822, 28Ni: 0.83, 29Cu: 0.83,  47Ag:0.852, 79Au: 0.851
             //取りあえず対数近似した値を使う
             k = 0.0299 * Math.Log(Z) + 0.7307;
@@ -87,14 +87,11 @@ namespace Crystallography
             //電子エネルギーがThresholdKev以下になるか、試料を脱出するまでループ
             while (trajectory[^1].e > ThresholdKev && trajectory[^1].p.Y * tan >= trajectory[^1].p.Z)
             {
+                //パラメーター取得
                 var (α, _, λ_el, sp) = GetParameters(trajectory[^1].e);
-
                 //飛行距離 s
                 var s = -λ_el * Math.Log(r.NextDouble());
-
-                if (trajectory.Count == 1)
-                    trajectory.Add((s * vec, trajectory[^1].e + s * sp));
-                else
+                if (trajectory.Count > 1)
                 {
                     double rnd2 = r.NextDouble(), rnd3 = r.NextDouble();
                     double cosθ = 1 - 2 * α * rnd2 / (1 + α - rnd2), sinθ = Math.Sqrt(1 - cosθ * cosθ);
@@ -105,8 +102,8 @@ namespace Crystallography
                         rot.M21 * sinθ * cosφ + rot.M22 * sinθ * sinφ + rot.M23 * cosθ,
                         rot.M31 * sinθ * cosφ + rot.M32 * sinθ * sinφ + rot.M33 * cosθ
                                 );
-                    trajectory.Add((trajectory[^1].p + s * vec, trajectory[^1].e + s * sp));
                 }
+                trajectory.Add((trajectory[^1].p + s * vec, trajectory[^1].e + s * sp));
             }
             return trajectory.Select(e => (e.p / 1000, e.e)).ToArray();
         }
@@ -116,23 +113,21 @@ namespace Crystallography
         /// 試料表面を脱出するまでの飛程を計算する。返り値は、座標 p (µm単位)と エネルギー e (kev単位) のタプル配列
         /// </summary>
         /// <returns>返り値は、座標 p (µm単位)と エネルギー e (kev単位) のタプル配列</returns>
-        public (V3 p, double e) GetBackscatteredElectrons()
+        public (V3 p, V3 v, double e) GetBackscatteredElectrons()
         {
             var r = new Random(Interlocked.Increment(ref seed));
-            var trajectory = new List<(V3 p, double e)>() { (new V3(0, 0, 0), InitialKev) };
-            var vec = new V3(0, 0, -1);
+            //var trajectory = new List<(V3 p, double e)>() { (new V3(0, 0, 0), InitialKev) };
+            double e = InitialKev;
+            V3 pos = new(0, 0, 0), vec = new(0, 0, -1);
 
             //電子エネルギーがThresholdKev以下になるか、試料を脱出するまでループ
-            while (trajectory[^1].e > ThresholdKev && trajectory[^1].p.Y * tan >= trajectory[^1].p.Z)
+            while (e > ThresholdKev && pos.Y * tan >= pos.Z)
             {
-                var (α, _, λ_el, sp) = GetParameters(trajectory[^1].e);
-
+                //パラメーター取得
+                var (α, _, λ_el, sp) = GetParameters(e);
                 //飛行距離 s
                 var s = -λ_el * Math.Log(r.NextDouble());
-
-                if (trajectory.Count == 1)
-                    trajectory.Add((s * vec, trajectory[^1].e + s * sp));
-                else
+                if (e != InitialKev)
                 {
                     double rnd2 = r.NextDouble(), rnd3 = r.NextDouble();
                     double cosθ = 1 - 2 * α * rnd2 / (1 + α - rnd2), sinθ = Math.Sqrt(1 - cosθ * cosθ);
@@ -143,13 +138,15 @@ namespace Crystallography
                         rot.M21 * sinθ * cosφ + rot.M22 * sinθ * sinφ + rot.M23 * cosθ,
                         rot.M31 * sinθ * cosφ + rot.M32 * sinθ * sinφ + rot.M33 * cosθ
                                 );
-                    trajectory.Add((trajectory[^1].p + s * vec, trajectory[^1].e + s * sp));
                 }
+                var tmpPos = pos + s * vec;
+                if (tmpPos.Y * tan < tmpPos.Z)
+                    break;
+                pos = tmpPos;
+                e += s * sp;
             }
-            //return trajectory.Select(e => (e.p / 1000, e.e)).ToArray();
-            return (new V3(), 0);
+            return (pos, vec, e);
         }
-
 
         /// <summary>
         /// Z軸(001)を引数のベクトルvに回転させる行列を生成する

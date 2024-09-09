@@ -32,8 +32,8 @@
             waveLengthControl1 = new WaveLengthControl();
             buttonCalc = new System.Windows.Forms.Button();
             numericBoxSampleTilt = new NumericBox();
-            buttonViewIsometric = new System.Windows.Forms.Button();
-            buttonViewAlongBeam = new System.Windows.Forms.Button();
+            buttonViewFromX = new System.Windows.Forms.Button();
+            buttonViewFromZ = new System.Windows.Forms.Button();
             paneltTrajectory = new System.Windows.Forms.Panel();
             graphControlEnergyProfile = new GraphControl();
             numericBoxCalcNum = new NumericBox();
@@ -50,7 +50,7 @@
             poleFigureControl = new PoleFigureControl2();
             checkBoxDrawAxes = new System.Windows.Forms.CheckBox();
             checkBoxDrawGuidCircles = new System.Windows.Forms.CheckBox();
-            button1 = new System.Windows.Forms.Button();
+            buttonSurfaceNormal = new System.Windows.Forms.Button();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -118,17 +118,17 @@
             // 
             // buttonViewIsometric
             // 
-            resources.ApplyResources(buttonViewIsometric, "buttonViewIsometric");
-            buttonViewIsometric.Name = "buttonViewIsometric";
-            buttonViewIsometric.UseVisualStyleBackColor = true;
-            buttonViewIsometric.Click += buttonViewIsometric_Click;
+            resources.ApplyResources(buttonViewFromX, "buttonViewIsometric");
+            buttonViewFromX.Name = "buttonViewIsometric";
+            buttonViewFromX.UseVisualStyleBackColor = true;
+            buttonViewFromX.Click += buttonViewFromX_Click;
             // 
             // buttonViewAlongBeam
             // 
-            resources.ApplyResources(buttonViewAlongBeam, "buttonViewAlongBeam");
-            buttonViewAlongBeam.Name = "buttonViewAlongBeam";
-            buttonViewAlongBeam.UseVisualStyleBackColor = true;
-            buttonViewAlongBeam.Click += buttonViewAlongBeam_Click;
+            resources.ApplyResources(buttonViewFromZ, "buttonViewAlongBeam");
+            buttonViewFromZ.Name = "buttonViewAlongBeam";
+            buttonViewFromZ.UseVisualStyleBackColor = true;
+            buttonViewFromZ.Click += buttonViewFromZ_Click;
             // 
             // paneltTrajectory
             // 
@@ -429,17 +429,17 @@
             // 
             // button1
             // 
-            resources.ApplyResources(button1, "button1");
-            button1.Name = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            resources.ApplyResources(buttonSurfaceNormal, "button1");
+            buttonSurfaceNormal.Name = "button1";
+            buttonSurfaceNormal.UseVisualStyleBackColor = true;
+            buttonSurfaceNormal.Click += buttonViewFromSurfaceNormal_Click;
             // 
             // flowLayoutPanel1
             // 
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(buttonViewAlongBeam);
-            flowLayoutPanel1.Controls.Add(buttonViewIsometric);
-            flowLayoutPanel1.Controls.Add(button1);
+            flowLayoutPanel1.Controls.Add(buttonViewFromZ);
+            flowLayoutPanel1.Controls.Add(buttonViewFromX);
+            flowLayoutPanel1.Controls.Add(buttonSurfaceNormal);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // label1
@@ -628,8 +628,8 @@
         private WaveLengthControl waveLengthControl1;
         private System.Windows.Forms.Button buttonCalc;
         private NumericBox numericBoxSampleTilt;
-        private System.Windows.Forms.Button buttonViewIsometric;
-        private System.Windows.Forms.Button buttonViewAlongBeam;
+        private System.Windows.Forms.Button buttonViewFromX;
+        private System.Windows.Forms.Button buttonViewFromZ;
         private System.Windows.Forms.Panel paneltTrajectory;
         private GraphControl graphControlEnergyProfile;
         private NumericBox numericBoxCalcNum;
@@ -647,7 +647,7 @@
         private System.Windows.Forms.Panel panelAxes;
         private System.Windows.Forms.CheckBox checkBoxDrawAxes;
         private System.Windows.Forms.CheckBox checkBoxDrawGuidCircles;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSurfaceNormal;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;

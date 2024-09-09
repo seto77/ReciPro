@@ -1495,7 +1495,7 @@ public partial class FormDiffractionSimulator : Form
 
             foreach (var crystal in formMain.Crystals)
             {
-                crystal.SetVectorOfG(minD, maxD, radioButtonIntensityKinematical.Checked ? Source : WaveSource.None);
+                crystal.SetVectorOfG(minD, maxD, Source);
 
                 var latticeType = crystal.Symmetry.LatticeTypeStr;
 

@@ -163,7 +163,7 @@
             resources.ApplyResources(numericBoxAlphaMax, "numericBoxAlphaMax");
             numericBoxAlphaMax.BackColor = System.Drawing.Color.Transparent;
             numericBoxAlphaMax.DecimalPlaces = 1;
-            numericBoxAlphaMax.Maximum = 100D;
+            numericBoxAlphaMax.Maximum = 2000D;
             numericBoxAlphaMax.Minimum = 0D;
             numericBoxAlphaMax.Name = "numericBoxAlphaMax";
             numericBoxAlphaMax.RadianValue = 0.10471975511965977D;
@@ -302,7 +302,7 @@
             numericBoxDiskResolution.DecimalPlaces = 3;
             numericBoxDiskResolution.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxDiskResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDiskResolution.Maximum = 1D;
+            numericBoxDiskResolution.Maximum = 100D;
             numericBoxDiskResolution.Minimum = 0.001D;
             numericBoxDiskResolution.Name = "numericBoxDiskResolution";
             numericBoxDiskResolution.RadianValue = 0.0017453292519943296D;

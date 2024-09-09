@@ -141,7 +141,7 @@ public class BetheMethod
         };
         bwCBED.RunWorkerCompleted += Cbed_RunWorkerCompleted;
         bwCBED.ProgressChanged += Cbed_ProgressChanged;
-        bwCBED.DoWork += cbed_DoWork;
+        bwCBED.DoWork += cbed_DoWork2;
 
         bwSTEM = new BackgroundWorker
         {
@@ -417,7 +417,8 @@ public class BetheMethod
     /// <param name="e"></param>
     private void cbed_DoWork2(object sender, DoWorkEventArgs e)
     {
-        var (solver, thread, cs) = ((Solver, int, double))e.Argument;
+        //var (solver, thread, cs) = ((Solver, int, double))e.Argument;
+        var (LACBED, solver, thread) = ((bool, Solver, int))e.Argument;
 
         //波数を計算
         var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
