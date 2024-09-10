@@ -348,7 +348,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlEnergyProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 132</value>
+    <value>394, 176</value>
   </data>
   <data name="graphControlEnergyProfile.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -444,13 +444,13 @@
     <value>3, 3</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 156</value>
+    <value>400, 200</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Energy distribution of BSEs</value>
+    <value>Energy distribution of BSEs (ΔE)</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -477,7 +477,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlDepthProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 132</value>
+    <value>394, 176</value>
   </data>
   <data name="graphControlDepthProfile.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -495,10 +495,10 @@
     <value>0</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 327</value>
+    <value>3, 415</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 156</value>
+    <value>400, 200</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -551,60 +551,6 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="graphControlDepthEBSD.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="graphControlDepthEBSD.DrawingRange" type="Crystallography.RectangleD, Crystallography">
-    <value>0, 0, 1, 1</value>
-  </data>
-  <data name="graphControlDepthEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="graphControlDepthEBSD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="graphControlDepthEBSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 132</value>
-  </data>
-  <data name="graphControlDepthEBSD.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;graphControlDepthEBSD.Name" xml:space="preserve">
-    <value>graphControlDepthEBSD</value>
-  </data>
-  <data name="&gt;&gt;graphControlDepthEBSD.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;graphControlDepthEBSD.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;graphControlDepthEBSD.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 489</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 156</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Depth at which electrons contributing to diffraction are emitted</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="graphControlDistance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -618,7 +564,7 @@
     <value>3, 21</value>
   </data>
   <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 132</value>
+    <value>394, 176</value>
   </data>
   <data name="graphControlDistance.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -636,10 +582,10 @@
     <value>0</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 165</value>
+    <value>3, 209</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 156</value>
+    <value>400, 200</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -853,7 +799,7 @@
     <value>863, 2</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 648</value>
+    <value>406, 618</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>109</value>

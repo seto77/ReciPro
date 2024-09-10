@@ -43,8 +43,6 @@
             graphControlDepthProfile = new GraphControl();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            groupBox3 = new System.Windows.Forms.GroupBox();
-            graphControlDepthEBSD = new GraphControl();
             groupBox4 = new System.Windows.Forms.GroupBox();
             graphControlDistance = new GraphControl();
             poleFigureControl = new PoleFigureControl2();
@@ -75,7 +73,6 @@
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             statusStrip1.SuspendLayout();
-            groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -289,63 +286,6 @@
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(graphControlDepthEBSD);
-            resources.ApplyResources(groupBox3, "groupBox3");
-            groupBox3.Name = "groupBox3";
-            groupBox3.TabStop = false;
-            // 
-            // graphControlDepthEBSD
-            // 
-            graphControlDepthEBSD.AllowMouseOperation = true;
-            graphControlDepthEBSD.AxisLineColor = System.Drawing.Color.Gray;
-            graphControlDepthEBSD.AxisTextColor = System.Drawing.Color.Black;
-            graphControlDepthEBSD.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
-            graphControlDepthEBSD.AxisXTextVisible = true;
-            graphControlDepthEBSD.AxisYTextVisible = true;
-            graphControlDepthEBSD.BackgroundColor = System.Drawing.Color.White;
-            graphControlDepthEBSD.BottomMargin = 0D;
-            graphControlDepthEBSD.DivisionLineColor = System.Drawing.Color.LightGray;
-            graphControlDepthEBSD.DivisionLineXVisible = true;
-            graphControlDepthEBSD.DivisionLineYVisible = true;
-            resources.ApplyResources(graphControlDepthEBSD, "graphControlDepthEBSD");
-            graphControlDepthEBSD.DrawingRange = (RectangleD)resources.GetObject("graphControlDepthEBSD.DrawingRange");
-            graphControlDepthEBSD.FixRangeHorizontal = false;
-            graphControlDepthEBSD.FixRangeVertical = false;
-            graphControlDepthEBSD.GraphTitle = "";
-            graphControlDepthEBSD.Interpolation = false;
-            graphControlDepthEBSD.IsIntegerX = false;
-            graphControlDepthEBSD.IsIntegerY = false;
-            graphControlDepthEBSD.LabelX = "nm: ";
-            graphControlDepthEBSD.LabelY = "freq.:";
-            graphControlDepthEBSD.LeftMargin = 0F;
-            graphControlDepthEBSD.LineWidth = 1F;
-            graphControlDepthEBSD.LowerX = 0D;
-            graphControlDepthEBSD.LowerY = 0D;
-            graphControlDepthEBSD.MaximalX = 1D;
-            graphControlDepthEBSD.MaximalY = 1D;
-            graphControlDepthEBSD.MinimalX = 0D;
-            graphControlDepthEBSD.MinimalY = 0D;
-            graphControlDepthEBSD.Mode = GraphControl.DrawingMode.Histogram;
-            graphControlDepthEBSD.MousePositionVisible = true;
-            graphControlDepthEBSD.MousePositionXDigit = 3;
-            graphControlDepthEBSD.MousePositionYDigit = 3;
-            graphControlDepthEBSD.Name = "graphControlDepthEBSD";
-            graphControlDepthEBSD.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControlDepthEBSD.Profile = null;
-            graphControlDepthEBSD.Smoothing = false;
-            graphControlDepthEBSD.UnitX = "nm";
-            graphControlDepthEBSD.UnitY = "%";
-            graphControlDepthEBSD.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            graphControlDepthEBSD.UpperPanelVisible = true;
-            graphControlDepthEBSD.UpperX = 1D;
-            graphControlDepthEBSD.UpperY = 1D;
-            graphControlDepthEBSD.UseLineWidth = true;
-            graphControlDepthEBSD.VerticalLineColor = System.Drawing.Color.Red;
-            graphControlDepthEBSD.XLog = false;
-            graphControlDepthEBSD.YLog = false;
-            // 
             // groupBox4
             // 
             groupBox4.Controls.Add(graphControlDistance);
@@ -453,7 +393,6 @@
             flowLayoutPanel2.Controls.Add(groupBox1);
             flowLayoutPanel2.Controls.Add(groupBox4);
             flowLayoutPanel2.Controls.Add(groupBox2);
-            flowLayoutPanel2.Controls.Add(groupBox3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // checkBoxDrawAbsorved
@@ -610,7 +549,6 @@
             groupBox2.ResumeLayout(false);
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            groupBox3.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
@@ -639,8 +577,6 @@
         private GraphControl graphControlDepthProfile;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private GraphControl graphControlDepthEBSD;
         private System.Windows.Forms.GroupBox groupBox4;
         private GraphControl graphControlDistance;
         private PoleFigureControl2 poleFigureControl;

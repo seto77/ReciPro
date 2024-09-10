@@ -131,7 +131,6 @@
             flowLayoutPanel1.Controls.Add(labelDivisionNumber);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
-            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // label2
             // 
@@ -140,7 +139,6 @@
             label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             label2.Name = "label2";
             toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
-            label2.Click += labelDivisionNumber_Click;
             // 
             // labelDivisionNumber
             // 
@@ -149,7 +147,6 @@
             labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             labelDivisionNumber.Name = "labelDivisionNumber";
             toolTip.SetToolTip(labelDivisionNumber, resources.GetString("labelDivisionNumber.ToolTip"));
-            labelDivisionNumber.Click += labelDivisionNumber_Click;
             // 
             // radioButtonLACBED
             // 

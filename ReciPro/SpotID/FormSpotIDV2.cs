@@ -1481,8 +1481,8 @@ public partial class FormSpotIDV2 : Form
         splitContainer1.Enabled = false;
 
         //イベント追加
-        FormMain.Crystal.Bethe.CbedCompleted += Bethe_CbedCompleted;
-        FormMain.Crystal.Bethe.CbedProgressChanged += Bethe_CbedProgressChanged;
+        FormMain.Crystal.Bethe.CBED_Completed += Bethe_CbedCompleted;
+        FormMain.Crystal.Bethe.CBED_ProgressChanged += Bethe_CbedProgressChanged;
 
         //ローテーション配列を作る //半径1の円の中に一辺1/Nの長さの正方形を詰め込み、一つの正方形の中心は、円の中心と一致するような問題を考える
         var directions = new List<Vector3DBase>();
@@ -1506,8 +1506,8 @@ public partial class FormSpotIDV2 : Form
     private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
         //イベント削除
-        FormMain.Crystal.Bethe.CbedCompleted -= Bethe_CbedCompleted;
-        FormMain.Crystal.Bethe.CbedProgressChanged -= Bethe_CbedProgressChanged;
+        FormMain.Crystal.Bethe.CBED_Completed -= Bethe_CbedCompleted;
+        FormMain.Crystal.Bethe.CBED_ProgressChanged -= Bethe_CbedProgressChanged;
 
         //検出しているスポットの強度を取得
         var spots = dataSet.DataTableSpot.Spots;

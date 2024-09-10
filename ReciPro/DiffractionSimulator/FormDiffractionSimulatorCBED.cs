@@ -22,8 +22,6 @@ public partial class FormDiffractionSimulatorCBED : Form
     public bool LACBED => radioButtonLACBED.Checked;
 
     private double Voltage => FormDiffractionSimulator.waveLengthControl.Energy;
-    //private double WaveLength => FormDiffractionSimulator.WaveLength;
-    //private double Thickness => numericBoxWholeThicknessStart.Value;
     private Crystal Crystal => FormDiffractionSimulator.formMain.Crystal;
 
     public int DivisionNumber
@@ -122,12 +120,11 @@ public partial class FormDiffractionSimulatorCBED : Form
         if (Crystal.Bethe.IsBusy) return;
 
         buttonStop.Visible = true;
-        sw1.Reset();
         sw2.Reset();
-        sw1.Start();
+        sw1.Restart();
         FormDiffractionSimulator.SkipDrawing = true;
-        Crystal.Bethe.CbedCompleted += Bethe_CbedCompleted;
-        Crystal.Bethe.CbedProgressChanged += Bethe_CbedProgressChanged;
+        Crystal.Bethe.EBSD_Completed += Bethe_EbsdCompleted;
+        Crystal.Bethe.EBSD_ProgressChanged += Bethe_EbsdProgressChanged;
 
         //ローテーション配列を作る //一辺が2.の正方形の中に一辺1/Nのピクセルを詰め込み、中心ピクセルが、円の中心とちょうど一致するような問題を考える
         var directions = new List<Vector3DBase>();
@@ -152,7 +149,7 @@ public partial class FormDiffractionSimulatorCBED : Form
                 directions.Add(new Vector3DBase(x, y, -Math.Sqrt(1 - x * x - y * y)));
             }
 
-        Directions = directions.ToArray();
+        Directions = [.. directions];
 
 
         BetheMethod.Solver solver;
@@ -174,7 +171,7 @@ public partial class FormDiffractionSimulatorCBED : Form
     #region BackgroundWorkerからのProgressChanged, Completed
 
     private bool skipProgressChangedEvent = false;
-    private void Bethe_CbedProgressChanged(object sender, ProgressChangedEventArgs e)
+    private void Bethe_EbsdProgressChanged(object sender, ProgressChangedEventArgs e)
     {
         if (skipProgressChangedEvent) return;
         skipProgressChangedEvent = true;
@@ -211,12 +208,12 @@ public partial class FormDiffractionSimulatorCBED : Form
         skipProgressChangedEvent = false;
     }
 
-    private void Bethe_CbedCompleted(object sender, RunWorkerCompletedEventArgs e)
+    private void Bethe_EbsdCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
         buttonStop.Visible = false;
         FormDiffractionSimulator.SkipDrawing = false;
-        Crystal.Bethe.CbedCompleted -= Bethe_CbedCompleted;
-        Crystal.Bethe.CbedProgressChanged -= Bethe_CbedProgressChanged;
+        Crystal.Bethe.CBED_Completed -= Bethe_EbsdCompleted;
+        Crystal.Bethe.CBED_ProgressChanged -= Bethe_EbsdProgressChanged;
         sw2.Stop();
         var sec1 = sw1.ElapsedMilliseconds / 1000.0;
         var sec2 = sw2.ElapsedMilliseconds / 1000.0;
@@ -414,15 +411,5 @@ public partial class FormDiffractionSimulatorCBED : Form
     {
         FormDiffractionSimulator.saveCBEDPatternToolStripMenuItem.Visible = Visible;
         FormDiffractionSimulator.copyCBEDPatternToolStripMenuItem.Visible = Visible;
-    }
-
-    private void labelDivisionNumber_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-    {
-
     }
 }

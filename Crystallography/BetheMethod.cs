@@ -93,8 +93,13 @@ public class BetheMethod
 
     [NonSerialized]
     private readonly BackgroundWorker bwCBED = new();
-    public event ProgressChangedEventHandler CbedProgressChanged;
-    public event RunWorkerCompletedEventHandler CbedCompleted;
+    public event ProgressChangedEventHandler CBED_ProgressChanged;
+    public event RunWorkerCompletedEventHandler CBED_Completed;
+
+    [NonSerialized]
+    private readonly BackgroundWorker bwEBSD = new();
+    public event ProgressChangedEventHandler EBSD_ProgressChanged;
+    public event RunWorkerCompletedEventHandler EBSD_Completed;
 
     [NonSerialized]
     private readonly BackgroundWorker bwSTEM = new();
@@ -141,7 +146,16 @@ public class BetheMethod
         };
         bwCBED.RunWorkerCompleted += Cbed_RunWorkerCompleted;
         bwCBED.ProgressChanged += Cbed_ProgressChanged;
-        bwCBED.DoWork += cbed_DoWork2;
+        bwCBED.DoWork += cbed_DoWork;
+
+        bwEBSD = new BackgroundWorker
+        {
+            WorkerSupportsCancellation = true,
+            WorkerReportsProgress = true
+        };
+        bwEBSD.RunWorkerCompleted += Ebsd_RunWorkerCompleted;
+        bwEBSD.ProgressChanged += Ebsd_ProgressChanged;
+        bwEBSD.DoWork += ebsd_DoWork;
 
         bwSTEM = new BackgroundWorker
         {
@@ -155,9 +169,9 @@ public class BetheMethod
     #endregion
 
     #region CBED
-    private void Cbed_ProgressChanged(object sender, ProgressChangedEventArgs e) => CbedProgressChanged?.Invoke(sender, e);
+    private void Cbed_ProgressChanged(object sender, ProgressChangedEventArgs e) => CBED_ProgressChanged?.Invoke(sender, e);
 
-    private void Cbed_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) => CbedCompleted?.Invoke(sender, e);
+    private void Cbed_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) => CBED_Completed?.Invoke(sender, e);
 
     public void CancelCBED()
     {
@@ -178,12 +192,10 @@ public class BetheMethod
     {
         MaxNumOfBloch = maxNumOfBloch;
         AccVoltage = voltage;
-        //Wavelength = UniversalConstants.Convert.EnergyToElectronWaveLength(voltage);
         BaseRotation = new Matrix3D(rotation);
         BeamDirections = beamDirections;
         Thicknesses = thickness;
 
-        //var cuda = Control.TryUseNativeCUDA();
         bwCBED.RunWorkerAsync((LACBED, solver, thread));
     }
 
@@ -410,15 +422,46 @@ public class BetheMethod
     #endregion
 
     #region EBSD
+    private void Ebsd_ProgressChanged(object sender, ProgressChangedEventArgs e) => EBSD_ProgressChanged?.Invoke(sender, e);
+
+    private void Ebsd_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) => EBSD_Completed?.Invoke(sender, e);
+
+    public void CancelEBSD()
+    {
+        if (bwEBSD.IsBusy)
+            bwEBSD.CancelAsync();
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="maxNumOfBloch"></param>
+    /// <param name="voltage">加速電圧(kV)</param>
+    /// <param name="rotation">基準となる方位</param>
+    /// <param name="thickness">厚みの配列</param>
+    /// <param name="beamRotations">基準となる方位に乗算する方位配列</param>
+    public void RunEBSD(int maxNumOfBloch, double voltage, Matrix3D rotation, double[] thickness, Vector3DBase[] beamDirections, Solver solver = Solver.Auto, int thread = 1)
+    {
+        MaxNumOfBloch = maxNumOfBloch;
+        AccVoltage = voltage;
+        BaseRotation = new Matrix3D(rotation);
+        BeamDirections = beamDirections;
+        Thicknesses = thickness;
+
+        bwEBSD.RunWorkerAsync((solver, thread));
+    }
+
+
+
     /// <summary>
     /// EBSD計算用
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void cbed_DoWork2(object sender, DoWorkEventArgs e)
+    private void ebsd_DoWork(object sender, DoWorkEventArgs e)
     {
         //var (solver, thread, cs) = ((Solver, int, double))e.Argument;
-        var (LACBED, solver, thread) = ((bool, Solver, int))e.Argument;
+        var (solver, thread) = ((Solver, int))e.Argument;
 
         //波数を計算
         var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
@@ -452,7 +495,7 @@ public class BetheMethod
         {
             if (!inside(i)) return (null, null);
 
-            if (bwCBED.CancellationPending) return (null, null);
+            if (bwEBSD.CancellationPending) return (null, null);
             //var rotZ = beamDirection * zNorm;
             //var coeff = 1.0 / rotZ.Z; // = 1/cosTau
             var coeff = Math.Abs(1.0 / beamDirection.Z); // = 1/cosTau
@@ -516,12 +559,12 @@ public class BetheMethod
                     result[t * beams.Length + b] *= Exp(PiI * (beams[b].P - 2 * kvac * Surface.Z) * Thicknesses[t]);
             #endregion
 
-            bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
+            bwEBSD.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
             return (result, beams);
         }).ToArray();
 
         count = 0;
-        bwCBED.ReportProgress(0, "Compiling disks");
+        bwEBSD.ReportProgress(0, "Compiling disks");
 
         var directDiskIntensities = new double[Thicknesses.Length][];
         for (int t = 0; t < Thicknesses.Length; t++)
@@ -561,7 +604,7 @@ public class BetheMethod
                     }
                 }
             }
-            bwCBED.ReportProgress(Interlocked.Increment(ref count) * 1000 / BeamDirections.Length, "Compiling disks");
+            bwEBSD.ReportProgress(Interlocked.Increment(ref count) * 1000 / BeamDirections.Length, "Compiling disks");
         });
 
         Disks = new CBED_Disk[Thicknesses.Length][];
@@ -572,7 +615,7 @@ public class BetheMethod
             Disks[t][0].Amplitudes = Disks[t][0].RawAmplitudes;
         }
 
-        if (bwCBED.CancellationPending)
+        if (bwEBSD.CancellationPending)
             e.Cancel = true;
     }
 

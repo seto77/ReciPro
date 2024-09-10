@@ -84,8 +84,6 @@ public partial class FormTrajectory : Form
 
     #endregion
 
-  
-
     #region 指定した条件でモンテカルロ法による飛程計算をおこなう。結果はList<(V3 p, double e)[]> Trajectories に格納される
     public void CalcMonteCarlo()
     {
@@ -137,18 +135,19 @@ public partial class FormTrajectory : Form
 
         //エネルギー分布を描画 ここから
         {
-            double step = 0.2;//kev単位
-            double lower = 2, upper = energy;
+            double step = 0.1;//kev単位
+            double lower = 0, upper = energy - EnergyThreshold;
             int nBuckets = (int)((upper - lower) / step);
-            var histogram = new MathNet.Numerics.Statistics.Histogram(BSEs.Select(e => e[^1].e), nBuckets, lower, lower + nBuckets * step);
+            var histogram = new MathNet.Numerics.Statistics.Histogram(BSEs.Select(e => energy - e[^1].e), nBuckets, lower, lower + nBuckets * step);
             var pts = new List<PointD>();
             for (int i = 0; i < histogram.BucketCount; i++)
                 pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
             pts.Add(new PointD(energy + step / 2, 0));
             graphControlEnergyProfile.ClearProfile();
             graphControlEnergyProfile.Profile = new Profile(pts);
-            graphControlEnergyProfile.MaximalX = upper * 1.05;
-            graphControlEnergyProfile.UpperX = graphControlEnergyProfile.MaximalX;
+            graphControlEnergyProfile.MaximalX = upper;
+            graphControlEnergyProfile.UpperX = upper*0.5;
+            graphControlEnergyProfile.Draw();
         }
         //エネルギー分布を描画 ここまで
 
@@ -156,7 +155,7 @@ public partial class FormTrajectory : Form
         {
             var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
             double lower = 0, upper = depths.Max();
-            double step = (int)(upper * 100.0) / 100.0 / 50.0;//µm単位
+            double step = (int)(upper * 100.0) / 400.0 / 50.0;//µm単位
             int nBuckets = (int)((upper - lower) / step + 1);
             var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
             var pts = new List<PointD>();
@@ -164,23 +163,25 @@ public partial class FormTrajectory : Form
                 pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
             graphControlDepthProfile.ClearProfile();
             graphControlDepthProfile.Profile = new Profile(pts);
+            graphControlDepthProfile.UpperX = upper * 0.5;
+            graphControlDepthProfile.Draw();
 
         }
         //ここまで
 
         //EBSDに寄与する電子深さ分布　ここから
-        {
-            var depths = BSEs.Select(e => 1000 * (sinTilt * e[^2].p.Y - cosTilt * e[^2].p.Z));
-            double lower = 0, upper = depths.Max();
-            double step = (int)(upper * 100.0) / 100.0 / 50.0;//nm単位
-            int nBuckets = (int)((upper - lower) / step + 1);
-            var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
-            var pts = new List<PointD>();
-            for (int i = 0; i < histogram.BucketCount; i++)
-                pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
-            graphControlDepthEBSD.ClearProfile();
-            graphControlDepthEBSD.Profile = new Profile(pts);
-        }
+        //{
+        //    var depths = BSEs.Select(e => 1000 * (sinTilt * e[^2].p.Y - cosTilt * e[^2].p.Z));
+        //    double lower = 0, upper = depths.Max();
+        //    double step = (int)(upper * 100.0) / 100.0 / 50.0;//nm単位
+        //    int nBuckets = (int)((upper - lower) / step + 1);
+        //    var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
+        //    var pts = new List<PointD>();
+        //    for (int i = 0; i < histogram.BucketCount; i++)
+        //        pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+        //    graphControlDepthEBSD.ClearProfile();
+        //    graphControlDepthEBSD.Profile = new Profile(pts);
+        //}
         //ここまで
 
         //表面に沿った方向の距離分布
