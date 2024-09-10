@@ -334,7 +334,7 @@ public partial class FormDiffractionSimulatorCBED : Form
             if (disks[i].Amplitudes != null)
             {
                 var v = new { x = disks[i].G.X, y = -disks[i].G.Y, z = -disks[i].G.Z };//ここでベクトルのY,Zの符号を反転
-                var center = Geometriy.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
+                var center = Geometry.GetCrossPoint(0, 0, 1, FormDiffractionSimulator.CameraLength2, new Vector3D(0, 0, 0), new Vector3D(v.x, v.y, v.z + FormDiffractionSimulator.EwaldRadius));
                 var pbmp = new PseudoBitmap(disks[i].Amplitudes.Select(amp => amp.MagnitudeSquared()).ToArray(), pixWidth)
                 {
                     ReserveSrcValuesGrayOriginal = true,

@@ -20,7 +20,6 @@ public partial class FormTrajectory : Form
     #region フィールド、プロパティ
     public FormMain FormMain;
 
-    // private GLControlAlpha glControlGeometry;
     private GLControlAlpha glControlTrajectory;
 
     private object lockObj = new();
@@ -100,7 +99,7 @@ public partial class FormTrajectory : Form
         double ρ = cry.Density; // 19.32 8.96 2.70 
 
         //入射電子のエネルギー (kev)
-        double energy = waveLengthControl1.Energy;
+        double energy = waveLengthControl.Energy;
         
         //サンプルの傾き
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
@@ -125,7 +124,7 @@ public partial class FormTrajectory : Form
     private void DrawStatistics()
     {
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
-        double energy = waveLengthControl1.Energy;
+        double energy = waveLengthControl.Energy;
 
         var BSEs = Trajectories.Where(e => e[^1].e > EnergyThreshold);
         var count = BSEs.Count();
@@ -234,7 +233,7 @@ public partial class FormTrajectory : Form
     private void Draw3D()
     {
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
-        double energy = waveLengthControl1.Energy;
+        double energy = waveLengthControl.Energy;
 
         var list = new List<(V3 p, double e)[]>();
         for (int i = 0; i < Trajectories.Length && list.Count < numericBoxDrawNum.ValueInteger; i++)
@@ -273,7 +272,7 @@ public partial class FormTrajectory : Form
 
             if (checkBoxDrawPathAfterEscape.Checked && trajectry[^1].e > EnergyThreshold && trajectry.Length > 1)
             {
-                var r = trajectry[^2].e / waveLengthControl1.Energy;
+                var r = trajectry[^2].e / waveLengthControl.Energy;
                 var v = (trajectry[^1].p - trajectry[^2].p).Normalized() * r * maxLength / 2;
                 var matBackScattered = new Material(new Color4(255, (byte)(128 * (1 - r) + 127), (byte)(255 * (1 - r)), (byte)(200 * r)));
                 glObjects.Add(new Lines([trajectry[^2].p, trajectry[^2].p + v], 1f, matBackScattered));

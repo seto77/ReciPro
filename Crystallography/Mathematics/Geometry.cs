@@ -9,9 +9,9 @@ using V3d = OpenTK.Vector3d;
 
 namespace Crystallography;
 
-public static class Geometriy
+public static class Geometry
 {
-    static Geometriy()
+    static Geometry()
     {
         MathNet.Numerics.Control.TryUseNativeMKL();
     }

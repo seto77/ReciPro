@@ -446,7 +446,7 @@ namespace Crystallography
 
         public void SetCoeff()
         {
-            Coeff = Geometriy.GetParameterOfCurveOfSecondaryDegree(points.ToArray());
+            Coeff = Geometry.GetParameterOfCurveOfSecondaryDegree(points.ToArray());
         }
 
         public override string ToString()

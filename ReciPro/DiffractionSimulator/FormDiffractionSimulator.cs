@@ -1188,7 +1188,7 @@ public partial class FormDiffractionSimulator : Form
 
             var twoTheta = 2 * Math.Asin(WaveLength / 2 / formMain.Crystal.Plane[n].d);
 
-            var ptsArray = Geometriy.ConicSection(twoTheta, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
+            var ptsArray = Geometry.ConicSection(twoTheta, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
 
             var red = (int)(ringR * intensity + bgR * (1 - intensity));
             var green = (int)(ringG * intensity + bgG * (1 - intensity));
@@ -1257,7 +1257,7 @@ public partial class FormDiffractionSimulator : Form
                 //  |   |
                 //  3 - 2 
                 var j = i < 3 ? i + 1 : 0;
-                var cross = Geometriy.GetCrossPoint(cos, sin, 0, 0, cornerReals[i], cornerReals[j]);
+                var cross = Geometry.GetCrossPoint(cos, sin, 0, 0, cornerReals[i], cornerReals[j]);
                 double length1 = (cornerReals[i] - cross).Length, length2 = (cornerReals[j] - cross).Length;
                 if (length1 + length2 < length[i] * 1.001)
                     crossList.Add((length1 / length[i] * cornerDetector[j] + length2 / length[i] * cornerDetector[i], i));
@@ -1325,7 +1325,7 @@ public partial class FormDiffractionSimulator : Form
         {
             var twoTheta = n * stepInteger * Math.Pow(10, stepPow);
             if (twoTheta == 180) break;
-            var ptsArray = Geometriy.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
+            var ptsArray = Geometry.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
             if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
                 ptsArray =
                 [
@@ -1716,7 +1716,7 @@ public partial class FormDiffractionSimulator : Form
     /// <param name="g"></param>
     /// <returns></returns>
     public Vector3DBase ConvertReciprocalToReal(Vector3DBase g)
-        => Geometriy.GetCrossPoint(SinPhi * SinTau, -CosPhi * SinTau, CosTau, CameraLength2, new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z));
+        => Geometry.GetCrossPoint(SinPhi * SinTau, -CosPhi * SinTau, CosTau, CameraLength2, new Vector3DBase(g.X, -g.Y, EwaldRadius - g.Z));
 
     // return p * d / (a * p.X + b * p.Y + c * p.Z);
 

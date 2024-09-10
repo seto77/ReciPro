@@ -1737,7 +1737,7 @@ public class Mesh : GLObject
                     var pts = new List<Vector3DBase>();
                     foreach (var i in new[] { index, index - 1, index + 1, index - width, index + width })
                         pts.Add(new Vector3DBase(positions[i].X, positions[i].Y, positions[i].Z));
-                    var param = Geometriy.GetPlaneEquationFromPoints(pts);
+                    var param = Geometry.GetPlaneEquationFromPoints(pts);
 
                     norm = new V3f((float)param.A, (float)param.B, (float)param.C);
                     if (norm[2] < 0)

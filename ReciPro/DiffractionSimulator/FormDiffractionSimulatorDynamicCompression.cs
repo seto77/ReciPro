@@ -311,7 +311,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
                 if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい)
                 {
                     //2020/02/03の変更対処済み
-                    var point = Geometriy.GetCrossPoint(0, -sinTau, cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
+                    var point = Geometry.GetCrossPoint(0, -sinTau, cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
                     if (IsDetectorArea(new PointD(point.X, point.Y * cosTau + point.Z * sinTau)))
                         gVector.Add(g);
                 }
@@ -520,7 +520,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
                     if (-sinTau * vec.Y + cosTau * (vec.Z + ewaldRadius) > 0)//(vec.X, vec.Y, vec.Z + EwaldRadius) と(0, -sinTau, cosTau) の内積が0より大きい)
                     {
                         //2020/02/03の変更対処済み
-                        var point = Geometriy.GetCrossPoint(0, sinTau, -cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
+                        var point = Geometry.GetCrossPoint(0, sinTau, -cosTau, cameraLength2, new Vector3D(0, 0, 0), new Vector3D(vec.X, vec.Y, vec.Z + ewaldRadius));
                         PointD pt = new PointD(point.X, point.Y * cosTau + point.Z * sinTau);
 
                         //if (IsDetectorArea(pt))

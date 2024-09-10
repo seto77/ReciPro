@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTrajectory));
-            waveLengthControl1 = new WaveLengthControl();
+            waveLengthControl = new WaveLengthControl();
             buttonCalc = new System.Windows.Forms.Button();
             numericBoxSampleTilt = new NumericBox();
             buttonViewFromX = new System.Windows.Forms.Button();
@@ -82,16 +82,16 @@
             // 
             // waveLengthControl1
             // 
-            resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
-            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.TopDown;
-            waveLengthControl1.Energy = 20D;
-            waveLengthControl1.Monochrome = true;
-            waveLengthControl1.Name = "waveLengthControl1";
-            waveLengthControl1.ShowWaveSource = false;
-            waveLengthControl1.WaveLength = 0.0085885141045000009D;
-            waveLengthControl1.WaveSource = WaveSource.Electron;
-            waveLengthControl1.XrayWaveSourceElementNumber = 0;
-            waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
+            resources.ApplyResources(waveLengthControl, "waveLengthControl1");
+            waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            waveLengthControl.Energy = 20D;
+            waveLengthControl.Monochrome = true;
+            waveLengthControl.Name = "waveLengthControl1";
+            waveLengthControl.ShowWaveSource = false;
+            waveLengthControl.WaveLength = 0.0085885141045000009D;
+            waveLengthControl.WaveSource = WaveSource.Electron;
+            waveLengthControl.XrayWaveSourceElementNumber = 0;
+            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
             // 
             // buttonCalc
             // 
@@ -532,7 +532,7 @@
             Controls.Add(numericBoxCalcNum);
             Controls.Add(label1);
             Controls.Add(numericBoxSampleTilt);
-            Controls.Add(waveLengthControl1);
+            Controls.Add(waveLengthControl);
             Controls.Add(checkBoxDrawPathAfterEscape);
             Controls.Add(checkBoxDrawAbsorved);
             Controls.Add(checkBoxDrawGuidCircles);
@@ -563,7 +563,7 @@
 
         #endregion
 
-        private WaveLengthControl waveLengthControl1;
+        private WaveLengthControl waveLengthControl;
         private System.Windows.Forms.Button buttonCalc;
         private NumericBox numericBoxSampleTilt;
         private System.Windows.Forms.Button buttonViewFromX;

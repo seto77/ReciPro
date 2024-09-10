@@ -371,7 +371,7 @@ public partial class FormStructureViewer : Form
             foreach (var bc in boundControl.GetAll().Where(b => b.Enabled && b.PlaneParams != null && b.Index != (0, 0, 0)))
                 foreach (var (X, Y, Z, D) in bc.PlaneParams)
                     bounds.Add((new V4(X, Y, Z, D), bc.Color));
-            if (!Geometriy.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))//•`‰æ”ÍˆÍ‚ª•Â‚¶‚Ä‚¢‚È‚¢ê‡
+            if (!Geometry.Enclosed(bounds.Select(b => b.prm.ToArray()).ToArray()))//•`‰æ”ÍˆÍ‚ª•Â‚¶‚Ä‚¢‚È‚¢ê‡
             {
                 //‹…–Ê‚É‹ß‚¢ƒ|ƒŠƒSƒ“‚ðì¬
                 //‚³‚¢‚±‚ë‚Ì6–Ê•ûŒü
@@ -417,7 +417,7 @@ public partial class FormStructureViewer : Form
             var boundsArray = bounds.Select(b => b.prm.ToArray()).ToArray();
             Parallel.For(0, bounds.Count, i =>
             {
-                var vertices = Geometriy.GetClippedPolygon(i, boundsArray);
+                var vertices = Geometry.GetClippedPolygon(i, boundsArray);
                 var mat = new Material(bounds[i].color, numericBoxBoundPlanesOpacity.Value);
                 if (vertices != null && vertices.Length >= 3)
                 {
@@ -844,7 +844,7 @@ public partial class FormStructureViewer : Form
                 var verticesList = new List<double[][]>();
                 for (int i = 0; i < (n == 0 ? 1 : 2); i++)
                 {
-                    var vertices = Geometriy.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray);
+                    var vertices = Geometry.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray);
                     if(vertices!=null)
                         verticesList.Add(vertices);
                 }

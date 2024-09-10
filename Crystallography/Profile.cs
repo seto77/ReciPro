@@ -324,7 +324,7 @@ public class Profile : ICloneable
     }
     #endregion
 
-    public PointD[][] GetPointsWithinRectangle(RectangleD rect) => Geometriy.GetPointsWithinRectangle(this.Pt, rect);
+    public PointD[][] GetPointsWithinRectangle(RectangleD rect) => Geometry.GetPointsWithinRectangle(this.Pt, rect);
 
     #region ToGSAS: GSAS形式に変換する
     /// <summary>

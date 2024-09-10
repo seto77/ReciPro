@@ -363,13 +363,13 @@ public static class ImageProcess
             foreach ((double x, double y, double z) in targetPixels)
             {
                 var pts = new[] { (x - .5, y - .5), (x + .5, y - .5), (x + .5, y + .5), (x - .5, y + .5) };
-                pts = Geometriy.GetPolygonDividedByLine(pts, normal1.a, normal1.b, normal1.c);
-                pts = Geometriy.GetPolygonDividedByLine(pts, normal2.a, normal2.b, normal2.c);
-                pts = Geometriy.GetPolygonDividedByLine(pts, parallel1.a, parallel1.b, parallel1.c);
-                pts = Geometriy.GetPolygonDividedByLine(pts, parallel2.a, parallel2.b, parallel2.c);
+                pts = Geometry.GetPolygonDividedByLine(pts, normal1.a, normal1.b, normal1.c);
+                pts = Geometry.GetPolygonDividedByLine(pts, normal2.a, normal2.b, normal2.c);
+                pts = Geometry.GetPolygonDividedByLine(pts, parallel1.a, parallel1.b, parallel1.c);
+                pts = Geometry.GetPolygonDividedByLine(pts, parallel2.a, parallel2.b, parallel2.c);
                 if (pts.Length > 2)
                 {
-                    var a = Geometriy.GetPolygonalArea(pts);
+                    var a = Geometry.GetPolygonalArea(pts);
                     area += a;
                     intensity += z * a;
                 }

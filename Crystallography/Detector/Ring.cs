@@ -1234,20 +1234,20 @@ public static class Ring
 
                 if (minX < size.Width && maxX >= 0 && minY < size.Height && maxY >= 0)
                 {
-                    double totalArea = Geometriy.GetPolygonalArea(pixelVertex);
+                    double totalArea = Geometry.GetPolygonalArea(pixelVertex);
                     double intensity = Intensity[j * IP.SrcWidth + i];
 
                     for (int pixX = Math.Max(0, minX); pixX <= Math.Min(size.Width - 1, maxX); pixX++)
                         for (int pixY = Math.Max(0, minY); pixY <= Math.Min(size.Height - 1, maxY); pixY++)
                         {
                             PointD[] tempPixelVertex;
-                            tempPixelVertex = Geometriy.GetPolygonDividedByLine(pixelVertex, 1, 0, (pixX - center.X - 0.5) * resolution);
-                            tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, -1, 0, -(pixX - center.X + 0.5) * resolution);
-                            tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, 0, 1, (pixY - center.Y - 0.5) * resolution);
-                            tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, 0, -1, -(pixY - center.Y + 0.5) * resolution);
+                            tempPixelVertex = Geometry.GetPolygonDividedByLine(pixelVertex, 1, 0, (pixX - center.X - 0.5) * resolution);
+                            tempPixelVertex = Geometry.GetPolygonDividedByLine(tempPixelVertex, -1, 0, -(pixX - center.X + 0.5) * resolution);
+                            tempPixelVertex = Geometry.GetPolygonDividedByLine(tempPixelVertex, 0, 1, (pixY - center.Y - 0.5) * resolution);
+                            tempPixelVertex = Geometry.GetPolygonDividedByLine(tempPixelVertex, 0, -1, -(pixY - center.Y + 0.5) * resolution);
 
                             //面積比を求めて強度を割り振り
-                            double currentArea = Geometriy.GetPolygonalArea(tempPixelVertex);
+                            double currentArea = Geometry.GetPolygonalArea(tempPixelVertex);
                             double ratio = currentArea / totalArea;
                             pixels[pixY * size.Width + pixX] += ratio * intensity;
                         }
@@ -1662,7 +1662,7 @@ public static class Ring
                         }
                     }
                     (pixelVertex[3], pixelVertex[2]) = (pixelVertex[2], pixelVertex[3]);
-                    double totalArea = Geometriy.GetPolygonalArea(pixelVertex);
+                    double totalArea = Geometry.GetPolygonalArea(pixelVertex);
 
                     //求めた4隅の点から、ステップの指数の上限、下限を設定
                     List<double> angles = [];
@@ -1685,17 +1685,17 @@ public static class Ring
                         //まずindexで定義される放射状の2本の直線の定義
                         double a1 = -Math.Sin((index - 0.5) * step), b1 = Math.Cos((index - 0.5) * step);
                         double a2 = Math.Sin((index + 0.5) * step), b2 = -Math.Cos((index + 0.5) * step);
-                        tempPixelVertex = Geometriy.GetPolygonDividedByLine(pixelVertex, a1, b1, 0);
-                        tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, a2, b2, 0);
+                        tempPixelVertex = Geometry.GetPolygonDividedByLine(pixelVertex, a1, b1, 0);
+                        tempPixelVertex = Geometry.GetPolygonDividedByLine(tempPixelVertex, a2, b2, 0);
 
                         //さらに角度範囲の上限、下限を表す同心円状の2直線
                         a1 = Math.Cos(index * step);
                         b1 = Math.Sin(index * step);
-                        tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, a1, b1, minR);
-                        tempPixelVertex = Geometriy.GetPolygonDividedByLine(tempPixelVertex, -a1, -b1, -maxR);
+                        tempPixelVertex = Geometry.GetPolygonDividedByLine(tempPixelVertex, a1, b1, minR);
+                        tempPixelVertex = Geometry.GetPolygonDividedByLine(tempPixelVertex, -a1, -b1, -maxR);
 
                         //面積比を求めて強度を割り振り
-                        double currentArea = Geometriy.GetPolygonalArea(tempPixelVertex);
+                        double currentArea = Geometry.GetPolygonalArea(tempPixelVertex);
                         double ratio = currentArea / totalArea;
                         tempProfileIntensity[index] += ratio * intensity;
                     }
@@ -2202,7 +2202,7 @@ public static class Ring
 
                             double vqZY2 = vq.X * v.X + vq.Y * v.Y;
                             double vqZ2 = vq.Z * vq.Z;
-                            double totalArea = Geometriy.GetPolygonalArea(p), residualArea = totalArea;
+                            double totalArea = Geometry.GetPolygonalArea(p), residualArea = totalArea;
                             for (int i = minIndex; i <= maxIndex; i++)
                             {
                                 if (divisions[i] < minTwoTheta)
@@ -2220,8 +2220,8 @@ public static class Ring
 
                                     var d = Math.Abs((d1 + d2) / d3) < Math.Abs((d1 - d2) / d3) ? (d1 + d2) / d3 : (d1 - d2) / d3;
 
-                                    p = Geometriy.GetPolygonDividedByLine(p, 0, 1, d);
-                                    var area = Geometriy.GetPolygonalArea(p);
+                                    p = Geometry.GetPolygonDividedByLine(p, 0, 1, d);
+                                    var area = Geometry.GetPolygonalArea(p);
                                     if (i > 0)
                                     {
                                         profile[i - 1] += intensity * (residualArea - area) / totalArea;

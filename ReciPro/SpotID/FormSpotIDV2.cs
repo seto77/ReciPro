@@ -447,8 +447,8 @@ public partial class FormSpotIDV2 : Form
             {
                 var vertices = new[] { (x - .5, y - .5), (x + .5, y - .5), (x + .5, y + .5), (x - .5, y + .5) };
                 var l = Math.Sqrt(l2);
-                vertices = Geometriy.GetPolygonDividedByLine(vertices, -x / l, -y / l, -radius);
-                return (p.x, p.y, w: vertices.Length > 2 ? Geometriy.GetPolygonalArea(vertices) : 0);
+                vertices = Geometry.GetPolygonDividedByLine(vertices, -x / l, -y / l, -radius);
+                return (p.x, p.y, w: vertices.Length > 2 ? Geometry.GetPolygonalArea(vertices) : 0);
             }
         }).Where(p => p.w != 0).ToArray();
     }

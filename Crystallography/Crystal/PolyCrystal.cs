@@ -656,7 +656,7 @@ public class Crystallite
                         var b = Math.Tan(((y + j) / SquareDiv - 0.5) * Math.PI / 2);
                         pt.Add(Stereonet.ConvertVectorToSchmidt(new Vector3D(a, b, 1)) * 10);
                     }
-                var area = Geometriy.GetPolygonalArea(new[] { pt[0], pt[1], pt[3], pt[2] });
+                var area = Geometry.GetPolygonalArea(new[] { pt[0], pt[1], pt[3], pt[2] });
                 for (int plane = 0; plane < 6; plane++)
                     for (int rot = 0; rot < RotationDiv; rot++)
                         SolidAngle[plane * SquareDiv * SquareDiv * RotationDiv + y * SquareDiv * RotationDiv + x * RotationDiv + rot] = area;
