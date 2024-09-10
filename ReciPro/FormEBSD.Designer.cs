@@ -73,7 +73,7 @@
             numericBoxMaxNumOfG = new NumericBox();
             numericBoxThicknessStart = new NumericBox();
             numericBoxThicknessEnd = new NumericBox();
-            numericBoxDiskResolution = new NumericBox();
+            numericBoxDiskDiameter = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
             groupBoxOutput = new System.Windows.Forms.GroupBox();
             label3 = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@
             trackBarOutputEnergy = new System.Windows.Forms.TrackBar();
             trackBarOutputThickness = new System.Windows.Forms.TrackBar();
             trackBarIntensityBrightnessMax = new System.Windows.Forms.TrackBar();
-            textBox1 = new System.Windows.Forms.TextBox();
+            textBoxEnergy = new System.Windows.Forms.TextBox();
             trackBarIntensityBrightnessMin = new System.Windows.Forms.TrackBar();
             label12 = new System.Windows.Forms.Label();
             textBoxThickness = new System.Windows.Forms.TextBox();
@@ -100,6 +100,7 @@
             numericBoxEnergyEnd = new NumericBox();
             numericBoxEnergyStart = new NumericBox();
             numericBoxEnergyStep = new NumericBox();
+            button1 = new System.Windows.Forms.Button();
             flowLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -742,7 +743,7 @@
             numericBoxThicknessStep.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
             numericBoxThicknessStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxThicknessStep.RadianValue = 0.034906585039886591D;
+            numericBoxThicknessStep.RadianValue = 0.017453292519943295D;
             numericBoxThicknessStep.RoundErrorAccuracy = -1;
             numericBoxThicknessStep.ShowUpDown = true;
             numericBoxThicknessStep.Size = new System.Drawing.Size(149, 27);
@@ -751,7 +752,7 @@
             numericBoxThicknessStep.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxThicknessStep.ThonsandsSeparator = true;
             numericBoxThicknessStep.ToolTip = "Set a range and step of the sample thichnesses";
-            numericBoxThicknessStep.Value = 2D;
+            numericBoxThicknessStep.Value = 1D;
             numericBoxThicknessStep.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // numericBoxMaxNumOfG
@@ -797,7 +798,7 @@
             numericBoxThicknessStart.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
             numericBoxThicknessStart.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxThicknessStart.RadianValue = 0.034906585039886591D;
+            numericBoxThicknessStart.RadianValue = 0.017453292519943295D;
             numericBoxThicknessStart.RoundErrorAccuracy = -1;
             numericBoxThicknessStart.ShowUpDown = true;
             numericBoxThicknessStart.Size = new System.Drawing.Size(147, 27);
@@ -806,7 +807,7 @@
             numericBoxThicknessStart.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxThicknessStart.ThonsandsSeparator = true;
             numericBoxThicknessStart.ToolTip = "Set a range and step of the sample thichnesses";
-            numericBoxThicknessStart.Value = 2D;
+            numericBoxThicknessStart.Value = 1D;
             numericBoxThicknessStart.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // numericBoxThicknessEnd
@@ -825,7 +826,7 @@
             numericBoxThicknessEnd.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
             numericBoxThicknessEnd.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxThicknessEnd.RadianValue = 3.4906585039886591D;
+            numericBoxThicknessEnd.RadianValue = 1.7453292519943295D;
             numericBoxThicknessEnd.RoundErrorAccuracy = -1;
             numericBoxThicknessEnd.ShowUpDown = true;
             numericBoxThicknessEnd.Size = new System.Drawing.Size(75, 27);
@@ -834,35 +835,35 @@
             numericBoxThicknessEnd.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxThicknessEnd.ThonsandsSeparator = true;
             numericBoxThicknessEnd.ToolTip = "Set a range and step of the sample thichnesses";
-            numericBoxThicknessEnd.Value = 200D;
+            numericBoxThicknessEnd.Value = 100D;
             numericBoxThicknessEnd.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
-            // numericBoxDiskResolution
+            // numericBoxDiskDiameter
             // 
-            numericBoxDiskResolution.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDiskResolution.DecimalPlaces = 0;
-            numericBoxDiskResolution.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxDiskResolution.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDiskResolution.FooterText = "pixels";
-            numericBoxDiskResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDiskResolution.HeaderText = "Diameter";
-            numericBoxDiskResolution.Location = new System.Drawing.Point(1268, 77);
-            numericBoxDiskResolution.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxDiskResolution.Maximum = 1024D;
-            numericBoxDiskResolution.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxDiskResolution.Minimum = 16D;
-            numericBoxDiskResolution.MinimumSize = new System.Drawing.Size(1, 20);
-            numericBoxDiskResolution.Name = "numericBoxDiskResolution";
-            numericBoxDiskResolution.RadianValue = 2.2340214425527418D;
-            numericBoxDiskResolution.RoundErrorAccuracy = -1;
-            numericBoxDiskResolution.ShowUpDown = true;
-            numericBoxDiskResolution.Size = new System.Drawing.Size(154, 27);
-            numericBoxDiskResolution.SmartIncrement = true;
-            numericBoxDiskResolution.TabIndex = 132;
-            numericBoxDiskResolution.TextFont = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxDiskResolution.ThonsandsSeparator = true;
-            numericBoxDiskResolution.ToolTip = "Set a number of divisions along the diameter.\r\nThe number of two-dimensional divisions is displayed on the right";
-            numericBoxDiskResolution.Value = 128D;
+            numericBoxDiskDiameter.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiskDiameter.DecimalPlaces = 0;
+            numericBoxDiskDiameter.Font = new System.Drawing.Font("メイリオ", 9F);
+            numericBoxDiskDiameter.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiskDiameter.FooterText = "pixels";
+            numericBoxDiskDiameter.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiskDiameter.HeaderText = "Diameter";
+            numericBoxDiskDiameter.Location = new System.Drawing.Point(1268, 77);
+            numericBoxDiskDiameter.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxDiskDiameter.Maximum = 1024D;
+            numericBoxDiskDiameter.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxDiskDiameter.Minimum = 16D;
+            numericBoxDiskDiameter.MinimumSize = new System.Drawing.Size(1, 20);
+            numericBoxDiskDiameter.Name = "numericBoxDiskDiameter";
+            numericBoxDiskDiameter.RadianValue = 2.2340214425527418D;
+            numericBoxDiskDiameter.RoundErrorAccuracy = -1;
+            numericBoxDiskDiameter.ShowUpDown = true;
+            numericBoxDiskDiameter.Size = new System.Drawing.Size(154, 27);
+            numericBoxDiskDiameter.SmartIncrement = true;
+            numericBoxDiskDiameter.TabIndex = 132;
+            numericBoxDiskDiameter.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            numericBoxDiskDiameter.ThonsandsSeparator = true;
+            numericBoxDiskDiameter.ToolTip = "Set a number of divisions along the diameter.\r\nThe number of two-dimensional divisions is displayed on the right";
+            numericBoxDiskDiameter.Value = 128D;
             // 
             // buttonStop
             // 
@@ -886,7 +887,7 @@
             groupBoxOutput.Controls.Add(trackBarOutputEnergy);
             groupBoxOutput.Controls.Add(trackBarOutputThickness);
             groupBoxOutput.Controls.Add(trackBarIntensityBrightnessMax);
-            groupBoxOutput.Controls.Add(textBox1);
+            groupBoxOutput.Controls.Add(textBoxEnergy);
             groupBoxOutput.Controls.Add(trackBarIntensityBrightnessMin);
             groupBoxOutput.Controls.Add(label12);
             groupBoxOutput.Controls.Add(textBoxThickness);
@@ -997,15 +998,15 @@
             trackBarIntensityBrightnessMax.Value = 1000000;
             trackBarIntensityBrightnessMax.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
-            // textBox1
+            // textBoxEnergy
             // 
-            textBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            textBox1.Location = new System.Drawing.Point(69, 25);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new System.Drawing.Size(36, 25);
-            textBox1.TabIndex = 1;
-            textBox1.Text = "20";
+            textBoxEnergy.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            textBoxEnergy.Location = new System.Drawing.Point(69, 25);
+            textBoxEnergy.Name = "textBoxEnergy";
+            textBoxEnergy.ReadOnly = true;
+            textBoxEnergy.Size = new System.Drawing.Size(36, 25);
+            textBoxEnergy.TabIndex = 1;
+            textBoxEnergy.Text = "20";
             // 
             // trackBarIntensityBrightnessMin
             // 
@@ -1028,9 +1029,9 @@
             label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             label12.Location = new System.Drawing.Point(104, 28);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(26, 17);
+            label12.Size = new System.Drawing.Size(22, 17);
             label12.TabIndex = 30;
-            label12.Text = "nm";
+            label12.Text = "kV";
             // 
             // textBoxThickness
             // 
@@ -1255,7 +1256,7 @@
             numericBoxEnergyEnd.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxEnergyEnd.Name = "numericBoxEnergyEnd";
             numericBoxEnergyEnd.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxEnergyEnd.RadianValue = 0.34033920413889429D;
+            numericBoxEnergyEnd.RadianValue = 0.33161255787892263D;
             numericBoxEnergyEnd.RoundErrorAccuracy = -1;
             numericBoxEnergyEnd.ShowUpDown = true;
             numericBoxEnergyEnd.Size = new System.Drawing.Size(75, 27);
@@ -1264,7 +1265,7 @@
             numericBoxEnergyEnd.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxEnergyEnd.ThonsandsSeparator = true;
             numericBoxEnergyEnd.ToolTip = "Set a range and step of the sample thichnesses";
-            numericBoxEnergyEnd.Value = 19.5D;
+            numericBoxEnergyEnd.Value = 19D;
             numericBoxEnergyEnd.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // numericBoxEnergyStart
@@ -1284,7 +1285,6 @@
             numericBoxEnergyStart.Name = "numericBoxEnergyStart";
             numericBoxEnergyStart.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxEnergyStart.RadianValue = 0.3490658503988659D;
-            numericBoxEnergyStart.ReadOnly = true;
             numericBoxEnergyStart.RoundErrorAccuracy = -1;
             numericBoxEnergyStart.ShowUpDown = true;
             numericBoxEnergyStart.Size = new System.Drawing.Size(130, 27);
@@ -1314,7 +1314,7 @@
             numericBoxEnergyStep.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxEnergyStep.Name = "numericBoxEnergyStep";
             numericBoxEnergyStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxEnergyStep.RadianValue = 0.0017453292519943296D;
+            numericBoxEnergyStep.RadianValue = 0.0034906585039886592D;
             numericBoxEnergyStep.RoundErrorAccuracy = -1;
             numericBoxEnergyStep.ShowUpDown = true;
             numericBoxEnergyStep.Size = new System.Drawing.Size(149, 27);
@@ -1323,8 +1323,21 @@
             numericBoxEnergyStep.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxEnergyStep.ThonsandsSeparator = true;
             numericBoxEnergyStep.ToolTip = "Set a range and step of the sample thichnesses";
-            numericBoxEnergyStep.Value = 0.1D;
+            numericBoxEnergyStep.Value = 0.2D;
             numericBoxEnergyStep.ValueChanged += NumericBoxEnergyStart_ValueChanged;
+            // 
+            // button1
+            // 
+            button1.AutoSize = true;
+            button1.BackColor = System.Drawing.Color.SteelBlue;
+            button1.ForeColor = System.Drawing.Color.White;
+            button1.Location = new System.Drawing.Point(851, 525);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(93, 26);
+            button1.TabIndex = 129;
+            button1.Text = "calc";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // FormEBSD
             // 
@@ -1344,8 +1357,9 @@
             Controls.Add(checkBoxDrawKikuchiLines);
             Controls.Add(numericBoxEnergyEnd);
             Controls.Add(numericBoxThicknessEnd);
-            Controls.Add(numericBoxDiskResolution);
+            Controls.Add(numericBoxDiskDiameter);
             Controls.Add(groupBox);
+            Controls.Add(button1);
             Controls.Add(buttonSimulateEBSD);
             Controls.Add(graphicsBox);
             Controls.Add(label2);
@@ -1431,7 +1445,7 @@
         private NumericBox numericBoxMaxNumOfG;
         private NumericBox numericBoxThicknessStart;
         private NumericBox numericBoxThicknessEnd;
-        private NumericBox numericBoxDiskResolution;
+        private NumericBox numericBoxDiskDiameter;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
@@ -1454,11 +1468,12 @@
         private GraphControl graphControlEnergyProfile;
         private GraphControl graphControlDepthProfile;
         public System.Windows.Forms.TrackBar trackBarOutputEnergy;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox textBoxEnergy;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
         private NumericBox numericBoxEnergyEnd;
         private NumericBox numericBoxEnergyStart;
         private NumericBox numericBoxEnergyStep;
+        private System.Windows.Forms.Button button1;
     }
 }

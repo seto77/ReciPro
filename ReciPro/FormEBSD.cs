@@ -16,6 +16,8 @@ using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using MathNet.Numerics;
 using System.ComponentModel;
+using System;
+using static IronPython.Modules.PythonIterTools;
 #endregion
 
 namespace ReciPro;
@@ -77,7 +79,7 @@ public partial class FormEBSD : Form
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
     private double Voltage => waveLengthControl.Energy;
 
-    private int DivisionNumber => (int)(numericBoxDiskResolution.ValueInteger * numericBoxDiskResolution.ValueInteger * Math.PI / 4.0 * EnergyArray.Length);
+    private int DivisionNumber => (int)(numericBoxDiskDiameter.ValueInteger * numericBoxDiskDiameter.ValueInteger * Math.PI / 4.0 * EnergyArray.Length);
     public double[] ThicknessArray
     {
         get
@@ -93,11 +95,12 @@ public partial class FormEBSD : Form
 
     private PseudoBitmap Pbmp = null;
 
-    private double[] EnergyArray  {
+    private double[] EnergyArray
+    {
         get
         {
             var energyArray = new List<double>();
-            for (double energy = numericBoxEnergyStart.Value; energy >= numericBoxEnergyEnd.Value-0.0000001; energy -= numericBoxEnergyStep.Value)
+            for (double energy = numericBoxEnergyStart.Value; energy >= numericBoxEnergyEnd.Value - 0.0000001; energy -= numericBoxEnergyStep.Value)
                 energyArray.Add(energy);
             return [.. energyArray];
         }
@@ -136,6 +139,8 @@ public partial class FormEBSD : Form
         DrawGeometry();
         comboBoxGradient.SelectedIndex = 1;
         comboBoxScale.SelectedIndex = 0;
+        NumericBoxEnergyStart_ValueChanged(sender, e);
+        NumericBoxThicknessStart_ValueChanged(sender, e);
     }
 
     private void FormEBSD_FormClosing(object sender, FormClosingEventArgs e)
@@ -547,7 +552,7 @@ public partial class FormEBSD : Form
 
         //飛程計算ループ
         sw1.Restart();
-        var loop = 200_000;
+        var loop = 1000_000;
         var trajectories = new (V3 p, double e)[loop][];
         Parallel.For(0, loop, i => trajectories[i] = monte.GetTrajectories());
         BSEs = trajectories.Where(e => e[^1].e > EnergyThreshold).ToArray();
@@ -578,11 +583,8 @@ public partial class FormEBSD : Form
             double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
 
             //ある立体角に収まるbseだけを抽出
-            var bse2 = BSEs.Where(e =>
-            Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p)))
-            && 19.5 > e[^1].e && 19.4 < e[^1].e
-
-            ).ToArray();
+            var bse2 = BSEs.AsParallel().Where(e =>
+            Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p)))  ).ToArray();
             var count = bse2.Count();
             double energy = waveLengthControl.Energy;
 
@@ -695,9 +697,8 @@ public partial class FormEBSD : Form
         Crystal.Bethe.EBSD_ProgressChanged += Bethe_EBSD_ProgressChanged;
 
         //方位配列を作る 
-        var directions = new List<Vector3DBase>();
+
         //検出器の中心座標
-        var c = new V3(numericBoxYofDet.Value, numericBoxZofDet.Value, 1);
         double cos = Math.Cos(DetTilt), sin = Math.Sin(DetTilt);
         var rotDet = new M4(1, 0, 0, 0,
                             0, cos, -sin, DetY - DetY * cos + DetZ * sin,
@@ -706,7 +707,8 @@ public partial class FormEBSD : Form
 
         var rotSmp = M4.CreateRotationX(numericBoxSampleTilt.RadianValue + Math.PI);
 
-        var size = numericBoxDiskResolution.ValueInteger;
+        var size = numericBoxDiskDiameter.ValueInteger;
+        var directions = new List<Vector3DBase>();
         for (int h = 0; h < size; h++)
             for (int w = 0; w < size; w++)
             {
@@ -802,14 +804,22 @@ public partial class FormEBSD : Form
     #region EBSD計算後、画像を生成
     private void generateImage(bool resetDisks = true)
     {
-        if (Crystal.Bethe.Disks == null || trackBarOutputThickness.Value >= Crystal.Bethe.Disks.Length)
+        if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length || trackBarOutputThickness.Value >= Crystal.Bethe.Disks[0].Length)
             return;
 
         var disk = Crystal.Bethe.Disks[trackBarOutputEnergy.Value][trackBarOutputThickness.Value];
-        Pbmp = new PseudoBitmap(disk.Amplitudes.Select(e => e.MagnitudeSquared()).ToArray(), numericBoxDiskResolution.ValueInteger) { AlphaEnabled = true };
+        Pbmp = new PseudoBitmap(disk.Amplitudes.Select(e => e.MagnitudeSquared()).ToArray(), numericBoxDiskDiameter.ValueInteger) { AlphaEnabled = true };
 
         Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
 
+        AdjustImage();
+      
+    }
+
+    private void AdjustImage()
+    {
+        if (Pbmp == null)
+            return;
         var colorScale = comboBoxScale.SelectedIndex;
         //GrayかColorか
         if (colorScale == 0)
@@ -835,30 +845,27 @@ public partial class FormEBSD : Form
         Draw();
         Application.DoEvents();
     }
+
+
     #endregion
 
     #region 画像出力パラメータのイベント
 
     private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
     {
-        if (Crystal.Bethe.Disks == null || Crystal.Bethe.Disks.Length<1 ||  trackBarOutputThickness.Value >= Crystal.Bethe.Disks[0].Length)
-            return;
-        if (trackBarOutputThickness.Value < 0)
+        if (Crystal.Bethe.Disks == null || Crystal.Bethe.Disks.Length < 1 || trackBarOutputThickness.Value >= Crystal.Bethe.Disks[0].Length)
             return;
         textBoxThickness.Text = ThicknessArray[trackBarOutputThickness.Value].ToString();
         generateImage();
     }
     private void trackBarOutputEnergy_ValueChanged(object sender, EventArgs e)
     {
-        if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length)
-            return;
-        if (trackBarOutputEnergy.Value < 0)
-            return;
+        if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length|| trackBarOutputEnergy.Value < 0)
 
-        textBox1.Text = EnergyArray[trackBarOutputEnergy.Value].ToString();
+        textBoxEnergy.Text = EnergyArray[trackBarOutputEnergy.Value].ToString();
         generateImage();
     }
-    private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => generateImage(false);
+    private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => AdjustImage();
 
     #endregion
 
@@ -868,5 +875,45 @@ public partial class FormEBSD : Form
             Clipboard.SetDataObject(Pbmp.GetImage());
     }
 
-  
+    private void button1_Click(object sender, EventArgs e)
+    {
+        
+        var range = poleFigureControl.Lines[0].Point;
+        M3 rot = M3.CreateRotationX(SmpTilt);
+        double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
+        //まず検出器に入る電子を抽出し、これをbse2とする
+        var bse2 = BSEs.AsParallel().Where(e => Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p))) ).ToArray();
+
+        double[] values = new double[Pbmp.SrcValuesGrayOriginal.Length];
+
+        for (int i = 0; i < EnergyArray.Length-1; i++)
+        {
+            //bse2の中から特定のエネルギーを抽出し、これをbse3とする 
+            var bse3 = bse2.Where(e => EnergyArray[i] > e[^1].e && EnergyArray[i + 1] < e[^1].e).ToArray();
+            //var bse3Ratio = (double)bse3.Length/ bse2.Length;
+
+            //bse3に対する最大深さ分布　ここから
+            {
+                var depths = bse3.Select(e1 =>  e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
+                double lower = ThicknessArray[0] - numericBoxThicknessStep.Value / 2, upper = ThicknessArray[^1] + numericBoxThicknessStep.Value / 2;
+                double step = numericBoxThicknessStep.Value;//mm単位
+                int nBuckets = (int)((upper - lower) / step + 1);
+                var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
+                for (int j = 0; j < ThicknessArray.Length; j++)
+                {
+                    for (int k = 0; k < values.Length; k++)
+                    {
+                        values[k] += histogram[i].Count * Crystal.Bethe.Disks[i][j].Amplitudes[k].MagnitudeSquared(); 
+                    }
+                }
+            }
+        }
+
+        Pbmp = new PseudoBitmap(values, numericBoxDiskDiameter.ValueInteger) { AlphaEnabled = true };
+        Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
+
+        AdjustImage();
+
+
+    }
 }

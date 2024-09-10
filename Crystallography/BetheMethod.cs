@@ -443,13 +443,12 @@ public class BetheMethod
     public void RunEBSD(int maxNumOfBloch, double[] voltages, Matrix3D rotation, double[] thickness, Vector3DBase[] beamDirections, Solver solver = Solver.Auto, int thread = 1)
     {
         MaxNumOfBloch = maxNumOfBloch;
-        
+
         BaseRotation = new Matrix3D(rotation);
         BeamDirections = beamDirections;
         Thicknesses = thickness;
 
-     
-            bwEBSD.RunWorkerAsync((solver, thread, voltages));
+        bwEBSD.RunWorkerAsync((solver, thread, voltages));
     }
 
     /// <summary>
@@ -459,28 +458,25 @@ public class BetheMethod
     /// <param name="e"></param>
     private void ebsd_DoWork(object sender, DoWorkEventArgs e)
     {
-        //var (solver, thread, cs) = ((Solver, int, double))e.Argument;
         var (solver, thread, voltages) = ((Solver, int, double[]))e.Argument;
 
         Disks = new CBED_Disk[voltages.Length][];
         int count = 0;
+
+        var beamDirectionsP = BeamDirections.AsParallel().WithDegreeOfParallelism(thread);
+        int width = (int)Math.Sqrt(BeamDirections.Length);
+        double radius = width / 2.0;
+        bool inside(int i) => (i % width - radius + 0.5) * (i % width - radius + 0.5) + (i / width - radius + 0.5) * (i / width - radius + 0.5) <= radius * radius;
+
         for (int vIndex = 0; vIndex < voltages.Length; vIndex++)
         {
             AccVoltage = voltages[vIndex];
-
             //波数を計算
             var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
             //U0を計算
             var u0 = getU(AccVoltage).Real.Real;
-            int width = (int)Math.Sqrt(BeamDirections.Length);
-            double radius = width / 2.0;
-            bool inside(int i) => (i % width - radius + 0.5) * (i % width - radius + 0.5) + (i / width - radius + 0.5) * (i / width - radius + 0.5) <= radius * radius;
-            //var beamRotationsValid = BeamRotations.Where((rot, i) => inside(i)).ToList();
-
-            //RotationArrayValidLength = beamRotationsValid.Count;
             gDic.Clear();
             //進捗状況報告用の各種定数を初期化
-            
 
             #region solver, thread の設定
             if (solver == Solver.Auto || (!EigenEnabled && (solver == Solver.Eigen_Eigen || solver == Solver.MtxExp_Eigen)))
@@ -493,8 +489,6 @@ public class BetheMethod
             var reportString = $"{solver}{thread}";
             #endregion
 
-            var beamDirectionsP = BeamDirections.AsParallel().WithDegreeOfParallelism(thread);
-
             //diskAmplitude[r][t][g]
             var diskAmplitude = beamDirectionsP.Select((beamDirection, i) =>
             {
@@ -505,7 +499,8 @@ public class BetheMethod
 
                 var vecK0 = getVecK0(kvac, u0, beamDirection);
 
-                var beams = Find_gVectors(BaseRotation, vecK0, MaxNumOfBloch, true);
+                //var beams = Find_gVectors(BaseRotation, vecK0, MaxNumOfBloch, true);
+                var beams = Find_gVectors(BaseRotation, vecK0, MaxNumOfBloch);
                 var potentialMatrix = getEigenMatrix(beams);
                 var len = beams.Length;
                 //入射面での波動関数を定義
@@ -594,7 +589,6 @@ public class BetheMethod
                 {
                     for (int g = 1; g < diskAmplitude[r1].beams.Length; g++)
                     {
-                        //var vec = BeamDirections[r1] * (new Vector3DBase(0, 0, kvac) - diskAmplitude[r1].beams[g].Vec);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
                         var vec = kvac * BeamDirections[r1] - diskAmplitude[r1].beams[g].Vec;//Ewald球中心(試料)から見た、逆格子ベクトルの方向
                         double posX = vec.X / vec.Z, posY = vec.Y / vec.Z; //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
                         if (posX < xMax && posX > xMin && posY < yMax && posY > yMin)
@@ -753,6 +747,7 @@ public class BetheMethod
         var useEigen = EigenEnabled && maxNumOfBloch < 400;
 
         var stepP = Enumerable.Range(0, step).ToList().AsParallel().WithDegreeOfParallelism(useEigen ? Environment.ProcessorCount : Math.Max(1, Environment.ProcessorCount / 4));
+
         if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValuesPED == null || EigenValuesPED.Length != step
             || EigenVectorsPED == null || EigenVectorsPED.Length != step || semiangle != SemianglePED || !baseRotation.Equals(BaseRotation))
         {
@@ -1772,7 +1767,6 @@ public class BetheMethod
             maxNumOfBloch = MaxNumOfBloch;
         var mat = baseRotation * Crystal.MatrixInverse.Transpose();
         FrozenSet<(int h, int k, int l)> direction;
-
         #region directionを初期化
         if (Crystal.Symmetry.LatticeTypeStr == "F") direction = directionF;
         else if (Crystal.Symmetry.LatticeTypeStr == "A") direction = directionA;
@@ -1821,7 +1815,6 @@ public class BetheMethod
                         var vLen2 = v.Length2;
 
                         var (q, p) = (k0_2 - vLen2, 2 * Surface * v);
-                        //if (Math.Abs(g.Z) < 0.1)//検証コード
                         if (Math.Abs(q) < maxQ)
                             beams.Add(new Beam(index, g, getU(AccVoltage, new Beam(index, g)), (q, p)));
                         outer.Add((index, g.Length));
