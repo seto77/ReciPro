@@ -223,9 +223,11 @@ public partial class FormTrajectory : Form
         else
             poleFigureControl.Circles = [];
 
-       
+
 
         poleFigureControl.Vectors = BSEs.Select(e => new V4(rot.Mult(e[^1].p - e[^2].p), e[^1].e)).ToArray();
+        //最大深さ分布を求めるためのテストコード
+        // poleFigureControl.Vectors = BSEs.Select(e1 => new V4(rot.Mult(e1[^1].p - e1[^2].p), e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z))).ToArray();
     }
     #endregion
 

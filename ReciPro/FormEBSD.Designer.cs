@@ -166,6 +166,7 @@
             waveLengthControl.WaveSource = WaveSource.Electron;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
             waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
+            waveLengthControl.WavelengthChanged += waveLengthControl_WavelengthChanged;
             // 
             // flowLayoutPanel1
             // 
@@ -1344,6 +1345,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1513, 809);
+            Controls.Add(panelGeometry);
             Controls.Add(graphControlDepthProfile);
             Controls.Add(graphControlEnergyProfile);
             Controls.Add(groupBoxOutput);
@@ -1374,7 +1376,6 @@
             Controls.Add(numericBoxDetTilt);
             Controls.Add(numericBoxSampleTilt);
             Controls.Add(waveLengthControl);
-            Controls.Add(panelGeometry);
             Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             Name = "FormEBSD";
             Text = "FormEBSD";

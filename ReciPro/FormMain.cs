@@ -549,9 +549,11 @@ public partial class FormMain : Form
 
     private void resetAxes()
     {
-        glControlAxes.MakeCurrent();
+       
         if (glControlAxes == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0)
             return;
+
+        glControlAxes.MakeCurrent();
 
         var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
         var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };

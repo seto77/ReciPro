@@ -220,7 +220,7 @@ public partial class FormEBSD : Form
             var p = detRot.Mult(detR * new V3(Math.Sin(θ), Math.Cos(θ), 0));
             return Stereonet.ConvertVectorToSchmidt(samRot2.Mult(p + new V3(0, detY, detZ)));
         });
-        poleFigureControl.Lines = [(Enumerable.Range(0, step + 1).Select(e => f(e)).ToArray(), 2, Color.Red)];
+        poleFigureControl.Lines = [(Enumerable.Range(0, step + 1).Select(e => f(e)).ToArray(), 2, Color.Yellow)];
         poleFigureControl.Draw();
         //ステレオネット上に検出器の輪郭を描画 ここまで
 
@@ -262,7 +262,7 @@ public partial class FormEBSD : Form
 
     private void FormEBSD_VisibleChanged(object sender, EventArgs e)
     {
-        SetVector(true);
+        SetVector();
         DrawGeometry();
     }
 
@@ -584,7 +584,7 @@ public partial class FormEBSD : Form
 
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>
-            Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p)))  ).ToArray();
+            Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p)))).ToArray();
             var count = bse2.Count();
             double energy = waveLengthControl.Energy;
 
@@ -813,7 +813,7 @@ public partial class FormEBSD : Form
         Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
 
         AdjustImage();
-      
+
     }
 
     private void AdjustImage()
@@ -860,7 +860,8 @@ public partial class FormEBSD : Form
     }
     private void trackBarOutputEnergy_ValueChanged(object sender, EventArgs e)
     {
-        if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length|| trackBarOutputEnergy.Value < 0)
+        if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length || trackBarOutputEnergy.Value < 0)
+            return;
 
         textBoxEnergy.Text = EnergyArray[trackBarOutputEnergy.Value].ToString();
         generateImage();
@@ -877,16 +878,16 @@ public partial class FormEBSD : Form
 
     private void button1_Click(object sender, EventArgs e)
     {
-        
+
         var range = poleFigureControl.Lines[0].Point;
         M3 rot = M3.CreateRotationX(SmpTilt);
         double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
         //まず検出器に入る電子を抽出し、これをbse2とする
-        var bse2 = BSEs.AsParallel().Where(e => Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p))) ).ToArray();
+        var bse2 = BSEs.AsParallel().Where(e => Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p)))).ToArray();
 
         double[] values = new double[Pbmp.SrcValuesGrayOriginal.Length];
 
-        for (int i = 0; i < EnergyArray.Length-1; i++)
+        for (int i = 0; i < EnergyArray.Length - 1; i++)
         {
             //bse2の中から特定のエネルギーを抽出し、これをbse3とする 
             var bse3 = bse2.Where(e => EnergyArray[i] > e[^1].e && EnergyArray[i + 1] < e[^1].e).ToArray();
@@ -894,7 +895,7 @@ public partial class FormEBSD : Form
 
             //bse3に対する最大深さ分布　ここから
             {
-                var depths = bse3.Select(e1 =>  e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
+                var depths = bse3.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
                 double lower = ThicknessArray[0] - numericBoxThicknessStep.Value / 2, upper = ThicknessArray[^1] + numericBoxThicknessStep.Value / 2;
                 double step = numericBoxThicknessStep.Value;//mm単位
                 int nBuckets = (int)((upper - lower) / step + 1);
@@ -903,7 +904,7 @@ public partial class FormEBSD : Form
                 {
                     for (int k = 0; k < values.Length; k++)
                     {
-                        values[k] += histogram[i].Count * Crystal.Bethe.Disks[i][j].Amplitudes[k].MagnitudeSquared(); 
+                        values[k] += histogram[j].Count * Crystal.Bethe.Disks[i][j].Amplitudes[k].MagnitudeSquared();
                     }
                 }
             }
@@ -916,4 +917,6 @@ public partial class FormEBSD : Form
 
 
     }
+
+    private void waveLengthControl_WavelengthChanged(object sender, EventArgs e) => SetVector();
 }
