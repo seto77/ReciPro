@@ -38,6 +38,8 @@ public partial class FormDiffractionSimulator : Form
     private GLControlAlpha glControlZsort;
     private GLControlAlpha glControlOIT;
 
+    private Timer timer = new();
+
     #region 計算モード
     public enum CalcModes { Excitation, Kinematical, Dynamical }
     /// <summary>
@@ -359,7 +361,9 @@ public partial class FormDiffractionSimulator : Form
             FormDiffractionSimulator = this,
             Owner = this
         };
-
+        timer.Interval = 1000;
+        timer.Tick += ((sender, e) => graphicsBox.Refresh());
+        timer.Start();
     }
 
     //ロードされたとき

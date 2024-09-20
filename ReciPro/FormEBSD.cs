@@ -18,6 +18,7 @@ using MathNet.Numerics;
 using System.ComponentModel;
 using System;
 using static IronPython.Modules.PythonIterTools;
+using System.Text;
 #endregion
 
 namespace ReciPro;
@@ -28,6 +29,8 @@ public partial class FormEBSD : Form
     public FormMain FormMain;
     public GLControlAlpha glControlGeo;
     private Stopwatch sw1 = new(), sw2 = new();
+
+    private Timer timer = new();
 
     private double EnergyThreshold = 2;
     public double WaveLength { get => waveLengthControl.WaveLength; set => waveLengthControl.WaveLength = value; }
@@ -121,16 +124,24 @@ public partial class FormEBSD : Form
             AllowMouseTranslating = false,
             Name = "glControlAxes",
             ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-            ProjWidth = 200.0,
+            ProjWidth = 120.0,
             RotationMode = GLControlAlpha.RotationModes.Object,
             Dock = DockStyle.Fill,
             LightPosition = new V3(100, 100, 100),
             BorderStyle = BorderStyle.Fixed3D,
 
-            WorldMatrix = Matrix4d.CreateRotationY(-Math.PI / 2) * Matrix4d.CreateRotationZ(-Math.PI / 2),
+            WorldMatrix = M4.CreateRotationZ(-Math.PI / 2 * 0.2) * M4.CreateRotationY(-Math.PI / 2 * 0.8) * M4.CreateRotationZ(-Math.PI / 2);,
         };
         panelGeometry.Controls.Add(glControlGeo);
 
+        timer.Interval= 1000;
+        timer.Tick += Timer_Tick;
+        timer.Start();
+    }
+
+    private void Timer_Tick(object sender, EventArgs e)
+    {
+        graphicsBox.Refresh();
     }
 
     private void FormEBSD_Load(object sender, EventArgs e)
@@ -230,11 +241,15 @@ public partial class FormEBSD : Form
     #endregion
 
     #region 3Dレンダリングの視点変更
-    private void buttonViewFromZ_Click(object sender, EventArgs e) => glControlGeo.WorldMatrix = Matrix4d.Identity;
+    private void buttonViewFromZ_Click(object sender, EventArgs e) => glControlGeo.WorldMatrix = M4.Identity;
 
-    private void buttonViewFromX_Click(object sender, EventArgs e) => glControlGeo.WorldMatrix = Matrix4d.CreateRotationY(-Math.PI / 2) * Matrix4d.CreateRotationZ(-Math.PI / 2);
+    private void buttonViewFromX_Click(object sender, EventArgs e) => glControlGeo.WorldMatrix = M4.CreateRotationY(-Math.PI / 2) * M4.CreateRotationZ(-Math.PI / 2);
 
-    private void buttonFromSurfaceNormal_Click(object sender, EventArgs e) => glControlGeo.WorldMatrix = Matrix4d.CreateRotationX(-numericBoxSampleTilt.RadianValue);
+    private void buttonFromSurfaceNormal_Click(object sender, EventArgs e) => glControlGeo.WorldMatrix = M4.CreateRotationX(-numericBoxSampleTilt.RadianValue);
+
+    private void buttonViewQuarter_Click(object sender, EventArgs e)
+        => glControlGeo.WorldMatrix = M4.CreateRotationZ(-Math.PI / 2*0.2)*
+        M4.CreateRotationY(-Math.PI / 2*0.8) * M4.CreateRotationZ(-Math.PI / 2);
 
     #endregion
 
@@ -919,4 +934,30 @@ public partial class FormEBSD : Form
     }
 
     private void waveLengthControl_WavelengthChanged(object sender, EventArgs e) => SetVector();
+
+    private void buttonCopyEnergyProfile_Click(object sender, EventArgs e)
+    {
+        if (graphControlEnergyProfile.Profile == null) return;
+
+        var pt = graphControlEnergyProfile.Profile.Pt;
+        var sb = new StringBuilder();
+        for (int i = 0; i < pt.Count; i++)
+            sb.AppendLine(pt[i].X + "\t" + pt[i].Y);
+
+        Clipboard.SetDataObject(sb.ToString());
+    }
+
+    private void buttonDepthProfile_Click(object sender, EventArgs e)
+    {
+        if (graphControlDepthProfile.Profile == null) return;
+
+        var pt = graphControlDepthProfile.Profile.Pt;
+        var sb = new StringBuilder();
+        for (int i = 0; i < pt.Count; i++)
+            sb.AppendLine(pt[i].X + "\t" + pt[i].Y);
+
+        Clipboard.SetDataObject(sb.ToString());
+    }
+
+  
 }

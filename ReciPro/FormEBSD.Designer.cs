@@ -36,7 +36,7 @@
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             buttonFromX = new System.Windows.Forms.Button();
             buttonViewFromZ = new System.Windows.Forms.Button();
-            buttonViweFromSurfaceNormal = new System.Windows.Forms.Button();
+            buttonViewFromSurfaceNormal = new System.Windows.Forms.Button();
             button2 = new System.Windows.Forms.Button();
             groupBox5 = new System.Windows.Forms.GroupBox();
             radioButtonStandardDeviation = new System.Windows.Forms.RadioButton();
@@ -101,6 +101,9 @@
             numericBoxEnergyStart = new NumericBox();
             numericBoxEnergyStep = new NumericBox();
             button1 = new System.Windows.Forms.Button();
+            buttonCopyEnergyProfile = new System.Windows.Forms.Button();
+            buttonDepthProfile = new System.Windows.Forms.Button();
+            buttonViewQuarter = new System.Windows.Forms.Button();
             flowLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -171,14 +174,15 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel1.Controls.Add(buttonViewQuarter);
+            flowLayoutPanel1.Controls.Add(buttonViewFromSurfaceNormal);
             flowLayoutPanel1.Controls.Add(buttonFromX);
             flowLayoutPanel1.Controls.Add(buttonViewFromZ);
-            flowLayoutPanel1.Controls.Add(buttonViweFromSurfaceNormal);
             flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             flowLayoutPanel1.Location = new System.Drawing.Point(6, 430);
             flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(300, 52);
+            flowLayoutPanel1.Size = new System.Drawing.Size(300, 54);
             flowLayoutPanel1.TabIndex = 112;
             // 
             // buttonFromX
@@ -187,7 +191,7 @@
             buttonFromX.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonFromX.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             buttonFromX.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonFromX.Location = new System.Drawing.Point(0, 0);
+            buttonFromX.Location = new System.Drawing.Point(0, 25);
             buttonFromX.Margin = new System.Windows.Forms.Padding(0);
             buttonFromX.Name = "buttonFromX";
             buttonFromX.Size = new System.Drawing.Size(130, 25);
@@ -202,7 +206,7 @@
             buttonViewFromZ.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonViewFromZ.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             buttonViewFromZ.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonViewFromZ.Location = new System.Drawing.Point(130, 0);
+            buttonViewFromZ.Location = new System.Drawing.Point(130, 25);
             buttonViewFromZ.Margin = new System.Windows.Forms.Padding(0);
             buttonViewFromZ.Name = "buttonViewFromZ";
             buttonViewFromZ.Size = new System.Drawing.Size(154, 25);
@@ -211,20 +215,20 @@
             buttonViewFromZ.UseVisualStyleBackColor = true;
             buttonViewFromZ.Click += buttonViewFromZ_Click;
             // 
-            // buttonViweFromSurfaceNormal
+            // buttonViewFromSurfaceNormal
             // 
-            buttonViweFromSurfaceNormal.AutoSize = true;
-            buttonViweFromSurfaceNormal.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonViweFromSurfaceNormal.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            buttonViweFromSurfaceNormal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonViweFromSurfaceNormal.Location = new System.Drawing.Point(0, 25);
-            buttonViweFromSurfaceNormal.Margin = new System.Windows.Forms.Padding(0);
-            buttonViweFromSurfaceNormal.Name = "buttonViweFromSurfaceNormal";
-            buttonViweFromSurfaceNormal.Size = new System.Drawing.Size(147, 25);
-            buttonViweFromSurfaceNormal.TabIndex = 98;
-            buttonViweFromSurfaceNormal.Text = "From the surface normal";
-            buttonViweFromSurfaceNormal.UseVisualStyleBackColor = true;
-            buttonViweFromSurfaceNormal.Click += buttonFromSurfaceNormal_Click;
+            buttonViewFromSurfaceNormal.AutoSize = true;
+            buttonViewFromSurfaceNormal.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonViewFromSurfaceNormal.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            buttonViewFromSurfaceNormal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            buttonViewFromSurfaceNormal.Location = new System.Drawing.Point(84, 0);
+            buttonViewFromSurfaceNormal.Margin = new System.Windows.Forms.Padding(0);
+            buttonViewFromSurfaceNormal.Name = "buttonViewFromSurfaceNormal";
+            buttonViewFromSurfaceNormal.Size = new System.Drawing.Size(147, 25);
+            buttonViewFromSurfaceNormal.TabIndex = 98;
+            buttonViewFromSurfaceNormal.Text = "From the surface normal";
+            buttonViewFromSurfaceNormal.UseVisualStyleBackColor = true;
+            buttonViewFromSurfaceNormal.Click += buttonFromSurfaceNormal_Click;
             // 
             // button2
             // 
@@ -1340,6 +1344,43 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // buttonCopyEnergyProfile
+            // 
+            buttonCopyEnergyProfile.AutoSize = true;
+            buttonCopyEnergyProfile.Location = new System.Drawing.Point(136, 539);
+            buttonCopyEnergyProfile.Name = "buttonCopyEnergyProfile";
+            buttonCopyEnergyProfile.Size = new System.Drawing.Size(81, 25);
+            buttonCopyEnergyProfile.TabIndex = 113;
+            buttonCopyEnergyProfile.Text = "Copy image";
+            buttonCopyEnergyProfile.UseVisualStyleBackColor = true;
+            buttonCopyEnergyProfile.Click += buttonCopyEnergyProfile_Click;
+            // 
+            // buttonDepthProfile
+            // 
+            buttonDepthProfile.AutoSize = true;
+            buttonDepthProfile.Location = new System.Drawing.Point(559, 539);
+            buttonDepthProfile.Name = "buttonDepthProfile";
+            buttonDepthProfile.Size = new System.Drawing.Size(81, 25);
+            buttonDepthProfile.TabIndex = 113;
+            buttonDepthProfile.Text = "Copy image";
+            buttonDepthProfile.UseVisualStyleBackColor = true;
+            buttonDepthProfile.Click += buttonDepthProfile_Click;
+            // 
+            // buttonViewQuarter
+            // 
+            buttonViewQuarter.AutoSize = true;
+            buttonViewQuarter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonViewQuarter.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            buttonViewQuarter.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            buttonViewQuarter.Location = new System.Drawing.Point(0, 0);
+            buttonViewQuarter.Margin = new System.Windows.Forms.Padding(0);
+            buttonViewQuarter.Name = "buttonViewQuarter";
+            buttonViewQuarter.Size = new System.Drawing.Size(84, 25);
+            buttonViewQuarter.TabIndex = 98;
+            buttonViewQuarter.Text = "Quarter view";
+            buttonViewQuarter.UseVisualStyleBackColor = true;
+            buttonViewQuarter.Click += buttonViewQuarter_Click;
+            // 
             // FormEBSD
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1367,6 +1408,8 @@
             Controls.Add(label2);
             Controls.Add(statusStrip1);
             Controls.Add(groupBox5);
+            Controls.Add(buttonDepthProfile);
+            Controls.Add(buttonCopyEnergyProfile);
             Controls.Add(buttonSaveImage);
             Controls.Add(button2);
             Controls.Add(flowLayoutPanel1);
@@ -1411,7 +1454,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonViewFromZ;
         private System.Windows.Forms.Button buttonFromX;
-        private System.Windows.Forms.Button buttonViweFromSurfaceNormal;
+        private System.Windows.Forms.Button buttonViewFromSurfaceNormal;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.RadioButton radioButtonStandardDeviation;
@@ -1476,5 +1519,8 @@
         private NumericBox numericBoxEnergyStart;
         private NumericBox numericBoxEnergyStep;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCopyEnergyProfile;
+        private System.Windows.Forms.Button buttonDepthProfile;
+        private System.Windows.Forms.Button buttonViewQuarter;
     }
 }
