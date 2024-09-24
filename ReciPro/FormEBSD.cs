@@ -130,7 +130,7 @@ public partial class FormEBSD : Form
             LightPosition = new V3(100, 100, 100),
             BorderStyle = BorderStyle.Fixed3D,
 
-            WorldMatrix = M4.CreateRotationZ(-Math.PI / 2 * 0.2) * M4.CreateRotationY(-Math.PI / 2 * 0.8) * M4.CreateRotationZ(-Math.PI / 2);,
+            WorldMatrix = M4.CreateRotationZ(-Math.PI / 2 * 0.2) * M4.CreateRotationY(-Math.PI / 2 * 0.8) * M4.CreateRotationZ(-Math.PI / 2),
         };
         panelGeometry.Controls.Add(glControlGeo);
 
