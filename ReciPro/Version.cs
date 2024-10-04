@@ -7,6 +7,7 @@ internal static class Version
 
     public const string History =
         "History" +
+        "\r\n ver4.892(2024/10/04)  Added several 'Macro' functions." +
         "\r\n ver4.891(2024/09/06)  Added the function to simulate electron trajectories based on the Monte Carlo method." +
         "\r\n ver4.890(2024/08/10)  Improved 'Macro' functions." +
         "\r\n ver4.889(2024/08/09)  Fixed bugs on the 'Diffraction Simulator'." +

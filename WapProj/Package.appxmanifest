@@ -9,7 +9,7 @@
   <Identity
     Name="73ce42a4-fd7e-4bad-8d9f-910ef50dc3c7"
     Publisher="CN=seto"
-    Version="1.0.14.0" />
+    Version="1.0.18.0" />
 
   <Properties>
     <DisplayName>WapProj</DisplayName>
@@ -32,7 +32,7 @@
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
         DisplayName="ReciPro"
-        Description="WapProj"
+        Description="ReciPro"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">

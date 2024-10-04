@@ -779,7 +779,23 @@ public partial class FormMain : Form
 
     #endregion 回転ボタン
 
-    #region ベクトルでの回転指定
+    #region hklやuvwベクトルでの回転指定
+
+    public void SetPlane (int h, int k, int l)
+    {
+        numericBoxPlaneH.Value = h;
+        numericBoxPlaneK.Value = k;
+        numericBoxPlaneL.Value = l;
+    }
+    public void SetAxis (int u, int v, int w)
+    {
+        numericBoxAxisU.Value = u;
+        numericBoxAxisV.Value = v;
+        numericBoxAxisW.Value = w;
+    }
+    public void ProjectAlongAxis()    => buttonSetVector_Click(buttonSetAxis, new EventArgs());
+    public void ProjectAlongPlane()    => buttonSetVector_Click(buttonSetPlane, new EventArgs());
+
     private void buttonSetVector_Click(object sender, EventArgs e)
     {
         if (Crystal == null) return;

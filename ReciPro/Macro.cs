@@ -37,11 +37,13 @@ public class Macro : MacroBase
         public DirectionClass(Macro _p) : base(_p.main)
         {
             this.p = _p;
-            p.help.Add("ReciPro.Dir.Euler(double phi, double theta, double psi) # Sets the rotation state by Euler angles.");
-            p.help.Add("ReciPro.Dir.EulerInDegree(double phi, double theta, double psi) # Sets the rotation state by Euler angles (in degree).");
+            p.help.Add("ReciPro.Dir.Euler(double phi, double theta, double psi) # Set the rotation state by Euler angles.");
+            p.help.Add("ReciPro.Dir.EulerInDegree(double phi, double theta, double psi) # Set the rotation state by Euler angles (in degree).");
             p.help.Add("ReciPro.Dir.Rotate(double vX, double vY, double vZ, double angle) # Rotate the current crystal by specifying the rotation axis and angle.");
             p.help.Add("ReciPro.Dir.RotateAroundAxis(int u, int v, int w, double angle) # Rotate the current crystal with the crystal axis (uvw) as the rotation axis");
             p.help.Add("ReciPro.Dir.RotateAroundPlane(int h, int k, int l, double angle) # Rotate the current crystal with the crystal plane (hkl) as the rotation axis");
+            p.help.Add("ReciPro.Dir.ProjectAlongAxis(int u, int v, int w) # Rotate the current crystal so that the specified axis (uvw) is normal to the screen.");
+            p.help.Add("ReciPro.Dir.ProjectAlongPlane(int h, int k, int l) # Rotate the current crystal so that the specified plane (hkl) is normal to the screen.");
         }
 
         public void Euler(double phi, double theta, double psi)
@@ -72,9 +74,18 @@ public class Macro : MacroBase
             p.main.Rotate(axis, angle);
         }
 
-        public void SetZoneAxis(int h, int k, int l)
+        public void ProjectAlongPlane(int h, int k, int l)
         {
+            p.main.SetPlane(h, k, l);
+            p.main.ProjectAlongPlane();
+            Application.DoEvents();
+        }
 
+        public void ProjectAlongAxis(int u, int v, int w)
+        {
+            p.main.SetAxis(u, v, w);
+            p.main.ProjectAlongAxis();
+            Application.DoEvents();
         }
 
 
