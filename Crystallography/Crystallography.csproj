@@ -4,9 +4,10 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2024.9.20.0917</AssemblyVersion>
-    <FileVersion>2024.9.20.0917</FileVersion>
+    <AssemblyVersion>2024.10.4.0730</AssemblyVersion>
+    <FileVersion>2024.10.4.0730</FileVersion>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -14,7 +15,16 @@
     <Optimize>False</Optimize>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 

@@ -25,8 +25,8 @@ namespace ReciPro;
 public partial class FormMain : Form
 {
     #region LibraryImport
-    [LibraryImport("user32")]
-    private static partial short GetAsyncKeyState(int nVirtKey);
+    [DllImport("user32")]
+    private static extern short GetAsyncKeyState(int nVirtKey);
     #endregion
 
     #region WebClientÇÃîhê∂ÉNÉâÉX

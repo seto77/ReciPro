@@ -1229,7 +1229,7 @@ return residual;
 
     private delegate void dpc_ProgressChangedCallBack(object sender, ProgressChangedEventArgs e);
 
-    public unsafe void dpc_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    public void dpc_ProgressChanged(object sender, ProgressChangedEventArgs e)
     {
         if (this.InvokeRequired)
         {

@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2024.9.20.1014</AssemblyVersion>
-    <FileVersion>2024.9.20.1014</FileVersion>
+    <AssemblyVersion>2024.10.4.0730</AssemblyVersion>
+    <FileVersion>2024.10.4.0730</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -19,14 +19,23 @@
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <TieredCompilationQuickJit>false</TieredCompilationQuickJit>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>

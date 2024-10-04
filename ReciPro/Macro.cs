@@ -1,5 +1,6 @@
 ﻿#region using 
 using MathNet.Numerics;
+using MemoryPack.Formatters;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -70,6 +71,12 @@ public class Macro : MacroBase
             var axis = p.main.Crystal.RotationMatrix * (h * rot.Row1 + k * rot.Row2 + l * rot.Row3);
             p.main.Rotate(axis, angle);
         }
+
+        public void SetZoneAxis(int h, int k, int l)
+        {
+
+        }
+
 
     }
     #endregion
