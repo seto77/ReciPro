@@ -171,9 +171,11 @@ public partial class FormDiffractionSimulatorCBED : Form
     #region BackgroundWorkerからのProgressChanged, Completed
 
     private bool skipProgressChangedEvent = false;
+
     private void Bethe_CbedProgressChanged(object sender, ProgressChangedEventArgs e)
     {
         if (skipProgressChangedEvent) return;
+
         skipProgressChangedEvent = true;
 
         var current = e.ProgressPercentage;
@@ -189,18 +191,17 @@ public partial class FormDiffractionSimulatorCBED : Form
             var totalsec = sec + sw1.ElapsedMilliseconds / 1000.0;
             toolStripProgressBar.Value = current / 10;
             toolStripStatusLabel2.Text = "Compiling disks:";
-            toolStripStatusLabel1.Text = "Ellapsed time : " + totalsec.ToString("f2") + " s.,  ";
+            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f2} s.,  ";
             toolStripStatusLabel1.Text += $"{current / 10.0:f1} % completed,  wait for more {sec * (1000 - current) / current:f2} s.";
         }
         else
         {
-
             var sec = sw1.ElapsedMilliseconds / 1000.0;
             var progress = (int)(100.0 * current / DivisionNumber);
             if (progress <= 100)
                 toolStripProgressBar.Value = (int)(100.0 * current / DivisionNumber);
             toolStripStatusLabel2.Text = message;
-            toolStripStatusLabel1.Text = "Ellapsed time : " + sec.ToString("f2") + " s.,  time/pixel: ";
+            toolStripStatusLabel1.Text = $"Ellapsed time : {sec:f2} s.,  time/pixel: ";
             toolStripStatusLabel1.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
             toolStripStatusLabel1.Text += $"{100.0 * current / DivisionNumber:f1} % completed,  wait for {sec * (DivisionNumber - current) / current:f2} s.";
         }
@@ -233,10 +234,10 @@ public partial class FormDiffractionSimulatorCBED : Form
         }
         else
         {
-            toolStripStatusLabel1.Text = "Time ellapsed: " + (sec1 + sec2).ToString("f2") + " sec.,  Manually interupted.";
+            toolStripStatusLabel1.Text = $"Time ellapsed: {sec1 + sec2:f2} sec.,  Manually interupted.";
             groupBoxOutput.Enabled = false;
         }
-
+        toolStripProgressBar.Value = toolStripProgressBar.Maximum;
         FormDiffractionSimulator.Draw();
         Application.DoEvents();
     }

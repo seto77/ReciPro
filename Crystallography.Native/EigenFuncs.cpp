@@ -26,7 +26,6 @@
 #include <../Eigen/Eigenvalues>
 #include <../unsupported/Eigen/MatrixFunctions>
 
-
 #include "EigenFuncs.h"
 
 using namespace Eigen;

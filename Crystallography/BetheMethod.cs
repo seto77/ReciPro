@@ -232,6 +232,13 @@ public class BetheMethod
 
         //進捗状況報告用の各種定数を初期化
         int count = 0;
+        int progressStep = Beams.Length switch
+        {
+            < 100 => 400,
+            < 200 => 200,
+            < 300 => 50,
+            _ => 5
+        };
 
         #region solver, thread の設定
         if (solver == Solver.Auto || (!EigenEnabled && (solver == Solver.Eigen_Eigen || solver == Solver.MtxExp_Eigen)))
@@ -246,6 +253,8 @@ public class BetheMethod
 
         int bLen = Beams.Length, tLen = Thicknesses.Length;
         var beamDirectionsP = beamDirectionsValid.AsParallel().WithDegreeOfParallelism(thread);
+
+      
 
         //ここからdiskValid[t*tLen +g]を計算.
         var diskAmplitudeValid = beamDirectionsP.Select(beamDirection =>
@@ -311,8 +320,10 @@ public class BetheMethod
                 for (int t = 0; t < tLen; t++)
                     for (int b = 0; b < bLen; b++)
                         result[t * bLen + b] *= Exp(PiI * (beams[b].P - 2 * kvac * Surface.Z) * Thicknesses[t]);
-                Interlocked.Increment(ref count);
-                if (count % 10 == 0) bwCBED.ReportProgress(count, reportString);//進捗状況を報告
+                
+                if (Interlocked.Increment(ref count) % progressStep == 0) 
+                    bwCBED.ReportProgress(count, reportString);//進捗状況を報告
+                
                 return result;
             }
             finally { Shared.Return(eigenMatrix); ArrayPool<Beam>.Shared.Return(beams); }

@@ -276,7 +276,7 @@
       <FloatingPointModel>Precise</FloatingPointModel>
       <UndefineAllPreprocessorDefinitions>
       </UndefineAllPreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Crystallography.Native;D:\Users\seto\source\repos\ReciPro\Crystallography.Native\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Crystallography.Native;C:\Users\seto\source\repos\ReciPro\Crystallography.Native\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableFiberSafeOptimizations>
       </EnableFiberSafeOptimizations>
       <OmitFramePointers>
@@ -293,6 +293,7 @@
       <FSYCLEarlyOptimizations>Yes</FSYCLEarlyOptimizations>
       <FSYCLDeadArgsOptimization>Yes</FSYCLDeadArgsOptimization>
       <IntelJCCErratum>true</IntelJCCErratum>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
