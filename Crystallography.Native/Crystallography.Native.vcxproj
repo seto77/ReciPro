@@ -30,13 +30,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>Intel C++ Compiler 2024</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>Intel C++ Compiler 2024</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <PreferredToolArchitecture>x86</PreferredToolArchitecture>
@@ -44,7 +44,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>ClangCL</PlatformToolset>
+    <PlatformToolset>Intel C++ Compiler 2024</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PreferredToolArchitecture>
@@ -78,7 +78,8 @@
     <UseInteloneMKL>No</UseInteloneMKL>
     <EnableMKLOpenMPOffloadToGPU>false</EnableMKLOpenMPOffloadToGPU>
     <BasePlatformToolset>v143</BasePlatformToolset>
-    <LLVMToolsVersion>17</LLVMToolsVersion>
+    <LLVMToolsVersion>18</LLVMToolsVersion>
+    <UseInteloneTBB>false</UseInteloneTBB>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -115,7 +116,7 @@
     </LinkIncremental>
     <TargetExt>.dll</TargetExt>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net8.0-windows10.0.22621.0\</OutDir>
+    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net8.0-windows$(TargetPlatformVersion)\</OutDir>
     <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
@@ -256,7 +257,6 @@
       </OpenMPSupport>
       <OpenMP>
       </OpenMP>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>
       </EnableModules>
       <BufferSecurityCheck>
@@ -285,15 +285,16 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MinimalRebuild>
       </MinimalRebuild>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <AdditionalOptions>
       </AdditionalOptions>
       <CCppSupport>Cpp20Support</CCppSupport>
       <SYCLOptimization />
-      <FSYCLEarlyOptimizations>Yes</FSYCLEarlyOptimizations>
-      <FSYCLDeadArgsOptimization>Yes</FSYCLDeadArgsOptimization>
+      <FSYCLEarlyOptimizations>Default</FSYCLEarlyOptimizations>
+      <FSYCLDeadArgsOptimization>Default</FSYCLDeadArgsOptimization>
       <IntelJCCErratum>true</IntelJCCErratum>
       <BuildStlModules>true</BuildStlModules>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

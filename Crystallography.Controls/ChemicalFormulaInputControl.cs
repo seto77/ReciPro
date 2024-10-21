@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls;
@@ -7,6 +8,7 @@ public partial class ChemicalFormulaInputControl : UserControl
 {
     private bool standardMode = true;
 
+    [DefaultValue(true)]
     public bool StandardMode
     {
         set
@@ -18,6 +20,7 @@ public partial class ChemicalFormulaInputControl : UserControl
     }
 
     private bool weightMode = true;
+    [DefaultValue(true)]
 
     public bool WeightMode
     {

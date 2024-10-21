@@ -47,6 +47,9 @@ public class BetheMethod
 
     #region フィールド、プロパティ
 
+    /// <summary>
+    /// 加速電圧 単位はkV
+    /// </summary>
     private double AccVoltage { get; set; }
     private Crystal Crystal { get; }
     /// <summary>

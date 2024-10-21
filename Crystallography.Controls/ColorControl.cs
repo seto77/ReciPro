@@ -10,6 +10,8 @@ public partial class ColorControl : UserControl
 {
     public event EventHandler ColorChanged;
 
+
+    [DefaultValue(typeof(FlowDirection),"LeftToRight")]
     [Category("Appearance property")]
     public FlowDirection FlowDirection
     {
@@ -22,16 +24,20 @@ public partial class ColorControl : UserControl
         }
     }
 
+    [DefaultValue(typeof(Size),"24,24")]
     [Category("Appearance property")]
     public Size BoxSize { get => pictureBox.Size; set => pictureBox.Size = value; }
 
+    [DefaultValue("")]
     [Localizable(true)]
     public string ToolTip { set => toolTip.SetToolTip(pictureBox, value); get => toolTip.GetToolTip(pictureBox); }
 
+    [DefaultValue("")]
     [Category("Header/footer text")]
     [Localizable(true)]
     public string HeaderText { set { labelHeader.Text = value; labelHeader.Visible = value != ""; } get => labelHeader.Text; }
 
+    [DefaultValue("")]
     [Category("Header/footer text")]
     [Localizable(true)]
     public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }
@@ -44,6 +50,7 @@ public partial class ColorControl : UserControl
     [Localizable(true)]
     public string FooterText { set { labelFooter.Text = value; labelFooter.Visible = value != ""; } get => labelFooter.Text; }
 
+
     [Localizable(true)]
     [Category("Header/footer text")]
     public Font FooterFont { set => labelFooter.Font = value; get => labelFooter.Font; }
@@ -52,6 +59,8 @@ public partial class ColorControl : UserControl
     [Category("Header/footer text")]
     public Padding FooterMargin { set => labelFooter.Margin = value; get => labelFooter.Margin; }
 
+
+    [DefaultValue(false)]
     [Category("Color")]
     public bool Inversion { set; get; } = false;
 

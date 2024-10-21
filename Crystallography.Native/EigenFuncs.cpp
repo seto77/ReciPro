@@ -10,7 +10,7 @@
 //
 
 #define EIGEN_NO_DEBUG // コード内のassertを無効化．
-
+#define EIGEN_DONT_PARALLELIZE // 並列を無効化．
 #define EIGENFUNCS_EXPORTS
 
 //#include <complex>
