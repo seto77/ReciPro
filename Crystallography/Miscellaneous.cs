@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -108,6 +109,53 @@ public static class Miscellaneous
 
     public static (int Division, int Modulus) DivMod(int n, int m) => (n / m, n % m);
 
+    /// <summary>
+    /// ファイルが使用中かどうかをチェック
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public static bool isFileExistsAndLocked(string path)
+    {
+        if (File.Exists(path))
+        {
+            FileStream stream = null;
+
+            try
+            {
+                stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                return false;
+            }
+            catch (FileNotFoundException e)
+            {
+                return false;
+            }
+            catch (IOException e)
+            {
+                if (File.Exists(path))
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+            }
+
+            return false;
+        }
+
+        return false;
+    }
 }
 
 
