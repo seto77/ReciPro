@@ -943,20 +943,23 @@ public partial class FormDiffractionSimulator : Form
                                 if (bethe || Math.Abs(dev) < 3 * ExcitationError)
                                 {
                                     g.Flag2 = true;
+                                    var rInt = g.RelativeIntensity;
 
-                                    if (checkBoxDrawSameSize.Checked && Math.Abs(dev) < 3 * ExcitationError)//全て同一サイズで描画する場合はここで dev2=0
+                                    if (checkBoxDrawSameSize.Checked && Math.Abs(dev) < 3 * ExcitationError)//全て同一サイズで描画する場合はここで dev2=0, rInt=1;
+                                    {
+                                        rInt = 1;
                                         dev2 = 0;
-
+                                    }
                                     //もしg.RelativeIntensity=1で、かつcoeff=1の時、sigmaの半分のところで強度が255になるように関数の形を調整
                                     double sigma = spotRadiusOnDetector, sigma2 = sigma * sigma, intensity;
                                     if (!logScale)
                                         intensity = bethe ?
-                                            g.RelativeIntensity * linearCoeff :
-                                            g.RelativeIntensity / (sigma * sqrtTwoPI) * Math.Exp(-dev2 / error2 / 2) * linearCoeff;
+                                            rInt * linearCoeff :
+                                            rInt / (sigma * sqrtTwoPI) * Math.Exp(-dev2 / error2 / 2) * linearCoeff;
                                     else
                                         intensity = bethe ?
-                                            (Math.Log10(g.RelativeIntensity) + logCoeff) :
-                                            (Math.Log10(g.RelativeIntensity) + logCoeff) / (sigma * sqrtTwoPI) * Math.Exp(-dev2 / error2 / 2);
+                                            (Math.Log10(rInt) + logCoeff) :
+                                            (Math.Log10(rInt) + logCoeff) / (sigma * sqrtTwoPI) * Math.Exp(-dev2 / error2 / 2);
 
                                     if (!double.IsNaN(intensity))
                                     {
@@ -978,12 +981,15 @@ public partial class FormDiffractionSimulator : Form
                                 {
                                     g.Flag2 = true;
 
-                                    if (checkBoxDrawSameSize.Checked)//全て同一サイズで描画する場合はここで dev2=0
+                                    if (checkBoxDrawSameSize.Checked)//全て同一サイズで描画する場合はここで dev2=0, sphereRadius = ExcitationError
+                                    {
                                         dev2 = 0;
-
+                                        sphereRadius = ExcitationError;
+                                    }
                                     var sectionRadius = bethe ?
                                         sphereRadius : //ベーテ法の場合はそのまま
                                         Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only あるいは Kinematicの場合は、エワルド球に切られた断面上の、逆格子点の半径
+                                    
                                     var r = CameraLength2 * WaveLength * sectionRadius;
                                     graphics.FillCircle(Color.FromArgb(g.Argb), pt, r, (int)(alphaCoeff * 255));
                                     if (drawLabel && trackBarStrSize.Value != 1 && r > spotRadiusOnDetector * 0.4f)
@@ -2421,6 +2427,8 @@ public partial class FormDiffractionSimulator : Form
             flowLayoutPanelBethe.Visible = false;
 
             checkBoxDrawSameSize.Visible = false;
+            checkBoxDrawSameSize.Checked = false;
+
 
         }
         else //動力学的 
@@ -2429,7 +2437,7 @@ public partial class FormDiffractionSimulator : Form
             flowLayoutPanelBethe.Visible = true;
 
             checkBoxDrawSameSize.Visible = false;
-
+            checkBoxDrawSameSize.Checked = false;
         }
 
         SetVector();
