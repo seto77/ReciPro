@@ -1399,7 +1399,7 @@ public class BetheMethod
         {
             for (int x = 0; x < width; x++)
             {
-                var rVec = new PointD(-resolution * (x - cX), resolution * (y - cY)) + shift;//X座標はマイナス。
+                var rVec = new PointD(resolution * (x - cX), -resolution * (y - cY)) + shift;//Y座標はマイナス。
                 for (int t = 0; t < Thicknesses.Length; t++)
                     for (int d = 0; d < dLen; d++)
                     {
@@ -1571,7 +1571,7 @@ public class BetheMethod
                 Parallel.For(0, divTotal, div =>
                 {
                     int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
-                    var rVec = Enumerable.Range(start, count).SelectMany(n => new[] { -res * (n % width - cX) + shift.X, res * (n / width - cY) + shift.Y }).ToArray();//X座標はマイナス。
+                    var rVec = Enumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX) + shift.X, -res * (n / width - cY) + shift.Y }).ToArray();//Y座標はマイナス。
                     var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode);
                     for (var i = 0; i < defLen; i++)
                         Array.Copy(results, i * count, _images[t][i], start, count);
@@ -1581,7 +1581,7 @@ public class BetheMethod
             {
                 Parallel.For(0, width * height, n =>
                 {
-                    PointD r = new(-(n % width - cX) * res + shift.X, (n / width - cY) * res + shift.Y), _vec = new(double.NaN, double.NaN);//X座標はマイナス。
+                    PointD r = new((n % width - cX) * res + shift.X, -(n / width - cY) * res + shift.Y), _vec = new(double.NaN, double.NaN);//Y座標はマイナス。
                     var sums = new Complex[defLen];
                     var exp = new Complex(0, 0);
                     foreach (var (Psi, Vec, Lenz) in gList)

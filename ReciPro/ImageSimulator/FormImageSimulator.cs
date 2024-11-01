@@ -365,6 +365,7 @@ public partial class FormImageSimulator : Form
             {
                 var x = (w - radius + 0.5) / (radius - 0.5) * sin;
                 var y = -(h - radius + 0.5) / (radius - 0.5) * sin;//結晶の座標系は、X軸が右、Y軸が上、Z軸が手前なのでYを反転
+
                 directions.Add(new Vector3DBase(x, y, -Sqrt(1 - x * x - y * y)));
             }
 
@@ -476,6 +477,8 @@ public partial class FormImageSimulator : Form
         {
             //SendImage(ThicknessArray.Length, DefocusArray.Length, FormMain.Crystal.Bethe.STEM_Image, ImageSize.Width, ImageSize.Height);
             GeneratePseudBitmap();
+          
+
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
             toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(s1 + s2 + s3 + s4) / 1000.0:f1} sec.";
             toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} sec.  Stage 2: {s2 / 1000.0:f1} sec.  Stage 3: {s3 / 1000.0:f1} sec.  Stage 4: {s4 / 1000.0:f1} sec.";
@@ -537,9 +540,10 @@ public partial class FormImageSimulator : Form
         Beams = FormMain.Crystal.Bethe.GetDifractedBeamAmpriltudes(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, ThicknessArray[0]);
         var images = FormMain.Crystal.Bethe.GetPotentialImage(Beams, ImageSize, ImageResolution, radioButtonPotentialModeMagAndPhase.Checked);
 
-        //画像が上下左右反転しているみたいなので、処理 20230304
-        for (int i = 0; i < images.Length; i++)
-            images[i] = [.. images[i].Reverse()];
+        //画像が上下左右反転 (180度回転) しているみたいなので、処理 20230304
+        //なぜかまた上下左右反転 (180度回転) しているみたいなので、削除 20241101
+        //for (int i = 0; i < images.Length; i++)
+        //    images[i] = [.. images[i].Reverse()];
 
 
         var temp = sw1.ElapsedMilliseconds;
@@ -676,6 +680,9 @@ public partial class FormImageSimulator : Form
         var _images = new double[tLen][][];
         for (int t = 0; t < tLen; t++)
             _images[t] = new double[dLen][];
+
+        //20241101 生成した画像が180度回転していることが発覚したため、ここで修正
+
 
         //作成したイメージをPseudoBitmapに変換
         var pseudo = radioButtonHorizontalDefocus.Checked ? new PseudoBitmap[tLen, dLen] : new PseudoBitmap[dLen, tLen];
@@ -1150,7 +1157,6 @@ public partial class FormImageSimulator : Form
 
 
     }
-
     private enum formatEnum { Meta, PNG, TIFF }
     private enum actionEnum { Save, Copy }
     private void Save(formatEnum format, actionEnum action)
@@ -1295,9 +1301,6 @@ public partial class FormImageSimulator : Form
     private void ToolStripMenuItemSavePNG_Click(object sender, EventArgs e) => Save(formatEnum.PNG, actionEnum.Save);
     private void ToolStripMenuItemSaveTIFF_Click(object sender, EventArgs e) => Save(formatEnum.TIFF, actionEnum.Save);
     private void ToolStripMenuItemSaveMetafile_Click(object sender, EventArgs e) => Save(formatEnum.Meta, actionEnum.Save);
-
-
-
     private void ToolStripMenuItemCopyImage_Click(object sender, EventArgs e) => Save(formatEnum.PNG, actionEnum.Copy);
     private void ToolStripMenuItemCopyMetafile_Click(object sender, EventArgs e) => Save(formatEnum.Meta, actionEnum.Copy);
     #endregion 画像のコピー/保存
