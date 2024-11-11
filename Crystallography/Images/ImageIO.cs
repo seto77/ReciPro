@@ -1761,6 +1761,35 @@ public static class ImageIO
         public WaveProperty WaveProperty;
         public double CameraLength;
         public double FilmBlur = 200;
+
+        public IPAImage()
+        {
+            Intensity = [];
+            IntensityDouble = [];
+            Scale = 1;
+            Width = 1;
+            Height = 1;
+            Center = new PointD(0, 0);
+            Resolution = 1;
+            WaveProperty = new WaveProperty(29, XrayLine.Ka);
+            CameraLength = 1;
+            FilmBlur = 200;
+        }
+
+        public IPAImage(double version, uint[] intensity, double[] intensityDouble, double scale, int width, int height, PointD center, double resolution, WaveProperty waveProperty, double cameraLength, double filmBlur)
+        {
+            Version = version;
+            Intensity = intensity;
+            IntensityDouble = intensityDouble;
+            Scale = scale;
+            Width = width;
+            Height = height;
+            Center = center;
+            Resolution = resolution;
+            WaveProperty = waveProperty;
+            CameraLength = cameraLength;
+            FilmBlur = filmBlur;
+        }
         //  public uint[] ConvertTable = new uint[65536];
     }
 }

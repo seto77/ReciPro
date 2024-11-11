@@ -40,6 +40,11 @@ public class WaveProperty
     /// </summary>
     public double Convergence = 0;
 
+    public WaveProperty()
+    {
+
+    }
+
     /// <summary>
     ///
     /// </summary>
