@@ -324,7 +324,8 @@ public class ConvertCrystalData
 
         var AuthorName = str[n];//著者の名前
         n++; if (str.Length <= n) return null;
-        while ((str[n][^1] < '.' || str[n][^1] > '9') && !str[n].Contains("doi.org") && !str[n].Contains("DOI: "))//行の最後の文字が数字ではないとき　(ただし、"doi.org"の文字列が存在するときは除外) 
+        while ((str[n][^1] < '.' || str[n][^1] > '9') && !str[n].Contains("doi.org") && !str[n].Contains("DOI: ")
+            && !str[n].Contains("Mineralogy") )//行の最後の文字が数字ではないとき　(ただし、"doi.org"の文字列が存在するときは除外) 
         {
             AuthorName += ", " + str[n];
             n++; if (str.Length <= n) return null;
@@ -338,7 +339,8 @@ public class ConvertCrystalData
 
         //ここで格子定数、対称性とタイトル
         Crystal2 crystal;
-        while ((crystal = CellParamForAmc(str[n])) == null)
+        string extra;
+        while (((crystal,extra) = CellParamForAmc(str[n])) == (null,null))
         {
             if (str[n].Length > 0 && char.IsLower(str[n][0]))
                 Title += " " + str[n];
@@ -347,8 +349,6 @@ public class ConvertCrystalData
             n++;
             if (str.Length <= n) return null;
         }
-
-
 
         if (Title.Contains("_cod_database_code"))
             Title = Title.Replace("_cod_database_code", "\r\n_cod_database_code");
@@ -491,7 +491,7 @@ public class ConvertCrystalData
 
             if (atomicNumber > 0)
             {
-                atoms.Add(new Atoms2(label, (byte)atomicNumber, 0, 0, new[] { x, y, z }, occ, IsIso, IsUtypeUsed, iso, aniso));
+                atoms.Add(new Atoms2(label, (byte)atomicNumber, 0, 0, [x, y, z], occ, IsIso, IsUtypeUsed, iso, aniso));
             }
             else if (atomicNumber == -1)//"OH"のときの対処
             {
@@ -510,16 +510,46 @@ public class ConvertCrystalData
         crystal.auth = AuthorName;
         crystal.jour = Reference;
         crystal.atoms = atoms;
+
+        //最後に,extra (ファイル中の空間格子と、ソフト内の空間格子の記号が違う場合のみ)を処理
+        if (extra != null)
+        {
+            var c = crystal.ToCrystal();
+            (double X, double Y, double Z)[] translation = extra switch
+            {
+                "A" => [(0, 0, 0), (0.0, 0.5, 0.5)],
+                "B" => [(0, 0, 0), (0.5, 0.0, 0.5)],
+                "C" => [(0, 0, 0), (0.5, 0.5, 0)],
+                "I" => [(0, 0, 0), (0.5, 0.5, 0.5)],
+                "F" => [(0, 0, 0), (0.0, 0.5, 0.5), (0.5, 0.0, 0.5), (0.5, 0.5, 0)],
+                _ => [(0, 0, 0)],
+            };
+
+            var atomsEx = new List<Atoms>();
+            foreach (var a in c.Atoms)
+            {
+                foreach (var t in translation) 
+                    atomsEx.Add(new Atoms(a.Label,a.AtomicNumber,a.SubNumberXray,a.SubNumberElectron,a.Isotope,a.SymmetrySeriesNumber,
+                        new Vector3DBase( a.X+t.X,a.Y+t.Y,a.Z+t.Z ), a.PositionError,a.Occ,a.Occ_err,a.Dsf,a.Material,a.Radius,true,false));
+            }
+            c.Atoms = [.. atomsEx];
+            crystal = c.ToCrystal2();
+        }
+
+
+
         return crystal;
     }
 
-    private static Crystal2 CellParamForAmc(string str)
+    private static (Crystal2, string) CellParamForAmc(string str)
     {
-        double A, B, C, Alfa, Beta, Gamma;
+        string extra = null;
+
+        double A, B, C, Alpha, Beta, Gamma;
         int symmetrySeriesNumber = -1;
         var s = str.Split(" ", true);
         if (s.Length != 7)
-            return null;
+            return (null,null);
         try
         {
             for (int i = 0; i < 6; i++) if (s[i].EndsWith(',')) s[i] = s[i].TrimEnd(','); //最後に','が入っているときは削除
@@ -532,16 +562,21 @@ public class ConvertCrystalData
             A = Convert.ToDouble(s[0]);
             B = Convert.ToDouble(s[1]);
             C = Convert.ToDouble(s[2]);
-            Alfa = Convert.ToDouble(s[3]);
+            Alpha = Convert.ToDouble(s[3]);
             Beta = Convert.ToDouble(s[4]);
             Gamma = Convert.ToDouble(s[5]);
         }
-        catch { return null; }
+        catch { return (null, null); }
         string SgName = s[6];
 
         SgName = SgName.Replace("_", "sub");
         bool isAsterisk = SgName.Contains('*');
         SgName = SgName.Replace("*", "");
+
+        if (SgName.Contains(":2"))
+            isAsterisk = true;
+        SgName = SgName.Replace(":1", "");
+        SgName = SgName.Replace(":2", "");
 
         #region 空間群の場合分け
 
@@ -563,116 +598,141 @@ public class ConvertCrystalData
         else if (SgName == "Fd3c") SgName = "Fd-3c";
         else if (SgName == "Im3m") SgName = "Im-3m";
         else if (SgName == "Ia3d") SgName = "Ia-3d";
+        else if (SgName == "P4/m-32/m") SgName = "Pm-3m";
 
         else if (SgName == "I2sub1/a-3") SgName = "Ia-3";
 
         else if (SgName == "R-32/c") SgName = "R-3c";
 
-        else if (SgName == "P2" && Alfa == 90.0 && Gamma == 90.0) SgName = "P121";
-        else if (SgName == "P2" && Alfa == 90.0 && Beta == 90.0) SgName = "P112";
+        else if (SgName == "P2" && Alpha == 90.0 && Gamma == 90.0) SgName = "P121";
+        else if (SgName == "P2" && Alpha == 90.0 && Beta == 90.0) SgName = "P112";
         else if (SgName == "P2" && Beta == 90.0 && Gamma == 90.0) SgName = "P211";
-        else if (SgName == "P2sub1" && Alfa == 90.0 && Gamma == 90.0) SgName = "P12sub11";
-        else if (SgName == "P2sub1" && Alfa == 90.0 && Beta == 90.0) SgName = "P112sub1";
+        else if (SgName == "P2sub1" && Alpha == 90.0 && Gamma == 90.0) SgName = "P12sub11";
+        else if (SgName == "P2sub1" && Alpha == 90.0 && Beta == 90.0) SgName = "P112sub1";
         else if (SgName == "P2sub1" && Beta == 90.0 && Gamma == 90.0) SgName = "P2sub111";
-        else if (SgName == "C2" && Alfa == 90.0 && Gamma == 90.0) SgName = "C121";
-        else if (SgName == "A2" && Alfa == 90.0 && Gamma == 90.0) SgName = "A121";
-        else if (SgName == "I2" && Alfa == 90.0 && Gamma == 90.0) SgName = "I121";
-        else if (SgName == "A2" && Alfa == 90.0 && Beta == 90.0) SgName = "A112";
-        else if (SgName == "B2" && Alfa == 90.0 && Beta == 90.0) SgName = "B112";
-        else if (SgName == "I2" && Alfa == 90.0 && Beta == 90.0) SgName = "I112";
+        else if (SgName == "C2" && Alpha == 90.0 && Gamma == 90.0) SgName = "C121";
+        else if (SgName == "A2" && Alpha == 90.0 && Gamma == 90.0) SgName = "A121";
+        else if (SgName == "I2" && Alpha == 90.0 && Gamma == 90.0) SgName = "I121";
+        else if (SgName == "A2" && Alpha == 90.0 && Beta == 90.0) SgName = "A112";
+        else if (SgName == "B2" && Alpha == 90.0 && Beta == 90.0) SgName = "B112";
+        else if (SgName == "I2" && Alpha == 90.0 && Beta == 90.0) SgName = "I112";
         else if (SgName == "B2" && Beta == 90.0 && Gamma == 90.0) SgName = "B211";
         else if (SgName == "C2" && Beta == 90.0 && Gamma == 90.0) SgName = "C211";
         else if (SgName == "I2" && Beta == 90.0 && Gamma == 90.0) SgName = "I211";
-        else if (SgName == "Pm" && Alfa == 90.0 && Gamma == 90.0) SgName = "P1m1";
-        else if (SgName == "Pm" && Alfa == 90.0 && Beta == 90.0) SgName = "P11m";
+        else if (SgName == "Pm" && Alpha == 90.0 && Gamma == 90.0) SgName = "P1m1";
+        else if (SgName == "Pm" && Alpha == 90.0 && Beta == 90.0) SgName = "P11m";
         else if (SgName == "Pm" && Beta == 90.0 && Gamma == 90.0) SgName = "Pm11";
-        else if (SgName == "Pc" && Alfa == 90.0 && Gamma == 90.0) SgName = "P1c1";
-        else if (SgName == "Pn" && Alfa == 90.0 && Gamma == 90.0) SgName = "P1n1";
-        else if (SgName == "Pa" && Alfa == 90.0 && Gamma == 90.0) SgName = "P1a1";
-        else if (SgName == "Pa" && Alfa == 90.0 && Beta == 90.0) SgName = "P11a";
-        else if (SgName == "Pn" && Alfa == 90.0 && Beta == 90.0) SgName = "P11n";
-        else if (SgName == "Pb" && Alfa == 90.0 && Beta == 90.0) SgName = "P11b";
+        else if (SgName == "Pc" && Alpha == 90.0 && Gamma == 90.0) SgName = "P1c1";
+        else if (SgName == "Pn" && Alpha == 90.0 && Gamma == 90.0) SgName = "P1n1";
+        else if (SgName == "Pa" && Alpha == 90.0 && Gamma == 90.0) SgName = "P1a1";
+        else if (SgName == "Pa" && Alpha == 90.0 && Beta == 90.0) SgName = "P11a";
+        else if (SgName == "Pn" && Alpha == 90.0 && Beta == 90.0) SgName = "P11n";
+        else if (SgName == "Pb" && Alpha == 90.0 && Beta == 90.0) SgName = "P11b";
         else if (SgName == "Pb" && Beta == 90.0 && Gamma == 90.0) SgName = "Pb11";
         else if (SgName == "Pn" && Beta == 90.0 && Gamma == 90.0) SgName = "Pn11";
         else if (SgName == "Pc" && Beta == 90.0 && Gamma == 90.0) SgName = "Pc11";
-        else if (SgName == "Cm" && Alfa == 90.0 && Gamma == 90.0) SgName = "C1m1";
-        else if (SgName == "Am" && Alfa == 90.0 && Gamma == 90.0) SgName = "A1m1";
-        else if (SgName == "Im" && Alfa == 90.0 && Gamma == 90.0) SgName = "I1m1";
-        else if (SgName == "Am" && Alfa == 90.0 && Beta == 90.0) SgName = "A11m";
-        else if (SgName == "Bm" && Alfa == 90.0 && Beta == 90.0) SgName = "B11m";
-        else if (SgName == "Im" && Alfa == 90.0 && Beta == 90.0) SgName = "I11m";
+        else if (SgName == "Cm" && Alpha == 90.0 && Gamma == 90.0) SgName = "C1m1";
+        else if (SgName == "Am" && Alpha == 90.0 && Gamma == 90.0) SgName = "A1m1";
+        else if (SgName == "Im" && Alpha == 90.0 && Gamma == 90.0) SgName = "I1m1";
+        else if (SgName == "Am" && Alpha == 90.0 && Beta == 90.0) SgName = "A11m";
+        else if (SgName == "Bm" && Alpha == 90.0 && Beta == 90.0) SgName = "B11m";
+        else if (SgName == "Im" && Alpha == 90.0 && Beta == 90.0) SgName = "I11m";
         else if (SgName == "Bm" && Beta == 90.0 && Gamma == 90.0) SgName = "Bm11";
         else if (SgName == "Cm" && Beta == 90.0 && Gamma == 90.0) SgName = "Cm11";
         else if (SgName == "Im" && Beta == 90.0 && Gamma == 90.0) SgName = "Im11";
-        else if (SgName == "Cc" && Alfa == 90.0 && Gamma == 90.0) SgName = "C1c1";
-        else if (SgName == "An" && Alfa == 90.0 && Gamma == 90.0) SgName = "A1n1";
-        else if (SgName == "Ia" && Alfa == 90.0 && Gamma == 90.0) SgName = "I1a1";
-        else if (SgName == "Aa" && Alfa == 90.0 && Gamma == 90.0) SgName = "A1a1";
-        else if (SgName == "Cn" && Alfa == 90.0 && Gamma == 90.0) SgName = "C1n1";
-        else if (SgName == "Ic" && Alfa == 90.0 && Gamma == 90.0) SgName = "I1c1";
-        else if (SgName == "Aa" && Alfa == 90.0 && Beta == 90.0) SgName = "A11a";
-        else if (SgName == "Bn" && Alfa == 90.0 && Beta == 90.0) SgName = "B11n";
-        else if (SgName == "Ib" && Alfa == 90.0 && Beta == 90.0) SgName = "I11b";
-        else if (SgName == "Bb" && Alfa == 90.0 && Beta == 90.0) SgName = "B11b";
-        else if (SgName == "An" && Alfa == 90.0 && Beta == 90.0) SgName = "A11n";
-        else if (SgName == "Ia" && Alfa == 90.0 && Beta == 90.0) SgName = "I11a";
+        else if (SgName == "Cc" && Alpha == 90.0 && Gamma == 90.0) SgName = "C1c1";
+        else if (SgName == "An" && Alpha == 90.0 && Gamma == 90.0) SgName = "A1n1";
+        else if (SgName == "Ia" && Alpha == 90.0 && Gamma == 90.0) SgName = "I1a1";
+        else if (SgName == "Aa" && Alpha == 90.0 && Gamma == 90.0) SgName = "A1a1";
+        else if (SgName == "Cn" && Alpha == 90.0 && Gamma == 90.0) SgName = "C1n1";
+        else if (SgName == "Ic" && Alpha == 90.0 && Gamma == 90.0) SgName = "I1c1";
+        else if (SgName == "Aa" && Alpha == 90.0 && Beta == 90.0) SgName = "A11a";
+        else if (SgName == "Bn" && Alpha == 90.0 && Beta == 90.0) SgName = "B11n";
+        else if (SgName == "Ib" && Alpha == 90.0 && Beta == 90.0) SgName = "I11b";
+        else if (SgName == "Bb" && Alpha == 90.0 && Beta == 90.0) SgName = "B11b";
+        else if (SgName == "An" && Alpha == 90.0 && Beta == 90.0) SgName = "A11n";
+        else if (SgName == "Ia" && Alpha == 90.0 && Beta == 90.0) SgName = "I11a";
         else if (SgName == "Bb" && Beta == 90.0 && Gamma == 90.0) SgName = "Bb11";
         else if (SgName == "Cn" && Beta == 90.0 && Gamma == 90.0) SgName = "Cn11";
         else if (SgName == "Ic" && Beta == 90.0 && Gamma == 90.0) SgName = "Ic11";
         else if (SgName == "Cc" && Beta == 90.0 && Gamma == 90.0) SgName = "Cc11";
         else if (SgName == "Bn" && Beta == 90.0 && Gamma == 90.0) SgName = "Bn11";
         else if (SgName == "Ib" && Beta == 90.0 && Gamma == 90.0) SgName = "Ib11";
-        else if (SgName == "P2/m" && Alfa == 90.0 && Gamma == 90.0) SgName = "P12/m1";
-        else if (SgName == "P2/m" && Alfa == 90.0 && Beta == 90.0) SgName = "P112/m";
+        else if (SgName == "P2/m" && Alpha == 90.0 && Gamma == 90.0) SgName = "P12/m1";
+        else if (SgName == "P2/m" && Alpha == 90.0 && Beta == 90.0) SgName = "P112/m";
         else if (SgName == "P2/m" && Beta == 90.0 && Gamma == 90.0) SgName = "P2/m11";
-        else if (SgName == "P2sub/m" && Alfa == 90.0 && Gamma == 90.0) SgName = "P12sub1/m1";
-        else if (SgName == "P2sub/m" && Alfa == 90.0 && Beta == 90.0) SgName = "P112sub1/m";
+        else if (SgName == "P2sub/m" && Alpha == 90.0 && Gamma == 90.0) SgName = "P12sub1/m1";
+        else if (SgName == "P2sub/m" && Alpha == 90.0 && Beta == 90.0) SgName = "P112sub1/m";
         else if (SgName == "P2sub/m" && Beta == 90.0 && Gamma == 90.0) SgName = "P2sub1/m11";
-        else if (SgName == "C2/m" && Alfa == 90.0 && Gamma == 90.0) SgName = "C12/m1";
-        else if (SgName == "A2/m" && Alfa == 90.0 && Gamma == 90.0) SgName = "A12/m1";
-        else if (SgName == "I2/m" && Alfa == 90.0 && Gamma == 90.0) SgName = "I12/m1";
-        else if (SgName == "A2/m" && Alfa == 90.0 && Beta == 90.0) SgName = "A112/m";
-        else if (SgName == "B2/m" && Alfa == 90.0 && Beta == 90.0) SgName = "B112/m";
-        else if (SgName == "I2/m" && Alfa == 90.0 && Beta == 90.0) SgName = "I112/m";
+        else if (SgName == "C2/m" && Alpha == 90.0 && Gamma == 90.0) SgName = "C12/m1";
+        else if (SgName == "A2/m" && Alpha == 90.0 && Gamma == 90.0) SgName = "A12/m1";
+        else if (SgName == "I2/m" && Alpha == 90.0 && Gamma == 90.0) SgName = "I12/m1";
+        else if (SgName == "A2/m" && Alpha == 90.0 && Beta == 90.0) SgName = "A112/m";
+        else if (SgName == "B2/m" && Alpha == 90.0 && Beta == 90.0) SgName = "B112/m";
+        else if (SgName == "I2/m" && Alpha == 90.0 && Beta == 90.0) SgName = "I112/m";
         else if (SgName == "B2/m" && Beta == 90.0 && Gamma == 90.0) SgName = "B2/m11";
         else if (SgName == "C2/m" && Beta == 90.0 && Gamma == 90.0) SgName = "C2/m11";
         else if (SgName == "I2/m" && Beta == 90.0 && Gamma == 90.0) SgName = "I2/m11";
-        else if (SgName == "P2/c" && Alfa == 90.0 && Gamma == 90.0) SgName = "P12/c1";
-        else if (SgName == "P2/n" && Alfa == 90.0 && Gamma == 90.0) SgName = "P12/n1";
-        else if (SgName == "P2/a" && Alfa == 90.0 && Gamma == 90.0) SgName = "P12/a1";
-        else if (SgName == "P2/a" && Alfa == 90.0 && Beta == 90.0) SgName = "P112/a";
-        else if (SgName == "P2/n" && Alfa == 90.0 && Beta == 90.0) SgName = "P112/n";
-        else if (SgName == "P2/b" && Alfa == 90.0 && Beta == 90.0) SgName = "P112/b";
+        else if (SgName == "P2/c" && Alpha == 90.0 && Gamma == 90.0) SgName = "P12/c1";
+        else if (SgName == "P2/n" && Alpha == 90.0 && Gamma == 90.0) SgName = "P12/n1";
+        else if (SgName == "P2/a" && Alpha == 90.0 && Gamma == 90.0) SgName = "P12/a1";
+        else if (SgName == "P2/a" && Alpha == 90.0 && Beta == 90.0) SgName = "P112/a";
+        else if (SgName == "P2/n" && Alpha == 90.0 && Beta == 90.0) SgName = "P112/n";
+        else if (SgName == "P2/b" && Alpha == 90.0 && Beta == 90.0) SgName = "P112/b";
         else if (SgName == "P2/b" && Beta == 90.0 && Gamma == 90.0) SgName = "P2/b11";
         else if (SgName == "P2/n" && Beta == 90.0 && Gamma == 90.0) SgName = "P2/n11";
         else if (SgName == "P2/c" && Beta == 90.0 && Gamma == 90.0) SgName = "P2/c11";
-        else if (SgName == "P2sub1/c" && Alfa == 90.0 && Gamma == 90.0) SgName = "P12sub1/c1";
-        else if (SgName == "P2sub1/n" && Alfa == 90.0 && Gamma == 90.0) SgName = "P12sub1/n1";
-        else if (SgName == "P2sub1/a" && Alfa == 90.0 && Gamma == 90.0) SgName = "P12sub1/a1";
-        else if (SgName == "P2sub1/a" && Alfa == 90.0 && Beta == 90.0) SgName = "P112sub1/a";
-        else if (SgName == "P2sub1/n" && Alfa == 90.0 && Beta == 90.0) SgName = "P112sub1/n";
-        else if (SgName == "P2sub1/b" && Alfa == 90.0 && Beta == 90.0) SgName = "P112sub1/b";
+        else if (SgName == "P2sub1/c" && Alpha == 90.0 && Gamma == 90.0) SgName = "P12sub1/c1";
+        else if (SgName == "P2sub1/n" && Alpha == 90.0 && Gamma == 90.0) SgName = "P12sub1/n1";
+        else if (SgName == "P2sub1/a" && Alpha == 90.0 && Gamma == 90.0) SgName = "P12sub1/a1";
+        else if (SgName == "P2sub1/a" && Alpha == 90.0 && Beta == 90.0) SgName = "P112sub1/a";
+        else if (SgName == "P2sub1/n" && Alpha == 90.0 && Beta == 90.0) SgName = "P112sub1/n";
+        else if (SgName == "P2sub1/b" && Alpha == 90.0 && Beta == 90.0) SgName = "P112sub1/b";
         else if (SgName == "P2sub1/b" && Beta == 90.0 && Gamma == 90.0) SgName = "P2sub1/b11";
         else if (SgName == "P2sub1/n" && Beta == 90.0 && Gamma == 90.0) SgName = "P2sub1/n11";
         else if (SgName == "P2sub1/c" && Beta == 90.0 && Gamma == 90.0) SgName = "P2sub1/c11";
-        else if (SgName == "C2/c" && Alfa == 90.0 && Gamma == 90.0) SgName = "C12/c1";
-        else if (SgName == "A2/n" && Alfa == 90.0 && Gamma == 90.0) SgName = "A12/n1";
-        else if (SgName == "I2/a" && Alfa == 90.0 && Gamma == 90.0) SgName = "I12/a1";
-        else if (SgName == "A2/a" && Alfa == 90.0 && Gamma == 90.0) SgName = "A12/a1";
-        else if (SgName == "C2/n" && Alfa == 90.0 && Gamma == 90.0) SgName = "C12/n1";
-        else if (SgName == "I2/c" && Alfa == 90.0 && Gamma == 90.0) SgName = "I12/c1";
-        else if (SgName == "A2/a" && Alfa == 90.0 && Beta == 90.0) SgName = "A112/a";
-        else if (SgName == "B2/n" && Alfa == 90.0 && Beta == 90.0) SgName = "B112/n";
-        else if (SgName == "I2/b" && Alfa == 90.0 && Beta == 90.0) SgName = "I112/b";
-        else if (SgName == "B2/b" && Alfa == 90.0 && Beta == 90.0) SgName = "B112/b";
-        else if (SgName == "A2/n" && Alfa == 90.0 && Beta == 90.0) SgName = "A112/n";
-        else if (SgName == "I2/a" && Alfa == 90.0 && Beta == 90.0) SgName = "I112/a";
+        else if (SgName == "C2/c" && Alpha == 90.0 && Gamma == 90.0) SgName = "C12/c1";
+        else if (SgName == "A2/n" && Alpha == 90.0 && Gamma == 90.0) SgName = "A12/n1";
+        else if (SgName == "I2/a" && Alpha == 90.0 && Gamma == 90.0) SgName = "I12/a1";
+        else if (SgName == "A2/a" && Alpha == 90.0 && Gamma == 90.0) SgName = "A12/a1";
+        else if (SgName == "C2/n" && Alpha == 90.0 && Gamma == 90.0) SgName = "C12/n1";
+        else if (SgName == "I2/c" && Alpha == 90.0 && Gamma == 90.0) SgName = "I12/c1";
+        else if (SgName == "A2/a" && Alpha == 90.0 && Beta == 90.0) SgName = "A112/a";
+        else if (SgName == "B2/n" && Alpha == 90.0 && Beta == 90.0) SgName = "B112/n";
+        else if (SgName == "I2/b" && Alpha == 90.0 && Beta == 90.0) SgName = "I112/b";
+        else if (SgName == "B2/b" && Alpha == 90.0 && Beta == 90.0) SgName = "B112/b";
+        else if (SgName == "A2/n" && Alpha == 90.0 && Beta == 90.0) SgName = "A112/n";
+        else if (SgName == "I2/a" && Alpha == 90.0 && Beta == 90.0) SgName = "I112/a";
         else if (SgName == "B2/b" && Beta == 90.0 && Gamma == 90.0) SgName = "B2/b11";
         else if (SgName == "C2/n" && Beta == 90.0 && Gamma == 90.0) SgName = "C2/n11";
         else if (SgName == "I2/c" && Beta == 90.0 && Gamma == 90.0) SgName = "I2/c11";
         else if (SgName == "C2/c" && Beta == 90.0 && Gamma == 90.0) SgName = "C2/c11";
         else if (SgName == "B2/n" && Beta == 90.0 && Gamma == 90.0) SgName = "B2/n11";
         else if (SgName == "I2/b" && Beta == 90.0 && Gamma == 90.0) SgName = "I2/b11";
+
+        else if (SgName == "C2sub1" && Alpha == 90.0 && Gamma == 90.0) { SgName = "P12sub11"; extra = "C"; }
+        else if (SgName == "C2sub1" && Alpha == 90.0 && Beta == 90.0) { SgName = "P112sub1"; extra = "C"; }
+        else if (SgName == "C2sub1" && Beta == 90.0 && Gamma == 90.0) { SgName = "P2sub111"; extra = "C"; }
+        else if (SgName == "C2/a" && Alpha == 90.0 && Gamma == 90.0) { SgName = "P12/a1"; extra = "C"; }
+        else if (SgName == "C2/a" && Alpha == 90.0 && Beta == 90.0) { SgName = "P112/a"; extra = "C"; }
+        else if (SgName == "C2sub1/a" && Alpha == 90.0 && Gamma == 90.0) { SgName = "P12sub1/a1"; extra = "C"; }
+        else if (SgName == "C2sub1/a" && Alpha == 90.0 && Beta == 90.0) { SgName = "P112sub1/a"; extra = "C"; }
+
+        else if (SgName == "F2/m" && Alpha == 90.0 && Gamma == 90.0) { SgName = "P12/m1"; extra = "F"; }
+        else if (SgName == "F2/m" && Beta == 90.0 && Gamma == 90.0) { SgName = "P2/m11"; extra = "F"; }
+        else if (SgName == "F2/m" && Alpha == 90.0 && Beta == 90.0) { SgName = "P112/m"; extra = "F"; }
+
+        else if (SgName == "B2sub1" && Alpha == 90.0 && Gamma == 90.0) { SgName = "P12sub11"; extra = "B"; }
+        else if (SgName == "B2sub1" && Alpha == 90.0 && Beta == 90.0) { SgName = "P112sub1"; extra = "B"; }
+        else if (SgName == "B2sub1" && Beta == 90.0 && Gamma == 90.0) { SgName = "P2sub111"; extra = "B"; }
+        else if (SgName == "B2sub1/m" && Alpha == 90.0 && Gamma == 90.0) { SgName = "P12sub1/m1"; extra = "B"; }
+        else if (SgName == "B2sub1/m" && Alpha == 90.0 && Beta == 90.0) { SgName = "P112sub1/m"; extra = "B"; }
+        else if (SgName == "B2sub1/m" && Beta == 90.0 && Gamma == 90.0) { SgName = "P2sub1/m11"; extra = "B"; }
+        
+        else if (SgName == "Imab" && Beta == 90.0 && Gamma == 90.0) { SgName = "Pmab"; extra = "I"; }
+
+        else if (SgName == "F4/mmm") { SgName = "P4/mmm"; extra = "F"; }
+
         #endregion amcファイルの読み込み
 
         //文字列を含んでいて、かつ、文字数が少ない空間群を選択する (C1とC121などを見分けるため)
@@ -700,9 +760,9 @@ public class ConvertCrystalData
             }
         }
         if (symmetrySeriesNumber == -1)
-            return null;
+            return (null, null);
         //Rhombohedoralのときの処置
-        if (A == B && B == C && Alfa == Beta && Beta == Gamma && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("Hex", StringComparison.CurrentCulture))
+        if (A == B && B == C && Alpha == Beta && Beta == Gamma && SymmetryStatic.Symmetries[symmetrySeriesNumber].SpaceGroupHMStr.Contains("Hex", StringComparison.CurrentCulture))
             symmetrySeriesNumber++;
 
         //Asteriskの時(2nd setting)の処理
@@ -713,16 +773,16 @@ public class ConvertCrystalData
         if (symmetrySeriesNumber >= 0)
         {
             var r = new Random();
-            return new Crystal2
+            return (new Crystal2
             {
 
                 CellTexts = [s[0], s[1], s[2], s[3], s[4], s[5]],
                 sym = (short)symmetrySeriesNumber,
                 argb = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)).ToArgb()
-            };
+            },extra);
         }
         else
-            return null;
+            return (null, null);
     }
 
     private static double ConvertToDouble(string str) => ConvertToDouble(str, false);

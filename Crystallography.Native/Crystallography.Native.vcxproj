@@ -78,7 +78,6 @@
     <UseInteloneMKL>No</UseInteloneMKL>
     <EnableMKLOpenMPOffloadToGPU>false</EnableMKLOpenMPOffloadToGPU>
     <BasePlatformToolset>v143</BasePlatformToolset>
-    <LLVMToolsVersion>17</LLVMToolsVersion>
     <UseInteloneTBB>false</UseInteloneTBB>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -116,7 +115,7 @@
     </LinkIncremental>
     <TargetExt>.dll</TargetExt>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net8.0-windows$(TargetPlatformVersion)\</OutDir>
+    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net9.0-windows$(TargetPlatformVersion)\</OutDir>
     <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
