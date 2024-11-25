@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MQ = Crystallography.Marquardt;
@@ -49,7 +50,7 @@ public partial class FormSpotIDV2 : Form
 
     public double FittingRange => numericBoxFittingRange.Value;
 
-    private readonly object lockObj = new object();
+    private readonly Lock lockObj = new();
 
     private readonly Stopwatch sw = new Stopwatch();
 

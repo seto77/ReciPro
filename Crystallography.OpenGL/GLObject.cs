@@ -23,6 +23,7 @@ using M3d = OpenTK.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
 using MathNet.Numerics.Distributions;
 using static System.Windows.Forms.DataFormats;
+using System.Threading;
 #endregion 定義
 
 namespace Crystallography.OpenGL;
@@ -149,7 +150,7 @@ abstract public class GLObject
     private static readonly int sizeOfUInt = sizeof(uint);
     private static readonly List<(string Product, string Version)> GraphicsInfo;
     private static int serialNumber = 0;
-    public static readonly object LockObj = new();
+    public static readonly Lock LockObj = new();
 
     public static float LineWidthStatic = 1f;
 

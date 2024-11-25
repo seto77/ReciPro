@@ -39,9 +39,9 @@ public partial class FormStructureViewer : Form
     public List<GLObject> GLObjects = [];
     private readonly ParallelQuery<GLObject> GLObjectsP;
 
-    public readonly object lockObj1 = new();
-    public readonly object lockObj2 = new();
-    public readonly object lockObj3 = new();
+    public readonly Lock lockObj1 = new();
+    public readonly Lock lockObj2 = new();
+    public readonly Lock lockObj3 = new();
 
 
     private bool skipSetCrystal = false;

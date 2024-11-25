@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Crystallography
 {
@@ -679,7 +680,7 @@ namespace Crystallography
             return c * elements[index].MolarWeight * zAve * EcA * mu_rhoAAe / mu_rhoUnkAe * gammaMinusOnePerGamma * Math.Log(1 + g * U0A) / g / U0A;
         }
 
-        private static object lockObJforBetaArray = new object();
+        private static Lock lockObJforBetaArray = new Lock();
 
         /// <summary>
         /// betaの値を保管する一時変数.

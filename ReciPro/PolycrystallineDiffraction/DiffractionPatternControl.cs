@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -378,7 +379,7 @@ public partial class DiffractionPatternControl : UserControl
 
     //private delegate SortedList<uint, int> calcFreqDelegate(int start, int end);
 
-    private object lockObj = new object();
+    private readonly Lock lockObj = new();
 
     /// <summary>
     /// Frequencyを計算

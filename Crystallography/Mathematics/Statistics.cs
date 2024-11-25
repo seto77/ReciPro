@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Crystallography;
@@ -273,7 +274,7 @@ public class Statistics
     }
 
 
-    public static object lockObject = new();
+    public static Lock lockObject = new();
 
     /// <summary>
     /// 平均mu, 標準偏差sigmaの正規分布乱数を得る。Box-Muller法による。

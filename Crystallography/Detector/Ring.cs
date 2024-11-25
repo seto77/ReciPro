@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Crystallography;
@@ -144,7 +145,7 @@ public static class Ring
     public enum Rotation { Clockwise, Counterclockwise }
     public enum Direction { Right, Left, Top, Bottom }
 
-    private static readonly object lockObj = new();
+    private static readonly Lock lockObj = new();
 
 
     public enum ImageTypeEnum

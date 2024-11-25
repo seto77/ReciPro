@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using V3 = OpenTK.Vector3d;
@@ -22,7 +23,7 @@ public partial class FormTrajectory : Form
 
     private GLControlAlpha glControlTrajectory;
 
-    private object lockObj = new();
+    private readonly Lock lockObj = new();
 
     (V3 p, double e)[][] Trajectories = [];
     private double EnergyThreshold = 2;

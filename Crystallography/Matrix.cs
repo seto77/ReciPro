@@ -434,11 +434,11 @@ public class Matrix3D : ICloneable
 
     public static Matrix3D GenerateRamdomRotationMatrix(int seed) => GenerateRamdomRotationMatrix(new Random(seed));
 
-    private static readonly Lock o = new();
+    private static readonly Lock lockObj = new();
     public static Matrix3D GenerateRamdomRotationMatrix(Random rn)
     {
         double rn1, rn2, rn3;
-        lock (o)
+        lock (lockObj)
         {
             rn1 = rn.NextDouble();
             rn2 = rn.NextDouble();

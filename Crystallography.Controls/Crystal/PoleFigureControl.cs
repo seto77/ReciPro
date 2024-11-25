@@ -3,6 +3,7 @@ using System.Buffers;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -286,7 +287,7 @@ public partial class PoleFigureControl : UserControl
     private int justBeforeCrystallineNumber = -1;
     private IEnumerable<(int Radial, int Sector)>[] Index;
 
-    public object lockObject = new object();
+    public Lock lockObject = new();
 
     public double[][] generateDensityArrayNormal(double angleResolution)
     {

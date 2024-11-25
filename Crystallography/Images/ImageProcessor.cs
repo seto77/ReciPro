@@ -3,6 +3,7 @@ using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Crystallography;
@@ -218,7 +219,7 @@ public static class ImageProcess
         return results;
     }
 
-    private static readonly object lockObj = new object();
+    private static readonly Lock lockObj = new Lock();
 
     /// <summary>
     /// 画像中から、スポットを検出する。戻り値はList<Vector3DBase>. X, Y: スポットのピクセル上の位置,  Int: 強度

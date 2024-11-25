@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Threading;
 
 namespace Crystallography.Controls;
 
@@ -258,7 +259,7 @@ public partial class DataSet
             }
         }
 
-        readonly object lockObj = new();
+        readonly Lock lockObj = new();
         public DataTableCrystalDatabaseRow CreateRow(Crystal2 c)
         {
             DataTableCrystalDatabaseRow dr;
