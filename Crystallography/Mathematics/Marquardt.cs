@@ -158,53 +158,53 @@ public class Marquardt
                 #region
                 case FuncType.G1:
                     Formula = (x, p) => Gaussian(x[0], p[0], p[1], p[2]);
-                    Constraints = p => new[] { p[0], Max(p[1], inf), Max(p[2], inf) };
+                    Constraints = p => [p[0], Max(p[1], inf), Max(p[2], inf)];
                     break;
 
                 case FuncType.G2:
                     Formula = (x, p) => Gaussian(x[0], x[1], p[0], p[1], p[2], p[3]);
-                    Constraints = p => new[] { p[0], p[1], Max(p[2], inf), Max(p[3], inf) };
+                    Constraints = p => [p[0], p[1], Max(p[2], inf), Max(p[3], inf)];
                     break;
 
                 case FuncType.G2E:
                     Formula = (x, p) => Gaussian(x[0], x[1], p[0], p[1], p[2], p[3], p[4], p[5]);
-                    Constraints = p => new[] { p[0], p[1], Max(p[2], inf), Max(p[3], inf), p[4], Max(p[5], inf) };
+                    Constraints = p => [p[0], p[1], Max(p[2], inf), Max(p[3], inf), p[4], Max(p[5], inf)];
                     break;
 
                 case FuncType.L1:
                     Formula = (x, p) => Lorenzian(x[0], p[0], p[1], p[2]);
-                    Constraints = p => new[] { p[0], Max(p[1], inf), Max(p[2], inf) };
+                    Constraints = p => [p[0], Max(p[1], inf), Max(p[2], inf)];
                     break;
 
                 case FuncType.L2:
                     Formula = (x, p) => Lorenzian(x[0], x[1], p[0], p[1], p[2], p[3]);
-                    Constraints = p => new[] { p[0], p[1], Max(p[2], inf), Max(p[3], inf) };
+                    Constraints = p => [p[0], p[1], Max(p[2], inf), Max(p[3], inf)];
                     break;
 
                 case FuncType.L2E:
                     Formula = (x, p) => Gaussian(x[0], x[1], p[0], p[1], p[2], p[3], p[4], p[5]);
-                    Constraints = p => new[] { p[0], p[1], Max(p[2], inf), Max(p[3], inf), p[4], Max(p[5], inf) };
+                    Constraints = p => [p[0], p[1], Max(p[2], inf), Max(p[3], inf), p[4], Max(p[5], inf)];
                     break;
 
                 case FuncType.PV1:
                     Formula = (x, p) => PseudoVoigt(x[0], p[0], p[1], p[2], p[3]);
-                    Constraints = p => new[] { p[0], Max(p[1], 0.1), Min(Max(p[2], 0), 1.5), Max(p[3], inf) };
+                    Constraints = p => [p[0], Max(p[1], 0.1), Min(Max(p[2], 0), 1.5), Max(p[3], inf)];
                     break;
 
                 case FuncType.PV2:
                     Formula = (x, p) => PseudoVoigt(x[0], x[1], p[0], p[1], p[2], p[3], p[4]);
-                    Constraints = p => new[] { p[0], p[1], Max(p[2], 0.1), Min(Max(p[3], 0), 1.5), Max(p[4], inf) };
+                    Constraints = p => [p[0], p[1], Max(p[2], 0.1), Min(Max(p[3], 0), 1.5), Max(p[4], inf)];
                     break;
 
                 case FuncType.PV2E:
                     Formula = (x, p) => PseudoVoigt(x, p[0], p[1], p[2], p[3], p[4], p[5], p[6]);
-                    Constraints = p => new[] { p[0], p[1], Max(p[2], 0.1), Max(p[3], 0.1), p[4], Min(Max(p[5], 0), 1.5), Max(p[6], inf) };
+                    Constraints = p => [p[0], p[1], Max(p[2], 0.1), Max(p[3], 0.1), p[4], Min(Max(p[5], 0), 1.5), Max(p[6], inf)];
                     Derivatives = (x, p) => PseudoVoigtDiff(x, p[0], p[1], p[2], p[3], p[4], p[5], p[6]);
                     break;
 
                 case FuncType.Plane:
                     Formula = (x, p) => p[0] + p[1] * x[0] + p[2] * x[1];
-                    Derivatives = (x, p) => new[] { 1.0, x[0], x[1] };
+                    Derivatives = (x, p) => [1.0, x[0], x[1]];
                     break;
                     #endregion
             }
@@ -368,7 +368,7 @@ public class Marquardt
                             alpha = (DMat)alpha.RemoveColumn(i);
                             alpha = (DMat)alpha.RemoveRow(i);
                         }
-                    beta = new DVec(betaList.ToArray());
+                    beta = new DVec([.. betaList]);
                 }
             }
 
@@ -607,8 +607,8 @@ public class Marquardt
         var d2 = d1 * (eta * l + (1 - eta) * g);
         var d3 = a * d1 * (3 * eta * l * c / lo + 2 * ln2 * (1 - eta) * g);
 
-        return new[]
-        {
+        return
+        [
             d3 * (xRot * cos * hx2Inv - yRot * sin * hy2Inv),//x0
             d3 * (xRot * sin * hx2Inv + yRot * cos * hy2Inv),//y0
             (d3 * xRot2hx2Inv - a * d2) * hxInv,//hx
@@ -616,7 +616,7 @@ public class Marquardt
             d3 * ( hy2Inv - hx2Inv) * xRot * yRot,//theta
             a * d1 * (l - g) , //eta
             d2 //a
-        };
+        ];
 
         /*
         //C++ネイティブで書いてもあまり速くならなかった。呼び出しのオーバヘッドが時間かかってそう。

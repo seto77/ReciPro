@@ -56,7 +56,7 @@ public static class ImageIO
     public static bool IsReadable(string _ext)
     {
         var ext = _ext.StartsWith('.') ? _ext[1..] : _ext;
-        return ListOfExtension.Contains(ext.ToLower()) || ext.StartsWith("0") || ext.StartsWith("mar") || ext.StartsWith("dm");
+        return ListOfExtension.Contains(ext.ToLower()) || ext.StartsWith('0') || ext.StartsWith("mar") || ext.StartsWith("dm");
     }
 
     #region BinaryReaderから読み込んで整数や実数に変換
@@ -263,7 +263,7 @@ public static class ImageIO
             }
 
             using BinaryReader br = new(new FileStream(filename, FileMode.Open, FileAccess.Read));
-            var headers = new string(br.ReadChars(headersize)).Split(new[] { '{', '}', '\n', ';' }, StringSplitOptions.RemoveEmptyEntries);
+            var headers = new string(br.ReadChars(headersize)).Split(['{', '}', '\n', ';'], StringSplitOptions.RemoveEmptyEntries);
             var little_endian = headers.First(h => h.StartsWith("BYTE_ORDER=")).Split(['='])[1] == "little_endian";
             var type = headers.First(h => h.StartsWith("TYPE=")).Split(separator)[1];
             var size1 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE1=")).Split(['='])[1]);
@@ -832,7 +832,7 @@ public static class ImageIO
             var tag = new List<string>();
             foreach (var (Name, Parent, Depth) in hdf.Paths)
             {
-                var tmp = Name.Split(new[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
+                var tmp = Name.Split(["/"], StringSplitOptions.RemoveEmptyEntries);
                 if (tmp.Length != 0 && tmp[^1].StartsWith("tag_") && !tag.Contains(tmp[^1]))
                     tag.Add(tmp[^1]);
             }
@@ -1121,10 +1121,10 @@ public static class ImageIO
             {
                 var c = br.ReadChar();
                 sb.Append(c);
-            } while (!sb.ToString().EndsWith("}"));
+            } while (!sb.ToString().EndsWith('}'));
 
             var tags = new Dictionary<string, string>();
-            foreach (var tag in sb.ToString().Split(new char[] { ';', '\n' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var tag in sb.ToString().Split([';', '\n'], StringSplitOptions.RemoveEmptyEntries))
             {
                 var temp = tag.Split(['=']);
                 if (temp.Length == 2)

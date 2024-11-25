@@ -119,8 +119,8 @@ public class Euler
         double tilt2 = za2.tilt1;
         double azimuth2 = za2.tilt2;
 
-        var v1 = Vector3D.Normarize(za1.u * cry.A_Axis + za1.v * cry.B_Axis + za1.w * cry.C_Axis);
-        var v2 = Vector3D.Normarize(za2.u * cry.A_Axis + za2.v * cry.B_Axis + za2.w * cry.C_Axis);
+        var v1 = Vector3DBase.Normarize(za1.u * cry.A_Axis + za1.v * cry.B_Axis + za1.w * cry.C_Axis);
+        var v2 = Vector3DBase.Normarize(za2.u * cry.A_Axis + za2.v * cry.B_Axis + za2.w * cry.C_Axis);
 
         var V1 = new Vector3D(-Math.Sin(tilt1), -Math.Cos(tilt1) * Math.Sin(azimuth1), Math.Cos(tilt1) * Math.Cos(azimuth1));
         var V2 = new Vector3D(-Math.Sin(tilt2), -Math.Cos(tilt2) * Math.Sin(azimuth2), Math.Cos(tilt2) * Math.Cos(azimuth2));

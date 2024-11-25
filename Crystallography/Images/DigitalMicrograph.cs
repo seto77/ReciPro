@@ -37,7 +37,7 @@ namespace Crystallography
             public ByteOrderEnum ByteOrder { get; set; }
             public long NumberOfTags { get; set; }
 
-            public Dictionary<string, TagInfo> Tag = new Dictionary<string, TagInfo>();
+            public Dictionary<string, TagInfo> Tag = [];
 
             public Loader(string fileName)
             {
@@ -75,7 +75,7 @@ namespace Crystallography
                 //Tag or Tag Directories ここから
                 for (int i = 0; i < NumberOfTags; i++)
                 {
-                    TagInfo tagInfo = new TagInfo(br, Version);//Tagの読み込みはTagInfoクラスに任せる
+                    TagInfo tagInfo = new(br, Version);//Tagの読み込みはTagInfoクラスに任せる
                     if (tagInfo.TagName.Length == 0)
                         tagInfo.TagName = i.ToString();
                     Tag.Add(tagInfo.TagName, tagInfo);
@@ -87,7 +87,7 @@ namespace Crystallography
         public class TagInfo
         {
             public string TagName;
-            public Dictionary<string, TagInfo> Tag = new Dictionary<string, TagInfo>();
+            public Dictionary<string, TagInfo> Tag = [];
             public object[] Values;
             public long TotalBytes;
 
@@ -124,7 +124,7 @@ namespace Crystallography
 
                     for (int i = 0; i < NumberOfTagsInTagDirectory; i++)
                     {
-                        TagInfo tagInfo = new TagInfo(br, version);//TagInfoを再起呼び出し
+                        TagInfo tagInfo = new(br, version);//TagInfoを再起呼び出し
                         if (tagInfo.TagName.Length == 0)
                             tagInfo.TagName = i.ToString();
                         Tag.Add(tagInfo.TagName, tagInfo);

@@ -12137,13 +12137,13 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                     posStr.Add(PositionStringList[p]);
                     PosGen.AddRange(lattice switch
                     {
-                        "A" => new[] { PositionGeneratorList[p], PositionGeneratorListA[p] },
-                        "B" => new[] { PositionGeneratorList[p], PositionGeneratorListB[p] },
-                        "C" => new[] { PositionGeneratorList[p], PositionGeneratorListC[p] },
-                        "I" => new[] { PositionGeneratorList[p], PositionGeneratorListI[p] },
-                        "F" => new[] { PositionGeneratorList[p], PositionGeneratorListA[p], PositionGeneratorListB[p], PositionGeneratorListC[p] },
-                        "RH" => new[] { PositionGeneratorList[p], PositionGeneratorListR1[p], PositionGeneratorListR2[p] },
-                        _ => new[] { PositionGeneratorList[p] }
+                        "A" => [PositionGeneratorList[p], PositionGeneratorListA[p]],
+                        "B" => [PositionGeneratorList[p], PositionGeneratorListB[p]],
+                        "C" => [PositionGeneratorList[p], PositionGeneratorListC[p]],
+                        "I" => [PositionGeneratorList[p], PositionGeneratorListI[p]],
+                        "F" => [PositionGeneratorList[p], PositionGeneratorListA[p], PositionGeneratorListB[p], PositionGeneratorListC[p]],
+                        "RH" => [PositionGeneratorList[p], PositionGeneratorListR1[p], PositionGeneratorListR2[p]],
+                        _ => [PositionGeneratorList[p]]
                     });
                 }
 
@@ -12156,13 +12156,13 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                         var op = OperationList[p];
                         operations.AddRange(lattice switch
                         {
-                            "A" => new[] { new SO(op, i, 0, 0, 0), new SO(op, i, 0, 0.5, 0.5) },
-                            "B" => new[] { new SO(op, i, 0, 0, 0), new SO(op, i, 0.5, 0, 0.5) },
-                            "C" => new[] { new SO(op, i, 0, 0, 0), new SO(op, i, 0.5, 0.5, 0) },
-                            "I" => new[] { new SO(op, i, 0, 0, 0), new SO(op, i, 0.5, 0.5, 0.5) },
-                            "F" => new[] { new SO(op, i, 0, 0, 0), new SO(op, i, 0, 0.5, 0.5), new SO(op, i, 0.5, 0, 0.5), new SO(op, i, 0.5, 0.5, 0) },
-                            "RH" => new[] { new SO(op, i, 0, 0, 0), new SO(op, i, 1d / 3d, 2d / 3d, 2d / 3d), new SO(op, i, 2d / 3d, 1d / 3d, 1d / 3d) },
-                            _ => new[] { op }
+                            "A" => [new SO(op, i, 0, 0, 0), new SO(op, i, 0, 0.5, 0.5)],
+                            "B" => [new SO(op, i, 0, 0, 0), new SO(op, i, 0.5, 0, 0.5)],
+                            "C" => [new SO(op, i, 0, 0, 0), new SO(op, i, 0.5, 0.5, 0)],
+                            "I" => [new SO(op, i, 0, 0, 0), new SO(op, i, 0.5, 0.5, 0.5)],
+                            "F" => [new SO(op, i, 0, 0, 0), new SO(op, i, 0, 0.5, 0.5), new SO(op, i, 0.5, 0, 0.5), new SO(op, i, 0.5, 0.5, 0)],
+                            "RH" => [new SO(op, i, 0, 0, 0), new SO(op, i, 1d / 3d, 2d / 3d, 2d / 3d), new SO(op, i, 2d / 3d, 1d / 3d, 1d / 3d)],
+                            _ => [op]
                         });
                     }
                 }
@@ -12172,7 +12172,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                 if (let > 'z')
                     let = (char)(let - 58);
 
-                wyckoff.Add(new WyckoffPosition(i, lattice, let.ToString(), j, SiteSymmetryList[SiteSymmetryDictionary[i][j]], [.. posStr], PosGen.ToArray(), j == 0 ? operations.ToArray() : null));
+                wyckoff.Add(new WyckoffPosition(i, lattice, let.ToString(), j, SiteSymmetryList[SiteSymmetryDictionary[i][j]], [.. posStr], [.. PosGen], j == 0 ? [.. operations] : null));
             }
             WyckoffPositions[i] = [.. wyckoff];
         }
@@ -13175,7 +13175,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <returns></returns>
     public static (int H, int K, int L)[] GenerateEquivalentPlanes(int h, int k, int l, Symmetry sym, bool inversionCenter = true)
     {
-        if (h == 0 && k == 0 && l == 0) return new[] { (0, 0, 0) };
+        if (h == 0 && k == 0 && l == 0) return [(0, 0, 0)];
 
         var indices = new HashSet<(int H, int K, int L)>();
         int i;
@@ -14228,7 +14228,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
             }
             #endregion
         }
-        return indices.ToArray();
+        return [.. indices];
     }
 
     /// <summary>
@@ -14271,7 +14271,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
         if (u == 0 && v == 0 && w == 0)
         {
             indices.Add((0, 0, 0));
-            return indices.ToArray();
+            return [.. indices];
         }
         int x;
         switch (sym.LaueGroupNumber)
@@ -14577,7 +14577,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                 indices.Add((-u, +w, +v));
                 break;
         }
-        return indices.ToArray();
+        return [.. indices];
         #endregion
     }
 

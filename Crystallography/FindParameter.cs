@@ -18,7 +18,7 @@ namespace Crystallography
         {
             double weightTotal = 0;
             double tempRtotal = 0;
-            List<double> r = new List<double>();
+            List<double> r = [];
             for (int i = 0; i < ellipses.Count; i++)
                 for (int j = i + 1; j < ellipses.Count; j++)
                     for (int k = 0; k < ellipses[i].millimeters.Count; k++)
@@ -42,7 +42,7 @@ namespace Crystallography
             if (weightTotal > 0 && !double.IsInfinity(weightTotal))
             {
                 radiusInverse += tempRtotal / weightTotal;
-                radiusInverseDev = Statistics.Deviation(r.ToArray()) / Math.Sqrt(Math.Sqrt(2 * r.Count));
+                radiusInverseDev = Statistics.Deviation([.. r]) / Math.Sqrt(Math.Sqrt(2 * r.Count));
             }
         }
 
@@ -113,7 +113,7 @@ namespace Crystallography
             double tempTotal = 0;
             double temp, sigma1, sigma2, weight;
             double weightTotal = 0;
-            List<double> WL = new List<double>();
+            List<double> WL = [];
             for (int i = 0; i < ellipses.Count; i++)
                 for (int j = i + 1; j < ellipses.Count; j++)
                     for (int k = 0; k < ellipses[i].millimeters.Count; k++)
@@ -138,7 +138,7 @@ namespace Crystallography
             if (weightTotal > 0 && !double.IsInfinity(weightTotal))
             {
                 WaveLength = tempTotal / weightTotal;
-                WaveLengthDev = Statistics.Deviation(WL.ToArray()) / Math.Sqrt(Math.Sqrt(2 * WL.Count));
+                WaveLengthDev = Statistics.Deviation([.. WL]) / Math.Sqrt(Math.Sqrt(2 * WL.Count));
             }
         }
 
@@ -154,7 +154,7 @@ namespace Crystallography
             double tempTotal = 0;
             double temp, sigma1, sigma2, weight;
             double weightTotal = 0;
-            List<double> WL = new List<double>();
+            List<double> WL = [];
             for (int i = 0; i < plane.Count; i++)
                 for (int j = i + 1; j < plane.Count; j++)
                     if (!double.IsNaN(plane[i].MillimeterObs) && !double.IsNaN(plane[j].MillimeterObs)
@@ -179,7 +179,7 @@ namespace Crystallography
             if (weightTotal > 0 && !double.IsInfinity(weightTotal))
             {
                 WaveLength = tempTotal / weightTotal;
-                WaveLengthDev = Statistics.Deviation(WL.ToArray()) / Math.Sqrt(Math.Sqrt(2 * WL.Count));
+                WaveLengthDev = Statistics.Deviation([.. WL]) / Math.Sqrt(Math.Sqrt(2 * WL.Count));
             }
         }
 
@@ -195,7 +195,7 @@ namespace Crystallography
             double tempTotal = 0;
             double temp, sigma1, sigma2, weight;
             double weightTotal = 0;
-            List<double> CL = new List<double>();
+            List<double> CL = [];
             for (int i = 0; i < plane.Count; i++)
                 for (int j = i + 1; j < plane.Count; j++)
                     if (!double.IsNaN(plane[i].MillimeterObs) && !double.IsNaN(plane[j].MillimeterObs)
@@ -220,7 +220,7 @@ namespace Crystallography
             if (weightTotal > 0 && !double.IsInfinity(weightTotal))
             {
                 PixelSize = tempTotal / weightTotal;
-                PixelSizeDev = Statistics.Deviation(CL.ToArray()) / Math.Sqrt(Math.Sqrt(2 * CL.Count));
+                PixelSizeDev = Statistics.Deviation([.. CL]) / Math.Sqrt(Math.Sqrt(2 * CL.Count));
             }
         }
 
@@ -239,7 +239,7 @@ namespace Crystallography
             double tempTotal = 0;
             double weightTotal = 0;
             double weight, temp, diff;
-            List<double> WL = new List<double>();
+            List<double> WL = [];
             for (int i = 0; i < ellipse.Count; i++)
             {
                 temp = 2 * ellipse[i].d * Math.Sin(Math.Atan(ellipse[i].GetAverageRadius() / FilmDistance) / 2);
@@ -252,7 +252,7 @@ namespace Crystallography
             if (weightTotal > 0 && !double.IsInfinity(weightTotal))
             {
                 WaveLength = tempTotal / weightTotal;
-                WaveLengthDev = Statistics.Deviation(WL.ToArray()) / Math.Sqrt(WL.Count);
+                WaveLengthDev = Statistics.Deviation([.. WL]) / Math.Sqrt(WL.Count);
             }
         }
 
@@ -269,7 +269,7 @@ namespace Crystallography
             double tempTotal = 0;
             double weightTotal = 0;
             double temp, weight;
-            List<double> FD = new List<double>();
+            List<double> FD = [];
             for (int i = 0; i < ellipses.Count; i++)
                 for (int j = 0; j < ellipses[i].millimeters.Count; j++)
                     if (!double.IsNaN(ellipses[i].millimeters[j]))
@@ -283,7 +283,7 @@ namespace Crystallography
             if (weightTotal > 0 && !double.IsInfinity(weightTotal))
             {
                 FilmDistance = tempTotal / weightTotal;
-                FilmDistanceDev = Statistics.Deviation(FD.ToArray()) / Math.Sqrt(FD.Count);
+                FilmDistanceDev = Statistics.Deviation([.. FD]) / Math.Sqrt(FD.Count);
             }
         }
 
@@ -296,7 +296,7 @@ namespace Crystallography
         /// <param name="FilmDistanceDev"></param>
         public static void FindFilmDistanceFromDiscrepancy(List<EllipseParameter> ellipses1, List<EllipseParameter> ellipses2, double Discrepancy, ref double FilmDistance, ref double FilmDistanceDev)
         {
-            List<double> FD = new List<double>();
+            List<double> FD = [];
             double temp, dif1, dif2, weight;
             double tempTotal = 0;
             double weightTotal = 0;
@@ -320,7 +320,7 @@ namespace Crystallography
             if (weightTotal > 0 && !double.IsInfinity(weightTotal))
             {
                 FilmDistance = tempTotal / weightTotal;
-                FilmDistanceDev = Statistics.Deviation(FD.ToArray()) / Math.Sqrt(FD.Count);
+                FilmDistanceDev = Statistics.Deviation([.. FD]) / Math.Sqrt(FD.Count);
             }
         }
 
@@ -333,7 +333,7 @@ namespace Crystallography
         /// <param name="FilmDistanceDev"></param>
         public static void FindFilmDistanceFromDiscrepancy(List<Plane> plane1, List<Plane> plane2, double Discrepancy, ref double FilmDistance, ref double FilmDistanceDev)
         {
-            List<double> FD = new List<double>();
+            List<double> FD = [];
             double temp, dif1, dif2, weight;
             double tempTotal = 0;
             double weightTotal = 0;
@@ -358,7 +358,7 @@ namespace Crystallography
             {
                 FilmDistance = tempTotal / weightTotal;
                 if (FD.Count > 1)
-                    FilmDistanceDev = Statistics.Deviation(FD.ToArray()) / Math.Sqrt(FD.Count - 1);
+                    FilmDistanceDev = Statistics.Deviation([.. FD]) / Math.Sqrt(FD.Count - 1);
                 else
                     FilmDistanceDev = 0;
             }
@@ -409,8 +409,8 @@ namespace Crystallography
 
     public class EllipseParameter
     {
-        public List<PointD> points = new List<PointD>();
-        public List<double> millimeters = new List<double>();
+        public List<PointD> points = [];
+        public List<double> millimeters = [];
         public double[] Coeff = new double[5];
         public double millimeterCalc;
         public bool IsValid;
@@ -446,7 +446,7 @@ namespace Crystallography
 
         public void SetCoeff()
         {
-            Coeff = Geometry.GetParameterOfCurveOfSecondaryDegree(points.ToArray());
+            Coeff = Geometry.GetParameterOfCurveOfSecondaryDegree([.. points]);
         }
 
         public override string ToString()
@@ -476,8 +476,10 @@ namespace Crystallography
             //millimeterObs = new double[2];
             //millimeterCalc = new double[2];
             //pvp=new PeakFunction[2];
-            pvp = new PeakFunction();
-            pvp.X = double.NaN;
+            pvp = new PeakFunction
+            {
+                X = double.NaN
+            };
             //pvp = new PeakFunction();
             //pvp[1].X = double.NaN;
 

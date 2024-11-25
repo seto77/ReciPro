@@ -355,15 +355,15 @@ public partial class FormStructureViewer : Form
         if (radioButtonBoundUnitCell.Checked)//‹«ŠEğŒ‚Æ‚µ‚ÄUnit cell‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚éê‡
         {
             var inv = Matrix3d.Invert(axes);
-            bounds = new List<(V4 prms, Color color)>()
-                {
+            bounds =
+                [
                     (new V4(inv.Row0.Normalized(),1/inv.Row0.Length * (numericBoxACenter.Value + numericBoxARange.Value)) , Color.Red),
                     (new V4(-inv.Row0.Normalized(),1/inv.Row0.Length *  -(numericBoxACenter.Value - numericBoxARange.Value)), Color.Red),
                     (new V4(inv.Row1.Normalized(),1/inv.Row1.Length *  (numericBoxBCenter.Value + numericBoxBRange.Value)), Color.Green),
                     (new V4(-inv.Row1.Normalized(),1/inv.Row1.Length * -(numericBoxBCenter.Value - numericBoxBRange.Value)), Color.Green),
                     (new V4(inv.Row2.Normalized(),1/inv.Row2.Length * (numericBoxCCenter.Value + numericBoxCRange.Value)), Color.Blue),
                     (new V4(-inv.Row2.Normalized(),1/inv.Row2.Length * -(numericBoxCCenter.Value - numericBoxCRange.Value)), Color.Blue),
-                };
+                ];
 
         }
         else//Plane‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚éê‡
@@ -1551,7 +1551,7 @@ public partial class FormStructureViewer : Form
                     //FlowLayoutPanelì¬
 
                     legendPanels.Add(new FlowLayoutPanel { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, FlowDirection = FlowDirection.TopDown, Margin = new Padding(1, 1, 1, 8), });
-                    legendPanels[i].Controls.AddRange(new Control[] { legendControls[i], legendLabels[i] });
+                    legendPanels[i].Controls.AddRange([legendControls[i], legendLabels[i]]);
 
                 }
             //’Ç‰Á‚±‚±‚Ü‚Å

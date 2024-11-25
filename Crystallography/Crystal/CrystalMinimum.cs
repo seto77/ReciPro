@@ -635,7 +635,7 @@ public partial class Crystal2
                 return (5.0 / 12.0, err);
             else if (str.Contains(".5833"))
                 return (7.0 / 12.0, err);
-            else if (str.Contains(".8333"))
+            else if (str.Contains(".8333")|| str.Contains(".83333"))
                 return (5.0 / 6.0, err);
             else if (str.Contains(".9167") || str.Contains(".91667") || str.Contains(".916667"))
                 return (11.0 / 12.0, err);

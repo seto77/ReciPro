@@ -39,18 +39,11 @@ public class Tiff
         DoubleType//(８バイト倍精度実数、IEEE倍精度浮動小数点形式)
     }
 
-    public struct IFD
+    public struct IFD(int tag, Type dataType, object[] data)
     {
-        public int Tag;
-        public Type DataType;
-        public object[] Data;
-
-        public IFD(int tag, Type dataType, object[] data)
-        {
-            Tag = tag;
-            DataType = dataType;
-            Data = data;
-        }
+        public int Tag = tag;
+        public Type DataType = dataType;
+        public object[] Data = data;
 
         public static void Write(BinaryWriter bw, ushort tag, byte value)
         {
@@ -156,9 +149,9 @@ public class Tiff
     public static void Writer(string filename, double[] srcData, int sampleFormat, int imageWidth, IFD[] additionalIFD = null)
     {
         if (additionalIFD != null)
-            Writer(filename, new double[][] { srcData }, sampleFormat, imageWidth, new IFD[][] { additionalIFD });
+            Writer(filename, [srcData], sampleFormat, imageWidth, [additionalIFD]);
         else
-            Writer(filename, new double[][] { srcData }, sampleFormat, imageWidth);
+            Writer(filename, [srcData], sampleFormat, imageWidth);
     }
 
     /// <summary>
@@ -297,7 +290,7 @@ public class Tiff
 
         public TiffByteOrder ByteOrder { get => byteOrder; set => byteOrder = value; }
 
-        public List<imageProperty> Images = new List<imageProperty>();
+        public List<imageProperty> Images = [];
 
         /// <summary>
         /// イメージの幅(ピクセル)
@@ -550,7 +543,7 @@ public class Tiff
                             image.XrayEnergy = (double)iFD[i].Data[0]; break;
                         case 60001:
                             image.Name = new string(iFD[i].Data.Cast<char>().ToArray());
-                            if (image.Name.EndsWith("\0"))
+                            if (image.Name.EndsWith('\0'))
                                 image.Name = image.Name.TrimEnd('\0');
                             break;
 
@@ -634,7 +627,7 @@ public class Tiff
                     var num_of_stored_images = comment.Substring(60, 4).ToInt();
 
                     var total = image.ImageWidth * image.ImageLength;
-                    image.StripByteCounts = new[] { image.ImageWidth * image.ImageLength * bytePerPixel };
+                    image.StripByteCounts = [image.ImageWidth * image.ImageLength * bytePerPixel];
                 }
                 #endregion
 

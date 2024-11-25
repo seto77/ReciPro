@@ -885,11 +885,11 @@ public static class Geometry
 
                 //4‚Â‚ÌŒğ“_‚ğ‹‚ß‚é
 
-                List<PointD> temp = new(new[] {
+                List<PointD> temp = new([
                     new PointD(rect.X, a * rect.X + b),
                     new PointD(rect.UpperX, a * rect.UpperX + b),
                     new PointD((rect.Y - b) / a, rect.Y),
-                    new PointD((rect.UpperY - b) / a, rect.UpperY) });
+                    new PointD((rect.UpperY - b) / a, rect.UpperY) ]);
 
                 var pts = temp.Where(p => rect.IsInsde(p) && p.X >= p1.X && p.X <= p2.X && p.Y >= Math.Min(p1.Y, p2.Y) && p.Y <= Math.Max(p1.Y, p2.Y)).OrderBy(p => p.X).ToArray();
                 if (pts.Length == 2)
@@ -957,7 +957,7 @@ public static class Geometry
         var mtx = new DenseMatrix(points.Count(), 3);
         int n = 0;
         foreach (var p in points.Select(p => p - ave))
-            mtx.SetRow(n++, new[] { p.X, p.Y, p.Z });
+            mtx.SetRow(n++, [p.X, p.Y, p.Z]);
 
         //var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
         var evd = mtx.TransposeThisAndMultiply(mtx).Evd(Symmetricity.Symmetric);
@@ -1127,7 +1127,7 @@ public static class Geometry
         double P = -(sinTau2 - cosAlpha2) / (l * l * (1 - cosAlpha2)), Psqrt = Math.Sqrt(Math.Abs(P));
         double Q = -P * (sinTau2 - cosAlpha2) / cosAlpha2, Qsqrt = Math.Sqrt(Q);
 
-        PointD rot(in PointD pt) => new PointD(cosPhi * pt.X - sinPhi * pt.Y, sinPhi * pt.X + cosPhi * pt.Y);
+        PointD rot(in PointD pt) => new(cosPhi * pt.X - sinPhi * pt.Y, sinPhi * pt.X + cosPhi * pt.Y);
 
         var maxWidth = Math.Max(upperLeft.Length, lowerRight.Length);
 

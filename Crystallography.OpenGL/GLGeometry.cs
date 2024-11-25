@@ -22,7 +22,7 @@ public static class GLGeometry
         if (points.Count() == 3)
         {
             var pts = points is V3d[] v ? v : points.ToArray();
-            return (new List<uint>(new uint[] { 0, 1, 2, 0 }), (pts[0] + pts[1] + pts[2]) / 3, V3d.Cross(pts[1] - pts[0], pts[2] - pts[1]));
+            return (new List<uint>([0, 1, 2, 0]), (pts[0] + pts[1] + pts[2]) / 3, V3d.Cross(pts[1] - pts[0], pts[2] - pts[1]));
         }
 
         var center = Extensions.Average(points);
@@ -41,7 +41,7 @@ public static class GLGeometry
         var i = lengthSquaredArray.FindIndex(len => len == maxLength);
 
         //もう一つ点を選び、直線の方程式を産出
-        var iList = new List<uint>(new[] { (uint)i });
+        var iList = new List<uint>([(uint)i]);
         do
         {
             for (int j = 0; j < vXY.Count; j++)

@@ -15,8 +15,8 @@ public class NumericalFormula
             for (int i = 0; i < str.Length; i++)
                 if (str[i].Contains('=')) // '=' ‚Ì•¶Žš—ñ‚ª‚Ý‚Â‚©‚Á‚½‚ç
                 {
-                    string leftString = str[i].Split(new string[] { "=" }, StringSplitOptions.RemoveEmptyEntries)[0].Replace(" ", ""); ;
-                    string rightString = str[i].Split(new string[] { "=" }, StringSplitOptions.RemoveEmptyEntries)[1].Replace(" ", ""); ;
+                    string leftString = str[i].Split(["="], StringSplitOptions.RemoveEmptyEntries)[0].Replace(" ", ""); ;
+                    string rightString = str[i].Split(["="], StringSplitOptions.RemoveEmptyEntries)[1].Replace(" ", ""); ;
 
                     for (int j = i + 1; j < str.Length; j++)
                         for (int l = 0; l < str[j].Length; l++)

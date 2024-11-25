@@ -423,7 +423,7 @@ abstract public class GLObject
     /// 内部的には、静的メソッド Generate(int program, GLObject[] objs)を呼び出す。
     /// </summary>
     /// <param name="program"></param>
-    public void Generate(int program) => Generate(program, new[] { this });
+    public void Generate(int program) => Generate(program, [this]);
 
     /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生
     /// </summary>
@@ -564,7 +564,7 @@ abstract public class GLObject
                         GL.ColorMask(false, false, false, false); //色は全くかきこまない
                         GL.Enable(EnableCap.CullFace);//CullFace有効
                         GL.StencilFunc(StencilFunction.Always, 0, 0);//Stencil Funcを設定 (Always)
-                        clip.EnableClips(new[] { i });//i番目のクリップのみ有効化
+                        clip.EnableClips([i]);//i番目のクリップのみ有効化
                                                       //裏面のみ描画(ステンシル値だけ書き込む)
                         GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.IncrWrap);//ステンシル値「+1」
                         GL.CullFace(CullFaceMode.Front); //表面をカリング
@@ -778,7 +778,7 @@ public class Polygon : GLObject
                 Indices = Enumerable.Range(0, outputs[i].Length).Select(val => (uint)val).ToArray()
             };
 
-            results[i].Primitives = new[] { (PT.Quads, results[i].Indices.Length) };
+            results[i].Primitives = [(PT.Quads, results[i].Indices.Length)];
 
             var center = Extensions.Average(outputs[i]);
             results[i].CircumscribedSphereCenter = new V4d(center, 1);
@@ -885,7 +885,7 @@ public class Quads : Polygon
     : this(new V3d(a.X, a.Y, a.Z), new V3d(b.X, b.Y, b.Z), new V3d(c.X, c.Y, c.Z), new V3d(d.X, d.Y, d.Z), mat, mode) { }
 
     public Quads(V3d a, V3d b, V3d c, V3d d, Material mat, DrawingMode mode)
-        : base(new V3d[] { a, b, c, d }, mat, mode) { }
+        : base([a, b, c, d], mat, mode) { }
 
     public Quads(V3d[] vertices, Material mat, DrawingMode mode)
         : base(vertices, mat, mode) { }
@@ -1045,7 +1045,7 @@ public class Polyhedron : GLObject
             vList.AddRange(cand.Select(p => new Vertex(p.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb)));//多面体頂点を追加
             vList.Add(new Vertex(polygonInfo.Center.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb));//多面体中心を追加
 
-            var iTemp = new List<uint>(new[] { (uint)(vList.Count - 1) });//多面体中心のインデックスを追加
+            var iTemp = new List<uint>([(uint)(vList.Count - 1)]);//多面体中心のインデックスを追加
             var offsetIndices = polygonInfo.Indices.Select(n => n + offset).ToList();
             iTemp.AddRange(offsetIndices);//多面体頂点のインデックスを追加
 
@@ -1116,7 +1116,7 @@ public class Polyhedron : GLObject
 /// 平行六面体(原点と3辺のベクトルで定義)
 /// </summary>
 public class Parallelepiped(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMode mode)
-    : Polyhedron(new[] { o, o + a, o + b, o + c, o + a + b, o + b + c, o + c + a, o + a + b + c }, mat, mode)
+    : Polyhedron([o, o + a, o + b, o + c, o + a + b, o + b + c, o + c + a, o + a + b + c], mat, mode)
 {
 }
 
@@ -1128,9 +1128,7 @@ public class Parallelepiped(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMod
 /// </summary>
 public class Ellipsoid : GLObject
 {
-#pragma warning disable CA2211 // 非定数フィールドは表示されません
     public static int DefaultSlices = 2;
-#pragma warning restore CA2211 // 非定数フィールドは表示されません
 
     public V3d Origin { get; set; }
     public V3d RadiusVector1 { get; set; }
@@ -1213,13 +1211,13 @@ public class Ellipsoid : GLObject
                 for (int w = 0; w < 2 * slices; w++)
                 {
                     int current = i * (2 * slices + 1) * (2 * slices + 1) + h * (2 * slices + 1) + w;
-                    indexListSurfaces.AddRange(new[] { current, current + 1, current + 2 * slices + 2, current + 2 * slices + 1 });
+                    indexListSurfaces.AddRange([current, current + 1, current + 2 * slices + 2, current + 2 * slices + 1]);
 
-                    indexListEdges.AddRange(new[] { current, current + 1, current, current + 2 * slices + 1 });
+                    indexListEdges.AddRange([current, current + 1, current, current + 2 * slices + 1]);
                     if (h == 2 * slices - 1)
-                        indexListEdges.AddRange(new[] { current + 2 * slices + 2, current + 2 * slices + 1 });
+                        indexListEdges.AddRange([current + 2 * slices + 2, current + 2 * slices + 1]);
                     if (w == 2 * slices - 1)
-                        indexListEdges.AddRange(new[] { current + 1, current + 2 * slices + 2 });
+                        indexListEdges.AddRange([current + 1, current + 2 * slices + 2]);
                 }
         types.Add(PT.Quads);
         indices.Add([.. indexListSurfaces]);
@@ -1259,11 +1257,9 @@ public class Sphere : Ellipsoid
     public new static int DefaultSlices { get => defaultSlices; set { defaultSlices = value; SetDefaultSphere(); } }
     private static int defaultSlices = 3;
 
-#pragma warning disable CA2211 // 非定数フィールドは表示されません
     public static Vertex[] DefaultVertices;
     public static uint[] DefaultIndices;
     public static (PT Type, int Count)[] DefaultPrimitives;
-#pragma warning restore CA2211 // 非定数フィールドは表示されません
 
     /// <summary>
     /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
@@ -1293,9 +1289,7 @@ public class Sphere : Ellipsoid
 /// </summary>
 public class Pipe : GLObject
 {
-#pragma warning disable CA2211 // 非定数フィールドは表示されません
     public static (int Slices, int Stacks) Default = (1, 16);
-#pragma warning restore CA2211 // 非定数フィールドは表示されません
 
     public double Radius1, Radius2;
     public V3d Origin, Vector;
@@ -1682,13 +1676,13 @@ public class Torus : GLObject
             {
                 int current = i * slices2 + j;
 
-                indexListSurfaces.AddRange(new[] { current, current + 1, current + slices2 + 1, current + slices2 });
-                indexListEdges.AddRange(new[] { current, current + 1, current, current + slices2 });
+                indexListSurfaces.AddRange([current, current + 1, current + slices2 + 1, current + slices2]);
+                indexListEdges.AddRange([current, current + 1, current, current + slices2]);
 
                 if (j == 0)
                 {
-                    indexListSurfaces.AddRange(new[] { current, current + slices2, current + 2 * slices2 - 1, current + slices2 - 1 });
-                    indexListEdges.AddRange(new[] { current, current + slices2, current, current + slices2 - 1 });
+                    indexListSurfaces.AddRange([current, current + slices2, current + 2 * slices2 - 1, current + slices2 - 1]);
+                    indexListEdges.AddRange([current, current + slices2, current, current + slices2 - 1]);
                 }
             }
         types.Add(PT.Quads);
@@ -1752,11 +1746,11 @@ public class Mesh : GLObject
             for (int w = 0; w < width - 1; w++)
             {
                 int i = h * width + w;
-                indicesList.AddRange(new[] { i, i + 1, i + width + 1, i + width, });
+                indicesList.AddRange([i, i + 1, i + width + 1, i + width,]);
             }
         Vertices = [.. vList];
         Indices = indicesList.Select(i => (uint)i).ToArray();
-        Primitives = new[] { (PT.Quads, indicesList.Count) };
+        Primitives = [(PT.Quads, indicesList.Count)];
 
     }
 }

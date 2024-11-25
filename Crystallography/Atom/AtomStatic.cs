@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+using Windows.Graphics.Printing;
 using Edge = Crystallography.XrayLineEdge;
 
 namespace Crystallography;
@@ -2596,6 +2598,7 @@ new(4.86738014,0.319974401,4.58872425,
                 return p1.A * p2.A * (Math.Exp(-s2 * product / sum) / sum - Math.Exp(-s2 * (product - m * m) / sum2m) / sum2m);
             })) * Math.PI * gamma * 2 / k0;
         }
+       
 
         /// <summary>
         /// 局所形式の非弾性散乱因子 FlatEwald近似 未完成
@@ -7205,7 +7208,7 @@ new(4.86738014,0.319974401,4.58872425,
         return [.. pt];
     }
 
-    private static readonly object lockObjForMassAbsorption = new();
+    private static readonly Lock lockObjForMassAbsorption = new();
 
     /// <summary>
     /// 質量吸収係数を覚えておく
@@ -7390,7 +7393,7 @@ new(4.86738014,0.319974401,4.58872425,
             int z = Convert.ToInt32(str[1].Split([','])[0].Replace("<b>Z=", ""));//2行目から原子番号を読み取る
                                                                                  //edgeの値を読み取る
             while (!str[i].Contains("edge")) i++;
-            var edgeNo = Convert.ToInt32(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0]);
+            var edgeNo = Convert.ToInt32(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[0]);
             i += 2;
 
             var edge = new List<PointD>();
@@ -7414,7 +7417,7 @@ new(4.86738014,0.319974401,4.58872425,
                     str[i] = str[i].Replace(" VII", "7"); str[i] = str[i].Replace(" VI", "6"); str[i] = str[i].Replace(" IV", "4");
                     str[i] = str[i].Replace(" V", "5"); str[i] = str[i].Replace(" III", "3"); str[i] = str[i].Replace(" II", "2");
                     str[i] = str[i].Replace(" I", "1");
-                    string[] temp = str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] temp = str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries);
                     if (temp.Length % 2 == 0)
                         for (int j = 0; j < temp.Length; j += 2)
                         {
@@ -7433,10 +7436,10 @@ new(4.86738014,0.319974401,4.58872425,
 
             while (!str[i].Contains("Photoelectric")) i++;
             i += 2;
-            var absorp = new List<PointD>(edge.ToArray());
+            var absorp = new List<PointD>([.. edge]);
             sbAbsorption.AppendLine("new PointD[][]{");
             for (; i < str.Count - 1; i++)
-                absorp.Add(new PointD(Convert.ToDouble(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0]), Convert.ToDouble(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1])));
+                absorp.Add(new PointD(Convert.ToDouble(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[0]), Convert.ToDouble(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[1])));
             //sbAbsorption.AppendLine("new PointD(" + str[i].Replace("  ", ",") + ")" + (i == str.Count - 2 ? "" : ","));
             absorp.Sort();
             var pf = new List<Profile> { new() };

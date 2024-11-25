@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Crystallography;
@@ -324,7 +325,7 @@ public static class BitmapConverter
         }
     }*/
 
-    private static readonly object lockObject = new();
+    private static readonly Lock lockObject = new();
 
     public static double detectSkewAngle(Bitmap bmp)
     {

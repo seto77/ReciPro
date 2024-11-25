@@ -82,7 +82,7 @@ public static class Extensions
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static float[] ToArray(in this V4f v) => new[] { v.X, v.Y, v.Z, v.W };
+    public static float[] ToArray(in this V4f v) => [v.X, v.Y, v.Z, v.W];
 
     /// <summary>
     /// 拡張メソッド.
@@ -124,14 +124,14 @@ public static class Extensions
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static double[] ToArray(in this V4d v) => new[] { v.X, v.Y, v.Z, v.W };
+    public static double[] ToArray(in this V4d v) => [v.X, v.Y, v.Z, v.W];
 
     /// <summary>
     /// 拡張メソッド.
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static float[] ToArrayF(in this V4d v) => new[] { (float)v.X, (float)v.Y, (float)v.Z, (float)v.W };
+    public static float[] ToArrayF(in this V4d v) => [(float)v.X, (float)v.Y, (float)v.Z, (float)v.W];
 
     /// <summary>
     /// 拡張メソッド.

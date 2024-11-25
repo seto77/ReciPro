@@ -131,7 +131,7 @@ public readonly struct WyckoffPosition
                 pos.Add(v);
             }
         }
-        return pos.ToArray();
+        return [.. pos];
     }
     /// <summary>
     /// 与えられたposがこのWykoffPositionかどうかを判定する

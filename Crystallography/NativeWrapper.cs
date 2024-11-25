@@ -180,7 +180,7 @@ public static partial class NativeWrapper
             Enabled = false;
         try
         {
-            var result = Inverse(2, new[] { new Complex(1, 0), new Complex(0, 0), new Complex(0, 0), new Complex(1, 0) });
+            var result = Inverse(2, [new Complex(1, 0), new Complex(0, 0), new Complex(0, 0), new Complex(1, 0)]);
             Enabled = result[0].Real + result[3].Real > 1;
         }
         catch { Enabled = false; }
