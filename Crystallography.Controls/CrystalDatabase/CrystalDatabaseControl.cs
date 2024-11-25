@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Windows.Forms;
 #endregion
 
@@ -61,13 +62,13 @@ public partial class CrystalDatabaseControl : UserControl
     static Crystal2[] deserialize(Stream stream)
     {
         var buffer1 = new byte[4];
-        stream.Read(buffer1);
+        stream.ReadExactly(buffer1);
         var length = BitConverter.ToInt32(buffer1);
 
         var buffer2 = ArrayPool<byte>.Shared.Rent(length);
         try
         {
-            stream.Read(buffer2, 0, length);
+            stream.ReadExactly(buffer2, 0, length);
             using var decompressor = new BrotliDecompressor();// Decompression(require using)
             return MemoryPackSerializer.Deserialize<Crystal2[]>(decompressor.Decompress(buffer2.AsSpan()[0..length]));
         }
@@ -100,21 +101,21 @@ public partial class CrystalDatabaseControl : UserControl
     #region データベース読み込み/書き込み関連
 
     #region バイト書き込み/読み込み
-    private static int readInt(Stream s) => BitConverter.ToInt32(readBytes(s, 4), 0);
-    private static int readByte(Stream s) => s.ReadByte();
-    private static long readLong(Stream s) => BitConverter.ToInt64(readBytes(s, 8), 0);
+    private static int readInt(FileStream s) => BitConverter.ToInt32(readBytes(s, 4), 0);
+    private static int readByte(FileStream s) => s.ReadByte();
+    private static long readLong(FileStream s) => BitConverter.ToInt64(readBytes(s, 8), 0);
 
-    private static byte[] readBytes(Stream s, int length)
+    private static byte[] readBytes(FileStream s, int length)
     {
         var bytes = new byte[length];
-        s.Read(bytes, 0, bytes.Length);
+        s.ReadExactly(bytes);
         return bytes;
     }
 
-    private static void writeInt(Stream s, in int v) => s.Write(BitConverter.GetBytes(v), 0, 4);
-    private static void writeLong(Stream s, in long v) => s.Write(BitConverter.GetBytes(v), 0, 8);
-    private static void writeByte(Stream s, in byte v) => s.WriteByte(v);
-    private static void writeBytes(Stream s, in byte[] v) => s.Write(v, 0, v.Length);
+    private static void writeInt(FileStream s, in int v) => s.Write(BitConverter.GetBytes(v), 0, 4);
+    private static void writeLong(FileStream s, in long v) => s.Write(BitConverter.GetBytes(v), 0, 8);
+    private static void writeByte(FileStream s, in byte v) => s.WriteByte(v);
+    private static void writeBytes(FileStream s, in byte[] v) => s.Write(v, 0, v.Length);
 
     #endregion
 
@@ -128,7 +129,7 @@ public partial class CrystalDatabaseControl : UserControl
         ReadDatabaseWorker.RunWorkerAsync(filename);
     }
 
-    readonly object lockObj = new();
+    readonly Lock lockObj = new();
     private void ReadDatabaseWorker_DoWork(object sender, DoWorkEventArgs e)
     {
         var filename = (string)e.Argument;

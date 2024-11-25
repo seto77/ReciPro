@@ -109,8 +109,8 @@ public class BetheMethod
     public event ProgressChangedEventHandler StemProgressChanged;
     public event RunWorkerCompletedEventHandler StemCompleted;
 
-    private readonly object lockObj1 = new();
-    private readonly object lockObj2 = new();
+    private readonly Lock lockObj1 = new();
+    private readonly Lock lockObj2 = new();
 
     /// <summary>
     /// Result_STEM_Ela[thickness][defocus]
@@ -167,7 +167,7 @@ public class BetheMethod
         };
         bwSTEM.RunWorkerCompleted += Stem_RunWorkerCompleted;
         bwSTEM.ProgressChanged += Stem_ProgressChanged;
-        bwSTEM.DoWork += stem_DoWork;
+        bwSTEM.DoWork += StemDoWork;
     }
     #endregion
 
@@ -885,7 +885,7 @@ public class BetheMethod
         if (!bwSTEM.IsBusy)
             bwSTEM.RunWorkerAsync((solver, thread, cs, delta, sliceThickness, convergenceAngle, detAngleInner, detAngleOuter, thicknesses, defocusses, imageSize, resolution, sourceSize));
     }
-    public unsafe void stem_DoWork(object sender, DoWorkEventArgs e)
+    public unsafe void StemDoWork(object sender, DoWorkEventArgs e)
     {
         //MathNetの行列の内部は、1列目の要素、2列目の要素、という順番で格納されている
 

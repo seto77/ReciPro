@@ -170,7 +170,7 @@ public partial class FormImageSimulator : Form
                 return [numericBoxThickness.Value];
             try
             {
-                return textBoxThicknessList.Text.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Select(str => Convert.ToDouble(str)).ToArray();
+                return textBoxThicknessList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => Convert.ToDouble(str)).ToArray();
             }
             catch
             {
@@ -193,7 +193,7 @@ public partial class FormImageSimulator : Form
                 return [numericBoxDefocus.Value];
             try
             {
-                return textBoxDefocusList.Text.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Select(str => Convert.ToDouble(str)).ToArray();
+                return textBoxDefocusList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => Convert.ToDouble(str)).ToArray();
             }
             catch
             {
@@ -375,7 +375,7 @@ public partial class FormImageSimulator : Form
 
         toolStripProgressBar.Maximum = stemDirectionTotal;
         FormMain.Crystal.Bethe.StemProgressChanged += stemProgressChanged;
-        FormMain.Crystal.Bethe.StemCompleted += stemCompleted;
+        FormMain.Crystal.Bethe.StemCompleted += StemCompleted;
 
         FormMain.Crystal.Bethe.RunSTEM(
             BlochNum,
@@ -467,9 +467,9 @@ public partial class FormImageSimulator : Form
     #endregion
 
     #region BackgroundWorkerからのstemCompleted
-    private void stemCompleted(object sender, RunWorkerCompletedEventArgs e)
+    private void StemCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
-        FormMain.Crystal.Bethe.StemCompleted -= stemCompleted;
+        FormMain.Crystal.Bethe.StemCompleted -= StemCompleted;
         FormMain.Crystal.Bethe.StemProgressChanged -= stemProgressChanged;
         long s1 = sw1.ElapsedMilliseconds, s2 = sw2.ElapsedMilliseconds, s3 = sw3.ElapsedMilliseconds, s4 = sw4.ElapsedMilliseconds;
 
@@ -611,7 +611,7 @@ public partial class FormImageSimulator : Form
             for (int c = 0; c < pseudo[0].Count; c++)
                 result[r, c] = pseudo[r][c];
 
-        setPseudoBitamap(result);
+        SetPseudoBitamap(result);
         toolStripStatusLabel1.Text += $"Drawing: {sw1.ElapsedMilliseconds - temp} msec.";
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
@@ -723,15 +723,15 @@ public partial class FormImageSimulator : Form
         }
 
         SkipEvent = true;
-        double max = checkBoxIntensityMax.Checked ? numericBoxIntensityMax.Value : _images.Max(e1 => e1.Max(e2 => e2.Max()));
-        double min = checkBoxIntensityMin.Checked ? numericBoxIntensityMin.Value : _images.Min(e1 => e1.Min(e2 => e2.Min()));
+        double max = checkBoxIntensityMax.Checked ? numericBoxIntensityMax.Value : _images.Max();
+        double min = checkBoxIntensityMin.Checked ? numericBoxIntensityMin.Value : _images.Min();
         trackBarAdvancedMax.Value = trackBarAdvancedMin.Maximum = trackBarAdvancedMax.Maximum = max;
         trackBarAdvancedMin.Value = trackBarAdvancedMin.Minimum = trackBarAdvancedMax.Minimum = min;
         trackBarAdvancedMax.UpDown_Increment = trackBarAdvancedMin.UpDown_Increment = (trackBarAdvancedMax.Value - trackBarAdvancedMin.Value) / 100.0;
         SkipEvent = false;
 
         //ScalableBoxに転送
-        setPseudoBitamap(pseudo);
+        SetPseudoBitamap(pseudo);
 
         TrackBarAdvancedMin_ValueChanged(new object(), 0);
     }
@@ -753,7 +753,7 @@ public partial class FormImageSimulator : Form
     {
         var _image = new double[image.Length][][];
 
-        double min = image.Min(e1 => e1.Min(e2 => e2.Min())), max = image.Max(e1 => e1.Max(e2 => e2.Max()));
+        double min = image.Min(), max = image.Max();
         double destMin = normalizeMin ? numericBoxIntensityMin.Value : min;
         double destMax = normalizeMax ? numericBoxIntensityMax.Value : max;
 
@@ -771,7 +771,7 @@ public partial class FormImageSimulator : Form
     #endregion
 
     //作成したPseutoBitmapをscalablePictureBoxに転送
-    private void setPseudoBitamap(PseudoBitmap[,] image)
+    private void SetPseudoBitamap(PseudoBitmap[,] image)
     {
         var row = image.GetLength(0);
         var col = image.GetLength(1);
@@ -1157,11 +1157,10 @@ public partial class FormImageSimulator : Form
 
 
     }
-    private enum formatEnum { Meta, PNG, TIFF }
-    private enum actionEnum { Save, Copy }
-    private void Save(formatEnum format, actionEnum action)
+    private enum FormatEnum { Meta, PNG, TIFF }
+    private enum ActionEnum { Save, Copy }
+    private void Save(FormatEnum format, ActionEnum action)
     {
-
         if (pictureBoxes != null && pictureBoxes.Length != 0)
         {
             int row = pictureBoxes.GetLength(0), col = pictureBoxes.GetLength(1);
@@ -1221,15 +1220,15 @@ public partial class FormImageSimulator : Form
             //ここから、実際の処理
 
             //先にファイルダイアログの処理をしてしまう
-            var dlg = new SaveFileDialog { Filter = format switch { formatEnum.Meta => "*.emf|*.emf", formatEnum.PNG => "*.png|*.png", _ => "*.tif|*.tif" } };
-            if (action == actionEnum.Save)
+            var dlg = new SaveFileDialog { Filter = format switch { FormatEnum.Meta => "*.emf|*.emf", FormatEnum.PNG => "*.png|*.png", _ => "*.tif|*.tif" } };
+            if (action == ActionEnum.Save)
                 if (dlg.ShowDialog() != DialogResult.OK) return;
 
             //メタファイル形式の時
-            if (format == formatEnum.Meta)
+            if (format == FormatEnum.Meta)
             {
                 //個別保存の時
-                if (action == actionEnum.Save && pseudo.Length > 1 && toolStripMenuItemSaveIndividually.Checked)//Save
+                if (action == ActionEnum.Save && pseudo.Length > 1 && toolStripMenuItemSaveIndividually.Checked)//Save
                 {
                     for (int r = 0; r < row; r++)
                         for (int c = 0; c < col; c++)
@@ -1242,17 +1241,17 @@ public partial class FormImageSimulator : Form
                 }
                 else//全体保存 or 全体コピー
                 {
-                    if (action == actionEnum.Save)
+                    if (action == ActionEnum.Save)
                         actionForMetafile(null, dlg.FileName);
                     else
                         actionForMetafile(null, "");//filename を "" にすると、コピー
                 }
             }
             //Png形式の時
-            else if (format == formatEnum.PNG)
+            else if (format == FormatEnum.PNG)
             {
                 //個別保存の時
-                if (action == actionEnum.Save && pseudo.Length > 1 && toolStripMenuItemSaveIndividually.Checked)//Save
+                if (action == ActionEnum.Save && pseudo.Length > 1 && toolStripMenuItemSaveIndividually.Checked)//Save
                 {
                     for (int r = 0; r < row; r++)
                         for (int c = 0; c < col; c++)
@@ -1268,13 +1267,13 @@ public partial class FormImageSimulator : Form
                 {
                     var bmp = new Bitmap(col * width, row * height);
                     draw(Graphics.FromImage(bmp), null);
-                    if (action == actionEnum.Save)
+                    if (action == ActionEnum.Save)
                         bmp.Save(dlg.FileName, ImageFormat.Png);
                     else
                         Clipboard.SetDataObject(bmp);
                 }
             }
-            else if (format == formatEnum.TIFF)//Tiff形式 個別保存のみ
+            else if (format == FormatEnum.TIFF)//Tiff形式 個別保存のみ
             {
                 for (int r = 0; r < row; r++)
                     for (int c = 0; c < col; c++)
@@ -1289,20 +1288,20 @@ public partial class FormImageSimulator : Form
     }
 
     bool tableLayoutPanelFocused = false;
-    private void tableLayoutPanel_Enter(object sender, EventArgs e) => tableLayoutPanelFocused = true;
+    private void TableLayoutPanel_Enter(object sender, EventArgs e) => tableLayoutPanelFocused = true;
 
-    private void tableLayoutPanel_Leave(object sender, EventArgs e) => tableLayoutPanelFocused = false;
+    private void TableLayoutPanel_Leave(object sender, EventArgs e) => tableLayoutPanelFocused = false;
 
     private void FormImageSimulator_KeyDown(object sender, KeyEventArgs e)
     {
         if (tableLayoutPanelFocused && e.Control && e.KeyCode == Keys.C)
             ToolStripMenuItemCopyMetafile_Click(sender, new EventArgs());
     }
-    private void ToolStripMenuItemSavePNG_Click(object sender, EventArgs e) => Save(formatEnum.PNG, actionEnum.Save);
-    private void ToolStripMenuItemSaveTIFF_Click(object sender, EventArgs e) => Save(formatEnum.TIFF, actionEnum.Save);
-    private void ToolStripMenuItemSaveMetafile_Click(object sender, EventArgs e) => Save(formatEnum.Meta, actionEnum.Save);
-    private void ToolStripMenuItemCopyImage_Click(object sender, EventArgs e) => Save(formatEnum.PNG, actionEnum.Copy);
-    private void ToolStripMenuItemCopyMetafile_Click(object sender, EventArgs e) => Save(formatEnum.Meta, actionEnum.Copy);
+    private void ToolStripMenuItemSavePNG_Click(object sender, EventArgs e) => Save(FormatEnum.PNG, ActionEnum.Save);
+    private void ToolStripMenuItemSaveTIFF_Click(object sender, EventArgs e) => Save(FormatEnum.TIFF, ActionEnum.Save);
+    private void ToolStripMenuItemSaveMetafile_Click(object sender, EventArgs e) => Save(FormatEnum.Meta, ActionEnum.Save);
+    private void ToolStripMenuItemCopyImage_Click(object sender, EventArgs e) => Save(FormatEnum.PNG, ActionEnum.Copy);
+    private void ToolStripMenuItemCopyMetafile_Click(object sender, EventArgs e) => Save(FormatEnum.Meta, ActionEnum.Copy);
     #endregion 画像のコピー/保存
 
     #region その他イベント
@@ -1406,12 +1405,12 @@ public partial class FormImageSimulator : Form
     #endregion 画像の輝度、カラースケール、ガウシアンぼかし
 
     #region 右クリックメニュー
-    private void setoZeroDefocusToolStripMenuItem_Click(object sender, EventArgs e)
+    private void setZeroDefocusToolStripMenuItem_Click(object sender, EventArgs e)
     {
         numericBoxDefocus.Value = 0;
     }
 
-    private void setoScherzerDefocusToolStripMenuItem_Click(object sender, EventArgs e)
+    private void setScherzerDefocusToolStripMenuItem_Click(object sender, EventArgs e)
     {
         numericBoxDefocus.Value = Scherzer;
     }

@@ -290,7 +290,7 @@
             listBox.MultiColumn = true;
             listBox.Name = "listBox";
             toolTip.SetToolTip(listBox, resources.GetString("listBox.ToolTip"));
-            listBox.SelectedIndexChanged += listBox_SelectedIndexChanged;
+            listBox.SelectedIndexChanged += ListBox_SelectedIndexChanged;
             // 
             // flowLayoutPanel4
             // 
@@ -309,7 +309,7 @@
             buttonAllClear.Name = "buttonAllClear";
             toolTip.SetToolTip(buttonAllClear, resources.GetString("buttonAllClear.ToolTip"));
             buttonAllClear.UseVisualStyleBackColor = false;
-            buttonAllClear.Click += buttonAllClear_Click;
+            buttonAllClear.Click += ButtonAllClear_Click;
             // 
             // buttonDelete
             // 
@@ -319,7 +319,7 @@
             buttonDelete.Name = "buttonDelete";
             toolTip.SetToolTip(buttonDelete, resources.GetString("buttonDelete.ToolTip"));
             buttonDelete.UseVisualStyleBackColor = false;
-            buttonDelete.Click += buttonDelete_Click;
+            buttonDelete.Click += ButtonDelete_Click;
             // 
             // buttonLower
             // 
@@ -327,7 +327,7 @@
             buttonLower.Name = "buttonLower";
             toolTip.SetToolTip(buttonLower, resources.GetString("buttonLower.ToolTip"));
             buttonLower.UseVisualStyleBackColor = false;
-            buttonLower.Click += buttonLower_Click;
+            buttonLower.Click += ButtonLower_Click;
             // 
             // buttonUpper
             // 
@@ -335,7 +335,7 @@
             buttonUpper.Name = "buttonUpper";
             toolTip.SetToolTip(buttonUpper, resources.GetString("buttonUpper.ToolTip"));
             buttonUpper.UseVisualStyleBackColor = false;
-            buttonUpper.Click += buttonUpper_Click;
+            buttonUpper.Click += ButtonUpper_Click;
             // 
             // panel2
             // 
@@ -397,7 +397,7 @@
             buttonAdd.Name = "buttonAdd";
             toolTip.SetToolTip(buttonAdd, resources.GetString("buttonAdd.ToolTip"));
             buttonAdd.UseVisualStyleBackColor = false;
-            buttonAdd.Click += buttonAdd_Click;
+            buttonAdd.Click += ButtonAdd_Click;
             // 
             // buttonChange
             // 
@@ -407,7 +407,7 @@
             buttonChange.Name = "buttonChange";
             toolTip.SetToolTip(buttonChange, resources.GetString("buttonChange.ToolTip"));
             buttonChange.UseVisualStyleBackColor = false;
-            buttonChange.Click += buttonChange_Click;
+            buttonChange.Click += ButtonChange_Click;
             // 
             // panel3
             // 
@@ -652,7 +652,7 @@
             buttonAntiClock.Name = "buttonAntiClock";
             toolTip.SetToolTip(buttonAntiClock, resources.GetString("buttonAntiClock.ToolTip"));
             buttonAntiClock.UseVisualStyleBackColor = true;
-            buttonAntiClock.Click += buttonDirection_Click;
+            buttonAntiClock.Click += ButtonDirection_Click;
             // 
             // buttonClock
             // 
@@ -660,7 +660,7 @@
             buttonClock.Name = "buttonClock";
             toolTip.SetToolTip(buttonClock, resources.GetString("buttonClock.ToolTip"));
             buttonClock.UseVisualStyleBackColor = true;
-            buttonClock.Click += buttonDirection_Click;
+            buttonClock.Click += ButtonDirection_Click;
             // 
             // buttonTopLeft
             // 
@@ -668,7 +668,7 @@
             buttonTopLeft.Name = "buttonTopLeft";
             toolTip.SetToolTip(buttonTopLeft, resources.GetString("buttonTopLeft.ToolTip"));
             buttonTopLeft.UseVisualStyleBackColor = true;
-            buttonTopLeft.Click += buttonDirection_Click;
+            buttonTopLeft.Click += ButtonDirection_Click;
             // 
             // buttonLeft
             // 
@@ -676,7 +676,7 @@
             buttonLeft.Name = "buttonLeft";
             toolTip.SetToolTip(buttonLeft, resources.GetString("buttonLeft.ToolTip"));
             buttonLeft.UseVisualStyleBackColor = true;
-            buttonLeft.Click += buttonDirection_Click;
+            buttonLeft.Click += ButtonDirection_Click;
             // 
             // buttonBottomLeft
             // 
@@ -684,7 +684,7 @@
             buttonBottomLeft.Name = "buttonBottomLeft";
             toolTip.SetToolTip(buttonBottomLeft, resources.GetString("buttonBottomLeft.ToolTip"));
             buttonBottomLeft.UseVisualStyleBackColor = false;
-            buttonBottomLeft.Click += buttonDirection_Click;
+            buttonBottomLeft.Click += ButtonDirection_Click;
             // 
             // buttonBottom
             // 
@@ -692,7 +692,7 @@
             buttonBottom.Name = "buttonBottom";
             toolTip.SetToolTip(buttonBottom, resources.GetString("buttonBottom.ToolTip"));
             buttonBottom.UseVisualStyleBackColor = true;
-            buttonBottom.Click += buttonDirection_Click;
+            buttonBottom.Click += ButtonDirection_Click;
             // 
             // buttonBottomRight
             // 
@@ -700,7 +700,7 @@
             buttonBottomRight.Name = "buttonBottomRight";
             toolTip.SetToolTip(buttonBottomRight, resources.GetString("buttonBottomRight.ToolTip"));
             buttonBottomRight.UseVisualStyleBackColor = true;
-            buttonBottomRight.Click += buttonDirection_Click;
+            buttonBottomRight.Click += ButtonDirection_Click;
             // 
             // buttonTop
             // 
@@ -708,7 +708,7 @@
             buttonTop.Name = "buttonTop";
             toolTip.SetToolTip(buttonTop, resources.GetString("buttonTop.ToolTip"));
             buttonTop.UseVisualStyleBackColor = false;
-            buttonTop.Click += buttonDirection_Click;
+            buttonTop.Click += ButtonDirection_Click;
             // 
             // buttonTopRight
             // 
@@ -716,7 +716,7 @@
             buttonTopRight.Name = "buttonTopRight";
             toolTip.SetToolTip(buttonTopRight, resources.GetString("buttonTopRight.ToolTip"));
             buttonTopRight.UseVisualStyleBackColor = false;
-            buttonTopRight.Click += buttonDirection_Click;
+            buttonTopRight.Click += ButtonDirection_Click;
             // 
             // buttonRight
             // 
@@ -724,7 +724,7 @@
             buttonRight.Name = "buttonRight";
             toolTip.SetToolTip(buttonRight, resources.GetString("buttonRight.ToolTip"));
             buttonRight.UseVisualStyleBackColor = false;
-            buttonRight.Click += buttonDirection_Click;
+            buttonRight.Click += ButtonDirection_Click;
             // 
             // panel4
             // 
@@ -755,7 +755,7 @@
             checkBoxAnimation.Name = "checkBoxAnimation";
             toolTip.SetToolTip(checkBoxAnimation, resources.GetString("checkBoxAnimation.ToolTip"));
             checkBoxAnimation.UseVisualStyleBackColor = true;
-            checkBoxAnimation.CheckedChanged += checkBoxAnimation_CheckedChanged;
+            checkBoxAnimation.CheckedChanged += CheckBoxAnimation_CheckedChanged;
             // 
             // groupBoxCurrentDirection
             // 
@@ -862,7 +862,7 @@
             buttonReset.Name = "buttonReset";
             toolTip.SetToolTip(buttonReset, resources.GetString("buttonReset.ToolTip"));
             buttonReset.UseVisualStyleBackColor = false;
-            buttonReset.Click += buttonReset_Click;
+            buttonReset.Click += ButtonReset_Click;
             // 
             // numericBoxMaxUVW
             // 
@@ -1107,7 +1107,7 @@
             // 
             saveCrystalDataToolStripMenuItem.Name = "saveCrystalDataToolStripMenuItem";
             resources.ApplyResources(saveCrystalDataToolStripMenuItem, "saveCrystalDataToolStripMenuItem");
-            saveCrystalDataToolStripMenuItem.Click += saveCrystalDataToolStripMenuItem_Click;
+            saveCrystalDataToolStripMenuItem.Click += SaveCrystalDataToolStripMenuItem_Click;
             // 
             // toolStripMenuItemExportCIF
             // 
@@ -1296,7 +1296,7 @@
             // timer
             // 
             timer.Interval = 2;
-            timer.Tick += timer_Tick;
+            timer.Tick += Timer_Tick;
             // 
             // FormMain
             // 

@@ -38,7 +38,7 @@ public partial class FormDiffractionSimulator : Form
     private GLControlAlpha glControlZsort;
     private GLControlAlpha glControlOIT;
 
-    private Timer timer = new();
+    private readonly Timer timer = new();
 
     #region 計算モード
     public enum CalcModes { Excitation, Kinematical, Dynamical }
@@ -1546,7 +1546,7 @@ public partial class FormDiffractionSimulator : Form
             if (radioButtonKikuchiThresholdOfLength.Checked)
             {
                 formMain.Crystal.VectorOfG_KikuchiLine =
-                formMain.Crystal.VectorOfG.Where(g => g.Length < numericBoxKikuchiThresholdOfLength.Value).OrderByDescending(g=>g.Length).ToList();
+                [.. formMain.Crystal.VectorOfG.Where(g => g.Length < numericBoxKikuchiThresholdOfLength.Value).OrderByDescending(g=>g.Length)];
             }
             else
             {
@@ -2113,7 +2113,7 @@ public partial class FormDiffractionSimulator : Form
     #endregion 印刷関係
 
     #region ToolStripButton, StatusStrip 関連のイベント
-    private void toolStripButtonDiffractionSpots_CheckedChanged(object sender, EventArgs e)
+    private void ToolStripButtonDiffractionSpots_CheckedChanged(object sender, EventArgs e)
     {
         SetVector();
 
@@ -2444,7 +2444,7 @@ public partial class FormDiffractionSimulator : Form
         Draw();
     }
 
-    private void checkBoxExtinctionAll_CheckedChanged(object sender, EventArgs e)
+    private void CheckBoxExtinctionAll_CheckedChanged(object sender, EventArgs e)
     {
         if (checkBoxExtinctionAll.Checked)
         {
@@ -2476,7 +2476,7 @@ public partial class FormDiffractionSimulator : Form
     #endregion
 
     #region 中心位置設定関連
-    private void buttonResetCenter_Click_1(object sender, EventArgs e)
+    private void ButtonResetCenter_Click_1(object sender, EventArgs e)
     {
         Foot = FixedCenter;
         Draw();
@@ -2503,17 +2503,17 @@ public partial class FormDiffractionSimulator : Form
     }
 
 
-    private void checkBoxFixCenter_CheckedChanged(object sender, EventArgs e)
+    private void CheckBoxFixCenter_CheckedChanged(object sender, EventArgs e)
     {
         if (checkBoxFixCenter.Checked)
             buttonResetCenter.PerformClick();
         buttonResetCenter.Enabled = !checkBoxFixCenter.Checked;
     }
 
-    private void radioButtonCenterTo_CheckedChanged(object sender, EventArgs e)
+    private void RadioButtonCenterTo_CheckedChanged(object sender, EventArgs e)
     {
         if (checkBoxFixCenter.Checked && (sender as RadioButton).Checked)
-            buttonResetCenter_Click_1(sender, e);
+            ButtonResetCenter_Click_1(sender, e);
     }
 
     #endregion
@@ -2579,25 +2579,25 @@ public partial class FormDiffractionSimulator : Form
     #endregion
 
     #region 保存、コピー関連
-    private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, true, true);
+    private void SaveAsImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, true, true);
 
-    private void saveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, false, true);
+    private void SaveAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopy(true, false, true);
 
-    private void saveDetectorAsImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
+    private void SaveDetectorAsImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
 
-    private void saveDetectorAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
+    private void SaveDetectorAsMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
 
-    private void copyAsImageToolStripMenuItem1_Click(object sender, EventArgs e) => SaveOrCopy(false, true, true);
+    private void CopyAsImageToolStripMenuItem1_Click(object sender, EventArgs e) => SaveOrCopy(false, true, true);
 
-    private void copyAsMetafileToolStripMenuItem1_Click(object sender, EventArgs e) => SaveOrCopy(false, false, true);
+    private void CopyAsMetafileToolStripMenuItem1_Click(object sender, EventArgs e) => SaveOrCopy(false, false, true);
 
-    private void copyDetectorAsImageWithOverlappeImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
+    private void CopyDetectorAsImageWithOverlappeImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
 
-    private void copyDetectorAsMetafileWithOverlappedImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
+    private void CopyDetectorAsMetafileWithOverlappedImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
 
-    private void saveCBEDasPngToolStripMenuItem_Click(object sender, EventArgs e) => saveCBEDasTiffToolStripMenuItem_Click(sender, e);
+    private void SaveCBEDasPngToolStripMenuItem_Click(object sender, EventArgs e) => SaveCBEDasTiffToolStripMenuItem_Click(sender, e);
 
-    private void saveCBEDasTiffToolStripMenuItem_Click(object sender, EventArgs e)
+    private void SaveCBEDasTiffToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var png = ((ToolStripItem)sender).Text.Contains("PNG");
 
@@ -2649,7 +2649,7 @@ public partial class FormDiffractionSimulator : Form
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void asCollectiveImageTiffFormatToolStripMenuItem_Click(object sender, EventArgs e)
+    private void AsCollectiveImageTiffFormatToolStripMenuItem_Click(object sender, EventArgs e)
     {
         if (!FormDiffractionSimulatorCBED.Visible || FormDiffractionSimulatorCBED.Disks == null)
             return;
@@ -2720,11 +2720,11 @@ public partial class FormDiffractionSimulator : Form
 
     }
 
-    private void saveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
-    private void copyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
+    private void SaveCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, false);
+    private void CopyCBEDasImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, true);
 
     //private void copyCBEDasMetafileToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(false, false);
-    private void saveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
+    private void SaveCBEDasCollectiveImageToolStripMenuItem_Click(object sender, EventArgs e) => SaveOrCopyDetector(true, true);
 
     public void SaveOrCopy(bool save, bool isImage, bool drawOverlappedImage, string filename = "")
     {
@@ -2922,7 +2922,7 @@ public partial class FormDiffractionSimulator : Form
         splitContainer1.Panel2Collapsed = !checkBoxReciprocalSpace.Checked;
     }
 
-    private readonly object lockObj = new();
+    private readonly System.Threading.Lock lockObj = new();
     private List<GLObject> ewaldList = [];
     private (double maxAngle, double ewaldRadius, bool Precession) beforeEwald = (0, 0, false);
     private void Draw3D()
@@ -2979,7 +2979,7 @@ public partial class FormDiffractionSimulator : Form
                         if (j == 1)
                             listObj.Add(new Triangle(rot1V1, rot1V2, rot[i + 1] * v2, mat, DrawingMode.Surfaces));
                         else
-                            listObj.Add(new Polygon(new[] { rot1V1, rot1V2, rot[i + 1] * v2, rot[i + 1] * v1 }, mat, DrawingMode.Surfaces));
+                            listObj.Add(new Polygon([rot1V1, rot1V2, rot[i + 1] * v2, rot[i + 1] * v1], mat, DrawingMode.Surfaces));
 
                         if (i % 5 == 0)
                             listObj.Add(new Lines([rot1V1, rot1V2], 1f, mat));

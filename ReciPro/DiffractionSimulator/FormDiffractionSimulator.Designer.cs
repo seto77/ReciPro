@@ -390,7 +390,7 @@
             toolStripButtonDiffractionSpots.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             resources.ApplyResources(toolStripButtonDiffractionSpots, "toolStripButtonDiffractionSpots");
             toolStripButtonDiffractionSpots.Name = "toolStripButtonDiffractionSpots";
-            toolStripButtonDiffractionSpots.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonDiffractionSpots.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             toolStripButtonDiffractionSpots.MouseDown += toolStripButtonDiffractionSpots_MouseDown;
             // 
             // toolStripSeparator2
@@ -405,7 +405,7 @@
             toolStripButtonKikuchiLines.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             resources.ApplyResources(toolStripButtonKikuchiLines, "toolStripButtonKikuchiLines");
             toolStripButtonKikuchiLines.Name = "toolStripButtonKikuchiLines";
-            toolStripButtonKikuchiLines.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonKikuchiLines.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             toolStripButtonKikuchiLines.MouseDown += toolStripButtonDiffractionSpots_MouseDown;
             // 
             // toolStripSeparator3
@@ -421,7 +421,7 @@
             toolStripButtonDebyeRing.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             resources.ApplyResources(toolStripButtonDebyeRing, "toolStripButtonDebyeRing");
             toolStripButtonDebyeRing.Name = "toolStripButtonDebyeRing";
-            toolStripButtonDebyeRing.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonDebyeRing.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             toolStripButtonDebyeRing.MouseDown += toolStripButtonDiffractionSpots_MouseDown;
             // 
             // toolStripSeparator6
@@ -437,7 +437,7 @@
             toolStripButtonScale.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             resources.ApplyResources(toolStripButtonScale, "toolStripButtonScale");
             toolStripButtonScale.Name = "toolStripButtonScale";
-            toolStripButtonScale.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonScale.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             toolStripButtonScale.MouseDown += toolStripButtonDiffractionSpots_MouseDown;
             // 
             // toolStrip1
@@ -458,7 +458,7 @@
             toolStripButtonIndexLabels.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonIndexLabels, "toolStripButtonIndexLabels");
             toolStripButtonIndexLabels.Name = "toolStripButtonIndexLabels";
-            toolStripButtonIndexLabels.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonIndexLabels.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
             // toolStripButtonDspacing
             // 
@@ -467,7 +467,7 @@
             toolStripButtonDspacing.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonDspacing, "toolStripButtonDspacing");
             toolStripButtonDspacing.Name = "toolStripButtonDspacing";
-            toolStripButtonDspacing.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonDspacing.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
             // toolStripButtonDspacingInv
             // 
@@ -476,7 +476,7 @@
             toolStripButtonDspacingInv.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonDspacingInv, "toolStripButtonDspacingInv");
             toolStripButtonDspacingInv.Name = "toolStripButtonDspacingInv";
-            toolStripButtonDspacingInv.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonDspacingInv.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
             // toolStripButtonDistance
             // 
@@ -485,7 +485,7 @@
             toolStripButtonDistance.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonDistance, "toolStripButtonDistance");
             toolStripButtonDistance.Name = "toolStripButtonDistance";
-            toolStripButtonDistance.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonDistance.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
             // toolStripButtonExcitationError
             // 
@@ -494,7 +494,7 @@
             toolStripButtonExcitationError.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonExcitationError, "toolStripButtonExcitationError");
             toolStripButtonExcitationError.Name = "toolStripButtonExcitationError";
-            toolStripButtonExcitationError.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonExcitationError.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
             // toolStripButtonFg
             // 
@@ -503,7 +503,7 @@
             toolStripButtonFg.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonFg, "toolStripButtonFg");
             toolStripButtonFg.Name = "toolStripButtonFg";
-            toolStripButtonFg.CheckedChanged += toolStripButtonDiffractionSpots_CheckedChanged;
+            toolStripButtonFg.CheckedChanged += ToolStripButtonDiffractionSpots_CheckedChanged;
             // 
             // statusStrip1
             // 
@@ -1627,7 +1627,7 @@
             buttonResetCenter.Name = "buttonResetCenter";
             toolTip.SetToolTip(buttonResetCenter, resources.GetString("buttonResetCenter.ToolTip"));
             buttonResetCenter.UseVisualStyleBackColor = true;
-            buttonResetCenter.Click += buttonResetCenter_Click_1;
+            buttonResetCenter.Click += ButtonResetCenter_Click_1;
             // 
             // checkBoxFixCenter
             // 
@@ -1635,7 +1635,7 @@
             checkBoxFixCenter.Name = "checkBoxFixCenter";
             toolTip.SetToolTip(checkBoxFixCenter, resources.GetString("checkBoxFixCenter.ToolTip"));
             checkBoxFixCenter.UseVisualStyleBackColor = true;
-            checkBoxFixCenter.CheckedChanged += checkBoxFixCenter_CheckedChanged;
+            checkBoxFixCenter.CheckedChanged += CheckBoxFixCenter_CheckedChanged;
             // 
             // flowLayoutPanel13
             // 
@@ -1801,13 +1801,13 @@
             // 
             saveAsImageToolStripMenuItem.Name = "saveAsImageToolStripMenuItem";
             resources.ApplyResources(saveAsImageToolStripMenuItem, "saveAsImageToolStripMenuItem");
-            saveAsImageToolStripMenuItem.Click += saveAsImageToolStripMenuItem_Click;
+            saveAsImageToolStripMenuItem.Click += SaveAsImageToolStripMenuItem_Click;
             // 
             // saveAsMetafileToolStripMenuItem
             // 
             saveAsMetafileToolStripMenuItem.Name = "saveAsMetafileToolStripMenuItem";
             resources.ApplyResources(saveAsMetafileToolStripMenuItem, "saveAsMetafileToolStripMenuItem");
-            saveAsMetafileToolStripMenuItem.Click += saveAsMetafileToolStripMenuItem_Click;
+            saveAsMetafileToolStripMenuItem.Click += SaveAsMetafileToolStripMenuItem_Click;
             // 
             // saveDetectorAreaToolStripMenuItem
             // 
@@ -1819,13 +1819,13 @@
             // 
             saveDetectorAsImageToolStripMenuItem.Name = "saveDetectorAsImageToolStripMenuItem";
             resources.ApplyResources(saveDetectorAsImageToolStripMenuItem, "saveDetectorAsImageToolStripMenuItem");
-            saveDetectorAsImageToolStripMenuItem.Click += saveDetectorAsImageToolStripMenuItem_Click;
+            saveDetectorAsImageToolStripMenuItem.Click += SaveDetectorAsImageToolStripMenuItem_Click;
             // 
             // saveDetectorAsMetafileToolStripMenuItem
             // 
             saveDetectorAsMetafileToolStripMenuItem.Name = "saveDetectorAsMetafileToolStripMenuItem";
             resources.ApplyResources(saveDetectorAsMetafileToolStripMenuItem, "saveDetectorAsMetafileToolStripMenuItem");
-            saveDetectorAsMetafileToolStripMenuItem.Click += saveDetectorAsMetafileToolStripMenuItem_Click;
+            saveDetectorAsMetafileToolStripMenuItem.Click += SaveDetectorAsMetafileToolStripMenuItem_Click;
             // 
             // saveCBEDPatternToolStripMenuItem
             // 
@@ -1837,25 +1837,25 @@
             // 
             saveCBEDasPngToolStripMenuItem.Name = "saveCBEDasPngToolStripMenuItem";
             resources.ApplyResources(saveCBEDasPngToolStripMenuItem, "saveCBEDasPngToolStripMenuItem");
-            saveCBEDasPngToolStripMenuItem.Click += saveCBEDasPngToolStripMenuItem_Click;
+            saveCBEDasPngToolStripMenuItem.Click += SaveCBEDasPngToolStripMenuItem_Click;
             // 
             // saveCBEDasTiffToolStripMenuItem
             // 
             saveCBEDasTiffToolStripMenuItem.Name = "saveCBEDasTiffToolStripMenuItem";
             resources.ApplyResources(saveCBEDasTiffToolStripMenuItem, "saveCBEDasTiffToolStripMenuItem");
-            saveCBEDasTiffToolStripMenuItem.Click += saveCBEDasTiffToolStripMenuItem_Click;
+            saveCBEDasTiffToolStripMenuItem.Click += SaveCBEDasTiffToolStripMenuItem_Click;
             // 
             // asPixelByPixelImagePNGFormatToolStripMenuItem
             // 
             asPixelByPixelImagePNGFormatToolStripMenuItem.Name = "asPixelByPixelImagePNGFormatToolStripMenuItem";
             resources.ApplyResources(asPixelByPixelImagePNGFormatToolStripMenuItem, "asPixelByPixelImagePNGFormatToolStripMenuItem");
-            asPixelByPixelImagePNGFormatToolStripMenuItem.Click += saveCBEDasCollectiveImageToolStripMenuItem_Click;
+            asPixelByPixelImagePNGFormatToolStripMenuItem.Click += SaveCBEDasCollectiveImageToolStripMenuItem_Click;
             // 
             // asCollectiveImageTiffFormatToolStripMenuItem
             // 
             asCollectiveImageTiffFormatToolStripMenuItem.Name = "asCollectiveImageTiffFormatToolStripMenuItem";
             resources.ApplyResources(asCollectiveImageTiffFormatToolStripMenuItem, "asCollectiveImageTiffFormatToolStripMenuItem");
-            asCollectiveImageTiffFormatToolStripMenuItem.Click += asCollectiveImageTiffFormatToolStripMenuItem_Click;
+            asCollectiveImageTiffFormatToolStripMenuItem.Click += AsCollectiveImageTiffFormatToolStripMenuItem_Click;
             // 
             // copyImageToClipboardToolStripMenuItem
             // 
@@ -1867,13 +1867,13 @@
             // 
             copyAsImageToolStripMenuItem.Name = "copyAsImageToolStripMenuItem";
             resources.ApplyResources(copyAsImageToolStripMenuItem, "copyAsImageToolStripMenuItem");
-            copyAsImageToolStripMenuItem.Click += copyAsImageToolStripMenuItem1_Click;
+            copyAsImageToolStripMenuItem.Click += CopyAsImageToolStripMenuItem1_Click;
             // 
             // copyAsMetafileToolStripMenuItem
             // 
             copyAsMetafileToolStripMenuItem.Name = "copyAsMetafileToolStripMenuItem";
             resources.ApplyResources(copyAsMetafileToolStripMenuItem, "copyAsMetafileToolStripMenuItem");
-            copyAsMetafileToolStripMenuItem.Click += copyAsMetafileToolStripMenuItem1_Click;
+            copyAsMetafileToolStripMenuItem.Click += CopyAsMetafileToolStripMenuItem1_Click;
             // 
             // copyDetectorAreaToolStripMenuItem
             // 
@@ -1885,13 +1885,13 @@
             // 
             copyDetectorAsImageToolStripMenuItem.Name = "copyDetectorAsImageToolStripMenuItem";
             resources.ApplyResources(copyDetectorAsImageToolStripMenuItem, "copyDetectorAsImageToolStripMenuItem");
-            copyDetectorAsImageToolStripMenuItem.Click += copyDetectorAsImageWithOverlappeImageToolStripMenuItem_Click;
+            copyDetectorAsImageToolStripMenuItem.Click += CopyDetectorAsImageWithOverlappeImageToolStripMenuItem_Click;
             // 
             // copyDetectorAsMetafileToolStripMenuItem
             // 
             copyDetectorAsMetafileToolStripMenuItem.Name = "copyDetectorAsMetafileToolStripMenuItem";
             resources.ApplyResources(copyDetectorAsMetafileToolStripMenuItem, "copyDetectorAsMetafileToolStripMenuItem");
-            copyDetectorAsMetafileToolStripMenuItem.Click += copyDetectorAsMetafileWithOverlappedImageToolStripMenuItem_Click;
+            copyDetectorAsMetafileToolStripMenuItem.Click += CopyDetectorAsMetafileWithOverlappedImageToolStripMenuItem_Click;
             // 
             // copyCBEDPatternToolStripMenuItem
             // 
@@ -1903,7 +1903,7 @@
             // 
             copyCBEDasImageToolStripMenuItem.Name = "copyCBEDasImageToolStripMenuItem";
             resources.ApplyResources(copyCBEDasImageToolStripMenuItem, "copyCBEDasImageToolStripMenuItem");
-            copyCBEDasImageToolStripMenuItem.Click += copyCBEDasImageToolStripMenuItem_Click;
+            copyCBEDasImageToolStripMenuItem.Click += CopyCBEDasImageToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
@@ -2074,7 +2074,7 @@
             resources.ApplyResources(checkBoxExtinctionAll, "checkBoxExtinctionAll");
             checkBoxExtinctionAll.Name = "checkBoxExtinctionAll";
             toolTip.SetToolTip(checkBoxExtinctionAll, resources.GetString("checkBoxExtinctionAll.ToolTip"));
-            checkBoxExtinctionAll.CheckedChanged += checkBoxExtinctionAll_CheckedChanged;
+            checkBoxExtinctionAll.CheckedChanged += CheckBoxExtinctionAll_CheckedChanged;
             // 
             // checkBoxExtinctionLattice
             // 
@@ -2083,7 +2083,7 @@
             checkBoxExtinctionLattice.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxExtinctionLattice.Name = "checkBoxExtinctionLattice";
             toolTip.SetToolTip(checkBoxExtinctionLattice, resources.GetString("checkBoxExtinctionLattice.ToolTip"));
-            checkBoxExtinctionLattice.CheckedChanged += checkBoxExtinctionAll_CheckedChanged;
+            checkBoxExtinctionLattice.CheckedChanged += CheckBoxExtinctionAll_CheckedChanged;
             // 
             // groupBoxSpotProperty
             // 

@@ -329,8 +329,8 @@ namespace ReciPro
             tableLayoutPanel.CausesValidation = false;
             tableLayoutPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             tableLayoutPanel.Name = "tableLayoutPanel";
-            tableLayoutPanel.Enter += tableLayoutPanel_Enter;
-            tableLayoutPanel.Leave += tableLayoutPanel_Leave;
+            tableLayoutPanel.Enter += TableLayoutPanel_Enter;
+            tableLayoutPanel.Leave += TableLayoutPanel_Leave;
             // 
             // panel1
             // 
@@ -1758,13 +1758,13 @@ namespace ReciPro
             // 
             setoZeroDefocusToolStripMenuItem.Name = "setoZeroDefocusToolStripMenuItem";
             resources.ApplyResources(setoZeroDefocusToolStripMenuItem, "setoZeroDefocusToolStripMenuItem");
-            setoZeroDefocusToolStripMenuItem.Click += setoZeroDefocusToolStripMenuItem_Click;
+            setoZeroDefocusToolStripMenuItem.Click += setZeroDefocusToolStripMenuItem_Click;
             // 
             // setoScherzerDefocusToolStripMenuItem
             // 
             setoScherzerDefocusToolStripMenuItem.Name = "setoScherzerDefocusToolStripMenuItem";
             resources.ApplyResources(setoScherzerDefocusToolStripMenuItem, "setoScherzerDefocusToolStripMenuItem");
-            setoScherzerDefocusToolStripMenuItem.Click += setoScherzerDefocusToolStripMenuItem_Click;
+            setoScherzerDefocusToolStripMenuItem.Click += setScherzerDefocusToolStripMenuItem_Click;
             // 
             // setAllAToolStripMenuItem
             // 

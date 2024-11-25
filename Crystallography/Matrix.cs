@@ -559,6 +559,7 @@ public class Matrix3D : ICloneable
 public class Vector3DBase : ICloneable
 {
     public static readonly Vector3DBase Zero = new(0, 0, 0);
+    private object arr;
 
     public double X { get; set; }
     public double Y { get; set; }

@@ -363,11 +363,11 @@ public partial class FormMain : Form
             File.Copy(appPath + "initial.xml", UserAppDataPath + "default.xml", true);
 
         //初期結晶リストを読み込み
-        readCrystalList(UserAppDataPath + "default.xml", false, true);
+        ReadCrystalList(UserAppDataPath + "default.xml", false, true);
 
         //何らかの理由(前回が不正終了だったなど)でdefalut.xmlが壊れている場合はinitial.xmlを読み込む
         if (listBox.Items.Count == 0)
-            readCrystalList(UserAppDataPath + "initial.xml", false, true);
+            ReadCrystalList(UserAppDataPath + "initial.xml", false, true);
 
         //ReciProSetup.msiは削除 アンインストール出来なくなるかもしれないので、削除はやめた方がいいかも 20240208
         //if (File.Exists(UserAppDataPath + "ReciProSetup.msi"))
@@ -547,7 +547,7 @@ public partial class FormMain : Form
         glControlAxes.WorldMatrixEx = Crystal?.RotationMatrix.Transpose();
     }
 
-    private void resetAxes()
+    private void ResetAxes()
     {
        
         if (glControlAxes == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0)
@@ -709,13 +709,13 @@ public partial class FormMain : Form
     #region 回転ボタン
 
     //角度リセットボタン
-    private void buttonReset_Click(object sender, EventArgs e)
+    private void ButtonReset_Click(object sender, EventArgs e)
     {
         timer.Stop();
         SetRotation(new Matrix3D());
     }
 
-    private void buttonDirection_Click(object sender, EventArgs e)
+    private void ButtonDirection_Click(object sender, EventArgs e)
     {
         var v = (sender as Button).Name switch
         {
@@ -733,7 +733,7 @@ public partial class FormMain : Form
         };
 
         if (checkBoxAnimation.Checked)
-            startAnimation(v);
+            StartAnimation(v);
         else
             Rotate(v, numericBoxStep.RadianValue);
     }
@@ -741,7 +741,7 @@ public partial class FormMain : Form
     private readonly Stopwatch stopwatchAnimation = new();
     private long ellapseTime = 0;
 
-    private void startAnimation(Vector3DBase v)
+    private void StartAnimation(Vector3DBase v)
     {
         timer.Stop();
         stopwatchAnimation.Restart();
@@ -753,7 +753,7 @@ public partial class FormMain : Form
     private Vector3DBase rotationAxisAnimation = new Vector3D(0, 0, 1);
     private int timerCounter = 1;
 
-    private void timer_Tick(object sender, EventArgs e)
+    private void Timer_Tick(object sender, EventArgs e)
     {
         double differenceTime = stopwatchAnimation.ElapsedMilliseconds - ellapseTime;
         ellapseTime = stopwatchAnimation.ElapsedMilliseconds;
@@ -766,7 +766,7 @@ public partial class FormMain : Form
         double angle = differenceTime / 1000.0 * numericBoxStep.RadianValue;
         Rotate(rotationAxisAnimation, angle);
     }
-    private void checkBoxAnimation_CheckedChanged(object sender, EventArgs e)
+    private void CheckBoxAnimation_CheckedChanged(object sender, EventArgs e)
     {
         if (checkBoxAnimation.Checked)
             numericBoxStep.FooterText = "°/s";
@@ -998,7 +998,7 @@ public partial class FormMain : Form
     private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
     {
         FormPolycrystallineDiffractionSimulator.Visible = toolStripButtonDiffractionPoly.Checked;
-        listBox_SelectedIndexChanged(listBox, e);
+        ListBox_SelectedIndexChanged(listBox, e);
     }
 
     private void formCalculator_FormClosing(object sender, FormClosingEventArgs e)
@@ -1042,14 +1042,14 @@ public partial class FormMain : Form
             if(FormEBSD.Visible)
                 FormEBSD.SetCrystal();
 
-            resetAxes();
+            ResetAxes();
         }
     }
     #endregion
 
     #region リストボックス関連
 
-    private void buttonUpper_Click(object sender, EventArgs e)
+    private void ButtonUpper_Click(object sender, EventArgs e)
     {
         var n = listBox.SelectedIndex;
         if (n <= 0) return;
@@ -1059,7 +1059,7 @@ public partial class FormMain : Form
         listBox.SelectedIndex = n - 1;
     }
 
-    private void buttonLower_Click(object sender, EventArgs e)
+    private void ButtonLower_Click(object sender, EventArgs e)
     {
         int n = listBox.SelectedIndex;
         if (n >= listBox.Items.Count - 1) return;
@@ -1069,7 +1069,7 @@ public partial class FormMain : Form
         listBox.SelectedIndex = n + 1;
     }
 
-    private void buttonAdd_Click(object sender, EventArgs e)
+    private void ButtonAdd_Click(object sender, EventArgs e)
     {
         if (crystalControl.StrainControlVisible) return;
 
@@ -1080,7 +1080,7 @@ public partial class FormMain : Form
         listBox.SelectedIndex = listBox.Items.Count - 1;
     }
 
-    private void buttonDelete_Click(object sender, EventArgs e)
+    private void ButtonDelete_Click(object sender, EventArgs e)
     {
         if (listBox.SelectedIndex >= 0)
         {
@@ -1093,9 +1093,9 @@ public partial class FormMain : Form
         }
     }
 
-    private void buttonAllClear_Click(object sender, EventArgs e) => listBox.Items.Clear();
+    private void ButtonAllClear_Click(object sender, EventArgs e) => listBox.Items.Clear();
 
-    private void buttonChange_Click(object sender, EventArgs e)
+    private void ButtonChange_Click(object sender, EventArgs e)
     {
         if (crystalControl.StrainControlVisible) return;
 
@@ -1107,7 +1107,7 @@ public partial class FormMain : Form
             listBox.Items[listBox.SelectedIndex] = crystalControl.Crystal;
     }
 
-    private void listBox_SelectedIndexChanged(object sender, EventArgs e)
+    private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (listBox.SelectedIndex >= 0)
             crystalControl.Crystal = (Crystal)listBox.SelectedItem;
@@ -1117,7 +1117,7 @@ public partial class FormMain : Form
     #endregion リストボックス関連
 
     #region 結晶データの読み込み/書き込み
-    private void readCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
+    private void ReadCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
     {
         var cry = new List<Crystal>();
         var list = ConvertCrystalData.ConvertToCrystalList(fileName);
@@ -1149,7 +1149,7 @@ public partial class FormMain : Form
         }
     }
 
-    private void saveCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
+    private void SaveCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var cry = new List<Crystal>();
         for (int i = 0; i < listBox.Items.Count; i++)
@@ -1187,18 +1187,18 @@ public partial class FormMain : Form
     {
         var dlg = new OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
         if (dlg.ShowDialog() == DialogResult.OK)
-            readCrystalList(dlg.FileName, true, true);
+            ReadCrystalList(dlg.FileName, true, true);
     }
 
     private void readCrystalDataAndAddtoolStripMenuItem_Click(object sender, EventArgs e)
     {
         var dlg = new OpenFileDialog { Filter = "xml, out|*.xml;*.out" };
         if (dlg.ShowDialog() == DialogResult.OK)
-            readCrystalList(dlg.FileName, true, false);
+            ReadCrystalList(dlg.FileName, true, false);
     }
 
     private void ToolStripMenuItemReadInitialCrystalList_Click(object sender, EventArgs e)
-        => readCrystalList(UserAppDataPath + "initial.xml", false, true);
+        => ReadCrystalList(UserAppDataPath + "initial.xml", false, true);
 
     private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -1343,9 +1343,9 @@ public partial class FormMain : Form
                 if (dr == DialogResult.Cancel)
                     return;
                 else if (dr == DialogResult.Yes)
-                    readCrystalList(fileName[0], true, true);
+                    ReadCrystalList(fileName[0], true, true);
                 else
-                    readCrystalList(fileName[0], true, false);
+                    ReadCrystalList(fileName[0], true, false);
             }
             else if (fileName[0].ToLower().EndsWith("cif") || fileName[0].ToLower().EndsWith("amc"))
             {

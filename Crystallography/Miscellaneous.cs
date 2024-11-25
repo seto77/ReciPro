@@ -145,10 +145,7 @@ public static class Miscellaneous
             }
             finally
             {
-                if (stream != null)
-                {
-                    stream.Close();
-                }
+                stream?.Close();
             }
 
             return false;
@@ -176,7 +173,7 @@ public class DefinitionOrderTypeConverter : TypeConverter
         foreach (PropertyInfo propertyInfo in type.GetProperties())
             list.Add(propertyInfo.Name);
         // リフレクションから取得した順でソート
-        return pdc.Sort(list.ToArray());
+        return pdc.Sort([.. list]);
     }
 
     /// <summary>

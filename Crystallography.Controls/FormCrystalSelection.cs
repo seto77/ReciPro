@@ -75,10 +75,10 @@ namespace Crystallography.Controls
         {
             get
             {
-                List<Crystal> crystalList = new List<Crystal>();
+                List<Crystal> crystalList = [];
                 for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
                     crystalList.Add((Crystal)checkedListBox1.CheckedItems[i]);
-                return crystalList.ToArray();
+                return [.. crystalList];
             }
         }
 

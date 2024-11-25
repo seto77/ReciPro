@@ -271,7 +271,7 @@ public static class StringEx
     /// <param name="c"></param>
     /// <returns></returns>
     public static string[] Split(this string s, string separator, bool removeEmptyEntries = true)
-        => s.Split(new[] { separator }, removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
+        => s.Split([separator], removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
 
     /// <summary>
     /// 拡張メソッド.  指定したseparatorで文字を区切り、文字の配列を返す.
@@ -281,7 +281,7 @@ public static class StringEx
     /// <param name="removeEmptyEntries"></param>
     /// <returns></returns>
     public static string[] Split(this string s, char separator, bool removeEmptyEntries = true)
-         => s.Split(new[] { separator }, removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
+         => s.Split([separator], removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
 
 
     /// <summary>
@@ -289,7 +289,7 @@ public static class StringEx
     /// </summary>
     /// <returns></returns>
     public static string[] Split(this string s, bool removeEmptyEntries = true)
-        => s.Split(new[] { " ", "," }, removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
+        => s.Split([" ", ","], removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
 
 
     /// <summary>
@@ -297,7 +297,7 @@ public static class StringEx
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static double ToDouble(this string s) => !s.Contains("/") ? Convert.ToDouble(s) : s.Split("/", true)[0].ToDouble() / s.Split("/", true)[1].ToDouble();
+    public static double ToDouble(this string s) => !s.Contains('/') ? Convert.ToDouble(s) : s.Split("/", true)[0].ToDouble() / s.Split("/", true)[1].ToDouble();
 
     /// <summary>
     /// 拡張メソッド.  ConvertToInt32を拡張メソッドとして呼び出す. 変換できない場合は例外発生
@@ -329,6 +329,12 @@ public static class DoubleEx
     /// <param name="c"></param>
     /// <returns></returns>
     public static double ToDegrees(in this double d) => d * deg;
+
+    public static double Max(this double[][] d) => d.Max(e => e.Max());
+    public static double Min(this double[][] d) => d.Min(e => e.Min());
+    public static double Max(this double[][][] d) => d.Max(e => e.Max());
+    public static double Min(this double[][][] d) => d.Min(e => e.Min());
+
 }
 #endregion
 
@@ -461,7 +467,7 @@ public static class GraphicsAlpha
         string text, Font font, Size proposedSize, StringFormat stringFormat)
     {
         //解像度を引き継いで、Bitmapを作成する
-        Bitmap bmp = new Bitmap(proposedSize.Width, proposedSize.Height, g);
+        Bitmap bmp = new(proposedSize.Width, proposedSize.Height, g);
         //BitmapのGraphicsを作成する
         Graphics bmpGraphics = Graphics.FromImage(bmp);
         //Graphicsのプロパティを引き継ぐ

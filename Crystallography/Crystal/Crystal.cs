@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 #endregion
@@ -1247,7 +1248,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     static int composeKey(in int h, in int k, in int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
     static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
-    private readonly object lockObj = new();
+    private readonly Lock lockObj = new();
 
 
     /// <summary>

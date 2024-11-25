@@ -28,9 +28,8 @@ public partial class FormEBSD : Form
     #region フィールド、プロパティ
     public FormMain FormMain;
     public GLControlAlpha glControlGeo;
-    private Stopwatch sw1 = new(), sw2 = new();
-
-    private Timer timer = new();
+    private readonly Stopwatch sw1 =new(), sw2 = new();
+    private readonly Timer timer = new();
 
     private double EnergyThreshold = 2;
     public double WaveLength { get => waveLengthControl.WaveLength; set => waveLengthControl.WaveLength = value; }
@@ -524,7 +523,7 @@ public partial class FormEBSD : Form
         if (radioButtonKikuchiThresholdOfLength.Checked)
         {
             Crystal.VectorOfG_KikuchiLine =
-            Crystal.VectorOfG.Where(g => g.Length < numericBoxKikuchiThresholdOfLength.Value).OrderByDescending(g => g.Length).ToList();
+            [.. Crystal.VectorOfG.Where(g => g.Length < numericBoxKikuchiThresholdOfLength.Value).OrderByDescending(g => g.Length)];
         }
         else
         {
@@ -600,7 +599,7 @@ public partial class FormEBSD : Form
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>
             Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p)))).ToArray();
-            var count = bse2.Count();
+            var count = bse2.Length;
             double energy = waveLengthControl.Energy;
 
             //エネルギー分布を描画 ここから
