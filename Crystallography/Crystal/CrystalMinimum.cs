@@ -1,4 +1,5 @@
 using MemoryPack;
+using MemoryPack.Compression;
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Crystallography;
 
 //必要最小限の情報だけを保存するクラス
 //[ProtoContract]
-[Serializable()]
+//[Serializable()]
 [MemoryPackable]
 public partial class Crystal2
 {
@@ -215,6 +216,43 @@ public partial class Crystal2
             c2.atoms.Add(atom2);
         }
         return c2;
+    }
+
+    /// <summary>
+    /// MemoryPackでシリアライズしてbyte[]配列を返す
+    /// </summary>
+    /// <returns></returns>
+    public byte[] Serialize()
+    {
+        return Serialize(this);
+    }
+
+    /// <summary>
+    /// 静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す
+    /// </summary>
+    /// <param name="c"></param>
+    /// <returns></returns>
+    public static byte[] Serialize(Crystal2 c )
+    {
+        using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.Optimal);
+        MemoryPackSerializer.Serialize(compressor, c);
+        var data = compressor.ToArray();
+        return data;
+    }
+
+    /// <summary>
+    /// MemoryPackでシリアライズされたbyte[]配列からCrystal2を返す. 不適切な入力値だった場合はnull返し。
+    /// </summary>
+    /// <param name="bytes"></param>
+    /// <returns></returns>
+    public static Crystal2 Deserialize(byte[] bytes)
+    {
+        try
+        {
+            using var decompressor = new BrotliDecompressor();// Decompression(require using)
+            return MemoryPackSerializer.Deserialize<Crystal2>(decompressor.Decompress(bytes));
+        }
+        catch { return null; }
     }
 
     [MemoryPackIgnore]

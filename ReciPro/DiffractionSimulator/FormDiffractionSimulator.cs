@@ -944,6 +944,8 @@ public partial class FormDiffractionSimulator : Form
                                 {
                                     g.Flag2 = true;
                                     var rInt = g.RelativeIntensity;
+                                    if (radioButtonIntensityExcitation.Checked)
+                                        rInt = 1;
 
                                     if (checkBoxDrawSameSize.Checked && Math.Abs(dev) < 3 * ExcitationError)//全て同一サイズで描画する場合はここで dev2=0, rInt=1;
                                     {
@@ -976,6 +978,9 @@ public partial class FormDiffractionSimulator : Form
                                 var sphereRadius = bethe ?
                                     ExcitationError * Math.Sqrt(g.RelativeIntensity) ://ベーテ法の場合は、相対強度の平方根が半径に比例
                                     ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//excitaion only あるいは Kinematicの場合は、半径に相対強度の1/3乗を掛ける
+                                
+                                if (radioButtonIntensityExcitation.Checked)
+                                    sphereRadius = ExcitationError;
 
                                 if (bethe || Math.Abs(dev) < sphereRadius)
                                 {

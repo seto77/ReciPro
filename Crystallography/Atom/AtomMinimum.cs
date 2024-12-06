@@ -6,7 +6,7 @@ namespace Crystallography;
 /// <summary>
 /// Atoms2クラス
 /// </summary>
-[Serializable()]
+//[Serializable()]
 [MemoryPackable]
 public partial class Atoms2
 {

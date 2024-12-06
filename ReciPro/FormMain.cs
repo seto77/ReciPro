@@ -70,10 +70,10 @@ public partial class FormMain : Form
         switch (msg.Msg)
         {
             case WM_DRAWCLIPBOARD:
-                if ((Clipboard.GetDataObject()).GetDataPresent(typeof(Crystal2)))
+                if (Clipboard.GetDataObject().GetDataPresent(typeof(byte[])))
                 {
-                    var data = Clipboard.GetDataObject();
-                    var c2 = (Crystal2)data.GetData(typeof(Crystal2));
+                    var bytes = (byte[])Clipboard.GetDataObject().GetData(typeof(byte[]));
+                    var c2 = Crystal2.Deserialize(bytes);
                     crystalControl.Crystal = Crystal2.GetCrystal(c2);
                 }
 
