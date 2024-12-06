@@ -555,16 +555,16 @@ public class ConvertCrystalData
             for (int i = 0; i < 6; i++) if (s[i].EndsWith(',')) s[i] = s[i].TrimEnd(','); //ÅŒã‚É','‚ª“ü‚Á‚Ä‚¢‚é‚Æ‚«‚Ííœ
 
 
-            if (Miscellaneous.IsDecimalPointComma)
-                for (int i = 0; i < 6; i++) s[i] = s[i].Replace('.', ',');
-            else
-                for (int i = 0; i < 6; i++) s[i] = s[i].Replace(',', '.');
-            A = Convert.ToDouble(s[0]);
-            B = Convert.ToDouble(s[1]);
-            C = Convert.ToDouble(s[2]);
-            Alpha = Convert.ToDouble(s[3]);
-            Beta = Convert.ToDouble(s[4]);
-            Gamma = Convert.ToDouble(s[5]);
+            //if (Miscellaneous.IsDecimalPointComma)
+            //    for (int i = 0; i < 6; i++) s[i] = s[i].Replace('.', ',');
+            //else
+            //    for (int i = 0; i < 6; i++) s[i] = s[i].Replace(',', '.');
+            A = s[0].ToDouble();
+            B = s[1].ToDouble();
+            C = s[2].ToDouble();
+            Alpha = s[3].ToDouble();
+            Beta = s[4].ToDouble();
+            Gamma = s[5].ToDouble();
         }
         catch { return (null, null); }
         string SgName = s[6];

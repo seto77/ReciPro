@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathNet.Numerics;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -143,9 +144,11 @@ public static class XYFile
                     if (strList[0].Contains("Wave Length", StringComparison.Ordinal))
                     {
                         if (strList[0].Contains("(nm)", StringComparison.Ordinal))
-                            diffProf.SrcProperty.WaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]);
+                            //diffProf.SrcProperty.WaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]);
+                            diffProf.SrcProperty.WaveLength = (strList[0].Split(':', true))[1].ToDouble();
                         else if (strList[0].Contains("(0.1nm)", StringComparison.Ordinal))
-                            diffProf.SrcProperty.WaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]) / 10.0;
+                            //diffProf.SrcProperty.WaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]) / 10.0;
+                            diffProf.SrcProperty.WaveLength = (strList[0].Split(':', true))[1].ToDouble() / 10.0;
                     }
 
                     if ((strList[4].Split(':', true))[1] == "Angle")
@@ -160,12 +163,13 @@ public static class XYFile
                     for (int i = 5; i < strList.Count; i++)
                     {
                         string[] str = strList[i].Split(',', true);
-                        diffProf.SourceProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
+                        //diffProf.SourceProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
+                        diffProf.SourceProfile.Pt.Add(new PointD(str[0].ToDouble(), str[1].ToDouble()));
                     }
                     diffProf.Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1);
-                    return new DiffractionProfile2[] { diffProf };
+                    return [diffProf];
                 }
-                catch { return Array.Empty<DiffractionProfile2>(); }
+                catch { return []; }
             }
         }
     }
@@ -179,7 +183,7 @@ public static class XYFile
             strArray.Add(tempstr);
         reader.Close();
         if (strArray.Count <= 3)
-            return Array.Empty<DiffractionProfile2>();
+            return [];
 
         var dp = new List<DiffractionProfile2>();
 
@@ -194,8 +198,10 @@ public static class XYFile
                     if (strArray[i] != "*RAS_INT_END")
                     {
                         string[] tempStr = strArray[i].Split(new[] { ' ' });
-                        double x = Convert.ToDouble(tempStr[0]);
-                        double y = Convert.ToDouble(tempStr[1]);
+                        //double x = Convert.ToDouble(tempStr[0]);
+                        //double y = Convert.ToDouble(tempStr[1]);
+                        double x = tempStr[0].ToDouble();
+                        double y = tempStr[1].ToDouble();
                         dp[^1].SourceProfile.Pt.Add(new PointD(x, y));
                     }
                     else
@@ -208,8 +214,8 @@ public static class XYFile
             dp[i].Name = $"{Path.GetFileName(fileName)}{(dp.Count > 1 ? $" -{i}" : "")}";
 
         if (dp.Count > 0)
-            return dp.ToArray();
-        else return Array.Empty<DiffractionProfile2>();
+            return [.. dp];
+        else return [];
     }
 
     /// <summary>
@@ -228,18 +234,18 @@ public static class XYFile
         }
 
         if (strArray.Count <= 3)
-            return Array.Empty<DiffractionProfile2>();
+            return [];
 
         if (!strArray[1].StartsWith("X,Y,"))
-            return Array.Empty<DiffractionProfile2>();
+            return [];
 
         try
         {
-            var title = strArray[0].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            var axis = strArray[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            var value = strArray[2].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var title = strArray[0].Split([','], StringSplitOptions.RemoveEmptyEntries);
+            var axis = strArray[1].Split([','], StringSplitOptions.RemoveEmptyEntries);
+            var value = strArray[2].Split([','], StringSplitOptions.RemoveEmptyEntries);
             if (title.Length * 2 != axis.Length || axis.Length != value.Length)
-                return Array.Empty<DiffractionProfile2>();
+                return [];
 
             var dp = new DiffractionProfile2[title.Length];
             for (int i = 0; i < dp.Length; i++)
@@ -252,8 +258,10 @@ public static class XYFile
                 value = strArray[i].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 for (int j = 0; j < value.Length / 2; j++)
                 {
-                    double x = Convert.ToDouble(value[j * 2]);
-                    double y = Convert.ToDouble(value[j * 2 + 1]);
+                    //double x = Convert.ToDouble(value[j * 2]);
+                    //double y = Convert.ToDouble(value[j * 2 + 1]);
+                    var x = value[j * 2].ToDouble();
+                    var y = value[j * 2 + 1].ToDouble();
                     dp[j].SourceProfile.Pt.Add(new PointD(x, y));
                 }
             }
@@ -269,7 +277,7 @@ public static class XYFile
         }
         catch
         {
-            return Array.Empty<DiffractionProfile2>();
+            return [];
         }
     }
 
@@ -295,7 +303,7 @@ public static class XYFile
         var stringList = new List<string[]>();
         //まず指定されたセパレータで全てを区切る
         for (int i = 0; i < strArray.Count; i++)
-            stringList.Add(strArray[i].Split(new char[] { separater }, StringSplitOptions.RemoveEmptyEntries));
+            stringList.Add(strArray[i].Split([separater], StringSplitOptions.RemoveEmptyEntries));
         //その全てを数値に変換する
         var doubleList = new List<double[]>();
         for (int i = 0; i < stringList.Count; i++)
@@ -303,11 +311,14 @@ public static class XYFile
             var doubleTemp = new List<double>();
             for (int j = 0; j < stringList[i].Length; j++)
             {
-                var str = Miscellaneous.IsDecimalPointComma ? stringList[i][j].Replace('.', ',') : stringList[i][j].Replace(',', '.');
-                if (double.TryParse(str, out double result))
-                    doubleTemp.Add(result);
+                //var str = Miscellaneous.IsDecimalPointComma ? stringList[i][j].Replace('.', ',') : stringList[i][j].Replace(',', '.');
+                //if (double.TryParse(str, out double result))
+                //    doubleTemp.Add(result);
+                var val = stringList[i][j].ToDouble();
+                if(val.IsFinite())
+                    doubleTemp.Add(stringList[i][j].ToDouble());
             }
-            doubleList.Add(doubleTemp.ToArray());
+            doubleList.Add([.. doubleTemp]);
         }
         int count = 1;
         int beforeLength = 0;
@@ -401,7 +412,7 @@ public static class XYFile
         //if (yRow == -1) return null;
 
         //最後に値を代入
-        DiffractionProfile2 dif = new DiffractionProfile2();
+        DiffractionProfile2 dif = new();
         for (int i = 0; i < doubleList.Count; i++)
             dif.SourceProfile.Pt.Add(new PointD(doubleList[i][xRow], doubleList[i][yRow]));
 

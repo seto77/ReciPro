@@ -100,7 +100,7 @@ public static class Miscellaneous
         {
             if (isDecimalPointCommaFlag)
             {
-                isDecimalPointComma = double.TryParse("1.000,01", out _);
+                isDecimalPointComma = (1.01).ToString().Contains(',');
                 isDecimalPointCommaFlag = false;
             }
             return isDecimalPointComma;
@@ -116,6 +116,7 @@ public static class Miscellaneous
     /// <returns></returns>
     public static bool isFileExistsAndLocked(string path)
     {
+       
         if (File.Exists(path))
         {
             FileStream stream = null;

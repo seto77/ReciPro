@@ -265,6 +265,8 @@ public static class HKL
 #region Stringの拡張
 public static class StringEx
 {
+    public static System.Globalization.CultureInfo InvCul = System.Globalization.CultureInfo.InvariantCulture;
+
     /// <summary>
     /// 拡張メソッド.  指定したseparatorで文字を区切り、文字の配列を返す.
     /// </summary>
@@ -293,11 +295,29 @@ public static class StringEx
 
 
     /// <summary>
-    /// 拡張メソッド. ConvertToDoubleを拡張メソッドとして呼び出す. 実数と、分数に対応. 変換できない場合は例外発生
+    /// 拡張メソッド. ConvertToDoubleを拡張メソッドとして呼び出す. 実数と、分数に対応. 変換できない場合はNaNを返す
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static double ToDouble(this string s) => !s.Contains('/') ? Convert.ToDouble(s) : s.Split("/", true)[0].ToDouble() / s.Split("/", true)[1].ToDouble();
+    public static double ToDouble(this string s)
+    {
+
+        if(s.Contains('/'))
+        {
+            var index = s.LastIndexOf('/');
+            return s[0..index].ToDouble() / s[(index+1)..].ToDouble();
+        }
+        else
+        {
+            s = s.Replace(',', '.');
+            if (double.TryParse(s, InvCul, out var result))
+                return result;
+            else
+                return double.NaN;
+            //return Convert.ToDouble(s,InvCul);
+        }
+        //return !s.Contains('/') ? Convert.ToDouble(s) : s.Split("/", true)[0].ToDouble() / s.Split("/", true)[1].ToDouble();
+    }
 
     /// <summary>
     /// 拡張メソッド.  ConvertToInt32を拡張メソッドとして呼び出す. 変換できない場合は例外発生
@@ -334,9 +354,10 @@ public static class DoubleEx
     public static double Min(this double[][] d) => d.Min(e => e.Min());
     public static double Max(this double[][][] d) => d.Max(e => e.Max());
     public static double Min(this double[][][] d) => d.Min(e => e.Min());
-
 }
 #endregion
+
+
 
 #region Graphicsクラス
 /// <summary>
