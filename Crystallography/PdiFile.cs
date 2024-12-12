@@ -22,8 +22,7 @@ public static class XYFile
         }
         catch
         {
-            if (fs != null)
-                fs.Close();
+            fs?.Close();
             return false;
         }
     }
@@ -70,7 +69,7 @@ public static class XYFile
                 if (dp.Length > 0)
                     return dp;
                 else
-                    return Array.Empty<DiffractionProfile2>();
+                    return [];
             }
             else //バージョン1
             {

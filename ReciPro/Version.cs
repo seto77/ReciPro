@@ -4,7 +4,7 @@ internal static class Version
 {
     public const string Software = "ReciPro";
     public const string Author = "Y. Seto && M. Ohtsuka";
-
+    
     public const string History =
         "History" +
         "\r\n ver4.895(2024/11/14)  Updated: .Net Desktop Runtime 8.0 to 9.0. Updated the bundled crystal database." +
