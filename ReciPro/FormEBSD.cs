@@ -182,28 +182,21 @@ public partial class FormEBSD : Form
         var detector = new Cylinder(new V3(0, detY, detZ), new V3(0, Math.Sin(detTilt), -Math.Cos(detTilt)), detR, new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces, true, 2, 180);
         glObjects.Add(detector);
 
-        //各種スケール
+        //XYZ軸
+        var len = 50;
+        //X軸
+        glObjects.Add(new Lines([new V3(0, 0, 0), new V3(len, 0, 0)], 3f, new Material(C4.OrangeRed)));
+        glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 100, true, new Material(C4.OrangeRed)));
 
-        //if (checkBoxDrawAxes.Checked)
-        {
-            glControlGeo.MakeCurrent();
-            var len = 50;
-            //X軸
-            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(len, 0, 0)], 3f, new Material(C4.OrangeRed)));
-            glControlGeo.MakeCurrent();
-            glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 100, true, new Material(C4.OrangeRed)));
+        //Y軸
+        glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, -len, 0)], 3f, new Material(C4.YellowGreen)));
+        glObjects.Add(new TextObject("+Y", 10f, new V3(0, -len, 0), 100, true, new Material(C4.YellowGreen)));
 
-            //Y軸
-            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, -len, 0)], 3f, new Material(C4.YellowGreen)));
-            glControlGeo.MakeCurrent();
-            glObjects.Add(new TextObject("+Y", 10f, new V3(0, -len, 0), 100, true, new Material(C4.YellowGreen)));
+        //Z軸 = beam
+        glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, -len)], 3f, new Material(C4.MediumPurple)));
+        glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, -len), 100, true, new Material(C4.MediumPurple)));
 
-            //Z軸 = beam
-            glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, -len)], 3f, new Material(C4.MediumPurple)));
-            glControlGeo.MakeCurrent();
-            glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, -len), 100, true, new Material(C4.MediumPurple)));
-        }
-
+        //照射点から検出器の縁への黄色線
         glObjects.AddRange(Enumerable.Range(0, 30).Select(e =>
         {
             var θ = e / 15.0 * Math.PI;
@@ -216,15 +209,14 @@ public partial class FormEBSD : Form
 
         //結晶のa, b, c軸を表す矢印
         var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
-        var vec = new[] { Crystal.A_Axis / max * 10, Crystal.B_Axis / max * 10, Crystal.C_Axis / max * 10 };
+        var vec = new[] { Crystal.A_Axis, Crystal.B_Axis, Crystal.C_Axis };
         C4[] color = [C4.Red, C4.Green, C4.Blue];
         string[] label = ["a", "b", "c"];
-        var obj = new List<GLObject>(10);
         for (int i = 0; i < 3; i++)
         {
-            vec[i] = samRot * Crystal.RotationMatrix * vec[i];
+            vec[i] = samRot * Crystal.RotationMatrix * vec[i] / max * 10;
             glObjects.Add(new Cylinder(-vec[i], vec[i] * 2 - 2 * vec[i].Normarize(), 0.4, new Material(color[i]), DrawingMode.Surfaces));
-            glObjects.Add(new Cone(vec[i], -2*vec[i].Normarize(), 0.8, new Material(color[i]), DrawingMode.Surfaces));
+            glObjects.Add(new Cone(vec[i], -2 * vec[i].Normarize(), 0.8, new Material(color[i]), DrawingMode.Surfaces));
             glObjects.Add(new TextObject(label[i], 13f, vec[i] + 0.1 * vec[i].Normarize(), 0.5, true, new Material(color[i])));
         }
         glObjects.Add(new Sphere(new V3(0, 0, 0), 1.2, new Material(C4.Gray), DrawingMode.Surfaces));
