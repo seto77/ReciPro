@@ -172,7 +172,7 @@ public partial class FormEBSD : Form
         //試料の傾き
         var samRot = Matrix3D.RotX(numericBoxSampleTilt.RadianValue);
         //試料を示す直方体
-        var sample = new Parallelepiped(samRot * new V3(-15, -15, -2), samRot * new V3(30, 0, 0), samRot * new V3(0, 30, 0), samRot * new V3(0, 0, 2), new Material(C4.AliceBlue), DrawingMode.SurfacesAndEdges);
+        var sample = new Parallelepiped(samRot * new V3(-15, -15, -1), samRot * new V3(30, 0, 0), samRot * new V3(0, 30, 0), samRot * new V3(0, 0, 1), new Material(C4.AliceBlue), DrawingMode.SurfacesAndEdges);
         glObjects.Add(sample);
 
         //検出器の傾き
@@ -204,9 +204,9 @@ public partial class FormEBSD : Form
             glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, -len), 100, true, new Material(C4.MediumPurple)));
         }
 
-        glObjects.AddRange(Enumerable.Range(0, 60).Select(e =>
+        glObjects.AddRange(Enumerable.Range(0, 30).Select(e =>
         {
-            var θ = e / 30.0 * Math.PI;
+            var θ = e / 15.0 * Math.PI;
             var p = M3.CreateRotationX(-detTilt).Mult(numericBoxDetRadius.Value * new V3(-Math.Sin(θ), Math.Cos(θ), 0));
             return new Lines([new V3(0, 0, 0), new(p.X, p.Y + detY, p.Z + detZ)], 1f, new Material(C4.Yellow, 0.7));
         }));
@@ -215,6 +215,19 @@ public partial class FormEBSD : Form
         glObjects.Add(new Cone(new V3(0, 0, 0), new V3(0, 0, 100), 5, new Material(C4.Yellow, 0.7), DrawingMode.Surfaces) { IgnoreNormalSides = true });
 
         //結晶のa, b, c軸を表す矢印
+        var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
+        var vec = new[] { Crystal.A_Axis / max * 10, Crystal.B_Axis / max * 10, Crystal.C_Axis / max * 10 };
+        C4[] color = [C4.Red, C4.Green, C4.Blue];
+        string[] label = ["a", "b", "c"];
+        var obj = new List<GLObject>(10);
+        for (int i = 0; i < 3; i++)
+        {
+            vec[i] = samRot * Crystal.RotationMatrix * vec[i];
+            glObjects.Add(new Cylinder(-vec[i], vec[i] * 2 - 2 * vec[i].Normarize(), 0.4, new Material(color[i]), DrawingMode.Surfaces));
+            glObjects.Add(new Cone(vec[i], -2*vec[i].Normarize(), 0.8, new Material(color[i]), DrawingMode.Surfaces));
+            glObjects.Add(new TextObject(label[i], 13f, vec[i] + 0.1 * vec[i].Normarize(), 0.5, true, new Material(color[i])));
+        }
+        glObjects.Add(new Sphere(new V3(0, 0, 0), 1.2, new Material(C4.Gray), DrawingMode.Surfaces));
 
         glControlGeo.DeleteAllObjects();
         glControlGeo.AddObjects(glObjects);
@@ -299,48 +312,14 @@ public partial class FormEBSD : Form
     /// <summary>
     /// 描画関数
     /// </summary>
-    /// <param name="g">Graphicsオブジェクトを指定</param>
-    /// <param name="drawLabel">ラベルを書く時は、true</param>
-    /// <param name="drawOverlappedImage">オーバーラップイメージを描く時はtrue. ただし、trueでも、画像がセットされていない場合は描かない　</param>
     public void Draw(Graphics g = null)
     {
-        if (this.InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
-        {
-            this.Invoke(new Action(() => Draw(g)), null);
-            return;
-        }
-
-        var sw = new Stopwatch();
-        sw.Start();
-
-        //グラフィックスボックスに描画する場合
-        g ??= graphicsBox.Graphics;
-
-        if (!SetProjection(g))
-            return;
-
-        g.Clear(colorControlBackGround.Color);
-        g.SmoothingMode = SmoothingMode.None;
-
-        g.InterpolationMode = InterpolationMode.NearestNeighbor;
-        g.PixelOffsetMode = PixelOffsetMode.Half;
-
-        if (Pbmp != null)
-        {
-            var bmp = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), graphicsBox.ClientSize);
-            g.DrawImage(bmp, new RectangleF(-(float)DetR, (float)(-DetR - Foot.Y), (float)DetR * 2, (float)DetR * 2));
-        }
-
-        g.SmoothingMode = SmoothingMode.HighQuality;
-        g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-        //検出器を示す円を描画
-        g.DrawArc(new Pen(Color.Red, (float)(Resolution * 2)), -(float)DetR, (float)(-DetR - Foot.Y), (float)DetR * 2, (float)DetR * 2, 0, 360);
-
         if (checkBoxDrawKikuchiLines.Checked)
-            DrawKikuchiLine(g);
+            DrawKikuchiLine();
 
-        graphicsBox.Refresh();
+        DrawGeometry();
+
+        
     }
     #endregion
 
@@ -365,8 +344,40 @@ public partial class FormEBSD : Form
 
     #region DrawKikuchiLine
 
-    private void DrawKikuchiLine(Graphics graphics)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="graphics"></param>
+    private void DrawKikuchiLine(Graphics graphics=null)
     {
+        if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
+        {
+            Invoke(new Action(() => DrawKikuchiLine(graphics)), null);
+            return;
+        }
+        //グラフィックスボックスに描画する場合
+        graphics ??= graphicsBox.Graphics;
+        
+        if (!SetProjection(graphics)) return;
+
+        graphics.Clear(colorControlBackGround.Color);
+        graphics.SmoothingMode = SmoothingMode.None;
+        graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+        graphics.PixelOffsetMode = PixelOffsetMode.Half;
+
+        if (Pbmp != null)
+        {
+            var bmp = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), graphicsBox.ClientSize);
+            graphics.DrawImage(bmp, new RectangleF(-(float)DetR, (float)(-DetR - Foot.Y), (float)DetR * 2, (float)DetR * 2));
+        }
+
+        graphics.SmoothingMode = SmoothingMode.HighQuality;
+        graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+        //検出器を示す円を描画
+        graphics.DrawArc(new Pen(Color.Red, (float)(Resolution * 2)), -(float)DetR, (float)(-DetR - Foot.Y), (float)DetR * 2, (float)DetR * 2, 0, 360);
+
+
         var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
         var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
         var font = new System.Drawing.Font("Tahoma", (float)(trackBarStrSize.Value / 8.0 * Resolution));
@@ -439,7 +450,7 @@ public partial class FormEBSD : Form
                 }
             }
         }
-
+        graphicsBox.Refresh();
     }
 
     /// <summary>Blends the specified colors together.</summary>

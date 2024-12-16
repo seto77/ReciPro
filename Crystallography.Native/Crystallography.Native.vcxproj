@@ -54,7 +54,7 @@
     <UseILP64Interfaces>false</UseILP64Interfaces>
     <InterproceduralOptimization>true</InterproceduralOptimization>
     <SpectreMitigation />
-    <LLVMToolsVersion>17</LLVMToolsVersion>
+    <LLVMToolsVersion>18</LLVMToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -79,6 +79,7 @@
     <EnableMKLOpenMPOffloadToGPU>false</EnableMKLOpenMPOffloadToGPU>
     <BasePlatformToolset>v143</BasePlatformToolset>
     <UseInteloneTBB>false</UseInteloneTBB>
+    <LLVMToolsVersion>18</LLVMToolsVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -102,7 +103,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net8.0-windows10.0.22621.0\</OutDir>
+    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net9.0-windows$(TargetPlatformVersion)\</OutDir>
     <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -183,7 +184,7 @@
       <MinimalRebuild>
       </MinimalRebuild>
       <AdditionalOptions>/arch:AVX /arch:AVX2 /arch:AVX512 %(AdditionalOptions)</AdditionalOptions>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <LanguageStandard_C>stdclatest</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
