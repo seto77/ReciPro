@@ -123,6 +123,7 @@ public partial class PoleFigureControl2 : UserControl
         }
 
         //ベクトルからPixelのインデックスを計算するファンクション
+        //iが放射方向、jが円周に沿った方向
         var f = new Func<V3, (int i, int j)>(v =>
         {
             v.Normalize();

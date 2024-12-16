@@ -213,6 +213,8 @@ public partial class FormTrajectory : Form
             poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Sigma;
 
         var rot = Matrix3d.CreateRotationX(tilt);
+
+        //ステレオネット内にXYZ軸を描画
         if (checkBoxDrawAxesInStereonet.Checked)
             poleFigureControl.Circles = [
                 (Stereonet.ConvertVectorToSchmidt(new Vector3DBase(-1, 0,0)), 0.02, Color.OrangeRed, true, "+X"),
@@ -223,8 +225,6 @@ public partial class FormTrajectory : Form
                 ];
         else
             poleFigureControl.Circles = [];
-
-
 
         poleFigureControl.Vectors = BSEs.Select(e => new V4(rot.Mult(e[^1].p - e[^2].p), e[^1].e)).ToArray();
         //最大深さ分布を求めるためのテストコード
