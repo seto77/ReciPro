@@ -252,8 +252,7 @@ public partial class FormEBSD : Form
     private void buttonFromSurfaceNormal_Click(object sender, EventArgs e) => glControlGeo.WorldMatrix = M4.CreateRotationX(-numericBoxSampleTilt.RadianValue);
 
     private void buttonViewQuarter_Click(object sender, EventArgs e)
-        => glControlGeo.WorldMatrix = M4.CreateRotationZ(-Math.PI / 2*0.2)*
-        M4.CreateRotationY(-Math.PI / 2*0.8) * M4.CreateRotationZ(-Math.PI / 2);
+        => glControlGeo.WorldMatrix = M4.CreateRotationZ(-Math.PI / 2 * 0.2) * M4.CreateRotationY(-Math.PI / 2 * 0.8) * M4.CreateRotationZ(-Math.PI / 2);
 
     #endregion
 
@@ -920,9 +919,7 @@ public partial class FormEBSD : Form
                 for (int j = 0; j < ThicknessArray.Length; j++)
                 {
                     for (int k = 0; k < values.Length; k++)
-                    {
                         values[k] += histogram[j].Count * Crystal.Bethe.Disks[i][j].Amplitudes[k].MagnitudeSquared();
-                    }
                 }
             }
         }
@@ -931,8 +928,6 @@ public partial class FormEBSD : Form
         Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
 
         AdjustImage();
-
-
     }
 
     private void waveLengthControl_WavelengthChanged(object sender, EventArgs e) => SetVector();
