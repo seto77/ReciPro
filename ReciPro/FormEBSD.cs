@@ -170,6 +170,7 @@ public partial class FormEBSD : Form
     /// </summary>
     public void DrawGeometry(int i=-1, int j=-1)
     {
+        #region OpenGLによる3D描画
         var glObjects = new List<GLObject>();
 
         //試料の傾き
@@ -224,10 +225,10 @@ public partial class FormEBSD : Form
         glControlGeo.DeleteAllObjects();
         glControlGeo.AddObjects(glObjects);
         glControlGeo.Refresh();
-        //OpenGL描画ここまで
+        #endregion OpenGL描画ここまで
 
-        //ステレオネット上に検出器の輪郭を描画
-        
+        #region ステレオネット上に検出器の輪郭を描画
+
         var lines = new List<(PointD[], double, Color)>();
         M3 samRot2 = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
         var f1 = new Func<double, double, PointD>((x,y) 
@@ -261,7 +262,7 @@ public partial class FormEBSD : Form
         poleFigureControl.Lines = [.. lines];
         
         poleFigureControl.Draw();
-        //ステレオネット上に検出器の輪郭を描画 ここまで
+        #endregion ステレオネット上に検出器の輪郭を描画 ここまで
 
     }
     #endregion
@@ -492,7 +493,43 @@ public partial class FormEBSD : Form
     }
 
     #endregion
+    
+    #region 座標変換
 
+    /// <summary>
+    /// 検出器座標で与えられた座標ptが、画面内に含まれるかどうかを返す
+    /// </summary>
+    /// <param name="pt"></param>
+    /// <returns></returns>
+    private bool IsScreenArea(in PointD pt, int margin = 0)
+    {
+        var clientPt = convertDetectorToScreen(pt);
+        return clientPt.X > margin && clientPt.Y > margin
+            && clientPt.X < graphicsBox.ClientRectangle.Width - margin
+            && clientPt.Y < graphicsBox.ClientRectangle.Height - margin;
+    }
+
+    /// <summary>
+    /// フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <returns></returns>
+    private PointD convertDetectorToScreen(in double x, in double y)
+    {
+        double px = (x + Foot.X) / Resolution + graphicsBox.ClientSize.Width / 2.0;
+        double py = (y + Foot.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0;
+        return new(px, py);
+    }
+
+    /// <summary>
+    /// 検出器(Detector)上の位置 (mm)を画面(Screen)上の点(pixel)に変換
+    /// </summary>
+    /// <param name="pt"></param>
+    /// <returns></returns>
+    private PointD convertDetectorToScreen(in PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
+    #endregion
+    
     #region 菊池線 graphicsBoxのイベント (graphicsBox上のマウスイベントも含む)
 
     private bool MouseRangingMode = false;
@@ -548,43 +585,6 @@ public partial class FormEBSD : Form
     private void graphicsBox_Resize(object sender, EventArgs e) => Draw();
 
     #endregion graphicsBoxのイベント
-
-    #region 座標変換
-
-    /// <summary>
-    /// 検出器座標で与えられた座標ptが、画面内に含まれるかどうかを返す
-    /// </summary>
-    /// <param name="pt"></param>
-    /// <returns></returns>
-    private bool IsScreenArea(in PointD pt, int margin = 0)
-    {
-        var clientPt = convertDetectorToScreen(pt);
-        return clientPt.X > margin && clientPt.Y > margin
-            && clientPt.X < graphicsBox.ClientRectangle.Width - margin
-            && clientPt.Y < graphicsBox.ClientRectangle.Height - margin;
-    }
-
-    /// <summary>
-    /// フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換
-    /// </summary>
-    /// <param name="x"></param>
-    /// <param name="y"></param>
-    /// <returns></returns>
-    private PointD convertDetectorToScreen(in double x, in double y)
-    {
-        double px = (x + Foot.X) / Resolution + graphicsBox.ClientSize.Width / 2.0;
-        double py = (y + Foot.Y) / Resolution + graphicsBox.ClientSize.Height / 2.0;
-        return new(px, py);
-    }
-
-    /// <summary>
-    /// 検出器(Detector)上の位置 (mm)を画面(Screen)上の点(pixel)に変換
-    /// </summary>
-    /// <param name="pt"></param>
-    /// <returns></returns>
-    private PointD convertDetectorToScreen(in PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
-    #endregion
-
 
     #region 菊池線を初期化。最後にDraw()も呼び出す。
     /// <summary>
@@ -679,7 +679,7 @@ public partial class FormEBSD : Form
 
     }
 
-    #region 統計情報の計算
+    #region 統計情報の計算しグラフ化
     public void CalcStatistics(int i=-1, int j=-1)
     {
         if (BSEs != null && BSEs.Length > 1 && poleFigureControl.Lines != null && poleFigureControl.Lines.Length > 0)
@@ -687,6 +687,7 @@ public partial class FormEBSD : Form
             M3 smpRot = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
             double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
 
+            #region 検出器の範囲内におさまるbseを抽出し、変数bseに格納
             PointD[] area=[];
             var areaStep = 120;
             var f = new Func<double, double, PointD>((x, y) 
@@ -709,6 +710,9 @@ public partial class FormEBSD : Form
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>
             Geometry.InsidePolygonalArea(area, Stereonet.ConvertVectorToSchmidt(smpRot.Mult(e[^1].p - e[^2].p)))).ToArray();
+
+            #endregion
+
             var count = bse2.Length;
             double energy = waveLengthControl.Energy;
 
@@ -749,8 +753,6 @@ public partial class FormEBSD : Form
 
     }
     #endregion
-
-  
 
     #region 入力パラメータ関連
     private void NumericBoxThicknessStart_ValueChanged(object sender, EventArgs e)
