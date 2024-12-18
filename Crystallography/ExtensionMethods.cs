@@ -357,8 +357,6 @@ public static class DoubleEx
 }
 #endregion
 
-
-
 #region Graphicsクラス
 /// <summary>
 /// Graphics クラスの描画関数にdoubleを受けられるにようにした拡張メソッド
@@ -617,6 +615,8 @@ public static class GraphicsAlpha
 
     #endregion
 
+    public static void DrawImage(this Graphics g, Image img, RectangleD rect)
+        => g.DrawImage(img, rect.ToRectangleF());
 
 }
 #endregion

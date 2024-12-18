@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Crystallography.OpenGL;
-using OpenTK;
 using V3 = OpenTK.Vector3d;
 using V4 = OpenTK.Vector4d;
 using M3 = OpenTK.Matrix3d;
@@ -16,9 +15,10 @@ using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using MathNet.Numerics;
 using System.ComponentModel;
-using System;
-using static IronPython.Modules.PythonIterTools;
 using System.Text;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System;
+using static IronPython.Modules._ast;
 #endregion
 
 namespace ReciPro;
@@ -77,6 +77,7 @@ public partial class FormEBSD : Form
     /// 画面解像度 mm/pix
     /// </summary>
     public double Resolution => 2.0 * numericBoxDetRadius.Value / graphicsBox.ClientRectangle.Width;
+    public float ResolutionF => (float)Resolution;
 
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
     private double Voltage => waveLengthControl.Energy;
@@ -107,6 +108,8 @@ public partial class FormEBSD : Form
             return [.. energyArray];
         }
     }
+
+    public int DetectorDivision = 5;
 
 
     #endregion
@@ -161,25 +164,22 @@ public partial class FormEBSD : Form
     }
     #endregion
 
-    #region 入射電子、試料、検出器の幾何学を3Dで表示
+    #region OpenGLで入射電子、試料、検出器の幾何学を描画し、ステレオネット上に検出器の輪郭を描画
     /// <summary>
     /// 試料と電子線が交差する位置は常に(0,0,0)
     /// </summary>
-    public void DrawGeometry()
+    public void DrawGeometry(int i=-1, int j=-1)
     {
         var glObjects = new List<GLObject>();
 
         //試料の傾き
-        var samRot = Matrix3D.RotX(numericBoxSampleTilt.RadianValue);
+        var samRot = Matrix3D.RotX(SmpTilt);
         //試料を示す直方体
         var sample = new Parallelepiped(samRot * new V3(-15, -15, -1), samRot * new V3(30, 0, 0), samRot * new V3(0, 30, 0), samRot * new V3(0, 0, 1), new Material(C4.AliceBlue), DrawingMode.SurfacesAndEdges);
         glObjects.Add(sample);
 
         //検出器の傾き
-        var detTilt = numericBoxDetTilt.RadianValue;
-        var detR = numericBoxDetRadius.Value;
-        double detY = -numericBoxYofDet.Value, detZ = -numericBoxZofDet.Value;
-        var detector = new Cylinder(new V3(0, detY, detZ), new V3(0, Math.Sin(detTilt), -Math.Cos(detTilt)), detR, new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces, true, 2, 180);
+        var detector = new Cylinder(new V3(0, -DetY, -DetZ), new V3(0, Math.Sin(DetTilt), -Math.Cos(DetTilt)), DetR, new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces, true, 2, 180);
         glObjects.Add(detector);
 
         //XYZ軸
@@ -200,8 +200,8 @@ public partial class FormEBSD : Form
         glObjects.AddRange(Enumerable.Range(0, 30).Select(e =>
         {
             var θ = e / 15.0 * Math.PI;
-            var p = M3.CreateRotationX(-detTilt).Mult(numericBoxDetRadius.Value * new V3(-Math.Sin(θ), Math.Cos(θ), 0));
-            return new Lines([new V3(0, 0, 0), new(p.X, p.Y + detY, p.Z + detZ)], 1f, new Material(C4.Yellow, 0.7));
+            var p = M3.CreateRotationX(-DetTilt).Mult(DetR * new V3(-Math.Sin(θ), Math.Cos(θ), 0));
+            return new Lines([new V3(0, 0, 0), new(p.X, p.Y - DetY, p.Z - DetZ)], 1f, new Material(C4.Yellow, 0.7));
         }));
 
         //電子線方向を示す矢印
@@ -212,12 +212,12 @@ public partial class FormEBSD : Form
         var vec = new[] { Crystal.A_Axis, Crystal.B_Axis, Crystal.C_Axis };
         C4[] color = [C4.Red, C4.Green, C4.Blue];
         string[] label = ["a", "b", "c"];
-        for (int i = 0; i < 3; i++)
+        for (int n = 0; n < 3; n++)
         {
-            vec[i] = samRot * Crystal.RotationMatrix * vec[i] / max * 10;
-            glObjects.Add(new Cylinder(-vec[i], vec[i] * 2 - 2 * vec[i].Normarize(), 0.4, new Material(color[i]), DrawingMode.Surfaces));
-            glObjects.Add(new Cone(vec[i], -2 * vec[i].Normarize(), 0.8, new Material(color[i]), DrawingMode.Surfaces));
-            glObjects.Add(new TextObject(label[i], 13f, vec[i] + 0.1 * vec[i].Normarize(), 0.5, true, new Material(color[i])));
+            var v = samRot * Crystal.RotationMatrix * vec[n] / max * 10;
+            glObjects.Add(new Cylinder(-v, v * 2 - 2 * v.Normarize(), 0.4, new Material(color[n]), DrawingMode.Surfaces));
+            glObjects.Add(new Cone(v, -2 * v.Normarize(), 0.8, new Material(color[n]), DrawingMode.Surfaces));
+            glObjects.Add(new TextObject(label[n], 13f, v + 0.1 * v.Normarize(), 0.5, true, new Material(color[n])));
         }
         glObjects.Add(new Sphere(new V3(0, 0, 0), 1.2, new Material(C4.Gray), DrawingMode.Surfaces));
 
@@ -227,19 +227,41 @@ public partial class FormEBSD : Form
         //OpenGL描画ここまで
 
         //ステレオネット上に検出器の輪郭を描画
-        M3 samRot2 = M3.CreateRotationX(numericBoxSampleTilt.RadianValue), detRot = M3.CreateRotationX(-detTilt);
+        
+        var lines = new List<(PointD[], double, Color)>();
+        M3 samRot2 = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
+        var f1 = new Func<double, double, PointD>((x,y) 
+            => Stereonet.ConvertVectorToSchmidt(samRot2.Mult(detRot.Mult(DetR * new V3(x,y,0)) + new V3(0, -DetY, -DetZ))));
+
         var step = 60;
-        var f = new Func<int, PointD>(i =>
+        var range = Enumerable.Range(0, step + 1).Select(e=>(double)e);
+        lines.Add ((
+            range.Select(n => 2.0 * Math.PI * n / step).Select(Θ => f1(Math.Sin(Θ), Math.Cos(Θ))).ToArray(), 
+            2, Color.Yellow));
+
+        int div = DetectorDivision;
+        for (int n = 0; n < div + 1; n++)
         {
-            var θ = 2.0 * Math.PI * i / step;
-            var p = detRot.Mult(detR * new V3(Math.Sin(θ), Math.Cos(θ), 0));
-            return Stereonet.ConvertVectorToSchmidt(samRot2.Mult(p + new V3(0, detY, detZ)));
-        });
-        poleFigureControl.Lines = [(Enumerable.Range(0, step + 1).Select(e => f(e)).ToArray(), 2, Color.Yellow)];
+            lines.Add((range.Select(n => 1 - 2 * n / step).Select(x => f1(2.0 * n / div - 1, x)).ToArray(), 1, Color.Orange));
+            lines.Add((range.Select(n => 1 - 2 * n / step).Select(x => f1(x, 2.0 * n / div - 1)).ToArray(), 1, Color.Orange));
+        }
+
+        if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
+        {
+            var r1 = range.Select(n => n / step);
+            lines.Add((
+                [
+                ..r1.Select(x => f1(2.0 * i / div - 1, 2.0 * (- j - 1 + x)/ div + 1)),
+                ..r1.Select(x => f1(2.0 * (i + x) / div - 1, 2.0 * (- j) / div + 1 )),
+                ..r1.Select(x => f1(2.0 * (i + 1) / div - 1, 2.0 * (- j -　x) / div + 1)),
+                ..r1.Select(x => f1(2.0 * (i + 1 - x) / div - 1, 2.0 * (- j - 1) / div + 1 )),
+                ], 3, Color.Orange));
+        }
+
+        poleFigureControl.Lines = [.. lines];
+        
         poleFigureControl.Draw();
         //ステレオネット上に検出器の輪郭を描画 ここまで
-
-        CalcStatistics();
 
     }
     #endregion
@@ -309,8 +331,6 @@ public partial class FormEBSD : Form
             DrawKikuchiLine();
 
         DrawGeometry();
-
-        
     }
     #endregion
 
@@ -333,17 +353,17 @@ public partial class FormEBSD : Form
     }
     #endregion
 
-    #region DrawKikuchiLine
+    #region 菊池線(運動学的) graphicBox を描画
 
     /// <summary>
     /// 
     /// </summary>
     /// <param name="graphics"></param>
-    private void DrawKikuchiLine(Graphics graphics=null)
+    private void DrawKikuchiLine(Graphics graphics=null, int i=-1,int j=-1)
     {
         if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
         {
-            Invoke(new Action(() => DrawKikuchiLine(graphics)), null);
+            Invoke(new Action(() => DrawKikuchiLine(graphics, i, j)), null);
             return;
         }
         //グラフィックスボックスに描画する場合
@@ -359,19 +379,15 @@ public partial class FormEBSD : Form
         if (Pbmp != null)
         {
             var bmp = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), graphicsBox.ClientSize);
-            graphics.DrawImage(bmp, new RectangleF(-(float)DetR, (float)(-DetR - Foot.Y), (float)DetR * 2, (float)DetR * 2));
+            graphics.DrawImage(bmp, new RectangleD(-DetR, -DetR - Foot.Y, DetR * 2, DetR * 2));
         }
 
         graphics.SmoothingMode = SmoothingMode.HighQuality;
         graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-        //検出器を示す円を描画
-        graphics.DrawArc(new Pen(Color.Red, (float)(Resolution * 2)), -(float)DetR, (float)(-DetR - Foot.Y), (float)DetR * 2, (float)DetR * 2, 0, 360);
-
-
         var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
         var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
-        var font = new System.Drawing.Font("Tahoma", (float)(trackBarStrSize.Value / 8.0 * Resolution));
+        var font = new Font("Tahoma", (float)(trackBarStrSize.Value / 8.0 * Resolution));
         var brush = new SolidBrush(colorControlString.Color);
 
         var Tau = numericBoxDetTilt.RadianValue - numericBoxSampleTilt.RadianValue;
@@ -441,6 +457,23 @@ public partial class FormEBSD : Form
                 }
             }
         }
+
+        //検出器を示す円を描画
+        graphics.DrawArc(new Pen(Color.Yellow, ResolutionF * 2), -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360);
+        //検出器の分割線
+        for (int n = 0; n < DetectorDivision; n++)
+        {
+            var x = 2.0 * n / DetectorDivision - 1;
+            graphics.DrawLine(new Pen(Color.Orange, ResolutionF), -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y);
+            graphics.DrawLine(new Pen(Color.Orange, ResolutionF), x * DetR, -DetR - Foot.Y, x * DetR, DetR - Foot.Y);
+        }
+        if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
+        {
+            double x = 2.0 * i / DetectorDivision - 1, y = 2.0 * j / DetectorDivision - 1;
+
+            graphics.FillRectangle(new SolidBrush(Color.FromArgb(32, Color.Orange)), DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision);
+        }
+
         graphicsBox.Refresh();
     }
 
@@ -459,6 +492,62 @@ public partial class FormEBSD : Form
     }
 
     #endregion
+
+    #region 菊池線 graphicsBoxのイベント (graphicsBox上のマウスイベントも含む)
+
+    private bool MouseRangingMode = false;
+    private Point MouseRangeStart, MouseRangeEnd;//, startAnimation;
+    private void graphicsBox_MouseDown(object sender, MouseEventArgs e)
+    {
+        if (e.Clicks == 2)
+        {
+            var size = graphicsBox.ClientSize;
+            var i = e.Location.X * DetectorDivision / size.Width;
+            var j = e.Location.Y * DetectorDivision / size.Height;
+            if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
+            {
+                //
+                DrawKikuchiLine(null, i, j);
+                DrawGeometry(i, j);
+                CalcStatistics(i, j);
+            }
+        }
+    }
+
+    private void graphicsBox_MouseUp(object sender, MouseEventArgs e)
+    {
+
+    }
+
+    private PointD lastMousePos = new();
+
+    private void graphicsBox_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+    {
+        var mousePos = new PointD(e.X, e.Y);
+        var center = new PointD(graphicsBox.ClientSize.Width / 2.0, graphicsBox.ClientSize.Height / 2.0);
+        //左ボタンが押されながらマウスが動いたとき
+        if (e.Button == MouseButtons.Left)
+        {
+            if ((e.X - graphicsBox.ClientSize.Width / 2) * (e.X - graphicsBox.ClientSize.Width / 2) + (e.Y - graphicsBox.ClientSize.Height / 2) * (e.Y - graphicsBox.ClientSize.Height / 2)
+                < Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * 0.18)
+            {
+                if (mousePos != lastMousePos)
+                {
+                    var devPos = mousePos - lastMousePos;
+                    var devAngle = Math.Atan((mousePos - lastMousePos).Length * Resolution / CameraLength2);
+                    FormMain.Rotate((-1 * devPos.Y, -Math.Cos(SmpTilt - DetTilt) * devPos.X, Math.Sin(SmpTilt - DetTilt) * devPos.X), devAngle);
+                }
+            }
+            else
+                FormMain.Rotate((0, Math.Sin(SmpTilt - DetTilt), Math.Cos(SmpTilt - DetTilt)), -Math.Atan2(lastMousePos.X - center.X, lastMousePos.Y - center.Y) + Math.Atan2(mousePos.X - center.X, mousePos.Y - center.Y));
+            //Draw関数は、FormMain.Rotateを呼び出した後、FormMainから呼ばれる
+        }
+        lastMousePos = mousePos;
+    }
+
+    private void graphicsBox_Resize(object sender, EventArgs e) => Draw();
+
+    #endregion graphicsBoxのイベント
 
     #region 座標変換
 
@@ -495,6 +584,7 @@ public partial class FormEBSD : Form
     /// <returns></returns>
     private PointD convertDetectorToScreen(in PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
     #endregion
+
 
     #region 菊池線を初期化。最後にDraw()も呼び出す。
     /// <summary>
@@ -545,7 +635,6 @@ public partial class FormEBSD : Form
     }
     #endregion
 
-    #region 統計情報の計算
     private void button2_Click(object sender, EventArgs e)
     {
         var cry = FormMain.Crystal;
@@ -590,17 +679,36 @@ public partial class FormEBSD : Form
 
     }
 
-    public void CalcStatistics()
+    #region 統計情報の計算
+    public void CalcStatistics(int i=-1, int j=-1)
     {
         if (BSEs != null && BSEs.Length > 1 && poleFigureControl.Lines != null && poleFigureControl.Lines.Length > 0)
         {
-            var range = poleFigureControl.Lines[0].Point;
-            M3 rot = M3.CreateRotationX(SmpTilt);
+            M3 smpRot = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
             double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
+
+            PointD[] area=[];
+            var areaStep = 120;
+            var f = new Func<double, double, PointD>((x, y) 
+                => Stereonet.ConvertVectorToSchmidt(smpRot.Mult(detRot.Mult(DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
+            if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)//
+            {
+                var div = DetectorDivision;
+                var r1 = Enumerable.Range(0, areaStep).Select(n => (double)n / areaStep);
+                area =
+                [
+                    ..r1.Select(x => f(2.0 * i / div - 1, 2.0 * (- j - 1 + x)/ div + 1)),
+                    ..r1.Select(x => f(2.0 * (i + x) / div - 1, 2.0 * (- j) / div + 1 )),
+                    ..r1.Select(x => f(2.0 * (i + 1) / div - 1, 2.0 * (- j - x) / div + 1)),
+                    ..r1.Select(x => f(2.0 * (i + 1 - x) / div - 1, 2.0 * (- j - 1) / div + 1 ))
+                ];
+            }
+            else
+                area = Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ))).ToArray();
 
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>
-            Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p)))).ToArray();
+            Geometry.InsidePolygonalArea(area, Stereonet.ConvertVectorToSchmidt(smpRot.Mult(e[^1].p - e[^2].p)))).ToArray();
             var count = bse2.Length;
             double energy = waveLengthControl.Energy;
 
@@ -611,8 +719,8 @@ public partial class FormEBSD : Form
                 int nBuckets = (int)((upper - lower) / step);
                 var histogram = new MathNet.Numerics.Statistics.Histogram(bse2.Select(e => (energy - e[^1].e) * 1000), nBuckets, lower, lower + nBuckets * step);
                 var pts = new List<PointD>();
-                for (int i = 0; i < histogram.BucketCount; i++)
-                    pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+                for (int n = 0; n < histogram.BucketCount; n++)
+                    pts.Add(new PointD((histogram[n].UpperBound + histogram[n].LowerBound) / 2, (double)histogram[n].Count / count));
                 //pts.Add(new PointD(energy*1000 + step / 2, 0));
                 graphControlEnergyProfile.ClearProfile();
                 graphControlEnergyProfile.Profile = new Profile(pts);
@@ -630,8 +738,8 @@ public partial class FormEBSD : Form
                 int nBuckets = (int)((upper - lower) / step + 1);
                 var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
                 var pts = new List<PointD>();
-                for (int i = 0; i < histogram.BucketCount; i++)
-                    pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+                for (int n = 0; n < histogram.BucketCount; n++)
+                    pts.Add(new PointD((histogram[n].UpperBound + histogram[n].LowerBound) / 2, (double)histogram[n].Count / count));
                 graphControlDepthProfile.ClearProfile();
                 graphControlDepthProfile.Profile = new Profile(pts);
                 graphControlDepthProfile.UpperX = upper * 0.5;
@@ -642,49 +750,7 @@ public partial class FormEBSD : Form
     }
     #endregion
 
-    #region graphicsBoxのイベント (graphicsBox上のマウスイベントも含む)
-
-    private bool MouseRangingMode = false;
-    private Point MouseRangeStart, MouseRangeEnd;//, startAnimation;
-    private void graphicsBox_MouseDown(object sender, MouseEventArgs e)
-    {
-
-    }
-
-    private void graphicsBox_MouseUp(object sender, MouseEventArgs e)
-    {
-
-    }
-
-    private PointD lastMousePos = new();
-
-    private void graphicsBox_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-    {
-        var mousePos = new PointD(e.X, e.Y);
-        var center = new PointD(graphicsBox.ClientSize.Width / 2.0, graphicsBox.ClientSize.Height / 2.0);
-        //左ボタンが押されながらマウスが動いたとき
-        if (e.Button == MouseButtons.Left)
-        {
-            if ((e.X - graphicsBox.ClientSize.Width / 2) * (e.X - graphicsBox.ClientSize.Width / 2) + (e.Y - graphicsBox.ClientSize.Height / 2) * (e.Y - graphicsBox.ClientSize.Height / 2)
-                < Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * 0.18)
-            {
-                if (mousePos != lastMousePos)
-                {
-                    var devPos = mousePos - lastMousePos;
-                    var devAngle = Math.Atan((mousePos - lastMousePos).Length * Resolution / CameraLength2);
-                    FormMain.Rotate((-1 * devPos.Y, -Math.Cos(SmpTilt - DetTilt) * devPos.X, Math.Sin(SmpTilt - DetTilt) * devPos.X), devAngle);
-                }
-            }
-            else
-                FormMain.Rotate((0, Math.Sin(SmpTilt - DetTilt), Math.Cos(SmpTilt - DetTilt)), -Math.Atan2(lastMousePos.X - center.X, lastMousePos.Y - center.Y) + Math.Atan2(mousePos.X - center.X, mousePos.Y - center.Y));
-            //Draw関数は、FormMain.Rotateを呼び出した後、FormMainから呼ばれる
-        }
-        lastMousePos = mousePos;
-    }
-
-    private void graphicsBox_Resize(object sender, EventArgs e) => Draw();
-
-    #endregion graphicsBoxのイベント
+  
 
     #region 入力パラメータ関連
     private void NumericBoxThicknessStart_ValueChanged(object sender, EventArgs e)
@@ -701,7 +767,7 @@ public partial class FormEBSD : Form
 
     #endregion
 
-    #region 現在のパラメータでEBSDを計算
+    #region 現在のパラメータでEBSDを動力学計算
     private void buttonSimulateEBSD_Click(object sender, EventArgs e)
     {
         if (Crystal.Bethe.IsBusy) return;
@@ -737,7 +803,7 @@ public partial class FormEBSD : Form
 
         Directions = [.. directions];
 
-        BetheMethod.Solver solver = BetheMethod.Solver.MtxExp_Eigen;
+        var solver = BetheMethod.Solver.MtxExp_Eigen;
         //if (comboBoxSolver.Text.Contains("Eigenproblem"))
         //    solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.Eigen_MKL : BetheMethod.Solver.Eigen_Eigen;
         //else
@@ -894,7 +960,6 @@ public partial class FormEBSD : Form
 
     private void button1_Click(object sender, EventArgs e)
     {
-
         var range = poleFigureControl.Lines[0].Point;
         M3 rot = M3.CreateRotationX(SmpTilt);
         double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);

@@ -671,14 +671,12 @@ public partial class FormMain : Form
 
         if (FormImageSimulator.Visible)
             FormImageSimulator.RotationChanged();
-
         
         if(FormEBSD.Visible)
             FormEBSD.Draw();
 
         if (SkipEulerChange && FormRotation.Visible)//Euler angle Ç™íºê⁄ì¸óÕÇ≥ÇÍÇΩéû
             FormRotation.SetRotation();
-
 
         DrawAxes();
 
