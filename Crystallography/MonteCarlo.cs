@@ -35,7 +35,6 @@ namespace Crystallography
         {
             Z = z;
             A = a;
-            Tilt = tilt;
             ρ = _ρ;
             InitialKev = kev;
             Tilt = tilt;

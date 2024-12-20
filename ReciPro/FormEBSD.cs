@@ -635,6 +635,11 @@ public partial class FormEBSD : Form
     }
     #endregion
 
+    /// <summary>
+    /// モンテカルロによる飛程シミュレーション
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void button2_Click(object sender, EventArgs e)
     {
         var cry = FormMain.Crystal;
@@ -679,11 +684,13 @@ public partial class FormEBSD : Form
 
     }
 
-    #region 統計情報の計算しグラフ化
+    #region 統計情報を計算しグラフ化
     public void CalcStatistics(int i=-1, int j=-1)
     {
         if (BSEs != null && BSEs.Length > 1 && poleFigureControl.Lines != null && poleFigureControl.Lines.Length > 0)
         {
+            double energy = waveLengthControl.Energy;
+
             M3 smpRot = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
             double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
 
@@ -710,13 +717,12 @@ public partial class FormEBSD : Form
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>
             Geometry.InsidePolygonalArea(area, Stereonet.ConvertVectorToSchmidt(smpRot.Mult(e[^1].p - e[^2].p)))).ToArray();
-
             #endregion
-
+           // bse2 = bse2.Where(e => e[^1].e > energy - 2.5 && e[^1].e < energy - 1.5 && e.Length>2).ToArray();
+            
             var count = bse2.Length;
-            double energy = waveLengthControl.Energy;
-
             //エネルギー分布を描画 ここから
+            //if(false)
             {
                 double step = 100;//ev単位
                 double lower = 0, upper = (energy - EnergyThreshold) * 1000;
@@ -736,7 +742,8 @@ public partial class FormEBSD : Form
 
             //最大深さ分布　ここから
             {
-                var depths = bse2.Select(e1 => 1000.0 * e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
+                //var depths = bse2.Select(e1 => 1000.0 * e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
+                var depths = bse2.Select(e1 => 1000.0 *  (sinTilt * e1[^2].p.Y/2 + - cosTilt * e1[^2].p.Z/2));
                 double lower = 0, upper = depths.Max();
                 double step = 1;//mm単位
                 int nBuckets = (int)((upper - lower) / step + 1);
