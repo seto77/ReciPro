@@ -323,6 +323,8 @@ public partial class FormEBSD : Form
 
     private void colorControlExcessLine_ColorChanged(object sender, EventArgs e) => Draw();
 
+    private void waveLengthControl_WavelengthChanged(object sender, EventArgs e) => SetVector();
+
     #endregion
 
     #region 描画関数
@@ -1009,8 +1011,9 @@ public partial class FormEBSD : Form
         AdjustImage();
     }
 
-    private void waveLengthControl_WavelengthChanged(object sender, EventArgs e) => SetVector();
 
+
+    #region グラフをコピー
     private void buttonCopyEnergyProfile_Click(object sender, EventArgs e)
     {
         if (graphControlEnergyProfile.Profile == null) return;
@@ -1034,6 +1037,6 @@ public partial class FormEBSD : Form
 
         Clipboard.SetDataObject(sb.ToString());
     }
+    #endregion
 
-  
 }
