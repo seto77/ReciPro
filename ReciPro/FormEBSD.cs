@@ -657,7 +657,7 @@ public partial class FormEBSD : Form
 
         //飛程計算ループ
         sw1.Restart();
-        var loop = 1000_000;
+        var loop = 1_000_000;
         var trajectories = new (V3 p, double e)[loop][];
         Parallel.For(0, loop, i => trajectories[i] = monte.GetTrajectories());
         BSEs = trajectories.Where(e => e[^1].e > EnergyThreshold).ToArray();
@@ -705,7 +705,7 @@ public partial class FormEBSD : Form
                 ];
             }
             else
-                area = Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ))).ToArray();
+                area = [.. Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
 
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>

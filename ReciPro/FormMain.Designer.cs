@@ -246,7 +246,6 @@
             // toolStripProgressBar
             // 
             resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
-            toolStripProgressBar.Margin = new System.Windows.Forms.Padding(0);
             toolStripProgressBar.Name = "toolStripProgressBar";
             // 
             // toolStripStatusLabel
@@ -482,7 +481,6 @@
             numericBoxAxisU.Maximum = 50D;
             numericBoxAxisU.Minimum = -50D;
             numericBoxAxisU.Name = "numericBoxAxisU";
-            numericBoxAxisU.RoundErrorAccuracy = -1;
             numericBoxAxisU.ShowUpDown = true;
             numericBoxAxisU.SkipEventDuringInput = false;
             numericBoxAxisU.ThonsandsSeparator = true;
@@ -507,7 +505,6 @@
             numericBoxAxisV.Maximum = 50D;
             numericBoxAxisV.Minimum = -50D;
             numericBoxAxisV.Name = "numericBoxAxisV";
-            numericBoxAxisV.RoundErrorAccuracy = -1;
             numericBoxAxisV.ShowUpDown = true;
             numericBoxAxisV.SkipEventDuringInput = false;
             numericBoxAxisV.ThonsandsSeparator = true;
@@ -523,7 +520,6 @@
             numericBoxAxisW.Maximum = 50D;
             numericBoxAxisW.Minimum = -50D;
             numericBoxAxisW.Name = "numericBoxAxisW";
-            numericBoxAxisW.RoundErrorAccuracy = -1;
             numericBoxAxisW.ShowUpDown = true;
             numericBoxAxisW.SkipEventDuringInput = false;
             numericBoxAxisW.ThonsandsSeparator = true;
@@ -549,7 +545,6 @@
             numericBoxPlaneL.Maximum = 50D;
             numericBoxPlaneL.Minimum = -50D;
             numericBoxPlaneL.Name = "numericBoxPlaneL";
-            numericBoxPlaneL.RoundErrorAccuracy = -1;
             numericBoxPlaneL.ShowUpDown = true;
             numericBoxPlaneL.SkipEventDuringInput = false;
             numericBoxPlaneL.ThonsandsSeparator = true;
@@ -563,7 +558,6 @@
             numericBoxPlaneH.Maximum = 50D;
             numericBoxPlaneH.Minimum = -50D;
             numericBoxPlaneH.Name = "numericBoxPlaneH";
-            numericBoxPlaneH.RoundErrorAccuracy = -1;
             numericBoxPlaneH.ShowUpDown = true;
             numericBoxPlaneH.SkipEventDuringInput = false;
             numericBoxPlaneH.ThonsandsSeparator = true;
@@ -578,7 +572,6 @@
             numericBoxPlaneK.Maximum = 50D;
             numericBoxPlaneK.Minimum = -50D;
             numericBoxPlaneK.Name = "numericBoxPlaneK";
-            numericBoxPlaneK.RoundErrorAccuracy = -1;
             numericBoxPlaneK.ShowUpDown = true;
             numericBoxPlaneK.SkipEventDuringInput = false;
             numericBoxPlaneK.ThonsandsSeparator = true;
@@ -742,7 +735,6 @@
             numericBoxStep.Minimum = 0.001D;
             numericBoxStep.Name = "numericBoxStep";
             numericBoxStep.RadianValue = 0.17453292519943295D;
-            numericBoxStep.RoundErrorAccuracy = -1;
             numericBoxStep.ShowUpDown = true;
             numericBoxStep.SmartIncrement = true;
             numericBoxStep.ThonsandsSeparator = true;
@@ -874,7 +866,6 @@
             numericBoxMaxUVW.Minimum = 1D;
             numericBoxMaxUVW.Name = "numericBoxMaxUVW";
             numericBoxMaxUVW.RadianValue = 0.52359877559829882D;
-            numericBoxMaxUVW.RoundErrorAccuracy = -1;
             numericBoxMaxUVW.ShowUpDown = true;
             numericBoxMaxUVW.SkipEventDuringInput = false;
             numericBoxMaxUVW.ThonsandsSeparator = true;
