@@ -31,6 +31,9 @@ public partial class FormEBSD : Form
     private readonly Stopwatch sw1 =new(), sw2 = new();
     private readonly Timer timer = new();
 
+    /// <summary>
+    /// 飛程計算の際の打ち切りエネルギー (kev)
+    /// </summary>
     private double EnergyThreshold = 2;
     public double WaveLength { get => waveLengthControl.WaveLength; set => waveLengthControl.WaveLength = value; }
 
@@ -41,7 +44,7 @@ public partial class FormEBSD : Form
 
     public double SmpTilt => numericBoxSampleTilt.RadianValue;
 
-    (V3 p, double e)[][] BSEs = [];
+    (double Depth, V3 Vec, double Energy)[] BSEs = [];
 
     public Crystal Crystal => FormMain.Crystal;
 
@@ -635,6 +638,7 @@ public partial class FormEBSD : Form
     }
     #endregion
 
+    #region モンテカルロ法による飛程シミュレーション
     /// <summary>
     /// モンテカルロによる飛程シミュレーション
     /// </summary>
@@ -662,10 +666,10 @@ public partial class FormEBSD : Form
 
         //飛程計算ループ
         sw1.Restart();
-        var loop = 1_000_000;
-        var trajectories = new (V3 p, double e)[loop][];
-        Parallel.For(0, loop, i => trajectories[i] = monte.GetTrajectories());
-        BSEs = trajectories.Where(e => e[^1].e > EnergyThreshold).ToArray();
+        var loop = 4_000_000;
+        var trajectories = new (double d, V3 v, double e)[loop];
+        Parallel.For(0, loop, i => trajectories[i] = monte.GetBackscatteredElectrons());
+        BSEs = trajectories.Where(e => e.e > EnergyThreshold).ToArray();
 
         toolStripStatusLabel1.Text = $"{sw1.ElapsedMilliseconds} msec. ellapsed for {loop} backscattered electrons.";
 
@@ -678,11 +682,12 @@ public partial class FormEBSD : Form
             poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Sigma;
 
         M3 rot = M3.CreateRotationX(SmpTilt);
-        poleFigureControl.Vectors = BSEs.Select(e => new V4(rot.Mult(e[^1].p - e[^2].p), e[^1].e)).ToArray();
+        poleFigureControl.Vectors = BSEs.Select(e => new V4(rot.Mult(e.Vec), e.Energy)).ToArray();
 
         CalcStatistics();
 
     }
+    #endregion
 
     #region 統計情報を計算しグラフ化
     public void CalcStatistics(int i=-1, int j=-1)
@@ -716,7 +721,7 @@ public partial class FormEBSD : Form
 
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>
-            Geometry.InsidePolygonalArea(area, Stereonet.ConvertVectorToSchmidt(smpRot.Mult(e[^1].p - e[^2].p)))).ToArray();
+            Geometry.InsidePolygonalArea(area, Stereonet.ConvertVectorToSchmidt(smpRot.Mult(e.Vec)))).ToArray();
             #endregion
            // bse2 = bse2.Where(e => e[^1].e > energy - 2.5 && e[^1].e < energy - 1.5 && e.Length>2).ToArray();
             
@@ -724,10 +729,10 @@ public partial class FormEBSD : Form
             //エネルギー分布を描画 ここから
             //if(false)
             {
-                double step = 100;//ev単位
-                double lower = 0, upper = (energy - EnergyThreshold) * 1000;
+                double step = 0.25;//kev単位
+                double lower = 0, upper = (energy - EnergyThreshold);
                 int nBuckets = (int)((upper - lower) / step);
-                var histogram = new MathNet.Numerics.Statistics.Histogram(bse2.Select(e => (energy - e[^1].e) * 1000), nBuckets, lower, lower + nBuckets * step);
+                var histogram = new MathNet.Numerics.Statistics.Histogram(bse2.Select(e => energy - e.Energy ), nBuckets, lower, lower + nBuckets * step);
                 var pts = new List<PointD>();
                 for (int n = 0; n < histogram.BucketCount; n++)
                     pts.Add(new PointD((histogram[n].UpperBound + histogram[n].LowerBound) / 2, (double)histogram[n].Count / count));
@@ -743,9 +748,9 @@ public partial class FormEBSD : Form
             //最大深さ分布　ここから
             {
                 //var depths = bse2.Select(e1 => 1000.0 * e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
-                var depths = bse2.Select(e1 => 1000.0 *  (sinTilt * e1[^2].p.Y/2 + - cosTilt * e1[^2].p.Z/2));
+                var depths = bse2.Select(e => e.Depth);
                 double lower = 0, upper = depths.Max();
-                double step = 1;//mm単位
+                double step = 1;//nm単位
                 int nBuckets = (int)((upper - lower) / step + 1);
                 var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
                 var pts = new List<PointD>();
@@ -973,19 +978,19 @@ public partial class FormEBSD : Form
         M3 rot = M3.CreateRotationX(SmpTilt);
         double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
         //まず検出器に入る電子を抽出し、これをbse2とする
-        var bse2 = BSEs.AsParallel().Where(e => Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e[^1].p - e[^2].p)))).ToArray();
+        var bse2 = BSEs.AsParallel().Where(e => Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e.Vec)))).ToArray();
 
         double[] values = new double[Pbmp.SrcValuesGrayOriginal.Length];
 
         for (int i = 0; i < EnergyArray.Length - 1; i++)
         {
             //bse2の中から特定のエネルギーを抽出し、これをbse3とする 
-            var bse3 = bse2.Where(e => EnergyArray[i] > e[^1].e && EnergyArray[i + 1] < e[^1].e).ToArray();
+            var bse3 = bse2.Where(e => EnergyArray[i] > e.Energy && EnergyArray[i + 1] < e.Energy).ToArray();
             //var bse3Ratio = (double)bse3.Length/ bse2.Length;
 
             //bse3に対する最大深さ分布　ここから
             {
-                var depths = bse3.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
+                var depths = bse3.Select(e => e.Depth);
                 double lower = ThicknessArray[0] - numericBoxThicknessStep.Value / 2, upper = ThicknessArray[^1] + numericBoxThicknessStep.Value / 2;
                 double step = numericBoxThicknessStep.Value;//mm単位
                 int nBuckets = (int)((upper - lower) / step + 1);

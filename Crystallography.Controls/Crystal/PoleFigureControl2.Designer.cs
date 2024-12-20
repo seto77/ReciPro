@@ -62,13 +62,12 @@
             // 
             // numericBoxResolution
             // 
-            resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.Maximum = 30D;
             numericBoxResolution.Minimum = 1D;
             numericBoxResolution.Name = "numericBoxResolution";
             numericBoxResolution.RadianValue = 0.10471975511965977D;
-            numericBoxResolution.RoundErrorAccuracy = -1;
             numericBoxResolution.ShowUpDown = true;
             numericBoxResolution.SmartIncrement = true;
             numericBoxResolution.Value = 6D;
@@ -81,8 +80,8 @@
             // 
             // comboBoxColor
             // 
-            resources.ApplyResources(comboBoxColor, "comboBoxColor");
             comboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(comboBoxColor, "comboBoxColor");
             comboBoxColor.FormattingEnabled = true;
             comboBoxColor.Items.AddRange(new object[] { resources.GetString("comboBoxColor.Items"), resources.GetString("comboBoxColor.Items1") });
             comboBoxColor.Name = "comboBoxColor";
@@ -90,13 +89,12 @@
             // 
             // numericBoxMax
             // 
-            resources.ApplyResources(numericBoxMax, "numericBoxMax");
             numericBoxMax.BackColor = System.Drawing.Color.Transparent;
-            numericBoxMax.Maximum = 1000000D;
+            resources.ApplyResources(numericBoxMax, "numericBoxMax");
+            numericBoxMax.Maximum = 100000000D;
             numericBoxMax.Minimum = 0D;
             numericBoxMax.Name = "numericBoxMax";
             numericBoxMax.RadianValue = 1.7453292519943295D;
-            numericBoxMax.RoundErrorAccuracy = -1;
             numericBoxMax.ShowTrigonomeric = true;
             numericBoxMax.ShowUpDown = true;
             numericBoxMax.SmartIncrement = true;
@@ -105,12 +103,11 @@
             // 
             // numericBoxMin
             // 
-            resources.ApplyResources(numericBoxMin, "numericBoxMin");
             numericBoxMin.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxMin, "numericBoxMin");
             numericBoxMin.Maximum = 10000D;
             numericBoxMin.Minimum = 0D;
             numericBoxMin.Name = "numericBoxMin";
-            numericBoxMin.RoundErrorAccuracy = -1;
             numericBoxMin.ShowTrigonomeric = true;
             numericBoxMin.ShowUpDown = true;
             numericBoxMin.SmartIncrement = true;

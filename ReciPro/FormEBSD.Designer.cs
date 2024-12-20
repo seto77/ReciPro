@@ -251,7 +251,7 @@
             button2.Name = "button2";
             button2.Size = new System.Drawing.Size(75, 23);
             button2.TabIndex = 113;
-            button2.Text = "button2";
+            button2.Text = "Calc BSE";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
