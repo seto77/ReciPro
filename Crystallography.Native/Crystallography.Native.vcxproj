@@ -156,7 +156,7 @@
       </FunctionLevelLinking>
       <EnableParallelCodeGeneration>
       </EnableParallelCodeGeneration>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
       <OpenMPSupport>
       </OpenMPSupport>
       <EnableModules>

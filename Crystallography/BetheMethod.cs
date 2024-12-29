@@ -13,6 +13,7 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 using static System.Buffers.ArrayPool<System.Numerics.Complex>;
 using static System.Numerics.Complex;
@@ -133,9 +134,9 @@ public class BetheMethod
     static BetheMethod()
     {
         EigenEnabled = NativeWrapper.Enabled;
-        BlasEnabled = Control.TryUseNativeOpenBLAS();
-        MklEnabled = Control.TryUseNativeMKL();
-        CudaEnabled = Control.TryUseNativeCUDA();
+        BlasEnabled = MathNet.Numerics.Control.TryUseNativeOpenBLAS();
+        MklEnabled = MathNet.Numerics.Control.TryUseNativeMKL();
+        CudaEnabled = MathNet.Numerics.Control.TryUseNativeCUDA();
     }
     public BetheMethod(Crystal crystal)
     {
@@ -1637,13 +1638,12 @@ public class BetheMethod
     {
         var key1 = compose(g.Index);
         var key2 = h is null ?  int.MaxValue: compose(h.Index);
-        //if (!uDictionary.TryGetValue((key1, key2), out (Complex real, Complex imag) U))
         if (!uDictionary.TryGetValue((key1, key2), out (Complex real, Complex imag) U))
         {
             var index = h is null ? g.Index : g.Index.Minus(h.Index);// (g.H - h.H, g.K - h.K, g.L - h.L) ;
 
             var s2 = h is null ?  g.Vec.Length2 / 4 : (g.Vec - h.Vec).Length2 / 4;
-            var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
+            //var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
             double a = Crystal.A, b = Crystal.B, c = Crystal.C;
 
             Complex fReal = 0, fImag = 0;
@@ -1674,8 +1674,8 @@ public class BetheMethod
                             if (double.IsNaN(m))
                                 m = 0;
 
-                            imag = m == 0 ? 0 : (double.IsNaN(inner * outer)) ? es.FactorImaginary(kV, s2, m) :
-                                h == null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
+                            imag = m == 0 ? 0 : double.IsNaN(inner * outer) ? es.FactorImaginary(kV, s2, m) :
+                                h is null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
                         }
                     }
                     var d = Exp(-m * s2 + TwoPiI * (atom * index)) * atoms.Occ; //20240524 位相項 (TwoPiI・・・)の符号をプラスに変更 (これで、対称心の結晶の計算が上手くいくはず 三菱・中村)
@@ -1818,10 +1818,11 @@ public class BetheMethod
         #endregion directionを初期化
 
         var limit = maxNumOfBloch * 12;
-        var beamsTmp = ArrayPool<(int key, double gX, double gY, double gZ, double q, double p)>.Shared.Rent(limit);//beamsTmpをレンタル
+        //var beamsTmp = ArrayPool<(int key, double gX, double gY, double gZ, double q, double p)>.Shared.Rent(limit);//beamsTmpをレンタル
+        var beamsTmp = ArrayPool<(int key, double gX, double gY, double gZ, double q, double p, double rating)>.Shared.Rent(limit);//beamsTmpをレンタル
         int count = 0;
         var (q0, p0) = getQP(new Vector3DBase(0, 0, 0), vecK0);
-        beamsTmp[count++] = (compose(0, 0, 0), 0, 0, 0, q0, p0);
+        beamsTmp[count++] = (compose(0, 0, 0), 0, 0, 0, 0, q0, p0);
         var outer = new List<(int key, double gLen)> { (compose(0,0,0), 0) };
         var whole = new HashSet<int> { compose(0, 0, 0) };
 
@@ -1848,9 +1849,10 @@ public class BetheMethod
                             double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
                             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
                             double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
+                            double gLen2 = gX * gX + gY * gY + gZ * gZ;
                             if (Math.Abs(q) < maxQ && p > 0) // p<=0 の場合は出射面から回折波が出ていかないことを意味する
-                                beamsTmp[count++] = (newKey, gX, gY, gZ, q, p);
-                            outer.Add((newKey, Math.Sqrt(gX * gX + gY * gY + gZ * gZ)));
+                                beamsTmp[count++] = (newKey, gX, gY, gZ, q, p, gLen2 * q * q);
+                            outer.Add((newKey, Math.Sqrt(gLen2)));
                         }
                     }
             outer.RemoveRange(0, end); //outer = outer[end..]; //こちらのほうが遅い。
@@ -1859,12 +1861,7 @@ public class BetheMethod
 
         var beamsTmp2 = beamsTmp[..count];
         //indexが小さく、かつQg(励起誤差)の小さいg-vectorを抽出する
-        Array.Sort(beamsTmp2, (a, b) => //beamsTmp.Sort((a, b) =>
-        {
-            var d1 = Math.Sqrt(a.gX * a.gX + a.gY * a.gY + a.gZ * a.gZ) * a.q * a.q;
-            var d2 = Math.Sqrt(b.gX * b.gX + b.gY * b.gY + b.gZ * b.gZ) * b.q * b.q;
-            return d1.CompareTo(d2);
-        });
+        Array.Sort(beamsTmp2, (a, b) => a.rating.CompareTo(b.rating));
 
         if (count > maxNumOfBloch + 1)
             beamsTmp2 = beamsTmp2[..(maxNumOfBloch + 1)];
@@ -1876,7 +1873,7 @@ public class BetheMethod
             return new Beam(index, g, getU(AccVoltage, new Beam(index, g)), (e.q, e.p));
         }).ToList();
 
-        ArrayPool<(int key, double gX, double gY, double gZ, double q, double p)>.Shared.Return(beamsTmp);//beamsTmpを返却
+        ArrayPool<(int key, double gX, double gY, double gZ, double q, double p, double rating)>.Shared.Return(beamsTmp);//beamsTmpを返却
 
         //X,Y座標が同じものを削除
         for (int i = 0; i < beams.Count; i++)
@@ -2056,12 +2053,12 @@ public class BetheMethod
         /// <param name="hkl">指数</param>
         /// <param name="vec">逆格子ベクトル</param>
         /// <param name="s">励起誤差</param>
-        public Beam(in (int H, int K, int L) index, Vector3DBase vec, in (Complex Real, Complex Imag) f, in (double Q, double P) prms)
+        public Beam(in (int H, int K, int L) index, Vector3DBase vec, in (Complex Real, Complex Imag) u, in (double Q, double P) prms)
         {
             Index = index;
             Vec = vec;
-            Ureal = f.Real;
-            Uimag = f.Imag;
+            Ureal = u.Real;
+            Uimag = u.Imag;
             Q = prms.Q;
             P = prms.P;
         }
