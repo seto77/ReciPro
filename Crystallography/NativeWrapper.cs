@@ -705,7 +705,7 @@ public static partial class NativeWrapper
     unsafe static private Complex[] CBEDSolver(Complex[] potential, Complex[] psi0, double[] thickness, in bool eigen)
     {
         var dim = psi0.Length;
-        var result = GC.AllocateUninitializedArray<Complex>(dim * thickness.Length);// new Complex[dim * thickness.Length];
+        var result =  new Complex[dim * thickness.Length];//GC.AllocateUninitializedArray<Complex>(dim * thickness.Length);
         fixed (Complex* _potential = potential, _psi0 = psi0, _result = result)
         {
             if (eigen)

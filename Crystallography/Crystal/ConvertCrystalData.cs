@@ -528,9 +528,9 @@ public class ConvertCrystalData
             var atomsEx = new List<Atoms>();
             foreach (var a in c.Atoms)
             {
-                foreach (var t in translation) 
+                foreach (var (X, Y, Z) in translation) 
                     atomsEx.Add(new Atoms(a.Label,a.AtomicNumber,a.SubNumberXray,a.SubNumberElectron,a.Isotope,a.SymmetrySeriesNumber,
-                        new Vector3DBase( a.X+t.X,a.Y+t.Y,a.Z+t.Z ), a.PositionError,a.Occ,a.Occ_err,a.Dsf,a.Material,a.Radius,true,false));
+                        new Vector3DBase( a.X+X,a.Y+Y,a.Z+Z ), a.PositionError,a.Occ,a.Occ_err,a.Dsf,a.Material,a.Radius,true,false));
             }
             c.Atoms = [.. atomsEx];
             crystal = c.ToCrystal2();

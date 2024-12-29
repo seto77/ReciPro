@@ -48,10 +48,10 @@ public static class Intrinsics
         var result = new Complex();
         Complex* p = &result;
 
-        var rV0 = FromArray128(new double[] { r0, r0 }, 0);
-        var rV1 = FromArray128(new double[] { r1, r1 }, 0);
-        var rV2 = FromArray128(new double[] { r2, r2 }, 0);
-        var rV3 = FromArray128(new double[] { r3, r3 }, 0);
+        var rV0 = FromArray128([r0, r0], 0);
+        var rV1 = FromArray128([r1, r1], 0);
+        var rV2 = FromArray128([r2, r2], 0);
+        var rV3 = FromArray128([r3, r3], 0);
 
         fixed (Complex* _c0 = &c0)
         fixed (Complex* _c1 = &c1)

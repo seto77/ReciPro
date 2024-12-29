@@ -94,7 +94,7 @@
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
-            checkBoxDrawKikuchiLines = new System.Windows.Forms.CheckBox();
+            checkBoxDrawKikuchiLinesKinematical = new System.Windows.Forms.CheckBox();
             buttonSaveImage = new System.Windows.Forms.Button();
             graphControlEnergyProfile = new GraphControl();
             graphControlDepthProfile = new GraphControl();
@@ -105,6 +105,9 @@
             buttonCopyEnergyProfile = new System.Windows.Forms.Button();
             buttonDepthProfile = new System.Windows.Forms.Button();
             label13 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            checkBoxDrawKikuchiLineDynamical = new System.Windows.Forms.CheckBox();
+            checkBoxDrawDetectorOutline = new System.Windows.Forms.CheckBox();
             flowLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -139,13 +142,13 @@
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
-            numericBoxSampleTilt.RadianValue = -1.2217304763960306D;
+            numericBoxSampleTilt.RadianValue = -1.2566370614359172D;
             numericBoxSampleTilt.ShowUpDown = true;
             numericBoxSampleTilt.Size = new System.Drawing.Size(128, 26);
             numericBoxSampleTilt.TabIndex = 111;
             numericBoxSampleTilt.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxSampleTilt.UpDown_Increment = 10D;
-            numericBoxSampleTilt.Value = -70D;
+            numericBoxSampleTilt.Value = -72D;
             numericBoxSampleTilt.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // waveLengthControl
@@ -247,7 +250,7 @@
             // 
             // button2
             // 
-            button2.Location = new System.Drawing.Point(312, 527);
+            button2.Location = new System.Drawing.Point(312, 525);
             button2.Name = "button2";
             button2.Size = new System.Drawing.Size(75, 23);
             button2.TabIndex = 113;
@@ -368,13 +371,13 @@
             numericBoxDetTilt.Minimum = 0D;
             numericBoxDetTilt.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxDetTilt.Name = "numericBoxDetTilt";
-            numericBoxDetTilt.RadianValue = 1.5707963267948966D;
+            numericBoxDetTilt.RadianValue = 1.5184364492350666D;
             numericBoxDetTilt.ShowUpDown = true;
             numericBoxDetTilt.Size = new System.Drawing.Size(137, 26);
             numericBoxDetTilt.TabIndex = 111;
             numericBoxDetTilt.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxDetTilt.UpDown_Increment = 10D;
-            numericBoxDetTilt.Value = 90D;
+            numericBoxDetTilt.Value = 87D;
             numericBoxDetTilt.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // numericBoxDetRadius
@@ -412,11 +415,13 @@
             numericBoxZofDet.Minimum = -1000D;
             numericBoxZofDet.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxZofDet.Name = "numericBoxZofDet";
+            numericBoxZofDet.RadianValue = 0.52359877559829882D;
             numericBoxZofDet.ShowUpDown = true;
             numericBoxZofDet.Size = new System.Drawing.Size(102, 25);
             numericBoxZofDet.TabIndex = 111;
             numericBoxZofDet.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxZofDet.UpDown_Increment = 10D;
+            numericBoxZofDet.Value = 30D;
             numericBoxZofDet.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // numericBoxYofDet
@@ -432,13 +437,13 @@
             numericBoxYofDet.Minimum = -1000D;
             numericBoxYofDet.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxYofDet.Name = "numericBoxYofDet";
-            numericBoxYofDet.RadianValue = -0.52359877559829882D;
+            numericBoxYofDet.RadianValue = -0.69813170079773179D;
             numericBoxYofDet.ShowUpDown = true;
             numericBoxYofDet.Size = new System.Drawing.Size(102, 25);
             numericBoxYofDet.TabIndex = 111;
             numericBoxYofDet.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxYofDet.UpDown_Increment = 10D;
-            numericBoxYofDet.Value = -30D;
+            numericBoxYofDet.Value = -40D;
             numericBoxYofDet.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // label2
@@ -680,7 +685,7 @@
             buttonSimulateEBSD.AutoSize = true;
             buttonSimulateEBSD.BackColor = System.Drawing.Color.SteelBlue;
             buttonSimulateEBSD.ForeColor = System.Drawing.Color.White;
-            buttonSimulateEBSD.Location = new System.Drawing.Point(1268, 291);
+            buttonSimulateEBSD.Location = new System.Drawing.Point(1278, 342);
             buttonSimulateEBSD.Name = "buttonSimulateEBSD";
             buttonSimulateEBSD.Size = new System.Drawing.Size(93, 26);
             buttonSimulateEBSD.TabIndex = 129;
@@ -713,7 +718,7 @@
             groupBox.Controls.Add(colorControlBackGround);
             groupBox.Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
             groupBox.Controls.Add(numericBoxKikuchiThresholdOfLength);
-            groupBox.Location = new System.Drawing.Point(1062, 45);
+            groupBox.Location = new System.Drawing.Point(1072, 96);
             groupBox.Name = "groupBox";
             groupBox.Size = new System.Drawing.Size(184, 272);
             groupBox.TabIndex = 130;
@@ -739,7 +744,7 @@
             numericBoxThicknessStep.FooterText = "nm";
             numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStep.HeaderText = "with step of";
-            numericBoxThicknessStep.Location = new System.Drawing.Point(1343, 153);
+            numericBoxThicknessStep.Location = new System.Drawing.Point(1353, 204);
             numericBoxThicknessStep.Margin = new System.Windows.Forms.Padding(0);
             numericBoxThicknessStep.Maximum = 1000D;
             numericBoxThicknessStep.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -766,7 +771,7 @@
             numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxNumOfG.HeaderText = "Number of diffracted waves";
-            numericBoxMaxNumOfG.Location = new System.Drawing.Point(1266, 45);
+            numericBoxMaxNumOfG.Location = new System.Drawing.Point(1276, 96);
             numericBoxMaxNumOfG.Margin = new System.Windows.Forms.Padding(0);
             numericBoxMaxNumOfG.Maximum = 2048D;
             numericBoxMaxNumOfG.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -774,7 +779,7 @@
             numericBoxMaxNumOfG.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
             numericBoxMaxNumOfG.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxMaxNumOfG.RadianValue = 0.55850536063818546D;
+            numericBoxMaxNumOfG.RadianValue = 0.83775804095727813D;
             numericBoxMaxNumOfG.ShowUpDown = true;
             numericBoxMaxNumOfG.Size = new System.Drawing.Size(221, 25);
             numericBoxMaxNumOfG.SmartIncrement = true;
@@ -782,7 +787,7 @@
             numericBoxMaxNumOfG.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxMaxNumOfG.ThonsandsSeparator = true;
             numericBoxMaxNumOfG.ToolTip = "Set a number of diffracted waves to be calculated";
-            numericBoxMaxNumOfG.Value = 32D;
+            numericBoxMaxNumOfG.Value = 48D;
             // 
             // numericBoxThicknessStart
             // 
@@ -792,7 +797,7 @@
             numericBoxThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStart.HeaderText = "Thickness from";
-            numericBoxThicknessStart.Location = new System.Drawing.Point(1268, 126);
+            numericBoxThicknessStart.Location = new System.Drawing.Point(1278, 177);
             numericBoxThicknessStart.Margin = new System.Windows.Forms.Padding(0);
             numericBoxThicknessStart.Maximum = 1000D;
             numericBoxThicknessStart.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -819,7 +824,7 @@
             numericBoxThicknessEnd.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessEnd.HeaderText = "to";
-            numericBoxThicknessEnd.Location = new System.Drawing.Point(1417, 126);
+            numericBoxThicknessEnd.Location = new System.Drawing.Point(1427, 177);
             numericBoxThicknessEnd.Margin = new System.Windows.Forms.Padding(0);
             numericBoxThicknessEnd.Maximum = 1000D;
             numericBoxThicknessEnd.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -827,7 +832,7 @@
             numericBoxThicknessEnd.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
             numericBoxThicknessEnd.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxThicknessEnd.RadianValue = 1.7453292519943295D;
+            numericBoxThicknessEnd.RadianValue = 0.87266462599716477D;
             numericBoxThicknessEnd.ShowUpDown = true;
             numericBoxThicknessEnd.Size = new System.Drawing.Size(75, 27);
             numericBoxThicknessEnd.SmartIncrement = true;
@@ -835,7 +840,7 @@
             numericBoxThicknessEnd.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxThicknessEnd.ThonsandsSeparator = true;
             numericBoxThicknessEnd.ToolTip = "Set a range and step of the sample thichnesses";
-            numericBoxThicknessEnd.Value = 100D;
+            numericBoxThicknessEnd.Value = 50D;
             numericBoxThicknessEnd.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
             // numericBoxDiskDiameter
@@ -847,7 +852,7 @@
             numericBoxDiskDiameter.FooterText = "pixels";
             numericBoxDiskDiameter.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDiskDiameter.HeaderText = "Diameter";
-            numericBoxDiskDiameter.Location = new System.Drawing.Point(1268, 77);
+            numericBoxDiskDiameter.Location = new System.Drawing.Point(1278, 128);
             numericBoxDiskDiameter.Margin = new System.Windows.Forms.Padding(0);
             numericBoxDiskDiameter.Maximum = 1024D;
             numericBoxDiskDiameter.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -869,7 +874,7 @@
             buttonStop.BackColor = System.Drawing.Color.IndianRed;
             buttonStop.ForeColor = System.Drawing.Color.White;
             buttonStop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonStop.Location = new System.Drawing.Point(1367, 291);
+            buttonStop.Location = new System.Drawing.Point(1377, 342);
             buttonStop.Name = "buttonStop";
             buttonStop.Size = new System.Drawing.Size(92, 26);
             buttonStop.TabIndex = 138;
@@ -898,7 +903,7 @@
             groupBoxOutput.Controls.Add(label10);
             groupBoxOutput.Enabled = false;
             groupBoxOutput.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
-            groupBoxOutput.Location = new System.Drawing.Point(1074, 334);
+            groupBoxOutput.Location = new System.Drawing.Point(1084, 385);
             groupBoxOutput.Name = "groupBoxOutput";
             groupBoxOutput.Size = new System.Drawing.Size(373, 200);
             groupBoxOutput.TabIndex = 139;
@@ -1108,19 +1113,19 @@
             label10.TabIndex = 30;
             label10.Text = "Brightness";
             // 
-            // checkBoxDrawKikuchiLines
+            // checkBoxDrawKikuchiLinesKinematical
             // 
-            checkBoxDrawKikuchiLines.AutoSize = true;
-            checkBoxDrawKikuchiLines.Checked = true;
-            checkBoxDrawKikuchiLines.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxDrawKikuchiLines.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxDrawKikuchiLines.Location = new System.Drawing.Point(1072, 16);
-            checkBoxDrawKikuchiLines.Name = "checkBoxDrawKikuchiLines";
-            checkBoxDrawKikuchiLines.Size = new System.Drawing.Size(122, 19);
-            checkBoxDrawKikuchiLines.TabIndex = 126;
-            checkBoxDrawKikuchiLines.Text = "Draw Kikuchi lines";
-            checkBoxDrawKikuchiLines.UseVisualStyleBackColor = true;
-            checkBoxDrawKikuchiLines.CheckedChanged += colorControlExcessLine_ColorChanged;
+            checkBoxDrawKikuchiLinesKinematical.AutoSize = true;
+            checkBoxDrawKikuchiLinesKinematical.Checked = true;
+            checkBoxDrawKikuchiLinesKinematical.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDrawKikuchiLinesKinematical.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxDrawKikuchiLinesKinematical.Location = new System.Drawing.Point(1072, 16);
+            checkBoxDrawKikuchiLinesKinematical.Name = "checkBoxDrawKikuchiLinesKinematical";
+            checkBoxDrawKikuchiLinesKinematical.Size = new System.Drawing.Size(208, 19);
+            checkBoxDrawKikuchiLinesKinematical.TabIndex = 126;
+            checkBoxDrawKikuchiLinesKinematical.Text = "Draw Kikuchi pattern (kinematical)";
+            checkBoxDrawKikuchiLinesKinematical.UseVisualStyleBackColor = true;
+            checkBoxDrawKikuchiLinesKinematical.CheckedChanged += colorControlExcessLine_ColorChanged;
             // 
             // buttonSaveImage
             // 
@@ -1158,7 +1163,7 @@
             graphControlEnergyProfile.LabelY = "Y:";
             graphControlEnergyProfile.LeftMargin = 0F;
             graphControlEnergyProfile.LineWidth = 1F;
-            graphControlEnergyProfile.Location = new System.Drawing.Point(136, 570);
+            graphControlEnergyProfile.Location = new System.Drawing.Point(136, 590);
             graphControlEnergyProfile.LowerX = 0D;
             graphControlEnergyProfile.LowerY = 0D;
             graphControlEnergyProfile.MaximalX = 1D;
@@ -1172,7 +1177,7 @@
             graphControlEnergyProfile.Name = "graphControlEnergyProfile";
             graphControlEnergyProfile.OriginPosition = new System.Drawing.Point(40, 20);
             graphControlEnergyProfile.Profile = null;
-            graphControlEnergyProfile.Size = new System.Drawing.Size(400, 200);
+            graphControlEnergyProfile.Size = new System.Drawing.Size(400, 180);
             graphControlEnergyProfile.Smoothing = false;
             graphControlEnergyProfile.TabIndex = 140;
             graphControlEnergyProfile.UnitX = "";
@@ -1211,7 +1216,7 @@
             graphControlDepthProfile.LabelY = "Y:";
             graphControlDepthProfile.LeftMargin = 0F;
             graphControlDepthProfile.LineWidth = 1F;
-            graphControlDepthProfile.Location = new System.Drawing.Point(556, 570);
+            graphControlDepthProfile.Location = new System.Drawing.Point(556, 590);
             graphControlDepthProfile.LowerX = 0D;
             graphControlDepthProfile.LowerY = 0D;
             graphControlDepthProfile.MaximalX = 1D;
@@ -1225,7 +1230,7 @@
             graphControlDepthProfile.Name = "graphControlDepthProfile";
             graphControlDepthProfile.OriginPosition = new System.Drawing.Point(40, 20);
             graphControlDepthProfile.Profile = null;
-            graphControlDepthProfile.Size = new System.Drawing.Size(400, 200);
+            graphControlDepthProfile.Size = new System.Drawing.Size(400, 180);
             graphControlDepthProfile.Smoothing = false;
             graphControlDepthProfile.TabIndex = 140;
             graphControlDepthProfile.UnitX = "";
@@ -1247,7 +1252,7 @@
             numericBoxEnergyEnd.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyEnd.HeaderText = "to";
-            numericBoxEnergyEnd.Location = new System.Drawing.Point(1393, 198);
+            numericBoxEnergyEnd.Location = new System.Drawing.Point(1403, 249);
             numericBoxEnergyEnd.Margin = new System.Windows.Forms.Padding(0);
             numericBoxEnergyEnd.Maximum = 1000D;
             numericBoxEnergyEnd.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -1255,7 +1260,7 @@
             numericBoxEnergyEnd.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxEnergyEnd.Name = "numericBoxEnergyEnd";
             numericBoxEnergyEnd.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxEnergyEnd.RadianValue = 0.33161255787892263D;
+            numericBoxEnergyEnd.RadianValue = 0.26179938779914941D;
             numericBoxEnergyEnd.ShowUpDown = true;
             numericBoxEnergyEnd.Size = new System.Drawing.Size(75, 27);
             numericBoxEnergyEnd.SmartIncrement = true;
@@ -1263,7 +1268,7 @@
             numericBoxEnergyEnd.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxEnergyEnd.ThonsandsSeparator = true;
             numericBoxEnergyEnd.ToolTip = "Set a range and step of the sample thichnesses";
-            numericBoxEnergyEnd.Value = 19D;
+            numericBoxEnergyEnd.Value = 15D;
             numericBoxEnergyEnd.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // numericBoxEnergyStart
@@ -1274,7 +1279,7 @@
             numericBoxEnergyStart.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStart.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStart.HeaderText = "Energy from";
-            numericBoxEnergyStart.Location = new System.Drawing.Point(1263, 198);
+            numericBoxEnergyStart.Location = new System.Drawing.Point(1273, 249);
             numericBoxEnergyStart.Margin = new System.Windows.Forms.Padding(0);
             numericBoxEnergyStart.Maximum = 1000D;
             numericBoxEnergyStart.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -1303,7 +1308,7 @@
             numericBoxEnergyStep.FooterText = "kV";
             numericBoxEnergyStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStep.HeaderText = "with step of";
-            numericBoxEnergyStep.Location = new System.Drawing.Point(1338, 225);
+            numericBoxEnergyStep.Location = new System.Drawing.Point(1348, 276);
             numericBoxEnergyStep.Margin = new System.Windows.Forms.Padding(0);
             numericBoxEnergyStep.Maximum = 10D;
             numericBoxEnergyStep.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -1311,7 +1316,7 @@
             numericBoxEnergyStep.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxEnergyStep.Name = "numericBoxEnergyStep";
             numericBoxEnergyStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxEnergyStep.RadianValue = 0.0034906585039886592D;
+            numericBoxEnergyStep.RadianValue = 0.017453292519943295D;
             numericBoxEnergyStep.ShowUpDown = true;
             numericBoxEnergyStep.Size = new System.Drawing.Size(149, 27);
             numericBoxEnergyStep.SmartIncrement = true;
@@ -1319,7 +1324,7 @@
             numericBoxEnergyStep.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxEnergyStep.ThonsandsSeparator = true;
             numericBoxEnergyStep.ToolTip = "Set a range and step of the sample thichnesses";
-            numericBoxEnergyStep.Value = 0.2D;
+            numericBoxEnergyStep.Value = 1D;
             numericBoxEnergyStep.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // button1
@@ -1362,17 +1367,57 @@
             label13.AutoSize = true;
             label13.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label13.Location = new System.Drawing.Point(702, 547);
+            label13.Location = new System.Drawing.Point(716, 560);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(73, 17);
             label13.TabIndex = 121;
             label13.Text = "Depth (nm)";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label14.Location = new System.Drawing.Point(252, 560);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(49, 17);
+            label14.TabIndex = 121;
+            label14.Text = "ΔE (kV)";
+            // 
+            // checkBoxDrawKikuchiLineDynamical
+            // 
+            checkBoxDrawKikuchiLineDynamical.AutoSize = true;
+            checkBoxDrawKikuchiLineDynamical.Checked = true;
+            checkBoxDrawKikuchiLineDynamical.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDrawKikuchiLineDynamical.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxDrawKikuchiLineDynamical.Location = new System.Drawing.Point(1072, 42);
+            checkBoxDrawKikuchiLineDynamical.Name = "checkBoxDrawKikuchiLineDynamical";
+            checkBoxDrawKikuchiLineDynamical.Size = new System.Drawing.Size(202, 19);
+            checkBoxDrawKikuchiLineDynamical.TabIndex = 126;
+            checkBoxDrawKikuchiLineDynamical.Text = "Draw Kikuchi pattern (dynamical)";
+            checkBoxDrawKikuchiLineDynamical.UseVisualStyleBackColor = true;
+            checkBoxDrawKikuchiLineDynamical.CheckedChanged += colorControlExcessLine_ColorChanged;
+            // 
+            // checkBoxDrawDetectorOutline
+            // 
+            checkBoxDrawDetectorOutline.AutoSize = true;
+            checkBoxDrawDetectorOutline.Checked = true;
+            checkBoxDrawDetectorOutline.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDrawDetectorOutline.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxDrawDetectorOutline.Location = new System.Drawing.Point(1072, 69);
+            checkBoxDrawDetectorOutline.Name = "checkBoxDrawDetectorOutline";
+            checkBoxDrawDetectorOutline.Size = new System.Drawing.Size(276, 19);
+            checkBoxDrawDetectorOutline.TabIndex = 126;
+            checkBoxDrawDetectorOutline.Text = "Draw detector outline (kinematically simulated)";
+            checkBoxDrawDetectorOutline.UseVisualStyleBackColor = true;
+            checkBoxDrawDetectorOutline.CheckedChanged += colorControlExcessLine_ColorChanged;
             // 
             // FormEBSD
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1513, 809);
+            Controls.Add(label14);
             Controls.Add(label13);
             Controls.Add(panelGeometry);
             Controls.Add(graphControlDepthProfile);
@@ -1385,7 +1430,9 @@
             Controls.Add(numericBoxMaxNumOfG);
             Controls.Add(numericBoxEnergyStart);
             Controls.Add(numericBoxThicknessStart);
-            Controls.Add(checkBoxDrawKikuchiLines);
+            Controls.Add(checkBoxDrawDetectorOutline);
+            Controls.Add(checkBoxDrawKikuchiLineDynamical);
+            Controls.Add(checkBoxDrawKikuchiLinesKinematical);
             Controls.Add(numericBoxEnergyEnd);
             Controls.Add(numericBoxThicknessEnd);
             Controls.Add(numericBoxDiskDiameter);
@@ -1495,7 +1542,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox checkBoxDrawKikuchiLines;
+        private System.Windows.Forms.CheckBox checkBoxDrawKikuchiLinesKinematical;
         private System.Windows.Forms.Button buttonSaveImage;
         private GraphControl graphControlEnergyProfile;
         private GraphControl graphControlDepthProfile;
@@ -1511,5 +1558,8 @@
         private System.Windows.Forms.Button buttonDepthProfile;
         private System.Windows.Forms.Button buttonViewQuarter;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox checkBoxDrawKikuchiLineDynamical;
+        private System.Windows.Forms.CheckBox checkBoxDrawDetectorOutline;
     }
 }

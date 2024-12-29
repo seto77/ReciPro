@@ -185,6 +185,7 @@
       </MinimalRebuild>
       <AdditionalOptions>/arch:AVX /arch:AVX2 /arch:AVX512 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

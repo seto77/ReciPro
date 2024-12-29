@@ -250,7 +250,7 @@ public static class MathnetEx
 //}
 #endregion
 
-#region (int h, int k, int l)の拡張
+#region タプル型の拡張
 public static class HKL
 {
     public static (int H, int K, int L) Plus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H + y.H, x.K + y.K, x.L + y.L);
@@ -259,8 +259,16 @@ public static class HKL
 
     public static (int H, int K, int L) Cross(ref this (int H, int K, int L) x, (int H, int K, int L) y)
         => (x.K * y.L - x.L * y.K, x.L * y.H - x.H * y.L, x.H * y.K - x.K * y.H);
+
+    public static Vector3DBase ToVector3DBase(ref this (double X, double Y, double Z) v) => new Vector3DBase(v.X, v.Y, v.Z);
+    public static double Length2(ref this (double X, double Y, double Z) v) => v.X * v.X + v.Y * v.Y + v.Z * v.Z;
+    public static double Length(ref this (double X, double Y, double Z) v) => Math.Sqrt(v.Length2());
+
+
 }
 #endregion
+
+
 
 #region Stringの拡張
 public static class StringEx

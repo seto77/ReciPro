@@ -52,7 +52,7 @@ public partial class FormSpotIDV2 : Form
 
     private readonly Lock lockObj = new();
 
-    private readonly Stopwatch sw = new Stopwatch();
+    private readonly Stopwatch sw = new();
 
     #endregion プロパティ、フィールド
 

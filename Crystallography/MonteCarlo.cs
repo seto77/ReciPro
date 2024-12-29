@@ -66,13 +66,13 @@ public class MonteCarlo
         //散乱係数
         var α = coeff0 / kev;
         //トータル散乱断面積 (nm^2)
-        var t1 = coeff1 / mv2;
-        var σ_E = t1 * t1 * 4 * Math.PI / α / (α + 1) * 1E18;
+        var tmp = 2 * coeff1 / mv2;
+        var σ_E = tmp * tmp * Math.PI / α / (α + 1) * 1E18;
         //σ_E = 5.21E-21 * Z * Z / kev / kev * 12.56 / α / (α + 1) * Math.Pow((kev + 511) / (kev + 1022), 2);
         //弾性散乱平均自由行程 (nm) 
         var λ_el = coeff2 / σ_E; //λ_el = A / UniversalConstants.A / ρ / σ_E * 1E7;
         //阻止能 (Joy and Luo 1989) (kev/nm単位)
-        var sp = coeff3 / mv2 * Math.Log(1.166 * k + 0.583 * mv2 / UniversalConstants.eV_joule / J);
+        var sp = coeff3 / mv2 * Math.Log(1.166 * k + 0.583  / UniversalConstants.eV_joule / J * mv2 );
         return (α, σ_E, λ_el, sp);
     }
 
@@ -84,7 +84,10 @@ public class MonteCarlo
     public (V3 p, double e)[] GetTrajectories()
     {
         var trajectory = new List<(V3 p, double e)>() { (new V3(0, 0, 0), InitialKev) };
-        var vec = new V3(0, 0, -1);
+        //var vec = new V3(0, 0, -1);
+        double m11, m12, m13, m22, m23;
+        double vX = 0, vY = 0, vZ = -1;
+        int n = 0;
 
         //電子エネルギーがThresholdKev以下になるか、試料を脱出するまでループ
         while (trajectory[^1].e > ThresholdKev && trajectory[^1].p.Y * tan >= trajectory[^1].p.Z)
@@ -93,19 +96,43 @@ public class MonteCarlo
             var (α, _, λ_el, sp) = GetParameters(trajectory[^1].e);
             //飛行距離 s
             var s = -λ_el * Math.Log(Rnd.NextDouble());
-            if (trajectory.Count > 1)
+            if (n++ != 0)
             {
                 double rnd2 = Rnd.NextDouble(), rnd3 = Rnd.NextDouble();
                 double cosθ = 1 - 2 * α * rnd2 / (1 + α - rnd2), sinθ = Math.Sqrt(1 - cosθ * cosθ);
-                double φ = 2 * Math.PI * rnd3, cosφ = Math.Cos(φ), sinφ = Math.Sin(φ);
-                var rot = CreateRotationFromZ(vec);
-                vec = new V3(
-                    rot.M11 * sinθ * cosφ + rot.M12 * sinθ * sinφ + rot.M13 * cosθ,
-                    rot.M21 * sinθ * cosφ + rot.M22 * sinθ * sinφ + rot.M23 * cosθ,
-                    rot.M31 * sinθ * cosφ + rot.M32 * sinθ * sinφ + rot.M33 * cosθ
-                            );
+                double φ = 2 * Math.PI * rnd3, sinθcosφ = sinθ * Math.Cos(φ), sinθsinφ = sinθ * Math.Sin(φ);
+
+                //var rot = CreateRotationFromZ(vec);
+                //vec = new V3(
+                //    rot.M11 * sinθcosφ + rot.M21 * sinθsinφ + rot.M31 * cosθ,
+                //    rot.M12 * sinθcosφ + rot.M22 * sinθsinφ + rot.M32 * cosθ,
+                //    rot.M13 * sinθcosφ + rot.M23 * sinθsinφ + rot.M33 * cosθ
+                //            );
+
+                var vZ1 = vZ + 1;
+                if (vZ1 < Th)
+                { vX = sinθcosφ; vY = sinθsinφ; vZ = -cosθ; }
+                else
+                {
+                    m11 = 1 - vX * vX / vZ1;
+                    m22 = 1 - vY * vY / vZ1;
+                    m12 = -vX * vY / vZ1;
+                    m13 = vX;
+                    m23 = vY;
+
+                    vX = m11 * sinθcosφ + m12 * sinθsinφ + m13 * cosθ;
+                    vY = m12 * sinθcosφ + m22 * sinθsinφ + m23 * cosθ;
+                    vZ = -m13 * sinθcosφ - m23 * sinθsinφ + vZ * cosθ;
+
+                    if (n % 10 == 0)
+                    {
+                        var len = Math.Sqrt(vX * vX + vY * vY + vZ * vZ);
+                        vX /= len; vY /= len; vZ /= len;
+                    }
+                }
             }
-            trajectory.Add((trajectory[^1].p + s * vec, trajectory[^1].e + s * sp));
+            trajectory.Add((trajectory[^1].p + s * new V3(vX, vY, vZ), trajectory[^1].e + s * sp));
+
         }
         return trajectory.Select(e => (e.p / 1000, e.e)).ToArray();
     }
@@ -119,52 +146,61 @@ public class MonteCarlo
     public (double d, V3 v, double e) GetBackscatteredElectrons()
     {
         double e = InitialKev;
-        V3 pos = new(0, 0, 0), vec = new(0, 0, -1);
-
+        double vX = 0, vY = 0, vZ = -1;
+        double pY = 0, pZ = 0;//X座標は考えなくてよい
+        int n = 0;
         //電子エネルギーがThresholdKev以下になるか、試料を脱出するまでループ
         while (e > ThresholdKev)
         {
+            //乱数発生
+            double rnd1 = Rnd.NextDouble(), rnd2 = Rnd.NextDouble(), rnd3 = Rnd.NextDouble();
             //パラメーター取得
             var (α, _, λ_el, sp) = GetParameters(e);
             //飛行距離 s
-            var s = -λ_el * Math.Log(Rnd.NextDouble());
-            if (e != InitialKev)
+            var s = -λ_el * Math.Log(rnd1);
+            if (n++ != 0)
             {
-                double rnd2 = Rnd.NextDouble(), rnd3 = Rnd.NextDouble();
                 double cosθ = 1 - 2 * α * rnd2 / (1 + α - rnd2), sinθ = Math.Sqrt(1 - cosθ * cosθ);
-                double φ = 2 * Math.PI * rnd3, cosφ = Math.Cos(φ), sinφ = Math.Sin(φ);
-                var rot = CreateRotationFromZ(vec);
-                vec = new V3(
-                    rot.M11 * sinθ * cosφ + rot.M12 * sinθ * sinφ + rot.M13 * cosθ,
-                    rot.M21 * sinθ * cosφ + rot.M22 * sinθ * sinφ + rot.M23 * cosθ,
-                    rot.M31 * sinθ * cosφ + rot.M32 * sinθ * sinφ + rot.M33 * cosθ
-                            );
+                double φ = 2 * Math.PI * rnd3, sinθcosφ = sinθ * Math.Cos(φ), sinθsinφ = sinθ * Math.Sin(φ);
+
+                //var rot = CreateRotationFromZ(vec);
+                //vec = new V3(
+                //    rot.M11 * sinθcosφ + rot.M12 * sinθsinφ + rot.M13 * cosθ,
+                //    rot.M12 * sinθcosφ + rot.M22 * sinθsinφ + rot.M23 * cosθ,
+                //    rot.M13 * sinθcosφ + rot.M32 * sinθsinφ + rot.M33 * cosθ
+                //            );
+
+                var vZ1 = vZ + 1;
+                if (vZ1 < Th)
+                { vX = sinθcosφ; vY = sinθsinφ; vZ = -cosθ; }
+                else
+                {
+                    var m11 = 1 - vX * vX / vZ1;
+                    var m22 = 1 - vY * vY / vZ1;
+                    var m12 = -vX * vY / vZ1;
+                    var m13 = vX;
+                    var m23 = vY;
+                    vX = m11 * sinθcosφ + m12 * sinθsinφ + m13 * cosθ;
+                    vY = m12 * sinθcosφ + m22 * sinθsinφ + m23 * cosθ;
+                    vZ = -m13 * sinθcosφ - m23 * sinθsinφ + vZ * cosθ;
+
+                    if (n % 10 == 0)
+                    {
+                        var len = Math.Sqrt(vX * vX + vY * vY + vZ * vZ);
+                        vX /= len; vY /= len; vZ /= len;
+                    }
+                }
             }
-            var tmpPos = pos + s * vec;
-            if (tmpPos.Y * tan < tmpPos.Z)
+            double pYtmp = pY + s * vY, pZtmp = pZ + s * vZ;
+            if (pYtmp * tan < pZtmp)
                 break;
-            pos = tmpPos;
+            pY = pYtmp; pZ = pZtmp;
+
             e += s * sp;
         }
-        return (sin * pos.Y - cos * pos.Z, vec, e);
+        return (sin * pY - cos * pZ, new V3(vX, vY, vZ), e);
     }
-
-    /// <summary>
-    /// Z軸(001)を引数のベクトルvに回転させる行列を生成する
-    /// </summary>
-    /// <param name="v"></param>
-    /// <returns></returns>
-    public static M3 CreateRotationFromZ(V3 v)
-    {
-        v.Normalize();
-        if (Math.Abs(v.Z - 1) < Th)
-            return M3.Identity;
-        else if (Math.Abs(v.Z + 1) < Th)
-            return M3.CreateRotationX(Math.PI);
-        else
-            return M3.CreateFromAxisAngle(V3.Cross(v, Z_vector), V3.CalculateAngle(Z_vector, v));
-    }
-    public static readonly V3 Z_vector = new(0, 0, 1);
+  
     public const double Th = 0.0000001;
 
 }

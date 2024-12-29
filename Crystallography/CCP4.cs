@@ -5,7 +5,7 @@ namespace Crystallography;
 public class CCP4
 {
     private static readonly uint[] setbits =
-                     {0x00000000, 0x00000001, 0x00000003, 0x00000007,
+                     [0x00000000, 0x00000001, 0x00000003, 0x00000007,
                           0x0000000F, 0x0000001F, 0x0000003F, 0x0000007F,
                           0x000000FF, 0x000001FF, 0x000003FF, 0x000007FF,
                           0x00000FFF, 0x00001FFF, 0x00003FFF, 0x00007FFF,
@@ -13,7 +13,7 @@ public class CCP4
                           0x000FFFFF, 0x001FFFFF, 0x003FFFFF, 0x007FFFFF,
                           0x00FFFFFF, 0x01FFFFFF, 0x03FFFFFF, 0x07FFFFFF,
                           0x0FFFFFFF, 0x1FFFFFFF, 0x3FFFFFFF, 0x7FFFFFFF,
-                          0xFFFFFFFF};
+                          0xFFFFFFFF];
 
     private static uint shift_left(uint x, int n)
     { return (((x) & (uint)setbits[32 - (n)]) << (n)); }
@@ -29,7 +29,7 @@ public class CCP4
         uint spill = 0, pixel = 0, nextint;
         int bitnum;
         int pixnum;
-        int[] bitdecode = new int[] { 0, 4, 5, 6, 7, 8, 16, 32 };
+        int[] bitdecode = [0, 4, 5, 6, 7, 8, 16, 32];
         uint[] img = new uint[total];
 
         /*  while (pixel < total)
@@ -199,7 +199,7 @@ public class CCP4
         uint spill = 0, pixel = 0, nextint;
         int bitnum;
         int pixnum;
-        int[] bitdecode = new int[] { 0, 4, 5, 6, 7, 8, 16, 32 };
+        int[] bitdecode = [0, 4, 5, 6, 7, 8, 16, 32];
         uint[] img = new uint[total];
 
         //int valids = 0, spillbits = 0, usedbits, total = x * y;
@@ -297,7 +297,7 @@ public class CCP4
         uint spill = 0, pixel = 0, nextint;
         int bitnum;
         int pixnum;
-        int[] bitdecode = new int[] { 0, 4, 5, 6, 7, 8, 16, 32 };
+        int[] bitdecode = [0, 4, 5, 6, 7, 8, 16, 32];
         uint[] img = new uint[total];
 
         while (pixel < total)

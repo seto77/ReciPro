@@ -396,7 +396,7 @@ public partial class FormMain : Form
         if (commonDialog.AutomaticallyClose)
             commonDialog.Visible = false;
 
-        toolStripStatusLabel.Text = "Startup time: " + sw.ElapsedMilliseconds + " ms.";
+        toolStripStatusLabel.Text = $"Startup time: {sw.ElapsedMilliseconds:#,0} ms.";
 
         if (disableOpneGLToolStripMenuItem.Checked)
         {

@@ -52,6 +52,7 @@ public partial class FormRotationMatrix : Form
     private GLControlAlpha glControlExpAxes;
     private GLControlAlpha glControlReciProGonio;
     private GLControlAlpha glControlExpGonio;
+    private static readonly string[] separator = new[] { "\r\n" };
     #endregion
 
     #region コンストラクタ、ロード、クローズ、Visible
@@ -218,7 +219,7 @@ public partial class FormRotationMatrix : Form
             var data = Clipboard.GetDataObject();
             var str = (string)data.GetData(typeof(string).ToString(), true);
 
-            var str1 = str.Split(new[] { "\r\n" }, StringSplitOptions.None);
+            var str1 = str.Split(separator, StringSplitOptions.None);
             if (str1.Length < 3) return;
 
             var row1 = str1[0].Split(new[] { '\t' }, StringSplitOptions.None);

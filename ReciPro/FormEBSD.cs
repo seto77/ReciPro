@@ -19,6 +19,7 @@ using System.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System;
 using static IronPython.Modules._ast;
+using Microsoft.Scripting.Utils;
 #endregion
 
 namespace ReciPro;
@@ -44,7 +45,7 @@ public partial class FormEBSD : Form
 
     public double SmpTilt => numericBoxSampleTilt.RadianValue;
 
-    (double Depth, V3 Vec, double Energy)[] BSEs = [];
+    (double Depth, V3 Vec, PointD Position, double Energy)[] BSEs = [];
 
     public Crystal Crystal => FormMain.Crystal;
 
@@ -333,7 +334,7 @@ public partial class FormEBSD : Form
     /// </summary>
     public void Draw(Graphics g = null)
     {
-        if (checkBoxDrawKikuchiLines.Checked)
+        
             DrawKikuchiLine();
 
         DrawGeometry();
@@ -378,108 +379,115 @@ public partial class FormEBSD : Form
         if (!SetProjection(graphics)) return;
 
         graphics.Clear(colorControlBackGround.Color);
-        graphics.SmoothingMode = SmoothingMode.None;
-        graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-        graphics.PixelOffsetMode = PixelOffsetMode.Half;
 
-        if (Pbmp != null)
+        if (checkBoxDrawKikuchiLineDynamical.Checked && Pbmp != null)
         {
+            graphics.SmoothingMode = SmoothingMode.None;
+            graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+            graphics.PixelOffsetMode = PixelOffsetMode.Half;
+
             var bmp = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), graphicsBox.ClientSize);
             graphics.DrawImage(bmp, new RectangleD(-DetR, -DetR - Foot.Y, DetR * 2, DetR * 2));
         }
 
-        graphics.SmoothingMode = SmoothingMode.HighQuality;
-        graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-        var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
-        var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
-        var font = new Font("Tahoma", (float)(trackBarStrSize.Value / 8.0 * Resolution));
-        var brush = new SolidBrush(colorControlString.Color);
-
-        var Tau = numericBoxDetTilt.RadianValue - numericBoxSampleTilt.RadianValue;
-
-        foreach (var g in Crystal.VectorOfG_KikuchiLine)
+        
+        if (checkBoxDrawKikuchiLinesKinematical.Checked)
         {
-            double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-            Vector3DBase vec1 = Crystal.RotationMatrix * g;
+            var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
+            var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
+            var font = new Font("Tahoma", (float)(trackBarStrSize.Value / 8.0 * Resolution));
+            var brush = new SolidBrush(colorControlString.Color);
 
-            //vec2は、検出器法線がZ軸と一致するようにX軸を回転軸に回転させたベクトル
-            var vec2 = Matrix3D.Rot(new Vector3DBase(1, 0, 0), -Tau) * vec1;
+            var Tau = numericBoxDetTilt.RadianValue - numericBoxSampleTilt.RadianValue;
 
-            //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
-            var psi = Math.Atan2(vec2.X, vec2.Y);
-            double sinPsi = Math.Sin(psi), cosPsi = Math.Cos(psi);
-            var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
-
-            //vec3normは、vec3を規格化したベクトル
-            var vec3norm = vec3.Normarize();
-            double sinPhi = vec3norm.Y, sin2Phi = sinPhi * sinPhi;
-            double cosPhi = vec3norm.Z;
-
-            double P = (sin2Phi - sin2Theta) / (CameraLength2 * CameraLength2 * (1 - sin2Theta)), Psqrt = Math.Sqrt(P);
-            double Q = P * (sin2Phi - sin2Theta) / sin2Theta, Qsqrt = Math.Sqrt(Q);
-            double Y = CameraLength2 * sinPhi * cosPhi / (sin2Phi - sin2Theta);
-
-            if (!double.IsNaN(Psqrt) && !double.IsNaN(Qsqrt))
+            foreach (var g in Crystal.VectorOfG_KikuchiLine)
             {
-                // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
-                double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
-                var pts = new List<PointD>();
-                for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
+                double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
+
+                Vector3DBase vec1 = Crystal.RotationMatrix * g;
+
+                //vec2は、検出器法線がZ軸と一致するようにX軸を回転軸に回転させたベクトル
+                var vec2 = Matrix3D.Rot(new Vector3DBase(1, 0, 0), -Tau) * vec1;
+
+                //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
+                var psi = Math.Atan2(vec2.X, vec2.Y);
+                double sinPsi = Math.Sin(psi), cosPsi = Math.Cos(psi);
+                var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
+
+                //vec3normは、vec3を規格化したベクトル
+                var vec3norm = vec3.Normarize();
+                double sinPhi = vec3norm.Y, sin2Phi = sinPhi * sinPhi;
+                double cosPhi = vec3norm.Z;
+
+                double P = (sin2Phi - sin2Theta) / (CameraLength2 * CameraLength2 * (1 - sin2Theta)), Psqrt = Math.Sqrt(P);
+                double Q = P * (sin2Phi - sin2Theta) / sin2Theta, Qsqrt = Math.Sqrt(Q);
+                double Y = CameraLength2 * sinPhi * cosPhi / (sin2Phi - sin2Theta);
+
+                if (!double.IsNaN(Psqrt) && !double.IsNaN(Qsqrt))
                 {
-                    double x = Math.Sinh(omega) / Psqrt, y = -Math.Cosh(omega) / Qsqrt;
-                    var pt = new PointD(cosPsi * x - sinPsi * (y - Y), sinPsi * x + cosPsi * (y - Y));
-
-                    if (IsScreenArea(pt))
-                        pts.Add(pt);
-                }
-
-                if (pts.Count > 1)
-                {
-                    if (checkBoxKikuchiLine_Kinematical.Checked)
-                        penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
-                    graphics.DrawLines(penExcess, pts.ToArray());
-
-                    //ラベル描画
-                    //if (toolStripButtonIndexLabels.Checked)
+                    // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
+                    double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
+                    var pts = new List<PointD>();
+                    for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
                     {
-                        //まず傾きをみて線のどちら側にラベルを付けるかを決める。θは -π ~ +πの範囲で調節
-                        var original = graphics.Transform;
-                        var θ = Math.Atan2(pts[^1].Y - pts[0].Y, pts[^1].X - pts[0].X);
-                        if (-Math.PI / 2 < θ && θ < Math.PI / 2)
+                        double x = Math.Sinh(omega) / Psqrt, y = -Math.Cosh(omega) / Qsqrt;
+                        var pt = new PointD(cosPsi * x - sinPsi * (y - Y), sinPsi * x + cosPsi * (y - Y));
+
+                        if (IsScreenArea(pt))
+                            pts.Add(pt);
+                    }
+
+                    if (pts.Count > 1)
+                    {
+                        if (checkBoxKikuchiLine_Kinematical.Checked)
+                            penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
+                        graphics.DrawLines(penExcess, pts.ToArray());
+
+                        //ラベル描画
+                        //if (toolStripButtonIndexLabels.Checked)
                         {
-                            graphics.TranslateTransform(pts[0].X, pts[0].Y);
-                            graphics.RotateTransform(θ);
+                            //まず傾きをみて線のどちら側にラベルを付けるかを決める。θは -π ~ +πの範囲で調節
+                            var original = graphics.Transform;
+                            var θ = Math.Atan2(pts[^1].Y - pts[0].Y, pts[^1].X - pts[0].X);
+                            if (-Math.PI / 2 < θ && θ < Math.PI / 2)
+                            {
+                                graphics.TranslateTransform(pts[0].X, pts[0].Y);
+                                graphics.RotateTransform(θ);
+                            }
+                            else
+                            {
+                                graphics.TranslateTransform(pts[^1].X, pts[^1].Y);
+                                graphics.RotateTransform(θ + Math.PI);
+                            }
+                            graphics.DrawString(g.Text, font, brush, new PointF(0, 0));
+                            graphics.Transform = original;
                         }
-                        else
-                        {
-                            graphics.TranslateTransform(pts[^1].X, pts[^1].Y);
-                            graphics.RotateTransform(θ + Math.PI);
-                        }
-                        graphics.DrawString(g.Text, font, brush, new PointF(0, 0));
-                        graphics.Transform = original;
                     }
                 }
             }
         }
 
-        //検出器を示す円を描画
-        graphics.DrawArc(new Pen(Color.Yellow, ResolutionF * 2), -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360);
-        //検出器の分割線
-        for (int n = 0; n < DetectorDivision; n++)
+        if (checkBoxDrawDetectorOutline.Checked)
         {
-            var x = 2.0 * n / DetectorDivision - 1;
-            graphics.DrawLine(new Pen(Color.Orange, ResolutionF), -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y);
-            graphics.DrawLine(new Pen(Color.Orange, ResolutionF), x * DetR, -DetR - Foot.Y, x * DetR, DetR - Foot.Y);
-        }
-        if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
-        {
-            double x = 2.0 * i / DetectorDivision - 1, y = 2.0 * j / DetectorDivision - 1;
+            //検出器を示す円を描画
+            graphics.DrawArc(new Pen(Color.Yellow, ResolutionF * 2), -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360);
+            //検出器の分割線
+            for (int n = 0; n < DetectorDivision; n++)
+            {
+                var x = 2.0 * n / DetectorDivision - 1;
+                graphics.DrawLine(new Pen(Color.Orange, ResolutionF), -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y);
+                graphics.DrawLine(new Pen(Color.Orange, ResolutionF), x * DetR, -DetR - Foot.Y, x * DetR, DetR - Foot.Y);
+            }
+            if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
+            {
+                double x = 2.0 * i / DetectorDivision - 1, y = 2.0 * j / DetectorDivision - 1;
 
-            graphics.FillRectangle(new SolidBrush(Color.FromArgb(32, Color.Orange)), DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision);
+                graphics.FillRectangle(new SolidBrush(Color.FromArgb(32, Color.Orange)), DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision);
+            }
         }
-
         graphicsBox.Refresh();
     }
 
@@ -668,12 +676,14 @@ public partial class FormEBSD : Form
 
         //飛程計算ループ
         sw1.Restart();
-        var loop = 4_000_000;
-        var trajectories = new (double d, V3 v, double e)[loop];
-        Parallel.For(0, loop, i => trajectories[i] = monte.GetBackscatteredElectrons());
-        BSEs = trajectories.Where(e => e.e > EnergyThreshold).ToArray();
-
-        toolStripStatusLabel1.Text = $"{sw1.ElapsedMilliseconds} msec. ellapsed for {loop} backscattered electrons.";
+        var loop = 5_000_000;
+        M3 smpRot = M3.CreateRotationX(SmpTilt);
+        BSEs = ParallelEnumerable.Range(0, loop)
+            .Select(_ => monte.GetBackscatteredElectrons())
+            .Where(e => e.e > EnergyThreshold)
+            .Select(e => (e.d,e.v, Stereonet.ConvertVectorToSchmidt(smpRot.Mult(e.v)),e.e))
+            .ToArray();
+        toolStripStatusLabel1.Text = $"{sw1.ElapsedMilliseconds} msec. ellapsed for {loop:#,0} backscattered electrons.";
 
         //ステレオネット描画
         if (radioButtonFrequency.Checked)
@@ -723,7 +733,7 @@ public partial class FormEBSD : Form
 
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>
-            Geometry.InsidePolygonalArea(area, Stereonet.ConvertVectorToSchmidt(smpRot.Mult(e.Vec)))).ToArray();
+            Geometry.InsidePolygonalArea(area, e.Position)).ToArray();
             #endregion
            // bse2 = bse2.Where(e => e[^1].e > energy - 2.5 && e[^1].e < energy - 1.5 && e.Length>2).ToArray();
             
@@ -791,12 +801,10 @@ public partial class FormEBSD : Form
         buttonStop.Visible = true;
         sw1.Restart();
         //FormDiffractionSimulator.SkipDrawing = true;
-        Crystal.Bethe.EBSD_Completed += Bethe_EBSD_Completed;
-        Crystal.Bethe.EBSD_ProgressChanged += Bethe_EBSD_ProgressChanged;
+     
 
         //方位配列を作る 
-
-        //検出器の中心座標
+        
         double cos = Math.Cos(DetTilt), sin = Math.Sin(DetTilt);
         var rotDet = new M4(1, 0, 0, 0,
                             0, cos, -sin, DetY - DetY * cos + DetZ * sin,
@@ -820,11 +828,8 @@ public partial class FormEBSD : Form
         Directions = [.. directions];
 
         var solver = BetheMethod.Solver.MtxExp_Eigen;
-        //if (comboBoxSolver.Text.Contains("Eigenproblem"))
-        //    solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.Eigen_MKL : BetheMethod.Solver.Eigen_Eigen;
-        //else
-        //    solver = comboBoxSolver.Text.Contains("MKL") ? BetheMethod.Solver.MtxExp_MKL : BetheMethod.Solver.MtxExp_Eigen;
-
+        Crystal.Bethe.EBSD_Completed += Bethe_EBSD_Completed;
+        Crystal.Bethe.EBSD_ProgressChanged += Bethe_EBSD_ProgressChanged;
         Crystal.Bethe.RunEBSD(MaxNumOfBloch, EnergyArray, Crystal.RotationMatrix, ThicknessArray, Directions, solver, 32);
     }
 
@@ -974,43 +979,73 @@ public partial class FormEBSD : Form
             Clipboard.SetDataObject(Pbmp.GetImage());
     }
 
+    #region 画像を生成
     private void button1_Click(object sender, EventArgs e)
     {
-        var range = poleFigureControl.Lines[0].Point;
-        M3 rot = M3.CreateRotationX(SmpTilt);
-        double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
-        //まず検出器に入る電子を抽出し、これをbse2とする
-        var bse2 = BSEs.AsParallel().Where(e => Geometry.InsidePolygonalArea(range, Stereonet.ConvertVectorToSchmidt(rot.Mult(e.Vec)))).ToArray();
+        var imgSize = (int)Math.Sqrt(Crystal.Bethe.Disks[0][0].Amplitudes.Length);
 
+        M3 smpRot = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
+        double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
+
+        PointD[] area = [];
+        var areaStep = 32;
+        var f = new Func<double, double, PointD>((x, y)
+            => Stereonet.ConvertVectorToSchmidt(smpRot.Mult(detRot.Mult(DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
+        area = [.. Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
+        //まず検出器に入る電子を抽出し、これをbse1とする
+        var bse1 = BSEs.AsParallel()
+            .Select(e=> (e.Depth,e.Position,e.Energy))
+            .Where(e =>Geometry.InsidePolygonalArea(area, e.Position)).ToArray();
+        var div = 15;//DetectorDivision;
+        var r1 = Enumerable.Range(0, areaStep).Select(n => (double)n / areaStep);
         double[] values = new double[Pbmp.SrcValuesGrayOriginal.Length];
 
-        for (int i = 0; i < EnergyArray.Length - 1; i++)
-        {
-            //bse2の中から特定のエネルギーを抽出し、これをbse3とする 
-            var bse3 = bse2.Where(e => EnergyArray[i] > e.Energy && EnergyArray[i + 1] < e.Energy).ToArray();
-            //var bse3Ratio = (double)bse3.Length/ bse2.Length;
-
-            //bse3に対する最大深さ分布　ここから
-            {
-                var depths = bse3.Select(e => e.Depth);
-                double lower = ThicknessArray[0] - numericBoxThicknessStep.Value / 2, upper = ThicknessArray[^1] + numericBoxThicknessStep.Value / 2;
-                double step = numericBoxThicknessStep.Value;//mm単位
-                int nBuckets = (int)((upper - lower) / step + 1);
-                var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
-                for (int j = 0; j < ThicknessArray.Length; j++)
+        int[,][] mask = new int[div, div][];
+        for (int i = 0; i < div; i++)
+            for (int j = 0; j < div; j++)
+                mask[i, j] = Enumerable.Range(0, imgSize * imgSize).Where(k =>
                 {
-                    for (int k = 0; k < values.Length; k++)
-                        values[k] += histogram[j].Count * Crystal.Bethe.Disks[i][j].Amplitudes[k].MagnitudeSquared();
+                    double x = (k % imgSize) / (double)imgSize * div;
+                    double y = (k / imgSize) / (double)imgSize * div;
+                    return (x >= i && x < i + 1 && y >= j && y < j + 1);
+                }).ToArray();
+
+        for (int i = 0; i < div; i++)
+            for (int j = 0; j < div; j++)
+            {
+                area = [..r1.Select(x => f(2.0 * i / div - 1, 2.0 * (- j - 1 + x)/ div + 1)),
+                        ..r1.Select(x => f(2.0 * (i + x) / div - 1, 2.0 * (- j) / div + 1 )),
+                        ..r1.Select(x => f(2.0 * (i + 1) / div - 1, 2.0 * (- j - x) / div + 1)),
+                        ..r1.Select(x => f(2.0 * (i + 1 - x) / div - 1, 2.0 * (- j - 1) / div + 1 ))];
+
+                //検出器の(i,j)位置に該当する電子だけを抽出し、これをbse2とする
+                var bse2 = bse1.AsParallel()
+                    .Where(e => Geometry.InsidePolygonalArea(area, e.Position))
+                    .Select(e=> (e.Depth,e.Energy)).ToArray();
+
+                for (int eIndex = 0; eIndex < EnergyArray.Length - 1; eIndex++)
+                {
+                    //bse2の中から特定のエネルギーを抽出し、これをbse3とする 
+                    var depths = bse2.Where(e => EnergyArray[eIndex] > e.Energy && EnergyArray[eIndex + 1] < e.Energy).Select(e=>e.Depth).ToArray();
+
+                    //bse3に対する最大深さ分布　ここから
+                    double lower = ThicknessArray[0] - numericBoxThicknessStep.Value / 2, upper = ThicknessArray[^1] + numericBoxThicknessStep.Value / 2;
+                    double step = numericBoxThicknessStep.Value;//nm単位
+                    int nBuckets = (int)((upper - lower) / step + 1);
+                    var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
+                    for (int t = 0; t < ThicknessArray.Length; t++)
+                    {
+                        foreach (var k in mask[i, j])
+                            values[k] += histogram[t].Count * Crystal.Bethe.Disks[eIndex][t].Amplitudes[k].MagnitudeSquared();
+                    }
                 }
             }
-        }
-
         Pbmp = new PseudoBitmap(values, numericBoxDiskDiameter.ValueInteger) { AlphaEnabled = true };
         Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
 
         AdjustImage();
     }
-
+    #endregion
 
 
     #region グラフをコピー
