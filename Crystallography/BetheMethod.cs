@@ -1818,13 +1818,12 @@ public class BetheMethod
         #endregion directionを初期化
 
         var limit = maxNumOfBloch * 12;
-        //var beamsTmp = ArrayPool<(int key, double gX, double gY, double gZ, double q, double p)>.Shared.Rent(limit);//beamsTmpをレンタル
-        var beamsTmp = ArrayPool<(int key, double gX, double gY, double gZ, double q, double p, double rating)>.Shared.Rent(limit);//beamsTmpをレンタル
+        var beamsTmp = ArrayPool<(int key, double rating)>.Shared.Rent(limit);//beamsTmpをレンタル
         int count = 0;
         var (q0, p0) = getQP(new Vector3DBase(0, 0, 0), vecK0);
-        beamsTmp[count++] = (compose(0, 0, 0), 0, 0, 0, 0, q0, p0);
-        var outer = new List<(int key, double gLen)> { (compose(0,0,0), 0) };
-        var whole = new HashSet<int> { compose(0, 0, 0) };
+        beamsTmp[count++] = (compose(0, 0, 0), 0);
+        var outer = new List<(int key, double gLen)>(limit * 2) { (compose(0, 0, 0), 0) };
+        var whole = new HashSet<int>(limit * 8) { compose(0, 0, 0) };
 
         var shift = direction.Select(dir => (mat * dir).Length).Max() * 1.01;
 
@@ -1834,11 +1833,12 @@ public class BetheMethod
         var (m11, m12, m13, m21, m22, m23, m31, m32, m33) = mat.Tuple;
         var (kX, kY, kZ) = vecK0.Tuple;
         var (sX, sY, sZ) = Surface.Tuple;
+
         while (count < limit && whole.Count < 1_000_000 && outer.Count > 0)
         {
             var min = outer[0].gLen + shift;
             var end = outer.FindLastIndex(o => o.gLen - min < shift * 2) + 1;
-            foreach (var (h1, k1, l1) in  outer[..end].Select(e => decompose(e.key)))
+            foreach (var (h1, k1, l1) in   outer[..end].Select(e => decompose(e.key)))
                 foreach (var (h2, k2, l2) in direction)
                     if (count < limit)
                     {
@@ -1851,7 +1851,7 @@ public class BetheMethod
                             double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
                             double gLen2 = gX * gX + gY * gY + gZ * gZ;
                             if (Math.Abs(q) < maxQ && p > 0) // p<=0 の場合は出射面から回折波が出ていかないことを意味する
-                                beamsTmp[count++] = (newKey, gX, gY, gZ, q, p, gLen2 * q * q);
+                                beamsTmp[count++] = (newKey, gLen2 * q * q);
                             outer.Add((newKey, Math.Sqrt(gLen2)));
                         }
                     }
@@ -1859,21 +1859,23 @@ public class BetheMethod
             outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
         }
 
-        var beamsTmp2 = beamsTmp[..count];
+        var beamsSpan = beamsTmp.AsSpan()[..count];//Spanにすることでコピーのオーバーヘッドを無くす。
         //indexが小さく、かつQg(励起誤差)の小さいg-vectorを抽出する
-        Array.Sort(beamsTmp2, (a, b) => a.rating.CompareTo(b.rating));
-
+        beamsSpan.Sort((a, b) => a.rating.CompareTo(b.rating));
+        
         if (count > maxNumOfBloch + 1)
-            beamsTmp2 = beamsTmp2[..(maxNumOfBloch + 1)];
-
-        var beams = beamsTmp2.Select(e =>
+            beamsSpan = beamsSpan[..(maxNumOfBloch + 1)];
+        var beams = beamsSpan.ToArray().Select(e =>
         {
-            var index = decompose(e.key);
-            var g = new Vector3DBase(e.gX, e.gY, e.gZ);
-            return new Beam(index, g, getU(AccVoltage, new Beam(index, g)), (e.q, e.p));
+            var (h, k, l) = decompose(e.key);
+            double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
+            double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
+            double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
+            var g = new Vector3DBase(gX, gY, gZ);
+            return new Beam((h, k, l), g, getU(AccVoltage, new Beam((h, k, l), g)), (q, p));
         }).ToList();
 
-        ArrayPool<(int key, double gX, double gY, double gZ, double q, double p, double rating)>.Shared.Return(beamsTmp);//beamsTmpを返却
+        ArrayPool<(int key, double rating)>.Shared.Return(beamsTmp);//beamsTmpを返却
 
         //X,Y座標が同じものを削除
         for (int i = 0; i < beams.Count; i++)
