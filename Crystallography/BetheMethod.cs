@@ -1849,8 +1849,8 @@ public class BetheMethod
                             double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
                             double gLen2 = gX * gX + gY * gY + gZ * gZ;
                             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
-                            double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
-                            if (Math.Abs(q) < maxQ && p > 0) // p<=0 の場合は出射面から回折波が出ていかないことを意味する
+                            double q = k0_2 - (vX * vX + vY * vY + vZ * vZ);
+                            if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
                                 beamsSpan[count++] = (newKey, gLen2 * q * q);
                             outer.Add((newKey, Math.Sqrt(gLen2)));
                         }
@@ -1863,7 +1863,6 @@ public class BetheMethod
         
         QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));//大して速くないが、一応こちらにしておく
         //beamsSpan.Sort(static (a, b) => a.rating.CompareTo(b.rating));//これが遅い。
-
         var beams = new List<Beam>(count);
         for (int i = 0; i < count; i++)
         {
