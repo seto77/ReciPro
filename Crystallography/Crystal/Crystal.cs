@@ -271,6 +271,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public Matrix3D MatrixInverse = new();
 
     /// <summary>
+    /// ‹tŠiqs—ñ‚Ì“]’us—ñ
+    /// </summary>
+    [NonSerialized]
+    [XmlIgnore]
+    public Matrix3D MatrixInverseTransposed = new();
+
+    /// <summary>
     /// ÀŠiqs—ñ (1—ñ–Ú‚Éa, 2—ñ–Ú‚Éb, 3—ñ–Ú‚É‚ƒ)
     /// </summary>
     [NonSerialized]
@@ -710,6 +717,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         MatrixReal = new Matrix3D(A_Axis, B_Axis, C_Axis);
         MatrixInverse = Matrix3D.Inverse(MatrixReal);
+        MatrixInverseTransposed = MatrixInverse.Transpose();
 
         A_Star = new Vector3D(MatrixInverse.E11, MatrixInverse.E12, MatrixInverse.E13);
         B_Star = new Vector3D(MatrixInverse.E21, MatrixInverse.E22, MatrixInverse.E23);

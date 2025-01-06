@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSpotInfo));
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             textBoxWaveLength = new System.Windows.Forms.TextBox();
@@ -630,7 +631,7 @@
             label16.AutoSize = true;
             label16.Font = new System.Drawing.Font("Times New Roman", 12F);
             label16.ForeColor = System.Drawing.Color.Red;
-            label16.Location = new System.Drawing.Point(403, 2);
+            label16.Location = new System.Drawing.Point(414, 2);
             label16.Name = "label16";
             label16.Size = new System.Drawing.Size(569, 19);
             label16.TabIndex = 2;
@@ -638,11 +639,11 @@
             // 
             // pictureBox
             // 
-            pictureBox.Image = Properties.Resources.bethe;
-            pictureBox.Location = new System.Drawing.Point(-7, -8);
+            pictureBox.Image = (System.Drawing.Image)resources.GetObject("pictureBox.Image");
+            pictureBox.Location = new System.Drawing.Point(-4, -5);
             pictureBox.Name = "pictureBox";
             pictureBox.Size = new System.Drawing.Size(455, 311);
-            pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBox.TabIndex = 1;
             pictureBox.TabStop = false;
             // 
@@ -885,7 +886,6 @@
             numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
             numericBoxEffectiveDigit.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxEffectiveDigit.RadianValue = 0.069813170079773182D;
-            numericBoxEffectiveDigit.RoundErrorAccuracy = -1;
             numericBoxEffectiveDigit.ShowUpDown = true;
             numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 27);
             numericBoxEffectiveDigit.SkipEventDuringInput = false;

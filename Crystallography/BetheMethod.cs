@@ -873,7 +873,7 @@ public class BetheMethod
             }
 
         //基準の方位でP,Q,Sなどを再セット
-        var mat = BaseRotation * Crystal.MatrixInverse.Transpose();
+        var mat = BaseRotation * Crystal.MatrixInverseTransposed;
         var beams = compiled.Values.ToList();
         for (int i = 0; i < beams.Count; i++)
         {
@@ -1088,7 +1088,7 @@ public class BetheMethod
 
         #region qList, g_q_indexを作成
         //qList　計算対象のQを網羅 
-        var mat = BaseRotation * Crystal.MatrixInverse.Transpose();
+        var mat = BaseRotation * Crystal.MatrixInverseTransposed;
         var qList = Beams.AsParallel().SelectMany(e1 => Beams.Select(e2 => (e1 - e2).Index)).Distinct()
             .Select(e => new Beam(e, mat * e)).Where(e => k_xy.Any(e2 => A(e2) && A(e2 + e.Vec.ToPointD))).OrderBy(e => e.Vec.Length2).ToList();
 
@@ -1820,7 +1820,7 @@ public class BetheMethod
     {
         if (maxNumOfBloch == -1)
             maxNumOfBloch = MaxNumOfBloch;
-        var mat = baseRotation * Crystal.MatrixInverse.Transpose();
+        var mat = baseRotation * Crystal.MatrixInverseTransposed;
         #region directionを初期化
         
         FrozenSet<(int h, int k, int l)> direction;
@@ -1865,12 +1865,12 @@ public class BetheMethod
                         if (whole.Add(newKey))
                         {
                             double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
-                            double gLen2 = gX * gX + gY * gY + gZ * gZ;
+                            double gLen = Math.Sqrt(gX * gX + gY * gY + gZ * gZ);
                             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
-                            double qAbs = Math.Abs(k0_2 - (vX * vX + vY * vY + vZ * vZ));
-                            if (qAbs < maxQ && sX * vX + sY * vY + sZ * vZ > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
-                                beamsSpan[count++] = (newKey, gLen2 * qAbs);
-                            outer.Add((newKey, Math.Sqrt(gLen2)));
+                            double q = k0_2 - (vX * vX + vY * vY + vZ * vZ);
+                            if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
+                                beamsSpan[count++] = (newKey, gLen * q * q);
+                            outer.Add((newKey, gLen));
                         }
                     }
             outer.RemoveRange(0, end); //outer = outer[end..]; //こちらのほうが遅い。
@@ -1960,11 +1960,16 @@ public class BetheMethod
 
     public void reset_gVectors(int dim, Beam[] beams, Matrix3D baseRotation, Vector3DBase vecK0, ref Beam[] newBeams)
     {
-        var mat = baseRotation * Crystal.MatrixInverse.Transpose();
+        var mat = baseRotation * Crystal.MatrixInverseTransposed;
+        //var (m11, m12, m13, m21, m22, m23, m31, m32, m33) = mat.Tuple;
         for (int i = 0; i < dim; i++)
         {
             var g = mat * beams[i].Index;
+            //var (h, k, l) = beams[i].Index;
+            //double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
+
             var prms = getQP(g, vecK0);
+            //var prms = getQP(beams[i].Vec, vecK0);
             newBeams[i] = new Beam(beams[i].Index, beams[i].Vec, (beams[i].Ureal, beams[i].Uimag), prms);
         }
     }
@@ -2064,7 +2069,7 @@ public class BetheMethod
         /// <summary>
         /// 評価値
         /// </summary>
-        public double Rating => Vec.Length2 * Math.Abs(Q);
+        public double Rating => Vec.Length * Q * Q;
 
         /// <summary>
         /// コンストラクタ
