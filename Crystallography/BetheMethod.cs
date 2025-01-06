@@ -1817,15 +1817,15 @@ public class BetheMethod
         else direction = directionP;
         #endregion directionを初期化
 
-        var limit = maxNumOfBloch * 12;
-        var beamsTmp = ArrayPool<(int key, double rating)>.Shared.Rent(limit);//beamsTmpをレンタル
+        var limit = maxNumOfBloch * 8;
+        var pool = ArrayPool<(int key, double rating)>.Shared.Rent(limit);//beamsTmpをレンタル
+        var beamsSpan = pool.AsSpan()[..limit];
         int count = 0;
-        var (q0, p0) = getQP(new Vector3DBase(0, 0, 0), vecK0);
-        beamsTmp[count++] = (compose(0, 0, 0), 0);
-        var outer = new List<(int key, double gLen)>(limit * 2) { (compose(0, 0, 0), 0) };
-        var whole = new HashSet<int>(limit * 8) { compose(0, 0, 0) };
+        pool[count++] = (compose(0, 0, 0), 0);
+        var outer = new List<(int key, double gLen)> { (compose(0, 0, 0), 0) };
+        var whole = new HashSet<int>(limit * 16) { compose(0, 0, 0) };
 
-        var shift = direction.Select(dir => (mat * dir).Length).Max() * 1.01;
+        var shift = direction.Select(dir => (mat * dir).Length).Max() * 0.5;//この数字が妥当かどうか？
 
         double k0_2 = vecK0.Length2, k0 = vecK0.Length;
         var maxQ = Math.Abs(k0_2 - (k0 + shift) * (k0 + shift));
@@ -1838,7 +1838,7 @@ public class BetheMethod
         {
             var min = outer[0].gLen + shift;
             var end = outer.FindLastIndex(o => o.gLen - min < shift * 2) + 1;
-            foreach (var (h1, k1, l1) in   outer[..end].Select(e => decompose(e.key)))
+            foreach (var (h1, k1, l1) in outer[..end].Select(e => decompose(e.key)))
                 foreach (var (h2, k2, l2) in direction)
                     if (count < limit)
                     {
@@ -1847,11 +1847,11 @@ public class BetheMethod
                         if (whole.Add(newKey))
                         {
                             double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
+                            double gLen2 = gX * gX + gY * gY + gZ * gZ;
                             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
                             double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
-                            double gLen2 = gX * gX + gY * gY + gZ * gZ;
                             if (Math.Abs(q) < maxQ && p > 0) // p<=0 の場合は出射面から回折波が出ていかないことを意味する
-                                beamsTmp[count++] = (newKey, gLen2 * q * q);
+                                beamsSpan[count++] = (newKey, gLen2 * q * q);
                             outer.Add((newKey, Math.Sqrt(gLen2)));
                         }
                     }
@@ -1859,23 +1859,23 @@ public class BetheMethod
             outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
         }
 
-        var beamsSpan = beamsTmp.AsSpan()[..count];//Spanにすることでコピーのオーバーヘッドを無くす。
-        //indexが小さく、かつQg(励起誤差)の小さいg-vectorを抽出する
-        beamsSpan.Sort((a, b) => a.rating.CompareTo(b.rating));
+        count = Math.Min(count, maxNumOfBloch + 1);
         
-        if (count > maxNumOfBloch + 1)
-            beamsSpan = beamsSpan[..(maxNumOfBloch + 1)];
-        var beams = beamsSpan.ToArray().Select(e =>
+        QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));//大して速くないが、一応こちらにしておく
+        //beamsSpan.Sort(static (a, b) => a.rating.CompareTo(b.rating));//これが遅い。
+
+        var beams = new List<Beam>(count);
+        for (int i = 0; i < count; i++)
         {
-            var (h, k, l) = decompose(e.key);
+            var (h, k, l) = decompose(beamsSpan[i].key);
             double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
             double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
             var g = new Vector3DBase(gX, gY, gZ);
-            return new Beam((h, k, l), g, getU(AccVoltage, new Beam((h, k, l), g)), (q, p));
-        }).ToList();
+            beams.Add(new Beam((h, k, l), g, getU(AccVoltage, new Beam((h, k, l), g)), (q, p)));
+        }
 
-        ArrayPool<(int key, double rating)>.Shared.Return(beamsTmp);//beamsTmpを返却
+        ArrayPool<(int key, double rating)>.Shared.Return(pool);//poolを返却
 
         //X,Y座標が同じものを削除
         for (int i = 0; i < beams.Count; i++)
