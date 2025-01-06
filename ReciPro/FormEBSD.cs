@@ -86,7 +86,8 @@ public partial class FormEBSD : Form
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
     private double Voltage => waveLengthControl.Energy;
 
-    private int DivisionNumber => (int)(numericBoxDiskDiameter.ValueInteger * numericBoxDiskDiameter.ValueInteger * Math.PI / 4.0 * EnergyArray.Length);
+    //private int DivisionNumber => (int)(numericBoxDiskDiameter.ValueInteger * numericBoxDiskDiameter.ValueInteger * Math.PI / 4.0 * EnergyArray.Length);
+    private int DivisionNumber => (int)(numericBoxDiskDiameter.ValueInteger * numericBoxDiskDiameter.ValueInteger * EnergyArray.Length);
     public double[] ThicknessArray
     {
         get
