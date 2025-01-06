@@ -477,7 +477,7 @@ public class BetheMethod
         Disks = new CBED_Disk[voltages.Length][];
         int count = 0;
 
-        var beamDirectionsP = BeamDirections.AsParallel().WithDegreeOfParallelism(thread);
+        var beamDirectionsP = BeamDirections.AsParallel();
         int width = (int)Math.Sqrt(BeamDirections.Length);
         double radius = width / 2.0;
         //bool inside(int i) => (i % width - radius + 0.5) * (i % width - radius + 0.5) + (i / width - radius + 0.5) * (i / width - radius + 0.5) <= radius * radius;
@@ -517,10 +517,9 @@ public class BetheMethod
             //ここまで
 
             //diskAmplitude[r][t][g]
-            var diskAmplitude = beamDirectionsP.Select((beamDirection, i) =>
+            var diskAmplitude = beamDirectionsP.WithDegreeOfParallelism(Math.Max(thread/2, 1)).Select((beamDirection, i) =>
             {
                 //if (!inside(i)) return (null, null);
-
                 if (bwEBSD.CancellationPending) return (null, null);
                 
                 var coeff = Math.Abs(1.0 / beamDirection.Z); // = 1/cosTau
@@ -640,7 +639,7 @@ public class BetheMethod
                 //bwEBSD.ReportProgress(Interlocked.Increment(ref count) * 1000 / BeamDirections.Length, "Compiling disks");
             });
 
-        Disks[vIndex] = new CBED_Disk[Thicknesses.Length];
+            Disks[vIndex] = new CBED_Disk[Thicknesses.Length];
             for (int t = 0; t < Thicknesses.Length; t++)
             {
                 Disks[vIndex][t] = new CBED_Disk([0, 0, 0], new Vector3DBase(0, 0, 0), Thicknesses[t],
@@ -1954,7 +1953,7 @@ public class BetheMethod
     /// <returns></returns>
     public Beam[] reset_gVectors(Beam[] beams, Matrix3D baseRotation, Vector3DBase vecK0)
     {
-        var newBeams = new Beam[beams.Length];
+        var newBeams = GC.AllocateUninitializedArray<Beam>(beams.Length);
         reset_gVectors(beams.Length, beams, baseRotation, vecK0, ref newBeams);
         return newBeams;
     }
