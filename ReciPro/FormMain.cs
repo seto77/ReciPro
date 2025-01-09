@@ -1,6 +1,7 @@
 #region using
 using Crystallography.OpenGL;
 using IronPython.Hosting;
+using OpenTK.Graphics.OpenGL4;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +16,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Col4 = OpenTK.Graphics.Color4;
-using Vec3 = OpenTK.Vector3d;
+using Col4 = OpenTK.Mathematics.Color4;
+using Vec3 = OpenTK.Mathematics.Vector3d;
 
 #endregion
 
@@ -133,7 +134,6 @@ public partial class FormMain : Form
 
     private Crystallography.Controls.CommonDialog commonDialog;
     private GLControlAlpha glControlAxes;
-
     public bool DisableOpenGL { get => disableOpneGLToolStripMenuItem.Checked; set => disableOpneGLToolStripMenuItem.Checked = value; }
     public bool DisableTextRendering { get => toolStripMenuItemDisableTextRendering.Checked; set => toolStripMenuItemDisableTextRendering.Checked = value; }
     public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
@@ -255,7 +255,7 @@ public partial class FormMain : Form
                     Name = "glControlAxes",
                     ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
                     ProjWidth = 2.7,
-                    ProjCenter = new OpenTK.Vector2d(0, 0.2),
+                    ProjCenter = new OpenTK.Mathematics.Vector2d(0, 0.2),
                     RotationMode = GLControlAlpha.RotationModes.Object,
                     LightPosition = new Vec3(100, 100, 100),
                 };
@@ -263,7 +263,6 @@ public partial class FormMain : Form
                 glControlAxes.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
                 groupBoxCurrentDirection.Controls.Add(glControlAxes);
                 //glControlAxes.BringToFront();
-
             }
             catch (Exception ex)
             {
@@ -549,11 +548,8 @@ public partial class FormMain : Form
 
     private void ResetAxes()
     {
-       
         if (glControlAxes == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0)
             return;
-
-        glControlAxes.MakeCurrent();
 
         var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
         var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };
@@ -564,12 +560,13 @@ public partial class FormMain : Form
         {
             obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
             obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
-            obj.Add(new TextObject(label[i], 13, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
+            obj.Add(new TextObject( glControlAxes,label[i], 13, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
         }
-        obj.Add(new Sphere(new Vec3(0, 0, 0), 0.12, new Material(Col4.Gray), DrawingMode.Surfaces));
+        obj.Add(new Sphere(new Vec3(0, 0, 0), 0.2, new Material(Col4.Gray), DrawingMode.Surfaces));
 
         glControlAxes.DeleteAllObjects();
         glControlAxes.AddObjects(obj);
+
         DrawAxes();
     }
 

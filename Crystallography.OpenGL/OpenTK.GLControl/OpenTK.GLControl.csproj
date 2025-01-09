@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>8.0</LangVersion>
+    <!--Version info is filled by Nuke build-->
+    <Authors>Team OpenTK</Authors>
+    <Description>A WinForms control designed to wrap the OpenTK 4.x APIs.</Description>
+    <Copyright>Copyright (c) 2021 Team OpenTK</Copyright>
+    <Company>Team OpenTK</Company>
+    <PackageProjectUrl>https://github.com/opentk/GLControl</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/opentk/GLControl</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageTags>OpenTK, GLControl</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTK.Graphics" Version="4.8.2" />
+    <PackageReference Include="OpenTK.Windowing.Desktop" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="GLControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using C4 = OpenTK.Graphics.Color4;
-using V3 = OpenTK.Vector3d;
+using C4 = OpenTK.Mathematics.Color4;
+using V3 = OpenTK.Mathematics.Vector3d;
+using OpenTK.Mathematics;
 
 namespace ReciPro;
 
@@ -372,19 +373,19 @@ public partial class FormRotationMatrix : Form
         var c = new C4(0.7f, 0.5f, 0.5f, 1f);
         obj.Add(new Cylinder(new V3(-1, 0, 0), new V3(2, 0, 0), r, new Material(c), DrawingMode.Surfaces));//軸
         obj.Add(new Cone(new V3(1.1, 0, 0), new V3(-0.2, 0, 0), r * 2, new Material(c), DrawingMode.Surfaces));//矢
-        obj.Add(new TextObject("X", 11, new V3(1.25, 0, 0), 0, true, new Material(c)));
+        obj.Add(new TextObject(gl, "X", 11, new V3(1.25, 0, 0), 0, true, new Material(c)));
 
         //Y軸
         c = new C4(0.5f, 0.7f, 0.5f, 1f);
         obj.Add(new Cylinder(new V3(0, -1, 0), new V3(0, 2, 0), r, new Material(c), DrawingMode.Surfaces));//軸
         obj.Add(new Cone(new V3(0, 1.1, 0), new V3(0, -0.2, 0), r * 2, new Material(c), DrawingMode.Surfaces));//矢
-        obj.Add(new TextObject("Y", 11, new V3(0, 1.25, 0), 0, true, new Material(c)));
+        obj.Add(new TextObject(gl, "Y", 11, new V3(0, 1.25, 0), 0, true, new Material(c)));
 
         //Z軸
         c = new C4(0.5f, 0.5f, 0.7f, 1f);
         obj.Add(new Cylinder(new V3(0, 0, -1), new V3(0, 0, 2), r, new Material(c), DrawingMode.Surfaces));//軸
         obj.Add(new Cone(new V3(0, 0, 1.1), new V3(0, 0, -0.2), r * 2, new Material(c), DrawingMode.Surfaces));//矢
-        obj.Add(new TextObject("Z", 11, new V3(0, 0, 1.25), 0, true, new Material(c)));
+        obj.Add(new TextObject(gl, "Z", 11, new V3(0, 0, 1.25), 0, true, new Material(c)));
 
         //中央の球
         obj.Add(new Sphere(new V3(0, 0, 0), r * 2, new Material(C4.Gray), DrawingMode.Surfaces));
@@ -412,7 +413,7 @@ public partial class FormRotationMatrix : Form
         //1st
         var mat = new Material(new C4(0.8f, 0.8f, 0f, 1f));
         obj.Add(new Cone(dir[0] * 2.1, dir[0] * -0.2, r * 2, mat, DrawingMode.Surfaces));//矢
-        obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Φ" : "1st", 12, dir[0] * 2.1 + dir[0].Normalized() * 0.01, 0.05, true, mat));
+        obj.Add(new TextObject(gl, gl.Name.Contains("ReciPro") ? "Φ" : "1st", 12, dir[0] * 2.1 + dir[0].Normalized() * 0.01, 0.05, true, mat));
 
         if (!checkBoxEnable2nd.Checked)//2ndが存在しない時
         {
@@ -431,7 +432,7 @@ public partial class FormRotationMatrix : Form
             mat = new Material(new C4(0f, 0.8f, 0.8f, 1f));
             var n = rot[0] * dir[1];
             obj.Add(new Cone(n * 2.0, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
-            obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Θ" : "2nd", 12, n * 2.0 + n.Normalized() * 0.01, 0.05, true, mat));
+            obj.Add(new TextObject(gl, gl.Name.Contains("ReciPro") ? "Θ" : "2nd", 12, n * 2.0 + n.Normalized() * 0.01, 0.05, true, mat));
 
             if (!checkBoxEnable3rd.Checked)
             {
@@ -451,7 +452,7 @@ public partial class FormRotationMatrix : Form
                 n = rot[0] * rot[1] * dir[2];
                 obj.Add(new Cylinder(n * 1.3, -n * 2.6, r, mat, DrawingMode.Surfaces));//軸
                 obj.Add(new Cone(n * 1.45, -n * 0.2, r * 2, mat, DrawingMode.Surfaces));//矢
-                obj.Add(new TextObject(gl.Name.Contains("ReciPro") ? "Ψ" : "3rd", 12, n * 1.45 + n.Normalized() * 0.01, 0.05, true, mat));
+                obj.Add(new TextObject(gl, gl.Name.Contains("ReciPro") ? "Ψ" : "3rd", 12, n * 1.45 + n.Normalized() * 0.01, 0.05, true, mat));
 
                 if (dir[2].Z == 0)
                     obj.Add(new Torus(new V3(0, 0, 0), rot012 * new V3(0, 0, 1), 0.6, r * 1.5, mat, DrawingMode.Surfaces));//トーラス
@@ -499,19 +500,19 @@ public partial class FormRotationMatrix : Form
         var nZ = rot * c * 6 * r;
 
         obj.Add(new Sphere(nX, r * 2, new Material(C4.Red), DrawingMode.Surfaces));
-        obj.Add(new TextObject("+a", 11, nX + nX.Normalized() * r * 2, r * 2 + 0.01, true, new Material(C4.Red)));
+        obj.Add(new TextObject(gl, "+a", 11, nX + nX.Normalized() * r * 2, r * 2 + 0.01, true, new Material(C4.Red)));
         obj.Add(new Sphere(-nX, r * 1.5, new Material(C4.Red), DrawingMode.Surfaces));
-        obj.Add(new TextObject("-a", 11, -nX - nX.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Red)));
+        obj.Add(new TextObject(gl, "-a", 11, -nX - nX.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Red)));
 
         obj.Add(new Sphere(nY, r * 2, new Material(C4.Green), DrawingMode.Surfaces));
-        obj.Add(new TextObject("+b", 11, nY + nY.Normalized() * r * 2, r * 2 + 0.01, true, new Material(C4.Green)));
+        obj.Add(new TextObject(gl, "+b", 11, nY + nY.Normalized() * r * 2, r * 2 + 0.01, true, new Material(C4.Green)));
         obj.Add(new Sphere(-nY, r * 1.5, new Material(C4.Green), DrawingMode.Surfaces));
-        obj.Add(new TextObject("-b", 11, -nY - nY.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Green)));
+        obj.Add(new TextObject(gl, "-b", 11, -nY - nY.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Green)));
 
         obj.Add(new Sphere(nZ, r * 2, new Material(C4.Blue), DrawingMode.Surfaces));
-        obj.Add(new TextObject("+c", 11, nZ + nZ.Normalized() * r * 1.5, r * 2 + 0.01, true, new Material(C4.Blue)));
+        obj.Add(new TextObject(gl, "+c", 11, nZ + nZ.Normalized() * r * 1.5, r * 2 + 0.01, true, new Material(C4.Blue)));
         obj.Add(new Sphere(-nZ, r * 1.5, new Material(C4.Blue), DrawingMode.Surfaces));
-        obj.Add(new TextObject("-c", 11, -nZ - nZ.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Blue)));
+        obj.Add(new TextObject(gl, "-c", 11, -nZ - nZ.Normalized() * r * 1.5, r * 1.5 + 0.01, true, new Material(C4.Blue)));
         return obj;
     }
     #endregion

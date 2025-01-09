@@ -1,6 +1,5 @@
 #version 130
 //Sellers, Graham.OpenGL Superbible : Comprehensive Tutorial and Reference(Kindle, No.15531 - 15557).Pearson Education.Kindle version.
-
 // Per-vertex inputs
 
 /*layout(location = 1) */in int vObjType;
@@ -93,5 +92,6 @@ void main(void)
 		fWithTexture = -1;
 	else
 		fWithTexture = 1;
+
 }
 

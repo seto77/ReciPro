@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using C4 = OpenTK.Graphics.Color4;
-using M3d = OpenTK.Matrix3d;
-using M3f = OpenTK.Matrix3;
-using M4d = OpenTK.Matrix4d;
-using M4f = OpenTK.Matrix4;
-using V2d = OpenTK.Vector2d;
-using V2f = OpenTK.Vector2;
-using V3d = OpenTK.Vector3d;
-using V3f = OpenTK.Vector3;
-using V4d = OpenTK.Vector4d;
-using V4f = OpenTK.Vector4;
+using C4 = OpenTK.Mathematics.Color4;
+using M3d = OpenTK.Mathematics.Matrix3d;
+using M3f = OpenTK.Mathematics.Matrix3;
+using M4d = OpenTK.Mathematics.Matrix4d;
+using M4f = OpenTK.Mathematics.Matrix4;
+using V2d = OpenTK.Mathematics.Vector2d;
+using V2f = OpenTK.Mathematics.Vector2;
+using V3d = OpenTK.Mathematics.Vector3d;
+using V3f = OpenTK.Mathematics.Vector3;
+using V4d = OpenTK.Mathematics.Vector4d;
+using V4f = OpenTK.Mathematics.Vector4;
 
 namespace Crystallography.OpenGL;
 

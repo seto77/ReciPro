@@ -1,11 +1,12 @@
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
-using OpenTK;
+using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using V3d = OpenTK.Vector3d;
+using V3d = OpenTK.Mathematics.Vector3d;
+using OpenTK.Graphics;
 
 namespace Crystallography;
 
@@ -701,7 +702,7 @@ public static class Geometry
     /// <param name="p1"></param>
     /// <param name="p2"></param>
     /// <returns></returns>
-    public static Vector3d GetCrossPoint(in double a, in double b, in double c, in double d, in V3d p1, in V3d p2)
+    public static V3d GetCrossPoint(in double a, in double b, in double c, in double d, in V3d p1, in V3d p2)
     {
         //Ÿ‚Ì3‚Â‚Ì•û’ö®‚ğ–‚½‚·x, y, z ‚ğ‹‚ß‚ê‚Î‚æ‚¢ (2020/02/04C³)
         // a x + b y + c z = d
@@ -949,7 +950,7 @@ public static class Geometry
         //http://sysplan.nams.kyushu-u.ac.jp/gen/edu/Algorithms/PlaneFitting/index.html
         //pdf‚ÍCrystallograpy/‘—¿ƒtƒHƒ‹ƒ_
 
-        var ave = new OpenTK.Vector3d();
+        var ave = new OpenTK.Mathematics.Vector3d();
         foreach (var p in points)
             ave += p;
         ave /= points.Count();

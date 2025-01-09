@@ -6,11 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Crystallography.OpenGL;
-using V3 = OpenTK.Vector3d;
-using V4 = OpenTK.Vector4d;
-using M3 = OpenTK.Matrix3d;
-using M4 = OpenTK.Matrix4d;
-using C4 = OpenTK.Graphics.Color4;
+using V3 = OpenTK.Mathematics.Vector3d;
+using V4 = OpenTK.Mathematics.Vector4d;
+using M3 = OpenTK.Mathematics.Matrix3d;
+using M4 = OpenTK.Mathematics.Matrix4d;
+using C4 = OpenTK.Mathematics.Color4;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using MathNet.Numerics;
@@ -124,6 +124,16 @@ public partial class FormEBSD : Form
     {
         InitializeComponent();
 
+        
+    }
+
+    private void Timer_Tick(object sender, EventArgs e)
+    {
+        graphicsBox.Refresh();
+    }
+
+    private void FormEBSD_Load(object sender, EventArgs e)
+    {
         glControlGeo = new GLControlAlpha()
         {
             AllowMouseRotation = true,
@@ -141,18 +151,10 @@ public partial class FormEBSD : Form
         };
         panelGeometry.Controls.Add(glControlGeo);
 
-        timer.Interval= 1000;
+        timer.Interval = 1000;
         timer.Tick += Timer_Tick;
         timer.Start();
-    }
 
-    private void Timer_Tick(object sender, EventArgs e)
-    {
-        graphicsBox.Refresh();
-    }
-
-    private void FormEBSD_Load(object sender, EventArgs e)
-    {
         SetVector();
         DrawGeometry();
         comboBoxGradient.SelectedIndex = 1;
@@ -173,7 +175,7 @@ public partial class FormEBSD : Form
     /// <summary>
     /// 試料と電子線が交差する位置は常に(0,0,0)
     /// </summary>
-    public void DrawGeometry(int i=-1, int j=-1)
+    public void DrawGeometry(int i = -1, int j = -1)
     {
         #region OpenGLによる3D描画
         var glObjects = new List<GLObject>();
@@ -192,15 +194,15 @@ public partial class FormEBSD : Form
         var len = 50;
         //X軸
         glObjects.Add(new Lines([new V3(0, 0, 0), new V3(len, 0, 0)], 3f, new Material(C4.OrangeRed)));
-        glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 100, true, new Material(C4.OrangeRed)));
+        glObjects.Add(new TextObject(glControlGeo, "+X", 10f, new V3(len, 0, 0), 100, true, new Material(C4.OrangeRed)));
 
         //Y軸
         glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, -len, 0)], 3f, new Material(C4.YellowGreen)));
-        glObjects.Add(new TextObject("+Y", 10f, new V3(0, -len, 0), 100, true, new Material(C4.YellowGreen)));
+        glObjects.Add(new TextObject(glControlGeo, "+Y", 10f, new V3(0, -len, 0), 100, true, new Material(C4.YellowGreen)));
 
         //Z軸 = beam
         glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, -len)], 3f, new Material(C4.MediumPurple)));
-        glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, -len), 100, true, new Material(C4.MediumPurple)));
+        glObjects.Add(new TextObject(glControlGeo, "+Z (=beam)", 10f, new V3(0, 0, -len), 100, true, new Material(C4.MediumPurple)));
 
         //照射点から検出器の縁への黄色線
         glObjects.AddRange(Enumerable.Range(0, 30).Select(e =>
@@ -223,7 +225,7 @@ public partial class FormEBSD : Form
             var v = samRot * Crystal.RotationMatrix * vec[n] / max * 10;
             glObjects.Add(new Cylinder(-v, v * 2 - 2 * v.Normarize(), 0.4, new Material(color[n]), DrawingMode.Surfaces));
             glObjects.Add(new Cone(v, -2 * v.Normarize(), 0.8, new Material(color[n]), DrawingMode.Surfaces));
-            glObjects.Add(new TextObject(label[n], 13f, v + 0.1 * v.Normarize(), 0.5, true, new Material(color[n])));
+            glObjects.Add(new TextObject(glControlGeo, label[n], 13f, v + 0.1 * v.Normarize(), 0.5, true, new Material(color[n])));
         }
         glObjects.Add(new Sphere(new V3(0, 0, 0), 1.2, new Material(C4.Gray), DrawingMode.Surfaces));
 
@@ -236,13 +238,13 @@ public partial class FormEBSD : Form
 
         var lines = new List<(PointD[], double, Color)>();
         M3 samRot2 = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
-        var f1 = new Func<double, double, PointD>((x,y) 
-            => Stereonet.ConvertVectorToSchmidt(samRot2.Mult(detRot.Mult(DetR * new V3(x,y,0)) + new V3(0, -DetY, -DetZ))));
+        var f1 = new Func<double, double, PointD>((x, y)
+            => Stereonet.ConvertVectorToSchmidt(samRot2.Mult(detRot.Mult(DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
 
         var step = 60;
-        var range = Enumerable.Range(0, step + 1).Select(e=>(double)e);
-        lines.Add ((
-            range.Select(n => 2.0 * Math.PI * n / step).Select(Θ => f1(Math.Sin(Θ), Math.Cos(Θ))).ToArray(), 
+        var range = Enumerable.Range(0, step + 1).Select(e => (double)e);
+        lines.Add((
+            range.Select(n => 2.0 * Math.PI * n / step).Select(Θ => f1(Math.Sin(Θ), Math.Cos(Θ))).ToArray(),
             2, Color.Yellow));
 
         int div = DetectorDivision;
@@ -259,13 +261,13 @@ public partial class FormEBSD : Form
                 [
                 ..r1.Select(x => f1(2.0 * i / div - 1, 2.0 * (- j - 1 + x)/ div + 1)),
                 ..r1.Select(x => f1(2.0 * (i + x) / div - 1, 2.0 * (- j) / div + 1 )),
-                ..r1.Select(x => f1(2.0 * (i + 1) / div - 1, 2.0 * (- j -　x) / div + 1)),
+                ..r1.Select(x => f1(2.0 * (i + 1) / div - 1, 2.0 * (- j - x) / div + 1)),
                 ..r1.Select(x => f1(2.0 * (i + 1 - x) / div - 1, 2.0 * (- j - 1) / div + 1 )),
                 ], 3, Color.Orange));
         }
 
         poleFigureControl.Lines = [.. lines];
-        
+
         poleFigureControl.Draw();
         #endregion ステレオネット上に検出器の輪郭を描画 ここまで
 

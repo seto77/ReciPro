@@ -2,6 +2,7 @@
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL4;
+using OpenTK.GLControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,12 +11,14 @@ using System.Linq;
 using System.Management;
 using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
-using Col4 = OpenTK.Graphics.Color4;
-using Mat4d = OpenTK.Matrix4d;
-using Mat4f = OpenTK.Matrix4;
-using Vec2d = OpenTK.Vector2d;
-using Vec3d = OpenTK.Vector3d;
-using Vec3f = OpenTK.Vector3;
+using Col4 = OpenTK.Mathematics.Color4;
+using Mat4d = OpenTK.Mathematics.Matrix4d;
+using Mat4f = OpenTK.Mathematics.Matrix4;
+using Vec2d = OpenTK.Mathematics.Vector2d;
+using Vec3d = OpenTK.Mathematics.Vector3d;
+using Vec3f = OpenTK.Mathematics.Vector3;
+using OpenTK.Mathematics;
+using MathNet.Numerics;
 #endregion
 
 namespace Crystallography.OpenGL;
@@ -65,6 +68,7 @@ unsafe public partial class GLControlAlpha : UserControl
     /// </summary>
     public static bool OitEnabled => VersionForOit <= Version;
 
+    public static int N=0;
 
     #endregion
 
@@ -134,7 +138,7 @@ unsafe public partial class GLControlAlpha : UserControl
         {
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
                 return true;
-            Control ctrl = this;
+            System.Windows.Forms.Control ctrl = this;
             while (ctrl != null)
             {
                 if (ctrl.Site != null && ctrl.Site.DesignMode)
@@ -466,22 +470,34 @@ unsafe public partial class GLControlAlpha : UserControl
         if (DisablingOpenGL || DesignMode || !ZsortEnabled)
             return;
 
+        shaders = FragShaders.ZSORT;
+
         FragShader = shaders;
 
         #region glControlの初期化
         SuspendLayout();
         // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
-        var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, FragShader == FragShaders.ZSORT ? 2 : 0);
-        glControl = new GLControl(gMode)
+        //var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, FragShader == FragShaders.ZSORT ? 2 : 0);
+        var setting = new GLControlSettings()
         {
-            AutoScaleMode = AutoScaleMode.Dpi,
-            BackColor = Color.White,
-            Name = "glControl",
-            Dock = DockStyle.Fill,
-            VSync = false,
+            //SrgbCapable = true,
+            //AlphaBits = 16,
+            NumberOfSamples = 2,
+            StencilBits = 8,
+            DepthBits = 16,
+            Profile = OpenTK.Windowing.Common.ContextProfile.Core,
+            //IsEventDriven = true,
+            //APIVersion = new System.Version(3,3,0,0)
         };
-        Controls.Add(glControl);
 
+        glControl = new GLControl(setting)
+        {
+            BackColor = Color.White,
+            Name = $"glControl{N}",
+            Text = $"glControl{N++}",
+            Dock = DockStyle.Fill,
+        };
+      
         glControl.Paint += glControl_Paint;
         glControl.MouseDown += glControl_MouseDown;
         glControl.MouseMove += glControl_MouseMove;
@@ -489,22 +505,24 @@ unsafe public partial class GLControlAlpha : UserControl
         glControl.MouseUp += glControl_MouseUp;
         glControl.Resize += glControl_Resize;
 
+        Controls.Add(glControl);
+        ResumeLayout();
+
         var g = getGraphics(glControl);
         if (g == null)
             return;
         glControlGraphics = g;
-
-        ResumeLayout();
+        
         //glControlの再初期化ここまで
         #endregion
 
-        glControl.MakeCurrent();
-
         //Shader転送
-        var frag = FragShader == FragShaders.ZSORT ? Properties.Resources.fragZSORT :
+        var frag = FragShader == FragShaders.ZSORT ? 
+            Properties.Resources.fragZSORT :
             Properties.Resources.fragOIT.Replace("MAX_FRAGMENTS ##", $"MAX_FRAGMENTS {MaxFragments}");
-        Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, frag);
 
+        Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, frag);
+   
         GL.UseProgram(Program);
 
         //Index取得
@@ -577,56 +595,47 @@ unsafe public partial class GLControlAlpha : UserControl
     /// <param name="vertexShaderCode"></param>
     /// <param name="fragmentShaderCode"></param>
     /// <returns></returns>
-    private static int CreateShader(string vertexShaderCode, string geometryShaderCode, string fragmentShaderCode)
+    private int CreateShader(string vertexShaderCode, string geometryShaderCode, string fragmentShaderCode)
     {
-        int vshader = GL.CreateShader(ShaderType.VertexShader);
-        //int gshader = GL.CreateShader(ShaderType.GeometryShader);
-        int fshader = GL.CreateShader(ShaderType.FragmentShader);
+        glControl.MakeCurrent();
 
-        // Vertex shader
-        GL.ShaderSource(vshader, vertexShaderCode);
-        GL.CompileShader(vshader);
-        GL.GetShaderInfoLog(vshader, out string info);
-        GL.GetShader(vshader, ShaderParameter.CompileStatus, out int status_code);
-        if (status_code != 1)
-        {
-            if (AssemblyState.IsDebug)
-                MessageBox.Show("Error in vertex shader ");
-            throw new ApplicationException(info);
-        }
-
-        /*
-        // Geometry shader
-        GL.ShaderSource(gshader, geometryShaderCode);
-        GL.CompileShader(gshader);
-        GL.GetShaderInfoLog(gshader, out info);
-        GL.GetShader(gshader, ShaderParameter.CompileStatus, out status_code);
-        if (status_code != 1)
-            throw new ApplicationException(info);
-        */
-
-        // Fragment shader
-        GL.ShaderSource(fshader, fragmentShaderCode);
-        GL.CompileShader(fshader);
-        GL.GetShaderInfoLog(fshader, out info);
-        GL.GetShader(fshader, ShaderParameter.CompileStatus, out status_code);
-        if (status_code != 1)
-        {
-            if (AssemblyState.IsDebug)
-                MessageBox.Show("Error in fragment shader ");
-            throw new ApplicationException(info);
-        }
-
+        //なんかよくわからないが、GL.CreateProgram()を複数回呼び出すことで強制的にprogramの数値を進める. これをすると複数のGlControlを立ち上げてもバグらない。
+        for (int i = 0; i < N; i++) GL.CreateProgram();
+        
         int program = GL.CreateProgram();
+
+        static int CompileShader(ShaderType type, string source)
+        {
+            int shader = GL.CreateShader(type);
+            GL.ShaderSource(shader, source);
+            GL.CompileShader(shader);
+            GL.GetShader(shader, ShaderParameter.CompileStatus, out int status);
+            if (status == 0)
+                throw new Exception($"Failed to compile {type}: {GL.GetShaderInfoLog(shader)}");
+            return shader;
+        }
+
+        int vshader = CompileShader(ShaderType.VertexShader, vertexShaderCode);
+        int fshader = CompileShader(ShaderType.FragmentShader, fragmentShaderCode);
+
         GL.AttachShader(program, vshader);
-        //GL.AttachShader(program, gshader);
         GL.AttachShader(program, fshader);
 
-        GL.DeleteShader(vshader);
-        //GL.DeleteShader(gshader);
-        GL.DeleteShader(fshader);
-
         GL.LinkProgram(program);
+
+        GL.GetProgram(program, GetProgramParameterName.LinkStatus, out int success);
+        if (success == 0)
+        {
+            string log = GL.GetProgramInfoLog(program);
+            throw new Exception($"Could not link program: {log}");
+        }
+
+        GL.DetachShader(program, vshader);
+        GL.DetachShader(program, fshader);
+
+        GL.DeleteShader(vshader);
+        GL.DeleteShader(fshader);
+       
         return program;
     }
 
@@ -638,6 +647,8 @@ unsafe public partial class GLControlAlpha : UserControl
     /// </summary>
     private void initShaderStorage()
     {
+        glControl.MakeCurrent();
+
         GL.GenBuffers(2, buffers);
         var maxNodes = (uint)(NodeCoefficient * MaxWidth * MaxHeight);
         var nodeSize = 5 * sizeof(float) + sizeof(uint); // The size of a linked list node
@@ -705,11 +716,10 @@ unsafe public partial class GLControlAlpha : UserControl
     public void DeleteAllObjects()
     {
         if (Program < 1 || glObjects.Count == 0) return;
+        
         glControl.MakeCurrent();
-
         foreach (var o in glObjectsP.Distinct(o => o.Obj.VAO).ToList())
             o.Dispose();
-
         glObjects.Clear();
     }
 
@@ -820,9 +830,9 @@ unsafe public partial class GLControlAlpha : UserControl
             }
             glObjects.ForEach(o => o.Render(Clip));// draw scene
         }
-        glControl.SwapBuffers();//swap
+        glControl.SwapBuffers();
         GL.Finish();
-
+        
         Paint?.Invoke(this, new PaintEventArgs(glControlGraphics, glControl.ClientRectangle));
     }
     #endregion

@@ -3,7 +3,7 @@ using Crystallography.OpenGL;
 using IronPython.Runtime;
 using Microsoft.Scripting.Utils;
 using OpenTK;
-using OpenTK.Graphics;
+using OpenTK.Mathematics;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -11,8 +11,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using V3 = OpenTK.Vector3d;
-using V4 = OpenTK.Vector4d;
+using V3 = OpenTK.Mathematics.Vector3d;
+using V4 = OpenTK.Mathematics.Vector4d;
+
 #endregion
 
 namespace ReciPro;
@@ -291,9 +292,8 @@ public partial class FormTrajectory : Form
             for (int i = 1; i <= limit; i++)
             {
                 glObjects.Add(new Lines(circleArray.Select(e => e * i * scaleStep).ToArray(), i % 5 == 0 ? 2f : 1f, new Material(Color4.LightGray)));
-                glControlTrajectory.MakeCurrent();
                 if (i % 10 == 0)
-                    glObjects.Add(new TextObject($"{i * scaleStep:0.0} µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black)));
+                    glObjects.Add(new TextObject(glControlTrajectory, $"{i * scaleStep:0.0} µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black)));
             }
         }
 
@@ -302,18 +302,15 @@ public partial class FormTrajectory : Form
             var len = limit * scaleStep * 0.5;
             //X軸
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(len, 0, 0)], 3f, new Material(Color4.OrangeRed)));
-            glControlTrajectory.MakeCurrent();
-            glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 1000, true, new Material(Color4.OrangeRed)));
+            glObjects.Add(new TextObject(glControlTrajectory, "+X", 10f, new V3(len, 0, 0), 1000, true, new Material(Color4.OrangeRed)));
 
             //Y軸
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, -len, 0)], 3f, new Material(Color4.YellowGreen)));
-            glControlTrajectory.MakeCurrent();
-            glObjects.Add(new TextObject("+Y", 10f, new V3(0, -len, 0), 1000, true, new Material(Color4.YellowGreen)));
+            glObjects.Add(new TextObject(glControlTrajectory, "+Y", 10f, new V3(0, -len, 0), 1000, true, new Material(Color4.YellowGreen)));
 
             //Z軸 = beam
             glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, -len)], 3f, new Material(Color4.MediumPurple)));
-            glControlTrajectory.MakeCurrent();
-            glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, -len), 1000, true, new Material(Color4.MediumPurple)));
+            glObjects.Add(new TextObject(glControlTrajectory, "+Z (=beam)", 10f, new V3(0, 0, -len), 1000, true, new Material(Color4.MediumPurple)));
         }
 
         glControlTrajectory.ProjWidth = maxLength * 2.05;

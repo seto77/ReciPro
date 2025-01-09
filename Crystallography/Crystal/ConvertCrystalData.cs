@@ -10,7 +10,7 @@ using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
-using V3 = OpenTK.Vector3d;
+using V3 = OpenTK.Mathematics.Vector3d;
 
 namespace Crystallography;
 

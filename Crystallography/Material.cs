@@ -1,5 +1,5 @@
 ﻿using System;
-using C4 = OpenTK.Graphics.Color4;
+using C4 = OpenTK.Mathematics.Color4;
 
 namespace Crystallography;
 
@@ -44,7 +44,7 @@ public class Material
     /// 環境光. 0から1まで. この量だけ底上げされる。
     /// </summary>
     public float Ambient { get => ambient / 255f; set => ambient = toByte(value); }
-    private float ambient;
+    private byte ambient;
 
     /// <summary>
     /// 拡散光. 0から1まで. 法線と光源が一致する場合に強くなる

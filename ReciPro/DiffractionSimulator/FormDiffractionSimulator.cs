@@ -19,7 +19,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using V3 = OpenTK.Vector3d;
+using V3 = OpenTK.Mathematics.Vector3d;
+using OpenTK.Mathematics;
 #endregion
 
 namespace ReciPro;
@@ -380,7 +381,7 @@ public partial class FormDiffractionSimulator : Form
 
         WaveLengthControl_WaveSourceChanged(sender, e);
 
-        glControlOIT = new GLControlAlpha(GLControlAlpha.FragShaders.OIT)
+        glControlOIT = new GLControlAlpha() //(GLControlAlpha.FragShaders.OIT)
         {
             AllowMouseRotation = true,
             AllowMouseScaling = true,
@@ -397,7 +398,7 @@ public partial class FormDiffractionSimulator : Form
             BorderStyle = BorderStyle.Fixed3D,
         };
 
-        glControlZsort = new GLControlAlpha(GLControlAlpha.FragShaders.ZSORT)
+        glControlZsort = new GLControlAlpha() //(GLControlAlpha.FragShaders.ZSORT)
         {
             AllowMouseRotation = true,
             AllowMouseScaling = true,
@@ -3065,7 +3066,7 @@ public partial class FormDiffractionSimulator : Form
                         textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText));
             });
             glObjects.AddRange(spotList);
-            glObjects.AddRange(textList.Select(e => new TextObject(e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat)));
+            glObjects.AddRange(textList.Select(e => new TextObject(glControl, e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat)));
         }
         #endregion
 
@@ -3088,9 +3089,9 @@ public partial class FormDiffractionSimulator : Form
             if (checkBox3D_ShowIndices.Checked)
                 glObjects.AddRange(
                 [
-                    new TextObject("Beam", 10f, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText),
-                    new TextObject("Top", 10f, new V3(0, 2, 0) + shift, 5, true, matText),
-                    new TextObject("Right", 10f, new V3(2, 0, 0) + shift, 5, true, matText)
+                    new TextObject(glControl, "Beam", 10f, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText),
+                    new TextObject(glControl,"Top", 10f, new V3(0, 2, 0) + shift, 5, true, matText),
+                    new TextObject(glControl,"Right", 10f, new V3(2, 0, 0) + shift, 5, true, matText)
                 ]);
         }
         #endregion

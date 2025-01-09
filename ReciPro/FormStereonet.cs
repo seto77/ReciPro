@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Windows.Devices.Radios;
-using V3 = OpenTK.Vector3d;
+using V3 = OpenTK.Mathematics.Vector3d;
 #endregion
 namespace ReciPro;
 
@@ -240,7 +240,7 @@ public partial class FormStereonet : Form
             {
                 glObjects.Add(new Sphere(v, radius, new Material(color, 1), DrawingMode.Surfaces));
                 if (checkBox3dOptionLabel.Checked)
-                    glObjects.Add(new TextObject(vector[i].Text, trackBarStrSize.Value / 8, v, radius + 0.001, true, new Material(color)));
+                    glObjects.Add(new TextObject(glControl, vector[i].Text, trackBarStrSize.Value / 8, v, radius + 0.001, true, new Material(color)));
             }
             if (checkBox3dOptionStereonet.Checked && v.Z > 0)
             {
@@ -256,7 +256,7 @@ public partial class FormStereonet : Form
                     {
                         var div = 100;
                         var r = (new Vector3DBase(0, 0, 1) - v).Length;
-                        var rot = OpenTK.Matrix3d.CreateRotationZ(-Math.Atan2(v.Y, v.X));
+                        var rot = OpenTK.Mathematics.Matrix3d.CreateRotationZ(-Math.Atan2(v.Y, v.X));
                         var sweep = Math.Asin((1 - v.Z) / r);
                         var pts = new List<V3>();
                         for (int j = 0; j < div; j++)
@@ -1219,7 +1219,7 @@ public partial class FormStereonet : Form
     private void button3D_reset_Click(object sender, EventArgs e)
     {
         glControl.ProjWidth = 2.4;
-        glControl.WorldMatrix = OpenTK.Matrix4d.Identity;
+        glControl.WorldMatrix = OpenTK.Mathematics.Matrix4d.Identity;
     }
 
     private void checkBox3dOptionSphere_CheckedChanged(object sender, EventArgs e) => Draw3D();

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using M3d = OpenTK.Matrix3d;
-using V2d = OpenTK.Vector2d;
-using V3d = OpenTK.Vector3d;
+using M3d = OpenTK.Mathematics.Matrix3d;
+using V2d = OpenTK.Mathematics.Vector2d;
+using V3d = OpenTK.Mathematics.Vector3d;
 
 namespace Crystallography.OpenGL;
 

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using V3 = OpenTK.Vector3d;
-using V4 = OpenTK.Vector4d;
+using V3 = OpenTK.Mathematics.Vector3d;
+using V4 = OpenTK.Mathematics.Vector4d;
 
 namespace Crystallography.Controls;
 

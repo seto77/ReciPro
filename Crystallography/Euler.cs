@@ -1,6 +1,6 @@
 using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra;
-using OpenTK;
+using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;

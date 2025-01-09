@@ -31,7 +31,7 @@ public static class Stereonet
         return v.Z >= -0.999999 ? new PointD(v.X / Math.Sqrt(1 + v.Z), v.Y / Math.Sqrt(1 + v.Z)) : new PointD(-100, -100);
     }
 
-    public static PointD ConvertVectorToSchmidt(OpenTK.Vector3d vec)
+    public static PointD ConvertVectorToSchmidt(OpenTK.Mathematics.Vector3d vec)
         =>ConvertVectorToSchmidt(new Vector3DBase(vec.X, vec.Y, vec.Z));
 
 }

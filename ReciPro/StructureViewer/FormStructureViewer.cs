@@ -1,7 +1,6 @@
 #region using
 using Crystallography.OpenGL;
 using Microsoft.Scripting.Utils;
-using OpenTK;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -10,10 +9,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using C4 = OpenTK.Graphics.Color4;
-using M3d = OpenTK.Matrix3d;
-using V3 = OpenTK.Vector3d;
-using V4 = OpenTK.Vector4d;
+using C4 = OpenTK.Mathematics.Color4;
+using M3d = OpenTK.Mathematics.Matrix3d;
+using V3 = OpenTK.Mathematics.Vector3d;
+using V4 = OpenTK.Mathematics.Vector4d;
+using OpenTK.Mathematics;
 #endregion
 
 namespace ReciPro;
@@ -421,11 +421,11 @@ public partial class FormStructureViewer : Form
                 var mat = new Material(bounds[i].color, numericBoxBoundPlanesOpacity.Value);
                 if (vertices != null && vertices.Length >= 3)
                 {
-                    var polygon = new Polygon(vertices.Select(v => new V3(v[0], v[1], v[2])).ToArray(), mat, DrawingMode.SurfacesAndEdges)
+                    var polygon = new Polygon(vertices.Select(v => new V3(v[0], v[1], v[2])).ToArray(), mat, DrawingMode.Surfaces)
                     {
                         Rendered = checkBoxShowBoundPlanes.Checked,
                         Tag = new boundsID()
-                    }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
+                    }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 2 : 0);
 
                     lock (lockObj1)
                         GLObjects.AddRange(polygon);
@@ -718,13 +718,11 @@ public partial class FormStructureViewer : Form
         var labelSize = (float)numericBoxLabelSize.Value;
         var edge = checkBoxLabelWhiteEdge.Checked;
 
-        glControlMainZsort.MakeCurrent();
-
         foreach (var s in GLObjects.Where(o => o.Rendered && o is Sphere).Cast<Sphere>().ToArray())
         {
             var index = (s.Tag as atomID).Index;
             var mat = radioButtonUseMaterialColor.Checked ? s.Material : new Material(colorControlLabelColor.Color, 1);
-            var text = new TextObject(enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat) { Rendered = enabledAtoms[index].ShowLabel };
+            var text = new TextObject(glControlMain, enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat) { Rendered = enabledAtoms[index].ShowLabel };
             GLObjects.Add(text);
         }
         textBoxCalcInformation.AppendText($"Generation of label objects: {sw.ElapsedMilliseconds}ms.\r\n");
@@ -738,6 +736,7 @@ public partial class FormStructureViewer : Form
     /// </summary>
     private void transferGLObjects()
     {
+        glControlMain.MakeCurrent();
         sw.Restart();
         glControlMain.DeleteAllObjects();
         glControlMain.AddObjects(GLObjects);
@@ -896,7 +895,7 @@ public partial class FormStructureViewer : Form
         {
             obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
             obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
-            obj.Add(new TextObject(label[i], 11, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
+            obj.Add(new TextObject(glControlAxes, label[i], 11, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
         }
         obj.Add(new Sphere(new V3(0, 0, 0), 0.12, new Material(C4.Gray), DrawingMode.Surfaces));
 

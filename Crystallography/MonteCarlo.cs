@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using V3 = OpenTK.Vector3d;
-using M3 = OpenTK.Matrix3d;
+using V3 = OpenTK.Mathematics.Vector3d;
+using M3 = OpenTK.Mathematics.Matrix3d;
 
 namespace Crystallography;
 

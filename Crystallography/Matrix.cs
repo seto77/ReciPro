@@ -8,6 +8,7 @@ using System.Linq;
 using System.Numerics;
 using System.Threading;
 using System.Xml.Serialization;
+using OpenTK.Mathematics;
 
 namespace Crystallography;
 
