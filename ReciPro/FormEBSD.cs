@@ -194,15 +194,15 @@ public partial class FormEBSD : Form
         var len = 50;
         //X軸
         glObjects.Add(new Lines([new V3(0, 0, 0), new V3(len, 0, 0)], 3f, new Material(C4.OrangeRed)));
-        glObjects.Add(new TextObject(glControlGeo, "+X", 10f, new V3(len, 0, 0), 100, true, new Material(C4.OrangeRed)));
+        glObjects.Add(new TextObject("+X", 10f, new V3(len, 0, 0), 100, true, new Material(C4.OrangeRed), glControlGeo));
 
         //Y軸
         glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, -len, 0)], 3f, new Material(C4.YellowGreen)));
-        glObjects.Add(new TextObject(glControlGeo, "+Y", 10f, new V3(0, -len, 0), 100, true, new Material(C4.YellowGreen)));
+        glObjects.Add(new TextObject("+Y", 10f, new V3(0, -len, 0), 100, true, new Material(C4.YellowGreen), glControlGeo));
 
         //Z軸 = beam
         glObjects.Add(new Lines([new V3(0, 0, 0), new V3(0, 0, -len)], 3f, new Material(C4.MediumPurple)));
-        glObjects.Add(new TextObject(glControlGeo, "+Z (=beam)", 10f, new V3(0, 0, -len), 100, true, new Material(C4.MediumPurple)));
+        glObjects.Add(new TextObject("+Z (=beam)", 10f, new V3(0, 0, -len), 100, true, new Material(C4.MediumPurple), glControlGeo));
 
         //照射点から検出器の縁への黄色線
         glObjects.AddRange(Enumerable.Range(0, 30).Select(e =>
@@ -225,7 +225,7 @@ public partial class FormEBSD : Form
             var v = samRot * Crystal.RotationMatrix * vec[n] / max * 10;
             glObjects.Add(new Cylinder(-v, v * 2 - 2 * v.Normarize(), 0.4, new Material(color[n]), DrawingMode.Surfaces));
             glObjects.Add(new Cone(v, -2 * v.Normarize(), 0.8, new Material(color[n]), DrawingMode.Surfaces));
-            glObjects.Add(new TextObject(glControlGeo, label[n], 13f, v + 0.1 * v.Normarize(), 0.5, true, new Material(color[n])));
+            glObjects.Add(new TextObject(label[n], 13f, v + 0.1 * v.Normarize(), 0.5, true, new Material(color[n]), glControlGeo));
         }
         glObjects.Add(new Sphere(new V3(0, 0, 0), 1.2, new Material(C4.Gray), DrawingMode.Surfaces));
 

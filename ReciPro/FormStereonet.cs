@@ -240,7 +240,7 @@ public partial class FormStereonet : Form
             {
                 glObjects.Add(new Sphere(v, radius, new Material(color, 1), DrawingMode.Surfaces));
                 if (checkBox3dOptionLabel.Checked)
-                    glObjects.Add(new TextObject(glControl, vector[i].Text, trackBarStrSize.Value / 8, v, radius + 0.001, true, new Material(color)));
+                    glObjects.Add(new TextObject(vector[i].Text, trackBarStrSize.Value / 8, v, radius + 0.001, true, new Material(color), glControl));
             }
             if (checkBox3dOptionStereonet.Checked && v.Z > 0)
             {

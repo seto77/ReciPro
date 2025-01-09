@@ -560,7 +560,7 @@ public partial class FormMain : Form
         {
             obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
             obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
-            obj.Add(new TextObject( glControlAxes,label[i], 13, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
+            obj.Add(new TextObject(label[i], 13, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i]), glControlAxes));
         }
         obj.Add(new Sphere(new Vec3(0, 0, 0), 0.2, new Material(Col4.Gray), DrawingMode.Surfaces));
 

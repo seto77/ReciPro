@@ -3066,7 +3066,7 @@ public partial class FormDiffractionSimulator : Form
                         textList.Add((g.Text, 9f, vec.ToOpenTK() + shift, radius + 0.1, false, matText));
             });
             glObjects.AddRange(spotList);
-            glObjects.AddRange(textList.Select(e => new TextObject(glControl, e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat)));
+            glObjects.AddRange(textList.Select(e => new TextObject(e.text, e.fontSize, e.position, e.popout, e.whiteEdge, e.mat, glControl)));
         }
         #endregion
 
@@ -3089,9 +3089,9 @@ public partial class FormDiffractionSimulator : Form
             if (checkBox3D_ShowIndices.Checked)
                 glObjects.AddRange(
                 [
-                    new TextObject(glControl, "Beam", 10f, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText),
-                    new TextObject(glControl,"Top", 10f, new V3(0, 2, 0) + shift, 5, true, matText),
-                    new TextObject(glControl,"Right", 10f, new V3(2, 0, 0) + shift, 5, true, matText)
+                    new TextObject("Beam", 10f, new V3(0, 0, 2.5 + spotRadius) + shift, 5, true, matText, glControl),
+                    new TextObject("Top",10f, new V3(0, 2, 0) + shift, 5, true, matText, glControl),
+                    new TextObject("Right",10f, new V3(2, 0, 0) + shift, 5, true, matText, glControl)
                 ]);
         }
         #endregion

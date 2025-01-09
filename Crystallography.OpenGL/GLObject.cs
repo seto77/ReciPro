@@ -22,6 +22,7 @@ using M4f = OpenTK.Mathematics.Matrix4;
 using M3d = OpenTK.Mathematics.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
 using System.Threading;
+using OpenTK.GLControl;
 #endregion 定義
 
 namespace Crystallography.OpenGL;
@@ -399,13 +400,23 @@ abstract public class GLObject
             FixedArgb = GL.GetUniformLocation(Program, "FixedArgb")
         };
 
-        //if (GraphicsInfo.All(info => !info.Product.Contains("Parallels")))
-        //{
-        //    loc.PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
-        //    loc.PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
-        //    loc.PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
-        //    loc.RenderPass = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
-        //}
+
+        if (GraphicsInfo.All(info => !info.Product.Contains("Parallels")))
+        {
+            try
+            {
+                loc.PassOIT1Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT1");
+                loc.PassOIT2Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT2");
+                loc.PassNormalIndex = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passNormal");
+                loc.RenderPass = GL.GetProgramResourceLocation(Program, ProgramInterface.FragmentSubroutineUniform, "RenderPass");
+
+                //loc.PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
+                //loc.PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
+                //loc.PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
+                //loc.RenderPass = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
+            }
+            catch { }
+        }
 
         if (loc.Mode == -1 || loc.Uv == -1 || loc.Position == -1
             || loc.Normal == -1 || loc.Argb == -1)
@@ -567,6 +578,7 @@ abstract public class GLObject
                                                       //裏面のみ描画(ステンシル値だけ書き込む)
                         GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.IncrWrap);//ステンシル値「+1」
                         GL.CullFace(CullFaceMode.Front); //表面をカリング
+                      
                         Render();
                         //表面のみ描画(→差分をとってマスク画像にする)
                         GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.DecrWrap);//ステンシル値「-1」
@@ -1763,15 +1775,23 @@ public class TextObject : GLObject
     public int TextureNum = -1;
     public double Popout = 0;
 
-    public TextObject(GLControlAlpha glControl, string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat)
-        : this(glControl, text, fontSize, position.ToOpenTK(), popout, whiteEdge, mat) { }
-    public TextObject(GLControlAlpha glControl, string text, float fontSize, in V3d position, double popout, bool whiteEdge, Material mat) : base(mat, DrawingMode.Text)
+    public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat, GLControlAlpha glControl, int program =-1)
+        : this(text, fontSize, position.ToOpenTK(), popout, whiteEdge, mat, glControl, program) { }
+
+    public TextObject(string text, float fontSize, in V3d position, double popout, bool whiteEdge, Material mat, int program)
+        : this(text, fontSize, position, popout, whiteEdge, mat, null, program) { }
+
+    public TextObject(string text, float fontSize, in V3d position, double popout, bool whiteEdge, Material mat, GLControlAlpha glControl, int program=-1) : base(mat, DrawingMode.Text)
     {
         text = text.Trim();
 
         if (text != "" || fontSize > 0)
         {
-            glControl.MakeCurrent();
+            if (glControl != null)
+            {
+                glControl.MakeCurrent();
+                program= glControl.Program;
+            }
             Indices = indices;
             Primitives = primitives;
             CircumscribedSphereCenter = new V4d(position, 1);
@@ -1779,7 +1799,7 @@ public class TextObject : GLObject
             ShowClippedSection = false;//クリップ断面は表示しない
             Popout = popout;
 
-            if (dic.TryGetValue((glControl.Program, text, fontSize, mat.Argb, whiteEdge), out var obj))//辞書に登録されている場合
+            if (dic.TryGetValue((program, text, fontSize, mat.Argb, whiteEdge), out var obj))//辞書に登録されている場合
             {
                 TextureNum = obj.TextureNum;
                 Vertices = obj.Vertices;
@@ -1850,7 +1870,7 @@ public class TextObject : GLObject
                  ];
 
                 //辞書に登録
-                dic.Add((glControl.Program, text, fontSize, mat.Argb, whiteEdge), (TextureNum, Vertices));
+                dic.Add((program, text, fontSize, mat.Argb, whiteEdge), (TextureNum, Vertices));
             }
         }
 

@@ -14,6 +14,7 @@ using M3d = OpenTK.Mathematics.Matrix3d;
 using V3 = OpenTK.Mathematics.Vector3d;
 using V4 = OpenTK.Mathematics.Vector4d;
 using OpenTK.Mathematics;
+using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 namespace ReciPro;
@@ -717,14 +718,17 @@ public partial class FormStructureViewer : Form
         sw.Restart();
         var labelSize = (float)numericBoxLabelSize.Value;
         var edge = checkBoxLabelWhiteEdge.Checked;
-
-        foreach (var s in GLObjects.Where(o => o.Rendered && o is Sphere).Cast<Sphere>().ToArray())
+        var textObjects = GLObjectsP.Where(o => o.Rendered && o is Sphere);
+        var glObjects = new List<TextObject>(textObjects.Count());
+        glControlMain.MakeCurrent();//MakeCurrentÇÕíxÇ¢ÇÃÇ≈ç≈èâÇ…àÍâÒÇæÇØåƒÇ—èoÇµÅAnew TextObjectÇ≈ÇÕprogramî‘çÜÇæÇØÇì¸óÕ
+        foreach (var s in textObjects.Cast<Sphere>())
         {
             var index = (s.Tag as atomID).Index;
             var mat = radioButtonUseMaterialColor.Checked ? s.Material : new Material(colorControlLabelColor.Color, 1);
-            var text = new TextObject(glControlMain, enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat) { Rendered = enabledAtoms[index].ShowLabel };
-            GLObjects.Add(text);
+            var text = new TextObject(enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat, glControlMain.Program) { Rendered = enabledAtoms[index].ShowLabel };
+            glObjects.Add(text);
         }
+        GLObjects.AddRange(glObjects);
         textBoxCalcInformation.AppendText($"Generation of label objects: {sw.ElapsedMilliseconds}ms.\r\n");
     }
 
@@ -895,7 +899,7 @@ public partial class FormStructureViewer : Form
         {
             obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
             obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
-            obj.Add(new TextObject(glControlAxes, label[i], 11, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i])));
+            obj.Add(new TextObject(label[i], 11, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i]), glControlAxes));
         }
         obj.Add(new Sphere(new V3(0, 0, 0), 0.12, new Material(C4.Gray), DrawingMode.Surfaces));
 
