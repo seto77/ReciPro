@@ -403,19 +403,10 @@ abstract public class GLObject
 
         if (GraphicsInfo.All(info => !info.Product.Contains("Parallels")))
         {
-            try
-            {
-                loc.PassOIT1Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT1");
-                loc.PassOIT2Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT2");
-                loc.PassNormalIndex = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passNormal");
-                loc.RenderPass = GL.GetProgramResourceLocation(Program, ProgramInterface.FragmentSubroutineUniform, "RenderPass");
-
-                //loc.PassOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
-                //loc.PassOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
-                //loc.PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal");
-                //loc.RenderPass = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "RenderPass");
-            }
-            catch { }
+            loc.PassOIT1Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT1");
+            loc.PassOIT2Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT2");
+            loc.PassNormalIndex = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passNormal");
+            loc.RenderPass = GL.GetProgramResourceLocation(Program, ProgramInterface.FragmentSubroutineUniform, "RenderPass");
         }
 
         if (loc.Mode == -1 || loc.Uv == -1 || loc.Position == -1
