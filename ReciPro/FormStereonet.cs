@@ -260,7 +260,7 @@ public partial class FormStereonet : Form
                         var sweep = Math.Asin((1 - v.Z) / r);
                         var pts = new List<V3>();
                         for (int j = 0; j < div; j++)
-                            pts.Add(new V3(0, 0, 1) + r * rot.Mult(new V3(Math.Cos(sweep * j / div), 0, -Math.Sin(sweep * j / div))));
+                            pts.Add(new V3(0, 0, 1) + r * (rot * (new V3(Math.Cos(sweep * j / div), 0, -Math.Sin(sweep * j / div)))));
                         glObjects.Add(new Lines([.. pts], 1f, new Material(color, 0.5)));
                     }
                 }

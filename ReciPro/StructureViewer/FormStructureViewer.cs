@@ -390,7 +390,7 @@ public partial class FormStructureViewer : Form
                     for (int h = -slices; h <= slices; h++)
                         for (int w = -slices; w <= slices; w++)
                         {
-                            var n = new V4(V3.Normalize(rot[i].Mult(new V3(w, h, slices))), maxDistance);
+                            var n = new V4(V3.Normalize(rot[i] * new V3(w, h, slices)), maxDistance);
                             bounds.Add((n, Color.Gray));
                         }
 
@@ -480,7 +480,7 @@ public partial class FormStructureViewer : Form
                         var spheres = new List<Sphere>();
                         enabledAtomsP.ForAll(o =>
                         {
-                            var pos = axes.Mult(cell + o.Pos) - shift;
+                            var pos = axes * (cell + o.Pos) - shift;
                             var min = bounds.Min(b => V4.Dot(new V4(pos, 1), b.prm));
                             if (min > threshold)
                             {
@@ -665,7 +665,8 @@ public partial class FormStructureViewer : Form
                     }
                     else
                     {
-                        var poly = new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode) { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons();//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
+                        var poly = new Polyhedron(vIndices.Select(v => vArray[v].O), c.PolyMat, polyhedronMode)
+                        { Rendered = bond.ShowPolyhedron, ShowClippedSection = false }.ToPolygons();//order=2で、12個くらいに分割 => 計算時間がかかりすぎるので、やっぱりやめ。
                         lock (lockObj3)
                             GLObjects.AddRange(poly);
                     }
@@ -764,7 +765,7 @@ public partial class FormStructureViewer : Form
             GLObjects.Remove(GLObjects.First(obj => obj.Tag is cellID));
         }
 
-        var t = axes.Mult(new V3(numericBoxCellTransrationA.Value, numericBoxCellTransrationB.Value, numericBoxCellTransrationC.Value)) + shift;
+        var t = axes * (new V3(numericBoxCellTransrationA.Value, numericBoxCellTransrationB.Value, numericBoxCellTransrationC.Value)) + shift;
         V3 zero = new(0), c0 = axes.Column0, c1 = axes.Column1, c2 = axes.Column2;
 
         //エッジの描画
@@ -1031,7 +1032,7 @@ public partial class FormStructureViewer : Form
             var rot = getRotation(e, glControlLight.ClientSize, lastPosLight, true);
             var rotMat = Matrix3d.CreateFromAxisAngle(-new V3(rot), rot.W);
             if (double.IsNaN(rotMat.M11)) return;
-            var pos = rotMat.Mult(glControlLight.LightPosition);
+            var pos = rotMat * glControlLight.LightPosition;
             if (double.IsNaN(pos.X)) return;
             glControlLight.LightPosition = glControlMain.LightPosition = glControlAxes.LightPosition = pos;
             foreach (var c in legendControls)
@@ -1273,7 +1274,7 @@ public partial class FormStructureViewer : Form
         for (int i = 0; i < GLObjects.Count; i++)
             if (GLObjects[i] is Sphere sphere)
             {
-                var origin = rot.Mult(new V4(sphere.Origin, 1));
+                var origin = rot* new V4(sphere.Origin, 1);
                 double x = origin.X - a, y = origin.Y - b, z = origin.Z - c;
                 if (sphere.Radius * sphere.Radius > ((q2 + r2) * x * x + (r2 + p2) * y * y + (p2 + q2) * z * z - 2 * (pq * x * y + qr * y * z + rp * z * x)) / (p2 + q2 + r2))
                     if (!depthList.ContainsKey(origin.Z))

@@ -73,7 +73,7 @@ public partial class FormEBSD : Form
                              sin, cos, DetZ - DetY * sin - DetZ * cos,
                              0, 0, 1);
 
-            return rot.Mult(f).X > c.X ? new PointD(0, len) : new PointD(0, -len);
+            return (rot*f).X > c.X ? new PointD(0, len) : new PointD(0, -len);
         }
     }
 
@@ -208,7 +208,7 @@ public partial class FormEBSD : Form
         glObjects.AddRange(Enumerable.Range(0, 30).Select(e =>
         {
             var θ = e / 15.0 * Math.PI;
-            var p = M3.CreateRotationX(-DetTilt).Mult(DetR * new V3(-Math.Sin(θ), Math.Cos(θ), 0));
+            var p = M3.CreateRotationX(-DetTilt) * (DetR * new V3(-Math.Sin(θ), Math.Cos(θ), 0));
             return new Lines([new V3(0, 0, 0), new(p.X, p.Y - DetY, p.Z - DetZ)], 1f, new Material(C4.Yellow, 0.7));
         }));
 
@@ -239,7 +239,7 @@ public partial class FormEBSD : Form
         var lines = new List<(PointD[], double, Color)>();
         M3 samRot2 = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
         var f1 = new Func<double, double, PointD>((x, y)
-            => Stereonet.ConvertVectorToSchmidt(samRot2.Mult(detRot.Mult(DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
+            => Stereonet.ConvertVectorToSchmidt(samRot2 * (detRot * (DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
 
         var step = 60;
         var range = Enumerable.Range(0, step + 1).Select(e => (double)e);
@@ -684,7 +684,7 @@ public partial class FormEBSD : Form
         BSEs = ParallelEnumerable.Range(0, loop)
             .Select(_ => monte.GetBackscatteredElectrons())
             .Where(e => e.e > EnergyThreshold)
-            .Select(e => (e.d,e.v, Stereonet.ConvertVectorToSchmidt(smpRot.Mult(e.v)),e.e))
+            .Select(e => (e.d,e.v, Stereonet.ConvertVectorToSchmidt(smpRot * e.v),e.e))
             .ToArray();
         toolStripStatusLabel1.Text = $"{sw1.ElapsedMilliseconds} msec. ellapsed for {loop:#,0} backscattered electrons.";
 
@@ -697,7 +697,7 @@ public partial class FormEBSD : Form
             poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Sigma;
 
         M3 rot = M3.CreateRotationX(SmpTilt);
-        poleFigureControl.Vectors = BSEs.Select(e => new V4(rot.Mult(e.Vec), e.Energy)).ToArray();
+        poleFigureControl.Vectors = BSEs.Select(e => new V4(rot * e.Vec, e.Energy)).ToArray();
 
         CalcStatistics();
 
@@ -718,7 +718,7 @@ public partial class FormEBSD : Form
             PointD[] area=[];
             var areaStep = 120;
             var f = new Func<double, double, PointD>((x, y) 
-                => Stereonet.ConvertVectorToSchmidt(smpRot.Mult(detRot.Mult(DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
+                => Stereonet.ConvertVectorToSchmidt(smpRot * (detRot * (DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
             if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)//
             {
                 var div = DetectorDivision;
@@ -822,8 +822,8 @@ public partial class FormEBSD : Form
             for (int w = 0; w < size; w++)
             {
                 //検出器の座標
-                var vec = rotDet.Mult(new V4(DetR * (2 * w + 1) / size - DetR, DetR * (2 * h + 1) / size - DetR + DetY, DetZ, 1));
-                vec = rotSmp.Mult(vec);
+                var vec = rotDet * new V4(DetR * (2 * w + 1) / size - DetR, DetR * (2 * h + 1) / size - DetR + DetY, DetZ, 1);
+                vec = rotSmp * vec;
 
                 directions.Add(new Vector3DBase(-vec.X, -vec.Y, -vec.Z).Normarize());
             }
@@ -993,7 +993,7 @@ public partial class FormEBSD : Form
         PointD[] area = [];
         var areaStep = 32;
         var f = new Func<double, double, PointD>((x, y)
-            => Stereonet.ConvertVectorToSchmidt(smpRot.Mult(detRot.Mult(DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
+            => Stereonet.ConvertVectorToSchmidt(smpRot * (detRot * (DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
         area = [.. Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
         //まず検出器に入る電子を抽出し、これをbse1とする
         var bse1 = BSEs.AsParallel()

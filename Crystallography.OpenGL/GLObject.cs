@@ -569,6 +569,7 @@ abstract public class GLObject
                                                       //裏面のみ描画(ステンシル値だけ書き込む)
                         GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.IncrWrap);//ステンシル値「+1」
                         GL.CullFace(CullFaceMode.Front); //表面をカリング
+                        
                       
                         Render();
                         //表面のみ描画(→差分をとってマスク画像にする)
@@ -633,9 +634,11 @@ public class Clip
             var norm = new V3d(prms);
             var rot = GLGeometry.CreateRotationFromZ(norm);
 
+           //var rot2 =  rot * norm;
+
             var pts = new[] { new V3d(100, 0, 0), new V3d(0, 100, 0), new V3d(-100, 0, 0), new V3d(0, -100, 0) };
             for (int j = 0; j < pts.Length; j++)
-                pts[j] = rot.Mult(pts[j]) - norm * prms.W * 1.0005;
+                pts[j] = rot * pts[j] - norm * prms.W * 1.0005;
 
             var obj = new Quads(pts[0], pts[1], pts[2], pts[3], new Material(0), DrawingMode.Surfaces)
             {
@@ -726,35 +729,51 @@ public class Polygon : GLObject
     {
         ShowClippedSection = false;//クリップ断面は表示しない
         IgnoreNormalSides = true;//裏表を無視する
-        var center = Extensions.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
-        CircumscribedSphereCenter = new V4d(center, 1);
-        CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
 
-        var polygonInfo = GLGeometry.PolygonInfo(vertices, V3d.Zero);
-        var normF = polygonInfo.Norm.ToV3f();
-        var centerF = polygonInfo.Center.ToV3f();
-        var indicesList = polygonInfo.Indices;
-        indicesList.Insert(0, (uint)vertices.Count());
-        var indicesArray = indicesList.ToArray();
+        if (vertices.Count() == 3)//三角形の場合は特別処理
+        {
+            var vecs = vertices.ToArray();
+            var center =(vecs[0] + vecs[1] + vecs[2]) / 3;
+            CircumscribedSphereCenter = new V4d(center, 1);
+            CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
+            var normF = V3d.Cross(vecs[0] - vecs[1], vecs[1] - vecs[2]).ToV3f();
+            Vertices = vecs.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)).ToArray();
+            Indices = [0, 1, 2, 0, 1, 2, 0, 1, 2];
+            Primitives = new (PT Type, int Count)[3];
+            Primitives[0] = (PT.Triangles, 3);//surfaces
+            Primitives[1] = (PT.LineLoop, 3);//edges
+            Primitives[2] = (PT.Points, 3);//points
+        }
+        else 
+        {
+            var center = Extensions.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
+            CircumscribedSphereCenter = new V4d(center, 1);
+            CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
+            var polygonInfo = GLGeometry.PolygonInfo(vertices, V3d.Zero);
+            var normF = polygonInfo.Norm.ToV3f();
+            var centerF = polygonInfo.Center.ToV3f();
+            var indicesList = polygonInfo.Indices;
+            indicesList.Insert(0, (uint)vertices.Count());
+            var indicesArray = indicesList.ToArray();
 
-        //最終処理
-        Vertices = new Vertex[vertices.Count() + 1];
-        Array.Copy(vertices.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)).ToArray(), Vertices, vertices.Count());
-        Vertices[^1] = new Vertex(centerF, normF, mat.Argb);
+            //最終処理
+            Vertices = new Vertex[vertices.Count() + 1];
+            Array.Copy(vertices.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)).ToArray(), Vertices, vertices.Count());
+            Vertices[^1] = new Vertex(centerF, normF, mat.Argb);
 
-        Indices = new uint[indicesArray.Length * 3 - 4];
-        Primitives = new (PT Type, int Count)[3];
-        //surfaces
-        Array.Copy(indicesArray, Indices, indicesArray.Length);
-        Primitives[0] = (PT.TriangleFan, indicesList.Count);
-        //edges
-        Array.Copy(indicesArray, 2, Indices, indicesArray.Length, indicesArray.Length - 2);
-        Primitives[1] = (PT.LineLoop, indicesList.Count);
-        //points
-        Array.Copy(indicesArray, 2, Indices, indicesArray.Length * 2 - 2, indicesArray.Length - 2);
-        Primitives[2] = (PT.Points, indicesList.Count);
+            Indices = new uint[indicesArray.Length * 3 - 4];
+            Primitives = new (PT Type, int Count)[3];
+            //surfaces
+            Array.Copy(indicesArray, Indices, indicesArray.Length);
+            Primitives[0] = (PT.TriangleFan, indicesList.Count);
+            //edges
+            Array.Copy(indicesArray, 2, Indices, indicesArray.Length, indicesArray.Length - 2);
+            Primitives[1] = (PT.LineLoop, indicesList.Count);
+            //points
+            Array.Copy(indicesArray, 2, Indices, indicesArray.Length * 2 - 2, indicesArray.Length - 2);
+            Primitives[2] = (PT.Points, indicesList.Count);
+        }
     }
-
     /// <summary>
     /// 多角形を分解する (Quadsにして返す)
     /// </summary>
@@ -957,7 +976,7 @@ public class HoledDisk : GLObject
 
         Vertices = new Vertex[vertices.Length];
         for (int i = 0; i < vertices.Length; i++)
-            Vertices[i] = new Vertex((rotMat.Mult(vertices[i]) + origin).ToV3f(), normal.ToV3f(), mat.Argb);
+            Vertices[i] = new Vertex((rotMat * vertices[i] + origin).ToV3f(), normal.ToV3f(), mat.Argb);
 
         Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
 
@@ -1011,7 +1030,6 @@ public class Polyhedron : GLObject
                             candidates.Add(vrs.Where(v => Math.Abs(V3d.Dot(v - A, V)) < 0.0000001).ToArray());
                 }
 
-
         //各面を構成する頂点集合に対して
         var vList = new List<Vertex>();
         var iList2 = new List<List<uint>>();
@@ -1019,26 +1037,40 @@ public class Polyhedron : GLObject
         var offset = (uint)0;
         foreach (var cand in CollectionsMarshal.AsSpan(candidates))
         {
-            var polygonInfo = GLGeometry.PolygonInfo(cand, center);
+            if (cand.Length == 3)
+            {
+                var norm = V3d.Cross(cand[0] - cand[1], cand[2] - cand[1]).ToV3f();
+                vList.AddRange(cand.Select(p => new Vertex(p.ToV3f(), norm, mat.Argb)));//多面体頂点を追加
 
-            vList.AddRange(cand.Select(p => new Vertex(p.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb)));//多面体頂点を追加
-            vList.Add(new Vertex(polygonInfo.Center.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb));//多面体中心を追加
+                for(int i = 0;i<3; i++)
+                    iList2.Add([offset + 0, offset + 1, offset + 2]);
+                types.AddRange([PT.Triangles, PT.LineLoop, PT.Points]);
+                offset += 3;
+            }
+            else
+            {
+                var polygonInfo = GLGeometry.PolygonInfo(cand, center);
 
-            var iTemp = new List<uint>([(uint)(vList.Count - 1)]);//多面体中心のインデックスを追加
-            var offsetIndices = polygonInfo.Indices.Select(n => n + offset).ToList();
-            iTemp.AddRange(offsetIndices);//多面体頂点のインデックスを追加
+                vList.AddRange(cand.Select(p => new Vertex(p.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb)));//多面体頂点を追加
+                vList.Add(new Vertex(polygonInfo.Center.ToV3f(), polygonInfo.Norm.ToV3f(), mat.Argb));//多面体中心を追加
 
-            iList2.Add(iTemp);
-            types.Add(PT.TriangleFan);
+                var iTemp = new List<uint>([(uint)(vList.Count - 1)]);//多面体中心のインデックスを追加
+                var offsetIndices = polygonInfo.Indices.Select(n => n + offset).ToList();
+                iTemp.AddRange(offsetIndices);//多面体頂点のインデックスを追加
 
-            offsetIndices.RemoveAt(0);
-            iList2.Add(offsetIndices);
-            iList2.Add(offsetIndices);
-            types.Add(PT.LineLoop);
-            types.Add(PT.Points);
+                iList2.Add(iTemp);
+                types.Add(PT.TriangleFan);
 
-            offset += (uint)(cand.Length + 1);
+                offsetIndices.RemoveAt(0);
+                iList2.Add(offsetIndices);
+                iList2.Add(offsetIndices);
+                types.Add(PT.LineLoop);
+                types.Add(PT.Points);
+
+                offset += (uint)(cand.Length + 1);
+            }
         }
+        IgnoreNormalSides = true;
 
         Vertices = [.. vList];
         Indices = iList2.SelectMany(i => i).ToArray();
@@ -1056,10 +1088,7 @@ public class Polyhedron : GLObject
 
         for (int i = 0, offsetIndices = 0, offsetVetices = 0; i < p.Length; i++)
         {
-            p[i] = new Polygon(Material, Mode)
-            {
-                Primitives = [Primitives[i * 3], Primitives[i * 3 + 1], Primitives[i * 3 + 2]]
-            };
+            p[i] = new Polygon(Material, Mode) { Primitives = [Primitives[i * 3], Primitives[i * 3 + 1], Primitives[i * 3 + 2]] };
 
             p[i].Indices = new uint[p[i].Primitives.Sum(o => o.Count)];
 
@@ -1086,7 +1115,6 @@ public class Polyhedron : GLObject
         {
             var polygons = p.SelectMany(o => o.Decompose(order)).ToArray();
             return polygons;
-
         }
     }
 }
@@ -1172,8 +1200,8 @@ public class Ellipsoid : GLObject
             for (int h = -slices; h <= slices; h++)
                 for (int w = -slices; w <= slices; w++)
                 {
-                    var n = new V4d(V3d.Normalize(rot[i].Mult(new V3d(w, h, slices))), 1);
-                    var v = transMat.Mult(n);
+                    var n = new V4d(V3d.Normalize(rot[i] * new V3d(w, h, slices)), 1);
+                    var v = transMat * n;
                     Vertices[j++] = new Vertex(v.ToV3f(), n.ToV3f(), mat.Argb);
                 }
 
@@ -1338,7 +1366,7 @@ public class Pipe : GLObject
                     var transMat = new M4d(rotMat) * new M4d(r2, 0, 0, 0, 0, r2, 0, 0, 0, 0, vec.Length, 0, 0, 0, 0, 1);
                     transMat.Column3 = new V4d(o, 1);
 
-                    Vertices = Cone.DefaultVertices.Select(vrs => new Vertex(transMat.Mult(new V4f(vrs.Position)), rotMat.Mult(vrs.Normal), mat1.Argb)).ToArray();
+                    Vertices = Cone.DefaultVertices.Select(vrs => new Vertex(transMat.ToM4f() * new V4f(vrs.Position), rotMat.ToM3f() * vrs.Normal, mat1.Argb)).ToArray();
                     Indices = Cone.DefaultIndices;
                     Primitives = Cone.DefaultPrimitives;
                     return;
@@ -1443,7 +1471,7 @@ public class Pipe : GLObject
 
         Vertices = new Vertex[v.Count];
         for (int i = 0; i < v.Count; i++)
-            Vertices[i] = new Vertex((rotMat.Mult(v[i]) + o).ToV3f(), rotMat.Mult(n[i]).ToV3f(), c[i]);
+            Vertices[i] = new Vertex((rotMat * v[i] + o).ToV3f(), (rotMat * n[i]).ToV3f(), c[i]);
 
         Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
 
@@ -1474,11 +1502,9 @@ public class Cone : Pipe
     }
 
 
-#pragma warning disable CA2211 // 非定数フィールドは表示されません
     public static Vertex[] DefaultVertices;
     public static uint[] DefaultIndices;
     public static (PT Type, int Count)[] DefaultPrimitives;
-#pragma warning restore CA2211 // 非定数フィールドは表示されません
 
 
     public bool UseDefault = false;
@@ -1629,7 +1655,7 @@ public class Torus : GLObject
         {
             var rot = M3d.CreateRotationZ((double)i / slices1 * 2 * Math.PI);
             for (int j = 0; j < slices2; j++)
-                circleVertex.Add((rot.Mult(circleVertex[j].Position), rot.Mult(circleVertex[j].Normal)));
+                circleVertex.Add((rot * circleVertex[j].Position, rot * circleVertex[j].Normal));
         }
         //GLGeometry.
         //すべての頂点を座標変換し、vListに追加
@@ -1637,10 +1663,11 @@ public class Torus : GLObject
         //var transMat = M3d.CreateFromAxisAngle(V3d.Cross(vZ, Normal), V3d.CalculateAngle(Normal, vZ)).ToMatrix4D();
         var transMat = GLGeometry.CreateRotationToZ(norm).ToMatrix4d();
         transMat.Column3 = new V4d(origin, 1);
+
         for (int i = 0; i < circleVertex.Count; i++)
         {
-            var position = transMat.Mult(circleVertex[i].Position.ToV4d());
-            var normal = transMat.Mult(circleVertex[i].Normal.ToV4d());
+            var position = transMat * circleVertex[i].Position.ToV4d();
+            var normal = transMat * circleVertex[i].Normal.ToV4d();
             vList.Add(new Vertex(position.ToV3f(), normal.ToV3f(), mat.Argb));
         }
         //最後に、surfacesやedgeを計算しやすくするため、最初のslices個分の頂点を追加

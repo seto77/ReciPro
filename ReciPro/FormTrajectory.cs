@@ -219,15 +219,15 @@ public partial class FormTrajectory : Form
         if (checkBoxDrawAxesInStereonet.Checked)
             poleFigureControl.Circles = [
                 (Stereonet.ConvertVectorToSchmidt(new Vector3DBase(-1, 0,0)), 0.02, Color.OrangeRed, true, "+X"),
-                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, -1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "+Y"),
-                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "-Y"),
-                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 0, -1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "+Z"),
-                (Stereonet.ConvertVectorToSchmidt(rot.Mult(new V3(0, 0, 1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "-Z")
+                (Stereonet.ConvertVectorToSchmidt((rot * new V3(0, -1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "+Y"),
+                (Stereonet.ConvertVectorToSchmidt((rot * new V3(0, 1, 0)).ToVector3DBase()), 0.02, Color.YellowGreen, true, "-Y"),
+                (Stereonet.ConvertVectorToSchmidt((rot * new V3(0, 0, -1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "+Z"),
+                (Stereonet.ConvertVectorToSchmidt((rot * new V3(0, 0, 1)).ToVector3DBase()), 0.02, Color.MediumPurple, true, "-Z")
                 ];
         else
             poleFigureControl.Circles = [];
 
-        poleFigureControl.Vectors = BSEs.Select(e => new V4(rot.Mult(e[^1].p - e[^2].p), e[^1].e)).ToArray();
+        poleFigureControl.Vectors = BSEs.Select(e => new V4(rot * (e[^1].p - e[^2].p), e[^1].e)).ToArray();
         //最大深さ分布を求めるためのテストコード
         // poleFigureControl.Vectors = BSEs.Select(e1 => new V4(rot.Mult(e1[^1].p - e1[^2].p), e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z))).ToArray();
     }

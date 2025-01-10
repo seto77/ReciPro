@@ -170,42 +170,6 @@ public static class Extensions
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static V4d Mult(in this M4d m, in V4d v) => new(
-            m.M11 * v.X + m.M12 * v.Y + m.M13 * v.Z + m.M14 * v.W,
-            m.M21 * v.X + m.M22 * v.Y + m.M23 * v.Z + m.M24 * v.W,
-            m.M31 * v.X + m.M32 * v.Y + m.M33 * v.Z + m.M34 * v.W,
-            m.M41 * v.X + m.M42 * v.Y + m.M43 * v.Z + m.M44 * v.W
-        );
-
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
-    /// <param name="v"></param>
-    /// <returns></returns>
-    public static M4d Mult(in this M4d m, in double c) => new(
-            c * m.M11, c * m.M12, c * m.M13, c * m.M14,
-            c * m.M21, c * m.M22, c * m.M23, c * m.M24,
-            c * m.M31, c * m.M32, c * m.M33, c * m.M34,
-            c * m.M41, c * m.M42, c * m.M43, c * m.M44
-        );
-
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
-    /// <param name="v"></param>
-    /// <returns></returns>
-    public static V4f Mult(in this M4d m, in V4f v) => new(
-            (float)(m.M11 * v.X + m.M12 * v.Y + m.M13 * v.Z + m.M14 * v.W),
-            (float)(m.M21 * v.X + m.M22 * v.Y + m.M23 * v.Z + m.M24 * v.W),
-            (float)(m.M31 * v.X + m.M32 * v.Y + m.M33 * v.Z + m.M34 * v.W),
-            (float)(m.M41 * v.X + m.M42 * v.Y + m.M43 * v.Z + m.M44 * v.W)
-        );
-
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
-    /// <param name="v"></param>
-    /// <returns></returns>
     public static M4f ToM4f(in this M4d m) => new(
         (float)m.M11, (float)m.M12, (float)m.M13, (float)m.M14,
         (float)m.M21, (float)m.M22, (float)m.M23, (float)m.M24,
@@ -227,28 +191,6 @@ public static class Extensions
     #endregion M4dに関する拡張メソッド
 
     #region M3dに関する拡張メソッド
-
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
-    /// <param name="v"></param>
-    /// <returns></returns>
-    public static V3d Mult(in this M3d m, in V3d v) => new(
-            m.M11 * v.X + m.M12 * v.Y + m.M13 * v.Z,
-            m.M21 * v.X + m.M22 * v.Y + m.M23 * v.Z,
-            m.M31 * v.X + m.M32 * v.Y + m.M33 * v.Z
-        );
-
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
-    /// <param name="v"></param>
-    /// <returns></returns>
-    public static V3f Mult(in this M3d m, in V3f v) => new(
-           (float)(m.M11 * v.X + m.M12 * v.Y + m.M13 * v.Z),
-           (float)(m.M21 * v.X + m.M22 * v.Y + m.M23 * v.Z),
-           (float)(m.M31 * v.X + m.M32 * v.Y + m.M33 * v.Z)
-        );
 
     /// <summary>
     /// 拡張メソッド.
@@ -278,12 +220,9 @@ public static class Extensions
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static M4d ToMatrix4d(in this M3d m) => new(
-        m.M11, m.M21, m.M31, 0,
-        m.M12, m.M22, m.M32, 0,
-        m.M13, m.M23, m.M33, 0,
-        0, 0, 0, 1
-       );
+    public static M4d ToMatrix4d(in this M3d m) => new(m);
+
+
 
     #endregion M3dに関する拡張メソッド
 

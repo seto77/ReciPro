@@ -2993,7 +2993,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.RadioButton radioButtonBeamBackLaue;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.RadioButton radioButtonResoUnitMilliMeter;
         private System.Windows.Forms.RadioButton radioButtonResoUnitNanometerInv;
