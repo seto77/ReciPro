@@ -145,7 +145,6 @@ abstract public class GLObject
     private static readonly Dictionary<int, Location> Location = [];
 
     private static readonly int sizeOfInt = sizeof(int);
-    private static readonly int sizeOfByte = sizeof(byte);
     private static readonly int sizeOfUInt = sizeof(uint);
     private static readonly List<(string Product, string Version)> GraphicsInfo;
     private static int serialNumber = 0;
