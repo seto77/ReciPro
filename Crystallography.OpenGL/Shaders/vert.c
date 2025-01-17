@@ -2,7 +2,7 @@
 //Sellers, Graham.OpenGL Superbible : Comprehensive Tutorial and Reference(Kindle, No.15531 - 15557).Pearson Education.Kindle version.
 // Per-vertex inputs
 
-/*layout(location = 1) */in int vObjType;
+/*layout(location = 1) */in int vType;
 /*layout(location = 2) */in int vArgb;
 /*layout(location = 3) */in vec3 vPosition;
 /*layout(location = 4) */in vec3 vNormal;
@@ -41,7 +41,7 @@ void main(void)
 	// Calculate view-space coordinate
 	vec3 position;
 	vec4 P;
-	if (vObjType == 0)//Without texture
+	if (vType == 0)//Without texture
 	{
 		position = vec3(ObjectMatrix * vec4(vPosition, 1));
 		P = WorldMatrix * vec4(position, 1);
@@ -73,7 +73,7 @@ void main(void)
 
 	//Copy color
 	int argb;
-	if (UseFixedArgb || vObjType != 0)
+	if (UseFixedArgb || vType != 0)
 		argb = FixedArgb;
 	else
 		argb = vArgb;
@@ -88,7 +88,7 @@ void main(void)
 
 	fUv = vUv;
 
-	if (vObjType == 0)
+	if (vType == 0)
 		fWithTexture = -1;
 	else
 		fWithTexture = 1;

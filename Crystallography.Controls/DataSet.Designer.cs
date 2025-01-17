@@ -4227,10 +4227,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public object Crystal2 {
+            public byte[] Crystal2 {
                 get {
                     try {
-                        return ((object)(this[this.tableDataTableCrystalDatabase.Crystal2Column]));
+                        return ((byte[])(this[this.tableDataTableCrystalDatabase.Crystal2Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'SerializedCrystal2\' の値は DBNull です。", e);
@@ -4275,10 +4275,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double Density {
+            public float Density {
                 get {
                     try {
-                        return ((double)(this[this.tableDataTableCrystalDatabase.DensityColumn]));
+                        return ((float)(this[this.tableDataTableCrystalDatabase.DensityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Density\' の値は DBNull です。", e);
@@ -4291,10 +4291,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double A {
+            public float A {
                 get {
                     try {
-                        return ((double)(this[this.tableDataTableCrystalDatabase.AColumn]));
+                        return ((float)(this[this.tableDataTableCrystalDatabase.AColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'A\' の値は DBNull です。", e);
@@ -4307,10 +4307,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double B {
+            public float B {
                 get {
                     try {
-                        return ((double)(this[this.tableDataTableCrystalDatabase.BColumn]));
+                        return ((float)(this[this.tableDataTableCrystalDatabase.BColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'B\' の値は DBNull です。", e);
@@ -4323,10 +4323,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double C {
+            public float C {
                 get {
                     try {
-                        return ((double)(this[this.tableDataTableCrystalDatabase.CColumn]));
+                        return ((float)(this[this.tableDataTableCrystalDatabase.CColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'C\' の値は DBNull です。", e);
@@ -4339,10 +4339,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double Alpha {
+            public float Alpha {
                 get {
                     try {
-                        return ((double)(this[this.tableDataTableCrystalDatabase.AlphaColumn]));
+                        return ((float)(this[this.tableDataTableCrystalDatabase.AlphaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Alpha\' の値は DBNull です。", e);
@@ -4358,7 +4358,7 @@ namespace Crystallography.Controls {
             public double Beta {
                 get {
                     try {
-                        return ((double)(this[this.tableDataTableCrystalDatabase.BetaColumn]));
+                        return ((float)(this[this.tableDataTableCrystalDatabase.BetaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Beta\' の値は DBNull です。", e);
@@ -4371,10 +4371,10 @@ namespace Crystallography.Controls {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double Gamma {
+            public float Gamma {
                 get {
                     try {
-                        return ((double)(this[this.tableDataTableCrystalDatabase.GammaColumn]));
+                        return ((float)(this[this.tableDataTableCrystalDatabase.GammaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'Gamma\' の値は DBNull です。", e);

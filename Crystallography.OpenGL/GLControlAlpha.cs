@@ -438,6 +438,9 @@ unsafe public partial class GLControlAlpha : UserControl
         foreach (var envVar in searcher.Get())
             GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
 
+        if(GraphicsInfo.Count>1 && GraphicsInfo[0].Product.Contains("Radeon"))
+            DisableTextRendering = true;
+
         var glcontrol = new GLControl();
         glcontrol.MakeCurrent();
 

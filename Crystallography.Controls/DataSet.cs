@@ -1,4 +1,6 @@
-﻿using Microsoft.Scripting.Utils;
+﻿using MemoryPack.Compression;
+using MemoryPack;
+using Microsoft.Scripting.Utils;
 using System;
 using System.Buffers;
 using System.Data;
@@ -6,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
+using System.IO;
 
 namespace Crystallography.Controls;
 
@@ -219,6 +222,20 @@ public partial class DataSet
 
     partial class DataTableCrystalDatabaseDataTable
     {
+        public static byte[] serialize(Crystal2 c)
+        {
+            using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.Optimal, 24);
+            MemoryPackSerializer.Serialize(compressor, c);
+            return compressor.ToArray();
+        }
+
+
+        public static Crystal2 deserialize(byte[] bytes)
+        {
+            using var decompressor = new BrotliDecompressor();
+            return MemoryPackSerializer.Deserialize<Crystal2>(decompressor.Decompress(bytes));
+        }
+
         public void SetFlag(int i, bool flag) => Rows[i][columnFlag] = flag;
         public bool GetFlag(int i) => (bool)Rows[i][columnFlag];
 
@@ -227,7 +244,7 @@ public partial class DataSet
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? (Crystal2)r[Crystal2Column] : null;
+        public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? deserialize((byte[]) r[Crystal2Column]) : null;
 
 
         /// <summary>
@@ -235,7 +252,7 @@ public partial class DataSet
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        public Crystal2 Get(int i) => (Crystal2)Rows[i][0];
+        public Crystal2 Get(int i) => deserialize((byte[])Rows[i][0]);
 
         public void Add(Crystal2 crystal) => Add(CreateRow(crystal));
         public void Add(DataTableCrystalDatabaseRow row) => Rows.Add(row);
@@ -260,20 +277,27 @@ public partial class DataSet
         }
 
         readonly Lock lockObj = new();
+
+        //public DataTableCrystalDatabaseRow CreateRow(Crystal2 c) => CreateRow(c,null);
         public DataTableCrystalDatabaseRow CreateRow(Crystal2 c)
         {
             DataTableCrystalDatabaseRow dr;
             lock (lockObj)
                 dr = NewDataTableCrystalDatabaseRow();
 
-            dr.Crystal2 = c;
+            dr.Crystal2 = serialize(c);
+
             dr.Name = c.name;
             dr.Formula = c.formula;
             dr.Density = c.density;
-            (dr.A, dr.B, dr.C, dr.Alpha, dr.Beta, dr.Gamma) = c.CellOnlyValue;
+            (dr.A, dr.B, dr.C, dr.Alpha, dr.Beta, dr.Gamma) = c.CellOnlyValueFloat;
             dr.CrystalSystem = SymmetryStatic.StrArray[c.sym][16];//s.CrystalSystemStr;
             dr.PointGroup = SymmetryStatic.StrArray[c.sym][13];
-            dr.SpaceGroup = SymmetryStatic.StrArray[c.sym][3];
+            if(dr.CrystalSystem != "monoclinic")
+                dr.SpaceGroup = SymmetryStatic.StrArray[c.sym][3];
+            else
+                dr.SpaceGroup = SymmetryStatic.StrArray[c.sym][3].Split("=")[0];
+
             dr.Authors = c.auth;
             dr.Title = c.sect;
             dr.Journal = c.jour;

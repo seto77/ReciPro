@@ -84,6 +84,14 @@ public partial class Crystal2
                 DecomposeOnlyValue(CellTexts[0]), DecomposeOnlyValue(CellTexts[1]), DecomposeOnlyValue(CellTexts[2]),
                 DecomposeOnlyValue(CellTexts[3]), DecomposeOnlyValue(CellTexts[4]), DecomposeOnlyValue(CellTexts[5])));
 
+    /// <summary>
+    /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位. エラーの値は含まない.
+    /// </summary>
+    [MemoryPackIgnore]
+    public (float A, float B, float C, float Alpha, float Beta, float Gamma) CellOnlyValueFloat => ((
+                (float)DecomposeOnlyValue(CellTexts[0]), (float)DecomposeOnlyValue(CellTexts[1]), (float)DecomposeOnlyValue(CellTexts[2]),
+                (float)DecomposeOnlyValue(CellTexts[3]), (float)DecomposeOnlyValue(CellTexts[4]), (float)DecomposeOnlyValue(CellTexts[5])));
+
 
     /// <summary>
     /// a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian.

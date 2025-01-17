@@ -1,4 +1,7 @@
 ﻿#region using
+using IronPython.Runtime;
+using IronPython.Runtime.Operations;
+using MathNet.Numerics.Distributions;
 using MemoryPack;
 using MemoryPack.Compression;
 using Microsoft.Scripting.Utils;
@@ -12,9 +15,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security;
 using System.Security.Cryptography;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Crystallography.Controls.DataSet;
 #endregion
 
 namespace Crystallography.Controls;
@@ -45,9 +51,24 @@ public partial class CrystalDatabaseControl : UserControl
 
     readonly Stopwatch sw = new();
 
-    static byte[] serialize<T>(T c)
+    public Crystal Crystal => Crystal2.GetCrystal(Crystal2);
+
+    public Crystal2 Crystal2 => dataSet.DataTableCrystalDatabase.Get(bindingSource.Current);
+
+    public readonly DataSet.DataTableCrystalDatabaseDataTable Table;
+
+    public event EventHandler CrystalChanged;
+
+    public delegate void ProgressChangedEventHandler(object sender, double progress, string message);
+    public event ProgressChangedEventHandler ProgressChanged;
+
+    #endregion
+
+    #region MemoryPackによるシリアライズ、デシリアライズ
+    static byte[] serialize(Crystal2[] c)
     {
-        using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.SmallestSize);
+        using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.SmallestSize, 24);
+        //using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.NoCompression);
         MemoryPackSerializer.Serialize(compressor, c);
 
         //先頭の4バイトは、データの長さを格納する。
@@ -74,18 +95,6 @@ public partial class CrystalDatabaseControl : UserControl
         }
         finally { ArrayPool<byte>.Shared.Return(buffer2); }
     }
-
-    public Crystal Crystal => Crystal2.GetCrystal(Crystal2);
-
-    public Crystal2 Crystal2 => dataSet.DataTableCrystalDatabase.Get(bindingSource.Current);
-
-    public readonly DataSet.DataTableCrystalDatabaseDataTable Table;
-
-    public event EventHandler CrystalChanged;
-
-    public delegate void ProgressChangedEventHandler(object sender, double progress, string message);
-    public event ProgressChangedEventHandler ProgressChanged;
-
     #endregion
 
     #region コンストラクタ
@@ -107,7 +116,7 @@ public partial class CrystalDatabaseControl : UserControl
 
     private static byte[] readBytes(FileStream s, int length)
     {
-        var bytes = new byte[length];
+        var bytes = GC.AllocateUninitializedArray<byte>(length);
         s.ReadExactly(bytes);
         return bytes;
     }
@@ -144,30 +153,34 @@ public partial class CrystalDatabaseControl : UserControl
                 {
                     while (fs.Length != fs.Position)
                     {
-                        deserialize(fs).AsParallel().Select(Table.CreateRow).ToList().ForEach(Table.Rows.Add);
+                        foreach(var r in deserialize(fs).AsParallel().Select(Table.CreateRow))
+                            Table.Rows.Add(r);
                         ReadDatabaseWorker.ReportProgress(0, report(Table.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
                     }
                 }
+
                 else if (flag == 200)//分割ファイルの時
                 {
                     var fileNum = readInt(fs);
                     var fileNames = Enumerable.Range(0, fileNum).Select(i =>
-                            $"{filename.Remove(filename.Length - 5, 5)}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").AsParallel();
+                            $"{filename.Remove(filename.Length - 5, 5)}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").ToList();
 
-
-                    fileNames.ForAll(fn =>
+                    fileNames.ForEach(fn =>
                     {
                         using var stream = new FileStream(fn, FileMode.Open);
                         while (stream.Length != stream.Position)
                         {
-                            var rows = deserialize(stream).Select(Table.CreateRow).ToList();
-                            lock (lockObj)
-                                rows.ForEach(Table.AddDataTableCrystalDatabaseRow);
+                            //deserialize(stream).AsParallel().Select(Table.CreateRow).ToList().ForEach(Table.Rows.Add);//この書き方だとメモリ使用量が増える
+                            foreach(var row in deserialize(stream).AsParallel().Select(Table.CreateRow))
+                                Table.Add(row);
 
                             ReadDatabaseWorker.ReportProgress(0, report(Table.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
                         }
+                        GC.Collect(10, GCCollectionMode.Forced, true, true);
                     });
+
                 }
+                GC.Collect(10, GCCollectionMode.Forced, true, true);
             }
             else
                 return;
@@ -184,6 +197,7 @@ public partial class CrystalDatabaseControl : UserControl
     {
         (double progress, string message) = ((double Progress, string Message))e.UserState;
         ProgressChanged?.Invoke(sender, progress, message);
+        Application.DoEvents();
     }
 
     private void ReadDatabaseWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -191,6 +205,7 @@ public partial class CrystalDatabaseControl : UserControl
         this.Enabled = true;
         Resume();
         ProgressChanged?.Invoke(sender, 1, $"Total loading time: {sw.ElapsedMilliseconds / 1E3:f1} sec.");
+        Application.DoEvents();
     }
 
     #endregion
@@ -209,33 +224,46 @@ public partial class CrystalDatabaseControl : UserControl
 
         var total = Table.Count;
 
-        var thresholdBytes = 20000000;
-        var division = 6000;//分割単位 たぶんパフォーマンスに効く
+        var thresholdBytes = 35_000_000;
+        var division = 2500;//分割単位 たぶんパフォーマンスに効く
 
         using var fs = new FileStream(fn, FileMode.Create, FileAccess.Write);
 
         writeByte(fs, 100);//とりあえず先頭に100 (分割なし)を書き込む
         writeInt(fs, total);//データの個数を書き込む
 
-        var byteList = new List<byte>();
         var filecounter = 0;
         var subDir = fn.Remove(fn.Length - 5, 5) + "\\";
-        var header = subDir + Path.GetFileNameWithoutExtension(fn) + ".";
+        var header = $"{subDir}{Path.GetFileNameWithoutExtension(fn)}.";
         var fileSize = new List<long>();
-        for (int i = 0; i < total; i += division)
+        var byteList = new List<byte>();
+
+        var counter = 0;
+        var bytes = new byte[total / division + 1][];
+        SaveDatabaseWorker.ReportProgress(0, report(counter, bytes.Length, sw.ElapsedMilliseconds, "Saving database..."));
+        Parallel.For(0, bytes.Length, /*new ParallelOptions() { MaxDegreeOfParallelism = 8 },*/ i =>
         {
             var crystal2List = new List<Crystal2>();
-            for (int j = i; j < total && j < i + division; j++)
-                crystal2List.Add((Crystal2)(((DataRowView)bindingSource[j]).Row[0]));
+            for (int j = i * division; j < total && j < (i + 1) * division; j++)
+            {
+                var c = DataTableCrystalDatabaseDataTable.deserialize((byte[])((DataRowView)bindingSource[j]).Row[0]);
+                crystal2List.Add(c);
+            }
+            bytes[i] = serialize([.. crystal2List]);
 
-            byteList.AddRange(serialize(crystal2List.ToArray()));
+            SaveDatabaseWorker.ReportProgress(0, report(Interlocked.Increment(ref counter), bytes.Length, sw.ElapsedMilliseconds, "Saving database..."));
+        });
+
+        for (int i = 0; i < bytes.Length; i++)
+        {
+            byteList.AddRange(bytes[i]);
 
             //最後まで来ている時で、かつ閾値以下の容量で、かつこれまで一度も分割もしていない場合
-            if (i + division >= total && byteList.Count <= thresholdBytes && filecounter == 0)
+            if (i == bytes.Length-1 && byteList.Count <= thresholdBytes && filecounter == 0)
                 fs.Write([.. byteList], 0, byteList.Count);//最初のファイルに書き込んで終了
 
             //最後まで来ている時か、閾値以上の容量の場合
-            else if (i + division >= total || byteList.Count > thresholdBytes)
+            else if (i == bytes.Length - 1 || byteList.Count > thresholdBytes)
             {
                 if (filecounter == 0)
                     Directory.CreateDirectory(fn.Remove(fn.Length - 5, 5));
@@ -246,8 +274,36 @@ public partial class CrystalDatabaseControl : UserControl
 
                 filecounter++;
             }
-            SaveDatabaseWorker.ReportProgress(0, report(i, total, sw.ElapsedMilliseconds, "Saving database..."));
         }
+
+        //for (int i = 0; i < total; i += division)
+        //{
+        //    var crystal2List = new List<Crystal2>();
+        //    for (int j = i; j < total && j < i + division; j++)
+        //    {
+        //        var c = DataTableCrystalDatabaseDataTable.deserialize((byte[]) ((DataRowView)bindingSource[j]).Row[0]);
+        //        crystal2List.Add(c);
+        //    }
+        //    byteList.AddRange(serialize(crystal2List.ToArray()));
+
+        //    //最後まで来ている時で、かつ閾値以下の容量で、かつこれまで一度も分割もしていない場合
+        //    if (i + division >= total && byteList.Count <= thresholdBytes && filecounter == 0)
+        //        fs.Write([.. byteList], 0, byteList.Count);//最初のファイルに書き込んで終了
+
+        //    //最後まで来ている時か、閾値以上の容量の場合
+        //    else if (i + division >= total || byteList.Count > thresholdBytes)
+        //    {
+        //        if (filecounter == 0)
+        //            Directory.CreateDirectory(fn.Remove(fn.Length - 5, 5));
+        //        using (var fs1 = new FileStream(header + filecounter.ToString("000"), FileMode.Create, FileAccess.Write))
+        //            fs1.Write([.. byteList], 0, byteList.Count);
+        //        fileSize.Add(byteList.Count);
+        //        byteList.Clear();
+
+        //        filecounter++;
+        //    }
+        //    SaveDatabaseWorker.ReportProgress(0, report(i, total, sw.ElapsedMilliseconds, "Saving database..."));
+        //}
 
         if (filecounter > 0)//分割ファイルになった場合
         {
@@ -269,12 +325,14 @@ public partial class CrystalDatabaseControl : UserControl
     {
         (double progress, string message) = ((double Progress, string Message))e.UserState;
         ProgressChanged?.Invoke(sender, progress, message);
+        Application.DoEvents();
     }
 
     private void SaveDatabaseWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
         this.Enabled = true;
         ProgressChanged?.Invoke(sender, 1, $"Toatal saving time: {sw.ElapsedMilliseconds / 1E3:f1} sec.");
+        Application.DoEvents();
     }
 
     #endregion

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalDatabaseControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,435 +40,405 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalDatabaseControl));
-            this.ReadDatabaseWorker = new System.ComponentModel.BackgroundWorker();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.densityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formulaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alphaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.betaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gammaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.crystalSystemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.spaceGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authorsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.journalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new Crystallography.Controls.DataSet();
-            this.SaveDatabaseWorker = new System.ComponentModel.BackgroundWorker();
-            this.bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.textBoxAMCSD = new System.Windows.Forms.TextBox();
-            this.textBoxCOD = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
-            this.bindingNavigator.SuspendLayout();
-            this.SuspendLayout();
+            ReadDatabaseWorker = new System.ComponentModel.BackgroundWorker();
+            dataGridView = new System.Windows.Forms.DataGridView();
+            bindingSource = new System.Windows.Forms.BindingSource(components);
+            dataSet = new DataSet();
+            SaveDatabaseWorker = new System.ComponentModel.BackgroundWorker();
+            bindingNavigator = new System.Windows.Forms.BindingNavigator(components);
+            bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            textBoxAMCSD = new System.Windows.Forms.TextBox();
+            textBoxCOD = new System.Windows.Forms.TextBox();
+            nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            densityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            formulaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            aDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            cDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            alphaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            betaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gammaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            crystalSystemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            pointGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            spaceGroupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            authorsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            journalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingNavigator).BeginInit();
+            bindingNavigator.SuspendLayout();
+            SuspendLayout();
             // 
             // ReadDatabaseWorker
             // 
-            this.ReadDatabaseWorker.WorkerReportsProgress = true;
-            this.ReadDatabaseWorker.WorkerSupportsCancellation = true;
-            this.ReadDatabaseWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ReadDatabaseWorker_DoWork);
-            this.ReadDatabaseWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ReadDatabaseWorker_ProgressChanged);
-            this.ReadDatabaseWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.ReadDatabaseWorker_RunWorkerCompleted);
+            ReadDatabaseWorker.WorkerReportsProgress = true;
+            ReadDatabaseWorker.WorkerSupportsCancellation = true;
+            ReadDatabaseWorker.DoWork += ReadDatabaseWorker_DoWork;
+            ReadDatabaseWorker.ProgressChanged += ReadDatabaseWorker_ProgressChanged;
+            ReadDatabaseWorker.RunWorkerCompleted += ReadDatabaseWorker_RunWorkerCompleted;
             // 
             // dataGridView
             // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.AutoGenerateColumns = false;
-            this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AutoGenerateColumns = false;
+            dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn,
-            this.densityDataGridViewTextBoxColumn,
-            this.formulaDataGridViewTextBoxColumn,
-            this.aDataGridViewTextBoxColumn,
-            this.bDataGridViewTextBoxColumn,
-            this.cDataGridViewTextBoxColumn,
-            this.alphaDataGridViewTextBoxColumn,
-            this.betaDataGridViewTextBoxColumn,
-            this.gammaDataGridViewTextBoxColumn,
-            this.crystalSystemDataGridViewTextBoxColumn,
-            this.pointGroupDataGridViewTextBoxColumn,
-            this.spaceGroupDataGridViewTextBoxColumn,
-            this.authorsDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.journalDataGridViewTextBoxColumn});
-            this.dataGridView.DataSource = this.bindingSource;
+            dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { nameDataGridViewTextBoxColumn, densityDataGridViewTextBoxColumn, formulaDataGridViewTextBoxColumn, aDataGridViewTextBoxColumn, bDataGridViewTextBoxColumn, cDataGridViewTextBoxColumn, alphaDataGridViewTextBoxColumn, betaDataGridViewTextBoxColumn, gammaDataGridViewTextBoxColumn, crystalSystemDataGridViewTextBoxColumn, pointGroupDataGridViewTextBoxColumn, spaceGroupDataGridViewTextBoxColumn, authorsDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, journalDataGridViewTextBoxColumn });
+            dataGridView.DataSource = bindingSource;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView.Location = new System.Drawing.Point(0, 88);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView.MultiSelect = false;
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataGridView.Location = new System.Drawing.Point(0, 88);
+            dataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            dataGridView.MultiSelect = false;
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowHeadersWidth = 44;
-            this.dataGridView.RowTemplate.Height = 21;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(913, 508);
-            this.dataGridView.TabIndex = 76;
-            this.dataGridView.VirtualMode = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // densityDataGridViewTextBoxColumn
-            // 
-            this.densityDataGridViewTextBoxColumn.DataPropertyName = "Density";
-            dataGridViewCellStyle2.Format = "N4";
-            dataGridViewCellStyle2.NullValue = null;
-            this.densityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.densityDataGridViewTextBoxColumn.HeaderText = "Density";
-            this.densityDataGridViewTextBoxColumn.Name = "densityDataGridViewTextBoxColumn";
-            this.densityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.densityDataGridViewTextBoxColumn.Width = 65;
-            // 
-            // formulaDataGridViewTextBoxColumn
-            // 
-            this.formulaDataGridViewTextBoxColumn.DataPropertyName = "Formula";
-            this.formulaDataGridViewTextBoxColumn.HeaderText = "Formula";
-            this.formulaDataGridViewTextBoxColumn.Name = "formulaDataGridViewTextBoxColumn";
-            this.formulaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // aDataGridViewTextBoxColumn
-            // 
-            this.aDataGridViewTextBoxColumn.DataPropertyName = "A";
-            dataGridViewCellStyle3.Format = "#.######";
-            dataGridViewCellStyle3.NullValue = null;
-            this.aDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.aDataGridViewTextBoxColumn.HeaderText = "a";
-            this.aDataGridViewTextBoxColumn.Name = "aDataGridViewTextBoxColumn";
-            this.aDataGridViewTextBoxColumn.ReadOnly = true;
-            this.aDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // bDataGridViewTextBoxColumn
-            // 
-            this.bDataGridViewTextBoxColumn.DataPropertyName = "B";
-            dataGridViewCellStyle4.Format = "#.######";
-            dataGridViewCellStyle4.NullValue = null;
-            this.bDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.bDataGridViewTextBoxColumn.HeaderText = "b";
-            this.bDataGridViewTextBoxColumn.Name = "bDataGridViewTextBoxColumn";
-            this.bDataGridViewTextBoxColumn.ReadOnly = true;
-            this.bDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // cDataGridViewTextBoxColumn
-            // 
-            this.cDataGridViewTextBoxColumn.DataPropertyName = "C";
-            dataGridViewCellStyle5.Format = "#.######";
-            dataGridViewCellStyle5.NullValue = null;
-            this.cDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.cDataGridViewTextBoxColumn.HeaderText = "c";
-            this.cDataGridViewTextBoxColumn.Name = "cDataGridViewTextBoxColumn";
-            this.cDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // alphaDataGridViewTextBoxColumn
-            // 
-            this.alphaDataGridViewTextBoxColumn.DataPropertyName = "Alpha";
-            dataGridViewCellStyle6.Format = "#.######";
-            dataGridViewCellStyle6.NullValue = null;
-            this.alphaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            this.alphaDataGridViewTextBoxColumn.HeaderText = "α";
-            this.alphaDataGridViewTextBoxColumn.Name = "alphaDataGridViewTextBoxColumn";
-            this.alphaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.alphaDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // betaDataGridViewTextBoxColumn
-            // 
-            this.betaDataGridViewTextBoxColumn.DataPropertyName = "Beta";
-            dataGridViewCellStyle7.Format = "#.######";
-            dataGridViewCellStyle7.NullValue = null;
-            this.betaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            this.betaDataGridViewTextBoxColumn.HeaderText = "β";
-            this.betaDataGridViewTextBoxColumn.Name = "betaDataGridViewTextBoxColumn";
-            this.betaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.betaDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // gammaDataGridViewTextBoxColumn
-            // 
-            this.gammaDataGridViewTextBoxColumn.DataPropertyName = "Gamma";
-            dataGridViewCellStyle8.Format = "#.######";
-            dataGridViewCellStyle8.NullValue = null;
-            this.gammaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
-            this.gammaDataGridViewTextBoxColumn.HeaderText = "γ";
-            this.gammaDataGridViewTextBoxColumn.Name = "gammaDataGridViewTextBoxColumn";
-            this.gammaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.gammaDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // crystalSystemDataGridViewTextBoxColumn
-            // 
-            this.crystalSystemDataGridViewTextBoxColumn.DataPropertyName = "CrystalSystem";
-            this.crystalSystemDataGridViewTextBoxColumn.HeaderText = "Crystal System";
-            this.crystalSystemDataGridViewTextBoxColumn.Name = "crystalSystemDataGridViewTextBoxColumn";
-            this.crystalSystemDataGridViewTextBoxColumn.ReadOnly = true;
-            this.crystalSystemDataGridViewTextBoxColumn.Width = 115;
-            // 
-            // pointGroupDataGridViewTextBoxColumn
-            // 
-            this.pointGroupDataGridViewTextBoxColumn.DataPropertyName = "PointGroup";
-            this.pointGroupDataGridViewTextBoxColumn.HeaderText = "Point Group";
-            this.pointGroupDataGridViewTextBoxColumn.Name = "pointGroupDataGridViewTextBoxColumn";
-            this.pointGroupDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pointGroupDataGridViewTextBoxColumn.Width = 105;
-            // 
-            // spaceGroupDataGridViewTextBoxColumn
-            // 
-            this.spaceGroupDataGridViewTextBoxColumn.DataPropertyName = "SpaceGroup";
-            this.spaceGroupDataGridViewTextBoxColumn.HeaderText = "Space Group";
-            this.spaceGroupDataGridViewTextBoxColumn.Name = "spaceGroupDataGridViewTextBoxColumn";
-            this.spaceGroupDataGridViewTextBoxColumn.ReadOnly = true;
-            this.spaceGroupDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // authorsDataGridViewTextBoxColumn
-            // 
-            this.authorsDataGridViewTextBoxColumn.DataPropertyName = "Authors";
-            this.authorsDataGridViewTextBoxColumn.HeaderText = "Authors";
-            this.authorsDataGridViewTextBoxColumn.Name = "authorsDataGridViewTextBoxColumn";
-            this.authorsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.authorsDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.titleDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // journalDataGridViewTextBoxColumn
-            // 
-            this.journalDataGridViewTextBoxColumn.DataPropertyName = "Journal";
-            this.journalDataGridViewTextBoxColumn.HeaderText = "Journal";
-            this.journalDataGridViewTextBoxColumn.Name = "journalDataGridViewTextBoxColumn";
-            this.journalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.journalDataGridViewTextBoxColumn.Width = 85;
+            dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.RowHeadersWidth = 44;
+            dataGridView.RowTemplate.Height = 21;
+            dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.Size = new System.Drawing.Size(913, 508);
+            dataGridView.TabIndex = 76;
             // 
             // bindingSource
             // 
-            this.bindingSource.DataMember = "DataTableCrystalDatabase";
-            this.bindingSource.DataSource = this.dataSet;
-            this.bindingSource.CurrentChanged += new System.EventHandler(this.bindingSource_CurrentChanged);
+            bindingSource.DataMember = "DataTableCrystalDatabase";
+            bindingSource.DataSource = dataSet;
+            bindingSource.CurrentChanged += bindingSource_CurrentChanged;
             // 
             // dataSet
             // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            dataSet.DataSetName = "DataSet";
+            dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
+            dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // SaveDatabaseWorker
             // 
-            this.SaveDatabaseWorker.WorkerReportsProgress = true;
-            this.SaveDatabaseWorker.WorkerSupportsCancellation = true;
-            this.SaveDatabaseWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SaveDatabaseWorker_DoWork);
-            this.SaveDatabaseWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.SaveDatabaseWorker_ProgressChanged);
-            this.SaveDatabaseWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SaveDatabaseWorker_RunWorkerCompleted);
+            SaveDatabaseWorker.WorkerReportsProgress = true;
+            SaveDatabaseWorker.WorkerSupportsCancellation = true;
+            SaveDatabaseWorker.DoWork += SaveDatabaseWorker_DoWork;
+            SaveDatabaseWorker.ProgressChanged += SaveDatabaseWorker_ProgressChanged;
+            SaveDatabaseWorker.RunWorkerCompleted += SaveDatabaseWorker_RunWorkerCompleted;
             // 
             // bindingNavigator
             // 
-            this.bindingNavigator.AddNewItem = null;
-            this.bindingNavigator.BindingSource = this.bindingSource;
-            this.bindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigator.DeleteItem = this.toolStripButtonDelete;
-            this.bindingNavigator.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.toolStripButtonDelete});
-            this.bindingNavigator.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.bindingNavigator.Location = new System.Drawing.Point(0, 64);
-            this.bindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigator.Name = "bindingNavigator";
-            this.bindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator.Size = new System.Drawing.Size(913, 24);
-            this.bindingNavigator.TabIndex = 77;
-            this.bindingNavigator.Text = "bindingNavigator";
+            bindingNavigator.AddNewItem = null;
+            bindingNavigator.BindingSource = bindingSource;
+            bindingNavigator.CountItem = bindingNavigatorCountItem;
+            bindingNavigator.DeleteItem = toolStripButtonDelete;
+            bindingNavigator.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { bindingNavigatorMoveFirstItem, bindingNavigatorMovePreviousItem, bindingNavigatorSeparator, bindingNavigatorPositionItem, bindingNavigatorCountItem, bindingNavigatorSeparator1, bindingNavigatorMoveNextItem, bindingNavigatorMoveLastItem, bindingNavigatorSeparator2, toolStripButtonDelete });
+            bindingNavigator.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            bindingNavigator.Location = new System.Drawing.Point(0, 64);
+            bindingNavigator.MoveFirstItem = bindingNavigatorMoveFirstItem;
+            bindingNavigator.MoveLastItem = bindingNavigatorMoveLastItem;
+            bindingNavigator.MoveNextItem = bindingNavigatorMoveNextItem;
+            bindingNavigator.MovePreviousItem = bindingNavigatorMovePreviousItem;
+            bindingNavigator.Name = "bindingNavigator";
+            bindingNavigator.PositionItem = bindingNavigatorPositionItem;
+            bindingNavigator.Size = new System.Drawing.Size(913, 24);
+            bindingNavigator.TabIndex = 77;
+            bindingNavigator.Text = "bindingNavigator";
             // 
             // bindingNavigatorCountItem
             // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(28, 17);
-            this.bindingNavigatorCountItem.Text = "/{0}";
-            this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
+            bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            bindingNavigatorCountItem.Size = new System.Drawing.Size(28, 17);
+            bindingNavigatorCountItem.Text = "/{0}";
+            bindingNavigatorCountItem.ToolTipText = "項目の総数";
             // 
             // toolStripButtonDelete
             // 
-            this.toolStripButtonDelete.BackColor = System.Drawing.Color.IndianRed;
-            this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.toolStripButtonDelete.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDelete.Image")));
-            this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDelete.Name = "toolStripButtonDelete";
-            this.toolStripButtonDelete.Size = new System.Drawing.Size(49, 21);
-            this.toolStripButtonDelete.Text = "Delete";
+            toolStripButtonDelete.BackColor = System.Drawing.Color.IndianRed;
+            toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            toolStripButtonDelete.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonDelete.Image");
+            toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonDelete.Name = "toolStripButtonDelete";
+            toolStripButtonDelete.Size = new System.Drawing.Size(49, 21);
+            toolStripButtonDelete.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorMoveFirstItem.Text = "最初に移動";
+            bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            bindingNavigatorMoveFirstItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMoveFirstItem.Image");
+            bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 20);
+            bindingNavigatorMoveFirstItem.Text = "最初に移動";
             // 
             // bindingNavigatorMovePreviousItem
             // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorMovePreviousItem.Text = "前に戻る";
+            bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            bindingNavigatorMovePreviousItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMovePreviousItem.Image");
+            bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 20);
+            bindingNavigatorMovePreviousItem.Text = "前に戻る";
             // 
             // bindingNavigatorSeparator
             // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 23);
+            bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 23);
             // 
             // bindingNavigatorPositionItem
             // 
-            this.bindingNavigatorPositionItem.AccessibleName = "位置";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "現在の場所";
+            bindingNavigatorPositionItem.AccessibleName = "位置";
+            bindingNavigatorPositionItem.AutoSize = false;
+            bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            bindingNavigatorPositionItem.Text = "0";
+            bindingNavigatorPositionItem.ToolTipText = "現在の場所";
             // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 23);
+            bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 23);
             // 
             // bindingNavigatorMoveNextItem
             // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorMoveNextItem.Text = "次に移動";
+            bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            bindingNavigatorMoveNextItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMoveNextItem.Image");
+            bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 20);
+            bindingNavigatorMoveNextItem.Text = "次に移動";
             // 
             // bindingNavigatorMoveLastItem
             // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorMoveLastItem.Text = "最後に移動";
+            bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            bindingNavigatorMoveLastItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMoveLastItem.Image");
+            bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
+            bindingNavigatorMoveLastItem.Text = "最後に移動";
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 23);
+            bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 23);
             // 
             // textBoxAMCSD
             // 
-            this.textBoxAMCSD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxAMCSD.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBoxAMCSD.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxAMCSD.Location = new System.Drawing.Point(0, 32);
-            this.textBoxAMCSD.Multiline = true;
-            this.textBoxAMCSD.Name = "textBoxAMCSD";
-            this.textBoxAMCSD.ReadOnly = true;
-            this.textBoxAMCSD.Size = new System.Drawing.Size(913, 32);
-            this.textBoxAMCSD.TabIndex = 79;
-            this.textBoxAMCSD.Text = resources.GetString("textBoxAMCSD.Text");
+            textBoxAMCSD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            textBoxAMCSD.Dock = System.Windows.Forms.DockStyle.Top;
+            textBoxAMCSD.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            textBoxAMCSD.Location = new System.Drawing.Point(0, 32);
+            textBoxAMCSD.Multiline = true;
+            textBoxAMCSD.Name = "textBoxAMCSD";
+            textBoxAMCSD.ReadOnly = true;
+            textBoxAMCSD.Size = new System.Drawing.Size(913, 32);
+            textBoxAMCSD.TabIndex = 79;
+            textBoxAMCSD.Text = resources.GetString("textBoxAMCSD.Text");
             // 
             // textBoxCOD
             // 
-            this.textBoxCOD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxCOD.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBoxCOD.Font = new System.Drawing.Font("Segoe UI Symbol", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxCOD.Location = new System.Drawing.Point(0, 0);
-            this.textBoxCOD.Multiline = true;
-            this.textBoxCOD.Name = "textBoxCOD";
-            this.textBoxCOD.ReadOnly = true;
-            this.textBoxCOD.Size = new System.Drawing.Size(913, 32);
-            this.textBoxCOD.TabIndex = 80;
-            this.textBoxCOD.Text = "The database is based on ”COD”. Please be sure to cite the references in the foll" +
-    "owing cite when publishing the data: https://wiki.crystallography.net/cod/citing" +
-    "/\r\n";
-            this.textBoxCOD.Visible = false;
+            textBoxCOD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            textBoxCOD.Dock = System.Windows.Forms.DockStyle.Top;
+            textBoxCOD.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            textBoxCOD.Location = new System.Drawing.Point(0, 0);
+            textBoxCOD.Multiline = true;
+            textBoxCOD.Name = "textBoxCOD";
+            textBoxCOD.ReadOnly = true;
+            textBoxCOD.Size = new System.Drawing.Size(913, 32);
+            textBoxCOD.TabIndex = 80;
+            textBoxCOD.Text = "The database is based on ”COD”. Please be sure to cite the references in the following cite when publishing the data: https://wiki.crystallography.net/cod/citing/\r\n";
+            textBoxCOD.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // densityDataGridViewTextBoxColumn
+            // 
+            densityDataGridViewTextBoxColumn.DataPropertyName = "Density";
+            dataGridViewCellStyle2.Format = "N4";
+            dataGridViewCellStyle2.NullValue = null;
+            densityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            densityDataGridViewTextBoxColumn.HeaderText = "Density";
+            densityDataGridViewTextBoxColumn.Name = "densityDataGridViewTextBoxColumn";
+            densityDataGridViewTextBoxColumn.ReadOnly = true;
+            densityDataGridViewTextBoxColumn.Width = 65;
+            // 
+            // formulaDataGridViewTextBoxColumn
+            // 
+            formulaDataGridViewTextBoxColumn.DataPropertyName = "Formula";
+            formulaDataGridViewTextBoxColumn.HeaderText = "Formula";
+            formulaDataGridViewTextBoxColumn.Name = "formulaDataGridViewTextBoxColumn";
+            formulaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aDataGridViewTextBoxColumn
+            // 
+            aDataGridViewTextBoxColumn.DataPropertyName = "A";
+            dataGridViewCellStyle3.Format = "#.#####";
+            dataGridViewCellStyle3.NullValue = null;
+            aDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            aDataGridViewTextBoxColumn.HeaderText = "a";
+            aDataGridViewTextBoxColumn.Name = "aDataGridViewTextBoxColumn";
+            aDataGridViewTextBoxColumn.ReadOnly = true;
+            aDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // bDataGridViewTextBoxColumn
+            // 
+            bDataGridViewTextBoxColumn.DataPropertyName = "B";
+            dataGridViewCellStyle4.Format = "#.#####";
+            dataGridViewCellStyle4.NullValue = null;
+            bDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            bDataGridViewTextBoxColumn.HeaderText = "b";
+            bDataGridViewTextBoxColumn.Name = "bDataGridViewTextBoxColumn";
+            bDataGridViewTextBoxColumn.ReadOnly = true;
+            bDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // cDataGridViewTextBoxColumn
+            // 
+            cDataGridViewTextBoxColumn.DataPropertyName = "C";
+            dataGridViewCellStyle5.Format = "#.#####";
+            dataGridViewCellStyle5.NullValue = null;
+            cDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            cDataGridViewTextBoxColumn.HeaderText = "c";
+            cDataGridViewTextBoxColumn.Name = "cDataGridViewTextBoxColumn";
+            cDataGridViewTextBoxColumn.ReadOnly = true;
+            cDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // alphaDataGridViewTextBoxColumn
+            // 
+            alphaDataGridViewTextBoxColumn.DataPropertyName = "Alpha";
+            dataGridViewCellStyle6.Format = "#.#####";
+            dataGridViewCellStyle6.NullValue = null;
+            alphaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            alphaDataGridViewTextBoxColumn.HeaderText = "α";
+            alphaDataGridViewTextBoxColumn.Name = "alphaDataGridViewTextBoxColumn";
+            alphaDataGridViewTextBoxColumn.ReadOnly = true;
+            alphaDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // betaDataGridViewTextBoxColumn
+            // 
+            betaDataGridViewTextBoxColumn.DataPropertyName = "Beta";
+            dataGridViewCellStyle7.Format = "#.#####";
+            dataGridViewCellStyle7.NullValue = null;
+            betaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            betaDataGridViewTextBoxColumn.HeaderText = "β";
+            betaDataGridViewTextBoxColumn.Name = "betaDataGridViewTextBoxColumn";
+            betaDataGridViewTextBoxColumn.ReadOnly = true;
+            betaDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // gammaDataGridViewTextBoxColumn
+            // 
+            gammaDataGridViewTextBoxColumn.DataPropertyName = "Gamma";
+            dataGridViewCellStyle8.Format = "#.#####";
+            dataGridViewCellStyle8.NullValue = null;
+            gammaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            gammaDataGridViewTextBoxColumn.HeaderText = "γ";
+            gammaDataGridViewTextBoxColumn.Name = "gammaDataGridViewTextBoxColumn";
+            gammaDataGridViewTextBoxColumn.ReadOnly = true;
+            gammaDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // crystalSystemDataGridViewTextBoxColumn
+            // 
+            crystalSystemDataGridViewTextBoxColumn.DataPropertyName = "CrystalSystem";
+            crystalSystemDataGridViewTextBoxColumn.HeaderText = "Crystal System";
+            crystalSystemDataGridViewTextBoxColumn.Name = "crystalSystemDataGridViewTextBoxColumn";
+            crystalSystemDataGridViewTextBoxColumn.ReadOnly = true;
+            crystalSystemDataGridViewTextBoxColumn.Width = 115;
+            // 
+            // pointGroupDataGridViewTextBoxColumn
+            // 
+            pointGroupDataGridViewTextBoxColumn.DataPropertyName = "PointGroup";
+            pointGroupDataGridViewTextBoxColumn.HeaderText = "Point Group";
+            pointGroupDataGridViewTextBoxColumn.Name = "pointGroupDataGridViewTextBoxColumn";
+            pointGroupDataGridViewTextBoxColumn.ReadOnly = true;
+            pointGroupDataGridViewTextBoxColumn.Width = 105;
+            // 
+            // spaceGroupDataGridViewTextBoxColumn
+            // 
+            spaceGroupDataGridViewTextBoxColumn.DataPropertyName = "SpaceGroup";
+            spaceGroupDataGridViewTextBoxColumn.HeaderText = "Space Group";
+            spaceGroupDataGridViewTextBoxColumn.Name = "spaceGroupDataGridViewTextBoxColumn";
+            spaceGroupDataGridViewTextBoxColumn.ReadOnly = true;
+            spaceGroupDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // authorsDataGridViewTextBoxColumn
+            // 
+            authorsDataGridViewTextBoxColumn.DataPropertyName = "Authors";
+            authorsDataGridViewTextBoxColumn.HeaderText = "Authors";
+            authorsDataGridViewTextBoxColumn.Name = "authorsDataGridViewTextBoxColumn";
+            authorsDataGridViewTextBoxColumn.ReadOnly = true;
+            authorsDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            titleDataGridViewTextBoxColumn.ReadOnly = true;
+            titleDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // journalDataGridViewTextBoxColumn
+            // 
+            journalDataGridViewTextBoxColumn.DataPropertyName = "Journal";
+            journalDataGridViewTextBoxColumn.HeaderText = "Journal";
+            journalDataGridViewTextBoxColumn.Name = "journalDataGridViewTextBoxColumn";
+            journalDataGridViewTextBoxColumn.ReadOnly = true;
+            journalDataGridViewTextBoxColumn.Width = 85;
             // 
             // CrystalDatabaseControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.bindingNavigator);
-            this.Controls.Add(this.textBoxAMCSD);
-            this.Controls.Add(this.textBoxCOD);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Name = "CrystalDatabaseControl";
-            this.Size = new System.Drawing.Size(913, 596);
-            this.Resize += new System.EventHandler(this.CrystalDatabaseControl_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).EndInit();
-            this.bindingNavigator.ResumeLayout(false);
-            this.bindingNavigator.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            Controls.Add(dataGridView);
+            Controls.Add(bindingNavigator);
+            Controls.Add(textBoxAMCSD);
+            Controls.Add(textBoxCOD);
+            Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            Name = "CrystalDatabaseControl";
+            Size = new System.Drawing.Size(913, 596);
+            Resize += CrystalDatabaseControl_Resize;
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingNavigator).EndInit();
+            bindingNavigator.ResumeLayout(false);
+            bindingNavigator.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -477,6 +448,19 @@
         private DataSet dataSet;
         public System.ComponentModel.BackgroundWorker SaveDatabaseWorker;
         public System.ComponentModel.BackgroundWorker ReadDatabaseWorker;
+        private System.Windows.Forms.BindingNavigator bindingNavigator;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
+        private System.Windows.Forms.TextBox textBoxAMCSD;
+        private System.Windows.Forms.TextBox textBoxCOD;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn densityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn formulaDataGridViewTextBoxColumn;
@@ -492,18 +476,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn authorsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn journalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingNavigator bindingNavigator;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
-        private System.Windows.Forms.TextBox textBoxAMCSD;
-        private System.Windows.Forms.TextBox textBoxCOD;
     }
 }

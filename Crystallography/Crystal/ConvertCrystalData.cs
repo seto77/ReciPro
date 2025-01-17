@@ -859,6 +859,8 @@ public class ConvertCrystalData
             if (strTemp.Contains('\r'))
                 strTemp = strTemp.Replace("\r", "\n");
 
+            strTemp = EscapeString(strTemp);
+
             stringList = [.. strTemp.Split('\n', true)];
         }
 
@@ -1212,7 +1214,6 @@ public class ConvertCrystalData
             string bIso = "", b11 = "", b22 = "", b33 = "", b12 = "", b13 = "", b23 = "";
 
             //まず基本的な原子位置や占有率などの情報を探す
-            occ = "1";
             for (int j = 0; j < cif.Count; j++)
             {
                 var label = cif[j].Label;
@@ -1231,11 +1232,6 @@ public class ConvertCrystalData
                 }
             }
 
-            if (x == "0021|" || y == "0021|" || z == "0021|")
-            {
-
-            }
-
             if (shift.X != 0 || shift.Y != 0 || shift.Z != 0)
             {
                 var _x = Crystal2.Decompose(x, sgnum);
@@ -1247,7 +1243,6 @@ public class ConvertCrystalData
             }
 
             //次に異方性の温度散乱因子をさがす (等方性の温度因子は既に上のループで読み込まれている)
-
             for (int k = 0; k < CIF.Count; k++)
             {
                 if (CIF[k].Exists(item => item.Label == "_atom_site_aniso_label" && item.Data == atomLabel))
@@ -1347,6 +1342,17 @@ public class ConvertCrystalData
             sect = sectionTitle,
             argb = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)).ToArgb()
         };
+    }
+
+    public static string EscapeString(string s)
+    {
+        return s
+            .Replace("&amp;", "&", StringComparison.Ordinal)
+            .Replace("&lt;", "<", StringComparison.Ordinal)
+            .Replace("&gt;", ">", StringComparison.Ordinal)
+            .Replace("&quot;", "\"", StringComparison.Ordinal)
+            .Replace("&nbsp;", " ", StringComparison.Ordinal)
+            .Replace("&#39;", "'", StringComparison.Ordinal);
     }
 
     private static V3 norm(V3 v)

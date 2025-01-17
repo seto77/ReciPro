@@ -36,7 +36,7 @@ public readonly struct Vertex
     /// <summary>
     /// 0: テクスチャ無しポリゴン. 1: テクスチャ有りポリゴン. 2: 文字列.
     /// </summary>
-    public readonly int Mode;
+    public readonly int ObjType;
 
     public readonly int Argb;
 
@@ -58,7 +58,7 @@ public readonly struct Vertex
         Normal = normal;
         Argb = argb;
         Uv = new V2f(0, 0);
-        Mode = 0;
+        ObjType = 0;
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public readonly struct Vertex
         Normal = new V3f(0, 0, 0);
         Argb = argb;
         Uv = new V2f(0, 0);
-        Mode = 0;
+        ObjType = 0;
     }
 
     public Vertex(V4f position, V3f normal, int argb) : this(new V3f(position), normal, argb) { }
@@ -88,14 +88,14 @@ public readonly struct Vertex
     /// <param name="uv"></param>
     public Vertex(V3f position, V3f normal, V2f uv)
     {
-        if (GLControlAlpha.DisableTextRendering
-            || (GLControlAlpha.GraphicsInfo.Count == 1 && GLControlAlpha.GraphicsInfo[0].Product.Contains("AMD Radeon", StringComparison.OrdinalIgnoreCase)))
-            position = new V3f(0, 0, 0);
+        //if (GLControlAlpha.DisableTextRendering
+        //    || (GLControlAlpha.GraphicsInfo.Count == 1 && GLControlAlpha.GraphicsInfo[0].Product.Contains("AMD Radeon", StringComparison.OrdinalIgnoreCase)))
+        //    position = new V3f(0, 0, 0);
         Position = position;
         Normal = normal;
         Argb = 0;
         Uv = uv;
-        Mode = 2;
+        ObjType = 2;
     }
 
     public static readonly int Stride = Marshal.SizeOf(default(Vertex));
@@ -128,7 +128,7 @@ public class Location
     internal int Argb { get; set; } = -1;
 
     internal int Uv { get; set; } = -1;
-    internal int Mode { get; set; } = -1;
+    internal int ObjType { get; set; } = -1;
     internal int ObjectMatrix { get; set; } = -1;
 }
 #endregion
@@ -145,6 +145,7 @@ abstract public class GLObject
     private static readonly Dictionary<int, Location> Location = [];
 
     private static readonly int sizeOfInt = sizeof(int);
+    private static readonly int sizeOfByte = sizeof(byte);
     private static readonly int sizeOfUInt = sizeof(uint);
     private static readonly List<(string Product, string Version)> GraphicsInfo;
     private static int serialNumber = 0;
@@ -312,11 +313,11 @@ abstract public class GLObject
         //VertexAttribPointerのパラメータを取得
         var prms = new (int loc, int size, VertexAttribPointerType type, bool normarized, int stride, int offset)[]
         {
-                (location.Mode, 1, VertexAttribPointerType.Int, false, Vertex.Stride, 0),//モード
+                (location.ObjType, 1, VertexAttribPointerType.Byte, false, Vertex.Stride, 0),//ObjTYpe
                 (location.Argb, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt),//色
-                (location.Position, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt), //頂点位置
-                (location.Normal, 3, VertexAttribPointerType.Float, true, Vertex.Stride, 2 * sizeOfInt + V3f.SizeInBytes),//法線
-                (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, 2 * sizeOfInt + 2 * V3f.SizeInBytes)//テクスチャ座標
+                (location.Position, 3, VertexAttribPointerType.Float, false, Vertex.Stride, sizeOfInt *2), //頂点位置
+                (location.Normal, 3, VertexAttribPointerType.Float, true, Vertex.Stride, sizeOfInt *2 + V3f.SizeInBytes),//法線
+                (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, sizeOfInt *2 + 2 * V3f.SizeInBytes)//テクスチャ座標
         };
 
         foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0))
@@ -383,11 +384,12 @@ abstract public class GLObject
     {
         var loc = new Location
         {
-            Mode = GL.GetAttribLocation(Program, "vObjType"),
+            
             Argb = GL.GetAttribLocation(Program, "vArgb"),
             Position = GL.GetAttribLocation(Program, "vPosition"),
             Normal = GL.GetAttribLocation(Program, "vNormal"),
             Uv = GL.GetAttribLocation(Program, "vUv"),
+            ObjType = GL.GetAttribLocation(Program, "vType"),
             ObjectMatrix = GL.GetUniformLocation(Program, "ObjectMatrix"),
             Texture = GL.GetUniformLocation(Program, "Texture"),
             Emission = GL.GetUniformLocation(Program, "Emission"),
@@ -409,7 +411,7 @@ abstract public class GLObject
             loc.RenderPass = GL.GetProgramResourceLocation(Program, ProgramInterface.FragmentSubroutineUniform, "RenderPass");
         }
 
-        if (loc.Mode == -1 || loc.Uv == -1 || loc.Position == -1
+        if (loc.ObjType == -1 || loc.Uv == -1 || loc.Position == -1
             || loc.Normal == -1 || loc.Argb == -1)
 
             throw new Exception("cannot find location!");
@@ -1802,6 +1804,7 @@ public class TextObject : GLObject
     public TextObject(string text, float fontSize, in V3d position, double popout, bool whiteEdge, Material mat, GLControlAlpha glControl, int program=-1) : base(mat, DrawingMode.Text)
     {
         text = text.Trim();
+        if (GLControlAlpha.DisableTextRendering) return;
 
         if (text != "" || fontSize > 0)
         {
