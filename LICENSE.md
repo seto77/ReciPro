@@ -1,6 +1,6 @@
 # ReciPro License (MIT)
 
-Copyright (c) 2002-2024 Yusuke SETO
+Copyright (c) 2002-2025 Yusuke SETO
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

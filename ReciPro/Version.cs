@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.896(2025/01/17)  Fixed some bugs on OpenGL renderings." +
         "\r\n ver4.895(2024/11/14)  Updated: .Net Desktop Runtime 8.0 to 9.0. Updated the bundled crystal database." +
         "\r\n ver4.894(2024/11/01)  Fixed bugs on the 'Diffraction Simulator' and 'HRTEM/STEM simulator' (thanks to lukmuk-san and Nakamura-san!)." +
         "\r\n ver4.892(2024/10/04)  Added several 'Macro' functions." +
