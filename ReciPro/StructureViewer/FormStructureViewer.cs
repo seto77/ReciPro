@@ -15,6 +15,7 @@ using V3 = OpenTK.Mathematics.Vector3d;
 using V4 = OpenTK.Mathematics.Vector4d;
 using OpenTK.Mathematics;
 using static System.Net.Mime.MediaTypeNames;
+using System.Collections.Concurrent;
 #endregion
 
 namespace ReciPro;
@@ -555,7 +556,7 @@ public partial class FormStructureViewer : Form
         sw.Restart();
         static bool within(double d, double max, double min) => d < max && d > min;
         var dic1 = new Dictionary<string, bondVertex[]>();
-        var dicMaterial = new Dictionary<int, Material>();
+        var dicMaterial = new ConcurrentDictionary<int, Material>();
         bondControl.GetAll().Where(b => b.Enabled && (b.ShowPolyhedron || b.ShowBond)).ToList().ForEach(bond =>
         {
             double min = Math.Max(bond.MinLength, 0), min2 = min * min, max = bond.MaxLength, max2 = max * max, radius = bond.Radius;
@@ -575,14 +576,12 @@ public partial class FormStructureViewer : Form
                             if (!dicMaterial.TryGetValue(id.Index, out var bondMat))
                             {
                                 bondMat = new Material(s.Material.Color, bondTrans);
-                                lock (lockObj1)
-                                    dicMaterial.TryAdd(id.Index, bondMat);
+                                dicMaterial.TryAdd(id.Index, bondMat);
                             }
                             if (!dicMaterial.TryGetValue(id.Index + 1000, out var polyMat))
                             {
                                 polyMat = new Material(s.Material.Color, polyTrans);
-                                lock (lockObj1)
-                                    dicMaterial.TryAdd(id.Index + 1000, polyMat);
+                                dicMaterial.TryAdd(id.Index + 1000, polyMat);
                             }
                             return new bondVertex(e.ObjIndex, id.Index, id.CellKey, s.Origin, s.SerialNumber, s.Radius, bondMat, polyMat);
                         }).OrderBy(o => o.Key),
