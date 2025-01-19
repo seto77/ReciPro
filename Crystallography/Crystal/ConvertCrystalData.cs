@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using V3 = OpenTK.Mathematics.Vector3d;
@@ -108,7 +109,7 @@ public class ConvertCrystalData
             while ((strTemp = reader.ReadLine()) != null)
                 stringList.Add(strTemp);
             reader.Close();
-            cry = ConvertFromSMAP(stringList.ToArray());
+            cry = ConvertFromSMAP([.. stringList]);
         }
 
         for (int i = 0; i < cry.Length; i++)
@@ -217,7 +218,7 @@ public class ConvertCrystalData
                     cry.Add(tempCrystal);
                 }
         }
-        return cry.ToArray();
+        return [.. cry];
     }
 
     /// <summary>
@@ -303,7 +304,7 @@ public class ConvertCrystalData
         while ((strTemp = reader.ReadLine()) != null)
             if (strTemp != "")
                 stringList.Add(strTemp);
-        return ConvertFromAmc(stringList.ToArray());
+        return ConvertFromAmc([.. stringList]);
     }
 
 
@@ -351,9 +352,9 @@ public class ConvertCrystalData
         }
 
         if (Title.Contains("_cod_database_code"))
-            Title = Title.Replace("_cod_database_code", "\r\n_cod_database_code");
+            Title = Title.Replace("_cod_database_code", "\r\nCOD:");
         else if (Title.Contains("_database_code_amcsd"))
-            Title = Title.Replace("_database_code_amcsd", "\r\n_database_code_amcsd");
+            Title = Title.Replace("_database_code_amcsd", "\r\nAMCSD:");
 
         n++; if (str.Length <= n) return null;
 
@@ -743,7 +744,7 @@ public class ConvertCrystalData
         {
             if (sg[i].Length < length)
             {
-                var sg_list = new List<string>(new[] { sg[i] });
+                var sg_list = new List<string>([sg[i]]);
 
                 if (sg[i].Contains('e'))
                 {
@@ -928,13 +929,13 @@ public class ConvertCrystalData
                 {
                     while (m >= str.Count || !str[m].StartsWith(";", Ord))
                         temp.Append(str[m++] + " ");
-                    str[n] = "'" + temp.ToString().Trim().TrimEnd() + "'";
+                    str[n] = $"'{temp.ToString().Trim().TrimEnd()}'";
                     str.RemoveRange(n + 1, m - n);
                 }
             }
         }
 
-        if (str[^1].StartsWith("#"))
+        if (str[^1].StartsWith('#'))
             str[^1] = "#End of data";
 
 
@@ -1007,7 +1008,7 @@ public class ConvertCrystalData
                 }
                 else
                     tempData = "";
-                CIF.Add(new List<(string Label, string Data)>(new[] { (tempLabel, tempData.Replace("ÂK", " ")) }));
+                CIF.Add(new List<(string Label, string Data)>([(tempLabel, tempData.Replace("ÂK", " "))]));
             }
             else if (str[n].Trim().StartsWith("loop_", Ord))
             {//ÉãÅ[ÉvÇÃÇ∆Ç´
@@ -1327,9 +1328,12 @@ public class ConvertCrystalData
         if (pageFirst != "") journal.Append(", ").Append(pageFirst);
         if (pageLast != "") journal.Append('-').Append(pageLast);
 
-        var authours = new StringBuilder();
-        foreach (string s in author)
-            authours.Append(s).Append("; ");
+        var authors = new StringBuilder();
+        for(int i = 0; i< author.Count; i++)
+            if(i== author.Count -1)
+                authors.Append(author[i].Replace(",", ""));
+            else
+                authors.Append(author[i].Replace(",", "") + ", \r\n");
 
         return new Crystal2
         {
@@ -1337,7 +1341,7 @@ public class ConvertCrystalData
             sym = (short)sgnum,
             name = name,
             atoms = atoms,
-            auth = authours.ToString(),
+            auth = authors.ToString().TrimEnd([' ', ',']).Replace(".", ""),
             jour = journal.ToString(),
             sect = sectionTitle,
             argb = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)).ToArgb()
@@ -1398,7 +1402,7 @@ public class ConvertCrystalData
 
         SgNameHM = SgNameHM.Replace("_", " ");
 
-        SgNameHM = SgNameHM.Replace("{hexagonalal axes}", " ");
+        SgNameHM = SgNameHM.Replace("{hexagonal axes}", " ");
         SgNameHM = SgNameHM.Replace("{rhombohedral axes}", " ");
 
         SgNameHM = SgNameHM.TrimStart(' ').TrimEnd(' ');
@@ -1655,7 +1659,7 @@ public class ConvertCrystalData
         {
             if (sg[i].Length < length)
             {
-                var sg_list = new List<string>(new[] { sg[i] });
+                var sg_list = new List<string>([sg[i]]);
 
                 if (sg[i].Contains('e'))
                 {
@@ -1755,7 +1759,7 @@ public class ConvertCrystalData
         #region å¥éqÇÃìôâøà íu
         sb.AppendLine("loop_");
         sb.AppendLine("_symmetry_equiv_pos_as_xyz");
-        bool[][] flag = Array.Empty<bool[]>();
+        bool[][] flag = [];
         if (sym.LatticeTypeStr == "P") flag = [[false, false, false]];
         else if (sym.LatticeTypeStr == "A") flag = [[false, false, false], [false, true, true]];
         else if (sym.LatticeTypeStr == "B") flag = [[false, false, false], [true, false, true]];

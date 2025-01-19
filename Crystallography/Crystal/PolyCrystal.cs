@@ -799,10 +799,8 @@ public class Crystallite
                             {
                                 var temp = sqrtPiLog2 * Math.Exp(-log2 * dev2) * tempIntensity * area;
 
-                                if (result.ContainsKey(pos))
+                                if (!result.TryAdd(pos, temp))
                                     result[pos] += temp;
-                                else
-                                    result.Add(pos, temp);
                             }
                         }
                     }

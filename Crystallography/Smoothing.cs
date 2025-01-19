@@ -14,9 +14,9 @@ public class Smoothing
         if (profile.Pt.Count < 3) return Deep.Copy<Profile>(profile);
 
         if (Math.Abs((profile.Pt[^1].X - profile.Pt[^2].X) / (profile.Pt[1].X - profile.Pt[0].X) - 1) < 0.000000001)
-            return new Profile(SavitzkyGolaySimple(profile.Pt.ToArray(), pointNum, order));
+            return new Profile(SavitzkyGolaySimple([.. profile.Pt], pointNum, order));
         else
-            return new Profile(SavitzkyGolayAccuracy(profile.Pt.ToArray(), pointNum, order));
+            return new Profile(SavitzkyGolayAccuracy([.. profile.Pt], pointNum, order));
     }
 
     /// <summary>

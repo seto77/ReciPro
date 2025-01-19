@@ -720,7 +720,7 @@ public static partial class NativeWrapper
     }
 
     /// <summary>
-    /// 
+    /// STEM用ソルバー
     /// </summary>
     /// <param name="potential"></param>
     /// <param name="psi0"></param>

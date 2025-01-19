@@ -564,7 +564,7 @@ public class Matrix3D : ICloneable
 public class Vector3DBase : ICloneable
 {
     public static readonly Vector3DBase Zero = new(0, 0, 0);
-    private object arr;
+    //private object arr;
 
     public double X { get; set; }
     public double Y { get; set; }
@@ -621,7 +621,7 @@ public class Vector3DBase : ICloneable
         X = v.X; Y = v.Y; Z = v.Z;
     }
 
-    public double[] ToDoublearray() => [X, Y, Z];
+    public double[] ToDoubleArray() => [X, Y, Z];
 
     public float[] ToSingleArray() => [(float)X, (float)Y, (float)Z];
 
@@ -806,12 +806,12 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
     public string Text { get; set; }
 
     /// <summary>
-    /// 初期値はfalse
+    /// 初期値は false
     /// </summary>
     public bool Flag1 { get; set; } = false;
 
     /// <summary>
-    /// 初期値はfalse
+    /// 初期値は false
     /// </summary>
     public bool Flag2 { get; set; } = false;
 

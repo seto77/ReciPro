@@ -85,8 +85,8 @@ public class HDF
 
         path = path.TrimEnd(new[] { '/' });
 
-        if (!path.StartsWith("/"))
-            path = Current.Name == "/" ? "/" + path : Current.Name + "/" + path;
+        if (!path.StartsWith('/'))
+            path = Current.Name == "/" ? '/' + path : $"{Current.Name}/{path}";
 
         var index = Paths.FindIndex(g => g.Name == path);
         if (index == -1)
@@ -123,7 +123,7 @@ public class HDF
     private (Type type, int[] dim, byte[] buffer, Func<byte[], int, object> func) getValuePrimitive(string dataset)
     {
 
-        if (!dataset.StartsWith("/"))
+        if (!dataset.StartsWith('/'))
             dataset = Current.Name == "/" ? "/" + dataset : Current.Name + "/" + dataset;
 
         if (Datasets.Count(d => d.Name == dataset) != 1)

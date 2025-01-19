@@ -58,8 +58,8 @@ namespace Crystallography
         public List<PointD> sort(List<PointD> pt)
         {
             //•À‚Ñ‘Ö‚¦
-            List<PointD> tempPt = new List<PointD>(pt.ToArray());
-            List<PointD> destPt = new List<PointD>();
+            List<PointD> tempPt = new([.. pt]);
+            List<PointD> destPt = [];
 
             double minDistance = double.MaxValue;
             int lower = 0, upper = 0;
@@ -174,7 +174,7 @@ namespace Crystallography
 
             if (BgControlPoint == null || BgControlPoint.Length < 3)
             {
-                Profile p = new Profile();
+                Profile p = new();
                 for (int i = 0; i < destProfile.Pt.Count; i++)
                     p.Pt.Add(new PointD(x[i], 0));
                 return p;
@@ -237,7 +237,7 @@ namespace Crystallography
                     c[i] += mInverse[i, j] * pt[j / 2].Y;
                 }
 
-            Profile pr = new Profile();
+            Profile pr = new();
             double y = 0;
             for (int i = 0; i < x.Length; i++)
             {

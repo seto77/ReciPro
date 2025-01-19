@@ -117,7 +117,7 @@ unsafe public partial class GLControlAlpha : UserControl
     /// WorldMatrixが変化したときに発生するイベント. 
     /// </summary>
     [Browsable(true)]
-    [Description("WorldMatrixが変化したときに発生するイベント. マウスで回転させた場合や、WorldMatrixに直接setしたときに発生。")]
+    [Description("WorldMatrixが変化したときに発生するイベント. マウスで回転させた場合や、WorldMatrixに直接 set したときに発生。")]
     public event EventHandler WorldMatrixChanged;
 
     #endregion イベント
@@ -417,7 +417,7 @@ unsafe public partial class GLControlAlpha : UserControl
     }
 
     /// <summary>
-    /// GLContorolのGraphicsを得る。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。
+    /// GLControlのGraphicsを得る。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。
     /// </summary>
     /// <param name="control"></param>
     /// <returns></returns>
@@ -441,7 +441,7 @@ unsafe public partial class GLControlAlpha : UserControl
         //if(GraphicsInfo.Count>1 && GraphicsInfo[0].Product.Contains("Radeon"))
         //    DisableTextRendering = true;
 
-        var glcontrol = new GLControl();
+        using var glcontrol = new GLControl();
         glcontrol.MakeCurrent();
 
         //バージョンチェック
@@ -475,17 +475,12 @@ unsafe public partial class GLControlAlpha : UserControl
         #region glControlの初期化
         SuspendLayout();
         // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
-        //var gMode = new GraphicsMode(GraphicsMode.Default.ColorFormat, GraphicsMode.Default.Depth, 8, FragShader == FragShaders.ZSORT ? 2 : 0);
         var setting = new GLControlSettings()
         {
-            //SrgbCapable = true,
-            //AlphaBits = 16,
-            NumberOfSamples = 2,
+            NumberOfSamples = FragShader == FragShaders.ZSORT ? 2 : 0,
             StencilBits = 8,
             DepthBits = 16,
             Profile = OpenTK.Windowing.Common.ContextProfile.Core,
-            //IsEventDriven = true,
-            APIVersion = new System.Version(4,6)
         };
 
         glControl = new GLControl(setting)
@@ -599,7 +594,7 @@ unsafe public partial class GLControlAlpha : UserControl
     {
         glControl.MakeCurrent();
 
-        //なんかよくわからないが、GL.CreateProgram()を複数回呼び出すことで強制的にprogramの数値を進める. これをすると複数のGlControlを立ち上げてもバグらない。
+        //なんかよくわからないが、GL.CreateProgram()を複数回呼び出すことで強制的に program の数値を進める. これをすると複数のGlControlを立ち上げてもバグらない。
         for (int i = 0; i < N; i++) GL.CreateProgram();
         
         int program = GL.CreateProgram();

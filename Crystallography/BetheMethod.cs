@@ -11,9 +11,11 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Windows.Services.Maps.LocalSearch;
 using static System.Buffers.ArrayPool<System.Numerics.Complex>;
 using static System.Numerics.Complex;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
@@ -477,6 +479,9 @@ public class BetheMethod
         var beamDirectionsP = BeamDirections.AsParallel();
         int width = (int)Math.Sqrt(BeamDirections.Length);
         double radius = width / 2.0;
+
+        var lockObjs = Enumerable.Range(0, BeamDirections.Length).ToList().Select(_ => new Lock()).ToArray();
+
         //bool inside(int i) => (i % width - radius + 0.5) * (i % width - radius + 0.5) + (i / width - radius + 0.5) * (i / width - radius + 0.5) <= radius * radius;
         //bool inside(int i) => true;
 
@@ -514,18 +519,18 @@ public class BetheMethod
             //ここまで
 
             //diskAmplitude[r][t][g]
-            var diskAmplitude = beamDirectionsP.WithDegreeOfParallelism(Math.Max(thread/2, 1)).Select((beamDirection, i) =>
+            var diskAmplitude = beamDirectionsP.WithDegreeOfParallelism(Math.Max(thread / 2, 1)).Select((beamDirection, i) =>
             {
                 //if (!inside(i)) return (null, null);
                 if (bwEBSD.CancellationPending) return (null, null);
-                
+
                 var coeff = Math.Abs(1.0 / beamDirection.Z); // = 1/cosTau
                 var vecK0 = getVecK0(kvac, u0, beamDirection);
 
                 //var beams = Find_gVectors(BaseRotation, vecK0, MaxNumOfBloch);
                 var (beamsBase, potentialMatrix) = beamsPreliminary[(i / width) / grid * (width / grid) + (i % width) / grid];
                 var beams = reset_gVectors(beamsBase, BaseRotation, vecK0).Where(e => e.P > 0).ToArray();//BeamsのPやQをリセット
-                
+
                 var bLen = beams.Length;
                 var eigenMatrix = Shared.Rent(bLen * bLen);
                 getEigenMatrix(bLen, beams, ref eigenMatrix, potentialMatrix);//ポテンシャル行列をセット //コスト高い
@@ -595,102 +600,88 @@ public class BetheMethod
             //bwEBSD.ReportProgress(0, "Compiling disks");
 
             var directDiskIntensities = new double[Thicknesses.Length][];
-            for (int t = 0; t < Thicknesses.Length; t++)
+            Parallel.For(0, Thicknesses.Length, t =>
             {
                 directDiskIntensities[t] = new double[BeamDirections.Length];
                 for (int r = 0; r < directDiskIntensities[t].Length; r++)
                     if (diskAmplitude[r].result is not null)
                         directDiskIntensities[t][r] = diskAmplitude[r].result[t * diskAmplitude[r].beams.Length + 0].MagnitudeSquared();
-            }
-
+            });
 
             var directDiskPositions = new PointD[BeamDirections.Length];
-            for (int r = 0; r < BeamDirections.Length; r++)
+            Parallel.For(0, BeamDirections.Length, r =>
             {
                 //var vec = BeamDirections[r] * new Vector3DBase(0, 0, kvac);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
                 var vec = kvac * BeamDirections[r];//Ewald球中心(試料)から見た、逆格子ベクトルの方向
                 directDiskPositions[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
-            }
-            double xMax = directDiskPositions.Max(p => p.X), xMin = directDiskPositions.Min(p => p.X);
-            double yMax = directDiskPositions.Max(p => p.Y), yMin = directDiskPositions.Min(p => p.Y);
+            });
 
-            Parallel.For(0, BeamDirections.Length, r1 =>
+            double xMax = directDiskPositions.Max(e => e.X), xMin = directDiskPositions.Min(e => e.X);
+            double yMax = directDiskPositions.Max(e => e.Y), yMin = directDiskPositions.Min(e => e.Y);
+
+            //r1方向でg番目のベクトルに対応するダイレクト方向r2を調べ、強度をインコヒーレントに加算
             //for(int r1=0; r1< BeamDirections.Length; r1++)
+            Parallel.For(0, BeamDirections.Length, r1 =>
             {
                 if (diskAmplitude[r1].result is not null)
-                {
                     for (int g = 1; g < diskAmplitude[r1].beams.Length; g++)
                     {
                         var vec = kvac * BeamDirections[r1] - diskAmplitude[r1].beams[g].Vec;//Ewald球中心(試料)から見た、逆格子ベクトルの方向
                         double posX = vec.X / vec.Z, posY = vec.Y / vec.Z; //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
                         if (posX < xMax && posX > xMin && posY < yMax && posY > yMin)
                         {
-                            var r2 = getIndex(new PointD(posX, posY), directDiskPositions, width);
-                            if (r2 >= 0 && directDiskIntensities[0][r2] != 0)
-                                lock (lockObj1)
+                            var r2 = getIndex(posX, posY, directDiskPositions, width);
+                            if (r2 >= 0)
+                                lock (lockObjs[r2])
                                     for (int t = 0; t < Thicknesses.Length; t++)
                                         directDiskIntensities[t][r2] += diskAmplitude[r1].result[t * diskAmplitude[r1].beams.Length + g].MagnitudeSquared();
                         }
                     }
-                }
-                //bwEBSD.ReportProgress(Interlocked.Increment(ref count) * 1000 / BeamDirections.Length, "Compiling disks");
             });
 
             Disks[vIndex] = new CBED_Disk[Thicknesses.Length];
-            for (int t = 0; t < Thicknesses.Length; t++)
+            Parallel.For(0, Thicknesses.Length, t =>
             {
                 Disks[vIndex][t] = new CBED_Disk([0, 0, 0], new Vector3DBase(0, 0, 0), Thicknesses[t],
                     directDiskIntensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0)).ToArray());
                 Disks[vIndex][t].Amplitudes = Disks[vIndex][t].RawAmplitudes;
-            }
+            });
 
             if (bwEBSD.CancellationPending)
                 e.Cancel = true;
         }
     }
 
+    private static readonly int[] pow = [ 4,  1];
+    static int getIndex(in PointD p, in PointD[] pts, int w) => getIndex(p.X, p.Y, pts, w);
+
     //与えられたposに最も近いインデックスを返す
-    static int getIndex(in PointD pos, PointD[] posList, int width)
+    static int getIndex(in double x, double y, in PointD[] pts, int w)
     {
-        var w2 = width * width;
-        int i = w2 / 2;
-        double min = (pos - posList[i]).Length2, temp;
-        bool flag = true;
+        var w2 = (uint)(w * w);
+        int i = (int)w2 / 2, m;
+        double min = (x - pts[i].X) * (x - pts[i].X) + (y - pts[i].Y) * (y - pts[i].Y), temp;
+
+        bool flag;
         //中心から、縦横に検索
-        while (flag)
-        {
-            flag=false;
+        foreach (var n in pow)
+            do
+            {
+                flag = false;
+                if (((uint)(m = i + n) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min) ||
+                    ((uint)(m = i - n) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min))
+                {
+                    i = m; min = temp; flag = true;
+                }
 
-            if (i + 1 < w2 && (temp = (pos - posList[i + 1]).Length2) < min)
-            {
-                i++;
-                min = temp;
-                flag = true;
-            }
-            else if (i - 1 >= 0 && (temp = (pos - posList[i - 1]).Length2) < min)
-            {
-                i--;
-                min = temp;
-                flag = true;
-            }
+                if (((uint)(m = i + n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min) ||
+                    ((uint)(m = i - n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min))
+                {
+                    i = m; min = temp; flag = true;
+                }
+            } while (flag);
 
-            if (i + width < w2 && (temp = (pos - posList[i + width]).Length2) < min)
-            {
-                i += width;
-                min = temp;
-                flag = true;
-            }
-            else if (i - width >= 0 && (temp = (pos - posList[i - width]).Length2) < min)
-            {
-                i -= width;
-                min = temp;
-                flag = true;
-            }
-        }
-        if (i / width == 0 || i / width == width - 1 || i % width == 0 || i % width == width - 1)
-            return -1;
-        else
-           return i;
+        return i / w == 0 || i / w == w - 1 || i % w == 0 || i % w == w - 1 ? -1 : i;
     }
 
     #endregion
@@ -1811,7 +1802,7 @@ public class BetheMethod
     /// <param name="baseRotation">結晶方位</param>
     /// <param name="vecK0">ビーム方位</param>
     /// <param name="maxNumOfBloch">指定しない場合は MaxNumOfBloch を使用 </param>
-    /// <param name="use_gDictionary">ビーム方位や結晶方位が変化していない場合はtrue</param>
+    /// <param name="use_gDictionary">ビーム方位や結晶方位が変化していない場合は true</param>
     /// <returns></returns>
     public Beam[] Find_gVectors(Matrix3D baseRotation, Vector3DBase vecK0, int maxNumOfBloch = -1)
     {
@@ -1835,7 +1826,7 @@ public class BetheMethod
         var pool = ArrayPool<(int key, double rating)>.Shared.Rent(limit);//beamsTmpをレンタル
         var beamsSpan = pool.AsSpan(0,limit);
         int count = 0;
-        pool[count++] = (compose(0, 0, 0), 0);
+        beamsSpan[count++] = (compose(0, 0, 0), 0);
         var outer = new List<(int key, double gLen)> { (compose(0, 0, 0), 0) };
         var whole = new HashSet<int>(limit * 16) { compose(0, 0, 0) };
 
@@ -1875,10 +1866,10 @@ public class BetheMethod
 
         count = Math.Min(count, maxNumOfBloch + 1);
         
-        QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));//大して速くないが、一応こちらにしておく
-        //beamsSpan.Sort(static (a, b) => a.rating.CompareTo(b.rating));//これが遅い。
+        QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));//大して速くない
+        //beamsSpan.Sort(static (a, b) => a.rating.CompareTo(b.rating));
 
-        var beams = new List<Beam>(count);
+        var beams = new Beam[count].AsSpan(); //List<Beam>(count);
         for (int i = 0; i < count; i++)
         {
             var (h, k, l) = decompose(beamsSpan[i].key);
@@ -1886,41 +1877,36 @@ public class BetheMethod
             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
             double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
             var g = new Vector3DBase(gX, gY, gZ);
-            beams.Add(new Beam((h, k, l), g, getU(AccVoltage, new Beam((h, k, l), g)), (q, p)));
+            beams[i] = new Beam((h, k, l), g, getU(AccVoltage, new Beam((h, k, l), g)), (q, p));
         }
-
         ArrayPool<(int key, double rating)>.Shared.Return(pool);//poolを返却
 
+        beams.Sort(static (a, b) => a.Rating.CompareTo(b.Rating));
+
         //X,Y座標が同じものを削除
-        for (int i = 0; i < beams.Count; i++)
+        for (int i = 0; i < beams.Length; i++)
         {
             var bi = beams[i];
-            for (int j = i + 1; j < beams.Count; j++)
+            for (int j = i + 1; j < beams.Length; j++)
             {
                 var bj = beams[j];
                 if (Math.Abs(bi.Vec.X - bj.Vec.X) < 1E-6 && Math.Abs(bi.Vec.Y - bj.Vec.Y) < 1E-6)
                 {
-                    if (Math.Abs(bi.S) > Math.Abs(bj.S))
-                    {
-                        beams.RemoveAt(i--);//iの方を除去
-                        break;
-                    }
-                    else
-                        beams.RemoveAt(j--);
+                    for (int k = j; k < beams.Length - 1; k++)
+                        beams[k] = beams[k + 1];
+                    beams = beams[..(beams.Length - 1)];
                 }
             }
         }
 
-        int n = beams.Count - 1;
-        for (int i = beams.Count - 1; i >= 1; i--)
+        int n = beams.Length - 1;
+        for (int i = beams.Length - 1; i >= 1; i--)
             if (Math.Abs(beams[i].Rating - beams[i - 1].Rating) > 1E-6)
             {
                 n = i;
                 break;
             }
-        beams.RemoveRange(n, beams.Count - n);
-
-        return [.. beams];
+        return [.. beams[..n]];
     }
 
     #endregion

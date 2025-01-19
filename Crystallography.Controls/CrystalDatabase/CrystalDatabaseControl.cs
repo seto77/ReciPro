@@ -1,7 +1,5 @@
 ﻿#region using
 using IronPython.Runtime;
-using IronPython.Runtime.Operations;
-using MathNet.Numerics.Distributions;
 using MemoryPack;
 using MemoryPack.Compression;
 using Microsoft.Scripting.Utils;
@@ -15,12 +13,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Security;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Crystallography.Controls.DataSet;
 #endregion
 
 namespace Crystallography.Controls;
@@ -138,7 +134,7 @@ public partial class CrystalDatabaseControl : UserControl
         ReadDatabaseWorker.RunWorkerAsync(filename);
     }
 
-    readonly Lock lockObj = new();
+    //readonly Lock lockObj = new();
     private void ReadDatabaseWorker_DoWork(object sender, DoWorkEventArgs e)
     {
         var filename = (string)e.Argument;
@@ -153,7 +149,7 @@ public partial class CrystalDatabaseControl : UserControl
                 {
                     while (fs.Length != fs.Position)
                     {
-                        foreach(var r in deserialize(fs).AsParallel().Select(Table.CreateRow))
+                        foreach(var r in deserialize(fs).AsParallel().Select(Table.CreateRow).ToArray())
                             Table.Rows.Add(r);
                         ReadDatabaseWorker.ReportProgress(0, report(Table.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
                     }
@@ -232,7 +228,7 @@ public partial class CrystalDatabaseControl : UserControl
         writeByte(fs, 100);//とりあえず先頭に100 (分割なし)を書き込む
         writeInt(fs, total);//データの個数を書き込む
 
-        var filecounter = 0;
+        var fileCounter = 0;
         var subDir = fn.Remove(fn.Length - 5, 5) + "\\";
         var header = $"{subDir}{Path.GetFileNameWithoutExtension(fn)}.";
         var fileSize = new List<long>();
@@ -246,7 +242,7 @@ public partial class CrystalDatabaseControl : UserControl
             var crystal2List = new List<Crystal2>();
             for (int j = i * division; j < total && j < (i + 1) * division; j++)
             {
-                var c = DataTableCrystalDatabaseDataTable.deserialize((byte[])((DataRowView)bindingSource[j]).Row[0]);
+                var c = Crystal2.Deserialize((byte[])((DataRowView)bindingSource[j]).Row[0]);
                 crystal2List.Add(c);
             }
             bytes[i] = serialize([.. crystal2List]);
@@ -259,20 +255,20 @@ public partial class CrystalDatabaseControl : UserControl
             byteList.AddRange(bytes[i]);
 
             //最後まで来ている時で、かつ閾値以下の容量で、かつこれまで一度も分割もしていない場合
-            if (i == bytes.Length-1 && byteList.Count <= thresholdBytes && filecounter == 0)
+            if (i == bytes.Length-1 && byteList.Count <= thresholdBytes && fileCounter == 0)
                 fs.Write([.. byteList], 0, byteList.Count);//最初のファイルに書き込んで終了
 
             //最後まで来ている時か、閾値以上の容量の場合
             else if (i == bytes.Length - 1 || byteList.Count > thresholdBytes)
             {
-                if (filecounter == 0)
+                if (fileCounter == 0)
                     Directory.CreateDirectory(fn.Remove(fn.Length - 5, 5));
-                using (var fs1 = new FileStream(header + filecounter.ToString("000"), FileMode.Create, FileAccess.Write))
+                using (var fs1 = new FileStream(header + fileCounter.ToString("000"), FileMode.Create, FileAccess.Write))
                     fs1.Write([.. byteList], 0, byteList.Count);
                 fileSize.Add(byteList.Count);
                 byteList.Clear();
 
-                filecounter++;
+                fileCounter++;
             }
         }
 
@@ -287,33 +283,33 @@ public partial class CrystalDatabaseControl : UserControl
         //    byteList.AddRange(serialize(crystal2List.ToArray()));
 
         //    //最後まで来ている時で、かつ閾値以下の容量で、かつこれまで一度も分割もしていない場合
-        //    if (i + division >= total && byteList.Count <= thresholdBytes && filecounter == 0)
+        //    if (i + division >= total && byteList.Count <= thresholdBytes && fileCounter == 0)
         //        fs.Write([.. byteList], 0, byteList.Count);//最初のファイルに書き込んで終了
 
         //    //最後まで来ている時か、閾値以上の容量の場合
         //    else if (i + division >= total || byteList.Count > thresholdBytes)
         //    {
-        //        if (filecounter == 0)
+        //        if (fileCounter == 0)
         //            Directory.CreateDirectory(fn.Remove(fn.Length - 5, 5));
-        //        using (var fs1 = new FileStream(header + filecounter.ToString("000"), FileMode.Create, FileAccess.Write))
+        //        using (var fs1 = new FileStream(header + fileCounter.ToString("000"), FileMode.Create, FileAccess.Write))
         //            fs1.Write([.. byteList], 0, byteList.Count);
         //        fileSize.Add(byteList.Count);
         //        byteList.Clear();
 
-        //        filecounter++;
+        //        fileCounter++;
         //    }
         //    SaveDatabaseWorker.ReportProgress(0, report(i, total, sw.ElapsedMilliseconds, "Saving database..."));
         //}
 
-        if (filecounter > 0)//分割ファイルになった場合
+        if (fileCounter > 0)//分割ファイルになった場合
         {
             //分割ファイル数書き込み
-            writeInt(fs, filecounter);
+            writeInt(fs, fileCounter);
             //ファイルサイズ書き込み
-            for (int i = 0; i < filecounter; i++)
+            for (int i = 0; i < fileCounter; i++)
                 writeLong(fs, fileSize[i]);
             //チェックサムを書き込み
-            for (int i = 0; i < filecounter; i++)
+            for (int i = 0; i < fileCounter; i++)
                 writeBytes(fs, getMD5(header + i.ToString("000")));
             //最後に先頭に戻って200を書き込み
             fs.Position = 0;
@@ -331,7 +327,7 @@ public partial class CrystalDatabaseControl : UserControl
     private void SaveDatabaseWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
         this.Enabled = true;
-        ProgressChanged?.Invoke(sender, 1, $"Toatal saving time: {sw.ElapsedMilliseconds / 1E3:f1} sec.");
+        ProgressChanged?.Invoke(sender, 1, $"Total saving time: {sw.ElapsedMilliseconds / 1E3:f1} sec.");
         Application.DoEvents();
     }
 
@@ -390,7 +386,7 @@ public partial class CrystalDatabaseControl : UserControl
 
 
     /// <summary>
-    /// MD5を取得する。ファイルが存在しない場合はnullを返す。
+    /// MD5を取得する。ファイルが存在しない場合は null を返す。
     /// </summary>
     /// <param name="path"></param>
     /// <returns></returns>
@@ -428,19 +424,19 @@ public partial class CrystalDatabaseControl : UserControl
     /// <param name="message">メッセージ</param>
     /// <param name="sleep"></param>
     /// <param name="showPercentage"></param>
-    /// <param name="showEllapsedTime"></param>
+    /// <param name="showElapsedTime"></param>
     /// <param name="showRemainTime"></param>
     /// <param name="digit"></param>
     private static (double Progress, string Message) report(long current, long total, long elapsedMilliseconds, string message,
-        bool showPercentage = true, bool showEllapsedTime = true, bool showRemainTime = true, int digit = 1)
+        bool showPercentage = true, bool showElapsedTime = true, bool showRemainTime = true, int digit = 1)
     {
         var ratio = Math.Min(1, (double)current / total);
-        var ellapsedSec = elapsedMilliseconds / 1E3;
+        var elapsedSec = elapsedMilliseconds / 1E3;
         var format = $"f{digit}";
-
+        
         if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
-        if (showEllapsedTime) message += $" Elappsed time: {ellapsedSec.ToString(format)} sec.";
-        if (showRemainTime) message += $" Remaining time: {(ellapsedSec / current * (total - current)).ToString(format)} sec.";
+        if (showElapsedTime) message += $" Elapsed time: {elapsedSec.ToString(format)} sec.";
+        if (showRemainTime) message += $" Remaining time: {(elapsedSec / current * (total - current)).ToString(format)} sec.";
 
         return (ratio, message);
     }
@@ -531,6 +527,5 @@ public partial class CrystalDatabaseControl : UserControl
         }
     }
     #endregion
-
 }
 

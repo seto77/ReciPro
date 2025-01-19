@@ -30,6 +30,11 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalControl));
+            splitContainer1 = new System.Windows.Forms.SplitContainer();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            textBoxAuthor = new System.Windows.Forms.TextBox();
+            groupBox8 = new System.Windows.Forms.GroupBox();
+            textBoxTitle = new System.Windows.Forms.TextBox();
             tabControl = new System.Windows.Forms.TabControl();
             tabPageBasicInfo = new System.Windows.Forms.TabPage();
             panel5 = new System.Windows.Forms.Panel();
@@ -50,10 +55,6 @@
             tabPageBondsPolyhedra = new System.Windows.Forms.TabPage();
             bondControl = new BondInputControl();
             tabPageReference = new System.Windows.Forms.TabPage();
-            groupBox8 = new System.Windows.Forms.GroupBox();
-            textBoxTitle = new System.Windows.Forms.TextBox();
-            groupBox6 = new System.Windows.Forms.GroupBox();
-            textBoxAuthor = new System.Windows.Forms.TextBox();
             groupBox7 = new System.Windows.Forms.GroupBox();
             textBoxJournal = new System.Windows.Forms.TextBox();
             groupBox5 = new System.Windows.Forms.GroupBox();
@@ -141,6 +142,12 @@
             buttonSymmetryInfo = new System.Windows.Forms.Button();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             panel4 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            groupBox6.SuspendLayout();
+            groupBox8.SuspendLayout();
             tabControl.SuspendLayout();
             tabPageBasicInfo.SuspendLayout();
             panel5.SuspendLayout();
@@ -150,8 +157,6 @@
             contextMenuStrip2.SuspendLayout();
             tabPageBondsPolyhedra.SuspendLayout();
             tabPageReference.SuspendLayout();
-            groupBox8.SuspendLayout();
-            groupBox6.SuspendLayout();
             groupBox7.SuspendLayout();
             groupBox5.SuspendLayout();
             tabPageEOS.SuspendLayout();
@@ -170,6 +175,54 @@
             contextMenuStrip.SuspendLayout();
             panel4.SuspendLayout();
             SuspendLayout();
+            // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(splitContainer1, "splitContainer1");
+            splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            resources.ApplyResources(splitContainer1.Panel1, "splitContainer1.Panel1");
+            splitContainer1.Panel1.Controls.Add(groupBox6);
+            toolTip.SetToolTip(splitContainer1.Panel1, resources.GetString("splitContainer1.Panel1.ToolTip"));
+            // 
+            // splitContainer1.Panel2
+            // 
+            resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
+            splitContainer1.Panel2.Controls.Add(groupBox8);
+            toolTip.SetToolTip(splitContainer1.Panel2, resources.GetString("splitContainer1.Panel2.ToolTip"));
+            toolTip.SetToolTip(splitContainer1, resources.GetString("splitContainer1.ToolTip"));
+            // 
+            // groupBox6
+            // 
+            resources.ApplyResources(groupBox6, "groupBox6");
+            groupBox6.Controls.Add(textBoxAuthor);
+            groupBox6.Name = "groupBox6";
+            groupBox6.TabStop = false;
+            toolTip.SetToolTip(groupBox6, resources.GetString("groupBox6.ToolTip"));
+            // 
+            // textBoxAuthor
+            // 
+            textBoxAuthor.AcceptsReturn = true;
+            resources.ApplyResources(textBoxAuthor, "textBoxAuthor");
+            textBoxAuthor.Name = "textBoxAuthor";
+            toolTip.SetToolTip(textBoxAuthor, resources.GetString("textBoxAuthor.ToolTip"));
+            // 
+            // groupBox8
+            // 
+            resources.ApplyResources(groupBox8, "groupBox8");
+            groupBox8.Controls.Add(textBoxTitle);
+            groupBox8.Name = "groupBox8";
+            groupBox8.TabStop = false;
+            toolTip.SetToolTip(groupBox8, resources.GetString("groupBox8.ToolTip"));
+            // 
+            // textBoxTitle
+            // 
+            textBoxTitle.AcceptsReturn = true;
+            resources.ApplyResources(textBoxTitle, "textBoxTitle");
+            textBoxTitle.Name = "textBoxTitle";
+            toolTip.SetToolTip(textBoxTitle, resources.GetString("textBoxTitle.ToolTip"));
             // 
             // tabControl
             // 
@@ -230,7 +283,6 @@
             numericBoxVolume.Name = "numericBoxVolume";
             numericBoxVolume.ReadOnly = true;
             numericBoxVolume.RestrictLimitValue = false;
-            numericBoxVolume.RoundErrorAccuracy = -1;
             numericBoxVolume.SkipEventDuringInput = false;
             numericBoxVolume.SmartIncrement = true;
             numericBoxVolume.TabStop = false;
@@ -247,7 +299,6 @@
             numericBoxCellMass.Name = "numericBoxCellMass";
             numericBoxCellMass.ReadOnly = true;
             numericBoxCellMass.RestrictLimitValue = false;
-            numericBoxCellMass.RoundErrorAccuracy = -1;
             numericBoxCellMass.SkipEventDuringInput = false;
             numericBoxCellMass.SmartIncrement = true;
             numericBoxCellMass.TabStop = false;
@@ -264,7 +315,6 @@
             numericBoxMolarVolume.Name = "numericBoxMolarVolume";
             numericBoxMolarVolume.ReadOnly = true;
             numericBoxMolarVolume.RestrictLimitValue = false;
-            numericBoxMolarVolume.RoundErrorAccuracy = -1;
             numericBoxMolarVolume.SkipEventDuringInput = false;
             numericBoxMolarVolume.SmartIncrement = true;
             numericBoxMolarVolume.TabStop = false;
@@ -281,7 +331,6 @@
             numericBoxMolarMass.Name = "numericBoxMolarMass";
             numericBoxMolarMass.ReadOnly = true;
             numericBoxMolarMass.RestrictLimitValue = false;
-            numericBoxMolarMass.RoundErrorAccuracy = -1;
             numericBoxMolarMass.SkipEventDuringInput = false;
             numericBoxMolarMass.SmartIncrement = true;
             numericBoxMolarMass.TabStop = false;
@@ -295,7 +344,6 @@
             numericBoxDensity.DecimalPlaces = 4;
             numericBoxDensity.Name = "numericBoxDensity";
             numericBoxDensity.ReadOnly = true;
-            numericBoxDensity.RoundErrorAccuracy = -1;
             numericBoxDensity.SkipEventDuringInput = false;
             numericBoxDensity.SmartIncrement = true;
             numericBoxDensity.TabStop = false;
@@ -307,11 +355,11 @@
             // 
             resources.ApplyResources(colorControl, "colorControl");
             colorControl.Argb = -986896;
+            colorControl.BackColor = System.Drawing.SystemColors.Control;
             colorControl.Blue = 240;
             colorControl.BlueF = 0.9411765F;
             colorControl.BoxSize = new System.Drawing.Size(20, 20);
             colorControl.Color = System.Drawing.Color.FromArgb(240, 240, 240);
-            colorControl.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControl.Green = 240;
             colorControl.GreenF = 0.9411765F;
             colorControl.Name = "colorControl";
@@ -448,42 +496,11 @@
             // 
             resources.ApplyResources(tabPageReference, "tabPageReference");
             tabPageReference.BackColor = System.Drawing.SystemColors.Control;
-            tabPageReference.Controls.Add(groupBox8);
-            tabPageReference.Controls.Add(groupBox6);
+            tabPageReference.Controls.Add(splitContainer1);
             tabPageReference.Controls.Add(groupBox7);
             tabPageReference.Controls.Add(groupBox5);
             tabPageReference.Name = "tabPageReference";
             toolTip.SetToolTip(tabPageReference, resources.GetString("tabPageReference.ToolTip"));
-            // 
-            // groupBox8
-            // 
-            resources.ApplyResources(groupBox8, "groupBox8");
-            groupBox8.Controls.Add(textBoxTitle);
-            groupBox8.Name = "groupBox8";
-            groupBox8.TabStop = false;
-            toolTip.SetToolTip(groupBox8, resources.GetString("groupBox8.ToolTip"));
-            // 
-            // textBoxTitle
-            // 
-            textBoxTitle.AcceptsReturn = true;
-            resources.ApplyResources(textBoxTitle, "textBoxTitle");
-            textBoxTitle.Name = "textBoxTitle";
-            toolTip.SetToolTip(textBoxTitle, resources.GetString("textBoxTitle.ToolTip"));
-            // 
-            // groupBox6
-            // 
-            resources.ApplyResources(groupBox6, "groupBox6");
-            groupBox6.Controls.Add(textBoxAuthor);
-            groupBox6.Name = "groupBox6";
-            groupBox6.TabStop = false;
-            toolTip.SetToolTip(groupBox6, resources.GetString("groupBox6.ToolTip"));
-            // 
-            // textBoxAuthor
-            // 
-            textBoxAuthor.AcceptsReturn = true;
-            resources.ApplyResources(textBoxAuthor, "textBoxAuthor");
-            textBoxAuthor.Name = "textBoxAuthor";
-            toolTip.SetToolTip(textBoxAuthor, resources.GetString("textBoxAuthor.ToolTip"));
             // 
             // groupBox7
             // 
@@ -600,7 +617,6 @@
             numericBoxStrain33.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStrain33.Name = "numericBoxStrain33";
             numericBoxStrain33.RestrictLimitValue = false;
-            numericBoxStrain33.RoundErrorAccuracy = -1;
             numericBoxStrain33.SkipEventDuringInput = false;
             numericBoxStrain33.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStrain33, resources.GetString("numericBoxStrain33.ToolTip"));
@@ -614,7 +630,6 @@
             numericBoxHill.Name = "numericBoxHill";
             numericBoxHill.RadianValue = 0.017453292519943295D;
             numericBoxHill.RestrictLimitValue = false;
-            numericBoxHill.RoundErrorAccuracy = -1;
             numericBoxHill.SkipEventDuringInput = false;
             numericBoxHill.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxHill, resources.GetString("numericBoxHill.ToolTip"));
@@ -724,7 +739,6 @@
             numericBoxStress33.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStress33.Name = "numericBoxStress33";
             numericBoxStress33.RestrictLimitValue = false;
-            numericBoxStress33.RoundErrorAccuracy = -1;
             numericBoxStress33.SkipEventDuringInput = false;
             numericBoxStress33.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStress33, resources.GetString("numericBoxStress33.ToolTip"));
@@ -737,7 +751,6 @@
             numericBoxStress22.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStress22.Name = "numericBoxStress22";
             numericBoxStress22.RestrictLimitValue = false;
-            numericBoxStress22.RoundErrorAccuracy = -1;
             numericBoxStress22.SkipEventDuringInput = false;
             numericBoxStress22.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStress22, resources.GetString("numericBoxStress22.ToolTip"));
@@ -750,7 +763,6 @@
             numericBoxStress11.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStress11.Name = "numericBoxStress11";
             numericBoxStress11.RestrictLimitValue = false;
-            numericBoxStress11.RoundErrorAccuracy = -1;
             numericBoxStress11.SkipEventDuringInput = false;
             numericBoxStress11.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStress11, resources.GetString("numericBoxStress11.ToolTip"));
@@ -763,7 +775,6 @@
             numericBoxStress23.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStress23.Name = "numericBoxStress23";
             numericBoxStress23.RestrictLimitValue = false;
-            numericBoxStress23.RoundErrorAccuracy = -1;
             numericBoxStress23.SkipEventDuringInput = false;
             numericBoxStress23.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStress23, resources.GetString("numericBoxStress23.ToolTip"));
@@ -776,7 +787,6 @@
             numericBoxStress13.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStress13.Name = "numericBoxStress13";
             numericBoxStress13.RestrictLimitValue = false;
-            numericBoxStress13.RoundErrorAccuracy = -1;
             numericBoxStress13.SkipEventDuringInput = false;
             numericBoxStress13.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStress13, resources.GetString("numericBoxStress13.ToolTip"));
@@ -789,7 +799,6 @@
             numericBoxStress12.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStress12.Name = "numericBoxStress12";
             numericBoxStress12.RestrictLimitValue = false;
-            numericBoxStress12.RoundErrorAccuracy = -1;
             numericBoxStress12.SkipEventDuringInput = false;
             numericBoxStress12.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStress12, resources.GetString("numericBoxStress12.ToolTip"));
@@ -802,7 +811,6 @@
             numericBoxStrain11.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStrain11.Name = "numericBoxStrain11";
             numericBoxStrain11.RestrictLimitValue = false;
-            numericBoxStrain11.RoundErrorAccuracy = -1;
             numericBoxStrain11.SkipEventDuringInput = false;
             numericBoxStrain11.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStrain11, resources.GetString("numericBoxStrain11.ToolTip"));
@@ -815,7 +823,6 @@
             numericBoxStrain22.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStrain22.Name = "numericBoxStrain22";
             numericBoxStrain22.RestrictLimitValue = false;
-            numericBoxStrain22.RoundErrorAccuracy = -1;
             numericBoxStrain22.SkipEventDuringInput = false;
             numericBoxStrain22.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStrain22, resources.GetString("numericBoxStrain22.ToolTip"));
@@ -828,7 +835,6 @@
             numericBoxStrain12.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStrain12.Name = "numericBoxStrain12";
             numericBoxStrain12.RestrictLimitValue = false;
-            numericBoxStrain12.RoundErrorAccuracy = -1;
             numericBoxStrain12.SkipEventDuringInput = false;
             numericBoxStrain12.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStrain12, resources.GetString("numericBoxStrain12.ToolTip"));
@@ -841,7 +847,6 @@
             numericBoxStrain23.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStrain23.Name = "numericBoxStrain23";
             numericBoxStrain23.RestrictLimitValue = false;
-            numericBoxStrain23.RoundErrorAccuracy = -1;
             numericBoxStrain23.SkipEventDuringInput = false;
             numericBoxStrain23.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStrain23, resources.GetString("numericBoxStrain23.ToolTip"));
@@ -854,7 +859,6 @@
             numericBoxStrain13.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStrain13.Name = "numericBoxStrain13";
             numericBoxStrain13.RestrictLimitValue = false;
-            numericBoxStrain13.RoundErrorAccuracy = -1;
             numericBoxStrain13.SkipEventDuringInput = false;
             numericBoxStrain13.SmartIncrement = true;
             toolTip.SetToolTip(numericBoxStrain13, resources.GetString("numericBoxStrain13.ToolTip"));
@@ -1059,7 +1063,6 @@
             numericBoxZnumber.BackColor = System.Drawing.Color.Transparent;
             numericBoxZnumber.Name = "numericBoxZnumber";
             numericBoxZnumber.ReadOnly = true;
-            numericBoxZnumber.RoundErrorAccuracy = -1;
             numericBoxZnumber.SkipEventDuringInput = false;
             numericBoxZnumber.SmartIncrement = true;
             numericBoxZnumber.TabStop = false;
@@ -1222,6 +1225,14 @@
             DragEnter += FormCrystal_DragEnter;
             KeyDown += CrystalControl_KeyDown;
             Resize += CrystalControl_Resize_1;
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            groupBox8.ResumeLayout(false);
+            groupBox8.PerformLayout();
             tabControl.ResumeLayout(false);
             tabPageBasicInfo.ResumeLayout(false);
             panel5.ResumeLayout(false);
@@ -1235,10 +1246,6 @@
             tabPageBondsPolyhedra.ResumeLayout(false);
             tabPageBondsPolyhedra.PerformLayout();
             tabPageReference.ResumeLayout(false);
-            groupBox8.ResumeLayout(false);
-            groupBox8.PerformLayout();
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();
             groupBox5.ResumeLayout(false);
@@ -1381,5 +1388,6 @@
         private System.Windows.Forms.ToolStripMenuItem convertToP1SymmetryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem convertToSuperstructureToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem convertToAnotherSpacegroupToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }

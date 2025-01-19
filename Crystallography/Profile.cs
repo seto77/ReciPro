@@ -33,8 +33,8 @@ public class Profile : ICloneable
     #region コンストラクタ
     public Profile()
     {
-        Pt = new List<PointD>();
-        Err = new List<PointD>();
+        Pt = [];
+        Err = [];
     }
 
     public Profile(IEnumerable<PointD> pt) : this()
@@ -57,8 +57,8 @@ public class Profile : ICloneable
     #region クリア、ソート、コピー
     public void Clear()
     {
-        Pt = new List<PointD>();
-        Err = new List<PointD>();
+        Pt = [];
+        Err = [];
     }
 
     public void Sort()
@@ -69,15 +69,15 @@ public class Profile : ICloneable
     public object Clone()
     {
         Profile p = (Profile)this.MemberwiseClone();
-        p.Pt = new List<PointD>(Pt.ToArray());
+        p.Pt = new List<PointD>([.. Pt]);
         return p;
     }
     public Profile CopyTo()
     {
         Profile p = new Profile();
 
-        p.Pt = new List<PointD>();
-        p.Err = new List<PointD>();
+        p.Pt = [];
+        p.Err = [];
         for (int i = 0; i < Pt.Count; i++)
             p.Pt.Add(Pt[i]);
 
@@ -158,7 +158,7 @@ public class Profile : ICloneable
             return (Pt[pos].Y - Pt[pos + 1].Y) / (Pt[pos].X - Pt[pos + 1].X) * (x - Pt[pos + 1].X) + Pt[pos + 1].Y;
         }
 
-        return GetValues(new double[] { x }, pointNum, order, eachside, false)[0];
+        return GetValues([x], pointNum, order, eachside, false)[0];
     }
     #endregion
 
@@ -384,7 +384,7 @@ public class Profile : ICloneable
             sb.Add($" {value[0]} {value[1]} {value[2]}");
         }
 
-        return sb.ToArray();
+        return [.. sb];
     }
     #endregion
 
@@ -449,7 +449,7 @@ public class DiffractionProfile2 : ICloneable
             => X[0] < X[1] ? $"{X[0]:g8} - {X[1]:g8}" : $"{X[1]:g8} - {X[0]:g8}";
     }
 
-    public List<MaskingRange> maskingRanges = new List<MaskingRange>();
+    public List<MaskingRange> maskingRanges = [];
 
     public bool SortMaskRanges()
     {
@@ -460,7 +460,7 @@ public class DiffractionProfile2 : ICloneable
 
         if (flag)
         {
-            List<double> temp = new List<double>();
+            List<double> temp = [];
             for (int i = 0; i < maskingRanges.Count; i++)
             {
                 temp.Add(maskingRanges[i].X[0]);
@@ -693,7 +693,7 @@ public class DiffractionProfile2 : ICloneable
     #region コンストラクタ
     public DiffractionProfile2()
     {
-        BgPoints = Array.Empty<PointD>();
+        BgPoints = [];
 
         SourceProfile = new Profile();
         ConvertedProfile = new Profile();
@@ -736,14 +736,14 @@ public class DiffractionProfile2 : ICloneable
         if (!double.IsNaN(newPt.X) && !double.IsInfinity(newPt.X))
             profile.Pt.Add(newPt);
         profile.Sort();
-        BgPoints = profile.Pt.ToArray();
+        BgPoints = [.. profile.Pt];
     }
 
     public void DeleteBgPoints(int index)
     {
         var profile = new Profile(BgPoints);
         profile.Pt.RemoveAt(index);
-        BgPoints = profile.Pt.ToArray();
+        BgPoints = [.. profile.Pt];
     }
     #endregion
 
@@ -769,8 +769,8 @@ public class DiffractionProfile2 : ICloneable
 
         ConvertedProfile.Clear();
 
-        PointD[] pt = ConvertSrcToDest(SourceProfile.Pt.ToArray());
-        PointD[] err = ConvertSrcToDest(SourceProfile.Err.ToArray());
+        PointD[] pt = ConvertSrcToDest([.. SourceProfile.Pt]);
+        PointD[] err = ConvertSrcToDest([.. SourceProfile.Err]);
 
         //ここから、2ThetaOffset処理
         if (IsShiftX)
@@ -821,7 +821,7 @@ public class DiffractionProfile2 : ICloneable
             var x = new List<List<double>>();
             for (int i = 0; i < maskingRanges.Count; i++)
             {
-                x.Add(new List<double>());
+                x.Add([]);
                 for (int j = 0; j < InterpolatedProfile.Pt.Count && InterpolatedProfile.Pt[j].X < maskingRanges[i].Maximum; j++)
                     if (InterpolatedProfile.Pt[j].X > maskingRanges[i].Minimum)
                     {
@@ -833,8 +833,8 @@ public class DiffractionProfile2 : ICloneable
             var y = new List<List<double>>();
             for (int i = 0; i < x.Count; i++)
             {
-                y.Add(new List<double>());
-                y[i].AddRange(InterpolatedProfile.GetValues(x[i].ToArray(), InterpolationPoints * 2, InterpolationOrder, true, true));
+                y.Add([]);
+                y[i].AddRange(InterpolatedProfile.GetValues([.. x[i]], InterpolationPoints * 2, InterpolationOrder, true, true));
             }
             for (int i = 0; i < x.Count; i++)
                 for (int j = 0; j < x[i].Count; j++)
@@ -960,7 +960,7 @@ public class DiffractionProfile2 : ICloneable
         //バックグラウンド処理
         if (BackgroundProfile.Pt == null || BackgroundProfile.Pt.Count != Profile.Pt.Count)
         {
-            BackgroundProfile.Pt = new List<PointD>();
+            BackgroundProfile.Pt = [];
             for (int i = 0; i < Profile.Pt.Count; i++)
                 BackgroundProfile.Pt.Add(new PointD(Profile.Pt[i].X, 0));
         }
@@ -1036,7 +1036,7 @@ public class DiffractionProfile2 : ICloneable
 
         //二階微分
         Profile p2 = new Profile();
-        List<double> y = new List<double>();
+        List<double> y = [];
         for (i = 0; i < p1.Pt.Count - 1; i++)
             p2.Pt.Add(new PointD((p1.Pt[i].X + p1.Pt[i + 1].X) / 2, (p1.Pt[i + 1].Y - p1.Pt[i].Y) / (p1.Pt[i + 1].X - p1.Pt[i].X)));
         p2 = Smoothing.SavitzkyGolay(p2, 3, 3);
@@ -1045,7 +1045,7 @@ public class DiffractionProfile2 : ICloneable
             y.Add(p2.Pt[i].Y);
 
         //p2のY値を規格化
-        double d = Statistics.Deviation(y.ToArray());
+        double d = Statistics.Deviation([.. y]);
         for (i = 0; i < p2.Pt.Count; i++)
             y[i] /= d;
 
@@ -1053,8 +1053,8 @@ public class DiffractionProfile2 : ICloneable
         double temp = 1;
         double tempMax = double.PositiveInfinity;
         int tempXindex = 0;
-        List<double> X = new List<double>();
-        List<int> Xindex = new List<int>();
+        List<double> X = [];
+        List<int> Xindex = [];
         bool flag = true;
         int range = (int)(p1.Pt.Count / 3.0 / BgPointsNumber);
         do
@@ -1094,7 +1094,7 @@ public class DiffractionProfile2 : ICloneable
             return;
         else//３点以上見つけられたら
         {
-            List<PointD> bgPoints = new List<PointD>();
+            List<PointD> bgPoints = [];
             X.Sort();
             double tempY;
             for (i = 0; i < X.Count; i++)
@@ -1126,7 +1126,7 @@ public class DiffractionProfile2 : ICloneable
                 if (minimum > bgPoints[i].Y)
                     minimum = bgPoints[i].Y;
 
-            BgPoints = ConvertDestToSrc(bgPoints.ToArray());
+            BgPoints = ConvertDestToSrc([.. bgPoints]);
         }
     }
     #endregion
@@ -1176,7 +1176,7 @@ public class DiffractionProfile2 : ICloneable
     /// <returns></returns>
     private PointD convertSrcToDest(PointD pt)
     {
-        var pts = HorizontalAxisConverter.Convert(new[] { pt.X }, SrcProperty, DstProperty);
+        var pts = HorizontalAxisConverter.Convert([pt.X], SrcProperty, DstProperty);
         if (pts.Length == 0)
             return new PointD(0, 0);
         var x = pts[0];
@@ -1213,7 +1213,7 @@ public class DiffractionProfile2 : ICloneable
         }
         */
         #endregion
-        return dest.ToArray();
+        return [.. dest];
     }
     #endregion
 
@@ -1225,7 +1225,7 @@ public class DiffractionProfile2 : ICloneable
     /// <returns></returns>
     public PointD ConvertDestToSrc(PointD pt)
     {
-        var x = HorizontalAxisConverter.Convert(new[] { pt.X }, DstProperty, SrcProperty)[0];
+        var x = HorizontalAxisConverter.Convert([pt.X], DstProperty, SrcProperty)[0];
         var y = pt.Y;
         if (IsCPS && ExposureTime != 0)
             y *= ExposureTime;
@@ -1248,7 +1248,7 @@ public class DiffractionProfile2 : ICloneable
             if (!double.IsNaN(p.X) && !double.IsInfinity(p.X) && !double.IsNaN(p.Y) && !double.IsInfinity(p.Y))
                 dest.Add(p);
         }
-        return dest.ToArray();
+        return [.. dest];
     }
     #endregion
 
@@ -1626,7 +1626,7 @@ public static class HorizontalAxisConverter
     /// <param name="x"></param>
     /// <param name="src"></param>
     /// <returns></returns>
-    public static double ConvertToD(double x, HorizontalAxisProperty src) => ConvertToD(new[] { x }, src)[0];
+    public static double ConvertToD(double x, HorizontalAxisProperty src) => ConvertToD([x], src)[0];
 
     /// <summary>
     ///  全てのd値(nm)をdstに基づいて変換
@@ -1645,7 +1645,7 @@ public static class HorizontalAxisConverter
             return dst.DspacingUnit == LengthUnitEnum.NanoMeter ? d : d.Select(d => d * 10).ToArray();
         else if (dst.AxisMode == HorizontalAxis.EnergyXray || dst.AxisMode == HorizontalAxis.EnergyElectron || dst.AxisMode == HorizontalAxis.EnergyNeutron)
         {
-            double[] energy = Array.Empty<double>();
+            double[] energy = [];
             if (dst.AxisMode == HorizontalAxis.EnergyXray)
                 energy = DToXrayEnergy(d, dst.EnergyTakeoffAngle);
             else if (dst.AxisMode == HorizontalAxis.EnergyElectron)
@@ -1687,7 +1687,7 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="dst"></param>
     /// <returns></returns>
-    public static double ConvertFromD(double d, HorizontalAxisProperty dst) => ConvertFromD(new[] { d }, dst)[0];
+    public static double ConvertFromD(double d, HorizontalAxisProperty dst) => ConvertFromD([d], dst)[0];
 
     #region 横軸を変換するメソッド群
 
@@ -1975,7 +1975,7 @@ public class DiffractionProfile : ICloneable
             => X[0] < X[1] ? $"{X[0]:g8} - {X[1]:g8}" : $"{X[1]:g8} - {X[0]:g8}";
     }
 
-    public List<MaskingRange> maskingRanges = new List<MaskingRange>();
+    public List<MaskingRange> maskingRanges = [];
     private int interpolationOrder = 2;
     public int InterpolationOrder
     {
@@ -2178,7 +2178,7 @@ public class DiffractionProfile : ICloneable
             Kalpha2RemovedProfile = Kalpha2RemovedProfile,
             LineWidth = LineWidth,
             LowPathLimit = LowPathLimit,
-            maskingRanges = new List<DiffractionProfile2.MaskingRange>(),
+            maskingRanges = [],
             Mode = Mode,
             Name = Name,
             NormarizeAsAverage = NormarizeAsAverage,
@@ -2205,7 +2205,7 @@ public class DiffractionProfile : ICloneable
 
     public DiffractionProfile()
     {
-        BgPoints = Array.Empty<PointD>();
+        BgPoints = [];
 
         OriginalProfile = new Profile();
         ConvertedProfile = new Profile();
