@@ -4,6 +4,7 @@ using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Complex;
 using System;
 using System.Buffers;
+using System.Collections.Concurrent;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1647,7 +1648,7 @@ public class BetheMethod
         {
             var index = h is null ? g.Index : g.Index.Minus(h.Index);// (g.H - h.H, g.K - h.K, g.L - h.L) ;
 
-            var s2 = h is null ?  g.Vec.Length2 / 4 : (g.Vec - h.Vec).Length2 / 4;
+            var s2 = h is null ? g.Vec.Length2 / 4 : (g.Vec - h.Vec).Length2 / 4;
             //var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
             double a = Crystal.A, b = Crystal.B, c = Crystal.C;
 
@@ -1694,8 +1695,7 @@ public class BetheMethod
 
             U = (fReal * gamma / Math.PI / Crystal.Volume, fImag * gamma / Math.PI / Crystal.Volume);
             if (kV > 0)
-                lock (lockObj1)
-                    uDictionary.TryAdd((key1, key2), U);
+                uDictionary.TryAdd((key1, key2), U);
         }
         return U;
     }
@@ -1714,7 +1714,7 @@ public class BetheMethod
     /// <returns></returns>
     public (Complex Real, Complex Imag) getU(double voltage) => getU(voltage, new Beam((0, 0, 0), new Vector3DBase(0, 0, 0)));
 
-    private readonly Dictionary<(int Key1, int Key2), (Complex Real, Complex Imag)> uDictionary = [];
+    private readonly ConcurrentDictionary<(int Key1, int Key2), (Complex Real, Complex Imag)> uDictionary = [];
     #endregion
 
     #region ポテンシャルのマトリックス
