@@ -609,12 +609,12 @@ public class BetheMethod
                         directDiskIntensities[t][r] = diskAmplitude[r].result[t * diskAmplitude[r].beams.Length + 0].MagnitudeSquared();
             });
 
-            var directDiskPositions = new PointD[BeamDirections.Length];
+            var directDiskPositions = new (double X, double Y)[BeamDirections.Length];
             Parallel.For(0, BeamDirections.Length, r =>
             {
                 //var vec = BeamDirections[r] * new Vector3DBase(0, 0, kvac);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
                 var vec = kvac * BeamDirections[r];//Ewald球中心(試料)から見た、逆格子ベクトルの方向
-                directDiskPositions[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
+                directDiskPositions[r] = (vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
             });
 
             double xMax = directDiskPositions.Max(e => e.X), xMin = directDiskPositions.Min(e => e.X);
@@ -624,10 +624,11 @@ public class BetheMethod
             //for(int r1=0; r1< BeamDirections.Length; r1++)
             Parallel.For(0, BeamDirections.Length, r1 =>
             {
-                if (diskAmplitude[r1].result is not null)
-                    for (int g = 1; g < diskAmplitude[r1].beams.Length; g++)
+                var (result, beams) = diskAmplitude[r1];
+                if (result is not null)
+                    for (int g = 1; g < beams.Length; g++)
                     {
-                        var vec = kvac * BeamDirections[r1] - diskAmplitude[r1].beams[g].Vec;//Ewald球中心(試料)から見た、逆格子ベクトルの方向
+                        var vec = kvac * BeamDirections[r1] - beams[g].Vec;//Ewald球中心(試料)から見た、逆格子ベクトルの方向
                         double posX = vec.X / vec.Z, posY = vec.Y / vec.Z; //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
                         if (posX < xMax && posX > xMin && posY < yMax && posY > yMin)
                         {
@@ -635,7 +636,7 @@ public class BetheMethod
                             if (r2 >= 0)
                                 lock (lockObjs[r2])
                                     for (int t = 0; t < Thicknesses.Length; t++)
-                                        directDiskIntensities[t][r2] += diskAmplitude[r1].result[t * diskAmplitude[r1].beams.Length + g].MagnitudeSquared();
+                                        directDiskIntensities[t][r2] += result[t * beams.Length + g].MagnitudeSquared();
                         }
                     }
             });
@@ -654,10 +655,10 @@ public class BetheMethod
     }
 
     private static readonly int[] pow = [ 4,  1];
-    static int getIndex(in PointD p, in PointD[] pts, int w) => getIndex(p.X, p.Y, pts, w);
+    static int getIndex(in PointD p, in PointD[] pts, int w) => getIndex(p.X, p.Y, pts.Select(e=>(e.X,e.Y)).ToArray(), w);
 
     //与えられたposに最も近いインデックスを返す
-    static int getIndex(in double x, double y, in PointD[] pts, int w)
+    static int getIndex(in double x, double y, in (double X, double Y)[] pts, int w)
     {
         var w2 = (uint)(w * w);
         int i = (int)w2 / 2, m;
@@ -669,17 +670,19 @@ public class BetheMethod
             do
             {
                 flag = false;
+
+                if (((uint)(m = i + n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min) ||
+                   ((uint)(m = i - n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min))
+                {
+                    i = m; min = temp; flag = true;
+                }
+
                 if (((uint)(m = i + n) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min) ||
                     ((uint)(m = i - n) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min))
                 {
                     i = m; min = temp; flag = true;
                 }
 
-                if (((uint)(m = i + n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min) ||
-                    ((uint)(m = i - n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min))
-                {
-                    i = m; min = temp; flag = true;
-                }
             } while (flag);
 
         return i / w == 0 || i / w == w - 1 || i % w == 0 || i % w == w - 1 ? -1 : i;
@@ -1869,7 +1872,7 @@ public class BetheMethod
         QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));//大して速くない
         //beamsSpan.Sort(static (a, b) => a.rating.CompareTo(b.rating));
 
-        var beams = new Beam[count].AsSpan(); //List<Beam>(count);
+        var beams = GC.AllocateUninitializedArray<Beam>(count).AsSpan(); //List<Beam>(count);
         for (int i = 0; i < count; i++)
         {
             var (h, k, l) = decompose(beamsSpan[i].key);
