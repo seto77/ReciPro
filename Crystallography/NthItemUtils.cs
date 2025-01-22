@@ -478,9 +478,7 @@ public static class QuickSelect
         if (count <= 1)
             return begin;
 
-        int l = begin;
-        int r = begin + count - 2;
-        int endIndex = begin + count - 1;
+        int l = begin, r = begin + count - 2, endIndex = begin + count - 1;
 
         T pivot = source[endIndex];
 

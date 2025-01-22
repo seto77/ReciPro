@@ -1813,7 +1813,7 @@ public class BetheMethod
             maxNumOfBloch = MaxNumOfBloch;
         var mat = baseRotation * Crystal.MatrixInverseTransposed;
         #region directionを初期化
-        
+
         FrozenSet<(int h, int k, int l)> direction;
         if (Crystal.Symmetry.LatticeTypeStr == "F") direction = directionF;
         else if (Crystal.Symmetry.LatticeTypeStr == "A") direction = directionA;
@@ -1826,8 +1826,8 @@ public class BetheMethod
         #endregion directionを初期化
 
         var limit = maxNumOfBloch * 8;
-        var pool = ArrayPool<(int key, double rating)>.Shared.Rent(limit);//beamsTmpをレンタル
-        var beamsSpan = pool.AsSpan(0,limit);
+        var pool = ArrayPool<(int key, float rating)>.Shared.Rent(limit);//poolをレンタル
+        var beamsSpan = pool.AsSpan(0, limit);
         int count = 0;
         beamsSpan[count++] = (compose(0, 0, 0), 0);
         var outer = new List<(int key, double gLen)> { (compose(0, 0, 0), 0) };
@@ -1860,7 +1860,7 @@ public class BetheMethod
                             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
                             double q = k0_2 - (vX * vX + vY * vY + vZ * vZ);
                             if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
-                                beamsSpan[count++] = (newKey, gLen * q * q);
+                                beamsSpan[count++] = (newKey, (float)(gLen * q * q));
                             outer.Add((newKey, gLen));
                         }
                     }
@@ -1868,7 +1868,7 @@ public class BetheMethod
         }
 
         count = Math.Min(count, maxNumOfBloch + 1);
-        
+
         QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));//大して速くない
         //beamsSpan.Sort(static (a, b) => a.rating.CompareTo(b.rating));
 
@@ -1882,7 +1882,7 @@ public class BetheMethod
             var g = new Vector3DBase(gX, gY, gZ);
             beams[i] = new Beam((h, k, l), g, getU(AccVoltage, new Beam((h, k, l), g)), (q, p));
         }
-        ArrayPool<(int key, double rating)>.Shared.Return(pool);//poolを返却
+        ArrayPool<(int key, float rating)>.Shared.Return(pool);//poolを返却
 
         beams.Sort(static (a, b) => a.Rating.CompareTo(b.Rating));
 
