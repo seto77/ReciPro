@@ -597,11 +597,11 @@ public partial class FormDiffractionSimulator : Form
 
         //対物絞りの範囲を示す円
         if (formMain.toolStripButtonImageSimulator.Checked && formMain.FormImageSimulator.ImageMode == FormImageSimulator.ImageModes.HRTEM
-            && !double.IsInfinity(formMain.FormImageSimulator.ObjAperRadius))
+            && !double.IsInfinity(formMain.FormImageSimulator.HRTEM_ObjAperRadius))
         {
-            var aperR = CameraLength2 * Math.Tan(formMain.FormImageSimulator.ObjAperRadius);
-            var aperX = CameraLength2 * Math.Tan(formMain.FormImageSimulator.ObjAperX);
-            var aperY = CameraLength2 * Math.Tan(formMain.FormImageSimulator.ObjAperY);
+            var aperR = CameraLength2 * Math.Tan(formMain.FormImageSimulator.HRTEM_ObjAperRadius);
+            var aperX = CameraLength2 * Math.Tan(formMain.FormImageSimulator.HRTEM_ObjAperX);
+            var aperY = CameraLength2 * Math.Tan(formMain.FormImageSimulator.HRTEM_ObjAperY);
 
             var pen = new Pen(Brushes.LightGreen, (float)Resolution);
             g.DrawEllipse(pen, (float)(aperX - aperR), (float)(-aperY - aperR), (float)(aperR * 2), (float)(aperR * 2));

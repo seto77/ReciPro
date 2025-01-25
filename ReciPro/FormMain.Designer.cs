@@ -406,7 +406,7 @@
             buttonChange.Name = "buttonChange";
             toolTip.SetToolTip(buttonChange, resources.GetString("buttonChange.ToolTip"));
             buttonChange.UseVisualStyleBackColor = false;
-            buttonChange.Click += ButtonChange_Click;
+            buttonChange.Click += ButtonReplace_Click;
             // 
             // panel3
             // 

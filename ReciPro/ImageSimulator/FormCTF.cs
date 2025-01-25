@@ -18,13 +18,13 @@ public partial class FormCTF : Form
     public double Δf => FormImageSimulator.Defocus;
     public double DeltaV => FormImageSimulator.DeltaVol;
     public double V => FormImageSimulator.AccVol;
-    public double Beta => FormImageSimulator.Beta;
+    public double Beta => FormImageSimulator.HRTEM_Beta;
     public double Lambda => FormImageSimulator.Lambda;
-    public double SigmaS => FormImageSimulator.SourceSizeSigma;
+    public double SigmaS => FormImageSimulator.STEM_SourceSizeSigma;
 
-    public double Convergence => FormImageSimulator.ConvergenceAngle;
+    public double Convergence => FormImageSimulator.STEM_ConvergenceAngle;
 
-    public double ObjAperRadius => FormImageSimulator.ObjAperRadius;
+    public double ObjAperRadius => FormImageSimulator.HRTEM_ObjAperRadius;
 
     public FormImageSimulator.ImageModes ImageMode => FormImageSimulator.ImageMode;
 

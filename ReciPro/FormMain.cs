@@ -170,6 +170,8 @@ public partial class FormMain : Form
 
     public string CurrentZoneAxis { get; set; } = "";
 
+    public int SelectedCrystalIndex { get => listBox.SelectedIndex; set => listBox.SelectedIndex = value; }
+
     #endregion
 
     #region コンストラクト、ロード
@@ -1044,7 +1046,9 @@ public partial class FormMain : Form
 
     #region リストボックス関連
 
-    private void ButtonUpper_Click(object sender, EventArgs e)
+    private void ButtonUpper_Click(object sender, EventArgs e) => MoveUp();
+
+    public void MoveUp()
     {
         var n = listBox.SelectedIndex;
         if (n <= 0) return;
@@ -1052,9 +1056,11 @@ public partial class FormMain : Form
         listBox.Items.Remove(listBox.SelectedItem);
         listBox.Items.Insert(n - 1, o);
         listBox.SelectedIndex = n - 1;
+        Application.DoEvents();
     }
 
-    private void ButtonLower_Click(object sender, EventArgs e)
+    private void ButtonLower_Click(object sender, EventArgs e) => MoveDown();
+    public void MoveDown()
     {
         int n = listBox.SelectedIndex;
         if (n >= listBox.Items.Count - 1) return;
@@ -1062,9 +1068,13 @@ public partial class FormMain : Form
         listBox.Items.Remove(listBox.SelectedItem);
         listBox.Items.Insert(n + 1, o);
         listBox.SelectedIndex = n + 1;
+        Application.DoEvents();
     }
 
-    private void ButtonAdd_Click(object sender, EventArgs e)
+
+    private void ButtonAdd_Click(object sender, EventArgs e) => AddCrystal();
+
+    public void AddCrystal()
     {
         if (crystalControl.StrainControlVisible) return;
 
@@ -1073,9 +1083,13 @@ public partial class FormMain : Form
             listBox.Items.Add(crystalControl.Crystal);
         listBox.SelectedIndex = -1;
         listBox.SelectedIndex = listBox.Items.Count - 1;
+        Application.DoEvents();
     }
 
-    private void ButtonDelete_Click(object sender, EventArgs e)
+
+    private void ButtonDelete_Click(object sender, EventArgs e) => DeleteCrystal();
+    
+    public void DeleteCrystal()
     {
         if (listBox.SelectedIndex >= 0)
         {
@@ -1085,12 +1099,15 @@ public partial class FormMain : Form
                 listBox.SelectedIndex = n;
             else
                 listBox.SelectedIndex = n - 1;
+            Application.DoEvents();
         }
     }
 
-    private void ButtonAllClear_Click(object sender, EventArgs e) => listBox.Items.Clear();
+    private void ButtonAllClear_Click(object sender, EventArgs e) => CrystalListClear();
+    public void CrystalListClear() => listBox.Items.Clear();
 
-    private void ButtonChange_Click(object sender, EventArgs e)
+    private void ButtonReplace_Click(object sender, EventArgs e) => ReplaceCrystal();
+    public void ReplaceCrystal()
     {
         if (crystalControl.StrainControlVisible) return;
 
@@ -1102,6 +1119,7 @@ public partial class FormMain : Form
             listBox.Items[listBox.SelectedIndex] = crystalControl.Crystal;
     }
 
+
     private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (listBox.SelectedIndex >= 0)
@@ -1112,7 +1130,7 @@ public partial class FormMain : Form
     #endregion リストボックス関連
 
     #region 結晶データの読み込み/書き込み
-    private void ReadCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
+    public void ReadCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
     {
         var cry = new List<Crystal>();
         var list = ConvertCrystalData.ConvertToCrystalList(fileName);
@@ -1175,8 +1193,9 @@ public partial class FormMain : Form
     {
         var dlg = new OpenFileDialog { Filter = "cif, amc|*.cif;*.amc" };
         if (dlg.ShowDialog() == DialogResult.OK)
-            crystalControl.ReadCrystal(dlg.FileName);
+            ReadCrystal(dlg.FileName);
     }
+    public void ReadCrystal(string fileName) => crystalControl.ReadCrystal(fileName);
 
     private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
     {

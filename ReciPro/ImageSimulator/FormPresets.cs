@@ -201,10 +201,10 @@ public partial struct ImageSimulatorSetting
         ImageSize = f.ImageSize;
 
         //HRTEM固有
-        ObjAperRadius = f.ObjAperRadius;
-        ObjAperX = f.ObjAperX;
-        ObjAperY = f.ObjAperY;
-        Beta = f.Beta;
+        ObjAperRadius = f.HRTEM_ObjAperRadius;
+        ObjAperX = f.HRTEM_ObjAperX;
+        ObjAperY = f.HRTEM_ObjAperY;
+        Beta = f.HRTEM_Beta;
 
         //シリアルイメージモード
         ThicknessArray = f.ThicknessArray;
@@ -213,9 +213,9 @@ public partial struct ImageSimulatorSetting
         //STEM固有
         DetectorInnerAngle = f.DetectorInnerAngle;
         DetectorOuterAngle = f.DetectorOuterAngle;
-        ConvergenceAngle = f.ConvergenceAngle;
-        SourceSize = f.SourceSizeFWHM;
-        SliceThicknessForInelastic = f.SliceThicknessForInelastic;
+        ConvergenceAngle = f.STEM_ConvergenceAngle;
+        SourceSize = f.STEM_SourceSizeFWHM;
+        SliceThicknessForInelastic = f.STEM_SliceThicknessForInelastic;
     }
 
     public readonly void Apply(FormImageSimulator f)
@@ -236,10 +236,10 @@ public partial struct ImageSimulatorSetting
         f.ImageSize = ImageSize;
 
         //HRTEM固有
-        f.ObjAperRadius = ObjAperRadius;
-        f.ObjAperX = ObjAperX;
-        f.ObjAperY = ObjAperY;
-        f.Beta = Beta;
+        f.HRTEM_ObjAperRadius = ObjAperRadius;
+        f.HRTEM_ObjAperX = ObjAperX;
+        f.HRTEM_ObjAperY = ObjAperY;
+        f.HRTEM_Beta = Beta;
 
         //シリアルイメージモード
         f.ThicknessArray = ThicknessArray;
@@ -248,9 +248,9 @@ public partial struct ImageSimulatorSetting
         //STEM固有
         f.DetectorInnerAngle = DetectorInnerAngle;
         f.DetectorOuterAngle = DetectorOuterAngle;
-        f.ConvergenceAngle = ConvergenceAngle;
-        f.SourceSizeFWHM = SourceSize;
-        f.SliceThicknessForInelastic = SliceThicknessForInelastic;
+        f.STEM_ConvergenceAngle = ConvergenceAngle;
+        f.STEM_SourceSizeFWHM = SourceSize;
+        f.STEM_SliceThicknessForInelastic = SliceThicknessForInelastic;
     }
 }
 #endregion

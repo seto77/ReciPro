@@ -12,16 +12,13 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Windows.Services.Maps.LocalSearch;
 using static System.Buffers.ArrayPool<System.Numerics.Complex>;
 using static System.Numerics.Complex;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
-
 #endregion
 
 namespace Crystallography;
@@ -508,7 +505,7 @@ public class BetheMethod
             uDictionary.Clear();
 
             //beamsの計算コストが非常に高いので、4×4のグリッドを作って、中心ピクセルのbeamsで代表する
-            var grid = 4;
+            var grid = 2;
             var beamsPreliminary = beamDirectionsP
                 .Where((e, i) => (i % width) % grid == grid / 2 && (i / width) % grid == grid / 2)
                 .Select(e =>
@@ -1805,7 +1802,6 @@ public class BetheMethod
     /// <param name="baseRotation">結晶方位</param>
     /// <param name="vecK0">ビーム方位</param>
     /// <param name="maxNumOfBloch">指定しない場合は MaxNumOfBloch を使用 </param>
-    /// <param name="use_gDictionary">ビーム方位や結晶方位が変化していない場合は true</param>
     /// <returns></returns>
     public Beam[] Find_gVectors(Matrix3D baseRotation, Vector3DBase vecK0, int maxNumOfBloch = -1)
     {
@@ -1836,7 +1832,9 @@ public class BetheMethod
         var shift = direction.Select(dir => (mat * dir).Length).Max() * 0.5;//この数字が妥当かどうか？
 
         double k0_2 = vecK0.Length2, k0 = vecK0.Length;
+        float k0_2F = (float)k0_2;
         var maxQ = Math.Abs(k0_2 - (k0 + shift) * (k0 + shift));
+        var maxQF = (float)maxQ;
 
         var (m11, m12, m13, m21, m22, m23, m31, m32, m33) = mat.Tuple;
         var (kX, kY, kZ) = vecK0.Tuple;
@@ -1847,11 +1845,13 @@ public class BetheMethod
             outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
             var min = outer[0].gLen + shift;
             var end = outer.FindLastIndex(o => o.gLen - min < shift * 2) + 1;
-            foreach (var (h1, k1, l1) in outer[..end].Select(e => decompose(e.key)))
+            foreach (var o in CollectionsMarshal.AsSpan(outer)[..end])
+            {
+                var (h1, k1, l1) = decompose(o.key);
                 foreach (var (h2, k2, l2) in direction)
                     if (count < limit)
                     {
-                        var (h, k, l) = (h1 + h2, k1 + k2, l1 + l2);
+                        int h = h1 + h2, k = k1 + k2, l = l1 + l2;
                         var newKey = compose(h, k, l);
                         if (whole.Add(newKey))
                         {
@@ -1859,11 +1859,13 @@ public class BetheMethod
                             double gLen = Math.Sqrt(gX * gX + gY * gY + gZ * gZ);
                             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
                             double q = k0_2 - (vX * vX + vY * vY + vZ * vZ);
+
                             if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
                                 beamsSpan[count++] = (newKey, (float)(gLen * q * q));
                             outer.Add((newKey, gLen));
                         }
                     }
+            }
             outer.RemoveRange(0, end); //outer = outer[end..]; //こちらのほうが遅い。
         }
 
