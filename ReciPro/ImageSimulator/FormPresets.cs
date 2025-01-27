@@ -211,11 +211,11 @@ public partial struct ImageSimulatorSetting
         DefocusArray = f.DefocusArray;
 
         //STEM固有
-        DetectorInnerAngle = f.DetectorInnerAngle;
-        DetectorOuterAngle = f.DetectorOuterAngle;
+        DetectorInnerAngle = f.STEM_DetectorInnerAngle;
+        DetectorOuterAngle = f.STEM_DetectorOuterAngle;
         ConvergenceAngle = f.STEM_ConvergenceAngle;
         SourceSize = f.STEM_SourceSizeFWHM;
-        SliceThicknessForInelastic = f.STEM_SliceThicknessForInelastic;
+        SliceThicknessForInelastic = f.STEM_SliceThickness;
     }
 
     public readonly void Apply(FormImageSimulator f)
@@ -246,11 +246,11 @@ public partial struct ImageSimulatorSetting
         f.DefocusArray = DefocusArray;
 
         //STEM固有
-        f.DetectorInnerAngle = DetectorInnerAngle;
-        f.DetectorOuterAngle = DetectorOuterAngle;
+        f.STEM_DetectorInnerAngle = DetectorInnerAngle;
+        f.STEM_DetectorOuterAngle = DetectorOuterAngle;
         f.STEM_ConvergenceAngle = ConvergenceAngle;
         f.STEM_SourceSizeFWHM = SourceSize;
-        f.STEM_SliceThicknessForInelastic = SliceThicknessForInelastic;
+        f.STEM_SliceThickness = SliceThicknessForInelastic;
     }
 }
 #endregion

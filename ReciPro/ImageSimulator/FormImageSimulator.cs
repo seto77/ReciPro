@@ -201,7 +201,7 @@ public partial class FormImageSimulator : Form
     public double HRTEM_ObjAperY { get => numericBoxHRTEM_ObjAperY.Value / 1000; set => numericBoxHRTEM_ObjAperY.Value = value * 1000; }
 
     /// <summary>
-    /// β (illumination semiangle) (rad)
+    /// β (illumination semiangle) (rad) 
     /// </summary>
     public double HRTEM_Beta { get => numericBoxHRTEM_BetaAgnle.Value / 1000; set => numericBoxHRTEM_BetaAgnle.Value = value * 1000; }
 
@@ -222,12 +222,12 @@ public partial class FormImageSimulator : Form
     /// <summary>
     /// STEM検出器の内径角度 (rad)
     /// </summary>
-    public double DetectorInnerAngle { get => numericBoxSTEM_DetectorInnerAngle.Value / 1000; set => numericBoxSTEM_DetectorInnerAngle.Value = value * 1000; }
+    public double STEM_DetectorInnerAngle { get => numericBoxSTEM_DetectorInnerAngle.Value / 1000; set => numericBoxSTEM_DetectorInnerAngle.Value = value * 1000; }
 
     /// <summary>
     /// STEM検出器の外径角度 (rad)
     /// </summary>
-    public double DetectorOuterAngle { get => numericBoxSTEM_DetectorOuterAngle.Value / 1000; set => numericBoxSTEM_DetectorOuterAngle.Value = value * 1000; }
+    public double STEM_DetectorOuterAngle { get => numericBoxSTEM_DetectorOuterAngle.Value / 1000; set => numericBoxSTEM_DetectorOuterAngle.Value = value * 1000; }
 
     /// <summary>
     /// STEM時の収束角(rad)
@@ -235,19 +235,15 @@ public partial class FormImageSimulator : Form
     public double STEM_ConvergenceAngle { get => numericBoxSTEM_ConvergenceAngle.Value / 1000; set => numericBoxSTEM_ConvergenceAngle.Value = value * 1000; }
 
     /// <summary>
-    /// STEMモードの時のみ有効. 収束ビームを分解する角度. mrad単位
+    /// STEMモードの時のみ有効. 収束ビームを分解する角度. Rad単位 (表示上は mrad なので1000倍に変換される)
     /// </summary>
-    public double STEM_AngularResolution { get => numericBoxSTEM_AngleResolution.Value; set => numericBoxSTEM_AngleResolution.Value = value; }
+    public double STEM_AngularResolution { get => numericBoxSTEM_AngleResolution.Value / 1000; set => numericBoxSTEM_AngleResolution.Value = value * 1000; }
 
     /// <summary>
-    /// STEMモードの時のみ有効. TDS計算の際の、サンプルのスライス厚み.
+    /// STEMモードの時のみ有効. TDS計算の際の、サンプルのスライス厚み.　(nm単位)
     /// </summary>
     public double STEM_SliceThickness { get => numericBoxSTEM_SliceThicknessForInelastic.Value; set => numericBoxSTEM_SliceThicknessForInelastic.Value = value; }
 
-    /// <summary>
-    /// STEM Inelasticを計算する際のスライス厚み(nm単位)
-    /// </summary>
-    public double STEM_SliceThicknessForInelastic { get => numericBoxSTEM_SliceThicknessForInelastic.Value; set => numericBoxSTEM_SliceThicknessForInelastic.Value = value; }
 
     #endregion
 
@@ -408,7 +404,7 @@ public partial class FormImageSimulator : Form
             AccVol,
             Cs,
             Delta,
-            STEM_SliceThicknessForInelastic,
+            STEM_SliceThickness,
             ImageSize,
             ImageResolution,
             STEM_SourceSizeFWHM,
@@ -417,8 +413,8 @@ public partial class FormImageSimulator : Form
             DefocusArray,
             [.. directions],
             STEM_ConvergenceAngle,
-            DetectorInnerAngle,
-            DetectorOuterAngle
+            STEM_DetectorInnerAngle,
+            STEM_DetectorOuterAngle
             );
 
         this.buttonSimulate.Visible = false;
@@ -944,8 +940,8 @@ public partial class FormImageSimulator : Form
     private void numericBoxSTEM_ConvergenceAngle_ValueChanged(object sender, EventArgs e)
     {
         textBoxConvRadius.Text = (Sin(STEM_ConvergenceAngle) / Lambda).ToString("f3");
-        textBoxInnerRadius.Text = (Sin(DetectorInnerAngle) / Lambda).ToString("f3");
-        textBoxOuterRadius.Text = (Sin(DetectorOuterAngle) / Lambda).ToString("f3");
+        textBoxInnerRadius.Text = (Sin(STEM_DetectorInnerAngle) / Lambda).ToString("f3");
+        textBoxOuterRadius.Text = (Sin(STEM_DetectorOuterAngle) / Lambda).ToString("f3");
         FormCTF.Renew();
     }
 
@@ -1478,29 +1474,29 @@ public partial class FormImageSimulator : Form
     private void typicalBF02MradToolStripMenuItem_Click(object sender, EventArgs e)
     {
         STEM_ConvergenceAngle = 25.0 / 1000;
-        DetectorInnerAngle = 0;
-        DetectorOuterAngle = 5.0 / 1000;
+        STEM_DetectorInnerAngle = 0;
+        STEM_DetectorOuterAngle = 5.0 / 1000;
     }
 
     private void typicalABF1224MradToolStripMenuItem_Click(object sender, EventArgs e)
     {
         STEM_ConvergenceAngle = 25.0 / 1000;
-        DetectorInnerAngle = 12.0 / 1000;
-        DetectorOuterAngle = 24.0 / 1000;
+        STEM_DetectorInnerAngle = 12.0 / 1000;
+        STEM_DetectorOuterAngle = 24.0 / 1000;
     }
 
     private void typicalLAADF2560MradToolStripMenuItem_Click(object sender, EventArgs e)
     {
         STEM_ConvergenceAngle = 25.0 / 1000;
-        DetectorInnerAngle = 26.0 / 1000;
-        DetectorOuterAngle = 60.0 / 1000;
+        STEM_DetectorInnerAngle = 26.0 / 1000;
+        STEM_DetectorOuterAngle = 60.0 / 1000;
     }
 
     private void typicalHAADF80250MradToolStripMenuItem_Click(object sender, EventArgs e)
     {
         STEM_ConvergenceAngle = 25.0 / 1000;
-        DetectorInnerAngle = 80.0 / 1000;
-        DetectorOuterAngle = 250.0 / 1000;
+        STEM_DetectorInnerAngle = 80.0 / 1000;
+        STEM_DetectorOuterAngle = 250.0 / 1000;
 
     }
 

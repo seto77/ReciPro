@@ -357,6 +357,8 @@ public class Macro : MacroBase
             p.help.Add($"ReciPro.{modeStr}.Cc  # Float. Set/get the Cc (chromatic aberration) value (in mm).");
             p.help.Add($"ReciPro.{modeStr}.DeltaV  # Float. Set/get the ΔV (1/e width of electron energy fluctuations) value (in eV).");
             p.help.Add($"ReciPro.{modeStr}.Scherzer  # Float. Get the Scherzer defocus value (in nm).");
+
+
         }
 
         #region 全共通
@@ -374,6 +376,7 @@ public class Macro : MacroBase
         public void Close() => sim.Visible = false;
         public void Simulate() { Open(); sim.ButtonSimulate_Click(null, null); }
 
+        //public void 
 
         #endregion
 
@@ -391,12 +394,16 @@ public class Macro : MacroBase
     {
         public STEMClass(Macro _p) : base(_p, FormImageSimulator.ImageModes.STEM)
         {
-            p.help.Add($"ReciPro.STEM.Thickness  # Set/get the index.");
+            p.help.Add($"ReciPro.STEM.AngularResolution  # Set/get the index.");
+            p.help.Add($"ReciPro.STEM.SliceThickness  # Set/get the index.");
+            p.help.Add($"ReciPro.STEM.ConvergenceAngle  # Set/get the index.");
         }
 
-        public double AngularResolution { get => sim.STEM_AngularResolution; set => sim.STEM_AngularResolution = value; }
+        public double AngularResolution { get => sim.STEM_AngularResolution * 1000; set => sim.STEM_AngularResolution = value / 1000; }
         public double SliceThickness { get => sim.STEM_SliceThickness; set => sim.STEM_SliceThickness = value; }
-        public double ConvergenceAngle { get => sim.STEM_ConvergenceAngle; set => sim.STEM_ConvergenceAngle = value; }
+        public double ConvergenceAngle { get => sim.STEM_ConvergenceAngle * 1000; set => sim.STEM_ConvergenceAngle = value / 1000; }
+        public double DetectorInnerAngle { get => sim.STEM_DetectorInnerAngle * 1000; set => sim.STEM_DetectorInnerAngle = value / 1000; }
+        public double DetectorOuterAngle { get => sim.STEM_DetectorOuterAngle * 1000; set => sim.STEM_DetectorOuterAngle = value / 1000; }
     }
 
     public class HRTEMClass : ImageSimulationClass
