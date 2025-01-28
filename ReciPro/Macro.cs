@@ -41,6 +41,83 @@ public class Macro : MacroBase
 
     #endregion
 
+
+    #region ファイルクラス
+    public class FileClass : MacroSub
+    {
+        private readonly Macro p;
+        public FileClass(Macro _p) : base(_p.main)
+        {
+            this.p = _p;
+            p.help.Add("ReciPro.File.GetFileName() # Get a file name.  \r\n Returned string is a full path of the selected file.");
+            p.help.Add("ReciPro.File.GetFileNames() # Get file names.  \r\n Returned value is a string array, \r\n  each of which is a full path of selected files.");
+            p.help.Add("ReciPro.File.GetDirectoryPath(string filename) # Get a directory path.\r\n Returned string is a full path to the filename.\r\n If filename is omitted, selection dialog will open.");
+            p.help.Add("ReciPro.File.ReadCrystal(string filename) # Read a crystal (CIF- or AMC-format only).");
+        }
+
+        public string GetDirectoryPath(string filename = "") => Execute<string>(new Func<string>(() => getDirectoryPath(filename)));
+        private static string getDirectoryPath(string filename = "")
+        {
+            string path = "";
+            if (filename == "")
+            {
+                var dlg = new FolderBrowserDialog();
+                path = dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : "";
+            }
+            else
+                path = System.IO.Path.GetDirectoryName(filename);
+            return path + "\\";
+        }
+
+
+        public string GetFileName() => Execute(() => getFileName());
+        private static string getFileName()
+        {
+            var dlg = new OpenFileDialog();
+            return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : "";
+        }
+
+        public string[] GetFileNames() => Execute<string[]>(new Func<string[]>(() => getFileNames()));
+        private static string[] getFileNames()
+        {
+            var dlg = new OpenFileDialog() { Multiselect = true };
+            return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : [];
+        }
+
+        public void ReadCrystal(string filename) => Execute(() => p.main.ReadCrystal(filename));
+
+        public void ReadCrystalList(string filename) => Execute(() => p.main.ReadCrystalList(filename, false, false));
+
+    }
+    #endregion
+
+    #region CrystalList クラス
+    public class CrystalListClass : MacroSub
+    {
+        private readonly Macro p;
+        public CrystalListClass(Macro _p) : base(_p.main)
+        {
+            this.p = _p;
+            p.help.Add("ReciPro.CrystalList.SelectedIndex  # Set/get the index (integer value) of the selected crystal in the list.");
+            p.help.Add("ReciPro.CrystalList.Add()  # Add the crystal at 'Crystal Information' to the end of the list.");
+            p.help.Add("ReciPro.CrystalList.Replace()  # Replace the crystal at 'Crystal Information' with the crystal selected in the list.");
+            p.help.Add("ReciPro.CrystalList.Delete()  # Delete the crystal selected in the list.");
+            p.help.Add("ReciPro.CrystalList.ClearAll()  # Delete all crystals in the list.");
+            p.help.Add("ReciPro.CrystalList.MoveUp()  # Move up the selected crystal in the list.");
+            p.help.Add("ReciPro.CrystalList.MoveDown()  # Move down the selected crystal in the list.");
+        }
+
+        public int SelectedIndex { get => p.main.SelectedCrystalIndex; set => p.main.SelectedCrystalIndex = value; }
+
+        public void Add() => Execute(() => p.main.AddCrystal());
+        public void Replace() => Execute(() => p.main.ReplaceCrystal());
+        public void Delete() => Execute(() => p.main.DeleteCrystal());
+        public void ClearAll() => Execute(() => p.main.CrystalListClear());
+        public void MoveUp() => Execute(() => p.main.MoveUp());
+        public void MoveDown() => Execute(() => p.main.MoveDown());
+    }
+    #endregion
+
     #region Dir (Direction 方位)クラス
     public class DirectionClass : MacroSub
     {
@@ -124,7 +201,7 @@ public class Macro : MacroBase
             p.help.Add("ReciPro.DifSim.Thickness # Float. Set/Get the sample thickness.");
             p.help.Add("ReciPro.DifSim.NumberOfDiffractedWaves # Integer. Set or get the number of diffracted waves used in the dynamic calculation.");
 
-            p.help.Add("ReciPro.DifSim.Beam_Parallel() # Set the incident beam parallel.");
+            p.help.Add("ReciPro.DifSim.Beam_Parallel() # Set the incident beam to 'Parallel'.");
             p.help.Add("ReciPro.DifSim.Beam_PrecessionXray() # Set the incident X-ray beam precessing.");
             p.help.Add("ReciPro.DifSim.Beam_PrecessionElectron() # Set the incident electron beam precessing.");
             p.help.Add("ReciPro.DifSim.Beam_Convergence() # Set the incident electron beam converging.");
@@ -142,7 +219,7 @@ public class Macro : MacroBase
 
             p.help.Add("ReciPro.DifSim.SkipRendering # True/False. Set/get whether screen rendering is skipped or not.");
 
-            p.help.Add("ReciPro.DifSim.SpotInfo() # Get spot information in CSV format.");
+            p.help.Add("ReciPro.DifSim.SpotInfo() # Get spot information as CSV-format text.");
 
             p.help.Add("ReciPro.DifSim.SaveAsPng(string filename) # Save the current simulation pattern as png format file. If filename is omitted, a dialog will open.");
 
@@ -246,82 +323,6 @@ public class Macro : MacroBase
     }
     #endregion
 
-    #region ファイルクラス
-    public class FileClass : MacroSub
-    {
-        private readonly Macro p;
-        public FileClass(Macro _p) : base(_p.main)
-        {
-            this.p = _p;
-            p.help.Add("ReciPro.File.GetFileName() # Get a file name.  \r\n Returned string is a full path of the selected file.");
-            p.help.Add("ReciPro.File.GetFileNames() # Get file names.  \r\n Returned value is a string array, \r\n  each of which is a full path of selected files.");
-            p.help.Add("ReciPro.File.GetDirectoryPath(string filename) # Get a directory path.\r\n Returned string is a full path to the filename.\r\n If filename is omitted, selection dialog will open.");
-            p.help.Add("ReciPro.File.ReadCrystal(string filename) # Read a crystal (CIF- or AMC-format only).");
-        }
-
-        public string GetDirectoryPath(string filename = "") => Execute<string>(new Func<string>(() => getDirectoryPath(filename)));
-        private static string getDirectoryPath(string filename = "")
-        {
-            string path = "";
-            if (filename == "")
-            {
-                var dlg = new FolderBrowserDialog();
-                path = dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : "";
-            }
-            else
-                path = System.IO.Path.GetDirectoryName(filename);
-            return path + "\\";
-        }
-
-
-        public string GetFileName() => Execute(() => getFileName());
-        private static string getFileName()
-        {
-            var dlg = new OpenFileDialog();
-            return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : "";
-        }
-
-        public string[] GetFileNames() => Execute<string[]>(new Func<string[]>(() => getFileNames()));
-        private static string[] getFileNames()
-        {
-            var dlg = new OpenFileDialog() { Multiselect = true };
-            return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : [];
-        }
-
-        public void ReadCrystal(string filename) => Execute(() => p.main.ReadCrystal(filename));
-
-        public void ReadCrystalList(string filename) => Execute(() => p.main.ReadCrystalList(filename, false, false));
-
-    }
-    #endregion
-
-    #region CrystalList クラス
-    public class CrystalListClass : MacroSub
-    {
-        private readonly Macro p;
-        public CrystalListClass(Macro _p) : base(_p.main)
-        {
-            this.p = _p;
-            p.help.Add("ReciPro.CrystalList.SelectedIndex  # Set/get the index (integer value) of the selected crystal in the list.");
-            p.help.Add("ReciPro.CrystalList.Add()  # Add the crystal at 'Crystal Information' to the end of the list.");
-            p.help.Add("ReciPro.CrystalList.Replace()  # Replace the crystal at 'Crystal Information' with the crystal selected in the list.");
-            p.help.Add("ReciPro.CrystalList.Delete()  # Delete the crystal selected in the list.");
-            p.help.Add("ReciPro.CrystalList.ClearAll()  # Delete all crystals in the list.");
-            p.help.Add("ReciPro.CrystalList.MoveUp()  # Move up the selected crystal in the list.");
-            p.help.Add("ReciPro.CrystalList.MoveDown()  # Move down the selected crystal in the list.");
-        }
-
-        public int SelectedIndex { get => p.main.SelectedCrystalIndex; set => p.main.SelectedCrystalIndex = value; }
-
-        public void Add() => Execute(() => p.main.AddCrystal());
-        public void Replace()=> Execute(() => p.main.ReplaceCrystal());
-        public void Delete() => Execute(() => p.main.DeleteCrystal());
-        public void ClearAll() => Execute(() => p.main.CrystalListClear());
-        public void MoveUp() => Execute(() => p.main.MoveUp());
-        public void MoveDown() => Execute(() => p.main.MoveDown());
-    }
-    #endregion
-
     #region ImageSimulatorクラス (派生クラスとしてHRTEM、STEM、Potential)
 
     public abstract class ImageSimulationClass : MacroSub
@@ -335,37 +336,47 @@ public class Macro : MacroBase
             sim = p.main.FormImageSimulator;
             Mode = mode;
             var modeStr = Mode switch { FormImageSimulator.ImageModes.STEM => "STEM", FormImageSimulator.ImageModes.HRTEM => "HRTEM", _ => "Potential" };
+            #region 全共通
+            p.help.Add($"ReciPro.{modeStr}.Open()  # Open the {modeStr} simulator window.");
+            p.help.Add($"ReciPro.{modeStr}.Close()  # Close the  {modeStr} simulator window.");
+            p.help.Add($"ReciPro.{modeStr}.Simulate()  # Simulate {modeStr} image(s) with the current settings.");
 
             p.help.Add($"ReciPro.{modeStr}.AccVol  # Float. Set/get the accelerating voltage of electron (in kV).");
             p.help.Add($"ReciPro.{modeStr}.NumberOfDiffractedWaves  # Integer.Set/get the maximum number of diffracted waves (Bloch waves) used in the dynamical scattering theory.");
+
             p.help.Add($"ReciPro.{modeStr}.ImageWidth  # Integer. Set/get the width of the image to be simulated (in pixel).");
-            p.help.Add($"ReciPro.{modeStr}.ImageHeight  # Integer.Set/get the height of the image to be simulated (in pixel).");
+            p.help.Add($"ReciPro.{modeStr}.ImageHeight  # Integer. Set/get the height of the image to be simulated (in pixel).");
             p.help.Add($"ReciPro.{modeStr}.ImageResolution  # Float. Set/get the resolution of the image to be simulated (in picometer/pixel).");
-            
             p.help.Add($"ReciPro.{modeStr}.UnitCellVisible  # True/False. Set/get whether or not to display a unit cell.");
             p.help.Add($"ReciPro.{modeStr}.LabelVisible  # True/False. Set/get whether or not to display a image label.");
-            p.help.Add($"ReciPro.{modeStr}.ScaleBarVisible  # True/False. whether or not to display a scale bar.");
+            p.help.Add($"ReciPro.{modeStr}.LabelSize  # Integer. Set/get the size of labels ");
+            p.help.Add($"ReciPro.{modeStr}.ScaleBarVisible  # True/False. Whether or not to display a scale bar.");
+            p.help.Add($"ReciPro.{modeStr}.ScaleBarLength  # Float. Set/get the length of the scalebar (in nm).");
+            p.help.Add($"ReciPro.{modeStr}.GaussianBlurEnabled  # True/False. Set/get whether or not to process Gaussian blur.");
+            p.help.Add($"ReciPro.{modeStr}.GaussianBlurFWHM  # Float. Set/get the FWHM value (in pm) of Gaussian blur.");
+            p.help.Add($"ReciPro.{modeStr}.OverprintSymbols  # True/False. On the saved image, whether or not to overprint the unit cell, labels and scale bar.");
+            p.help.Add($"ReciPro.{modeStr}.SaveIndividually  # True/False. When simulating in serial image mode, whether or not to save each image individually.");
+            
+            p.help.Add($"ReciPro.{modeStr}.SaveImageAsPng(filename)  # True/False. Save the simulated image as PNG format. If the file name is omitted, a dialog box will appear.");
+            p.help.Add($"ReciPro.{modeStr}.SaveImageAsTif(filename)  # True/False. Save the simulated image as TIFF format. If the file name is omitted, a dialog box will appear.");
+            p.help.Add($"ReciPro.{modeStr}.SaveImageAsEmf(filename)  # True/False. Save the simulated image as Metafile (EMF) format. If the file name is omitted, a dialog box will appear.");
 
-            p.help.Add($"ReciPro.{modeStr}.Open()  # Open the {modeStr} simulator.");
-            p.help.Add($"ReciPro.{modeStr}.Close()  # Close the  {modeStr} simulator.");
-            p.help.Add($"ReciPro.{modeStr}.Simulate()  # Simulate {modeStr} images with the current settings.");
             if (Mode == FormImageSimulator.ImageModes.POTENTIAL) return; //Potentialだった場合はここで終了
+            #endregion
 
+            #region HRTEM/STEM共通
             p.help.Add($"ReciPro.{modeStr}.Thickness  # Float. Set/get the sample thickness (in nm).");
             p.help.Add($"ReciPro.{modeStr}.Defocus  # Float. Set/get the Defocus value (in nm).");
             p.help.Add($"ReciPro.{modeStr}.Cs  # Float. Set/get the Cs (spherical aberration) value (in mm).");
             p.help.Add($"ReciPro.{modeStr}.Cc  # Float. Set/get the Cc (chromatic aberration) value (in mm).");
             p.help.Add($"ReciPro.{modeStr}.DeltaV  # Float. Set/get the ΔV (1/e width of electron energy fluctuations) value (in eV).");
             p.help.Add($"ReciPro.{modeStr}.Scherzer  # Float. Get the Scherzer defocus value (in nm).");
-
-
+            #endregion
         }
 
         #region 全共通
-
         public double AccVol { get => sim.AccVol; set => sim.AccVol = value; }
         public int NumberOfDiffractedWaves { get => sim.BlochNum; set => sim.BlochNum = value; }
-        
         public int ImageWidth { get => sim.ImageSize.Width; set => sim.ImageSize = new Size(value, sim.ImageSize.Height); }
         public int ImageHeight { get => sim.ImageSize.Height; set => sim.ImageSize = new Size(sim.ImageSize.Width, value); }
         public double ImageResolution { get => sim.ImageResolution; set => sim.ImageResolution = value; }
@@ -383,11 +394,9 @@ public class Macro : MacroBase
 
         public bool OverprintSymbols { get => sim.OverprintSymbols; set => sim.OverprintSymbols = value; }
         public bool SaveIndividually { get => sim.SaveIndividually; set => sim.SaveIndividually = value; }
-        public void SaveImageAsPng(string filename) { }
-        public void SaveImageAsTif(string filename) { }
-        public void SaveImageAsEmf(string filename) { }
-
-        //public void 
+        public void SaveImageAsPng(string filename=null) => sim.Save(FormImageSimulator.FormatEnum.PNG, FormImageSimulator.ActionEnum.Save, filename);
+        public void SaveImageAsTif(string filename=null) => sim.Save(FormImageSimulator.FormatEnum.TIFF, FormImageSimulator.ActionEnum.Save, filename);
+        public void SaveImageAsEmf(string filename=null) => sim.Save(FormImageSimulator.FormatEnum.Meta, FormImageSimulator.ActionEnum.Save, filename);
 
         #endregion
 
@@ -399,7 +408,7 @@ public class Macro : MacroBase
         public double DeltaV { get => sim.DeltaVol; set => sim.DeltaVol = value; }
         public double Scherzer => sim.Scherzer;
 
-        public bool SingleImageMode = true;
+        //public bool SingleImageMode { get => };
         public bool SerialImageMode = true;
         public double SerialImageWithDepths;
         public double SerialImageWithThicknesses;
@@ -412,9 +421,9 @@ public class Macro : MacroBase
     {
         public STEMClass(Macro _p) : base(_p, FormImageSimulator.ImageModes.STEM)
         {
-            p.help.Add($"ReciPro.STEM.AngularResolution  # Set/get the index.");
-            p.help.Add($"ReciPro.STEM.SliceThickness  # Set/get the index.");
-            p.help.Add($"ReciPro.STEM.ConvergenceAngle  # Set/get the index.");
+            p.help.Add($"ReciPro.STEM.AngularResolution  # Float. Set/get the index.");
+            p.help.Add($"ReciPro.STEM.SliceThickness  # Float. Set/get the slice thickness (in nm) for TDS calculation.");
+            p.help.Add($"ReciPro.STEM.ConvergenceAngle  # Float. Set/get the convergence semiangle (in mrad).");
         }
 
         public double AngularResolution { get => sim.STEM_AngularResolution * 1000; set => sim.STEM_AngularResolution = value / 1000; }
@@ -428,12 +437,12 @@ public class Macro : MacroBase
     {
         public HRTEMClass(Macro _p) : base(_p, FormImageSimulator.ImageModes.HRTEM)
         {
-            p.help.Add($"ReciPro.HRTEM.Beta  # Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.ApertureSemiangle  # Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.Beta  # Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.Beta  # Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.Beta  # Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.Beta  # Set/get β (in mrad): illumination semiangle .");
+            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
+            p.help.Add($"ReciPro.HRTEM.ApertureSemiangle  # Float. Set/get β (in mrad): illumination semiangle .");
+            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
+            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
+            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
+            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
 
         }
         public double Beta { get => sim.HRTEM_Beta; set => sim.HRTEM_Beta = value; }

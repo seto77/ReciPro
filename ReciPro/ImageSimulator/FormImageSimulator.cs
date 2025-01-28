@@ -1187,9 +1187,9 @@ public partial class FormImageSimulator : Form
 
 
     }
-    private enum FormatEnum { Meta, PNG, TIFF }
-    private enum ActionEnum { Save, Copy }
-    private void Save(FormatEnum format, ActionEnum action)
+    public enum FormatEnum { Meta, PNG, TIFF }
+    public enum ActionEnum { Save, Copy }
+    public void Save(FormatEnum format, ActionEnum action, string _filename=null)
     {
         if (pictureBoxes != null && pictureBoxes.Length != 0)
         {
@@ -1250,9 +1250,28 @@ public partial class FormImageSimulator : Form
             //ここから、実際の処理
 
             //先にファイルダイアログの処理をしてしまう
-            var dlg = new SaveFileDialog { Filter = format switch { FormatEnum.Meta => "*.emf|*.emf", FormatEnum.PNG => "*.png|*.png", _ => "*.tif|*.tif" } };
-            if (action == ActionEnum.Save)
-                if (dlg.ShowDialog() != DialogResult.OK) return;
+            var filename = _filename;
+
+            if (_filename == null && action == ActionEnum.Save)
+            {
+                var dlg = new SaveFileDialog { Filter = format switch { FormatEnum.Meta => "*.emf|*.emf", FormatEnum.PNG => "*.png|*.png", _ => "*.tif|*.tif" } };
+                if (dlg.ShowDialog() == DialogResult.OK)
+                    filename = dlg.FileName;
+                else
+                    return;
+            }
+            //
+            if(action== ActionEnum.Save)
+            {
+                if (!Path.Exists(Path.GetDirectoryName(filename))) 
+                    return;
+                if (format == FormatEnum.PNG && !filename.ToLower().EndsWith(".png"))
+                    filename += ".png";
+                else if (format == FormatEnum.TIFF && !filename.ToLower().EndsWith(".tif"))
+                    filename += ".tif";
+                else if (format == FormatEnum.Meta && !filename.ToLower().EndsWith(".emf"))
+                    filename += ".emf";
+            }
 
             //メタファイル形式の時
             if (format == FormatEnum.Meta)
@@ -1265,14 +1284,14 @@ public partial class FormImageSimulator : Form
                             if (pseudo[r, c].Width != 0)
                             {
                                 var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
-                                var fileName = dlg.FileName.Replace(".emf", " (" + text + ").emf");
-                                actionForMetafile(pseudo[r, c], fileName);
+                                var fn = filename.Replace(".emf", " (" + text + ").emf");
+                                actionForMetafile(pseudo[r, c], fn);
                             }
                 }
                 else//全体保存 or 全体コピー
                 {
                     if (action == ActionEnum.Save)
-                        actionForMetafile(null, dlg.FileName);
+                        actionForMetafile(null, filename);
                     else
                         actionForMetafile(null, "");//filename を "" にすると、コピー
                 }
@@ -1290,7 +1309,7 @@ public partial class FormImageSimulator : Form
                                 var bmp = new Bitmap(width, height);
                                 draw(Graphics.FromImage(bmp), pseudo[r, c]);
                                 var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
-                                bmp.Save(dlg.FileName.Replace(".png", " (" + text + ").png"), ImageFormat.Png);
+                                bmp.Save(filename.Replace(".png", " (" + text + ").png"), ImageFormat.Png);
                             }
                 }
                 else//全体保存 or 全体コピー
@@ -1298,7 +1317,7 @@ public partial class FormImageSimulator : Form
                     var bmp = new Bitmap(col * width, row * height);
                     draw(Graphics.FromImage(bmp), null);
                     if (action == ActionEnum.Save)
-                        bmp.Save(dlg.FileName, ImageFormat.Png);
+                        bmp.Save(filename, ImageFormat.Png);
                     else
                         Clipboard.SetDataObject(bmp);
                 }
@@ -1310,8 +1329,8 @@ public partial class FormImageSimulator : Form
                         if (pseudo[r, c].Width != 0)
                         {
                             var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
-                            var filename = pseudo.Length == 1 ? dlg.FileName : dlg.FileName.Replace(".tif", " (" + text + ").tif");
-                            Tiff.Writer(filename, pseudo[r, c].SrcValuesGray, 3, width);
+                            var fn = pseudo.Length == 1 ? filename : filename.Replace(".tif", " (" + text + ").tif");
+                            Tiff.Writer(fn, pseudo[r, c].SrcValuesGray, 3, width);
                         }
             }
         }
