@@ -2330,6 +2330,9 @@
   <data name="checkBoxSerialThickness.Text" xml:space="preserve">
     <value>Thickness (nm)</value>
   </data>
+  <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
+    <value>Create a series of images with different depths</value>
+  </data>
   <data name="&gt;&gt;checkBoxSerialThickness.Name" xml:space="preserve">
     <value>checkBoxSerialThickness</value>
   </data>
@@ -2365,6 +2368,9 @@
   </data>
   <data name="checkBoxSerialDefocus.Text" xml:space="preserve">
     <value>Defocus (nm)</value>
+  </data>
+  <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
+    <value>Create a series of images with different thicknesses</value>
   </data>
   <data name="&gt;&gt;checkBoxSerialDefocus.Name" xml:space="preserve">
     <value>checkBoxSerialDefocus</value>
@@ -3863,63 +3869,63 @@
   <data name="&gt;&gt;numericBoxSTEM_AngleResolution.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.FooterText" xml:space="preserve">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.FooterText" xml:space="preserve">
     <value>nm</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.HeaderText" xml:space="preserve">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
     <value>Slice thickness for TDS calculation</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 46</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 18</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.Size" type="System.Drawing.Size, System.Drawing">
     <value>261, 23</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.ToolTip" xml:space="preserve">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
     <value>Sets the thickness to slice the sample when calculating the TDS electron intensity.
 Smaller values result in slower calculation speed but higher accuracy.</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.ToolTip1" xml:space="preserve">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip1" xml:space="preserve">
     <value>Sets the thickness to slice the sample when calculating the TDS electron intensity.
 Smaller values result in slower calculation speed but higher accuracy.</value>
   </data>
-  <data name="&gt;&gt;numericBoxSliceThicknessForInelasticSTEM.Name" xml:space="preserve">
-    <value>numericBoxSliceThicknessForInelasticSTEM</value>
+  <data name="&gt;&gt;numericBoxSTEM_SliceThicknessForInelastic.Name" xml:space="preserve">
+    <value>numericBoxSTEM_SliceThicknessForInelastic</value>
   </data>
-  <data name="&gt;&gt;numericBoxSliceThicknessForInelasticSTEM.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxSTEM_SliceThicknessForInelastic.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxSliceThicknessForInelasticSTEM.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxSTEM_SliceThicknessForInelastic.Parent" xml:space="preserve">
     <value>groupBoxSTEMoption2</value>
   </data>
-  <data name="&gt;&gt;numericBoxSliceThicknessForInelasticSTEM.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxSTEM_SliceThicknessForInelastic.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="flowLayoutPanel10.AutoSize" type="System.Boolean, mscorlib">
@@ -4762,58 +4768,58 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxSTEM_EffectiveSourceSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_EffectiveSourceSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_EffectiveSourceSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.FooterText" xml:space="preserve">
+  <data name="numericBoxSTEM_EffectiveSourceSize.FooterText" xml:space="preserve">
     <value>pm</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxSTEM_EffectiveSourceSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>211, 105</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxSTEM_EffectiveSourceSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_EffectiveSourceSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_EffectiveSourceSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 18</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_EffectiveSourceSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 23</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxSTEM_EffectiveSourceSize.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_EffectiveSourceSize.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.ToolTip" xml:space="preserve">
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>Size of the effective electron source.</value>
   </data>
-  <data name="numericBoxEffectiveSourceSize.ToolTip1" xml:space="preserve">
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
     <value>Size of the effective electron source.</value>
   </data>
-  <data name="&gt;&gt;numericBoxEffectiveSourceSize.Name" xml:space="preserve">
-    <value>numericBoxEffectiveSourceSize</value>
+  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Name" xml:space="preserve">
+    <value>numericBoxSTEM_EffectiveSourceSize</value>
   </data>
-  <data name="&gt;&gt;numericBoxEffectiveSourceSize.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxEffectiveSourceSize.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Parent" xml:space="preserve">
     <value>groupBoxSTEMoption1</value>
   </data>
-  <data name="&gt;&gt;numericBoxEffectiveSourceSize.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -5330,52 +5336,52 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;checkBoxOpenAperture.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxObjAperX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxHRTEM_ObjAperX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxObjAperX.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxObjAperX.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperX.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxObjAperX.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperX.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxObjAperX.HeaderText" xml:space="preserve">
+  <data name="numericBoxHRTEM_ObjAperX.HeaderText" xml:space="preserve">
     <value>Shift  X</value>
   </data>
-  <data name="numericBoxObjAperX.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperX.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 51</value>
   </data>
-  <data name="numericBoxObjAperX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxHRTEM_ObjAperX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
   </data>
-  <data name="numericBoxObjAperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
   </data>
-  <data name="numericBoxObjAperX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperX.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 18</value>
   </data>
-  <data name="numericBoxObjAperX.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperX.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 23</value>
   </data>
-  <data name="numericBoxObjAperX.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxHRTEM_ObjAperX.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericBoxObjAperX.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperX.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxObjAperX.Name" xml:space="preserve">
-    <value>numericBoxObjAperX</value>
+  <data name="&gt;&gt;numericBoxHRTEM_ObjAperX.Name" xml:space="preserve">
+    <value>numericBoxHRTEM_ObjAperX</value>
   </data>
-  <data name="&gt;&gt;numericBoxObjAperX.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxHRTEM_ObjAperX.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxObjAperX.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxHRTEM_ObjAperX.Parent" xml:space="preserve">
     <value>groupBoxHREMoption1</value>
   </data>
-  <data name="&gt;&gt;numericBoxObjAperX.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxHRTEM_ObjAperX.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="numericBoxObjAperRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -5435,58 +5441,58 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;numericBoxObjAperRadius.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxObjAperY.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxHRTEM_ObjAperY.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxObjAperY.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperY.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxObjAperY.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperY.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxObjAperY.FooterText" xml:space="preserve">
+  <data name="numericBoxHRTEM_ObjAperY.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
-  <data name="numericBoxObjAperY.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperY.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxObjAperY.HeaderText" xml:space="preserve">
+  <data name="numericBoxHRTEM_ObjAperY.HeaderText" xml:space="preserve">
     <value>Y</value>
   </data>
-  <data name="numericBoxObjAperY.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperY.Location" type="System.Drawing.Point, System.Drawing">
     <value>102, 51</value>
   </data>
-  <data name="numericBoxObjAperY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxHRTEM_ObjAperY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
   </data>
-  <data name="numericBoxObjAperY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperY.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
   </data>
-  <data name="numericBoxObjAperY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperY.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 18</value>
   </data>
-  <data name="numericBoxObjAperY.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxHRTEM_ObjAperY.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="numericBoxObjAperY.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperY.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 23</value>
   </data>
-  <data name="numericBoxObjAperY.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxHRTEM_ObjAperY.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="numericBoxObjAperY.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_ObjAperY.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxObjAperY.Name" xml:space="preserve">
-    <value>numericBoxObjAperY</value>
+  <data name="&gt;&gt;numericBoxHRTEM_ObjAperY.Name" xml:space="preserve">
+    <value>numericBoxHRTEM_ObjAperY</value>
   </data>
-  <data name="&gt;&gt;numericBoxObjAperY.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxHRTEM_ObjAperY.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxObjAperY.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxHRTEM_ObjAperY.Parent" xml:space="preserve">
     <value>groupBoxHREMoption1</value>
   </data>
-  <data name="&gt;&gt;numericBoxObjAperY.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxHRTEM_ObjAperY.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
@@ -6033,63 +6039,63 @@ shown in "Diffraction
   <data name="&gt;&gt;numericBoxDeltaV.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="numericBoxBetaAgnle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxHRTEM_BetaAgnle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxBetaAgnle.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_BetaAgnle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxBetaAgnle.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_BetaAgnle.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxBetaAgnle.FooterText" xml:space="preserve">
+  <data name="numericBoxHRTEM_BetaAgnle.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
-  <data name="numericBoxBetaAgnle.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_BetaAgnle.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxBetaAgnle.HeaderText" xml:space="preserve">
+  <data name="numericBoxHRTEM_BetaAgnle.HeaderText" xml:space="preserve">
     <value>β</value>
   </data>
-  <data name="numericBoxBetaAgnle.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxHRTEM_BetaAgnle.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 81</value>
   </data>
-  <data name="numericBoxBetaAgnle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxHRTEM_BetaAgnle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericBoxBetaAgnle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHRTEM_BetaAgnle.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
   </data>
-  <data name="numericBoxBetaAgnle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHRTEM_BetaAgnle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 18</value>
   </data>
-  <data name="numericBoxBetaAgnle.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxHRTEM_BetaAgnle.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 23</value>
   </data>
-  <data name="numericBoxBetaAgnle.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxHRTEM_BetaAgnle.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxBetaAgnle.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxHRTEM_BetaAgnle.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxBetaAgnle.ToolTip" xml:space="preserve">
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip" xml:space="preserve">
     <value>β: Illumination semiangle (mrad)
  due to the finite source size effect</value>
   </data>
-  <data name="numericBoxBetaAgnle.ToolTip1" xml:space="preserve">
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip1" xml:space="preserve">
     <value>β: Illumination semiangle (mrad)
  due to the finite source size effect</value>
   </data>
-  <data name="&gt;&gt;numericBoxBetaAgnle.Name" xml:space="preserve">
-    <value>numericBoxBetaAgnle</value>
+  <data name="&gt;&gt;numericBoxHRTEM_BetaAgnle.Name" xml:space="preserve">
+    <value>numericBoxHRTEM_BetaAgnle</value>
   </data>
-  <data name="&gt;&gt;numericBoxBetaAgnle.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxHRTEM_BetaAgnle.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxBetaAgnle.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxHRTEM_BetaAgnle.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;numericBoxBetaAgnle.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxHRTEM_BetaAgnle.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="numericBoxCs.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">

@@ -128,7 +128,7 @@ public partial class FormImageSimulator : Form
         set
         {
             if (value != null && value.Length > 0)
-                textBoxThicknessList.Text = String.Join("\r\n", value);
+                textBoxThicknessList.Text = string.Join("\r\n", value);
         }
     }
     public double[] DefocusArray
@@ -155,10 +155,18 @@ public partial class FormImageSimulator : Form
     }
     #endregion 
 
-    #region 画像表示関連
+    #region 画像関連
     public bool UnitCellVisible { get => checkBoxShowUnitcell.Checked; set => checkBoxShowUnitcell.Checked = value; }
     public bool LabelVisible { get => checkBoxShowLabel.Checked; set => checkBoxShowLabel.Checked = value; }
+    public int LabelSize { get => numericBoxLabelFontSize.ValueInteger; set => numericBoxLabelFontSize.Value = value; }
     public bool ScaleBarVisible { get => checkBoxShowScale.Checked; set => checkBoxShowScale.Checked = value; }
+    public double ScaleBarLength { get => numericBoxScaleLength.Value; set => numericBoxScaleLength.Value = value; }
+    
+    public bool OverprintSymbols { get => toolStripMenuItemOverprintSymbols.Checked; set => toolStripMenuItemOverprintSymbols.Checked = value; }
+    public bool SaveIndividually { get => toolStripMenuItemSaveIndividually.Checked; set => toolStripMenuItemSaveIndividually.Checked = value; }
+
+    public bool GaussianBlurEnabled { get => checkBoxGaussianBlur.Checked; set => checkBoxGaussianBlur.Checked = value; }
+    public double GaussianBlurFWHM { get => numericBoxGaussianBlurRadius.Value;set=>numericBoxGaussianBlurRadius.Value = value; }
     #endregion
 
     #region HRTEM固有プロパティ

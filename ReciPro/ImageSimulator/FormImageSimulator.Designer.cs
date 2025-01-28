@@ -913,6 +913,7 @@ namespace ReciPro
             checkBoxSerialThickness.Checked = true;
             checkBoxSerialThickness.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSerialThickness.Name = "checkBoxSerialThickness";
+            toolTip.SetToolTip(checkBoxSerialThickness, resources.GetString("checkBoxSerialThickness.ToolTip"));
             checkBoxSerialThickness.UseVisualStyleBackColor = true;
             checkBoxSerialThickness.CheckedChanged += CheckBoxSerialDefocus_CheckedChanged;
             // 
@@ -922,6 +923,7 @@ namespace ReciPro
             checkBoxSerialDefocus.Checked = true;
             checkBoxSerialDefocus.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSerialDefocus.Name = "checkBoxSerialDefocus";
+            toolTip.SetToolTip(checkBoxSerialDefocus, resources.GetString("checkBoxSerialDefocus.ToolTip"));
             checkBoxSerialDefocus.UseVisualStyleBackColor = true;
             checkBoxSerialDefocus.CheckedChanged += CheckBoxSerialDefocus_CheckedChanged;
             // 
@@ -1210,21 +1212,21 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxSTEM_AngleResolution, resources.GetString("numericBoxSTEM_AngleResolution.ToolTip"));
             numericBoxSTEM_AngleResolution.Value = 0.4D;
             // 
-            // numericBoxSliceThicknessForInelasticSTEM
+            // numericBoxSTEM_SliceThicknessForInelastic
             // 
-            resources.ApplyResources(numericBoxSTEM_SliceThicknessForInelastic, "numericBoxSliceThicknessForInelasticSTEM");
+            resources.ApplyResources(numericBoxSTEM_SliceThicknessForInelastic, "numericBoxSTEM_SliceThicknessForInelastic");
             numericBoxSTEM_SliceThicknessForInelastic.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_SliceThicknessForInelastic.DecimalPlaces = 1;
             numericBoxSTEM_SliceThicknessForInelastic.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_SliceThicknessForInelastic.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_SliceThicknessForInelastic.Maximum = 10D;
             numericBoxSTEM_SliceThicknessForInelastic.Minimum = 0.1D;
-            numericBoxSTEM_SliceThicknessForInelastic.Name = "numericBoxSliceThicknessForInelasticSTEM";
+            numericBoxSTEM_SliceThicknessForInelastic.Name = "numericBoxSTEM_SliceThicknessForInelastic";
             numericBoxSTEM_SliceThicknessForInelastic.RadianValue = 0.017453292519943295D;
             numericBoxSTEM_SliceThicknessForInelastic.ShowUpDown = true;
             numericBoxSTEM_SliceThicknessForInelastic.SmartIncrement = true;
             numericBoxSTEM_SliceThicknessForInelastic.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxSTEM_SliceThicknessForInelastic, resources.GetString("numericBoxSliceThicknessForInelasticSTEM.ToolTip"));
+            toolTip.SetToolTip(numericBoxSTEM_SliceThicknessForInelastic, resources.GetString("numericBoxSTEM_SliceThicknessForInelastic.ToolTip"));
             numericBoxSTEM_SliceThicknessForInelastic.Value = 1D;
             // 
             // flowLayoutPanel10
@@ -1455,22 +1457,22 @@ namespace ReciPro
             numericBoxSTEM_DetectorOuterAngle.Value = 20D;
             numericBoxSTEM_DetectorOuterAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
             // 
-            // numericBoxEffectiveSourceSize
+            // numericBoxSTEM_EffectiveSourceSize
             // 
-            resources.ApplyResources(numericBoxSTEM_EffectiveSourceSize, "numericBoxEffectiveSourceSize");
+            resources.ApplyResources(numericBoxSTEM_EffectiveSourceSize, "numericBoxSTEM_EffectiveSourceSize");
             numericBoxSTEM_EffectiveSourceSize.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_EffectiveSourceSize.DecimalPlaces = 1;
             numericBoxSTEM_EffectiveSourceSize.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_EffectiveSourceSize.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_EffectiveSourceSize.Maximum = 1000D;
             numericBoxSTEM_EffectiveSourceSize.Minimum = 0D;
-            numericBoxSTEM_EffectiveSourceSize.Name = "numericBoxEffectiveSourceSize";
+            numericBoxSTEM_EffectiveSourceSize.Name = "numericBoxSTEM_EffectiveSourceSize";
             numericBoxSTEM_EffectiveSourceSize.RadianValue = 0.3490658503988659D;
             numericBoxSTEM_EffectiveSourceSize.RestrictLimitValue = false;
             numericBoxSTEM_EffectiveSourceSize.ShowUpDown = true;
             numericBoxSTEM_EffectiveSourceSize.SmartIncrement = true;
             numericBoxSTEM_EffectiveSourceSize.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxSTEM_EffectiveSourceSize, resources.GetString("numericBoxEffectiveSourceSize.ToolTip"));
+            toolTip.SetToolTip(numericBoxSTEM_EffectiveSourceSize, resources.GetString("numericBoxSTEM_EffectiveSourceSize.ToolTip"));
             numericBoxSTEM_EffectiveSourceSize.UpDown_Increment = 0.1D;
             numericBoxSTEM_EffectiveSourceSize.Value = 20D;
             numericBoxSTEM_EffectiveSourceSize.ValueChanged += NumericBoxTEMproperty_ValueChanged;
@@ -1601,16 +1603,16 @@ namespace ReciPro
             checkBoxOpenAperture.UseVisualStyleBackColor = true;
             checkBoxOpenAperture.CheckedChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
-            // numericBoxObjAperX
+            // numericBoxHRTEM_ObjAperX
             // 
-            resources.ApplyResources(numericBoxHRTEM_ObjAperX, "numericBoxObjAperX");
+            resources.ApplyResources(numericBoxHRTEM_ObjAperX, "numericBoxHRTEM_ObjAperX");
             numericBoxHRTEM_ObjAperX.BackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperX.DecimalPlaces = 1;
             numericBoxHRTEM_ObjAperX.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperX.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperX.Maximum = 100D;
             numericBoxHRTEM_ObjAperX.Minimum = -100D;
-            numericBoxHRTEM_ObjAperX.Name = "numericBoxObjAperX";
+            numericBoxHRTEM_ObjAperX.Name = "numericBoxHRTEM_ObjAperX";
             numericBoxHRTEM_ObjAperX.ShowUpDown = true;
             numericBoxHRTEM_ObjAperX.SmartIncrement = true;
             numericBoxHRTEM_ObjAperX.ThonsandsSeparator = true;
@@ -1636,16 +1638,16 @@ namespace ReciPro
             numericBoxObjAperRadius.Value = 12D;
             numericBoxObjAperRadius.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
-            // numericBoxObjAperY
+            // numericBoxHRTEM_ObjAperY
             // 
-            resources.ApplyResources(numericBoxHRTEM_ObjAperY, "numericBoxObjAperY");
+            resources.ApplyResources(numericBoxHRTEM_ObjAperY, "numericBoxHRTEM_ObjAperY");
             numericBoxHRTEM_ObjAperY.BackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperY.DecimalPlaces = 1;
             numericBoxHRTEM_ObjAperY.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperY.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperY.Maximum = 100D;
             numericBoxHRTEM_ObjAperY.Minimum = -100D;
-            numericBoxHRTEM_ObjAperY.Name = "numericBoxObjAperY";
+            numericBoxHRTEM_ObjAperY.Name = "numericBoxHRTEM_ObjAperY";
             numericBoxHRTEM_ObjAperY.ShowUpDown = true;
             numericBoxHRTEM_ObjAperY.SmartIncrement = true;
             numericBoxHRTEM_ObjAperY.ThonsandsSeparator = true;
@@ -1831,20 +1833,20 @@ namespace ReciPro
             numericBoxDeltaV.Value = 0.8D;
             numericBoxDeltaV.ValueChanged += NumericBoxTEMproperty_ValueChanged;
             // 
-            // numericBoxBetaAgnle
+            // numericBoxHRTEM_BetaAgnle
             // 
-            resources.ApplyResources(numericBoxHRTEM_BetaAgnle, "numericBoxBetaAgnle");
+            resources.ApplyResources(numericBoxHRTEM_BetaAgnle, "numericBoxHRTEM_BetaAgnle");
             numericBoxHRTEM_BetaAgnle.BackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_BetaAgnle.DecimalPlaces = 2;
             numericBoxHRTEM_BetaAgnle.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_BetaAgnle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_BetaAgnle.Maximum = 100D;
             numericBoxHRTEM_BetaAgnle.Minimum = 0D;
-            numericBoxHRTEM_BetaAgnle.Name = "numericBoxBetaAgnle";
+            numericBoxHRTEM_BetaAgnle.Name = "numericBoxHRTEM_BetaAgnle";
             numericBoxHRTEM_BetaAgnle.ShowUpDown = true;
             numericBoxHRTEM_BetaAgnle.SmartIncrement = true;
             numericBoxHRTEM_BetaAgnle.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxHRTEM_BetaAgnle, resources.GetString("numericBoxBetaAgnle.ToolTip"));
+            toolTip.SetToolTip(numericBoxHRTEM_BetaAgnle, resources.GetString("numericBoxHRTEM_BetaAgnle.ToolTip"));
             numericBoxHRTEM_BetaAgnle.UpDown_Increment = 0.05D;
             numericBoxHRTEM_BetaAgnle.ValueChanged += NumericBoxTEMproperty_ValueChanged;
             // 

@@ -362,19 +362,30 @@ public class Macro : MacroBase
         }
 
         #region 全共通
+
         public double AccVol { get => sim.AccVol; set => sim.AccVol = value; }
         public int NumberOfDiffractedWaves { get => sim.BlochNum; set => sim.BlochNum = value; }
+        
         public int ImageWidth { get => sim.ImageSize.Width; set => sim.ImageSize = new Size(value, sim.ImageSize.Height); }
         public int ImageHeight { get => sim.ImageSize.Height; set => sim.ImageSize = new Size(sim.ImageSize.Width, value); }
         public double ImageResolution { get => sim.ImageResolution; set => sim.ImageResolution = value; }
-        
         public bool UnitCellVisible { get => sim.UnitCellVisible; set => sim.UnitCellVisible = value; }
         public bool LabelVisible { get => sim.LabelVisible; set => sim.LabelVisible = value; }
+        public int LabelSize { get => sim.LabelSize; set => sim.LabelSize = value; }
         public bool ScaleBarVisible { get => sim.ScaleBarVisible; set => sim.ScaleBarVisible = value; }
+        public double ScaleBarLength { get => sim.ScaleBarLength; set => sim.ScaleBarLength = value; }
+        public bool GaussianBlurEnabled { get => sim.GaussianBlurEnabled; set => sim.GaussianBlurEnabled = value; }
+        public double GaussianBlurFWHM { get => sim.GaussianBlurFWHM; set => sim.GaussianBlurFWHM = value; }
         
         public void Open() { sim.Visible = true; sim.ImageMode = Mode; }
         public void Close() => sim.Visible = false;
         public void Simulate() { Open(); sim.ButtonSimulate_Click(null, null); }
+
+        public bool OverprintSymbols { get => sim.OverprintSymbols; set => sim.OverprintSymbols = value; }
+        public bool SaveIndividually { get => sim.SaveIndividually; set => sim.SaveIndividually = value; }
+        public void SaveImageAsPng(string filename) { }
+        public void SaveImageAsTif(string filename) { }
+        public void SaveImageAsEmf(string filename) { }
 
         //public void 
 
@@ -387,6 +398,13 @@ public class Macro : MacroBase
         public double Cc { get => sim.Cc * 1E-6; set => sim.Cc = value * 1E6; }
         public double DeltaV { get => sim.DeltaVol; set => sim.DeltaVol = value; }
         public double Scherzer => sim.Scherzer;
+
+        public bool SingleImageMode = true;
+        public bool SerialImageMode = true;
+        public double SerialImageWithDepths;
+        public double SerialImageWithThicknesses;
+
+
         #endregion
     }
 
@@ -434,6 +452,8 @@ public class Macro : MacroBase
         public PotentialClass(Macro _p) : base(_p, FormImageSimulator.ImageModes.POTENTIAL)
         {
         }
+
+
 
     }
 
