@@ -1517,7 +1517,7 @@ public partial class FormMain : Form
     }
     #endregion
 
-    #region »‘Ì²/Œ‹»–Ê İ’è
+    #region »‘Ñ²/Œ‹»–Ê İ’è
     private void checkBoxFixAxis_CheckedChanged(object sender, EventArgs e)
     {
         if (numericBoxAxisU.Value == 0 && numericBoxAxisV.Value == 0 && numericBoxAxisW.Value == 0)

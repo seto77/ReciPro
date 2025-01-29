@@ -109,6 +109,19 @@ public partial class FormImageSimulator : Form
     #endregion
 
     # region シリアルモードのプロパティ
+
+    public bool SingleImageMode { get => radioButtonSingleMode.Checked; set => radioButtonSingleMode.Checked = value; }
+    public bool SerialImageMode { get => radioButtonSerialMode.Checked; set => radioButtonSerialMode.Checked = value; }
+    public bool SerialImageWithThickness { get => checkBoxSerialThickness.Checked; set => checkBoxSerialThickness.Checked = value; }
+    public bool SerialImageWithDefocus { get => checkBoxSerialDefocus.Checked; set => checkBoxSerialDefocus.Checked = value; }
+
+    public double SerialImageThicknessStart { get => numericBoxThicknessStart.Value; set => numericBoxThicknessStart.Value = value; }
+    public double SerialImageThicknessStep { get => numericBoxThicknessStep.Value; set => numericBoxThicknessStep.Value = value; }
+    public int SerialImageThicknessNum { get => numericBoxThicknessNum.ValueInteger; set => numericBoxThicknessStep.Value = value; }
+
+    public double SerialImageDefocusStart { get => numericBoxDefocusStart.Value; set => numericBoxDefocusStart.Value = value; }
+    public double SerialImageDefocusStep { get => numericBoxDefocusStep.Value; set => numericBoxDefocusStep.Value = value; }
+    public int SerialImageDefocusNum { get => numericBoxDefocusNum.ValueInteger; set => numericBoxDefocusStep.Value = value; }
     public double[] ThicknessArray
     {
         get

@@ -18,9 +18,9 @@ public class MacroTriger(string target, bool debug, object[] obj, string macroNa
 public class MacroBase
 {
     public dynamic mainObject;
-    public string[] Help => help.ToArray();
+    public string[] Help => [.. help];
     public string ScopeName = "";
-    public List<string> help = new();
+    public List<string> help = [];
 
     public MacroBase(dynamic _main, string scopeName)
     {

@@ -49,9 +49,9 @@ public class Macro : MacroBase
         public FileClass(Macro _p) : base(_p.main)
         {
             this.p = _p;
-            p.help.Add("ReciPro.File.GetFileName() # Get a file name.  \r\n Returned string is a full path of the selected file.");
-            p.help.Add("ReciPro.File.GetFileNames() # Get file names.  \r\n Returned value is a string array, \r\n  each of which is a full path of selected files.");
-            p.help.Add("ReciPro.File.GetDirectoryPath(string filename) # Get a directory path.\r\n Returned string is a full path to the filename.\r\n If filename is omitted, selection dialog will open.");
+            p.help.Add("ReciPro.File.GetFileName() # Get a file name by a selection dialog. The returned string is a full path of the selected file.");
+            p.help.Add("ReciPro.File.GetFileNames() # Get file names by a selection dialog. Multiple selections are possible. The returned value is a string array, each of which is a full path of selected files.");
+            p.help.Add("ReciPro.File.GetDirectoryPath(string filename) # Get a directory path. the returned string is a full path to the filename. If 'filename' is omitted, a selection dialog will open.");
             p.help.Add("ReciPro.File.ReadCrystal(string filename) # Read a crystal (CIF- or AMC-format only).");
         }
 
@@ -97,11 +97,11 @@ public class Macro : MacroBase
         private readonly Macro p;
         public CrystalListClass(Macro _p) : base(_p.main)
         {
-            this.p = _p;
-            p.help.Add("ReciPro.CrystalList.SelectedIndex  # Set/get the index (integer value) of the selected crystal in the list.");
+            p = _p;
+            p.help.Add("ReciPro.CrystalList.SelectedIndex  # Integer. Set/get the index (integer value) of the selected crystal in the list.");
             p.help.Add("ReciPro.CrystalList.Add()  # Add the crystal at 'Crystal Information' to the end of the list.");
             p.help.Add("ReciPro.CrystalList.Replace()  # Replace the crystal at 'Crystal Information' with the crystal selected in the list.");
-            p.help.Add("ReciPro.CrystalList.Delete()  # Delete the crystal selected in the list.");
+            p.help.Add("ReciPro.CrystalList.Delete()  # Delete the selected crystal in the list.");
             p.help.Add("ReciPro.CrystalList.ClearAll()  # Delete all crystals in the list.");
             p.help.Add("ReciPro.CrystalList.MoveUp()  # Move up the selected crystal in the list.");
             p.help.Add("ReciPro.CrystalList.MoveDown()  # Move down the selected crystal in the list.");
@@ -125,9 +125,9 @@ public class Macro : MacroBase
         public DirectionClass(Macro _p) : base(_p.main)
         {
             this.p = _p;
-            p.help.Add("ReciPro.Dir.Euler(double phi, double theta, double psi) # Set the rotation state by Euler angles.");
-            p.help.Add("ReciPro.Dir.EulerInDegree(double phi, double theta, double psi) # Set the rotation state by Euler angles (in degree).");
-            p.help.Add("ReciPro.Dir.Rotate(double vX, double vY, double vZ, double angle) # Rotate the current crystal by specifying the rotation axis and angle.");
+            p.help.Add("ReciPro.Dir.Euler(double phi, double theta, double psi) # Set the rotation state by three Euler angles (in radians)");
+            p.help.Add("ReciPro.Dir.EulerInDegree(double phi, double theta, double psi) # Set the rotation state by three Euler angles (in degrees).");
+            p.help.Add("ReciPro.Dir.Rotate(double vX, double vY, double vZ, double angle) # Rotate the current crystal by specifying the rotation axis (vX, vY, vZ) and angle.");
             p.help.Add("ReciPro.Dir.RotateAroundAxis(int u, int v, int w, double angle) # Rotate the current crystal with the crystal axis (uvw) as the rotation axis");
             p.help.Add("ReciPro.Dir.RotateAroundPlane(int h, int k, int l, double angle) # Rotate the current crystal with the crystal plane (hkl) as the rotation axis");
             p.help.Add("ReciPro.Dir.ProjectAlongAxis(int u, int v, int w) # Rotate the current crystal so that the specified axis (uvw) is normal to the screen.");
@@ -192,6 +192,9 @@ public class Macro : MacroBase
         {
             this.p = _p;
 
+            p.help.Add("ReciPro.DifSim.Open() # Open the 'Diffraction Simulator' window.");
+            p.help.Add("ReciPro.DifSim.Close() # Close the 'Diffraction Simulator' window.");
+
             p.help.Add("ReciPro.DifSim.Source_Xray() # Set the incident wave to X-ray.");
             p.help.Add("ReciPro.DifSim.Source_Electron() # Set the incident wave to electron.");
             p.help.Add("ReciPro.DifSim.Source_Neutron() # Set the incident wave to neutron.");
@@ -201,21 +204,21 @@ public class Macro : MacroBase
             p.help.Add("ReciPro.DifSim.Thickness # Float. Set/Get the sample thickness.");
             p.help.Add("ReciPro.DifSim.NumberOfDiffractedWaves # Integer. Set or get the number of diffracted waves used in the dynamic calculation.");
 
-            p.help.Add("ReciPro.DifSim.Beam_Parallel() # Set the incident beam to 'Parallel'.");
-            p.help.Add("ReciPro.DifSim.Beam_PrecessionXray() # Set the incident X-ray beam precessing.");
-            p.help.Add("ReciPro.DifSim.Beam_PrecessionElectron() # Set the incident electron beam precessing.");
-            p.help.Add("ReciPro.DifSim.Beam_Convergence() # Set the incident electron beam converging.");
+            p.help.Add("ReciPro.DifSim.Beam_Parallel() # Set the incident wave to a parallel beam.");
+            p.help.Add("ReciPro.DifSim.Beam_PrecessionXray() # Set the incident X-ray to a precession beam.");
+            p.help.Add("ReciPro.DifSim.Beam_PrecessionElectron() # Set the incident electron to a precession beam.");
+            p.help.Add("ReciPro.DifSim.Beam_Convergence() # Set the incident electron to a convergent beam.");
 
-            p.help.Add("ReciPro.DifSim.Calc_Excitation() # Calculate the spot intensities with excitation error only.");
-            p.help.Add("ReciPro.DifSim.Calc_Kinematical() # Calculate the spot intensities using the excitation error and the structure factor.");
-            p.help.Add("ReciPro.DifSim.Calc_Dynamical() # Calculate the spot intensities  by the dynamical theory.");
+            p.help.Add("ReciPro.DifSim.Calc_Excitation() # Calculate the intensities with excitation error only.");
+            p.help.Add("ReciPro.DifSim.Calc_Kinematical() # Calculate the intensities using the excitation error and the structure factor.");
+            p.help.Add("ReciPro.DifSim.Calc_Dynamical() # Calculate the intensities by the dynamical theory.");
 
             p.help.Add("ReciPro.DifSim.ImageWidth # Integer. Set/Get the image width in pixel.");
             p.help.Add("ReciPro.DifSim.ImageHeight # Integer. Set/Get the image height in pixel.");
             p.help.Add("ReciPro.DifSim.ImageResolutionInMM # Float. Set/Get the image resolution (mm/pix).");
             p.help.Add("ReciPro.DifSim.ImageResolutionInNMinv # Float. Set/Get the image resolution (nm^-1/pix).");
-            p.help.Add("ReciPro.DifSim.CameraLength2 # Float. Set/Get the distance from the sample to the detector.");
-            p.help.Add("ReciPro.DifSim.Foot(double x, double y) # Set coordinates of the foot of the perpendicular line from the sample to the detector.");
+            p.help.Add("ReciPro.DifSim.CameraLength2 # Float. Set/Get the distance (in mm) from the sample to the detector.");
+            p.help.Add("ReciPro.DifSim.Foot(double x, double y) # Set coordinates (in mm) of the foot of the perpendicular line from the sample to the detector.");
 
             p.help.Add("ReciPro.DifSim.SkipRendering # True/False. Set/get whether screen rendering is skipped or not.");
 
@@ -328,38 +331,37 @@ public class Macro : MacroBase
     public abstract class ImageSimulationClass : MacroSub
     {
         internal readonly Macro p;
-        internal readonly FormImageSimulator sim;
+        internal FormImageSimulator sim => p.main.FormImageSimulator;
         private readonly FormImageSimulator.ImageModes Mode;
         public ImageSimulationClass(Macro _p, FormImageSimulator.ImageModes mode) : base(_p.main)
         {
             p = _p;
-            sim = p.main.FormImageSimulator;
             Mode = mode;
             var modeStr = Mode switch { FormImageSimulator.ImageModes.STEM => "STEM", FormImageSimulator.ImageModes.HRTEM => "HRTEM", _ => "Potential" };
             #region 全共通
-            p.help.Add($"ReciPro.{modeStr}.Open()  # Open the {modeStr} simulator window.");
-            p.help.Add($"ReciPro.{modeStr}.Close()  # Close the  {modeStr} simulator window.");
-            p.help.Add($"ReciPro.{modeStr}.Simulate()  # Simulate {modeStr} image(s) with the current settings.");
+            p.help.Add($"ReciPro.{modeStr}.Open() # Open the {modeStr} simulator window.");
+            p.help.Add($"ReciPro.{modeStr}.Close() # Close the  {modeStr} simulator window.");
+            p.help.Add($"ReciPro.{modeStr}.Simulate() # Simulate {modeStr} image(s) with the current settings.");
 
-            p.help.Add($"ReciPro.{modeStr}.AccVol  # Float. Set/get the accelerating voltage of electron (in kV).");
+            p.help.Add($"ReciPro.{modeStr}.AccVol # Float. Set/get the accelerating voltage of electron (in kV).");
             p.help.Add($"ReciPro.{modeStr}.NumberOfDiffractedWaves  # Integer.Set/get the maximum number of diffracted waves (Bloch waves) used in the dynamical scattering theory.");
 
-            p.help.Add($"ReciPro.{modeStr}.ImageWidth  # Integer. Set/get the width of the image to be simulated (in pixel).");
-            p.help.Add($"ReciPro.{modeStr}.ImageHeight  # Integer. Set/get the height of the image to be simulated (in pixel).");
-            p.help.Add($"ReciPro.{modeStr}.ImageResolution  # Float. Set/get the resolution of the image to be simulated (in picometer/pixel).");
-            p.help.Add($"ReciPro.{modeStr}.UnitCellVisible  # True/False. Set/get whether or not to display a unit cell.");
-            p.help.Add($"ReciPro.{modeStr}.LabelVisible  # True/False. Set/get whether or not to display a image label.");
-            p.help.Add($"ReciPro.{modeStr}.LabelSize  # Integer. Set/get the size of labels ");
-            p.help.Add($"ReciPro.{modeStr}.ScaleBarVisible  # True/False. Whether or not to display a scale bar.");
-            p.help.Add($"ReciPro.{modeStr}.ScaleBarLength  # Float. Set/get the length of the scalebar (in nm).");
-            p.help.Add($"ReciPro.{modeStr}.GaussianBlurEnabled  # True/False. Set/get whether or not to process Gaussian blur.");
-            p.help.Add($"ReciPro.{modeStr}.GaussianBlurFWHM  # Float. Set/get the FWHM value (in pm) of Gaussian blur.");
-            p.help.Add($"ReciPro.{modeStr}.OverprintSymbols  # True/False. On the saved image, whether or not to overprint the unit cell, labels and scale bar.");
-            p.help.Add($"ReciPro.{modeStr}.SaveIndividually  # True/False. When simulating in serial image mode, whether or not to save each image individually.");
-            
-            p.help.Add($"ReciPro.{modeStr}.SaveImageAsPng(filename)  # True/False. Save the simulated image as PNG format. If the file name is omitted, a dialog box will appear.");
-            p.help.Add($"ReciPro.{modeStr}.SaveImageAsTif(filename)  # True/False. Save the simulated image as TIFF format. If the file name is omitted, a dialog box will appear.");
-            p.help.Add($"ReciPro.{modeStr}.SaveImageAsEmf(filename)  # True/False. Save the simulated image as Metafile (EMF) format. If the file name is omitted, a dialog box will appear.");
+            p.help.Add($"ReciPro.{modeStr}.ImageWidth # Integer. Set/get the width of the image to be simulated (in pixel).");
+            p.help.Add($"ReciPro.{modeStr}.ImageHeight # Integer. Set/get the height of the image to be simulated (in pixel).");
+            p.help.Add($"ReciPro.{modeStr}.ImageResolution # Float. Set/get the resolution of the image to be simulated (in picometer/pixel).");
+            p.help.Add($"ReciPro.{modeStr}.UnitCellVisible # True/False. Set/get whether or not to display a unit cell.");
+            p.help.Add($"ReciPro.{modeStr}.LabelVisible # True/False. Set/get whether or not to display a image label.");
+            p.help.Add($"ReciPro.{modeStr}.LabelSize # Integer. Set/get the size of labels ");
+            p.help.Add($"ReciPro.{modeStr}.ScaleBarVisible # True/False. Whether or not to display a scale bar.");
+            p.help.Add($"ReciPro.{modeStr}.ScaleBarLength # Float. Set/get the length of the scalebar (in nm).");
+            p.help.Add($"ReciPro.{modeStr}.GaussianBlurEnabled # True/False. Set/get whether or not to process Gaussian blur.");
+            p.help.Add($"ReciPro.{modeStr}.GaussianBlurFWHM # Float. Set/get the FWHM value (in pm) of Gaussian blur.");
+            p.help.Add($"ReciPro.{modeStr}.OverprintSymbols # True/False. On the saved image, whether or not to overprint the unit cell, labels and scale bar.");
+            p.help.Add($"ReciPro.{modeStr}.SaveIndividually # True/False. When simulating in serial image mode, whether or not to save each image individually.");
+
+            p.help.Add($"ReciPro.{modeStr}.SaveImageAsPng(string filename) # Save the simulated image as a PNG format. If 'filename' is omitted, a dialog box will appear.");
+            p.help.Add($"ReciPro.{modeStr}.SaveImageAsTif(string filename) # Save the simulated image as a TIFF format. If the 'filename' is omitted, a dialog box will appear.");
+            p.help.Add($"ReciPro.{modeStr}.SaveImageAsEmf(string filename) # Save the simulated image as a Metafile (EMF) format. If 'filename' is omitted, a dialog box will appear.");
 
             if (Mode == FormImageSimulator.ImageModes.POTENTIAL) return; //Potentialだった場合はここで終了
             #endregion
@@ -367,10 +369,21 @@ public class Macro : MacroBase
             #region HRTEM/STEM共通
             p.help.Add($"ReciPro.{modeStr}.Thickness  # Float. Set/get the sample thickness (in nm).");
             p.help.Add($"ReciPro.{modeStr}.Defocus  # Float. Set/get the Defocus value (in nm).");
-            p.help.Add($"ReciPro.{modeStr}.Cs  # Float. Set/get the Cs (spherical aberration) value (in mm).");
-            p.help.Add($"ReciPro.{modeStr}.Cc  # Float. Set/get the Cc (chromatic aberration) value (in mm).");
+            p.help.Add($"ReciPro.{modeStr}.Cs # Float. Set/get the Cs (spherical aberration) value (in mm).");
+            p.help.Add($"ReciPro.{modeStr}.Cc # Float. Set/get the Cc (chromatic aberration) value (in mm).");
             p.help.Add($"ReciPro.{modeStr}.DeltaV  # Float. Set/get the ΔV (1/e width of electron energy fluctuations) value (in eV).");
             p.help.Add($"ReciPro.{modeStr}.Scherzer  # Float. Get the Scherzer defocus value (in nm).");
+
+            p.help.Add($"ReciPro.{modeStr}.SingleImageMode()  # Set to single image mode.");
+
+            p.help.Add($"ReciPro.{modeStr}.SerialImageMode(bool withThickness, bool withDefocus)  # Set to serial image mode with/without thickness and with/without defocus.");
+            p.help.Add($"ReciPro.{modeStr}.SerialImageThicknessStart # Float. Set/get the starting thickness (in nm) in serial images.");
+            p.help.Add($"ReciPro.{modeStr}.SerialImageThicknessStep # Float. Set/get the thickness step (in nm) in serial images.");
+            p.help.Add($"ReciPro.{modeStr}.SerialImageThicknessNum # Integer. Set/get the number of the thicknesses in serial images.");
+            p.help.Add($"ReciPro.{modeStr}.SerialImageDefocusStart # Float. Set/get the starting defocus (in nm) in serial images.");
+            p.help.Add($"ReciPro.{modeStr}.SerialImageDefocusStep # Float. Set/get the defocus step (in nm) in serial images.");
+            p.help.Add($"ReciPro.{modeStr}.SerialImageDefocusNum # Integer. Set/get the number of the defocuses in serial images.");
+
             #endregion
         }
 
@@ -387,16 +400,16 @@ public class Macro : MacroBase
         public double ScaleBarLength { get => sim.ScaleBarLength; set => sim.ScaleBarLength = value; }
         public bool GaussianBlurEnabled { get => sim.GaussianBlurEnabled; set => sim.GaussianBlurEnabled = value; }
         public double GaussianBlurFWHM { get => sim.GaussianBlurFWHM; set => sim.GaussianBlurFWHM = value; }
-        
+
         public void Open() { sim.Visible = true; sim.ImageMode = Mode; }
         public void Close() => sim.Visible = false;
         public void Simulate() { Open(); sim.ButtonSimulate_Click(null, null); }
 
         public bool OverprintSymbols { get => sim.OverprintSymbols; set => sim.OverprintSymbols = value; }
         public bool SaveIndividually { get => sim.SaveIndividually; set => sim.SaveIndividually = value; }
-        public void SaveImageAsPng(string filename=null) => sim.Save(FormImageSimulator.FormatEnum.PNG, FormImageSimulator.ActionEnum.Save, filename);
-        public void SaveImageAsTif(string filename=null) => sim.Save(FormImageSimulator.FormatEnum.TIFF, FormImageSimulator.ActionEnum.Save, filename);
-        public void SaveImageAsEmf(string filename=null) => sim.Save(FormImageSimulator.FormatEnum.Meta, FormImageSimulator.ActionEnum.Save, filename);
+        public void SaveImageAsPng(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.PNG, FormImageSimulator.ActionEnum.Save, filename);
+        public void SaveImageAsTif(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.TIFF, FormImageSimulator.ActionEnum.Save, filename);
+        public void SaveImageAsEmf(string filename = null) => sim.Save(FormImageSimulator.FormatEnum.Meta, FormImageSimulator.ActionEnum.Save, filename);
 
         #endregion
 
@@ -408,12 +421,19 @@ public class Macro : MacroBase
         public double DeltaV { get => sim.DeltaVol; set => sim.DeltaVol = value; }
         public double Scherzer => sim.Scherzer;
 
-        //public bool SingleImageMode { get => };
-        public bool SerialImageMode = true;
-        public double SerialImageWithDepths;
-        public double SerialImageWithThicknesses;
-
-
+        public void SingleImageMode() => sim.SingleImageMode = true;
+        public void SerialImageMode(bool withThickness, bool withDefocus)
+        {
+            sim.SerialImageMode = true;
+            sim.SerialImageWithThickness = withThickness;
+            sim.SerialImageWithDefocus = withDefocus;
+        }
+        public double SerialImageThicknessStart { get => sim.SerialImageThicknessStart; set => sim.SerialImageThicknessStart = value; }
+        public double SerialImageThicknessStep { get => sim.SerialImageThicknessStep; set => sim.SerialImageThicknessStep = value; }
+        public int SerialImageThicknessNum { get => sim.SerialImageThicknessNum; set => sim.SerialImageThicknessNum = value; }
+        public double SerialImageDefocusStart { get => sim.SerialImageDefocusStart; set => sim.SerialImageDefocusStart = value; }
+        public double SerialImageDefocusStep { get => sim.SerialImageDefocusStep; set => sim.SerialImageDefocusStep = value; }
+        public int SerialImageDefocusNum { get => sim.SerialImageDefocusNum; set => sim.SerialImageDefocusStep = value; }
         #endregion
     }
 
@@ -424,6 +444,8 @@ public class Macro : MacroBase
             p.help.Add($"ReciPro.STEM.AngularResolution  # Float. Set/get the index.");
             p.help.Add($"ReciPro.STEM.SliceThickness  # Float. Set/get the slice thickness (in nm) for TDS calculation.");
             p.help.Add($"ReciPro.STEM.ConvergenceAngle  # Float. Set/get the convergence semiangle (in mrad).");
+            p.help.Add($"ReciPro.STEM.DetectorInnerAngle  # Float. Set/get the inner semiangle (in mrad) of the detector.");
+            p.help.Add($"ReciPro.STEM.DetectorOuterAngle  # Float. Set/get the outer semiangle (in mrad) of the detector.");
         }
 
         public double AngularResolution { get => sim.STEM_AngularResolution * 1000; set => sim.STEM_AngularResolution = value / 1000; }
