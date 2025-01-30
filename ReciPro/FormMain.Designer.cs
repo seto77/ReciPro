@@ -1270,7 +1270,7 @@
             // 
             macroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { editorToolStripMenuItem, toolStripSeparator22 });
             resources.ApplyResources(macroToolStripMenuItem, "macroToolStripMenuItem");
-            macroToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDark;
+            macroToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             macroToolStripMenuItem.Name = "macroToolStripMenuItem";
             // 
             // editorToolStripMenuItem

@@ -3948,22 +3948,22 @@ construction)</value>
     <value>Language</value>
   </data>
   <data name="editorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 22</value>
+    <value>111, 22</value>
   </data>
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
     <value>Editor</value>
   </data>
   <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 6</value>
+    <value>108, 6</value>
   </data>
   <data name="macroToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="macroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 21</value>
+    <value>58, 21</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
-    <value>Macro (under construction)</value>
+    <value>Macro</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

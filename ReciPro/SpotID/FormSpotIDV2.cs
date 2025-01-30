@@ -1476,7 +1476,7 @@ public partial class FormSpotIDV2 : Form
     #region Refine thickness and direction機能
     private void ButtonRefineThicknessAndDirection_Click(object sender, EventArgs e)
     {
-        if (FormMain.Crystal.Bethe.IsBusy) return;
+        if (FormMain.Crystal.Bethe.IsCBED_Busy) return;
         clearStatusLabel();
 
         splitContainer1.Enabled = false;

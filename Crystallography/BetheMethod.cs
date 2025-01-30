@@ -82,7 +82,11 @@ public class BetheMethod
     public Beam[][] BeamsPED;
     public double SemianglePED { get; set; }
 
-    public bool IsBusy => bwCBED is null || bwCBED.IsBusy;
+    public bool IsCBED_Busy => (bwCBED is null || bwCBED.IsBusy);
+    public bool IsSTEM_Busy => (bwSTEM is null || bwSTEM.IsBusy);
+    public bool IsEBSD_Busy => (bwEBSD is null || bwEBSD.IsBusy);
+
+
 
     /// <summary>
     /// CBEDのディスク情報 Disks[Z(thickness)_index][G_index], EBSDのときは [Voltage][Z(thickness)_index]
@@ -94,17 +98,17 @@ public class BetheMethod
     public Beam[] Beams;
 
     [NonSerialized]
-    private readonly BackgroundWorker bwCBED = new();
+    public readonly BackgroundWorker bwCBED = new();
     public event ProgressChangedEventHandler CBED_ProgressChanged;
     public event RunWorkerCompletedEventHandler CBED_Completed;
 
     [NonSerialized]
-    private readonly BackgroundWorker bwEBSD = new();
+    public readonly BackgroundWorker bwEBSD = new();
     public event ProgressChangedEventHandler EBSD_ProgressChanged;
     public event RunWorkerCompletedEventHandler EBSD_Completed;
 
     [NonSerialized]
-    private readonly BackgroundWorker bwSTEM = new();
+    public readonly BackgroundWorker bwSTEM = new();
     public event ProgressChangedEventHandler StemProgressChanged;
     public event RunWorkerCompletedEventHandler StemCompleted;
 
@@ -900,7 +904,6 @@ public class BetheMethod
         Solver solver = Solver.Auto, int thread = 1)
     {
         MaxNumOfBloch = maxNumOfBloch;
-        //MaxNumOfBloch = 10000;//検証用コード
 
         AccVoltage = voltage;
         //Wavelength = UniversalConstants.Convert.EnergyToElectronWaveLength(voltage);

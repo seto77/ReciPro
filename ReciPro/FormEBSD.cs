@@ -799,7 +799,7 @@ public partial class FormEBSD : Form
     #region 現在のパラメータでEBSDを動力学計算
     private void buttonSimulateEBSD_Click(object sender, EventArgs e)
     {
-        if (Crystal.Bethe.IsBusy) return;
+        if (Crystal.Bethe.IsCBED_Busy) return;
 
         buttonStop.Visible = true;
         sw1.Restart();

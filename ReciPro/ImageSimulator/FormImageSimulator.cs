@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using static System.Math;
 #endregion
@@ -78,7 +79,12 @@ public partial class FormImageSimulator : Form
     /// <summary>
     /// 電子の加速電圧の揺らぎ (kV) numericBoxDeltaVで表示されているのはFWHMだが、2 * Sqrt(2 * Log(2)) で割って1000倍して、eV単位の標準偏差に変換する
     /// </summary>
-    public double DeltaVol { get => numericBoxDeltaV.Value / 1000 / 2 / Sqrt(2 * Log(2)); set => numericBoxDeltaV.Value = value * 1000 * 2 * Sqrt(2 * Log(2)); }
+    public double DeltaVol { get => DeltaVolFWHM / 2 / Sqrt(2 * Log(2)); set => DeltaVolFWHM = value * 2 * Sqrt(2 * Log(2)); }
+
+    /// <summary>
+    /// 電子の加速電圧の揺らぎ FWHM (kV) 
+    /// </summary>
+    public double DeltaVolFWHM { get => numericBoxDeltaV.Value / 1000; set => numericBoxDeltaV.Value = value * 1000;}
 
     /// <summary>
     /// Δ
@@ -222,6 +228,11 @@ public partial class FormImageSimulator : Form
     public double HRTEM_ObjAperY { get => numericBoxHRTEM_ObjAperY.Value / 1000; set => numericBoxHRTEM_ObjAperY.Value = value * 1000; }
 
     /// <summary>
+    /// 絞りの開放状態
+    /// </summary>
+    public bool HRTEM_OpenObjAper { get => checkBoxOpenAperture.Checked; set => checkBoxOpenAperture.Checked = value; }
+
+    /// <summary>
     /// β (illumination semiangle) (rad) 
     /// </summary>
     public double HRTEM_Beta { get => numericBoxHRTEM_BetaAgnle.Value / 1000; set => numericBoxHRTEM_BetaAgnle.Value = value * 1000; }
@@ -238,7 +249,7 @@ public partial class FormImageSimulator : Form
     /// <summary>
     /// STEMモードの時のみ有効. 実効光源サイズ (nm) (STEM計算に必要) 2 * Sqrt(2 * Log(2)) で割って、標準偏差に変換する
     /// </summary>
-    public double STEM_SourceSizeSigma { get => numericBoxSTEM_EffectiveSourceSize.Value / 1000 / 2 / Sqrt(2 * Log(2)); set => numericBoxSTEM_EffectiveSourceSize.Value = value * 1000 * 2 * Sqrt(2 * Log(2)); }
+    public double STEM_SourceSizeSigma { get => STEM_SourceSizeFWHM / 2 / Sqrt(2 * Log(2)); set => STEM_SourceSizeFWHM = value * 2 * Sqrt(2 * Log(2)); }
 
     /// <summary>
     /// STEM検出器の内径角度 (rad)
@@ -266,6 +277,21 @@ public partial class FormImageSimulator : Form
     public double STEM_SliceThickness { get => numericBoxSTEM_SliceThicknessForInelastic.Value; set => numericBoxSTEM_SliceThicknessForInelastic.Value = value; }
 
 
+    public STEM_ModeEnum STEM_Mode
+    {
+        get
+        {
+            if (radioButtonSTEM_target_both.Checked) return STEM_ModeEnum.Both;
+            else if (radioButtonSTEM_target_elas.Checked) return STEM_ModeEnum.Elastic;
+            else return STEM_ModeEnum.TDS;
+        }
+        set
+        {
+            if (value == STEM_ModeEnum.Both) radioButtonSTEM_target_both.Checked = true;
+            else if (value == STEM_ModeEnum.Elastic) radioButtonSTEM_target_elas.Checked = true;
+            else radioButtonSTEM_target_TDS.Checked = true;
+        }
+    }
     #endregion
 
     #endregion プロパティ
@@ -287,6 +313,8 @@ public partial class FormImageSimulator : Form
     public enum ImageModes { HRTEM, POTENTIAL, STEM }
 
     public enum HRTEM_Modes { Quasi, TCC }
+
+    public enum STEM_ModeEnum { Both, Elastic, TDS}
 
     #endregion フィールド
 
@@ -374,6 +402,11 @@ public partial class FormImageSimulator : Form
     /// <param name="e"></param>
     public void ButtonSimulate_Click(object sender, EventArgs e)
     {
+        Simulate();
+    }
+
+    public void Simulate(bool sync =false)
+    {
         toolStripStatusLabel1.Text = "";
         toolStripProgressBar.Value = 0;
 
@@ -382,14 +415,15 @@ public partial class FormImageSimulator : Form
         else if (ImageMode == ImageModes.POTENTIAL)
             simulatePotential();
         else if (ImageMode == ImageModes.STEM)
-            simulateSTEM();
+            simulateSTEM(sync);
     }
+
     #endregion
 
     #region STEMシミュレーション
 
     int stemDirectionTotal = 0;
-    private void simulateSTEM(bool realtimeMode = false)
+    private void simulateSTEM(bool sync = false)
     {
         sw1.Reset(); sw2.Reset(); sw3.Reset(); sw4.Reset();
         sw1.Restart();
@@ -442,6 +476,12 @@ public partial class FormImageSimulator : Form
         this.buttonStop.Visible = true;
         this.splitContainer1.Enabled = false;
 
+        if (sync)
+            while (FormMain.Crystal.Bethe.IsSTEM_Busy)
+            {
+                Application.DoEvents();
+                Thread.Sleep(100);
+            }
     }
 
     private void buttonStop_Click(object sender, EventArgs e)
@@ -561,8 +601,20 @@ public partial class FormImageSimulator : Form
             return;
         }
 
-        FormMain.Crystal.Bethe.GetHRTEMImage(BlochNum, AccVol, FormMain.Crystal.RotationMatrix, (HRTEM_ObjAperRadius, HRTEM_ObjAperX, HRTEM_ObjAperY),
-            ImageSize, ImageResolution, Cs, HRTEM_Beta, Delta, ThicknessArray, DefocusArray, HRTEM_Mode == HRTEM_Modes.Quasi, Native);
+        FormMain.Crystal.Bethe.GetHRTEMImage(
+            BlochNum, 
+            AccVol, 
+            FormMain.Crystal.RotationMatrix, 
+            (HRTEM_ObjAperRadius, HRTEM_ObjAperX, HRTEM_ObjAperY),
+            ImageSize, 
+            ImageResolution, 
+            Cs, 
+            HRTEM_Beta, 
+            Delta, 
+            ThicknessArray, 
+            DefocusArray, 
+            HRTEM_Mode == HRTEM_Modes.Quasi, 
+            Native);
 
         var temp = sw1.ElapsedMilliseconds;
         toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} msec,   ";

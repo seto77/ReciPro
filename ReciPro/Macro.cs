@@ -126,10 +126,13 @@ public class Macro : MacroBase
         {
             this.p = _p;
             p.help.Add("ReciPro.Dir.Euler(double phi, double theta, double psi) # Set the rotation state by three Euler angles (in radians)");
-            p.help.Add("ReciPro.Dir.EulerInDegree(double phi, double theta, double psi) # Set the rotation state by three Euler angles (in degrees).");
-            p.help.Add("ReciPro.Dir.Rotate(double vX, double vY, double vZ, double angle) # Rotate the current crystal by specifying the rotation axis (vX, vY, vZ) and angle.");
-            p.help.Add("ReciPro.Dir.RotateAroundAxis(int u, int v, int w, double angle) # Rotate the current crystal with the crystal axis (uvw) as the rotation axis");
-            p.help.Add("ReciPro.Dir.RotateAroundPlane(int h, int k, int l, double angle) # Rotate the current crystal with the crystal plane (hkl) as the rotation axis");
+            p.help.Add("ReciPro.Dir.EulerInDeg(double phi, double theta, double psi) # Set the rotation state by three Euler angles (in degrees).");
+            p.help.Add("ReciPro.Dir.Rotate(double vX, double vY, double vZ, double angle) # Rotate the current crystal by specifying the rotation axis (vX, vY, vZ) and angle (in radians).");
+            p.help.Add("ReciPro.Dir.RotateInDeg(double vX, double vY, double vZ, double angle) # Rotate the current crystal by specifying the rotation axis (vX, vY, vZ) and angle  (in degrees).");
+            p.help.Add("ReciPro.Dir.RotateAroundAxis(int u, int v, int w, double angle) # Rotate the current crystal with the crystal axis (uvw) as the rotation axis (in radians)");
+            p.help.Add("ReciPro.Dir.RotateAroundAxisInDeg(int u, int v, int w, double angle) # Rotate the current crystal with the crystal axis (uvw) as the rotation axis  (in degrees)");
+            p.help.Add("ReciPro.Dir.RotateAroundPlane(int h, int k, int l, double angle) # Rotate the current crystal with the crystal plane (hkl) as the rotation axis (in radians)");
+            p.help.Add("ReciPro.Dir.RotateAroundPlaneInDeg(int h, int k, int l, double angle) # Rotate the current crystal with the crystal plane (hkl) as the rotation axis  (in degrees)");
             p.help.Add("ReciPro.Dir.ProjectAlongAxis(int u, int v, int w) # Rotate the current crystal so that the specified axis (uvw) is normal to the screen.");
             p.help.Add("ReciPro.Dir.ProjectAlongPlane(int h, int k, int l) # Rotate the current crystal so that the specified plane (hkl) is normal to the screen.");
         }
@@ -147,6 +150,7 @@ public class Macro : MacroBase
         }
 
         public void Rotate(double vX, double vY, double vZ, double angle) => p.main.Rotate((vX, vY, vZ), angle);
+        public void RotateInDeg(double vX, double vY, double vZ, double angle) => Rotate(vX, vY, vZ, angle*Math.PI/180.0);
 
         public void RotateAroundAxis(int u, int v, int w, double angle)
         {
@@ -154,6 +158,7 @@ public class Macro : MacroBase
             var axis = p.main.Crystal.RotationMatrix * (u * a + v * b + w * c);
             p.main.Rotate(axis, angle);
         }
+        public void RotateAroundAxisInDeg(int u, int v, int w, double angle)=> RotateAroundAxis(u, v, w, angle * Math.PI / 180.0);
 
         public void RotateAroundPlane(int h, int k, int l, double angle)
         {
@@ -161,6 +166,7 @@ public class Macro : MacroBase
             var axis = p.main.Crystal.RotationMatrix * (h * rot.Row1 + k * rot.Row2 + l * rot.Row3);
             p.main.Rotate(axis, angle);
         }
+        public void RotateAroundPlaneInDeg(int h, int k, int l, double angle)=>RotateAroundPlane(h, k, l, angle * Math.PI / 180.0);
 
         public void ProjectAlongPlane(int h, int k, int l)
         {
@@ -215,6 +221,7 @@ public class Macro : MacroBase
 
             p.help.Add("ReciPro.DifSim.ImageWidth # Integer. Set/Get the image width in pixel.");
             p.help.Add("ReciPro.DifSim.ImageHeight # Integer. Set/Get the image height in pixel.");
+            p.help.Add("ReciPro.DifSim.ImageSize(int width, int height) # Set the image size in pixel.");
             p.help.Add("ReciPro.DifSim.ImageResolutionInMM # Float. Set/Get the image resolution (mm/pix).");
             p.help.Add("ReciPro.DifSim.ImageResolutionInNMinv # Float. Set/Get the image resolution (nm^-1/pix).");
             p.help.Add("ReciPro.DifSim.CameraLength2 # Float. Set/Get the distance (in mm) from the sample to the detector.");
@@ -279,6 +286,8 @@ public class Macro : MacroBase
         }
         public int ImageWidth { get => difSim.ClientWidth; set => difSim.ClientWidth = value; }
         public int ImageHeight { get => difSim.ClientHeight; set => difSim.ClientHeight = value; }
+
+        public void ImageSize(int width, int height) { ImageWidth = width; ImageHeight = height; }
         public double CameraLength2 { get => difSim.CameraLength2; set => difSim.CameraLength2 = value; }
         public void Foot(double x, double y) { difSim.Foot = new PointD(x, y); }
 
@@ -348,6 +357,8 @@ public class Macro : MacroBase
 
             p.help.Add($"ReciPro.{modeStr}.ImageWidth # Integer. Set/get the width of the image to be simulated (in pixel).");
             p.help.Add($"ReciPro.{modeStr}.ImageHeight # Integer. Set/get the height of the image to be simulated (in pixel).");
+            p.help.Add($"ReciPro.{modeStr}.ImageSize(in width, int height) # Set the image size to be simulated (in pixel).");
+
             p.help.Add($"ReciPro.{modeStr}.ImageResolution # Float. Set/get the resolution of the image to be simulated (in picometer/pixel).");
             p.help.Add($"ReciPro.{modeStr}.UnitCellVisible # True/False. Set/get whether or not to display a unit cell.");
             p.help.Add($"ReciPro.{modeStr}.LabelVisible # True/False. Set/get whether or not to display a image label.");
@@ -392,6 +403,8 @@ public class Macro : MacroBase
         public int NumberOfDiffractedWaves { get => sim.BlochNum; set => sim.BlochNum = value; }
         public int ImageWidth { get => sim.ImageSize.Width; set => sim.ImageSize = new Size(value, sim.ImageSize.Height); }
         public int ImageHeight { get => sim.ImageSize.Height; set => sim.ImageSize = new Size(sim.ImageSize.Width, value); }
+        public void ImageSize(int width, int height) => sim.ImageSize = new Size(width, height);
+
         public double ImageResolution { get => sim.ImageResolution; set => sim.ImageResolution = value; }
         public bool UnitCellVisible { get => sim.UnitCellVisible; set => sim.UnitCellVisible = value; }
         public bool LabelVisible { get => sim.LabelVisible; set => sim.LabelVisible = value; }
@@ -403,7 +416,11 @@ public class Macro : MacroBase
 
         public void Open() { sim.Visible = true; sim.ImageMode = Mode; }
         public void Close() => sim.Visible = false;
-        public void Simulate() { Open(); sim.ButtonSimulate_Click(null, null); }
+        public void Simulate()
+        {
+            Open();
+            sim.Simulate(true);
+        }
 
         public bool OverprintSymbols { get => sim.OverprintSymbols; set => sim.OverprintSymbols = value; }
         public bool SaveIndividually { get => sim.SaveIndividually; set => sim.SaveIndividually = value; }
@@ -418,7 +435,7 @@ public class Macro : MacroBase
         public double Defocus { get => sim.Defocus; set => sim.Defocus = value; }
         public double Cs { get => sim.Cs * 1E-6; set => sim.Cs = value * 1E6; }
         public double Cc { get => sim.Cc * 1E-6; set => sim.Cc = value * 1E6; }
-        public double DeltaV { get => sim.DeltaVol; set => sim.DeltaVol = value; }
+        public double DeltaV { get => sim.DeltaVolFWHM * 1000.0; set => sim.DeltaVolFWHM = value / 1000.0; }
         public double Scherzer => sim.Scherzer;
 
         public void SingleImageMode() => sim.SingleImageMode = true;
@@ -441,36 +458,51 @@ public class Macro : MacroBase
     {
         public STEMClass(Macro _p) : base(_p, FormImageSimulator.ImageModes.STEM)
         {
-            p.help.Add($"ReciPro.STEM.AngularResolution  # Float. Set/get the index.");
+            p.help.Add($"ReciPro.STEM.ConvergenceAngle # Float. Set/get the convergence semiangle (in mrad).");
+            p.help.Add($"ReciPro.STEM.DetectorInnerAngle # Float. Set/get the inner semiangle (in mrad) of the annular detector.");
+            p.help.Add($"ReciPro.STEM.DetectorOuterAngle # Float. Set/get the outer semiangle (in mrad) of the annular detector.");
+            p.help.Add($"ReciPro.STEM.EffectiveSourceSize # Float. Set/get the effective source size (FWHM in pim).");
+
+            p.help.Add($"ReciPro.STEM.AngularResolution  # Float. Set/get the angular resolution (in mrad) of the convergent beam.");
             p.help.Add($"ReciPro.STEM.SliceThickness  # Float. Set/get the slice thickness (in nm) for TDS calculation.");
-            p.help.Add($"ReciPro.STEM.ConvergenceAngle  # Float. Set/get the convergence semiangle (in mrad).");
-            p.help.Add($"ReciPro.STEM.DetectorInnerAngle  # Float. Set/get the inner semiangle (in mrad) of the detector.");
-            p.help.Add($"ReciPro.STEM.DetectorOuterAngle  # Float. Set/get the outer semiangle (in mrad) of the detector.");
+            
+            p.help.Add($"ReciPro.STEM.DisplayBoth() # Display both elastic and TDS (inelastic) electrons.");
+            p.help.Add($"ReciPro.STEM.DisplayElastic() # Display elastic electrons only.");
+            p.help.Add($"ReciPro.STEM.DisplayTDS() # Display TDS (inelastic) electrons only.");
+
         }
 
-        public double AngularResolution { get => sim.STEM_AngularResolution * 1000; set => sim.STEM_AngularResolution = value / 1000; }
-        public double SliceThickness { get => sim.STEM_SliceThickness; set => sim.STEM_SliceThickness = value; }
         public double ConvergenceAngle { get => sim.STEM_ConvergenceAngle * 1000; set => sim.STEM_ConvergenceAngle = value / 1000; }
         public double DetectorInnerAngle { get => sim.STEM_DetectorInnerAngle * 1000; set => sim.STEM_DetectorInnerAngle = value / 1000; }
         public double DetectorOuterAngle { get => sim.STEM_DetectorOuterAngle * 1000; set => sim.STEM_DetectorOuterAngle = value / 1000; }
+        public double EffectiveSourceSize { get => sim.STEM_SourceSizeFWHM * 1000; set => sim.STEM_SourceSizeFWHM = value / 1000; }
+       
+        public double AngularResolution { get => sim.STEM_AngularResolution * 1000; set => sim.STEM_AngularResolution = value / 1000; }
+        public double SliceThickness { get => sim.STEM_SliceThickness; set => sim.STEM_SliceThickness = value; }
+
+        public void DisplayBoth() => sim.STEM_Mode = FormImageSimulator.STEM_ModeEnum.Both;
+        public void DisplayElastic() => sim.STEM_Mode = FormImageSimulator.STEM_ModeEnum.Elastic;
+        public void DisplayTDS() => sim.STEM_Mode = FormImageSimulator.STEM_ModeEnum.TDS;
     }
 
     public class HRTEMClass : ImageSimulationClass
     {
         public HRTEMClass(Macro _p) : base(_p, FormImageSimulator.ImageModes.HRTEM)
         {
-            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.ApertureSemiangle  # Float. Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
-            p.help.Add($"ReciPro.HRTEM.Beta  # Float. Set/get β (in mrad): illumination semiangle .");
-
+            p.help.Add($"ReciPro.HRTEM.Beta # Float. Set/get illumination semiangle β (in mrad) of the electron beam due to the finite source size effect.");
+            p.help.Add($"ReciPro.HRTEM.ApertureSemiangle # Float. Set/get the semiangle (in mrad) of the objective aperture.");
+            p.help.Add($"ReciPro.ApertureShiftX # Float. Set/get the x-direction shift (in mrad) of the objective aperture.");
+            p.help.Add($"ReciPro.ApertureShiftY # Float. Set/get the y-direction shift (in mrad) of the objective aperture.");
+            p.help.Add($"ReciPro.OpenAperture # True/False. Set/get the open aperture state.");
+            
+            p.help.Add($"ReciPro.Mode_LinearImage() # Use linear image model for calculating partial coherency.");
+            p.help.Add($"ReciPro.Mode_TCC() # Use TCC (transmission cross coefficient) model for calculating partial coherency.");
         }
         public double Beta { get => sim.HRTEM_Beta; set => sim.HRTEM_Beta = value; }
         public double ApertureSemiangle { get => sim.HRTEM_ObjAperRadius; set => sim.HRTEM_ObjAperRadius = value; }
         public double ApertureShiftX { get => sim.HRTEM_ObjAperX; set => sim.HRTEM_ObjAperX = value; }
         public double ApertureShiftY { get => sim.HRTEM_ObjAperY; set => sim.HRTEM_ObjAperY = value; }
+        public bool OpenAperture { get => sim.HRTEM_OpenObjAper; set => sim.HRTEM_OpenObjAper = value; }
 
         public void Mode_LinearImage() => sim.HRTEM_Mode = FormImageSimulator.HRTEM_Modes.Quasi;
         public void Mode_TCC() => sim.HRTEM_Mode = FormImageSimulator.HRTEM_Modes.TCC;

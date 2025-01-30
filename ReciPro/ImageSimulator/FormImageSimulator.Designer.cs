@@ -1429,14 +1429,12 @@ namespace ReciPro
             resources.ApplyResources(label5, "label5");
             label5.ForeColor = System.Drawing.SystemColors.ControlText;
             label5.Name = "label5";
-            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
             // 
             // label34
             // 
             resources.ApplyResources(label34, "label34");
             label34.ForeColor = System.Drawing.SystemColors.ControlText;
             label34.Name = "label34";
-            toolTip.SetToolTip(label34, resources.GetString("label34.ToolTip"));
             // 
             // numericBoxSTEM_DetectorOuterAngle
             // 
@@ -1581,7 +1579,6 @@ namespace ReciPro
             resources.ApplyResources(label1, "label1");
             label1.ForeColor = System.Drawing.SystemColors.ControlText;
             label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // groupBoxHREMoption1
             // 

@@ -117,7 +117,7 @@ public partial class FormDiffractionSimulatorCBED : Form
     #region 実行/停止ボタン
     private void buttonExecute_Click(object sender, EventArgs e)
     {
-        if (Crystal.Bethe.IsBusy) return;
+        if (Crystal.Bethe.IsCBED_Busy) return;
 
         buttonStop.Visible = true;
         sw2.Reset();
