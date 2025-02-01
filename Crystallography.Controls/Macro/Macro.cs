@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls;
@@ -32,14 +34,18 @@ public class MacroBase
     {
         mainObject.SetMacroToMenu(name);
     }
+
+
 }
 
 [Serializable()]
 public class MacroSub
 {
-    private Control context;
-
-    public MacroSub(Control _context) => context = _context;
+    private readonly Control context;
+    public MacroSub(Control _context)
+    {
+        context = _context;
+    }
 
     //スレッド間で安全にコントロールを操作する、関数群
     public Type Execute<Type>(Expression<Func<Type>> expression) => Execute<Type>(context, expression.Compile(), null);
@@ -158,3 +164,27 @@ public class MacroSub
             process.DynamicInvoke(args);
     }
 }
+
+#region HelpAttribute
+
+[AttributeUsage(AttributeTargets.All)]
+public class HelpAttribute : System.Attribute
+{
+    public string Text;
+    public string Argument;
+    public HelpAttribute(string text, string arg="") { Text = text; Argument = arg; }
+    public static List<string> GenerateHelpText(Type type, string name)
+    {
+        var strList = new List<string>();
+        var header = type.Namespace + "." + name + ".";
+        foreach (var p in type.GetProperties().Where(e => e.GetCustomAttribute<HelpAttribute>() != null))
+            strList.Add(header + p.Name + "#" + p.GetCustomAttribute<HelpAttribute>().Text);
+        foreach (var m in type.GetMethods().Where(e => e.GetCustomAttribute<HelpAttribute>() != null && !e.IsSpecialName))
+            strList.Add(header + m.Name + "(" + m.GetCustomAttribute<HelpAttribute>().Argument + ")#" + m.GetCustomAttribute<HelpAttribute>().Text);
+
+        return strList;
+    }
+
+}
+
+#endregion
