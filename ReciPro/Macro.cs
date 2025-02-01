@@ -62,7 +62,7 @@ public class Macro : MacroBase
     #region ファイルクラス
     public class FileClass(Macro _p) : MacroSub(_p.main)
     {
-        //private readonly Macro p = _p;
+        private FormMain main => _p.main;
 
         [Help("Get a directory path. the returned string is a full path to the filename. If 'filename' is omitted, a selection dialog will open.", "string filename")]
         public string GetDirectoryPath(string filename = "") => Execute<string>(new Func<string>(() => getDirectoryPath(filename)));
@@ -96,10 +96,10 @@ public class Macro : MacroBase
         }
 
         [Help("Read a crystal list file (xml format).", "string filename")]
-        public void ReadCrystalList(string filename) => Execute(() => p.main.ReadCrystalList(filename, false, false));
+        public void ReadCrystalList(string filename) => Execute(() => main.ReadCrystalList(filename, false, false));
       
         [Help("Read a crystal file (cif or amc format).", "string filename")]
-        public void ReadCrystal(string filename) => Execute(() => p.main.ReadCrystal(filename));
+        public void ReadCrystal(string filename) => Execute(() => main.ReadCrystal(filename));
 
     }
     #endregion
@@ -153,7 +153,7 @@ public class Macro : MacroBase
 
         [Help("Rotate the current crystal by specifying the rotation axis (vX, vY, vZ) and angle (in radians).", 
             "double vX, double vY, double vZ, double angle")]
-        public void Rotate(double vX, double vY, double vZ, double angle) => p.main.Rotate((vX, vY, vZ), angle);
+        public void Rotate(double vX, double vY, double vZ, double angle) => main.Rotate((vX, vY, vZ), angle);
 
         [Help(" Rotate the current crystal by specifying the rotation axis (vX, vY, vZ) and angle (in degrees)."
             , "double vX, double vY, double vZ, double angle")]
