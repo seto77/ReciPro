@@ -9,9 +9,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using static Community.CsharpSqlite.Sqlite3;
-using static IronPython.Modules._ast;
-
 namespace ReciPro;
 #endregion
 
