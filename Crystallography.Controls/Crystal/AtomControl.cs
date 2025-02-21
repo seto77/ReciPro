@@ -349,19 +349,28 @@ public partial class AtomControl : UserControl
     {
         if (SkipEvent) return;
         if (comboBoxAtom.SelectedIndex < 0) return;
-        comboBoxScatteringFactorXray.Items.Clear();
-        comboBoxScatteringFactorElectron.Items.Clear();
 
+        //コンボボックスに原子番号に対応するX線散乱因子の価数と手法を追加
+        comboBoxScatteringFactorXray.Items.Clear();
         for (int i = 0; i < AtomStatic.XrayScatteringWK[AtomNo].Length; i++)
             comboBoxScatteringFactorXray.Items.Add(AtomStatic.XrayScatteringWK[AtomNo][i].Method);
+        comboBoxScatteringFactorXray.SelectedIndex = 0;
 
+        //コンボボックスに原子番号に対応する電子散乱因子の価数と手法を追加        
+        comboBoxScatteringFactorElectron.Items.Clear();
         for (int i = 0; i < AtomStatic.ElectronScatteringPeng[AtomNo].Length; i++)
             comboBoxScatteringFactorElectron.Items.Add(AtomStatic.ElectronScatteringPeng[AtomNo][i].Method);
-
-        comboBoxScatteringFactorXray.SelectedIndex = 0;
         comboBoxScatteringFactorElectron.SelectedIndex = 0;
+
+        //コンボボックスに原子番号に対応する中性子散乱長の設定
         comboBoxNeutron.SelectedIndex = 0;
         comboBoxNeutron_SelectedIndexChanged(new object(), new EventArgs());
+
+        //原子番号に対応する原子のサイズや色などを設定
+        var (radius, argb) = AtomStatic.GetVesta(AtomNo);
+        Radius = radius;
+        AtomColor = Color.FromArgb(argb);
+
     }
 
     //散乱因子を選択変更されたら

@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using System.Numerics;
 using System.Xml.Serialization;
 
@@ -286,108 +285,8 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     /// </summary>
     public void ResetVesta()
     {
-        #region VestaÇÃêFê›íË
         Texture = Material.DefaultTexture;
-        switch (AtomicNumber)
-        {
-            case 1: Radius = (float)(0.46 * 0.4); Argb = Color.FromArgb(255, 204, 204).ToArgb(); break;
-            case 2: Radius = (float)(1.22 * 0.4); Argb = Color.FromArgb(252, 233, 207).ToArgb(); break;
-            case 3: Radius = (float)(1.57 * 0.4); Argb = Color.FromArgb(134, 224, 116).ToArgb(); break;
-            case 4: Radius = (float)(1.12 * 0.4); Argb = Color.FromArgb(95, 216, 123).ToArgb(); break;
-            case 5: Radius = (float)(0.81 * 0.4); Argb = Color.FromArgb(32, 162, 15).ToArgb(); break;
-            case 6: Radius = (float)(0.77 * 0.4); Argb = Color.FromArgb(129, 73, 41).ToArgb(); break;
-            case 7: Radius = (float)(0.74 * 0.4); Argb = Color.FromArgb(176, 186, 230).ToArgb(); break;
-            case 8: Radius = (float)(0.74 * 0.4); Argb = Color.FromArgb(255, 3, 0).ToArgb(); break;
-            case 9: Radius = (float)(0.72 * 0.4); Argb = Color.FromArgb(176, 186, 230).ToArgb(); break;
-            case 10: Radius = (float)(1.6 * 0.4); Argb = Color.FromArgb(255, 56, 181).ToArgb(); break;
-            case 11: Radius = (float)(1.91 * 0.4); Argb = Color.FromArgb(250, 221, 61).ToArgb(); break;
-            case 12: Radius = (float)(1.6 * 0.4); Argb = Color.FromArgb(252, 124, 22).ToArgb(); break;
-            case 13: Radius = (float)(1.43 * 0.4); Argb = Color.FromArgb(129, 179, 214).ToArgb(); break;
-            case 14: Radius = (float)(1.18 * 0.4); Argb = Color.FromArgb(27, 59, 250).ToArgb(); break;
-            case 15: Radius = (float)(1.1 * 0.4); Argb = Color.FromArgb(193, 156, 195).ToArgb(); break;
-            case 16: Radius = (float)(1.04 * 0.4); Argb = Color.FromArgb(255, 250, 0).ToArgb(); break;
-            case 17: Radius = (float)(0.99 * 0.4); Argb = Color.FromArgb(50, 252, 3).ToArgb(); break;
-            case 18: Radius = (float)(1.92 * 0.4); Argb = Color.FromArgb(207, 254, 197).ToArgb(); break;
-            case 19: Radius = (float)(2.35 * 0.4); Argb = Color.FromArgb(161, 34, 247).ToArgb(); break;
-            case 20: Radius = (float)(1.97 * 0.4); Argb = Color.FromArgb(91, 150, 190).ToArgb(); break;
-            case 21: Radius = (float)(1.64 * 0.4); Argb = Color.FromArgb(182, 99, 172).ToArgb(); break;
-            case 22: Radius = (float)(1.47 * 0.4); Argb = Color.FromArgb(120, 202, 255).ToArgb(); break;
-            case 23: Radius = (float)(1.35 * 0.4); Argb = Color.FromArgb(230, 26, 0).ToArgb(); break;
-            case 24: Radius = (float)(1.29 * 0.4); Argb = Color.FromArgb(0, 0, 158).ToArgb(); break;
-            case 25: Radius = (float)(1.37 * 0.4); Argb = Color.FromArgb(169, 9, 158).ToArgb(); break;
-            case 26: Radius = (float)(1.26 * 0.4); Argb = Color.FromArgb(181, 114, 0).ToArgb(); break;
-            case 27: Radius = (float)(1.25 * 0.4); Argb = Color.FromArgb(0, 0, 175).ToArgb(); break;
-            case 28: Radius = (float)(1.25 * 0.4); Argb = Color.FromArgb(184, 188, 190).ToArgb(); break;
-            case 29: Radius = (float)(1.28 * 0.4); Argb = Color.FromArgb(34, 71, 221).ToArgb(); break;
-            case 30: Radius = (float)(1.37 * 0.4); Argb = Color.FromArgb(143, 144, 130).ToArgb(); break;
-            case 31: Radius = (float)(1.53 * 0.4); Argb = Color.FromArgb(159, 228, 116).ToArgb(); break;
-            case 32: Radius = (float)(1.22 * 0.4); Argb = Color.FromArgb(126, 111, 166).ToArgb(); break;
-            case 33: Radius = (float)(1.21 * 0.4); Argb = Color.FromArgb(117, 208, 87).ToArgb(); break;
-            case 34: Radius = (float)(1.04 * 0.4); Argb = Color.FromArgb(154, 239, 16).ToArgb(); break;
-            case 35: Radius = (float)(1.14 * 0.4); Argb = Color.FromArgb(127, 49, 3).ToArgb(); break;
-            case 36: Radius = (float)(1.98 * 0.4); Argb = Color.FromArgb(250, 193, 243).ToArgb(); break;
-            case 37: Radius = (float)(2.5 * 0.4); Argb = Color.FromArgb(255, 0, 153).ToArgb(); break;
-            case 38: Radius = (float)(2.15 * 0.4); Argb = Color.FromArgb(0, 255, 39).ToArgb(); break;
-            case 39: Radius = (float)(1.82 * 0.4); Argb = Color.FromArgb(103, 152, 142).ToArgb(); break;
-            case 40: Radius = (float)(1.6 * 0.4); Argb = Color.FromArgb(0, 255, 0).ToArgb(); break;
-            case 41: Radius = (float)(1.47 * 0.4); Argb = Color.FromArgb(76, 179, 118).ToArgb(); break;
-            case 42: Radius = (float)(1.4 * 0.4); Argb = Color.FromArgb(180, 134, 176).ToArgb(); break;
-            case 43: Radius = (float)(1.35 * 0.4); Argb = Color.FromArgb(205, 175, 203).ToArgb(); break;
-            case 44: Radius = (float)(1.34 * 0.4); Argb = Color.FromArgb(207, 184, 174).ToArgb(); break;
-            case 45: Radius = (float)(1.34 * 0.4); Argb = Color.FromArgb(206, 210, 171).ToArgb(); break;
-            case 46: Radius = (float)(1.37 * 0.4); Argb = Color.FromArgb(194, 196, 185).ToArgb(); break;
-            case 47: Radius = (float)(1.44 * 0.4); Argb = Color.FromArgb(184, 188, 190).ToArgb(); break;
-            case 48: Radius = (float)(1.52 * 0.4); Argb = Color.FromArgb(243, 31, 220).ToArgb(); break;
-            case 49: Radius = (float)(1.67 * 0.4); Argb = Color.FromArgb(215, 129, 187).ToArgb(); break;
-            case 50: Radius = (float)(1.58 * 0.4); Argb = Color.FromArgb(155, 143, 186).ToArgb(); break;
-            case 51: Radius = (float)(1.41 * 0.4); Argb = Color.FromArgb(216, 131, 80).ToArgb(); break;
-            case 52: Radius = (float)(1.37 * 0.4); Argb = Color.FromArgb(173, 162, 82).ToArgb(); break;
-            case 53: Radius = (float)(1.33 * 0.4); Argb = Color.FromArgb(143, 31, 139).ToArgb(); break;
-            case 54: Radius = (float)(2.18 * 0.4); Argb = Color.FromArgb(155, 161, 248).ToArgb(); break;
-            case 55: Radius = (float)(2.72 * 0.4); Argb = Color.FromArgb(15, 255, 185).ToArgb(); break;
-            case 56: Radius = (float)(2.24 * 0.4); Argb = Color.FromArgb(30, 240, 45).ToArgb(); break;
-            case 57: Radius = (float)(1.88 * 0.4); Argb = Color.FromArgb(90, 196, 73).ToArgb(); break;
-            case 58: Radius = (float)(1.82 * 0.4); Argb = Color.FromArgb(209, 253, 6).ToArgb(); break;
-            case 59: Radius = (float)(1.82 * 0.4); Argb = Color.FromArgb(253, 226, 6).ToArgb(); break;
-            case 60: Radius = (float)(1.82 * 0.4); Argb = Color.FromArgb(252, 142, 7).ToArgb(); break;
-            case 61: Radius = (float)(1.81 * 0.4); Argb = Color.FromArgb(0, 0, 245).ToArgb(); break;
-            case 62: Radius = (float)(1.81 * 0.4); Argb = Color.FromArgb(253, 6, 125).ToArgb(); break;
-            case 63: Radius = (float)(2.06 * 0.4); Argb = Color.FromArgb(251, 8, 213).ToArgb(); break;
-            case 64: Radius = (float)(1.79 * 0.4); Argb = Color.FromArgb(192, 4, 255).ToArgb(); break;
-            case 65: Radius = (float)(1.77 * 0.4); Argb = Color.FromArgb(113, 4, 254).ToArgb(); break;
-            case 66: Radius = (float)(1.77 * 0.4); Argb = Color.FromArgb(49, 6, 253).ToArgb(); break;
-            case 67: Radius = (float)(1.76 * 0.4); Argb = Color.FromArgb(7, 66, 251).ToArgb(); break;
-            case 68: Radius = (float)(1.75 * 0.4); Argb = Color.FromArgb(73, 115, 59).ToArgb(); break;
-            case 69: Radius = (float)(1 * 0.4); Argb = Color.FromArgb(0, 0, 224).ToArgb(); break;
-            case 70: Radius = (float)(1.94 * 0.4); Argb = Color.FromArgb(39, 253, 244).ToArgb(); break;
-            case 71: Radius = (float)(1.72 * 0.4); Argb = Color.FromArgb(38, 253, 181).ToArgb(); break;
-            case 72: Radius = (float)(1.59 * 0.4); Argb = Color.FromArgb(180, 180, 89).ToArgb(); break;
-            case 73: Radius = (float)(1.47 * 0.4); Argb = Color.FromArgb(183, 155, 86).ToArgb(); break;
-            case 74: Radius = (float)(1.41 * 0.4); Argb = Color.FromArgb(142, 138, 128).ToArgb(); break;
-            case 75: Radius = (float)(1.37 * 0.4); Argb = Color.FromArgb(179, 177, 142).ToArgb(); break;
-            case 76: Radius = (float)(1.35 * 0.4); Argb = Color.FromArgb(201, 177, 121).ToArgb(); break;
-            case 77: Radius = (float)(1.36 * 0.4); Argb = Color.FromArgb(201, 207, 115).ToArgb(); break;
-            case 78: Radius = (float)(1.39 * 0.4); Argb = Color.FromArgb(204, 198, 191).ToArgb(); break;
-            case 79: Radius = (float)(1.44 * 0.4); Argb = Color.FromArgb(254, 179, 56).ToArgb(); break;
-            case 80: Radius = (float)(1.55 * 0.4); Argb = Color.FromArgb(211, 184, 204).ToArgb(); break;
-            case 81: Radius = (float)(1.71 * 0.4); Argb = Color.FromArgb(150, 137, 109).ToArgb(); break;
-            case 82: Radius = (float)(1.75 * 0.4); Argb = Color.FromArgb(83, 83, 91).ToArgb(); break;
-            case 83: Radius = (float)(1.82 * 0.4); Argb = Color.FromArgb(210, 48, 248).ToArgb(); break;
-            case 84: Radius = (float)(1.77 * 0.4); Argb = Color.FromArgb(0, 0, 255).ToArgb(); break;
-            case 85: Radius = (float)(0.62 * 0.4); Argb = Color.FromArgb(0, 0, 255).ToArgb(); break;
-            case 86: Radius = (float)(0.8 * 0.4); Argb = Color.FromArgb(255, 255, 0).ToArgb(); break;
-            case 87: Radius = (float)(1 * 0.4); Argb = Color.FromArgb(0, 0, 0).ToArgb(); break;
-            case 88: Radius = (float)(2.35 * 0.4); Argb = Color.FromArgb(110, 170, 89).ToArgb(); break;
-            case 89: Radius = (float)(2.03 * 0.4); Argb = Color.FromArgb(100, 158, 115).ToArgb(); break;
-            case 90: Radius = (float)(1.8 * 0.4); Argb = Color.FromArgb(38, 254, 120).ToArgb(); break;
-            case 91: Radius = (float)(1.63 * 0.4); Argb = Color.FromArgb(41, 251, 53).ToArgb(); break;
-            case 92: Radius = (float)(1.56 * 0.4); Argb = Color.FromArgb(122, 162, 170).ToArgb(); break;
-            case 93: Radius = (float)(1.56 * 0.4); Argb = Color.FromArgb(77, 77, 77).ToArgb(); break;
-            case 94: Radius = (float)(1.64 * 0.4); Argb = Color.FromArgb(77, 77, 77).ToArgb(); break;
-            case 95: Radius = (float)(1.73 * 0.4); Argb = Color.FromArgb(77, 77, 77).ToArgb(); break;
-            case 96: Radius = (float)(0.8 * 0.4); Argb = Color.FromArgb(77, 77, 77).ToArgb(); break;
-        }
-        #endregion
+        (Radius, Argb) =AtomStatic.GetVesta(AtomicNumber);
     }
     #endregion
 
@@ -524,12 +423,8 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
         else if (s == "0.6667") return 2.0 / 3.0;
         else
             try { return Convert.ToDouble(s); }
-            catch { System.Windows.Forms.MessageBox.Show("êîílÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢"); return 0; }
+            catch { System.Windows.Forms.MessageBox.Show("Please input a valid value"); return 0; }
     }
-
-
-
-
     #endregion
 }
 

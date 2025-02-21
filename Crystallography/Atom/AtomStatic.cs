@@ -2,6 +2,7 @@
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -2780,6 +2781,109 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region 静的メソッド
+
+    #region Vestaの色とサイズを取得
+    public static (float Radius, int Argb) GetVesta(int z) => z switch
+    {
+        1 => ((float)(0.46 * 0.4), Color.FromArgb(255, 204, 204).ToArgb()),
+        2 => ((float)(1.22 * 0.4), Color.FromArgb(252, 233, 207).ToArgb()),
+        3 => ((float)(1.57 * 0.4), Color.FromArgb(134, 224, 116).ToArgb()),
+        4 => ((float)(1.12 * 0.4), Color.FromArgb(95, 216, 123).ToArgb()),
+        5 => ((float)(0.81 * 0.4), Color.FromArgb(32, 162, 15).ToArgb()),
+        6 => ((float)(0.77 * 0.4), Color.FromArgb(129, 73, 41).ToArgb()),
+        7 => ((float)(0.74 * 0.4), Color.FromArgb(176, 186, 230).ToArgb()),
+        8 => ((float)(0.74 * 0.4), Color.FromArgb(255, 3, 0).ToArgb()),
+        9 => ((float)(0.72 * 0.4), Color.FromArgb(176, 186, 230).ToArgb()),
+        10 => ((float)(1.6 * 0.4), Color.FromArgb(255, 56, 181).ToArgb()),
+        11 => ((float)(1.91 * 0.4), Color.FromArgb(250, 221, 61).ToArgb()),
+        12 => ((float)(1.6 * 0.4), Color.FromArgb(252, 124, 22).ToArgb()),
+        13 => ((float)(1.43 * 0.4), Color.FromArgb(129, 179, 214).ToArgb()),
+        14 => ((float)(1.18 * 0.4), Color.FromArgb(27, 59, 250).ToArgb()),
+        15 => ((float)(1.1 * 0.4), Color.FromArgb(193, 156, 195).ToArgb()),
+        16 => ((float)(1.04 * 0.4), Color.FromArgb(255, 250, 0).ToArgb()),
+        17 => ((float)(0.99 * 0.4), Color.FromArgb(50, 252, 3).ToArgb()),
+        18 => ((float)(1.92 * 0.4), Color.FromArgb(207, 254, 197).ToArgb()),
+        19 => ((float)(2.35 * 0.4), Color.FromArgb(161, 34, 247).ToArgb()),
+        20 => ((float)(1.97 * 0.4), Color.FromArgb(91, 150, 190).ToArgb()),
+        21 => ((float)(1.64 * 0.4), Color.FromArgb(182, 99, 172).ToArgb()),
+        22 => ((float)(1.47 * 0.4), Color.FromArgb(120, 202, 255).ToArgb()),
+        23 => ((float)(1.35 * 0.4), Color.FromArgb(230, 26, 0).ToArgb()),
+        24 => ((float)(1.29 * 0.4), Color.FromArgb(0, 0, 158).ToArgb()),
+        25 => ((float)(1.37 * 0.4), Color.FromArgb(169, 9, 158).ToArgb()),
+        26 => ((float)(1.26 * 0.4), Color.FromArgb(181, 114, 0).ToArgb()),
+        27 => ((float)(1.25 * 0.4), Color.FromArgb(0, 0, 175).ToArgb()),
+        28 => ((float)(1.25 * 0.4), Color.FromArgb(184, 188, 190).ToArgb()),
+        29 => ((float)(1.28 * 0.4), Color.FromArgb(34, 71, 221).ToArgb()),
+        30 => ((float)(1.37 * 0.4), Color.FromArgb(143, 144, 130).ToArgb()),
+        31 => ((float)(1.53 * 0.4), Color.FromArgb(159, 228, 116).ToArgb()),
+        32 => ((float)(1.22 * 0.4), Color.FromArgb(126, 111, 166).ToArgb()),
+        33 => ((float)(1.21 * 0.4), Color.FromArgb(117, 208, 87).ToArgb()),
+        34 => ((float)(1.04 * 0.4), Color.FromArgb(154, 239, 16).ToArgb()),
+        35 => ((float)(1.14 * 0.4), Color.FromArgb(127, 49, 3).ToArgb()),
+        36 => ((float)(1.98 * 0.4), Color.FromArgb(250, 193, 243).ToArgb()),
+        37 => ((float)(2.5 * 0.4), Color.FromArgb(255, 0, 153).ToArgb()),
+        38 => ((float)(2.15 * 0.4), Color.FromArgb(0, 255, 39).ToArgb()),
+        39 => ((float)(1.82 * 0.4), Color.FromArgb(103, 152, 142).ToArgb()),
+        40 => ((float)(1.6 * 0.4), Color.FromArgb(0, 255, 0).ToArgb()),
+        41 => ((float)(1.47 * 0.4), Color.FromArgb(76, 179, 118).ToArgb()),
+        42 => ((float)(1.4 * 0.4), Color.FromArgb(180, 134, 176).ToArgb()),
+        43 => ((float)(1.35 * 0.4), Color.FromArgb(205, 175, 203).ToArgb()),
+        44 => ((float)(1.34 * 0.4), Color.FromArgb(207, 184, 174).ToArgb()),
+        45 => ((float)(1.34 * 0.4), Color.FromArgb(206, 210, 171).ToArgb()),
+        46 => ((float)(1.37 * 0.4), Color.FromArgb(194, 196, 185).ToArgb()),
+        47 => ((float)(1.44 * 0.4), Color.FromArgb(184, 188, 190).ToArgb()),
+        48 => ((float)(1.52 * 0.4), Color.FromArgb(243, 31, 220).ToArgb()),
+        49 => ((float)(1.67 * 0.4), Color.FromArgb(215, 129, 187).ToArgb()),
+        50 => ((float)(1.58 * 0.4), Color.FromArgb(155, 143, 186).ToArgb()),
+        51 => ((float)(1.41 * 0.4), Color.FromArgb(216, 131, 80).ToArgb()),
+        52 => ((float)(1.37 * 0.4), Color.FromArgb(173, 162, 82).ToArgb()),
+        53 => ((float)(1.33 * 0.4), Color.FromArgb(143, 31, 139).ToArgb()),
+        54 => ((float)(2.18 * 0.4), Color.FromArgb(155, 161, 248).ToArgb()),
+        55 => ((float)(2.72 * 0.4), Color.FromArgb(15, 255, 185).ToArgb()),
+        56 => ((float)(2.24 * 0.4), Color.FromArgb(30, 240, 45).ToArgb()),
+        57 => ((float)(1.88 * 0.4), Color.FromArgb(90, 196, 73).ToArgb()),
+        58 => ((float)(1.82 * 0.4), Color.FromArgb(209, 253, 6).ToArgb()),
+        59 => ((float)(1.82 * 0.4), Color.FromArgb(253, 226, 6).ToArgb()),
+        60 => ((float)(1.82 * 0.4), Color.FromArgb(252, 142, 7).ToArgb()),
+        61 => ((float)(1.81 * 0.4), Color.FromArgb(0, 0, 245).ToArgb()),
+        62 => ((float)(1.81 * 0.4), Color.FromArgb(253, 6, 125).ToArgb()),
+        63 => ((float)(2.06 * 0.4), Color.FromArgb(251, 8, 213).ToArgb()),
+        64 => ((float)(1.79 * 0.4), Color.FromArgb(192, 4, 255).ToArgb()),
+        65 => ((float)(1.77 * 0.4), Color.FromArgb(113, 4, 254).ToArgb()),
+        66 => ((float)(1.77 * 0.4), Color.FromArgb(49, 6, 253).ToArgb()),
+        67 => ((float)(1.76 * 0.4), Color.FromArgb(7, 66, 251).ToArgb()),
+        68 => ((float)(1.75 * 0.4), Color.FromArgb(73, 115, 59).ToArgb()),
+        69 => ((float)(1 * 0.4), Color.FromArgb(0, 0, 224).ToArgb()),
+        70 => ((float)(1.94 * 0.4), Color.FromArgb(39, 253, 244).ToArgb()),
+        71 => ((float)(1.72 * 0.4), Color.FromArgb(38, 253, 181).ToArgb()),
+        72 => ((float)(1.59 * 0.4), Color.FromArgb(180, 180, 89).ToArgb()),
+        73 => ((float)(1.47 * 0.4), Color.FromArgb(183, 155, 86).ToArgb()),
+        74 => ((float)(1.41 * 0.4), Color.FromArgb(142, 138, 128).ToArgb()),
+        75 => ((float)(1.37 * 0.4), Color.FromArgb(179, 177, 142).ToArgb()),
+        76 => ((float)(1.35 * 0.4), Color.FromArgb(201, 177, 121).ToArgb()),
+        77 => ((float)(1.36 * 0.4), Color.FromArgb(201, 207, 115).ToArgb()),
+        78 => ((float)(1.39 * 0.4), Color.FromArgb(204, 198, 191).ToArgb()),
+        79 => ((float)(1.44 * 0.4), Color.FromArgb(254, 179, 56).ToArgb()),
+        80 => ((float)(1.55 * 0.4), Color.FromArgb(211, 184, 204).ToArgb()),
+        81 => ((float)(1.71 * 0.4), Color.FromArgb(150, 137, 109).ToArgb()),
+        82 => ((float)(1.75 * 0.4), Color.FromArgb(83, 83, 91).ToArgb()),
+        83 => ((float)(1.82 * 0.4), Color.FromArgb(210, 48, 248).ToArgb()),
+        84 => ((float)(1.77 * 0.4), Color.FromArgb(0, 0, 255).ToArgb()),
+        85 => ((float)(0.62 * 0.4), Color.FromArgb(0, 0, 255).ToArgb()),
+        86 => ((float)(0.8 * 0.4), Color.FromArgb(255, 255, 0).ToArgb()),
+        87 => ((float)(1 * 0.4), Color.FromArgb(0, 0, 0).ToArgb()),
+        88 => ((float)(2.35 * 0.4), Color.FromArgb(110, 170, 89).ToArgb()),
+        89 => ((float)(2.03 * 0.4), Color.FromArgb(100, 158, 115).ToArgb()),
+        90 => ((float)(1.8 * 0.4), Color.FromArgb(38, 254, 120).ToArgb()),
+        91 => ((float)(1.63 * 0.4), Color.FromArgb(41, 251, 53).ToArgb()),
+        92 => ((float)(1.56 * 0.4), Color.FromArgb(122, 162, 170).ToArgb()),
+        93 => ((float)(1.56 * 0.4), Color.FromArgb(77, 77, 77).ToArgb()),
+        94 => ((float)(1.64 * 0.4), Color.FromArgb(77, 77, 77).ToArgb()),
+        95 => ((float)(1.73 * 0.4), Color.FromArgb(77, 77, 77).ToArgb()),
+        96 => ((float)(0.8 * 0.4), Color.FromArgb(77, 77, 77).ToArgb()),
+        _ => (0, 0)
+    };
+    #endregion
 
     #region　原子量
     /// <summary>
@@ -7363,6 +7467,8 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     //public static double NominalDensity(int z) => NominalDensity[z];
+
+
 
     #region デバッグ用 http://www.nist.gov/pml/data/ffast/index.cfm のデータを読み込んで、コードを吐き出す関数
     /// <summary>

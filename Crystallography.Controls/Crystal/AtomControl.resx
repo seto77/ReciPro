@@ -1,4 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -161,10 +221,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBiso.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxBiso.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxBiso.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -209,10 +269,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBisoerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxBisoerr.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxBisoerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -893,10 +953,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBox1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBox1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -968,10 +1028,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBox2.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBox2.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -1094,10 +1154,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBox3.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBox3.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -1169,10 +1229,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBox4.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBox4.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -1293,10 +1353,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxOccerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxOccerr.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxOccerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -1338,10 +1398,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxOcc.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxOcc.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxOcc.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1392,16 +1452,16 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxZ.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 24</value>
+    <value>77, 25</value>
   </data>
   <data name="numericBoxZ.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1437,10 +1497,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxYerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxYerr.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxYerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -1476,10 +1536,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxXerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxXerr.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxXerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -1521,10 +1581,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxY.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxY.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1572,10 +1632,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxX.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1617,10 +1677,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxZerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxZerr.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxZerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -2268,10 +2328,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxOriginShiftZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxOriginShiftZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxOriginShiftZ.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -2316,10 +2376,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxOriginShiftY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxOriginShiftY.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxOriginShiftY.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -2364,10 +2424,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxOriginShiftX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxOriginShiftX.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxOriginShiftX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -2786,10 +2846,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB22.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB22.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -2831,10 +2891,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB22err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB22err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB22err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -2876,10 +2936,10 @@ B = 8 pi^2 * U.</value>
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB23.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB23.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -2921,10 +2981,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB23err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB23err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB23err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -2966,10 +3026,10 @@ B = 8 pi^2 * U.</value>
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB33.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB33.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -3011,10 +3071,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB33err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB33err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB33err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -3083,10 +3143,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB11.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB11.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -3128,10 +3188,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB11err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB11err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB11err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -3173,10 +3233,10 @@ B = 8 pi^2 * U.</value>
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB12.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB12.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -3218,10 +3278,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB12err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB12err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB12err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -3263,10 +3323,10 @@ B = 8 pi^2 * U.</value>
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB13.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB13.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -3308,10 +3368,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB13err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxB13err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
+    <value>1, 17</value>
   </data>
   <data name="numericBoxB13err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -3395,7 +3455,7 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="richTextBoxIsotope.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 36</value>
+    <value>376, 36</value>
   </data>
   <data name="richTextBoxIsotope.TabIndex" type="System.Int32, mscorlib">
     <value>115</value>
@@ -3737,10 +3797,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAlpha.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxAlpha.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxAlpha.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3785,10 +3845,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxEmission.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxEmission.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxEmission.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3833,10 +3893,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxShininess.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxShininess.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxShininess.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3881,10 +3941,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxSpecular.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxSpecular.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxSpecular.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3929,10 +3989,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDiffusion.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxDiffusion.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxDiffusion.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3977,10 +4037,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAmbient.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxAmbient.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxAmbient.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -4259,10 +4319,10 @@ B = 8 pi^2 * U.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAtomRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxAtomRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 23</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxAtomRadius.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -4332,9 +4392,6 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="colorControlAtomColor.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="colorControlAtomColor.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;colorControlAtomColor.Name" xml:space="preserve">
     <value>colorControlAtomColor</value>

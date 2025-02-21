@@ -220,7 +220,6 @@
             numericBoxBiso.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxBiso.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxBiso.Name = "numericBoxBiso";
-            numericBoxBiso.RoundErrorAccuracy = -1;
             numericBoxBiso.SkipEventDuringInput = false;
             numericBoxBiso.SmartIncrement = true;
             numericBoxBiso.ThonsandsSeparator = true;
@@ -232,7 +231,6 @@
             numericBoxBisoerr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxBisoerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxBisoerr.Name = "numericBoxBisoerr";
-            numericBoxBisoerr.RoundErrorAccuracy = -1;
             numericBoxBisoerr.SkipEventDuringInput = false;
             numericBoxBisoerr.SmartIncrement = true;
             numericBoxBisoerr.ThonsandsSeparator = true;
@@ -311,7 +309,6 @@
             numericBox1.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox1.Name = "numericBox1";
-            numericBox1.RoundErrorAccuracy = -1;
             numericBox1.ShowFraction = true;
             numericBox1.SkipEventDuringInput = false;
             numericBox1.SmartIncrement = true;
@@ -329,7 +326,6 @@
             numericBox2.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBox2.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox2.Name = "numericBox2";
-            numericBox2.RoundErrorAccuracy = -1;
             numericBox2.ShowFraction = true;
             numericBox2.SkipEventDuringInput = false;
             numericBox2.SmartIncrement = true;
@@ -356,7 +352,6 @@
             numericBox3.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBox3.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox3.Name = "numericBox3";
-            numericBox3.RoundErrorAccuracy = -1;
             numericBox3.ShowFraction = true;
             numericBox3.SkipEventDuringInput = false;
             numericBox3.SmartIncrement = true;
@@ -374,7 +369,6 @@
             numericBox4.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBox4.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox4.Name = "numericBox4";
-            numericBox4.RoundErrorAccuracy = -1;
             numericBox4.ShowFraction = true;
             numericBox4.SkipEventDuringInput = false;
             numericBox4.SmartIncrement = true;
@@ -442,7 +436,6 @@
             numericBoxOccerr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxOccerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxOccerr.Name = "numericBoxOccerr";
-            numericBoxOccerr.RoundErrorAccuracy = -1;
             numericBoxOccerr.SkipEventDuringInput = false;
             numericBoxOccerr.SmartIncrement = true;
             numericBoxOccerr.ThonsandsSeparator = true;
@@ -456,7 +449,6 @@
             numericBoxOcc.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxOcc.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxOcc.Name = "numericBoxOcc";
-            numericBoxOcc.RoundErrorAccuracy = -1;
             numericBoxOcc.ShowFraction = true;
             numericBoxOcc.SkipEventDuringInput = false;
             numericBoxOcc.SmartIncrement = true;
@@ -472,7 +464,6 @@
             numericBoxZ.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxZ.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxZ.Name = "numericBoxZ";
-            numericBoxZ.RoundErrorAccuracy = -1;
             numericBoxZ.ShowFraction = true;
             numericBoxZ.SkipEventDuringInput = false;
             numericBoxZ.SmartIncrement = true;
@@ -487,7 +478,6 @@
             numericBoxYerr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxYerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxYerr.Name = "numericBoxYerr";
-            numericBoxYerr.RoundErrorAccuracy = -1;
             numericBoxYerr.SkipEventDuringInput = false;
             numericBoxYerr.SmartIncrement = true;
             numericBoxYerr.ThonsandsSeparator = true;
@@ -501,7 +491,6 @@
             numericBoxXerr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxXerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxXerr.Name = "numericBoxXerr";
-            numericBoxXerr.RoundErrorAccuracy = -1;
             numericBoxXerr.SkipEventDuringInput = false;
             numericBoxXerr.SmartIncrement = true;
             numericBoxXerr.ThonsandsSeparator = true;
@@ -515,7 +504,6 @@
             numericBoxY.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxY.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxY.Name = "numericBoxY";
-            numericBoxY.RoundErrorAccuracy = -1;
             numericBoxY.ShowFraction = true;
             numericBoxY.SkipEventDuringInput = false;
             numericBoxY.SmartIncrement = true;
@@ -530,7 +518,6 @@
             numericBoxX.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxX.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxX.Name = "numericBoxX";
-            numericBoxX.RoundErrorAccuracy = -1;
             numericBoxX.ShowFraction = true;
             numericBoxX.SkipEventDuringInput = false;
             numericBoxX.SmartIncrement = true;
@@ -545,7 +532,6 @@
             numericBoxZerr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxZerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxZerr.Name = "numericBoxZerr";
-            numericBoxZerr.RoundErrorAccuracy = -1;
             numericBoxZerr.SkipEventDuringInput = false;
             numericBoxZerr.SmartIncrement = true;
             numericBoxZerr.ThonsandsSeparator = true;
@@ -707,7 +693,6 @@
             numericBoxOriginShiftZ.Maximum = 1D;
             numericBoxOriginShiftZ.Minimum = -1D;
             numericBoxOriginShiftZ.Name = "numericBoxOriginShiftZ";
-            numericBoxOriginShiftZ.RoundErrorAccuracy = -1;
             numericBoxOriginShiftZ.ShowFraction = true;
             numericBoxOriginShiftZ.SkipEventDuringInput = false;
             numericBoxOriginShiftZ.SmartIncrement = true;
@@ -723,7 +708,6 @@
             numericBoxOriginShiftY.Maximum = 1D;
             numericBoxOriginShiftY.Minimum = -1D;
             numericBoxOriginShiftY.Name = "numericBoxOriginShiftY";
-            numericBoxOriginShiftY.RoundErrorAccuracy = -1;
             numericBoxOriginShiftY.ShowFraction = true;
             numericBoxOriginShiftY.SkipEventDuringInput = false;
             numericBoxOriginShiftY.SmartIncrement = true;
@@ -739,7 +723,6 @@
             numericBoxOriginShiftX.Maximum = 1D;
             numericBoxOriginShiftX.Minimum = -1D;
             numericBoxOriginShiftX.Name = "numericBoxOriginShiftX";
-            numericBoxOriginShiftX.RoundErrorAccuracy = -1;
             numericBoxOriginShiftX.ShowFraction = true;
             numericBoxOriginShiftX.SkipEventDuringInput = false;
             numericBoxOriginShiftX.SmartIncrement = true;
@@ -842,7 +825,6 @@
             numericBoxB22.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22.Name = "numericBoxB22";
-            numericBoxB22.RoundErrorAccuracy = -1;
             numericBoxB22.SkipEventDuringInput = false;
             numericBoxB22.SmartIncrement = true;
             numericBoxB22.ThonsandsSeparator = true;
@@ -854,7 +836,6 @@
             numericBoxB22err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22err.Name = "numericBoxB22err";
-            numericBoxB22err.RoundErrorAccuracy = -1;
             numericBoxB22err.SkipEventDuringInput = false;
             numericBoxB22err.SmartIncrement = true;
             numericBoxB22err.ThonsandsSeparator = true;
@@ -866,7 +847,6 @@
             numericBoxB23.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23.Name = "numericBoxB23";
-            numericBoxB23.RoundErrorAccuracy = -1;
             numericBoxB23.SkipEventDuringInput = false;
             numericBoxB23.SmartIncrement = true;
             numericBoxB23.ThonsandsSeparator = true;
@@ -878,7 +858,6 @@
             numericBoxB23err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23err.Name = "numericBoxB23err";
-            numericBoxB23err.RoundErrorAccuracy = -1;
             numericBoxB23err.SkipEventDuringInput = false;
             numericBoxB23err.SmartIncrement = true;
             numericBoxB23err.ThonsandsSeparator = true;
@@ -890,7 +869,6 @@
             numericBoxB33.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33.Name = "numericBoxB33";
-            numericBoxB33.RoundErrorAccuracy = -1;
             numericBoxB33.SkipEventDuringInput = false;
             numericBoxB33.SmartIncrement = true;
             numericBoxB33.ThonsandsSeparator = true;
@@ -902,7 +880,6 @@
             numericBoxB33err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33err.Name = "numericBoxB33err";
-            numericBoxB33err.RoundErrorAccuracy = -1;
             numericBoxB33err.SkipEventDuringInput = false;
             numericBoxB33err.SmartIncrement = true;
             numericBoxB33err.ThonsandsSeparator = true;
@@ -925,7 +902,6 @@
             numericBoxB11.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11.Name = "numericBoxB11";
-            numericBoxB11.RoundErrorAccuracy = -1;
             numericBoxB11.SkipEventDuringInput = false;
             numericBoxB11.SmartIncrement = true;
             numericBoxB11.ThonsandsSeparator = true;
@@ -937,7 +913,6 @@
             numericBoxB11err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11err.Name = "numericBoxB11err";
-            numericBoxB11err.RoundErrorAccuracy = -1;
             numericBoxB11err.SkipEventDuringInput = false;
             numericBoxB11err.SmartIncrement = true;
             numericBoxB11err.ThonsandsSeparator = true;
@@ -949,7 +924,6 @@
             numericBoxB12.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12.Name = "numericBoxB12";
-            numericBoxB12.RoundErrorAccuracy = -1;
             numericBoxB12.SkipEventDuringInput = false;
             numericBoxB12.SmartIncrement = true;
             numericBoxB12.ThonsandsSeparator = true;
@@ -961,7 +935,6 @@
             numericBoxB12err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12err.Name = "numericBoxB12err";
-            numericBoxB12err.RoundErrorAccuracy = -1;
             numericBoxB12err.SkipEventDuringInput = false;
             numericBoxB12err.SmartIncrement = true;
             numericBoxB12err.ThonsandsSeparator = true;
@@ -973,7 +946,6 @@
             numericBoxB13.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13.Name = "numericBoxB13";
-            numericBoxB13.RoundErrorAccuracy = -1;
             numericBoxB13.SkipEventDuringInput = false;
             numericBoxB13.SmartIncrement = true;
             numericBoxB13.ThonsandsSeparator = true;
@@ -985,7 +957,6 @@
             numericBoxB13err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13err.Name = "numericBoxB13err";
-            numericBoxB13err.RoundErrorAccuracy = -1;
             numericBoxB13err.SkipEventDuringInput = false;
             numericBoxB13err.SmartIncrement = true;
             numericBoxB13err.ThonsandsSeparator = true;
@@ -1104,7 +1075,6 @@
             numericBoxAlpha.Maximum = 1D;
             numericBoxAlpha.Minimum = 0D;
             numericBoxAlpha.Name = "numericBoxAlpha";
-            numericBoxAlpha.RoundErrorAccuracy = -1;
             numericBoxAlpha.ShowUpDown = true;
             numericBoxAlpha.SkipEventDuringInput = false;
             numericBoxAlpha.SmartIncrement = true;
@@ -1122,7 +1092,6 @@
             numericBoxEmission.Maximum = 1D;
             numericBoxEmission.Minimum = 0D;
             numericBoxEmission.Name = "numericBoxEmission";
-            numericBoxEmission.RoundErrorAccuracy = -1;
             numericBoxEmission.ShowUpDown = true;
             numericBoxEmission.SkipEventDuringInput = false;
             numericBoxEmission.SmartIncrement = true;
@@ -1140,7 +1109,6 @@
             numericBoxShininess.Maximum = 20D;
             numericBoxShininess.Minimum = 0D;
             numericBoxShininess.Name = "numericBoxShininess";
-            numericBoxShininess.RoundErrorAccuracy = -1;
             numericBoxShininess.ShowUpDown = true;
             numericBoxShininess.SkipEventDuringInput = false;
             numericBoxShininess.SmartIncrement = true;
@@ -1158,7 +1126,6 @@
             numericBoxSpecular.Maximum = 1D;
             numericBoxSpecular.Minimum = 0D;
             numericBoxSpecular.Name = "numericBoxSpecular";
-            numericBoxSpecular.RoundErrorAccuracy = -1;
             numericBoxSpecular.ShowUpDown = true;
             numericBoxSpecular.SkipEventDuringInput = false;
             numericBoxSpecular.SmartIncrement = true;
@@ -1176,7 +1143,6 @@
             numericBoxDiffusion.Maximum = 1D;
             numericBoxDiffusion.Minimum = 0D;
             numericBoxDiffusion.Name = "numericBoxDiffusion";
-            numericBoxDiffusion.RoundErrorAccuracy = -1;
             numericBoxDiffusion.ShowUpDown = true;
             numericBoxDiffusion.SkipEventDuringInput = false;
             numericBoxDiffusion.SmartIncrement = true;
@@ -1194,7 +1160,6 @@
             numericBoxAmbient.Maximum = 1D;
             numericBoxAmbient.Minimum = 0D;
             numericBoxAmbient.Name = "numericBoxAmbient";
-            numericBoxAmbient.RoundErrorAccuracy = -1;
             numericBoxAmbient.ShowUpDown = true;
             numericBoxAmbient.SkipEventDuringInput = false;
             numericBoxAmbient.SmartIncrement = true;
@@ -1246,7 +1211,6 @@
             numericBoxAtomRadius.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxAtomRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxAtomRadius.Name = "numericBoxAtomRadius";
-            numericBoxAtomRadius.RoundErrorAccuracy = -1;
             numericBoxAtomRadius.ShowUpDown = true;
             numericBoxAtomRadius.SkipEventDuringInput = false;
             numericBoxAtomRadius.SmartIncrement = true;
@@ -1258,11 +1222,11 @@
             // 
             colorControlAtomColor.Argb = -986896;
             resources.ApplyResources(colorControlAtomColor, "colorControlAtomColor");
+            colorControlAtomColor.BackColor = System.Drawing.SystemColors.Control;
             colorControlAtomColor.Blue = 240;
             colorControlAtomColor.BlueF = 0.9411765F;
             colorControlAtomColor.BoxSize = new System.Drawing.Size(20, 20);
             colorControlAtomColor.Color = System.Drawing.Color.FromArgb(240, 240, 240);
-            colorControlAtomColor.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlAtomColor.Green = 240;
             colorControlAtomColor.GreenF = 0.9411765F;
             colorControlAtomColor.Name = "colorControlAtomColor";
@@ -1347,7 +1311,7 @@
             dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1376,7 +1340,7 @@
             // labelDataGridViewTextBoxColumn
             // 
             labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 9F);
             labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
             labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
@@ -1386,7 +1350,7 @@
             // elementDataGridViewTextBoxColumn
             // 
             elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
             elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
@@ -1397,7 +1361,7 @@
             // xDataGridViewTextBoxColumn
             // 
             xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
             xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
@@ -1407,7 +1371,7 @@
             // yDataGridViewTextBoxColumn
             // 
             yDataGridViewTextBoxColumn.DataPropertyName = "Y";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
             yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
@@ -1417,7 +1381,7 @@
             // zDataGridViewTextBoxColumn
             // 
             zDataGridViewTextBoxColumn.DataPropertyName = "Z";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
             zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
@@ -1427,7 +1391,7 @@
             // occDataGridViewTextBoxColumn
             // 
             occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("メイリオ", 9F);
             occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
             occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
@@ -1437,7 +1401,7 @@
             // multiDataGridViewTextBoxColumn
             // 
             multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("メイリオ", 9F);
             multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
             multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
@@ -1447,7 +1411,7 @@
             // wyckLetDataGridViewTextBoxColumn
             // 
             wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("メイリオ", 9F);
             wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
             wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
@@ -1457,7 +1421,7 @@
             // siteSymDataGridViewTextBoxColumn
             // 
             siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("メイリオ", 9F);
             siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
             siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";
