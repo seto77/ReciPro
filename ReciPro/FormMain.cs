@@ -670,8 +670,8 @@ public partial class FormMain : Form
 
         if (FormImageSimulator.Visible)
             FormImageSimulator.RotationChanged();
-        
-        if(FormEBSD.Visible)
+
+        if (FormEBSD.Visible)
             FormEBSD.Draw();
 
         if (SkipEulerChange && FormRotation.Visible)//Euler angle が直接入力された時
@@ -778,20 +778,20 @@ public partial class FormMain : Form
 
     #region hklやuvwベクトルでの回転指定
 
-    public void SetPlane (int h, int k, int l)
+    public void SetPlane(int h, int k, int l)
     {
         numericBoxPlaneH.Value = h;
         numericBoxPlaneK.Value = k;
         numericBoxPlaneL.Value = l;
     }
-    public void SetAxis (int u, int v, int w)
+    public void SetAxis(int u, int v, int w)
     {
         numericBoxAxisU.Value = u;
         numericBoxAxisV.Value = v;
         numericBoxAxisW.Value = w;
     }
-    public void ProjectAlongAxis()    => buttonSetVector_Click(buttonSetAxis, new EventArgs());
-    public void ProjectAlongPlane()    => buttonSetVector_Click(buttonSetPlane, new EventArgs());
+    public void ProjectAlongAxis() => buttonSetVector_Click(buttonSetAxis, new EventArgs());
+    public void ProjectAlongPlane() => buttonSetVector_Click(buttonSetPlane, new EventArgs());
 
     private void buttonSetVector_Click(object sender, EventArgs e)
     {
@@ -1036,7 +1036,7 @@ public partial class FormMain : Form
             if (FormImageSimulator.Visible)
                 FormImageSimulator.RotationChanged();
 
-            if(FormEBSD.Visible)
+            if (FormEBSD.Visible)
                 FormEBSD.SetCrystal();
 
             ResetAxes();
@@ -1081,14 +1081,34 @@ public partial class FormMain : Form
         crystalControl.GenerateFromInterface();
         if (crystalControl.Crystal != null)
             listBox.Items.Add(crystalControl.Crystal);
-        listBox.SelectedIndex = -1;
         listBox.SelectedIndex = listBox.Items.Count - 1;
+        Application.DoEvents();
+    }
+
+    private void buttonDuplicate_Click(object sender, EventArgs e) => DuplicateCrystal();
+
+    public void DuplicateCrystal()
+    {
+        if (listBox.SelectedIndex < 0) return;
+        var c = (Crystal)listBox.SelectedItem;
+        var newCrystal = new Crystal(c);
+
+        var num = 0;
+
+        var index = newCrystal.Name.LastIndexOf(" #");
+        if (index >= 0 && int.TryParse(newCrystal.Name[(index+2)..], out num))
+            newCrystal.Name = newCrystal.Name[0..(index+2)] + (num + 1).ToString();
+        else
+            newCrystal.Name += " #1";
+
+        listBox.Items.Insert(listBox.SelectedIndex + 1, newCrystal);
+        listBox.SelectedIndex++;
         Application.DoEvents();
     }
 
 
     private void ButtonDelete_Click(object sender, EventArgs e) => DeleteCrystal();
-    
+
     public void DeleteCrystal()
     {
         if (listBox.SelectedIndex >= 0)
@@ -1127,7 +1147,94 @@ public partial class FormMain : Form
         DrawAxes();
     }
 
+    private void listBox_MouseDown(object sender, MouseEventArgs e)
+    {
+        if(renameTextBox != null && groupBoxCrystalList.Controls.Contains(renameTextBox))
+            renameTextBox_Leave(sender, e);
+
+        if (e.Button == MouseButtons.Right)
+        {
+            var index = listBox.IndexFromPoint(e.Location);
+            if ((uint)index < (uint)listBox.Items.Count)
+            {
+                if (listBox.SelectedIndex != index)
+                    listBox.SelectedIndex = index;
+                contextMenuStripListBox.Show(listBox, e.Location);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 選択結晶をCIF形式で保存
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void exportAsCIFFormatToolStripMenuItem_Click(object sender, EventArgs e) => toolStripMenuItemExportCIF_Click(sender, e);
+
+    private void duplicateToolStripMenuItem_Click(object sender, EventArgs e) => DuplicateCrystal();
+
+    private void deleteToolStripMenuItem_Click(object sender, EventArgs e) => DeleteCrystal();
+
+    #region リストボックス上で結晶の名前を変更
+    TextBox renameTextBox;
+    private void renameToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var pos = new Point(-1, -1);
+        for (int x = 0; x < listBox.Width; x += listBox.ColumnWidth)
+            for (int y = 0; y < listBox.Height; y += listBox.ItemHeight)
+                if (listBox.SelectedIndex == listBox.IndexFromPoint(x, y))
+                    pos = new Point(x, y);
+
+        if (pos.X < 0) return;
+
+        if (renameTextBox == null)//初回だけ初期化
+        {
+            renameTextBox = new TextBox()
+            {
+                BorderStyle = BorderStyle.FixedSingle,
+                Font = listBox.Font,
+                Margin = new Padding(0),
+                Padding = new Padding(0),
+                BackColor = Color.LightYellow,
+                Size = new Size(listBox.ColumnWidth + 2, listBox.ItemHeight),
+            };
+            renameTextBox.Leave += (s, ev) => renameTextBox_Leave(s, ev);
+            renameTextBox.KeyDown += (s, ev) => renameTextBox_KeyDown(s, ev);
+        }
+        renameTextBox.Location = new Point(listBox.Location.X + pos.X, listBox.Location.Y + pos.Y);
+        renameTextBox.Text = listBox.SelectedItem.ToString();
+        renameTextBox.Tag = listBox.SelectedIndex;
+        groupBoxCrystalList.Controls.Add(renameTextBox);
+        renameTextBox.BringToFront();
+        renameTextBox.Focus();
+    }
+    void renameTextBox_Leave(object sender, EventArgs e)
+    {
+        if (groupBoxCrystalList.Controls.Contains(renameTextBox) && renameTextBox.Tag is int index)
+        {
+            var crystal = (Crystal)listBox.Items[index];
+            crystal.Name = renameTextBox.Text;
+            listBox.Items[index] = crystal;
+            groupBoxCrystalList.Controls.Remove(renameTextBox);
+        }
+    }
+
+    void renameTextBox_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter)
+            renameTextBox_Leave(sender, e);
+
+        if (e.KeyCode == Keys.Escape)
+        {
+            renameTextBox.Text = listBox.SelectedItem.ToString();
+            renameTextBox_Leave(sender, e);
+        }
+    }
+    #endregion 
+
     #endregion リストボックス関連
+
+
 
     #region 結晶データの読み込み/書き込み
     public void ReadCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
@@ -1157,6 +1264,7 @@ public partial class FormMain : Form
 
             foreach (var c in cry)
                 listBox.Items.Add(c);
+
             if (listBox.Items.Count > 0)
                 listBox.SelectedIndex = 0;
         }
@@ -1540,4 +1648,9 @@ public partial class FormMain : Form
             checkBoxFixAxis.Checked = false;
     }
     #endregion
+
+
+
+
+
 }

@@ -37,13 +37,14 @@
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             splitContainer = new System.Windows.Forms.SplitContainer();
-            groupBox1 = new System.Windows.Forms.GroupBox();
+            groupBoxCrystalList = new System.Windows.Forms.GroupBox();
             listBox = new System.Windows.Forms.ListBox();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             buttonAllClear = new System.Windows.Forms.Button();
             buttonDelete = new System.Windows.Forms.Button();
-            buttonLower = new System.Windows.Forms.Button();
+            buttonDuplicate = new System.Windows.Forms.Button();
             buttonUpper = new System.Windows.Forms.Button();
+            buttonLower = new System.Windows.Forms.Button();
             panel2 = new System.Windows.Forms.Panel();
             groupBox6 = new System.Windows.Forms.GroupBox();
             crystalControl = new CrystalControl();
@@ -52,6 +53,7 @@
             buttonChange = new System.Windows.Forms.Button();
             panel3 = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
+            textBox1 = new System.Windows.Forms.TextBox();
             groupBox5 = new System.Windows.Forms.GroupBox();
             tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -173,6 +175,11 @@
             macroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             editorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
+            contextMenuStripListBox = new System.Windows.Forms.ContextMenuStrip(components);
+            renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            exportAsCIFFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
             timer = new System.Windows.Forms.Timer(components);
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
@@ -185,7 +192,7 @@
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
             splitContainer.SuspendLayout();
-            groupBox1.SuspendLayout();
+            groupBoxCrystalList.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
             groupBox6.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -208,6 +215,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDownEulerPhi).BeginInit();
             toolStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
+            contextMenuStripListBox.SuspendLayout();
             SuspendLayout();
             // 
             // toolStripContainer1
@@ -262,7 +270,7 @@
             // 
             // splitContainer.Panel1
             // 
-            splitContainer.Panel1.Controls.Add(groupBox1);
+            splitContainer.Panel1.Controls.Add(groupBoxCrystalList);
             splitContainer.Panel1.Controls.Add(panel2);
             resources.ApplyResources(splitContainer.Panel1, "splitContainer.Panel1");
             // 
@@ -273,14 +281,14 @@
             splitContainer.Panel2.Controls.Add(panel3);
             resources.ApplyResources(splitContainer.Panel2, "splitContainer.Panel2");
             // 
-            // groupBox1
+            // groupBoxCrystalList
             // 
-            groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            groupBox1.Controls.Add(listBox);
-            groupBox1.Controls.Add(flowLayoutPanel4);
-            resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Name = "groupBox1";
-            groupBox1.TabStop = false;
+            groupBoxCrystalList.BackColor = System.Drawing.SystemColors.Control;
+            groupBoxCrystalList.Controls.Add(listBox);
+            groupBoxCrystalList.Controls.Add(flowLayoutPanel4);
+            resources.ApplyResources(groupBoxCrystalList, "groupBoxCrystalList");
+            groupBoxCrystalList.Name = "groupBoxCrystalList";
+            groupBoxCrystalList.TabStop = false;
             // 
             // listBox
             // 
@@ -290,14 +298,16 @@
             listBox.Name = "listBox";
             toolTip.SetToolTip(listBox, resources.GetString("listBox.ToolTip"));
             listBox.SelectedIndexChanged += ListBox_SelectedIndexChanged;
+            listBox.MouseDown += listBox_MouseDown;
             // 
             // flowLayoutPanel4
             // 
             resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
             flowLayoutPanel4.Controls.Add(buttonAllClear);
             flowLayoutPanel4.Controls.Add(buttonDelete);
-            flowLayoutPanel4.Controls.Add(buttonLower);
+            flowLayoutPanel4.Controls.Add(buttonDuplicate);
             flowLayoutPanel4.Controls.Add(buttonUpper);
+            flowLayoutPanel4.Controls.Add(buttonLower);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // buttonAllClear
@@ -320,13 +330,15 @@
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += ButtonDelete_Click;
             // 
-            // buttonLower
+            // buttonDuplicate
             // 
-            resources.ApplyResources(buttonLower, "buttonLower");
-            buttonLower.Name = "buttonLower";
-            toolTip.SetToolTip(buttonLower, resources.GetString("buttonLower.ToolTip"));
-            buttonLower.UseVisualStyleBackColor = false;
-            buttonLower.Click += ButtonLower_Click;
+            resources.ApplyResources(buttonDuplicate, "buttonDuplicate");
+            buttonDuplicate.BackColor = System.Drawing.Color.SteelBlue;
+            buttonDuplicate.ForeColor = System.Drawing.Color.White;
+            buttonDuplicate.Name = "buttonDuplicate";
+            toolTip.SetToolTip(buttonDuplicate, resources.GetString("buttonDuplicate.ToolTip"));
+            buttonDuplicate.UseVisualStyleBackColor = false;
+            buttonDuplicate.Click += buttonDuplicate_Click;
             // 
             // buttonUpper
             // 
@@ -335,6 +347,14 @@
             toolTip.SetToolTip(buttonUpper, resources.GetString("buttonUpper.ToolTip"));
             buttonUpper.UseVisualStyleBackColor = false;
             buttonUpper.Click += ButtonUpper_Click;
+            // 
+            // buttonLower
+            // 
+            resources.ApplyResources(buttonLower, "buttonLower");
+            buttonLower.Name = "buttonLower";
+            toolTip.SetToolTip(buttonLower, resources.GetString("buttonLower.ToolTip"));
+            buttonLower.UseVisualStyleBackColor = false;
+            buttonLower.Click += ButtonLower_Click;
             // 
             // panel2
             // 
@@ -416,12 +436,19 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(textBox1);
             panel1.Controls.Add(groupBox5);
             panel1.Controls.Add(groupBox2);
             panel1.Controls.Add(groupBoxCurrentDirection);
             panel1.Controls.Add(label8);
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(textBox1, "textBox1");
+            textBox1.Name = "textBox1";
             // 
             // groupBox5
             // 
@@ -1284,6 +1311,47 @@
             toolStripSeparator22.Name = "toolStripSeparator22";
             resources.ApplyResources(toolStripSeparator22, "toolStripSeparator22");
             // 
+            // contextMenuStripListBox
+            // 
+            resources.ApplyResources(contextMenuStripListBox, "contextMenuStripListBox");
+            contextMenuStripListBox.ImageScalingSize = new System.Drawing.Size(0, 0);
+            contextMenuStripListBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { renameToolStripMenuItem, exportAsCIFFormatToolStripMenuItem, duplicateToolStripMenuItem, deleteToolStripMenuItem });
+            contextMenuStripListBox.Name = "contextMenuStrip1";
+            contextMenuStripListBox.ShowImageMargin = false;
+            // 
+            // renameToolStripMenuItem
+            // 
+            renameToolStripMenuItem.Name = "renameToolStripMenuItem";
+            resources.ApplyResources(renameToolStripMenuItem, "renameToolStripMenuItem");
+            renameToolStripMenuItem.Click += renameToolStripMenuItem_Click;
+            // 
+            // duplicateToolStripMenuItem
+            // 
+            duplicateToolStripMenuItem.BackColor = System.Drawing.Color.SteelBlue;
+            duplicateToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            duplicateToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            duplicateToolStripMenuItem.Name = "duplicateToolStripMenuItem";
+            resources.ApplyResources(duplicateToolStripMenuItem, "duplicateToolStripMenuItem");
+            duplicateToolStripMenuItem.Click += duplicateToolStripMenuItem_Click;
+            // 
+            // deleteToolStripMenuItem
+            // 
+            deleteToolStripMenuItem.BackColor = System.Drawing.Color.IndianRed;
+            deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            deleteToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            resources.ApplyResources(deleteToolStripMenuItem, "deleteToolStripMenuItem");
+            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+            // 
+            // exportAsCIFFormatToolStripMenuItem
+            // 
+            exportAsCIFFormatToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            exportAsCIFFormatToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            exportAsCIFFormatToolStripMenuItem.Name = "exportAsCIFFormatToolStripMenuItem";
+            exportAsCIFFormatToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(exportAsCIFFormatToolStripMenuItem, "exportAsCIFFormatToolStripMenuItem");
+            exportAsCIFFormatToolStripMenuItem.Click += exportAsCIFFormatToolStripMenuItem_Click;
+            // 
             // timer
             // 
             timer.Interval = 2;
@@ -1321,8 +1389,8 @@
             splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer).EndInit();
             splitContainer.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            groupBoxCrystalList.ResumeLayout(false);
+            groupBoxCrystalList.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
@@ -1358,6 +1426,7 @@
             toolStrip1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            contextMenuStripListBox.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -1389,7 +1458,7 @@
         private System.Windows.Forms.Button buttonTop;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxCrystalList;
         private System.Windows.Forms.Button buttonUpper;
         private System.Windows.Forms.Button buttonLower;
         public System.Windows.Forms.Button buttonAdd;
@@ -1507,6 +1576,13 @@
         public System.Windows.Forms.ToolStripButton toolStripButtonEBSD;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator24;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripListBox;
+        private System.Windows.Forms.ToolStripMenuItem exportAsCIFFormatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
+        public System.Windows.Forms.Button buttonDuplicate;
+        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

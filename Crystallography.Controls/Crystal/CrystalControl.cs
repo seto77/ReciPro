@@ -338,6 +338,7 @@ public partial class CrystalControl : UserControl
         if (Crystal != null)
         {
             var dlg = new SaveFileDialog { Filter = " *.cif| *.cif" };
+            dlg.FileName = Crystal.Name + ".cif";
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 var sw = new StreamWriter(dlg.FileName, false);
