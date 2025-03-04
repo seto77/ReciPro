@@ -53,7 +53,6 @@
             buttonChange = new System.Windows.Forms.Button();
             panel3 = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
-            textBox1 = new System.Windows.Forms.TextBox();
             groupBox5 = new System.Windows.Forms.GroupBox();
             tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -169,6 +168,7 @@
             toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             helpwebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             githubWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            編集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -436,19 +436,12 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(textBox1);
             panel1.Controls.Add(groupBox5);
             panel1.Controls.Add(groupBox2);
             panel1.Controls.Add(groupBoxCurrentDirection);
             panel1.Controls.Add(label8);
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            // 
-            // textBox1
-            // 
-            textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(textBox1, "textBox1");
-            textBox1.Name = "textBox1";
             // 
             // groupBox5
             // 
@@ -1207,7 +1200,7 @@
             // 
             // helpToolStripMenuItem
             // 
-            helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { checkUpdatesToolStripMenuItem, toolStripSeparator16, hintToolStripMenuItem, versionHistoryToolStripMenuItem, licenseToolStripMenuItem, toolStripSeparator18, githubPageToolStripMenuItem, reportBugsRequestsOrCommentsToolStripMenuItem1, toolStripSeparator17, helpwebToolStripMenuItem, githubWikiToolStripMenuItem });
+            helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { checkUpdatesToolStripMenuItem, toolStripSeparator16, hintToolStripMenuItem, versionHistoryToolStripMenuItem, licenseToolStripMenuItem, toolStripSeparator18, githubPageToolStripMenuItem, reportBugsRequestsOrCommentsToolStripMenuItem1, toolStripSeparator17, helpwebToolStripMenuItem, githubWikiToolStripMenuItem, 編集ToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
@@ -1273,6 +1266,11 @@
             githubWikiToolStripMenuItem.Name = "githubWikiToolStripMenuItem";
             resources.ApplyResources(githubWikiToolStripMenuItem, "githubWikiToolStripMenuItem");
             githubWikiToolStripMenuItem.Click += githubWikiToolStripMenuItem_Click;
+            // 
+            // 編集ToolStripMenuItem
+            // 
+            編集ToolStripMenuItem.Name = "編集ToolStripMenuItem";
+            resources.ApplyResources(編集ToolStripMenuItem, "編集ToolStripMenuItem");
             // 
             // languageToolStripMenuItem
             // 
@@ -1582,7 +1580,7 @@
         private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
         public System.Windows.Forms.Button buttonDuplicate;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem 編集ToolStripMenuItem;
     }
 }
 

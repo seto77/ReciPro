@@ -779,30 +779,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;splitContainer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 514</value>
-  </data>
-  <data name="textBox1.PlaceholderText" xml:space="preserve">
-    <value>にゅうりょくしてください</value>
-  </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 27</value>
-  </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>87</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="groupBox5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1656,7 +1632,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2320,7 +2296,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="groupBoxCurrentDirection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2929,7 +2905,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;groupBoxCurrentDirection.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2968,7 +2944,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -3967,6 +3943,9 @@ construction)</value>
   <data name="githubWikiToolStripMenuItem.Text" xml:space="preserve">
     <value>Help (Wiki)</value>
   </data>
+  <data name="編集ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 22</value>
+  </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 21</value>
   </data>
@@ -4812,6 +4791,12 @@ construction)</value>
     <value>githubWikiToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;githubWikiToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;編集ToolStripMenuItem.Name" xml:space="preserve">
+    <value>編集ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;編集ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;languageToolStripMenuItem.Name" xml:space="preserve">
