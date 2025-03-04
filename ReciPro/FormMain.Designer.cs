@@ -177,9 +177,9 @@
             toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             contextMenuStripListBox = new System.Windows.Forms.ContextMenuStrip(components);
             renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            exportAsCIFFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            exportAsCIFFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
             timer = new System.Windows.Forms.Timer(components);
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
@@ -1325,6 +1325,15 @@
             resources.ApplyResources(renameToolStripMenuItem, "renameToolStripMenuItem");
             renameToolStripMenuItem.Click += renameToolStripMenuItem_Click;
             // 
+            // exportAsCIFFormatToolStripMenuItem
+            // 
+            exportAsCIFFormatToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            exportAsCIFFormatToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            exportAsCIFFormatToolStripMenuItem.Name = "exportAsCIFFormatToolStripMenuItem";
+            exportAsCIFFormatToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(exportAsCIFFormatToolStripMenuItem, "exportAsCIFFormatToolStripMenuItem");
+            exportAsCIFFormatToolStripMenuItem.Click += exportAsCIFFormatToolStripMenuItem_Click;
+            // 
             // duplicateToolStripMenuItem
             // 
             duplicateToolStripMenuItem.BackColor = System.Drawing.Color.SteelBlue;
@@ -1342,15 +1351,6 @@
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             resources.ApplyResources(deleteToolStripMenuItem, "deleteToolStripMenuItem");
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
-            // 
-            // exportAsCIFFormatToolStripMenuItem
-            // 
-            exportAsCIFFormatToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            exportAsCIFFormatToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            exportAsCIFFormatToolStripMenuItem.Name = "exportAsCIFFormatToolStripMenuItem";
-            exportAsCIFFormatToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
-            resources.ApplyResources(exportAsCIFFormatToolStripMenuItem, "exportAsCIFFormatToolStripMenuItem");
-            exportAsCIFFormatToolStripMenuItem.Click += exportAsCIFFormatToolStripMenuItem_Click;
             // 
             // timer
             // 

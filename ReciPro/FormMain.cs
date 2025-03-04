@@ -1234,8 +1234,6 @@ public partial class FormMain : Form
 
     #endregion リストボックス関連
 
-
-
     #region 結晶データの読み込み/書き込み
     public void ReadCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
     {
