@@ -39,7 +39,6 @@ public partial class FormAnotherSpaceGroup : Form
         Close();
     }
 
-
     #region 群の記号を斜体、上付き、下付などに整形する
 
     //下付き文字用フォント
