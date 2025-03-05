@@ -43,8 +43,8 @@
             buttonAllClear = new System.Windows.Forms.Button();
             buttonDelete = new System.Windows.Forms.Button();
             buttonDuplicate = new System.Windows.Forms.Button();
-            buttonUpper = new System.Windows.Forms.Button();
             buttonLower = new System.Windows.Forms.Button();
+            buttonUpper = new System.Windows.Forms.Button();
             panel2 = new System.Windows.Forms.Panel();
             groupBox6 = new System.Windows.Forms.GroupBox();
             crystalControl = new CrystalControl();
@@ -306,8 +306,8 @@
             flowLayoutPanel4.Controls.Add(buttonAllClear);
             flowLayoutPanel4.Controls.Add(buttonDelete);
             flowLayoutPanel4.Controls.Add(buttonDuplicate);
-            flowLayoutPanel4.Controls.Add(buttonUpper);
             flowLayoutPanel4.Controls.Add(buttonLower);
+            flowLayoutPanel4.Controls.Add(buttonUpper);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // buttonAllClear
@@ -340,14 +340,6 @@
             buttonDuplicate.UseVisualStyleBackColor = false;
             buttonDuplicate.Click += buttonDuplicate_Click;
             // 
-            // buttonUpper
-            // 
-            resources.ApplyResources(buttonUpper, "buttonUpper");
-            buttonUpper.Name = "buttonUpper";
-            toolTip.SetToolTip(buttonUpper, resources.GetString("buttonUpper.ToolTip"));
-            buttonUpper.UseVisualStyleBackColor = false;
-            buttonUpper.Click += ButtonUpper_Click;
-            // 
             // buttonLower
             // 
             resources.ApplyResources(buttonLower, "buttonLower");
@@ -355,6 +347,14 @@
             toolTip.SetToolTip(buttonLower, resources.GetString("buttonLower.ToolTip"));
             buttonLower.UseVisualStyleBackColor = false;
             buttonLower.Click += ButtonLower_Click;
+            // 
+            // buttonUpper
+            // 
+            resources.ApplyResources(buttonUpper, "buttonUpper");
+            buttonUpper.Name = "buttonUpper";
+            toolTip.SetToolTip(buttonUpper, resources.GetString("buttonUpper.ToolTip"));
+            buttonUpper.UseVisualStyleBackColor = false;
+            buttonUpper.Click += ButtonUpper_Click;
             // 
             // panel2
             // 

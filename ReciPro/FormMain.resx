@@ -365,45 +365,6 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;buttonDuplicate.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="buttonUpper.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="buttonUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 0</value>
-  </data>
-  <data name="buttonUpper.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 30</value>
-  </data>
-  <data name="buttonUpper.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="buttonUpper.Text" xml:space="preserve">
-    <value>Up</value>
-  </data>
-  <data name="buttonUpper.ToolTip" xml:space="preserve">
-    <value>Move the selected crystal upward</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.Name" xml:space="preserve">
-    <value>buttonUpper</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="buttonLower.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -414,7 +375,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 0</value>
+    <value>172, 0</value>
   </data>
   <data name="buttonLower.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -441,6 +402,45 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>flowLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;buttonLower.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonUpper.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
+    <value>140, 0</value>
+  </data>
+  <data name="buttonUpper.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 30</value>
+  </data>
+  <data name="buttonUpper.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="buttonUpper.Text" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>Move the selected crystal upward</value>
+  </data>
+  <data name="&gt;&gt;buttonUpper.Name" xml:space="preserve">
+    <value>buttonUpper</value>
+  </data>
+  <data name="&gt;&gt;buttonUpper.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonUpper.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;buttonUpper.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
