@@ -1152,9 +1152,10 @@ public partial class FormMain : Form
         if(renameTextBox != null && groupBoxCrystalList.Controls.Contains(renameTextBox))
             renameTextBox_Leave(sender, e);
 
+        var index = listBox.IndexFromPoint(e.Location);
+
         if (e.Button == MouseButtons.Right)
         {
-            var index = listBox.IndexFromPoint(e.Location);
             if ((uint)index < (uint)listBox.Items.Count)
             {
                 if (listBox.SelectedIndex != index)

@@ -325,384 +325,6 @@ public partial class CrystalControl : UserControl
 
     #endregion ドラッグドロップイベント
 
-    #region 右クリックメニュー
-    private void importCrystalFromCIFAMCToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        var dlg = new OpenFileDialog { Filter = " *.cif; *.amc | *.cif;*.amc" };
-        if (dlg.ShowDialog() == DialogResult.OK)
-            ReadCrystal(dlg.FileName);
-    }
-
-    public void exportThisCrystalAsCIFToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        if (Crystal != null)
-        {
-            var dlg = new SaveFileDialog { Filter = " *.cif| *.cif" };
-            dlg.FileName = Crystal.Name + ".cif";
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                var sw = new StreamWriter(dlg.FileName, false);
-                var str = ConvertCrystalData.ConvertToCIF(Crystal);
-                sw.Write(str);
-                sw.Close();
-            }
-        }
-    }
-
-    private void scatteringFactorToolStripMenuItem_Click(object sender, EventArgs e)
-        => FormScatteringFactor.Visible = !FormScatteringFactor.Visible;
-
-    private void symmetryInformationToolStripMenuItem_Click(object sender, EventArgs e)
-        => FormSymmetryInformation.Visible = !FormSymmetryInformation.Visible;
-
-    private void sendThisCrystalToOtherSoftwareToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        GenerateFromInterface();
-        if (crystal != null)
-            Clipboard.SetDataObject(Crystal2.FromCrystal(crystal), true, 3, 10);
-    }
-
-    private void resetToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        for (int i = 0; i < crystal.Atoms.Length; i++)
-            crystal.Atoms[i].Dsf = new DiffuseScatteringFactor(DiffuseScatteringFactor.Type.B, true, 0, 0, null, null, Crystal.CellValue);
-    }
-
-    private void revertCellConstantsToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        crystal.RevertInitialCellConstants();
-        Crystal = crystal;
-    }
-
-    private void strainControlToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        if (formStrain.crystal == null)
-            formStrain.crystal = Crystal;
-
-        formStrain.Visible = !formStrain.Visible;
-    }
-
-    /// <summary>
-    /// 空間群P1に変換
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void convertToP1ToolStripMenuItem_Click(object sender, EventArgs e) => toSuperStructure(1, 1, 1);
-
-    //超構造に変換
-    private void convertToSuperstructureToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        var dlg = new FormSuperStructure();
-        if (dlg.ShowDialog() == DialogResult.OK)
-            toSuperStructure(dlg.A, dlg.B, dlg.C);
-    }
-    private void convertToAnotherSpacegroupToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        var seriesNum = symmetryControl.SymmetrySeriesNumber;
-        var spNum = SymmetryStatic.NumArray[seriesNum][1];
-
-        var list = new List<(int SeriesNum, string Notation)>();
-        foreach (var n in SymmetryStatic.NumArray)
-            if (spNum == n[1] && seriesNum != n[0])
-                list.Add((n[0], SymmetryStatic.StrArray[n[0]][3]));//自分自身を除く、同じ空間群番号のものを追加
-
-        if (list.Count == 0 || spNum == 1 || spNum == 2)//候補がゼロかP1かP-1は除く
-            MessageBox.Show("No candidate for the space group");
-        else
-        {
-            var dlg = new FormAnotherSpaceGroup() { Candidates = [.. list] };
-            if (dlg.ShowDialog() == DialogResult.OK)
-                toAnotherSpaceGroup(dlg.SeriesNum);
-        }
-    }
-    #endregion 右クリックメニュー
-
-    #region 空間群を変換する関数群
-
-    #region 超構造に変換
-    /// <summary>
-    /// 超構造に変換する関数
-    /// </summary>
-    /// <param name="_u"></param>
-    /// <param name="_v"></param>
-    /// <param name="_w"></param>
-    private void toSuperStructure(int _u, int _v, int _w)
-    {
-        GenerateFromInterface();
-        crystal.SymmetrySeriesNumber = 1;
-
-        var temp_atoms = new List<Atoms>();
-        foreach (var atoms in Crystal.Atoms)
-        {
-            int n = 0;
-            foreach (var atom in atoms.Atom)
-            {
-                for (double u = 0; u < _u; u++)
-                    for (double v = 0; v < _v; v++)
-                        for (double w = 0; w < _w; w++)
-                        {
-                            var x = (atom.X + u) / _u;
-                            var y = (atom.Y + v) / _v;
-                            var z = (atom.Z + w) / _w;
-
-                            var x_err = atoms.X_err / _u;
-                            var y_err = atoms.Y_err / _v;
-                            var z_err = atoms.Z_err / _w;
-
-                            temp_atoms.Add(new Atoms(
-                                atoms.Label.TrimEnd() + "_" + n.ToString(),
-                                atoms.AtomicNumber, atoms.SubNumberXray, atoms.SubNumberElectron, atoms.Isotope,
-                                1,
-                                new Vector3DBase(x, y, z), new Vector3DBase(x_err, y_err, z_err),
-                                atoms.Occ, atoms.Occ_err,
-                                atoms.Dsf,
-                                atoms.Material,
-                                atoms.Radius, atoms.GLEnabled, atoms.ShowLabel));
-                            n++;
-                        }
-            }
-        }
-        crystal.A *= _u;
-        crystal.B *= _v;
-        crystal.C *= _w;
-        crystal.Atoms = [.. temp_atoms];
-
-        SetToInterface(true);
-        GenerateFromInterface();
-    }
-    #endregion
-
-    #region 別の空間群に変換
-    /// <summary>
-    /// 別の空間群に変換する 原子位置や格子定数のエラー、および熱散漫散乱因子の変換は考慮していない
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public void toAnotherSpaceGroup(int destNum)
-    {
-        var srcNum = symmetryControl.SymmetrySeriesNumber;
-        var crystalSystem = SymmetryStatic.NumArray[srcNum][5];
-        var sgNum = SymmetryStatic.NumArray[srcNum][1];
-        var srcExtra = SymmetryStatic.StrArray[srcNum][0];
-        var dstExtra = SymmetryStatic.StrArray[destNum][0];
-
-        #region monoclinicの時。軸の変換のみがあり得る。
-        if (crystalSystem == 2)
-        {
-            if (srcExtra.Length == 1) srcExtra += "1";
-            if (dstExtra.Length == 1) dstExtra += "1";
-
-            var cry = Deep.Copy(Crystal);
-            cry.SymmetrySeriesNumber = destNum;
-            cry.SetAxis();
-            foreach (var a in cry.Atoms)
-            {
-                (a.X, a.Y, a.Z) = exchangeAtomPositionMonoclinic(a.X, a.Y, a.Z, srcExtra, false);//標準セッティングに変換
-                (a.X, a.Y, a.Z) = exchangeAtomPositionMonoclinic(a.X, a.Y, a.Z, dstExtra, true);//目的セッティングに変換
-            }
-            var (A, B, C) = convertAxisMonoclinic(cry.A_Axis, cry.B_Axis, cry.C_Axis, srcExtra, false);//標準セッティングに変換
-            (A, B, C) = convertAxisMonoclinic(A, B, C, dstExtra, true);//目的セッティングに変換
-            cry.A = A.Length; cry.B = B.Length; cry.C = C.Length;
-            cry.Alpha = Vector3D.AngleBetVectors(B, C);
-            cry.Beta = Vector3D.AngleBetVectors(C, A);
-            cry.Gamma = Vector3D.AngleBetVectors(A, B);
-            crystal = cry;
-        }
-        #endregion
-
-        #region Orhorhombicの時. 軸の変換とOrigin Choiceの変換があり得る
-        if (crystalSystem == 3)
-        {
-            var src = convOrtho(srcExtra);
-            var dst = convOrtho(dstExtra);
-
-            var cry = Deep.Copy(Crystal);
-            cry.SymmetrySeriesNumber = destNum;
-            foreach (var a in cry.Atoms)
-            {
-                //標準セッティングに変換
-                (a.X, a.Y, a.Z) = exchangeOrtho(a.X, a.Y, a.Z, src.Setting);
-                (a.X_err, a.Y_err, a.Z_err) = exchangeOrtho(a.X_err, a.Y_err, a.Z_err, src.Setting);
-                //Originの処理
-                if (src.Origin != dst.Origin)
-                    (a.X, a.Y, a.Z) = shift(a.X, a.Y, a.Z, sgNum, src.Origin == 1);
-                //目的セッティングに変換
-                (a.X, a.Y, a.Z) = exchangeOrtho(a.X, a.Y, a.Z, dst.Setting, true);
-                (a.X_err, a.Y_err, a.Z_err) = exchangeOrtho(a.X_err, a.Y_err, a.Z_err, dst.Setting, true);
-            }
-            (cry.A, cry.B, cry.C) = exchangeOrtho(cry.A, cry.B, cry.C, src.Setting, false, true);//標準セッティングに変換
-            (cry.A, cry.B, cry.C) = exchangeOrtho(cry.A, cry.B, cry.C, dst.Setting, true, true);//目的セッティングに変換
-            crystal = cry;
-        }
-        #endregion
-
-        #region Tetragonal か Cubicの時。 Origin Choiceの変換があり得る。
-        if (crystalSystem == 4 || crystalSystem == 7)
-        {
-            var src = convOrtho(srcExtra);
-            var cry = Deep.Copy(Crystal);
-            cry.SymmetrySeriesNumber = destNum;
-            foreach (var a in cry.Atoms)
-                (a.X, a.Y, a.Z) = shift(a.X, a.Y, a.Z, sgNum, src.Origin == 1);
-            crystal = cry;
-        }
-        #endregion
-
-        #region trigonalの時 RhomboとHexaの変換がありうる。
-        if (crystalSystem == 5)
-        {
-            var cry = Deep.Copy(Crystal);
-            cry.SymmetrySeriesNumber = destNum;
-            cry.SetAxis();
-
-            Vector3DBase srcA = cry.A_Axis, srcB = cry.B_Axis, srcC = cry.C_Axis, dstA, dstB, dstC;
-
-            if (srcExtra == "H")
-            {//HをRに変換
-                foreach (var a in cry.Atoms)
-                    (a.X, a.Y, a.Z) = (a.X + a.Z, -a.X + a.Y + a.Z, a.Y + a.Z);//Rセッティングに変換
-                (dstA, dstB, dstC) = ((2 * srcA + srcB + srcC) / 3, (-srcA + srcB + srcC) / 3, (-srcA - srcB + srcC) / 3);
-            }
-            else
-            {//RをHに変換
-                foreach (var a in cry.Atoms)
-                    (a.X, a.Y, a.Z) = ((2 * a.X - a.Y - a.Z) / 3, (a.X + a.Y - 2 * a.Z) / 3, (a.X + a.Y + a.Z) / 3);//Hセッティングに変換
-                (dstA, dstB, dstC) = (srcA - srcB, srcB - srcC, srcA + srcB + srcC);
-            }
-            cry.A = dstA.Length; cry.B = dstB.Length; cry.C = dstC.Length;
-            cry.Alpha = Vector3D.AngleBetVectors(dstB, dstC);
-            cry.Beta = Vector3D.AngleBetVectors(dstC, dstA);
-            cry.Gamma = Vector3D.AngleBetVectors(dstA, dstB);
-            crystal = cry;
-        }
-        #endregion
-
-        SetToInterface(true);
-        GenerateFromInterface();
-    }
-    #endregion
-
-    #region Origin choiceを変更する関数
-    static (double X, double Y, double Z) shift(double x, double y, double z, int sgNum, bool to2nd)
-        => sgNum switch
-        {
-            48 or 86 or 126 or 201 or 222 or 224 => to2nd ? (x + one4th, y + one4th, z + one4th) : (x - one4th, y - one4th, z - one4th),
-            50 or 59 or 125 => to2nd ? (x + one4th, y + one4th, z) : (x - one4th, y - one4th, z),
-            68 => to2nd ? (x, y + one4th, z + one4th) : (x, y - one4th, z - one4th),
-            70 => to2nd ? (x + one8th, y + one8th, z + one8th) : (x - one8th, y - one8th, z - one8th),
-            85 => to2nd ? (x + one4th, y - one4th, z) : (x - one4th, y + one4th, z),
-            88 => to2nd ? (x, y + one4th, z + one8th) : (x, y - one4th, z - one8th),
-            129 or 130 => to2nd ? (x - one4th, y + one4th, z) : (x + one4th, y - one4th, z),
-            133 or 137 or 138 => to2nd ? (x - one4th, y + one4th, z - one4th) : (x + one4th, y - one4th, z + one4th),
-            134 => to2nd ? (x + one4th, y - one4th, z + one4th) : (x - one4th, y + one4th, z - one4th),
-            141 => to2nd ? (x, y - one4th, z + one8th) : (x, y + one4th, z - one8th),
-            142 => to2nd ? (x, y + one4th, z + three8th) : (x, y - one4th, z - three8th),
-            203 or 227 or 228 => to2nd ? (x + one8th, y + one8th, z + one8th) : (x - one8th, y - one8th, z - one8th),
-            _ => (x, y, z)
-        };
-    const double one4th = 1.0 / 4.0, one8th = 1.0 / 8.0, three8th = 3.0 / 8.0;
-    #endregion
-
-    #region Monoclinic用の関数
-    /// <summary>
-    /// 原子位置を変換。Monoclinic用。
-    /// </summary>
-    /// <param name="x"></param>
-    /// <param name="y"></param>
-    /// <param name="z"></param>
-    /// <param name="setting"></param>
-    /// <param name="forward"></param>
-    /// <returns></returns>
-    static (double X, double Y, double Z) exchangeAtomPositionMonoclinic(double x, double y, double z, string setting, bool forward = true)
-        => setting switch
-        {
-            "b2" => forward ? (-z, y, x - z) : (z - x, y, -x),
-            "b3" => forward ? (z - x, y, -x) : (-z, y, x - z),
-            "-b1" => forward ? (-z, y, x) : (z, y, -x),
-            "-b2" => forward ? (x + z, y, z) : (x - z, y, z),
-            "-b3" => forward ? (-x, y, -z - x) : (-x, y, x - z),
-
-            "c1" => forward ? (z, x, y) : (y, z, x),
-            "c2" => forward ? (x - z, -z, y) : (x - y, z, -y),
-            "c3" => forward ? (-x, z - x, y) : (-x, z, y - x),
-            "-c1" => forward ? (x, -z, y) : (x, z, -y),
-            "-c2" => forward ? (z, x + z, y) : (y - x, z, x),
-            "-c3" => forward ? (-z - x, -x, y) : (-y, z, y - x),
-
-            "a1" => forward ? (y, z, x) : (z, x, y),
-            "a2" => forward ? (y, x - z, -z) : (y - z, x, -z),
-            "a3" => forward ? (y, -x, z - x) : (-y, x, z - y),
-            "-a1" => forward ? (y, x, -z) : (y, x, -z),
-            "-a2" => forward ? (y, z, x + z) : (z - y, x, y),
-            "-a3" => forward ? (y, -z - x, -x) : (-z, x, z - y),
-            _ => (x, y, z),
-        };
-
-    static (Vector3DBase A, Vector3DBase B, Vector3DBase C) convertAxisMonoclinic(Vector3DBase a, Vector3DBase b, Vector3DBase c, string setting, bool forward = true)
-        => setting switch
-        {
-            "b2" => forward ? (-c - a, b, a) : (c, b, -c - a),
-            "b3" => forward ? (c, b, -c - a) : (-c - a, b, a),
-            "-b1" => forward ? (-c, b, a) : (c, b, -a),
-            "-b2" => forward ? (a, b, c - a) : (a, b, c + a),
-            "-b3" => forward ? (c - a, b, -c) : (-c - a, b, -c),
-
-            "c1" => forward ? (c, a, b) : (b, c, a),
-            "c2" => forward ? (a, -c - a, b) : (a, c, -a - b),
-            "c3" => forward ? (-c - a, c, b) : (-a - b, c, b),
-            "-c1" => forward ? (a, -c, b) : (a, c, -b),
-            "-c2" => forward ? (c - a, a, b) : (b, c, a + b),
-            "-c3" => forward ? (-c, c - a, b) : (-a - b, c, -a),
-
-            "a1" => forward ? (b, c, a) : (c, a, b),
-            "a2" => forward ? (b, a, -c - a) : (b, a, -b - c),
-            "a3" => forward ? (b, -c - a, c) : (-b - c, a, c),
-            "-a1" => forward ? (b, a, -c) : (b, a, -c),
-            "-a2" => forward ? (b, c - a, a) : (c, a, b + c),
-            "-a3" => forward ? (b, -c, c - a) : (-b - c, a, -b),
-            _ => (a, b, c),
-        };
-    #endregion
-
-    #region Orthorhombic 用の関数
-    static (double X, double Y, double Z) exchangeOrtho(double x, double y, double z, int[] setting, bool inverse = false, bool abs = false)
-    {
-        double[] src = [x, y, z], dst = new double[3];
-        for (int i = 0; i < 3; i++)
-        {
-            if (!inverse)
-                dst[Math.Abs(setting[i]) - 1] = setting[i] > 0 ? src[i] : -src[i];
-            else
-                dst[i] = setting[i] > 0 ? src[Math.Abs(setting[i]) - 1] : -src[Math.Abs(setting[i]) - 1];
-        }
-        return abs ? (Math.Abs(dst[0]), Math.Abs(dst[1]), Math.Abs(dst[2])) : (dst[0], dst[1], dst[2]);
-    }
-    static (int Origin, int[] Setting) convOrtho(string s) // extra文字列を解析可能な形に変換する。例えば2ba-cを(2, {2, 1, -3})
-    {
-        if (s.Length == 0) return (1, new[] { 1, 2, 3 });
-        int origin = 1;
-        if (s[0] == '1' || s[0] == '2')//OriginChoiceの変換があり得るのは、48, 50, 59, 68, 70, 
-        {
-            origin = s[0] == '1' ? 1 : 2;
-            s = s[1..];
-        }
-        if (s.Length == 0) return (origin, new[] { 1, 2, 3 });
-
-        int[] setting = new int[3];
-        for (int i = 0; i < 3; i++)
-        {
-            setting[i] = s[0] != '-' ? 1 : -1;
-            if (s[0] == '-')
-                s = s[1..];
-            setting[i] *= s[0] switch { 'a' => 1, 'b' => 2, _ => 3 };
-            s = s[1..];
-        }
-        return (origin, setting);
-    }
-    #endregion
-
-    #endregion
-
     #region キーボードイベント
 
     private void CrystalControl_KeyDown(object sender, KeyEventArgs e)
@@ -948,7 +570,10 @@ public partial class CrystalControl : UserControl
 
     private void atomControl_AtomsChanged(object sender, EventArgs e) => GenerateFromInterface();
 
-    private void symmetryControl_ItemChanged(object sender, EventArgs e) => GenerateFromInterface();
+    private void symmetryControl_ItemChanged(object sender, EventArgs e)
+    {
+        GenerateFromInterface();
+    }
 
     private void bondControl_ItemsChanged(object sender, EventArgs e)
     {
@@ -998,8 +623,390 @@ public partial class CrystalControl : UserControl
     }
     #endregion
 
-    private void buttonStressSet_Click(object sender, EventArgs e)
+
+    #region 右クリックメニュー
+    private void importCrystalFromCIFAMCToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var dlg = new OpenFileDialog { Filter = " *.cif; *.amc | *.cif;*.amc" };
+        if (dlg.ShowDialog() == DialogResult.OK)
+            ReadCrystal(dlg.FileName);
+    }
+
+    public void exportThisCrystalAsCIFToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (Crystal != null)
+        {
+            var dlg = new SaveFileDialog { Filter = " *.cif| *.cif", FileName = Crystal.Name + ".cif" };
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                using var sw = new StreamWriter(dlg.FileName, false);
+                sw.Write(ConvertCrystalData.ConvertToCIF(Crystal));
+            }
+        }
+    }
+
+    private void scatteringFactorToolStripMenuItem_Click(object sender, EventArgs e) => FormScatteringFactor.Visible = !FormScatteringFactor.Visible;
+
+    private void symmetryInformationToolStripMenuItem_Click(object sender, EventArgs e) => FormSymmetryInformation.Visible = !FormSymmetryInformation.Visible;
+
+    private void sendThisCrystalToOtherSoftwareToolStripMenuItem_Click(object sender, EventArgs e)
     {
         GenerateFromInterface();
+        if (crystal != null)
+            Clipboard.SetDataObject(Crystal2.FromCrystal(crystal), true, 3, 10);
     }
+
+    private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        for (int i = 0; i < crystal.Atoms.Length; i++)
+            crystal.Atoms[i].Dsf = new DiffuseScatteringFactor(DiffuseScatteringFactor.Type.B, true, 0, 0, null, null, Crystal.CellValue);
+    }
+
+    private void revertCellConstantsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        crystal.RevertInitialCellConstants();
+        Crystal = crystal;
+    }
+
+    private void strainControlToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (formStrain.crystal == null)
+            formStrain.crystal = Crystal;
+
+        formStrain.Visible = !formStrain.Visible;
+    }
+
+    /// <summary>
+    /// 空間群P1に変換
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void convertToP1ToolStripMenuItem_Click(object sender, EventArgs e) => toSuperStructure(1, 1, 1);
+
+    //超構造に変換
+    private void convertToSuperstructureToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var dlg = new FormSuperStructure();
+        if (dlg.ShowDialog() == DialogResult.OK)
+            toSuperStructure(dlg.A, dlg.B, dlg.C);
+    }
+    private void convertToAnotherSpacegroupToolStripMenuItem_Click(object sender, EventArgs e) => ChangeAxesOriginSetting();
+    #endregion 右クリックメニュー
+
+    private void buttonStressSet_Click(object sender, EventArgs e) => GenerateFromInterface();
+
+    #region 格子定数リセットボタン、空間群変更ボタン
+    private void buttonResetCellConstants_Click(object sender, EventArgs e)
+    {
+        crystal.RevertInitialCellConstants();
+        Crystal = crystal;
+    }
+    #endregion
+
+    #region 空間群を変換する関数群
+
+    #region 超構造に変換
+    /// <summary>
+    /// 超構造に変換する関数
+    /// </summary>
+    /// <param name="_u"></param>
+    /// <param name="_v"></param>
+    /// <param name="_w"></param>
+    private void toSuperStructure(int _u, int _v, int _w)
+    {
+        GenerateFromInterface();
+        crystal.SymmetrySeriesNumber = 1;
+
+        var temp_atoms = new List<Atoms>();
+        foreach (var atoms in Crystal.Atoms)
+        {
+            int n = 0;
+            foreach (var atom in atoms.Atom)
+            {
+                for (double u = 0; u < _u; u++)
+                    for (double v = 0; v < _v; v++)
+                        for (double w = 0; w < _w; w++)
+                        {
+                            var x = (atom.X + u) / _u;
+                            var y = (atom.Y + v) / _v;
+                            var z = (atom.Z + w) / _w;
+
+                            var x_err = atoms.X_err / _u;
+                            var y_err = atoms.Y_err / _v;
+                            var z_err = atoms.Z_err / _w;
+
+                            temp_atoms.Add(new Atoms(
+                                atoms.Label.TrimEnd() + "_" + n.ToString(),
+                                atoms.AtomicNumber, atoms.SubNumberXray, atoms.SubNumberElectron, atoms.Isotope,
+                                1,
+                                new Vector3DBase(x, y, z), new Vector3DBase(x_err, y_err, z_err),
+                                atoms.Occ, atoms.Occ_err,
+                                atoms.Dsf,
+                                atoms.Material,
+                                atoms.Radius, atoms.GLEnabled, atoms.ShowLabel));
+                            n++;
+                        }
+            }
+        }
+        crystal.A *= _u;
+        crystal.B *= _v;
+        crystal.C *= _w;
+        crystal.Atoms = [.. temp_atoms];
+
+        SetToInterface(true);
+        GenerateFromInterface();
+    }
+    #endregion
+
+    #region 原点/軸セッティングを変換
+
+    public void ChangeAxesOriginSetting()
+    {
+        var seriesNum = symmetryControl.SymmetrySeriesNumber;
+        var spNum = SymmetryStatic.NumArray[seriesNum][1];
+
+        var list = new List<(int SeriesNum, string Notation)>();
+        foreach (var n in SymmetryStatic.NumArray)
+            if (spNum == n[1] && seriesNum != n[0])
+                list.Add((n[0], SymmetryStatic.StrArray[n[0]][3]));//自分自身を除く、同じ空間群番号のものを追加
+
+        if (list.Count == 0 || spNum == 1 || spNum == 2)//候補がゼロかP1かP-1は除く
+            MessageBox.Show("No candidate for the space group");
+        else
+        {
+            var dlg = new FormAnotherSpaceGroup() { Candidates = [.. list] };
+            if (dlg.ShowDialog() == DialogResult.OK)
+                toAnotherSpaceGroup(dlg.SeriesNum);
+        }
+    }
+
+    /// <summary>
+    /// 別の空間群に変換する 原子位置や格子定数のエラー、および熱散漫散乱因子の変換は考慮していない
+    /// </summary>
+    public void toAnotherSpaceGroup(int destNum)
+    {
+        var srcNum = symmetryControl.SymmetrySeriesNumber;
+        var crystalSystem = SymmetryStatic.NumArray[srcNum][5];
+        var sgNum = SymmetryStatic.NumArray[srcNum][1];
+        var srcExtra = SymmetryStatic.StrArray[srcNum][0];
+        var dstExtra = SymmetryStatic.StrArray[destNum][0];
+
+        #region monoclinicの時。軸の変換のみがあり得る。
+        if (crystalSystem == 2)
+        {
+            if (srcExtra.Length == 1) srcExtra += "1";
+            if (dstExtra.Length == 1) dstExtra += "1";
+
+            var cry = Deep.Copy(Crystal);
+            cry.SymmetrySeriesNumber = destNum;
+            cry.SetAxis();
+            foreach (var a in cry.Atoms)
+            {
+                (a.X, a.Y, a.Z) = exchangeAtomPositionMonoclinic(a.X, a.Y, a.Z, srcExtra, false);//標準セッティングに変換
+                (a.X, a.Y, a.Z) = exchangeAtomPositionMonoclinic(a.X, a.Y, a.Z, dstExtra, true);//目的セッティングに変換
+            }
+            var (A, B, C) = convertAxisMonoclinic(cry.A_Axis, cry.B_Axis, cry.C_Axis, srcExtra, false);//標準セッティングに変換
+            (A, B, C) = convertAxisMonoclinic(A, B, C, dstExtra, true);//目的セッティングに変換
+            cry.A = A.Length; cry.B = B.Length; cry.C = C.Length;
+            cry.Alpha = Vector3D.AngleBetVectors(B, C);
+            cry.Beta = Vector3D.AngleBetVectors(C, A);
+            cry.Gamma = Vector3D.AngleBetVectors(A, B);
+            crystal = cry;
+        }
+        #endregion
+
+        #region Orhorhombicの時. 軸の変換とOrigin Choiceの変換があり得る
+        if (crystalSystem == 3)
+        {
+            var src = convOrtho(srcExtra);
+            var dst = convOrtho(dstExtra);
+
+            var cry = Deep.Copy(Crystal);
+            cry.SymmetrySeriesNumber = destNum;
+            foreach (var a in cry.Atoms)
+            {
+                //標準セッティングに変換
+                (a.X, a.Y, a.Z) = exchangeOrtho(a.X, a.Y, a.Z, src.Setting);
+                (a.X_err, a.Y_err, a.Z_err) = exchangeOrtho(a.X_err, a.Y_err, a.Z_err, src.Setting);
+                //Originの処理
+                if (src.Origin != dst.Origin)
+                    (a.X, a.Y, a.Z) = shift(a.X, a.Y, a.Z, sgNum, src.Origin == 1);
+                //目的セッティングに変換
+                (a.X, a.Y, a.Z) = exchangeOrtho(a.X, a.Y, a.Z, dst.Setting, true);
+                (a.X_err, a.Y_err, a.Z_err) = exchangeOrtho(a.X_err, a.Y_err, a.Z_err, dst.Setting, true);
+            }
+            (cry.A, cry.B, cry.C) = exchangeOrtho(cry.A, cry.B, cry.C, src.Setting, false, true);//標準セッティングに変換
+            (cry.A, cry.B, cry.C) = exchangeOrtho(cry.A, cry.B, cry.C, dst.Setting, true, true);//目的セッティングに変換
+            crystal = cry;
+        }
+        #endregion
+
+        #region Tetragonal か Cubicの時。 Origin Choiceの変換があり得る。
+        if (crystalSystem == 4 || crystalSystem == 7)
+        {
+            var src = convOrtho(srcExtra);
+            var cry = Deep.Copy(Crystal);
+            cry.SymmetrySeriesNumber = destNum;
+            foreach (var a in cry.Atoms)
+                (a.X, a.Y, a.Z) = shift(a.X, a.Y, a.Z, sgNum, src.Origin == 1);
+            crystal = cry;
+        }
+        #endregion
+
+        #region trigonalの時 RhomboとHexaの変換がありうる。
+        if (crystalSystem == 5)
+        {
+            var cry = Deep.Copy(Crystal);
+            cry.SymmetrySeriesNumber = destNum;
+            cry.SetAxis();
+
+            Vector3DBase srcA = cry.A_Axis, srcB = cry.B_Axis, srcC = cry.C_Axis, dstA, dstB, dstC;
+
+            if (srcExtra == "H")
+            {//HをRに変換
+                foreach (var a in cry.Atoms)
+                    (a.X, a.Y, a.Z) = (a.X + a.Z, -a.X + a.Y + a.Z, a.Y + a.Z);//Rセッティングに変換
+                (dstA, dstB, dstC) = ((2 * srcA + srcB + srcC) / 3, (-srcA + srcB + srcC) / 3, (-srcA - srcB + srcC) / 3);
+            }
+            else
+            {//RをHに変換
+                foreach (var a in cry.Atoms)
+                    (a.X, a.Y, a.Z) = ((2 * a.X - a.Y - a.Z) / 3, (a.X + a.Y - 2 * a.Z) / 3, (a.X + a.Y + a.Z) / 3);//Hセッティングに変換
+                (dstA, dstB, dstC) = (srcA - srcB, srcB - srcC, srcA + srcB + srcC);
+            }
+            cry.A = dstA.Length; cry.B = dstB.Length; cry.C = dstC.Length;
+            cry.Alpha = Vector3D.AngleBetVectors(dstB, dstC);
+            cry.Beta = Vector3D.AngleBetVectors(dstC, dstA);
+            cry.Gamma = Vector3D.AngleBetVectors(dstA, dstB);
+            crystal = cry;
+        }
+        #endregion
+
+        SetToInterface(true);
+        GenerateFromInterface();
+    }
+    #endregion
+
+    #region Origin choiceを変更する関数
+    static (double X, double Y, double Z) shift(double x, double y, double z, int sgNum, bool to2nd)
+        => sgNum switch
+        {
+            48 or 86 or 126 or 201 or 222 or 224 => to2nd ? (x + one4th, y + one4th, z + one4th) : (x - one4th, y - one4th, z - one4th),
+            50 or 59 or 125 => to2nd ? (x + one4th, y + one4th, z) : (x - one4th, y - one4th, z),
+            68 => to2nd ? (x, y + one4th, z + one4th) : (x, y - one4th, z - one4th),
+            70 => to2nd ? (x + one8th, y + one8th, z + one8th) : (x - one8th, y - one8th, z - one8th),
+            85 => to2nd ? (x + one4th, y - one4th, z) : (x - one4th, y + one4th, z),
+            88 => to2nd ? (x, y + one4th, z + one8th) : (x, y - one4th, z - one8th),
+            129 or 130 => to2nd ? (x - one4th, y + one4th, z) : (x + one4th, y - one4th, z),
+            133 or 137 or 138 => to2nd ? (x - one4th, y + one4th, z - one4th) : (x + one4th, y - one4th, z + one4th),
+            134 => to2nd ? (x + one4th, y - one4th, z + one4th) : (x - one4th, y + one4th, z - one4th),
+            141 => to2nd ? (x, y - one4th, z + one8th) : (x, y + one4th, z - one8th),
+            142 => to2nd ? (x, y + one4th, z + three8th) : (x, y - one4th, z - three8th),
+            203 or 227 or 228 => to2nd ? (x + one8th, y + one8th, z + one8th) : (x - one8th, y - one8th, z - one8th),
+            _ => (x, y, z)
+        };
+    const double one4th = 1.0 / 4.0, one8th = 1.0 / 8.0, three8th = 3.0 / 8.0;
+    #endregion
+
+    #region Monoclinic用の関数
+    /// <summary>
+    /// 原子位置を変換。Monoclinic用。
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="z"></param>
+    /// <param name="setting"></param>
+    /// <param name="forward"></param>
+    /// <returns></returns>
+    static (double X, double Y, double Z) exchangeAtomPositionMonoclinic(double x, double y, double z, string setting, bool forward = true)
+        => setting switch
+        {
+            "b2" => forward ? (-z, y, x - z) : (z - x, y, -x),
+            "b3" => forward ? (z - x, y, -x) : (-z, y, x - z),
+            "-b1" => forward ? (-z, y, x) : (z, y, -x),
+            "-b2" => forward ? (x + z, y, z) : (x - z, y, z),
+            "-b3" => forward ? (-x, y, -z - x) : (-x, y, x - z),
+
+            "c1" => forward ? (z, x, y) : (y, z, x),
+            "c2" => forward ? (x - z, -z, y) : (x - y, z, -y),
+            "c3" => forward ? (-x, z - x, y) : (-x, z, y - x),
+            "-c1" => forward ? (x, -z, y) : (x, z, -y),
+            "-c2" => forward ? (z, x + z, y) : (y - x, z, x),
+            "-c3" => forward ? (-z - x, -x, y) : (-y, z, y - x),
+
+            "a1" => forward ? (y, z, x) : (z, x, y),
+            "a2" => forward ? (y, x - z, -z) : (y - z, x, -z),
+            "a3" => forward ? (y, -x, z - x) : (-y, x, z - y),
+            "-a1" => forward ? (y, x, -z) : (y, x, -z),
+            "-a2" => forward ? (y, z, x + z) : (z - y, x, y),
+            "-a3" => forward ? (y, -z - x, -x) : (-z, x, z - y),
+            _ => (x, y, z),
+        };
+
+    static (Vector3DBase A, Vector3DBase B, Vector3DBase C) convertAxisMonoclinic(Vector3DBase a, Vector3DBase b, Vector3DBase c, string setting, bool forward = true)
+        => setting switch
+        {
+            "b2" => forward ? (-c - a, b, a) : (c, b, -c - a),
+            "b3" => forward ? (c, b, -c - a) : (-c - a, b, a),
+            "-b1" => forward ? (-c, b, a) : (c, b, -a),
+            "-b2" => forward ? (a, b, c - a) : (a, b, c + a),
+            "-b3" => forward ? (c - a, b, -c) : (-c - a, b, -c),
+
+            "c1" => forward ? (c, a, b) : (b, c, a),
+            "c2" => forward ? (a, -c - a, b) : (a, c, -a - b),
+            "c3" => forward ? (-c - a, c, b) : (-a - b, c, b),
+            "-c1" => forward ? (a, -c, b) : (a, c, -b),
+            "-c2" => forward ? (c - a, a, b) : (b, c, a + b),
+            "-c3" => forward ? (-c, c - a, b) : (-a - b, c, -a),
+
+            "a1" => forward ? (b, c, a) : (c, a, b),
+            "a2" => forward ? (b, a, -c - a) : (b, a, -b - c),
+            "a3" => forward ? (b, -c - a, c) : (-b - c, a, c),
+            "-a1" => forward ? (b, a, -c) : (b, a, -c),
+            "-a2" => forward ? (b, c - a, a) : (c, a, b + c),
+            "-a3" => forward ? (b, -c, c - a) : (-b - c, a, -b),
+            _ => (a, b, c),
+        };
+    #endregion
+
+    #region Orthorhombic 用の関数
+    static (double X, double Y, double Z) exchangeOrtho(double x, double y, double z, int[] setting, bool inverse = false, bool abs = false)
+    {
+        double[] src = [x, y, z], dst = new double[3];
+        for (int i = 0; i < 3; i++)
+        {
+            if (!inverse)
+                dst[Math.Abs(setting[i]) - 1] = setting[i] > 0 ? src[i] : -src[i];
+            else
+                dst[i] = setting[i] > 0 ? src[Math.Abs(setting[i]) - 1] : -src[Math.Abs(setting[i]) - 1];
+        }
+        return abs ? (Math.Abs(dst[0]), Math.Abs(dst[1]), Math.Abs(dst[2])) : (dst[0], dst[1], dst[2]);
+    }
+    static (int Origin, int[] Setting) convOrtho(string s) // extra文字列を解析可能な形に変換する。例えば2ba-cを(2, {2, 1, -3})
+    {
+        if (s.Length == 0) return (1, new[] { 1, 2, 3 });
+        int origin = 1;
+        if (s[0] == '1' || s[0] == '2')//OriginChoiceの変換があり得るのは、48, 50, 59, 68, 70, 
+        {
+            origin = s[0] == '1' ? 1 : 2;
+            s = s[1..];
+        }
+        if (s.Length == 0) return (origin, new[] { 1, 2, 3 });
+
+        int[] setting = new int[3];
+        for (int i = 0; i < 3; i++)
+        {
+            setting[i] = s[0] != '-' ? 1 : -1;
+            if (s[0] == '-')
+                s = s[1..];
+            setting[i] *= s[0] switch { 'a' => 1, 'b' => 2, _ => 3 };
+            s = s[1..];
+        }
+        return (origin, setting);
+    }
+    #endregion
+
+    #endregion
+
+    private void buttonChangeAxesOriginSetting_Click(object sender, EventArgs e) => ChangeAxesOriginSetting();
 }

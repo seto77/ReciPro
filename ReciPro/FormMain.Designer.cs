@@ -45,13 +45,11 @@
             buttonDuplicate = new System.Windows.Forms.Button();
             buttonLower = new System.Windows.Forms.Button();
             buttonUpper = new System.Windows.Forms.Button();
-            panel2 = new System.Windows.Forms.Panel();
             groupBox6 = new System.Windows.Forms.GroupBox();
             crystalControl = new CrystalControl();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             buttonAdd = new System.Windows.Forms.Button();
             buttonChange = new System.Windows.Forms.Button();
-            panel3 = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
             groupBox5 = new System.Windows.Forms.GroupBox();
             tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -264,21 +262,22 @@
             // 
             // splitContainer
             // 
+            splitContainer.BackColor = System.Drawing.SystemColors.ControlLightLight;
             resources.ApplyResources(splitContainer, "splitContainer");
             splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             splitContainer.Name = "splitContainer";
             // 
             // splitContainer.Panel1
             // 
+            splitContainer.Panel1.BackColor = System.Drawing.SystemColors.Control;
             splitContainer.Panel1.Controls.Add(groupBoxCrystalList);
-            splitContainer.Panel1.Controls.Add(panel2);
             resources.ApplyResources(splitContainer.Panel1, "splitContainer.Panel1");
             // 
             // splitContainer.Panel2
             // 
+            splitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
             splitContainer.Panel2.Controls.Add(groupBox6);
             splitContainer.Panel2.Controls.Add(flowLayoutPanel3);
-            splitContainer.Panel2.Controls.Add(panel3);
             resources.ApplyResources(splitContainer.Panel2, "splitContainer.Panel2");
             // 
             // groupBoxCrystalList
@@ -356,12 +355,6 @@
             buttonUpper.UseVisualStyleBackColor = false;
             buttonUpper.Click += ButtonUpper_Click;
             // 
-            // panel2
-            // 
-            panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(panel2, "panel2");
-            panel2.Name = "panel2";
-            // 
             // groupBox6
             // 
             groupBox6.Controls.Add(crystalControl);
@@ -427,12 +420,6 @@
             toolTip.SetToolTip(buttonChange, resources.GetString("buttonChange.ToolTip"));
             buttonChange.UseVisualStyleBackColor = false;
             buttonChange.Click += ButtonReplace_Click;
-            // 
-            // panel3
-            // 
-            panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(panel3, "panel3");
-            panel3.Name = "panel3";
             // 
             // panel1
             // 
@@ -1390,8 +1377,10 @@
             groupBoxCrystalList.ResumeLayout(false);
             groupBoxCrystalList.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
             groupBox6.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBox5.ResumeLayout(false);
@@ -1547,10 +1536,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripMenuItem reportBugsRequestsOrCommentsToolStripMenuItem1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripMenuItem powderDiffractionFunctionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;

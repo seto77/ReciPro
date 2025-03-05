@@ -118,20 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 138</value>
-  </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 162</value>
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>著者</value>
-  </data>
-  <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 138</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
     <value>337, 162</value>
@@ -145,6 +136,42 @@
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>115</value>
+  </data>
+  <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 138</value>
+  </data>
+  <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>331, 138</value>
+  </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 22</value>
+  </data>
+  <data name="tabControl.Padding" type="System.Drawing.Point, System.Drawing">
+    <value>3, 1</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 310</value>
+  </data>
+  <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 280</value>
+  </data>
+  <data name="tabPageBasicInfo.Text" xml:space="preserve">
+    <value>格子/対称性</value>
+  </data>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 274</value>
+  </data>
+  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 136</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 138</value>
   </data>
   <data name="numericBoxVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -218,41 +245,8 @@
   <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 20</value>
   </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 136</value>
-  </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 138</value>
-  </data>
   <data name="symmetryControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 136</value>
-  </data>
-  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 274</value>
-  </data>
-  <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
-  </data>
-  <data name="tabPageBasicInfo.Text" xml:space="preserve">
-    <value>格子/対称性</value>
-  </data>
-  <data name="atomControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
-  </data>
-  <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>458, 276</value>
-  </data>
-  <data name="resetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
-  </data>
-  <data name="resetToolStripMenuItem.Text" xml:space="preserve">
-    <value>デバイワラー因子をゼロにする</value>
-  </data>
-  <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
-  </data>
-  <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
   </data>
   <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -267,11 +261,23 @@
   <data name="tabPageAtom.Text" xml:space="preserve">
     <value>原子情報</value>
   </data>
-  <data name="bondControl.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="atomControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
   </data>
-  <data name="bondControl.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>458, 276</value>
+  </data>
+  <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 26</value>
+  </data>
+  <data name="resetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 22</value>
+  </data>
+  <data name="resetToolStripMenuItem.Text" xml:space="preserve">
+    <value>デバイワラー因子をゼロにする</value>
   </data>
   <data name="tabPageBondsPolyhedra.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -282,20 +288,11 @@
   <data name="tabPageBondsPolyhedra.Text" xml:space="preserve">
     <value>多面体/結合描画設定</value>
   </data>
-  <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 31</value>
+  <data name="bondControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
   </data>
-  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 55</value>
-  </data>
-  <data name="groupBox7.Text" xml:space="preserve">
-    <value>雑誌名</value>
-  </data>
-  <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 33</value>
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 57</value>
+  <data name="bondControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 276</value>
   </data>
   <data name="tabPageReference.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
@@ -303,8 +300,20 @@
   <data name="tabPageReference.Text" xml:space="preserve">
     <value>引用文献</value>
   </data>
-  <data name="eosControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 274</value>
+  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 55</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>雑誌名</value>
+  </data>
+  <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 31</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 57</value>
+  </data>
+  <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 33</value>
   </data>
   <data name="tabPageEOS.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
@@ -312,23 +321,32 @@
   <data name="tabPageEOS.Text" xml:space="preserve">
     <value>状態方程式</value>
   </data>
+  <data name="eosControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 274</value>
+  </data>
   <data name="tabPageElasticity.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
   </data>
   <data name="tabPageElasticity.Text" xml:space="preserve">
     <value>弾性定数</value>
   </data>
-  <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 123</value>
-  </data>
   <data name="tabPageStrainStress.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
+  </data>
+  <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 123</value>
   </data>
   <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 226</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 27</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 27</value>
+  </data>
+  <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 280</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -351,35 +369,23 @@
   <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
     <value>358, 4</value>
   </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 27</value>
-  </data>
-  <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
   </data>
   <data name="boundControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 274</value>
   </data>
-  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
   </data>
   <data name="latticePlaneControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 274</value>
   </data>
-  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 280</value>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
   </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 22</value>
-  </data>
-  <data name="tabControl.Padding" type="System.Drawing.Point, System.Drawing">
-    <value>3, 1</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 310</value>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 24</value>
   </data>
   <data name="textBoxFormula.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 0</value>
@@ -411,11 +417,8 @@
   <data name="label90.Text" xml:space="preserve">
     <value>化学組成</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 24</value>
+  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 242</value>
   </data>
   <data name="scatteringFactorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 22</value>
@@ -482,9 +485,6 @@
   </data>
   <data name="convertToAnotherSpacegroupToolStripMenuItem.Text" xml:space="preserve">
     <value>異なる軸・原点セッティングの空間群に変換</value>
-  </data>
-  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 242</value>
   </data>
   <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 0</value>

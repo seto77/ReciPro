@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -1307,7 +1307,7 @@
     <value>0, 0</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 132</value>
+    <value>332, 133</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1571,13 +1571,13 @@
     <value>5</value>
   </data>
   <data name="textBoxSearch.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
+    <value>Times New Roman, 10pt</value>
   </data>
   <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
     <value>54, 106</value>
   </data>
   <data name="textBoxSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 21</value>
+    <value>64, 23</value>
   </data>
   <data name="textBoxSearch.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1679,7 +1679,7 @@
     <value>336, 0</value>
   </data>
   <data name="groupBoxSymmetry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 132</value>
+    <value>240, 133</value>
   </data>
   <data name="groupBoxSymmetry.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1706,7 +1706,7 @@
     <value>332, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 132</value>
+    <value>4, 133</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1730,7 +1730,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>576, 132</value>
+    <value>576, 133</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>

@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="toolStripProgressBar.AutoSize" type="System.Boolean, mscorlib">
@@ -248,6 +248,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="flowLayoutPanel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="buttonAllClear.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="buttonAllClear.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -264,7 +267,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonAllClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 30</value>
+    <value>61, 25</value>
   </data>
   <data name="buttonAllClear.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -287,6 +290,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;buttonAllClear.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="buttonDelete.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="buttonDelete.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -303,7 +309,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 30</value>
+    <value>50, 25</value>
   </data>
   <data name="buttonDelete.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -326,6 +332,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;buttonDelete.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="buttonDuplicate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="buttonDuplicate.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -336,13 +345,13 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonDuplicate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 0</value>
+    <value>222, 0</value>
   </data>
   <data name="buttonDuplicate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonDuplicate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 30</value>
+    <value>67, 25</value>
   </data>
   <data name="buttonDuplicate.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -365,6 +374,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;buttonDuplicate.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="buttonLower.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="buttonLower.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -375,13 +387,13 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 0</value>
+    <value>174, 0</value>
   </data>
   <data name="buttonLower.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 30</value>
+    <value>48, 25</value>
   </data>
   <data name="buttonLower.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -404,6 +416,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;buttonLower.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="buttonUpper.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="buttonUpper.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -414,13 +429,13 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 0</value>
+    <value>142, 0</value>
   </data>
   <data name="buttonUpper.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 30</value>
+    <value>32, 25</value>
   </data>
   <data name="buttonUpper.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -453,7 +468,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>3, 221</value>
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 30</value>
+    <value>400, 25</value>
   </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -477,16 +492,16 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxCrystalList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 0</value>
+    <value>5, 2</value>
   </data>
   <data name="groupBoxCrystalList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxCrystalList.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 1, 3, 1</value>
+    <value>3, 1, 3, 3</value>
   </data>
   <data name="groupBoxCrystalList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 252</value>
+    <value>406, 249</value>
   </data>
   <data name="groupBoxCrystalList.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -506,35 +521,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;groupBoxCrystalList.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 252</value>
-  </data>
-  <data name="panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 1</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>splitContainer.Panel1</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="splitContainer.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 5, 0</value>
+    <value>5, 2, 5, 2</value>
   </data>
   <data name="&gt;&gt;splitContainer.Panel1.Name" xml:space="preserve">
     <value>splitContainer.Panel1</value>
@@ -561,7 +549,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 312</value>
+    <value>400, 314</value>
   </data>
   <data name="crystalControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -585,13 +573,13 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 31</value>
+    <value>5, 29</value>
   </data>
   <data name="groupBox6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 336</value>
+    <value>406, 338</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -617,6 +605,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="buttonAdd.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="buttonAdd.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -633,7 +624,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 30</value>
+    <value>62, 27</value>
   </data>
   <data name="buttonAdd.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -656,6 +647,9 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="buttonChange.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="buttonChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -666,13 +660,13 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 0</value>
+    <value>62, 0</value>
   </data>
   <data name="buttonChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 30</value>
+    <value>84, 27</value>
   </data>
   <data name="buttonChange.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -699,10 +693,10 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 1</value>
+    <value>5, 2</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 30</value>
+    <value>406, 27</value>
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -719,32 +713,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
   <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 0</value>
-  </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 1</value>
-  </data>
-  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
-    <value>splitContainer.Panel2</value>
-  </data>
-  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="splitContainer.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 5, 0</value>
+    <value>5, 2, 5, 2</value>
   </data>
   <data name="&gt;&gt;splitContainer.Panel2.Name" xml:space="preserve">
     <value>splitContainer.Panel2</value>
@@ -759,7 +729,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>1</value>
   </data>
   <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 624</value>
+    <value>416, 626</value>
   </data>
   <data name="splitContainer.SplitterDistance" type="System.Int32, mscorlib">
     <value>253</value>
@@ -2956,7 +2926,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 624</value>
+    <value>142, 626</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -2977,7 +2947,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>558, 624</value>
+    <value>558, 626</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -3761,7 +3731,7 @@ construction)</value>
     <value>2</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>683, 671</value>
+    <value>683, 673</value>
   </data>
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -4116,7 +4086,7 @@ construction)</value>
     <value>None</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>683, 671</value>
+    <value>683, 673</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
