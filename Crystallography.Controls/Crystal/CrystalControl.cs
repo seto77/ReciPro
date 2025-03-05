@@ -570,7 +570,16 @@ public partial class CrystalControl : UserControl
 
     private void atomControl_AtomsChanged(object sender, EventArgs e) => GenerateFromInterface();
 
-    private void symmetryControl_ItemChanged(object sender, EventArgs e) => GenerateFromInterface();
+    private void symmetryControl_ItemChanged(object sender, EventArgs e)
+    {
+        GenerateFromInterface();
+
+        //候補が2以上でP1かP-1ではないとき
+        var array = SymmetryStatic.NumArray;
+        var sn = symmetryControl.SymmetrySeriesNumber;
+        buttonChangeAxesOriginSetting.Enabled = convertToAnotherSpacegroupToolStripMenuItem.Enabled = array[sn][1] > 2 && array.Count(e => e[1] == array[sn][1]) > 1;
+
+    }
 
     private void bondControl_ItemsChanged(object sender, EventArgs e)
     {
@@ -694,7 +703,6 @@ public partial class CrystalControl : UserControl
 
     #region 空間群を変換する関数群
 
-
     #region 超構造に変換
     /// <summary>
     /// 超構造に変換する関数
@@ -760,14 +768,16 @@ public partial class CrystalControl : UserControl
             if (spNum == n[1] && seriesNum != n[0])
                 list.Add((n[0], SymmetryStatic.StrArray[n[0]][3]));//自分自身を除く、同じ空間群番号のものを追加
 
-        if (list.Count == 0 || spNum == 1 || spNum == 2)//候補がゼロかP1かP-1は除く
-            MessageBox.Show("No candidate for the space group");
-        else
-        {
-            var dlg = new FormAnotherSpaceGroup() { Candidates = [.. list] };
-            if (dlg.ShowDialog() == DialogResult.OK)
-                toAnotherSpaceGroup(dlg.SeriesNum);
-        }
+        //候補がゼロかP1かP-1は除く  SymmetryControlの変更イベントの中でボタンのEnabledを変更しているので、ここでチェックする必要はない
+        //if (list.Count == 0 || spNum == 1 || spNum == 2)
+        //{
+        //    MessageBox.Show("No candidate for the space group");
+        //    return;
+        //}
+
+        var dlg = new FormAnotherSpaceGroup() { Candidates = [.. list] };
+        if (dlg.ShowDialog() == DialogResult.OK)
+            toAnotherSpaceGroup(dlg.SeriesNum);
     }
 
     /// <summary>
