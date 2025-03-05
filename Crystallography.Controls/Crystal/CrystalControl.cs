@@ -570,10 +570,7 @@ public partial class CrystalControl : UserControl
 
     private void atomControl_AtomsChanged(object sender, EventArgs e) => GenerateFromInterface();
 
-    private void symmetryControl_ItemChanged(object sender, EventArgs e)
-    {
-        GenerateFromInterface();
-    }
+    private void symmetryControl_ItemChanged(object sender, EventArgs e) => GenerateFromInterface();
 
     private void bondControl_ItemsChanged(object sender, EventArgs e)
     {
@@ -622,7 +619,6 @@ public partial class CrystalControl : UserControl
         }
     }
     #endregion
-
 
     #region 右クリックメニュー
     private void importCrystalFromCIFAMCToolStripMenuItem_Click(object sender, EventArgs e)
@@ -691,19 +687,13 @@ public partial class CrystalControl : UserControl
             toSuperStructure(dlg.A, dlg.B, dlg.C);
     }
     private void convertToAnotherSpacegroupToolStripMenuItem_Click(object sender, EventArgs e) => ChangeAxesOriginSetting();
+
+    private void buttonChangeAxesOriginSetting_Click(object sender, EventArgs e) => ChangeAxesOriginSetting();
+
     #endregion 右クリックメニュー
 
-    private void buttonStressSet_Click(object sender, EventArgs e) => GenerateFromInterface();
-
-    #region 格子定数リセットボタン、空間群変更ボタン
-    private void buttonResetCellConstants_Click(object sender, EventArgs e)
-    {
-        crystal.RevertInitialCellConstants();
-        Crystal = crystal;
-    }
-    #endregion
-
     #region 空間群を変換する関数群
+
 
     #region 超構造に変換
     /// <summary>
@@ -875,9 +865,9 @@ public partial class CrystalControl : UserControl
                 (dstA, dstB, dstC) = (srcA - srcB, srcB - srcC, srcA + srcB + srcC);
             }
             cry.A = dstA.Length; cry.B = dstB.Length; cry.C = dstC.Length;
-            cry.Alpha = Vector3D.AngleBetVectors(dstB, dstC);
-            cry.Beta = Vector3D.AngleBetVectors(dstC, dstA);
-            cry.Gamma = Vector3D.AngleBetVectors(dstA, dstB);
+            cry.Alpha = Vector3DBase.AngleBetVectors(dstB, dstC);
+            cry.Beta = Vector3DBase.AngleBetVectors(dstC, dstA);
+            cry.Gamma = Vector3DBase.AngleBetVectors(dstA, dstB);
             crystal = cry;
         }
         #endregion
@@ -1008,5 +998,5 @@ public partial class CrystalControl : UserControl
 
     #endregion
 
-    private void buttonChangeAxesOriginSetting_Click(object sender, EventArgs e) => ChangeAxesOriginSetting();
+    private void buttonStressSet_Click(object sender, EventArgs e) => GenerateFromInterface();
 }
