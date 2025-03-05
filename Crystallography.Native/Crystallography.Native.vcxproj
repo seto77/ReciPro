@@ -79,7 +79,7 @@
     <EnableMKLOpenMPOffloadToGPU>false</EnableMKLOpenMPOffloadToGPU>
     <BasePlatformToolset>v143</BasePlatformToolset>
     <UseInteloneTBB>false</UseInteloneTBB>
-    <LLVMToolsVersion>18</LLVMToolsVersion>
+    <LLVMToolsVersion>19</LLVMToolsVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">

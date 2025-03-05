@@ -220,6 +220,7 @@
             numericBoxBiso.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxBiso.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxBiso.Name = "numericBoxBiso";
+            numericBoxBiso.RoundErrorAccuracy = 8;
             numericBoxBiso.SkipEventDuringInput = false;
             numericBoxBiso.SmartIncrement = true;
             numericBoxBiso.ThonsandsSeparator = true;
@@ -231,6 +232,7 @@
             numericBoxBisoerr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxBisoerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxBisoerr.Name = "numericBoxBisoerr";
+            numericBoxBisoerr.RoundErrorAccuracy = 8;
             numericBoxBisoerr.SkipEventDuringInput = false;
             numericBoxBisoerr.SmartIncrement = true;
             numericBoxBisoerr.ThonsandsSeparator = true;
@@ -825,6 +827,7 @@
             numericBoxB22.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22.Name = "numericBoxB22";
+            numericBoxB22.RoundErrorAccuracy = 8;
             numericBoxB22.SkipEventDuringInput = false;
             numericBoxB22.SmartIncrement = true;
             numericBoxB22.ThonsandsSeparator = true;
@@ -836,6 +839,7 @@
             numericBoxB22err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22err.Name = "numericBoxB22err";
+            numericBoxB22err.RoundErrorAccuracy = 8;
             numericBoxB22err.SkipEventDuringInput = false;
             numericBoxB22err.SmartIncrement = true;
             numericBoxB22err.ThonsandsSeparator = true;
@@ -847,6 +851,7 @@
             numericBoxB23.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23.Name = "numericBoxB23";
+            numericBoxB23.RoundErrorAccuracy = 8;
             numericBoxB23.SkipEventDuringInput = false;
             numericBoxB23.SmartIncrement = true;
             numericBoxB23.ThonsandsSeparator = true;
@@ -858,6 +863,7 @@
             numericBoxB23err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23err.Name = "numericBoxB23err";
+            numericBoxB23err.RoundErrorAccuracy = 8;
             numericBoxB23err.SkipEventDuringInput = false;
             numericBoxB23err.SmartIncrement = true;
             numericBoxB23err.ThonsandsSeparator = true;
@@ -869,6 +875,7 @@
             numericBoxB33.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33.Name = "numericBoxB33";
+            numericBoxB33.RoundErrorAccuracy = 8;
             numericBoxB33.SkipEventDuringInput = false;
             numericBoxB33.SmartIncrement = true;
             numericBoxB33.ThonsandsSeparator = true;
@@ -880,6 +887,7 @@
             numericBoxB33err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33err.Name = "numericBoxB33err";
+            numericBoxB33err.RoundErrorAccuracy = 8;
             numericBoxB33err.SkipEventDuringInput = false;
             numericBoxB33err.SmartIncrement = true;
             numericBoxB33err.ThonsandsSeparator = true;
@@ -902,6 +910,7 @@
             numericBoxB11.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11.Name = "numericBoxB11";
+            numericBoxB11.RoundErrorAccuracy = 8;
             numericBoxB11.SkipEventDuringInput = false;
             numericBoxB11.SmartIncrement = true;
             numericBoxB11.ThonsandsSeparator = true;
@@ -913,6 +922,7 @@
             numericBoxB11err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11err.Name = "numericBoxB11err";
+            numericBoxB11err.RoundErrorAccuracy = 8;
             numericBoxB11err.SkipEventDuringInput = false;
             numericBoxB11err.SmartIncrement = true;
             numericBoxB11err.ThonsandsSeparator = true;
@@ -924,6 +934,7 @@
             numericBoxB12.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12.Name = "numericBoxB12";
+            numericBoxB12.RoundErrorAccuracy = 8;
             numericBoxB12.SkipEventDuringInput = false;
             numericBoxB12.SmartIncrement = true;
             numericBoxB12.ThonsandsSeparator = true;
@@ -935,6 +946,7 @@
             numericBoxB12err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12err.Name = "numericBoxB12err";
+            numericBoxB12err.RoundErrorAccuracy = 8;
             numericBoxB12err.SkipEventDuringInput = false;
             numericBoxB12err.SmartIncrement = true;
             numericBoxB12err.ThonsandsSeparator = true;
@@ -946,6 +958,7 @@
             numericBoxB13.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13.Name = "numericBoxB13";
+            numericBoxB13.RoundErrorAccuracy = 8;
             numericBoxB13.SkipEventDuringInput = false;
             numericBoxB13.SmartIncrement = true;
             numericBoxB13.ThonsandsSeparator = true;
@@ -957,6 +970,7 @@
             numericBoxB13err.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13err.Name = "numericBoxB13err";
+            numericBoxB13err.RoundErrorAccuracy = 8;
             numericBoxB13err.SkipEventDuringInput = false;
             numericBoxB13err.SmartIncrement = true;
             numericBoxB13err.ThonsandsSeparator = true;
