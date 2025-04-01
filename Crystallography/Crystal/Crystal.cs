@@ -1955,13 +1955,14 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     }
     #endregion
 
-    #region CIFファイルへのエクスポート
+    #region エクスポート
 
     public void ExportCIF(string filename)
     {
         using var sw = new StreamWriter(filename, false);
         sw.Write(ConvertCrystalData.ConvertToCIF(this));
     }
+
 
     #endregion
 

@@ -65,7 +65,7 @@ public class Macro : MacroBase
         public string GetDirectoryPath(string filename = "") => Execute<string>(new Func<string>(() => getDirectoryPath(filename)));
         private static string getDirectoryPath(string filename = "")
         {
-            string path = "";
+            string path;
             if (filename == "")
             {
                 var dlg = new FolderBrowserDialog();
@@ -93,13 +93,13 @@ public class Macro : MacroBase
         }
 
         [Help("Read a crystal list file (xml format).", "string filename")]
-        public void ReadCrystalList(string filename) => Execute(() => main.ReadCrystalList(filename, false, false));
+        public void ReadCrystalList(string filename="") => Execute(() => main.ReadCrystalList(filename, false, false));
       
         [Help("Read a crystal file (cif or amc format).", "string filename")]
-        public void ReadCrystal(string filename) => Execute(() => main.ReadCrystal(filename));
+        public void ReadCrystal(string filename="") => Execute(() => main.ReadCrystal(filename));
 
         [Help("Export a selected crystal as CIF format. If 'filename' is omitted, a selection dialog will open.", "string filename")]
-        public void ExportAsCIF(string filename) => Execute(() => main.ExportCIF(filename));
+        public void ExportAsCIF(string filename="") => Execute(() => main.ExportCIF(filename));
 
     }
     #endregion

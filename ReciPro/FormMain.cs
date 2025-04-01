@@ -1236,8 +1236,17 @@ public partial class FormMain : Form
     #endregion リストボックス関連
 
     #region 結晶リストの読み込み/書き込み
-    public void ReadCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
+    public void ReadCrystalList(string fileName = "", bool showSelectionDialog = false, bool clearPresentList = false)
     {
+        if (fileName == "")
+        {
+            var dlg = new OpenFileDialog { Filter = "xml|*.xml" };
+            if (dlg.ShowDialog() == DialogResult.OK)
+                fileName = dlg.FileName;
+            else
+                return;
+        }
+
         var cry = new List<Crystal>();
         var list = ConvertCrystalData.ConvertToCrystalList(fileName);
         if (list == null)
@@ -1296,13 +1305,22 @@ public partial class FormMain : Form
 
     #region FileMenu
 
-    private void readCrystalFromCIFOrAMCFileToolStripMenuItem_Click(object sender, EventArgs e)
+    private void readCrystalFromCIFOrAMCFileToolStripMenuItem_Click(object sender, EventArgs e) => ReadCrystal();
+
+
+    public void ReadCrystal(string fileName = "")
     {
-        var dlg = new OpenFileDialog { Filter = "cif, amc|*.cif;*.amc" };
-        if (dlg.ShowDialog() == DialogResult.OK)
-            ReadCrystal(dlg.FileName);
+        if (fileName == "")
+        {
+            var dlg = new OpenFileDialog { Filter = "cif, amc|*.cif;*.amc" };
+            if (dlg.ShowDialog() == DialogResult.OK)
+                fileName = dlg.FileName;
+            else
+                return;
+        }
+
+        crystalControl.ReadCrystal(fileName);
     }
-    public void ReadCrystal(string fileName) => crystalControl.ReadCrystal(fileName);
 
     private void readCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
     {

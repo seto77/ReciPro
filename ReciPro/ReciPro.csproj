@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2025.4.1.0603</AssemblyVersion>
-    <FileVersion>2025.4.1.0603</FileVersion>
+    <AssemblyVersion>2025.4.1.0621</AssemblyVersion>
+    <FileVersion>2025.4.1.0621</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
