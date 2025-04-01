@@ -1170,7 +1170,7 @@ public partial class FormMain : Form
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void exportAsCIFFormatToolStripMenuItem_Click(object sender, EventArgs e) => toolStripMenuItemExportCIF_Click(sender, e);
+    private void exportAsCIFFormatToolStripMenuItem_Click(object sender, EventArgs e) => ExportCIF();
 
     private void duplicateToolStripMenuItem_Click(object sender, EventArgs e) => DuplicateCrystal();
 
@@ -1235,7 +1235,7 @@ public partial class FormMain : Form
 
     #endregion リストボックス関連
 
-    #region 結晶データの読み込み/書き込み
+    #region 結晶リストの読み込み/書き込み
     public void ReadCrystalList(string fileName, bool showSelectionDialog, bool clearPresentList)
     {
         var cry = new List<Crystal>();
@@ -1355,7 +1355,21 @@ public partial class FormMain : Form
 
     private void toolTipToolStripMenuItem_CheckedChanged(object sender, EventArgs e) => toolTip.Active = toolTipToolStripMenuItem.Checked;
     private void toolStripMenuItem1_Click(object sender, EventArgs e) => listBox.Items.Clear();
-    private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e) => crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
+    private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e) => ExportCIF();
+
+    public void ExportCIF(string filename = "")
+    {
+        if (filename == "")
+        {
+            var dlg = new SaveFileDialog { Filter = " *.cif| *.cif", FileName = Crystal.Name + ".cif" };
+            if (dlg.ShowDialog() == DialogResult.OK)
+                filename = dlg.FileName;
+            else
+                return;
+        }
+        Crystal.ExportCIF(filename);
+    }
+
 
     private void languageToolStripMenuItem_Click(object sender, EventArgs e)
     {

@@ -643,10 +643,7 @@ public partial class CrystalControl : UserControl
         {
             var dlg = new SaveFileDialog { Filter = " *.cif| *.cif", FileName = Crystal.Name + ".cif" };
             if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                using var sw = new StreamWriter(dlg.FileName, false);
-                sw.Write(ConvertCrystalData.ConvertToCIF(Crystal));
-            }
+                Crystal.ExportCIF(dlg.FileName);
         }
     }
 

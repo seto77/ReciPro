@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class ExRichTextBox : System.Windows.Forms.RichTextBox
+public partial class ExRichTextBox : RichTextBox
 {
     #region "変数・定数"
 

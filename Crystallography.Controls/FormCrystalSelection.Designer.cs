@@ -76,7 +76,7 @@
             this.buttonUnchekAll.TabIndex = 2;
             this.buttonUnchekAll.Text = "Uncheck All Items";
             this.buttonUnchekAll.UseVisualStyleBackColor = true;
-            this.buttonUnchekAll.Click += new System.EventHandler(this.buttonUnchekAll_Click);
+            this.buttonUnchekAll.Click += new System.EventHandler(this.buttonUncheckAll_Click);
             // 
             // label1
             // 

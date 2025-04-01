@@ -4,6 +4,7 @@ using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
@@ -1952,6 +1953,16 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             SetAxis();
         }
     }
+    #endregion
+
+    #region CIFファイルへのエクスポート
+
+    public void ExportCIF(string filename)
+    {
+        using var sw = new StreamWriter(filename, false);
+        sw.Write(ConvertCrystalData.ConvertToCIF(this));
+    }
+
     #endregion
 
     #region 指定した原子(target)の近辺にある原子を探索し、相対座標、距離、ラベルを返す. (絶対座標でないことに注意)
