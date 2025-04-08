@@ -598,65 +598,6 @@
   <data name="&gt;&gt;numericBoxDensity.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="colorControl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colorControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="colorControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControl.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="colorControl.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControl.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="colorControl.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControl.HeaderText" xml:space="preserve">
-    <value>Profile color</value>
-  </data>
-  <data name="colorControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>167, 57</value>
-  </data>
-  <data name="colorControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 3, 3, 3</value>
-  </data>
-  <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 20</value>
-  </data>
-  <data name="colorControl.TabIndex" type="System.Int32, mscorlib">
-    <value>89</value>
-  </data>
-  <data name="colorControl.ToolTip" xml:space="preserve">
-    <value>Profile color
-</value>
-  </data>
-  <data name="colorControl.ToolTip1" xml:space="preserve">
-    <value>Profile color
-</value>
-  </data>
-  <data name="&gt;&gt;colorControl.Name" xml:space="preserve">
-    <value>colorControl</value>
-  </data>
-  <data name="&gt;&gt;colorControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;colorControl.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -3115,6 +3056,68 @@
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="colorControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="colorControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControl.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="colorControl.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControl.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControl.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 3, 0, 0</value>
+  </data>
+  <data name="colorControl.HeaderText" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="colorControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>401, 0</value>
+  </data>
+  <data name="colorControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 3, 3, 3</value>
+  </data>
+  <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 25</value>
+  </data>
+  <data name="colorControl.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Profile color
+</value>
+  </data>
+  <data name="colorControl.ToolTip1" xml:space="preserve">
+    <value>Profile color
+</value>
+  </data>
+  <data name="&gt;&gt;colorControl.Name" xml:space="preserve">
+    <value>colorControl</value>
+  </data>
+  <data name="&gt;&gt;colorControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControl.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;colorControl.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="textBoxFormula.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -3134,7 +3137,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBoxFormula.Size" type="System.Drawing.Size, System.Drawing">
-    <value>371, 25</value>
+    <value>305, 25</value>
   </data>
   <data name="textBoxFormula.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -3153,60 +3156,6 @@
   </data>
   <data name="&gt;&gt;textBoxFormula.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBoxZnumber.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxZnumber.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="numericBoxZnumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxZnumber.HeaderText" xml:space="preserve">
-    <value>Z</value>
-  </data>
-  <data name="numericBoxZnumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 0</value>
-  </data>
-  <data name="numericBoxZnumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxZnumber.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxZnumber.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="numericBoxZnumber.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxZnumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 25</value>
-  </data>
-  <data name="numericBoxZnumber.TabIndex" type="System.Int32, mscorlib">
-    <value>95</value>
-  </data>
-  <data name="numericBoxZnumber.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
-    <value>Z (Number of formula in the unit cell)</value>
-  </data>
-  <data name="numericBoxZnumber.ToolTip1" xml:space="preserve">
-    <value>Z (Number of formula in the unit cell)</value>
-  </data>
-  <data name="&gt;&gt;numericBoxZnumber.Name" xml:space="preserve">
-    <value>numericBoxZnumber</value>
-  </data>
-  <data name="&gt;&gt;numericBoxZnumber.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxZnumber.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxZnumber.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="label90.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3251,6 +3200,60 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label90.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericBoxZnumber.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxZnumber.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="numericBoxZnumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxZnumber.HeaderText" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="numericBoxZnumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>360, 0</value>
+  </data>
+  <data name="numericBoxZnumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxZnumber.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxZnumber.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxZnumber.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxZnumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 25</value>
+  </data>
+  <data name="numericBoxZnumber.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="numericBoxZnumber.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
+    <value>Z (Number of formula in the unit cell)</value>
+  </data>
+  <data name="numericBoxZnumber.ToolTip1" xml:space="preserve">
+    <value>Z (Number of formula in the unit cell)</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.Name" xml:space="preserve">
+    <value>numericBoxZnumber</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxZnumber.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">

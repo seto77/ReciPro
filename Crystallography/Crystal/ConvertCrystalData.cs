@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
-using System.Net.Http;
 using System.Text;
 using System.Threading;
 using V3 = OpenTK.Mathematics.Vector3d;
@@ -17,7 +16,7 @@ namespace Crystallography;
 
 public class ConvertCrystalData
 {
-    static readonly System.StringComparison Ord = System.StringComparison.Ordinal;
+    private static readonly StringComparison Ord = StringComparison.Ordinal;
 
     #region CrystalList(xml形式)の読み込み/書き込み
     public static bool SaveCrystalListXml(Crystal[] crystals, string filename)
@@ -1083,7 +1082,7 @@ public class ConvertCrystalData
                 //ここから対称性
                 else if (label.Contains("_space_group_name_H-M")) spaceGroupNameHM.Add(data);
                 else if (label.Contains("_space_group_name_Hall")) spaceGroupNameHall.Add(data);
-                else if (label == "_Int_Tables_number") int.TryParse(data, out symmetry_Int_Tables_number);
+                else if (label.Contains("_Int_Tables_number")) int.TryParse(data, out symmetry_Int_Tables_number);
                 else if (label == "_chemical_formula_sum") chemical_formula_sum = data;
                 else if (label == "_chemical_formula_structural") chemical_formula_structural = data;
                 else if (label == "_space_group_symop_operation_xyz") operations.Add(data);
@@ -1710,29 +1709,36 @@ public class ConvertCrystalData
         sb.AppendLine("data_global");
         sb.AppendLine("_chemical_name '" + crystal.Name + "'");
 
-        sb.AppendLine("loop_");
-        sb.AppendLine("_publ_author_name");
-        foreach (string str in crystal.PublAuthorName.Split(',', true))
-            sb.AppendLine("'" + str.Trim() + "'");
+        if (crystal.PublAuthorName != string.Empty)
+        {
+            sb.AppendLine("loop_");
+            sb.AppendLine("_publ_author_name");
+            foreach (string str in crystal.PublAuthorName.Split(',', true))
+                sb.AppendLine("'" + str.Trim() + "'");
+        }
 
-        sb.AppendLine("_journal_name '" + crystal.Journal + "'");
+        if(crystal.Journal != string.Empty)
+            sb.AppendLine("_journal_name '" + crystal.Journal + "'");
 
         #region 論文タイトル
-        sb.AppendLine("_publ_section_title");
-        sb.AppendLine(";");
-        string title = "";
-        foreach (string t in crystal.PublSectionTitle.Split(' ', true))
+        if (crystal.PublSectionTitle != "")
         {
-            if ((title + " " + t).Length > 80)
+            sb.AppendLine("_publ_section_title");
+            sb.AppendLine(";");
+            string title = "";
+            foreach (string t in crystal.PublSectionTitle.Split(' ', true))
             {
-                sb.AppendLine(title);
-                title = "";
+                if ((title + " " + t).Length > 80)
+                {
+                    sb.AppendLine(title);
+                    title = "";
+                }
+                title += " " + t;
             }
-            title += " " + t;
+            if (title != "")
+                sb.AppendLine(title);
+            sb.AppendLine(";");
         }
-        if (title != "")
-            sb.AppendLine(title);
-        sb.AppendLine(";");
         #endregion
 
         #region 格子定数、対称性
@@ -1748,6 +1754,7 @@ public class ConvertCrystalData
 
         var sym = crystal.Symmetry;
         sb.AppendLine("_space_group_IT_number " + sym.SpaceGroupNumber);
+        sb.AppendLine("_symmetry_Int_Tables_number " + sym.SpaceGroupNumber);
         sb.AppendLine("_symmetry_cell_setting '" + sym.CrystalSystemStr + "'");
         var hm = sym.SpaceGroupHMStr;
         hm = hm.Replace("Hex", "");
@@ -1787,7 +1794,7 @@ public class ConvertCrystalData
                     sb.AppendLine($"  '{xyz[0]},{xyz[1]},{xyz[2]}'");
                 }
             }
-            else//R格子のHexaセッティングのとき
+            else//R格子のHexセッティングのとき
             {
                 sb.AppendLine("  '" + wp + "'");//(0,0,0)
                                                 //(1/3,2/3,2/3)
@@ -1821,7 +1828,7 @@ public class ConvertCrystalData
         foreach (var a in crystal.Atoms)
         {
             var u = double.IsNaN(a.Dsf.Uiso) ? 0 : a.Dsf.Uiso * 100;
-            sb.AppendLine($"{a.Label} {AtomStatic.AtomicName(a.AtomicNumber)} {a.X:f6} {a.Y:f6} {a.Z:f6} {a.Occ:f6} {u:f6}");
+            sb.AppendLine($" {a.Label} {AtomStatic.AtomicName(a.AtomicNumber)} {a.X:f6} {a.Y:f6} {a.Z:f6} {a.Occ:f6} {u:f6}");
         }
 
 
@@ -1843,7 +1850,7 @@ public class ConvertCrystalData
                 var u23 = double.IsNaN(a.Dsf.U23) ? 0 : a.Dsf.U23 * 100;
                 var u31 = double.IsNaN(a.Dsf.U31) ? 0 : a.Dsf.U31 * 100;
                 var u12 = double.IsNaN(a.Dsf.U12) ? 0 : a.Dsf.U12 * 100;
-                sb.AppendLine($"{a.Label} {u11:f6} {u22:f6} {u33:f6} {u23:f6} {u31:f6} {u12:f6}");
+                sb.AppendLine($" {a.Label} {u11:f6} {u22:f6} {u33:f6} {u23:f6} {u31:f6} {u12:f6}");
             }
         }
         #endregion

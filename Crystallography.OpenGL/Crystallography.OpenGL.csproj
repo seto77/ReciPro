@@ -4,10 +4,13 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2025.4.1.0642</AssemblyVersion>
-    <FileVersion>2025.4.1.0642</FileVersion>
+    <AssemblyVersion>2025.4.8.0216</AssemblyVersion>
+    <FileVersion>2025.4.8.0216</FileVersion>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <Platforms>AnyCPU;x64</Platforms>
+    <TieredCompilation>false</TieredCompilation>
+    <TieredCompilationQuickJit>false</TieredCompilationQuickJit>
+    <TieredCompilationQuickJitForLoops>false</TieredCompilationQuickJitForLoops>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

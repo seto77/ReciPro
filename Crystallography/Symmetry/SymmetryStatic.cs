@@ -10898,7 +10898,8 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
 ".-3m"
             #endregion
         ];
-    public static readonly ushort[][][] BelongingNumberOfSymmetry = [
+    public static readonly ushort[][][] BelongingNumberOfSymmetry = 
+        [
 				#region BelongingNumberOfSymmetry
 					[
                         [0]
@@ -12951,7 +12952,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <param name="l">面指数 l</param>
     /// <param name="sym">対称性</param>
     /// <param name="multi">多重度</param>
-    /// <returns>基底のときはtrue</returns>
+    /// <returns>基底のときは true</returns>
     public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym, out int multi)
     {
         var indices = new List<(int H, int K, int L)>();
@@ -13081,7 +13082,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <param name="sym">対称性</param>
     /// <param name="indices">等価な面指数の群</param>
     /// <param name="CalcNotEvenRoot">基底でなくても等価な面指数を計算するときはtrue</param>
-    /// <returns>基底のときはtrue</returns>
+    /// <returns>基底のときは true</returns>
     public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym, ref List<(int H, int K, int L)> indices, bool CalcNotEvenRoot)
     {
         #region
@@ -13165,7 +13166,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     }
 
     /// <summary>
-    /// 対称性symに従って(hkl)と等価な結晶面を生成する
+    /// 対称性 symに従って(hkl)と等価な結晶面を生成する
     /// </summary>
     /// <param name="h"></param>
     /// <param name="k"></param>

@@ -2409,7 +2409,7 @@
             colorControlNoCondition.Name = "colorControlNoCondition";
             colorControlNoCondition.Red = 255;
             colorControlNoCondition.RedF = 1F;
-            toolTip.SetToolTip(colorControlNoCondition, resources.GetString("colorControlNoCondition.ToolTip"));
+            toolTip.SetToolTip(colorControlNoCondition, resources.GetString("colorControlNoCondition.ToolTip1"));
             colorControlNoCondition.ColorChanged += Draw;
             // 
             // colorControlScrewGlide
@@ -2426,7 +2426,7 @@
             colorControlScrewGlide.Name = "colorControlScrewGlide";
             colorControlScrewGlide.Red = 255;
             colorControlScrewGlide.RedF = 1F;
-            toolTip.SetToolTip(colorControlScrewGlide, resources.GetString("colorControlScrewGlide.ToolTip"));
+            toolTip.SetToolTip(colorControlScrewGlide, resources.GetString("colorControlScrewGlide.ToolTip1"));
             colorControlScrewGlide.ColorChanged += Draw;
             // 
             // colorControlForbiddenLattice
@@ -2443,7 +2443,7 @@
             colorControlForbiddenLattice.Name = "colorControlForbiddenLattice";
             colorControlForbiddenLattice.Red = 192;
             colorControlForbiddenLattice.RedF = 0.7529412F;
-            toolTip.SetToolTip(colorControlForbiddenLattice, resources.GetString("colorControlForbiddenLattice.ToolTip"));
+            toolTip.SetToolTip(colorControlForbiddenLattice, resources.GetString("colorControlForbiddenLattice.ToolTip1"));
             colorControlForbiddenLattice.ColorChanged += Draw;
             // 
             // flowLayoutPanel3

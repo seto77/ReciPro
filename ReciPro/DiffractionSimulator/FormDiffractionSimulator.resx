@@ -4558,13 +4558,13 @@ relative intensity</value>
     <value>250, 66</value>
   </data>
   <data name="checkBoxFixCenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 19</value>
+    <value>76, 19</value>
   </data>
   <data name="checkBoxFixCenter.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="checkBoxFixCenter.Text" xml:space="preserve">
-    <value>Fix thecenter</value>
+    <value>Fix center</value>
   </data>
   <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
     <value>Fix the monitor center to the following point</value>
@@ -6953,6 +6953,9 @@ radius</value>
   <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
     <value>Set a color of general spots</value>
   </data>
+  <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
+    <value>Set a color of general spots</value>
+  </data>
   <data name="&gt;&gt;colorControlNoCondition.Name" xml:space="preserve">
     <value>colorControlNoCondition</value>
   </data>
@@ -7004,6 +7007,9 @@ radius</value>
   <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
     <value>Set a color of extinct spots (screw of glide)</value>
   </data>
+  <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
+    <value>Set a color of extinct spots (screw of glide)</value>
+  </data>
   <data name="&gt;&gt;colorControlScrewGlide.Name" xml:space="preserve">
     <value>colorControlScrewGlide</value>
   </data>
@@ -7053,6 +7059,9 @@ radius</value>
     <value>4</value>
   </data>
   <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
+    <value>Set a color of extinct spots (lattice centering)</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
     <value>Set a color of extinct spots (lattice centering)</value>
   </data>
   <data name="&gt;&gt;colorControlForbiddenLattice.Name" xml:space="preserve">

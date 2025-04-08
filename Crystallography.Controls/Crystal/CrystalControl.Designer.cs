@@ -44,7 +44,6 @@
             numericBoxMolarVolume = new NumericBox();
             numericBoxMolarMass = new NumericBox();
             numericBoxDensity = new NumericBox();
-            colorControl = new ColorControl();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             buttonConvertToSubgroup = new System.Windows.Forms.Button();
             buttonChangeAxesOriginSetting = new System.Windows.Forms.Button();
@@ -120,10 +119,11 @@
             boundControl = new BoundControl();
             tabPageLatticePlane = new System.Windows.Forms.TabPage();
             latticePlaneControl = new LatticePlaneControl();
+            colorControl = new ColorControl();
             panel1 = new System.Windows.Forms.Panel();
             textBoxFormula = new System.Windows.Forms.TextBox();
-            numericBoxZnumber = new NumericBox();
             label90 = new System.Windows.Forms.Label();
+            numericBoxZnumber = new NumericBox();
             contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
             scatteringFactorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             symmetryInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -263,7 +263,6 @@
             flowLayoutPanel4.Controls.Add(numericBoxMolarVolume);
             flowLayoutPanel4.Controls.Add(numericBoxMolarMass);
             flowLayoutPanel4.Controls.Add(numericBoxDensity);
-            flowLayoutPanel4.Controls.Add(colorControl);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
             // numericBoxVolume
@@ -343,22 +342,6 @@
             numericBoxDensity.TextBoxBackColor = System.Drawing.SystemColors.Control;
             numericBoxDensity.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
-            // 
-            // colorControl
-            // 
-            colorControl.Argb = -986896;
-            resources.ApplyResources(colorControl, "colorControl");
-            colorControl.BackColor = System.Drawing.SystemColors.Control;
-            colorControl.Blue = 240;
-            colorControl.BlueF = 0.9411765F;
-            colorControl.BoxSize = new System.Drawing.Size(20, 20);
-            colorControl.Color = System.Drawing.Color.FromArgb(240, 240, 240);
-            colorControl.Green = 240;
-            colorControl.GreenF = 0.9411765F;
-            colorControl.Name = "colorControl";
-            colorControl.Red = 240;
-            colorControl.RedF = 0.9411765F;
-            toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip1"));
             // 
             // flowLayoutPanel5
             // 
@@ -989,11 +972,28 @@
             latticePlaneControl.Name = "latticePlaneControl";
             latticePlaneControl.SkipEvent = false;
             // 
+            // colorControl
+            // 
+            colorControl.Argb = -986896;
+            resources.ApplyResources(colorControl, "colorControl");
+            colorControl.BackColor = System.Drawing.SystemColors.Control;
+            colorControl.Blue = 240;
+            colorControl.BlueF = 0.9411765F;
+            colorControl.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl.Color = System.Drawing.Color.FromArgb(240, 240, 240);
+            colorControl.Green = 240;
+            colorControl.GreenF = 0.9411765F;
+            colorControl.Name = "colorControl";
+            colorControl.Red = 240;
+            colorControl.RedF = 0.9411765F;
+            toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip"));
+            // 
             // panel1
             // 
             panel1.Controls.Add(textBoxFormula);
-            panel1.Controls.Add(numericBoxZnumber);
             panel1.Controls.Add(label90);
+            panel1.Controls.Add(numericBoxZnumber);
+            panel1.Controls.Add(colorControl);
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
@@ -1004,6 +1004,12 @@
             textBoxFormula.ReadOnly = true;
             textBoxFormula.TabStop = false;
             toolTip.SetToolTip(textBoxFormula, resources.GetString("textBoxFormula.ToolTip"));
+            // 
+            // label90
+            // 
+            resources.ApplyResources(label90, "label90");
+            label90.Name = "label90";
+            toolTip.SetToolTip(label90, resources.GetString("label90.ToolTip"));
             // 
             // numericBoxZnumber
             // 
@@ -1017,12 +1023,6 @@
             numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;
             numericBoxZnumber.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxZnumber, resources.GetString("numericBoxZnumber.ToolTip"));
-            // 
-            // label90
-            // 
-            resources.ApplyResources(label90, "label90");
-            label90.Name = "label90";
-            toolTip.SetToolTip(label90, resources.GetString("label90.ToolTip"));
             // 
             // contextMenuStrip
             // 
@@ -1181,7 +1181,6 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
             flowLayoutPanel5.ResumeLayout(false);
             flowLayoutPanel5.PerformLayout();
             tabPageAtom.ResumeLayout(false);
