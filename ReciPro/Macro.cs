@@ -20,6 +20,7 @@ public class Macro : MacroBase
     public DirectionClass Dir;
     public DifSimClass DifSim;
     public CrystalListClass CrystalList;
+    public CrystalClass Crystal;
     public STEMClass STEM;
     public HRTEMClass HRTEM;
     public PotentialClass Potential;
@@ -36,6 +37,10 @@ public class Macro : MacroBase
 
         DifSim = new DifSimClass(this);
         HelpAttribute.GenerateHelpText(DifSim.GetType(), nameof(DifSim)).ForEach(s => help.Add(s));
+
+        Crystal = new CrystalClass(this);
+        HelpAttribute.GenerateHelpText(Crystal.GetType(), nameof(Crystal)).ForEach(s => help.Add(s));
+
 
         CrystalList = new CrystalListClass(this);
         HelpAttribute.GenerateHelpText(CrystalList.GetType(), nameof(CrystalList)).ForEach(s => help.Add(s));
@@ -100,6 +105,25 @@ public class Macro : MacroBase
 
         [Help("Export a selected crystal as CIF format. If 'filename' is omitted, a selection dialog will open.", "string filename")]
         public void ExportAsCIF(string filename = "") => Execute(() => main.ExportCIF(filename));
+
+    }
+    #endregion
+
+    #region CrystalList クラス
+    public class CrystalClass(Macro _p) : MacroSub(_p.main)
+    {
+        private FormMain main => _p.main;
+
+        [Help("String. Get the name of the selected crystal.")]
+        public string Name { get => main.Crystal.Name; }
+
+        [Help("String. Get the name of the selected crystal.")]
+
+        public string ChemicalFormula { get => main.Crystal.ChemicalFormulaSum;}
+        
+        [Help("Float. Get the density (g/cm^3) of the selected crystal.")]
+
+        public double Density { get => main.Crystal.Density;}
 
     }
     #endregion
