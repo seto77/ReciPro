@@ -53,8 +53,8 @@ namespace Crystallography.Controls
 
                     dataGridView.Rows.Add(temp);
                 }
-                exRichTextBox.AutoCompleteItems = autoCompleteItems.ToArray();
-                exRichTextBox.ToolTipItems = toolTipItems.ToArray();
+                exRichTextBox.AutoCompleteItems = [.. autoCompleteItems];
+                exRichTextBox.ToolTipItems = [.. toolTipItems];
             }
         }
 
@@ -156,7 +156,7 @@ namespace Crystallography.Controls
                                         value += n + ", ";
                                 }
                             }
-                            dataGridViewDebug.Rows.Add(new[] { key, value });
+                            dataGridViewDebug.Rows.Add([key, value]);
                         }
                     }
                     catch { }

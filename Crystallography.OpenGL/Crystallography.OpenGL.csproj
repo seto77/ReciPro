@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2025.4.10.0846</AssemblyVersion>
-    <FileVersion>2025.4.10.0846</FileVersion>
+    <AssemblyVersion>2025.4.10.0847</AssemblyVersion>
+    <FileVersion>2025.4.10.0847</FileVersion>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <TieredCompilation>false</TieredCompilation>
@@ -33,8 +33,8 @@
     <PackageReference Include="MathNet.Numerics" Version="6.0.0-beta2" />
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0.2" />
-    <PackageReference Include="System.Management" Version="9.0.3" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.2" />
+    <PackageReference Include="System.Management" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>

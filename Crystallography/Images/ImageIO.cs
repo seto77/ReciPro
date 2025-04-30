@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -92,6 +93,14 @@ public static class ImageIO
         return temp == "R-AXIS" || temp == "ipdsc\0";
     }
 
+    public static bool IsRintRapid2UnrollImage(string fileName)
+    {
+        var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+        br.BaseStream.Position = 0;
+        var temp = new string(br.ReadChars(46));
+        br.Close();
+        return temp == "{\nHEADER_BYTES=17408;\nBYTE_ORDER=little_endian";
+    }
     public static bool IsITEXImage(string fileName)
     {
         var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
@@ -166,9 +175,9 @@ public static class ImageIO
         string ext = Path.GetExtension(str).TrimStart(['.']);
         if (str.EndsWith("img"))//R-Axis5 or Fuji BAS or Fuji FDL
         {
-            if (File.Exists(str.Remove(str.Length - 3, 3) + "inf"))
+            if (File.Exists(str[..^3] + "inf"))
             {//Fujiのとき
-                var reader = new StreamReader(str.Remove(str.Length - 3, 3) + "inf");
+                var reader = new StreamReader($"{str[..^3]}inf");
                 var strList = new List<string>();
                 string tempstr;
                 while ((tempstr = reader.ReadLine()) != null)
@@ -181,10 +190,12 @@ public static class ImageIO
                     return false;
                 }
             }
-            else if (File.Exists(str.Remove(str.Length - 3, 3) + "tem"))
+            else if (File.Exists(str[..^3] + "tem"))
                 result = FujiFDL(str);
             else if (IsRAxisImage(str))//R-Axis5
                 result = Raxis4(str);
+            else if (IsRintRapid2UnrollImage(str))//Rigaku RINT-RAPID II
+                result = RintRapid2Unroll(str);
             else if (IsADXVImage(str))
                 result = ADXV(str);
             else if (IsITEXImage(str))
@@ -238,9 +249,7 @@ public static class ImageIO
         else
             return false;
 
-        Ring.IntensityOriginal.Clear();
-        Ring.IntensityOriginal.AddRange(Ring.Intensity);
-
+        Ring.IntensityOriginal = [.. Ring.Intensity];
         Ring.SrcImgSizeOriginal = new Size(Ring.SrcImgSize.Width, Ring.SrcImgSize.Height);
 
         return result;
@@ -287,22 +296,16 @@ public static class ImageIO
             {
                 Ring.SequentialImageIntensities.Add([]);
                 br.BaseStream.Position = headersize + j * length * (type == "UNSIGNED_SHORT" ? 2 : 4);
+                Ring.SequentialImageIntensities[j] = new double[length];
                 for (int i = 0; i < length; i++)
-                    Ring.SequentialImageIntensities[j].Add(read());
+                    Ring.SequentialImageIntensities[j][i] = read();
                 Ring.SequentialImageNames.Add(j.ToString("000"));
             }
 
-            if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-            {
-                Ring.Intensity.Clear();
-                for (int i = 0; i < length; i++)
-                    Ring.Intensity.Add(Ring.SequentialImageIntensities[0][i]);
-            }
-            else
-            {
-                for (int i = 0; i < length; i++)
-                    Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
-            }
+            if (Ring.Intensity.Length != length)//前回と同じサイズではないとき
+                Ring.Intensity = new double[length];
+            for (int i = 0; i < length; i++)
+                Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
 
             Ring.BitsPerPixels = type == "UNSIGNED_SHORT" ? 2 : 4;
 
@@ -320,35 +323,34 @@ public static class ImageIO
     #endregion
 
     #region  rawファイル (RadIcon など)
+
+    static readonly Size[] RadIconSize 
+        = [new (688, 2064), new(1548, 2064), new(2064, 2236), new(2080, 2238), new(3096, 3100), new(1300, 4608), new(2940, 4608), new(5888, 4608),];
     public static bool RadIcon(string str)
     {
         try
         {
-            #region 2064*1548のサイズを持つ検出器 (SACLA EH5の場合)
-            if (new FileInfo(str).Length == 6390144)
+            var fileSize = new FileInfo(str).Length;
+            #region RadIcon検出器
+            if (RadIconSize.Any(e => e.Width * e.Height * 2 == fileSize))
             {
-                var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
-                int imageWidth = 2064, imageHeight = 1548, length = imageWidth * imageHeight;
-                var sameSize = Ring.Intensity.Count == length;
+                Ring.SrcImgSize = RadIconSize.First(e => e.Width * e.Height * 2 == fileSize);
+                var length = Ring.SrcImgSize.Width * Ring.SrcImgSize.Height;
+                var sameSize = Ring.Intensity.Length == length;
 
                 if (!sameSize)//前回と同じサイズではないとき
-                    Ring.Intensity.Clear();
+                    Ring.Intensity = new double[length];
 
+                using var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
                 for (int n = 0; n < length; n++)
                 {
                     //マイナスの値が入ることを考慮した変更 2024/02/27 辻野さんからのメール参考
                     var val = (short)(256 * br.ReadByte() + br.ReadByte());
-
-                    if (sameSize)
-                        Ring.Intensity[n] = val;
-                    else
-                        Ring.Intensity.Add(val);
+                    Ring.Intensity[n] = val;
                 }
-
                 br.Close();
 
                 Ring.BitsPerPixels = 16;
-                Ring.SrcImgSize = new Size(imageWidth, imageHeight);
                 Ring.ImageType = Ring.ImageTypeEnum.RadIcon;
                 Ring.Comments = "";
 
@@ -417,22 +419,16 @@ public static class ImageIO
 
                     Ring.SequentialImageNames.Add(num.ToString());
                     Ring.SequentialImageIntensities.Add([]);
+                    Ring.SequentialImageIntensities[i] = new double[width * height];
                     for (int y = 0; y < height; y++)
                         for (int x = 0; x < width; x++)
-                            Ring.SequentialImageIntensities[i].Add(read());
+                            Ring.SequentialImageIntensities[i][y * width + x] = read();
                 }
 
-                if (Ring.Intensity.Count != Ring.SequentialImageIntensities[0].Count)//前回と同じサイズではないとき
-                {
-                    Ring.Intensity.Clear();
-                    for (int i = 0; i < Ring.SequentialImageIntensities[0].Count; i++)
-                        Ring.Intensity.Add(Ring.SequentialImageIntensities[0][i]);
-                }
-                else
-                {
-                    for (int i = 0; i < Ring.SequentialImageIntensities[0].Count; i++)
-                        Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
-                }
+                if (Ring.Intensity.Length != Ring.SequentialImageIntensities[0].Length)//前回と同じサイズではないとき
+                    Ring.Intensity = new double[Ring.SequentialImageIntensities[0].Length];
+                for (int i = 0; i < Ring.SequentialImageIntensities[0].Length; i++)
+                    Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
 
                 br.Close();
 
@@ -479,14 +475,14 @@ public static class ImageIO
 
             var pixelSize = 0.1;
             //CCDカメラの場合
-            if (t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag.ContainsKey("Acquisition"))
-                pixelSize = (float)(t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag["Acquisition"].Tag["Device"].Tag["CCD"].Tag["Pixel Size (um)"].Values[0]);
+            if (t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag.TryGetValue("Acquisition", out DigitalMicrograph.TagInfo value1))
+                pixelSize = (float)(value1.Tag["Device"].Tag["CCD"].Tag["Pixel Size (um)"].Values[0]);
             //DigiScanの場合
-            else if (t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag.ContainsKey("Dimension"))
-                pixelSize = (float)t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Scale"].Values[0];
+            else if (t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag.TryGetValue("Dimension", out DigitalMicrograph.TagInfo value2))
+                pixelSize = (float)value2.Tag["0"].Tag["Scale"].Values[0];
 
             var temp = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Units"].Values.Select(c => (ushort)c).ToArray();
-            var units = new string(temp.Select(c => (char)c).ToArray());
+            var units = new string([.. temp.Select(c => (char)c)]);
             var unit = LengthUnitEnum.None;
             if (units == "1/nm")
                 unit = LengthUnitEnum.NanoMeterInverse;
@@ -514,17 +510,10 @@ public static class ImageIO
                 else
                     return false;
 
-                if (Ring.Intensity.Count != imageWidth * imageHeight)//前回と同じサイズではないとき
-                {
-                    Ring.Intensity.Clear();
-                    for (int i = 0; i < imageHeight * imageWidth; i++)
-                        Ring.Intensity.Add(intensity[i]);
-                }
-                else
-                {
-                    for (int i = 0; i < imageHeight * imageWidth; i++)
-                        Ring.Intensity[i] = intensity[i];
-                }
+                if (Ring.Intensity.Length != imageWidth * imageHeight)//前回と同じサイズではないとき
+                    Ring.Intensity = new double[imageHeight * imageWidth];
+                for (int i = 0; i < imageHeight * imageWidth; i++)
+                    Ring.Intensity[i] = intensity[i];
             }
             //Ring.BitsPerPixels = t.BitsPerSampleGray;
             Ring.ImageType = Ring.ImageTypeEnum.DM;
@@ -545,7 +534,7 @@ public static class ImageIO
         {
             var mrc = new MRC(str);
             Ring.SrcImgSize = new Size(mrc.NX, mrc.NY);
-            Ring.Intensity = mrc.Images[0];
+            Ring.Intensity = [.. mrc.Images[0]];
             Ring.MRC = mrc;
             Ring.ImageType = Ring.ImageTypeEnum.MRC;
 
@@ -602,21 +591,13 @@ public static class ImageIO
             br.Close();
             int length = imageWidth * imageHeight;
 
-            if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-            {
-                Ring.Intensity.Clear();
-
-                for (int y = 0; y < imageHeight; y++)
-                    for (int x = 0; x < imageWidth; x++)
-                        Ring.Intensity.Add(img[(imageHeight - y - 1) * imageWidth + x]);
-            }
-            else
-            {
-                n = 0;
-                for (int y = 0; y < imageHeight; y++)
-                    for (int x = 0; x < imageWidth; x++)
-                        Ring.Intensity[n++] = img[(imageHeight - y - 1) * imageWidth + x];
-            }
+            if (Ring.Intensity.Length != length)//前回と同じサイズではないとき
+                Ring.Intensity = new double[length];
+            n = 0;
+            for (int y = 0; y < imageHeight; y++)
+                for (int x = 0; x < imageWidth; x++)
+                    Ring.Intensity[n++] = img[(imageHeight - y - 1) * imageWidth + x];
+         
             Ring.SrcImgSize = new Size(imageWidth, imageHeight);
             Ring.ImageType = Ring.ImageTypeEnum.MAR;
         }
@@ -641,8 +622,7 @@ public static class ImageIO
             Ring.Comments = "";
             Ring.SrcImgSize = new Size(t.ImageWidth, t.ImageLength);
 
-            Ring.Intensity.Clear();
-            Ring.Intensity.AddRange(t.Images[0].Value);
+            Ring.Intensity = [.. t.Images[0].Value]; 
 
             Ring.BitsPerPixels = t.BitsPerSampleGray;
             Ring.ImageType = Ring.ImageTypeEnum.RayonixSX200;
@@ -668,17 +648,10 @@ public static class ImageIO
             Ring.Comments = "";
             Ring.SrcImgSize = new Size(t.ImageWidth, t.ImageLength);
 
-            if (Ring.Intensity.Count != t.ImageWidth * t.ImageLength)//前回と同じサイズではないとき
-            {
-                Ring.Intensity.Clear();
-                for (int i = 0; i < t.ImageLength * t.ImageWidth; i++)
-                    Ring.Intensity.Add(t.Images[0].Value[i] * t.Images[0].MDScaleFactor);
-            }
-            else
-            {
-                for (int i = 0; i < t.ImageLength * t.ImageWidth; i++)
-                    Ring.Intensity[i] = t.Images[0].Value[i] * t.Images[0].MDScaleFactor;
-            }
+            if (Ring.Intensity.Length != t.ImageWidth * t.ImageLength)//前回と同じサイズではないとき
+                Ring.Intensity = new double[t.ImageWidth * t.ImageLength];
+            for (int i = 0; i < t.ImageLength * t.ImageWidth; i++)
+                Ring.Intensity[i] = t.Images[0].Value[i] * t.Images[0].MDScaleFactor;
 
             Ring.BitsPerPixels = t.BitsPerSampleGray;
             Ring.ImageType = Ring.ImageTypeEnum.MCCD;
@@ -732,8 +705,7 @@ public static class ImageIO
             Ring.Comments = "";
             Ring.SrcImgSize = new Size(t.ImageWidth, t.ImageLength);
 
-            Ring.Intensity.Clear();
-            Ring.Intensity.AddRange(t.Images[0].Value);
+            Ring.Intensity = [.. t.Images[0].Value];
 
             Ring.BitsPerPixels = t.BitsPerSampleGray;
             Ring.ImageType = Ring.ImageTypeEnum.MCCD;
@@ -851,23 +823,24 @@ public static class ImageIO
 
                 if (dataImageLeft != null && dataImageRight != null)
                 {
-                    Ring.SequentialImageIntensities.Add(new List<double>(imageHeight * imageWidth));
+                    Ring.SequentialImageIntensities.Add(new double[imageHeight * imageWidth]);
+                    int n = 0;
                     for (int h = 0; h < imageHeight; h++)
                     {
                         for (int w = 0; w < imageWidth / 2; w++)
-                            Ring.SequentialImageIntensities[i].Add(dataImageLeft[h][w]);
+                            Ring.SequentialImageIntensities[i][n++] =dataImageLeft[h][w];
                         for (int w = 0; w < imageWidth / 2; w++)
-                            Ring.SequentialImageIntensities[i].Add(dataImageRight[h][w]);
+                            Ring.SequentialImageIntensities[i][n++] = dataImageRight[h][w];
                     }
                 }
                 else if (dataImageLeft != null)
                 {
                     imageWidth = 512;
-                    Ring.SequentialImageIntensities.Add(new List<double>(imageHeight * imageWidth));
-
+                    Ring.SequentialImageIntensities.Add(new double[imageHeight * imageWidth]);
+                    int n = 0;
                     for (int h = 0; h < imageHeight; h++)
                         for (int w = 0; w < imageWidth; w++)
-                            Ring.SequentialImageIntensities[i].Add(dataImageLeft[h][w]);
+                            Ring.SequentialImageIntensities[i][n++] = dataImageLeft[h][w];
                 }
                 else
                     Ring.SequentialImageIntensities.Add([]);
@@ -876,15 +849,15 @@ public static class ImageIO
                 normarize ??= MessageBox.Show("Normarize intensities by pulse power?", "HDF file option", MessageBoxButtons.YesNo) == DialogResult.Yes;
 
                 if (normarize == true && dataPulsePower[i] > 0)
-                    Ring.SequentialImageIntensities[i] = Ring.SequentialImageIntensities[i].Select(d => d / (double)dataPulsePower[i] / 10000).ToList();
+                    Ring.SequentialImageIntensities[i] = [.. Ring.SequentialImageIntensities[i].Select(d => d / (double)dataPulsePower[i] / 10000)];
 
                 Ring.PulsePowerNormarized = normarize == true;
 
                 if (i == 0)
                 {
-                    Ring.Intensity.Clear();
+                    Ring.Intensity = new double[imageHeight * imageWidth];
                     for (int j = 0; j < imageHeight * imageWidth; j++)
-                        Ring.Intensity.Add(Ring.SequentialImageIntensities[0][j]);
+                        Ring.Intensity[j] =Ring.SequentialImageIntensities[0][j];
                 }
 
                 Ring.SequentialImageNames.Add(tag[i].Replace("tag_", ""));
@@ -946,24 +919,17 @@ public static class ImageIO
 
             for (int j = 0; j < numberOfFrame; j++)
             {
-                Ring.SequentialImageIntensities.Add([]);
+                Ring.SequentialImageIntensities.Add(new double[imageHeight * imageWidth]);
                 br.BaseStream.Position = headerSize + imageHeaderSize + j * imageWidth * imageHeight * 2;
                 for (int i = 0; i < imageHeight * imageWidth; i++)
-                    Ring.SequentialImageIntensities[j].Add(br.ReadUInt16());
+                    Ring.SequentialImageIntensities[j][i] = br.ReadUInt16();
                 Ring.SequentialImageNames.Add(j.ToString("000"));
             }
 
-            if (Ring.Intensity.Count != imageWidth * imageHeight)//前回と同じサイズではないとき
-            {
-                Ring.Intensity.Clear();
-                for (int i = 0; i < imageHeight * imageWidth; i++)
-                    Ring.Intensity.Add(Ring.SequentialImageIntensities[0][i]);
-            }
-            else
-            {
-                for (int i = 0; i < imageHeight * imageWidth; i++)
-                    Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
-            }
+            if (Ring.Intensity.Length != imageWidth * imageHeight)//前回と同じサイズではないとき
+                Ring.Intensity = new double[imageWidth * imageHeight];
+            for (int i = 0; i < imageHeight * imageWidth; i++)
+                Ring.Intensity[i] = Ring.SequentialImageIntensities[0][i];
 
             br.Close();
 
@@ -1005,17 +971,17 @@ public static class ImageIO
             br.BaseStream.Position = 512;
             int length = imageWidth * imageHeight;
 
-            Ring.Intensity.Clear();
+            Ring.Intensity=new double[length];
             if (data_length == 0)
                 for (int i = 0; i < length; i++)
-                    Ring.Intensity.Add(br.ReadUInt16());
+                    Ring.Intensity[i]=br.ReadUInt16();
             else
                 for (int i = 0; i < length; i++)
                 {
                     var val = br.ReadUInt32();
                     if (val > uint.MaxValue / 2)
                         val = 0;
-                    Ring.Intensity.Add(val);
+                    Ring.Intensity[i] = val;
                 }
 
 
@@ -1079,18 +1045,17 @@ public static class ImageIO
             int n = 0;
             while (readHeader() && n < 10000)
             {
-                Ring.SequentialImageIntensities.Add([]);
+                Ring.SequentialImageIntensities.Add(new double[length]);
                 for (int i = 0; i < length; i++)
-                    Ring.SequentialImageIntensities[n].Add(readData());
+                    Ring.SequentialImageIntensities[n][i] = readData();
                 Ring.SequentialImageNames.Add(n.ToString("0000"));
                 n++;
                 //100GBを超えたら読み込み終了
-                if (Ring.SequentialImageIntensities.Count * (long)Ring.SequentialImageIntensities[0].Count * 8 > 100000000000)
+                if (Ring.SequentialImageIntensities.Count * (long)Ring.SequentialImageIntensities[0].Length * 8 > 100000000000)
                     break;
             }
 
-            Ring.Intensity.Clear();
-            Ring.Intensity.AddRange(Ring.SequentialImageIntensities[0]);
+            Ring.Intensity = [.. Ring.SequentialImageIntensities[0]];
             Ring.ImageType = Ring.ImageTypeEnum.ITEX;
 
             br.Close();
@@ -1147,22 +1112,12 @@ public static class ImageIO
             //イメージデータ読みこみ
             int length = imageWidth * imageHeight;
 
-            if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-            {
-                Ring.Intensity.Clear();
-
-                for (int y = 0; y < imageHeight; y++)
-                    for (int x = 0; x < imageWidth; x++)
-
-                        Ring.Intensity.Add((uint)(br.ReadByte() + br.ReadByte() * 256));
-            }
-            else
-            {
-                int n = 0;
-                for (int y = 0; y < imageHeight; y++)
-                    for (int x = 0; x < imageWidth; x++)
-                        Ring.Intensity[n++] = ((uint)(br.ReadByte() + br.ReadByte() * 256));
-            }
+            if (Ring.Intensity.Length != length)//前回と同じサイズではないとき
+                Ring.Intensity = new double[length];
+            int n = 0;
+            for (int y = 0; y < imageHeight; y++)
+                for (int x = 0; x < imageWidth; x++)
+                    Ring.Intensity[n++] = ((uint)(br.ReadByte() + br.ReadByte() * 256));
 
             Ring.BitsPerPixels = 16;
             Ring.ImageType = Ring.ImageTypeEnum.ADSC;
@@ -1234,20 +1189,12 @@ public static class ImageIO
 
             SetBytePosition(str, ref br, num_x_pixs * 2);
 
-            if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-            {
-                Ring.Intensity.Clear();
-                for (int y = 0; y < num_y_pixs; y++)
-                    for (int x = 0; x < num_x_pixs; x++)
-                        Ring.Intensity.Add(convertTable[(ushort)(256 * br.ReadByte() + br.ReadByte())]);
-            }
-            else
-            {
-                int n = 0;
-                for (int y = 0; y < num_y_pixs; y++)
-                    for (int x = 0; x < num_x_pixs; x++)
-                        Ring.Intensity[n++] = convertTable[(ushort)(256 * br.ReadByte() + br.ReadByte())];
-            }
+            if (Ring.Intensity.Length != length)//前回と同じサイズではないとき
+                Ring.Intensity = new double[length];
+            int n = 0;
+            for (int y = 0; y < num_y_pixs; y++)
+                for (int x = 0; x < num_x_pixs; x++)
+                    Ring.Intensity[n++] = convertTable[(ushort)(256 * br.ReadByte() + br.ReadByte())];
             //画像を上下反転させるための処理
             for (int y = 0; y < num_y_pixs / 2; y++)
                 for (int x = 0; x < num_x_pixs; x++)
@@ -1266,6 +1213,61 @@ public static class ImageIO
                 Ring.ImageType = Ring.ImageTypeEnum.Rigaku_RAxis_IV;
 
             br.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+            return false;
+        }
+        return true;
+    }
+
+    #endregion
+
+    #region Unrolled image from Rigaku RINT-RAPID II
+    public static bool RintRapid2Unroll(string str, uint[] convertTable = null)
+    {
+        try
+        {
+            var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
+
+            //ヘッダ部分読み込み
+            Ring.Comments = "";
+            br.BaseStream.Position = 0; // 初期位置にセット
+            string headerText = new(br.ReadChars(17408)); // HEADER_BYTES 分読み取る
+                                                                 // 正規表現で検索
+            Match matchMemo = Regex.Match(headerText, @"MEMO=([^;]+);"); // Device
+            Ring.Comments += "\r\n" + matchMemo.Groups[1].Value;
+            Match matchVersion = Regex.Match(headerText, @"DTREK_VERSION=([^;]+);"); // Version
+            Ring.Comments += "\r\n" + matchVersion.Groups[1].Value;
+            Match matchSample = Regex.Match(headerText, @"SAMPLE_NAME=([^;]+);"); // Sample
+            Ring.Comments += "\r\n" + matchSample.Groups[1].Value;
+            Match matchDate = Regex.Match(headerText, @"RX_CREATE_DATE=([^;]+);"); // Date
+            Ring.Comments += "\r\n" + matchDate.Groups[1].Value;
+            Match matchOperator = Regex.Match(headerText, @"OPERATOR_NAME=([^;]+);"); // Operator
+            Ring.Comments += "\r\n" + matchOperator.Groups[1].Value;
+            Match matchTarget = Regex.Match(headerText, @"SOURCE_TARGET=([^;]+);"); // Target
+            Ring.Comments += "\r\n" + matchTarget.Groups[1].Value;
+
+            Match matchSize1 = Regex.Match(headerText, @"SIZE1=(\d+);");
+            Match matchSize2 = Regex.Match(headerText, @"SIZE2=(\d+);");
+
+            int num_x_pixs = int.Parse(matchSize1.Groups[1].Value); // Number of pixel X
+            int num_y_pixs = int.Parse(matchSize2.Groups[1].Value); // Number of pixel Y
+            Ring.SrcImgSize = new Size(num_x_pixs, num_y_pixs);
+            
+            convertTable = new uint[65536];
+            for (uint i = 0; i < 65536; i++)
+                convertTable[i] = i;
+
+            //イメージデータ読みこみ
+            br.BaseStream.Position = 17408; // HEADER_BYTES 分読み取った後の位置にセット
+            int length = num_x_pixs * num_y_pixs;
+
+            // ヘッダ部分にData_type = unsigned short int;と書かれていた。
+            for (int i = 0; i < length; i++)
+                Ring.Intensity[i] = convertTable[br.ReadUInt16()]; 
+
         }
         catch (Exception e)
         {
@@ -1338,14 +1340,14 @@ public static class ImageIO
                 convertTable[i] = i;
 
             int length = ncols * nrows;
-            Ring.Intensity.Clear();
+            Ring.Intensity = new double[length];
             //イメージデータ読みこみ
             if (npixelb == 1)
                 for (int i = 0; i < length; i++)
-                    Ring.Intensity.Add(convertTable[br.ReadByte()]);
+                    Ring.Intensity[i] = convertTable[br.ReadByte()];
             else if (npixelb == 2)
                 for (int i = 0; i < length; i++)
-                    Ring.Intensity.Add(convertTable[(ushort)(br.ReadByte() + 256 * br.ReadByte())]);
+                    Ring.Intensity[i] = convertTable[(ushort)(br.ReadByte() + 256 * br.ReadByte())];
             else
             {
                 br.Close();
@@ -1373,7 +1375,7 @@ public static class ImageIO
         {
             var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.ReadWrite));
             Ring.SrcImgSize = new Size(8000, 4000);
-            Ring.Intensity.Clear();
+            Ring.Intensity = new double[Ring.SrcImgSize.Width * Ring.SrcImgSize.Height];
 
             uint[] convertTable = new uint[65536];
             for (uint i = 0; i < 65536; i++)
@@ -1385,7 +1387,7 @@ public static class ImageIO
             }
             //イメージデータ読みこみ
             for (int i = 0; i < Ring.SrcImgSize.Width * Ring.SrcImgSize.Height; i++)
-                Ring.Intensity.Add(convertTable[(ushort)(256 * br.ReadByte() + br.ReadByte())]);
+                Ring.Intensity[i] = convertTable[(ushort)(256 * br.ReadByte() + br.ReadByte())];
 
             Ring.BitsPerPixels = 16;
 
@@ -1424,10 +1426,11 @@ public static class ImageIO
 
             //イメージデータ読みこみ
             Byte[] src = BitmapConverter.ToByteGray((Bitmap)bitmap);
-            Ring.Intensity.Clear();
+            Ring.Intensity = new double[bitmap.Width * bitmap.Height];
+            int n = 0;
             for (int h = bitmap.Height - 1; h >= 0; h--)
                 for (int w = 0; w < bitmap.Width; w++)
-                    Ring.Intensity.Add(src[bitmap.Width * h + w]);
+                    Ring.Intensity[n++] = src[bitmap.Width * h + w];
 
             Ring.ImageType = Ring.ImageTypeEnum.Unknown;
         }
@@ -1513,15 +1516,15 @@ public static class ImageIO
                 else
                     convertTable[i] = Math.Pow(10, Math.Pow(2, bitsPerPixel) * x) - 1;
 
-            Ring.Intensity.Clear();
+            Ring.Intensity = new double[length];
 
             if (bitsPerPixel > 8)
                 for (int i = 0; i < length; i++)
-                    Ring.Intensity.Add(convertTable[(ushort)(256 * br.ReadByte() + br.ReadByte())]);
+                    Ring.Intensity[i] = convertTable[(ushort)(256 * br.ReadByte() + br.ReadByte())];
             //  Ring.Intensity.Add((uint)(256 * br.ReadByte() + br.ReadByte())) ;
             else
                 for (int i = 0; i < length; i++)
-                    Ring.Intensity.Add(convertTable[(ushort)(br.ReadByte())]);
+                    Ring.Intensity[i] = convertTable[br.ReadByte()];
             //Ring.Scale = 1 *maxValue / uint.MaxValue;
 
             br.Close();
@@ -1547,7 +1550,7 @@ public static class ImageIO
         try
         {
             //FujiFDL
-            var reader = new StreamReader(str.Remove(str.Length - 3, 3) + "tem");
+            var reader = new StreamReader(str[..^3] + "tem");
             var strList = new List<string>();
             string tempstr;
             while ((tempstr = reader.ReadLine()) != null)
@@ -1566,16 +1569,13 @@ public static class ImageIO
 
             var convertTable = new uint[65536];
 
-            bool renew = Ring.Intensity.Count != length;//前回と同じサイズではないとき
+            bool renew = Ring.Intensity.Length != length;//前回と同じサイズではないとき
             int n = 0;
             if (renew)
-                Ring.Intensity.Clear();
+                Ring.Intensity = new double[length];
             for (int y = 0; y < numPixelX; y++)
                 for (int x = 0; x < numPixelY; x++)
-                    if (renew)
-                        Ring.Intensity.Add((ushort)(256 * br.ReadByte() + br.ReadByte()));
-                    else
-                        Ring.Intensity[n++] = (ushort)(256 * br.ReadByte() + br.ReadByte());
+                    Ring.Intensity[n++] = (ushort)(256 * br.ReadByte() + br.ReadByte());
 
             br.Close();
 
@@ -1604,12 +1604,12 @@ public static class ImageIO
             {
                 t.IsGray = true;
                 for (int j = 0; j < t.NumberOfFrames; j++)
-                    t.Images[j].Value = t.Images[j].ValueRed.Select(intValue => (double)intValue).ToArray();
+                    t.Images[j].Value = [.. t.Images[j].ValueRed.Select(intValue => (double)intValue)];
             }
             Ring.Comments = "";
             Ring.SrcImgSize = new Size(t.ImageWidth, t.ImageLength);
 
-            Ring.SequentialImageIntensities = new List<List<double>>(t.NumberOfFrames);
+            Ring.SequentialImageIntensities = new List<double[]>(t.NumberOfFrames);
             Ring.SequentialImageEnergy = new List<double>(t.NumberOfFrames);
             Ring.SequentialImageNames = new List<string>(t.NumberOfFrames);
             Ring.SequentialImagePulsePower = new List<double>(t.NumberOfFrames);
@@ -1618,7 +1618,7 @@ public static class ImageIO
             {
                 Ring.SequentialImageIntensities.Add([]);
                 if (t.Images[j].Value != null)
-                    Ring.SequentialImageIntensities[j].AddRange(t.Images[j].Value);
+                    Ring.SequentialImageIntensities[j] = [.. t.Images[j].Value];
 
                 //hdfファイルに埋め込まれた情報の処理
                 if (!double.IsNaN(t.Images[j].XrayEnergy))
@@ -1639,12 +1639,11 @@ public static class ImageIO
             for (int j = 0; j < t.NumberOfFrames; j++)
             {
                 if (normarize == true && Ring.SequentialImagePulsePower[j] > 0)
-                    Ring.SequentialImageIntensities[j] = Ring.SequentialImageIntensities[j].Select(d => d / Ring.SequentialImagePulsePower[j] / 10000).ToList();
+                    Ring.SequentialImageIntensities[j] = [.. Ring.SequentialImageIntensities[j].Select(d => d / Ring.SequentialImagePulsePower[j] / 10000)];
             }
             Ring.PulsePowerNormarized = normarize == true;
 
-            Ring.Intensity.Clear();
-            Ring.Intensity.AddRange(Ring.SequentialImageIntensities[0]);
+            Ring.Intensity = [.. Ring.SequentialImageIntensities[0]];
 
             //Ring.BitsPerPixels = t.BitsPerSampleGray;
             Ring.ImageType = Ring.ImageTypeEnum.Tiff;
@@ -1695,31 +1694,19 @@ public static class ImageIO
             Ring.SrcImgSize = new Size(ipa.Width, ipa.Height);
             //イメージデータ読みこみ
             int length = ipa.Version == 0.0 ? ipa.Intensity.Length : ipa.IntensityDouble.Length;
-            int i = 0;
-            if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-            {
-                Ring.Intensity.Clear();
-                for (int y = 0; y < ipa.Height; y++)
+            
+            if (Ring.Intensity.Length != length)//前回と同じサイズではないとき
+                Ring.Intensity = new double[length];
 
-                    for (int x = 0; x < ipa.Width; x++)
-                    {
-                        if (ipa.Version == 0.0)
-                            Ring.Intensity.Add(ipa.Intensity[i++] * ipa.Scale);
-                        else
-                            Ring.Intensity.Add(ipa.IntensityDouble[i++]);
-                    }
-            }
-            else
-            {
-                for (int y = 0; y < ipa.Height; y++)
-                    for (int x = 0; x < ipa.Width; x++)
-                    {
-                        if (ipa.Version == 0.0)
-                            Ring.Intensity[i] = ipa.Intensity[i++] * ipa.Scale;
-                        else
-                            Ring.Intensity[i] = ipa.IntensityDouble[i++];
-                    }
-            }
+            int i = 0;
+            for (int y = 0; y < ipa.Height; y++)
+                for (int x = 0; x < ipa.Width; x++)
+                {
+                    if (ipa.Version == 0.0)
+                        Ring.Intensity[i] = ipa.Intensity[i++] * ipa.Scale;
+                    else
+                        Ring.Intensity[i] = ipa.IntensityDouble[i++];
+                }
 
             Ring.ImageType = Ring.ImageTypeEnum.IPAImage;
             Ring.BitsPerPixels = 16;

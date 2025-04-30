@@ -71,7 +71,7 @@ public class Plane : IComparable
     public override string ToString()
     {
         //return str.ToString();
-        string s = (strHKL + "                            ").Remove(13);//空白を挿入してから10文字目以降をカット
+        string s = (strHKL + "                            ")[..13];//空白を挿入してから10文字目以降をカット
         if (double.IsNaN(XCalc) || XCalc == 0)
             s += " " + "##.####";
         else

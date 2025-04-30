@@ -372,7 +372,7 @@
             crystalControl.B = 0D;
             crystalControl.Beta = 0D;
             crystalControl.C = 0D;
-            crystalControl.ColorControlVisible = true;
+            crystalControl.ColorControlVisible = false;
             crystalControl.DefaultTabNumber = 0;
             crystalControl.Gamma = 0D;
             crystalControl.Name = "crystalControl";

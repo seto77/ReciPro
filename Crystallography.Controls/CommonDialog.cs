@@ -90,7 +90,7 @@ namespace Crystallography.Controls
                 versionAndDate = value;
                 labelSoftwareAndVersion.Text = software + "  " + versionAndDate;
 
-                var year = versionAndDate.Split(new[] { '/', '(' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                var year = versionAndDate.Split(['/', '('], StringSplitOptions.RemoveEmptyEntries)[1];
                 labelCopyRight.Text = "Copyright(C) 2005-" + year;
             }
         }

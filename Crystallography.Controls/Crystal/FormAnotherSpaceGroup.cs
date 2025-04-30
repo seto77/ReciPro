@@ -76,7 +76,7 @@ public partial class FormAnotherSpaceGroup : Form
 
         while (txt.Length > 0)
         {
-            if (txt.StartsWith(" ", StringComparison.Ordinal))
+            if (txt.StartsWith(' '))
                 xPos += 0;
             else if (txt.StartsWith("sub", StringComparison.Ordinal))//subで始まる時は
             {
@@ -85,7 +85,7 @@ public partial class FormAnotherSpaceGroup : Form
                 e.Graphics.DrawString(txt[0].ToString(), fontSub, b, xPos, e.Bounds.Y + 3);
                 xPos += e.Graphics.MeasureString(txt[0].ToString(), fontSub).Width - 2;
             }
-            else if (txt.StartsWith("-", StringComparison.Ordinal))//-で始まる時は
+            else if (txt.StartsWith('-'))//-で始まる時は
             {
                 float x = e.Graphics.MeasureString(txt[1].ToString(), fontRegular).Width;
                 e.Graphics.DrawLine(new Pen(b, 1), new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1));

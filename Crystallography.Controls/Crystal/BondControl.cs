@@ -21,7 +21,7 @@ public partial class BondInputControl : UserControl
 
             if (crystal != null)
             {
-                ElementList = crystal.Atoms.Select(a => a.ElementName).Distinct().ToArray();
+                ElementList = [.. crystal.Atoms.Select(a => a.ElementName).Distinct()];
                 if (ElementList != null && ElementList.Length != 0)
                 {
                     comboBoxBondingAtom1.Items.Clear();

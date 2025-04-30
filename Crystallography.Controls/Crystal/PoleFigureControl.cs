@@ -400,9 +400,9 @@ public partial class PoleFigureControl : UserControl
         return pixels;
     }
 
-    private IEnumerable<Vector3DBase> divideVector(Vector3DBase baseVec, Symmetry sym)
+    private static Vector3DBase[] divideVector(Vector3DBase baseVec, Symmetry sym)
     {
-        List<Vector3DBase> vec = new List<Vector3DBase>();
+        List<Vector3DBase> vec = [];
         double x = baseVec.X, y = baseVec.Y, z = baseVec.Z;
         double sqrt3 = Math.Sqrt(3);
         switch (sym.LaueGroupNumber)
@@ -672,7 +672,7 @@ public partial class PoleFigureControl : UserControl
                 vec.Add(new Vector3DBase(-x, +z, +y));
                 break;
         }
-        return vec;
+        return vec.ToArray();
     }
 
     private void numericUpDown1_ValueChanged(object sender, EventArgs e)

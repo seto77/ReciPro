@@ -1071,8 +1071,21 @@ public partial class FormMain : Form
         Application.DoEvents();
     }
 
+    [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
+    public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
-    private void ButtonAdd_Click(object sender, EventArgs e) => AddCrystal();
+    [DllImport("USER32.DLL")]
+    public static extern bool SetForegroundWindow(IntPtr hWnd);
+    private void ButtonAdd_Click(object sender, EventArgs e)
+    {
+
+        IntPtr calcWindow = FindWindow(null, "Power Automate");
+
+        if (SetForegroundWindow(calcWindow))
+            SendKeys.Send("{ENTER}");
+
+        AddCrystal();
+    }
 
     public void AddCrystal()
     {

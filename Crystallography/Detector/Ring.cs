@@ -230,17 +230,17 @@ public static class Ring
     public static Size SrcImgSize;
 
     public static double[] R2;
-    public static List<double> Intensity = [];
-    public static List<double> IntensityOriginal = [];
+    public static double[] Intensity = [];
+    public static double[] IntensityOriginal = [];
     public static Size SrcImgSizeOriginal;
 
     //バックグラウンド演算で使用
-    public static List<double> Background = [];
+    public static double[] Background = [];
 
     public static double BackgroundCoeff = 1;
 
     //SequentialImage(*.his,*.h5)で利用する変数
-    public static List<List<double>> SequentialImageIntensities = [];
+    public static List<double[]> SequentialImageIntensities = [];
 
     public static List<string> SequentialImageNames = [];
 
@@ -249,31 +249,31 @@ public static class Ring
 
     public static List<double> SequentialImagePulsePower = [];
     public static bool PulsePowerNormarized = false;
-    public static List<List<double>> SequentialImageEnergySpectrum = [];
+    public static List<double[]> SequentialImageEnergySpectrum = [];
 
     public static SortedList<uint, int> Frequency = [];
 
     public static ImageTypeEnum ImageType = ImageTypeEnum.Unknown;
 
-    public static List<bool> IsValid = [];//有効な(マスクされていない点かどうか)
+    public static bool[] IsValid = [];//有効な(マスクされていない点かどうか)
 
-    public static List<bool> IsSpots = [];//スポット状の点かどうか
+    public static bool[] IsSpots = [];//スポット状の点かどうか
 
-    public static List<bool> IsThresholdOver = [];
+    public static bool[] IsThresholdOver = [];
 
-    public static List<bool> IsThresholdUnder = [];//飽和しているかどうか
+    public static bool[] IsThresholdUnder = [];//飽和しているかどうか
 
 
     /// <summary>
     /// 指定された積分領域(矩形、セクター)の範囲外の場合はtrue
     /// </summary>
-    public static List<bool> IsOutsideOfIntegralRegion = [];//積分エリアの外(或いは選択領域の外)
+    public static bool[] IsOutsideOfIntegralRegion = [];//積分エリアの外(或いは選択領域の外)
 
 
     /// <summary>
     /// 指定された積分対象角度の範囲外の場合はtrue
     /// </summary>
-    public static List<bool> IsOutsideOfIntegralProperty = [];//エリアの外(或いは選択領域の外)
+    public static bool[] IsOutsideOfIntegralProperty = [];//エリアの外(或いは選択領域の外)
                                                               //public static ParallelQuery<bool> IsOutsideOfIntegralPropertyP;
 
 
@@ -335,15 +335,15 @@ public static class Ring
     //Frequencyを計算
     public static void CalcFreq()
     {
-        if (Intensity == null || Intensity.Count == 0) return;
+        if (Intensity == null || Intensity.Length == 0) return;
         Frequency.Clear();
         double unit = 1.2;
         var thread = Environment.ProcessorCount;
 
         Parallel.For(0, thread, i =>
         {
-            int start = Intensity.Count / thread * i;
-            int end = Math.Min(Intensity.Count / thread * (i + 1), Intensity.Count);
+            int start = Intensity.Length / thread * i;
+            int end = Math.Min(Intensity.Length / thread * (i + 1), Intensity.Length);
             var freq = new SortedList<uint, int>();
             for (int j = start; j < end; j++)
             {
@@ -556,7 +556,7 @@ public static class Ring
     /// <param name="flipH"></param>
     /// <param name="rotate"></param>
     /// <returns></returns>
-    public static List<double> FlipAndRotate(IEnumerable<double> src, int width, bool flipV, bool flipH, int rotate)
+    public static double[] FlipAndRotate(IEnumerable<double> src, int width, bool flipV, bool flipH, int rotate)
     {
         var srcArray = src.ToArray();
         int height = srcArray.Length / width;
@@ -583,14 +583,14 @@ public static class Ring
                 for (int w = 0; w < width; w++)
                     result[convertIndexRotate(convertIndexFlip(w, h))] = srcArray[h * width + w];
         else
-            result = src.ToArray();
+            result = [.. src];
 
-        return new List<double>(result);
+        return result;
     }
     #endregion
 
     #region 偏光補正
-    public static List<double> CorrectPolarization(int rotate, List<double> intensity = null)
+    public static double[] CorrectPolarization(int rotate, double[] intensity = null)
     {
         intensity ??= Intensity;
 
@@ -618,7 +618,7 @@ public static class Ring
 
         //var coeff2 = new Func<double, double, double>((x2, y2) => Math.Sqrt( fd2 / (x2 + y2 + fd2)));
 
-        var result = new double[intensity.Count];
+        var result = new double[intensity.Length];
         //Parallel.Forを使わないほうが早い
         int i = 0;
         for (int pixY = 0; pixY < SrcImgSize.Height; pixY++)
@@ -639,7 +639,7 @@ public static class Ring
                 i++;
             }
         }
-        return new List<double>(result);
+        return result;
     }
     #endregion
 
@@ -656,35 +656,34 @@ public static class Ring
     /// <param name="OmitTheresholdMax"></param>
     public static void SetMask(bool OmitSpots, bool OmitTheresholdMin, bool OmitTheresholdMax)
     {
-        if (IsValid.Count != IsOutsideOfIntegralRegion.Count)
+        if (IsValid.Length != IsOutsideOfIntegralRegion.Length)
             return;
 
-        if (tempArray.Length != IsValid.Count)
-            tempArray = Enumerable.Repeat(true, IsOutsideOfIntegralRegion.Count).ToArray();
+        if (tempArray.Length != IsValid.Length)
+            tempArray = [.. Enumerable.Repeat(true, IsOutsideOfIntegralRegion.Length)];
 
-        IsValid.Clear();
-        IsValid.AddRange(tempArray);
+        IsValid=tempArray;
 
         if (OmitSpots)
         {
-            for (int i = 0; i < IsOutsideOfIntegralRegion.Count; i++)
+            for (int i = 0; i < IsOutsideOfIntegralRegion.Length; i++)
                 if (IsOutsideOfIntegralRegion[i] || IsOutsideOfIntegralProperty[i] || IsSpots[i])
                     IsValid[i] = false;
         }
         else
         {
-            for (int i = 0; i < IsOutsideOfIntegralRegion.Count; i++)
+            for (int i = 0; i < IsOutsideOfIntegralRegion.Length; i++)
                 if (IsOutsideOfIntegralRegion[i] || IsOutsideOfIntegralProperty[i])
                     IsValid[i] = false;
         }
 
         if (OmitTheresholdMin)
-            for (int i = 0; i < IsOutsideOfIntegralRegion.Count; i++)
+            for (int i = 0; i < IsOutsideOfIntegralRegion.Length; i++)
                 if (IsThresholdUnder[i])
                     IsValid[i] = false;
 
         if (OmitTheresholdMax)
-            for (int i = 0; i < IsOutsideOfIntegralRegion.Count; i++)
+            for (int i = 0; i < IsOutsideOfIntegralRegion.Length; i++)
                 if (IsThresholdOver[i])
                     IsValid[i] = false;
     }
@@ -707,12 +706,12 @@ public static class Ring
         var thread = Environment.ProcessorCount;
         if (calcRegion)
         {
-            IsOutsideOfIntegralRegion.Clear();
+            //IsOutsideOfIntegralRegion.Clear();
             if (IP.IsRectangle && IP.IsFull)
-                IsOutsideOfIntegralRegion.AddRange(new bool[IP.SrcWidth * IP.SrcHeight]);
+                IsOutsideOfIntegralRegion=new bool[IP.SrcWidth * IP.SrcHeight];
             else
             {
-                IsOutsideOfIntegralRegion.AddRange(Enumerable.Repeat(true, IP.SrcWidth * IP.SrcHeight));
+                IsOutsideOfIntegralRegion=Enumerable.Repeat(true, IP.SrcWidth * IP.SrcHeight).ToArray();
 
                 int Height = IP.SrcHeight;
                 int Width = IP.SrcWidth;
@@ -935,8 +934,7 @@ public static class Ring
         if (calcProperty)
         #region 積分角度範囲を除去するとき
         {
-            IsOutsideOfIntegralProperty.Clear();
-            IsOutsideOfIntegralProperty.AddRange(new bool[IP.SrcWidth * IP.SrcHeight]);
+            IsOutsideOfIntegralProperty=new bool[IP.SrcWidth * IP.SrcHeight];
 
             //フラットパネルカメラの場合
             if (IP.Camera == IntegralProperty.CameraEnum.FlatPanel)
@@ -1097,7 +1095,7 @@ public static class Ring
     /// <param name="angle"></param>
     public static void CircumferentialBlur(double theta)
     {
-        double[] pixels = new double[Intensity.Count];
+        double[] pixels = new double[Intensity.Length];
         for (int i = 0; i < pixels.Length; i++)
             pixels[i] = 0;
 
@@ -1760,7 +1758,7 @@ public static class Ring
 
         //積分領域全体のx上限,x下限, y上限、y下限を決める
         int xMin = int.MaxValue, yMin = int.MaxValue, xMax = int.MinValue, yMax = int.MinValue;
-        for (int i = 0; i < IsValid.Count; i++)
+        for (int i = 0; i < IsValid.Length; i++)
             if (IsValid[i])
             {
                 xMin = Math.Min(i % IP.SrcWidth, xMin);
@@ -2857,7 +2855,7 @@ public static class Ring
     #endregion
 
     #region FindCenter
-    public static PointD FindCenter(IntegralProperty iP, int radius, List<bool> mask)
+    public static PointD FindCenter(IntegralProperty iP, int radius, bool[] mask)
     {
         if (iP.CenterY < radius + 2 || iP.CenterY > iP.SrcHeight - radius - 2 || iP.CenterX < radius + 2 || iP.CenterX > iP.SrcWidth - radius - 2)
             return new PointD(iP.CenterX, iP.CenterY);
@@ -2900,13 +2898,13 @@ public static class Ring
         //積分領域全体のy上限、y下限を決める
         int YMin, YMax;
         YMin = YMax = 0;
-        for (i = 0; i < IsValid.Count; i++)
+        for (i = 0; i < IsValid.Length; i++)
             if (IsValid[i])
             {//マスクされていないポイントが見つかったら
                 YMin = i / w;
                 break;
             }
-        for (i = IsValid.Count - 1; i > -1; i--)
+        for (i = IsValid.Length - 1; i > -1; i--)
             if (IsValid[i])
             {//マスクされていないポイントが見つかったら
                 YMax = i / w + 1;
@@ -3028,15 +3026,15 @@ public static class Ring
     #endregion
 
     #region バッググラウンド減算
-    public static List<double> SubtractBackground(IEnumerable<double> src,
+    public static double[] SubtractBackground(IEnumerable<double> src,
     IEnumerable<double> bg, double coeff = 1)
     {
         if (src.Count() != bg.Count())
-            return new List<double>(src);
+            return [..src];
         else
         {
             var bgArray = bg.ToArray();
-            return src.ToArray().Select((s, i) => s - bgArray[i] * coeff).ToList();
+            return [.. src.Select((s, i) => s - bgArray[i] * coeff)];
         }
     }
     #endregion

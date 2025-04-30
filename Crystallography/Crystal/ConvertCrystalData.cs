@@ -182,8 +182,10 @@ public class ConvertCrystalData
                 if (str[line].StartsWith("No =", Ord))
                 {
                     var tempCrystal = new Crystal((a, b, c, alpha, beta, gamma), null, spaceGroupSeriesNum,
-                        ChemicalFormula.Split('=', true)[1].Trim() + "-" + (n++).ToString(), Color.Blue);
-                    tempCrystal.Note = wavelength + "  " + ChemicalFormula + "\r\n" + str[line];
+                        ChemicalFormula.Split('=', true)[1].Trim() + "-" + (n++).ToString(), Color.Blue)
+                    {
+                        Note = $"{wavelength}  {ChemicalFormula}\r\n{str[line]}"
+                    };
                     line++;
                     for (; line < str.Length; line++)
                     {
@@ -943,9 +945,9 @@ public class ConvertCrystalData
         {
             if (str[n].Contains("''"))//''‚Æ‚¢‚¤•¶Žš—ñ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚½‚ç
             {
-                var temp = str[n].Remove(0, str[n].IndexOf("'"));
+                var temp = str[n][str[n].IndexOf("'")..];
                 temp = temp.Replace("''", "åK");
-                str[n] = str[n].Remove(str[n].IndexOf("'")) + temp;
+                str[n] = $"{str[n][..str[n].IndexOf("'")]}{temp}";
             }
 
             if (str[n].Contains('\''))//'‚ªŠÜ‚Ü‚ê‚Ä‚¢‚½‚ç
@@ -1407,13 +1409,13 @@ public class ConvertCrystalData
         SgNameHM = SgNameHM.TrimStart(' ').TrimEnd(' ');
 
         if (SgNameHM.EndsWith("RS", Ord) || SgNameHM.EndsWith("HR", Ord))
-            SgNameHM = SgNameHM.Remove(SgNameHM.Length - 2, 2).TrimEnd(' ');
+            SgNameHM = SgNameHM[..^2].TrimEnd(' ');
 
         if (SgNameHM.EndsWith("H", Ord) || SgNameHM.EndsWith("h", Ord) || SgNameHM.EndsWith("R", Ord) || SgNameHM.EndsWith("r", Ord))
-            SgNameHM = SgNameHM.Remove(SgNameHM.Length - 1, 1).TrimEnd(' ');
+            SgNameHM = SgNameHM[..^1].TrimEnd(' ');
 
         if (SgNameHM.EndsWith(":", Ord))
-            SgNameHM = SgNameHM.Remove(SgNameHM.Length - 1, 1).TrimEnd(' ');
+            SgNameHM = SgNameHM[..^1].TrimEnd(' ');
 
         bool IsOrigineChoice2 = false;
         if (SgNameHM.EndsWith("Z", Ord))//ÅŒã‚ÉZ‚ª‚Â‚¢‚Ä‚¢‚½‚çOriginChoice2
@@ -1462,7 +1464,7 @@ public class ConvertCrystalData
         SgNameHM = SgNameHM.Replace("~", "");
 
         //ˆê•¶Žš–ÚˆÈ~‚Ì‰pŽš‚Í‘S‚Ä¬•¶Žš‚É
-        SgNameHM = SgNameHM[0] + SgNameHM.Remove(0, 1).ToLower();
+        SgNameHM = SgNameHM[0] + SgNameHM[1..].ToLower();
 
         SgNameHM = SgNameHM.Replace("P(-1)", "P-1");
 

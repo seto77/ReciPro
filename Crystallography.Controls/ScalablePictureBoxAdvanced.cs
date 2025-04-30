@@ -455,7 +455,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
         if (lower < min || lower < min || lower > upper)
             lower = min;
 
-        graphControl.VerticalLines = new[] { new PointD(lower, double.NaN), new PointD(upper, double.NaN) };
+        graphControl.VerticalLines = [new PointD(lower, double.NaN), new PointD(upper, double.NaN)];
 
         //書き換えの干渉が起こっているようなので、同じのを繰り返す
         MaximumIntensity = max;

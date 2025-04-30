@@ -170,7 +170,7 @@ namespace Crystallography
         static Bonds()
         {
             var anionNum = new List<int> { 8, 9, 16, 17, 34, 35, 52, 53 };
-            VestaAnions = anionNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}").ToList();
+            VestaAnions = [.. anionNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}")];
 
             var cationNum = new List<int>();
             cationNum.AddRange(Enumerable.Range(3, 5));
@@ -178,14 +178,14 @@ namespace Crystallography
             cationNum.AddRange(Enumerable.Range(19, 15));
             cationNum.AddRange(Enumerable.Range(37, 15));
             cationNum.AddRange(Enumerable.Range(55, 20));
-            VestaCations = cationNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}").ToList();
+            VestaCations = [.. cationNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}")];
         }
 
         public static List<string> VestaCations { get; }
         public static List<string> VestaAnions { get; }
 
-        private static (string e1, string e2, double min, double max)[] bondCandidates = new[]
-        {
+        private static readonly (string e1, string e2, double min, double max)[] bondCandidates =
+        [
 			#region VestaのStyles.iniからコピーした内容。原子の結合の情報。
 		
 ("Ac","O",0,2.7326),
@@ -1104,7 +1104,7 @@ namespace Crystallography
 ("Zr","H",0,2.29004),
 
 	#endregion
-		};
+		];
         #endregion
 
     }

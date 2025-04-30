@@ -159,7 +159,7 @@ public partial class CrystalDatabaseControl : UserControl
                 {
                     var fileNum = readInt(fs);
                     var fileNames = Enumerable.Range(0, fileNum).Select(i =>
-                            $"{filename.Remove(filename.Length - 5, 5)}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").ToList();
+                            $"{filename[..^5]}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").ToList();
 
                     fileNames.ForEach(fn =>
                     {
@@ -229,7 +229,7 @@ public partial class CrystalDatabaseControl : UserControl
         writeInt(fs, total);//データの個数を書き込む
 
         var fileCounter = 0;
-        var subDir = fn.Remove(fn.Length - 5, 5) + "\\";
+        var subDir = fn[..^5] + "\\";
         var header = $"{subDir}{Path.GetFileNameWithoutExtension(fn)}.";
         var fileSize = new List<long>();
         var byteList = new List<byte>();
@@ -262,7 +262,7 @@ public partial class CrystalDatabaseControl : UserControl
             else if (i == bytes.Length - 1 || byteList.Count > thresholdBytes)
             {
                 if (fileCounter == 0)
-                    Directory.CreateDirectory(fn.Remove(fn.Length - 5, 5));
+                    Directory.CreateDirectory(fn[..^5]);
                 using (var fs1 = new FileStream(header + fileCounter.ToString("000"), FileMode.Create, FileAccess.Write))
                     fs1.Write([.. byteList], 0, byteList.Count);
                 fileSize.Add(byteList.Count);

@@ -7335,7 +7335,7 @@ new(4.86738014,0.319974401,4.58872425,
         for (int j = AtomStaticSub.MassAbsorptionCoefficient[z].Length - 1; j >= 0 && segNo == 0; j--)//上位から順に探す
             if (energy >= AtomStaticSub.MassAbsorptionCoefficient[z][j][0].X)
                 segNo = j;
-        PointD[] coef = AtomStaticSub.MassAbsorptionCoefficient[z][segNo].Select(e => new PointD(e)).ToArray();
+        PointD[] coef = [.. AtomStaticSub.MassAbsorptionCoefficient[z][segNo].Select(e => new PointD(e))];
 
         //点の位置を探す
         int position = int.MinValue;//この値と この値+1 の間のindexにxが存在する
