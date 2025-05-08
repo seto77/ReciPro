@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.Windows.Forms.AxHost;
 
 namespace Crystallography;
 
@@ -546,7 +548,6 @@ public static class Ring
     #endregion
 
     #region 画像の回転・反転
-
     /// <summary>
     /// 画像を、反転、回転させる. rotateは0: 無回転、1:90度回転, 2: 180度回転、 3: 270度回転
     /// </summary>
@@ -556,36 +557,38 @@ public static class Ring
     /// <param name="flipH"></param>
     /// <param name="rotate"></param>
     /// <returns></returns>
-    public static double[] FlipAndRotate(IEnumerable<double> src, int width, bool flipV, bool flipH, int rotate)
+    public static double[] FlipAndRotate(double[] src, int width, bool flipV, bool flipH, int rotate)
     {
-        var srcArray = src.ToArray();
-        int height = srcArray.Length / width;
+        int height = src.Length / width;
         var flag = (flipV ? 2 : 0) + (flipH ? 1 : 0);
-        var convertIndexFlip = flag switch
-        {
-            0 => new Func<int, int, (int x, int y)>((w, h) => (w, h)),
-            1 => new Func<int, int, (int x, int y)>((w, h) => (width - w - 1, h)),
-            2 => new Func<int, int, (int x, int y)>((w, h) => (w, height - h - 1)),
-            _ => new Func<int, int, (int x, int y)>((w, h) => (width - w - 1, height - h - 1))
-        };
-
-        var convertIndexRotate = rotate switch
-        {
-            0 => new Func<(int x, int y), int>(p => width * p.y + p.x),
-            1 => new Func<(int x, int y), int>(p => height * p.x + height - p.y - 1),
-            2 => new Func<(int x, int y), int>(p => (height - p.y - 1) * width + (width - p.x - 1)),
-            _ => new Func<(int x, int y), int>(p => height * (width - p.x - 1) + p.y)
-        };
-
-        var result = new double[srcArray.Length];
-        if (flag != 0 || rotate != 0)
-            for (int h = 0; h < height; h++)
-                for (int w = 0; w < width; w++)
-                    result[convertIndexRotate(convertIndexFlip(w, h))] = srcArray[h * width + w];
+        if (flag == 0 && rotate == 0)
+            return [.. src];
         else
-            result = [.. src];
+        {
+            Func<int, int, (int x, int y)> convertIndexFlip = flag switch
+            {
+                0 => (w, h) => (w, h),
+                1 => (w, h) => (width - w - 1, h),
+                2 => (w, h) => (w, height - h - 1),
+                _ => (w, h) => (width - w - 1, height - h - 1)
+            };
 
-        return result;
+            Func<(int x, int y), int> convertIndexRotate = rotate switch
+            {
+                0 => p => width * p.y + p.x,
+                1 => p => height * p.x + height - p.y - 1,
+                2 => new Func<(int x, int y), int>(p => (height - p.y - 1) * width + (width - p.x - 1)),
+                _ => p => height * (width - p.x - 1) + p.y
+            };
+
+
+            var result = GC.AllocateUninitializedArray<double>(src.Length);
+            if (flag != 0 || rotate != 0)
+                for (int h = 0; h < height; h++)
+                    for (int w = 0; w < width; w++)
+                        result[convertIndexRotate(convertIndexFlip(w, h))] = src[h * width + w];
+            return result;
+        }
     }
     #endregion
 
@@ -645,7 +648,7 @@ public static class Ring
 
     #region SetMask
 
-    static bool[] tempArray = new bool[1];
+    //static bool[] tempArray = new bool[1];
 
     /// <summary>
     /// スポットや閾値超のピクセルをマスクする関数
@@ -656,34 +659,38 @@ public static class Ring
     /// <param name="OmitTheresholdMax"></param>
     public static void SetMask(bool OmitSpots, bool OmitTheresholdMin, bool OmitTheresholdMax)
     {
+       
         if (IsValid.Length != IsOutsideOfIntegralRegion.Length)
             return;
 
-        if (tempArray.Length != IsValid.Length)
-            tempArray = [.. Enumerable.Repeat(true, IsOutsideOfIntegralRegion.Length)];
+        var len = IsOutsideOfIntegralRegion.Length;
 
-        IsValid=tempArray;
+        //if (tempArray.Length != IsValid.Length)
+        //    tempArray = [.. Enumerable.Repeat(true, IsOutsideOfIntegralRegion.Length)];
+
+        // IsValid = tempArray;
+        IsValid = [..Enumerable.Repeat(true, len)] ;
 
         if (OmitSpots)
         {
-            for (int i = 0; i < IsOutsideOfIntegralRegion.Length; i++)
+            for (int i = 0; i < len; i++)
                 if (IsOutsideOfIntegralRegion[i] || IsOutsideOfIntegralProperty[i] || IsSpots[i])
                     IsValid[i] = false;
         }
         else
         {
-            for (int i = 0; i < IsOutsideOfIntegralRegion.Length; i++)
+            for (int i = 0; i < len; i++)
                 if (IsOutsideOfIntegralRegion[i] || IsOutsideOfIntegralProperty[i])
                     IsValid[i] = false;
         }
 
         if (OmitTheresholdMin)
-            for (int i = 0; i < IsOutsideOfIntegralRegion.Length; i++)
+            for (int i = 0; i < len; i++)
                 if (IsThresholdUnder[i])
                     IsValid[i] = false;
 
         if (OmitTheresholdMax)
-            for (int i = 0; i < IsOutsideOfIntegralRegion.Length; i++)
+            for (int i = 0; i < len; i++)
                 if (IsThresholdOver[i])
                     IsValid[i] = false;
     }
@@ -1892,8 +1899,8 @@ public static class Ring
             }
 
             else if (IP.Mode == HorizontalAxis.Length)
-                Parallel.For(0, thread, i =>
-        GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i][0], ref tempContibutedPixels[i][0]));
+                Parallel.For(0, thread, i 
+                    =>  GetProfileThreadWithTiltCorrection(xMin, xMax, yThreadMin[i], yThreadMax[i], ref tempProfileIntensity[i][0], ref tempContibutedPixels[i][0]));
 
 
             for (int i = 0; i < thread; i++)
@@ -2343,11 +2350,11 @@ public static class Ring
 
         Func<double, int> getIndex;
         if (IP.Mode == HorizontalAxis.Angle)
-            getIndex = r => { return (int)((Math.Atan(Math.Sqrt(r) / FD) - IP.StartAngle) / IP.StepAngle); };
+            getIndex = r => (int)((Math.Atan(Math.Sqrt(r) / FD) - IP.StartAngle) / IP.StepAngle);
         else if (IP.Mode == HorizontalAxis.Length)
-            getIndex = r => { return (int)((Math.Sqrt(r) - IP.StartLength) / IP.StepLength); };
+            getIndex = r => (int)((Math.Sqrt(r) - IP.StartLength) / IP.StepLength);
         else//
-            getIndex = r => { return (int)((IP.EndDspacing - IP.WaveLength / 2 / Math.Sin(Math.Atan(Math.Sqrt(r) / FD) / 2)) / IP.StepDspacing - 1); };
+            getIndex = r => (int)((IP.EndDspacing - IP.WaveLength / 2 / Math.Sin(Math.Atan(Math.Sqrt(r) / FD) / 2)) / IP.StepDspacing - 1);
 
         //最初の１行目のInterSectionだけ確保しておく
         j = yMin - 1;

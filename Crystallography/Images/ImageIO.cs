@@ -42,6 +42,7 @@ public static class ImageIO
         get
         {
             var filterString = "FujiBAS2000/2500; R-AXIS4/5; ITEX; Bruker CCD; IP Display; IPAimage; Fuji FDL; Rayonix; Marresearch; Perkin Elmer; ADSC; RadIcon; general image |";
+
             for (int i = 0; i < ListOfExtension.Length; i++)
                 if (i < ListOfExtension.Length - 1)
                     filterString += "*." + ListOfExtension[i] + ";";
@@ -151,7 +152,7 @@ public static class ImageIO
     #endregion
 
     /// <summary>
-    /// 指定されたfileを読み込み、読み込んだ内容はRing.***に保存される。失敗したときはfalseを返す。flagはノーマライズするかどうか。
+    /// 指定された file を読み込み、読み込んだ内容はRing.***に保存される。失敗したときは false を返す。flagはノーマライズするかどうか。
     /// </summary>
     /// <param name="str"></param>
     /// <returns></returns>
