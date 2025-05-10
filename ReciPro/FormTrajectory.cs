@@ -138,7 +138,7 @@ public partial class FormTrajectory : Form
 
         //エネルギー分布を描画 ここから
         {
-            var energies = BSEs.Select(e => energy - e[^1].e).ToArray();
+            var energies = BSEs.Select(e => energy - e[^1].e);
 
             double step = 0.1;//kev単位
             double lower = 0, upper = energy - EnergyThreshold;
@@ -163,7 +163,7 @@ public partial class FormTrajectory : Form
 
         //最大深さ分布　ここから
         {
-            var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z)).ToArray();
+            var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));//.ToArray();
             double lower = 0, upper = depths.Max();
             double step = (int)(upper * 100.0) / 400.0 / 50.0;//µm単位
             int nBuckets = (int)((upper - lower) / step + 1);
@@ -206,7 +206,7 @@ public partial class FormTrajectory : Form
             {
                 var y = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
                 return Math.Sqrt(e2.p.X * e2.p.X + y * y);
-            })).ToArray();
+            }));
 
             double lower = 0, upper = distances.Max();
             double step = (int)(upper * 100.0) / 100.0 / 50.0;//µm単位

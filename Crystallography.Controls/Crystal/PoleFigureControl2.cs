@@ -3,6 +3,8 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using V3 = OpenTK.Mathematics.Vector3d;
 using V4 = OpenTK.Mathematics.Vector4d;
@@ -103,6 +105,7 @@ public partial class PoleFigureControl2 : UserControl
         Clipboard.SetDataObject(bmp);
     }
 
+    Lock lockObj = new();
     /// <summary>
     /// Vectors[]から、Pixels[][]を生成
     /// </summary>
@@ -124,11 +127,14 @@ public partial class PoleFigureControl2 : UserControl
 
         //ベクトルからPixelのインデックスを計算するファンクション
         //iが放射方向、jが円周に沿った方向
-        var f = new Func<V3, (int i, int j)>(v =>
+        var f = new Func<V4, (int i, int j)>(v =>
         {
             v.Normalize();
+            var len = Math.Sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
+            double X = v.X / len, Y = v.Y / len, Z = v.Z / len;
+
             // vが単位ベクトルの時、 (v.X / Sqrt(1 + v.Z), v.Y / Sqrt(1 + v.Z) )が シュミットネット上の点
-            var (x, y) = (v.X / Math.Sqrt(1 + v.Z), v.Y / Math.Sqrt(1 + v.Z));
+            var (x, y) = (X / Math.Sqrt(1 + Z), Y / Math.Sqrt(1 + Z));
             var i = (int)(Math.Sqrt(x * x + y * y) * div1);
             i = Math.Min(Math.Max(i, 0), div1 - 1);
             var j = (int)((Math.Atan2(y, x) + Math.PI) / 2 / Math.PI * Pixels[i].Length);
@@ -138,11 +144,18 @@ public partial class PoleFigureControl2 : UserControl
 
         if (DrawingMode == DrawingModeEnum.Histogram)
         {
-            foreach (var v in vectors.Select(v => new V3(v.X, v.Y, v.Z)).Where(v => v.Z >= 0))
+            vectors.AsParallel().Where(v => v.Z >= 0).ForAll(v =>
             {
                 var (i, j) = f(v);
-                Pixels[i][j] += 1 / areas[i];
-            }
+                lock (lockObj)
+                    Pixels[i][j] += 1 / areas[i];
+            });
+
+            //foreach (var v in vectors.Select(v => new V3(v.X, v.Y, v.Z)).Where(v => v.Z >= 0))
+            //{
+            //    var (i, j) = f(v);
+            //    Pixels[i][j] += 1 / areas[i];
+            //}
         }
         else if (DrawingMode == DrawingModeEnum.Average)
         {
@@ -150,12 +163,24 @@ public partial class PoleFigureControl2 : UserControl
             for (int i = 0; i < count.Length; i++)
                 count[i] = new int[Pixels[i].Length];
 
-            foreach (var v in vectors.Where(v => v.Z >= 0))
+            vectors.AsParallel().Where(v => v.Z >= 0).ForAll(v =>
             {
-                var (i, j) = f(new(v.X, v.Y, v.Z));
-                Pixels[i][j] += v.W;
-                count[i][j]++;
-            }
+                var (i, j) = f(v);
+                lock (lockObj)
+                {
+                    Pixels[i][j] += v.W;
+                    count[i][j]++;
+                }
+            });
+
+            //foreach (var v in vectors.Where(v => v.Z >= 0))
+            //{
+            //    var (i, j) = f(v);
+            //    Pixels[i][j] += v.W;
+            //    count[i][j]++;
+            //}
+
+
             for (int i = 0; i < div1; i++)
                 for (int j = 0; j < Pixels[i].Length; j++)
                     if (count[i][j]!=0)
@@ -171,11 +196,19 @@ public partial class PoleFigureControl2 : UserControl
                     tmp[i][j] = [];
             }
 
-            foreach (var v in vectors.Where(v => v.Z >= 0))
+            vectors.AsParallel().Where(v => v.Z >= 0).ForAll(v =>
             {
-                var (i, j) = f(new(v.X, v.Y, v.Z));
-                tmp[i][j].Add(v.W);
-            }
+                var (i, j) = f(v);
+                lock (lockObj)
+                    tmp[i][j].Add(v.W);
+            });
+
+            //foreach (var v in vectors.Where(v => v.Z >= 0))
+            //{
+            //    var (i, j) = f(v);
+            //    tmp[i][j].Add(v.W);
+            //}
+
             for (int i = 0; i < div1; i++)
                 for (int j = 0; j < Pixels[i].Length; j++)
                     if (tmp[i][j].Count > 1)
@@ -185,7 +218,6 @@ public partial class PoleFigureControl2 : UserControl
         var max = Pixels.Max(e => e.Max());
         var log10 = Math.Floor(Math.Log10(max));
         max = (int)(max / Math.Pow(10, log10 - 3) + 0.5) * Math.Pow(10, log10 - 3);
-        numericBoxMax.Value = max;
 
         var min = Pixels.Min(e => e.Min());
         if(min>0)
@@ -193,9 +225,9 @@ public partial class PoleFigureControl2 : UserControl
             log10 = Math.Floor(Math.Log10(min));
             min = (int)(min / Math.Pow(10, log10 - 3) - 0.5) * Math.Pow(10, log10 - 3);
         }
+
+        numericBoxMax.Value = max;
         numericBoxMin.Value = min;
-
-
     }
 
     public void DrawDensity(Graphics g, double[][] pixels)
