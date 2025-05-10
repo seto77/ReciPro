@@ -131,7 +131,7 @@ public partial class FormTrajectory : Form
         double energy = waveLengthControl.Energy;
 
         var BSEs = Trajectories.AsParallel().Where(e => e[^1].e > EnergyThreshold);
-        var count = BSEs.Count();
+        var count = (double)BSEs.Count();
 
         labelBSEratio.Text = $"{100.0 * count / Trajectories.Length:f2} %";
         labelBSEenergy.Text = $"{BSEs.Average(e => e[^1].e):f2} kev";
@@ -144,9 +144,11 @@ public partial class FormTrajectory : Form
             double lower = 0, upper = energy - EnergyThreshold;
             int nBuckets = (int)((upper - lower) / step);
 
-            var histogram = new MathNet.Numerics.Statistics.Histogram(BSEs.Select(e => energy - e[^1].e), nBuckets, lower, lower + nBuckets * step);
-            
-            var pts = ParallelEnumerable.Range(0, histogram.BucketCount).Select(i => new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+            var hist = new MathNet.Numerics.Statistics.Histogram(energies, nBuckets, lower, lower + nBuckets * step);
+
+            var pts = ParallelEnumerable
+                .Range(0, hist.BucketCount+1)
+                .Select(i => i== hist.BucketCount ? new PointD(energy + step / 2, 0) : new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
 
             //var pts = new List<PointD>();
             //for (int i = 0; i < histogram.BucketCount; i++)
@@ -163,15 +165,15 @@ public partial class FormTrajectory : Form
 
         //最大深さ分布　ここから
         {
-            var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));//.ToArray();
+            var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
             double lower = 0, upper = depths.Max();
             double step = (int)(upper * 100.0) / 400.0 / 50.0;//µm単位
             int nBuckets = (int)((upper - lower) / step + 1);
-            var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
+            var hist = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
 
             var pts = ParallelEnumerable
-                .Range(0, histogram.BucketCount)
-                .Select(i => new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+                .Range(0, hist.BucketCount)
+                .Select(i => new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
 
             //var pts = new List<PointD>();
             //for (int i = 0; i < histogram.BucketCount; i++)
@@ -211,11 +213,11 @@ public partial class FormTrajectory : Form
             double lower = 0, upper = distances.Max();
             double step = (int)(upper * 100.0) / 100.0 / 50.0;//µm単位
             int nBuckets = (int)((upper - lower) / step + 1);
-            var histogram = new MathNet.Numerics.Statistics.Histogram(distances, nBuckets, lower, lower + nBuckets * step);
+            var hist = new MathNet.Numerics.Statistics.Histogram(distances, nBuckets, lower, lower + nBuckets * step);
 
             var pts = ParallelEnumerable
-                .Range(0, histogram.BucketCount)
-                .Select(i => new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+                .Range(0, hist.BucketCount)
+                .Select(i => new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
 
             //var pts = new List<PointD>();
             //for (int i = 0; i < histogram.BucketCount; i++)

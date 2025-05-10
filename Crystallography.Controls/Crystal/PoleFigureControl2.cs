@@ -129,7 +129,6 @@ public partial class PoleFigureControl2 : UserControl
         //iが放射方向、jが円周に沿った方向
         var f = new Func<V4, (int i, int j)>(v =>
         {
-            v.Normalize();
             var len = Math.Sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
             double X = v.X / len, Y = v.Y / len, Z = v.Z / len;
 
