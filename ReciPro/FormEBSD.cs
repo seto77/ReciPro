@@ -719,7 +719,7 @@ public partial class FormEBSD : Form
             if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)//
             {
                 var div = DetectorDivision;
-                var r1 = Enumerable.Range(0, areaStep).Select(n => (double)n / areaStep);
+                var r1 = ValueEnumerable.Range(0, areaStep).Select(n => (double)n / areaStep);
                 area =
                 [
                     ..r1.Select(x => f(2.0 * i / div - 1, 2.0 * (- j - 1 + x)/ div + 1)),
@@ -729,7 +729,7 @@ public partial class FormEBSD : Form
                 ];
             }
             else
-                area = [.. Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
+                area = [.. ValueEnumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
 
             //ある立体角に収まるbseだけを抽出
             var bse2 = BSEs.AsParallel().Where(e =>

@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using V3 = OpenTK.Mathematics.Vector3d;
 using OpenTK.Mathematics;
+using ZLinq;
 #endregion
 
 namespace ReciPro;
@@ -1343,10 +1344,7 @@ public partial class FormDiffractionSimulator : Form
             if (twoTheta == 180) break;
             var ptsArray = Geometry.ConicSection(twoTheta / 180 * Math.PI, Phi, Tau, CameraLength2, cornerDetector[0], cornerDetector[2]);
             if (radioButtonBeamPrecessionXray.Checked)//X線プリセッションの場合
-                ptsArray =
-                [
-                    Enumerable.Range(0, 3600).Select(i => 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI) * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI))).ToList(),
-                ];
+                ptsArray = [[.. Enumerable.Range(0, 3600).Select(i => 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI) * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI)))],];
 
             foreach (var pts in ptsArray)
                 g.DrawLines(pen, pts.ToArray());
@@ -1355,7 +1353,7 @@ public partial class FormDiffractionSimulator : Form
             var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
             if (checkBoxScaleLabel.Checked && !double.IsNaN(labelPosition.X))
             {
-                g.DrawString(twoTheta.ToString("g12") + "°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true);
+                g.DrawString($"{twoTheta:g12}°", font, colorControlScale2Theta.Color, convertDetectorToScreen(labelPosition), true);
                 //g.DrawString(twoTheta.ToString("g12") + "°", font, new SolidBrush(colorControlScale2Theta.Color), labelPosition.ToPointF());
             }
 
@@ -1483,10 +1481,10 @@ public partial class FormDiffractionSimulator : Form
             minD = WaveLength / 2;
         else
             minD = 1 / (new[] {
-             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Max(),
-             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Max(),
-             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Max(),
-             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Max(),
+             ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Max(),
+             ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Max(),
+             ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Max(),
+             ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Max(),
             }.Max());
 
         //ダイレクトスポットが画面内に含まれる場合
@@ -1494,10 +1492,10 @@ public partial class FormDiffractionSimulator : Form
             maxD = double.PositiveInfinity;
         else
             maxD = 1 / (new[] {
-             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Min(),
-             Enumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Min(),
-             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Min(),
-             Enumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Min(),
+             ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(0, h, false).Length ).Min(),
+             ValueEnumerable.Range(0,height).Select(h => convertScreenToReciprocal(width, h, false).Length ).Min(),
+             ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, 0, false).Length ).Min(),
+             ValueEnumerable.Range(0,width).Select(w => convertScreenToReciprocal(w, height, false).Length ).Min(),
             }.Min());
         //最大、最小のd値を決定 ここまで
 
@@ -2964,12 +2962,12 @@ public partial class FormDiffractionSimulator : Form
                 beforeEwald = (maxAngle, r, precession);
                 ewaldList.Clear();
                 int div1 = 45, div2 = 60;
-                var rot = Enumerable.Range(0, div2 + 1).ToList().Select(n => Matrix3D.Rot(new V3(0, 0, 1), 2 * Math.PI * n / div2)).ToList();
+                var rot = ValueEnumerable.Range(0, div2 + 1).Select(n => Matrix3D.Rot(new V3(0, 0, 1), 2 * Math.PI * n / div2)).ToList();
 
                 //X-ray precessionの時はsinではなくtanで計算することに注意
-                var sin = Enumerable.Range(0, div1).ToList().Select(n => precession ? Math.Tan(maxAngle / div1 * n) : Math.Sin(maxAngle / div1 * n)).ToList();
+                var sin = ValueEnumerable.Range(0, div1).Select(n => precession ? Math.Tan(maxAngle / div1 * n) : Math.Sin(maxAngle / div1 * n)).ToList();
                 //X-ray precessionの時はcosではなくすべて1として計算することに注意
-                var cos = Enumerable.Range(0, div1).ToList().Select(n => precession ? 1 : Math.Cos(maxAngle / div1 * n)).ToList();
+                var cos = ValueEnumerable.Range(0, div1).Select(n => precession ? 1 : Math.Cos(maxAngle / div1 * n)).ToList();
 
                 Parallel.For(1, div1, j =>
                 {

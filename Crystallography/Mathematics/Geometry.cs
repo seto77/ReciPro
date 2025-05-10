@@ -779,7 +779,7 @@ public static class Geometry
         {
             for (int i = 0; i < pt.Count - 1; i++)
             {
-                if (!area.IsInsde(pt[i]) || !area.IsInsde(pt[i + 1])) //どちらかが範囲外の時
+                if (!area.IsInside(pt[i]) || !area.IsInside(pt[i + 1])) //どちらかが範囲外の時
                 {
                     var pts = getCrossPoint(pt[i], pt[i + 1], area);
                     if (pts != null)
@@ -793,12 +793,12 @@ public static class Geometry
             var results = new List<List<PointD>>();
             for (int i = 0; i < pt.Count - 1; i++)
             {
-                if (!area.IsInsde(pt[i]))
+                if (!area.IsInside(pt[i]))
                     pt.RemoveAt(i--);
                 else
                 {
                     var pts = new List<PointD>();
-                    for (; i < pt.Count && area.IsInsde(pt[i]); i++)
+                    for (; i < pt.Count && area.IsInside(pt[i]); i++)
                         pts.Add(new PointD(pt[i]));
                     i--;
                     results.Add(pts);
@@ -821,9 +821,9 @@ public static class Geometry
         var a = (p2.Y - p1.Y) / (p2.X - p1.X);
         var b = p2.Y - a * p2.X;
 
-        if (rect.IsInsde(p1))//p1が範囲内にあるとき
+        if (rect.IsInside(p1))//p1が範囲内にあるとき
         {
-            if (rect.IsInsde(p2))//p1もp2が範囲内にあるとき
+            if (rect.IsInside(p2))//p1もp2が範囲内にあるとき
             {
                 return null;
             }
@@ -849,7 +849,7 @@ public static class Geometry
         }
         else//p1が範囲外にあるとき
         {
-            if (rect.IsInsde(p2))//p1が範囲外でp2が範囲内のとき
+            if (rect.IsInside(p2))//p1が範囲外でp2が範囲内のとき
             {
                 //方程式は y= a x + b
                 if (double.IsInfinity(a))
@@ -892,7 +892,7 @@ public static class Geometry
                     new PointD((rect.Y - b) / a, rect.Y),
                     new PointD((rect.UpperY - b) / a, rect.UpperY) ]);
 
-                var pts = temp.Where(p => rect.IsInsde(p) && p.X >= p1.X && p.X <= p2.X && p.Y >= Math.Min(p1.Y, p2.Y) && p.Y <= Math.Max(p1.Y, p2.Y)).OrderBy(p => p.X).ToArray();
+                var pts = temp.Where(p => rect.IsInside(p) && p.X >= p1.X && p.X <= p2.X && p.Y >= Math.Min(p1.Y, p2.Y) && p.Y <= Math.Max(p1.Y, p2.Y)).OrderBy(p => p.X).ToArray();
                 if (pts.Length == 2)
                     return pts;
                 else

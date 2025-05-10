@@ -224,7 +224,7 @@ public class BetheMethod
         Beams = Find_gVectors(BaseRotation, vecK0);
 
         //入射面での波動関数を定義
-        var psi0 = new DVec([.. Enumerable.Range(0, Beams.Length).ToList().Select(g => g == 0 ? One : 0)]);
+        var psi0 = new DVec([.. ValueEnumerable.Range(0, Beams.Length).Select(g => g == 0 ? One : 0)]);
         //ポテンシャルマトリックスを初期化
         uDictionary.Clear();
         var potentialMatrix = getPotentialMatrix(Beams);
@@ -324,19 +324,19 @@ public class BetheMethod
                 for (int t = 0; t < tLen; t++)
                     for (int b = 0; b < bLen; b++)
                         result[t * bLen + b] *= Exp(PiI * (beams[b].P - 2 * kvac * Surface.Z) * Thicknesses[t]);
-                
-                if (Interlocked.Increment(ref count) % progressStep == 0) 
+
+                if (Interlocked.Increment(ref count) % progressStep == 0)
                     bwCBED.ReportProgress(count, reportString);//進捗状況を報告
-                
+
                 return result;
             }
             finally { Shared.Return(eigenMatrix); ArrayPool<Beam>.Shared.Return(beams); }
         }).ToArray();
 
         //無効なRotationも再び組み込んでdisk[RotationIndex][Z_index][G_index]を構築
-        var diskAmplitude = new List<Complex[]>();
+        var diskAmplitude = new Complex[BeamDirections.Length][];
         for (int i = 0, j = 0; i < BeamDirections.Length; i++)
-            diskAmplitude.Add(inside(i) ? diskAmplitudeValid[j++] : null);//有効(円内)のピクセルを追加し、無効なものにはnull
+            diskAmplitude[i] = inside(i) ? diskAmplitudeValid[j++] : null;//有効(円内)のピクセルを追加し、無効なものにはnull
 
         count = 0;
         bwCBED.ReportProgress(0, "Compiling disks");
@@ -376,59 +376,55 @@ public class BetheMethod
             });
 
             //ここから、diskの重なり合いを計算
-            if (!LACBED)
+            //まず、各ディスクを構成するピクセルの座標を計算
+            var diskTemp = new (RectangleD Rect, PointD[] Pos)[Beams.Length];
+            Parallel.For(0, Beams.Length, g =>
             {
-                //まず、各ディスクを構成するピクセルの座標を計算
-                var diskTemp = new (RectangleD Rect, PointD[] Pos)[Beams.Length];
-                Parallel.For(0, Beams.Length, g =>
+                if (!bwCBED.CancellationPending)
                 {
-                    if (!bwCBED.CancellationPending)
+                    var pos = new PointD[BeamDirections.Length];
+                    for (int r = 0; r < pos.Length; r++)
                     {
-                        var pos = new PointD[BeamDirections.Length];
-                        for (int r = 0; r < pos.Length; r++)
-                        {
-                            //Ewald球中心(試料)から見た、逆格子ベクトルの方向
-                            var vec = kvac * BeamDirections[r] + Disks[0][g].G;
-                            //var vec = BeamDirections[r] * (new Vector3DBase(0, 0, kvac) - Disks[0][g].G);
-                            //var vec = BeamDirections[r] - Disks[0][g].G;
-                            pos[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
-                        }
-                        diskTemp[g] = (new RectangleD(new PointD(pos.Min(p => p.X), pos.Min(p => p.Y)), new PointD(pos.Max(p => p.X), pos.Max(p => p.Y))), pos);
+                        //Ewald球中心(試料)から見た、逆格子ベクトルの方向
+                        var vec = kvac * BeamDirections[r] + Disks[0][g].G;
+                        //var vec = BeamDirections[r] * (new Vector3DBase(0, 0, kvac) - Disks[0][g].G);
+                        //var vec = BeamDirections[r] - Disks[0][g].G;
+                        pos[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
                     }
-                });
+                    diskTemp[g] = (new RectangleD(new PointD(pos.Min(p => p.X), pos.Min(p => p.Y)), new PointD(pos.Max(p => p.X), pos.Max(p => p.Y))), pos);
+                }
+            });
 
-                //g1のディスク中のピクセル(r1)に対して、他のディスク(g2)の重なるピクセル(r2)を足し合わせていく。
-                Parallel.For(0, Beams.Length, g1 =>
-                //for(int g1=0; g1<Beams.Length;g1++)
+            //g1のディスク中のピクセル(r1)に対して、他のディスク(g2)の重なるピクセル(r2)を足し合わせていく。
+            Parallel.For(0, Beams.Length, g1 =>  //for(int g1=0; g1<Beams.Length;g1++)
+            {
+                if (!bwCBED.CancellationPending)
                 {
-                    if (!bwCBED.CancellationPending)
+                    var intensities = new double[Thicknesses.Length][];
+                    for (int t = 0; t < Thicknesses.Length; t++)
+                        intensities[t] = [.. Disks[t][g1].RawAmplitudes.Select(a => a.MagnitudeSquared())];
+
+                    for (int r1 = 0; r1 < BeamDirections.Length; r1++)
                     {
-                        var intensities = new double[Thicknesses.Length][];
-                        for (int t = 0; t < Thicknesses.Length; t++)
-                            intensities[t] = [.. Disks[t][g1].RawAmplitudes.Select(a => a.MagnitudeSquared())];
-
-                        for (int r1 = 0; r1 < BeamDirections.Length; r1++)
+                        if (Disks[0][g1].RawAmplitudes[r1] != 0)
                         {
-                            if (Disks[0][g1].RawAmplitudes[r1] != 0)
-                            {
-                                var pos = diskTemp[g1].Pos[r1];
-                                for (int g2 = 0; g2 < Beams.Length; g2++)
-                                    if (g2 != g1 && diskTemp[g2].Rect.IsInsde(pos))
-                                    {
-                                        var r2 = getIndex(pos, diskTemp[g2].Pos, width);
-                                        if (r2 >= 0 && Disks[0][g2].RawAmplitudes[r2] != 0)
-                                            for (int t = 0; t < Thicknesses.Length; t++)
-                                                intensities[t][r1] += Disks[t][g2].RawAmplitudes[r2].MagnitudeSquared();
-                                    }
-                            }
+                            var pos = diskTemp[g1].Pos[r1];
+                            for (int g2 = 0; g2 < Beams.Length; g2++)
+                                if (g2 != g1 && diskTemp[g2].Rect.IsInside(pos))
+                                {
+                                    var r2 = getIndex(pos, diskTemp[g2].Pos, width);
+                                    if (r2 >= 0 && Disks[0][g2].RawAmplitudes[r2] != 0)
+                                        for (int t = 0; t < Thicknesses.Length; t++)
+                                            intensities[t][r1] += Disks[t][g2].RawAmplitudes[r2].MagnitudeSquared();
+                                }
                         }
-
-                        for (int t = 0; t < Thicknesses.Length; t++)
-                            Disks[t][g1].Amplitudes = [.. intensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0))];
                     }
-                    bwCBED.ReportProgress(Interlocked.Increment(ref count) * 1000 / Beams.Length, "Compiling disks");//進捗状況を報告
-                });
-            }
+
+                    for (int t = 0; t < Thicknesses.Length; t++)
+                        Disks[t][g1].Amplitudes = [.. intensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0))];
+                }
+                bwCBED.ReportProgress(Interlocked.Increment(ref count) * 1000 / Beams.Length, "Compiling disks");//進捗状況を報告
+            });
         }
 
         if (bwCBED.CancellationPending)
@@ -482,7 +478,7 @@ public class BetheMethod
         int width = (int)Math.Sqrt(BeamDirections.Length);
         double radius = width / 2.0;
 
-        var lockObjs = ValueEnumerable.Range(0, BeamDirections.Length).ToList().Select(_ => new Lock()).ToArray();
+        var lockObjs = ValueEnumerable.Range(0, BeamDirections.Length).Select(_ => new Lock()).ToArray();
 
         //bool inside(int i) => (i % width - radius + 0.5) * (i % width - radius + 0.5) + (i / width - radius + 0.5) * (i / width - radius + 0.5) <= radius * radius;
         //bool inside(int i) => true;
@@ -538,7 +534,7 @@ public class BetheMethod
                 getEigenMatrix(bLen, beams, ref eigenMatrix, potentialMatrix);//ポテンシャル行列をセット //コスト高い
 
                 //入射面での波動関数を定義
-                var psi0 = new DVec([.. Enumerable.Range(0, bLen).ToList().Select(g => g == 0 ? One : 0)]);
+                var psi0 = new DVec([.. ValueEnumerable.Range(0, bLen).Select(g => g == 0 ? One : 0)]);
 
                 Complex[] result;
 
@@ -610,12 +606,12 @@ public class BetheMethod
                         directDiskIntensities[t][r] = diskAmplitude[r].result[t * diskAmplitude[r].beams.Length + 0].MagnitudeSquared();
             });
 
-            var directDiskPositions = new (double X, double Y)[BeamDirections.Length];
+            var directDiskPositions = new PointD[BeamDirections.Length];
             Parallel.For(0, BeamDirections.Length, r =>
             {
                 //var vec = BeamDirections[r] * new Vector3DBase(0, 0, kvac);//Ewald球中心(試料)から見た、逆格子ベクトルの方向
                 var vec = kvac * BeamDirections[r];//Ewald球中心(試料)から見た、逆格子ベクトルの方向
-                directDiskPositions[r] = (vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
+                directDiskPositions[r] = new PointD(vec.X / vec.Z, vec.Y / vec.Z); //カメラ長 1 を想定した検出器上のピクセルの座標値を格納
             });
 
             double xMax = directDiskPositions.Max(e => e.X), xMin = directDiskPositions.Min(e => e.X);
@@ -656,10 +652,10 @@ public class BetheMethod
     }
 
     private static readonly int[] pow = [ 4,  1];
-    static int getIndex(in PointD p, in PointD[] pts, int w) => getIndex(p.X, p.Y, [.. pts.Select(e => (e.X, e.Y))], w);
+    static int getIndex(in PointD p, in PointD[] pts, int w) => getIndex(p.X, p.Y, pts, w);
 
     //与えられたposに最も近いインデックスを返す
-    static int getIndex(in double x, double y, in (double X, double Y)[] pts, int w)
+    static int getIndex(in double x, double y, in PointD[] pts, int w)
     {
         var w2 = (uint)(w * w);
         int i = (int)w2 / 2, m;
@@ -790,7 +786,7 @@ public class BetheMethod
 
         var useEigen = EigenEnabled && maxNumOfBloch < 400;
 
-        var stepP = Enumerable.Range(0, step).ToList().AsParallel().WithDegreeOfParallelism(useEigen ? Environment.ProcessorCount : Math.Max(1, Environment.ProcessorCount / 4));
+        var stepP = ParallelEnumerable.Range(0, step).WithDegreeOfParallelism(useEigen ? Environment.ProcessorCount : Math.Max(1, Environment.ProcessorCount / 4));
 
         if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValuesPED == null || EigenValuesPED.Length != step
             || EigenVectorsPED == null || EigenVectorsPED.Length != step || semiangle != SemianglePED || !baseRotation.Equals(BaseRotation))
@@ -970,7 +966,7 @@ public class BetheMethod
         int dLen = defocusses.Length, tLen = thicknesses.Length, bLen = Beams.Length;
 
         //入射面での波動関数を定義
-        var psi0 = ValueEnumerable.Range(0, Beams.Length).ToList().Select(g => g == 0 ? -One : 0).ToArray();
+        var psi0 = ValueEnumerable.Range(0, Beams.Length).Select(g => g == 0 ? -One : 0).ToArray();
         //ポテンシャルマトリックスを初期化
         uDictionary.Clear();
         var potentialMatrix = getPotentialMatrix(Beams);
@@ -1235,7 +1231,7 @@ public class BetheMethod
                 var start = t == 0 ? 0 : Thicknesses[t - 1];
                 var slices = Math.Max(1, (int)((Thicknesses[t] - start) / sliceThickness));
                 tStep[t] = (Thicknesses[t] - start) / slices;
-                _thick[t] = [.. Enumerable.Range(1, slices).Select(e => start + tStep[t] * e)];
+                _thick[t] = [.. ValueEnumerable.Range(1, slices).Select(e => start + tStep[t] * e)];
             }
             #endregion
 
@@ -1598,7 +1594,7 @@ public class BetheMethod
                 Parallel.For(0, divTotal, div =>
                 {
                     int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
-                    var rVec = Enumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX) + shift.X, -res * (n / width - cY) + shift.Y }).ToArray();//Y座標はマイナス。
+                    var rVec = ValueEnumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX) + shift.X, -res * (n / width - cY) + shift.Y }).ToArray();//Y座標はマイナス。
                     var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode);
                     for (var i = 0; i < defLen; i++)
                         Array.Copy(results, i * count, _images[t][i], start, count);

@@ -343,14 +343,14 @@ public partial class FormImageSimulator : Form
 
         var width = pictureBoxPhaseScale.ClientRectangle.Width;
         var height = pictureBoxPhaseScale.ClientRectangle.Height;
-        var temp = Enumerable.Range(0, width * height).ToList().Select(n => (double)(n % width) / width).ToArray();
+        var temp = ParallelEnumerable.Range(0, width * height).Select(n => (double)(n % width) / width).ToArray();
         scaleImage = new PseudoBitmap(temp, width) { MaxValue = 1, MinValue = 0 };
         scaleImage.SetScaleRotation();
         pictureBoxPhaseScale.Image = scaleImage.GetImage();
 
         width = pictureBoxScaleOfIntensity.ClientRectangle.Width;
         height = pictureBoxScaleOfIntensity.ClientRectangle.Height;
-        temp = Enumerable.Range(0, width * height).ToList().Select(n => (double)(n % width) / width).ToArray();
+        temp = ParallelEnumerable.Range(0, width * height).Select(n => (double)(n % width) / width).ToArray();
         scaleImage = new PseudoBitmap(temp, width) { MaxValue = 1, MinValue = 0 };
         scaleImage.SetScaleGray();
         pictureBoxScaleOfIntensity.Image = scaleImage.GetImage();

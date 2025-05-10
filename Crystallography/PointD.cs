@@ -18,7 +18,7 @@ public struct RectangleD
     public readonly double UpperX => X + Width;
     public readonly double UpperY => Y + Height;
 
-    public readonly bool IsInsde(PointD p) => p.X >= X && p.X <= X + Width && p.Y >= Y && p.Y <= Y + Height;
+    public readonly bool IsInside(in PointD p) => p.X >= X && p.X <= X + Width && p.Y >= Y && p.Y <= Y + Height;
 
     public RectangleD(double x, double y, double width, double height) : this()
     {

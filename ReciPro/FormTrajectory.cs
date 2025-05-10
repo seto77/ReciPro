@@ -146,8 +146,7 @@ public partial class FormTrajectory : Form
 
             var hist = new MathNet.Numerics.Statistics.Histogram(energies, nBuckets, lower, lower + nBuckets * step);
 
-            var pts = ParallelEnumerable
-                .Range(0, hist.BucketCount+1)
+            var pts = ParallelEnumerable.Range(0, hist.BucketCount+1)
                 .Select(i => i== hist.BucketCount ? new PointD(energy + step / 2, 0) : new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
 
             //var pts = new List<PointD>();
@@ -171,8 +170,7 @@ public partial class FormTrajectory : Form
             int nBuckets = (int)((upper - lower) / step + 1);
             var hist = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
 
-            var pts = ParallelEnumerable
-                .Range(0, hist.BucketCount)
+            var pts = ParallelEnumerable.Range(0, hist.BucketCount)
                 .Select(i => new PointD((hist[i].UpperBound + hist[i].LowerBound) / 2, hist[i].Count / count));
 
             //var pts = new List<PointD>();
