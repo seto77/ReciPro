@@ -3913,9 +3913,6 @@ construction)</value>
   <data name="githubWikiToolStripMenuItem.Text" xml:space="preserve">
     <value>Help (Wiki)</value>
   </data>
-  <data name="編集ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 22</value>
-  </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 21</value>
   </data>
@@ -4761,12 +4758,6 @@ construction)</value>
     <value>githubWikiToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;githubWikiToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;編集ToolStripMenuItem.Name" xml:space="preserve">
-    <value>編集ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;編集ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;languageToolStripMenuItem.Name" xml:space="preserve">

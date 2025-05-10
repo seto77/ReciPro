@@ -166,7 +166,6 @@
             toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             helpwebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             githubWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            編集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1187,7 +1186,7 @@
             // 
             // helpToolStripMenuItem
             // 
-            helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { checkUpdatesToolStripMenuItem, toolStripSeparator16, hintToolStripMenuItem, versionHistoryToolStripMenuItem, licenseToolStripMenuItem, toolStripSeparator18, githubPageToolStripMenuItem, reportBugsRequestsOrCommentsToolStripMenuItem1, toolStripSeparator17, helpwebToolStripMenuItem, githubWikiToolStripMenuItem, 編集ToolStripMenuItem });
+            helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { checkUpdatesToolStripMenuItem, toolStripSeparator16, hintToolStripMenuItem, versionHistoryToolStripMenuItem, licenseToolStripMenuItem, toolStripSeparator18, githubPageToolStripMenuItem, reportBugsRequestsOrCommentsToolStripMenuItem1, toolStripSeparator17, helpwebToolStripMenuItem, githubWikiToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
@@ -1253,11 +1252,6 @@
             githubWikiToolStripMenuItem.Name = "githubWikiToolStripMenuItem";
             resources.ApplyResources(githubWikiToolStripMenuItem, "githubWikiToolStripMenuItem");
             githubWikiToolStripMenuItem.Click += githubWikiToolStripMenuItem_Click;
-            // 
-            // 編集ToolStripMenuItem
-            // 
-            編集ToolStripMenuItem.Name = "編集ToolStripMenuItem";
-            resources.ApplyResources(編集ToolStripMenuItem, "編集ToolStripMenuItem");
             // 
             // languageToolStripMenuItem
             // 
@@ -1567,7 +1561,6 @@
         private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
         public System.Windows.Forms.Button buttonDuplicate;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 編集ToolStripMenuItem;
     }
 }
 

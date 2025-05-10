@@ -14,8 +14,9 @@ using M3d = OpenTK.Mathematics.Matrix3d;
 using V3 = OpenTK.Mathematics.Vector3d;
 using V4 = OpenTK.Mathematics.Vector4d;
 using OpenTK.Mathematics;
-using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Concurrent;
+using ZLinq;
+//[assembly: ZLinqDropInAttribute("ReciPro", DropInGenerateTypes.Everything)]
 #endregion
 
 namespace ReciPro;
@@ -551,7 +552,7 @@ public partial class FormStructureViewer : Form
     /// <summary>
     /// 結合(Bonds)と配位多面体(Polyhera)オブジェクトを生成
     /// </summary>
-    private void setBondsAndPolyhera()
+    private void setBondsAndPolyhedra()
     {
         sw.Restart();
         static bool within(double d, double max, double min) => d < max && d > min;
@@ -593,6 +594,7 @@ public partial class FormStructureViewer : Form
             var coord = new Dictionary<int, int>(); //原子番号と配位数を保存するDictionary
             var cArray = dic1[bond.Element1];
             var vArray = dic1[bond.Element2];
+
             Parallel.ForEach(cArray.Select(o => o.Key).Distinct(), ckey =>
             {
                 //検索対象の頂点のインデックスを作成
@@ -692,7 +694,7 @@ public partial class FormStructureViewer : Form
         var vertexSerials = GLObjectsP
             .Where(obj => obj is Cylinder)
             .SelectMany(obj => new[] { (obj.Tag as bondID).SerialNumber1, (obj.Tag as bondID).SerialNumber2 })
-            .Distinct().ToList();
+            .Distinct().ToArray();
 
         //範囲外であり、なおかつ、上のシリアル番号に含まれない原子を取得
         int n = 0;
@@ -706,6 +708,7 @@ public partial class FormStructureViewer : Form
         });
 
         GLObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));//並列化じゃなくても十分早いみたい。。。
+        
         GLObjects.RemoveRange(0, n);
 
         textBoxCalcInformation.AppendText($"Remove tentative atoms: {sw.ElapsedMilliseconds}ms.\r\n");
@@ -952,7 +955,7 @@ public partial class FormStructureViewer : Form
 
         setAtoms();//原子オブジェクトを生成
 
-        setBondsAndPolyhera();//結合と多面体オブジェクトを生成
+        setBondsAndPolyhedra();//結合と多面体オブジェクトを生成
 
         setLabel();//ラベルを生成
 

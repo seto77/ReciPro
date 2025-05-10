@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using V3 = OpenTK.Mathematics.Vector3d;
 using M3 = OpenTK.Mathematics.Matrix3d;
+using ZLinq;
+using System.Runtime.InteropServices;
 
 namespace Crystallography;
 
@@ -81,9 +83,9 @@ public class MonteCarlo
     /// 試料表面を脱出するまでの飛程を計算する。返り値は、座標 p (nm単位)と エネルギー e (kev単位) のタプル配列
     /// </summary>
     /// <returns>返り値は、座標 p (µm単位)と エネルギー e (kev単位) のタプル配列</returns>
-    public (V3 p, double e)[] GetTrajectories()
+    public List<(V3 p, double e)> GetTrajectories()
     {
-        var trajectory = new List<(V3 p, double e)>() { (new V3(0, 0, 0), InitialKev) };
+        var trajectory = new List<(V3 p, double e)>(100) { (new V3(0, 0, 0), InitialKev) };
         //var vec = new V3(0, 0, -1);
         double m11, m12, m13, m22, m23;
         double vX = 0, vY = 0, vZ = -1;
@@ -132,12 +134,14 @@ public class MonteCarlo
                 }
             }
             trajectory.Add((trajectory[^1].p + s * new V3(vX, vY, vZ), trajectory[^1].e + s * sp));
-
         }
-        return trajectory.Select(e => (e.p / 1000, e.e)).ToArray();
+
+        trajectory.ForEach(static e => e.p /= 1000.0);
+        
+        return trajectory;
     }
 
-    
+
     /// <summary>
     /// 電子線の飛程を計算する. 電子は -Z軸に沿って入射し、試料と(0,0,0)の座標で衝突したあと、thresholdで指定したエネルギーまで減衰するか、
     /// 試料表面を脱出するまでの飛程を計算する。返り値は、座標 p (nm単位), 出射方向 v (単位ベクトル), エネルギー e (kev単位) のタプル

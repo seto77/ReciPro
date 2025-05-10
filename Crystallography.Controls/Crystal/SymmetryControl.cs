@@ -41,7 +41,7 @@ public partial class SymmetryControl : UserControl
         {
             if (value >= 0 && value <= SymmetryStatic.TotalSpaceGroupNumber)
             {
-                (int CrystalSystem, int PointGroup, int SpaceGroup) = SymmetryStatic.GetSytemAndGroupFromSeriesNumber(value);
+                (int CrystalSystem, int PointGroup, int SpaceGroup) = SymmetryStatic.GetSystemAndGroupFromSeriesNumber(value);
                 SkipEvent = true;
                 SuspendLayout();
 

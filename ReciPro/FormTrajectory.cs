@@ -2,18 +2,18 @@
 using Crystallography.OpenGL;
 using IronPython.Runtime;
 using Microsoft.Scripting.Utils;
-using OpenTK;
 using OpenTK.Mathematics;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using V3 = OpenTK.Mathematics.Vector3d;
 using V4 = OpenTK.Mathematics.Vector4d;
-
+using ZLinq;
 #endregion
 
 namespace ReciPro;
@@ -26,7 +26,7 @@ public partial class FormTrajectory : Form
 
     private readonly Lock lockObj = new();
 
-    (V3 p, double e)[][] Trajectories = [];
+    List<(V3 p, double e)>[] Trajectories = [];
     private double EnergyThreshold = 2;
     private readonly Stopwatch sw = new();
     #endregion
@@ -115,7 +115,8 @@ public partial class FormTrajectory : Form
 
         //飛程計算ループ
         sw.Restart();
-        Trajectories = new (V3 p, double e)[numericBoxCalcNum.ValueInteger][];
+        Trajectories = new List<(V3 p, double e)>[numericBoxCalcNum.ValueInteger];
+        
         Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectories());
         
         toolStripStatusLabel1.Text = $"{sw.ElapsedMilliseconds} msec. ellapsed for {numericBoxCalcNum.ValueInteger} trajectories.";
@@ -125,10 +126,11 @@ public partial class FormTrajectory : Form
     #region 統計情報を計算
     private void DrawStatistics()
     {
+        sw.Restart();
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
         double energy = waveLengthControl.Energy;
 
-        var BSEs = Trajectories.Where(e => e[^1].e > EnergyThreshold);
+        var BSEs = Trajectories.AsParallel().Where(e => e[^1].e > EnergyThreshold);
         var count = BSEs.Count();
 
         labelBSEratio.Text = $"{100.0 * count / Trajectories.Length:f2} %";
@@ -136,14 +138,21 @@ public partial class FormTrajectory : Form
 
         //エネルギー分布を描画 ここから
         {
+            var energies = BSEs.Select(e => energy - e[^1].e).ToArray();
+
             double step = 0.1;//kev単位
             double lower = 0, upper = energy - EnergyThreshold;
             int nBuckets = (int)((upper - lower) / step);
+
             var histogram = new MathNet.Numerics.Statistics.Histogram(BSEs.Select(e => energy - e[^1].e), nBuckets, lower, lower + nBuckets * step);
-            var pts = new List<PointD>();
-            for (int i = 0; i < histogram.BucketCount; i++)
-                pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
-            pts.Add(new PointD(energy + step / 2, 0));
+            
+            var pts = ParallelEnumerable.Range(0, histogram.BucketCount).Select(i => new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+
+            //var pts = new List<PointD>();
+            //for (int i = 0; i < histogram.BucketCount; i++)
+            //    pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+            //pts.Add(new PointD(energy + step / 2, 0));
+
             graphControlEnergyProfile.ClearProfile();
             graphControlEnergyProfile.Profile = new Profile(pts);
             graphControlEnergyProfile.MaximalX = upper;
@@ -154,14 +163,20 @@ public partial class FormTrajectory : Form
 
         //最大深さ分布　ここから
         {
-            var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
+            var depths = BSEs.Select(e1 => e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z)).ToArray();
             double lower = 0, upper = depths.Max();
             double step = (int)(upper * 100.0) / 400.0 / 50.0;//µm単位
             int nBuckets = (int)((upper - lower) / step + 1);
             var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
-            var pts = new List<PointD>();
-            for (int i = 0; i < histogram.BucketCount; i++)
-                pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+
+            var pts = ParallelEnumerable
+                .Range(0, histogram.BucketCount)
+                .Select(i => new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+
+            //var pts = new List<PointD>();
+            //for (int i = 0; i < histogram.BucketCount; i++)
+            //    pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+
             graphControlDepthProfile.ClearProfile();
             graphControlDepthProfile.Profile = new Profile(pts);
             graphControlDepthProfile.UpperX = upper * 0.5;
@@ -191,15 +206,21 @@ public partial class FormTrajectory : Form
             {
                 var y = cosTilt * e2.p.Y + sinTilt * e2.p.Z;
                 return Math.Sqrt(e2.p.X * e2.p.X + y * y);
-            }));
+            })).ToArray();
 
             double lower = 0, upper = distances.Max();
             double step = (int)(upper * 100.0) / 100.0 / 50.0;//µm単位
             int nBuckets = (int)((upper - lower) / step + 1);
             var histogram = new MathNet.Numerics.Statistics.Histogram(distances, nBuckets, lower, lower + nBuckets * step);
-            var pts = new List<PointD>();
-            for (int i = 0; i < histogram.BucketCount; i++)
-                pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+
+            var pts = ParallelEnumerable
+                .Range(0, histogram.BucketCount)
+                .Select(i => new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+
+            //var pts = new List<PointD>();
+            //for (int i = 0; i < histogram.BucketCount; i++)
+            //    pts.Add(new PointD((histogram[i].UpperBound + histogram[i].LowerBound) / 2, (double)histogram[i].Count / count));
+            
             graphControlDistance.ClearProfile();
             graphControlDistance.Profile = new Profile(pts);
         }
@@ -227,19 +248,24 @@ public partial class FormTrajectory : Form
         else
             poleFigureControl.Circles = [];
 
-        poleFigureControl.Vectors = BSEs.Select(e => new V4(rot * (e[^1].p - e[^2].p), e[^1].e)).ToArray();
+        poleFigureControl.Vectors = [.. BSEs.Select(e => new V4(rot * (e[^1].p - e[^2].p), e[^1].e))];
         //最大深さ分布を求めるためのテストコード
         // poleFigureControl.Vectors = BSEs.Select(e1 => new V4(rot.Mult(e1[^1].p - e1[^2].p), e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z))).ToArray();
+
+        toolStripStatusLabel1.Text += $"   {sw.ElapsedMilliseconds} msec. for graph drawing.";
+
     }
     #endregion
 
     #region OpenGLを用いて三次元の飛程を表示
     private void Draw3D()
     {
+        sw.Restart();
+
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
         double energy = waveLengthControl.Energy;
 
-        var list = new List<(V3 p, double e)[]>();
+        var list = new List<List<(V3 p, double e)>>();
         for (int i = 0; i < Trajectories.Length && list.Count < numericBoxDrawNum.ValueInteger; i++)
         {
             if (checkBoxDrawAbsorved.Checked || Trajectories[i][^1].e > EnergyThreshold)
@@ -255,31 +281,31 @@ public partial class FormTrajectory : Form
         //ここから OpenGL描画
         List<GLObject> glObjects = [];
         int colorDiv = 16;//16段階で色を変化させていく
-        foreach (var trajectry in list)
+        foreach (var trajectory in CollectionsMarshal.AsSpan(list))
         {
             int start = 0, end = 0;
             var mat = new Material(Color4.Black);
-            for (int j = colorDiv; j >= 1 && end < trajectry.Length; j--)
+            for (int j = colorDiv; j >= 1 && end < trajectory.Count; j--)
             {
-                if (trajectry[^1].e > EnergyThreshold)
+                if (trajectory[^1].e > EnergyThreshold)
                     mat = new Material(new Color4(255, (byte)(255 * (colorDiv - j) / colorDiv), (byte)(255 * (colorDiv - j) / colorDiv), (byte)(255 * j / colorDiv)));
                 else
                     mat = new Material(new Color4((byte)(255 * (colorDiv - j) / colorDiv), (byte)(255 * (colorDiv - j) / colorDiv), 255, (byte)(255 * j / colorDiv)));
-                end = trajectry.FindIndex(t => t.e < (double)(j - 1) / colorDiv * energy);
+                end = trajectory.FindIndex(t => t.e < (double)(j - 1) / colorDiv * energy);
                 if (end == -1)
-                    end = trajectry.Length;
-                glObjects.Add(new Lines(trajectry[start..end].Select(e => e.p).ToArray(), 1f, mat));
+                    end = trajectory.Count;
+                glObjects.Add(new Lines([.. trajectory[start..end].Select(e => e.p)], 1f, mat));
 
                 start = end - 1;
             }
 
 
-            if (checkBoxDrawPathAfterEscape.Checked && trajectry[^1].e > EnergyThreshold && trajectry.Length > 1)
+            if (checkBoxDrawPathAfterEscape.Checked && trajectory[^1].e > EnergyThreshold && trajectory.Count> 1)
             {
-                var r = trajectry[^2].e / waveLengthControl.Energy;
-                var v = (trajectry[^1].p - trajectry[^2].p).Normalized() * r * maxLength / 2;
+                var r = trajectory[^2].e / waveLengthControl.Energy;
+                var v = (trajectory[^1].p - trajectory[^2].p).Normalized() * r * maxLength / 2;
                 var matBackScattered = new Material(new Color4(255, (byte)(128 * (1 - r) + 127), (byte)(255 * (1 - r)), (byte)(200 * r)));
-                glObjects.Add(new Lines([trajectry[^2].p, trajectry[^2].p + v], 1f, matBackScattered));
+                glObjects.Add(new Lines([trajectory[^2].p, trajectory[^2].p + v], 1f, matBackScattered));
             }
         }
 
@@ -287,7 +313,7 @@ public partial class FormTrajectory : Form
         var limit = (int)(maxLength / scaleStep + 1);
         if (checkBoxDrawGuidCircles.Checked)
         {
-            var circleArray = Enumerable.Range(0, 361)
+            var circleArray = ValueEnumerable.Range(0, 361)
                 .Select(e => new V3(Math.Cos(e / 180.0 * Math.PI), Math.Sin(e / 180.0 * Math.PI) * cosTilt, Math.Sin(e / 180.0 * Math.PI) * sinTilt));
             for (int i = 1; i <= limit; i++)
             {
@@ -318,6 +344,9 @@ public partial class FormTrajectory : Form
         glControlTrajectory.AddObjects(glObjects);
         glControlTrajectory.Refresh();
         //OpenGLここまで
+
+        toolStripStatusLabel1.Text += $"   {sw.ElapsedMilliseconds} msec. for 3D drawing.";
+
     }
     #endregion
 

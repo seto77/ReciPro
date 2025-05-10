@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using SO = Crystallography.SymmetryOperation;
+using ZLinq;
+using ZLinq.Linq;
 
 namespace Crystallography;
 
@@ -20,6 +22,8 @@ public static class SymmetryStatic
     /// </summary>
     public const double Th = 0.0001;
     #endregion
+
+  
 
     #region　static fields
     public static readonly ushort[][][] PositionsDictionary =
@@ -8152,7 +8156,9 @@ public static class SymmetryStatic
             #endregion CoodStr
         ];
 
-    public static readonly ushort[][] OperationDictionary =
+
+
+    public static readonly ushort[][] OperationDictionary = 
         [
 				#region OperationDictionary
  //0	Unknown
@@ -9239,6 +9245,7 @@ public static class SymmetryStatic
 [0,],
             #endregion
         ];
+
     public static readonly SO[] OperationList =
         [
 				#region OperationList
@@ -12179,7 +12186,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
         }
         #endregion
 
-        SpaceGroupListWithoutSpace = StrArray.Select(s => s[3].Replace(" ", "")).ToArray();
+        SpaceGroupListWithoutSpace = StrArray.AsValueEnumerable().Select(s => s[3].Replace(" ", "")).ToArray();
 
         Symmetries = new Symmetry[TotalSpaceGroupNumber];
         for (int i = 0; i < Symmetries.Length; i++)
@@ -12193,7 +12200,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// </summary>
     /// <param name="seriesNumber"></param>
     /// <returns></returns>
-    public static (int CrystalSystem, int PointGroup, int SpaceGroup) GetSytemAndGroupFromSeriesNumber(int seriesNumber)
+    public static (int CrystalSystem, int PointGroup, int SpaceGroup) GetSystemAndGroupFromSeriesNumber(int seriesNumber)
     {
         for (int i = 0; i < BelongingNumberOfSymmetry.Length; i++)
         {

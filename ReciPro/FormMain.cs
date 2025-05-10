@@ -1,7 +1,6 @@
 #region using
 using Crystallography.OpenGL;
 using IronPython.Hosting;
-using OpenTK.Graphics.OpenGL4;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

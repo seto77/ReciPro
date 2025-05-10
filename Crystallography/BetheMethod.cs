@@ -19,8 +19,8 @@ using static System.Buffers.ArrayPool<System.Numerics.Complex>;
 using static System.Numerics.Complex;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
+using ZLinq;
 #endregion
-
 namespace Crystallography;
 
 /// <summary>
@@ -482,7 +482,7 @@ public class BetheMethod
         int width = (int)Math.Sqrt(BeamDirections.Length);
         double radius = width / 2.0;
 
-        var lockObjs = Enumerable.Range(0, BeamDirections.Length).ToList().Select(_ => new Lock()).ToArray();
+        var lockObjs = ValueEnumerable.Range(0, BeamDirections.Length).ToList().Select(_ => new Lock()).ToArray();
 
         //bool inside(int i) => (i % width - radius + 0.5) * (i % width - radius + 0.5) + (i / width - radius + 0.5) * (i / width - radius + 0.5) <= radius * radius;
         //bool inside(int i) => true;
@@ -750,7 +750,7 @@ public class BetheMethod
         var alpha = new DMat(dim, dim, EigenVectorsInverse).Multiply(psi0);//アルファベクトルを求める
 
         //ガンマの対称行列×アルファを作成
-        var gamma_alpha = new DVec([.. Enumerable.Range(0, dim).Select(n => Exp(TwoPiI * EigenValues[n] * thickness) * alpha[n])]);
+        var gamma_alpha = new DVec([.. ValueEnumerable.Range(0, dim).Select(n => Exp(TwoPiI * EigenValues[n] * thickness) * alpha[n])]);
 
         //出射面での境界条件を考慮した位相にする (20230827)
         var p = new DiagonalMatrix(dim, dim, [.. Beams.Select(b => Exp(PiI * b.P * thickness))]);
@@ -843,7 +843,7 @@ public class BetheMethod
                 var psi0 = new DVec(new Complex[len]) { [0] = 1 };//入射面での波動関数を定義
                 var alpha = EigenVectorsInversePED[k].Multiply(psi0);//アルファベクトルを求める
                                                                      //ガンマの対称行列×アルファを作成
-                var gamma_alpha = new DVec([.. Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValuesPED[k][n] * thickness) * alpha[n])]);
+                var gamma_alpha = new DVec([.. ValueEnumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValuesPED[k][n] * thickness) * alpha[n])]);
                 //深さZにおけるψを求める
                 var psi_atZ = EigenVectorsPED[k].Multiply(gamma_alpha);
                 for (int i = 0; i < BeamsPED[k].Length && i < len; i++)
@@ -970,7 +970,7 @@ public class BetheMethod
         int dLen = defocusses.Length, tLen = thicknesses.Length, bLen = Beams.Length;
 
         //入射面での波動関数を定義
-        var psi0 = Enumerable.Range(0, Beams.Length).ToList().Select(g => g == 0 ? -One : 0).ToArray();
+        var psi0 = ValueEnumerable.Range(0, Beams.Length).ToList().Select(g => g == 0 ? -One : 0).ToArray();
         //ポテンシャルマトリックスを初期化
         uDictionary.Clear();
         var potentialMatrix = getPotentialMatrix(Beams);
@@ -1476,7 +1476,7 @@ public class BetheMethod
         var gList = beams.Select(b => (b.Ureal, b.Uimag, b.Vec.ToPointD)).ToList();
         //imagesを初期化
 
-        var images = Enumerable.Range(0, 4).ToList().Select(d => new double[width * height]).ToArray();
+        var images = ValueEnumerable.Range(0, 4).Select(d => new double[width * height]).ToArray();
 
         var shift = Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2;
         double cX = width / 2.0, cY = height / 2.0;
@@ -1835,7 +1835,7 @@ public class BetheMethod
         var shift = direction.Select(dir => (mat * dir).Length).Max() * 0.5;//この数字が妥当かどうか？
 
         double k0_2 = vecK0.Length2, k0 = vecK0.Length;
-        float k0_2F = (float)k0_2;
+        var k0_2F = (float)k0_2;
         var maxQ = Math.Abs(k0_2 - (k0 + shift) * (k0 + shift));
         var maxQF = (float)maxQ;
 

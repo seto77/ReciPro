@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2025.5.4.0956</AssemblyVersion>
-    <FileVersion>2025.5.4.0956</FileVersion>
+    <AssemblyVersion>2025.5.10.0138</AssemblyVersion>
+    <FileVersion>2025.5.10.0138</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
@@ -49,6 +49,7 @@
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.2" />
+    <PackageReference Include="ZLinq" Version="1.4.2" />
   </ItemGroup>
 
   <ItemGroup>

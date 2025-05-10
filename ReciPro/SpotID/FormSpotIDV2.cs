@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MQ = Crystallography.Marquardt;
+using ZLinq;
 #endregion
 
 namespace ReciPro;
@@ -565,7 +566,7 @@ public partial class FormSpotIDV2 : Form
                 functions.AddRange(new[] { func1, func2, func3 });
             }
         }
-        var includedArea = Enumerable.Range(0, width * height).Except(excludedArea).ToList();
+        var includedArea = ValueEnumerable.Range(0, width * height).Except(excludedArea).ToList();
 
         //ここまで
         var pixelsBGList = new List<(double[] x, double y, double w)>();
@@ -1498,7 +1499,7 @@ public partial class FormSpotIDV2 : Form
                 else
                     directions.Add(null);
         var rotArray = directions.ToArray();
-        var thicknessArray = Enumerable.Range(50, 500).Select(v => (double)v).ToArray();
+        var thicknessArray = ValueEnumerable.Range(50, 500).Select(v => (double)v).ToArray();
 
         var g = (Grain)((DataRowView)bindingSourceGrains.Current).Row["Grain"];
         FormMain.Crystal.Bethe.RunCBED(numericBoxMaxNumOfG.ValueInteger, 200, g.Rotation, thicknessArray, rotArray, false, BetheMethod.Solver.Auto);
