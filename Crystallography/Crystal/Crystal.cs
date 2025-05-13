@@ -1012,6 +1012,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         SetVectorOfPlane([.. indices], waveSource);
     }
 
+
+    readonly FrozenSet<(int h, int k, int l)> directions = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)];
     /// <summary>
     /// 面間隔d_limit以上の面を検索、ソートする。
     /// </summary>
@@ -1035,13 +1037,12 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
         var gMax = 1 / dMin;
-        (int h, int k, int l)[] directions = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)];
 
         var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
 
         var maxNum = _maxNum;
         var outer = new List<(int H, int K, int L, double len)>() { (0, 0, 0, 0) };
-        var gHash = new HashSet<(int H, int K, int L)>((int)(maxNum * 1.5)) { (0, 0, 0) }; //全てのhklを検索するため、composeを使えないことに注意
+        var whole = new HashSet<(int H, int K, int L)>((int)(maxNum * 8)) { (0, 0, 0) }; //全ての hkl を検索するため、composeを使えないことに注意
         var minG = 0.0;
         var listPlane = new List<Plane>((int)(maxNum * 1.5));
 
@@ -1050,10 +1051,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             var end = outer.FindLastIndex(o => o.len - minG < shift * 2);
             foreach (var (h1, k1, l1, _) in CollectionsMarshal.AsSpan(outer)[..(end + 1)])
             {
-                foreach ((int h2, int k2, int l2) in directions)
+                foreach (var (h2, k2, l2) in directions)
                 {
                     int h = h1 + h2, k = k1 + k2, l = l1 + l2;
-                    if (gHash.Add((h, k, l)))
+                    if (whole.Add((h, k, l)))
                     {
                         double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                         var len = Math.Sqrt(x * x + y * y + z * z);
@@ -1231,8 +1232,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 listPlane[n].Intensity = Plane[n].Intensity;
                 listPlane[n].observedIntensity = Plane[n].observedIntensity;
             }
-        Plane.Clear();
-        Plane.AddRange(listPlane);
+        //Plane.Clear();
+        Plane = listPlane;
     }
     #endregion 面ベクトルの計算
 
@@ -1424,33 +1425,60 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #region 回折強度の強いものを検索
 
     /// <summary>
-    /// 現在の結晶構造で強度が上位最大8位までのものを検索し、返す
+    /// 現在の結晶構造で強度が上位最大16位までのものを検索し、返す
     /// </summary>
-    /// <param name="waveLentgh">X線の波長を指定 単位はnm </param>
-    /// <param name="count"> 計算する結晶面の数 </param>
+    /// <param name="waveLength">X線の波長を指定 単位はnm </param>
+    /// <param name="maxNum"> 計算する結晶面の数 </param>
     /// <returns></returns>
-    public float[] GetDspacingList(double waveLentgh, int count = 1000)
+    public float[] GetDspacingList(double waveLength, int maxNum = 512, int bestNum = 16)
     {
-        SetPlanes(double.MaxValue, waveLentgh / 2, true, true, false, false, 0, 0, 0, count);
+        double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z, bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z, cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
+        var outer = new List<(int H, int K, int L, double gLen)>() { (0, 0, 0, 0) };
+        var whole = new HashSet<(int H, int K, int L)>() { (0, 0, 0) }; 
+        var min = 0.0;
+        var list = new List<(double D, double intensity)>(maxNum * 2);
 
-        SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLentgh, null);
+        var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
+
+        while (list.Count < maxNum)
+        {
+            min = outer[0].gLen + shift;
+            var end = outer.FindLastIndex(o => o.gLen - min < 0) + 1;
+            foreach (var (h1, k1, l1, _) in CollectionsMarshal.AsSpan(outer)[..end])
+                foreach (var (h2, k2, l2) in directions)
+                {
+                    int h = h1 + h2, k = k1 + k2, l = l1 + l2;
+                    if (whole.Add((h, k, l)))
+                    {
+                        double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
+                        double gLen2 = x * x + y * y + z * z, gLen = Math.Sqrt(gLen2);
+                        outer.Add((h, k, l, gLen));
+
+                        if (SymmetryStatic.IsRootIndex((h, k, l), Symmetry, out int multi))
+                            if (Symmetry.CheckExtinctionRule(h, k, l).Length == 0)
+                            {
+                                double sinTheta = waveLength / 2 * gLen, twoTheta = 2 * Math.Asin(sinTheta), cosTwoTheta = 1 - 2 * sinTheta * sinTheta, sinTwoTheta = Math.Sin(twoTheta);
+                                var F2 = GetStructureFactor(WaveSource.Xray, Atoms, (h, k, l), gLen2 / 4.0).MagnitudeSquared();
+                                var intensity = F2 * multi  * (1 + cosTwoTheta * cosTwoTheta) / sinTwoTheta / sinTheta;  
+                                list.Add((1 / gLen, intensity));
+                            }
+                    }
+                }
+            outer.RemoveRange(0, end);
+            outer.Sort((e1, e2) => e1.gLen.CompareTo(e2.gLen));
+        }
 
         //強度の順にソート
-        Plane.Sort((p1, p2) => -p1.Intensity.CompareTo(p2.Intensity));
-
-        return [.. Plane.Take(Math.Min(8, Plane.Count)).Select(p => (float)p.d)];
+        list.Sort((e1, e2) => e2.intensity.CompareTo(e1.intensity));
+        return [.. list[..Math.Min(list.Count, bestNum)].Select(e => (float)e.D)];
     }
     #endregion
 
     #region 原子の追加/削除
 
     //引数の原子を加える
-    public bool AddAtoms(Atoms Atoms)
-    {
-        return AddAtoms(Atoms, true);
-    }
 
-    public bool AddAtoms(Atoms atoms, bool RenewFormulaAndDensity)
+    public bool AddAtoms(Atoms atoms, bool RenewFormulaAndDensity = true)
     {
         if (Atoms.Length > 0)
         {

@@ -107,10 +107,10 @@ public readonly struct Symmetry
     public readonly bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootIndex(index, this);
 
     public readonly string[] CheckExtinctionRule((int h, int k, int l) index)
-        => CheckExtinctionFunc.Select(check => check(index.h, index.k, index.l)).Where(str => str != null).ToArray();
+        => [.. CheckExtinctionFunc.Select(check => check(index.h, index.k, index.l)).Where(str => str != null)];
 
     public readonly string[] CheckExtinctionRule(int h, int k, int l)
-        => CheckExtinctionFunc.Select(check => check(h, k, l)).Where(str => str != null).ToArray();
+        => [.. CheckExtinctionFunc.Select(check => check(h, k, l)).Where(str => str != null)];
     #endregion
 
     #region 静的メソッド

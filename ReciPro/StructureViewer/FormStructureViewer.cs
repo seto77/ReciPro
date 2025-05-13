@@ -418,7 +418,8 @@ public partial class FormStructureViewer : Form
         if (checkBoxShowBoundPlanes.Checked)
         {
             var boundsArray = bounds.Select(b => b.prm.ToArray()).ToArray();
-            Parallel.For(0, bounds.Count, i =>
+            for(int i=0; i< bounds.Count; i++)
+            //Parallel.For(0, bounds.Count, i =>
             {
                 var vertices = Geometry.GetClippedPolygon(i, boundsArray);
                 var mat = new Material(bounds[i].color, numericBoxBoundPlanesOpacity.Value);
@@ -433,7 +434,8 @@ public partial class FormStructureViewer : Form
                     lock (lockObj1)
                         GLObjects.AddRange(polygon);
                 }
-            });
+            }
+            //);
         }
 
         glControlMain.SetClip(checkBoxClipObjects.Checked ? new Clip(bounds.Select(b => b.prm).ToArray()) : null);

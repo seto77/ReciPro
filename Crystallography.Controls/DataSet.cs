@@ -267,35 +267,45 @@ public partial class DataSet
         readonly Lock lockObj = new();
 
         //public DataTableCrystalDatabaseRow CreateRow(Crystal2 c) => CreateRow(c,null);
-        public DataTableCrystalDatabaseRow CreateRow(Crystal2 c)
+        public DataTableCrystalDatabaseRow CreateRow(Crystal2 c, byte[] serializedC = null)
         {
             DataTableCrystalDatabaseRow dr;
             lock (lockObj)
                 dr = NewDataTableCrystalDatabaseRow();
 
-            dr.Crystal2 = Crystal2.Serialize(c);
+            dr.Crystal2 = serializedC ?? Crystal2.Serialize(c);
+
             dr.Name = c.name;
             dr.Formula = c.formula;
             dr.Density = c.density;
             (dr.A, dr.B, dr.C, dr.Alpha, dr.Beta, dr.Gamma) = c.CellOnlyValueFloat;
-            dr.CrystalSystem = SymmetryStatic.StrArray[c.sym][16];//s.CrystalSystemStr;
-            dr.PointGroup = SymmetryStatic.StrArray[c.sym][13];
-
-            var sg = SymmetryStatic.StrArray[c.sym][3].Replace("sub", "_").Replace("Hex", " H").Replace("Rho", " R");
-            if (dr.CrystalSystem == "monoclinic")
-                sg = sg.Split("=")[0];
-            dr.SpaceGroup = sg;
+            (dr.CrystalSystem, dr.PointGroup,  dr.SpaceGroup) = Coeff[c.sym];
 
             var auth = c.auth;
             if (Regex.Matches(auth, ",").Count>1)
                 auth = auth.Split(",")[0] + ", et al.";
             dr.Authors = auth;
+            
             dr.Title = c.sect;
             dr.Journal = c.jour;
             dr.Flag = true;
 
             return dr;
         }
+
+        static (string CrystalSystem, string PointGroup, string SpaceGroup) [] Coeff = [.. SymmetryStatic.StrArray.Select(s =>
+        {
+            var sg = s[3];
+            if (sg.Contains("sub"))
+                sg = sg.Replace("sub", "_");
+            if (sg.Contains("Hex"))
+                sg = sg.Replace("Hex", " H");
+            if (sg.Contains("Rho"))
+                sg = sg.Replace("Rho", " R");
+            if (sg.Contains("="))
+                sg = sg.Split("=")[0];
+           return (s[16], s[13], sg);
+        })];
 
     }
 }

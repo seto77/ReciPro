@@ -1842,8 +1842,8 @@ public class BetheMethod
         while (count < limit && whole.Count < 1_000_000 && outer.Count > 0)
         {
             outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
-            var min = outer[0].gLen + shift;
-            var end = outer.FindLastIndex(o => o.gLen - min < shift * 2) + 1;
+            var min = outer[0].gLen + shift * 3;
+            var end = outer.FindLastIndex(o => o.gLen - min < 0) + 1;
             foreach (var o in CollectionsMarshal.AsSpan(outer)[..end])
             {
                 var (h1, k1, l1) = decompose(o.key);

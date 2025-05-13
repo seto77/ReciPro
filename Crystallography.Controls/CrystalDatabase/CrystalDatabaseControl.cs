@@ -1,5 +1,4 @@
 ﻿#region using
-using IronPython.Runtime;
 using MemoryPack;
 using MemoryPack.Compression;
 using Microsoft.Scripting.Utils;
@@ -17,6 +16,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZLinq;
 #endregion
 
 namespace Crystallography.Controls;
@@ -149,34 +149,33 @@ public partial class CrystalDatabaseControl : UserControl
                 {
                     while (fs.Length != fs.Position)
                     {
-                        foreach(var r in deserialize(fs).AsParallel().Select(Table.CreateRow).ToArray())
+                        foreach(var r in deserialize(fs).AsParallel().Select(r=> Table.CreateRow(r, Crystal2.Serialize(r))))
                             Table.Rows.Add(r);
                         ReadDatabaseWorker.ReportProgress(0, report(Table.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
                     }
+                    GC.Collect();
                 }
 
                 else if (flag == 200)//分割ファイルの時
                 {
                     var fileNum = readInt(fs);
-                    var fileNames = Enumerable.Range(0, fileNum).Select(i =>
-                            $"{filename[..^5]}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").ToList();
-
+                    var fileNames = Enumerable.Range(0, fileNum)
+                        .Select(i =>  $"{filename[..^5]}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").ToList();
                     fileNames.ForEach(fn =>
                     {
                         using var stream = new FileStream(fn, FileMode.Open);
                         while (stream.Length != stream.Position)
                         {
                             //deserialize(stream).AsParallel().Select(Table.CreateRow).ToList().ForEach(Table.Rows.Add);//この書き方だとメモリ使用量が増える
-                            foreach(var row in deserialize(stream).AsParallel().Select(Table.CreateRow))
+                            foreach (var row in  deserialize(stream).AsParallel().Select(r => Table.CreateRow(r, Crystal2.Serialize(r))))
                                 Table.Add(row);
-
+                            
                             ReadDatabaseWorker.ReportProgress(0, report(Table.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
                         }
-                        GC.Collect(10, GCCollectionMode.Forced, true, true);
+                        GC.Collect();
                     });
 
                 }
-                GC.Collect(10, GCCollectionMode.Forced, true, true);
             }
             else
                 return;

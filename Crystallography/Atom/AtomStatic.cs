@@ -2,7 +2,6 @@
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -2503,8 +2502,6 @@ new(4.86738014,0.319974401,4.58872425,
         public Func<double, double> Factor { get; }
 
 
-        //public Func<double, double, double, double> FactorImaginary { get; }
-
         /// <summary>
         /// 引数が r (原子の中心からの距離)、戻り値(単位: volt * angstrom)が投影ポテンシャルの関数
         /// </summary>
@@ -2515,7 +2512,6 @@ new(4.86738014,0.319974401,4.58872425,
         #endregion
 
         #region コンストラクタ
-
         //X線用のコンストラクタ 
 
         public ES(double a1, double b1, double a2, double b2, double a3, double b3, double a4, double b4, double c, int valence, string methods)

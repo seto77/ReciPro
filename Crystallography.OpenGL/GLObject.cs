@@ -733,7 +733,7 @@ public class Polygon : GLObject
         if (vertices.Count() == 3)//三角形の場合は特別処理
         {
             var vecs = vertices.ToArray();
-            var center =(vecs[0] + vecs[1] + vecs[2]) / 3;
+            var center = (vecs[0] + vecs[1] + vecs[2]) / 3;
             CircumscribedSphereCenter = new V4d(center, 1);
             CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
             var normF = V3d.Cross(vecs[0] - vecs[1], vecs[1] - vecs[2]).ToV3f();
@@ -744,7 +744,7 @@ public class Polygon : GLObject
             Primitives[1] = (PT.LineLoop, 3);//edges
             Primitives[2] = (PT.Points, 3);//points
         }
-        else 
+        else
         {
             var center = Extensions.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
             CircumscribedSphereCenter = new V4d(center, 1);
@@ -768,10 +768,10 @@ public class Polygon : GLObject
             Primitives[0] = (PT.TriangleFan, indicesList.Count);
             //edges
             Array.Copy(indicesArray, 2, Indices, indicesArray.Length, indicesArray.Length - 2);
-            Primitives[1] = (PT.LineLoop, indicesList.Count);
+            Primitives[1] = (PT.LineLoop, indicesList.Count - 2);
             //points
             Array.Copy(indicesArray, 2, Indices, indicesArray.Length * 2 - 2, indicesArray.Length - 2);
-            Primitives[2] = (PT.Points, indicesList.Count);
+            Primitives[2] = (PT.Points, indicesList.Count - 2);
         }
     }
     /// <summary>
@@ -782,9 +782,16 @@ public class Polygon : GLObject
     public Polygon[] Decompose(int order = 1)
     {
         //ここから本体
-        var inputs = new List<V3d>(Primitives[0].Count - 2);
-        for (int i = 1; i < Primitives[0].Count - 1; i++)
-            inputs.Add(Vertices[Indices[i]].Position.ToV3d());
+
+        V3d[] inputs;
+        if (Primitives[0].Type == PT.Triangles)
+            inputs = [.. Vertices.Select(v => v.Position.ToV3d())];
+        else
+        {
+            inputs = new V3d[Primitives[0].Count - 2];
+            for (int i = 1, n = 0; i < Primitives[0].Count - 1; i++, n++)
+                inputs[n] = Vertices[Indices[i]].Position.ToV3d();
+        }
 
         var outputs = decompose([.. inputs], order);
 
