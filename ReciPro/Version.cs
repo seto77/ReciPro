@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.902(2025/05/13)  Fixed a minor bug." +
         "\r\n ver4.901(2025/04/10)  Added several 'Macro' functions (ReciPro.Crystal.*). See https://github.com/seto77/ReciPro/wiki/20.-Macro." +
         "\r\n ver4.900(2025/04/08)  Fixed a minor bug." +
         "\r\n ver4.899(2025/04/01)  Added some built-in functions for macro (see https://github.com/seto77/ReciPro/issues/45)." +
