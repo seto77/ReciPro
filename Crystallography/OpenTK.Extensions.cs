@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using ZLinq;
 using C4 = OpenTK.Mathematics.Color4;
 using M3d = OpenTK.Mathematics.Matrix3d;
 using M3f = OpenTK.Mathematics.Matrix3;
@@ -11,8 +13,7 @@ using V3d = OpenTK.Mathematics.Vector3d;
 using V3f = OpenTK.Mathematics.Vector3;
 using V4d = OpenTK.Mathematics.Vector4d;
 using V4f = OpenTK.Mathematics.Vector4;
-
-namespace Crystallography.OpenGL;
+namespace Crystallography;
 
 public static class Extensions
 {
@@ -241,6 +242,9 @@ public static class Extensions
     }
 
     public static V3d Average(IEnumerable<V3d> vectors)
+        => Average(vectors.AsValueEnumerable());
+
+    public static V3d Average(ValueEnumerable<ZLinq.Linq.FromEnumerable<V3d>, V3d> vectors)
     {
         double x = 0, y = 0, z = 0;
         foreach (var v in vectors)

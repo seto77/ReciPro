@@ -7,6 +7,9 @@ using OpenTK.Graphics.OpenGL4;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Management;
+using System.Threading;
+using OpenTK.GLControl;
+using ZLinq;
 #endregion
 
 #region 定義
@@ -21,8 +24,7 @@ using M4d = OpenTK.Mathematics.Matrix4d;
 using M4f = OpenTK.Mathematics.Matrix4;
 using M3d = OpenTK.Mathematics.Matrix3d;
 using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
-using System.Threading;
-using OpenTK.GLControl;
+
 #endregion 定義
 
 namespace Crystallography.OpenGL;
@@ -737,7 +739,7 @@ public class Polygon : GLObject
             CircumscribedSphereCenter = new V4d(center, 1);
             CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
             var normF = V3d.Cross(vecs[0] - vecs[1], vecs[1] - vecs[2]).ToV3f();
-            Vertices = vecs.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)).ToArray();
+            Vertices = [.. vecs.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb))];
             Indices = [0, 1, 2, 0, 1, 2, 0, 1, 2];
             Primitives = new (PT Type, int Count)[3];
             Primitives[0] = (PT.Triangles, 3);//surfaces
@@ -855,7 +857,7 @@ public class Polygon : GLObject
                 resultVertices.Add([center, newVertices[i], newVertices[j]]);
             }
             //新しく出来た頂点群を再帰的に分割する
-            return resultVertices.SelectMany(v => decompose(v, ord - 1)).ToArray();
+            return [.. resultVertices.SelectMany(v => decompose(v, ord - 1))];
         }
     }
 }
@@ -979,7 +981,7 @@ public class HoledDisk : GLObject
         indices.Add([.. indicesTmp]);
 
         types.Add(PT.Points);
-        indices.Add(Enumerable.Range(0, vertices.Length).ToArray());
+        indices.Add([.. ValueEnumerable.Range(0, vertices.Length)]);
 
         Vertices = new Vertex[vertices.Length];
         for (int i = 0; i < vertices.Length; i++)
@@ -1717,9 +1719,9 @@ public class Torus : GLObject
         types.Add(PT.Lines);
         indices.Add([.. indexListEdges]);
 
-        Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
+        Indices = [.. indices.SelectMany(i => i).Select(i => (uint)i)];
 
-        Primitives = types.Select((t, i) => (t, indices[i].Length)).ToArray();
+        Primitives = [.. types.Select((t, i) => (t, indices[i].Length))];
     }
 }
 #endregion
@@ -1754,9 +1756,9 @@ public class Mesh : GLObject
                     norm = new V3f(0, 0, 0);
                 else
                 {
-                    var pts = new List<Vector3DBase>();
+                    var pts = new List<V3d>();
                     foreach (var i in new[] { index, index - 1, index + 1, index - width, index + width })
-                        pts.Add(new Vector3DBase(positions[i].X, positions[i].Y, positions[i].Z));
+                        pts.Add(new V3d(positions[i].X, positions[i].Y, positions[i].Z));
                     var param = Geometry.GetPlaneEquationFromPoints(pts);
 
                     norm = new V3f((float)param.A, (float)param.B, (float)param.C);
@@ -1776,7 +1778,7 @@ public class Mesh : GLObject
                 indicesList.AddRange([i, i + width + 1, i + width,]);
             }
         Vertices = [.. vList];
-        Indices = indicesList.Select(i => (uint)i).ToArray();
+        Indices = [.. indicesList.Select(i => (uint)i)];
         Primitives = [(PT.Triangles, indicesList.Count)];
 
     }

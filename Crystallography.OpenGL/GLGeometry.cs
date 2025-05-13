@@ -4,7 +4,8 @@ using System.Linq;
 using M3d = OpenTK.Mathematics.Matrix3d;
 using V2d = OpenTK.Mathematics.Vector2d;
 using V3d = OpenTK.Mathematics.Vector3d;
-
+using ZLinq;
+using Windows.UI.ViewManagement.Core;
 namespace Crystallography.OpenGL;
 
 public static class GLGeometry
@@ -17,11 +18,13 @@ public static class GLGeometry
     /// </summary>
     /// <param name="points"></param>
     /// <returns></returns>
-    public static (List<uint> Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable<V3d> points, in V3d origin)
+    public static (List<uint> Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable<V3d> _points, in V3d origin)
     {
+        var points = _points.AsValueEnumerable();
+
         if (points.Count() == 3)
         {
-            var pts = points is V3d[] v ? v : points.ToArray();
+            var pts = points.ToArray();
             return (new List<uint>([0, 1, 2, 0]), (pts[0] + pts[1] + pts[2]) / 3, V3d.Cross(pts[1] - pts[0], pts[2] - pts[1]));
         }
 
@@ -34,21 +37,24 @@ public static class GLGeometry
 
         //座標変換 (XY平面に投影)
         var rot = CreateRotationToZ(norm);
-        var vXY = points.Select(p => p - center).Select(p => new V2d(rot.M11 * p.X + rot.M12 * p.Y + rot.M13 * p.Z, rot.M21 * p.X + rot.M22 * p.Y + rot.M23 * p.Z)).ToList();
+        var vXY = points.Select(p => p - center).Select(p => new V2d(rot.M11 * p.X + rot.M12 * p.Y + rot.M13 * p.Z, rot.M21 * p.X + rot.M22 * p.Y + rot.M23 * p.Z));//.ToArrayPool();//.ToList();
         //原点から最も距離の遠い点を選んで、iに格納
-        var lengthSquaredArray = vXY.Select(p => p.LengthSquared).ToList();
+        var lengthSquaredArray = vXY.Select(p => p.LengthSquared);//.ToList();
         var maxLength = lengthSquaredArray.Max();
-        var i = lengthSquaredArray.FindIndex(len => len == maxLength);
+        var i = lengthSquaredArray.ToList().FindIndex(len => len == maxLength);
+
+        using var vXY_pool = vXY.ToArrayPool();
+        var vXY_Span = vXY_pool.Span;
 
         //もう一つ点を選び、直線の方程式を産出
         var iList = new List<uint>([(uint)i]);
         do
         {
-            for (int j = 0; j < vXY.Count; j++)
+            for (int j = 0; j < vXY_Span.Length; j++)
                 if (j != i)
                 {
-                    var V = new V2d(vXY[j].Y - vXY[i].Y, vXY[i].X - vXY[j].X);
-                    var c = vXY[j].X * vXY[i].Y - vXY[i].X * vXY[j].Y;
+                    var V = new V2d(vXY_Span[j].Y - vXY_Span[i].Y, vXY_Span[i].X - vXY_Span[j].X);
+                    var c = vXY_Span[j].X * vXY_Span[i].Y - vXY_Span[i].X * vXY_Span[j].Y;
 
                     if (vXY.All(p => V2d.Dot(p, V) + c <= Th))
                     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using V3d = OpenTK.Mathematics.Vector3d;
 using OpenTK.Graphics;
-
+using ZLinq;
 namespace Crystallography;
 
 public static class Geometry
@@ -666,31 +666,8 @@ public static class Geometry
     /// <param name="p1"></param>
     /// <param name="p2"></param>
     /// <returns></returns>
-    public static Vector3DBase GetCrossPoint(in double a, in double b, in double c, in double d, Vector3DBase p1, Vector3DBase p2)
-    {
-        //次の3つの方程式を満たすx, y, z を求めればよい (2020/02/04修正)
-        // a x + b y + c z = d
-        //(y1 - y2) x - (x1 - x2) y = x2 y1 - x1 y2 
-        //(z1 - z2) y - (y1 - y2) z = y2 z1 - y1 z2
-
-        //double denom = a * (p1.X - p2.X) + b * (p1.Y - p2.Y) + c * (p1.Z - p2.Z);
-        //double x = (d * (p1.X - p2.X) - b * (p1.X * p2.Y - p1.Y * p2.X) - c * (p1.X * p2.Z - p1.Z * p2.X)) / denom;
-        //double y = (d * (p1.Y - p2.Y) - c * (p1.Y * p2.Z - p1.Z * p2.Y) - a * (p1.Y * p2.X - p1.X * p2.Y)) / denom;
-        //double z = (d * (p1.Z - p2.Z) - a * (p1.Z * p2.X - p1.X * p2.Z) - b * (p1.Z * p2.Y - p1.Y * p2.Z)) / denom;
-
-        double dx = p1.X - p2.X, dy = p1.Y - p2.Y, dz = p1.Z - p2.Z;
-
-        var uz = p1.X * p2.Y - p1.Y * p2.X;
-        var ux = p1.Y * p2.Z - p1.Z * p2.Y;
-        var uy = p1.Z * p2.X - p1.X * p2.Z;
-
-        var denom = a * dx + b * dy + c * dz;
-        var x = (d * dx - b * uz + c * uy) / denom;
-        var y = (d * dy - c * ux + a * uz) / denom;
-        var z = (d * dz - a * uy + b * ux) / denom;
-
-        return new Vector3DBase(x, y, z);
-    }
+    public static Vector3DBase GetCrossPoint(in double a, in double b, in double c, in double d, Vector3DBase p1, Vector3DBase p2) 
+        => GetCrossPoint(a, b, c, d, p1.ToOpenTK(), p2.ToOpenTK()).ToVector3DBase();
 
     /// <summary>
     /// 3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意
@@ -713,7 +690,7 @@ public static class Geometry
         //double x = (d * (p1.X - p2.X) - b * (p1.X * p2.Y - p1.Y * p2.X) - c * (p1.X * p2.Z - p1.Z * p2.X)) / denom;
         //double y = (d * (p1.Y - p2.Y) - c * (p1.Y * p2.Z - p1.Z * p2.Y) - a * (p1.Y * p2.X - p1.X * p2.Y)) / denom;
         //double z = (d * (p1.Z - p2.Z) - a * (p1.Z * p2.X - p1.X * p2.Z) - b * (p1.Z * p2.Y - p1.Y * p2.Z)) / denom;
-
+        
         double dx = p1.X - p2.X, dy = p1.Y - p2.Y, dz = p1.Z - p2.Z;
 
         var uz = p1.X * p2.Y - p1.Y * p2.X;
@@ -730,7 +707,7 @@ public static class Geometry
 
 
     // <summary>
-    /// 3次元において、平面 a x + b y + c z = d (法線ベクトル(a,b,c))と、点(0,0,0)とptを結ぶ直線と交わる交点を返す.  平面方程式がa x + b y + c z + d = 0 ではないことに注意
+    /// 3次元において、平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点(0,0,0)とptを結ぶ直線と交わる交点を返す.  平面方程式がa x + b y + c z + d = 0 ではないことに注意
     /// </summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
@@ -912,45 +889,29 @@ public static class Geometry
     /// <param name="y"></param>
     /// <param name="z"></param>
     /// <returns></returns>
-    public static double GetLengthFromPlane(double a, double b, double c, double d, double x, double y, double z)
-    {
-        return Math.Abs(a * x + b * y + c * z + d) / Math.Sqrt(a * a + b * b + c * c);
-    }
+    public static double GetLengthFromPlane(double a, double b, double c, double d, double x, double y, double z) 
+        => Math.Abs(a * x + b * y + c * z + d) / Math.Sqrt(a * a + b * b + c * c);
 
-    /// <summary>
-    /// 点集合から最小二乗法による平面パラメータA, B, C, D (但し、平面方程式 a x + b y + c z + d = 0) を返す
-    /// </summary>
-    /// <param name="points"></param>
-    /// <returns>double[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0)</returns>
-    public static (double A, double B, double C, double D) GetPlaneEquationFromPoints(IEnumerable<Vector3DBase> points)
-    {
-        //http://sysplan.nams.kyushu-u.ac.jp/gen/edu/Algorithms/PlaneFitting/index.html
-        //pdfはCrystallograpy/資料フォルダ
-
-        var ave = Vector3DBase.Average(points);
-        var mtx = new DenseMatrix(points.Count(), 3);
-        int n = 0;
-        foreach (var p in points.Select(p => p - ave))
-            mtx.SetRow(n++, p.ToDoubleArray());
-
-        var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
-        var index = evd.EigenValues.AbsoluteMinimumIndex();
-
-        double a = evd.EigenVectors[0, index], b = evd.EigenVectors[1, index], c = evd.EigenVectors[2, index], d = -(a * ave.X + b * ave.Y + c * ave.Z);
-        return (a, b, c, d);
-    }
+    #region 点集合から最小二乗法による平面パラメータdouble[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0) を返す. 
 
     /// <summary>
     /// 点集合から最小二乗法による平面パラメータdouble[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0) を返す
     /// </summary>
     /// <param name="points"></param>
     /// <returns>double[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0)</returns>
-    public static (double A, double B, double C, double D) GetPlaneEquationFromPoints(IEnumerable<V3d> points)
+    public static (double A, double B, double C, double D) GetPlaneEquationFromPoints(IEnumerable<V3d> points) => GetPlaneEquationFromPoints(points.AsValueEnumerable());
+
+    /// <summary>
+    /// 点集合から最小二乗法による平面パラメータdouble[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0) を返す
+    /// </summary>
+    /// <param name="points"></param>
+    /// <returns>double[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0)</returns>
+    public static (double A, double B, double C, double D) GetPlaneEquationFromPoints(ValueEnumerable<ZLinq.Linq.FromEnumerable<V3d>,V3d> points)
     {
         //http://sysplan.nams.kyushu-u.ac.jp/gen/edu/Algorithms/PlaneFitting/index.html
         //pdfはCrystallograpy/資料フォルダ
 
-        var ave = new OpenTK.Mathematics.Vector3d();
+        var ave = new V3d();
         foreach (var p in points)
             ave += p;
         ave /= points.Count();
@@ -960,13 +921,14 @@ public static class Geometry
         foreach (var p in points.Select(p => p - ave))
             mtx.SetRow(n++, [p.X, p.Y, p.Z]);
 
-        //var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
         var evd = mtx.TransposeThisAndMultiply(mtx).Evd(Symmetricity.Symmetric);
         var index = evd.EigenValues.AbsoluteMinimumIndex();
 
         double a = evd.EigenVectors[0, index], b = evd.EigenVectors[1, index], c = evd.EigenVectors[2, index], d = -(a * ave.X + b * ave.Y + c * ave.Z);
         return (a, b, c, d);
     }
+
+    #endregion
 
 
     /// <summary>
@@ -1002,7 +964,7 @@ public static class Geometry
     {
         if (bounds.Length == 0) return null;
 
-        List<Vector3d> pts;
+        List<V3d> pts;
 
         if (bounds.Length < 250)//boundsが少ない場合は正攻法で解く
         {
