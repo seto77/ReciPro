@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -8,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Crystallography;
 public static class ImageIO
@@ -35,6 +38,7 @@ public static class ImageIO
             "png",
             "smv",
             "mrc",
+            "nxs",
         ];
 
     public static string FilterString
@@ -247,6 +251,8 @@ public static class ImageIO
             result = SMV(str);
         else if (str.ToLower().EndsWith("mrc"))
             result = MRC(str);
+        else if (str.ToLower().EndsWith("nxs"))
+            result = NXS(str);
         else
             return false;
 
@@ -722,161 +728,234 @@ public static class ImageIO
     }
     #endregion
 
+
+    public static bool NXS(string filename)
+    {
+        var hdf = new HDF(filename);
+
+        var header = "/entry/instrument/detector/";
+
+        var data = hdf.GetDataset(header + "data");
+        int height = (int)data.Space.Dimensions[1], width = (int)data.Space.Dimensions[2];
+        Ring.Intensity = [.. data.Read<int[]>().Select(e => (double)e)];
+
+        double pixSizeX = hdf.GetDataset(header + "x_pixel_size").Read<double>(), pixSizeY = hdf.GetDataset(header + "y_pixel_size").Read<double>();
+
+        Ring.SrcImgSize = new Size(width, height);
+        Ring.ImageType = Ring.ImageTypeEnum.NXS;
+
+        #region コメント情報の取得
+
+        (string Name, Type Type)[] comments = [
+            ("acquisition_mode", typeof(string)),
+            ("bit_depth_readout", typeof(int)),
+            ("calibration_date", typeof(string)),
+            ("countrate_correction_applied", typeof(byte)),
+            ("description", typeof(string)),
+            ("detector_readout_time", typeof(double)),
+            ("flatfield_applied", typeof(byte)),
+            ("layout", typeof(string)),
+            ("local_name", typeof(string)),
+            ("pixelmask_applied", typeof(byte)),
+            ("saturation_value", typeof(int)),
+            ("sensor_material", typeof(string)),
+            ("sensor_thickness", typeof(float)),
+            ("sequence_number", typeof(int)),
+            ("trigger_dead_time", typeof(double)),
+            ("trigger_delay_time", typeof(double)),
+            ("type", typeof(string)),
+            ("x_pixel_size", typeof(double)),
+            ("y_pixel_size", typeof(double)),
+        ];
+        var sb = new StringBuilder();
+        foreach (var (name, type) in comments)
+        {
+            var dataset = hdf.GetDataset(header + name);
+            if (dataset != null)
+            {
+                if (type == typeof(string))
+                    sb.AppendLine($"{name}: {dataset.ReadStr()}");
+                else if (type == typeof(int))
+                    sb.AppendLine($"{name}: {dataset.Read<int>()}");
+                else if (type == typeof(double))
+                    sb.AppendLine($"{name}: {dataset.Read<double>()}");
+                else if (type == typeof(float))
+                    sb.AppendLine($"{name}: {dataset.Read<float>()}");
+                else if (type == typeof(long))
+                    sb.AppendLine($"{name}: {dataset.Read<long>()}");
+                else if (type == typeof(byte))
+                    sb.AppendLine($"{name}: {dataset.Read<byte>()}");
+            }
+        }
+        Ring.Comments = sb.ToString();
+        #endregion
+
+        return true;
+    }
+
+
     #region HDF5
     public static bool HDF5(string str, bool? normarize = null)
     {
-        try
-        {
-            Ring.IP ??= new IntegralProperty();
 
-            var hdf = new HDF(str);
+        
 
-            var groupID2name = hdf.Paths.Where(g => g.Depth == 0 && !g.Name.Contains("file_info")).First().Name;
+        return false;
 
+        #region 以下はPilutus時代のコードだが、もう需要がないのでお蔵入り。
+        //try
+        //{
+        //    Ring.IP ??= new IntegralProperty();
 
-            //パルスパワー読込
-            (float[] dataPulsePower, _) = hdf.GetValue1<float>(groupID2name + "/event_info/bl_3/oh_2/bm_2_pulse_energy_in_joule");
-            if (dataPulsePower != null)
-            {
-                Ring.SequentialImagePulsePower = [];
-                for (int i = 0; i < dataPulsePower.Length; i++)
-                    Ring.SequentialImagePulsePower.Add(dataPulsePower[i]);
-            }
-            else//佐野さんから依頼された検出器
-                normarize = false;
+        //    var hdf = new HDF(str);
 
-            //X線エネルギー読込
-            (float[] dataPhotonEnergy, _) = hdf.GetValue1<float>(groupID2name + "/event_info/bl_3/oh_2/photon_energy_in_eV");
-            if (dataPhotonEnergy != null)
-            {
-                Ring.SequentialImageEnergy = [];
-                for (int i = 0; i < dataPhotonEnergy.Length; i++)
-                    Ring.SequentialImageEnergy.Add(dataPhotonEnergy[i]);
-            }
-            //左側イメージ検出器、右側イメージ検出器、エネルギースペクトルがどの検出器番号に対応するかを判定
-            int leftDetector = -1, rightDetector = -1, energySpectrum = -1;
-
-            for (int i = 1; i < 4; i++)
-            {
-                (int detectorType, _) = hdf.GetValue0<int>($"{groupID2name}/detector_2d_{i}/detector_info/detector_type");
-
-                if (detectorType == 1 || detectorType == 0)//イメージ検出器の場合
-                {
-                    //detector_2d_1　と _2の位置関係を調べる
-
-                    (float[] dataCoordinate, _) = hdf.GetValue1<float>($"{groupID2name}/detector_2d_{i}/detector_info/detector_coordinate_in_micro_meter");
-
-                    if (dataCoordinate == null)//佐野さんから依頼された検出器
-                    {
-                        leftDetector = 1;
-                        rightDetector = 2;
-                    }
-                    else if (dataCoordinate[0] == 0)
-                        leftDetector = i;
-                    else
-                        rightDetector = i;
-                }
-                else if (detectorType == 7)
-                    energySpectrum = i;
-            }
-
-            //ピクセルサイズ読み込み
-            (float[] dataPixelSize, _) = hdf.GetValue1<float>(groupID2name + "/detector_2d_1/detector_info/pixel_size_in_micro_meter");
-            if (dataPixelSize != null)
-            {
-                Ring.IP.PixSizeX = dataPixelSize[0] * 0.001;
-                Ring.IP.PixSizeY = dataPixelSize[1] * 0.001;
-            }
-            else//佐野さんから依頼された検出器
-            {
-                (var data_size, _) = hdf.GetValue1<float>(groupID2name + "/detector_2d_1/detector_info/data_scale(XYZT)");
-                if (data_size != null)
-                {
-                    Ring.IP.PixSizeX = data_size[0] * 0.001;
-                    Ring.IP.PixSizeY = data_size[1] * 0.001;
-                }
-                else
-                {
-                    Ring.IP.PixSizeX = Ring.IP.PixSizeY = 0.05;
-                }
-            }
-
-            //tag番号を調べる
-            var tag = new List<string>();
-            foreach (var (Name, Parent, Depth) in hdf.Paths)
-            {
-                var tmp = Name.Split(["/"], StringSplitOptions.RemoveEmptyEntries);
-                if (tmp.Length != 0 && tmp[^1].StartsWith("tag_") && !tag.Contains(tmp[^1]))
-                    tag.Add(tmp[^1]);
-            }
-
-            //各tagの画像を読み込み
-            Ring.SequentialImageIntensities = [];
-            Ring.SequentialImageNames = [];
-            int imageWidth = 1024, imageHeight = 1024;
-            for (int i = 0; i < tag.Count; i++)
-            {
-                (float[][] dataImageLeft, _) = hdf.GetValue2<float>($"{groupID2name}/detector_2d_{leftDetector}/{tag[i]}/detector_data");
-
-                (float[][] dataImageRight, _) = hdf.GetValue2<float>($"{groupID2name}/detector_2d_{rightDetector}/{tag[i]}/detector_data");
+        //    var groupID2name = hdf.Paths.Where(g => g.Depth == 0 && !g.Name.Contains("file_info")).First().Name;
 
 
+        //    //パルスパワー読込
+        //    (float[] dataPulsePower, _) = hdf.GetValue1<float>(groupID2name + "/event_info/bl_3/oh_2/bm_2_pulse_energy_in_joule");
+        //    if (dataPulsePower != null)
+        //    {
+        //        Ring.SequentialImagePulsePower = [];
+        //        for (int i = 0; i < dataPulsePower.Length; i++)
+        //            Ring.SequentialImagePulsePower.Add(dataPulsePower[i]);
+        //    }
+        //    else//佐野さんから依頼された検出器
+        //        normarize = false;
 
-                if (dataImageLeft != null && dataImageRight != null)
-                {
-                    Ring.SequentialImageIntensities.Add(new double[imageHeight * imageWidth]);
-                    int n = 0;
-                    for (int h = 0; h < imageHeight; h++)
-                    {
-                        for (int w = 0; w < imageWidth / 2; w++)
-                            Ring.SequentialImageIntensities[i][n++] =dataImageLeft[h][w];
-                        for (int w = 0; w < imageWidth / 2; w++)
-                            Ring.SequentialImageIntensities[i][n++] = dataImageRight[h][w];
-                    }
-                }
-                else if (dataImageLeft != null)
-                {
-                    imageWidth = 512;
-                    Ring.SequentialImageIntensities.Add(new double[imageHeight * imageWidth]);
-                    int n = 0;
-                    for (int h = 0; h < imageHeight; h++)
-                        for (int w = 0; w < imageWidth; w++)
-                            Ring.SequentialImageIntensities[i][n++] = dataImageLeft[h][w];
-                }
-                else
-                    Ring.SequentialImageIntensities.Add([]);
+        //    //X線エネルギー読込
+        //    (float[] dataPhotonEnergy, _) = hdf.GetValue1<float>(groupID2name + "/event_info/bl_3/oh_2/photon_energy_in_eV");
+        //    if (dataPhotonEnergy != null)
+        //    {
+        //        Ring.SequentialImageEnergy = [];
+        //        for (int i = 0; i < dataPhotonEnergy.Length; i++)
+        //            Ring.SequentialImageEnergy.Add(dataPhotonEnergy[i]);
+        //    }
+        //    //左側イメージ検出器、右側イメージ検出器、エネルギースペクトルがどの検出器番号に対応するかを判定
+        //    int leftDetector = -1, rightDetector = -1, energySpectrum = -1;
 
-                //強度をノーマライズする場合
-                normarize ??= MessageBox.Show("Normarize intensities by pulse power?", "HDF file option", MessageBoxButtons.YesNo) == DialogResult.Yes;
+        //    for (int i = 1; i < 4; i++)
+        //    {
+        //        (int detectorType, _) = hdf.GetValue0<int>($"{groupID2name}/detector_2d_{i}/detector_info/detector_type");
 
-                if (normarize == true && dataPulsePower[i] > 0)
-                    Ring.SequentialImageIntensities[i] = [.. Ring.SequentialImageIntensities[i].Select(d => d / (double)dataPulsePower[i] / 10000)];
+        //        if (detectorType == 1 || detectorType == 0)//イメージ検出器の場合
+        //        {
+        //            //detector_2d_1　と _2の位置関係を調べる
 
-                Ring.PulsePowerNormarized = normarize == true;
+        //            (float[] dataCoordinate, _) = hdf.GetValue1<float>($"{groupID2name}/detector_2d_{i}/detector_info/detector_coordinate_in_micro_meter");
 
-                if (i == 0)
-                {
-                    Ring.Intensity = new double[imageHeight * imageWidth];
-                    for (int j = 0; j < imageHeight * imageWidth; j++)
-                        Ring.Intensity[j] =Ring.SequentialImageIntensities[0][j];
-                }
+        //            if (dataCoordinate == null)//佐野さんから依頼された検出器
+        //            {
+        //                leftDetector = 1;
+        //                rightDetector = 2;
+        //            }
+        //            else if (dataCoordinate[0] == 0)
+        //                leftDetector = i;
+        //            else
+        //                rightDetector = i;
+        //        }
+        //        else if (detectorType == 7)
+        //            energySpectrum = i;
+        //    }
 
-                Ring.SequentialImageNames.Add(tag[i].Replace("tag_", ""));
-            }
+        //    //ピクセルサイズ読み込み
+        //    (float[] dataPixelSize, _) = hdf.GetValue1<float>(groupID2name + "/detector_2d_1/detector_info/pixel_size_in_micro_meter");
+        //    if (dataPixelSize != null)
+        //    {
+        //        Ring.IP.PixSizeX = dataPixelSize[0] * 0.001;
+        //        Ring.IP.PixSizeY = dataPixelSize[1] * 0.001;
+        //    }
+        //    else//佐野さんから依頼された検出器
+        //    {
+        //        (var data_size, _) = hdf.GetValue1<float>(groupID2name + "/detector_2d_1/detector_info/data_scale(XYZT)");
+        //        if (data_size != null)
+        //        {
+        //            Ring.IP.PixSizeX = data_size[0] * 0.001;
+        //            Ring.IP.PixSizeY = data_size[1] * 0.001;
+        //        }
+        //        else
+        //        {
+        //            Ring.IP.PixSizeX = Ring.IP.PixSizeY = 0.05;
+        //        }
+        //    }
+
+        //    //tag番号を調べる
+        //    var tag = new List<string>();
+        //    foreach (var (Name, Parent, Depth) in hdf.Paths)
+        //    {
+        //        var tmp = Name.Split(["/"], StringSplitOptions.RemoveEmptyEntries);
+        //        if (tmp.Length != 0 && tmp[^1].StartsWith("tag_") && !tag.Contains(tmp[^1]))
+        //            tag.Add(tmp[^1]);
+        //    }
+
+        //    //各tagの画像を読み込み
+        //    Ring.SequentialImageIntensities = [];
+        //    Ring.SequentialImageNames = [];
+        //    int imageWidth = 1024, imageHeight = 1024;
+        //    for (int i = 0; i < tag.Count; i++)
+        //    {
+        //        (float[][] dataImageLeft, _) = hdf.GetValue2<float>($"{groupID2name}/detector_2d_{leftDetector}/{tag[i]}/detector_data");
+
+        //        (float[][] dataImageRight, _) = hdf.GetValue2<float>($"{groupID2name}/detector_2d_{rightDetector}/{tag[i]}/detector_data");
 
 
-            Ring.SrcImgSize = new Size(imageWidth, imageHeight);
-            Ring.ImageType = Ring.ImageTypeEnum.HDF5;
 
-            Ring.Comments = "Num. of Frame: " + tag.Count.ToString() + "\r\n";
-            return true;
+        //        if (dataImageLeft != null && dataImageRight != null)
+        //        {
+        //            Ring.SequentialImageIntensities.Add(new double[imageHeight * imageWidth]);
+        //            int n = 0;
+        //            for (int h = 0; h < imageHeight; h++)
+        //            {
+        //                for (int w = 0; w < imageWidth / 2; w++)
+        //                    Ring.SequentialImageIntensities[i][n++] =dataImageLeft[h][w];
+        //                for (int w = 0; w < imageWidth / 2; w++)
+        //                    Ring.SequentialImageIntensities[i][n++] = dataImageRight[h][w];
+        //            }
+        //        }
+        //        else if (dataImageLeft != null)
+        //        {
+        //            imageWidth = 512;
+        //            Ring.SequentialImageIntensities.Add(new double[imageHeight * imageWidth]);
+        //            int n = 0;
+        //            for (int h = 0; h < imageHeight; h++)
+        //                for (int w = 0; w < imageWidth; w++)
+        //                    Ring.SequentialImageIntensities[i][n++] = dataImageLeft[h][w];
+        //        }
+        //        else
+        //            Ring.SequentialImageIntensities.Add([]);
 
-        }
-        catch (Exception)
-        {
-            MessageBox.Show("Can not open *.h5 file. Some dll files may be not imported properly, or the *.h5 file may be corrupeted");
-            return false;
-        }
+        //        //強度をノーマライズする場合
+        //        normarize ??= MessageBox.Show("Normarize intensities by pulse power?", "HDF file option", MessageBoxButtons.YesNo) == DialogResult.Yes;
+
+        //        if (normarize == true && dataPulsePower[i] > 0)
+        //            Ring.SequentialImageIntensities[i] = [.. Ring.SequentialImageIntensities[i].Select(d => d / (double)dataPulsePower[i] / 10000)];
+
+        //        Ring.PulsePowerNormarized = normarize == true;
+
+        //        if (i == 0)
+        //        {
+        //            Ring.Intensity = new double[imageHeight * imageWidth];
+        //            for (int j = 0; j < imageHeight * imageWidth; j++)
+        //                Ring.Intensity[j] =Ring.SequentialImageIntensities[0][j];
+        //        }
+
+        //        Ring.SequentialImageNames.Add(tag[i].Replace("tag_", ""));
+        //    }
+
+
+        //    Ring.SrcImgSize = new Size(imageWidth, imageHeight);
+        //    Ring.ImageType = Ring.ImageTypeEnum.HDF5;
+
+        //    Ring.Comments = "Num. of Frame: " + tag.Count.ToString() + "\r\n";
+        //    return true;
+
+        //}
+        //catch (Exception)
+        //{
+        //    MessageBox.Show("Can not open *.h5 file. Some dll files may be not imported properly, or the *.h5 file may be corrupeted");
+        //    return false;
+        //}
+        #endregion
     }
     #endregion
 

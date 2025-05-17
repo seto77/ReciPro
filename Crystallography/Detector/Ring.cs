@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using static System.Windows.Forms.AxHost;
 
 namespace Crystallography;
 
@@ -221,8 +219,12 @@ public static class Ring
         /// <summary>
         /// PILATUSで出力されたcbfファイルを、ADXVというソフトで変換したフォーマット (拡張子img). (references\ImageExsample\ADXV 柴咲さん )
         /// </summary>
-        ADXV
+        ADXV,
 
+        /// <summary>
+        /// NeXus Data Format (拡張子nxs), X-Spectrum社　LAMBDAX線検出器　. (\references\ImageExsample\LAMBDA (20250516平尾さんより))
+        /// </summary>
+        NXS,
 
 
         #endregion 画像タイプ

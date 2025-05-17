@@ -268,8 +268,6 @@ public static class HKL
 }
 #endregion
 
-
-
 #region Stringの拡張
 public static class StringEx
 {

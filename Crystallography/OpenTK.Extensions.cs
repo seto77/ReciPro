@@ -241,8 +241,7 @@ public static class Extensions
         return new V3f(x / count, y / count, z / count);
     }
 
-    public static V3d Average(IEnumerable<V3d> vectors)
-        => Average(vectors.AsValueEnumerable());
+    public static V3d Average(IEnumerable<V3d> vectors)  => Average(vectors.AsValueEnumerable());
 
     public static V3d Average(ValueEnumerable<ZLinq.Linq.FromEnumerable<V3d>, V3d> vectors)
     {
