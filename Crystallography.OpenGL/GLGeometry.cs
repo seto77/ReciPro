@@ -20,15 +20,16 @@ public static class GLGeometry
     /// <returns></returns>
     public static (List<uint> Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable<V3d> _points, in V3d origin)
     {
-        var points = _points.AsValueEnumerable();
-
-        if (points.Count() == 3)
+        if (_points.Count() == 3)
         {
-            var pts = points.ToArray();
+            var pts = _points.ToArray();
             return (new List<uint>([0, 1, 2, 0]), (pts[0] + pts[1] + pts[2]) / 3, V3d.Cross(pts[1] - pts[0], pts[2] - pts[1]));
         }
 
-        var center = Extensions.Average(points);
+        var points = _points.AsValueEnumerable();
+
+       
+        var center = TkEx.Average(points);
         //var prm = Geometriy.GetPlaneEquationFromPoints(points.Select(p => p.ToVector3DBase()));
         var (A, B, C, _) = Geometry.GetPlaneEquationFromPoints(points);
         var norm = new V3d(A, B, C);
@@ -37,7 +38,7 @@ public static class GLGeometry
 
         //座標変換 (XY平面に投影)
         var rot = CreateRotationToZ(norm);
-        var vXY = points.Select(p => p - center).Select(p => new V2d(rot.M11 * p.X + rot.M12 * p.Y + rot.M13 * p.Z, rot.M21 * p.X + rot.M22 * p.Y + rot.M23 * p.Z));//.ToArrayPool();//.ToList();
+        var vXY = points.Select(p => p - center).Select(p => new V2d(rot.M11 * p.X + rot.M12 * p.Y + rot.M13 * p.Z, rot.M21 * p.X + rot.M22 * p.Y + rot.M23 * p.Z));
         //原点から最も距離の遠い点を選んで、iに格納
         var lengthSquaredArray = vXY.Select(p => p.LengthSquared);//.ToList();
         var maxLength = lengthSquaredArray.Max();

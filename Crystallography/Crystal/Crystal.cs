@@ -11,6 +11,8 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using ZLinq;
+using ZLinq.Simd;
 #endregion
 
 namespace Crystallography;
@@ -1267,8 +1269,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="dMin"></param>
     /// <param name="wavesource"></param>
     /// <param name="excludeLatticeCondition"></param>
-    public void SetVectorOfG(double dMin, WaveSource wavesource, int maxNum = 25000)
-        => SetVectorOfG(dMin, double.PositiveInfinity, wavesource, maxNum);
+    public void SetVectorOfG(double dMin, WaveSource wavesource, int maxNum = 25000)  => SetVectorOfG(dMin, double.PositiveInfinity, wavesource, maxNum);
 
     /// <summary>
     /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算

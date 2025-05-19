@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +11,8 @@ using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
-using V3 = OpenTK.Mathematics.Vector3d;
 using ZLinq;
+using V3 = OpenTK.Mathematics.Vector3d;
 
 namespace Crystallography;
 
@@ -19,6 +20,7 @@ public class ConvertCrystalData
 {
     private static readonly StringComparison Ord = StringComparison.Ordinal;
 
+    #region 文字列操作の高速化を狙った関数群
     static void Replace(ref string str, string oldValue, string newValue)
     {
         if (str.Contains(oldValue))
@@ -47,11 +49,7 @@ public class ConvertCrystalData
 
     static void Insert(ref string[] str, int index, string value) => str = [.. str[..index], value, .. str[index..]];
 
-    static void Replace(ref string str, char oldValue, char newValue)
-    {
-        if (str.Contains(oldValue))
-            str = str.Replace(oldValue, newValue);
-    }
+    #endregion
 
     #region CrystalList(xml形式)の読み込み/書き込み
     public static bool SaveCrystalListXml(Crystal[] crystals, string filename)
@@ -881,11 +879,11 @@ public class ConvertCrystalData
     #region CIFファイルの読み込み
     static readonly Random r = new();
 
-    static readonly string[] ignoreWords1 = ["_shelx_hkl_file", "_shelxl_hkl_file", "_shelx_fab_file", "_shelx_res_file", "_shelxl_res_file", "_iucr_refine_reflections_details"];//語尾に何もつかない
+    static readonly FrozenSet<string> ignoreWords1 = ["_shelx_hkl_file", "_shelxl_hkl_file", "_shelx_fab_file", "_shelx_res_file", "_shelxl_res_file", "_iucr_refine_reflections_details"];//語尾に何もつかない
 
-    static readonly string[] ignoreWords2 = ["_shelx_hkl_", "_shelx_fab_", "_shelx_res_"];//語尾に fileかchecksumがつく
+    static readonly FrozenSet<string> ignoreWords2 = ["_shelx_hkl_", "_shelx_fab_", "_shelx_res_"];//語尾に fileかchecksumがつく
 
-    static readonly string[] ignoreWords3 = ["_refln", "_geom", "_platon", "_diffrn_refln"];
+    static readonly FrozenSet<string> ignoreWords3 = ["_refln", "_geom", "_platon", "_diffrn_refln"];
     private static Crystal2 ConvertFromCIF(string fileName)
     {
         string[] str;
@@ -941,9 +939,6 @@ public class ConvertCrystalData
             }
         }
 
-        //if (str.Length > 3000)
-        //    ;
-
         return ConvertFromCIF(str);
     }
 
@@ -992,7 +987,6 @@ public class ConvertCrystalData
             }
         }
 
-
         if (str[^1]=="")
             str[^1] = "#End of data";
 
@@ -1003,8 +997,6 @@ public class ConvertCrystalData
             if (str[n] == "")
                 RemoveAt(ref str, n--);
         }
-
-
 
         //次に'あるいは"で囲まれている文字列中の空白を偶然出てこないような文字列に変換する
         for (int n = 0; n < str.Length; n++)

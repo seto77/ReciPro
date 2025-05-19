@@ -600,7 +600,8 @@ public partial class FormStructureViewer : Form
             Parallel.ForEach(cArray.Select(o => o.Key).Distinct(), ckey =>
             {
                 //検索対象の頂点のインデックスを作成
-                var vertexIndices = neighborKeys.Select(key => key + ckey)
+                var vertexIndices = neighborKeys
+                .Select(key => key + ckey)
                 .Select(key => (Start: Array.FindIndex(vArray, d => d.Key == key), End: Array.FindLastIndex(vArray, d => d.Key == key)))
                 .Where(d => d.Start >= 0).SelectMany(d => Enumerable.Range(d.Start, d.End - d.Start + 1)).ToArray();
 

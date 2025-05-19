@@ -697,7 +697,7 @@ public class Lines : GLObject
         ShowClippedSection = false;//クリップ断面は表示しない
         IgnoreNormalSides = true;//裏表を無視する
         LineWidth = lineWidth;
-        var center = Extensions.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
+        var center = TkEx.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
         CircumscribedSphereCenter = new V4d(center, 1);
         CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
         Vertices = vertices.Select(v => new Vertex(v.ToV3f(), mat.Argb)).ToArray();
@@ -748,7 +748,7 @@ public class Polygon : GLObject
         }
         else
         {
-            var center = Extensions.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
+            var center = TkEx.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
             CircumscribedSphereCenter = new V4d(center, 1);
             CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
             var polygonInfo = GLGeometry.PolygonInfo(vertices, V3d.Zero);
@@ -810,7 +810,7 @@ public class Polygon : GLObject
 
             results[i].Primitives = [(PT.Triangles, results[i].Indices.Length)];
 
-            var center = Extensions.Average(outputs[i]);
+            var center = TkEx.Average(outputs[i]);
             results[i].CircumscribedSphereCenter = new V4d(center, 1);
             results[i].CircumscribedSphereRadius = outputs[i].Max(v => (v - center).Length);
 
@@ -847,7 +847,7 @@ public class Polygon : GLObject
                 newVertices.Add(srcVertex[i]);
             }
 
-            var center = Extensions.Average(srcVertex);//中心を算出
+            var center = TkEx.Average(srcVertex);//中心を算出
 
             //中心と新しい頂点を組み合わせて、3角形を作る
             var resultVertices = new List<V3d[]>();
@@ -1019,7 +1019,7 @@ public class Polyhedron : GLObject
     /// <param name="mode"></param>
     public Polyhedron(IEnumerable<V3d> vertices, Material mat, DrawingMode mode) : base(mat, mode)
     {
-        var center = Extensions.Average(vertices);
+        var center = TkEx.Average(vertices);
         CircumscribedSphereCenter = new V4d(center, 1);
         CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
 
@@ -1036,7 +1036,7 @@ public class Polyhedron : GLObject
 
                     if (vrs.All(v => V3d.Dot(v - A, V) < 0.0000001) || vrs.All(v => V3d.Dot(v - A, V) > -0.0000001))
                         if (candidates.All(cand => !(cand.Contains(A) && cand.Contains(B) && cand.Contains(C))))
-                            candidates.Add(vrs.Where(v => Math.Abs(V3d.Dot(v - A, V)) < 0.0000001).ToArray());
+                            candidates.Add([.. vrs.Where(v => Math.Abs(V3d.Dot(v - A, V)) < 0.0000001)]);
                 }
 
         //各面を構成する頂点集合に対して
@@ -1082,9 +1082,9 @@ public class Polyhedron : GLObject
         IgnoreNormalSides = true;
 
         Vertices = [.. vList];
-        Indices = iList2.SelectMany(i => i).ToArray();
+        Indices = [.. iList2.SelectMany(i => i)];
 
-        Primitives = types.Select((t, i) => (t, iList2[i].Count)).ToArray();
+        Primitives = [.. types.Select((t, i) => (t, iList2[i].Count))];
     }
 
     /// <summary>
@@ -1095,7 +1095,7 @@ public class Polyhedron : GLObject
     {
         var p = new Polygon[Primitives.Length / 3];
 
-        for (int i = 0, offsetIndices = 0, offsetVetices = 0; i < p.Length; i++)
+        for (int i = 0, offsetIndices = 0, offsetVertices = 0; i < p.Length; i++)
         {
             p[i] = new Polygon(Material, Mode) { Primitives = [Primitives[i * 3], Primitives[i * 3 + 1], Primitives[i * 3 + 2]] };
 
@@ -1103,16 +1103,16 @@ public class Polyhedron : GLObject
 
             Array.Copy(Indices, offsetIndices, p[i].Indices, 0, p[i].Indices.Length);
 
-            p[i].Indices = p[i].Indices.Select(j => (uint)(j - offsetVetices)).ToArray();
+            p[i].Indices = [.. p[i].Indices.Select(j => (uint)(j - offsetVertices))];
             offsetIndices += p[i].Indices.Length;
 
             p[i].Vertices = new Vertex[p[i].Indices.Distinct().Count()];
-            Array.Copy(Vertices, offsetVetices, p[i].Vertices, 0, p[i].Vertices.Length);
-            offsetVetices += p[i].Vertices.Length;
+            Array.Copy(Vertices, offsetVertices, p[i].Vertices, 0, p[i].Vertices.Length);
+            offsetVertices += p[i].Vertices.Length;
 
-            var center = new V3f(p[i].Vertices.Average(v => v.Position.X), p[i].Vertices.Average(v => v.Position.Y), p[i].Vertices.Average(v => v.Position.Z));
-            p[i].CircumscribedSphereCenter = new V4d(center.X, center.Y, center.Z, 1);
-            p[i].CircumscribedSphereRadius = p[i].Vertices.Max(v => (new V3f(v.Position) - center).Length);
+            var center = TkEx.Average(p[i].Vertices.Select(e => e.Position));
+            p[i].CircumscribedSphereCenter = new V4d(center, 1);
+            p[i].CircumscribedSphereRadius = p[i].Vertices.Max(v => (v.Position - center).Length);
             p[i].Rendered = Rendered;
             p[i].IgnoreNormalSides = true;
             p[i].ShowClippedSection = false;

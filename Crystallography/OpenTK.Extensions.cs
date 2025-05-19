@@ -15,7 +15,7 @@ using V4d = OpenTK.Mathematics.Vector4d;
 using V4f = OpenTK.Mathematics.Vector4;
 namespace Crystallography;
 
-public static class Extensions
+public static class TkEx
 {
     #region V2dに関する拡張メソッド
 
@@ -117,8 +117,6 @@ public static class Extensions
     /// <param name="v"></param>
     /// <returns></returns>
     public static V3f ToV3f(in this V4d v) => new((float)v.X, (float)v.Y, (float)v.Z);
-
-
 
     /// <summary>
     /// 拡張メソッド.
