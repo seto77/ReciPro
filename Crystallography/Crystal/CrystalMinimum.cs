@@ -18,6 +18,9 @@ namespace Crystallography;
 public partial class Crystal2
 {
     #region フィールド プライベートメンバーの場合[MemoryPackInclude]が必要
+    public enum DataType { None = 0, AMCSD = 1, COD = 2, }
+
+
     [MemoryPackInclude]
     private byte[][] cellBytes;
 
@@ -44,6 +47,8 @@ public partial class Crystal2
     public float[] d;//強度8位までのd値
 
     public string fileName;
+
+    public byte datatype; //DatabaseTypeの値を格納する
 
     #endregion
 

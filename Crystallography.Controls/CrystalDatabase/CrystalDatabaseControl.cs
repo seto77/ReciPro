@@ -11,12 +11,16 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Windows.Media.Core;
+using Windows.UI.StartScreen;
 using ZLinq;
+using static Community.CsharpSqlite.Sqlite3;
 #endregion
 
 namespace Crystallography.Controls;
@@ -24,6 +28,13 @@ namespace Crystallography.Controls;
 public partial class CrystalDatabaseControl : UserControl
 {
     #region フィールド、メソッド、イベント
+    public bool AMCSD_Checked {get=> checkBoxAMCSD.Checked; set => checkBoxAMCSD.Checked = value; }
+    public bool COD_Checked {get=>checkBoxCOD.Checked;set => checkBoxCOD.Checked = value; }
+
+    public bool AMCSD_Has_Read { get; set; }=false;
+    public bool COD_Has_Read { get; set; }=false;
+
+    public static string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
     public void Suspend()
     {
         bindingSource.RaiseListChangedEvents = false;
@@ -37,7 +48,9 @@ public partial class CrystalDatabaseControl : UserControl
         bindingSource.ResetBindings(false);
     }
 
-    public string Filter { get => bindingSource.Filter; set => bindingSource.Filter = value; }
+    public string SearchFilter { get => bindingSource.Filter; set => bindingSource.Filter = value; }
+
+    public string DataTypeFilter;
 
     public float FontSize
     {
@@ -55,8 +68,12 @@ public partial class CrystalDatabaseControl : UserControl
 
     public event EventHandler CrystalChanged;
 
+    public event EventHandler DataBaseChanged;
+
     public delegate void ProgressChangedEventHandler(object sender, double progress, string message);
     public event ProgressChangedEventHandler ProgressChanged;
+
+    public bool DatabaseSelection { set => flowLayoutPanelDatabase.Visible = value; get => flowLayoutPanelDatabase.Visible; }
 
     #endregion
 
@@ -149,7 +166,7 @@ public partial class CrystalDatabaseControl : UserControl
                 {
                     while (fs.Length != fs.Position)
                     {
-                        foreach(var r in deserialize(fs).AsParallel().Select(r=> Table.CreateRow(r, Crystal2.Serialize(r))))
+                        foreach (var r in deserialize(fs).AsParallel().Select(r => Table.CreateRow(r, Crystal2.Serialize(r))))
                             Table.Rows.Add(r);
                         ReadDatabaseWorker.ReportProgress(0, report(Table.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
                     }
@@ -160,16 +177,16 @@ public partial class CrystalDatabaseControl : UserControl
                 {
                     var fileNum = readInt(fs);
                     var fileNames = Enumerable.Range(0, fileNum)
-                        .Select(i =>  $"{filename[..^5]}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").ToList();
+                        .Select(i => $"{filename[..^5]}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").ToList();
                     fileNames.ForEach(fn =>
                     {
                         using var stream = new FileStream(fn, FileMode.Open);
                         while (stream.Length != stream.Position)
                         {
                             //deserialize(stream).AsParallel().Select(Table.CreateRow).ToList().ForEach(Table.Rows.Add);//この書き方だとメモリ使用量が増える
-                            foreach (var row in  deserialize(stream).AsParallel().Select(r => Table.CreateRow(r, Crystal2.Serialize(r))))
+                            foreach (var row in deserialize(stream).AsParallel().Select(r => Table.CreateRow(r, Crystal2.Serialize(r))))
                                 Table.Add(row);
-                            
+
                             ReadDatabaseWorker.ReportProgress(0, report(Table.Rows.Count, total, sw.ElapsedMilliseconds, "Loading database..."));
                         }
                         GC.Collect();
@@ -208,7 +225,7 @@ public partial class CrystalDatabaseControl : UserControl
     #region データベース書き込み
     public void SaveDatabase(string fn)
     {
-        this.Enabled = false;
+        Enabled = false;
         SaveDatabaseWorker.RunWorkerAsync(fn);
     }
     private void SaveDatabaseWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -242,6 +259,7 @@ public partial class CrystalDatabaseControl : UserControl
             for (int j = i * division; j < total && j < (i + 1) * division; j++)
             {
                 var c = Crystal2.Deserialize((byte[])((DataRowView)bindingSource[j]).Row[0]);
+                //c.datatype = (byte)Crystal2.DataType.COD;
                 crystal2List.Add(c);
             }
             bytes[i] = serialize([.. crystal2List]);
@@ -254,7 +272,7 @@ public partial class CrystalDatabaseControl : UserControl
             byteList.AddRange(bytes[i]);
 
             //最後まで来ている時で、かつ閾値以下の容量で、かつこれまで一度も分割もしていない場合
-            if (i == bytes.Length-1 && byteList.Count <= thresholdBytes && fileCounter == 0)
+            if (i == bytes.Length - 1 && byteList.Count <= thresholdBytes && fileCounter == 0)
                 fs.Write([.. byteList], 0, byteList.Count);//最初のファイルに書き込んで終了
 
             //最後まで来ている時か、閾値以上の容量の場合
@@ -413,6 +431,142 @@ public partial class CrystalDatabaseControl : UserControl
 
     #endregion
 
+    #region CODデータベースのダウロード、読み込み
+
+    /// <summary>
+    /// CODデータベースのダウンロードや読み込み. 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public void ReadCOD()
+    {
+        this.Enabled = false;
+        var (Valid, DataNum, FileNum, FileSizes, CheckSums) = CheckDatabaseFiles(UserAppDataPath + "COD.cdb3", true);
+        string urlHeader = "https://github.com/seto77/CSManager/raw/master/COD/";
+        if (Valid)
+        {//適切にダウンロードされている場合
+            try//web上に新しいデータがあるかどうかをチェック
+            {
+                if (new WebClient().DownloadData(new Uri(urlHeader + "COD.cdb3")).SequenceEqual(File.ReadAllBytes(UserAppDataPath + "COD.cdb3")))
+                {//ローカルのCODが最新版の場合
+                    ReadDatabase(UserAppDataPath + "COD.cdb3");
+                    return;
+                }
+                else
+                {//更新版が存在する場合
+                    var result = MessageBox.Show("Now, new database is available.\r\n  Download and load the new database: YES\r\n" +
+                        "  Use the current database: No\r\n  Cancel database loading: Cancel", "  New database is available", MessageBoxButtons.YesNoCancel);
+
+                    if (result == DialogResult.No) //Noの場合 (更新せずに現状を読み込む場合)
+                        ReadDatabase(UserAppDataPath + "COD.cdb3");
+
+                    if (result == DialogResult.No || result == DialogResult.Cancel)//NoかCancelの場合
+                        return;
+                }
+
+            }
+            catch //WEBが落ちている場合は、現状のCODを読み込む 
+            {
+                ReadDatabase(UserAppDataPath + "COD.cdb3");
+                return;
+            }
+        }
+        else//CODデータが存在しないか、適切でない場合
+        {
+            if (MessageBox.Show("Local COD database is missing.\r\n  Do you download the new database now ?", "Local COD database is missing.",
+                MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+        }
+
+        //ここまでくる場合は、CODデータが存在しない場合
+        //CODをダウンロードする
+        if (DownloadCodWorker.IsBusy) return;
+        this.Enabled = false;
+        DownloadCodWorker.RunWorkerAsync(UserAppDataPath);
+
+        while (DownloadCodWorker.IsBusy)//ダウンロードが完了するまで待つ
+        {
+            Thread.Sleep(100);
+            Application.DoEvents();
+        }
+        //this.Enabled = true;
+        ReadDatabase(UserAppDataPath + "COD.cdb3");
+    }
+
+    private void DownloadCodWorker_DoWork(object sender, DoWorkEventArgs e)
+    {
+
+        string urlHeader = "https://github.com/seto77/CSManager/raw/master/COD/";
+        var UserAppDataPath = (string)e.Argument;
+
+        //ここからCODをダウンロード
+        try
+        {
+            sw.Restart();
+            new WebClient().DownloadFile(new Uri(urlHeader + "COD.cdb3"), UserAppDataPath + "COD.cdb3");
+
+            Directory.CreateDirectory(UserAppDataPath + "COD");
+
+            var (_, DataNum, FileNum, FileSizes, CheckSums) = CheckDatabaseFiles(UserAppDataPath + "COD.cdb3", false);
+
+            var wc = new MyWebClient[FileNum];
+            var total = FileSizes.Sum();
+            var current = new long[FileNum];
+            var completedCount = 0;
+            long n = 1;
+            for (int i = 0; i < wc.Length; i++)
+            {
+                wc[i] = new MyWebClient();
+                var _i = i;//このインスタンスで作成する必要あり
+                wc[i].DownloadProgressChanged += (s, ev) =>
+                {
+                    current[_i] = ev.BytesReceived;
+                    if (n++ % 100 == 0)
+                        DownloadCodWorker.ReportProgress(0, report(current.Sum(), total, sw.ElapsedMilliseconds,
+                        $"Downloading COD database ({current.Sum() / 1E6:f0} MB / {total / 1E6:f0} MB) ..."));
+                };
+                wc[i].DownloadFileCompleted += (s, ev) =>
+                {
+                    if (!ev.Cancelled)
+                        completedCount++;
+                };
+            }
+
+            for (int i = 0; i < wc.Length; i++)
+                wc[i].DownloadFileAsync(new Uri($"{urlHeader}COD/COD.{i:000}"), $"{UserAppDataPath}COD\\COD.{i:000}");
+
+            while (completedCount < FileNum)//ダウンロードが完了するまで待つ
+                Thread.Sleep(100);
+        }
+        catch
+        {
+            MessageBox.Show("Failed to download new COD database. Sorry.", "Error", MessageBoxButtons.OK);
+        }
+    }
+
+    private void DownloadCodWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    {
+        (double progress, string message) = ((double Progress, string Message))e.UserState;
+        ProgressChanged?.Invoke(sender, progress, message);
+        Application.DoEvents();
+    }
+
+    private void DownloadCodWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+    }
+
+    private class MyWebClient : WebClient
+    {
+        protected override WebRequest GetWebRequest(Uri uri)
+        {
+            WebRequest w = base.GetWebRequest(uri);
+            w.Timeout = 600 * 1000;
+            return w;
+        }
+    }
+
+    #endregion
+
     #region 進捗状況のレポート
     /// <summary>
     /// 進捗状況
@@ -432,7 +586,7 @@ public partial class CrystalDatabaseControl : UserControl
         var ratio = Math.Min(1, (double)current / total);
         var elapsedSec = elapsedMilliseconds / 1E3;
         var format = $"f{digit}";
-        
+
         if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
         if (showElapsedTime) message += $" Elapsed time: {elapsedSec.ToString(format)} sec.";
         if (showRemainTime) message += $" Remaining time: {(elapsedSec / current * (total - current)).ToString(format)} sec.";
@@ -458,8 +612,9 @@ public partial class CrystalDatabaseControl : UserControl
         var originalAutoSizeRowsMode = dataGridView.AutoSizeRowsMode;
         dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
 
-        foreach (var c in crystal2.Where(e => e != null))
-            Table.Add(c);
+        // foreach (var c in crystal2.Where(e => e != null))
+        foreach (var r in crystal2.AsParallel().Where(e => e != null).Select(e => Table.CreateRow(e, Crystal2.Serialize(e))))
+            Table.Rows.Add(r);
 
         dataGridView.DataMember = originalDataMember;
         dataGridView.AutoSizeColumnsMode = originalAutoSizeColumnsMode;
@@ -526,5 +681,28 @@ public partial class CrystalDatabaseControl : UserControl
         }
     }
     #endregion
+
+
+    private void checkBoxAMCSD_CheckedChanged(object sender, EventArgs e)
+    {
+        if(checkBoxAMCSD.Checked && !AMCSD_Has_Read)
+        {
+            ReadDatabase(UserAppDataPath + "AMCSD.cdb3");
+            AMCSD_Has_Read = true;
+        }
+
+        DataBaseChanged?.Invoke(sender, e);
+    }
+
+    private void checkBoxCOD_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkBoxCOD.Checked && !COD_Has_Read)
+        {
+            ReadCOD();
+            COD_Has_Read = true;
+            do { Thread.Sleep(100);Application.DoEvents(); } while (!Enabled);
+        }
+        DataBaseChanged?.Invoke(sender, e);
+    }
 }
 

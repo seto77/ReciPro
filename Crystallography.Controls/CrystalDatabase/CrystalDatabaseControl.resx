@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="ReadDatabaseWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>16, 17</value>
+    <value>18, 16</value>
   </metadata>
   <metadata name="bindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>374, 18</value>
@@ -185,8 +185,13 @@
         uVf+q3hMAGN0uYEFAL7Rv7NmXVYYAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="textBoxAMCSD.Text" xml:space="preserve">
-    <value>The database is based on ”AMCSD”. Please be sure to cite the following reference when publishing the data: Downs, R.T. and Hall-Wallace, M. (2003) The American Mineralogist Crystal Structure Database. American Mineralogist 88, 247-250.
-</value>
+  <metadata name="DownloadCodWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>635, 25</value>
+  </metadata>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>When publishing a paper that includes data here, please be sure to cite the following reference or the references listed on the web page.   AMCSD: Downs &amp; Hall-Wallace (2003) American Mineralogist 88, 247-250.     COD: https://wiki.crystallography.net/cod/citing/</value>
   </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>165</value>
+  </metadata>
 </root>

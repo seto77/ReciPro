@@ -17,8 +17,9 @@ public partial class FormCrystalDatabase : Form
 
     private void FormCrystalDatabase_Load(object sender, EventArgs e)
     {
-        if (File.Exists(FormMain.UserAppDataPath + "StdDB.cdb3"))
-            crystalDatabaseControl.ReadDatabase(FormMain.UserAppDataPath + "StdDB.cdb3");
+        //if (File.Exists(FormMain.UserAppDataPath + "AMCSD.cdb3"))
+        //    crystalDatabaseControl.ReadDatabase(FormMain.UserAppDataPath + "AMCSD.cdb3");
+        crystalDatabaseControl.AMCSD_Checked = true;
     }
 
     private void FormCrystalDatabase_FormClosing(object sender, FormClosingEventArgs e)
@@ -35,5 +36,22 @@ public partial class FormCrystalDatabase : Form
     {
         if (Visible)
             FormMain.toolStripButtonDatabase.Checked = true;
+    }
+
+    private void crystalDatabaseControl_DataBaseChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void crystalDatabaseControl_ProgressChanged(object sender, double progress, string message)
+    {
+        toolStripStatusLabel1.Text= message;
+        toolStripProgressBar1.Value = (int)(progress * 100);
+    }
+
+    private void searchCrystalControl_ProgressChanged(object sender, double progress, string message)
+    {
+        toolStripStatusLabel1.Text = message;
+        toolStripProgressBar1.Value = (int)(progress * 100);
     }
 }

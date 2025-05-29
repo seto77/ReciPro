@@ -2307,6 +2307,8 @@ namespace Crystallography.Controls {
             
             private global::System.Data.DataColumn columnSerializedCrystal2;
             
+            private global::System.Data.DataColumn columnDataType;
+
             private global::System.Data.DataColumn columnName;
             
             private global::System.Data.DataColumn columnFormula;
@@ -2380,7 +2382,17 @@ namespace Crystallography.Controls {
                     return this.columnSerializedCrystal2;
                 }
             }
-            
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DataTypeColumn
+            {
+                get
+                {
+                    return this.columnDataType;
+                }
+            }
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn NameColumn {
@@ -2552,6 +2564,7 @@ namespace Crystallography.Controls {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DataTableCrystalDatabaseRow AddDataTableCrystalDatabaseRow(
                         object SerializedCrystal2, 
+                        byte DataType,
                         string Name, 
                         string Formula, 
                         double Density, 
@@ -2571,6 +2584,7 @@ namespace Crystallography.Controls {
                 DataTableCrystalDatabaseRow rowDataTableCrystalDatabaseRow = ((DataTableCrystalDatabaseRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SerializedCrystal2,
+                        DataType,
                         Name,
                         Formula,
                         Density,
@@ -2610,6 +2624,7 @@ namespace Crystallography.Controls {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnSerializedCrystal2 = base.Columns["SerializedCrystal2"];
+                this.columnDataType = base.Columns["DataType"];
                 this.columnName = base.Columns["Name"];
                 this.columnFormula = base.Columns["Formula"];
                 this.columnDensity = base.Columns["Density"];
@@ -2634,6 +2649,8 @@ namespace Crystallography.Controls {
             private void InitClass() {
                 this.columnSerializedCrystal2 = new global::System.Data.DataColumn("SerializedCrystal2", typeof(object), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSerializedCrystal2);
+                this.columnDataType = new global::System.Data.DataColumn("DataType", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDataType);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.columnFormula = new global::System.Data.DataColumn("Formula", typeof(string), null, global::System.Data.MappingType.Element);
@@ -4240,7 +4257,28 @@ namespace Crystallography.Controls {
                     this[this.tableDataTableCrystalDatabase.Crystal2Column] = value;
                 }
             }
-            
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public byte DataType
+            {
+                get
+                {
+                    try
+                    {
+                        return ((byte)(this[this.tableDataTableCrystalDatabase.DataTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e)
+                    {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableCrystalDatabase\' にある列 \'DataType\' の値は DBNull です。", e);
+                    }
+                }
+                set
+                {
+                    this[this.tableDataTableCrystalDatabase.DataTypeColumn] = value;
+                }
+            }
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Name {
@@ -4514,7 +4552,21 @@ namespace Crystallography.Controls {
             public void SetSerializedCrystal2Null() {
                 this[this.tableDataTableCrystalDatabase.Crystal2Column] = global::System.Convert.DBNull;
             }
-            
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDataTypeNull()
+            {
+                return this.IsNull(this.tableDataTableCrystalDatabase.DataTypeColumn);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDataTypeNull()
+            {
+                this[this.tableDataTableCrystalDatabase.DataTypeColumn] = global::System.Convert.DBNull;
+            }
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNameNull() {

@@ -1,6 +1,4 @@
-﻿using MemoryPack.Compression;
-using MemoryPack;
-using Microsoft.Scripting.Utils;
+﻿using Microsoft.Scripting.Utils;
 using System;
 using System.Buffers;
 using System.Data;
@@ -8,8 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
-using System.IO;
-using static IronPython.Modules._ast;
 using System.Text.RegularExpressions;
 
 namespace Crystallography.Controls;
@@ -242,6 +238,8 @@ public partial class DataSet
         /// <returns></returns>
         public Crystal2 Get(int i) => Crystal2.Deserialize((byte[])Rows[i][0]);
 
+        public byte GetDataType(int i) => (byte)(Rows[i][DataTypeColumn]);
+
         public void Add(Crystal2 crystal) => Add(CreateRow(crystal));
         public void Add(DataTableCrystalDatabaseRow row) => Rows.Add(row);
 
@@ -274,6 +272,8 @@ public partial class DataSet
                 dr = NewDataTableCrystalDatabaseRow();
 
             dr.Crystal2 = serializedC ?? Crystal2.Serialize(c);
+
+            dr.DataType = c.datatype;
 
             dr.Name = c.name;
             dr.Formula = c.formula;

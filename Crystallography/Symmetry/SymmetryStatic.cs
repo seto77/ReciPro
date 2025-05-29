@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using SO = Crystallography.SymmetryOperation;
 using ZLinq;
-using ZLinq.Linq;
 
 namespace Crystallography;
 
@@ -23,9 +22,8 @@ public static class SymmetryStatic
     public const double Th = 0.0001;
     #endregion
 
-  
-
     #region　static fields
+
     public static readonly ushort[][][] PositionsDictionary =
         [
 				#region positions
@@ -6181,7 +6179,8 @@ public static class SymmetryStatic
     public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorListR1, PositionGeneratorListR2;
 
 
-    public static readonly string[] PositionStringList =
+    public static ReadOnlySpan<string> PositionStringList => _PositionStringList;
+    public static readonly string[] _PositionStringList =
         [
             #region CoodStr
     "0,0,0",
@@ -8156,8 +8155,6 @@ public static class SymmetryStatic
             #endregion CoodStr
         ];
 
-
-
     public static readonly ushort[][] OperationDictionary = 
         [
 				#region OperationDictionary
@@ -9246,7 +9243,8 @@ public static class SymmetryStatic
             #endregion
         ];
 
-    public static readonly SO[] OperationList =
+    public static ReadOnlySpan<SO> OperationList => _OperationList;
+    public static readonly SO[] _OperationList =
         [
 				#region OperationList
 
@@ -9734,6 +9732,7 @@ new(-2,+1,(1,0,1),(d14,d14,d34)),
 new(-4,+1,(0,1,0),(0,d12,d14)),
             #endregion
         ];
+
     public static readonly byte[][] SiteSymmetryDictionary =
         [
 				#region siteSymmetry
@@ -10822,7 +10821,8 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
 #endregion
         ];
 
-    public static readonly string[] SiteSymmetryList =
+    public static ReadOnlySpan<string> SiteSymmetryList => _SiteSymmetryList;
+    public static readonly string[] _SiteSymmetryList =
         [
 				#region siteSymmetryList
 "1",
@@ -12097,31 +12097,37 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
             var (X, Y, Z) = f(x, y, z);
             return (X, Y + 0.5, Z + 0.5);
         })).ToArray();
+
         PositionGeneratorListB = PositionGeneratorListP.Select(f => new Func<double, double, double, (double X, double Y, double Z)>((x, y, z) =>
         {
             var (X, Y, Z) = f(x, y, z);
             return (X + 0.5, Y, Z + 0.5);
         })).ToArray();
+
         PositionGeneratorListC = PositionGeneratorListP.Select(f => new Func<double, double, double, (double X, double Y, double Z)>((x, y, z) =>
         {
             var (X, Y, Z) = f(x, y, z);
             return (X + 0.5, Y + 0.5, Z);
         })).ToArray();
+
         PositionGeneratorListI = PositionGeneratorListP.Select(f => new Func<double, double, double, (double X, double Y, double Z)>((x, y, z) =>
         {
             var (X, Y, Z) = f(x, y, z);
             return (X + 0.5, Y + 0.5, Z + 0.5);
         })).ToArray();
+
         PositionGeneratorListR1 = PositionGeneratorListP.Select(f => new Func<double, double, double, (double X, double Y, double Z)>((x, y, z) =>
         {
             var (X, Y, Z) = f(x, y, z);
             return (X + 1.0 / 3.0, Y + 2.0 / 3.0, Z + 2.0 / 3.0);
         })).ToArray();
+
         PositionGeneratorListR2 = PositionGeneratorListP.Select(f => new Func<double, double, double, (double X, double Y, double Z)>((x, y, z) =>
         {
             var (X, Y, Z) = f(x, y, z);
             return (X + 2.0 / 3.0, Y + 1.0 / 3.0, Z + 1.0 / 3.0);
         })).ToArray();
+
         #endregion
 
         WyckoffPositions = new WyckoffPosition[TotalSpaceGroupNumber][];

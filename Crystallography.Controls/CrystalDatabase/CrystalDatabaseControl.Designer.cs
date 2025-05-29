@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalDatabaseControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,24 +39,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalDatabaseControl));
             ReadDatabaseWorker = new System.ComponentModel.BackgroundWorker();
             dataGridView = new System.Windows.Forms.DataGridView();
-            bindingSource = new System.Windows.Forms.BindingSource(components);
-            dataSet = new DataSet();
-            SaveDatabaseWorker = new System.ComponentModel.BackgroundWorker();
-            bindingNavigator = new System.Windows.Forms.BindingNavigator(components);
-            bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
-            bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            textBoxAMCSD = new System.Windows.Forms.TextBox();
-            textBoxCOD = new System.Windows.Forms.TextBox();
             nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             densityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             formulaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,11 +57,33 @@
             authorsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             journalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bindingSource = new System.Windows.Forms.BindingSource(components);
+            dataSet = new DataSet();
+            SaveDatabaseWorker = new System.ComponentModel.BackgroundWorker();
+            bindingNavigator = new System.Windows.Forms.BindingNavigator(components);
+            bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            DownloadCodWorker = new System.ComponentModel.BackgroundWorker();
+            checkBoxAMCSD = new System.Windows.Forms.CheckBox();
+            checkBoxCOD = new System.Windows.Forms.CheckBox();
+            flowLayoutPanelDatabase = new System.Windows.Forms.FlowLayoutPanel();
+            textBox1 = new System.Windows.Forms.TextBox();
+            panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingNavigator).BeginInit();
             bindingNavigator.SuspendLayout();
+            flowLayoutPanelDatabase.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // ReadDatabaseWorker
@@ -115,7 +121,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             dataGridView.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            dataGridView.Location = new System.Drawing.Point(0, 88);
+            dataGridView.Location = new System.Drawing.Point(0, 71);
             dataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
@@ -132,153 +138,8 @@
             dataGridView.RowHeadersWidth = 44;
             dataGridView.RowTemplate.Height = 21;
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dataGridView.Size = new System.Drawing.Size(913, 508);
+            dataGridView.Size = new System.Drawing.Size(913, 525);
             dataGridView.TabIndex = 76;
-            // 
-            // bindingSource
-            // 
-            bindingSource.DataMember = "DataTableCrystalDatabase";
-            bindingSource.DataSource = dataSet;
-            bindingSource.CurrentChanged += bindingSource_CurrentChanged;
-            // 
-            // dataSet
-            // 
-            dataSet.DataSetName = "DataSet";
-            dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
-            dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // SaveDatabaseWorker
-            // 
-            SaveDatabaseWorker.WorkerReportsProgress = true;
-            SaveDatabaseWorker.WorkerSupportsCancellation = true;
-            SaveDatabaseWorker.DoWork += SaveDatabaseWorker_DoWork;
-            SaveDatabaseWorker.ProgressChanged += SaveDatabaseWorker_ProgressChanged;
-            SaveDatabaseWorker.RunWorkerCompleted += SaveDatabaseWorker_RunWorkerCompleted;
-            // 
-            // bindingNavigator
-            // 
-            bindingNavigator.AddNewItem = null;
-            bindingNavigator.BindingSource = bindingSource;
-            bindingNavigator.CountItem = bindingNavigatorCountItem;
-            bindingNavigator.DeleteItem = toolStripButtonDelete;
-            bindingNavigator.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { bindingNavigatorMoveFirstItem, bindingNavigatorMovePreviousItem, bindingNavigatorSeparator, bindingNavigatorPositionItem, bindingNavigatorCountItem, bindingNavigatorSeparator1, bindingNavigatorMoveNextItem, bindingNavigatorMoveLastItem, bindingNavigatorSeparator2, toolStripButtonDelete });
-            bindingNavigator.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            bindingNavigator.Location = new System.Drawing.Point(0, 64);
-            bindingNavigator.MoveFirstItem = bindingNavigatorMoveFirstItem;
-            bindingNavigator.MoveLastItem = bindingNavigatorMoveLastItem;
-            bindingNavigator.MoveNextItem = bindingNavigatorMoveNextItem;
-            bindingNavigator.MovePreviousItem = bindingNavigatorMovePreviousItem;
-            bindingNavigator.Name = "bindingNavigator";
-            bindingNavigator.PositionItem = bindingNavigatorPositionItem;
-            bindingNavigator.Size = new System.Drawing.Size(913, 24);
-            bindingNavigator.TabIndex = 77;
-            bindingNavigator.Text = "bindingNavigator";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            bindingNavigatorCountItem.Size = new System.Drawing.Size(28, 17);
-            bindingNavigatorCountItem.Text = "/{0}";
-            bindingNavigatorCountItem.ToolTipText = "項目の総数";
-            // 
-            // toolStripButtonDelete
-            // 
-            toolStripButtonDelete.BackColor = System.Drawing.Color.IndianRed;
-            toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripButtonDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            toolStripButtonDelete.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonDelete.Image");
-            toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonDelete.Name = "toolStripButtonDelete";
-            toolStripButtonDelete.Size = new System.Drawing.Size(49, 21);
-            toolStripButtonDelete.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            bindingNavigatorMoveFirstItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMoveFirstItem.Image");
-            bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 20);
-            bindingNavigatorMoveFirstItem.Text = "最初に移動";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            bindingNavigatorMovePreviousItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMovePreviousItem.Image");
-            bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 20);
-            bindingNavigatorMovePreviousItem.Text = "前に戻る";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 23);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            bindingNavigatorPositionItem.AccessibleName = "位置";
-            bindingNavigatorPositionItem.AutoSize = false;
-            bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            bindingNavigatorPositionItem.Text = "0";
-            bindingNavigatorPositionItem.ToolTipText = "現在の場所";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 23);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            bindingNavigatorMoveNextItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMoveNextItem.Image");
-            bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 20);
-            bindingNavigatorMoveNextItem.Text = "次に移動";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            bindingNavigatorMoveLastItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMoveLastItem.Image");
-            bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
-            bindingNavigatorMoveLastItem.Text = "最後に移動";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 23);
-            // 
-            // textBoxAMCSD
-            // 
-            textBoxAMCSD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            textBoxAMCSD.Dock = System.Windows.Forms.DockStyle.Top;
-            textBoxAMCSD.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
-            textBoxAMCSD.Location = new System.Drawing.Point(0, 32);
-            textBoxAMCSD.Multiline = true;
-            textBoxAMCSD.Name = "textBoxAMCSD";
-            textBoxAMCSD.ReadOnly = true;
-            textBoxAMCSD.Size = new System.Drawing.Size(913, 32);
-            textBoxAMCSD.TabIndex = 79;
-            textBoxAMCSD.Text = resources.GetString("textBoxAMCSD.Text");
-            // 
-            // textBoxCOD
-            // 
-            textBoxCOD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            textBoxCOD.Dock = System.Windows.Forms.DockStyle.Top;
-            textBoxCOD.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
-            textBoxCOD.Location = new System.Drawing.Point(0, 0);
-            textBoxCOD.Multiline = true;
-            textBoxCOD.Name = "textBoxCOD";
-            textBoxCOD.ReadOnly = true;
-            textBoxCOD.Size = new System.Drawing.Size(913, 32);
-            textBoxCOD.TabIndex = 80;
-            textBoxCOD.Text = "The database is based on ”COD”. Please be sure to cite the references in the following cite when publishing the data: https://wiki.crystallography.net/cod/citing/\r\n";
-            textBoxCOD.Visible = false;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -419,14 +280,203 @@
             journalDataGridViewTextBoxColumn.ReadOnly = true;
             journalDataGridViewTextBoxColumn.Width = 85;
             // 
+            // bindingSource
+            // 
+            bindingSource.DataMember = "DataTableCrystalDatabase";
+            bindingSource.DataSource = dataSet;
+            bindingSource.CurrentChanged += bindingSource_CurrentChanged;
+            // 
+            // dataSet
+            // 
+            dataSet.DataSetName = "DataSet";
+            dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
+            dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // SaveDatabaseWorker
+            // 
+            SaveDatabaseWorker.WorkerReportsProgress = true;
+            SaveDatabaseWorker.WorkerSupportsCancellation = true;
+            SaveDatabaseWorker.DoWork += SaveDatabaseWorker_DoWork;
+            SaveDatabaseWorker.ProgressChanged += SaveDatabaseWorker_ProgressChanged;
+            SaveDatabaseWorker.RunWorkerCompleted += SaveDatabaseWorker_RunWorkerCompleted;
+            // 
+            // bindingNavigator
+            // 
+            bindingNavigator.AddNewItem = null;
+            bindingNavigator.BindingSource = bindingSource;
+            bindingNavigator.CountItem = bindingNavigatorCountItem;
+            bindingNavigator.DeleteItem = toolStripButtonDelete;
+            bindingNavigator.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { bindingNavigatorMoveFirstItem, bindingNavigatorMovePreviousItem, bindingNavigatorSeparator, bindingNavigatorPositionItem, bindingNavigatorCountItem, bindingNavigatorSeparator1, bindingNavigatorMoveNextItem, bindingNavigatorMoveLastItem, bindingNavigatorSeparator2, toolStripButtonDelete });
+            bindingNavigator.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            bindingNavigator.Location = new System.Drawing.Point(0, 47);
+            bindingNavigator.MoveFirstItem = bindingNavigatorMoveFirstItem;
+            bindingNavigator.MoveLastItem = bindingNavigatorMoveLastItem;
+            bindingNavigator.MoveNextItem = bindingNavigatorMoveNextItem;
+            bindingNavigator.MovePreviousItem = bindingNavigatorMovePreviousItem;
+            bindingNavigator.Name = "bindingNavigator";
+            bindingNavigator.PositionItem = bindingNavigatorPositionItem;
+            bindingNavigator.Size = new System.Drawing.Size(913, 24);
+            bindingNavigator.TabIndex = 77;
+            bindingNavigator.Text = "bindingNavigator";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            bindingNavigatorCountItem.Size = new System.Drawing.Size(28, 17);
+            bindingNavigatorCountItem.Text = "/{0}";
+            bindingNavigatorCountItem.ToolTipText = "項目の総数";
+            // 
+            // toolStripButtonDelete
+            // 
+            toolStripButtonDelete.BackColor = System.Drawing.Color.IndianRed;
+            toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            toolStripButtonDelete.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonDelete.Image");
+            toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonDelete.Name = "toolStripButtonDelete";
+            toolStripButtonDelete.Size = new System.Drawing.Size(49, 21);
+            toolStripButtonDelete.Text = "Delete";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            bindingNavigatorMoveFirstItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMoveFirstItem.Image");
+            bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 20);
+            bindingNavigatorMoveFirstItem.Text = "最初に移動";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            bindingNavigatorMovePreviousItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMovePreviousItem.Image");
+            bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 20);
+            bindingNavigatorMovePreviousItem.Text = "前に戻る";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 23);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            bindingNavigatorPositionItem.AccessibleName = "位置";
+            bindingNavigatorPositionItem.AutoSize = false;
+            bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            bindingNavigatorPositionItem.Text = "0";
+            bindingNavigatorPositionItem.ToolTipText = "現在の場所";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 23);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            bindingNavigatorMoveNextItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMoveNextItem.Image");
+            bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 20);
+            bindingNavigatorMoveNextItem.Text = "次に移動";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            bindingNavigatorMoveLastItem.Image = (System.Drawing.Image)resources.GetObject("bindingNavigatorMoveLastItem.Image");
+            bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
+            bindingNavigatorMoveLastItem.Text = "最後に移動";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 23);
+            // 
+            // DownloadCodWorker
+            // 
+            DownloadCodWorker.WorkerReportsProgress = true;
+            DownloadCodWorker.WorkerSupportsCancellation = true;
+            DownloadCodWorker.DoWork += DownloadCodWorker_DoWork;
+            DownloadCodWorker.ProgressChanged += DownloadCodWorker_ProgressChanged;
+            DownloadCodWorker.RunWorkerCompleted += DownloadCodWorker_RunWorkerCompleted;
+            // 
+            // checkBoxAMCSD
+            // 
+            checkBoxAMCSD.AutoSize = true;
+            checkBoxAMCSD.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxAMCSD.Location = new System.Drawing.Point(3, 0);
+            checkBoxAMCSD.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            checkBoxAMCSD.Name = "checkBoxAMCSD";
+            checkBoxAMCSD.Size = new System.Drawing.Size(71, 21);
+            checkBoxAMCSD.TabIndex = 0;
+            checkBoxAMCSD.Text = "AMCSD";
+            checkBoxAMCSD.UseVisualStyleBackColor = true;
+            checkBoxAMCSD.CheckedChanged += checkBoxAMCSD_CheckedChanged;
+            // 
+            // checkBoxCOD
+            // 
+            checkBoxCOD.AutoSize = true;
+            checkBoxCOD.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxCOD.Location = new System.Drawing.Point(3, 21);
+            checkBoxCOD.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            checkBoxCOD.Name = "checkBoxCOD";
+            checkBoxCOD.Size = new System.Drawing.Size(54, 21);
+            checkBoxCOD.TabIndex = 0;
+            checkBoxCOD.Text = "COD";
+            checkBoxCOD.UseVisualStyleBackColor = true;
+            checkBoxCOD.CheckedChanged += checkBoxCOD_CheckedChanged;
+            // 
+            // flowLayoutPanelDatabase
+            // 
+            flowLayoutPanelDatabase.AutoSize = true;
+            flowLayoutPanelDatabase.Controls.Add(checkBoxAMCSD);
+            flowLayoutPanelDatabase.Controls.Add(checkBoxCOD);
+            flowLayoutPanelDatabase.Dock = System.Windows.Forms.DockStyle.Left;
+            flowLayoutPanelDatabase.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanelDatabase.Location = new System.Drawing.Point(0, 0);
+            flowLayoutPanelDatabase.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanelDatabase.Name = "flowLayoutPanelDatabase";
+            flowLayoutPanelDatabase.Size = new System.Drawing.Size(77, 47);
+            flowLayoutPanelDatabase.TabIndex = 4;
+            flowLayoutPanelDatabase.Visible = false;
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            textBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            textBox1.Location = new System.Drawing.Point(77, 0);
+            textBox1.Margin = new System.Windows.Forms.Padding(0);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new System.Drawing.Size(836, 47);
+            textBox1.TabIndex = 2;
+            textBox1.Text = resources.GetString("textBox1.Text");
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(flowLayoutPanelDatabase);
+            panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(913, 47);
+            panel1.TabIndex = 86;
+            // 
             // CrystalDatabaseControl
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(dataGridView);
             Controls.Add(bindingNavigator);
-            Controls.Add(textBoxAMCSD);
-            Controls.Add(textBoxCOD);
+            Controls.Add(panel1);
             Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             Name = "CrystalDatabaseControl";
             Size = new System.Drawing.Size(913, 596);
@@ -437,6 +487,10 @@
             ((System.ComponentModel.ISupportInitialize)bindingNavigator).EndInit();
             bindingNavigator.ResumeLayout(false);
             bindingNavigator.PerformLayout();
+            flowLayoutPanelDatabase.ResumeLayout(false);
+            flowLayoutPanelDatabase.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -459,8 +513,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
-        private System.Windows.Forms.TextBox textBoxAMCSD;
-        private System.Windows.Forms.TextBox textBoxCOD;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn densityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn formulaDataGridViewTextBoxColumn;
@@ -476,5 +528,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn authorsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn journalDataGridViewTextBoxColumn;
+        public System.ComponentModel.BackgroundWorker DownloadCodWorker;
+        private System.Windows.Forms.CheckBox checkBoxCOD;
+        private System.Windows.Forms.CheckBox checkBoxAMCSD;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDatabase;
+        private System.Windows.Forms.Panel panel1;
     }
 }

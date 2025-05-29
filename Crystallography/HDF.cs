@@ -9,6 +9,8 @@ public class HDF
     public class H5DatasetAdv
     {
         private IH5Dataset dataset;
+        public IH5Dataset DatasetOriginal => dataset;
+
         public string Path;
 
         public string Name => dataset.Name;

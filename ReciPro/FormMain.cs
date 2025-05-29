@@ -374,8 +374,8 @@ public partial class FormMain : Form
         //    File.Delete(UserAppDataPath + "ReciProSetup.msi");
 
         commonDialog.Progress = ("Now Loading...Setting crystal database.", 0.90);
-        //StdDbをコピー
-        File.Copy(appPath + "StdDb.cdb3", UserAppDataPath + "StdDb.cdb3", true);
+        //AMCSDをコピー
+        File.Copy(appPath + "AMCSD.cdb3", UserAppDataPath + "AMCSD.cdb3", true);
 
         //UserAppDataPathに空フォルダがあったら削除
         foreach (var dir in Directory.GetDirectories(UserAppDataPath))
@@ -1022,20 +1022,25 @@ public partial class FormMain : Form
 
             if (SkipDrawing) return;
 
-            if (FormStructureViewer.Visible)
+            if (FormStructureViewer != null && FormStructureViewer.Visible)
                 FormStructureViewer.SetGLObjects(crystalControl.Crystal);
-            if (FormStereonet.Visible)
+            
+            if (FormStereonet != null && FormStereonet.Visible)
                 FormStereonet.SetCrystal();
-            if (FormDiffractionSimulator.Visible)
+           
+            if (FormDiffractionSimulator != null && FormDiffractionSimulator.Visible)
                 FormDiffractionSimulator.SetCrystal();
-            if (FormSpotID.Visible)
+          
+            if (FormSpotID != null && FormSpotID.Visible)
                 FormSpotID.SetCrystal();
-            if (FormRotation.Visible)
+           
+            if (FormRotation != null && FormRotation.Visible)
                 FormRotation.SetRotation();
-            if (FormImageSimulator.Visible)
+           
+            if (FormImageSimulator != null && FormImageSimulator.Visible)
                 FormImageSimulator.RotationChanged();
 
-            if (FormEBSD.Visible)
+            if (FormEBSD != null && FormEBSD.Visible)
                 FormEBSD.SetCrystal();
 
             ResetAxes();
@@ -1691,9 +1696,5 @@ public partial class FormMain : Form
             checkBoxFixAxis.Checked = false;
     }
     #endregion
-
-
-
-
 
 }

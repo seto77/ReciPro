@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using V3 = OpenTK.Mathematics.Vector3d;
-using M3 = OpenTK.Mathematics.Matrix3d;
 using ZLinq;
-using System.Runtime.InteropServices;
 
 namespace Crystallography;
-
 
 //Electron beam-specimen interactions and simulation methods in microscopy 2018
 //Eqs (2.38), (2.41), (2.42) などを参考

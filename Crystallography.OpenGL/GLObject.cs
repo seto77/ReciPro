@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Management;
 using System.Threading;
-using OpenTK.GLControl;
 using ZLinq;
 #endregion
 

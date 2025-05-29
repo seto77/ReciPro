@@ -9,8 +9,10 @@ using System.IO;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
+using System.Net;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 using ZLinq;
 using V3 = OpenTK.Mathematics.Vector3d;
 
@@ -347,7 +349,7 @@ public class ConvertCrystalData
     /// </summary>
     /// <param name="str"></param>
     /// <returns></returns>
-    private static Crystal2 ConvertFromAmc(string[] str)
+    public static Crystal2 ConvertFromAmc(string[] str)
     {
         var n = 0;
         if (str[n].Length == 0)
@@ -600,6 +602,8 @@ public class ConvertCrystalData
             Alpha = s[3].ToDouble();
             Beta = s[4].ToDouble();
             Gamma = s[5].ToDouble();
+            if (double.IsNaN(A) || double.IsNaN(B) || double.IsNaN(C) || double.IsNaN(Alpha) || double.IsNaN(Beta) || double.IsNaN(Gamma))
+                return (null, null);
         }
         catch { return (null, null); }
         string SgName = s[6];
@@ -877,7 +881,7 @@ public class ConvertCrystalData
     #endregion
 
     #region CIFÉtÉ@ÉCÉãÇÃì«Ç›çûÇ›
-    static readonly Random r = new();
+    static readonly Random rnd = Random.Shared;
 
     static readonly FrozenSet<string> ignoreWords1 = ["_shelx_hkl_file", "_shelxl_hkl_file", "_shelx_fab_file", "_shelx_res_file", "_shelxl_res_file", "_iucr_refine_reflections_details"];//åÍîˆÇ…âΩÇ‡Ç¬Ç©Ç»Ç¢
 
@@ -1403,7 +1407,7 @@ public class ConvertCrystalData
             auth = authors.ToString().TrimEnd([' ', ',']).Replace(".", ""),
             jour = journal.ToString(),
             sect = sectionTitle,
-            argb = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)).ToArgb()
+            argb = Color.FromArgb(rnd.Next(255), rnd.Next(255), rnd.Next(255)).ToArgb()
         };
     }
 

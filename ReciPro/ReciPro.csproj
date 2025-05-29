@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2025.5.18.0043</AssemblyVersion>
-    <FileVersion>2025.5.18.0043</FileVersion>
+    <AssemblyVersion>2025.5.29.0438</AssemblyVersion>
+    <FileVersion>2025.5.29.0438</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -58,7 +58,6 @@
     <None Remove="doc\~%24ciProManual%28en%29.docx" />
     <None Remove="ImagingSolution.Control.GraphicsBox.XML" />
     <None Remove="initial.xml" />
-    <None Remove="StdDb.cdb3" />
     <None Include="..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -84,7 +83,7 @@
     <Content Include="initial.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="StdDb.cdb3">
+    <Content Include="AMCSD.cdb3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -96,8 +95,8 @@
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="3.0.0" />
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.3" />
-    <PackageReference Include="ZLinq" Version="1.4.5" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.4" />
+    <PackageReference Include="ZLinq" Version="1.4.9" />
   </ItemGroup>
 
   <ItemGroup>

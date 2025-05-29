@@ -1,19 +1,39 @@
-﻿using System;
+﻿using MathNet.Numerics.Statistics.Mcmc;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.Xml;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Community.CsharpSqlite.Sqlite3;
 
 namespace Crystallography.Controls;
 public partial class SearchCrystalControl : UserControl
 {
     #region フィールド、プロパティ、イベント
 
-    public CrystalDatabaseControl CrystalDatabaseControl;
+    private CrystalDatabaseControl crystalDatabaseControl;
+    public CrystalDatabaseControl CrystalDatabaseControl
+    {
+        get => crystalDatabaseControl;
+        set
+        {
+            if (value != null)
+            {
+                crystalDatabaseControl = value;
+                crystalDatabaseControl.DataBaseChanged += CrystalDatabaseControl_DataBaseChanged;
+            }
+        }
+    }
+
+    private void CrystalDatabaseControl_DataBaseChanged(object sender, EventArgs e)
+    {
+        buttonSearch_Click(sender, e);
+    }
 
     public delegate void ProgressChangedEventHandler(object sender, double progress, string message);
     public event ProgressChangedEventHandler ProgressChanged;
@@ -32,17 +52,7 @@ public partial class SearchCrystalControl : UserControl
     private void SearchCrystalControl_Load(object sender, EventArgs e)
     {
         formPeriodicTable = new FormPeriodicTable();
-
-        var parent = this.Parent;
-        while (parent is not Form && parent != null)
-            parent = parent.Parent;
-        if (parent == null)
-            return;
-        var form = parent as Form;
-        formPeriodicTable.Owner = form;
-
     }
-
     #endregion
 
     #region チェックボックス
@@ -72,6 +82,14 @@ public partial class SearchCrystalControl : UserControl
     {
         if (firstTime)
         {
+            var parent = this.Parent;
+            while (parent is not Form && parent != null)
+                parent = parent.Parent;
+            if (parent == null)
+                return;
+            var form = parent as Form;
+            formPeriodicTable.Owner = form;
+
             formPeriodicTable.Location = formPeriodicTable.Owner.PointToScreen(new System.Drawing.Point(100, 100));
             firstTime = false;
         }
@@ -82,122 +100,150 @@ public partial class SearchCrystalControl : UserControl
     #endregion
 
     readonly Stopwatch sw = new();
-    bool[] flags = Array.Empty<bool>();
+    bool[] flags = [];
     private void buttonSearch_Click(object sender, EventArgs e)
     {
         if (CrystalDatabaseControl == null || backgroundWorkerSearch.IsBusy || CrystalDatabaseControl.Table.Count == 0)
             return;
         sw.Restart();
-        this.Enabled = false;
+        Enabled = false;
         flags = new bool[CrystalDatabaseControl.Table.Count];
         CrystalDatabaseControl.Suspend();//バインディングを切る
-        backgroundWorkerSearch.RunWorkerAsync();
+
+        backgroundWorkerSearch.RunWorkerAsync(
+            new SearchParameters(
+            name: checkBoxSearchName.Checked ? textBoxSearchName.Text : "",
+            reference: checkBoxSearchRefference.Checked ? textBoxSearchRefference.Text : "",
+            system: checkBoxSearchCrystalSystem.Checked ? comboBoxSearchCrystalSystem.SelectedIndex : -1,
+            includes: formPeriodicTable.Includes,
+            excludes: formPeriodicTable.Excludes,
+            lengthErr: numericBoxCellLengthErr.Value / 100,
+            angleErr: numericBoxCellAngleErr.Value,
+            a: numericBoxCellA.Value, b: numericBoxCellB.Value, c: numericBoxCellC.Value,
+            alpha: numericBoxCellAlpha.Value, beta: numericBoxCellBeta.Value, gamma: numericBoxCellGamma.Value,
+            density: checkBoxDensity.Checked ? numericBoxDensity.Value : 0,
+            densityErr: numericBoxDensityErr.Value / 100,
+            d1: checkBoxD1.Checked ? numericBoxD1.Value / 10 : 0,
+            d2: checkBoxD2.Checked ? numericBoxD2.Value / 10 : 0,
+            d3: checkBoxD3.Checked ? numericBoxD3.Value / 10 : 0,
+            d1Err: numericBoxD1Err.Value / 100, d2Err: numericBoxD2Err.Value / 100, d3Err: numericBoxD3Err.Value / 100
+            )
+            );
+    }
+
+    public struct SearchParameters(string name, string reference, int system, byte[] includes, byte[] excludes,
+        double lengthErr, double angleErr,
+        double a, double b, double c, double alpha, double beta, double gamma,
+        double density, double densityErr,
+        double d1, double d2, double d3, double d1Err, double d2Err, double d3Err)
+    {
+        public string Name = name;
+        public string Reference = reference;
+        public int System = system;
+        public byte[] Includes = includes, Excludes = excludes;
+        public double LengthErr = lengthErr, AngleErr = angleErr;
+        public double A = a, B = b, C = c, Alpha = alpha, Beta = beta, Gamma = gamma;
+        public double density = density, densityErr = densityErr;
+        public double D1 = d1, D2 = d2, D3 = d3, D1Err = d1Err, D2Err = d2Err, D3Err = d3Err;
     }
 
     private void backgroundWorkerSearch_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
     {
+        var prm = (SearchParameters)e.Argument;
         var table = CrystalDatabaseControl.Table;
-
-        var name = checkBoxSearchName.Checked ? textBoxSearchName.Text.ToLower() : "";
-        var reference = checkBoxSearchRefference.Checked ? textBoxSearchRefference.Text.ToLower() : "";
-        var system = checkBoxSearchCrystalSystem.Checked ? comboBoxSearchCrystalSystem.SelectedIndex : -1;
-
-        byte[] includes = formPeriodicTable.Includes, excludes = formPeriodicTable.Excludes;
-
-        double lenErr = numericBoxCellLengthErr.Value / 100, angErr = numericBoxCellAngleErr.Value;
-        double a = numericBoxCellA.Value, b = numericBoxCellB.Value, c = numericBoxCellC.Value;
-        double alpha = numericBoxCellAlpha.Value, beta = numericBoxCellBeta.Value, gamma = numericBoxCellGamma.Value;
-
-        double density = checkBoxDensity.Checked ? numericBoxDensity.Value : 0;
-        double densErr = numericBoxDensityErr.Value / 100;
-
-        double d1 = checkBoxD1.Checked ? numericBoxD1.Value / 10 : 0;
-        double d2 = checkBoxD2.Checked ? numericBoxD2.Value / 10 : 0;
-        double d3 = checkBoxD3.Checked ? numericBoxD3.Value / 10 : 0;
-        double d1Err = numericBoxD1Err.Value / 100, d2Err = numericBoxD2Err.Value / 100, d3Err = numericBoxD3Err.Value / 100;
-
         var dMin = double.MaxValue;
-        if (d1 != 0) dMin = Math.Min(dMin, d1 * (1 - 2 * d1Err));
-        if (d2 != 0) dMin = Math.Min(dMin, d2 * (1 - 2 * d3Err));
-        if (d3 != 0) dMin = Math.Min(dMin, d3 * (1 - 2 * d3Err));
+        if (prm.D1 != 0) dMin = Math.Min(dMin, prm.D1 * (1 - 2 * prm.D1Err));
+        if (prm.D2 != 0) dMin = Math.Min(dMin, prm.D2 * (1 - 2 * prm.D3Err));
+        if (prm.D3 != 0) dMin = Math.Min(dMin, prm.D3 * (1 - 2 * prm.D3Err));
+
+        bool amcsd_checked = CrystalDatabaseControl.AMCSD_Checked, cod_checked = CrystalDatabaseControl.COD_Checked;
 
         long time = 0;
-
         int count = 0;
         Parallel.For(0, table.Count, i =>
         {
-            var cry = table.Get(i);
-
             var flag = true;
 
-            //名前
-            if (name != "" && !cry.name.ToLower().Contains(name))
+            if (table.GetDataType(i) == (byte)Crystal2.DataType.AMCSD && !amcsd_checked)
                 flag = false;
 
-            //Reference
-            if (flag && reference != "" && !(cry.jour.ToLower().Contains(reference) || cry.auth.ToLower().Contains(reference) || cry.sect.ToLower().Contains(reference)))
+            if (flag && table.GetDataType(i) == (byte)Crystal2.DataType.COD && !cod_checked)
                 flag = false;
 
-            //結晶系
-            if (flag && system > 0 && system != SymmetryStatic.NumArray[cry.sym][5])
-                flag = false;
-
-            //元素
-            if (flag && checkBoxSearchElements.Checked)
+            if (flag)
             {
-                var elements = cry.atoms.Select(a => a.AtomNo).Distinct().ToArray();
-                if (excludes.Length != 0 && elements.Any(e => excludes.Contains(e)))
-                    flag = false;
-                if (flag && includes.Length != 0 && !includes.All(e => elements.Contains(e)))
-                    flag = false;
-                if (flag && cry.atoms.Count == 0)
-                    flag = false;
-            }
+                var cry = table.Get(i);
 
-            //格子定数
-            if (flag && checkBoxSearchCellParameter.Checked)
-            {
-                var Values = cry.CellOnlyValue_nm_radian;
-                if (!double.IsNaN(Values.A))
+                //名前
+                if (flag && prm.Name != "" && !cry.name.Contains(prm.Name, StringComparison.CurrentCultureIgnoreCase))
+                    flag = false;
+
+                //Reference
+                if (flag && prm.Reference != "" && !(cry.jour.Contains(prm.Reference, StringComparison.CurrentCultureIgnoreCase) ||
+                cry.auth.Contains(prm.Reference, StringComparison.CurrentCultureIgnoreCase) ||
+                cry.sect.Contains(prm.Reference, StringComparison.CurrentCultureIgnoreCase)))
+                    flag = false;
+
+                //結晶系
+                if (flag && prm.System > 0 && prm.System != SymmetryStatic.NumArray[cry.sym][5])
+                    flag = false;
+
+                //元素
+                if (flag && checkBoxSearchElements.Checked)
                 {
-                    if (a != 0 && (a * (1 - lenErr) > Values.A || a * (1 + lenErr) < Values.A))
+                    var elements = cry.atoms.Select(a => a.AtomNo).Distinct().ToArray();
+                    if (prm.Excludes.Length != 0 && elements.Any(e => prm.Excludes.Contains(e)))
                         flag = false;
-                    if (flag && b != 0 && (b * (1 - lenErr) > Values.B || b * (1 + lenErr) < Values.B))
+                    if (flag && prm.Includes.Length != 0 && !prm.Includes.All(e => elements.Contains(e)))
                         flag = false;
-                    if (flag && c != 0 && (c * (1 - lenErr) > Values.C || c * (1 + lenErr) < Values.C))
-                        flag = false;
-                    if (flag && alpha != 0 && (alpha - angErr > Values.Alpha || alpha + angErr < Values.Alpha))
-                        flag = false;
-                    if (flag && beta != 0 && (beta - angErr > Values.Beta || beta + angErr < Values.Beta))
-                        flag = false;
-                    if (flag && gamma != 0 && (gamma - angErr > Values.Gamma || gamma + angErr < Values.Gamma))
+                    if (flag && cry.atoms.Count == 0)
                         flag = false;
                 }
-            }
 
-            //密度のフィルター
-            if (flag && density != 0 && (density * (1 - densErr) > cry.density || density * (1 + densErr) < cry.density))
-                flag = false;
-
-            //d値のフィルター
-            if (flag && checkBoxDspacing.Checked)
-            {
-                var dArray = cry.d;
-                if (checkBoxIgnoreScatteringFactor.Checked)
+                //格子定数
+                if (flag && checkBoxSearchCellParameter.Checked)
                 {
                     var Values = cry.CellOnlyValue_nm_radian;
                     if (!double.IsNaN(Values.A))
-                        dArray = calcDlist(Values.A, Values.B, Values.C, Values.Alpha, Values.Beta, Values.Gamma, dMin);
+                    {
+                        if (prm.A != 0 && (prm.A * (1 - prm.LengthErr) > Values.A || prm.A * (1 + prm.LengthErr) < Values.A))
+                            flag = false;
+                        if (flag && prm.B != 0 && (prm.B * (1 - prm.LengthErr) > Values.B || prm.B * (1 + prm.LengthErr) < Values.B))
+                            flag = false;
+                        if (flag && prm.C != 0 && (prm.C * (1 - prm.LengthErr) > Values.C || prm.C * (1 + prm.LengthErr) < Values.C))
+                            flag = false;
+                        if (flag && prm.Alpha != 0 && (prm.Alpha - prm.AngleErr > Values.Alpha || prm.Alpha + prm.AngleErr < Values.Alpha))
+                            flag = false;
+                        if (flag && prm.Beta != 0 && (prm.Beta - prm.AngleErr > Values.Beta || prm.Beta + prm.AngleErr < Values.Beta))
+                            flag = false;
+                        if (flag && prm.Gamma != 0 && (prm.Gamma - prm.AngleErr > Values.Gamma || prm.Gamma + prm.AngleErr < Values.Gamma))
+                            flag = false;
+                    }
                 }
 
-                if (flag && d1 != 0 && !dArray.Any(d => d1 * (1 - d1Err) < d && d1 * (1 + d1Err) > d))
+                //密度のフィルター
+                if (flag && prm.density != 0 && (prm.density * (1 - prm.densityErr) > cry.density || prm.density * (1 + prm.densityErr) < cry.density))
                     flag = false;
-                if (flag && d2 != 0 && !dArray.Any(d => d2 * (1 - d2Err) < d && d2 * (1 + d2Err) > d))
-                    flag = false;
-                if (flag && d3 != 0 && !dArray.Any(d => d3 * (1 - d3Err) < d && d3 * (1 + d3Err) > d))
-                    flag = false;
-            }
 
+                //d値のフィルター
+                if (flag && checkBoxDspacing.Checked)
+                {
+                    var dArray = cry.d;
+                    if (checkBoxIgnoreScatteringFactor.Checked)
+                    {
+                        var Values = cry.CellOnlyValue_nm_radian;
+                        if (!double.IsNaN(Values.A))
+                            dArray = calcDlist(Values.A, Values.B, Values.C, Values.Alpha, Values.Beta, Values.Gamma, dMin);
+                    }
+
+                    if (flag && prm.D1 != 0 && !dArray.Any(d => prm.D1 * (1 - prm.D1Err) < d && prm.D1 * (1 + prm.D1Err) > d))
+                        flag = false;
+                    if (flag && prm.D2 != 0 && !dArray.Any(d => prm.D2 * (1 - prm.D2Err) < d && prm.D2 * (1 + prm.D2Err) > d))
+                        flag = false;
+                    if (flag && prm.D3 != 0 && !dArray.Any(d => prm.D3 * (1 - prm.D3Err) < d && prm.D3 * (1 + prm.D3Err) > d))
+                        flag = false;
+                }
+            }
             flags[i] = flag;
 
             if (Interlocked.Increment(ref count) % 1000 == 0 && sw.ElapsedMilliseconds - time > 100)
@@ -282,14 +328,14 @@ public partial class SearchCrystalControl : UserControl
         var flagCount = flags.Count(f => f);
 
         if (flagCount == CrystalDatabaseControl.Table.Count)
-            CrystalDatabaseControl.Filter = "";
+            CrystalDatabaseControl.SearchFilter = "";
         else
         {
             for (int i = 0; i < CrystalDatabaseControl.Table.Count; i++)
                 if (CrystalDatabaseControl.Table.GetFlag(i) != flags[i])
                     CrystalDatabaseControl.Table.SetFlag(i, flags[i]);
 
-            CrystalDatabaseControl.Filter = "Flag = true";
+            CrystalDatabaseControl.SearchFilter = "Flag = true";
         }
 
         //if (flagCount == 0)
@@ -300,7 +346,7 @@ public partial class SearchCrystalControl : UserControl
 
         this.Enabled = true;
 
-        Thread.Sleep(500);
+        Thread.Sleep(100);
         ProgressChanged?.Invoke(sender, 1.0, $"Completion of search. {sw.ElapsedMilliseconds / 1000.0:f2} msec.");
         Application.DoEvents();
 
