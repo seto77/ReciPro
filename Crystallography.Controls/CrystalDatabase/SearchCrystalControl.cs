@@ -156,6 +156,8 @@ public partial class SearchCrystalControl : UserControl
         if (prm.D2 != 0) dMin = Math.Min(dMin, prm.D2 * (1 - 2 * prm.D3Err));
         if (prm.D3 != 0) dMin = Math.Min(dMin, prm.D3 * (1 - 2 * prm.D3Err));
 
+        var ignoreScatteringFactor = checkBoxIgnoreScatteringFactor.Checked;
+
         bool amcsd_checked = CrystalDatabaseControl.AMCSD_Checked, cod_checked = CrystalDatabaseControl.COD_Checked;
 
         long time = 0;
@@ -164,10 +166,9 @@ public partial class SearchCrystalControl : UserControl
         {
             var flag = true;
 
-            if (table.GetDataType(i) == (byte)Crystal2.DataType.AMCSD && !amcsd_checked)
-                flag = false;
+            var datatype = table.GetDataType(i);
 
-            if (flag && table.GetDataType(i) == (byte)Crystal2.DataType.COD && !cod_checked)
+            if ((datatype == (byte)Crystal2.DataType.AMCSD && !amcsd_checked) || (datatype == (byte)Crystal2.DataType.COD && !cod_checked))
                 flag = false;
 
             if (flag)
@@ -229,7 +230,7 @@ public partial class SearchCrystalControl : UserControl
                 if (flag && checkBoxDspacing.Checked)
                 {
                     var dArray = cry.d;
-                    if (checkBoxIgnoreScatteringFactor.Checked)
+                    if (ignoreScatteringFactor)
                     {
                         var Values = cry.CellOnlyValue_nm_radian;
                         if (!double.IsNaN(Values.A))

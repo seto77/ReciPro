@@ -248,7 +248,7 @@ public partial class DataSet
         public void Remove(int i) => Rows.RemoveAt(i);
 
         /// <summary>
-        /// srcCrystalはbindingSourceMain.Currentオブジェクト. 
+        /// srcCrystalは bindingSourceMain.Currentオブジェクト. 
         /// </summary>
         /// <param name="srcCrystal"></param>
         /// <param name="targetCrystal"></param>
@@ -279,13 +279,13 @@ public partial class DataSet
             dr.Formula = c.formula;
             dr.Density = c.density;
             (dr.A, dr.B, dr.C, dr.Alpha, dr.Beta, dr.Gamma) = c.CellOnlyValueFloat;
-            (dr.CrystalSystem, dr.PointGroup,  dr.SpaceGroup) = Coeff[c.sym];
+            (dr.CrystalSystem, dr.PointGroup, dr.SpaceGroup) = Coeff[c.sym];
 
             var auth = c.auth;
-            if (Regex.Matches(auth, ",").Count>1)
+            if (Regex.Matches(auth, ",").Count > 1)
                 auth = auth.Split(",")[0] + ", et al.";
             dr.Authors = auth;
-            
+
             dr.Title = c.sect;
             dr.Journal = c.jour;
             dr.Flag = true;
@@ -293,7 +293,8 @@ public partial class DataSet
             return dr;
         }
 
-        static (string CrystalSystem, string PointGroup, string SpaceGroup) [] Coeff = [.. SymmetryStatic.StrArray.Select(s =>
+        static readonly (string CrystalSystem, string PointGroup, string SpaceGroup) [] Coeff 
+            = [.. SymmetryStatic.StrArray.Select(s =>
         {
             var sg = s[3];
             if (sg.Contains("sub"))
