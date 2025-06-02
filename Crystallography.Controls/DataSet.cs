@@ -230,12 +230,6 @@ public partial class DataSet
         /// <returns></returns>
         public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? Crystal2.Deserialize((byte[]) r[Crystal2Column]) : null;
 
-
-        /// <summary>
-        /// 引数はbindingSourceMain.Currentオブジェクト. 
-        /// </summary>
-        /// <param name="o"></param>
-        /// <returns></returns>
         public Crystal2 Get(int i) => Crystal2.Deserialize((byte[])Rows[i][0]);
 
         public byte GetDataType(int i) => (byte)(Rows[i][DataTypeColumn]);

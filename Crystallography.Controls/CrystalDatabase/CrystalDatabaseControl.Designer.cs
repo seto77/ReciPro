@@ -62,7 +62,6 @@
             SaveDatabaseWorker = new System.ComponentModel.BackgroundWorker();
             bindingNavigator = new System.Windows.Forms.BindingNavigator(components);
             bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -70,7 +69,6 @@
             bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             DownloadCodWorker = new System.ComponentModel.BackgroundWorker();
             checkBoxAMCSD = new System.Windows.Forms.CheckBox();
             checkBoxCOD = new System.Windows.Forms.CheckBox();
@@ -121,7 +119,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             dataGridView.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            dataGridView.Location = new System.Drawing.Point(0, 71);
+            dataGridView.Location = new System.Drawing.Point(0, 70);
             dataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
@@ -138,7 +136,7 @@
             dataGridView.RowHeadersWidth = 44;
             dataGridView.RowTemplate.Height = 21;
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dataGridView.Size = new System.Drawing.Size(913, 525);
+            dataGridView.Size = new System.Drawing.Size(913, 526);
             dataGridView.TabIndex = 76;
             // 
             // nameDataGridViewTextBoxColumn
@@ -305,9 +303,8 @@
             bindingNavigator.AddNewItem = null;
             bindingNavigator.BindingSource = bindingSource;
             bindingNavigator.CountItem = bindingNavigatorCountItem;
-            bindingNavigator.DeleteItem = toolStripButtonDelete;
             bindingNavigator.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { bindingNavigatorMoveFirstItem, bindingNavigatorMovePreviousItem, bindingNavigatorSeparator, bindingNavigatorPositionItem, bindingNavigatorCountItem, bindingNavigatorSeparator1, bindingNavigatorMoveNextItem, bindingNavigatorMoveLastItem, bindingNavigatorSeparator2, toolStripButtonDelete });
+            bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { bindingNavigatorMoveFirstItem, bindingNavigatorMovePreviousItem, bindingNavigatorSeparator, bindingNavigatorPositionItem, bindingNavigatorCountItem, bindingNavigatorSeparator1, bindingNavigatorMoveNextItem, bindingNavigatorMoveLastItem });
             bindingNavigator.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             bindingNavigator.Location = new System.Drawing.Point(0, 47);
             bindingNavigator.MoveFirstItem = bindingNavigatorMoveFirstItem;
@@ -316,7 +313,7 @@
             bindingNavigator.MovePreviousItem = bindingNavigatorMovePreviousItem;
             bindingNavigator.Name = "bindingNavigator";
             bindingNavigator.PositionItem = bindingNavigatorPositionItem;
-            bindingNavigator.Size = new System.Drawing.Size(913, 24);
+            bindingNavigator.Size = new System.Drawing.Size(913, 23);
             bindingNavigator.TabIndex = 77;
             bindingNavigator.Text = "bindingNavigator";
             // 
@@ -326,17 +323,6 @@
             bindingNavigatorCountItem.Size = new System.Drawing.Size(28, 17);
             bindingNavigatorCountItem.Text = "/{0}";
             bindingNavigatorCountItem.ToolTipText = "項目の総数";
-            // 
-            // toolStripButtonDelete
-            // 
-            toolStripButtonDelete.BackColor = System.Drawing.Color.IndianRed;
-            toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            toolStripButtonDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            toolStripButtonDelete.Image = (System.Drawing.Image)resources.GetObject("toolStripButtonDelete.Image");
-            toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            toolStripButtonDelete.Name = "toolStripButtonDelete";
-            toolStripButtonDelete.Size = new System.Drawing.Size(49, 21);
-            toolStripButtonDelete.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -392,11 +378,6 @@
             bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
             bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
             bindingNavigatorMoveLastItem.Text = "最後に移動";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 23);
             // 
             // DownloadCodWorker
             // 
@@ -511,8 +492,6 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn densityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn formulaDataGridViewTextBoxColumn;

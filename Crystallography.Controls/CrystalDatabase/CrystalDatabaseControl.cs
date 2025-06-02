@@ -92,7 +92,7 @@ public partial class CrystalDatabaseControl : UserControl
         Buffer.BlockCopy(data, 0, buffer, 4, data.Length);
         return buffer;
     }
-
+    
     static Crystal2[] deserialize(Stream stream)
     {
         var buffer1 = new byte[4];

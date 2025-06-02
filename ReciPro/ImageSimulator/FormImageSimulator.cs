@@ -1091,7 +1091,9 @@ public partial class FormImageSimulator : Form
     /// </summary>
     public void CalculateInsideSpotInfo()
     {
-        var beams = FormMain.Crystal.Bethe.Find_gVectors(FormMain.Crystal.RotationMatrix, new Vector3DBase(0, 0, 1 / Lambda), BlochNum);
+        if (!this.Visible)
+            return;
+        var beams = FormMain.Crystal.Bethe.Find_gVectors(FormMain.Crystal.RotationMatrix, new Vector3DBase(0, 0, -1 / Lambda), BlochNum);
         BeamsInside = BetheMethod.ExtractInsideBeams(beams, AccVol, HRTEM_ObjAperRadius, HRTEM_ObjAperX, HRTEM_ObjAperY);
         textBoxNumOfSpots.Text = BeamsInside.Length.ToString();
 
