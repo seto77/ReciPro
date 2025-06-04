@@ -1217,7 +1217,7 @@ public class Ellipsoid : GLObject
         var indices = new List<int[]>();
 
         types.Add(PT.Points);
-        indices.Add(Enumerable.Range(0, Vertices.Length).ToArray());
+        indices.Add([.. Enumerable.Range(0, Vertices.Length)]);
 
         var indexListSurfaces = new List<int>(16 * rot.Length * slices * slices);
         var indexListEdges = new List<int>(rot.Length * 8 * (slices * slices * 2 + slices));
@@ -1242,8 +1242,8 @@ public class Ellipsoid : GLObject
         types.Add(PT.Lines);
         indices.Add([.. indexListEdges]);
 
-        Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
-        Primitives = types.Select((t, i) => (t, indices[i].Length)).ToArray();
+        Indices = indices.AsValueEnumerable().SelectMany(i => i).Select(i => (uint)i).ToArray();
+        Primitives = types.AsValueEnumerable().Select((t, i) => (t, indices[i].Length)).ToArray();
     }
 }
 
@@ -1432,7 +1432,7 @@ public class Pipe : GLObject
         indices.Add([.. indiceSide]);
 
         types.Add(PT.Points);
-        indices.Add(Enumerable.Range(0, v.Count).ToArray());
+        indices.Add(ValueEnumerable.Range(0, v.Count).ToArray());
 
         //底面
         if (sole)
@@ -1481,7 +1481,7 @@ public class Pipe : GLObject
         for (int i = 0; i < v.Count; i++)
             Vertices[i] = new Vertex((rotMat * v[i] + o).ToV3f(), (rotMat * n[i]).ToV3f(), c[i]);
 
-        Indices = indices.SelectMany(i => i).Select(i => (uint)i).ToArray();
+        Indices = indices.AsValueEnumerable().SelectMany(i => i).Select(i => (uint)i).ToArray();
 
         Primitives = types.Select((t, i) => (t, indices[i].Length)).ToArray();
     }

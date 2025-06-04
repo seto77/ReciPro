@@ -16,7 +16,6 @@ using V4 = OpenTK.Mathematics.Vector4d;
 using OpenTK.Mathematics;
 using System.Collections.Concurrent;
 using ZLinq;
-//[assembly: ZLinqDropInAttribute("ReciPro", DropInGenerateTypes.Everything)]
 #endregion
 
 namespace ReciPro;

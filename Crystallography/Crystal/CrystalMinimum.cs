@@ -48,7 +48,7 @@ public partial class Crystal2
 
     public string fileName;
 
-    public byte datatype; //DatabaseType‚Ì’l‚ðŠi”[‚·‚é
+    public byte datatype; //DatabaseType (AMCSD, COD‚È‚Ç) ‚Ì’l‚ðŠi”[‚·‚é
 
     #endregion
 

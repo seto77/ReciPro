@@ -117,7 +117,7 @@ public partial class DataSet
     partial class DataTableAtomDataTable
     {
         public Atoms Get(int i) => Rows[i][AtomColumn] as Atoms;
-        public Atoms[] GetAll() => Rows.Select(r => (r as DataTableAtomRow)[AtomColumn] as Atoms).ToArray();
+        public Atoms[] GetAll() => [.. Rows.Select(r => (r as DataTableAtomRow)[AtomColumn] as Atoms)];
         public void Replace(Atoms atoms, int i) => ReplaceBase(Rows, createRow(atoms), i);
         public void Add(Atoms atom) => Rows.Add(createRow(atom));
         public new void Clear() => Rows.Clear();
