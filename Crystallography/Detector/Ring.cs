@@ -996,7 +996,8 @@ public static class Ring
 
                 int width = IP.SrcWidth, height = IP.SrcHeight;
 
-                Parallel.For(0, height, j =>
+                for(int j=0; j<height; j++)
+                //Parallel.For(0, height, j =>
                 {
                     var tempY = (j - centerY) * pixSizeY;//IP平面上の座標系におけるY位置
                     var tempY2TanKsi = tempY * TanKsi;
@@ -1008,7 +1009,7 @@ public static class Ring
                     for (int i = 0; i < width; i++)
                     {
                         var tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IP平面上の座標系におけるX位置
-                                                                            //以下のx,y,zがピクセル中心の空間位置
+                        //以下のx,y,zがピクセル中心の空間位置
                         var x = Numer2 * tempX + numer1TempY;
                         var y = Numer1 * tempX + numer3TempY;
                         var z = Denom2 * tempX + denom1tempYFD;
@@ -1018,7 +1019,8 @@ public static class Ring
                         if (startCos2 < cos2 || cos2 < endCos2)
                             IsOutsideOfIntegralProperty[i + jWidth] = true;
                     }
-                });
+                }
+                //);
             }//フラットパネルモードここまで
              //Gandolfiモードの時
             else
