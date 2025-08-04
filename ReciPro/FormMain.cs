@@ -15,8 +15,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 using Col4 = OpenTK.Mathematics.Color4;
 using Vec3 = OpenTK.Mathematics.Vector3d;
+using Microsoft.Win32;
 
 #endregion
 
@@ -184,7 +186,6 @@ public partial class FormMain : Form
         if (!DesignMode)
             Registry(Reg.Mode.Read);
 
-
         InitializeComponent();
 
         if (DesignMode)
@@ -197,11 +198,11 @@ public partial class FormMain : Form
 
         ip = new Progress<(long, long, long, string)>(reportProgress);//IReport
 
-        this.SetStyle(ControlStyles.ResizeRedraw, true);
+        //this.SetStyle(ControlStyles.ResizeRedraw, true);
         // ダブルバッファリング
-        this.SetStyle(ControlStyles.DoubleBuffer, true);
-        this.SetStyle(ControlStyles.UserPaint, true);
-        this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+        //this.SetStyle(ControlStyles.DoubleBuffer, true);
+        //this.SetStyle(ControlStyles.UserPaint, true);
+        //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 
     }
 
@@ -267,7 +268,7 @@ public partial class FormMain : Form
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error during initializing GLcontrol");
+                MessageBox.Show("Error during initializing GLControl");
                 MessageBox.Show(ex.Message);
                 disableOpneGLToolStripMenuItem.Checked = true;
             }
@@ -446,6 +447,8 @@ public partial class FormMain : Form
         //SaveInitialRegistry();
         Registry(Reg.Mode.Write);
 
+        Properties.Settings.Default.Save();
+
         ChangeClipboardChain(this.Handle, NextHandle);
 
         var cry = new List<Crystal>();
@@ -458,6 +461,14 @@ public partial class FormMain : Form
     #region レジストリ操作
     private void Registry(Reg.Mode mode)
     {
+        //if(mode==Reg.Mode.Write)
+        //{
+        //    Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        //    configuration.AppSettings.Settings.Add("Address", "大阪府");
+        //    configuration.Save();
+        //    return;
+        //}
+
         using var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
         try
         {
@@ -469,7 +480,7 @@ public partial class FormMain : Form
             Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
 
             Reg.RW<Rectangle>(key, mode, this, "Bounds");
-            WindowLocation.Adjust(this);
+            //WindowLocation.Adjust(this);
 
             Reg.RW<bool>(key, mode, this, "DisableOpenGL");
             Reg.RW<bool>(key, mode, this, "DisableTextRendering");

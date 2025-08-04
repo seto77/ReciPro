@@ -53,7 +53,7 @@ public static class Reg
 
         else
         {//書込の時
-            using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.SmallestSize);
+            using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.Optimal);
             MemoryPackSerializer.Serialize(compressor, (T)prop.GetValue(owner));
             key.SetValue(regName, compressor.ToArray());
         }
