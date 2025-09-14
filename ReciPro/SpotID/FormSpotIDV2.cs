@@ -1595,7 +1595,6 @@ public partial class FormSpotIDV2 : Form
 
     #endregion
 
-
     private void radioButtonPixelSizeUnitReal_CheckedChanged(object sender, EventArgs e)
     {
         numericBoxCameraLength.Enabled = radioButtonPixelSizeUnitReal.Checked;
