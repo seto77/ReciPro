@@ -106,6 +106,19 @@ public class Macro : MacroBase
         [Help("Export a selected crystal as CIF format. If 'filename' is omitted, a selection dialog will open.", "string filename")]
         public void ExportAsCIF(string filename = "") => Execute(() => main.ExportCIF(filename));
 
+        [Help("Save a text data. If 'filename' is omitted, a selection dialog will open.", "string TextData, string FileName")]
+        public void SaveText(string textData, string filename = "")
+        {
+            if(filename == "")
+            {
+                var dlg = new SaveFileDialog();
+                if (dlg.ShowDialog() == DialogResult.OK)
+                    filename = dlg.FileName;
+                else
+                    return;
+            }
+            Execute(() => System.IO.File.WriteAllText(filename, textData,Encoding.UTF8));
+        }
     }
     #endregion
 
@@ -239,7 +252,7 @@ public class Macro : MacroBase
         [Help("Close the 'Diffraction Simulator' window.")] 
         public void Close() => Execute(new Action(() => difSim.Visible = false));
 
-        public void SaveAsPng(string filename = "") => difSim.SaveOrCopy(true, true, true, filename);
+
 
         [Help("Set the incident wave to X-ray.")]
         public void Source_Xray() { difSim.Source = WaveSource.Xray; }
@@ -329,11 +342,12 @@ public class Macro : MacroBase
 
         [Help("True/False. Set/get whether screen rendering is skipped or not.")]
         public bool SkipRendering { get => difSim.SkipRendering; set => difSim.SkipRendering = value; }
-      
+
+        [Help("Save the current simulation pattern as png format file. If filename is omitted, a dialog will open.", "string filename")]
+        public void SaveAsPng(string filename = "") => difSim.SaveOrCopy(true, true, true, filename);
+
         [Help("Get spot information as CSV-format text.")]
         public string SpotInfo() => (Execute(() => spotInfo()));
-        
-        [Help("Save the current simulation pattern as png format file. If filename is omitted, a dialog will open.", "string filename")]
         private string spotInfo()
         {
             var gamma = 1 + UniversalConstants.e0 * Energy * 1000 / UniversalConstants.m0 / UniversalConstants.c2;
@@ -373,6 +387,9 @@ public class Macro : MacroBase
         }
 
     }
+
+
+
     #endregion
 
     #region ImageSimulatorクラス (HRTEMandSTEMとPotentialの親クラス)

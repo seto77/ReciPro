@@ -198,11 +198,11 @@ public partial class FormMain : Form
 
         ip = new Progress<(long, long, long, string)>(reportProgress);//IReport
 
-        //this.SetStyle(ControlStyles.ResizeRedraw, true);
+        //this.SetStyle(ControlStyles.ResizeRedraw, true); //20250804にコメントアウト (浜根氏の問題に対処)
         // ダブルバッファリング
-        //this.SetStyle(ControlStyles.DoubleBuffer, true);
-        //this.SetStyle(ControlStyles.UserPaint, true);
-        //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+        //this.SetStyle(ControlStyles.DoubleBuffer, true);//20250804にコメントアウト (浜根氏の問題に対処)
+        //this.SetStyle(ControlStyles.UserPaint, true);//20250804にコメントアウト (浜根氏の問題に対処)
+        //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);//20250804にコメントアウト (浜根氏の問題に対処)
 
     }
 
@@ -285,9 +285,7 @@ public partial class FormMain : Form
             labelCurrentIndex.BackColor = Color.White;
             labelCurrentIndex.BringToFront();
         }
-
         #endregion
-
 
         commonDialog.Progress = ("Now Loading...Initializing 'Macro' form.", 0.12);
         macro = new Macro(this);
@@ -480,7 +478,7 @@ public partial class FormMain : Form
             Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
 
             Reg.RW<Rectangle>(key, mode, this, "Bounds");
-            //WindowLocation.Adjust(this);
+            //WindowLocation.Adjust(this);//20250804にコメントアウト (浜根氏の問題に対処)
 
             Reg.RW<bool>(key, mode, this, "DisableOpenGL");
             Reg.RW<bool>(key, mode, this, "DisableTextRendering");

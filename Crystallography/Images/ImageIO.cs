@@ -742,7 +742,12 @@ public static class ImageIO
             Ring.Intensity = [.. data.Read<int[]>().Select(e => (double)e)];
         else
         {
-            var src = data.Read<int[]>().Select(e=>(double)e).ToArray();
+            var src = Array.Empty<double>();
+            if(data.Type.Size==4)
+                src = [.. data.Read<int[]>().Select(e => (double)e)];
+            else if (data.Type.Size == 2)
+                src = [.. data.Read<short[]>().Select(e => (double)e)];
+
             Ring.SequentialImageIntensities = [];
             for(int i=0; i< num; i++)
                 Ring.SequentialImageIntensities.Add( src[(i*width*height)..((i+1)*(width*height))] );

@@ -345,7 +345,6 @@ namespace ReciPro
             numericBoxNumberOfSpots.Minimum = 1D;
             numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
             numericBoxNumberOfSpots.RadianValue = 0.52359877559829882D;
-            numericBoxNumberOfSpots.RoundErrorAccuracy = -1;
             numericBoxNumberOfSpots.ShowUpDown = true;
             numericBoxNumberOfSpots.SkipEventDuringInput = false;
             numericBoxNumberOfSpots.SmartIncrement = true;
@@ -374,7 +373,6 @@ namespace ReciPro
             numericBoxNearestNeighbor.Minimum = 1D;
             numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
             numericBoxNearestNeighbor.RadianValue = 0.17453292519943295D;
-            numericBoxNearestNeighbor.RoundErrorAccuracy = -1;
             numericBoxNearestNeighbor.ShowUpDown = true;
             numericBoxNearestNeighbor.SkipEventDuringInput = false;
             numericBoxNearestNeighbor.SmartIncrement = true;
@@ -393,7 +391,6 @@ namespace ReciPro
             numericBoxFittingRange.Minimum = 0D;
             numericBoxFittingRange.Name = "numericBoxFittingRange";
             numericBoxFittingRange.RadianValue = 0.3490658503988659D;
-            numericBoxFittingRange.RoundErrorAccuracy = -1;
             numericBoxFittingRange.ShowUpDown = true;
             numericBoxFittingRange.SkipEventDuringInput = false;
             numericBoxFittingRange.SmartIncrement = true;
@@ -418,7 +415,6 @@ namespace ReciPro
             numericBoxDonut.Minimum = 1D;
             numericBoxDonut.Name = "numericBoxDonut";
             numericBoxDonut.RadianValue = 0.087266462599716474D;
-            numericBoxDonut.RoundErrorAccuracy = -1;
             numericBoxDonut.ShowUpDown = true;
             numericBoxDonut.SkipEventDuringInput = false;
             numericBoxDonut.SmartIncrement = true;
@@ -434,6 +430,7 @@ namespace ReciPro
             // 
             // dataGridViewSpots
             // 
+            dataGridViewSpots.AllowUserToAddRows = false;
             dataGridViewSpots.AllowUserToDeleteRows = false;
             dataGridViewSpots.AllowUserToResizeRows = false;
             resources.ApplyResources(dataGridViewSpots, "dataGridViewSpots");
@@ -677,7 +674,6 @@ namespace ReciPro
             numericBoxSemiangle.Minimum = 1D;
             numericBoxSemiangle.Name = "numericBoxSemiangle";
             numericBoxSemiangle.RadianValue = 0.034906585039886591D;
-            numericBoxSemiangle.RoundErrorAccuracy = -1;
             numericBoxSemiangle.ShowUpDown = true;
             numericBoxSemiangle.SmartIncrement = true;
             numericBoxSemiangle.ThonsandsSeparator = true;
@@ -693,7 +689,6 @@ namespace ReciPro
             numericBoxMaxNumOfG.Minimum = 1D;
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
             numericBoxMaxNumOfG.RadianValue = 6.9813170079773181D;
-            numericBoxMaxNumOfG.RoundErrorAccuracy = -1;
             numericBoxMaxNumOfG.ShowUpDown = true;
             numericBoxMaxNumOfG.SmartIncrement = true;
             numericBoxMaxNumOfG.ThonsandsSeparator = true;
@@ -709,7 +704,6 @@ namespace ReciPro
             numericBoxAcceptableError.Minimum = 0.1D;
             numericBoxAcceptableError.Name = "numericBoxAcceptableError";
             numericBoxAcceptableError.RadianValue = 0.034906585039886591D;
-            numericBoxAcceptableError.RoundErrorAccuracy = -1;
             numericBoxAcceptableError.ShowUpDown = true;
             numericBoxAcceptableError.SkipEventDuringInput = false;
             numericBoxAcceptableError.SmartIncrement = true;
@@ -726,7 +720,6 @@ namespace ReciPro
             numericBoxMaxGrainNum.Minimum = 0.1D;
             numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";
             numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
-            numericBoxMaxGrainNum.RoundErrorAccuracy = -1;
             numericBoxMaxGrainNum.ShowUpDown = true;
             numericBoxMaxGrainNum.SkipEventDuringInput = false;
             numericBoxMaxGrainNum.ThonsandsSeparator = true;
@@ -913,7 +906,6 @@ namespace ReciPro
             numericBoxCameraLength.Minimum = 0D;
             numericBoxCameraLength.Name = "numericBoxCameraLength";
             numericBoxCameraLength.RadianValue = 17.453292519943293D;
-            numericBoxCameraLength.RoundErrorAccuracy = -1;
             numericBoxCameraLength.SkipEventDuringInput = false;
             numericBoxCameraLength.SmartIncrement = true;
             numericBoxCameraLength.ThonsandsSeparator = true;
@@ -930,7 +922,6 @@ namespace ReciPro
             numericBoxPixelSize.Minimum = 0D;
             numericBoxPixelSize.Name = "numericBoxPixelSize";
             numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
-            numericBoxPixelSize.RoundErrorAccuracy = -1;
             numericBoxPixelSize.SkipEventDuringInput = false;
             numericBoxPixelSize.SmartIncrement = true;
             numericBoxPixelSize.ThonsandsSeparator = true;
