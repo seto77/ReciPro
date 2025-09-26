@@ -84,6 +84,7 @@
             // 
             // statusStrip1
             // 
+            statusStrip1.Font = new System.Drawing.Font("Yu Gothic UI", 8F);
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar1, toolStripStatusLabel1 });
             statusStrip1.Location = new System.Drawing.Point(0, 378);
             statusStrip1.Name = "statusStrip1";

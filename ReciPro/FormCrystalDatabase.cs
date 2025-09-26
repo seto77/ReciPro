@@ -17,8 +17,6 @@ public partial class FormCrystalDatabase : Form
 
     private void FormCrystalDatabase_Load(object sender, EventArgs e)
     {
-        //if (File.Exists(FormMain.UserAppDataPath + "AMCSD.cdb3"))
-        //    crystalDatabaseControl.ReadDatabase(FormMain.UserAppDataPath + "AMCSD.cdb3");
         crystalDatabaseControl.AMCSD_Checked = true;
     }
 

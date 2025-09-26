@@ -1,15 +1,12 @@
-﻿using MathNet.Numerics.Statistics.Mcmc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.Xml;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Community.CsharpSqlite.Sqlite3;
 
 namespace Crystallography.Controls;
 public partial class SearchCrystalControl : UserControl
@@ -306,7 +303,7 @@ public partial class SearchCrystalControl : UserControl
             outer.RemoveRange(0, end + 1);
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
         }
-        return gList.Select(g => (float)(1 / g)).ToArray();
+        return [.. gList.Select(g => (float)(1 / g))];
     }
 
 
@@ -343,7 +340,6 @@ public partial class SearchCrystalControl : UserControl
         //    CrystalDatabaseControl.Suspend();
         //else
         CrystalDatabaseControl.Resume();//バインディングを繋げる
-
 
         this.Enabled = true;
 

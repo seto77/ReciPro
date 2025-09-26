@@ -21,6 +21,7 @@ using Windows.Media.Core;
 using Windows.UI.StartScreen;
 using ZLinq;
 using static Community.CsharpSqlite.Sqlite3;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 #endregion
 
 namespace Crystallography.Controls;
@@ -436,11 +437,9 @@ public partial class CrystalDatabaseControl : UserControl
     /// <summary>
     /// CODデータベースのダウンロードや読み込み. 
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public void ReadCOD()
+    /// <returns>正常に読み込めた場合はtrue, 途中キャンセルされたりした場合はfalse</returns>
+    public bool ReadCOD()
     {
-        this.Enabled = false;
         var (Valid, DataNum, FileNum, FileSizes, CheckSums) = CheckDatabaseFiles(UserAppDataPath + "COD.cdb3", true);
         string urlHeader = "https://github.com/seto77/CSManager/raw/master/COD/";
         if (Valid)
@@ -450,7 +449,7 @@ public partial class CrystalDatabaseControl : UserControl
                 if (new WebClient().DownloadData(new Uri(urlHeader + "COD.cdb3")).SequenceEqual(File.ReadAllBytes(UserAppDataPath + "COD.cdb3")))
                 {//ローカルのCODが最新版の場合
                     ReadDatabase(UserAppDataPath + "COD.cdb3");
-                    return;
+                    return true;
                 }
                 else
                 {//更新版が存在する場合
@@ -461,27 +460,26 @@ public partial class CrystalDatabaseControl : UserControl
                         ReadDatabase(UserAppDataPath + "COD.cdb3");
 
                     if (result == DialogResult.No || result == DialogResult.Cancel)//NoかCancelの場合
-                        return;
+                        return false;
                 }
 
             }
             catch //WEBが落ちている場合は、現状のCODを読み込む 
             {
                 ReadDatabase(UserAppDataPath + "COD.cdb3");
-                return;
+                return true;
             }
         }
         else//CODデータが存在しないか、適切でない場合
         {
             if (MessageBox.Show("Local COD database is missing.\r\n  Do you download the new database now ?", "Local COD database is missing.",
                 MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
+                return false;
         }
 
         //ここまでくる場合は、CODデータが存在しない場合
         //CODをダウンロードする
-        if (DownloadCodWorker.IsBusy) return;
-        this.Enabled = false;
+        if (DownloadCodWorker.IsBusy) return false;
         DownloadCodWorker.RunWorkerAsync(UserAppDataPath);
 
         while (DownloadCodWorker.IsBusy)//ダウンロードが完了するまで待つ
@@ -491,6 +489,7 @@ public partial class CrystalDatabaseControl : UserControl
         }
         //this.Enabled = true;
         ReadDatabase(UserAppDataPath + "COD.cdb3");
+        return true;
     }
 
     private void DownloadCodWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -685,24 +684,40 @@ public partial class CrystalDatabaseControl : UserControl
 
     private void checkBoxAMCSD_CheckedChanged(object sender, EventArgs e)
     {
-        if(checkBoxAMCSD.Checked && !AMCSD_Has_Read)
+        Enabled = false;
+        if (checkBoxAMCSD.Checked && !AMCSD_Has_Read)
         {
             ReadDatabase(UserAppDataPath + "AMCSD.cdb3");
             AMCSD_Has_Read = true;
         }
 
         DataBaseChanged?.Invoke(sender, e);
+        Enabled = true;
     }
 
     private void checkBoxCOD_CheckedChanged(object sender, EventArgs e)
     {
-        if (checkBoxCOD.Checked && !COD_Has_Read)
+        Enabled = false;
+        var text = textBox1.Text;
+        if (checkBoxCOD.Checked)
         {
-            ReadCOD();
-            COD_Has_Read = true;
-            do { Thread.Sleep(100);Application.DoEvents(); } while (!Enabled);
+            textBox1.Text = "Now, loading COD database...";
+            Application.DoEvents();
+            if (!COD_Has_Read)
+            {
+                if (ReadCOD())
+                {
+                    COD_Has_Read = true;
+                    do { Thread.Sleep(100); Application.DoEvents(); } while (!Enabled);
+                }
+                else
+                { checkBoxCOD.Checked = false; Enabled = true; }
+            }
         }
         DataBaseChanged?.Invoke(sender, e);
+        textBox1.Text = text;
+        Enabled = true;
+
     }
 }
 
