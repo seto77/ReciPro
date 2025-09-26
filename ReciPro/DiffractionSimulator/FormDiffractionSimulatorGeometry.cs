@@ -158,7 +158,7 @@ public partial class FormDiffractionSimulatorGeometry : Form
 
     private void buttonReadPicture_Click(object sender, EventArgs e)
     {
-        var dlg = new OpenFileDialog { Filter = "*.bmp, *.jpg, *.tif, *.ipa | *.bmp;*.jpg;*.tif;*.ipa" };
+        var dlg = new OpenFileDialog { Filter = ImageIO.FilterString + "|All files(*.*)|*.*" };
         if (dlg.ShowDialog() == DialogResult.OK)
             ReadImage(dlg.FileName);
     }
