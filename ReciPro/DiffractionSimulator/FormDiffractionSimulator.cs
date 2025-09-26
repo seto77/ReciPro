@@ -3169,6 +3169,7 @@ public partial class FormDiffractionSimulator : Form
     #region 動画関連
     private void toolStripMenuItemSaveMovieReciprocalSpace_Click(object sender, EventArgs e)
     {
+
         formMain.FormMovie.Execute(glControl, this);
     }
 

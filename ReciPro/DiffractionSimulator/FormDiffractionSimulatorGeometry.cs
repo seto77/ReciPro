@@ -187,7 +187,7 @@ public partial class FormDiffractionSimulatorGeometry : Form
         {
             var prm = DiffractionOptics.Read(fileName[0]);
             FormDiffractionSimulator.SkipDrawing = true;
-            if (prm.FootMode == "True")
+           // if (prm.FootMode == "True")
             {
                 FormDiffractionSimulator.waveLengthControl.WaveSource = WaveSource.Xray;
                 FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = 0;
@@ -211,18 +211,17 @@ public partial class FormDiffractionSimulatorGeometry : Form
                 Phi = Convert.ToDouble(prm.tiltPhi) / 180.0 * Math.PI;
                 CameraLength2 = Convert.ToDouble(prm.CameraLength2);
             }
-            else
-            {
-                FootX = Convert.ToDouble(prm.DirectSpotX);
-                FootY = Convert.ToDouble(prm.DirectSpotY);
+            //else
+            //{
+            //    FootX = Convert.ToDouble(prm.DirectSpotX);
+            //    FootY = Convert.ToDouble(prm.DirectSpotY);
 
-                FormDiffractionSimulator.waveLengthControl.WaveSource = (WaveSource)Convert.ToInt32(prm.waveSource);
-                FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = Convert.ToInt32(prm.xRayElement);
-                FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine = (XrayLine)Convert.ToInt32(prm.xRayLine);
-                FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1;
+            //    FormDiffractionSimulator.waveLengthControl.WaveSource = (WaveSource)Convert.ToInt32(prm.waveSource);
+            //    FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber = Convert.ToInt32(prm.xRayElement);
+            //    FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine = (XrayLine)Convert.ToInt32(prm.xRayLine);
+            //    FormDiffractionSimulator.waveLengthControl.WaveLength = Convert.ToDouble(prm.waveLength) * 0.1;
 
-
-            }
+            //}
             DetectorPixelSize = (Convert.ToDouble(prm.pixSizeX) + Convert.ToDouble(prm.pixSizeX)) / 2.0;
 
             ShowDetectorArea = true;
@@ -300,7 +299,9 @@ public partial class FormDiffractionSimulatorGeometry : Form
     {
         try
         {
-            if (filename.EndsWith("ipa"))
+            var ext = System.IO.Path.GetExtension(filename).ToLower()[1..];
+
+            if (ext == "ipa")
             {
                 ImageIO.IPAImage ipa = ImageIO.GetIPA_Object(filename);
                 pseudBitmap = new PseudoBitmap(Ring.Intensity.ToArray(), Ring.SrcImgSize.Width);
@@ -312,7 +313,7 @@ public partial class FormDiffractionSimulatorGeometry : Form
                 DetectorPixelSize = ipa.Resolution; FootX = ipa.Center.X; FootY = ipa.Center.Y;
                 CameraLength2 = ipa.CameraLength;
             }
-            if (filename.EndsWith("dm3") || filename.EndsWith("dm4"))
+            if (ext == "dm3" || ext == "dm4")
             {
                 if (ImageIO.ReadImage(filename))
                 {
@@ -336,7 +337,7 @@ public partial class FormDiffractionSimulatorGeometry : Form
                     }
                 }
             }
-            else if (filename.ToLower().EndsWith("bmp") || filename.ToLower().EndsWith("jpg") || filename.ToLower().EndsWith("tif") || filename.ToLower().EndsWith("tiff"))
+            else if (ext == "bmp" || ext == "jpg" || ext == "tif" || ext == "tiff" || ImageIO.IsReadable(ext))
             {
                 ImageIO.ReadImage(filename);
 

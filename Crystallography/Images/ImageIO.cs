@@ -58,6 +58,11 @@ public static class ImageIO
 
     private static readonly char[] separator = ['='];
 
+    /// <summary>
+    /// 拡張子を渡して、その拡張子が読み込み可能かどうかを返す。
+    /// </summary>
+    /// <param name="_ext"></param>
+    /// <returns></returns>
     public static bool IsReadable(string _ext)
     {
         var ext = _ext.StartsWith('.') ? _ext[1..] : _ext;
