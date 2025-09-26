@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2025.9.26.0917</AssemblyVersion>
-    <FileVersion>2025.9.26.0917</FileVersion>
+    <AssemblyVersion>2025.9.26.1001</AssemblyVersion>
+    <FileVersion>2025.9.26.1001</FileVersion>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <PublishReadyToRun>true</PublishReadyToRun>
