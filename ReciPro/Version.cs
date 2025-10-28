@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.907(2025/10/28)  Fixed a minor bug." +
         "\r\n ver4.906(2025/09/26)  Fixed a minor bug. Renewed the Eigen library." +
         "\r\n ver4.905(2025/09/14)  Added several 'Macro' functions." +
         "\r\n ver4.904(2025/08/04)  Fixed a minor bug." +

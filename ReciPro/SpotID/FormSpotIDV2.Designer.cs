@@ -117,6 +117,7 @@ namespace ReciPro
             numericBoxCameraLength = new NumericBox();
             numericBoxPixelSize = new NumericBox();
             waveLengthControl1 = new WaveLengthControl();
+            checkBoxGuideCircles = new System.Windows.Forms.CheckBox();
             checkBoxShowDebyeRing = new System.Windows.Forms.CheckBox();
             menuStrip = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -182,6 +183,7 @@ namespace ReciPro
             splitContainer1.Panel2.Controls.Add(groupBox1);
             splitContainer1.Panel2.Controls.Add(groupBox3);
             splitContainer1.Panel2.Controls.Add(groupBox2);
+            splitContainer1.Panel2.Controls.Add(checkBoxGuideCircles);
             splitContainer1.Panel2.Controls.Add(checkBoxShowDebyeRing);
             splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             // 
@@ -942,6 +944,15 @@ namespace ReciPro
             waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
             waveLengthControl1.WavelengthChanged += WaveLengthControl1_WavelengthChanged;
             // 
+            // checkBoxGuideCircles
+            // 
+            resources.ApplyResources(checkBoxGuideCircles, "checkBoxGuideCircles");
+            checkBoxGuideCircles.Checked = true;
+            checkBoxGuideCircles.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxGuideCircles.Name = "checkBoxGuideCircles";
+            checkBoxGuideCircles.UseVisualStyleBackColor = true;
+            checkBoxGuideCircles.CheckedChanged += checkBoxGuideCircles_CheckedChanged;
+            // 
             // checkBoxShowDebyeRing
             // 
             resources.ApplyResources(checkBoxShowDebyeRing, "checkBoxShowDebyeRing");
@@ -1092,12 +1103,14 @@ namespace ReciPro
             Controls.Add(splitContainer1);
             Controls.Add(statusStrip);
             Controls.Add(menuStrip);
+            KeyPreview = true;
             MainMenuStrip = menuStrip;
             Name = "FormSpotIDV2";
             FormClosing += FormSpotID_FormClosing;
             Load += FormSpotID_Load;
             DragDrop += FormSpotID_DragDrop;
             DragEnter += FormSpotID_DragEnter;
+            KeyDown += FormSpotIDV2_KeyDown;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             splitContainer1.Panel2.PerformLayout();
@@ -1226,5 +1239,6 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxShowZoneAxis;
         private System.Windows.Forms.RadioButton radioButtonPixelSizeUnitInverse;
         private System.Windows.Forms.RadioButton radioButtonPixelSizeUnitReal;
+        private System.Windows.Forms.CheckBox checkBoxGuideCircles;
     }
 }

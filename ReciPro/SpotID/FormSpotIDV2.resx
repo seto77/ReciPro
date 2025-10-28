@@ -1911,6 +1911,39 @@ and the fitting range in the right box .</value>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="checkBoxGuideCircles.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxGuideCircles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxGuideCircles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 32</value>
+  </data>
+  <data name="checkBoxGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 21</value>
+  </data>
+  <data name="checkBoxGuideCircles.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxGuideCircles.Text" xml:space="preserve">
+    <value>Show guide circles</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGuideCircles.Name" xml:space="preserve">
+    <value>checkBoxGuideCircles</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGuideCircles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGuideCircles.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGuideCircles.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="checkBoxShowDebyeRing.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1942,7 +1975,7 @@ and the fitting range in the right box .</value>
     <value>splitContainer1.Panel2</value>
   </data>
   <data name="&gt;&gt;checkBoxShowDebyeRing.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
     <value>splitContainer1.Panel2</value>

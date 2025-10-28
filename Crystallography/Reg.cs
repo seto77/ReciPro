@@ -1,6 +1,7 @@
 ﻿using MemoryPack;
 using MemoryPack.Compression;
 using Microsoft.Win32;
+using System.CodeDom;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -9,6 +10,27 @@ namespace Crystallography;
 public static class Reg
 {
     public enum Mode { Read, Write };
+
+    public static ref T ForceToByValue<T>(T source)
+    {
+        T destination = default(T);
+        if (source is System.ICloneable cloneableSource)
+        {
+            destination = (T)(cloneableSource.Clone());
+        }
+        else
+        {
+            destination = source;
+        }
+        return ref (new T[1] { destination })[0];
+    }
+
+    public static void RW<T>(RegistryKey key, Mode mode, object owner, string propName, T p)
+    {
+      
+        RW<T> (key, mode, owner, nameof(p));
+    }
+
     public static void RW<T>(RegistryKey key, Mode mode, object owner, string propName)
     {
         if (owner == null)
@@ -25,9 +47,7 @@ public static class Reg
                 regName = c.TopLevelControl.Name + "." + propName;
         }
         else if (owner is ToolStripItem t)
-        {
             regName = t.Name + "." + propName;
-        }
         else
             regName = $"{prop.ReflectedType.FullName}.{propName}";
 

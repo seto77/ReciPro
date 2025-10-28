@@ -120,8 +120,8 @@ public partial class FormMain : Form
     public FormStructureViewer FormStructureViewer;
     public FormDiffractionSimulator FormDiffractionSimulator;
     public FormStereonet FormStereonet;
-    public FormSpotIDv1 FormTEMID;
-    public FormSpotIDV2 FormSpotID;
+    public FormSpotIDv1 FormSpotIDv1;
+    public FormSpotIDV2 FormSpotIDv2;
     public FormCalculator FormCalculator;
     public FormPolycrystallineDiffractionSimulator FormPolycrystallineDiffractionSimulator;
     public FormRotationMatrix FormRotation;
@@ -330,14 +330,14 @@ public partial class FormMain : Form
         FormEBSD = new FormEBSD() { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'TEM ID' form.", 0.6);
-        FormTEMID = new FormSpotIDv1 { formMain = this, Visible = false };
-        FormTEMID.KeyDown += new KeyEventHandler(FormMain_KeyDown);
-        FormTEMID.KeyUp += new KeyEventHandler(FormMain_KeyUp);
-        FormTEMID.Visible = false;
-        FormTEMID.VisibleChanged += FormTEMID_VisibleChanged;
+        FormSpotIDv1 = new FormSpotIDv1 { formMain = this, Visible = false };
+        FormSpotIDv1.KeyDown += new KeyEventHandler(FormMain_KeyDown);
+        FormSpotIDv1.KeyUp += new KeyEventHandler(FormMain_KeyUp);
+        FormSpotIDv1.Visible = false;
+        FormSpotIDv1.VisibleChanged += FormTEMID_VisibleChanged;
 
         commonDialog.Progress = ("Now Loading...Initializing 'Spot ID' form.", 0.65);
-        FormSpotID = new FormSpotIDV2 { FormMain = this, Visible = false };
+        FormSpotIDv2 = new FormSpotIDV2 { FormMain = this, Visible = false };
 
         commonDialog.Progress = ("Now Loading...Initializing 'Calculator' form.", 0.70);
         FormCalculator = new FormCalculator { Owner = this, Visible = false };
@@ -493,7 +493,7 @@ public partial class FormMain : Form
 
             Reg.RW<Rectangle>(key, mode, FormStereonet, "Bounds");
 
-            Reg.RW<Rectangle>(key, mode, FormTEMID, "Bounds");
+            Reg.RW<Rectangle>(key, mode, FormSpotIDv1, "Bounds");
 
             #region DiffractionSimulator
 
@@ -527,9 +527,23 @@ public partial class FormMain : Form
             #endregion
 
             #region ImageSimulator
-            Reg.RW<Rectangle>(key, mode, FormImageSimulator, "Bounds");
-            Reg.RW<ImageSimulatorSetting>(key, mode, FormImageSimulator, "Setting");
-            Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.FormPresets, "Settings");
+            {
+                var owner = FormImageSimulator;
+                Reg.RW(key, mode, owner, nameof(owner.Bounds), owner.Bounds);
+                Reg.RW(key, mode, owner, nameof(owner.Setting), owner.Setting);
+                //Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.FormPresets, "Settings");
+                var owner2 = FormImageSimulator.FormPresets;
+                Reg.RW(key, mode, owner2,nameof(owner2.Settings), owner2.Settings);
+            }
+            #endregion
+
+            #region SpotID_V2
+            {
+                var owner = FormSpotIDv2;
+                Reg.RW(key, mode, owner, nameof(owner.NearestNeighbor), owner.NearestNeighbor);
+                //Reg.RW2(key, mode, FormSpotIDv2, ref Reg.ForceToByValue(FormSpotIDv2.NearestNeighbor));
+                Reg.RW<double>(key, mode, owner, nameof(owner.FittingRange));
+            }
             #endregion
 
             if (mode == Reg.Mode.Read)
@@ -914,19 +928,19 @@ public partial class FormMain : Form
     }
     private void FormTEMID_VisibleChanged(object sender, EventArgs e)
     {
-        listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
+        listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
             SelectionMode.MultiExtended : SelectionMode.One;
     }
 
     private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
     {
-        listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
+        listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
             SelectionMode.MultiExtended : SelectionMode.One;
     }
 
     private void formPolycrystallineDiffractionSimulator_VisibleChanged(object sender, EventArgs e)
     {
-        listBox.SelectionMode = FormTEMID.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
+        listBox.SelectionMode = FormSpotIDv1.Visible || FormDiffractionSimulator.Visible || FormPolycrystallineDiffractionSimulator.Visible ?
             SelectionMode.MultiExtended : SelectionMode.One;
     }
 
@@ -960,9 +974,9 @@ public partial class FormMain : Form
         else if (button.Name.Contains("ImageSimulator"))
             form = FormImageSimulator;
         else if (button.Name.Contains("SpotIDv1"))
-            form = FormTEMID;
+            form = FormSpotIDv1;
         else if (button.Name.Contains("SpotIDv2"))
-            form = FormSpotID;
+            form = FormSpotIDv2;
         else if (button.Name.Contains("Trajectory"))
             form = FormTrajectory;
         else if (button.Name.Contains("EBSD"))
@@ -1040,8 +1054,8 @@ public partial class FormMain : Form
             if (FormDiffractionSimulator != null && FormDiffractionSimulator.Visible)
                 FormDiffractionSimulator.SetCrystal();
           
-            if (FormSpotID != null && FormSpotID.Visible)
-                FormSpotID.SetCrystal();
+            if (FormSpotIDv2 != null && FormSpotIDv2.Visible)
+                FormSpotIDv2.SetCrystal();
            
             if (FormRotation != null && FormRotation.Visible)
                 FormRotation.SetRotation();

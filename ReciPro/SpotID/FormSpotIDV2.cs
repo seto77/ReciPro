@@ -24,6 +24,7 @@ public partial class FormSpotIDV2 : Form
     #region プロパティ、フィールド
     public object tagObsSpot = "ObsCross";
     public object tagCalcSpot = "Calc";
+    public object tagScale = "Scale";
 
     public FormSpotIDv2Details FormSpotDetails;
 
@@ -49,11 +50,13 @@ public partial class FormSpotIDV2 : Form
     public double ToleranceLength => numericBoxAcceptableError.Value * 0.01;
     public double ToleranceAngle => Math.Asin(ToleranceLength) / 2;
 
-    public double FittingRange => numericBoxFittingRange.Value;
-
     private readonly Lock lockObj = new();
 
     private readonly Stopwatch sw = new();
+
+    public int NearestNeighbor { set => numericBoxNearestNeighbor.Value = value; get => numericBoxNearestNeighbor.ValueInteger; }
+
+    public double FittingRange { set => numericBoxFittingRange.Value = value; get => numericBoxFittingRange.Value; }
 
     #endregion プロパティ、フィールド
 
@@ -679,7 +682,17 @@ public partial class FormSpotIDV2 : Form
                 symbol.Bold = i == current;
                 scalablePictureBoxAdvanced.Symbols.Add(symbol);
             }
+
+            scalablePictureBoxAdvanced.Symbols?.RemoveAll(s => s.Tag == tagScale);
+            if (checkBoxGuideCircles.Checked)
+            {
+                var max = (int)(scalablePictureBoxAdvanced.PseudoBitmap.Width /2 / 50);
+                //var step = 50 / scalablePictureBoxAdvanced.ZoomAndCenter.Zoom;
+                for (int i = 1; i < max; i++)
+                    scalablePictureBoxAdvanced.Symbols.Add(new ScalablePictureBox.Symbol("", direct, 50 * i, Color.Yellow) { Tag = tagScale });
+            }
         }
+
         scalablePictureBoxAdvanced.Refresh();
         if (FormSpotDetails != null && FormSpotDetails.Visible)
             FormSpotDetails.SetData(false);
@@ -1598,5 +1611,43 @@ public partial class FormSpotIDV2 : Form
     private void radioButtonPixelSizeUnitReal_CheckedChanged(object sender, EventArgs e)
     {
         numericBoxCameraLength.Enabled = radioButtonPixelSizeUnitReal.Checked;
+    }
+
+    private void FormSpotIDV2_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (bindingSourceObsSpots.Current != null && bindingSourceObsSpots.Current is DataRowView view)
+        {
+            if (e.Control && (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left))
+            {
+                var step = 1/scalablePictureBoxAdvanced.ZoomAndCenter.Zoom;
+
+                try
+                {
+                    if (e.KeyCode == Keys.Up)
+                        view.Row["Y0"] = (double)view.Row["Y0"] - step;
+                    if (e.KeyCode == Keys.Down)
+                        view.Row["Y0"] = (double)view.Row["Y0"] + step;
+                    if (e.KeyCode == Keys.Right)
+                        view.Row["X0"] = (double)view.Row["X0"] + step;
+                    if (e.KeyCode == Keys.Left)
+                        view.Row["X0"] = (double)view.Row["X0"] - step;
+
+                    dataSet.DataTableSpot.ResetDspacing();
+                    bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, bindingSourceObsSpots.Position));
+                }
+                catch { }
+                e.SuppressKeyPress = true;
+            }
+        }
+    }
+
+    private void FormSpotIDV2_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+    {
+
+    }
+
+    private void checkBoxGuideCircles_CheckedChanged(object sender, EventArgs e)
+    {
+        bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, 0));
     }
 }
