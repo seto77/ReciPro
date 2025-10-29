@@ -47,7 +47,7 @@ public partial class FormSpotIDV2 : Form
 
     public double WaveLength => waveLengthControl1.WaveLength;
 
-    public double ToleranceLength => numericBoxAcceptableError.Value * 0.01;
+    public double ToleranceLength {get=> numericBoxAcceptableError.Value * 0.01; set=> numericBoxAcceptableError.Value = value * 100; }
     public double ToleranceAngle => Math.Asin(ToleranceLength) / 2;
 
     private readonly Lock lockObj = new();
@@ -55,7 +55,6 @@ public partial class FormSpotIDV2 : Form
     private readonly Stopwatch sw = new();
 
     public int NearestNeighbor { set => numericBoxNearestNeighbor.Value = value; get => numericBoxNearestNeighbor.ValueInteger; }
-
     public double FittingRange { set => numericBoxFittingRange.Value = value; get => numericBoxFittingRange.Value; }
 
     #endregion プロパティ、フィールド

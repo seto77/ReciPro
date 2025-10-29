@@ -135,8 +135,16 @@ public partial class FormMain : Form
 
     private Crystallography.Controls.CommonDialog commonDialog;
     private GLControlAlpha glControlAxes;
-    public bool DisableOpenGL { get => disableOpneGLToolStripMenuItem.Checked; set => disableOpneGLToolStripMenuItem.Checked = value; }
-    public bool DisableTextRendering { get => toolStripMenuItemDisableTextRendering.Checked; set => toolStripMenuItemDisableTextRendering.Checked = value; }
+    public bool DisableOpenGL
+    {
+        get => disableOpneGLToolStripMenuItem != null && disableOpneGLToolStripMenuItem.Checked;
+        set => disableOpneGLToolStripMenuItem.Checked = value;
+    }
+    public bool DisableTextRendering
+    {
+        get => toolStripMenuItemDisableTextRendering != null && toolStripMenuItemDisableTextRendering.Checked;
+        set => toolStripMenuItemDisableTextRendering.Checked = value;
+    }
     public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
     public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
     public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
@@ -459,13 +467,6 @@ public partial class FormMain : Form
     #region レジストリ操作
     private void Registry(Reg.Mode mode)
     {
-        //if(mode==Reg.Mode.Write)
-        //{
-        //    Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        //    configuration.AppSettings.Settings.Add("Address", "大阪府");
-        //    configuration.Save();
-        //    return;
-        //}
 
         using var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
         try
@@ -477,53 +478,66 @@ public partial class FormMain : Form
 
             Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
 
-            Reg.RW<Rectangle>(key, mode, this, "Bounds");
-            //WindowLocation.Adjust(this);//20250804にコメントアウト (浜根氏の問題に対処)
 
-            Reg.RW<bool>(key, mode, this, "DisableOpenGL");
-            Reg.RW<bool>(key, mode, this, "DisableTextRendering");
+            Reg.RW(key, mode, this, nameof(Bounds), Bounds);
+            //WindowLocation.Adjust(this);//20250804にコメントアウト (浜根氏の問題に対処)
+            Reg.RW(key, mode, this, nameof(DisableOpenGL), DisableOpenGL);
+            Reg.RW(key, mode, this, nameof(DisableTextRendering), DisableTextRendering);
 
             if (commonDialog == null)
                 return;
 
-            Reg.RW<bool>(key, mode, commonDialog, "AutomaticallyClose");
+            Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
 
             if (FormStereonet == null)
                 return;
 
-            Reg.RW<Rectangle>(key, mode, FormStereonet, "Bounds");
+            #region Stereonet
+            { 
+                var owner = FormStereonet;
+                Reg.RW(key, mode, owner, nameof(owner.Bounds), owner.Bounds);
+            }
+            #endregion
 
-            Reg.RW<Rectangle>(key, mode, FormSpotIDv1, "Bounds");
+            #region SpotIDv1
+            {
+                var owner = FormSpotIDv1;
+                Reg.RW(key, mode, owner, nameof(owner.Bounds), owner.Bounds);
+            }
+            #endregion
 
             #region DiffractionSimulator
-
             FormDiffractionSimulator.CancelSetVector = true;
+            {
+                var owner = FormDiffractionSimulator;
 
-            Reg.RW<Rectangle>(key, mode, FormDiffractionSimulator, "Bounds");
+                Reg.RW(key, mode, owner, nameof(owner.Bounds), owner.Bounds);
 
+                Reg.RW(key, mode, owner, nameof(owner.Resolution), owner.Resolution);
+                Reg.RW(key, mode, owner, nameof(owner.ResolutionUnit), owner.ResolutionUnit);
 
-            Reg.RW<WaveSource>(key, mode, FormDiffractionSimulator.waveLengthControl, "WaveSource");
-            Reg.RW<double>(key, mode, FormDiffractionSimulator.waveLengthControl, "Energy");
-            Reg.RW<int>(key, mode, FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceElementNumber");
-            Reg.RW<XrayLine>(key, mode, FormDiffractionSimulator.waveLengthControl, "XrayWaveSourceLine");
-
+                Reg.RW(key, mode, owner, nameof(owner.FlipHorizontally), owner.FlipHorizontally);
+                Reg.RW(key, mode, owner, nameof(owner.FlipVertically), owner.FlipVertically);
+                Reg.RW(key, mode, owner, nameof(owner.NegativeImage), owner.NegativeImage);
+            }
+            {
+                var owner = FormDiffractionSimulator.waveLengthControl;
+                Reg.RW(key, mode, owner, nameof(owner.WaveSource), owner.WaveSource);
+                Reg.RW(key, mode, owner, nameof(owner.Energy), owner.Energy);
+                Reg.RW(key, mode, owner, nameof(owner.XrayWaveSourceElementNumber), owner.XrayWaveSourceElementNumber);
+                Reg.RW(key, mode, owner, nameof(owner.XrayWaveSourceLine), owner.XrayWaveSourceLine);
+            }
+            {
+                var owner = FormDiffractionSimulator.FormDiffractionSimulatorGeometry;
+                Reg.RW(key, mode, owner, nameof(owner.FootX), owner.FootX);
+                Reg.RW(key, mode, owner, nameof(owner.FootY), owner.FootY);
+                Reg.RW(key, mode, owner, nameof(owner.CameraLength2), owner.CameraLength2);
+                Reg.RW(key, mode, owner, nameof(owner.DetectorWidth), owner.DetectorWidth);
+                Reg.RW(key, mode, owner, nameof(owner.DetectorHeight), owner.DetectorHeight);
+                Reg.RW(key, mode, owner, nameof(owner.Tau), owner.Tau);
+                Reg.RW(key, mode, owner, nameof(owner.Phi), owner.Phi);
+            }
             FormDiffractionSimulator.CancelSetVector = false;
-
-            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootX");
-            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "FootY");
-            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "CameraLength2");
-            Reg.RW<int>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorWidth");
-            Reg.RW<int>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "DetectorHeight");
-            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Tau");
-            Reg.RW<double>(key, mode, FormDiffractionSimulator.FormDiffractionSimulatorGeometry, "Phi");
-
-            Reg.RW<double>(key, mode, FormDiffractionSimulator, "Resolution");
-            Reg.RW<LengthUnitEnum>(key, mode, FormDiffractionSimulator, "ResolutionUnit");
-
-            Reg.RW<bool>(key, mode, FormDiffractionSimulator, "FlipHorizontally");
-            Reg.RW<bool>(key, mode, FormDiffractionSimulator, "FlipVertically");
-            Reg.RW<bool>(key, mode, FormDiffractionSimulator, "NegativeImage");
-
             #endregion
 
             #region ImageSimulator
@@ -531,9 +545,10 @@ public partial class FormMain : Form
                 var owner = FormImageSimulator;
                 Reg.RW(key, mode, owner, nameof(owner.Bounds), owner.Bounds);
                 Reg.RW(key, mode, owner, nameof(owner.Setting), owner.Setting);
-                //Reg.RW<ImageSimulatorSetting[]>(key, mode, this.FormImageSimulator.FormPresets, "Settings");
-                var owner2 = FormImageSimulator.FormPresets;
-                Reg.RW(key, mode, owner2,nameof(owner2.Settings), owner2.Settings);
+            }
+            { 
+                var owner = FormImageSimulator.FormPresets;
+                Reg.RW(key, mode, owner,nameof(owner.Settings), owner.Settings);
             }
             #endregion
 
@@ -541,8 +556,8 @@ public partial class FormMain : Form
             {
                 var owner = FormSpotIDv2;
                 Reg.RW(key, mode, owner, nameof(owner.NearestNeighbor), owner.NearestNeighbor);
-                //Reg.RW2(key, mode, FormSpotIDv2, ref Reg.ForceToByValue(FormSpotIDv2.NearestNeighbor));
-                Reg.RW<double>(key, mode, owner, nameof(owner.FittingRange));
+                Reg.RW(key, mode, owner, nameof(owner.FittingRange),owner.FittingRange);
+                Reg.RW(key, mode, owner, nameof(owner.ToleranceLength),owner.ToleranceLength);
             }
             #endregion
 
