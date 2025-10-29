@@ -11,24 +11,10 @@ public static class Reg
 {
     public enum Mode { Read, Write };
 
-    public static ref T ForceToByValue<T>(T source)
-    {
-        T destination = default(T);
-        if (source is System.ICloneable cloneableSource)
-        {
-            destination = (T)(cloneableSource.Clone());
-        }
-        else
-        {
-            destination = source;
-        }
-        return ref (new T[1] { destination })[0];
-    }
-
     public static void RW<T>(RegistryKey key, Mode mode, object owner, string propName, T p)
     {
       
-        RW<T> (key, mode, owner, nameof(p));
+        RW<T> (key, mode, owner, propName);
     }
 
     public static void RW<T>(RegistryKey key, Mode mode, object owner, string propName)
