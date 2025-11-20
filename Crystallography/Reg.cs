@@ -1,7 +1,6 @@
 ﻿using MemoryPack;
 using MemoryPack.Compression;
 using Microsoft.Win32;
-using System.CodeDom;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -13,7 +12,6 @@ public static class Reg
 
     public static void RW<T>(RegistryKey key, Mode mode, object owner, string propName, T p)
     {
-      
         RW<T> (key, mode, owner, propName);
     }
 
@@ -64,7 +62,4 @@ public static class Reg
             key.SetValue(regName, compressor.ToArray());
         }
     }
-
-
-
 }

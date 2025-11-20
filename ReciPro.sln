@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.31911.260
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11205.157 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReciPro", "ReciPro\ReciPro.csproj", "{D01883A1-458D-4127-8E9B-EEC176201483}"
 EndProject
@@ -132,8 +132,8 @@ Global
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|Any CPU.ActiveCfg = Release|x64
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|ARM.ActiveCfg = Release|x64
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|ARM.Build.0 = Release|x64
-		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|ARM64.ActiveCfg = Release|x64
-		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|ARM64.Build.0 = Release|x64
+		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|ARM64.ActiveCfg = Release|ARM64
+		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|ARM64.Build.0 = Release|ARM64
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|x64.ActiveCfg = Release|x64
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|x86.ActiveCfg = Release|Win32
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|x86.Build.0 = Release|Win32

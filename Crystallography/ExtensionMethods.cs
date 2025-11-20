@@ -9,7 +9,7 @@ using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using Windows.UI.ViewManagement.Core;
+//using Windows.UI.ViewManagement.Core;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using MC = Crystallography.MathematicalConstants;
 
