@@ -53,6 +53,9 @@ public partial class Crystal2
     #endregion
 
     #region プロパティ
+    [MemoryPackIgnore]
+    public static byte ID => 0;
+
     /// <summary>
     /// a,b,c,alpha,beta,gammaの順番. 単位はAと度. エラーは 「9.726|5|」のような形式で表現
     /// </summary>

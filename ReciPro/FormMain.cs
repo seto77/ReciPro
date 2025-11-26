@@ -75,8 +75,11 @@ public partial class FormMain : Form
                 if (Clipboard.GetDataObject().GetDataPresent(typeof(byte[])))
                 {
                     var bytes = (byte[])Clipboard.GetDataObject().GetData(typeof(byte[]));
-                    var c2 = Crystal2.Deserialize(bytes);
-                    crystalControl.Crystal = Crystal2.GetCrystal(c2);
+                    if (bytes[0] == Crystal2.ID)
+                    {
+                        var c2 = Crystal2.Deserialize(bytes[1..]);
+                        crystalControl.Crystal = Crystal2.GetCrystal(c2);
+                    }
                 }
 
                 if ((int)NextHandle != 0)

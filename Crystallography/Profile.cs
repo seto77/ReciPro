@@ -1,4 +1,5 @@
 ﻿using MathNet.Numerics.LinearAlgebra.Double;
+using MemoryPack;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,27 +10,35 @@ using System.Xml.Serialization;
 namespace Crystallography;
 
 [Serializable]
-public class Profile : ICloneable
+[MemoryPackable]
+public partial class Profile : ICloneable
 {
     #region プロパティ、フィールド
     public string text;
 
-    public List<PointD> Pt;
-    public List<PointD> Err;
+    public List<PointD> Pt=[];
+    public List<PointD> Err=[];
 
+    [MemoryPackIgnore]
     public Color Color = Color.Blue;
 
     public float LineWidth = 1f;
 
+    [MemoryPackIgnore]
     public RectangleD Range => new(new PointD(Pt.Min(p => p.X), Pt.Min(p => p.Y)), new PointD(Pt.Max(p => p.X), Pt.Max(p => p.Y)));
+    [MemoryPackIgnore]
     public double MaxX => Pt.Max(p => p.X);
+    [MemoryPackIgnore]
     public double MinX => Pt.Min(p => p.X);
+    [MemoryPackIgnore]
     public double MaxY => Pt.Max(p => p.Y);
+    [MemoryPackIgnore]
     public double MinY => Pt.Min(p => p.Y);
 
     #endregion
 
     #region コンストラクタ
+    [MemoryPackConstructor]
     public Profile()
     {
         Pt = [];
@@ -423,15 +432,20 @@ public enum BackgroundMode { BSplineCurve, ReferrenceProfile }
 
 #endregion
 
-[Serializable]
-public class DiffractionProfile2 : ICloneable
+//[Serializable]
+[MemoryPackable]
+public partial class DiffractionProfile2 : ICloneable
 {
+    public static byte ID => 2;
+
     #region マスク関連ここから
     [Serializable]
-    public class MaskingRange
+    [MemoryPackable]
+    public partial class MaskingRange
     {
         public double[] X = new double[2];
 
+        [MemoryPackConstructor]
         public MaskingRange() => X[0] = X[1] = 0;
 
         public MaskingRange(double x1, double x2)
@@ -439,13 +453,16 @@ public class DiffractionProfile2 : ICloneable
             X[0] = x1;
             X[1] = x2;
         }
-
+        
+        [MemoryPackIgnore]
         public double Maximum => Math.Max(X[0], X[1]);
-
+        
+        [MemoryPackIgnore]
         public double Minimum => Math.Min(X[0], X[1]);
-
+        
         public override string ToString()
             => X[0] < X[1] ? $"{X[0]:g8} - {X[1]:g8}" : $"{X[1]:g8} - {X[0]:g8}";
+
     }
 
     public List<MaskingRange> maskingRanges = [];
@@ -534,12 +551,13 @@ public class DiffractionProfile2 : ICloneable
     #region プロパティ
 
     #region プロファイル
+
     /// <summary>
     /// ソースプロファイル ()
     /// </summary>
     public Profile SourceProfile;
 
-    public PointD[] BgPoints;
+    public PointD[] BgPoints = [];
 
     /// <summary>
     /// 軸変換後のプロファイル. SetConvertedProfile()を呼び出すことで生成される.
@@ -1257,7 +1275,8 @@ public class DiffractionProfile2 : ICloneable
 #region HorizontalAxisProperty プロファイルの性質を表す構造体
 
 [Serializable]
-public record struct HorizontalAxisProperty
+[MemoryPackable]
+public partial record struct HorizontalAxisProperty
 {
     #region プロパティ
     /// <summary>
@@ -2222,7 +2241,7 @@ public class DiffractionProfile : ICloneable
 
         ElectronAccVolatage = 200;
 
-        ColorARGB = null;
+        ColorARGB = Color.Blue.ToArgb();
     }
 
 

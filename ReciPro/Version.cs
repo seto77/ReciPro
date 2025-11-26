@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.910(2025/11/26)  Updated: .Net Desktop Runtime 9 to 10. Fixed minor bugs." +
         "\r\n ver4.909(2025/10/29)  Fixed a minor bug." +
         "\r\n ver4.907(2025/10/28)  Fixed a minor bug." +
         "\r\n ver4.906(2025/09/26)  Fixed a minor bug. Renewed the Eigen library." +

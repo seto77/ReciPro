@@ -1,3 +1,4 @@
+using MemoryPack;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -137,15 +138,28 @@ public struct SizeD
 [StructLayout(LayoutKind.Sequential)]
 [Serializable()]
 [TypeConverter(typeof(PointDConverter))]
-public struct PointD : IComparable, IEquatable<PointD>
+[MemoryPackable]
+public partial struct PointD : IComparable, IEquatable<PointD>
 {
     public double X { get; set; }
     public double Y { get; set; }
+
+    [MemoryPackIgnore]
     public object Tag { get; set; }
+
+    [MemoryPackIgnore]
     public readonly bool IsNaN => double.IsNaN(X) || double.IsNaN(Y);
+
+    [MemoryPackIgnore]
     public readonly double Length2 => X * X + Y * Y;
+
+    [MemoryPackIgnore]
     public readonly double Length => Math.Sqrt(X * X + Y * Y);
 
+    [MemoryPackConstructor]
+    public PointD()
+    { X = 0;Y = 0;Tag = null; }
+    
     public PointD(in double x, in double y)
     {
         X = x;

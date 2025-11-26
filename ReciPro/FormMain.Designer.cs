@@ -490,7 +490,7 @@
             numericBoxAxisU.ShowUpDown = true;
             numericBoxAxisU.SkipEventDuringInput = false;
             numericBoxAxisU.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAxisU, resources.GetString("numericBoxAxisU.ToolTip"));
+            toolTip.SetToolTip(numericBoxAxisU, resources.GetString("numericBoxAxisU.ToolTip1"));
             // 
             // label9
             // 
@@ -514,7 +514,7 @@
             numericBoxAxisV.ShowUpDown = true;
             numericBoxAxisV.SkipEventDuringInput = false;
             numericBoxAxisV.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAxisV, resources.GetString("numericBoxAxisV.ToolTip"));
+            toolTip.SetToolTip(numericBoxAxisV, resources.GetString("numericBoxAxisV.ToolTip1"));
             // 
             // numericBoxAxisW
             // 
@@ -529,7 +529,7 @@
             numericBoxAxisW.ShowUpDown = true;
             numericBoxAxisW.SkipEventDuringInput = false;
             numericBoxAxisW.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAxisW, resources.GetString("numericBoxAxisW.ToolTip"));
+            toolTip.SetToolTip(numericBoxAxisW, resources.GetString("numericBoxAxisW.ToolTip1"));
             // 
             // tableLayoutPanel7
             // 
@@ -567,7 +567,7 @@
             numericBoxPlaneH.ShowUpDown = true;
             numericBoxPlaneH.SkipEventDuringInput = false;
             numericBoxPlaneH.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxPlaneH, resources.GetString("numericBoxPlaneH.ToolTip"));
+            toolTip.SetToolTip(numericBoxPlaneH, resources.GetString("numericBoxPlaneH.ToolTip1"));
             // 
             // numericBoxPlaneK
             // 

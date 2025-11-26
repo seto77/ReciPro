@@ -2,6 +2,8 @@
 
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
+using MemoryPack;
+using MemoryPack.Compression;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -361,6 +363,61 @@ public static class DoubleEx
     public static double Max(this double[][][] d) => d.Max(e => e.Max());
     public static double Min(this double[][][] d) => d.Min(e => e.Min());
 }
+#endregion
+
+
+public static class MemoryPackEx
+{
+
+    /// <summary>
+    /// 静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す
+    /// </summary>
+    /// <param name="val"></param>
+    /// <returns></returns>
+    public static byte[] Serialize<T>(T val, System.IO.Compression.CompressionLevel level= System.IO.Compression.CompressionLevel.Optimal, int window =22 )
+    {
+        using var compressor = new BrotliCompressor(level, window);
+        MemoryPackSerializer.Serialize(compressor, val);
+        return compressor.ToArray();
+    }
+
+    /// <summary>
+    /// 静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す  先頭に1バイトのヘッダーを付加する
+    /// </summary>
+    /// <param name="val"></param>
+    /// <returns></returns>
+    public static byte[] Serialize<T>(byte header, T val, System.IO.Compression.CompressionLevel level = System.IO.Compression.CompressionLevel.Optimal, int window = 22)
+    {
+        using var compressor = new BrotliCompressor(level, window);
+        MemoryPackSerializer.Serialize(compressor, val);
+        //return compressor.ToArray();
+
+        //先頭の4バイトはheaderを格納
+        var data = compressor.ToArray();
+        var buffer = new byte[data.Length + 1];
+        buffer[0] = header;
+        Buffer.BlockCopy(data, 0, buffer, 1, data.Length);
+        return buffer;
+    }
+
+    /// <summary>
+    /// MemoryPackでシリアライズされた byte[] 配列からTを返す. 不適切な入力値だった場合は default(T)) 返し。
+    /// </summary>
+    /// <param name="bytes"></param>
+    /// <returns></returns>
+    public static T Deserialize<T>(byte[] bytes)
+    {
+        try
+        {
+            using var decompressor = new BrotliDecompressor();// Decompression(require using)
+            return MemoryPackSerializer.Deserialize<T>(decompressor.Decompress(bytes));
+        }
+        catch { return default; }
+    }
+
+} 
+#region MemoryPackの拡張
+
 #endregion
 
 #region Graphicsクラス
