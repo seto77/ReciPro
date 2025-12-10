@@ -9,16 +9,10 @@ public partial class FormCrystalDatabase : Form
     public FormCrystalDatabase()
     {
         InitializeComponent();
-
         searchCrystalControl.CrystalDatabaseControl = crystalDatabaseControl;
-
-        this.AcceptButton = searchCrystalControl.buttonSearch;
     }
 
-    private void FormCrystalDatabase_Load(object sender, EventArgs e)
-    {
-        crystalDatabaseControl.AMCSD_Checked = true;
-    }
+    private void FormCrystalDatabase_Load(object sender, EventArgs e) => crystalDatabaseControl.AMCSD_Checked = true;
 
     private void FormCrystalDatabase_FormClosing(object sender, FormClosingEventArgs e)
     {
@@ -34,11 +28,6 @@ public partial class FormCrystalDatabase : Form
     {
         if (Visible)
             FormMain.toolStripButtonDatabase.Checked = true;
-    }
-
-    private void crystalDatabaseControl_DataBaseChanged(object sender, EventArgs e)
-    {
-
     }
 
     private void crystalDatabaseControl_ProgressChanged(object sender, double progress, string message)

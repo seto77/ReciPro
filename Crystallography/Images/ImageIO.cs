@@ -1535,8 +1535,9 @@ public static class ImageIO
             Byte[] src = BitmapConverter.ToByteGray((Bitmap)bitmap);
             Ring.Intensity = new double[bitmap.Width * bitmap.Height];
             int n = 0;
-            for (int h = bitmap.Height - 1; h >= 0; h--)
-                for (int w = 0; w < bitmap.Width; w++)
+            //for (int h = bitmap.Height - 1; h >= 0; h--)
+            for (int h = 0; h <bitmap.Height; h++)
+            for (int w = 0; w < bitmap.Width; w++)
                     Ring.Intensity[n++] = src[bitmap.Width * h + w];
 
             Ring.ImageType = Ring.ImageTypeEnum.Unknown;

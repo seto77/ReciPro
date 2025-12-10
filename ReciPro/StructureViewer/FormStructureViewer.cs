@@ -185,26 +185,30 @@ public partial class FormStructureViewer : Form
         glControlMainZsort.MouseDown += glControlMain_MouseDown;
         glControlMainZsort.MouseMove += glControlMain_MouseMove;
 
-        glControlMainOIT = new GLControlAlpha(GLControlAlpha.FragShaders.OIT)
-        {
-            AllowMouseRotation = false,
-            AllowMouseScaling = true,
-            AllowMouseTranslating = true,
-            BorderStyle = BorderStyle.Fixed3D,
-            MaxHeight = 1440,
-            MaxWidth = 2560,
-            Name = "glControlMainOIT",
-            NodeCoefficient = 10,
-            ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-            ProjWidth = 4D,
-            RotationMode = GLControlAlpha.RotationModes.Object,
-            TranslatingMode = GLControlAlpha.TranslatingModes.View,
-            Dock = DockStyle.Fill
-        };
-        glControlMainOIT.SuspendLayout();
-        glControlMainOIT.MouseDown += glControlMain_MouseDown;
-        glControlMainOIT.MouseMove += glControlMain_MouseMove;
-        glControlMainOIT.Visible = false;
+        #region ARM64環境の対応待ちのため、OITは一旦コメントアウト (2025/12/10)
+        glControlMainOIT = new GLControlAlpha();
+        comboBoxTransparency.Enabled = false;
+        //glControlMainOIT = new GLControlAlpha(GLControlAlpha.FragShaders.OIT)
+        //{
+        //    AllowMouseRotation = false,
+        //    AllowMouseScaling = true,
+        //    AllowMouseTranslating = true,
+        //    BorderStyle = BorderStyle.Fixed3D,
+        //    MaxHeight = 1440,
+        //    MaxWidth = 2560,
+        //    Name = "glControlMainOIT",
+        //    NodeCoefficient = 10,
+        //    ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+        //    ProjWidth = 4D,
+        //    RotationMode = GLControlAlpha.RotationModes.Object,
+        //    TranslatingMode = GLControlAlpha.TranslatingModes.View,
+        //    Dock = DockStyle.Fill
+        //};
+        //glControlMainOIT.SuspendLayout();
+        //glControlMainOIT.MouseDown += glControlMain_MouseDown;
+        //glControlMainOIT.MouseMove += glControlMain_MouseMove;
+        //glControlMainOIT.Visible = false;
+        #endregion
 
         glControlMain = glControlMainZsort;
 
@@ -296,7 +300,9 @@ public partial class FormStructureViewer : Form
         #endregion
 
         #region ResumuLayout()
+        
         glControlMainOIT.ResumeLayout();
+        
         glControlMainZsort.ResumeLayout();
         glControlLight.ResumeLayout();
         glControlAxes.ResumeLayout();

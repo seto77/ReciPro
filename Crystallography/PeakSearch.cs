@@ -183,12 +183,12 @@ public class PeakFunction : IComparable
         var tmp5 = SqrtLn2PI * Math.Exp(-Ln2 * tmp1);
         var tmp6 = 2.0 / Hk / PI;
         var _eta = 1 - eta;
-        return new double[] {
+        return [
             tmp6 * (eta * tmp4 + _eta * tmp5),
             Int * tmp6 * (tmp4 - tmp5),
             -2 *Int * ( eta * (tmp2 - tmp3) / PI / (tmp2 + tmp3) / (tmp2 + tmp3) + _eta * (tmp2 - 2 * tmp3 * Ln2) / (tmp2 * tmp2) * tmp5),
             Int * 8 * tmp6 * (X - x) / tmp2 * (-eta * tmp4 * tmp4 - _eta * Ln2 * tmp5)
-        };
+        ];
     }
     //Pseudo Voigt ‚±‚±‚Ü‚Å
 
@@ -544,18 +544,18 @@ public class FittingPeak
         {
             double[] c = Initial switch
             {
-                00 => new double[] { 1, 1, 1 },
-                01 => new double[] { 1, 1, 2 },
-                02 => new double[] { 1, 1, 0.5 },
-                03 => new double[] { 0.5, 1, 1 },
-                04 => new double[] { 0.5, 1, 2 },
-                05 => new double[] { 0.5, 1, 0.5 },
-                06 => new double[] { 2, 1, 1 },
-                07 => new double[] { 2, 1, 0.5 },
-                08 => new double[] { 2, 1, 2 },
-                09 => new double[] { 1, 1.5, 1 },
-                10 => new double[] { 1, 0.5, 1 },
-                _ => new double[] { 0.5, 1.5, 2 }
+                00 => [1, 1, 1],
+                01 => [1, 1, 2],
+                02 => [1, 1, 0.5],
+                03 => [0.5, 1, 1],
+                04 => [0.5, 1, 2],
+                05 => [0.5, 1, 0.5],
+                06 => [2, 1, 1],
+                07 => [2, 1, 0.5],
+                08 => [2, 1, 2],
+                09 => [1, 1.5, 1],
+                10 => [1, 0.5, 1],
+                _ => [0.5, 1.5, 2]
             };
             //‚±‚±‚©‚ç‰Šú’l‚ð‚«‚ß‚é
             //X‚Í‚·‚Å‚É‘ã“üÏ‚Ý

@@ -465,7 +465,6 @@
             numericBoxCRange.Minimum = 0D;
             numericBoxCRange.Name = "numericBoxCRange";
             numericBoxCRange.RadianValue = 0.0087266462599716477D;
-            numericBoxCRange.RoundErrorAccuracy = -1;
             numericBoxCRange.ShowFraction = true;
             numericBoxCRange.ShowUpDown = true;
             numericBoxCRange.ThonsandsSeparator = true;
@@ -485,7 +484,6 @@
             numericBoxBRange.Minimum = 0D;
             numericBoxBRange.Name = "numericBoxBRange";
             numericBoxBRange.RadianValue = 0.0087266462599716477D;
-            numericBoxBRange.RoundErrorAccuracy = -1;
             numericBoxBRange.ShowFraction = true;
             numericBoxBRange.ShowUpDown = true;
             numericBoxBRange.ThonsandsSeparator = true;
@@ -505,7 +503,6 @@
             numericBoxARange.Minimum = 0D;
             numericBoxARange.Name = "numericBoxARange";
             numericBoxARange.RadianValue = 0.0087266462599716477D;
-            numericBoxARange.RoundErrorAccuracy = -1;
             numericBoxARange.ShowFraction = true;
             numericBoxARange.ShowUpDown = true;
             numericBoxARange.ThonsandsSeparator = true;
@@ -524,7 +521,6 @@
             numericBoxCCenter.Maximum = 10D;
             numericBoxCCenter.Minimum = 0D;
             numericBoxCCenter.Name = "numericBoxCCenter";
-            numericBoxCCenter.RoundErrorAccuracy = -1;
             numericBoxCCenter.ShowFraction = true;
             numericBoxCCenter.ShowUpDown = true;
             numericBoxCCenter.ThonsandsSeparator = true;
@@ -542,7 +538,6 @@
             numericBoxBCenter.Maximum = 10D;
             numericBoxBCenter.Minimum = 0D;
             numericBoxBCenter.Name = "numericBoxBCenter";
-            numericBoxBCenter.RoundErrorAccuracy = -1;
             numericBoxBCenter.ShowFraction = true;
             numericBoxBCenter.ShowUpDown = true;
             numericBoxBCenter.ThonsandsSeparator = true;
@@ -560,7 +555,6 @@
             numericBoxACenter.Maximum = 10D;
             numericBoxACenter.Minimum = 0D;
             numericBoxACenter.Name = "numericBoxACenter";
-            numericBoxACenter.RoundErrorAccuracy = -1;
             numericBoxACenter.ShowFraction = true;
             numericBoxACenter.ShowUpDown = true;
             numericBoxACenter.ThonsandsSeparator = true;
@@ -628,7 +622,6 @@
             numericBoxBoundPlanesOpacity.Minimum = 0D;
             numericBoxBoundPlanesOpacity.Name = "numericBoxBoundPlanesOpacity";
             numericBoxBoundPlanesOpacity.RadianValue = 0.012217304763960306D;
-            numericBoxBoundPlanesOpacity.RoundErrorAccuracy = -1;
             numericBoxBoundPlanesOpacity.ShowUpDown = true;
             numericBoxBoundPlanesOpacity.SkipEventDuringInput = false;
             numericBoxBoundPlanesOpacity.ThonsandsSeparator = true;
@@ -769,11 +762,11 @@
             // 
             resources.ApplyResources(colorControlCellPlane, "colorControlCellPlane");
             colorControlCellPlane.Argb = -4144960;
+            colorControlCellPlane.BackColor = System.Drawing.SystemColors.Control;
             colorControlCellPlane.Blue = 192;
             colorControlCellPlane.BlueF = 0.7529412F;
             colorControlCellPlane.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlane.Color = System.Drawing.Color.FromArgb(192, 192, 192);
-            colorControlCellPlane.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlane.Green = 192;
             colorControlCellPlane.GreenF = 0.7529412F;
             colorControlCellPlane.Name = "colorControlCellPlane";
@@ -794,11 +787,11 @@
             // 
             resources.ApplyResources(colorControlCellPlaneA, "colorControlCellPlaneA");
             colorControlCellPlaneA.Argb = -65536;
+            colorControlCellPlaneA.BackColor = System.Drawing.SystemColors.Control;
             colorControlCellPlaneA.Blue = 0;
             colorControlCellPlaneA.BlueF = 0F;
             colorControlCellPlaneA.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlaneA.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlCellPlaneA.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlaneA.Green = 0;
             colorControlCellPlaneA.GreenF = 0F;
             colorControlCellPlaneA.Name = "colorControlCellPlaneA";
@@ -811,11 +804,11 @@
             // 
             resources.ApplyResources(colorControlCellPlaneB, "colorControlCellPlaneB");
             colorControlCellPlaneB.Argb = -16744448;
+            colorControlCellPlaneB.BackColor = System.Drawing.SystemColors.Control;
             colorControlCellPlaneB.Blue = 0;
             colorControlCellPlaneB.BlueF = 0F;
             colorControlCellPlaneB.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlaneB.Color = System.Drawing.Color.FromArgb(0, 128, 0);
-            colorControlCellPlaneB.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlaneB.Green = 128;
             colorControlCellPlaneB.GreenF = 0.5019608F;
             colorControlCellPlaneB.Name = "colorControlCellPlaneB";
@@ -828,11 +821,11 @@
             // 
             resources.ApplyResources(colorControlCellPlaneC, "colorControlCellPlaneC");
             colorControlCellPlaneC.Argb = -16776961;
+            colorControlCellPlaneC.BackColor = System.Drawing.SystemColors.Control;
             colorControlCellPlaneC.Blue = 255;
             colorControlCellPlaneC.BlueF = 1F;
             colorControlCellPlaneC.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlaneC.Color = System.Drawing.Color.FromArgb(0, 0, 255);
-            colorControlCellPlaneC.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellPlaneC.Green = 0;
             colorControlCellPlaneC.GreenF = 0F;
             colorControlCellPlaneC.Name = "colorControlCellPlaneC";
@@ -850,7 +843,6 @@
             numericBoxCellPlaneAlpha.Minimum = 0D;
             numericBoxCellPlaneAlpha.Name = "numericBoxCellPlaneAlpha";
             numericBoxCellPlaneAlpha.RadianValue = 0.0052359877559829881D;
-            numericBoxCellPlaneAlpha.RoundErrorAccuracy = -1;
             numericBoxCellPlaneAlpha.ShowUpDown = true;
             numericBoxCellPlaneAlpha.SkipEventDuringInput = false;
             numericBoxCellPlaneAlpha.ThonsandsSeparator = true;
@@ -885,11 +877,11 @@
             // 
             resources.ApplyResources(colorControlCellEdge, "colorControlCellEdge");
             colorControlCellEdge.Argb = -8355712;
+            colorControlCellEdge.BackColor = System.Drawing.SystemColors.Control;
             colorControlCellEdge.Blue = 128;
             colorControlCellEdge.BlueF = 0.5019608F;
             colorControlCellEdge.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdge.Color = System.Drawing.Color.FromArgb(128, 128, 128);
-            colorControlCellEdge.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdge.Green = 128;
             colorControlCellEdge.GreenF = 0.5019608F;
             colorControlCellEdge.Name = "colorControlCellEdge";
@@ -912,11 +904,11 @@
             // 
             resources.ApplyResources(colorControlCellEdgeA, "colorControlCellEdgeA");
             colorControlCellEdgeA.Argb = -65536;
+            colorControlCellEdgeA.BackColor = System.Drawing.SystemColors.Control;
             colorControlCellEdgeA.Blue = 0;
             colorControlCellEdgeA.BlueF = 0F;
             colorControlCellEdgeA.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdgeA.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlCellEdgeA.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdgeA.Green = 0;
             colorControlCellEdgeA.GreenF = 0F;
             colorControlCellEdgeA.Name = "colorControlCellEdgeA";
@@ -929,11 +921,11 @@
             // 
             resources.ApplyResources(colorControlCellEdgeB, "colorControlCellEdgeB");
             colorControlCellEdgeB.Argb = -16744448;
+            colorControlCellEdgeB.BackColor = System.Drawing.SystemColors.Control;
             colorControlCellEdgeB.Blue = 0;
             colorControlCellEdgeB.BlueF = 0F;
             colorControlCellEdgeB.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdgeB.Color = System.Drawing.Color.FromArgb(0, 128, 0);
-            colorControlCellEdgeB.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdgeB.Green = 128;
             colorControlCellEdgeB.GreenF = 0.5019608F;
             colorControlCellEdgeB.Name = "colorControlCellEdgeB";
@@ -946,11 +938,11 @@
             // 
             resources.ApplyResources(colorControlCellEdgeC, "colorControlCellEdgeC");
             colorControlCellEdgeC.Argb = -16776961;
+            colorControlCellEdgeC.BackColor = System.Drawing.SystemColors.Control;
             colorControlCellEdgeC.Blue = 255;
             colorControlCellEdgeC.BlueF = 1F;
             colorControlCellEdgeC.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdgeC.Color = System.Drawing.Color.FromArgb(0, 0, 255);
-            colorControlCellEdgeC.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlCellEdgeC.Green = 0;
             colorControlCellEdgeC.GreenF = 0F;
             colorControlCellEdgeC.Name = "colorControlCellEdgeC";
@@ -986,7 +978,6 @@
             numericBoxCellTransrationC.Maximum = 10D;
             numericBoxCellTransrationC.Minimum = -10D;
             numericBoxCellTransrationC.Name = "numericBoxCellTransrationC";
-            numericBoxCellTransrationC.RoundErrorAccuracy = -1;
             numericBoxCellTransrationC.ShowUpDown = true;
             numericBoxCellTransrationC.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxCellTransrationC, resources.GetString("numericBoxCellTransrationC.ToolTip"));
@@ -1003,7 +994,6 @@
             numericBoxCellTransrationB.Maximum = 10D;
             numericBoxCellTransrationB.Minimum = -10D;
             numericBoxCellTransrationB.Name = "numericBoxCellTransrationB";
-            numericBoxCellTransrationB.RoundErrorAccuracy = -1;
             numericBoxCellTransrationB.ShowUpDown = true;
             numericBoxCellTransrationB.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxCellTransrationB, resources.GetString("numericBoxCellTransrationB.ToolTip"));
@@ -1020,7 +1010,6 @@
             numericBoxCellTransrationA.Maximum = 10D;
             numericBoxCellTransrationA.Minimum = -10D;
             numericBoxCellTransrationA.Name = "numericBoxCellTransrationA";
-            numericBoxCellTransrationA.RoundErrorAccuracy = -1;
             numericBoxCellTransrationA.ShowUpDown = true;
             numericBoxCellTransrationA.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxCellTransrationA, resources.GetString("numericBoxCellTransrationA.ToolTip"));
@@ -1131,7 +1120,6 @@
             numericBoxLatticePlaneOpacity.Minimum = 0D;
             numericBoxLatticePlaneOpacity.Name = "numericBoxLatticePlaneOpacity";
             numericBoxLatticePlaneOpacity.RadianValue = 0.0087266462599716477D;
-            numericBoxLatticePlaneOpacity.RoundErrorAccuracy = -1;
             numericBoxLatticePlaneOpacity.ShowUpDown = true;
             numericBoxLatticePlaneOpacity.SkipEventDuringInput = false;
             numericBoxLatticePlaneOpacity.ThonsandsSeparator = true;
@@ -1235,7 +1223,6 @@
             numericBoxProjectionCenterX.Minimum = -1D;
             numericBoxProjectionCenterX.Name = "numericBoxProjectionCenterX";
             numericBoxProjectionCenterX.RadianValue = 0.0087266462599716477D;
-            numericBoxProjectionCenterX.RoundErrorAccuracy = -1;
             numericBoxProjectionCenterX.ShowUpDown = true;
             numericBoxProjectionCenterX.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxProjectionCenterX, resources.GetString("numericBoxProjectionCenterX.ToolTip"));
@@ -1254,7 +1241,6 @@
             numericBoxProjectionCenterY.Minimum = -1D;
             numericBoxProjectionCenterY.Name = "numericBoxProjectionCenterY";
             numericBoxProjectionCenterY.RadianValue = 0.0087266462599716477D;
-            numericBoxProjectionCenterY.RoundErrorAccuracy = -1;
             numericBoxProjectionCenterY.ShowUpDown = true;
             numericBoxProjectionCenterY.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxProjectionCenterY, resources.GetString("numericBoxProjectionCenterY.ToolTip"));
@@ -1273,7 +1259,6 @@
             numericBoxProjectionCenterZ.Minimum = -1D;
             numericBoxProjectionCenterZ.Name = "numericBoxProjectionCenterZ";
             numericBoxProjectionCenterZ.RadianValue = 0.0087266462599716477D;
-            numericBoxProjectionCenterZ.RoundErrorAccuracy = -1;
             numericBoxProjectionCenterZ.ShowUpDown = true;
             numericBoxProjectionCenterZ.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxProjectionCenterZ, resources.GetString("numericBoxProjectionCenterZ.ToolTip"));
@@ -1495,17 +1480,17 @@
             // 
             resources.ApplyResources(colorControlLabelColor, "colorControlLabelColor");
             colorControlLabelColor.Argb = -16777216;
+            colorControlLabelColor.BackColor = System.Drawing.SystemColors.Control;
             colorControlLabelColor.Blue = 0;
             colorControlLabelColor.BlueF = 0F;
             colorControlLabelColor.BoxSize = new System.Drawing.Size(20, 20);
             colorControlLabelColor.Color = System.Drawing.Color.FromArgb(0, 0, 0);
-            colorControlLabelColor.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             colorControlLabelColor.Green = 0;
             colorControlLabelColor.GreenF = 0F;
             colorControlLabelColor.Name = "colorControlLabelColor";
             colorControlLabelColor.Red = 0;
             colorControlLabelColor.RedF = 0F;
-            toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip"));
+            toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip1"));
             colorControlLabelColor.ColorChanged += numericBoxLabelSize_ValueChanged;
             // 
             // checkBoxShowLabel
@@ -1542,7 +1527,6 @@
             numericBoxLabelSize.Minimum = 0D;
             numericBoxLabelSize.Name = "numericBoxLabelSize";
             numericBoxLabelSize.RadianValue = 0.20943951023931953D;
-            numericBoxLabelSize.RoundErrorAccuracy = -1;
             numericBoxLabelSize.ShowUpDown = true;
             numericBoxLabelSize.SmartIncrement = true;
             numericBoxLabelSize.ThonsandsSeparator = true;
@@ -1594,7 +1578,6 @@
             numericBoxLegendSize.Minimum = 0D;
             numericBoxLegendSize.Name = "numericBoxLegendSize";
             numericBoxLegendSize.RadianValue = 0.87266462599716477D;
-            numericBoxLegendSize.RoundErrorAccuracy = -1;
             numericBoxLegendSize.ShowUpDown = true;
             numericBoxLegendSize.SmartIncrement = true;
             numericBoxLegendSize.ThonsandsSeparator = true;
@@ -1611,7 +1594,6 @@
             numericBoxAxesSize.Minimum = 0D;
             numericBoxAxesSize.Name = "numericBoxAxesSize";
             numericBoxAxesSize.RadianValue = 1.3962634015954636D;
-            numericBoxAxesSize.RoundErrorAccuracy = -1;
             numericBoxAxesSize.ShowUpDown = true;
             numericBoxAxesSize.SmartIncrement = true;
             numericBoxAxesSize.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -1629,7 +1611,6 @@
             numericBoxLightSize.Minimum = 0D;
             numericBoxLightSize.Name = "numericBoxLightSize";
             numericBoxLightSize.RadianValue = 1.3962634015954636D;
-            numericBoxLightSize.RoundErrorAccuracy = -1;
             numericBoxLightSize.ShowUpDown = true;
             numericBoxLightSize.SmartIncrement = true;
             numericBoxLightSize.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -1859,7 +1840,6 @@
             numericBoxClientHeight.Minimum = 1D;
             numericBoxClientHeight.Name = "numericBoxClientHeight";
             numericBoxClientHeight.RadianValue = 17.453292519943293D;
-            numericBoxClientHeight.RoundErrorAccuracy = -1;
             numericBoxClientHeight.ShowUpDown = true;
             numericBoxClientHeight.SmartIncrement = true;
             numericBoxClientHeight.ThonsandsSeparator = true;
@@ -1878,7 +1858,6 @@
             numericBoxClientWidth.Minimum = 1D;
             numericBoxClientWidth.Name = "numericBoxClientWidth";
             numericBoxClientWidth.RadianValue = 17.453292519943293D;
-            numericBoxClientWidth.RoundErrorAccuracy = -1;
             numericBoxClientWidth.ShowUpDown = true;
             numericBoxClientWidth.SmartIncrement = true;
             numericBoxClientWidth.ThonsandsSeparator = true;

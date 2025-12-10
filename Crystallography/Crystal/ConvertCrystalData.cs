@@ -1,3 +1,4 @@
+#region using
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
@@ -9,12 +10,11 @@ using System.IO;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
-using System.Net;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms;
 using ZLinq;
 using V3 = OpenTK.Mathematics.Vector3d;
+#endregion
 
 namespace Crystallography;
 
@@ -23,6 +23,9 @@ public class ConvertCrystalData
     private static readonly StringComparison Ord = StringComparison.Ordinal;
 
     #region 文字列操作の高速化を狙った関数群
+
+    static bool Is90(string s) => s == "90" || s == "90.0" || s == "90.00" || s == "90.000" || s == "90.0000";
+
     static void Replace(ref string str, string oldValue, string newValue)
     {
         if (str.Contains(oldValue))
@@ -331,7 +334,6 @@ public class ConvertCrystalData
     #endregion
 
     #region amcファイルの読み込み
-
     private static Crystal2 ConvertFromAmc(string fileName)
     {
         using var reader = new StreamReader(fileName);
@@ -1200,7 +1202,8 @@ public class ConvertCrystalData
             {
                 var HM = i < spaceGroupNameHM.Count ? spaceGroupNameHM[i] : "";
                 var Hall = i < spaceGroupNameHall.Count ? spaceGroupNameHall[i] : "";
-                sgnum = SearchSGseriesNumberForCIF(HM, Hall, symmetry_Int_Tables_number, a == b && b == c && alpha == beta && beta == gamma, alpha == "90", beta == "90", gamma == "90");
+                sgnum = SearchSGseriesNumberForCIF(HM, Hall, symmetry_Int_Tables_number, 
+                    a == b && b == c && alpha == beta && beta == gamma, Is90(alpha), Is90(beta), Is90(gamma));
                 if (sgnum != -1)
                     break;
             }
@@ -1751,8 +1754,6 @@ public class ConvertCrystalData
 
         return symmetrySeriesNumber;
     }
-
-
     #endregion
 
     #region CIFファイルへの変換

@@ -29,467 +29,461 @@ partial class SearchCrystalControl
     private void InitializeComponent()
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchCrystalControl));
-        this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-        this.checkBoxSearchName = new System.Windows.Forms.CheckBox();
-        this.textBoxSearchName = new System.Windows.Forms.TextBox();
-        this.checkBoxSearchElements = new System.Windows.Forms.CheckBox();
-        this.buttonPeriodicTable = new System.Windows.Forms.Button();
-        this.checkBoxSearchRefference = new System.Windows.Forms.CheckBox();
-        this.textBoxSearchRefference = new System.Windows.Forms.TextBox();
-        this.checkBoxSearchCrystalSystem = new System.Windows.Forms.CheckBox();
-        this.comboBoxSearchCrystalSystem = new System.Windows.Forms.ComboBox();
-        this.checkBoxSearchCellParameter = new System.Windows.Forms.CheckBox();
-        this.groupBoxCellParameter = new System.Windows.Forms.GroupBox();
-        this.numericBoxCellGamma = new Crystallography.Controls.NumericBox();
-        this.numericBoxCellAngleErr = new Crystallography.Controls.NumericBox();
-        this.numericBoxCellLengthErr = new Crystallography.Controls.NumericBox();
-        this.numericBoxCellC = new Crystallography.Controls.NumericBox();
-        this.numericBoxCellBeta = new Crystallography.Controls.NumericBox();
-        this.numericBoxCellAlpha = new Crystallography.Controls.NumericBox();
-        this.numericBoxCellB = new Crystallography.Controls.NumericBox();
-        this.numericBoxCellA = new Crystallography.Controls.NumericBox();
-        this.checkBoxDspacing = new System.Windows.Forms.CheckBox();
-        this.groupBoxDspacing = new System.Windows.Forms.GroupBox();
-        this.checkBoxD3 = new System.Windows.Forms.CheckBox();
-        this.numericBoxD3Err = new Crystallography.Controls.NumericBox();
-        this.numericBoxD2Err = new Crystallography.Controls.NumericBox();
-        this.numericBoxD1Err = new Crystallography.Controls.NumericBox();
-        this.checkBoxD2 = new System.Windows.Forms.CheckBox();
-        this.checkBoxD1 = new System.Windows.Forms.CheckBox();
-        this.numericBoxD3 = new Crystallography.Controls.NumericBox();
-        this.numericBoxD2 = new Crystallography.Controls.NumericBox();
-        this.numericBoxD1 = new Crystallography.Controls.NumericBox();
-        this.checkBoxIgnoreScatteringFactor = new System.Windows.Forms.CheckBox();
-        this.checkBoxDensity = new System.Windows.Forms.CheckBox();
-        this.groupBoxDensity = new System.Windows.Forms.GroupBox();
-        this.numericBoxDensity = new Crystallography.Controls.NumericBox();
-        this.numericBoxDensityErr = new Crystallography.Controls.NumericBox();
-        this.backgroundWorkerSearch = new System.ComponentModel.BackgroundWorker();
-        this.buttonSearch = new System.Windows.Forms.Button();
-        this.flowLayoutPanel1.SuspendLayout();
-        this.groupBoxCellParameter.SuspendLayout();
-        this.groupBoxDspacing.SuspendLayout();
-        this.groupBoxDensity.SuspendLayout();
-        this.SuspendLayout();
+        flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+        checkBoxSearchName = new System.Windows.Forms.CheckBox();
+        textBoxSearchName = new System.Windows.Forms.TextBox();
+        checkBoxSearchElements = new System.Windows.Forms.CheckBox();
+        buttonPeriodicTable = new System.Windows.Forms.Button();
+        checkBoxSearchRefference = new System.Windows.Forms.CheckBox();
+        textBoxSearchRefference = new System.Windows.Forms.TextBox();
+        checkBoxSearchCrystalSystem = new System.Windows.Forms.CheckBox();
+        comboBoxSearchCrystalSystem = new System.Windows.Forms.ComboBox();
+        checkBoxSearchCellParameter = new System.Windows.Forms.CheckBox();
+        groupBoxCellParameter = new System.Windows.Forms.GroupBox();
+        numericBoxCellGamma = new NumericBox();
+        numericBoxCellAngleErr = new NumericBox();
+        numericBoxCellLengthErr = new NumericBox();
+        numericBoxCellC = new NumericBox();
+        numericBoxCellBeta = new NumericBox();
+        numericBoxCellAlpha = new NumericBox();
+        numericBoxCellB = new NumericBox();
+        numericBoxCellA = new NumericBox();
+        checkBoxDspacing = new System.Windows.Forms.CheckBox();
+        groupBoxDspacing = new System.Windows.Forms.GroupBox();
+        checkBoxD3 = new System.Windows.Forms.CheckBox();
+        numericBoxD3Err = new NumericBox();
+        numericBoxD2Err = new NumericBox();
+        numericBoxD1Err = new NumericBox();
+        checkBoxD2 = new System.Windows.Forms.CheckBox();
+        checkBoxD1 = new System.Windows.Forms.CheckBox();
+        numericBoxD3 = new NumericBox();
+        numericBoxD2 = new NumericBox();
+        numericBoxD1 = new NumericBox();
+        checkBoxIgnoreScatteringFactor = new System.Windows.Forms.CheckBox();
+        checkBoxDensity = new System.Windows.Forms.CheckBox();
+        groupBoxDensity = new System.Windows.Forms.GroupBox();
+        numericBoxDensity = new NumericBox();
+        numericBoxDensityErr = new NumericBox();
+        backgroundWorkerSearch = new System.ComponentModel.BackgroundWorker();
+        buttonSearch = new System.Windows.Forms.Button();
+        flowLayoutPanel1.SuspendLayout();
+        groupBoxCellParameter.SuspendLayout();
+        groupBoxDspacing.SuspendLayout();
+        groupBoxDensity.SuspendLayout();
+        SuspendLayout();
         // 
         // flowLayoutPanel1
         // 
-        resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-        this.flowLayoutPanel1.Controls.Add(this.checkBoxSearchName);
-        this.flowLayoutPanel1.Controls.Add(this.textBoxSearchName);
-        this.flowLayoutPanel1.Controls.Add(this.checkBoxSearchElements);
-        this.flowLayoutPanel1.Controls.Add(this.buttonPeriodicTable);
-        this.flowLayoutPanel1.Controls.Add(this.checkBoxSearchRefference);
-        this.flowLayoutPanel1.Controls.Add(this.textBoxSearchRefference);
-        this.flowLayoutPanel1.Controls.Add(this.checkBoxSearchCrystalSystem);
-        this.flowLayoutPanel1.Controls.Add(this.comboBoxSearchCrystalSystem);
-        this.flowLayoutPanel1.Controls.Add(this.checkBoxSearchCellParameter);
-        this.flowLayoutPanel1.Controls.Add(this.groupBoxCellParameter);
-        this.flowLayoutPanel1.Controls.Add(this.checkBoxDspacing);
-        this.flowLayoutPanel1.Controls.Add(this.groupBoxDspacing);
-        this.flowLayoutPanel1.Controls.Add(this.checkBoxDensity);
-        this.flowLayoutPanel1.Controls.Add(this.groupBoxDensity);
-        this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+        resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+        flowLayoutPanel1.Controls.Add(checkBoxSearchName);
+        flowLayoutPanel1.Controls.Add(textBoxSearchName);
+        flowLayoutPanel1.Controls.Add(checkBoxSearchElements);
+        flowLayoutPanel1.Controls.Add(buttonPeriodicTable);
+        flowLayoutPanel1.Controls.Add(checkBoxSearchRefference);
+        flowLayoutPanel1.Controls.Add(textBoxSearchRefference);
+        flowLayoutPanel1.Controls.Add(checkBoxSearchCrystalSystem);
+        flowLayoutPanel1.Controls.Add(comboBoxSearchCrystalSystem);
+        flowLayoutPanel1.Controls.Add(checkBoxSearchCellParameter);
+        flowLayoutPanel1.Controls.Add(groupBoxCellParameter);
+        flowLayoutPanel1.Controls.Add(checkBoxDspacing);
+        flowLayoutPanel1.Controls.Add(groupBoxDspacing);
+        flowLayoutPanel1.Controls.Add(checkBoxDensity);
+        flowLayoutPanel1.Controls.Add(groupBoxDensity);
+        flowLayoutPanel1.Name = "flowLayoutPanel1";
         // 
         // checkBoxSearchName
         // 
-        resources.ApplyResources(this.checkBoxSearchName, "checkBoxSearchName");
-        this.checkBoxSearchName.Name = "checkBoxSearchName";
-        this.checkBoxSearchName.UseVisualStyleBackColor = true;
-        this.checkBoxSearchName.CheckedChanged += new System.EventHandler(this.checkBoxSearch_CheckedChanged);
+        resources.ApplyResources(checkBoxSearchName, "checkBoxSearchName");
+        checkBoxSearchName.Name = "checkBoxSearchName";
+        checkBoxSearchName.UseVisualStyleBackColor = true;
+        checkBoxSearchName.CheckedChanged += checkBoxSearch_CheckedChanged;
         // 
         // textBoxSearchName
         // 
-        resources.ApplyResources(this.textBoxSearchName, "textBoxSearchName");
-        this.textBoxSearchName.Name = "textBoxSearchName";
+        resources.ApplyResources(textBoxSearchName, "textBoxSearchName");
+        textBoxSearchName.Name = "textBoxSearchName";
+        textBoxSearchName.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxSearchElements
         // 
-        resources.ApplyResources(this.checkBoxSearchElements, "checkBoxSearchElements");
-        this.checkBoxSearchElements.Name = "checkBoxSearchElements";
-        this.checkBoxSearchElements.UseVisualStyleBackColor = true;
-        this.checkBoxSearchElements.CheckedChanged += new System.EventHandler(this.checkBoxSearch_CheckedChanged);
+        resources.ApplyResources(checkBoxSearchElements, "checkBoxSearchElements");
+        checkBoxSearchElements.Name = "checkBoxSearchElements";
+        checkBoxSearchElements.UseVisualStyleBackColor = true;
+        checkBoxSearchElements.CheckedChanged += checkBoxSearch_CheckedChanged;
         // 
         // buttonPeriodicTable
         // 
-        resources.ApplyResources(this.buttonPeriodicTable, "buttonPeriodicTable");
-        this.buttonPeriodicTable.Name = "buttonPeriodicTable";
-        this.buttonPeriodicTable.UseVisualStyleBackColor = true;
-        this.buttonPeriodicTable.Click += new System.EventHandler(this.buttonPeriodicTable_Click);
+        resources.ApplyResources(buttonPeriodicTable, "buttonPeriodicTable");
+        buttonPeriodicTable.Name = "buttonPeriodicTable";
+        buttonPeriodicTable.UseVisualStyleBackColor = true;
+        buttonPeriodicTable.Click += buttonPeriodicTable_Click;
         // 
         // checkBoxSearchRefference
         // 
-        resources.ApplyResources(this.checkBoxSearchRefference, "checkBoxSearchRefference");
-        this.checkBoxSearchRefference.Name = "checkBoxSearchRefference";
-        this.checkBoxSearchRefference.UseVisualStyleBackColor = true;
-        this.checkBoxSearchRefference.CheckedChanged += new System.EventHandler(this.checkBoxSearch_CheckedChanged);
+        resources.ApplyResources(checkBoxSearchRefference, "checkBoxSearchRefference");
+        checkBoxSearchRefference.Name = "checkBoxSearchRefference";
+        checkBoxSearchRefference.UseVisualStyleBackColor = true;
+        checkBoxSearchRefference.CheckedChanged += checkBoxSearch_CheckedChanged;
         // 
         // textBoxSearchRefference
         // 
-        resources.ApplyResources(this.textBoxSearchRefference, "textBoxSearchRefference");
-        this.textBoxSearchRefference.Name = "textBoxSearchRefference";
+        resources.ApplyResources(textBoxSearchRefference, "textBoxSearchRefference");
+        textBoxSearchRefference.Name = "textBoxSearchRefference";
+        textBoxSearchRefference.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxSearchCrystalSystem
         // 
-        resources.ApplyResources(this.checkBoxSearchCrystalSystem, "checkBoxSearchCrystalSystem");
-        this.checkBoxSearchCrystalSystem.Name = "checkBoxSearchCrystalSystem";
-        this.checkBoxSearchCrystalSystem.UseVisualStyleBackColor = true;
-        this.checkBoxSearchCrystalSystem.CheckedChanged += new System.EventHandler(this.checkBoxSearch_CheckedChanged);
+        resources.ApplyResources(checkBoxSearchCrystalSystem, "checkBoxSearchCrystalSystem");
+        checkBoxSearchCrystalSystem.Name = "checkBoxSearchCrystalSystem";
+        checkBoxSearchCrystalSystem.UseVisualStyleBackColor = true;
+        checkBoxSearchCrystalSystem.CheckedChanged += checkBoxSearch_CheckedChanged;
         // 
         // comboBoxSearchCrystalSystem
         // 
-        resources.ApplyResources(this.comboBoxSearchCrystalSystem, "comboBoxSearchCrystalSystem");
-        this.comboBoxSearchCrystalSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        this.comboBoxSearchCrystalSystem.Items.AddRange(new object[] {
-        resources.GetString("comboBoxSearchCrystalSystem.Items"),
-        resources.GetString("comboBoxSearchCrystalSystem.Items1"),
-        resources.GetString("comboBoxSearchCrystalSystem.Items2"),
-        resources.GetString("comboBoxSearchCrystalSystem.Items3"),
-        resources.GetString("comboBoxSearchCrystalSystem.Items4"),
-        resources.GetString("comboBoxSearchCrystalSystem.Items5"),
-        resources.GetString("comboBoxSearchCrystalSystem.Items6"),
-        resources.GetString("comboBoxSearchCrystalSystem.Items7")});
-        this.comboBoxSearchCrystalSystem.Name = "comboBoxSearchCrystalSystem";
+        comboBoxSearchCrystalSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        resources.ApplyResources(comboBoxSearchCrystalSystem, "comboBoxSearchCrystalSystem");
+        comboBoxSearchCrystalSystem.Items.AddRange(new object[] { resources.GetString("comboBoxSearchCrystalSystem.Items"), resources.GetString("comboBoxSearchCrystalSystem.Items1"), resources.GetString("comboBoxSearchCrystalSystem.Items2"), resources.GetString("comboBoxSearchCrystalSystem.Items3"), resources.GetString("comboBoxSearchCrystalSystem.Items4"), resources.GetString("comboBoxSearchCrystalSystem.Items5"), resources.GetString("comboBoxSearchCrystalSystem.Items6"), resources.GetString("comboBoxSearchCrystalSystem.Items7") });
+        comboBoxSearchCrystalSystem.Name = "comboBoxSearchCrystalSystem";
         // 
         // checkBoxSearchCellParameter
         // 
-        resources.ApplyResources(this.checkBoxSearchCellParameter, "checkBoxSearchCellParameter");
-        this.checkBoxSearchCellParameter.Name = "checkBoxSearchCellParameter";
-        this.checkBoxSearchCellParameter.UseVisualStyleBackColor = true;
-        this.checkBoxSearchCellParameter.CheckedChanged += new System.EventHandler(this.checkBoxSearch_CheckedChanged);
+        resources.ApplyResources(checkBoxSearchCellParameter, "checkBoxSearchCellParameter");
+        checkBoxSearchCellParameter.Name = "checkBoxSearchCellParameter";
+        checkBoxSearchCellParameter.UseVisualStyleBackColor = true;
+        checkBoxSearchCellParameter.CheckedChanged += checkBoxSearch_CheckedChanged;
         // 
         // groupBoxCellParameter
         // 
-        resources.ApplyResources(this.groupBoxCellParameter, "groupBoxCellParameter");
-        this.groupBoxCellParameter.Controls.Add(this.numericBoxCellGamma);
-        this.groupBoxCellParameter.Controls.Add(this.numericBoxCellAngleErr);
-        this.groupBoxCellParameter.Controls.Add(this.numericBoxCellLengthErr);
-        this.groupBoxCellParameter.Controls.Add(this.numericBoxCellC);
-        this.groupBoxCellParameter.Controls.Add(this.numericBoxCellBeta);
-        this.groupBoxCellParameter.Controls.Add(this.numericBoxCellAlpha);
-        this.groupBoxCellParameter.Controls.Add(this.numericBoxCellB);
-        this.groupBoxCellParameter.Controls.Add(this.numericBoxCellA);
-        this.groupBoxCellParameter.Name = "groupBoxCellParameter";
-        this.groupBoxCellParameter.TabStop = false;
+        groupBoxCellParameter.Controls.Add(numericBoxCellGamma);
+        groupBoxCellParameter.Controls.Add(numericBoxCellAngleErr);
+        groupBoxCellParameter.Controls.Add(numericBoxCellLengthErr);
+        groupBoxCellParameter.Controls.Add(numericBoxCellC);
+        groupBoxCellParameter.Controls.Add(numericBoxCellBeta);
+        groupBoxCellParameter.Controls.Add(numericBoxCellAlpha);
+        groupBoxCellParameter.Controls.Add(numericBoxCellB);
+        groupBoxCellParameter.Controls.Add(numericBoxCellA);
+        resources.ApplyResources(groupBoxCellParameter, "groupBoxCellParameter");
+        groupBoxCellParameter.Name = "groupBoxCellParameter";
+        groupBoxCellParameter.TabStop = false;
         // 
         // numericBoxCellGamma
         // 
-        resources.ApplyResources(this.numericBoxCellGamma, "numericBoxCellGamma");
-        this.numericBoxCellGamma.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxCellGamma.Maximum = 179D;
-        this.numericBoxCellGamma.Minimum = 0D;
-        this.numericBoxCellGamma.Name = "numericBoxCellGamma";
-        this.numericBoxCellGamma.RoundErrorAccuracy = -1;
-        this.numericBoxCellGamma.SkipEventDuringInput = false;
-        this.numericBoxCellGamma.SmartIncrement = true;
-        this.numericBoxCellGamma.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxCellGamma, "numericBoxCellGamma");
+        numericBoxCellGamma.BackColor = System.Drawing.Color.Transparent;
+        numericBoxCellGamma.Maximum = 179D;
+        numericBoxCellGamma.Minimum = 0D;
+        numericBoxCellGamma.Name = "numericBoxCellGamma";
+        numericBoxCellGamma.SkipEventDuringInput = false;
+        numericBoxCellGamma.SmartIncrement = true;
+        numericBoxCellGamma.ThonsandsSeparator = true;
+        numericBoxCellGamma.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellAngleErr
         // 
-        resources.ApplyResources(this.numericBoxCellAngleErr, "numericBoxCellAngleErr");
-        this.numericBoxCellAngleErr.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxCellAngleErr.DecimalPlaces = 1;
-        this.numericBoxCellAngleErr.Maximum = 50D;
-        this.numericBoxCellAngleErr.Minimum = 0D;
-        this.numericBoxCellAngleErr.Name = "numericBoxCellAngleErr";
-        this.numericBoxCellAngleErr.RadianValue = 0.052359877559829883D;
-        this.numericBoxCellAngleErr.RoundErrorAccuracy = -1;
-        this.numericBoxCellAngleErr.ShowUpDown = true;
-        this.numericBoxCellAngleErr.SkipEventDuringInput = false;
-        this.numericBoxCellAngleErr.ThonsandsSeparator = true;
-        this.numericBoxCellAngleErr.UpDown_Increment = 0.5D;
-        this.numericBoxCellAngleErr.Value = 3D;
+        resources.ApplyResources(numericBoxCellAngleErr, "numericBoxCellAngleErr");
+        numericBoxCellAngleErr.BackColor = System.Drawing.Color.Transparent;
+        numericBoxCellAngleErr.DecimalPlaces = 1;
+        numericBoxCellAngleErr.Maximum = 50D;
+        numericBoxCellAngleErr.Minimum = 0D;
+        numericBoxCellAngleErr.Name = "numericBoxCellAngleErr";
+        numericBoxCellAngleErr.RadianValue = 0.052359877559829883D;
+        numericBoxCellAngleErr.ShowUpDown = true;
+        numericBoxCellAngleErr.SkipEventDuringInput = false;
+        numericBoxCellAngleErr.ThonsandsSeparator = true;
+        numericBoxCellAngleErr.UpDown_Increment = 0.5D;
+        numericBoxCellAngleErr.Value = 3D;
+        numericBoxCellAngleErr.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellLengthErr
         // 
-        resources.ApplyResources(this.numericBoxCellLengthErr, "numericBoxCellLengthErr");
-        this.numericBoxCellLengthErr.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxCellLengthErr.DecimalPlaces = 1;
-        this.numericBoxCellLengthErr.Maximum = 50D;
-        this.numericBoxCellLengthErr.Minimum = 0D;
-        this.numericBoxCellLengthErr.Name = "numericBoxCellLengthErr";
-        this.numericBoxCellLengthErr.RadianValue = 0.052359877559829883D;
-        this.numericBoxCellLengthErr.RoundErrorAccuracy = -1;
-        this.numericBoxCellLengthErr.ShowUpDown = true;
-        this.numericBoxCellLengthErr.SkipEventDuringInput = false;
-        this.numericBoxCellLengthErr.ThonsandsSeparator = true;
-        this.numericBoxCellLengthErr.UpDown_Increment = 0.5D;
-        this.numericBoxCellLengthErr.Value = 3D;
+        resources.ApplyResources(numericBoxCellLengthErr, "numericBoxCellLengthErr");
+        numericBoxCellLengthErr.BackColor = System.Drawing.Color.Transparent;
+        numericBoxCellLengthErr.DecimalPlaces = 1;
+        numericBoxCellLengthErr.Maximum = 50D;
+        numericBoxCellLengthErr.Minimum = 0D;
+        numericBoxCellLengthErr.Name = "numericBoxCellLengthErr";
+        numericBoxCellLengthErr.RadianValue = 0.052359877559829883D;
+        numericBoxCellLengthErr.ShowUpDown = true;
+        numericBoxCellLengthErr.SkipEventDuringInput = false;
+        numericBoxCellLengthErr.ThonsandsSeparator = true;
+        numericBoxCellLengthErr.UpDown_Increment = 0.5D;
+        numericBoxCellLengthErr.Value = 3D;
+        numericBoxCellLengthErr.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellC
         // 
-        resources.ApplyResources(this.numericBoxCellC, "numericBoxCellC");
-        this.numericBoxCellC.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxCellC.Maximum = 100D;
-        this.numericBoxCellC.Minimum = 0D;
-        this.numericBoxCellC.Name = "numericBoxCellC";
-        this.numericBoxCellC.RoundErrorAccuracy = -1;
-        this.numericBoxCellC.SkipEventDuringInput = false;
-        this.numericBoxCellC.SmartIncrement = true;
-        this.numericBoxCellC.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxCellC, "numericBoxCellC");
+        numericBoxCellC.BackColor = System.Drawing.Color.Transparent;
+        numericBoxCellC.Maximum = 100D;
+        numericBoxCellC.Minimum = 0D;
+        numericBoxCellC.Name = "numericBoxCellC";
+        numericBoxCellC.SkipEventDuringInput = false;
+        numericBoxCellC.SmartIncrement = true;
+        numericBoxCellC.ThonsandsSeparator = true;
+        numericBoxCellC.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellBeta
         // 
-        resources.ApplyResources(this.numericBoxCellBeta, "numericBoxCellBeta");
-        this.numericBoxCellBeta.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxCellBeta.Maximum = 179D;
-        this.numericBoxCellBeta.Minimum = 0D;
-        this.numericBoxCellBeta.Name = "numericBoxCellBeta";
-        this.numericBoxCellBeta.RoundErrorAccuracy = -1;
-        this.numericBoxCellBeta.SkipEventDuringInput = false;
-        this.numericBoxCellBeta.SmartIncrement = true;
-        this.numericBoxCellBeta.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxCellBeta, "numericBoxCellBeta");
+        numericBoxCellBeta.BackColor = System.Drawing.Color.Transparent;
+        numericBoxCellBeta.Maximum = 179D;
+        numericBoxCellBeta.Minimum = 0D;
+        numericBoxCellBeta.Name = "numericBoxCellBeta";
+        numericBoxCellBeta.SkipEventDuringInput = false;
+        numericBoxCellBeta.SmartIncrement = true;
+        numericBoxCellBeta.ThonsandsSeparator = true;
+        numericBoxCellBeta.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellAlpha
         // 
-        resources.ApplyResources(this.numericBoxCellAlpha, "numericBoxCellAlpha");
-        this.numericBoxCellAlpha.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxCellAlpha.Maximum = 179D;
-        this.numericBoxCellAlpha.Minimum = 0D;
-        this.numericBoxCellAlpha.Name = "numericBoxCellAlpha";
-        this.numericBoxCellAlpha.RoundErrorAccuracy = -1;
-        this.numericBoxCellAlpha.SkipEventDuringInput = false;
-        this.numericBoxCellAlpha.SmartIncrement = true;
-        this.numericBoxCellAlpha.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxCellAlpha, "numericBoxCellAlpha");
+        numericBoxCellAlpha.BackColor = System.Drawing.Color.Transparent;
+        numericBoxCellAlpha.Maximum = 179D;
+        numericBoxCellAlpha.Minimum = 0D;
+        numericBoxCellAlpha.Name = "numericBoxCellAlpha";
+        numericBoxCellAlpha.SkipEventDuringInput = false;
+        numericBoxCellAlpha.SmartIncrement = true;
+        numericBoxCellAlpha.ThonsandsSeparator = true;
+        numericBoxCellAlpha.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellB
         // 
-        resources.ApplyResources(this.numericBoxCellB, "numericBoxCellB");
-        this.numericBoxCellB.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxCellB.Maximum = 100D;
-        this.numericBoxCellB.Minimum = 0D;
-        this.numericBoxCellB.Name = "numericBoxCellB";
-        this.numericBoxCellB.RoundErrorAccuracy = -1;
-        this.numericBoxCellB.SkipEventDuringInput = false;
-        this.numericBoxCellB.SmartIncrement = true;
-        this.numericBoxCellB.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxCellB, "numericBoxCellB");
+        numericBoxCellB.BackColor = System.Drawing.Color.Transparent;
+        numericBoxCellB.Maximum = 100D;
+        numericBoxCellB.Minimum = 0D;
+        numericBoxCellB.Name = "numericBoxCellB";
+        numericBoxCellB.SkipEventDuringInput = false;
+        numericBoxCellB.SmartIncrement = true;
+        numericBoxCellB.ThonsandsSeparator = true;
+        numericBoxCellB.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellA
         // 
-        resources.ApplyResources(this.numericBoxCellA, "numericBoxCellA");
-        this.numericBoxCellA.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxCellA.Maximum = 100D;
-        this.numericBoxCellA.Minimum = 0D;
-        this.numericBoxCellA.Name = "numericBoxCellA";
-        this.numericBoxCellA.RoundErrorAccuracy = -1;
-        this.numericBoxCellA.SkipEventDuringInput = false;
-        this.numericBoxCellA.SmartIncrement = true;
-        this.numericBoxCellA.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxCellA, "numericBoxCellA");
+        numericBoxCellA.BackColor = System.Drawing.Color.Transparent;
+        numericBoxCellA.Maximum = 100D;
+        numericBoxCellA.Minimum = 0D;
+        numericBoxCellA.Name = "numericBoxCellA";
+        numericBoxCellA.SkipEventDuringInput = false;
+        numericBoxCellA.SmartIncrement = true;
+        numericBoxCellA.ThonsandsSeparator = true;
+        numericBoxCellA.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxDspacing
         // 
-        resources.ApplyResources(this.checkBoxDspacing, "checkBoxDspacing");
-        this.checkBoxDspacing.Name = "checkBoxDspacing";
-        this.checkBoxDspacing.UseVisualStyleBackColor = true;
-        this.checkBoxDspacing.CheckedChanged += new System.EventHandler(this.checkBoxSearch_CheckedChanged);
+        resources.ApplyResources(checkBoxDspacing, "checkBoxDspacing");
+        checkBoxDspacing.Name = "checkBoxDspacing";
+        checkBoxDspacing.UseVisualStyleBackColor = true;
+        checkBoxDspacing.CheckedChanged += checkBoxSearch_CheckedChanged;
         // 
         // groupBoxDspacing
         // 
-        resources.ApplyResources(this.groupBoxDspacing, "groupBoxDspacing");
-        this.groupBoxDspacing.Controls.Add(this.checkBoxD3);
-        this.groupBoxDspacing.Controls.Add(this.numericBoxD3Err);
-        this.groupBoxDspacing.Controls.Add(this.numericBoxD2Err);
-        this.groupBoxDspacing.Controls.Add(this.numericBoxD1Err);
-        this.groupBoxDspacing.Controls.Add(this.checkBoxD2);
-        this.groupBoxDspacing.Controls.Add(this.checkBoxD1);
-        this.groupBoxDspacing.Controls.Add(this.numericBoxD3);
-        this.groupBoxDspacing.Controls.Add(this.numericBoxD2);
-        this.groupBoxDspacing.Controls.Add(this.numericBoxD1);
-        this.groupBoxDspacing.Controls.Add(this.checkBoxIgnoreScatteringFactor);
-        this.groupBoxDspacing.Name = "groupBoxDspacing";
-        this.groupBoxDspacing.TabStop = false;
+        groupBoxDspacing.Controls.Add(checkBoxD3);
+        groupBoxDspacing.Controls.Add(numericBoxD3Err);
+        groupBoxDspacing.Controls.Add(numericBoxD2Err);
+        groupBoxDspacing.Controls.Add(numericBoxD1Err);
+        groupBoxDspacing.Controls.Add(checkBoxD2);
+        groupBoxDspacing.Controls.Add(checkBoxD1);
+        groupBoxDspacing.Controls.Add(numericBoxD3);
+        groupBoxDspacing.Controls.Add(numericBoxD2);
+        groupBoxDspacing.Controls.Add(numericBoxD1);
+        groupBoxDspacing.Controls.Add(checkBoxIgnoreScatteringFactor);
+        resources.ApplyResources(groupBoxDspacing, "groupBoxDspacing");
+        groupBoxDspacing.Name = "groupBoxDspacing";
+        groupBoxDspacing.TabStop = false;
         // 
         // checkBoxD3
         // 
-        resources.ApplyResources(this.checkBoxD3, "checkBoxD3");
-        this.checkBoxD3.Name = "checkBoxD3";
-        this.checkBoxD3.UseVisualStyleBackColor = true;
-        this.checkBoxD3.CheckedChanged += new System.EventHandler(this.checkBoxD3_CheckedChanged);
+        resources.ApplyResources(checkBoxD3, "checkBoxD3");
+        checkBoxD3.Name = "checkBoxD3";
+        checkBoxD3.UseVisualStyleBackColor = true;
+        checkBoxD3.CheckedChanged += checkBoxD3_CheckedChanged;
         // 
         // numericBoxD3Err
         // 
-        resources.ApplyResources(this.numericBoxD3Err, "numericBoxD3Err");
-        this.numericBoxD3Err.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxD3Err.DecimalPlaces = 1;
-        this.numericBoxD3Err.Maximum = 50D;
-        this.numericBoxD3Err.Minimum = 0D;
-        this.numericBoxD3Err.Name = "numericBoxD3Err";
-        this.numericBoxD3Err.RadianValue = 0.052359877559829883D;
-        this.numericBoxD3Err.RoundErrorAccuracy = -1;
-        this.numericBoxD3Err.ShowUpDown = true;
-        this.numericBoxD3Err.SkipEventDuringInput = false;
-        this.numericBoxD3Err.ThonsandsSeparator = true;
-        this.numericBoxD3Err.UpDown_Increment = 0.5D;
-        this.numericBoxD3Err.Value = 3D;
+        resources.ApplyResources(numericBoxD3Err, "numericBoxD3Err");
+        numericBoxD3Err.BackColor = System.Drawing.Color.Transparent;
+        numericBoxD3Err.DecimalPlaces = 1;
+        numericBoxD3Err.Maximum = 50D;
+        numericBoxD3Err.Minimum = 0D;
+        numericBoxD3Err.Name = "numericBoxD3Err";
+        numericBoxD3Err.RadianValue = 0.052359877559829883D;
+        numericBoxD3Err.ShowUpDown = true;
+        numericBoxD3Err.SkipEventDuringInput = false;
+        numericBoxD3Err.ThonsandsSeparator = true;
+        numericBoxD3Err.UpDown_Increment = 0.5D;
+        numericBoxD3Err.Value = 3D;
+        numericBoxD3Err.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxD2Err
         // 
-        resources.ApplyResources(this.numericBoxD2Err, "numericBoxD2Err");
-        this.numericBoxD2Err.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxD2Err.DecimalPlaces = 1;
-        this.numericBoxD2Err.Maximum = 50D;
-        this.numericBoxD2Err.Minimum = 0D;
-        this.numericBoxD2Err.Name = "numericBoxD2Err";
-        this.numericBoxD2Err.RadianValue = 0.052359877559829883D;
-        this.numericBoxD2Err.RoundErrorAccuracy = -1;
-        this.numericBoxD2Err.ShowUpDown = true;
-        this.numericBoxD2Err.SkipEventDuringInput = false;
-        this.numericBoxD2Err.ThonsandsSeparator = true;
-        this.numericBoxD2Err.UpDown_Increment = 0.5D;
-        this.numericBoxD2Err.Value = 3D;
+        resources.ApplyResources(numericBoxD2Err, "numericBoxD2Err");
+        numericBoxD2Err.BackColor = System.Drawing.Color.Transparent;
+        numericBoxD2Err.DecimalPlaces = 1;
+        numericBoxD2Err.Maximum = 50D;
+        numericBoxD2Err.Minimum = 0D;
+        numericBoxD2Err.Name = "numericBoxD2Err";
+        numericBoxD2Err.RadianValue = 0.052359877559829883D;
+        numericBoxD2Err.ShowUpDown = true;
+        numericBoxD2Err.SkipEventDuringInput = false;
+        numericBoxD2Err.ThonsandsSeparator = true;
+        numericBoxD2Err.UpDown_Increment = 0.5D;
+        numericBoxD2Err.Value = 3D;
+        numericBoxD2Err.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxD1Err
         // 
-        resources.ApplyResources(this.numericBoxD1Err, "numericBoxD1Err");
-        this.numericBoxD1Err.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxD1Err.DecimalPlaces = 1;
-        this.numericBoxD1Err.Maximum = 50D;
-        this.numericBoxD1Err.Minimum = 0D;
-        this.numericBoxD1Err.Name = "numericBoxD1Err";
-        this.numericBoxD1Err.RadianValue = 0.052359877559829883D;
-        this.numericBoxD1Err.RoundErrorAccuracy = -1;
-        this.numericBoxD1Err.ShowUpDown = true;
-        this.numericBoxD1Err.SkipEventDuringInput = false;
-        this.numericBoxD1Err.ThonsandsSeparator = true;
-        this.numericBoxD1Err.UpDown_Increment = 0.5D;
-        this.numericBoxD1Err.Value = 3D;
+        resources.ApplyResources(numericBoxD1Err, "numericBoxD1Err");
+        numericBoxD1Err.BackColor = System.Drawing.Color.Transparent;
+        numericBoxD1Err.DecimalPlaces = 1;
+        numericBoxD1Err.Maximum = 50D;
+        numericBoxD1Err.Minimum = 0D;
+        numericBoxD1Err.Name = "numericBoxD1Err";
+        numericBoxD1Err.RadianValue = 0.052359877559829883D;
+        numericBoxD1Err.ShowUpDown = true;
+        numericBoxD1Err.SkipEventDuringInput = false;
+        numericBoxD1Err.ThonsandsSeparator = true;
+        numericBoxD1Err.UpDown_Increment = 0.5D;
+        numericBoxD1Err.Value = 3D;
+        numericBoxD1Err.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxD2
         // 
-        resources.ApplyResources(this.checkBoxD2, "checkBoxD2");
-        this.checkBoxD2.Name = "checkBoxD2";
-        this.checkBoxD2.UseVisualStyleBackColor = true;
-        this.checkBoxD2.CheckedChanged += new System.EventHandler(this.checkBoxD2_CheckedChanged);
+        resources.ApplyResources(checkBoxD2, "checkBoxD2");
+        checkBoxD2.Name = "checkBoxD2";
+        checkBoxD2.UseVisualStyleBackColor = true;
+        checkBoxD2.CheckedChanged += checkBoxD2_CheckedChanged;
         // 
         // checkBoxD1
         // 
-        resources.ApplyResources(this.checkBoxD1, "checkBoxD1");
-        this.checkBoxD1.Checked = true;
-        this.checkBoxD1.CheckState = System.Windows.Forms.CheckState.Checked;
-        this.checkBoxD1.Name = "checkBoxD1";
-        this.checkBoxD1.UseVisualStyleBackColor = true;
-        this.checkBoxD1.CheckedChanged += new System.EventHandler(this.checkBoxD1_CheckedChanged);
+        resources.ApplyResources(checkBoxD1, "checkBoxD1");
+        checkBoxD1.Checked = true;
+        checkBoxD1.CheckState = System.Windows.Forms.CheckState.Checked;
+        checkBoxD1.Name = "checkBoxD1";
+        checkBoxD1.UseVisualStyleBackColor = true;
+        checkBoxD1.CheckedChanged += checkBoxD1_CheckedChanged;
         // 
         // numericBoxD3
         // 
-        resources.ApplyResources(this.numericBoxD3, "numericBoxD3");
-        this.numericBoxD3.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxD3.DecimalPlaces = 2;
-        this.numericBoxD3.Maximum = 100D;
-        this.numericBoxD3.Minimum = 0D;
-        this.numericBoxD3.Name = "numericBoxD3";
-        this.numericBoxD3.RoundErrorAccuracy = -1;
-        this.numericBoxD3.SkipEventDuringInput = false;
-        this.numericBoxD3.SmartIncrement = true;
-        this.numericBoxD3.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxD3, "numericBoxD3");
+        numericBoxD3.BackColor = System.Drawing.Color.Transparent;
+        numericBoxD3.DecimalPlaces = 2;
+        numericBoxD3.Maximum = 100D;
+        numericBoxD3.Minimum = 0D;
+        numericBoxD3.Name = "numericBoxD3";
+        numericBoxD3.SkipEventDuringInput = false;
+        numericBoxD3.SmartIncrement = true;
+        numericBoxD3.ThonsandsSeparator = true;
+        numericBoxD3.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxD2
         // 
-        resources.ApplyResources(this.numericBoxD2, "numericBoxD2");
-        this.numericBoxD2.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxD2.DecimalPlaces = 2;
-        this.numericBoxD2.Maximum = 100D;
-        this.numericBoxD2.Minimum = 0D;
-        this.numericBoxD2.Name = "numericBoxD2";
-        this.numericBoxD2.RoundErrorAccuracy = -1;
-        this.numericBoxD2.SkipEventDuringInput = false;
-        this.numericBoxD2.SmartIncrement = true;
-        this.numericBoxD2.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxD2, "numericBoxD2");
+        numericBoxD2.BackColor = System.Drawing.Color.Transparent;
+        numericBoxD2.DecimalPlaces = 2;
+        numericBoxD2.Maximum = 100D;
+        numericBoxD2.Minimum = 0D;
+        numericBoxD2.Name = "numericBoxD2";
+        numericBoxD2.SkipEventDuringInput = false;
+        numericBoxD2.SmartIncrement = true;
+        numericBoxD2.ThonsandsSeparator = true;
+        numericBoxD2.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxD1
         // 
-        resources.ApplyResources(this.numericBoxD1, "numericBoxD1");
-        this.numericBoxD1.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxD1.DecimalPlaces = 2;
-        this.numericBoxD1.Maximum = 100D;
-        this.numericBoxD1.Minimum = 0D;
-        this.numericBoxD1.Name = "numericBoxD1";
-        this.numericBoxD1.RoundErrorAccuracy = -1;
-        this.numericBoxD1.SkipEventDuringInput = false;
-        this.numericBoxD1.SmartIncrement = true;
-        this.numericBoxD1.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxD1, "numericBoxD1");
+        numericBoxD1.BackColor = System.Drawing.Color.Transparent;
+        numericBoxD1.DecimalPlaces = 2;
+        numericBoxD1.Maximum = 100D;
+        numericBoxD1.Minimum = 0D;
+        numericBoxD1.Name = "numericBoxD1";
+        numericBoxD1.SkipEventDuringInput = false;
+        numericBoxD1.SmartIncrement = true;
+        numericBoxD1.ThonsandsSeparator = true;
+        numericBoxD1.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxIgnoreScatteringFactor
         // 
-        resources.ApplyResources(this.checkBoxIgnoreScatteringFactor, "checkBoxIgnoreScatteringFactor");
-        this.checkBoxIgnoreScatteringFactor.Name = "checkBoxIgnoreScatteringFactor";
-        this.checkBoxIgnoreScatteringFactor.UseVisualStyleBackColor = true;
+        resources.ApplyResources(checkBoxIgnoreScatteringFactor, "checkBoxIgnoreScatteringFactor");
+        checkBoxIgnoreScatteringFactor.Name = "checkBoxIgnoreScatteringFactor";
+        checkBoxIgnoreScatteringFactor.UseVisualStyleBackColor = true;
         // 
         // checkBoxDensity
         // 
-        resources.ApplyResources(this.checkBoxDensity, "checkBoxDensity");
-        this.checkBoxDensity.Name = "checkBoxDensity";
-        this.checkBoxDensity.UseVisualStyleBackColor = true;
-        this.checkBoxDensity.CheckedChanged += new System.EventHandler(this.checkBoxSearch_CheckedChanged);
+        resources.ApplyResources(checkBoxDensity, "checkBoxDensity");
+        checkBoxDensity.Name = "checkBoxDensity";
+        checkBoxDensity.UseVisualStyleBackColor = true;
+        checkBoxDensity.CheckedChanged += checkBoxSearch_CheckedChanged;
         // 
         // groupBoxDensity
         // 
-        resources.ApplyResources(this.groupBoxDensity, "groupBoxDensity");
-        this.groupBoxDensity.Controls.Add(this.numericBoxDensity);
-        this.groupBoxDensity.Controls.Add(this.numericBoxDensityErr);
-        this.groupBoxDensity.Name = "groupBoxDensity";
-        this.groupBoxDensity.TabStop = false;
+        groupBoxDensity.Controls.Add(numericBoxDensity);
+        groupBoxDensity.Controls.Add(numericBoxDensityErr);
+        resources.ApplyResources(groupBoxDensity, "groupBoxDensity");
+        groupBoxDensity.Name = "groupBoxDensity";
+        groupBoxDensity.TabStop = false;
         // 
         // numericBoxDensity
         // 
-        resources.ApplyResources(this.numericBoxDensity, "numericBoxDensity");
-        this.numericBoxDensity.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxDensity.DecimalPlaces = 3;
-        this.numericBoxDensity.Maximum = 100D;
-        this.numericBoxDensity.Minimum = 0D;
-        this.numericBoxDensity.Name = "numericBoxDensity";
-        this.numericBoxDensity.RoundErrorAccuracy = -1;
-        this.numericBoxDensity.SkipEventDuringInput = false;
-        this.numericBoxDensity.SmartIncrement = true;
-        this.numericBoxDensity.ThonsandsSeparator = true;
+        resources.ApplyResources(numericBoxDensity, "numericBoxDensity");
+        numericBoxDensity.BackColor = System.Drawing.Color.Transparent;
+        numericBoxDensity.DecimalPlaces = 3;
+        numericBoxDensity.Maximum = 100D;
+        numericBoxDensity.Minimum = 0D;
+        numericBoxDensity.Name = "numericBoxDensity";
+        numericBoxDensity.SkipEventDuringInput = false;
+        numericBoxDensity.SmartIncrement = true;
+        numericBoxDensity.ThonsandsSeparator = true;
+        numericBoxDensity.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxDensityErr
         // 
-        resources.ApplyResources(this.numericBoxDensityErr, "numericBoxDensityErr");
-        this.numericBoxDensityErr.BackColor = System.Drawing.Color.Transparent;
-        this.numericBoxDensityErr.DecimalPlaces = 1;
-        this.numericBoxDensityErr.Maximum = 50D;
-        this.numericBoxDensityErr.Minimum = 0D;
-        this.numericBoxDensityErr.Name = "numericBoxDensityErr";
-        this.numericBoxDensityErr.RadianValue = 0.052359877559829883D;
-        this.numericBoxDensityErr.RoundErrorAccuracy = -1;
-        this.numericBoxDensityErr.ShowUpDown = true;
-        this.numericBoxDensityErr.SkipEventDuringInput = false;
-        this.numericBoxDensityErr.ThonsandsSeparator = true;
-        this.numericBoxDensityErr.UpDown_Increment = 0.5D;
-        this.numericBoxDensityErr.Value = 3D;
+        resources.ApplyResources(numericBoxDensityErr, "numericBoxDensityErr");
+        numericBoxDensityErr.BackColor = System.Drawing.Color.Transparent;
+        numericBoxDensityErr.DecimalPlaces = 1;
+        numericBoxDensityErr.Maximum = 50D;
+        numericBoxDensityErr.Minimum = 0D;
+        numericBoxDensityErr.Name = "numericBoxDensityErr";
+        numericBoxDensityErr.RadianValue = 0.052359877559829883D;
+        numericBoxDensityErr.ShowUpDown = true;
+        numericBoxDensityErr.SkipEventDuringInput = false;
+        numericBoxDensityErr.ThonsandsSeparator = true;
+        numericBoxDensityErr.UpDown_Increment = 0.5D;
+        numericBoxDensityErr.Value = 3D;
+        numericBoxDensityErr.KeyDown += textBoxSearchName_KeyDown;
         // 
         // backgroundWorkerSearch
         // 
-        this.backgroundWorkerSearch.WorkerReportsProgress = true;
-        this.backgroundWorkerSearch.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSearch_DoWork);
-        this.backgroundWorkerSearch.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerSearch_ProgressChanged);
-        this.backgroundWorkerSearch.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerSearch_RunWorkerCompleted);
+        backgroundWorkerSearch.WorkerReportsProgress = true;
+        backgroundWorkerSearch.DoWork += backgroundWorkerSearch_DoWork;
+        backgroundWorkerSearch.ProgressChanged += backgroundWorkerSearch_ProgressChanged;
+        backgroundWorkerSearch.RunWorkerCompleted += backgroundWorkerSearch_RunWorkerCompleted;
         // 
         // buttonSearch
         // 
-        resources.ApplyResources(this.buttonSearch, "buttonSearch");
-        this.buttonSearch.BackColor = System.Drawing.Color.Chocolate;
-        this.buttonSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-        this.buttonSearch.Name = "buttonSearch";
-        this.buttonSearch.UseVisualStyleBackColor = false;
-        this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+        resources.ApplyResources(buttonSearch, "buttonSearch");
+        buttonSearch.BackColor = System.Drawing.Color.Chocolate;
+        buttonSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+        buttonSearch.Name = "buttonSearch";
+        buttonSearch.UseVisualStyleBackColor = false;
+        buttonSearch.Click += buttonSearch_Click;
         // 
         // SearchCrystalControl
         // 
         resources.ApplyResources(this, "$this");
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-        this.Controls.Add(this.flowLayoutPanel1);
-        this.Controls.Add(this.buttonSearch);
-        this.Name = "SearchCrystalControl";
-        this.flowLayoutPanel1.ResumeLayout(false);
-        this.flowLayoutPanel1.PerformLayout();
-        this.groupBoxCellParameter.ResumeLayout(false);
-        this.groupBoxDspacing.ResumeLayout(false);
-        this.groupBoxDspacing.PerformLayout();
-        this.groupBoxDensity.ResumeLayout(false);
-        this.ResumeLayout(false);
-        this.PerformLayout();
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+        Controls.Add(flowLayoutPanel1);
+        Controls.Add(buttonSearch);
+        Name = "SearchCrystalControl";
+        flowLayoutPanel1.ResumeLayout(false);
+        flowLayoutPanel1.PerformLayout();
+        groupBoxCellParameter.ResumeLayout(false);
+        groupBoxDspacing.ResumeLayout(false);
+        groupBoxDspacing.PerformLayout();
+        groupBoxDensity.ResumeLayout(false);
+        ResumeLayout(false);
+        PerformLayout();
 
     }
 

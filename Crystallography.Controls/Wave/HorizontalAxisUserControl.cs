@@ -271,19 +271,26 @@ public partial class HorizontalAxisUserControl : UserControl
     {
         set
         {
-            if (value == TwoThetaUnit) return;
-            if (value != AngleUnitEnum.Degree && value != AngleUnitEnum.Radian) return;
+            //if (value == TwoThetaUnit) return;//同じ値なら何もしない
 
             radioButtonAngleUnitRadian.Checked = value == AngleUnitEnum.Radian;
             radioButtonAngleUnitDegree.Checked = value == AngleUnitEnum.Degree;
+            radioButtonAngleUnitCentiDegree.Checked = value == AngleUnitEnum.CentiDegree;
+            radioButtonAngleUnitMilliRadian.Checked = value == AngleUnitEnum.MilliRadian;
+
+
             if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
         }
         get
         {
             if (radioButtonAngleUnitRadian.Checked)
                 return AngleUnitEnum.Radian;
-            else
+            else　if (radioButtonAngleUnitDegree.Checked)
                 return AngleUnitEnum.Degree;
+            else if (radioButtonAngleUnitCentiDegree.Checked)  
+                return AngleUnitEnum.CentiDegree;
+            else
+                return AngleUnitEnum.MilliRadian;
         }
     }
     /// <summary>

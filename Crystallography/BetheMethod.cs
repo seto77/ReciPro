@@ -21,6 +21,7 @@ using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using ZLinq;
 #endregion
+
 namespace Crystallography;
 
 /// <summary>

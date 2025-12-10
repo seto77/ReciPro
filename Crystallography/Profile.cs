@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics.LinearAlgebra.Double;
+﻿#region using
+using MathNet.Numerics.LinearAlgebra.Double;
 using MemoryPack;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Xml.Serialization;
+#endregion
 
 namespace Crystallography;
 
@@ -1335,6 +1337,8 @@ public partial record struct HorizontalAxisProperty
     {
         AngleUnitEnum.Radian => "rad",
         AngleUnitEnum.Degree => "°",
+        AngleUnitEnum.MilliRadian => "mrad",
+        AngleUnitEnum.CentiDegree => "c°",
         _ => "",
     };
 
@@ -1517,10 +1521,30 @@ public static class HorizontalAxisConverter
             {
                 if (src.TwoThetaUnit == dst.TwoThetaUnit)
                     return x;
-                else if (src.TwoThetaUnit == AngleUnitEnum.Radian)
-                    return x.Select(x => x / Math.PI * 180).ToArray();
-                else
-                    return x.Select(x => x * Math.PI / 180).ToArray();
+                else if (src.TwoThetaUnit == AngleUnitEnum.Degree)//Srcが度の時
+                    return dst.TwoThetaUnit switch
+                    {
+                        AngleUnitEnum.CentiDegree => [.. x.Select(x => x * 100)],//度 -> センチ度
+                        AngleUnitEnum.Radian => [.. x.Select(x => x / 180 * Math.PI)], //度 -> ラジアン
+                        AngleUnitEnum.MilliRadian => [.. x.Select(x => x / 180 * Math.PI * 1000.0)],//度 -> ミリラジアン 
+                        _ => x,
+                    };
+                else if (src.TwoThetaUnit == AngleUnitEnum.Radian)//Srcがラジアンの時
+                    return dst.TwoThetaUnit switch
+                    {
+                        AngleUnitEnum.Degree => [.. x.Select(x => x / Math.PI * 180)],//ラジアン -> 度
+                        AngleUnitEnum.CentiDegree => [.. x.Select(x => x / Math.PI * 180 * 100)],//ラジアン -> センチ度
+                        AngleUnitEnum.MilliRadian => [.. x.Select(x => x * 1000.0)],//ラジアン -> ミリラジアン
+                        _ => x,
+                    };
+                else if (src.TwoThetaUnit == AngleUnitEnum.MilliRadian)
+                    return dst.TwoThetaUnit switch
+                    {
+                        AngleUnitEnum.Degree => [.. x.Select(x => x / 1000.0 * 180 / Math.PI)],//ミリラジアン -> 度
+                        AngleUnitEnum.CentiDegree => [.. x.Select(x => x / 1000.0 * 180 / Math.PI *100)],//ミリラジアン -> センチ度
+                        AngleUnitEnum.Radian => [.. x.Select(x => x /1000.0)],//ミリラジアン -> ラジアン
+                        _ => x,
+                    };
             }
 
             //横軸がd値の時
@@ -1529,9 +1553,9 @@ public static class HorizontalAxisConverter
                 if (src.DspacingUnit == dst.DspacingUnit)
                     return x;
                 else if (src.DspacingUnit == LengthUnitEnum.Angstrom && dst.DspacingUnit == LengthUnitEnum.NanoMeter)
-                    return x.Select(x => x * 0.1).ToArray();
+                    return [.. x.Select(x => x * 0.1)];
                 else if (src.DspacingUnit == LengthUnitEnum.NanoMeter && dst.DspacingUnit == LengthUnitEnum.Angstrom)
-                    return x.Select(x => x * 10).ToArray();
+                    return [.. x.Select(x => x * 10)];
             }
 
             //横軸がエネルギーでTakeoffAngleも等しいとき
@@ -1540,11 +1564,11 @@ public static class HorizontalAxisConverter
                 if (src.EnergyUnit == dst.EnergyUnit)
                     return x;
                 else if (src.EnergyUnit == EnergyUnitEnum.eV)
-                    return dst.EnergyUnit == EnergyUnitEnum.KeV ? x.Select(x => x / 1_000).ToArray() : x.Select(x => x / 1_000_000).ToArray();
+                    return dst.EnergyUnit == EnergyUnitEnum.KeV ? [.. x.Select(x => x / 1_000)] : [.. x.Select(x => x / 1_000_000)];
                 else if (src.EnergyUnit == EnergyUnitEnum.KeV)
-                    return dst.EnergyUnit == EnergyUnitEnum.eV ? x.Select(x => x * 1_000).ToArray() : x.Select(x => x / 1_000).ToArray();
+                    return dst.EnergyUnit == EnergyUnitEnum.eV ? [.. x.Select(x => x * 1_000)] : [.. x.Select(x => x / 1_000)];
                 else if (src.EnergyUnit == EnergyUnitEnum.MeV)
-                    return dst.EnergyUnit == EnergyUnitEnum.eV ? x.Select(x => x * 1_000_000).ToArray() : x.Select(x => x * 1_000).ToArray();
+                    return dst.EnergyUnit == EnergyUnitEnum.eV ? [.. x.Select(x => x * 1_000_000)] : [.. x.Select(x => x * 1_000)];
             }
 
             //横軸がNeutron TOFで、TOF角度もTOF距離も等しいとき
@@ -1553,9 +1577,9 @@ public static class HorizontalAxisConverter
                 if (src.TofTimeUnit == dst.TofTimeUnit)
                     return x;
                 else if (src.TofTimeUnit == TimeUnitEnum.MicroSecond && dst.TofTimeUnit == TimeUnitEnum.NanoSecond)
-                    return x.Select(x => x * 1_000).ToArray();
+                    return [.. x.Select(x => x * 1_000)];
                 else if (src.TofTimeUnit == TimeUnitEnum.NanoSecond && dst.TofTimeUnit == TimeUnitEnum.MicroSecond)
-                    return x.Select(x => x / 1_000).ToArray();
+                    return [.. x.Select(x => x / 1_000)];
             }
 
             //横軸が波数の時
@@ -1564,9 +1588,9 @@ public static class HorizontalAxisConverter
                 if (src.WaveNumberUnit == dst.WaveNumberUnit)
                     return x;
                 else if (src.WaveNumberUnit == LengthUnitEnum.AngstromInverse && dst.WaveNumberUnit == LengthUnitEnum.NanoMeterInverse)
-                    return x.Select(x => x * 10).ToArray();
+                    return [.. x.Select(x => x * 10)];
                 else if (src.WaveNumberUnit == LengthUnitEnum.NanoMeterInverse && dst.WaveNumberUnit == LengthUnitEnum.AngstromInverse)
-                    return x.Select(x => x * 0.1).ToArray();
+                    return [.. x.Select(x => x * 0.1)];
             }
         }
         #endregion
@@ -1596,11 +1620,14 @@ public static class HorizontalAxisConverter
 
         else if (src.AxisMode == HorizontalAxis.Angle)
         {
-            var twoTheta = Array.Empty<double>();
-            if (src.TwoThetaUnit == AngleUnitEnum.Degree)
-                d = TwoThetaInDegreeToD(x, src.WaveLength);
-            else
-                d = TwoThetaInRadianToD(x, src.WaveLength);
+            d = src.TwoThetaUnit switch
+            {
+                AngleUnitEnum.Degree => TwoThetaInDegreeToD(x, src.WaveLength),
+                AngleUnitEnum.Radian => TwoThetaInRadianToD(x, src.WaveLength),
+                AngleUnitEnum.CentiDegree => TwoThetaInCentiDegreeToD(x, src.WaveLength),
+                AngleUnitEnum.MilliRadian => TwoThetaInMilliRadianToD(x, src.WaveLength),
+                _ => TwoThetaInDegreeToD(x, src.WaveLength),
+            };
         }
         else if (src.AxisMode == HorizontalAxis.EnergyXray || src.AxisMode == HorizontalAxis.EnergyElectron || src.AxisMode == HorizontalAxis.EnergyNeutron)
         {
@@ -1608,9 +1635,9 @@ public static class HorizontalAxisConverter
             if (src.EnergyUnit == EnergyUnitEnum.eV)
                 energy = x;
             else if (src.EnergyUnit == EnergyUnitEnum.KeV)
-                energy = x.Select(x => x * 1_000).ToArray();
+                energy = [.. x.Select(x => x * 1_000)];
             else if (src.EnergyUnit == EnergyUnitEnum.MeV)
-                energy = x.Select(x => x * 1_000_000).ToArray();
+                energy = [.. x.Select(x => x * 1_000_000)];
 
             if (src.AxisMode == HorizontalAxis.EnergyXray)
                 d = XrayEnergyToD(energy, src.EnergyTakeoffAngle);
@@ -1657,7 +1684,14 @@ public static class HorizontalAxisConverter
         #region 最後にd値(nm単位)を目的の軸に変換
         if (dst.AxisMode == HorizontalAxis.Angle)
         {
-            return dst.TwoThetaUnit == AngleUnitEnum.Degree ? DToTwoThetaInDegree(d, dst.WaveLength) : DToTwoThetaInRadian(d, dst.WaveLength);
+            return dst.TwoThetaUnit switch
+            {
+                AngleUnitEnum.Degree => DToTwoThetaInDegree(d, dst.WaveLength),
+                AngleUnitEnum.Radian => DToTwoThetaInRadian(d, dst.WaveLength),
+                AngleUnitEnum.CentiDegree => DToTwoThetaInCentiDegree(d, dst.WaveLength),
+                AngleUnitEnum.MilliRadian => DToTwoThetaInMilliRadian(d, dst.WaveLength),
+                _ => DToTwoThetaInDegree(d, dst.WaveLength),
+            };
         }
         else if (dst.AxisMode == HorizontalAxis.d)
             return dst.DspacingUnit == LengthUnitEnum.NanoMeter ? d : d.Select(d => d * 10).ToArray();
@@ -1674,9 +1708,9 @@ public static class HorizontalAxisConverter
             if (dst.EnergyUnit == EnergyUnitEnum.eV)
                 return energy;
             else if (dst.EnergyUnit == EnergyUnitEnum.KeV)
-                return energy.Select(e => e / 1_000).ToArray();
+                return [.. energy.Select(e => e / 1_000)];
             else if (dst.EnergyUnit == EnergyUnitEnum.MeV)
-                return energy.Select(e => e / 1_000_000).ToArray();
+                return [.. energy.Select(e => e / 1_000_000)];
         }
         else if (dst.AxisMode == HorizontalAxis.NeutronTOF)
         {
@@ -1684,7 +1718,7 @@ public static class HorizontalAxisConverter
             if (dst.TofTimeUnit == TimeUnitEnum.MicroSecond)
                 return d;
             else if (dst.TofTimeUnit == TimeUnitEnum.NanoSecond)
-                return d.Select(d => d * 1_000).ToArray();
+                return [.. d.Select(d => d * 1_000)];
         }
         else if (dst.AxisMode == HorizontalAxis.WaveNumber)
         {
@@ -1913,13 +1947,22 @@ public static class HorizontalAxisConverter
     /// <param name="waveLength"></param>
     /// <returns></returns>
     public static double TwoThetaInRadianToD(double twoTheta, double waveLength) => waveLength / Math.Sin(twoTheta / 2.0) / 2.0;
+    
     /// <summary>
     /// 2θ(rad) -> d(nm)   ブラッグ角(radian)と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
     /// </summary>
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
     /// <returns></returns>
-    public static double[] TwoThetaInRadianToD(IEnumerable<double> twoTheta, double waveLength) => twoTheta.Select(e => waveLength / Math.Sin(e / 2.0) / 2.0).ToArray();
+    public static double[] TwoThetaInRadianToD(IEnumerable<double> twoTheta, double waveLength) => [.. twoTheta.Select(e => waveLength / Math.Sin(e / 2.0) / 2.0)];
+
+    /// <summary>
+    /// 2θ(rad) -> d(nm)   ブラッグ角(radian)と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
+    /// </summary>
+    /// <param name="twoTheta"></param>
+    /// <param name="waveLength"></param>
+    /// <returns></returns>
+    public static double[] TwoThetaInMilliRadianToD(IEnumerable<double> twoTheta, double waveLength) => [.. twoTheta.Select(e => waveLength / Math.Sin(e / 1000 / 2.0) / 2.0)];
 
     /// <summary>
     /// 2θ(deg) -> d(nm)   ブラッグ角(degree)と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
@@ -1928,13 +1971,23 @@ public static class HorizontalAxisConverter
     /// <param name="waveLength"></param>
     /// <returns></returns>
     public static double TwoThetaInDegreeToD(double twoTheta, double waveLength) => waveLength / Math.Sin(twoTheta / 180.0 * Math.PI / 2.0) / 2.0;
+    
     /// <summary>
     /// 2θ(deg) -> d(nm)   ブラッグ角(degree)と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
     /// </summary>
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
     /// <returns></returns>
-    public static double[] TwoThetaInDegreeToD(IEnumerable<double> twoTheta, double waveLength) => twoTheta.Select(e => waveLength / Math.Sin(e / 180.0 * Math.PI / 2.0) / 2.0).ToArray();
+    public static double[] TwoThetaInDegreeToD(IEnumerable<double> twoTheta, double waveLength) => [.. twoTheta.Select(e => waveLength / Math.Sin(e / 180.0 * Math.PI / 2.0) / 2.0)];
+
+
+    /// <summary>
+    /// 2θ(deg) -> d(nm)   ブラッグ角(centi-degree)と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
+    /// </summary>
+    /// <param name="twoTheta"></param>
+    /// <param name="waveLength"></param>
+    /// <returns></returns>
+    public static double[] TwoThetaInCentiDegreeToD(IEnumerable<double> twoTheta, double waveLength) => [.. twoTheta.Select(e => waveLength / Math.Sin(e / 100.0 / 180.0 * Math.PI / 2.0) / 2.0)];
 
 
     /// <summary>
@@ -1943,24 +1996,42 @@ public static class HorizontalAxisConverter
     /// <param name="wavelength"></param>
     /// <returns></returns>
     public static double DToTwoThetaInRadian(double d, double wavelength) => 2 * Math.Asin(wavelength / 2.0 / d);
+
     /// <summary>
     /// d(nm) -> 2θ(rad) 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
     /// </summary>
     /// <param name="wavelength"></param>
     /// <returns></returns>
-    public static double[] DToTwoThetaInRadian(IEnumerable<double> d, double wavelength) => d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e)).ToArray();
+    public static double[] DToTwoThetaInRadian(IEnumerable<double> d, double wavelength) => [.. d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e))];
+
+    /// <summary>
+    /// d(nm) -> 2θ(mrad) 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
+    /// </summary>
+    /// <param name="wavelength"></param>
+    /// <returns></returns>
+    public static double[] DToTwoThetaInMilliRadian(IEnumerable<double> d, double wavelength) => [.. d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e) * 1000.0)];
+
     /// <summary>
     /// d(nm) -> 2θ(deg) 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
     /// </summary>
     /// <param name="wavelength"></param>
     /// <returns></returns>
     public static double DToTwoThetaInDegree(double d, double wavelength) => 2 * Math.Asin(wavelength / 2.0 / d) / Math.PI * 180;
+    
     /// <summary>
     /// d(nm) -> 2θ(deg) 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
     /// </summary>
     /// <param name="wavelength"></param>
     /// <returns></returns>
-    public static double[] DToTwoThetaInDegree(IEnumerable<double> d, double wavelength) => d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e) / Math.PI * 180).ToArray();
+    public static double[] DToTwoThetaInDegree(IEnumerable<double> d, double wavelength) => [.. d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e) / Math.PI * 180)];
+
+    /// <summary>
+    /// d(nm) -> 2θ(centi-deg) 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
+    /// </summary>
+    /// <param name="wavelength"></param>
+    /// <returns></returns>
+    public static double[] DToTwoThetaInCentiDegree(IEnumerable<double> d, double wavelength) => [.. d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e) / Math.PI * 180 * 100.0)];
+
 
 
     #endregion 横軸を変換するメソッド群

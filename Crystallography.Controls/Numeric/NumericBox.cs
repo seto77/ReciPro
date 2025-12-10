@@ -21,6 +21,8 @@ public partial class NumericBox : UserControl
 
     public event MyEventHandler Click2;
 
+    public event KeyEventHandler KeyDown;
+
     #endregion イベント
 
     #region プロパティ
@@ -423,11 +425,7 @@ public partial class NumericBox : UserControl
         if (DesignMode) return;
     }
 
-    private void textBox_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        if ((e.KeyChar == 13 && ModifierKeys == Keys.Shift) || (e.KeyChar == 10 && ModifierKeys == Keys.Control))
-            e.Handled = true;
-    }
+  
 
 
     private bool skipTextChangeEvent = false;//テキストチェンジイベント自体をキャンセルする　
@@ -468,6 +466,12 @@ public partial class NumericBox : UserControl
         catch { }
     }
 
+    private void textBox_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if ((e.KeyChar == 13 && ModifierKeys == Keys.Shift) || (e.KeyChar == 10 && ModifierKeys == Keys.Control))
+            e.Handled = true;
+    }
+
     private void textBox_KeyDown(object sender, KeyEventArgs e)
     {
         if ((e.Control || e.Shift) && e.KeyCode == Keys.Return)
@@ -478,6 +482,8 @@ public partial class NumericBox : UserControl
             textBox_TextChanged(sender, e);
             SkipEventDuringInput = true;
         }
+
+        KeyDown?.Invoke(sender, e);
     }
 
     public void Calculate(object sender, EventArgs e)

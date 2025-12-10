@@ -33,8 +33,8 @@
     <PackageReference Include="MathNet.Numerics" Version="6.0.0-beta2" />
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.7.0" />
-    <PackageReference Include="System.Management" Version="10.0.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.7.1" />
+    <PackageReference Include="System.Management" Version="10.0.1" />
     <PackageReference Include="ZLinq" Version="1.5.4" />
   </ItemGroup>
 

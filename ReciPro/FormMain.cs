@@ -412,8 +412,7 @@ public partial class FormMain : Form
         {
             toolStripButtonStructureViewer.Enabled = false;
             toolStripButtonRotation.Enabled = false;
-            if (glControlAxes != null)
-                glControlAxes.Visible = false;
+            glControlAxes?.Visible = false;
         }
         powderDiffractionFunctionsToolStripMenuItem_CheckedChanged(sender, e);
 
@@ -1151,10 +1150,8 @@ public partial class FormMain : Form
         var c = (Crystal)listBox.SelectedItem;
         var newCrystal = new Crystal(c);
 
-        var num = 0;
-
         var index = newCrystal.Name.LastIndexOf(" #");
-        if (index >= 0 && int.TryParse(newCrystal.Name[(index+2)..], out num))
+        if (index >= 0 && int.TryParse(newCrystal.Name[(index+2)..], out int num))
             newCrystal.Name = newCrystal.Name[0..(index+2)] + (num + 1).ToString();
         else
             newCrystal.Name += " #1";
@@ -1660,10 +1657,8 @@ public partial class FormMain : Form
     #endregion
 
     #region Å‚à‹ß‚¢UVW‚ðŒŸõ
-    private void labelCurrentIndex_DoubleClick(object sender, EventArgs e)
-    {
-        numericBoxMaxUVW.Visible = !numericBoxMaxUVW.Visible;
-    }
+    private void labelCurrentIndex_DoubleClick(object sender, EventArgs e) 
+        => numericBoxMaxUVW.Visible = !numericBoxMaxUVW.Visible;
     private void numericBoxMaxUVW_ValueChanged(object sender, EventArgs e)
     {
         if (Crystal == null || Crystal.A == 0 || Crystal.B == 0 || Crystal.C == 0) return;

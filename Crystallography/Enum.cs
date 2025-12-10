@@ -26,7 +26,9 @@ public enum LengthUnitEnum
 public enum AngleUnitEnum
 {
     Degree,
-    Radian
+    Radian,
+    CentiDegree,
+    MilliRadian
 }
 
 public enum FourierDirectionEnum

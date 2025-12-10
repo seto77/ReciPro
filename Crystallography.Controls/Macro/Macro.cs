@@ -177,6 +177,10 @@ public class HelpAttribute : System.Attribute
     {
         var strList = new List<string>();
         var header = type.Namespace + "." + name + ".";
+
+        if (header.Contains("PDIndexer")) header = header.Replace("PDIndexer", "PDI");
+        if (header.Contains("IPAnalyzer")) header = header.Replace("IPAnalyzer", "IPA");
+
         foreach (var p in type.GetProperties().Where(e => e.GetCustomAttribute<HelpAttribute>() != null))
             strList.Add(header + p.Name + "#" + p.GetCustomAttribute<HelpAttribute>().Text);
         foreach (var m in type.GetMethods().Where(e => e.GetCustomAttribute<HelpAttribute>() != null && !e.IsSpecialName))

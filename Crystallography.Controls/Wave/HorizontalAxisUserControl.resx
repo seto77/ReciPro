@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
-
+    Microsoft ResX Schema
+0
     Version 2.0
-
+0
     The primary goals of this format is to allow a simple XML format
     that is mostly human readable. The generation and parsing of the
     various data types are done through the TypeConverter classes
     associated with the data types.
-
+0
     Example:
-
+0
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,34 +26,34 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
+0
     There are any number of "resheader" rows that contain simple
     name/value pairs.
-
+0
     Each data row contains a name, and value. The row also contains a
     type or mimetype. Type corresponds to a .NET class that support
     text/value conversion through the TypeConverter architecture.
     Classes that don't support this are serialized and stored with the
     mimetype set.
-
+0
     The mimetype is used for serialized objects, and tells the
     ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-
+0
     Note - application/x-microsoft.net.object.binary.base64 is the format
     that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-
+0
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+0
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
-
+0
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
@@ -117,1878 +117,2349 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="radioButtonWavenumberUnitNmInv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 21</value>
-  </data>
-  <data name="groupBoxTwoTheta.Text" xml:space="preserve">
-    <value>Wave length</value>
-  </data>
-  <data name="groupBoxTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 105</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>94</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumber.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="radioButtonElectron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 21</value>
-  </data>
-  <data name="radioButtonXray.Text" xml:space="preserve">
-    <value>X-ray</value>
-  </data>
-  <data name="flowLayoutPanel12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 249</value>
+  <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="flowLayoutPanel7.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonWavenumberUnitNmInv.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonElectron.Text" xml:space="preserve">
-    <value>Electron</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel7.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacingUnitNm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonDspacingUnitNm.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;radioButtonAngleUnitRadian.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonAngleUnitRadian.Text" xml:space="preserve">
-    <value>Radian</value>
-  </data>
-  <data name="flowLayoutPanelWavenumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 78</value>
-  </data>
-  <data name="flowLayoutPanelWavenumber.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>83</value>
-  </data>
-  <data name="radioButtonWavenumberUnitNmInv.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioButtonMonochro.Text" xml:space="preserve">
-    <value>Monochrome</value>
-  </data>
-  <data name="radioButtonXray.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>152, 0</value>
-  </data>
-  <data name="radioButtonTOF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="radioButtonDspacingUnitNm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 0</value>
-  </data>
-  <data name="radioButtonEnergyUnitEv.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 85</value>
-  </data>
-  <data name="radioButtonDspacingUnitAng.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>89</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="radioButtonElectron.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxTwoTheta.FooterText" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioButtonElectron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelTwoTheta.Name" xml:space="preserve">
-    <value>flowLayoutPanelTwoTheta</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="radioButtonElectron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 2</value>
-  </data>
-  <data name="radioButtonWavenumber.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitKev.Name" xml:space="preserve">
-    <value>radioButtonEnergyUnitKev</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTofLength.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergy.Name" xml:space="preserve">
-    <value>radioButtonEnergy</value>
-  </data>
-  <data name="radioButtonDspacingUnitNm.Text" xml:space="preserve">
-    <value>nm</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngleUnitRadian.Name" xml:space="preserve">
-    <value>radioButtonAngleUnitRadian</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTOF.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTwoTheta.Parent" xml:space="preserve">
-    <value>flowLayoutPanelEnergy</value>
-  </data>
-  <data name="radioButtonAngleUnitDegree.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="radioButtonWavenumber.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="numericBoxTofLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="radioButtonEnergyUnitEv.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitKev.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButtonDspacingUnitAng.Text" xml:space="preserve">
-    <value>Å</value>
-  </data>
-  <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;radioButtonEnergy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="waveLengthControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;radioButtonFlatWhite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonNeutron.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTofUnitMicroSec.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel2.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="radioButtonTofUnitNanoSec.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
-  </data>
-  <data name="radioButtonMonochro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonEnergyUnitEv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="radioButtonEnergyUnitMev.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxTwoTheta.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+  <data name="flowLayoutPanel7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;radioButtonAngleUnitDegree.Parent" xml:space="preserve">
-    <value>flowLayoutPanelTwoTheta</value>
-  </data>
-  <data name="flowLayoutPanel15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 105</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOption.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanel7.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="flowLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacingUnitAng.Name" xml:space="preserve">
-    <value>radioButtonDspacingUnitAng</value>
-  </data>
-  <data name="numericBoxTofLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="groupBox4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="radioButtonAngleUnitDegree.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonTOF.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel2.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="radioButtonTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Wave Property</value>
-  </data>
-  <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
-    <value>91</value>
-  </data>
-  <data name="groupBox2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="numericBoxTofAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTofAngle.Name" xml:space="preserve">
-    <value>numericBoxTofAngle</value>
-  </data>
-  <data name="radioButtonMonochro.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonAngleUnitRadian.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.Parent" xml:space="preserve">
-    <value>flowLayoutPanelWavenumber</value>
-  </data>
-  <data name="radioButtonWavenumber.Text" xml:space="preserve">
-    <value>q (wavenumber)</value>
-  </data>
-  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonEnergyUnitKev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 21</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCustomWhite.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitMev.Name" xml:space="preserve">
-    <value>radioButtonEnergyUnitMev</value>
-  </data>
-  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="radioButtonWavenumberAngInv.Text" xml:space="preserve">
-    <value>/Å</value>
-  </data>
-  <data name="&gt;&gt;radioButtonMonochro.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="radioButtonMonochro.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxTofLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="flowLayoutPanelDspacing.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTwoTheta.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="numericBoxTofLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 50</value>
-  </data>
-  <data name="numericBoxTwoTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="radioButtonEnergyUnitMev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
-  </data>
-  <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumberAngInv.Parent" xml:space="preserve">
-    <value>flowLayoutPanelWavenumber</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacing.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButtonTofUnitMicroSec.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;flowLayoutPanel5.Name" xml:space="preserve">
+    <value>flowLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel5.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButtonTOF.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;flowLayoutPanel5.Parent" xml:space="preserve">
+    <value>flowLayoutPanel7</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 18</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Horizontal Axis</value>
-  </data>
-  <data name="radioButtonTwoTheta.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanelTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonTwoTheta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonAngleUnitRadian.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="radioButtonFlatWhite.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;flowLayoutPanel5.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="radioButtonXray.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="radioButtonNeutron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTOF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel6.Name" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="groupBoxTwoTheta.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
-    <value>test</value>
-  </data>
-  <data name="&gt;&gt;radioButtonElectron.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 2, 2</value>
-  </data>
-  <data name="groupBox4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelTwoTheta.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEnergy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.TabIndex" type="System.Int32, mscorlib">
-    <value>89</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBoxTwoTheta.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonWavenumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonTofUnitMicroSec.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="flowLayoutPanel15.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
-  </data>
-  <data name="radioButtonTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxTofAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNeutron.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="radioButtonDspacing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanelNeutronTOF.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="radioButtonEnergyUnitKev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelDspacing.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacingUnitNm.Parent" xml:space="preserve">
-    <value>flowLayoutPanelDspacing</value>
-  </data>
-  <data name="waveLengthControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioButtonAngleUnitDegree.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioButtonAngleUnitRadian.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelNeutronTOF.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNeutron.Name" xml:space="preserve">
-    <value>radioButtonNeutron</value>
-  </data>
-  <data name="flowLayoutPanelDspacing.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>91</value>
-  </data>
-  <data name="radioButtonMonochro.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 21</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngleUnitDegree.Name" xml:space="preserve">
-    <value>radioButtonAngleUnitDegree</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="groupBox3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;radioButtonXray.Name" xml:space="preserve">
-    <value>radioButtonXray</value>
-  </data>
-  <data name="radioButtonAngleUnitRadian.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioButtonWavenumberAngInv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="radioButtonTOF.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonDspacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacingUnitAng.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
-    <value>test</value>
-  </data>
-  <data name="groupBoxOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 273</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTofUnitNanoSec.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonEnergy.Text" xml:space="preserve">
-    <value>Energy</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTOF.Name" xml:space="preserve">
-    <value>radioButtonTOF</value>
-  </data>
-  <data name="radioButtonElectron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;radioButtonAngleUnitDegree.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCustomWhite.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTofLength.Name" xml:space="preserve">
-    <value>numericBoxTofLength</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitEv.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioButtonTOF.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;radioButtonMonochro.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonMonochro.Name" xml:space="preserve">
-    <value>radioButtonMonochro</value>
-  </data>
-  <data name="radioButtonTwoTheta.Text" xml:space="preserve">
-    <value>2θ (angle)       </value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWavenumber.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTwoTheta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="radioButtonElectron.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonEnergyUnitMev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
-  </data>
-  <data name="flowLayoutPanel15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="numericBoxTofLength.HeaderText" xml:space="preserve">
-    <value>L</value>
-  </data>
-  <data name="radioButtonAngleUnitRadian.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 21</value>
-  </data>
-  <data name="flowLayoutPanel15.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="flowLayoutPanel3.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="radioButtonWavenumberAngInv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 21</value>
-  </data>
-  <data name="radioButtonTofUnitMicroSec.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.Name" xml:space="preserve">
-    <value>radioButtonWavenumberUnitNmInv</value>
-  </data>
-  <data name="numericBoxTofAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 3, 3</value>
-  </data>
-  <data name="radioButtonFlatWhite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="flowLayoutPanelNeutronTOF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 69</value>
-  </data>
-  <data name="flowLayoutPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="radioButtonTofUnitNanoSec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 21</value>
-  </data>
-  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 91</value>
-  </data>
-  <data name="numericBoxTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelNeutronTOF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 177</value>
   </data>
   <data name="&gt;&gt;groupBoxTwoTheta.Name" xml:space="preserve">
     <value>groupBoxTwoTheta</value>
   </data>
-  <data name="radioButtonWavenumberAngInv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;groupBoxTwoTheta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 44</value>
+  <data name="&gt;&gt;groupBoxTwoTheta.Parent" xml:space="preserve">
+    <value>flowLayoutPanel7</value>
   </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 390</value>
+  <data name="&gt;&gt;groupBoxTwoTheta.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="radioButtonTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 21</value>
+  <data name="flowLayoutPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonEnergyUnitKev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel6.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTofUnitMicroSec.Name" xml:space="preserve">
-    <value>radioButtonTofUnitMicroSec</value>
-  </data>
-  <data name="radioButtonCustomWhite.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelDspacing.Parent" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacingUnitAng.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonEnergyUnitKev.Text" xml:space="preserve">
-    <value>KeV</value>
-  </data>
-  <data name="flowLayoutPanel4.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+  <data name="flowLayoutPanel7.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
     <value>TopDown</value>
   </data>
-  <data name="radioButtonTwoTheta.TabIndex" type="System.Int32, mscorlib">
-    <value>87</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
   </data>
-  <data name="flowLayoutPanelEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
+  <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 438</value>
   </data>
-  <data name="flowLayoutPanelDspacing.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel12.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanel7.Name" xml:space="preserve">
+    <value>flowLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButtonElectron.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;flowLayoutPanel7.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitEv.Name" xml:space="preserve">
-    <value>radioButtonEnergyUnitEv</value>
+  <data name="&gt;&gt;flowLayoutPanel7.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelTwoTheta.Parent" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
+  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="radioButtonFlatWhite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 21</value>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 462</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Wave Property</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButtonAngleUnitDegree.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>flowLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>flowLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flowLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 91</value>
+  </data>
+  <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="flowLayoutPanel5.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="groupBox4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 3, 3</value>
+  </data>
+  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 2, 2, 2</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 85</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value>Select wave source</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXray.Name" xml:space="preserve">
+    <value>radioButtonXray</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXray.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXray.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXray.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectron.Name" xml:space="preserve">
+    <value>radioButtonElectron</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectron.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectron.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNeutron.Name" xml:space="preserve">
+    <value>radioButtonNeutron</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNeutron.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNeutron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNeutron.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel4.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 2</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 63</value>
+  </data>
+  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonXray.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="radioButtonAngleUnitDegree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 21</value>
+  <data name="radioButtonXray.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="groupBoxOption.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="radioButtonXray.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel15.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
+  <data name="radioButtonXray.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
+  <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 21</value>
   </data>
-  <data name="flowLayoutPanelDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 21</value>
-  </data>
-  <data name="flowLayoutPanel7.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="waveLengthControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanel1.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;waveLengthControl.ZOrder" xml:space="preserve">
+  <data name="radioButtonXray.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="radioButtonXray.Text" xml:space="preserve">
+    <value>X-ray</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonElectron.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonElectron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonElectron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 21</value>
+  </data>
+  <data name="radioButtonElectron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonElectron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 21</value>
+  </data>
+  <data name="radioButtonElectron.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonElectron.Text" xml:space="preserve">
+    <value>Electron</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonNeutron.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonNeutron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonNeutron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 42</value>
   </data>
   <data name="radioButtonNeutron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="groupBoxOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 114</value>
-  </data>
-  <data name="radioButtonEnergyUnitKev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonTOF.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="groupBoxOption.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt, style=Bold</value>
-  </data>
-  <data name="numericBoxTwoTheta.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonTofUnitNanoSec.Text" xml:space="preserve">
-    <value>ns</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacingUnitNm.Name" xml:space="preserve">
-    <value>radioButtonDspacingUnitNm</value>
-  </data>
-  <data name="groupBoxOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;waveLengthControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBoxTwoTheta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngleUnitRadian.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelNeutronTOF.Name" xml:space="preserve">
-    <value>flowLayoutPanelNeutronTOF</value>
-  </data>
-  <data name="&gt;&gt;waveLengthControl.Parent" xml:space="preserve">
-    <value>groupBoxTwoTheta</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelTwoTheta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.Parent" xml:space="preserve">
-    <value>groupBoxOption</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>83</value>
-  </data>
-  <data name="groupBoxOption.Text" xml:space="preserve">
-    <value>Unit option</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumberAngInv.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="radioButtonWavenumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonTofUnitMicroSec.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel12.Name" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="radioButtonWavenumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 42</value>
-  </data>
-  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 2, 0</value>
-  </data>
-  <data name="flowLayoutPanelWavenumber.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="numericBoxTofLength.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
-  </data>
-  <data name="&gt;&gt;radioButtonFlatWhite.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitMev.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="radioButtonDspacing.Text" xml:space="preserve">
-    <value>d-spacing</value>
-  </data>
-  <data name="&gt;&gt;radioButtonXray.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel15.Name" xml:space="preserve">
-    <value>flowLayoutPanel15</value>
-  </data>
-  <data name="radioButtonFlatWhite.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBox2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEnergy.Name" xml:space="preserve">
-    <value>flowLayoutPanelEnergy</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonXray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonTofUnitNanoSec.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonEnergyUnitKev.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="radioButtonTOF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="numericBoxTofAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="radioButtonTofUnitMicroSec.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;groupBoxTwoTheta.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelDspacing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonFlatWhite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacingUnitNm.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButtonAngleUnitDegree.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonWavenumberAngInv.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="waveLengthControl.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>500, 500</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCustomWhite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 63</value>
-  </data>
-  <data name="flowLayoutPanelNeutronTOF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
-  </data>
-  <data name="flowLayoutPanel12.TabIndex" type="System.Int32, mscorlib">
-    <value>91</value>
-  </data>
-  <data name="radioButtonEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 21</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel7.Name" xml:space="preserve">
-    <value>flowLayoutPanel7</value>
-  </data>
-  <data name="radioButtonDspacingUnitNm.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 105</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Source</value>
-  </data>
-  <data name="groupBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="flowLayoutPanel7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBoxOption.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonMonochro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="numericBoxTwoTheta.HeaderText" xml:space="preserve">
-    <value>2θ</value>
-  </data>
-  <data name="&gt;&gt;radioButtonElectron.Name" xml:space="preserve">
-    <value>radioButtonElectron</value>
-  </data>
-  <data name="radioButtonEnergyUnitEv.Text" xml:space="preserve">
-    <value>eV</value>
-  </data>
-  <data name="flowLayoutPanelWavenumber.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonWavenumberUnitNmInv.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonWavenumberAngInv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonTofUnitMicroSec.Text" xml:space="preserve">
-    <value>μs</value>
-  </data>
-  <data name="radioButtonTofUnitMicroSec.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonWavenumberAngInv.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="radioButtonNeutron.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 21</value>
   </data>
-  <data name="flowLayoutPanelNeutronTOF.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="numericBoxTofAngle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBoxTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 94</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelEnergy.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitMev.Parent" xml:space="preserve">
-    <value>flowLayoutPanelEnergy</value>
-  </data>
-  <data name="groupBox3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="numericBoxTwoTheta.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
-  </data>
-  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelNeutronTOF.Parent" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="&gt;&gt;radioButtonElectron.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWavenumber.Name" xml:space="preserve">
-    <value>flowLayoutPanelWavenumber</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitEv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTOF.Parent" xml:space="preserve">
-    <value>flowLayoutPanel15</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNeutron.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTofAngle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="numericBoxTofAngle.FooterText" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="radioButtonNeutron.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonEnergy.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="radioButtonCustomWhite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergy.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="flowLayoutPanelDspacing.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCustomWhite.Name" xml:space="preserve">
-    <value>radioButtonCustomWhite</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOption.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
-    <value>test</value>
-  </data>
-  <data name="numericBoxTofAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOption.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
-    <value>For X-ray, the intesity per unit energy range of the incident beam is constant.
-For neutron, the number of incident nertrons per unit wavelength interval is constant.</value>
-  </data>
-  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 3</value>
-  </data>
-  <data name="radioButtonDspacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTofUnitMicroSec.Parent" xml:space="preserve">
-    <value>flowLayoutPanelNeutronTOF</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumberAngInv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericBoxTwoTheta.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="radioButtonEnergyUnitMev.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="flowLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="radioButtonEnergyUnitKev.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTwoTheta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonTOF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 21</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTofUnitNanoSec.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBoxOption.TabIndex" type="System.Int32, mscorlib">
-    <value>93</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelDspacing.Name" xml:space="preserve">
-    <value>flowLayoutPanelDspacing</value>
-  </data>
-  <data name="waveLengthControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="radioButtonEnergyUnitEv.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 21</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="radioButtonXray.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 20</value>
-  </data>
-  <data name="flowLayoutPanelTwoTheta.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonCustomWhite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="numericBoxTofLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 30</value>
-  </data>
-  <data name="numericBoxTofLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 85</value>
-  </data>
-  <data name="radioButtonDspacing.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel15.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 420</value>
-  </data>
-  <data name="radioButtonEnergyUnitMev.Text" xml:space="preserve">
-    <value>MeV</value>
-  </data>
-  <data name="radioButtonEnergy.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="radioButtonCustomWhite.Text" xml:space="preserve">
-    <value>Custom white</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNeutron.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="radioButtonEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 63</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTofLength.Parent" xml:space="preserve">
-    <value>flowLayoutPanelNeutronTOF</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacing.Name" xml:space="preserve">
-    <value>radioButtonDspacing</value>
-  </data>
-  <data name="radioButtonEnergyUnitMev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanelWavenumber.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonTofUnitNanoSec.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="radioButtonTofUnitNanoSec.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="radioButtonDspacing.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>HorizontalAxisUserControl</value>
-  </data>
-  <data name="radioButtonEnergyUnitEv.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="flowLayoutPanelDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
-  </data>
-  <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 81</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngleUnitRadian.Parent" xml:space="preserve">
-    <value>flowLayoutPanelTwoTheta</value>
-  </data>
-  <data name="groupBox4.ToolTip" xml:space="preserve">
-    <value>Select wave source</value>
-  </data>
-  <data name="flowLayoutPanel15.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonCustomWhite.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumberAngInv.Name" xml:space="preserve">
-    <value>radioButtonWavenumberAngInv</value>
-  </data>
-  <data name="numericBoxTofAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 23</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWavenumber.Parent" xml:space="preserve">
-    <value>flowLayoutPanel12</value>
-  </data>
-  <data name="flowLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 20</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTwoTheta.Parent" xml:space="preserve">
-    <value>flowLayoutPanel15</value>
-  </data>
-  <data name="radioButtonDspacingUnitAng.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacing.Parent" xml:space="preserve">
-    <value>flowLayoutPanel15</value>
-  </data>
-  <data name="radioButtonWavenumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 21</value>
-  </data>
-  <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonDspacingUnitNm.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="flowLayoutPanel12.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonWavenumberUnitNmInv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel5.Name" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
-  </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 63</value>
-  </data>
-  <data name="flowLayoutPanel5.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="radioButtonXray.TabIndex" type="System.Int32, mscorlib">
+  <data name="radioButtonNeutron.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>Neutron</value>
   </data>
-  <data name="&gt;&gt;radioButtonDspacing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTofAngle.Parent" xml:space="preserve">
-    <value>flowLayoutPanelNeutronTOF</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTofLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="flowLayoutPanelTwoTheta.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="radioButtonDspacingUnitAng.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonDspacingUnitAng.AutoSize" type="System.Boolean, mscorlib">
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioButtonNeutron.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 42</value>
-  </data>
-  <data name="radioButtonDspacingUnitNm.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioButtonDspacingUnitNm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 21</value>
-  </data>
-  <data name="flowLayoutPanelWavenumber.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="radioButtonEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioButtonEnergy.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="numericBoxTofAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="radioButtonDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonFlatWhite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 21</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDspacingUnitAng.Parent" xml:space="preserve">
-    <value>flowLayoutPanelDspacing</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTwoTheta.Name" xml:space="preserve">
-    <value>radioButtonTwoTheta</value>
-  </data>
-  <data name="radioButtonWavenumberUnitNmInv.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 0</value>
-  </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="radioButtonEnergyUnitKev.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxTofAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="numericBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 414</value>
-  </data>
-  <data name="numericBoxTofAngle.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
-  </data>
-  <data name="radioButtonDspacingUnitNm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;groupBoxTwoTheta.Parent" xml:space="preserve">
-    <value>flowLayoutPanel7</value>
-  </data>
-  <data name="radioButtonEnergyUnitEv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonXray.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTwoTheta.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonAngleUnitDegree.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonDspacingUnitAng.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 21</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.5pt</value>
-  </data>
-  <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitKev.Parent" xml:space="preserve">
-    <value>flowLayoutPanelEnergy</value>
-  </data>
-  <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
-    <value>waveLengthControl</value>
-  </data>
-  <data name="radioButtonFlatWhite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="numericBoxTwoTheta.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="flowLayoutPanel12.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxTofLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 20</value>
-  </data>
-  <data name="waveLengthControl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;groupBoxOption.Name" xml:space="preserve">
-    <value>groupBoxOption</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelWavenumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumber.Parent" xml:space="preserve">
-    <value>flowLayoutPanel15</value>
-  </data>
-  <data name="radioButtonDspacingUnitAng.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt, style=Bold</value>
-  </data>
-  <data name="&gt;&gt;radioButtonMonochro.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanelDspacing.TabIndex" type="System.Int32, mscorlib">
-    <value>88</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumber.Name" xml:space="preserve">
-    <value>radioButtonWavenumber</value>
-  </data>
-  <data name="&gt;&gt;radioButtonFlatWhite.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="numericBoxTofLength.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 21</value>
-  </data>
-  <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonWavenumberUnitNmInv.Text" xml:space="preserve">
-    <value>/nm</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
-  </data>
-  <data name="radioButtonXray.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="groupBoxTwoTheta.TabIndex" type="System.Int32, mscorlib">
-    <value>69</value>
-  </data>
-  <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 3</value>
-  </data>
-  <data name="radioButtonWavenumberAngInv.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="waveLengthControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
-  </data>
-  <data name="flowLayoutPanelWavenumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
-  </data>
-  <data name="radioButtonTofUnitMicroSec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 21</value>
-  </data>
-  <data name="&gt;&gt;radioButtonXray.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 390</value>
-  </data>
-  <data name="radioButtonEnergyUnitEv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonAngleUnitRadian.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="numericBoxTofLength.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonFlatWhite.Name" xml:space="preserve">
-    <value>radioButtonFlatWhite</value>
-  </data>
-  <data name="radioButtonMonochro.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitMev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="flowLayoutPanel15.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel12.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTofUnitMicroSec.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 3, 2, 3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTofUnitNanoSec.Parent" xml:space="preserve">
-    <value>flowLayoutPanelNeutronTOF</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngleUnitDegree.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericBoxTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel5.Parent" xml:space="preserve">
-    <value>flowLayoutPanel7</value>
-  </data>
-  <data name="waveLengthControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanelTwoTheta.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonAngleUnitRadian.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonAngleUnitDegree.Text" xml:space="preserve">
-    <value>Degree (°)</value>
-  </data>
-  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 2, 2</value>
-  </data>
-  <data name="flowLayoutPanel5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonCustomWhite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 42</value>
-  </data>
-  <data name="radioButtonTofUnitNanoSec.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonEnergyUnitMev.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonTofUnitNanoSec.Name" xml:space="preserve">
-    <value>radioButtonTofUnitNanoSec</value>
-  </data>
-  <data name="groupBox3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="radioButtonEnergy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
-    <value>test</value>
-  </data>
-  <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
-    <value>test</value>
-  </data>
-  <data name="radioButtonTofUnitNanoSec.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanelEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 66</value>
-  </data>
-  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="flowLayoutPanelDspacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 51</value>
-  </data>
-  <data name="radioButtonWavenumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
     <value>TopDown</value>
   </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitKev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 18</value>
   </data>
-  <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanelNeutronTOF.TabIndex" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
-  <data name="radioButtonCustomWhite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="flowLayoutPanelTwoTheta.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTofAngle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="groupBoxOption.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>120, 0</value>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 2, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
-    <value>test</value>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
   </data>
-  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanel1.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.Type" xml:space="preserve">
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="groupBox3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 3</value>
+  </data>
+  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 3</value>
+  </data>
+  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 2, 2, 2</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 85</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Color</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;radioButtonMonochro.Name" xml:space="preserve">
+    <value>radioButtonMonochro</value>
+  </data>
+  <data name="&gt;&gt;radioButtonMonochro.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButtonTOF.Text" xml:space="preserve">
-    <value>Neutron TOF</value>
+  <data name="&gt;&gt;radioButtonMonochro.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;radioButtonMonochro.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonFlatWhite.Name" xml:space="preserve">
+    <value>radioButtonFlatWhite</value>
+  </data>
+  <data name="&gt;&gt;radioButtonFlatWhite.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonFlatWhite.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;radioButtonFlatWhite.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCustomWhite.Name" xml:space="preserve">
+    <value>radioButtonCustomWhite</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCustomWhite.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCustomWhite.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;radioButtonCustomWhite.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel2.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 0, 2</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 63</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="flowLayoutPanel2.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonMonochro.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonMonochro.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonMonochro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="radioButtonMonochro.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="radioButtonMonochro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonMonochro.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 21</value>
+  </data>
+  <data name="radioButtonMonochro.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonMonochro.Text" xml:space="preserve">
+    <value>Monochrome</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonFlatWhite.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonFlatWhite.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonFlatWhite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonFlatWhite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 21</value>
+  </data>
+  <data name="radioButtonFlatWhite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonFlatWhite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 21</value>
+  </data>
+  <data name="radioButtonFlatWhite.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonFlatWhite.Text" xml:space="preserve">
+    <value>Flat White </value>
+  </data>
+  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
+    <value>For X-ray, the intesity per unit energy range of the incident beam is constant.
+For neutron, the number of incident nertrons per unit wavelength interval is constant.</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonCustomWhite.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="radioButtonCustomWhite.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelNeutronTOF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="radioButtonCustomWhite.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="flowLayoutPanel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="radioButtonCustomWhite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel6.ZOrder" xml:space="preserve">
+  <data name="radioButtonCustomWhite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 42</value>
+  </data>
+  <data name="radioButtonCustomWhite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonCustomWhite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 21</value>
+  </data>
+  <data name="radioButtonCustomWhite.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="radioButtonEnergyUnitMev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="radioButtonCustomWhite.Text" xml:space="preserve">
+    <value>Custom white</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="groupBoxTwoTheta.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBoxTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
+    <value>waveLengthControl</value>
+  </data>
+  <data name="&gt;&gt;waveLengthControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;waveLengthControl.Parent" xml:space="preserve">
+    <value>groupBoxTwoTheta</value>
+  </data>
+  <data name="&gt;&gt;waveLengthControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBoxTwoTheta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 94</value>
+  </data>
+  <data name="groupBoxTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 104</value>
+  </data>
+  <data name="groupBoxTwoTheta.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="groupBoxTwoTheta.Text" xml:space="preserve">
+    <value>Wave length</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="waveLengthControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="waveLengthControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="waveLengthControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="waveLengthControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="waveLengthControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="waveLengthControl.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>500, 500</value>
+  </data>
+  <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>152, 0</value>
+  </data>
+  <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 80</value>
+  </data>
+  <data name="waveLengthControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="groupBox2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 10pt, style=Bold</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 3</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 462</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Horizontal Axis</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel15.Name" xml:space="preserve">
+    <value>flowLayoutPanel15</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel15.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel15.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOption.Name" xml:space="preserve">
+    <value>groupBoxOption</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOption.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;groupBoxOption.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel3.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 438</value>
+  </data>
+  <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanel15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel15.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTwoTheta.Name" xml:space="preserve">
+    <value>radioButtonTwoTheta</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTwoTheta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTwoTheta.Parent" xml:space="preserve">
+    <value>flowLayoutPanel15</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTwoTheta.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacing.Name" xml:space="preserve">
+    <value>radioButtonDspacing</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacing.Parent" xml:space="preserve">
+    <value>flowLayoutPanel15</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacing.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumber.Name" xml:space="preserve">
+    <value>radioButtonWavenumber</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumber.Parent" xml:space="preserve">
+    <value>flowLayoutPanel15</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumber.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergy.Name" xml:space="preserve">
+    <value>radioButtonEnergy</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergy.Parent" xml:space="preserve">
+    <value>flowLayoutPanel15</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergy.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTOF.Name" xml:space="preserve">
+    <value>radioButtonTOF</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTOF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTOF.Parent" xml:space="preserve">
+    <value>flowLayoutPanel15</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTOF.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel15.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="flowLayoutPanel15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 105</value>
+  </data>
+  <data name="flowLayoutPanel15.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonTwoTheta.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonTwoTheta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 21</value>
+  </data>
+  <data name="radioButtonTwoTheta.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="radioButtonTwoTheta.Text" xml:space="preserve">
+    <value>2θ (angle)       </value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonDspacing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonDspacing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonDspacing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonDspacing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 21</value>
+  </data>
+  <data name="radioButtonDspacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonDspacing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 21</value>
+  </data>
+  <data name="radioButtonDspacing.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="radioButtonDspacing.Text" xml:space="preserve">
+    <value>d-spacing</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonWavenumber.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonWavenumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonWavenumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonWavenumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 42</value>
+  </data>
+  <data name="radioButtonWavenumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonWavenumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="radioButtonWavenumber.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="radioButtonWavenumber.Text" xml:space="preserve">
+    <value>q (wavenumber)</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonEnergy.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonEnergy.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="radioButtonEnergy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonEnergy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonEnergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 63</value>
+  </data>
+  <data name="radioButtonEnergy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonEnergy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 21</value>
+  </data>
+  <data name="radioButtonEnergy.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="radioButtonEnergy.Text" xml:space="preserve">
+    <value>Energy</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonTOF.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonTOF.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="radioButtonTOF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonTOF.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonTOF.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 84</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+  <data name="radioButtonTOF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="groupBoxTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="radioButtonTOF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 21</value>
+  </data>
+  <data name="radioButtonTOF.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="radioButtonTOF.Text" xml:space="preserve">
+    <value>Neutron TOF</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="groupBoxOption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBoxOption.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxTofAngle.HeaderText" xml:space="preserve">
-    <value>2θ</value>
+  <data name="&gt;&gt;flowLayoutPanel12.Name" xml:space="preserve">
+    <value>flowLayoutPanel12</value>
   </data>
-  <data name="numericBoxTofAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+  <data name="&gt;&gt;flowLayoutPanel12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButtonFlatWhite.Text" xml:space="preserve">
-    <value>Flat White </value>
+  <data name="&gt;&gt;flowLayoutPanel12.Parent" xml:space="preserve">
+    <value>groupBoxOption</value>
   </data>
-  <data name="&gt;&gt;radioButtonEnergyUnitEv.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanel12.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBoxOption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxOption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 114</value>
+  </data>
+  <data name="groupBoxOption.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>120, 0</value>
+  </data>
+  <data name="groupBoxOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 321</value>
+  </data>
+  <data name="groupBoxOption.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="groupBoxOption.Text" xml:space="preserve">
+    <value>Unit option</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanel12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelTwoTheta.Name" xml:space="preserve">
+    <value>flowLayoutPanelTwoTheta</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelTwoTheta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelTwoTheta.Parent" xml:space="preserve">
+    <value>flowLayoutPanel12</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelTwoTheta.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelDspacing.Name" xml:space="preserve">
+    <value>flowLayoutPanelDspacing</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelDspacing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelDspacing.Parent" xml:space="preserve">
+    <value>flowLayoutPanel12</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelDspacing.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelWavenumber.Name" xml:space="preserve">
+    <value>flowLayoutPanelWavenumber</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelWavenumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelWavenumber.Parent" xml:space="preserve">
+    <value>flowLayoutPanel12</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelWavenumber.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEnergy.Name" xml:space="preserve">
     <value>flowLayoutPanelEnergy</value>
   </data>
-  <data name="radioButtonCustomWhite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 21</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 21</value>
-  </data>
-  <data name="radioButtonDspacingUnitAng.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 414</value>
-  </data>
-  <data name="numericBoxTofLength.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanelWavenumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTwoTheta.Name" xml:space="preserve">
-    <value>numericBoxTwoTheta</value>
-  </data>
-  <data name="flowLayoutPanelTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 42</value>
+  <data name="&gt;&gt;flowLayoutPanelEnergy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelEnergy.Parent" xml:space="preserve">
     <value>flowLayoutPanel12</value>
   </data>
-  <data name="&gt;&gt;radioButtonEnergy.Parent" xml:space="preserve">
-    <value>flowLayoutPanel15</value>
+  <data name="&gt;&gt;flowLayoutPanelEnergy.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
+  <data name="&gt;&gt;flowLayoutPanelNeutronTOF.Name" xml:space="preserve">
+    <value>flowLayoutPanelNeutronTOF</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel15.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelNeutronTOF.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="&gt;&gt;flowLayoutPanelNeutronTOF.Parent" xml:space="preserve">
+    <value>flowLayoutPanel12</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelNeutronTOF.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel12.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel12.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="flowLayoutPanel12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 297</value>
+  </data>
+  <data name="flowLayoutPanel12.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanelTwoTheta.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitDegree.Name" xml:space="preserve">
+    <value>radioButtonAngleUnitDegree</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitDegree.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitDegree.Parent" xml:space="preserve">
+    <value>flowLayoutPanelTwoTheta</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitDegree.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitCentiDegree.Name" xml:space="preserve">
+    <value>radioButtonAngleUnitCentiDegree</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitCentiDegree.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitCentiDegree.Parent" xml:space="preserve">
+    <value>flowLayoutPanelTwoTheta</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitCentiDegree.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitRadian.Name" xml:space="preserve">
+    <value>radioButtonAngleUnitRadian</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitRadian.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitRadian.Parent" xml:space="preserve">
+    <value>flowLayoutPanelTwoTheta</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitRadian.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitMilliRadian.Name" xml:space="preserve">
+    <value>radioButtonAngleUnitMilliRadian</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitMilliRadian.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitMilliRadian.Parent" xml:space="preserve">
+    <value>flowLayoutPanelTwoTheta</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleUnitMilliRadian.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanelTwoTheta.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanelTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 13.5pt</value>
+  </data>
+  <data name="flowLayoutPanelTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="flowLayoutPanelTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 90</value>
+  </data>
+  <data name="flowLayoutPanelTwoTheta.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonAngleUnitDegree.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="flowLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="radioButtonAngleUnitDegree.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>350, 150</value>
+  <data name="radioButtonAngleUnitDegree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 21</value>
   </data>
-  <data name="flowLayoutPanelNeutronTOF.ToolTip" xml:space="preserve">
-    <value />
+  <data name="radioButtonAngleUnitDegree.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 423</value>
+  <data name="radioButtonAngleUnitDegree.Text" xml:space="preserve">
+    <value>degree</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonAngleUnitCentiDegree.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 21</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 24</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.Text" xml:space="preserve">
+    <value>centi-degree</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonAngleUnitRadian.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 45</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.Text" xml:space="preserve">
+    <value>radian</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonAngleUnitMilliRadian.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 66</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 24</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.Text" xml:space="preserve">
+    <value>milli-radian</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanelDspacing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelDspacing.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacingUnitAng.Name" xml:space="preserve">
+    <value>radioButtonDspacingUnitAng</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacingUnitAng.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacingUnitAng.Parent" xml:space="preserve">
+    <value>flowLayoutPanelDspacing</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacingUnitAng.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacingUnitNm.Name" xml:space="preserve">
+    <value>radioButtonDspacingUnitNm</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacingUnitNm.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacingUnitNm.Parent" xml:space="preserve">
+    <value>flowLayoutPanelDspacing</value>
+  </data>
+  <data name="&gt;&gt;radioButtonDspacingUnitNm.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelDspacing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 13.5pt</value>
+  </data>
+  <data name="flowLayoutPanelDspacing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 99</value>
+  </data>
+  <data name="flowLayoutPanelDspacing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 21</value>
+  </data>
+  <data name="flowLayoutPanelDspacing.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="flowLayoutPanelDspacing.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonDspacingUnitAng.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 21</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonDspacingUnitNm.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 0</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.Text" xml:space="preserve">
+    <value>nm</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanelWavenumber.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelWavenumber.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumberAngInv.Name" xml:space="preserve">
+    <value>radioButtonWavenumberAngInv</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumberAngInv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumberAngInv.Parent" xml:space="preserve">
+    <value>flowLayoutPanelWavenumber</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumberAngInv.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.Name" xml:space="preserve">
+    <value>radioButtonWavenumberUnitNmInv</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.Parent" xml:space="preserve">
+    <value>flowLayoutPanelWavenumber</value>
+  </data>
+  <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelWavenumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 13.5pt</value>
+  </data>
+  <data name="flowLayoutPanelWavenumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 126</value>
+  </data>
+  <data name="flowLayoutPanelWavenumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 21</value>
+  </data>
+  <data name="flowLayoutPanelWavenumber.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="flowLayoutPanelWavenumber.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonWavenumberAngInv.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.Text" xml:space="preserve">
+    <value>Å⁻¹</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonWavenumberUnitNmInv.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.Location" type="System.Drawing.Point, System.Drawing">
+    <value>44, 0</value>
   </data>
   <data name="radioButtonWavenumberUnitNmInv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="radioButtonWavenumberUnitNmInv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 21</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.Text" xml:space="preserve">
+    <value>nm⁻¹</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanelEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitEv.Name" xml:space="preserve">
+    <value>radioButtonEnergyUnitEv</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitEv.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitEv.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEnergy</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitEv.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitKev.Name" xml:space="preserve">
+    <value>radioButtonEnergyUnitKev</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitKev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitKev.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEnergy</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitKev.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitMev.Name" xml:space="preserve">
+    <value>radioButtonEnergyUnitMev</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitMev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitMev.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEnergy</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyUnitMev.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTwoTheta.Name" xml:space="preserve">
+    <value>numericBoxTwoTheta</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTwoTheta.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTwoTheta.Parent" xml:space="preserve">
+    <value>flowLayoutPanelEnergy</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTwoTheta.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanelEnergy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 13.5pt</value>
+  </data>
+  <data name="flowLayoutPanelEnergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 153</value>
+  </data>
+  <data name="flowLayoutPanelEnergy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 66</value>
+  </data>
+  <data name="flowLayoutPanelEnergy.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="flowLayoutPanelEnergy.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonEnergyUnitEv.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 21</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.Text" xml:space="preserve">
+    <value>eV</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonEnergyUnitKev.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 0</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 21</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.Text" xml:space="preserve">
+    <value>KeV</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonEnergyUnitMev.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 21</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.Text" xml:space="preserve">
+    <value>MeV</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="numericBoxTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxTwoTheta.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTwoTheta.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="numericBoxTwoTheta.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTwoTheta.HeaderText" xml:space="preserve">
+    <value>2θ</value>
+  </data>
+  <data name="numericBoxTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 44</value>
+  </data>
+  <data name="numericBoxTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="numericBoxTwoTheta.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxTwoTheta.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxTwoTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="numericBoxTwoTheta.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
+    <value>test</value>
+  </data>
+  <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
+    <value>test</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="flowLayoutPanelNeutronTOF.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTofUnitMicroSec.Name" xml:space="preserve">
+    <value>radioButtonTofUnitMicroSec</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTofUnitMicroSec.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTofUnitMicroSec.Parent" xml:space="preserve">
+    <value>flowLayoutPanelNeutronTOF</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTofUnitMicroSec.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTofUnitNanoSec.Name" xml:space="preserve">
+    <value>radioButtonTofUnitNanoSec</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTofUnitNanoSec.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTofUnitNanoSec.Parent" xml:space="preserve">
+    <value>flowLayoutPanelNeutronTOF</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTofUnitNanoSec.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTofAngle.Name" xml:space="preserve">
+    <value>numericBoxTofAngle</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTofAngle.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTofAngle.Parent" xml:space="preserve">
+    <value>flowLayoutPanelNeutronTOF</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTofAngle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTofLength.Name" xml:space="preserve">
+    <value>numericBoxTofLength</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTofLength.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTofLength.Parent" xml:space="preserve">
+    <value>flowLayoutPanelNeutronTOF</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTofLength.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanelNeutronTOF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 13.5pt</value>
+  </data>
+  <data name="flowLayoutPanelNeutronTOF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 225</value>
+  </data>
+  <data name="flowLayoutPanelNeutronTOF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 69</value>
+  </data>
+  <data name="flowLayoutPanelNeutronTOF.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="flowLayoutPanelNeutronTOF.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonTofUnitMicroSec.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 21</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.Text" xml:space="preserve">
+    <value>μs</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="radioButtonTofUnitNanoSec.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 0</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 21</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.Text" xml:space="preserve">
+    <value>ns</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="numericBoxTofAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxTofAngle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxTofAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTofAngle.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="numericBoxTofAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTofAngle.HeaderText" xml:space="preserve">
+    <value>2θ</value>
+  </data>
+  <data name="numericBoxTofAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 23</value>
+  </data>
+  <data name="numericBoxTofAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="numericBoxTofAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxTofAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxTofAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxTofAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="numericBoxTofAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
+    <value>test</value>
+  </data>
+  <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
+    <value>test</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <data name="numericBoxTofLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxTofLength.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxTofLength.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
   <data name="numericBoxTofLength.FooterText" xml:space="preserve">
     <value>m</value>
   </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
+  <data name="numericBoxTofLength.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTofLength.HeaderText" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="numericBoxTofLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 50</value>
+  </data>
+  <data name="numericBoxTofLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="numericBoxTofLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxTofLength.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxTofLength.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxTofLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="numericBoxTofLength.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
+    <value>test</value>
+  </data>
+  <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
+    <value>test</value>
+  </data>
+
+
+
+
+
+
+
+
+
+
+
+
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>347, 468</value>
+  </data>
+  <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Name" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
     <value>ja</value>
   </metadata>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 13.5pt</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>350, 150</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 471</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>HorizontalAxisUserControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
