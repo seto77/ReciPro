@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.913(2025/12/12)  Fixed bugs on program update and crysta database functions." +
         "\r\n ver4.912(2025/12/10)  Updated AMCSD database. Improved to run on Windows on ARM64." +
         "\r\n ver4.910(2025/11/26)  Updated: .Net Desktop Runtime 9 to 10. Fixed minor bugs." +
         "\r\n ver4.909(2025/10/29)  Fixed a minor bug." +

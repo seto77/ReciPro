@@ -470,7 +470,7 @@ public static class ImageIO
     #region DigitalMicrograph
     private static bool DM(string str)
     {
-        try
+       // try
         {
             Ring.Comments = "";
             var t = new DigitalMicrograph.Loader(str);
@@ -478,11 +478,15 @@ public static class ImageIO
             double pixelScale = (float)t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Calibrations"].Tag["Dimension"].Tag["0"].Tag["Scale"].Values[0];
 
             double accVol = 200000;
-            var test = t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag["Microscope Info"].Tag["Voltage"].Values[0];
-            if (test is float accF)
-                accVol = (double)accF;
-            else if (test is double accD)
-                accVol = accD;
+            try
+            {
+                var test = t.Tag["ImageList"].Tag["1"].Tag["ImageTags"].Tag["Microscope Info"].Tag["Voltage"].Values[0];
+                if (test is float accF)
+                    accVol = (double)accF;
+                else if (test is double accD)
+                    accVol = accD;
+            }
+            catch { }
 
             var pixelSize = 0.1;
             //CCDカメラの場合
@@ -507,17 +511,52 @@ public static class ImageIO
             int imageWidth = (int)(uint)t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Dimensions"].Tag["0"].Values[0];
             int imageHeight = (int)(uint)t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Dimensions"].Tag["1"].Values[0];
             Ring.SrcImgSize = new Size(imageWidth, imageHeight);
-
-            dynamic intensity;
-            if (t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values != null && t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values.Length != 0)
+       
+            var obj = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values;
+            if (obj != null && obj.Length != 0)
             {
-                object o = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values[0];
-                if (o.GetType() == typeof(float))
-                    intensity = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values.Select(v => (float)v).ToArray();
-                else if (o.GetType() == typeof(uint))
-                    intensity = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values.Select(v => (uint)v).ToArray();
-                else if (o.GetType() == typeof(int))
-                    intensity = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values.Select(v => (int)v).ToArray();
+                dynamic intensity;
+
+                //object o = t.Tag["ImageList"].Tag["1"].Tag["ImageData"].Tag["Data"].Values[0];
+                if (obj[0].GetType() == typeof(float))
+                {
+                    if (obj.Length == imageHeight * imageWidth)//実数データの時
+                        intensity = obj.Select(v => (float)v).ToArray();
+                    else   //複素数データの時  20251210土山さんメール参照
+                    {
+                        Ring.DigitalMicrographProperty.IsFFT = true;
+                        var tmp1 = obj.Select(v => (float)v).ToArray();
+                        intensity = new double[imageHeight * imageWidth];
+
+                        for (int i = 0; i < tmp1.Length; i += 2)
+                        {
+                            int row = (i / 2) / (imageWidth / 2 + 1);
+                            int col = (i / 2) % (imageWidth / 2 + 1);
+                            var magnitude = Math.Sqrt(tmp1[i] * tmp1[i] + tmp1[i + 1] * tmp1[i + 1]);
+                            if (col == 0)
+                                intensity[row * imageWidth + imageWidth / 2] = magnitude;
+                            else if (imageWidth % 2 == 0 && col == imageWidth / 2)
+                                intensity[row * imageWidth] = magnitude;
+                            else if (imageHeight % 2 == 0 && row == 0)
+                            {
+                                intensity[imageWidth / 2 + col] = magnitude;
+                                intensity[imageWidth / 2 - col] = magnitude;
+                            }
+                            else
+                            {
+                                intensity[row * imageWidth + imageWidth / 2 + col] = magnitude;
+                                if (imageHeight % 2 == 0)
+                                    intensity[(imageHeight - row) * imageWidth + imageWidth / 2 - col] = magnitude;
+                                else
+                                    intensity[(imageHeight - row -1) * imageWidth + imageWidth / 2 - col] = magnitude;
+                            }
+                        }
+                    }
+                }
+                else if (obj[0].GetType() == typeof(uint))
+                    intensity = obj.Select(v => (uint)v).ToArray();
+                else if (obj[0].GetType() == typeof(int))
+                    intensity = obj.Select(v => (int)v).ToArray();
                 else
                     return false;
 
@@ -529,11 +568,11 @@ public static class ImageIO
             //Ring.BitsPerPixels = t.BitsPerSampleGray;
             Ring.ImageType = Ring.ImageTypeEnum.DM;
         }
-        catch (Exception e)
-        {
-            MessageBox.Show(e.Message);
-            return false;
-        }
+        //catch (Exception e)
+        //{
+        //    MessageBox.Show(e.Message);
+        //    return false;
+        //}
         return true;
     }
     #endregion

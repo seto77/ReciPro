@@ -117,13 +117,16 @@ public partial class FormSpotIDV2 : Form
         {//DigitalMicroGraphデータであればスケールの情報などを取得
             if (Ring.DigitalMicrographProperty.PixelUnit == LengthUnitEnum.NanoMeterInverse)
             {
-                radioButtonPixelSizeUnitReal.Checked = true;
+                //radioButtonPixelSizeUnitReal.Checked = true;
+                //waveLengthControl1.WaveSource = WaveSource.Electron;
+                //waveLengthControl1.Energy = Ring.DigitalMicrographProperty.AccVoltage / 1000.0;
+                //PixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000.0;
+                //CameraLength = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000 / Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.DigitalMicrographProperty.PixelScale / 2));
+
                 waveLengthControl1.WaveSource = WaveSource.Electron;
                 waveLengthControl1.Energy = Ring.DigitalMicrographProperty.AccVoltage / 1000.0;
-                PixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000.0;
-                CameraLength = Ring.DigitalMicrographProperty.PixelSizeInMicron / 1000 / Math.Tan(2 * Math.Asin(waveLengthControl1.WaveLength * Ring.DigitalMicrographProperty.PixelScale / 2));
-                //var pixelSize = Ring.DigitalMicrographProperty.PixelSizeInMicron;
-                //var scale = Ring.DigitalMicrographProperty.PixelScale;
+                radioButtonPixelSizeUnitInverse.Checked = true;
+                numericBoxPixelSize.Value = Ring.DigitalMicrographProperty.PixelScale;
             }
         }
         else if (fileName.EndsWith("mrc"))
