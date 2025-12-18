@@ -986,20 +986,34 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
             return new PointF(-100, -100);
     }
 
-    //ステレオネット上での位置に対応する3次元ベクトルを返す
+    /// <summary>
+    /// ステレオネット上での位置に対応する3次元ベクトルを返す
+    /// </summary>
+    /// <param name="pt"></param>
+    /// <returns></returns>
     public static Vector3D SphereVector(PointF pt)
     {
         float denominator = pt.X * pt.X + pt.Y * pt.Y + 1;
         return new Vector3D(2 * pt.X / denominator, 2 * pt.Y / denominator, 2 / denominator - 1);
     }
 
+    /// <summary>
+    /// ステレオネット上での位置に対応する3次元ベクトルを返す
+    /// </summary>
+    /// <param name="pt"></param>
+    /// <returns></returns>
     public static Vector3D SphereVector(PointD pt)
     {
         double denominator = pt.X * pt.X + pt.Y * pt.Y + 1;
         return new Vector3D(2 * pt.X / denominator, 2 * pt.Y / denominator, 2 / denominator - 1);
     }
 
-    //2つの3次元ベクトル間の角度を返す
+    /// <summary>
+    /// 2つの3次元ベクトル間の角度を返す
+    /// </summary>
+    /// <param name="v1"></param>
+    /// <param name="v2"></param>
+    /// <returns></returns>
     public static double AngleBetVectors(Vector3D v1, Vector3D v2)
     {
         double aCos = Vector3D.Normarize(v1) * Vector3D.Normarize(v2);
@@ -1008,7 +1022,12 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return Math.Acos(aCos);
     }
 
-    //2つのステレオネット上の点の間の角度を返す
+    /// <summary>
+    /// 2つのステレオネット上の点の間の角度を返す
+    /// </summary>
+    /// <param name="pt1"></param>
+    /// <param name="pt2"></param>
+    /// <returns></returns>
     public static double AngleBetStereoNetPoints(PointF pt1, PointF pt2)
     {
         double aCos = Vector3D.SphereVector(pt1) * Vector3D.SphereVector(pt2);
@@ -1017,6 +1036,12 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return Math.Acos(aCos);
     }
 
+    /// <summary>
+    /// 2つのステレオネット上の点の間の角度を返す
+    /// </summary>
+    /// <param name="pt1"></param>
+    /// <param name="pt2"></param>
+    /// <returns></returns>
     public static double AngleBetStereoNetPoints(PointD pt1, PointD pt2)
     {
         double aCos = Vector3D.SphereVector(pt1) * Vector3D.SphereVector(pt2);
@@ -1025,7 +1050,12 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return Math.Acos(aCos);
     }
 
-    //2つのベクトルの外積を返す
+    /// <summary>
+    /// 2つのベクトルの外積を返す
+    /// </summary>
+    /// <param name="v1"></param>
+    /// <param name="v2"></param>
+    /// <returns></returns>
     public static Vector3D VectorProduct(Vector3D v1, Vector3D v2)
         => new(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 

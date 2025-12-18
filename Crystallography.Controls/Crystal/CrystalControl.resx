@@ -294,69 +294,123 @@
   <data name="flowLayoutPanel4.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="numericBoxVolume.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxVolumeAng.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxVolume.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxVolumeAng.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxVolume.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxVolumeAng.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="numericBoxVolume.FooterText" xml:space="preserve">
+  <data name="numericBoxVolumeAng.FooterText" xml:space="preserve">
     <value>Å³</value>
   </data>
-  <data name="numericBoxVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxVolumeAng.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="numericBoxVolume.HeaderText" xml:space="preserve">
+  <data name="numericBoxVolumeAng.HeaderText" xml:space="preserve">
     <value>Cell Volume</value>
   </data>
-  <data name="numericBoxVolume.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxVolumeAng.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 4</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="numericBoxVolume.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxVolumeAng.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
   </data>
-  <data name="numericBoxVolume.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxVolumeAng.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
   </data>
-  <data name="numericBoxVolume.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxVolumeAng.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 18</value>
   </data>
-  <data name="numericBoxVolume.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxVolumeAng.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericBoxVolume.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxVolumeAng.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 25</value>
   </data>
-  <data name="numericBoxVolume.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxVolumeAng.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
   </data>
-  <data name="numericBoxVolume.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxVolumeAng.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="numericBoxVolume.ToolTip" xml:space="preserve">
+  <data name="numericBoxVolumeAng.ToolTip" xml:space="preserve">
     <value>Cell volume in Å³</value>
   </data>
-  <data name="numericBoxVolume.ToolTip1" xml:space="preserve">
+  <data name="numericBoxVolumeAng.ToolTip1" xml:space="preserve">
     <value>Cell volume in Å³</value>
   </data>
-  <data name="&gt;&gt;numericBoxVolume.Name" xml:space="preserve">
-    <value>numericBoxVolume</value>
+  <data name="&gt;&gt;numericBoxVolumeAng.Name" xml:space="preserve">
+    <value>numericBoxVolumeAng</value>
   </data>
-  <data name="&gt;&gt;numericBoxVolume.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxVolumeAng.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxVolume.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxVolumeAng.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
   </data>
-  <data name="&gt;&gt;numericBoxVolume.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxVolumeAng.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.FooterText" xml:space="preserve">
+    <value>nm³</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 4</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 25</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
+    <value>Cell volume in nm</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellVolumeNm.Name" xml:space="preserve">
+    <value>numericBoxCellVolumeNm</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellVolumeNm.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellVolumeNm.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCellVolumeNm.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="numericBoxCellMass.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -377,7 +431,7 @@
     <value>Cell Mass</value>
   </data>
   <data name="numericBoxCellMass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 4</value>
+    <value>10, 29</value>
   </data>
   <data name="numericBoxCellMass.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
@@ -416,7 +470,7 @@
     <value>flowLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;numericBoxCellMass.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="numericBoxMolarVolume.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -437,7 +491,7 @@
     <value>Molar Volume</value>
   </data>
   <data name="numericBoxMolarVolume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 29</value>
+    <value>195, 29</value>
   </data>
   <data name="numericBoxMolarVolume.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
@@ -476,7 +530,7 @@
     <value>flowLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;numericBoxMolarVolume.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="numericBoxMolarMass.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -497,7 +551,7 @@
     <value>Molar Mass</value>
   </data>
   <data name="numericBoxMolarMass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 29</value>
+    <value>10, 54</value>
   </data>
   <data name="numericBoxMolarMass.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
@@ -536,7 +590,7 @@
     <value>flowLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;numericBoxMolarMass.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="numericBoxDensity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -557,7 +611,7 @@
     <value>Density</value>
   </data>
   <data name="numericBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 54</value>
+    <value>191, 54</value>
   </data>
   <data name="numericBoxDensity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
@@ -596,7 +650,7 @@
     <value>flowLayoutPanel4</value>
   </data>
   <data name="&gt;&gt;numericBoxDensity.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

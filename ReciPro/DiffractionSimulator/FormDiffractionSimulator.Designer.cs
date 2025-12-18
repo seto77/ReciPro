@@ -92,13 +92,6 @@
             radioButtonScaleDivisionCoarse = new System.Windows.Forms.RadioButton();
             colorControlScaleAzimuth = new ColorControl();
             colorControlScale2Theta = new ColorControl();
-            tabPageMisc = new System.Windows.Forms.TabPage();
-            numericBoxDev = new NumericBox();
-            numericBoxAcc = new NumericBox();
-            button2 = new System.Windows.Forms.Button();
-            button1 = new System.Windows.Forms.Button();
-            groupBox5 = new System.Windows.Forms.GroupBox();
-            trackBarRotationSpeed = new System.Windows.Forms.TrackBar();
             splitContainer1 = new System.Windows.Forms.SplitContainer();
             graphicsBox = new ImagingSolution.Control.GraphicsBox(components);
             groupBox7 = new System.Windows.Forms.GroupBox();
@@ -169,11 +162,21 @@
             radioButtonResoUnitNanometerInv = new System.Windows.Forms.RadioButton();
             label22 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
+            panel5 = new System.Windows.Forms.Panel();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            trackBarRotationSpeed = new System.Windows.Forms.TrackBar();
+            buttonHolderSimulation = new System.Windows.Forms.Button();
+            label23 = new System.Windows.Forms.Label();
             groupBox1 = new System.Windows.Forms.GroupBox();
             numericUpDownCamaraLength2 = new System.Windows.Forms.NumericUpDown();
             buttonDetailedGeometry = new System.Windows.Forms.Button();
             label18 = new System.Windows.Forms.Label();
             label15 = new System.Windows.Forms.Label();
+            groupBox5 = new System.Windows.Forms.GroupBox();
+            numericBoxDev = new NumericBox();
+            button1 = new System.Windows.Forms.Button();
+            numericBoxAcc = new NumericBox();
+            button2 = new System.Windows.Forms.Button();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -304,9 +307,6 @@
             tabPageScale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarScaleLineWidth).BeginInit();
             flowLayoutPanel1.SuspendLayout();
-            tabPageMisc.SuspendLayout();
-            groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarRotationSpeed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -326,8 +326,12 @@
             groupBox6.SuspendLayout();
             flowLayoutPanel13.SuspendLayout();
             flowLayoutPanel12.SuspendLayout();
+            panel5.SuspendLayout();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarRotationSpeed).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownCamaraLength2).BeginInit();
+            groupBox5.SuspendLayout();
             menuStrip1.SuspendLayout();
             groupBoxSpotProperty.SuspendLayout();
             panel2.SuspendLayout();
@@ -547,7 +551,6 @@
             tabControl.Controls.Add(tabPageKikuchi);
             tabControl.Controls.Add(tabPageDebye);
             tabControl.Controls.Add(tabPageScale);
-            tabControl.Controls.Add(tabPageMisc);
             tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             resources.ApplyResources(tabControl, "tabControl");
             tabControl.HotTrack = true;
@@ -614,7 +617,7 @@
             colorControlString.Name = "colorControlString";
             colorControlString.Red = 255;
             colorControlString.RedF = 1F;
-            toolTip.SetToolTip(colorControlString, resources.GetString("colorControlString.ToolTip"));
+            toolTip.SetToolTip(colorControlString, resources.GetString("colorControlString.ToolTip1"));
             colorControlString.ColorChanged += Draw;
             // 
             // label14
@@ -637,7 +640,7 @@
             colorControlOrigin.Name = "colorControlOrigin";
             colorControlOrigin.Red = 255;
             colorControlOrigin.RedF = 1F;
-            toolTip.SetToolTip(colorControlOrigin, resources.GetString("colorControlOrigin.ToolTip"));
+            toolTip.SetToolTip(colorControlOrigin, resources.GetString("colorControlOrigin.ToolTip1"));
             colorControlOrigin.ColorChanged += Draw;
             // 
             // colorControlFoot
@@ -690,7 +693,7 @@
             colorControlBackGround.Name = "colorControlBackGround";
             colorControlBackGround.Red = 32;
             colorControlBackGround.RedF = 0.1254902F;
-            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip"));
+            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip1"));
             colorControlBackGround.ColorChanged += Draw;
             // 
             // tabPageKikuchi
@@ -817,7 +820,7 @@
             colorControlDebyeRing.Name = "colorControlDebyeRing";
             colorControlDebyeRing.Red = 255;
             colorControlDebyeRing.RedF = 1F;
-            toolTip.SetToolTip(colorControlDebyeRing, resources.GetString("colorControlDebyeRing.ToolTip"));
+            toolTip.SetToolTip(colorControlDebyeRing, resources.GetString("colorControlDebyeRing.ToolTip1"));
             colorControlDebyeRing.ColorChanged += Draw;
             // 
             // checkBoxDebyeRingLabel
@@ -945,7 +948,7 @@
             colorControlScaleAzimuth.Name = "colorControlScaleAzimuth";
             colorControlScaleAzimuth.Red = 119;
             colorControlScaleAzimuth.RedF = 0.466666669F;
-            toolTip.SetToolTip(colorControlScaleAzimuth, resources.GetString("colorControlScaleAzimuth.ToolTip"));
+            toolTip.SetToolTip(colorControlScaleAzimuth, resources.GetString("colorControlScaleAzimuth.ToolTip1"));
             colorControlScaleAzimuth.ColorChanged += Draw;
             // 
             // colorControlScale2Theta
@@ -962,78 +965,8 @@
             colorControlScale2Theta.Name = "colorControlScale2Theta";
             colorControlScale2Theta.Red = 68;
             colorControlScale2Theta.RedF = 0.266666681F;
-            toolTip.SetToolTip(colorControlScale2Theta, resources.GetString("colorControlScale2Theta.ToolTip"));
+            toolTip.SetToolTip(colorControlScale2Theta, resources.GetString("colorControlScale2Theta.ToolTip1"));
             colorControlScale2Theta.ColorChanged += Draw;
-            // 
-            // tabPageMisc
-            // 
-            tabPageMisc.BackColor = System.Drawing.SystemColors.Control;
-            tabPageMisc.Controls.Add(numericBoxDev);
-            tabPageMisc.Controls.Add(numericBoxAcc);
-            tabPageMisc.Controls.Add(button2);
-            tabPageMisc.Controls.Add(button1);
-            tabPageMisc.Controls.Add(groupBox5);
-            resources.ApplyResources(tabPageMisc, "tabPageMisc");
-            tabPageMisc.Name = "tabPageMisc";
-            // 
-            // numericBoxDev
-            // 
-            resources.ApplyResources(numericBoxDev, "numericBoxDev");
-            numericBoxDev.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDev.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDev.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDev.Name = "numericBoxDev";
-            numericBoxDev.RadianValue = 0.023911010752322315D;
-            numericBoxDev.SkipEventDuringInput = false;
-            numericBoxDev.SmartIncrement = true;
-            numericBoxDev.ThonsandsSeparator = true;
-            numericBoxDev.Value = 1.37D;
-            // 
-            // numericBoxAcc
-            // 
-            resources.ApplyResources(numericBoxAcc, "numericBoxAcc");
-            numericBoxAcc.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAcc.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAcc.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAcc.Name = "numericBoxAcc";
-            numericBoxAcc.RadianValue = 216.42082724729684D;
-            numericBoxAcc.SkipEventDuringInput = false;
-            numericBoxAcc.SmartIncrement = true;
-            numericBoxAcc.ThonsandsSeparator = true;
-            numericBoxAcc.Value = 12400D;
-            // 
-            // button2
-            // 
-            resources.ApplyResources(button2, "button2");
-            button2.Name = "button2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += Button2_Click;
-            // 
-            // button1
-            // 
-            resources.ApplyResources(button1, "button1");
-            button1.Name = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += Button1_Click;
-            // 
-            // groupBox5
-            // 
-            resources.ApplyResources(groupBox5, "groupBox5");
-            groupBox5.Controls.Add(trackBarRotationSpeed);
-            groupBox5.Name = "groupBox5";
-            groupBox5.TabStop = false;
-            toolTip.SetToolTip(groupBox5, resources.GetString("groupBox5.ToolTip"));
-            // 
-            // trackBarRotationSpeed
-            // 
-            resources.ApplyResources(trackBarRotationSpeed, "trackBarRotationSpeed");
-            trackBarRotationSpeed.Maximum = 600;
-            trackBarRotationSpeed.Minimum = 1;
-            trackBarRotationSpeed.Name = "trackBarRotationSpeed";
-            trackBarRotationSpeed.TickFrequency = 10000;
-            trackBarRotationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
-            toolTip.SetToolTip(trackBarRotationSpeed, resources.GetString("trackBarRotationSpeed.ToolTip"));
-            trackBarRotationSpeed.Value = 150;
             // 
             // splitContainer1
             // 
@@ -1102,7 +1035,7 @@
             colorControl3D_SpotsNear.Name = "colorControl3D_SpotsNear";
             colorControl3D_SpotsNear.Red = 255;
             colorControl3D_SpotsNear.RedF = 1F;
-            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip"));
+            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip1"));
             colorControl3D_SpotsNear.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // numericBox3D_SpotRadius
@@ -1187,7 +1120,7 @@
             colorControl3D_Background.Name = "colorControl3D_Background";
             colorControl3D_Background.Red = 255;
             colorControl3D_Background.RedF = 1F;
-            toolTip.SetToolTip(colorControl3D_Background, resources.GetString("colorControl3D_Background.ToolTip"));
+            toolTip.SetToolTip(colorControl3D_Background, resources.GetString("colorControl3D_Background.ToolTip1"));
             colorControl3D_Background.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // numericBoxReciprocalThreshold
@@ -1446,7 +1379,7 @@
             colorControl3D_lText.Name = "colorControl3D_lText";
             colorControl3D_lText.Red = 0;
             colorControl3D_lText.RedF = 0F;
-            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip"));
+            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip1"));
             colorControl3D_lText.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // checkBox3D_DirectionGuide
@@ -1576,7 +1509,8 @@
             // 
             resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
             flowLayoutPanel6.Controls.Add(groupBox6);
-            flowLayoutPanel6.Controls.Add(groupBox1);
+            flowLayoutPanel6.Controls.Add(panel5);
+            flowLayoutPanel6.Controls.Add(groupBox5);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             // 
             // groupBox6
@@ -1607,7 +1541,7 @@
             // 
             resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxResolution.DecimalPlaces = 8;
+            numericBoxResolution.DecimalPlaces = 7;
             numericBoxResolution.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxResolution.Maximum = 10D;
@@ -1632,6 +1566,8 @@
             // checkBoxFixCenter
             // 
             resources.ApplyResources(checkBoxFixCenter, "checkBoxFixCenter");
+            checkBoxFixCenter.Checked = true;
+            checkBoxFixCenter.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxFixCenter.Name = "checkBoxFixCenter";
             toolTip.SetToolTip(checkBoxFixCenter, resources.GetString("checkBoxFixCenter.ToolTip"));
             checkBoxFixCenter.UseVisualStyleBackColor = true;
@@ -1735,6 +1671,47 @@
             resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
             // 
+            // panel5
+            // 
+            panel5.Controls.Add(groupBox2);
+            panel5.Controls.Add(groupBox1);
+            resources.ApplyResources(panel5, "panel5");
+            panel5.Name = "panel5";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(trackBarRotationSpeed);
+            groupBox2.Controls.Add(buttonHolderSimulation);
+            groupBox2.Controls.Add(label23);
+            resources.ApplyResources(groupBox2, "groupBox2");
+            groupBox2.Name = "groupBox2";
+            groupBox2.TabStop = false;
+            // 
+            // trackBarRotationSpeed
+            // 
+            resources.ApplyResources(trackBarRotationSpeed, "trackBarRotationSpeed");
+            trackBarRotationSpeed.Maximum = 30;
+            trackBarRotationSpeed.Minimum = 1;
+            trackBarRotationSpeed.Name = "trackBarRotationSpeed";
+            trackBarRotationSpeed.TickFrequency = 5;
+            trackBarRotationSpeed.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip.SetToolTip(trackBarRotationSpeed, resources.GetString("trackBarRotationSpeed.ToolTip"));
+            trackBarRotationSpeed.Value = 10;
+            // 
+            // buttonHolderSimulation
+            // 
+            resources.ApplyResources(buttonHolderSimulation, "buttonHolderSimulation");
+            buttonHolderSimulation.Name = "buttonHolderSimulation";
+            toolTip.SetToolTip(buttonHolderSimulation, resources.GetString("buttonHolderSimulation.ToolTip"));
+            buttonHolderSimulation.UseVisualStyleBackColor = true;
+            buttonHolderSimulation.Click += buttonHolderSimulation_Click;
+            // 
+            // label23
+            // 
+            resources.ApplyResources(label23, "label23");
+            label23.Name = "label23";
+            toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip"));
+            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(numericUpDownCamaraLength2);
@@ -1747,7 +1724,7 @@
             // 
             // numericUpDownCamaraLength2
             // 
-            numericUpDownCamaraLength2.DecimalPlaces = 3;
+            numericUpDownCamaraLength2.DecimalPlaces = 2;
             resources.ApplyResources(numericUpDownCamaraLength2, "numericUpDownCamaraLength2");
             numericUpDownCamaraLength2.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             numericUpDownCamaraLength2.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
@@ -1776,6 +1753,56 @@
             resources.ApplyResources(label15, "label15");
             label15.Name = "label15";
             toolTip.SetToolTip(label15, resources.GetString("label15.ToolTip"));
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(numericBoxDev);
+            groupBox5.Controls.Add(button1);
+            groupBox5.Controls.Add(numericBoxAcc);
+            groupBox5.Controls.Add(button2);
+            resources.ApplyResources(groupBox5, "groupBox5");
+            groupBox5.Name = "groupBox5";
+            groupBox5.TabStop = false;
+            // 
+            // numericBoxDev
+            // 
+            resources.ApplyResources(numericBoxDev, "numericBoxDev");
+            numericBoxDev.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDev.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDev.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDev.Name = "numericBoxDev";
+            numericBoxDev.RadianValue = 0.023911010752322315D;
+            numericBoxDev.SkipEventDuringInput = false;
+            numericBoxDev.SmartIncrement = true;
+            numericBoxDev.ThonsandsSeparator = true;
+            numericBoxDev.Value = 1.37D;
+            // 
+            // button1
+            // 
+            resources.ApplyResources(button1, "button1");
+            button1.Name = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += Button1_Click;
+            // 
+            // numericBoxAcc
+            // 
+            resources.ApplyResources(numericBoxAcc, "numericBoxAcc");
+            numericBoxAcc.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAcc.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAcc.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAcc.Name = "numericBoxAcc";
+            numericBoxAcc.RadianValue = 216.42082724729684D;
+            numericBoxAcc.SkipEventDuringInput = false;
+            numericBoxAcc.SmartIncrement = true;
+            numericBoxAcc.ThonsandsSeparator = true;
+            numericBoxAcc.Value = 12400D;
+            // 
+            // button2
+            // 
+            resources.ApplyResources(button2, "button2");
+            button2.Name = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += Button2_Click;
             // 
             // menuStrip1
             // 
@@ -2683,9 +2710,6 @@
             ((System.ComponentModel.ISupportInitialize)trackBarScaleLineWidth).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
-            tabPageMisc.ResumeLayout(false);
-            groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)trackBarRotationSpeed).EndInit();
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -2714,9 +2738,14 @@
             flowLayoutPanel13.PerformLayout();
             flowLayoutPanel12.ResumeLayout(false);
             flowLayoutPanel12.PerformLayout();
+            panel5.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarRotationSpeed).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownCamaraLength2).EndInit();
+            groupBox5.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             groupBoxSpotProperty.ResumeLayout(false);
@@ -2791,7 +2820,6 @@
         private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelTimeForSearchingG;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TrackBar trackBarRotationSpeed;
         public WaveLengthControl waveLengthControl;
         private System.Windows.Forms.Label labelD;
@@ -3008,5 +3036,12 @@
         private NumericBox numericBoxKikuchiThreadSholdOfStructureFactor;
         private System.Windows.Forms.CheckBox checkBoxShowDirectPosition;
         private System.Windows.Forms.CheckBox checkBoxShowFootPosition;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonHolderSimulation;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripButton toolStripButtonReciprocalSpace;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }

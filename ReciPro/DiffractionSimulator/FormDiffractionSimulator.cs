@@ -22,6 +22,7 @@ using System.Windows.Forms;
 using V3 = OpenTK.Mathematics.Vector3d;
 using OpenTK.Mathematics;
 using ZLinq;
+using System.Threading;
 #endregion
 
 namespace ReciPro;
@@ -30,17 +31,26 @@ public partial class FormDiffractionSimulator : Form
 {
     #region フィールド、プロパティ
 
+    #region 親/子フォーム、コントロールのField
     public FormMain formMain;
     public FormDiffractionSimulatorCBED FormDiffractionSimulatorCBED;
     public FormDiffractionSimulatorGeometry FormDiffractionSimulatorGeometry;
     public FormDiffractionSimulatorDynamicCompression FormDiffractionSimulatorDynamicCompression;
     public FormDiffractionSpotInfo FormDiffractionBeamTable;
+    public FormDiffractionSimulatorHolder FormDiffractionSimulatorHolder;
 
     private GLControlAlpha glControl;
     private GLControlAlpha glControlZsort;
     private GLControlAlpha glControlOIT;
 
-    private readonly Timer timer = new();
+    private readonly System.Windows.Forms.Timer timer = new();
+    #endregion
+
+    #region フォームのプロパティ
+    public int ClientWidth { get => numericBoxClientWidth.ValueInteger; set => numericBoxClientWidth.Value = value; }
+    public int ClientHeight { get => numericBoxClientHeight.ValueInteger; set => numericBoxClientHeight.Value = value; }
+    private Size lastPanelSize { get; set; } = new Size(0, 0);
+    #endregion
 
     #region 計算モード
     public enum CalcModes { Excitation, Kinematical, Dynamical }
@@ -107,30 +117,44 @@ public partial class FormDiffractionSimulator : Form
     }
     #endregion
 
+    #region 線源
     public double EwaldRadius => 1 / WaveLength;
     public double WaveLength { get => waveLengthControl.WaveLength; set => waveLengthControl.WaveLength = value; }
     public double Energy { get => waveLengthControl.Energy; set => waveLengthControl.Energy = value; }
 
     public WaveSource Source { get => waveLengthControl.WaveSource; set => waveLengthControl.WaveSource = value; }
 
+    #endregion
+
+    #region 試料のプロパティ
     public double ExcitationError => numericBoxSpotRadius.Value;
 
     public double Thickness { get => numericBoxThickness.Value; set => numericBoxThickness.Value = value; }
+    #endregion
+
+    #region 動力学計算のプロパティ
     public int NumberOfDiffractedWaves { get => numericBoxNumOfBlochWave.ValueInteger; set => numericBoxNumOfBlochWave.Value = value; }
 
-    private Font font => new("Tahoma", (float)(trackBarStrSize.Value / 8.0/* * Resolution */));
+    #endregion
 
+    #region シミュレーション画面のプロパティ
 
-    public bool DynamicCompressionMode { get; set; } = false;
-    public List<double[]> DynamicCompression_SpotInformation = [];
-
-    /*public double CameraLength1
+    /// <summary>
+    /// 中心位置を固定するかどうか
+    /// </summary>
+    public bool FixCenter
     {
-        set { FormDiffractionSimulatorGeometry.CameraLength1 = value; }
-        get { return FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.CameraLength1; }
-    }*/
+        get => checkBoxFixCenter.Checked;
+        set
+        {
+            if (checkBoxFixCenter.Checked != value)
+            {
+                checkBoxFixCenter.Checked = value;
+                Draw();
+            }
+        }
+    }
 
-    #region 検出器、表示画面のプロパティ
     /// <summary>
     /// シミュレーション画像を水平反転するかどうか
     /// </summary>
@@ -178,7 +202,7 @@ public partial class FormDiffractionSimulator : Form
         }
     }
 
-    public double ResolutionInNMinv 
+    public double ResolutionInNMinv
     {
         set
         {
@@ -258,15 +282,16 @@ public partial class FormDiffractionSimulator : Form
         }
     }
 
-    public int ClientWidth { get => numericBoxClientWidth.ValueInteger; set => numericBoxClientWidth.Value = value; }
-    public int ClientHeight { get => numericBoxClientHeight.ValueInteger; set => numericBoxClientHeight.Value = value; }
+    #endregion 
+
+    #region 検出器の幾何学パラメータ
 
     public double CameraLength2
     {
         set
         {
             numericUpDownCamaraLength2.Value = (decimal)value;
-            FormDiffractionSimulatorGeometry.CameraLength2 = value; 
+            FormDiffractionSimulatorGeometry.CameraLength2 = value;
             Draw();
         }
         get => FormDiffractionSimulatorGeometry == null ? 0 : FormDiffractionSimulatorGeometry.CameraLength2;
@@ -292,7 +317,8 @@ public partial class FormDiffractionSimulator : Form
     /// -SinPhi * SinTau                 | cosPhi  * sinTau                |  CosTau 
     /// この行列をv＝(X,Y,CL2)に作用させると、検出器座標(X,Y)を実空間座標に変換できる。
     /// </summary>
-    public Matrix3D DetectorRotation => FormDiffractionSimulatorGeometry == null ? new Matrix3D() : FormDiffractionSimulatorGeometry.DetectorRotation;
+    public Matrix3D DetectorRotation
+        => FormDiffractionSimulatorGeometry == null ? new Matrix3D() : FormDiffractionSimulatorGeometry.DetectorRotation;
 
 
     public Matrix3D DetectorRotationInv => FormDiffractionSimulatorGeometry.DetectorRotationInv;
@@ -303,11 +329,11 @@ public partial class FormDiffractionSimulator : Form
 
     #endregion
 
+    #region イベント制御
     /// <summary>
     /// コントロールイベントをスキップする
     /// </summary>
     public bool SkipEvent { get; set; } = false;
-
 
     private bool skipDrawing = false;
     /// <summary>
@@ -320,12 +346,26 @@ public partial class FormDiffractionSimulator : Form
     /// </summary>
     public bool SkipRendering { get; set; } = false;
 
-    private Size lastPanelSize { get; set; } = new Size(0, 0);
-
     /// <summary>
     /// このフラグがtrueの時は、計算をキャンセルする
     /// </summary>
     public bool CancelSetVector { get; set; } = false;
+    #endregion
+
+    private Font font => new("Tahoma", (float)(trackBarStrSize.Value / 8.0/* * Resolution */));
+    public bool DynamicCompressionMode { get; set; } = false;
+    public List<double[]> DynamicCompression_SpotInformation = [];
+
+    public double MouseSpeedFactor
+    {
+        get
+        {
+            return
+                Source == WaveSource.Electron ?
+                trackBarRotationSpeed.Value * trackBarRotationSpeed.Value / 2.0 :
+                trackBarRotationSpeed.Value * trackBarRotationSpeed.Value / 100.0;
+        }
+    }
 
     #endregion
 
@@ -363,6 +403,13 @@ public partial class FormDiffractionSimulator : Form
             FormDiffractionSimulator = this,
             Owner = this
         };
+
+        FormDiffractionSimulatorHolder ??= new FormDiffractionSimulatorHolder
+        {
+            FormDiffractionSimulator = this,
+            Owner = this
+        };
+
         timer.Interval = 1000;
         timer.Tick += ((sender, e) => graphicsBox.Refresh());
         timer.Start();
@@ -980,7 +1027,7 @@ public partial class FormDiffractionSimulator : Form
                                 var sphereRadius = bethe ?
                                     ExcitationError * Math.Sqrt(g.RelativeIntensity) ://ベーテ法の場合は、相対強度の平方根が半径に比例
                                     ExcitationError * Math.Pow(g.RelativeIntensity, 1.0 / 3.0);//excitaion only あるいは Kinematicの場合は、半径に相対強度の1/3乗を掛ける
-                                
+
                                 if (radioButtonIntensityExcitation.Checked)
                                     sphereRadius = ExcitationError;
 
@@ -996,7 +1043,7 @@ public partial class FormDiffractionSimulator : Form
                                     var sectionRadius = bethe ?
                                         sphereRadius : //ベーテ法の場合はそのまま
                                         Math.Sqrt(sphereRadius * sphereRadius - dev2);//excitaion only あるいは Kinematicの場合は、エワルド球に切られた断面上の、逆格子点の半径
-                                    
+
                                     var r = CameraLength2 * WaveLength * sectionRadius;
                                     graphics.FillCircle(Color.FromArgb(g.Argb), pt, r, (int)(alphaCoeff * 255));
                                     if (drawLabel && trackBarStrSize.Value != 1 && r > spotRadiusOnDetector * 0.4f)
@@ -1101,7 +1148,7 @@ public partial class FormDiffractionSimulator : Form
 
             //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
             var psi = Math.Atan2(vec2.X, vec2.Y);
-            double sinPsi=Math.Sin(psi),cosPsi=Math.Cos(psi);
+            double sinPsi = Math.Sin(psi), cosPsi = Math.Cos(psi);
             var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
 
             //vec3normは、vec3を規格化したベクトル
@@ -1550,7 +1597,7 @@ public partial class FormDiffractionSimulator : Form
             if (radioButtonKikuchiThresholdOfLength.Checked)
             {
                 formMain.Crystal.VectorOfG_KikuchiLine =
-                [.. formMain.Crystal.VectorOfG.Where(g => g.Length < numericBoxKikuchiThresholdOfLength.Value).OrderByDescending(g=>g.Length)];
+                [.. formMain.Crystal.VectorOfG.Where(g => g.Length < numericBoxKikuchiThresholdOfLength.Value).OrderByDescending(g => g.Length)];
             }
             else
             {
@@ -1558,7 +1605,7 @@ public partial class FormDiffractionSimulator : Form
                 var max = Math.Min(numericBoxKikuchiThreadSholdOfStructureFactor.ValueInteger, formMain.Crystal.VectorOfG.Length);
                 while (max + 1 < formMain.Crystal.VectorOfG.Length)
                 {
-                    if (SymmetryStatic.CheckEquivalentPlanes(list[max-1].Index, list[max].Index,formMain.Crystal.Symmetry))
+                    if (SymmetryStatic.CheckEquivalentPlanes(list[max - 1].Index, list[max].Index, formMain.Crystal.Symmetry))
                         max++;
                     else
                         break;
@@ -1954,7 +2001,7 @@ public partial class FormDiffractionSimulator : Form
             if ((e.X - graphicsBox.ClientSize.Width / 2) * (e.X - graphicsBox.ClientSize.Width / 2) + (e.Y - graphicsBox.ClientSize.Height / 2) * (e.Y - graphicsBox.ClientSize.Height / 2)
                 < Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * Math.Min(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height) * 0.18)
             {
-                double angle = Math.Atan(new PointD(lastMousePositionDetector.X - detectorPos.X, lastMousePositionDetector.Y - detectorPos.Y).Length / CameraLength2 * Resolution) * trackBarRotationSpeed.Value / 50.0;
+                double angle = Math.Atan(new PointD(lastMousePositionDetector.X - detectorPos.X, lastMousePositionDetector.Y - detectorPos.Y).Length / CameraLength2 * Resolution) * MouseSpeedFactor;
                 formMain.Rotate((detectorPos.Y - lastMousePositionDetector.Y, detectorPos.X - lastMousePositionDetector.X, 0), angle);
             }
             else
@@ -2751,7 +2798,7 @@ public partial class FormDiffractionSimulator : Form
                     if (!filename.EndsWith(".png"))
                         filename += ".png";
 
-                    if (Path.Exists(Path.GetDirectoryName( filename)))
+                    if (Path.Exists(Path.GetDirectoryName(filename)))
                         bmp.Save(filename, ImageFormat.Png);
                 }
                 else
@@ -3219,4 +3266,10 @@ public partial class FormDiffractionSimulator : Form
     }
     #endregion
 
+    private void buttonHolderSimulation_Click(object sender, EventArgs e)
+    {
+        FormDiffractionSimulatorHolder.Visible = true;
+        System.Threading.Thread.Sleep(100);
+        FormDiffractionSimulatorHolder.Draw();
+    }
 }

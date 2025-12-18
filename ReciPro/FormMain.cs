@@ -521,6 +521,9 @@ public partial class FormMain : Form
                 Reg.RW(key, mode, owner, nameof(owner.FlipHorizontally), owner.FlipHorizontally);
                 Reg.RW(key, mode, owner, nameof(owner.FlipVertically), owner.FlipVertically);
                 Reg.RW(key, mode, owner, nameof(owner.NegativeImage), owner.NegativeImage);
+
+                Reg.RW(key, mode, owner, nameof(owner.FixCenter), owner.FixCenter);
+
             }
             {
                 var owner = FormDiffractionSimulator.waveLengthControl;

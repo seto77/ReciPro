@@ -115,7 +115,7 @@ public partial class FormStereonet : Form
             new Matrix(
                 (float)mag, 0, 0, (float)mag,
                 (float)(graphicsBox.ClientSize.Width / 2.0 - mag * centerPt.X),
-                (float)(graphicsBox.ClientSize.Height / 2.0 + mag * centerPt.Y));//(float)centerPt.X, (float)centerPt.Y);
+                (float)(graphicsBox.ClientSize.Height / 2.0 + mag * centerPt.Y));
             }
             catch { return false; }
         return true;
@@ -684,8 +684,8 @@ public partial class FormStereonet : Form
         PointD pt = convertClientToSrc(e.X, e.Y); ;
         double azimuth = Math.Asin(2 * pt.Y / (1 + pt.X * pt.X + pt.Y * pt.Y));
         double tilt = (Math.Cos(azimuth) != 0) ? Math.Asin(2 * pt.X / (1 + pt.X * pt.X + pt.Y * pt.Y) / Math.Cos(azimuth)) : 0;
-        labelXpos.Text = "Tilt X: " + (azimuth / Math.PI * 180).ToString("f3") + "°";
-        labelYpos.Text = "Tilt Y: " + (tilt / Math.PI * 180).ToString("f3") + "°";
+        labelYpos.Text = $"Tilt Y: {azimuth / Math.PI * 180:f3}°";
+        labelXpos.Text = $"Tilt X: {tilt / Math.PI * 180:f3}°";
 
         //真ん中ボタンが押されながらマウスが動いたとき
         if (e.Button == MouseButtons.Middle)

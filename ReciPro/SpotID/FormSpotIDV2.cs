@@ -1643,11 +1643,6 @@ public partial class FormSpotIDV2 : Form
         }
     }
 
-    private void FormSpotIDV2_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-    {
-
-    }
-
     private void checkBoxGuideCircles_CheckedChanged(object sender, EventArgs e)
     {
         bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, 0));

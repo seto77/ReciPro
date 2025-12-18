@@ -39,7 +39,8 @@
             tabPageBasicInfo = new System.Windows.Forms.TabPage();
             panel5 = new System.Windows.Forms.Panel();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            numericBoxVolume = new NumericBox();
+            numericBoxVolumeAng = new NumericBox();
+            numericBoxCellVolumeNm = new NumericBox();
             numericBoxCellMass = new NumericBox();
             numericBoxMolarVolume = new NumericBox();
             numericBoxMolarMass = new NumericBox();
@@ -258,28 +259,44 @@
             // flowLayoutPanel4
             // 
             resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(numericBoxVolume);
+            flowLayoutPanel4.Controls.Add(numericBoxVolumeAng);
+            flowLayoutPanel4.Controls.Add(numericBoxCellVolumeNm);
             flowLayoutPanel4.Controls.Add(numericBoxCellMass);
             flowLayoutPanel4.Controls.Add(numericBoxMolarVolume);
             flowLayoutPanel4.Controls.Add(numericBoxMolarMass);
             flowLayoutPanel4.Controls.Add(numericBoxDensity);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
-            // numericBoxVolume
+            // numericBoxVolumeAng
             // 
-            resources.ApplyResources(numericBoxVolume, "numericBoxVolume");
-            numericBoxVolume.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxVolume.DecimalPlaces = 4;
-            numericBoxVolume.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxVolume.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxVolume.Name = "numericBoxVolume";
-            numericBoxVolume.ReadOnly = true;
-            numericBoxVolume.RestrictLimitValue = false;
-            numericBoxVolume.SkipEventDuringInput = false;
-            numericBoxVolume.SmartIncrement = true;
-            numericBoxVolume.TabStop = false;
-            numericBoxVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            toolTip.SetToolTip(numericBoxVolume, resources.GetString("numericBoxVolume.ToolTip"));
+            resources.ApplyResources(numericBoxVolumeAng, "numericBoxVolumeAng");
+            numericBoxVolumeAng.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxVolumeAng.DecimalPlaces = 4;
+            numericBoxVolumeAng.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxVolumeAng.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxVolumeAng.Name = "numericBoxVolumeAng";
+            numericBoxVolumeAng.ReadOnly = true;
+            numericBoxVolumeAng.RestrictLimitValue = false;
+            numericBoxVolumeAng.SkipEventDuringInput = false;
+            numericBoxVolumeAng.SmartIncrement = true;
+            numericBoxVolumeAng.TabStop = false;
+            numericBoxVolumeAng.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            toolTip.SetToolTip(numericBoxVolumeAng, resources.GetString("numericBoxVolumeAng.ToolTip"));
+            // 
+            // numericBoxCellVolumeNm
+            // 
+            resources.ApplyResources(numericBoxCellVolumeNm, "numericBoxCellVolumeNm");
+            numericBoxCellVolumeNm.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellVolumeNm.DecimalPlaces = 7;
+            numericBoxCellVolumeNm.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellVolumeNm.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellVolumeNm.Name = "numericBoxCellVolumeNm";
+            numericBoxCellVolumeNm.ReadOnly = true;
+            numericBoxCellVolumeNm.RestrictLimitValue = false;
+            numericBoxCellVolumeNm.SkipEventDuringInput = false;
+            numericBoxCellVolumeNm.SmartIncrement = true;
+            numericBoxCellVolumeNm.TabStop = false;
+            numericBoxCellVolumeNm.TextBoxBackColor = System.Drawing.SystemColors.Control;
             // 
             // numericBoxCellMass
             // 
@@ -372,6 +389,7 @@
             symmetryControl.C = 0D;
             resources.ApplyResources(symmetryControl, "symmetryControl");
             symmetryControl.Gamma = 0D;
+            symmetryControl.LengthUnit = LengthUnitEnum.Angstrom;
             symmetryControl.Name = "symmetryControl";
             symmetryControl.ShowError = false;
             symmetryControl.SkipEvent = false;
@@ -986,7 +1004,7 @@
             colorControl.Name = "colorControl";
             colorControl.Red = 240;
             colorControl.RedF = 0.9411765F;
-            toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip"));
+            toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip1"));
             // 
             // panel1
             // 
@@ -1246,7 +1264,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPageEOS;
-        private NumericBox numericBoxVolume;
+        private NumericBox numericBoxVolumeAng;
         private System.Windows.Forms.ToolStripMenuItem symmetryInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.TabPage tabPageElasticity;
@@ -1337,5 +1355,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Button buttonConvertToSubgroup;
         private System.Windows.Forms.Button buttonChangeAxesOriginSetting;
+        private NumericBox numericBoxCellVolumeNm;
     }
 }

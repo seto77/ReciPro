@@ -359,7 +359,7 @@
       </OffloadArch>
       <DiagnosticsFormat>
       </DiagnosticsFormat>
-      <FloatingPointModel>Precise</FloatingPointModel>
+      <FloatingPointModel>Default</FloatingPointModel>
       <UndefineAllPreprocessorDefinitions>
       </UndefineAllPreprocessorDefinitions>
       <AdditionalIncludeDirectories>Crystallography.Native;C:\Users\seto\source\repos\ReciPro\Crystallography.Native\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

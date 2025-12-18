@@ -64,20 +64,39 @@ public partial class SymmetryControl : UserControl
     }
 
     /// <summary>
+    /// 長さの単位の get/set
+    /// </summary>
+    public LengthUnitEnum LengthUnit
+    {
+        get => radioButtonAngstrom.Checked ? LengthUnitEnum.Angstrom : LengthUnitEnum.NanoMeter;
+        set
+        {
+            radioButtonAngstrom.Checked = value == LengthUnitEnum.Angstrom;
+            radioButtonNanoMeter.Checked = value == LengthUnitEnum.NanoMeter;
+        }
+    }
+
+    /// <summary>
     /// Cell constants の get/set. 単位はnm, radian.
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Browsable(false)]
     public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellConstants
     {
-        get => (numericBoxA.Value / 10, numericBoxB.Value / 10, numericBoxC.Value / 10, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue);
+        get
+        {
+            return LengthUnit == LengthUnitEnum.NanoMeter ?
+            (numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue) :
+            (numericBoxA.Value / 10, numericBoxB.Value / 10, numericBoxC.Value / 10, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue);
+        }
+
         set
         {
             SuspendLayout();
             SkipEvent = true;
-            numericBoxA.Value = value.A * 10;
-            numericBoxB.Value = value.B * 10;
-            numericBoxC.Value = value.C * 10;
+            numericBoxA.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value.A : value.A * 10;
+            numericBoxB.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value.B : value.B * 10;
+            numericBoxC.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value.C : value.C * 10;
             numericBoxAlpha.RadianValue = value.Alpha;
             numericBoxBeta.RadianValue = value.Beta;
             numericBoxGamma.RadianValue = value.Gamma;
@@ -86,9 +105,21 @@ public partial class SymmetryControl : UserControl
         }
     }
 
-    public double A { get => numericBoxA.Value / 10; set => numericBoxA.Value = value * 10; }
-    public double B { get => numericBoxB.Value / 10; set => numericBoxB.Value = value * 10; }
-    public double C { get => numericBoxC.Value / 10; set => numericBoxC.Value = value * 10; }
+    public double A
+    {
+        get => LengthUnit == LengthUnitEnum.NanoMeter ? numericBoxA.Value : numericBoxA.Value / 10;
+        set => numericBoxA.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value : value * 10;
+    }
+    public double B
+    {
+        get => LengthUnit == LengthUnitEnum.NanoMeter ? numericBoxB.Value : numericBoxB.Value / 10;
+        set => numericBoxB.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value : value * 10;
+    }
+    public double C
+    {
+        get => LengthUnit == LengthUnitEnum.NanoMeter ? numericBoxC.Value: numericBoxC.Value / 10;
+        set => numericBoxC.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value : value * 10;
+    }
     public double Alpha { get => numericBoxAlpha.RadianValue; set => numericBoxAlpha.RadianValue = value; }
     public double Beta { get => numericBoxBeta.RadianValue; set => numericBoxBeta.RadianValue = value; }
     public double Gamma { get => numericBoxGamma.RadianValue; set => numericBoxGamma.RadianValue = value; }
@@ -101,14 +132,19 @@ public partial class SymmetryControl : UserControl
     [Browsable(false)]
     public (double AErr, double BErr, double CErr, double AlphaErr, double BetaErr, double GammaErr) CellConstantsErr
     {
-        get => (numericBoxAErr.Value / 10, numericBoxBErr.Value / 10, numericBoxCErr.Value / 10,
-            numericBoxAlphaErr.RadianValue, numericBoxBetaErr.RadianValue, numericBoxGammaErr.RadianValue);
+        get
+        {
+            return LengthUnit == LengthUnitEnum.NanoMeter ?
+                (numericBoxAErr.Value, numericBoxBErr.Value, numericBoxCErr.Value, numericBoxAlphaErr.RadianValue, numericBoxBetaErr.RadianValue, numericBoxGammaErr.RadianValue) :
+                (numericBoxAErr.Value / 10, numericBoxBErr.Value / 10, numericBoxCErr.Value / 10, numericBoxAlphaErr.RadianValue, numericBoxBetaErr.RadianValue, numericBoxGammaErr.RadianValue);
+        }
+
         set
         {
             SuspendLayout();
-            numericBoxAErr.Value = value.AErr * 10;
-            numericBoxBErr.Value = value.BErr * 10;
-            numericBoxCErr.Value = value.CErr * 10;
+            numericBoxAErr.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value.AErr : value.AErr * 10;
+            numericBoxBErr.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value.BErr : value.BErr * 10;
+            numericBoxCErr.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value.CErr : value.CErr * 10;
             numericBoxAlphaErr.RadianValue = value.AlphaErr;
             numericBoxBetaErr.RadianValue = value.BetaErr;
             numericBoxGammaErr.RadianValue = value.GammaErr;
@@ -150,13 +186,13 @@ public partial class SymmetryControl : UserControl
     {
         comboBoxSearchResult.Items.Clear();
         comboBoxSearchResult.Enabled = false;
-        
+
 
         char[] c;
         if (textBoxSearch.Text.Length == 0)
             return;
         else
-            c = textBoxSearch.Text.replace("sub","_").ToCharArray();//"sub"という文字列は、アンダーバーに変更
+            c = textBoxSearch.Text.replace("sub", "_").ToCharArray();//"sub"という文字列は、アンダーバーに変更
         for (int n = 0; n < SymmetryStatic.TotalSpaceGroupNumber; n++)
         {
             var sym = SymmetryStatic.Symmetries[n];
@@ -467,4 +503,31 @@ public partial class SymmetryControl : UserControl
         ShowError = checkBoxShowError.Checked;
     }
     #endregion
+
+    private void radioButtonNanoMeter_CheckedChanged(object sender, EventArgs e)
+    {
+        var (a, b, c, aErr, bErr, cErr) = (numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAErr.Value, numericBoxBErr.Value, numericBoxCErr.Value);
+        SkipEvent = true;
+        if (LengthUnit == LengthUnitEnum.Angstrom)
+        {
+            numericBoxA.Value = a * 10;
+            numericBoxB.Value = b * 10;
+            numericBoxC.Value = c * 10;
+            numericBoxAErr.Value = aErr * 10;
+            numericBoxBErr.Value = bErr * 10;
+            numericBoxCErr.Value = cErr * 10;
+            labelLengthUnitA.Text = labelLengthUnitB.Text = labelLengthUnitC.Text = "Å";
+        }
+        else
+        {
+            numericBoxA.Value = a / 10;
+            numericBoxB.Value = b / 10;
+            numericBoxC.Value = c / 10;
+            numericBoxAErr.Value = aErr / 10;
+            numericBoxBErr.Value = bErr / 10;
+            numericBoxCErr.Value = cErr / 10;
+            labelLengthUnitA.Text = labelLengthUnitB.Text = labelLengthUnitC.Text = "nm";
+        }
+        SkipEvent = false;
+    }
 }

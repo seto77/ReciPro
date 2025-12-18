@@ -31,6 +31,10 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SymmetryControl));
             groupBox4 = new System.Windows.Forms.GroupBox();
+            panel2 = new System.Windows.Forms.Panel();
+            radioButtonNanoMeter = new System.Windows.Forms.RadioButton();
+            radioButtonAngstrom = new System.Windows.Forms.RadioButton();
+            label1 = new System.Windows.Forms.Label();
             checkBoxShowError = new System.Windows.Forms.CheckBox();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             label48 = new System.Windows.Forms.Label();
@@ -44,9 +48,9 @@
             numericBoxBetaErr = new NumericBox();
             numericBoxA = new NumericBox();
             label26 = new System.Windows.Forms.Label();
-            label45 = new System.Windows.Forms.Label();
+            labelLengthUnitC = new System.Windows.Forms.Label();
             numericBoxGamma = new NumericBox();
-            label18 = new System.Windows.Forms.Label();
+            labelLengthUnitB = new System.Windows.Forms.Label();
             numericBoxBErr = new NumericBox();
             numericBoxB = new NumericBox();
             label24 = new System.Windows.Forms.Label();
@@ -56,7 +60,7 @@
             numericBoxC = new NumericBox();
             numericBoxCErr = new NumericBox();
             numericBoxAErr = new NumericBox();
-            label44 = new System.Windows.Forms.Label();
+            labelLengthUnitA = new System.Windows.Forms.Label();
             groupBoxSymmetry = new System.Windows.Forms.GroupBox();
             comboBoxSpaceGroup = new System.Windows.Forms.ComboBox();
             comboBoxPointGroup = new System.Windows.Forms.ComboBox();
@@ -70,17 +74,48 @@
             panel1 = new System.Windows.Forms.Panel();
             toolTip = new System.Windows.Forms.ToolTip(components);
             groupBox4.SuspendLayout();
+            panel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBoxSymmetry.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(panel2);
             groupBox4.Controls.Add(checkBoxShowError);
             groupBox4.Controls.Add(tableLayoutPanel1);
             resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Name = "groupBox4";
             groupBox4.TabStop = false;
+            // 
+            // panel2
+            // 
+            resources.ApplyResources(panel2, "panel2");
+            panel2.Controls.Add(radioButtonNanoMeter);
+            panel2.Controls.Add(radioButtonAngstrom);
+            panel2.Controls.Add(label1);
+            panel2.Name = "panel2";
+            // 
+            // radioButtonNanoMeter
+            // 
+            resources.ApplyResources(radioButtonNanoMeter, "radioButtonNanoMeter");
+            radioButtonNanoMeter.Name = "radioButtonNanoMeter";
+            radioButtonNanoMeter.UseVisualStyleBackColor = true;
+            radioButtonNanoMeter.CheckedChanged += radioButtonNanoMeter_CheckedChanged;
+            // 
+            // radioButtonAngstrom
+            // 
+            resources.ApplyResources(radioButtonAngstrom, "radioButtonAngstrom");
+            radioButtonAngstrom.Checked = true;
+            radioButtonAngstrom.Name = "radioButtonAngstrom";
+            radioButtonAngstrom.TabStop = true;
+            radioButtonAngstrom.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // checkBoxShowError
             // 
@@ -104,9 +139,9 @@
             tableLayoutPanel1.Controls.Add(numericBoxBetaErr, 6, 1);
             tableLayoutPanel1.Controls.Add(numericBoxA, 1, 0);
             tableLayoutPanel1.Controls.Add(label26, 4, 0);
-            tableLayoutPanel1.Controls.Add(label45, 3, 2);
+            tableLayoutPanel1.Controls.Add(labelLengthUnitC, 3, 2);
             tableLayoutPanel1.Controls.Add(numericBoxGamma, 5, 2);
-            tableLayoutPanel1.Controls.Add(label18, 3, 1);
+            tableLayoutPanel1.Controls.Add(labelLengthUnitB, 3, 1);
             tableLayoutPanel1.Controls.Add(numericBoxBErr, 2, 1);
             tableLayoutPanel1.Controls.Add(numericBoxB, 1, 1);
             tableLayoutPanel1.Controls.Add(label24, 0, 1);
@@ -116,7 +151,7 @@
             tableLayoutPanel1.Controls.Add(numericBoxC, 1, 2);
             tableLayoutPanel1.Controls.Add(numericBoxCErr, 2, 2);
             tableLayoutPanel1.Controls.Add(numericBoxAErr, 2, 0);
-            tableLayoutPanel1.Controls.Add(label44, 3, 0);
+            tableLayoutPanel1.Controls.Add(labelLengthUnitA, 3, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
             // label48
@@ -140,7 +175,7 @@
             numericBoxBeta.RoundErrorAccuracy = 12;
             numericBoxBeta.SkipEventDuringInput = false;
             numericBoxBeta.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip"));
+            toolTip.SetToolTip(numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip1"));
             numericBoxBeta.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // numericBoxAlpha
@@ -154,7 +189,7 @@
             numericBoxAlpha.RoundErrorAccuracy = 12;
             numericBoxAlpha.SkipEventDuringInput = false;
             numericBoxAlpha.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip"));
+            toolTip.SetToolTip(numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip1"));
             numericBoxAlpha.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // label47
@@ -220,7 +255,7 @@
             numericBoxA.RoundErrorAccuracy = 10;
             numericBoxA.SkipEventDuringInput = false;
             numericBoxA.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxA, resources.GetString("numericBoxA.ToolTip"));
+            toolTip.SetToolTip(numericBoxA, resources.GetString("numericBoxA.ToolTip1"));
             numericBoxA.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // label26
@@ -228,10 +263,10 @@
             resources.ApplyResources(label26, "label26");
             label26.Name = "label26";
             // 
-            // label45
+            // labelLengthUnitC
             // 
-            resources.ApplyResources(label45, "label45");
-            label45.Name = "label45";
+            resources.ApplyResources(labelLengthUnitC, "labelLengthUnitC");
+            labelLengthUnitC.Name = "labelLengthUnitC";
             // 
             // numericBoxGamma
             // 
@@ -244,13 +279,13 @@
             numericBoxGamma.RoundErrorAccuracy = 12;
             numericBoxGamma.SkipEventDuringInput = false;
             numericBoxGamma.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxGamma, resources.GetString("numericBoxGamma.ToolTip"));
+            toolTip.SetToolTip(numericBoxGamma, resources.GetString("numericBoxGamma.ToolTip1"));
             numericBoxGamma.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
-            // label18
+            // labelLengthUnitB
             // 
-            resources.ApplyResources(label18, "label18");
-            label18.Name = "label18";
+            resources.ApplyResources(labelLengthUnitB, "labelLengthUnitB");
+            labelLengthUnitB.Name = "labelLengthUnitB";
             // 
             // numericBoxBErr
             // 
@@ -277,7 +312,7 @@
             numericBoxB.RoundErrorAccuracy = 12;
             numericBoxB.SkipEventDuringInput = false;
             numericBoxB.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxB, resources.GetString("numericBoxB.ToolTip"));
+            toolTip.SetToolTip(numericBoxB, resources.GetString("numericBoxB.ToolTip1"));
             numericBoxB.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // label24
@@ -311,7 +346,7 @@
             numericBoxC.RoundErrorAccuracy = 12;
             numericBoxC.SkipEventDuringInput = false;
             numericBoxC.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxC, resources.GetString("numericBoxC.ToolTip"));
+            toolTip.SetToolTip(numericBoxC, resources.GetString("numericBoxC.ToolTip1"));
             numericBoxC.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // numericBoxCErr
@@ -342,10 +377,10 @@
             numericBoxAErr.TabStop = false;
             numericBoxAErr.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
-            // label44
+            // labelLengthUnitA
             // 
-            resources.ApplyResources(label44, "label44");
-            label44.Name = "label44";
+            resources.ApplyResources(labelLengthUnitA, "labelLengthUnitA");
+            labelLengthUnitA.Name = "labelLengthUnitA";
             // 
             // groupBoxSymmetry
             // 
@@ -448,6 +483,8 @@
             Name = "SymmetryControl";
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             groupBoxSymmetry.ResumeLayout(false);
@@ -470,11 +507,8 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label45;
         private NumericBox numericBoxAErr;
-        private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label24;
         private NumericBox numericBoxCErr;
         private NumericBox numericBoxBErr;
@@ -495,5 +529,14 @@
         private System.Windows.Forms.CheckBox checkBoxShowError;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.RadioButton radioButtonAngstrom;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton radioButtonNanoMeter;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelLengthUnitA;
+        private System.Windows.Forms.Label labelLengthUnitB;
+        private System.Windows.Forms.Label labelLengthUnitC;
+
+
     }
 }

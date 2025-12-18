@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScatteringFactor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScatteringFactor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -67,6 +67,7 @@
             checkBoxBragBrentano = new System.Windows.Forms.CheckBox();
             waveLengthControl1 = new WaveLengthControl();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            label8 = new System.Windows.Forms.Label();
             checkBoxTest = new System.Windows.Forms.CheckBox();
             label1 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -84,21 +85,25 @@
             numericBoxK_min = new NumericBox();
             numericBoxH_max = new NumericBox();
             numericBoxH_min = new NumericBox();
+            panel2 = new System.Windows.Forms.Panel();
+            radioButtonNanoMeter = new System.Windows.Forms.RadioButton();
+            radioButtonAngstrom = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownThresholdD).BeginInit();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView2
             // 
-            resources.ApplyResources(dataGridView2, "dataGridView2");
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.AllowUserToDeleteRows = false;
             dataGridView2.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(dataGridView2, "dataGridView2");
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { dataGridViewTextBoxColumn1, K, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, F, dataGridViewTextBoxColumn11, RelInt, Condition });
@@ -116,7 +121,6 @@
             dataGridView2.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridView2.RowTemplate.Height = 21;
             dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            toolTip.SetToolTip(dataGridView2, resources.GetString("dataGridView2.ToolTip"));
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -243,13 +247,12 @@
             // 
             // numericUpDownThresholdD
             // 
-            resources.ApplyResources(numericUpDownThresholdD, "numericUpDownThresholdD");
             numericUpDownThresholdD.DecimalPlaces = 4;
+            resources.ApplyResources(numericUpDownThresholdD, "numericUpDownThresholdD");
             numericUpDownThresholdD.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownThresholdD.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             numericUpDownThresholdD.Minimum = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownThresholdD.Name = "numericUpDownThresholdD";
-            toolTip.SetToolTip(numericUpDownThresholdD, resources.GetString("numericUpDownThresholdD.ToolTip"));
             numericUpDownThresholdD.Value = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDownThresholdD.ValueChanged += numericUpDownThresholdD_ValueChanged;
             // 
@@ -257,7 +260,6 @@
             // 
             resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
-            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // checkBoxHideProhibitedPlanes
             // 
@@ -265,7 +267,6 @@
             checkBoxHideProhibitedPlanes.Checked = true;
             checkBoxHideProhibitedPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxHideProhibitedPlanes.Name = "checkBoxHideProhibitedPlanes";
-            toolTip.SetToolTip(checkBoxHideProhibitedPlanes, resources.GetString("checkBoxHideProhibitedPlanes.ToolTip"));
             checkBoxHideProhibitedPlanes.CheckedChanged += numericUpDownThresholdD_ValueChanged;
             // 
             // checkBoxHideEquivalentPlane
@@ -274,20 +275,17 @@
             checkBoxHideEquivalentPlane.Checked = true;
             checkBoxHideEquivalentPlane.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxHideEquivalentPlane.Name = "checkBoxHideEquivalentPlane";
-            toolTip.SetToolTip(checkBoxHideEquivalentPlane, resources.GetString("checkBoxHideEquivalentPlane.ToolTip"));
             checkBoxHideEquivalentPlane.CheckedChanged += numericUpDownThresholdD_ValueChanged;
             // 
             // label13
             // 
             resources.ApplyResources(label13, "label13");
             label13.Name = "label13";
-            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
             // 
             // buttonCopyClipboard
             // 
             resources.ApplyResources(buttonCopyClipboard, "buttonCopyClipboard");
             buttonCopyClipboard.Name = "buttonCopyClipboard";
-            toolTip.SetToolTip(buttonCopyClipboard, resources.GetString("buttonCopyClipboard.ToolTip"));
             buttonCopyClipboard.UseVisualStyleBackColor = true;
             buttonCopyClipboard.Click += buttonCopyClipBoard_Click;
             // 
@@ -295,13 +293,11 @@
             // 
             resources.ApplyResources(label18, "label18");
             label18.Name = "label18";
-            toolTip.SetToolTip(label18, resources.GetString("label18.ToolTip"));
             // 
             // checkBoxBragBrentano
             // 
             resources.ApplyResources(checkBoxBragBrentano, "checkBoxBragBrentano");
             checkBoxBragBrentano.Name = "checkBoxBragBrentano";
-            toolTip.SetToolTip(checkBoxBragBrentano, resources.GetString("checkBoxBragBrentano.ToolTip"));
             checkBoxBragBrentano.CheckedChanged += checkBoxBragBrentano_CheckedChanged;
             // 
             // waveLengthControl1
@@ -312,18 +308,22 @@
             waveLengthControl1.Monochrome = true;
             waveLengthControl1.Name = "waveLengthControl1";
             waveLengthControl1.ShowWaveSource = true;
-            toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
             waveLengthControl1.WaveLength = 0.1541871066667D;
             waveLengthControl1.WaveSource = WaveSource.Xray;
             waveLengthControl1.XrayWaveSourceElementNumber = 29;
             waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka;
             waveLengthControl1.WavelengthChanged += waveLengthControl1_WavelengthChanged;
             // 
+            // label8
+            // 
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
+            // 
             // checkBoxTest
             // 
             resources.ApplyResources(checkBoxTest, "checkBoxTest");
             checkBoxTest.Name = "checkBoxTest";
-            toolTip.SetToolTip(checkBoxTest, resources.GetString("checkBoxTest.ToolTip"));
             checkBoxTest.UseVisualStyleBackColor = true;
             checkBoxTest.CheckedChanged += checkBoxTest_CheckedChanged;
             // 
@@ -331,41 +331,34 @@
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // label5
             // 
             resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
-            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
-            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // label7
             // 
             resources.ApplyResources(label7, "label7");
             label7.Name = "label7";
-            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
             // 
             // panel1
             // 
-            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(numericBoxL_step);
             panel1.Controls.Add(numericBoxK_step);
             panel1.Controls.Add(numericBoxH_step);
@@ -381,123 +374,129 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label3);
+            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // numericBoxL_step
             // 
-            resources.ApplyResources(numericBoxL_step, "numericBoxL_step");
             numericBoxL_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxL_step.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxL_step, "numericBoxL_step");
             numericBoxL_step.Maximum = 1D;
             numericBoxL_step.Minimum = 0.001D;
             numericBoxL_step.Name = "numericBoxL_step";
             numericBoxL_step.RadianValue = 0.00017453292519943296D;
-            numericBoxL_step.RoundErrorAccuracy = -1;
             numericBoxL_step.ShowUpDown = true;
             numericBoxL_step.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxL_step, resources.GetString("numericBoxL_step.ToolTip"));
             numericBoxL_step.Value = 0.01D;
             numericBoxL_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxK_step
             // 
-            resources.ApplyResources(numericBoxK_step, "numericBoxK_step");
             numericBoxK_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxK_step.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxK_step, "numericBoxK_step");
             numericBoxK_step.Maximum = 1D;
             numericBoxK_step.Minimum = 0.001D;
             numericBoxK_step.Name = "numericBoxK_step";
             numericBoxK_step.RadianValue = 0.00017453292519943296D;
-            numericBoxK_step.RoundErrorAccuracy = -1;
             numericBoxK_step.ShowUpDown = true;
             numericBoxK_step.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxK_step, resources.GetString("numericBoxK_step.ToolTip"));
             numericBoxK_step.Value = 0.01D;
             numericBoxK_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_step
             // 
-            resources.ApplyResources(numericBoxH_step, "numericBoxH_step");
             numericBoxH_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxH_step.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxH_step, "numericBoxH_step");
             numericBoxH_step.Maximum = 1D;
             numericBoxH_step.Minimum = 0.001D;
             numericBoxH_step.Name = "numericBoxH_step";
             numericBoxH_step.RadianValue = 0.00017453292519943296D;
-            numericBoxH_step.RoundErrorAccuracy = -1;
             numericBoxH_step.ShowUpDown = true;
             numericBoxH_step.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxH_step, resources.GetString("numericBoxH_step.ToolTip"));
             numericBoxH_step.Value = 0.01D;
             numericBoxH_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxL_max
             // 
-            resources.ApplyResources(numericBoxL_max, "numericBoxL_max");
             numericBoxL_max.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxL_max, "numericBoxL_max");
             numericBoxL_max.Name = "numericBoxL_max";
             numericBoxL_max.RadianValue = 0.017453292519943295D;
-            numericBoxL_max.RoundErrorAccuracy = -1;
             numericBoxL_max.ShowUpDown = true;
-            toolTip.SetToolTip(numericBoxL_max, resources.GetString("numericBoxL_max.ToolTip"));
             numericBoxL_max.Value = 1D;
             numericBoxL_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxK_max
             // 
-            resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
             numericBoxK_max.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
             numericBoxK_max.Name = "numericBoxK_max";
-            numericBoxK_max.RoundErrorAccuracy = -1;
             numericBoxK_max.ShowUpDown = true;
-            toolTip.SetToolTip(numericBoxK_max, resources.GetString("numericBoxK_max.ToolTip"));
             numericBoxK_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxL_min
             // 
-            resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
             numericBoxL_min.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
             numericBoxL_min.Name = "numericBoxL_min";
-            numericBoxL_min.RoundErrorAccuracy = -1;
             numericBoxL_min.ShowUpDown = true;
-            toolTip.SetToolTip(numericBoxL_min, resources.GetString("numericBoxL_min.ToolTip"));
             numericBoxL_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxK_min
             // 
-            resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
             numericBoxK_min.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
             numericBoxK_min.Name = "numericBoxK_min";
-            numericBoxK_min.RoundErrorAccuracy = -1;
             numericBoxK_min.ShowUpDown = true;
-            toolTip.SetToolTip(numericBoxK_min, resources.GetString("numericBoxK_min.ToolTip"));
             numericBoxK_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_max
             // 
-            resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
             numericBoxH_max.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
             numericBoxH_max.Name = "numericBoxH_max";
-            numericBoxH_max.RoundErrorAccuracy = -1;
             numericBoxH_max.ShowUpDown = true;
-            toolTip.SetToolTip(numericBoxH_max, resources.GetString("numericBoxH_max.ToolTip"));
             numericBoxH_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_min
             // 
-            resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
             numericBoxH_min.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
             numericBoxH_min.Name = "numericBoxH_min";
-            numericBoxH_min.RoundErrorAccuracy = -1;
             numericBoxH_min.ShowUpDown = true;
-            toolTip.SetToolTip(numericBoxH_min, resources.GetString("numericBoxH_min.ToolTip"));
             numericBoxH_min.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // panel2
+            // 
+            resources.ApplyResources(panel2, "panel2");
+            panel2.Controls.Add(radioButtonNanoMeter);
+            panel2.Controls.Add(radioButtonAngstrom);
+            panel2.Controls.Add(label8);
+            panel2.Name = "panel2";
+            // 
+            // radioButtonNanoMeter
+            // 
+            resources.ApplyResources(radioButtonNanoMeter, "radioButtonNanoMeter");
+            radioButtonNanoMeter.Name = "radioButtonNanoMeter";
+            radioButtonNanoMeter.UseVisualStyleBackColor = true;
+            radioButtonNanoMeter.CheckedChanged += radioButtonNanoMeter_CheckedChanged;
+            // 
+            // radioButtonAngstrom
+            // 
+            resources.ApplyResources(radioButtonAngstrom, "radioButtonAngstrom");
+            radioButtonAngstrom.Checked = true;
+            radioButtonAngstrom.Name = "radioButtonAngstrom";
+            radioButtonAngstrom.TabStop = true;
+            radioButtonAngstrom.UseVisualStyleBackColor = true;
             // 
             // FormScatteringFactor
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            Controls.Add(panel2);
             Controls.Add(checkBoxTest);
             Controls.Add(waveLengthControl1);
             Controls.Add(buttonCopyClipboard);
@@ -512,7 +511,6 @@
             Controls.Add(panel1);
             Name = "FormScatteringFactor";
             ShowIcon = false;
-            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             FormClosing += FormCrystallographicInformation_FormClosing;
             Load += FormCrystallographicInformation_Load;
             VisibleChanged += FormScatteringFactor_VisibleChanged;
@@ -522,6 +520,8 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDownThresholdD).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -571,5 +571,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn RelInt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Condition;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton radioButtonNanoMeter;
+        private System.Windows.Forms.RadioButton radioButtonAngstrom;
+        private System.Windows.Forms.Label label8;
     }
 }
