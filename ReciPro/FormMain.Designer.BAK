@@ -1,4 +1,4 @@
-﻿﻿namespace ReciPro
+﻿namespace ReciPro
 {
     partial class FormMain
     {
@@ -1563,3 +1563,4 @@
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
     }
 }
+

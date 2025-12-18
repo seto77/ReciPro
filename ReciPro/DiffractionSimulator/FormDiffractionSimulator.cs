@@ -1,11 +1,8 @@
 ﻿#region using
 using BitMiracle.LibTiff.Classic;
-using Crystallography;
-using Crystallography.Mathematics;
 using Crystallography.OpenGL;
 using MathNet.Numerics;
 using Microsoft.Scripting.Utils;
-using OpenTK;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -14,7 +11,6 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +18,6 @@ using System.Windows.Forms;
 using V3 = OpenTK.Mathematics.Vector3d;
 using OpenTK.Mathematics;
 using ZLinq;
-using System.Threading;
 #endregion
 
 namespace ReciPro;

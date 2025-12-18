@@ -1,7 +1,5 @@
 #region using
-using Crystallography.Mathematics;
 using Crystallography.OpenGL;
-using MathNet.Numerics;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -10,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Windows.Devices.Radios;
 using V3 = OpenTK.Mathematics.Vector3d;
 #endregion
 namespace ReciPro;
@@ -277,7 +274,10 @@ public partial class FormStereonet : Form
     private readonly List<double> cos = new(360);
     private readonly List<double> tan = new(360);
 
-    //ステレオネットの輪郭を描く
+    /// <summary>
+    /// ステレオネットの輪郭を描く
+    /// </summary>
+    /// <param name="g"></param>
     private void DrawOutline(Graphics g)
     {
         if (sin.Count == 0)
@@ -398,10 +398,13 @@ public partial class FormStereonet : Form
         g.DrawLine(pen90, -1f, 0f, 1f, 0f);
     }
 
-    //ステレオネット中の点を描く
+    /// <summary>
+    /// ステレオネット中の点を描く
+    /// </summary>
+    /// <param name="g"></param>
     private void DrawStereoNet(Graphics g)
     {
-        if (formMain == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
+        if (formMain == null || formMain.Crystal == null||  formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
             return;
         var crystal = formMain.Crystal;
         var rot = crystal.RotationMatrix;

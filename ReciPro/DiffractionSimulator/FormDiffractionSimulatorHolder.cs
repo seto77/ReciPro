@@ -1,10 +1,8 @@
-﻿using Mono.Unix.Native;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
-using Windows.Devices.Input.Preview;
 
 namespace ReciPro;
 
@@ -31,6 +29,8 @@ public partial class FormDiffractionSimulatorHolder : Form
     private List<(Vector3DBase Vec, (int U, int V, int W) Index)> ZoneAxes = new();
 
     #endregion
+
+    #region コンストラクタ、ロードイベント
     public FormDiffractionSimulatorHolder()
     {
         InitializeComponent();
@@ -38,13 +38,16 @@ public partial class FormDiffractionSimulatorHolder : Form
 
     private void FormDiffractionSimulatorHolder_Load(object sender, EventArgs e)
     {
+        setVector();
         Draw();
 
         timer.Interval = 500;
         timer.Tick += ((sender, e) => graphicsBox.Refresh());
         timer.Start();
     }
+    #endregion
 
+    #region 描画
     //ステレオネットを描く
     public void Draw(Graphics g = null, bool renewOutline = true)
     {
@@ -56,11 +59,15 @@ public partial class FormDiffractionSimulatorHolder : Form
         g.Clear(colorControlBackGround.Color);
         g.SmoothingMode = SmoothingMode.AntiAlias;
         DrawOutline(g);
+        DrawStereoNet(g);
 
         graphicsBox.Refresh();
     }
 
-    //ステレオネットの輪郭を描く
+    /// <summary>
+    /// ステレオネットの輪郭を描く
+    /// </summary>
+    /// <param name="g"></param>
     private void DrawOutline(Graphics g)
     {
         var (magSin, magCos) = ((float)(mag * Math.Sin(numericBoxPrimaryAxisDirection.RadianValue)), (float)(mag * Math.Cos(numericBoxPrimaryAxisDirection.RadianValue)));
@@ -74,7 +81,6 @@ public partial class FormDiffractionSimulatorHolder : Form
         var pen1 = new Pen(new SolidBrush(colorControl1DegLine.Color), (float)(1 / mag));
         var pen10 = new Pen(new SolidBrush(colorControl10DegLine.Color), (float)(2 / mag));
         var pen90 = new Pen(new SolidBrush(colorControl90DegLine.Color), (float)(3 / mag));
-
 
         var wList = new List<int>();
         for (int i = 1; i < 90; i++)
@@ -116,6 +122,44 @@ public partial class FormDiffractionSimulatorHolder : Form
         //g.DrawLine()
     }
 
+    /// <summary>
+    /// ステレオネットに晶帯軸を描く
+    /// </summary>
+    /// <param name="g"></param>
+    private void DrawStereoNet(Graphics g)
+    {
+        if (ZoneAxes.Count == 0)
+            setVector();
+        g.Transform = new Matrix((float)mag, 0, 0, (float)mag, (float)(graphicsBox.ClientSize.Width / 2.0 - mag * centerPt.X), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * centerPt.Y));
+        var rot = crystal.RotationMatrix;
+
+        var font = new Font("Tahoma", trackBarStrSize.Value / (float)mag / 7f);
+        var brushUnique = new SolidBrush(colorControlUniqueAxis.Color);
+        var brushGeneral = new SolidBrush(colorControlGeneralAxis.Color);
+
+        foreach (var zone in ZoneAxes)
+        {
+            var radius = trackBarPointSize.Value / mag;
+            var srcPt = Stereonet.ConvertVectorToWulff(rot * zone.Vec);
+            var (u, v, w) = zone.Index;
+            var brush = (u, v, w) switch
+            {
+                (1, 0, 0) or (0, 1, 0) or (0, 0, 1) or (-1, 0, 0) or (0, -1, 0) or (0, 0, -1) => brushUnique,
+                _ => brushGeneral,
+            };
+
+            if (srcPt.X * srcPt.X + srcPt.Y * srcPt.Y <= 1.2)
+            {
+                g.FillEllipse(brush, new RectangleF((float)(srcPt.X - radius), (float)(-srcPt.Y - radius), (float)(radius * 2), (float)(radius * 2)));
+                if (checkBoxShowIndexLabels.Checked)
+                    g.DrawString($"[{u} {v} {w}]", font, brush, (float)(srcPt.X + radius), (float)(-srcPt.Y + radius));
+            }
+        }
+
+    }
+
+    #endregion
+
     #region 座標変換
     private PointF convertSrcToClient(PointD pt)
  => new((float)(graphicsBox.ClientSize.Width / 2.0 + mag * (pt.X - centerPt.X)), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * (pt.Y - centerPt.Y)));
@@ -128,6 +172,17 @@ public partial class FormDiffractionSimulatorHolder : Form
     private PointD convertClientToSrc(int x, int y) => convertClientToSrc(new Point(x, y));
 
     private Vector3DBase convertSrcToVector(PointD pt) => Vector3D.SphereVector(pt);
+
+    private (double TiltX, double TiltY) convertSrcToHolder(PointD pt)
+    {
+        var sin = Math.Sin(-numericBoxPrimaryAxisDirection.RadianValue);
+        var cos = Math.Cos(-numericBoxPrimaryAxisDirection.RadianValue);
+        pt = new PointD(cos * pt.X - sin * pt.Y, sin * pt.X + cos * pt.Y);
+        double tiltY = Math.Asin(2 * pt.Y / (1 + pt.X * pt.X + pt.Y * pt.Y));
+        double tiltX = (Math.Cos(tiltY) != 0) ? Math.Asin(2 * pt.X / (1 + pt.X * pt.X + pt.Y * pt.Y) / Math.Cos(tiltY)) : 0;
+        var sign = radioButtonTiltY_Plus.Checked ? 1 : -1;
+        return (tiltX, sign * tiltY);
+    }
     #endregion
 
     #region graphicsBox のイベント
@@ -139,23 +194,29 @@ public partial class FormDiffractionSimulatorHolder : Form
     private void graphicsBox_MouseMove(object sender, MouseEventArgs e)
     {
         var pt = convertClientToSrc(e.Location);
-        var sin = Math.Sin(-numericBoxPrimaryAxisDirection.RadianValue);
-        var cos = Math.Cos(-numericBoxPrimaryAxisDirection.RadianValue);
-        pt = new PointD(cos * pt.X - sin * pt.Y, sin * pt.X + cos * pt.Y);
-        double tiltY = Math.Asin(2 * pt.Y / (1 + pt.X * pt.X + pt.Y * pt.Y));
-        double tiltX = (Math.Cos(tiltY) != 0) ? Math.Asin(2 * pt.X / (1 + pt.X * pt.X + pt.Y * pt.Y) / Math.Cos(tiltY)) : 0;
-        var sign = radioButtonTiltY_Plus.Checked ? 1 : -1;
-        label1MousePosition.Text = $"Tilt X: {tiltX / Math.PI * 180:f1}°, Y: {sign*tiltY/ Math.PI * 180:f1}°";
+        var (tiltX, tiltY) = convertSrcToHolder(pt);
+
+        label1MousePosition.Text = $"Tilt X: {tiltX / Math.PI * 180:f1}°, Y: {tiltY / Math.PI * 180:f1}°";
     }
     #endregion
 
+    #region 晶帯軸をリセットし再計算
     private void setVector()
     {
+        ZoneAxes.Clear();
         if (crystal.A * crystal.B * crystal.C != 0)
         {
-            //crystal.SetVectorOfAxis((int)numericBoxU.Value, (int)numericBoxV.Value, (int)numericBoxW.Value);
+            for (int u = -numericBoxU.ValueInteger; u <= numericBoxU.ValueInteger; u++)
+                for (int v = -numericBoxV.ValueInteger; v <= numericBoxV.ValueInteger; v++)
+                    for (int w = -numericBoxW.ValueInteger; w <= numericBoxW.ValueInteger; w++)
+                    {
+                        if (u == 0 && v == 0 && w == 0) continue;
+                        if (Algebra.Irreducible(u, v, w) == 1)
+                            ZoneAxes.Add(((u * crystal.A_Axis + v * crystal.B_Axis + w * crystal.C_Axis), (u, v, w)));
+                    }
         }
     }
+    #endregion
 
     private void buttonLink_Click(object sender, EventArgs e)
     {
@@ -166,5 +227,9 @@ public partial class FormDiffractionSimulatorHolder : Form
     private void numericBoxDrawingArea_ValueChanged(object sender, EventArgs e) => Draw();
     private void numericBoxPrimaryAxisDirection_ValueChanged(object sender, EventArgs e) => Draw();
 
-    
+    private void numericBoxU_ValueChanged(object sender, EventArgs e)
+    {
+        setVector();
+        Draw();
+    }
 }

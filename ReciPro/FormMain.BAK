@@ -155,7 +155,15 @@ public partial class FormMain : Form
 
     public static string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
 
-    public Crystal Crystal { get => crystalControl.Crystal; set => crystalControl.Crystal = Crystal; }
+    public Crystal Crystal
+    {
+        get => crystalControl?.Crystal;
+        set
+        {
+            if(crystalControl != null)
+            crystalControl.Crystal = Crystal;
+        }
+    }
 
     public Crystal[] Crystals
     {
@@ -1200,7 +1208,7 @@ public partial class FormMain : Form
 
     private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (listBox.SelectedIndex >= 0)
+        if (crystalControl!=null && listBox.SelectedIndex >= 0)
             crystalControl.Crystal = (Crystal)listBox.SelectedItem;
         DrawAxes();
     }

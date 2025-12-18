@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Crystallography.Mathematics;
+namespace Crystallography;
 
 static public class Algebra
 {

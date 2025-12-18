@@ -85,12 +85,18 @@
             numericBoxU = new NumericBox();
             label5 = new System.Windows.Forms.Label();
             label1MousePosition = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
+            trackBarPointSize = new System.Windows.Forms.TrackBar();
+            trackBarStrSize = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             groupBox1.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox5.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             SuspendLayout();
             // 
             // graphicsBox
@@ -599,8 +605,12 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(label18);
+            groupBox5.Controls.Add(label17);
+            groupBox5.Controls.Add(trackBarPointSize);
             groupBox5.Controls.Add(flowLayoutPanel1);
             groupBox5.Controls.Add(numericBoxDrawingArea);
+            groupBox5.Controls.Add(trackBarStrSize);
             groupBox5.Controls.Add(checkBoxTiltDirections);
             groupBox5.Controls.Add(checkBox1DegLine);
             groupBox5.Controls.Add(checkBoxShowIndexLabels);
@@ -614,14 +624,13 @@
             groupBox5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             groupBox5.Location = new System.Drawing.Point(4, 404);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new System.Drawing.Size(650, 94);
+            groupBox5.Size = new System.Drawing.Size(650, 104);
             groupBox5.TabIndex = 84;
             groupBox5.TabStop = false;
             groupBox5.Text = "Stereonet properties";
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.AutoSize = true;
             flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             flowLayoutPanel1.Controls.Add(colorControlBackGround);
             flowLayoutPanel1.Controls.Add(colorControlHolder);
@@ -632,9 +641,9 @@
             flowLayoutPanel1.Controls.Add(colorControlGeneralAxis);
             flowLayoutPanel1.Controls.Add(colorControlTiltX);
             flowLayoutPanel1.Controls.Add(colorControlTiltY);
-            flowLayoutPanel1.Location = new System.Drawing.Point(7, 66);
+            flowLayoutPanel1.Location = new System.Drawing.Point(7, 58);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(571, 20);
+            flowLayoutPanel1.Size = new System.Drawing.Size(308, 41);
             flowLayoutPanel1.TabIndex = 93;
             // 
             // colorControlBackGround
@@ -800,7 +809,7 @@
             colorControlUniqueAxis.GreenF = 0F;
             colorControlUniqueAxis.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             colorControlUniqueAxis.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlUniqueAxis.Location = new System.Drawing.Point(295, 0);
+            colorControlUniqueAxis.Location = new System.Drawing.Point(0, 20);
             colorControlUniqueAxis.Margin = new System.Windows.Forms.Padding(0);
             colorControlUniqueAxis.Name = "colorControlUniqueAxis";
             colorControlUniqueAxis.Red = 139;
@@ -829,7 +838,7 @@
             colorControlGeneralAxis.GreenF = 0F;
             colorControlGeneralAxis.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             colorControlGeneralAxis.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlGeneralAxis.Location = new System.Drawing.Point(356, 0);
+            colorControlGeneralAxis.Location = new System.Drawing.Point(61, 20);
             colorControlGeneralAxis.Margin = new System.Windows.Forms.Padding(0);
             colorControlGeneralAxis.Name = "colorControlGeneralAxis";
             colorControlGeneralAxis.Red = 255;
@@ -857,7 +866,7 @@
             colorControlTiltX.GreenF = 0.784313738F;
             colorControlTiltX.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             colorControlTiltX.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlTiltX.Location = new System.Drawing.Point(453, 0);
+            colorControlTiltX.Location = new System.Drawing.Point(158, 20);
             colorControlTiltX.Margin = new System.Windows.Forms.Padding(0);
             colorControlTiltX.Name = "colorControlTiltX";
             colorControlTiltX.Red = 0;
@@ -884,7 +893,7 @@
             colorControlTiltY.GreenF = 0F;
             colorControlTiltY.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             colorControlTiltY.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlTiltY.Location = new System.Drawing.Point(512, 0);
+            colorControlTiltY.Location = new System.Drawing.Point(217, 20);
             colorControlTiltY.Margin = new System.Windows.Forms.Padding(0);
             colorControlTiltY.Name = "colorControlTiltY";
             colorControlTiltY.Red = 255;
@@ -899,7 +908,7 @@
             numericBoxDrawingArea.Font = new System.Drawing.Font("メイリオ", 9F);
             numericBoxDrawingArea.FooterText = "°";
             numericBoxDrawingArea.HeaderText = "Drawing area";
-            numericBoxDrawingArea.Location = new System.Drawing.Point(7, 28);
+            numericBoxDrawingArea.Location = new System.Drawing.Point(7, 27);
             numericBoxDrawingArea.Margin = new System.Windows.Forms.Padding(0);
             numericBoxDrawingArea.Maximum = 90D;
             numericBoxDrawingArea.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -980,6 +989,7 @@
             numericBoxW.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxW.ThonsandsSeparator = true;
             numericBoxW.Value = 2D;
+            numericBoxW.ReadOnlyChanged += numericBoxU_ValueChanged;
             // 
             // label16
             // 
@@ -1013,6 +1023,7 @@
             numericBoxV.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxV.ThonsandsSeparator = true;
             numericBoxV.Value = 2D;
+            numericBoxV.ValueChanged += numericBoxU_ValueChanged;
             // 
             // label15
             // 
@@ -1056,6 +1067,7 @@
             numericBoxU.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxU.ThonsandsSeparator = true;
             numericBoxU.Value = 2D;
+            numericBoxU.ValueChanged += numericBoxU_ValueChanged;
             // 
             // label5
             // 
@@ -1079,11 +1091,59 @@
             label1MousePosition.TabIndex = 82;
             label1MousePosition.Text = "Tilt-X: ##.#°    Tilt-Y:##.# °";
             // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label17.Location = new System.Drawing.Point(316, 58);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(68, 17);
+            label17.TabIndex = 68;
+            label17.Text = "String size";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label18.Location = new System.Drawing.Point(321, 80);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(63, 17);
+            label18.TabIndex = 69;
+            label18.Text = "Point size";
+            // 
+            // trackBarPointSize
+            // 
+            trackBarPointSize.AutoSize = false;
+            trackBarPointSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            trackBarPointSize.Location = new System.Drawing.Point(384, 81);
+            trackBarPointSize.Maximum = 20;
+            trackBarPointSize.Minimum = 1;
+            trackBarPointSize.Name = "trackBarPointSize";
+            trackBarPointSize.Size = new System.Drawing.Size(80, 16);
+            trackBarPointSize.TabIndex = 65;
+            trackBarPointSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            trackBarPointSize.Value = 5;
+            // 
+            // trackBarStrSize
+            // 
+            trackBarStrSize.AutoSize = false;
+            trackBarStrSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            trackBarStrSize.Location = new System.Drawing.Point(384, 59);
+            trackBarStrSize.Maximum = 200;
+            trackBarStrSize.Minimum = 1;
+            trackBarStrSize.Name = "trackBarStrSize";
+            trackBarStrSize.Size = new System.Drawing.Size(80, 16);
+            trackBarStrSize.TabIndex = 66;
+            trackBarStrSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            trackBarStrSize.Value = 80;
+            // 
             // FormDiffractionSimulatorHolder
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(658, 500);
+            ClientSize = new System.Drawing.Size(658, 513);
             Controls.Add(label1MousePosition);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);
@@ -1104,6 +1164,8 @@
             groupBox5.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1172,5 +1234,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public ColorControl colorControlHolder;
         private System.Windows.Forms.Label label1MousePosition;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TrackBar trackBarPointSize;
+        private System.Windows.Forms.TrackBar trackBarStrSize;
     }
 }

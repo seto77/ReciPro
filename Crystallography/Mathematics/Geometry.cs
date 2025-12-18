@@ -1,12 +1,10 @@
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
-using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using V3d = OpenTK.Mathematics.Vector3d;
-using OpenTK.Graphics;
 using ZLinq;
 namespace Crystallography;
 
