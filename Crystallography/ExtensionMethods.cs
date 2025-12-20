@@ -449,6 +449,14 @@ public static class GraphicsAlpha
     }
     public static void DrawCross(this Graphics g, Pen pen, PointD p, double size) => g.DrawCross(pen, p.X, p.Y, size);
     #endregion
+    public static void DrawEllipse(this Graphics g, Pen pen, double x, double y, double width, double height)
+        => g.DrawEllipse(pen, (float)x, (float)y, (float)width, (float)height);
+    public static void DrawEllipse(this Graphics g, Pen pen, RectangleD rect)
+       => g.DrawEllipse(pen, rect.ToRectangleF());
+    public static void FillEllipse(this Graphics g, Brush brush, double x, double y, double width, double height)
+        => g.FillEllipse(brush, (float)x, (float)y, (float)width, (float)height);
+    public static void FillEllipse(this Graphics g, Brush brush, RectangleD rect)
+       => g.FillEllipse(brush, rect.ToRectangleF());
 
     public static void FillPolygon(this Graphics g, Brush brush, PointD[] points, System.Drawing.Drawing2D.FillMode fillMode)
         => g.FillPolygon(brush, points.Select(p => p.ToPointF()).ToArray(), fillMode);
@@ -459,6 +467,8 @@ public static class GraphicsAlpha
     public static void FillPie(this Graphics g, Brush brush, double x, double y, double width, double height, double startAngle, double sweepAngle)
         => g.FillPie(brush, (float)x, (float)y, (float)width, (float)height, (float)startAngle, (float)sweepAngle);
 
+    public static void DrawString(this Graphics g, string s, Font font, Brush brush, double x, double y)
+        => g.DrawString(s, font, brush, (float)x, (float)y);
 
     static Dictionary<(int Alpha, Color Color), SolidBrush> solidBrushDic = [];
 

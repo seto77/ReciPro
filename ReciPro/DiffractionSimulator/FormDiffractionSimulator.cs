@@ -38,7 +38,7 @@ public partial class FormDiffractionSimulator : Form
     private GLControlAlpha glControlZsort;
     private GLControlAlpha glControlOIT;
 
-    private readonly System.Windows.Forms.Timer timer = new();
+    private readonly Timer timer = new();
     #endregion
 
     #region フォームのプロパティ
@@ -1835,6 +1835,10 @@ public partial class FormDiffractionSimulator : Form
     {
         SetVector(true);
         Draw();
+
+        if(FormDiffractionSimulatorHolder.Visible)
+            FormDiffractionSimulatorHolder.CrystalChanged();
+
     }
     #endregion
 
@@ -3266,5 +3270,16 @@ public partial class FormDiffractionSimulator : Form
         FormDiffractionSimulatorHolder.Visible = true;
         System.Threading.Thread.Sleep(100);
         FormDiffractionSimulatorHolder.Draw();
+    }
+
+    /// <summary>
+    /// メインウィンドウから回転行列が変更されたときに呼び出される。
+    /// </summary>
+    /// <exception cref="NotImplementedException"></exception>
+    internal void RotationChanged()
+    {
+        Draw();
+        if (FormDiffractionSimulatorHolder.Visible)
+            FormDiffractionSimulatorHolder.RotationChanged();
     }
 }

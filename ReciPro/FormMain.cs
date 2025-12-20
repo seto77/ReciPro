@@ -708,7 +708,8 @@ public partial class FormMain : Form
             FormStereonet.Draw();
 
         if (FormDiffractionSimulator.Visible)
-            FormDiffractionSimulator.Draw();
+            FormDiffractionSimulator.RotationChanged();
+        //FormDiffractionSimulator.Draw();
 
         if (FormImageSimulator.Visible)
             FormImageSimulator.RotationChanged();
