@@ -347,11 +347,5 @@ public partial class FormDiffractionSimulatorHolder : Form
         FormDiffractionSimulator.formMain.Rotate((0, 0, 1), Math.PI);
     }
 
-    private void buttonCalibrate_Click(object sender, EventArgs e)
-    {
-        (int u, int v, int w, double x, double y) ref1 = (numericBoxCalibU1.ValueInteger, numericBoxCalibV1.ValueInteger, numericBoxCalibW1.ValueInteger, numericBoxCalibTiltX1.RadianValue, numericBoxCalibTiltY1.RadianValue);
-        (int u, int v, int w, double x, double y) ref2 = (numericBoxCalibU2.ValueInteger, numericBoxCalibV2.ValueInteger, numericBoxCalibW2.ValueInteger, numericBoxCalibTiltX2.RadianValue, numericBoxCalibTiltY2.RadianValue);
-    
-    
-    }
+ 
 }

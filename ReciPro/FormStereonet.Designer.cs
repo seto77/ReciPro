@@ -169,17 +169,20 @@ namespace ReciPro
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             groupBox5 = new System.Windows.Forms.GroupBox();
             panelSpecifiedIndices = new System.Windows.Forms.Panel();
-            checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
             buttonRemoveIndex = new System.Windows.Forms.Button();
             buttonAddIndex = new System.Windows.Forms.Button();
             listBoxSpecifiedIndices = new System.Windows.Forms.ListBox();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxHighStructureFactor = new NumericBox();
             tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            numericBox3 = new NumericBox();
+            numericBox4 = new NumericBox();
+            label3 = new System.Windows.Forms.Label();
             numericBox2 = new NumericBox();
             numericBox1 = new NumericBox();
-            numericBoxHighStructureFactor = new NumericBox();
+            numericBox3 = new NumericBox();
+            checkBox4 = new System.Windows.Forms.CheckBox();
+            checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
@@ -407,15 +410,15 @@ namespace ReciPro
             toolTip.SetToolTip(radioButtonKikuchiLinePairs, resources.GetString("radioButtonKikuchiLinePairs.ToolTip"));
             radioButtonKikuchiLinePairs.CheckedChanged += radioButtonAxes_CheckedChanged;
             // 
-            // labelYpos
-            // 
-            resources.ApplyResources(labelXpos, "labelYpos");
-            labelXpos.Name = "labelYpos";
-            // 
             // labelXpos
             // 
-            resources.ApplyResources(labelYpos, "labelXpos");
-            labelYpos.Name = "labelXpos";
+            resources.ApplyResources(labelXpos, "labelXpos");
+            labelXpos.Name = "labelXpos";
+            // 
+            // labelYpos
+            // 
+            resources.ApplyResources(labelYpos, "labelYpos");
+            labelYpos.Name = "labelYpos";
             // 
             // label6
             // 
@@ -1386,19 +1389,11 @@ namespace ReciPro
             // 
             // panelSpecifiedIndices
             // 
-            panelSpecifiedIndices.Controls.Add(checkBoxIncludingEquivalentPlanes);
             panelSpecifiedIndices.Controls.Add(buttonRemoveIndex);
             panelSpecifiedIndices.Controls.Add(buttonAddIndex);
             panelSpecifiedIndices.Controls.Add(listBoxSpecifiedIndices);
             resources.ApplyResources(panelSpecifiedIndices, "panelSpecifiedIndices");
             panelSpecifiedIndices.Name = "panelSpecifiedIndices";
-            // 
-            // checkBoxIncludingEquivalentPlanes
-            // 
-            resources.ApplyResources(checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
-            checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
-            checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
-            checkBoxIncludingEquivalentPlanes.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
             // 
             // buttonRemoveIndex
             // 
@@ -1430,8 +1425,10 @@ namespace ReciPro
             resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
             flowLayoutPanel3.Controls.Add(flowLayoutPanel5);
             flowLayoutPanel3.Controls.Add(tableLayoutPanel3);
-            flowLayoutPanel3.Controls.Add(numericBoxHighStructureFactor);
+            flowLayoutPanel3.Controls.Add(checkBoxIncludingEquivalentPlanes);
+            flowLayoutPanel3.Controls.Add(checkBox4);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Paint += flowLayoutPanel3_Paint;
             // 
             // flowLayoutPanel5
             // 
@@ -1439,32 +1436,54 @@ namespace ReciPro
             flowLayoutPanel5.Controls.Add(radioButtonRange);
             flowLayoutPanel5.Controls.Add(radioButtonSpecifiedIndices);
             flowLayoutPanel5.Controls.Add(radioButtonHighStructureFactor);
+            flowLayoutPanel5.Controls.Add(numericBoxHighStructureFactor);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
+            // 
+            // numericBoxHighStructureFactor
+            // 
+            numericBoxHighStructureFactor.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxHighStructureFactor, "numericBoxHighStructureFactor");
+            numericBoxHighStructureFactor.Maximum = 1000D;
+            numericBoxHighStructureFactor.Minimum = 1D;
+            numericBoxHighStructureFactor.Name = "numericBoxHighStructureFactor";
+            numericBoxHighStructureFactor.RadianValue = 1.7453292519943295D;
+            numericBoxHighStructureFactor.ShowUpDown = true;
+            numericBoxHighStructureFactor.SmartIncrement = true;
+            numericBoxHighStructureFactor.Value = 100D;
+            numericBoxHighStructureFactor.ValueChanged += numericBoxHighStructureFactor_ValueChanged;
             // 
             // tableLayoutPanel3
             // 
             resources.ApplyResources(tableLayoutPanel3, "tableLayoutPanel3");
+            tableLayoutPanel3.Controls.Add(numericBox4, 2, 1);
+            tableLayoutPanel3.Controls.Add(label3, 2, 0);
             tableLayoutPanel3.Controls.Add(labelKV, 1, 0);
-            tableLayoutPanel3.Controls.Add(numericBox3, 2, 1);
             tableLayoutPanel3.Controls.Add(numericBox2, 1, 1);
             tableLayoutPanel3.Controls.Add(numericBox1, 0, 1);
             tableLayoutPanel3.Controls.Add(labelHU, 0, 0);
-            tableLayoutPanel3.Controls.Add(labelLW, 2, 0);
+            tableLayoutPanel3.Controls.Add(numericBox3, 3, 1);
+            tableLayoutPanel3.Controls.Add(labelLW, 3, 0);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
-            // numericBox3
+            // numericBox4
             // 
-            resources.ApplyResources(numericBox3, "numericBox3");
-            numericBox3.BackColor = System.Drawing.Color.Transparent;
-            numericBox3.Maximum = 20D;
-            numericBox3.Minimum = 0D;
-            numericBox3.Name = "numericBox3";
-            numericBox3.RadianValue = 0.034906585039886591D;
-            numericBox3.ShowUpDown = true;
-            numericBox3.SkipEventDuringInput = false;
-            numericBox3.ThonsandsSeparator = true;
-            numericBox3.Value = 2D;
-            numericBox3.ValueChanged += numericUpDown_ValueChanged;
+            resources.ApplyResources(numericBox4, "numericBox4");
+            numericBox4.BackColor = System.Drawing.Color.Transparent;
+            numericBox4.Maximum = 20D;
+            numericBox4.Minimum = 0D;
+            numericBox4.Name = "numericBox4";
+            numericBox4.RadianValue = 0.034906585039886591D;
+            numericBox4.ReadOnly = true;
+            numericBox4.ShowUpDown = true;
+            numericBox4.SkipEventDuringInput = false;
+            numericBox4.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox4.ThonsandsSeparator = true;
+            numericBox4.Value = 2D;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
             // 
             // numericBox2
             // 
@@ -1494,18 +1513,37 @@ namespace ReciPro
             numericBox1.Value = 2D;
             numericBox1.ValueChanged += numericUpDown_ValueChanged;
             // 
-            // numericBoxHighStructureFactor
+            // numericBox3
             // 
-            numericBoxHighStructureFactor.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxHighStructureFactor, "numericBoxHighStructureFactor");
-            numericBoxHighStructureFactor.Maximum = 1000D;
-            numericBoxHighStructureFactor.Minimum = 1D;
-            numericBoxHighStructureFactor.Name = "numericBoxHighStructureFactor";
-            numericBoxHighStructureFactor.RadianValue = 1.7453292519943295D;
-            numericBoxHighStructureFactor.ShowUpDown = true;
-            numericBoxHighStructureFactor.SmartIncrement = true;
-            numericBoxHighStructureFactor.Value = 100D;
-            numericBoxHighStructureFactor.ValueChanged += numericBoxHighStructureFactor_ValueChanged;
+            resources.ApplyResources(numericBox3, "numericBox3");
+            numericBox3.BackColor = System.Drawing.Color.Transparent;
+            numericBox3.Maximum = 20D;
+            numericBox3.Minimum = 0D;
+            numericBox3.Name = "numericBox3";
+            numericBox3.RadianValue = 0.034906585039886591D;
+            numericBox3.ShowUpDown = true;
+            numericBox3.SkipEventDuringInput = false;
+            numericBox3.ThonsandsSeparator = true;
+            numericBox3.Value = 2D;
+            numericBox3.ValueChanged += numericUpDown_ValueChanged;
+            // 
+            // checkBox4
+            // 
+            resources.ApplyResources(checkBox4, "checkBox4");
+            checkBox4.Checked = true;
+            checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox4.Name = "checkBox4";
+            checkBox4.UseVisualStyleBackColor = true;
+            checkBox4.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
+            // 
+            // checkBoxIncludingEquivalentPlanes
+            // 
+            resources.ApplyResources(checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
+            checkBoxIncludingEquivalentPlanes.Checked = true;
+            checkBoxIncludingEquivalentPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
+            checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
+            checkBoxIncludingEquivalentPlanes.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
             // 
             // panel3
             // 
@@ -1638,7 +1676,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 509533615);
+            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 2071052604);
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
             scalablePictureBoxAdvanced1.SkipDrawing = false;
             scalablePictureBoxAdvanced1.StatusLabel = " ";
@@ -1669,7 +1707,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 509533615);
+            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 2071052604);
             scalablePictureBoxAdvanced2.ShowGradiaent = true;
             scalablePictureBoxAdvanced2.SkipDrawing = false;
             scalablePictureBoxAdvanced2.StatusLabel = " ";
@@ -1941,5 +1979,8 @@ namespace ReciPro
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.CheckBox checkBoxShowIndexLabels;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private NumericBox numericBox4;
+        private System.Windows.Forms.Label label3;
     }
 }

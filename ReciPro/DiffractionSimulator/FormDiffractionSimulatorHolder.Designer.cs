@@ -36,26 +36,6 @@
             numericBoxLinkTiltY = new NumericBox();
             label4 = new System.Windows.Forms.Label();
             groupBox1 = new System.Windows.Forms.GroupBox();
-            groupBox4 = new System.Windows.Forms.GroupBox();
-            buttonCalibrate = new System.Windows.Forms.Button();
-            numericBoxCalibW2 = new NumericBox();
-            numericBoxCalibW1 = new NumericBox();
-            numericBoxCalibTiltY2 = new NumericBox();
-            numericBoxCalibTiltY1 = new NumericBox();
-            label13 = new System.Windows.Forms.Label();
-            label12 = new System.Windows.Forms.Label();
-            label11 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            label10 = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
-            label8 = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            numericBoxCalibTiltX2 = new NumericBox();
-            numericBoxCalibTiltX1 = new NumericBox();
-            numericBoxCalibV2 = new NumericBox();
-            numericBoxCalibV1 = new NumericBox();
-            numericBoxCalibU2 = new NumericBox();
-            numericBoxCalibU1 = new NumericBox();
             radioButtonTiltY_Plus = new System.Windows.Forms.RadioButton();
             radioButtonTiltY_Minus = new System.Windows.Forms.RadioButton();
             groupBox2 = new System.Windows.Forms.GroupBox();
@@ -98,7 +78,6 @@
             toolTip1 = new System.Windows.Forms.ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             groupBox1.SuspendLayout();
-            groupBox4.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
@@ -126,9 +105,9 @@
             label1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label1.Location = new System.Drawing.Point(10, 25);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(131, 17);
+            label1.Size = new System.Drawing.Size(76, 34);
             label1.TabIndex = 82;
-            label1.Text = "Direction of the Tilt X";
+            label1.Text = "Direction of\r\n the Tilt X";
             // 
             // numericBoxTiltXDirection
             // 
@@ -136,7 +115,7 @@
             numericBoxTiltXDirection.DecimalPlaces = 1;
             numericBoxTiltXDirection.Font = new System.Drawing.Font("メイリオ", 9F);
             numericBoxTiltXDirection.FooterText = "°";
-            numericBoxTiltXDirection.Location = new System.Drawing.Point(150, 21);
+            numericBoxTiltXDirection.Location = new System.Drawing.Point(92, 34);
             numericBoxTiltXDirection.Margin = new System.Windows.Forms.Padding(0);
             numericBoxTiltXDirection.Maximum = 180D;
             numericBoxTiltXDirection.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -158,7 +137,7 @@
             numericBoxLinkTiltX.Font = new System.Drawing.Font("メイリオ", 9F);
             numericBoxLinkTiltX.FooterText = "°";
             numericBoxLinkTiltX.HeaderText = "Tilt X";
-            numericBoxLinkTiltX.Location = new System.Drawing.Point(14, 25);
+            numericBoxLinkTiltX.Location = new System.Drawing.Point(8, 19);
             numericBoxLinkTiltX.Margin = new System.Windows.Forms.Padding(0);
             numericBoxLinkTiltX.Maximum = 180D;
             numericBoxLinkTiltX.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -176,7 +155,7 @@
             numericBoxLinkTiltY.Font = new System.Drawing.Font("メイリオ", 9F);
             numericBoxLinkTiltY.FooterText = "°";
             numericBoxLinkTiltY.HeaderText = "Tilt Y";
-            numericBoxLinkTiltY.Location = new System.Drawing.Point(14, 52);
+            numericBoxLinkTiltY.Location = new System.Drawing.Point(8, 46);
             numericBoxLinkTiltY.Margin = new System.Windows.Forms.Padding(0);
             numericBoxLinkTiltY.Maximum = 180D;
             numericBoxLinkTiltY.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -191,361 +170,33 @@
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label4.Location = new System.Drawing.Point(10, 52);
+            label4.Location = new System.Drawing.Point(10, 65);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(121, 17);
+            label4.Size = new System.Drawing.Size(67, 34);
             label4.TabIndex = 82;
-            label4.Text = "Polarity of the Tilt Y";
+            label4.Text = "Polarity of\r\n the Tilt Y";
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(groupBox4);
             groupBox1.Controls.Add(radioButtonTiltY_Plus);
             groupBox1.Controls.Add(radioButtonTiltY_Minus);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(numericBoxTiltXDirection);
             groupBox1.Controls.Add(label4);
             groupBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox1.Location = new System.Drawing.Point(408, 201);
+            groupBox1.Location = new System.Drawing.Point(427, 403);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(235, 205);
+            groupBox1.Size = new System.Drawing.Size(168, 105);
             groupBox1.TabIndex = 83;
             groupBox1.TabStop = false;
             groupBox1.Text = "TEM-specific settings";
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(buttonCalibrate);
-            groupBox4.Controls.Add(numericBoxCalibW2);
-            groupBox4.Controls.Add(numericBoxCalibW1);
-            groupBox4.Controls.Add(numericBoxCalibTiltY2);
-            groupBox4.Controls.Add(numericBoxCalibTiltY1);
-            groupBox4.Controls.Add(label13);
-            groupBox4.Controls.Add(label12);
-            groupBox4.Controls.Add(label11);
-            groupBox4.Controls.Add(label2);
-            groupBox4.Controls.Add(label10);
-            groupBox4.Controls.Add(label9);
-            groupBox4.Controls.Add(label8);
-            groupBox4.Controls.Add(label7);
-            groupBox4.Controls.Add(numericBoxCalibTiltX2);
-            groupBox4.Controls.Add(numericBoxCalibTiltX1);
-            groupBox4.Controls.Add(numericBoxCalibV2);
-            groupBox4.Controls.Add(numericBoxCalibV1);
-            groupBox4.Controls.Add(numericBoxCalibU2);
-            groupBox4.Controls.Add(numericBoxCalibU1);
-            groupBox4.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            groupBox4.Location = new System.Drawing.Point(7, 76);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new System.Drawing.Size(220, 123);
-            groupBox4.TabIndex = 84;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Calibration";
-            // 
-            // buttonCalibrate
-            // 
-            buttonCalibrate.AutoSize = true;
-            buttonCalibrate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonCalibrate.Location = new System.Drawing.Point(145, 90);
-            buttonCalibrate.Name = "buttonCalibrate";
-            buttonCalibrate.Size = new System.Drawing.Size(70, 27);
-            buttonCalibrate.TabIndex = 84;
-            buttonCalibrate.Text = "Calibrate";
-            buttonCalibrate.UseVisualStyleBackColor = true;
-            buttonCalibrate.Click += buttonCalibrate_Click;
-            // 
-            // numericBoxCalibW2
-            // 
-            numericBoxCalibW2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxCalibW2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibW2.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxCalibW2.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibW2.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibW2.Location = new System.Drawing.Point(94, 63);
-            numericBoxCalibW2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibW2.Maximum = 20D;
-            numericBoxCalibW2.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibW2.Minimum = -20D;
-            numericBoxCalibW2.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibW2.Name = "numericBoxCalibW2";
-            numericBoxCalibW2.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibW2.Size = new System.Drawing.Size(26, 25);
-            numericBoxCalibW2.SkipEventDuringInput = false;
-            numericBoxCalibW2.TabIndex = 81;
-            numericBoxCalibW2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibW2.ThonsandsSeparator = true;
-            // 
-            // numericBoxCalibW1
-            // 
-            numericBoxCalibW1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxCalibW1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibW1.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxCalibW1.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibW1.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibW1.Location = new System.Drawing.Point(94, 36);
-            numericBoxCalibW1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibW1.Maximum = 20D;
-            numericBoxCalibW1.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibW1.Minimum = -20D;
-            numericBoxCalibW1.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibW1.Name = "numericBoxCalibW1";
-            numericBoxCalibW1.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibW1.Size = new System.Drawing.Size(26, 25);
-            numericBoxCalibW1.SkipEventDuringInput = false;
-            numericBoxCalibW1.TabIndex = 81;
-            numericBoxCalibW1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibW1.ThonsandsSeparator = true;
-            // 
-            // numericBoxCalibTiltY2
-            // 
-            numericBoxCalibTiltY2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibTiltY2.DecimalPlaces = 1;
-            numericBoxCalibTiltY2.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxCalibTiltY2.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibTiltY2.FooterText = "°";
-            numericBoxCalibTiltY2.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibTiltY2.Location = new System.Drawing.Point(166, 63);
-            numericBoxCalibTiltY2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxCalibTiltY2.Maximum = 180D;
-            numericBoxCalibTiltY2.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibTiltY2.Minimum = -180D;
-            numericBoxCalibTiltY2.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibTiltY2.Name = "numericBoxCalibTiltY2";
-            numericBoxCalibTiltY2.RestrictLimitValue = false;
-            numericBoxCalibTiltY2.Size = new System.Drawing.Size(46, 25);
-            numericBoxCalibTiltY2.TabIndex = 81;
-            numericBoxCalibTiltY2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            // 
-            // numericBoxCalibTiltY1
-            // 
-            numericBoxCalibTiltY1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibTiltY1.DecimalPlaces = 1;
-            numericBoxCalibTiltY1.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxCalibTiltY1.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibTiltY1.FooterText = "°";
-            numericBoxCalibTiltY1.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibTiltY1.Location = new System.Drawing.Point(166, 36);
-            numericBoxCalibTiltY1.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxCalibTiltY1.Maximum = 180D;
-            numericBoxCalibTiltY1.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibTiltY1.Minimum = -180D;
-            numericBoxCalibTiltY1.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibTiltY1.Name = "numericBoxCalibTiltY1";
-            numericBoxCalibTiltY1.RestrictLimitValue = false;
-            numericBoxCalibTiltY1.Size = new System.Drawing.Size(46, 25);
-            numericBoxCalibTiltY1.TabIndex = 81;
-            numericBoxCalibTiltY1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label13.Location = new System.Drawing.Point(22, 67);
-            label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(20, 15);
-            label13.TabIndex = 82;
-            label13.Text = "#2";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label12.Location = new System.Drawing.Point(22, 39);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(20, 15);
-            label12.TabIndex = 82;
-            label12.Text = "#1";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            label11.Location = new System.Drawing.Point(163, 18);
-            label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(36, 15);
-            label11.TabIndex = 82;
-            label11.Text = "Tilt-Y";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Segoe UI Symbol", 7F);
-            label2.Location = new System.Drawing.Point(5, 90);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(140, 24);
-            label2.TabIndex = 82;
-            label2.Text = "Enter 2 sets of zone axis and\r\n holder angles, then \"Calibrate\"";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            label10.Location = new System.Drawing.Point(119, 18);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(36, 15);
-            label10.TabIndex = 82;
-            label10.Text = "Tilt-X";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic);
-            label9.Location = new System.Drawing.Point(94, 18);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(16, 15);
-            label9.TabIndex = 82;
-            label9.Text = "w";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic);
-            label8.Location = new System.Drawing.Point(70, 18);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(13, 15);
-            label8.TabIndex = 82;
-            label8.Text = "v";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic);
-            label7.Location = new System.Drawing.Point(45, 18);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(14, 15);
-            label7.TabIndex = 82;
-            label7.Text = "u";
-            // 
-            // numericBoxCalibTiltX2
-            // 
-            numericBoxCalibTiltX2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibTiltX2.DecimalPlaces = 1;
-            numericBoxCalibTiltX2.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxCalibTiltX2.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibTiltX2.FooterText = "°";
-            numericBoxCalibTiltX2.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibTiltX2.Location = new System.Drawing.Point(120, 63);
-            numericBoxCalibTiltX2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxCalibTiltX2.Maximum = 180D;
-            numericBoxCalibTiltX2.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibTiltX2.Minimum = -180D;
-            numericBoxCalibTiltX2.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibTiltX2.Name = "numericBoxCalibTiltX2";
-            numericBoxCalibTiltX2.RestrictLimitValue = false;
-            numericBoxCalibTiltX2.Size = new System.Drawing.Size(46, 25);
-            numericBoxCalibTiltX2.TabIndex = 81;
-            numericBoxCalibTiltX2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            // 
-            // numericBoxCalibTiltX1
-            // 
-            numericBoxCalibTiltX1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibTiltX1.DecimalPlaces = 1;
-            numericBoxCalibTiltX1.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxCalibTiltX1.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibTiltX1.FooterText = "°";
-            numericBoxCalibTiltX1.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibTiltX1.Location = new System.Drawing.Point(120, 36);
-            numericBoxCalibTiltX1.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxCalibTiltX1.Maximum = 180D;
-            numericBoxCalibTiltX1.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibTiltX1.Minimum = -180D;
-            numericBoxCalibTiltX1.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibTiltX1.Name = "numericBoxCalibTiltX1";
-            numericBoxCalibTiltX1.RestrictLimitValue = false;
-            numericBoxCalibTiltX1.Size = new System.Drawing.Size(46, 25);
-            numericBoxCalibTiltX1.TabIndex = 81;
-            numericBoxCalibTiltX1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            // 
-            // numericBoxCalibV2
-            // 
-            numericBoxCalibV2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxCalibV2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibV2.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxCalibV2.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibV2.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibV2.Location = new System.Drawing.Point(69, 63);
-            numericBoxCalibV2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibV2.Maximum = 20D;
-            numericBoxCalibV2.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibV2.Minimum = -20D;
-            numericBoxCalibV2.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibV2.Name = "numericBoxCalibV2";
-            numericBoxCalibV2.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibV2.Size = new System.Drawing.Size(26, 25);
-            numericBoxCalibV2.SkipEventDuringInput = false;
-            numericBoxCalibV2.TabIndex = 82;
-            numericBoxCalibV2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibV2.ThonsandsSeparator = true;
-            // 
-            // numericBoxCalibV1
-            // 
-            numericBoxCalibV1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxCalibV1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibV1.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxCalibV1.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibV1.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibV1.Location = new System.Drawing.Point(69, 36);
-            numericBoxCalibV1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibV1.Maximum = 20D;
-            numericBoxCalibV1.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibV1.Minimum = -20D;
-            numericBoxCalibV1.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibV1.Name = "numericBoxCalibV1";
-            numericBoxCalibV1.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibV1.Size = new System.Drawing.Size(26, 25);
-            numericBoxCalibV1.SkipEventDuringInput = false;
-            numericBoxCalibV1.TabIndex = 82;
-            numericBoxCalibV1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibV1.ThonsandsSeparator = true;
-            // 
-            // numericBoxCalibU2
-            // 
-            numericBoxCalibU2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxCalibU2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibU2.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxCalibU2.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibU2.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibU2.Location = new System.Drawing.Point(44, 63);
-            numericBoxCalibU2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibU2.Maximum = 20D;
-            numericBoxCalibU2.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibU2.Minimum = -20D;
-            numericBoxCalibU2.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibU2.Name = "numericBoxCalibU2";
-            numericBoxCalibU2.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibU2.Size = new System.Drawing.Size(26, 25);
-            numericBoxCalibU2.SkipEventDuringInput = false;
-            numericBoxCalibU2.TabIndex = 83;
-            numericBoxCalibU2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibU2.ThonsandsSeparator = true;
-            // 
-            // numericBoxCalibU1
-            // 
-            numericBoxCalibU1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxCalibU1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCalibU1.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxCalibU1.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibU1.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibU1.Location = new System.Drawing.Point(44, 36);
-            numericBoxCalibU1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibU1.Maximum = 20D;
-            numericBoxCalibU1.MaximumSize = new System.Drawing.Size(1000, 28);
-            numericBoxCalibU1.Minimum = -20D;
-            numericBoxCalibU1.MinimumSize = new System.Drawing.Size(1, 18);
-            numericBoxCalibU1.Name = "numericBoxCalibU1";
-            numericBoxCalibU1.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxCalibU1.Size = new System.Drawing.Size(26, 25);
-            numericBoxCalibU1.SkipEventDuringInput = false;
-            numericBoxCalibU1.TabIndex = 83;
-            numericBoxCalibU1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxCalibU1.ThonsandsSeparator = true;
             // 
             // radioButtonTiltY_Plus
             // 
             radioButtonTiltY_Plus.AutoSize = true;
             radioButtonTiltY_Plus.Checked = true;
             radioButtonTiltY_Plus.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            radioButtonTiltY_Plus.Location = new System.Drawing.Point(150, 50);
+            radioButtonTiltY_Plus.Location = new System.Drawing.Point(92, 77);
             radioButtonTiltY_Plus.Name = "radioButtonTiltY_Plus";
             radioButtonTiltY_Plus.Size = new System.Drawing.Size(35, 21);
             radioButtonTiltY_Plus.TabIndex = 83;
@@ -557,7 +208,7 @@
             // radioButtonTiltY_Minus
             // 
             radioButtonTiltY_Minus.AutoSize = true;
-            radioButtonTiltY_Minus.Location = new System.Drawing.Point(190, 50);
+            radioButtonTiltY_Minus.Location = new System.Drawing.Point(132, 77);
             radioButtonTiltY_Minus.Name = "radioButtonTiltY_Minus";
             radioButtonTiltY_Minus.Size = new System.Drawing.Size(32, 21);
             radioButtonTiltY_Minus.TabIndex = 83;
@@ -571,10 +222,10 @@
             groupBox2.Controls.Add(numericBoxLinkTiltX);
             groupBox2.Controls.Add(numericBoxLinkTiltY);
             groupBox2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox2.Location = new System.Drawing.Point(408, 108);
+            groupBox2.Location = new System.Drawing.Point(241, 403);
             groupBox2.Margin = new System.Windows.Forms.Padding(0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(234, 90);
+            groupBox2.Size = new System.Drawing.Size(182, 105);
             groupBox2.TabIndex = 84;
             groupBox2.TabStop = false;
             groupBox2.Text = "Link";
@@ -584,7 +235,7 @@
             buttonRotate180.AutoSize = true;
             buttonRotate180.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonRotate180.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            buttonRotate180.Location = new System.Drawing.Point(117, 14);
+            buttonRotate180.Location = new System.Drawing.Point(6, 71);
             buttonRotate180.Margin = new System.Windows.Forms.Padding(0);
             buttonRotate180.Name = "buttonRotate180";
             buttonRotate180.Size = new System.Drawing.Size(88, 25);
@@ -598,12 +249,12 @@
             buttonLink.AutoSize = true;
             buttonLink.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonLink.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            buttonLink.Location = new System.Drawing.Point(105, 43);
+            buttonLink.Location = new System.Drawing.Point(99, 31);
             buttonLink.Margin = new System.Windows.Forms.Padding(0);
             buttonLink.Name = "buttonLink";
-            buttonLink.Size = new System.Drawing.Size(114, 40);
+            buttonLink.Size = new System.Drawing.Size(78, 55);
             buttonLink.TabIndex = 83;
-            buttonLink.Text = "Link to the current\r\n crystal direction";
+            buttonLink.Text = "Link to \r\n the current\r\n direction";
             buttonLink.UseVisualStyleBackColor = true;
             buttonLink.Click += buttonLink_Click;
             // 
@@ -626,9 +277,9 @@
             groupBox5.Controls.Add(numericBoxU);
             groupBox5.Controls.Add(label5);
             groupBox5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox5.Location = new System.Drawing.Point(4, 404);
+            groupBox5.Location = new System.Drawing.Point(408, 2);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new System.Drawing.Size(638, 104);
+            groupBox5.Size = new System.Drawing.Size(187, 396);
             groupBox5.TabIndex = 84;
             groupBox5.TabStop = false;
             groupBox5.Text = "Stereonet properties";
@@ -638,7 +289,7 @@
             label18.AutoSize = true;
             label18.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label18.Location = new System.Drawing.Point(153, 81);
+            label18.Location = new System.Drawing.Point(5, 370);
             label18.Name = "label18";
             label18.Size = new System.Drawing.Size(63, 17);
             label18.TabIndex = 69;
@@ -649,7 +300,7 @@
             label17.AutoSize = true;
             label17.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label17.Location = new System.Drawing.Point(1, 81);
+            label17.Location = new System.Drawing.Point(5, 350);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(68, 17);
             label17.TabIndex = 68;
@@ -659,14 +310,14 @@
             // 
             trackBarPointSize.AutoSize = false;
             trackBarPointSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            trackBarPointSize.Location = new System.Drawing.Point(215, 82);
+            trackBarPointSize.Location = new System.Drawing.Point(72, 371);
             trackBarPointSize.Maximum = 20;
             trackBarPointSize.Minimum = 1;
             trackBarPointSize.Name = "trackBarPointSize";
             trackBarPointSize.Size = new System.Drawing.Size(80, 16);
             trackBarPointSize.TabIndex = 65;
             trackBarPointSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            trackBarPointSize.Value = 5;
+            trackBarPointSize.Value = 4;
             // 
             // flowLayoutPanel1
             // 
@@ -680,7 +331,7 @@
             flowLayoutPanel1.Controls.Add(colorControlGeneralAxis);
             flowLayoutPanel1.Controls.Add(colorControlTiltX);
             flowLayoutPanel1.Controls.Add(colorControlTiltY);
-            flowLayoutPanel1.Location = new System.Drawing.Point(472, 12);
+            flowLayoutPanel1.Location = new System.Drawing.Point(6, 256);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new System.Drawing.Size(162, 86);
             flowLayoutPanel1.TabIndex = 93;
@@ -947,7 +598,7 @@
             numericBoxDrawingArea.Font = new System.Drawing.Font("メイリオ", 9F);
             numericBoxDrawingArea.FooterText = "°";
             numericBoxDrawingArea.HeaderText = "Drawing area";
-            numericBoxDrawingArea.Location = new System.Drawing.Point(7, 27);
+            numericBoxDrawingArea.Location = new System.Drawing.Point(7, 25);
             numericBoxDrawingArea.Margin = new System.Windows.Forms.Padding(0);
             numericBoxDrawingArea.Maximum = 90D;
             numericBoxDrawingArea.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -966,14 +617,14 @@
             // 
             trackBarStrSize.AutoSize = false;
             trackBarStrSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            trackBarStrSize.Location = new System.Drawing.Point(66, 82);
+            trackBarStrSize.Location = new System.Drawing.Point(70, 351);
             trackBarStrSize.Maximum = 200;
             trackBarStrSize.Minimum = 1;
             trackBarStrSize.Name = "trackBarStrSize";
             trackBarStrSize.Size = new System.Drawing.Size(80, 16);
             trackBarStrSize.TabIndex = 66;
             trackBarStrSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            trackBarStrSize.Value = 80;
+            trackBarStrSize.Value = 60;
             // 
             // checkBoxTiltDirections
             // 
@@ -982,7 +633,7 @@
             checkBoxTiltDirections.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxTiltDirections.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             checkBoxTiltDirections.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxTiltDirections.Location = new System.Drawing.Point(237, 59);
+            checkBoxTiltDirections.Location = new System.Drawing.Point(9, 191);
             checkBoxTiltDirections.Margin = new System.Windows.Forms.Padding(0);
             checkBoxTiltDirections.Name = "checkBoxTiltDirections";
             checkBoxTiltDirections.Size = new System.Drawing.Size(137, 21);
@@ -997,7 +648,7 @@
             checkBox1DegLine.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBox1DegLine.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             checkBox1DegLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBox1DegLine.Location = new System.Drawing.Point(7, 59);
+            checkBox1DegLine.Location = new System.Drawing.Point(9, 143);
             checkBox1DegLine.Margin = new System.Windows.Forms.Padding(0);
             checkBox1DegLine.Name = "checkBox1DegLine";
             checkBox1DegLine.Size = new System.Drawing.Size(98, 21);
@@ -1012,7 +663,7 @@
             checkBoxShowIndexLabels.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowIndexLabels.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             checkBoxShowIndexLabels.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxShowIndexLabels.Location = new System.Drawing.Point(108, 59);
+            checkBoxShowIndexLabels.Location = new System.Drawing.Point(9, 167);
             checkBoxShowIndexLabels.Name = "checkBoxShowIndexLabels";
             checkBoxShowIndexLabels.Size = new System.Drawing.Size(131, 21);
             checkBoxShowIndexLabels.TabIndex = 84;
@@ -1025,7 +676,7 @@
             numericBoxW.BackColor = System.Drawing.Color.Transparent;
             numericBoxW.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
             numericBoxW.HeaderText = "±";
-            numericBoxW.Location = new System.Drawing.Point(339, 27);
+            numericBoxW.Location = new System.Drawing.Point(122, 89);
             numericBoxW.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             numericBoxW.Maximum = 20D;
             numericBoxW.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -1047,7 +698,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic);
-            label16.Location = new System.Drawing.Point(358, 12);
+            label16.Location = new System.Drawing.Point(141, 74);
             label16.Name = "label16";
             label16.Size = new System.Drawing.Size(16, 15);
             label16.TabIndex = 82;
@@ -1059,7 +710,7 @@
             numericBoxV.BackColor = System.Drawing.Color.Transparent;
             numericBoxV.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
             numericBoxV.HeaderText = "±";
-            numericBoxV.Location = new System.Drawing.Point(283, 27);
+            numericBoxV.Location = new System.Drawing.Point(66, 89);
             numericBoxV.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             numericBoxV.Maximum = 20D;
             numericBoxV.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -1081,7 +732,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic);
-            label15.Location = new System.Drawing.Point(302, 12);
+            label15.Location = new System.Drawing.Point(85, 74);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(13, 15);
             label15.TabIndex = 82;
@@ -1091,7 +742,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic);
-            label14.Location = new System.Drawing.Point(246, 12);
+            label14.Location = new System.Drawing.Point(29, 74);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(14, 15);
             label14.TabIndex = 82;
@@ -1103,7 +754,7 @@
             numericBoxU.BackColor = System.Drawing.Color.Transparent;
             numericBoxU.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
             numericBoxU.HeaderText = "±";
-            numericBoxU.Location = new System.Drawing.Point(227, 27);
+            numericBoxU.Location = new System.Drawing.Point(10, 89);
             numericBoxU.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             numericBoxU.Maximum = 20D;
             numericBoxU.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -1125,7 +776,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label5.Location = new System.Drawing.Point(151, 29);
+            label5.Location = new System.Drawing.Point(10, 57);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(77, 17);
             label5.TabIndex = 82;
@@ -1152,7 +803,7 @@
             groupBox3.Controls.Add(numericBoxTiltY);
             groupBox3.Controls.Add(checkBoxEnableArrow);
             groupBox3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox3.Location = new System.Drawing.Point(407, 3);
+            groupBox3.Location = new System.Drawing.Point(2, 403);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new System.Drawing.Size(235, 105);
             groupBox3.TabIndex = 84;
@@ -1261,13 +912,13 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(647, 513);
+            ClientSize = new System.Drawing.Size(600, 513);
+            Controls.Add(graphicsBox);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1MousePosition);
             Controls.Add(groupBox5);
-            Controls.Add(graphicsBox);
             Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             KeyPreview = true;
             Name = "FormDiffractionSimulatorHolder";
@@ -1278,8 +929,6 @@
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox5.ResumeLayout(false);
@@ -1304,20 +953,7 @@
         private System.Windows.Forms.RadioButton radioButtonTiltY_Minus;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonLink;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-     
-   
-        private NumericBox numericBoxCalibTiltY2;
-        private NumericBox numericBoxCalibTiltX2;
-        private NumericBox numericBoxCalibTiltY1;
-        private NumericBox numericBoxCalibW2;
-        private NumericBox numericBoxCalibW1;
-        private NumericBox numericBoxCalibTiltX1;
-        private NumericBox numericBoxCalibV2;
-        private NumericBox numericBoxCalibV1;
-        private NumericBox numericBoxCalibU2;
-        private NumericBox numericBoxCalibU1;
         private NumericBox numericBoxLinkTiltX;
         private NumericBox numericBoxLinkTiltY;
         private NumericBox numericBoxV;
@@ -1330,16 +966,7 @@
 
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkBoxShowIndexLabels;
-
-        private System.Windows.Forms.Button buttonCalibrate;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBox1DegLine;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
 
         public ColorControl colorControlUniqueAxis;
         public ColorControl colorControlGeneralAxis;
@@ -1367,7 +994,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button buttonRotate180;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxEnableArrow;
         private NumericBox numericBoxArrowStep;
     }

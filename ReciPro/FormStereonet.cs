@@ -404,7 +404,7 @@ public partial class FormStereonet : Form
     /// <param name="g"></param>
     private void DrawStereoNet(Graphics g)
     {
-        if (formMain == null || formMain.Crystal == null||  formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
+        if (formMain == null || formMain.Crystal == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
             return;
         var crystal = formMain.Crystal;
         var rot = crystal.RotationMatrix;
@@ -503,7 +503,7 @@ public partial class FormStereonet : Form
         if (radioButtonKikuchiLinePairs.Checked)
         {
             var dic = new Dictionary<(int u, int v, int w), int>();
-            for (int i = 0; i < vector.Length-1; i++)
+            for (int i = 0; i < vector.Length - 1; i++)
                 for (int j = i + 1; j < vector.Length; j++)
                 {
                     var (h1, k1, l1) = vector[i].Index;
@@ -537,7 +537,7 @@ public partial class FormStereonet : Form
                 var (u, v, w) = list[i].Key;
                 for (int j = 0; j < 2; j++)
                 {
-                    if (j == 1) 
+                    if (j == 1)
                     { u = -u; v = -v; w = -w; }
                     var vec = rot * (u * crystal.A_Axis + v * crystal.B_Axis + w * crystal.C_Axis);
                     if (radioButtonLowerSphere.Checked)
@@ -546,7 +546,7 @@ public partial class FormStereonet : Form
 
                     if (pt.X * pt.X + pt.Y * pt.Y <= 1.05)
                     {
-                        if(drawString)
+                        if (drawString)
                             g.DrawString($"[{u}{v}{w}]", font, brushLabel, pt.X, -pt.Y);
                         if (radioButtonUpperSphere.Checked)
                             g.FillEllipse(brushPt, new RectangleF(pt.X - radius, -pt.Y - radius, radius * 2, radius * 2));
@@ -1007,7 +1007,7 @@ public partial class FormStereonet : Form
     {
         if (!((RadioButton)sender).Checked) return;
 
-        numericBox1.HeaderText = numericBox2.HeaderText = numericBox3.HeaderText =
+        numericBox1.HeaderText = numericBox2.HeaderText = numericBox3.HeaderText = numericBox4.HeaderText =
             radioButtonRange.Checked ? "}" : "";
 
         if (radioButtonRange.Checked)
@@ -1258,4 +1258,9 @@ public partial class FormStereonet : Form
     }
 
     #endregion
+
+    private void flowLayoutPanel3_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
 }
