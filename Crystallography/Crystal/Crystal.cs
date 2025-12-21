@@ -939,7 +939,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         if (A_Axis == null) return;
         VectorOfAxis = [];
         foreach (var (U, V, W) in indices)
-            VectorOfAxis.Add(new Vector3D(U * A_Axis + V * B_Axis + W * C_Axis) { Text = $"[{U}{V}{W}]" });
+            VectorOfAxis.Add(new Vector3D(U * A_Axis + V * B_Axis + W * C_Axis) { Index = (U, V, W) });
     }
 
     /// <summary>
@@ -948,23 +948,23 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="uMax"></param>
     /// <param name="vMax"></param>
     /// <param name="wMax"></param>
-    public void SetVectorOfAxis(int uMax, int vMax, int wMax)
+    public void SetVectorOfAxis(int uMax, int vMax, int wMax, bool IncludeEquivalentAxes = true)
     {
         if (A_Axis == null) return;
-        VectorOfAxis = [];
-
-        VectorOfAxis.Add(new Vector3D(A_Axis) { Text = "[100]" });
-        VectorOfAxis.Add(new Vector3D(B_Axis) { Text = "[010]" });
-        VectorOfAxis.Add(new Vector3D(C_Axis) { Text = "[001]" });
-        VectorOfAxis.Add(new Vector3D(-A_Axis) { Text = "[-100]" });
-        VectorOfAxis.Add(new Vector3D(-B_Axis) { Text = "[0-10]" });
-        VectorOfAxis.Add(new Vector3D(-C_Axis) { Text = "[00-1]" });
+        var indices = new HashSet<(int h, int k, int l)>();
 
         for (int u = -uMax; u <= uMax; u++)
             for (int v = -vMax; v <= vMax; v++)
                 for (int w = -wMax; w <= wMax; w++)
-                    if (CheckIrreducible(u, v, w) && !(u * v == 0 && v * w == 0 && w * u == 0))
-                        VectorOfAxis.Add(new Vector3D(u * A_Axis + v * B_Axis + w * C_Axis) { Text = $"[{u}{v}{w}]" });
+                    if (CheckIrreducible(u, v, w) && !(u == 0 && v == 0 && w == 0))
+                    {
+                        if (IncludeEquivalentAxes)
+                            foreach (var index in SymmetryStatic.GenerateEquivalentAxes(u, v, w, Symmetry,false))
+                                indices.Add(index);
+                        else
+                            indices.Add((u, v, w));
+                    }
+        SetVectorOfAxis([.. indices]);
     }
 
     #endregion 軸ベクトルの計算
@@ -983,7 +983,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             var vec = new Vector3D(h * A_Star + k * B_Star + l * C_Star);
             vec.F = GetStructureFactor(waveSource, Atoms, (h, k, l), vec.Length2 / 4.0);
             vec.RawIntensity = vec.F.MagnitudeSquared();
-            vec.Text = $"({h}{k}{l})";
             vec.Index = (h, k, l);
             VectorOfPlane.Add(vec);
         }
@@ -1002,15 +1001,20 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="hMax"></param>
     /// <param name="kMax"></param>
     /// <param name="lMax"></param>
-    public void SetVectorOfPlane(int hMax, int kMax, int lMax, WaveSource waveSource)
+    public void SetVectorOfPlane(int hMax, int kMax, int lMax, WaveSource waveSource, bool IncludeEquivalentPlanes = true)
     {
-        var indices = new List<(int h, int k, int l)> { (1, 0, 0), (0, 1, 0), (0, 0, 1), (-1, 0, 0), (0, -1, 0), (0, 0, -1) };
+        var indices = new HashSet<(int h, int k, int l)>(); 
         for (int h = -hMax; h <= hMax; h++)
             for (int k = -kMax; k <= kMax; k++)
                 for (int l = -lMax; l <= lMax; l++)
-                    if (CheckIrreducible(h, k, l) && !(h * k == 0 && k * l == 0 && l * h == 0))
-                        indices.Add((h, k, l));
-
+                    if (CheckIrreducible(h, k, l) && !(h  == 0 && k  == 0 && l  == 0))
+                    {
+                        if (IncludeEquivalentPlanes)
+                            foreach (var index in SymmetryStatic.GenerateEquivalentPlanes(h, k, l, Symmetry, false))
+                                indices.Add(index);
+                        else
+                            indices.Add((h, k, l));
+                    }
         SetVectorOfPlane([.. indices], waveSource);
     }
 

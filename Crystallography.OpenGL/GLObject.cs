@@ -1809,8 +1809,8 @@ public class TextObject : GLObject
 
     public TextObject(string text, float fontSize, in V3d position, double popout, bool whiteEdge, Material mat, GLControlAlpha glControl, int program=-1) : base(mat, DrawingMode.Text)
     {
+        if (GLControlAlpha.DisableTextRendering || text==null) return;
         text = text.Trim();
-        if (GLControlAlpha.DisableTextRendering) return;
 
         if (text != "" || fontSize > 0)
         {

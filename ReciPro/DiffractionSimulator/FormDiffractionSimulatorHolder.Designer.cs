@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorHolder));
             graphicsBox = new ImagingSolution.Control.GraphicsBox(components);
             label1 = new System.Windows.Forms.Label();
             numericBoxTiltXDirection = new NumericBox();
@@ -42,9 +43,15 @@
             buttonRotate180 = new System.Windows.Forms.Button();
             buttonLink = new System.Windows.Forms.Button();
             groupBox5 = new System.Windows.Forms.GroupBox();
-            label18 = new System.Windows.Forms.Label();
-            label17 = new System.Windows.Forms.Label();
-            trackBarPointSize = new System.Windows.Forms.TrackBar();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            numericBoxU = new NumericBox();
+            label14 = new System.Windows.Forms.Label();
+            checkBoxIncludingEquivalent = new System.Windows.Forms.CheckBox();
+            label15 = new System.Windows.Forms.Label();
+            numericBoxV = new NumericBox();
+            label16 = new System.Windows.Forms.Label();
+            numericBoxW = new NumericBox();
+            groupBox4 = new System.Windows.Forms.GroupBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             colorControlBackGround = new ColorControl();
             colorControlHolder = new ColorControl();
@@ -55,18 +62,14 @@
             colorControlGeneralAxis = new ColorControl();
             colorControlTiltX = new ColorControl();
             colorControlTiltY = new ColorControl();
-            numericBoxDrawingArea = new NumericBox();
+            label17 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
             trackBarStrSize = new System.Windows.Forms.TrackBar();
+            trackBarPointSize = new System.Windows.Forms.TrackBar();
+            numericBoxDrawingArea = new NumericBox();
             checkBoxTiltDirections = new System.Windows.Forms.CheckBox();
             checkBox1DegLine = new System.Windows.Forms.CheckBox();
             checkBoxShowIndexLabels = new System.Windows.Forms.CheckBox();
-            numericBoxW = new NumericBox();
-            label16 = new System.Windows.Forms.Label();
-            numericBoxV = new NumericBox();
-            label15 = new System.Windows.Forms.Label();
-            label14 = new System.Windows.Forms.Label();
-            numericBoxU = new NumericBox();
-            label5 = new System.Windows.Forms.Label();
             label1MousePosition = new System.Windows.Forms.Label();
             groupBox3 = new System.Windows.Forms.GroupBox();
             numericBoxArrowStep = new NumericBox();
@@ -80,248 +83,241 @@
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
+            groupBox6.SuspendLayout();
+            groupBox4.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
             groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // graphicsBox
             // 
+            resources.ApplyResources(graphicsBox, "graphicsBox");
             graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            graphicsBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            graphicsBox.Location = new System.Drawing.Point(2, 2);
             graphicsBox.Name = "graphicsBox";
-            graphicsBox.Size = new System.Drawing.Size(400, 400);
-            graphicsBox.TabIndex = 80;
             graphicsBox.TabStop = false;
-            graphicsBox.WaitOnLoad = true;
+            toolTip1.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));
             graphicsBox.MouseDown += graphicsBox_MouseDown;
             graphicsBox.MouseMove += graphicsBox_MouseMove;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label1.Location = new System.Drawing.Point(10, 25);
+            resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(76, 34);
-            label1.TabIndex = 82;
-            label1.Text = "Direction of\r\n the Tilt X";
+            toolTip1.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // numericBoxTiltXDirection
             // 
+            resources.ApplyResources(numericBoxTiltXDirection, "numericBoxTiltXDirection");
             numericBoxTiltXDirection.BackColor = System.Drawing.Color.Transparent;
             numericBoxTiltXDirection.DecimalPlaces = 1;
-            numericBoxTiltXDirection.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxTiltXDirection.FooterText = "°";
-            numericBoxTiltXDirection.Location = new System.Drawing.Point(92, 34);
-            numericBoxTiltXDirection.Margin = new System.Windows.Forms.Padding(0);
             numericBoxTiltXDirection.Maximum = 180D;
-            numericBoxTiltXDirection.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxTiltXDirection.Minimum = -180D;
-            numericBoxTiltXDirection.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxTiltXDirection.Name = "numericBoxTiltXDirection";
             numericBoxTiltXDirection.RadianValue = -0.50614548307835561D;
             numericBoxTiltXDirection.ShowUpDown = true;
-            numericBoxTiltXDirection.Size = new System.Drawing.Size(69, 25);
-            numericBoxTiltXDirection.TabIndex = 81;
-            numericBoxTiltXDirection.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            toolTip1.SetToolTip(numericBoxTiltXDirection, resources.GetString("numericBoxTiltXDirection.ToolTip"));
             numericBoxTiltXDirection.Value = -29D;
             numericBoxTiltXDirection.ValueChanged += numericBoxPrimaryAxisDirection_ValueChanged;
             // 
             // numericBoxLinkTiltX
             // 
+            resources.ApplyResources(numericBoxLinkTiltX, "numericBoxLinkTiltX");
             numericBoxLinkTiltX.BackColor = System.Drawing.Color.Transparent;
             numericBoxLinkTiltX.DecimalPlaces = 1;
-            numericBoxLinkTiltX.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxLinkTiltX.FooterText = "°";
-            numericBoxLinkTiltX.HeaderText = "Tilt X";
-            numericBoxLinkTiltX.Location = new System.Drawing.Point(8, 19);
-            numericBoxLinkTiltX.Margin = new System.Windows.Forms.Padding(0);
             numericBoxLinkTiltX.Maximum = 180D;
-            numericBoxLinkTiltX.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxLinkTiltX.Minimum = -180D;
-            numericBoxLinkTiltX.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxLinkTiltX.Name = "numericBoxLinkTiltX";
-            numericBoxLinkTiltX.Size = new System.Drawing.Size(82, 25);
-            numericBoxLinkTiltX.TabIndex = 81;
-            numericBoxLinkTiltX.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            toolTip1.SetToolTip(numericBoxLinkTiltX, resources.GetString("numericBoxLinkTiltX.ToolTip"));
             // 
             // numericBoxLinkTiltY
             // 
+            resources.ApplyResources(numericBoxLinkTiltY, "numericBoxLinkTiltY");
             numericBoxLinkTiltY.BackColor = System.Drawing.Color.Transparent;
             numericBoxLinkTiltY.DecimalPlaces = 1;
-            numericBoxLinkTiltY.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxLinkTiltY.FooterText = "°";
-            numericBoxLinkTiltY.HeaderText = "Tilt Y";
-            numericBoxLinkTiltY.Location = new System.Drawing.Point(8, 46);
-            numericBoxLinkTiltY.Margin = new System.Windows.Forms.Padding(0);
             numericBoxLinkTiltY.Maximum = 180D;
-            numericBoxLinkTiltY.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxLinkTiltY.Minimum = -180D;
-            numericBoxLinkTiltY.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxLinkTiltY.Name = "numericBoxLinkTiltY";
-            numericBoxLinkTiltY.Size = new System.Drawing.Size(82, 25);
-            numericBoxLinkTiltY.TabIndex = 81;
-            numericBoxLinkTiltY.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            toolTip1.SetToolTip(numericBoxLinkTiltY, resources.GetString("numericBoxLinkTiltY.ToolTip"));
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label4.Location = new System.Drawing.Point(10, 65);
+            resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(67, 34);
-            label4.TabIndex = 82;
-            label4.Text = "Polarity of\r\n the Tilt Y";
+            toolTip1.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // groupBox1
             // 
+            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Controls.Add(radioButtonTiltY_Plus);
             groupBox1.Controls.Add(radioButtonTiltY_Minus);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(numericBoxTiltXDirection);
             groupBox1.Controls.Add(label4);
-            groupBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox1.Location = new System.Drawing.Point(427, 403);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(168, 105);
-            groupBox1.TabIndex = 83;
             groupBox1.TabStop = false;
-            groupBox1.Text = "TEM-specific settings";
+            toolTip1.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // radioButtonTiltY_Plus
             // 
-            radioButtonTiltY_Plus.AutoSize = true;
+            resources.ApplyResources(radioButtonTiltY_Plus, "radioButtonTiltY_Plus");
             radioButtonTiltY_Plus.Checked = true;
-            radioButtonTiltY_Plus.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            radioButtonTiltY_Plus.Location = new System.Drawing.Point(92, 77);
             radioButtonTiltY_Plus.Name = "radioButtonTiltY_Plus";
-            radioButtonTiltY_Plus.Size = new System.Drawing.Size(35, 21);
-            radioButtonTiltY_Plus.TabIndex = 83;
             radioButtonTiltY_Plus.TabStop = true;
-            radioButtonTiltY_Plus.Text = "+";
+            toolTip1.SetToolTip(radioButtonTiltY_Plus, resources.GetString("radioButtonTiltY_Plus.ToolTip"));
             radioButtonTiltY_Plus.UseVisualStyleBackColor = true;
             radioButtonTiltY_Plus.CheckedChanged += numericBoxPrimaryAxisDirection_ValueChanged;
             // 
             // radioButtonTiltY_Minus
             // 
-            radioButtonTiltY_Minus.AutoSize = true;
-            radioButtonTiltY_Minus.Location = new System.Drawing.Point(132, 77);
+            resources.ApplyResources(radioButtonTiltY_Minus, "radioButtonTiltY_Minus");
             radioButtonTiltY_Minus.Name = "radioButtonTiltY_Minus";
-            radioButtonTiltY_Minus.Size = new System.Drawing.Size(32, 21);
-            radioButtonTiltY_Minus.TabIndex = 83;
-            radioButtonTiltY_Minus.Text = "-";
+            toolTip1.SetToolTip(radioButtonTiltY_Minus, resources.GetString("radioButtonTiltY_Minus.ToolTip"));
             radioButtonTiltY_Minus.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
+            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Controls.Add(buttonRotate180);
             groupBox2.Controls.Add(buttonLink);
             groupBox2.Controls.Add(numericBoxLinkTiltX);
             groupBox2.Controls.Add(numericBoxLinkTiltY);
-            groupBox2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox2.Location = new System.Drawing.Point(241, 403);
-            groupBox2.Margin = new System.Windows.Forms.Padding(0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(182, 105);
-            groupBox2.TabIndex = 84;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Link";
+            toolTip1.SetToolTip(groupBox2, resources.GetString("groupBox2.ToolTip"));
             // 
             // buttonRotate180
             // 
-            buttonRotate180.AutoSize = true;
-            buttonRotate180.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonRotate180.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            buttonRotate180.Location = new System.Drawing.Point(6, 71);
-            buttonRotate180.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(buttonRotate180, "buttonRotate180");
             buttonRotate180.Name = "buttonRotate180";
-            buttonRotate180.Size = new System.Drawing.Size(88, 25);
-            buttonRotate180.TabIndex = 83;
-            buttonRotate180.Text = "⭮ rotate 180°";
+            toolTip1.SetToolTip(buttonRotate180, resources.GetString("buttonRotate180.ToolTip"));
             buttonRotate180.UseVisualStyleBackColor = true;
             buttonRotate180.Click += buttonRotate180_Click;
             // 
             // buttonLink
             // 
-            buttonLink.AutoSize = true;
-            buttonLink.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonLink.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            buttonLink.Location = new System.Drawing.Point(99, 31);
-            buttonLink.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(buttonLink, "buttonLink");
             buttonLink.Name = "buttonLink";
-            buttonLink.Size = new System.Drawing.Size(78, 55);
-            buttonLink.TabIndex = 83;
-            buttonLink.Text = "Link to \r\n the current\r\n direction";
+            toolTip1.SetToolTip(buttonLink, resources.GetString("buttonLink.ToolTip"));
             buttonLink.UseVisualStyleBackColor = true;
             buttonLink.Click += buttonLink_Click;
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(label18);
-            groupBox5.Controls.Add(label17);
-            groupBox5.Controls.Add(trackBarPointSize);
-            groupBox5.Controls.Add(flowLayoutPanel1);
+            resources.ApplyResources(groupBox5, "groupBox5");
+            groupBox5.Controls.Add(groupBox6);
+            groupBox5.Controls.Add(groupBox4);
             groupBox5.Controls.Add(numericBoxDrawingArea);
-            groupBox5.Controls.Add(trackBarStrSize);
             groupBox5.Controls.Add(checkBoxTiltDirections);
             groupBox5.Controls.Add(checkBox1DegLine);
             groupBox5.Controls.Add(checkBoxShowIndexLabels);
-            groupBox5.Controls.Add(numericBoxW);
-            groupBox5.Controls.Add(label16);
-            groupBox5.Controls.Add(numericBoxV);
-            groupBox5.Controls.Add(label15);
-            groupBox5.Controls.Add(label14);
-            groupBox5.Controls.Add(numericBoxU);
-            groupBox5.Controls.Add(label5);
-            groupBox5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox5.Location = new System.Drawing.Point(408, 2);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new System.Drawing.Size(187, 396);
-            groupBox5.TabIndex = 84;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Stereonet properties";
+            toolTip1.SetToolTip(groupBox5, resources.GetString("groupBox5.ToolTip"));
             // 
-            // label18
+            // groupBox6
             // 
-            label18.AutoSize = true;
-            label18.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label18.Location = new System.Drawing.Point(5, 370);
-            label18.Name = "label18";
-            label18.Size = new System.Drawing.Size(63, 17);
-            label18.TabIndex = 69;
-            label18.Text = "Point size";
+            resources.ApplyResources(groupBox6, "groupBox6");
+            groupBox6.Controls.Add(numericBoxU);
+            groupBox6.Controls.Add(label14);
+            groupBox6.Controls.Add(checkBoxIncludingEquivalent);
+            groupBox6.Controls.Add(label15);
+            groupBox6.Controls.Add(numericBoxV);
+            groupBox6.Controls.Add(label16);
+            groupBox6.Controls.Add(numericBoxW);
+            groupBox6.Name = "groupBox6";
+            groupBox6.TabStop = false;
+            toolTip1.SetToolTip(groupBox6, resources.GetString("groupBox6.ToolTip"));
             // 
-            // label17
+            // numericBoxU
             // 
-            label17.AutoSize = true;
-            label17.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label17.Location = new System.Drawing.Point(5, 350);
-            label17.Name = "label17";
-            label17.Size = new System.Drawing.Size(68, 17);
-            label17.TabIndex = 68;
-            label17.Text = "String size";
+            resources.ApplyResources(numericBoxU, "numericBoxU");
+            numericBoxU.BackColor = System.Drawing.Color.Transparent;
+            numericBoxU.Maximum = 20D;
+            numericBoxU.Minimum = 0D;
+            numericBoxU.Name = "numericBoxU";
+            numericBoxU.RadianValue = 0.034906585039886591D;
+            numericBoxU.ShowUpDown = true;
+            numericBoxU.SkipEventDuringInput = false;
+            numericBoxU.ThonsandsSeparator = true;
+            toolTip1.SetToolTip(numericBoxU, resources.GetString("numericBoxU.ToolTip"));
+            numericBoxU.Value = 2D;
+            numericBoxU.ValueChanged += numericBoxU_ValueChanged;
             // 
-            // trackBarPointSize
+            // label14
             // 
-            trackBarPointSize.AutoSize = false;
-            trackBarPointSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            trackBarPointSize.Location = new System.Drawing.Point(72, 371);
-            trackBarPointSize.Maximum = 20;
-            trackBarPointSize.Minimum = 1;
-            trackBarPointSize.Name = "trackBarPointSize";
-            trackBarPointSize.Size = new System.Drawing.Size(80, 16);
-            trackBarPointSize.TabIndex = 65;
-            trackBarPointSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            trackBarPointSize.Value = 4;
+            resources.ApplyResources(label14, "label14");
+            label14.Name = "label14";
+            toolTip1.SetToolTip(label14, resources.GetString("label14.ToolTip"));
+            // 
+            // checkBoxIncludingEquivalent
+            // 
+            resources.ApplyResources(checkBoxIncludingEquivalent, "checkBoxIncludingEquivalent");
+            checkBoxIncludingEquivalent.Checked = true;
+            checkBoxIncludingEquivalent.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxIncludingEquivalent.Name = "checkBoxIncludingEquivalent";
+            toolTip1.SetToolTip(checkBoxIncludingEquivalent, resources.GetString("checkBoxIncludingEquivalent.ToolTip"));
+            checkBoxIncludingEquivalent.UseVisualStyleBackColor = true;
+            checkBoxIncludingEquivalent.CheckedChanged += checkBoxIncludingEquivalent_CheckedChanged;
+            // 
+            // label15
+            // 
+            resources.ApplyResources(label15, "label15");
+            label15.Name = "label15";
+            toolTip1.SetToolTip(label15, resources.GetString("label15.ToolTip"));
+            // 
+            // numericBoxV
+            // 
+            resources.ApplyResources(numericBoxV, "numericBoxV");
+            numericBoxV.BackColor = System.Drawing.Color.Transparent;
+            numericBoxV.Maximum = 20D;
+            numericBoxV.Minimum = 0D;
+            numericBoxV.Name = "numericBoxV";
+            numericBoxV.RadianValue = 0.034906585039886591D;
+            numericBoxV.ShowUpDown = true;
+            numericBoxV.SkipEventDuringInput = false;
+            numericBoxV.ThonsandsSeparator = true;
+            toolTip1.SetToolTip(numericBoxV, resources.GetString("numericBoxV.ToolTip"));
+            numericBoxV.Value = 2D;
+            numericBoxV.ValueChanged += numericBoxU_ValueChanged;
+            // 
+            // label16
+            // 
+            resources.ApplyResources(label16, "label16");
+            label16.Name = "label16";
+            toolTip1.SetToolTip(label16, resources.GetString("label16.ToolTip"));
+            // 
+            // numericBoxW
+            // 
+            resources.ApplyResources(numericBoxW, "numericBoxW");
+            numericBoxW.BackColor = System.Drawing.Color.Transparent;
+            numericBoxW.Maximum = 20D;
+            numericBoxW.Minimum = 0D;
+            numericBoxW.Name = "numericBoxW";
+            numericBoxW.RadianValue = 0.034906585039886591D;
+            numericBoxW.ShowUpDown = true;
+            numericBoxW.SkipEventDuringInput = false;
+            numericBoxW.ThonsandsSeparator = true;
+            toolTip1.SetToolTip(numericBoxW, resources.GetString("numericBoxW.ToolTip"));
+            numericBoxW.Value = 2D;
+            numericBoxW.ReadOnlyChanged += numericBoxU_ValueChanged;
+            // 
+            // groupBox4
+            // 
+            resources.ApplyResources(groupBox4, "groupBox4");
+            groupBox4.Controls.Add(flowLayoutPanel1);
+            groupBox4.Controls.Add(label17);
+            groupBox4.Controls.Add(label18);
+            groupBox4.Controls.Add(trackBarStrSize);
+            groupBox4.Controls.Add(trackBarPointSize);
+            groupBox4.Name = "groupBox4";
+            groupBox4.TabStop = false;
+            toolTip1.SetToolTip(groupBox4, resources.GetString("groupBox4.ToolTip"));
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             flowLayoutPanel1.Controls.Add(colorControlBackGround);
             flowLayoutPanel1.Controls.Add(colorControlHolder);
             flowLayoutPanel1.Controls.Add(colorControl90DegLine);
@@ -331,598 +327,334 @@
             flowLayoutPanel1.Controls.Add(colorControlGeneralAxis);
             flowLayoutPanel1.Controls.Add(colorControlTiltX);
             flowLayoutPanel1.Controls.Add(colorControlTiltY);
-            flowLayoutPanel1.Location = new System.Drawing.Point(6, 256);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(162, 86);
-            flowLayoutPanel1.TabIndex = 93;
+            toolTip1.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             // 
             // colorControlBackGround
             // 
+            resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
             colorControlBackGround.Argb = -1;
-            colorControlBackGround.AutoSize = true;
-            colorControlBackGround.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             colorControlBackGround.BackColor = System.Drawing.Color.White;
             colorControlBackGround.Blue = 255;
             colorControlBackGround.BlueF = 1F;
             colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
             colorControlBackGround.Color = System.Drawing.Color.FromArgb(255, 255, 255);
-            colorControlBackGround.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            colorControlBackGround.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            colorControlBackGround.FooterMargin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            colorControlBackGround.FooterText = "Background";
             colorControlBackGround.Green = 255;
             colorControlBackGround.GreenF = 1F;
-            colorControlBackGround.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            colorControlBackGround.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlBackGround.Location = new System.Drawing.Point(0, 0);
-            colorControlBackGround.Margin = new System.Windows.Forms.Padding(0);
             colorControlBackGround.Name = "colorControlBackGround";
             colorControlBackGround.Red = 255;
             colorControlBackGround.RedF = 1F;
-            colorControlBackGround.Size = new System.Drawing.Size(94, 20);
-            colorControlBackGround.TabIndex = 88;
             colorControlBackGround.TabStop = false;
-            colorControlBackGround.ToolTip = "背景色";
+            toolTip1.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip1"));
             colorControlBackGround.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControlHolder
             // 
+            resources.ApplyResources(colorControlHolder, "colorControlHolder");
             colorControlHolder.Argb = -32768;
-            colorControlHolder.AutoSize = true;
-            colorControlHolder.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             colorControlHolder.BackColor = System.Drawing.Color.White;
             colorControlHolder.Blue = 0;
             colorControlHolder.BlueF = 0F;
             colorControlHolder.BoxSize = new System.Drawing.Size(20, 20);
             colorControlHolder.Color = System.Drawing.Color.FromArgb(255, 128, 0);
-            colorControlHolder.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            colorControlHolder.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            colorControlHolder.FooterMargin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            colorControlHolder.FooterText = "Holder";
             colorControlHolder.Green = 128;
             colorControlHolder.GreenF = 0.5019608F;
-            colorControlHolder.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            colorControlHolder.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlHolder.Location = new System.Drawing.Point(94, 0);
-            colorControlHolder.Margin = new System.Windows.Forms.Padding(0);
             colorControlHolder.Name = "colorControlHolder";
             colorControlHolder.Red = 255;
             colorControlHolder.RedF = 1F;
-            colorControlHolder.Size = new System.Drawing.Size(66, 20);
-            colorControlHolder.TabIndex = 88;
             colorControlHolder.TabStop = false;
-            colorControlHolder.ToolTip = "背景色";
+            toolTip1.SetToolTip(colorControlHolder, resources.GetString("colorControlHolder.ToolTip1"));
             colorControlHolder.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControl90DegLine
             // 
+            resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
             colorControl90DegLine.Argb = -16776961;
-            colorControl90DegLine.AutoSize = true;
-            colorControl90DegLine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
             colorControl90DegLine.Blue = 255;
             colorControl90DegLine.BlueF = 1F;
             colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl90DegLine.Color = System.Drawing.Color.FromArgb(0, 0, 255);
-            colorControl90DegLine.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            colorControl90DegLine.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            colorControl90DegLine.FooterMargin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            colorControl90DegLine.FooterText = "90°";
             colorControl90DegLine.Green = 0;
             colorControl90DegLine.GreenF = 0F;
-            colorControl90DegLine.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            colorControl90DegLine.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControl90DegLine.Location = new System.Drawing.Point(0, 20);
-            colorControl90DegLine.Margin = new System.Windows.Forms.Padding(0);
             colorControl90DegLine.Name = "colorControl90DegLine";
             colorControl90DegLine.Red = 0;
             colorControl90DegLine.RedF = 0F;
-            colorControl90DegLine.Size = new System.Drawing.Size(47, 20);
-            colorControl90DegLine.TabIndex = 91;
             colorControl90DegLine.TabStop = false;
-            colorControl90DegLine.ToolTip = "90度線の色";
+            toolTip1.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip1"));
             colorControl90DegLine.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControl10DegLine
             // 
+            resources.ApplyResources(colorControl10DegLine, "colorControl10DegLine");
             colorControl10DegLine.Argb = -8355585;
-            colorControl10DegLine.AutoSize = true;
-            colorControl10DegLine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(128, 128, 255);
             colorControl10DegLine.Blue = 255;
             colorControl10DegLine.BlueF = 1F;
             colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl10DegLine.Color = System.Drawing.Color.FromArgb(128, 128, 255);
-            colorControl10DegLine.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            colorControl10DegLine.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            colorControl10DegLine.FooterMargin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            colorControl10DegLine.FooterText = "10°";
             colorControl10DegLine.Green = 128;
             colorControl10DegLine.GreenF = 0.5019608F;
-            colorControl10DegLine.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            colorControl10DegLine.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControl10DegLine.Location = new System.Drawing.Point(47, 20);
-            colorControl10DegLine.Margin = new System.Windows.Forms.Padding(0);
             colorControl10DegLine.Name = "colorControl10DegLine";
             colorControl10DegLine.Red = 128;
             colorControl10DegLine.RedF = 0.5019608F;
-            colorControl10DegLine.Size = new System.Drawing.Size(47, 20);
-            colorControl10DegLine.TabIndex = 89;
             colorControl10DegLine.TabStop = false;
-            colorControl10DegLine.ToolTip = "10度線の色";
+            toolTip1.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip1"));
             colorControl10DegLine.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControl1DegLine
             // 
+            resources.ApplyResources(colorControl1DegLine, "colorControl1DegLine");
             colorControl1DegLine.Argb = -4144897;
-            colorControl1DegLine.AutoSize = true;
-            colorControl1DegLine.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(192, 192, 255);
             colorControl1DegLine.Blue = 255;
             colorControl1DegLine.BlueF = 1F;
             colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl1DegLine.Color = System.Drawing.Color.FromArgb(192, 192, 255);
-            colorControl1DegLine.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            colorControl1DegLine.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            colorControl1DegLine.FooterMargin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            colorControl1DegLine.FooterText = "1°";
             colorControl1DegLine.Green = 192;
             colorControl1DegLine.GreenF = 0.7529412F;
-            colorControl1DegLine.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            colorControl1DegLine.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControl1DegLine.Location = new System.Drawing.Point(94, 20);
-            colorControl1DegLine.Margin = new System.Windows.Forms.Padding(0);
             colorControl1DegLine.Name = "colorControl1DegLine";
             colorControl1DegLine.Red = 192;
             colorControl1DegLine.RedF = 0.7529412F;
-            colorControl1DegLine.Size = new System.Drawing.Size(41, 20);
-            colorControl1DegLine.TabIndex = 90;
             colorControl1DegLine.TabStop = false;
-            colorControl1DegLine.ToolTip = "1度線の色\r\n「Show 1°line」がチェックされているとき有効";
+            toolTip1.SetToolTip(colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip1"));
             colorControl1DegLine.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControlUniqueAxis
             // 
+            resources.ApplyResources(colorControlUniqueAxis, "colorControlUniqueAxis");
             colorControlUniqueAxis.Argb = -7667712;
-            colorControlUniqueAxis.AutoSize = true;
-            colorControlUniqueAxis.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             colorControlUniqueAxis.BackColor = System.Drawing.Color.Red;
             colorControlUniqueAxis.Blue = 0;
             colorControlUniqueAxis.BlueF = 0F;
             colorControlUniqueAxis.BoxSize = new System.Drawing.Size(20, 20);
             colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(139, 0, 0);
-            colorControlUniqueAxis.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            colorControlUniqueAxis.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            colorControlUniqueAxis.FooterMargin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            colorControlUniqueAxis.FooterText = "a, b, c";
             colorControlUniqueAxis.Green = 0;
             colorControlUniqueAxis.GreenF = 0F;
-            colorControlUniqueAxis.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            colorControlUniqueAxis.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlUniqueAxis.Location = new System.Drawing.Point(0, 40);
-            colorControlUniqueAxis.Margin = new System.Windows.Forms.Padding(0);
             colorControlUniqueAxis.Name = "colorControlUniqueAxis";
             colorControlUniqueAxis.Red = 139;
             colorControlUniqueAxis.RedF = 0.545098066F;
-            colorControlUniqueAxis.Size = new System.Drawing.Size(61, 20);
-            colorControlUniqueAxis.TabIndex = 86;
             colorControlUniqueAxis.TabStop = false;
-            colorControlUniqueAxis.ToolTip = "軸表示時の[100], [010], [001]の表示色";
+            toolTip1.SetToolTip(colorControlUniqueAxis, resources.GetString("colorControlUniqueAxis.ToolTip1"));
             colorControlUniqueAxis.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControlGeneralAxis
             // 
+            resources.ApplyResources(colorControlGeneralAxis, "colorControlGeneralAxis");
             colorControlGeneralAxis.Argb = -65536;
-            colorControlGeneralAxis.AutoSize = true;
-            colorControlGeneralAxis.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             colorControlGeneralAxis.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
             colorControlGeneralAxis.Blue = 0;
             colorControlGeneralAxis.BlueF = 0F;
             colorControlGeneralAxis.BoxSize = new System.Drawing.Size(20, 20);
             colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlGeneralAxis.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            colorControlGeneralAxis.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            colorControlGeneralAxis.FooterMargin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            colorControlGeneralAxis.FooterText = "General Axes";
             colorControlGeneralAxis.Green = 0;
             colorControlGeneralAxis.GreenF = 0F;
-            colorControlGeneralAxis.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            colorControlGeneralAxis.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlGeneralAxis.Location = new System.Drawing.Point(61, 40);
-            colorControlGeneralAxis.Margin = new System.Windows.Forms.Padding(0);
             colorControlGeneralAxis.Name = "colorControlGeneralAxis";
             colorControlGeneralAxis.Red = 255;
             colorControlGeneralAxis.RedF = 1F;
-            colorControlGeneralAxis.Size = new System.Drawing.Size(97, 20);
-            colorControlGeneralAxis.TabIndex = 87;
             colorControlGeneralAxis.TabStop = false;
+            toolTip1.SetToolTip(colorControlGeneralAxis, resources.GetString("colorControlGeneralAxis.ToolTip1"));
             colorControlGeneralAxis.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControlTiltX
             // 
+            resources.ApplyResources(colorControlTiltX, "colorControlTiltX");
             colorControlTiltX.Argb = -16726016;
-            colorControlTiltX.AutoSize = true;
-            colorControlTiltX.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             colorControlTiltX.BackColor = System.Drawing.Color.Lime;
             colorControlTiltX.Blue = 0;
             colorControlTiltX.BlueF = 0F;
             colorControlTiltX.BoxSize = new System.Drawing.Size(20, 20);
             colorControlTiltX.Color = System.Drawing.Color.FromArgb(0, 200, 0);
-            colorControlTiltX.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            colorControlTiltX.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            colorControlTiltX.FooterMargin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            colorControlTiltX.FooterText = "Tilt-X";
             colorControlTiltX.Green = 200;
             colorControlTiltX.GreenF = 0.784313738F;
-            colorControlTiltX.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            colorControlTiltX.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlTiltX.Location = new System.Drawing.Point(0, 60);
-            colorControlTiltX.Margin = new System.Windows.Forms.Padding(0);
             colorControlTiltX.Name = "colorControlTiltX";
             colorControlTiltX.Red = 0;
             colorControlTiltX.RedF = 0F;
-            colorControlTiltX.Size = new System.Drawing.Size(59, 20);
-            colorControlTiltX.TabIndex = 92;
             colorControlTiltX.TabStop = false;
+            toolTip1.SetToolTip(colorControlTiltX, resources.GetString("colorControlTiltX.ToolTip1"));
             // 
             // colorControlTiltY
             // 
+            resources.ApplyResources(colorControlTiltY, "colorControlTiltY");
             colorControlTiltY.Argb = -65281;
-            colorControlTiltY.AutoSize = true;
-            colorControlTiltY.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             colorControlTiltY.BackColor = System.Drawing.Color.Lime;
             colorControlTiltY.Blue = 255;
             colorControlTiltY.BlueF = 1F;
             colorControlTiltY.BoxSize = new System.Drawing.Size(20, 20);
             colorControlTiltY.Color = System.Drawing.Color.FromArgb(255, 0, 255);
-            colorControlTiltY.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            colorControlTiltY.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            colorControlTiltY.FooterMargin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            colorControlTiltY.FooterText = "Tilt-Y";
             colorControlTiltY.Green = 0;
             colorControlTiltY.GreenF = 0F;
-            colorControlTiltY.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            colorControlTiltY.HeaderMargin = new System.Windows.Forms.Padding(0);
-            colorControlTiltY.Location = new System.Drawing.Point(59, 60);
-            colorControlTiltY.Margin = new System.Windows.Forms.Padding(0);
             colorControlTiltY.Name = "colorControlTiltY";
             colorControlTiltY.Red = 255;
             colorControlTiltY.RedF = 1F;
-            colorControlTiltY.Size = new System.Drawing.Size(59, 20);
-            colorControlTiltY.TabIndex = 92;
             colorControlTiltY.TabStop = false;
+            toolTip1.SetToolTip(colorControlTiltY, resources.GetString("colorControlTiltY.ToolTip1"));
             // 
-            // numericBoxDrawingArea
+            // label17
             // 
-            numericBoxDrawingArea.BackColor = System.Drawing.Color.Transparent;
-            numericBoxDrawingArea.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxDrawingArea.FooterText = "°";
-            numericBoxDrawingArea.HeaderText = "Drawing area";
-            numericBoxDrawingArea.Location = new System.Drawing.Point(7, 25);
-            numericBoxDrawingArea.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxDrawingArea.Maximum = 90D;
-            numericBoxDrawingArea.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxDrawingArea.Minimum = 1D;
-            numericBoxDrawingArea.MinimumSize = new System.Drawing.Size(1, 20);
-            numericBoxDrawingArea.Name = "numericBoxDrawingArea";
-            numericBoxDrawingArea.RadianValue = 0.52359877559829882D;
-            numericBoxDrawingArea.ShowUpDown = true;
-            numericBoxDrawingArea.Size = new System.Drawing.Size(141, 25);
-            numericBoxDrawingArea.TabIndex = 81;
-            numericBoxDrawingArea.TextFont = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxDrawingArea.Value = 30D;
-            numericBoxDrawingArea.ValueChanged += numericBoxDrawingArea_ValueChanged;
+            resources.ApplyResources(label17, "label17");
+            label17.Name = "label17";
+            toolTip1.SetToolTip(label17, resources.GetString("label17.ToolTip"));
+            // 
+            // label18
+            // 
+            resources.ApplyResources(label18, "label18");
+            label18.Name = "label18";
+            toolTip1.SetToolTip(label18, resources.GetString("label18.ToolTip"));
             // 
             // trackBarStrSize
             // 
-            trackBarStrSize.AutoSize = false;
-            trackBarStrSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            trackBarStrSize.Location = new System.Drawing.Point(70, 351);
+            resources.ApplyResources(trackBarStrSize, "trackBarStrSize");
             trackBarStrSize.Maximum = 200;
             trackBarStrSize.Minimum = 1;
             trackBarStrSize.Name = "trackBarStrSize";
-            trackBarStrSize.Size = new System.Drawing.Size(80, 16);
-            trackBarStrSize.TabIndex = 66;
             trackBarStrSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip1.SetToolTip(trackBarStrSize, resources.GetString("trackBarStrSize.ToolTip"));
             trackBarStrSize.Value = 60;
+            // 
+            // trackBarPointSize
+            // 
+            resources.ApplyResources(trackBarPointSize, "trackBarPointSize");
+            trackBarPointSize.Maximum = 20;
+            trackBarPointSize.Minimum = 1;
+            trackBarPointSize.Name = "trackBarPointSize";
+            trackBarPointSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip1.SetToolTip(trackBarPointSize, resources.GetString("trackBarPointSize.ToolTip"));
+            trackBarPointSize.Value = 4;
+            // 
+            // numericBoxDrawingArea
+            // 
+            resources.ApplyResources(numericBoxDrawingArea, "numericBoxDrawingArea");
+            numericBoxDrawingArea.BackColor = System.Drawing.Color.Transparent;
+            numericBoxDrawingArea.Maximum = 90D;
+            numericBoxDrawingArea.Minimum = 1D;
+            numericBoxDrawingArea.Name = "numericBoxDrawingArea";
+            numericBoxDrawingArea.RadianValue = 0.52359877559829882D;
+            numericBoxDrawingArea.ShowUpDown = true;
+            numericBoxDrawingArea.SmartIncrement = true;
+            toolTip1.SetToolTip(numericBoxDrawingArea, resources.GetString("numericBoxDrawingArea.ToolTip"));
+            numericBoxDrawingArea.Value = 30D;
+            numericBoxDrawingArea.ValueChanged += numericBoxDrawingArea_ValueChanged;
             // 
             // checkBoxTiltDirections
             // 
-            checkBoxTiltDirections.AutoSize = true;
+            resources.ApplyResources(checkBoxTiltDirections, "checkBoxTiltDirections");
             checkBoxTiltDirections.Checked = true;
             checkBoxTiltDirections.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxTiltDirections.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            checkBoxTiltDirections.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxTiltDirections.Location = new System.Drawing.Point(9, 191);
-            checkBoxTiltDirections.Margin = new System.Windows.Forms.Padding(0);
             checkBoxTiltDirections.Name = "checkBoxTiltDirections";
-            checkBoxTiltDirections.Size = new System.Drawing.Size(137, 21);
-            checkBoxTiltDirections.TabIndex = 85;
-            checkBoxTiltDirections.Text = "Show tilt directions";
+            toolTip1.SetToolTip(checkBoxTiltDirections, resources.GetString("checkBoxTiltDirections.ToolTip"));
             checkBoxTiltDirections.CheckedChanged += checkBox1DegLine_CheckedChanged;
             // 
             // checkBox1DegLine
             // 
-            checkBox1DegLine.AutoSize = true;
+            resources.ApplyResources(checkBox1DegLine, "checkBox1DegLine");
             checkBox1DegLine.Checked = true;
             checkBox1DegLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBox1DegLine.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            checkBox1DegLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBox1DegLine.Location = new System.Drawing.Point(9, 143);
-            checkBox1DegLine.Margin = new System.Windows.Forms.Padding(0);
             checkBox1DegLine.Name = "checkBox1DegLine";
-            checkBox1DegLine.Size = new System.Drawing.Size(98, 21);
-            checkBox1DegLine.TabIndex = 85;
-            checkBox1DegLine.Text = "Show 1° line";
+            toolTip1.SetToolTip(checkBox1DegLine, resources.GetString("checkBox1DegLine.ToolTip"));
             checkBox1DegLine.CheckedChanged += checkBox1DegLine_CheckedChanged;
             // 
             // checkBoxShowIndexLabels
             // 
-            checkBoxShowIndexLabels.AutoSize = true;
+            resources.ApplyResources(checkBoxShowIndexLabels, "checkBoxShowIndexLabels");
             checkBoxShowIndexLabels.Checked = true;
             checkBoxShowIndexLabels.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxShowIndexLabels.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            checkBoxShowIndexLabels.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxShowIndexLabels.Location = new System.Drawing.Point(9, 167);
             checkBoxShowIndexLabels.Name = "checkBoxShowIndexLabels";
-            checkBoxShowIndexLabels.Size = new System.Drawing.Size(131, 21);
-            checkBoxShowIndexLabels.TabIndex = 84;
-            checkBoxShowIndexLabels.Text = "Show Index labels";
+            toolTip1.SetToolTip(checkBoxShowIndexLabels, resources.GetString("checkBoxShowIndexLabels.ToolTip"));
             checkBoxShowIndexLabels.UseVisualStyleBackColor = true;
-            // 
-            // numericBoxW
-            // 
-            numericBoxW.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxW.BackColor = System.Drawing.Color.Transparent;
-            numericBoxW.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxW.HeaderText = "±";
-            numericBoxW.Location = new System.Drawing.Point(122, 89);
-            numericBoxW.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxW.Maximum = 20D;
-            numericBoxW.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxW.Minimum = 0D;
-            numericBoxW.MinimumSize = new System.Drawing.Size(1, 20);
-            numericBoxW.Name = "numericBoxW";
-            numericBoxW.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxW.RadianValue = 0.034906585039886591D;
-            numericBoxW.ShowUpDown = true;
-            numericBoxW.Size = new System.Drawing.Size(54, 25);
-            numericBoxW.SkipEventDuringInput = false;
-            numericBoxW.TabIndex = 81;
-            numericBoxW.TextFont = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxW.ThonsandsSeparator = true;
-            numericBoxW.Value = 2D;
-            numericBoxW.ReadOnlyChanged += numericBoxU_ValueChanged;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic);
-            label16.Location = new System.Drawing.Point(141, 74);
-            label16.Name = "label16";
-            label16.Size = new System.Drawing.Size(16, 15);
-            label16.TabIndex = 82;
-            label16.Text = "w";
-            // 
-            // numericBoxV
-            // 
-            numericBoxV.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxV.BackColor = System.Drawing.Color.Transparent;
-            numericBoxV.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxV.HeaderText = "±";
-            numericBoxV.Location = new System.Drawing.Point(66, 89);
-            numericBoxV.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxV.Maximum = 20D;
-            numericBoxV.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxV.Minimum = 0D;
-            numericBoxV.MinimumSize = new System.Drawing.Size(1, 20);
-            numericBoxV.Name = "numericBoxV";
-            numericBoxV.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxV.RadianValue = 0.034906585039886591D;
-            numericBoxV.ShowUpDown = true;
-            numericBoxV.Size = new System.Drawing.Size(54, 25);
-            numericBoxV.SkipEventDuringInput = false;
-            numericBoxV.TabIndex = 82;
-            numericBoxV.TextFont = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxV.ThonsandsSeparator = true;
-            numericBoxV.Value = 2D;
-            numericBoxV.ValueChanged += numericBoxU_ValueChanged;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic);
-            label15.Location = new System.Drawing.Point(85, 74);
-            label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(13, 15);
-            label15.TabIndex = 82;
-            label15.Text = "v";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Italic);
-            label14.Location = new System.Drawing.Point(29, 74);
-            label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(14, 15);
-            label14.TabIndex = 82;
-            label14.Text = "u";
-            // 
-            // numericBoxU
-            // 
-            numericBoxU.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxU.BackColor = System.Drawing.Color.Transparent;
-            numericBoxU.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxU.HeaderText = "±";
-            numericBoxU.Location = new System.Drawing.Point(10, 89);
-            numericBoxU.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxU.Maximum = 20D;
-            numericBoxU.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxU.Minimum = 0D;
-            numericBoxU.MinimumSize = new System.Drawing.Size(1, 20);
-            numericBoxU.Name = "numericBoxU";
-            numericBoxU.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            numericBoxU.RadianValue = 0.034906585039886591D;
-            numericBoxU.ShowUpDown = true;
-            numericBoxU.Size = new System.Drawing.Size(54, 25);
-            numericBoxU.SkipEventDuringInput = false;
-            numericBoxU.TabIndex = 83;
-            numericBoxU.TextFont = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxU.ThonsandsSeparator = true;
-            numericBoxU.Value = 2D;
-            numericBoxU.ValueChanged += numericBoxU_ValueChanged;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label5.Location = new System.Drawing.Point(10, 57);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(77, 17);
-            label5.TabIndex = 82;
-            label5.Text = "Index range";
             // 
             // label1MousePosition
             // 
-            label1MousePosition.AutoSize = true;
+            resources.ApplyResources(label1MousePosition, "label1MousePosition");
             label1MousePosition.BackColor = System.Drawing.Color.White;
-            label1MousePosition.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            label1MousePosition.Location = new System.Drawing.Point(4, 4);
-            label1MousePosition.Margin = new System.Windows.Forms.Padding(0);
             label1MousePosition.Name = "label1MousePosition";
-            label1MousePosition.Size = new System.Drawing.Size(147, 15);
-            label1MousePosition.TabIndex = 82;
-            label1MousePosition.Text = "Tilt-X: ##.#°    Tilt-Y:##.# °";
+            toolTip1.SetToolTip(label1MousePosition, resources.GetString("label1MousePosition.ToolTip"));
             // 
             // groupBox3
             // 
+            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Controls.Add(numericBoxArrowStep);
             groupBox3.Controls.Add(label19);
             groupBox3.Controls.Add(numericBoxTiltX);
             groupBox3.Controls.Add(label20);
             groupBox3.Controls.Add(numericBoxTiltY);
             groupBox3.Controls.Add(checkBoxEnableArrow);
-            groupBox3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox3.Location = new System.Drawing.Point(2, 403);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(235, 105);
-            groupBox3.TabIndex = 84;
             groupBox3.TabStop = false;
-            groupBox3.Text = "Holder angles";
+            toolTip1.SetToolTip(groupBox3, resources.GetString("groupBox3.ToolTip"));
             // 
             // numericBoxArrowStep
             // 
+            resources.ApplyResources(numericBoxArrowStep, "numericBoxArrowStep");
             numericBoxArrowStep.BackColor = System.Drawing.Color.Transparent;
             numericBoxArrowStep.DecimalPlaces = 1;
-            numericBoxArrowStep.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxArrowStep.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxArrowStep.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            numericBoxArrowStep.FooterText = "°)";
-            numericBoxArrowStep.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxArrowStep.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            numericBoxArrowStep.HeaderText = "(step ";
-            numericBoxArrowStep.Location = new System.Drawing.Point(136, 75);
-            numericBoxArrowStep.Margin = new System.Windows.Forms.Padding(0);
             numericBoxArrowStep.Maximum = 2D;
-            numericBoxArrowStep.MaximumSize = new System.Drawing.Size(1000, 28);
             numericBoxArrowStep.Minimum = 0.1D;
-            numericBoxArrowStep.MinimumSize = new System.Drawing.Size(1, 18);
             numericBoxArrowStep.Name = "numericBoxArrowStep";
             numericBoxArrowStep.RadianValue = 0.0034906585039886592D;
             numericBoxArrowStep.ShowUpDown = true;
-            numericBoxArrowStep.Size = new System.Drawing.Size(95, 23);
-            numericBoxArrowStep.TabIndex = 81;
-            numericBoxArrowStep.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            toolTip1.SetToolTip(numericBoxArrowStep, resources.GetString("numericBoxArrowStep.ToolTip"));
             numericBoxArrowStep.UpDown_Increment = 0.1D;
             numericBoxArrowStep.Value = 0.2D;
             numericBoxArrowStep.ValueChanged += numericBoxTilt_ValueChanged;
             // 
             // label19
             // 
-            label19.AutoSize = true;
-            label19.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label19.Location = new System.Drawing.Point(6, 23);
+            resources.ApplyResources(label19, "label19");
             label19.Name = "label19";
-            label19.Size = new System.Drawing.Size(143, 17);
-            label19.TabIndex = 82;
-            label19.Text = "Tilt X (Primary rotation)";
+            toolTip1.SetToolTip(label19, resources.GetString("label19.ToolTip"));
             // 
             // numericBoxTiltX
             // 
+            resources.ApplyResources(numericBoxTiltX, "numericBoxTiltX");
             numericBoxTiltX.BackColor = System.Drawing.Color.Transparent;
             numericBoxTiltX.DecimalPlaces = 1;
-            numericBoxTiltX.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxTiltX.FooterText = "°";
-            numericBoxTiltX.Location = new System.Drawing.Point(166, 19);
-            numericBoxTiltX.Margin = new System.Windows.Forms.Padding(0);
             numericBoxTiltX.Maximum = 180D;
-            numericBoxTiltX.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxTiltX.Minimum = -180D;
-            numericBoxTiltX.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxTiltX.Name = "numericBoxTiltX";
             numericBoxTiltX.ShowUpDown = true;
-            numericBoxTiltX.Size = new System.Drawing.Size(69, 25);
-            numericBoxTiltX.TabIndex = 81;
-            numericBoxTiltX.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            toolTip1.SetToolTip(numericBoxTiltX, resources.GetString("numericBoxTiltX.ToolTip"));
             numericBoxTiltX.ValueChanged += numericBoxTilt_ValueChanged;
             // 
             // label20
             // 
-            label20.AutoSize = true;
-            label20.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label20.Location = new System.Drawing.Point(6, 49);
+            resources.ApplyResources(label20, "label20");
             label20.Name = "label20";
-            label20.Size = new System.Drawing.Size(159, 17);
-            label20.TabIndex = 82;
-            label20.Text = "Tilt Y (Secondary rotation)";
+            toolTip1.SetToolTip(label20, resources.GetString("label20.ToolTip"));
             // 
             // numericBoxTiltY
             // 
+            resources.ApplyResources(numericBoxTiltY, "numericBoxTiltY");
             numericBoxTiltY.BackColor = System.Drawing.Color.Transparent;
             numericBoxTiltY.DecimalPlaces = 1;
-            numericBoxTiltY.Font = new System.Drawing.Font("メイリオ", 9F);
-            numericBoxTiltY.FooterText = "°";
-            numericBoxTiltY.Location = new System.Drawing.Point(166, 47);
-            numericBoxTiltY.Margin = new System.Windows.Forms.Padding(0);
             numericBoxTiltY.Maximum = 180D;
-            numericBoxTiltY.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxTiltY.Minimum = -180D;
-            numericBoxTiltY.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxTiltY.Name = "numericBoxTiltY";
             numericBoxTiltY.ShowUpDown = true;
-            numericBoxTiltY.Size = new System.Drawing.Size(69, 25);
-            numericBoxTiltY.TabIndex = 81;
-            numericBoxTiltY.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            toolTip1.SetToolTip(numericBoxTiltY, resources.GetString("numericBoxTiltY.ToolTip"));
             numericBoxTiltY.ValueChanged += numericBoxTilt_ValueChanged;
             // 
             // checkBoxEnableArrow
             // 
-            checkBoxEnableArrow.AutoSize = true;
-            checkBoxEnableArrow.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            checkBoxEnableArrow.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxEnableArrow.Location = new System.Drawing.Point(21, 77);
+            resources.ApplyResources(checkBoxEnableArrow, "checkBoxEnableArrow");
             checkBoxEnableArrow.Name = "checkBoxEnableArrow";
-            checkBoxEnableArrow.Size = new System.Drawing.Size(120, 19);
-            checkBoxEnableArrow.TabIndex = 84;
-            checkBoxEnableArrow.Text = "Enable arrow keys";
+            toolTip1.SetToolTip(checkBoxEnableArrow, resources.GetString("checkBoxEnableArrow.ToolTip"));
             checkBoxEnableArrow.UseVisualStyleBackColor = true;
             checkBoxEnableArrow.CheckedChanged += checkBoxEnableArrow_CheckedChanged;
             // 
             // FormDiffractionSimulatorHolder
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(600, 513);
             Controls.Add(graphicsBox);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1MousePosition);
             Controls.Add(groupBox5);
-            Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             KeyPreview = true;
             Name = "FormDiffractionSimulatorHolder";
-            Text = "TEM Holder Simulation";
+            toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             FormClosing += FormDiffractionSimulatorHolder_FormClosing;
             Load += FormDiffractionSimulatorHolder_Load;
             KeyDown += FormDiffractionSimulatorHolder_KeyDown;
@@ -933,10 +665,14 @@
             groupBox2.PerformLayout();
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             ResumeLayout(false);
@@ -963,8 +699,6 @@
         private NumericBox numericBoxTiltXDirection;
         private NumericBox numericBoxTiltX;
         private NumericBox numericBoxTiltY;
-
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkBoxShowIndexLabels;
         private System.Windows.Forms.CheckBox checkBox1DegLine;
 
@@ -996,5 +730,8 @@
         private System.Windows.Forms.Button buttonRotate180;
         private System.Windows.Forms.CheckBox checkBoxEnableArrow;
         private NumericBox numericBoxArrowStep;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox checkBoxIncludingEquivalent;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }

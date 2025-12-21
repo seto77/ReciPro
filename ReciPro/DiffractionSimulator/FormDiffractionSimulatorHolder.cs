@@ -53,7 +53,7 @@ public partial class FormDiffractionSimulatorHolder : Form
         [.. Enumerable.Range(0, 360).Select(n => n * Math.PI / 180.0).Select(e => (Math.Sin(e), Math.Cos(e), Math.Tan(e)))];
 
 
-    private readonly List<(Vector3DBase Vec, (int U, int V, int W) Index)> ZoneAxes = [];
+    private List<(Vector3DBase Vec, (int U, int V, int W) Index)> ZoneAxes = [];
 
     #endregion
 
@@ -245,7 +245,8 @@ public partial class FormDiffractionSimulatorHolder : Form
     #region 晶帯軸をリセットし再計算
     private void setVector()
     {
-        ZoneAxes.Clear();
+
+        var indices = new HashSet<(int u, int v, int w)>();
         if (crystal.A * crystal.B * crystal.C != 0)
         {
             for (int u = -numericBoxU.ValueInteger; u <= numericBoxU.ValueInteger; u++)
@@ -253,10 +254,14 @@ public partial class FormDiffractionSimulatorHolder : Form
                     for (int w = -numericBoxW.ValueInteger; w <= numericBoxW.ValueInteger; w++)
                     {
                         if (u == 0 && v == 0 && w == 0) continue;
-                        if (Algebra.Irreducible(u, v, w) == 1)
-                            ZoneAxes.Add(((u * crystal.A_Axis + v * crystal.B_Axis + w * crystal.C_Axis), (u, v, w)));
+                        if (checkBoxIncludingEquivalent.Checked)
+                            foreach (var index in SymmetryStatic.GenerateEquivalentAxes(u, v, w, crystal.Symmetry, false))
+                                indices.Add(index);
+                        else
+                            indices.Add((u, v, w));
                     }
         }
+        ZoneAxes = indices.Select(e => ((e.u * crystal.A_Axis + e.v * crystal.B_Axis + e.w * crystal.C_Axis), (e.u, e.v, e.w))).ToList();
     }
     #endregion
 
@@ -347,5 +352,8 @@ public partial class FormDiffractionSimulatorHolder : Form
         FormDiffractionSimulator.formMain.Rotate((0, 0, 1), Math.PI);
     }
 
- 
+    private void checkBoxIncludingEquivalent_CheckedChanged(object sender, EventArgs e)
+    {
+        setVector(); Draw();
+    }
 }

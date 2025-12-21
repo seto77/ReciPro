@@ -24,6 +24,7 @@ public partial class FormStereonet : Form
     private PointD centerPt = new(0, 0);
     private double mag;
     private GLControlAlpha glControl;
+    private bool HexagonalLattice => (formMain.Crystal.Symmetry.CrystalSystemStr == "trigonal" || formMain.Crystal.Symmetry.CrystalSystemStr == "hexagonal") && formMain.Crystal.Alpha != formMain.Crystal.Gamma;
 
     public Matrix3D RotationMatrix => formMain.Crystal.RotationMatrix;
 
@@ -411,7 +412,7 @@ public partial class FormStereonet : Form
 
         Vector3D[] vector = radioButtonAxes.Checked ? [.. formMain.Crystal.VectorOfAxis] : [.. formMain.Crystal.VectorOfPlane];
         var drawString = trackBarStrSize.Value != 1 && checkBoxShowIndexLabels.Checked;
-        var font = new Font("Tahoma", trackBarStrSize.Value / (float)mag / 7f);
+        var font = new Font("Times", trackBarStrSize.Value / (float)mag / 7f);
         var brushUnique = new SolidBrush(radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color);
         var brushGeneral = new SolidBrush(radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color);
         var penUnique = new Pen(radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color, 2f / (float)mag);
@@ -419,49 +420,69 @@ public partial class FormStereonet : Form
 
         Func<Vector3DBase, PointD> conv = radioButtonWulff.Checked ? Stereonet.ConvertVectorToWulff : Stereonet.ConvertVectorToSchmidt;
 
-        for (int n = 0; n < vector.Length; n++)
+        var delimiter = radioButtonDelimiterNone.Checked ?"" : radioButtonDelimiterSpace.Checked ?" ":",";
+
+        foreach (var vec in vector)
         {
             //晶帯軸モードか、結晶面モードのとき
             if (radioButtonAxes.Checked || radioButtonPlanes.Checked)
             {
                 var radius = pointSize / mag;
                 if (radioButtonPlanes.Checked && checkBoxReflectStructureFactor.Checked)
-                    radius *= Math.Sqrt(vector[n].RelativeIntensity);
+                    radius *= Math.Sqrt(vec.RelativeIntensity);
 
-                var v = rot * vector[n];
+                var v = rot * vec;
                 if (radioButtonLowerSphere.Checked)
                     v.Z = -v.Z;
                 var srcPt = conv(v);
 
+
                 if (!formMain.YusaGonioMode)
                 {
-                    var brush = n < 6 && radioButtonRange.Checked ? brushUnique : brushGeneral;
-                    var pen = n < 6 && radioButtonRange.Checked ? penUnique : penGeneral;
+                    var (brush, pen) = vec.Index switch
+                    {
+                        (1, 0, 0) or (0, 1, 0) or (0, 0, 1) or (-1, 0, 0) or (0, -1, 0) or (0, 0, -1) => (brushUnique, penUnique),
+                        _ => (brushGeneral, penGeneral)
+                    };
+
+                    //六方晶系、三方晶系のとき、110 と -1-10 を特別扱い
+                    if ((crystal.Symmetry.CrystalSystemStr == "hexagonal" || crystal.Symmetry.CrystalSystemStr == "trigonal") && (vec.Index == (1, 1, 0) || vec.Index == (-1, -1, 0)))
+                        (brush, pen) = (brushUnique, penUnique);
+
                     if (srcPt.X * srcPt.X + srcPt.Y * srcPt.Y <= 1.2)
                     {
                         if (radioButtonUpperSphere.Checked)
                             g.FillEllipse(brush, new RectangleF((float)(srcPt.X - radius), (float)(-srcPt.Y - radius), (float)(radius * 2), (float)(radius * 2)));
                         else
                             g.DrawEllipse(pen, new RectangleF((float)(srcPt.X - radius), (float)(-srcPt.Y - radius), (float)(radius * 2), (float)(radius * 2)));
+
                         if (drawString)
-                            g.DrawString(vector[n].Text, font, brush, (float)(srcPt.X + radius), (float)(-srcPt.Y + radius));
+                        {
+                            string str;
+                            if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)
+                                str = $"({vec.Index.h} {vec.Index.k}{delimiter}{-vec.Index.h - vec.Index.k}{delimiter}{vec.Index.l})";
+                            else
+                                str = radioButtonAxes.Checked ? $"[{vec.Index.h}{delimiter}{vec.Index.k}{delimiter}{vec.Index.l}]" : $"({vec.Index.h}{delimiter}{vec.Index.k}{delimiter}{vec.Index.l})";
+
+                            g.DrawString(str, font, brush, (float)(srcPt.X + radius), (float)(-srcPt.Y + radius));
+                        }
                     }
                 }
                 else//YusaGonio
                 {
-                    positionRecorder[n].Add(srcPt);
-                    for (int i = 0; i < positionRecorder[n].Count; i++)
-                    {
-                        g.FillEllipse(brushGeneral, new RectangleF((float)(positionRecorder[n][i].X - radius / 2), (float)(-positionRecorder[n][i].Y - radius / 2), (float)radius, (float)radius));
-                        if (i != 0)
-                            g.DrawLine(new Pen(brushGeneral, 1f), positionRecorder[n][i - 1].X, positionRecorder[n][i - 1].Y, positionRecorder[n][i].X, positionRecorder[n][i].Y);
-                    }
+                    //positionRecorder[n].Add(srcPt);
+                    //for (int i = 0; i < positionRecorder[n].Count; i++)
+                    //{
+                    //    g.FillEllipse(brushGeneral, new RectangleF((float)(positionRecorder[n][i].X - radius / 2), (float)(-positionRecorder[n][i].Y - radius / 2), (float)radius, (float)radius));
+                    //    if (i != 0)
+                    //        g.DrawLine(new Pen(brushGeneral, 1f), positionRecorder[n][i - 1].X, positionRecorder[n][i - 1].Y, positionRecorder[n][i].X, positionRecorder[n][i].Y);
+                    //}
                 }
             }
             //菊池線モードのとき
             else
             {
-                var v = rot * vector[n];
+                var v = rot * vec;
                 if (radioButtonLowerSphere.Checked)
                     v.Z = -v.Z;
 
@@ -489,7 +510,7 @@ public partial class FormStereonet : Form
                             validEnd2 = i;
                     }
 
-                var col = checkBoxReflectStructureFactor.Checked ? Color.FromArgb((int)(vector[n].RelativeIntensity * 255), colorControlKikuchi.Color) : colorControlKikuchi.Color;
+                var col = checkBoxReflectStructureFactor.Checked ? Color.FromArgb((int)(vec.RelativeIntensity * 255), colorControlKikuchi.Color) : colorControlKikuchi.Color;
                 var pen = new Pen(col, 2f / (float)mag);
                 if (validEnd1 - validStart1 != 0)
                 {
@@ -547,7 +568,7 @@ public partial class FormStereonet : Form
                     if (pt.X * pt.X + pt.Y * pt.Y <= 1.05)
                     {
                         if (drawString)
-                            g.DrawString($"[{u}{v}{w}]", font, brushLabel, pt.X, -pt.Y);
+                            g.DrawString($"[{u}{delimiter}{v}{delimiter}{w}]", font, brushLabel, pt.X, -pt.Y);
                         if (radioButtonUpperSphere.Checked)
                             g.FillEllipse(brushPt, new RectangleF(pt.X - radius, -pt.Y - radius, radius * 2, radius * 2));
                         else
@@ -810,6 +831,14 @@ public partial class FormStereonet : Form
     #region メインで結晶が変更されたとき
     public void SetCrystal()
     {
+        if (formMain.Crystal == null)
+            return;
+
+        checkBoxUseMillerBravaisIndex.Visible = HexagonalLattice && radioButtonPlanes.Checked;
+
+        checkBoxUseMillerBravais_CheckedChanged(this, EventArgs.Empty);
+
+
         setVector();
         //formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
         //formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
@@ -828,6 +857,9 @@ public partial class FormStereonet : Form
     private void radioButtonAxes_CheckedChanged(object sender, EventArgs e)
     {
         if (!((RadioButton)sender).Checked) return;
+
+        checkBoxUseMillerBravaisIndex.Visible = HexagonalLattice && radioButtonPlanes.Checked;
+        checkBoxUseMillerBravais_CheckedChanged(sender, e);
 
         if (radioButtonAxes.Checked)
         {
@@ -1007,13 +1039,16 @@ public partial class FormStereonet : Form
     {
         if (!((RadioButton)sender).Checked) return;
 
+        checkBoxUseMillerBravais_CheckedChanged(this, EventArgs.Empty);
+
+
         numericBox1.HeaderText = numericBox2.HeaderText = numericBox3.HeaderText = numericBox4.HeaderText =
             radioButtonRange.Checked ? "±" : "";
 
         if (radioButtonRange.Checked)
         {
             numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = 0;
-            tableLayoutPanel3.Visible = true;
+            flowLayoutPanelIndex.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
             panelSpecifiedIndices.Visible = false;
 
@@ -1021,13 +1056,13 @@ public partial class FormStereonet : Form
         else if (radioButtonSpecifiedIndices.Checked)
         {
             numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = -numericBox1.Maximum;
-            tableLayoutPanel3.Visible = true;
+            flowLayoutPanelIndex.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
             panelSpecifiedIndices.Visible = true;
         }
         else//構造因子順の場合
         {
-            tableLayoutPanel3.Visible = false;
+            flowLayoutPanelIndex.Visible = false;
             numericBoxHighStructureFactor.Visible = true;
             panelSpecifiedIndices.Visible = false;
         }
@@ -1038,6 +1073,9 @@ public partial class FormStereonet : Form
     //指数範囲が変更されたとき
     private void numericUpDown_ValueChanged(object sender, EventArgs e)
     {
+        if (flowLayoutPanelI.Visible && sender is NumericBox nb && (nb.Name == "numericBox1" || nb.Name == "numericBox2"))
+            numericBox4.Value = -numericBox1.Value - numericBox2.Value;
+
         setVector();
         Draw();
     }
@@ -1045,7 +1083,7 @@ public partial class FormStereonet : Form
     {
         int index1 = (int)numericBox1.Value, index2 = (int)numericBox2.Value, index3 = (int)numericBox3.Value;
         if (index1 != 0 || index2 != 0 || index3 != 0)
-            listBoxSpecifiedIndices.Items.Add(index1.ToString() + " " + index2.ToString() + " " + index3.ToString());
+            listBoxSpecifiedIndices.Items.Add($"{index1} {index2} {index3}");
         setVector();
         Draw();
     }
@@ -1085,8 +1123,8 @@ public partial class FormStereonet : Form
         {
             if (radioButtonRange.Checked)//範囲指定モードの時
             {
-                formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
-                formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value, waveLengthControl.WaveSource);
+                formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value, checkBoxIncludingEquivalentPlanes.Checked);
+                formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value, waveLengthControl.WaveSource, checkBoxIncludingEquivalentPlanes.Checked);
             }
             else if (radioButtonSpecifiedIndices.Checked)//特定指数モードの時
             {
@@ -1259,8 +1297,16 @@ public partial class FormStereonet : Form
 
     #endregion
 
-    private void flowLayoutPanel3_Paint(object sender, PaintEventArgs e)
+    private void checkBoxUseMillerBravais_CheckedChanged(object sender, EventArgs e)
     {
+        flowLayoutPanelI.Visible = HexagonalLattice && radioButtonPlanes.Checked && checkBoxUseMillerBravaisIndex.Checked && radioButtonSpecifiedIndices.Checked;
+        if (flowLayoutPanelI.Visible)
+            numericBox4.Value = -numericBox1.Value - numericBox2.Value;
+        Draw();
+    }
 
+    private void radioButtonDelimiterNone_CheckedChanged(object sender, EventArgs e)
+    {
+        Draw();
     }
 }

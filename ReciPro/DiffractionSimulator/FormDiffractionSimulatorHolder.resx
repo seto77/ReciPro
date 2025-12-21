@@ -117,6 +117,1959 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="colorControlHolder.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="checkBoxIncludingEquivalent.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;buttonRotate180.Name" xml:space="preserve">
+    <value>buttonRotate180</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxLinkTiltY.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="numericBoxTiltY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 47</value>
+  </data>
+  <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label1MousePosition.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox1DegLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 156</value>
+  </data>
+  <data name="&gt;&gt;colorControlUniqueAxis.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="numericBoxLinkTiltX.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlBackGround.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="trackBarStrSize.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="checkBoxTiltDirections.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonLink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 31</value>
+  </data>
+  <data name="&gt;&gt;checkBox1DegLine.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxU.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>10度線の色</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltY.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 34</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlTiltY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 60</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 178</value>
+  </data>
+  <data name="&gt;&gt;colorControlHolder.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="colorControl90DegLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxEnableArrow.Text" xml:space="preserve">
+    <value>Enable arrow keys</value>
+  </data>
+  <data name="colorControl1DegLine.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControl10DegLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 20</value>
+  </data>
+  <data name="colorControl90DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="&gt;&gt;colorControlBackGround.Name" xml:space="preserve">
+    <value>colorControlBackGround</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltXDirection.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;colorControlGeneralAxis.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="numericBoxDrawingArea.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="trackBarPointSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 16</value>
+  </data>
+  <data name="label1MousePosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLinkTiltX.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="numericBoxTiltY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Polarity of
+ the Tilt Y</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 157</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEnableArrow.Name" xml:space="preserve">
+    <value>checkBoxEnableArrow</value>
+  </data>
+  <data name="colorControlUniqueAxis.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="numericBoxTiltX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 19</value>
+  </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxLinkTiltY.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 15</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>1度線の色
+「Show 1°line」がチェックされているとき有効</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 403</value>
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="colorControlTiltX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxDrawingArea.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLinkTiltX.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxU.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="colorControl90DegLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;colorControl1DegLine.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxV.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;numericBoxW.Name" xml:space="preserve">
+    <value>numericBoxW</value>
+  </data>
+  <data name="buttonLink.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxLinkTiltY.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 87</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>90度線の色</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonRotate180.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 25</value>
+  </data>
+  <data name="&gt;&gt;colorControl10DegLine.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="numericBoxTiltXDirection.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonLink.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxDrawingArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltXDirection.Name" xml:space="preserve">
+    <value>numericBoxTiltXDirection</value>
+  </data>
+  <data name="&gt;&gt;colorControlTiltY.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;colorControlGeneralAxis.Name" xml:space="preserve">
+    <value>colorControlGeneralAxis</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Direction of
+ the Tilt X</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox1DegLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>背景色</value>
+  </data>
+  <data name="colorControlTiltY.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="graphicsBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
+  </data>
+  <data name="buttonLink.Text" xml:space="preserve">
+    <value>Link to 
+ the current
+ direction</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControl1DegLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 20</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="&gt;&gt;colorControlBackGround.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colorControlBackGround.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 20</value>
+  </data>
+  <data name="numericBoxTiltX.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="&gt;&gt;colorControl10DegLine.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="numericBoxDrawingArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 25</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxU.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="&gt;&gt;colorControlGeneralAxis.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colorControlBackGround.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxArrowStep.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="colorControlUniqueAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 40</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltY.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="numericBoxW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 25</value>
+  </data>
+  <data name="&gt;&gt;colorControlHolder.Name" xml:space="preserve">
+    <value>colorControlHolder</value>
+  </data>
+  <data name="numericBoxArrowStep.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="&gt;&gt;colorControlTiltX.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;graphicsBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDrawingArea.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colorControl1DegLine.FooterText" xml:space="preserve">
+    <value>1°</value>
+  </data>
+  <data name="buttonRotate180.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="colorControl90DegLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 21</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 17</value>
+  </data>
+  <data name="numericBoxW.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="trackBarStrSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 16</value>
+  </data>
+  <data name="numericBoxU.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 0</value>
+  </data>
+  <data name="colorControlUniqueAxis.FooterText" xml:space="preserve">
+    <value>a, b, c</value>
+  </data>
+  <data name="groupBox6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;numericBoxDrawingArea.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="colorControl10DegLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 17</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>String size</value>
+  </data>
+  <data name="&gt;&gt;colorControlUniqueAxis.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="checkBoxEnableArrow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 77</value>
+  </data>
+  <data name="numericBoxDrawingArea.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxArrowStep.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 105</value>
+  </data>
+  <data name="colorControlTiltX.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="&gt;&gt;buttonLink.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorControlTiltY.FooterText" xml:space="preserve">
+    <value>Tilt-Y</value>
+  </data>
+  <data name="colorControlUniqueAxis.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;numericBoxW.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="colorControlTiltX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="graphicsBox.TabIndex" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxTiltY.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="colorControl10DegLine.FooterText" xml:space="preserve">
+    <value>10°</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="colorControlGeneralAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 20</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 77</value>
+  </data>
+  <data name="numericBoxW.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 0</value>
+  </data>
+  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9.75pt, style=Italic</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlTiltX.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="numericBoxV.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlUniqueAxis.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;checkBoxTiltDirections.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericBoxU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 32</value>
+  </data>
+  <data name="colorControlBackGround.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTiltY_Minus.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;graphicsBox.Type" xml:space="preserve">
+    <value>ImagingSolution.Control.GraphicsBox, ImagingSolution.Control.GraphicsBox, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="checkBoxTiltDirections.Text" xml:space="preserve">
+    <value>Show tilt directions</value>
+  </data>
+  <data name="numericBoxU.HeaderText" xml:space="preserve">
+    <value>±</value>
+  </data>
+  <data name="label1MousePosition.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Stereonet properties</value>
+  </data>
+  <data name="numericBoxLinkTiltY.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 113</value>
+  </data>
+  <data name="colorControl10DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="colorControl10DegLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="label20.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonLink.Name" xml:space="preserve">
+    <value>buttonLink</value>
+  </data>
+  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>408, 2</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>TEM Holder Simulation</value>
+  </data>
+  <data name="numericBoxU.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 23</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="colorControlGeneralAxis.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="colorControlTiltX.TabIndex" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="colorControlGeneralAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltXDirection.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colorControlTiltX.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="numericBoxLinkTiltX.HeaderText" xml:space="preserve">
+    <value>Tilt X</value>
+  </data>
+  <data name="colorControlTiltY.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="label1MousePosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 15</value>
+  </data>
+  <data name="&gt;&gt;trackBarPointSize.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="numericBoxTiltX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxLinkTiltX.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="colorControlHolder.TabIndex" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Point size</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="numericBoxTiltXDirection.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlBackGround.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControlGeneralAxis.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="&gt;&gt;checkBox1DegLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxV.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="&gt;&gt;label1MousePosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxLinkTiltY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="trackBarStrSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="numericBoxTiltXDirection.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="colorControl90DegLine.FooterText" xml:space="preserve">
+    <value>90°</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTiltY_Plus.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="colorControl1DegLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 20</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>TEM-specific settings</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1MousePosition.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="colorControlHolder.FooterText" xml:space="preserve">
+    <value>Holder</value>
+  </data>
+  <data name="colorControlHolder.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDrawingArea.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="numericBoxW.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxV.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;colorControlBackGround.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="graphicsBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxEnableArrow.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="numericBoxTiltY.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="label1MousePosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 4</value>
+  </data>
+  <data name="colorControlGeneralAxis.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;checkBox1DegLine.Name" xml:space="preserve">
+    <value>checkBox1DegLine</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>w</value>
+  </data>
+  <data name="numericBoxU.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 0</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>背景色</value>
+  </data>
+  <data name="colorControlUniqueAxis.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="colorControlHolder.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonRotate180.Text" xml:space="preserve">
+    <value>⭮ rotate 180°</value>
+  </data>
+  <data name="colorControlTiltY.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlGeneralAxis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;colorControlHolder.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="trackBarStrSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 114</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 15</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEnableArrow.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
+    <value>General Axes</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="numericBoxTiltXDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 34</value>
+  </data>
+  <data name="label1MousePosition.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTiltDirections.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 21</value>
+  </data>
+  <data name="colorControl1DegLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="numericBoxV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltXDirection.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltY.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="checkBoxEnableArrow.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Tilt Y (Secondary rotation)</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltX.Name" xml:space="preserve">
+    <value>numericBoxTiltX</value>
+  </data>
+  <data name="&gt;&gt;trackBarPointSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="colorControlTiltX.FooterText" xml:space="preserve">
+    <value>Tilt-X</value>
+  </data>
+  <data name="numericBoxW.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="&gt;&gt;colorControlHolder.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxTiltDirections.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 200</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorControlTiltY.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;colorControl1DegLine.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="numericBoxW.HeaderText" xml:space="preserve">
+    <value>±</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltX.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="numericBoxArrowStep.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltX.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 105</value>
+  </data>
+  <data name="checkBox1DegLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControl10DegLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxU.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 25</value>
+  </data>
+  <data name="numericBoxTiltXDirection.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControl90DegLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="trackBarStrSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonRotate180.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 71</value>
+  </data>
+  <data name="numericBoxLinkTiltX.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="graphicsBox.WaitOnLoad" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="numericBoxDrawingArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 25</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 21</value>
+  </data>
+  <data name="colorControlUniqueAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="&gt;&gt;colorControlTiltY.Name" xml:space="preserve">
+    <value>colorControlTiltY</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>241, 403</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;buttonRotate180.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="numericBoxTiltXDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 25</value>
+  </data>
+  <data name="&gt;&gt;colorControlTiltX.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="buttonRotate180.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalent.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;colorControlBackGround.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltY.Name" xml:space="preserve">
+    <value>numericBoxTiltY</value>
+  </data>
+  <data name="graphicsBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 400</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 231</value>
+  </data>
+  <data name="&gt;&gt;colorControl1DegLine.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControl1DegLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;colorControlTiltX.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="numericBoxV.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 0</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericBoxV.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 17</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>v</value>
+  </data>
+  <data name="colorControlTiltY.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="colorControlTiltY.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 396</value>
+  </data>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="numericBoxLinkTiltY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;colorControlTiltY.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonRotate180.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="trackBarPointSize.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="colorControlTiltY.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;colorControlUniqueAxis.Name" xml:space="preserve">
+    <value>colorControlUniqueAxis</value>
+  </data>
+  <data name="numericBoxLinkTiltX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;checkBoxShowIndexLabels.Name" xml:space="preserve">
+    <value>checkBoxShowIndexLabels</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorControl10DegLine.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 86</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="colorControl90DegLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="colorControl90DegLine.TabIndex" type="System.Int32, mscorlib">
+    <value>91</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox1DegLine.Text" xml:space="preserve">
+    <value>Show 1° line</value>
+  </data>
+  <data name="numericBoxLinkTiltY.HeaderText" xml:space="preserve">
+    <value>Tilt Y</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLinkTiltY.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="numericBoxW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 0</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalent.Name" xml:space="preserve">
+    <value>checkBoxIncludingEquivalent</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxTiltX.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
+    <value>toolTip1</value>
+  </data>
+  <data name="colorControlUniqueAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormDiffractionSimulatorHolder</value>
+  </data>
+  <data name="groupBox6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>Index range</value>
+  </data>
+  <data name="checkBoxTiltDirections.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="colorControlUniqueAxis.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxU.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;colorControl10DegLine.Name" xml:space="preserve">
+    <value>colorControl10DegLine</value>
+  </data>
+  <data name="numericBoxV.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;graphicsBox.Name" xml:space="preserve">
+    <value>graphicsBox</value>
+  </data>
+  <data name="colorControlGeneralAxis.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="colorControlHolder.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 21</value>
+  </data>
+  <data name="colorControlTiltY.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;buttonRotate180.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLinkTiltX.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonLink.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxTiltY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 25</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="checkBoxTiltDirections.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="&gt;&gt;numericBoxV.Name" xml:space="preserve">
+    <value>numericBoxV</value>
+  </data>
+  <data name="colorControlBackGround.FooterText" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 32</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 60</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEnableArrow.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="numericBoxLinkTiltY.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonLink.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControl90DegLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="&gt;&gt;colorControl90DegLine.Name" xml:space="preserve">
+    <value>colorControl90DegLine</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 17</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLinkTiltY.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlUniqueAxis.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlUniqueAxis.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControl1DegLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="&gt;&gt;label1MousePosition.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTiltY_Plus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorControl90DegLine.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="numericBoxDrawingArea.HeaderText" xml:space="preserve">
+    <value>Drawing area</value>
+  </data>
+  <data name="numericBoxV.HeaderText" xml:space="preserve">
+    <value>±</value>
+  </data>
+  <data name="numericBoxArrowStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControl10DegLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="colorControlTiltX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalent.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTiltY_Plus.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>427, 403</value>
+  </data>
+  <data name="numericBoxW.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="&gt;&gt;numericBoxArrowStep.Name" xml:space="preserve">
+    <value>numericBoxArrowStep</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>u</value>
+  </data>
+  <data name="colorControl10DegLine.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;numericBoxDrawingArea.Name" xml:space="preserve">
+    <value>numericBoxDrawingArea</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 17</value>
+  </data>
+  <data name="numericBoxW.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="buttonRotate180.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="colorControlHolder.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numericBoxLinkTiltY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 46</value>
+  </data>
+  <data name="&gt;&gt;trackBarStrSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorControl90DegLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="checkBoxEnableArrow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 19</value>
+  </data>
+  <data name="numericBoxArrowStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 23</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;trackBarPointSize.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numericBoxArrowStep.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxLinkTiltX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 19</value>
+  </data>
+  <data name="numericBoxW.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="numericBoxTiltY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;trackBarStrSize.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlHolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>94, 0</value>
+  </data>
+  <data name="checkBoxEnableArrow.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControl1DegLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorControlGeneralAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 40</value>
+  </data>
+  <data name="colorControlHolder.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="numericBoxV.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Tilt X (Primary rotation)</value>
+  </data>
+  <data name="&gt;&gt;numericBoxW.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="numericBoxLinkTiltX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 25</value>
+  </data>
+  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;checkBox1DegLine.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="numericBoxArrowStep.HeaderText" xml:space="preserve">
+    <value>(step </value>
+  </data>
+  <data name="trackBarPointSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonRotate180.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTiltDirections.Name" xml:space="preserve">
+    <value>checkBoxTiltDirections</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;trackBarPointSize.Name" xml:space="preserve">
+    <value>trackBarPointSize</value>
+  </data>
+  <data name="colorControl1DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="&gt;&gt;buttonLink.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="numericBoxW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControlBackGround.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlHolder.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="colorControlTiltY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="label1MousePosition.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="buttonLink.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControl10DegLine.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="numericBoxArrowStep.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 105</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>600, 513</value>
+  </data>
+  <data name="colorControlGeneralAxis.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;label1MousePosition.Name" xml:space="preserve">
+    <value>label1MousePosition</value>
+  </data>
+  <data name="numericBoxV.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="numericBoxArrowStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 75</value>
+  </data>
+  <data name="label19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;colorControlGeneralAxis.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxW.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericBoxDrawingArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 25</value>
+  </data>
+  <data name="numericBoxArrowStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTiltDirections.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="colorControl10DegLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Holder angles</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;radioButtonTiltY_Minus.Name" xml:space="preserve">
+    <value>radioButtonTiltY_Minus</value>
+  </data>
+  <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="checkBox1DegLine.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="groupBox3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonLink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 55</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonRotate180.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 60</value>
+  </data>
+  <data name="numericBoxTiltX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 133</value>
+  </data>
+  <data name="numericBoxTiltX.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="colorControl10DegLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLinkTiltY.Name" xml:space="preserve">
+    <value>numericBoxLinkTiltY</value>
+  </data>
+  <data name="&gt;&gt;graphicsBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="colorControlBackGround.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlTiltY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowIndexLabels.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorControlHolder.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="numericBoxTiltY.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="checkBoxTiltDirections.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowIndexLabels.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>軸表示時の[100], [010], [001]の表示色</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxTiltX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxArrowStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTiltX.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="numericBoxLinkTiltX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxTiltXDirection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTiltY_Minus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9.75pt, style=Italic</value>
+  </data>
+  <data name="numericBoxU.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="trackBarPointSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 134</value>
+  </data>
+  <data name="colorControl10DegLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 24</value>
+  </data>
+  <data name="numericBoxLinkTiltX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxDrawingArea.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarStrSize.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="colorControlUniqueAxis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonTiltY_Minus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxLinkTiltY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 25</value>
+  </data>
+  <data name="colorControl90DegLine.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="numericBoxV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlTiltY.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonTiltY_Minus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 77</value>
+  </data>
+  <data name="colorControlTiltX.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxTiltX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBox1DegLine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTiltDirections.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 65</value>
+  </data>
+  <data name="numericBoxTiltXDirection.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlTiltX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 60</value>
+  </data>
+  <data name="label1MousePosition.Text" xml:space="preserve">
+    <value>Tilt-X: ##.#°    Tilt-Y:##.# °</value>
+  </data>
+  <data name="numericBoxLinkTiltX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBox1DegLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxU.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 15</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="colorControlBackGround.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;colorControl1DegLine.Name" xml:space="preserve">
+    <value>colorControl1DegLine</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowIndexLabels.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;numericBoxU.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
+    <value>Show Index labels</value>
+  </data>
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEnableArrow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorControl1DegLine.TabIndex" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 0</value>
+  </data>
+  <data name="numericBoxU.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 12.1875pt</value>
+  </data>
+  <data name="colorControl1DegLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
+    <value>Include equivalent indices</value>
+  </data>
+  <data name="numericBoxV.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 19</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTiltDirections.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorControlBackGround.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLinkTiltX.Name" xml:space="preserve">
+    <value>numericBoxLinkTiltX</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;numericBoxU.Name" xml:space="preserve">
+    <value>numericBoxU</value>
+  </data>
+  <data name="numericBoxTiltXDirection.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="colorControlGeneralAxis.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="colorControlTiltX.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;trackBarStrSize.Name" xml:space="preserve">
+    <value>trackBarStrSize</value>
+  </data>
+  <data name="trackBarPointSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;radioButtonTiltY_Plus.Name" xml:space="preserve">
+    <value>radioButtonTiltY_Plus</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;colorControl90DegLine.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Color and size</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9.75pt, style=Italic</value>
+  </data>
+  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="colorControl1DegLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxTiltY.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="&gt;&gt;colorControlUniqueAxis.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="checkBoxEnableArrow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxArrowStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxArrowStep.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="numericBoxV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 32</value>
+  </data>
+  <data name="colorControl90DegLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBox1DegLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 21</value>
+  </data>
+  <data name="numericBoxTiltX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 25</value>
+  </data>
+  <data name="numericBoxLinkTiltY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="colorControlTiltY.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxArrowStep.FooterText" xml:space="preserve">
+    <value>°)</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="numericBoxTiltY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="colorControlHolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 20</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numericBoxArrowStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorControlTiltX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorControlTiltX.Name" xml:space="preserve">
+    <value>colorControlTiltX</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;colorControl90DegLine.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="numericBoxDrawingArea.FooterText" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="colorControlHolder.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 25</value>
+  </data>
+  <data name="&gt;&gt;buttonLink.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxArrowStep.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 34</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>ja</value>
+  </metadata>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

@@ -12951,8 +12951,8 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <returns></returns>
     public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym)
     {
-        var indices = new List<(int H, int K, int L)>();
-        return IsRootIndex(index, sym, ref indices, false);
+        //var indices = new List<(int H, int K, int L)>();
+        return IsRootIndex(index, sym, out var indices, false);
     }
 
     /// <summary>
@@ -12968,8 +12968,8 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <returns>基底のときは true</returns>
     public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym, out int multi)
     {
-        var indices = new List<(int H, int K, int L)>();
-        bool result = IsRootIndex(index, sym, ref indices, false);
+        //var indices = new List<(int H, int K, int L)>();
+        bool result = IsRootIndex(index, sym, out var  indices, false);
         multi = indices.Count;
         return result;
     }
@@ -13096,9 +13096,10 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <param name="indices">等価な面指数の群</param>
     /// <param name="CalcNotEvenRoot">基底でなくても等価な面指数を計算するときはtrue</param>
     /// <returns>基底のときは true</returns>
-    public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym, ref List<(int H, int K, int L)> indices, bool CalcNotEvenRoot)
+    public static bool IsRootIndex((int h, int k, int l) index, Symmetry sym, out List<(int H, int K, int L)> indices, bool CalcNotEvenRoot)
     {
         #region
+        indices = new List<(int H, int K, int L)>();
         (int h, int k, int l) = index;
         bool result = true;
         if (h == 0 && k == 0 && l == 0)
@@ -14276,8 +14277,9 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <param name="v"></param>
     /// <param name="w"></param>
     /// <param name="sym"></param>
+    /// <param name="inversionCenter">対称心を仮定するか。デフォルトはTrue（つまりラウエ群で軸を生成する）</param>
     /// <returns></returns>
-    public static (int U, int V, int W)[] GenerateEquivalentAxes(int u, int v, int w, Symmetry sym)
+    public static (int U, int V, int W)[] GenerateEquivalentAxes(int u, int v, int w, Symmetry sym, bool inversionCenter = true)
     {
         #region
         var indices = new HashSet<(int U, int V, int W)>();
