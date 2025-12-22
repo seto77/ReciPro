@@ -124,16 +124,16 @@
   <data name="toolStripButtonDiffractionSpots.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZL7S9NRGMb9R8LKsouIoKiYJiGKNzD6QSQj
-        UFajcjA0wZEMlYE3RJkkioQuDCJivww0u9BNTbZkzhxqXog5xEtkgyGIqE/neWEdBMPQAy9fOOf7fN7n
-        vUThhEcAjQPfD0RD/ywsPX6Y7VMwtnpR2vAV1y3jyKkcxdUHH5BuHEaawXUQsLu3/8/Y3tlDKLyDjd/b
-        CKxtYT4YxqXc+v8D+BZCkjnLPALX6KqIHUMBXMyxHg1gZoo9M5voeLEgtgnsdf3AhexaDWDNh4lpm5kp
-        zq8eQ2qZE+P+X7C/XFSARxrAhh0mZs20zcwU0/qnyZ/iODarRgPY7YiYFvMejkm4lXXWzDtmpviNZx3W
-        JzM4f61KAzgqiucCYREOvF6G8+MK4gqb0K7ss2GMx84lDH5ZRXXXNM5lmjWAc6a4pM4j4sn5EJ6+CqCm
-        24+kmw6x/vxdEFHq8L2i3YeYDJMGcElu2ybwTD3SLr82xxzutHiliQk3OtGk6q7s/CYQQ7MXZ9PvawBH
-        xYwRMX82dfhQpMBX7g4J4HSqAZmmz8i491YgZ9KMGsD1HHaviZg1s8Ziq1vdv0diSR8u59tU1y1iO76o
-        TXaAwL8A7jYtM1gfS+IdxXEFjSLm2CLfU4m3EJ1SrgGcM3ebnSadS8IfOSp2m5lZM20zM8XRyWUacPwD
-        /AHdux04t3vMzAAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIGSURBVDhPpZL7S1NxGMbPPyJamVYSgpHilRhKXkDxhxAV
+        wZiOssGwBEcySgaaIopiJBE6mRAi+2WQl4q00sZWzFVjqVNkinhDHYxARH3keUG/CUaBX3jPgXO+z+d9
+        3ouGcx6Njyb77Klo7PsFc48fps7vMLR6Udb4FUVmF3JqJ5FZM450wyhS9c7TgP2Dw7/G7t4BwpE9bOzs
+        IrT2G3PLEVy9/fT/AL5gWDLrTJ/hnFwVsW04hCs5ln8DmJliT2AbHYNBsU3gS+ci4rMbFIA1nyWmbWam
+        OK9uCimVDrj8W+gcmkd89mMFYMPOErNm2mZmimn94/SmOI7T1SsAu/1nzbmPpiTcgW2pmd+YmeK3nnVY
+        XgVw+dZDBeCoKJ4JRURoH1uCY2IFCQXNaB8MSsMY3Y4FvPmyirrnPxGbZVIAzpnikiceEU/PhdE/EkL9
+        Cz9ulNrE+uv3y9A0TeP/B+0+XMowKgCXpML6DQNjS2KXb6ttBlUtXmliYnEXmu2zqO36IRD9My8upt9X
+        AI6KGY/FvGzs8KHQ7EJa9bAAYlL0yDJ+Qsa9dwK5kGpQAK7nqHtNxKyZNd6xuJFZ8wFJJb24lmdFnM4s
+        tq8XtskOEHgC4G7TMoP1sSR+ozghv0nEHNvxOyqpHNHJdxWAc+Zus9Okc0l4kaNit5mZNdM2M1McfbNS
+        Ac5zjgDdux04H+0nfAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="toolStripButtonDiffractionSpots.Size" type="System.Drawing.Size, System.Drawing">
@@ -145,16 +145,16 @@
   <data name="toolStripButtonKikuchiLines.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIFSURBVDhPpZLtS1NhGMbPPxJmmlYSgqHiKzGU1EDxg4iK
+        YKyG2WBogqMYJQOtCEVRFBGdTBCJfRnkS4VaaWNT5sqx1BUxRXxDHYxAJLvkusEeBaPAB+5z4Jzn+t3X
+        /aLhnEfjo8m+dCoa+7/C3O2Hqe0zDC+8KG+cRZHZhdzaaWTVTCLDMIY0vfM04Nfh77/G/sEhwpEDbO3t
+        I7TxE8urEVy99fT/AL5gWDLrTB/hnF4XsW0khCu5ln8DmJliT2AXrcNBsU1gj/MH4nMeKwBrPktM28xM
+        cX79DFKrHHD5d9D26hvicx4pABt2lpg10zYzU0zr7+e3xXGcrkEB2O2TNec9nJFwB3alZn5jZorfeDZh
+        6Q3g8s06BeCoKF4MRURoH1+BY2oNCbeb0TIclIYxOhzf8frTOuo7FxCbbVIAzpni0iceEc8vhzEwGkJD
+        lx83ymxifejdKjRNk/8PWnyIyTQqAJek0jqHwfEVscu31baIu8+90sTE4nY025dQ2/5FIPpnXlzKuK8A
+        HBUzHot52djqQ6HZhfR7IwK4mKpHtvEDMqvfCiQ6zaAAXM8x94aIWTNrLLG4kVUzgaTSPlzLtyJOZxbb
+        1wtfyg4Q+AfA3aZlButjSfxGcUJBk4g5tuP3haQKRKXcUQDOmbvNTpPOJeFFjordZmbWTNvMTHFUcpUC
+        nOccAdABIDXXE1nzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolStripButtonKikuchiLines.Size" type="System.Drawing.Size, System.Drawing">
@@ -166,16 +166,16 @@
   <data name="toolStripButtonDebyeRing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZL7S9NRGMb9R8LKsouIoKiYJiGKNzD6QSQj
-        UFajcjA0wZEMlYE3RJkkioQuDCJivww0u9BNTbZkzhxqXog5xEtkgyGIqE/neWEdBMPQAy9fOOf7fN7n
-        vUThhEcAjQPfD0RD/ywsPX6Y7VMwtnpR2vAV1y3jyKkcxdUHH5BuHEaawXUQsLu3/8/Y3tlDKLyDjd/b
-        CKxtYT4YxqXc+v8D+BZCkjnLPALX6KqIHUMBXMyxHg1gZoo9M5voeLEgtgnsdf3AhexaDWDNh4lpm5kp
-        zq8eQ2qZE+P+X7C/XFSARxrAhh0mZs20zcwU0/qnyZ/iODarRgPY7YiYFvMejkm4lXXWzDtmpviNZx3W
-        JzM4f61KAzgqiucCYREOvF6G8+MK4gqb0K7ss2GMx84lDH5ZRXXXNM5lmjWAc6a4pM4j4sn5EJ6+CqCm
-        24+kmw6x/vxdEFHq8L2i3YeYDJMGcElu2ybwTD3SLr82xxzutHiliQk3OtGk6q7s/CYQQ7MXZ9PvawBH
-        xYwRMX82dfhQpMBX7g4J4HSqAZmmz8i491YgZ9KMGsD1HHaviZg1s8Ziq1vdv0diSR8u59tU1y1iO76o
-        TXaAwL8A7jYtM1gfS+IdxXEFjSLm2CLfU4m3EJ1SrgGcM3ebnSadS8IfOSp2m5lZM20zM8XRyWUacPwD
-        /AHdux04t3vMzAAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIGSURBVDhPpZL7S1NxGMbPPyJamVYSgpHilRhKXkDxhxAV
+        wZiOssGwBEcySgaaIopiJBE6mRAi+2WQl4q00sZWzFVjqVNkinhDHYxARH3keUG/CUaBX3jPgXO+z+d9
+        3ouGcx6Njyb77Klo7PsFc48fps7vMLR6Udb4FUVmF3JqJ5FZM450wyhS9c7TgP2Dw7/G7t4BwpE9bOzs
+        IrT2G3PLEVy9/fT/AL5gWDLrTJ/hnFwVsW04hCs5ln8DmJliT2AbHYNBsU3gS+ci4rMbFIA1nyWmbWam
+        OK9uCimVDrj8W+gcmkd89mMFYMPOErNm2mZmimn94/SmOI7T1SsAu/1nzbmPpiTcgW2pmd+YmeK3nnVY
+        XgVw+dZDBeCoKJ4JRURoH1uCY2IFCQXNaB8MSsMY3Y4FvPmyirrnPxGbZVIAzpnikiceEU/PhdE/EkL9
+        Cz9ulNrE+uv3y9A0TeP/B+0+XMowKgCXpML6DQNjS2KXb6ttBlUtXmliYnEXmu2zqO36IRD9My8upt9X
+        AI6KGY/FvGzs8KHQ7EJa9bAAYlL0yDJ+Qsa9dwK5kGpQAK7nqHtNxKyZNd6xuJFZ8wFJJb24lmdFnM4s
+        tq8XtskOEHgC4G7TMoP1sSR+ozghv0nEHNvxOyqpHNHJdxWAc+Zus9Okc0l4kaNit5mZNdM2M1McfbNS
+        Ac5zjgDdux04H+0nfAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="toolStripButtonDebyeRing.Size" type="System.Drawing.Size, System.Drawing">
@@ -187,16 +187,16 @@
   <data name="toolStripButtonScale.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZL7S9NRGMb9R8LKsouIoKiYJiGKNzD6QSQj
-        UFajcjA0wZEMlYE3RJkkioQuDCJivww0u9BNTbZkzhxqXog5xEtkgyGIqE/neWEdBMPQAy9fOOf7fN7n
-        vUThhEcAjQPfD0RD/ywsPX6Y7VMwtnpR2vAV1y3jyKkcxdUHH5BuHEaawXUQsLu3/8/Y3tlDKLyDjd/b
-        CKxtYT4YxqXc+v8D+BZCkjnLPALX6KqIHUMBXMyxHg1gZoo9M5voeLEgtgnsdf3AhexaDWDNh4lpm5kp
-        zq8eQ2qZE+P+X7C/XFSARxrAhh0mZs20zcwU0/qnyZ/iODarRgPY7YiYFvMejkm4lXXWzDtmpviNZx3W
-        JzM4f61KAzgqiucCYREOvF6G8+MK4gqb0K7ss2GMx84lDH5ZRXXXNM5lmjWAc6a4pM4j4sn5EJ6+CqCm
-        24+kmw6x/vxdEFHq8L2i3YeYDJMGcElu2ybwTD3SLr82xxzutHiliQk3OtGk6q7s/CYQQ7MXZ9PvawBH
-        xYwRMX82dfhQpMBX7g4J4HSqAZmmz8i491YgZ9KMGsD1HHaviZg1s8Ziq1vdv0diSR8u59tU1y1iO76o
-        TXaAwL8A7jYtM1gfS+IdxXEFjSLm2CLfU4m3EJ1SrgGcM3ebnSadS8IfOSp2m5lZM20zM8XRyWUacPwD
-        /AHdux04t3vMzAAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIGSURBVDhPpZL7S1NxGMbPPyJamVYSgpHilRhKXkDxhxAV
+        wZiOssGwBEcySgaaIopiJBE6mRAi+2WQl4q00sZWzFVjqVNkinhDHYxARH3keUG/CUaBX3jPgXO+z+d9
+        3ouGcx6Njyb77Klo7PsFc48fps7vMLR6Udb4FUVmF3JqJ5FZM450wyhS9c7TgP2Dw7/G7t4BwpE9bOzs
+        IrT2G3PLEVy9/fT/AL5gWDLrTJ/hnFwVsW04hCs5ln8DmJliT2AbHYNBsU3gS+ci4rMbFIA1nyWmbWam
+        OK9uCimVDrj8W+gcmkd89mMFYMPOErNm2mZmimn94/SmOI7T1SsAu/1nzbmPpiTcgW2pmd+YmeK3nnVY
+        XgVw+dZDBeCoKJ4JRURoH1uCY2IFCQXNaB8MSsMY3Y4FvPmyirrnPxGbZVIAzpnikiceEU/PhdE/EkL9
+        Cz9ulNrE+uv3y9A0TeP/B+0+XMowKgCXpML6DQNjS2KXb6ttBlUtXmliYnEXmu2zqO36IRD9My8upt9X
+        AI6KGY/FvGzs8KHQ7EJa9bAAYlL0yDJ+Qsa9dwK5kGpQAK7nqHtNxKyZNd6xuJFZ8wFJJb24lmdFnM4s
+        tq8XtskOEHgC4G7TMoP1sSR+ozghv0nEHNvxOyqpHNHJdxWAc+Zus9Okc0l4kaNit5mZNdM2M1McfbNS
+        Ac5zjgDdux04H+0nfAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="toolStripButtonScale.Size" type="System.Drawing.Size, System.Drawing">
@@ -214,16 +214,16 @@
   <data name="toolStripButtonIndexLabels.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIFSURBVDhPpZLtS1NhGMbPPxJmmlYSgqHiKzGU1EDxg4iK
+        YKyG2WBogqMYJQOtCEVRFBGdTBCJfRnkS4VaaWNT5sqx1BUxRXxDHYxAJLvkusEeBaPAB+5z4Jzn+t3X
+        /aLhnEfjo8m+dCoa+7/C3O2Hqe0zDC+8KG+cRZHZhdzaaWTVTCLDMIY0vfM04Nfh77/G/sEhwpEDbO3t
+        I7TxE8urEVy99fT/AL5gWDLrTB/hnF4XsW0khCu5ln8DmJliT2AXrcNBsU1gj/MH4nMeKwBrPktM28xM
+        cX79DFKrHHD5d9D26hvicx4pABt2lpg10zYzU0zr7+e3xXGcrkEB2O2TNec9nJFwB3alZn5jZorfeDZh
+        6Q3g8s06BeCoKF4MRURoH1+BY2oNCbeb0TIclIYxOhzf8frTOuo7FxCbbVIAzpni0iceEc8vhzEwGkJD
+        lx83ymxifejdKjRNk/8PWnyIyTQqAJek0jqHwfEVscu31baIu8+90sTE4nY025dQ2/5FIPpnXlzKuK8A
+        HBUzHot52djqQ6HZhfR7IwK4mKpHtvEDMqvfCiQ6zaAAXM8x94aIWTNrLLG4kVUzgaTSPlzLtyJOZxbb
+        1wtfyg4Q+AfA3aZlButjSfxGcUJBk4g5tuP3haQKRKXcUQDOmbvNTpPOJeFFjordZmbWTNvMTHFUcpUC
+        nOccAdABIDXXE1nzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolStripButtonIndexLabels.Size" type="System.Drawing.Size, System.Drawing">
@@ -238,16 +238,16 @@
   <data name="toolStripButtonDspacing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIFSURBVDhPpZLtS1NhGMbPPxJmmlYSgqHiKzGU1EDxg4iK
+        YKyG2WBogqMYJQOtCEVRFBGdTBCJfRnkS4VaaWNT5sqx1BUxRXxDHYxAJLvkusEeBaPAB+5z4Jzn+t3X
+        /aLhnEfjo8m+dCoa+7/C3O2Hqe0zDC+8KG+cRZHZhdzaaWTVTCLDMIY0vfM04Nfh77/G/sEhwpEDbO3t
+        I7TxE8urEVy99fT/AL5gWDLrTB/hnF4XsW0khCu5ln8DmJliT2AXrcNBsU1gj/MH4nMeKwBrPktM28xM
+        cX79DFKrHHD5d9D26hvicx4pABt2lpg10zYzU0zr7+e3xXGcrkEB2O2TNec9nJFwB3alZn5jZorfeDZh
+        6Q3g8s06BeCoKF4MRURoH1+BY2oNCbeb0TIclIYxOhzf8frTOuo7FxCbbVIAzpni0iceEc8vhzEwGkJD
+        lx83ymxifejdKjRNk/8PWnyIyTQqAJek0jqHwfEVscu31baIu8+90sTE4nY025dQ2/5FIPpnXlzKuK8A
+        HBUzHot52djqQ6HZhfR7IwK4mKpHtvEDMqvfCiQ6zaAAXM8x94aIWTNrLLG4kVUzgaTSPlzLtyJOZxbb
+        1wtfyg4Q+AfA3aZlButjSfxGcUJBk4g5tuP3haQKRKXcUQDOmbvNTpPOJeFFjordZmbWTNvMTHFUcpUC
+        nOccAdABIDXXE1nzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolStripButtonDspacing.Size" type="System.Drawing.Size, System.Drawing">
@@ -262,16 +262,16 @@
   <data name="toolStripButtonDspacingInv.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIFSURBVDhPpZLtS1NhGMbPPxJmmlYSgqHiKzGU1EDxg4iK
+        YKyG2WBogqMYJQOtCEVRFBGdTBCJfRnkS4VaaWNT5sqx1BUxRXxDHYxAJLvkusEeBaPAB+5z4Jzn+t3X
+        /aLhnEfjo8m+dCoa+7/C3O2Hqe0zDC+8KG+cRZHZhdzaaWTVTCLDMIY0vfM04Nfh77/G/sEhwpEDbO3t
+        I7TxE8urEVy99fT/AL5gWDLrTB/hnF4XsW0khCu5ln8DmJliT2AXrcNBsU1gj/MH4nMeKwBrPktM28xM
+        cX79DFKrHHD5d9D26hvicx4pABt2lpg10zYzU0zr7+e3xXGcrkEB2O2TNec9nJFwB3alZn5jZorfeDZh
+        6Q3g8s06BeCoKF4MRURoH1+BY2oNCbeb0TIclIYxOhzf8frTOuo7FxCbbVIAzpni0iceEc8vhzEwGkJD
+        lx83ymxifejdKjRNk/8PWnyIyTQqAJek0jqHwfEVscu31baIu8+90sTE4nY025dQ2/5FIPpnXlzKuK8A
+        HBUzHot52djqQ6HZhfR7IwK4mKpHtvEDMqvfCiQ6zaAAXM8x94aIWTNrLLG4kVUzgaTSPlzLtyJOZxbb
+        1wtfyg4Q+AfA3aZlButjSfxGcUJBk4g5tuP3haQKRKXcUQDOmbvNTpPOJeFFjordZmbWTNvMTHFUcpUC
+        nOccAdABIDXXE1nzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolStripButtonDspacingInv.Size" type="System.Drawing.Size, System.Drawing">
@@ -280,16 +280,16 @@
   <data name="toolStripButtonDistance.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIFSURBVDhPpZLtS1NhGMbPPxJmmlYSgqHiKzGU1EDxg4iK
+        YKyG2WBogqMYJQOtCEVRFBGdTBCJfRnkS4VaaWNT5sqx1BUxRXxDHYxAJLvkusEeBaPAB+5z4Jzn+t3X
+        /aLhnEfjo8m+dCoa+7/C3O2Hqe0zDC+8KG+cRZHZhdzaaWTVTCLDMIY0vfM04Nfh77/G/sEhwpEDbO3t
+        I7TxE8urEVy99fT/AL5gWDLrTB/hnF4XsW0khCu5ln8DmJliT2AXrcNBsU1gj/MH4nMeKwBrPktM28xM
+        cX79DFKrHHD5d9D26hvicx4pABt2lpg10zYzU0zr7+e3xXGcrkEB2O2TNec9nJFwB3alZn5jZorfeDZh
+        6Q3g8s06BeCoKF4MRURoH1+BY2oNCbeb0TIclIYxOhzf8frTOuo7FxCbbVIAzpni0iceEc8vhzEwGkJD
+        lx83ymxifejdKjRNk/8PWnyIyTQqAJek0jqHwfEVscu31baIu8+90sTE4nY025dQ2/5FIPpnXlzKuK8A
+        HBUzHot52djqQ6HZhfR7IwK4mKpHtvEDMqvfCiQ6zaAAXM8x94aIWTNrLLG4kVUzgaTSPlzLtyJOZxbb
+        1wtfyg4Q+AfA3aZlButjSfxGcUJBk4g5tuP3haQKRKXcUQDOmbvNTpPOJeFFjordZmbWTNvMTHFUcpUC
+        nOccAdABIDXXE1nzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolStripButtonDistance.Size" type="System.Drawing.Size, System.Drawing">
@@ -301,16 +301,16 @@
   <data name="toolStripButtonExcitationError.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIFSURBVDhPpZLtS1NhGMbPPxJmmlYSgqHiKzGU1EDxg4iK
+        YKyG2WBogqMYJQOtCEVRFBGdTBCJfRnkS4VaaWNT5sqx1BUxRXxDHYxAJLvkusEeBaPAB+5z4Jzn+t3X
+        /aLhnEfjo8m+dCoa+7/C3O2Hqe0zDC+8KG+cRZHZhdzaaWTVTCLDMIY0vfM04Nfh77/G/sEhwpEDbO3t
+        I7TxE8urEVy99fT/AL5gWDLrTB/hnF4XsW0khCu5ln8DmJliT2AXrcNBsU1gj/MH4nMeKwBrPktM28xM
+        cX79DFKrHHD5d9D26hvicx4pABt2lpg10zYzU0zr7+e3xXGcrkEB2O2TNec9nJFwB3alZn5jZorfeDZh
+        6Q3g8s06BeCoKF4MRURoH1+BY2oNCbeb0TIclIYxOhzf8frTOuo7FxCbbVIAzpni0iceEc8vhzEwGkJD
+        lx83ymxifejdKjRNk/8PWnyIyTQqAJek0jqHwfEVscu31baIu8+90sTE4nY025dQ2/5FIPpnXlzKuK8A
+        HBUzHot52djqQ6HZhfR7IwK4mKpHtvEDMqvfCiQ6zaAAXM8x94aIWTNrLLG4kVUzgaTSPlzLtyJOZxbb
+        1wtfyg4Q+AfA3aZlButjSfxGcUJBk4g5tuP3haQKRKXcUQDOmbvNTpPOJeFFjordZmbWTNvMTHFUcpUC
+        nOccAdABIDXXE1nzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolStripButtonExcitationError.Size" type="System.Drawing.Size, System.Drawing">
@@ -322,16 +322,16 @@
   <data name="toolStripButtonFg.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIFSURBVDhPpZLtS1NhGMbPPxJmmlYSgqHiKzGU1EDxg4iK
+        YKyG2WBogqMYJQOtCEVRFBGdTBCJfRnkS4VaaWNT5sqx1BUxRXxDHYxAJLvkusEeBaPAB+5z4Jzn+t3X
+        /aLhnEfjo8m+dCoa+7/C3O2Hqe0zDC+8KG+cRZHZhdzaaWTVTCLDMIY0vfM04Nfh77/G/sEhwpEDbO3t
+        I7TxE8urEVy99fT/AL5gWDLrTB/hnF4XsW0khCu5ln8DmJliT2AXrcNBsU1gj/MH4nMeKwBrPktM28xM
+        cX79DFKrHHD5d9D26hvicx4pABt2lpg10zYzU0zr7+e3xXGcrkEB2O2TNec9nJFwB3alZn5jZorfeDZh
+        6Q3g8s06BeCoKF4MRURoH1+BY2oNCbeb0TIclIYxOhzf8frTOuo7FxCbbVIAzpni0iceEc8vhzEwGkJD
+        lx83ymxifejdKjRNk/8PWnyIyTQqAJek0jqHwfEVscu31baIu8+90sTE4nY025dQ2/5FIPpnXlzKuK8A
+        HBUzHot52djqQ6HZhfR7IwK4mKpHtvEDMqvfCiQ6zaAAXM8x94aIWTNrLLG4kVUzgaTSPlzLtyJOZxbb
+        1wtfyg4Q+AfA3aZlButjSfxGcUJBk4g5tuP3haQKRKXcUQDOmbvNTpPOJeFFjordZmbWTNvMTHFUcpUC
+        nOccAdABIDXXE1nzAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolStripButtonFg.Size" type="System.Drawing.Size, System.Drawing">
@@ -693,45 +693,6 @@
   <data name="tabPageScale.Text" xml:space="preserve">
     <value>目盛り線</value>
   </data>
-  <data name="numericBoxDev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 27</value>
-  </data>
-  <data name="numericBoxAcc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 28</value>
-  </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 56</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 3</value>
-  </data>
-  <data name="trackBarRotationSpeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 26</value>
-  </data>
-  <data name="trackBarRotationSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 18</value>
-  </data>
-  <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 10</value>
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 51</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>マウスで回転するときの感度</value>
-  </data>
-  <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 83</value>
-  </data>
-  <data name="tabPageMisc.Text" xml:space="preserve">
-    <value>その他</value>
-  </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -752,7 +713,7 @@
     <value>45</value>
   </data>
   <data name="graphicsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 481</value>
+    <value>93, 327</value>
   </data>
   <data name="colorControl3D_SpotsNear.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -961,13 +922,13 @@
     <value>エワルド球</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 330</value>
+    <value>0, 176</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>499, 151</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 481</value>
+    <value>596, 327</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>93</value>
@@ -988,10 +949,10 @@
     <value>596, 25</value>
   </data>
   <data name="panelMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 106</value>
+    <value>0, 260</value>
   </data>
   <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 506</value>
+    <value>596, 352</value>
   </data>
   <data name="label24.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1084,7 +1045,7 @@
     <value>検出器の中心</value>
   </data>
   <data name="comboBoxCenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 42</value>
+    <value>84, 81</value>
   </data>
   <data name="comboBoxCenter.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 25</value>
@@ -1096,7 +1057,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 37</value>
+    <value>47, 22</value>
   </data>
   <data name="numericBoxResolution.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 27</value>
@@ -1111,19 +1072,19 @@
     <value>メイリオ, 8pt</value>
   </data>
   <data name="buttonResetCenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 14</value>
+    <value>-1, 81</value>
   </data>
   <data name="buttonResetCenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 27</value>
+    <value>84, 27</value>
   </data>
   <data name="buttonResetCenter.Text" xml:space="preserve">
-    <value>中心を以下にセット</value>
+    <value>中心をセット</value>
   </data>
   <data name="checkBoxFixCenter.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
   <data name="checkBoxFixCenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 70</value>
+    <value>197, 84</value>
   </data>
   <data name="checkBoxFixCenter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1151,7 +1112,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxFlipVertically.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 22</value>
+    <value>75, 0</value>
   </data>
   <data name="checkBoxFlipVertically.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 22</value>
@@ -1166,10 +1127,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxNegativeImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 50</value>
-  </data>
-  <data name="checkBoxNegativeImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 6, 0, 0</value>
+    <value>150, 0</value>
   </data>
   <data name="checkBoxNegativeImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
@@ -1178,10 +1136,10 @@
     <value>ネガティブ画像</value>
   </data>
   <data name="flowLayoutPanel13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 13</value>
+    <value>3, 111</value>
   </data>
   <data name="flowLayoutPanel13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 72</value>
+    <value>261, 22</value>
   </data>
   <data name="numericBoxClientHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1190,7 +1148,7 @@
     <value>縦</value>
   </data>
   <data name="numericBoxClientHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 65</value>
+    <value>166, 50</value>
   </data>
   <data name="numericBoxClientHeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 27</value>
@@ -1211,7 +1169,7 @@
     <value>横</value>
   </data>
   <data name="numericBoxClientWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 38</value>
+    <value>86, 50</value>
   </data>
   <data name="numericBoxClientWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
@@ -1226,10 +1184,13 @@
     <value />
   </data>
   <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 64</value>
+    <value>150, 24</value>
   </data>
   <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 26</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 18</value>
@@ -1244,7 +1205,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 18</value>
+    <value>4, 55</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -1259,40 +1220,74 @@
     <value>メイリオ, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>466, 100</value>
+    <value>295, 137</value>
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>画面</value>
   </data>
+  <data name="trackBarRotationSpeed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 41</value>
+  </data>
+  <data name="trackBarRotationSpeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 18</value>
+  </data>
+  <data name="buttonHolderSimulation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonHolderSimulation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 46</value>
+  </data>
+  <data name="buttonHolderSimulation.Text" xml:space="preserve">
+    <value>TEM ホルダー
+ シミュレーション</value>
+  </data>
+  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 18</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>回転の感度</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt, style=Bold</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 57</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 71</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>その他</value>
+  </data>
   <data name="numericUpDownCamaraLength2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 40</value>
+    <value>68, 23</value>
   </data>
   <data name="numericUpDownCamaraLength2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 25</value>
-  </data>
-  <data name="buttonDetailedGeometry.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>76, 25</value>
   </data>
   <data name="buttonDetailedGeometry.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonDetailedGeometry.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 66</value>
+    <value>175, 21</value>
   </data>
   <data name="buttonDetailedGeometry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 28</value>
+    <value>42, 28</value>
   </data>
   <data name="buttonDetailedGeometry.Text" xml:space="preserve">
     <value>詳細</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 43</value>
+    <value>144, 25</value>
   </data>
   <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>5, 26</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 18</value>
@@ -1303,20 +1298,47 @@
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 102</value>
-  </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 100</value>
+    <value>224, 57</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>検出器情報</value>
+  </data>
+  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 2</value>
+  </data>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 137</value>
+  </data>
+  <data name="numericBoxDev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 50</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 26</value>
+  </data>
+  <data name="numericBoxAcc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 51</value>
+  </data>
+  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 79</value>
+  </data>
+  <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 142</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 111</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>マウスで回転するときの感度</value>
   </data>
   <data name="flowLayoutPanel6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 4</value>
   </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>596, 106</value>
+    <value>596, 260</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>596, 698</value>
