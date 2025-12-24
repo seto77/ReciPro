@@ -1329,10 +1329,10 @@
     <value>5, 142</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 111</value>
+    <value>180, 111</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
-    <value>マウスで回転するときの感度</value>
+    <value>開発用 (未使用)</value>
   </data>
   <data name="flowLayoutPanel6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 4</value>

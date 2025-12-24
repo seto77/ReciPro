@@ -1,13 +1,16 @@
 #region using
+using Crystallography;
 using Crystallography.OpenGL;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Windows.UI.Composition;
 using V3 = OpenTK.Mathematics.Vector3d;
 #endregion
 namespace ReciPro;
@@ -25,8 +28,29 @@ public partial class FormStereonet : Form
     private double mag;
     private GLControlAlpha glControl;
     private bool HexagonalLattice => (formMain.Crystal.Symmetry.CrystalSystemStr == "trigonal" || formMain.Crystal.Symmetry.CrystalSystemStr == "hexagonal") && formMain.Crystal.Alpha != formMain.Crystal.Gamma;
-
     public Matrix3D RotationMatrix => formMain.Crystal.RotationMatrix;
+
+    public struct Index
+    {
+        public short X, Y, Z;
+        public int ARGB;
+        public Index() { }
+        public Index(short x, short y, short z, int argb) { X = x; Y = y; Z = z; ARGB = argb; }
+        public override readonly string ToString() => $"{X} {Y} {Z}";
+    }
+
+    private Index[] SpecifiedIndices = [];
+
+    private int[] ColorArray = [
+        Color.FromArgb(255, 0, 0).ToArgb(),
+        Color.FromArgb(127, 127, 0).ToArgb(),
+        Color.FromArgb(0, 127, 0).ToArgb(),
+        Color.FromArgb(255, 0, 0).ToArgb(),
+        Color.FromArgb(255, 0, 0).ToArgb(),
+        Color.FromArgb(255, 0, 0).ToArgb(),
+        Color.FromArgb(255, 0, 0).ToArgb(),
+        Color.FromArgb(255, 0, 0).ToArgb(),
+        ];
 
     #endregion
 
@@ -420,7 +444,7 @@ public partial class FormStereonet : Form
 
         Func<Vector3DBase, PointD> conv = radioButtonWulff.Checked ? Stereonet.ConvertVectorToWulff : Stereonet.ConvertVectorToSchmidt;
 
-        var delimiter = radioButtonDelimiterNone.Checked ?"" : radioButtonDelimiterSpace.Checked ?" ":",";
+        var delimiter = radioButtonDelimiterNone.Checked ? "" : radioButtonDelimiterSpace.Checked ? " " : ",";
 
         foreach (var vec in vector)
         {
@@ -1050,7 +1074,7 @@ public partial class FormStereonet : Form
             numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = 0;
             flowLayoutPanelIndex.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
-            panelSpecifiedIndices.Visible = false;
+             buttonRemoveIndex.Visible = buttonAddIndex.Visible = false;
 
         }
         else if (radioButtonSpecifiedIndices.Checked)
@@ -1058,13 +1082,15 @@ public partial class FormStereonet : Form
             numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = -numericBox1.Maximum;
             flowLayoutPanelIndex.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
-            panelSpecifiedIndices.Visible = true;
+             buttonRemoveIndex.Visible = buttonAddIndex.Visible = true;
+
         }
         else//構造因子順の場合
         {
             flowLayoutPanelIndex.Visible = false;
             numericBoxHighStructureFactor.Visible = true;
-            panelSpecifiedIndices.Visible = false;
+            buttonRemoveIndex.Visible = buttonAddIndex.Visible =  false;
+
         }
         setVector();
         Draw();
@@ -1119,12 +1145,20 @@ public partial class FormStereonet : Form
     #region 面、軸のベクトルを計算
     private void setVector()
     {
+        listBoxSpecifiedIndices.Items.Clear();
+
         if (formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C != 0)
         {
             if (radioButtonRange.Checked)//範囲指定モードの時
             {
-                formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value, checkBoxIncludingEquivalentPlanes.Checked);
-                formMain.Crystal.SetVectorOfPlane((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value, waveLengthControl.WaveSource, checkBoxIncludingEquivalentPlanes.Checked);
+                var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
+                if(checkBoxIncludingEquivalentPlanes.Checked)
+                {
+                    
+                }
+
+                formMain.Crystal.SetVectorOfAxis(x, y, z, checkBoxIncludingEquivalentPlanes.Checked);
+                formMain.Crystal.SetVectorOfPlane(x, y, z, waveLengthControl.WaveSource, checkBoxIncludingEquivalentPlanes.Checked);
             }
             else if (radioButtonSpecifiedIndices.Checked)//特定指数モードの時
             {
@@ -1308,5 +1342,37 @@ public partial class FormStereonet : Form
     private void radioButtonDelimiterNone_CheckedChanged(object sender, EventArgs e)
     {
         Draw();
+    }
+
+    /// <summary>
+    /// 指数リストボックスの項目描画
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void listBoxSpecifiedIndices_DrawItem(object sender, DrawItemEventArgs e)
+    {
+        //背景を描画する
+        //項目が選択されている時は強調表示される
+        e.DrawBackground();
+
+        var ih = listBoxSpecifiedIndices.ItemHeight;
+        var margin = 1;
+
+        //ListBoxが空のときにListBoxが選択されるとe.Indexが-1になる
+        if (e.Index > -1)
+        {
+            var row = (Index)((ListBox)sender).Items[e.Index];
+            //スポットの色を表示
+            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(row.ARGB)), new Rectangle(e.Bounds.X + margin, e.Bounds.Y + margin, ih - margin, ih - margin));
+            //文字を描画する色の選択
+            Brush b = new SolidBrush(e.ForeColor);
+            //文字列の描画
+            e.Graphics.DrawString(row.ToString(), e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
+            //後始末
+            b.Dispose();
+        }
+
+        //フォーカスを示す四角形を描画
+        e.DrawFocusRectangle();
     }
 }

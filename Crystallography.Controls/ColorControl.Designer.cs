@@ -61,6 +61,7 @@
             labelHeader.Name = "labelHeader";
             labelHeader.Size = new System.Drawing.Size(0, 15);
             labelHeader.TabIndex = 2;
+            labelHeader.Click += pictureBox_Click;
             // 
             // flowLayoutPanel
             // 
@@ -86,6 +87,7 @@
             labelFooter.Name = "labelFooter";
             labelFooter.Size = new System.Drawing.Size(0, 17);
             labelFooter.TabIndex = 3;
+            labelFooter.Click += pictureBox_Click;
             // 
             // ColorControl
             // 
