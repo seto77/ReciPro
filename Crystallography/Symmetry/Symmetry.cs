@@ -102,9 +102,8 @@ public readonly struct Symmetry
     #endregion
 
     #region ƒƒ\ƒbƒh
-    public readonly bool IsPlaneRootIndex(int h, int k, int l) => SymmetryStatic.IsRootIndex((h, k, l), this);
 
-    public readonly bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootIndex(index, this);
+    public readonly bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootPlaneIndex(index, this, false).Result;
 
     public readonly string[] CheckExtinctionRule((int h, int k, int l) index)
         => [.. CheckExtinctionFunc.Select(check => check(index.h, index.k, index.l)).Where(str => str != null)];

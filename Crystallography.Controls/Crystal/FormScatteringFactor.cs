@@ -135,14 +135,14 @@ public partial class FormScatteringFactor : Form
             {
                 Vector3D g = c.VectorOfG[i];
                 double twoTheta = 2 * Math.Asin(g.Length * waveLengthControl1.WaveLength / 2);
-                bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, out int multi);
+                var (irreducible, indices) = SymmetryStatic.IsRootPlaneIndex(g.Index, c.Symmetry, false);
                 if (irreducible && !double.IsNaN(twoTheta))
                 {
                     var magnitude2 = g.F.Real * g.F.Real + g.F.Imaginary * g.F.Imaginary;
                     if (waveLengthControl1.WaveSource == WaveSource.Xray)
-                        c.VectorOfG[i].RawIntensity = magnitude2 * multi / c.CellVolumeSquare * (1 + Math.Cos(twoTheta) * Math.Cos(twoTheta)) / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
+                        c.VectorOfG[i].RawIntensity = magnitude2 * indices.Length / c.CellVolumeSquare * (1 + Math.Cos(twoTheta) * Math.Cos(twoTheta)) / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
                     else
-                        c.VectorOfG[i].RawIntensity = magnitude2 * multi / c.CellVolumeSquare / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
+                        c.VectorOfG[i].RawIntensity = magnitude2 * indices.Length / c.CellVolumeSquare / Math.Sin(twoTheta) / Math.Sin(twoTheta / 2);
 
                     max = Math.Max(max, c.VectorOfG[i].RawIntensity);
                 }
@@ -171,7 +171,7 @@ public partial class FormScatteringFactor : Form
 
         foreach (Vector3D g in c.VectorOfG)
         {
-            bool irreducible = SymmetryStatic.IsRootIndex(g.Index, c.Symmetry, out int multi);
+            var (irreducible, indices) = SymmetryStatic.IsRootPlaneIndex(g.Index, c.Symmetry, false);
             if (!checkBoxHideEquivalentPlane.Checked || irreducible)
             {
                 var condition = c.Symmetry.CheckExtinctionRule(g.Index);//SymmetryStatic.CheckExtinctionRule(g.h, g.k, g.l, c.Symmetry);
@@ -181,7 +181,7 @@ public partial class FormScatteringFactor : Form
                     var twoTheta = 2 * Math.Asin(g.Length * waveLengthControl1.WaveLength / 2) / Math.PI * 180;
                     if (double.IsNaN(twoTheta))
                         twoTheta = double.PositiveInfinity;
-                    dataSet.DataTableScatteringFactor.Add(g.Index.h, g.Index.k, g.Index.l, multi, d, twoTheta, g.F, g.RelativeIntensity, g.Extinction);
+                    dataSet.DataTableScatteringFactor.Add(g.Index.h, g.Index.k, g.Index.l, indices.Length, d, twoTheta, g.F, g.RelativeIntensity, g.Extinction);
                 }
             }
         }

@@ -1010,7 +1010,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                     if (CheckIrreducible(h, k, l) && !(h  == 0 && k  == 0 && l  == 0))
                     {
                         if (IncludeEquivalentPlanes)
-                            foreach (var index in SymmetryStatic.GenerateEquivalentPlanes(h, k, l, Symmetry, false))
+                            foreach (var index in SymmetryStatic.GenerateEquivalentPlanes((h, k, l), Symmetry, false))
                                 indices.Add(index);
                         else
                             indices.Add((h, k, l));
@@ -1067,7 +1067,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         outer.Add((h, k, l, len));
                         if (len < gMax && len > 1 / dMax)
                         {
-                            var root = SymmetryStatic.IsRootIndex((h, k, l), Symmetry, out int multi);
+                            var (root, indices) = SymmetryStatic.IsRootPlaneIndex((h, k, l), Symmetry, false);
                             var extinction = Symmetry.CheckExtinctionRule(h, k, l);
                             if ((!excludeEquivalentPlane || root) && (!excludeForbiddenPlane || extinction.Length == 0))
                             {
@@ -1079,7 +1079,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                                     l = l,
                                     d = 1 / len,
                                     strHKL = $"{h} {k} {l}",
-                                    Multi = [multi],
+                                    Multi = [indices.Length],
                                 });
                             }
                         }
@@ -1459,12 +1459,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         double gLen2 = x * x + y * y + z * z, gLen = Math.Sqrt(gLen2);
                         outer.Add((h, k, l, gLen));
 
-                        if (SymmetryStatic.IsRootIndex((h, k, l), Symmetry, out int multi))
+                        var (result, indices) = SymmetryStatic.IsRootPlaneIndex((h, k, l), Symmetry,false);
+                        if (result)
                             if (Symmetry.CheckExtinctionRule(h, k, l).Length == 0)
                             {
                                 double sinTheta = waveLength / 2 * gLen, twoTheta = 2 * Math.Asin(sinTheta), cosTwoTheta = 1 - 2 * sinTheta * sinTheta, sinTwoTheta = Math.Sin(twoTheta);
                                 var F2 = GetStructureFactor(WaveSource.Xray, Atoms, (h, k, l), gLen2 / 4.0).MagnitudeSquared();
-                                var intensity = F2 * multi  * (1 + cosTwoTheta * cosTwoTheta) / sinTwoTheta / sinTheta;  
+                                var intensity = F2 * indices.Length  * (1 + cosTwoTheta * cosTwoTheta) / sinTwoTheta / sinTheta;  
                                 list.Add((1 / gLen, intensity));
                             }
                     }

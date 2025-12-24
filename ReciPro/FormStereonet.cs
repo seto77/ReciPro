@@ -32,10 +32,10 @@ public partial class FormStereonet : Form
 
     public struct Index
     {
-        public short X, Y, Z;
+        public int X, Y, Z;
         public int ARGB;
         public Index() { }
-        public Index(short x, short y, short z, int argb) { X = x; Y = y; Z = z; ARGB = argb; }
+        public Index(int x, int y, int z, int argb) { X = x; Y = y; Z = z; ARGB = argb; }
         public override readonly string ToString() => $"{X} {Y} {Z}";
     }
 
@@ -1074,23 +1074,23 @@ public partial class FormStereonet : Form
             numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = 0;
             flowLayoutPanelIndex.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
-             buttonRemoveIndex.Visible = buttonAddIndex.Visible = false;
-
+            buttonRemoveIndex.Visible = buttonAddIndex.Visible = false;
+            checkBoxIncludingEquivalentPlanes.Visible = false;
         }
         else if (radioButtonSpecifiedIndices.Checked)
         {
             numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = -numericBox1.Maximum;
             flowLayoutPanelIndex.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
-             buttonRemoveIndex.Visible = buttonAddIndex.Visible = true;
-
+            buttonRemoveIndex.Visible = buttonAddIndex.Visible = true;
+            checkBoxIncludingEquivalentPlanes.Visible = true;
         }
         else//構造因子順の場合
         {
             flowLayoutPanelIndex.Visible = false;
             numericBoxHighStructureFactor.Visible = true;
             buttonRemoveIndex.Visible = buttonAddIndex.Visible =  false;
-
+            checkBoxIncludingEquivalentPlanes.Visible = false;
         }
         setVector();
         Draw();
@@ -1145,20 +1145,24 @@ public partial class FormStereonet : Form
     #region 面、軸のベクトルを計算
     private void setVector()
     {
-        listBoxSpecifiedIndices.Items.Clear();
-
         if (formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C != 0)
         {
             if (radioButtonRange.Checked)//範囲指定モードの時
             {
                 var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
-                if(checkBoxIncludingEquivalentPlanes.Checked)
-                {
-                    
-                }
 
-                formMain.Crystal.SetVectorOfAxis(x, y, z, checkBoxIncludingEquivalentPlanes.Checked);
-                formMain.Crystal.SetVectorOfPlane(x, y, z, waveLengthControl.WaveSource, checkBoxIncludingEquivalentPlanes.Checked);
+                listBoxSpecifiedIndices.Items.Clear();
+                for (int i = -x; i <= x; i++)
+                    for (int j = -y; j <= y; j++)
+                        for (int k = -z; k <= z; k++)
+                            if ((i != 0 || j != 0 || k != 0) && Algebra.Irreducible(i, j, k) == 1)
+                            {
+                                if(checkBox4.Checked)
+                                    listBoxSpecifiedIndices.Items.Add(new Index(i, j, k,colorControl1.Argb ));
+                            }
+
+                formMain.Crystal.SetVectorOfAxis(x, y, z, true);
+                formMain.Crystal.SetVectorOfPlane(x, y, z, waveLengthControl.WaveSource, true);
             }
             else if (radioButtonSpecifiedIndices.Checked)//特定指数モードの時
             {
@@ -1176,7 +1180,7 @@ public partial class FormStereonet : Form
                     else
                     {
                         axisIndices.AddRange(SymmetryStatic.GenerateEquivalentAxes(x, y, z, formMain.Crystal.Symmetry));
-                        planeIndices.AddRange(SymmetryStatic.GenerateEquivalentPlanes(x, y, z, formMain.Crystal.Symmetry));
+                        planeIndices.AddRange(SymmetryStatic.GenerateEquivalentPlanes((x, y, z), formMain.Crystal.Symmetry));
                     }
                 }
                 formMain.Crystal.SetVectorOfAxis([.. axisIndices]);

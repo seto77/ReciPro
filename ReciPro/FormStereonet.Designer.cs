@@ -179,6 +179,7 @@ namespace ReciPro
             buttonRemoveIndex = new System.Windows.Forms.Button();
             colorControl1 = new ColorControl();
             checkBox4 = new System.Windows.Forms.CheckBox();
+            checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxHighStructureFactor = new NumericBox();
@@ -192,7 +193,6 @@ namespace ReciPro
             numericBox4 = new NumericBox();
             flowLayoutPanelL = new System.Windows.Forms.FlowLayoutPanel();
             numericBox3 = new NumericBox();
-            checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
             checkBoxUseMillerBravaisIndex = new System.Windows.Forms.CheckBox();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
@@ -1461,6 +1461,7 @@ namespace ReciPro
             flowLayoutPanelAddRemove.Controls.Add(buttonRemoveIndex);
             flowLayoutPanelAddRemove.Controls.Add(colorControl1);
             flowLayoutPanelAddRemove.Controls.Add(checkBox4);
+            flowLayoutPanelAddRemove.Controls.Add(checkBoxIncludingEquivalentPlanes);
             flowLayoutPanelAddRemove.Name = "flowLayoutPanelAddRemove";
             // 
             // buttonAddIndex
@@ -1502,12 +1503,20 @@ namespace ReciPro
             checkBox4.Name = "checkBox4";
             checkBox4.UseVisualStyleBackColor = true;
             // 
+            // checkBoxIncludingEquivalentPlanes
+            // 
+            resources.ApplyResources(checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
+            checkBoxIncludingEquivalentPlanes.Checked = true;
+            checkBoxIncludingEquivalentPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
+            checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
+            checkBoxIncludingEquivalentPlanes.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
+            // 
             // flowLayoutPanel3
             // 
             resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
             flowLayoutPanel3.Controls.Add(flowLayoutPanel5);
             flowLayoutPanel3.Controls.Add(flowLayoutPanelIndex);
-            flowLayoutPanel3.Controls.Add(checkBoxIncludingEquivalentPlanes);
             flowLayoutPanel3.Controls.Add(checkBoxUseMillerBravaisIndex);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
@@ -1631,15 +1640,6 @@ namespace ReciPro
             numericBox3.ThonsandsSeparator = true;
             numericBox3.Value = 2D;
             numericBox3.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // checkBoxIncludingEquivalentPlanes
-            // 
-            resources.ApplyResources(checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
-            checkBoxIncludingEquivalentPlanes.Checked = true;
-            checkBoxIncludingEquivalentPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
-            checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
-            checkBoxIncludingEquivalentPlanes.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
             // 
             // checkBoxUseMillerBravaisIndex
             // 
@@ -1781,7 +1781,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -1647017665);
+            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 2001862975);
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
             scalablePictureBoxAdvanced1.SkipDrawing = false;
             scalablePictureBoxAdvanced1.StatusLabel = " ";
@@ -1812,7 +1812,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -1647017665);
+            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 2001862975);
             scalablePictureBoxAdvanced2.ShowGradiaent = true;
             scalablePictureBoxAdvanced2.SkipDrawing = false;
             scalablePictureBoxAdvanced2.StatusLabel = " ";

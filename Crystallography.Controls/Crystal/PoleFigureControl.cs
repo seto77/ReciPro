@@ -336,7 +336,7 @@ public partial class PoleFigureControl : UserControl
         {
             if (radioButtonPlanes.Checked)
             {//計算する面指数と等価な指数を算出
-                var indices = SymmetryStatic.GenerateEquivalentPlanes(x, y, z, sym);
+                var indices = SymmetryStatic.GenerateEquivalentPlanes((x, y, z), sym);
                 srcVector = new Vector3DBase[indices.Length];
                 for (int k = 0; k < indices.Length; k++)
                 {
