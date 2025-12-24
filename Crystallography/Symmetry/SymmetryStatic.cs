@@ -11109,107 +11109,107 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
 ["","D2^8","I22","I222","I222","","I","2","","2","","2","","222","D2","mmm",o],
 ["","D2^9","I2b2c","I2sub12sub12sub1","I2sub12sub12sub1","","I","2s1","","2s1","","2s1","","222","D2","mmm",o],
 ["","C2v^1","P2-2","Pmm2","Pmm2","","P","","m","","m","2","","mm2","C2v","mmm",o],
-["cab","C2v^1","P-22","P2mm","P2mm","","P","2","","","m","","m","mm2","C2v","mmm",o],
-["bca","C2v^1","P-2-2","Pm2m","Pm2m","","P","","m","2","","","m","mm2","C2v","mmm",o],
+["cab","C2v^1","P-22","P2mm","P2mm","","P","2","","","m","","m","2mm","C2v","mmm",o],
+["bca","C2v^1","P-2-2","Pm2m","Pm2m","","P","","m","2","","","m","m2m","C2v","mmm",o],
 ["","C2v^2","P2c-2","Pmc2sub1","Pmc2sub1","","P","","m","","c","2s1","","mm2","C2v","mmm",o],
 ["ba-c","C2v^2","P2c-2c","Pcm2sub1","Pcm2sub1","","P","","c","","m","2s1","","mm2","C2v","mmm",o],
-["cab","C2v^2","P-2a2a","P2sub1ma","P2sub1ma","","P","2s1","","","m","","a","mm2","C2v","mmm",o],
-["-cba","C2v^2","P-22a","P2sub1am","P2sub1am","","P","2s1","","","a","","m","mm2","C2v","mmm",o],
-["bca","C2v^2","P-2-2b","Pb2sub1m","Pb2sub1m","","P","","b","2s1","","","m","mm2","C2v","mmm",o],
-["a-cb","C2v^2","P-2b-2","Pm2sub1b","Pm2sub1b","","P","","m","2s1","","","b","mm2","C2v","mmm",o],
+["cab","C2v^2","P-2a2a","P2sub1ma","P2sub1ma","","P","2s1","","","m","","a","2mm","C2v","mmm",o],
+["-cba","C2v^2","P-22a","P2sub1am","P2sub1am","","P","2s1","","","a","","m","2mm","C2v","mmm",o],
+["bca","C2v^2","P-2-2b","Pb2sub1m","Pb2sub1m","","P","","b","2s1","","","m","m2m","C2v","mmm",o],
+["a-cb","C2v^2","P-2b-2","Pm2sub1b","Pm2sub1b","","P","","m","2s1","","","b","m2m","C2v","mmm",o],
 ["","C2v^3","P2-2c","Pcc2","Pcc2","","P","","c","","c","2","","mm2","C2v","mmm",o],
-["cab","C2v^3","P-2a2","P2aa","P2aa","","P","2","","","a","","a","mm2","C2v","mmm",o],
-["bca","C2v^3","P-2b-2b","Pb2b","Pb2b","","P","","b","2","","","b","mm2","C2v","mmm",o],
+["cab","C2v^3","P-2a2","P2aa","P2aa","","P","2","","","a","","a","2mm","C2v","mmm",o],
+["bca","C2v^3","P-2b-2b","Pb2b","Pb2b","","P","","b","2","","","b","m2m","C2v","mmm",o],
 ["","C2v^4","P2-2a","Pma2","Pma2","","P","","m","","a","2","","mm2","C2v","mmm",o],
 ["ba-c","C2v^4","P2-2b","Pbm2","Pbm2","","P","","b","","m","2","","mm2","C2v","mmm",o],
-["cab","C2v^4","P-2b2","P2mb","P2mb","","P","2","","","m","","b","mm2","C2v","mmm",o],
-["-cba","C2v^4","P-2c2","P2cm","P2cm","","P","2","","","c","","m","mm2","C2v","mmm",o],
-["bca","C2v^4","P-2c-2c","Pc2m","Pc2m","","P","","c","2","","","m","mm2","C2v","mmm",o],
-["a-cb","C2v^4","P-2a-2a","Pm2a","Pm2a","","P","","m","2","","","a","mm2","C2v","mmm",o],
+["cab","C2v^4","P-2b2","P2mb","P2mb","","P","2","","","m","","b","2mm","C2v","mmm",o],
+["-cba","C2v^4","P-2c2","P2cm","P2cm","","P","2","","","c","","m","2mm","C2v","mmm",o],
+["bca","C2v^4","P-2c-2c","Pc2m","Pc2m","","P","","c","2","","","m","m2m","C2v","mmm",o],
+["a-cb","C2v^4","P-2a-2a","Pm2a","Pm2a","","P","","m","2","","","a","m2m","C2v","mmm",o],
 ["","C2v^5","P2c-2ac","Pca2sub1","Pca2sub1","","P","","c","","a","2s1","","mm2","C2v","mmm",o],
 ["ba-c","C2v^5","P2c-2b","Pbc2sub1","Pbc2sub1","","P","","b","","c","2s1","","mm2","C2v","mmm",o],
-["cab","C2v^5","P-2b2a","P2sub1ab","P2sub1ab","","P","2s1","","","a","","b","mm2","C2v","mmm",o],
-["-cba","C2v^5","P-2ac2a","P2sub1ca","P2sub1ca","","P","2s1","","","c","","a","mm2","C2v","mmm",o],
-["bca","C2v^5","P-2bc-2c","Pc2sub1b","Pc2sub1b","","P","","c","2s1","","","b","mm2","C2v","mmm",o],
-["a-cb","C2v^5","P-2a-2ab","Pb2sub1a","Pb2sub1a","","P","","b","2s1","","","a","mm2","C2v","mmm",o],
+["cab","C2v^5","P-2b2a","P2sub1ab","P2sub1ab","","P","2s1","","","a","","b","2mm","C2v","mmm",o],
+["-cba","C2v^5","P-2ac2a","P2sub1ca","P2sub1ca","","P","2s1","","","c","","a","2mm","C2v","mmm",o],
+["bca","C2v^5","P-2bc-2c","Pc2sub1b","Pc2sub1b","","P","","c","2s1","","","b","m2m","C2v","mmm",o],
+["a-cb","C2v^5","P-2a-2ab","Pb2sub1a","Pb2sub1a","","P","","b","2s1","","","a","m2m","C2v","mmm",o],
 ["","C2v^6","P2-2bc","Pnc2","Pnc2","","P","","n","","c","2","","mm2","C2v","mmm",o],
 ["ba-c","C2v^6","P2-2ac","Pcn2","Pcn2","","P","","c","","n","2","","mm2","C2v","mmm",o],
-["cab","C2v^6","P-2ac2","P2na","P2na","","P","2","","","n","","a","mm2","C2v","mmm",o],
-["-cba","C2v^6","P-2ab2","P2an","P2an","","P","2","","","a","","n","mm2","C2v","mmm",o],
-["bca","C2v^6","P-2ab-2ab","Pb2n","Pb2n","","P","","b","2","","","n","mm2","C2v","mmm",o],
-["a-cb","C2v^6","P-2bc-2bc","Pn2b","Pn2b","","P","","n","2","","","b","mm2","C2v","mmm",o],
+["cab","C2v^6","P-2ac2","P2na","P2na","","P","2","","","n","","a","2mm","C2v","mmm",o],
+["-cba","C2v^6","P-2ab2","P2an","P2an","","P","2","","","a","","n","2mm","C2v","mmm",o],
+["bca","C2v^6","P-2ab-2ab","Pb2n","Pb2n","","P","","b","2","","","n","m2m","C2v","mmm",o],
+["a-cb","C2v^6","P-2bc-2bc","Pn2b","Pn2b","","P","","n","2","","","b","m2m","C2v","mmm",o],
 ["","C2v^7","P2ac-2","Pmn2sub1","Pmn2sub1","","P","","m","","n","2s1","","mm2","C2v","mmm",o],
 ["ba-c","C2v^7","P2bc-2bc","Pnm2sub1","Pnm2sub1","","P","","n","","m","2s1","","mm2","C2v","mmm",o],
-["cab","C2v^7","P-2ab2ab","P2sub1mn","P2sub1mn","","P","2s1","","","m","","n","mm2","C2v","mmm",o],
-["-cba","C2v^7","P-22ac","P2sub1nm","P2sub1nm","","P","2s1","","","n","","m","mm2","C2v","mmm",o],
-["bca","C2v^7","P-2-2bc","Pn2sub1m","Pn2sub1m","","P","","n","2s1","","","m","mm2","C2v","mmm",o],
-["a-cb","C2v^7","P-2ab-2","Pm2sub1n","Pm2sub1n","","P","","m","2s1","","","n","mm2","C2v","mmm",o],
+["cab","C2v^7","P-2ab2ab","P2sub1mn","P2sub1mn","","P","2s1","","","m","","n","2mm","C2v","mmm",o],
+["-cba","C2v^7","P-22ac","P2sub1nm","P2sub1nm","","P","2s1","","","n","","m","2mm","C2v","mmm",o],
+["bca","C2v^7","P-2-2bc","Pn2sub1m","Pn2sub1m","","P","","n","2s1","","","m","m2m","C2v","mmm",o],
+["a-cb","C2v^7","P-2ab-2","Pm2sub1n","Pm2sub1n","","P","","m","2s1","","","n","m2m","C2v","mmm",o],
 ["","C2v^8","P2-2ab","Pba2","Pba2","","P","","b","","a","2","","mm2","C2v","mmm",o],
-["cab","C2v^8","P-2bc2","P2cb","P2cb","","P","2","","","c","","b","mm2","C2v","mmm",o],
-["bca","C2v^8","P-2ac-2ac","Pc2a","Pc2a","","P","","c","2","","","a","mm2","C2v","mmm",o],
+["cab","C2v^8","P-2bc2","P2cb","P2cb","","P","2","","","c","","b","2mm","C2v","mmm",o],
+["bca","C2v^8","P-2ac-2ac","Pc2a","Pc2a","","P","","c","2","","","a","m2m","C2v","mmm",o],
 ["","C2v^9","P2c-2n","Pna2sub1","Pna2sub1","","P","","n","","a","2s1","","mm2","C2v","mmm",o],
 ["ba-c","C2v^9","P2c-2ab","Pbn2sub1","Pbn2sub1","","P","","b","","n","2s1","","mm2","C2v","mmm",o],
-["cab","C2v^9","P-2bc2a","P2sub1nb","P2sub1nb","","P","2s1","","","n","","b","mm2","C2v","mmm",o],
-["-cba","C2v^9","P-2n2a","P2sub1cn","P2sub1cn","","P","2s1","","","c","","n","mm2","C2v","mmm",o],
-["bca","C2v^9","P-2n-2ac","Pc2sub1n","Pc2sub1n","","P","","c","2s1","","","n","mm2","C2v","mmm",o],
-["a-cb","C2v^9","P-2ac-2n","Pn2sub1a","Pn2sub1a","","P","","n","2s1","","","a","mm2","C2v","mmm",o],
+["cab","C2v^9","P-2bc2a","P2sub1nb","P2sub1nb","","P","2s1","","","n","","b","2mm","C2v","mmm",o],
+["-cba","C2v^9","P-2n2a","P2sub1cn","P2sub1cn","","P","2s1","","","c","","n","2mm","C2v","mmm",o],
+["bca","C2v^9","P-2n-2ac","Pc2sub1n","Pc2sub1n","","P","","c","2s1","","","n","m2m","C2v","mmm",o],
+["a-cb","C2v^9","P-2ac-2n","Pn2sub1a","Pn2sub1a","","P","","n","2s1","","","a","m2m","C2v","mmm",o],
 ["","C2v^10","P2-2n","Pnn2","Pnn2","","P","","n","","n","2","","mm2","C2v","mmm",o],
-["cab","C2v^10","P-2n2","P2nn","P2nn","","P","2","","","n","","n","mm2","C2v","mmm",o],
-["bca","C2v^10","P-2n-2n","Pn2n","Pn2n","","P","","n","2","","","n","mm2","C2v","mmm",o],
+["cab","C2v^10","P-2n2","P2nn","P2nn","","P","2","","","n","","n","2mm","C2v","mmm",o],
+["bca","C2v^10","P-2n-2n","Pn2n","Pn2n","","P","","n","2","","","n","m2m","C2v","mmm",o],
 ["","C2v^11","C2-2","Cmm2","Cmm2","","C","","m","","m","2","","mm2","C2v","mmm",o],
-["cab","C2v^11","A-22","A2mm","A2mm","","A","2","","","m","","m","mm2","C2v","mmm",o],
-["bca","C2v^11","B-2-2","Bm2m","Bm2m","","B","","m","2","","","m","mm2","C2v","mmm",o],
+["cab","C2v^11","A-22","A2mm","A2mm","","A","2","","","m","","m","2mm","C2v","mmm",o],
+["bca","C2v^11","B-2-2","Bm2m","Bm2m","","B","","m","2","","","m","m2m","C2v","mmm",o],
 ["","C2v^12","C2c-2","Cmc2sub1","Cmc2sub1","","C","","m","","c","2s1","","mm2","C2v","mmm",o],
 ["ba-c","C2v^12","C2c-2c","Ccm2sub1","Ccm2sub1","","C","","c","","m","2s1","","mm2","C2v","mmm",o],
-["cab","C2v^12","A-2a2a","A2sub1ma","A2sub1ma","","A","2s1","","","m","","a","mm2","C2v","mmm",o],
-["-cba","C2v^12","A-22a","A2sub1am","A2sub1am","","A","2s1","","","a","","m","mm2","C2v","mmm",o],
-["bca","C2v^12","B-2-2b","Bb2sub1m","Bb2sub1m","","B","","b","2s1","","","m","mm2","C2v","mmm",o],
-["a-cb","C2v^12","B-2b-2","Bm2sub1b","Bm2sub1b","","B","","m","2s1","","","b","mm2","C2v","mmm",o],
+["cab","C2v^12","A-2a2a","A2sub1ma","A2sub1ma","","A","2s1","","","m","","a","2mm","C2v","mmm",o],
+["-cba","C2v^12","A-22a","A2sub1am","A2sub1am","","A","2s1","","","a","","m","2mm","C2v","mmm",o],
+["bca","C2v^12","B-2-2b","Bb2sub1m","Bb2sub1m","","B","","b","2s1","","","m","m2m","C2v","mmm",o],
+["a-cb","C2v^12","B-2b-2","Bm2sub1b","Bm2sub1b","","B","","m","2s1","","","b","m2m","C2v","mmm",o],
 ["","C2v^13","C2-2c","Ccc2","Ccc2","","C","","c","","c","2","","mm2","C2v","mmm",o],
-["cab","C2v^13","A-2a2","A2aa","A2aa","","A","2","","","a","","a","mm2","C2v","mmm",o],
-["bca","C2v^13","B-2b-2b","Bb2b","Bb2b","","B","","b","2","","","b","mm2","C2v","mmm",o],
+["cab","C2v^13","A-2a2","A2aa","A2aa","","A","2","","","a","","a","2mm","C2v","mmm",o],
+["bca","C2v^13","B-2b-2b","Bb2b","Bb2b","","B","","b","2","","","b","m2m","C2v","mmm",o],
 ["","C2v^14","A2-2","Amm2","Amm2","","A","","m","","m","2","","mm2","C2v","mmm",o],
 ["ba-c","C2v^14","B2-2","Bmm2","Bmm2","","B","","m","","m","2","","mm2","C2v","mmm",o],
-["cab","C2v^14","B-22","B2mm","B2mm","","B","2","","","m","","m","mm2","C2v","mmm",o],
-["-cba","C2v^14","C-22","C2mm","C2mm","","C","2","","","m","","m","mm2","C2v","mmm",o],
-["bca","C2v^14","C-2-2","Cm2m","Cm2m","","C","","m","2","","","m","mm2","C2v","mmm",o],
-["a-cb","C2v^14","A-2-2","Am2m","Am2m","","A","","m","2","","","m","mm2","C2v","mmm",o],
+["cab","C2v^14","B-22","B2mm","B2mm","","B","2","","","m","","m","2mm","C2v","mmm",o],
+["-cba","C2v^14","C-22","C2mm","C2mm","","C","2","","","m","","m","2mm","C2v","mmm",o],
+["bca","C2v^14","C-2-2","Cm2m","Cm2m","","C","","m","2","","","m","m2m","C2v","mmm",o],
+["a-cb","C2v^14","A-2-2","Am2m","Am2m","","A","","m","2","","","m","m2m","C2v","mmm",o],
 ["","C2v^15","A2-2c","Aem2","Aem2","","A","","b","","m","2","","mm2","C2v","mmm",o],
 ["ba-c","C2v^15","B2-2c","Bme2","Bme2","","B","","m","","a","2","","mm2","C2v","mmm",o],
-["cab","C2v^15","B-2c2","B2em","B2em","","B","2","","","c","","m","mm2","C2v","mmm",o],
-["-cba","C2v^15","C-2b2","C2me","C2me","","C","2","","","m","","b","mm2","C2v","mmm",o],
-["bca","C2v^15","C-2b-2b","Cm2e","Cm2e","","C","","m","2","","","a","mm2","C2v","mmm",o],
-["a-cb","C2v^15","A-2c-2c","Ae2m","Ae2m","","A","","c","2","","","m","mm2","C2v","mmm",o],
+["cab","C2v^15","B-2c2","B2em","B2em","","B","2","","","c","","m","2mm","C2v","mmm",o],
+["-cba","C2v^15","C-2b2","C2me","C2me","","C","2","","","m","","b","2mm","C2v","mmm",o],
+["bca","C2v^15","C-2b-2b","Cm2e","Cm2e","","C","","m","2","","","a","m2m","C2v","mmm",o],
+["a-cb","C2v^15","A-2c-2c","Ae2m","Ae2m","","A","","c","2","","","m","m2m","C2v","mmm",o],
 ["","C2v^16","A2-2a","Ama2","Ama2","","A","","m","","a","2","","mm2","C2v","mmm",o],
 ["ba-c","C2v^16","B2-2b","Bbm2","Bbm2","","B","","b","","m","2","","mm2","C2v","mmm",o],
-["cab","C2v^16","B-2b2","B2mb","B2mb","","B","2","","","m","","b","mm2","C2v","mmm",o],
-["-cba","C2v^16","C-2c2","C2cm","C2cm","","C","2","","","c","","m","mm2","C2v","mmm",o],
-["bca","C2v^16","C-2c-2c","Cc2m","Cc2m","","C","","c","2","","","m","mm2","C2v","mmm",o],
+["cab","C2v^16","B-2b2","B2mb","B2mb","","B","2","","","m","","b","2mm","C2v","mmm",o],
+["-cba","C2v^16","C-2c2","C2cm","C2cm","","C","2","","","c","","m","2mm","C2v","mmm",o],
+["bca","C2v^16","C-2c-2c","Cc2m","Cc2m","","C","","c","2","","","m","m2m","C2v","mmm",o],
 ["a-cb","C2v^16","A-2a-2a","Am2a","Am2a","","A","","m","2","","","a","mm2","C2v","mmm",o],
 ["","C2v^17","A2-2ac","Aea2","Aea2","","A","","b","","a","2","","mm2","C2v","mmm",o],
 ["ba-c","C2v^17","B2-2bc","Bbe2","Bbe2","","B","","b","","a","2","","mm2","C2v","mmm",o],
-["cab","C2v^17","B-2bc2","B2eb","B2eb","","B","2","","","c","","b","mm2","C2v","mmm",o],
-["-cba","C2v^17","C-2bc2","C2ce","C2ce","","C","2","","","c","","b","mm2","C2v","mmm",o],
-["bca","C2v^17","C-2bc-2bc","Cc2e","Cc2e","","C","","c","2","","","a","mm2","C2v","mmm",o],
-["a-cb","C2v^17","A-2ac-2ac","Ae2a","Ae2a","","A","","c","2","","","a","mm2","C2v","mmm",o],
+["cab","C2v^17","B-2bc2","B2eb","B2eb","","B","2","","","c","","b","2mm","C2v","mmm",o],
+["-cba","C2v^17","C-2bc2","C2ce","C2ce","","C","2","","","c","","b","2mm","C2v","mmm",o],
+["bca","C2v^17","C-2bc-2bc","Cc2e","Cc2e","","C","","c","2","","","a","m2m","C2v","mmm",o],
+["a-cb","C2v^17","A-2ac-2ac","Ae2a","Ae2a","","A","","c","2","","","a","m2m","C2v","mmm",o],
 ["","C2v^18","F2-2","Fmm2","Fmm2","","F","","m","","m","2","","mm2","C2v","mmm",o],
-["cab","C2v^18","F-22","F2mm","F2mm","","F","2","","","m","","m","mm2","C2v","mmm",o],
-["bca","C2v^18","F-2-2","Fm2m","Fm2m","","F","","m","2","","","m","mm2","C2v","mmm",o],
+["cab","C2v^18","F-22","F2mm","F2mm","","F","2","","","m","","m","2mm","C2v","mmm",o],
+["bca","C2v^18","F-2-2","Fm2m","Fm2m","","F","","m","2","","","m","m2m","C2v","mmm",o],
 ["","C2v^19","F2-2d","Fdd2","Fdd2","","F","","d","","d","2","","mm2","C2v","mmm",o],
-["cab","C2v^19","F-2d2","F2dd","F2dd","","F","2","","","d","","d","mm2","C2v","mmm",o],
-["bca","C2v^19","F-2d-2d","Fd2d","Fd2d","","F","","d","2","","","d","mm2","C2v","mmm",o],
-["","C2v^20","I2-2","Imm2","Imm2","","I","","m","","m","2","","mm2","C2v","mmm",o],
-["cab","C2v^20","I-22","I2mm","I2mm","","I","2","","","m","","m","mm2","C2v","mmm",o],
+["cab","C2v^19","F-2d2","F2dd","F2dd","","F","2","","","d","","d","2mm","C2v","mmm",o],
+["bca","C2v^19","F-2d-2d","Fd2d","Fd2d","","F","","d","2","","","d","m2m","C2v","mmm",o],
+["","C2v^20","I2-2","Imm2","Imm2","","I","","m","","m","2","","2mm","C2v","mmm",o],
+["cab","C2v^20","I-22","I2mm","I2mm","","I","2","","","m","","m","2mm","C2v","mmm",o],
 ["bca","C2v^20","I-2-2","Im2m","Im2m","","I","","m","2","","","m","mm2","C2v","mmm",o],
 ["","C2v^21","I2-2c","Iba2","Iba2","","I","","b","","a","2","","mm2","C2v","mmm",o],
-["cab","C2v^21","I-2a2","I2cb","I2cb","","I","2","","","c","","b","mm2","C2v","mmm",o],
-["bca","C2v^21","I-2b-2b","Ic2a","Ic2a","","I","","c","2","","","a","mm2","C2v","mmm",o],
+["cab","C2v^21","I-2a2","I2cb","I2cb","","I","2","","","c","","b","m2m","C2v","mmm",o],
+["bca","C2v^21","I-2b-2b","Ic2a","Ic2a","","I","","c","2","","","a","m2m","C2v","mmm",o],
 ["","C2v^22","I2-2a","Ima2","Ima2","","I","","m","","a","2","","mm2","C2v","mmm",o],
 ["ba-c","C2v^22","I2-2b","Ibm2","Ibm2","","I","","b","","m","2","","mm2","C2v","mmm",o],
-["cab","C2v^22","I-2b2","I2mb","I2mb","","I","2","","","m","","b","mm2","C2v","mmm",o],
-["-cba","C2v^22","I-2c2","I2cm","I2cm","","I","2","","","c","","m","mm2","C2v","mmm",o],
-["bca","C2v^22","I-2c-2c","Ic2m","Ic2m","","I","","c","2","","","m","mm2","C2v","mmm",o],
-["a-cb","C2v^22","I-2a-2a","Im2a","Im2a","","I","","m","2","","","a","mm2","C2v","mmm",o],
+["cab","C2v^22","I-2b2","I2mb","I2mb","","I","2","","","m","","b","2mm","C2v","mmm",o],
+["-cba","C2v^22","I-2c2","I2cm","I2cm","","I","2","","","c","","m","2mm","C2v","mmm",o],
+["bca","C2v^22","I-2c-2c","Ic2m","Ic2m","","I","","c","2","","","m","m2m","C2v","mmm",o],
+["a-cb","C2v^22","I-2a-2a","Im2a","Im2a","","I","","m","2","","","a","m2m","C2v","mmm",o],
 ["","D2h^1","-P22","Pmmm","P2/m2/m2/m","","P","2","m","2","m","2","m","mmm","D2h","mmm",o],
 ["1","D2h^2","P22-1n","Pnnn(1)","P2/n2/n2/n","","P","2","n","2","n","2","n","mmm","D2h","mmm",o],
 ["2","D2h^2","-P2ab2bc","Pnnn(2)","P2/n2/n2/n","","P","2","n","2","n","2","n","mmm","D2h","mmm",o],
@@ -12246,7 +12246,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) index, Symmetry sym)
     {
         #region
-        int h = index.H, k = index.K, l = index.L;
+        var (h, k ,l) = index;
         int m, i;
         switch (sym.LaueGroupNumber)
         {
@@ -12674,7 +12674,6 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     public static (bool Result, (int H, int K, int L)[] Indices) IsRootPlaneIndex((int h, int k, int l) index, Symmetry sym, bool CalcNotEvenRoot=false)
     {
         #region
-        
         (int h, int k, int l) = index;
         bool result = true;
         if (h == 0 && k == 0 && l == 0)
@@ -12754,7 +12753,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// </summary>
     /// <param name="addInversionCenter"> 対称心を加えるか。デフォルトはTrue（つまりラウエ群で面を生成する）</param>
     /// <returns></returns>
-    public static (int H, int K, int L)[] GenerateEquivalentPlanes((int h, int k, int l) index, Symmetry sym, bool addInversionCenter = true)
+    public static (int H, int K, int L)[] GenerateEquivalentPlanes((int h, int k, int l) index, Symmetry sym, bool addInversionCenter = false)
     {
         var (h,k,l) = index;
         if (h == 0 && k == 0 && l == 0) return [(0, 0, 0)];
@@ -12838,6 +12837,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                         break;
                 }
                 break;
+            
             case 5:// 2/m
                 switch (sym.MainAxis)
                 {
@@ -12923,6 +12923,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                 indices.Add((-k, +h, -l));
                 indices.Add((+k, -h, -l));
                 break;
+           
             case 11: //4/m
                 indices.Add((+h, +k, +l));
                 indices.Add((-h, -k, +l));
@@ -13024,6 +13025,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                     indices.Add((+k, +l, +h));
                     break;
                 }
+            
             case 17: //-3
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                 {
@@ -13511,7 +13513,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <param name="sym"></param>
     /// <returns></returns>
     public static bool CheckEquivalentPlanes((int H, int K, int L) index1, (int H, int K, int L) index2, Symmetry sym)
-        => new List<(int H, int K, int L)>(GenerateEquivalentPlanes(index1, sym)).Contains(index2);
+        => new List<(int H, int K, int L)>(GenerateEquivalentPlanes(index1, sym, false)).Contains(index2);
 
     #endregion
 
@@ -13538,9 +13540,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
 
             case 1://	-1
                 if (u < 0 || (u == 0 && v < 0) || (u == 0 && v == 0 && w < 0))
-                {
-                    u = -u; v = -v; w = -w;
-                }
+                    (u, v, w) = (-u, -v, -w);
                 break;
 
             case 2://	2/m
@@ -13915,333 +13915,727 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <param name="sym"></param>
     /// <param name="inversionCenter">対称心を仮定するか。デフォルトはTrue（つまりラウエ群で軸を生成する）</param>
     /// <returns></returns>
-    public static (int U, int V, int W)[] GenerateEquivalentAxes(int u, int v, int w, Symmetry sym, bool inversionCenter = true)
+    public static (int U, int V, int W)[] GenerateEquivalentAxes((int u, int v, int w) index, Symmetry sym, bool addInversionCenter = false)
     {
         #region
-        var indices = new HashSet<(int U, int V, int W)>();
+        var (x, y, z) = index;
+        if (x == 0 && y == 0 && z == 0)
+            return [(0, 0, 0)];
 
-        if (u == 0 && v == 0 && w == 0)
-        {
-            indices.Add((0, 0, 0));
-            return [.. indices];
-        }
-        int x;
-        switch (sym.LaueGroupNumber)
+        var indices = new HashSet<(int U, int V, int W)>();
+        var pgNum = sym.PointGroupNumber;
+
+        if (addInversionCenter) //addInversionCenterがtrueの場合は、対称心を付与した点群に変換する
+            pgNum = pgNum switch
+            {
+                #region
+                0 or 1 or 2 => 2,//　unknown, 1, -1 => -1
+                3 or 4 or 5 => 5,// 2, m, 2/m => 2/m
+                6 or 7 or 8 => 8,// 222, mm2, mmm => mmm
+                9 or 10 or 11 => 11,// 4, -4, 4/m => 4/m
+                12 or 13 or 14 or 15 => 15, // 422, 4mm, -42m, 4/mmm => 4/mmm
+                16 or 17 => 17,// 3, -3 => -3
+                18 or 19 or 20 => 20,// 3m, -3m1, -3m2 => -3m1
+                21 or 22 or 23 => 23,// 6, -6, 6/m => 6/m
+                24 or 25 or 26 or 27 => 27,// 622, 6mm, -6m2, 6/mmm => 6/mmm
+                28 or 29 => 29,// 23, m3 => m3
+                30 or 31 or 32 => 32,// 432, -43m, m3m => m3m
+                _ => 2
+                #endregion
+            };
+
+        switch (sym.PointGroupNumber)
         {
             case 0://unknown
-                indices.Add((+u, +v, +w));
-                break;
+                return [(+x, +y, +z)]; 
 
             case 1://-1
-                indices.Add((+u, +v, +w));
-                indices.Add((-u, -v, -w));
+                return [(+x, +y, +z)];
+
+            case 2://-1
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, -y, -z));
                 break;
 
-            case 2:// 2/m
+            case 3:// 2
                 switch (sym.MainAxis)
                 {
                     case "a":
-                        indices.Add((+u, +v, +w));
-                        indices.Add((-u, -v, -w));
-
-                        indices.Add((-u, +v, +w));
-                        indices.Add((+u, -v, -w));
+                        indices.Add((+x, +y, +z));
+                        indices.Add((+x, -y, -z));
                         break;
 
                     case "b":
-                        indices.Add((+u, +v, +w));
-                        indices.Add((-u, -v, -w));
-
-                        indices.Add((+u, -v, +w));
-                        indices.Add((-u, +v, -w));
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-x, +y, -z));
                         break;
 
                     case "c":
-
-                        indices.Add((+u, +v, +w));
-                        indices.Add((-u, -v, -w));
-
-                        indices.Add((+u, +v, -w));
-                        indices.Add((-u, -v, +w));
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-x, -y, +z));
                         break;
                 }
                 break;
 
-            case 3:// mmm
-                indices.Add((+u, +v, +w));
-                indices.Add((-u, +v, +w));
-                indices.Add((+u, -v, +w));
-                indices.Add((+u, +v, -w));
+            case 4:// m
+                switch (sym.MainAxis)
+                {
+                    case "a":
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-x, +y, +z));
+                        break;
 
-                indices.Add((-u, -v, +w));
-                indices.Add((+u, -v, -w));
-                indices.Add((-u, +v, -w));
-                indices.Add((-u, -v, -w));
+                    case "b":
+                        indices.Add((+x, +y, +z));
+                        indices.Add((+x, -y, +z));
+                        break;
+
+                    case "c":
+                        indices.Add((+x, +y, +z));
+                        indices.Add((+x, +y, -z));
+                        break;
+                }
                 break;
 
-            case 4: //4/m
+            case 5:// 2/m
+                switch (sym.MainAxis)
+                {
+                    case "a":
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-x, -y, -z));
 
-                indices.Add((+u, +v, +w));
-                indices.Add((-u, -v, +w));
-                indices.Add((-v, +u, +w));
-                indices.Add((+v, -u, +w));
+                        indices.Add((-x, +y, +z));
+                        indices.Add((+x, -y, -z));
+                        return [.. indices];
 
-                indices.Add((+u, +v, -w));
-                indices.Add((-u, -v, -w));
-                indices.Add((-v, +u, -w));
-                indices.Add((+v, -u, -w));
-                break;
+                    case "b":
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-x, -y, -z));
 
-            case 5: //4/mmm
+                        indices.Add((+x, -y, +z));
+                        indices.Add((-x, +y, -z));
+                        return [.. indices];
 
-                indices.Add((+u, +v, +w));
-                indices.Add((-u, -v, +w));
-                indices.Add((-v, +u, +w));
-                indices.Add((+v, -u, +w));
+                    case "c":
 
-                indices.Add((+u, -v, +w));
-                indices.Add((-u, +v, +w));
-                indices.Add((+v, +u, +w));
-                indices.Add((-v, -u, +w));
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-x, -y, -z));
 
-                indices.Add((+u, +v, -w));
-                indices.Add((-u, -v, -w));
-                indices.Add((-v, +u, -w));
-                indices.Add((+v, -u, -w));
+                        indices.Add((+x, +y, -z));
+                        indices.Add((-x, -y, +z));
+                        return [.. indices];
+                }
+                return [.. indices];
+            
+            case 6:// 222
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, -y, +z));
+                indices.Add((+x, -y, -z));
+                indices.Add((-x, +y, -z));
+                return [.. indices];
 
-                indices.Add((+u, -v, -w));
-                indices.Add((-u, +v, -w));
-                indices.Add((+v, +u, -w));
-                indices.Add((-v, -u, -w));
-                break;
+            case 7:// mm2
+               switch (sym.PointGroupHMStr)
+                {
+                    case "2mm":
+                        indices.Add((+x, +y, +z));
+                        indices.Add((+x, -y, +z));
+                        indices.Add((+x, +y, -z));
+                        indices.Add((+x, -y, -z));
+                        return [.. indices];
+                    
+                    case "m2m":
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-x, +y, +z));
+                        indices.Add((+x, +y, -z));
+                        indices.Add((-x, +y, -z));
+                        return [.. indices];
 
-            case 6: //-3
+                    case "mm2":
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-x, +y, +z));
+                        indices.Add((+x, -y, +z));
+                        indices.Add((-x, -y, +z));
+                        return [.. indices];
+                }
+                return [.. indices];
+
+            case 8:// mmm
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, +y, +z));
+                indices.Add((+x, -y, +z));
+                indices.Add((+x, +y, -z));
+
+                indices.Add((-x, -y, +z));
+                indices.Add((+x, -y, -z));
+                indices.Add((-x, +y, -z));
+                indices.Add((-x, -y, -z));
+                return [.. indices];
+
+            case 9: //4
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, -y, +z));
+                indices.Add((-y, +x, +z));
+                indices.Add((+y, -x, +z));
+
+                return [.. indices];
+            
+            case 10: //-4
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, -y, +z));
+                indices.Add((-y, +x, -z));
+                indices.Add((+y, -x, -z));
+                return [.. indices];
+
+            case 11: //4/m
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, -y, +z));
+                indices.Add((-y, +x, +z));
+                indices.Add((+y, -x, +z));
+
+                indices.Add((+x, +y, -z));
+                indices.Add((-x, -y, -z));
+                indices.Add((-y, +x, -z));
+                indices.Add((+y, -x, -z));
+                return [.. indices];
+
+            case 12: //422
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, -y, +z));
+                indices.Add((-y, +x, +z));
+                indices.Add((+y, -x, +z));
+
+                indices.Add((+x, -y, -z));
+                indices.Add((-x, +y, -z));
+                indices.Add((+y, +x, -z));
+                indices.Add((-y, -x, -z));
+                return [.. indices];
+
+            case 13: //4mmm
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, -y, +z));
+                indices.Add((-y, +x, +z));
+                indices.Add((+y, -x, +z));
+
+                indices.Add((+x, -y, +z));
+                indices.Add((-x, +y, +z));
+                indices.Add((+y, +x, +z));
+                indices.Add((-y, -x, +z));
+                return [.. indices];
+
+            case 14: //-42m
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, -y, +z));
+                indices.Add((+y, +x, +z));
+                indices.Add((-y, -x, +z));
+
+                indices.Add((-y, +x, -z));
+                indices.Add((+y, -x, -z));
+                indices.Add((+x, -y, -z));
+                indices.Add((-x, +y, -z));
+                return [.. indices];
+
+            case 15: //4/mmm
+                indices.Add((+x, +y, +z));
+                indices.Add((-x, -y, +z));
+                indices.Add((-y, +x, +z));
+                indices.Add((+y, -x, +z));
+
+                indices.Add((+x, -y, +z));
+                indices.Add((-x, +y, +z));
+                indices.Add((+y, +x, +z));
+                indices.Add((-y, -x, +z));
+
+                indices.Add((+x, +y, -z));
+                indices.Add((-x, -y, -z));
+                indices.Add((-y, +x, -z));
+                indices.Add((+y, -x, -z));
+
+                indices.Add((+x, -y, -z));
+                indices.Add((-x, +y, -z));
+                indices.Add((+y, +x, -z));
+                indices.Add((-y, -x, -z));
+                return [.. indices];
+
+            case 16: //3
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                 {
-                    x = v - u;
-                    indices.Add((+u, +v, +w));
-                    indices.Add((+x, -u, +w));
-                    indices.Add((-v, -x, +w));
-
-                    indices.Add((-u, -v, -w));
-                    indices.Add((-x, +u, -w));
-                    indices.Add((+v, +x, -w));
-                    break;
+                    indices.Add((x, y, z));
+                    indices.Add((-y, x - y, z));
+                    indices.Add((-x + y, -x, z));
+                    return [.. indices];
                 }
                 else
                 {//Rhomboセルの場合
-                    indices.Add((+u, +v, +w));
-                    indices.Add((+w, +u, +v));
-                    indices.Add((+v, +w, +u));
-
-                    indices.Add((-u, -v, -w));
-                    indices.Add((-w, -u, -v));
-                    indices.Add((-v, -w, -u));
-                    break;
+                    indices.Add((+x, +y, +z));
+                    indices.Add((+z, +x, +y));
+                    indices.Add((+y, +z, +x));
+                    return [.. indices];
                 }
 
-            case 7: //-3m1
+            case 17: //-3
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                 {
-                    x = v - u;
-                    indices.Add((+u, +v, +w));
-                    indices.Add((+x, -u, +w));
-                    indices.Add((-v, -x, +w));
+                    indices.Add((x, y, z));
+                    indices.Add((-y, x - y, z));
+                    indices.Add((-x + y, -x, z));
 
-                    indices.Add((-u, -v, +w));
-                    indices.Add((-x, +u, +w));
-                    indices.Add((+v, +x, +w));
-
-                    indices.Add((+u, +v, -w));
-                    indices.Add((+x, -u, -w));
-                    indices.Add((-v, -x, -w));
-
-                    indices.Add((-u, -v, -w));
-                    indices.Add((-x, +u, -w));
-                    indices.Add((+v, +x, -w));
-
-                    break;
+                    indices.Add((-x, -y, -z));
+                    indices.Add((y, -x + y, -z));
+                    indices.Add((x - y, x, -z));
+                    return [.. indices];
                 }
                 else
                 {//Rhomboセルの場合
-                    indices.Add((+u, +v, +w));
-                    indices.Add((+w, +u, +v));
-                    indices.Add((+v, +w, +u));
+                    indices.Add((+x, +y, +z));
+                    indices.Add((+z, +x, +y));
+                    indices.Add((+y, +z, +x));
 
-                    indices.Add((-v, -u, -w));
-                    indices.Add((-u, -w, -v));
-                    indices.Add((-w, -v, -u));
-
-                    indices.Add((-u, -v, -w));
-                    indices.Add((-w, -u, -v));
-                    indices.Add((-v, -w, -u));
-
-                    indices.Add((+v, +u, +w));
-                    indices.Add((+u, +w, +v));
-                    indices.Add((+w, +v, +u));
-                    break;
+                    indices.Add((-x, -y, -z));
+                    indices.Add((-z, -x, -y));
+                    indices.Add((-y, -z, -x));
+                    return [.. indices];
                 }
-            case 8://6/m
-                x = v - u;
-                indices.Add((+u, +v, +w));
-                indices.Add((+x, -u, +w));
-                indices.Add((-v, -x, +w));
 
-                indices.Add((-u, -v, +w));
-                indices.Add((-x, +u, +w));
-                indices.Add((+v, +x, +w));
+            case 18: //32
+                if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                {
+                    if (sym.SpaceGroupHallStr.Contains('\"'))// 321の場合
+                    {
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-y, x - y, z));
+                        indices.Add((-x + y, -x, z));
 
-                indices.Add((+u, +v, -w));
-                indices.Add((+x, -u, -w));
-                indices.Add((-v, -x, -w));
+                        indices.Add((y, x, -z));
+                        indices.Add((x - y, -y, -z));
+                        indices.Add((-x, -x + y, -z));
+                    }
+                    else//312の場合
+                    {
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-y, x - y, z));
+                        indices.Add((-x + y, -x, z));
 
-                indices.Add((-u, -v, -w));
-                indices.Add((-x, +u, -w));
-                indices.Add((+v, +x, -w));
-                break;
+                        indices.Add((-y, -x, -z));
+                        indices.Add((-x + y, y, -z));
+                        indices.Add((x, x - y, -z));
+                    }
+                }
+                else
+                {//Rhomboセルの場合
+                    indices.Add((+x, +y, +z));
+                    indices.Add((z, x, y));
+                    indices.Add((y, z, x));
 
-            case 9://6/mmm
-                x = v - u;
-                indices.Add((+u, +v, +w));
-                indices.Add((+x, -u, +w));
-                indices.Add((-v, -x, +w));
+                    indices.Add((-z, -y, -x));
+                    indices.Add((-y, -x, -z));
+                    indices.Add((-x, -z, -y));
+                }
+                return [.. indices];
 
-                indices.Add((-u, -v, +w));
-                indices.Add((-x, +u, +w));
-                indices.Add((+v, +x, +w));
+            case 19: //3m
+                if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                {
+                    if (sym.SpaceGroupHallStr.Contains('\"'))// 3m1の場合
+                    {
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-y, x - y, z));
+                        indices.Add((-x + y, -x, z));
 
-                indices.Add((+u, +v, -w));
-                indices.Add((+x, -u, -w));
-                indices.Add((-v, -x, -w));
+                        indices.Add((-y, -x, z));
+                        indices.Add((-x + y, y, z));
+                        indices.Add((x, x - y, z));
+                    }
+                    else//31mの場合
+                    {
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-y, x - y, z));
+                        indices.Add((-x + y, -x, z));
 
-                indices.Add((-u, -v, -w));
-                indices.Add((-x, +u, -w));
-                indices.Add((+v, +x, -w));
+                        indices.Add((y, x, z));
+                        indices.Add((x - y, -y, z));
+                        indices.Add((-x, -x + y, z));
+                    }
+                }
+                else
+                {//Rhomboセルの場合
+                    indices.Add((+x, +y, +z));
+                    indices.Add((z, x, y));
+                    indices.Add((y, z, x));
 
-                indices.Add((+v, +u, +w));
-                indices.Add((-u, +x, +w));
-                indices.Add((-x, -v, +w));
+                    indices.Add((z, y, x));
+                    indices.Add((y, x, z));
+                    indices.Add((x, z, y));
+                }
+                return [.. indices];
 
-                indices.Add((-v, -u, +w));
-                indices.Add((+u, -x, +w));
-                indices.Add((+x, +v, +w));
+            case 20: //-3m
+                if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                {
+                    if (sym.SpaceGroupHallStr.Contains('\"'))// -3m1の場合
+                    {
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-y, x - y, z));
+                        indices.Add((-x + y, -x, z));
 
-                indices.Add((+v, +u, -w));
-                indices.Add((-u, +x, -w));
-                indices.Add((-x, -v, -w));
+                        indices.Add((y, x, -z));
+                        indices.Add((x - y, -y, -z));
+                        indices.Add((-x, -x + y, -z));
 
-                indices.Add((-v, -u, -w));
-                indices.Add((+u, -x, -w));
-                indices.Add((+x, +v, -w));
-                break;
+                        indices.Add((-x, -y, -z));
+                        indices.Add((y, -x + y, -z));
+                        indices.Add((x - y, x, -z));
 
-            case 10://m3
-                indices.Add((+u, +v, +w));
-                indices.Add((-u, -v, +w));
-                indices.Add((-u, +v, -w));
-                indices.Add((+u, -v, -w));
+                        indices.Add((-y, -x, z));
+                        indices.Add((-x + y, y, z));
+                        indices.Add((x, x - y, z));
+                    }
+                    else//-31mの場合
+                    {
+                        indices.Add((+x, +y, +z));
+                        indices.Add((-y, x - y, z));
+                        indices.Add((-x + y, -x, z));
 
-                indices.Add((+w, +u, +v));
-                indices.Add((-w, -u, +v));
-                indices.Add((-w, +u, -v));
-                indices.Add((+w, -u, -v));
+                        indices.Add((-y, -x, -z));
+                        indices.Add((-x + y, y, -z));
+                        indices.Add((x, x - y, -z));
 
-                indices.Add((+v, +w, +u));
-                indices.Add((-v, -w, +u));
-                indices.Add((-v, +w, -u));
-                indices.Add((+v, -w, -u));
+                        indices.Add((-x, -y, -z));
+                        indices.Add((y, -x + y, -z));
+                        indices.Add((x - y, x, -z));
 
-                indices.Add((-u, -v, -w));
-                indices.Add((+u, +v, -w));
-                indices.Add((+u, -v, +w));
-                indices.Add((-u, +v, +w));
+                        indices.Add((y, x, z));
+                        indices.Add((x - y, -y, z));
+                        indices.Add((-x, -x + y, z));
+                    }
+                }
+                else
+                {//Rhomboセルの場合
+                    indices.Add((+x, +y, +z));
+                    indices.Add((z, x, y));
+                    indices.Add((y, z, x));
 
-                indices.Add((-w, -u, -v));
-                indices.Add((+w, +u, -v));
-                indices.Add((+w, -u, +v));
-                indices.Add((-w, +u, +v));
+                    indices.Add((-z, -y, -x));
+                    indices.Add((-y, -x, -z));
+                    indices.Add((-x, -z, -y));
 
-                indices.Add((-v, -w, -u));
-                indices.Add((+v, +w, -u));
-                indices.Add((+v, -w, +u));
-                indices.Add((-v, +w, +u));
-                break;
+                    indices.Add((-x, -y, -z));
+                    indices.Add((-z, -x, -y));
+                    indices.Add((-y, -z, -x));
 
-            case 11://m3m
-                indices.Add((+u, +v, +w));
-                indices.Add((-u, -v, +w));
-                indices.Add((-u, +v, -w));
-                indices.Add((+u, -v, -w));
+                    indices.Add((z, y, x));
+                    indices.Add((y, x, z));
+                    indices.Add((x, z, y));
+                }
+                return [.. indices];
 
-                indices.Add((+w, +u, +v));
-                indices.Add((-w, -u, +v));
-                indices.Add((-w, +u, -v));
-                indices.Add((+w, -u, -v));
+            case 21://6
+                indices.Add((+x, +y, +z));
+                indices.Add((-y, x - y, z));
+                indices.Add((-x + y, -x, z));
 
-                indices.Add((+v, +w, +u));
-                indices.Add((-v, -w, +u));
-                indices.Add((-v, +w, -u));
-                indices.Add((+v, -w, -u));
+                indices.Add((-x, -y, z));
+                indices.Add((y, -x + y, z));
+                indices.Add((x - y, x, z));
+                return [.. indices];
 
-                indices.Add((-u, -v, -w));
-                indices.Add((+u, +v, -w));
-                indices.Add((+u, -v, +w));
-                indices.Add((-u, +v, +w));
+            case 22://6/m
+                indices.Add((+x, +y, +z));
+                indices.Add((-y, x - y, z));
+                indices.Add((-x + y, -x, z));
 
-                indices.Add((-w, -u, -v));
-                indices.Add((+w, +u, -v));
-                indices.Add((+w, -u, +v));
-                indices.Add((-w, +u, +v));
+                indices.Add((x, y, -z));
+                indices.Add((-y, x - y, -z));
+                indices.Add((-x + y, -x, -z));
+                return [.. indices];
 
-                indices.Add((-v, -w, -u));
-                indices.Add((+v, +w, -u));
-                indices.Add((+v, -w, +u));
-                indices.Add((-v, +w, +u));
+            case 23://6/m
+                indices.Add((+x, +y, +z));
+                indices.Add((-y, x - y, z));
+                indices.Add((-x + y, -x, z));
 
-                indices.Add((+v, +u, +w));
-                indices.Add((-v, -u, +w));
-                indices.Add((-v, +u, -w));
-                indices.Add((+v, -u, -w));
+                indices.Add((-x, -y, z));
+                indices.Add((y, -x + y, z));
+                indices.Add((x - y, x, z));
 
-                indices.Add((+w, +v, +u));
-                indices.Add((-w, -v, +u));
-                indices.Add((-w, +v, -u));
-                indices.Add((+w, -v, -u));
+                indices.Add((-x, -y, -z));
+                indices.Add((y, -x + y, -z));
+                indices.Add((x - y, x, -z));
 
-                indices.Add((+u, +w, +v));
-                indices.Add((-u, -w, +v));
-                indices.Add((-u, +w, -v));
-                indices.Add((+u, -w, -v));
+                indices.Add((x, y, -z));
+                indices.Add((-y, x - y, -z));
+                indices.Add((-x + y, -x, -z));
+                return [.. indices];
 
-                indices.Add((-v, -u, -w));
-                indices.Add((+v, +u, -w));
-                indices.Add((+v, -u, +w));
-                indices.Add((-v, +u, +w));
+            case 24://622
+                indices.Add((+x, +y, +z));
+                indices.Add((-y, x - y, z));
+                indices.Add((-x + y, -x, z));
 
-                indices.Add((-w, -v, -u));
-                indices.Add((+w, +v, -u));
-                indices.Add((+w, -v, +u));
-                indices.Add((-w, +v, +u));
+                indices.Add((-x, -y, z));
+                indices.Add((y, -x + y, z));
+                indices.Add((x - y, x, z));
 
-                indices.Add((-u, -w, -v));
-                indices.Add((+u, +w, -v));
-                indices.Add((+u, -w, +v));
-                indices.Add((-u, +w, +v));
-                break;
+                indices.Add((y, x, -z));
+                indices.Add((x - y, -y, -z));
+                indices.Add((-x, -x + y, -z));
+
+                indices.Add((-y, -x, -z));
+                indices.Add((-x + y, y, -z));
+                indices.Add((x, x - y, -z));
+                return [.. indices];
+
+            case 25://6mm
+                indices.Add((+x, +y, +z));
+                indices.Add((-y, x - y, z));
+                indices.Add((-x + y, -x, z));
+
+                indices.Add((-x, -y, z));
+                indices.Add((y, -x + y, z));
+                indices.Add((x - y, x, z));
+
+                indices.Add((-y, -x, z));
+                indices.Add((-x + y, y, z));
+                indices.Add((x, x - y, z));
+
+                indices.Add((y, x, z));
+                indices.Add((x - y, -y, z));
+                indices.Add((-x, -x + y, z));
+
+                return [.. indices];
+
+            case 26://-6m2
+                indices.Add((+x, +y, +z));
+                indices.Add((-y, x - y, z));
+                indices.Add((-x + y, -x, z));
+                
+                indices.Add((-y, -x, -z));
+                indices.Add((-x + y, y, -z));
+                indices.Add((x, x - y, -z));
+
+                indices.Add((x, y, -z));
+                indices.Add((-y, x - y, -z));
+                indices.Add((-x + y, -x, -z));
+
+                indices.Add((-y, -x, z));
+                indices.Add((-x + y, y, z));
+                indices.Add((x, x - y, z));
+
+                return [.. indices];
+
+            case 27://6/mmm
+                indices.Add((+x, +y, +z));
+                indices.Add((-y, x - y, z));
+                indices.Add((-x + y, -x, z));
+
+                indices.Add((-x, -y, z));
+                indices.Add((y, -x + y, z));
+                indices.Add((x - y, x, z));
+
+                indices.Add((y, x, -z));
+                indices.Add((x - y, -y, -z));
+                indices.Add((-x, -x + y, -z));
+
+                indices.Add((-y, -x, -z));
+                indices.Add((-x + y, y, -z));
+                indices.Add((x, x - y, -z));
+
+                indices.Add((-x, -y, -z));
+                indices.Add((y, -x + y, -z));
+                indices.Add((x - y, x, -z));
+
+                indices.Add((x, y, -z));
+                indices.Add((-y, x - y, -z));
+                indices.Add((-x + y, -x, -z));
+
+                indices.Add((-y, -x, z));
+                indices.Add((-x + y, y, z));
+                indices.Add((x, x - y, z));
+
+                indices.Add((y, x, z));
+                indices.Add((x - y, -y, z));
+                indices.Add((-x, -x + y, z));
+
+                return [.. indices];
+
+            case 28://23
+                indices.Add((x, y, z));
+                indices.Add((-x, -y, z));
+                indices.Add((-x, y, -z));
+                indices.Add((x, -y, -z));
+
+                indices.Add((z, x, y));
+                indices.Add((z, -x, -y));
+                indices.Add((-z, -x, y));
+                indices.Add((-z, x, -y));
+
+                indices.Add((y, z, x));
+                indices.Add((-y, z, -x));
+                indices.Add((y, -z, -x));
+                indices.Add((-y, -z, x));
+                return [.. indices];
+
+            case 29://m-3
+                indices.Add((x, y, z));
+                indices.Add((-x, -y, z));
+                indices.Add((-x, y, -z));
+                indices.Add((x, -y, -z));
+
+                indices.Add((z, x, y));
+                indices.Add((z, -x, -y));
+                indices.Add((-z, -x, y));
+                indices.Add((-z, x, -y));
+
+                indices.Add((y, z, x));
+                indices.Add((-y, z, -x));
+                indices.Add((y, -z, -x));
+                indices.Add((-y, -z, x));
+
+                indices.Add((-x, -y, -z));
+                indices.Add((x, y, -z));
+                indices.Add((x, -y, z));
+                indices.Add((-x, y, z));
+
+                indices.Add((-z, -x, -y));
+                indices.Add((-z, x, y));
+                indices.Add((z, x, -y));
+                indices.Add((z, -x, y));
+
+                indices.Add((-y, -z, -x));
+                indices.Add((y, -z, x));
+                indices.Add((-y, z, x));
+                indices.Add((y, z, -x));
+                return [.. indices];
+
+            case 30://432
+                indices.Add((+x, +y, +z));//1
+                indices.Add((-x, -y, z));//2_001
+                indices.Add((-x, y, -z));//2_010
+                indices.Add((x, -y, -z));//2_100
+
+                indices.Add((z, x, y));//3+_111
+                indices.Add((z, -x, -y));//3+_-11-1
+                indices.Add((-z, -x, y));//3+_1-1-1
+                indices.Add((-z, x, -y));//3+_-1-11
+
+                indices.Add((y, z, x));//3-_111
+                indices.Add((-y, z, -x));//3_-1-1-1
+                indices.Add((y, -z, -x));//3-_-1-11
+                indices.Add((-y, -z, x));//3-_-11-1
+
+                indices.Add((y, x, -z));//2_110
+                indices.Add((-y, -x, -z));//2_1-10
+                indices.Add((y, -x, z));//4-_001
+                indices.Add((-y, x, z));//4+_001
+
+                indices.Add((x, z, -y));//4-_100
+                indices.Add((-x, z, y));//2_011
+                indices.Add((-x, -z, -y));//2_01-1
+                indices.Add((x, -z, y));//4+_100
+
+                indices.Add((z, y, -x));//4+_010
+                indices.Add((z, -y, x));//2_101
+                indices.Add((-z, y, x));//4-_010
+                indices.Add((-z, -y, -x));//2_-101
+                return [.. indices];
+
+            case 31://-43m
+                indices.Add((+x, +y, +z));//1
+                indices.Add((-x, -y, z));//2_001
+                indices.Add((-x, y, -z));//2_010
+                indices.Add((x, -y, -z));//2_100
+
+                indices.Add((z, x, y));//3+_111
+                indices.Add((z, -x, -y));//3+_-11-1
+                indices.Add((-z, -x, y));//3+_1-1-1
+                indices.Add((-z, x, -y));//3+_-1-11
+
+                indices.Add((y, z, x));//3-_111
+                indices.Add((-y, z, -x));//3_-1-1-1
+                indices.Add((y, -z, -x));//3-_-1-11
+                indices.Add((-y, -z, x));//3-_-11-1
+
+                indices.Add((-y, -x, z));//m110
+                indices.Add((y, x, z));//m1-10
+                indices.Add((-y, x, -z));//	-4-_001
+                indices.Add((y, -x, -z));//-4+_001
+
+                indices.Add((-x, -z, y));//-4-_100
+                indices.Add((x, -z, -y));//m_011
+                indices.Add((x, z, y));//m_01-1
+                indices.Add((-x, z, -y));//	-4+_100
+
+                indices.Add((-z, -y, x));//	-4+_010
+                indices.Add((-z, y, -x));//m_101
+                indices.Add((z, -y, -x));//	-4-_010
+                indices.Add((z, y, x));//m-_101
+                return [.. indices];
+
+            case 32://m3m
+                indices.Add((+x, +y, +z));//1
+                indices.Add((-x, -y, z));//2_001
+                indices.Add((-x, y, -z));//2_010
+                indices.Add((x, -y, -z));//2_100
+
+                indices.Add((z, x, y));//3+_111
+                indices.Add((z, -x, -y));//3+_-11-1
+                indices.Add((-z, -x, y));//3+_1-1-1
+                indices.Add((-z, x, -y));//3+_-1-11
+
+                indices.Add((y, z, x));//3-_111
+                indices.Add((-y, z, -x));//3_-1-1-1
+                indices.Add((y, -z, -x));//3-_-1-11
+                indices.Add((-y, -z, x));//3-_-11-1
+
+                indices.Add((y, x, -z));//2_110
+                indices.Add((-y, -x, -z));//2_1-10
+                indices.Add((y, -x, z));//4-_001
+                indices.Add((-y, x, z));//4+_001
+
+                indices.Add((x, z, -y));//4-_100
+                indices.Add((-x, z, y));//2_011
+                indices.Add((-x, -z, -y));//2_01-1
+                indices.Add((x, -z, y));//4+_100
+
+                indices.Add((z, y, -x));//4+_010
+                indices.Add((z, -y, x));//2_101
+                indices.Add((-z, y, x));//4-_010
+                indices.Add((-z, -y, -x));//2_-101
+
+                indices.Add((-x, -y, -z));//-1
+                indices.Add((x, y, -z));//m_001
+                indices.Add((x, -y, z));//m_010
+                indices.Add((-x, y, z));//m_100
+
+                indices.Add((-z, -x, -y));//-3+_111
+                indices.Add((-z, x, y));//-3+_-11-1
+                indices.Add((z, x, -y));//-3+_1-1-1
+                indices.Add((z, -x, y));//-3+_-1-11
+
+                indices.Add((-y, -z, -x));//-3-_111
+                indices.Add((y, -z, x));//-3-_1-1-1
+                indices.Add((-y, z, x));//-3-_-1-11
+                indices.Add((y, z, -x));//-3-_-11-1
+
+                indices.Add((-y, -x, z));//m110
+                indices.Add((y, x, z));//m1-10
+                indices.Add((-y, x, -z));//	-4-_001
+                indices.Add((y, -x, -z));//-4+_001
+
+                indices.Add((-x, -z, y));//-4-_100
+                indices.Add((x, -z, -y));//m_011
+                indices.Add((x, z, y));//m_01-1
+                indices.Add((-x, z, -y));//	-4+_100
+
+                indices.Add((-z, -y, x));//	-4+_010
+                indices.Add((-z, y, -x));//m_101
+                indices.Add((z, -y, -x));//	-4-_010
+                indices.Add((z, y, x));//m-_101
+                return [.. indices];
         }
         return [.. indices];
         #endregion
     }
-
-    /// <summary>
-    /// 二つの軸[index1]と[index2]が等価な軸であるかどうかを判定
-    /// </summary>
-    /// <param name="index1"></param>
-    /// <param name="index2"></param>
-    /// <param name="sym"></param>
-    /// <returns></returns>
-    public static bool CheckEquivalentAxes((int U, int V, int W) index1, (int U, int V, int W) index2, Symmetry sym)
-        => CheckEquivalentAxes(index1.U, index1.V, index1.W, index2.U, index2.V, index2.W, sym);
 
     /// <summary>
     /// 二つの軸[u1,v1,w1]と[u2,v2,w2]が等価な軸であるかどうかを判定
@@ -14255,7 +14649,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <param name="sym"></param>
     /// <returns></returns>
     public static bool CheckEquivalentAxes(int u1, int v1, int w1, int u2, int v2, int w2, Symmetry sym)
-        => new List<(int U, int V, int W)>(GenerateEquivalentAxes(u1, v1, w1, sym)).Contains((u2, v2, w2));
+        => new List<(int U, int V, int W)>(GenerateEquivalentAxes((u1, v1, w1), sym, false)).Contains((u2, v2, w2));
 
     #endregion
     

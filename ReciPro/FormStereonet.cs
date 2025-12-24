@@ -1157,7 +1157,6 @@ public partial class FormStereonet : Form
                         for (int k = -z; k <= z; k++)
                             if ((i != 0 || j != 0 || k != 0) && Algebra.Irreducible(i, j, k) == 1)
                             {
-                                if(checkBox4.Checked)
                                     listBoxSpecifiedIndices.Items.Add(new Index(i, j, k,colorControl1.Argb ));
                             }
 
@@ -1179,8 +1178,8 @@ public partial class FormStereonet : Form
                     }
                     else
                     {
-                        axisIndices.AddRange(SymmetryStatic.GenerateEquivalentAxes(x, y, z, formMain.Crystal.Symmetry));
-                        planeIndices.AddRange(SymmetryStatic.GenerateEquivalentPlanes((x, y, z), formMain.Crystal.Symmetry));
+                        axisIndices.AddRange(SymmetryStatic.GenerateEquivalentAxes((x, y, z), formMain.Crystal.Symmetry, false));
+                        planeIndices.AddRange(SymmetryStatic.GenerateEquivalentPlanes((x, y, z), formMain.Crystal.Symmetry, false));
                     }
                 }
                 formMain.Crystal.SetVectorOfAxis([.. axisIndices]);

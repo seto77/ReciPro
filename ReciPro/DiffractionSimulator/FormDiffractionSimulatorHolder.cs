@@ -255,7 +255,7 @@ public partial class FormDiffractionSimulatorHolder : Form
                     {
                         if (u == 0 && v == 0 && w == 0) continue;
                         if (checkBoxIncludingEquivalent.Checked)
-                            foreach (var index in SymmetryStatic.GenerateEquivalentAxes(u, v, w, crystal.Symmetry, false))
+                            foreach (var index in SymmetryStatic.GenerateEquivalentAxes((u, v, w), crystal.Symmetry, false))
                                 indices.Add(index);
                         else
                             indices.Add((u, v, w));

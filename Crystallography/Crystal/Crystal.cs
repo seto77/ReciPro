@@ -959,7 +959,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                     if (CheckIrreducible(u, v, w) && !(u == 0 && v == 0 && w == 0))
                     {
                         if (IncludeEquivalentAxes)
-                            foreach (var index in SymmetryStatic.GenerateEquivalentAxes(u, v, w, Symmetry,false))
+                            foreach (var index in SymmetryStatic.GenerateEquivalentAxes((u, v, w), Symmetry,false))
                                 indices.Add(index);
                         else
                             indices.Add((u, v, w));
