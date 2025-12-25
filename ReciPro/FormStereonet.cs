@@ -35,21 +35,18 @@ public partial class FormStereonet : Form
         public double Intensity = 1;
         public int ARGB;
         public IndexInfo() { }
-        public IndexInfo((int X, int Y, int Z)[] indices, int argb, bool IsPlane)
+        public IndexInfo((int X, int Y, int Z)[] indices, int argb, double intensity=0)
         {
             Indices = indices;
             ARGB = argb;
+            Intensity = intensity;
         }
         public override string ToString() => $"{Indices[0].X} {Indices[0].Y} {Indices[0].Z}";
     }
 
     public List<IndexInfo> ProjectedObjects = [];
 
-    //public Index[] Planes;
-    //public Index[] Axes;
-
-
-    private (int X, int Y, int Z)[] SpecifiedIndices = [];
+    private List<IndexInfo> SpecifiedIndices = [];
 
     private int[] ColorArray = [
         Color.FromArgb(255, 0, 0).ToArgb(),
@@ -624,7 +621,7 @@ public partial class FormStereonet : Form
         for (int i = 0; i < checkedListBoxCircles.CheckedItems.Count; i++)
         {
             vec = Vector3D.Normarize(formMain.Crystal.RotationMatrix * (Vector3D)(checkedListBoxCircles.CheckedItems[i]));
-            if (Math.Abs(vec.Z) > 0.9999)//大円が最外周とほぼ一致するときは
+            if (Abs(vec.Z) > 0.9999)//大円が最外周とほぼ一致するときは
             {
                 if (vec.Z > 0)
                 {
@@ -642,18 +639,18 @@ public partial class FormStereonet : Form
             {
                 width = (float)(1 / vec.Z);//これが正じゃないとだめ
                 g.DrawArc(pen, (float)((vec.X - 1) / vec.Z), (float)((-vec.Y - 1) / vec.Z), 2 * width, 2 * width,
-                    (float)((-Math.Atan2(-vec.Y, -vec.X) - Math.Asin(vec.Z)) / Math.PI * 180), (float)(2 * Math.Asin(vec.Z) / Math.PI * 180));
+                    (float)((-Atan2(-vec.Y, -vec.X) - Asin(vec.Z)) / PI * 180), (float)(2 * Asin(vec.Z) / PI * 180));
             }
             else if (vec.Z < -0.00000000001)
             {
                 vec = -vec;
                 width = (float)(1 / vec.Z);
                 g.DrawArc(pen, (float)((vec.X - 1) / vec.Z), (float)((-vec.Y - 1) / vec.Z), 2 * width, 2 * width,
-                    (float)((-Math.Atan2(-vec.Y, -vec.X) - Math.Asin(vec.Z)) / Math.PI * 180), (float)(2 * Math.Asin(vec.Z) / Math.PI * 180));
+                    (float)((-Atan2(-vec.Y, -vec.X) - Asin(vec.Z)) / PI * 180), (float)(2 * Asin(vec.Z) / PI * 180));
             }
             else
             {
-                var sqrt = Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y);
+                var sqrt = Sqrt(vec.X * vec.X + vec.Y * vec.Y);
                 g.DrawLine(pen, (float)(vec.Y / sqrt), (float)(vec.X / sqrt), (float)(-vec.Y / sqrt), (float)(-vec.X / sqrt));
             }
         }
@@ -1069,10 +1066,19 @@ public partial class FormStereonet : Form
     #region 描画対象の面・軸指数の設定
     private void radioButtonRange_CheckedChanged(object sender, EventArgs e)
     {
-        if (!((RadioButton)sender).Checked) return;
+        if (sender is RadioButton rb)
+        {
+            if (rb.Name == radioButtonSpecifiedIndices.Name)//SpecifiedIndicesを適切に保存・復元
+            {
+                if (rb.Checked == false)
+                    SpecifiedIndices = ProjectedObjects;
+                else
+                    ProjectedObjects = SpecifiedIndices;
+            }
+            if (!rb.Checked) return;//チェックされたとき以外は無視
+        }
 
         checkBoxUseMillerBravais_CheckedChanged(this, EventArgs.Empty);
-
 
         numericBox1.HeaderText = numericBox2.HeaderText = numericBox3.HeaderText = numericBox4.HeaderText =
             radioButtonRange.Checked ? "±" : "";
@@ -1115,9 +1121,9 @@ public partial class FormStereonet : Form
     }
     private void buttonAddIndex_Click(object sender, EventArgs e)
     {
-        int index1 = (int)numericBox1.Value, index2 = (int)numericBox2.Value, index3 = (int)numericBox3.Value;
-        if (index1 != 0 || index2 != 0 || index3 != 0)
-            listBoxSpecifiedIndices.Items.Add($"{index1} {index2} {index3}");
+        var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
+        if (x != 0 || y != 0 || z != 0)
+            ProjectedObjects.Add(new IndexInfo([(x, y, z)], Color.Brown.ToArgb()));
         setVector();
         Draw();
     }
@@ -1155,145 +1161,131 @@ public partial class FormStereonet : Form
     {
         if (formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
             return;
-
-        if (radioButtonRange.Checked)//範囲指定モードの時
+        if (!radioButtonHighStructureFactor.Checked)
         {
-            var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
+            //範囲指定モードの時
+            if (radioButtonRange.Checked)
+            {
+                var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
 
-            ProjectedObjects = [];
-            var hash = new HashSet<(int X, int Y, int Z)>();
-            for (int i = -x; i <= x; i++)
-                for (int j = -y; j <= y; j++)
-                    for (int k = -z; k <= z; k++)
-                        if ((i != 0 || j != 0 || k != 0) && Algebra.Irreducible(i, j, k) == 1)
-                        {
-                            var indices = radioButtonAxes.Checked ?
+                ProjectedObjects = [];
+                var hash = new HashSet<(int X, int Y, int Z)>();
+                for (int i = -x; i <= x; i++)
+                    for (int j = -y; j <= y; j++)
+                        for (int k = -z; k <= z; k++)
+                            if ((i != 0 || j != 0 || k != 0) && Algebra.Irreducible(i, j, k) == 1 && hash.Add((i, j, k)))
+                            {
+                                var indices = radioButtonAxes.Checked ?
                                 SymmetryStatic.GenerateEquivalentAxes((i, j, k), formMain.Crystal.Symmetry, false) :
                                 SymmetryStatic.GenerateEquivalentPlanes((i, j, k), formMain.Crystal.Symmetry, false);
-                            if (hash.Add(indices[0]))
-                            {
+
                                 foreach (var index in indices)
                                     hash.Add(index);
-                                ProjectedObjects.Add(new IndexInfo(indices, Color.Brown.ToArgb(), !radioButtonAxes.Checked));
+                                ProjectedObjects.Add(new IndexInfo(indices, Color.Brown.ToArgb()));
                             }
-                        }
-            if (!radioButtonAxes.Checked)//面モードのときは構造因子も計算
-            {
-                foreach (var obj in ProjectedObjects)
-                    obj.Intensity = formMain.Crystal.GetStructureFactor(waveLengthControl.WaveSource, obj.Indices[0]).MagnitudeSquared();
-                var maxIntensity = ProjectedObjects.Max(o => o.Intensity);
-                foreach (var obj in ProjectedObjects)
-                    obj.Intensity /= maxIntensity;
-            }
-
-            #region 結晶系に従ってソート
-            var sysNum = formMain.Crystal.Symmetry.CrystalSystemNumber;
-            if (sysNum == 4 || sysNum == 5 || sysNum == 6)//tetragonal x>=y>=z
-                ProjectedObjects.Sort((a, b) =>
+                #region 結晶系に従ってソート
+                var sysNum = formMain.Crystal.Symmetry.CrystalSystemNumber;
+                if (sysNum == 4 || sysNum == 5 || sysNum == 6)//tetragonal x>=y>=z
+                    ProjectedObjects.Sort((a, b) =>
+                    {
+                        var (X1, Y1, Z1) = a.Indices[0];
+                        var (X2, Y2, Z2) = b.Indices[0];
+                        if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
+                        else if (Z1 != Z2) return Z1.CompareTo(Z2);
+                        else if (X1 != X2) return X1.CompareTo(X2);
+                        else return Y1.CompareTo(Y2);
+                    });
+                else if (sysNum == 2)//tetragonal x>=y>=z
                 {
-                    var (X1, Y1, Z1) = a.Indices[0];
-                    var (X2, Y2, Z2) = b.Indices[0];
-                    if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                    else if (Z1 != Z2) return Z1.CompareTo(Z2);
-                    else if (X1 != X2) return X1.CompareTo(X2);
-                    else return Y1.CompareTo(Y2);
-                });
-            else if (sysNum == 2)//tetragonal x>=y>=z
-            {
-                switch (formMain.Crystal.Symmetry.MainAxis)
-                {
-                    case "a":
-                        ProjectedObjects.Sort((a, b) =>
-                        {
-                            var (X1, Y1, Z1) = a.Indices[0];
-                            var (X2, Y2, Z2) = b.Indices[0];
-                            if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                            else if (X1 != X2) return X1.CompareTo(X2);
-                            else if (Y1 != Y2) return Y1.CompareTo(Y2);
-                            else return Z1.CompareTo(Z2);
-                        });
-                        break;
-                    case "b":
-                        ProjectedObjects.Sort((a, b) =>
-                        {
-                            var (X1, Y1, Z1) = a.Indices[0];
-                            var (X2, Y2, Z2) = b.Indices[0];
-                            if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                            else if (Y1 != Y2) return Y1.CompareTo(Y2);
-                            else if (Z1 != Z2) return Z1.CompareTo(Z2);
-                            else return X1.CompareTo(X2);
-                        });
-                        break;
-                    case "c":
-                        ProjectedObjects.Sort((a, b) =>
-                        {
-                            var (X1, Y1, Z1) = a.Indices[0];
-                            var (X2, Y2, Z2) = b.Indices[0];
-                            if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                            else if (Z1 != Z2) return Z1.CompareTo(Z2);
-                            else if (X1 != X2) return X1.CompareTo(X2);
-                            else return Y1.CompareTo(Y2);
-                        });
-                        break;
-                }
-            }
-            else
-            {
-                ProjectedObjects.Sort((a, b) =>
-                {
-                    var (X1, Y1, Z1) = a.Indices[0];
-                    var (X2, Y2, Z2) = b.Indices[0];
-                    if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
-                    else if (X1 != X2) return X1.CompareTo(X2);
-                    else if (Y1 != Y2) return Y1.CompareTo(Y2);
-                    else return Z1.CompareTo(Z2);
-                });
-            }
-            #endregion
-
-            listBoxSpecifiedIndices.Items.Clear();
-            foreach (var obj in ProjectedObjects)
-                listBoxSpecifiedIndices.Items.Add(obj);
-
-            ProjectedObjects[0].ARGB = Color.Red.ToArgb();
-        }
-        else if (radioButtonSpecifiedIndices.Checked)//特定指数モードの時
-        {
-            var planeIndices = new List<(int H, int K, int L)>();
-            var axisIndices = new List<(int U, int V, int W)>();
-            foreach (object o in listBoxSpecifiedIndices.Items)
-            {
-                var str = ((string)o).Split([' ']);
-                int x = Convert.ToInt32(str[0]), y = Convert.ToInt32(str[1]), z = Convert.ToInt32(str[2]);
-                if (!checkBoxIncludingEquivalentPlanes.Checked)
-                {
-                    planeIndices.Add((x, y, z));
-                    axisIndices.Add((x, y, z));
+                    switch (formMain.Crystal.Symmetry.MainAxis)
+                    {
+                        case "a":
+                            ProjectedObjects.Sort((a, b) =>
+                            {
+                                var (X1, Y1, Z1) = a.Indices[0];
+                                var (X2, Y2, Z2) = b.Indices[0];
+                                if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
+                                else if (X1 != X2) return X1.CompareTo(X2);
+                                else if (Y1 != Y2) return Y1.CompareTo(Y2);
+                                else return Z1.CompareTo(Z2);
+                            });
+                            break;
+                        case "b":
+                            ProjectedObjects.Sort((a, b) =>
+                            {
+                                var (X1, Y1, Z1) = a.Indices[0];
+                                var (X2, Y2, Z2) = b.Indices[0];
+                                if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
+                                else if (Y1 != Y2) return Y1.CompareTo(Y2);
+                                else if (Z1 != Z2) return Z1.CompareTo(Z2);
+                                else return X1.CompareTo(X2);
+                            });
+                            break;
+                        case "c":
+                            ProjectedObjects.Sort((a, b) =>
+                            {
+                                var (X1, Y1, Z1) = a.Indices[0];
+                                var (X2, Y2, Z2) = b.Indices[0];
+                                if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
+                                else if (Z1 != Z2) return Z1.CompareTo(Z2);
+                                else if (X1 != X2) return X1.CompareTo(X2);
+                                else return Y1.CompareTo(Y2);
+                            });
+                            break;
+                    }
                 }
                 else
                 {
-                    axisIndices.AddRange(SymmetryStatic.GenerateEquivalentAxes((x, y, z), formMain.Crystal.Symmetry, false));
-                    planeIndices.AddRange(SymmetryStatic.GenerateEquivalentPlanes((x, y, z), formMain.Crystal.Symmetry, false));
+                    ProjectedObjects.Sort((a, b) =>
+                    {
+                        var (X1, Y1, Z1) = a.Indices[0];
+                        var (X2, Y2, Z2) = b.Indices[0];
+                        if (Abs(X1) + Abs(Y1) + Abs(Z1) != Abs(X2) + Abs(Y2) + Abs(Z2)) return (Abs(X1) + Abs(Y1) + Abs(Z1)).CompareTo(Abs(X2) + Abs(Y2) + Abs(Z2));
+                        else if (X1 != X2) return X1.CompareTo(X2);
+                        else if (Y1 != Y2) return Y1.CompareTo(Y2);
+                        else return Z1.CompareTo(Z2);
+                    });
+                }
+                #endregion
+
+            }
+            //特定指数モードの時
+            else
+            {
+                foreach (var obj in ProjectedObjects)
+                {
+                    var (x, y, z) = obj.Indices[0];
+                    if (checkBoxIncludingEquivalentPlanes.Checked)
+                        obj.Indices = radioButtonAxes.Checked ?
+                            SymmetryStatic.GenerateEquivalentAxes((x, y, z), formMain.Crystal.Symmetry, false, false) :
+                            SymmetryStatic.GenerateEquivalentPlanes((x, y, z), formMain.Crystal.Symmetry, false, false);
+                    else
+                        obj.Indices = [(x, y, z)];
                 }
             }
-            formMain.Crystal.SetVectorOfAxis([.. axisIndices]);
-            formMain.Crystal.SetVectorOfPlane([.. planeIndices], waveLengthControl.WaveSource);
+
+            if (!radioButtonAxes.Checked && ProjectedObjects.Count > 0)//軸モード出ないときは構造因子も計算
+            {
+                foreach (var obj in ProjectedObjects)
+                    obj.Intensity = formMain.Crystal.GetStructureFactor(waveLengthControl.WaveSource, obj.Indices[0]).MagnitudeSquared();
+                var max = ProjectedObjects.Max(o => o.Intensity);
+                foreach (var obj in ProjectedObjects)
+                    obj.Intensity /= max;
+            }
+
         }
-        else//構造因子順モードの時 (結晶面か菊池線のときしかこのモードにならない)
+        //構造因子順モードの時 (結晶面モードか菊池線モードのときしかこのモードにならない)
+        else
         {
             int n = numericBoxHighStructureFactor.ValueInteger;
 
             formMain.Crystal.SetVectorOfG(0.0001, waveLengthControl.WaveSource, n * 40);
             var vec = formMain.Crystal.VectorOfG;
+
             Array.Sort(vec, (g1, g2) => g2.RawIntensity.CompareTo(g1.RawIntensity));
             var maxIntenxity = vec[0].RawIntensity;
             foreach (var v in vec)
-            {
                 v.RelativeIntensity = v.RawIntensity / maxIntenxity;
-                v.Text = $"({v.Text.Replace(" ", "")})";
-            }
-
-            formMain.Crystal.VectorOfPlane = [];
 
             if (radioButtonPlanes.Checked)
                 for (int i = 1; i < n * 10; i++)
@@ -1304,19 +1296,25 @@ public partial class FormStereonet : Form
                             break;
                         }
 
+            ProjectedObjects = [];
+            var hash = new HashSet<(int h, int k, int l)>();
+            var count = 0;
             for (int i = 0; i < vec.Length; i++)
-                if (!vec[i].Flag1)
+                if (!vec[i].Flag1 && count < n && hash.Add((vec[i].Index)))
                 {
-                    if (formMain.Crystal.VectorOfPlane.Count < n)
-                        formMain.Crystal.VectorOfPlane.Add(vec[i]);
-                    else
-                    {
-                        while ((vec[i - 1].RawIntensity - vec[i].RawIntensity) / vec[i - 1].RawIntensity < 1E-8)
-                            formMain.Crystal.VectorOfPlane.Add(vec[i++]);
-                        break;
-                    }
+                    var indices = SymmetryStatic.GenerateEquivalentPlanes(vec[i].Index, formMain.Crystal.Symmetry, false, true);
+                    foreach (var index in indices)
+                        hash.Add(index);
+
+                    ProjectedObjects.Add(new IndexInfo(indices, Color.Brown.ToArgb(), vec[i].RelativeIntensity));
+                    count += indices.Length;
                 }
         }
+
+        //リストボックスを更新
+        listBoxSpecifiedIndices.Items.Clear();
+        foreach (var obj in ProjectedObjects)
+            listBoxSpecifiedIndices.Items.Add(obj);
     }
     #endregion
 
