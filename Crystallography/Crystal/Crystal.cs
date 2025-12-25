@@ -995,6 +995,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         }
     }
 
+ 
+
     /// <summary>
     /// ˆø”‚Åw’è‚³‚ê‚½hMax,kMax,lMax‚Ì”ÍˆÍ‚Å²ƒxƒNƒgƒ‹‚ğŒvZ‚µAVectorOfAxis‚ÉŠi”[
     /// </summary>
@@ -1649,10 +1651,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         #endregion
     }
 
-
-    //(h,k,l)‚Ì\‘¢U—ˆöq(”MU–ŸU—‚İ)‚ÌF (•¡‘f”) ‚ğŒvZ‚·‚é
     /// <summary>
-    /// \‘¢ˆöq‚ğ‹‚ß‚é s2‚Ì’PˆÊ‚Ínm^-2
+    /// \‘¢U—ˆöq(”MU–ŸU—‚İ)‚ÌF (•¡‘f”) ‚ğ‹‚ß‚é s2‚Ì’PˆÊ‚Ínm^-2
     /// </summary>
     /// <param name="wave"></param>
     /// <param name="atomsArray"></param>
@@ -1718,6 +1718,18 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         }
         return F;// Complex(Real, Inverse);
         #endregion
+    }
+
+    /// <summary>
+    /// \‘¢U—ˆöq(”MU–ŸU—‚İ)‚ÌF (•¡‘f”) ‚ğ‹‚ß‚é s2‚Ì’PˆÊ‚Ínm^-2
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="waveSource"></param>
+    /// <returns></returns>
+    public Complex GetStructureFactor( WaveSource waveSource, (int h, int k, int l) index)
+    {
+        var vec = index.h * A_Star + index.k * B_Star + index.l * C_Star;
+        return GetStructureFactor(waveSource, Atoms, index, vec.Length2 / 4.0);
     }
 
     /// <summary>

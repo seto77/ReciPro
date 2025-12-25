@@ -13533,12 +13533,12 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
                 {
                     if (Math.Abs(a.H + a.K) != Math.Abs(b.H + b.K))
                         return Math.Abs(b.H + b.K).CompareTo(Math.Abs(a.H + a.K));
+                    else if (a.L != b.L)
+                        return b.L.CompareTo(a.L);
                     else if (a.H != b.H)
                         return b.H.CompareTo(a.H);
-                    else if (a.K != b.K)
-                        return b.K.CompareTo(a.K);
                     else
-                        return b.L.CompareTo(a.L);
+                        return b.K.CompareTo(a.K);
                 });
             }
             else if (pgNum >= 3 && pgNum <= 5)//monoclinicかorthorhombicの場合
@@ -13577,7 +13577,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
                             return b.K.CompareTo(a.K);
                     });
             }
-            else if (pgNum>=9 && pgNum <=15)//tetragonalの場合
+            else if (pgNum >= 9 && pgNum <= 15)//tetragonalの場合
             {
                 Array.Sort(array, static (a, b) =>
                 {
@@ -14740,9 +14740,9 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
                 {
                     if (Math.Abs(a.U - a.V) != Math.Abs(b.U - b.V))
                         return Math.Abs(b.U - b.V).CompareTo(Math.Abs(a.U - a.V));
-                    else if (a.U != b.U)
+                    else if (a.W != b.W)
                         return b.W.CompareTo(a.W);
-                    else if (a.V != b.V)
+                    else if (a.U != b.U)
                         return b.U.CompareTo(a.U);
                     else
                         return b.V.CompareTo(a.V);
