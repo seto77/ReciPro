@@ -135,8 +135,7 @@ public partial class FormScatteringFactor : Form
             {
                 Vector3D g = c.VectorOfG[i];
                 double twoTheta = 2 * Math.Asin(g.Length * waveLengthControl1.WaveLength / 2);
-                var (irreducible, indices) = SymmetryStatic.IsRootPlaneIndex(g.Index, c.Symmetry, false);
-                if (irreducible && !double.IsNaN(twoTheta))
+                if (SymmetryStatic.IsRootPlane(g.Index, c.Symmetry, out var indices) && !double.IsNaN(twoTheta))
                 {
                     var magnitude2 = g.F.Real * g.F.Real + g.F.Imaginary * g.F.Imaginary;
                     if (waveLengthControl1.WaveSource == WaveSource.Xray)
@@ -171,10 +170,11 @@ public partial class FormScatteringFactor : Form
 
         foreach (Vector3D g in c.VectorOfG)
         {
-            var (irreducible, indices) = SymmetryStatic.IsRootPlaneIndex(g.Index, c.Symmetry, false);
-            if (!checkBoxHideEquivalentPlane.Checked || irreducible)
+            var root = SymmetryStatic.IsRootPlane(g.Index, c.Symmetry, out var indices);
+            if (!checkBoxHideEquivalentPlane.Checked || root)
             {
-                var condition = c.Symmetry.CheckExtinctionRule(g.Index);//SymmetryStatic.CheckExtinctionRule(g.h, g.k, g.l, c.Symmetry);
+                int i = indices.Length;
+                var condition = c.Symmetry.CheckExtinctionRule(g.Index);
                 if (!checkBoxHideProhibitedPlanes.Checked || condition.Length == 0)
                 {
                     var d = LengthUnit == LengthUnitEnum.NanoMeter ? 1 / g.Length : 1 / g.Length * 10;

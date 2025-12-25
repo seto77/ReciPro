@@ -193,6 +193,8 @@ public partial class FormMain : Form
     /// </summary>
     public FormMain()
     {
+        var test = SymmetryStatic.IsRootAxis((-1, 3, 5), new Symmetry(460), out var indices);
+
         //カルチャーを決めるため、レジストリ読込 (InitializeComponentの前に読み込む)
         if (!DesignMode)
             Registry(Reg.Mode.Read);

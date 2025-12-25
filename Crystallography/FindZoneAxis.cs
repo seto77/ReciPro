@@ -178,8 +178,8 @@ public class FindZoneAxis
                     {
                         var plane1 = zoneAxes[i].Za2.plane1;
                         var plane2 = zoneAxes[i].Za2.plane2;
-                        var (result1,indices1) =  SymmetryStatic.IsRootPlaneIndex((plane1.h, plane1.k, plane1.l), cry.Symmetry, true);
-                        var (result2, indices2) = SymmetryStatic.IsRootPlaneIndex((plane2.h, plane2.k, plane2.l), cry.Symmetry, true);
+                        var result1 =  SymmetryStatic.IsRootPlane((plane1.h, plane1.k, plane1.l), cry.Symmetry, out var indices1);
+                        var result2 = SymmetryStatic.IsRootPlane((plane2.h, plane2.k, plane2.l), cry.Symmetry, out var indices2);
 
                         if (indices1.Contains((zoneAxes[j].Za2.plane1.h, zoneAxes[j].Za2.plane1.k, zoneAxes[j].Za2.plane1.l))
                           && indices2.Contains((zoneAxes[j].Za2.plane2.h, zoneAxes[j].Za2.plane2.k, zoneAxes[j].Za2.plane2.l)))
@@ -220,8 +220,8 @@ public class FindZoneAxis
                 {
                     var plane1 = zoneAxes[i].Za3.plane1;
                     var plane2 = zoneAxes[i].Za3.plane2;
-                   var (result1, indices1)  = SymmetryStatic.IsRootPlaneIndex((plane1.h, plane1.k, plane1.l), cry.Symmetry, true);
-                    var (result2, indices2) = SymmetryStatic.IsRootPlaneIndex((plane2.h, plane2.k, plane2.l), cry.Symmetry, true);
+                   var result1  = SymmetryStatic.IsRootPlane((plane1.h, plane1.k, plane1.l), cry.Symmetry, out var indices1);
+                    var result2 = SymmetryStatic.IsRootPlane((plane2.h, plane2.k, plane2.l), cry.Symmetry, out var indices2);
 
                     if (indices1.Contains((zoneAxes[j].Za3.plane1.h, zoneAxes[j].Za3.plane1.k, zoneAxes[j].Za3.plane1.l))
                       && indices2.Contains((zoneAxes[j].Za3.plane2.h, zoneAxes[j].Za3.plane2.k, zoneAxes[j].Za3.plane2.l)))

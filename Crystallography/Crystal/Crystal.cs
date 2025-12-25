@@ -1067,7 +1067,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         outer.Add((h, k, l, len));
                         if (len < gMax && len > 1 / dMax)
                         {
-                            var (root, indices) = SymmetryStatic.IsRootPlaneIndex((h, k, l), Symmetry, false);
+                            var root = SymmetryStatic.IsRootPlane((h, k, l), Symmetry, out var indices);
                             var extinction = Symmetry.CheckExtinctionRule(h, k, l);
                             if ((!excludeEquivalentPlane || root) && (!excludeForbiddenPlane || extinction.Length == 0))
                             {
@@ -1459,8 +1459,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         double gLen2 = x * x + y * y + z * z, gLen = Math.Sqrt(gLen2);
                         outer.Add((h, k, l, gLen));
 
-                        var (result, indices) = SymmetryStatic.IsRootPlaneIndex((h, k, l), Symmetry,false);
-                        if (result)
+                        if (SymmetryStatic.IsRootPlane((h, k, l), Symmetry, out var indices))
                             if (Symmetry.CheckExtinctionRule(h, k, l).Length == 0)
                             {
                                 double sinTheta = waveLength / 2 * gLen, twoTheta = 2 * Math.Asin(sinTheta), cosTwoTheta = 1 - 2 * sinTheta * sinTheta, sinTwoTheta = Math.Sin(twoTheta);

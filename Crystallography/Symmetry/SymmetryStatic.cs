@@ -8156,7 +8156,7 @@ public static class SymmetryStatic
             #endregion CoodStr
         ];
 
-    public static readonly ushort[][] OperationDictionary = 
+    public static readonly ushort[][] OperationDictionary =
         [
 				#region OperationDictionary
  //0	Unknown
@@ -10906,7 +10906,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
 ".-3m"
             #endregion
         ];
-    public static readonly ushort[][][] BelongingNumberOfSymmetry = 
+    public static readonly ushort[][][] BelongingNumberOfSymmetry =
         [
 				#region BelongingNumberOfSymmetry
 					[
@@ -12236,321 +12236,6 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
 
     #region 面の等価性についてのメソッド
 
-    #region　お蔵入り
-    /// <summary>
-    /// ラウエ群に従って基底の面指数を返す
-    /// </summary>
-    /// <param name="index"></param>
-    /// <param name="sym"></param>
-    /// <returns></returns>
-    public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) index, Symmetry sym)
-    {
-        #region
-        var (h, k ,l) = index;
-        int m, i;
-        switch (sym.LaueGroupNumber)
-        {
-            case 0://	unknown
-                break;
-
-            case 1://	-1
-                if (h < 0 || (h == 0 && k < 0) || (h == 0 && k == 0 && l < 0))
-                {
-                    h = -h; k = -k; l = -l;
-                }
-                break;
-
-            case 2://	2/m
-                if (sym.MainAxis == "a")
-                {
-                    if (h < 0)
-                    {
-                        h = -h;
-                    }
-                    if (k < 0 || (k == 0 && l < 0))
-                    {
-                        k = -k; l = -l;
-                    }
-                }
-                else if (sym.MainAxis == "b")
-                {
-                    if (k < 0)
-                    {
-                        k = -k;
-                    }
-                    if (h < 0 || (h == 0 && l < 0))
-                    {
-                        h = -h; l = -l;
-                    }
-                }
-                else if (sym.MainAxis == "c")
-                {
-                    if (l < 0)
-                    {
-                        l = -l;
-                    }
-                    if (h < 0 || (h == 0 && k < 0))
-                    {
-                        h = -h; k = -k;
-                    }
-                }
-
-                break;
-
-            case 3://	mmm
-                h = Math.Abs(h);
-                k = Math.Abs(k);
-                l = Math.Abs(l);
-                break;
-
-            case 4://	4/m
-                l = Math.Abs(l);
-                while (!(h >= 0 && k >= 0))
-                {
-                    m = h; h = -k; k = m;
-                }
-                if (h == 0)
-                {
-                    m = h; h = k; k = m;
-                }
-
-                break;
-
-            case 5:// 4/mmm
-                h = Math.Abs(h);
-                k = Math.Abs(k);
-                l = Math.Abs(l);
-                while (!(h <= k))
-                {
-                    m = h; h = k; k = m;
-                }
-                break;
-
-            case 6:// -3
-                i = -h - k;
-                if (l != 0)
-                {//lが0ではないとき
-                    if (l < 0)
-                    {//lが0以下のとき
-                        h = -h; k = -k; i = -i; l = -l;
-                    }
-
-                    if (h * k * i == 0)
-                    {//h,k,iの中で一つでも0を含んでいるとき
-                        while (h != 0)
-                        {
-                            m = h; h = k; k = i; i = m;
-                        }
-                        break;
-                    }
-                    else
-                    {//h,k,iがすべて0以外の整数のとき
-                        while (!(Math.Abs(h) <= Math.Abs(i) && Math.Abs(k) < Math.Abs(i)))
-                        {//iの絶対値を最大にする
-                            m = h; h = k; k = i; i = m;
-                        }
-                        break;
-                    }
-                }
-                else
-                {//lが0のとき
-                    if (h * k * i == 0)
-                    {//h,k,iの中で一つでも0を含んでいるとき
-                        while (h != 0)
-                        {
-                            m = h; h = k; k = i; i = m;
-                        }
-                        if (k < 0)
-                        {
-                            k = -k;
-                        }
-
-                        break;
-                    }
-                    else
-                    {//h,k,iがすべて0以外の整数のとき
-                        if (h * k * i < 0)
-                        {
-                            h = -h; k = -k; i = -i;
-                        }
-                        while (!(Math.Abs(h) <= i && Math.Abs(k) < Math.Abs(i)))
-                        {//iの絶対値を最大にする
-                            m = h; h = k; k = i; i = m;
-                        }
-                        break;
-                    }
-                }
-
-            case 7://	-3m
-                i = -h - k;
-                if (l != 0)
-                {//lが0ではないとき
-                    if (l < 0)
-                    {//lが0以下のとき
-                        h = -h; k = -k; i = -i; l = -l;
-                    }
-
-                    if (h * k * i == 0)
-                    {//h,k,iの中で一つでも0を含んでいるとき
-                        while (h != 0)
-                        {
-                            m = h; h = k; k = i; i = m;
-                        }
-                        break;
-                    }
-                    else
-                    {//h,k,iがすべて0以外の整数のとき
-                        if (h * k * i < 0)
-                        {
-                            h = -h; m = k; k = -i; i = -m;
-                        }
-                        while (!(Math.Abs(h) <= Math.Abs(i) && Math.Abs(k) < Math.Abs(i)))
-                        {//iの絶対値を最大にする
-                            m = h; h = k; k = i; i = m;
-                        }
-                        break;
-                    }
-                }
-                else
-                {//lが0のとき
-                    if (h * k * i == 0)
-                    {//h,k,iの中で一つでも0を含んでいるとき
-                        while (h != 0)
-                        {
-                            m = h; h = k; k = i; i = m;
-                        }
-                        if (k < 0)
-                        {
-                            k = -k;
-                        }
-
-                        break;
-                    }
-                    else
-                    {//h,k,iがすべて0以外の整数のとき
-                        if (h * k * i < 0)
-                        {
-                            h = -h; k = -k; i = -i;
-                        }
-                        while (!(Math.Abs(h) <= i && Math.Abs(k) < Math.Abs(i)))
-                        {//iの絶対値を最大にする
-                            m = h; h = k; k = i; i = m;
-                        }
-                        if (h > k)
-                        {
-                            m = h; h = k; k = m;
-                        }
-                        break;
-                    }
-                }
-
-            case 8:// 6/m
-                i = -h - k;
-                if (l < 0)
-                {//lが0以下のとき
-                    h = -h; k = -k; i = -i; l = -l;
-                }
-
-                if (h * k * i == 0)
-                {//h,k,iの中で一つでも0を含んでいるとき
-                    while (h != 0)
-                    {
-                        m = h; h = k; k = i; i = m;
-                    }
-                    if (k < 0)
-                    {
-                        k = -k;
-                    }
-
-                    break;
-                }
-                else
-                {//h,k,iがすべて0以外の整数のとき
-                    if (h * k * i < 0)
-                    {
-                        h = -h; k = -k; i = -i;
-                    }
-                    while (!(Math.Abs(h) <= Math.Abs(i) && Math.Abs(k) < Math.Abs(i)))
-                    {//iの絶対値を最大にする
-                        m = h; h = k; k = i; i = m;
-                    }
-                    break;
-                }
-
-            case 9://	6/mmm
-                i = -h - k;
-                if (l < 0)
-                {//lが0以下のとき
-                    h = -h; k = -k; i = -i; l = -l;
-                }
-
-                if (h * k * i == 0)
-                {//h,k,iの中で一つでも0を含んでいるとき
-                    while (h != 0)
-                    {
-                        m = h; h = k; k = i; i = m;
-                    }
-                    if (k < 0)
-                    {
-                        k = -k;
-                    }
-
-                    break;
-                }
-                else
-                {//h,k,iがすべて0以外の整数のとき
-                    if (h * k * i < 0)
-                    {
-                        h = -h; k = -k; i = -i;
-                    }
-                    while (!(Math.Abs(h) <= Math.Abs(i) && Math.Abs(k) < Math.Abs(i)))
-                    {//iの絶対値を最大にする
-                        m = h; h = k; k = i; i = m;
-                    }
-                    if (h > k)
-                    {
-                        m = h; h = k; k = m;
-                    }
-                    break;
-                }
-
-            case 10:// m3 lに最大の指数がくるようにする
-                h = Math.Abs(h);
-                k = Math.Abs(k);
-                l = Math.Abs(l);
-                while (!(l >= h && l >= k))
-                {
-                    m = h; h = k; k = l; l = m;
-                }
-                if (h == l)
-                {//(2,1,2)を(1,2,2)にする
-                    m = h; h = k; k = m;
-                }
-                break;
-
-            case 11:// m3m 例(-4, 3,-5)を(3,4,5)に
-                h = Math.Abs(h);
-                k = Math.Abs(k);
-                l = Math.Abs(l);
-                if (h > k)
-                {
-                    m = h; h = k; k = m;
-                }
-                if (k > l)
-                {
-                    m = k; k = l; l = m;
-                }
-                if (h > k)
-                {
-                    m = h; h = k; k = m;
-                }
-                break;
-        }
-        return (h, k, l);
-        #endregion
-    }
-    #endregion
-
     #region お蔵入り
     /*
     public static PlaneIndex GetEquivalentPlanes(PlaneIndex index, Symmetry sym)
@@ -12661,137 +12346,469 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     */
     #endregion
 
+    #region お蔵入り
+    /*
+/// <summary>
+/// 基底の面指数を先頭にした行列を返す。基底とは可能な限り h >= k >= l かつ h>0, k>0, l>0 に近づくような指数をさす。
+/// </summary>
+/// <param name="index"></param>
+/// <param name="sym"></param>
+/// <returns></returns>
+public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) index, Symmetry sym, bool addInversionCenter = false)
+{
+    #region
+    var (h, k, l) = index;
+
+    var indices = GenerateEquivalentPlanes(index, sym, addInversionCenter);
+
+    Array.Sort(indices, (a, b) =>
+    {
+        if(a.H != b.H)
+            return a.H.CompareTo(b.H);
+        else if(a.K != b.K)
+            return a.K.CompareTo(b.K);
+        else
+            return a.L.CompareTo(b.L);
+    });
+
+    return indices[0];
+
+
+
+    int m, i;
+    switch (sym.LaueGroupNumber)
+    {
+    case 0://	unknown
+    break;
+
+    case 1://	-1
+    if (h < 0 || (h == 0 && k < 0) || (h == 0 && k == 0 && l < 0))
+    {
+        h = -h; k = -k; l = -l;
+    }
+    break;
+
+    case 2://	2/m
+    if (sym.MainAxis == "a")
+    {
+        if (h < 0)
+        {
+            h = -h;
+        }
+        if (k < 0 || (k == 0 && l < 0))
+        {
+            k = -k; l = -l;
+        }
+    }
+    else if (sym.MainAxis == "b")
+    {
+        if (k < 0)
+        {
+            k = -k;
+        }
+        if (h < 0 || (h == 0 && l < 0))
+        {
+            h = -h; l = -l;
+        }
+    }
+    else if (sym.MainAxis == "c")
+    {
+        if (l < 0)
+        {
+            l = -l;
+        }
+        if (h < 0 || (h == 0 && k < 0))
+        {
+            h = -h; k = -k;
+        }
+    }
+
+    break;
+
+    case 3://	mmm
+    h = Math.Abs(h);
+    k = Math.Abs(k);
+    l = Math.Abs(l);
+    break;
+
+    case 4://	4/m
+    l = Math.Abs(l);
+    while (!(h >= 0 && k >= 0))
+    {
+        m = h; h = -k; k = m;
+    }
+    if (h == 0)
+    {
+        m = h; h = k; k = m;
+    }
+
+    break;
+
+    case 5:// 4/mmm
+    h = Math.Abs(h);
+    k = Math.Abs(k);
+    l = Math.Abs(l);
+    while (!(h <= k))
+    {
+        m = h; h = k; k = m;
+    }
+    break;
+
+    case 6:// -3
+    i = -h - k;
+    if (l != 0)
+    {//lが0ではないとき
+        if (l < 0)
+        {//lが0以下のとき
+            h = -h; k = -k; i = -i; l = -l;
+        }
+
+        if (h * k * i == 0)
+        {//h,k,iの中で一つでも0を含んでいるとき
+            while (h != 0)
+            {
+                m = h; h = k; k = i; i = m;
+            }
+            break;
+        }
+        else
+        {//h,k,iがすべて0以外の整数のとき
+            while (!(Math.Abs(h) <= Math.Abs(i) && Math.Abs(k) < Math.Abs(i)))
+            {//iの絶対値を最大にする
+                m = h; h = k; k = i; i = m;
+            }
+            break;
+        }
+    }
+    else
+    {//lが0のとき
+        if (h * k * i == 0)
+        {//h,k,iの中で一つでも0を含んでいるとき
+            while (h != 0)
+            {
+                m = h; h = k; k = i; i = m;
+            }
+            if (k < 0)
+            {
+                k = -k;
+            }
+
+            break;
+        }
+        else
+        {//h,k,iがすべて0以外の整数のとき
+            if (h * k * i < 0)
+            {
+                h = -h; k = -k; i = -i;
+            }
+            while (!(Math.Abs(h) <= i && Math.Abs(k) < Math.Abs(i)))
+            {//iの絶対値を最大にする
+                m = h; h = k; k = i; i = m;
+            }
+            break;
+        }
+    }
+
+    case 7://	-3m
+    i = -h - k;
+    if (l != 0)
+    {//lが0ではないとき
+        if (l < 0)
+        {//lが0以下のとき
+            h = -h; k = -k; i = -i; l = -l;
+        }
+
+        if (h * k * i == 0)
+        {//h,k,iの中で一つでも0を含んでいるとき
+            while (h != 0)
+            {
+                m = h; h = k; k = i; i = m;
+            }
+            break;
+        }
+        else
+        {//h,k,iがすべて0以外の整数のとき
+            if (h * k * i < 0)
+            {
+                h = -h; m = k; k = -i; i = -m;
+            }
+            while (!(Math.Abs(h) <= Math.Abs(i) && Math.Abs(k) < Math.Abs(i)))
+            {//iの絶対値を最大にする
+                m = h; h = k; k = i; i = m;
+            }
+            break;
+        }
+    }
+    else
+    {//lが0のとき
+        if (h * k * i == 0)
+        {//h,k,iの中で一つでも0を含んでいるとき
+            while (h != 0)
+            {
+                m = h; h = k; k = i; i = m;
+            }
+            if (k < 0)
+            {
+                k = -k;
+            }
+
+            break;
+        }
+        else
+        {//h,k,iがすべて0以外の整数のとき
+            if (h * k * i < 0)
+            {
+                h = -h; k = -k; i = -i;
+            }
+            while (!(Math.Abs(h) <= i && Math.Abs(k) < Math.Abs(i)))
+            {//iの絶対値を最大にする
+                m = h; h = k; k = i; i = m;
+            }
+            if (h > k)
+            {
+                m = h; h = k; k = m;
+            }
+            break;
+        }
+    }
+
+    case 8:// 6/m
+    i = -h - k;
+    if (l < 0)
+    {//lが0以下のとき
+        h = -h; k = -k; i = -i; l = -l;
+    }
+
+    if (h * k * i == 0)
+    {//h,k,iの中で一つでも0を含んでいるとき
+        while (h != 0)
+        {
+            m = h; h = k; k = i; i = m;
+        }
+        if (k < 0)
+        {
+            k = -k;
+        }
+
+        break;
+    }
+    else
+    {//h,k,iがすべて0以外の整数のとき
+        if (h * k * i < 0)
+        {
+            h = -h; k = -k; i = -i;
+        }
+        while (!(Math.Abs(h) <= Math.Abs(i) && Math.Abs(k) < Math.Abs(i)))
+        {//iの絶対値を最大にする
+            m = h; h = k; k = i; i = m;
+        }
+        break;
+    }
+
+    case 9://	6/mmm
+    i = -h - k;
+    if (l < 0)
+    {//lが0以下のとき
+        h = -h; k = -k; i = -i; l = -l;
+    }
+
+    if (h * k * i == 0)
+    {//h,k,iの中で一つでも0を含んでいるとき
+        while (h != 0)
+        {
+            m = h; h = k; k = i; i = m;
+        }
+        if (k < 0)
+        {
+            k = -k;
+        }
+
+        break;
+    }
+    else
+    {//h,k,iがすべて0以外の整数のとき
+        if (h * k * i < 0)
+        {
+            h = -h; k = -k; i = -i;
+        }
+        while (!(Math.Abs(h) <= Math.Abs(i) && Math.Abs(k) < Math.Abs(i)))
+        {//iの絶対値を最大にする
+            m = h; h = k; k = i; i = m;
+        }
+        if (h > k)
+        {
+            m = h; h = k; k = m;
+        }
+        break;
+    }
+
+    case 10:// m3 lに最大の指数がくるようにする
+    h = Math.Abs(h);
+    k = Math.Abs(k);
+    l = Math.Abs(l);
+    while (!(l >= h && l >= k))
+    {
+        m = h; h = k; k = l; l = m;
+    }
+    if (h == l)
+    {//(2,1,2)を(1,2,2)にする
+        m = h; h = k; k = m;
+    }
+    break;
+
+    case 11:// m3m 例(-4, 3,-5)を(3,4,5)に
+    h = Math.Abs(h);
+    k = Math.Abs(k);
+    l = Math.Abs(l);
+    if (h > k)
+    {
+        m = h; h = k; k = m;
+    }
+    if (k > l)
+    {
+        m = k; k = l; l = m;
+    }
+    if (h > k)
+    {
+        m = h; h = k; k = m;
+    }
+    break;
+    }
+
+
+    #endregion
+}
+     */
+    #endregion
+
     /// <summary>
-    /// 入力された面が基底のものであるかどうか判定する。
-    /// 基底とは可能な限り h >= k >= l かつ h>0, k>0, l>0 に近づくような指数をさす。
-    /// 基底であるときは多重度(multi)も同時に返す。
+    /// 面指数が基底であるかどうか判定する。
     /// </summary>
     /// <param name="index">面指数</param>
     /// <param name="sym">対称性</param>
     /// <param name="indices">等価な面指数の群</param>
     /// <param name="CalcNotEvenRoot">基底でなくても等価な面指数を計算するときはtrue。デフォルトはfalse</param>
     /// <returns>基底のときは true</returns>
-    public static (bool Result, (int H, int K, int L)[] Indices) IsRootPlaneIndex((int h, int k, int l) index, Symmetry sym, bool CalcNotEvenRoot=false)
+    public static bool IsRootPlane((int h, int k, int l) index, Symmetry sym, out (int h, int k, int l)[] indices, bool addInversion = false) 
+        => index == (indices = GenerateEquivalentPlanes(index, sym, addInversion, true))[0];
+
+    #region お蔵入り
+    /*
+    (int h, int k, int l) = index;
+    bool result = true;
+    if (h == 0 && k == 0 && l == 0)
+        return (false, [(0, 0, 0)]);
+
+    switch (sym.LaueGroupNumber)
     {
-        #region
-        (int h, int k, int l) = index;
-        bool result = true;
-        if (h == 0 && k == 0 && l == 0)
-            return (false, [(0, 0, 0)]);
+        case 0://unknown
+            return (true, [(+h, +k, +l)]);
 
-        switch (sym.LaueGroupNumber)
-        {
-            case 0://unknown
-                return (true, [(+h, +k, +l)]);
+        case 1://-1
+            result = h > 0 || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0);
+            break;
 
-            case 1://-1
-                result = h > 0 || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0);
-                break;
+        case 2:// 2/m
+            result = sym.MainAxis switch
+            {
+                "a" => h >= 0 && (k > 0 || (k == 0 && l >= 0)),
+                "b" => (k >= 0 && (h > 0 || (h == 0 && l >= 0))),
+                _ => (l >= 0 && (h > 0 || (h == 0 && k >= 0)))
+            };
+            break;
 
-            case 2:// 2/m
-                result = sym.MainAxis switch
-                {
-                    "a" => h >= 0 && (k > 0 || (k == 0 && l >= 0)),
-                    "b" => (k >= 0 && (h > 0 || (h == 0 && l >= 0))),
-                    _ => (l >= 0 && (h > 0 || (h == 0 && k >= 0)))
-                };
-                break;
+        case 3:// mmm
+            result = ((l >= 0 && h >= 0 && k >= 0));
+            break;
 
-            case 3:// mmm
-                result = ((l >= 0 && h >= 0 && k >= 0));
-                break;
+        case 4: //4/m
+            result = ((l >= 0 && h > 0 && k >= 0) || (l > 0 && h == 0 && k == 0));
+            break;
 
-            case 4: //4/m
-                result = ((l >= 0 && h > 0 && k >= 0) || (l > 0 && h == 0 && k == 0));
-                break;
+        case 5: //4/mmm
+            result = ((l >= 0 && h >= k && k >= 0));
+            break;
 
-            case 5: //4/mmm
-                result = ((l >= 0 && h >= k && k >= 0));
-                break;
+        case 6: //-3
+            if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                result = (h == 0 && k == 0 && l > 0) || (h > 0 && k >= 0);
+            else//Rhomboセルの場合
+                result = (h > 0 && l == 0) || (h > 0 && k > 0 && l < 0) || (h >= k && k >= l && l > 0) || (h > l && l > k && k > 0);
+            break;
 
-            case 6: //-3
-                if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
-                    result = (h == 0 && k == 0 && l > 0) || (h > 0 && k >= 0);
-                else//Rhomboセルの場合
-                    result = (h > 0 && l == 0) || (h > 0 && k > 0 && l < 0) || (h >= k && k >= l && l > 0) || (h > l && l > k && k > 0);
-                break;
+        case 7: //-3m1
+            if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
+                result = ((l > 0 && h >= 0 && k >= 0) || (l == 0 && h >= k && k >= 0));
+            else//Rhomboセルの場合
+                result = (h > 0 && h >= Math.Abs(k) && l == 0) || (h >= k && k >= l && k > 0 && l != 0);
+            break;
 
-            case 7: //-3m1
-                if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
-                    result = ((l > 0 && h >= 0 && k >= 0) || (l == 0 && h >= k && k >= 0));
-                else//Rhomboセルの場合
-                    result = (h > 0 && h >= Math.Abs(k) && l == 0) || (h >= k && k >= l && k > 0 && l != 0);
-                break;
+        case 8://6/m
+            result = (l >= 0 && h > 0 && k >= 0) || (l > 0 && h == 0 && k == 0);
+            break;
 
-            case 8://6/m
-                result = (l >= 0 && h > 0 && k >= 0) || (l > 0 && h == 0 && k == 0);
-                break;
+        case 9://6/mmm
+            result = (l >= 0 && k >= h && h >= 0);
+            break;
 
-            case 9://6/mmm
-                result = (l >= 0 && k >= h && h >= 0);
-                break;
+        case 10://m3
+            result = (h >= 0 && k >= 0 && l >= 0 && l <= h && k <= h && !(h == l && l > k));
+            break;
 
-            case 10://m3
-                result = (h >= 0 && k >= 0 && l >= 0 && l <= h && k <= h && !(h == l && l > k));
-                break;
-
-            case 11://m3m
-                result = (h >= k && k >= l && l >= 0);
-                break;
-        }
-
-
-        if (result || CalcNotEvenRoot)
-            return (result, [.. GenerateEquivalentPlanes((h, k, l), sym, false)]);
-        else 
-            return (result, []);
-        #endregion
+        case 11://m3m
+            result = (h >= k && k >= l && l >= 0);
+            break;
     }
+
+
+    if (result || CalcNotEvenRoot)
+        return (result, [.. GenerateEquivalentPlanes((h, k, l), sym, false)]);
+    else
+        return (result, []);
+    */
+    #endregion
 
     /// <summary>
     /// 対称性 sym に従って(hkl)と等価な結晶面を生成する
     /// </summary>
-    /// <param name="addInversionCenter"> 対称心を加えるか。デフォルトはTrue（つまりラウエ群で面を生成する）</param>
+    /// <param name="addInversionCenter"> 対称心を加えるか。デフォルトはfalse. </param>
+    /// <param name="sort"> Trueの場合は先頭が基底の指数になるように並び替えを行う </param>
     /// <returns></returns>
-    public static (int H, int K, int L)[] GenerateEquivalentPlanes((int h, int k, int l) index, Symmetry sym, bool addInversionCenter = false)
+    public static (int H, int K, int L)[] GenerateEquivalentPlanes((int H, int K, int L) index, Symmetry sym, bool addInversionCenter = false, bool sort = true)
     {
-        var (h,k,l) = index;
-        if (h == 0 && k == 0 && l == 0) return [(0, 0, 0)];
+        if (index==(0,0,0)) return [(0, 0, 0)];
 
-        var indices = new HashSet<(int H, int K, int L)>();
-        int i;
+        #region addInversion がtrueであれば対称心を付与した点群に変換する
+        var pgNum = addInversionCenter ? sym.PointGroupNumber switch
+        {
 
-        var pgNum = sym.PointGroupNumber;
+            0 or 1 or 2 => 2,//　unknown, 1, -1 => -1
+            3 or 4 or 5 => 5,// 2, m, 2/m => 2/m
+            6 or 7 or 8 => 8,// 222, mm2, mmm => mmm
+            9 or 10 or 11 => 11,// 4, -4, 4/m => 4/m
+            12 or 13 or 14 or 15 => 15, // 422, 4mm, -42m, 4/mmm => 4/mmm
+            16 or 17 => 17,// 3, -3 => -3
+            18 or 19 or 20 => 20,// 3m, -3m1, -3m2 => -3m1
+            21 or 22 or 23 => 23,// 6, -6, 6/m => 6/m
+            24 or 25 or 26 or 27 => 27,// 622, 6mm, -6m2, 6/mmm => 6/mmm
+            28 or 29 => 29,// 23, m3 => m3
+            30 or 31 or 32 => 32,// 432, -43m, m3m => m3m
+            _ => 2
 
-        if (addInversionCenter) //addInversionCenterがtrueの場合は、対称心を付与した点群に変換する
-            pgNum = pgNum switch
-            {
-                #region
-                0 or 1 or 2 => 2,//　unknown, 1, -1 => -1
-                3 or 4 or 5 => 5,// 2, m, 2/m => 2/m
-                6 or 7 or 8 => 8,// 222, mm2, mmm => mmm
-                9 or 10 or 11 => 11,// 4, -4, 4/m => 4/m
-                12 or 13 or 14 or 15 => 15, // 422, 4mm, -42m, 4/mmm => 4/mmm
-                16 or 17 => 17,// 3, -3 => -3
-                18 or 19 or 20 => 20,// 3m, -3m1, -3m2 => -3m1
-                21 or 22 or 23 => 23,// 6, -6, 6/m => 6/m
-                24 or 25 or 26 or 27 => 27,// 622, 6mm, -6m2, 6/mmm => 6/mmm
-                28 or 29 => 29,// 23, m3 => m3
-                30 or 31 or 32 => 32,// 432, -43m, m3m => m3m
-                _ => 2
-                #endregion
-            };
+        } : sym.PointGroupNumber;
+        #endregion
 
         #region 点群に従って等価な面指数を生成
+        var indices = new HashSet<(int H, int K, int L)>();
+        int i;
+        var (h, k, l) = index;
         switch (pgNum)
         {
             case 0://unknown
-                indices.Add((+h, +k, +l));
-                break;
+                return [(+h, +k, +l)];
 
             case 1://1
-                indices.Add((+h, +k, +l));
-                break;
+                return [(+h, +k, +l)];
 
             case 2://-1
                 indices.Add((+h, +k, +l));
@@ -12837,7 +12854,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                         break;
                 }
                 break;
-            
+
             case 5:// 2/m
                 switch (sym.MainAxis)
                 {
@@ -12858,7 +12875,6 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                         break;
 
                     case "c":
-
                         indices.Add((+h, +k, +l));
                         indices.Add((-h, -k, -l));
                         indices.Add((+h, +k, -l));
@@ -12923,7 +12939,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                 indices.Add((-k, +h, -l));
                 indices.Add((+k, -h, -l));
                 break;
-           
+
             case 11: //4/m
                 indices.Add((+h, +k, +l));
                 indices.Add((-h, -k, +l));
@@ -13025,7 +13041,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                     indices.Add((+k, +l, +h));
                     break;
                 }
-            
+
             case 17: //-3
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                 {
@@ -13502,7 +13518,93 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
         }
         #endregion
 
-        return [.. indices];
+        #region sort=trueの場合、面指数をソートする
+        if (!sort)
+            return [.. indices];
+        else
+        {
+
+            var array = indices.ToArray();
+
+            if (pgNum >= 16 && pgNum <= 27 && sym.SpaceGroupHMsubStr != "R")//trigonal or hexagonalで、六方格子の場合
+            {
+                //h,k,iの中で、最も絶対値が大きいものをiに持ってくる
+                Array.Sort(array, static (a, b) =>
+                {
+                    if (Math.Abs(a.H + a.K) != Math.Abs(b.H + b.K))
+                        return Math.Abs(b.H + b.K).CompareTo(Math.Abs(a.H + a.K));
+                    else if (a.H != b.H)
+                        return b.H.CompareTo(a.H);
+                    else if (a.K != b.K)
+                        return b.K.CompareTo(a.K);
+                    else
+                        return b.L.CompareTo(a.L);
+                });
+            }
+            else if (pgNum >= 3 && pgNum <= 5)//monoclinicかorthorhombicの場合
+            {
+                // 主軸が第一ソートキーになるようにする
+                if (sym.MainAxis == "a")
+                    Array.Sort(array, static (a, b) =>
+                    {
+                        if (a.H != b.H)
+                            return b.H.CompareTo(a.H);
+                        else if (a.K != b.K)
+                            return b.K.CompareTo(a.K);
+                        else
+                            return b.L.CompareTo(a.L);
+                    });
+                else if (sym.MainAxis == "b")
+                {
+                    Array.Sort(array, static (a, b) =>
+                    {
+                        if (a.K != b.K)
+                            return b.K.CompareTo(a.K);
+                        else if (a.L != b.L)
+                            return b.L.CompareTo(a.L);
+                        else
+                            return b.H.CompareTo(a.H);
+                    });
+                }
+                else
+                    Array.Sort(array, static (a, b) =>
+                    {
+                        if (a.L != b.L)
+                            return b.L.CompareTo(a.L);
+                        else if (a.H != b.H)
+                            return b.H.CompareTo(a.H);
+                        else
+                            return b.K.CompareTo(a.K);
+                    });
+            }
+            else if (pgNum>=9 && pgNum <=15)//tetragonalの場合
+            {
+                Array.Sort(array, static (a, b) =>
+                {
+                    if (a.L != b.L)
+                        return b.L.CompareTo(a.L);
+                    else if (a.H != b.H)
+                        return b.H.CompareTo(a.H);
+                    else
+                        return b.K.CompareTo(a.K);
+                });
+            }
+
+            else//立方晶と三斜晶系の時
+            {
+                Array.Sort(array, static (a, b) =>
+                {
+                    if (a.H != b.H)
+                        return b.H.CompareTo(a.H);
+                    else if (a.K != b.K)
+                        return b.K.CompareTo(a.K);
+                    else
+                        return b.L.CompareTo(a.L);
+                });
+            }
+            return array;
+        }
+        #endregion
     }
 
     /// <summary>
@@ -13513,271 +13615,107 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     /// <param name="sym"></param>
     /// <returns></returns>
     public static bool CheckEquivalentPlanes((int H, int K, int L) index1, (int H, int K, int L) index2, Symmetry sym)
-        => new List<(int H, int K, int L)>(GenerateEquivalentPlanes(index1, sym, false)).Contains(index2);
+        => GenerateEquivalentPlanes(index1, sym, false).Contains(index2);
 
     #endregion
 
-
     #region 軸の等価性についてのメソッド 
 
-    //[uvw]に等価な軸を返す
     /// <summary>
-    ///  ラウエ群に従って基底の軸指数を返す
+    /// 軸指数が基底であるかどうか判定する。
     /// </summary>
     /// <param name="index"></param>
     /// <param name="sym"></param>
+    /// <param name="addInversion">対称心を付与するか。デフォルトはfalse。</param>
     /// <returns></returns>
-    public static (int U, int V, int W) GetRootAxisIndex((int U, int V, int W) index, Symmetry sym)
+    public static bool IsRootAxis((int U, int V, int W) index, Symmetry sym, out (int U, int V, int W)[] indices, bool addInversion = false) 
+        => index == (indices = GenerateEquivalentAxes(index, sym, addInversion, true))[0];
+  
+    #region お蔵入り
+    /*
+    int u = index.U, v = index.V, w = index.W;
+    int m, n, o;
+
+    switch (sym.LaueGroupNumber)
     {
-        #region
-        int u = index.U, v = index.V, w = index.W;
-        int m, n, o;
+        case 0://	unknown
+            break;
 
-        switch (sym.LaueGroupNumber)
-        {
-            case 0://	unknown
-                break;
+        case 1://	-1
+            if (u < 0 || (u == 0 && v < 0) || (u == 0 && v == 0 && w < 0))
+                (u, v, w) = (-u, -v, -w);
+            break;
 
-            case 1://	-1
-                if (u < 0 || (u == 0 && v < 0) || (u == 0 && v == 0 && w < 0))
-                    (u, v, w) = (-u, -v, -w);
-                break;
+        case 2://	2/m
 
-            case 2://	2/m
-
-                if (sym.MainAxis == "a")
+            if (sym.MainAxis == "a")
+            {
+                if (u < 0)
                 {
-                    if (u < 0)
-                    {
-                        u = -u;
-                    }
-                    if (v < 0 || (v == 0 && w < 0))
-                    {
-                        v = -v; w = -w;
-                    }
+                    u = -u;
                 }
-                else if (sym.MainAxis == "b")
+                if (v < 0 || (v == 0 && w < 0))
                 {
-                    if (v < 0)
-                    {
-                        v = -v;
-                    }
-                    if (u < 0 || (u == 0 && w < 0))
-                    {
-                        u = -u; w = -w;
-                    }
+                    v = -v; w = -w;
                 }
-                else if (sym.MainAxis == "c")
+            }
+            else if (sym.MainAxis == "b")
+            {
+                if (v < 0)
                 {
-                    if (w < 0)
-                    {
-                        w = -w;
-                    }
-                    if (u < 0 || (u == 0 && v < 0))
-                    {
-                        u = -u; v = -v;
-                    }
+                    v = -v;
                 }
-
-                break;
-
-            case 3://	mmm
-                u = Math.Abs(u);
-                v = Math.Abs(v);
-                w = Math.Abs(w);
-                break;
-
-            case 4://	4/m
-                w = Math.Abs(w);
-                while (!(u >= 0 && v >= 0))
+                if (u < 0 || (u == 0 && w < 0))
                 {
-                    m = u; u = -v; v = m;
+                    u = -u; w = -w;
                 }
-                if (u == 0)
+            }
+            else if (sym.MainAxis == "c")
+            {
+                if (w < 0)
                 {
-                    m = u; u = v; v = m;
+                    w = -w;
                 }
-
-                break;
-
-            case 5:// 4/mmm
-                u = Math.Abs(u);
-                v = Math.Abs(v);
-                w = Math.Abs(w);
-                while (!(u <= v))
+                if (u < 0 || (u == 0 && v < 0))
                 {
-                    m = u; u = v; v = m;
+                    u = -u; v = -v;
                 }
-                break;
+            }
 
-            case 6:// -3
-                if (w != 0)
-                {//wが0ではないとき
-                    if (w < 0)
-                    {//wが0以下のとき
-                        u = -u; v = -v; w = -w;
-                    }
-                    if (u == 0 && v == 0)
-                    {
-                        break;
-                    }
+            break;
 
-                    while (!(u >= 0 && v >= 0))
-                    {
-                        m = u; n = v; u = -n; v = m - n;
-                    }
+        case 3://	mmm
+            u = Math.Abs(u);
+            v = Math.Abs(v);
+            w = Math.Abs(w);
+            break;
 
-                    if (u == 0)
-                    {
-                        m = u; u = v; v = m;
-                    }
-                    break;
-                }
-                else
-                {//wが0のとき
-                    if (u == 0 && v == 0)
-                    {
-                        break;
-                    }
-                    else if (u == 0 || v == 0 || u == v)
-                    { //(200),(020),(-2-20)の様な場合
-                        while (u != 0)
-                        {
-                            m = u; n = v; u = -n; v = m - n;
-                        }
-                        if (v <= 0)
-                        {
-                            v = -v;
-                        }
+        case 4://	4/m
+            w = Math.Abs(w);
+            while (!(u >= 0 && v >= 0))
+            {
+                m = u; u = -v; v = m;
+            }
+            if (u == 0)
+            {
+                m = u; u = v; v = m;
+            }
 
-                        break;
-                    }
-                    else
-                    {   //(-210),(-1-30),(320),(2-10),(130),(-3-20)の様な場合
-                        while (!(u >= 0 && v >= 0))
-                        {
-                            m = u; n = v; u = -n; v = m - n;
-                        }
-                        if (u > v)
-                        {
-                            u = -u; v = -v; w = -w;
-                            while (!(u >= 0 && v >= 0))
-                            {
-                                m = u; n = v; u = -n; v = m - n;
-                            }
-                        }
-                        break;
-                    }
-                }
+            break;
 
-            case 7://	-3m
-                if (w != 0)
-                {//wが0ではないとき
-                    if (w < 0)
-                    {//wが0以下のとき
-                        u = -u; v = -v; w = -w;//wを1以上にする
-                    }
+        case 5:// 4/mmm
+            u = Math.Abs(u);
+            v = Math.Abs(v);
+            w = Math.Abs(w);
+            while (!(u <= v))
+            {
+                m = u; u = v; v = m;
+            }
+            break;
 
-                    if (u == 0 && v == 0)//(00w)のときは
-                    {
-                        break;          //そのまま終了
-                    }
-                    else if (u == 0 || v == 0 || u == v)
-                    { //(20w),(02w),(-2-2w),(22w),(-20w),(0-2w)の様な場合
-                        while (u != 0)
-                        {
-                            m = u; n = v; u = -n; v = m - n;
-                        }//ループ終了時には(02w)か(0-2w)になっている
-                        if (v <= 0)
-                        {
-                            v = -v;
-                        }
-
-                        break;
-                    }
-                    else
-                    {
-                        while (!(u >= 0 && v >= 0))
-                        {//まずuとvが正になるように
-                            m = u; n = v; u = -n; v = m - n;
-                        }
-                        o = u + v;//このときのu+vをoに代入
-                        v = u - v;//ミラー対称要素を適用
-                        while (!(u >= 0 && v >= 0))
-                        {//もう一回uとvが正になるように
-                            m = u; n = v; u = -n; v = m - n;
-                        }
-                        if (o <= u + v)//ミラー対称を適用後uとvの和が小さかったら
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            v = u - v;
-                            while (!(u >= 0 && v >= 0))
-                            {//まずuとvが正になるように
-                                m = u; n = v; u = -n; v = m - n;
-                            }
-                            break;
-                        }
-                    }
-                }
-                else
-                {//wが0のとき
-                    if (u == 0 && v == 0)
-                    {
-                        break;
-                    }
-                    else if (u == 0 || v == 0 || u == v)
-                    { //(200),(020),(-2-20)の様な場合
-                        while (u != 0)
-                        {
-                            m = u; n = v; u = -n; v = m - n;
-                        }
-                        if (v <= 0)
-                        {
-                            v = -v;
-                        }
-
-                        break;
-                    }
-                    else
-                    {   //(-210),(-1-30),(320),(2-10),(130),(-3-20)の様な場合
-                        while (!(u >= 0 && v >= 0))
-                        {//まずuとvが正になるように
-                            m = u; n = v; u = -n; v = m - n;
-                        }
-                        o = u + v;//このときのu+vをoに代入
-                        v = u - v;//ミラー対称要素を適用
-                        while (!(u >= 0 && v >= 0))
-                        {//もう一回uとvが正になるように
-                            m = u; n = v; u = -n; v = m - n;
-                        }
-                        if (o <= u + v)
-                        {//ミラー対称を適用後uとvの和が小さかったら
-                            if (u > v)
-                            {
-                                m = u; u = v; v = m;
-                            }
-                            break;
-                        }
-                        else
-                        {
-                            v = u - v;
-                            while (!(u >= 0 && v >= 0))
-                            {//まずuとvが正になるように
-                                m = u; n = v; u = -n; v = m - n;
-                            }
-                            if (u > v)
-                            {
-                                m = u; u = v; v = m;
-                            }
-                            break;
-                        }
-                    }
-                }
-
-            case 8:// 6/m
+        case 6:// -3
+            if (w != 0)
+            {//wが0ではないとき
                 if (w < 0)
                 {//wが0以下のとき
                     u = -u; v = -v; w = -w;
@@ -13786,12 +13724,73 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                 {
                     break;
                 }
-                else if (u == 0 || v == 0 || u == v)
+
+                while (!(u >= 0 && v >= 0))
                 {
+                    m = u; n = v; u = -n; v = m - n;
+                }
+
+                if (u == 0)
+                {
+                    m = u; u = v; v = m;
+                }
+                break;
+            }
+            else
+            {//wが0のとき
+                if (u == 0 && v == 0)
+                {
+                    break;
+                }
+                else if (u == 0 || v == 0 || u == v)
+                { //(200),(020),(-2-20)の様な場合
                     while (u != 0)
                     {
                         m = u; n = v; u = -n; v = m - n;
                     }
+                    if (v <= 0)
+                    {
+                        v = -v;
+                    }
+
+                    break;
+                }
+                else
+                {   //(-210),(-1-30),(320),(2-10),(130),(-3-20)の様な場合
+                    while (!(u >= 0 && v >= 0))
+                    {
+                        m = u; n = v; u = -n; v = m - n;
+                    }
+                    if (u > v)
+                    {
+                        u = -u; v = -v; w = -w;
+                        while (!(u >= 0 && v >= 0))
+                        {
+                            m = u; n = v; u = -n; v = m - n;
+                        }
+                    }
+                    break;
+                }
+            }
+
+        case 7://	-3m
+            if (w != 0)
+            {//wが0ではないとき
+                if (w < 0)
+                {//wが0以下のとき
+                    u = -u; v = -v; w = -w;//wを1以上にする
+                }
+
+                if (u == 0 && v == 0)//(00w)のときは
+                {
+                    break;          //そのまま終了
+                }
+                else if (u == 0 || v == 0 || u == v)
+                { //(20w),(02w),(-2-2w),(22w),(-20w),(0-2w)の様な場合
+                    while (u != 0)
+                    {
+                        m = u; n = v; u = -n; v = m - n;
+                    }//ループ終了時には(02w)か(0-2w)になっている
                     if (v <= 0)
                     {
                         v = -v;
@@ -13805,28 +13804,35 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                     {//まずuとvが正になるように
                         m = u; n = v; u = -n; v = m - n;
                     }
-                    if (u > v)
+                    o = u + v;//このときのu+vをoに代入
+                    v = u - v;//ミラー対称要素を適用
+                    while (!(u >= 0 && v >= 0))
+                    {//もう一回uとvが正になるように
+                        m = u; n = v; u = -n; v = m - n;
+                    }
+                    if (o <= u + v)//ミラー対称を適用後uとvの和が小さかったら
                     {
-                        u = -u; v = -v;
+                        break;
+                    }
+                    else
+                    {
+                        v = u - v;
                         while (!(u >= 0 && v >= 0))
                         {//まずuとvが正になるように
                             m = u; n = v; u = -n; v = m - n;
                         }
+                        break;
                     }
-                    break;
                 }
-
-            case 9://	6/mmm
-                if (w < 0)
-                {//wが0以下のとき
-                    u = -u; v = -v; w = -w;
-                }
+            }
+            else
+            {//wが0のとき
                 if (u == 0 && v == 0)
                 {
                     break;
                 }
                 else if (u == 0 || v == 0 || u == v)
-                {
+                { //(200),(020),(-2-20)の様な場合
                     while (u != 0)
                     {
                         m = u; n = v; u = -n; v = m - n;
@@ -13839,7 +13845,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                     break;
                 }
                 else
-                {
+                {   //(-210),(-1-30),(320),(2-10),(130),(-3-20)の様な場合
                     while (!(u >= 0 && v >= 0))
                     {//まずuとvが正になるように
                         m = u; n = v; u = -n; v = m - n;
@@ -13865,114 +13871,206 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                         {//まずuとvが正になるように
                             m = u; n = v; u = -n; v = m - n;
                         }
-                        if (u > v) { m = u; u = v; v = m; }
+                        if (u > v)
+                        {
+                            m = u; u = v; v = m;
+                        }
                         break;
                     }
                 }
+            }
 
-            case 10:// m3 wに最大の指数がくるようにする
-                u = Math.Abs(u);
-                v = Math.Abs(v);
-                w = Math.Abs(w);
-                while (!(w >= u && w >= v))
-                {
-                    m = u; u = v; v = w; w = m;
-                }
-                if (u == w)
-                {//(2,1,2)を(1,2,2)にする
-                    m = u; u = v; v = m;
-                }
+        case 8:// 6/m
+            if (w < 0)
+            {//wが0以下のとき
+                u = -u; v = -v; w = -w;
+            }
+            if (u == 0 && v == 0)
+            {
                 break;
+            }
+            else if (u == 0 || v == 0 || u == v)
+            {
+                while (u != 0)
+                {
+                    m = u; n = v; u = -n; v = m - n;
+                }
+                if (v <= 0)
+                {
+                    v = -v;
+                }
 
-            case 11:// m3m 例(-4, 3,-5)を(3,4,5)に
-                u = Math.Abs(u);
-                v = Math.Abs(v);
-                w = Math.Abs(w);
+                break;
+            }
+            else
+            {
+                while (!(u >= 0 && v >= 0))
+                {//まずuとvが正になるように
+                    m = u; n = v; u = -n; v = m - n;
+                }
                 if (u > v)
                 {
-                    m = u; u = v; v = m;
-                }
-                if (v > w)
-                {
-                    m = v; v = w; w = m;
-                }
-                if (u > v)
-                {
-                    m = u; u = v; v = m;
+                    u = -u; v = -v;
+                    while (!(u >= 0 && v >= 0))
+                    {//まずuとvが正になるように
+                        m = u; n = v; u = -n; v = m - n;
+                    }
                 }
                 break;
-        }
-        return (u, v, w);
-        #endregion
+            }
+
+        case 9://	6/mmm
+            if (w < 0)
+            {//wが0以下のとき
+                u = -u; v = -v; w = -w;
+            }
+            if (u == 0 && v == 0)
+            {
+                break;
+            }
+            else if (u == 0 || v == 0 || u == v)
+            {
+                while (u != 0)
+                {
+                    m = u; n = v; u = -n; v = m - n;
+                }
+                if (v <= 0)
+                {
+                    v = -v;
+                }
+
+                break;
+            }
+            else
+            {
+                while (!(u >= 0 && v >= 0))
+                {//まずuとvが正になるように
+                    m = u; n = v; u = -n; v = m - n;
+                }
+                o = u + v;//このときのu+vをoに代入
+                v = u - v;//ミラー対称要素を適用
+                while (!(u >= 0 && v >= 0))
+                {//もう一回uとvが正になるように
+                    m = u; n = v; u = -n; v = m - n;
+                }
+                if (o <= u + v)
+                {//ミラー対称を適用後uとvの和が小さかったら
+                    if (u > v)
+                    {
+                        m = u; u = v; v = m;
+                    }
+                    break;
+                }
+                else
+                {
+                    v = u - v;
+                    while (!(u >= 0 && v >= 0))
+                    {//まずuとvが正になるように
+                        m = u; n = v; u = -n; v = m - n;
+                    }
+                    if (u > v) { m = u; u = v; v = m; }
+                    break;
+                }
+            }
+
+        case 10:// m3 wに最大の指数がくるようにする
+            u = Math.Abs(u);
+            v = Math.Abs(v);
+            w = Math.Abs(w);
+            while (!(w >= u && w >= v))
+            {
+                m = u; u = v; v = w; w = m;
+            }
+            if (u == w)
+            {//(2,1,2)を(1,2,2)にする
+                m = u; u = v; v = m;
+            }
+            break;
+
+        case 11:// m3m 例(-4, 3,-5)を(3,4,5)に
+            u = Math.Abs(u);
+            v = Math.Abs(v);
+            w = Math.Abs(w);
+            if (u > v)
+            {
+                m = u; u = v; v = m;
+            }
+            if (v > w)
+            {
+                m = v; v = w; w = m;
+            }
+            if (u > v)
+            {
+                m = u; u = v; v = m;
+            }
+            break;
     }
+    return (u, v, w);
+    */
+    #endregion
 
     /// <summary>
     /// 対称性に従って[uvw]と等価な結晶軸を生成する
     /// </summary>
-    /// <param name="u"></param>
-    /// <param name="v"></param>
-    /// <param name="w"></param>
     /// <param name="sym"></param>
-    /// <param name="inversionCenter">対称心を仮定するか。デフォルトはTrue（つまりラウエ群で軸を生成する）</param>
+    /// <param name="inversionCenter">対称心を付与するか。デフォルトはfalse。</param>
     /// <returns></returns>
-    public static (int U, int V, int W)[] GenerateEquivalentAxes((int u, int v, int w) index, Symmetry sym, bool addInversionCenter = false)
+    public static (int U, int V, int W)[] GenerateEquivalentAxes((int U, int V, int W) index, Symmetry sym, bool addInversionCenter = false, bool sort=true)
     {
-        #region
-        var (x, y, z) = index;
-        if (x == 0 && y == 0 && z == 0)
-            return [(0, 0, 0)];
+        if(index == (0,0,0)) return [(0, 0, 0)];
 
+        #region addInversion がtrueであれば対称心を付与した点群に変換する
+        var pgNum = addInversionCenter ? sym.PointGroupNumber switch
+        {
+           
+            0 or 1 or 2 => 2,//　unknown, 1, -1 => -1
+            3 or 4 or 5 => 5,// 2, m, 2/m => 2/m
+            6 or 7 or 8 => 8,// 222, mm2, mmm => mmm
+            9 or 10 or 11 => 11,// 4, -4, 4/m => 4/m
+            12 or 13 or 14 or 15 => 15, // 422, 4mm, -42m, 4/mmm => 4/mmm
+            16 or 17 => 17,// 3, -3 => -3
+            18 or 19 or 20 => 20,// 3m, -3m1, -3m2 => -3m1
+            21 or 22 or 23 => 23,// 6, -6, 6/m => 6/m
+            24 or 25 or 26 or 27 => 27,// 622, 6mm, -6m2, 6/mmm => 6/mmm
+            28 or 29 => 29,// 23, m3 => m3
+            30 or 31 or 32 => 32,// 432, -43m, m3m => m3m
+            _ => 2
+            
+        } : sym.PointGroupNumber;
+        #endregion
+
+        #region 点群に従って等価な軸指数を生成する
         var indices = new HashSet<(int U, int V, int W)>();
-        var pgNum = sym.PointGroupNumber;
-
-        if (addInversionCenter) //addInversionCenterがtrueの場合は、対称心を付与した点群に変換する
-            pgNum = pgNum switch
-            {
-                #region
-                0 or 1 or 2 => 2,//　unknown, 1, -1 => -1
-                3 or 4 or 5 => 5,// 2, m, 2/m => 2/m
-                6 or 7 or 8 => 8,// 222, mm2, mmm => mmm
-                9 or 10 or 11 => 11,// 4, -4, 4/m => 4/m
-                12 or 13 or 14 or 15 => 15, // 422, 4mm, -42m, 4/mmm => 4/mmm
-                16 or 17 => 17,// 3, -3 => -3
-                18 or 19 or 20 => 20,// 3m, -3m1, -3m2 => -3m1
-                21 or 22 or 23 => 23,// 6, -6, 6/m => 6/m
-                24 or 25 or 26 or 27 => 27,// 622, 6mm, -6m2, 6/mmm => 6/mmm
-                28 or 29 => 29,// 23, m3 => m3
-                30 or 31 or 32 => 32,// 432, -43m, m3m => m3m
-                _ => 2
-                #endregion
-            };
-
-        switch (sym.PointGroupNumber)
+        var (u, v, w) = index;
+        switch (pgNum)
         {
             case 0://unknown
-                return [(+x, +y, +z)]; 
+                return [(+u, +v, +w)];
 
             case 1://-1
-                return [(+x, +y, +z)];
+                return [(+u, +v, +w)];
 
             case 2://-1
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, -y, -z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, -v, -w));
                 break;
 
             case 3:// 2
                 switch (sym.MainAxis)
                 {
                     case "a":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((+x, -y, -z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((+u, -v, -w));
                         break;
 
                     case "b":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-x, +y, -z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-u, +v, -w));
                         break;
 
                     case "c":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-x, -y, +z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-u, -v, +w));
                         break;
                 }
                 break;
@@ -13981,18 +14079,18 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                 switch (sym.MainAxis)
                 {
                     case "a":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-x, +y, +z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-u, +v, +w));
                         break;
 
                     case "b":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((+x, -y, +z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((+u, -v, +w));
                         break;
 
                     case "c":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((+x, +y, -z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((+u, +v, -w));
                         break;
                 }
                 break;
@@ -14001,656 +14099,725 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
                 switch (sym.MainAxis)
                 {
                     case "a":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-x, -y, -z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-u, -v, -w));
 
-                        indices.Add((-x, +y, +z));
-                        indices.Add((+x, -y, -z));
-                        return [.. indices];
+                        indices.Add((-u, +v, +w));
+                        indices.Add((+u, -v, -w));
+                        break;
 
                     case "b":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-x, -y, -z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-u, -v, -w));
 
-                        indices.Add((+x, -y, +z));
-                        indices.Add((-x, +y, -z));
-                        return [.. indices];
+                        indices.Add((+u, -v, +w));
+                        indices.Add((-u, +v, -w));
+                        break;
 
                     case "c":
 
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-x, -y, -z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-u, -v, -w));
 
-                        indices.Add((+x, +y, -z));
-                        indices.Add((-x, -y, +z));
-                        return [.. indices];
+                        indices.Add((+u, +v, -w));
+                        indices.Add((-u, -v, +w));
+                        break;
                 }
-                return [.. indices];
-            
+                break;
+
             case 6:// 222
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, -y, +z));
-                indices.Add((+x, -y, -z));
-                indices.Add((-x, +y, -z));
-                return [.. indices];
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, -v, +w));
+                indices.Add((+u, -v, -w));
+                indices.Add((-u, +v, -w));
+                break;
 
             case 7:// mm2
-               switch (sym.PointGroupHMStr)
+                switch (sym.PointGroupHMStr)
                 {
                     case "2mm":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((+x, -y, +z));
-                        indices.Add((+x, +y, -z));
-                        indices.Add((+x, -y, -z));
-                        return [.. indices];
-                    
+                        indices.Add((+u, +v, +w));
+                        indices.Add((+u, -v, +w));
+                        indices.Add((+u, +v, -w));
+                        indices.Add((+u, -v, -w));
+                        break;
+
                     case "m2m":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-x, +y, +z));
-                        indices.Add((+x, +y, -z));
-                        indices.Add((-x, +y, -z));
-                        return [.. indices];
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-u, +v, +w));
+                        indices.Add((+u, +v, -w));
+                        indices.Add((-u, +v, -w));
+                        break;
 
                     case "mm2":
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-x, +y, +z));
-                        indices.Add((+x, -y, +z));
-                        indices.Add((-x, -y, +z));
-                        return [.. indices];
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-u, +v, +w));
+                        indices.Add((+u, -v, +w));
+                        indices.Add((-u, -v, +w));
+                        break;
                 }
-                return [.. indices];
+                break;
 
             case 8:// mmm
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, +y, +z));
-                indices.Add((+x, -y, +z));
-                indices.Add((+x, +y, -z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, +v, +w));
+                indices.Add((+u, -v, +w));
+                indices.Add((+u, +v, -w));
 
-                indices.Add((-x, -y, +z));
-                indices.Add((+x, -y, -z));
-                indices.Add((-x, +y, -z));
-                indices.Add((-x, -y, -z));
-                return [.. indices];
+                indices.Add((-u, -v, +w));
+                indices.Add((+u, -v, -w));
+                indices.Add((-u, +v, -w));
+                indices.Add((-u, -v, -w));
+                break;
 
             case 9: //4
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, -y, +z));
-                indices.Add((-y, +x, +z));
-                indices.Add((+y, -x, +z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, -v, +w));
+                indices.Add((-v, +u, +w));
+                indices.Add((+v, -u, +w));
+                break;
 
-                return [.. indices];
-            
             case 10: //-4
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, -y, +z));
-                indices.Add((-y, +x, -z));
-                indices.Add((+y, -x, -z));
-                return [.. indices];
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, -v, +w));
+                indices.Add((-v, +u, -w));
+                indices.Add((+v, -u, -w));
+                break;
 
             case 11: //4/m
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, -y, +z));
-                indices.Add((-y, +x, +z));
-                indices.Add((+y, -x, +z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, -v, +w));
+                indices.Add((-v, +u, +w));
+                indices.Add((+v, -u, +w));
 
-                indices.Add((+x, +y, -z));
-                indices.Add((-x, -y, -z));
-                indices.Add((-y, +x, -z));
-                indices.Add((+y, -x, -z));
-                return [.. indices];
+                indices.Add((+u, +v, -w));
+                indices.Add((-u, -v, -w));
+                indices.Add((-v, +u, -w));
+                indices.Add((+v, -u, -w));
+                break;
 
             case 12: //422
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, -y, +z));
-                indices.Add((-y, +x, +z));
-                indices.Add((+y, -x, +z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, -v, +w));
+                indices.Add((-v, +u, +w));
+                indices.Add((+v, -u, +w));
 
-                indices.Add((+x, -y, -z));
-                indices.Add((-x, +y, -z));
-                indices.Add((+y, +x, -z));
-                indices.Add((-y, -x, -z));
-                return [.. indices];
+                indices.Add((+u, -v, -w));
+                indices.Add((-u, +v, -w));
+                indices.Add((+v, +u, -w));
+                indices.Add((-v, -u, -w));
+                break;
 
             case 13: //4mmm
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, -y, +z));
-                indices.Add((-y, +x, +z));
-                indices.Add((+y, -x, +z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, -v, +w));
+                indices.Add((-v, +u, +w));
+                indices.Add((+v, -u, +w));
 
-                indices.Add((+x, -y, +z));
-                indices.Add((-x, +y, +z));
-                indices.Add((+y, +x, +z));
-                indices.Add((-y, -x, +z));
-                return [.. indices];
+                indices.Add((+u, -v, +w));
+                indices.Add((-u, +v, +w));
+                indices.Add((+v, +u, +w));
+                indices.Add((-v, -u, +w));
+                break;
 
             case 14: //-42m
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, -y, +z));
-                indices.Add((+y, +x, +z));
-                indices.Add((-y, -x, +z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, -v, +w));
+                indices.Add((+v, +u, +w));
+                indices.Add((-v, -u, +w));
 
-                indices.Add((-y, +x, -z));
-                indices.Add((+y, -x, -z));
-                indices.Add((+x, -y, -z));
-                indices.Add((-x, +y, -z));
-                return [.. indices];
+                indices.Add((-v, +u, -w));
+                indices.Add((+v, -u, -w));
+                indices.Add((+u, -v, -w));
+                indices.Add((-u, +v, -w));
+                break;
 
             case 15: //4/mmm
-                indices.Add((+x, +y, +z));
-                indices.Add((-x, -y, +z));
-                indices.Add((-y, +x, +z));
-                indices.Add((+y, -x, +z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-u, -v, +w));
+                indices.Add((-v, +u, +w));
+                indices.Add((+v, -u, +w));
 
-                indices.Add((+x, -y, +z));
-                indices.Add((-x, +y, +z));
-                indices.Add((+y, +x, +z));
-                indices.Add((-y, -x, +z));
+                indices.Add((+u, -v, +w));
+                indices.Add((-u, +v, +w));
+                indices.Add((+v, +u, +w));
+                indices.Add((-v, -u, +w));
 
-                indices.Add((+x, +y, -z));
-                indices.Add((-x, -y, -z));
-                indices.Add((-y, +x, -z));
-                indices.Add((+y, -x, -z));
+                indices.Add((+u, +v, -w));
+                indices.Add((-u, -v, -w));
+                indices.Add((-v, +u, -w));
+                indices.Add((+v, -u, -w));
 
-                indices.Add((+x, -y, -z));
-                indices.Add((-x, +y, -z));
-                indices.Add((+y, +x, -z));
-                indices.Add((-y, -x, -z));
-                return [.. indices];
+                indices.Add((+u, -v, -w));
+                indices.Add((-u, +v, -w));
+                indices.Add((+v, +u, -w));
+                indices.Add((-v, -u, -w));
+                break;
 
             case 16: //3
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                 {
-                    indices.Add((x, y, z));
-                    indices.Add((-y, x - y, z));
-                    indices.Add((-x + y, -x, z));
-                    return [.. indices];
+                    indices.Add((u, v, w));
+                    indices.Add((-v, u - v, w));
+                    indices.Add((-u + v, -u, w));
                 }
                 else
                 {//Rhomboセルの場合
-                    indices.Add((+x, +y, +z));
-                    indices.Add((+z, +x, +y));
-                    indices.Add((+y, +z, +x));
-                    return [.. indices];
+                    indices.Add((+u, +v, +w));
+                    indices.Add((+w, +u, +v));
+                    indices.Add((+v, +w, +u));
                 }
+                break;
 
             case 17: //-3
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                 {
-                    indices.Add((x, y, z));
-                    indices.Add((-y, x - y, z));
-                    indices.Add((-x + y, -x, z));
+                    indices.Add((u, v, w));
+                    indices.Add((-v, u - v, w));
+                    indices.Add((-u + v, -u, w));
 
-                    indices.Add((-x, -y, -z));
-                    indices.Add((y, -x + y, -z));
-                    indices.Add((x - y, x, -z));
-                    return [.. indices];
+                    indices.Add((-u, -v, -w));
+                    indices.Add((v, -u + v, -w));
+                    indices.Add((u - v, u, -w));
                 }
                 else
                 {//Rhomboセルの場合
-                    indices.Add((+x, +y, +z));
-                    indices.Add((+z, +x, +y));
-                    indices.Add((+y, +z, +x));
+                    indices.Add((+u, +v, +w));
+                    indices.Add((+w, +u, +v));
+                    indices.Add((+v, +w, +u));
 
-                    indices.Add((-x, -y, -z));
-                    indices.Add((-z, -x, -y));
-                    indices.Add((-y, -z, -x));
-                    return [.. indices];
+                    indices.Add((-u, -v, -w));
+                    indices.Add((-w, -u, -v));
+                    indices.Add((-v, -w, -u));
                 }
+                break;
 
             case 18: //32
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                 {
                     if (sym.SpaceGroupHallStr.Contains('\"'))// 321の場合
                     {
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-y, x - y, z));
-                        indices.Add((-x + y, -x, z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-v, u - v, w));
+                        indices.Add((-u + v, -u, w));
 
-                        indices.Add((y, x, -z));
-                        indices.Add((x - y, -y, -z));
-                        indices.Add((-x, -x + y, -z));
+                        indices.Add((v, u, -w));
+                        indices.Add((u - v, -v, -w));
+                        indices.Add((-u, -u + v, -w));
                     }
                     else//312の場合
                     {
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-y, x - y, z));
-                        indices.Add((-x + y, -x, z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-v, u - v, w));
+                        indices.Add((-u + v, -u, w));
 
-                        indices.Add((-y, -x, -z));
-                        indices.Add((-x + y, y, -z));
-                        indices.Add((x, x - y, -z));
+                        indices.Add((-v, -u, -w));
+                        indices.Add((-u + v, v, -w));
+                        indices.Add((u, u - v, -w));
                     }
                 }
                 else
                 {//Rhomboセルの場合
-                    indices.Add((+x, +y, +z));
-                    indices.Add((z, x, y));
-                    indices.Add((y, z, x));
+                    indices.Add((+u, +v, +w));
+                    indices.Add((w, u, v));
+                    indices.Add((v, w, u));
 
-                    indices.Add((-z, -y, -x));
-                    indices.Add((-y, -x, -z));
-                    indices.Add((-x, -z, -y));
+                    indices.Add((-w, -v, -u));
+                    indices.Add((-v, -u, -w));
+                    indices.Add((-u, -w, -v));
                 }
-                return [.. indices];
+                break;
 
             case 19: //3m
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                 {
                     if (sym.SpaceGroupHallStr.Contains('\"'))// 3m1の場合
                     {
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-y, x - y, z));
-                        indices.Add((-x + y, -x, z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-v, u - v, w));
+                        indices.Add((-u + v, -u, w));
 
-                        indices.Add((-y, -x, z));
-                        indices.Add((-x + y, y, z));
-                        indices.Add((x, x - y, z));
+                        indices.Add((-v, -u, w));
+                        indices.Add((-u + v, v, w));
+                        indices.Add((u, u - v, w));
                     }
                     else//31mの場合
                     {
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-y, x - y, z));
-                        indices.Add((-x + y, -x, z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-v, u - v, w));
+                        indices.Add((-u + v, -u, w));
 
-                        indices.Add((y, x, z));
-                        indices.Add((x - y, -y, z));
-                        indices.Add((-x, -x + y, z));
+                        indices.Add((v, u, w));
+                        indices.Add((u - v, -v, w));
+                        indices.Add((-u, -u + v, w));
                     }
                 }
                 else
                 {//Rhomboセルの場合
-                    indices.Add((+x, +y, +z));
-                    indices.Add((z, x, y));
-                    indices.Add((y, z, x));
+                    indices.Add((+u, +v, +w));
+                    indices.Add((w, u, v));
+                    indices.Add((v, w, u));
 
-                    indices.Add((z, y, x));
-                    indices.Add((y, x, z));
-                    indices.Add((x, z, y));
+                    indices.Add((w, v, u));
+                    indices.Add((v, u, w));
+                    indices.Add((u, w, v));
                 }
-                return [.. indices];
+                break;
 
             case 20: //-3m
                 if (sym.SpaceGroupHMsubStr != "R")//Hexaセルの場合
                 {
                     if (sym.SpaceGroupHallStr.Contains('\"'))// -3m1の場合
                     {
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-y, x - y, z));
-                        indices.Add((-x + y, -x, z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-v, u - v, w));
+                        indices.Add((-u + v, -u, w));
 
-                        indices.Add((y, x, -z));
-                        indices.Add((x - y, -y, -z));
-                        indices.Add((-x, -x + y, -z));
+                        indices.Add((v, u, -w));
+                        indices.Add((u - v, -v, -w));
+                        indices.Add((-u, -u + v, -w));
 
-                        indices.Add((-x, -y, -z));
-                        indices.Add((y, -x + y, -z));
-                        indices.Add((x - y, x, -z));
+                        indices.Add((-u, -v, -w));
+                        indices.Add((v, -u + v, -w));
+                        indices.Add((u - v, u, -w));
 
-                        indices.Add((-y, -x, z));
-                        indices.Add((-x + y, y, z));
-                        indices.Add((x, x - y, z));
+                        indices.Add((-v, -u, w));
+                        indices.Add((-u + v, v, w));
+                        indices.Add((u, u - v, w));
                     }
                     else//-31mの場合
                     {
-                        indices.Add((+x, +y, +z));
-                        indices.Add((-y, x - y, z));
-                        indices.Add((-x + y, -x, z));
+                        indices.Add((+u, +v, +w));
+                        indices.Add((-v, u - v, w));
+                        indices.Add((-u + v, -u, w));
 
-                        indices.Add((-y, -x, -z));
-                        indices.Add((-x + y, y, -z));
-                        indices.Add((x, x - y, -z));
+                        indices.Add((-v, -u, -w));
+                        indices.Add((-u + v, v, -w));
+                        indices.Add((u, u - v, -w));
 
-                        indices.Add((-x, -y, -z));
-                        indices.Add((y, -x + y, -z));
-                        indices.Add((x - y, x, -z));
+                        indices.Add((-u, -v, -w));
+                        indices.Add((v, -u + v, -w));
+                        indices.Add((u - v, u, -w));
 
-                        indices.Add((y, x, z));
-                        indices.Add((x - y, -y, z));
-                        indices.Add((-x, -x + y, z));
+                        indices.Add((v, u, w));
+                        indices.Add((u - v, -v, w));
+                        indices.Add((-u, -u + v, w));
                     }
                 }
                 else
                 {//Rhomboセルの場合
-                    indices.Add((+x, +y, +z));
-                    indices.Add((z, x, y));
-                    indices.Add((y, z, x));
+                    indices.Add((+u, +v, +w));
+                    indices.Add((w, u, v));
+                    indices.Add((v, w, u));
 
-                    indices.Add((-z, -y, -x));
-                    indices.Add((-y, -x, -z));
-                    indices.Add((-x, -z, -y));
+                    indices.Add((-w, -v, -u));
+                    indices.Add((-v, -u, -w));
+                    indices.Add((-u, -w, -v));
 
-                    indices.Add((-x, -y, -z));
-                    indices.Add((-z, -x, -y));
-                    indices.Add((-y, -z, -x));
+                    indices.Add((-u, -v, -w));
+                    indices.Add((-w, -u, -v));
+                    indices.Add((-v, -w, -u));
 
-                    indices.Add((z, y, x));
-                    indices.Add((y, x, z));
-                    indices.Add((x, z, y));
+                    indices.Add((w, v, u));
+                    indices.Add((v, u, w));
+                    indices.Add((u, w, v));
                 }
-                return [.. indices];
+                break;
 
             case 21://6
-                indices.Add((+x, +y, +z));
-                indices.Add((-y, x - y, z));
-                indices.Add((-x + y, -x, z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-v, u - v, w));
+                indices.Add((-u + v, -u, w));
 
-                indices.Add((-x, -y, z));
-                indices.Add((y, -x + y, z));
-                indices.Add((x - y, x, z));
-                return [.. indices];
+                indices.Add((-u, -v, w));
+                indices.Add((v, -u + v, w));
+                indices.Add((u - v, u, w));
+                break;
 
             case 22://6/m
-                indices.Add((+x, +y, +z));
-                indices.Add((-y, x - y, z));
-                indices.Add((-x + y, -x, z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-v, u - v, w));
+                indices.Add((-u + v, -u, w));
 
-                indices.Add((x, y, -z));
-                indices.Add((-y, x - y, -z));
-                indices.Add((-x + y, -x, -z));
-                return [.. indices];
+                indices.Add((u, v, -w));
+                indices.Add((-v, u - v, -w));
+                indices.Add((-u + v, -u, -w));
+                break;
 
             case 23://6/m
-                indices.Add((+x, +y, +z));
-                indices.Add((-y, x - y, z));
-                indices.Add((-x + y, -x, z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-v, u - v, w));
+                indices.Add((-u + v, -u, w));
 
-                indices.Add((-x, -y, z));
-                indices.Add((y, -x + y, z));
-                indices.Add((x - y, x, z));
+                indices.Add((-u, -v, w));
+                indices.Add((v, -u + v, w));
+                indices.Add((u - v, u, w));
 
-                indices.Add((-x, -y, -z));
-                indices.Add((y, -x + y, -z));
-                indices.Add((x - y, x, -z));
+                indices.Add((-u, -v, -w));
+                indices.Add((v, -u + v, -w));
+                indices.Add((u - v, u, -w));
 
-                indices.Add((x, y, -z));
-                indices.Add((-y, x - y, -z));
-                indices.Add((-x + y, -x, -z));
-                return [.. indices];
+                indices.Add((u, v, -w));
+                indices.Add((-v, u - v, -w));
+                indices.Add((-u + v, -u, -w));
+                break;
 
             case 24://622
-                indices.Add((+x, +y, +z));
-                indices.Add((-y, x - y, z));
-                indices.Add((-x + y, -x, z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-v, u - v, w));
+                indices.Add((-u + v, -u, w));
 
-                indices.Add((-x, -y, z));
-                indices.Add((y, -x + y, z));
-                indices.Add((x - y, x, z));
+                indices.Add((-u, -v, w));
+                indices.Add((v, -u + v, w));
+                indices.Add((u - v, u, w));
 
-                indices.Add((y, x, -z));
-                indices.Add((x - y, -y, -z));
-                indices.Add((-x, -x + y, -z));
+                indices.Add((v, u, -w));
+                indices.Add((u - v, -v, -w));
+                indices.Add((-u, -u + v, -w));
 
-                indices.Add((-y, -x, -z));
-                indices.Add((-x + y, y, -z));
-                indices.Add((x, x - y, -z));
-                return [.. indices];
+                indices.Add((-v, -u, -w));
+                indices.Add((-u + v, v, -w));
+                indices.Add((u, u - v, -w));
+                break;
 
             case 25://6mm
-                indices.Add((+x, +y, +z));
-                indices.Add((-y, x - y, z));
-                indices.Add((-x + y, -x, z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-v, u - v, w));
+                indices.Add((-u + v, -u, w));
 
-                indices.Add((-x, -y, z));
-                indices.Add((y, -x + y, z));
-                indices.Add((x - y, x, z));
+                indices.Add((-u, -v, w));
+                indices.Add((v, -u + v, w));
+                indices.Add((u - v, u, w));
 
-                indices.Add((-y, -x, z));
-                indices.Add((-x + y, y, z));
-                indices.Add((x, x - y, z));
+                indices.Add((-v, -u, w));
+                indices.Add((-u + v, v, w));
+                indices.Add((u, u - v, w));
 
-                indices.Add((y, x, z));
-                indices.Add((x - y, -y, z));
-                indices.Add((-x, -x + y, z));
-
-                return [.. indices];
+                indices.Add((v, u, w));
+                indices.Add((u - v, -v, w));
+                indices.Add((-u, -u + v, w));
+                break;
 
             case 26://-6m2
-                indices.Add((+x, +y, +z));
-                indices.Add((-y, x - y, z));
-                indices.Add((-x + y, -x, z));
-                
-                indices.Add((-y, -x, -z));
-                indices.Add((-x + y, y, -z));
-                indices.Add((x, x - y, -z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-v, u - v, w));
+                indices.Add((-u + v, -u, w));
 
-                indices.Add((x, y, -z));
-                indices.Add((-y, x - y, -z));
-                indices.Add((-x + y, -x, -z));
+                indices.Add((-v, -u, -w));
+                indices.Add((-u + v, v, -w));
+                indices.Add((u, u - v, -w));
 
-                indices.Add((-y, -x, z));
-                indices.Add((-x + y, y, z));
-                indices.Add((x, x - y, z));
+                indices.Add((u, v, -w));
+                indices.Add((-v, u - v, -w));
+                indices.Add((-u + v, -u, -w));
 
-                return [.. indices];
+                indices.Add((-v, -u, w));
+                indices.Add((-u + v, v, w));
+                indices.Add((u, u - v, w));
+                break;
 
             case 27://6/mmm
-                indices.Add((+x, +y, +z));
-                indices.Add((-y, x - y, z));
-                indices.Add((-x + y, -x, z));
+                indices.Add((+u, +v, +w));
+                indices.Add((-v, u - v, w));
+                indices.Add((-u + v, -u, w));
 
-                indices.Add((-x, -y, z));
-                indices.Add((y, -x + y, z));
-                indices.Add((x - y, x, z));
+                indices.Add((-u, -v, w));
+                indices.Add((v, -u + v, w));
+                indices.Add((u - v, u, w));
 
-                indices.Add((y, x, -z));
-                indices.Add((x - y, -y, -z));
-                indices.Add((-x, -x + y, -z));
+                indices.Add((v, u, -w));
+                indices.Add((u - v, -v, -w));
+                indices.Add((-u, -u + v, -w));
 
-                indices.Add((-y, -x, -z));
-                indices.Add((-x + y, y, -z));
-                indices.Add((x, x - y, -z));
+                indices.Add((-v, -u, -w));
+                indices.Add((-u + v, v, -w));
+                indices.Add((u, u - v, -w));
 
-                indices.Add((-x, -y, -z));
-                indices.Add((y, -x + y, -z));
-                indices.Add((x - y, x, -z));
+                indices.Add((-u, -v, -w));
+                indices.Add((v, -u + v, -w));
+                indices.Add((u - v, u, -w));
 
-                indices.Add((x, y, -z));
-                indices.Add((-y, x - y, -z));
-                indices.Add((-x + y, -x, -z));
+                indices.Add((u, v, -w));
+                indices.Add((-v, u - v, -w));
+                indices.Add((-u + v, -u, -w));
 
-                indices.Add((-y, -x, z));
-                indices.Add((-x + y, y, z));
-                indices.Add((x, x - y, z));
+                indices.Add((-v, -u, w));
+                indices.Add((-u + v, v, w));
+                indices.Add((u, u - v, w));
 
-                indices.Add((y, x, z));
-                indices.Add((x - y, -y, z));
-                indices.Add((-x, -x + y, z));
-
-                return [.. indices];
+                indices.Add((v, u, w));
+                indices.Add((u - v, -v, w));
+                indices.Add((-u, -u + v, w));
+                break;
 
             case 28://23
-                indices.Add((x, y, z));
-                indices.Add((-x, -y, z));
-                indices.Add((-x, y, -z));
-                indices.Add((x, -y, -z));
+                indices.Add((u, v, w));
+                indices.Add((-u, -v, w));
+                indices.Add((-u, v, -w));
+                indices.Add((u, -v, -w));
 
-                indices.Add((z, x, y));
-                indices.Add((z, -x, -y));
-                indices.Add((-z, -x, y));
-                indices.Add((-z, x, -y));
+                indices.Add((w, u, v));
+                indices.Add((w, -u, -v));
+                indices.Add((-w, -u, v));
+                indices.Add((-w, u, -v));
 
-                indices.Add((y, z, x));
-                indices.Add((-y, z, -x));
-                indices.Add((y, -z, -x));
-                indices.Add((-y, -z, x));
-                return [.. indices];
+                indices.Add((v, w, u));
+                indices.Add((-v, w, -u));
+                indices.Add((v, -w, -u));
+                indices.Add((-v, -w, u));
+                break;
 
             case 29://m-3
-                indices.Add((x, y, z));
-                indices.Add((-x, -y, z));
-                indices.Add((-x, y, -z));
-                indices.Add((x, -y, -z));
+                indices.Add((u, v, w));
+                indices.Add((-u, -v, w));
+                indices.Add((-u, v, -w));
+                indices.Add((u, -v, -w));
 
-                indices.Add((z, x, y));
-                indices.Add((z, -x, -y));
-                indices.Add((-z, -x, y));
-                indices.Add((-z, x, -y));
+                indices.Add((w, u, v));
+                indices.Add((w, -u, -v));
+                indices.Add((-w, -u, v));
+                indices.Add((-w, u, -v));
 
-                indices.Add((y, z, x));
-                indices.Add((-y, z, -x));
-                indices.Add((y, -z, -x));
-                indices.Add((-y, -z, x));
+                indices.Add((v, w, u));
+                indices.Add((-v, w, -u));
+                indices.Add((v, -w, -u));
+                indices.Add((-v, -w, u));
 
-                indices.Add((-x, -y, -z));
-                indices.Add((x, y, -z));
-                indices.Add((x, -y, z));
-                indices.Add((-x, y, z));
+                indices.Add((-u, -v, -w));
+                indices.Add((u, v, -w));
+                indices.Add((u, -v, w));
+                indices.Add((-u, v, w));
 
-                indices.Add((-z, -x, -y));
-                indices.Add((-z, x, y));
-                indices.Add((z, x, -y));
-                indices.Add((z, -x, y));
+                indices.Add((-w, -u, -v));
+                indices.Add((-w, u, v));
+                indices.Add((w, u, -v));
+                indices.Add((w, -u, v));
 
-                indices.Add((-y, -z, -x));
-                indices.Add((y, -z, x));
-                indices.Add((-y, z, x));
-                indices.Add((y, z, -x));
-                return [.. indices];
+                indices.Add((-v, -w, -u));
+                indices.Add((v, -w, u));
+                indices.Add((-v, w, u));
+                indices.Add((v, w, -u));
+                break;
 
             case 30://432
-                indices.Add((+x, +y, +z));//1
-                indices.Add((-x, -y, z));//2_001
-                indices.Add((-x, y, -z));//2_010
-                indices.Add((x, -y, -z));//2_100
+                indices.Add((+u, +v, +w));//1
+                indices.Add((-u, -v, w));//2_001
+                indices.Add((-u, v, -w));//2_010
+                indices.Add((u, -v, -w));//2_100
 
-                indices.Add((z, x, y));//3+_111
-                indices.Add((z, -x, -y));//3+_-11-1
-                indices.Add((-z, -x, y));//3+_1-1-1
-                indices.Add((-z, x, -y));//3+_-1-11
+                indices.Add((w, u, v));//3+_111
+                indices.Add((w, -u, -v));//3+_-11-1
+                indices.Add((-w, -u, v));//3+_1-1-1
+                indices.Add((-w, u, -v));//3+_-1-11
 
-                indices.Add((y, z, x));//3-_111
-                indices.Add((-y, z, -x));//3_-1-1-1
-                indices.Add((y, -z, -x));//3-_-1-11
-                indices.Add((-y, -z, x));//3-_-11-1
+                indices.Add((v, w, u));//3-_111
+                indices.Add((-v, w, -u));//3_-1-1-1
+                indices.Add((v, -w, -u));//3-_-1-11
+                indices.Add((-v, -w, u));//3-_-11-1
 
-                indices.Add((y, x, -z));//2_110
-                indices.Add((-y, -x, -z));//2_1-10
-                indices.Add((y, -x, z));//4-_001
-                indices.Add((-y, x, z));//4+_001
+                indices.Add((v, u, -w));//2_110
+                indices.Add((-v, -u, -w));//2_1-10
+                indices.Add((v, -u, w));//4-_001
+                indices.Add((-v, u, w));//4+_001
 
-                indices.Add((x, z, -y));//4-_100
-                indices.Add((-x, z, y));//2_011
-                indices.Add((-x, -z, -y));//2_01-1
-                indices.Add((x, -z, y));//4+_100
+                indices.Add((u, w, -v));//4-_100
+                indices.Add((-u, w, v));//2_011
+                indices.Add((-u, -w, -v));//2_01-1
+                indices.Add((u, -w, v));//4+_100
 
-                indices.Add((z, y, -x));//4+_010
-                indices.Add((z, -y, x));//2_101
-                indices.Add((-z, y, x));//4-_010
-                indices.Add((-z, -y, -x));//2_-101
-                return [.. indices];
+                indices.Add((w, v, -u));//4+_010
+                indices.Add((w, -v, u));//2_101
+                indices.Add((-w, v, u));//4-_010
+                indices.Add((-w, -v, -u));//2_-101
+                break;
 
             case 31://-43m
-                indices.Add((+x, +y, +z));//1
-                indices.Add((-x, -y, z));//2_001
-                indices.Add((-x, y, -z));//2_010
-                indices.Add((x, -y, -z));//2_100
+                indices.Add((+u, +v, +w));//1
+                indices.Add((-u, -v, w));//2_001
+                indices.Add((-u, v, -w));//2_010
+                indices.Add((u, -v, -w));//2_100
 
-                indices.Add((z, x, y));//3+_111
-                indices.Add((z, -x, -y));//3+_-11-1
-                indices.Add((-z, -x, y));//3+_1-1-1
-                indices.Add((-z, x, -y));//3+_-1-11
+                indices.Add((w, u, v));//3+_111
+                indices.Add((w, -u, -v));//3+_-11-1
+                indices.Add((-w, -u, v));//3+_1-1-1
+                indices.Add((-w, u, -v));//3+_-1-11
 
-                indices.Add((y, z, x));//3-_111
-                indices.Add((-y, z, -x));//3_-1-1-1
-                indices.Add((y, -z, -x));//3-_-1-11
-                indices.Add((-y, -z, x));//3-_-11-1
+                indices.Add((v, w, u));//3-_111
+                indices.Add((-v, w, -u));//3_-1-1-1
+                indices.Add((v, -w, -u));//3-_-1-11
+                indices.Add((-v, -w, u));//3-_-11-1
 
-                indices.Add((-y, -x, z));//m110
-                indices.Add((y, x, z));//m1-10
-                indices.Add((-y, x, -z));//	-4-_001
-                indices.Add((y, -x, -z));//-4+_001
+                indices.Add((-v, -u, w));//m110
+                indices.Add((v, u, w));//m1-10
+                indices.Add((-v, u, -w));//	-4-_001
+                indices.Add((v, -u, -w));//-4+_001
 
-                indices.Add((-x, -z, y));//-4-_100
-                indices.Add((x, -z, -y));//m_011
-                indices.Add((x, z, y));//m_01-1
-                indices.Add((-x, z, -y));//	-4+_100
+                indices.Add((-u, -w, v));//-4-_100
+                indices.Add((u, -w, -v));//m_011
+                indices.Add((u, w, v));//m_01-1
+                indices.Add((-u, w, -v));//	-4+_100
 
-                indices.Add((-z, -y, x));//	-4+_010
-                indices.Add((-z, y, -x));//m_101
-                indices.Add((z, -y, -x));//	-4-_010
-                indices.Add((z, y, x));//m-_101
-                return [.. indices];
+                indices.Add((-w, -v, u));//	-4+_010
+                indices.Add((-w, v, -u));//m_101
+                indices.Add((w, -v, -u));//	-4-_010
+                indices.Add((w, v, u));//m-_101
+                break;
 
             case 32://m3m
-                indices.Add((+x, +y, +z));//1
-                indices.Add((-x, -y, z));//2_001
-                indices.Add((-x, y, -z));//2_010
-                indices.Add((x, -y, -z));//2_100
+                indices.Add((+u, +v, +w));//1
+                indices.Add((-u, -v, w));//2_001
+                indices.Add((-u, v, -w));//2_010
+                indices.Add((u, -v, -w));//2_100
 
-                indices.Add((z, x, y));//3+_111
-                indices.Add((z, -x, -y));//3+_-11-1
-                indices.Add((-z, -x, y));//3+_1-1-1
-                indices.Add((-z, x, -y));//3+_-1-11
+                indices.Add((w, u, v));//3+_111
+                indices.Add((w, -u, -v));//3+_-11-1
+                indices.Add((-w, -u, v));//3+_1-1-1
+                indices.Add((-w, u, -v));//3+_-1-11
 
-                indices.Add((y, z, x));//3-_111
-                indices.Add((-y, z, -x));//3_-1-1-1
-                indices.Add((y, -z, -x));//3-_-1-11
-                indices.Add((-y, -z, x));//3-_-11-1
+                indices.Add((v, w, u));//3-_111
+                indices.Add((-v, w, -u));//3_-1-1-1
+                indices.Add((v, -w, -u));//3-_-1-11
+                indices.Add((-v, -w, u));//3-_-11-1
 
-                indices.Add((y, x, -z));//2_110
-                indices.Add((-y, -x, -z));//2_1-10
-                indices.Add((y, -x, z));//4-_001
-                indices.Add((-y, x, z));//4+_001
+                indices.Add((v, u, -w));//2_110
+                indices.Add((-v, -u, -w));//2_1-10
+                indices.Add((v, -u, w));//4-_001
+                indices.Add((-v, u, w));//4+_001
 
-                indices.Add((x, z, -y));//4-_100
-                indices.Add((-x, z, y));//2_011
-                indices.Add((-x, -z, -y));//2_01-1
-                indices.Add((x, -z, y));//4+_100
+                indices.Add((u, w, -v));//4-_100
+                indices.Add((-u, w, v));//2_011
+                indices.Add((-u, -w, -v));//2_01-1
+                indices.Add((u, -w, v));//4+_100
 
-                indices.Add((z, y, -x));//4+_010
-                indices.Add((z, -y, x));//2_101
-                indices.Add((-z, y, x));//4-_010
-                indices.Add((-z, -y, -x));//2_-101
+                indices.Add((w, v, -u));//4+_010
+                indices.Add((w, -v, u));//2_101
+                indices.Add((-w, v, u));//4-_010
+                indices.Add((-w, -v, -u));//2_-101
 
-                indices.Add((-x, -y, -z));//-1
-                indices.Add((x, y, -z));//m_001
-                indices.Add((x, -y, z));//m_010
-                indices.Add((-x, y, z));//m_100
+                indices.Add((-u, -v, -w));//-1
+                indices.Add((u, v, -w));//m_001
+                indices.Add((u, -v, w));//m_010
+                indices.Add((-u, v, w));//m_100
 
-                indices.Add((-z, -x, -y));//-3+_111
-                indices.Add((-z, x, y));//-3+_-11-1
-                indices.Add((z, x, -y));//-3+_1-1-1
-                indices.Add((z, -x, y));//-3+_-1-11
+                indices.Add((-w, -u, -v));//-3+_111
+                indices.Add((-w, u, v));//-3+_-11-1
+                indices.Add((w, u, -v));//-3+_1-1-1
+                indices.Add((w, -u, v));//-3+_-1-11
 
-                indices.Add((-y, -z, -x));//-3-_111
-                indices.Add((y, -z, x));//-3-_1-1-1
-                indices.Add((-y, z, x));//-3-_-1-11
-                indices.Add((y, z, -x));//-3-_-11-1
+                indices.Add((-v, -w, -u));//-3-_111
+                indices.Add((v, -w, u));//-3-_1-1-1
+                indices.Add((-v, w, u));//-3-_-1-11
+                indices.Add((v, w, -u));//-3-_-11-1
 
-                indices.Add((-y, -x, z));//m110
-                indices.Add((y, x, z));//m1-10
-                indices.Add((-y, x, -z));//	-4-_001
-                indices.Add((y, -x, -z));//-4+_001
+                indices.Add((-v, -u, w));//m110
+                indices.Add((v, u, w));//m1-10
+                indices.Add((-v, u, -w));//	-4-_001
+                indices.Add((v, -u, -w));//-4+_001
 
-                indices.Add((-x, -z, y));//-4-_100
-                indices.Add((x, -z, -y));//m_011
-                indices.Add((x, z, y));//m_01-1
-                indices.Add((-x, z, -y));//	-4+_100
+                indices.Add((-u, -w, v));//-4-_100
+                indices.Add((u, -w, -v));//m_011
+                indices.Add((u, w, v));//m_01-1
+                indices.Add((-u, w, -v));//	-4+_100
 
-                indices.Add((-z, -y, x));//	-4+_010
-                indices.Add((-z, y, -x));//m_101
-                indices.Add((z, -y, -x));//	-4-_010
-                indices.Add((z, y, x));//m-_101
-                return [.. indices];
+                indices.Add((-w, -v, u));//	-4+_010
+                indices.Add((-w, v, -u));//m_101
+                indices.Add((w, -v, -u));//	-4-_010
+                indices.Add((w, v, u));//m-_101
+                break;
         }
-        return [.. indices];
+        #endregion
+
+        #region sort=trueの場合、軸指数をソートする
+        if (!sort)
+            return [.. indices];
+        else
+        {
+            var array = indices.ToArray();
+            if (pgNum >= 16 && pgNum <= 27 && sym.SpaceGroupHMsubStr != "R")//三方、六方晶系の六方格子の場合
+            {
+                //u,v,i (=u-v)の中で、最も絶対値が大きいものをiに持ってくる
+                Array.Sort(array, static (a, b) =>
+                {
+                    if (Math.Abs(a.U - a.V) != Math.Abs(b.U - b.V))
+                        return Math.Abs(b.U - b.V).CompareTo(Math.Abs(a.U - a.V));
+                    else if (a.U != b.U)
+                        return b.W.CompareTo(a.W);
+                    else if (a.V != b.V)
+                        return b.U.CompareTo(a.U);
+                    else
+                        return b.V.CompareTo(a.V);
+                });
+            }
+            else if (pgNum >= 3 && pgNum <= 5)//monoclinicの場合
+            {
+                // 主軸が第一ソートキーになるようにする
+                if (sym.MainAxis == "a")
+                    Array.Sort(array, static (a, b) =>
+                    {
+                        if (a.U != b.U)
+                            return b.U.CompareTo(a.U);
+                        else if (a.V != b.V)
+                            return b.V.CompareTo(a.V);
+                        else
+                            return b.W.CompareTo(a.W);
+                    });
+                else if (sym.MainAxis == "b")
+                {
+                    Array.Sort(array, static (a, b) =>
+                    {
+                        if (a.V != b.V)
+                            return b.V.CompareTo(a.V);
+                        else if (a.W != b.W)
+                            return b.W.CompareTo(a.W);
+                        else
+                            return b.U.CompareTo(a.U);
+                    });
+                }
+                else
+                    Array.Sort(array, static (a, b) =>
+                    {
+                        if (a.W != b.W)
+                            return b.W.CompareTo(a.W);
+                        else if (a.U != b.U)
+                            return b.U.CompareTo(a.U);
+                        else
+                            return b.V.CompareTo(a.V);
+                    });
+            }
+            else if(pgNum >= 9 && pgNum <= 15)//tetragonalの場合
+                Array.Sort(array, static (a, b) =>
+                {
+                    if (a.W != b.W)
+                        return b.W.CompareTo(a.W);
+                    if (a.U != b.U)
+                        return b.U.CompareTo(a.U);
+                    else 
+                        return b.V.CompareTo(a.V);
+                    
+                });
+            else//それ以外の結晶系の時
+                Array.Sort(array, static (a, b) =>
+                {
+                    if (a.U != b.U)
+                        return b.U.CompareTo(a.U);
+                    else if (a.V != b.V)
+                        return b.V.CompareTo(a.V);
+                    else
+                        return b.W.CompareTo(a.W);
+                });
+            return array;
+        }
         #endregion
     }
 
     /// <summary>
     /// 二つの軸[u1,v1,w1]と[u2,v2,w2]が等価な軸であるかどうかを判定
     /// </summary>
-    /// <param name="u1"></param>
-    /// <param name="v1"></param>
-    /// <param name="w1"></param>
-    /// <param name="u2"></param>
-    /// <param name="v2"></param>
-    /// <param name="w2"></param>
     /// <param name="sym"></param>
     /// <returns></returns>
     public static bool CheckEquivalentAxes(int u1, int v1, int w1, int u2, int v2, int w2, Symmetry sym)
-        => new List<(int U, int V, int W)>(GenerateEquivalentAxes((u1, v1, w1), sym, false)).Contains((u2, v2, w2));
+        => GenerateEquivalentAxes((u1, v1, w1), sym, false).Contains((u2, v2, w2));
 
     #endregion
-    
+
 }
