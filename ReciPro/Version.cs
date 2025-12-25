@@ -7,7 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
-        "\r\n ver4.914(2025/12/25)  Improved: Equivalent axes/planes can be color-coded in 'Stereonet'." +
+        "\r\n ver4.915(2025/12/25)  Improved: Equivalent axes/planes can be color-coded in 'Stereonet'." +
         "\r\n ver4.914(2025/12/21)  Added: 'TEM holder simulation' to 'Diffraction Simulator'. Miller-Bravais index option to 'Stereonet'" +
         "\r\n ver4.913(2025/12/12)  Fixed bugs on program update and crystal database functions." +
         "\r\n ver4.912(2025/12/10)  Updated AMCSD database. Improved to run on Windows on ARM64." +

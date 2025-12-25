@@ -567,7 +567,6 @@ namespace ReciPro
             colorControlString.Red = 0;
             colorControlString.RedF = 0F;
             colorControlString.TabStop = false;
-            toolTip.SetToolTip(colorControlString, resources.GetString("colorControlString.ToolTip1"));
             colorControlString.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControlKikuchi
@@ -602,7 +601,6 @@ namespace ReciPro
             colorControlBackGround.Red = 255;
             colorControlBackGround.RedF = 1F;
             colorControlBackGround.TabStop = false;
-            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip1"));
             colorControlBackGround.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl10DegLine
@@ -620,7 +618,6 @@ namespace ReciPro
             colorControl10DegLine.Red = 138;
             colorControl10DegLine.RedF = 0.5411765F;
             colorControl10DegLine.TabStop = false;
-            toolTip.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip1"));
             colorControl10DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl1DegLine
@@ -638,7 +635,6 @@ namespace ReciPro
             colorControl1DegLine.Red = 192;
             colorControl1DegLine.RedF = 0.7529412F;
             colorControl1DegLine.TabStop = false;
-            toolTip.SetToolTip(colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip1"));
             colorControl1DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl90DegLine
@@ -656,7 +652,6 @@ namespace ReciPro
             colorControl90DegLine.Red = 60;
             colorControl90DegLine.RedF = 0.235294119F;
             colorControl90DegLine.TabStop = false;
-            toolTip.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip1"));
             colorControl90DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // tabPage2
@@ -1421,10 +1416,10 @@ namespace ReciPro
             colorControlIndex.RedF = 1F;
             colorControlIndex.ColorChanged += colorControlIndex_ColorChanged;
             // 
-            // checkBox4
+            // checkBoxRotateColor
             // 
-            resources.ApplyResources(checkBoxRotateColor, "checkBox4");
-            checkBoxRotateColor.Name = "checkBox4";
+            resources.ApplyResources(checkBoxRotateColor, "checkBoxRotateColor");
+            checkBoxRotateColor.Name = "checkBoxRotateColor";
             checkBoxRotateColor.UseVisualStyleBackColor = true;
             checkBoxRotateColor.CheckedChanged += checkBoxRotateColor_CheckedChanged;
             // 
@@ -1706,7 +1701,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -1094713043);
+            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -615677845);
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
             scalablePictureBoxAdvanced1.SkipDrawing = false;
             scalablePictureBoxAdvanced1.StatusLabel = " ";
@@ -1737,7 +1732,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -1094713043);
+            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -615677845);
             scalablePictureBoxAdvanced2.ShowGradiaent = true;
             scalablePictureBoxAdvanced2.SkipDrawing = false;
             scalablePictureBoxAdvanced2.StatusLabel = " ";

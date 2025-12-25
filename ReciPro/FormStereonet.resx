@@ -139,7 +139,7 @@
     <value>0, 0</value>
   </data>
   <data name="graphicsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>760, 468</value>
+    <value>595, 468</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="graphicsBox.TabIndex" type="System.Int32, mscorlib">
@@ -202,10 +202,10 @@ Middle drag: Drag the simulated image
     <value>0</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1122, 468</value>
+    <value>880, 468</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>760</value>
+    <value>595</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
@@ -1302,7 +1302,7 @@ or the Kikuchi line</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlString.FooterText" xml:space="preserve">
-    <value>Zone axes label in Kikuchi pattern</value>
+    <value>Zone axis label in Kikuchi pattern</value>
   </data>
   <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1317,16 +1317,10 @@ or the Kikuchi line</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 20</value>
+    <value>202, 20</value>
   </data>
   <data name="colorControlString.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
-  </data>
-  <data name="colorControlString.ToolTip" xml:space="preserve">
-    <value>指数文字の色</value>
-  </data>
-  <data name="colorControlString.ToolTip1" xml:space="preserve">
-    <value>指数文字の色</value>
   </data>
   <data name="&gt;&gt;colorControlString.Name" xml:space="preserve">
     <value>colorControlString</value>
@@ -1424,12 +1418,6 @@ or the Kikuchi line</value>
   <data name="colorControlBackGround.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
-  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>背景色</value>
-  </data>
-  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
-    <value>背景色</value>
-  </data>
   <data name="&gt;&gt;colorControlBackGround.Name" xml:space="preserve">
     <value>colorControlBackGround</value>
   </data>
@@ -1467,7 +1455,7 @@ or the Kikuchi line</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl10DegLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 22</value>
+    <value>156, 22</value>
   </data>
   <data name="colorControl10DegLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1477,12 +1465,6 @@ or the Kikuchi line</value>
   </data>
   <data name="colorControl10DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
-  </data>
-  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
-    <value>10度線の色</value>
-  </data>
-  <data name="colorControl10DegLine.ToolTip1" xml:space="preserve">
-    <value>10度線の色</value>
   </data>
   <data name="&gt;&gt;colorControl10DegLine.Name" xml:space="preserve">
     <value>colorControl10DegLine</value>
@@ -1521,7 +1503,7 @@ or the Kikuchi line</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl1DegLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 22</value>
+    <value>207, 22</value>
   </data>
   <data name="colorControl1DegLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1531,14 +1513,6 @@ or the Kikuchi line</value>
   </data>
   <data name="colorControl1DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
-  </data>
-  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
-    <value>1度線の色
-「Show 1°line」がチェックされているとき有効</value>
-  </data>
-  <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
-    <value>1度線の色
-「Show 1°line」がチェックされているとき有効</value>
   </data>
   <data name="&gt;&gt;colorControl1DegLine.Name" xml:space="preserve">
     <value>colorControl1DegLine</value>
@@ -1577,7 +1551,7 @@ or the Kikuchi line</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl90DegLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 22</value>
+    <value>106, 22</value>
   </data>
   <data name="colorControl90DegLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1587,12 +1561,6 @@ or the Kikuchi line</value>
   </data>
   <data name="colorControl90DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
-  </data>
-  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
-    <value>90度線の色</value>
-  </data>
-  <data name="colorControl90DegLine.ToolTip1" xml:space="preserve">
-    <value>90度線の色</value>
   </data>
   <data name="&gt;&gt;colorControl90DegLine.Name" xml:space="preserve">
     <value>colorControl90DegLine</value>
@@ -2487,7 +2455,7 @@ by two planes</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 71</value>
+    <value>277, 249</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3750,7 +3718,7 @@ by two planes</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 71</value>
+    <value>277, 249</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3819,7 +3787,7 @@ by two planes</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 71</value>
+    <value>277, 249</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3969,7 +3937,7 @@ by two planes</value>
     <value>8, 2, 0, 2</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1125, 25</value>
+    <value>883, 25</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -4442,7 +4410,7 @@ by two planes</value>
     <value>4, 0</value>
   </data>
   <data name="listBoxSpecifiedIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>432, 94</value>
+    <value>190, 72</value>
   </data>
   <data name="listBoxSpecifiedIndices.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4600,40 +4568,40 @@ by two planes</value>
   <data name="&gt;&gt;colorControlIndex.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="checkBox4.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBoxRotateColor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBox4.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="checkBoxRotateColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="checkBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 0</value>
+  <data name="checkBoxRotateColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
   </data>
-  <data name="checkBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="checkBoxRotateColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="checkBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="checkBoxRotateColor.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
   </data>
-  <data name="checkBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
+  <data name="checkBoxRotateColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 22</value>
   </data>
-  <data name="checkBox4.TabIndex" type="System.Int32, mscorlib">
+  <data name="checkBoxRotateColor.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="checkBox4.Text" xml:space="preserve">
-    <value>Use diffrent colors</value>
+  <data name="checkBoxRotateColor.Text" xml:space="preserve">
+    <value>Rotate color</value>
   </data>
-  <data name="&gt;&gt;checkBox4.Name" xml:space="preserve">
-    <value>checkBox4</value>
+  <data name="&gt;&gt;checkBoxRotateColor.Name" xml:space="preserve">
+    <value>checkBoxRotateColor</value>
   </data>
-  <data name="&gt;&gt;checkBox4.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxRotateColor.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxRotateColor.Parent" xml:space="preserve">
     <value>flowLayoutPanelAddRemove</value>
   </data>
-  <data name="&gt;&gt;checkBox4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxRotateColor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.AutoSize" type="System.Boolean, mscorlib">
@@ -4646,7 +4614,7 @@ by two planes</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
+    <value>0, 47</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4682,13 +4650,13 @@ by two planes</value>
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanelAddRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 94</value>
+    <value>4, 72</value>
   </data>
   <data name="flowLayoutPanelAddRemove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelAddRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>432, 47</value>
+    <value>190, 69</value>
   </data>
   <data name="flowLayoutPanelAddRemove.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -4718,7 +4686,7 @@ by two planes</value>
     <value>4, 0, 0, 0</value>
   </data>
   <data name="panelSpecifiedIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>436, 141</value>
+    <value>194, 141</value>
   </data>
   <data name="panelSpecifiedIndices.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -5303,7 +5271,7 @@ by two planes</value>
     <value>3, 0, 3, 3</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>643, 162</value>
+    <value>401, 162</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5327,7 +5295,7 @@ by two planes</value>
     <value>Right</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>912, 0</value>
+    <value>670, 0</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>5, 162</value>
@@ -5684,7 +5652,7 @@ by two planes</value>
     <value>Right</value>
   </data>
   <data name="panel3DOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>917, 0</value>
+    <value>675, 0</value>
   </data>
   <data name="panel3DOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 162</value>
@@ -5714,7 +5682,7 @@ by two planes</value>
     <value>5, 0, 5, 5</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1125, 167</value>
+    <value>883, 167</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5741,7 +5709,7 @@ by two planes</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, -1094712779</value>
+    <value>410, -615677581</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5779,7 +5747,7 @@ by two planes</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, -1094712779</value>
+    <value>410, -615677581</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5823,7 +5791,7 @@ by two planes</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1125, 687</value>
+    <value>883, 687</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
