@@ -72,12 +72,8 @@ namespace ReciPro
             groupBox1 = new System.Windows.Forms.GroupBox();
             colorControlString = new ColorControl();
             colorControlKikuchi = new ColorControl();
-            colorControlUniqueAxis = new ColorControl();
-            colorControlGeneralAxis = new ColorControl();
             colorControlBackGround = new ColorControl();
-            colorControlUniquePlane = new ColorControl();
             colorControl10DegLine = new ColorControl();
-            colorControlGeneralPlane = new ColorControl();
             colorControl1DegLine = new ColorControl();
             colorControl90DegLine = new ColorControl();
             tabPage2 = new System.Windows.Forms.TabPage();
@@ -177,8 +173,8 @@ namespace ReciPro
             flowLayoutPanelAddRemove = new System.Windows.Forms.FlowLayoutPanel();
             buttonAddIndex = new System.Windows.Forms.Button();
             buttonRemoveIndex = new System.Windows.Forms.Button();
-            colorControl1 = new ColorControl();
-            checkBox4 = new System.Windows.Forms.CheckBox();
+            colorControlIndex = new ColorControl();
+            checkBoxRotateColor = new System.Windows.Forms.CheckBox();
             checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -547,12 +543,8 @@ namespace ReciPro
             // 
             groupBox1.Controls.Add(colorControlString);
             groupBox1.Controls.Add(colorControlKikuchi);
-            groupBox1.Controls.Add(colorControlUniqueAxis);
-            groupBox1.Controls.Add(colorControlGeneralAxis);
             groupBox1.Controls.Add(colorControlBackGround);
-            groupBox1.Controls.Add(colorControlUniquePlane);
             groupBox1.Controls.Add(colorControl10DegLine);
-            groupBox1.Controls.Add(colorControlGeneralPlane);
             groupBox1.Controls.Add(colorControl1DegLine);
             groupBox1.Controls.Add(colorControl90DegLine);
             resources.ApplyResources(groupBox1, "groupBox1");
@@ -562,13 +554,13 @@ namespace ReciPro
             // 
             // colorControlString
             // 
-            colorControlString.Argb = -16777216;
+            colorControlString.Argb = -16777088;
             resources.ApplyResources(colorControlString, "colorControlString");
             colorControlString.BackColor = System.Drawing.Color.Black;
-            colorControlString.Blue = 0;
-            colorControlString.BlueF = 0F;
+            colorControlString.Blue = 128;
+            colorControlString.BlueF = 0.5019608F;
             colorControlString.BoxSize = new System.Drawing.Size(22, 20);
-            colorControlString.Color = System.Drawing.Color.FromArgb(0, 0, 0);
+            colorControlString.Color = System.Drawing.Color.FromArgb(0, 0, 128);
             colorControlString.Green = 0;
             colorControlString.GreenF = 0F;
             colorControlString.Name = "colorControlString";
@@ -580,55 +572,20 @@ namespace ReciPro
             // 
             // colorControlKikuchi
             // 
-            colorControlKikuchi.Argb = -32768;
+            colorControlKikuchi.Argb = -16777088;
             resources.ApplyResources(colorControlKikuchi, "colorControlKikuchi");
-            colorControlKikuchi.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            colorControlKikuchi.Blue = 0;
-            colorControlKikuchi.BlueF = 0F;
+            colorControlKikuchi.BackColor = System.Drawing.Color.White;
+            colorControlKikuchi.Blue = 128;
+            colorControlKikuchi.BlueF = 0.5019608F;
             colorControlKikuchi.BoxSize = new System.Drawing.Size(22, 20);
-            colorControlKikuchi.Color = System.Drawing.Color.FromArgb(255, 128, 0);
-            colorControlKikuchi.Green = 128;
-            colorControlKikuchi.GreenF = 0.5019608F;
+            colorControlKikuchi.Color = System.Drawing.Color.FromArgb(0, 0, 128);
+            colorControlKikuchi.Green = 0;
+            colorControlKikuchi.GreenF = 0F;
             colorControlKikuchi.Name = "colorControlKikuchi";
-            colorControlKikuchi.Red = 255;
-            colorControlKikuchi.RedF = 1F;
+            colorControlKikuchi.Red = 0;
+            colorControlKikuchi.RedF = 0F;
             colorControlKikuchi.TabStop = false;
             colorControlKikuchi.ColorChanged += colorControl_ColorChanged;
-            // 
-            // colorControlUniqueAxis
-            // 
-            colorControlUniqueAxis.Argb = -7667712;
-            resources.ApplyResources(colorControlUniqueAxis, "colorControlUniqueAxis");
-            colorControlUniqueAxis.BackColor = System.Drawing.Color.Red;
-            colorControlUniqueAxis.Blue = 0;
-            colorControlUniqueAxis.BlueF = 0F;
-            colorControlUniqueAxis.BoxSize = new System.Drawing.Size(22, 20);
-            colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(139, 0, 0);
-            colorControlUniqueAxis.Green = 0;
-            colorControlUniqueAxis.GreenF = 0F;
-            colorControlUniqueAxis.Name = "colorControlUniqueAxis";
-            colorControlUniqueAxis.Red = 139;
-            colorControlUniqueAxis.RedF = 0.545098066F;
-            colorControlUniqueAxis.TabStop = false;
-            toolTip.SetToolTip(colorControlUniqueAxis, resources.GetString("colorControlUniqueAxis.ToolTip1"));
-            colorControlUniqueAxis.ColorChanged += colorControl_ColorChanged;
-            // 
-            // colorControlGeneralAxis
-            // 
-            colorControlGeneralAxis.Argb = -65536;
-            resources.ApplyResources(colorControlGeneralAxis, "colorControlGeneralAxis");
-            colorControlGeneralAxis.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            colorControlGeneralAxis.Blue = 0;
-            colorControlGeneralAxis.BlueF = 0F;
-            colorControlGeneralAxis.BoxSize = new System.Drawing.Size(22, 20);
-            colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlGeneralAxis.Green = 0;
-            colorControlGeneralAxis.GreenF = 0F;
-            colorControlGeneralAxis.Name = "colorControlGeneralAxis";
-            colorControlGeneralAxis.Red = 255;
-            colorControlGeneralAxis.RedF = 1F;
-            colorControlGeneralAxis.TabStop = false;
-            colorControlGeneralAxis.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControlBackGround
             // 
@@ -648,58 +605,23 @@ namespace ReciPro
             toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip1"));
             colorControlBackGround.ColorChanged += colorControl_ColorChanged;
             // 
-            // colorControlUniquePlane
-            // 
-            colorControlUniquePlane.Argb = -16751616;
-            resources.ApplyResources(colorControlUniquePlane, "colorControlUniquePlane");
-            colorControlUniquePlane.BackColor = System.Drawing.Color.Lime;
-            colorControlUniquePlane.Blue = 0;
-            colorControlUniquePlane.BlueF = 0F;
-            colorControlUniquePlane.BoxSize = new System.Drawing.Size(22, 20);
-            colorControlUniquePlane.Color = System.Drawing.Color.FromArgb(0, 100, 0);
-            colorControlUniquePlane.Green = 100;
-            colorControlUniquePlane.GreenF = 0.392156869F;
-            colorControlUniquePlane.Name = "colorControlUniquePlane";
-            colorControlUniquePlane.Red = 0;
-            colorControlUniquePlane.RedF = 0F;
-            colorControlUniquePlane.TabStop = false;
-            toolTip.SetToolTip(colorControlUniquePlane, resources.GetString("colorControlUniquePlane.ToolTip1"));
-            colorControlUniquePlane.ColorChanged += colorControl_ColorChanged;
-            // 
             // colorControl10DegLine
             // 
-            colorControl10DegLine.Argb = -8355585;
+            colorControl10DegLine.Argb = -7697665;
             resources.ApplyResources(colorControl10DegLine, "colorControl10DegLine");
             colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(128, 128, 255);
             colorControl10DegLine.Blue = 255;
             colorControl10DegLine.BlueF = 1F;
             colorControl10DegLine.BoxSize = new System.Drawing.Size(22, 20);
-            colorControl10DegLine.Color = System.Drawing.Color.FromArgb(128, 128, 255);
-            colorControl10DegLine.Green = 128;
-            colorControl10DegLine.GreenF = 0.5019608F;
+            colorControl10DegLine.Color = System.Drawing.Color.FromArgb(138, 138, 255);
+            colorControl10DegLine.Green = 138;
+            colorControl10DegLine.GreenF = 0.5411765F;
             colorControl10DegLine.Name = "colorControl10DegLine";
-            colorControl10DegLine.Red = 128;
-            colorControl10DegLine.RedF = 0.5019608F;
+            colorControl10DegLine.Red = 138;
+            colorControl10DegLine.RedF = 0.5411765F;
             colorControl10DegLine.TabStop = false;
             toolTip.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip1"));
             colorControl10DegLine.ColorChanged += colorControl_ColorChanged;
-            // 
-            // colorControlGeneralPlane
-            // 
-            colorControlGeneralPlane.Argb = -14578910;
-            resources.ApplyResources(colorControlGeneralPlane, "colorControlGeneralPlane");
-            colorControlGeneralPlane.BackColor = System.Drawing.Color.FromArgb(128, 255, 128);
-            colorControlGeneralPlane.Blue = 34;
-            colorControlGeneralPlane.BlueF = 0.13333334F;
-            colorControlGeneralPlane.BoxSize = new System.Drawing.Size(22, 20);
-            colorControlGeneralPlane.Color = System.Drawing.Color.FromArgb(33, 139, 34);
-            colorControlGeneralPlane.Green = 139;
-            colorControlGeneralPlane.GreenF = 0.545098066F;
-            colorControlGeneralPlane.Name = "colorControlGeneralPlane";
-            colorControlGeneralPlane.Red = 33;
-            colorControlGeneralPlane.RedF = 0.129411772F;
-            colorControlGeneralPlane.TabStop = false;
-            colorControlGeneralPlane.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl1DegLine
             // 
@@ -721,18 +643,18 @@ namespace ReciPro
             // 
             // colorControl90DegLine
             // 
-            colorControl90DegLine.Argb = -16776961;
+            colorControl90DegLine.Argb = -12829441;
             resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
             colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
             colorControl90DegLine.Blue = 255;
             colorControl90DegLine.BlueF = 1F;
             colorControl90DegLine.BoxSize = new System.Drawing.Size(22, 20);
-            colorControl90DegLine.Color = System.Drawing.Color.FromArgb(0, 0, 255);
-            colorControl90DegLine.Green = 0;
-            colorControl90DegLine.GreenF = 0F;
+            colorControl90DegLine.Color = System.Drawing.Color.FromArgb(60, 60, 255);
+            colorControl90DegLine.Green = 60;
+            colorControl90DegLine.GreenF = 0.235294119F;
             colorControl90DegLine.Name = "colorControl90DegLine";
-            colorControl90DegLine.Red = 0;
-            colorControl90DegLine.RedF = 0F;
+            colorControl90DegLine.Red = 60;
+            colorControl90DegLine.RedF = 0.235294119F;
             colorControl90DegLine.TabStop = false;
             toolTip.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip1"));
             colorControl90DegLine.ColorChanged += colorControl_ColorChanged;
@@ -1453,14 +1375,15 @@ namespace ReciPro
             listBoxSpecifiedIndices.Name = "listBoxSpecifiedIndices";
             listBoxSpecifiedIndices.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             listBoxSpecifiedIndices.DrawItem += listBoxSpecifiedIndices_DrawItem;
+            listBoxSpecifiedIndices.SelectedIndexChanged += listBoxSpecifiedIndices_SelectedIndexChanged;
             // 
             // flowLayoutPanelAddRemove
             // 
             resources.ApplyResources(flowLayoutPanelAddRemove, "flowLayoutPanelAddRemove");
             flowLayoutPanelAddRemove.Controls.Add(buttonAddIndex);
             flowLayoutPanelAddRemove.Controls.Add(buttonRemoveIndex);
-            flowLayoutPanelAddRemove.Controls.Add(colorControl1);
-            flowLayoutPanelAddRemove.Controls.Add(checkBox4);
+            flowLayoutPanelAddRemove.Controls.Add(colorControlIndex);
+            flowLayoutPanelAddRemove.Controls.Add(checkBoxRotateColor);
             flowLayoutPanelAddRemove.Controls.Add(checkBoxIncludingEquivalentPlanes);
             flowLayoutPanelAddRemove.Name = "flowLayoutPanelAddRemove";
             // 
@@ -1482,26 +1405,28 @@ namespace ReciPro
             buttonRemoveIndex.UseVisualStyleBackColor = false;
             buttonRemoveIndex.Click += buttonRemoveIndex_Click;
             // 
-            // colorControl1
+            // colorControlIndex
             // 
-            colorControl1.Argb = -65536;
-            resources.ApplyResources(colorControl1, "colorControl1");
-            colorControl1.BackColor = System.Drawing.SystemColors.Control;
-            colorControl1.Blue = 0;
-            colorControl1.BlueF = 0F;
-            colorControl1.BoxSize = new System.Drawing.Size(20, 20);
-            colorControl1.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControl1.Green = 0;
-            colorControl1.GreenF = 0F;
-            colorControl1.Name = "colorControl1";
-            colorControl1.Red = 255;
-            colorControl1.RedF = 1F;
+            colorControlIndex.Argb = -65536;
+            resources.ApplyResources(colorControlIndex, "colorControlIndex");
+            colorControlIndex.BackColor = System.Drawing.SystemColors.Control;
+            colorControlIndex.Blue = 0;
+            colorControlIndex.BlueF = 0F;
+            colorControlIndex.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlIndex.Color = System.Drawing.Color.FromArgb(255, 0, 0);
+            colorControlIndex.Green = 0;
+            colorControlIndex.GreenF = 0F;
+            colorControlIndex.Name = "colorControlIndex";
+            colorControlIndex.Red = 255;
+            colorControlIndex.RedF = 1F;
+            colorControlIndex.ColorChanged += colorControlIndex_ColorChanged;
             // 
             // checkBox4
             // 
-            resources.ApplyResources(checkBox4, "checkBox4");
-            checkBox4.Name = "checkBox4";
-            checkBox4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(checkBoxRotateColor, "checkBox4");
+            checkBoxRotateColor.Name = "checkBox4";
+            checkBoxRotateColor.UseVisualStyleBackColor = true;
+            checkBoxRotateColor.CheckedChanged += checkBoxRotateColor_CheckedChanged;
             // 
             // checkBoxIncludingEquivalentPlanes
             // 
@@ -1781,7 +1706,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 2001862975);
+            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -1094713043);
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
             scalablePictureBoxAdvanced1.SkipDrawing = false;
             scalablePictureBoxAdvanced1.StatusLabel = " ";
@@ -1812,7 +1737,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 2001862975);
+            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -1094713043);
             scalablePictureBoxAdvanced2.ShowGradiaent = true;
             scalablePictureBoxAdvanced2.SkipDrawing = false;
             scalablePictureBoxAdvanced2.StatusLabel = " ";
@@ -2086,7 +2011,6 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonHighStructureFactor;
         private NumericBox numericBoxHighStructureFactor;
         private System.Windows.Forms.CheckBox checkBoxReflectStructureFactor;
-        public ColorControl colorControlKikuchi;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.RadioButton radioButtonUpperSphere;
         private System.Windows.Forms.RadioButton radioButtonLowerSphere;
@@ -2108,7 +2032,8 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonDelimiterSpace;
         private System.Windows.Forms.RadioButton radioButtonDelimiterNone;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAddRemove;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private ColorControl colorControl1;
+        private System.Windows.Forms.CheckBox checkBoxRotateColor;
+        private ColorControl colorControlIndex;
+        public ColorControl colorControlKikuchi;
     }
 }

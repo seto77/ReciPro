@@ -1,5 +1,6 @@
 #region using
 using Crystallography.OpenGL;
+using MathNet.Numerics;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -8,9 +9,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using V3 = OpenTK.Mathematics.Vector3d;
 using static System.Math;
-using MathNet.Numerics;
+using V3 = OpenTK.Mathematics.Vector3d;
 #endregion
 namespace ReciPro;
 
@@ -29,13 +29,18 @@ public partial class FormStereonet : Form
     private bool HexagonalLattice => (formMain.Crystal.Symmetry.CrystalSystemStr == "trigonal" || formMain.Crystal.Symmetry.CrystalSystemStr == "hexagonal") && formMain.Crystal.Alpha != formMain.Crystal.Gamma;
     public Matrix3D RotationMatrix => formMain.Crystal.RotationMatrix;
 
+    private bool skipEvent = false;
+
+    private string delimiter => radioButtonDelimiterNone.Checked ? "" : radioButtonDelimiterSpace.Checked ? " " : ",";
+
     public class IndexInfo
     {
         public (int X, int Y, int Z)[] Indices;
         public double Intensity = 1;
         public int ARGB;
+        public Color Color => Color.FromArgb(ARGB);
         public IndexInfo() { }
-        public IndexInfo((int X, int Y, int Z)[] indices, int argb, double intensity=0)
+        public IndexInfo((int X, int Y, int Z)[] indices, int argb, double intensity = 0)
         {
             Indices = indices;
             ARGB = argb;
@@ -48,15 +53,15 @@ public partial class FormStereonet : Form
 
     private List<IndexInfo> SpecifiedIndices = [];
 
-    private int[] ColorArray = [
-        Color.FromArgb(255, 0, 0).ToArgb(),
-        Color.FromArgb(127, 127, 0).ToArgb(),
-        Color.FromArgb(0, 127, 0).ToArgb(),
-        Color.FromArgb(255, 0, 0).ToArgb(),
-        Color.FromArgb(255, 0, 0).ToArgb(),
-        Color.FromArgb(255, 0, 0).ToArgb(),
-        Color.FromArgb(255, 0, 0).ToArgb(),
-        Color.FromArgb(255, 0, 0).ToArgb(),
+    //32 64 96 128 160 192 224 255
+    private static int[] ColorArray = [
+            Color.Red.ToArgb(),
+            Color.Teal.ToArgb(),
+            Color.Maroon.ToArgb(),
+            Color.Fuchsia.ToArgb(),
+            Color.Olive.ToArgb(),
+            Color.Purple.ToArgb(),
+            Color.Orange.ToArgb(),
         ];
 
     #endregion
@@ -182,7 +187,7 @@ public partial class FormStereonet : Form
 
     private void Draw3D()
     {
-        if (glControl == null) return;
+        if (glControl == null || checkBoxDisplay3D.Checked) return;
 
         var sq2 = Math.Sqrt(2);
 
@@ -257,44 +262,56 @@ public partial class FormStereonet : Form
         #endregion
 
         # region 面、軸ベクトル
-        var unique = radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color;
-        var general = radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color;
+        //var unique = radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color;
+        //var general = radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color;
         Vector3D[] vector = radioButtonAxes.Checked ? [.. formMain.Crystal.VectorOfAxis] : [.. formMain.Crystal.VectorOfPlane];
         var radius = pointSize * 0.004;
-        for (int i = 0; i < vector.Length; i++)
-        {
-            var v = formMain.Crystal.RotationMatrix * vector[i].Normarize();
-            var color = i < 6 && radioButtonRange.Checked ? unique : general;
-            if (!checkBox3dOptionSemisphere.Checked || v.Z > 0)
+        var matBase = radioButtonAxes.Checked ? formMain.Crystal.RotationMatrix * formMain.Crystal.MatrixReal : formMain.Crystal.RotationMatrix * formMain.Crystal.MatrixInverseTransposed;
+        foreach (var obj in ProjectedObjects)
+            foreach (var index in obj.Indices)
             {
-                glObjects.Add(new Sphere(v, radius, new Material(color, 1), DrawingMode.Surfaces));
-                if (checkBox3dOptionLabel.Checked)
-                    glObjects.Add(new TextObject(vector[i].Text, trackBarStrSize.Value / 8, v, radius + 0.001, true, new Material(color), glControl));
-            }
-            if (checkBox3dOptionStereonet.Checked && v.Z > 0)
-            {
-                glObjects.Add(new Disk(conv(v.X, v.Y, v.Z) + new V3(0, 0, 0.0005), new V3(0, 0, 1), radius, new Material(color, 0.9), DrawingMode.Surfaces));
-                glObjects.Add(new Disk(conv(v.X, v.Y, v.Z) - new V3(0, 0, 0.0005), new V3(0, 0, 1), radius, new Material(color, 0.9), DrawingMode.Surfaces));
-
-                //projection line
-                if (checkBox3dOptionProjectionLine.Checked)
+                var v = (matBase * index).Normarize();
+                var color = obj.Color;
+                //var v = formMain.Crystal.RotationMatrix * vector[i].Normarize();
+                //var color = i < 6 && radioButtonRange.Checked ? unique : general;
+                if (!checkBox3dOptionSemisphere.Checked || v.Z > 0)
                 {
-                    if (radioButtonWulff.Checked)
-                        glObjects.Add(new Lines([new V3(0, 0, -1), new V3(v.X, v.Y, v.Z)], 1f, new Material(color, 0.5)));
-                    else
+                    glObjects.Add(new Sphere(v, radius, new Material(color, 1), DrawingMode.Surfaces));
+                    if (checkBox3dOptionLabel.Checked)
                     {
-                        var div = 100;
-                        var r = (new Vector3DBase(0, 0, 1) - v).Length;
-                        var rot = OpenTK.Mathematics.Matrix3d.CreateRotationZ(-Math.Atan2(v.Y, v.X));
-                        var sweep = Math.Asin((1 - v.Z) / r);
-                        var pts = new List<V3>();
-                        for (int j = 0; j < div; j++)
-                            pts.Add(new V3(0, 0, 1) + r * (rot * (new V3(Math.Cos(sweep * j / div), 0, -Math.Sin(sweep * j / div)))));
-                        glObjects.Add(new Lines([.. pts], 1f, new Material(color, 0.5)));
+                        string str;
+                        if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)
+                            str = $"({index.X} {index.Y}{delimiter}{-index.X - index.Y}{delimiter}{index.Z})";
+                        else
+                            str = radioButtonAxes.Checked ? $"[{index.X}{delimiter}{index.Y}{delimiter}{index.Z}]" : $"({index.X}{delimiter}{index.Y}{delimiter}{index.Z})";
+
+                        glObjects.Add(new TextObject(str, trackBarStrSize.Value / 8, v, radius + 0.001, true, new Material(color), glControl));
+                    }
+                }
+                if (checkBox3dOptionStereonet.Checked && v.Z > 0)
+                {
+                    glObjects.Add(new Disk(conv(v.X, v.Y, v.Z) + new V3(0, 0, 0.0005), new V3(0, 0, 1), radius, new Material(color, 0.9), DrawingMode.Surfaces));
+                    glObjects.Add(new Disk(conv(v.X, v.Y, v.Z) - new V3(0, 0, 0.0005), new V3(0, 0, 1), radius, new Material(color, 0.9), DrawingMode.Surfaces));
+
+                    //projection line
+                    if (checkBox3dOptionProjectionLine.Checked)
+                    {
+                        if (radioButtonWulff.Checked)
+                            glObjects.Add(new Lines([new V3(0, 0, -1), new V3(v.X, v.Y, v.Z)], 1f, new Material(color, 0.5)));
+                        else
+                        {
+                            var div = 100;
+                            var r = (new Vector3DBase(0, 0, 1) - v).Length;
+                            var rot = OpenTK.Mathematics.Matrix3d.CreateRotationZ(-Math.Atan2(v.Y, v.X));
+                            var sweep = Math.Asin((1 - v.Z) / r);
+                            var pts = new List<V3>();
+                            for (int j = 0; j < div; j++)
+                                pts.Add(new V3(0, 0, 1) + r * (rot * (new V3(Math.Cos(sweep * j / div), 0, -Math.Sin(sweep * j / div)))));
+                            glObjects.Add(new Lines([.. pts], 1f, new Material(color, 0.5)));
+                        }
                     }
                 }
             }
-        }
         #endregion
 
         glControl.DeleteAllObjects();
@@ -443,14 +460,8 @@ public partial class FormStereonet : Form
 
         var drawString = trackBarStrSize.Value != 1 && checkBoxShowIndexLabels.Checked;
         var font = new Font("Times", trackBarStrSize.Value / (float)mag / 7f);
-        //var brushUnique = new SolidBrush(radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color);
-        //var brushGeneral = new SolidBrush(radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color);
-        //var penUnique = new Pen(radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color, 2f / (float)mag);
-        //var penGeneral = new Pen(radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color, 2f / (float)mag);
 
         Func<Vector3DBase, PointD> conv = radioButtonWulff.Checked ? Stereonet.ConvertVectorToWulff : Stereonet.ConvertVectorToSchmidt;
-
-        var delimiter = radioButtonDelimiterNone.Checked ? "" : radioButtonDelimiterSpace.Checked ? " " : ",";
 
         foreach (var obj in ProjectedObjects)
         {
@@ -458,7 +469,7 @@ public partial class FormStereonet : Form
             var pen = new Pen(Color.FromArgb(obj.ARGB), 2f / (float)mag);
             var radius = pointSize / mag;
             if (radioButtonPlanes.Checked && checkBoxReflectStructureFactor.Checked)
-                radius *= Math.Sqrt(obj.Intensity);
+                radius *= Sqrt(obj.Intensity);
 
             foreach (var index in obj.Indices)
             {
@@ -534,7 +545,7 @@ public partial class FormStereonet : Form
                                 validEnd2 = i;
                         }
 
-                    var col = checkBoxReflectStructureFactor.Checked ? Color.FromArgb((int)(obj.Intensity * 255), colorControlKikuchi.Color) : colorControlKikuchi.Color;
+                    var col = checkBoxReflectStructureFactor.Checked ? Color.FromArgb((int)(obj.Intensity * 255), obj.Color) : obj.Color;
                     var penKikuchi = new Pen(col, 2f / (float)mag);
                     if (validEnd1 - validStart1 != 0)
                     {
@@ -587,8 +598,7 @@ public partial class FormStereonet : Form
                 for (int j = 0; j < 2; j++)
                 {
                     if (j == 1)
-                    { u = -u; v = -v; w = -w; }
-                    //var vec = rot * (u * crystal.A_Axis + v * crystal.B_Axis + w * crystal.C_Axis);
+                        (u, v, w) = (-u, -v, -w);
                     var vec = matReal * (u, v, w);
                     if (radioButtonLowerSphere.Checked)
                         vec.Z = -vec.Z;
@@ -1119,22 +1129,6 @@ public partial class FormStereonet : Form
         setVector();
         Draw();
     }
-    private void buttonAddIndex_Click(object sender, EventArgs e)
-    {
-        var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
-        if (x != 0 || y != 0 || z != 0)
-            ProjectedObjects.Add(new IndexInfo([(x, y, z)], Color.Brown.ToArgb()));
-        setVector();
-        Draw();
-    }
-
-    private void buttonRemoveIndex_Click(object sender, EventArgs e)
-    {
-        if (listBoxSpecifiedIndices.SelectedIndex > -1)
-            listBoxSpecifiedIndices.Items.RemoveAt(listBoxSpecifiedIndices.SelectedIndex);
-        setVector();
-        Draw();
-    }
 
     private void checkBoxIncludingEquivalentPlanes_CheckedChanged(object sender, EventArgs e)
     {
@@ -1155,8 +1149,53 @@ public partial class FormStereonet : Form
         setVector();
         Draw();
     }
+    #endregion
 
-    #region 面、軸のベクトルを計算
+    #region リストボックス近辺のイベント
+    private void colorControlIndex_ColorChanged(object sender, EventArgs e)
+    {
+        if (skipEvent) return;
+        foreach (var item in listBoxSpecifiedIndices.SelectedItems)
+        {
+            var row = (IndexInfo)item;
+            row.ARGB = colorControlIndex.Color.ToArgb();
+        }
+        listBoxSpecifiedIndices.Refresh();
+        Draw();
+    }
+
+    private void listBoxSpecifiedIndices_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (listBoxSpecifiedIndices.SelectedIndex > -1)
+        {
+            var row = (IndexInfo)listBoxSpecifiedIndices.SelectedItem;
+            skipEvent = true;
+            colorControlIndex.Color = Color.FromArgb(row.ARGB);
+            skipEvent = false;
+        }
+    }
+
+    private void buttonAddIndex_Click(object sender, EventArgs e)
+    {
+        var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
+        if (x != 0 || y != 0 || z != 0) {
+            var argb = checkBoxRotateColor.Checked ? ColorArray[ProjectedObjects.Count % ColorArray.Length] : colorControlIndex.Argb;
+            ProjectedObjects.Add(new IndexInfo([(x, y, z)], argb));
+        }
+        setVector();
+        Draw();
+    }
+
+    private void buttonRemoveIndex_Click(object sender, EventArgs e)
+    {
+        if (listBoxSpecifiedIndices.SelectedIndex > -1)
+            listBoxSpecifiedIndices.Items.RemoveAt(listBoxSpecifiedIndices.SelectedIndex);
+        setVector();
+        Draw();
+    }
+    #endregion
+
+    #region 面、軸のベクトルを計算 SetVector
     private void setVector()
     {
         if (formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
@@ -1181,7 +1220,8 @@ public partial class FormStereonet : Form
 
                                 foreach (var index in indices)
                                     hash.Add(index);
-                                ProjectedObjects.Add(new IndexInfo(indices, Color.Brown.ToArgb()));
+                                
+                                ProjectedObjects.Add(new IndexInfo(indices, 0));
                             }
                 #region 結晶系に従ってソート
                 var sysNum = formMain.Crystal.Symmetry.CrystalSystemNumber;
@@ -1248,6 +1288,8 @@ public partial class FormStereonet : Form
                 }
                 #endregion
 
+                for(int i = 0; i < ProjectedObjects.Count; i++)
+                    ProjectedObjects[i].ARGB = checkBoxRotateColor.Checked ? ColorArray[i % ColorArray.Length] : colorControlIndex.Argb;
             }
             //特定指数モードの時
             else
@@ -1305,8 +1347,8 @@ public partial class FormStereonet : Form
                     var indices = SymmetryStatic.GenerateEquivalentPlanes(vec[i].Index, formMain.Crystal.Symmetry, false, true);
                     foreach (var index in indices)
                         hash.Add(index);
-
-                    ProjectedObjects.Add(new IndexInfo(indices, Color.Brown.ToArgb(), vec[i].RelativeIntensity));
+                    var argb = checkBoxRotateColor.Checked ? ColorArray[ProjectedObjects.Count % ColorArray.Length] : colorControlIndex.Argb;
+                    ProjectedObjects.Add(new IndexInfo(indices, argb, vec[i].RelativeIntensity));
                     count += indices.Length;
                 }
         }
@@ -1316,7 +1358,22 @@ public partial class FormStereonet : Form
         foreach (var obj in ProjectedObjects)
             listBoxSpecifiedIndices.Items.Add(obj);
     }
-    #endregion
+
+    private void checkBoxRotateColor_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkBoxRotateColor.Checked)
+        {
+            skipEvent = true;
+            for (int i = 0; i < listBoxSpecifiedIndices.Items.Count; i++)
+            {
+                var row = (IndexInfo)listBoxSpecifiedIndices.Items[i];
+                row.ARGB = ColorArray[i % ColorArray.Length];
+                listBoxSpecifiedIndices.Refresh();
+            }
+            skipEvent = false;
+            Draw();
+        }
+    }
 
     #endregion
 
@@ -1455,14 +1512,21 @@ public partial class FormStereonet : Form
         //ListBoxが空のときにListBoxが選択されるとe.Indexが-1になる
         if (e.Index > -1)
         {
-
             var row = (IndexInfo)((ListBox)sender).Items[e.Index];
             //スポットの色を表示
             e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(row.ARGB)), new Rectangle(e.Bounds.X + margin, e.Bounds.Y + margin, ih - margin, ih - margin));
             //文字を描画する色の選択
             Brush b = new SolidBrush(e.ForeColor);
+
             //文字列の描画
-            e.Graphics.DrawString(row.ToString(), e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
+            if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Visible && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)  //ミラー・ブレイビス指数で表示
+            {
+                var (h, k, l) = row.Indices[0];
+                e.Graphics.DrawString($"{h} {k} {-h - k} {l}", e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
+            }
+            else //通常の表示
+                e.Graphics.DrawString(row.ToString(), e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
+
             //後始末
             b.Dispose();
         }
@@ -1470,4 +1534,6 @@ public partial class FormStereonet : Form
         //フォーカスを示す四角形を描画
         e.DrawFocusRectangle();
     }
+
+   
 }

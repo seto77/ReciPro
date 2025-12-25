@@ -1302,7 +1302,7 @@ or the Kikuchi line</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlString.FooterText" xml:space="preserve">
-    <value>String</value>
+    <value>Zone axes label in Kikuchi pattern</value>
   </data>
   <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1311,13 +1311,13 @@ or the Kikuchi line</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 85</value>
+    <value>6, 79</value>
   </data>
   <data name="colorControlString.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
+    <value>205, 20</value>
   </data>
   <data name="colorControlString.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -1356,7 +1356,7 @@ or the Kikuchi line</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlKikuchi.FooterText" xml:space="preserve">
-    <value>Kikuchi line pairs</value>
+    <value>Zone axis symbol in Kikuchi pattern</value>
   </data>
   <data name="colorControlKikuchi.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1365,13 +1365,13 @@ or the Kikuchi line</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlKikuchi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 85</value>
+    <value>6, 57</value>
   </data>
   <data name="colorControlKikuchi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlKikuchi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 20</value>
+    <value>216, 20</value>
   </data>
   <data name="colorControlKikuchi.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -1387,108 +1387,6 @@ or the Kikuchi line</value>
   </data>
   <data name="&gt;&gt;colorControlKikuchi.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="colorControlUniqueAxis.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colorControlUniqueAxis.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="colorControlUniqueAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
-  </data>
-  <data name="colorControlUniqueAxis.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="colorControlUniqueAxis.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlUniqueAxis.FooterText" xml:space="preserve">
-    <value>a, b, c</value>
-  </data>
-  <data name="colorControlUniqueAxis.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlUniqueAxis.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlUniqueAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 43</value>
-  </data>
-  <data name="colorControlUniqueAxis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlUniqueAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
-  </data>
-  <data name="colorControlUniqueAxis.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
-    <value>軸表示時の[100], [010], [001]の表示色</value>
-  </data>
-  <data name="colorControlUniqueAxis.ToolTip1" xml:space="preserve">
-    <value>軸表示時の[100], [010], [001]の表示色</value>
-  </data>
-  <data name="&gt;&gt;colorControlUniqueAxis.Name" xml:space="preserve">
-    <value>colorControlUniqueAxis</value>
-  </data>
-  <data name="&gt;&gt;colorControlUniqueAxis.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlUniqueAxis.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControlUniqueAxis.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="colorControlGeneralAxis.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colorControlGeneralAxis.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="colorControlGeneralAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
-  </data>
-  <data name="colorControlGeneralAxis.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="colorControlGeneralAxis.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
-    <value>General Axes</value>
-  </data>
-  <data name="colorControlGeneralAxis.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlGeneralAxis.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlGeneralAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 43</value>
-  </data>
-  <data name="colorControlGeneralAxis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlGeneralAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 20</value>
-  </data>
-  <data name="colorControlGeneralAxis.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="&gt;&gt;colorControlGeneralAxis.Name" xml:space="preserve">
-    <value>colorControlGeneralAxis</value>
-  </data>
-  <data name="&gt;&gt;colorControlGeneralAxis.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlGeneralAxis.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControlGeneralAxis.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="colorControlBackGround.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1542,61 +1440,7 @@ or the Kikuchi line</value>
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;colorControlBackGround.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="colorControlUniquePlane.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colorControlUniquePlane.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="colorControlUniquePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
-  </data>
-  <data name="colorControlUniquePlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="colorControlUniquePlane.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlUniquePlane.FooterText" xml:space="preserve">
-    <value>a*, b* c*</value>
-  </data>
-  <data name="colorControlUniquePlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlUniquePlane.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlUniquePlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 64</value>
-  </data>
-  <data name="colorControlUniquePlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlUniquePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 20</value>
-  </data>
-  <data name="colorControlUniquePlane.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="colorControlUniquePlane.ToolTip" xml:space="preserve">
-    <value>結晶面(100), (010), (001)の色</value>
-  </data>
-  <data name="colorControlUniquePlane.ToolTip1" xml:space="preserve">
-    <value>結晶面(100), (010), (001)の色</value>
-  </data>
-  <data name="&gt;&gt;colorControlUniquePlane.Name" xml:space="preserve">
-    <value>colorControlUniquePlane</value>
-  </data>
-  <data name="&gt;&gt;colorControlUniquePlane.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlUniquePlane.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControlUniquePlane.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="colorControl10DegLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1650,55 +1494,7 @@ or the Kikuchi line</value>
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;colorControl10DegLine.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="colorControlGeneralPlane.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colorControlGeneralPlane.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="colorControlGeneralPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
-  </data>
-  <data name="colorControlGeneralPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="colorControlGeneralPlane.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlGeneralPlane.FooterText" xml:space="preserve">
-    <value>General Planes</value>
-  </data>
-  <data name="colorControlGeneralPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="colorControlGeneralPlane.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlGeneralPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 64</value>
-  </data>
-  <data name="colorControlGeneralPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlGeneralPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 20</value>
-  </data>
-  <data name="colorControlGeneralPlane.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="&gt;&gt;colorControlGeneralPlane.Name" xml:space="preserve">
-    <value>colorControlGeneralPlane</value>
-  </data>
-  <data name="&gt;&gt;colorControlGeneralPlane.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlGeneralPlane.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControlGeneralPlane.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>3</value>
   </data>
   <data name="colorControl1DegLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1754,7 +1550,7 @@ or the Kikuchi line</value>
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;colorControl1DegLine.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="colorControl90DegLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1808,7 +1604,7 @@ or the Kikuchi line</value>
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;colorControl90DegLine.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>5</value>
   </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -4750,58 +4546,58 @@ by two planes</value>
   <data name="&gt;&gt;buttonRemoveIndex.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="colorControl1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="colorControlIndex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="colorControl1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="colorControlIndex.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="colorControl1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="colorControlIndex.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 12.1875pt</value>
   </data>
-  <data name="colorControl1.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="colorControlIndex.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="colorControl1.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="colorControlIndex.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="colorControl1.FooterText" xml:space="preserve">
+  <data name="colorControlIndex.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="colorControl1.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="colorControlIndex.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="colorControl1.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="colorControlIndex.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
   </data>
-  <data name="colorControl1.HeaderText" xml:space="preserve">
+  <data name="colorControlIndex.HeaderText" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="colorControl1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="colorControlIndex.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 0</value>
   </data>
-  <data name="colorControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="colorControlIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="colorControl1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="colorControlIndex.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 3, 0</value>
   </data>
-  <data name="colorControl1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="colorControlIndex.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 20</value>
   </data>
-  <data name="colorControl1.TabIndex" type="System.Int32, mscorlib">
+  <data name="colorControlIndex.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="&gt;&gt;colorControl1.Name" xml:space="preserve">
-    <value>colorControl1</value>
+  <data name="&gt;&gt;colorControlIndex.Name" xml:space="preserve">
+    <value>colorControlIndex</value>
   </data>
-  <data name="&gt;&gt;colorControl1.Type" xml:space="preserve">
+  <data name="&gt;&gt;colorControlIndex.Type" xml:space="preserve">
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;colorControl1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;colorControlIndex.Parent" xml:space="preserve">
     <value>flowLayoutPanelAddRemove</value>
   </data>
-  <data name="&gt;&gt;colorControl1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;colorControlIndex.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="checkBox4.AutoSize" type="System.Boolean, mscorlib">
@@ -5945,7 +5741,7 @@ by two planes</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 2001863239</value>
+    <value>410, -1094712779</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5983,7 +5779,7 @@ by two planes</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 2001863239</value>
+    <value>410, -1094712779</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
