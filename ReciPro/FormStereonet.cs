@@ -477,7 +477,6 @@ public partial class FormStereonet : Form
                 if (radioButtonAxes.Checked || radioButtonPlanes.Checked)
                 {
                     var v = matBase * index;
-                    //var v = rot * vec;
                     if (radioButtonLowerSphere.Checked)
                         v.Z = -v.Z;
                     var srcPt = conv(v);
@@ -495,7 +494,7 @@ public partial class FormStereonet : Form
                             {
                                 string str;
                                 if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)
-                                    str = $"({index.X} {index.Y}{delimiter}{-index.X - index.Y}{delimiter}{index.Z})";
+                                    str = $"({index.X}{delimiter}{index.Y}{delimiter}{-index.X - index.Y}{delimiter}{index.Z})";
                                 else
                                     str = radioButtonAxes.Checked ? $"[{index.X}{delimiter}{index.Y}{delimiter}{index.Z}]" : $"({index.X}{delimiter}{index.Y}{delimiter}{index.Z})";
 
@@ -583,7 +582,7 @@ public partial class FormStereonet : Form
                 }
 
             var list = dic.OrderByDescending(e => e.Value).ToArray();
-            var max = Math.Min(allIndices.Length / 2, list.Length);
+            var max = Min(allIndices.Length / 2, list.Length);
             while (max + 1 < list.Length && list[max - 1].Value == list[max].Value)
                 max++;
 
@@ -1193,6 +1192,47 @@ public partial class FormStereonet : Form
         setVector();
         Draw();
     }
+
+    /// <summary>
+    /// 指数リストボックスの項目描画
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void listBoxSpecifiedIndices_DrawItem(object sender, DrawItemEventArgs e)
+    {
+        //背景を描画する
+        //項目が選択されている時は強調表示される
+        e.DrawBackground();
+
+        var ih = listBoxSpecifiedIndices.ItemHeight;
+        var margin = 1;
+
+        //ListBoxが空のときにListBoxが選択されるとe.Indexが-1になる
+        if (e.Index > -1)
+        {
+            var row = (IndexInfo)((ListBox)sender).Items[e.Index];
+            //スポットの色を表示
+            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(row.ARGB)), new Rectangle(e.Bounds.X + margin, e.Bounds.Y + margin, ih - margin, ih - margin));
+            //文字を描画する色の選択
+            Brush b = new SolidBrush(e.ForeColor);
+
+            //文字列の描画
+            if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Visible && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)  //ミラー・ブレイビス指数で表示
+            {
+                var (h, k, l) = row.Indices[0];
+                e.Graphics.DrawString($"{h} {k} {-h - k} {l}", e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
+            }
+            else //通常の表示
+                e.Graphics.DrawString(row.ToString(), e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
+
+            //後始末
+            b.Dispose();
+        }
+
+        //フォーカスを示す四角形を描画
+        e.DrawFocusRectangle();
+    }
+
     #endregion
 
     #region 面、軸のベクトルを計算 SetVector
@@ -1495,45 +1535,6 @@ public partial class FormStereonet : Form
         Draw();
     }
 
-    /// <summary>
-    /// 指数リストボックスの項目描画
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void listBoxSpecifiedIndices_DrawItem(object sender, DrawItemEventArgs e)
-    {
-        //背景を描画する
-        //項目が選択されている時は強調表示される
-        e.DrawBackground();
-
-        var ih = listBoxSpecifiedIndices.ItemHeight;
-        var margin = 1;
-
-        //ListBoxが空のときにListBoxが選択されるとe.Indexが-1になる
-        if (e.Index > -1)
-        {
-            var row = (IndexInfo)((ListBox)sender).Items[e.Index];
-            //スポットの色を表示
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(row.ARGB)), new Rectangle(e.Bounds.X + margin, e.Bounds.Y + margin, ih - margin, ih - margin));
-            //文字を描画する色の選択
-            Brush b = new SolidBrush(e.ForeColor);
-
-            //文字列の描画
-            if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Visible && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)  //ミラー・ブレイビス指数で表示
-            {
-                var (h, k, l) = row.Indices[0];
-                e.Graphics.DrawString($"{h} {k} {-h - k} {l}", e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
-            }
-            else //通常の表示
-                e.Graphics.DrawString(row.ToString(), e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
-
-            //後始末
-            b.Dispose();
-        }
-
-        //フォーカスを示す四角形を描画
-        e.DrawFocusRectangle();
-    }
-
+   
    
 }
