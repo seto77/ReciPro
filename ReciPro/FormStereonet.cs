@@ -166,8 +166,9 @@ public partial class FormStereonet : Form
         if (!SetProjection(g))
             return;
 
-        g.Clear(colorControlBackGround.Color);
         g.SmoothingMode = SmoothingMode.AntiAlias;
+        g.Clear(colorControlBackGround.Color);
+        
         DrawOutline(g);
         DrawStereoNet(g);
         DrawCircles(g);
@@ -1187,8 +1188,9 @@ public partial class FormStereonet : Form
 
     private void buttonRemoveIndex_Click(object sender, EventArgs e)
     {
-        if (listBoxSpecifiedIndices.SelectedIndex > -1)
-            listBoxSpecifiedIndices.Items.RemoveAt(listBoxSpecifiedIndices.SelectedIndex);
+        var selectedIndex = listBoxSpecifiedIndices.SelectedIndex;
+        if (selectedIndex > -1 && selectedIndex <ProjectedObjects.Count)
+            ProjectedObjects.RemoveAt(listBoxSpecifiedIndices.SelectedIndex);
         setVector();
         Draw();
     }
@@ -1200,6 +1202,7 @@ public partial class FormStereonet : Form
     /// <param name="e"></param>
     private void listBoxSpecifiedIndices_DrawItem(object sender, DrawItemEventArgs e)
     {
+        e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
         //背景を描画する
         //項目が選択されている時は強調表示される
         e.DrawBackground();
@@ -1217,7 +1220,7 @@ public partial class FormStereonet : Form
             Brush b = new SolidBrush(e.ForeColor);
 
             //文字列の描画
-            if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Visible && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)  //ミラー・ブレイビス指数で表示
+            if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Visible && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)  //ミラー・ブレヴェ指数で表示
             {
                 var (h, k, l) = row.Indices[0];
                 e.Graphics.DrawString($"{h} {k} {-h - k} {l}", e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
@@ -1521,7 +1524,6 @@ public partial class FormStereonet : Form
     }
 
     #endregion
-
     private void checkBoxUseMillerBravais_CheckedChanged(object sender, EventArgs e)
     {
         flowLayoutPanelI.Visible = HexagonalLattice && radioButtonPlanes.Checked && checkBoxUseMillerBravaisIndex.Checked && radioButtonSpecifiedIndices.Checked;
