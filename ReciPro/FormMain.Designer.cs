@@ -150,6 +150,7 @@
             toolTipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             resetRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemDisableNative = new System.Windows.Forms.ToolStripMenuItem();
             disableOpneGLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemDisableTextRendering = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
@@ -1136,7 +1137,7 @@
             // 
             // optionToolStripMenuItem
             // 
-            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolTipToolStripMenuItem, toolStripSeparator11, resetRegistryToolStripMenuItem, disableOpneGLToolStripMenuItem, toolStripMenuItemDisableTextRendering, toolStripSeparator20, powderDiffractionFunctionToolStripMenuItem });
+            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolTipToolStripMenuItem, toolStripSeparator11, resetRegistryToolStripMenuItem, toolStripMenuItemDisableNative, disableOpneGLToolStripMenuItem, toolStripMenuItemDisableTextRendering, toolStripSeparator20, powderDiffractionFunctionToolStripMenuItem });
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             resources.ApplyResources(optionToolStripMenuItem, "optionToolStripMenuItem");
             // 
@@ -1159,6 +1160,12 @@
             resetRegistryToolStripMenuItem.CheckOnClick = true;
             resetRegistryToolStripMenuItem.Name = "resetRegistryToolStripMenuItem";
             resources.ApplyResources(resetRegistryToolStripMenuItem, "resetRegistryToolStripMenuItem");
+            // 
+            // toolStripMenuItemDisableNative
+            // 
+            toolStripMenuItemDisableNative.CheckOnClick = true;
+            toolStripMenuItemDisableNative.Name = "toolStripMenuItemDisableNative";
+            resources.ApplyResources(toolStripMenuItemDisableNative, "toolStripMenuItemDisableNative");
             // 
             // disableOpneGLToolStripMenuItem
             // 
@@ -1561,5 +1568,6 @@
         private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
         public System.Windows.Forms.Button buttonDuplicate;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDisableNative;
     }
 }

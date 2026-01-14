@@ -96,7 +96,7 @@ public partial class FormDiffractionSimulatorCBED : Form
         InitializeComponent();
         NumericBoxDivision_ValueChanged(new object(), new EventArgs());
 
-        if (!NativeWrapper.Enabled)
+        if (!BetheMethod.EigenEnabled)
         {
             comboBoxSolver.Items.RemoveAt(3);
             comboBoxSolver.Items.RemoveAt(1);

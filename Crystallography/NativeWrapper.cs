@@ -1,5 +1,6 @@
 ﻿#region using, namespace
 using MathNet.Numerics.LinearAlgebra.Complex;
+using OpenTK.Windowing.Common.Input;
 using System;
 using System.Buffers;
 using System.Collections.Generic;
@@ -172,7 +173,6 @@ public static partial class NativeWrapper
 
     static NativeWrapper()
     {
-
         var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
         if (!System.IO.File.Exists(appPath))
             Enabled = false;
@@ -553,7 +553,6 @@ public static partial class NativeWrapper
     #endregion 逆行列
 
     #region 固有値
-
     static unsafe public (Complex[] eigenvalues, Complex[] eigenvectors) EigenSolver(int dim, Complex[] mat)
     {
         var values = GC.AllocateUninitializedArray<Complex>(dim);//new Complex[dim];
@@ -624,12 +623,14 @@ public static partial class NativeWrapper
 
     unsafe static public void GenerateTC1(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k)
     {
-        _GenerateTC1(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k);
+        if (Enabled)
+            _GenerateTC1(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k);
     }
 
     unsafe static public void GenerateTC2(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k, Complex* _tc_kq)
     {
-        _GenerateTC2(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k, (double*)_tc_kq);
+        if (Enabled)
+            _GenerateTC2(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k, (double*)_tc_kq);
     }
 
     /// <summary>

@@ -148,6 +148,12 @@ public partial class FormMain : Form
         get => toolStripMenuItemDisableTextRendering != null && toolStripMenuItemDisableTextRendering.Checked;
         set => toolStripMenuItemDisableTextRendering.Checked = value;
     }
+
+    public bool DisableNative
+    {
+        get => toolStripMenuItemDisableNative != null && toolStripMenuItemDisableNative.Checked;
+        set => toolStripMenuItemDisableNative.Checked = value;
+    }
     public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
     public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
     public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
@@ -201,11 +207,17 @@ public partial class FormMain : Form
 
         InitializeComponent();
 
+        toolStripMenuItemDisableNative.Enabled = NativeWrapper.Enabled;
+        if(!NativeWrapper.Enabled)
+            toolStripMenuItemDisableNative.Checked = true;
+
         if (DesignMode)
             return;
 
-        //MainWindowの場所を読み込むため (InitializeComponentの後にに読み込む)
+        //MainWindowの場所を読み込むため (InitializeComponentの後に読み込む)
         Registry(Reg.Mode.Read);
+
+
 
         sw.Restart();
 
@@ -471,7 +483,6 @@ public partial class FormMain : Form
     #region レジストリ操作
     private void Registry(Reg.Mode mode)
     {
-
         using var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\ReciPro");
         try
         {
@@ -482,7 +493,6 @@ public partial class FormMain : Form
 
             Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
 
-
             Reg.RW(key, mode, this, nameof(Bounds), Bounds);
             //WindowLocation.Adjust(this);//20250804にコメントアウト (浜根氏の問題に対処)
             Reg.RW(key, mode, this, nameof(DisableOpenGL), DisableOpenGL);
@@ -490,6 +500,16 @@ public partial class FormMain : Form
 
             if (commonDialog == null)
                 return;
+
+            //Crystallography.Native.dllを使うかどうか
+            if (mode == Reg.Mode.Read && toolStripMenuItemDisableNative.Enabled)
+            {
+                Reg.RW(key, mode, this, nameof(DisableNative), DisableNative);
+                BetheMethod.EigenEnabled = !toolStripMenuItemDisableNative.Checked;
+            }
+            else if (mode == Reg.Mode.Write)
+                Reg.RW(key, mode, this, nameof(DisableNative), DisableNative);
+
 
             Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
 

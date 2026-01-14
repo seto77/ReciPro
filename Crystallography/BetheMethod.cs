@@ -40,7 +40,7 @@ public class BetheMethod
     /// (001)ベクトル
     /// </summary>
     private static readonly Vector3DBase zNorm = new(0, 0, 1);
-    public static readonly bool EigenEnabled, MklEnabled, BlasEnabled, CudaEnabled;
+    public static bool EigenEnabled, MklEnabled, BlasEnabled, CudaEnabled;
 
     public static readonly int ProcessorCount = Environment.ProcessorCount;
     #endregion
@@ -726,7 +726,7 @@ public class BetheMethod
             var potentialMatrix = getEigenMatrix(Beams);
             dim = Beams.Length;
             //A行列に関する固有値、固有ベクトルを取得 
-            if (EigenEnabled || maxNumOfBloch < 400)
+            if (EigenEnabled && maxNumOfBloch < 400)
             {
                 (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(dim, potentialMatrix);
                 EigenVectorsInverse = NativeWrapper.Inverse(Beams.Length, EigenVectors);
@@ -1262,24 +1262,29 @@ public class BetheMethod
                     if (bwSTEM.CancellationPending) return;
 
                     #region まず厚み_thick[t][_t]における透過係数_tc_kを計算
+                    //validTc = validTc.WithDegreeOfParallelism(1);
                     validTc.ForAll(kIndex =>
                     {
-                        #region この内容をNativeコードで実行
-                        //Complex[] exp_kgz = new Complex[bLen], exp_λ = new Complex[bLen];
-                        //for (int i = 0; i < bLen; i++)
-                        //{
-                        //    exp_kgz[i] = Exp(TwoPiI * kg_z[kIndex][i] * thickness);
-                        //    exp_λ[i] = Exp(TwoPiI * eVal[kIndex][i] * thickness);
-                        //    tc_k[kIndex][i] = 0;
-                        //}
+                        if (EigenEnabled)
+                        {
+                            fixed (Complex* _tc_k = tc_k, _eVal = eVal[kIndex], _eVec = eVec[kIndex])
+                            fixed (double* _kg_z = kg_z[kIndex])
+                                NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
+                        }
+                        else
+                        {
+                            Complex[] exp_kgz = new Complex[bLen], exp_λ = new Complex[bLen];
+                            for (int i = 0; i < bLen; i++)
+                            {
+                                exp_kgz[i] = Exp(TwoPiI * kg_z[kIndex][i] * thickness);
+                                exp_λ[i] = Exp(TwoPiI * eVal[kIndex][i] * thickness);
+                                tc_k[kIndex * bLen + i] = 0;
+                            }
 
-                        //for (int g = 0; g < bLen; g++)
-                        //    for (int j = 0; j < bLen; j++)
-                        //        tc_k[kIndex][g] += eVec[kIndex][j * bLen + g] * exp_kgz[g] * exp_λ[j];
-                        #endregion
-                        fixed (Complex* _tc_k = tc_k, _eVal = eVal[kIndex], _eVec = eVec[kIndex])
-                        fixed (double* _kg_z = kg_z[kIndex])
-                            NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
+                            for (int g = 0; g < bLen; g++)
+                                for (int j = 0; j < bLen; j++)
+                                    tc_k[kIndex * bLen + g] += eVec[kIndex][j * bLen + g] * exp_kgz[g] * exp_λ[j];
+                        }
                     });
                     #endregion
 
@@ -1291,12 +1296,21 @@ public class BetheMethod
                             fixed (Complex* _tc_k = tc_k, _U = U, _tc_kq = tc_kq)
                                 for (int i = 0; i < list[kIndex].Count; i++)
                                 {
+                                    Complex tmp;
                                     var (qIndex, n, r, lenz) = list[kIndex][i];
                                     //厚み_thick[t][_t]における透過係数_tc_kqを計算
-                                    NativeWrapper.BlendAndConjugate(bLen, _tc_k + n[0] * bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], _tc_kq);
-
-                                    var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
-
+                                    if (EigenEnabled)
+                                    {
+                                        NativeWrapper.BlendAndConjugate(bLen, _tc_k + n[0] * bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], _tc_kq);
+                                        tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
+                                    }
+                                    else
+                                    {
+                                        MathNet.Numerics.LinearAlgebra.Vector<Complex> tc_kq_vec = new DVec(bLen);
+                                        for (int j = 0; j < 4; j++)
+                                            tc_kq_vec += (new DVec(tc_k[(n[j] * bLen)..((n[j] + 1) * bLen)]).Conjugate() * r[j]);
+                                        tmp = tc_kq_vec * (new DMat(bLen, bLen, U[(qIndex * bLen2) ..((qIndex+1) * bLen2)]) * new DVec(tc_k[(kIndex * bLen)..((kIndex + 1) * bLen)]));
+                                    }
                                     for (int dIndex = 0; dIndex < dLen; dIndex++)
                                         sumTmp[i * dLen + dIndex] = tmp * lenz[dIndex];
                                 }
@@ -1588,7 +1602,7 @@ public class BetheMethod
             //各ピクセルの計算
             double cX = width / 2.0, cY = height / 2.0;
             var shift = Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2;
-            if (native && NativeWrapper.Enabled)//ネイティブC++で実行 3倍速い
+            if (native && EigenEnabled)//ネイティブC++で実行 3倍速い
             {
                 var (gPsi, gVec, gLenz) = NativeWrapper.HRTEM_Helper(gList);
                 int divTotal = Environment.ProcessorCount * 4, step = width * height / divTotal;

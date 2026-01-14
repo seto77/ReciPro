@@ -3815,37 +3815,43 @@ construction)</value>
     <value>File</value>
   </data>
   <data name="toolTipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 22</value>
+    <value>384, 22</value>
   </data>
   <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
     <value>Tool Tip</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>377, 6</value>
+    <value>381, 6</value>
   </data>
   <data name="resetRegistryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 22</value>
+    <value>384, 22</value>
   </data>
   <data name="resetRegistryToolStripMenuItem.Text" xml:space="preserve">
     <value>Reset registry (after restart of ReciPro)</value>
   </data>
+  <data name="toolStripMenuItemDisableNative.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 22</value>
+  </data>
+  <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
+    <value>Disable Crystallography.Native library (needs restart)</value>
+  </data>
   <data name="disableOpneGLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 22</value>
+    <value>384, 22</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
     <value>Disable all rendering using OpenGL (needs restart)</value>
   </data>
   <data name="toolStripMenuItemDisableTextRendering.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 22</value>
+    <value>384, 22</value>
   </data>
   <data name="toolStripMenuItemDisableTextRendering.Text" xml:space="preserve">
     <value>Disable text rendering using OpenGL (needs restart)</value>
   </data>
   <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>377, 6</value>
+    <value>381, 6</value>
   </data>
   <data name="powderDiffractionFunctionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 22</value>
+    <value>384, 22</value>
   </data>
   <data name="powderDiffractionFunctionToolStripMenuItem.Text" xml:space="preserve">
     <value>Powder diffraction function (under development)</value>
@@ -4380,7 +4386,7 @@ construction)</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>699, 598</value>
+    <value>698, 597</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
@@ -4662,6 +4668,12 @@ construction)</value>
     <value>resetRegistryToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;resetRegistryToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemDisableNative.Name" xml:space="preserve">
+    <value>toolStripMenuItemDisableNative</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemDisableNative.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;disableOpneGLToolStripMenuItem.Name" xml:space="preserve">
