@@ -33,7 +33,7 @@ public class HDF
     public H5DatasetAdv GetDataset(string path)
     {
         var dataset = Datasets.FirstOrDefault(d => d.Path == path);
-        return path == dataset.Path ? dataset : null;
+        return (dataset!=null && path == dataset.Path) ? dataset : null;
     }
 
     /// <summary>
@@ -62,6 +62,7 @@ public class HDF
 
         func(file.Group("/"), "");
 
+        #region コメントアウト
         //var rootId = H5G.open(h5, "/");
 
         //List<string> datasetNames = new();
@@ -104,9 +105,10 @@ public class HDF
         //    var parent = depth == 1 ? "/" : dataset[..dataset.LastIndexOf('/')];
         //    Datasets.Add((dataset, groupNames.FindIndex(name => name == parent), depth - 1));
         //}
-
+        #endregion
     }
 
+    #region コメントアウト
     //public bool Move(string path)
     //{
     //    if (path.Length == 0)
@@ -292,5 +294,6 @@ public class HDF
     //    else
     //        return (default, false);
     //}
+    #endregion
 
 }

@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.1.14.0919</AssemblyVersion>
-    <FileVersion>2026.1.14.0919</FileVersion>
+    <AssemblyVersion>2026.1.19.0716</AssemblyVersion>
+    <FileVersion>2026.1.19.0716</FileVersion>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <TieredCompilation>false</TieredCompilation>
@@ -34,7 +34,7 @@
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.7.1" />
-    <PackageReference Include="System.Management" Version="10.0.1" />
+    <PackageReference Include="System.Management" Version="10.0.2" />
     <PackageReference Include="ZLinq" Version="1.5.4" />
   </ItemGroup>
 
