@@ -580,7 +580,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private GraphControl graphControlDistance;
         private PoleFigureControl2 poleFigureControl;
-        private System.Windows.Forms.Panel panelAxes;
         private System.Windows.Forms.CheckBox checkBoxDrawAxes;
         private System.Windows.Forms.CheckBox checkBoxDrawGuidCircles;
         private System.Windows.Forms.Button buttonSurfaceNormal;

@@ -1,6 +1,4 @@
-﻿using PureHDF;
-using System;
-using System.CodeDom;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -52,7 +50,7 @@ public static class ImageIO
                     filterString += "*." + ListOfExtension[i] + ";";
                 else
                     filterString += "*." + ListOfExtension[i];
-
+            
             return filterString;
         }
     }
@@ -169,7 +167,7 @@ public static class ImageIO
     {
         str = str.TrimEnd('\n');
         str = str.TrimEnd('\r');
-
+        
         if (!File.Exists(str))
             return false;
 

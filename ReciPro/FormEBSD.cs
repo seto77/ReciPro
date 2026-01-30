@@ -545,8 +545,8 @@ public partial class FormEBSD : Form
     
     #region 菊池線 graphicsBoxのイベント (graphicsBox上のマウスイベントも含む)
 
-    private bool MouseRangingMode = false;
-    private Point MouseRangeStart, MouseRangeEnd;//, startAnimation;
+    //private bool MouseRangingMode = false;
+    //private Point MouseRangeStart, MouseRangeEnd;//, startAnimation;
     private void graphicsBox_MouseDown(object sender, MouseEventArgs e)
     {
         if (e.Clicks == 2)

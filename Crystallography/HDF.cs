@@ -235,7 +235,7 @@ public class HDF
                     datasets.Add(childDataset);
             }
             Datasets.AddRange(datasets.Select(d => new H5DatasetAdv(d, $"{path}/{d.Name}")));
-
+            
             foreach (var childGroup in groups)
                 addDatasetRecursively(childGroup, $"{path}/{childGroup.Name}");
         }

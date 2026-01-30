@@ -3000,7 +3000,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveCBEDasTiffToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelTimeForBethe;
-        private System.Windows.Forms.TabPage tabPageMisc;
         public NumericBox numericBoxClientHeight;
         public NumericBox numericBoxClientWidth;
         private System.Windows.Forms.Button button1;
@@ -3160,8 +3159,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonHolderSimulation;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripButton toolStripButtonReciprocalSpace;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBox5;
     }
