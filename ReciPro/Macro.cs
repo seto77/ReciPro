@@ -188,6 +188,13 @@ public class Macro : MacroBase
             Application.DoEvents();
         }
 
+        [Help("Set the rotation state by three Euler angles (in degrees).", "double phi, double theta, double psi")]
+        public void EulerInDeg(double phi, double theta, double psi)
+        {
+            main.SetRotation(phi / 180.0 * Math.PI, theta / 180.0 * Math.PI, psi / 180.0 * Math.PI);
+            Application.DoEvents();
+        }
+
         [Help("Rotate the current crystal by specifying the rotation axis (vX, vY, vZ) and angle (in radians).", 
             "double vX, double vY, double vZ, double angle")]
         public void Rotate(double vX, double vY, double vZ, double angle) => main.Rotate((vX, vY, vZ), angle);
@@ -251,7 +258,6 @@ public class Macro : MacroBase
         
         [Help("Close the 'Diffraction Simulator' window.")] 
         public void Close() => Execute(new Action(() => difSim.Visible = false));
-
 
 
         [Help("Set the incident wave to X-ray.")]
@@ -334,9 +340,21 @@ public class Macro : MacroBase
         [Help("Set the image size in pixel.", "int width, int height")] 
         public void ImageSize(int width, int height) { ImageWidth = width; ImageHeight = height; }
 
-        [Help("Float. Set/Get the distance (in mm) from the sample to the detector.")]
+        [Help("Float. Set/Get the Cameralength2 (distance from the sample to the detector) in mm.")]
         public double CameraLength2 { get => difSim.CameraLength2; set => difSim.CameraLength2 = value; }
-        
+
+        [Help("Float. Set/Get the Tau (detector's tilt) in radians.")]
+        public double Tau { get => difSim.Tau; set => difSim.Tau = value; }
+
+        [Help("Float. Set/Get the Tau (detector's tilt) in degrees.")]
+        public double TauInDeg { get => difSim.Tau/Math.PI*180; set => difSim.Tau = value*Math.PI / 180; }
+
+        [Help("Float. Set/Get the Phi (detector's tilt) in radians.")]
+        public double Phi { get => difSim.Phi ; set => difSim.Phi = value; }
+
+        [Help("Float. Set/Get the Phi (detector's tilt) in degrees.")]
+        public double PhiInDeg { get => difSim.Phi / Math.PI * 180; set => difSim.Phi = value * Math.PI / 180; }
+
         [Help("Set coordinates (in mm) of the foot of the perpendicular line from the sample to the detector.", "double x, double y")]
         public void Foot(double x, double y) { difSim.Foot = new PointD(x, y); }
 
@@ -345,6 +363,9 @@ public class Macro : MacroBase
 
         [Help("Save the current simulation pattern as png format file. If filename is omitted, a dialog will open.", "string filename")]
         public void SaveAsPng(string filename = "") => difSim.SaveOrCopy(true, true, true, filename);
+
+
+
 
         [Help("Get spot information as CSV-format text.")]
         public string SpotInfo() => (Execute(() => spotInfo()));
