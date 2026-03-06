@@ -863,7 +863,7 @@ public partial class FormDiffractionSimulator : Form
                     g.Y *= -scale;
                 });
 
-                gVector = gVector.Where(g => g.Flag1).ToList();
+                gVector = [.. gVector.Where(g => g.Flag1)];
                 if (gVector.Count == 0) return null;
                 var maxIntensity = gVector.Max(g => g.RelativeIntensity);
                 Parallel.ForEach(gVector, g => g.RelativeIntensity /= maxIntensity);
@@ -918,7 +918,7 @@ public partial class FormDiffractionSimulator : Form
 
                     var gPED = crystal.Bethe.GetPrecessionElectronDiffraction(blochNum, Energy, crystal.RotationMatrix, numericBoxThickness.Value,
                         numericBoxPED_Semiangle.Value / 1000, numericBoxPED_Step.ValueInteger);
-                    gVector = gPED.Select(g => g.ConvertToVector3D()).ToList();
+                    gVector = [.. gPED.Select(g => g.ConvertToVector3D())];
 
                     if (eigenValues == null || eigenValues[0] != crystal.Bethe.EigenValuesPED[0])
                         toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects (PED): {sw.ElapsedMilliseconds} ms.  ";
@@ -928,7 +928,7 @@ public partial class FormDiffractionSimulator : Form
                     var eigenValues = crystal.Bethe.EigenValues;
 
                     var gBethe = crystal.Bethe.GetDifractedBeamAmpriltudes(blochNum, Energy, crystal.RotationMatrix, numericBoxThickness.Value);
-                    gVector = gBethe.Select(g => g.ConvertToVector3D()).ToList();
+                    gVector = [.. gBethe.Select(g => g.ConvertToVector3D())];
 
                     if (eigenValues != crystal.Bethe.EigenValues)
                         toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects: {sw.ElapsedMilliseconds} ms.  ";
@@ -958,7 +958,7 @@ public partial class FormDiffractionSimulator : Form
             if (gVector == null)
                 break;
 
-            gVector.ForEach(g => { if (g != null) g.Flag2 = false; });
+            gVector.ForEach(g => { g?.Flag2 = false; });
 
             foreach (var g in gVector.Where(g => g != null && g.Flag1))
             {
@@ -2933,7 +2933,7 @@ public partial class FormDiffractionSimulator : Form
             for (int i = 0; i < sum.Length; i++)
                 sum[i] += temp[i];
         }
-        var destBmp = BitmapConverter.FromArrayToBitmap(sum.Select(s => (byte)Math.Min(s, 255)).ToArray(), graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
+        var destBmp = BitmapConverter.FromArrayToBitmap([.. sum.Select(s => (byte)Math.Min(s, 255))], graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
         graphicsBox.Image = destBmp;
         Clipboard.SetDataObject(destBmp);
 
@@ -2974,7 +2974,7 @@ public partial class FormDiffractionSimulator : Form
     }
 
     private readonly System.Threading.Lock lockObj = new();
-    private List<GLObject> ewaldList = [];
+    private readonly List<GLObject> ewaldList = [];
     private (double maxAngle, double ewaldRadius, bool Precession) beforeEwald = (0, 0, false);
     private void Draw3D()
     {
