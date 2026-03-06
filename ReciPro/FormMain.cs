@@ -574,7 +574,7 @@ public partial class FormMain : Form
                 Reg.RW(key, mode, owner, nameof(owner.FlipVertically), owner.FlipVertically);
                 Reg.RW(key, mode, owner, nameof(owner.NegativeImage), owner.NegativeImage);
 
-                Reg.RW(key, mode, owner, nameof(owner.FixCenter), owner.FixCenter);
+                Reg.RW(key, mode, owner, nameof(owner.IsCenterFixed), owner.IsCenterFixed);
 
             }
             {

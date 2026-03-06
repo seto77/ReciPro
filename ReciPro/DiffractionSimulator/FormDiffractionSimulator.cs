@@ -137,7 +137,7 @@ public partial class FormDiffractionSimulator : Form
     /// <summary>
     /// 中心位置を固定するかどうか
     /// </summary>
-    public bool FixCenter
+    public bool IsCenterFixed
     {
         get => checkBoxFixCenter.Checked;
         set
@@ -321,6 +321,27 @@ public partial class FormDiffractionSimulator : Form
     /// 画像の中心。検出器(Detector)座標系(Foot原点)で表現
     /// </summary>
     public PointD Foot { get; set; } = new PointD(0, 0);
+
+     public PointD FixedCenter
+    {
+        get
+        {
+
+            if (comboBoxCenter.SelectedIndex == 0)//direct spot
+                return new PointD(0, 0);
+            else if (comboBoxCenter.SelectedIndex == 1)//foot of perpendicular from sample
+                return -convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
+            else//検出器の中心
+            {
+                var fdsg = FormDiffractionSimulatorGeometry;
+
+                if (FormDiffractionSimulatorGeometry.ShowDetectorArea)
+                    return new PointD(fdsg.FootX - fdsg.DetectorWidth / 2.0, fdsg.FootY - fdsg.DetectorHeight / 2.0) * fdsg.DetectorPixelSize;
+                else
+                    return new PointD(0, 0);
+            }
+        }
+    }
 
     #endregion
 
@@ -1836,7 +1857,7 @@ public partial class FormDiffractionSimulator : Form
         SetVector(true);
         Draw();
 
-        if(FormDiffractionSimulatorHolder.Visible)
+        if (FormDiffractionSimulatorHolder.Visible)
             FormDiffractionSimulatorHolder.CrystalChanged();
 
     }
@@ -2526,44 +2547,24 @@ public partial class FormDiffractionSimulator : Form
     #endregion
 
     #region 中心位置設定関連
-    private void ButtonResetCenter_Click_1(object sender, EventArgs e)
+
+    private void ButtonResetCenter_Click(object sender, EventArgs e)
     {
         Foot = FixedCenter;
         Draw();
     }
 
-    private PointD FixedCenter
-    {
-        get
-        {
-            if (comboBoxCenter.SelectedIndex == 0)
-                return new PointD(0, 0);
-            else if (comboBoxCenter.SelectedIndex == 1)
-                return -convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
-            else
-            {
-                var fdsg = FormDiffractionSimulatorGeometry;
-
-                if (FormDiffractionSimulatorGeometry.ShowDetectorArea)
-                    return new PointD(fdsg.FootX - fdsg.DetectorWidth / 2.0, fdsg.FootY - fdsg.DetectorHeight / 2.0) * fdsg.DetectorPixelSize;
-                else
-                    return new PointD(0, 0);
-            }
-        }
-    }
-
-
     private void CheckBoxFixCenter_CheckedChanged(object sender, EventArgs e)
     {
-        if (checkBoxFixCenter.Checked)
-            buttonResetCenter.PerformClick();
+        if (IsCenterFixed)
+            ButtonResetCenter_Click(sender, e);
         buttonResetCenter.Enabled = !checkBoxFixCenter.Checked;
     }
 
-    private void RadioButtonCenterTo_CheckedChanged(object sender, EventArgs e)
+    private void comboBoxCenter_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (checkBoxFixCenter.Checked && (sender as RadioButton).Checked)
-            ButtonResetCenter_Click_1(sender, e);
+        if (IsCenterFixed)
+            ButtonResetCenter_Click(sender, e);
     }
 
     #endregion
@@ -3282,4 +3283,6 @@ public partial class FormDiffractionSimulator : Form
         if (FormDiffractionSimulatorHolder.Visible)
             FormDiffractionSimulatorHolder.RotationChanged();
     }
+
+   
 }

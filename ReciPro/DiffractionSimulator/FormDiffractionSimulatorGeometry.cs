@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ReciPro;
 
@@ -120,6 +121,8 @@ public partial class FormDiffractionSimulatorGeometry : Form
 
         DetectorRotationInv = DetectorRotation.Inverse();
         FormDiffractionSimulator.SetVector();
+        if(FormDiffractionSimulator.IsCenterFixed)
+            FormDiffractionSimulator.Foot = FormDiffractionSimulator.FixedCenter;
         FormDiffractionSimulator.Draw();
     }
 
