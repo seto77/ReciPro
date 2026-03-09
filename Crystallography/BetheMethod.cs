@@ -284,28 +284,42 @@ public class BetheMethod
         PerturbationCell cell, bool isCellCenter,
         bool usePerturbation, Solver solver)
     {
+        Complex[] eigenValues, eigenVectors;
+
         if (usePerturbation && cell != null)
         {
             if (isCellCenter)
             {
-                return (cell.EigenValues0, cell.RightVectors0, cell.Alpha0);
+                eigenValues = cell.EigenValues0;
+                eigenVectors = cell.RightVectors0;
             }
             else
             {
                 var em1 = eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray();
-                return NativeWrapper.EigenPerturb(
+                (eigenValues, eigenVectors, _) = NativeWrapper.EigenPerturb(
                     bLen, cell.EigenValues0, cell.RightVectors0,
                     cell.LeftVectors0, cell.EigenMatrix0, em1);
             }
+
+            // ★修正: α は常に C⁻¹ψ₀ で計算する (左固有ベクトルから求めない)
+            // PartialPivLuSolve は O(bLen³/3) で、固有値分解 O(25 bLen³) に比べて十分軽い。
+            var psi0 = new Complex[bLen];
+            psi0[0] = One;
+            var alpha = EigenEnabled
+                ? NativeWrapper.PartialPivLuSolve(bLen, eigenVectors, psi0)
+                 : ((DVec)new DMat(bLen, bLen, eigenVectors.AsSpan()[..(bLen * bLen)].ToArray())
+                    .LU().Solve(new DVec(psi0))).Values;
+            return (eigenValues, eigenVectors, alpha);
         }
         else
         {
+            // フォールバック: フル分解 (変更なし)
             if (solver == Solver.Eigen_Eigen && EigenEnabled)
             {
                 var (vals, vecs) = NativeWrapper.EigenSolver(bLen, eigenMatrix);
-                var inv = NativeWrapper.Inverse(bLen, vecs);
-                var alpha = new Complex[bLen];
-                for (int j = 0; j < bLen; j++) alpha[j] = inv[j];
+                var psi0 = new Complex[bLen];
+                psi0[0] = One;
+                var alpha = NativeWrapper.PartialPivLuSolve(bLen, vecs, psi0);
                 return (vals, vecs, alpha);
             }
             else
@@ -320,6 +334,7 @@ public class BetheMethod
             }
         }
     }
+
 
     /// <summary>
     /// 固有値・固有ベクトル・αから ψ_g(t) を計算する。

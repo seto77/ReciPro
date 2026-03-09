@@ -442,13 +442,17 @@ extern "C" {
 		Map<Vec>((dcomplex*)eigenValues, dim) = valsR;
 		Map<Mat>((dcomplex*)rightVectors, dim, dim) = vecsR;
 
-		// 左固有ベクトル (A† の固有ベクトル)
+		// ★修正: α = C⁻¹ ψ₀ を LU 分解で直接計算 (左固有ベクトルを使わない)
+		Vec psi0 = Vec::Zero(dim);
+		psi0[0] = 1.0;
+		Map<Vec>((dcomplex*)alpha, dim).noalias() = vecsR.partialPivLu().solve(psi0);
+
+		// 左固有ベクトル (A† の固有ベクトル) — 摂動計算用
 		ComplexEigenSolver<Mat> solverL(A.adjoint());
 		auto valsL = solverL.eigenvalues();
 		Mat L = solverL.eigenvectors();
 
 		// 左右の固有値の対応を合わせる
-		// conj(γ_j^right) に最も近い γ_k^adj を探す
 		Mat L_sorted(dim, dim);
 		VectorXi used = VectorXi::Zero(dim);
 		for (int j = 0; j < dim; ++j)
@@ -474,9 +478,8 @@ extern "C" {
 		}
 		Map<Mat>((dcomplex*)leftVectors, dim, dim) = L_sorted;
 
-		// α_j = l_j(0) (双直交正規化された左固有ベクトルの第0成分)
-		for (int j = 0; j < dim; ++j)
-			((dcomplex*)alpha)[j] = L_sorted.col(j)(0);
+		// ★注: alpha[] は上で LU solve で計算済み。
+		// leftVectors[] は _EigenPerturb の固有値・固有ベクトル補正のみに使用。
 	}
 
 
@@ -520,9 +523,7 @@ extern "C" {
 		for (int j = 0; j < dim; ++j)
 			gamma1[j] = gamma0[j] + LdAC(j, j);
 
-		// 固有ベクトルの1次補正:
-		// C₁ = C₀ (I + D)
-		// D_{kj} = (L†dAC)_{kj} / (γ_j - γ_k)  (k ≠ j), D_{jj} = 0
+		// 固有ベクトルの1次補正: C₁ = C₀ (I + D)
 		Mat D = Mat::Zero(dim, dim);
 		for (int j = 0; j < dim; ++j)
 			for (int k = 0; k < dim; ++k)
@@ -536,10 +537,10 @@ extern "C" {
 		auto C1 = Map<Mat>((dcomplex*)rightVectors1, dim, dim);
 		C1.noalias() = C0 * (Mat::Identity(dim, dim) + D);
 
-		// α の近似: 左固有ベクトルの摂動を省略し、基準値を使用
-		// α_j ≈ l_j^(0)(0)
-		for (int j = 0; j < dim; ++j)
-			((dcomplex*)alpha1)[j] = L0.col(j)(0);
+		// ★修正: α₁ = C₁⁻¹ ψ₀ を LU で計算 (左固有ベクトルを使わない)
+		Vec psi0 = Vec::Zero(dim);
+		psi0[0] = 1.0;
+		Map<Vec>((dcomplex*)alpha1, dim).noalias() = C1.partialPivLu().solve(psi0);
 	}
 
 
