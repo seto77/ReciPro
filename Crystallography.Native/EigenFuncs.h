@@ -61,29 +61,27 @@ extern "C" {
 		double intensity[]       // tLen個の double (出力)
 	);
 
-	// セル中心のフル固有値分解 (右+左固有ベクトル + α)
-	// CBED, LACBED, EBSD, STEM 共通
+	// セル中心のフル固有値分解
 	EIGEN_FUNCS_API void _EigenSolverFull(
 		int dim,
-		double eigenMatrix[],    // A行列 (入力, dim×dim complex)
-		double eigenValues[],    // γ_j (出力, dim complex)
-		double rightVectors[],   // C_g^(j) (出力, dim×dim complex, column-major)
-		double leftVectors[],    // L_g^(j) (出力, dim×dim complex, column-major)
-		double alpha[]           // α_j (出力, dim complex)
+		double eigenMatrix[],     // A行列 (入力)
+		double eigenValues[],     // γ_j (出力)
+		double rightVectors[],    // C_g^(j) (出力, column-major)
+		double inverseVectors[],  // C⁻¹ (出力, column-major)    ← 変更
+		double alpha[]            // α_j (出力)
 	);
 
-	// 1次摂動による近似計算
-	// CBED, LACBED, EBSD, STEM 共通
+	// 1次摂動
 	EIGEN_FUNCS_API void _EigenPerturb(
 		int dim,
-		double eigenValues0[],    // 基準の γ_j (入力)
-		double rightVectors0[],   // 基準の C (入力)
-		double leftVectors0[],    // 基準の L (入力)
-		double eigenMatrix0[],    // 基準の A (入力)
-		double eigenMatrix1[],    // 新しい A (入力)
-		double eigenValues1[],    // 補正後の γ (出力)
-		double rightVectors1[],   // 補正後の C (出力)
-		double alpha1[]           // 補正後の α (出力)
+		double eigenValues0[],     // 基準の γ_j
+		double rightVectors0[],    // 基準の C
+		double inverseVectors0[],  // 基準の C⁻¹                  ← 変更
+		double eigenMatrix0[],     // 基準の A
+		double eigenMatrix1[],     // 新しい A
+		double eigenValues1[],     // 補正後の γ (出力)
+		double rightVectors1[],    // 補正後の C (出力)
+		double alpha1[]            // 補正後の α (出力)
 	);
 
 	

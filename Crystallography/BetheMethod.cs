@@ -183,11 +183,11 @@ public class BetheMethod
     /// </summary>
     private class PerturbationCell
     {
-        public Complex[] EigenMatrix0;    // 基準の A 行列
-        public Complex[] EigenValues0;    // 基準の固有値 γ_j
-        public Complex[] RightVectors0;   // 基準の右固有ベクトル C
-        public Complex[] LeftVectors0;    // 基準の左固有ベクトル L
-        public Complex[] Alpha0;          // 基準の励起振幅 α
+        public Complex[] EigenMatrix0;
+        public Complex[] EigenValues0;
+        public Complex[] RightVectors0;
+        public Complex[] InverseVectors0;  // ← LeftVectors0 から変更
+        public Complex[] Alpha0;
     }
 
     /// <summary>
@@ -261,13 +261,13 @@ public class BetheMethod
             reset_gVectors(bLen, beamsRef, BaseRotation, k0, ref beams0);
             getEigenMatrix(bLen, beams0, ref eigenMatrix0, potentialMatrix);
 
-            var (vals, right, left, alpha) = NativeWrapper.EigenSolverFull(bLen, eigenMatrix0);
+            var (vals, right, inv, alpha) = NativeWrapper.EigenSolverFull(bLen, eigenMatrix0);
             cache[(cx, cy)] = new PerturbationCell
             {
                 EigenMatrix0 = eigenMatrix0,
                 EigenValues0 = vals,
                 RightVectors0 = right,
-                LeftVectors0 = left,
+                InverseVectors0 = inv,
                 Alpha0 = alpha
             };
         });
@@ -298,7 +298,7 @@ public class BetheMethod
                 var em1 = eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray();
                 (eigenValues, eigenVectors, _) = NativeWrapper.EigenPerturb(
                     bLen, cell.EigenValues0, cell.RightVectors0,
-                    cell.LeftVectors0, cell.EigenMatrix0, em1);
+                     cell.InverseVectors0, cell.EigenMatrix0, em1);
             }
 
             // ★修正: α は常に C⁻¹ψ₀ で計算する (左固有ベクトルから求めない)
@@ -1023,13 +1023,13 @@ public class BetheMethod
                     if (usePerturbation)
                     {
                         var eigenMatrix0 = getEigenMatrix(beams);
-                        var (vals, right, left, alpha) = NativeWrapper.EigenSolverFull(bLen, eigenMatrix0);
+                        var (vals, right, inv, alpha) = NativeWrapper.EigenSolverFull(bLen, eigenMatrix0);
                         cell = new PerturbationCell
                         {
                             EigenMatrix0 = eigenMatrix0,
                             EigenValues0 = vals,
                             RightVectors0 = right,
-                            LeftVectors0 = left,
+                            InverseVectors0 = inv,
                             Alpha0 = alpha
                         };
                     }

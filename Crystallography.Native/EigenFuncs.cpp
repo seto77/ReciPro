@@ -429,7 +429,7 @@ extern "C" {
 		double eigenMatrix[],
 		double eigenValues[],
 		double rightVectors[],
-		double leftVectors[],
+		double inverseVectors[],
 		double alpha[])
 	{
 		auto A = Map<Mat>((dcomplex*)eigenMatrix, dim, dim);
@@ -442,59 +442,26 @@ extern "C" {
 		Map<Vec>((dcomplex*)eigenValues, dim) = valsR;
 		Map<Mat>((dcomplex*)rightVectors, dim, dim) = vecsR;
 
-		// ★修正: α = C⁻¹ ψ₀ を LU 分解で直接計算 (左固有ベクトルを使わない)
-		Vec psi0 = Vec::Zero(dim);
-		psi0[0] = 1.0;
-		Map<Vec>((dcomplex*)alpha, dim).noalias() = vecsR.partialPivLu().solve(psi0);
+		// C⁻¹ を計算 (LU 分解)
+		Mat Cinv = vecsR.partialPivLu().inverse();
+		Map<Mat>((dcomplex*)inverseVectors, dim, dim) = Cinv;
 
-		// 左固有ベクトル (A† の固有ベクトル) — 摂動計算用
-		ComplexEigenSolver<Mat> solverL(A.adjoint());
-		auto valsL = solverL.eigenvalues();
-		Mat L = solverL.eigenvectors();
-
-		// 左右の固有値の対応を合わせる
-		Mat L_sorted(dim, dim);
-		VectorXi used = VectorXi::Zero(dim);
+		// α = C⁻¹ ψ₀ = Cinv の 0列目
 		for (int j = 0; j < dim; ++j)
-		{
-			dcomplex target = conj(valsR[j]);
-			int bestK = -1;
-			double bestDist = 1e30;
-			for (int k = 0; k < dim; ++k)
-			{
-				if (used[k]) continue;
-				double dist = abs(valsL[k] - target);
-				if (dist < bestDist) { bestDist = dist; bestK = k; }
-			}
-			L_sorted.col(j) = L.col(bestK);
-			used[bestK] = 1;
-		}
+			((dcomplex*)alpha)[j] = Cinv(j, 0);
 
-		// 双直交正規化: l_j† c_j = 1
-		for (int j = 0; j < dim; ++j)
-		{
-			dcomplex norm = L_sorted.col(j).dot(vecsR.col(j));
-			L_sorted.col(j) /= conj(norm);
-		}
-		Map<Mat>((dcomplex*)leftVectors, dim, dim) = L_sorted;
-
-		// ★注: alpha[] は上で LU solve で計算済み。
-		// leftVectors[] は _EigenPerturb の固有値・固有ベクトル補正のみに使用。
+		// ★ ComplexEigenSolver(A†) も matching も不要！
 	}
 
 
 	// ================================================================
 	// 1次摂動で固有値・固有ベクトル・αを近似計算
-	//
-	// δγ_j = l_j† · δA · c_j
-	// δc_j = Σ_{k≠j} [l_k† · δA · c_j / (γ_j - γ_k)] · c_k
-	// α_j ≈ l_j(0)  (左固有ベクトルの摂動は省略)
 	// ================================================================
 	EIGEN_FUNCS_API void _EigenPerturb(
 		int dim,
 		double eigenValues0[],
 		double rightVectors0[],
-		double leftVectors0[],
+		double inverseVectors0[],
 		double eigenMatrix0[],
 		double eigenMatrix1[],
 		double eigenValues1[],
@@ -503,27 +470,25 @@ extern "C" {
 	{
 		auto gamma0 = Map<Vec>((dcomplex*)eigenValues0, dim);
 		auto C0 = Map<Mat>((dcomplex*)rightVectors0, dim, dim);
-		auto L0 = Map<Mat>((dcomplex*)leftVectors0, dim, dim);
+		auto Cinv0 = Map<Mat>((dcomplex*)inverseVectors0, dim, dim);
 		auto A0 = Map<Mat>((dcomplex*)eigenMatrix0, dim, dim);
 		auto A1 = Map<Mat>((dcomplex*)eigenMatrix1, dim, dim);
 
 		// δA = A_new - A_ref
 		Mat dA = A1 - A0;
 
-		// δA · C₀ を事前計算
-		Mat dAC(dim, dim);
-		dAC.noalias() = dA * C0;
+		// ★核心: C⁻¹ δA C₀ (= L† δA C₀ と数学的に等価)
+		// matching 不要！
+		Mat CinvdAC(dim, dim);
+		CinvdAC.noalias() = Cinv0 * dA * C0;
 
-		// L₀† · δA · C₀
-		Mat LdAC(dim, dim);
-		LdAC.noalias() = L0.adjoint() * dAC;
-
-		// 固有値の1次補正: δγ_j = (L†dAC)_{jj}
+		// 固有値の1次補正: δγ_j = (C⁻¹ δA C)_{jj}
 		auto gamma1 = Map<Vec>((dcomplex*)eigenValues1, dim);
 		for (int j = 0; j < dim; ++j)
-			gamma1[j] = gamma0[j] + LdAC(j, j);
+			gamma1[j] = gamma0[j] + CinvdAC(j, j);
 
 		// 固有ベクトルの1次補正: C₁ = C₀ (I + D)
+		// D_{kj} = (C⁻¹ δA C)_{kj} / (γ_j - γ_k)  (k ≠ j)
 		Mat D = Mat::Zero(dim, dim);
 		for (int j = 0; j < dim; ++j)
 			for (int k = 0; k < dim; ++k)
@@ -531,13 +496,13 @@ extern "C" {
 				{
 					dcomplex denom = gamma0[j] - gamma0[k];
 					if (abs(denom) > 1e-12)
-						D(k, j) = LdAC(k, j) / denom;
+						D(k, j) = CinvdAC(k, j) / denom;
 				}
 
 		auto C1 = Map<Mat>((dcomplex*)rightVectors1, dim, dim);
 		C1.noalias() = C0 * (Mat::Identity(dim, dim) + D);
 
-		// ★修正: α₁ = C₁⁻¹ ψ₀ を LU で計算 (左固有ベクトルを使わない)
+		// α₁ = C₁⁻¹ ψ₀
 		Vec psi0 = Vec::Zero(dim);
 		psi0[0] = 1.0;
 		Map<Vec>((dcomplex*)alpha1, dim).noalias() = C1.partialPivLu().solve(psi0);
