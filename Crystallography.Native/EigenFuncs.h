@@ -49,14 +49,41 @@ extern "C" {
 
 	EIGEN_FUNCS_API void _STEM_INEL1(int dim, double rowVec[], int n[], double r[], double sqMat[], double colVec[], double _result[]);
 
-	EIGEN_FUNCS_API void _EBSDSolver(		int bLen, int nAtoms, int tLen,
-		double eigenValues[],    // bLen個の complex (= 2*bLen double)
+	// EBSD強度計算ソルバー (原子位置でのブロッホ波場に基づく)
+	EIGEN_FUNCS_API void _EBSDSolver(
+		int bLen, int nAtoms, int tLen,
+		double eigenValues[],    // bLen個の complex
 		double eigenVectors[],   // bLen*bLen個の complex (column-major)
 		double alpha[],          // bLen個の complex
-		double phaseNG[],        // nAtoms*bLen個の complex (row: atom, col: beam)
+		double phaseNG[],        // nAtoms*bLen個の complex (column-major)
 		double sigma[],          // nAtoms個の double
 		double thicknesses[],    // tLen個の double
 		double intensity[]       // tLen個の double (出力)
+	);
+
+	// セル中心のフル固有値分解 (右+左固有ベクトル + α)
+	// CBED, LACBED, EBSD, STEM 共通
+	EIGEN_FUNCS_API void _EigenSolverFull(
+		int dim,
+		double eigenMatrix[],    // A行列 (入力, dim×dim complex)
+		double eigenValues[],    // γ_j (出力, dim complex)
+		double rightVectors[],   // C_g^(j) (出力, dim×dim complex, column-major)
+		double leftVectors[],    // L_g^(j) (出力, dim×dim complex, column-major)
+		double alpha[]           // α_j (出力, dim complex)
+	);
+
+	// 1次摂動による近似計算
+	// CBED, LACBED, EBSD, STEM 共通
+	EIGEN_FUNCS_API void _EigenPerturb(
+		int dim,
+		double eigenValues0[],    // 基準の γ_j (入力)
+		double rightVectors0[],   // 基準の C (入力)
+		double leftVectors0[],    // 基準の L (入力)
+		double eigenMatrix0[],    // 基準の A (入力)
+		double eigenMatrix1[],    // 新しい A (入力)
+		double eigenValues1[],    // 補正後の γ (出力)
+		double rightVectors1[],   // 補正後の C (出力)
+		double alpha1[]           // 補正後の α (出力)
 	);
 
 	
