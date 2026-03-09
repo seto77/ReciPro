@@ -49,5 +49,16 @@ extern "C" {
 
 	EIGEN_FUNCS_API void _STEM_INEL1(int dim, double rowVec[], int n[], double r[], double sqMat[], double colVec[], double _result[]);
 
+	EIGEN_FUNCS_API void _EBSDSolver(		int bLen, int nAtoms, int tLen,
+		double eigenValues[],    // bLen個の complex (= 2*bLen double)
+		double eigenVectors[],   // bLen*bLen個の complex (column-major)
+		double alpha[],          // bLen個の complex
+		double phaseNG[],        // nAtoms*bLen個の complex (row: atom, col: beam)
+		double sigma[],          // nAtoms個の double
+		double thicknesses[],    // tLen個の double
+		double intensity[]       // tLen個の double (出力)
+	);
+
+	
 
 } // extern "C"

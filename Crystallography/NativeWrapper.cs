@@ -162,6 +162,18 @@ public static partial class NativeWrapper
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _STEM_INEL1(int dim, double* rowVec, int* n, double* r, double* sqMat, double* colVec, double* _result);
 
+
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _EBSDSolver(
+    int bLen, int nAtoms, int tLen,
+    double* eigenValues,
+    double* eigenVectors,
+    double* alpha,
+    double* phaseNG,
+    double* sigma,
+    double[] thicknesses,
+    double* intensity);
+
     #endregion
 
     #region Nativeライブラリが有効かどうか
@@ -774,6 +786,40 @@ public static partial class NativeWrapper
     }
     #endregion
 
+
+    #region EBSD
+    /// <summary>
+    /// EBSD強度を計算する。原子位置でのブロッホ波場に基づく。
+    /// </summary>
+    /// <param name="eigenValues">固有値 γ_j (bLen個)</param>
+    /// <param name="eigenVectors">固有ベクトル C (bLen×bLen, column-major)</param>
+    /// <param name="alpha">励起振幅 α_j (bLen個)</param>
+    /// <param name="phaseNG">位相因子 P[n,g] (nAtoms×bLen, フィルタ済み)</param>
+    /// <param name="sigma">後方散乱断面積 σ_n (nAtoms個)</param>
+    /// <param name="thicknesses">厚さ配列 (tLen個)</param>
+    /// <returns>各厚さでのEBSD強度 (tLen個)</returns>
+    public static unsafe double[] EBSDSolver(
+        Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
+        Complex[] phaseNG, double[] sigma, double[] thicknesses)
+    {
+        int bLen = eigenValues.Length;
+        int nAtoms = sigma.Length;
+        int tLen = thicknesses.Length;
+        var intensity = new double[tLen];
+
+        fixed (Complex* _vals = eigenValues, _vecs = eigenVectors, _alpha = alpha, _phase = phaseNG)
+        fixed (double* _sigma = sigma, _intensity = intensity)
+        {
+            _EBSDSolver(bLen, nAtoms, tLen,
+                (double*)_vals, (double*)_vecs, (double*)_alpha,
+                (double*)_phase, _sigma, thicknesses, _intensity);
+        }
+        return intensity;
+    }
+
+    #endregion
+
+
     #region Histogram
     static public (double[] profile, double[] pixels) Histogram(
         int width, int height,
@@ -805,9 +851,5 @@ public static partial class NativeWrapper
 
         return (profile, pixels);
     }
-
-
-
-
     #endregion
 }

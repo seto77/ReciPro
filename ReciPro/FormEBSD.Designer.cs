@@ -142,13 +142,13 @@
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
-            numericBoxSampleTilt.RadianValue = -1.2566370614359172D;
+            numericBoxSampleTilt.RadianValue = -1.2217304763960306D;
             numericBoxSampleTilt.ShowUpDown = true;
             numericBoxSampleTilt.Size = new System.Drawing.Size(128, 26);
             numericBoxSampleTilt.TabIndex = 111;
             numericBoxSampleTilt.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxSampleTilt.UpDown_Increment = 10D;
-            numericBoxSampleTilt.Value = -72D;
+            numericBoxSampleTilt.Value = -70D;
             numericBoxSampleTilt.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // waveLengthControl
@@ -371,13 +371,13 @@
             numericBoxDetTilt.Minimum = 0D;
             numericBoxDetTilt.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxDetTilt.Name = "numericBoxDetTilt";
-            numericBoxDetTilt.RadianValue = 1.5184364492350666D;
+            numericBoxDetTilt.RadianValue = 1.5707963267948966D;
             numericBoxDetTilt.ShowUpDown = true;
             numericBoxDetTilt.Size = new System.Drawing.Size(137, 26);
             numericBoxDetTilt.TabIndex = 111;
             numericBoxDetTilt.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxDetTilt.UpDown_Increment = 10D;
-            numericBoxDetTilt.Value = 87D;
+            numericBoxDetTilt.Value = 90D;
             numericBoxDetTilt.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // numericBoxDetRadius
@@ -393,13 +393,13 @@
             numericBoxDetRadius.Minimum = 0D;
             numericBoxDetRadius.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxDetRadius.Name = "numericBoxDetRadius";
-            numericBoxDetRadius.RadianValue = 0.52359877559829882D;
+            numericBoxDetRadius.RadianValue = 0.43633231299858238D;
             numericBoxDetRadius.ShowUpDown = true;
             numericBoxDetRadius.Size = new System.Drawing.Size(175, 26);
             numericBoxDetRadius.TabIndex = 111;
             numericBoxDetRadius.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxDetRadius.UpDown_Increment = 10D;
-            numericBoxDetRadius.Value = 30D;
+            numericBoxDetRadius.Value = 25D;
             numericBoxDetRadius.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // numericBoxZofDet
@@ -415,13 +415,11 @@
             numericBoxZofDet.Minimum = -1000D;
             numericBoxZofDet.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxZofDet.Name = "numericBoxZofDet";
-            numericBoxZofDet.RadianValue = 0.52359877559829882D;
             numericBoxZofDet.ShowUpDown = true;
             numericBoxZofDet.Size = new System.Drawing.Size(102, 25);
             numericBoxZofDet.TabIndex = 111;
             numericBoxZofDet.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxZofDet.UpDown_Increment = 10D;
-            numericBoxZofDet.Value = 30D;
             numericBoxZofDet.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // numericBoxYofDet
@@ -437,13 +435,13 @@
             numericBoxYofDet.Minimum = -1000D;
             numericBoxYofDet.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxYofDet.Name = "numericBoxYofDet";
-            numericBoxYofDet.RadianValue = -0.69813170079773179D;
+            numericBoxYofDet.RadianValue = -0.52359877559829882D;
             numericBoxYofDet.ShowUpDown = true;
             numericBoxYofDet.Size = new System.Drawing.Size(102, 25);
             numericBoxYofDet.TabIndex = 111;
             numericBoxYofDet.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxYofDet.UpDown_Increment = 10D;
-            numericBoxYofDet.Value = -40D;
+            numericBoxYofDet.Value = -30D;
             numericBoxYofDet.ValueChanged += numericBoxDetRadius_ValueChanged;
             // 
             // label2

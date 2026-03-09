@@ -69,10 +69,10 @@ public static class Intrinsics
 
     public static unsafe void Blend(int len, Complex[] c0, Complex[] c1, Complex[] c2, Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
-        var rV0 = FromArray256(new double[] { r0, r0, r0, r0 }, 0);
-        var rV1 = FromArray256(new double[] { r1, r1, r1, r1 }, 0);
-        var rV2 = FromArray256(new double[] { r2, r2, r2, r2 }, 0);
-        var rV3 = FromArray256(new double[] { r3, r3, r3, r3 }, 0);
+        var rV0 = FromArray256([r0, r0, r0, r0], 0);
+        var rV1 = FromArray256([r1, r1, r1, r1], 0);
+        var rV2 = FromArray256([r2, r2, r2, r2], 0);
+        var rV3 = FromArray256([r3, r3, r3, r3], 0);
 
         fixed (Complex* p1 = result)
         {
@@ -92,10 +92,10 @@ public static class Intrinsics
 
     public static unsafe void BlendAndConjugate(int len, Complex[] c0, Complex[] c1, Complex[] c2, Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
-        var rV0 = FromArray256(new double[] { r0, r0, r0, r0 }, 0);
-        var rV1 = FromArray256(new double[] { r1, r1, r1, r1 }, 0);
-        var rV2 = FromArray256(new double[] { r2, r2, r2, r2 }, 0);
-        var rV3 = FromArray256(new double[] { r3, r3, r3, r3 }, 0);
+        var rV0 = FromArray256([r0, r0, r0, r0], 0);
+        var rV1 = FromArray256([r1, r1, r1, r1], 0);
+        var rV2 = FromArray256([r2, r2, r2, r2], 0);
+        var rV3 = FromArray256([r3, r3, r3, r3], 0);
 
         fixed (Complex* p1 = result)
         {
