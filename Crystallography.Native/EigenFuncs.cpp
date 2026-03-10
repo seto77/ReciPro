@@ -116,13 +116,13 @@ extern "C" {
 		}
 		auto m = Map<Mat>((dcomplex*)_vec, dim, dim);
 		auto res = exp_kgz.asDiagonal() * m * exp_val;
-		
+
 		Map<Vec>((dcomplex*)_tc_k, dim).noalias() = res;
 		Map<Vec>((dcomplex*)_tc_kq, dim).noalias() = res.conjugate();
 	}
 
 	//横ベクトル×正方行列×縦ベクトルの掛算. STEMの非弾性散乱を求めるときに使用
-	EIGEN_FUNCS_API void _RowVec_SqMat_ColVec(int dim, double rowVec[],  double sqMat[], double colVec[], double _result[])
+	EIGEN_FUNCS_API void _RowVec_SqMat_ColVec(int dim, double rowVec[], double sqMat[], double colVec[], double _result[])
 	{
 		auto rV = Map<VecR>((dcomplex*)rowVec, dim);
 		auto m = Map<Mat>((dcomplex*)sqMat, dim, dim);
@@ -229,7 +229,7 @@ extern "C" {
 		auto v2 = Map<Vec>((dcomplex*)vec2, dim);
 
 		auto res = (dcomplex*)result;
-		
+
 		for (int i = 0; i < dim; i++)
 			res[i] = v1[i] / v2[i];
 	}
@@ -283,9 +283,9 @@ extern "C" {
 		{
 			const auto coeff2 = two_pi_i * thickness[t];
 			for (int g = 0; g < dim; ++g)
-				gamma(g,t) = exp(values[g] * coeff2);
+				gamma(g, t) = exp(values[g] * coeff2);
 		}
-		
+
 		Map<Mat>((dcomplex*)result, dim, tDim).noalias() = vectors * gamma;
 	}
 
@@ -330,8 +330,8 @@ extern "C" {
 		}
 	}
 
-	
-	
+
+
 	// EBSD強度計算ソルバー
 	EIGEN_FUNCS_API void _EBSDSolver(
 		int bLen, int nAtoms, int tLen,
@@ -416,97 +416,6 @@ extern "C" {
 	}
 
 
-	// ================================================================
-	// セル中心のフル固有値分解
-	//
-	// 右固有ベクトル: A C = C diag(γ)
-	// 左固有ベクトル: A† L = L diag(conj(γ))
-	// 双直交正規化: l_j† c_j = 1
-	// α_j = l_j(0) (∵ α = C⁻¹ ψ₀, 双直交性より α_j = l_j† ψ₀ = l_j(0))
-	// ================================================================
-	EIGEN_FUNCS_API void _EigenSolverFull(
-		int dim,
-		double eigenMatrix[],
-		double eigenValues[],
-		double rightVectors[],
-		double inverseVectors[],
-		double alpha[])
-	{
-		auto A = Map<Mat>((dcomplex*)eigenMatrix, dim, dim);
-
-		// 右固有ベクトル
-		ComplexEigenSolver<Mat> solverR(A);
-		auto valsR = solverR.eigenvalues();
-		auto vecsR = solverR.eigenvectors();
-
-		Map<Vec>((dcomplex*)eigenValues, dim) = valsR;
-		Map<Mat>((dcomplex*)rightVectors, dim, dim) = vecsR;
-
-		// C⁻¹ を計算 (LU 分解)
-		Mat Cinv = vecsR.partialPivLu().inverse();
-		Map<Mat>((dcomplex*)inverseVectors, dim, dim) = Cinv;
-
-		// α = C⁻¹ ψ₀ = Cinv の 0列目
-		for (int j = 0; j < dim; ++j)
-			((dcomplex*)alpha)[j] = Cinv(j, 0);
-
-		// ★ ComplexEigenSolver(A†) も matching も不要！
-	}
-
-
-	// ================================================================
-	// 1次摂動で固有値・固有ベクトル・αを近似計算
-	// ================================================================
-	EIGEN_FUNCS_API void _EigenPerturb(
-		int dim,
-		double eigenValues0[],
-		double rightVectors0[],
-		double inverseVectors0[],
-		double eigenMatrix0[],
-		double eigenMatrix1[],
-		double eigenValues1[],
-		double rightVectors1[],
-		double alpha1[])
-	{
-		auto gamma0 = Map<Vec>((dcomplex*)eigenValues0, dim);
-		auto C0 = Map<Mat>((dcomplex*)rightVectors0, dim, dim);
-		auto Cinv0 = Map<Mat>((dcomplex*)inverseVectors0, dim, dim);
-		auto A0 = Map<Mat>((dcomplex*)eigenMatrix0, dim, dim);
-		auto A1 = Map<Mat>((dcomplex*)eigenMatrix1, dim, dim);
-
-		// δA = A_new - A_ref
-		Mat dA = A1 - A0;
-
-		// ★核心: C⁻¹ δA C₀ (= L† δA C₀ と数学的に等価)
-		// matching 不要！
-		Mat CinvdAC(dim, dim);
-		CinvdAC.noalias() = Cinv0 * dA * C0;
-
-		// 固有値の1次補正: δγ_j = (C⁻¹ δA C)_{jj}
-		auto gamma1 = Map<Vec>((dcomplex*)eigenValues1, dim);
-		for (int j = 0; j < dim; ++j)
-			gamma1[j] = gamma0[j] + CinvdAC(j, j);
-
-		// 固有ベクトルの1次補正: C₁ = C₀ (I + D)
-		// D_{kj} = (C⁻¹ δA C)_{kj} / (γ_j - γ_k)  (k ≠ j)
-		Mat D = Mat::Zero(dim, dim);
-		for (int j = 0; j < dim; ++j)
-			for (int k = 0; k < dim; ++k)
-				if (k != j)
-				{
-					dcomplex denom = gamma0[j] - gamma0[k];
-					if (abs(denom) > 1e-12)
-						D(k, j) = CinvdAC(k, j) / denom;
-				}
-
-		auto C1 = Map<Mat>((dcomplex*)rightVectors1, dim, dim);
-		C1.noalias() = C0 * (Mat::Identity(dim, dim) + D);
-
-		// α₁ = C₁⁻¹ ψ₀
-		Vec psi0 = Vec::Zero(dim);
-		psi0[0] = 1.0;
-		Map<Vec>((dcomplex*)alpha1, dim).noalias() = C1.partialPivLu().solve(psi0);
-	}
 
 
 } // extern "C"

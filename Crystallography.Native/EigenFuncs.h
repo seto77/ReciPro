@@ -18,7 +18,7 @@ extern "C" {
 
 	EIGEN_FUNCS_API void _PointwiseMultiply(int dim, double mat1[], double mat2[], double result[]);
 	EIGEN_FUNCS_API void _AdjointAndMultiply(int dim, double mat1[], double mat2[], double result[]);
-	
+
 	EIGEN_FUNCS_API void _MultiplyMM(int dim, double mat1[], double mat2[], double result[]);
 	EIGEN_FUNCS_API void _MultiplyMMM(int dim, double mat1[], double mat2[], double mat3[], double result[]);
 	EIGEN_FUNCS_API void _MultiplyMV(int dim, double mat[], double vec[], double result[]);
@@ -33,7 +33,7 @@ extern "C" {
 
 	EIGEN_FUNCS_API void _Inverse(int dim, double mat[], double inverse[]);
 	EIGEN_FUNCS_API void _Inverse_Real(int dim, double mat[], double inverse[]);
-	
+
 	EIGEN_FUNCS_API void _EigenSolver(int dim, double mat[], double eigenValues[], double eigenVectors[]);
 	EIGEN_FUNCS_API void _MatrixExponential(int dim, double mat[], double results[]);
 	EIGEN_FUNCS_API void _CBEDSolver_Eigen(int gDim, double _potential[], double _phi0[], int tDim, double thickness[], double result[]);
@@ -49,41 +49,16 @@ extern "C" {
 
 	EIGEN_FUNCS_API void _STEM_INEL1(int dim, double rowVec[], int n[], double r[], double sqMat[], double colVec[], double _result[]);
 
-	// EBSD強度計算ソルバー (原子位置でのブロッホ波場に基づく)
-	EIGEN_FUNCS_API void _EBSDSolver(
-		int bLen, int nAtoms, int tLen,
-		double eigenValues[],    // bLen個の complex
+	EIGEN_FUNCS_API void _EBSDSolver(int bLen, int nAtoms, int tLen,
+		double eigenValues[],    // bLen個の complex (= 2*bLen double)
 		double eigenVectors[],   // bLen*bLen個の complex (column-major)
 		double alpha[],          // bLen個の complex
-		double phaseNG[],        // nAtoms*bLen個の complex (column-major)
+		double phaseNG[],        // nAtoms*bLen個の complex (row: atom, col: beam)
 		double sigma[],          // nAtoms個の double
 		double thicknesses[],    // tLen個の double
 		double intensity[]       // tLen個の double (出力)
 	);
 
-	// セル中心のフル固有値分解
-	EIGEN_FUNCS_API void _EigenSolverFull(
-		int dim,
-		double eigenMatrix[],     // A行列 (入力)
-		double eigenValues[],     // γ_j (出力)
-		double rightVectors[],    // C_g^(j) (出力, column-major)
-		double inverseVectors[],  // C⁻¹ (出力, column-major)    ← 変更
-		double alpha[]            // α_j (出力)
-	);
 
-	// 1次摂動
-	EIGEN_FUNCS_API void _EigenPerturb(
-		int dim,
-		double eigenValues0[],     // 基準の γ_j
-		double rightVectors0[],    // 基準の C
-		double inverseVectors0[],  // 基準の C⁻¹                  ← 変更
-		double eigenMatrix0[],     // 基準の A
-		double eigenMatrix1[],     // 新しい A
-		double eigenValues1[],     // 補正後の γ (出力)
-		double rightVectors1[],    // 補正後の C (出力)
-		double alpha1[]            // 補正後の α (出力)
-	);
-
-	
 
 } // extern "C"

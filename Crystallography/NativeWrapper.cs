@@ -165,23 +165,14 @@ public static partial class NativeWrapper
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _EBSDSolver(
-          int bLen, int nAtoms, int tLen,
-          double* eigenValues, double* eigenVectors, double* alpha,
-          double* phaseNG, double* sigma, double[] thicknesses, double* intensity);
-
-    [LibraryImport("Crystallography.Native.dll")]
-    private static unsafe partial void _EigenSolverFull(
-           int dim, double* eigenMatrix,
-           double* eigenValues, double* rightVectors, double* inverseVectors, double* alpha);
-
-    [LibraryImport("Crystallography.Native.dll")]
-    private static unsafe partial void _EigenPerturb(
-        int dim,
-        double* eigenValues0, double* rightVectors0, double* inverseVectors0,
-        double* eigenMatrix0, double* eigenMatrix1,
-        double* eigenValues1, double* rightVectors1, double* alpha1);
-
-
+    int bLen, int nAtoms, int tLen,
+    double* eigenValues,
+    double* eigenVectors,
+    double* alpha,
+    double* phaseNG,
+    double* sigma,
+    double[] thicknesses,
+    double* intensity);
 
     #endregion
 
@@ -808,8 +799,8 @@ public static partial class NativeWrapper
     /// <param name="thicknesses">厚さ配列 (tLen個)</param>
     /// <returns>各厚さでのEBSD強度 (tLen個)</returns>
     public static unsafe double[] EBSDSolver(
-           Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
-           Complex[] phaseNG, double[] sigma, double[] thicknesses)
+        Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
+        Complex[] phaseNG, double[] sigma, double[] thicknesses)
     {
         int bLen = eigenValues.Length;
         int nAtoms = sigma.Length;
@@ -827,51 +818,6 @@ public static partial class NativeWrapper
     }
 
     #endregion
-
-    #region 摂動計算 (CBED/LACBED/EBSD/STEM 共通)
-
-    /// <summary>
-    /// セル中心でのフル固有値分解。右+左固有ベクトルと励起振幅を返す。
-    /// </summary>
-    public static unsafe (Complex[] Values, Complex[] RightVectors, Complex[] InverseVectors, Complex[] Alpha)
-       EigenSolverFull(int dim, Complex[] eigenMatrix)
-    {
-        var vals = GC.AllocateUninitializedArray<Complex>(dim);
-        var right = GC.AllocateUninitializedArray<Complex>(dim * dim);
-        var inv = GC.AllocateUninitializedArray<Complex>(dim * dim);
-        var alpha = GC.AllocateUninitializedArray<Complex>(dim);
-
-        fixed (Complex* _mat = eigenMatrix, _vals = vals, _right = right, _inv = inv, _alpha = alpha)
-            _EigenSolverFull(dim, (double*)_mat, (double*)_vals, (double*)_right, (double*)_inv, (double*)_alpha);
-
-        return (vals, right, inv, alpha);
-    }
-
-    /// <summary>
-    /// 1次摂動で固有値・固有ベクトル・αを近似計算する。
-    /// </summary>
-    public static unsafe (Complex[] Values, Complex[] RightVectors, Complex[] Alpha)
-         EigenPerturb(int dim,
-             Complex[] eigenValues0, Complex[] rightVectors0, Complex[] inverseVectors0,
-             Complex[] eigenMatrix0, Complex[] eigenMatrix1)
-    {
-        var vals1 = GC.AllocateUninitializedArray<Complex>(dim);
-        var right1 = GC.AllocateUninitializedArray<Complex>(dim * dim);
-        var alpha1 = GC.AllocateUninitializedArray<Complex>(dim);
-
-        fixed (Complex* _v0 = eigenValues0, _r0 = rightVectors0, _i0 = inverseVectors0,
-               _m0 = eigenMatrix0, _m1 = eigenMatrix1,
-               _v1 = vals1, _r1 = right1, _a1 = alpha1)
-            _EigenPerturb(dim,
-                (double*)_v0, (double*)_r0, (double*)_i0,
-                (double*)_m0, (double*)_m1,
-                (double*)_v1, (double*)_r1, (double*)_a1);
-
-        return (vals1, right1, alpha1);
-    }
-
-    #endregion
-
 
 
     #region Histogram
