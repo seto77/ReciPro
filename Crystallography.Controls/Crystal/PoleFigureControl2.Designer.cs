@@ -38,8 +38,10 @@
             numericBoxMax = new NumericBox();
             numericBoxMin = new NumericBox();
             label1 = new System.Windows.Forms.Label();
+            panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -62,8 +64,8 @@
             // 
             // numericBoxResolution
             // 
-            numericBoxResolution.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
+            numericBoxResolution.BackColor = System.Drawing.Color.Transparent;
             numericBoxResolution.Maximum = 30D;
             numericBoxResolution.Minimum = 1D;
             numericBoxResolution.Name = "numericBoxResolution";
@@ -80,8 +82,8 @@
             // 
             // comboBoxColor
             // 
-            comboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxColor, "comboBoxColor");
+            comboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxColor.FormattingEnabled = true;
             comboBoxColor.Items.AddRange(new object[] { resources.GetString("comboBoxColor.Items"), resources.GetString("comboBoxColor.Items1") });
             comboBoxColor.Name = "comboBoxColor";
@@ -119,23 +121,31 @@
             label1.BackColor = System.Drawing.Color.White;
             label1.Name = "label1";
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(numericBoxMax);
+            panel1.Controls.Add(numericBoxMin);
+            panel1.Controls.Add(numericBoxResolution);
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(comboBoxColor);
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
+            // 
             // PoleFigureControl2
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            Controls.Add(label1);
-            Controls.Add(numericBoxResolution);
-            Controls.Add(numericBoxMin);
-            Controls.Add(label9);
-            Controls.Add(comboBoxColor);
-            Controls.Add(numericBoxMax);
-            Controls.Add(pictureBox1);
-            Controls.Add(flowLayoutPanel1);
             Controls.Add(pictureBox);
+            Controls.Add(pictureBox1);
+            Controls.Add(panel1);
+            Controls.Add(label1);
+            Controls.Add(flowLayoutPanel1);
             Name = "PoleFigureControl2";
             Load += PoleFigureControl_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -152,5 +162,6 @@
         private NumericBox numericBoxMax;
         private NumericBox numericBoxResolution;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

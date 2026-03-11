@@ -120,7 +120,6 @@ public partial class FormEBSD : Form
     public FormEBSD()
     {
         InitializeComponent();
-
         
     }
 
@@ -131,6 +130,8 @@ public partial class FormEBSD : Form
 
     private void FormEBSD_Load(object sender, EventArgs e)
     {
+      
+
         glControlGeo = new GLControlAlpha()
         {
             AllowMouseRotation = true,
@@ -154,7 +155,7 @@ public partial class FormEBSD : Form
 
         SetVector();
         DrawGeometry();
-        comboBoxGradient.SelectedIndex = 1;
+        comboBoxGradient.SelectedIndex = 0;
         comboBoxScale.SelectedIndex = 0;
         NumericBoxEnergyStart_ValueChanged(sender, e);
         NumericBoxThicknessStart_ValueChanged(sender, e);
@@ -654,7 +655,7 @@ public partial class FormEBSD : Form
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void button2_Click(object sender, EventArgs e)
+    private void buttonBSE_Click(object sender, EventArgs e)
     {
         var cry = FormMain.Crystal;
         cry.GetFormulaAndDensity();
@@ -827,7 +828,7 @@ public partial class FormEBSD : Form
 
         Directions = [.. directions];
 
-        var solver = BetheMethod.Solver.MtxExp_Eigen;
+        var solver = BetheMethod.Solver.Eigen_Eigen;
         Crystal.Bethe.EBSD_Completed += Bethe_EBSD_Completed;
         Crystal.Bethe.EBSD_ProgressChanged += Bethe_EBSD_ProgressChanged;
         Crystal.Bethe.RunEBSD(MaxNumOfBloch, EnergyArray, Crystal.RotationMatrix, ThicknessArray, Directions, solver, 32);

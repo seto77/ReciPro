@@ -72,7 +72,6 @@ public class BetheMethod
     public double Thickness { get; set; }
     public double[] Thicknesses { get; set; }
     public enum Solver { Eigen_MKL, Eigen_Eigen, MtxExp_MKL, MtxExp_Eigen, Auto }
-
     public Complex[] EigenValues { get; set; }
     public Complex[] EigenVectors { get; set; }
     public Complex[] EigenVectorsInverse { get; set; }
@@ -533,7 +532,7 @@ public class BetheMethod
         if (solver == Solver.Auto || (!EigenEnabled && (solver == Solver.Eigen_Eigen || solver == Solver.MtxExp_Eigen)))
         {
             if (EigenEnabled)
-                (solver, thread) = (Solver.MtxExp_Eigen, ProcessorCount);
+                (solver, thread) = (Solver.Eigen_Eigen, ProcessorCount);
             else
                 (solver, thread) = (Solver.Eigen_MKL, MklEnabled ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
         }
@@ -563,7 +562,7 @@ public class BetheMethod
             sigmaArray[n] = atomArray[n].sigma;
         #endregion
 
-        // 加速電圧ごとのループ (通常は1回だが、電圧依存性を調べる場合に複数)
+        // 加速電圧ごとのループ (電圧依存性を調べる場合に複数)
         for (int vIndex = 0; vIndex < voltages.Length; vIndex++)
         {
             AccVoltage = voltages[vIndex];
@@ -620,9 +619,6 @@ public class BetheMethod
                     return (beams, potentialMatrix, phaseNG);
                 }).ToArray();
             #endregion
-
-
-
 
             #region 各検出器方向での EBSD 強度計算
             // 各検出器方向 k̂_f に対して、相反定理により「k̂_f から逆向きに平面波を
@@ -801,6 +797,7 @@ public class BetheMethod
     {
         int tLen = thicknesses.Length;
 
+        #region Step 1: S 行列の計算
         // ================================================================
         // Step 1: S 行列の計算
         //
@@ -853,7 +850,9 @@ public class BetheMethod
                     S[j * bLen + jp] += sig * bj * betaN[jp].Conjugate();
             }
         }
+        #endregion
 
+        #region Step 2: λ_{jj'} の事前計算
         // ================================================================
         // Step 2: λ_{jj'} の事前計算
         //
@@ -882,7 +881,9 @@ public class BetheMethod
         for (int j = 0; j < bLen; j++)
             for (int jp = 0; jp < bLen; jp++)
                 lambda[j * bLen + jp] = TwoPiI * (eigenValues[j] - eigenValues[jp].Conjugate());
+        #endregion
 
+        #region Step 3: 各厚さでの強度計算
         // ================================================================
         // Step 3: 各厚さでの強度計算
         //
@@ -910,6 +911,8 @@ public class BetheMethod
                 }
             intensity[t] = Math.Max(0, sum.Real);
         }
+        #endregion
+
         return intensity;
     }
 
