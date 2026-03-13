@@ -111,9 +111,9 @@
             tabPage3 = new System.Windows.Forms.TabPage();
             groupBox1 = new System.Windows.Forms.GroupBox();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
+            toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
@@ -1432,7 +1432,7 @@
             flowLayoutPanel3.Controls.Add(radioButtonFrequency);
             flowLayoutPanel3.Controls.Add(radioButtonAverageEnergy);
             flowLayoutPanel3.Controls.Add(radioButtonStandardDeviation);
-            flowLayoutPanel3.Location = new System.Drawing.Point(3, 366);
+            flowLayoutPanel3.Location = new System.Drawing.Point(9, 366);
             flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Size = new System.Drawing.Size(262, 49);
@@ -1500,6 +1500,11 @@
             statusStrip1.TabIndex = 145;
             statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripProgressBar
+            // 
+            toolStripProgressBar.Name = "toolStripProgressBar";
+            toolStripProgressBar.Size = new System.Drawing.Size(100, 16);
+            // 
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
@@ -1511,11 +1516,6 @@
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
             toolStripStatusLabel2.Text = "toolStripStatusLabel2";
-            // 
-            // toolStripProgressBar
-            // 
-            toolStripProgressBar.Name = "toolStripProgressBar";
-            toolStripProgressBar.Size = new System.Drawing.Size(100, 16);
             // 
             // FormEBSD
             // 

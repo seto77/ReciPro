@@ -2275,7 +2275,7 @@ public class BetheMethod
     {
         if (maxNumOfBloch == -1)
             maxNumOfBloch = MaxNumOfBloch;
-        var mat = baseRotation * Crystal.MatrixInverseTransposed;
+        
         #region directionを初期化
 
         FrozenSet<(int h, int k, int l)> direction;
@@ -2294,15 +2294,18 @@ public class BetheMethod
         var beamsSpan = pool.AsSpan(0, limit);
         int count = 0;
         beamsSpan[count++] = (compose(0, 0, 0), 0);
-        var outer = new List<(int key, double gLen)> { (compose(0, 0, 0), 0) };
+        
+        //var outer = new List<(int key, double gLen)> { (compose(0, 0, 0), 0) };
+        var outer = new PriorityQueue<int, double>();
+        outer.Enqueue(compose(0, 0, 0), 0);
+
         var whole = new HashSet<int>(limit * 16) { compose(0, 0, 0) };
 
-        var shift = direction.Select(dir => (mat * dir).Length).Max() * 0.5;//この数字が妥当かどうか？
+        var mat = baseRotation * Crystal.MatrixInverseTransposed;
+        var shift = direction.Max(dir => (mat * dir).Length) * 0.5;//この数字が妥当かどうか？
 
         double k0_2 = vecK0.Length2, k0 = vecK0.Length;
-        var k0_2F = (float)k0_2;
         var maxQ = Math.Abs(k0_2 - (k0 + shift) * (k0 + shift));
-        var maxQF = (float)maxQ;
 
         var (m11, m12, m13, m21, m22, m23, m31, m32, m33) = mat.Tuple;
         var (kX, kY, kZ) = vecK0.Tuple;
@@ -2310,12 +2313,20 @@ public class BetheMethod
 
         while (count < limit && whole.Count < 1_000_000 && outer.Count > 0)
         {
-            outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
-            var min = outer[0].gLen + shift * 3;
-            var end = outer.FindLastIndex(o => o.gLen - min < 0) + 1;
-            foreach (var o in CollectionsMarshal.AsSpan(outer)[..end])
+            //outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
+            //var min = outer[0].gLen + shift * 3;
+            //var end = outer.FindLastIndex(o => o.gLen - min < 0) + 1;
+            //foreach (var o in CollectionsMarshal.AsSpan(outer)[..end])
+            //{
+
+            if (!outer.TryPeek(out _, out var minGlen))
+                break;
+            var min = minGlen + shift * 3;
+            while (count < limit && outer.Count > 0 && outer.TryPeek(out var key, out var currentGlen) && currentGlen < min)
             {
-                var (h1, k1, l1) = decompose(o.key);
+                outer.Dequeue();
+
+                var (h1, k1, l1) = decompose(key);
                 foreach (var (h2, k2, l2) in direction)
                     if (count < limit)
                     {
@@ -2330,11 +2341,13 @@ public class BetheMethod
 
                             if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
                                 beamsSpan[count++] = (newKey, (float)(gLen * q * q));
-                            outer.Add((newKey, gLen));
+                           
+                            //outer.Add((newKey, gLen));
+                            outer.Enqueue(newKey, gLen);
                         }
                     }
             }
-            outer.RemoveRange(0, end); //outer = outer[end..]; //こちらのほうが遅い。
+            //outer.RemoveRange(0, end); //outer = outer[end..]; //こちらのほうが遅い。
         }
 
         count = Math.Min(count, maxNumOfBloch + 1);
@@ -2356,21 +2369,34 @@ public class BetheMethod
 
         beams.Sort(static (a, b) => a.Rating.CompareTo(b.Rating));
 
-        //X,Y座標が同じものを削除
+        // X,Y座標が同じものを削除
+        // 以前の O(N^2) + 配列シフト実装だと MaxNumOfBloch を増やした際に律速になりやすいため、
+        // 量子化キーで一意化する O(N) 実装に変更する。
+        const double duplicateTol = 1E-6;
+        var uniqueXY = new HashSet<long>(beams.Length * 2);
+        int uniqueCount = 0;
         for (int i = 0; i < beams.Length; i++)
         {
-            var bi = beams[i];
-            for (int j = i + 1; j < beams.Length; j++)
-            {
-                var bj = beams[j];
-                if (Math.Abs(bi.Vec.X - bj.Vec.X) < 1E-6 && Math.Abs(bi.Vec.Y - bj.Vec.Y) < 1E-6)
-                {
-                    for (int k = j; k < beams.Length - 1; k++)
-                        beams[k] = beams[k + 1];
-                    beams = beams[..(beams.Length - 1)];
-                }
-            }
+            //var bi = beams[i];
+            //for (int j = i + 1; j < beams.Length; j++)
+            //{
+            //    var bj = beams[j];
+            //    if (Math.Abs(bi.Vec.X - bj.Vec.X) < 1E-6 && Math.Abs(bi.Vec.Y - bj.Vec.Y) < 1E-6)
+            //    {
+            //        for (int k = j; k < beams.Length - 1; k++)
+            //            beams[k] = beams[k + 1];
+            //        beams = beams[..(beams.Length - 1)];
+            //    }
+            //}
+            var b = beams[i];
+            long xKey = (long)Math.Round(b.Vec.X / duplicateTol, MidpointRounding.AwayFromZero);
+            long yKey = (long)Math.Round(b.Vec.Y / duplicateTol, MidpointRounding.AwayFromZero);
+            long xyKey = (xKey << 32) ^ (yKey & 0xFFFFFFFFL);
+
+            if (uniqueXY.Add(xyKey))
+                beams[uniqueCount++] = b;
         }
+        beams = beams[..uniqueCount];
 
         int n = beams.Length - 1;
         for (int i = beams.Length - 1; i >= 1; i--)

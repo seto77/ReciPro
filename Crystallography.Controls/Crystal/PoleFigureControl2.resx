@@ -155,7 +155,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="pictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>301, 291</value>
+    <value>301, 297</value>
   </data>
   <data name="pictureBox.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -176,7 +176,7 @@
     <value>Bottom</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 291</value>
+    <value>0, 297</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 32</value>
@@ -215,7 +215,7 @@
     <value>Resolution</value>
   </data>
   <data name="numericBoxResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 35</value>
+    <value>154, 29</value>
   </data>
   <data name="numericBoxResolution.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -293,7 +293,7 @@
     <value>Gray scale</value>
   </data>
   <data name="comboBoxColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 7</value>
+    <value>182, 3</value>
   </data>
   <data name="comboBoxColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 23</value>
@@ -326,7 +326,7 @@
     <value>Max</value>
   </data>
   <data name="numericBoxMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 35</value>
+    <value>0, 29</value>
   </data>
   <data name="numericBoxMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -371,7 +371,7 @@
     <value>Min</value>
   </data>
   <data name="numericBoxMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 8</value>
+    <value>0, 4</value>
   </data>
   <data name="numericBoxMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -437,10 +437,10 @@
     <value>Bottom</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 323</value>
+    <value>0, 329</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>301, 62</value>
+    <value>301, 56</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
