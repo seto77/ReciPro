@@ -524,6 +524,7 @@ public class BetheMethod
 
         var beamDirectionsP = BeamDirections.AsParallel();
         int width = (int)Math.Sqrt(BeamDirections.Length);
+        int height = width;
         double radius = width / 2.0;
 
         #region solver, thread の設定
@@ -596,11 +597,22 @@ public class BetheMethod
             //   ブロッホ波の平面波展開 ψ^(j)(r) = Σ_g C_g^(j) exp(+2πi g·r) と同じ符号。
             //   ポテンシャルのフーリエ逆変換 V(r) = Σ_g U_g exp(-2πi g·r) とは逆符号だが、
             //   これはフーリエ変換/逆変換の規約の違いであり、物理的に整合している。
-            var grid = 2;
-            var beamsPreliminary = beamDirectionsP
-                .Where((e, i) => (i % width) % grid == grid / 2 && (i / width) % grid == grid / 2)
-                .Select(e =>
+            var grid = 3;
+            // ピクセルのインデックス i のマッピング
+            var mapping = beamDirectionsP.Select((_, i) =>
                 {
+                    int w = i % width, h = i / width;//ピクセル位置
+                    int wIndex = Math.Min((w / grid) * grid + grid / 2, width - 1);
+                    int hIndex = Math.Min((h / grid) * grid + grid / 2, height - 1);
+                    return  wIndex + hIndex * width;//代表ピクセルのインデックス
+                }
+                ).ToArray();
+
+            var beamsPreliminary = beamDirectionsP.Select((e,i) =>
+                {
+                    if (!mapping.Contains(i))
+                        return (null, null, null);
+
                     var beams = Find_gVectors(BaseRotation, getVecK0(kvac, u0, e), MaxNumOfBloch);
                     var potentialMatrix = getPotentialMatrix(beams);
 
@@ -615,7 +627,6 @@ public class BetheMethod
                             phaseNG[g * nAtoms + n] = Exp(TwoPiI * (h * xn + k * yn + l * zn));
                         }
                     }
-
                     return (beams, potentialMatrix, phaseNG);
                 }).ToArray();
             #endregion
@@ -632,7 +643,7 @@ public class BetheMethod
             //   5. 励起振幅 α_j = [C⁻¹]_{j,0} を計算
             //   6. S 行列と F 行列から各厚さでの強度 I(t) を計算
             //     (ネイティブの場合は 5-6 を NativeWrapper.EBSDSolver で一括実行)
-            var ebsdIntensity = beamDirectionsP.WithDegreeOfParallelism(Math.Max(thread, 1)).Select((beamDirection, i) =>
+            var ebsdIntensity = beamDirectionsP.Select((beamDirection, i) =>
             {
                 if (bwEBSD.CancellationPending) return null;
 
@@ -642,10 +653,7 @@ public class BetheMethod
                 var vecK0 = getVecK0(kvac, u0, beamDirection);
 
                 // この検出器方向に対応するグリッドセルの事前計算結果を取得
-                var preliminary = beamsPreliminary[(i / width) / grid * (width / grid) + (i % width) / grid];
-                var beamsBase = preliminary.beams;
-                var potentialMatrix = preliminary.potentialMatrix;
-                var phaseNG = preliminary.phaseNG;  // 事前計算済みの位相因子
+                var (beamsBase, potentialMatrix, phaseNG) = beamsPreliminary[mapping[i]];
 
                 // 各ビームの励起誤差 (P, Q) を、この検出器方向の K₀ に対して再計算する。
                 // P = 2 n·(K₀+g) : ビームが出射面から出ていく条件 (P > 0)
