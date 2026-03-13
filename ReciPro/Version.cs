@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.918(2026/03/13)  Improved the Native Library to enable automatic switching between non-AVX, AVX2 and AVX512." +
         "\r\n ver4.917(2026/03/05)  Added several 'Macro' functions (see https://github.com/seto77/ReciPro/issues/36)." +
         "\r\n ver4.916(2026/01/14)  Fixed an issue with loading Crystallography.Native.dll." +
         "\r\n ver4.915(2025/12/25)  Improved: Equivalent axes/planes can be color-coded in 'Stereonet'." +

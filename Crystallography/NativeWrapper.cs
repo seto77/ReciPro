@@ -1,6 +1,5 @@
 ﻿#region using, namespace
 using MathNet.Numerics.LinearAlgebra.Complex;
-using OpenTK.Windowing.Common.Input;
 using System;
 using System.Buffers;
 using System.Collections.Generic;
@@ -8,11 +7,20 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 namespace Crystallography;
+
+using System.IO;
+using System.Reflection;
+using System.Runtime.Intrinsics.X86;
 #endregion
 
 public static partial class NativeWrapper
 {
+    private const string NativeLibraryFileName = "Crystallography.Native.dll";
+    private static readonly string[] NativeLibraryCandidates = GetNativeLibraryCandidates();
+
     #region LibraryImport
+
+
     public enum Library { None, Eigen, Cuda }
     //[DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
     //public static extern IntPtr Memcpy(IntPtr dest, IntPtr src, UIntPtr count);
@@ -185,8 +193,12 @@ public static partial class NativeWrapper
 
     static NativeWrapper()
     {
-        var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
-        if (!System.IO.File.Exists(appPath))
+        //var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
+        //if (!System.IO.File.Exists(appPath))
+        NativeLibrary.SetDllImportResolver(typeof(NativeWrapper).Assembly, ResolveNativeLibrary);
+
+        var appPath = GetExistingNativeLibraryPath();
+        if (appPath == null)
             Enabled = false;
         else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
             Enabled = false;
@@ -197,6 +209,40 @@ public static partial class NativeWrapper
         }
         catch { Enabled = false; }
     }
+
+    private static IntPtr ResolveNativeLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+    {
+        if (!string.Equals(libraryName, NativeLibraryFileName, StringComparison.OrdinalIgnoreCase))
+            return IntPtr.Zero;
+
+        foreach (var candidate in NativeLibraryCandidates)
+            if (NativeLibrary.TryLoad(candidate, assembly, searchPath, out var handle))
+                return handle;
+
+        return IntPtr.Zero;
+    }
+
+    private static string[] GetNativeLibraryCandidates()
+    {
+        if (Avx512F.IsSupported)
+            return ["Crystallography.Native.avx512.dll", "Crystallography.Native.avx2.dll", NativeLibraryFileName];
+        if (Avx2.IsSupported)
+            return ["Crystallography.Native.avx2.dll", NativeLibraryFileName];
+        return [NativeLibraryFileName];
+    }
+
+    private static string? GetExistingNativeLibraryPath()
+    {
+        foreach (var candidate in NativeLibraryCandidates)
+        {
+            var path = Path.Combine(AppContext.BaseDirectory, candidate);
+            if (File.Exists(path))
+                return path;
+        }
+
+        return null;
+    }
+
     #endregion
 
     #region 変換関数

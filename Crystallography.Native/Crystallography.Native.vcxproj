@@ -126,6 +126,19 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NativeFlavor Condition="'$(NativeFlavor)'==''">generic</NativeFlavor>
+    <NativeOutputName Condition="'$(NativeFlavor)'=='generic'">Crystallography.Native</NativeOutputName>
+    <NativeOutputName Condition="'$(NativeFlavor)'=='avx2'">Crystallography.Native.avx2</NativeOutputName>
+    <NativeOutputName Condition="'$(NativeFlavor)'=='avx512'">Crystallography.Native.avx512</NativeOutputName>
+    <NativeInstructionSet Condition="'$(NativeFlavor)'=='generic'">NotSet</NativeInstructionSet>
+    <NativeInstructionSet Condition="'$(NativeFlavor)'=='avx2'">AdvancedVectorExtensions2</NativeInstructionSet>
+    <NativeInstructionSet Condition="'$(NativeFlavor)'=='avx512'">AdvancedVectorExtensions512</NativeInstructionSet>
+    <NativeAltCodePaths Condition="'$(NativeFlavor)'=='avx2'">AVX2</NativeAltCodePaths>
+    <NativeAltCodePaths Condition="'$(NativeFlavor)'=='avx512'">AVX512</NativeAltCodePaths>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
@@ -151,6 +164,7 @@
     <LinkIncremental>
     </LinkIncremental>
     <TargetExt>.dll</TargetExt>
+    <TargetName>$(NativeOutputName)</TargetName>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\net10.0-windows$(TargetPlatformVersion)\</OutDir>
     <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
@@ -328,7 +342,7 @@
       <ConformanceMode>
       </ConformanceMode>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>$(NativeInstructionSet)</EnableEnhancedInstructionSet>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <EnableParallelCodeGeneration>false</EnableParallelCodeGeneration>
@@ -352,7 +366,7 @@
       </OffloadOpenMP>
       <InterproceduralOptimization>NoIPO</InterproceduralOptimization>
       <EnableMatrixMultiplyLibraryCall>Yes</EnableMatrixMultiplyLibraryCall>
-      <GenerateAlternateCodePaths>AVX2</GenerateAlternateCodePaths>
+      <GenerateAlternateCodePaths>$(NativeAltCodePaths)</GenerateAlternateCodePaths>
       <OffloadConstructs>
       </OffloadConstructs>
       <OffloadArch>
@@ -422,5 +436,17 @@
   <ItemGroup>
     <None Include="cpp.hint" />
   </ItemGroup>
+
+<Target Name="BuildAllNativeVariants" AfterTargets="Build" Condition="'$(Configuration)|$(Platform)'=='Release|x64' and '$(NativeFlavor)'=='generic' and '$(BuildAllNativeVariants)'!='false'">
+    <Message Text="Building native variants: generic, avx2, avx512" Importance="high" />
+    <MSBuild Projects="$(MSBuildProjectFullPath)"
+             Targets="Build"
+             Properties="Configuration=$(Configuration);Platform=$(Platform);NativeFlavor=avx2;BuildAllNativeVariants=false" />
+    <MSBuild Projects="$(MSBuildProjectFullPath)"
+             Targets="Build"
+             Properties="Configuration=$(Configuration);Platform=$(Platform);NativeFlavor=avx512;BuildAllNativeVariants=false" />
+  </Target>
+
+
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
