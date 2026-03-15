@@ -53,8 +53,7 @@ public class MonteCarlo
         //阻止能の計算中に出てくる物質依存の定数 J (eV) Z<=12の時は J=11.5evにするらしい (Joy&Luo 1989)
         J = Z <= 12 ? 11.5 * Z : (9.76 * Z + 58.5 / Math.Pow(Z, 0.19));
         tan = Math.Tan(tilt);
-        cos = Math.Cos(tilt);
-        sin = Math.Sin(tilt);
+        (sin, cos) = Math.SinCos(tilt);
     }
 
     public (double ScreeningParameter, double CrossSection, double MeanFreePath, double StoppingPower) GetParameters(double kev)
@@ -98,7 +97,9 @@ public class MonteCarlo
             {
                 double rnd2 = Rnd.NextDouble(), rnd3 = Rnd.NextDouble();
                 double cosθ = 1 - 2 * α * rnd2 / (1 + α - rnd2), sinθ = Math.Sqrt(1 - cosθ * cosθ);
-                double φ = 2 * Math.PI * rnd3, sinθcosφ = sinθ * Math.Cos(φ), sinθsinφ = sinθ * Math.Sin(φ);
+                double φ = 2 * Math.PI * rnd3;
+                var (sinφ, cosφ) = Math.SinCos(φ);
+                double sinθcosφ = sinθ * cosφ, sinθsinφ = sinθ * sinφ;
 
                 //var rot = CreateRotationFromZ(vec);
                 //vec = new V3(

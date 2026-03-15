@@ -38,6 +38,9 @@ public class BetheMethod
     private static readonly Complex TwoPiI = TwoPi * ImaginaryOne;
     private static readonly Complex PiI = Math.PI * ImaginaryOne;
     private const double PiSq = Math.PI * Math.PI;
+    // a1 * b1 + a2 * b2 + a3 * b3
+    private static double Dot3(double a1, double b1, double a2, double b2, double a3, double b3)
+        => Math.FusedMultiplyAdd(a1, b1, Math.FusedMultiplyAdd(a2, b2, a3 * b3));
     /// <summary>
     /// (001)ベクトル
     /// </summary>
@@ -1593,13 +1596,21 @@ public class BetheMethod
             list[kIndex] = [];
             foreach (var (qIndex, KQ) in qList.Select((b, i) => (m: i, KQ: k_xy[kIndex] + b.Vec.ToPointD)).Where(e => A(e.KQ)))
             {
-                double dX = KQ.X * coeff2 + coeff1, dY = -KQ.Y * coeff2 + coeff1;//K+Q の X,Y座標(実数)
+                // double dX = KQ.X * coeff2 + coeff1, dY = -KQ.Y * coeff2 + coeff1;
+                double dX = Math.FusedMultiplyAdd(KQ.X, coeff2, coeff1), dY = Math.FusedMultiplyAdd(-KQ.Y, coeff2, coeff1);//K+Q の X,Y座標(実数)
                 int x = (int)(Math.Floor(dX)), y = (int)(Math.Floor(dY));//左上近接のX,Y座標(整数)
                 int n0 = y * diameterPix + x, n1 = n0 + 1, n2 = n0 + diameterPix, n3 = n2 + 1;//それぞれのインデックス
                 if ((uint)x < coeff3 && (uint)y < coeff3 && flag[n0] && flag[n1] && flag[n2] && flag[n3])//4つのインデックスが範囲内であることを判定
                 {
                     double xx = dX - x, yy = dY - y;
-                    var r = new double[] { (1 - xx) * (1 - yy), xx * (1 - yy), (1 - xx) * yy, xx * yy };//比率を計算
+                    // var r = new double[] { (1 - xx) * (1 - yy), xx * (1 - yy), (1 - xx) * yy, xx * yy };
+                    var r = new double[]
+                    {
+                        Math.FusedMultiplyAdd(-xx, 1 - yy, 1 - yy),
+                        Math.FusedMultiplyAdd(-xx, yy, xx),
+                        Math.FusedMultiplyAdd(-xx, yy, yy),
+                        xx * yy
+                    };//比率を計算
                     var lenz = defocusses.Select(d => Lenz(k_xy[kIndex], KQ, d)).ToArray();
                     list[kIndex].Add((qIndex, new int[] { n0, n1, n2, n3 }, r, lenz));
                 }
@@ -2339,12 +2350,15 @@ public class BetheMethod
                         var newKey = compose(h, k, l);
                         if (whole.Add(newKey))
                         {
-                            double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
+                            // double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
+                            double gX = Dot3(m11, h, m12, k, m13, l), gY = Dot3(m21, h, m22, k, m23, l), gZ = Dot3(m31, h, m32, k, m33, l);
                             double gLen = Math.Sqrt(gX * gX + gY * gY + gZ * gZ);
                             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
-                            double q = k0_2 - (vX * vX + vY * vY + vZ * vZ);
+                            // double q = k0_2 - (vX * vX + vY * vY + vZ * vZ);
+                            double q = k0_2 - Dot3(vX, vX, vY, vY, vZ, vZ);
 
-                            if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
+                            // if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0)
+                            if (Math.Abs(q) < maxQ && Dot3(sX, vX, sY, vY, sZ, vZ) > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
                                 beamsSpan[count++] = (newKey, (float)(gLen * q * q));
                             //outer.Add((newKey, gLen));
                             outer.Enqueue(newKey, gLen);
@@ -2363,9 +2377,11 @@ public class BetheMethod
         for (int i = 0; i < count; i++)
         {
             var (h, k, l) = decompose(beamsSpan[i].key);
-            double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
+            // double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
+            double gX = Dot3(m11, h, m12, k, m13, l), gY = Dot3(m21, h, m22, k, m23, l), gZ = Dot3(m31, h, m32, k, m33, l);
             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
-            double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
+            // double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
+            double q = k0_2 - Dot3(vX, vX, vY, vY, vZ, vZ), p = 2 * Dot3(sX, vX, sY, vY, sZ, vZ);
             var g = new Vector3DBase(gX, gY, gZ);
             beams[i] = new Beam((h, k, l), g, getU(AccVoltage, new Beam((h, k, l), g)), (q, p));
         }

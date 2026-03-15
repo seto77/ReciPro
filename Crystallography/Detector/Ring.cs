@@ -374,10 +374,12 @@ public static class Ring
     public static void SetTiltParameter()
     {
         TanKsi = Math.Tan(IP.ksi);
-        SinTau = Math.Sin(IP.tau);
-        CosTau = Math.Cos(IP.tau);
-        SinPhi = Math.Sin(IP.phi);
-        CosPhi = Math.Cos(IP.phi);
+        var (sinTau, cosTau) = Math.SinCos(IP.tau);
+        var (sinPhi, cosPhi) = Math.SinCos(IP.phi);
+        SinTau = sinTau;
+        CosTau = cosTau;
+        SinPhi = sinPhi;
+        CosPhi = cosPhi;
         Numer1 = CosPhi * SinPhi - CosPhi * CosTau * SinPhi;
         Numer2 = CosPhi * CosPhi + CosTau * SinPhi * SinPhi;
         Numer3 = CosPhi * CosPhi * CosTau + SinPhi * SinPhi;
@@ -733,8 +735,7 @@ public static class Ring
                 {
                     bool IsXY = false;
                     double tan = Math.Tan(IP.RectangleAngle);
-                    double sin = Math.Sin(IP.RectangleAngle);
-                    double cos = Math.Cos(IP.RectangleAngle);
+                    var (sin, cos) = Math.SinCos(IP.RectangleAngle);
                     double wx = Math.Abs(Band / sin);
                     double wy = Math.Abs(IP.RectangleBand / cos);
                     double cx, cy;
@@ -891,8 +892,10 @@ public static class Ring
                     while (endAngle < -Math.PI || endAngle < startAngle) endAngle += 2 * Math.PI;
 
                     //ピクセル座標x,yを 球面座標に変換するFuncを定義
-                    double X1 = Math.Cos(startAngle), Y1 = Math.Sin(startAngle);
-                    double X2 = Math.Cos(endAngle), Y2 = Math.Sin(endAngle);
+                    var (sinStartAngle, cosStartAngle) = Math.SinCos(startAngle);
+                    var (sinEndAngle, cosEndAngle) = Math.SinCos(endAngle);
+                    double X1 = cosStartAngle, Y1 = sinStartAngle;
+                    double X2 = cosEndAngle, Y2 = sinEndAngle;
                     Func<double, double, bool> func = endAngle - startAngle < Math.PI ?
                          func = (x, y) => x * Y1 - y * X1 < 0 && x * Y2 - y * X2 > 0 :
                         func = (x, y) => x * Y1 - y * X1 < 0 || x * Y2 - y * X2 > 0;
@@ -1071,12 +1074,16 @@ public static class Ring
     public static (double X, double Y, double Z) ConvertCoordinateFromDetectorToRealSpace(double detX, double detY)
     {
         var tempY = (detY - IP.CenterY) * IP.PixSizeY;//IP平面上の座標系におけるY位置
-        var tempX = (detX - IP.CenterX) * IP.PixSizeX + tempY * TanKsi;//IP平面上の座標系におけるX位置
+        // var tempX = (detX - IP.CenterX) * IP.PixSizeX + tempY * TanKsi;
+        var tempX = Math.FusedMultiplyAdd(detX - IP.CenterX, IP.PixSizeX, tempY * TanKsi);//IP平面上の座標系におけるX位置
 
         //以下のx,y,zが空間位置
-        var realX = Numer2 * tempX + Numer1 * tempY;
-        var realY = Numer1 * tempX + Numer3 * tempY;
-        var realZ = Denom2 * tempX + Denom1 * tempY + IP.FilmDistance;
+        // var realX = Numer2 * tempX + Numer1 * tempY;
+        // var realY = Numer1 * tempX + Numer3 * tempY;
+        // var realZ = Denom2 * tempX + Denom1 * tempY + IP.FilmDistance;
+        var realX = Math.FusedMultiplyAdd(Numer2, tempX, Numer1 * tempY);
+        var realY = Math.FusedMultiplyAdd(Numer1, tempX, Numer3 * tempY);
+        var realZ = Math.FusedMultiplyAdd(Denom2, tempX, Math.FusedMultiplyAdd(Denom1, tempY, IP.FilmDistance));
 
         if (IP.SpericalRadiusInverse != 0) //球面補正が必要な場合
         {
@@ -1085,14 +1092,16 @@ public static class Ring
             (double X, double Y, double Z) detector_normal = (Denom2, Denom1, -CosTau);
             //検出器中心(0,0,FD)からピクセルまでの距離
             double distance2 = realX * realX + realY * realY + (realZ - fd) * (realZ - fd), distance = Math.Sqrt(distance2);
+            double angle = distance * IP.SpericalRadiusInverse;
+            var (sinAngle, cosAngle) = Math.SinCos(angle);
             //検出器のダイレクトスポット方向に縮める割合
-            double coeff_detector_palallel = Math.Sin(distance * IP.SpericalRadiusInverse) / distance / IP.SpericalRadiusInverse;
+            double coeff_detector_palallel = sinAngle / distance / IP.SpericalRadiusInverse;
             //検出器の法線方向に進む距離
-            double slide_detector_normal = (1 - Math.Cos(distance * IP.SpericalRadiusInverse)) / IP.SpericalRadiusInverse;
+            double slide_detector_normal = (1 - cosAngle) / IP.SpericalRadiusInverse;
             //(0,0,FD)から(X,Y,Z)のベクトルにcoeff_detector_palalleをかけた後、detector_normalの方向にslide_detector_normalだけ進める。
-            realX = realX * coeff_detector_palallel + detector_normal.X * slide_detector_normal;
-            realY = realY * coeff_detector_palallel + detector_normal.Y * slide_detector_normal;
-            realZ = (realZ - fd) * coeff_detector_palallel + fd + detector_normal.Z * slide_detector_normal;
+            realX = Math.FusedMultiplyAdd(realX, coeff_detector_palallel, detector_normal.X * slide_detector_normal);
+            realY = Math.FusedMultiplyAdd(realY, coeff_detector_palallel, detector_normal.Y * slide_detector_normal);
+            realZ = Math.FusedMultiplyAdd(realZ - fd, coeff_detector_palallel, fd + detector_normal.Z * slide_detector_normal);
         }
         return (realX, realY, realZ);
     }
@@ -1570,10 +1579,14 @@ public static class Ring
                                 else
                                 {
                                     //まずpixXで定義される放射状の2本の直線の定義
-                                    a1 = -Math.Sin((pixY - 0.5) * sectorStep);
-                                    b1 = Math.Cos((pixY - 0.5) * sectorStep);
-                                    a2 = Math.Sin((pixY + 0.5) * sectorStep);
-                                    b2 = -Math.Cos((pixY + 0.5) * sectorStep);
+                                    double lowerAngle = (pixY - 0.5) * sectorStep;
+                                    double upperAngle = (pixY + 0.5) * sectorStep;
+                                    var (sinLower, cosLower) = Math.SinCos(lowerAngle);
+                                    var (sinUpper, cosUpper) = Math.SinCos(upperAngle);
+                                    a1 = -sinLower;
+                                    b1 = cosLower;
+                                    a2 = sinUpper;
+                                    b2 = -cosUpper;
                                     pixelVertex1 = Geometriy.GetPolygonDividedByLine(pixelVertex, a1, b1, 0);
                                     pixelVertex1 = Geometriy.GetPolygonDividedByLine(pixelVertex1, a2, b2, 0);
                                 }
@@ -1585,8 +1598,9 @@ public static class Ring
                                     else
                                     {
                                         //さらに2θ範囲の上限、下限を表す同心円状の2直線の定義
-                                        a1 = Math.Cos(pixY * sectorStep);
-                                        b1 = Math.Sin(pixY * sectorStep);
+                                        var (sinCenter, cosCenter) = Math.SinCos(pixY * sectorStep);
+                                        a1 = cosCenter;
+                                        b1 = sinCenter;
 
                                         PointD[] pixelVertex2;
                                         double beforeArea = 0;
@@ -1693,14 +1707,19 @@ public static class Ring
                     {
                         PointD[] tempPixelVertex;
                         //まずindexで定義される放射状の2本の直線の定義
-                        double a1 = -Math.Sin((index - 0.5) * step), b1 = Math.Cos((index - 0.5) * step);
-                        double a2 = Math.Sin((index + 0.5) * step), b2 = -Math.Cos((index + 0.5) * step);
+                        double lowerAngle = (index - 0.5) * step;
+                        double upperAngle = (index + 0.5) * step;
+                        var (sinLower, cosLower) = Math.SinCos(lowerAngle);
+                        var (sinUpper, cosUpper) = Math.SinCos(upperAngle);
+                        double a1 = -sinLower, b1 = cosLower;
+                        double a2 = sinUpper, b2 = -cosUpper;
                         tempPixelVertex = Geometry.GetPolygonDividedByLine(pixelVertex, a1, b1, 0);
                         tempPixelVertex = Geometry.GetPolygonDividedByLine(tempPixelVertex, a2, b2, 0);
 
                         //さらに角度範囲の上限、下限を表す同心円状の2直線
-                        a1 = Math.Cos(index * step);
-                        b1 = Math.Sin(index * step);
+                        var (sinCenter, cosCenter) = Math.SinCos(index * step);
+                        a1 = cosCenter;
+                        b1 = sinCenter;
                         tempPixelVertex = Geometry.GetPolygonDividedByLine(tempPixelVertex, a1, b1, minR);
                         tempPixelVertex = Geometry.GetPolygonDividedByLine(tempPixelVertex, -a1, -b1, -maxR);
 
@@ -2187,7 +2206,7 @@ public static class Ring
                             var v2 = realVertex[x - xMin + 1 + (y - yMin) * (xMax - xMin + 1)];
 
                             var arc = (x - centerX) * pixSizeX;
-                            double cosAR = Math.Cos(arc / r), sinAR = Math.Sin(arc / r);
+                            var (sinAR, cosAR) = Math.SinCos(arc / r);
                             double sinGamma = CosTau * cosAR + SinTau * sinAR, cosGamma = SinTau * cosAR - CosTau * sinAR;
 
                             double CLplusZ = CL + v.Z;
@@ -2671,23 +2690,28 @@ public static class Ring
                 {
                     var tempX = (i - centerX) * pixSizeX + tempY2TanKsi;//IP平面上の座標系におけるX位置
                                                                         //以下のx,y,zがピクセル中心の空間位置
-                    var x = Numer2 * tempX + numer1TempY;
-                    var y = Numer1 * tempX + numer3TempY;
-                    var z = Denom2 * tempX + denom1tempYFD;
+                    var x = Math.FusedMultiplyAdd(Numer2, tempX, numer1TempY);
+                    var y = Math.FusedMultiplyAdd(Numer1, tempX, numer3TempY);
+                    var z = Math.FusedMultiplyAdd(Denom2, tempX, denom1tempYFD);
+                    // var x = Numer2 * tempX + numer1TempY;
+                    // var y = Numer1 * tempX + numer3TempY;
+                    // var z = Denom2 * tempX + denom1tempYFD;
 
                     #region 球面補正が必要な場合
                     if (IP.SpericalRadiusInverse != 0) //球面補正が必要な場合
                     {
                         //検出器中心(0,0,FD)からピクセルまでの距離
                         var distance = Math.Sqrt(x * x + y * y + (z - fd) * (z - fd));
+                        var angle = distance * IP.SpericalRadiusInverse;
+                        var (sinAngle, cosAngle) = Math.SinCos(angle);
                         //検出器のダイレクトスポット方向に縮める割合
-                        var coeff_detector_palallel = Math.Sin(distance * IP.SpericalRadiusInverse) / distance / IP.SpericalRadiusInverse;
+                        var coeff_detector_palallel = sinAngle / distance / IP.SpericalRadiusInverse;
                         //検出器の法線方向に進む距離
-                        var slide_detector_normal = (1 - Math.Cos(distance * IP.SpericalRadiusInverse)) / IP.SpericalRadiusInverse;
+                        var slide_detector_normal = (1 - cosAngle) / IP.SpericalRadiusInverse;
                         //(0,0,FD)から(X,Y,Z)のベクトルにcoeff_detector_palallelをかけた後、detector_normalの方向にslide_detector_normalだけ進める。
-                        x = x * coeff_detector_palallel + detector_normal.X * slide_detector_normal;
-                        y = y * coeff_detector_palallel + detector_normal.Y * slide_detector_normal;
-                        z = (z - fd) * coeff_detector_palallel + fd + detector_normal.Z * slide_detector_normal;
+                        x = Math.FusedMultiplyAdd(x, coeff_detector_palallel, detector_normal.X * slide_detector_normal);
+                        y = Math.FusedMultiplyAdd(y, coeff_detector_palallel, detector_normal.Y * slide_detector_normal);
+                        z = Math.FusedMultiplyAdd(z - fd, coeff_detector_palallel, fd + detector_normal.Z * slide_detector_normal);
                     }
                     #endregion
 
@@ -3076,8 +3100,9 @@ public static class Ring
 				for (int j = 0; j < 360; j++)
 				{
 					angle += Math.PI / 180;
-					PosX = (int)(IP.CenterX + r * Math.Cos(angle) + 0.5);
-					PosY = (int)(IP.CenterY + r * Math.Sin(angle) + 0.5);
+					var (sinAngle, cosAngle) = Math.SinCos(angle);
+					PosX = (int)(IP.CenterX + r * cosAngle + 0.5);
+					PosY = (int)(IP.CenterY + r * sinAngle + 0.5);
 					bool flag = true;
 					for (int k = pt.Count - 20; k < pt.Count && flag; k++)
 					{

@@ -106,8 +106,10 @@ public static class Geometry
         double Width, Height, Cos, Sin;
         //座標系は実空間(mm)で考える
         //a*x^2 + b*x*y + c*y^2 + d*x + e*y = 10000
-        double CosPhi = Math.Cos(phi), SinPhi = Math.Sin(phi);
-        double CosTau = Math.Cos(tau), SinTau = Math.Sin(tau);
+        var(SinPhi,CosPhi)= Math.SinCos(phi);
+        //double CosPhi = Math.Cos(phi), SinPhi = Math.Sin(phi);
+        var (SinTau,CosTau) = Math.SinCos(tau);
+        //double CosTau = Math.Cos(tau), SinTau = Math.Sin(tau);
         double a = 10000 * ((CosPhi * CosPhi + CosTau * CosTau * SinPhi * SinPhi) / R / R - SinPhi * SinPhi * SinTau * SinTau / FD / FD);
         double b = 10000 * 2 * (FD * FD + R * R) * SinPhi * CosPhi * SinTau * SinTau / R / R / FD / FD;
         double c = 10000 * ((CosPhi * CosPhi * CosTau * CosTau + SinPhi * SinPhi) / R / R - CosPhi * CosPhi * SinTau * SinTau / FD / FD);
@@ -218,7 +220,8 @@ public static class Geometry
         double phi1, A;
         phi1 = A = 0;
         Statistics.LineFitting(EllipseCenter, ref phi1, ref A);
-        double CosPhi1 = Math.Cos(phi1), SinPhi1 = Math.Sin(phi1);
+        var(SinPhi1,CosPhi1)=Math.SinCos(phi1);
+        //double CosPhi1 = Math.Cos(phi1), SinPhi1 = Math.Sin(phi1);
         bool xMode = Math.Abs(CosPhi1) > 1 / Math.Sqrt(2);
 
         //この直線上の点B(x,y)と、各CenterPtの距離Riとしたとき
@@ -333,15 +336,20 @@ public static class Geometry
 
         bestTau1 = Math.Abs(bestTau1);
 
-        double CosPhi = Math.Cos(phi);
-        double SinPhi = Math.Sin(phi);
-        double CosTau = Math.Cos(tau);
-        double SinTau = Math.Sin(tau);
+        var(SinPhi,CosPhi)= Math.SinCos(phi);
+        //double CosPhi = Math.Cos(phi);
+        //double SinPhi = Math.Sin(phi);
+        var (SinTau,CosTau) = Math.SinCos(tau);
+        //double CosTau = Math.Cos(tau);
+        //double SinTau = Math.Sin(tau);
 
-        CosPhi1 = Math.Cos(phi1);
-        SinPhi1 = Math.Sin(phi1);
-        double CosTau1 = Math.Cos(bestTau1);
-        double SinTau1 = Math.Sin(bestTau1);
+        (SinPhi1, CosPhi1) = Math.SinCos(phi1);
+        //CosPhi1 = Math.Cos(phi1);
+        //SinPhi1 = Math.Sin(phi1);
+        
+        var (SinTau1,CosTau1) = Math.SinCos(bestTau1);
+        //double CosTau1 = Math.Cos(bestTau1);
+        //double SinTau1 = Math.Sin(bestTau1);
 
         var M = new Matrix3D(CosPhi, SinPhi, 0, -SinPhi, CosPhi, 0, 0, 0, 1);
         var P = new Matrix3D(1, 0, 0, 0, CosTau, SinTau, 0, -SinTau, CosTau);
@@ -367,31 +375,30 @@ public static class Geometry
             for (phi = startPhi; phi <= endPhi; phi += stepPhi)
                 for (tau = startTau; tau <= endTau; tau += stepTau)
                 {
-                    CosPhi = Math.Cos(phi);
-                    SinPhi = Math.Sin(phi);
-                    CosTau = Math.Cos(tau);
-                    SinTau = Math.Sin(tau);
+                    (SinPhi,CosPhi) = Math.SinCos(phi);
+                    (SinTau,CosTau) = Math.SinCos(tau);
 
                     residual = 0;
+                    // residual += temp * temp;
 
                     temp = Q.E11 - (CosPhi * CosPhi + CosTau * SinPhi * SinPhi);
-                    residual += temp * temp;
+                    residual = Math.FusedMultiplyAdd(temp, temp, residual);
                     temp = Q.E12 - (CosPhi * SinPhi - CosTau * CosPhi * SinPhi);
-                    residual += temp * temp;
+                    residual = Math.FusedMultiplyAdd(temp, temp, residual);
                     temp = Q.E13 - (SinPhi * SinTau);
-                    residual += temp * temp;
+                    residual = Math.FusedMultiplyAdd(temp, temp, residual);
                     temp = Q.E21 - (CosPhi * SinPhi - CosPhi * CosTau * SinPhi);
-                    residual += temp * temp;
+                    residual = Math.FusedMultiplyAdd(temp, temp, residual);
                     temp = Q.E22 - (CosPhi * CosPhi * CosTau + SinPhi * SinPhi);
-                    residual += temp * temp;
+                    residual = Math.FusedMultiplyAdd(temp, temp, residual);
                     temp = Q.E23 - (-CosPhi * SinTau);
-                    residual += temp * temp;
+                    residual = Math.FusedMultiplyAdd(temp, temp, residual);
                     temp = Q.E31 - (-SinPhi * SinTau);
-                    residual += temp * temp;
+                    residual = Math.FusedMultiplyAdd(temp, temp, residual);
                     temp = Q.E32 - (CosPhi * SinTau);
-                    residual += temp * temp;
+                    residual = Math.FusedMultiplyAdd(temp, temp, residual);
                     temp = Q.E33 - (CosTau);
-                    residual += temp * temp;
+                    residual = Math.FusedMultiplyAdd(temp, temp, residual);
                     if (bestResidual > residual)
                     {
                         bestPhi = phi;
@@ -1081,8 +1088,10 @@ public static class Geometry
     /// <returns></returns>
     public static List<List<PointD>> ConicSection(in double alpha, in double phi, in double tau, in double l, in PointD upperLeft, in PointD lowerRight, bool bothCone = false)
     {
-        double cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
-        double cosTau = Math.Cos(tau), sinTau = Math.Sin(tau), sinTau2 = sinTau * sinTau;
+        var (sinPhi,cosPhi)= Math.SinCos(phi);
+        var (sinTau,cosTau)=Math.SinCos(tau);
+        //double cosPhi = Math.Cos(phi), sinPhi = Math.Sin(phi);
+        double sinTau2 = sinTau * sinTau;
         double cosAlpha = Math.Cos(alpha), cosAlpha2 = cosAlpha * cosAlpha;
 
         double P = -(sinTau2 - cosAlpha2) / (l * l * (1 - cosAlpha2)), Psqrt = Math.Sqrt(Math.Abs(P));
@@ -1112,7 +1121,10 @@ public static class Geometry
                 {
                     var pts = new List<PointD>();
                     for (double omega = 0; omega < Math.PI * 2.0000001; omega += Math.PI / 2000)
-                        pts.Add(rot(new PointD(Math.Sin(omega + Math.PI / 2) / Psqrt, -Math.Cos(omega + Math.PI / 2) / Qsqrt) + shift));
+                    {
+                        var (sinOmega,cosOmega)=Math.SinCos(omega + Math.PI / 2);
+                        pts.Add(rot(new PointD(sinOmega / Psqrt, -cosOmega / Qsqrt) + shift));
+                    }
                     tempResult.Add(pts);
                 }
                 else//双曲線

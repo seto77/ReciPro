@@ -75,6 +75,11 @@ public class Crystallite
     /// </summary>
     public double[] SolidAngle;
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static double Dot3(double a1, double b1, double a2, double b2, double a3, double b3)
+        // a1 * b1 + a2 * b2 + a3 * b3
+        => Math.FusedMultiplyAdd(a1, b1, Math.FusedMultiplyAdd(a2, b2, a3 * b3));
+
     /// <summary>
     /// ｎ番目の角度範囲の結晶子の濃度
     /// </summary>
@@ -284,11 +289,17 @@ public class Crystallite
             //角度分割
             for (int angle = 0; angle < SpotShapesAngleDivision; angle++)
             {
-                double originX = length / detector.Resolution * Math.Cos(angle / 180.0 * Math.PI) + detector.Center.X;
-                double originY = -length / detector.Resolution * Math.Sin(angle / 180.0 * Math.PI) + detector.Center.Y;
+                double rad = angle / 180.0 * Math.PI;
+                var (sinAngle, cosAngle) = Math.SinCos(rad);
+                // double originX = length / detector.Resolution * Math.Cos(angle / 180.0 * Math.PI) + detector.Center.X;
+                double originX = Math.FusedMultiplyAdd(length / detector.Resolution, cosAngle, detector.Center.X);
+                // double originY = -length / detector.Resolution * Math.Sin(angle / 180.0 * Math.PI) + detector.Center.Y;
+                double originY = Math.FusedMultiplyAdd(-length / detector.Resolution, sinAngle, detector.Center.Y);
 
-                double x = xyLength * Math.Cos(angle / 180.0 * Math.PI);
-                double y = xyLength * Math.Sin(angle / 180.0 * Math.PI);
+                // double x = xyLength * Math.Cos(angle / 180.0 * Math.PI);
+                double x = xyLength * cosAngle;
+                // double y = xyLength * Math.Sin(angle / 180.0 * Math.PI);
+                double y = xyLength * sinAngle;
 
                 var pixels = new Dictionary<int, double>();
 
@@ -725,15 +736,20 @@ public class Crystallite
             var result = new List<int>();
             for (int n = 0; n < G.Length; n++)
             {
-                var Z = rot[6] * G[n].X + rot[7] * G[n].Y + rot[8] * G[n].Z;
+                // var Z = rot[6] * G[n].X + rot[7] * G[n].Y + rot[8] * G[n].Z;
+                var Z = Dot3(rot[6], G[n].X, rot[7], G[n].Y, rot[8], G[n].Z);
                 if (Z > -maxExcitationError * 2 && detector.MaxReciproZ + maxExcitationError * 2 > Z)
                 {
-                    var X = rot[0] * G[n].X + rot[1] * G[n].Y + rot[2] * G[n].Z;
-                    var Y = rot[3] * G[n].X + rot[4] * G[n].Y + rot[5] * G[n].Z;
+                    // var X = rot[0] * G[n].X + rot[1] * G[n].Y + rot[2] * G[n].Z;
+                    // var Y = rot[3] * G[n].X + rot[4] * G[n].Y + rot[5] * G[n].Z;
+                    var X = Dot3(rot[0], G[n].X, rot[1], G[n].Y, rot[2], G[n].Z);
+                    var Y = Dot3(rot[3], G[n].X, rot[4], G[n].Y, rot[5], G[n].Z);
 
                     double rz = ewaldR - Z, rz2 = rz * rz;
-                    double ptX = camPerRes / rz * X + cX;
-                    double ptY = -camPerRes / rz * Y + cY;
+                    // double ptX = camPerRes / rz * X + cX;
+                    // double ptY = -camPerRes / rz * Y + cY;
+                    double ptX = Math.FusedMultiplyAdd(camPerRes / rz, X, cX);
+                    double ptY = Math.FusedMultiplyAdd(-camPerRes / rz, Y, cY);
                     if (ptX < imageWidth - 1 && ptX > 0 && ptY < imageHeight - 1 && ptY > 0)
                     {
                         //エワルド球面が、試料近傍で平面近似できるとして計算する  楕円(x-X)^2/hk1^2 + (z-Z)^2/hk3^2 == 1 と 直線 y = X/(R-Z) x + R(1-sqrt(X^2/(R-Z)^2+1)) の連立方程式を解く
@@ -772,14 +788,18 @@ public class Crystallite
                 (var gX, var gY, var gZ, var Hk1, var Hk2, var Hk3, var Intensity, var Intensity2) = G[gNum];
                 foreach (var rot in rotArray)
                 {
-                    var X = rot[0] * gX + rot[1] * gY + rot[2] * gZ;
-                    var Y = rot[3] * gX + rot[4] * gY + rot[5] * gZ;
-                    var Z = rot[6] * gX + rot[7] * gY + rot[8] * gZ;
+                    // var X = rot[0] * gX + rot[1] * gY + rot[2] * gZ;
+                    // var Y = rot[3] * gX + rot[4] * gY + rot[5] * gZ;
+                    // var Z = rot[6] * gX + rot[7] * gY + rot[8] * gZ;
+                    var X = Dot3(rot[0], gX, rot[1], gY, rot[2], gZ);
+                    var Y = Dot3(rot[3], gX, rot[4], gY, rot[5], gZ);
+                    var Z = Dot3(rot[6], gX, rot[7], gY, rot[8], gZ);
                     double xyLength2 = X * X + Y * Y, xyLength = Math.Sqrt(xyLength2), rz = ewaldR - Z, rz2 = rz * rz;
                     //初期位置の計算
                     var XY = (Hk3 / Hk1 + (ewaldR * Math.Sqrt(1 + xyLength2 / rz2) - ewaldR + Z) / rz) / (Hk3 / Hk1 + xyLength2 / rz2) * xyLength;
                     var d = camPerRes / Math.Sqrt(ewaldR2 / XY / XY - 1) / xyLength;
-                    var startPosition = (int)(-d * Y + cY + 0.5) * imageWidth + (int)(d * X + cX + 0.5);
+                    // var startPosition = (int)(-d * Y + cY + 0.5) * imageWidth + (int)(d * X + cX + 0.5);
+                    var startPosition = (int)(Math.FusedMultiplyAdd(-d, Y, cY + 0.5)) * imageWidth + (int)(Math.FusedMultiplyAdd(d, X, cX + 0.5));
                     var tempIntensity = Intensity2 / subDiv3 * SolidAngle[num];
 
                     var angle = (int)((Math.Atan2(Y, X) / Math.PI + 1.0) * SpotShapesAngleDivision / 2);
@@ -853,14 +873,19 @@ public class Crystallite
         for (int n = 0; n < G.Length; n++)
         {
             double gX = G[n].X, gY = G[n].Y, gZ = G[n].Z;
-            double z = m.E31 * gX + m.E32 * gY + m.E33 * gZ;
+            // double z = m.E31 * gX + m.E32 * gY + m.E33 * gZ;
+            double z = Dot3(m.E31, gX, m.E32, gY, m.E33, gZ);
             if (z > -maxExcitationError * 2 && detector.MaxReciproZ + maxExcitationError * 2 > z)
             {
                 double rz = ewaldR - z;
-                double x = m.E11 * gX + m.E12 * gY + m.E13 * gZ;
-                double y = m.E21 * gX + m.E22 * gY + m.E23 * gZ;
-                double ptX = detector.CameraLength / detector.Resolution / rz * x + detector.Center.X;
-                double ptY = -detector.CameraLength / detector.Resolution / rz * y + detector.Center.Y;
+                // double x = m.E11 * gX + m.E12 * gY + m.E13 * gZ;
+                // double y = m.E21 * gX + m.E22 * gY + m.E23 * gZ;
+                double x = Dot3(m.E11, gX, m.E12, gY, m.E13, gZ);
+                double y = Dot3(m.E21, gX, m.E22, gY, m.E23, gZ);
+                // double ptX = detector.CameraLength / detector.Resolution / rz * x + detector.Center.X;
+                // double ptY = -detector.CameraLength / detector.Resolution / rz * y + detector.Center.Y;
+                double ptX = Math.FusedMultiplyAdd(detector.CameraLength / detector.Resolution / rz, x, detector.Center.X);
+                double ptY = Math.FusedMultiplyAdd(-detector.CameraLength / detector.Resolution / rz, y, detector.Center.Y);
                 if (ptX < detector.ImageWidth - 1 && ptX > 0 && ptY < detector.ImageHeight - 1 && ptY > 0)
                 {
                     //エワルド球面が、試料近傍で平面近似できるとして計算する  楕円(x-X)^2/hk1^2 + (z-Z)^2/hk3^2 == 1 と 直線 y = X/(R-Z) x + R(1-sqrt(X^2/(R-Z)^2+1)) の連立方程式を解く
@@ -884,7 +909,8 @@ public class Crystallite
                         double eta = 0;
                         double intensity = (eta / (1 + dev2) + (1 - eta) * Math.Sqrt(Math.PI * Math.Log(2)) * Math.Pow(2, -dev2)) * G[n].Intensity2;
 
-                        list.Add(new Vector3D(d * x + detector.Center.X, -d * y + detector.Center.Y, intensity));
+                        // list.Add(new Vector3D(d * x + detector.Center.X, -d * y + detector.Center.Y, intensity));
+                        list.Add(new Vector3D(Math.FusedMultiplyAdd(d, x, detector.Center.X), Math.FusedMultiplyAdd(-d, y, detector.Center.Y), intensity));
                         list[^1].Index = BaseCrystal.VectorOfG[n].Index;
                     }
                 }
@@ -1114,14 +1140,19 @@ public static class Powder
                         for (int n = 0; n < crystallites.G_Vector.Length; n++)
                         {
                             Vector3DBase g = crystallites.G_Vector[n];
-                            z = n % 2 == 0 ? rotation.E31 * g.X + rotation.E32 * g.Y + rotation.E33 * g.Z : -z;
+                            // z = n % 2 == 0 ? rotation.E31 * g.X + rotation.E32 * g.Y + rotation.E33 * g.Z : -z;
+                            z = n % 2 == 0 ? Dot3(rotation.E31, g.X, rotation.E32, g.Y, rotation.E33, g.Z) : -z;
                             if (z > -maxExcitationError * 2 && detector.MaxReciproZ + maxExcitationError * 2 > z)
                             {
                                 double rz = ewaldR - z;
-                                x = rotation.E11 * g.X + rotation.E12 * g.Y + rotation.E13 * g.Z;
-                                y = rotation.E21 * g.X + rotation.E22 * g.Y + rotation.E23 * g.Z;
-                                double ptX = detector.CameraLength / detector.Resolution / rz * x + detector.Center.X;
-                                double ptY = -detector.CameraLength / detector.Resolution / rz * y + detector.Center.Y;
+                                // x = rotation.E11 * g.X + rotation.E12 * g.Y + rotation.E13 * g.Z;
+                                // y = rotation.E21 * g.X + rotation.E22 * g.Y + rotation.E23 * g.Z;
+                                x = Dot3(rotation.E11, g.X, rotation.E12, g.Y, rotation.E13, g.Z);
+                                y = Dot3(rotation.E21, g.X, rotation.E22, g.Y, rotation.E23, g.Z);
+                                // double ptX = detector.CameraLength / detector.Resolution / rz * x + detector.Center.X;
+                                // double ptY = -detector.CameraLength / detector.Resolution / rz * y + detector.Center.Y;
+                                double ptX = Math.FusedMultiplyAdd(detector.CameraLength / detector.Resolution / rz, x, detector.Center.X);
+                                double ptY = Math.FusedMultiplyAdd(-detector.CameraLength / detector.Resolution / rz, y, detector.Center.Y);
                                 if (ptX < detector.ImageWidth - 1 && ptX > 0 && ptY < detector.ImageHeight - 1 && ptY > 0)
                                 {
                                     //エワルド球面が、試料近傍で平面近似できるとして計算する  楕円(x-X)^2/hk1^2 + (z-Z)^2/hk3^2 == 1 と 直線 y = X/(R-Z) x + R(1-sqrt(X^2/(R-Z)^2+1)) の連立方程式を解く
@@ -1163,9 +1194,12 @@ public static class Powder
                     foreach (int n in crystallites.Index[i])
                     {
                         Vector3DBase g = crystallites.G_Vector[n];
-                        x = rotation.E11 * g.X + rotation.E12 * g.Y + rotation.E13 * g.Z;
-                        y = rotation.E21 * g.X + rotation.E22 * g.Y + rotation.E23 * g.Z;
-                        z = rotation.E31 * g.X + rotation.E32 * g.Y + rotation.E33 *g.Z;
+                        // x = rotation.E11 * g.X + rotation.E12 * g.Y + rotation.E13 * g.Z;
+                        // y = rotation.E21 * g.X + rotation.E22 * g.Y + rotation.E23 * g.Z;
+                        // z = rotation.E31 * g.X + rotation.E32 * g.Y + rotation.E33 *g.Z;
+                        x = Dot3(rotation.E11, g.X, rotation.E12, g.Y, rotation.E13, g.Z);
+                        y = Dot3(rotation.E21, g.X, rotation.E22, g.Y, rotation.E23, g.Z);
+                        z = Dot3(rotation.E31, g.X, rotation.E32, g.Y, rotation.E33, g.Z);
 
                         double xyLength2 = x * x + y * y;
                         double xyLength = Math.Sqrt(xyLength2);
@@ -1182,7 +1216,8 @@ public static class Powder
                         double b = (hk3square / hk1square + (ewaldR * Math.Sqrt(1 + xyLength2 / rz / rz) - ewaldR + z) / rz) * xyLength;
                         double XY = Math.Abs(b / a);
                         double d = detector.CameraLength / detector.Resolution / Math.Sqrt(ewaldR2 - XY * XY) / xyLength * XY;
-                        List<int> rim = new List<int>(new int[] { (int)(-d * y + detector.Center.Y + 0.5) * detector.ImageWidth + (int)(d * x + detector.Center.X + 0.5) });//初期外縁ピクセル
+                        // List<int> rim = new List<int>(new int[] { (int)(-d * y + detector.Center.Y + 0.5) * detector.ImageWidth + (int)(d * x + detector.Center.X + 0.5) });
+                        List<int> rim = new List<int>(new int[] { (int)(Math.FusedMultiplyAdd(-d, y, detector.Center.Y + 0.5)) * detector.ImageWidth + (int)(Math.FusedMultiplyAdd(d, x, detector.Center.X + 0.5)) });//初期外縁ピクセル
 
                         for (int j = 0; j < rim.Count; j++)//rim.RemoveAt(0))//現在のピクセル位置から、周辺強度を計算していって、半値幅の2倍以上になったら終了
                             for (int k = j == 0 ? 0 : 1; k < directions.Length; k++)
@@ -1238,10 +1273,14 @@ public static class Powder
                             if (z > -maxExcitationError * 2 && detector.MaxReciproZ + maxExcitationError * 2 > z)
                             {
                                 double rz = ewaldR - z;
-                                x = rotation.E11 * g.X + rotation.E12 * g.Y + rotation.E13 * g.Z;
-                                y = rotation.E21 * g.X + rotation.E22 * g.Y + rotation.E23 * g.Z;
-                                double ptX = detector.CameraLength / detector.Resolution / rz * x + detector.Center.X;
-                                double ptY = -detector.CameraLength / detector.Resolution / rz * y + detector.Center.Y;
+                                // x = rotation.E11 * g.X + rotation.E12 * g.Y + rotation.E13 * g.Z;
+                                // y = rotation.E21 * g.X + rotation.E22 * g.Y + rotation.E23 * g.Z;
+                                x = Dot3(rotation.E11, g.X, rotation.E12, g.Y, rotation.E13, g.Z);
+                                y = Dot3(rotation.E21, g.X, rotation.E22, g.Y, rotation.E23, g.Z);
+                                // double ptX = detector.CameraLength / detector.Resolution / rz * x + detector.Center.X;
+                                // double ptY = -detector.CameraLength / detector.Resolution / rz * y + detector.Center.Y;
+                                double ptX = Math.FusedMultiplyAdd(detector.CameraLength / detector.Resolution / rz, x, detector.Center.X);
+                                double ptY = Math.FusedMultiplyAdd(-detector.CameraLength / detector.Resolution / rz, y, detector.Center.Y);
                                 if (ptX < detector.ImageWidth - 1 && ptX > 0 && ptY < detector.ImageHeight - 1 && ptY > 0)
                                 {
                                     //エワルド球面が、試料近傍で平面近似できるとして計算する  楕円(x-X)^2/hk1^2 + (z-Z)^2/hk3^2 == 1 と 直線 y = X/(R-Z) x + R(1-sqrt(X^2/(R-Z)^2+1)) の連立方程式を解く

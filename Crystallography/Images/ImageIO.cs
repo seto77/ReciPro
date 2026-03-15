@@ -1606,18 +1606,22 @@ public static class ImageIO
             //イメージデータ読みこみ
             var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.ReadWrite));
 
-            var x = latitude / Math.Pow(2, bitsPerPixel);
+            // var x = latitude / Math.Pow(2, bitsPerPixel);
+            var x = Math.ScaleB(latitude, -bitsPerPixel);
             //uint[] convertTable = new uint[65536];
 
             var convertTable = new double[65536];
+            // int maxLevel = (int)Math.Pow(2, bitsPerPixel);
+            int maxLevel = 1 << bitsPerPixel;
+            double maxIntensity = Math.Pow(10, maxLevel * x) - 1;
 
             //double maxValue = Math.Pow(10, Math.Pow(2, bitsPerPixel) * x);
 
             for (int i = 0; i < 65536; i++)
-                if (i < Math.Pow(2, bitsPerPixel))
+                if (i < maxLevel)
                     convertTable[i] = Math.Pow(10, i * x) - 1;
                 else
-                    convertTable[i] = Math.Pow(10, Math.Pow(2, bitsPerPixel) * x) - 1;
+                    convertTable[i] = maxIntensity;
 
             Ring.Intensity = new double[length];
 

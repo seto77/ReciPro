@@ -150,21 +150,34 @@ public class Matrix3D : ICloneable
     public Vector3DBase Row2 => new(E21, E22, E23);
     public Vector3DBase Row3 => new(E31, E32, E33);
 
+    // a1 * b1 + a2 * b2 + a3 * b3
+    private static double Dot3(double a1, double b1, double a2, double b2, double a3, double b3)
+        => Math.FusedMultiplyAdd(a1, b1, Math.FusedMultiplyAdd(a2, b2, a3 * b3));
+
     #region  演算子のオーバーロード
 
     public static Matrix3D operator *(Matrix3D m1, Matrix3D m2) => new()
     {
-        E11 = m1.E11 * m2.E11 + m1.E12 * m2.E21 + m1.E13 * m2.E31,
-        E12 = m1.E11 * m2.E12 + m1.E12 * m2.E22 + m1.E13 * m2.E32,
-        E13 = m1.E11 * m2.E13 + m1.E12 * m2.E23 + m1.E13 * m2.E33,
+        // E11 = m1.E11 * m2.E11 + m1.E12 * m2.E21 + m1.E13 * m2.E31
+        // E12 = m1.E11 * m2.E12 + m1.E12 * m2.E22 + m1.E13 * m2.E32
+        // E13 = m1.E11 * m2.E13 + m1.E12 * m2.E23 + m1.E13 * m2.E33
+        E11 = Dot3(m1.E11, m2.E11, m1.E12, m2.E21, m1.E13, m2.E31),
+        E12 = Dot3(m1.E11, m2.E12, m1.E12, m2.E22, m1.E13, m2.E32),
+        E13 = Dot3(m1.E11, m2.E13, m1.E12, m2.E23, m1.E13, m2.E33),
 
-        E21 = m1.E21 * m2.E11 + m1.E22 * m2.E21 + m1.E23 * m2.E31,
-        E22 = m1.E21 * m2.E12 + m1.E22 * m2.E22 + m1.E23 * m2.E32,
-        E23 = m1.E21 * m2.E13 + m1.E22 * m2.E23 + m1.E23 * m2.E33,
+        // E21 = m1.E21 * m2.E11 + m1.E22 * m2.E21 + m1.E23 * m2.E31
+        // E22 = m1.E21 * m2.E12 + m1.E22 * m2.E22 + m1.E23 * m2.E32
+        // E23 = m1.E21 * m2.E13 + m1.E22 * m2.E23 + m1.E23 * m2.E33
+        E21 = Dot3(m1.E21, m2.E11, m1.E22, m2.E21, m1.E23, m2.E31),
+        E22 = Dot3(m1.E21, m2.E12, m1.E22, m2.E22, m1.E23, m2.E32),
+        E23 = Dot3(m1.E21, m2.E13, m1.E22, m2.E23, m1.E23, m2.E33),
 
-        E31 = m1.E31 * m2.E11 + m1.E32 * m2.E21 + m1.E33 * m2.E31,
-        E32 = m1.E31 * m2.E12 + m1.E32 * m2.E22 + m1.E33 * m2.E32,
-        E33 = m1.E31 * m2.E13 + m1.E32 * m2.E23 + m1.E33 * m2.E33
+        // E31 = m1.E31 * m2.E11 + m1.E32 * m2.E21 + m1.E33 * m2.E31
+        // E32 = m1.E31 * m2.E12 + m1.E32 * m2.E22 + m1.E33 * m2.E32
+        // E33 = m1.E31 * m2.E13 + m1.E32 * m2.E23 + m1.E33 * m2.E33
+        E31 = Dot3(m1.E31, m2.E11, m1.E32, m2.E21, m1.E33, m2.E31),
+        E32 = Dot3(m1.E31, m2.E12, m1.E32, m2.E22, m1.E33, m2.E32),
+        E33 = Dot3(m1.E31, m2.E13, m1.E32, m2.E23, m1.E33, m2.E33)
     };
 
     public static Matrix3D operator *(in double d, Matrix3D m2) => new()
@@ -229,10 +242,19 @@ public class Matrix3D : ICloneable
 
     public static Vector3D operator *(Matrix3D m, Vector3D v) => m == null || v == null
             ? null
-            : new Vector3D(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+            : new Vector3D(
+                // m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z
+                Dot3(m.E11, v.X, m.E12, v.Y, m.E13, v.Z),
+                // m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z
+                Dot3(m.E21, v.X, m.E22, v.Y, m.E23, v.Z),
+                // m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z
+                Dot3(m.E31, v.X, m.E32, v.Y, m.E33, v.Z));
 
     public static Vector3DBase operator *(Matrix3D m, Vector3DBase v)
-        => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+        => new(
+            Dot3(m.E11, v.X, m.E12, v.Y, m.E13, v.Z),
+            Dot3(m.E21, v.X, m.E22, v.Y, m.E23, v.Z),
+            Dot3(m.E31, v.X, m.E32, v.Y, m.E33, v.Z));
 
 
     /// <summary>
@@ -242,13 +264,22 @@ public class Matrix3D : ICloneable
     /// <param name="v"></param>
     /// <returns></returns>
     public static Vector3DBase operator *(Matrix3D m, in (int X, int Y, int Z) v)
-        => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+        => new(
+            Dot3(m.E11, v.X, m.E12, v.Y, m.E13, v.Z),
+            Dot3(m.E21, v.X, m.E22, v.Y, m.E23, v.Z),
+            Dot3(m.E31, v.X, m.E32, v.Y, m.E33, v.Z));
 
     public static Vector3DBase operator *(Matrix3D m, in (double X, double Y, double Z) v)
-        => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+        => new(
+            Dot3(m.E11, v.X, m.E12, v.Y, m.E13, v.Z),
+            Dot3(m.E21, v.X, m.E22, v.Y, m.E23, v.Z),
+            Dot3(m.E31, v.X, m.E32, v.Y, m.E33, v.Z));
 
     public static Vector3d operator *(Matrix3D m, Vector3d v)
-        => new(m.E11 * v.X + m.E12 * v.Y + m.E13 * v.Z, m.E21 * v.X + m.E22 * v.Y + m.E23 * v.Z, m.E31 * v.X + m.E32 * v.Y + m.E33 * v.Z);
+        => new(
+            Dot3(m.E11, v.X, m.E12, v.Y, m.E13, v.Z),
+            Dot3(m.E21, v.X, m.E22, v.Y, m.E23, v.Z),
+            Dot3(m.E31, v.X, m.E32, v.Y, m.E33, v.Z));
 
     #endregion
     public static Matrix3D Inverse(Matrix3D m)

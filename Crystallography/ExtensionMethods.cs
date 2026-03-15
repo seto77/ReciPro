@@ -185,12 +185,14 @@ public static class MathnetEx
         if (m.RowCount != m.ColumnCount)
             throw new ArgumentException("Matrix should be square");
 
-        double k = 0;
+        int k = 0;
         double mNorm = m.L1Norm();
         if (mNorm > 0.5)
         {
-            k = Math.Ceiling(Math.Log(mNorm) / Math.Log(2.0));
-            m = m.Divide(Math.Pow(2.0, k));
+            // k = Math.Ceiling(Math.Log(mNorm) / Math.Log(2.0));
+            // m = m.Divide(Math.Pow(2.0, k));
+            k = (int)Math.Ceiling(Math.Log2(mNorm));
+            m = m.Divide(Math.ScaleB(1.0, k));
         }
 
         int p = m.L1Norm() switch  // order of Padé 

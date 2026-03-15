@@ -1757,9 +1757,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         {
             var sinTheta = ramda / 2 / Plane[i].d;
             var twoTheta = Plane[i].XCalc = 2 * Math.Asin(sinTheta);
-            var cosTwoTheta = 1 - 2 * sinTheta * sinTheta;
-            var sinTwoTheta = Math.Sin(twoTheta);
-
+            var (sinTwoTheta,cosTwoTheta)= Math.SinCos(twoTheta);
+            //var cosTwoTheta = 1 - 2 * sinTheta * sinTheta;
+            //var sinTwoTheta = Math.Sin(twoTheta);
+            
             var s = Plane[i].strHKL.Split('+', true);
             Plane[i].F2 = new double[s.Length];
             Plane[i].F = new Complex[s.Length];

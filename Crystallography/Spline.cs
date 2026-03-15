@@ -150,18 +150,22 @@ namespace Crystallography
         public double[] c;
         public double T = 0;
 
+        // a * x * x * x + b * x * x + c * x + d
+        private static double EvaluateCubic(double a, double b, double c, double d, double x)
+            => Math.FusedMultiplyAdd(Math.FusedMultiplyAdd(Math.FusedMultiplyAdd(a, x, b), x, c), x, d);
+
         public double GetValue(double x)
         {
             if (c == null || c.Length < 8) return 0;
 
             if (x <= p[0])
-                return c[0] * x * x * x + c[1] * x * x + c[2] * x + c[3];
+                return EvaluateCubic(c[0], c[1], c[2], c[3], x);
             else if (x >= p[^1])
-                return c[^4] * x * x * x + c[^3] * x * x + c[^2] * x + c[^1];
+                return EvaluateCubic(c[^4], c[^3], c[^2], c[^1], x);
             else
                 for (int j = 0; j < p.Length - 1; j++)
                     if (x >= p[j] && x <= p[j + 1])
-                        return c[j * 4 + 4] * x * x * x + c[j * 4 + 5] * x * x + c[j * 4 + 6] * x + c[j * 4 + 7];
+                        return EvaluateCubic(c[j * 4 + 4], c[j * 4 + 5], c[j * 4 + 6], c[j * 4 + 7], x);
             return 0;
         }
 
