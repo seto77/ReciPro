@@ -59,12 +59,13 @@ public partial class FormEBSD : Form
         get
         {
             //垂線の足の実空間座標座標
-            var f = new V3(-CameraLength2 * Math.Sin(DetTilt), CameraLength2 * Math.Cos(DetTilt), 1);
+            var (sinDetTilt, cosDetTilt) = Math.SinCos(DetTilt);
+            var f = new V3(-CameraLength2 * sinDetTilt, CameraLength2 * cosDetTilt, 1);
             //検出器の中心座標
             var c = new V3(DetY, DetZ, 1);
 
             var len = (f - c).Length;
-            double cos = Math.Cos(-DetTilt), sin = Math.Sin(-DetTilt);
+            var (sin, cos) = Math.SinCos(-DetTilt);// double cos = Math.Cos(-DetTilt), sin = Math.Sin(-DetTilt);
 
             var rot = new M3(cos, -sin, DetY - DetY * cos + DetZ * sin,
                              sin, cos, DetZ - DetY * sin - DetZ * cos,
