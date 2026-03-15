@@ -899,7 +899,8 @@ public class Quads : Polygon
 public class Disk(V3d origin, V3d normal, double radius, Material mat, DrawingMode mode, int slices = 60) : Polygon(
          Enumerable.Range(0, slices).Select(i =>
              {
-                 var p = radius * new V2d(Math.Sin((double)i / slices * 2 * Math.PI), Math.Cos((double)i / slices * 2 * Math.PI));
+                var (sin, cos)= Math.SinCos((double)i / slices * 2 * Math.PI);
+                 var p = radius * new V2d(sin, cos);
                  M3d rot;
                  if (normal == vZ)
                      rot = M3d.Identity;
@@ -937,8 +938,8 @@ public class HoledDisk : GLObject
         CircumscribedSphereCenter = new V4d(origin, 1);
         CircumscribedSphereRadius = RadiusOuter;
 
-        var sins = Enumerable.Range(0, slices).Select(i => Math.Sin((double)i / slices * 2 * Math.PI)).ToArray();
-        var coss = Enumerable.Range(0, slices).Select(i => Math.Cos((double)i / slices * 2 * Math.PI)).ToArray();
+        var t = Enumerable.Range(0, slices).Select(i => Math.SinCos((double)i / slices * 2 * Math.PI)).ToArray();
+        //var coss = Enumerable.Range(0, slices).Select(i => Math.Cos((double)i / slices * 2 * Math.PI)).ToArray();
 
         IgnoreNormalSides = true;
 
@@ -952,8 +953,8 @@ public class HoledDisk : GLObject
 
         for (int i = 0; i < slices; i++)
         {
-            vertices[i] = new V3d(RadiusOuter * sins[i], RadiusOuter * coss[i], 0);
-            vertices[i+slices] = new V3d(RadiusInner * sins[i], RadiusInner * coss[i], 0);
+            vertices[i] = new V3d(RadiusOuter * t[i].Sin, RadiusOuter * t[i].Cos, 0);
+            vertices[i+slices] = new V3d(RadiusInner * t[i].Sin, RadiusInner * t[i].Cos, 0);
         }
 
         List<int> indicesTmp = [];
@@ -1395,7 +1396,8 @@ public class Pipe : GLObject
         for (int h = 0; h <= slices; h++)
             for (int t = 0; t < stacks; t++)
             {
-                double sin = Math.Sin((double)t / stacks * Math.PI * 2), cos = Math.Cos((double)t / stacks * Math.PI * 2);
+                var (sin, cos)=Math.SinCos((double)t / stacks * Math.PI * 2);
+                //double sin = Math.Sin((double)t / stacks * Math.PI * 2), cos = Math.Cos((double)t / stacks * Math.PI * 2);
                 double r = r1 * (1 - (double)h / slices) + r2 * h / slices;
                 double z = (double)h / slices * height;
                 v.Add(new V3d(r * sin, r * cos, z));
@@ -1653,7 +1655,8 @@ public class Torus : GLObject
         for (int i = 0; i < slices2; i++)
         {
             var theta = (double)i / slices2 * 2 * Math.PI;
-            var normal = r2 * new V3d(Math.Cos(theta), 0, Math.Sin(theta));
+            var (sin,cos)=Math.SinCos(theta);
+            var normal = r2 * new V3d(cos, 0, sin);
             var position = new V3d(r1, 0, 0) + normal;
             circleVertex.Add((position, normal));
         }

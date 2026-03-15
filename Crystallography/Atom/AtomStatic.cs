@@ -2620,7 +2620,8 @@ new(4.86738014,0.319974401,4.58872425,
                 //double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
                 return GaussLegendreRule.Integrate(φ =>
                 {
-                    var K = R * new PointD(Math.Cos(φ), Math.Sin(φ));
+                    var (sin, cos) = Math.SinCos(φ);
+                    var K = R * new PointD(cos, sin);
                     //var K = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
                     double kMinusG = (K - G / 2).Length2, kPlusG = (K + G / 2).Length2;//単位はnm^-2
                     double f_kMinusG = 0, f_kPlusG = 0;
@@ -2655,10 +2656,12 @@ new(4.86738014,0.319974401,4.58872425,
 
             var result = GaussLegendreRule.Integrate(θ =>
             {
-                double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
+                var (sinθ, cosθ) = Math.SinCos(θ);
+                double kSinθ = k0 * sinθ, kCosθ = k0 * cosθ;
                 return GaussLegendreRule.Integrate(φ =>
                 {
-                    var k = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
+                    var (sinφ, cosφ) = Math.SinCos(φ);
+                    var k = new Vector3DBase(kSinθ * cosφ, kSinθ * sinφ, kCosθ - k0);
                     double kMinusG = (k - g / 2).Length2 / 4, kPlusG = (k + g / 2).Length2 / 4;//単位はnm^-2
                     double f_kMinusG = 0, f_kPlusG = 0;
                     foreach (var (A, B) in Prms)
@@ -2692,10 +2695,12 @@ new(4.86738014,0.319974401,4.58872425,
 
             return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
             {
-                double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
+                var (sinθ, cosθ) = Math.SinCos(θ);
+                double  kSinθ = k0 * sinθ, kCosθ = k0 * cosθ;
                 return GaussLegendreRule.Integrate(φ =>
                 {
-                    var k = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
+                    var (sinφ, cosφ) = Math.SinCos(φ);
+                    var k = new Vector3DBase(kSinθ * cosφ, kSinθ * sinφ, kCosθ - k0);
                     double k_g = (k - g).Length2 / 400, k_h = (k - h).Length2 / 400;
                     double f_k_g = 0, f_k_h = 0;
                     foreach (var (A, B) in Prms)
@@ -2727,7 +2732,8 @@ new(4.86738014,0.319974401,4.58872425,
             PointD g2 = g.ToPointD, h2 = h.ToPointD;
             return GaussLegendreRule.Integrate((phi, r) =>
             {
-                var k = r * new PointD(Math.Cos(phi), Math.Sin(phi));
+                var (sinφ, cosφ) = Math.SinCos(phi);
+                var k = r * new PointD(cosφ, sinφ);
                 double k_g = (k - g2).Length2 / 4, k_h = (k - h2).Length2 / 4;
                 return Factor(k_g) * Factor(k_h) * (1 - Math.Exp(m * (g_h - k_g - k_h))) * r;
             }

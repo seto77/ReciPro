@@ -185,7 +185,8 @@ public partial class FormEBSD : Form
         glObjects.Add(sample);
 
         //検出器の傾き
-        var detector = new Cylinder(new V3(0, -DetY, -DetZ), new V3(0, Math.Sin(DetTilt), -Math.Cos(DetTilt)), DetR, new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces, true, 2, 180);
+        var (sinDetTilt, cosDetTilt) = Math.SinCos(DetTilt);
+        var detector = new Cylinder(new V3(0, -DetY, -DetZ), new V3(0,sinDetTilt, -cosDetTilt), DetR, new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces, true, 2, 180);
         glObjects.Add(detector);
 
         //XYZ軸
@@ -206,7 +207,8 @@ public partial class FormEBSD : Form
         glObjects.AddRange(Enumerable.Range(0, 30).Select(e =>
         {
             var θ = e / 15.0 * Math.PI;
-            var p = M3.CreateRotationX(-DetTilt) * (DetR * new V3(-Math.Sin(θ), Math.Cos(θ), 0));
+            var (sinθ, cosθ) = Math.SinCos(θ);
+            var p = M3.CreateRotationX(-DetTilt) * (DetR * new V3(-sinθ, cosθ, 0));
             return new Lines([new V3(0, 0, 0), new(p.X, p.Y - DetY, p.Z - DetZ)], 1f, new Material(C4.Yellow, 0.7));
         }));
 
@@ -415,7 +417,7 @@ public partial class FormEBSD : Form
 
                 //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
                 var psi = Math.Atan2(vec2.X, vec2.Y);
-                double sinPsi = Math.Sin(psi), cosPsi = Math.Cos(psi);
+                var( sinPsi, cosPsi) = Math.SinCos(psi);
                 var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
 
                 //vec3normは、vec3を規格化したベクトル
@@ -806,7 +808,7 @@ public partial class FormEBSD : Form
 
         //方位配列を作る 
         
-        double cos = Math.Cos(DetTilt), sin = Math.Sin(DetTilt);
+        var (sin, cos) = Math.SinCos(DetTilt);
         var rotDet = new M4(1, 0, 0, 0,
                             0, cos, -sin, DetY - DetY * cos + DetZ * sin,
                             0, sin, cos, DetZ - DetY * sin - DetZ * cos,
@@ -986,7 +988,8 @@ public partial class FormEBSD : Form
         var imgSize = (int)Math.Sqrt(Crystal.Bethe.Disks[0][0].Amplitudes.Length);
 
         M3 smpRot = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
-        double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
+        var (sinTilt, cosTilt) = Math.SinCos(SmpTilt);
+        //double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
 
         PointD[] area = [];
         var areaStep = 32;

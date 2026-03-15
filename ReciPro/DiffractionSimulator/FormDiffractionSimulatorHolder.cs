@@ -104,7 +104,8 @@ public partial class FormDiffractionSimulatorHolder : Form
     /// <param name="g"></param>
     private void DrawOutline(Graphics g)
     {
-        var (magSin, magCos) = ((float)(mag * Math.Sin(PrimaryAxisDirection)), (float)(mag * Math.Cos(PrimaryAxisDirection)));
+        var (sin, cos) = Math.SinCos(PrimaryAxisDirection);
+        var (magSin, magCos) = ((float)(mag * sin), (float)(mag * cos));
         g.Transform = new Matrix(magCos, -magSin, magSin, magCos, (float)(boxWidth / 2.0 - mag * centerPt.X), (float)(boxHeight / 2.0 + mag * centerPt.Y));
 
         var pen1 = new Pen(new SolidBrush(colorControl1DegLine.Color), (float)(1 / mag));
@@ -211,8 +212,7 @@ public partial class FormDiffractionSimulatorHolder : Form
 
     private (double TiltX, double TiltY) convertSrcToHolder(PointD pt)
     {
-        var sin = Math.Sin(-numericBoxTiltXDirection.RadianValue);
-        var cos = Math.Cos(-numericBoxTiltXDirection.RadianValue);
+        var (sin,cos) = Math.SinCos(-numericBoxTiltXDirection.RadianValue);
         pt = new PointD(cos * pt.X - sin * pt.Y, sin * pt.X + cos * pt.Y);
         double tiltY = Math.Asin(2 * pt.Y / (1 + pt.X * pt.X + pt.Y * pt.Y));
         double tiltX = (Math.Cos(tiltY) != 0) ? Math.Asin(2 * pt.X / (1 + pt.X * pt.X + pt.Y * pt.Y) / Math.Cos(tiltY)) : 0;

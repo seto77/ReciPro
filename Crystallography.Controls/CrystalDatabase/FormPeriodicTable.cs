@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -32,7 +32,7 @@ namespace Crystallography.Controls
                 button[i].Tag = i;
             }
 
-            #region ƒeƒLƒXƒg‚Ìİ’è
+            #region ãƒ†ã‚­ã‚¹ãƒˆã®è¨­å®š
 
             button[1].Text = "H";
             button[2].Text = "He";
@@ -146,7 +146,7 @@ namespace Crystallography.Controls
             button[110].Text = "Ds";
             button[111].Text = "Rg";
 
-            #endregion ƒeƒLƒXƒg‚Ìİ’è
+            #endregion ãƒ†ã‚­ã‚¹ãƒˆã®è¨­å®š
 
             for (int i = 1; i < 112; i++)
             {

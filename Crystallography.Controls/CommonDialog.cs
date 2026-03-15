@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,7 +6,7 @@ namespace Crystallography.Controls
 {
     public partial class CommonDialog : Form
     {
-        #region ƒvƒƒpƒeƒB,ƒtƒB[ƒ‹ƒh
+        #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£,ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
 
         public (string Text, double Ratio) Progress
         {
@@ -70,7 +70,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private string software = "";// e.g., "ReciPro"@
+        private string software = "";// e.g., "ReciPro"ã€€
         public string Software
         {
             get => software;
@@ -81,7 +81,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private string versionAndDate = "";// e.g., "ver3.456(2020/12/31)"@
+        private string versionAndDate = "";// e.g., "ver3.456(2020/12/31)"ã€€
         public string VersionAndDate
         {
             get => versionAndDate;
@@ -126,7 +126,7 @@ namespace Crystallography.Controls
 
         #endregion
 
-        #region ƒRƒ“ƒXƒgƒ‰ƒNƒ^Aƒ[ƒhAƒNƒ[ƒY
+        #region ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€ãƒ­ãƒ¼ãƒ‰ã€ã‚¯ãƒ­ãƒ¼ã‚º
 
         public CommonDialog()
         {
@@ -140,7 +140,7 @@ namespace Crystallography.Controls
 
         #endregion
 
-        #region ƒ{ƒ^ƒ“ƒCƒxƒ“ƒg
+        #region ãƒœã‚¿ãƒ³ã‚¤ãƒ™ãƒ³ãƒˆ
 
         private void buttonOK_Click(object sender, EventArgs e)
         {

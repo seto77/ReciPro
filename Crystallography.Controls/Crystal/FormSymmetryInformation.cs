@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -129,7 +129,7 @@ public partial class FormSymmetryInformation : Form
         ChangeCrystal();
     }
 
-    //Œ‹»‚ğ•ÏX‚·‚é
+    //çµæ™¶ã‚’å¤‰æ›´ã™ã‚‹
     public void ChangeCrystal()
     {
 

@@ -1,4 +1,4 @@
-using MemoryPack;
+ï»¿using MemoryPack;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -67,7 +67,7 @@ public struct RectangleD
     public readonly SizeF ToSizeF() => new((float)Width, (float)Height);
 
     /// <summary>
-    /// lÌŒÜ“ü‚µ‚Ä®”ƒTƒCƒY‚É•ÏŠ·
+    /// å››æ¨äº”å…¥ã—ã¦æ•´æ•°ã‚µã‚¤ã‚ºã«å¤‰æ›
     /// </summary>
     /// <returns></returns>
     public readonly Size ToSize() => new((int)(Width + 0.5), (int)(Height + 0.5));
@@ -108,7 +108,7 @@ public struct SizeD
 
     public readonly SizeF ToSizeF() => new((float)Width, (float)Height);
 
-    #region ‰‰Zq‚ÌƒI[ƒo[ƒ[ƒh
+    #region æ¼”ç®—å­ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰
 
     public override readonly int GetHashCode() => HashCode.Combine(Width, Height);
 
@@ -134,7 +134,7 @@ public struct SizeD
     #endregion
 }
 
-//PointD‚ğƒNƒ‰ƒX‚©‚ç\‘¢‘Ì‚É•ÏXB20190905
+//PointDã‚’ã‚¯ãƒ©ã‚¹ã‹ã‚‰æ§‹é€ ä½“ã«å¤‰æ›´ã€‚20190905
 [StructLayout(LayoutKind.Sequential)]
 [Serializable()]
 [TypeConverter(typeof(PointDConverter))]
@@ -202,7 +202,7 @@ public partial struct PointD : IComparable, IEquatable<PointD>
 
     public override readonly int GetHashCode() => HashCode.Combine(X, Y);
 
-    #region ‰‰Zq‚ÌƒI[ƒo[ƒ[ƒh
+    #region æ¼”ç®—å­ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰
 
     public static PointD operator +(in PointD p1, in PointD p2) => new(p1.X + p2.X, p1.Y + p2.Y);
 
@@ -225,5 +225,5 @@ public partial struct PointD : IComparable, IEquatable<PointD>
     public static PointD operator +(in PointD p1, in SizeD p2) => new(p1.X + p2.Width, p1.Y + p2.Height);
     public static PointD operator -(in PointD p1, in SizeD p2) => new(p1.X - p2.Width, p1.Y - p2.Height);
 
-    #endregion ‰‰Zq‚ÌƒI[ƒo[ƒ[ƒh
+    #endregion æ¼”ç®—å­ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰
 }

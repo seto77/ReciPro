@@ -1,20 +1,20 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Crystallography;
 
 /// <summary>
-/// Symmetry ‚ÌŠT—v‚Ìà–¾‚Å‚·B
+/// Symmetry ã®æ¦‚è¦ã®èª¬æ˜ã§ã™ã€‚
 /// </summary>
 [Serializable()]
 public readonly struct Symmetry
 {
-    #region ƒvƒƒpƒeƒB
+    #region ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
     //public enum CrystalSytem { Unknown, Triclinic, Monoclinic, Orthorhombic, Tetragonal, Trigonal, Hexagonal, Cubic }
     //public enum LatticeType { P, A, B, C, I, F, R }
 
-    //sub,SF,Hall,HM,HM_full,1²p,1²v,2²p,2²v,3²p,3²v,“_ŒQAƒ‰ƒEƒGŒQAŒ‹»Œn
+    //sub,SF,Hall,HM,HM_full,1è»¸p,1è»¸v,2è»¸p,2è»¸v,3è»¸p,3è»¸v,ç‚¹ç¾¤ã€ãƒ©ã‚¦ã‚¨ç¾¤ã€çµæ™¶ç³»
     public string SpaceGroupHMsubStr { get; }
     public string SpaceGroupSFStr { get; }
     public string SpaceGroupHallStr { get; }
@@ -33,7 +33,7 @@ public readonly struct Symmetry
     public string LaueGroupStr { get; }
     public string CrystalSystemStr { get; }
 
-    //Unknown;530‹óŠÔŒQ‚Ì”Ô†(’Ê‚µ”Ô†		‹óŠÔŒQ”Ô†	‹óŠÔŒQ‚ÌSub”Ô†		“_ŒQ”Ô†	ƒ‰ƒEƒGŒQ”Ô†	Œ‹»Œn”Ô†)
+    //Unknown;530ç©ºé–“ç¾¤ã®ç•ªå·(é€šã—ç•ªå·		ç©ºé–“ç¾¤ç•ªå·	ç©ºé–“ç¾¤ã®Subç•ªå·		ç‚¹ç¾¤ç•ªå·	ãƒ©ã‚¦ã‚¨ç¾¤ç•ªå·	çµæ™¶ç³»ç•ªå·)
     public ushort SeriesNumber { get; }
     public byte SpaceGroupNumber { get; }
     public byte SpaceGroupSubNumber { get; }
@@ -47,7 +47,7 @@ public readonly struct Symmetry
     public List<Func<int, int, int, string>> CheckExtinctionFunc { get; }
     #endregion
 
-    #region ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    #region ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
     public Symmetry(in int seriesNumber)
     {
        
@@ -103,7 +103,7 @@ public readonly struct Symmetry
     }
     #endregion
 
-    #region ƒƒ\ƒbƒh
+    #region ãƒ¡ã‚½ãƒƒãƒ‰
 
     public readonly bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootPlane(index, this,out var indices);
 
@@ -114,9 +114,9 @@ public readonly struct Symmetry
         => [.. CheckExtinctionFunc.Select(check => check(h, k, l)).Where(str => str != null)];
     #endregion
 
-    #region Ã“Iƒƒ\ƒbƒh
+    #region é™çš„ãƒ¡ã‚½ãƒƒãƒ‰
     /// <summary>
-    /// ‹Ö§‘¥‚É’ïG‚·‚éw”‚ğ”»’è‚·‚éFunc‚ÌƒŠƒXƒg‚ğ•Ô‚·
+    /// ç¦åˆ¶å‰‡ã«æŠµè§¦ã™ã‚‹æŒ‡æ•°ã‚’åˆ¤å®šã™ã‚‹Funcã®ãƒªã‚¹ãƒˆã‚’è¿”ã™
     /// </summary>
     /// <param name="sym"></param>
     /// <returns></returns>
@@ -160,25 +160,25 @@ public readonly struct Symmetry
                     func.Add((h, k, l) => l % 2 != 0 && h == 0 && k == 0 ? "2sub1//[001]" : null);
 
                 if (sym.StrSE1v == "b")
-                    func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "bÛ[100]" : null);
+                    func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "bâŠ¥[100]" : null);
                 else if (sym.StrSE1v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "cÛ[100]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "câŠ¥[100]" : null);
                 else if (sym.StrSE1v == "n")
-                    func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "nÛ[100]" : null);
+                    func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "nâŠ¥[100]" : null);
 
                 if (sym.StrSE2v == "a")
-                    func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "aÛ[010]" : null);
+                    func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "aâŠ¥[010]" : null);
                 else if (sym.StrSE2v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "cÛ[010]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "câŠ¥[010]" : null);
                 else if (sym.StrSE2v == "n")
-                    func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "nÛ[010]" : null);
+                    func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "nâŠ¥[010]" : null);
 
                 if (sym.StrSE3v == "a")
-                    func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "aÛ[001]" : null);
+                    func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "aâŠ¥[001]" : null);
                 else if (sym.StrSE3v == "b")
-                    func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "bÛ[001]" : null);
+                    func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "bâŠ¥[001]" : null);
                 else if (sym.StrSE3v == "n")
-                    func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "nÛ[001]" : null);
+                    func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "nâŠ¥[001]" : null);
 
                 break;
 
@@ -193,31 +193,31 @@ public readonly struct Symmetry
                     func.Add((h, k, l) => l % 2 != 0 && h == 0 && k == 0 ? "2sub1//[001]" : null);
 
                 if (sym.StrSE1v == "b")
-                    func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "bÛ[100]" : null);
+                    func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "bâŠ¥[100]" : null);
                 else if (sym.StrSE1v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "cÛ[100]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "câŠ¥[100]" : null);
                 else if (sym.StrSE1v == "n")
-                    func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "nÛ[100]" : null);
+                    func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "nâŠ¥[100]" : null);
                 else if (sym.StrSE1v == "d")
-                    func.Add((h, k, l) => (k + l) % 4 != 0 && h == 0 ? "dÛ[100]" : null);
+                    func.Add((h, k, l) => (k + l) % 4 != 0 && h == 0 ? "dâŠ¥[100]" : null);
 
                 if (sym.StrSE2v == "a")
-                    func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "aÛ[010]" : null);
+                    func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "aâŠ¥[010]" : null);
                 else if (sym.StrSE2v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "cÛ[010]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "câŠ¥[010]" : null);
                 else if (sym.StrSE2v == "n")
-                    func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "nÛ[010]" : null);
+                    func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "nâŠ¥[010]" : null);
                 else if (sym.StrSE2v == "d")
-                    func.Add((h, k, l) => (h + l) % 4 != 0 && k == 0 ? "dÛ[010]" : null);
+                    func.Add((h, k, l) => (h + l) % 4 != 0 && k == 0 ? "dâŠ¥[010]" : null);
 
                 if (sym.StrSE3v == "a")
-                    func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "aÛ[001]" : null);
+                    func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "aâŠ¥[001]" : null);
                 else if (sym.StrSE3v == "b")
-                    func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "bÛ[001]" : null);
+                    func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "bâŠ¥[001]" : null);
                 else if (sym.StrSE3v == "n")
-                    func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "nÛ[001]" : null);
+                    func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "nâŠ¥[001]" : null);
                 else if (sym.StrSE3v == "d")
-                    func.Add((h, k, l) => (h + k) % 4 != 0 && l == 0 ? "dÛ[001]" : null);
+                    func.Add((h, k, l) => (h + k) % 4 != 0 && l == 0 ? "dâŠ¥[001]" : null);
 
                 break;
 
@@ -237,42 +237,42 @@ public readonly struct Symmetry
 
                 if (sym.StrSE1v == "a")
                 {
-                    func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "aÛ[001]" : null);
-                    func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "bÛ[001]" : null);
+                    func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "aâŠ¥[001]" : null);
+                    func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "bâŠ¥[001]" : null);
                 }
                 else if (sym.StrSE1v == "n")
                 {
-                    func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "nÛ[001]" : null);
+                    func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "nâŠ¥[001]" : null);
                 }
 
                 if (sym.StrSE2v == "b")
                 {
-                    func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "aÛ[010]" : null);
+                    func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "aâŠ¥[010]" : null);
                 }
                 else if (sym.StrSE2v == "b")
                 {
-                    func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "bÛ[100]" : null);
+                    func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "bâŠ¥[100]" : null);
                 }
                 else if (sym.StrSE2v == "c")
                 {
-                    func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "cÛ[010]" : null);
-                    func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "cÛ[100]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "câŠ¥[010]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "câŠ¥[100]" : null);
                 }
                 else if (sym.StrSE2v == "n")
                 {
-                    func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "nÛ[010]" : null);
-                    func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "nÛ[100]" : null);
+                    func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "nâŠ¥[010]" : null);
+                    func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "nâŠ¥[100]" : null);
                 }
 
                 if (sym.StrSE3v == "c")
                 {
-                    func.Add((h, k, l) => l % 2 != 0 && h == k ? "cÛ[1-10]" : null);
-                    func.Add((h, k, l) => l % 2 != 0 && h == -k ? "cÛ[110]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && h == k ? "câŠ¥[1-10]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && h == -k ? "câŠ¥[110]" : null);
                 }
                 else if (sym.StrSE3v == "d")
                 {
-                    func.Add((h, k, l) => (2 * h + l) % 4 != 0 && h == k ? "dÛ[1-10]" : null);
-                    func.Add((h, k, l) => (2 * h + l) % 4 != 0 && h == -k ? "dÛ[110]" : null);
+                    func.Add((h, k, l) => (2 * h + l) % 4 != 0 && h == k ? "dâŠ¥[1-10]" : null);
+                    func.Add((h, k, l) => (2 * h + l) % 4 != 0 && h == -k ? "dâŠ¥[110]" : null);
                 }
                 break;
 
@@ -282,28 +282,28 @@ public readonly struct Symmetry
                 else if (sym.StrSE1p == "3s2")
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "3sub2//[001]" : null);
 
-                if (sym.SpaceGroupHMsubStr != "R")//HexƒZƒ‹‚Ìê‡
+                if (sym.SpaceGroupHMsubStr != "R")//Hexã‚»ãƒ«ã®å ´åˆ
                 {
                     if (sym.StrSE2v == "c")
                     {
-                        func.Add((h, k, l) => l % 2 != 0 && h == -k ? "cÛ[-1-10]" : null);
-                        func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "cÛ[100]" : null);
-                        func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "cÛ[010]" : null);
+                        func.Add((h, k, l) => l % 2 != 0 && h == -k ? "câŠ¥[-1-10]" : null);
+                        func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "câŠ¥[100]" : null);
+                        func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "câŠ¥[010]" : null);
                     }
 
                     if (sym.StrSE3v == "c")
                     {
-                        func.Add((h, k, l) => l % 2 != 0 && h == k ? "cÛ[1-10]" : null);
-                        func.Add((h, k, l) => l % 2 != 0 && h == -2 * k ? "cÛ[120]" : null);
-                        func.Add((h, k, l) => l % 2 != 0 && -2 * h == k ? "cÛ[-2-10]" : null);
+                        func.Add((h, k, l) => l % 2 != 0 && h == k ? "câŠ¥[1-10]" : null);
+                        func.Add((h, k, l) => l % 2 != 0 && h == -2 * k ? "câŠ¥[120]" : null);
+                        func.Add((h, k, l) => l % 2 != 0 && -2 * h == k ? "câŠ¥[-2-10]" : null);
                     }
                 }
-                else//RhomboƒZƒ‹‚Ìê‡
+                else//Rhomboã‚»ãƒ«ã®å ´åˆ
                 {
                     if (sym.StrSE2v == "c")
                     {
-                        func.Add((h, k, l) => l % 2 != 0 && h == k ? "cÛ[111]" : null);
-                        func.Add((h, k, l) => l % 2 != 0 && h == k && k == l ? "cÛ[111]" : null);//—vƒ`ƒFƒbƒNB‚È‚ñ‚©•Ï‚¾B
+                        func.Add((h, k, l) => l % 2 != 0 && h == k ? "câŠ¥[111]" : null);
+                        func.Add((h, k, l) => l % 2 != 0 && h == k && k == l ? "câŠ¥[111]" : null);//è¦ãƒã‚§ãƒƒã‚¯ã€‚ãªã‚“ã‹å¤‰ã ã€‚
                     }
                 }
                 break;
@@ -321,18 +321,18 @@ public readonly struct Symmetry
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 6 != 0 ? "6sub5//[001]" : null);
 
                 if (sym.StrSE2v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && h == -k ? "cÛ[-1-10]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && h == -k ? "câŠ¥[-1-10]" : null);
                 else if (sym.StrSE2v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "cÛ[100]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "câŠ¥[100]" : null);
                 else if (sym.StrSE2v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "cÛ[010]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "câŠ¥[010]" : null);
 
                 if (sym.StrSE3v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && h == k ? "cÛ[1-10]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && h == k ? "câŠ¥[1-10]" : null);
                 else if (sym.StrSE3v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && h == -2 * k ? "cÛ[120]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && h == -2 * k ? "câŠ¥[120]" : null);
                 else if (sym.StrSE3v == "c")
-                    func.Add((h, k, l) => l % 2 != 0 && -2 * h == k ? "cÛ[-2-10]" : null);
+                    func.Add((h, k, l) => l % 2 != 0 && -2 * h == k ? "câŠ¥[-2-10]" : null);
 
                 break;
 
@@ -363,57 +363,57 @@ public readonly struct Symmetry
                 }
                 if (sym.StrSE1v == "a")
                 {
-                    func.Add((h, k, l) => h == 0 && k % 2 != 0 ? "bÛ[100]" : null);
-                    func.Add((h, k, l) => k == 0 && l % 2 != 0 ? "cÛ[010]" : null);
-                    func.Add((h, k, l) => l == 0 && h % 2 != 0 ? "aÛ[001]" : null);
+                    func.Add((h, k, l) => h == 0 && k % 2 != 0 ? "bâŠ¥[100]" : null);
+                    func.Add((h, k, l) => k == 0 && l % 2 != 0 ? "câŠ¥[010]" : null);
+                    func.Add((h, k, l) => l == 0 && h % 2 != 0 ? "aâŠ¥[001]" : null);
 
                     if (sym.LaueGroupStr == "m3m")
-                    {//Ia3‚Ì‚Æ‚«‚Í‚Ç‚¤‚È‚é‚ñ‚¾‚ë‚¤EEE
-                        func.Add((h, k, l) => h == 0 && l % 2 != 0 ? "cÛ[100]" : null);
-                        func.Add((h, k, l) => k == 0 && h % 2 != 0 ? "aÛ[010]" : null);
-                        func.Add((h, k, l) => l == 0 && k % 2 != 0 ? "bÛ[001]" : null);
+                    {//Ia3ã®ã¨ãã¯ã©ã†ãªã‚‹ã‚“ã ã‚ã†ãƒ»ãƒ»ãƒ»
+                        func.Add((h, k, l) => h == 0 && l % 2 != 0 ? "câŠ¥[100]" : null);
+                        func.Add((h, k, l) => k == 0 && h % 2 != 0 ? "aâŠ¥[010]" : null);
+                        func.Add((h, k, l) => l == 0 && k % 2 != 0 ? "bâŠ¥[001]" : null);
                     }
                 }
 
                 if (sym.StrSE1v == "n")
                 {
-                    func.Add((h, k, l) => h == 0 && (k + l) % 2 != 0 ? "nÛ[100]" : null);
-                    func.Add((h, k, l) => k == 0 && (l + h) % 2 != 0 ? "nÛ[010]" : null);
-                    func.Add((h, k, l) => l == 0 && (h + k) % 2 != 0 ? "nÛ[001]" : null);
+                    func.Add((h, k, l) => h == 0 && (k + l) % 2 != 0 ? "nâŠ¥[100]" : null);
+                    func.Add((h, k, l) => k == 0 && (l + h) % 2 != 0 ? "nâŠ¥[010]" : null);
+                    func.Add((h, k, l) => l == 0 && (h + k) % 2 != 0 ? "nâŠ¥[001]" : null);
                 }
                 else if (sym.StrSE1v == "d")
                 {
-                    func.Add((h, k, l) => h == 0 && (k + l) % 4 != 0 ? "dÛ[100]" : null);
-                    func.Add((h, k, l) => k == 0 && (l + h) % 4 != 0 ? "dÛ[010]" : null);
-                    func.Add((h, k, l) => l == 0 && (h + k) % 4 != 0 ? "dÛ[001]" : null);
+                    func.Add((h, k, l) => h == 0 && (k + l) % 4 != 0 ? "dâŠ¥[100]" : null);
+                    func.Add((h, k, l) => k == 0 && (l + h) % 4 != 0 ? "dâŠ¥[010]" : null);
+                    func.Add((h, k, l) => l == 0 && (h + k) % 4 != 0 ? "dâŠ¥[001]" : null);
                 }
 
                 if (sym.StrSE3v == "c")
                 {
-                    func.Add((h, k, l) => h == -k && l % 2 != 0 ? "cÛ[110]" : null);
-                    func.Add((h, k, l) => h == k && l % 2 != 0 ? "cÛ[1-10]" : null);
-                    func.Add((h, k, l) => k == -l && h % 2 != 0 ? "aÛ[011]" : null);
-                    func.Add((h, k, l) => k == l && h % 2 != 0 ? "aÛ[01-1]" : null);
-                    func.Add((h, k, l) => h == -l && k % 2 != 0 ? "bÛ[101]" : null);
-                    func.Add((h, k, l) => h == l && k % 2 != 0 ? "bÛ[-101]" : null);
+                    func.Add((h, k, l) => h == -k && l % 2 != 0 ? "câŠ¥[110]" : null);
+                    func.Add((h, k, l) => h == k && l % 2 != 0 ? "câŠ¥[1-10]" : null);
+                    func.Add((h, k, l) => k == -l && h % 2 != 0 ? "aâŠ¥[011]" : null);
+                    func.Add((h, k, l) => k == l && h % 2 != 0 ? "aâŠ¥[01-1]" : null);
+                    func.Add((h, k, l) => h == -l && k % 2 != 0 ? "bâŠ¥[101]" : null);
+                    func.Add((h, k, l) => h == l && k % 2 != 0 ? "bâŠ¥[-101]" : null);
                 }
                 else if (sym.StrSE3v == "n")
                 {
-                    func.Add((h, k, l) => k == -l && (h - 2 * k) % 2 != 0 ? "nÛ[011]" : null);
-                    func.Add((h, k, l) => k == l && (h + 2 * k) % 2 != 0 ? "nÛ[01-1]" : null);
-                    func.Add((h, k, l) => h == -l && (2 * h - k) % 2 != 0 ? "nÛ[101]" : null);
-                    func.Add((h, k, l) => h == l && (2 * h + k) % 2 != 0 ? "nÛ[-101]" : null);
-                    func.Add((h, k, l) => h == -k && (2 * h - l) % 2 != 0 ? "nÛ[110]" : null);
-                    func.Add((h, k, l) => h == k && (2 * h + l) % 2 != 0 ? "nÛ[1-10]" : null);
+                    func.Add((h, k, l) => k == -l && (h - 2 * k) % 2 != 0 ? "nâŠ¥[011]" : null);
+                    func.Add((h, k, l) => k == l && (h + 2 * k) % 2 != 0 ? "nâŠ¥[01-1]" : null);
+                    func.Add((h, k, l) => h == -l && (2 * h - k) % 2 != 0 ? "nâŠ¥[101]" : null);
+                    func.Add((h, k, l) => h == l && (2 * h + k) % 2 != 0 ? "nâŠ¥[-101]" : null);
+                    func.Add((h, k, l) => h == -k && (2 * h - l) % 2 != 0 ? "nâŠ¥[110]" : null);
+                    func.Add((h, k, l) => h == k && (2 * h + l) % 2 != 0 ? "nâŠ¥[1-10]" : null);
                 }
                 else if (sym.StrSE3v == "d")
                 {
-                    func.Add((h, k, l) => k == -l && (h - 2 * k) % 4 != 0 ? "dÛ[011]" : null);
-                    func.Add((h, k, l) => k == l && (h + 2 * k) % 4 != 0 ? "dÛ[01-1]" : null);
-                    func.Add((h, k, l) => h == -l && (2 * h - k) % 4 != 0 ? "dÛ[101]" : null);
-                    func.Add((h, k, l) => h == l && (2 * h + k) % 4 != 0 ? "dÛ[-101]" : null);
-                    func.Add((h, k, l) => h == -k && (2 * h - l) % 4 != 0 ? "dÛ[110]" : null);
-                    func.Add((h, k, l) => h == k && (2 * h + l) % 4 != 0 ? "dÛ[1-10]" : null);
+                    func.Add((h, k, l) => k == -l && (h - 2 * k) % 4 != 0 ? "dâŠ¥[011]" : null);
+                    func.Add((h, k, l) => k == l && (h + 2 * k) % 4 != 0 ? "dâŠ¥[01-1]" : null);
+                    func.Add((h, k, l) => h == -l && (2 * h - k) % 4 != 0 ? "dâŠ¥[101]" : null);
+                    func.Add((h, k, l) => h == l && (2 * h + k) % 4 != 0 ? "dâŠ¥[-101]" : null);
+                    func.Add((h, k, l) => h == -k && (2 * h - l) % 4 != 0 ? "dâŠ¥[110]" : null);
+                    func.Add((h, k, l) => h == k && (2 * h + l) % 4 != 0 ? "dâŠ¥[1-10]" : null);
                 }
                 break;
         }
@@ -459,31 +459,31 @@ public readonly struct Symmetry
                     str.Add("00l: l=2n: 2sub1//[001]");
 
                 if (sym.StrSE1v == "b")
-                    str.Add("0kl: k=2n: bÛ[100]");
+                    str.Add("0kl: k=2n: bâŠ¥[100]");
 
                 if (sym.StrSE1v == "c")
-                    str.Add("0kl: l=2n: cÛ[100]");
+                    str.Add("0kl: l=2n: câŠ¥[100]");
 
                 if (sym.StrSE1v == "n")
-                    str.Add("0kl: k+l=2n: nÛ[100]");
+                    str.Add("0kl: k+l=2n: nâŠ¥[100]");
 
                 if (sym.StrSE2v == "a")
-                    str.Add("h0l: h=2n: aÛ[010]");
+                    str.Add("h0l: h=2n: aâŠ¥[010]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("h0l: l=2n: cÛ[010]");
+                    str.Add("h0l: l=2n: câŠ¥[010]");
 
                 if (sym.StrSE2v == "n")
-                    str.Add("h0l: l+h=2n: nÛ[010]");
+                    str.Add("h0l: l+h=2n: nâŠ¥[010]");
 
                 if (sym.StrSE3v == "a")
-                    str.Add("hk0: h=2n: aÛ[001]");
+                    str.Add("hk0: h=2n: aâŠ¥[001]");
 
                 if (sym.StrSE3v == "b")
-                    str.Add("hk0: k=2n: bÛ[001]");
+                    str.Add("hk0: k=2n: bâŠ¥[001]");
 
                 if (sym.StrSE3v == "n")
-                    str.Add("hk0: h+k=2n: nÛ[001]");
+                    str.Add("hk0: h+k=2n: nâŠ¥[001]");
 
                 break;
 
@@ -498,40 +498,40 @@ public readonly struct Symmetry
                     str.Add("00l: l=2n: 2sub1//[001]");
 
                 if (sym.StrSE1v == "b")
-                    str.Add("0kl: k=2n: bÛ[100]");
+                    str.Add("0kl: k=2n: bâŠ¥[100]");
 
                 if (sym.StrSE1v == "c")
-                    str.Add("0kl: l=2n: cÛ[100]");
+                    str.Add("0kl: l=2n: câŠ¥[100]");
 
                 if (sym.StrSE1v == "n")
-                    str.Add("0kl: k+l=2n: nÛ[100]");
+                    str.Add("0kl: k+l=2n: nâŠ¥[100]");
 
                 if (sym.StrSE1v == "d")
-                    str.Add("0kl: k+l=4n: dÛ[100]");
+                    str.Add("0kl: k+l=4n: dâŠ¥[100]");
 
                 if (sym.StrSE2v == "a")
-                    str.Add("h0l: h=2n: aÛ[010]");
+                    str.Add("h0l: h=2n: aâŠ¥[010]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("h0l: l=2n: cÛ[010]");
+                    str.Add("h0l: l=2n: câŠ¥[010]");
 
                 if (sym.StrSE2v == "n")
-                    str.Add("h0l: l+h=2n: nÛ[010]");
+                    str.Add("h0l: l+h=2n: nâŠ¥[010]");
 
                 if (sym.StrSE2v == "d")
-                    str.Add("h0l: l+h=4n: dÛ[010]");
+                    str.Add("h0l: l+h=4n: dâŠ¥[010]");
 
                 if (sym.StrSE3v == "a")
-                    str.Add("hk0: h=2n: aÛ[001]");
+                    str.Add("hk0: h=2n: aâŠ¥[001]");
 
                 if (sym.StrSE3v == "b")
-                    str.Add("hk0: k=2n: bÛ[001]");
+                    str.Add("hk0: k=2n: bâŠ¥[001]");
 
                 if (sym.StrSE3v == "n")
-                    str.Add("hk0: h+k=2n: nÛ[001]");
+                    str.Add("hk0: h+k=2n: nâŠ¥[001]");
 
                 if (sym.StrSE3v == "d")
-                    str.Add("hk0: h+k=4n: dÛ[001]");
+                    str.Add("hk0: h+k=4n: dâŠ¥[001]");
 
                 break;
 
@@ -552,43 +552,43 @@ public readonly struct Symmetry
                     str.Add("0k0: k=2n: 2sub1//[010]");
 
                 if (sym.StrSE1v == "a")
-                    str.Add("hk0: h=2n: aÛ[001]");
+                    str.Add("hk0: h=2n: aâŠ¥[001]");
 
                 if (sym.StrSE1v == "a")
-                    str.Add("hk0: k=2n: bÛ[001]");
+                    str.Add("hk0: k=2n: bâŠ¥[001]");
 
                 if (sym.StrSE1v == "n")
-                    str.Add("hk0: h+k=2n: nÛ[001]");
+                    str.Add("hk0: h+k=2n: nâŠ¥[001]");
 
                 if (sym.StrSE2v == "b")
-                    str.Add("h0l: h=2n: aÛ[010]");
+                    str.Add("h0l: h=2n: aâŠ¥[010]");
 
                 if (sym.StrSE2v == "b")
-                    str.Add("0kl: k=2n: bÛ[100]");
+                    str.Add("0kl: k=2n: bâŠ¥[100]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("h0l: l=2n: cÛ[010]");
+                    str.Add("h0l: l=2n: câŠ¥[010]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("h0l: l=2n: cÛ[100]");
+                    str.Add("h0l: l=2n: câŠ¥[100]");
 
                 if (sym.StrSE2v == "n")
-                    str.Add("h0l: h+l=2n: nÛ[010]");
+                    str.Add("h0l: h+l=2n: nâŠ¥[010]");
 
                 if (sym.StrSE2v == "n")
-                    str.Add("0kl: k+l=2n: nÛ[100]");
+                    str.Add("0kl: k+l=2n: nâŠ¥[100]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("hhl: l=2n: cÛ[1-10]");
+                    str.Add("hhl: l=2n: câŠ¥[1-10]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("h-hl: l=2n: cÛ[110]");
+                    str.Add("h-hl: l=2n: câŠ¥[110]");
 
                 if (sym.StrSE3v == "d")
-                    str.Add("hhl: 2h+l=4n: dÛ[1-10]");
+                    str.Add("hhl: 2h+l=4n: dâŠ¥[1-10]");
 
                 if (sym.StrSE3v == "d")
-                    str.Add("h-hl: 2h+l=4n: dÛ[110]");
+                    str.Add("h-hl: 2h+l=4n: dâŠ¥[110]");
 
                 break;
 
@@ -601,22 +601,22 @@ public readonly struct Symmetry
                     str.Add("00l: l=3n: 3sub2//[001]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("h-hl: l=2n: cÛ[-1-10]");
+                    str.Add("h-hl: l=2n: câŠ¥[-1-10]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("0kl: l=2n: cÛ[100]");
+                    str.Add("0kl: l=2n: câŠ¥[100]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("h0l: l=2n: cÛ[010]");
+                    str.Add("h0l: l=2n: câŠ¥[010]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("hhl: l=2n: cÛ[1-10]");
+                    str.Add("hhl: l=2n: câŠ¥[1-10]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("-2hhl: l=2n: cÛ[120]");
+                    str.Add("-2hhl: l=2n: câŠ¥[120]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("h-2hl: l=2n: cÛ[-2-10]");
+                    str.Add("h-2hl: l=2n: câŠ¥[-2-10]");
 
                 break;
 
@@ -637,22 +637,22 @@ public readonly struct Symmetry
                     str.Add("00l: l=6n: 6sub5//[001]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("h-hl: l=2n: cÛ[-1-10]");
+                    str.Add("h-hl: l=2n: câŠ¥[-1-10]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("0kl: l=2n: cÛ[100]");
+                    str.Add("0kl: l=2n: câŠ¥[100]");
 
                 if (sym.StrSE2v == "c")
-                    str.Add("h0l: l=2n: cÛ[010]");
+                    str.Add("h0l: l=2n: câŠ¥[010]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("hhl: l=2n: cÛ[1-10]");
+                    str.Add("hhl: l=2n: câŠ¥[1-10]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("-2hhl: l=2n: cÛ[120]");
+                    str.Add("-2hhl: l=2n: câŠ¥[120]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("h-2hl: l=2n: cÛ[-2-10]");
+                    str.Add("h-2hl: l=2n: câŠ¥[-2-10]");
 
 
                 break;
@@ -695,97 +695,97 @@ public readonly struct Symmetry
                     str.Add("00l: l=4n: 4sub3//[001]");
 
                 if (sym.StrSE1v == "a")
-                    str.Add("hk0: h=2n: aÛ[001]");
+                    str.Add("hk0: h=2n: aâŠ¥[001]");
 
                 if (sym.StrSE1v == "a")
-                    str.Add("0kl: k=2n: bÛ[100]");
+                    str.Add("0kl: k=2n: bâŠ¥[100]");
 
                 if (sym.StrSE1v == "a")
-                    str.Add("h0l: l=2n: cÛ[010]");
+                    str.Add("h0l: l=2n: câŠ¥[010]");
 
                 if (sym.LaueGroupStr == "m3m")
                 {
                     if (sym.StrSE1v == "a")
-                        str.Add("hk0: k=2n: bÛ[001]");
+                        str.Add("hk0: k=2n: bâŠ¥[001]");
 
                     if (sym.StrSE1v == "a")
-                        str.Add("0kl: l=2n: cÛ[100]");
+                        str.Add("0kl: l=2n: câŠ¥[100]");
 
                     if (sym.StrSE1v == "a")
-                        str.Add("h0l: h=2n: aÛ[010]");
+                        str.Add("h0l: h=2n: aâŠ¥[010]");
                 }
 
                 if (sym.StrSE1v == "n")
-                    str.Add("0kl: k+l=2n: nÛ[100]");
+                    str.Add("0kl: k+l=2n: nâŠ¥[100]");
 
                 if (sym.StrSE1v == "n")
-                    str.Add("h0l: h+l=2n: nÛ[010]");
+                    str.Add("h0l: h+l=2n: nâŠ¥[010]");
 
                 if (sym.StrSE1v == "n")
-                    str.Add("hk0: h+k=2n: nÛ[001]");
+                    str.Add("hk0: h+k=2n: nâŠ¥[001]");
 
                 if (sym.StrSE1v == "d")
-                    str.Add("0kl: k+l=4n: dÛ[100]");
+                    str.Add("0kl: k+l=4n: dâŠ¥[100]");
 
                 if (sym.StrSE1v == "d")
-                    str.Add("h0l: h+l=4n: dÛ[010]");
+                    str.Add("h0l: h+l=4n: dâŠ¥[010]");
 
                 if (sym.StrSE1v == "d")
-                    str.Add("hk0: h+k=4n: dÛ[001]");
+                    str.Add("hk0: h+k=4n: dâŠ¥[001]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("h-hl: l=2n: cÛ[110]");
+                    str.Add("h-hl: l=2n: câŠ¥[110]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("hhl: l=2n: cÛ[1-10]");
+                    str.Add("hhl: l=2n: câŠ¥[1-10]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("hk-k: h=2n: aÛ[011]");
+                    str.Add("hk-k: h=2n: aâŠ¥[011]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("hkk: h=2n: aÛ[01-1]");
+                    str.Add("hkk: h=2n: aâŠ¥[01-1]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("hk-h: k=2n: bÛ[101]");
+                    str.Add("hk-h: k=2n: bâŠ¥[101]");
 
                 if (sym.StrSE3v == "c")
-                    str.Add("hkh: k=2n: bÛ[10-1]");
+                    str.Add("hkh: k=2n: bâŠ¥[10-1]");
 
                 if (sym.StrSE3v == "n")
-                    str.Add("hk-k: h-2k=2n: nÛ[011]");
+                    str.Add("hk-k: h-2k=2n: nâŠ¥[011]");
 
                 if (sym.StrSE3v == "n")
-                    str.Add("hkk: h+2k=2n: nÛ[01-1]");
+                    str.Add("hkk: h+2k=2n: nâŠ¥[01-1]");
 
                 if (sym.StrSE3v == "n")
-                    str.Add("hk-h: 2h-k=2n: nÛ[101]");
+                    str.Add("hk-h: 2h-k=2n: nâŠ¥[101]");
 
                 if (sym.StrSE3v == "n")
-                    str.Add("hkh: 2h+k=2n: nÛ[-101]");
+                    str.Add("hkh: 2h+k=2n: nâŠ¥[-101]");
 
                 if (sym.StrSE3v == "n")
-                    str.Add("h-hl: 2h-l=2n: nÛ[110]");
+                    str.Add("h-hl: 2h-l=2n: nâŠ¥[110]");
 
                 if (sym.StrSE3v == "n")
-                    str.Add("hhl: 2h+l=2n: nÛ[1-10]");
+                    str.Add("hhl: 2h+l=2n: nâŠ¥[1-10]");
 
                 if (sym.StrSE3v == "d")
-                    str.Add("hk-k: h-2k=4n: dÛ[011]");
+                    str.Add("hk-k: h-2k=4n: dâŠ¥[011]");
 
                 if (sym.StrSE3v == "d")
-                    str.Add("hkk: h+2k=4n: dÛ[01-1]");
+                    str.Add("hkk: h+2k=4n: dâŠ¥[01-1]");
 
                 if (sym.StrSE3v == "d")
-                    str.Add("hk-h: 2h-k=4n: dÛ[101]");
+                    str.Add("hk-h: 2h-k=4n: dâŠ¥[101]");
 
                 if (sym.StrSE3v == "d")
-                    str.Add("hkh: 2h+k=4n: dÛ[-101]");
+                    str.Add("hkh: 2h+k=4n: dâŠ¥[-101]");
 
                 if (sym.StrSE3v == "d")
-                    str.Add("h-hl: 2h-l=4n: dÛ[110]");
+                    str.Add("h-hl: 2h-l=4n: dâŠ¥[110]");
 
                 if (sym.StrSE3v == "d")
-                    str.Add("hhl: 2h+l=4n: dÛ[1-10]");
+                    str.Add("hhl: 2h+l=4n: dâŠ¥[1-10]");
 
                 break;
         }

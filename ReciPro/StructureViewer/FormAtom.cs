@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+ï»¿using System.Windows.Forms;
 
 namespace ReciPro;
 
@@ -41,7 +41,7 @@ public partial class FormAtom : Form
 
     private void numericUpDownAtomAmbient_ValueChanged(object sender, EventArgs e)
     {
-        if (SkipChange) return;//ƒ[ƒh‚³‚ê‚é‘O‚Í‹A‚é
+        if (SkipChange) return;//ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã‚‹å‰ã¯å¸°ã‚‹
         int colorSource = pictureBoxAtomColor.BackColor.ToArgb();
         float[] matSource = new float[]{
                 (float)numericUpDownAtomTransparency.Value, (float)numericUpDownAtomAmbient.Value, (float)numericUpDownAtomDiffusion.Value,

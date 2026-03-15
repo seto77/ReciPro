@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 
 namespace Crystallography
@@ -29,7 +29,7 @@ namespace Crystallography
             Tilt2Err = tilt2err;
 
             IsTriangleMode = isTriangleMode;
-            if (IsTriangleMode)//O•Óƒ‚[ƒh‚Ì‚Æ‚«
+            if (IsTriangleMode)//ä¸‰è¾ºãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
             {
                 if (L3 < L1 + L2 && L2 < L1 + L3 && L1 < L2 + L3)
                     Theta = Math.Acos((L1 * L1 + L2 * L2 - L3 * L3) / 2 / L1 / L2);
@@ -39,7 +39,7 @@ namespace Crystallography
                     Paintable = false;
                 }
             }
-            else//“ñ•Ó‹²Špƒ‚[ƒh‚Ì‚Æ‚«
+            else//äºŒè¾ºæŒŸè§’ãƒ¢ãƒ¼ãƒ‰ã®ã¨ã
             {
                 if (0 < theta && theta < Math.PI)
                     L3 = Math.Sqrt(L1 * L1 + L2 * L2 - 2 * L1 * L2 * Math.Cos(Theta));
@@ -50,7 +50,7 @@ namespace Crystallography
                 }
             }
 
-            if (Paintable)//•`‰æ‰Â”\‚Å‚ ‚ê‚Î“_‚ÌˆÊ’u‚ğŒˆ’è
+            if (Paintable)//æç”»å¯èƒ½ã§ã‚ã‚Œã°ç‚¹ã®ä½ç½®ã‚’æ±ºå®š
             {
                 P1 = new PointF((float)L1, 0f);
                 P2 = new PointF((float)(L2 * Math.Cos(Theta)), (float)(-L2 * Math.Sin(Theta)));

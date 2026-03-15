@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+癤퓎sing System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 using System.Windows.Forms;
@@ -73,7 +73,7 @@ namespace ReciPro
                 $"{zoneaxis.plane3.h} {zoneaxis.plane3.k} {zoneaxis.plane3.l}",
                 $"{zoneaxis.plane3.d:f3}nm ({(zoneaxis.plane3.d-photo.d3)/photo.d3 * 100:f3}%)",
 
-                $"{zoneaxis.Theta/Math.PI*180:f3}걢 ({(zoneaxis.Theta-photo.Theta)/Math.PI*180:f3}걢)",
+                $"{zoneaxis.Theta/Math.PI*180:f3}째 ({(zoneaxis.Theta-photo.Theta)/Math.PI*180:f3}째)",
 
                 zoneaxis.Phase
             };
@@ -83,9 +83,9 @@ namespace ReciPro
                 $"[{zoneaxes.Za1.u} {zoneaxes.Za1.v} {zoneaxes.Za1.w}]",
                 $"[{zoneaxes.Za2.u} {zoneaxes.Za2.v} {zoneaxes.Za2.w}]",
                 $"[{zoneaxes.Za3.u} {zoneaxes.Za3.v} {zoneaxes.Za3.w}]",
-                $"{zoneaxes.AngleBet12/Math.PI*180:f3}걢 ({(zoneaxes.AngleBet12-obsAngle[0])/Math.PI*180:f3}걢)",
-                $"{zoneaxes.AngleBet23/Math.PI*180:f3}걢 ({(zoneaxes.AngleBet23-obsAngle[1])/Math.PI*180:f3}걢)",
-                $"{zoneaxes.AngleBet31/Math.PI*180:f3}걢 ({(zoneaxes.AngleBet31-obsAngle[2])/Math.PI*180:f3}걢)",
+                $"{zoneaxes.AngleBet12/Math.PI*180:f3}째 ({(zoneaxes.AngleBet12-obsAngle[0])/Math.PI*180:f3}째)",
+                $"{zoneaxes.AngleBet23/Math.PI*180:f3}째 ({(zoneaxes.AngleBet23-obsAngle[1])/Math.PI*180:f3}째)",
+                $"{zoneaxes.AngleBet31/Math.PI*180:f3}째 ({(zoneaxes.AngleBet31-obsAngle[2])/Math.PI*180:f3}째)",
 
                 zoneaxes.Za1.Phase
             };

@@ -604,9 +604,8 @@ public partial class DiffractionPatternControl : UserControl
         scalablePictureBox.PseudoBitmap.Filter3 = new List<bool>(new bool[SrcPixels.Length]);
 
         bool IsXY = false;
+        var (sin, cos) = Math.SinCos(angle);
         double tan = Math.Tan(angle);
-        double sin = Math.Sin(angle);
-        double cos = Math.Cos(angle);
         double wx = Math.Abs(bandWidth / sin);
         double wy = Math.Abs(bandWidth / cos);
         double cx, cy;

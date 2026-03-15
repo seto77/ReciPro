@@ -84,11 +84,9 @@ public class BetheMethod
     public Beam[][] BeamsPED;
     public double SemianglePED { get; set; }
 
-    public bool IsCBED_Busy => (bwCBED is null || bwCBED.IsBusy);
-    public bool IsSTEM_Busy => (bwSTEM is null || bwSTEM.IsBusy);
-    public bool IsEBSD_Busy => (bwEBSD is null || bwEBSD.IsBusy);
-
-
+    public bool IsCBED_Busy => bwCBED is null || bwCBED.IsBusy;
+    public bool IsSTEM_Busy => bwSTEM is null || bwSTEM.IsBusy;
+    public bool IsEBSD_Busy => bwEBSD is null || bwEBSD.IsBusy;
 
     /// <summary>
     /// CBEDのディスク情報 Disks[Z(thickness)_index][G_index], EBSDのときは [Voltage][Z(thickness)_index]
@@ -831,12 +829,11 @@ public class BetheMethod
         //   これにより GC プレッシャーを回避する。
         // ================================================================
         var S = new Complex[bLen * bLen];
+        Span<Complex> betaN = stackalloc Complex[bLen];
         for (int n = 0; n < nAtoms; n++)
         {
             double sig = sigma[n];
-
             // β_n^(j) を原子 n について計算
-            Span<Complex> betaN = stackalloc Complex[bLen];
             for (int j = 0; j < bLen; j++)
             {
                 // μ_n^(j) = Σ_g C_g^(j) × P(n,g)
@@ -1267,8 +1264,8 @@ public class BetheMethod
 
             stepP.ForAll(k =>
             {
-                var rotAngle = 2.0 * Math.PI * k / step;
-                var beamRotation = Matrix3D.Rot(new Vector3DBase(Math.Cos(rotAngle), Math.Sin(rotAngle), 0), SemianglePED);
+                var (sin, cos)=Math.SinCos(2.0 * Math.PI * k / step);
+                var beamRotation = Matrix3D.Rot(new Vector3DBase(cos,sin, 0), SemianglePED);
                 //計算対象のg-Vectorsを決める。
                 var potentialMatrix = Array.Empty<Complex>();
                 var vecK0 = getVecK0(kvac, u0, beamRotation * new Vector3D(0, 0, -1));
@@ -2349,7 +2346,6 @@ public class BetheMethod
 
                             if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
                                 beamsSpan[count++] = (newKey, (float)(gLen * q * q));
-                           
                             //outer.Add((newKey, gLen));
                             outer.Enqueue(newKey, gLen);
                         }
