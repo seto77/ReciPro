@@ -190,6 +190,7 @@ public static partial class NativeWrapper
     /// Native ライブラリが有効かどうか
     /// </summary>
     public static bool Enabled { get; }
+    public static string? LastLoadError { get; private set; }
 
     static NativeWrapper()
     {
@@ -199,15 +200,29 @@ public static partial class NativeWrapper
 
         var appPath = GetExistingNativeLibraryPath();
         if (appPath == null)
+        {
+            LastLoadError = $"Native library not found in base directory: {AppContext.BaseDirectory}";
             Enabled = false;
-        else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
-            Enabled = false;
+
+            //else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
+            //    Enabled = false;
+            return;
+        }
+
         try
         {
             var result = Inverse(2, [new Complex(1, 0), new Complex(0, 0), new Complex(0, 0), new Complex(1, 0)]);
             Enabled = result[0].Real + result[3].Real > 1;
+            if (!Enabled)
+                LastLoadError = "Native self-test returned unexpected result.";
         }
-        catch { Enabled = false; }
+        catch (Exception ex)
+        {
+            LastLoadError = ex.Message;
+            Enabled = false;
+        }
+
+        //catch { Enabled = false; }
     }
 
     private static IntPtr ResolveNativeLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
@@ -216,8 +231,16 @@ public static partial class NativeWrapper
             return IntPtr.Zero;
 
         foreach (var candidate in NativeLibraryCandidates)
-            if (NativeLibrary.TryLoad(candidate, assembly, searchPath, out var handle))
+        {
+            var absolutePath = Path.Combine(AppContext.BaseDirectory, candidate);
+            if (NativeLibrary.TryLoad(absolutePath, out var handle))
                 return handle;
+
+            if (NativeLibrary.TryLoad(candidate, assembly, searchPath, out handle))
+                return handle;
+        }
+
+        LastLoadError = $"Failed to resolve native library. BaseDir={AppContext.BaseDirectory}, Candidates={string.Join(",", NativeLibraryCandidates)}";
 
         return IntPtr.Zero;
     }

@@ -238,8 +238,13 @@ public partial class FormMain : Form
         InitializeComponent();
 
         toolStripMenuItemDisableNative.Enabled = NativeWrapper.Enabled;
-        if(!NativeWrapper.Enabled)
+        if (!NativeWrapper.Enabled)
+        {
             toolStripMenuItemDisableNative.Checked = true;
+            if (!string.IsNullOrWhiteSpace(NativeWrapper.LastLoadError))
+                toolStripMenuItemDisableNative.ToolTipText = NativeWrapper.LastLoadError;
+        }
+
 
         if (DesignMode)
             return;
