@@ -203,9 +203,6 @@ public static partial class NativeWrapper
         {
             LastLoadError = $"Native library not found in base directory: {AppContext.BaseDirectory}";
             Enabled = false;
-
-            //else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
-            //    Enabled = false;
             return;
         }
 
@@ -221,8 +218,6 @@ public static partial class NativeWrapper
             LastLoadError = ex.Message;
             Enabled = false;
         }
-
-        //catch { Enabled = false; }
     }
 
     private static IntPtr ResolveNativeLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)

@@ -15,11 +15,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
 using Col4 = OpenTK.Mathematics.Color4;
 using Vec3 = OpenTK.Mathematics.Vector3d;
-using Microsoft.Win32;
-
 #endregion
 
 namespace ReciPro;
