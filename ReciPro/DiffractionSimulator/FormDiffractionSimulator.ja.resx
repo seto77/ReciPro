@@ -489,10 +489,10 @@
     <value>301, 31</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
-    <value />
+    <value>菊池線のd値の閾値を設定</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
-    <value />
+    <value>菊池線のd値の閾値を設定</value>
   </data>
   <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -725,10 +725,10 @@
     <value>172, 20</value>
   </data>
   <data name="colorControl3D_SpotsNear.ToolTip" xml:space="preserve">
-    <value />
+    <value>背景色を設定</value>
   </data>
   <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
-    <value />
+    <value>背景色を設定</value>
   </data>
   <data name="numericBox3D_SpotRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
@@ -737,10 +737,10 @@
     <value>スポット半径</value>
   </data>
   <data name="numericBox3D_SpotRadius.ToolTip" xml:space="preserve">
-    <value />
+    <value>回折スポットの半径を設定</value>
   </data>
   <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
-    <value />
+    <value>回折スポットの半径を設定</value>
   </data>
   <data name="checkBox3D_ShowIndices.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -898,10 +898,10 @@
     <value>64, 20</value>
   </data>
   <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
-    <value />
+    <value>背景色を設定</value>
   </data>
   <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
-    <value />
+    <value>背景色を設定</value>
   </data>
   <data name="checkBox3D_DirectionGuide.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1063,10 +1063,10 @@
     <value>101, 27</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
-    <value />
+    <value>シミュレーションパターンの解像度を設定</value>
   </data>
   <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
-    <value />
+    <value>シミュレーションパターンの解像度を設定</value>
   </data>
   <data name="buttonResetCenter.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
@@ -1157,10 +1157,10 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxClientHeight.ToolTip" xml:space="preserve">
-    <value />
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
   </data>
   <data name="numericBoxClientHeight.ToolTip1" xml:space="preserve">
-    <value />
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
   </data>
   <data name="numericBoxClientWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1178,10 +1178,10 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxClientWidth.ToolTip" xml:space="preserve">
-    <value />
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
   </data>
   <data name="numericBoxClientWidth.ToolTip1" xml:space="preserve">
-    <value />
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
   </data>
   <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
     <value>150, 24</value>
@@ -1563,10 +1563,10 @@
     <value>126, 27</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value />
+    <value>PEDシミュレーションの半角を設定</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value />
+    <value>PEDシミュレーションの半角を設定</value>
   </data>
   <data name="numericBoxPED_Step.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1581,10 +1581,10 @@
     <value>100, 27</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
-    <value />
+    <value>PEDシミュレーションの分割数を設定</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
-    <value />
+    <value>PEDシミュレーションの分割数を設定</value>
   </data>
   <data name="flowLayoutPanelPED.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 772</value>
@@ -1620,10 +1620,10 @@
     <value>132, 25</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
-    <value />
+    <value>回折波の数を設定</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
-    <value />
+    <value>回折波の数を設定</value>
   </data>
   <data name="numericBoxThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1638,10 +1638,10 @@
     <value>150, 27</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
-    <value />
+    <value>試料の厚さを設定</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
-    <value />
+    <value>試料の厚さを設定</value>
   </data>
   <data name="flowLayoutPanelBethe.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 691</value>
@@ -1719,10 +1719,10 @@
     <value>10, 69</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
-    <value />
+    <value>回折スポットの半径を設定</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
-    <value />
+    <value>回折スポットの半径を設定</value>
   </data>
   <data name="checkBoxDrawSameSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

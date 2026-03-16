@@ -187,7 +187,7 @@
     <value>6</value>
   </data>
   <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
-    <value />
+    <value>Perform global fitting of all spot positions (experimental)</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonGlobalFit.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -248,7 +248,7 @@
     <value>78, 353</value>
   </data>
   <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show detailed parameters of the fitting function</value>
   </data>
   <data name="&gt;&gt;radioButtonMultiGrain.Name" xml:space="preserve">
     <value>radioButtonMultiGrain</value>
@@ -445,8 +445,8 @@
   <data name="buttonFindSpots.Text" xml:space="preserve">
     <value>Detect &amp;&amp; fit spots</value>
   </data>
-  <data name="&gt;&gt;buttonCopyToClipboad.Name" xml:space="preserve">
-    <value>buttonCopyToClipboad</value>
+  <data name="&gt;&gt;buttonCopyToClipboard.Name" xml:space="preserve">
+    <value>buttonCopyToClipboard</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Right click : Zoom out</value>
@@ -515,7 +515,7 @@
     <value>H2</value>
   </data>
   <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
-    <value />
+    <value>Re-fit positions and intensities of all detected spots</value>
   </data>
   <data name="&gt;&gt;buttonSaveToFile.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -566,7 +566,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show index labels on calculated spots</value>
   </data>
   <data name="buttonGlobalFit.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -676,7 +676,7 @@
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 22</value>
   </data>
-  <data name="buttonCopyToClipboad.Text" xml:space="preserve">
+  <data name="buttonCopyToClipboard.Text" xml:space="preserve">
     <value>Copy</value>
   </data>
   <data name="numericBoxSemiangle.Location" type="System.Drawing.Point, System.Drawing">
@@ -713,7 +713,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
-    <value />
+    <value>Search for multiple crystal grain orientations</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
     <value />
@@ -806,7 +806,7 @@
     <value>numericBoxDonut</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show marker symbols on observed spots</value>
   </data>
   <data name="&gt;&gt;copyAsMetafileToolStripMenuItem.Name" xml:space="preserve">
     <value>copyAsMetafileToolStripMenuItem</value>
@@ -866,7 +866,7 @@
     <value>132, 21</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
-    <value />
+    <value>Refine crystal thickness and beam direction</value>
   </data>
   <data name="buttonResetRangeForAllSpots.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1031,7 +1031,7 @@
     <value>backgroundWorkerSpotID</value>
   </data>
   <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
-    <value />
+    <value>Maximum acceptable error for spot matching</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1133,7 +1133,7 @@
     <value>Bloch waves</value>
   </data>
   <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show detailed information for the selected spot</value>
   </data>
   <data name="B0.Width" type="System.Int32, mscorlib">
     <value>45</value>
@@ -1156,7 +1156,7 @@
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;buttonCopyToClipboad.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonCopyToClipboard.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxShowDebyeRing.AutoSize" type="System.Boolean, mscorlib">
@@ -1250,7 +1250,7 @@
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
-    <value />
+    <value>Ignore systematic absences caused by multiple diffraction</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.Type" xml:space="preserve">
     <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -1259,13 +1259,13 @@
     <value>15</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show marker symbols on calculated spots</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem7.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
-    <value />
+    <value>Search for a single crystal grain orientation</value>
   </data>
   <data name="&gt;&gt;numericBoxCameraLength.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1360,7 +1360,7 @@
   <data name="&gt;&gt;buttonDeleteSpot.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="buttonCopyToClipboad.AutoSize" type="System.Boolean, mscorlib">
+  <data name="buttonCopyToClipboard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;buttonDonut.Type" xml:space="preserve">
@@ -1427,7 +1427,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="toolStripMenuItem6.Text" xml:space="preserve">
-    <value>Left click : Select spot</value>
+    <value>Left click : Select a spot</value>
   </data>
   <data name="checkBoxDetailsOfFunction.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -1451,7 +1451,7 @@
     <value>Specify the number of spots to detect</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
-    <value />
+    <value>Pixel size of the detector</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1505,7 +1505,7 @@
     <value />
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
-    <value />
+    <value>Semi-convergence angle for spot identification (mrad)</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>604, 777</value>
@@ -1558,7 +1558,7 @@
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
-    <value />
+    <value>Camera length for the diffraction pattern (mm)</value>
   </data>
   <data name="&gt;&gt;checkBoxIgnoreMultipleDiffraction.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1666,7 +1666,7 @@
     <value>saveAsMetafileToolStripMenuItem</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
-    <value />
+    <value>Reset fitting range for all spots to default</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 10pt</value>
@@ -1680,7 +1680,7 @@
   <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
     <value>Minimum distance between spots in pixel unit</value>
   </data>
-  <data name="&gt;&gt;buttonCopyToClipboad.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonCopyToClipboard.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="θ.Width" type="System.Int32, mscorlib">
@@ -1728,7 +1728,7 @@
   <data name="buttonRefineThicknessAndDirection.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="buttonCopyToClipboad.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonCopyToClipboard.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="dataGridViewGrains.TabIndex" type="System.Int32, mscorlib">
@@ -1801,7 +1801,7 @@
     <value />
   </data>
   <data name="buttonDonut.ToolTip" xml:space="preserve">
-    <value />
+    <value>Apply donut-shaped background subtraction (experimental)</value>
   </data>
   <data name="buttonCopmprehensiveFitting.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1870,7 +1870,7 @@
     <value>66, 27</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show index numbers on observed spots</value>
   </data>
   <data name="numericBoxSemiangle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
@@ -1947,7 +1947,7 @@
   <data name="&gt;&gt;Column2.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonCopyToClipboad.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonCopyToClipboard.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.AutoSize" type="System.Boolean, mscorlib">
@@ -1981,7 +1981,7 @@
     <value>radioButtonPixelSizeUnitReal</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
-    <value>Ctrl + Right click : Remove spot </value>
+    <value>Ctrl + Right click : Remove the spot</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
     <value>Show numbers</value>
@@ -1993,7 +1993,7 @@
     <value>17</value>
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
-    <value />
+    <value>Pixel size unit: inverse nanometers</value>
   </data>
   <data name="checkBoxGuideCircles.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 32</value>
@@ -2032,7 +2032,7 @@
     <value>toolStripMenuItem1</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>Left drag :Translate</value>
+    <value>Left drag : Translate</value>
   </data>
   <data name="numericBoxMaxGrainNum.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2046,7 +2046,7 @@
   <data name="numericBoxMaxNumOfG.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="buttonCopyToClipboad.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonCopyToClipboard.Location" type="System.Drawing.Point, System.Drawing">
     <value>560, 333</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
@@ -2092,7 +2092,7 @@
     <value>22, 17</value>
   </data>
   <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
-    <value />
+    <value>Overlay Debye-Scherrer rings on the pattern</value>
   </data>
   <data name="groupBox2.ToolTip" xml:space="preserve">
     <value />
@@ -2133,7 +2133,7 @@
   <data name="&gt;&gt;buttonIdentifySpots.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="buttonCopyToClipboad.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonCopyToClipboard.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 25</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.ZOrder" xml:space="preserve">
@@ -2172,7 +2172,7 @@ and the fitting range in the right box .</value>
     <value>68</value>
   </data>
   <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
-    <value />
+    <value>Pixel size unit: millimeters</value>
   </data>
   <data name="numericBoxPixelSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>336, 54</value>
@@ -2187,7 +2187,7 @@ and the fitting range in the right box .</value>
     <value>A</value>
   </data>
   <data name="toolStripMenuItem5.Text" xml:space="preserve">
-    <value>Left double click : Add spot </value>
+    <value>Left double click : Add a spot</value>
   </data>
   <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2205,9 +2205,9 @@ and the fitting range in the right box .</value>
     <value>283, 22</value>
   </data>
   <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
-    <value />
+    <value>Maximum number of grain orientations to search</value>
   </data>
-  <data name="buttonCopyToClipboad.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="buttonCopyToClipboard.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="numericBoxMaxNumOfG.Location" type="System.Drawing.Point, System.Drawing">
@@ -2226,7 +2226,7 @@ and the fitting range in the right box .</value>
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show guide circles on the diffraction pattern</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2235,10 +2235,10 @@ and the fitting range in the right box .</value>
     <value>135, 21</value>
   </data>
   <data name="checkBoxShowZoneAxis.ToolTip" xml:space="preserve">
-    <value />
+    <value>Display the zone axis direction on the pattern</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + Left double click: Add direct spot </value>
+    <value>Ctrl + Left double click : Add a direct spot</value>
   </data>
   <data name="&gt;&gt;checkBoxShowCalcSpotLabel.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -2250,7 +2250,7 @@ and the fitting range in the right box .</value>
     <value>R</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
-    <value />
+    <value>Maximum number of Bloch waves</value>
   </data>
   <data name="d.HeaderText" xml:space="preserve">
     <value>d (nm)</value>
@@ -2312,7 +2312,7 @@ and the fitting range in the right box .</value>
   <data name="&gt;&gt;assignedSpotsDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonCopyToClipboad.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonCopyToClipboard.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.TabIndex" type="System.Int32, mscorlib">
@@ -2369,7 +2369,7 @@ and the fitting range in the right box .</value>
   <data name="numericBoxMaxGrainNum.HeaderText" xml:space="preserve">
     <value>Max. No. of grains</value>
   </data>
-  <data name="&gt;&gt;buttonCopyToClipboad.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonCopyToClipboard.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Font" type="System.Drawing.Font, System.Drawing">
@@ -2422,7 +2422,7 @@ and the fitting range in the right box .</value>
     <value>1000, 30</value>
   </data>
   <data name="buttonStop.ToolTip" xml:space="preserve">
-    <value />
+    <value>Stop the current computation</value>
   </data>
   <data name="&gt;&gt;buttonSaveToFile.Name" xml:space="preserve">
     <value>buttonSaveToFile</value>
@@ -2436,7 +2436,7 @@ and the fitting range in the right box .</value>
   <data name="x0.HeaderText" xml:space="preserve">
     <value>x0</value>
   </data>
-  <data name="buttonCopyToClipboad.ToolTip" xml:space="preserve">
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
     <value>Copy the above information to clipboard</value>
   </data>
   <data name="buttonIdentifySpots.Font" type="System.Drawing.Font, System.Drawing">
@@ -2514,7 +2514,7 @@ and the fitting range in the right box .</value>
   <data name="checkBoxShowCalcSpotSymbol.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 21</value>
   </data>
-  <data name="buttonCopyToClipboad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonCopyToClipboard.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.Size" type="System.Drawing.Size, System.Drawing">

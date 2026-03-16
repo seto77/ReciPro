@@ -807,7 +807,7 @@ public partial class FormSpotIDV2 : Form
 
     #region　スポット情報のコピー、保存、読み込み
 
-    private void buttonCopyToClipboad_Click(object sender, EventArgs e)
+    private void buttonCopyToClipboard_Click(object sender, EventArgs e)
     {
         if (dataSet.DataTableSpot.Rows.Count > 1)
         {
@@ -827,7 +827,7 @@ public partial class FormSpotIDV2 : Form
                 sb.Append("\r\n");
             }
 
-            if ((sender as Button).Name.Contains("Clipboad"))
+            if ((sender as Button).Name.Contains("Clipboard"))
                 Clipboard.SetDataObject(sb.ToString());
             else
             {

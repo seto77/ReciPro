@@ -182,7 +182,7 @@
     <value>0</value>
   </data>
   <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
-    <value>10度線の色</value>
+    <value>Color of 10-degree lines</value>
   </data>
   <data name="&gt;&gt;numericBoxTiltY.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -276,8 +276,8 @@
     <value>14, 15</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
-    <value>1度線の色
-「Show 1°line」がチェックされているとき有効</value>
+    <value>Color of 1-degree lines
+Active when "Show 1° line" is checked</value>
   </data>
   <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -334,7 +334,7 @@
     <value>176, 87</value>
   </data>
   <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
-    <value>90度線の色</value>
+    <value>Color of 90-degree lines</value>
   </data>
   <data name="colorControl90DegLine.ToolTip1" xml:space="preserve">
     <value />
@@ -398,7 +398,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>背景色</value>
+    <value>Background color</value>
   </data>
   <data name="colorControlTiltY.TabIndex" type="System.Int32, mscorlib">
     <value>92</value>
@@ -862,7 +862,7 @@
     <value>1, 0, 1, 0</value>
   </data>
   <data name="colorControlHolder.ToolTip" xml:space="preserve">
-    <value>背景色</value>
+    <value>Holder color</value>
   </data>
   <data name="colorControlUniqueAxis.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 3, 0</value>
@@ -1705,7 +1705,7 @@
     <value>5</value>
   </data>
   <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
-    <value>軸表示時の[100], [010], [001]の表示色</value>
+    <value>Color of [100], [010], [001] axis labels</value>
   </data>
   <data name="label16.ToolTip" xml:space="preserve">
     <value />

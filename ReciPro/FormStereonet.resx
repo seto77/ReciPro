@@ -448,7 +448,7 @@ Middle drag: Drag the simulated image
     <value>Equiangler</value>
   </data>
   <data name="radioButtonWulff.ToolTip" xml:space="preserve">
-    <value>Project directions by the Wulf-net (equiangler method)</value>
+    <value>Project directions by the Wulff net (equal-angle method)</value>
   </data>
   <data name="&gt;&gt;radioButtonWulff.Name" xml:space="preserve">
     <value>radioButtonWulff</value>
@@ -1077,7 +1077,7 @@ or the Kikuchi line</value>
     <value>Equator</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
-    <value>Project the latitude and longitude line from the equatorial direction.</value>
+    <value>Project the latitude and longitude lines from the equatorial direction.</value>
   </data>
   <data name="&gt;&gt;radioButtonOutlineEquator.Name" xml:space="preserve">
     <value>radioButtonOutlineEquator</value>
@@ -1143,7 +1143,7 @@ or the Kikuchi line</value>
     <value>Comma</value>
   </data>
   <data name="radioButtonDelimiterComma.ToolTip" xml:space="preserve">
-    <value>Project the latitude and longitude lines from the polar direction.</value>
+    <value>Use comma as delimiter for index output</value>
   </data>
   <data name="&gt;&gt;radioButtonDelimiterComma.Name" xml:space="preserve">
     <value>radioButtonDelimiterComma</value>
@@ -1182,7 +1182,7 @@ or the Kikuchi line</value>
     <value>Space</value>
   </data>
   <data name="radioButtonDelimiterSpace.ToolTip" xml:space="preserve">
-    <value>Project the latitude and longitude lines from the polar direction.</value>
+    <value>Use space as delimiter for index output</value>
   </data>
   <data name="&gt;&gt;radioButtonDelimiterSpace.Name" xml:space="preserve">
     <value>radioButtonDelimiterSpace</value>
@@ -1221,7 +1221,7 @@ or the Kikuchi line</value>
     <value>None</value>
   </data>
   <data name="radioButtonDelimiterNone.ToolTip" xml:space="preserve">
-    <value>Project the latitude and longitude lines from the polar direction.</value>
+    <value>No delimiter for index output</value>
   </data>
   <data name="&gt;&gt;radioButtonDelimiterNone.Name" xml:space="preserve">
     <value>radioButtonDelimiterNone</value>
@@ -1590,7 +1590,7 @@ or the Kikuchi line</value>
     <value>Color</value>
   </data>
   <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value>表示色を変更します。</value>
+    <value>Change display colors</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -3982,7 +3982,7 @@ by two planes</value>
     <value>Range</value>
   </data>
   <data name="radioButtonRange.ToolTip" xml:space="preserve">
-    <value>Set indeices to be displayed within the below range</value>
+    <value>Set indices to be displayed within the below range</value>
   </data>
   <data name="&gt;&gt;radioButtonRange.Name" xml:space="preserve">
     <value>radioButtonRange</value>
@@ -4021,7 +4021,7 @@ by two planes</value>
     <value>Specified</value>
   </data>
   <data name="radioButtonSpecifiedIndices.ToolTip" xml:space="preserve">
-    <value>Specify indeices to be displayed individually</value>
+    <value>Specify indices to be displayed individually</value>
   </data>
   <data name="&gt;&gt;radioButtonSpecifiedIndices.Name" xml:space="preserve">
     <value>radioButtonSpecifiedIndices</value>
@@ -4060,7 +4060,7 @@ by two planes</value>
     <value>Structure factor</value>
   </data>
   <data name="radioButtonHighStructureFactor.ToolTip" xml:space="preserve">
-    <value>Specify indeices to be displayed individually</value>
+    <value>Specify indices to be displayed individually</value>
   </data>
   <data name="radioButtonHighStructureFactor.Visible" type="System.Boolean, mscorlib">
     <value>False</value>

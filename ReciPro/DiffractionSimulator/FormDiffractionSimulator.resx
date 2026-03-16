@@ -1246,7 +1246,7 @@ Kikuchi lines under this value are simulated.
     <value>Line Width</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
-    <value>菊池線の表示幅</value>
+    <value>Line width of Kikuchi lines</value>
   </data>
   <data name="&gt;&gt;label11.Name" xml:space="preserve">
     <value>label11</value>
@@ -1442,7 +1442,7 @@ Kikuchi lines under this value are simulated.
     <value>Line width</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>指数文字列の大きさを表示/設定します</value>
+    <value>Set the size of index strings</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -1628,7 +1628,7 @@ Kikuchi lines under this value are simulated.
     <value>Line Width</value>
   </data>
   <data name="label16.ToolTip" xml:space="preserve">
-    <value>菊池線の表示幅</value>
+    <value>Line width of Kikuchi lines</value>
   </data>
   <data name="&gt;&gt;label16.Name" xml:space="preserve">
     <value>label16</value>
@@ -4877,7 +4877,7 @@ relative intensity</value>
     <value>Rotation sensitivity</value>
   </data>
   <data name="label23.ToolTip" xml:space="preserve">
-    <value>カメラ長を設定/取得</value>
+    <value>Set/get camera length</value>
   </data>
   <data name="&gt;&gt;label23.Name" xml:space="preserve">
     <value>label23</value>
@@ -5033,7 +5033,7 @@ relative intensity</value>
     <value>mm</value>
   </data>
   <data name="label18.ToolTip" xml:space="preserve">
-    <value>カメラ長を設定/取得</value>
+    <value>Set/get camera length</value>
   </data>
   <data name="&gt;&gt;label18.Name" xml:space="preserve">
     <value>label18</value>
@@ -5072,7 +5072,7 @@ relative intensity</value>
     <value>Camera Length 2</value>
   </data>
   <data name="label15.ToolTip" xml:space="preserve">
-    <value>カメラ長を設定/取得</value>
+    <value>Set/get camera length</value>
   </data>
   <data name="&gt;&gt;label15.Name" xml:space="preserve">
     <value>label15</value>
@@ -5444,7 +5444,7 @@ relative intensity</value>
     <value>Save</value>
   </data>
   <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>現在の描画内容をファイルに保存します</value>
+    <value>Save the current image to a file</value>
   </data>
   <data name="saveDetectorAsImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 22</value>
@@ -5516,7 +5516,7 @@ relative intensity</value>
     <value>Copy</value>
   </data>
   <data name="copyImageToClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>現在の描画内容をクリップボードにコピーします</value>
+    <value>Copy the current image to the clipboard</value>
   </data>
   <data name="copyDetectorAsImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 22</value>
@@ -6336,7 +6336,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>Appearance</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
-    <value>指数文字列の大きさを表示/設定します</value>
+    <value>Set the size of index strings</value>
   </data>
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
     <value>label19</value>
@@ -6483,7 +6483,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>Opacity</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
-    <value>指数文字列の大きさを表示/設定します</value>
+    <value>Set the size of index strings</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -6721,7 +6721,7 @@ radius</value>
     <value>Brightness</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
-    <value>指数文字列の大きさを表示/設定します</value>
+    <value>Set the size of index strings</value>
   </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>

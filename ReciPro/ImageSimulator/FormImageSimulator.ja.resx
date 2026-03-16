@@ -308,7 +308,7 @@
 個別に規格化</value>
   </data>
   <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
-    <value />
+    <value>チェックすると、個々の画像で強度を正規化します</value>
   </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 46</value>
@@ -338,10 +338,10 @@
     <value>50, 23</value>
   </data>
   <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
-    <value />
+    <value>シミュレーション画像の最小強度</value>
   </data>
   <data name="numericBoxIntensityMin.ToolTip1" xml:space="preserve">
-    <value />
+    <value>シミュレーション画像の最小強度</value>
   </data>
   <data name="checkBoxIntensityMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -371,10 +371,10 @@
     <value>50, 23</value>
   </data>
   <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
-    <value />
+    <value>シミュレーション画像の最大強度</value>
   </data>
   <data name="numericBoxIntensityMax.ToolTip1" xml:space="preserve">
-    <value />
+    <value>シミュレーション画像の最大強度</value>
   </data>
   <data name="panel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>488, 3</value>
@@ -585,7 +585,7 @@
     <value>単位格子</value>
   </data>
   <data name="checkBoxShowUnitcell.ToolTip" xml:space="preserve">
-    <value />
+    <value>単位格子の輪郭を表示/非表示</value>
   </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 20</value>
@@ -991,10 +991,10 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxSliceThicknessForInelasticSTEM.ToolTip" xml:space="preserve">
-    <value />
+    <value>非弾性散乱用のスライス厚さ</value>
   </data>
   <data name="numericBoxSliceThicknessForInelasticSTEM.ToolTip1" xml:space="preserve">
-    <value />
+    <value>非弾性散乱用のスライス厚さ</value>
   </data>
   <data name="groupBoxHREMoption2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1009,10 +1009,10 @@
     <value>HREM オプション</value>
   </data>
   <data name="radioButtonModeQuasiCoherent.ToolTip" xml:space="preserve">
-    <value />
+    <value>線形イメージモデル</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
-    <value />
+    <value>TCCモデル</value>
   </data>
   <data name="label32.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1153,10 +1153,10 @@
     <value>128, 23</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
-    <value />
+    <value>環状検出器の外径 (mrad)</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
-    <value />
+    <value>環状検出器の外径 (mrad)</value>
   </data>
   <data name="numericBoxEffectiveSourceSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1213,10 +1213,10 @@
     <value>128, 23</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
-    <value />
+    <value>環状検出器の内径 (mrad)</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
-    <value />
+    <value>環状検出器の内径 (mrad)</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1556,7 +1556,7 @@
     <value>70, 24</value>
   </data>
   <data name="radioButtonHRTEM.ToolTip" xml:space="preserve">
-    <value />
+    <value>HRTEM像をシミュレーション</value>
   </data>
   <data name="radioButtonSTEM.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1607,10 +1607,10 @@
     <value>154, 23</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
-    <value />
+    <value>試料の厚さ</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
-    <value />
+    <value>試料の厚さ</value>
   </data>
   <data name="checkBoxPreset.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

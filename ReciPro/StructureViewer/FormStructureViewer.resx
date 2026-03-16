@@ -145,7 +145,7 @@
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="numericBoxCellTransrationB.ToolTip1" xml:space="preserve">
+  <data name="numericBoxCellTranslationB.ToolTip1" xml:space="preserve">
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
@@ -227,7 +227,7 @@
     <value>Use material color</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
-    <value />
+    <value>Opacity of the bounding planes (0=transparent, 1=opaque)</value>
   </data>
   <data name="numericBoxLegendSize.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -469,7 +469,7 @@
   <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboBoxRenderignQuality.Items" xml:space="preserve">
+  <data name="comboBoxRenderingQuality.Items" xml:space="preserve">
     <value>Low</value>
   </data>
   <data name="colorControlCellPlaneC.AutoSize" type="System.Boolean, mscorlib">
@@ -568,7 +568,7 @@
   <data name="numericBoxClientWidth.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCellTransrationB.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxCellTranslationB.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxClientHeight.Size" type="System.Drawing.Size, System.Drawing">
@@ -613,7 +613,7 @@
   <data name="numericBoxARange.ToolTip1" xml:space="preserve">
     <value>Set a drawing range</value>
   </data>
-  <data name="numericBoxCellTransrationA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxCellTranslationA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericUpDownSubCellA.ToolTip" xml:space="preserve">
@@ -634,7 +634,7 @@
   <data name="buttonSetRange2.Text" xml:space="preserve">
     <value>(±¾ ±¾ ±¾)</value>
   </data>
-  <data name="numericBoxCellTransrationC.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationC.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="tabPageProjection.TabIndex" type="System.Int32, mscorlib">
@@ -668,7 +668,7 @@
     <value>saveImageToolStripMenuItem1</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set display range to +/-1/4 of each unit cell axis</value>
   </data>
   <data name="&gt;&gt;numericBoxLightSize.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -679,7 +679,7 @@
   <data name="checkBoxCellShowPlane.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="numericBoxCellTransrationB.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCellTranslationB.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 25</value>
   </data>
   <data name="checkBoxCellShowEdge.ToolTip" xml:space="preserve">
@@ -703,7 +703,7 @@
   <data name="&gt;&gt;checkBoxHideAllAtoms.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="numericBoxCellTransrationC.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCellTranslationC.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
   <data name="&gt;&gt;radioButtonProjectionCenter1.Name" xml:space="preserve">
@@ -718,7 +718,7 @@
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 82</value>
   </data>
-  <data name="numericBoxCellTransrationB.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationB.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
@@ -794,7 +794,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="checkBoxShowSubCell.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show subdivisions within the unit cell</value>
   </data>
   <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -814,7 +814,7 @@
   <data name="&gt;&gt;checkBoxDepthFadingOut.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBoxRenderignQuality.Type" xml:space="preserve">
+  <data name="&gt;&gt;comboBoxRenderingQuality.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripButtonLightDirection.Name" xml:space="preserve">
@@ -883,7 +883,7 @@
   <data name="&gt;&gt;radioButtonProjectionCenterCustom.Name" xml:space="preserve">
     <value>radioButtonProjectionCenterCustom</value>
   </data>
-  <data name="numericBoxCellTransrationA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxCellTranslationA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="colorControlCellPlaneC.Location" type="System.Drawing.Point, System.Drawing">
@@ -913,7 +913,7 @@
   <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="numericBoxCellTransrationA.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxCellTranslationA.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonSetRange2.Font" type="System.Drawing.Font, System.Drawing">
@@ -934,7 +934,7 @@
   <data name="&gt;&gt;tabPageBoundUnitcell.Parent" xml:space="preserve">
     <value>tabControlBoundOption</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationB.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCellTranslationB.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="trackBarCellEdgeWidth.AutoSize" type="System.Boolean, mscorlib">
@@ -946,7 +946,7 @@
   <data name="&gt;&gt;numericUpDownSubCellA.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="numericBoxCellTransrationA.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationA.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="colorControlCellPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
@@ -1114,7 +1114,7 @@
   <data name="dataGridViewTextBoxColumn3.Width" type="System.Int32, mscorlib">
     <value>125</value>
   </data>
-  <data name="comboBoxRenderignQuality.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="comboBoxRenderingQuality.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 21</value>
   </data>
   <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
@@ -1132,7 +1132,7 @@
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="numericBoxCellTransrationC.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxCellTranslationC.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
@@ -1168,7 +1168,7 @@
   <data name="&gt;&gt;saveLightToolStripMenuItem.Name" xml:space="preserve">
     <value>saveLightToolStripMenuItem</value>
   </data>
-  <data name="numericBoxCellTransrationC.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCellTranslationC.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
@@ -1192,7 +1192,7 @@
   <data name="labelGraphicsDriver.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 0</value>
   </data>
-  <data name="numericBoxCellTransrationB.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCellTranslationB.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
   <data name="&gt;&gt;label5.Type" xml:space="preserve">
@@ -1276,7 +1276,7 @@
   <data name="numericBoxClientHeight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxCellTransrationC.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCellTranslationC.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 25</value>
   </data>
   <data name="comboBoxProjectionMode.Items" xml:space="preserve">
@@ -1309,7 +1309,7 @@
   <data name="&gt;&gt;comboBoxTransparency.Name" xml:space="preserve">
     <value>comboBoxTransparency</value>
   </data>
-  <data name="&gt;&gt;tabPageCoordinateInfromatin.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCoordinateInformation.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.TextFont" type="System.Drawing.Font, System.Drawing">
@@ -1393,8 +1393,8 @@
         AAAASUVORK5CYII=
 </value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationC.Name" xml:space="preserve">
-    <value>numericBoxCellTransrationC</value>
+  <data name="&gt;&gt;numericBoxCellTranslationC.Name" xml:space="preserve">
+    <value>numericBoxCellTranslationC</value>
   </data>
   <data name="&gt;&gt;splitContainer2.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1543,7 +1543,7 @@
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 17</value>
   </data>
-  <data name="comboBoxRenderignQuality.Items1" xml:space="preserve">
+  <data name="comboBoxRenderingQuality.Items1" xml:space="preserve">
     <value>Middle</value>
   </data>
   <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -1582,7 +1582,7 @@
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageCoordinateInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
@@ -1688,7 +1688,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set display center to origin (0, 0, 0)</value>
   </data>
   <data name="tabPageMisc.Text" xml:space="preserve">
     <value>Misc</value>
@@ -1696,10 +1696,10 @@
   <data name="&gt;&gt;tabPageMisc.Name" xml:space="preserve">
     <value>tabPageMisc</value>
   </data>
-  <data name="&gt;&gt;comboBoxRenderignQuality.Parent" xml:space="preserve">
+  <data name="&gt;&gt;comboBoxRenderingQuality.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="numericBoxCellTransrationB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxCellTranslationB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;checkBoxUnitCell.Name" xml:space="preserve">
@@ -1846,7 +1846,7 @@
   <data name="colorControlLabelColor.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxCellTransrationC.ToolTip" xml:space="preserve">
+  <data name="numericBoxCellTranslationC.ToolTip" xml:space="preserve">
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
   <data name="comboBoxTransparency.Items1" xml:space="preserve">
@@ -1891,7 +1891,7 @@
   <data name="buttonCenter2.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 46</value>
   </data>
-  <data name="numericBoxCellTransrationA.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxCellTranslationA.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 26</value>
   </data>
   <data name="labelOpenGLversion.ToolTip" xml:space="preserve">
@@ -1916,7 +1916,7 @@
     <value>tabPageAtom</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Parent" xml:space="preserve">
-    <value>tabPageCoordinateInfromatin</value>
+    <value>tabPageCoordinateInformation</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1936,10 +1936,10 @@
   <data name="tabPageBounds.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="comboBoxRenderignQuality.ToolTip" xml:space="preserve">
+  <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">
     <value>Set rendering quality</value>
   </data>
-  <data name="numericBoxCellTransrationB.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxCellTranslationB.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
@@ -1952,7 +1952,7 @@
     <value />
   </data>
   <data name="checkBoxClipObjects.ToolTip" xml:space="preserve">
-    <value />
+    <value>Clip atoms and bonds at the boundary planes</value>
   </data>
   <data name="radioButtonProjectionCenterCustom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2029,7 +2029,7 @@
   <data name="numericBoxBCenter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericBoxCellTransrationC.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxCellTranslationC.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="&gt;&gt;checkBoxUnitCell.Parent" xml:space="preserve">
@@ -2141,8 +2141,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="toolStripButtonLegend.ToolTipText" xml:space="preserve">
-    <value>Legend
-凡例を表示します</value>
+    <value>Show/hide legend</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2475,7 +2474,7 @@ indivisual setting)</value>
   <data name="&gt;&gt;radioButtonCellPlaneColorEach.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxCellTransrationC.HeaderText" xml:space="preserve">
+  <data name="numericBoxCellTranslationC.HeaderText" xml:space="preserve">
     <value>c</value>
   </data>
   <data name="numericUpDownSubCellA.Size" type="System.Drawing.Size, System.Drawing">
@@ -2493,13 +2492,13 @@ indivisual setting)</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Structure Viewer</value>
   </data>
-  <data name="numericBoxCellTransrationC.ToolTip1" xml:space="preserve">
+  <data name="numericBoxCellTranslationC.ToolTip1" xml:space="preserve">
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
     <value>If checked, legend letters are edged with white color</value>
   </data>
-  <data name="numericBoxCellTransrationA.ToolTip1" xml:space="preserve">
+  <data name="numericBoxCellTranslationA.ToolTip1" xml:space="preserve">
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
   <data name="dataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
@@ -2613,7 +2612,7 @@ indivisual setting)</value>
   <data name="comboBoxTransparency.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 21</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageCoordinateInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>628, 240</value>
   </data>
   <data name="&gt;&gt;radioButtonUseMaterialColor.ZOrder" xml:space="preserve">
@@ -2670,7 +2669,7 @@ indivisual setting)</value>
   <data name="splitContainer2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationC.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCellTranslationC.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
@@ -2695,10 +2694,10 @@ indivisual setting)</value>
     <value>7, 3, 0, 3</value>
   </data>
   <data name="checkBoxHideAllAtoms.ToolTip" xml:space="preserve">
-    <value />
+    <value>Hide all atoms from the 3D view</value>
   </data>
-  <data name="&gt;&gt;tabPageCoordinateInfromatin.Name" xml:space="preserve">
-    <value>tabPageCoordinateInfromatin</value>
+  <data name="&gt;&gt;tabPageCoordinateInformation.Name" xml:space="preserve">
+    <value>tabPageCoordinateInformation</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 23</value>
@@ -2722,7 +2721,7 @@ indivisual setting)</value>
     <value>3</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show bonded atoms even if they are outside the boundaries</value>
   </data>
   <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
     <value>Main Image</value>
@@ -2730,7 +2729,7 @@ indivisual setting)</value>
   <data name="radioButtonCellPlaneColorEach.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;comboBoxRenderignQuality.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;comboBoxRenderingQuality.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="numericBoxClientHeight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -2761,7 +2760,7 @@ indivisual setting)</value>
     <value>257, 22</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.ToolTip" xml:space="preserve">
-    <value />
+    <value>Opacity of lattice planes (0=transparent, 1=opaque)</value>
   </data>
   <data name="&gt;&gt;atomCoordinateTable1.Type" xml:space="preserve">
     <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -2838,7 +2837,7 @@ indivisual setting)</value>
   <data name="&gt;&gt;numericBoxClientHeight.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="numericBoxCellTransrationA.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCellTranslationA.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Type" xml:space="preserve">
@@ -2887,7 +2886,7 @@ indivisual setting)</value>
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="buttonSetRange3.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set display range to +/-1 of each unit cell axis</value>
   </data>
   <data name="numericBoxARange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3091,7 +3090,7 @@ indivisual setting)</value>
     <value>4, 26</value>
   </data>
   <data name="buttonSetRange1.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set display range to +/-1/2 of each unit cell axis</value>
   </data>
   <data name="labelGraphicsCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 13</value>
@@ -3274,7 +3273,7 @@ indivisual setting)</value>
   <data name="tabPageLatticePlane.Text" xml:space="preserve">
     <value>Lattice Plane</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationB.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCellTranslationB.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;buttonCenter2.ZOrder" xml:space="preserve">
@@ -3382,7 +3381,7 @@ indivisual setting)</value>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationA.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCellTranslationA.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
   </data>
   <data name="toolStripButtonLikeVesta.Size" type="System.Drawing.Size, System.Drawing">
@@ -3430,7 +3429,7 @@ indivisual setting)</value>
   <data name="colorControlCellEdgeB.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="comboBoxRenderignQuality.TabIndex" type="System.Int32, mscorlib">
+  <data name="comboBoxRenderingQuality.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
@@ -3458,7 +3457,7 @@ indivisual setting)</value>
     <value>radioButtonCellPlaneColorAll</value>
   </data>
   <data name="radioButtonProjectionCenterCustom.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use custom projection center coordinates</value>
   </data>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3478,7 +3477,7 @@ indivisual setting)</value>
   <data name="numericUpDownSubCellA.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationC.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCellTranslationC.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
@@ -3527,10 +3526,9 @@ indivisual setting)</value>
     <value>Set a color of the cell planes individually</value>
   </data>
   <data name="toolStripButtonLightDirection.ToolTipText" xml:space="preserve">
-    <value>Light direction
-光源の方向を設定する球を表示します</value>
+    <value>Show/hide the light direction control sphere</value>
   </data>
-  <data name="comboBoxRenderignQuality.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="comboBoxRenderingQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 25</value>
   </data>
   <data name="&gt;&gt;saveLightToolStripMenuItem.Type" xml:space="preserve">
@@ -3602,7 +3600,7 @@ indivisual setting)</value>
   <data name="buttonSetCenter3.Text" xml:space="preserve">
     <value>(½ ½ ½)</value>
   </data>
-  <data name="numericBoxCellTransrationA.HeaderText" xml:space="preserve">
+  <data name="numericBoxCellTranslationA.HeaderText" xml:space="preserve">
     <value>a</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
@@ -3716,7 +3714,7 @@ indivisual setting)</value>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>571, 182</value>
   </data>
-  <data name="comboBoxRenderignQuality.Items2" xml:space="preserve">
+  <data name="comboBoxRenderingQuality.Items2" xml:space="preserve">
     <value>High</value>
   </data>
   <data name="buttonSetRange4.TabIndex" type="System.Int32, mscorlib">
@@ -3753,7 +3751,7 @@ indivisual setting)</value>
     <value>True</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set display center to (1/4, 1/4, 1/4)</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4152,11 +4150,11 @@ indivisual setting)</value>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxCellTransrationB.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxCellTranslationB.Location" type="System.Drawing.Point, System.Drawing">
     <value>169, 26</value>
   </data>
   <data name="buttonSetRange2.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set display range to +/-3/4 of each unit cell axis</value>
   </data>
   <data name="numericBoxClientHeight.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -4275,12 +4273,11 @@ indivisual setting)</value>
   <data name="&gt;&gt;colorControlCellPlaneC.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationB.Name" xml:space="preserve">
-    <value>numericBoxCellTransrationB</value>
+  <data name="&gt;&gt;numericBoxCellTranslationB.Name" xml:space="preserve">
+    <value>numericBoxCellTranslationB</value>
   </data>
   <data name="toolStripButtonCrystalAxes.ToolTipText" xml:space="preserve">
-    <value>Crystal Axes
-結晶軸の向きを表示します</value>
+    <value>Show/hide crystal axes indicator</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -4357,7 +4354,7 @@ indivisual setting)</value>
   <data name="&gt;&gt;buttonSetCenter1.Name" xml:space="preserve">
     <value>buttonSetCenter1</value>
   </data>
-  <data name="numericBoxCellTransrationA.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 12.1875pt</value>
   </data>
   <data name="&gt;&gt;radioButtonProjectionCenter1.Parent" xml:space="preserve">
@@ -4390,13 +4387,13 @@ indivisual setting)</value>
   <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
     <value>If checked, drawing bounds are defined based on crystal planes as follows</value>
   </data>
-  <data name="numericBoxCellTransrationB.ToolTip" xml:space="preserve">
+  <data name="numericBoxCellTranslationB.ToolTip" xml:space="preserve">
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="numericBoxCellTransrationA.ToolTip" xml:space="preserve">
+  <data name="numericBoxCellTranslationA.ToolTip" xml:space="preserve">
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
@@ -4453,7 +4450,7 @@ indivisual setting)</value>
   <data name="label5.ToolTip" xml:space="preserve">
     <value>Objects closer than this value are completely opaque</value>
   </data>
-  <data name="numericBoxCellTransrationB.HeaderText" xml:space="preserve">
+  <data name="numericBoxCellTranslationB.HeaderText" xml:space="preserve">
     <value>b</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdgeA.Parent" xml:space="preserve">
@@ -4495,7 +4492,7 @@ indivisual setting)</value>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
     <value>208</value>
   </data>
-  <data name="numericBoxCellTransrationC.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxCellTranslationC.Location" type="System.Drawing.Point, System.Drawing">
     <value>239, 26</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.Location" type="System.Drawing.Point, System.Drawing">
@@ -4612,7 +4609,7 @@ indivisual setting)</value>
   <data name="&gt;&gt;numericBoxLegendSize.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.Text" xml:space="preserve">
+  <data name="tabPageCoordinateInformation.Text" xml:space="preserve">
     <value>Coordinates</value>
   </data>
   <data name="numericBoxLightSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -4684,7 +4681,7 @@ indivisual setting)</value>
   <data name="buttonSetRange4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;tabPageCoordinateInfromatin.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCoordinateInformation.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="flowLayoutPanelLegend.TabIndex" type="System.Int32, mscorlib">
@@ -4810,7 +4807,7 @@ indivisual setting)</value>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
   </data>
-  <data name="numericBoxCellTransrationC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxCellTranslationC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;printDocument1.Type" xml:space="preserve">
@@ -4912,7 +4909,7 @@ indivisual setting)</value>
   <data name="copyLegendToolStripMenuItem1.Text" xml:space="preserve">
     <value>Legend</value>
   </data>
-  <data name="numericBoxCellTransrationA.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxCellTranslationA.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
@@ -4924,7 +4921,7 @@ indivisual setting)</value>
   <data name="checkBoxLabelWhiteEdge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationA.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCellTranslationA.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
@@ -4999,7 +4996,7 @@ indivisual setting)</value>
   <data name="&gt;&gt;tabPageBounds.Name" xml:space="preserve">
     <value>tabPageBounds</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.ToolTip" xml:space="preserve">
+  <data name="tabPageCoordinateInformation.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -5056,7 +5053,7 @@ indivisual setting)</value>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
   </data>
-  <data name="numericBoxCellTransrationA.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCellTranslationA.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel6.Parent" xml:space="preserve">
@@ -5095,7 +5092,7 @@ indivisual setting)</value>
   <data name="&gt;&gt;numericBoxARange.Name" xml:space="preserve">
     <value>numericBoxARange</value>
   </data>
-  <data name="numericBoxCellTransrationB.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 12.1875pt</value>
   </data>
   <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
@@ -5186,7 +5183,7 @@ indivisual setting)</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set display center to (1/2, 1/2, 1/2)</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Name" xml:space="preserve">
     <value>numericBoxBCenter</value>
@@ -5206,7 +5203,7 @@ indivisual setting)</value>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationB.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCellTranslationB.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
   </data>
   <data name="&gt;&gt;toolStripButtonLightDirection.Type" xml:space="preserve">
@@ -5277,7 +5274,7 @@ even if they are outside the boundaries</value>
     <value>0</value>
   </data>
   <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
-    <value>単位格子の表示方法を設定します。</value>
+    <value>Configure unit cell display settings</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedDepthCueingFar.Type" xml:space="preserve">
     <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -5391,12 +5388,12 @@ even if they are outside the boundaries</value>
     <value>numericBoxProjectionCenterZ</value>
   </data>
   <data name="buttonSetRange4.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set display range to +/-1.5 of each unit cell axis</value>
   </data>
   <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="numericBoxCellTransrationA.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCellTranslationA.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 25</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
@@ -5462,7 +5459,7 @@ even if they are outside the boundaries</value>
   <data name="tabPageBoundPlane.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxCellTransrationB.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCellTranslationB.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
@@ -5471,7 +5468,7 @@ even if they are outside the boundaries</value>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>622, 27</value>
   </data>
-  <data name="numericBoxCellTransrationC.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxCellTranslationC.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlCellPlaneA.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -5531,7 +5528,7 @@ even if they are outside the boundaries</value>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="numericBoxCellTransrationC.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 12.1875pt</value>
   </data>
   <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
@@ -5645,7 +5642,7 @@ even if they are outside the boundaries</value>
   <data name="numericBoxBRange.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="&gt;&gt;tabPageCoordinateInfromatin.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCoordinateInformation.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="toolStripButtonLikeVesta.Text" xml:space="preserve">
@@ -5669,7 +5666,7 @@ even if they are outside the boundaries</value>
   <data name="labelOpenGLversion.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 13</value>
   </data>
-  <data name="numericBoxCellTransrationB.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxCellTranslationB.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="radioButtonProjectionCenter1.Location" type="System.Drawing.Point, System.Drawing">
@@ -5699,7 +5696,7 @@ even if they are outside the boundaries</value>
   <data name="numericBoxBRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationC.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCellTranslationC.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
   </data>
   <data name="&gt;&gt;labelOpenGLversion.ZOrder" xml:space="preserve">
@@ -5769,7 +5766,7 @@ even if they are outside the boundaries</value>
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show/hide the bounding planes of the crystal</value>
   </data>
   <data name="toolStripButtonCrystalAxes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5793,7 +5790,7 @@ even if they are outside the boundaries</value>
     <value>numericBoxACenter</value>
   </data>
   <data name="radioButtonProjectionCenter2.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set projection center to (1/2, 1/2, 1/2)</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
@@ -5810,7 +5807,7 @@ even if they are outside the boundaries</value>
   <data name="colorControlCellEdge.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationA.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCellTranslationA.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBoxShowUnitCell.Parent" xml:space="preserve">
@@ -5876,8 +5873,8 @@ even if they are outside the boundaries</value>
   <data name="colorControlCellPlaneA.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;numericBoxCellTransrationA.Name" xml:space="preserve">
-    <value>numericBoxCellTransrationA</value>
+  <data name="&gt;&gt;numericBoxCellTranslationA.Name" xml:space="preserve">
+    <value>numericBoxCellTranslationA</value>
   </data>
   <data name="numericBoxBRange.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
@@ -5919,7 +5916,7 @@ even if they are outside the boundaries</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="radioButtonProjectionCenter1.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set projection center to origin</value>
   </data>
   <data name="buttonSetRange3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -5945,10 +5942,10 @@ even if they are outside the boundaries</value>
   <data name="&gt;&gt;saveImageToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBoxRenderignQuality.Name" xml:space="preserve">
-    <value>comboBoxRenderignQuality</value>
+  <data name="&gt;&gt;comboBoxRenderingQuality.Name" xml:space="preserve">
+    <value>comboBoxRenderingQuality</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.TabIndex" type="System.Int32, mscorlib">
+  <data name="tabPageCoordinateInformation.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="colorControlCellPlaneB.FooterText" xml:space="preserve">
@@ -5964,7 +5961,7 @@ even if they are outside the boundaries</value>
     <value>3, 46</value>
   </data>
   <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>現在の描画イメージを保存します。</value>
+    <value>Save the current image to a file</value>
   </data>
   <data name="numericBoxARange.HeaderText" xml:space="preserve">
     <value>±</value>

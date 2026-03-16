@@ -52,7 +52,7 @@ namespace ReciPro
             panel2 = new System.Windows.Forms.Panel();
             buttonDeleteSpot = new System.Windows.Forms.Button();
             buttonClearSpots = new System.Windows.Forms.Button();
-            buttonCopyToClipboad = new System.Windows.Forms.Button();
+            buttonCopyToClipboard = new System.Windows.Forms.Button();
             buttonSaveToFile = new System.Windows.Forms.Button();
             checkBoxDetailsOfFunction = new System.Windows.Forms.CheckBox();
             checkBoxDetailsOfSpot = new System.Windows.Forms.CheckBox();
@@ -241,7 +241,7 @@ namespace ReciPro
             resources.ApplyResources(panel2, "panel2");
             panel2.Controls.Add(buttonDeleteSpot);
             panel2.Controls.Add(buttonClearSpots);
-            panel2.Controls.Add(buttonCopyToClipboad);
+            panel2.Controls.Add(buttonCopyToClipboard);
             panel2.Controls.Add(buttonSaveToFile);
             panel2.Controls.Add(checkBoxDetailsOfFunction);
             panel2.Controls.Add(checkBoxDetailsOfSpot);
@@ -280,13 +280,13 @@ namespace ReciPro
             buttonClearSpots.UseVisualStyleBackColor = false;
             buttonClearSpots.Click += buttonClearSpots_Click;
             // 
-            // buttonCopyToClipboad
+            // buttonCopyToClipboard
             // 
-            resources.ApplyResources(buttonCopyToClipboad, "buttonCopyToClipboad");
-            buttonCopyToClipboad.Name = "buttonCopyToClipboad";
-            toolTip.SetToolTip(buttonCopyToClipboad, resources.GetString("buttonCopyToClipboad.ToolTip"));
-            buttonCopyToClipboad.UseVisualStyleBackColor = true;
-            buttonCopyToClipboad.Click += buttonCopyToClipboad_Click;
+            resources.ApplyResources(buttonCopyToClipboard, "buttonCopyToClipboard");
+            buttonCopyToClipboard.Name = "buttonCopyToClipboard";
+            toolTip.SetToolTip(buttonCopyToClipboard, resources.GetString("buttonCopyToClipboard.ToolTip"));
+            buttonCopyToClipboard.UseVisualStyleBackColor = true;
+            buttonCopyToClipboard.Click += buttonCopyToClipboard_Click;
             // 
             // buttonSaveToFile
             // 
@@ -294,7 +294,7 @@ namespace ReciPro
             buttonSaveToFile.Name = "buttonSaveToFile";
             toolTip.SetToolTip(buttonSaveToFile, resources.GetString("buttonSaveToFile.ToolTip"));
             buttonSaveToFile.UseVisualStyleBackColor = true;
-            buttonSaveToFile.Click += buttonCopyToClipboad_Click;
+            buttonSaveToFile.Click += buttonCopyToClipboard_Click;
             // 
             // checkBoxDetailsOfFunction
             // 
@@ -1244,7 +1244,7 @@ namespace ReciPro
         private NumericBox numericBoxNearestNeighbor;
         private NumericBox numericBoxNumberOfSpots;
         public NumericBox numericBoxFittingRange;
-        private System.Windows.Forms.Button buttonCopyToClipboad;
+        private System.Windows.Forms.Button buttonCopyToClipboard;
         private System.Windows.Forms.Button buttonFindSpots;
         private System.Windows.Forms.Button buttonGlobalFit;
         private System.Windows.Forms.Button buttonResetRangeForAllSpots;

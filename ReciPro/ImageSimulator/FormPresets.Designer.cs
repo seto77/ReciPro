@@ -96,7 +96,7 @@
             buttonDelete.Size = new System.Drawing.Size(55, 27);
             buttonDelete.TabIndex = 8;
             buttonDelete.Text = "Delete";
-            toolTip.SetToolTip(buttonDelete, "Delete the seletcted preset");
+            toolTip.SetToolTip(buttonDelete, "Delete the selected preset");
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += buttonDelete_Click;
             // 

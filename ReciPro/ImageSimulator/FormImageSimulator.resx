@@ -1294,7 +1294,7 @@
     <value>Elastic</value>
   </data>
   <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
-    <value>Display elastic electrons  only </value>
+    <value>Display elastic electrons only</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM_target_elas.Name" xml:space="preserve">
     <value>radioButtonSTEM_target_elas</value>
@@ -2331,7 +2331,7 @@
     <value>Thickness (nm)</value>
   </data>
   <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
-    <value>Create a series of images with different depths</value>
+    <value>Create a series of images with different thicknesses</value>
   </data>
   <data name="&gt;&gt;checkBoxSerialThickness.Name" xml:space="preserve">
     <value>checkBoxSerialThickness</value>
@@ -2370,7 +2370,7 @@
     <value>Defocus (nm)</value>
   </data>
   <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
-    <value>Create a series of images with different thicknesses</value>
+    <value>Create a series of images with different defocus values</value>
   </data>
   <data name="&gt;&gt;checkBoxSerialDefocus.Name" xml:space="preserve">
     <value>checkBoxSerialDefocus</value>

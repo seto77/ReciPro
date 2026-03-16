@@ -370,7 +370,7 @@
     <value>描画範囲を単位格子で指定</value>
   </data>
   <data name="radioButtonBoundUnitCell.ToolTip" xml:space="preserve">
-    <value />
+    <value>チェックすると、描画範囲が単位格子に基づいて定義されます</value>
   </data>
   <data name="radioButtonBoundPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -385,7 +385,7 @@
     <value>描画範囲を結晶面で指定</value>
   </data>
   <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
-    <value />
+    <value>チェックすると、描画範囲が結晶面に基づいて定義されます</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>667, 25</value>
@@ -520,10 +520,10 @@
     <value>321, 0</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
-    <value />
+    <value>格子面の不透明度 (1: 不透明, 0: 透明)</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
-    <value />
+    <value>格子面の不透明度 (1: 不透明, 0: 透明)</value>
   </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
     <value>422, 27</value>
@@ -615,50 +615,50 @@
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>461, 26</value>
   </data>
-  <data name="numericBoxCellTransrationC.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
-  <data name="numericBoxCellTransrationC.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationC.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCellTransrationC.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationC.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCellTransrationC.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxCellTranslationC.ToolTip" xml:space="preserve">
+    <value>単位格子を並進 (分率座標)</value>
   </data>
-  <data name="numericBoxCellTransrationC.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="numericBoxCellTranslationC.ToolTip1" xml:space="preserve">
+    <value>単位格子を並進 (分率座標)</value>
   </data>
-  <data name="numericBoxCellTransrationB.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
-  <data name="numericBoxCellTransrationB.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationB.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCellTransrationB.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationB.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCellTransrationB.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxCellTranslationB.ToolTip" xml:space="preserve">
+    <value>単位格子を並進 (分率座標)</value>
   </data>
-  <data name="numericBoxCellTransrationB.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="numericBoxCellTranslationB.ToolTip1" xml:space="preserve">
+    <value>単位格子を並進 (分率座標)</value>
   </data>
-  <data name="numericBoxCellTransrationA.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
-  <data name="numericBoxCellTransrationA.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationA.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCellTransrationA.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCellTranslationA.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCellTransrationA.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxCellTranslationA.ToolTip" xml:space="preserve">
+    <value>単位格子を並進 (分率座標)</value>
   </data>
-  <data name="numericBoxCellTransrationA.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="numericBoxCellTranslationA.ToolTip1" xml:space="preserve">
+    <value>単位格子を並進 (分率座標)</value>
   </data>
   <data name="checkBoxShowSubCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -802,16 +802,16 @@
   <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
     <value>673, 230</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tabPageCoordinateInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageCoordinateInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageCoordinateInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>673, 230</value>
   </data>
-  <data name="tabPageCoordinateInfromatin.Text" xml:space="preserve">
+  <data name="tabPageCoordinateInformation.Text" xml:space="preserve">
     <value>配位情報</value>
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
@@ -947,7 +947,7 @@
     <value>128, 26</value>
   </data>
   <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
-    <value />
+    <value>透過モードを設定</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
     <value>386, 61</value>
@@ -962,13 +962,13 @@
     <value>奥行き方向によるフェードアウト効果</value>
   </data>
   <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
-    <value />
+    <value>チェックすると、奥のオブジェクトがフェードアウトします</value>
   </data>
-  <data name="comboBoxRenderignQuality.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="comboBoxRenderingQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 26</value>
   </data>
-  <data name="comboBoxRenderignQuality.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">
+    <value>レンダリング品質を設定</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>描画品質</value>
@@ -983,7 +983,7 @@
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.ToolTip" xml:space="preserve">
-    <value />
+    <value>近いオブジェクトを不透明に</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 22</value>
@@ -995,7 +995,7 @@
     <value>最遠</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value />
+    <value>この値より遠いオブジェクトは完全に透明になります</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7.2000003pt</value>
@@ -1007,7 +1007,7 @@
     <value>Segoe UI Symbol, 7.8pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.ToolTip" xml:space="preserve">
-    <value />
+    <value>遠いオブジェクトを透明に</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 49</value>
@@ -1019,7 +1019,7 @@
     <value>最近</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value />
+    <value>この値より近いオブジェクトは完全に不透明になります</value>
   </data>
   <data name="tabPageProjection.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -1058,7 +1058,7 @@
     <value>ラベルを表示</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value />
+    <value>凡例にラベルを表示</value>
   </data>
   <data name="radioButtonUseMaterialColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>229, 23</value>
@@ -1070,7 +1070,7 @@
     <value>原子色を使う</value>
   </data>
   <data name="radioButtonUseMaterialColor.ToolTip" xml:space="preserve">
-    <value />
+    <value>マテリアルカラーをラベル色に使用</value>
   </data>
   <data name="radioButtonLabelUseFixedColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>229, 48</value>
@@ -1082,7 +1082,7 @@
     <value>固定色を使う</value>
   </data>
   <data name="radioButtonLabelUseFixedColor.ToolTip" xml:space="preserve">
-    <value />
+    <value>固定色をラベル色に使用</value>
   </data>
   <data name="numericBoxLabelSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -1103,10 +1103,10 @@
     <value>87, 27</value>
   </data>
   <data name="numericBoxLabelSize.ToolTip" xml:space="preserve">
-    <value />
+    <value>凡例の文字サイズ</value>
   </data>
   <data name="numericBoxLabelSize.ToolTip1" xml:space="preserve">
-    <value />
+    <value>凡例の文字サイズ</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>134, 50</value>
@@ -1118,7 +1118,7 @@
     <value>白く縁取り</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value />
+    <value>チェックすると、凡例の文字に白い縁取りが付きます</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
@@ -1146,7 +1146,7 @@
     <value>元素でまとめる</value>
   </data>
   <data name="checkBoxGroupByElement.ToolTip" xml:space="preserve">
-    <value />
+    <value>チェックすると、同じ元素が凡例でグループ化されます</value>
   </data>
   <data name="numericBoxLegendSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -1161,10 +1161,10 @@
     <value>凡例のサイズ</value>
   </data>
   <data name="numericBoxLegendSize.ToolTip" xml:space="preserve">
-    <value />
+    <value>凡例の表示サイズ (右)</value>
   </data>
   <data name="numericBoxLegendSize.ToolTip1" xml:space="preserve">
-    <value />
+    <value>凡例の表示サイズ (右)</value>
   </data>
   <data name="numericBoxAxesSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -1185,10 +1185,10 @@
     <value>133, 27</value>
   </data>
   <data name="numericBoxAxesSize.ToolTip" xml:space="preserve">
-    <value />
+    <value>結晶軸の表示サイズ (左下)</value>
   </data>
   <data name="numericBoxAxesSize.ToolTip1" xml:space="preserve">
-    <value />
+    <value>結晶軸の表示サイズ (左下)</value>
   </data>
   <data name="numericBoxLightSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 7.8pt</value>
@@ -1203,10 +1203,10 @@
     <value>光源球のサイズ</value>
   </data>
   <data name="numericBoxLightSize.ToolTip" xml:space="preserve">
-    <value />
+    <value>光源球の表示サイズ (左上)</value>
   </data>
   <data name="numericBoxLightSize.ToolTip1" xml:space="preserve">
-    <value />
+    <value>光源球の表示サイズ (左上)</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>光源, 結晶軸, 凡例の設定</value>

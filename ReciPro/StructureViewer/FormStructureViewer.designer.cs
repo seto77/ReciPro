@@ -92,9 +92,9 @@
             colorControlCellEdgeC = new ColorControl();
             label8 = new System.Windows.Forms.Label();
             trackBarCellEdgeWidth = new System.Windows.Forms.TrackBar();
-            numericBoxCellTransrationC = new NumericBox();
-            numericBoxCellTransrationB = new NumericBox();
-            numericBoxCellTransrationA = new NumericBox();
+            numericBoxCellTranslationC = new NumericBox();
+            numericBoxCellTranslationB = new NumericBox();
+            numericBoxCellTranslationA = new NumericBox();
             checkBoxShowSubCell = new System.Windows.Forms.CheckBox();
             checkBoxCellShowEdge = new System.Windows.Forms.CheckBox();
             numericUpDownSubCellB = new System.Windows.Forms.NumericUpDown();
@@ -108,7 +108,7 @@
             tabPageLatticePlane = new System.Windows.Forms.TabPage();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxLatticePlaneOpacity = new NumericBox();
-            tabPageCoordinateInfromatin = new System.Windows.Forms.TabPage();
+            tabPageCoordinateInformation = new System.Windows.Forms.TabPage();
             atomCoordinateTable1 = new AtomCoordinateTable();
             tabPageInformation = new System.Windows.Forms.TabPage();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
@@ -132,7 +132,7 @@
             comboBoxTransparency = new System.Windows.Forms.ComboBox();
             checkBoxDepthFadingOut = new System.Windows.Forms.CheckBox();
             groupBox3 = new System.Windows.Forms.GroupBox();
-            comboBoxRenderignQuality = new System.Windows.Forms.ComboBox();
+            comboBoxRenderingQuality = new System.Windows.Forms.ComboBox();
             groupBoxDepthCueing = new System.Windows.Forms.GroupBox();
             trackBarAdvancedDepthCueingNear = new TrackBarAdvanced();
             label6 = new System.Windows.Forms.Label();
@@ -223,7 +223,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellA).BeginInit();
             tabPageLatticePlane.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
-            tabPageCoordinateInfromatin.SuspendLayout();
+            tabPageCoordinateInformation.SuspendLayout();
             tabPageInformation.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
             tabPageProjection.SuspendLayout();
@@ -325,7 +325,7 @@
             tabControl.Controls.Add(tabPageBond);
             tabControl.Controls.Add(tabPageUnitCell);
             tabControl.Controls.Add(tabPageLatticePlane);
-            tabControl.Controls.Add(tabPageCoordinateInfromatin);
+            tabControl.Controls.Add(tabPageCoordinateInformation);
             tabControl.Controls.Add(tabPageInformation);
             tabControl.Controls.Add(tabPageProjection);
             tabControl.Controls.Add(tabPageMisc);
@@ -718,9 +718,9 @@
             groupBoxShowUnitCell.BackColor = System.Drawing.SystemColors.Control;
             groupBoxShowUnitCell.Controls.Add(flowLayoutPanel6);
             groupBoxShowUnitCell.Controls.Add(flowLayoutPanel5);
-            groupBoxShowUnitCell.Controls.Add(numericBoxCellTransrationC);
-            groupBoxShowUnitCell.Controls.Add(numericBoxCellTransrationB);
-            groupBoxShowUnitCell.Controls.Add(numericBoxCellTransrationA);
+            groupBoxShowUnitCell.Controls.Add(numericBoxCellTranslationC);
+            groupBoxShowUnitCell.Controls.Add(numericBoxCellTranslationB);
+            groupBoxShowUnitCell.Controls.Add(numericBoxCellTranslationA);
             groupBoxShowUnitCell.Controls.Add(checkBoxShowSubCell);
             groupBoxShowUnitCell.Controls.Add(checkBoxCellShowEdge);
             groupBoxShowUnitCell.Controls.Add(numericUpDownSubCellB);
@@ -968,53 +968,53 @@
             trackBarCellEdgeWidth.Value = 1;
             trackBarCellEdgeWidth.ValueChanged += unitCell_PropertyChanged;
             // 
-            // numericBoxCellTransrationC
+            // numericBoxCellTranslationC
             // 
-            resources.ApplyResources(numericBoxCellTransrationC, "numericBoxCellTransrationC");
-            numericBoxCellTransrationC.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTransrationC.DecimalPlaces = 2;
-            numericBoxCellTransrationC.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTransrationC.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTransrationC.Maximum = 10D;
-            numericBoxCellTransrationC.Minimum = -10D;
-            numericBoxCellTransrationC.Name = "numericBoxCellTransrationC";
-            numericBoxCellTransrationC.ShowUpDown = true;
-            numericBoxCellTransrationC.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCellTransrationC, resources.GetString("numericBoxCellTransrationC.ToolTip"));
-            numericBoxCellTransrationC.UpDown_Increment = 0.1D;
-            numericBoxCellTransrationC.ValueChanged += unitCell_PropertyChanged;
+            resources.ApplyResources(numericBoxCellTranslationC, "numericBoxCellTranslationC");
+            numericBoxCellTranslationC.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellTranslationC.DecimalPlaces = 2;
+            numericBoxCellTranslationC.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellTranslationC.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellTranslationC.Maximum = 10D;
+            numericBoxCellTranslationC.Minimum = -10D;
+            numericBoxCellTranslationC.Name = "numericBoxCellTranslationC";
+            numericBoxCellTranslationC.ShowUpDown = true;
+            numericBoxCellTranslationC.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxCellTranslationC, resources.GetString("numericBoxCellTranslationC.ToolTip"));
+            numericBoxCellTranslationC.UpDown_Increment = 0.1D;
+            numericBoxCellTranslationC.ValueChanged += unitCell_PropertyChanged;
             // 
-            // numericBoxCellTransrationB
+            // numericBoxCellTranslationB
             // 
-            resources.ApplyResources(numericBoxCellTransrationB, "numericBoxCellTransrationB");
-            numericBoxCellTransrationB.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTransrationB.DecimalPlaces = 2;
-            numericBoxCellTransrationB.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTransrationB.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTransrationB.Maximum = 10D;
-            numericBoxCellTransrationB.Minimum = -10D;
-            numericBoxCellTransrationB.Name = "numericBoxCellTransrationB";
-            numericBoxCellTransrationB.ShowUpDown = true;
-            numericBoxCellTransrationB.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCellTransrationB, resources.GetString("numericBoxCellTransrationB.ToolTip"));
-            numericBoxCellTransrationB.UpDown_Increment = 0.1D;
-            numericBoxCellTransrationB.ValueChanged += unitCell_PropertyChanged;
+            resources.ApplyResources(numericBoxCellTranslationB, "numericBoxCellTranslationB");
+            numericBoxCellTranslationB.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellTranslationB.DecimalPlaces = 2;
+            numericBoxCellTranslationB.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellTranslationB.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellTranslationB.Maximum = 10D;
+            numericBoxCellTranslationB.Minimum = -10D;
+            numericBoxCellTranslationB.Name = "numericBoxCellTranslationB";
+            numericBoxCellTranslationB.ShowUpDown = true;
+            numericBoxCellTranslationB.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxCellTranslationB, resources.GetString("numericBoxCellTranslationB.ToolTip"));
+            numericBoxCellTranslationB.UpDown_Increment = 0.1D;
+            numericBoxCellTranslationB.ValueChanged += unitCell_PropertyChanged;
             // 
-            // numericBoxCellTransrationA
+            // numericBoxCellTranslationA
             // 
-            resources.ApplyResources(numericBoxCellTransrationA, "numericBoxCellTransrationA");
-            numericBoxCellTransrationA.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTransrationA.DecimalPlaces = 2;
-            numericBoxCellTransrationA.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTransrationA.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTransrationA.Maximum = 10D;
-            numericBoxCellTransrationA.Minimum = -10D;
-            numericBoxCellTransrationA.Name = "numericBoxCellTransrationA";
-            numericBoxCellTransrationA.ShowUpDown = true;
-            numericBoxCellTransrationA.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCellTransrationA, resources.GetString("numericBoxCellTransrationA.ToolTip"));
-            numericBoxCellTransrationA.UpDown_Increment = 0.1D;
-            numericBoxCellTransrationA.ValueChanged += unitCell_PropertyChanged;
+            resources.ApplyResources(numericBoxCellTranslationA, "numericBoxCellTranslationA");
+            numericBoxCellTranslationA.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellTranslationA.DecimalPlaces = 2;
+            numericBoxCellTranslationA.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellTranslationA.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellTranslationA.Maximum = 10D;
+            numericBoxCellTranslationA.Minimum = -10D;
+            numericBoxCellTranslationA.Name = "numericBoxCellTranslationA";
+            numericBoxCellTranslationA.ShowUpDown = true;
+            numericBoxCellTranslationA.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxCellTranslationA, resources.GetString("numericBoxCellTranslationA.ToolTip"));
+            numericBoxCellTranslationA.UpDown_Increment = 0.1D;
+            numericBoxCellTranslationA.ValueChanged += unitCell_PropertyChanged;
             // 
             // checkBoxShowSubCell
             // 
@@ -1128,12 +1128,12 @@
             numericBoxLatticePlaneOpacity.Value = 0.5D;
             numericBoxLatticePlaneOpacity.ValueChanged += numericBoxLatticePlaneOpacity_ValueChanged;
             // 
-            // tabPageCoordinateInfromatin
+            // tabPageCoordinateInformation
             // 
-            resources.ApplyResources(tabPageCoordinateInfromatin, "tabPageCoordinateInfromatin");
-            tabPageCoordinateInfromatin.Controls.Add(atomCoordinateTable1);
-            tabPageCoordinateInfromatin.Name = "tabPageCoordinateInfromatin";
-            toolTip.SetToolTip(tabPageCoordinateInfromatin, resources.GetString("tabPageCoordinateInfromatin.ToolTip"));
+            resources.ApplyResources(tabPageCoordinateInformation, "tabPageCoordinateInformation");
+            tabPageCoordinateInformation.Controls.Add(atomCoordinateTable1);
+            tabPageCoordinateInformation.Name = "tabPageCoordinateInformation";
+            toolTip.SetToolTip(tabPageCoordinateInformation, resources.GetString("tabPageCoordinateInformation.ToolTip"));
             // 
             // atomCoordinateTable1
             // 
@@ -1360,21 +1360,21 @@
             // groupBox3
             // 
             resources.ApplyResources(groupBox3, "groupBox3");
-            groupBox3.Controls.Add(comboBoxRenderignQuality);
+            groupBox3.Controls.Add(comboBoxRenderingQuality);
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
             toolTip.SetToolTip(groupBox3, resources.GetString("groupBox3.ToolTip"));
             // 
-            // comboBoxRenderignQuality
+            // comboBoxRenderingQuality
             // 
-            resources.ApplyResources(comboBoxRenderignQuality, "comboBoxRenderignQuality");
-            comboBoxRenderignQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxRenderignQuality.DropDownWidth = 100;
-            comboBoxRenderignQuality.FormattingEnabled = true;
-            comboBoxRenderignQuality.Items.AddRange(new object[] { resources.GetString("comboBoxRenderignQuality.Items"), resources.GetString("comboBoxRenderignQuality.Items1"), resources.GetString("comboBoxRenderignQuality.Items2") });
-            comboBoxRenderignQuality.Name = "comboBoxRenderignQuality";
-            toolTip.SetToolTip(comboBoxRenderignQuality, resources.GetString("comboBoxRenderignQuality.ToolTip"));
-            comboBoxRenderignQuality.SelectedIndexChanged += comboBoxRenderignQuality_SelectedIndexChanged;
+            resources.ApplyResources(comboBoxRenderingQuality, "comboBoxRenderingQuality");
+            comboBoxRenderingQuality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxRenderingQuality.DropDownWidth = 100;
+            comboBoxRenderingQuality.FormattingEnabled = true;
+            comboBoxRenderingQuality.Items.AddRange(new object[] { resources.GetString("comboBoxRenderingQuality.Items"), resources.GetString("comboBoxRenderingQuality.Items1"), resources.GetString("comboBoxRenderingQuality.Items2") });
+            comboBoxRenderingQuality.Name = "comboBoxRenderingQuality";
+            toolTip.SetToolTip(comboBoxRenderingQuality, resources.GetString("comboBoxRenderingQuality.ToolTip"));
+            comboBoxRenderingQuality.SelectedIndexChanged += comboBoxRenderingQuality_SelectedIndexChanged;
             // 
             // groupBoxDepthCueing
             // 
@@ -1979,7 +1979,7 @@
             tabPageLatticePlane.ResumeLayout(false);
             tabPageLatticePlane.PerformLayout();
             flowLayoutPanel3.ResumeLayout(false);
-            tabPageCoordinateInfromatin.ResumeLayout(false);
+            tabPageCoordinateInformation.ResumeLayout(false);
             tabPageInformation.ResumeLayout(false);
             tabPageInformation.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
@@ -2107,9 +2107,9 @@
         private ColorControl colorControlCellEdgeC;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TrackBar trackBarCellEdgeWidth;
-        private NumericBox numericBoxCellTransrationC;
-        private NumericBox numericBoxCellTransrationB;
-        private NumericBox numericBoxCellTransrationA;
+        private NumericBox numericBoxCellTranslationC;
+        private NumericBox numericBoxCellTranslationB;
+        private NumericBox numericBoxCellTranslationA;
         private System.Windows.Forms.CheckBox checkBoxShowSubCell;
         private System.Windows.Forms.CheckBox checkBoxCellShowEdge;
         private System.Windows.Forms.NumericUpDown numericUpDownSubCellB;
@@ -2123,7 +2123,7 @@
         private System.Windows.Forms.TabPage tabPageLatticePlane;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private NumericBox numericBoxLatticePlaneOpacity;
-        private System.Windows.Forms.TabPage tabPageCoordinateInfromatin;
+        private System.Windows.Forms.TabPage tabPageCoordinateInformation;
         private AtomCoordinateTable atomCoordinateTable1;
         private System.Windows.Forms.TabPage tabPageInformation;
         private System.Windows.Forms.SplitContainer splitContainer2;
@@ -2153,7 +2153,7 @@
         private System.Windows.Forms.ComboBox comboBoxTransparency;
         private System.Windows.Forms.CheckBox checkBoxDepthFadingOut;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBoxRenderignQuality;
+        private System.Windows.Forms.ComboBox comboBoxRenderingQuality;
         private System.Windows.Forms.GroupBox groupBoxDepthCueing;
         private TrackBarAdvanced trackBarAdvancedDepthCueingNear;
         private System.Windows.Forms.Label label6;

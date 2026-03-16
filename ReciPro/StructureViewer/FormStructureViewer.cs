@@ -252,9 +252,9 @@ public partial class FormStructureViewer : Form
         labelOpenGLversion.Text += GLControlAlpha.VersionStr;
 
         if (GLControlAlpha.GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
-            comboBoxRenderignQuality.SelectedIndex = 1;
+            comboBoxRenderingQuality.SelectedIndex = 1;
         else
-            comboBoxRenderignQuality.SelectedIndex = 0;
+            comboBoxRenderingQuality.SelectedIndex = 0;
 
         Sphere.DefaultDictionary.Clear();
         Cylinder.DefaultDictionary.Clear();
@@ -775,7 +775,7 @@ public partial class FormStructureViewer : Form
             GLObjects.Remove(GLObjects.First(obj => obj.Tag is cellID));
         }
 
-        var t = axes * (new V3(numericBoxCellTransrationA.Value, numericBoxCellTransrationB.Value, numericBoxCellTransrationC.Value)) + shift;
+        var t = axes * (new V3(numericBoxCellTranslationA.Value, numericBoxCellTranslationB.Value, numericBoxCellTranslationC.Value)) + shift;
         V3 zero = new(0), c0 = axes.Column0, c1 = axes.Column1, c2 = axes.Column2;
 
         //エッジの描画
@@ -1664,15 +1664,15 @@ public partial class FormStructureViewer : Form
     #endregion
 
     #region 描画品質を決定
-    private void comboBoxRenderignQuality_SelectedIndexChanged(object sender, EventArgs e)
+    private void comboBoxRenderingQuality_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (comboBoxRenderignQuality.SelectedIndex == 0)
+        if (comboBoxRenderingQuality.SelectedIndex == 0)
         {
             Cone.Default = (1, 16);
             Cylinder.Default = (1, 16);
             Sphere.DefaultSlices = 3;
         }
-        else if (comboBoxRenderignQuality.SelectedIndex == 1)
+        else if (comboBoxRenderingQuality.SelectedIndex == 1)
         {
             Cone.Default = (1, 24);
             Cylinder.Default = (1, 24);
@@ -1889,9 +1889,9 @@ public partial class FormStructureViewer : Form
         if (SkipEvent) return;
 
         SkipEvent = true;
-        numericBoxCellTransrationA.Value = 0.5 - numericBoxProjectionCenterX.Value;
-        numericBoxCellTransrationB.Value = 0.5 - numericBoxProjectionCenterY.Value;
-        numericBoxCellTransrationC.Value = 0.5 - numericBoxProjectionCenterZ.Value;
+        numericBoxCellTranslationA.Value = 0.5 - numericBoxProjectionCenterX.Value;
+        numericBoxCellTranslationB.Value = 0.5 - numericBoxProjectionCenterY.Value;
+        numericBoxCellTranslationC.Value = 0.5 - numericBoxProjectionCenterZ.Value;
         SkipEvent = false;
 
         SetGLObjects();

@@ -178,7 +178,7 @@
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value />
+    <value>Large-Angle CBED mode</value>
   </data>
   <data name="trackBarIntensityBrightnessMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -266,7 +266,7 @@
     <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set a range and step of the sample thicknesses</value>
   </data>
   <data name="numericBoxThread.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -380,7 +380,7 @@
     <value>77, 0</value>
   </data>
   <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
-    <value>Select a sample thicknes to be displayed.</value>
+    <value>Select a sample thickness to be displayed.</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -413,7 +413,7 @@
     <value>groupBoxOutput</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
-    <value />
+    <value>Maximum semi-convergence angle (mrad)</value>
   </data>
   <data name="&gt;&gt;trackBarGamma.Type" xml:space="preserve">
     <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -539,7 +539,7 @@
     <value />
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set a range and step of the sample thicknesses</value>
   </data>
   <data name="&gt;&gt;buttonExecute.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -623,7 +623,7 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set a range and step of the sample thicknesses</value>
   </data>
   <data name="comboBoxScale.Items2" xml:space="preserve">
     <value>Spectrum</value>
@@ -905,7 +905,7 @@
     <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="trackBarGamma.ToolTip" xml:space="preserve">
-    <value>Set an gamma value.
+    <value>Set a gamma value.
 The larger this value is, the brighter the outer disk appears to be.</value>
   </data>
   <data name="numericBoxThicknessEnd.TextFont" type="System.Drawing.Font, System.Drawing">
@@ -930,7 +930,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="comboBoxScale.Items3" xml:space="preserve">
-    <value>FIre</value>
+    <value>Fire</value>
   </data>
   <data name="&gt;&gt;label13.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1059,7 +1059,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>Eigenproblem with MKL lib.</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set a range and step of the sample thicknesses</value>
   </data>
   <data name="&gt;&gt;buttonExecute.Name" xml:space="preserve">
     <value>buttonExecute</value>
@@ -1146,7 +1146,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set a range and step of the sample thicknesses</value>
   </data>
   <data name="numericBoxAlphaMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1240,7 +1240,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>57, 21</value>
   </data>
   <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
-    <value />
+    <value>Draw circles showing the boundary of each diffraction disk</value>
   </data>
   <data name="buttonExecute.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1349,7 +1349,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>3, 5, 3, 5</value>
   </data>
   <data name="radioButtonCBED.ToolTip" xml:space="preserve">
-    <value />
+    <value>Convergent Beam Electron Diffraction mode</value>
   </data>
   <data name="radioButtonLACBED.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1623,7 +1623,7 @@ All solvers produce the same results, but at different computational speeds.</va
     <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set a range and step of the sample thicknesses</value>
   </data>
   <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
     <value>for individual disks.</value>

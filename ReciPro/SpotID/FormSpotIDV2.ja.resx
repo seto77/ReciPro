@@ -158,19 +158,19 @@
   <data name="buttonClearSpots.Text" xml:space="preserve">
     <value>全削除</value>
   </data>
-  <data name="buttonCopyToClipboad.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonCopyToClipboard.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="buttonCopyToClipboad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonCopyToClipboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="buttonCopyToClipboad.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonCopyToClipboard.Location" type="System.Drawing.Point, System.Drawing">
     <value>544, 334</value>
   </data>
-  <data name="buttonCopyToClipboad.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonCopyToClipboard.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 28</value>
   </data>
-  <data name="buttonCopyToClipboad.Text" xml:space="preserve">
+  <data name="buttonCopyToClipboard.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
   <data name="buttonSaveToFile.Font" type="System.Drawing.Font, System.Drawing">
@@ -198,7 +198,7 @@
     <value>関数形状の詳細</value>
   </data>
   <data name="checkBoxDetailsOfFunction.ToolTip" xml:space="preserve">
-    <value />
+    <value>フィッティング関数の詳細パラメータを表示</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Location" type="System.Drawing.Point, System.Drawing">
     <value>233, 337</value>
@@ -210,7 +210,7 @@
     <value>選択スポットの詳細</value>
   </data>
   <data name="checkBoxDetailsOfSpot.ToolTip" xml:space="preserve">
-    <value />
+    <value>選択スポットの詳細情報を表示</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -228,7 +228,7 @@
     <value>シンボルを表示</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.ToolTip" xml:space="preserve">
-    <value />
+    <value>観測スポットにマーカーシンボルを表示</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -246,7 +246,7 @@
     <value>ラベルを表示</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.ToolTip" xml:space="preserve">
-    <value />
+    <value>観測スポットに番号を表示</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -265,7 +265,7 @@
 再フィッティング</value>
   </data>
   <data name="buttonCopmprehensiveFitting.ToolTip" xml:space="preserve">
-    <value />
+    <value>全検出スポットの位置と強度を再フィッティング</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -283,7 +283,7 @@
     <value>全スポットに適用</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
-    <value />
+    <value>全スポットのフィッティング範囲をリセット</value>
   </data>
   <data name="numericBoxNumberOfSpots.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -346,7 +346,7 @@
     <value>638, 337</value>
   </data>
   <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
-    <value />
+    <value>全スポット位置のグローバルフィッティング（実験的）</value>
   </data>
   <data name="numericBoxDonut.Location" type="System.Drawing.Point, System.Drawing">
     <value>726, 360</value>
@@ -364,7 +364,7 @@
     <value>613, 359</value>
   </data>
   <data name="buttonDonut.ToolTip" xml:space="preserve">
-    <value />
+    <value>ドーナツ型バックグラウンド除去（実験的）</value>
   </data>
   <data name="dataGridViewSpots.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 33</value>
@@ -422,10 +422,10 @@
     <value>スポット同定</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
-    <value />
+    <value>スポット同定用の半収束角 (mrad)</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
-    <value />
+    <value>ブロッホ波の最大数</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -437,16 +437,16 @@
     <value>130, 27</value>
   </data>
   <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
-    <value />
+    <value>スポットマッチングの許容誤差</value>
   </data>
   <data name="numericBoxMaxGrainNum.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 97</value>
   </data>
   <data name="numericBoxMaxGrainNum.ToolTip" xml:space="preserve">
-    <value />
+    <value>探索する結晶粒方位の最大数</value>
   </data>
   <data name="checkBoxShowZoneAxis.ToolTip" xml:space="preserve">
-    <value />
+    <value>パターン上に晶帯軸方向を表示</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -464,7 +464,7 @@
     <value>シンボルを表示</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.ToolTip" xml:space="preserve">
-    <value />
+    <value>計算スポットにマーカーシンボルを表示</value>
   </data>
   <data name="radioButtonMultiGrain.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -482,7 +482,7 @@
     <value>複数結晶として解析</value>
   </data>
   <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
-    <value />
+    <value>複数結晶粒の方位を探索</value>
   </data>
   <data name="radioButtonSingleGrain.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -497,7 +497,7 @@
     <value>単結晶として解析</value>
   </data>
   <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
-    <value />
+    <value>単一結晶粒の方位を探索</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -515,7 +515,7 @@
     <value>ラベルを表示</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
-    <value />
+    <value>計算スポットにインデックスラベルを表示</value>
   </data>
   <data name="dataGridViewGrains.Size" type="System.Drawing.Size, System.Drawing">
     <value>311, 111</value>
@@ -539,19 +539,19 @@
     <value>多重反射を無視する</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
-    <value />
+    <value>多重回折による系統消滅を無視</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
-    <value />
+    <value>試料厚さとビーム方向を精密化</value>
   </data>
   <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonStop.ToolTip" xml:space="preserve">
-    <value />
+    <value>現在の計算を中止</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 594</value>
@@ -563,10 +563,10 @@
     <value />
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
-    <value />
+    <value>ピクセルサイズの単位: 1/nm</value>
   </data>
   <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
-    <value />
+    <value>ピクセルサイズの単位: mm</value>
   </data>
   <data name="numericBoxCameraLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -575,7 +575,7 @@
     <value>カメラ長</value>
   </data>
   <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
-    <value />
+    <value>回折パターンのカメラ長 (mm)</value>
   </data>
   <data name="numericBoxPixelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -584,7 +584,7 @@
     <value>ピクセルサイズ</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
-    <value />
+    <value>検出器のピクセルサイズ</value>
   </data>
   <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>279, 78</value>
@@ -611,13 +611,13 @@
     <value>ガイド円を表示</value>
   </data>
   <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
-    <value />
+    <value>回折パターンにガイド円を表示</value>
   </data>
   <data name="checkBoxShowDebyeRing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
-    <value />
+    <value>パターンにデバイリングを重ねて表示</value>
   </data>
   <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
     <value />

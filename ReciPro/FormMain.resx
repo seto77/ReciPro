@@ -233,7 +233,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
-    <value>Open "Symmetry Information" functon</value>
+    <value>Open "Symmetry Information" function</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneL.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -1110,7 +1110,7 @@ Information</value>
     <value>94, 25</value>
   </data>
   <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
-    <value>Set crystal plane</value>
+    <value>Set crystal axis</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 24</value>
@@ -1212,7 +1212,7 @@ Information</value>
     <value>0, 2, 0, 0</value>
   </data>
   <data name="buttonDuplicate.ToolTip" xml:space="preserve">
-    <value>Delete the selected crystal</value>
+    <value>Duplicate the selected crystal</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
     <value>284, 6</value>
@@ -1454,7 +1454,7 @@ Information</value>
  Viewer</value>
   </data>
   <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
-    <value>Set crystal plane</value>
+    <value>Set crystal axis</value>
   </data>
   <data name="groupBoxCurrentDirection.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 187</value>
@@ -1622,7 +1622,7 @@ Information</value>
     <value />
   </data>
   <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
-    <value>If check this and click above buttons, crysatal rotates with a constant speed</value>
+    <value>If you check this and click above buttons, crystal rotates at a constant speed</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel4.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -1810,7 +1810,7 @@ Information</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
-    <value>Set angle step for above buttons, or rotatian speed</value>
+    <value>Set angle step for above buttons, or rotation speed</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItemDisableTextRendering.Name" xml:space="preserve">
     <value>toolStripMenuItemDisableTextRendering</value>
@@ -2368,7 +2368,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>0</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
-    <value>Set angle step for above buttons, or rotatian speed</value>
+    <value>Set angle step for above buttons, or rotation speed</value>
   </data>
   <data name="buttonBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2614,7 +2614,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>Crystal list</value>
   </data>
   <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
-    <value>Set crystal plane</value>
+    <value>Set crystal axis</value>
   </data>
   <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
     <value>284, 6</value>
@@ -2626,7 +2626,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>°</value>
   </data>
   <data name="numericBoxAxisV.ToolTip1" xml:space="preserve">
-    <value>Set crystal plane</value>
+    <value>Set crystal axis</value>
   </data>
   <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3672,7 +3672,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>toolStripStatusLabel</value>
   </data>
   <data name="numericBoxAxisU.ToolTip1" xml:space="preserve">
-    <value>Set crystal plane</value>
+    <value>Set crystal axis</value>
   </data>
   <data name="&gt;&gt;numericUpDownEulerPhi.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -4028,7 +4028,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value />
   </data>
   <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
-    <value />
+    <value>Maximum sum of zone axis indices for display</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4385,7 +4385,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>toolStripButtonStructureViewer</value>
   </data>
   <data name="numericBoxAxisW.ToolTip1" xml:space="preserve">
-    <value>Set crystal plane</value>
+    <value>Set crystal axis</value>
   </data>
   <data name="powderDiffractionFunctionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>384, 22</value>

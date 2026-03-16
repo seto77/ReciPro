@@ -328,10 +328,10 @@
     <value>37, 22</value>
   </data>
   <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
-    <value />
+    <value>結晶軸を設定</value>
   </data>
   <data name="numericBoxAxisU.ToolTip1" xml:space="preserve">
-    <value />
+    <value>結晶軸を設定</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
@@ -355,10 +355,10 @@
     <value>37, 22</value>
   </data>
   <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
-    <value />
+    <value>結晶軸を設定</value>
   </data>
   <data name="numericBoxAxisV.ToolTip1" xml:space="preserve">
-    <value />
+    <value>結晶軸を設定</value>
   </data>
   <data name="numericBoxAxisW.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 0</value>
@@ -367,10 +367,10 @@
     <value>37, 22</value>
   </data>
   <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
-    <value />
+    <value>結晶軸を設定</value>
   </data>
   <data name="numericBoxAxisW.ToolTip1" xml:space="preserve">
-    <value />
+    <value>結晶軸を設定</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 22</value>
@@ -388,10 +388,10 @@
     <value>37, 25</value>
   </data>
   <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
-    <value />
+    <value>結晶面を設定</value>
   </data>
   <data name="numericBoxPlaneH.ToolTip1" xml:space="preserve">
-    <value />
+    <value>結晶面を設定</value>
   </data>
   <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 0</value>
@@ -418,7 +418,7 @@
     <value>0, 76</value>
   </data>
   <data name="tableLayoutPanel7.ToolTip" xml:space="preserve">
-    <value />
+    <value>結晶面を設定できます</value>
   </data>
   <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -608,7 +608,7 @@
     <value>アニメーション</value>
   </data>
   <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
-    <value />
+    <value>チェックすると、上のボタンをクリックした際に結晶が一定速度で回転します</value>
   </data>
   <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -1220,7 +1220,7 @@ v2</value>
  construction)</value>
   </data>
   <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
-    <value>Open 'EBSD' function</value>
+    <value>EBSD機能を開く</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
