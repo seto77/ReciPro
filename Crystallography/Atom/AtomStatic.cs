@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics.Integration;
+﻿#region using
+using MathNet.Numerics.Integration;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using Edge = Crystallography.XrayLineEdge;
-
 namespace Crystallography;
+#endregion
 
 public static class AtomStatic
 {
@@ -2565,6 +2566,43 @@ new(4.86738014,0.319974401,4.58872425,
             Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
         }
 
+        /// <summary>
+        /// 電子線用のコンストラクタ (3 lorentian, 3 gaussian)
+        /// </summary>
+        /// <param name="a1"></param>
+        /// <param name="a2"></param>
+        /// <param name="a3"></param>
+        /// <param name="b1"></param>
+        /// <param name="b2"></param>
+        /// <param name="b3"></param>
+        /// <param name="c1"></param>
+        /// <param name="c2"></param>
+        /// <param name="c3"></param>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <param name="d3"></param>
+        public ES(double a1, double a2, double a3, double b1, double b2, double b3, double c1, double c2, double c3, double d1, double d2, double d3)
+        {
+            Factor = new Func<double, double>(
+                S2 => a1 / (S2 + b1) + a2 / (S2 + b2) + a3 / (S2 + b3) + c1 * Math.Exp(-S2 * d1) + c2 * Math.Exp(-S2 * d2) + c3 * Math.Exp(-S2 * d3));
+
+            double a0 = UniversalConstants.a0 * 1E10, e = UniversalConstants.Ry * 2 * a0;
+            double sqrtB1 = Math.Sqrt(b1), sqrtB2 = Math.Sqrt(b2), sqrtB3 = Math.Sqrt(b3);
+            double pi2 = Math.PI * Math.PI;
+            double d1inv = 1 / d1, d2inv = 1 / d2, d3inv = 1 / d3;
+            ProjectedPotential = new Func<double, double>(
+                r => r <= 0 ? 0 :
+                    2 * pi2 * a0 * e * (
+                2 * a1 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB1) +
+                2 * a2 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB2) +
+                2 * a3 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB3) +
+                c1 * d1inv * Math.Exp(-pi2 * r * r * d1inv) +
+                c2 * d2inv * Math.Exp(-pi2 * r * r * d2inv) +
+                c3 * d3inv * Math.Exp(-pi2 * r * r * d3inv)
+                ));
+        }
+
+        #endregion
 
         #region 非弾性散乱因子の計算
 
@@ -2606,7 +2644,7 @@ new(4.86738014,0.319974401,4.58872425,
         /// <param name="inner"> 検出器の内側 単位はラジアン</param>
         /// <param name="outer"> 検出器の外側 単位はラジアン</param>
         /// <returns></returns>
-        public double FactorImaginaryAnnularFlatEwald(double kV, Vector3DBase g, double m, double inner, double outer)
+        public double FactorImaginaryAnnularFlatEwald(double kV, Vector3DBase g, double m, double inner, double outer, int nTheta = 80, int nPhi = 30)
         {
             if (double.IsNaN(m)) return 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
@@ -2631,8 +2669,8 @@ new(4.86738014,0.319974401,4.58872425,
                         f_kPlusG += A * Math.Exp(-kPlusG / 400 * B);
                     }
                     return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (gLen2 - kMinusG - kPlusG) / 4));// * sinThetaを外に出して、少しでも早く
-                }, 0, 2 * Math.PI, 30);
-            }, k0 * Math.Sin(inner), k0 * Math.Sin(outer), 80);
+                }, 0, 2 * Math.PI, nPhi);
+            }, k0 * Math.Sin(inner), k0 * Math.Sin(outer), nTheta);
 
             return gamma / Math.PI / Math.PI / k0 * result * 0.01;
         }
@@ -2810,44 +2848,7 @@ new(4.86738014,0.319974401,4.58872425,
             , 0, 2 * Math.PI, k0 * Math.Tan(inner), k0 * Math.Tan(outer), 40) * gamma / k0 / 2;
         }
         #endregion
-
-        /// <summary>
-        /// 電子線用のコンストラクタ (3 lorentian, 3 gaussian)
-        /// </summary>
-        /// <param name="a1"></param>
-        /// <param name="a2"></param>
-        /// <param name="a3"></param>
-        /// <param name="b1"></param>
-        /// <param name="b2"></param>
-        /// <param name="b3"></param>
-        /// <param name="c1"></param>
-        /// <param name="c2"></param>
-        /// <param name="c3"></param>
-        /// <param name="d1"></param>
-        /// <param name="d2"></param>
-        /// <param name="d3"></param>
-        public ES(double a1, double a2, double a3, double b1, double b2, double b3, double c1, double c2, double c3, double d1, double d2, double d3)
-        {
-            Factor = new Func<double, double>(
-                S2 => a1 / (S2 + b1) + a2 / (S2 + b2) + a3 / (S2 + b3) + c1 * Math.Exp(-S2 * d1) + c2 * Math.Exp(-S2 * d2) + c3 * Math.Exp(-S2 * d3));
-
-            double a0 = UniversalConstants.a0 * 1E10, e = UniversalConstants.Ry * 2 * a0;
-            double sqrtB1 = Math.Sqrt(b1), sqrtB2 = Math.Sqrt(b2), sqrtB3 = Math.Sqrt(b3);
-            double pi2 = Math.PI * Math.PI;
-            double d1inv = 1 / d1, d2inv = 1 / d2, d3inv = 1 / d3;
-            ProjectedPotential = new Func<double, double>(
-                r => r <= 0 ? 0 :
-                    2 * pi2 * a0 * e * (
-                2 * a1 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB1) +
-                2 * a2 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB2) +
-                2 * a3 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB3) +
-                c1 * d1inv * Math.Exp(-pi2 * r * r * d1inv) +
-                c2 * d2inv * Math.Exp(-pi2 * r * r * d2inv) +
-                c3 * d3inv * Math.Exp(-pi2 * r * r * d3inv)
-                ));
-        }
-
-        #endregion
+       
     }
     #endregion
 

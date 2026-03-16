@@ -77,6 +77,7 @@
             groupBoxOutput = new System.Windows.Forms.GroupBox();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
+            checkBox1 = new System.Windows.Forms.CheckBox();
             comboBoxGradient = new System.Windows.Forms.ComboBox();
             comboBoxScale = new System.Windows.Forms.ComboBox();
             trackBarOutputEnergy = new System.Windows.Forms.TrackBar();
@@ -111,6 +112,7 @@
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             label15 = new System.Windows.Forms.Label();
             tabPage3 = new System.Windows.Forms.TabPage();
+            groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox1 = new System.Windows.Forms.GroupBox();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
@@ -130,6 +132,7 @@
             tabPage2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             tabPage3.SuspendLayout();
+            groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -193,10 +196,10 @@
             flowLayoutPanel1.Controls.Add(buttonFromX);
             flowLayoutPanel1.Controls.Add(buttonViewFromZ);
             flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            flowLayoutPanel1.Location = new System.Drawing.Point(350, 301);
+            flowLayoutPanel1.Location = new System.Drawing.Point(349, 301);
             flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(149, 103);
+            flowLayoutPanel1.Size = new System.Drawing.Size(145, 103);
             flowLayoutPanel1.TabIndex = 112;
             // 
             // buttonViewQuarter
@@ -407,7 +410,7 @@
             graphControlEnergyProfile.Name = "graphControlEnergyProfile";
             graphControlEnergyProfile.OriginPosition = new System.Drawing.Point(40, 20);
             graphControlEnergyProfile.Profile = null;
-            graphControlEnergyProfile.Size = new System.Drawing.Size(221, 120);
+            graphControlEnergyProfile.Size = new System.Drawing.Size(217, 120);
             graphControlEnergyProfile.Smoothing = false;
             graphControlEnergyProfile.TabIndex = 140;
             graphControlEnergyProfile.UnitX = "";
@@ -675,7 +678,7 @@
             radioButtonKikuchiThresholdOfStructureFactor.AutoSize = true;
             radioButtonKikuchiThresholdOfStructureFactor.Checked = true;
             radioButtonKikuchiThresholdOfStructureFactor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            radioButtonKikuchiThresholdOfStructureFactor.Location = new System.Drawing.Point(11, 77);
+            radioButtonKikuchiThresholdOfStructureFactor.Location = new System.Drawing.Point(16, 24);
             radioButtonKikuchiThresholdOfStructureFactor.Name = "radioButtonKikuchiThresholdOfStructureFactor";
             radioButtonKikuchiThresholdOfStructureFactor.Size = new System.Drawing.Size(116, 21);
             radioButtonKikuchiThresholdOfStructureFactor.TabIndex = 127;
@@ -690,11 +693,11 @@
             checkBoxKikuchiLine_Kinematical.Checked = true;
             checkBoxKikuchiLine_Kinematical.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxKikuchiLine_Kinematical.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            checkBoxKikuchiLine_Kinematical.Location = new System.Drawing.Point(11, 140);
+            checkBoxKikuchiLine_Kinematical.Location = new System.Drawing.Point(14, 77);
             checkBoxKikuchiLine_Kinematical.Name = "checkBoxKikuchiLine_Kinematical";
-            checkBoxKikuchiLine_Kinematical.Size = new System.Drawing.Size(181, 38);
+            checkBoxKikuchiLine_Kinematical.Size = new System.Drawing.Size(330, 21);
             checkBoxKikuchiLine_Kinematical.TabIndex = 126;
-            checkBoxKikuchiLine_Kinematical.Text = "Reflect the structure factor\r\n in the Kikuchi line density";
+            checkBoxKikuchiLine_Kinematical.Text = "Reflect the structure factor in the Kikuchi line density";
             checkBoxKikuchiLine_Kinematical.UseVisualStyleBackColor = true;
             checkBoxKikuchiLine_Kinematical.CheckedChanged += colorControlExcessLine_ColorChanged;
             // 
@@ -702,7 +705,7 @@
             // 
             radioButtonKikuchiThresholdOfLength.AutoSize = true;
             radioButtonKikuchiThresholdOfLength.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            radioButtonKikuchiThresholdOfLength.Location = new System.Drawing.Point(11, 110);
+            radioButtonKikuchiThresholdOfLength.Location = new System.Drawing.Point(16, 57);
             radioButtonKikuchiThresholdOfLength.Name = "radioButtonKikuchiThresholdOfLength";
             radioButtonKikuchiThresholdOfLength.Size = new System.Drawing.Size(124, 21);
             radioButtonKikuchiThresholdOfLength.TabIndex = 128;
@@ -714,7 +717,7 @@
             numericBoxKikuchiThreadSholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
             numericBoxKikuchiThreadSholdOfStructureFactor.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             numericBoxKikuchiThreadSholdOfStructureFactor.HeaderText = "Top";
-            numericBoxKikuchiThreadSholdOfStructureFactor.Location = new System.Drawing.Point(130, 77);
+            numericBoxKikuchiThreadSholdOfStructureFactor.Location = new System.Drawing.Point(135, 24);
             numericBoxKikuchiThreadSholdOfStructureFactor.Margin = new System.Windows.Forms.Padding(0);
             numericBoxKikuchiThreadSholdOfStructureFactor.Maximum = 1000D;
             numericBoxKikuchiThreadSholdOfStructureFactor.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -736,7 +739,7 @@
             numericBoxKikuchiThresholdOfLength.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             numericBoxKikuchiThresholdOfLength.FooterText = "nm⁻¹";
             numericBoxKikuchiThresholdOfLength.HeaderText = "<";
-            numericBoxKikuchiThresholdOfLength.Location = new System.Drawing.Point(146, 110);
+            numericBoxKikuchiThresholdOfLength.Location = new System.Drawing.Point(151, 57);
             numericBoxKikuchiThresholdOfLength.Margin = new System.Windows.Forms.Padding(0);
             numericBoxKikuchiThresholdOfLength.Maximum = 100D;
             numericBoxKikuchiThresholdOfLength.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -760,7 +763,7 @@
             buttonSimulateEBSD.BackColor = System.Drawing.Color.SteelBlue;
             buttonSimulateEBSD.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
             buttonSimulateEBSD.ForeColor = System.Drawing.Color.White;
-            buttonSimulateEBSD.Location = new System.Drawing.Point(776, 634);
+            buttonSimulateEBSD.Location = new System.Drawing.Point(769, 676);
             buttonSimulateEBSD.Name = "buttonSimulateEBSD";
             buttonSimulateEBSD.Size = new System.Drawing.Size(176, 29);
             buttonSimulateEBSD.TabIndex = 129;
@@ -798,7 +801,7 @@
             numericBoxThicknessStep.FooterText = "nm";
             numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStep.HeaderText = "with step of";
-            numericBoxThicknessStep.Location = new System.Drawing.Point(241, 56);
+            numericBoxThicknessStep.Location = new System.Drawing.Point(241, 58);
             numericBoxThicknessStep.Margin = new System.Windows.Forms.Padding(0);
             numericBoxThicknessStep.Maximum = 1000D;
             numericBoxThicknessStep.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -808,7 +811,7 @@
             numericBoxThicknessStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxThicknessStep.RadianValue = 0.017453292519943295D;
             numericBoxThicknessStep.ShowUpDown = true;
-            numericBoxThicknessStep.Size = new System.Drawing.Size(149, 27);
+            numericBoxThicknessStep.Size = new System.Drawing.Size(142, 25);
             numericBoxThicknessStep.SmartIncrement = true;
             numericBoxThicknessStep.TabIndex = 135;
             numericBoxThicknessStep.TextFont = new System.Drawing.Font("メイリオ", 9F);
@@ -842,29 +845,29 @@
             numericBoxMaxNumOfG.ThonsandsSeparator = true;
             numericBoxMaxNumOfG.ToolTip = "Set a number of diffracted waves to be calculated";
             numericBoxMaxNumOfG.Value = 32D;
-            //
+            // 
             // checkBoxNonLocalAbsorption
-            //
+            // 
             checkBoxNonLocalAbsorption.AutoSize = true;
-            checkBoxNonLocalAbsorption.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular);
-            checkBoxNonLocalAbsorption.Location = new System.Drawing.Point(240, 28);
+            checkBoxNonLocalAbsorption.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxNonLocalAbsorption.Location = new System.Drawing.Point(13, 128);
             checkBoxNonLocalAbsorption.Name = "checkBoxNonLocalAbsorption";
-            checkBoxNonLocalAbsorption.Size = new System.Drawing.Size(160, 19);
+            checkBoxNonLocalAbsorption.Size = new System.Drawing.Size(216, 21);
             checkBoxNonLocalAbsorption.TabIndex = 145;
-            checkBoxNonLocalAbsorption.Text = "Non-local absorption";
+            checkBoxNonLocalAbsorption.Text = "Use non-local absorption model";
             checkBoxNonLocalAbsorption.UseVisualStyleBackColor = true;
-            //
+            // 
             // checkBoxTDSBackground
-            //
+            // 
             checkBoxTDSBackground.AutoSize = true;
-            checkBoxTDSBackground.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular);
-            checkBoxTDSBackground.Location = new System.Drawing.Point(240, 50);
+            checkBoxTDSBackground.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxTDSBackground.Location = new System.Drawing.Point(241, 128);
             checkBoxTDSBackground.Name = "checkBoxTDSBackground";
-            checkBoxTDSBackground.Size = new System.Drawing.Size(160, 19);
+            checkBoxTDSBackground.Size = new System.Drawing.Size(230, 21);
             checkBoxTDSBackground.TabIndex = 146;
-            checkBoxTDSBackground.Text = "TDS background";
+            checkBoxTDSBackground.Text = "Include TDS background intensities";
             checkBoxTDSBackground.UseVisualStyleBackColor = true;
-            //
+            // 
             // numericBoxThicknessStart
             // 
             numericBoxThicknessStart.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -873,7 +876,7 @@
             numericBoxThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStart.HeaderText = "Thickness from";
-            numericBoxThicknessStart.Location = new System.Drawing.Point(13, 56);
+            numericBoxThicknessStart.Location = new System.Drawing.Point(13, 58);
             numericBoxThicknessStart.Margin = new System.Windows.Forms.Padding(0);
             numericBoxThicknessStart.Maximum = 1000D;
             numericBoxThicknessStart.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -883,7 +886,7 @@
             numericBoxThicknessStart.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxThicknessStart.RadianValue = 0.017453292519943295D;
             numericBoxThicknessStart.ShowUpDown = true;
-            numericBoxThicknessStart.Size = new System.Drawing.Size(147, 27);
+            numericBoxThicknessStart.Size = new System.Drawing.Size(147, 25);
             numericBoxThicknessStart.SmartIncrement = true;
             numericBoxThicknessStart.TabIndex = 133;
             numericBoxThicknessStart.TextFont = new System.Drawing.Font("メイリオ", 9F);
@@ -900,7 +903,7 @@
             numericBoxThicknessEnd.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessEnd.HeaderText = "to";
-            numericBoxThicknessEnd.Location = new System.Drawing.Point(164, 56);
+            numericBoxThicknessEnd.Location = new System.Drawing.Point(164, 58);
             numericBoxThicknessEnd.Margin = new System.Windows.Forms.Padding(0);
             numericBoxThicknessEnd.Maximum = 1000D;
             numericBoxThicknessEnd.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -910,7 +913,7 @@
             numericBoxThicknessEnd.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxThicknessEnd.RadianValue = 0.87266462599716477D;
             numericBoxThicknessEnd.ShowUpDown = true;
-            numericBoxThicknessEnd.Size = new System.Drawing.Size(75, 27);
+            numericBoxThicknessEnd.Size = new System.Drawing.Size(75, 25);
             numericBoxThicknessEnd.SmartIncrement = true;
             numericBoxThicknessEnd.TabIndex = 134;
             numericBoxThicknessEnd.TextFont = new System.Drawing.Font("メイリオ", 9F);
@@ -937,7 +940,7 @@
             numericBoxDiskDiameter.Name = "numericBoxDiskDiameter";
             numericBoxDiskDiameter.RadianValue = 4.4680428851054836D;
             numericBoxDiskDiameter.ShowUpDown = true;
-            numericBoxDiskDiameter.Size = new System.Drawing.Size(154, 27);
+            numericBoxDiskDiameter.Size = new System.Drawing.Size(154, 25);
             numericBoxDiskDiameter.SmartIncrement = true;
             numericBoxDiskDiameter.TabIndex = 132;
             numericBoxDiskDiameter.TextFont = new System.Drawing.Font("メイリオ", 9F);
@@ -952,7 +955,7 @@
             buttonStop.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
             buttonStop.ForeColor = System.Drawing.Color.White;
             buttonStop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonStop.Location = new System.Drawing.Point(954, 635);
+            buttonStop.Location = new System.Drawing.Point(947, 677);
             buttonStop.Name = "buttonStop";
             buttonStop.Size = new System.Drawing.Size(73, 26);
             buttonStop.TabIndex = 138;
@@ -965,6 +968,7 @@
             groupBoxOutput.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             groupBoxOutput.Controls.Add(label3);
             groupBoxOutput.Controls.Add(label4);
+            groupBoxOutput.Controls.Add(checkBox1);
             groupBoxOutput.Controls.Add(comboBoxGradient);
             groupBoxOutput.Controls.Add(comboBoxScale);
             groupBoxOutput.Controls.Add(trackBarOutputEnergy);
@@ -984,7 +988,7 @@
             groupBoxOutput.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
             groupBoxOutput.Location = new System.Drawing.Point(2, 548);
             groupBoxOutput.Name = "groupBoxOutput";
-            groupBoxOutput.Size = new System.Drawing.Size(510, 113);
+            groupBoxOutput.Size = new System.Drawing.Size(510, 155);
             groupBoxOutput.TabIndex = 139;
             groupBoxOutput.TabStop = false;
             groupBoxOutput.Text = "Output parameters";
@@ -993,12 +997,12 @@
             // 
             label3.AutoSize = true;
             label3.Enabled = false;
-            label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label3.Location = new System.Drawing.Point(366, 57);
+            label3.Location = new System.Drawing.Point(347, 100);
             label3.Margin = new System.Windows.Forms.Padding(2, 2, 0, 0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(52, 15);
+            label3.Size = new System.Drawing.Size(58, 17);
             label3.TabIndex = 6;
             label3.Text = "Gradient";
             // 
@@ -1006,14 +1010,25 @@
             // 
             label4.AutoSize = true;
             label4.Enabled = false;
-            label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label4.Location = new System.Drawing.Point(382, 84);
+            label4.Location = new System.Drawing.Point(363, 127);
             label4.Margin = new System.Windows.Forms.Padding(2, 2, 0, 0);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(36, 15);
+            label4.Size = new System.Drawing.Size(40, 17);
             label4.TabIndex = 44;
             label4.Text = "Color";
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBox1.Location = new System.Drawing.Point(13, 25);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new System.Drawing.Size(313, 21);
+            checkBox1.TabIndex = 146;
+            checkBox1.Text = "Show image with BSE angular/energy distribution";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // comboBoxGradient
             // 
@@ -1021,10 +1036,10 @@
             comboBoxGradient.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             comboBoxGradient.FormattingEnabled = true;
             comboBoxGradient.Items.AddRange(new object[] { "Positive", "Negative" });
-            comboBoxGradient.Location = new System.Drawing.Point(424, 54);
+            comboBoxGradient.Location = new System.Drawing.Point(410, 97);
             comboBoxGradient.Margin = new System.Windows.Forms.Padding(0);
             comboBoxGradient.Name = "comboBoxGradient";
-            comboBoxGradient.Size = new System.Drawing.Size(80, 23);
+            comboBoxGradient.Size = new System.Drawing.Size(93, 23);
             comboBoxGradient.TabIndex = 7;
             comboBoxGradient.SelectedIndexChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
@@ -1034,10 +1049,10 @@
             comboBoxScale.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             comboBoxScale.FormattingEnabled = true;
             comboBoxScale.Items.AddRange(new object[] { "Gray", "Cold-Warm", "Spectrum", "FIre" });
-            comboBoxScale.Location = new System.Drawing.Point(422, 81);
+            comboBoxScale.Location = new System.Drawing.Point(410, 124);
             comboBoxScale.Margin = new System.Windows.Forms.Padding(0);
             comboBoxScale.Name = "comboBoxScale";
-            comboBoxScale.Size = new System.Drawing.Size(82, 23);
+            comboBoxScale.Size = new System.Drawing.Size(93, 23);
             comboBoxScale.TabIndex = 8;
             comboBoxScale.SelectedIndexChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
@@ -1046,10 +1061,10 @@
             trackBarOutputEnergy.AutoSize = false;
             trackBarOutputEnergy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             trackBarOutputEnergy.LargeChange = 1;
-            trackBarOutputEnergy.Location = new System.Drawing.Point(105, 29);
+            trackBarOutputEnergy.Location = new System.Drawing.Point(114, 59);
             trackBarOutputEnergy.Maximum = 5;
             trackBarOutputEnergy.Name = "trackBarOutputEnergy";
-            trackBarOutputEnergy.Size = new System.Drawing.Size(130, 18);
+            trackBarOutputEnergy.Size = new System.Drawing.Size(126, 18);
             trackBarOutputEnergy.TabIndex = 2;
             trackBarOutputEnergy.ValueChanged += trackBarOutputEnergy_ValueChanged;
             // 
@@ -1058,7 +1073,7 @@
             trackBarOutputThickness.AutoSize = false;
             trackBarOutputThickness.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             trackBarOutputThickness.LargeChange = 1;
-            trackBarOutputThickness.Location = new System.Drawing.Point(373, 29);
+            trackBarOutputThickness.Location = new System.Drawing.Point(374, 59);
             trackBarOutputThickness.Maximum = 9;
             trackBarOutputThickness.Name = "trackBarOutputThickness";
             trackBarOutputThickness.Size = new System.Drawing.Size(130, 18);
@@ -1070,11 +1085,11 @@
             trackBarIntensityBrightnessMax.AutoSize = false;
             trackBarIntensityBrightnessMax.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             trackBarIntensityBrightnessMax.LargeChange = 10000;
-            trackBarIntensityBrightnessMax.Location = new System.Drawing.Point(105, 81);
+            trackBarIntensityBrightnessMax.Location = new System.Drawing.Point(112, 120);
             trackBarIntensityBrightnessMax.Maximum = 1000000;
             trackBarIntensityBrightnessMax.Minimum = 1;
             trackBarIntensityBrightnessMax.Name = "trackBarIntensityBrightnessMax";
-            trackBarIntensityBrightnessMax.Size = new System.Drawing.Size(231, 18);
+            trackBarIntensityBrightnessMax.Size = new System.Drawing.Size(214, 18);
             trackBarIntensityBrightnessMax.SmallChange = 100000;
             trackBarIntensityBrightnessMax.TabIndex = 4;
             trackBarIntensityBrightnessMax.TickFrequency = 20000;
@@ -1083,11 +1098,11 @@
             // 
             // textBoxEnergy
             // 
-            textBoxEnergy.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            textBoxEnergy.Location = new System.Drawing.Point(48, 25);
+            textBoxEnergy.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            textBoxEnergy.Location = new System.Drawing.Point(56, 54);
             textBoxEnergy.Name = "textBoxEnergy";
             textBoxEnergy.ReadOnly = true;
-            textBoxEnergy.Size = new System.Drawing.Size(36, 23);
+            textBoxEnergy.Size = new System.Drawing.Size(36, 25);
             textBoxEnergy.TabIndex = 1;
             textBoxEnergy.Text = "20";
             // 
@@ -1096,10 +1111,10 @@
             trackBarIntensityBrightnessMin.AutoSize = false;
             trackBarIntensityBrightnessMin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             trackBarIntensityBrightnessMin.LargeChange = 10000;
-            trackBarIntensityBrightnessMin.Location = new System.Drawing.Point(105, 57);
+            trackBarIntensityBrightnessMin.Location = new System.Drawing.Point(112, 96);
             trackBarIntensityBrightnessMin.Maximum = 999999;
             trackBarIntensityBrightnessMin.Name = "trackBarIntensityBrightnessMin";
-            trackBarIntensityBrightnessMin.Size = new System.Drawing.Size(231, 18);
+            trackBarIntensityBrightnessMin.Size = new System.Drawing.Size(214, 18);
             trackBarIntensityBrightnessMin.SmallChange = 100000;
             trackBarIntensityBrightnessMin.TabIndex = 3;
             trackBarIntensityBrightnessMin.TickFrequency = 20000;
@@ -1108,87 +1123,87 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label12.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label12.Location = new System.Drawing.Point(85, 29);
+            label12.Location = new System.Drawing.Point(91, 57);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(20, 15);
+            label12.Size = new System.Drawing.Size(22, 17);
             label12.TabIndex = 30;
             label12.Text = "kV";
             // 
             // textBoxThickness
             // 
-            textBoxThickness.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            textBoxThickness.Location = new System.Drawing.Point(306, 25);
+            textBoxThickness.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            textBoxThickness.Location = new System.Drawing.Point(310, 54);
             textBoxThickness.Name = "textBoxThickness";
             textBoxThickness.ReadOnly = true;
-            textBoxThickness.Size = new System.Drawing.Size(36, 23);
+            textBoxThickness.Size = new System.Drawing.Size(36, 25);
             textBoxThickness.TabIndex = 1;
             textBoxThickness.Text = "20";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label9.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label9.Location = new System.Drawing.Point(7, 28);
+            label9.Location = new System.Drawing.Point(10, 57);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(43, 15);
+            label9.Size = new System.Drawing.Size(48, 17);
             label9.TabIndex = 30;
             label9.Text = "Energy";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label6.Location = new System.Drawing.Point(342, 29);
+            label6.Location = new System.Drawing.Point(346, 57);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(25, 15);
+            label6.Size = new System.Drawing.Size(26, 17);
             label6.TabIndex = 30;
             label6.Text = "nm";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label5.Location = new System.Drawing.Point(246, 29);
+            label5.Location = new System.Drawing.Point(245, 57);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(59, 15);
+            label5.Size = new System.Drawing.Size(63, 17);
             label5.TabIndex = 30;
             label5.Text = "Thickness";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label8.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label8.Location = new System.Drawing.Point(75, 81);
+            label8.Location = new System.Drawing.Point(82, 120);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(29, 15);
+            label8.Size = new System.Drawing.Size(33, 17);
             label8.TabIndex = 30;
             label8.Text = "Max";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label7.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label7.Location = new System.Drawing.Point(75, 57);
+            label7.Location = new System.Drawing.Point(82, 96);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(28, 15);
+            label7.Size = new System.Drawing.Size(30, 17);
             label7.TabIndex = 30;
             label7.Text = "Min";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label10.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label10.Location = new System.Drawing.Point(10, 66);
+            label10.Location = new System.Drawing.Point(10, 108);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(62, 15);
+            label10.Size = new System.Drawing.Size(68, 17);
             label10.TabIndex = 30;
             label10.Text = "Brightness";
             // 
@@ -1225,7 +1240,7 @@
             numericBoxEnergyEnd.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyEnd.HeaderText = "to";
-            numericBoxEnergyEnd.Location = new System.Drawing.Point(146, 88);
+            numericBoxEnergyEnd.Location = new System.Drawing.Point(164, 91);
             numericBoxEnergyEnd.Margin = new System.Windows.Forms.Padding(0);
             numericBoxEnergyEnd.Maximum = 1000D;
             numericBoxEnergyEnd.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -1235,7 +1250,7 @@
             numericBoxEnergyEnd.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxEnergyEnd.RadianValue = 0.26179938779914941D;
             numericBoxEnergyEnd.ShowUpDown = true;
-            numericBoxEnergyEnd.Size = new System.Drawing.Size(75, 27);
+            numericBoxEnergyEnd.Size = new System.Drawing.Size(75, 25);
             numericBoxEnergyEnd.SmartIncrement = true;
             numericBoxEnergyEnd.TabIndex = 134;
             numericBoxEnergyEnd.TextFont = new System.Drawing.Font("メイリオ", 9F);
@@ -1252,7 +1267,7 @@
             numericBoxEnergyStart.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStart.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStart.HeaderText = "Energy from";
-            numericBoxEnergyStart.Location = new System.Drawing.Point(13, 88);
+            numericBoxEnergyStart.Location = new System.Drawing.Point(28, 91);
             numericBoxEnergyStart.Margin = new System.Windows.Forms.Padding(0);
             numericBoxEnergyStart.Maximum = 1000D;
             numericBoxEnergyStart.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -1262,7 +1277,7 @@
             numericBoxEnergyStart.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxEnergyStart.RadianValue = 0.3490658503988659D;
             numericBoxEnergyStart.ShowUpDown = true;
-            numericBoxEnergyStart.Size = new System.Drawing.Size(130, 27);
+            numericBoxEnergyStart.Size = new System.Drawing.Size(132, 25);
             numericBoxEnergyStart.SmartIncrement = true;
             numericBoxEnergyStart.TabIndex = 133;
             numericBoxEnergyStart.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -1281,7 +1296,7 @@
             numericBoxEnergyStep.FooterText = "kV";
             numericBoxEnergyStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStep.HeaderText = "with step of";
-            numericBoxEnergyStep.Location = new System.Drawing.Point(221, 88);
+            numericBoxEnergyStep.Location = new System.Drawing.Point(241, 91);
             numericBoxEnergyStep.Margin = new System.Windows.Forms.Padding(0);
             numericBoxEnergyStep.Maximum = 10D;
             numericBoxEnergyStep.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -1291,7 +1306,7 @@
             numericBoxEnergyStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxEnergyStep.RadianValue = 0.017453292519943295D;
             numericBoxEnergyStep.ShowUpDown = true;
-            numericBoxEnergyStep.Size = new System.Drawing.Size(149, 27);
+            numericBoxEnergyStep.Size = new System.Drawing.Size(138, 25);
             numericBoxEnergyStep.SmartIncrement = true;
             numericBoxEnergyStep.TabIndex = 135;
             numericBoxEnergyStep.TextFont = new System.Drawing.Font("メイリオ", 9F);
@@ -1306,7 +1321,7 @@
             button1.AutoSize = true;
             button1.BackColor = System.Drawing.Color.SteelBlue;
             button1.ForeColor = System.Drawing.Color.White;
-            button1.Location = new System.Drawing.Point(568, 636);
+            button1.Location = new System.Drawing.Point(561, 678);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(93, 27);
             button1.TabIndex = 129;
@@ -1319,7 +1334,7 @@
             label13.AutoSize = true;
             label13.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label13.Location = new System.Drawing.Point(271, 275);
+            label13.Location = new System.Drawing.Point(271, 273);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(73, 17);
             label13.TabIndex = 121;
@@ -1330,7 +1345,7 @@
             label14.AutoSize = true;
             label14.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label14.Location = new System.Drawing.Point(272, 128);
+            label14.Location = new System.Drawing.Point(272, 126);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(49, 17);
             label14.TabIndex = 121;
@@ -1371,11 +1386,11 @@
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            tabControl1.Location = new System.Drawing.Point(518, 2);
+            tabControl1.Location = new System.Drawing.Point(517, 2);
             tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(510, 452);
+            tabControl1.Size = new System.Drawing.Size(504, 453);
             tabControl1.TabIndex = 142;
             // 
             // tabPage1
@@ -1397,7 +1412,7 @@
             tabPage1.Location = new System.Drawing.Point(4, 26);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(502, 422);
+            tabPage1.Size = new System.Drawing.Size(496, 423);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "SEM-EBSD settings";
             // 
@@ -1447,7 +1462,7 @@
             tabPage2.Location = new System.Drawing.Point(4, 26);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            tabPage2.Size = new System.Drawing.Size(502, 422);
+            tabPage2.Size = new System.Drawing.Size(496, 423);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Distribution of BSEs";
             // 
@@ -1456,10 +1471,10 @@
             flowLayoutPanel3.Controls.Add(radioButtonFrequency);
             flowLayoutPanel3.Controls.Add(radioButtonAverageEnergy);
             flowLayoutPanel3.Controls.Add(radioButtonStandardDeviation);
-            flowLayoutPanel3.Location = new System.Drawing.Point(9, 366);
+            flowLayoutPanel3.Location = new System.Drawing.Point(3, 366);
             flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new System.Drawing.Size(262, 49);
+            flowLayoutPanel3.Size = new System.Drawing.Size(209, 49);
             flowLayoutPanel3.TabIndex = 141;
             // 
             // label15
@@ -1476,15 +1491,12 @@
             // tabPage3
             // 
             tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            tabPage3.Controls.Add(groupBox2);
             tabPage3.Controls.Add(label1);
             tabPage3.Controls.Add(trackBarStrSize);
-            tabPage3.Controls.Add(numericBoxKikuchiThresholdOfLength);
             tabPage3.Controls.Add(colorControlExcessLine);
-            tabPage3.Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
             tabPage3.Controls.Add(label11);
             tabPage3.Controls.Add(colorControlBackGround);
-            tabPage3.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
-            tabPage3.Controls.Add(radioButtonKikuchiThresholdOfLength);
             tabPage3.Controls.Add(trackBarLineWidth);
             tabPage3.Controls.Add(colorControlString);
             tabPage3.Controls.Add(checkBoxKikuchiLine_Kinematical);
@@ -1492,9 +1504,22 @@
             tabPage3.Location = new System.Drawing.Point(4, 26);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            tabPage3.Size = new System.Drawing.Size(502, 422);
+            tabPage3.Size = new System.Drawing.Size(496, 443);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Kinematical simulation";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(radioButtonKikuchiThresholdOfLength);
+            groupBox2.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
+            groupBox2.Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
+            groupBox2.Controls.Add(numericBoxKikuchiThresholdOfLength);
+            groupBox2.Location = new System.Drawing.Point(11, 104);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new System.Drawing.Size(267, 93);
+            groupBox2.TabIndex = 129;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Lattice planes to display";
             // 
             // groupBox1
             // 
@@ -1510,9 +1535,9 @@
             groupBox1.Controls.Add(numericBoxEnergyStep);
             groupBox1.Controls.Add(numericBoxThicknessStep);
             groupBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox1.Location = new System.Drawing.Point(518, 460);
+            groupBox1.Location = new System.Drawing.Point(518, 461);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(508, 170);
+            groupBox1.Size = new System.Drawing.Size(501, 215);
             groupBox1.TabIndex = 143;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dynamical simulation properties";
@@ -1520,9 +1545,9 @@
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel1, toolStripStatusLabel2 });
-            statusStrip1.Location = new System.Drawing.Point(0, 665);
+            statusStrip1.Location = new System.Drawing.Point(0, 707);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new System.Drawing.Size(1031, 22);
+            statusStrip1.Size = new System.Drawing.Size(1024, 22);
             statusStrip1.TabIndex = 145;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -1534,20 +1559,20 @@
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new System.Drawing.Size(16, 17);
+            toolStripStatusLabel1.Text = "   ";
             // 
             // toolStripStatusLabel2
             // 
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
-            toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            toolStripStatusLabel2.Size = new System.Drawing.Size(16, 17);
+            toolStripStatusLabel2.Text = "   ";
             // 
             // FormEBSD
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1031, 687);
+            ClientSize = new System.Drawing.Size(1024, 729);
             Controls.Add(statusStrip1);
             Controls.Add(groupBox1);
             Controls.Add(button1);
@@ -1586,7 +1611,10 @@
             flowLayoutPanel3.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ResumeLayout(false);
@@ -1681,5 +1709,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.CheckBox checkBoxNonLocalAbsorption;
         private System.Windows.Forms.CheckBox checkBoxTDSBackground;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

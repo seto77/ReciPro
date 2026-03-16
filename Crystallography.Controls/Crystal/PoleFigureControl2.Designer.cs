@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PoleFigureControl2));
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             numericBoxResolution = new NumericBox();
@@ -39,15 +38,12 @@
             numericBoxMin = new NumericBox();
             label1 = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // pictureBox
             // 
@@ -64,8 +60,8 @@
             // 
             // numericBoxResolution
             // 
-            resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.Maximum = 30D;
             numericBoxResolution.Minimum = 1D;
             numericBoxResolution.Name = "numericBoxResolution";
@@ -82,8 +78,8 @@
             // 
             // comboBoxColor
             // 
-            resources.ApplyResources(comboBoxColor, "comboBoxColor");
             comboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(comboBoxColor, "comboBoxColor");
             comboBoxColor.FormattingEnabled = true;
             comboBoxColor.Items.AddRange(new object[] { resources.GetString("comboBoxColor.Items"), resources.GetString("comboBoxColor.Items1") });
             comboBoxColor.Name = "comboBoxColor";
@@ -123,13 +119,19 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(numericBoxMax);
-            panel1.Controls.Add(numericBoxMin);
-            panel1.Controls.Add(numericBoxResolution);
+            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(label9);
             panel1.Controls.Add(comboBoxColor);
-            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(numericBoxMin);
+            flowLayoutPanel1.Controls.Add(numericBoxMax);
+            flowLayoutPanel1.Controls.Add(numericBoxResolution);
+            flowLayoutPanel1.Controls.Add(panel1);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // PoleFigureControl2
             // 
@@ -137,7 +139,6 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(pictureBox);
             Controls.Add(pictureBox1);
-            Controls.Add(panel1);
             Controls.Add(label1);
             Controls.Add(flowLayoutPanel1);
             Name = "PoleFigureControl2";
@@ -146,13 +147,12 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label7;
@@ -163,5 +163,6 @@
         private NumericBox numericBoxResolution;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
