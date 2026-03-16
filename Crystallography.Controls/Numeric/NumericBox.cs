@@ -21,7 +21,7 @@ public partial class NumericBox : UserControl
 
     public event MyEventHandler Click2;
 
-    public event KeyEventHandler KeyDown;
+    public new event KeyEventHandler KeyDown; //260317Cl new追加 (Control.KeyDown隠蔽を明示)
 
     #endregion イベント
 

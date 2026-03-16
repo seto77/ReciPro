@@ -2,7 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
+//using System.Net; //260317Cl コメントアウト WebClient→HttpClient移行
+using System.Net.Http;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -12,12 +13,16 @@ public static class ProgramUpdates
 {
     private static readonly string UserAppDataPath = new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
 
+    //260317Cl HttpClientはstaticで再利用するのがベストプラクティス
+    private static readonly HttpClient httpClient = new();
+
     public static (string Title, string Message, bool NeedUpdate, string URL, string Path) Check(string software, string version)
     {
         try
         {
-            using var wc = new WebClient();
-            var ver = wc.DownloadData($"https://raw.githubusercontent.com/seto77/{software}/master/{software}/Version.cs");
+            //using var wc = new WebClient(); //260317Cl WebClient→HttpClient
+            //var ver = wc.DownloadData(...);
+            var ver = httpClient.GetByteArrayAsync($"https://raw.githubusercontent.com/seto77/{software}/master/{software}/Version.cs").Result;
 
             //V上手くダウンロードできなかった場合
             if (ver == null || ver.Length == 0)
@@ -63,13 +68,39 @@ public static class ProgramUpdates
 
     }
 
+    //260317Cl DownloadProgressChangedEventArgs→引数に変更 (WebClient依存を除去)
+    //public static ... ProgressMessage(DownloadProgressChangedEventArgs e, Stopwatch stopwatch)
     public static (long Current, long Total, long ElapsedMilliseconds, string Message)
-        ProgressMessage(DownloadProgressChangedEventArgs e, Stopwatch stopwatch)
+        ProgressMessage(long bytesReceived, long totalBytesToReceive, Stopwatch stopwatch)
     {
-        var receivedMb = e.BytesReceived / 1E6;
-        var totalMb = e.TotalBytesToReceive / 1E6;
+        var receivedMb = bytesReceived / 1E6;
+        var totalMb = totalBytesToReceive / 1E6;
         var message = $"Downloading setup file.  Received: {receivedMb:f1} MB / {totalMb:f1} MB.  ";
-        return (e.BytesReceived, e.TotalBytesToReceive, stopwatch.ElapsedMilliseconds, message);
+        return (bytesReceived, totalBytesToReceive, stopwatch.ElapsedMilliseconds, message);
+    }
+
+    /// <summary>
+    /// 260317Cl 追加 HttpClientでファイルをダウンロードし進捗を報告する
+    /// </summary>
+    public static async System.Threading.Tasks.Task DownloadFileWithProgressAsync(
+        string url, string path, IProgress<(long Current, long Total, long ElapsedMilliseconds, string Message)> progress, Stopwatch stopwatch)
+    {
+        using var response = await httpClient.GetAsync(new Uri(url), HttpCompletionOption.ResponseHeadersRead);
+        response.EnsureSuccessStatusCode();
+        var totalBytes = response.Content.Headers.ContentLength ?? -1;
+        using var contentStream = await response.Content.ReadAsStreamAsync();
+        using var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+        var buffer = new byte[8192];
+        long bytesRead = 0;
+        int read;
+        long counter = 0;
+        while ((read = await contentStream.ReadAsync(buffer)) > 0)
+        {
+            await fileStream.WriteAsync(buffer.AsMemory(0, read));
+            bytesRead += read;
+            if (counter++ % 10 == 0)
+                progress?.Report(ProgressMessage(bytesRead, totalBytes, stopwatch));
+        }
     }
 
 }

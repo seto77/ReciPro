@@ -1626,7 +1626,9 @@ public partial class FormMain : Form
     #endregion
 
     #region ProgramUpdates
-    private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+    //260317Cl WebClient→HttpClient (ProgramUpdates.DownloadFileWithProgressAsync使用)
+    //private void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+    private async void checkUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
     {
         toolStripProgressBar.Visible = true;
 
@@ -1635,32 +1637,22 @@ public partial class FormMain : Form
         if (!NeedUpdate)
             MessageBox.Show(Message, Title, MessageBoxButtons.OK);
         else if (MessageBox.Show(Message, Title, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            using (var wc = new WebClient())
+        {
+            sw.Restart();
+            try
             {
-                long counter = 1;
-                wc.DownloadProgressChanged += (s, ev) =>
-                {
-                    if (counter++ % 10 == 0)
-                        ip.Report(ProgramUpdates.ProgressMessage(ev, sw));
-                };
-
-                wc.DownloadFileCompleted += (s, ev) =>
-                {
-                    if (ProgramUpdates.Execute(Path))
-                        Close();
-                    else
-                        MessageBox.Show($"Failed to download {Path}. \r\nSorry!", "Error!");
-                };
-                sw.Restart();
-                try
-                {
-                    wc.DownloadFileAsync(new Uri(URL), Path);
-                }
-                catch
-                {
-                    MessageBox.Show($"Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/{Version.Software}/releases/latest", "Error");
-                }
+                var progress = new Progress<(long Current, long Total, long ElapsedMilliseconds, string Message)>(p => ip.Report(p));
+                await ProgramUpdates.DownloadFileWithProgressAsync(URL, Path, progress, sw);
+                if (ProgramUpdates.Execute(Path))
+                    Close();
+                else
+                    MessageBox.Show($"Failed to download {Path}. \r\nSorry!", "Error!");
             }
+            catch
+            {
+                MessageBox.Show($"Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/{Version.Software}/releases/latest", "Error");
+            }
+        }
 
     }
 

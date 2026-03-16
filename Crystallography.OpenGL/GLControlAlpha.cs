@@ -405,7 +405,7 @@ unsafe public partial class GLControlAlpha : UserControl
     /// //バージョンチェック。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。
     /// </summary>
     /// <returns></returns>
-    [HandleProcessCorruptedStateExceptions]
+    //[HandleProcessCorruptedStateExceptions] //260317Cl 削除 SYSLIB0032: .NET Core以降では無視される属性
     private static string[] CheckVersion()
     {
         try
@@ -421,7 +421,7 @@ unsafe public partial class GLControlAlpha : UserControl
     /// </summary>
     /// <param name="control"></param>
     /// <returns></returns>
-    [HandleProcessCorruptedStateExceptions]
+    //[HandleProcessCorruptedStateExceptions] //260317Cl 削除 SYSLIB0032: .NET Core以降では無視される属性
     private static Graphics getGraphics(GLControl control)
     {
         try { return control.CreateGraphics(); }

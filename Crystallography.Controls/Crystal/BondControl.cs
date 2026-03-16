@@ -89,7 +89,7 @@ public partial class BondInputControl : UserControl
         checkBoxShowCenterAtom.Checked = b.ShowCenterAtom;
         checkBoxShowVertexAtoms.Checked = b.ShowVertexAtom;
         checkBoxShowInnerBonds.Checked = b.ShowInnerBonds;
-        colorControlPlyhedron.Color = Color.FromArgb(b.ArgbPolyhedron);
+        colorControlPolyhedron.Color = Color.FromArgb(b.ArgbPolyhedron);
 
         checkBoxShowEdges.Checked = b.ShowEdges;
         numericBoxEdgeWidth.Value = b.EdgeLineWidth;

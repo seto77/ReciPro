@@ -189,7 +189,7 @@ namespace Crystallography.OpenGL
             this.inputRGAndB0255ToolStripMenuItem.Enabled = false;
             this.inputRGAndB0255ToolStripMenuItem.Name = "inputRGAndB0255ToolStripMenuItem";
             this.inputRGAndB0255ToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
-            this.inputRGAndB0255ToolStripMenuItem.Text = "Input values os R, G, B (0-255)";
+            this.inputRGAndB0255ToolStripMenuItem.Text = "Input values of R, G, B (0-255)"; //260317Cl "os" → "of"
             // 
             // toolStripTextBoxBackColorRed
             // 

@@ -265,70 +265,70 @@
   <data name="&gt;&gt;buttonPeriodicTable.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="checkBoxSearchRefference.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBoxSearchReference.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxSearchRefference.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="checkBoxSearchReference.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="checkBoxSearchRefference.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBoxSearchReference.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxSearchRefference.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="checkBoxSearchReference.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 109</value>
   </data>
-  <data name="checkBoxSearchRefference.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="checkBoxSearchReference.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="checkBoxSearchRefference.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBoxSearchReference.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 21</value>
   </data>
-  <data name="checkBoxSearchRefference.TabIndex" type="System.Int32, mscorlib">
+  <data name="checkBoxSearchReference.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
   </data>
-  <data name="checkBoxSearchRefference.Text" xml:space="preserve">
-    <value>Refference</value>
+  <data name="checkBoxSearchReference.Text" xml:space="preserve">
+    <value>Reference</value>
   </data>
-  <data name="&gt;&gt;checkBoxSearchRefference.Name" xml:space="preserve">
-    <value>checkBoxSearchRefference</value>
+  <data name="&gt;&gt;checkBoxSearchReference.Name" xml:space="preserve">
+    <value>checkBoxSearchReference</value>
   </data>
-  <data name="&gt;&gt;checkBoxSearchRefference.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxSearchReference.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxSearchRefference.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxSearchReference.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;checkBoxSearchRefference.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxSearchReference.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="textBoxSearchRefference.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="textBoxSearchReference.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="textBoxSearchRefference.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxSearchReference.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 130</value>
   </data>
-  <data name="textBoxSearchRefference.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="textBoxSearchReference.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 6</value>
   </data>
-  <data name="textBoxSearchRefference.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxSearchReference.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 25</value>
   </data>
-  <data name="textBoxSearchRefference.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxSearchReference.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="textBoxSearchRefference.Visible" type="System.Boolean, mscorlib">
+  <data name="textBoxSearchReference.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;textBoxSearchRefference.Name" xml:space="preserve">
-    <value>textBoxSearchRefference</value>
+  <data name="&gt;&gt;textBoxSearchReference.Name" xml:space="preserve">
+    <value>textBoxSearchReference</value>
   </data>
-  <data name="&gt;&gt;textBoxSearchRefference.Type" xml:space="preserve">
+  <data name="&gt;&gt;textBoxSearchReference.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBoxSearchRefference.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBoxSearchReference.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;textBoxSearchRefference.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;textBoxSearchReference.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="checkBoxSearchCrystalSystem.AutoSize" type="System.Boolean, mscorlib">

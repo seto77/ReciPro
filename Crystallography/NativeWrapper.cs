@@ -1,4 +1,5 @@
-﻿#region using, namespace
+﻿#nullable enable //260317Cl 追加
+#region using, namespace
 using MathNet.Numerics.LinearAlgebra.Complex;
 using System;
 using System.Buffers;
@@ -609,7 +610,7 @@ public static partial class NativeWrapper
     /// </summary>
     /// <param name="mat"></param>
     /// <returns></returns>
-    static unsafe public Complex[] Inverse(Complex[] mat)
+    static unsafe public Complex[]? Inverse(Complex[] mat) //260317Cl 戻り値をnullable化
     {
         var dim = (int)Math.Sqrt(mat.Length);
         return dim * dim == mat.Length ? Inverse(dim, mat) : null;
@@ -634,7 +635,7 @@ public static partial class NativeWrapper
     /// </summary>
     /// <param name="mat"></param>
     /// <returns></returns>
-    static unsafe public double[] Inverse(double[] mat)
+    static unsafe public double[]? Inverse(double[] mat) //260317Cl 戻り値をnullable化
     {
         var dim = (int)Math.Sqrt(mat.Length);
         return dim * dim == mat.Length ? Inverse(dim, mat) : null;

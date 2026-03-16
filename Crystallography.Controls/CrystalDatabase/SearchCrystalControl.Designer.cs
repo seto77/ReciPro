@@ -34,8 +34,8 @@ partial class SearchCrystalControl
         textBoxSearchName = new System.Windows.Forms.TextBox();
         checkBoxSearchElements = new System.Windows.Forms.CheckBox();
         buttonPeriodicTable = new System.Windows.Forms.Button();
-        checkBoxSearchRefference = new System.Windows.Forms.CheckBox();
-        textBoxSearchRefference = new System.Windows.Forms.TextBox();
+        checkBoxSearchReference = new System.Windows.Forms.CheckBox();
+        textBoxSearchReference = new System.Windows.Forms.TextBox();
         checkBoxSearchCrystalSystem = new System.Windows.Forms.CheckBox();
         comboBoxSearchCrystalSystem = new System.Windows.Forms.ComboBox();
         checkBoxSearchCellParameter = new System.Windows.Forms.CheckBox();
@@ -79,8 +79,8 @@ partial class SearchCrystalControl
         flowLayoutPanel1.Controls.Add(textBoxSearchName);
         flowLayoutPanel1.Controls.Add(checkBoxSearchElements);
         flowLayoutPanel1.Controls.Add(buttonPeriodicTable);
-        flowLayoutPanel1.Controls.Add(checkBoxSearchRefference);
-        flowLayoutPanel1.Controls.Add(textBoxSearchRefference);
+        flowLayoutPanel1.Controls.Add(checkBoxSearchReference);
+        flowLayoutPanel1.Controls.Add(textBoxSearchReference);
         flowLayoutPanel1.Controls.Add(checkBoxSearchCrystalSystem);
         flowLayoutPanel1.Controls.Add(comboBoxSearchCrystalSystem);
         flowLayoutPanel1.Controls.Add(checkBoxSearchCellParameter);
@@ -118,18 +118,18 @@ partial class SearchCrystalControl
         buttonPeriodicTable.UseVisualStyleBackColor = true;
         buttonPeriodicTable.Click += buttonPeriodicTable_Click;
         // 
-        // checkBoxSearchRefference
+        // checkBoxSearchReference
         // 
-        resources.ApplyResources(checkBoxSearchRefference, "checkBoxSearchRefference");
-        checkBoxSearchRefference.Name = "checkBoxSearchRefference";
-        checkBoxSearchRefference.UseVisualStyleBackColor = true;
-        checkBoxSearchRefference.CheckedChanged += checkBoxSearch_CheckedChanged;
+        resources.ApplyResources(checkBoxSearchReference, "checkBoxSearchReference");
+        checkBoxSearchReference.Name = "checkBoxSearchReference";
+        checkBoxSearchReference.UseVisualStyleBackColor = true;
+        checkBoxSearchReference.CheckedChanged += checkBoxSearch_CheckedChanged;
         // 
-        // textBoxSearchRefference
+        // textBoxSearchReference
         // 
-        resources.ApplyResources(textBoxSearchRefference, "textBoxSearchRefference");
-        textBoxSearchRefference.Name = "textBoxSearchRefference";
-        textBoxSearchRefference.KeyDown += textBoxSearchName_KeyDown;
+        resources.ApplyResources(textBoxSearchReference, "textBoxSearchReference");
+        textBoxSearchReference.Name = "textBoxSearchReference";
+        textBoxSearchReference.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxSearchCrystalSystem
         // 
@@ -494,8 +494,8 @@ partial class SearchCrystalControl
     private System.Windows.Forms.TextBox textBoxSearchName;
     private System.Windows.Forms.CheckBox checkBoxSearchElements;
     private System.Windows.Forms.Button buttonPeriodicTable;
-    private System.Windows.Forms.CheckBox checkBoxSearchRefference;
-    private System.Windows.Forms.TextBox textBoxSearchRefference;
+    private System.Windows.Forms.CheckBox checkBoxSearchReference;
+    private System.Windows.Forms.TextBox textBoxSearchReference;
     private System.Windows.Forms.CheckBox checkBoxSearchCrystalSystem;
     public System.Windows.Forms.ComboBox comboBoxSearchCrystalSystem;
     private System.Windows.Forms.CheckBox checkBoxSearchCellParameter;

@@ -743,8 +743,8 @@
     <value>Flat White </value>
   </data>
   <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
-    <value>For X-ray, the intesity per unit energy range of the incident beam is constant.
-For neutron, the number of incident nertrons per unit wavelength interval is constant.</value>
+    <value>For X-ray, the intensity per unit energy range of the incident beam is constant.
+For neutron, the number of incident neutrons per unit wavelength interval is constant.</value>
   </data>
 
 
@@ -2112,10 +2112,10 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>92</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
-    <value>test</value>
+    <value>Set 2θ value</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
-    <value>test</value>
+    <value>Set 2θ value</value>
   </data>
 
 
@@ -2319,10 +2319,10 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>92</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
-    <value>test</value>
+    <value>Set TOF angle</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
-    <value>test</value>
+    <value>Set TOF angle</value>
   </data>
 
 
@@ -2376,10 +2376,10 @@ For neutron, the number of incident nertrons per unit wavelength interval is con
     <value>92</value>
   </data>
   <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
-    <value>test</value>
+    <value>Set TOF flight path length</value>
   </data>
   <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
-    <value>test</value>
+    <value>Set TOF flight path length</value>
   </data>
 
 

@@ -1112,7 +1112,7 @@
     <value>0</value>
   </data>
   <data name="colorControlEdges.ToolTip" xml:space="preserve">
-    <value />
+    <value>Edge color of polyhedron</value>
   </data>
   <data name="colorControlEdges.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1129,61 +1129,61 @@
   <data name="&gt;&gt;colorControlEdges.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="colorControlPlyhedron.AutoSize" type="System.Boolean, mscorlib">
+  <data name="colorControlPolyhedron.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="colorControlPlyhedron.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="colorControlPolyhedron.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="colorControlPlyhedron.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="colorControlPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="colorControlPlyhedron.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="colorControlPolyhedron.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="colorControlPlyhedron.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="colorControlPolyhedron.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="colorControlPlyhedron.FooterText" xml:space="preserve">
+  <data name="colorControlPolyhedron.FooterText" xml:space="preserve">
     <value />
   </data>
-  <data name="colorControlPlyhedron.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="colorControlPolyhedron.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="colorControlPlyhedron.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="colorControlPolyhedron.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
   </data>
-  <data name="colorControlPlyhedron.HeaderText" xml:space="preserve">
+  <data name="colorControlPolyhedron.HeaderText" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="colorControlPlyhedron.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="colorControlPolyhedron.Location" type="System.Drawing.Point, System.Drawing">
     <value>364, 6</value>
   </data>
-  <data name="colorControlPlyhedron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="colorControlPolyhedron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="colorControlPlyhedron.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="colorControlPolyhedron.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 20</value>
   </data>
-  <data name="colorControlPlyhedron.TabIndex" type="System.Int32, mscorlib">
+  <data name="colorControlPolyhedron.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="colorControlPlyhedron.ToolTip" xml:space="preserve">
-    <value />
+  <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
+    <value>Face color of polyhedron</value>
   </data>
-  <data name="colorControlPlyhedron.Visible" type="System.Boolean, mscorlib">
+  <data name="colorControlPolyhedron.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;colorControlPlyhedron.Name" xml:space="preserve">
-    <value>colorControlPlyhedron</value>
+  <data name="&gt;&gt;colorControlPolyhedron.Name" xml:space="preserve">
+    <value>colorControlPolyhedron</value>
   </data>
-  <data name="&gt;&gt;colorControlPlyhedron.Type" xml:space="preserve">
+  <data name="&gt;&gt;colorControlPolyhedron.Type" xml:space="preserve">
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;colorControlPlyhedron.Parent" xml:space="preserve">
+  <data name="&gt;&gt;colorControlPolyhedron.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;colorControlPlyhedron.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;colorControlPolyhedron.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="colorControlBond.AutoSize" type="System.Boolean, mscorlib">
@@ -1226,7 +1226,7 @@
     <value>7</value>
   </data>
   <data name="colorControlBond.ToolTip" xml:space="preserve">
-    <value />
+    <value>Bond color</value>
   </data>
   <data name="colorControlBond.Visible" type="System.Boolean, mscorlib">
     <value>False</value>

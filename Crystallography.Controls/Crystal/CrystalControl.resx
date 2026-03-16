@@ -872,10 +872,10 @@
     <value>Basic Info.</value>
   </data>
   <data name="tabPageBasicInfo.ToolTip" xml:space="preserve">
-    <value>Cell constants, symmetry, and other basic informaton</value>
+    <value>Cell constants, symmetry, and other basic information</value>
   </data>
   <data name="tabPageBasicInfo.ToolTipText" xml:space="preserve">
-    <value>Cell constants, symmetry, and other basic informaton</value>
+    <value>Cell constants, symmetry, and other basic information</value>
   </data>
   <data name="&gt;&gt;tabPageBasicInfo.Name" xml:space="preserve">
     <value>tabPageBasicInfo</value>
@@ -2550,7 +2550,7 @@
     <value>309, 22</value>
   </data>
   <data name="asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as CTF file (comatible to CHANNEL 5 file)</value>
+    <value>as CTF file (compatible with CHANNEL 5 file)</value>
   </data>
   <data name="asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>309, 22</value>

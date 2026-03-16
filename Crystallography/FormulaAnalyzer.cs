@@ -165,7 +165,7 @@ public sealed class SiteBasedParameterization
             // 例: (A_{x}B_{1-x})_{T}
             // ここでは (e1_{x1} e2_{x2} ... ek_{1-Σ})_{T} の形
             var occSymbols = new List<string>();
-            double dummy = 0; // 表示なので計算しない
+            //double dummy = 0; // 表示なので計算しない //260317Cl 未使用変数削除
             for (int j = 0; j < els.Length - 1; j++)
                 occSymbols.Add($"{els[j]}_{{x[{Groups[g].Name}:{els[j]}]}}");
 

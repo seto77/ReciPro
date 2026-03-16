@@ -569,13 +569,13 @@ abstract public class GLObject
                         clip.EnableClips([i]);//i番目のクリップのみ有効化
                                                       //裏面のみ描画(ステンシル値だけ書き込む)
                         GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.IncrWrap);//ステンシル値「+1」
-                        GL.CullFace(CullFaceMode.Front); //表面をカリング
+                        GL.CullFace(TriangleFace.Front); //260317Cl CullFaceMode→TriangleFace 表面をカリング
                         
                       
                         Render();
                         //表面のみ描画(→差分をとってマスク画像にする)
                         GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.DecrWrap);//ステンシル値「-1」
-                        GL.CullFace(CullFaceMode.Back);//裏面をカリング
+                        GL.CullFace(TriangleFace.Back);//260317Cl CullFaceMode→TriangleFace 裏面をカリング
                         Render();
                         //ここまででステンシル完成(0以外が有効)
 

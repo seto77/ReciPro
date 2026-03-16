@@ -67,7 +67,7 @@
             this.dataSet = new Crystallography.Controls.DataSet();
             this.panel1 = new System.Windows.Forms.Panel();
             this.colorControlEdges = new Crystallography.Controls.ColorControl();
-            this.colorControlPlyhedron = new Crystallography.Controls.ColorControl();
+            this.colorControlPolyhedron = new Crystallography.Controls.ColorControl();
             this.colorControlBond = new Crystallography.Controls.ColorControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -477,7 +477,7 @@
             // 
             this.panel1.Controls.Add(this.buttonAddBond);
             this.panel1.Controls.Add(this.colorControlEdges);
-            this.panel1.Controls.Add(this.colorControlPlyhedron);
+            this.panel1.Controls.Add(this.colorControlPolyhedron);
             this.panel1.Controls.Add(this.colorControlBond);
             this.panel1.Controls.Add(this.buttonChangeBond);
             this.panel1.Controls.Add(this.buttonDeleteBond);
@@ -499,20 +499,20 @@
             this.colorControlEdges.Red = 240;
             this.colorControlEdges.RedF = 0.9411765F;
             // 
-            // colorControlPlyhedron
+            // colorControlPolyhedron
             // 
-            this.colorControlPlyhedron.Argb = -986896;
-            resources.ApplyResources(this.colorControlPlyhedron, "colorControlPlyhedron");
-            this.colorControlPlyhedron.Blue = 240;
-            this.colorControlPlyhedron.BlueF = 0.9411765F;
-            this.colorControlPlyhedron.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlPlyhedron.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.colorControlPlyhedron.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlPlyhedron.Green = 240;
-            this.colorControlPlyhedron.GreenF = 0.9411765F;
-            this.colorControlPlyhedron.Name = "colorControlPlyhedron";
-            this.colorControlPlyhedron.Red = 240;
-            this.colorControlPlyhedron.RedF = 0.9411765F;
+            this.colorControlPolyhedron.Argb = -986896;
+            resources.ApplyResources(this.colorControlPolyhedron, "colorControlPolyhedron");
+            this.colorControlPolyhedron.Blue = 240;
+            this.colorControlPolyhedron.BlueF = 0.9411765F;
+            this.colorControlPolyhedron.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlPolyhedron.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.colorControlPolyhedron.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlPolyhedron.Green = 240;
+            this.colorControlPolyhedron.GreenF = 0.9411765F;
+            this.colorControlPolyhedron.Name = "colorControlPolyhedron";
+            this.colorControlPolyhedron.Red = 240;
+            this.colorControlPolyhedron.RedF = 0.9411765F;
             // 
             // colorControlBond
             // 
@@ -729,7 +729,7 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.GroupBox groupBoxPolyhedron;
-        private ColorControl colorControlPlyhedron;
+        private ColorControl colorControlPolyhedron;
         private System.Windows.Forms.CheckBox checkBoxShowEdges;
         private System.Windows.Forms.GroupBox groupBoxEdge;
         private ColorControl colorControlEdges;

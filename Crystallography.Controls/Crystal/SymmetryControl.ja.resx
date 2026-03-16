@@ -140,7 +140,7 @@
     <value>長さの単位</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+    <value>空間群の検索</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 103</value>
@@ -203,10 +203,10 @@
     <value>68, 27</value>
   </data>
   <data name="numericBoxA.ToolTip" xml:space="preserve">
-    <value />
+    <value>格子定数 a</value>
   </data>
   <data name="numericBoxA.ToolTip1" xml:space="preserve">
-    <value />
+    <value>格子定数 a</value>
   </data>
   <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
     <value>179, 0</value>
@@ -221,10 +221,10 @@
     <value>68, 28</value>
   </data>
   <data name="numericBoxGamma.ToolTip" xml:space="preserve">
-    <value />
+    <value>格子定数 γ (度)</value>
   </data>
   <data name="numericBoxGamma.ToolTip1" xml:space="preserve">
-    <value />
+    <value>格子定数 γ (度)</value>
   </data>
   <data name="labelLengthUnitB.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 27</value>
@@ -239,10 +239,10 @@
     <value>68, 27</value>
   </data>
   <data name="numericBoxB.ToolTip" xml:space="preserve">
-    <value />
+    <value>格子定数 b</value>
   </data>
   <data name="numericBoxB.ToolTip1" xml:space="preserve">
-    <value />
+    <value>格子定数 b</value>
   </data>
   <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 54</value>
@@ -260,10 +260,10 @@
     <value>68, 28</value>
   </data>
   <data name="numericBoxC.ToolTip" xml:space="preserve">
-    <value />
+    <value>格子定数 c</value>
   </data>
   <data name="numericBoxC.ToolTip1" xml:space="preserve">
-    <value />
+    <value>格子定数 c</value>
   </data>
   <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>84, 54</value>

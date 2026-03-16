@@ -25,7 +25,7 @@ namespace OpenTK.GLControl
         /// <summary>
         /// The angle (pitch) of the design-time cube.
         /// </summary>
-        private float _designTimeCubeRoll;
+        private float _designTimeCubeRoll = 0; //260317Cl 明示的に初期化 (CS0649対策)
 
         /// <summary>
         /// Endpoints that can make a cube.  We only use this in design mode.

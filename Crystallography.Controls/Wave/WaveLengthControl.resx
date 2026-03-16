@@ -236,7 +236,7 @@
     <value>75:  Re</value>
   </data>
   <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
-    <value>Inuput wave energy</value>
+    <value>Input wave energy</value>
   </data>
   <data name="comboBoxXRayElement.Items79" xml:space="preserve">
     <value>79:  Au</value>
@@ -377,7 +377,7 @@
     <value>radioButtonXray</value>
   </data>
   <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
-    <value>Select a line for the chacteristic X-ray</value>
+    <value>Select a line for the characteristic X-ray</value>
   </data>
   <data name="radioButtonNeutron.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -904,7 +904,7 @@
     <value>KβII2</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
-    <value>Inuput wave energy</value>
+    <value>Input wave energy</value>
   </data>
   <data name="comboBoxXRayElement.Items35" xml:space="preserve">
     <value>35:  Br</value>

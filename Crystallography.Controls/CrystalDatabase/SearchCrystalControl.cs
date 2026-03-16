@@ -60,7 +60,7 @@ public partial class SearchCrystalControl : UserControl
         if (formPeriodicTable.Visible && !checkBoxSearchElements.Checked)
             formPeriodicTable.Visible = false;
 
-        textBoxSearchRefference.Visible = checkBoxSearchRefference.Checked;
+        textBoxSearchReference.Visible = checkBoxSearchReference.Checked;
         textBoxSearchName.Visible = checkBoxSearchName.Checked;
         comboBoxSearchCrystalSystem.Visible = checkBoxSearchCrystalSystem.Checked;
         groupBoxCellParameter.Visible = checkBoxSearchCellParameter.Checked;
@@ -111,7 +111,7 @@ public partial class SearchCrystalControl : UserControl
         backgroundWorkerSearch.RunWorkerAsync(
             new SearchParameters(
             name: checkBoxSearchName.Checked ? textBoxSearchName.Text : "",
-            reference: checkBoxSearchRefference.Checked ? textBoxSearchRefference.Text : "",
+            reference: checkBoxSearchReference.Checked ? textBoxSearchReference.Text : "",
             system: checkBoxSearchCrystalSystem.Checked ? comboBoxSearchCrystalSystem.SelectedIndex : -1,
             includes: formPeriodicTable.Includes,
             excludes: formPeriodicTable.Excludes,

@@ -20,10 +20,10 @@ public partial class PoleFigureControl2 : UserControl
 
     public DrawingModeEnum DrawingMode = DrawingModeEnum.Histogram;
 
-    private StereonetProjectionMode stereonetProjectionMode = StereonetProjectionMode.Schmidt;
+    //private StereonetProjectionMode stereonetProjectionMode = StereonetProjectionMode.Schmidt; //260317Cl 未使用フィールド削除
     private StereonetDirection stereonetDirecion = StereonetDirection.Equrtor;
     private bool showOneDeg = false;
-    private bool showTenDeg = true;
+    //private bool showTenDeg = true; //260317Cl 未使用フィールド削除
 
     private Color backGroundColor = Color.White;
     private Color OneDegColor = Color.FromArgb(192, 192, 255);

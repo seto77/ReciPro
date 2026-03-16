@@ -4595,7 +4595,7 @@ B = 8 pi^2 * U.</value>
     <value>Replace</value>
   </data>
   <data name="buttonChange.ToolTip" xml:space="preserve">
-    <value>Replace the selectd atom with the below atom</value>
+    <value>Replace the selected atom with the below atom</value>
   </data>
   <data name="&gt;&gt;buttonChange.Name" xml:space="preserve">
     <value>buttonChange</value>

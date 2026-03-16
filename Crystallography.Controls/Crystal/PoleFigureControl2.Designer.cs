@@ -155,7 +155,7 @@
         #endregion
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label7;
+        //private System.Windows.Forms.Label label7; //260317Cl 未使用フィールド削除
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.ComboBox comboBoxColor;
         private NumericBox numericBoxMin;

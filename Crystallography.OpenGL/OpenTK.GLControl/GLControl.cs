@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable //260317Cl 追加
+using System;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
@@ -209,7 +210,9 @@ namespace OpenTK.GLControl
 
         // Remove the Text property from the WinForms editor.
         [Browsable(false)]
-        public override string Text { get => base.Text; set => base.Text = value; }
+#pragma warning disable CS8764, CS8765 //260317Cl 基底クラス(Control.Text)がnullable非対応のため抑制
+        public override string? Text { get => base.Text; set => base.Text = value; }
+#pragma warning restore CS8764, CS8765
 
         /// <summary>
         /// Access to native-input properties and methods, for more direct control
@@ -281,7 +284,7 @@ namespace OpenTK.GLControl
                 ForceFocusToCorrectWindow();
             }
 
-            IComponentChangeService changeService = (IComponentChangeService)GetService(typeof(IComponentChangeService));
+            IComponentChangeService? changeService = (IComponentChangeService?)GetService(typeof(IComponentChangeService)); //260317Cl nullable化
             if (changeService != null)
             {
                 changeService.ComponentChanged -= ChangeService_ComponentChanged; // to avoid multiple subscriptions
@@ -296,7 +299,7 @@ namespace OpenTK.GLControl
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">A System.ComponentModel.Design.ComponentChangedEventArgs that contains the event data.</param>
-        private void ChangeService_ComponentChanged(object sender, ComponentChangedEventArgs e)
+        private void ChangeService_ComponentChanged(object? sender, ComponentChangedEventArgs e) //260317Cl nullable化
         {
             if (e.Component == this && DesignMode)
             {
@@ -513,7 +516,7 @@ namespace OpenTK.GLControl
                 return true;
 
             // Try walking the control tree to see if any ancestors are in DesignMode.
-            for (Control control = this; control != null; control = control.Parent)
+            for (Control? control = this; control != null; control = control.Parent) //260317Cl nullable化
             {
                 if (control.Site != null && control.Site.DesignMode)
                     return true;
@@ -595,7 +598,7 @@ namespace OpenTK.GLControl
         {
             // There is no good way to explain this event except to say
             // that it's just another name for OnControlCreated.
-            ((EventHandler)Events[EVENT_LOAD])?.Invoke(this, e);
+            ((EventHandler?)Events[EVENT_LOAD])?.Invoke(this, e); //260317Cl nullable化
         }
 
         /// <summary>

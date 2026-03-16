@@ -101,7 +101,7 @@
     <value>84, 21</value>
   </data>
   <data name="textBoxLabel.ToolTip" xml:space="preserve">
-    <value />
+    <value>ラベル</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -119,7 +119,7 @@
     <value>84, 23</value>
   </data>
   <data name="comboBoxAtom.ToolTip" xml:space="preserve">
-    <value />
+    <value>元素を選択</value>
   </data>
   <data name="checkBoxDetailAtomicPositionError.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

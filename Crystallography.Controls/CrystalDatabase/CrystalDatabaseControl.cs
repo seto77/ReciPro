@@ -11,7 +11,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
+//using System.Net; //260317Cl WebClient→HttpClient
+using System.Net.Http;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Threading;
@@ -28,6 +29,9 @@ namespace Crystallography.Controls;
 
 public partial class CrystalDatabaseControl : UserControl
 {
+    //260317Cl 追加 HttpClientはstaticで再利用
+    private static readonly HttpClient httpClient = new() { Timeout = TimeSpan.FromSeconds(600) };
+
     #region フィールド、メソッド、イベント
     public bool AMCSD_Checked {get=> checkBoxAMCSD.Checked; set => checkBoxAMCSD.Checked = value; }
     public bool COD_Checked {get=>checkBoxCOD.Checked;set => checkBoxCOD.Checked = value; }
@@ -446,7 +450,9 @@ public partial class CrystalDatabaseControl : UserControl
         {//適切にダウンロードされている場合
             try//web上に新しいデータがあるかどうかをチェック
             {
-                if (new WebClient().DownloadData(new Uri(urlHeader + "COD.cdb3")).SequenceEqual(File.ReadAllBytes(UserAppDataPath + "COD.cdb3")))
+                //260317Cl WebClient→HttpClient
+                //if (new WebClient().DownloadData(new Uri(urlHeader + "COD.cdb3")).SequenceEqual(File.ReadAllBytes(UserAppDataPath + "COD.cdb3")))
+                if (httpClient.GetByteArrayAsync(urlHeader + "COD.cdb3").Result.SequenceEqual(File.ReadAllBytes(UserAppDataPath + "COD.cdb3")))
                 {//ローカルのCODが最新版の場合
                     ReadDatabase(UserAppDataPath + "COD.cdb3");
                     return true;
@@ -492,6 +498,8 @@ public partial class CrystalDatabaseControl : UserControl
         return true;
     }
 
+    //260317Cl WebClient→HttpClient
+    //private static readonly HttpClient httpClient = new(); は上部で定義
     private void DownloadCodWorker_DoWork(object sender, DoWorkEventArgs e)
     {
 
@@ -502,40 +510,50 @@ public partial class CrystalDatabaseControl : UserControl
         try
         {
             sw.Restart();
-            new WebClient().DownloadFile(new Uri(urlHeader + "COD.cdb3"), UserAppDataPath + "COD.cdb3");
+            //260317Cl WebClient→HttpClient
+            //new WebClient().DownloadFile(new Uri(urlHeader + "COD.cdb3"), UserAppDataPath + "COD.cdb3");
+            var cdb3Data = httpClient.GetByteArrayAsync(urlHeader + "COD.cdb3").Result;
+            File.WriteAllBytes(UserAppDataPath + "COD.cdb3", cdb3Data);
 
             Directory.CreateDirectory(UserAppDataPath + "COD");
 
             var (_, DataNum, FileNum, FileSizes, CheckSums) = CheckDatabaseFiles(UserAppDataPath + "COD.cdb3", false);
 
-            var wc = new MyWebClient[FileNum];
+            //260317Cl WebClient→HttpClient 並列ダウンロード
             var total = FileSizes.Sum();
             var current = new long[FileNum];
             var completedCount = 0;
             long n = 1;
-            for (int i = 0; i < wc.Length; i++)
+            var tasks = new Task[FileNum];
+
+            for (int i = 0; i < FileNum; i++)
             {
-                wc[i] = new MyWebClient();
                 var _i = i;//このインスタンスで作成する必要あり
-                wc[i].DownloadProgressChanged += (s, ev) =>
+                var url = $"{urlHeader}COD/COD.{_i:000}";
+                var filePath = $"{UserAppDataPath}COD\\COD.{_i:000}";
+                tasks[_i] = Task.Run(async () =>
                 {
-                    current[_i] = ev.BytesReceived;
-                    if (n++ % 100 == 0)
-                        DownloadCodWorker.ReportProgress(0, report(current.Sum(), total, sw.ElapsedMilliseconds,
-                        $"Downloading COD database ({current.Sum() / 1E6:f0} MB / {total / 1E6:f0} MB) ..."));
-                };
-                wc[i].DownloadFileCompleted += (s, ev) =>
-                {
-                    if (!ev.Cancelled)
-                        completedCount++;
-                };
+                    using var response = await httpClient.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+                    response.EnsureSuccessStatusCode();
+                    using var contentStream = await response.Content.ReadAsStreamAsync();
+                    using var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+                    var buffer = new byte[8192];
+                    int read;
+                    long bytesRead = 0;
+                    while ((read = await contentStream.ReadAsync(buffer)) > 0)
+                    {
+                        await fileStream.WriteAsync(buffer.AsMemory(0, read));
+                        bytesRead += read;
+                        current[_i] = bytesRead;
+                        if (Interlocked.Increment(ref n) % 100 == 0)
+                            DownloadCodWorker.ReportProgress(0, report(current.Sum(), total, sw.ElapsedMilliseconds,
+                            $"Downloading COD database ({current.Sum() / 1E6:f0} MB / {total / 1E6:f0} MB) ..."));
+                    }
+                    Interlocked.Increment(ref completedCount);
+                });
             }
 
-            for (int i = 0; i < wc.Length; i++)
-                wc[i].DownloadFileAsync(new Uri($"{urlHeader}COD/COD.{i:000}"), $"{UserAppDataPath}COD\\COD.{i:000}");
-
-            while (completedCount < FileNum)//ダウンロードが完了するまで待つ
-                Thread.Sleep(100);
+            Task.WaitAll(tasks);
         }
         catch
         {
@@ -554,15 +572,8 @@ public partial class CrystalDatabaseControl : UserControl
     {
     }
 
-    private class MyWebClient : WebClient
-    {
-        protected override WebRequest GetWebRequest(Uri uri)
-        {
-            WebRequest w = base.GetWebRequest(uri);
-            w.Timeout = 600 * 1000;
-            return w;
-        }
-    }
+    //260317Cl 削除 MyWebClient : WebClient (HttpClientに移行)
+    //private class MyWebClient : WebClient { ... }
 
     #endregion
 

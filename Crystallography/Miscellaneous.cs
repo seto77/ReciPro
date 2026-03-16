@@ -125,22 +125,22 @@ public static class Miscellaneous
             {
                 stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
             }
-            catch (DirectoryNotFoundException e)
+            catch (DirectoryNotFoundException) //260317Cl 未使用変数e削除
             {
                 return false;
             }
-            catch (FileNotFoundException e)
+            catch (FileNotFoundException) //260317Cl 未使用変数e削除
             {
                 return false;
             }
-            catch (IOException e)
+            catch (IOException) //260317Cl 未使用変数e削除
             {
                 if (File.Exists(path))
                 {
                     return true;
                 }
             }
-            catch (Exception e)
+            catch (Exception) //260317Cl 未使用変数e削除
             {
                 return false;
             }

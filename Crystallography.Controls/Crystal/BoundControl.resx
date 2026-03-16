@@ -729,7 +729,7 @@ limit the range by the distance from the origin.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="checkBoxImmediateUpdate.ToolTip" xml:space="preserve">
-    <value />
+    <value>Apply changes immediately</value>
   </data>
   <data name="buttonChangeBond.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 35</value>
@@ -747,7 +747,7 @@ limit the range by the distance from the origin.</value>
     <value>dataGridViewTextBoxColumn2</value>
   </data>
   <data name="checkBoxEquivalency.ToolTip" xml:space="preserve">
-    <value />
+    <value>Include symmetry-equivalent planes</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -774,7 +774,7 @@ limit the range by the distance from the origin.</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="buttonChangeBond.ToolTip" xml:space="preserve">
-    <value />
+    <value>Replace the selected bounding plane</value>
   </data>
   <data name="enabledDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value />
@@ -915,7 +915,7 @@ limit the range by the distance from the origin.</value>
     <value>panel2</value>
   </data>
   <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
-    <value />
+    <value>Delete the selected bounding plane</value>
   </data>
   <data name="numericBoxTranslation.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 34</value>

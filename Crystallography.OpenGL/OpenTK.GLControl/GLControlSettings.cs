@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable //260317Cl 追加
+using System;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 

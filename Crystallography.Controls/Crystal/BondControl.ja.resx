@@ -221,7 +221,7 @@
   <data name="showPolyhedronDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
     <value>90</value>
   </data>
-  <data name="colorControlPlyhedron.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="colorControlPolyhedron.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 6</value>
   </data>
 </root>

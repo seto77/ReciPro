@@ -100,22 +100,22 @@
   <data name="buttonPeriodicTable.Text" xml:space="preserve">
     <value>周期表</value>
   </data>
-  <data name="checkBoxSearchRefference.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="checkBoxSearchReference.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="checkBoxSearchRefference.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="checkBoxSearchReference.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 111</value>
   </data>
-  <data name="checkBoxSearchRefference.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBoxSearchReference.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 22</value>
   </data>
-  <data name="checkBoxSearchRefference.Text" xml:space="preserve">
+  <data name="checkBoxSearchReference.Text" xml:space="preserve">
     <value>文献</value>
   </data>
-  <data name="textBoxSearchRefference.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxSearchReference.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 133</value>
   </data>
-  <data name="textBoxSearchRefference.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxSearchReference.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 25</value>
   </data>
   <data name="checkBoxSearchCrystalSystem.Font" type="System.Drawing.Font, System.Drawing">

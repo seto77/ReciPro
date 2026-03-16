@@ -773,10 +773,10 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxA.ToolTip" xml:space="preserve">
-    <value>Cell constant "a" in angstrom</value>
+    <value>Cell constant "a"</value>
   </data>
   <data name="numericBoxA.ToolTip1" xml:space="preserve">
-    <value>Cell constant "a" in angstrom</value>
+    <value>Cell constant "a"</value>
   </data>
   <data name="&gt;&gt;numericBoxA.Name" xml:space="preserve">
     <value>numericBoxA</value>
@@ -1043,10 +1043,10 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxB.ToolTip" xml:space="preserve">
-    <value>Cell constant "b" in angstrom</value>
+    <value>Cell constant "b"</value>
   </data>
   <data name="numericBoxB.ToolTip1" xml:space="preserve">
-    <value>Cell constant "b" in angstrom</value>
+    <value>Cell constant "b"</value>
   </data>
   <data name="&gt;&gt;numericBoxB.Name" xml:space="preserve">
     <value>numericBoxB</value>
@@ -1244,10 +1244,10 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxC.ToolTip" xml:space="preserve">
-    <value>Cell constant "c" in angstrom</value>
+    <value>Cell constant "c"</value>
   </data>
   <data name="numericBoxC.ToolTip1" xml:space="preserve">
-    <value>Cell constant "c" in angstrom</value>
+    <value>Cell constant "c"</value>
   </data>
   <data name="&gt;&gt;numericBoxC.Name" xml:space="preserve">
     <value>numericBoxC</value>

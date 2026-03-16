@@ -536,7 +536,7 @@
     <value>4</value>
   </data>
   <data name="colorControl.ToolTip" xml:space="preserve">
-    <value />
+    <value>Color of the lattice plane</value>
   </data>
   <data name="&gt;&gt;colorControl.Name" xml:space="preserve">
     <value>colorControl</value>
