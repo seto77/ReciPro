@@ -380,4 +380,43 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>596, 132</value>
   </data>
+  <data name="checkBoxShowError.ToolTip" xml:space="preserve">
+    <value>誤差を表示</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>格子定数 β (度)</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip1" xml:space="preserve">
+    <value>格子定数 β (度)</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>格子定数 α (度)</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip1" xml:space="preserve">
+    <value>格子定数 α (度)</value>
+  </data>
+  <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
+    <value>HM記法で空間群を設定</value>
+  </data>
+  <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
+    <value>HM記法で点群を設定</value>
+  </data>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>結晶系を設定</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>HM記法で空間群を設定</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>空間群を検索</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>結晶系を設定</value>
+  </data>
+  <data name="textBoxSearch.ToolTip" xml:space="preserve">
+    <value>空間群を検索</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>HM記法で点群を設定</value>
+  </data>
 </root>

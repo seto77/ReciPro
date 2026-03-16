@@ -966,35 +966,37 @@
   <data name="numericBoxSTEM_AngleResolution.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.HeaderText" xml:space="preserve">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
     <value>非弾性計算時のスライス厚み</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 47</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 25</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.ToolTip" xml:space="preserve">
-    <value>非弾性散乱用のスライス厚さ</value>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
+    <value>TDS電子強度計算時に試料をスライスする厚さを設定します。
+値が小さいほど計算速度は遅くなりますが、精度が向上します。</value>
   </data>
-  <data name="numericBoxSliceThicknessForInelasticSTEM.ToolTip1" xml:space="preserve">
-    <value>非弾性散乱用のスライス厚さ</value>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip1" xml:space="preserve">
+    <value>TDS電子強度計算時に試料をスライスする厚さを設定します。
+値が小さいほど計算速度は遅くなりますが、精度が向上します。</value>
   </data>
   <data name="groupBoxHREMoption2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1009,10 +1011,12 @@
     <value>HREM オプション</value>
   </data>
   <data name="radioButtonModeQuasiCoherent.ToolTip" xml:space="preserve">
-    <value>線形イメージモデル</value>
+    <value>線形イメージモデル。計算コストが低い。
+弱位相物体近似が成り立つ薄い試料に適しています。</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
-    <value>TCCモデル</value>
+    <value>透過交差係数(TCC)モデル。計算コストが高い。
+多くの強い回折波を励起する強散乱体に使用すべきモデルです。</value>
   </data>
   <data name="label32.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1607,10 +1611,12 @@
     <value>154, 23</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
-    <value>試料の厚さ</value>
+    <value>試料の厚さ
+「連続画像」モードが選択されている場合、この値は無視されます。</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
-    <value>試料の厚さ</value>
+    <value>試料の厚さ
+「連続画像」モードが選択されている場合、この値は無視されます。</value>
   </data>
   <data name="checkBoxPreset.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1689,5 +1695,175 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>HRTEM/STEM シミュレータ</value>
+  </data>
+  <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
+    <value>TDS（非弾性）電子のみ表示</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
+    <value>弾性電子のみ表示</value>
+  </data>
+  <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
+    <value>弾性・非弾性電子の両方を表示。</value>
+  </data>
+  <data name="colorControlScale.ToolTip" xml:space="preserve">
+    <value>スケールバーの色</value>
+  </data>
+  <data name="colorControlScale.ToolTip1" xml:space="preserve">
+    <value>スケールバーの色</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
+    <value>スケールバーの長さ (nm)</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip1" xml:space="preserve">
+    <value>スケールバーの長さ (nm)</value>
+  </data>
+  <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
+    <value>スケールバーの表示/非表示</value>
+  </data>
+  <data name="colorControlLabel.ToolTip" xml:space="preserve">
+    <value>ラベルの色</value>
+  </data>
+  <data name="colorControlLabel.ToolTip1" xml:space="preserve">
+    <value>ラベルの色</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip" xml:space="preserve">
+    <value>ラベルのフォントサイズをポイントで設定</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip1" xml:space="preserve">
+    <value>ラベルのフォントサイズをポイントで設定</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>ラベルの表示/非表示</value>
+  </data>
+  <data name="checkBoxSerialThickness.ToolTip" xml:space="preserve">
+    <value>異なる膜厚の連続画像を作成</value>
+  </data>
+  <data name="checkBoxSerialDefocus.ToolTip" xml:space="preserve">
+    <value>異なるデフォーカス値の連続画像を作成</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
+    <value>入射電子の角度分解能 (mrad)。</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
+    <value>入射電子の角度分解能 (mrad)。</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip" xml:space="preserve">
+    <value>シミュレーション画像の高さ（ピクセル）</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip1" xml:space="preserve">
+    <value>シミュレーション画像の高さ（ピクセル）</value>
+  </data>
+  <data name="numericBoxWidth.ToolTip" xml:space="preserve">
+    <value>シミュレーション画像の幅（ピクセル）</value>
+  </data>
+  <data name="numericBoxWidth.ToolTip1" xml:space="preserve">
+    <value>シミュレーション画像の幅（ピクセル）</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>シミュレーション画像の分解能 (pm/pixel)</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>シミュレーション画像の分解能 (pm/pixel)</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
+    <value>ベーテ法で使用するブロッホ波の最大数。
+値が大きいほど計算速度は遅くなりますが、精度が向上します。</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>ベーテ法で使用するブロッホ波の最大数。
+値が大きいほど計算速度は遅くなりますが、精度が向上します。</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
+    <value>有効電子源のサイズ。</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
+    <value>有効電子源のサイズ。</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
+    <value>入射電子の収束角 (mrad単位)。</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
+    <value>入射電子の収束角 (mrad単位)。</value>
+  </data>
+  <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
+    <value>対物絞りのサイズ (mrad)</value>
+  </data>
+  <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
+    <value>対物絞りのサイズ (mrad)</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>シェルツァーデフォーカス値 (nm)</value>
+  </data>
+  <data name="numericBoxCc.ToolTip" xml:space="preserve">
+    <value>Cc: 色収差 (mm)</value>
+  </data>
+  <data name="numericBoxCc.ToolTip1" xml:space="preserve">
+    <value>Cc: 色収差 (mm)</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
+    <value>ΔV: 電子エネルギーゆらぎの
+1/e幅
+（単位は「eV」）</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip1" xml:space="preserve">
+    <value>ΔV: 電子エネルギーゆらぎの
+1/e幅
+（単位は「eV」）</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip" xml:space="preserve">
+    <value>β: 有限光源サイズ効果による
+照射半角 (mrad)</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip1" xml:space="preserve">
+    <value>β: 有限光源サイズ効果による
+照射半角 (mrad)</value>
+  </data>
+  <data name="numericBoxCs.ToolTip" xml:space="preserve">
+    <value>Cs: 球面収差 (mm)</value>
+  </data>
+  <data name="numericBoxCs.ToolTip1" xml:space="preserve">
+    <value>Cs: 球面収差 (mm)</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
+    <value>デフォーカス値 (nm)</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
+    <value>デフォーカス値 (nm)</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
+    <value>TEMの加速電圧 (kV)</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
+    <value>TEMの加速電圧 (kV)</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>シェルツァーデフォーカス値 (nm)</value>
+  </data>
+  <data name="textBoxScherzer.ToolTip" xml:space="preserve">
+    <value>シェルツァーデフォーカス値 (nm)</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>シェルツァーデフォーカス値 (nm)</value>
+  </data>
+  <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
+    <value>STEM像をシミュレートします。</value>
+  </data>
+  <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
+    <value>ポテンシャル像をシミュレートします。</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
+    <value>チェックすると、結晶の回転に合わせて即座に画像が計算されます</value>
+  </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>上記の設定で画像をシミュレート</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.ToolTipText" xml:space="preserve">
+    <value>連続画像モードでシミュレーションする際、各画像を個別に保存します。</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.ToolTipText" xml:space="preserve">
+    <value>保存画像に単位胞、ラベル、スケールバーを重ね印刷します。</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>現在のシミュレーションを停止</value>
   </data>
 </root>

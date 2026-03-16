@@ -477,4 +477,89 @@
   <data name="groupBoxOutput.Text" xml:space="preserve">
     <value>出力パラメータ</value>
   </data>
+  <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
+    <value>大角度CBED (LACBED) モード</value>
+  </data>
+  <data name="numericBoxThread.ToolTip" xml:space="preserve">
+    <value>CBEDシミュレーション用のCPUスレッド数を設定</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>試料の厚さの範囲とステップを設定</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>色を選択</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>表示する試料の厚さを選択します。</value>
+  </data>
+  <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
+    <value>最大半収束角 (mrad)</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>グラデーションを選択</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>試料の厚さの範囲とステップを設定</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>現在のシミュレーションを停止</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
+    <value>試料の厚さの範囲とステップを設定</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
+    <value>計算する回折波の数を設定</value>
+  </data>
+  <data name="trackBarGamma.ToolTip" xml:space="preserve">
+    <value>ガンマ値を設定します。
+この値が大きいほど、外側のディスクが明るく見えます。</value>
+  </data>
+  <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
+    <value>各ディスクの上限/下限に個別の明るさレベルを適用します。</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>明るさがゼロとして表示される強度を設定します。</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>試料の厚さの範囲とステップを設定</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>計算する回折波の数を設定</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>試料の厚さの範囲とステップを設定</value>
+  </data>
+  <data name="numericBoxDiskResolution.ToolTip1" xml:space="preserve">
+    <value>直径に沿った分割数を設定します。
+2次元の分割数が右に表示されます</value>
+  </data>
+  <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
+    <value>各回折ディスクの境界を示す円を描画</value>
+  </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>CBEDシミュレーション用のCPUスレッド数を設定</value>
+  </data>
+  <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
+    <value>直径に沿った分割数を設定します。
+2次元の分割数が右に表示されます</value>
+  </data>
+  <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
+    <value>すべてのディスクに同じ明るさレベル（最小/最大）を適用します。</value>
+  </data>
+  <data name="buttonExecute.ToolTip" xml:space="preserve">
+    <value>CBEDシミュレーションを実行</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>明るさが最大値として表示される強度を設定します。</value>
+  </data>
+  <data name="radioButtonCBED.ToolTip" xml:space="preserve">
+    <value>収束電子回折(CBED)モード</value>
+  </data>
+  <data name="comboBoxSolver.ToolTip" xml:space="preserve">
+    <value>ソルバーを選択します。
+すべてのソルバーは同じ結果を出しますが、計算速度が異なります。</value>
+  </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
+    <value>試料の厚さの範囲とステップを設定</value>
+  </data>
 </root>

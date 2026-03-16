@@ -232,4 +232,32 @@
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>波動エネルギーを入力</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>特性X線の線を選択</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>波長を入力</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>波源を選択</value>
+  </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>特性X線を発する元素（1:H～98:Cf）を選択します。
+「0:custom」を選択すると、エネルギーまたは波長を自由に入力できます。</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>波源を選択</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>波長を入力</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>波動エネルギーを入力</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>波源を選択</value>
+  </data>
 </root>

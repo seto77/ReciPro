@@ -224,4 +224,34 @@
   <data name="colorControlPolyhedron.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 6</value>
   </data>
+  <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
+    <value>中心に対応する原子を選択</value>
+  </data>
+  <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
+    <value>頂点に対応する原子を選択</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
+    <value>結合（円柱）の半径</value>
+  </data>
+  <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
+    <value>結合（円柱）の半径</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>下の結合 &amp; 多面体を追加</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>選択された結合 &amp; 多面体を下のもので置換</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>選択された結合 &amp; 多面体を削除</value>
+  </data>
+  <data name="colorControlEdges.ToolTip" xml:space="preserve">
+    <value>多面体の辺の色</value>
+  </data>
+  <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
+    <value>多面体の面の色</value>
+  </data>
+  <data name="colorControlBond.ToolTip" xml:space="preserve">
+    <value>結合の色</value>
+  </data>
 </root>

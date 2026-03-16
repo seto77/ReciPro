@@ -1746,4 +1746,217 @@
         AAD//wAA//8AAA==
 </value>
   </data>
+  <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
+    <value>セル辺の色を個別に設定</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.ToolTip" xml:space="preserve">
+    <value>境界面の不透明度（0=透明、1=不透明）</value>
+  </data>
+  <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
+    <value>すべてのセル辺の色を設定</value>
+  </data>
+  <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
+    <value>中心位置を設定</value>
+  </data>
+  <data name="numericBoxProjectionCenterY.ToolTip" xml:space="preserve">
+    <value>単位胞を平行移動（分率座標）</value>
+  </data>
+  <data name="numericBoxARange.ToolTip1" xml:space="preserve">
+    <value>描画範囲を設定</value>
+  </data>
+  <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
+    <value>セル面の色を個別に設定</value>
+  </data>
+  <data name="buttonSetRange0.ToolTip" xml:space="preserve">
+    <value>表示範囲を各単位胞軸の ±1/4 に設定</value>
+  </data>
+  <data name="checkBoxCellShowEdge.ToolTip" xml:space="preserve">
+    <value>セル辺を表示</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip" xml:space="preserve">
+    <value>描画範囲を設定</value>
+  </data>
+  <data name="checkBoxShowSubCell.ToolTip" xml:space="preserve">
+    <value>単位胞内の分割を表示</value>
+  </data>
+  <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
+    <value>セル面の色を個別に設定</value>
+  </data>
+  <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
+    <value>セル面の色を個別に設定</value>
+  </data>
+  <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
+    <value>セル辺の色を個別に設定</value>
+  </data>
+  <data name="numericBoxCRange.ToolTip" xml:space="preserve">
+    <value>描画範囲を設定</value>
+  </data>
+  <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
+    <value>表示中心を原点 (0, 0, 0) に設定</value>
+  </data>
+  <data name="numericBoxClientHeight.ToolTip" xml:space="preserve">
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
+  </data>
+  <data name="checkBoxClipObjects.ToolTip" xml:space="preserve">
+    <value>境界面で原子と結合をクリップ</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
+    <value>中心位置を設定</value>
+  </data>
+  <data name="colorControlCellPlane.ToolTip1" xml:space="preserve">
+    <value>すべてのセル面の色を設定</value>
+  </data>
+  <data name="toolStripButtonLegend.ToolTipText" xml:space="preserve">
+    <value>凡例の表示/非表示</value>
+  </data>
+  <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
+    <value>単位胞を表示</value>
+  </data>
+  <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
+    <value>セル辺の色を個別に設定</value>
+  </data>
+  <data name="numericBoxProjectionCenterX.ToolTip" xml:space="preserve">
+    <value>単位胞を平行移動（分率座標）</value>
+  </data>
+  <data name="checkBoxHideAllAtoms.ToolTip" xml:space="preserve">
+    <value>3Dビューからすべての原子を非表示</value>
+  </data>
+  <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
+    <value>境界外の結合原子も表示</value>
+  </data>
+  <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
+    <value>すべてのセル面の色を設定</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.ToolTip" xml:space="preserve">
+    <value>格子面の不透明度（0=透明、1=不透明）</value>
+  </data>
+  <data name="numericBoxClientHeight.ToolTip1" xml:space="preserve">
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
+  </data>
+  <data name="buttonSetRange3.ToolTip" xml:space="preserve">
+    <value>表示範囲を各単位胞軸の ±1 に設定</value>
+  </data>
+  <data name="radioButtonCellEdgeColorEach.ToolTip" xml:space="preserve">
+    <value>セル辺の色を個別に設定</value>
+  </data>
+  <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
+    <value>描画範囲を設定</value>
+  </data>
+  <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
+    <value>セル面の色を個別に設定</value>
+  </data>
+  <data name="buttonSetRange1.ToolTip" xml:space="preserve">
+    <value>表示範囲を各単位胞軸の ±1/2 に設定</value>
+  </data>
+  <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
+    <value>セル辺の色を個別に設定</value>
+  </data>
+  <data name="trackBarPerspective.ToolTip" xml:space="preserve">
+    <value>視点から描画オブジェクトまでの距離を調整します。</value>
+  </data>
+  <data name="numericBoxProjectionCenterY.ToolTip1" xml:space="preserve">
+    <value>単位胞を平行移動（分率座標）</value>
+  </data>
+  <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
+    <value>セル辺の色を個別に設定</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
+    <value>中心位置を設定</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.ToolTip" xml:space="preserve">
+    <value>カスタム投影中心座標を使用</value>
+  </data>
+  <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
+    <value>セル面の色を個別に設定</value>
+  </data>
+  <data name="toolStripButtonLightDirection.ToolTipText" xml:space="preserve">
+    <value>光源方向制御球の表示/非表示</value>
+  </data>
+  <data name="checkBoxCellShowPlane.ToolTip" xml:space="preserve">
+    <value>セル面を表示</value>
+  </data>
+  <data name="buttonCenter2.ToolTip" xml:space="preserve">
+    <value>表示中心を (1/4, 1/4, 1/4) に設定</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.ToolTip" xml:space="preserve">
+    <value>単位胞を平行移動（分率座標）</value>
+  </data>
+  <data name="buttonSetRange2.ToolTip" xml:space="preserve">
+    <value>表示範囲を各単位胞軸の ±3/4 に設定</value>
+  </data>
+  <data name="numericBoxProjectionCenterX.ToolTip1" xml:space="preserve">
+    <value>単位胞を平行移動（分率座標）</value>
+  </data>
+  <data name="comboBoxProjectionMode.ToolTip" xml:space="preserve">
+    <value>正射影または透視投影を選択</value>
+  </data>
+  <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
+    <value>セル面の色を個別に設定</value>
+  </data>
+  <data name="toolStripButtonCrystalAxes.ToolTipText" xml:space="preserve">
+    <value>結晶軸インジケータの表示/非表示</value>
+  </data>
+  <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
+    <value>セル辺の色を個別に設定</value>
+  </data>
+  <data name="radioButtonCellPlaneColorAll.ToolTip" xml:space="preserve">
+    <value>すべてのセル面の色を設定</value>
+  </data>
+  <data name="numericBoxClientWidth.ToolTip" xml:space="preserve">
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
+  </data>
+  <data name="colorControlCellEdge.ToolTip" xml:space="preserve">
+    <value>すべてのセル辺の色を設定</value>
+  </data>
+  <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
+    <value>中心位置を設定</value>
+  </data>
+  <data name="trackBarCellEdgeWidth.ToolTip" xml:space="preserve">
+    <value>セル辺の線幅を設定</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
+    <value>単位胞を平行移動（分率座標）</value>
+  </data>
+  <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
+    <value>表示中心を (1/2, 1/2, 1/2) に設定</value>
+  </data>
+  <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
+    <value>単位胞の表示設定を構成</value>
+  </data>
+  <data name="buttonSetRange4.ToolTip" xml:space="preserve">
+    <value>表示範囲を各単位胞軸の ±1.5 に設定</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip" xml:space="preserve">
+    <value>中心位置を設定</value>
+  </data>
+  <data name="radioButtonCellEdgeColorAll.ToolTip" xml:space="preserve">
+    <value>すべてのセル辺の色を設定</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
+    <value>中心位置を設定</value>
+  </data>
+  <data name="radioButtonCellPlaneColorEach.ToolTip" xml:space="preserve">
+    <value>セル面の色を個別に設定</value>
+  </data>
+  <data name="checkBoxShowBoundPlanes.ToolTip" xml:space="preserve">
+    <value>結晶の境界面の表示/非表示</value>
+  </data>
+  <data name="radioButtonProjectionCenter2.ToolTip" xml:space="preserve">
+    <value>投影中心を (1/2, 1/2, 1/2) に設定</value>
+  </data>
+  <data name="numericBoxClientWidth.ToolTip1" xml:space="preserve">
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
+    <value>描画範囲を設定</value>
+  </data>
+  <data name="numericBoxARange.ToolTip" xml:space="preserve">
+    <value>描画範囲を設定</value>
+  </data>
+  <data name="radioButtonProjectionCenter1.ToolTip" xml:space="preserve">
+    <value>投影中心を原点に設定</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>現在の画像をファイルに保存</value>
+  </data>
 </root>

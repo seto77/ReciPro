@@ -330,4 +330,20 @@
   <data name="checkBoxEnableArrow.Text" xml:space="preserve">
     <value>矢印キーを有効化</value>
   </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>10度線の色</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>1度線の色
+「1°線を表示」がチェックされているときに有効</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>90度線の色</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>ホルダーの色</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>[100], [010], [001] 軸ラベルの色</value>
+  </data>
 </root>

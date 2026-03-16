@@ -710,4 +710,43 @@
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
+    <value>すべてのスポットをクリア</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
+    <value>フィッティング範囲（半径）をピクセル単位で設定</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip" xml:space="preserve">
+    <value>検出するスポット数を指定</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
+    <value>スポット間の最小距離（ピクセル単位）</value>
+  </data>
+  <data name="buttonSaveToFile.ToolTip" xml:space="preserve">
+    <value>上記の情報を保存</value>
+  </data>
+  <data name="numericBoxNumberOfSpots.ToolTip1" xml:space="preserve">
+    <value>検出するスポット数を指定</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
+    <value>スポット間の最小距離（ピクセル単位）</value>
+  </data>
+  <data name="buttonFindSpots.ToolTip" xml:space="preserve">
+    <value>読み込んだ画像中の回折スポットを検出しフィッティングします。
+検索するスポット数、スポット間の最小距離、
+フィッティング範囲を右のボックスで指定してください。</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
+    <value>フィッティング範囲（半径）をピクセル単位で設定</value>
+  </data>
+  <data name="buttonClearSpots.ToolTip" xml:space="preserve">
+    <value>すべてのスポットをクリア</value>
+  </data>
+  <data name="buttonIdentifySpots.ToolTip" xml:space="preserve">
+    <value>スポットを同定
+（メインウィンドウで適切な結晶を選択する必要があります）</value>
+  </data>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>上記の情報をクリップボードにコピー</value>
+  </data>
 </root>

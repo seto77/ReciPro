@@ -553,4 +553,76 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 362</value>
   </data>
+  <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
+    <value>単位胞の体積 (nm³)</value>
+  </data>
+  <data name="numericBoxCellMass.ToolTip" xml:space="preserve">
+    <value>単位胞の質量 (10⁻²⁴ g)</value>
+  </data>
+  <data name="numericBoxCellMass.ToolTip1" xml:space="preserve">
+    <value>単位胞の質量 (10⁻²⁴ g)</value>
+  </data>
+  <data name="numericBoxMolarVolume.ToolTip" xml:space="preserve">
+    <value>モル体積 (cm³/mol)</value>
+  </data>
+  <data name="numericBoxMolarVolume.ToolTip1" xml:space="preserve">
+    <value>モル体積 (cm³/mol)</value>
+  </data>
+  <data name="numericBoxMolarMass.ToolTip" xml:space="preserve">
+    <value>モル質量 (g/mol)</value>
+  </data>
+  <data name="numericBoxMolarMass.ToolTip1" xml:space="preserve">
+    <value>モル質量 (g/mol)</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>密度 (g/cm³)</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip1" xml:space="preserve">
+    <value>密度 (g/cm³)</value>
+  </data>
+  <data name="tabPageBasicInfo.ToolTip" xml:space="preserve">
+    <value>格子定数、対称性、その他の基本情報</value>
+  </data>
+  <data name="tabPageBasicInfo.ToolTipText" xml:space="preserve">
+    <value>格子定数、対称性、その他の基本情報</value>
+  </data>
+  <data name="tabPageAtom.ToolTip" xml:space="preserve">
+    <value>原子位置と種類</value>
+  </data>
+  <data name="tabPageAtom.ToolTipText" xml:space="preserve">
+    <value>原子位置と種類</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>プロファイルの色</value>
+  </data>
+  <data name="colorControl.ToolTip1" xml:space="preserve">
+    <value>プロファイルの色</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>化学式</value>
+  </data>
+  <data name="label90.ToolTip" xml:space="preserve">
+    <value>化学式</value>
+  </data>
+  <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
+    <value>Z（単位胞中の化学式の数）</value>
+  </data>
+  <data name="numericBoxZnumber.ToolTip1" xml:space="preserve">
+    <value>Z（単位胞中の化学式の数）</value>
+  </data>
+  <data name="textBoxName.ToolTip" xml:space="preserve">
+    <value>結晶の名前</value>
+  </data>
+  <data name="buttonScatteringFactor.ToolTip" xml:space="preserve">
+    <value>構造因子を別ウィンドウで開く</value>
+  </data>
+  <data name="buttonSymmetryInfo.ToolTip" xml:space="preserve">
+    <value>対称性の詳細情報を別ウィンドウで開く</value>
+  </data>
+  <data name="numericBoxVolumeAng.ToolTip" xml:space="preserve">
+    <value>単位胞の体積 (Å³)</value>
+  </data>
+  <data name="numericBoxVolumeAng.ToolTip1" xml:space="preserve">
+    <value>単位胞の体積 (Å³)</value>
+  </data>
 </root>

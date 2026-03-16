@@ -652,4 +652,68 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 321</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>ラベル</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>元素</value>
+  </data>
+  <data name="numericBoxOcc.ToolTip" xml:space="preserve">
+    <value>サイト占有率</value>
+  </data>
+  <data name="numericBoxOcc.ToolTip1" xml:space="preserve">
+    <value>サイト占有率</value>
+  </data>
+  <data name="numericBoxZ.ToolTip" xml:space="preserve">
+    <value>c軸の分率座標。分数形式（例: 3/4）も入力可能です。</value>
+  </data>
+  <data name="numericBoxY.ToolTip" xml:space="preserve">
+    <value>b軸の分率座標。分数形式（例: 3/4）も入力可能です。</value>
+  </data>
+  <data name="numericBoxX.ToolTip" xml:space="preserve">
+    <value>a軸の分率座標。分数形式（例: 3/4）も入力可能です。</value>
+  </data>
+  <data name="radioButtonDebyeWallerTypeU.ToolTip" xml:space="preserve">
+    <value>U: 平均原子変位パラメータ</value>
+  </data>
+  <data name="radioButtonDebyeWallerTypeB.ToolTip" xml:space="preserve">
+    <value>B, 変位パラメータの別形式。
+B = 8 π² × U。</value>
+  </data>
+  <data name="tabPageDebyeWaller.ToolTip" xml:space="preserve">
+    <value>デバイ・ワラー因子の設定タブ</value>
+  </data>
+  <data name="comboBoxScatteringFactorElectron.ToolTip" xml:space="preserve">
+    <value>価数を選択</value>
+  </data>
+  <data name="comboBoxScatteringFactorXray.ToolTip" xml:space="preserve">
+    <value>価数を選択</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
+    <value>描画する球の半径</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip1" xml:space="preserve">
+    <value>描画する球の半径</value>
+  </data>
+  <data name="buttonApplyToSameElement.ToolTip" xml:space="preserve">
+    <value>同じ元素の原子に外観プロパティを適用</value>
+  </data>
+  <data name="buttonAddAtom.ToolTip" xml:space="preserve">
+    <value>下の原子を上のリストに追加</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>選択された原子を下の原子で置換</value>
+  </data>
+  <data name="buttonApplyToAllElements.ToolTip" xml:space="preserve">
+    <value>すべての元素に適用</value>
+  </data>
+  <data name="buttonAtomUp.ToolTip" xml:space="preserve">
+    <value>選択された原子を上に移動</value>
+  </data>
+  <data name="buttonAtomDown.ToolTip" xml:space="preserve">
+    <value>選択された原子を下に移動</value>
+  </data>
+  <data name="buttonDeleteAtom.ToolTip" xml:space="preserve">
+    <value>選択された原子を削除</value>
+  </data>
 </root>

@@ -1741,4 +1741,74 @@
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>左ドラッグ（画面中央付近）: モニターに平行な軸で回転
+左ドラッグ（画面端）: モニターに垂直な軸で回転
+右クリック: ズームアウト
+右ドラッグ: 選択領域をズームイン
+中ドラッグ: シミュレーション画像をドラッグ</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>文字サイズを設定</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>ポイントサイズを設定</value>
+  </data>
+  <data name="radioButtonUpperSphere.ToolTip" xml:space="preserve">
+    <value>結晶軸を描画</value>
+  </data>
+  <data name="radioButtonLowerSphere.ToolTip" xml:space="preserve">
+    <value>結晶面を描画</value>
+  </data>
+  <data name="radioButtonWulff.ToolTip" xml:space="preserve">
+    <value>ウルフネット（等角法）で方位を投影</value>
+  </data>
+  <data name="radioButtonSchmidt.ToolTip" xml:space="preserve">
+    <value>シュミットネット（等面積法）で方位を投影</value>
+  </data>
+  <data name="radioButtonAxes.ToolTip" xml:space="preserve">
+    <value>結晶軸を描画</value>
+  </data>
+  <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
+    <value>結晶面を描画</value>
+  </data>
+  <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
+    <value>結晶軸を描画</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>ポイントサイズを設定</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>文字サイズを設定</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>1度刻みの線を表示</value>
+  </data>
+  <data name="radioButtonOutlinePole.ToolTip" xml:space="preserve">
+    <value>極方向から緯線・経線を投影します。</value>
+  </data>
+  <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
+    <value>赤道方向から緯線・経線を投影します。</value>
+  </data>
+  <data name="radioButtonDelimiterComma.ToolTip" xml:space="preserve">
+    <value>指数出力の区切り文字にカンマを使用</value>
+  </data>
+  <data name="radioButtonDelimiterSpace.ToolTip" xml:space="preserve">
+    <value>指数出力の区切り文字にスペースを使用</value>
+  </data>
+  <data name="radioButtonDelimiterNone.ToolTip" xml:space="preserve">
+    <value>指数出力に区切り文字なし</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value>表示色を変更</value>
+  </data>
+  <data name="radioButtonRange.ToolTip" xml:space="preserve">
+    <value>以下の範囲内で表示する指数を設定</value>
+  </data>
+  <data name="radioButtonSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>表示する指数を個別に指定</value>
+  </data>
+  <data name="radioButtonHighStructureFactor.ToolTip" xml:space="preserve">
+    <value>表示する指数を個別に指定</value>
+  </data>
 </root>

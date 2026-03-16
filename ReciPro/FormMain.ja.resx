@@ -758,7 +758,7 @@
     <value>回転を初期状態にリセットします。</value>
   </data>
   <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
-    <value>Maximum sum of zone axis indices for display</value>
+    <value>表示する晶帯軸指数の和の最大値</value>
   </data>
   <data name="labelCurrentIndex.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 22</value>
@@ -1822,5 +1822,65 @@ v2</value>
         2gCl/yEA/gAAAAAAAAAAAAAAAAAAAPgfAADgBwAAwAMAAIABAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAgAEAAIABAADAAwAA4AcAAPgfAAA=
 </value>
+  </data>
+  <data name="buttonDuplicate.ToolTip" xml:space="preserve">
+    <value>選択された結晶を複製</value>
+  </data>
+  <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
+    <value>チェックすると、指定した軸が空間内で固定されます。</value>
+  </data>
+  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
+    <value>チェックすると、指定した面が空間内で固定されます。</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。
+(CTRL+SHIFT+→)</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>上のボタンの角度ステップ、または回転速度を設定</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>上のボタンの角度ステップ、または回転速度を設定</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
+    <value>表示する晶帯軸指数の和の最大値</value>
+  </data>
+  <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
+    <value>おおよその晶帯軸指数</value>
+  </data>
+  <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
+    <value>選択された結晶の現在の方位</value>
+  </data>
+  <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
+    <value>「結晶データベース」機能を開く</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
+    <value>「対称性情報」機能を開く</value>
+  </data>
+  <data name="toolStripButtonScatteringFactor.ToolTipText" xml:space="preserve">
+    <value>「散乱因子」機能を開く</value>
+  </data>
+  <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
+    <value>「回転ジオメトリ」
+機能を開く</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
+    <value>「回折シミュレータ」機能を開く</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
+    <value>「軌道シミュレータ」
+機能を開く</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
+    <value>「HRTEMシミュレータ」機能を開く</value>
+  </data>
+  <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
+    <value>「スポットID v1」機能を開く</value>
+  </data>
+  <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
+    <value>「スポットID v2」機能を開く</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
+    <value>粉末回折機能を開く</value>
   </data>
 </root>

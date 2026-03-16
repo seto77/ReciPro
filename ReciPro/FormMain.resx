@@ -3633,8 +3633,11 @@ Factor</value>
     <value>120, 34</value>
   </data>
   <data name="toolStripButtonEBSD.Text" xml:space="preserve">
-    <value>EBSD (under 
+    <value>EBSD (under
 construction)</value>
+  </data>
+  <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
+    <value>Open EBSD function</value>
   </data>
   <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 6</value>

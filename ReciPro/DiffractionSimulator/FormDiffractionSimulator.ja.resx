@@ -628,7 +628,7 @@
     <value>スケール線幅</value>
   </data>
   <data name="label16.ToolTip" xml:space="preserve">
-    <value />
+    <value>菊池線の線幅</value>
   </data>
   <data name="radioButtonScaleDivisionFine.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -2297,5 +2297,301 @@
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>848, 600</value>
+  </data>
+  <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
+    <value>チェックすると、回折スポットがシミュレートされます。</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
+    <value>チェックすると、菊池線がシミュレートされます。</value>
+  </data>
+  <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
+    <value>チェックすると、デバイリングがシミュレートされます。</value>
+  </data>
+  <data name="toolStripButtonScale.ToolTipText" xml:space="preserve">
+    <value>チェックすると、スケール線がシミュレートされます。</value>
+  </data>
+  <data name="toolStripButtonDspacingInv.ToolTipText" xml:space="preserve">
+    <value>チェックすると、面間隔の逆数（すなわちgベクトルの長さ）が表示されます</value>
+  </data>
+  <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
+    <value>チェックすると、各スポットから透過スポットまでの距離(mm)が表示されます</value>
+  </data>
+  <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
+    <value>チェックすると、励起誤差(s_g)が表示されます</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>文字列のサイズを設定</value>
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value>文字サイズを設定</value>
+  </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>文字列の色を設定</value>
+  </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>文字列の色を設定</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>試料からの垂線の足の色を設定</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip" xml:space="preserve">
+    <value>透過スポットの色を設定</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
+    <value>透過スポットの色を設定</value>
+  </data>
+  <data name="checkBoxShowFootPosition.ToolTip" xml:space="preserve">
+    <value>垂線の足の位置を表示</value>
+  </data>
+  <data name="checkBoxShowDirectPosition.ToolTip" xml:space="preserve">
+    <value>透過位置を表示</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>背景色を設定</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>背景色を設定</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>菊池線の線幅を設定</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>菊池線の線幅</value>
+  </data>
+  <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
+    <value>菊池線</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
+    <value>デバイリングの色を設定</value>
+  </data>
+  <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
+    <value>デバイリングの色を設定</value>
+  </data>
+  <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
+    <value>チェックすると、デバイリングの指数ラベルが表示されます</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.ToolTip" xml:space="preserve">
+    <value>チェックすると、すべてのデバイリングが同じ強度で表示されます</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>指数文字列のサイズを設定</value>
+  </data>
+  <data name="trackBarDebyeRingWidth.ToolTip" xml:space="preserve">
+    <value>デバイリングの線幅を設定</value>
+  </data>
+  <data name="checkBoxScaleLabel.ToolTip" xml:space="preserve">
+    <value>チェックすると、スケールラベルが表示されます</value>
+  </data>
+  <data name="trackBarScaleLineWidth.ToolTip" xml:space="preserve">
+    <value>スケール線の線幅を設定</value>
+  </data>
+  <data name="radioButtonScaleDivisionFine.ToolTip" xml:space="preserve">
+    <value>スケール線の分割を設定</value>
+  </data>
+  <data name="radioButtonScaleDivisionMedium.ToolTip" xml:space="preserve">
+    <value>スケール線の分割を設定</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.ToolTip" xml:space="preserve">
+    <value>スケール線の分割を設定</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip" xml:space="preserve">
+    <value>方位角スケール線の色を設定</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
+    <value>方位角スケール線の色を設定</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip" xml:space="preserve">
+    <value>2θスケール線の色を設定</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
+    <value>2θスケール線の色を設定</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>左ドラッグ（画面中央付近）: モニターに平行な軸で回転
+左ドラッグ（画面端）: モニターに垂直な軸で回転
+右クリック: ズームアウト
+右ドラッグ: 選択領域をズームイン
+中ドラッグ: シミュレーション画像をドラッグ
+左ダブルクリック: gベクトルの情報を表示</value>
+  </data>
+  <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
+    <value>文字列のサイズを設定</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip" xml:space="preserve">
+    <value>背景色を設定</value>
+  </data>
+  <data name="colorControl3D_Background.ToolTip1" xml:space="preserve">
+    <value>背景色を設定</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
+  </data>
+  <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
+    <value>シミュレーションパターンのピクセルサイズを設定</value>
+  </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。
+(CTRL+SHIFT+←)</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。
+(CTRL+SHIFT+↓)</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。
+(CTRL+SHIFT+↑)</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>矢印の方向に結晶を回転します。
+(CTRL+SHIFT+→)</value>
+  </data>
+  <data name="numericBoxStep.ToolTip" xml:space="preserve">
+    <value>上のボタンの角度ステップ、または回転速度を設定</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>上のボタンの角度ステップ、または回転速度を設定</value>
+  </data>
+  <data name="checkBoxMousePositionDetailes.ToolTip" xml:space="preserve">
+    <value>チェックすると、カーソル位置の詳細情報パネルが開きます</value>
+  </data>
+  <data name="buttonResetCenter.ToolTip" xml:space="preserve">
+    <value>モニター中心を以下の点に設定</value>
+  </data>
+  <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
+    <value>モニター中心を以下の点に固定</value>
+  </data>
+  <data name="trackBarRotationSpeed.ToolTip" xml:space="preserve">
+    <value>マウス操作による回転速度を設定</value>
+  </data>
+  <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
+    <value>詳細な光学系を設定するウィンドウを開く</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>カメラ長を設定/取得</value>
+  </data>
+  <data name="numericUpDownCamaraLength2.ToolTip" xml:space="preserve">
+    <value>カメラ長2（試料から検出器（モニター）までの距離）を設定</value>
+  </data>
+  <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
+    <value>詳細な光学系を設定するウィンドウを開く</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>カメラ長を設定/取得</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>カメラ長を設定/取得</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>現在の画像をファイルに保存</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>現在の画像をクリップボードにコピー</value>
+  </data>
+  <data name="radioButtonIntensityDynamical.ToolTip" xml:space="preserve">
+    <value>このモードでは、ブロッホ波法で強度を計算します。
+電子線源の場合のみ有効です。</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
+    <value>チェックすると、回折スポットの描画色が結晶の色に設定されます</value>
+  </data>
+  <data name="checkBoxExtinctionAll.ToolTip" xml:space="preserve">
+    <value>チェックすると、空間群による禁制反射がすべて非表示になります</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.ToolTip" xml:space="preserve">
+    <value>チェックすると、格子の心取りによる禁制反射が非表示になります</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>指数文字列のサイズを設定</value>
+  </data>
+  <data name="radioButtonCircleArea.ToolTip" xml:space="preserve">
+    <value>スポットは円で表示されます。</value>
+  </data>
+  <data name="radioButtonPointSpread.ToolTip" xml:space="preserve">
+    <value>スポットは2次元ガウス関数で表示されます</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>指数文字列のサイズを設定</value>
+  </data>
+  <data name="trackBarSpotOpacity.ToolTip" xml:space="preserve">
+    <value>回折スポットの不透明度を設定</value>
+  </data>
+  <data name="flowLayoutPanel7.ToolTip" xml:space="preserve">
+    <value>回折スポットの不透明度を設定</value>
+  </data>
+  <data name="checkBoxDrawSameSize.ToolTip" xml:space="preserve">
+    <value>チェックすると、すべての回折スポットが同じサイズで描画されます。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>指数文字列のサイズを設定</value>
+  </data>
+  <data name="trackBarIntensityForPointSpread.ToolTip" xml:space="preserve">
+    <value>回折スポットの明るさを設定</value>
+  </data>
+  <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
+    <value>カラースケールを設定</value>
+  </data>
+  <data name="checkBoxLogScale.ToolTip" xml:space="preserve">
+    <value>チェックすると、回折スポットの強度が対数表示されます</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
+    <value>一般的なスポットの色を設定</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
+    <value>一般的なスポットの色を設定</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
+    <value>消滅スポット（らせん・映進）の色を設定</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
+    <value>消滅スポット（らせん・映進）の色を設定</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
+    <value>消滅スポット（格子心取り）の色を設定</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
+    <value>消滅スポット（格子心取り）の色を設定</value>
+  </data>
+  <data name="radioButtonIntensityExcitation.ToolTip" xml:space="preserve">
+    <value>このモードでは、強度計算に励起誤差のみが考慮されます。
+（構造因子の効果は無視されます）</value>
+  </data>
+  <data name="radioButtonIntensityKinematical.ToolTip" xml:space="preserve">
+    <value>このモードでは、強度は構造因子と励起誤差で計算されます。</value>
+  </data>
+  <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
+    <value>スポット情報の詳細ウィンドウを開く</value>
+  </data>
+  <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
+    <value>平行ビームモード（SAEDモード）</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
+    <value>歳差ビームモード（PEDモード）</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.ToolTip" xml:space="preserve">
+    <value>歳差ビームモード（X線 ZOLZ）</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
+    <value>歳差ビームモード（PEDモード）</value>
+  </data>
+  <data name="radioButtonBeamConvergence.ToolTip" xml:space="preserve">
+    <value>収束ビームモード（CBEDモード）</value>
   </data>
 </root>

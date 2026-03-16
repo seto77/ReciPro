@@ -133,4 +133,100 @@
   <data name="checkBoxFix1st.Text" xml:space="preserve">
     <value>固定</value>
   </data>
+  <data name="buttonViewAlongBeam.ToolTip" xml:space="preserve">
+    <value>視線方向をビーム方向に平行に設定</value>
+  </data>
+  <data name="buttonViewIsometric.ToolTip" xml:space="preserve">
+    <value>視線方向を等角投影に設定</value>
+  </data>
+  <data name="checkBoxLink.ToolTip" xml:space="preserve">
+    <value>チェックすると、ReciProの座標と実験座標がリンクされます</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>回転行列の値をExcel形式でクリップボードにコピー</value>
+  </data>
+  <data name="buttonPaste.ToolTip" xml:space="preserve">
+    <value>クリップボードからExcel形式の回転行列の値を貼り付け</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip" xml:space="preserve">
+    <value>オイラー角 Ψ</value>
+  </data>
+  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
+    <value>オイラー角 Ψ</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip" xml:space="preserve">
+    <value>オイラー角 Θ</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
+    <value>オイラー角 Θ</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>オイラー角 Φ</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
+    <value>オイラー角 Φ</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip" xml:space="preserve">
+    <value>第1軸の角度を設定</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
+    <value>第1軸の角度を設定</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip" xml:space="preserve">
+    <value>第2軸の角度を設定</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
+    <value>第2軸の角度を設定</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip" xml:space="preserve">
+    <value>第2軸の角度を設定</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
+    <value>第2軸の角度を設定</value>
+  </data>
+  <data name="checkBoxEnable2nd.ToolTip" xml:space="preserve">
+    <value>チェックすると、第2軸が有効になります</value>
+  </data>
+  <data name="checkBoxFix1st.ToolTip" xml:space="preserve">
+    <value>第1角を現在の値で固定</value>
+  </data>
+  <data name="checkBoxFix2nd.ToolTip" xml:space="preserve">
+    <value>第2角を現在の値で固定</value>
+  </data>
+  <data name="checkBoxFix3rd.ToolTip" xml:space="preserve">
+    <value>第3角を現在の値で固定</value>
+  </data>
+  <data name="checkBoxEnable3rd.ToolTip" xml:space="preserve">
+    <value>チェックすると、第3軸が有効になります</value>
+  </data>
+  <data name="radioButton3rdZ.ToolTip" xml:space="preserve">
+    <value>第3軸を選択</value>
+  </data>
+  <data name="radioButton3rdY.ToolTip" xml:space="preserve">
+    <value>第3軸を選択</value>
+  </data>
+  <data name="radioButton3rdX.ToolTip" xml:space="preserve">
+    <value>第3軸を選択</value>
+  </data>
+  <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
+    <value>第2軸を選択</value>
+  </data>
+  <data name="radioButton2ndY.ToolTip" xml:space="preserve">
+    <value>第2軸を選択</value>
+  </data>
+  <data name="radioButton2ndX.ToolTip" xml:space="preserve">
+    <value>第2軸を選択</value>
+  </data>
+  <data name="radioButton1stZ.ToolTip" xml:space="preserve">
+    <value>第1軸を選択</value>
+  </data>
+  <data name="radioButton1stY.ToolTip" xml:space="preserve">
+    <value>第1軸を選択</value>
+  </data>
+  <data name="radioButton1stX.ToolTip" xml:space="preserve">
+    <value>第1軸を選択</value>
+  </data>
+  <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
+    <value>すべての角度をゼロにリセット</value>
+  </data>
 </root>

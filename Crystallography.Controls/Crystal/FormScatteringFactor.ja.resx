@@ -200,4 +200,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>散乱因子</value>
   </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>空間群を検索</value>
+  </data>
 </root>

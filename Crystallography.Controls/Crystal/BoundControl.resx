@@ -1462,7 +1462,7 @@ limit the range by the distance from the origin.</value>
     <value>0, 0</value>
   </data>
   <data name="numericBoxTranslation.ToolTip" xml:space="preserve">
-    <value />
+    <value>Translation amount</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

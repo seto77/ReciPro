@@ -578,10 +578,10 @@
     <value />
   </data>
   <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
-    <value />
+    <value>2θ値を設定</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
-    <value />
+    <value>2θ値を設定</value>
   </data>
   <data name="flowLayoutPanelNeutronTOF.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -602,16 +602,16 @@
     <value />
   </data>
   <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
-    <value />
+    <value>TOF角度を設定</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
-    <value />
+    <value>TOF角度を設定</value>
   </data>
   <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
-    <value />
+    <value>TOF飛行経路長を設定</value>
   </data>
   <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
-    <value />
+    <value>TOF飛行経路長を設定</value>
   </data>
   <data name="flowLayoutPanel6.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -636,5 +636,12 @@
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value>波源を選択</value>
+  </data>
+  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
+    <value>X線の場合、入射ビームの単位エネルギー範囲あたりの強度が一定です。
+中性子の場合、単位波長間隔あたりの入射中性子数が一定です。</value>
   </data>
 </root>
