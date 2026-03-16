@@ -74,6 +74,25 @@ public class BetheMethod
     public int MaxNumOfBloch { get; set; }
     public double Thickness { get; set; }
     public double[] Thicknesses { get; set; }
+
+    // 260316Cl 追加
+    /// <summary>
+    /// EBSD計算で非局所形式の吸収ポテンシャルを使用するかどうか。
+    /// true の場合、U'(g, g') が g と g' の両方に依存する非局所形式で計算される。
+    /// false の場合、U'(g-g') のみに依存する従来の局所形式で計算される。
+    /// 重い元素を含む結晶では非局所形式のほうが実験パターンとの一致が良い。
+    /// ただし計算コストは大幅に増加する（各行列要素で2D数値積分が必要）。
+    /// </summary>
+    public bool UseNonLocalAbsorption { get; set; }
+
+    // 260316Cl 追加
+    /// <summary>
+    /// EBSD計算で TDS バックグラウンドを含めるかどうか。
+    /// true の場合、Bloch波から TDS により失われた電子がインコヒーレントに
+    /// 後方脱出する効果を滑らかなバックグラウンドとして加算する。
+    /// 重い元素ではバックグラウンドが相対的に大きく、菊池バンドのコントラストが低下する。
+    /// </summary>
+    public bool IncludeTDSBackground { get; set; }
     public enum Solver { Eigen_MKL, Eigen_Eigen, MtxExp_MKL, MtxExp_Eigen, Auto }
     public Complex[] EigenValues { get; set; }
     public Complex[] EigenVectors { get; set; }
@@ -454,9 +473,12 @@ public class BetheMethod
     /// <param name="rotation">基準となる方位</param>
     /// <param name="thickness">厚みの配列</param>
     /// <param name="beamRotations">基準となる方位に乗算する方位配列</param>
-    public void RunEBSD(int maxNumOfBloch, double[] voltages, Matrix3D rotation, double[] thickness, Vector3DBase[] beamDirections, Solver solver = Solver.Auto, int thread = 1)
+    // 260316Cl useNonLocalAbsorption, includeTDSBackground 引数を追加
+    public void RunEBSD(int maxNumOfBloch, double[] voltages, Matrix3D rotation, double[] thickness, Vector3DBase[] beamDirections, Solver solver = Solver.Auto, int thread = 1, bool useNonLocalAbsorption = false, bool includeTDSBackground = false)
     {
         MaxNumOfBloch = maxNumOfBloch;
+        UseNonLocalAbsorption = useNonLocalAbsorption;
+        IncludeTDSBackground = includeTDSBackground;
 
         BaseRotation = new Matrix3D(rotation);
         BeamDirections = beamDirections;
@@ -518,6 +540,9 @@ public class BetheMethod
     /// <param name="e"></param>
     private void ebsd_DoWork(object sender, DoWorkEventArgs e)
     {
+        //UseNonLocalAbsorption=true;
+        //IncludeTDSBackground=true;
+
         var (solver, thread, voltages) = ((Solver, int, double[]))e.Argument;
 
         Disks = new CBED_Disk[voltages.Length][];
@@ -545,13 +570,14 @@ public class BetheMethod
         // 結晶内の全原子位置（対称操作で生成された等価位置を含む）と、
         // 各原子の後方散乱断面積 σ を収集する。
         //
-        // 後方散乱断面積は Rutherford 散乱の近似として σ ∝ Z² × Occ とする。
+        // 後方散乱断面積は Rutherford 散乱の近似としてBrowning (1994) の弾性散乱断面積の
+        // 経験的フィット σ ∝ Z^1.7 × Occ とする。
         // Z : 原子番号, Occ : 占有率
         // これは、重い原子ほど強く後方散乱するという物理を反映している。
         var atomSites = new List<(double x, double y, double z, double sigma)>();
         foreach (var atoms in Crystal.Atoms)
         {
-            double sigma = (double)(atoms.AtomicNumber * atoms.AtomicNumber) * atoms.Occ;
+            double sigma = Math.Pow(atoms.AtomicNumber,1.7) * atoms.Occ;
             foreach (var atom in atoms.Atom)   // atoms.Atom[] は対称操作で展開された全等価位置
                 atomSites.Add((atom.X, atom.Y, atom.Z, sigma));
         }
@@ -562,6 +588,9 @@ public class BetheMethod
         var sigmaArray = new double[nAtoms];
         for (int n = 0; n < nAtoms; n++)
             sigmaArray[n] = atomArray[n].sigma;
+
+        // TDS バックグラウンド格納用 (IncludeTDSBackground=true のとき使用)
+        double[][] ebsdBackground = null;
         #endregion
 
         // 加速電圧ごとのループ (電圧依存性を調べる場合に複数)
@@ -609,13 +638,16 @@ public class BetheMethod
                 }
                 ).ToArray();
 
-            var beamsPreliminary = beamDirectionsP.Select((e,i) =>
+            var mappingSet = new HashSet<int>(mapping);// HashSet<int> に変換することで O(1) のルックアップになる。
+
+            var beamsPreliminary = beamDirectionsP.Select((e, i) =>
                 {
-                    if (!mapping.Contains(i))
+
+                    if (!mappingSet.Contains(i))    
                         return (null, null, null);
 
                     var beams = Find_gVectors(BaseRotation, getVecK0(kvac, u0, e), MaxNumOfBloch);
-                    var potentialMatrix = getPotentialMatrix(beams);
+                    var potentialMatrix = UseNonLocalAbsorption ? getPotentialMatrix(beams, 0, Math.PI) : getPotentialMatrix(beams);
 
                     var bLen = beams.Length;
                     var phaseNG = new Complex[nAtoms * bLen];
@@ -632,6 +664,51 @@ public class BetheMethod
                 }).ToArray();
             #endregion
 
+            #region muBack: TDS 後方散乱行列の事前計算 (260316Cl 追加)
+            // STEM 整合型 TDS バックグラウンドを計算するため、各グリッドセルの
+            // ビーム集合に対して U'_back 行列を事前計算する。
+            // U'_back[i,j] = getU(kV, g_i-g_j, null, π/2, π).Imag.Conjugate()
+            // は後方半球 (θ∈[π/2,π]) への TDS 散乱行列要素。
+            //
+            // uDictionary のキャッシュは角度範囲を区別しないため、
+            // 標準ポテンシャル計算と衝突しないよう前後で Clear する。
+            Complex[][] muBackArrays = null;
+            double tdsCoeff = 0;
+            if (IncludeTDSBackground)
+            {
+                tdsCoeff = 2 * Math.PI / kvac;
+                uDictionary.Clear();
+                muBackArrays = new Complex[beamsPreliminary.Length][];
+
+                // 全グリッドセルを並列計算。uDictionary (ConcurrentDictionary) は
+                // スレッドセーフなので、異なるグリッドセル間でキャッシュを共有できる。
+                Parallel.ForEach(mappingSet, idx =>
+                {
+                    var bp = beamsPreliminary[idx].Item1;
+                    if (bp == null) return;
+                    var baseLen = bp.Length;
+                    var muBack = new Complex[baseLen * baseLen];
+
+                    // Toeplitz 構造: muBack[i,j] = f(g_i - g_j)。
+                    // ローカルキャッシュで同一 g-g' 差の重複計算と Beam 生成を回避。
+                    var localCache = new Dictionary<int, Complex>();
+                    for (int col = 0; col < baseLen; col++)
+                        for (int row = 0; row < baseLen; row++)
+                        {
+                            var key = compose(bp[row].H - bp[col].H, bp[row].K - bp[col].K, bp[row].L - bp[col].L);
+                            if (!localCache.TryGetValue(key, out var val))
+                            {
+                                val = getU(AccVoltage, bp[row] - bp[col], null, Math.PI / 2, Math.PI, 30, 12).Imag.Conjugate();
+                                localCache[key] = val;
+                            }
+                            muBack[col * baseLen + row] = val;
+                        }
+                    muBackArrays[idx] = muBack;
+                });
+                uDictionary.Clear();
+            }
+            #endregion
+
             #region 各検出器方向での EBSD 強度計算
             // 各検出器方向 k̂_f に対して、相反定理により「k̂_f から逆向きに平面波を
             // 入射させたときの、原子位置でのブロッホ波場強度」を計算する。
@@ -644,6 +721,10 @@ public class BetheMethod
             //   5. 励起振幅 α_j = [C⁻¹]_{j,0} を計算
             //   6. S 行列と F 行列から各厚さでの強度 I(t) を計算
             //     (ネイティブの場合は 5-6 を NativeWrapper.EBSDSolver で一括実行)
+
+            if (IncludeTDSBackground)
+                ebsdBackground = new double[BeamDirections.Length][];
+
             var ebsdIntensity = beamDirectionsP.Select((beamDirection, i) =>
             {
                 if (bwEBSD.CancellationPending) return null;
@@ -731,20 +812,54 @@ public class BetheMethod
                         for (int g = 0; g < bLen; g++)
                             phaseFiltered[g * nAtoms + n] = phaseNG[gMap[g] * nAtoms + n];
 
+                    // TDS 後方散乱行列を beamsBase からフィルタ後のビームに抽出
+                    Complex[] muBackFiltered = null;
+                    if (IncludeTDSBackground && muBackArrays?[mapping[i]] is Complex[] muBackBase)
+                    {
+                        muBackFiltered = new Complex[bLen * bLen];
+                        for (int col = 0; col < bLen; col++)
+                            for (int row = 0; row < bLen; row++)
+                                muBackFiltered[col * bLen + row] = muBackBase[gMap[col] * baseLen + gMap[row]];
+                    }
+
                     // EBSD 強度を計算。
                     // ネイティブ版 (_EBSDSolver) では、以下の処理が Eigen の行列演算で一括実行される:
                     //   B = P · C · diag(α)         ... β_n^(j) の行列 (nAtoms × bLen)
                     //   S = B† · diag(σ) · B        ... S 行列 (bLen × bLen, Hermitian)
                     //   I(t) = Σ_{jj'} S_{jj'} F_{jj'}(t)  ... 各厚さの強度
+                    // 260316Cl TDS 一括計算対応: EigenEnabled && TDS の場合は _EBSDSolverWithTDS で
+                    // 弾性 + TDS を一度に計算し、F 行列 (exp(λt)) の重複を排除。
+                    // 260316Cl以前のコード:
+                    //double[] intensity;
+                    //if (EigenEnabled)
+                    //    intensity = NativeWrapper.EBSDSolver(
+                    //        eigenValues, eigenVectors, alpha,
+                    //        phaseFiltered, sigmaArray, Thicknesses);
+                    //else
+                    //    intensity = EBSDSolverManaged(
+                    //        bLen, nAtoms, eigenValues, eigenVectors, alpha,
+                    //        phaseFiltered, sigmaArray, Thicknesses);
                     double[] intensity;
-                    if (EigenEnabled)
-                        intensity = NativeWrapper.EBSDSolver(
-                            eigenValues, eigenVectors, alpha,
-                            phaseFiltered, sigmaArray, Thicknesses);
+                    if (EigenEnabled && muBackFiltered != null)
+                    {
+                        // Eigen BLAS で弾性 + TDS を一括計算。
+                        // C†×U'_back×C を Eigen の行列積で高速実行し、
+                        // 弾性信号と TDS で同じ F_{jj'}(t) を共有して exp(λt) の重複を排除。
+                        var result = NativeWrapper.EBSDSolverWithTDS(eigenValues, eigenVectors, alpha, phaseFiltered, sigmaArray, muBackFiltered, tdsCoeff, Thicknesses);
+                        intensity = result.intensity;
+                        ebsdBackground[i] = result.tdsIntensity;
+                    }
+                    else if (EigenEnabled)
+                    {
+                        intensity = NativeWrapper.EBSDSolver(eigenValues, eigenVectors, alpha, phaseFiltered, sigmaArray, Thicknesses);
+                    }
                     else
-                        intensity = EBSDSolverManaged(
-                            bLen, nAtoms, eigenValues, eigenVectors, alpha,
-                            phaseFiltered, sigmaArray, Thicknesses);
+                    {
+                        intensity = EBSDSolverManaged(bLen, nAtoms, eigenValues, eigenVectors, alpha, phaseFiltered, sigmaArray, Thicknesses);
+                        // Managed フォールバック時の TDS 計算
+                        if (muBackFiltered != null)
+                            ebsdBackground[i] = ComputeTDSMatrixBackground(bLen, eigenValues, eigenVectors, alpha, muBackFiltered, tdsCoeff, Thicknesses);
+                    }
 
                     if (Interlocked.Increment(ref count) % 50 == 0)
                         bwEBSD.ReportProgress(count, reportString);
@@ -765,7 +880,14 @@ public class BetheMethod
                 var amplitudes = new Complex[BeamDirections.Length];
                 for (int r = 0; r < BeamDirections.Length; r++)
                     if (ebsdIntensity[r] is not null)
-                        amplitudes[r] = new Complex(Math.Sqrt(Math.Max(0, ebsdIntensity[r][t])), 0);
+                    {
+                        // 260316Cl TDS バックグラウンドを加算 (STEM 整合型)。
+                        // 260316Cl以前のコード:
+                        //amplitudes[r] = new Complex(Math.Sqrt(Math.Max(0, ebsdIntensity[r][t])), 0);
+                        var signal = ebsdIntensity[r][t];
+                        var tds = ebsdBackground?[r]?[t] ?? 0;
+                        amplitudes[r] = new Complex(Math.Sqrt(Math.Max(0, signal + tds)), 0);
+                    }
 
                 Disks[vIndex][t] = new CBED_Disk([0, 0, 0], new Vector3DBase(0, 0, 0),
                     Thicknesses[t], amplitudes);
@@ -924,6 +1046,99 @@ public class BetheMethod
         return intensity;
     }
 
+
+    /// <summary>
+    /// STEM 整合型 TDS バックグラウンドを U' 行列形式で計算する。 (260316Cl 追加)
+    /// EigenEnabled=false の Managed フォールバック時に使用。
+    /// EigenEnabled=true の場合は _EBSDSolverWithTDS (C++ Eigen) で一括計算される。
+    ///
+    /// 【物理モデル — STEM と同じ枠組み】
+    /// Bloch波が結晶内を伝搬する際、TDS により散乱される電子のうち
+    /// 後方半球 (θ ∈ [π/2, π]) に散乱される成分を計算する。
+    /// STEM-HAADF で検証済みの手法 (tc†·U'·tc の深さ積分) と同じ行列形式を用いる。
+    ///
+    /// 【計算式】
+    ///   I_TDS(t) = coeff × Re{ Σ_{jj'} M_{jj'} × F_{jj'}(t) }
+    ///
+    /// ここで:
+    ///   M_{jj'} = α_j* × [C† · U'_back · C]_{jj'} × α_{j'}
+    ///   F_{jj'}(t) = [exp(λ_{jj'} t) - 1] / λ_{jj'}   ← コヒーレント信号と同じ F 行列
+    ///   λ_{jj'} = 2πi (γ_j - conj(γ_{j'}))
+    ///   coeff = 2π / k_vac
+    ///
+    /// U'_back は後方散乱半球の TDS 散乱行列:
+    ///   U'_back[i,j] = getU(kV, g_i - g_j, null, π/2, π).Imag.Conjugate()
+    ///   FactorImaginaryAnnular で θ ∈ [π/2, π] の角度範囲を積分。
+    ///
+    /// 【STEM との整合性】
+    ///   STEM: I_TDS = ∫ tc†(z) · U'_det · tc(z) dz  (検出器角度範囲)
+    ///   EBSD: I_TDS = ∫ tc†(z) · U'_back · tc(z) dz (後方散乱半球)
+    ///   同じ F 行列を使うため、コヒーレント信号と同じ 1/μ スケーリングを持ち、
+    ///   信号と同じオーダーの強度が得られる。
+    /// </summary>
+    private static double[] ComputeTDSMatrixBackground(
+        int bLen, Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
+        Complex[] muBack, double coeff, double[] thicknesses)
+    {
+        int tLen = thicknesses.Length;
+        int bLen2 = bLen * bLen;
+        var tdsIntensity = new double[tLen];
+
+        // ArrayPool で一時行列をレンタルし GC 圧力を削減
+        // (この関数は全検出器方向から並列呼び出しされるため重要)
+        var tmp = Shared.Rent(bLen2);
+        var M = Shared.Rent(bLen2);
+        try
+        {
+            // Step 1: tmp = C† · muBack  (bLen × bLen)  — O(bLen³)
+            // eigenVectors は column-major: eigenVectors[j * bLen + g] = C_g^(j)
+            // muBack は column-major: muBack[col * bLen + row] = U'_back[row, col]
+            // tmp[j, g2] = Σ_g conj(C[g,j]) × muBack[g, g2]
+            for (int j = 0; j < bLen; j++)
+                for (int g2 = 0; g2 < bLen; g2++)
+                {
+                    Complex s = 0;
+                    for (int g = 0; g < bLen; g++)
+                        s += eigenVectors[j * bLen + g].Conjugate() * muBack[g2 * bLen + g];
+                    tmp[g2 * bLen + j] = s;
+                }
+
+            // Step 2: M_{jj'} = coeff × α_j* × [tmp · C]_{jj'} × α_{j'}  — O(bLen³)
+            // M は厚さに依存しないため、厚さループの外で1回だけ計算する。
+            for (int j = 0; j < bLen; j++)
+            {
+                var alphaJ_conj = coeff * alpha[j].Conjugate();
+                for (int jp = 0; jp < bLen; jp++)
+                {
+                    Complex s = 0;
+                    for (int g2 = 0; g2 < bLen; g2++)
+                        s += tmp[g2 * bLen + j] * eigenVectors[jp * bLen + g2];
+                    M[j * bLen + jp] = alphaJ_conj * s * alpha[jp];
+                }
+            }
+
+            // Step 3: I_TDS(t) = Re{ Σ_{jj'} M_{jj'} × F_{jj'}(t) }  — O(bLen² × tLen)
+            for (int t = 0; t < tLen; t++)
+            {
+                double thick = thicknesses[t];
+                Complex sum = 0;
+                for (int j = 0; j < bLen; j++)
+                {
+                    var gammaJ = eigenValues[j];
+                    for (int jp = 0; jp < bLen; jp++)
+                    {
+                        var lam = TwoPiI * (gammaJ - eigenValues[jp].Conjugate());
+                        var F = lam.MagnitudeSquared() < 1e-30 ? thick : (Exp(lam * thick) - One) / lam;
+                        sum += M[j * bLen + jp] * F;
+                    }
+                }
+                tdsIntensity[t] = Math.Max(0, sum.Real);
+            }
+        }
+        finally { Shared.Return(tmp); Shared.Return(M); }
+
+        return tdsIntensity;
+    }
 
     /// <summary>
     /// EBSD計算用 ずっと悩んでいたバージョン。 結局Claudeに助けてもらって、上のバージョンに落ち着いた。
@@ -2124,7 +2339,10 @@ public class BetheMethod
     /// <param name="inner"></param>
     /// <param name="outer"></param>
     /// <returns></returns>
-    public (Complex Real, Complex Imag) getU(in double kV, in Beam g, in Beam h = null, double inner = double.NaN, double outer = double.NaN)
+    // 260316Cl nTheta, nPhi 引数を追加 (後方散乱用に求積点数を削減するため)
+    // 260316Cl以前のシグネチャ:
+    // public (Complex Real, Complex Imag) getU(in double kV, in Beam g, in Beam h = null, double inner = double.NaN, double outer = double.NaN)
+    public (Complex Real, Complex Imag) getU(in double kV, in Beam g, in Beam h = null, double inner = double.NaN, double outer = double.NaN, int nTheta = 60, int nPhi = 20)
     {
         var key1 = compose(g.Index);
         var key2 = h is null ? int.MaxValue : compose(h.Index);
@@ -2140,7 +2358,7 @@ public class BetheMethod
             foreach (var atoms in Crystal.Atoms)
             {
                 var es = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron];//5 gaussian
-                //var es = AtomStatic.ElectronScatteringEightGaussian[atoms.AtomicNumber];//8 gaussian  
+                //var es = AtomStatic.ElectronScatteringEightGaussian[atoms.AtomicNumber];//8 gaussian
                 var real = es.Factor(s2);//弾性散乱因子
 
                 var dsf = atoms.Dsf;
@@ -2165,7 +2383,7 @@ public class BetheMethod
                                 m = 0;
 
                             imag = m == 0 ? 0 : double.IsNaN(inner * outer) ? es.FactorImaginary(kV, s2, m) :
-                                h is null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer);//非弾性散乱因子 答えは無次元
+                                h is null ? es.FactorImaginaryAnnular(kV, g.Vec, m, inner, outer, nTheta, nPhi) : es.FactorImaginaryAnnular(kV, g.Vec, h.Vec, m, inner, outer, nTheta, nPhi);//非弾性散乱因子 答えは無次元
                         }
                     }
                     var d = Exp(-m * s2 + TwoPiI * (atom * index)) * atoms.Occ; //20240524 位相項 (TwoPiI・・・)の符号をプラスに変更 (これで、対称心の結晶の計算が上手くいくはず 三菱・中村)
@@ -2198,6 +2416,25 @@ public class BetheMethod
     /// <returns></returns>
     public (Complex Real, Complex Imag) getU(double voltage) => getU(voltage, new Beam((0, 0, 0), new Vector3DBase(0, 0, 0)));
 
+    /// <summary>
+    /// 260316Cl 追加
+    /// Find_gVectors の最終ループ向け最適化オーバーロード (h=null, inner/outer=NaN の場合)。
+    /// uDictionary のキャッシュヒット時は new Beam() のヒープ割り当てを一切行わない。
+    /// キャッシュミス時 (初回のみ) は既存メソッドに委譲するため、ロジックの重複はない。
+    /// Beam は class (参照型) なので、旧実装 getU(kV, new Beam(index, vec)) は
+    /// Find_gVectors の最終ループで count 回のヒープ割り当てを発生させていた。
+    /// </summary>
+    public (Complex Real, Complex Imag) getU(in double kV, in (int h, int k, int l) index, in Vector3DBase vec)
+    {
+        var key1 = compose(index);
+        const int key2 = int.MaxValue; // h = null に相当するキー
+        // キャッシュヒット → Beam 生成なしで即返却 (= 割り当てゼロ)
+        if (uDictionary.TryGetValue((key1, key2), out (Complex real, Complex imag) U))
+            return U;
+        // キャッシュミス (初回のみ) → 既存メソッドに委譲。一時 Beam は 1 度だけ生成される。
+        return getU(kV, new Beam(index, vec));
+    }
+
     private readonly ConcurrentDictionary<(int Key1, int Key2), (Complex Real, Complex Imag)> uDictionary = [];
     #endregion
 
@@ -2221,6 +2458,46 @@ public class BetheMethod
             for (int row = 0; row < dim; row++)
             {
                 var (Real, Imag) = getU(b[col] - b[row]);
+                potentialMatrix[row + col * dim] = row == col ? ImaginaryOne * Imag : Real + ImaginaryOne * Imag;
+            }
+    }
+
+    /// <summary>
+    /// 260316Cl 追加
+    /// 非局所形式のポテンシャルマトリックスを求める。
+    /// 弾性散乱因子(実部)は局所形式と同一 (g-g' のみに依存)。
+    /// 吸収ポテンシャル(虚部)は非局所形式で計算: U'(g, g') は g と g' の絶対位置に依存する。
+    ///
+    /// 物理的背景:
+    ///   局所形式: U'_{gg'} = U'(g-g')  → TDS散乱の角度分布を無視
+    ///   非局所形式: U'_{gg'} = U'(g, g') → TDS散乱の角度分布を正確に反映
+    ///   重い元素では散乱因子が前方に強くピークするため、
+    ///   異なる g, g' ペアでの TDS カップリングが大きく変わる。
+    ///   局所形式ではこの差を捉えられないため、パターンの強度分布が不正確になる。
+    ///
+    /// 計算コスト: 局所形式では Toeplitz 構造により ~N 個のユニークな計算で済むが、
+    ///   非局所形式では N² 個の各要素ごとに2D数値積分 (Gauss-Legendre) が必要。
+    /// </summary>
+    /// <param name="b">ビーム配列</param>
+    /// <param name="nonLocalInner">TDS積分の内角 [rad] (通常 0)</param>
+    /// <param name="nonLocalOuter">TDS積分の外角 [rad] (全球: π)</param>
+    private Complex[] getPotentialMatrix(Beam[] b, double nonLocalInner, double nonLocalOuter)
+    {
+        var potentialMatrix = GC.AllocateUninitializedArray<Complex>(b.Length * b.Length);
+        getPotentialMatrix(b.Length, b, ref potentialMatrix, nonLocalInner, nonLocalOuter);
+        return potentialMatrix;
+    }
+
+    private void getPotentialMatrix(int dim, Beam[] b, ref Complex[] potentialMatrix,
+        double nonLocalInner, double nonLocalOuter)
+    {
+        for (int col = 0; col < dim; col++)
+            for (int row = 0; row < dim; row++)
+            {
+                // getU(kV, g, h, inner, outer) は h != null のとき非局所形式で虚部を計算:
+                //   実部: f_e(|g-h|²/4) × 位相因子  → 局所形式と同一
+                //   虚部: ∫∫ f(k-g)f(k-h)(1-exp(-2M...)) sinθ dθdφ → g,h の両方に依存
+                var (Real, Imag) = getU(AccVoltage, b[col], b[row], nonLocalInner, nonLocalOuter);
                 potentialMatrix[row + col * dim] = row == col ? ImaginaryOne * Imag : Real + ImaginaryOne * Imag;
             }
     }
@@ -2383,7 +2660,8 @@ public class BetheMethod
             // double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
             double q = k0_2 - Dot3(vX, vX, vY, vY, vZ, vZ), p = 2 * Dot3(sX, vX, sY, vY, sZ, vZ);
             var g = new Vector3DBase(gX, gY, gZ);
-            beams[i] = new Beam((h, k, l), g, getU(AccVoltage, new Beam((h, k, l), g)), (q, p));
+            // 旧: getU(AccVoltage, new Beam((h, k, l), g)) → Beam は class なので count 回ヒープ割り当てが発生
+            beams[i] = new Beam((h, k, l), g, getU(AccVoltage, (h, k, l), g), (q, p));
         }
         ArrayPool<(int key, float rating)>.Shared.Return(pool);//poolを返却
 

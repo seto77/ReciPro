@@ -68,6 +68,8 @@
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxThicknessStep = new NumericBox();
             numericBoxMaxNumOfG = new NumericBox();
+            checkBoxNonLocalAbsorption = new System.Windows.Forms.CheckBox();
+            checkBoxTDSBackground = new System.Windows.Forms.CheckBox();
             numericBoxThicknessStart = new NumericBox();
             numericBoxThicknessEnd = new NumericBox();
             numericBoxDiskDiameter = new NumericBox();
@@ -840,7 +842,29 @@
             numericBoxMaxNumOfG.ThonsandsSeparator = true;
             numericBoxMaxNumOfG.ToolTip = "Set a number of diffracted waves to be calculated";
             numericBoxMaxNumOfG.Value = 32D;
-            // 
+            //
+            // checkBoxNonLocalAbsorption
+            //
+            checkBoxNonLocalAbsorption.AutoSize = true;
+            checkBoxNonLocalAbsorption.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular);
+            checkBoxNonLocalAbsorption.Location = new System.Drawing.Point(240, 28);
+            checkBoxNonLocalAbsorption.Name = "checkBoxNonLocalAbsorption";
+            checkBoxNonLocalAbsorption.Size = new System.Drawing.Size(160, 19);
+            checkBoxNonLocalAbsorption.TabIndex = 145;
+            checkBoxNonLocalAbsorption.Text = "Non-local absorption";
+            checkBoxNonLocalAbsorption.UseVisualStyleBackColor = true;
+            //
+            // checkBoxTDSBackground
+            //
+            checkBoxTDSBackground.AutoSize = true;
+            checkBoxTDSBackground.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular);
+            checkBoxTDSBackground.Location = new System.Drawing.Point(240, 50);
+            checkBoxTDSBackground.Name = "checkBoxTDSBackground";
+            checkBoxTDSBackground.Size = new System.Drawing.Size(160, 19);
+            checkBoxTDSBackground.TabIndex = 146;
+            checkBoxTDSBackground.Text = "TDS background";
+            checkBoxTDSBackground.UseVisualStyleBackColor = true;
+            //
             // numericBoxThicknessStart
             // 
             numericBoxThicknessStart.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -1476,6 +1500,8 @@
             // 
             groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             groupBox1.Controls.Add(numericBoxMaxNumOfG);
+            groupBox1.Controls.Add(checkBoxNonLocalAbsorption);
+            groupBox1.Controls.Add(checkBoxTDSBackground);
             groupBox1.Controls.Add(numericBoxDiskDiameter);
             groupBox1.Controls.Add(numericBoxThicknessEnd);
             groupBox1.Controls.Add(numericBoxEnergyEnd);
@@ -1653,5 +1679,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.CheckBox checkBoxNonLocalAbsorption;
+        private System.Windows.Forms.CheckBox checkBoxTDSBackground;
     }
 }

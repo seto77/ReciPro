@@ -834,7 +834,7 @@ public partial class FormEBSD : Form
         var solver = BetheMethod.Solver.Eigen_Eigen;
         Crystal.Bethe.EBSD_Completed += Bethe_EBSD_Completed;
         Crystal.Bethe.EBSD_ProgressChanged += Bethe_EBSD_ProgressChanged;
-        Crystal.Bethe.RunEBSD(MaxNumOfBloch, EnergyArray, Crystal.RotationMatrix, ThicknessArray, Directions, solver, 32);
+        Crystal.Bethe.RunEBSD(MaxNumOfBloch, EnergyArray, Crystal.RotationMatrix, ThicknessArray, Directions, solver, 32, checkBoxNonLocalAbsorption.Checked, checkBoxTDSBackground.Checked);
     }
 
     #region BackgroundWorkerからのProgressChanged, Completed

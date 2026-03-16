@@ -182,6 +182,20 @@ public static partial class NativeWrapper
     double[] thicknesses,
     double* intensity);
 
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _EBSDSolverWithTDS(
+    int bLen, int nAtoms, int tLen,
+    double* eigenValues,
+    double* eigenVectors,
+    double* alpha,
+    double* phaseNG,
+    double* sigma,
+    double* muBack,
+    double tdsCoeff,
+    double[] thicknesses,
+    double* intensity,
+    double* tdsIntensity);
+
     #endregion
 
     #region Nativeライブラリが有効かどうか
@@ -879,6 +893,32 @@ public static partial class NativeWrapper
                 (double*)_phase, _sigma, thicknesses, _intensity);
         }
         return intensity;
+    }
+
+    /// <summary>
+    /// EBSD強度とTDSバックグラウンドを一括計算する。 (260316Cl 追加)
+    /// 弾性信号 (S行列) と TDS (M行列) で同じ F_{jj'}(t) を共有し、
+    /// exp(λt) の重複計算を排除する。C†×U×C は Eigen BLAS で高速に実行。
+    /// </summary>
+    public static unsafe (double[] intensity, double[] tdsIntensity) EBSDSolverWithTDS(
+        Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
+        Complex[] phaseNG, double[] sigma, Complex[] muBack, double tdsCoeff, double[] thicknesses)
+    {
+        int bLen = eigenValues.Length;
+        int nAtoms = sigma.Length;
+        int tLen = thicknesses.Length;
+        var intensity = new double[tLen];
+        var tdsIntensity = new double[tLen];
+
+        fixed (Complex* _vals = eigenValues, _vecs = eigenVectors, _alpha = alpha, _phase = phaseNG, _muBack = muBack)
+        fixed (double* _sigma = sigma, _intensity = intensity, _tds = tdsIntensity)
+        {
+            _EBSDSolverWithTDS(bLen, nAtoms, tLen,
+                (double*)_vals, (double*)_vecs, (double*)_alpha,
+                (double*)_phase, _sigma, (double*)_muBack, tdsCoeff,
+                thicknesses, _intensity, _tds);
+        }
+        return (intensity, tdsIntensity);
     }
 
     #endregion

@@ -59,6 +59,18 @@ extern "C" {
 		double intensity[]       // tLen個の double (出力)
 	);
 
-
+	// 260316Cl 追加
+	EIGEN_FUNCS_API void _EBSDSolverWithTDS(int bLen, int nAtoms, int tLen,
+		double eigenValues[],    // bLen個の complex (= 2*bLen double)
+		double eigenVectors[],   // bLen*bLen個の complex (column-major)
+		double alpha[],          // bLen個の complex
+		double phaseNG[],        // nAtoms*bLen個の complex (row: atom, col: beam)
+		double sigma[],          // nAtoms個の double
+		double muBack[],         // bLen*bLen個の complex (TDS 後方散乱行列)
+		double tdsCoeff,         // 2π/k_vac
+		double thicknesses[],    // tLen個の double
+		double intensity[],      // tLen個の double (弾性信号出力)
+		double tdsIntensity[]    // tLen個の double (TDS出力)
+	);
 
 } // extern "C"

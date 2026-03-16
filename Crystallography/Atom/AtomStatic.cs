@@ -2639,45 +2639,83 @@ new(4.86738014,0.319974401,4.58872425,
 
         /// <summary>
         /// 局所形式の非弾性散乱因子 近軸近似(ビーム径射角ゼロ)
+        /// 260316Cl ヒープ割り当て回避のためベクトル演算をスカラーにインライン展開。
+        ///            nTheta/nPhi をデフォルト引数で指定可能に変更。
         /// </summary>
         /// <param name="kV"></param>
         /// <param name="g"> g ベクトル 単位は nm </param>
-        /// <param name="h"> hベクトル 単位はnm</param>
         /// <param name="m"> U ×8×π^2 単位は nm^2 </param>
         /// <param name="inner"> 検出器の内側 単位はラジアン</param>
         /// <param name="outer"> 検出器の外側 単位はラジアン</param>
+        /// <param name="nTheta"> θ方向の Gauss-Legendre 求積点数 (デフォルト60)</param>
+        /// <param name="nPhi"> φ方向の Gauss-Legendre 求積点数 (デフォルト20)</param>
         /// <returns></returns>
-        public double FactorImaginaryAnnular(double kV, Vector3DBase g, double m, double inner, double outer)
+        public double FactorImaginaryAnnular(double kV, Vector3DBase g, double m, double inner, double outer, int nTheta = 60, int nPhi = 20)
         {
             if (double.IsNaN(m)) return 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
-            var gLen2 = g.Length2 / 4;//単位はnm^-2
+
+            #region 260316Cl以前のコード (Vector3DBase をループ内で生成していたためヒープ割り当てが多い)
+            //var g2 = g / 2;
+            //var result = GaussLegendreRule.Integrate(θ =>
+            //{
+            //    var sinθ = Math.Sin(θ);
+            //    var cosθ = Math.Cos(θ);
+            //    return GaussLegendreRule.Integrate(φ =>
+            //    {
+            //        var k = new Vector3DBase(k0 * sinθ * Math.Cos(φ), k0 * sinθ * Math.Sin(φ), k0 * cosθ - k0);
+            //        var kMinusG = (k - g2).Length2 / 4;
+            //        var kPlusG = (k + g2).Length2 / 4;
+            //        double f_kMinusG = 0, f_kPlusG = 0;
+            //        foreach (var (A, B) in Prms)
+            //        {
+            //            f_kMinusG += A * Math.Exp(-kMinusG * B / 100);
+            //            f_kPlusG += A * Math.Exp(-kPlusG * B / 100);
+            //        }
+            //        return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (g2.Length2 - kMinusG - kPlusG)));
+            //    }, 0, 2 * Math.PI, nPhi) * sinθ;
+            //}, inner, outer, nTheta);
+            //return gamma * k0 / 2 * result * 0.01;
+            #endregion
+
+            // 260316Cl ヒープ割り当て回避のためベクトル演算をスカラーにインライン展開
+            // g/2 の各成分を事前計算 (ループ内での Vector3DBase 生成を回避)
+            double gx2 = g.X / 2, gy2 = g.Y / 2, gz2 = g.Z / 2;
+            double gLen2 = (g.X * g.X + g.Y * g.Y + g.Z * g.Z) / 4;
 
             var result = GaussLegendreRule.Integrate(θ =>
             {
                 var (sinθ, cosθ) = Math.SinCos(θ);
-                double kSinθ = k0 * sinθ, kCosθ = k0 * cosθ;
+                double kSinθ = k0 * sinθ, kCosθmk0 = k0 * cosθ - k0;
                 return GaussLegendreRule.Integrate(φ =>
                 {
                     var (sinφ, cosφ) = Math.SinCos(φ);
-                    var k = new Vector3DBase(kSinθ * cosφ, kSinθ * sinφ, kCosθ - k0);
-                    double kMinusG = (k - g / 2).Length2 / 4, kPlusG = (k + g / 2).Length2 / 4;//単位はnm^-2
+                    double kx = kSinθ * cosφ, ky = kSinθ * sinφ;
+                    // |k - g/2|² / 4
+                    double dx = kx - gx2, dy = ky - gy2, dz = kCosθmk0 - gz2;
+                    double kMinusG = (dx * dx + dy * dy + dz * dz) / 4;
+                    // |k + g/2|² / 4
+                    double ex = kx + gx2, ey = ky + gy2, ez = kCosθmk0 + gz2;
+                    double kPlusG = (ex * ex + ey * ey + ez * ez) / 4;
+
                     double f_kMinusG = 0, f_kPlusG = 0;
                     foreach (var (A, B) in Prms)
                     {
                         f_kMinusG += A * Math.Exp(-kMinusG * B / 100);
                         f_kPlusG += A * Math.Exp(-kPlusG * B / 100);
                     }
-                    return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (gLen2 - kMinusG - kPlusG))); ;// * sinThetaを外に出して、少しでも早く
-                }, 0, 2 * Math.PI, 20) * sinθ;
-            }, inner, outer, 60);
+                    return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (gLen2 - kMinusG - kPlusG)));
+                }, 0, 2 * Math.PI, nPhi) * sinθ;
+            }, inner, outer, nTheta);
             return gamma * k0 / 2 * result * 0.01;
         }
 
 
         /// <summary>
         /// 非局所形式の非弾性散乱因子 近軸近似(ビーム径射角ゼロ)
+        /// 260316Cl ヒープ割り当て回避のためベクトル演算をスカラーにインライン展開。
+        ///            nTheta/nPhi をデフォルト引数で指定可能に変更。
         /// </summary>
         /// <param name="kV"></param>
         /// <param name="g"></param>
@@ -2685,32 +2723,64 @@ new(4.86738014,0.319974401,4.58872425,
         /// <param name="m"></param>
         /// <param name="inner"></param>
         /// <param name="outer"></param>
+        /// <param name="nTheta"> θ方向の Gauss-Legendre 求積点数 (デフォルト60)</param>
+        /// <param name="nPhi"> φ方向の Gauss-Legendre 求積点数 (デフォルト20)</param>
         /// <returns></returns>
-        public double FactorImaginaryAnnular(double kV, Vector3DBase g, Vector3DBase h, double m, double inner, double outer)
+        public double FactorImaginaryAnnular(double kV, Vector3DBase g, Vector3DBase h, double m, double inner, double outer, int nTheta = 60, int nPhi = 20)
         {
             if (double.IsNaN(m)) return 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
-            var g_h = (g - h).Length2 / 4;
+
+            #region 260316Cl以前のコード (Vector3DBase をループ内で生成していたためヒープ割り当てが多い)
+            //var g_h = ((g - h) / 2).Length2;
+            //return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
+            //{
+            //    var sinθ = Math.Sin(θ);
+            //    var cosθ = Math.Cos(θ);
+            //    return GaussLegendreRule.Integrate(φ =>
+            //    {
+            //        var k = new Vector3DBase(k0 * sinθ * Math.Cos(φ), k0 * sinθ * Math.Sin(φ), k0 * cosθ - k0);
+            //        var k_g = (k - g).Length2 / 400;
+            //        var k_h = (k - h).Length2 / 400;
+            //        double f_k_g = 0, f_k_h = 0;
+            //        foreach (var (A, B) in Prms)
+            //        {
+            //            f_k_g += A * Math.Exp(-k_g * B);
+            //            f_k_h += A * Math.Exp(-k_h * B);
+            //        }
+            //        return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));
+            //    }, 0, 2 * Math.PI, nPhi) * sinθ;
+            //}, inner, outer, nTheta);
+            #endregion
+
+            // 260316Cl ヒープ割り当て回避のためベクトル演算をスカラーにインライン展開
+            double gx = g.X, gy = g.Y, gz = g.Z;
+            double hx = h.X, hy = h.Y, hz = h.Z;
+            double dgx = gx - hx, dgy = gy - hy, dgz = gz - hz;
+            double g_h = (dgx * dgx + dgy * dgy + dgz * dgz) / 4;
 
             return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
             {
                 var (sinθ, cosθ) = Math.SinCos(θ);
-                double  kSinθ = k0 * sinθ, kCosθ = k0 * cosθ;
+                double kSinθ = k0 * sinθ, kCosθmk0 = k0 * cosθ - k0;
                 return GaussLegendreRule.Integrate(φ =>
                 {
                     var (sinφ, cosφ) = Math.SinCos(φ);
-                    var k = new Vector3DBase(kSinθ * cosφ, kSinθ * sinφ, kCosθ - k0);
-                    double k_g = (k - g).Length2 / 400, k_h = (k - h).Length2 / 400;
+                    double kx = kSinθ * cosφ, ky = kSinθ * sinφ;
+                    double dx1 = kx - gx, dy1 = ky - gy, dz1 = kCosθmk0 - gz;
+                    double k_g = (dx1 * dx1 + dy1 * dy1 + dz1 * dz1) / 400;
+                    double dx2 = kx - hx, dy2 = ky - hy, dz2 = kCosθmk0 - hz;
+                    double k_h = (dx2 * dx2 + dy2 * dy2 + dz2 * dz2) / 400;
                     double f_k_g = 0, f_k_h = 0;
                     foreach (var (A, B) in Prms)
                     {
                         f_k_g += A * Math.Exp(-k_g * B);
                         f_k_h += A * Math.Exp(-k_h * B);
                     }
-                    return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));// * sinThetaを外に出して、少しでも早く
-                }, 0, 2 * Math.PI, 20) * sinθ;
-            }, inner, outer, 60);
+                    return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));
+                }, 0, 2 * Math.PI, nPhi) * sinθ;
+            }, inner, outer, nTheta);
         }
 
         /// <summary>
