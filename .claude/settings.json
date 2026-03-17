@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Read(//c/Users/seto/source/repos/Crystallography.Controls/**)",
-      "Bash(find \"c:/Users/seto/source/repos/ReciPro\" -name \"*.cs\" -type f -exec grep -l \"CurrentUICulture\\\\|SetLanguage\\\\|LanguageChanged\" {})",
-      "Bash(where python:*)"
-    ]
-  }
-}
