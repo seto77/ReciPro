@@ -407,8 +407,9 @@ public partial class DiffractionPatternControl : UserControl
                     uint value;
                     value = (uint)(Math.Pow(1.003, Math.Round(Math.Log(pixels[j], 1.003))));
 
-                    if (freq.ContainsKey(value))
-                        freq[value] += 1;
+                    //260317Cl 変更: ContainsKey+indexer → TryGetValue
+                    if (freq.TryGetValue(value, out var fv))
+                        freq[value] = fv + 1;
                     else
                         freq.Add(value, 1);
                 }
@@ -1576,7 +1577,8 @@ public partial class DiffractionPatternControl : UserControl
                 {
                     ResidualSquareCurrent = ResidualSquareNew;
                     ramda *= 0.4;
-                    Array.Copy(residualNew, residualCurrent, residualNew.Length);
+                    //260317Cl 変更: Array.Copy → Span.CopyTo
+                    residualNew.AsSpan().CopyTo(residualCurrent);
                 }
                 else
                     break;
@@ -1985,10 +1987,10 @@ public partial class DiffractionPatternControl : UserControl
            {
                Vector3D g = PolyCrystal.BaseCrystal.VectorOfG[i];
                PlaneIndex rootIndex = SymmetryStatic.GetRootPlaneIndex(new PlaneIndex(g.h, g.k, g.l), PolyCrystal.BaseCrystal.Symmetry);
-               if (!counter.ContainsKey(rootIndex)){
-                   counter.Add(rootIndex, 0);
+               //260317Cl 変更: ContainsKey+Add → TryAdd
+               if (counter.TryAdd(rootIndex, 0))
                    index.Add(rootIndex);
-           }}
+           }
 
            for (int i = 0; i < PolyCrystal.Crysatallites.Length; i++)
            {

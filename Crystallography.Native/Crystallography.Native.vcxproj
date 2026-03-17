@@ -32,7 +32,6 @@
     <UseILP64Interfaces>false</UseILP64Interfaces>
     <InterproceduralOptimization>true</InterproceduralOptimization>
     <SpectreMitigation />
-    <LLVMToolsVersion>19</LLVMToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>

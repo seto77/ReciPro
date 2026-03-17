@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using ZLinq;
 
 namespace Crystallography.Controls;
 
@@ -553,7 +554,8 @@ public partial class NumericBox : UserControl
         if (numericalValue > -1 && numericalValue < 1 && ShowTrigonomeric && !text.Contains('/'))//三角関数で表示 (既に分数表示されているときは除く)
         {
             //sin関数は -89 <= x <= 89の範囲で1刻み (度単位)
-            foreach (var a in Enumerable.Range(-89, 179))
+            //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+            foreach (var a in ValueEnumerable.Range(-89, 179))
                 if (a != 0 && Math.Abs(numericalValue - Math.Sin(a / 180.0 * Math.PI)) < threshold)
                 {
                     text = $"sin({a})";

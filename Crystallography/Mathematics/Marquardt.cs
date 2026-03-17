@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using ZLinq;
 using static System.Math;
 using DMat = MathNet.Numerics.LinearAlgebra.Double.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Double.DenseVector;
@@ -132,7 +133,7 @@ public class Marquardt
             PrmsPrev = new double[Prms.Length];
             Constraints = constraints;
             Derivatives = derivatives;
-            steps = Enumerable.Range(-9, 20).Select(n => Pow(10, n)).ToArray();
+            steps = ValueEnumerable.Range(-9, 20).Select(n => Pow(10, n)).ToArray();
             PrmLength = Prms.Length;
         }
 
@@ -209,7 +210,7 @@ public class Marquardt
                     #endregion
             }
 
-            steps = Enumerable.Range(-9, 20).Select(n => Pow(10, n)).ToArray();
+            steps = ValueEnumerable.Range(-9, 20).Select(n => Pow(10, n)).ToArray();
             PrmLength = Prms.Length;
         }
 

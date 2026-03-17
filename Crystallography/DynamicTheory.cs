@@ -310,11 +310,12 @@
                 var target = new double[pixels.Length];
                 for (int h = 0; h < height / 2; h++)
                 {
-                    Array.Copy(pixels, h * width * 2, target, (h * 2 + height) * width + width, width);
-                    Array.Copy(pixels, h * width * 2 + width, target, (h * 2 + height) * width, width);
+                    //260317Cl 変更: Array.Copy → Span.CopyTo
+                    pixels.AsSpan(h * width * 2, width).CopyTo(target.AsSpan((h * 2 + height) * width + width, width));
+                    pixels.AsSpan(h * width * 2 + width, width).CopyTo(target.AsSpan((h * 2 + height) * width, width));
 
-                    Array.Copy(pixels, (h * 2 + height) * width, target, h * width * 2 + width, width);
-                    Array.Copy(pixels, (h * 2 + height) * width + width, target, h * width * 2, width);
+                    pixels.AsSpan((h * 2 + height) * width, width).CopyTo(target.AsSpan(h * width * 2 + width, width));
+                    pixels.AsSpan((h * 2 + height) * width + width, width).CopyTo(target.AsSpan(h * width * 2, width));
                 }
                 return target;
             }

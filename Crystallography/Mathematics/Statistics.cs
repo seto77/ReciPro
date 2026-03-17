@@ -346,8 +346,13 @@ public class Statistics
                     if (divisions > 0)
                         v = (int)((v - min) / (max - min) * divisions + 0.5) * (max - min) / divisions + min;
 
-                    if (frequency[n].ContainsKey(v))
-                        frequency[n][v]++;
+                    //260317Cl 変更: ContainsKey+indexer → TryGetValue
+                    //if (frequency[n].ContainsKey(v))
+                    //    frequency[n][v]++;
+                    //else
+                    //    frequency[n].Add(v, 1);
+                    if (frequency[n].TryGetValue(v, out var fv))
+                        frequency[n][v] = fv + 1;
                     else
                         frequency[n].Add(v, 1);
                 }
@@ -356,8 +361,13 @@ public class Statistics
         foreach (var freq in frequency)
             foreach (var key in freq.Keys)
             {
-                if (frequencyFinal.ContainsKey(key))
-                    frequencyFinal[key] += freq[key];
+                //260317Cl 変更: ContainsKey+indexer → TryGetValue
+                //if (frequencyFinal.ContainsKey(key))
+                //    frequencyFinal[key] += freq[key];
+                //else
+                //    frequencyFinal.Add(key, freq[key]);
+                if (frequencyFinal.TryGetValue(key, out var fv2))
+                    frequencyFinal[key] = fv2 + freq[key];
                 else
                     frequencyFinal.Add(key, freq[key]);
             }

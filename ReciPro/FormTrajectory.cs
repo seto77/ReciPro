@@ -11,9 +11,10 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZLinq;
+using static IronPython.Modules._ast;
 using V3 = OpenTK.Mathematics.Vector3d;
 using V4 = OpenTK.Mathematics.Vector4d;
-using ZLinq;
 #endregion
 
 namespace ReciPro;
@@ -118,7 +119,8 @@ public partial class FormTrajectory : Form
         Trajectories = new List<(V3 p, double e)>[numericBoxCalcNum.ValueInteger];
         
         Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectories());
-        
+        //Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectoriesNative());
+
         toolStripStatusLabel1.Text = $"{sw.ElapsedMilliseconds} msec. ellapsed for {numericBoxCalcNum.ValueInteger} trajectories.";
     }
     #endregion
@@ -130,8 +132,11 @@ public partial class FormTrajectory : Form
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
         double energy = waveLengthControl.Energy;
 
-        var BSEs = Trajectories.AsParallel().Where(e => e[^1].e > EnergyThreshold);
-        var count = (double)BSEs.Count();
+        //260317Cl 変更: .Count()による再列挙を回避、ToArrayで具体化
+        //var BSEs = Trajectories.AsParallel().Where(e => e[^1].e > EnergyThreshold);
+        //var count = (double)BSEs.Count();
+        var BSEs = Trajectories.AsParallel().Where(e => e[^1].e > EnergyThreshold).ToArray();
+        var count = (double)BSEs.Length;
 
         labelBSEratio.Text = $"{100.0 * count / Trajectories.Length:f2} %";
         labelBSEenergy.Text = $"{BSEs.Average(e => e[^1].e):f2} kev";
@@ -309,7 +314,7 @@ public partial class FormTrajectory : Form
             }
         }
 
-        var scaleStep = maxLength switch { < 1 => 0.01, < 5 => 0.05, < 10 => 0.1, < 50 => 0.5, < 100 => 1, _ => 5 };
+        var scaleStep = maxLength switch { < 1_000 => 10, < 5_000 => 50, < 10_000 => 100, < 50_000 => 500, < 100_000 => 1_000, _ => 5000 };
         var limit = (int)(maxLength / scaleStep + 1);
         if (checkBoxDrawGuidCircles.Checked)
         {
@@ -319,7 +324,12 @@ public partial class FormTrajectory : Form
             {
                 glObjects.Add(new Lines(circleArray.Select(e => e * i * scaleStep).ToArray(), i % 5 == 0 ? 2f : 1f, new Material(Color4.LightGray)));
                 if (i % 10 == 0)
-                    glObjects.Add(new TextObject($"{i * scaleStep:0.0} µm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black), glControlTrajectory));
+                {
+                    if(maxLength<1000)
+                        glObjects.Add(new TextObject($"{i * scaleStep:0.0} nm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black), glControlTrajectory));
+                    else
+                        glObjects.Add(new TextObject($"{i * scaleStep/1000.0:0.0} μm", 10f, new V3(0, cosTilt, sinTilt) * i * scaleStep, 1000, true, new Material(Color4.Black), glControlTrajectory));
+                }
             }
         }
 

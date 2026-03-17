@@ -1042,8 +1042,8 @@ public partial class GraphControl : UserControl
                 else if ((max2 - min2) / unit / 10 < maxDiv) step = unit * 10;
 
                 for (int i = (int)(min2 / step) + 1; i < max2 / step; i++)
-                    if (!results.ContainsKey(Math.Log10(i * step)))
-                        results.Add(Math.Log10(i * step), ((i * step) / Math.Pow(10, (int)Math.Floor(Math.Log10(i * step)))).ToString("#,#.###############") + "E" + ((int)Math.Floor(Math.Log10(i * step))).ToString());
+                    //260317Cl 変更: ContainsKey+Add → TryAdd
+                    results.TryAdd(Math.Log10(i * step), ((i * step) / Math.Pow(10, (int)Math.Floor(Math.Log10(i * step)))).ToString("#,#.###############") + "E" + ((int)Math.Floor(Math.Log10(i * step))).ToString());
             }
         }
         return results;

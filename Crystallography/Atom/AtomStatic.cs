@@ -7568,10 +7568,12 @@ new(4.86738014,0.319974401,4.58872425,
             reader.Close();
 
             int i = 0;
-            int z = Convert.ToInt32(str[1].Split([','])[0].Replace("<b>Z=", ""));//2行目から原子番号を読み取る
+            //260317Cl 変更: Convert.ToInt32 → int.Parse
+            int z = int.Parse(str[1].Split([','])[0].Replace("<b>Z=", ""));//2行目から原子番号を読み取る
                                                                                  //edgeの値を読み取る
             while (!str[i].Contains("edge")) i++;
-            var edgeNo = Convert.ToInt32(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[0]);
+            //260317Cl 変更: Convert.ToInt32 → int.Parse
+            var edgeNo = int.Parse(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[0]);
             i += 2;
 
             var edge = new List<PointD>();
@@ -7601,10 +7603,11 @@ new(4.86738014,0.319974401,4.58872425,
                         {
                             sbEdgeEnergy.AppendLine("case XrayLineEdge." + temp[j] + ": return " + temp[j + 1] + ";");
                             //edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), -((temp[j][0] - 'J') * 10 + (temp[j].Length > 1 ? temp[j][1] - '0' : 0))));
-                            if (edge.Count == 0 || (edge.Count != 0 && edge[^1].X != Convert.ToDouble(temp[j + 1])))
+                            //260317Cl 変更: Convert.ToDouble → double.Parse
+                            if (edge.Count == 0 || (edge.Count != 0 && edge[^1].X != double.Parse(temp[j + 1])))
                             {
-                                edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), double.PositiveInfinity));
-                                edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), double.NegativeInfinity));
+                                edge.Add(new PointD(double.Parse(temp[j + 1]), double.PositiveInfinity));
+                                edge.Add(new PointD(double.Parse(temp[j + 1]), double.NegativeInfinity));
                             }
                         }
                     i++;
@@ -7617,7 +7620,11 @@ new(4.86738014,0.319974401,4.58872425,
             var absorp = new List<PointD>([.. edge]);
             sbAbsorption.AppendLine("new PointD[][]{");
             for (; i < str.Count - 1; i++)
-                absorp.Add(new PointD(Convert.ToDouble(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[0]), Convert.ToDouble(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[1])));
+                //260317Cl 変更: Convert.ToDouble → double.Parse、Splitの重複呼出しを解消
+                {
+                    var parts = str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries);
+                    absorp.Add(new PointD(double.Parse(parts[0]), double.Parse(parts[1])));
+                }
             //sbAbsorption.AppendLine("new PointD(" + str[i].Replace("  ", ",") + ")" + (i == str.Count - 2 ? "" : ","));
             absorp.Sort();
             var pf = new List<Profile> { new() };

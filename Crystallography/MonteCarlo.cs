@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using V3 = OpenTK.Mathematics.Vector3d;
 using ZLinq;
@@ -14,7 +14,7 @@ public class MonteCarlo
     public readonly double Z, A, ρ;
     public readonly double InitialKev, Tilt;
     public readonly double coeff0, coeff1, coeff2, coeff3;
- 
+
     public readonly double k, J, tan, cos, sin;
 
     public readonly double ThresholdKev;
@@ -66,7 +66,7 @@ public class MonteCarlo
         var tmp = 2 * coeff1 / mv2;
         var σ_E = tmp * tmp * Math.PI / α / (α + 1) * 1E18;
         //σ_E = 5.21E-21 * Z * Z / kev / kev * 12.56 / α / (α + 1) * Math.Pow((kev + 511) / (kev + 1022), 2);
-        //弾性散乱平均自由行程 (nm) 
+        //弾性散乱平均自由行程 (nm)
         var λ_el = coeff2 / σ_E; //λ_el = A / UniversalConstants.A / ρ / σ_E * 1E7;
         //阻止能 (Joy and Luo 1989) (kev/nm単位)
         var sp = coeff3 / mv2 * Math.Log(1.166 * k + 0.583  / UniversalConstants.eV_joule / J * mv2 );
@@ -77,7 +77,7 @@ public class MonteCarlo
     /// 電子線の飛程を計算する. 電子は -Z軸に沿って入射し、試料と(0,0,0)の座標で衝突したあと、thresholdで指定したエネルギーまで減衰するか、
     /// 試料表面を脱出するまでの飛程を計算する。返り値は、座標 p (nm単位)と エネルギー e (kev単位) のタプル配列
     /// </summary>
-    /// <returns>返り値は、座標 p (µm単位)と エネルギー e (kev単位) のタプル配列</returns>
+    /// <returns>返り値は、座標 p (nm単位)と エネルギー e (kev単位) のタプル配列</returns>
     public List<(V3 p, double e)> GetTrajectories()
     {
         var trajectory = new List<(V3 p, double e)>(100) { (new V3(0, 0, 0), InitialKev) };
@@ -133,11 +133,10 @@ public class MonteCarlo
             trajectory.Add((trajectory[^1].p + s * new V3(vX, vY, vZ), trajectory[^1].e + s * sp));
         }
 
-        trajectory.ForEach(static e => e.p /= 1000.0);
-        
+        //trajectory.ForEach(static e => e.p /= 1000.0);//これではum単位に戻せない
+
         return trajectory;
     }
-
 
     /// <summary>
     /// 電子線の飛程を計算する. 電子は -Z軸に沿って入射し、試料と(0,0,0)の座標で衝突したあと、thresholdで指定したエネルギーまで減衰するか、
@@ -162,7 +161,11 @@ public class MonteCarlo
             if (n++ != 0)
             {
                 double cosθ = 1 - 2 * α * rnd2 / (1 + α - rnd2), sinθ = Math.Sqrt(1 - cosθ * cosθ);
-                double φ = 2 * Math.PI * rnd3, sinθcosφ = sinθ * Math.Cos(φ), sinθsinφ = sinθ * Math.Sin(φ);
+                //260317Cl 変更: Math.Cos/Math.Sin → Math.SinCos
+                //double φ = 2 * Math.PI * rnd3, sinθcosφ = sinθ * Math.Cos(φ), sinθsinφ = sinθ * Math.Sin(φ);
+                double φ = 2 * Math.PI * rnd3;
+                var (sinφ, cosφ) = Math.SinCos(φ);
+                double sinθcosφ = sinθ * cosφ, sinθsinφ = sinθ * sinφ;
 
                 //var rot = CreateRotationFromZ(vec);
                 //vec = new V3(
@@ -201,7 +204,7 @@ public class MonteCarlo
         }
         return (sin * pY - cos * pZ, new V3(vX, vY, vZ), e);
     }
-  
+
     public const double Th = 0.0000001;
 
 }

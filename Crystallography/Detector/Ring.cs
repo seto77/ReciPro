@@ -353,16 +353,26 @@ public static class Ring
             {
                 uint value = (uint)Math.Pow(unit, (uint)Math.Log(Intensity[j], unit));
 
-                if (freq.ContainsKey(value))
-                    freq[value] += 1;
+                //260317Cl 変更: ContainsKey+indexer → TryGetValue
+                //if (freq.ContainsKey(value))
+                //    freq[value] += 1;
+                //else
+                //    freq.Add(value, 1);
+                if (freq.TryGetValue(value, out var cnt))
+                    freq[value] = cnt + 1;
                 else
                     freq.Add(value, 1);
             }
+            //260317Cl 変更: ContainsKey+indexer → TryGetValue
             lock (lockObj)
             {
                 foreach (uint j in freq.Keys)
-                    if (Frequency.ContainsKey(j))
-                        Frequency[j] += freq[j];
+                    //if (Frequency.ContainsKey(j))
+                    //    Frequency[j] += freq[j];
+                    //else
+                    //    Frequency.Add(j, freq[j]);
+                    if (Frequency.TryGetValue(j, out var fv))
+                        Frequency[j] = fv + freq[j];
                     else
                         Frequency.Add(j, freq[j]);
             }
@@ -2415,9 +2425,10 @@ public static class Ring
             tempY2denom1plusFD = tempY2 * Denom1 + FD;
             j1width1 = (j + 1) * width1;
 
-            Array.Copy(IntersectionPointX, width1, IntersectionPointX, 0, width1);
-            Array.Copy(IntersectionPointY, width1, IntersectionPointY, 0, width1);
-            Array.Copy(IntersectionPointR2, width1, IntersectionPointR2, 0, width1);
+            //260317Cl 変更: Array.Copy → Span.CopyTo
+            IntersectionPointX.AsSpan(width1, width1).CopyTo(IntersectionPointX.AsSpan(0, width1));
+            IntersectionPointY.AsSpan(width1, width1).CopyTo(IntersectionPointY.AsSpan(0, width1));
+            IntersectionPointR2.AsSpan(width1, width1).CopyTo(IntersectionPointR2.AsSpan(0, width1));
 
             for (m = xMin; m < xMax1; m++)
                 if (IsCalcPosition[j1width1 + m])
@@ -3061,16 +3072,17 @@ public static class Ring
     #endregion
 
     #region バッググラウンド減算
+    //260317Cl 変更: .Count()による全列挙を回避、引数をToArrayで具体化
+    //public static double[] SubtractBackground(IEnumerable<double> src, IEnumerable<double> bg, double coeff = 1)
     public static double[] SubtractBackground(IEnumerable<double> src,
     IEnumerable<double> bg, double coeff = 1)
     {
-        if (src.Count() != bg.Count())
-            return [..src];
+        var srcArray = src as double[] ?? src.ToArray();
+        var bgArray = bg as double[] ?? bg.ToArray();
+        if (srcArray.Length != bgArray.Length)
+            return [..srcArray];
         else
-        {
-            var bgArray = bg.ToArray();
-            return [.. src.Select((s, i) => s - bgArray[i] * coeff)];
-        }
+            return [.. srcArray.Select((s, i) => s - bgArray[i] * coeff)];
     }
     #endregion
 

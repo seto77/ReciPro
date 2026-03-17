@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using ZLinq;
 
 namespace Crystallography;
 public static class ImageProcess
@@ -353,7 +354,9 @@ public static class ImageProcess
         var center = (start + end) / 2;
 
         var startX = -(int)(profileLength / 2.0 / resolution + 0.5);
-        return Enumerable.Range(startX, -startX * 2 + 1).ToList().AsParallel().Select(n =>
+        //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range、不要なToList()を除去
+        //return Enumerable.Range(startX, -startX * 2 + 1).ToList().AsParallel().Select(n =>
+        return ValueEnumerable.Range(startX, -startX * 2 + 1).ToArray().AsParallel().Select(n =>
         {
             var s = center + resolution * (n - 0.5) * vec;
             var e = s + resolution * vec;

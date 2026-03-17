@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Xml.Serialization;
+using ZLinq;
 //using MemoryPack;
 
 namespace Crystallography;
@@ -172,12 +173,13 @@ public partial class Bonds
         var anionNum = new List<int> { 8, 9, 16, 17, 34, 35, 52, 53 };
         VestaAnions = [.. anionNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}")];
 
+        //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
         var cationNum = new List<int>();
-        cationNum.AddRange(Enumerable.Range(3, 5));
-        cationNum.AddRange(Enumerable.Range(11, 5));
-        cationNum.AddRange(Enumerable.Range(19, 15));
-        cationNum.AddRange(Enumerable.Range(37, 15));
-        cationNum.AddRange(Enumerable.Range(55, 20));
+        cationNum.AddRange(ValueEnumerable.Range(3, 5).ToArray());
+        cationNum.AddRange(ValueEnumerable.Range(11, 5).ToArray());
+        cationNum.AddRange(ValueEnumerable.Range(19, 15).ToArray());
+        cationNum.AddRange(ValueEnumerable.Range(37, 15).ToArray());
+        cationNum.AddRange(ValueEnumerable.Range(55, 20).ToArray());
         VestaCations = [.. cationNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}")];
     }
 

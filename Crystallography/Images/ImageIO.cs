@@ -9,9 +9,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using ZLinq;
 
 namespace Crystallography;
-public static class ImageIO
+//260317Cl 変更: GeneratedRegex使用のためpartial化
+public static partial class ImageIO
 {
     public static string[] ListOfExtension =
     [
@@ -790,7 +792,8 @@ public static class ImageIO
             for (int i = 0; i < num; i++)
                 Ring.SequentialImageIntensities.Add(data.ReadAsDoubleArray([i, 0, 0], blocks));
 
-            Ring.SequentialImageNames = [.. Enumerable.Range(1, num + 1).Select(e => e.ToString("000"))];
+            //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+            Ring.SequentialImageNames = [.. ValueEnumerable.Range(1, num + 1).Select(e => e.ToString("000"))];
             Ring.Intensity = Ring.SequentialImageIntensities[0];
         }
 
@@ -1338,21 +1341,22 @@ public static class ImageIO
             br.BaseStream.Position = 0; // 初期位置にセット
             string headerText = new(br.ReadChars(17408)); // HEADER_BYTES 分読み取る
                                                                  // 正規表現で検索
-            Match matchMemo = Regex.Match(headerText, @"MEMO=([^;]+);"); // Device
+            //260317Cl 変更: Regex.Match → GeneratedRegex
+            Match matchMemo = RxMemo().Match(headerText); // Device
             Ring.Comments += "\r\n" + matchMemo.Groups[1].Value;
-            Match matchVersion = Regex.Match(headerText, @"DTREK_VERSION=([^;]+);"); // Version
+            Match matchVersion = RxDtrekVersion().Match(headerText); // Version
             Ring.Comments += "\r\n" + matchVersion.Groups[1].Value;
-            Match matchSample = Regex.Match(headerText, @"SAMPLE_NAME=([^;]+);"); // Sample
+            Match matchSample = RxSampleName().Match(headerText); // Sample
             Ring.Comments += "\r\n" + matchSample.Groups[1].Value;
-            Match matchDate = Regex.Match(headerText, @"RX_CREATE_DATE=([^;]+);"); // Date
+            Match matchDate = RxCreateDate().Match(headerText); // Date
             Ring.Comments += "\r\n" + matchDate.Groups[1].Value;
-            Match matchOperator = Regex.Match(headerText, @"OPERATOR_NAME=([^;]+);"); // Operator
+            Match matchOperator = RxOperatorName().Match(headerText); // Operator
             Ring.Comments += "\r\n" + matchOperator.Groups[1].Value;
-            Match matchTarget = Regex.Match(headerText, @"SOURCE_TARGET=([^;]+);"); // Target
+            Match matchTarget = RxSourceTarget().Match(headerText); // Target
             Ring.Comments += "\r\n" + matchTarget.Groups[1].Value;
 
-            Match matchSize1 = Regex.Match(headerText, @"SIZE1=(\d+);");
-            Match matchSize2 = Regex.Match(headerText, @"SIZE2=(\d+);");
+            Match matchSize1 = RxSize1().Match(headerText);
+            Match matchSize2 = RxSize2().Match(headerText);
 
             int num_x_pixs = int.Parse(matchSize1.Groups[1].Value); // Number of pixel X
             int num_y_pixs = int.Parse(matchSize2.Groups[1].Value); // Number of pixel Y
@@ -1886,4 +1890,22 @@ public static class ImageIO
         }
         //  public uint[] ConvertTable = new uint[65536];
     }
+
+    //260317Cl 追加: GeneratedRegex (RintRapid2Unroll用)
+    [System.Text.RegularExpressions.GeneratedRegex(@"MEMO=([^;]+);")]
+    private static partial Regex RxMemo();
+    [System.Text.RegularExpressions.GeneratedRegex(@"DTREK_VERSION=([^;]+);")]
+    private static partial Regex RxDtrekVersion();
+    [System.Text.RegularExpressions.GeneratedRegex(@"SAMPLE_NAME=([^;]+);")]
+    private static partial Regex RxSampleName();
+    [System.Text.RegularExpressions.GeneratedRegex(@"RX_CREATE_DATE=([^;]+);")]
+    private static partial Regex RxCreateDate();
+    [System.Text.RegularExpressions.GeneratedRegex(@"OPERATOR_NAME=([^;]+);")]
+    private static partial Regex RxOperatorName();
+    [System.Text.RegularExpressions.GeneratedRegex(@"SOURCE_TARGET=([^;]+);")]
+    private static partial Regex RxSourceTarget();
+    [System.Text.RegularExpressions.GeneratedRegex(@"SIZE1=(\d+);")]
+    private static partial Regex RxSize1();
+    [System.Text.RegularExpressions.GeneratedRegex(@"SIZE2=(\d+);")]
+    private static partial Regex RxSize2();
 }

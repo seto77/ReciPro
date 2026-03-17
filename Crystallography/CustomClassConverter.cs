@@ -40,7 +40,8 @@ namespace Crystallography
             if (value is string @string)
             {
                 string[] ss = @string.Split(new char[] { ',' }, 4);
-                return new RectangleD(Convert.ToDouble(ss[0]), Convert.ToDouble(ss[1]), Convert.ToDouble(ss[2]), Convert.ToDouble(ss[3]));
+                //260317Cl 変更: Convert.ToDouble → double.Parse
+                return new RectangleD(double.Parse(ss[0]), double.Parse(ss[1]), double.Parse(ss[2]), double.Parse(ss[3]));
             }
             return base.ConvertFrom(context, culture, value);
         }
@@ -65,7 +66,7 @@ namespace Crystallography
             if (value is string)
             {
                 string[] ss = ((string)value).Split(new char[] { ',' }, 2);
-                return new PointD(Convert.ToDouble(ss[0]), Convert.ToDouble(ss[1]));
+                return new PointD(double.Parse(ss[0]), double.Parse(ss[1]));
             }
             return base.ConvertFrom(context, culture, value);
         }
@@ -90,7 +91,7 @@ namespace Crystallography
             if (value is string)
             {
                 string[] ss = ((string)value).Split(new char[] { ',' }, 2);
-                return new SizeD(Convert.ToDouble(ss[0]), Convert.ToDouble(ss[1]));
+                return new SizeD(double.Parse(ss[0]), double.Parse(ss[1]));
             }
             return base.ConvertFrom(context, culture, value);
         }
@@ -116,7 +117,7 @@ namespace Crystallography
             if (value is string)
             {
                 string[] ss = ((string)value).Split(new char[] { ',' }, 4);
-                return new Vector3DBase(Convert.ToDouble(ss[0]), Convert.ToDouble(ss[1]), Convert.ToDouble(ss[2]));
+                return new Vector3DBase(double.Parse(ss[0]), double.Parse(ss[1]), double.Parse(ss[2]));
             }
             return base.ConvertFrom(context, culture, value);
         }

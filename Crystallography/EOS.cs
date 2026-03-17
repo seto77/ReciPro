@@ -1480,31 +1480,32 @@ new([4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], [0, 0, -438.37
     }
 
     //以下は開発用の関数でSpline[] 型の初期化コードを吐き出してくれる
+    //260317Cl 変更: string連結 → StringBuilder
     private static string deveropper(Spline[] s)
     {
-        string code = "";
+        var sb = new System.Text.StringBuilder();
 
-        code += "= new Spline[]{\r\n";
+        sb.Append("= new Spline[]{\r\n");
 
         for (int i = 0; i < s.Length; i++)
         {
-            code += "new Spline( ";
+            sb.Append("new Spline( ");
 
-            code += "new double[]{";
+            sb.Append("new double[]{");
             for (int j = 0; j < s[i].p.Length - 1; j++)
-                code += s[i].p[j].ToString() + ",";
-            code += s[i].p[^1].ToString() + "},";
+                sb.Append(s[i].p[j]).Append(',');
+            sb.Append(s[i].p[^1]).Append("},");
 
-            code += "new double[]{";
+            sb.Append("new double[]{");
             for (int j = 0; j < s[i].c.Length - 1; j++)
-                code += s[i].c[j].ToString() + ",";
-            code += s[i].c[^1].ToString() + "},";
+                sb.Append(s[i].c[j]).Append(',');
+            sb.Append(s[i].c[^1]).Append("},");
 
             if (i != s.Length - 1)
-                code += s[i].T.ToString() + "),\r\n";
+                sb.Append(s[i].T).Append("),\r\n");
             else
-                code += s[i].T.ToString() + ") };\r\n";
+                sb.Append(s[i].T).Append(") };\r\n");
         }
-        return code;
+        return sb.ToString();
     }
 }

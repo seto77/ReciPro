@@ -575,8 +575,9 @@ public partial class FormStereonet : Form
                         if (u < 0 || (u == 0 && v < 0) || (u == 0 && v == 0 && w < 0))
                         { u = -u; v = -v; w = -w; }
 
-                        if (dic.ContainsKey((u, v, w)))
-                            dic[(u, v, w)]++;
+                        //260317Cl 変更: ContainsKey+indexer → TryGetValue
+                        if (dic.TryGetValue((u, v, w), out var cnt))
+                            dic[(u, v, w)] = cnt + 1;
                         else
                             dic.Add((u, v, w), 1);
                     }

@@ -700,7 +700,8 @@ public class Lines : GLObject
         CircumscribedSphereCenter = new V4d(center, 1);
         CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
         Vertices = vertices.Select(v => new Vertex(v.ToV3f(), mat.Argb)).ToArray();
-        Indices = Enumerable.Range(0, vertices.Length).Select(i => (uint)i).ToArray();
+        //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+        Indices = ValueEnumerable.Range(0, vertices.Length).Select(i => (uint)i).ToArray();
         Primitives = [(PT.LineStrip, vertices.Length)];
     }
 }
@@ -726,17 +727,18 @@ public class Polygon : GLObject
     /// <param name="vertices"></param>
     /// <param name="mat"></param>
     /// <param name="mode"></param>
+    //260317Cl 変更: vertices.Count()の繰り返し呼出しを回避するためToArray具体化
     public Polygon(IEnumerable<V3d> vertices, Material mat, DrawingMode mode) : base(mat, mode)
     {
         ShowClippedSection = false;//クリップ断面は表示しない
         IgnoreNormalSides = true;//裏表を無視する
 
-        if (vertices.Count() == 3)//三角形の場合は特別処理
+        var vecs = vertices as V3d[] ?? vertices.ToArray();
+        if (vecs.Length == 3)//三角形の場合は特別処理
         {
-            var vecs = vertices.ToArray();
             var center = (vecs[0] + vecs[1] + vecs[2]) / 3;
             CircumscribedSphereCenter = new V4d(center, 1);
-            CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
+            CircumscribedSphereRadius = vecs.Max(v => (v - center).Length);
             var normF = V3d.Cross(vecs[0] - vecs[1], vecs[1] - vecs[2]).ToV3f();
             Vertices = [.. vecs.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb))];
             Indices = [0, 1, 2, 0, 1, 2, 0, 1, 2];
@@ -747,31 +749,32 @@ public class Polygon : GLObject
         }
         else
         {
-            var center = TkEx.Average(vertices);// new V3d(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
+            var center = TkEx.Average(vecs);// new V3d(vecs.Average(v => v.X), vecs.Average(v => v.Y), vecs.Average(v => v.Z));
             CircumscribedSphereCenter = new V4d(center, 1);
-            CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
-            var polygonInfo = GLGeometry.PolygonInfo(vertices, V3d.Zero);
+            CircumscribedSphereRadius = vecs.Max(v => (v - center).Length);
+            var polygonInfo = GLGeometry.PolygonInfo(vecs, V3d.Zero);
             var normF = polygonInfo.Norm.ToV3f();
             var centerF = polygonInfo.Center.ToV3f();
             var indicesList = polygonInfo.Indices;
-            indicesList.Insert(0, (uint)vertices.Count());
+            indicesList.Insert(0, (uint)vecs.Length);
             var indicesArray = indicesList.ToArray();
 
             //最終処理
-            Vertices = new Vertex[vertices.Count() + 1];
-            Array.Copy(vertices.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)).ToArray(), Vertices, vertices.Count());
+            Vertices = new Vertex[vecs.Length + 1];
+            vecs.Select(p => new Vertex(p.ToV3f(), normF, mat.Argb)).ToArray().AsSpan().CopyTo(Vertices.AsSpan(0, vecs.Length));
             Vertices[^1] = new Vertex(centerF, normF, mat.Argb);
 
             Indices = new uint[indicesArray.Length * 3 - 4];
             Primitives = new (PT Type, int Count)[3];
+            //260317Cl 変更: Array.Copy → Span.CopyTo
             //surfaces
-            Array.Copy(indicesArray, Indices, indicesArray.Length);
+            indicesArray.AsSpan().CopyTo(Indices.AsSpan(0, indicesArray.Length));
             Primitives[0] = (PT.TriangleFan, indicesList.Count);
             //edges
-            Array.Copy(indicesArray, 2, Indices, indicesArray.Length, indicesArray.Length - 2);
+            indicesArray.AsSpan(2).CopyTo(Indices.AsSpan(indicesArray.Length, indicesArray.Length - 2));
             Primitives[1] = (PT.LineLoop, indicesList.Count - 2);
             //points
-            Array.Copy(indicesArray, 2, Indices, indicesArray.Length * 2 - 2, indicesArray.Length - 2);
+            indicesArray.AsSpan(2).CopyTo(Indices.AsSpan(indicesArray.Length * 2 - 2, indicesArray.Length - 2));
             Primitives[2] = (PT.Points, indicesList.Count - 2);
         }
     }
@@ -804,7 +807,8 @@ public class Polygon : GLObject
                 ShowClippedSection = false,//クリップ断面は表示しない
                 IgnoreNormalSides = true,//裏表を無視する
                 Vertices = outputs[i].Select(v => new Vertex(v.ToV3f(), Vertices[0].Normal, Vertices[0].Argb)).ToArray(),
-                Indices = Enumerable.Range(0, outputs[i].Length).Select(val => (uint)val).ToArray()
+                //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+                Indices = ValueEnumerable.Range(0, outputs[i].Length).Select(val => (uint)val).ToArray()
             };
 
             results[i].Primitives = [(PT.Triangles, results[i].Indices.Length)];
@@ -897,7 +901,8 @@ public class Quads : Polygon
 /// 円 (ディスク)
 /// </summary>
 public class Disk(V3d origin, V3d normal, double radius, Material mat, DrawingMode mode, int slices = 60) : Polygon(
-         Enumerable.Range(0, slices).Select(i =>
+         //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+         ValueEnumerable.Range(0, slices).Select(i =>
              {
                 var (sin, cos)= Math.SinCos((double)i / slices * 2 * Math.PI);
                  var p = radius * new V2d(sin, cos);
@@ -938,7 +943,8 @@ public class HoledDisk : GLObject
         CircumscribedSphereCenter = new V4d(origin, 1);
         CircumscribedSphereRadius = RadiusOuter;
 
-        var t = Enumerable.Range(0, slices).Select(i => Math.SinCos((double)i / slices * 2 * Math.PI)).ToArray();
+        //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+        var t = ValueEnumerable.Range(0, slices).Select(i => Math.SinCos((double)i / slices * 2 * Math.PI)).ToArray();
         //var coss = Enumerable.Range(0, slices).Select(i => Math.Cos((double)i / slices * 2 * Math.PI)).ToArray();
 
         IgnoreNormalSides = true;
@@ -1218,7 +1224,8 @@ public class Ellipsoid : GLObject
         var indices = new List<int[]>();
 
         types.Add(PT.Points);
-        indices.Add([.. Enumerable.Range(0, Vertices.Length)]);
+        //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+        indices.Add([.. ValueEnumerable.Range(0, Vertices.Length)]);
 
         var indexListSurfaces = new List<int>(16 * rot.Length * slices * slices);
         var indexListEdges = new List<int>(rot.Length * 8 * (slices * slices * 2 + slices));
@@ -1692,7 +1699,8 @@ public class Torus : GLObject
 
         //Points
         types.Add(PT.Points);
-        indices.Add(Enumerable.Range(0, Vertices.Length).ToArray());
+        //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+        indices.Add(ValueEnumerable.Range(0, Vertices.Length).ToArray());
 
         //SurfacesとEdges
         var indexListSurfaces = new List<int>();

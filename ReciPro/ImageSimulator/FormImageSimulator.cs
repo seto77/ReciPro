@@ -136,7 +136,8 @@ public partial class FormImageSimulator : Form
                 return [numericBoxThickness.Value];
             try
             {
-                return textBoxThicknessList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => Convert.ToDouble(str)).ToArray();
+                //260317Cl 変更: Convert.ToDouble → double.Parse
+                return textBoxThicknessList.Text.Split(["\r\n"], StringSplitOptions.RemoveEmptyEntries).Select(str => double.Parse(str)).ToArray();
             }
             catch
             {

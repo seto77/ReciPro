@@ -302,12 +302,17 @@ namespace Crystallography
                     string numStr = "";
                     while (i + 1 < str.Length && str[i + 1] >= '0' && str[i + 1] <= '9')//次に続く文字が数字の時
                         numStr += str[i++ + 1];
-                    int num = numStr.Length == 0 ? 1 : Convert.ToInt32(numStr);
+                    //260317Cl 変更: Convert.ToInt32 → int.Parse
+                    //int num = numStr.Length == 0 ? 1 : Convert.ToInt32(numStr);
+                    int num = numStr.Length == 0 ? 1 : int.Parse(numStr);
 
-                    if (formula.ContainsKey(z))
-                        formula[z] += num;
-                    else
-                        formula.Add(z, num);
+                    //260317Cl 変更: ContainsKey+indexer → CollectionsMarshal.GetValueRefOrAddDefault
+                    //if (formula.ContainsKey(z))
+                    //    formula[z] += num;
+                    //else
+                    //    formula.Add(z, num);
+                    ref var valZ = ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrAddDefault(formula, z, out _);
+                    valZ += num;
                 }
 
                 if (str[i] == '(')  //かっこの始まりが現れたら
@@ -323,14 +328,18 @@ namespace Crystallography
                             string numStr = "";
                             while (j + 1 < str.Length && str[j + 1] >= '0' && str[j + 1] <= '9')// ")"のあとが数値だったら
                                 numStr += str[j++ + 1];
-                            int num = numStr.Length == 0 ? 1 : Convert.ToInt32(numStr);
+                            //260317Cl 変更: Convert.ToInt32 → int.Parse
+                            int num = numStr.Length == 0 ? 1 : int.Parse(numStr);
 
+                            //260317Cl 変更: ContainsKey+indexer → CollectionsMarshal.GetValueRefOrAddDefault
                             foreach (int n in temp.Keys)
                             {
-                                if (formula.ContainsKey(n))
-                                    formula[n] += num * temp[n];
-                                else
-                                    formula.Add(n, num * temp[n]);
+                                //if (formula.ContainsKey(n))
+                                //    formula[n] += num * temp[n];
+                                //else
+                                //    formula.Add(n, num * temp[n]);
+                                ref var valN = ref System.Runtime.InteropServices.CollectionsMarshal.GetValueRefOrAddDefault(formula, n, out _);
+                                valN += num * temp[n];
                             }
                             i = j;
                             break;

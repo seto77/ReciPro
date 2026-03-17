@@ -685,8 +685,9 @@ public partial class FormEBSD : Form
         BSEs = ParallelEnumerable.Range(0, loop)
             .Select(_ => monte.GetBackscatteredElectrons())
             .Where(e => e.e > EnergyThreshold)
-            .Select(e => (e.d,e.v, Stereonet.ConvertVectorToSchmidt(smpRot * e.v),e.e))
+            .Select(e => (e.d, e.v, Stereonet.ConvertVectorToSchmidt(smpRot * e.v), e.e))
             .ToArray();
+
         toolStripStatusLabel1.Text = $"{sw1.ElapsedMilliseconds} msec. ellapsed for {loop:#,0} backscattered electrons.";
 
         //ステレオネット描画

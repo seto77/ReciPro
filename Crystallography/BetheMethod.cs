@@ -1797,7 +1797,10 @@ public class BetheMethod
         #endregion
 
         //必要な情報だけを追加してParallelにしたtcP
-        var tcP = tc.AsParallel().Select((e, i) => (index: i, result: e, xy: k_xy[i])).Where(e => e.result is not null && A(e.xy)).Select(e => e.index);//.WithDegreeOfParallelism(1);
+        //260317Cl 変更: tcPArray.Lengthがループ内で毎回列挙されるのを防ぐためToArrayで具体化
+        //var tcP = tc.AsParallel().Select((e, i) => (index: i, result: e, xy: k_xy[i])).Where(e => e.result is not null && A(e.xy)).Select(e => e.index);//.WithDegreeOfParallelism(1);
+        var tcPArray = tc.Select((e, i) => (index: i, result: e, xy: k_xy[i])).Where(e => e.result is not null && A(e.xy)).Select(e => e.index).ToArray();
+        var tcP = tcPArray.AsParallel();
 
         #region listを計算
         var list = new List<(int qIndex, int[] N, double[] R, Complex[] Lenz)>[tc.Length];
@@ -1854,7 +1857,7 @@ public class BetheMethod
                             I_Elas[qIndex, t, d] += i_Elas[t] * lenz[d];
             }
             if (bwSTEM.CancellationPending) return;
-            if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / tcP.Count()), "Calculating I_elastic(Q)");//状況を報告
+            if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / tcPArray.Length), "Calculating I_elastic(Q)");//状況を報告
         });
         #endregion
 
@@ -1934,7 +1937,7 @@ public class BetheMethod
             #region 各種変数の設定
             var tc_k = GC.AllocateUninitializedArray<Complex>(tc.Length * bLen);
             var validTc = list.Where(e1 => e1 is not null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
-            var total = _thick.Sum(e => e.Length) * tcP.Count();
+            var total = _thick.Sum(e => e.Length) * tcPArray.Length;
             count = 0;
             #endregion
 
@@ -2062,7 +2065,7 @@ public class BetheMethod
             //    });
 
 
-            //    var total = tcP.Count();
+            //    var total = tcPArray.Length;
             //    count = 0;
             //    tcP.ForAll(kIndex =>
             //    {
@@ -2297,7 +2300,8 @@ public class BetheMethod
                     var rVec = ValueEnumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX) + shift.X, -res * (n / width - cY) + shift.Y }).ToArray();//Y座標はマイナス。
                     var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode);
                     for (var i = 0; i < defLen; i++)
-                        Array.Copy(results, i * count, _images[t][i], start, count);
+                        //260317Cl 変更: Array.Copy → Span.CopyTo
+                        results.AsSpan(i * count, count).CopyTo(_images[t][i].AsSpan(start, count));
                 });
             }
             else//Managed

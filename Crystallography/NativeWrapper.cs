@@ -957,4 +957,5 @@ public static partial class NativeWrapper
         return (profile, pixels);
     }
     #endregion
+
 }
