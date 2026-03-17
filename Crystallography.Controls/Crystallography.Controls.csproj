@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.3.16.2115</AssemblyVersion>
-    <FileVersion>2026.3.16.2115</FileVersion>
+    <AssemblyVersion>2026.3.17.0022</AssemblyVersion>
+    <FileVersion>2026.3.17.0022</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>

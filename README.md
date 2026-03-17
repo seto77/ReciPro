@@ -1,4 +1,4 @@
-# ReciPro
+﻿# ReciPro
 
 *ReciPro* is a free and open-source GUI-based multipurpose crystallographic software that provides seamless access to functions to explore crystal databases, visualize crystal structures and goniometer settings, simulate diffraction patterns and high-resolution microscope images, and analyze diffraction data. These features are linked through a user-friendly GUI, and the results can be synchronously displayed almost in real time. *ReciPro* will assist a wide range of crystallographers (including beginners) using X-ray, electron and neutron diffraction crystallography and TEM.
 
@@ -17,14 +17,15 @@
 ***
 
 ## Install
+
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
 * *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 10.0*** (not ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
 * *ReciPro* is distributed under the **MIT license** (free for anyone to use, modify, and redistribute).
 
 ## Manual
+  * English (PDF) : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
   * Japanese version : https://yseto.net/soft/recipro
   * Japanese (PDF) : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
-  * English (PDF) : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
 ***
 
 ## Main Features
@@ -166,18 +167,9 @@
 * Uses a right-handed Cartesian coordinate system (X: right, Y: up, Z: front) with Z–X–Z Euler angle convention.
 * Coordinate definitions are compatible with EBSD software by Thermo Fisher Scientific.
 
-***
+## Papers using ReciPro
 
-## Application Examples
-
-*ReciPro* has been used in published research including:
-
-* HAADF-STEM image evaluation of Fe<sub>6</sub>W<sub>6</sub>C and FeWO<sub>4</sub> high-thermal-conductivity composite films (Rao *et al.*, *Angew. Chem. Int. Ed.* **64**, e202418338, 2025).
-* HAADF-STEM image evaluation of Pt-Co nanocrystals for oxygen reduction reaction electrocatalysis (Rosen *et al.*, *ACS Mat. Let.* **4**, 823, 2022).
-* Structural evaluation of chiral antiferromagnet Mn<sub>3</sub>Sn using electron diffraction and HRTEM simulation (Higo *et al.*, *Nature* **607**, 474, 2022).
-* Bond distance and lattice plane spacing evaluation of Fe<sub>4</sub>N discovered in Ryugu asteroid samples (Matsumoto *et al.*, *Nature Astronomy* **8**, 207, 2024).
-
-***
+https://scholar.google.jp/scholar?cites=12625594477623342627
 
 ## Screenshots
 <img src="img/Main.png" height="320px">  <img src="img/DiffractionSimulator1.png" height="320px">　<img src="img/DiffractionSimulator2.png" height="320px">　<img src="img/StructureViewer1.png" height="320px">　<img src="img/StructureViewer2.png" height="320px"> <img src="img/ScatteringFactors.png" height="320px"> <img src="img/Stereonet.png" height="320px">
