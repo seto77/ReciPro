@@ -30,7 +30,7 @@ namespace Crystallography
         {
             if (destinationType == typeof(string) && value is RectangleD d)
             {
-                return string.Format("{0}, {1}, {2}, {3}", d.X, d.Y, d.Width, d.Height);
+                return $"{d.X}, {d.Y}, {d.Width}, {d.Height}"; //260317Cl string.Format → 文字列補間
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }
@@ -39,7 +39,7 @@ namespace Crystallography
         {
             if (value is string @string)
             {
-                string[] ss = @string.Split(new char[] { ',' }, 4);
+                string[] ss = @string.Split(',', 4); //260317Cl new char[] { ',' } → char リテラル
                 //260317Cl 変更: Convert.ToDouble → double.Parse
                 return new RectangleD(double.Parse(ss[0]), double.Parse(ss[1]), double.Parse(ss[2]), double.Parse(ss[3]));
             }
@@ -57,15 +57,15 @@ namespace Crystallography
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
             if (destinationType == typeof(string) && value is PointD g)
-                return string.Format("{0}, {1}", g.X, g.Y);
+                return $"{g.X}, {g.Y}"; //260317Cl string.Format → 文字列補間
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
-            if (value is string)
+            if (value is string s) //260317Cl パターンマッチング + char リテラル
             {
-                string[] ss = ((string)value).Split(new char[] { ',' }, 2);
+                string[] ss = s.Split(',', 2);
                 return new PointD(double.Parse(ss[0]), double.Parse(ss[1]));
             }
             return base.ConvertFrom(context, culture, value);
@@ -82,15 +82,15 @@ namespace Crystallography
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
             if (destinationType == typeof(string) && value is SizeD d)
-                return string.Format("{0}, {1}", d.Width, d.Height);
+                return $"{d.Width}, {d.Height}"; //260317Cl string.Format → 文字列補間
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
-            if (value is string)
+            if (value is string s) //260317Cl パターンマッチング + char リテラル
             {
-                string[] ss = ((string)value).Split(new char[] { ',' }, 2);
+                string[] ss = s.Split(',', 2);
                 return new SizeD(double.Parse(ss[0]), double.Parse(ss[1]));
             }
             return base.ConvertFrom(context, culture, value);
@@ -106,17 +106,16 @@ namespace Crystallography
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType != typeof(string) || value is not Vector3DBase)
+            if (destinationType != typeof(string) || value is not Vector3DBase g) //260317Cl パターンマッチング
                 return base.ConvertTo(context, culture, value, destinationType);
-            Vector3DBase g = (Vector3DBase)value;
-            return string.Format("{0}, {1}, {2}", g.X, g.Y, g.Z);
+            return $"{g.X}, {g.Y}, {g.Z}"; //260317Cl string.Format → 文字列補間
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
-            if (value is string)
+            if (value is string s) //260317Cl パターンマッチング + char リテラル
             {
-                string[] ss = ((string)value).Split(new char[] { ',' }, 4);
+                string[] ss = s.Split(',', 4);
                 return new Vector3DBase(double.Parse(ss[0]), double.Parse(ss[1]), double.Parse(ss[2]));
             }
             return base.ConvertFrom(context, culture, value);

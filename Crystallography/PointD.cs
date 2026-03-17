@@ -194,7 +194,7 @@ public partial struct PointD : IComparable, IEquatable<PointD>
     /// Get the string representation
     /// </summary>
     /// <returns></returns>
-    public override readonly string ToString() => string.Format("({0}, {1})", this.X, this.Y);
+    public override readonly string ToString() => $"({X}, {Y})"; //260317Cl string.Format → 文字列補間
 
     public override readonly bool Equals(object obj) => obj is PointD d && Equals(d);
 

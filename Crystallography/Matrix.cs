@@ -829,7 +829,7 @@ public class Vector3DBase : ICloneable
         return new Vector3DBase(x / count, y / count, z / count);
     }
 
-    public override string ToString() => string.Format("({0}, {1}, {2})", this.X, this.Y, this.Z);
+    public override string ToString() => $"({X}, {Y}, {Z})"; //260317Cl string.Format → 文字列補間
 }
 
 /// <summary>

@@ -163,8 +163,8 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level1</WarningLevel>
-      <FunctionLevelLinking>
-      </FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>
@@ -187,8 +187,7 @@
       </OpenMP>
       <EnableModules>
       </EnableModules>
-      <BufferSecurityCheck>
-      </BufferSecurityCheck>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
       <OptimizeForWindowsApplication>false</OptimizeForWindowsApplication>
       <OffloadOpenMP>
       </OffloadOpenMP>
@@ -201,14 +200,13 @@
       </OffloadArch>
       <DiagnosticsFormat>
       </DiagnosticsFormat>
-      <FloatingPointModel>Default</FloatingPointModel>
+      <FloatingPointModel>Fast</FloatingPointModel>
       <UndefineAllPreprocessorDefinitions>
       </UndefineAllPreprocessorDefinitions>
       <AdditionalIncludeDirectories>Crystallography.Native;C:\Users\seto\source\repos\ReciPro\Crystallography.Native\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableFiberSafeOptimizations>
       </EnableFiberSafeOptimizations>
-      <OmitFramePointers>
-      </OmitFramePointers>
+      <OmitFramePointers>true</OmitFramePointers>
       <LlvmTransitionalOption>NextGenNone</LlvmTransitionalOption>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MinimalRebuild>
@@ -227,8 +225,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>
-      </OptimizeReferences>
+      <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
