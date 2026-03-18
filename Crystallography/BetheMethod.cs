@@ -75,6 +75,10 @@ public class BetheMethod
     public double Thickness { get; set; }
     public double[] Thicknesses { get; set; }
 
+    // 260318Cl 追加: BFS 探索結果のキャッシュ (baseRotation が同じなら再利用)
+    private (int key, double gX, double gY, double gZ, double gLen)[] _gCandidateCache;
+    private (double, double, double, double, double, double, double, double, double) _cachedMat;
+
     // 260316Cl 追加
     /// <summary>
     /// EBSD計算で非局所形式の吸収ポテンシャルを使用するかどうか。
@@ -2562,6 +2566,68 @@ public class BetheMethod
     static (int h, int k, int l) decompose(in int key) => ((key >> 20) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
     /// <summary>
+    /// 格子タイプに対応する direction セットを返す。260318Cl 追加
+    /// </summary>
+    private FrozenSet<(int h, int k, int l)> GetDirection()
+    {
+        if (Crystal.Symmetry.LatticeTypeStr == "F") return directionF;
+        else if (Crystal.Symmetry.LatticeTypeStr == "A") return directionA;
+        else if (Crystal.Symmetry.LatticeTypeStr == "B") return directionB;
+        else if (Crystal.Symmetry.LatticeTypeStr == "C") return directionC;
+        else if (Crystal.Symmetry.LatticeTypeStr == "I") return directionI;
+        else if (Crystal.Symmetry.LatticeTypeStr == "R" && Crystal.Symmetry.SpaceGroupHMsubStr == "H") return directionRH;
+        else if (Crystal.Symmetry.CrystalSystemStr == "trigonal" || Crystal.Symmetry.CrystalSystemStr == "hexagonal") return directionHex;
+        else return directionP;
+    }
+
+    /// <summary>
+    /// baseRotation に基づく BFS 探索キャッシュを構築する。エワルド球テストは行わず、
+    /// 逆格子点の座標 (gX, gY, gZ) と gLen を記録する。260318Cl 追加
+    /// </summary>
+    private void BuildGCandidateCache(Matrix3D baseRotation, int cacheLimit)
+    {
+        var direction = GetDirection();
+
+        var mat = baseRotation * Crystal.MatrixInverseTransposed;
+        var (m11, m12, m13, m21, m22, m23, m31, m32, m33) = mat.Tuple;
+        _cachedMat = mat.Tuple;
+
+        var shift = direction.Max(dir => (mat * dir).Length) * 0.5;
+
+        var outer = new PriorityQueue<int, double>();
+        outer.Enqueue(compose(0, 0, 0), 0);
+        var whole = new HashSet<int>(cacheLimit * 2) { compose(0, 0, 0) };
+
+        var candidates = new List<(int key, double gX, double gY, double gZ, double gLen)>(cacheLimit) { (compose(0, 0, 0), 0, 0, 0, 0) };
+
+        while (whole.Count < cacheLimit && outer.Count > 0)
+        {
+            if (!outer.TryPeek(out _, out var minGlen))
+                break;
+            var min = minGlen + shift * 3;
+            while (outer.Count > 0 && outer.TryPeek(out _, out var currentGlen) && currentGlen < min)
+            {
+                outer.TryDequeue(out var key, out _);
+                var (h1, k1, l1) = decompose(key);
+                foreach (var (h2, k2, l2) in direction)
+                {
+                    int h = h1 + h2, k = k1 + k2, l = l1 + l2;
+                    var newKey = compose(h, k, l);
+                    if (whole.Add(newKey))
+                    {
+                        double gX = Dot3(m11, h, m12, k, m13, l), gY = Dot3(m21, h, m22, k, m23, l), gZ = Dot3(m31, h, m32, k, m33, l);
+                        double gLen = Math.Sqrt(gX * gX + gY * gY + gZ * gZ);
+                        candidates.Add((newKey, gX, gY, gZ, gLen));
+                        outer.Enqueue(newKey, gLen);
+                    }
+                }
+            }
+        }
+
+        _gCandidateCache = [.. candidates];
+    }
+
+    /// <summary>
     /// 候補となるgVectorを検索する.
     /// </summary>
     /// <param name="baseRotation">結晶方位</param>
@@ -2572,124 +2638,68 @@ public class BetheMethod
     {
         if (maxNumOfBloch == -1)
             maxNumOfBloch = MaxNumOfBloch;
-        
-        #region directionを初期化
 
-        FrozenSet<(int h, int k, int l)> direction;
-        if (Crystal.Symmetry.LatticeTypeStr == "F") direction = directionF;
-        else if (Crystal.Symmetry.LatticeTypeStr == "A") direction = directionA;
-        else if (Crystal.Symmetry.LatticeTypeStr == "B") direction = directionB;
-        else if (Crystal.Symmetry.LatticeTypeStr == "C") direction = directionC;
-        else if (Crystal.Symmetry.LatticeTypeStr == "I") direction = directionI;
-        else if (Crystal.Symmetry.LatticeTypeStr == "R" && Crystal.Symmetry.SpaceGroupHMsubStr == "H") direction = directionRH;
-        else if (Crystal.Symmetry.CrystalSystemStr == "trigonal" || Crystal.Symmetry.CrystalSystemStr == "hexagonal") direction = directionHex;
-        else direction = directionP;
-        #endregion directionを初期化
+        // 260318Cl 変更: BFS 探索 (Phase 1) とエワルド球スクリーニング (Phase 2) を分離
+        // baseRotation が同じなら BFS キャッシュを再利用し、vecK0 依存のスクリーニングのみ実行
 
+        #region Phase 1: キャッシュ構築 (baseRotation が変わった場合のみ)
+        var mat = baseRotation * Crystal.MatrixInverseTransposed;
+        var matTuple = mat.Tuple;
+        var direction = GetDirection();
+        var shift = direction.Max(dir => (mat * dir).Length) * 0.5;
+        var cacheLimit = Math.Max(maxNumOfBloch * 64, 50_000);
+        if (_gCandidateCache == null || _cachedMat != matTuple || _gCandidateCache.Length < cacheLimit)
+            BuildGCandidateCache(baseRotation, cacheLimit);
+        #endregion
+
+        #region Phase 2: キャッシュ済み候補に対してエワルド球テストのみ実行
         var limit = maxNumOfBloch * 8;
-        var pool = ArrayPool<(int key, float rating)>.Shared.Rent(limit);//poolをレンタル
+        var pool = ArrayPool<(int key, float rating)>.Shared.Rent(limit); // key slot にキャッシュインデックスを格納
         var beamsSpan = pool.AsSpan(0, limit);
         int count = 0;
-        beamsSpan[count++] = (compose(0, 0, 0), 0);
-        
-        //var outer = new List<(int key, double gLen)> { (compose(0, 0, 0), 0) };
-        var outer = new PriorityQueue<int, double>();
-        outer.Enqueue(compose(0, 0, 0), 0);
-
-        var whole = new HashSet<int>(limit * 16) { compose(0, 0, 0) };
-
-        var mat = baseRotation * Crystal.MatrixInverseTransposed;
-        var shift = direction.Max(dir => (mat * dir).Length) * 0.5;//この数字が妥当かどうか？
 
         double k0_2 = vecK0.Length2, k0 = vecK0.Length;
         var maxQ = Math.Abs(k0_2 - (k0 + shift) * (k0 + shift));
 
-        var (m11, m12, m13, m21, m22, m23, m31, m32, m33) = mat.Tuple;
         var (kX, kY, kZ) = vecK0.Tuple;
         var (sX, sY, sZ) = Surface.Tuple;
 
-        while (count < limit && whole.Count < 1_000_000 && outer.Count > 0)
+        var cache = _gCandidateCache;
+        var cacheCount = cache.Length;
+        for (int i = 0; i < cacheCount && count < limit; i++)
         {
-            //outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
-            //var min = outer[0].gLen + shift * 3;
-            //var end = outer.FindLastIndex(o => o.gLen - min < 0) + 1;
-            //foreach (var o in CollectionsMarshal.AsSpan(outer)[..end])
-            //{
+            var (_, gX, gY, gZ, gLen) = cache[i];
+            double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
+            double q = k0_2 - Dot3(vX, vX, vY, vY, vZ, vZ);
 
-            if (!outer.TryPeek(out _, out var minGlen))
-                break;
-            var min = minGlen + shift * 3;
-            while (count < limit && outer.Count > 0 && outer.TryPeek(out var key, out var currentGlen) && currentGlen < min)
-            {
-                outer.Dequeue();
-
-                var (h1, k1, l1) = decompose(key);
-                foreach (var (h2, k2, l2) in direction)
-                    if (count < limit)
-                    {
-                        int h = h1 + h2, k = k1 + k2, l = l1 + l2;
-                        var newKey = compose(h, k, l);
-                        if (whole.Add(newKey))
-                        {
-                            // double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
-                            double gX = Dot3(m11, h, m12, k, m13, l), gY = Dot3(m21, h, m22, k, m23, l), gZ = Dot3(m31, h, m32, k, m33, l);
-                            double gLen = Math.Sqrt(gX * gX + gY * gY + gZ * gZ);
-                            double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
-                            // double q = k0_2 - (vX * vX + vY * vY + vZ * vZ);
-                            double q = k0_2 - Dot3(vX, vX, vY, vY, vZ, vZ);
-
-                            // if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0)
-                            if (Math.Abs(q) < maxQ && Dot3(sX, vX, sY, vY, sZ, vZ) > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
-                                beamsSpan[count++] = (newKey, (float)(gLen * q * q));
-                            //outer.Add((newKey, gLen));
-                            outer.Enqueue(newKey, gLen);
-                        }
-                    }
-            }
-            //outer.RemoveRange(0, end); //outer = outer[end..]; //こちらのほうが遅い。
+            if (Math.Abs(q) < maxQ && Dot3(sX, vX, sY, vY, sZ, vZ) > 0)
+                beamsSpan[count++] = (i, (float)(gLen * q * q)); // key slot にキャッシュインデックスを格納
         }
+        #endregion
 
         count = Math.Min(count, maxNumOfBloch + 1);
+        QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));
 
-        QuickSelect.Execute(beamsSpan, count, static (a, b) => a.rating.CompareTo(b.rating));//大して速くない
-        //beamsSpan.Sort(static (a, b) => a.rating.CompareTo(b.rating));
-
-        var beams = GC.AllocateUninitializedArray<Beam>(count).AsSpan(); //List<Beam>(count);
+        var beams = GC.AllocateUninitializedArray<Beam>(count).AsSpan();
         for (int i = 0; i < count; i++)
         {
-            var (h, k, l) = decompose(beamsSpan[i].key);
-            // double gX = m11 * h + m12 * k + m13 * l, gY = m21 * h + m22 * k + m23 * l, gZ = m31 * h + m32 * k + m33 * l;
-            double gX = Dot3(m11, h, m12, k, m13, l), gY = Dot3(m21, h, m22, k, m23, l), gZ = Dot3(m31, h, m32, k, m33, l);
+            var (key, gX, gY, gZ, _)  = cache[beamsSpan[i].key]; // .key はキャッシュインデックス
+            var (h, k, l) = decompose(key);
             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
-            // double q = k0_2 - (vX * vX + vY * vY + vZ * vZ), p = 2 * (sX * vX + sY * vY + sZ * vZ);
             double q = k0_2 - Dot3(vX, vX, vY, vY, vZ, vZ), p = 2 * Dot3(sX, vX, sY, vY, sZ, vZ);
             var g = new Vector3DBase(gX, gY, gZ);
-            // 旧: getU(AccVoltage, new Beam((h, k, l), g)) → Beam は class なので count 回ヒープ割り当てが発生
             beams[i] = new Beam((h, k, l), g, getU(AccVoltage, (h, k, l), g), (q, p));
         }
-        ArrayPool<(int key, float rating)>.Shared.Return(pool);//poolを返却
+        ArrayPool<(int key, float rating)>.Shared.Return(pool);
 
         beams.Sort(static (a, b) => a.Rating.CompareTo(b.Rating));
 
-        // X,Y座標が同じものを削除
-        // 以前の O(N^2) + 配列シフト実装だと MaxNumOfBloch を増やした際に律速になりやすいため、
-        // 量子化キーで一意化する O(N) 実装に変更する。
+        #region X,Y座標が同じものを削除
         const double duplicateTol = 1E-6;
         var uniqueXY = new HashSet<long>(beams.Length * 2);
         int uniqueCount = 0;
         for (int i = 0; i < beams.Length; i++)
         {
-            //var bi = beams[i];
-            //for (int j = i + 1; j < beams.Length; j++)
-            //{
-            //    var bj = beams[j];
-            //    if (Math.Abs(bi.Vec.X - bj.Vec.X) < 1E-6 && Math.Abs(bi.Vec.Y - bj.Vec.Y) < 1E-6)
-            //    {
-            //        for (int k = j; k < beams.Length - 1; k++)
-            //            beams[k] = beams[k + 1];
-            //        beams = beams[..(beams.Length - 1)];
-            //    }
-            //}
             var b = beams[i];
             long xKey = (long)Math.Round(b.Vec.X / duplicateTol, MidpointRounding.AwayFromZero);
             long yKey = (long)Math.Round(b.Vec.Y / duplicateTol, MidpointRounding.AwayFromZero);
@@ -2699,6 +2709,8 @@ public class BetheMethod
                 beams[uniqueCount++] = b;
         }
         beams = beams[..uniqueCount];
+        #endregion
+
 
         int n = beams.Length - 1;
         for (int i = beams.Length - 1; i >= 1; i--)
