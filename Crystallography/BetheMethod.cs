@@ -76,8 +76,8 @@ public class BetheMethod
     public double[] Thicknesses { get; set; }
 
     // 260318Cl 追加: BFS 探索結果のキャッシュ (baseRotation が同じなら再利用)
-    private (int key, double gX, double gY, double gZ, double gLen)[] _gCandidateCache;
-    private (double, double, double, double, double, double, double, double, double) _cachedMat;
+    private (int key, double gX, double gY, double gZ, double gLen)[] gCache;
+    private (double, double, double, double, double, double, double, double, double) matCache;
 
     // 260316Cl 追加
     /// <summary>
@@ -2561,9 +2561,9 @@ public class BetheMethod
     static readonly FrozenSet<(int h, int k, int l)> directionRH = new[] { (1, 0, 1), (0, -1, 1), (-1, 1, 1), (-1, 0, -1), (0, 1, -1), (1, -1, -1) }.ToFrozenSet();
     static readonly FrozenSet<(int h, int k, int l)> directionHex = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (1, -1, 0), (-1, 1, 0), (0, 0, 1), (0, 0, -1) }.ToFrozenSet();
     static readonly FrozenSet<(int h, int k, int l)> directionP = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) }.ToFrozenSet();
-    static int compose(in int h, in int k, in int l) => ((h + 255) << 20) + ((k + 255) << 10) + l + 255;
-    static int compose(in (int h, int k, int l) index) => ((index.h + 255) << 20) + ((index.k + 255) << 10) + index.l + 255;
-    static (int h, int k, int l) decompose(in int key) => ((key >> 20) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
+    static int compose(int h, int k, int l) => ((h + 255) << 20) + ((k + 255) << 10) + l + 255;
+    static int compose((int h, int k, int l) index) => ((index.h + 255) << 20) + ((index.k + 255) << 10) + index.l + 255;
+    static (int h, int k, int l) decompose(int key) => ((key >> 20) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
     /// <summary>
     /// 格子タイプに対応する direction セットを返す。260318Cl 追加
@@ -2584,20 +2584,19 @@ public class BetheMethod
     /// baseRotation に基づく BFS 探索キャッシュを構築する。エワルド球テストは行わず、
     /// 逆格子点の座標 (gX, gY, gZ) と gLen を記録する。260318Cl 追加
     /// </summary>
-    private void BuildGCandidateCache(Matrix3D baseRotation, int cacheLimit)
+    private void Build_gCache(Matrix3D baseRotation, int cacheLimit)
     {
         var direction = GetDirection();
 
         var mat = baseRotation * Crystal.MatrixInverseTransposed;
         var (m11, m12, m13, m21, m22, m23, m31, m32, m33) = mat.Tuple;
-        _cachedMat = mat.Tuple;
+        matCache = mat.Tuple;
 
         var shift = direction.Max(dir => (mat * dir).Length) * 0.5;
 
         var outer = new PriorityQueue<int, double>();
         outer.Enqueue(compose(0, 0, 0), 0);
         var whole = new HashSet<int>(cacheLimit * 2) { compose(0, 0, 0) };
-
         var candidates = new List<(int key, double gX, double gY, double gZ, double gLen)>(cacheLimit) { (compose(0, 0, 0), 0, 0, 0, 0) };
 
         while (whole.Count < cacheLimit && outer.Count > 0)
@@ -2624,7 +2623,7 @@ public class BetheMethod
             }
         }
 
-        _gCandidateCache = [.. candidates];
+        gCache = [.. candidates];
     }
 
     /// <summary>
@@ -2640,40 +2639,36 @@ public class BetheMethod
             maxNumOfBloch = MaxNumOfBloch;
 
         // 260318Cl 変更: BFS 探索 (Phase 1) とエワルド球スクリーニング (Phase 2) を分離
-        // baseRotation が同じなら BFS キャッシュを再利用し、vecK0 依存のスクリーニングのみ実行
+        // baseRotationとmaxNumOfBloch が BFS キャッシュを再利用し、vecK0 依存のスクリーニングのみ実行
+
+        var mat = baseRotation * Crystal.MatrixInverseTransposed;
 
         #region Phase 1: キャッシュ構築 (baseRotation が変わった場合のみ)
-        var mat = baseRotation * Crystal.MatrixInverseTransposed;
-        var matTuple = mat.Tuple;
-        var direction = GetDirection();
-        var shift = direction.Max(dir => (mat * dir).Length) * 0.5;
         var cacheLimit = Math.Max(maxNumOfBloch * 64, 50_000);
-        if (_gCandidateCache == null || _cachedMat != matTuple || _gCandidateCache.Length < cacheLimit)
-            BuildGCandidateCache(baseRotation, cacheLimit);
+        if (gCache == null || matCache != mat.Tuple || gCache.Length < cacheLimit)
+            Build_gCache(baseRotation, cacheLimit);
         #endregion
 
         #region Phase 2: キャッシュ済み候補に対してエワルド球テストのみ実行
         var limit = maxNumOfBloch * 8;
-        var pool = ArrayPool<(int key, float rating)>.Shared.Rent(limit); // key slot にキャッシュインデックスを格納
+        var pool = ArrayPool<(int cacheIndex, float rating)>.Shared.Rent(limit); // cacheIndex slot にキャッシュインデックスを格納
         var beamsSpan = pool.AsSpan(0, limit);
-        int count = 0;
 
         double k0_2 = vecK0.Length2, k0 = vecK0.Length;
+        var shift = GetDirection().Max(dir => (mat * dir).Length) * 0.5;
         var maxQ = Math.Abs(k0_2 - (k0 + shift) * (k0 + shift));
 
         var (kX, kY, kZ) = vecK0.Tuple;
         var (sX, sY, sZ) = Surface.Tuple;
 
-        var cache = _gCandidateCache;
-        var cacheCount = cache.Length;
-        for (int i = 0; i < cacheCount && count < limit; i++)
+        for (int i = 0, count = 0; i < gCache.Length && count < limit; i++)
         {
-            var (_, gX, gY, gZ, gLen) = cache[i];
+            var (_, gX, gY, gZ, gLen) = gCache[i];
             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
             double q = k0_2 - Dot3(vX, vX, vY, vY, vZ, vZ);
 
             if (Math.Abs(q) < maxQ && Dot3(sX, vX, sY, vY, sZ, vZ) > 0)
-                beamsSpan[count++] = (i, (float)(gLen * q * q)); // key slot にキャッシュインデックスを格納
+                beamsSpan[count++] = (i, (float)(gLen * q * q)); // キャッシュインデックスを格納
         }
         #endregion
 
@@ -2683,7 +2678,7 @@ public class BetheMethod
         var beams = GC.AllocateUninitializedArray<Beam>(count).AsSpan();
         for (int i = 0; i < count; i++)
         {
-            var (key, gX, gY, gZ, _)  = cache[beamsSpan[i].key]; // .key はキャッシュインデックス
+            var (key, gX, gY, gZ, _)  = gCache[beamsSpan[i].cacheIndex]; 
             var (h, k, l) = decompose(key);
             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
             double q = k0_2 - Dot3(vX, vX, vY, vY, vZ, vZ), p = 2 * Dot3(sX, vX, sY, vY, sZ, vZ);
@@ -2710,7 +2705,6 @@ public class BetheMethod
         }
         beams = beams[..uniqueCount];
         #endregion
-
 
         int n = beams.Length - 1;
         for (int i = beams.Length - 1; i >= 1; i--)
