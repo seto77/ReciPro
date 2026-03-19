@@ -9,13 +9,11 @@ using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Xml.Serialization;
 using ZLinq;
 using static System.Buffers.ArrayPool<System.Numerics.Complex>;
@@ -2660,8 +2658,8 @@ public class BetheMethod
 
         var (kX, kY, kZ) = vecK0.Tuple;
         var (sX, sY, sZ) = Surface.Tuple;
-
-        for (int i = 0, count = 0; i < gCache.Length && count < limit; i++)
+        int count = 0;
+        for (int i = 0; i < gCache.Length && count < limit; i++)
         {
             var (_, gX, gY, gZ, gLen) = gCache[i];
             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;

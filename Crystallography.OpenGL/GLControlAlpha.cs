@@ -39,11 +39,12 @@ unsafe public partial class GLControlAlpha : UserControl
     public static string VersionStr => $"{Version / 100}.{Version / 10 % 10}.{Version % 10}";
 
     /// <summary>
-    /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 330など)
+    /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 410など)
     /// </summary>
-    public static int VersionForZsort { get; } = 150;
+    //public static int VersionForZsort { get; } = 150;
+    public static int VersionForZsort { get; } = 410; // (260319Ch) 共通描画パスの下限を OpenGL 4.1 core に引き上げる
     /// <summary>
-    /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
+    /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 4.1.0など)
     /// </summary>
     public static string VersionForZsortStr => $"{VersionForZsort / 100}.{VersionForZsort / 10 % 10}.{VersionForZsort % 10}";
     /// <summary>
@@ -64,6 +65,9 @@ unsafe public partial class GLControlAlpha : UserControl
     /// OITのバージョンを満たしているか.
     /// </summary>
     public static bool OitEnabled => VersionForOit <= Version;
+
+    private static readonly System.Version VersionForZsortApi = new(4, 1); // (260319Ch) 通常描画は 4.1 core context を要求
+    private static readonly System.Version VersionForOitApi = new(4, 3); // (260319Ch) OIT は SSBO / atomic counter のため 4.3 を維持
 
     private static int N = 0;
 
@@ -410,10 +414,66 @@ unsafe public partial class GLControlAlpha : UserControl
     {
         try
         {
-            var ver = GL.GetString(StringName.Version)[..5].Split(['.', ' ']);
-            return ver.Length != 3 ? null : ver;
+            var versionString = GL.GetString(StringName.Version);
+            var ver = versionString?
+                .Split(['.', ' '], StringSplitOptions.RemoveEmptyEntries)
+                .Where(s => s.All(char.IsDigit))
+                .Take(3)
+                .ToArray();
+
+            if (ver == null || ver.Length == 0)
+                return null;
+
+            if (ver.Length == 1)
+                return [ver[0], "0", "0"];
+            if (ver.Length == 2)
+                return [ver[0], ver[1], "0"];
+            return ver;
         }
         catch { throw new Exception(); }
+    }
+
+    private static GLControlSettings createGlControlSettings(FragShaders shaderMode, bool forVersionProbe = false)
+    {
+        var apiVersion = shaderMode == FragShaders.OIT ? VersionForOitApi : VersionForZsortApi;
+        return new GLControlSettings()
+        {
+            APIVersion = apiVersion,
+            NumberOfSamples = forVersionProbe ? 0 : shaderMode == FragShaders.ZSORT ? 2 : 0,
+            StencilBits = 8,
+            DepthBits = 16,
+            Profile = OpenTK.Windowing.Common.ContextProfile.Core,
+        };
+    }
+
+    private static int checkSupportedVersion(params FragShaders[] shaderModes)
+    {
+        foreach (var shaderMode in shaderModes)
+        {
+            try
+            {
+                using var glcontrol = new GLControl(createGlControlSettings(shaderMode, true));
+                glcontrol.MakeCurrent();
+                var ver = CheckVersion();
+                if (ver == null)
+                    continue;
+
+                int version = 0;
+                if (int.TryParse(ver[0], out var temp0))
+                    version += temp0 * 100;
+                if (int.TryParse(ver[1], out var temp1))
+                    version += temp1 * 10;
+                if (int.TryParse(ver[2], out var temp2))
+                    version += temp2;
+                if (version > 0)
+                    return version;
+            }
+            catch
+            {
+                // (260319Ch) 要求バージョンを満たさない context 生成はここで安全に握りつぶし、次候補へフォールバックする。
+            }
+        }
+        return 0;
     }
 
     /// <summary>
@@ -441,23 +501,15 @@ unsafe public partial class GLControlAlpha : UserControl
         //if(GraphicsInfo.Count>1 && GraphicsInfo[0].Product.Contains("Radeon"))
         //    DisableTextRendering = true;
 
-        using var glcontrol = new GLControl();
-        glcontrol.MakeCurrent();
-
-        //バージョンチェック
-        var ver = CheckVersion();
-        if (ver == null)
+        //using var glcontrol = new GLControl();
+        //glcontrol.MakeCurrent();
+        //var ver = CheckVersion();
+        Version = checkSupportedVersion(FragShaders.OIT, FragShaders.ZSORT); // (260319Ch) まず 4.3、次に 4.1 を試して実際に使える上限を判定
+        if (Version == 0)
         {
             DisablingOpenGL = true;
             return;
         }
-        Version = 0;
-        if (int.TryParse(ver[0], out var temp0))
-            Version += temp0 * 100;
-        if (int.TryParse(ver[1], out var temp1))
-            Version += temp1 * 10;
-        if (int.TryParse(ver[2], out var temp2))
-            Version += temp2;
     }
 
     /// <summary>
@@ -467,21 +519,26 @@ unsafe public partial class GLControlAlpha : UserControl
     {
         InitializeComponent();
 
+        //if (DisablingOpenGL || DesignMode || !ZsortEnabled)
         if (DisablingOpenGL || DesignMode || !ZsortEnabled)
             return;
+
+        if (shaders == FragShaders.OIT && !OitEnabled)
+            shaders = FragShaders.ZSORT; // (260319Ch) 4.3 未満では安全側で ZSORT にフォールバックする
 
         FragShader = shaders;
 
         #region glControlの初期化
         SuspendLayout();
         // glControlのコンストラクタで、GraphicsModeを指定する必要があるが、これをするとデザイナが壊れるので、ここに書く。
-        var setting = new GLControlSettings()
-        {
-            NumberOfSamples = FragShader == FragShaders.ZSORT ? 2 : 0,
-            StencilBits = 8,
-            DepthBits = 16,
-            Profile = OpenTK.Windowing.Common.ContextProfile.Core,
-        };
+        //var setting = new GLControlSettings()
+        //{
+        //    NumberOfSamples = FragShader == FragShaders.ZSORT ? 2 : 0,
+        //    StencilBits = 8,
+        //    DepthBits = 16,
+        //    Profile = OpenTK.Windowing.Common.ContextProfile.Core,
+        //};
+        var setting = createGlControlSettings(FragShader); // (260319Ch) shader 要件に応じて 4.1 / 4.3 core context を明示要求する
 
         glControl = new GLControl(setting)
         {
@@ -530,7 +587,8 @@ unsafe public partial class GLControlAlpha : UserControl
         depthCueingNearLocation = GL.GetUniformLocation(Program, "Near");
 
         GL.Disable(EnableCap.CullFace);//CullFaceは常に無効
-        GL.Enable(EnableCap.Texture2D);
+        //GL.Enable(EnableCap.Texture2D);
+        // (260319Ch) fixed-function の Texture2D enable は core profile では不要かつ無効なので外す。
 
         if (FragShader == FragShaders.OIT)
         {

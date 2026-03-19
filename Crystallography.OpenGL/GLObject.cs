@@ -123,6 +123,12 @@ public class Location
     internal int PassOIT1Index = -1;
     internal int PassOIT2Index = -1;
     internal int PassNormalIndex = -1;
+    internal int VertexPathLocation { get; set; } = -1;
+    internal int VertexMeshIndex { get; set; } = -1;
+    internal int VertexTextIndex { get; set; } = -1;
+    internal int FragmentPathLocation { get; set; } = -1;
+    internal int FragmentSurfaceIndex { get; set; } = -1;
+    internal int FragmentTextIndex { get; set; } = -1;
     internal int Position { get; set; } = -1;
     internal int Normal { get; set; } = -1;
     internal int Argb { get; set; } = -1;
@@ -310,10 +316,21 @@ abstract public class GLObject
         }
 
         //VertexAttribPointerのパラメータを取得
-        var prms = new (int loc, int size, VertexAttribPointerType type, bool normarized, int stride, int offset)[]
+        //var prms = new (int loc, int size, VertexAttribPointerType type, bool normarized, int stride, int offset)[]
+        //{
+        //        (location.ObjType, 1, VertexAttribPointerType.Byte, false, Vertex.Stride, 0),//ObjTYpe
+        //        (location.Argb, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt),//色
+        //        (location.Position, 3, VertexAttribPointerType.Float, false, Vertex.Stride, sizeOfInt *2), //頂点位置
+        //        (location.Normal, 3, VertexAttribPointerType.Float, true, Vertex.Stride, sizeOfInt *2 + V3f.SizeInBytes),//法線
+        //        (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, sizeOfInt *2 + 2 * V3f.SizeInBytes)//テクスチャ座標
+        //};
+        var integerAttribs = new (int loc, int size, VertexAttribIntegerType type, int stride, int offset)[]
         {
-                (location.ObjType, 1, VertexAttribPointerType.Byte, false, Vertex.Stride, 0),//ObjTYpe
-                (location.Argb, 1, VertexAttribPointerType.Int, false, Vertex.Stride, sizeOfInt),//色
+                (location.ObjType, 1, VertexAttribIntegerType.Int, Vertex.Stride, 0),//ObjType // (260319Ch) core profile では整数属性を IPointer で渡す
+                (location.Argb, 1, VertexAttribIntegerType.Int, Vertex.Stride, sizeOfInt),//色 // (260319Ch) GLSL の int 入力へそのまま渡す
+        };
+        var floatAttribs = new (int loc, int size, VertexAttribPointerType type, bool normarized, int stride, int offset)[]
+        {
                 (location.Position, 3, VertexAttribPointerType.Float, false, Vertex.Stride, sizeOfInt *2), //頂点位置
                 (location.Normal, 3, VertexAttribPointerType.Float, true, Vertex.Stride, sizeOfInt *2 + V3f.SizeInBytes),//法線
                 (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, sizeOfInt *2 + 2 * V3f.SizeInBytes)//テクスチャ座標
@@ -367,8 +384,15 @@ abstract public class GLObject
             GL.BindVertexArray(o.Obj.VAO);
             GL.BindBuffer(BufferTarget.ArrayBuffer, o.Obj.VBO);
             //VertexAttribPointerをセット
-            foreach (var (loc, size, type, normarized, stride, offset) in prms)
+            foreach (var (loc, size, type, stride, offset) in integerAttribs)
             {
+                if (loc == -1) continue;
+                GL.EnableVertexAttribArray(loc);
+                GL.VertexAttribIPointer(loc, size, type, stride, new IntPtr(offset));
+            }
+            foreach (var (loc, size, type, normarized, stride, offset) in floatAttribs)
+            {
+                if (loc == -1) continue;
                 GL.EnableVertexAttribArray(loc);
                 GL.VertexAttribPointer(loc, size, type, normarized, stride, offset);
             }
@@ -398,7 +422,13 @@ abstract public class GLObject
             SpecularPower = GL.GetUniformLocation(Program, "SpecularPower"),
             UseFixedArgb = GL.GetUniformLocation(Program, "UseFixedArgb"),
             IgnoreNormalSides = GL.GetUniformLocation(Program, "IgnoreNormalSides"),
-            FixedArgb = GL.GetUniformLocation(Program, "FixedArgb")
+            FixedArgb = GL.GetUniformLocation(Program, "FixedArgb"),
+            VertexPathLocation = GL.GetSubroutineUniformLocation(Program, ShaderType.VertexShader, "VertexPath"),
+            VertexMeshIndex = GL.GetSubroutineIndex(Program, ShaderType.VertexShader, "renderMeshVertex"),
+            VertexTextIndex = GL.GetSubroutineIndex(Program, ShaderType.VertexShader, "renderTextVertex"),
+            FragmentPathLocation = GL.GetSubroutineUniformLocation(Program, ShaderType.FragmentShader, "FragmentPath"),
+            FragmentSurfaceIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "shadeSurfaceFragment"),
+            FragmentTextIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "shadeTextFragment")
         };
 
 
@@ -410,7 +440,7 @@ abstract public class GLObject
             loc.RenderPass = GL.GetProgramResourceLocation(Program, ProgramInterface.FragmentSubroutineUniform, "RenderPass");
         }
 
-        if (loc.ObjType == -1 || loc.Uv == -1 || loc.Position == -1
+        if (loc.Uv == -1 || loc.Position == -1
             || loc.Normal == -1 || loc.Argb == -1)
 
             throw new Exception("cannot find location!");
@@ -434,9 +464,31 @@ abstract public class GLObject
         if (Primitives == null)
             return;
 
+        GL.UseProgram(Program);
+        var location = Location[Program];
+        var isText = this is TextObject;
+        if (shaderPathPrms.Program != Program || shaderPathPrms.IsText != isText)
+        {
+            if (location.VertexPathLocation != -1)
+            {
+                var vertexIndex = isText ? location.VertexTextIndex : location.VertexMeshIndex;
+                if (vertexIndex != -1)
+                    GL.UniformSubroutines(ShaderType.VertexShader, 1, ref vertexIndex);
+            }
+
+            if (location.FragmentPathLocation != -1 && location.RenderPass == -1)
+            {
+                var fragmentIndex = isText ? location.FragmentTextIndex : location.FragmentSurfaceIndex;
+                if (fragmentIndex != -1)
+                    GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref fragmentIndex);
+            }
+
+            shaderPathPrms = (Program, isText);
+        }
+
         if (this is TextObject text && text.TextureNum != -1)
         {
-            GL.Uniform1(Location[Program].Texture, 0);
+            GL.Uniform1(location.Texture, 0);
             GL.BindTexture(TextureTarget.Texture2D, text.TextureNum);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
@@ -523,6 +575,7 @@ abstract public class GLObject
     }
     static private (int Program, float emi, float amb, float dif, float spe, float spePow, int argb, bool ignoreNormal, bool UseFixedArgb, M4f objmatrix)
          prms = (-1, 0, 0, 0, 0, 0, 0, false, false, M4f.Identity);
+    static private (int Program, bool IsText) shaderPathPrms = (-1, false);
 
 
     /// <summary>

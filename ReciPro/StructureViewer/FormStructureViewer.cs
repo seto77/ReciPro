@@ -249,7 +249,8 @@ public partial class FormStructureViewer : Form
             labelGraphicsCard.Text += info.Product + "  ";
             labelGraphicsDriver.Text += info.Version + "  ";
         }
-        labelOpenGLversion.Text += GLControlAlpha.VersionStr;
+        //labelOpenGLversion.Text += GLControlAlpha.VersionStr;
+        labelOpenGLversion.Text += $"{GLControlAlpha.VersionStr} (required {GLControlAlpha.VersionForZsortStr}+)"; // (260319Ch) 通常描画の下限を UI 上でも明示
 
         if (GLControlAlpha.GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd")))
             comboBoxRenderingQuality.SelectedIndex = 1;

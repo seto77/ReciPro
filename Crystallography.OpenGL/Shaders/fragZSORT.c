@@ -1,6 +1,8 @@
-#version 130
+//#version 130
+#version 410 core // (260319Ch) OpenGL 4.1 core baseline for ZSORT
 
 //layout(early_fragment_tests) in;
+layout(early_fragment_tests) in; // (260319Ch) Allow depth/stencil rejection before fragment shading on the ZSORT path
 
 // Material properties
 uniform float Emission = 0.2;
@@ -22,7 +24,6 @@ uniform sampler2D Texture;
 // Input from vertex shader
 //in VertexData
 //{
-in float fWithTexture;//-1: without texture, +1: with texture
 in vec3 fNormal;//Normal direction
 in vec3 fLight;//Light direction
 in vec3 fView;//View direction
@@ -31,60 +32,59 @@ in float fZ;//Depth
 in vec2 fUv;//texture coordinates
 //} fs_in;
 
-/*layout(location = 0) */out vec4 FragColor;
+layout(location = 0) out vec4 FragColor; // (260319Ch) Explicit output location
+
+vec3 applyDepthCueing(vec3 c3)
+{
+	if (DepthCueing)
+	{
+		float x = clamp((Near - fZ) / (Near - Far), 0, 1);
+		return mix(c3, BgColor, x);
+	}
+	return c3;
+}
+
+subroutine vec4 FragmentPathType();
+subroutine uniform FragmentPathType FragmentPath;
+
+subroutine(FragmentPathType)
+vec4 shadeSurfaceFragment()
+{
+	vec3 normal = normalize(fNormal);
+	vec3 light = normalize(fLight);
+	vec3 view = normalize(fView);
+	vec3 inColor = vec3(fColor);
+	vec3 ref = reflect(-light, normal);
+
+	vec3 ambient = Ambient * inColor;
+	vec3 specular = pow(max(dot(ref, view), 0.0), SpecularPower) * Specular * SpecularColor;
+	vec3 emission;
+	vec3 diffuse;
+
+	if (IgnoreNormalSides)
+	{
+		emission = max(abs(dot(normal, view)), 0.0) * Emission * inColor;
+		diffuse = max(abs(dot(normal, light)), 0.0) * Diffuse * inColor;
+	}
+	else
+	{
+		emission = max(dot(normal, view), 0.0) * Emission * inColor;
+		diffuse = max(dot(normal, light), 0.0) * Diffuse * inColor;
+	}
+
+	vec3 c3 = applyDepthCueing(vec3(diffuse + specular + ambient + emission));
+	return vec4(c3, fColor.a); // (260319Ch) Mesh path no longer pays the texture branch cost
+}
+
+subroutine(FragmentPathType)
+vec4 shadeTextFragment()
+{
+	vec4 c = texture(Texture, fUv); // (260319Ch) Dedicated text path keeps only the texture sample
+	vec3 c3 = applyDepthCueing(vec3(c));
+	return vec4(c3, c.a);
+}
 
 void main()
 {
-	vec3 c3;
-	float a;
-	//Without texture
-	if (fWithTexture < 0.0)
-	{
-		// Normalize the incoming N, L, and V vectors
-		vec3 normal = normalize(fNormal);
-		vec3 light = normalize(fLight);
-		vec3 view = normalize(fView);
-		vec3 inColor = vec3(fColor);
-		// Calculate R locally
-		vec3 ref = reflect(-light, normal);
-
-		// Compute the diffuse and specular components for each fragment
-		vec3 ambient = Ambient * inColor;
-		vec3 specular = pow(max(dot(ref, view), 0.0), SpecularPower) * Specular * SpecularColor;
-		vec3 emission;
-		vec3 diffuse;
-
-		if (IgnoreNormalSides)
-		{
-			emission = max(abs(dot(normal, view)), 0.0) * Emission * inColor;
-			diffuse = max(abs(dot(normal, light)), 0.0) * Diffuse * inColor;
-		}
-		else
-		{
-			emission = max(dot(normal, view), 0.0) * Emission * inColor;
-			diffuse = max(dot(normal, light), 0.0) * Diffuse * inColor;
-		}
-
-		c3 = vec3(diffuse + specular + ambient + emission);
-		a = fColor.a;
-	}
-	//With texture
-	else
-	{
-		vec4 c = texture2D(Texture, fUv);
-		c3 = vec3(c);
-		a = c.a;
-	}
-
-	if (DepthCueing)
-	{ 
-		float x = clamp((Near - fZ) / (Near - Far), 0, 1);
-		c3 = mix(c3, BgColor, x);
-	}
-
-	FragColor = vec4(c3, a);// Write final color to the framebuffer
+	FragColor = FragmentPath();
 }
-
-
-
-
