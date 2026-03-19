@@ -2,7 +2,7 @@
 #version 410 core // (260319Ch) OpenGL 4.1 core baseline for ZSORT
 
 //layout(early_fragment_tests) in;
-layout(early_fragment_tests) in; // (260319Ch) Allow depth/stencil rejection before fragment shading on the ZSORT path
+// layout(early_fragment_tests) in; // (260319Ch) OpenGL 4.1 / GLSL 410 safe path keeps this disabled
 
 // Material properties
 uniform float Emission = 0.2;
@@ -44,12 +44,9 @@ vec3 applyDepthCueing(vec3 c3)
 	return c3;
 }
 
-subroutine vec4 FragmentPathType();
-subroutine uniform FragmentPathType FragmentPath;
-
-subroutine(FragmentPathType)
-vec4 shadeSurfaceFragment()
+void main()
 {
+	// FragColor = FragmentPath(); // (260319Ch) Legacy shared text/mesh path stays commented for reference.
 	vec3 normal = normalize(fNormal);
 	vec3 light = normalize(fLight);
 	vec3 view = normalize(fView);
@@ -73,18 +70,5 @@ vec4 shadeSurfaceFragment()
 	}
 
 	vec3 c3 = applyDepthCueing(vec3(diffuse + specular + ambient + emission));
-	return vec4(c3, fColor.a); // (260319Ch) Mesh path no longer pays the texture branch cost
-}
-
-subroutine(FragmentPathType)
-vec4 shadeTextFragment()
-{
-	vec4 c = texture(Texture, fUv); // (260319Ch) Dedicated text path keeps only the texture sample
-	vec3 c3 = applyDepthCueing(vec3(c));
-	return vec4(c3, c.a);
-}
-
-void main()
-{
-	FragColor = FragmentPath();
+	FragColor = vec4(c3, fColor.a); // (260319Ch) ZSORT mesh path now uses a dedicated fragment shader.
 }

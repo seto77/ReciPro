@@ -23,6 +23,8 @@ public partial class FormStructureViewer : Form
 {
     #region フィールド、プロパティ、
 
+    private enum TransparencyModes { ZSORT, DDP, PPLL } // (260319Ch) UI 上の index ではなく論理モードで透明描画を扱う
+
     private static readonly List<int> neighborKeys = [];
 
     public Crystal Crystal;
@@ -67,8 +69,13 @@ public partial class FormStructureViewer : Form
     private GLControlAlpha glControlLight;
     private GLControlAlpha glControlMain;
     private GLControlAlpha glControlMainZsort;
-    private GLControlAlpha glControlMainOIT;
+    private GLControlAlpha glControlMainDDP;
+    private GLControlAlpha glControlMainPPLL;
     private GLControlAlpha glControlAxes;
+    private readonly List<object> transparencyModeItems = []; // (260319Ch) comboBoxTransparency の元ラベルを保持し、DDP の表示/非表示を切り替える
+    private ToolStripMenuItem enableDDPToolStripMenuItem = null;
+    private bool ddpDeveloperModeEnabled = false;
+    private bool updatingTransparencyModeItems = false;
     #endregion
 
     #region ローカルクラス
@@ -117,6 +124,8 @@ public partial class FormStructureViewer : Form
     private void FormStructureViewer_Load(object sender, EventArgs e)
     {
         if (DesignMode) return;
+
+        initializeDdpDeveloperMenu(); // (260319Ch) DDP は通常 UI では隠し、Tool メニューから開発者向けに切り替える
 
         #region デザイナが壊れないようにここでGLコントロールを追加
 
@@ -185,29 +194,54 @@ public partial class FormStructureViewer : Form
         glControlMainZsort.MouseDown += glControlMain_MouseDown;
         glControlMainZsort.MouseMove += glControlMain_MouseMove;
 
-        #region ARM64環境の対応待ちのため、OITは一旦コメントアウト (2025/12/10)
-        glControlMainOIT = new GLControlAlpha();
-        comboBoxTransparency.Enabled = false;
-        //glControlMainOIT = new GLControlAlpha(GLControlAlpha.FragShaders.OIT)
-        //{
-        //    AllowMouseRotation = false,
-        //    AllowMouseScaling = true,
-        //    AllowMouseTranslating = true,
-        //    BorderStyle = BorderStyle.Fixed3D,
-        //    MaxHeight = 1440,
-        //    MaxWidth = 2560,
-        //    Name = "glControlMainOIT",
-        //    NodeCoefficient = 10,
-        //    ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-        //    ProjWidth = 4D,
-        //    RotationMode = GLControlAlpha.RotationModes.Object,
-        //    TranslatingMode = GLControlAlpha.TranslatingModes.View,
-        //    Dock = DockStyle.Fill
-        //};
-        //glControlMainOIT.SuspendLayout();
-        //glControlMainOIT.MouseDown += glControlMain_MouseDown;
-        //glControlMainOIT.MouseMove += glControlMain_MouseMove;
-        //glControlMainOIT.Visible = false;
+        // glControlMainDDP
+        glControlMainDDP = new GLControlAlpha(GLControlAlpha.FragShaders.DDP) // (260319Ch) DDP を StructureViewer の比較対象へ追加
+        {
+            AllowMouseRotation = false,
+            AllowMouseScaling = true,
+            AllowMouseTranslating = true,
+            BorderStyle = BorderStyle.Fixed3D,
+            MaxHeight = 1440,
+            MaxWidth = 2560,
+            Name = "glControlMainDDP",
+            NodeCoefficient = 1,
+            ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+            ProjWidth = 4D,
+            RotationMode = GLControlAlpha.RotationModes.Object,
+            TranslatingMode = GLControlAlpha.TranslatingModes.View,
+            PostAntiAliasing = GLControlAlpha.PostAntiAliasingModes.FXAA, // (260319Ch) DDP でも MSAA の代わりに軽い後段 FXAA を既定で試す
+            Dock = DockStyle.Fill
+        };
+        glControlMainDDP.SuspendLayout();
+        glControlMainDDP.MouseDown += glControlMain_MouseDown;
+        glControlMainDDP.MouseMove += glControlMain_MouseMove;
+        glControlMainDDP.Visible = false;
+
+        #region ARM64環境の対応待ちのため、PPLLは一旦コメントアウト (2025/12/10)
+        //glControlMainPPLL = new GLControlAlpha();
+        //comboBoxTransparency.Enabled = false;
+        glControlMainPPLL = new GLControlAlpha(GLControlAlpha.FragShaders.PPLL) // (260319Ch) ZSORT/PPLL 切替テストのため PPLL control を復帰
+        {
+            AllowMouseRotation = false,
+            AllowMouseScaling = true,
+            AllowMouseTranslating = true,
+            BorderStyle = BorderStyle.Fixed3D,
+            MaxHeight = 1440,
+            MaxWidth = 2560,
+            Name = "glControlMainPPLL",
+            NodeCoefficient = 10,
+            ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+            ProjWidth = 4D,
+            RotationMode = GLControlAlpha.RotationModes.Object,
+            TranslatingMode = GLControlAlpha.TranslatingModes.View,
+            PostAntiAliasing = GLControlAlpha.PostAntiAliasingModes.FXAA, // (260319Ch) PPLL は MSAA の代わりに軽い後段 FXAA を既定で試す
+            Dock = DockStyle.Fill
+        };
+        comboBoxTransparency.Enabled = true; // (260319Ch) PPLL 非対応環境では SelectedIndexChanged 側で警告して ZSORT に戻す
+        glControlMainPPLL.SuspendLayout();
+        glControlMainPPLL.MouseDown += glControlMain_MouseDown;
+        glControlMainPPLL.MouseMove += glControlMain_MouseMove;
+        glControlMainPPLL.Visible = false;
         #endregion
 
         glControlMain = glControlMainZsort;
@@ -294,7 +328,8 @@ public partial class FormStructureViewer : Form
         tabControlBoundOption.ItemSize = new Size(0, 1);
 
         comboBoxProjectionMode.SelectedIndex = 0;
-        comboBoxTransparency.SelectedIndex = 0;
+        // comboBoxTransparency.SelectedIndex = 0;
+        rebuildTransparencyModeItems(TransparencyModes.ZSORT); // (260319Ch) DDP/PPLL 可否に応じて透明描画モード一覧を組み立て直す
 
         checkBoxDepthCueing_CheckedChanged(new object(), new EventArgs());
 
@@ -302,7 +337,8 @@ public partial class FormStructureViewer : Form
 
         #region ResumuLayout()
         
-        glControlMainOIT.ResumeLayout();
+        glControlMainPPLL.ResumeLayout();
+        glControlMainDDP.ResumeLayout();
         
         glControlMainZsort.ResumeLayout();
         glControlLight.ResumeLayout();
@@ -337,6 +373,89 @@ public partial class FormStructureViewer : Form
     }
 
     #endregion コンストラクタ
+
+    private void initializeDdpDeveloperMenu()
+    {
+        if (enableDDPToolStripMenuItem != null)
+            return;
+
+        enableDDPToolStripMenuItem = new ToolStripMenuItem("Enable DDP")
+        {
+            Name = "enableDDPToolStripMenuItem",
+            CheckOnClick = false,
+            Enabled = GLControlAlpha.DdpEnabled
+        };
+        enableDDPToolStripMenuItem.Click += enableDDPToolStripMenuItem_Click;
+        toolToolStripMenuItem.DropDownItems.Add(enableDDPToolStripMenuItem);
+
+        if (transparencyModeItems.Count == 0)
+            transparencyModeItems.AddRange(comboBoxTransparency.Items.Cast<object>());
+
+        // ddpDeveloperModeEnabled = true; // (260319Ch) 旧案: DDP を常に表示していた
+        ddpDeveloperModeEnabled = !GLControlAlpha.PpllEnabled; // (260319Ch) PPLL が使えない環境では DDP を既定で出し、使える環境では隠す
+        updateDdpDeveloperMenuState();
+    }
+
+    private void updateDdpDeveloperMenuState()
+    {
+        if (enableDDPToolStripMenuItem == null)
+            return;
+
+        enableDDPToolStripMenuItem.Checked = ddpDeveloperModeEnabled;
+        enableDDPToolStripMenuItem.Text = "Enable DDP";
+    }
+
+    private TransparencyModes getTransparencyModeFromControl(GLControlAlpha control) =>
+        control == glControlMainDDP ? TransparencyModes.DDP :
+        control == glControlMainPPLL ? TransparencyModes.PPLL :
+        TransparencyModes.ZSORT;
+
+    private TransparencyModes getTransparencyModeFromComboIndex(int index)
+    {
+        if (index <= 0)
+            return TransparencyModes.ZSORT;
+        if (ddpDeveloperModeEnabled)
+            return index == 1 ? TransparencyModes.DDP : TransparencyModes.PPLL;
+        return TransparencyModes.PPLL;
+    }
+
+    private int getComboIndexFromTransparencyMode(TransparencyModes mode)
+    {
+        if (mode == TransparencyModes.DDP && !ddpDeveloperModeEnabled)
+            mode = GLControlAlpha.PpllEnabled ? TransparencyModes.PPLL : TransparencyModes.ZSORT;
+        if (mode == TransparencyModes.PPLL && !GLControlAlpha.PpllEnabled)
+            mode = ddpDeveloperModeEnabled ? TransparencyModes.DDP : TransparencyModes.ZSORT;
+
+        if (mode == TransparencyModes.ZSORT)
+            return 0;
+        if (ddpDeveloperModeEnabled)
+            return mode == TransparencyModes.DDP ? 1 : 2;
+        return 1;
+    }
+
+    private void rebuildTransparencyModeItems(TransparencyModes preferredMode)
+    {
+        if (transparencyModeItems.Count == 0)
+            transparencyModeItems.AddRange(comboBoxTransparency.Items.Cast<object>());
+
+        var targetIndex = getComboIndexFromTransparencyMode(preferredMode);
+        updatingTransparencyModeItems = true;
+        try
+        {
+            comboBoxTransparency.Items.Clear();
+            comboBoxTransparency.Items.Add(transparencyModeItems[0]);
+            if (ddpDeveloperModeEnabled)
+                comboBoxTransparency.Items.Add(transparencyModeItems[1]);
+            if (GLControlAlpha.PpllEnabled)
+                comboBoxTransparency.Items.Add(transparencyModeItems[2]);
+        }
+        finally
+        {
+            updatingTransparencyModeItems = false;
+        }
+
+        comboBoxTransparency.SelectedIndex = targetIndex;
+    }
 
     #region 結晶軸行列を設定
     private void initAxesMatrix()
@@ -431,11 +550,16 @@ public partial class FormStructureViewer : Form
                 var mat = new Material(bounds[i].color, numericBoxBoundPlanesOpacity.Value);
                 if (vertices != null && vertices.Length >= 3)
                 {
-                    var polygon = new Polygon(vertices.Select(v => new V3(v[0], v[1], v[2])).ToArray(), mat, DrawingMode.Surfaces)
+                    var polygonBase = new Polygon(vertices.Select(v => new V3(v[0], v[1], v[2])).ToArray(), mat, DrawingMode.Surfaces)
                     {
                         Rendered = checkBoxShowBoundPlanes.Checked,
                         Tag = new boundsID()
-                    }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 2 : 0);
+                    };
+                    // (260319Cl) ZSORT モードのみ Decompose; PPLL では元の Polygon (TriangleFan) をそのまま使う
+                    // var polygon = ...Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 2 : 0);
+                    Polygon[] polygon = glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT
+                        ? polygonBase.Decompose(2)
+                        : [polygonBase];
 
                     lock (lockObj1)
                         GLObjects.AddRange(polygon);
@@ -732,12 +856,15 @@ public partial class FormStructureViewer : Form
         var edge = checkBoxLabelWhiteEdge.Checked;
         var textObjects = GLObjectsP.Where(o => o.Rendered && o is Sphere);
         var glObjects = new List<TextObject>(textObjects.Count());
-        glControlMain.MakeCurrent();//MakeCurrentは遅いので最初に一回だけ呼び出し、new TextObjectではprogram番号だけを入力
+        glControlMain.MakeCurrent();//MakeCurrentは遅いので最初に一回だけ呼び出し、new TextObjectでは program/context key だけを入力
         foreach (var s in textObjects.Cast<Sphere>())
         {
             var index = (s.Tag as atomID).Index;
             var mat = radioButtonUseMaterialColor.Checked ? s.Material : new Material(colorControlLabelColor.Color, 1);
-            var text = new TextObject(enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat, glControlMain.Program) { Rendered = enabledAtoms[index].ShowLabel };
+            // var text = new TextObject(enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat, glControlMain.TextProgram > 0 ? glControlMain.TextProgram : glControlMain.Program) { Rendered = enabledAtoms[index].ShowLabel };
+            // var textProgram = glControlMain.FragShader == GLControlAlpha.FragShaders.PPLL ? glControlMain.Program : glControlMain.TextProgram > 0 ? glControlMain.TextProgram : glControlMain.Program; // (260319Ch) PPLL text を linked-list 側へ戻した案
+            var textProgram = glControlMain.TextProgram > 0 ? glControlMain.TextProgram : glControlMain.Program; // (260319Ch) PPLL text は depth prepass 後の overlay で描く
+            var text = new TextObject(enabledAtoms[index].Label, labelSize, s.Origin, s.Radius + 0.01, edge, mat, glControlMain, textProgram) { Rendered = enabledAtoms[index].ShowLabel }; // (260319Ch) program 番号だけでなく context key も渡して text cache を分離する
             glObjects.Add(text);
         }
         GLObjects.AddRange(glObjects);
@@ -816,8 +943,13 @@ public partial class FormStructureViewer : Form
             for (int i = 0; i < 3; i++)
                 foreach (var edge in planesArray[i])
                 {
-                    var plane = new Polygon(edge.Select(e => e - t).ToArray(), new Material(colors[i], numericBoxCellPlaneAlpha.Value), DrawingMode.Surfaces)
-                    { Tag = new cellID() }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
+                    var polygonBase = new Polygon(edge.Select(e => e - t).ToArray(), new Material(colors[i], numericBoxCellPlaneAlpha.Value), DrawingMode.Surfaces)
+                        { Tag = new cellID() };
+                    // (260319Cl) ZSORT モードのみ Decompose で半透明描画を改善; PPLL では元の Polygon (TriangleFan) をそのまま使う
+                    // var plane = new Polygon(...){ Tag = new cellID() }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
+                    Polygon[] plane = glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT
+                        ? polygonBase.Decompose(3)
+                        : [polygonBase];
                     GLObjects.AddRange(plane);
                     glControlMain.AddObjects(plane);
                 }
@@ -874,7 +1006,11 @@ public partial class FormStructureViewer : Form
                     plane.Tag = edge.Tag = new latticeID();
 
                     // ZSortの時は、order = 3で64分割
-                    var planesSub = plane.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
+                    // (260319Cl) ZSORT モードのみ Decompose; PPLL では元の Polygon (TriangleFan) をそのまま使う
+                    // var planesSub = plane.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
+                    Polygon[] planesSub = glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT
+                        ? plane.Decompose(3)
+                        : [plane];
 
                     GLObjects.AddRange(planesSub);
                     glControlMain.AddObjects(planesSub);
@@ -1672,34 +1808,52 @@ public partial class FormStructureViewer : Form
             Cone.Default = (1, 16);
             Cylinder.Default = (1, 16);
             Sphere.DefaultSlices = 3;
+            if (glControlMainDDP != null)
+                glControlMainDDP.DualDepthPeelingPasses = 24; // (260319Ch) 軽量設定でも前後 48 層までは peel できるようにする
         }
         else if (comboBoxRenderingQuality.SelectedIndex == 1)
         {
             Cone.Default = (1, 24);
             Cylinder.Default = (1, 24);
             Sphere.DefaultSlices = 4;
+            if (glControlMainDDP != null)
+                glControlMainDDP.DualDepthPeelingPasses = 48; // (260319Ch) 標準設定では前後 96 層まで peel して色破綻を減らす
         }
         else
         {
             Cone.Default = (1, 48);
             Cylinder.Default = (1, 48);
             Sphere.DefaultSlices = 6;
+            if (glControlMainDDP != null)
+                glControlMainDDP.DualDepthPeelingPasses = 96; // (260319Ch) 高品質設定では前後 192 層相当まで peel して重なりの深い場面に対応する
         }
         if (atomControl != null)
             SetGLObjects(formMain.crystalControl.Crystal);
     }
 
+    private void enableDDPToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var currentMode = glControlMain == null ? TransparencyModes.ZSORT : getTransparencyModeFromControl(glControlMain);
+        ddpDeveloperModeEnabled = !ddpDeveloperModeEnabled; // (260319Ch) Tool menu から DDP の露出だけを切り替える
+        updateDdpDeveloperMenuState();
+        rebuildTransparencyModeItems(currentMode);
+    }
+
 
     private void comboBoxTransparency_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if ((comboBoxTransparency.SelectedIndex == 0 && glControlMainZsort.Visible) || (comboBoxTransparency.SelectedIndex == 1 && glControlMainOIT.Visible))
+        if (updatingTransparencyModeItems || comboBoxTransparency.SelectedIndex < 0)
+            return;
+
+        var selectedMode = getTransparencyModeFromComboIndex(comboBoxTransparency.SelectedIndex);
+        if (selectedMode == getTransparencyModeFromControl(glControlMain))
             return;//変更が無かったら何もしない。
 
-        if (comboBoxTransparency.SelectedIndex == 1 && !GLControlAlpha.OitEnabled)
+        if (selectedMode == TransparencyModes.PPLL && !GLControlAlpha.PpllEnabled)
         {
-            MessageBox.Show("OIT (order independent transparency) mode requires OpenGL 4.3 or later,\r\n" +
+            MessageBox.Show("PPLL mode requires OpenGL 4.3 or later,\r\n" +
                 " but the current version is " + GLControlAlpha.VersionStr + ". Sorry.", "Caution!");
-            comboBoxTransparency.SelectedIndex = 0;
+            comboBoxTransparency.SelectedIndex = getComboIndexFromTransparencyMode(TransparencyModes.ZSORT);
             return;
         }
 
@@ -1715,8 +1869,10 @@ public partial class FormStructureViewer : Form
             g1.ProjectionMode = g2.ProjectionMode;
         });
 
-        var gNew = comboBoxTransparency.SelectedIndex == 0 ? glControlMainZsort : glControlMainOIT;
-        var gOld = comboBoxTransparency.SelectedIndex == 0 ? glControlMainOIT : glControlMainZsort;
+        // var gNew = comboBoxTransparency.SelectedIndex == 0 ? glControlMainZsort : glControlMainPPLL;
+        var gNew = selectedMode == TransparencyModes.ZSORT ? glControlMainZsort :
+            selectedMode == TransparencyModes.DDP ? glControlMainDDP : glControlMainPPLL; // (260319Ch) combo の見た目 index ではなく論理モードで切り替える
+        var gOld = glControlMain;
 
         gOld.Visible = false;
         splitContainer1.Panel1.Controls.Remove(gOld);

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 #endregion
 
@@ -27,15 +28,22 @@ public partial class Profile : ICloneable
     public float LineWidth = 1f;
 
     [MemoryPackIgnore]
-    public RectangleD Range => new(new PointD(Pt.Min(p => p.X), Pt.Min(p => p.Y)), new PointD(Pt.Max(p => p.X), Pt.Max(p => p.Y)));
+    public RectangleD Range
+    {
+        get
+        {
+            var (minX, maxX, minY, maxY) = getBounds();
+            return new RectangleD(new PointD(minX, minY), new PointD(maxX, maxY));
+        }
+    }
     [MemoryPackIgnore]
-    public double MaxX => Pt.Max(p => p.X);
+    public double MaxX => getBounds().MaxX;
     [MemoryPackIgnore]
-    public double MinX => Pt.Min(p => p.X);
+    public double MinX => getBounds().MinX;
     [MemoryPackIgnore]
-    public double MaxY => Pt.Max(p => p.Y);
+    public double MaxY => getBounds().MaxY;
     [MemoryPackIgnore]
-    public double MinY => Pt.Min(p => p.Y);
+    public double MinY => getBounds().MinY;
 
     #endregion
 
@@ -64,11 +72,31 @@ public partial class Profile : ICloneable
     }
     #endregion
 
+    private (double MinX, double MaxX, double MinY, double MaxY) getBounds()
+    {
+        var points = CollectionsMarshal.AsSpan(Pt); // (260319Ch) LINQ の Min/Max 連打をやめて 1 回走査で求める
+        if (points.Length == 0)
+            throw new InvalidOperationException("Profile does not contain any points.");
+
+        double minX = points[0].X, maxX = points[0].X, minY = points[0].Y, maxY = points[0].Y;
+        for (int i = 1; i < points.Length; i++)
+        {
+            var pt = points[i];
+            if (pt.X < minX) minX = pt.X;
+            if (pt.X > maxX) maxX = pt.X;
+            if (pt.Y < minY) minY = pt.Y;
+            if (pt.Y > maxY) maxY = pt.Y;
+        }
+        return (minX, maxX, minY, maxY);
+    }
+
     #region クリア、ソート、コピー
     public void Clear()
     {
-        Pt = [];
-        Err = [];
+        // Pt = [];
+        // Err = [];
+        Pt.Clear(); // (260319Ch) List を再利用して GC を抑える
+        Err.Clear(); // (260319Ch) List を再利用して GC を抑える
     }
 
     public void Sort()
@@ -79,23 +107,20 @@ public partial class Profile : ICloneable
     public object Clone()
     {
         Profile p = (Profile)this.MemberwiseClone();
-        p.Pt = new List<PointD>([.. Pt]);
+        p.Pt = [.. Pt]; // (260319Ch) 点列を複製
+        p.Err = [.. Err]; // (260319Ch) 誤差列も複製して共有を避ける
         return p;
     }
     public Profile CopyTo()
     {
-        Profile p = new Profile();
-
-        p.Pt = [];
-        p.Err = [];
-        for (int i = 0; i < Pt.Count; i++)
-            p.Pt.Add(Pt[i]);
-
-        for (int i = 0; i < Err.Count; i++)
-            p.Err.Add(Err[i]);
-
-        p.text = text;
-        return p;
+        return new Profile
+        {
+            Pt = [.. Pt], // (260319Ch) 手動ループの代わりにまとめて複製
+            Err = [.. Err], // (260319Ch) 手動ループの代わりにまとめて複製
+            text = text,
+            Color = Color,
+            LineWidth = LineWidth
+        };
     }
     #endregion
 
@@ -502,7 +527,8 @@ public partial class DiffractionProfile2 : ICloneable
 
     public void DeleteMaskRange(int index)
     {
-        if (maskingRanges.Count < index)
+        // if (maskingRanges.Count < index)
+        if (0 <= index && index < maskingRanges.Count) // (260319Ch) 範囲内のときだけ削除する
             maskingRanges.RemoveAt(index);
     }
 

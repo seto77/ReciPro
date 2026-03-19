@@ -949,6 +949,15 @@
   <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
     <value>透過モードを設定</value>
   </data>
+  <data name="comboBoxTransparency.Items" xml:space="preserve">
+    <value>近似 (Z depth sorting)</value>
+  </data>
+  <data name="comboBoxTransparency.Items1" xml:space="preserve">
+    <value>中間 (Dual depth peeling, OpenGL 4.1+)</value>
+  </data>
+  <data name="comboBoxTransparency.Items2" xml:space="preserve">
+    <value>高品質 (Order Independent Transparency, 高性能 GPU / OpenGL 4.3+)</value>
+  </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
     <value>386, 61</value>
   </data>

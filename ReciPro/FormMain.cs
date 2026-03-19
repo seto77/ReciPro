@@ -197,36 +197,36 @@ public partial class FormMain : Form
     public FormMain()
     {
 
-        var endmembers = new[] { "A5X2", "A3Y4", "B5X2", "B3Y4" };
-        var space = new CompositionSpace(endmembers);
+        // var endmembers = new[] { "A5X2", "A3Y4", "B5X2", "B3Y4" };
+        // var space = new CompositionSpace(endmembers);
 
-        var groups = new[]
-        {
-            new SiteGroup("Cation", new[]{"A","B"}),
-            new SiteGroup("Anion",  new[]{"X","Y"})
-        };
+        // var groups = new[]
+        // {
+        //     new SiteGroup("Cation", new[]{"A","B"}),
+        //     new SiteGroup("Anion",  new[]{"X","Y"})
+        // };
 
-        var model = new SiteBasedParameterization(space, groups, maxExtentSubsetSize: 1);
+        //var model = new SiteBasedParameterization(space, groups, maxExtentSubsetSize: 1);
 
-        Console.WriteLine($"AffineDim={space.AffineDim}, ParamDim={model.ParameterDim}");
-        Console.WriteLine("Symbolic formula:");
-        Console.WriteLine(model.BuildSymbolicFormula());
+        //Console.WriteLine($"AffineDim={space.AffineDim}, ParamDim={model.ParameterDim}");
+        //Console.WriteLine("Symbolic formula:");
+        //Console.WriteLine(model.BuildSymbolicFormula());
 
         // 任意混合の組成
-        var w = MathNet.Numerics.LinearAlgebra.Double.DenseVector.OfArray(new double[] { 0.2, 0.1, 0.3, 0.4 });
-        var c = space.ComposeFromWeights(w);
+        //var w = MathNet.Numerics.LinearAlgebra.Double.DenseVector.OfArray(new double[] { 0.2, 0.1, 0.3, 0.4 });
+        //var c = space.ComposeFromWeights(w);
 
-        var p = model.ToParameters(c);
+        //var p = model.ToParameters(c);
         //Console.WriteLine("Parameters:");
         //foreach (var kv in p) Console.WriteLine($"  {kv.Key} = {kv.Value}");
 
-        var c2 = model.FromParameters(p);
+        //var c2 = model.FromParameters(p);
         //Console.WriteLine($"Reconstruction L2 error = {(c - c2).L2Norm()}");
 
 
 
 
-        var test = SymmetryStatic.IsRootAxis((-1, 3, 5), new Symmetry(460), out var indices);
+        //var test = SymmetryStatic.IsRootAxis((-1, 3, 5), new Symmetry(460), out var indices);
 
         //カルチャーを決めるため、レジストリ読込 (InitializeComponentの前に読み込む)
         if (!DesignMode)

@@ -1,5 +1,6 @@
 ﻿#region using
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -120,8 +121,8 @@ public class Location
     internal int IgnoreNormalSides { get; set; } = -1;
     internal int RenderPass { get; set; } = -1;
 
-    internal int PassOIT1Index = -1;
-    internal int PassOIT2Index = -1;
+    internal int PassPPLL1Index = -1;
+    internal int PassPPLL2Index = -1;
     internal int PassNormalIndex = -1;
     internal int VertexPathLocation { get; set; } = -1;
     internal int VertexMeshIndex { get; set; } = -1;
@@ -148,7 +149,10 @@ abstract public class GLObject
 {
     #region static private な フィールド & プロパティ
 
-    private static readonly Dictionary<int, Location> Location = [];
+    // private static readonly Dictionary<int, Location> Location = [];
+    private static readonly Dictionary<(int ContextKey, int Program), Location> Location = []; // (260319Ch) 複数 GL context 間で program 番号が衝突しても location を取り違えない
+    internal static int CurrentFragmentRenderPassIndex = -1; // (260319Ch) PPLL / DDP の RenderPass も UseProgram 後に毎 draw 明示する
+    internal static bool CurrentDepthTestEnabled = true; // (260319Ch) clip 描画後にレンダリング phase ごとの depth test state を復元する
 
     private static readonly int sizeOfInt = sizeof(int);
     private static readonly int sizeOfUInt = sizeof(uint);
@@ -165,6 +169,7 @@ abstract public class GLObject
     internal (int VBO, int VAO, int EBO) Obj;
 
     internal int Program = -1;
+    internal int ContextKey = 0; // (260319Ch) GPU 側 cache を GLControl 単位で分離するための key
 
     /// <summary>
     /// 頂点
@@ -287,10 +292,14 @@ abstract public class GLObject
 
     public void Dispose()
     {
-        Sphere.DefaultDictionary.Remove(Program);
-        Cylinder.DefaultDictionary.Remove(Program);
-        if (this is TextObject t && TextObject.DefaultDictionaly.ContainsKey((Program, t.TextureNum)))
-            TextObject.DefaultDictionaly.Remove((Program, t.TextureNum));
+        // Sphere.DefaultDictionary.Remove(Program);
+        // Cylinder.DefaultDictionary.Remove(Program);
+        Sphere.DefaultDictionary.Remove((ContextKey, Program)); // (260319Ch) 別 context の default VAO を巻き込まない
+        Cylinder.DefaultDictionary.Remove((ContextKey, Program)); // (260319Ch)
+        // if (this is TextObject t && TextObject.DefaultDictionaly.ContainsKey((Program, t.TextureNum)))
+        //     TextObject.DefaultDictionaly.Remove((Program, t.TextureNum));
+        if (this is TextObject t && TextObject.DefaultDictionaly.ContainsKey((t.ContextCacheKey, Program, t.TextureNum)))
+            TextObject.DefaultDictionaly.Remove((t.ContextCacheKey, Program, t.TextureNum)); // (260319Ch) text VAO cache は context 単位で破棄する
         GL.DeleteBuffers(1, ref Obj.VBO);
         GL.DeleteBuffers(1, ref Obj.EBO);
         GL.DeleteVertexArrays(1, ref Obj.VAO);
@@ -304,15 +313,19 @@ abstract public class GLObject
     /// </summary>
     /// <param name="program"></param>
     /// <param name="objects"></param>
-    public static void Generate(int program, IEnumerable<GLObject> objects)
+    // public static void Generate(int program, IEnumerable<GLObject> objects)
+    public static void Generate(int program, IEnumerable<GLObject> objects, int contextKey = 0) // (260319Ch) location / default VAO cache を context ごとに分離
     {
         if (program < 0) return;
 
         //Locationを取得
-        if (!Location.TryGetValue(program, out var location))
+        // if (!Location.TryGetValue(program, out var location))
+        if (!Location.TryGetValue((contextKey, program), out var location))
         {
-            Location.Add(program, GetLocation(program));
-            location = Location[program];
+            // Location.Add(program, GetLocation(program));
+            // location = Location[program];
+            Location.Add((contextKey, program), GetLocation(program)); // (260319Ch) 同じ program 番号でも別 context なら別 location を持つ
+            location = Location[(contextKey, program)];
         }
 
         //VertexAttribPointerのパラメータを取得
@@ -339,31 +352,35 @@ abstract public class GLObject
         foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0))
         {
             o.Program = program;
+            o.ContextKey = contextKey; // (260319Ch) Render 時にも context 単位の location cache を引けるよう保持する
 
             if (o is TextObject t)
             {
-                if (TextObject.DefaultDictionaly.TryGetValue((program, t.TextureNum), out var def))
+                // if (TextObject.DefaultDictionaly.TryGetValue((program, t.TextureNum), out var def))
+                if (TextObject.DefaultDictionaly.TryGetValue((t.ContextCacheKey, program, t.TextureNum), out var def))
                     o.Obj = def;//Defaultテキストであれば、VAO, VBO, EBOをセットしておしまい。
                 else
                 {
                     GenerateSub(o);
-                    TextObject.DefaultDictionaly.Add((program, t.TextureNum), (o.Obj));
+                    TextObject.DefaultDictionaly.Add((t.ContextCacheKey, program, t.TextureNum), (o.Obj)); // (260319Ch) 別 context の text VAO を誤再利用しない
                 }
             }
             else
             {
-                Dictionary<int, (int VBO, int VAO, int EBO)> dic = null;
+                Dictionary<(int ContextKey, int Program), (int VBO, int VAO, int EBO)> dic = null; // (260319Ch) default VAO も context 単位で再利用
                 if (o is Sphere s && s.UseDefault)
                     dic = Sphere.DefaultDictionary;
                 else if (o is Cylinder c && c.UseDefault)
                     dic = Cylinder.DefaultDictionary;
 
-                if (dic != null && dic.TryGetValue(program, out var def))
+                // if (dic != null && dic.TryGetValue(program, out var def))
+                if (dic != null && dic.TryGetValue((o.ContextKey, program), out var def))
                     o.Obj = def;//Default形状であれば、VAO, VBO, EBOをセットしておしまい。
                 else
                 {
                     GenerateSub(o);
-                    dic?.Add(program, o.Obj);
+                    // dic?.Add(program, o.Obj);
+                    dic?.Add((o.ContextKey, program), o.Obj); // (260319Ch) 別 context の VAO を誤再利用しない
                 }
             }
         }
@@ -434,14 +451,16 @@ abstract public class GLObject
 
         if (GraphicsInfo.All(info => !info.Product.Contains("Parallels")))
         {
-            loc.PassOIT1Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT1");
-            loc.PassOIT2Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT2");
-            loc.PassNormalIndex = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passNormal");
+            // loc.PassPPLL1Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passPPLL1");
+            // loc.PassPPLL2Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passPPLL2");
+            // loc.PassNormalIndex = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passNormal");
+            loc.PassPPLL1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passPPLL1"); // (260319Ch) UniformSubroutines 用の正しい index を取得する
+            loc.PassPPLL2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passPPLL2"); // (260319Ch)
+            loc.PassNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal"); // (260319Ch)
             loc.RenderPass = GL.GetProgramResourceLocation(Program, ProgramInterface.FragmentSubroutineUniform, "RenderPass");
         }
 
-        if (loc.Uv == -1 || loc.Position == -1
-            || loc.Normal == -1 || loc.Argb == -1)
+        if (loc.Position == -1)
 
             throw new Exception("cannot find location!");
 
@@ -455,7 +474,8 @@ abstract public class GLObject
     /// 内部的には、静的メソッド Generate(int program, GLObject[] objs)を呼び出す。
     /// </summary>
     /// <param name="program"></param>
-    public void Generate(int program) => Generate(program, [this]);
+    // public void Generate(int program) => Generate(program, [this]);
+    public void Generate(int program, int contextKey = 0) => Generate(program, [this], contextKey); // (260319Ch) 呼び出し元 control の context key を伝搬する
 
     /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生
     /// </summary>
@@ -465,10 +485,10 @@ abstract public class GLObject
             return;
 
         GL.UseProgram(Program);
-        var location = Location[Program];
+        var location = Location[(ContextKey, Program)]; // (260319Ch) location cache は current control の context key で引く
         var isText = this is TextObject;
-        if (shaderPathPrms.Program != Program || shaderPathPrms.IsText != isText)
-        {
+        // if (shaderPathPrms.Program != Program || shaderPathPrms.IsText != isText)
+        { // (260319Ch) subroutine state は context ごとなので、複数 GLControl では毎回明示する
             if (location.VertexPathLocation != -1)
             {
                 var vertexIndex = isText ? location.VertexTextIndex : location.VertexMeshIndex;
@@ -476,18 +496,22 @@ abstract public class GLObject
                     GL.UniformSubroutines(ShaderType.VertexShader, 1, ref vertexIndex);
             }
 
-            if (location.FragmentPathLocation != -1 && location.RenderPass == -1)
+            if (location.RenderPass != -1 && CurrentFragmentRenderPassIndex != -1)
+            {
+                var renderPassIndex = CurrentFragmentRenderPassIndex;
+                GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref renderPassIndex); // (260319Ch) PPLL pass1/pass2 は UseProgram 後に設定し直す
+            }
+            else if (location.FragmentPathLocation != -1 && location.RenderPass == -1)
             {
                 var fragmentIndex = isText ? location.FragmentTextIndex : location.FragmentSurfaceIndex;
                 if (fragmentIndex != -1)
                     GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref fragmentIndex);
             }
-
-            shaderPathPrms = (Program, isText);
         }
 
         if (this is TextObject text && text.TextureNum != -1)
         {
+            GL.ActiveTexture(TextureUnit.Texture0); // (260319Ch) PPLL 合成後でも text sampler が常に unit 0 を向くよう明示する
             GL.Uniform1(location.Texture, 0);
             GL.BindTexture(TextureTarget.Texture2D, text.TextureNum);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
@@ -496,11 +520,9 @@ abstract public class GLObject
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToBorder);
         }
 
-        if ((Mode == DrawingMode.SurfacesAndEdges || Mode == DrawingMode.Edges) && LineWidth != LineWidthStatic)
-        {
-            GL.LineWidth(LineWidth);
-            LineWidthStatic = LineWidth;
-        }
+        // if ((Mode == DrawingMode.SurfacesAndEdges || Mode == DrawingMode.Edges) && LineWidth != LineWidthStatic)
+        if (Mode == DrawingMode.SurfacesAndEdges || Mode == DrawingMode.Edges)
+            GL.LineWidth(LineWidth); // (260319Ch) 線幅 state は context ごとなので毎回設定する
 
         GL.BindVertexArray(Obj.VAO);
         GL.BindBuffer(BufferTarget.ElementArrayBuffer, Obj.EBO);
@@ -529,37 +551,38 @@ abstract public class GLObject
     /// <param name="drawSurfaces">Surfaceモードか否か</param>
     private void SetMaterialAndDrawElements(bool drawSurfaces, PT mode, int count, int offset)
     {
-        var renew = prms.Program != Program;
+        var location = Location[(ContextKey, Program)]; // (260319Ch) 別 context の uniform location を参照しない
+        var renew = prms.ContextKey != ContextKey || prms.Program != Program;
 
         if (renew || prms.objmatrix != ObjectMatrix)
-            GL.UniformMatrix4(Location[Program].ObjectMatrix, false, ref ObjectMatrix);
+            GL.UniformMatrix4(location.ObjectMatrix, false, ref ObjectMatrix);
 
         (float emi, float amb, float dif, float spe) = drawSurfaces ?
             (Material.Emission, Material.Ambient, Material.Diffuse, Material.Specular) : (0f, 1f, 0f, 0f);
 
         if (renew || emi != prms.emi)
-            GL.Uniform1(Location[Program].Emission, emi);
+            GL.Uniform1(location.Emission, emi);
 
         if (renew || amb != prms.amb)
-            GL.Uniform1(Location[Program].Ambient, amb);
+            GL.Uniform1(location.Ambient, amb);
 
         if (renew || dif != prms.dif)
-            GL.Uniform1(Location[Program].Diffuse, dif);
+            GL.Uniform1(location.Diffuse, dif);
 
         if (renew || spe != prms.spe)
-            GL.Uniform1(Location[Program].Specular, spe);
+            GL.Uniform1(location.Specular, spe);
 
         if (renew || prms.spePow != Material.SpecularPower)
-            GL.Uniform1(Location[Program].SpecularPower, Material.SpecularPower);
+            GL.Uniform1(location.SpecularPower, Material.SpecularPower);
 
         if (renew || prms.UseFixedArgb != UseFixedArgb)
-            GL.Uniform1(Location[Program].UseFixedArgb, UseFixedArgb ? 1 : 0);//Trueが1なのはなぜか分からないが、これで動く。
+            GL.Uniform1(location.UseFixedArgb, UseFixedArgb ? 1 : 0);//Trueが1なのはなぜか分からないが、これで動く。
 
         if (renew || prms.argb != Material.Argb)
-            GL.Uniform1(Location[Program].FixedArgb, Material.Argb);
+            GL.Uniform1(location.FixedArgb, Material.Argb);
 
         if (renew || prms.ignoreNormal != IgnoreNormalSides)
-            GL.Uniform1(Location[Program].IgnoreNormalSides, IgnoreNormalSides ? 1 : 0);
+            GL.Uniform1(location.IgnoreNormalSides, IgnoreNormalSides ? 1 : 0);
 
         //if (IgnoreNormalSides)
         //{
@@ -571,22 +594,24 @@ abstract public class GLObject
         //else
         GL.DrawElements(mode, count, DrawElementsType.UnsignedInt, offset);//CullFaceは常に無効
 
-        prms = (Program, emi, amb, dif, spe, Material.SpecularPower, Material.Argb, IgnoreNormalSides, UseFixedArgb, ObjectMatrix);
+        prms = (ContextKey, Program, emi, amb, dif, spe, Material.SpecularPower, Material.Argb, IgnoreNormalSides, UseFixedArgb, ObjectMatrix); // (260319Ch) uniform cache も context を跨がない
     }
-    static private (int Program, float emi, float amb, float dif, float spe, float spePow, int argb, bool ignoreNormal, bool UseFixedArgb, M4f objmatrix)
-         prms = (-1, 0, 0, 0, 0, 0, 0, false, false, M4f.Identity);
-    static private (int Program, bool IsText) shaderPathPrms = (-1, false);
+    // static private (int Program, float emi, float amb, float dif, float spe, float spePow, int argb, bool ignoreNormal, bool UseFixedArgb, M4f objmatrix)
+    //      prms = (-1, 0, 0, 0, 0, 0, 0, false, false, M4f.Identity);
+    static private (int ContextKey, int Program, float emi, float amb, float dif, float spe, float spePow, int argb, bool ignoreNormal, bool UseFixedArgb, M4f objmatrix)
+         prms = (0, -1, 0, 0, 0, 0, 0, 0, false, false, M4f.Identity); // (260319Ch) 複数 GLControl で uniform cache が干渉しないよう context key を含める
 
 
     /// <summary>
     /// レンダリングを実行. Progaramが正しくセットされていない(Generate()をしていない)場合は例外が発生. 
-    /// OITモードはCullFaceとDepthTestが無効、通常モードはCullFaceとDepthTestが有効
+    /// PPLLモードはCullFaceとDepthTestが無効、通常モードはCullFaceとDepthTestが有効
     /// </summary>
     /// <param name="clip">Clip平面</param>
-    /// <param name="oit">OIT(order independent transparency)モードかどうか</param>
     public void Render(Clip clip = null)
     {
         if (!Rendered) return;
+        GL.UseProgram(Program); // (260319Ch) clip uniform 更新前に現在の object program を明示する
+        var activeRenderPassIndex = CurrentFragmentRenderPassIndex; // (260319Ch) clip の stencil/path 切替後も現在の OIT pass を復元できるよう保持する
 
         //クリップ無効か、有効だが全てのクリップ面の内側にある場合
         if (clip == null || clip.PrmsD.Count == 0 || clip.PrmsD.All(p => V4d.Dot(p, CircumscribedSphereCenter) - CircumscribedSphereRadius > 0))
@@ -601,7 +626,7 @@ abstract public class GLObject
                 var indices = clip.PrmsD.Select((p, i) => Math.Abs(V4d.Dot(p, CircumscribedSphereCenter)) < CircumscribedSphereRadius ? i : -1).Where(i => i != -1);
                 if (!ShowClippedSection)//クリップセクションを表示しない場合
                 {
-                    clip.EnableClips(indices);//全クリップ有効化
+                    clip.EnableClips(Program, indices);//全クリップ有効化 // (260319Ch) mesh/text の各 program に対して clip uniform を設定する
                     Render(); //物体全体の描画
                     Clip.DisableAllClips();//全クリップ無効化
                 }
@@ -612,14 +637,15 @@ abstract public class GLObject
                     {
                         DepthTest(false);//Depthテスト無効
 
-                        if (Location[Program].PassNormalIndex != -1)//OITモードの場合は
-                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[Program].PassNormalIndex);//サブルーチンをNormalにする
+                        if (Location[(ContextKey, Program)].PassNormalIndex != -1)//PPLLモードの場合は
+                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[(ContextKey, Program)].PassNormalIndex);//サブルーチンをNormalにする
 
                         GL.Clear(ClearBufferMask.StencilBufferBit);//ステンシルバッファークリア
                         GL.ColorMask(false, false, false, false); //色は全くかきこまない
                         GL.Enable(EnableCap.CullFace);//CullFace有効
                         GL.StencilFunc(StencilFunction.Always, 0, 0);//Stencil Funcを設定 (Always)
-                        clip.EnableClips([i]);//i番目のクリップのみ有効化
+                        GL.UseProgram(Program); // (260319Ch) clip.Render() が別 program を使った後でも元へ戻す
+                        clip.EnableClips(Program, [i]);//i番目のクリップのみ有効化
                                                       //裏面のみ描画(ステンシル値だけ書き込む)
                         GL.StencilOp(StencilOp.Keep, StencilOp.Keep, StencilOp.IncrWrap);//ステンシル値「+1」
                         GL.CullFace(TriangleFace.Front); //260317Cl CullFaceMode→TriangleFace 表面をカリング
@@ -633,18 +659,26 @@ abstract public class GLObject
                         //ここまででステンシル完成(0以外が有効)
 
                         //ここからクリップ平面を描画
-                        if (Location[Program].PassOIT1Index != -1)//OITモードの場合は
-                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[Program].PassOIT1Index);//サブルーチンをOIT1に戻す
+                        // if (Location[(ContextKey, Program)].PassPPLL1Index != -1)//PPLLモードの場合は
+                        // if (Location[(ContextKey, Program)].PassPPLL1Index != -1 && CurrentFragmentRenderPassIndex == Location[(ContextKey, Program)].PassPPLL1Index)
+                        //     GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref Location[(ContextKey, Program)].PassPPLL1Index);//サブルーチンをPPLL1に戻す
+                        if (activeRenderPassIndex != -1)
+                            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref activeRenderPassIndex); // (260319Ch) PPLL だけでなく DDP でも clip plane を現在の render pass へ戻す
 
                         GL.ColorMask(true, true, true, true);
                         GL.StencilFunc(StencilFunction.Notequal, 0, ~0); //ステンシル値が0でない部分が描画(切断面の描画). ~0 は補数(11111111)
                         GL.Disable(EnableCap.CullFace);//CullFace無効化
-                        clip.EnableClips(indices.Where(j => j != i));//i番目のクリップ以外を有効化
-                        DepthTest(Location[Program].PassNormalIndex == -1);//Depthテストを元に戻す (Z-sortモードは有効)
+                        GL.UseProgram(Program); // (260319Ch) clip plane 描画後に対象 object の program へ戻す
+                        clip.EnableClips(Program, indices.Where(j => j != i));//i番目のクリップ以外を有効化
+                        // DepthTest(Location[(ContextKey, Program)].PassNormalIndex == -1);//Depthテストを元に戻す (Z-sortモードは有効)
+                        // var restoreDepthTest = Location[(ContextKey, Program)].PassNormalIndex == -1 || CurrentFragmentRenderPassIndex == Location[(ContextKey, Program)].PassNormalIndex;
+                        // DepthTest(restoreDepthTest); // (260319Ch) ZSORT/PPLL prepass/PPLL pass1 で元の depth state を正しく復元する
+                        DepthTest(CurrentDepthTestEnabled); // (260319Ch) ZSORT / PPLL / DDP すべてで現在の phase の depth state をそのまま復元する
                         clip.Render(i, Material);//i番目のクリップ面を描画
                     }
                     GL.Disable(EnableCap.StencilTest);//Stencilテスト無効化
-                    clip.EnableClips(indices);//全クリップ有効化
+                    GL.UseProgram(Program); // (260319Ch) 最後の本体描画前に program を戻す
+                    clip.EnableClips(Program, indices);//全クリップ有効化
                     Render(); //物体全体の描画
                     Clip.DisableAllClips();//全クリップ無効化
                 }
@@ -678,7 +712,7 @@ public class Clip
     private readonly List<float> PrmsF = [];
     public List<V4d> PrmsD = [];
     private int Program = 0;
-    private int ClipPlanesLocation = 0, ClipNumLocation = 0;
+    private readonly Dictionary<int, (int ClipPlanesLocation, int ClipNumLocation)> ProgramLocations = []; // (260319Ch) mesh/text で uniform location を分けて保持する
 
     public Clip(params V4d[] planeParams)
     {
@@ -706,12 +740,15 @@ public class Clip
         }
     }
 
-    public void Generate(int program)
+    public void Generate(int program, bool generateRenderPlanes = true)
     {
-        Program = program;
-        Planes.ForEach(p => p.Generate(program));
-        ClipPlanesLocation = GL.GetUniformLocation(Program, "ClipPlanes");
-        ClipNumLocation = GL.GetUniformLocation(Program, "ClipNum");
+        if (generateRenderPlanes)
+        {
+            Program = program;
+            Planes.ForEach(p => p.Generate(program));
+        }
+
+        ProgramLocations[program] = (GL.GetUniformLocation(program, "ClipPlanes"), GL.GetUniformLocation(program, "ClipNum"));
     }
 
     public void Render(int index, Material mat)
@@ -720,10 +757,15 @@ public class Clip
         Planes[index].Render();
     }
 
-    public void EnableClips(IEnumerable<int> indices)
+    public void EnableClips(int program, IEnumerable<int> indices)
     {
-        int count = indices.Count();
-        GL.Uniform1(ClipNumLocation, count);
+        if (!ProgramLocations.TryGetValue(program, out var locations))
+            return;
+
+        // int count = indices.Count();
+        var enabledIndices = indices as int[] ?? indices.ToArray(); // (260319Ch) Count/Contains の多重列挙を避ける
+        int count = enabledIndices.Length;
+        GL.Uniform1(locations.ClipNumLocation, count);
 
         for (int i = 0; i < count; i++)
             GL.Enable(EnableCap.ClipDistance0 + i);
@@ -731,7 +773,27 @@ public class Clip
             GL.Disable(EnableCap.ClipDistance0 + i);
 
         if (count > 0)
-            GL.Uniform4(ClipPlanesLocation, indices.Count(), PrmsF.Where((v, i) => indices.Contains(i / 4)).ToArray());
+        {
+            var prmsSpan = CollectionsMarshal.AsSpan(PrmsF);
+            var clipPlanes = ArrayPool<float>.Shared.Rent(count * 4); // (260319Ch) 頻繁なクリップ切替の短命配列をプールする
+            try
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    int srcOffset = enabledIndices[i] * 4;
+                    int dstOffset = i * 4;
+                    clipPlanes[dstOffset] = prmsSpan[srcOffset];
+                    clipPlanes[dstOffset + 1] = prmsSpan[srcOffset + 1];
+                    clipPlanes[dstOffset + 2] = prmsSpan[srcOffset + 2];
+                    clipPlanes[dstOffset + 3] = prmsSpan[srcOffset + 3];
+                }
+                GL.Uniform4(locations.ClipPlanesLocation, count, clipPlanes);
+            }
+            finally
+            {
+                ArrayPool<float>.Shared.Return(clipPlanes, clearArray: false);
+            }
+        }
     }
     public static void DisableAllClips()
     {
@@ -1341,7 +1403,8 @@ public class Sphere : Ellipsoid
     /// <summary>
     /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
     /// </summary>
-    static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
+    // static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
+    static public Dictionary<(int ContextKey, int Program), (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = []; // (260319Ch) default sphere VAO は context 単位で分離
 
     static Sphere() => SetDefaultSphere();
     static void SetDefaultSphere()
@@ -1558,7 +1621,8 @@ public class Cone : Pipe
     /// <summary>
     /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
     /// </summary>
-    static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
+    // static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
+    static public Dictionary<(int ContextKey, int Program), (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = []; // (260319Ch) default cone VAO は context 単位で分離
 
     private static (int Slices, int Stacks) _Default = (1, 16);
     public new static (int Slices, int Stacks) Default
@@ -1648,7 +1712,8 @@ public class Cylinder : Pipe
     /// <summary>
     /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
     /// </summary>
-    static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
+    // static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
+    static public Dictionary<(int ContextKey, int Program), (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = []; // (260319Ch) default cylinder VAO は context 単位で分離
 
     public new static (int Slices, int Stacks) Default { get => _Default; set { _Default = value; SetDefaultCylinder(); } }
     private static (int Slices, int Stacks) _Default = (1, 16);
@@ -1854,16 +1919,42 @@ public class Mesh : GLObject
 /// </summary>
 public class TextObject : GLObject
 {
-    private static readonly Dictionary<(int program, string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, Vertex[] Vertices)> dic = [];
+    // private static readonly Dictionary<(int program, string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, Vertex[] Vertices)> dic = [];
+    private static readonly Dictionary<(int ContextKey, int Program, string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, Vertex[] Vertices)> dic = []; // (260319Ch) GL context を跨ぐ text texture 再利用を防ぐ
 
-    public static readonly Dictionary<(int Program, int TextureNum), (int VBO, int VAO, int EBO)> DefaultDictionaly = [];
+    // public static readonly Dictionary<(int Program, int TextureNum), (int VBO, int VAO, int EBO)> DefaultDictionaly = [];
+    public static readonly Dictionary<(int ContextKey, int Program, int TextureNum), (int VBO, int VAO, int EBO)> DefaultDictionaly = []; // (260319Ch) text VAO/VBO cache も context ごとに分離
 
     private static readonly V2f p00 = new(0, 0), p01 = new(0, 1), p10 = new(1, 0), p11 = new(1, 1);
     private static readonly uint[] indices = [0, 1, 2, 3];
     private static readonly (PT, int)[] primitives = [(PT.TriangleFan, 4)];
+    private static readonly (float X, float Y)[] whiteEdgeOffsets = [(0f, 0f), (0f, 1f), (0f, 2f), (1f, 2f), (2f, 2f), (2f, 1f), (2f, 0f), (1f, 0f)]; // (260319Ch) 輪郭オフセットは毎回新規配列を作らず共有する
 
     public int TextureNum = -1;
     public double Popout = 0;
+    internal int ContextCacheKey = 0; // (260319Ch) text texture/VAO cache の context 識別子
+
+    internal static void ClearContextCache(int contextKey)
+    {
+        if (contextKey == 0)
+            return;
+
+        // var textureKeys = dic.Keys.Where(key => key.program == program).ToArray();
+        var textureKeys = dic.Keys.Where(key => key.ContextKey == contextKey).ToArray(); // (260319Ch) control 切替時に stale text texture を持ち越さない
+        if (textureKeys.Length > 0)
+        {
+            // var textureIds = textureKeys.Select(key => dic[key].TextureNum).Distinct().ToArray();
+            // foreach (var textureId in textureIds)
+            //     GL.DeleteTexture(textureId);
+            // (260319Ch) context sharing 環境では他 control が同じ texture object を参照中の可能性があるため、ここでは dictionary だけ無効化する
+            foreach (var key in textureKeys)
+                dic.Remove(key);
+        }
+
+        var vaoKeys = DefaultDictionaly.Keys.Where(key => key.ContextKey == contextKey).ToArray(); // (260319Ch) text VAO cache も同時にクリアする
+        foreach (var key in vaoKeys)
+            DefaultDictionaly.Remove(key);
+    }
 
     public TextObject(string text, float fontSize, Vector3DBase position, double popout, bool whiteEdge, Material mat, GLControlAlpha glControl, int program =-1)
         : this(text, fontSize, position.ToOpenTK(), popout, whiteEdge, mat, glControl, program) { }
@@ -1876,12 +1967,20 @@ public class TextObject : GLObject
         if (GLControlAlpha.DisableTextRendering || text==null) return;
         text = text.Trim();
 
-        if (text != "" || fontSize > 0)
+        // if (text != "" || fontSize > 0)
+        if (text != "" && fontSize > 0) // (260319Ch) 空文字列ではテクスチャ生成に進まない
         {
             if (glControl != null)
             {
-                glControl.MakeCurrent();
-                program= glControl.Program;
+                ContextCacheKey = glControl.CacheKey; // (260319Ch) 同じ program 番号でも別 context なら cache を分離する
+                if (program == -1)
+                {
+                    glControl.MakeCurrent();
+                    // program = glControl.FragShader == GLControlAlpha.FragShaders.PPLL ?
+                    //     glControl.Program :
+                    //     glControl.TextProgram > 0 ? glControl.TextProgram : glControl.Program; // (260319Ch) PPLL text を linked-list に戻した案
+                    program = glControl.TextProgram > 0 ? glControl.TextProgram : glControl.Program; // (260319Ch) PPLL text は専用 overlay program に戻す
+                }
             }
             Indices = indices;
             Primitives = primitives;
@@ -1890,62 +1989,98 @@ public class TextObject : GLObject
             ShowClippedSection = false;//クリップ断面は表示しない
             Popout = popout;
 
-            if (dic.TryGetValue((program, text, fontSize, mat.Argb, whiteEdge), out var obj))//辞書に登録されている場合
+            if (dic.TryGetValue((ContextCacheKey, program, text, fontSize, mat.Argb, whiteEdge), out var obj))//辞書に登録されている場合
             {
                 TextureNum = obj.TextureNum;
                 Vertices = obj.Vertices;
             }
             else //辞書に登録されていない場合
             {
-                var fnt = new Font("Tahoma", fontSize);//フォントオブジェクトの作成
+                using var fnt = new Font("Tahoma", fontSize);// (260319Ch) GDI オブジェクトの解放漏れを防ぐ
                 var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100),
                     TextFormatFlags.Left); //文字列を描画するときの大体の大きさを計測する
 
                 var width = (ushort)strSize.Width;
                 var height = (ushort)strSize.Height;
 
-                var bmp = new Bitmap(width, height);
-                var g = Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する
+                using var bmp = new Bitmap(width, height);
+                using var g = Graphics.FromImage(bmp);//ImageオブジェクトのGraphicsオブジェクトを作成する
+                // g.Clear(Color.Transparent); // (260319Ch) 旧コードでは明示クリアしていなかった
+                g.Clear(Color.Transparent); // (260319Ch) PPLL overlay で背景 alpha が残らないよう bitmap を透明初期化する
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
                 if (whiteEdge)
-                    foreach (var (x, y) in new[] { (0f, 0f), (0f, 1f), (0f, 2f), (1f, 2f), (2f, 2f), (2f, 1f), (2f, 0f), (1f, 0f) })
-                        g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(128, Color.White)), new RectangleF(x, y, width, height));
+                {
+                    using var whiteBrush = new SolidBrush(Color.FromArgb(128, Color.White));
+                    foreach (var (x, y) in whiteEdgeOffsets)
+                        g.DrawString(text, fnt, whiteBrush, new RectangleF(x, y, width, height));
+                }
 
-                g.DrawString(text, fnt, new SolidBrush(Color.FromArgb(mat.Argb)), new RectangleF(1f, 1f, width, height));
-                fnt.Dispose();//リソースを解放する
-                g.Dispose();//リソースを解放する
+                using var textBrush = new SolidBrush(Color.FromArgb(mat.Argb));
+                g.DrawString(text, fnt, textBrush, new RectangleF(1f, 1f, width, height));
 
-                var argbList = BitmapConverter.ToByteRGBA(bmp).ToList();//データの並び順に注意
+                var argbList = new List<byte>(BitmapConverter.ToByteRGBA(bmp));// (260319Ch) データの並び順に注意
 
                 #region  余白の部分をトリムする
-                while (argbList.Where((b, i) => i < width * 4).All(b => b == 0))
+                bool isTransparentRow(int row)
+                {
+                    int rowOffset = row * width * 4;
+                    for (int x = 0; x < width; x++)
+                        if (argbList[rowOffset + x * 4 + 3] != 0)
+                            return false;
+                    return true;
+                }
+
+                bool isTransparentLeftColumn()
+                {
+                    int stride = width * 4;
+                    for (int y = 0; y < height; y++)
+                        if (argbList[y * stride + 3] != 0)
+                            return false;
+                    return true;
+                }
+
+                bool isTransparentRightColumn()
+                {
+                    int stride = width * 4;
+                    int alphaOffset = stride - 1;
+                    for (int y = 0; y < height; y++)
+                        if (argbList[y * stride + alphaOffset] != 0)
+                            return false;
+                    return true;
+                }
+
+                while (height > 0 && isTransparentRow(0))
                 {
                     argbList.RemoveRange(0, width * 4);
                     height--;
                 }
-                while (argbList.Where((b, i) => i >= (height - 1) * width * 4).All(b => b == 0))
+                while (height > 0 && isTransparentRow(height - 1))
                 {
                     argbList.RemoveRange((height - 1) * width * 4, width * 4);
                     height--;
                 }
 
-                while (argbList.Where((b, i) => i % (width * 4) == 3).All(b => b == 0))
+                while (width > 0 && isTransparentLeftColumn())
                 {
                     for (int h = height - 1; h >= 0; h--)
                         argbList.RemoveRange(h * width * 4, 4);
                     width--;
                 }
-                while (argbList.Where((b, i) => i % (width * 4) == width * 4 - 1).All(b => b == 0))
+                while (width > 0 && isTransparentRightColumn())
                 {
                     for (int h = height; h > 0; h--)
                         argbList.RemoveRange(h * width * 4 - 4, 4);
                     width--;
                 }
+
+                if (width == 0 || height == 0)
+                    return; // (260319Ch) 全透明テクスチャは GPU リソースを作らない
                 #endregion
 
                 //空いてるテクスチャID番号を調べ、TextureNumberに格納 
                 TextureNum = GL.GenTexture();
                 // テクスチャをバインドする
+                GL.BindBuffer(BufferTarget.PixelUnpackBuffer, 0); // (260319Ch) PPLL 用 clearBuf が bind 済みでも text bitmap は CPU メモリから直接 upload する
                 GL.BindTexture(TextureTarget.Texture2D, TextureNum);
                 //テクスチャ用バッファに色情報を流し込む
                 GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, width, height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, argbList.ToArray());
@@ -1961,7 +2096,7 @@ public class TextObject : GLObject
                  ];
 
                 //辞書に登録
-                dic.Add((program, text, fontSize, mat.Argb, whiteEdge), (TextureNum, Vertices));
+                dic.Add((ContextCacheKey, program, text, fontSize, mat.Argb, whiteEdge), (TextureNum, Vertices));
             }
         }
 

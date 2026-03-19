@@ -61,6 +61,24 @@ namespace Crystallography.OpenGL.Properties {
         }
         
         /// <summary>
+        ///   fragDDP に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string fragDDP {
+            get {
+                return ResourceManager.GetString("fragDDP", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   fragFXAA に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string fragFXAA {
+            get {
+                return ResourceManager.GetString("fragFXAA", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   #version 430 core
         ///
         /////#pragma optionNV(ifcvt none)
@@ -90,9 +108,18 @@ namespace Crystallography.OpenGL.Properties {
         ///
         ///subroutine void RenderP [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string fragOIT {
+        internal static string fragPPLL {
             get {
-                return ResourceManager.GetString("fragOIT", resourceCulture);
+                return ResourceManager.GetString("fragPPLL", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   fragPPLLText に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string fragPPLLText {
+            get {
+                return ResourceManager.GetString("fragPPLLText", resourceCulture);
             }
         }
         
@@ -122,6 +149,15 @@ namespace Crystallography.OpenGL.Properties {
         internal static string fragZSORT {
             get {
                 return ResourceManager.GetString("fragZSORT", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   fragZSORTText に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string fragZSORTText {
+            get {
+                return ResourceManager.GetString("fragZSORTText", resourceCulture);
             }
         }
         
@@ -183,6 +219,15 @@ namespace Crystallography.OpenGL.Properties {
         internal static string vert {
             get {
                 return ResourceManager.GetString("vert", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   vertText に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string vertText {
+            get {
+                return ResourceManager.GetString("vertText", resourceCulture);
             }
         }
     }

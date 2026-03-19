@@ -1850,6 +1850,9 @@
     <value>Translate unit cell (fractional coordinates)</value>
   </data>
   <data name="comboBoxTransparency.Items1" xml:space="preserve">
+    <value>Balanced (Dual depth peeling, OpenGL 4.1+)</value>
+  </data>
+  <data name="comboBoxTransparency.Items2" xml:space="preserve">
     <value>Perfect (Order Independent Transparency, which needs high performance GPU!)</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">

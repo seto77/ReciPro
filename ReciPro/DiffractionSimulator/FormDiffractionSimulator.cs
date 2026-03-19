@@ -36,7 +36,7 @@ public partial class FormDiffractionSimulator : Form
 
     private GLControlAlpha glControl;
     private GLControlAlpha glControlZsort;
-    private GLControlAlpha glControlOIT;
+    private GLControlAlpha glControlPPLL;
 
     private readonly Timer timer = new();
     #endregion
@@ -445,7 +445,7 @@ public partial class FormDiffractionSimulator : Form
 
         WaveLengthControl_WaveSourceChanged(sender, e);
 
-        glControlOIT = new GLControlAlpha() //(GLControlAlpha.FragShaders.OIT)
+        glControlPPLL = new GLControlAlpha(GLControlAlpha.FragShaders.PPLL)
         {
             AllowMouseRotation = true,
             AllowMouseScaling = true,
@@ -3196,8 +3196,8 @@ public partial class FormDiffractionSimulator : Form
             g1.ProjectionMode = g2.ProjectionMode;
         });
 
-        var gNew = checkBox3D_ShowIndices.Checked ? glControlZsort : glControlOIT;
-        var gOld = checkBox3D_ShowIndices.Checked ? glControlOIT : glControlZsort;
+        var gNew = checkBox3D_ShowIndices.Checked ? glControlZsort : glControlPPLL;
+        var gOld = checkBox3D_ShowIndices.Checked ? glControlPPLL : glControlZsort;
 
         gOld.Visible = false;
         splitContainer1.Panel2.Controls.Remove(gOld);

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Management;
+using System.Runtime.InteropServices;
 using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
 using Col4 = OpenTK.Mathematics.Color4;
@@ -22,6 +23,26 @@ namespace Crystallography.OpenGL;
 
 unsafe public partial class GLControlAlpha : UserControl
 {
+    private sealed class ProgramLocations
+    {
+        internal int ViewportSize { get; init; }
+        internal int EyePosition { get; init; }
+        internal int LightPosition { get; init; }
+        internal int ViewMatrix { get; init; }
+        internal int ProjMatrix { get; init; }
+        internal int WorldMatrix { get; init; }
+        internal int BackgroundColor { get; init; }
+        internal int DepthCueingEnabled { get; init; }
+        internal int DepthCueingFar { get; init; }
+        internal int DepthCueingNear { get; init; }
+        internal int DepthTexture { get; init; } // (260319Ch) PPLL text overlay samples the mesh prepass depth at the label anchor point
+        internal int UseAnchorVisibility { get; init; } // (260319Ch) Enable whole-label visibility from the anchor point instead of per-fragment depth clipping
+        internal int DepthBlenderTexture { get; init; } // (260319Ch) DDP ping-pong depth interval texture
+        internal int FrontBlenderTexture { get; init; } // (260319Ch) DDP front accumulation / final composite texture
+        internal int BackBlenderTexture { get; init; } // (260319Ch) DDP back accumulation / final composite texture
+        internal int SceneTexture { get; init; } // (260319Ch) Post FXAA samples the already rendered scene color
+    }
+
     #region static な property, field. OpengGLのバージョン関連
     /// <summary>
     /// OpenGLを無効にするか。 Versionチェックが出来ないときなどに、Trueになる。
@@ -53,23 +74,32 @@ unsafe public partial class GLControlAlpha : UserControl
     public static bool ZsortEnabled => VersionForZsort <= Version;
 
     /// <summary>
-    /// OITのために最低必要なOpenGLのバージョン (3桁整数, 430など)
+    /// PPLLのために最低必要なOpenGLのバージョン (3桁整数, 430など)
     /// </summary>
-    public static int VersionForOit { get; } = 430;
+    public static int VersionForPpll { get; } = 430;
     /// <summary>
-    /// OITのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
+    /// PPLLのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
     /// </summary>
-    public static string VersionForOitStr => $"{VersionForOit / 100}.{VersionForOit / 10 % 10}.{VersionForOit % 10}";
+    public static string VersionForPpllStr => $"{VersionForPpll / 100}.{VersionForPpll / 10 % 10}.{VersionForPpll % 10}";
 
     /// <summary>
-    /// OITのバージョンを満たしているか.
+    /// PPLLのバージョンを満たしているか.
     /// </summary>
-    public static bool OitEnabled => VersionForOit <= Version;
+    public static bool PpllEnabled => VersionForPpll <= Version;
+
+    /// <summary>
+    /// DDPのために最低必要なOpenGLのバージョン (3桁整数, 410など)
+    /// </summary>
+    public static int VersionForDdp { get; } = 410; // (260319Ch) Dual depth peeling は draw-buffers blend を使う 4.1 core を前提とする
+    public static string VersionForDdpStr => $"{VersionForDdp / 100}.{VersionForDdp / 10 % 10}.{VersionForDdp % 10}";
+    public static bool DdpEnabled => VersionForDdp <= Version;
 
     private static readonly System.Version VersionForZsortApi = new(4, 1); // (260319Ch) 通常描画は 4.1 core context を要求
-    private static readonly System.Version VersionForOitApi = new(4, 3); // (260319Ch) OIT は SSBO / atomic counter のため 4.3 を維持
+    private static readonly System.Version VersionForDdpApi = new(4, 1); // (260319Ch) DDP も 4.1 core context で動かす
+    private static readonly System.Version VersionForPpllApi = new(4, 3); // (260319Ch) Ppll は SSBO / atomic counter のため 4.3 を維持
 
     private static int N = 0;
+    private static int CacheKeySeed = 0; // (260319Ch) TextObject cache を GL context ごとに分離するための連番
 
     #endregion
 
@@ -78,35 +108,54 @@ unsafe public partial class GLControlAlpha : UserControl
     private readonly int CounterBuffer = 0;
     private readonly int LinkedListBuffer = 1;
     private readonly uint[] buffers = [0, 0];
-    private uint headPtrTex = 0, clearBuf = 0;
+    private uint headPtrTex = 0, clearBuf = 0, textDepthTex = 0, postProcessColorTex = 0; // (260319Ch) Post FXAA keeps a copy of the fully rendered scene
+    private int postProcessTextureWidth = 0, postProcessTextureHeight = 0; // (260319Ch) FXAA texture follows the current viewport size instead of the MaxWidth/MaxHeight budget
+    private int textDepthFbo = 0; // 260319Cl depth-only FBO: prepass renders directly into textDepthTex, avoiding unreliable CopyTexSubImage2D for depth
+    private readonly int[] ddpFramebuffers = [0, 0];
+    private readonly uint[] ddpDepthTextures = [0, 0];
+    private uint ddpFrontBlenderTexture = 0, ddpBackBlenderTexture = 0;
+    private int ddpQuery = 0;
 
     private Clip Clip = null;
     private readonly List<GLObject> glObjects = [];
-    private readonly ParallelQuery<GLObject> glObjectsP;
     private readonly GLObject quad = null;
-
-    private readonly int eyePositionLocation = 0;
-    private readonly int viewportSizeLocation = 0;
-    private readonly int lightPositionLocation = 0;
-    private readonly int viewMatrixLocation = 0;
-    private readonly int projMatrixLocation = 0;
-    private readonly int worldMatrixLocation = 0;
-    private int passOIT1Index = 0;
-    private int passOIT2Index = 0;
-
-    private readonly int depthCueingNearLocation = 0;
-    private readonly int depthCueingFarLocation = 0;
-    private readonly int depthCueingEnabledLocation = 0;
+    private readonly Action renderAction;
+    private readonly Dictionary<int, ProgramLocations> programLocations = []; // (260319Ch) ZSORT は mesh/text の 2 program を持てるようにする
+    private int passPpll1Index = 0;
+    private int passPpll2Index = 0;
+    private int passNormalIndex = 0; // (260319Ch) Ppll では text を最後に通常 alpha blend で重ねる
+    private int passPpllTextIndex = 0; // (260319Ch) PPLL text は linked-list を再合成して半透明遮蔽を反映する
+    private int passDdpInitIndex = 0;
+    private int passDdpPeelIndex = 0;
+    private int passDdpCompositeIndex = 0;
 
     private GLControl glControl;// = new GLControl();
     private readonly Graphics glControlGraphics;
+
+    private static readonly DrawBuffersEnum[] ddpDepthDrawBuffers = [DrawBuffersEnum.ColorAttachment0];
+    private static readonly DrawBuffersEnum[] ddpPeelDrawBuffers = [DrawBuffersEnum.ColorAttachment0, DrawBuffersEnum.ColorAttachment1, DrawBuffersEnum.ColorAttachment2];
     #endregion フィールド
 
     #region Enum
     public enum ProjectionModes { Perspective, Orhographic }
     public enum RotationModes { Object, View, Light }
     public enum TranslatingModes { Object, View }
-    public enum FragShaders { OIT, ZSORT }
+    public enum PostAntiAliasingModes { None, FXAA } // (260319Ch) True MSAA is difficult for OIT paths, so allow a post AA fallback
+    public enum FragShaders {
+        /// <summary>
+        /// Per-Pixel Linked List (PPLL)
+        /// </summary>
+        PPLL,
+        /// <summary>
+        /// Object-level Z (depth) sorting with alpha blending (ZSORT)
+        /// </summary>
+        ZSORT,
+        /// <summary>
+        /// Double depth peeling (DDP)
+        /// </summary>
+        DDP
+
+    }
     #endregion Enum
 
     #region イベント
@@ -151,26 +200,29 @@ unsafe public partial class GLControlAlpha : UserControl
     }
 
     public int Program { get; } = -1;
+    public int TextProgram { get; } = -1; // (260319Ch) ZSORT text path は専用 shader program に分離する
+    public int PostProcessProgram { get; } = -1; // (260319Ch) PPLL/DDP の後段 AA は別 fragment shader で合成する
+    public int CacheKey { get; } = 0; // (260319Ch) context 跨ぎの text texture cache 衝突を避ける
 
-    #region OIT関連
+    #region PPLL関連
     // This is the maximum supported framebuffer width and height. We
     // could support higher resolutions, but this is reasonable for
     // this application
 
     /// <summary>
-    /// 画像の最大幅 (OITのパラメータ)
+    /// 画像の最大幅 (PPLLのパラメータ)
     /// </summary>
     [Category("Rendering properties")]
     public int MaxWidth { get; set; } = 2560;
 
     /// <summary>
-    /// 画像の最大高さ (OITのパラメータ)
+    /// 画像の最大高さ (PPLLのパラメータ)
     /// </summary>
     [Category("Rendering properties")]
     public int MaxHeight { get; set; } = 1440;
 
     /// <summary>
-    /// OIT時の最大ノード数を決める係数. NodeCoefficient * MaxWidth * MaxHeight * 24 bytes　(=5*float+ 1*uint)  分のメモリーが確保される
+    /// PPLL時の最大ノード数を決める係数. NodeCoefficient * MaxWidth * MaxHeight * 24 bytes　(=5*float+ 1*uint)  分のメモリーが確保される
     /// ここの数値をどれくらい大きくするか。オリジナルでは20にしていたが。。。
     /// この値を変更しても、SetShader()は実行されない (その後FragShaderを変更する必要あり)。
     /// </summary>
@@ -178,15 +230,36 @@ unsafe public partial class GLControlAlpha : UserControl
     public int NodeCoefficient { get; set; } = 10;
 
     /// <summary>
-    /// OIT時に、どれだけの数の重なり合いを考慮するかをパラメータ.
+    /// PPLL時に、どれだけの数の重なり合いを考慮するかをパラメータ.
     /// </summary>
     [Category("Rendering properties")]
     public int MaxFragments { get; set; } = 100;
 
+    /// <summary>
+    /// DDP 時に最大何回 peel pass を回すか. 1 pass で前後 2 層ずつ進む。
+    /// </summary>
+    [Category("Rendering properties")]
+    public int DualDepthPeelingPasses { get; set; } = 12; // (260319Ch) 品質と速度の中間点として 24 層相当を既定値にする
+
+    /// <summary>
+    /// OIT 系パスの最終画像に対する後段 AA.
+    /// </summary>
+    [Category("Rendering properties")]
+    public PostAntiAliasingModes PostAntiAliasing
+    {
+        get => postAntiAliasing;
+        set
+        {
+            postAntiAliasing = value;
+            if (!DesignMode && Program != -1)
+                Render();
+        }
+    }
+
     #endregion
 
     /// <summary>
-    /// 透明度計算としてZsort(要150以上) あるいはOIT (Order Independent Transparency, 要430以上)を用いるか.
+    /// 透明度計算としてZsort(要410以上) あるいはPPLL (要430以上)を用いるか.
     /// コンストラクタのみで設定可能
     /// </summary>
     [Category("Rendering properties")]
@@ -209,6 +282,7 @@ unsafe public partial class GLControlAlpha : UserControl
     }
 
     private (bool Enabled, double Zfar, double Znear) depthCueing = (false, -1.5, 0.5);
+    private PostAntiAliasingModes postAntiAliasing = PostAntiAliasingModes.None; // (260319Ch) PPLL/DDP の後段 FXAA 設定
 
     #endregion
 
@@ -435,7 +509,8 @@ unsafe public partial class GLControlAlpha : UserControl
 
     private static GLControlSettings createGlControlSettings(FragShaders shaderMode, bool forVersionProbe = false)
     {
-        var apiVersion = shaderMode == FragShaders.OIT ? VersionForOitApi : VersionForZsortApi;
+        var apiVersion = shaderMode == FragShaders.PPLL ? VersionForPpllApi :
+            shaderMode == FragShaders.DDP ? VersionForDdpApi : VersionForZsortApi; // (260319Ch) DDP は OpenGL 4.1 core context で作成する
         return new GLControlSettings()
         {
             APIVersion = apiVersion,
@@ -504,7 +579,7 @@ unsafe public partial class GLControlAlpha : UserControl
         //using var glcontrol = new GLControl();
         //glcontrol.MakeCurrent();
         //var ver = CheckVersion();
-        Version = checkSupportedVersion(FragShaders.OIT, FragShaders.ZSORT); // (260319Ch) まず 4.3、次に 4.1 を試して実際に使える上限を判定
+        Version = checkSupportedVersion(FragShaders.PPLL, FragShaders.ZSORT); // (260319Ch) まず 4.3、次に 4.1 を試して実際に使える上限を判定
         if (Version == 0)
         {
             DisablingOpenGL = true;
@@ -513,18 +588,22 @@ unsafe public partial class GLControlAlpha : UserControl
     }
 
     /// <summary>
-    /// コンストラクタ. ZsortかOITかは、コンストラクタで決める. 生成後に変更はできない。
+    /// コンストラクタ. Zsort, DDP, PPLLは、コンストラクタで決める. 生成後に変更はできない。
     /// </summary>
     public GLControlAlpha(FragShaders shaders = FragShaders.ZSORT)
     {
         InitializeComponent();
+        renderAction = Render; // (260319Ch) Invoke 用 delegate を使い回して描画要求時の小さな確保を避ける
+        CacheKey = System.Threading.Interlocked.Increment(ref CacheKeySeed); // (260319Ch) control ごとに一意の cache key を振る
 
         //if (DisablingOpenGL || DesignMode || !ZsortEnabled)
         if (DisablingOpenGL || DesignMode || !ZsortEnabled)
             return;
 
-        if (shaders == FragShaders.OIT && !OitEnabled)
+        if (shaders == FragShaders.PPLL && !PpllEnabled)
             shaders = FragShaders.ZSORT; // (260319Ch) 4.3 未満では安全側で ZSORT にフォールバックする
+        if (shaders == FragShaders.DDP && !DdpEnabled)
+            shaders = FragShaders.ZSORT; // (260319Ch) DDP も 4.1 未満なら通常描画へ戻す
 
         FragShader = shaders;
 
@@ -567,42 +646,66 @@ unsafe public partial class GLControlAlpha : UserControl
         #endregion
 
         //Shader転送
-        var frag = FragShader == FragShaders.ZSORT ? 
+        var frag = FragShader == FragShaders.ZSORT ?
             Properties.Resources.fragZSORT :
-            Properties.Resources.fragOIT.Replace("MAX_FRAGMENTS ##", $"MAX_FRAGMENTS {MaxFragments}");
+            FragShader == FragShaders.DDP ?
+            Properties.Resources.fragDDP : // (260319Ch) DDP は fragDDP.c を使う
+            Properties.Resources.fragPPLL.Replace("MAX_FRAGMENTS ##", $"MAX_FRAGMENTS {MaxFragments}");
 
+        // var textProgram = Program; // (260319Ch) 旧来は text も mesh と同じ program/subroutine で処理していた
         Program = CreateShader(Properties.Resources.vert, Properties.Resources.geom, frag);
-   
-        GL.UseProgram(Program);
+        // if (FragShader == FragShaders.ZSORT)
+        //     TextProgram = CreateShader(Properties.Resources.vertText, Properties.Resources.geom, Properties.Resources.fragZSORTText);
+        // TextProgram = CreateShader(Properties.Resources.vertText, Properties.Resources.geom, Properties.Resources.fragZSORTText); // (260319Ch) 旧案: PPLL でも ZSORT 用 text shader を共用していた
+        var textFrag = FragShader == FragShaders.PPLL ? Properties.Resources.fragPPLLText : Properties.Resources.fragZSORTText;
+        TextProgram = CreateShader(Properties.Resources.vertText, Properties.Resources.geom, textFrag); // (260319Ch) PPLL text は alpha-only shader に分けて黒四角を避ける
+        // PostProcessProgram = Program; // (260319Ch) 旧案: 後段 AA なしで main program の出力をそのまま表示する
+        if (FragShader != FragShaders.ZSORT)
+            PostProcessProgram = CreateShader(Properties.Resources.vert, Properties.Resources.geom, Properties.Resources.fragFXAA); // (260319Ch) PPLL/DDP は最後に FXAA を掛けられるようにする
 
-        //Index取得
-        viewportSizeLocation = GL.GetUniformLocation(Program, "ViewportSize");
-        eyePositionLocation = GL.GetUniformLocation(Program, "EyePosition");
-        lightPositionLocation = GL.GetUniformLocation(Program, "LightPosition");
-        viewMatrixLocation = GL.GetUniformLocation(Program, "ViewMatrix");
-        projMatrixLocation = GL.GetUniformLocation(Program, "ProjMatrix");
-        worldMatrixLocation = GL.GetUniformLocation(Program, "WorldMatrix");
-        depthCueingEnabledLocation = GL.GetUniformLocation(Program, "DepthCueing");
-        depthCueingFarLocation = GL.GetUniformLocation(Program, "Far");
-        depthCueingNearLocation = GL.GetUniformLocation(Program, "Near");
+        registerProgramLocations(Program); // (260319Ch) mesh program 用の共通 uniform location を登録
+        if (TextProgram > 0)
+            registerProgramLocations(TextProgram); // (260319Ch) text program にも同じ view/proj/depth-cueing を配る
+        if (PostProcessProgram > 0)
+            registerProgramLocations(PostProcessProgram); // (260319Ch) post FXAA も ViewportSize / SceneTexture を共有登録する
+
+        GL.UseProgram(Program);
 
         GL.Disable(EnableCap.CullFace);//CullFaceは常に無効
         //GL.Enable(EnableCap.Texture2D);
         // (260319Ch) fixed-function の Texture2D enable は core profile では不要かつ無効なので外す。
 
-        if (FragShader == FragShaders.OIT)
+        if (FragShader == FragShaders.PPLL)
         {
             initShaderStorage(); //Shader storage初期化
+            initPostProcessTexture(); // (260319Ch) PPLL の最終カラーを FXAA 用 texture にコピーできるようにする
 
-            GL.Disable(EnableCap.DepthTest);//oitモードの時、 DepthTest無効、
+            GL.Disable(EnableCap.DepthTest);//PPLLモードの時、 DepthTest無効、
 
-            //passOIT1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT1");
-            //passOIT2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passOIT2");
-            passOIT1Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT1");
-            passOIT2Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passOIT2");
+            // passPpll1Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passPPLL1");
+            // passPpll2Index = GL.GetProgramResourceIndex(Program, ProgramInterface.FragmentSubroutine, "passPPLL2");
+            passPpll1Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passPPLL1"); // (260319Ch) UniformSubroutines には subroutine index を渡す
+            passPpll2Index = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passPPLL2"); // (260319Ch) resource index ではなく API 対応の index を使う
+            passNormalIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passNormal"); // (260319Ch) text overlay 用の通常描画 path
+            passPpllTextIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passLabelOverlay"); // (260319Ch) text pixel ごとに linked-list を再合成する PPLL 専用 path
 
             quad = new Quads(new Vec3d(-1, -1, 1), new Vec3d(1, -1, 1), new Vec3d(1, 1, 1), new Vec3d(-1, 1, 1), new Material(0), DrawingMode.Surfaces);
-            quad.Generate(Program);
+            quad.Generate(Program, CacheKey); // (260319Ch) fullscreen quad も control ごとの context key で生成する
+        }
+        else if (FragShader == FragShaders.DDP)
+        {
+            initDualDepthPeeling(); // (260319Ch) DDP 用 ping-pong FBO と accumulation texture を初期化する
+            initPostProcessTexture(); // (260319Ch) DDP でも final composite を FXAA へ渡せるようにする
+
+            GL.Disable(EnableCap.DepthTest); // (260319Ch) DDP の peel pass 自体は depth test を使わず custom min/max depth で進める
+            GL.DepthMask(false);
+
+            passDdpInitIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passDdpInit");
+            passDdpPeelIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passDdpPeel");
+            passDdpCompositeIndex = GL.GetSubroutineIndex(Program, ShaderType.FragmentShader, "passDdpComposite");
+
+            quad = new Quads(new Vec3d(-1, -1, 1), new Vec3d(1, -1, 1), new Vec3d(1, 1, 1), new Vec3d(-1, 1, 1), new Material(0), DrawingMode.Surfaces);
+            quad.Generate(Program, CacheKey); // (260319Ch) DDP final composite でも fullscreen quad を使う
         }
         else
         {//Zsortモードの時、DepthTest有効
@@ -622,9 +725,9 @@ unsafe public partial class GLControlAlpha : UserControl
         }
 
         Clip?.Generate(Program);
+        if (TextProgram > 0)
+            Clip?.Generate(TextProgram, false); // (260319Ch) text 側は clip plane の uniform だけ共有し、断面 polygon は mesh 側で維持する
         setDepthCueing();
-
-        glObjectsP = glObjects.AsParallel();
 
         setViewMatrix();
         setProjMatrix();
@@ -692,6 +795,224 @@ unsafe public partial class GLControlAlpha : UserControl
         return program;
     }
 
+    private void registerProgramLocations(int program)
+    {
+        GL.UseProgram(program);
+        programLocations[program] = new ProgramLocations
+        {
+            ViewportSize = GL.GetUniformLocation(program, "ViewportSize"),
+            EyePosition = GL.GetUniformLocation(program, "EyePosition"),
+            LightPosition = GL.GetUniformLocation(program, "LightPosition"),
+            ViewMatrix = GL.GetUniformLocation(program, "ViewMatrix"),
+            ProjMatrix = GL.GetUniformLocation(program, "ProjMatrix"),
+            WorldMatrix = GL.GetUniformLocation(program, "WorldMatrix"),
+            BackgroundColor = GL.GetUniformLocation(program, "BgColor"), // (260319Ch) PPLL と text depth cueing の両方で使い回す
+            DepthCueingEnabled = GL.GetUniformLocation(program, "DepthCueing"),
+            DepthCueingFar = GL.GetUniformLocation(program, "Far"),
+            DepthCueingNear = GL.GetUniformLocation(program, "Near"),
+            DepthTexture = GL.GetUniformLocation(program, "DepthTexture"),
+            UseAnchorVisibility = GL.GetUniformLocation(program, "UseAnchorVisibility"),
+            DepthBlenderTexture = GL.GetUniformLocation(program, "DepthBlenderTex"),
+            FrontBlenderTexture = GL.GetUniformLocation(program, "FrontBlenderTex"),
+            BackBlenderTexture = GL.GetUniformLocation(program, "BackBlenderTex"),
+            SceneTexture = GL.GetUniformLocation(program, "SceneTexture")
+        };
+    }
+
+    private void applyFrameUniforms(int program)
+    {
+        if (program < 1 || !programLocations.TryGetValue(program, out var locations))
+            return;
+
+        GL.UseProgram(program);
+        GL.Uniform2(locations.ViewportSize, new Vector2(glControl.ClientSize.Width, glControl.ClientSize.Height));
+        GL.Uniform3(locations.EyePosition, viewFromF);
+        GL.Uniform3(locations.LightPosition, lightPositionF);
+        GL.UniformMatrix4(locations.ViewMatrix, false, ref viewMatrixF);
+        GL.UniformMatrix4(locations.ProjMatrix, false, ref projMatrixF);
+        GL.UniformMatrix4(locations.WorldMatrix, false, ref worldMatrixF);
+
+        var bgcolor = BackgroundColor.ToV3f();
+        if (locations.BackgroundColor != -1)
+            GL.Uniform3(locations.BackgroundColor, ref bgcolor);
+    }
+
+    private void applyDepthCueing(int program)
+    {
+        if (program < 1 || !programLocations.TryGetValue(program, out var locations))
+            return;
+
+        GL.UseProgram(program);
+        GL.Uniform1(locations.DepthCueingEnabled, DepthCueing.Enabled ? 1 : 0);
+        GL.Uniform1(locations.DepthCueingNear, (float)DepthCueing.Znear);
+        GL.Uniform1(locations.DepthCueingFar, (float)DepthCueing.Zfar);
+    }
+
+    private void copyPpllTextDepthTexture()
+    {
+        if (textDepthTex == 0 || glControl == null)
+            return;
+
+        var width = Math.Min(glControl.ClientSize.Width, MaxWidth);
+        var height = Math.Min(glControl.ClientSize.Height, MaxHeight);
+        if (width <= 0 || height <= 0)
+            return;
+
+        GL.ActiveTexture(TextureUnit.Texture1);
+        GL.BindTexture(TextureTarget.Texture2D, textDepthTex);
+        GL.CopyTexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, 0, 0, width, height); // (260319Ch) Snapshot the mesh depth prepass so text visibility can be judged from the label anchor
+        GL.ActiveTexture(TextureUnit.Texture0);
+    }
+
+    private void bindPpllTextDepthTexture()
+    {
+        if (TextProgram < 1 || textDepthTex == 0 || !programLocations.TryGetValue(TextProgram, out var locations))
+            return;
+
+        GL.UseProgram(TextProgram);
+        if (locations.DepthTexture != -1)
+            GL.Uniform1(locations.DepthTexture, 1);
+        if (locations.UseAnchorVisibility != -1)
+            GL.Uniform1(locations.UseAnchorVisibility, 1);
+
+        GL.ActiveTexture(TextureUnit.Texture1);
+        GL.BindTexture(TextureTarget.Texture2D, textDepthTex);
+        GL.ActiveTexture(TextureUnit.Texture0);
+    }
+
+    private void initPostProcessTexture()
+    {
+        if (PostProcessProgram < 1 || postProcessColorTex != 0)
+            return;
+
+        GL.GenTextures(1, out postProcessColorTex);
+        ensurePostProcessTextureSize();
+    }
+
+    private void ensurePostProcessTextureSize()
+    {
+        if (postProcessColorTex == 0 || glControl == null)
+            return;
+
+        var width = Math.Min(glControl.ClientSize.Width, MaxWidth);
+        var height = Math.Min(glControl.ClientSize.Height, MaxHeight);
+        if (width <= 0 || height <= 0)
+            return;
+        if (postProcessTextureWidth == width && postProcessTextureHeight == height)
+            return;
+
+        // GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, MaxWidth, MaxHeight, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
+        // (260319Ch) 旧案: MaxWidth/MaxHeight 固定 texture に部分コピーしていたため、最終表示で左下に縮んで見えた
+        GL.BindTexture(TextureTarget.Texture2D, postProcessColorTex);
+        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, width, height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero); // (260319Ch) FXAA texture tracks the actual viewport size so UV=0..1 maps to the copied scene
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
+        GL.BindTexture(TextureTarget.Texture2D, 0);
+        postProcessTextureWidth = width;
+        postProcessTextureHeight = height;
+    }
+
+    private bool shouldApplyPostAntiAliasing()
+    {
+        // return PostAntiAliasing != PostAntiAliasingModes.None; // (260319Ch) 旧案: mode だけで unconditional に有効化する
+        return PostAntiAliasing == PostAntiAliasingModes.FXAA
+            && PostProcessProgram > 0
+            && postProcessColorTex != 0
+            && FragShader != FragShaders.ZSORT; // (260319Ch) ZSORT は window-system MSAA を維持し、PPLL/DDP のみ post AA を使う
+    }
+
+    private void copyPostProcessColorTexture()
+    {
+        if (!shouldApplyPostAntiAliasing() || glControl == null)
+            return;
+
+        ensurePostProcessTextureSize();
+        var width = Math.Min(glControl.ClientSize.Width, MaxWidth);
+        var height = Math.Min(glControl.ClientSize.Height, MaxHeight);
+        if (width <= 0 || height <= 0)
+            return;
+
+        GL.ReadBuffer(ReadBufferMode.Back);
+        GL.ActiveTexture(TextureUnit.Texture4);
+        GL.BindTexture(TextureTarget.Texture2D, postProcessColorTex);
+        GL.CopyTexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, 0, 0, width, height); // (260319Ch) Copy the finished scene once, then run FXAA on that texture
+        GL.ActiveTexture(TextureUnit.Texture0);
+    }
+
+    private void bindPostProcessSceneTexture()
+    {
+        if (PostProcessProgram < 1 || postProcessColorTex == 0 || !programLocations.TryGetValue(PostProcessProgram, out var locations))
+            return;
+
+        GL.UseProgram(PostProcessProgram);
+        if (locations.SceneTexture != -1)
+            GL.Uniform1(locations.SceneTexture, 4);
+        GL.ActiveTexture(TextureUnit.Texture4);
+        GL.BindTexture(TextureTarget.Texture2D, postProcessColorTex);
+        GL.ActiveTexture(TextureUnit.Texture0);
+    }
+
+    private void resolvePostAntiAliasing()
+    {
+        if (!shouldApplyPostAntiAliasing())
+            return;
+
+        copyPostProcessColorTexture();
+        GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+        GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+        GL.Disable(EnableCap.DepthTest);
+        GL.DepthMask(false);
+        GL.Disable(EnableCap.Blend);
+        GL.ColorMask(true, true, true, true);
+        GL.Clear(ClearBufferMask.ColorBufferBit);
+        applyFrameUniforms(PostProcessProgram);
+        bindPostProcessSceneTexture();
+        renderFullscreenQuad(PostProcessProgram);
+    }
+
+    private void bindDdpTextures(uint depthTexture = 0, uint frontTexture = 0, uint backTexture = 0)
+    {
+        if (Program < 1 || !programLocations.TryGetValue(Program, out var locations))
+            return;
+
+        GL.UseProgram(Program);
+
+        if (locations.DepthBlenderTexture != -1)
+        {
+            GL.Uniform1(locations.DepthBlenderTexture, 1);
+            GL.ActiveTexture(TextureUnit.Texture1);
+            GL.BindTexture(TextureTarget.Texture2D, depthTexture);
+        }
+
+        if (locations.FrontBlenderTexture != -1)
+        {
+            GL.Uniform1(locations.FrontBlenderTexture, 2);
+            GL.ActiveTexture(TextureUnit.Texture2);
+            GL.BindTexture(TextureTarget.Texture2D, frontTexture);
+        }
+
+        if (locations.BackBlenderTexture != -1)
+        {
+            GL.Uniform1(locations.BackBlenderTexture, 3);
+            GL.ActiveTexture(TextureUnit.Texture3);
+            GL.BindTexture(TextureTarget.Texture2D, backTexture);
+        }
+
+        GL.ActiveTexture(TextureUnit.Texture0);
+    }
+
+    private int getProgramForObject(GLObject obj)
+    {
+        // if (TextProgram > 0 && obj is TextObject && FragShader != FragShaders.PPLL)
+        // if (TextProgram > 0 && obj is TextObject)
+        if (TextProgram > 0 && obj is TextObject && FragShader != FragShaders.PPLL)
+            return TextProgram;
+        // (260319Ch) text は専用 program を維持するが、PPLL だけは main program の linked-list を読んで半透明遮蔽込みで再合成する
+        return Program;
+    }
+
     #endregion ロード関連
 
     #region Shader Storage の初期化
@@ -716,6 +1037,22 @@ unsafe public partial class GLControlAlpha : UserControl
         GL.TexStorage2D(TextureTarget2d.Texture2D, 1, SizedInternalFormat.R32ui, MaxWidth, MaxHeight);
         GL.BindImageTexture(0, headPtrTex, 0, false, 0, TextureAccess.ReadWrite, SizedInternalFormat.R32ui);
 
+        GL.GenTextures(1, out textDepthTex);
+        GL.BindTexture(TextureTarget.Texture2D, textDepthTex);
+        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.DepthComponent24, MaxWidth, MaxHeight, 0, PixelFormat.DepthComponent, PixelType.Float, IntPtr.Zero); // (260319Ch) Copy the PPLL mesh depth prepass so text can decide visibility from one anchor sample
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
+
+        // 260319Cl depth-only FBO: prepass renders directly into textDepthTex so no CopyTexSubImage2D is needed
+        GL.GenFramebuffers(1, out textDepthFbo);
+        GL.BindFramebuffer(FramebufferTarget.Framebuffer, textDepthFbo);
+        GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, TextureTarget.Texture2D, (int)textDepthTex, 0);
+        GL.DrawBuffer(DrawBufferMode.None); // 260319Cl depth-only FBO needs no color buffer
+        GL.ReadBuffer(ReadBufferMode.None);
+        GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0); // 260319Cl back to default framebuffer
+
         // The buffer of linked lists
         GL.BindBufferBase(BufferRangeTarget.ShaderStorageBuffer, 0, buffers[LinkedListBuffer]);
         GL.BufferData(BufferTarget.ShaderStorageBuffer, (int)(maxNodes * nodeSize), IntPtr.Zero, BufferUsageHint.DynamicDraw);
@@ -724,6 +1061,106 @@ unsafe public partial class GLControlAlpha : UserControl
         GL.GenBuffers(1, out clearBuf);
         GL.BindBuffer(BufferTarget.PixelUnpackBuffer, clearBuf);
         GL.BufferData(BufferTarget.PixelUnpackBuffer, headPtrClearBuf.Length * sizeof(uint), headPtrClearBuf, BufferUsageHint.StaticDraw);
+        // GL.BindBuffer(BufferTarget.PixelUnpackBuffer, clearBuf);
+        GL.BindBuffer(BufferTarget.PixelUnpackBuffer, 0); // (260319Ch) 初回 PPLL 切替前の text texture upload が PBO 経由に化けないよう unbind しておく
+        GL.BindTexture(TextureTarget.Texture2D, 0); // (260319Ch) PPLL の補助 texture bind を通常描画へ持ち越さない
+    }
+
+    private void initDualDepthPeeling()
+    {
+        glControl.MakeCurrent();
+
+        GL.GenFramebuffers(2, ddpFramebuffers);
+        GL.GenTextures(2, ddpDepthTextures);
+
+        for (int i = 0; i < ddpDepthTextures.Length; i++)
+        {
+            GL.BindTexture(TextureTarget.Texture2D, ddpDepthTextures[i]);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rg32f, MaxWidth, MaxHeight, 0, PixelFormat.Rg, PixelType.Float, IntPtr.Zero); // (260319Ch) DDP の min/max depth ping-pong
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
+        }
+
+        GL.GenTextures(1, out ddpFrontBlenderTexture);
+        GL.BindTexture(TextureTarget.Texture2D, ddpFrontBlenderTexture);
+        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba16f, MaxWidth, MaxHeight, 0, PixelFormat.Rgba, PixelType.Float, IntPtr.Zero); // (260319Ch) Front accumulation keeps premultiplied RGB + remaining transmittance
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
+
+        GL.GenTextures(1, out ddpBackBlenderTexture);
+        GL.BindTexture(TextureTarget.Texture2D, ddpBackBlenderTexture);
+        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba16f, MaxWidth, MaxHeight, 0, PixelFormat.Rgba, PixelType.Float, IntPtr.Zero); // (260319Ch) Back accumulation is blended over the background each peel pass
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
+
+        for (int i = 0; i < ddpFramebuffers.Length; i++)
+        {
+            GL.BindFramebuffer(FramebufferTarget.Framebuffer, ddpFramebuffers[i]);
+            GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, TextureTarget.Texture2D, (int)ddpDepthTextures[i], 0);
+            GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment1, TextureTarget.Texture2D, (int)ddpFrontBlenderTexture, 0);
+            GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment2, TextureTarget.Texture2D, (int)ddpBackBlenderTexture, 0);
+        }
+
+        GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+        GL.BindTexture(TextureTarget.Texture2D, 0);
+        GL.GenQueries(1, out ddpQuery); // (260319Ch) 空になったら peel loop を早めに打ち切る
+    }
+
+    private void clearDdpDepthAttachment(int framebufferIndex)
+    {
+        GL.BindFramebuffer(FramebufferTarget.Framebuffer, ddpFramebuffers[framebufferIndex]);
+        GL.DrawBuffer(DrawBufferMode.ColorAttachment0);
+        GL.ClearColor(-1f, -1f, 0f, 0f);
+        GL.Clear(ClearBufferMask.ColorBufferBit);
+        GL.DrawBuffers(ddpDepthDrawBuffers.Length, ddpDepthDrawBuffers);
+    }
+
+    private void clearDdpAccumulationAttachments()
+    {
+        GL.BindFramebuffer(FramebufferTarget.Framebuffer, ddpFramebuffers[0]);
+
+        GL.DrawBuffer(DrawBufferMode.ColorAttachment1);
+        GL.ClearColor(0f, 0f, 0f, 1f);
+        GL.Clear(ClearBufferMask.ColorBufferBit);
+
+        var bg = BackgroundColor;
+        GL.DrawBuffer(DrawBufferMode.ColorAttachment2);
+        GL.ClearColor(bg.R, bg.G, bg.B, 1f);
+        GL.Clear(ClearBufferMask.ColorBufferBit);
+
+        GL.DrawBuffers(ddpPeelDrawBuffers.Length, ddpPeelDrawBuffers);
+    }
+
+    private void enableDdpBlendState()
+    {
+        GL.Enable(EnableCap.Blend);
+        GL.BlendEquationSeparate(0, BlendEquationMode.Max, BlendEquationMode.Max);
+        GL.BlendFuncSeparate(0, BlendingFactorSrc.One, BlendingFactorDest.One, BlendingFactorSrc.One, BlendingFactorDest.One);
+
+        GL.BlendEquationSeparate(1, BlendEquationMode.FuncAdd, BlendEquationMode.FuncAdd);
+        GL.BlendFuncSeparate(1, BlendingFactorSrc.DstAlpha, BlendingFactorDest.One, BlendingFactorSrc.Zero, BlendingFactorDest.OneMinusSrcAlpha); // (260319Ch) Front accumulation uses under blending
+
+        GL.BlendEquationSeparate(2, BlendEquationMode.FuncAdd, BlendEquationMode.FuncAdd);
+        GL.BlendFuncSeparate(2, BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha, BlendingFactorSrc.Zero, BlendingFactorDest.One); // (260319Ch) Back accumulation uses regular over blending while alpha stays opaque
+    }
+
+    private void renderFullscreenQuad(int program)
+    {
+        if (program < 1 || quad == null || !programLocations.TryGetValue(program, out var locations))
+            return;
+
+        GL.UseProgram(program);
+        GL.UniformMatrix4(locations.ViewMatrix, false, ref m4id);
+        GL.UniformMatrix4(locations.ProjMatrix, false, ref m4id);
+        GL.UniformMatrix4(locations.WorldMatrix, false, ref m4id);
+        quad.Generate(program, CacheKey); // (260319Ch) fullscreen quad は念のため毎回 current context に揃え直す
+        quad.Render(null);
     }
     #endregion Shader Storage の初期化
     #endregion
@@ -735,7 +1172,7 @@ unsafe public partial class GLControlAlpha : UserControl
     {
         if (Program < 1) return;
         glControl.MakeCurrent();
-        obj.Generate(Program);
+        obj.Generate(getProgramForObject(obj), CacheKey); // (260319Ch) text は専用 program に転送しつつ context key を保持する
         glObjects.Add(obj);
     }
 
@@ -743,8 +1180,31 @@ unsafe public partial class GLControlAlpha : UserControl
     {
         if (Program < 1) return;
         glControl.MakeCurrent();
-        GLObject.Generate(Program, objs);
-        glObjects.AddRange(objs);
+        // GLObject.Generate(Program, objs);
+        // glObjects.AddRange(objs);
+        var bufferedObjects = objs as IList<GLObject> ?? objs.ToList(); // (260319Ch) 遅延列挙の二重走査を避ける
+        if (bufferedObjects.Count == 0)
+            return;
+        var meshObjects = new List<GLObject>(bufferedObjects.Count);
+        List<GLObject> textObjects = null;
+        foreach (var obj in bufferedObjects)
+        {
+            if (getProgramForObject(obj) == Program)
+            {
+                meshObjects.Add(obj);
+            }
+            else
+            {
+                textObjects ??= [];
+                textObjects.Add(obj);
+            }
+        }
+
+        if (meshObjects.Count > 0)
+            GLObject.Generate(Program, meshObjects, CacheKey);
+        if (textObjects != null && textObjects.Count > 0)
+            GLObject.Generate(TextProgram, textObjects, CacheKey); // (260319Ch) text は ZSORT 専用 fragment shader へまとめて転送
+        glObjects.AddRange(bufferedObjects);
     }
     public void Replace(int i, GLObject obj)
     {
@@ -753,7 +1213,7 @@ unsafe public partial class GLControlAlpha : UserControl
 
         if (i < glObjects.Count)
         {
-            obj.Generate(Program);
+            obj.Generate(getProgramForObject(obj), CacheKey);
             glObjects[i] = obj;
         }
     }
@@ -771,8 +1231,13 @@ unsafe public partial class GLControlAlpha : UserControl
         if (Program < 1 || glObjects.Count == 0) return;
         
         glControl.MakeCurrent();
-        foreach (var o in glObjectsP.Distinct(o => o.Obj.VAO).ToList())
-            o.Dispose();
+        var disposedVaos = new HashSet<int>(); // (260319Ch) PLINQ + Distinct の代わりに単純な重複除去で十分
+        foreach (var obj in CollectionsMarshal.AsSpan(glObjects))
+        {
+            if (disposedVaos.Add(obj.Obj.VAO))
+                obj.Dispose();
+        }
+        TextObject.ClearContextCache(CacheKey); // (260319Ch) transparency mode 切替時に text texture cache を必ず作り直す
         glObjects.Clear();
     }
 
@@ -790,6 +1255,8 @@ unsafe public partial class GLControlAlpha : UserControl
         glControl.MakeCurrent();
         Clip = clip;
         clip?.Generate(Program);
+        if (TextProgram > 0)
+            clip?.Generate(TextProgram, false); // (260319Ch) text も clip distance を使えるよう uniform location を登録する
     }
 
     #endregion
@@ -804,7 +1271,8 @@ unsafe public partial class GLControlAlpha : UserControl
     {
         if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
         {
-            Invoke(new Action(() => Render()), null);
+            // Invoke(new Action(() => Render()), null);
+            Invoke(renderAction); // (260319Ch) 毎回ラムダを作らず既存 delegate を再利用
             return;
         }
 
@@ -813,7 +1281,7 @@ unsafe public partial class GLControlAlpha : UserControl
 
         glControl.MakeCurrent();
 
-        if (glObjects == null || glObjects.Count == 0 || glObjectsP.All(obj => obj.Rendered == false))
+        if (glObjects.Count == 0 || !hasRenderableObject())
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.ClearColor(BackgroundColor);
@@ -822,19 +1290,21 @@ unsafe public partial class GLControlAlpha : UserControl
         }
 
         GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
-        GL.Uniform2(viewportSizeLocation, new Vector2(glControl.ClientSize.Width, glControl.ClientSize.Height));
+        applyFrameUniforms(Program);
+        if (TextProgram > 0)
+            applyFrameUniforms(TextProgram);
 
-        //マトリックスをセット
-        GL.Uniform3(eyePositionLocation, viewFromF);
-        GL.Uniform3(lightPositionLocation, lightPositionF);
-        GL.UniformMatrix4(viewMatrixLocation, false, ref viewMatrixF);
-        GL.UniformMatrix4(projMatrixLocation, false, ref projMatrixF);
-        GL.UniformMatrix4(worldMatrixLocation, false, ref worldMatrixF);
-
-        if (FragShader == FragShaders.OIT)//oitモードの時
+        if (FragShader == FragShaders.PPLL)//PPLLモードの時
         {
-            var bgcolor = BackgroundColor.ToV3f();
-            GL.Uniform3(GL.GetUniformLocation(Program, "BgColor"), ref bgcolor);
+            // GLObject.CurrentFragmentRenderPassIndex = passNormalIndex; // (260319Ch) PPLL text を linked-list に戻した案
+            // GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passNormalIndex);
+            // GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            // renderObjects(); // (260319Ch) 旧案: text も PPLL の linked-list に積んで z-order を保つ
+            // (260319Ch) 現案: text は linked-list 生成後に各 glyph pixel だけ scene を再合成して置き換える
+            GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+            GL.ColorMask(true, true, true, true);
+            GL.Disable(EnableCap.DepthTest);
+            GL.DepthMask(false);
 
             //clearBuffers();
             uint zero = 0;
@@ -845,48 +1315,245 @@ unsafe public partial class GLControlAlpha : UserControl
             GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, MaxWidth, MaxHeight, PixelFormat.RedInteger, PixelType.UnsignedInt, IntPtr.Zero);
 
             //pass1();
-            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passOIT1Index);
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            glObjects.ForEach(o => o.Render(Clip));// draw scene
+            GLObject.CurrentFragmentRenderPassIndex = passPpll1Index; // (260319Ch) scene draw ごとに passPPLL1 を再設定できるよう保持
+            GLObject.CurrentDepthTestEnabled = false; // (260319Ch) linked-list への書き込み本体は depth test 無効
+            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passPpll1Index);
+            GL.Disable(EnableCap.DepthTest);
+            GL.DepthMask(false);
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+            renderObjects(includeTextObjects: false, includeNonTextObjects: true); // (260319Ch) text は linked-list から外し、後段 overlay で描く
 
             //pass2();
-            GL.MemoryBarrier(MemoryBarrierFlags.ShaderStorageBarrierBit);
-            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passOIT2Index);
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            GL.UniformMatrix4(viewMatrixLocation, false, ref m4id);
-            GL.UniformMatrix4(projMatrixLocation, false, ref m4id);
-            GL.UniformMatrix4(worldMatrixLocation, false, ref m4id);
-            quad?.Generate(Program);//理由はよく分からんが、Generateしておかないと、うまく描画できないことが多い
+            // GL.MemoryBarrier(MemoryBarrierFlags.ShaderStorageBarrierBit);
+            GL.MemoryBarrier(
+                MemoryBarrierFlags.ShaderStorageBarrierBit |
+                MemoryBarrierFlags.ShaderImageAccessBarrierBit |
+                MemoryBarrierFlags.AtomicCounterBarrierBit); // (260319Ch) PPLL pass2 で SSBO / image / atomic counter の更新を確実に可視化する
+            GLObject.CurrentFragmentRenderPassIndex = passPpll2Index; // (260319Ch) fullscreen quad でも pass2 を維持する
+            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passPpll2Index);
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+            var locations = programLocations[Program];
+            GL.UniformMatrix4(locations.ViewMatrix, false, ref m4id);
+            GL.UniformMatrix4(locations.ProjMatrix, false, ref m4id);
+            GL.UniformMatrix4(locations.WorldMatrix, false, ref m4id);
+            quad?.Generate(Program, CacheKey);//理由はよく分からんが、Generateしておかないと、うまく描画できないことが多い
             quad?.Render(null);// Draw a screen filler
+
+            if (hasRenderableTextObject())
+            {
+                // applyFrameUniforms(TextProgram); // (260319Ch) 旧案: text は depth prepass 後に専用 shader で重ねる
+                applyFrameUniforms(Program); // (260319Ch) main PPLL program で glyph pixel ごとに linked-list を再合成する
+                GLObject.CurrentFragmentRenderPassIndex = passPpllTextIndex;
+                GLObject.CurrentDepthTestEnabled = false;
+                GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passPpllTextIndex);
+                GL.Disable(EnableCap.StencilTest);
+                GL.Disable(EnableCap.CullFace);
+                GL.Disable(EnableCap.DepthTest);
+                GL.DepthMask(false);
+                GL.ColorMask(true, true, true, true);
+                GL.BindBuffer(BufferTarget.PixelUnpackBuffer, 0);
+                GL.Disable(EnableCap.Blend); // (260319Ch) shader が最終色を直接再計算するので framebuffer blend は不要
+                renderObjects(includeTextObjects: true, includeNonTextObjects: false); // (260319Ch) 半透明前景を含む scene + label をそのピクセルだけ再構成する
+            }
+
+            GLObject.CurrentFragmentRenderPassIndex = -1; // (260319Ch) PPLL draw 完了後に共有 state を戻す
+        }
+        else if (FragShader == FragShaders.DDP)
+        {
+            var renderTextOverlay = hasRenderableTextObject();
+
+            if (renderTextOverlay)
+            {
+                GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+                GLObject.CurrentFragmentRenderPassIndex = passDdpInitIndex;
+                GLObject.CurrentDepthTestEnabled = true; // (260319Ch) DDP 後の text overlay 用に通常の depth prepass を別で持つ
+                GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passDdpInitIndex);
+                GL.DepthMask(true);
+                GL.Clear(ClearBufferMask.DepthBufferBit);
+                GL.ColorMask(false, false, false, false);
+                GL.Enable(EnableCap.DepthTest);
+                renderObjectsForPpllTextDepthPrepass(); // (260319Ch) DDP でも label 遮蔽は mesh depth prepass を使う
+                GL.ColorMask(true, true, true, true);
+            }
+
+            clearDdpAccumulationAttachments();
+
+            GL.BindFramebuffer(FramebufferTarget.Framebuffer, ddpFramebuffers[0]);
+            GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+            clearDdpDepthAttachment(0);
+            GL.DrawBuffers(ddpDepthDrawBuffers.Length, ddpDepthDrawBuffers);
+            GLObject.CurrentFragmentRenderPassIndex = passDdpInitIndex;
+            GLObject.CurrentDepthTestEnabled = false; // (260319Ch) DDP の depth interval 更新は custom MAX blend だけで行う
+            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passDdpInitIndex);
+            GL.Disable(EnableCap.DepthTest);
+            GL.DepthMask(false);
+            enableDdpBlendState(); // (260319Ch) 初期 pass も MAX blend で outer depth interval を作る
+            renderObjects(includeTextObjects: false, includeNonTextObjects: true);
+
+            int readIndex = 0;
+            int writeIndex = 1;
+            for (int peelPass = 0; peelPass < DualDepthPeelingPasses; peelPass++)
+            {
+                GL.BindFramebuffer(FramebufferTarget.Framebuffer, ddpFramebuffers[writeIndex]);
+                GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+                clearDdpDepthAttachment(writeIndex);
+                GL.DrawBuffers(ddpPeelDrawBuffers.Length, ddpPeelDrawBuffers);
+                bindDdpTextures(ddpDepthTextures[readIndex], ddpFrontBlenderTexture, ddpBackBlenderTexture);
+
+                GLObject.CurrentFragmentRenderPassIndex = passDdpPeelIndex;
+                GLObject.CurrentDepthTestEnabled = false;
+                GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passDdpPeelIndex);
+                GL.Disable(EnableCap.DepthTest);
+                GL.DepthMask(false);
+                enableDdpBlendState();
+
+                GL.BeginQuery(QueryTarget.AnySamplesPassed, ddpQuery);
+                renderObjects(includeTextObjects: false, includeNonTextObjects: true);
+                GL.EndQuery(QueryTarget.AnySamplesPassed);
+
+                GL.GetQueryObject(ddpQuery, GetQueryObjectParam.QueryResult, out int passHasSamples);
+                if (passHasSamples == 0)
+                    break; // (260319Ch) これ以上 peel する層が無いので終了
+
+                (readIndex, writeIndex) = (writeIndex, readIndex);
+            }
+
+            GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+            GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+            GL.ClearColor(BackgroundColor);
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+            bindDdpTextures(0, ddpFrontBlenderTexture, ddpBackBlenderTexture);
+            GLObject.CurrentFragmentRenderPassIndex = passDdpCompositeIndex;
+            GLObject.CurrentDepthTestEnabled = false;
+            GL.UniformSubroutines(ShaderType.FragmentShader, 1, ref passDdpCompositeIndex);
+            GL.Disable(EnableCap.DepthTest);
+            GL.DepthMask(false);
+            GL.Disable(EnableCap.Blend);
+            renderFullscreenQuad(Program);
+
+            if (renderTextOverlay)
+            {
+                applyFrameUniforms(TextProgram);
+                GL.Disable(EnableCap.StencilTest);
+                GL.Disable(EnableCap.CullFace);
+                GL.Enable(EnableCap.DepthTest);
+                GL.DepthFunc(DepthFunction.Less);
+                GL.DepthMask(false);
+                GL.ColorMask(true, true, true, true);
+                GL.Enable(EnableCap.Blend);
+                GL.BlendEquation(BlendEquationMode.FuncAdd);
+                GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+                GLObject.CurrentDepthTestEnabled = true;
+                renderObjects(includeTextObjects: true, includeNonTextObjects: false); // (260319Ch) DDP の text も prepass depth と比較して overlay する
+                GL.Disable(EnableCap.Blend);
+                GL.DepthFunc(DepthFunction.Less);
+            }
+
+            GLObject.CurrentFragmentRenderPassIndex = -1;
         }
         else//Zsortモードの時
         {
+            GLObject.CurrentFragmentRenderPassIndex = -1; // (260319Ch) ZSORT 側では PPLL pass index を使わない
+            GLObject.CurrentDepthTestEnabled = true; // (260319Ch) ZSORT は通常の depth test + alpha blend
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.ClearColor(BackgroundColor);
 
             //描画対称に透明なものが一つでもあるとき
-            if (glObjectsP.Any(o => o.Rendered && (o.Material.Color.A != 1 || o is TextObject)))
-            {
-                var rot = worldMatrix.Inverted();
-                glObjectsP.ForAll(o =>
-                {
-                    if (o.Rendered && (o.Material.Color.A != 1 || o is TextObject))
-                    {
-                        o.Z = (rot * o.CircumscribedSphereCenter).Z;
-                        if (o is TextObject t)
-                            o.Z += t.Popout;
-                    }
-                    else
-                        o.Z = double.NegativeInfinity;
-                });
-                glObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));
-            }
-            glObjects.ForEach(o => o.Render(Clip));// draw scene
+            if (requiresTransparencySorting())
+                updateTransparentOrder();
+            renderObjects();// draw scene
         }
+        // glControl.SwapBuffers(); // (260319Ch) 旧案: final image をそのまま back buffer から表示する
+        if (shouldApplyPostAntiAliasing())
+            resolvePostAntiAliasing(); // (260319Ch) PPLL/DDP は最終画像へ 1 回だけ FXAA を掛けてジャギーを和らげる
         glControl.SwapBuffers();
         GL.Finish();
         
         Paint?.Invoke(this, new PaintEventArgs(glControlGraphics, glControl.ClientRectangle));
+    }
+
+    private bool hasRenderableObject()
+    {
+        foreach (var obj in CollectionsMarshal.AsSpan(glObjects))
+        {
+            if (obj.Rendered)
+                return true;
+        }
+        return false;
+    }
+
+    private bool requiresTransparencySorting()
+    {
+        foreach (var obj in CollectionsMarshal.AsSpan(glObjects))
+        {
+            if (obj.Rendered && (obj.Material.Color.A != 1 || obj is TextObject))
+                return true;
+        }
+        return false;
+    }
+
+    private bool hasRenderableTextObject()
+    {
+        foreach (var obj in CollectionsMarshal.AsSpan(glObjects))
+        {
+            if (obj.Rendered && obj is TextObject)
+                return true;
+        }
+        return false;
+    }
+
+    private void renderObjectsForPpllTextDepthPrepass()
+    {
+        foreach (var obj in CollectionsMarshal.AsSpan(glObjects))
+        {
+            if (!obj.Rendered || obj is TextObject)
+                continue;
+
+            // if (obj.Material.Color.A >= 0.999f)
+            if (obj is Sphere || obj.Material.Color.A >= 0.999f) // (260319Ch) ラベル遮蔽用 prepass では前面の原子球を透明でも必ず深度へ入れる
+                obj.Render(Clip); // (260319Ch) 半透明 sphere が前面にあるときも背面ラベルを隠せるようにする
+        }
+    }
+
+    private void updateTransparentOrder()
+    {
+        var rot = worldMatrix.Inverted(); // (260319Ch) UI スレッド上の単純ループに戻し、PLINQ の分割/同期コストを避ける
+        foreach (var obj in CollectionsMarshal.AsSpan(glObjects))
+        {
+            if (obj.Rendered && (obj.Material.Color.A != 1 || obj is TextObject))
+            {
+                obj.Z = (rot * obj.CircumscribedSphereCenter).Z;
+                if (obj is TextObject t)
+                    obj.Z += t.Popout;
+            }
+            else
+            {
+                obj.Z = double.NegativeInfinity;
+            }
+        }
+        glObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));
+    }
+
+    private void renderObjects()
+    {
+        foreach (var obj in CollectionsMarshal.AsSpan(glObjects))
+            obj.Render(Clip);
+    }
+
+    private void renderObjects(bool includeTextObjects, bool includeNonTextObjects)
+    {
+        foreach (var obj in CollectionsMarshal.AsSpan(glObjects))
+        {
+            if (obj is TextObject)
+            {
+                if (includeTextObjects)
+                    obj.Render(Clip);
+            }
+            else if (includeNonTextObjects)
+            {
+                obj.Render(Clip);
+            }
+        }
     }
     #endregion
 
@@ -1017,9 +1684,9 @@ unsafe public partial class GLControlAlpha : UserControl
     private void setDepthCueing()
     {
         glControl.MakeCurrent();
-        GL.Uniform1(depthCueingEnabledLocation, DepthCueing.Enabled ? 1 : 0);
-        GL.Uniform1(depthCueingNearLocation, (float)DepthCueing.Znear);
-        GL.Uniform1(depthCueingFarLocation, (float)DepthCueing.Zfar);
+        applyDepthCueing(Program);
+        if (TextProgram > 0)
+            applyDepthCueing(TextProgram);
         GL.Finish();
         Render();
     }

@@ -71,7 +71,13 @@ subroutine(VertexPathType)
 void renderTextVertex()
 {
 	gPosition = vPosition;
-	gWorldPosition = WorldMatrix * ObjectMatrix * vec4(0.0, 0.0, 0.0, 1.0) + vec4(0.0, 0.0, vPosition.z, 0.0);
+	// gWorldPosition = WorldMatrix * ObjectMatrix * vec4(0.0, 0.0, 0.0, 1.0) + vec4(0.0, 0.0, vPosition.z, 0.0);
+	vec4 worldOrigin = WorldMatrix * ObjectMatrix * vec4(0.0, 0.0, 0.0, 1.0);
+	// vec3 eyeDirection = EyePosition - worldOrigin.xyz;
+	// float eyeDirectionLength = length(eyeDirection);
+	// vec3 popoutDirection = eyeDirectionLength > 1.0e-6 ? eyeDirection / eyeDirectionLength : vec3(0.0, 0.0, 1.0);
+	vec3 popoutDirection = normalize(transpose(mat3(ViewMatrix)) * vec3(0.0, 0.0, 1.0));
+	gWorldPosition = worldOrigin + vec4(popoutDirection * vPosition.z, 0.0); // (260319Ch) Keep text popout aligned with the active view direction in both orthographic and perspective modes
 
 	vec4 clipPosition = ProjMatrix * ViewMatrix * gWorldPosition;
 	gl_Position = clipPosition + vec4(gPosition.x / ViewportSize.x * 2.0, gPosition.y / ViewportSize.y * 2.0, 0.0, 0.0) * abs(clipPosition.w);

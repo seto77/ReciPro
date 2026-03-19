@@ -118,16 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="fragOIT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Shaders\fragOIT.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  <data name="fragDDP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Shaders\fragDDP.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="fragFXAA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Shaders\fragFXAA.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="fragPPLL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Shaders\fragPPLL.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="fragPPLLText" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Shaders\fragPPLL_text.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
   </data>
   <data name="fragZSORT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Shaders\fragZSORT.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+    <value>..\Shaders\fragZsort.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="fragZSORTText" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Shaders\fragZSORT_text.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
   </data>
   <data name="geom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Shaders\geom.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="vert" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Shaders\vert.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
+  </data>
+  <data name="vertText" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Shaders\vert_text.c;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;shift_jis</value>
   </data>
 </root>
