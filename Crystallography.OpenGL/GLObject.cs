@@ -59,7 +59,7 @@ public readonly struct Vertex
         Position = position;
         Normal = normal;
         Argb = argb;
-        Uv = new V2f(0, 0);
+        Uv = V2f.Zero; // (260320Ch) Zero 定数で初期値の意図を明確にする
         ObjType = 0;
     }
 
@@ -72,9 +72,9 @@ public readonly struct Vertex
     public Vertex(V3f position, int argb)
     {
         Position = position;
-        Normal = new V3f(0, 0, 0);
+        Normal = V3f.Zero; // (260320Ch) default normal を共有 Zero で表す
         Argb = argb;
-        Uv = new V2f(0, 0);
+        Uv = V2f.Zero;
         ObjType = 0;
     }
 
@@ -91,7 +91,7 @@ public readonly struct Vertex
     public Vertex(V3f position, V3f normal, V2f uv)
     {
         if (GLControlAlpha.DisableTextRendering)
-            position = new V3f(0, 0, 0);
+            position = V3f.Zero; // (260320Ch) 文字描画無効時も共有 Zero を使う
         Position = position;
         Normal = normal;
         Argb = 0;
@@ -99,7 +99,7 @@ public readonly struct Vertex
         ObjType = 2;
     }
 
-    public static readonly int Stride = Marshal.SizeOf(default(Vertex));
+    public static readonly int Stride = Marshal.SizeOf<Vertex>(); // (260320Ch) generic overload でダミー値生成を避ける
 }
 #endregion
 
@@ -145,7 +145,7 @@ public class Location
 /// OpenGLで描画するオブジェクトを表現する抽象クラス
 /// </summary>
 //[Guid("71D52F24-787B-4646-AC8E-2910CC38E267")]
-abstract public class GLObject
+public abstract class GLObject
 {
     #region static private な フィールド & プロパティ
 
@@ -266,11 +266,13 @@ abstract public class GLObject
     {
         //ビデオカード検索
         GraphicsInfo = [];
-        var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
-        foreach (var envVar in searcher.Get())
-            GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
+        using var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController")); // (260320Ch) WMI searcher を確実に破棄する
+        using var videoControllers = searcher.Get();
+        foreach (ManagementObject envVar in videoControllers)
+            GraphicsInfo.Add((Convert.ToString(envVar["name"]) ?? string.Empty, Convert.ToString(envVar["DriverVersion"]) ?? string.Empty)); // (260320Ch) null 安全な文字列化へ統一する
 
-        var flag = GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd"));
+        // var flag = GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd"));
+        var flag = GraphicsInfo.Any(static g => g.Product.Contains("nvidia", StringComparison.OrdinalIgnoreCase) || g.Product.Contains("amd", StringComparison.OrdinalIgnoreCase)); // (260320Ch) ToLower の一時文字列を作らず大小無視で判定する
         Cone.Default = (1, flag ? 24 : 16);
         Pipe.Default = (1, flag ? 24 : 16);
         Sphere.DefaultSlices = flag ? 4 : 3;
@@ -317,6 +319,7 @@ abstract public class GLObject
     public static void Generate(int program, IEnumerable<GLObject> objects, int contextKey = 0) // (260319Ch) location / default VAO cache を context ごとに分離
     {
         if (program < 0) return;
+        ArgumentNullException.ThrowIfNull(objects);
 
         //Locationを取得
         // if (!Location.TryGetValue(program, out var location))
@@ -349,8 +352,11 @@ abstract public class GLObject
                 (location.Uv, 2, VertexAttribPointerType.Float, false, Vertex.Stride, sizeOfInt *2 + 2 * V3f.SizeInBytes)//テクスチャ座標
         };
 
-        foreach (var o in objects.Where(o => o.Vertices != null && o.Vertices.Length != 0))
+        foreach (var o in objects)
         {
+            if (o.Vertices is not { Length: > 0 })
+                continue; // (260320Ch) LINQ の Where を介さずその場でスキップする
+
             o.Program = program;
             o.ContextKey = contextKey; // (260319Ch) Render 時にも context 単位の location cache を引けるよう保持する
 

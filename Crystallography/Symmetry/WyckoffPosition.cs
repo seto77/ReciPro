@@ -91,7 +91,9 @@ public readonly struct WyckoffPosition
 
         PositionOperations = operations;
 
-        if (PositionStr == null || PositionStr.Length == 0)
+        //if (PositionStr == null || PositionStr.Length == 0)
+        // (260320Ch) パターンマッチで null/空配列判定を明示する
+        if (PositionStr is not { Length: > 0 })
             Free = (true, true, true);
         else
         {
@@ -121,15 +123,17 @@ public readonly struct WyckoffPosition
             var (X, Y, Z) = PositionGenerator[i](x, y, z);
 
             //当たり判定
-            if (pos.Count == 0 || pos.All(p => !chk(Z, p.Z) || !chk(X, p.X) || !chk(Y, p.Y)))
-            {
-                var v = new Vector3D(X, Y, Z, false);
-                //0~1の範囲に収まるかどうかチェックし、修正
-                v.InnerLatticeThis();
-                if (PositionOperations != null)
-                    v.Operation = new SymmetryOperation(PositionOperations[i], SymmetrySeriesNumber);//PositionOperatorsを格納
-                pos.Add(v);
-            }
+            //if (pos.Count == 0 || pos.All(p => !chk(Z, p.Z) || !chk(X, p.X) || !chk(Y, p.Y)))
+            // (260320Ch) LINQ All をループへ置き換えてホットパスの割り当てを減らす
+            if (ContainsPosition(pos, X, Y, Z))
+                continue;
+
+            var v = new Vector3D(X, Y, Z, false);
+            //0~1の範囲に収まるかどうかチェックし、修正
+            v.InnerLatticeThis();
+            if (PositionOperations != null)
+                v.Operation = new SymmetryOperation(PositionOperations[i], SymmetrySeriesNumber);//PositionOperatorsを格納
+            pos.Add(v);
         }
         return [.. pos];
     }
@@ -140,12 +144,31 @@ public readonly struct WyckoffPosition
     /// <returns></returns>
     public readonly bool CheckPosition(double x, double y, double z)
     {
-        return PositionGenerator.Any(g =>
+        //return PositionGenerator.Any(g =>
+        //{
+        //    var (X, Y, Z) = g(x, y, z);
+        //    return chk(X, x) && chk(Y, y) && chk(Z, z);
+        //});
+        // (260320Ch) Any のラムダ割り当てを避ける
+        foreach (var g in PositionGenerator)
         {
             var (X, Y, Z) = g(x, y, z);
-            return chk(X, x) && chk(Y, y) && chk(Z, z);
-        });
+            if (chk(X, x) && chk(Y, y) && chk(Z, z))
+                return true;
+        }
+        return false;
     }
+
+    // (260320Ch) 重複位置の判定をループ化してクロージャ生成を避ける
+    private static bool ContainsPosition(List<Vector3D> positions, double x, double y, double z)
+    {
+        foreach (var p in positions)
+            if (chk(z, p.Z) && chk(x, p.X) && chk(y, p.Y))
+                return true;
+
+        return false;
+    }
+
     static bool chk(in double d1, in double d2)
     {
         var d = Math.Abs(d1 - d2);

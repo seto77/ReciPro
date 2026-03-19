@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Frozen;
 using System.Drawing;
 using System.Linq;
 using System.Xml.Serialization;
@@ -146,23 +147,33 @@ public partial class Bonds
     /// <returns></returns>
     public static Bonds[] GetVestaBonds(IEnumerable<string> elementNames)
     {
-        var list = elementNames.ToList().Distinct().ToArray();
-        var list2 = list.Select(l => l.Split(" ", true)[1]).ToList();
+        //var list = elementNames.ToList().Distinct().ToArray();
+        //var list2 = list.Select(l => l.Split(" ", true)[1]).ToList();
+        // (260320Ch) 元素記号の逆引きを先に作り、Contains / IndexOf の繰り返しを避ける
+        var list = elementNames.Distinct().ToArray();
+        var symbolToElement = new Dictionary<string, string>(list.Length, StringComparer.Ordinal);
+        foreach (var elementName in list)
+        {
+            var split = elementName.Split(" ", true);
+            if (split.Length > 1 && !symbolToElement.ContainsKey(split[1]))
+                symbolToElement.Add(split[1], elementName);
+        }
 
         var bonds = new List<Bonds>();
 
         foreach ((string e1, string e2, double min, double max) in bondCandidates)
-            if (list2.Contains(e1) && list2.Contains(e2))
+            if (symbolToElement.TryGetValue(e1, out var element1) && symbolToElement.TryGetValue(e2, out var element2))
             {
-                bonds.Add(new Bonds(true, list, list[list2.IndexOf(e1)], list[list2.IndexOf(e2)],
+                bonds.Add(new Bonds(true, list, element1, element2,
                     min / 10.0, max / 10.0, true, 0.01, 1, false, true, true, true, 0.7, true, 0));
             }
 
         //CationとAnionが両方含まれている場合は、同種原子の結合を除去
-        if (VestaAnions.Any(anion => list.Contains(anion)) && VestaCations.Any(cation => list.Contains(cation)))
+        var selectedElements = new HashSet<string>(list, StringComparer.Ordinal);
+        if (selectedElements.Overlaps(VestaAnionSet) && selectedElements.Overlaps(VestaCationSet))
         {
-            VestaAnions.ForEach(anion => bonds.Remove(bonds.Find(b => b.Element1 == anion && b.Element2 == anion)));
-            VestaCations.ForEach(cation => bonds.Remove(bonds.Find(b => b.Element1 == cation && b.Element2 == cation)));
+            // (260320Ch) 同種結合だけをまとめて除去して探索回数を減らす
+            bonds.RemoveAll(b => b.Element1 == b.Element2 && (VestaAnionSet.Contains(b.Element1) || VestaCationSet.Contains(b.Element1)));
         }
 
         return [.. bonds];
@@ -172,6 +183,8 @@ public partial class Bonds
     {
         var anionNum = new List<int> { 8, 9, 16, 17, 34, 35, 52, 53 };
         VestaAnions = [.. anionNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}")];
+        // (260320Ch) 同種結合除去の判定用に FrozenSet も保持する
+        VestaAnionSet = VestaAnions.ToFrozenSet(StringComparer.Ordinal);
 
         //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
         var cationNum = new List<int>();
@@ -181,10 +194,13 @@ public partial class Bonds
         cationNum.AddRange(ValueEnumerable.Range(37, 15).ToArray());
         cationNum.AddRange(ValueEnumerable.Range(55, 20).ToArray());
         VestaCations = [.. cationNum.Select(n => $"{n}: {AtomStatic.AtomicName(n)}")];
+        VestaCationSet = VestaCations.ToFrozenSet(StringComparer.Ordinal);
     }
 
     public static List<string> VestaCations { get; }
     public static List<string> VestaAnions { get; }
+    private static readonly FrozenSet<string> VestaCationSet;
+    private static readonly FrozenSet<string> VestaAnionSet;
 
     private static readonly (string e1, string e2, double min, double max)[] bondCandidates =
     [

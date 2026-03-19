@@ -2,6 +2,7 @@
 using MathNet.Numerics.Integration;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -7389,7 +7390,19 @@ new(4.86738014,0.319974401,4.58872425,
     /// <summary>
     /// 質量吸収係数を覚えておく
     /// </summary>
-    private static readonly Dictionary<double, double>[] massAbsorption = new Dictionary<double, double>[100];
+    //private static readonly Dictionary<double, double>[] massAbsorption = new Dictionary<double, double>[100];
+    // (260320Ch) 並列参照時の安全性を上げるため ConcurrentDictionary を利用する
+    private static readonly ConcurrentDictionary<double, double>[] massAbsorption = new ConcurrentDictionary<double, double>[100];
+
+    // (260320Ch) キャッシュの初期化を一箇所にまとめる
+    private static ConcurrentDictionary<double, double> GetMassAbsorptionCache(int z)
+    {
+        if (massAbsorption[z] != null)
+            return massAbsorption[z];
+
+        lock (lockObjForMassAbsorption)
+            return massAbsorption[z] ??= new ConcurrentDictionary<double, double>();
+    }
 
     /// <summary>
     /// エネルギー(keV)と吸収体元素を与えて、質量吸収係数を返す
@@ -7399,8 +7412,14 @@ new(4.86738014,0.319974401,4.58872425,
     /// <returns></returns>
     public static double MassAbsorption(double energy, int z)
     {
-        if (z < 1 || z > AtomStaticSub.MassAbsorptionCoefficient.Length || energy <= 0) return double.NaN;
-        if (massAbsorption[z] != null && massAbsorption[z].TryGetValue(energy, out double val))
+        //if (z < 1 || z > AtomStaticSub.MassAbsorptionCoefficient.Length || energy <= 0) return double.NaN;
+        //if (massAbsorption[z] != null && massAbsorption[z].TryGetValue(energy, out double val))
+        //    return val;
+        // (260320Ch) 境界チェックを修正し、ConcurrentDictionary 経由でキャッシュを参照する
+        if (z < 1 || z >= AtomStaticSub.MassAbsorptionCoefficient.Length || energy <= 0) return double.NaN;
+
+        var cache = massAbsorption[z];
+        if (cache != null && cache.TryGetValue(energy, out double val))
             return val;
 
         //どのセグメントに属するかを決める
@@ -7420,10 +7439,12 @@ new(4.86738014,0.319974401,4.58872425,
             for (int i = 0; i < coef.Length && position == int.MinValue; i++)
                 if (energy == coef[i].X)
                 {
-                    if (massAbsorption[z] == null)
-                        massAbsorption[z] = [];
-                    lock (lockObjForMassAbsorption)
-                        massAbsorption[z].Add(energy, coef[i].Y);
+                    //if (massAbsorption[z] == null)
+                    //    massAbsorption[z] = [];
+                    //lock (lockObjForMassAbsorption)
+                    //    massAbsorption[z].Add(energy, coef[i].Y);
+                    // (260320Ch) 重複計算や競合時も例外にしない
+                    _ = GetMassAbsorptionCache(z).TryAdd(energy, coef[i].Y);
                     return coef[i].Y;
                 }
                 else if (i < coef.Length - 1 && energy > coef[i].X && energy < coef[i + 1].X)
@@ -7466,12 +7487,16 @@ new(4.86738014,0.319974401,4.58872425,
         for (int j = 0; j < order + 1; j++)
             value += a[j, 0] * Math.Pow(c1 * energy + c2, j);
 
-        if (massAbsorption[z] == null)
-            massAbsorption[z] = [];
-
-        if (massAbsorption[z].Count < 1E4)
-            lock (lockObjForMassAbsorption)
-                massAbsorption[z].Add(energy, value);
+        //if (massAbsorption[z] == null)
+        //    massAbsorption[z] = [];
+        //
+        //if (massAbsorption[z].Count < 1E4)
+        //    lock (lockObjForMassAbsorption)
+        //        massAbsorption[z].Add(energy, value);
+        // (260320Ch) キャッシュ件数を抑えつつ、重複追加は TryAdd で吸収する
+        cache = GetMassAbsorptionCache(z);
+        if (cache.Count < 1E4)
+            _ = cache.TryAdd(energy, value);
 
         return value;
     }

@@ -50,8 +50,6 @@ public readonly struct Symmetry
     #region コンストラクタ
     public Symmetry(in int seriesNumber)
     {
-       
-
         if (seriesNumber >= 0 && seriesNumber < SymmetryStatic.TotalSpaceGroupNumber)
         {
             var str = SymmetryStatic.StrArray[seriesNumber];
@@ -107,11 +105,31 @@ public readonly struct Symmetry
 
     public readonly bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootPlane(index, this,out var indices);
 
+    //public readonly string[] CheckExtinctionRule((int h, int k, int l) index)
+    //    => [.. CheckExtinctionFunc.Select(check => check(index.h, index.k, index.l)).Where(str => str != null)];
+    // (260320Ch) LINQ 経由の一時割り当てを避けつつ、未初期化 Symmetry では空配列を返す
     public readonly string[] CheckExtinctionRule((int h, int k, int l) index)
-        => [.. CheckExtinctionFunc.Select(check => check(index.h, index.k, index.l)).Where(str => str != null)];
+        => CollectExtinctionRules(index.h, index.k, index.l);
 
+    //public readonly string[] CheckExtinctionRule(int h, int k, int l)
+    //    => [.. CheckExtinctionFunc.Select(check => check(h, k, l)).Where(str => str != null)];
     public readonly string[] CheckExtinctionRule(int h, int k, int l)
-        => [.. CheckExtinctionFunc.Select(check => check(h, k, l)).Where(str => str != null)];
+        => CollectExtinctionRules(h, k, l);
+
+    private readonly string[] CollectExtinctionRules(int h, int k, int l)
+    {
+        if (CheckExtinctionFunc is not { Count: > 0 })
+            return [];
+
+        var result = new List<string>(CheckExtinctionFunc.Count);
+        foreach (var check in CheckExtinctionFunc)
+        {
+            var rule = check(h, k, l);
+            if (rule != null)
+                result.Add(rule);
+        }
+        return [.. result];
+    }
     #endregion
 
     #region 静的メソッド

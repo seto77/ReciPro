@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using M3d = OpenTK.Mathematics.Matrix3d;
 using V2d = OpenTK.Mathematics.Vector2d;
 using V3d = OpenTK.Mathematics.Vector3d;
-using ZLinq;
-using Windows.UI.ViewManagement.Core;
+
 namespace Crystallography.OpenGL;
 
 public static class GLGeometry
@@ -20,16 +18,18 @@ public static class GLGeometry
     /// <returns></returns>
     public static (List<uint> Indices, V3d Center, V3d Norm) PolygonInfo(IEnumerable<V3d> _points, in V3d origin)
     {
-        if (_points.Count() == 3)
-        {
-            var pts = _points.ToArray();
-            return (new List<uint>([0, 1, 2, 0]), (pts[0] + pts[1] + pts[2]) / 3, V3d.Cross(pts[1] - pts[0], pts[2] - pts[1]));
-        }
+        ArgumentNullException.ThrowIfNull(_points);
 
-        var points = _points.AsValueEnumerable();
+        // var points = _points.AsValueEnumerable();
+        var points = _points as V3d[] ?? [.. _points]; // (260320Ch) IEnumerable の多重列挙を避けるため最初に一度だけ配列化する
+        if (points.Length == 3)
+            return (new List<uint>([0, 1, 2, 0]), (points[0] + points[1] + points[2]) / 3, V3d.Cross(points[1] - points[0], points[2] - points[1]));
 
-       
-        var center = TkEx.Average(points);
+        var center = V3d.Zero;
+        foreach (var point in points)
+            center += point;
+        center /= points.Length; // (260320Ch) 追加列挙を避けながら中心座標を計算する
+
         //var prm = Geometriy.GetPlaneEquationFromPoints(points.Select(p => p.ToVector3DBase()));
         var (A, B, C, _) = Geometry.GetPlaneEquationFromPoints(points);
         var norm = new V3d(A, B, C);
@@ -38,33 +38,59 @@ public static class GLGeometry
 
         //座標変換 (XY平面に投影)
         var rot = CreateRotationToZ(norm);
-        var vXY = points.Select(p => p - center).Select(p => new V2d(rot.M11 * p.X + rot.M12 * p.Y + rot.M13 * p.Z, rot.M21 * p.X + rot.M22 * p.Y + rot.M23 * p.Z));
-        //原点から最も距離の遠い点を選んで、iに格納
-        var lengthSquaredArray = vXY.Select(p => p.LengthSquared);//.ToList();
-        var maxLength = lengthSquaredArray.Max();
-        var i = lengthSquaredArray.ToList().FindIndex(len => len == maxLength);
+        var projectedPoints = new V2d[points.Length];
+        var maxLengthSquared = double.NegativeInfinity;
+        var i = 0;
+        for (var index = 0; index < points.Length; index++)
+        {
+            var point = points[index] - center;
+            var projectedPoint = new V2d(
+                rot.M11 * point.X + rot.M12 * point.Y + rot.M13 * point.Z,
+                rot.M21 * point.X + rot.M22 * point.Y + rot.M23 * point.Z);
+            projectedPoints[index] = projectedPoint;
 
-        using var vXY_pool = vXY.ToArrayPool();
-        var vXY_Span = vXY_pool.Span;
+            var lengthSquared = projectedPoint.LengthSquared;
+            if (lengthSquared > maxLengthSquared)
+            {
+                maxLengthSquared = lengthSquared;
+                i = index;
+            }
+        }
 
         //もう一つ点を選び、直線の方程式を産出
-        var iList = new List<uint>([(uint)i]);
+        var iList = new List<uint>(points.Length + 1) { (uint)i };
         do
         {
-            for (int j = 0; j < vXY_Span.Length; j++)
+            var nextIndex = -1;
+            for (var j = 0; j < projectedPoints.Length; j++)
                 if (j != i)
                 {
-                    var V = new V2d(vXY_Span[j].Y - vXY_Span[i].Y, vXY_Span[i].X - vXY_Span[j].X);
-                    var c = vXY_Span[j].X * vXY_Span[i].Y - vXY_Span[i].X * vXY_Span[j].Y;
+                    var v = new V2d(projectedPoints[j].Y - projectedPoints[i].Y, projectedPoints[i].X - projectedPoints[j].X);
+                    var c = projectedPoints[j].X * projectedPoints[i].Y - projectedPoints[i].X * projectedPoints[j].Y;
 
-                    if (vXY.All(p => V2d.Dot(p, V) + c <= Th))
+                    var isHullEdge = true;
+                    foreach (var point in projectedPoints)
                     {
-                        iList.Add((uint)j);
-                        i = j;
+                        if (V2d.Dot(point, v) + c > Th)
+                        {
+                            isHullEdge = false;
+                            break;
+                        }
+                    }
+
+                    if (isHullEdge)
+                    {
+                        nextIndex = j;
                         break;
                     }
                 }
-        } while (i != iList[0] && iList.Count <= points.Count());
+
+            if (nextIndex < 0)
+                break; // (260320Ch) 退化ケースで候補が見つからないときに無限ループへ入らないよう打ち切る
+
+            iList.Add((uint)nextIndex);
+            i = nextIndex;
+        } while (i != iList[0] && iList.Count <= points.Length);
 
         return (iList, center, norm);
     }
@@ -103,6 +129,4 @@ public static class GLGeometry
 
     public static readonly V3d Z = new(0, 0, 1);
     public const double Th = 0.0000001;
-
-
 }

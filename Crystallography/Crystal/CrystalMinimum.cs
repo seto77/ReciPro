@@ -63,11 +63,13 @@ public partial class Crystal2
     public string[] CellTexts
     {
         get => cellBytes == null ? null : Array.ConvertAll(cellBytes, ToString);
-        set
-        {
-            if (value != null)
-                cellBytes = Array.ConvertAll(value, ToBytes);
-        }
+        //set
+        //{
+        //    if (value != null)
+        //        cellBytes = Array.ConvertAll(value, ToBytes);
+        //}
+        // (260320Ch) null 指定時も内部状態を同期して古い値を残さない
+        set => cellBytes = value == null ? null : Array.ConvertAll(value, ToBytes);
     }
 
 
@@ -143,38 +145,41 @@ public partial class Crystal2
 
         var cell = c.Cell_nm_radian;
 
-        var atom = new List<Atoms>();
-        foreach (Atoms2 a in c.atoms)
-        {
-            var pos = a.PositionTexts.Select(x => Decompose(x, c.sym)).ToArray();
-            var occ = Decompose(a.OccText);
-            var iso = Decompose(a.IsoText);
-            //Atoms2の単位はA^2なので、nm^2に変換
-            iso = (iso.Value / 100, double.IsNaN(iso.Error) ? iso.Error : iso.Error / 100);
-
-            (double Value, double Error)[] aniso = a.AnisoTexts != null ? a.AnisoTexts.Select(x => Decompose(x)).ToArray() :
-                 [(0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN)];
-
-            var anisoValues = a.IsU ? aniso.Select(an => an.Value / 100).ToArray() : aniso.Select(an => an.Value).ToArray();
-            var anisoErrors = a.IsU ? aniso.Select(an => an.Error / 100).ToArray() : aniso.Select(an => an.Error).ToArray();
-            var _atom = new Atoms(
-                    a.Label, a.AtomNo, a.SubXray, a.SubElectron, null, c.sym,
-                    new Vector3DBase(pos[0].Value, pos[1].Value, pos[2].Value),
-                    new Vector3DBase(pos[0].Error, pos[1].Error, pos[2].Error),
-                    occ.Value, occ.Error,
-                    new DiffuseScatteringFactor(a.IsU ? DiffuseScatteringFactor.Type.U : DiffuseScatteringFactor.Type.B, a.IsIso,
-                        iso.Value, iso.Error, anisoValues, anisoErrors, cell.Values)
-                    );
-            atom.Add(_atom);
-            atom[^1].ResetVesta();
-
-            //AtomNoが255(重水素D)だった時の処理
-            if (atom[^1].AtomicNumber == 255)
+        //var atom = new List<Atoms>();
+        // (260320Ch) 要素数が分かっているので事前確保して再割り当てを減らす
+        var atom = new List<Atoms>(c.atoms?.Count ?? 0);
+        if (c.atoms != null)
+            foreach (Atoms2 a in c.atoms)
             {
-                atom[^1].AtomicNumber = 1;
-                atom[^1].Isotope = [0.0, 100.0, 0.0];
+                var pos = a.PositionTexts.Select(x => Decompose(x, c.sym)).ToArray();
+                var occ = Decompose(a.OccText);
+                var iso = Decompose(a.IsoText);
+                //Atoms2の単位はA^2なので、nm^2に変換
+                iso = (iso.Value / 100, double.IsNaN(iso.Error) ? iso.Error : iso.Error / 100);
+
+                (double Value, double Error)[] aniso = a.AnisoTexts != null ? a.AnisoTexts.Select(x => Decompose(x)).ToArray() :
+                     [(0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN)];
+
+                var anisoValues = a.IsU ? aniso.Select(an => an.Value / 100).ToArray() : aniso.Select(an => an.Value).ToArray();
+                var anisoErrors = a.IsU ? aniso.Select(an => an.Error / 100).ToArray() : aniso.Select(an => an.Error).ToArray();
+                var _atom = new Atoms(
+                        a.Label, a.AtomNo, a.SubXray, a.SubElectron, null, c.sym,
+                        new Vector3DBase(pos[0].Value, pos[1].Value, pos[2].Value),
+                        new Vector3DBase(pos[0].Error, pos[1].Error, pos[2].Error),
+                        occ.Value, occ.Error,
+                        new DiffuseScatteringFactor(a.IsU ? DiffuseScatteringFactor.Type.U : DiffuseScatteringFactor.Type.B, a.IsIso,
+                            iso.Value, iso.Error, anisoValues, anisoErrors, cell.Values)
+                        );
+                atom.Add(_atom);
+                atom[^1].ResetVesta();
+
+                //AtomNoが255(重水素D)だった時の処理
+                if (atom[^1].AtomicNumber == 255)
+                {
+                    atom[^1].AtomicNumber = 1;
+                    atom[^1].Isotope = [0.0, 100.0, 0.0];
+                }
             }
-        }
 
         var bonds = Bonds.GetVestaBonds(atom.Select(a => a.AtomicNumber));
 

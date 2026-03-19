@@ -1342,8 +1342,7 @@
             comboBoxTransparency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxTransparency.DropDownWidth = 500;
             comboBoxTransparency.FormattingEnabled = true;
-            // comboBoxTransparency.Items.AddRange(new object[] { resources.GetString("comboBoxTransparency.Items"), resources.GetString("comboBoxTransparency.Items1") });
-            comboBoxTransparency.Items.AddRange(new object[] { resources.GetString("comboBoxTransparency.Items"), resources.GetString("comboBoxTransparency.Items1"), resources.GetString("comboBoxTransparency.Items2") }); // (260319Ch) ZSORT / DDP / PPLL の 3 モード表示
+            comboBoxTransparency.Items.AddRange(new object[] { resources.GetString("comboBoxTransparency.Items"), resources.GetString("comboBoxTransparency.Items1"), resources.GetString("comboBoxTransparency.Items2") });
             comboBoxTransparency.Name = "comboBoxTransparency";
             toolTip.SetToolTip(comboBoxTransparency, resources.GetString("comboBoxTransparency.ToolTip"));
             comboBoxTransparency.SelectedIndexChanged += comboBoxTransparency_SelectedIndexChanged;

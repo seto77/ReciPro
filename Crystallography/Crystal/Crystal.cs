@@ -33,7 +33,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return crystal;
     }
 
-    public int CompareTo(Crystal o) => Residual.CompareTo(o.Residual);
+    //public int CompareTo(Crystal o) => Residual.CompareTo(o.Residual);
+    // (260320Ch) null 比較でも安全に扱えるようにする
+    public int CompareTo(Crystal o) => o is null ? 1 : Residual.CompareTo(o.Residual);
 
     #region Equalsオーバーライド
     public bool Equals(Crystal o)
@@ -83,7 +85,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public static bool operator >=(Crystal left, Crystal right) => left is null ? right is null : left.CompareTo(right) >= 0;
     #endregion
 
-    public override string ToString() => Name.ToString();
+    //public override string ToString() => Name.ToString();
+    // (260320Ch) Name 未設定時の NullReferenceException を防ぐ
+    public override string ToString() => Name ?? string.Empty;
 
     #endregion
 
@@ -886,7 +890,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <returns></returns>
     public static bool CheckIrreducible(int a, int b, int c)
     {
-        for (int n = 2; n <= new[] { Math.Abs(a), Math.Abs(b), Math.Abs(c) }.Max(); n++)
+        //for (int n = 2; n <= new[] { Math.Abs(a), Math.Abs(b), Math.Abs(c) }.Max(); n++)
+        // (260320Ch) 一時配列を作らずに最大値を求める
+        var max = Math.Max(Math.Abs(a), Math.Max(Math.Abs(b), Math.Abs(c)));
+        for (int n = 2; n <= max; n++)
             if (a % n == 0 && b % n == 0 && c % n == 0)
                 return false;
         return true;

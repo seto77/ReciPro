@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
-using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
 using Col4 = OpenTK.Mathematics.Color4;
 using Mat4d = OpenTK.Mathematics.Matrix4d;
@@ -21,7 +20,7 @@ using OpenTK.Mathematics;
 
 namespace Crystallography.OpenGL;
 
-unsafe public partial class GLControlAlpha : UserControl
+public unsafe partial class GLControlAlpha : UserControl
 {
     private sealed class ProgramLocations
     {
@@ -242,6 +241,13 @@ unsafe public partial class GLControlAlpha : UserControl
     public int DualDepthPeelingPasses { get; set; } = 12; // (260319Ch) 品質と速度の中間点として 24 層相当を既定値にする
 
     /// <summary>
+    /// DDP peel loop の終了判定に occlusion query を使うか。
+    /// 既定では GPU/CPU stall を避けるため無効。
+    /// </summary>
+    [Category("Rendering properties")]
+    public bool DualDepthPeelingUseOcclusionQuery { get; set; } = false; // (260319Ch) 速度優先の既定値では query の同期待ちを避ける
+
+    /// <summary>
     /// OIT 系パスの最終画像に対する後段 AA.
     /// </summary>
     [Category("Rendering properties")]
@@ -363,7 +369,8 @@ unsafe public partial class GLControlAlpha : UserControl
             worldMatrix = value;
             worldMatrixF = WorldMatrix.ToM4f();
             Render();
-            WorldMatrixChanged?.Invoke(this, new EventArgs());
+            // WorldMatrixChanged?.Invoke(this, new EventArgs());
+            WorldMatrixChanged?.Invoke(this, EventArgs.Empty); // (260320Ch) 不要な EventArgs 生成を避ける
         }
     }
 
@@ -451,7 +458,8 @@ unsafe public partial class GLControlAlpha : UserControl
     /// 投影面のアスペクト比
     /// </summary>
     [Category("Geometry")]
-    private double ProjAspect => glControl == null ? 0 : (double)glControl.ClientSize.Height / glControl.ClientSize.Width;
+    // private double ProjAspect => glControl == null ? 0 : (double)glControl.ClientSize.Height / glControl.ClientSize.Width;
+    private double ProjAspect => glControl is null || glControl.ClientSize.Width <= 0 || glControl.ClientSize.Height <= 0 ? 0d : (double)glControl.ClientSize.Height / glControl.ClientSize.Width; // (260320Ch) 0 除算や退化アスペクト比を避ける
 
     /// <summary>
     /// プロジェクション(投影)マトリックス
@@ -464,6 +472,8 @@ unsafe public partial class GLControlAlpha : UserControl
     private Mat4f projMatrixF = Mat4f.Identity;
     private void setProjMatrix()
     {
+        if (glControl is null || glControl.ClientSize.Width <= 0 || glControl.ClientSize.Height <= 0)
+            return; // (260320Ch) 初期化途中や最小化直後のゼロサイズでは投影行列を更新しない
 
         double x = projCenter.X, y = projCenter.Y, w = ProjWidth / 2, h = ProjWidth * ProjAspect / 2;
         double left = x - w, right = x + w, bottom = y - h, top = y + h;
@@ -495,16 +505,16 @@ unsafe public partial class GLControlAlpha : UserControl
                 .Take(3)
                 .ToArray();
 
-            if (ver == null || ver.Length == 0)
-                return null;
-
-            if (ver.Length == 1)
-                return [ver[0], "0", "0"];
-            if (ver.Length == 2)
-                return [ver[0], ver[1], "0"];
-            return ver;
+            return ver switch
+            {
+                null or { Length: 0 } => null,
+                { Length: 1 } => [ver[0], "0", "0"],
+                { Length: 2 } => [ver[0], ver[1], "0"],
+                _ => ver,
+            }; // (260320Ch) 長さごとの補完を switch 式で簡潔にまとめる
         }
-        catch { throw new Exception(); }
+        // catch { throw new Exception(); }
+        catch { return null; } // (260320Ch) probe 失敗は呼び出し元のフォールバックに委ねる
     }
 
     private static GLControlSettings createGlControlSettings(FragShaders shaderMode, bool forVersionProbe = false)
@@ -569,9 +579,10 @@ unsafe public partial class GLControlAlpha : UserControl
     static GLControlAlpha()
     {
         //ビデオカード検索
-        var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController"));
-        foreach (var envVar in searcher.Get())
-            GraphicsInfo.Add((envVar["name"].ToString(), envVar["DriverVersion"].ToString()));
+        using var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController")); // (260320Ch) WMI リソースを確実に解放する
+        using var videoControllers = searcher.Get();
+        foreach (ManagementObject envVar in videoControllers)
+            GraphicsInfo.Add((Convert.ToString(envVar["name"]) ?? string.Empty, Convert.ToString(envVar["DriverVersion"]) ?? string.Empty)); // (260320Ch) null 安全に GPU 情報を記録する
 
         //if(GraphicsInfo.Count>1 && GraphicsInfo[0].Product.Contains("Radeon"))
         //    DisableTextRendering = true;
@@ -672,8 +683,6 @@ unsafe public partial class GLControlAlpha : UserControl
         GL.UseProgram(Program);
 
         GL.Disable(EnableCap.CullFace);//CullFaceは常に無効
-        //GL.Enable(EnableCap.Texture2D);
-        // (260319Ch) fixed-function の Texture2D enable は core profile では不要かつ無効なので外す。
 
         if (FragShader == FragShaders.PPLL)
         {
@@ -1057,7 +1066,9 @@ unsafe public partial class GLControlAlpha : UserControl
         GL.BindBufferBase(BufferRangeTarget.ShaderStorageBuffer, 0, buffers[LinkedListBuffer]);
         GL.BufferData(BufferTarget.ShaderStorageBuffer, (int)(maxNodes * nodeSize), IntPtr.Zero, BufferUsageHint.DynamicDraw);
         GL.Uniform1(GL.GetUniformLocation(Program, "MaxNodes"), maxNodes);
-        var headPtrClearBuf = Enumerable.Repeat(0xffffffff, MaxWidth * MaxHeight).ToArray();
+        // var headPtrClearBuf = Enumerable.Repeat(0xffffffff, MaxWidth * MaxHeight).ToArray();
+        var headPtrClearBuf = GC.AllocateUninitializedArray<uint>(MaxWidth * MaxHeight); // (260320Ch) uint[] を直接確保して余計な変換を避ける
+        Array.Fill(headPtrClearBuf, uint.MaxValue); // (260320Ch) head pointer のクリア値 0xFFFFFFFF をまとめて初期化する
         GL.GenBuffers(1, out clearBuf);
         GL.BindBuffer(BufferTarget.PixelUnpackBuffer, clearBuf);
         GL.BufferData(BufferTarget.PixelUnpackBuffer, headPtrClearBuf.Length * sizeof(uint), headPtrClearBuf, BufferUsageHint.StaticDraw);
@@ -1109,7 +1120,7 @@ unsafe public partial class GLControlAlpha : UserControl
 
         GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
         GL.BindTexture(TextureTarget.Texture2D, 0);
-        GL.GenQueries(1, out ddpQuery); // (260319Ch) 空になったら peel loop を早めに打ち切る
+        GL.GenQueries(1, out ddpQuery); // (260319Ch) 既定では使わないが、開発用に occlusion query path は残しておく
     }
 
     private void clearDdpDepthAttachment(int framebufferIndex)
@@ -1312,7 +1323,11 @@ unsafe public partial class GLControlAlpha : UserControl
             GL.BufferSubData(BufferTarget.AtomicCounterBuffer, (IntPtr)0, sizeof(uint), (IntPtr)(&zero));
             GL.BindBuffer(BufferTarget.PixelUnpackBuffer, clearBuf);
             GL.BindTexture(TextureTarget.Texture2D, headPtrTex);
-            GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, MaxWidth, MaxHeight, PixelFormat.RedInteger, PixelType.UnsignedInt, IntPtr.Zero);
+            var headPointerWidth = Math.Min(glControl.ClientSize.Width, MaxWidth);
+            var headPointerHeight = Math.Min(glControl.ClientSize.Height, MaxHeight);
+            // GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, MaxWidth, MaxHeight, PixelFormat.RedInteger, PixelType.UnsignedInt, IntPtr.Zero);
+            if (headPointerWidth > 0 && headPointerHeight > 0)
+                GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, headPointerWidth, headPointerHeight, PixelFormat.RedInteger, PixelType.UnsignedInt, IntPtr.Zero); // (260319Ch) Clear only the active viewport region of the head-pointer texture
 
             //pass1();
             GLObject.CurrentFragmentRenderPassIndex = passPpll1Index; // (260319Ch) scene draw ごとに passPPLL1 を再設定できるよう保持
@@ -1407,13 +1422,21 @@ unsafe public partial class GLControlAlpha : UserControl
                 GL.DepthMask(false);
                 enableDdpBlendState();
 
-                GL.BeginQuery(QueryTarget.AnySamplesPassed, ddpQuery);
+                // GL.BeginQuery(QueryTarget.AnySamplesPassed, ddpQuery);
+                if (DualDepthPeelingUseOcclusionQuery)
+                    GL.BeginQuery(QueryTarget.AnySamplesPassed, ddpQuery); // (260319Ch) 開発用: 空 pass で早期終了したい場合だけ query を使う
                 renderObjects(includeTextObjects: false, includeNonTextObjects: true);
-                GL.EndQuery(QueryTarget.AnySamplesPassed);
+                // GL.EndQuery(QueryTarget.AnySamplesPassed);
+                if (DualDepthPeelingUseOcclusionQuery)
+                    GL.EndQuery(QueryTarget.AnySamplesPassed);
 
-                GL.GetQueryObject(ddpQuery, GetQueryObjectParam.QueryResult, out int passHasSamples);
-                if (passHasSamples == 0)
-                    break; // (260319Ch) これ以上 peel する層が無いので終了
+                // GL.GetQueryObject(ddpQuery, GetQueryObjectParam.QueryResult, out int passHasSamples);
+                if (DualDepthPeelingUseOcclusionQuery)
+                {
+                    GL.GetQueryObject(ddpQuery, GetQueryObjectParam.QueryResult, out int passHasSamples);
+                    if (passHasSamples == 0)
+                        break; // (260319Ch) これ以上 peel する層が無いので終了
+                }
 
                 (readIndex, writeIndex) = (writeIndex, readIndex);
             }
@@ -1467,7 +1490,8 @@ unsafe public partial class GLControlAlpha : UserControl
         if (shouldApplyPostAntiAliasing())
             resolvePostAntiAliasing(); // (260319Ch) PPLL/DDP は最終画像へ 1 回だけ FXAA を掛けてジャギーを和らげる
         glControl.SwapBuffers();
-        GL.Finish();
+        // GL.Finish();
+        // (260319Ch) 毎フレームの強制 GPU 完了待ちは CPU/GPU を直列化してしまうので通常描画では行わない
         
         Paint?.Invoke(this, new PaintEventArgs(glControlGraphics, glControl.ClientRectangle));
     }
@@ -1687,7 +1711,8 @@ unsafe public partial class GLControlAlpha : UserControl
         applyDepthCueing(Program);
         if (TextProgram > 0)
             applyDepthCueing(TextProgram);
-        GL.Finish();
+        // GL.Finish();
+        // (260319Ch) uniform 更新直後に Render() するだけなので、ここで同期完了待ちを入れる必要はない
         Render();
     }
     #endregion

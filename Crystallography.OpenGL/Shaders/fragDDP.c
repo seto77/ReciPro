@@ -50,29 +50,38 @@ vec4 shadeFragment()
 	float a;
 	if (fWithTexture < 0.0)
 	{
-		vec3 normal = normalize(fNormal);
-		vec3 light = normalize(fLight);
-		vec3 view = normalize(fView);
 		vec3 inColor = fColor.rgb;
-		vec3 ref = reflect(-light, normal);
-
-		vec3 ambient = Ambient * inColor;
-		vec3 specular = pow(max(dot(ref, view), 0.0), SpecularPower) * Specular * SpecularColor;
-		vec3 emission;
-		vec3 diffuse;
-
-		if (IgnoreNormalSides)
+		// vec3 normal = normalize(fNormal);
+		float normalLengthSquared = dot(fNormal, fNormal); // (260320Ch) Zero-normal line primitives should bypass surface lighting
+		if (normalLengthSquared <= 1.0e-12)
 		{
-			emission = max(abs(dot(normal, view)), 0.0) * Emission * inColor;
-			diffuse = max(abs(dot(normal, light)), 0.0) * Diffuse * inColor;
+			c3 = inColor; // (260320Ch) Preserve the requested line color when no stable normal is available
 		}
 		else
 		{
-			emission = max(dot(normal, view), 0.0) * Emission * inColor;
-			diffuse = max(dot(normal, light), 0.0) * Diffuse * inColor;
-		}
+			vec3 normal = fNormal * inversesqrt(normalLengthSquared); // (260320Ch) Safe normalization for valid surface normals
+			vec3 light = normalize(fLight);
+			vec3 view = normalize(fView);
+			vec3 ref = reflect(-light, normal);
 
-		c3 = diffuse + specular + ambient + emission;
+			vec3 ambient = Ambient * inColor;
+			vec3 specular = pow(max(dot(ref, view), 0.0), SpecularPower) * Specular * SpecularColor;
+			vec3 emission;
+			vec3 diffuse;
+
+			if (IgnoreNormalSides)
+			{
+				emission = max(abs(dot(normal, view)), 0.0) * Emission * inColor;
+				diffuse = max(abs(dot(normal, light)), 0.0) * Diffuse * inColor;
+			}
+			else
+			{
+				emission = max(dot(normal, view), 0.0) * Emission * inColor;
+				diffuse = max(dot(normal, light), 0.0) * Diffuse * inColor;
+			}
+
+			c3 = diffuse + specular + ambient + emission;
+		}
 		a = fColor.a;
 	}
 	else

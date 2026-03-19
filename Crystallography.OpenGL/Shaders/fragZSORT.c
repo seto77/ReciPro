@@ -47,28 +47,40 @@ vec3 applyDepthCueing(vec3 c3)
 void main()
 {
 	// FragColor = FragmentPath(); // (260319Ch) Legacy shared text/mesh path stays commented for reference.
-	vec3 normal = normalize(fNormal);
-	vec3 light = normalize(fLight);
-	vec3 view = normalize(fView);
 	vec3 inColor = vec3(fColor);
-	vec3 ref = reflect(-light, normal);
-
-	vec3 ambient = Ambient * inColor;
-	vec3 specular = pow(max(dot(ref, view), 0.0), SpecularPower) * Specular * SpecularColor;
-	vec3 emission;
-	vec3 diffuse;
-
-	if (IgnoreNormalSides)
+	// vec3 normal = normalize(fNormal);
+	float normalLengthSquared = dot(fNormal, fNormal); // (260320Ch) Lines/points can carry a zero normal, so avoid normalize(0)
+	vec3 c3;
+	if (normalLengthSquared <= 1.0e-12)
 	{
-		emission = max(abs(dot(normal, view)), 0.0) * Emission * inColor;
-		diffuse = max(abs(dot(normal, light)), 0.0) * Diffuse * inColor;
+		c3 = inColor; // (260320Ch) If no reliable normal exists, keep the requested line color without undefined lighting math
 	}
 	else
 	{
-		emission = max(dot(normal, view), 0.0) * Emission * inColor;
-		diffuse = max(dot(normal, light), 0.0) * Diffuse * inColor;
+		vec3 normal = fNormal * inversesqrt(normalLengthSquared); // (260320Ch) Safe normalization for valid surface normals
+		vec3 light = normalize(fLight);
+		vec3 view = normalize(fView);
+		vec3 ref = reflect(-light, normal);
+
+		vec3 ambient = Ambient * inColor;
+		vec3 specular = pow(max(dot(ref, view), 0.0), SpecularPower) * Specular * SpecularColor;
+		vec3 emission;
+		vec3 diffuse;
+
+		if (IgnoreNormalSides)
+		{
+			emission = max(abs(dot(normal, view)), 0.0) * Emission * inColor;
+			diffuse = max(abs(dot(normal, light)), 0.0) * Diffuse * inColor;
+		}
+		else
+		{
+			emission = max(dot(normal, view), 0.0) * Emission * inColor;
+			diffuse = max(dot(normal, light), 0.0) * Diffuse * inColor;
+		}
+
+		c3 = diffuse + specular + ambient + emission;
 	}
 
-	vec3 c3 = applyDepthCueing(vec3(diffuse + specular + ambient + emission));
+	c3 = applyDepthCueing(c3); // (260320Ch) Zero-normal fallback should still respect depth cueing
 	FragColor = vec4(c3, fColor.a); // (260319Ch) ZSORT mesh path now uses a dedicated fragment shader.
 }

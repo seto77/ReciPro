@@ -10,9 +10,14 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     #region 基本メソッド
     public object Clone()
     {
+        //Atoms atoms = (Atoms)this.MemberwiseClone();
+        //for (int i = 0; i < Atom.Length; i++)
+        //    atoms.Atom[i] = (Vector3D)Atom[i].Clone();
+        // (260320Ch) MemberwiseClone 後に配列自体を複製してから各要素を複製する
         Atoms atoms = (Atoms)this.MemberwiseClone();
-        for (int i = 0; i < Atom.Length; i++)
-            atoms.Atom[i] = (Vector3D)Atom[i].Clone();
+        atoms.Atom = Atom is null ? [] : new Vector3D[Atom.Length];
+        for (int i = 0; i < atoms.Atom.Length; i++)
+            atoms.Atom[i] = Atom[i] is null ? null : (Vector3D)Atom[i].Clone();
         return atoms;
     }
 
@@ -23,18 +28,39 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
 
     public bool Equals(Atoms obj)
     {
-        Atoms atoms = obj;
-        return atoms.Label == Label && atoms.X == X && atoms.Y == Y && atoms.Z == Z && atoms.Occ == Occ;
+        //Atoms atoms = obj;
+        //return atoms.Label == Label && atoms.X == X && atoms.Y == Y && atoms.Z == Z && atoms.Occ == Occ;
+        // (260320Ch) null 安全化して比較条件を明示する
+        return ReferenceEquals(this, obj) || obj is not null && obj.Label == Label && obj.X == X && obj.Y == Y && obj.Z == Z && obj.Occ == Occ;
     }
 
     public override bool Equals(object obj)
     {
-        return Equals(obj as Atoms);
+        //return Equals(obj as Atoms);
+        // (260320Ch) as による中間代入を避けて型判定を明示する
+        return obj is Atoms atoms && Equals(atoms);
     }
 
     public override int GetHashCode()
     {
-        return new { X, Y, Z, Occ, Label, WyckoffNumber, SymmetrySeriesNumber, Dsf, Atom, Texture }.GetHashCode();
+        //return new { X, Y, Z, Occ, Label, WyckoffNumber, SymmetrySeriesNumber, Dsf, Atom, Texture }.GetHashCode();
+        // (260320Ch) 匿名型依存をやめ、配列要素も含めて明示的にハッシュ化する
+        var hash = new HashCode();
+        hash.Add(X);
+        hash.Add(Y);
+        hash.Add(Z);
+        hash.Add(Occ);
+        hash.Add(Label);
+        hash.Add(WyckoffNumber);
+        hash.Add(SymmetrySeriesNumber);
+        hash.Add(Dsf);
+        hash.Add(Texture);
+
+        if (Atom != null)
+            foreach (var atom in Atom)
+                hash.Add(atom);
+
+        return hash.ToHashCode();
     }
     #endregion
 

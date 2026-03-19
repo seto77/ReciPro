@@ -7,7 +7,7 @@ namespace Crystallography;
 /// Plane の概要の説明です。
 /// </summary>
 [Serializable()]
-public class Plane : IComparable
+public class Plane : IComparable, IComparable<Plane>
 {
     public PeakFunctionForm SerchOption;
 
@@ -48,25 +48,41 @@ public class Plane : IComparable
     public double CosExpFactor;
     public double SinExpFactor;
 
-    public int CompareTo(object obj)
+    //public int CompareTo(object obj)
+    //{
+    //    var _p = obj as Plane;
+    //    if (d != _p.d)
+    //        return -d.CompareTo(_p.d);
+    //    else
+    //    {
+    //        var _h = _p.h;
+    //        var _k = _p.k;
+    //        var _l = _p.l;
+    //
+    //        if (h > _h || h == _h && k > _k || h == _h && k == _k && l > _l)
+    //            return -1;
+    //        else if (h == _h && k == _k && l == _l)
+    //            return 0;
+    //        else
+    //            return 1;
+    //    }
+    //}
+    // (260320Ch) Generic IComparable を追加し、null/型違いでも安全に比較できるようにする
+    public int CompareTo(Plane obj)
     {
-        var _p = obj as Plane;
-        if (d != _p.d)
-            return -d.CompareTo(_p.d);
-        else
-        {
-            var _h = _p.h;
-            var _k = _p.k;
-            var _l = _p.l;
+        if (obj is null)
+            return 1;
 
-            if (h > _h || h == _h && k > _k || h == _h && k == _k && l > _l)
-                return -1;
-            else if (h == _h && k == _k && l == _l)
-                return 0;
-            else
-                return 1;
-        }
+        if (d != obj.d)
+            return -d.CompareTo(obj.d);
+
+        if (h > obj.h || h == obj.h && k > obj.k || h == obj.h && k == obj.k && l > obj.l)
+            return -1;
+
+        return h == obj.h && k == obj.k && l == obj.l ? 0 : 1;
     }
+
+    public int CompareTo(object obj) => obj is Plane plane ? CompareTo(plane) : 1;
 
     public override string ToString()
     {
