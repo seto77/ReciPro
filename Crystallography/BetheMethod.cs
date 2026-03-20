@@ -2668,6 +2668,7 @@ public class BetheMethod
             if (Math.Abs(q) < maxQ && Dot3(sX, vX, sY, vY, sZ, vZ) > 0)
                 beamsSpan[count++] = (i, (float)(gLen * q * q)); // キャッシュインデックスを格納
         }
+        beamsSpan = beamsSpan[..count];
         #endregion
 
         count = Math.Min(count, maxNumOfBloch + 1);
