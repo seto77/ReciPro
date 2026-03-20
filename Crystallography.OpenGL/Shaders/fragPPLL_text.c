@@ -1,5 +1,7 @@
-//#version 130
-#version 410 core // (260319Ch) Dedicated text fragment shader for PPLL overlay
+#version 410 core
+// //#version 130
+// #version 410 core // (260319Ch) Dedicated text fragment shader for PPLL overlay
+// (260320Ch) AMD drivers reject any trailing tokens/comments after #version and require an immediate newline.
 
 // Depth cueing
 uniform bool DepthCueing = false;

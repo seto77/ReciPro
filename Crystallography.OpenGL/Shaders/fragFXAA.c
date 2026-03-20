@@ -1,4 +1,6 @@
-#version 410 core // (260319Ch) Post-process FXAA for OIT paths on OpenGL 4.1
+#version 410 core
+// #version 410 core // (260319Ch) Post-process FXAA for OIT paths on OpenGL 4.1
+// (260320Ch) AMD drivers reject any trailing tokens/comments after #version and require an immediate newline.
 
 uniform sampler2D SceneTexture;
 uniform vec2 ViewportSize;

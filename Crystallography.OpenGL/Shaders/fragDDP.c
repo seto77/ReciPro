@@ -1,5 +1,7 @@
-//#version 130
-#version 410 core // (260319Ch) Dual depth peeling path for OpenGL 4.1 core
+#version 410 core
+// //#version 130
+// #version 410 core // (260319Ch) Dual depth peeling path for OpenGL 4.1 core
+// (260320Ch) AMD drivers reject any trailing tokens/comments after #version and require an immediate newline.
 
 subroutine void RenderPassType();
 subroutine uniform RenderPassType RenderPass;

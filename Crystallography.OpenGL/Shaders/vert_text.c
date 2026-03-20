@@ -1,5 +1,7 @@
-//#version 130
-#version 410 core // (260319Ch) ZSORT text path uses a dedicated OpenGL 4.1 vertex shader
+#version 410 core
+// //#version 130
+// #version 410 core // (260319Ch) ZSORT text path uses a dedicated OpenGL 4.1 vertex shader
+// (260320Ch) AMD drivers reject any trailing tokens/comments after #version and require an immediate newline.
 
 layout(location = 0) in int vType;
 layout(location = 1) in int vArgb;

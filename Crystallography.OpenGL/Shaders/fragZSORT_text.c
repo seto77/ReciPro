@@ -1,5 +1,7 @@
-//#version 130
-#version 410 core // (260319Ch) Dedicated text fragment shader for the ZSORT path
+#version 410 core
+// //#version 130
+// #version 410 core // (260319Ch) Dedicated text fragment shader for the ZSORT path
+// (260320Ch) AMD drivers reject any trailing tokens/comments after #version and require an immediate newline.
 
 // layout(early_fragment_tests) in; // (260319Ch) OpenGL 4.1 / GLSL 410 safe path keeps this disabled
 

@@ -1,5 +1,7 @@
-//#version 130
-#version 410 core // (260319Ch) OpenGL 4.1 core baseline
+#version 410 core
+// //#version 130
+// #version 410 core // (260319Ch) OpenGL 4.1 core baseline
+// (260320Ch) AMD drivers reject any trailing tokens/comments after #version and require an immediate newline.
 //Sellers, Graham.OpenGL Superbible : Comprehensive Tutorial and Reference(Kindle, No.15531 - 15557).Pearson Education.Kindle version.
 // Per-vertex inputs
 
