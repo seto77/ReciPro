@@ -821,7 +821,6 @@ public class Lines : GLObject
         CircumscribedSphereCenter = new V4d(center, 1);
         CircumscribedSphereRadius = vertices.Max(v => (v - center).Length);
         Vertices = vertices.Select(v => new Vertex(v.ToV3f(), mat.Argb)).ToArray();
-        //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
         Indices = ValueEnumerable.Range(0, vertices.Length).Select(i => (uint)i).ToArray();
         Primitives = [(PT.LineStrip, vertices.Length)];
     }

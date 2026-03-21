@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using V3 = OpenTK.Mathematics.Vector3d;
 using ZLinq;
@@ -58,6 +58,7 @@ public class MonteCarlo
 
     public (double ScreeningParameter, double CrossSection, double MeanFreePath, double StoppingPower) GetParameters(double kev)
     {
+        // 260321Ch: LUT 化は取りやめ、見通しを優先して直接計算へ戻す
         //電子の質量 (kg) × 電子の速度の2乗 (m^2/s^2)
         var mv2 = UniversalConstants.Convert.EnergyToElectronMass(kev) * UniversalConstants.Convert.EnergyToElectronVelositySquared(kev);
         //散乱係数
@@ -69,7 +70,7 @@ public class MonteCarlo
         //弾性散乱平均自由行程 (nm)
         var λ_el = coeff2 / σ_E; //λ_el = A / UniversalConstants.A / ρ / σ_E * 1E7;
         //阻止能 (Joy and Luo 1989) (kev/nm単位)
-        var sp = coeff3 / mv2 * Math.Log(1.166 * k + 0.583  / UniversalConstants.eV_joule / J * mv2 );
+        var sp = coeff3 / mv2 * Math.Log(1.166 * k + 0.583 / UniversalConstants.eV_joule / J * mv2);
         return (α, σ_E, λ_el, sp);
     }
 
@@ -132,9 +133,6 @@ public class MonteCarlo
             }
             trajectory.Add((trajectory[^1].p + s * new V3(vX, vY, vZ), trajectory[^1].e + s * sp));
         }
-
-        //trajectory.ForEach(static e => e.p /= 1000.0);//これではum単位に戻せない
-
         return trajectory;
     }
 
@@ -147,7 +145,7 @@ public class MonteCarlo
     {
         double e = InitialKev;
         double vX = 0, vY = 0, vZ = -1;
-        double pY = 0, pZ = 0;//X座標は考えなくてよい
+        double d = 0;// 260321Ch: 表面からの深さだけを直接追跡する
         int n = 0;
         //電子エネルギーがThresholdKev以下になるか、試料を脱出するまでループ
         while (e > ThresholdKev)
@@ -161,29 +159,15 @@ public class MonteCarlo
             if (n++ != 0)
             {
                 double cosθ = 1 - 2 * α * rnd2 / (1 + α - rnd2), sinθ = Math.Sqrt(1 - cosθ * cosθ);
-                //260317Cl 変更: Math.Cos/Math.Sin → Math.SinCos
-                //double φ = 2 * Math.PI * rnd3, sinθcosφ = sinθ * Math.Cos(φ), sinθsinφ = sinθ * Math.Sin(φ);
                 double φ = 2 * Math.PI * rnd3;
                 var (sinφ, cosφ) = Math.SinCos(φ);
                 double sinθcosφ = sinθ * cosφ, sinθsinφ = sinθ * sinφ;
-
-                //var rot = CreateRotationFromZ(vec);
-                //vec = new V3(
-                //    rot.M11 * sinθcosφ + rot.M12 * sinθsinφ + rot.M13 * cosθ,
-                //    rot.M12 * sinθcosφ + rot.M22 * sinθsinφ + rot.M23 * cosθ,
-                //    rot.M13 * sinθcosφ + rot.M32 * sinθsinφ + rot.M33 * cosθ
-                //            );
-
                 var vZ1 = vZ + 1;
                 if (vZ1 < Th)
                 { vX = sinθcosφ; vY = sinθsinφ; vZ = -cosθ; }
                 else
                 {
-                    var m11 = 1 - vX * vX / vZ1;
-                    var m22 = 1 - vY * vY / vZ1;
-                    var m12 = -vX * vY / vZ1;
-                    var m13 = vX;
-                    var m23 = vY;
+                    double m11 = 1 - vX * vX / vZ1, m22 = 1 - vY * vY / vZ1, m12 = -vX * vY / vZ1, m13 = vX, m23 = vY;
                     vX = m11 * sinθcosφ + m12 * sinθsinφ + m13 * cosθ;
                     vY = m12 * sinθcosφ + m22 * sinθsinφ + m23 * cosθ;
                     vZ = -m13 * sinθcosφ - m23 * sinθsinφ + vZ * cosθ;
@@ -195,14 +179,15 @@ public class MonteCarlo
                     }
                 }
             }
-            double pYtmp = pY + s * vY, pZtmp = pZ + s * vZ;
-            if (pYtmp * tan < pZtmp)
+            var dtmp = d + s * (sin * vY - cos * vZ);// 260321Ch
+            if (dtmp < 0)
                 break;
-            pY = pYtmp; pZ = pZtmp;
+            d = dtmp;
 
             e += s * sp;
         }
-        return (sin * pY - cos * pZ, new V3(vX, vY, vZ), e);
+        //return (sin * pY - cos * pZ, new V3(vX, vY, vZ), e);
+        return (d, new V3(vX, vY, vZ), e);
     }
 
     public const double Th = 0.0000001;

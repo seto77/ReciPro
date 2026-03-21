@@ -26,8 +26,23 @@ public partial class FormEBSD : Form
     #region フィールド、プロパティ
     public FormMain FormMain;
     public GLControlAlpha glControlGeo;
+    public GLControlAlpha glControlMasterKernel; // (260321Ch) MasterKernel preview 用の OpenGL コントロール
     private readonly Stopwatch sw1 =new(), sw2 = new();
     private readonly Timer timer = new();
+    private readonly Panel panelMasterKernelToolbar = new() { Dock = DockStyle.Top, Height = 72 }; // (260321Ch)
+    private readonly Panel panelMasterKernelViewport = new() { Dock = DockStyle.Fill }; // (260321Ch)
+    private readonly Button buttonCreateMasterKernel = new() { AutoSize = true, Text = "Build MasterKernel", BackColor = Color.SteelBlue, ForeColor = Color.White, UseVisualStyleBackColor = false, Margin = new Padding(0, 0, 8, 0) }; // (260321Ch)
+    private readonly NumericUpDown numericUpDownMasterKernelGrid = new() { Minimum = 16, Maximum = 512, Value = 64, Width = 70, Margin = new Padding(0, 2, 8, 0) }; // (260321Ch)
+    private readonly ComboBox comboBoxMasterKernelHemisphere = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 108, Margin = new Padding(0, 2, 8, 0) }; // (260321Ch)
+    private readonly ComboBox comboBoxMasterKernelEnergy = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 92, Margin = new Padding(0, 2, 8, 0), Enabled = false }; // (260321Ch)
+    private readonly ComboBox comboBoxMasterKernelDepth = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 92, Margin = new Padding(0, 2, 8, 0), Enabled = false }; // (260321Ch)
+    private readonly Label labelMasterKernelInfo = new() { AutoSize = true, Text = "MasterKernel preview is empty.", Margin = new Padding(0, 8, 0, 0) }; // (260321Ch)
+    private EbsdMasterKernel MasterKernel = null; // (260321Ch) Rosca-Lambert 平面に保存する MasterKernel
+    private BetheMethod masterKernelBethe = null; // (260321Ch) MasterKernel 専用の Bethe solver
+    private double[] masterKernelPendingEnergies = []; // (260321Ch)
+    private double[] masterKernelPendingDepths = []; // (260321Ch)
+    private int masterKernelPendingGridSize = 0; // (260321Ch)
+    private EbsdMasterKernelHemisphere masterKernelPendingHemisphere = EbsdMasterKernelHemisphere.PositiveZ; // (260321Ch)
 
     /// <summary>
     /// 飛程計算の際の打ち切りエネルギー (kev)
@@ -121,7 +136,8 @@ public partial class FormEBSD : Form
     public FormEBSD()
     {
         InitializeComponent();
-        
+
+        InitializeMasterKernelPreviewControls(); // (260321Ch) panel1 を MasterKernel preview 用 UI に転用する
     }
 
     private void Timer_Tick(object sender, EventArgs e)
@@ -149,6 +165,7 @@ public partial class FormEBSD : Form
             WorldMatrix = M4.CreateRotationZ(-Math.PI / 2 * 0.2) * M4.CreateRotationY(-Math.PI / 2 * 0.8) * M4.CreateRotationZ(-Math.PI / 2),
         };
         panelGeometry.Controls.Add(glControlGeo);
+        EnsureMasterKernelPreviewControl(); // (260321Ch) MasterKernel preview 用の GLControl を遅延生成する
 
         timer.Interval = 1000;
         timer.Tick += Timer_Tick;
@@ -160,6 +177,7 @@ public partial class FormEBSD : Form
         comboBoxScale.SelectedIndex = 0;
         NumericBoxEnergyStart_ValueChanged(sender, e);
         NumericBoxThicknessStart_ValueChanged(sender, e);
+        DrawMasterKernelPreview(); // (260321Ch) 空の preview でも枠を描いておく
     }
 
     private void FormEBSD_FormClosing(object sender, FormClosingEventArgs e)
@@ -167,6 +185,65 @@ public partial class FormEBSD : Form
         e.Cancel = true;
         FormMain.toolStripButtonEBSD.Checked = false;
         Visible = false;
+    }
+
+    private void InitializeMasterKernelPreviewControls()
+    {
+        // (260321Ch) 既存の未使用 panel1 を preview 用レイアウトに流用する
+        panel1.Controls.Clear();
+        panel1.Padding = new Padding(4);
+
+        var flow = new FlowLayoutPanel()
+        {
+            Dock = DockStyle.Fill,
+            WrapContents = true,
+            AutoScroll = true,
+            Margin = new Padding(0),
+        };
+
+        comboBoxMasterKernelHemisphere.Items.AddRange(["+Z hemisphere", "-Z hemisphere"]);
+        comboBoxMasterKernelHemisphere.SelectedIndex = 0;
+        buttonCreateMasterKernel.Click += buttonCreateMasterKernel_Click;
+        comboBoxMasterKernelHemisphere.SelectedIndexChanged += MasterKernelPreviewSelectionChanged;
+        comboBoxMasterKernelEnergy.SelectedIndexChanged += MasterKernelPreviewSelectionChanged;
+        comboBoxMasterKernelDepth.SelectedIndexChanged += MasterKernelPreviewSelectionChanged;
+
+        flow.Controls.Add(new Label() { AutoSize = true, Text = "Grid", Margin = new Padding(0, 8, 4, 0) });
+        flow.Controls.Add(numericUpDownMasterKernelGrid);
+        flow.Controls.Add(new Label() { AutoSize = true, Text = "Hemisphere", Margin = new Padding(0, 8, 4, 0) });
+        flow.Controls.Add(comboBoxMasterKernelHemisphere);
+        flow.Controls.Add(new Label() { AutoSize = true, Text = "Energy", Margin = new Padding(0, 8, 4, 0) });
+        flow.Controls.Add(comboBoxMasterKernelEnergy);
+        flow.Controls.Add(new Label() { AutoSize = true, Text = "Depth", Margin = new Padding(0, 8, 4, 0) });
+        flow.Controls.Add(comboBoxMasterKernelDepth);
+        flow.Controls.Add(buttonCreateMasterKernel);
+        flow.Controls.Add(labelMasterKernelInfo);
+
+        panelMasterKernelToolbar.Controls.Add(flow);
+        panel1.Controls.Add(panelMasterKernelViewport);
+        panel1.Controls.Add(panelMasterKernelToolbar);
+    }
+
+    private void EnsureMasterKernelPreviewControl()
+    {
+        if (glControlMasterKernel != null)
+            return;
+
+        glControlMasterKernel = new GLControlAlpha()
+        {
+            AllowMouseRotation = false,
+            AllowMouseScaling = true,
+            AllowMouseTranslating = true,
+            Name = "glControlMasterKernel",
+            ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+            ProjWidth = 2.4,
+            RotationMode = GLControlAlpha.RotationModes.Object,
+            Dock = DockStyle.Fill,
+            LightPosition = new V3(0, 0, 100),
+            BorderStyle = BorderStyle.Fixed3D,
+            WorldMatrix = M4.Identity,
+        };
+        panelMasterKernelViewport.Controls.Add(glControlMasterKernel);
     }
     #endregion
 
@@ -313,6 +390,7 @@ public partial class FormEBSD : Form
     {
         SetVector();
         DrawGeometry();
+        DrawMasterKernelPreview(); // (260321Ch) 再表示時に MasterKernel preview も同期する
     }
 
     private void radioButtonKikuchiThresholdOfStructureFactor_CheckedChanged(object sender, EventArgs e)
@@ -1078,6 +1156,236 @@ public partial class FormEBSD : Form
 
         Clipboard.SetDataObject(sb.ToString());
     }
+
+    #region MasterKernel
+    private int MasterKernelDivisionNumber => Math.Max(1, masterKernelPendingGridSize * masterKernelPendingGridSize * Math.Max(1, masterKernelPendingEnergies.Length));
+
+    private void buttonCreateMasterKernel_Click(object sender, EventArgs e)
+    {
+        if (Crystal?.Bethe?.bwEBSD?.IsBusy == true)
+        {
+            toolStripStatusLabel1.Text = "The regular EBSD solver is running. Wait for it to finish first.";
+            return;
+        }
+        if (masterKernelBethe?.bwEBSD?.IsBusy == true)
+            return;
+
+        EnsureMasterKernelPreviewControl();
+
+        masterKernelPendingGridSize = (int)numericUpDownMasterKernelGrid.Value;
+        masterKernelPendingHemisphere = GetSelectedMasterKernelHemisphere();
+        masterKernelPendingEnergies = EnergyArray;
+        masterKernelPendingDepths = ThicknessArray;
+
+        var directions = EbsdMasterKernel.CreateDirections(masterKernelPendingGridSize, masterKernelPendingHemisphere); // (260321Ch) Rosca-Lambert 格子のセル中心をそのまま exitDirection に使う
+        masterKernelBethe = new BetheMethod(Crystal);
+        masterKernelBethe.EBSD_ProgressChanged += MasterKernel_EBSD_ProgressChanged;
+        masterKernelBethe.EBSD_Completed += MasterKernel_EBSD_Completed;
+
+        buttonCreateMasterKernel.Enabled = false;
+        comboBoxMasterKernelEnergy.Enabled = false;
+        comboBoxMasterKernelDepth.Enabled = false;
+        labelMasterKernelInfo.Text = $"Building {GetHemisphereText(masterKernelPendingHemisphere)} master grid ({masterKernelPendingGridSize} x {masterKernelPendingGridSize})...";
+        toolStripProgressBar.Value = 0;
+        toolStripStatusLabel2.Text = "MasterKernel";
+        toolStripStatusLabel1.Text = $"Starting MasterKernel build in the crystal frame ({GetHemisphereText(masterKernelPendingHemisphere)}).";
+        sw1.Restart();
+
+        // Crystal.RotationMatrix を使う旧案は方位を焼き込んでしまうので、まずはコメントとして残す。 (260321Ch)
+        // masterKernelBethe.RunEBSD(MaxNumOfBloch, masterKernelPendingEnergies, Crystal.RotationMatrix, masterKernelPendingDepths, directions, BetheMethod.Solver.Eigen_Eigen, 32, checkBoxNonLocalAbsorption.Checked, checkBoxTDSBackground.Checked);
+        masterKernelBethe.RunEBSD(MaxNumOfBloch, masterKernelPendingEnergies, Matrix3D.IdentityMatrix, masterKernelPendingDepths, directions, BetheMethod.Solver.Eigen_Eigen, 32, checkBoxNonLocalAbsorption.Checked, checkBoxTDSBackground.Checked);
+    }
+
+    private void MasterKernel_EBSD_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    {
+        var current = Math.Max(1, e.ProgressPercentage);
+        var sec = sw1.ElapsedMilliseconds / 1000.0;
+        var progress = Math.Min(100, (int)(100.0 * current / MasterKernelDivisionNumber));
+        toolStripProgressBar.Value = progress;
+        toolStripStatusLabel2.Text = $"MasterKernel: {e.UserState}";
+        toolStripStatusLabel1.Text = $"{progress:f0}% completed, elapsed {sec:f2} s.";
+        labelMasterKernelInfo.Text = $"Building {GetHemisphereText(masterKernelPendingHemisphere)} master grid... {progress}%";
+        Application.DoEvents();
+    }
+
+    private void MasterKernel_EBSD_Completed(object sender, RunWorkerCompletedEventArgs e)
+    {
+        if (masterKernelBethe != null)
+        {
+            masterKernelBethe.EBSD_ProgressChanged -= MasterKernel_EBSD_ProgressChanged;
+            masterKernelBethe.EBSD_Completed -= MasterKernel_EBSD_Completed;
+        }
+
+        buttonCreateMasterKernel.Enabled = true;
+        var sec = sw1.ElapsedMilliseconds / 1000.0;
+
+        if (e.Error != null)
+        {
+            toolStripStatusLabel2.Text = "MasterKernel failed";
+            toolStripStatusLabel1.Text = e.Error.Message;
+            labelMasterKernelInfo.Text = "MasterKernel build failed.";
+            return;
+        }
+
+        if (e.Cancelled || masterKernelBethe?.Disks == null)
+        {
+            toolStripStatusLabel2.Text = "MasterKernel cancelled";
+            toolStripStatusLabel1.Text = $"Elapsed {sec:f2} s.";
+            labelMasterKernelInfo.Text = "MasterKernel build was cancelled.";
+            return;
+        }
+
+        MasterKernel = EbsdMasterKernel.FromDisks(masterKernelBethe.Disks, masterKernelPendingEnergies, masterKernelPendingDepths, masterKernelPendingGridSize, masterKernelPendingHemisphere);
+        UpdateMasterKernelSelectors();
+        DrawMasterKernelPreview();
+        toolStripProgressBar.Value = 100;
+        toolStripStatusLabel2.Text = "MasterKernel completed";
+        toolStripStatusLabel1.Text = $"MasterKernel built in {sec:f2} s. ({masterKernelPendingGridSize} x {masterKernelPendingGridSize}, {GetHemisphereText(masterKernelPendingHemisphere)})";
+        labelMasterKernelInfo.Text = $"Ready: {GetHemisphereText(masterKernelPendingHemisphere)}, {MasterKernel?.Energies.Length ?? 0} energies, {MasterKernel?.Depths.Length ?? 0} depths.";
+    }
+
+    private void MasterKernelPreviewSelectionChanged(object sender, EventArgs e) => DrawMasterKernelPreview();
+
+    private void UpdateMasterKernelSelectors()
+    {
+        comboBoxMasterKernelEnergy.Items.Clear();
+        comboBoxMasterKernelDepth.Items.Clear();
+
+        if (MasterKernel == null)
+        {
+            comboBoxMasterKernelEnergy.Enabled = false;
+            comboBoxMasterKernelDepth.Enabled = false;
+            return;
+        }
+
+        comboBoxMasterKernelEnergy.Items.AddRange([.. MasterKernel.Energies.Select((energy, i) => (object)$"{i}: {energy:g} kV")]);
+        comboBoxMasterKernelDepth.Items.AddRange([.. MasterKernel.Depths.Select((depth, i) => (object)$"{i}: {depth:g} nm")]);
+        comboBoxMasterKernelEnergy.Enabled = comboBoxMasterKernelEnergy.Items.Count > 0;
+        comboBoxMasterKernelDepth.Enabled = comboBoxMasterKernelDepth.Items.Count > 0;
+        if (comboBoxMasterKernelEnergy.Items.Count > 0)
+            comboBoxMasterKernelEnergy.SelectedIndex = 0;
+        if (comboBoxMasterKernelDepth.Items.Count > 0)
+            comboBoxMasterKernelDepth.SelectedIndex = 0;
+    }
+
+    private void DrawMasterKernelPreview()
+    {
+        if (glControlMasterKernel == null)
+            return;
+
+        var glObjects = new List<GLObject>();
+        AddMasterKernelFrame(glObjects);
+
+        if (MasterKernel == null)
+        {
+            labelMasterKernelInfo.Text = "MasterKernel preview is empty.";
+            glControlMasterKernel.DeleteAllObjects();
+            glControlMasterKernel.AddObjects(glObjects);
+            glControlMasterKernel.Refresh();
+            return;
+        }
+
+        var selectedHemisphere = GetSelectedMasterKernelHemisphere();
+        if (selectedHemisphere != MasterKernel.Hemisphere)
+        {
+            labelMasterKernelInfo.Text = $"Built slice is {GetHemisphereText(MasterKernel.Hemisphere)}. Rebuild after changing hemisphere.";
+            glControlMasterKernel.DeleteAllObjects();
+            glControlMasterKernel.AddObjects(glObjects);
+            glControlMasterKernel.Refresh();
+            return;
+        }
+
+        if (comboBoxMasterKernelEnergy.SelectedIndex < 0 || comboBoxMasterKernelDepth.SelectedIndex < 0)
+        {
+            glControlMasterKernel.DeleteAllObjects();
+            glControlMasterKernel.AddObjects(glObjects);
+            glControlMasterKernel.Refresh();
+            return;
+        }
+
+        var plane = MasterKernel.GetPlane(comboBoxMasterKernelEnergy.SelectedIndex, comboBoxMasterKernelDepth.SelectedIndex);
+        if (plane == null || plane.Length == 0)
+        {
+            glControlMasterKernel.DeleteAllObjects();
+            glControlMasterKernel.AddObjects(glObjects);
+            glControlMasterKernel.Refresh();
+            return;
+        }
+
+        var previewSize = Math.Min(MasterKernel.GridSize, 96); // (260321Ch) 描画負荷を抑えるため preview 側だけ適度に間引く
+        var max = plane.Max();
+        if (max <= 0)
+            max = 1;
+
+        for (int py = 0; py < previewSize; py++)
+        {
+            int y0 = py * MasterKernel.GridSize / previewSize;
+            int y1 = Math.Max(y0 + 1, (py + 1) * MasterKernel.GridSize / previewSize);
+            double yMin = 1.0 - 2.0 * (py + 1) / previewSize;
+            double yMax = 1.0 - 2.0 * py / previewSize;
+
+            for (int px = 0; px < previewSize; px++)
+            {
+                int x0 = px * MasterKernel.GridSize / previewSize;
+                int x1 = Math.Max(x0 + 1, (px + 1) * MasterKernel.GridSize / previewSize);
+                double xMin = -1.0 + 2.0 * px / previewSize;
+                double xMax = -1.0 + 2.0 * (px + 1) / previewSize;
+
+                double sum = 0;
+                int count = 0;
+                for (int y = y0; y < y1; y++)
+                    for (int x = x0; x < x1; x++)
+                    {
+                        sum += plane[y * MasterKernel.GridSize + x];
+                        count++;
+                    }
+                var ratio = count > 0 ? Math.Sqrt(sum / count / max) : 0;
+                glObjects.Add(new Quads(
+                    new V3(xMin, yMin, 0),
+                    new V3(xMax, yMin, 0),
+                    new V3(xMax, yMax, 0),
+                    new V3(xMin, yMax, 0),
+                    new Material(GetMasterKernelColor(ratio)),
+                    DrawingMode.Surfaces));
+            }
+        }
+
+        var energy = MasterKernel.Energies[comboBoxMasterKernelEnergy.SelectedIndex];
+        var depth = MasterKernel.Depths[comboBoxMasterKernelDepth.SelectedIndex];
+        labelMasterKernelInfo.Text = $"Preview: {GetHemisphereText(MasterKernel.Hemisphere)}, E = {energy:g} kV, depth = {depth:g} nm";
+
+        glControlMasterKernel.DeleteAllObjects();
+        glControlMasterKernel.AddObjects(glObjects);
+        glControlMasterKernel.Refresh();
+    }
+
+    private void AddMasterKernelFrame(List<GLObject> glObjects)
+    {
+        glObjects.Add(new Quads(
+            new V3(-1, -1, 0.001),
+            new V3(1, -1, 0.001),
+            new V3(1, 1, 0.001),
+            new V3(-1, 1, 0.001),
+            new Material(C4.Black),
+            DrawingMode.Edges) { LineWidth = 2f });
+        glObjects.Add(new Lines([new V3(-1, 0, 0.001), new V3(1, 0, 0.001)], 1f, new Material(new C4(0f, 0f, 0f, 0.35f))));
+        glObjects.Add(new Lines([new V3(0, -1, 0.001), new V3(0, 1, 0.001)], 1f, new Material(new C4(0f, 0f, 0f, 0.35f))));
+    }
+
+    private static C4 GetMasterKernelColor(double ratio)
+    {
+        ratio = Math.Clamp(ratio, 0.0, 1.0);
+        var index = (int)Math.Round(ratio * (PseudoBitmap.ColorScaleFireLiner.Length - 1));
+        var (r, g, b) = PseudoBitmap.ColorScaleFireLiner[index];
+        return new C4(r / 255f, g / 255f, b / 255f, 1f);
+    }
+
+    private EbsdMasterKernelHemisphere GetSelectedMasterKernelHemisphere()
+        => comboBoxMasterKernelHemisphere.SelectedIndex == 1 ? EbsdMasterKernelHemisphere.NegativeZ : EbsdMasterKernelHemisphere.PositiveZ;
+
+    private static string GetHemisphereText(EbsdMasterKernelHemisphere hemisphere)
+        => hemisphere == EbsdMasterKernelHemisphere.PositiveZ ? "+Z hemisphere" : "-Z hemisphere";
+    #endregion
     #endregion
 
 }

@@ -75,21 +75,22 @@
             numericBoxDiskDiameter = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
             groupBoxOutput = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            label9 = new System.Windows.Forms.Label();
+            textBoxEnergy = new System.Windows.Forms.TextBox();
+            label12 = new System.Windows.Forms.Label();
+            trackBarOutputEnergy = new System.Windows.Forms.TrackBar();
+            label5 = new System.Windows.Forms.Label();
+            textBoxThickness = new System.Windows.Forms.TextBox();
+            label6 = new System.Windows.Forms.Label();
+            trackBarOutputThickness = new System.Windows.Forms.TrackBar();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             checkBox1 = new System.Windows.Forms.CheckBox();
             comboBoxGradient = new System.Windows.Forms.ComboBox();
             comboBoxScale = new System.Windows.Forms.ComboBox();
-            trackBarOutputEnergy = new System.Windows.Forms.TrackBar();
-            trackBarOutputThickness = new System.Windows.Forms.TrackBar();
             trackBarIntensityBrightnessMax = new System.Windows.Forms.TrackBar();
-            textBoxEnergy = new System.Windows.Forms.TextBox();
             trackBarIntensityBrightnessMin = new System.Windows.Forms.TrackBar();
-            label12 = new System.Windows.Forms.Label();
-            textBoxThickness = new System.Windows.Forms.TextBox();
-            label9 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
@@ -118,12 +119,13 @@
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            panel1 = new System.Windows.Forms.Panel();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).BeginInit();
             groupBoxOutput.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputEnergy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).BeginInit();
@@ -136,7 +138,6 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             statusStrip1.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
             // panelGeometry
@@ -765,7 +766,7 @@
             buttonSimulateEBSD.BackColor = System.Drawing.Color.SteelBlue;
             buttonSimulateEBSD.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
             buttonSimulateEBSD.ForeColor = System.Drawing.Color.White;
-            buttonSimulateEBSD.Location = new System.Drawing.Point(769, 676);
+            buttonSimulateEBSD.Location = new System.Drawing.Point(1369, 676);
             buttonSimulateEBSD.Name = "buttonSimulateEBSD";
             buttonSimulateEBSD.Size = new System.Drawing.Size(176, 29);
             buttonSimulateEBSD.TabIndex = 129;
@@ -957,7 +958,7 @@
             buttonStop.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
             buttonStop.ForeColor = System.Drawing.Color.White;
             buttonStop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonStop.Location = new System.Drawing.Point(947, 677);
+            buttonStop.Location = new System.Drawing.Point(1547, 677);
             buttonStop.Name = "buttonStop";
             buttonStop.Size = new System.Drawing.Size(73, 26);
             buttonStop.TabIndex = 138;
@@ -987,6 +988,118 @@
             groupBoxOutput.TabIndex = 139;
             groupBoxOutput.TabStop = false;
             groupBoxOutput.Text = "Output parameters";
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.AutoSize = true;
+            flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel4.Controls.Add(label9);
+            flowLayoutPanel4.Controls.Add(textBoxEnergy);
+            flowLayoutPanel4.Controls.Add(label12);
+            flowLayoutPanel4.Controls.Add(trackBarOutputEnergy);
+            flowLayoutPanel4.Controls.Add(label5);
+            flowLayoutPanel4.Controls.Add(textBoxThickness);
+            flowLayoutPanel4.Controls.Add(label6);
+            flowLayoutPanel4.Controls.Add(trackBarOutputThickness);
+            flowLayoutPanel4.Location = new System.Drawing.Point(10, 53);
+            flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new System.Drawing.Size(495, 25);
+            flowLayoutPanel4.TabIndex = 147;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label9.Location = new System.Drawing.Point(0, 3);
+            label9.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(48, 17);
+            label9.TabIndex = 30;
+            label9.Text = "Energy";
+            // 
+            // textBoxEnergy
+            // 
+            textBoxEnergy.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            textBoxEnergy.Location = new System.Drawing.Point(48, 0);
+            textBoxEnergy.Margin = new System.Windows.Forms.Padding(0);
+            textBoxEnergy.Name = "textBoxEnergy";
+            textBoxEnergy.ReadOnly = true;
+            textBoxEnergy.Size = new System.Drawing.Size(36, 25);
+            textBoxEnergy.TabIndex = 1;
+            textBoxEnergy.Text = "20";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label12.Location = new System.Drawing.Point(84, 3);
+            label12.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(22, 17);
+            label12.TabIndex = 30;
+            label12.Text = "kV";
+            // 
+            // trackBarOutputEnergy
+            // 
+            trackBarOutputEnergy.AutoSize = false;
+            trackBarOutputEnergy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            trackBarOutputEnergy.LargeChange = 1;
+            trackBarOutputEnergy.Location = new System.Drawing.Point(109, 3);
+            trackBarOutputEnergy.Maximum = 5;
+            trackBarOutputEnergy.Name = "trackBarOutputEnergy";
+            trackBarOutputEnergy.Size = new System.Drawing.Size(122, 18);
+            trackBarOutputEnergy.TabIndex = 2;
+            trackBarOutputEnergy.ValueChanged += trackBarOutputEnergy_ValueChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label5.Location = new System.Drawing.Point(242, 3);
+            label5.Margin = new System.Windows.Forms.Padding(8, 3, 0, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(63, 17);
+            label5.TabIndex = 30;
+            label5.Text = "Thickness";
+            // 
+            // textBoxThickness
+            // 
+            textBoxThickness.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            textBoxThickness.Location = new System.Drawing.Point(305, 0);
+            textBoxThickness.Margin = new System.Windows.Forms.Padding(0);
+            textBoxThickness.Name = "textBoxThickness";
+            textBoxThickness.ReadOnly = true;
+            textBoxThickness.Size = new System.Drawing.Size(36, 25);
+            textBoxThickness.TabIndex = 1;
+            textBoxThickness.Text = "20";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label6.Location = new System.Drawing.Point(341, 3);
+            label6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(26, 17);
+            label6.TabIndex = 30;
+            label6.Text = "nm";
+            // 
+            // trackBarOutputThickness
+            // 
+            trackBarOutputThickness.AutoSize = false;
+            trackBarOutputThickness.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            trackBarOutputThickness.LargeChange = 1;
+            trackBarOutputThickness.Location = new System.Drawing.Point(370, 3);
+            trackBarOutputThickness.Maximum = 9;
+            trackBarOutputThickness.Name = "trackBarOutputThickness";
+            trackBarOutputThickness.Size = new System.Drawing.Size(122, 18);
+            trackBarOutputThickness.TabIndex = 2;
+            trackBarOutputThickness.ValueChanged += TrackBarOutputThickness_Scroll;
             // 
             // label3
             // 
@@ -1051,30 +1164,6 @@
             comboBoxScale.TabIndex = 8;
             comboBoxScale.SelectedIndexChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
-            // trackBarOutputEnergy
-            // 
-            trackBarOutputEnergy.AutoSize = false;
-            trackBarOutputEnergy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            trackBarOutputEnergy.LargeChange = 1;
-            trackBarOutputEnergy.Location = new System.Drawing.Point(109, 3);
-            trackBarOutputEnergy.Maximum = 5;
-            trackBarOutputEnergy.Name = "trackBarOutputEnergy";
-            trackBarOutputEnergy.Size = new System.Drawing.Size(122, 18);
-            trackBarOutputEnergy.TabIndex = 2;
-            trackBarOutputEnergy.ValueChanged += trackBarOutputEnergy_ValueChanged;
-            // 
-            // trackBarOutputThickness
-            // 
-            trackBarOutputThickness.AutoSize = false;
-            trackBarOutputThickness.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            trackBarOutputThickness.LargeChange = 1;
-            trackBarOutputThickness.Location = new System.Drawing.Point(370, 3);
-            trackBarOutputThickness.Maximum = 9;
-            trackBarOutputThickness.Name = "trackBarOutputThickness";
-            trackBarOutputThickness.Size = new System.Drawing.Size(122, 18);
-            trackBarOutputThickness.TabIndex = 2;
-            trackBarOutputThickness.ValueChanged += TrackBarOutputThickness_Scroll;
-            // 
             // trackBarIntensityBrightnessMax
             // 
             trackBarIntensityBrightnessMax.AutoSize = false;
@@ -1091,17 +1180,6 @@
             trackBarIntensityBrightnessMax.Value = 1000000;
             trackBarIntensityBrightnessMax.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
-            // textBoxEnergy
-            // 
-            textBoxEnergy.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            textBoxEnergy.Location = new System.Drawing.Point(48, 0);
-            textBoxEnergy.Margin = new System.Windows.Forms.Padding(0);
-            textBoxEnergy.Name = "textBoxEnergy";
-            textBoxEnergy.ReadOnly = true;
-            textBoxEnergy.Size = new System.Drawing.Size(36, 25);
-            textBoxEnergy.TabIndex = 1;
-            textBoxEnergy.Text = "20";
-            // 
             // trackBarIntensityBrightnessMin
             // 
             trackBarIntensityBrightnessMin.AutoSize = false;
@@ -1115,65 +1193,6 @@
             trackBarIntensityBrightnessMin.TabIndex = 3;
             trackBarIntensityBrightnessMin.TickFrequency = 20000;
             trackBarIntensityBrightnessMin.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label12.Location = new System.Drawing.Point(84, 3);
-            label12.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(22, 17);
-            label12.TabIndex = 30;
-            label12.Text = "kV";
-            // 
-            // textBoxThickness
-            // 
-            textBoxThickness.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            textBoxThickness.Location = new System.Drawing.Point(305, 0);
-            textBoxThickness.Margin = new System.Windows.Forms.Padding(0);
-            textBoxThickness.Name = "textBoxThickness";
-            textBoxThickness.ReadOnly = true;
-            textBoxThickness.Size = new System.Drawing.Size(36, 25);
-            textBoxThickness.TabIndex = 1;
-            textBoxThickness.Text = "20";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label9.Location = new System.Drawing.Point(0, 3);
-            label9.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(48, 17);
-            label9.TabIndex = 30;
-            label9.Text = "Energy";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label6.Location = new System.Drawing.Point(341, 3);
-            label6.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(26, 17);
-            label6.TabIndex = 30;
-            label6.Text = "nm";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            label5.Location = new System.Drawing.Point(242, 3);
-            label5.Margin = new System.Windows.Forms.Padding(8, 3, 0, 0);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(63, 17);
-            label5.TabIndex = 30;
-            label5.Text = "Thickness";
             // 
             // label8
             // 
@@ -1322,7 +1341,7 @@
             button1.AutoSize = true;
             button1.BackColor = System.Drawing.Color.SteelBlue;
             button1.ForeColor = System.Drawing.Color.White;
-            button1.Location = new System.Drawing.Point(561, 678);
+            button1.Location = new System.Drawing.Point(1161, 678);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(93, 27);
             button1.TabIndex = 129;
@@ -1387,7 +1406,7 @@
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            tabControl1.Location = new System.Drawing.Point(517, 2);
+            tabControl1.Location = new System.Drawing.Point(1117, 2);
             tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -1536,7 +1555,7 @@
             groupBox1.Controls.Add(numericBoxEnergyStep);
             groupBox1.Controls.Add(numericBoxThicknessStep);
             groupBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox1.Location = new System.Drawing.Point(518, 461);
+            groupBox1.Location = new System.Drawing.Point(1118, 461);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new System.Drawing.Size(501, 215);
             groupBox1.TabIndex = 143;
@@ -1548,7 +1567,7 @@
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel1, toolStripStatusLabel2 });
             statusStrip1.Location = new System.Drawing.Point(0, 707);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new System.Drawing.Size(1024, 22);
+            statusStrip1.Size = new System.Drawing.Size(1624, 22);
             statusStrip1.TabIndex = 145;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -1569,29 +1588,19 @@
             toolStripStatusLabel2.Size = new System.Drawing.Size(16, 17);
             toolStripStatusLabel2.Text = "   ";
             // 
-            // flowLayoutPanel4
+            // panel1
             // 
-            flowLayoutPanel4.AutoSize = true;
-            flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel4.Controls.Add(label9);
-            flowLayoutPanel4.Controls.Add(textBoxEnergy);
-            flowLayoutPanel4.Controls.Add(label12);
-            flowLayoutPanel4.Controls.Add(trackBarOutputEnergy);
-            flowLayoutPanel4.Controls.Add(label5);
-            flowLayoutPanel4.Controls.Add(textBoxThickness);
-            flowLayoutPanel4.Controls.Add(label6);
-            flowLayoutPanel4.Controls.Add(trackBarOutputThickness);
-            flowLayoutPanel4.Location = new System.Drawing.Point(10, 53);
-            flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(495, 25);
-            flowLayoutPanel4.TabIndex = 147;
+            panel1.Location = new System.Drawing.Point(527, 34);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(512, 512);
+            panel1.TabIndex = 146;
             // 
             // FormEBSD
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1024, 729);
+            ClientSize = new System.Drawing.Size(1624, 729);
+            Controls.Add(panel1);
             Controls.Add(statusStrip1);
             Controls.Add(groupBox1);
             Controls.Add(button1);
@@ -1617,6 +1626,8 @@
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).EndInit();
             groupBoxOutput.ResumeLayout(false);
             groupBoxOutput.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputEnergy).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).EndInit();
@@ -1636,8 +1647,6 @@
             groupBox1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1733,5 +1742,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.3.20.0018</AssemblyVersion>
-    <FileVersion>2026.3.20.0018</FileVersion>
+    <AssemblyVersion>2026.3.20.0123</AssemblyVersion>
+    <FileVersion>2026.3.20.0123</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -50,9 +50,7 @@
 
   <Target Name="UnblockBuildOutput" AfterTargets="Build">
     <!-- (260320Ch) Win on ARM のアプリ制御で MOTW 付き DLL がブロックされるため、配布用出力から Zone.Identifier を除去 -->
-    <Exec
-      Condition="'$(OS)' == 'Windows_NT' and Exists('$(TargetDir)')"
-      Command="powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command &quot;Get-ChildItem -LiteralPath '$(TargetDir)' -Recurse -File | Unblock-File&quot;" />
+    <Exec Condition="'$(OS)' == 'Windows_NT' and Exists('$(TargetDir)')" Command="powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command &quot;Get-ChildItem -LiteralPath '$(TargetDir)' -Recurse -File | Unblock-File&quot;" />
   </Target>
 
   <ItemGroup>

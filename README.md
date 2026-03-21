@@ -19,8 +19,20 @@
 ## Install
 
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
-* *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 10.0*** (not ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
+* *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
 * *ReciPro* is distributed under the **MIT license** (free for anyone to use, modify, and redistribute).
+
+### Note on Windows Security Warnings (260320Ch)
+
+* Please download *ReciPro* only from the official GitHub Releases page: https://github.com/seto77/ReciPro/releases/latest
+* On some Windows systems, Microsoft Defender SmartScreen or Smart App Control may display a warning before the installer is executed. This may happen for newly built or narrowly distributed research software, and the warning itself does not necessarily mean that the installer is malicious.
+* If you would like to verify the downloaded installer yourself, you can calculate its SHA256 hash in PowerShell:
+
+```powershell
+Get-FileHash .\ReciProSetup.msi -Algorithm SHA256
+```
+
+* For an additional check, you may also scan the installer with a multi-engine service such as VirusTotal.
 
 ## Manual
   * English (PDF) : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
