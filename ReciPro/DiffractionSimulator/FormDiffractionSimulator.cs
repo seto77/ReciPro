@@ -2936,6 +2936,8 @@ public partial class FormDiffractionSimulator : Form
                 sum[i] += temp[i];
         }
         var destBmp = BitmapConverter.FromArrayToBitmap([.. sum.Select(s => (byte)Math.Min(s, 255))], graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
+        // graphicsBox.ClearGraphicsLayer(); // (260322Ch) GraphicBox2 仮名時点の説明
+        graphicsBox.ClearGraphicsLayer(); // (260322Ch) GraphicBox へ切り替え後、以前の直接描画レイヤーが平均像へ重ならないようにする
         graphicsBox.Image = destBmp;
         Clipboard.SetDataObject(destBmp);
 

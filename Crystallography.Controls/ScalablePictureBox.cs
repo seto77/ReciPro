@@ -489,15 +489,25 @@ public partial class ScalablePictureBox : UserControl
         if (MouseWheel2 != null && MouseWheel2(this, e, ConvertToSrcPt(e.Location)))
             return;
 
+        // if (e.Delta > 0 && MouseScaling)
+        // {//縮小モード
+        //     _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
+        //     Zoom *= 0.5f;
+        // }
+        // else if (e.Delta < 0 && MouseScaling)
+        // {//拡大モード
+        //     _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
+        //     Zoom *= 2f;
+        // }
         if (e.Delta > 0 && MouseScaling)
-        {//縮小モード
-            _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
-            Zoom *= 0.5f;
-        }
-        else if (e.Delta < 0 && MouseScaling)
-        {//拡大モード
+        {//拡大モード (260322Ch) ホイール上回転でズームインするように長年の向きを反転
             _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
             Zoom *= 2f;
+        }
+        else if (e.Delta < 0 && MouseScaling)
+        {//縮小モード (260322Ch) ホイール下回転でズームアウト
+            _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
+            Zoom *= 0.5f;
         }
     }
 

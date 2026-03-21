@@ -47,7 +47,9 @@
             numericBoxZofDet = new NumericBox();
             numericBoxYofDet = new NumericBox();
             label2 = new System.Windows.Forms.Label();
-            graphicsBox = new ImagingSolution.Control.GraphicsBox(components);
+            // graphicsBox = new ImagingSolution.Control.GraphicsBox(components); // (260322Ch) 旧 GraphicsBox 依存
+            // graphicsBox = new Crystallography.Controls.GraphicBox2(components); // (260322Ch) 仮名 GraphicBox2
+            graphicsBox = new Crystallography.Controls.GraphicBox(components); // (260322Ch) FormEBSD も正式名 GraphicBox へ置換する
             trackBarStrSize = new System.Windows.Forms.TrackBar();
             colorControlExcessLine = new ColorControl();
             trackBarLineWidth = new System.Windows.Forms.TrackBar();
@@ -1963,7 +1965,9 @@
         private NumericBox numericBoxZofDet;
         private NumericBox numericBoxYofDet;
         private System.Windows.Forms.Label label2;
-        public ImagingSolution.Control.GraphicsBox graphicsBox;
+        // public ImagingSolution.Control.GraphicsBox graphicsBox; // (260322Ch) 旧 GraphicsBox 型
+        // public Crystallography.Controls.GraphicBox2 graphicsBox; // (260322Ch) 仮名 GraphicBox2
+        public Crystallography.Controls.GraphicBox graphicsBox; // (260322Ch) 正式名 GraphicBox へ移行
         private System.Windows.Forms.TrackBar trackBarStrSize;
         public ColorControl colorControlExcessLine;
         private System.Windows.Forms.TrackBar trackBarLineWidth;

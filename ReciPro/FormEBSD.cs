@@ -1532,7 +1532,8 @@ public partial class FormEBSD : Form
         var previewValues = values != null && values.Length == gridSize * gridSize
             ? values
             : CreateMasterPatternPlaceholderValues(gridSize); // (260321Ch)
-        var min = previewValues.Min();
+        // var min = previewValues.Min(); // (260322Ch) 旧案: データ最小値をそのまま minimum intensity の下限にしていた
+        var min = 0.0; // (260322Ch) MasterPattern preview の minimum intensity 下限は常に 0 にそろえる
         var max = previewValues.Max();
         if (Math.Abs(max - min) < 1e-12)
         {
@@ -1540,15 +1541,36 @@ public partial class FormEBSD : Form
             max = min + 1.0; // (260321Ch) 真っ黒な初期表示を維持したまま、PseudoBitmap のレンジだけ確保する
         }
 
+        var previousPreviewBitmap = masterPatternPreviewBitmap; // (260322Ch) polarity / scale / intensity の見た目設定を新 slice へ引き継ぐ
+        var previousColorScale = previousPreviewBitmap?.ColorScale; // (260322Ch)
+        var previousGrayScale = previousPreviewBitmap?.GrayScale ?? true; // (260322Ch)
+        var previousIsNegative = previousPreviewBitmap?.IsNegative ?? false; // (260322Ch)
+        var previousLowerIntensity = previousPreviewBitmap?.MinValue ?? min; // (260322Ch)
+        var previousUpperIntensity = previousPreviewBitmap?.MaxValue ?? max; // (260322Ch)
+        var preserveZoomAndCenter = scalablePictureBoxAdvancedMasterPattern.PseudoBitmap != null
+            && scalablePictureBoxAdvancedMasterPattern.PseudoBitmap.Width == gridSize
+            && scalablePictureBoxAdvancedMasterPattern.PseudoBitmap.Height == gridSize; // (260322Ch) energy / depth 切替時は表示領域を維持する
+        var previousZoomAndCenter = preserveZoomAndCenter
+            ? scalablePictureBoxAdvancedMasterPattern.ZoomAndCenter
+            : default; // (260322Ch)
+
         masterPatternPreviewBitmap?.Dispose();
-        masterPatternPreviewBitmap = new PseudoBitmap(previewValues, gridSize, PseudoBitmap.ColorScaleFireLiner)
+        // masterPatternPreviewBitmap = new PseudoBitmap(previewValues, gridSize, PseudoBitmap.ColorScaleFireLiner) // (260322Ch) 旧案: slice 切替のたびに polarity / scale が初期化され、見た目が negative 側へ崩れていた
+        masterPatternPreviewBitmap = new PseudoBitmap(previewValues, gridSize)
         {
-            MinValue = min,
-            MaxValue = max,
+            MinValue = previousLowerIntensity,
+            MaxValue = previousUpperIntensity,
+            GrayScale = previousGrayScale,
+            IsNegative = previousIsNegative,
         };
+        if (previousColorScale != null && previousColorScale.Length > 1)
+            masterPatternPreviewBitmap.ColorScale = previousColorScale; // (260322Ch) 現在のカラースケール設定も維持する
 
         scalablePictureBoxAdvancedMasterPattern.Symbols = CreateMasterPatternPreviewSymbols(gridSize); // (260321Ch)
         scalablePictureBoxAdvancedMasterPattern.PseudoBitmap = masterPatternPreviewBitmap;
+        scalablePictureBoxAdvancedMasterPattern.MinimumIntensity = 0; // (260322Ch) minimum intensity の下限は 0 固定
+        if (preserveZoomAndCenter)
+            scalablePictureBoxAdvancedMasterPattern.ZoomAndCenter = previousZoomAndCenter; // (260322Ch) energy / depth 切替時に表示領域をリセットしない
         scalablePictureBoxAdvancedMasterPattern.DrawPictureBox();
     }
 

@@ -1987,7 +1987,9 @@ Double left click: Display the information of the g-vector</value>
     <value>graphicsBox</value>
   </data>
   <data name="&gt;&gt;graphicsBox.Type" xml:space="preserve">
-    <value>ImagingSolution.Control.GraphicsBox, ImagingSolution.Control.GraphicsBox, Culture=neutral, PublicKeyToken=null</value>
+    <!-- <value>ImagingSolution.Control.GraphicsBox, ImagingSolution.Control.GraphicsBox, Culture=neutral, PublicKeyToken=null</value> -->
+    <!-- <value>Crystallography.Controls.GraphicBox2, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value> -->
+    <value>Crystallography.Controls.GraphicBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;graphicsBox.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>

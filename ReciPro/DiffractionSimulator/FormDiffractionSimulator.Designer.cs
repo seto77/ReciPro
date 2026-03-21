@@ -93,7 +93,9 @@
             colorControlScaleAzimuth = new ColorControl();
             colorControlScale2Theta = new ColorControl();
             splitContainer1 = new System.Windows.Forms.SplitContainer();
-            graphicsBox = new ImagingSolution.Control.GraphicsBox(components);
+            // graphicsBox = new ImagingSolution.Control.GraphicsBox(components); // (260322Ch) 旧 GraphicsBox 依存
+            // graphicsBox = new Crystallography.Controls.GraphicBox2(components); // (260322Ch) 仮名 GraphicBox2
+            graphicsBox = new Crystallography.Controls.GraphicBox(components); // (260322Ch) FormDiffractionSimulator を正式名 GraphicBox へ置換
             groupBox7 = new System.Windows.Forms.GroupBox();
             colorControl3D_SpotsNear = new ColorControl();
             numericBox3D_SpotRadius = new NumericBox();
@@ -2837,7 +2839,9 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button buttonResetCenter;
         public NumericBox numericBoxResolution;
-        public ImagingSolution.Control.GraphicsBox graphicsBox;
+        // public ImagingSolution.Control.GraphicsBox graphicsBox; // (260322Ch) 旧 GraphicsBox 型
+        // public Crystallography.Controls.GraphicBox2 graphicsBox; // (260322Ch) 仮名 GraphicBox2
+        public Crystallography.Controls.GraphicBox graphicsBox; // (260322Ch) 正式名 GraphicBox へ移行
         private System.Windows.Forms.ToolStripMenuItem saveAsImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsMetafileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyAsMetafileToolStripMenuItem;

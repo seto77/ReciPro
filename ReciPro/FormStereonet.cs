@@ -1005,8 +1005,9 @@ public partial class FormStereonet : Form
         }
         //解像度300dpiのときのイメージサイズは
         //glString.Font = new Font("Tahoma", trackBarStrSize.Value / 10f / 72f * 300f);
-        var bmp = (Bitmap)graphicsBox.Image;
-
+        // var bmp = (Bitmap)graphicsBox.Image; // (260322Ch) 旧 GraphicsBox では Image から現在表示を取れていた
+        // using var bmp = graphicsBox.RenderedImage; // (260322Ch) GraphicBox2 仮名時点の説明
+        using var bmp = graphicsBox.RenderedImage; // (260322Ch) GraphicBox では Image と Graphics レイヤーの合成結果を明示的に取得する
         bmp.SetResolution(300, 300);
 
         e.Graphics.PageUnit = GraphicsUnit.Inch;

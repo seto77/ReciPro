@@ -658,7 +658,9 @@ Active when "Show 1° line" is checked</value>
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;graphicsBox.Type" xml:space="preserve">
-    <value>ImagingSolution.Control.GraphicsBox, ImagingSolution.Control.GraphicsBox, Culture=neutral, PublicKeyToken=null</value>
+    <!-- <value>ImagingSolution.Control.GraphicsBox, ImagingSolution.Control.GraphicsBox, Culture=neutral, PublicKeyToken=null</value> -->
+    <!-- <value>Crystallography.Controls.GraphicBox2, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value> -->
+    <value>Crystallography.Controls.GraphicBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="checkBoxTiltDirections.Text" xml:space="preserve">
     <value>Show tilt directions</value>
