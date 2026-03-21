@@ -42,6 +42,9 @@
             label9 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             flowLayoutPanelGradient = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelPolarity = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelScale = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelColor = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelImageFilter = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelDustScratches = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxDustScratches = new System.Windows.Forms.CheckBox();
@@ -56,7 +59,7 @@
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             scalablePictureBox = new ScalablePictureBox();
             graphControl = new GraphControl();
-            panel1 = new System.Windows.Forms.Panel();
+            panelMagInfo = new System.Windows.Forms.Panel();
             label14 = new System.Windows.Forms.Label();
             labelResolution = new System.Windows.Forms.Label();
             buttonMag1 = new System.Windows.Forms.Button();
@@ -69,12 +72,15 @@
             label1 = new System.Windows.Forms.Label();
             panelTrackBar.SuspendLayout();
             flowLayoutPanelGradient.SuspendLayout();
+            flowLayoutPanelPolarity.SuspendLayout();
+            flowLayoutPanelScale.SuspendLayout();
+            flowLayoutPanelColor.SuspendLayout();
             flowLayoutPanelImageFilter.SuspendLayout();
             flowLayoutPanelDustScratches.SuspendLayout();
             flowLayoutPanelGaussianBlur2.SuspendLayout();
             panelUpper.SuspendLayout();
             statusStrip1.SuspendLayout();
-            panel1.SuspendLayout();
+            panelMagInfo.SuspendLayout();
             SuspendLayout();
             // 
             // panelTrackBar
@@ -180,13 +186,31 @@
             // flowLayoutPanelGradient
             // 
             resources.ApplyResources(flowLayoutPanelGradient, "flowLayoutPanelGradient");
-            flowLayoutPanelGradient.Controls.Add(label5);
-            flowLayoutPanelGradient.Controls.Add(comboBoxGradient);
-            flowLayoutPanelGradient.Controls.Add(label7);
-            flowLayoutPanelGradient.Controls.Add(comboBoxScale1);
-            flowLayoutPanelGradient.Controls.Add(label9);
-            flowLayoutPanelGradient.Controls.Add(comboBoxScale2);
+            flowLayoutPanelGradient.Controls.Add(flowLayoutPanelPolarity);
+            flowLayoutPanelGradient.Controls.Add(flowLayoutPanelScale);
+            flowLayoutPanelGradient.Controls.Add(flowLayoutPanelColor);
             flowLayoutPanelGradient.Name = "flowLayoutPanelGradient";
+            // 
+            // flowLayoutPanelPolarity
+            // 
+            resources.ApplyResources(flowLayoutPanelPolarity, "flowLayoutPanelPolarity");
+            flowLayoutPanelPolarity.Controls.Add(label5);
+            flowLayoutPanelPolarity.Controls.Add(comboBoxGradient);
+            flowLayoutPanelPolarity.Name = "flowLayoutPanelPolarity";
+            // 
+            // flowLayoutPanelScale
+            // 
+            resources.ApplyResources(flowLayoutPanelScale, "flowLayoutPanelScale");
+            flowLayoutPanelScale.Controls.Add(label7);
+            flowLayoutPanelScale.Controls.Add(comboBoxScale1);
+            flowLayoutPanelScale.Name = "flowLayoutPanelScale";
+            // 
+            // flowLayoutPanelColor
+            // 
+            resources.ApplyResources(flowLayoutPanelColor, "flowLayoutPanelColor");
+            flowLayoutPanelColor.Controls.Add(label9);
+            flowLayoutPanelColor.Controls.Add(comboBoxScale2);
+            flowLayoutPanelColor.Name = "flowLayoutPanelColor";
             // 
             // flowLayoutPanelImageFilter
             // 
@@ -375,20 +399,20 @@
             graphControl.YLog = true;
             graphControl.LinePositionChanged += graphControl_LinePositionChanged;
             // 
-            // panel1
+            // panelMagInfo
             // 
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Controls.Add(label14);
-            panel1.Controls.Add(labelResolution);
-            panel1.Controls.Add(buttonMag1);
-            panel1.Controls.Add(buttonMag2);
-            panel1.Controls.Add(buttonMag4);
-            panel1.Controls.Add(buttonMag_2);
-            panel1.Controls.Add(buttonMag_4);
-            panel1.Controls.Add(buttonMag_8);
-            panel1.Controls.Add(buttonMag_16);
-            panel1.Controls.Add(label1);
-            panel1.Name = "panel1";
+            resources.ApplyResources(panelMagInfo, "panelMagInfo");
+            panelMagInfo.Controls.Add(label14);
+            panelMagInfo.Controls.Add(labelResolution);
+            panelMagInfo.Controls.Add(buttonMag1);
+            panelMagInfo.Controls.Add(buttonMag2);
+            panelMagInfo.Controls.Add(buttonMag4);
+            panelMagInfo.Controls.Add(buttonMag_2);
+            panelMagInfo.Controls.Add(buttonMag_4);
+            panelMagInfo.Controls.Add(buttonMag_8);
+            panelMagInfo.Controls.Add(buttonMag_16);
+            panelMagInfo.Controls.Add(label1);
+            panelMagInfo.Name = "panelMagInfo";
             // 
             // label14
             // 
@@ -459,7 +483,7 @@
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(scalablePictureBox);
-            Controls.Add(panel1);
+            Controls.Add(panelMagInfo);
             Controls.Add(panelTrackBar);
             Controls.Add(graphControl);
             Controls.Add(flowLayoutPanelGradient);
@@ -473,6 +497,12 @@
             panelTrackBar.PerformLayout();
             flowLayoutPanelGradient.ResumeLayout(false);
             flowLayoutPanelGradient.PerformLayout();
+            flowLayoutPanelPolarity.ResumeLayout(false);
+            flowLayoutPanelPolarity.PerformLayout();
+            flowLayoutPanelScale.ResumeLayout(false);
+            flowLayoutPanelScale.PerformLayout();
+            flowLayoutPanelColor.ResumeLayout(false);
+            flowLayoutPanelColor.PerformLayout();
             flowLayoutPanelImageFilter.ResumeLayout(false);
             flowLayoutPanelImageFilter.PerformLayout();
             flowLayoutPanelDustScratches.ResumeLayout(false);
@@ -483,8 +513,8 @@
             panelUpper.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelMagInfo.ResumeLayout(false);
+            panelMagInfo.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -518,7 +548,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelMagInfo;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label labelResolution;
         private System.Windows.Forms.Button buttonMag1;
@@ -529,5 +559,8 @@
         private System.Windows.Forms.Button buttonMag_8;
         private System.Windows.Forms.Button buttonMag_16;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPolarity;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelScale;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelColor;
     }
 }

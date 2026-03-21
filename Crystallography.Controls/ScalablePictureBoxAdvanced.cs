@@ -75,6 +75,8 @@ public partial class ScalablePictureBoxAdvanced : UserControl
         }
     }
 
+    public bool MagInfoVisible { set => panelMagInfo.Visible = value; get => panelMagInfo.Visible; }
+
     /// <summary>
     /// コピーボタンを表示するかどうか
     /// </summary>
@@ -88,10 +90,27 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     //    }
     //}
 
+    /// <summary> Polarity, Scale, Colorを表示するかどうか (互換性確保のために残している) </summary>
+    [Category("Gradient")]
+    public bool ShowGradiaent { get=> flowLayoutPanelGradient.Visible; set=> flowLayoutPanelGradient.Visible=value; }
+
+    [Category("Gradient")]
     /// <summary>
-    /// メモリを表示するかどうか
+    /// Polarity, Scale, Colorを表示するかどうか
     /// </summary>
-    public bool ShowGradiaent { get; set; } = true;
+    public bool GradiaentVisible { get => flowLayoutPanelGradient.Visible; set => flowLayoutPanelGradient.Visible = value; }
+
+    /// <summary>スケール(Log, Linear) 切り替えコンボボックスを表示するかどうか </summary>
+    [Category("Gradient")]
+    public bool ScaleVisible { set => flowLayoutPanelScale.Visible = value; get => flowLayoutPanelScale.Visible; }
+
+    /// <summary>カラー切り替えコンボボックスを表示するかどうか </summary>
+    [Category("Gradient")]
+    public bool ColorVisible { set => flowLayoutPanelColor.Visible = value; get => flowLayoutPanelColor.Visible; }
+   
+    /// <summary>ネガ/ポジ切り替えコンボボックスを表示するかどうか </summary>
+    [Category("Gradient")]
+    public bool PolarityVisible { set => flowLayoutPanelPolarity.Visible = value; get => flowLayoutPanelPolarity.Visible; }
 
     public bool TrackBarVisible { set => panelTrackBar.Visible = value; get => panelTrackBar.Visible; }
 

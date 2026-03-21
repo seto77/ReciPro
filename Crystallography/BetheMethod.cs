@@ -621,7 +621,7 @@ public class BetheMethod
                     localCache[key] = val;
                 }
                 muBack[col * beamCount + row] = val;
-        }
+            }
         return muBack; // (260321Ch)
     }
 
@@ -808,7 +808,7 @@ public class BetheMethod
         var atomSites = new List<(double x, double y, double z, double sigma)>();
         foreach (var atoms in Crystal.Atoms)
         {
-            double sigma = Math.Pow(atoms.AtomicNumber,1.7) * atoms.Occ;
+            double sigma = Math.Pow(atoms.AtomicNumber, 1.7) * atoms.Occ;
             foreach (var atom in atoms.Atom)   // atoms.Atom[] は対称操作で展開された全等価位置
                 atomSites.Add((atom.X, atom.Y, atom.Z, sigma));
         }
@@ -868,7 +868,7 @@ public class BetheMethod
             var beamsPreliminary = beamDirectionsP.Select((e, i) =>
                 {
 
-                    if (!mappingSet.Contains(i))    
+                    if (!mappingSet.Contains(i))
                         return (null, null, null);
 
                     // var localSurface = GetEbsdSurfaceNormal(e); // (260321Ch) 旧案: master 用の局所表面法線を既存 ebsd_DoWork に導入していた
@@ -2135,8 +2135,8 @@ public class BetheMethod
 
             stepP.ForAll(k =>
             {
-                var (sin, cos)=Math.SinCos(2.0 * Math.PI * k / step);
-                var beamRotation = Matrix3D.Rot(new Vector3DBase(cos,sin, 0), SemianglePED);
+                var (sin, cos) = Math.SinCos(2.0 * Math.PI * k / step);
+                var beamRotation = Matrix3D.Rot(new Vector3DBase(cos, sin, 0), SemianglePED);
                 //計算対象のg-Vectorsを決める。
                 var potentialMatrix = Array.Empty<Complex>();
                 var vecK0 = getVecK0(kvac, u0, beamRotation * new Vector3D(0, 0, -1));
@@ -3345,7 +3345,7 @@ public class BetheMethod
         var beams = GC.AllocateUninitializedArray<Beam>(count).AsSpan();
         for (int i = 0; i < count; i++)
         {
-            var (key, gX, gY, gZ, _)  = gCache[beamsSpan[i].cacheIndex]; 
+            var (key, gX, gY, gZ, _) = gCache[beamsSpan[i].cacheIndex];
             var (h, k, l) = decompose(key);
             double vX = gX + kX, vY = gY + kY, vZ = gZ + kZ;
             double q = k0_2 - Dot3(vX, vX, vY, vY, vZ, vZ), p = 2 * Dot3(sX, vX, sY, vY, sZ, vZ);

@@ -359,13 +359,13 @@
     <value>Fire</value>
   </data>
   <data name="comboBoxScale2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 2</value>
+    <value>38, 0</value>
   </data>
   <data name="comboBoxScale2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxScale2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 23</value>
+    <value>80, 23</value>
   </data>
   <data name="comboBoxScale2.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -377,25 +377,25 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBoxScale2.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGradient</value>
+    <value>flowLayoutPanelColor</value>
   </data>
   <data name="&gt;&gt;comboBoxScale2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="comboBoxScale1.Items" xml:space="preserve">
-    <value>Log Scale</value>
+    <value>Log</value>
   </data>
   <data name="comboBoxScale1.Items1" xml:space="preserve">
-    <value>Liner Scale</value>
+    <value>Liner</value>
   </data>
   <data name="comboBoxScale1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 2</value>
+    <value>36, 0</value>
   </data>
   <data name="comboBoxScale1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxScale1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
+    <value>76, 23</value>
   </data>
   <data name="comboBoxScale1.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -407,10 +407,10 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBoxScale1.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGradient</value>
+    <value>flowLayoutPanelScale</value>
   </data>
   <data name="&gt;&gt;comboBoxScale1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="comboBoxGradient.Items" xml:space="preserve">
     <value>Positive </value>
@@ -419,13 +419,13 @@
     <value>Negative</value>
   </data>
   <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 2</value>
+    <value>49, 0</value>
   </data>
   <data name="comboBoxGradient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxGradient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 23</value>
+    <value>68, 23</value>
   </data>
   <data name="comboBoxGradient.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -437,7 +437,7 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBoxGradient.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGradient</value>
+    <value>flowLayoutPanelPolarity</value>
   </data>
   <data name="&gt;&gt;comboBoxGradient.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -449,10 +449,10 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 4</value>
+    <value>2, 4</value>
   </data>
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 0</value>
+    <value>2, 4, 0, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 15</value>
@@ -470,10 +470,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGradient</value>
+    <value>flowLayoutPanelScale</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -482,10 +482,10 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>246, 4</value>
+    <value>2, 4</value>
   </data>
   <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 0</value>
+    <value>2, 4, 0, 0</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 15</value>
@@ -503,10 +503,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGradient</value>
+    <value>flowLayoutPanelColor</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -518,16 +518,16 @@
     <value>2, 4</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 0, 0</value>
+    <value>2, 4, 0, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 15</value>
+    <value>47, 15</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Gradient</value>
+    <value>Polarity</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -536,7 +536,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGradient</value>
+    <value>flowLayoutPanelPolarity</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -546,6 +546,96 @@
   </data>
   <data name="flowLayoutPanelGradient.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelPolarity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelPolarity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelPolarity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 2</value>
+  </data>
+  <data name="flowLayoutPanelPolarity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelPolarity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 23</value>
+  </data>
+  <data name="flowLayoutPanelPolarity.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelPolarity.Name" xml:space="preserve">
+    <value>flowLayoutPanelPolarity</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelPolarity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelPolarity.Parent" xml:space="preserve">
+    <value>flowLayoutPanelGradient</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelPolarity.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanelScale.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelScale.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 2</value>
+  </data>
+  <data name="flowLayoutPanelScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 23</value>
+  </data>
+  <data name="flowLayoutPanelScale.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelScale.Name" xml:space="preserve">
+    <value>flowLayoutPanelScale</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelScale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelScale.Parent" xml:space="preserve">
+    <value>flowLayoutPanelGradient</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelScale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelColor.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>229, 2</value>
+  </data>
+  <data name="flowLayoutPanelColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 23</value>
+  </data>
+  <data name="flowLayoutPanelColor.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelColor.Name" xml:space="preserve">
+    <value>flowLayoutPanelColor</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelColor.Parent" xml:space="preserve">
+    <value>flowLayoutPanelGradient</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelColor.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="flowLayoutPanelGradient.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -1042,7 +1132,7 @@
   <data name="&gt;&gt;graphControl.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="panelMagInfo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
@@ -1079,7 +1169,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1118,7 +1208,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelResolution.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;labelResolution.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1157,7 +1247,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonMag1.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;buttonMag1.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1196,7 +1286,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonMag2.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;buttonMag2.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1235,7 +1325,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonMag4.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;buttonMag4.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1274,7 +1364,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonMag_2.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;buttonMag_2.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1313,7 +1403,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonMag_4.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;buttonMag_4.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -1352,7 +1442,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonMag_8.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;buttonMag_8.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -1391,7 +1481,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonMag_16.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;buttonMag_16.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -1427,39 +1517,39 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelMagInfo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelMagInfo.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 30</value>
   </data>
-  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="panelMagInfo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="panelMagInfo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 2</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelMagInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>397, 29</value>
   </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelMagInfo.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;panelMagInfo.Name" xml:space="preserve">
+    <value>panelMagInfo</value>
   </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelMagInfo.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelMagInfo.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelMagInfo.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

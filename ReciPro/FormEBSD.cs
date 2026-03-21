@@ -770,12 +770,13 @@ public partial class FormEBSD : Form
         toolStripStatusLabel1.Text = $"{sw1.ElapsedMilliseconds} msec. ellapsed for {loop:#,0} backscattered electrons.";
 
         //ステレオネット描画
-        if (radioButtonFrequency.Checked)
-            poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
-        else if (radioButtonAverageEnergy.Checked)
-            poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Average;
-        else
-            poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Sigma;
+        poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
+        //if (radioButtonFrequency.Checked)
+        //    poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
+        //else if (radioButtonAverageEnergy.Checked)
+        //    poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Average;
+        //else
+        //    poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Sigma;
 
         M3 rot = M3.CreateRotationX(SmpTilt);
         poleFigureControl.Vectors = BSEs.Select(e => new V4(rot * e.Vec, e.Energy)).ToArray();
