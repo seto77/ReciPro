@@ -5709,7 +5709,7 @@ by two planes</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, -615677581</value>
+    <value>410, 583</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5747,7 +5747,7 @@ by two planes</value>
     <value>2, 3, 2, 3</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, -615677581</value>
+    <value>410, 583</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

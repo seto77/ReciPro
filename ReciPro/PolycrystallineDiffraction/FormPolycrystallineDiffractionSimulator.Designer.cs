@@ -1413,11 +1413,11 @@
             // 
             this.diffractionPatternControlSimulation.BackColor = System.Drawing.SystemColors.Control;
             this.diffractionPatternControlSimulation.Cameralength = 450D;
-            this.diffractionPatternControlSimulation.Center = ((Crystallography.PointD)(resources.GetObject("diffractionPatternControlSimulation.Center")));
+            // this.diffractionPatternControlSimulation.Center = ((Crystallography.PointD)(resources.GetObject("diffractionPatternControlSimulation.Center"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             this.diffractionPatternControlSimulation.Convergence = 0.0008726646259971648D;
             this.diffractionPatternControlSimulation.ConvergenceDegree = 0.05D;
             this.diffractionPatternControlSimulation.Crystals = null;
-            this.diffractionPatternControlSimulation.DetectorProperty = ((Crystallography.AreaDetector)(resources.GetObject("diffractionPatternControlSimulation.DetectorProperty")));
+            // this.diffractionPatternControlSimulation.DetectorProperty = ((Crystallography.AreaDetector)(resources.GetObject("diffractionPatternControlSimulation.DetectorProperty"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             this.diffractionPatternControlSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diffractionPatternControlSimulation.FilmBlur = 200D;
             this.diffractionPatternControlSimulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1435,7 +1435,7 @@
             this.diffractionPatternControlSimulation.TabIndex = 0;
             this.diffractionPatternControlSimulation.Tau = 0D;
             this.diffractionPatternControlSimulation.Wavelength = 0.041328040768899996D;
-            this.diffractionPatternControlSimulation.WaveProperty = ((Crystallography.WaveProperty)(resources.GetObject("diffractionPatternControlSimulation.WaveProperty")));
+            // this.diffractionPatternControlSimulation.WaveProperty = ((Crystallography.WaveProperty)(resources.GetObject("diffractionPatternControlSimulation.WaveProperty"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             this.diffractionPatternControlSimulation.WaveSource = Crystallography.WaveSource.Xray;
             // 
             // statusStrip1

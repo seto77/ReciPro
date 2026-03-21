@@ -146,7 +146,7 @@
             graphControlEnergyProfile.DivisionLineXVisible = true;
             graphControlEnergyProfile.DivisionLineYVisible = true;
             resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
-            graphControlEnergyProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlEnergyProfile.DrawingRange");
+            // graphControlEnergyProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlEnergyProfile.DrawingRange"); // (260322Ch) GraphControl.DrawingRange は Hidden のため resx 非依存に戻す
             graphControlEnergyProfile.FixRangeHorizontal = false;
             graphControlEnergyProfile.FixRangeVertical = false;
             graphControlEnergyProfile.GraphTitle = "";
@@ -239,7 +239,7 @@
             graphControlDepthProfile.DivisionLineXVisible = true;
             graphControlDepthProfile.DivisionLineYVisible = true;
             resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
-            graphControlDepthProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlDepthProfile.DrawingRange");
+            // graphControlDepthProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlDepthProfile.DrawingRange"); // (260322Ch) GraphControl.DrawingRange は Hidden のため resx 非依存に戻す
             graphControlDepthProfile.FixRangeHorizontal = false;
             graphControlDepthProfile.FixRangeVertical = false;
             graphControlDepthProfile.GraphTitle = "";
@@ -307,7 +307,7 @@
             graphControlDistance.DivisionLineXVisible = true;
             graphControlDistance.DivisionLineYVisible = true;
             resources.ApplyResources(graphControlDistance, "graphControlDistance");
-            graphControlDistance.DrawingRange = (RectangleD)resources.GetObject("graphControlDistance.DrawingRange");
+            // graphControlDistance.DrawingRange = (RectangleD)resources.GetObject("graphControlDistance.DrawingRange"); // (260322Ch) GraphControl.DrawingRange は Hidden のため resx 非依存に戻す
             graphControlDistance.FixRangeHorizontal = false;
             graphControlDistance.FixRangeVertical = false;
             graphControlDistance.GraphTitle = "";

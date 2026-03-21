@@ -217,7 +217,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced.StatusLabel = "Elapsed time:    Dust && Scratches: 0.123msec.  Gaussian Blur: 0.205msec.  ";
             scalablePictureBoxAdvanced.StatusProgress = 0D;
             scalablePictureBoxAdvanced.StatusVisible = false;
-            scalablePictureBoxAdvanced.Title = ((string, System.Drawing.Font, System.Drawing.Color, System.Drawing.Color))resources.GetObject("scalablePictureBoxAdvanced.Title");
+            // scalablePictureBoxAdvanced.Title = ((string, System.Drawing.Font, System.Drawing.Color, System.Drawing.Color))resources.GetObject("scalablePictureBoxAdvanced.Title"); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             scalablePictureBoxAdvanced.TitleVisible = false;
             toolTip.SetToolTip(scalablePictureBoxAdvanced, resources.GetString("scalablePictureBoxAdvanced.ToolTip"));
             scalablePictureBoxAdvanced.TrackBarVisible = true;

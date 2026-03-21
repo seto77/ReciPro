@@ -1,4 +1,4 @@
-namespace ReciPro
+﻿namespace ReciPro
 {
     partial class FormEBSD
     {
@@ -29,8 +29,6 @@ namespace ReciPro
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            // (260322Ch) VS designer で欠落していた custom control の初期化ブロックを直近の正常版から復旧
-            // System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEBSD)); // (260322Ch) FormEBSD.resx に該当キーが無く、Hidden 指定プロパティの復元で起動時例外になるため無効化
             panelGeometry = new System.Windows.Forms.Panel();
             numericBoxSampleTilt = new NumericBox();
             waveLengthControl = new WaveLengthControl();
@@ -104,9 +102,11 @@ namespace ReciPro
             checkBoxDrawDetectorOutline = new System.Windows.Forms.CheckBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
-            label18 = new System.Windows.Forms.Label();
+            groupBox5 = new System.Windows.Forms.GroupBox();
             label17 = new System.Windows.Forms.Label();
             label16 = new System.Windows.Forms.Label();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            label18 = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
             label15 = new System.Windows.Forms.Label();
             tabPage3 = new System.Windows.Forms.TabPage();
@@ -139,8 +139,6 @@ namespace ReciPro
             button5 = new System.Windows.Forms.Button();
             button4 = new System.Windows.Forms.Button();
             button3 = new System.Windows.Forms.Button();
-            groupBox4 = new System.Windows.Forms.GroupBox();
-            groupBox5 = new System.Windows.Forms.GroupBox();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
@@ -153,6 +151,8 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox4.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -162,8 +162,6 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).BeginInit();
             groupBox3.SuspendLayout();
-            groupBox4.SuspendLayout();
-            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // panelGeometry
@@ -310,12 +308,10 @@ namespace ReciPro
             graphControlDepthProfile.DivisionLineColor = System.Drawing.Color.LightGray;
             graphControlDepthProfile.DivisionLineXVisible = true;
             graphControlDepthProfile.DivisionLineYVisible = true;
-            // graphControlDepthProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlDepthProfile.DrawingRange"); // (260322Ch) GraphControl.DrawingRange は Hidden のため resx 非依存に戻す
             graphControlDepthProfile.FixRangeHorizontal = false;
             graphControlDepthProfile.FixRangeVertical = false;
             graphControlDepthProfile.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             graphControlDepthProfile.GraphTitle = "";
-            graphControlDepthProfile.Interpolation = false;
             graphControlDepthProfile.IsIntegerX = false;
             graphControlDepthProfile.IsIntegerY = false;
             graphControlDepthProfile.LabelX = "X:";
@@ -335,9 +331,7 @@ namespace ReciPro
             graphControlDepthProfile.MousePositionYDigit = -1;
             graphControlDepthProfile.Name = "graphControlDepthProfile";
             graphControlDepthProfile.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControlDepthProfile.Profile = null;
             graphControlDepthProfile.Size = new System.Drawing.Size(296, 110);
-            graphControlDepthProfile.Smoothing = false;
             graphControlDepthProfile.TabIndex = 140;
             graphControlDepthProfile.UnitX = "";
             graphControlDepthProfile.UnitY = "";
@@ -358,7 +352,6 @@ namespace ReciPro
             poleFigureControl.Name = "poleFigureControl";
             poleFigureControl.Size = new System.Drawing.Size(300, 381);
             poleFigureControl.TabIndex = 104;
-            poleFigureControl.Vectors = null;
             // 
             // graphControlEnergyProfile
             // 
@@ -373,12 +366,10 @@ namespace ReciPro
             graphControlEnergyProfile.DivisionLineColor = System.Drawing.Color.LightGray;
             graphControlEnergyProfile.DivisionLineXVisible = true;
             graphControlEnergyProfile.DivisionLineYVisible = true;
-            // graphControlEnergyProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlEnergyProfile.DrawingRange"); // (260322Ch) GraphControl.DrawingRange は Hidden のため resx 非依存に戻す
             graphControlEnergyProfile.FixRangeHorizontal = false;
             graphControlEnergyProfile.FixRangeVertical = false;
             graphControlEnergyProfile.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             graphControlEnergyProfile.GraphTitle = "";
-            graphControlEnergyProfile.Interpolation = false;
             graphControlEnergyProfile.IsIntegerX = false;
             graphControlEnergyProfile.IsIntegerY = false;
             graphControlEnergyProfile.LabelX = "X:";
@@ -398,9 +389,7 @@ namespace ReciPro
             graphControlEnergyProfile.MousePositionYDigit = -1;
             graphControlEnergyProfile.Name = "graphControlEnergyProfile";
             graphControlEnergyProfile.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControlEnergyProfile.Profile = null;
             graphControlEnergyProfile.Size = new System.Drawing.Size(296, 110);
-            graphControlEnergyProfile.Smoothing = false;
             graphControlEnergyProfile.TabIndex = 140;
             graphControlEnergyProfile.UnitX = "";
             graphControlEnergyProfile.UnitY = "";
@@ -1415,15 +1404,21 @@ namespace ReciPro
             tabPage1.TabIndex = 0;
             tabPage1.Text = "SEM-EBSD settings";
             // 
-            // label18
+            // groupBox5
             // 
-            label18.AutoSize = true;
-            label18.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            label18.Location = new System.Drawing.Point(8, 81);
-            label18.Name = "label18";
-            label18.Size = new System.Drawing.Size(69, 17);
-            label18.TabIndex = 116;
-            label18.Text = "Sample tilt";
+            groupBox5.Controls.Add(label2);
+            groupBox5.Controls.Add(label17);
+            groupBox5.Controls.Add(label16);
+            groupBox5.Controls.Add(numericBoxYofDet);
+            groupBox5.Controls.Add(numericBoxDetRadius);
+            groupBox5.Controls.Add(numericBoxZofDet);
+            groupBox5.Controls.Add(numericBoxDetTilt);
+            groupBox5.Location = new System.Drawing.Point(7, 120);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new System.Drawing.Size(256, 141);
+            groupBox5.TabIndex = 117;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "SEM && Sample condition";
             // 
             // label17
             // 
@@ -1444,6 +1439,28 @@ namespace ReciPro
             label16.Size = new System.Drawing.Size(98, 17);
             label16.TabIndex = 116;
             label16.Text = "Detector radius";
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(waveLengthControl);
+            groupBox4.Controls.Add(label18);
+            groupBox4.Controls.Add(numericBoxSampleTilt);
+            groupBox4.Location = new System.Drawing.Point(6, 6);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new System.Drawing.Size(256, 108);
+            groupBox4.TabIndex = 117;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "SEM && Sample condition";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label18.Location = new System.Drawing.Point(8, 81);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(69, 17);
+            label18.TabIndex = 116;
+            label18.Text = "Sample tilt";
             // 
             // tabPage2
             // 
@@ -1609,16 +1626,12 @@ namespace ReciPro
             scalablePictureBoxAdvancedMasterPattern.MousePositionLabelVisible = false;
             scalablePictureBoxAdvancedMasterPattern.Name = "scalablePictureBoxAdvancedMasterPattern";
             scalablePictureBoxAdvancedMasterPattern.PictureSize = new System.Drawing.Size(280, 280);
-            scalablePictureBoxAdvancedMasterPattern.PolarityVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.ScaleVisible = true;
+            scalablePictureBoxAdvancedMasterPattern.PolarityVisible = true;
+            scalablePictureBoxAdvancedMasterPattern.ScaleVisible = false;
             scalablePictureBoxAdvancedMasterPattern.ShowGradiaent = true;
             scalablePictureBoxAdvancedMasterPattern.Size = new System.Drawing.Size(280, 363);
-            scalablePictureBoxAdvancedMasterPattern.SkipDrawing = false;
-            scalablePictureBoxAdvancedMasterPattern.StatusLabel = " ";
-            scalablePictureBoxAdvancedMasterPattern.StatusProgress = 0D;
             scalablePictureBoxAdvancedMasterPattern.StatusVisible = false;
             scalablePictureBoxAdvancedMasterPattern.TabIndex = 0;
-            // scalablePictureBoxAdvancedMasterPattern.Title = ((string, System.Drawing.Font, System.Drawing.Color, System.Drawing.Color))resources.GetObject("scalablePictureBoxAdvancedMasterPattern.Title"); // (260322Ch) Title は Hidden のため resx 非依存に戻す
             scalablePictureBoxAdvancedMasterPattern.TitleVisible = false;
             scalablePictureBoxAdvancedMasterPattern.TrackBarVisible = true;
             scalablePictureBoxAdvancedMasterPattern.UpperIntensity = 1D;
@@ -1874,34 +1887,6 @@ namespace ReciPro
             button3.Text = "Copy";
             button3.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(waveLengthControl);
-            groupBox4.Controls.Add(label18);
-            groupBox4.Controls.Add(numericBoxSampleTilt);
-            groupBox4.Location = new System.Drawing.Point(6, 6);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new System.Drawing.Size(256, 108);
-            groupBox4.TabIndex = 117;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "SEM && Sample condition";
-            // 
-            // groupBox5
-            // 
-            groupBox5.Controls.Add(label2);
-            groupBox5.Controls.Add(label17);
-            groupBox5.Controls.Add(label16);
-            groupBox5.Controls.Add(numericBoxYofDet);
-            groupBox5.Controls.Add(numericBoxDetRadius);
-            groupBox5.Controls.Add(numericBoxZofDet);
-            groupBox5.Controls.Add(numericBoxDetTilt);
-            groupBox5.Location = new System.Drawing.Point(7, 120);
-            groupBox5.Name = "groupBox5";
-            groupBox5.Size = new System.Drawing.Size(256, 141);
-            groupBox5.TabIndex = 117;
-            groupBox5.TabStop = false;
-            groupBox5.Text = "SEM && Sample condition";
-            // 
             // FormEBSD
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1937,6 +1922,10 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).EndInit();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
@@ -1953,10 +1942,6 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
-            groupBox5.ResumeLayout(false);
-            groupBox5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

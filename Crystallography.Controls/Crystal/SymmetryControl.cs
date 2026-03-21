@@ -185,8 +185,9 @@ public partial class SymmetryControl : UserControl
 
     public SymmetryControl()
     {
-        if (DesignMode) return;
         InitializeComponent();
+        // if (DesignMode) return; // (260322Ch) 旧コード: design 時に子コントロール未生成のまま return していた
+        if (DesignMode) return; // (260322Ch) Designer 安定化のため InitializeComponent 後に打ち切る
         SymmetrySeriesNumber = 0;
         tableLayoutPanel1.ColumnStyles[2].Width = tableLayoutPanel1.ColumnStyles[6].Width = 0;
     }

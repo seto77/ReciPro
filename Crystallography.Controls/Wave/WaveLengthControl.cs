@@ -293,9 +293,10 @@ public partial class WaveLengthControl : UserControl
     public WaveLengthControl()
 
     {
-        if (DesignMode)
-            return;
         InitializeComponent();
+        // if (DesignMode) return; // (260322Ch) 旧コード: design 時に子コントロール未生成のまま return していた
+        if (DesignMode)
+            return; // (260322Ch) Designer ではコンポーネント生成後の runtime 初期化だけ抑止する
 
 
         comboBoxXRayElement.SelectedIndex = 0;

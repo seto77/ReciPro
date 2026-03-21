@@ -227,7 +227,7 @@
             graphControl.DivisionLineXVisible = true;
             graphControl.DivisionLineYVisible = true;
             graphControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            graphControl.DrawingRange = (RectangleD)resources.GetObject("graphControl.DrawingRange");
+            // graphControl.DrawingRange = (RectangleD)resources.GetObject("graphControl.DrawingRange"); // (260322Ch) GraphControl.DrawingRange は Hidden のため resx 非依存に戻す
             graphControl.FixRangeHorizontal = false;
             graphControl.FixRangeVertical = false;
             graphControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

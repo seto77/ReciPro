@@ -330,8 +330,9 @@ public partial class AtomControl : UserControl
     #region コンストラクタ
     public AtomControl()
     {
-        if (DesignMode) return;
         InitializeComponent();
+        // if (DesignMode) return; // (260322Ch) 旧コード: design 時に InitializeComponent 自体を飛ばしていて Designer が壊れやすかった
+        if (DesignMode) return; // (260322Ch) まず子コントロールを生成してから design-time の追加初期化だけ止める
         SkipEvent = true;
         table = dataSet.DataTableAtom;
         comboBoxAtom.SelectedIndex = 0;

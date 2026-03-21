@@ -868,7 +868,7 @@
             this.waveLengthControl.Margin = new System.Windows.Forms.Padding(0);
             this.waveLengthControl.MinimumSize = new System.Drawing.Size(190, 0);
             this.waveLengthControl.Name = "waveLengthControl";
-            this.waveLengthControl.Property = ((Crystallography.WaveProperty)(resources.GetObject("waveLengthControl.Property")));
+            // this.waveLengthControl.Property = ((Crystallography.WaveProperty)(resources.GetObject("waveLengthControl.Property"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             this.waveLengthControl.ShowWaveSource = false;
             this.waveLengthControl.Size = new System.Drawing.Size(234, 95);
             this.waveLengthControl.TabIndex = 72;
@@ -1540,7 +1540,7 @@
             this.graphControlFrequency.BottomMargin = 0F;
             this.graphControlFrequency.AxisLineColor = System.Drawing.Color.Gray;
             this.graphControlFrequency.DivisionLineColor = System.Drawing.Color.LightGray;
-            this.graphControlFrequency.DrawingRange = ((Crystallography.RectangleD)(resources.GetObject("graphControlFrequency.DrawingRange")));
+            // this.graphControlFrequency.DrawingRange = ((Crystallography.RectangleD)(resources.GetObject("graphControlFrequency.DrawingRange"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             this.graphControlFrequency.FixRangeHorizontal = false;
             this.graphControlFrequency.FixRangeVertical = false;
             this.graphControlFrequency.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F);
@@ -1578,9 +1578,9 @@
             this.scalablePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.scalablePictureBox.AreaRectangle = ((Crystallography.RectangleD)(resources.GetObject("scalablePictureBox.AreaRectangle")));
+            // this.scalablePictureBox.AreaRectangle = ((Crystallography.RectangleD)(resources.GetObject("scalablePictureBox.AreaRectangle"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             this.scalablePictureBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.scalablePictureBox.Center = ((Crystallography.PointD)(resources.GetObject("scalablePictureBox.Center")));
+            // this.scalablePictureBox.Center = ((Crystallography.PointD)(resources.GetObject("scalablePictureBox.Center"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             this.scalablePictureBox.FocusEventEnabled = false;
             this.scalablePictureBox.HorizontalFlip = false;
             this.scalablePictureBox.Location = new System.Drawing.Point(0, 0);
@@ -1588,7 +1588,7 @@
             this.scalablePictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.scalablePictureBox.MouseScaling = true;
             this.scalablePictureBox.Name = "scalablePictureBox";
-            this.scalablePictureBox.PseudoBitmap = ((Crystallography.PseudoBitmap)(resources.GetObject("scalablePictureBox.PseudoBitmap")));
+            // this.scalablePictureBox.PseudoBitmap = ((Crystallography.PseudoBitmap)(resources.GetObject("scalablePictureBox.PseudoBitmap"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             this.scalablePictureBox.ShowAreaRectangle = false;
             this.scalablePictureBox.ShowRimRentangle = false;
             this.scalablePictureBox.Size = new System.Drawing.Size(676, 701);

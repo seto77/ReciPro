@@ -21,6 +21,8 @@ public partial class DiffractionPatternControl : UserControl
 
     private List<Crystal> crystals = null;
 
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public List<Crystal> Crystals
     {
         set { crystals = value; SetPlaneIndex(); }
@@ -47,6 +49,8 @@ public partial class DiffractionPatternControl : UserControl
         get => waveLengthControl.WaveSource;
     }
 
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public WaveProperty WaveProperty
     {
         get => new(waveLengthControl.WaveSource, waveLengthControl.WaveLength, Monochromaticity, Convergence, false);
@@ -161,6 +165,8 @@ public partial class DiffractionPatternControl : UserControl
 
     private PointD center;
 
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public PointD Center
     {
         set
@@ -185,6 +191,8 @@ public partial class DiffractionPatternControl : UserControl
     /// <summary>
     /// 画像プロパティ
     /// </summary>
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public AreaDetector DetectorProperty
     {
         set => detectorProperty = value;
