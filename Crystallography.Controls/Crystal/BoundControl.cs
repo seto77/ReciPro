@@ -12,9 +12,14 @@ namespace Crystallography.Controls;
 public partial class BoundControl : UserControl
 {
     #region プロパティ
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool SkipEvent { get; set; } = false;
     // public Crystal Crystal { get; set; } = null;
 
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Crystal Crystal
     {
         get => crystal; 

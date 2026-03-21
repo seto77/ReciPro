@@ -36,6 +36,8 @@ public partial class WaveLengthControl : UserControl
     /// <summary>
     /// コントロールの配置をLeftToRightか、TopDownにするか
     /// </summary>
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public FlowDirection Direction
     {
         set
@@ -70,6 +72,7 @@ public partial class WaveLengthControl : UserControl
     /// <summary>
     /// 単色モードかどうか falseの場合は白色モード
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool Monochrome
     {
         set
@@ -82,6 +85,7 @@ public partial class WaveLengthControl : UserControl
         get => monochrome;
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Localizable(true)]
     public Font TextFont
     {
@@ -100,6 +104,7 @@ public partial class WaveLengthControl : UserControl
     /// <summary>
     /// WaveSourceを表示するかどうか
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ShowWaveSource
     {
         set { showWaveSource = flowLayoutPanelWaveSource.Visible = value; }
@@ -132,6 +137,7 @@ public partial class WaveLengthControl : UserControl
     /// <summary>
     /// 波長をnm単位のdoubleで取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double WaveLength
     {
         set
@@ -153,6 +159,7 @@ public partial class WaveLengthControl : UserControl
     /// <summary>
     /// 線源を取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public WaveSource WaveSource
     {
         set
@@ -181,6 +188,7 @@ public partial class WaveLengthControl : UserControl
     /// <summary>
     /// X線の線源の元素を取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public int XrayWaveSourceElementNumber
     {
         set
@@ -204,6 +212,7 @@ public partial class WaveLengthControl : UserControl
     /// <summary>
     /// X線の線源のLineを取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public XrayLine XrayWaveSourceLine
     {
         set => comboBoxXrayLine.SelectedItem = value;
@@ -220,6 +229,7 @@ public partial class WaveLengthControl : UserControl
     /// 線源のエネルギー (kV)を取得/設定
     /// X線と電子は単位はkev,中性子はmev
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Energy
     {
         set

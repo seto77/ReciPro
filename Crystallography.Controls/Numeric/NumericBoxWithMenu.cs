@@ -84,8 +84,11 @@ namespace Crystallography.Controls
 
         #region マウスコントロールモード
 
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool AllowMouseControl { get; set; } = false;
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public VH_DirectionEnum MouseDirection
         {
             get { return toolStripComboBoxMouseDirection.SelectedIndex == 0 ? VH_DirectionEnum.Vertical : VH_DirectionEnum.Horizontal; }
@@ -94,6 +97,7 @@ namespace Crystallography.Controls
 
         private double mouseSpeed = 1;
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public double MouseSpeed
         {
             set

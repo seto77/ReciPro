@@ -15,6 +15,9 @@ public partial class FormScatteringFactor : Form
     /// <summary>
     /// 長さの単位の get/set
     /// </summary>
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public LengthUnitEnum LengthUnit
     {
         get => radioButtonAngstrom.Checked ? LengthUnitEnum.Angstrom : LengthUnitEnum.NanoMeter;

@@ -33,10 +33,17 @@ public partial class CrystalDatabaseControl : UserControl
     private static readonly HttpClient httpClient = new() { Timeout = TimeSpan.FromSeconds(600) };
 
     #region フィールド、メソッド、イベント
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool AMCSD_Checked {get=> checkBoxAMCSD.Checked; set => checkBoxAMCSD.Checked = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool COD_Checked {get=>checkBoxCOD.Checked;set => checkBoxCOD.Checked = value; }
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool AMCSD_Has_Read { get; set; }=false;
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool COD_Has_Read { get; set; }=false;
 
     public static string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
@@ -53,10 +60,13 @@ public partial class CrystalDatabaseControl : UserControl
         bindingSource.ResetBindings(false);
     }
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public string SearchFilter { get => bindingSource.Filter; set => bindingSource.Filter = value; }
 
     public string DataTypeFilter;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public float FontSize
     {
         get => dataGridView.Font.Size;
@@ -78,6 +88,7 @@ public partial class CrystalDatabaseControl : UserControl
     public delegate void ProgressChangedEventHandler(object sender, double progress, string message);
     public event ProgressChangedEventHandler ProgressChanged;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool DatabaseSelection { set => flowLayoutPanelDatabase.Visible = value; get => flowLayoutPanelDatabase.Visible; }
 
     #endregion

@@ -15,6 +15,8 @@ public partial class FormCrystalSelection : Form
 
     private bool saveMode = true;
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool SaveMode
     {
         set
@@ -27,6 +29,9 @@ public partial class FormCrystalSelection : Form
 
     private bool loadMode = false;
 
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool LoadMode
     {
         set
@@ -39,6 +44,8 @@ public partial class FormCrystalSelection : Form
 
     private bool showCrystalInformation = false;
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool ShowCrystalInformation
     {
         set

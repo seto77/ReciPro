@@ -32,6 +32,9 @@ namespace Crystallography.Controls
 
         #endregion
 
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string[] HelpItems
         {
             set
@@ -445,6 +448,8 @@ namespace Crystallography.Controls
                 listBoxMacro.Items.Add(new macro(list[i].Key, list[i].Value));
         }
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public byte[] ZippedMacros
         {
             get

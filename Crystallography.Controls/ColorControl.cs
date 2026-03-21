@@ -42,19 +42,23 @@ public partial class ColorControl : UserControl
     [Localizable(true)]
     public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Header/footer text")]
     [Localizable(true)]
     public Padding HeaderMargin { set => labelHeader.Margin = value; get => labelHeader.Margin; }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Header/footer text")]
     [Localizable(true)]
     public string FooterText { set { labelFooter.Text = value; labelFooter.Visible = value != ""; } get => labelFooter.Text; }
 
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Localizable(true)]
     [Category("Header/footer text")]
     public Font FooterFont { set => labelFooter.Font = value; get => labelFooter.Font; }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Localizable(true)]
     [Category("Header/footer text")]
     public Padding FooterMargin { set => labelFooter.Margin = value; get => labelFooter.Margin; }
@@ -64,6 +68,7 @@ public partial class ColorControl : UserControl
     [Category("Color")]
     public bool Inversion { set; get; } = false;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Color")]
     public Color Color
     {
@@ -75,6 +80,8 @@ public partial class ColorControl : UserControl
         }
     }
 
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Color")]
     public int Argb
     {
@@ -82,6 +89,7 @@ public partial class ColorControl : UserControl
         get => Color.ToArgb();
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Color")]
     public int Red
     {
@@ -89,6 +97,7 @@ public partial class ColorControl : UserControl
         get => Inversion ? 255 - pictureBox.BackColor.R : pictureBox.BackColor.R;
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Color")]
     public int Green
     {
@@ -96,6 +105,7 @@ public partial class ColorControl : UserControl
         get => Inversion ? 255 - pictureBox.BackColor.G : pictureBox.BackColor.G;
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Color")]
     public int Blue
     {
@@ -103,6 +113,7 @@ public partial class ColorControl : UserControl
         get => Inversion ? 255 - pictureBox.BackColor.B : pictureBox.BackColor.B;
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Color")]
     public float RedF
     {
@@ -110,6 +121,7 @@ public partial class ColorControl : UserControl
         get => Inversion ? 1 - pictureBox.BackColor.R / 255f : pictureBox.BackColor.R / 255f;
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Color")]
     public float GreenF
     {
@@ -117,6 +129,7 @@ public partial class ColorControl : UserControl
         get => Inversion ? 1 - pictureBox.BackColor.G / 255f : pictureBox.BackColor.G / 255f;
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Color")]
     public float BlueF
     {

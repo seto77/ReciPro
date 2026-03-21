@@ -27,6 +27,8 @@ public partial class AtomControl : UserControl
             return false;
         }
     }
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Crystal Crystal
     {
         get => crystal;
@@ -50,8 +52,11 @@ public partial class AtomControl : UserControl
     public int SymmetrySeriesNumber { get => crystal != null ? crystal.SymmetrySeriesNumber : 0; }
 
     readonly DataSet.DataTableAtomDataTable table;
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool SkipEvent { get; set; } = false;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool AtomicPositionError
     {
         set
@@ -79,6 +84,7 @@ public partial class AtomControl : UserControl
     }
     private bool atmicPositionError = false;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool DebyeWallerError
     {
         set
@@ -107,6 +113,7 @@ public partial class AtomControl : UserControl
     }
     private bool debyeWallerError = false;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool UseIsotropy
     {
         set
@@ -119,6 +126,7 @@ public partial class AtomControl : UserControl
         get => radioButtonIsotoropy.Checked;
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool UseTypeU
     {
         set
@@ -133,72 +141,100 @@ public partial class AtomControl : UserControl
 
 
     #region 温度因子 プロパティ
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Iso { set => numericBoxBiso.Value = value; get => numericBoxBiso.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double IsoErr { set => numericBoxBisoerr.Value = value; get => numericBoxBisoerr.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso11 { set => numericBoxB11.Value = value; get => numericBoxB11.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso11Err { set => numericBoxB11err.Value = value; get => numericBoxB11err.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso12 { set => numericBoxB12.Value = value; get => numericBoxB12.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso12Err { set => numericBoxB12err.Value = value; get => numericBoxB12err.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso13 { set => numericBoxB13.Value = value; get => numericBoxB13.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso13Err { set => numericBoxB13err.Value = value; get => numericBoxB13err.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso22 { set => numericBoxB22.Value = value; get => numericBoxB22.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso22Err { set => numericBoxB22err.Value = value; get => numericBoxB22err.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso23 { set => numericBoxB23.Value = value; get { return numericBoxB23.Value; } }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso23Err { set { numericBoxB23err.Value = value; } get { return numericBoxB23err.Value; } }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso33 { set { numericBoxB33.Value = value; } get { return numericBoxB33.Value; } }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Aniso33Err { set { numericBoxB33err.Value = value; } get { return numericBoxB33err.Value; } }
     #endregion
 
     #region 原子位置 プロパティ
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double X { set { numericBoxX.Value = value; } get { return numericBoxX.Value; } }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double XErr { set { numericBoxXerr.Value = value; } get { return numericBoxXerr.Value; } }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Y { set { numericBoxY.Value = value; } get { return numericBoxY.Value; } }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double YErr { set { numericBoxYerr.Value = value; } get { return numericBoxYerr.Value; } }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Z { set { numericBoxZ.Value = value; } get { return numericBoxZ.Value; } }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double ZErr { set => numericBoxZerr.Value = value; get => numericBoxZerr.Value; }
     #endregion
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double Occ { set => numericBoxOcc.Value = value; get => numericBoxOcc.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public double OccErr { set => numericBoxOccerr.Value = value; get => numericBoxOccerr.Value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public string Label { set => textBoxLabel.Text = value; get => textBoxLabel.Text; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public int AtomNo { set => comboBoxAtom.SelectedIndex = value - 1; get => comboBoxAtom.SelectedIndex + 1; }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public int AtomSubNoXray { set => comboBoxScatteringFactorXray.SelectedIndex = value; get => comboBoxScatteringFactorXray.SelectedIndex; }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Atom")]
     public int AtomSubNoElectron { set => comboBoxScatteringFactorElectron.SelectedIndex = value; get => comboBoxScatteringFactorElectron.SelectedIndex; }
 
     private double[] isotopicComposition;
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public double[] IsotopicComposition
     {
         set
@@ -215,22 +251,32 @@ public partial class AtomControl : UserControl
     }
 
     #region マテリアル プロパティ
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Material properties")]
     public float Ambient { get => (float)numericBoxAmbient.Value; set => numericBoxAmbient.Value = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Material properties")]
     public float Diffusion { get => (float)numericBoxDiffusion.Value; set => numericBoxDiffusion.Value = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Material properties")]
     public float Specular { get => (float)numericBoxSpecular.Value; set => numericBoxSpecular.Value = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Material properties")]
     public float Shininess { get => (float)numericBoxShininess.Value; set => numericBoxShininess.Value = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Material properties")]
     public float Emission { get => (float)numericBoxEmission.Value; set => numericBoxEmission.Value = value; }
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Material properties")]
     public float Alpha { get => (float)numericBoxAlpha.Value; set => numericBoxAlpha.Value = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Material properties")]
     public double Radius { get => numericBoxAtomRadius.Value; set => numericBoxAtomRadius.Value = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Material properties")]
     public Color AtomColor { get => colorControlAtomColor.Color; set => colorControlAtomColor.Color = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Material properties")]
     public bool ShowLabel { get => checkBoxShowLabel.Checked; set => checkBoxShowLabel.Checked = value; }
 
@@ -239,26 +285,32 @@ public partial class AtomControl : UserControl
 
 
     #region Tabの表示/非表示 プロパティ
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Tab")]
     public bool ElementAndPositionTabVisible { set { elementAndPositionTabVisible = value; setTabPages(); } get => elementAndPositionTabVisible; }
     private bool elementAndPositionTabVisible = true;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Tab")]
     public bool OriginShiftVisible { set { originShiftTabVisible = value; setTabPages(); } get => originShiftTabVisible; }
     private bool originShiftTabVisible = true;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Tab")]
     public bool DebyeWallerTabVisible { set { debyeWallerTabVisible = value; setTabPages(); } get => debyeWallerTabVisible; }
     private bool debyeWallerTabVisible = true;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Tab")]
     public bool ScatteringFactorTabVisible { set { scatteringFactorTabVisible = value; setTabPages(); } get => scatteringFactorTabVisible; }
     private bool scatteringFactorTabVisible = true;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Tab")]
     public bool AppearanceTabVisible { set { appearanceTabVisible = value; setTabPages(); } get => appearanceTabVisible; }
     private bool appearanceTabVisible = true;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Tab")]
     public int SelectedTabIndex { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
     #endregion

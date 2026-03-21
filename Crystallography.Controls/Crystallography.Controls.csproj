@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.3.21.1505</AssemblyVersion>
-    <FileVersion>2026.3.21.1505</FileVersion>
+    <AssemblyVersion>2026.3.21.1549</AssemblyVersion>
+    <FileVersion>2026.3.21.1549</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
@@ -14,6 +14,8 @@
     <TieredCompilation>false</TieredCompilation>
     <TieredCompilationQuickJit>false</TieredCompilationQuickJit>
     <TieredCompilationQuickJitForLoops>false</TieredCompilationQuickJitForLoops>
+    <!-- <NoWarn>$(NoWarn);WFO1000</NoWarn> -->
+    <!-- 260322Ch: 他プロジェクトと同じく個別プロパティ属性で対応するため、プロジェクト単位の WFO1000 抑止は外す -->
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

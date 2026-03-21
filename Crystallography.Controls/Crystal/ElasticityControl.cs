@@ -19,6 +19,7 @@ namespace Crystallography.Controls
 
         private int symmetrySeriesNumber = 1;
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public int SymmetrySeriesNumber
         {
             set
@@ -29,6 +30,8 @@ namespace Crystallography.Controls
             get { return symmetrySeriesNumber; }
         }
 
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public Elasticity.Mode Mode
         {
             get

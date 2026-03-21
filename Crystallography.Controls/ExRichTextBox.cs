@@ -41,8 +41,13 @@ public partial class ExRichTextBox : RichTextBox
     //<system.componentmodel.browsable(true)> _
     // <system.componentmodel.category("カスタム")> _
     // <system.componentmodel.description("入力候補を設定、または取得します。")> _
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public string[] AutoCompleteItems { get { return _AutoCompleteItems; } set { _AutoCompleteItems = value; } }
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public string[] ToolTipItems { get { return _ToolTipItems; } set { _ToolTipItems = value; } }
 
     public string[] TextLines { get { return this.Text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None); } }

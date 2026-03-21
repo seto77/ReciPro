@@ -33,6 +33,8 @@ public partial class HorizontalAxisUserControl : UserControl
         }
     }
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public HorizontalAxisProperty HorizontalAxisProperty
     {
         get => new(AxisMode, WaveSource, WaveColor, WaveLength, XrayNumber, XrayLine, ElectronAccVol, TakeoffAngle, TofAngle, TofLength,
@@ -80,6 +82,8 @@ public partial class HorizontalAxisUserControl : UserControl
     }
 
     //現在の軸の情報を返すプロパティ
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public HorizontalAxis AxisMode
     {
         set
@@ -135,6 +139,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// 波長をÅ単位のテキストで取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public string WaveLengthText
     {
         set
@@ -148,6 +153,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// nm単位の実数で取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double WaveLength
     {
         set
@@ -161,6 +167,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// EDXの取り出し角(テキスト) 度単位で取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public string TakeoffAngleText
     {
         set
@@ -181,6 +188,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// EDXの取り出し角 ラジアン単位で取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double TakeoffAngle
     {
         set
@@ -197,6 +205,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// エネルギーの単位
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public EnergyUnitEnum EnergyUnit
     {
         set
@@ -223,6 +232,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// d値の単位
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public LengthUnitEnum DspacingUnit
     {
         set
@@ -246,6 +256,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// 波数の単位 (1/nmか1/Aかのどちらか)
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public LengthUnitEnum WaveNumberUnit
     {
         set
@@ -267,6 +278,7 @@ public partial class HorizontalAxisUserControl : UserControl
     }
 
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public AngleUnitEnum TwoThetaUnit
     {
         set
@@ -296,6 +308,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// TOF時間の単位
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public TimeUnitEnum TofTimeUnit
     {
         set
@@ -321,6 +334,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// TOFの取り出し角 度単位で取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public string TofAngleText
     {
         set
@@ -338,6 +352,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// TOFの取り出し角 ラジアン単位で取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double TofAngle
     {
         set
@@ -354,6 +369,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// TOFの検出距離 mm単位で取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double TofLength
     {
         set
@@ -374,6 +390,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// 線源を取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public WaveSource WaveSource
     {
         set
@@ -402,6 +419,7 @@ public partial class HorizontalAxisUserControl : UserControl
         }
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public WaveColor WaveColor
     {
         set
@@ -433,6 +451,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// X線の線源を取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public int XrayNumber
     {
         set
@@ -448,6 +467,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// X線の線源を取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public XrayLine XrayLine
     {
         set
@@ -463,6 +483,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// 電子線加速電圧(kV)を取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double ElectronAccVol
     {
         set
@@ -478,6 +499,7 @@ public partial class HorizontalAxisUserControl : UserControl
     /// <summary>
     /// 電子線加速電圧(kV)を取得/設定
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public string ElectronAccVoltageText
     {
         set

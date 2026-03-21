@@ -8,6 +8,9 @@ public partial class FormAnotherSpaceGroup : Form
 {
 
     private (int SeriesNum, string Notation)[] candidates;
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public (int SeriesNum, string Notation)[] Candidates
     {
         set

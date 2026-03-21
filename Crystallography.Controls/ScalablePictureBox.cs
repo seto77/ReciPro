@@ -164,6 +164,7 @@ public partial class ScalablePictureBox : UserControl
     /// <summary>
     /// 上下方向の反転をするかどうか
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VerticalFlip
     {
         set { PseudoBitmap.VerticalFlip = value; drawPictureBox(); }
@@ -175,6 +176,7 @@ public partial class ScalablePictureBox : UserControl
     /// <summary>
     /// 上下方向の反転をするかどうか
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool HorizontalFlip
     {
         set { PseudoBitmap.HorizontalFlip = value; drawPictureBox(); }
@@ -189,6 +191,7 @@ public partial class ScalablePictureBox : UserControl
     /// <summary>
     /// 表示倍率
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Zoom
     {
         set
@@ -258,6 +261,8 @@ public partial class ScalablePictureBox : UserControl
     /// <summary>
     /// ZoomやCenter位置を固定するかどうか
     /// </summary>
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool FixZoomAndCenter { get; set; } = false;
 
     public Size CanvasSize { get { return pictureBox.ClientSize; } }
@@ -265,6 +270,7 @@ public partial class ScalablePictureBox : UserControl
     /// <summary>
     /// フォーカスイベント(Enter)を有効にするかどうか
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool FocusEventEnabled { get; set; } = false;
 
     private bool showFocusRectangle = false;
@@ -272,6 +278,7 @@ public partial class ScalablePictureBox : UserControl
     /// <summary>
     /// 外枠を表示する
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ShowRimRentangle
     {
         get => showFocusRectangle;
@@ -290,6 +297,7 @@ public partial class ScalablePictureBox : UserControl
     /// <summary>
     /// AreaRectangleで指定した矩形を表示するかどうか
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ShowAreaRectangle
     {
         set
@@ -354,11 +362,13 @@ public partial class ScalablePictureBox : UserControl
     /// <summary>
     /// マウスによるスケーリングが可能かどうか
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool MouseScaling { set; get; }//マウスによるスケーリングが可能かどうか
 
     /// <summary>
     /// マウスによる平行移動が可能かどうか
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool MouseTranslation { set; get; }
 
     private bool hScrollBarVisible = false;
@@ -367,7 +377,10 @@ public partial class ScalablePictureBox : UserControl
     /// <summary>
     /// クライアント領域の左上にタイトルを表示するか
     /// </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool TitleVisible { get; set; } = false;
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public (string Text, Font Font, Color Color1, Color Color2) Title { get; set; }
 
 
@@ -516,6 +529,7 @@ public partial class ScalablePictureBox : UserControl
 
     private bool manualSpotMode = false;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ManualSpotMode
     {
         set { manualSpotMode = value; if (manualSpotMode) MouseRangeMode = false; }

@@ -10,7 +10,12 @@ namespace Crystallography.Controls;
 public partial class LatticePlaneControl : UserControl
 {
     #region プロパティ, フィールド, イベントハンドラ
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool SkipEvent { get; set; } = false;
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Crystal Crystal
     {
         get => crystal;

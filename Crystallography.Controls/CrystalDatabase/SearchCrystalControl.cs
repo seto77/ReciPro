@@ -15,6 +15,9 @@ public partial class SearchCrystalControl : UserControl
     #region フィールド、プロパティ、イベント
 
     private CrystalDatabaseControl crystalDatabaseControl;
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public CrystalDatabaseControl CrystalDatabaseControl
     {
         get => crystalDatabaseControl;

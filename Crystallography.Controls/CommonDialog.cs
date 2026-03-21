@@ -8,6 +8,8 @@ namespace Crystallography.Controls
     {
         #region プロパティ,フィールド
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public (string Text, double Ratio) Progress
         {
             set
@@ -21,6 +23,8 @@ namespace Crystallography.Controls
 
         public enum DialogModeEnum { Initialize, History, License, Hint }
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public DialogModeEnum DialogMode
         {
             set
@@ -71,6 +75,8 @@ namespace Crystallography.Controls
         }
 
         private string software = "";// e.g., "ReciPro"　
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string Software
         {
             get => software;
@@ -82,6 +88,8 @@ namespace Crystallography.Controls
         }
 
         private string versionAndDate = "";// e.g., "ver3.456(2020/12/31)"　
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string VersionAndDate
         {
             get => versionAndDate;
@@ -94,17 +102,26 @@ namespace Crystallography.Controls
                 labelCopyRight.Text = "Copyright(C) 2005-" + year;
             }
         }
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string Author
         {
             get => labelAuthor.Text;
             set => labelAuthor.Text = value;
         }
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string History { get; set; } = "";
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string[] Hint { set { hint = value; setToolTips(); } get => hint; }
         private string[] hint;
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public bool AutomaticallyClose { set => checkBoxCloseWindow.Checked = value; get => checkBoxCloseWindow.Checked; }
 
         private int currentHintIndex = 0;

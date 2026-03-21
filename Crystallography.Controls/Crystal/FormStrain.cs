@@ -10,6 +10,8 @@ public partial class FormStrain : Form
     public CrystalControl CrystalControl;
     public Crystal crystal;
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Matrix3D StrainMatrix
     {
         get
@@ -30,8 +32,15 @@ public partial class FormStrain : Form
         }
     }
 
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Matrix<double> Compliance { set { elasticityControl1.Compliance = value; } get { return elasticityControl1.Compliance; } }
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Matrix<double> Stiffness { set { elasticityControl1.Stiffness = value; } get { return elasticityControl1.Stiffness; } }
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Elasticity.Mode ElasticityMode { set { elasticityControl1.Mode = value; } get { return elasticityControl1.Mode; } }
 
     public FormStrain()

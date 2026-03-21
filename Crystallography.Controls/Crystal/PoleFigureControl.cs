@@ -33,6 +33,9 @@ public partial class PoleFigureControl : UserControl
 
     private Crystal crystal;
 
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Crystal Crystal
     {
         set { crystal = value; Draw(true); }

@@ -190,8 +190,8 @@ namespace Crystallography
             public EbsdMasterPattern MasterPattern { get; }
         }
 
-        private const int BetheStageWeight = 95; // (260321Ch) 全体進捗のうち Bethe 計算へ割り当てる比率
-        private const int CompileStageWeight = 5; // (260321Ch) 全体進捗のうち plane 変換へ割り当てる比率
+        private const int BetheStageWeight = 99; // (260321Ch) 全体進捗のうち Bethe 計算へ割り当てる比率
+        private const int CompileStageWeight = 1; // (260321Ch) 全体進捗のうち plane 変換へ割り当てる比率
 
         private BetheMethod masterPatternBethe = null; // (260321Ch) MasterPattern 専用の Bethe solver
 

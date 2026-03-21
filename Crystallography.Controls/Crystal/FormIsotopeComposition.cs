@@ -12,6 +12,9 @@ namespace Crystallography.Controls
 
         private int atomNumber = 0;
 
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public int AtomNumber
         {
             set { atomNumber = value; }
@@ -20,6 +23,8 @@ namespace Crystallography.Controls
 
         private double[] isotopicComposition = null;
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public double[] IsotopicComposition
         {
             set
