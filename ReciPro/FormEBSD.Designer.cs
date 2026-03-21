@@ -120,6 +120,25 @@
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             panel1 = new System.Windows.Forms.Panel();
+            panelMasterPatternViewport = new System.Windows.Forms.Panel();
+            scalablePictureBoxAdvancedMasterPattern = new ScalablePictureBoxAdvanced();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            labelMasterPatternEnergy = new System.Windows.Forms.Label();
+            textBoxMasterPatternEnergy = new System.Windows.Forms.TextBox();
+            labelMasterPatternEnergyUnit = new System.Windows.Forms.Label();
+            trackBarMasterPatternEnergy = new System.Windows.Forms.TrackBar();
+            labelMasterPatternDepth = new System.Windows.Forms.Label();
+            textBoxMasterPatternDepth = new System.Windows.Forms.TextBox();
+            labelMasterPatternDepthUnit = new System.Windows.Forms.Label();
+            trackBarMasterPatternDepth = new System.Windows.Forms.TrackBar();
+            flowLayoutPanelMasterPattern = new System.Windows.Forms.FlowLayoutPanel();
+            labelMasterPatternGrid = new System.Windows.Forms.Label();
+            comboBoxMasterPatternGrid = new System.Windows.Forms.ComboBox();
+            labelMasterPatternHemisphere = new System.Windows.Forms.Label();
+            comboBoxMasterPatternHemisphere = new System.Windows.Forms.ComboBox();
+            buttonCreateMasterPattern = new System.Windows.Forms.Button();
+            labelMasterPatternInfo = new System.Windows.Forms.Label();
+            panelMasterPattern3D = new System.Windows.Forms.Panel();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
@@ -138,6 +157,12 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             statusStrip1.SuspendLayout();
+            panel1.SuspendLayout();
+            panelMasterPatternViewport.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).BeginInit();
+            flowLayoutPanelMasterPattern.SuspendLayout();
             SuspendLayout();
             // 
             // panelGeometry
@@ -1590,19 +1615,265 @@
             // 
             // panel1
             // 
-            panel1.Location = new System.Drawing.Point(527, 34);
+            panel1.Controls.Add(panelMasterPatternViewport);
+            panel1.Location = new System.Drawing.Point(527, 2);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(512, 512);
+            panel1.Padding = new System.Windows.Forms.Padding(4);
+            panel1.Size = new System.Drawing.Size(399, 556);
             panel1.TabIndex = 146;
+            // 
+            // panelMasterPatternViewport
+            // 
+            panelMasterPatternViewport.Controls.Add(scalablePictureBoxAdvancedMasterPattern);
+            panelMasterPatternViewport.Controls.Add(flowLayoutPanel5);
+            panelMasterPatternViewport.Controls.Add(flowLayoutPanelMasterPattern);
+            panelMasterPatternViewport.Dock = System.Windows.Forms.DockStyle.Fill;
+            panelMasterPatternViewport.Location = new System.Drawing.Point(4, 4);
+            panelMasterPatternViewport.Name = "panelMasterPatternViewport";
+            panelMasterPatternViewport.Size = new System.Drawing.Size(391, 548);
+            panelMasterPatternViewport.TabIndex = 0;
+            // 
+            // scalablePictureBoxAdvancedMasterPattern
+            // 
+            scalablePictureBoxAdvancedMasterPattern.DecimalPlacesForIntensity = 5;
+            scalablePictureBoxAdvancedMasterPattern.Dock = System.Windows.Forms.DockStyle.Fill;
+            scalablePictureBoxAdvancedMasterPattern.FixZoomAndCenter = false;
+            scalablePictureBoxAdvancedMasterPattern.Font = new System.Drawing.Font("Segoe UI", 9F);
+            scalablePictureBoxAdvancedMasterPattern.FrequencyGraphVisible = false;
+            scalablePictureBoxAdvancedMasterPattern.ImageFilter_DustAndScratches = false;
+            scalablePictureBoxAdvancedMasterPattern.ImageFilter_DustAndScratchesRadius = 1D;
+            scalablePictureBoxAdvancedMasterPattern.ImageFilter_DustAndScratchesThreshold = 3D;
+            scalablePictureBoxAdvancedMasterPattern.ImageFilter_DustAndScratchesVisible = false;
+            scalablePictureBoxAdvancedMasterPattern.ImageFilter_GaussianBlur = false;
+            scalablePictureBoxAdvancedMasterPattern.ImageFilter_GaussianBlurRadius = 1D;
+            scalablePictureBoxAdvancedMasterPattern.ImageFilter_GaussianBlurVisible = false;
+            scalablePictureBoxAdvancedMasterPattern.ImageFilterVisible = false;
+            scalablePictureBoxAdvancedMasterPattern.Location = new System.Drawing.Point(0, 50);
+            scalablePictureBoxAdvancedMasterPattern.LogScaleBar = false;
+            scalablePictureBoxAdvancedMasterPattern.LowerIntensity = 0D;
+            scalablePictureBoxAdvancedMasterPattern.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            scalablePictureBoxAdvancedMasterPattern.MaximumIntensity = 1D;
+            scalablePictureBoxAdvancedMasterPattern.MinimumIntensity = 0D;
+            scalablePictureBoxAdvancedMasterPattern.MousePositionLabelVisible = false;
+            scalablePictureBoxAdvancedMasterPattern.Name = "scalablePictureBoxAdvancedMasterPattern";
+            scalablePictureBoxAdvancedMasterPattern.PictureSize = new System.Drawing.Size(391, 386);
+            scalablePictureBoxAdvancedMasterPattern.ShowGradiaent = true;
+            scalablePictureBoxAdvancedMasterPattern.Size = new System.Drawing.Size(391, 498);
+            scalablePictureBoxAdvancedMasterPattern.SkipDrawing = false;
+            scalablePictureBoxAdvancedMasterPattern.StatusLabel = " ";
+            scalablePictureBoxAdvancedMasterPattern.StatusProgress = 0D;
+            scalablePictureBoxAdvancedMasterPattern.StatusVisible = false;
+            scalablePictureBoxAdvancedMasterPattern.TabIndex = 0;
+            scalablePictureBoxAdvancedMasterPattern.Title = ((string, System.Drawing.Font, System.Drawing.Color, System.Drawing.Color))resources.GetObject("scalablePictureBoxAdvancedMasterPattern.Title");
+            scalablePictureBoxAdvancedMasterPattern.TitleVisible = false;
+            scalablePictureBoxAdvancedMasterPattern.TrackBarVisible = true;
+            scalablePictureBoxAdvancedMasterPattern.UpperIntensity = 1D;
+            scalablePictureBoxAdvancedMasterPattern.VisibleGradient = true;
+            // 
+            // flowLayoutPanel5
+            // 
+            flowLayoutPanel5.AutoSize = true;
+            flowLayoutPanel5.Controls.Add(labelMasterPatternEnergy);
+            flowLayoutPanel5.Controls.Add(textBoxMasterPatternEnergy);
+            flowLayoutPanel5.Controls.Add(labelMasterPatternEnergyUnit);
+            flowLayoutPanel5.Controls.Add(trackBarMasterPatternEnergy);
+            flowLayoutPanel5.Controls.Add(labelMasterPatternDepth);
+            flowLayoutPanel5.Controls.Add(textBoxMasterPatternDepth);
+            flowLayoutPanel5.Controls.Add(labelMasterPatternDepthUnit);
+            flowLayoutPanel5.Controls.Add(trackBarMasterPatternDepth);
+            flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanel5.Location = new System.Drawing.Point(0, 25);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new System.Drawing.Size(391, 25);
+            flowLayoutPanel5.TabIndex = 1;
+            // 
+            // labelMasterPatternEnergy
+            // 
+            labelMasterPatternEnergy.AutoSize = true;
+            labelMasterPatternEnergy.Location = new System.Drawing.Point(0, 8);
+            labelMasterPatternEnergy.Margin = new System.Windows.Forms.Padding(0, 8, 4, 0);
+            labelMasterPatternEnergy.Name = "labelMasterPatternEnergy";
+            labelMasterPatternEnergy.Size = new System.Drawing.Size(43, 15);
+            labelMasterPatternEnergy.TabIndex = 5;
+            labelMasterPatternEnergy.Text = "Energy";
+            // 
+            // textBoxMasterPatternEnergy
+            // 
+            textBoxMasterPatternEnergy.Location = new System.Drawing.Point(47, 2);
+            textBoxMasterPatternEnergy.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            textBoxMasterPatternEnergy.Name = "textBoxMasterPatternEnergy";
+            textBoxMasterPatternEnergy.ReadOnly = true;
+            textBoxMasterPatternEnergy.Size = new System.Drawing.Size(30, 23);
+            textBoxMasterPatternEnergy.TabIndex = 6;
+            // 
+            // labelMasterPatternEnergyUnit
+            // 
+            labelMasterPatternEnergyUnit.AutoSize = true;
+            labelMasterPatternEnergyUnit.Location = new System.Drawing.Point(77, 8);
+            labelMasterPatternEnergyUnit.Margin = new System.Windows.Forms.Padding(0, 8, 6, 0);
+            labelMasterPatternEnergyUnit.Name = "labelMasterPatternEnergyUnit";
+            labelMasterPatternEnergyUnit.Size = new System.Drawing.Size(20, 15);
+            labelMasterPatternEnergyUnit.TabIndex = 7;
+            labelMasterPatternEnergyUnit.Text = "kV";
+            // 
+            // trackBarMasterPatternEnergy
+            // 
+            trackBarMasterPatternEnergy.AutoSize = false;
+            trackBarMasterPatternEnergy.Enabled = false;
+            trackBarMasterPatternEnergy.LargeChange = 1;
+            trackBarMasterPatternEnergy.Location = new System.Drawing.Point(103, 5);
+            trackBarMasterPatternEnergy.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            trackBarMasterPatternEnergy.Maximum = 0;
+            trackBarMasterPatternEnergy.Name = "trackBarMasterPatternEnergy";
+            trackBarMasterPatternEnergy.Size = new System.Drawing.Size(90, 18);
+            trackBarMasterPatternEnergy.TabIndex = 8;
+            trackBarMasterPatternEnergy.ValueChanged += MasterPatternPreviewSelectionChanged;
+            // 
+            // labelMasterPatternDepth
+            // 
+            labelMasterPatternDepth.AutoSize = true;
+            labelMasterPatternDepth.Location = new System.Drawing.Point(201, 8);
+            labelMasterPatternDepth.Margin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            labelMasterPatternDepth.Name = "labelMasterPatternDepth";
+            labelMasterPatternDepth.Size = new System.Drawing.Size(39, 15);
+            labelMasterPatternDepth.TabIndex = 9;
+            labelMasterPatternDepth.Text = "Depth";
+            // 
+            // textBoxMasterPatternDepth
+            // 
+            textBoxMasterPatternDepth.Location = new System.Drawing.Point(240, 2);
+            textBoxMasterPatternDepth.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            textBoxMasterPatternDepth.Name = "textBoxMasterPatternDepth";
+            textBoxMasterPatternDepth.ReadOnly = true;
+            textBoxMasterPatternDepth.Size = new System.Drawing.Size(30, 23);
+            textBoxMasterPatternDepth.TabIndex = 10;
+            // 
+            // labelMasterPatternDepthUnit
+            // 
+            labelMasterPatternDepthUnit.AutoSize = true;
+            labelMasterPatternDepthUnit.Location = new System.Drawing.Point(270, 8);
+            labelMasterPatternDepthUnit.Margin = new System.Windows.Forms.Padding(0, 8, 6, 0);
+            labelMasterPatternDepthUnit.Name = "labelMasterPatternDepthUnit";
+            labelMasterPatternDepthUnit.Size = new System.Drawing.Size(25, 15);
+            labelMasterPatternDepthUnit.TabIndex = 11;
+            labelMasterPatternDepthUnit.Text = "nm";
+            // 
+            // trackBarMasterPatternDepth
+            // 
+            trackBarMasterPatternDepth.AutoSize = false;
+            trackBarMasterPatternDepth.Enabled = false;
+            trackBarMasterPatternDepth.LargeChange = 1;
+            trackBarMasterPatternDepth.Location = new System.Drawing.Point(301, 5);
+            trackBarMasterPatternDepth.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            trackBarMasterPatternDepth.Maximum = 0;
+            trackBarMasterPatternDepth.Name = "trackBarMasterPatternDepth";
+            trackBarMasterPatternDepth.Size = new System.Drawing.Size(90, 18);
+            trackBarMasterPatternDepth.TabIndex = 12;
+            trackBarMasterPatternDepth.ValueChanged += MasterPatternPreviewSelectionChanged;
+            // 
+            // flowLayoutPanelMasterPattern
+            // 
+            flowLayoutPanelMasterPattern.AutoScroll = true;
+            flowLayoutPanelMasterPattern.AutoSize = true;
+            flowLayoutPanelMasterPattern.Controls.Add(labelMasterPatternGrid);
+            flowLayoutPanelMasterPattern.Controls.Add(comboBoxMasterPatternGrid);
+            flowLayoutPanelMasterPattern.Controls.Add(labelMasterPatternHemisphere);
+            flowLayoutPanelMasterPattern.Controls.Add(comboBoxMasterPatternHemisphere);
+            flowLayoutPanelMasterPattern.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanelMasterPattern.Location = new System.Drawing.Point(0, 0);
+            flowLayoutPanelMasterPattern.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanelMasterPattern.Name = "flowLayoutPanelMasterPattern";
+            flowLayoutPanelMasterPattern.Size = new System.Drawing.Size(391, 25);
+            flowLayoutPanelMasterPattern.TabIndex = 0;
+            // 
+            // labelMasterPatternGrid
+            // 
+            labelMasterPatternGrid.AutoSize = true;
+            labelMasterPatternGrid.Location = new System.Drawing.Point(0, 8);
+            labelMasterPatternGrid.Margin = new System.Windows.Forms.Padding(0, 8, 4, 0);
+            labelMasterPatternGrid.Name = "labelMasterPatternGrid";
+            labelMasterPatternGrid.Size = new System.Drawing.Size(29, 15);
+            labelMasterPatternGrid.TabIndex = 0;
+            labelMasterPatternGrid.Text = "Grid";
+            // 
+            // comboBoxMasterPatternGrid
+            // 
+            comboBoxMasterPatternGrid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxMasterPatternGrid.FormattingEnabled = true;
+            comboBoxMasterPatternGrid.Items.AddRange(new object[] { "64", "128", "192", "256", "384", "512", "756", "1024", "1536", "2048" });
+            comboBoxMasterPatternGrid.Location = new System.Drawing.Point(33, 2);
+            comboBoxMasterPatternGrid.Margin = new System.Windows.Forms.Padding(0, 2, 8, 0);
+            comboBoxMasterPatternGrid.Name = "comboBoxMasterPatternGrid";
+            comboBoxMasterPatternGrid.Size = new System.Drawing.Size(76, 23);
+            comboBoxMasterPatternGrid.TabIndex = 1;
+            comboBoxMasterPatternGrid.SelectedIndexChanged += MasterPatternPreviewSelectionChanged;
+            // 
+            // labelMasterPatternHemisphere
+            // 
+            labelMasterPatternHemisphere.AutoSize = true;
+            labelMasterPatternHemisphere.Location = new System.Drawing.Point(117, 8);
+            labelMasterPatternHemisphere.Margin = new System.Windows.Forms.Padding(0, 8, 4, 0);
+            labelMasterPatternHemisphere.Name = "labelMasterPatternHemisphere";
+            labelMasterPatternHemisphere.Size = new System.Drawing.Size(71, 15);
+            labelMasterPatternHemisphere.TabIndex = 2;
+            labelMasterPatternHemisphere.Text = "Hemisphere";
+            // 
+            // comboBoxMasterPatternHemisphere
+            // 
+            comboBoxMasterPatternHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxMasterPatternHemisphere.FormattingEnabled = true;
+            comboBoxMasterPatternHemisphere.Items.AddRange(new object[] { "+Z hemisphere", "-Z hemisphere" });
+            comboBoxMasterPatternHemisphere.Location = new System.Drawing.Point(192, 2);
+            comboBoxMasterPatternHemisphere.Margin = new System.Windows.Forms.Padding(0, 2, 8, 0);
+            comboBoxMasterPatternHemisphere.Name = "comboBoxMasterPatternHemisphere";
+            comboBoxMasterPatternHemisphere.Size = new System.Drawing.Size(108, 23);
+            comboBoxMasterPatternHemisphere.TabIndex = 3;
+            comboBoxMasterPatternHemisphere.SelectedIndexChanged += MasterPatternPreviewSelectionChanged;
+            // 
+            // buttonCreateMasterPattern
+            // 
+            buttonCreateMasterPattern.AutoSize = true;
+            buttonCreateMasterPattern.BackColor = System.Drawing.Color.SteelBlue;
+            buttonCreateMasterPattern.ForeColor = System.Drawing.Color.White;
+            buttonCreateMasterPattern.Location = new System.Drawing.Point(531, 561);
+            buttonCreateMasterPattern.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            buttonCreateMasterPattern.Name = "buttonCreateMasterPattern";
+            buttonCreateMasterPattern.Size = new System.Drawing.Size(122, 25);
+            buttonCreateMasterPattern.TabIndex = 4;
+            buttonCreateMasterPattern.Text = "Build MasterPattern";
+            buttonCreateMasterPattern.UseVisualStyleBackColor = false;
+            buttonCreateMasterPattern.Click += buttonCreateMasterPattern_Click;
+            // 
+            // labelMasterPatternInfo
+            // 
+            labelMasterPatternInfo.AutoSize = true;
+            labelMasterPatternInfo.Location = new System.Drawing.Point(531, 589);
+            labelMasterPatternInfo.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            labelMasterPatternInfo.Name = "labelMasterPatternInfo";
+            labelMasterPatternInfo.Size = new System.Drawing.Size(176, 15);
+            labelMasterPatternInfo.TabIndex = 13;
+            labelMasterPatternInfo.Text = "MasterPattern preview is empty.";
+            // 
+            // panelMasterPattern3D
+            // 
+            panelMasterPattern3D.BackColor = System.Drawing.SystemColors.Control;
+            panelMasterPattern3D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panelMasterPattern3D.Location = new System.Drawing.Point(929, 83);
+            panelMasterPattern3D.Margin = new System.Windows.Forms.Padding(0);
+            panelMasterPattern3D.Name = "panelMasterPattern3D";
+            panelMasterPattern3D.Size = new System.Drawing.Size(343, 345);
+            panelMasterPattern3D.TabIndex = 147;
             // 
             // FormEBSD
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1624, 729);
+            Controls.Add(panelMasterPattern3D);
             Controls.Add(panel1);
             Controls.Add(statusStrip1);
             Controls.Add(groupBox1);
+            Controls.Add(buttonCreateMasterPattern);
             Controls.Add(button1);
             Controls.Add(tabControl1);
             Controls.Add(groupBoxOutput);
@@ -1610,6 +1881,7 @@
             Controls.Add(flowLayoutPanel2);
             Controls.Add(checkBoxDrawDetectorOutline);
             Controls.Add(checkBoxDrawKikuchiLineDynamical);
+            Controls.Add(labelMasterPatternInfo);
             Controls.Add(checkBoxDrawKikuchiLinesKinematical);
             Controls.Add(buttonSimulateEBSD);
             Controls.Add(graphicsBox);
@@ -1647,6 +1919,15 @@
             groupBox1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
+            panel1.ResumeLayout(false);
+            panelMasterPatternViewport.ResumeLayout(false);
+            panelMasterPatternViewport.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).EndInit();
+            flowLayoutPanelMasterPattern.ResumeLayout(false);
+            flowLayoutPanelMasterPattern.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1743,5 +2024,25 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelMasterPattern3D;
+        private System.Windows.Forms.Panel panelMasterPatternViewport;
+        private ScalablePictureBoxAdvanced scalablePictureBoxAdvancedMasterPattern;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPattern;
+        private System.Windows.Forms.Label labelMasterPatternGrid;
+        private System.Windows.Forms.ComboBox comboBoxMasterPatternGrid;
+        private System.Windows.Forms.Label labelMasterPatternHemisphere;
+        private System.Windows.Forms.ComboBox comboBoxMasterPatternHemisphere;
+        private System.Windows.Forms.Label labelMasterPatternEnergy;
+        private System.Windows.Forms.TextBox textBoxMasterPatternEnergy;
+        private System.Windows.Forms.Label labelMasterPatternEnergyUnit;
+        private System.Windows.Forms.TrackBar trackBarMasterPatternEnergy;
+        private System.Windows.Forms.Label labelMasterPatternDepth;
+        private System.Windows.Forms.TextBox textBoxMasterPatternDepth;
+        private System.Windows.Forms.Label labelMasterPatternDepthUnit;
+        private System.Windows.Forms.TrackBar trackBarMasterPatternDepth;
+        private System.Windows.Forms.Button buttonCreateMasterPattern;
+        private System.Windows.Forms.Label labelMasterPatternInfo;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
     }
 }
+

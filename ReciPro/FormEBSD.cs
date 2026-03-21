@@ -26,23 +26,19 @@ public partial class FormEBSD : Form
     #region フィールド、プロパティ
     public FormMain FormMain;
     public GLControlAlpha glControlGeo;
-    public GLControlAlpha glControlMasterKernel; // (260321Ch) MasterKernel preview 用の OpenGL コントロール
+    public GLControlAlpha glControlMasterPattern3D; // (260321Ch) Rosca-Lambert 球面 preview 用の OpenGL コントロール
     private readonly Stopwatch sw1 =new(), sw2 = new();
     private readonly Timer timer = new();
-    private readonly Panel panelMasterKernelToolbar = new() { Dock = DockStyle.Top, Height = 72 }; // (260321Ch)
-    private readonly Panel panelMasterKernelViewport = new() { Dock = DockStyle.Fill }; // (260321Ch)
-    private readonly Button buttonCreateMasterKernel = new() { AutoSize = true, Text = "Build MasterKernel", BackColor = Color.SteelBlue, ForeColor = Color.White, UseVisualStyleBackColor = false, Margin = new Padding(0, 0, 8, 0) }; // (260321Ch)
-    private readonly NumericUpDown numericUpDownMasterKernelGrid = new() { Minimum = 16, Maximum = 512, Value = 64, Width = 70, Margin = new Padding(0, 2, 8, 0) }; // (260321Ch)
-    private readonly ComboBox comboBoxMasterKernelHemisphere = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 108, Margin = new Padding(0, 2, 8, 0) }; // (260321Ch)
-    private readonly ComboBox comboBoxMasterKernelEnergy = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 92, Margin = new Padding(0, 2, 8, 0), Enabled = false }; // (260321Ch)
-    private readonly ComboBox comboBoxMasterKernelDepth = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 92, Margin = new Padding(0, 2, 8, 0), Enabled = false }; // (260321Ch)
-    private readonly Label labelMasterKernelInfo = new() { AutoSize = true, Text = "MasterKernel preview is empty.", Margin = new Padding(0, 8, 0, 0) }; // (260321Ch)
-    private EbsdMasterKernel MasterKernel = null; // (260321Ch) Rosca-Lambert 平面に保存する MasterKernel
-    private BetheMethod masterKernelBethe = null; // (260321Ch) MasterKernel 専用の Bethe solver
-    private double[] masterKernelPendingEnergies = []; // (260321Ch)
-    private double[] masterKernelPendingDepths = []; // (260321Ch)
-    private int masterKernelPendingGridSize = 0; // (260321Ch)
-    private EbsdMasterKernelHemisphere masterKernelPendingHemisphere = EbsdMasterKernelHemisphere.PositiveZ; // (260321Ch)
+
+    // private EbsdMasterPatternHemisphere masterPatternPendingHemisphere = EbsdMasterPatternHemisphere.PositiveZ; // (260321Ch)
+    private readonly EBSD masterPatternEbsd = new(); // (260321Ch) MasterPattern build の実行ロジックは Crystallography.EBSD 側へ移す
+    private EbsdMasterPattern MasterPattern => masterPatternEbsd.MasterPattern; // (260321Ch)
+    private PseudoBitmap masterPatternPreviewBitmap = null; // (260321Ch) ScalablePictureBoxAdvanced に渡す MasterPattern preview 画像
+    private double[] masterPatternPreviewValues2D = []; // (260321Ch) 2D preview に現在表示している強度配列を保持する
+    private double[] masterPatternPreviewValues3DPositive = []; // (260321Ch) 3D preview 用の +Z 半球強度を保持する
+    private double[] masterPatternPreviewValues3DNegative = []; // (260321Ch) 3D preview 用の -Z 半球強度を保持する
+    private int masterPatternPreviewGridSize = 0; // (260321Ch) 現在 preview に使っている Rosca-Lambert 格子サイズ
+    private const int MasterPattern3DPreviewGridMax = 2048; // (260321Ch) polygon 数を抑えるため、3D preview は適度に間引いて描画する
 
     /// <summary>
     /// 飛程計算の際の打ち切りエネルギー (kev)
@@ -137,7 +133,8 @@ public partial class FormEBSD : Form
     {
         InitializeComponent();
 
-        InitializeMasterKernelPreviewControls(); // (260321Ch) panel1 を MasterKernel preview 用 UI に転用する
+        // InitializeMasterPatternPreviewControls(); // (260321Ch) 旧案: preview UI をコード側で組み立てていた
+        buttonStop.Click += buttonStop_Click; // (260321Ch) 既存の Stop ボタンを通常 EBSD と MasterPattern の両方へ使う
     }
 
     private void Timer_Tick(object sender, EventArgs e)
@@ -165,7 +162,8 @@ public partial class FormEBSD : Form
             WorldMatrix = M4.CreateRotationZ(-Math.PI / 2 * 0.2) * M4.CreateRotationY(-Math.PI / 2 * 0.8) * M4.CreateRotationZ(-Math.PI / 2),
         };
         panelGeometry.Controls.Add(glControlGeo);
-        EnsureMasterKernelPreviewControl(); // (260321Ch) MasterKernel preview 用の GLControl を遅延生成する
+        EnsureMasterPatternPreviewControl(); // (260321Ch) MasterPattern preview 用の GLControl を遅延生成する
+        EnsureMasterPattern3DControl(); // (260321Ch) Rosca-Lambert 球面 preview 用の GLControl を生成する
 
         timer.Interval = 1000;
         timer.Tick += Timer_Tick;
@@ -177,7 +175,7 @@ public partial class FormEBSD : Form
         comboBoxScale.SelectedIndex = 0;
         NumericBoxEnergyStart_ValueChanged(sender, e);
         NumericBoxThicknessStart_ValueChanged(sender, e);
-        DrawMasterKernelPreview(); // (260321Ch) 空の preview でも枠を描いておく
+        DrawMasterPatternPreview(); // (260321Ch) 空の preview でも枠を描いておく
     }
 
     private void FormEBSD_FormClosing(object sender, FormClosingEventArgs e)
@@ -187,63 +185,66 @@ public partial class FormEBSD : Form
         Visible = false;
     }
 
-    private void InitializeMasterKernelPreviewControls()
+    /// <summary>
+    /// 旧 preview UI 初期化処理の退避先。
+    /// 現在は designer 管理へ移行したため、互換性維持のための no-op として残している。
+    /// </summary>
+    private void InitializeMasterPatternPreviewControls()
     {
-        // (260321Ch) 既存の未使用 panel1 を preview 用レイアウトに流用する
-        panel1.Controls.Clear();
-        panel1.Padding = new Padding(4);
-
-        var flow = new FlowLayoutPanel()
-        {
-            Dock = DockStyle.Fill,
-            WrapContents = true,
-            AutoScroll = true,
-            Margin = new Padding(0),
-        };
-
-        comboBoxMasterKernelHemisphere.Items.AddRange(["+Z hemisphere", "-Z hemisphere"]);
-        comboBoxMasterKernelHemisphere.SelectedIndex = 0;
-        buttonCreateMasterKernel.Click += buttonCreateMasterKernel_Click;
-        comboBoxMasterKernelHemisphere.SelectedIndexChanged += MasterKernelPreviewSelectionChanged;
-        comboBoxMasterKernelEnergy.SelectedIndexChanged += MasterKernelPreviewSelectionChanged;
-        comboBoxMasterKernelDepth.SelectedIndexChanged += MasterKernelPreviewSelectionChanged;
-
-        flow.Controls.Add(new Label() { AutoSize = true, Text = "Grid", Margin = new Padding(0, 8, 4, 0) });
-        flow.Controls.Add(numericUpDownMasterKernelGrid);
-        flow.Controls.Add(new Label() { AutoSize = true, Text = "Hemisphere", Margin = new Padding(0, 8, 4, 0) });
-        flow.Controls.Add(comboBoxMasterKernelHemisphere);
-        flow.Controls.Add(new Label() { AutoSize = true, Text = "Energy", Margin = new Padding(0, 8, 4, 0) });
-        flow.Controls.Add(comboBoxMasterKernelEnergy);
-        flow.Controls.Add(new Label() { AutoSize = true, Text = "Depth", Margin = new Padding(0, 8, 4, 0) });
-        flow.Controls.Add(comboBoxMasterKernelDepth);
-        flow.Controls.Add(buttonCreateMasterKernel);
-        flow.Controls.Add(labelMasterKernelInfo);
-
-        panelMasterKernelToolbar.Controls.Add(flow);
-        panel1.Controls.Add(panelMasterKernelViewport);
-        panel1.Controls.Add(panelMasterKernelToolbar);
+        // (260321Ch) 旧案: panel1 以下をコードで動的生成していた。designer 管理へ移行したため no-op にして残す。
     }
 
-    private void EnsureMasterKernelPreviewControl()
+    /// <summary>
+    /// MasterPattern preview 用コントロールの初期状態を整える。
+    /// 現在は ScalablePictureBoxAdvanced 上へ枠線と中心線の overlay を設定する役割だけを持つ。
+    /// </summary>
+    private void EnsureMasterPatternPreviewControl()
     {
-        if (glControlMasterKernel != null)
+        // if (glControlMasterPattern != null) return; // (260321Ch) 旧案: OpenGL control を遅延生成していた
+        // glControlMasterPattern = new GLControlAlpha() { ... }; // (260321Ch)
+        if (scalablePictureBoxAdvancedMasterPattern == null)
             return;
 
-        glControlMasterKernel = new GLControlAlpha()
+        // scalablePictureBoxAdvancedMasterPattern.BrightnessAndColorChanged += scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged; // (260321Ch) 旧案: 購読解除を考慮せず追加していた
+        scalablePictureBoxAdvancedMasterPattern.BrightnessAndColorChanged -= scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged;
+        scalablePictureBoxAdvancedMasterPattern.BrightnessAndColorChanged += scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged; // (260321Ch) 輝度やカラースケール変更時に 3D preview の色も同期する
+
+        if (comboBoxMasterPatternGrid != null && comboBoxMasterPatternGrid.SelectedIndex < 0)
         {
-            AllowMouseRotation = false,
+            int defaultIndex = comboBoxMasterPatternGrid.FindStringExact("256");
+            comboBoxMasterPatternGrid.SelectedIndex = defaultIndex >= 0 ? defaultIndex : 0; // (260321Ch) MasterPattern 分解能の既定値は 256 にする
+        }
+        if (comboBoxMasterPatternHemisphere != null && comboBoxMasterPatternHemisphere.SelectedIndex < 0 && comboBoxMasterPatternHemisphere.Items.Count > 0)
+            comboBoxMasterPatternHemisphere.SelectedIndex = 0; // (260321Ch) 2D preview の初期表示半球を +Z にそろえる
+
+        scalablePictureBoxAdvancedMasterPattern.Symbols = CreateMasterPatternPreviewSymbols(
+            MasterPattern?.GridSize ?? GetSelectedMasterPatternGridSize()); // (260321Ch) square frame と中心線を overlay する
+    }
+
+    /// <summary>
+    /// Rosca-Lambert 投影を球面へ戻した 3D preview 用の GLControl を配置する。
+    /// </summary>
+    private void EnsureMasterPattern3DControl()
+    {
+        if (glControlMasterPattern3D != null || panelMasterPattern3D == null)
+            return;
+
+        glControlMasterPattern3D = new GLControlAlpha()
+        {
+            AllowMouseRotation = true,
             AllowMouseScaling = true,
-            AllowMouseTranslating = true,
-            Name = "glControlMasterKernel",
+            AllowMouseTranslating = false,
+            Name = "glControlMasterPattern3D",
             ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-            ProjWidth = 2.4,
+            ProjWidth = 2.6,
             RotationMode = GLControlAlpha.RotationModes.Object,
             Dock = DockStyle.Fill,
-            LightPosition = new V3(0, 0, 100),
+            LightPosition = new V3(20, 20, 60),
             BorderStyle = BorderStyle.Fixed3D,
-            WorldMatrix = M4.Identity,
+            BackColor = Color.Black,
+            WorldMatrix = M4.CreateRotationX(-Math.PI / 5.0) * M4.CreateRotationY(Math.PI / 5.0),
         };
-        panelMasterKernelViewport.Controls.Add(glControlMasterKernel);
+        panelMasterPattern3D.Controls.Add(glControlMasterPattern3D);
     }
     #endregion
 
@@ -390,7 +391,7 @@ public partial class FormEBSD : Form
     {
         SetVector();
         DrawGeometry();
-        DrawMasterKernelPreview(); // (260321Ch) 再表示時に MasterKernel preview も同期する
+        DrawMasterPatternPreview(); // (260321Ch) 再表示時に MasterPattern preview も同期する
     }
 
     private void radioButtonKikuchiThresholdOfStructureFactor_CheckedChanged(object sender, EventArgs e)
@@ -880,6 +881,11 @@ public partial class FormEBSD : Form
     private void buttonSimulateEBSD_Click(object sender, EventArgs e)
     {
         if (Crystal.Bethe.IsCBED_Busy) return;
+        if (masterPatternEbsd.IsBuilding)
+        {
+            toolStripStatusLabel1.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
+            return;
+        }
 
         buttonStop.Visible = true;
         sw1.Restart();
@@ -1156,236 +1162,633 @@ public partial class FormEBSD : Form
 
         Clipboard.SetDataObject(sb.ToString());
     }
+    #endregion
+    
+    #region MasterPattern
+    /// <summary>
+    /// MasterPattern build 中だけ進捗イベントを購読する。
+    /// 二重購読を避けるため、いったん解除してから再登録する。
+    /// </summary>
+    private void AttachMasterPatternBuildEvents()
+    {
+        masterPatternEbsd.MasterPatternProgressChanged -= MasterPattern_EBSD_ProgressChanged;
+        masterPatternEbsd.MasterPatternCompleted -= MasterPattern_EBSD_Completed;
+        masterPatternEbsd.MasterPatternProgressChanged += MasterPattern_EBSD_ProgressChanged;
+        masterPatternEbsd.MasterPatternCompleted += MasterPattern_EBSD_Completed;
+    }
 
-    #region MasterKernel
-    private int MasterKernelDivisionNumber => Math.Max(1, masterKernelPendingGridSize * masterKernelPendingGridSize * Math.Max(1, masterKernelPendingEnergies.Length));
+    /// <summary>
+    /// MasterPattern build 用に追加した進捗イベントを解除する。
+    /// </summary>
+    private void DetachMasterPatternBuildEvents()
+    {
+        masterPatternEbsd.MasterPatternProgressChanged -= MasterPattern_EBSD_ProgressChanged;
+        masterPatternEbsd.MasterPatternCompleted -= MasterPattern_EBSD_Completed;
+    }
 
-    private void buttonCreateMasterKernel_Click(object sender, EventArgs e)
+    /// <summary>
+    /// UI 上の設定値を読み取り、MasterPattern の作成を開始する。
+    /// 実際の計算本体は Crystallography.EBSD に委譲し、このメソッドでは UI の状態遷移だけを扱う。
+    /// </summary>
+    private void buttonCreateMasterPattern_Click(object sender, EventArgs e)
     {
         if (Crystal?.Bethe?.bwEBSD?.IsBusy == true)
         {
             toolStripStatusLabel1.Text = "The regular EBSD solver is running. Wait for it to finish first.";
             return;
         }
-        if (masterKernelBethe?.bwEBSD?.IsBusy == true)
+        if (masterPatternEbsd.IsBuilding)
             return;
 
-        EnsureMasterKernelPreviewControl();
+        EnsureMasterPatternPreviewControl();
 
-        masterKernelPendingGridSize = (int)numericUpDownMasterKernelGrid.Value;
-        masterKernelPendingHemisphere = GetSelectedMasterKernelHemisphere();
-        masterKernelPendingEnergies = EnergyArray;
-        masterKernelPendingDepths = ThicknessArray;
+        // var request = CreateMasterPatternBuildRequest(); // (260321Ch) 旧実装: request 生成を別 helper に切り出していた
+        var request = new EBSD.MasterPatternBuildRequest(
+            Crystal,
+            MaxNumOfBloch,
+            EnergyArray,
+            ThicknessArray,
+            GetSelectedMasterPatternGridSize(),
+            BetheMethod.Solver.Eigen_Eigen,
+            32,
+            checkBoxNonLocalAbsorption.Checked,
+            checkBoxTDSBackground.Checked); // (260321Ch) UI 値をその場で request に束ねる
+        AttachMasterPatternBuildEvents();
+        try
+        {
+            if (!masterPatternEbsd.RunMasterPatternBuild(request))
+            {
+                DetachMasterPatternBuildEvents();
+                return;
+            }
+        }
+        catch
+        {
+            DetachMasterPatternBuildEvents();
+            throw;
+        }
 
-        var directions = EbsdMasterKernel.CreateDirections(masterKernelPendingGridSize, masterKernelPendingHemisphere); // (260321Ch) Rosca-Lambert 格子のセル中心をそのまま exitDirection に使う
-        masterKernelBethe = new BetheMethod(Crystal);
-        masterKernelBethe.EBSD_ProgressChanged += MasterKernel_EBSD_ProgressChanged;
-        masterKernelBethe.EBSD_Completed += MasterKernel_EBSD_Completed;
-
-        buttonCreateMasterKernel.Enabled = false;
-        comboBoxMasterKernelEnergy.Enabled = false;
-        comboBoxMasterKernelDepth.Enabled = false;
-        labelMasterKernelInfo.Text = $"Building {GetHemisphereText(masterKernelPendingHemisphere)} master grid ({masterKernelPendingGridSize} x {masterKernelPendingGridSize})...";
+        buttonCreateMasterPattern.Enabled = false;
+        trackBarMasterPatternEnergy.Enabled = false;
+        trackBarMasterPatternDepth.Enabled = false;
+        buttonStop.Visible = true;
         toolStripProgressBar.Value = 0;
-        toolStripStatusLabel2.Text = "MasterKernel";
-        toolStripStatusLabel1.Text = $"Starting MasterKernel build in the crystal frame ({GetHemisphereText(masterKernelPendingHemisphere)}).";
+        toolStripStatusLabel2.Text = "MasterPattern";
+        // labelMasterPatternInfo.Text = $"Building {GetHemisphereText(request.Hemisphere)} master grid ({request.GridSize} x {request.GridSize})..."; // (260321Ch) 旧案: 単一半球計算を前提にしていた
+        labelMasterPatternInfo.Text = $"Building full sphere master grid ({request.GridSize} x {request.GridSize})...";
+        // toolStripStatusLabel1.Text = $"Starting MasterPattern build in the crystal frame ({GetHemisphereText(request.Hemisphere)})."; // (260321Ch) 旧案
+        toolStripStatusLabel1.Text = "Starting full sphere MasterPattern build in the crystal frame.";
         sw1.Restart();
-
-        // Crystal.RotationMatrix を使う旧案は方位を焼き込んでしまうので、まずはコメントとして残す。 (260321Ch)
-        // masterKernelBethe.RunEBSD(MaxNumOfBloch, masterKernelPendingEnergies, Crystal.RotationMatrix, masterKernelPendingDepths, directions, BetheMethod.Solver.Eigen_Eigen, 32, checkBoxNonLocalAbsorption.Checked, checkBoxTDSBackground.Checked);
-        masterKernelBethe.RunEBSD(MaxNumOfBloch, masterKernelPendingEnergies, Matrix3D.IdentityMatrix, masterKernelPendingDepths, directions, BetheMethod.Solver.Eigen_Eigen, 32, checkBoxNonLocalAbsorption.Checked, checkBoxTDSBackground.Checked);
     }
 
-    private void MasterKernel_EBSD_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    /// <summary>
+    /// Crystallography.EBSD から届いた進捗を UI 表示へ反映する。
+    /// </summary>
+    private void MasterPattern_EBSD_ProgressChanged(object sender, EBSD.MasterPatternProgressChangedEventArgs e)
     {
-        var current = Math.Max(1, e.ProgressPercentage);
         var sec = sw1.ElapsedMilliseconds / 1000.0;
-        var progress = Math.Min(100, (int)(100.0 * current / MasterKernelDivisionNumber));
+        var progress = Math.Clamp(e.ProgressPercentage, 0, 100);
         toolStripProgressBar.Value = progress;
-        toolStripStatusLabel2.Text = $"MasterKernel: {e.UserState}";
+        toolStripStatusLabel2.Text = $"MasterPattern: {e.UserState}";
         toolStripStatusLabel1.Text = $"{progress:f0}% completed, elapsed {sec:f2} s.";
-        labelMasterKernelInfo.Text = $"Building {GetHemisphereText(masterKernelPendingHemisphere)} master grid... {progress}%";
+        // labelMasterPatternInfo.Text = $"Building {GetHemisphereText(e.Request.Hemisphere)} master grid... {progress}%"; // (260321Ch) 旧案: 単一半球計算を前提にしていた
+        labelMasterPatternInfo.Text = $"Building full sphere master grid... {progress}%";
         Application.DoEvents();
     }
 
-    private void MasterKernel_EBSD_Completed(object sender, RunWorkerCompletedEventArgs e)
+    /// <summary>
+    /// Crystallography.EBSD 側の build 完了通知を受け、selector と preview を更新する。
+    /// </summary>
+    private void MasterPattern_EBSD_Completed(object sender, EBSD.MasterPatternCompletedEventArgs e)
     {
-        if (masterKernelBethe != null)
-        {
-            masterKernelBethe.EBSD_ProgressChanged -= MasterKernel_EBSD_ProgressChanged;
-            masterKernelBethe.EBSD_Completed -= MasterKernel_EBSD_Completed;
-        }
-
-        buttonCreateMasterKernel.Enabled = true;
+        DetachMasterPatternBuildEvents();
+        buttonCreateMasterPattern.Enabled = true;
+        buttonStop.Visible = false;
         var sec = sw1.ElapsedMilliseconds / 1000.0;
 
         if (e.Error != null)
         {
-            toolStripStatusLabel2.Text = "MasterKernel failed";
+            toolStripStatusLabel2.Text = "MasterPattern failed";
             toolStripStatusLabel1.Text = e.Error.Message;
-            labelMasterKernelInfo.Text = "MasterKernel build failed.";
+            labelMasterPatternInfo.Text = "MasterPattern build failed.";
+            UpdateMasterPatternSelectors();
+            DrawMasterPatternPreview();
             return;
         }
 
-        if (e.Cancelled || masterKernelBethe?.Disks == null)
+        if (e.Cancelled || e.MasterPattern == null)
         {
-            toolStripStatusLabel2.Text = "MasterKernel cancelled";
+            toolStripStatusLabel2.Text = "MasterPattern cancelled";
             toolStripStatusLabel1.Text = $"Elapsed {sec:f2} s.";
-            labelMasterKernelInfo.Text = "MasterKernel build was cancelled.";
+            labelMasterPatternInfo.Text = "MasterPattern build was cancelled.";
+            UpdateMasterPatternSelectors();
+            DrawMasterPatternPreview();
             return;
         }
 
-        MasterKernel = EbsdMasterKernel.FromDisks(masterKernelBethe.Disks, masterKernelPendingEnergies, masterKernelPendingDepths, masterKernelPendingGridSize, masterKernelPendingHemisphere);
-        UpdateMasterKernelSelectors();
-        DrawMasterKernelPreview();
+        UpdateMasterPatternSelectors();
+        DrawMasterPatternPreview();
         toolStripProgressBar.Value = 100;
-        toolStripStatusLabel2.Text = "MasterKernel completed";
-        toolStripStatusLabel1.Text = $"MasterKernel built in {sec:f2} s. ({masterKernelPendingGridSize} x {masterKernelPendingGridSize}, {GetHemisphereText(masterKernelPendingHemisphere)})";
-        labelMasterKernelInfo.Text = $"Ready: {GetHemisphereText(masterKernelPendingHemisphere)}, {MasterKernel?.Energies.Length ?? 0} energies, {MasterKernel?.Depths.Length ?? 0} depths.";
+        toolStripStatusLabel2.Text = "MasterPattern completed";
+        // toolStripStatusLabel1.Text = $"MasterPattern built in {sec:f2} s. ({e.Request.GridSize} x {e.Request.GridSize}, {GetHemisphereText(e.Request.Hemisphere)})"; // (260321Ch) 旧案
+        toolStripStatusLabel1.Text = $"MasterPattern built in {sec:f2} s. ({e.Request.GridSize} x {e.Request.GridSize}, full sphere)";
+        // labelMasterPatternInfo.Text = $"Ready: {GetHemisphereText(e.Request.Hemisphere)}, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // (260321Ch) 旧案
+        labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths.";
     }
 
-    private void MasterKernelPreviewSelectionChanged(object sender, EventArgs e) => DrawMasterKernelPreview();
-
-    private void UpdateMasterKernelSelectors()
+    /// <summary>
+    /// 進行中の通常 EBSD または MasterPattern build を停止する。
+    /// </summary>
+    private void buttonStop_Click(object sender, EventArgs e)
     {
-        comboBoxMasterKernelEnergy.Items.Clear();
-        comboBoxMasterKernelDepth.Items.Clear();
-
-        if (MasterKernel == null)
+        if (masterPatternEbsd.IsBuilding)
         {
-            comboBoxMasterKernelEnergy.Enabled = false;
-            comboBoxMasterKernelDepth.Enabled = false;
+            masterPatternEbsd.CancelMasterPatternBuild();
+            toolStripStatusLabel2.Text = "MasterPattern cancel requested";
+            toolStripStatusLabel1.Text = "Stopping MasterPattern...";
             return;
         }
 
-        comboBoxMasterKernelEnergy.Items.AddRange([.. MasterKernel.Energies.Select((energy, i) => (object)$"{i}: {energy:g} kV")]);
-        comboBoxMasterKernelDepth.Items.AddRange([.. MasterKernel.Depths.Select((depth, i) => (object)$"{i}: {depth:g} nm")]);
-        comboBoxMasterKernelEnergy.Enabled = comboBoxMasterKernelEnergy.Items.Count > 0;
-        comboBoxMasterKernelDepth.Enabled = comboBoxMasterKernelDepth.Items.Count > 0;
-        if (comboBoxMasterKernelEnergy.Items.Count > 0)
-            comboBoxMasterKernelEnergy.SelectedIndex = 0;
-        if (comboBoxMasterKernelDepth.Items.Count > 0)
-            comboBoxMasterKernelDepth.SelectedIndex = 0;
+        if (Crystal?.Bethe?.bwEBSD?.IsBusy == true)
+        {
+            Crystal.Bethe.CancelEBSD();
+            toolStripStatusLabel2.Text = "EBSD cancel requested";
+            toolStripStatusLabel1.Text = "Stopping EBSD...";
+            return;
+        }
+
+        buttonStop.Visible = false;
     }
 
-    private void DrawMasterKernelPreview()
+    /// <summary>
+    /// 作成済み MasterPattern の energy / depth selector を UI へ反映する。
+    /// </summary>
+    private void UpdateMasterPatternSelectors()
     {
-        if (glControlMasterKernel == null)
-            return;
-
-        var glObjects = new List<GLObject>();
-        AddMasterKernelFrame(glObjects);
-
-        if (MasterKernel == null)
+        if (MasterPattern == null)
         {
-            labelMasterKernelInfo.Text = "MasterKernel preview is empty.";
-            glControlMasterKernel.DeleteAllObjects();
-            glControlMasterKernel.AddObjects(glObjects);
-            glControlMasterKernel.Refresh();
+            trackBarMasterPatternEnergy.Enabled = false;
+            trackBarMasterPatternDepth.Enabled = false;
+            textBoxMasterPatternEnergy.Text = "";
+            textBoxMasterPatternDepth.Text = "";
             return;
         }
 
-        var selectedHemisphere = GetSelectedMasterKernelHemisphere();
-        if (selectedHemisphere != MasterKernel.Hemisphere)
+        trackBarMasterPatternEnergy.Minimum = 0;
+        trackBarMasterPatternDepth.Minimum = 0;
+        trackBarMasterPatternEnergy.Maximum = Math.Max(0, MasterPattern.Energies.Length - 1);
+        trackBarMasterPatternDepth.Maximum = Math.Max(0, MasterPattern.Depths.Length - 1);
+        trackBarMasterPatternEnergy.Enabled = MasterPattern.Energies.Length > 0;
+        trackBarMasterPatternDepth.Enabled = MasterPattern.Depths.Length > 0;
+        trackBarMasterPatternEnergy.Value = 0;
+        trackBarMasterPatternDepth.Value = 0;
+        UpdateMasterPatternSliceSelectorText(); // (260321Ch) trackbar と表示テキストを同期する
+    }
+
+    /// <summary>
+    /// UI の grid selector から、MasterPattern の分割数を取得する。
+    /// </summary>
+    private int GetSelectedMasterPatternGridSize()
+    {
+        if (comboBoxMasterPatternGrid?.SelectedItem is object selectedItem
+            && int.TryParse(selectedItem.ToString(), out var gridSize)
+            && gridSize > 0)
+            return gridSize;
+
+        if (comboBoxMasterPatternGrid != null
+            && int.TryParse(comboBoxMasterPatternGrid.Text, out gridSize)
+            && gridSize > 0)
+            return gridSize;
+
+        return 256; // (260321Ch)
+    }
+
+    /// <summary>
+    /// UI の hemisphere selector から、対応する enum 値を取得する。
+    /// </summary>
+    private EbsdMasterPatternHemisphere GetSelectedMasterPatternHemisphere()
+        => comboBoxMasterPatternHemisphere.SelectedIndex == 1 ? EbsdMasterPatternHemisphere.NegativeZ : EbsdMasterPatternHemisphere.PositiveZ;
+
+    /// <summary>
+    /// 現在の energy / depth trackbar の値を、表示用テキストへ反映する。
+    /// </summary>
+    private void UpdateMasterPatternSliceSelectorText()
+    {
+        if (MasterPattern == null)
         {
-            labelMasterKernelInfo.Text = $"Built slice is {GetHemisphereText(MasterKernel.Hemisphere)}. Rebuild after changing hemisphere.";
-            glControlMasterKernel.DeleteAllObjects();
-            glControlMasterKernel.AddObjects(glObjects);
-            glControlMasterKernel.Refresh();
+            textBoxMasterPatternEnergy.Text = "";
+            textBoxMasterPatternDepth.Text = "";
             return;
         }
 
-        if (comboBoxMasterKernelEnergy.SelectedIndex < 0 || comboBoxMasterKernelDepth.SelectedIndex < 0)
+        textBoxMasterPatternEnergy.Text = trackBarMasterPatternEnergy.Enabled && trackBarMasterPatternEnergy.Value < MasterPattern.Energies.Length
+            ? MasterPattern.Energies[trackBarMasterPatternEnergy.Value].ToString("g")
+            : "";
+        textBoxMasterPatternDepth.Text = trackBarMasterPatternDepth.Enabled && trackBarMasterPatternDepth.Value < MasterPattern.Depths.Length
+            ? MasterPattern.Depths[trackBarMasterPatternDepth.Value].ToString("g")
+            : ""; // (260321Ch)
+    }
+
+    /// <summary>
+    /// hemisphere enum を UI 表示用の文字列へ変換する。
+    /// </summary>
+    private static string GetHemisphereText(EbsdMasterPatternHemisphere hemisphere)
+        => hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? "+Z hemisphere" : "-Z hemisphere";
+
+    #endregion
+
+    #region MasterPatternの二次元描画と3Dレンダリング
+    /// <summary>
+    /// preview 条件の selector が変化したときに表示を更新する。
+    /// </summary>
+    private void MasterPatternPreviewSelectionChanged(object sender, EventArgs e)
+    {
+        UpdateMasterPatternSliceSelectorText(); // (260321Ch) energy / depth の数値表示を先に更新する
+        DrawMasterPatternPreview();
+    }
+
+    /// <summary>
+    /// ScalablePictureBoxAdvanced 側で輝度レンジやカラースケールが変わったときに、
+    /// 現在の 3D preview を同じ見え方で再描画する。
+    /// </summary>
+    private void scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged(object sender, EventArgs e)
+        => RedrawMasterPattern3DPreviewFromCache();
+
+    /// <summary>
+    /// 現在選択されている MasterPattern slice を preview 画像へ変換して表示する。
+    /// </summary>
+    private void DrawMasterPatternPreview()
+    {
+        if (scalablePictureBoxAdvancedMasterPattern == null)
+            return;
+
+        if (MasterPattern == null)
         {
-            glControlMasterKernel.DeleteAllObjects();
-            glControlMasterKernel.AddObjects(glObjects);
-            glControlMasterKernel.Refresh();
+            labelMasterPatternInfo.Text = "MasterPattern preview is empty.";
+            ResetMasterPatternPreviewCache(); // (260321Ch) build 前は 3D 再描画用のキャッシュも空にしておく
+            SetMasterPatternPreviewBitmap(CreateMasterPatternPlaceholderValues(GetSelectedMasterPatternGridSize()), GetSelectedMasterPatternGridSize()); // (260321Ch)
+            ClearMasterPattern3DPreview(); // (260321Ch) MasterPattern 未作成時の 3D preview は空にする
             return;
         }
 
-        var plane = MasterKernel.GetPlane(comboBoxMasterKernelEnergy.SelectedIndex, comboBoxMasterKernelDepth.SelectedIndex);
+        var selectedHemisphere = GetSelectedMasterPatternHemisphere();
+        int selectedEnergyIndex = trackBarMasterPatternEnergy.Enabled ? trackBarMasterPatternEnergy.Value : -1;
+        int selectedDepthIndex = trackBarMasterPatternDepth.Enabled ? trackBarMasterPatternDepth.Value : -1;
+        if (selectedEnergyIndex < 0 || selectedDepthIndex < 0)
+        {
+            ResetMasterPatternPreviewCache(); // (260321Ch) selector 未選択時は古い 3D preview を残さない
+            SetMasterPatternPreviewBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260321Ch)
+            ClearMasterPattern3DPreview(); // (260321Ch)
+            return;
+        }
+
+        // var plane = MasterPattern.GetPlane(comboBoxMasterPatternEnergy.SelectedIndex, comboBoxMasterPatternDepth.SelectedIndex); // (260321Ch) 旧案: 単一半球前提の取得
+        var plane = MasterPattern.GetPlane(selectedHemisphere, selectedEnergyIndex, selectedDepthIndex);
         if (plane == null || plane.Length == 0)
         {
-            glControlMasterKernel.DeleteAllObjects();
-            glControlMasterKernel.AddObjects(glObjects);
-            glControlMasterKernel.Refresh();
+            ResetMasterPatternPreviewCache(); // (260321Ch) plane が存在しないときは cached slice を破棄する
+            SetMasterPatternPreviewBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260321Ch)
+            ClearMasterPattern3DPreview(); // (260321Ch)
             return;
         }
 
-        var previewSize = Math.Min(MasterKernel.GridSize, 96); // (260321Ch) 描画負荷を抑えるため preview 側だけ適度に間引く
-        var max = plane.Max();
-        if (max <= 0)
-            max = 1;
+        var previewValues = CreateMasterPatternPreviewValues(plane, MasterPattern.GridSize); // (260321Ch) 2D / 3D preview で同じ正規化済み強度を共有する
+        var positivePreviewValues = CreateMasterPatternPreviewValues(MasterPattern.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, selectedEnergyIndex, selectedDepthIndex), MasterPattern.GridSize); // (260321Ch) 3D 表示では +Z を常に描画する
+        var negativePreviewValues = CreateMasterPatternPreviewValues(MasterPattern.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, selectedEnergyIndex, selectedDepthIndex), MasterPattern.GridSize); // (260321Ch) 3D 表示では -Z も常に描画する
 
-        for (int py = 0; py < previewSize; py++)
+        var energy = MasterPattern.Energies[selectedEnergyIndex];
+        var depth = MasterPattern.Depths[selectedDepthIndex];
+        // labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(MasterPattern.Hemisphere)}, E = {energy:g} kV, depth = {depth:g} nm"; // (260321Ch) 旧案: build 済み hemisphere が 1 つだけだった
+        labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm";
+        masterPatternPreviewValues2D = previewValues; // (260321Ch) 2D preview に表示している slice を保持する
+        masterPatternPreviewValues3DPositive = positivePreviewValues; // (260321Ch) 3D preview では +Z 半球を常に使う
+        masterPatternPreviewValues3DNegative = negativePreviewValues; // (260321Ch) 3D preview では -Z 半球も常に使う
+        masterPatternPreviewGridSize = MasterPattern.GridSize; // (260321Ch)
+        // SetMasterPatternPreviewBitmap(previewValues, MasterPattern.GridSize); // (260321Ch) 旧案: 2D preview のみ更新していた
+        SetMasterPatternPreviewBitmap(previewValues, MasterPattern.GridSize); // (260321Ch)
+        // DrawMasterPattern3DPreview(previewValues, MasterPattern.GridSize, MasterPattern.Hemisphere, masterPatternPreviewBitmap); // (260321Ch) 旧案: 2D で選択した半球だけを 3D に描いていた
+        RedrawMasterPattern3DPreviewFromCache(); // (260321Ch) 2D 用の見た目設定と同じカラースケールで 3D を描き直す
+    }
+
+    /// <summary>
+    /// 現在表示中の MasterPattern preview 値を破棄する。
+    /// </summary>
+    private void ResetMasterPatternPreviewCache()
+    {
+        masterPatternPreviewValues2D = []; // (260321Ch)
+        masterPatternPreviewValues3DPositive = []; // (260321Ch)
+        masterPatternPreviewValues3DNegative = []; // (260321Ch)
+        masterPatternPreviewGridSize = 0; // (260321Ch)
+    }
+
+    /// <summary>
+    /// キャッシュ済みの preview 値と現在の PseudoBitmap 設定を使って 3D を描き直す。
+    /// 輝度レンジやカラースケール変更時に 2D 側の設定をそのまま反映するために使う。
+    /// </summary>
+    private void RedrawMasterPattern3DPreviewFromCache()
+    {
+        if (masterPatternPreviewBitmap == null || masterPatternPreviewGridSize <= 0)
         {
-            int y0 = py * MasterKernel.GridSize / previewSize;
-            int y1 = Math.Max(y0 + 1, (py + 1) * MasterKernel.GridSize / previewSize);
-            double yMin = 1.0 - 2.0 * (py + 1) / previewSize;
-            double yMax = 1.0 - 2.0 * py / previewSize;
+            ClearMasterPattern3DPreview();
+            return;
+        }
 
-            for (int px = 0; px < previewSize; px++)
+        if (masterPatternPreviewValues2D == null || masterPatternPreviewValues2D.Length != masterPatternPreviewGridSize * masterPatternPreviewGridSize)
+        {
+            ClearMasterPattern3DPreview();
+            return;
+        }
+
+        DrawMasterPattern3DPreview(
+            masterPatternPreviewValues3DPositive,
+            masterPatternPreviewValues3DNegative,
+            masterPatternPreviewGridSize,
+            masterPatternPreviewBitmap); // (260321Ch) ScalablePictureBoxAdvanced の見た目設定を OpenGL 側へ反映する
+    }
+
+    /// <summary>
+    /// 生の MasterPattern plane を、preview 用の 0-1 強度配列へ変換する。
+    /// </summary>
+    private static double[] CreateMasterPatternPreviewValues(float[] plane, int gridSize)
+    {
+        if (plane == null || plane.Length != gridSize * gridSize)
+            return CreateMasterPatternPlaceholderValues(gridSize);
+
+        var max = plane.Max();
+        return max > 0
+            ? [.. plane.Select(value => Math.Sqrt(Math.Max(0f, value) / max))]
+            : CreateMasterPatternPlaceholderValues(gridSize); // (260321Ch) 0 除算を避けつつ 2D / 3D で同じ見え方を維持する
+    }
+
+    /// <summary>
+    /// preview 用の数値配列を PseudoBitmap に変換し、ScalablePictureBoxAdvanced へ設定する。
+    /// </summary>
+    private void SetMasterPatternPreviewBitmap(double[] values, int gridSize)
+    {
+        if (scalablePictureBoxAdvancedMasterPattern == null || gridSize <= 0)
+            return;
+
+        var previewValues = values != null && values.Length == gridSize * gridSize
+            ? values
+            : CreateMasterPatternPlaceholderValues(gridSize); // (260321Ch)
+        var min = previewValues.Min();
+        var max = previewValues.Max();
+        if (Math.Abs(max - min) < 1e-12)
+        {
+            // previewValues = CreateMasterPatternPlaceholderValues(gridSize); // (260321Ch) 旧案: 単色データのとき微小勾配を入れていた
+            max = min + 1.0; // (260321Ch) 真っ黒な初期表示を維持したまま、PseudoBitmap のレンジだけ確保する
+        }
+
+        masterPatternPreviewBitmap?.Dispose();
+        masterPatternPreviewBitmap = new PseudoBitmap(previewValues, gridSize, PseudoBitmap.ColorScaleFireLiner)
+        {
+            MinValue = min,
+            MaxValue = max,
+        };
+
+        scalablePictureBoxAdvancedMasterPattern.Symbols = CreateMasterPatternPreviewSymbols(gridSize); // (260321Ch)
+        scalablePictureBoxAdvancedMasterPattern.PseudoBitmap = masterPatternPreviewBitmap;
+        scalablePictureBoxAdvancedMasterPattern.DrawPictureBox();
+    }
+
+    /// <summary>
+    /// MasterPattern が未作成のときや slice が空のときに表示する仮の背景画像を作る。
+    /// </summary>
+    private static double[] CreateMasterPatternPlaceholderValues(int gridSize)
+    {
+        var values = new double[gridSize * gridSize];
+        // if (gridSize <= 1) { values[0] = 1; return values; } // (260321Ch) 旧案: 空 preview にもダミー勾配を入れていた
+        // var center = (gridSize - 1) * 0.5;
+        // var norm = Math.Max(1.0, center);
+        // for (int y = 0; y < gridSize; y++)
+        //     for (int x = 0; x < gridSize; x++)
+        //     {
+        //         var dx = (x - center) / norm;
+        //         var dy = (y - center) / norm;
+        //         values[y * gridSize + x] = 0.02 * (dx * dx + dy * dy);
+        //     }
+        // (260321Ch) 未作成時は物理的意味のない円環模様を出さず、全面黒で表示する
+        return values;
+    }
+
+    /// <summary>
+    /// preview 上へ重ねる枠線と中心線の symbol 群を作る。
+    /// </summary>
+    private static List<ScalablePictureBox.Symbol> CreateMasterPatternPreviewSymbols(int gridSize)
+    {
+        var max = Math.Max(1, gridSize - 1);
+        var center = max / 2.0;
+        return
+        [
+            new ScalablePictureBox.Symbol("", new PointD(0, 0), new PointD(max, 0), Color.Black) { LabelVisible = false },
+            new ScalablePictureBox.Symbol("", new PointD(max, 0), new PointD(max, max), Color.Black) { LabelVisible = false },
+            new ScalablePictureBox.Symbol("", new PointD(max, max), new PointD(0, max), Color.Black) { LabelVisible = false },
+            new ScalablePictureBox.Symbol("", new PointD(0, max), new PointD(0, 0), Color.Black) { LabelVisible = false },
+            new ScalablePictureBox.Symbol("", new PointD(center, 0), new PointD(center, max), Color.FromArgb(160, Color.Black)) { LabelVisible = false },
+            new ScalablePictureBox.Symbol("", new PointD(0, center), new PointD(max, center), Color.FromArgb(160, Color.Black)) { LabelVisible = false },
+        ];
+    }
+
+    /// <summary>
+    /// 3D preview 上の既存オブジェクトを削除し、黒背景だけの状態へ戻す。
+    /// </summary>
+    private void ClearMasterPattern3DPreview()
+    {
+        if (glControlMasterPattern3D == null)
+            return;
+
+        glControlMasterPattern3D.DeleteAllObjects();
+        glControlMasterPattern3D.Refresh();
+    }
+
+    /// <summary>
+    /// 正規化済みの MasterPattern 値から、Rosca-Lambert 球面 preview を再描画する。
+    /// 3D 側は +Z / -Z の両半球を同時に表示する。
+    /// </summary>
+    private void DrawMasterPattern3DPreview(double[] positiveValues, double[] negativeValues, int gridSize, PseudoBitmap referenceBitmap)
+    {
+        if (glControlMasterPattern3D == null || gridSize <= 0)
+            return;
+
+        glControlMasterPattern3D.DeleteAllObjects();
+
+        if ((positiveValues == null || positiveValues.Length != gridSize * gridSize)
+            && (negativeValues == null || negativeValues.Length != gridSize * gridSize))
+        {
+            glControlMasterPattern3D.Refresh();
+            return;
+        }
+
+        var glObjects = new List<GLObject>();
+        if (positiveValues != null && positiveValues.Length == gridSize * gridSize)
+        {
+            // glObjects.AddRange(CreateMasterPattern3DObjects(positiveValues, gridSize, EbsdMasterPatternHemisphere.PositiveZ, referenceBitmap)); // (260321Ch) 旧案: セルごとに Quads を 1 個ずつ生成していた
+            var positiveObject = CreateMasterPattern3DObject(positiveValues, gridSize, EbsdMasterPatternHemisphere.PositiveZ, referenceBitmap); // (260321Ch) 半球全体を 1 メッシュへまとめて描画する
+            if (positiveObject != null)
+                glObjects.Add(positiveObject);
+        }
+        if (negativeValues != null && negativeValues.Length == gridSize * gridSize)
+        {
+            // glObjects.AddRange(CreateMasterPattern3DObjects(negativeValues, gridSize, EbsdMasterPatternHemisphere.NegativeZ, referenceBitmap)); // (260321Ch) 旧案
+            var negativeObject = CreateMasterPattern3DObject(negativeValues, gridSize, EbsdMasterPatternHemisphere.NegativeZ, referenceBitmap); // (260321Ch)
+            if (negativeObject != null)
+                glObjects.Add(negativeObject);
+        }
+        if (glObjects.Count > 0)
+            glControlMasterPattern3D.AddObjects(glObjects);
+        glControlMasterPattern3D.Refresh();
+    }
+
+    /// <summary>
+    /// Rosca-Lambert 等積正方形の強度分布を、球面上の三角形メッシュへ変換する。
+    /// 以前のようにセルごとに GLObject を分けず、半球ごとに 1 メッシュへまとめて描画負荷を下げる。
+    /// </summary>
+    private static GLObject CreateMasterPattern3DObject(double[] values, int gridSize, EbsdMasterPatternHemisphere hemisphere, PseudoBitmap referenceBitmap)
+    {
+        var previewGrid = Math.Min(gridSize, MasterPattern3DPreviewGridMax);
+        var previewValues = previewGrid == gridSize
+            ? values
+            : DownsampleMasterPatternPreviewValues(values, gridSize, previewGrid); // (260321Ch) 3D 側は polygon 数を抑えるため平均化して間引く
+        if (previewGrid <= 0 || previewValues.Length != previewGrid * previewGrid)
+            return null; // (260321Ch)
+
+        var squareLimit = EbsdMasterPattern.SquareLimit;
+        var step = 2.0 * squareLimit / previewGrid;
+        int vertexGrid = previewGrid + 1;
+        var positions = GC.AllocateUninitializedArray<V3>(vertexGrid * vertexGrid);
+        var argbs = GC.AllocateUninitializedArray<int>(vertexGrid * vertexGrid);
+        for (int y = 0; y < vertexGrid; y++)
+        {
+            var b = squareLimit - y * step;
+            int rowOffset = y * vertexGrid;
+            for (int x = 0; x < vertexGrid; x++)
             {
-                int x0 = px * MasterKernel.GridSize / previewSize;
-                int x1 = Math.Max(x0 + 1, (px + 1) * MasterKernel.GridSize / previewSize);
-                double xMin = -1.0 + 2.0 * px / previewSize;
-                double xMax = -1.0 + 2.0 * (px + 1) / previewSize;
+                var a = -squareLimit + x * step;
+                int index = rowOffset + x;
+                positions[index] = EbsdMasterPattern.RoscaLambertToSphere(a, b, hemisphere).ToOpenTK(); // (260321Ch)
+                var value = GetMasterPatternPreviewVertexValue(previewValues, previewGrid, x, y); // (260321Ch) 頂点色は隣接セル平均で滑らかにつなぐ
+                argbs[index] = GetMasterPatternPreviewColor(value, referenceBitmap).ToArgb();
+            }
+        }
 
+        var indices = GC.AllocateUninitializedArray<uint>(previewGrid * previewGrid * 6);
+        int cursor = 0;
+        for (int y = 0; y < previewGrid; y++)
+        {
+            int row0 = y * vertexGrid;
+            int row1 = (y + 1) * vertexGrid;
+            for (int x = 0; x < previewGrid; x++)
+            {
+                uint i00 = (uint)(row0 + x);
+                uint i10 = i00 + 1;
+                uint i01 = (uint)(row1 + x);
+                uint i11 = i01 + 1;
+                indices[cursor++] = i00;
+                indices[cursor++] = i10;
+                indices[cursor++] = i11;
+                indices[cursor++] = i00;
+                indices[cursor++] = i11;
+                indices[cursor++] = i01;
+            }
+        }
+
+        return new ColoredSurfaceMesh(positions, argbs, indices, CreateMasterPattern3DMaterial(C4.White), DrawingMode.Surfaces) // (260321Ch)
+        {
+            IgnoreNormalSides = true
+        };
+    }
+
+    /// <summary>
+    /// 高解像度の preview 値を、3D 描画用の粗い格子へ平均化する。
+    /// </summary>
+    private static double[] DownsampleMasterPatternPreviewValues(double[] values, int sourceGrid, int targetGrid)
+    {
+        var results = new double[targetGrid * targetGrid];
+        for (int ty = 0; ty < targetGrid; ty++)
+        {
+            int y0 = ty * sourceGrid / targetGrid;
+            int y1 = Math.Max(y0 + 1, (ty + 1) * sourceGrid / targetGrid);
+            for (int tx = 0; tx < targetGrid; tx++)
+            {
+                int x0 = tx * sourceGrid / targetGrid;
+                int x1 = Math.Max(x0 + 1, (tx + 1) * sourceGrid / targetGrid);
                 double sum = 0;
                 int count = 0;
                 for (int y = y0; y < y1; y++)
                     for (int x = x0; x < x1; x++)
                     {
-                        sum += plane[y * MasterKernel.GridSize + x];
+                        sum += values[y * sourceGrid + x];
                         count++;
                     }
-                var ratio = count > 0 ? Math.Sqrt(sum / count / max) : 0;
-                glObjects.Add(new Quads(
-                    new V3(xMin, yMin, 0),
-                    new V3(xMax, yMin, 0),
-                    new V3(xMax, yMax, 0),
-                    new V3(xMin, yMax, 0),
-                    new Material(GetMasterKernelColor(ratio)),
-                    DrawingMode.Surfaces));
+                results[ty * targetGrid + tx] = count > 0 ? sum / count : 0;
             }
         }
-
-        var energy = MasterKernel.Energies[comboBoxMasterKernelEnergy.SelectedIndex];
-        var depth = MasterKernel.Depths[comboBoxMasterKernelDepth.SelectedIndex];
-        labelMasterKernelInfo.Text = $"Preview: {GetHemisphereText(MasterKernel.Hemisphere)}, E = {energy:g} kV, depth = {depth:g} nm";
-
-        glControlMasterKernel.DeleteAllObjects();
-        glControlMasterKernel.AddObjects(glObjects);
-        glControlMasterKernel.Refresh();
+        return results;
     }
 
-    private void AddMasterKernelFrame(List<GLObject> glObjects)
+    /// <summary>
+    /// セル中心値から頂点色を作るため、隣接する 1～4 セルを平均する。
+    /// </summary>
+    private static double GetMasterPatternPreviewVertexValue(double[] values, int gridSize, int vertexX, int vertexY)
     {
-        glObjects.Add(new Quads(
-            new V3(-1, -1, 0.001),
-            new V3(1, -1, 0.001),
-            new V3(1, 1, 0.001),
-            new V3(-1, 1, 0.001),
-            new Material(C4.Black),
-            DrawingMode.Edges) { LineWidth = 2f });
-        glObjects.Add(new Lines([new V3(-1, 0, 0.001), new V3(1, 0, 0.001)], 1f, new Material(new C4(0f, 0f, 0f, 0.35f))));
-        glObjects.Add(new Lines([new V3(0, -1, 0.001), new V3(0, 1, 0.001)], 1f, new Material(new C4(0f, 0f, 0f, 0.35f))));
+        double sum = 0;
+        int count = 0;
+        for (int y = Math.Max(0, vertexY - 1); y <= Math.Min(gridSize - 1, vertexY); y++)
+            for (int x = Math.Max(0, vertexX - 1); x <= Math.Min(gridSize - 1, vertexX); x++)
+            {
+                sum += values[y * gridSize + x];
+                count++;
+            }
+
+        return count == 0 ? 0 : sum / count; // (260321Ch)
     }
 
-    private static C4 GetMasterKernelColor(double ratio)
+    /// <summary>
+    /// ScalablePictureBoxAdvanced と同じ PseudoBitmap の色変換で 3D polygon の色を返す。
+    /// </summary>
+    private static C4 GetMasterPatternPreviewColor(double value, PseudoBitmap referenceBitmap)
     {
-        ratio = Math.Clamp(ratio, 0.0, 1.0);
-        var index = (int)Math.Round(ratio * (PseudoBitmap.ColorScaleFireLiner.Length - 1));
-        var (r, g, b) = PseudoBitmap.ColorScaleFireLiner[index];
+        if (referenceBitmap?.ColorScale == null || referenceBitmap.ColorScale.Length == 0)
+            return C4.Black;
+
+        var minValue = referenceBitmap.MinValue;
+        var maxValue = referenceBitmap.MaxValue;
+        if (Math.Abs(maxValue - minValue) < 1e-12)
+            maxValue = minValue + 1.0; // (260321Ch) PseudoBitmap 側と同様に単色時の分母を確保する
+
+        var colorScale = referenceBitmap.ColorScale;
+        var coeff = colorScale.Length / (maxValue - minValue);
+        var index = Math.Clamp((int)((value - minValue) * coeff + 0.5), 0, colorScale.Length - 1);
+        var (r0, g0, b0) = colorScale[index];
+        // var ratio = maxValue > minValue ? Math.Clamp((value - minValue) / (maxValue - minValue), 0.0, 1.0) : 0.0; // (260321Ch) 旧案: OpenGL 側で Fire スケールの index を手計算していた
+        // var index = (int)Math.Round(ratio * (PseudoBitmap.ColorScaleFireLiner.Length - 1)); // (260321Ch)
+        // var (r0, g0, b0) = PseudoBitmap.ColorScaleFireLiner[index]; // (260321Ch)
+        byte r, g, b;
+        if (referenceBitmap.GrayScale)
+            r = g = b = b0; // (260321Ch) PseudoBitmap.GetImage() は GrayScale 時に B 成分だけを全チャネルへ使う
+        else
+            (r, g, b) = (r0, g0, b0);
+
+        if (referenceBitmap.IsNegative)
+            (r, g, b) = ((byte)(255 - r), (byte)(255 - g), (byte)(255 - b));
         return new C4(r / 255f, g / 255f, b / 255f, 1f);
     }
 
-    private EbsdMasterKernelHemisphere GetSelectedMasterKernelHemisphere()
-        => comboBoxMasterKernelHemisphere.SelectedIndex == 1 ? EbsdMasterKernelHemisphere.NegativeZ : EbsdMasterKernelHemisphere.PositiveZ;
+    /// <summary>
+    /// 3D preview 用の polygon material を作る。
+    /// 発光成分のみを使い、反射の影響を受けない色表示にする。
+    /// </summary>
+    private static Material CreateMasterPattern3DMaterial(C4 color)
+        => new(color)
+        {
+            Emission = 1f,
+            Ambient = 0f,
+            Diffuse = 0f,
+            Specular = 0f,
+            SpecularPower = 1f,
+        }; // (260321Ch)
 
-    private static string GetHemisphereText(EbsdMasterKernelHemisphere hemisphere)
-        => hemisphere == EbsdMasterKernelHemisphere.PositiveZ ? "+Z hemisphere" : "-Z hemisphere";
-    #endregion
     #endregion
 
 }
+

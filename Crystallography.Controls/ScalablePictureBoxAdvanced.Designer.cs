@@ -221,7 +221,6 @@
             numericBoxDustScratchesRadius.Minimum = 0D;
             numericBoxDustScratchesRadius.Name = "numericBoxDustScratchesRadius";
             numericBoxDustScratchesRadius.RadianValue = 0.017453292519943295D;
-            numericBoxDustScratchesRadius.RoundErrorAccuracy = -1;
             numericBoxDustScratchesRadius.ShowUpDown = true;
             numericBoxDustScratchesRadius.SkipEventDuringInput = false;
             numericBoxDustScratchesRadius.ThonsandsSeparator = true;
@@ -240,7 +239,6 @@
             numericBoxDustScratchesThreshold.Minimum = 0D;
             numericBoxDustScratchesThreshold.Name = "numericBoxDustScratchesThreshold";
             numericBoxDustScratchesThreshold.RadianValue = 0.052359877559829883D;
-            numericBoxDustScratchesThreshold.RoundErrorAccuracy = -1;
             numericBoxDustScratchesThreshold.ShowUpDown = true;
             numericBoxDustScratchesThreshold.SkipEventDuringInput = false;
             numericBoxDustScratchesThreshold.SmartIncrement = true;
@@ -273,7 +271,6 @@
             numericBoxGaussianFWHM.Minimum = 0D;
             numericBoxGaussianFWHM.Name = "numericBoxGaussianFWHM";
             numericBoxGaussianFWHM.RadianValue = 0.017453292519943295D;
-            numericBoxGaussianFWHM.RoundErrorAccuracy = -1;
             numericBoxGaussianFWHM.ShowUpDown = true;
             numericBoxGaussianFWHM.SkipEventDuringInput = false;
             numericBoxGaussianFWHM.SmartIncrement = true;
@@ -332,7 +329,7 @@
             graphControl.AllowMouseOperation = true;
             graphControl.AxisLineColor = System.Drawing.Color.Gray;
             graphControl.AxisTextColor = System.Drawing.Color.Black;
-            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControl.AxisXTextVisible = true;
             graphControl.AxisYTextVisible = true;
             graphControl.BackgroundColor = System.Drawing.Color.White;
@@ -368,7 +365,7 @@
             graphControl.Smoothing = false;
             graphControl.UnitX = "";
             graphControl.UnitY = "";
-            graphControl.UpperPanelFont = new System.Drawing.Font("メイリオ", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControl.UpperPanelFont = new System.Drawing.Font("メイリオ", 7F);
             graphControl.UpperPanelVisible = false;
             graphControl.UpperX = 1D;
             graphControl.UpperY = 1D;

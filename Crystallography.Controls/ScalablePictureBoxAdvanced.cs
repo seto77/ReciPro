@@ -174,8 +174,12 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     /// </summary>
     public bool FixZoomAndCenter { get => scalablePictureBox.FixZoomAndCenter; set => scalablePictureBox.FixZoomAndCenter = value; }
 
+
+    #region  Intensity
+  
     private double upperIntensity = 255;
 
+    [Category("Intensity")]
     public double UpperIntensity
     {
         set
@@ -201,6 +205,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
 
     private double lowerIntensity = 0;
 
+    [Category("Intensity")]
     public double LowerIntensity
     {
         set
@@ -227,6 +232,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     //画像中の最大強度
     private double maximumIntensity = 255;
 
+    [Category("Intensity")]
     public double MaximumIntensity
     {
         get => maximumIntensity;
@@ -240,6 +246,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     //画像中の最小強度
     private double minimumIntensity = 0;
 
+    [Category("Intensity")]
     public double MinimumIntensity
     {
         get => minimumIntensity;
@@ -249,6 +256,11 @@ public partial class ScalablePictureBoxAdvanced : UserControl
             trackBarAdvancedMinimum.Minimum = trackBarAdvancedMaximum.Minimum = MinimumIntensity;
         }
     }
+
+    [Category("Intensity")]
+    public int DecimalPlacesForIntensity { get => trackBarAdvancedMaximum.DecimalPlaces; set => trackBarAdvancedMaximum.DecimalPlaces = trackBarAdvancedMinimum.DecimalPlaces = value; }
+
+    #endregion
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public ScalablePictureBox ScalablePictureBox => scalablePictureBox;

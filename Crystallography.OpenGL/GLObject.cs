@@ -1916,6 +1916,39 @@ public class Mesh : GLObject
 
     }
 }
+
+/// <summary>
+/// 頂点ごとの色を使う三角形メッシュ。
+/// MasterPattern 3D preview のように大量のセルを 1 個の GLObject へまとめたいときに使う。
+/// </summary>
+public class ColoredSurfaceMesh : GLObject
+{
+    public ColoredSurfaceMesh(V3d[] positions, int[] argbs, uint[] indices, Material mat, DrawingMode mode = DrawingMode.Surfaces) : base(mat, mode)
+    {
+        if (positions == null)
+            throw new ArgumentNullException(nameof(positions));
+        if (argbs == null)
+            throw new ArgumentNullException(nameof(argbs));
+        if (indices == null)
+            throw new ArgumentNullException(nameof(indices));
+        if (positions.Length != argbs.Length)
+            throw new ArgumentException("positions and argbs must have the same length."); // (260321Ch)
+
+        Vertices = GC.AllocateUninitializedArray<Vertex>(positions.Length);
+        for (int i = 0; i < positions.Length; i++)
+        {
+            var pos = positions[i];
+            var norm = pos.LengthSquared > 1e-24 ? pos.Normalized() : V3d.UnitZ;
+            Vertices[i] = new Vertex(pos.ToV3f(), norm.ToV3f(), argbs[i]);
+        }
+
+        Indices = [.. indices];
+        Primitives = [(PT.Triangles, indices.Length)];
+        UseFixedArgb = false; // (260321Ch) Material 固定色ではなく、各頂点の ARGB を使う
+        CircumscribedSphereCenter = new V4d(0, 0, 0, 1);
+        CircumscribedSphereRadius = positions.Length == 0 ? 0 : positions.Max(p => p.Length);
+    }
+}
 #endregion
 
 #region 文字オブジェクト

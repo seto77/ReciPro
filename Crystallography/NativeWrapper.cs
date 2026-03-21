@@ -655,6 +655,21 @@ public static partial class NativeWrapper
         return (values, vectors);
     }
 
+    /// <summary>
+    /// 既存バッファーへ固有値・固有ベクトルを書き込む overload。 (260321Ch)
+    /// </summary>
+    static unsafe public void EigenSolver(int dim, Complex[] mat, ref Complex[] eigenvalues, ref Complex[] eigenvectors)
+    {
+        if (eigenvalues is null || eigenvalues.Length < dim)
+            eigenvalues = GC.AllocateUninitializedArray<Complex>(dim); // (260321Ch)
+        if (eigenvectors is null || eigenvectors.Length < dim * dim)
+            eigenvectors = GC.AllocateUninitializedArray<Complex>(dim * dim); // (260321Ch)
+        fixed (Complex* _values = eigenvalues)
+        fixed (Complex* _vectors = eigenvectors)
+        fixed (Complex* _mat = mat)
+            _EigenSolver(dim, (double*)_mat, (double*)_values, (double*)_vectors);
+    }
+
     #endregion 固有値
 
     #region 行列指数関数
@@ -897,6 +912,27 @@ public static partial class NativeWrapper
     }
 
     /// <summary>
+    /// bLen を明示し、大きめの作業配列を再利用できるようにした overload。 (260321Ch)
+    /// </summary>
+    public static unsafe double[] EBSDSolver(
+        int bLen, Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
+        Complex[] phaseNG, double[] sigma, double[] thicknesses)
+    {
+        int nAtoms = sigma.Length;
+        int tLen = thicknesses.Length;
+        var intensity = new double[tLen];
+
+        fixed (Complex* _vals = eigenValues, _vecs = eigenVectors, _alpha = alpha, _phase = phaseNG)
+        fixed (double* _sigma = sigma, _intensity = intensity)
+        {
+            _EBSDSolver(bLen, nAtoms, tLen,
+                (double*)_vals, (double*)_vecs, (double*)_alpha,
+                (double*)_phase, _sigma, thicknesses, _intensity);
+        }
+        return intensity;
+    }
+
+    /// <summary>
     /// EBSD強度とTDSバックグラウンドを一括計算する。 (260316Cl 追加)
     /// 弾性信号 (S行列) と TDS (M行列) で同じ F_{jj'}(t) を共有し、
     /// exp(λt) の重複計算を排除する。C†×U×C は Eigen BLAS で高速に実行。
@@ -906,6 +942,29 @@ public static partial class NativeWrapper
         Complex[] phaseNG, double[] sigma, Complex[] muBack, double tdsCoeff, double[] thicknesses)
     {
         int bLen = eigenValues.Length;
+        int nAtoms = sigma.Length;
+        int tLen = thicknesses.Length;
+        var intensity = new double[tLen];
+        var tdsIntensity = new double[tLen];
+
+        fixed (Complex* _vals = eigenValues, _vecs = eigenVectors, _alpha = alpha, _phase = phaseNG, _muBack = muBack)
+        fixed (double* _sigma = sigma, _intensity = intensity, _tds = tdsIntensity)
+        {
+            _EBSDSolverWithTDS(bLen, nAtoms, tLen,
+                (double*)_vals, (double*)_vecs, (double*)_alpha,
+                (double*)_phase, _sigma, (double*)_muBack, tdsCoeff,
+                thicknesses, _intensity, _tds);
+        }
+        return (intensity, tdsIntensity);
+    }
+
+    /// <summary>
+    /// bLen を明示し、大きめの作業配列を再利用できるようにした overload。 (260321Ch)
+    /// </summary>
+    public static unsafe (double[] intensity, double[] tdsIntensity) EBSDSolverWithTDS(
+        int bLen, Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
+        Complex[] phaseNG, double[] sigma, Complex[] muBack, double tdsCoeff, double[] thicknesses)
+    {
         int nAtoms = sigma.Length;
         int tLen = thicknesses.Length;
         var intensity = new double[tLen];
