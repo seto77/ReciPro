@@ -27,18 +27,17 @@ public partial class FormEBSD : Form
     public FormMain FormMain;
     public GLControlAlpha glControlGeo;
     public GLControlAlpha glControlMasterPattern3D; // (260321Ch) Rosca-Lambert 球面 preview 用の OpenGL コントロール
-    private readonly Stopwatch sw1 =new(), sw2 = new();
+    private GLControlAlpha glControlMasterPattern3DAxes; // (260322Ch) MasterPattern3D と同期する結晶軸 inset
+    private readonly Stopwatch sw1 = new(), sw2 = new();
     private readonly Timer timer = new();
 
-    // private EbsdMasterPatternHemisphere masterPatternPendingHemisphere = EbsdMasterPatternHemisphere.PositiveZ; // (260321Ch)
     private readonly EBSD masterPatternEbsd = new(); // (260321Ch) MasterPattern build の実行ロジックは Crystallography.EBSD 側へ移す
     private EbsdMasterPattern MasterPattern => masterPatternEbsd.MasterPattern; // (260321Ch)
-    private PseudoBitmap masterPatternPreviewBitmap = null; // (260321Ch) ScalablePictureBoxAdvanced に渡す MasterPattern preview 画像
-    private double[] masterPatternPreviewValues2D = []; // (260321Ch) 2D preview に現在表示している強度配列を保持する
-    private double[] masterPatternPreviewValues3DPositive = []; // (260321Ch) 3D preview 用の +Z 半球強度を保持する
-    private double[] masterPatternPreviewValues3DNegative = []; // (260321Ch) 3D preview 用の -Z 半球強度を保持する
-    private int masterPatternPreviewGridSize = 0; // (260321Ch) 現在 preview に使っている Rosca-Lambert 格子サイズ
-    private const int MasterPattern3DPreviewGridMax = 2048; // (260321Ch) polygon 数を抑えるため、3D preview は適度に間引いて描画する
+    private PseudoBitmap masterPattern2DBitmap = null; // (260322Ch) ScalablePictureBoxAdvanced 2D に渡す MasterPattern2D 画像
+    private double[] masterPattern2DValues = []; // (260322Ch) 旧名: masterPattern2DPreviewValues。MasterPattern2D に現在表示している強度配列を保持する
+    private double[] masterPattern3DValuesPositive = []; // (260322Ch) 旧名: masterPattern3DPreviewValuesPositive。MasterPattern3D 用の +Z 半球強度を保持する
+    private double[] masterPattern3DValuesNegative = []; // (260322Ch) 旧名: masterPattern3DPreviewValuesNegative。MasterPattern3D 用の -Z 半球強度を保持する
+    private int masterPattern3DCacheGridSize = 0; // (260322Ch) 旧名: masterPattern3DPreviewGridSize。0 は有効な MasterPattern3D キャッシュが未作成であることを示す
 
     /// <summary>
     /// 飛程計算の際の打ち切りエネルギー (kev)
@@ -82,7 +81,7 @@ public partial class FormEBSD : Form
                              sin, cos, DetZ - DetY * sin - DetZ * cos,
                              0, 0, 1);
 
-            return (rot*f).X > c.X ? new PointD(0, len) : new PointD(0, -len);
+            return (rot * f).X > c.X ? new PointD(0, len) : new PointD(0, -len);
         }
     }
 
@@ -144,7 +143,7 @@ public partial class FormEBSD : Form
 
     private void FormEBSD_Load(object sender, EventArgs e)
     {
-      
+
 
         glControlGeo = new GLControlAlpha()
         {
@@ -162,20 +161,77 @@ public partial class FormEBSD : Form
             WorldMatrix = M4.CreateRotationZ(-Math.PI / 2 * 0.2) * M4.CreateRotationY(-Math.PI / 2 * 0.8) * M4.CreateRotationZ(-Math.PI / 2),
         };
         panelGeometry.Controls.Add(glControlGeo);
-        EnsureMasterPatternPreviewControl(); // (260321Ch) MasterPattern preview 用の GLControl を遅延生成する
-        EnsureMasterPattern3DControl(); // (260321Ch) Rosca-Lambert 球面 preview 用の GLControl を生成する
+        // EnsureMasterPatternPreviewControl(); // (260322Ch) 旧実装: preview 初期化を helper へまとめていた
+        if (comboBoxMasterPatternGrid != null && comboBoxMasterPatternGrid.SelectedIndex < 0)
+        {
+            int defaultIndex = comboBoxMasterPatternGrid.FindStringExact("256");
+            comboBoxMasterPatternGrid.SelectedIndex = defaultIndex >= 0 ? defaultIndex : 0; // (260322Ch) MasterPattern 分解能の既定値は 256 にする
+        }
+        if (comboBoxMasterPattern2DHemisphere != null && comboBoxMasterPattern2DHemisphere.SelectedIndex < 0 && comboBoxMasterPattern2DHemisphere.Items.Count > 0)
+            comboBoxMasterPattern2DHemisphere.SelectedIndex = 0; // (260322Ch) MasterPattern2D の初期表示半球を +Z にそろえる
+        #region MasterPattern3D control // (260322Ch)
+        // EnsureMasterPattern3DControl(); // (260322Ch) 旧実装: Rosca-Lambert 球面 preview 用の GLControl 生成を helper 化していた
+        if (glControlMasterPattern3D == null && panelMasterPattern3D != null)
+        {
+            glControlMasterPattern3D = new GLControlAlpha()
+            {
+                AllowMouseRotation = true,
+                AllowMouseScaling = true,
+                AllowMouseTranslating = false,
+                Name = "glControlMasterPattern3D",
+                ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+                ProjWidth = 2.6,
+                RotationMode = GLControlAlpha.RotationModes.Object,
+                Dock = DockStyle.Fill,
+                LightPosition = new V3(20, 20, 60),
+                BorderStyle = BorderStyle.Fixed3D,
+                BackColor = Color.Black,
+                WorldMatrix = M4.CreateRotationX(-Math.PI / 5.0) * M4.CreateRotationY(Math.PI / 5.0),
+            };
+            panelMasterPattern3D.Controls.Add(glControlMasterPattern3D);
+        }
+        if (glControlMasterPattern3DAxes == null && panelMasterPattern3DAxes != null)
+        {
+            glControlMasterPattern3DAxes = new GLControlAlpha()
+            {
+                AllowMouseRotation = false,
+                AllowMouseScaling = false,
+                AllowMouseTranslating = false,
+                Name = "glControlMasterPattern3DAxes",
+                ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
+                ProjWidth = 2.7,
+                RotationMode = GLControlAlpha.RotationModes.Object,
+                Dock = DockStyle.Fill,
+                LightPosition = new V3(20, 20, 60),
+                BorderStyle = BorderStyle.Fixed3D,
+                BackColor = Color.Black,
+                WorldMatrix = glControlMasterPattern3D?.WorldMatrix ?? (M4.CreateRotationX(-Math.PI / 5.0) * M4.CreateRotationY(Math.PI / 5.0)),
+            };
+            panelMasterPattern3DAxes.Controls.Add(glControlMasterPattern3DAxes);
+        }
+        if (glControlMasterPattern3D != null)
+        {
+            glControlMasterPattern3D.WorldMatrixChanged -= glControlMasterPattern3D_WorldMatrixChanged;
+            glControlMasterPattern3D.WorldMatrixChanged += glControlMasterPattern3D_WorldMatrixChanged; // (260322Ch) MasterPattern 本体の回転を axes inset へそのまま反映する
+        }
+        panelMasterPattern3DAxes?.BringToFront(); // (260322Ch) axes inset を MasterPattern3D の右上へ重ねて表示する
+        // checkBoxMasterPattern3DAxisLabel.Enabled = false; // (260322Ch) 旧実装: axes inset に合わせて 3D 側の軸ラベル UI も無効化していた
+        // checkBoxMasterPattern3DAxisLabel.Checked = false; // (260322Ch)
+        panelMasterPattern3DAxes.Visible = checkBoxMasterPattern3DAxisArrows.Checked; // (260322Ch) 既存チェックボックスで axes inset の表示可否だけ切り替える
+        #endregion
 
         timer.Interval = 1000;
         timer.Tick += Timer_Tick;
         timer.Start();
 
         SetVector();
+        ResetMasterPattern3DAxes(); // (260322Ch) MasterPattern3D axes inset の結晶軸オブジェクトを生成する
         DrawGeometry();
         comboBoxGradient.SelectedIndex = 0;
         comboBoxScale.SelectedIndex = 0;
         NumericBoxEnergyStart_ValueChanged(sender, e);
         NumericBoxThicknessStart_ValueChanged(sender, e);
-        DrawMasterPatternPreview(); // (260321Ch) 空の preview でも枠を描いておく
+        DrawMasterPattern2D(); // (260322Ch) 空の MasterPattern2D でも初期状態を描画しておく
     }
 
     private void FormEBSD_FormClosing(object sender, FormClosingEventArgs e)
@@ -185,69 +241,6 @@ public partial class FormEBSD : Form
         Visible = false;
     }
 
-    /// <summary>
-    /// 旧 preview UI 初期化処理の退避先。
-    /// 現在は designer 管理へ移行したため、互換性維持のための no-op として残している。
-    /// </summary>
-    private void InitializeMasterPatternPreviewControls()
-    {
-        // (260321Ch) 旧案: panel1 以下をコードで動的生成していた。designer 管理へ移行したため no-op にして残す。
-    }
-
-    /// <summary>
-    /// MasterPattern preview 用コントロールの初期状態を整える。
-    /// 現在は ScalablePictureBoxAdvanced 上へ枠線と中心線の overlay を設定する役割だけを持つ。
-    /// </summary>
-    private void EnsureMasterPatternPreviewControl()
-    {
-        // if (glControlMasterPattern != null) return; // (260321Ch) 旧案: OpenGL control を遅延生成していた
-        // glControlMasterPattern = new GLControlAlpha() { ... }; // (260321Ch)
-        if (scalablePictureBoxAdvancedMasterPattern == null)
-            return;
-
-        // scalablePictureBoxAdvancedMasterPattern.BrightnessAndColorChanged += scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged; // (260321Ch) 旧案: 購読解除を考慮せず追加していた
-        scalablePictureBoxAdvancedMasterPattern.BrightnessAndColorChanged -= scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged;
-        scalablePictureBoxAdvancedMasterPattern.BrightnessAndColorChanged += scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged; // (260321Ch) 輝度やカラースケール変更時に 3D preview の色も同期する
-        // scalablePictureBoxAdvancedMasterPattern.ClampIntensityRangeToNewData = true; // (260322Ch) 旧既定挙動: 新しい slice の min/max に表示レンジを合わせる
-        scalablePictureBoxAdvancedMasterPattern.ClampIntensityRangeToNewData = false; // (260322Ch) MasterPattern preview は energy / depth 切替時も前回の明るさレンジを維持する
-
-        if (comboBoxMasterPatternGrid != null && comboBoxMasterPatternGrid.SelectedIndex < 0)
-        {
-            int defaultIndex = comboBoxMasterPatternGrid.FindStringExact("256");
-            comboBoxMasterPatternGrid.SelectedIndex = defaultIndex >= 0 ? defaultIndex : 0; // (260321Ch) MasterPattern 分解能の既定値は 256 にする
-        }
-        if (comboBoxMasterPatternHemisphere != null && comboBoxMasterPatternHemisphere.SelectedIndex < 0 && comboBoxMasterPatternHemisphere.Items.Count > 0)
-            comboBoxMasterPatternHemisphere.SelectedIndex = 0; // (260321Ch) 2D preview の初期表示半球を +Z にそろえる
-
-        scalablePictureBoxAdvancedMasterPattern.Symbols = CreateMasterPatternPreviewSymbols(
-            MasterPattern?.GridSize ?? GetSelectedMasterPatternGridSize()); // (260321Ch) square frame と中心線を overlay する
-    }
-
-    /// <summary>
-    /// Rosca-Lambert 投影を球面へ戻した 3D preview 用の GLControl を配置する。
-    /// </summary>
-    private void EnsureMasterPattern3DControl()
-    {
-        if (glControlMasterPattern3D != null || panelMasterPattern3D == null)
-            return;
-
-        glControlMasterPattern3D = new GLControlAlpha()
-        {
-            AllowMouseRotation = true,
-            AllowMouseScaling = true,
-            AllowMouseTranslating = false,
-            Name = "glControlMasterPattern3D",
-            ProjectionMode = GLControlAlpha.ProjectionModes.Orhographic,
-            ProjWidth = 2.6,
-            RotationMode = GLControlAlpha.RotationModes.Object,
-            Dock = DockStyle.Fill,
-            LightPosition = new V3(20, 20, 60),
-            BorderStyle = BorderStyle.Fixed3D,
-            BackColor = Color.Black,
-            WorldMatrix = M4.CreateRotationX(-Math.PI / 5.0) * M4.CreateRotationY(Math.PI / 5.0),
-        };
-        panelMasterPattern3D.Controls.Add(glControlMasterPattern3D);
-    }
     #endregion
 
     #region OpenGLで入射電子、試料、検出器の幾何学を描画し、ステレオネット上に検出器の輪郭を描画
@@ -267,7 +260,7 @@ public partial class FormEBSD : Form
 
         //検出器の傾き
         var (sinDetTilt, cosDetTilt) = Math.SinCos(DetTilt);
-        var detector = new Cylinder(new V3(0, -DetY, -DetZ), new V3(0,sinDetTilt, -cosDetTilt), DetR, new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces, true, 2, 180);
+        var detector = new Cylinder(new V3(0, -DetY, -DetZ), new V3(0, sinDetTilt, -cosDetTilt), DetR, new Material(C4.GreenYellow, 0.7), DrawingMode.Surfaces, true, 2, 180);
         glObjects.Add(detector);
 
         //XYZ軸
@@ -365,6 +358,68 @@ public partial class FormEBSD : Form
     private void buttonViewQuarter_Click(object sender, EventArgs e)
         => glControlGeo.WorldMatrix = M4.CreateRotationZ(-Math.PI / 2 * 0.2) * M4.CreateRotationY(-Math.PI / 2 * 0.8) * M4.CreateRotationZ(-Math.PI / 2);
 
+    private void buttonMasterPattern3DViewAlong_Click(object sender, EventArgs e)
+    {
+        if (glControlMasterPattern3D == null
+            || Crystal?.A_Axis == null
+            || Crystal.B_Axis == null
+            || Crystal.C_Axis == null)
+            return;
+
+        // var zoneAxis = new Vector3DBase(numericBoxMasterPattern3DViewAlongU.Value, numericBoxMasterPattern3DViewAlongV.Value, numericBoxMasterPattern3DViewAlongW.Value); // (260322Ch) 旧案: [u v w] を直交座標 x,y,z と同一視していた
+        var zoneAxis = numericBoxMasterPattern3DViewAlongU.Value * Crystal.A_Axis + numericBoxMasterPattern3DViewAlongV.Value * Crystal.B_Axis + numericBoxMasterPattern3DViewAlongW.Value * Crystal.C_Axis; // (260322Ch) 結晶学的 [u v w] を実空間ベクトルへ変換する
+        if (zoneAxis.Length2 < 1e-12)
+        {
+            toolStripStatusLabel1.Text = "Zone axis [u v w] cannot be [0 0 0]."; // (260322Ch) 無効な軸指定はそのまま無視せず状態欄へ知らせる
+            return;
+        }
+
+        // glControlMasterPattern3D.WorldMatrix = GLGeometry.CreateRotationToZ(zoneAxis.ToOpenTK()).ToMatrix4d(); // (260322Ch) 旧検討: Z軸を zone axis 側へ倒すと「axis 方向から眺める」向きと逆になる
+        glControlMasterPattern3D.WorldMatrix = GLGeometry.CreateRotationFromZ(zoneAxis.ToOpenTK()).ToMatrix4d(); // (260322Ch) zone axis が viewer の +Z 方向を向くように回転する
+        toolStripStatusLabel1.Text = $"MasterPattern3D view: [{numericBoxMasterPattern3DViewAlongU.Value:g} {numericBoxMasterPattern3DViewAlongV.Value:g} {numericBoxMasterPattern3DViewAlongW.Value:g}]"; // (260322Ch)
+    }
+
+    #endregion
+
+    #region MasterPattern3D axes inset
+
+    private void glControlMasterPattern3D_WorldMatrixChanged(object sender, EventArgs e)
+        => SyncMasterPattern3DAxesWorldMatrix();
+
+    private void ResetMasterPattern3DAxes()
+    {
+        if (glControlMasterPattern3DAxes == null || Crystal?.A_Axis == null || Crystal.B_Axis == null || Crystal.C_Axis == null)
+            return;
+
+        var max = new[] { Crystal.A, Crystal.B, Crystal.C }.Max();
+        if (max <= 0)
+            return;
+
+        var vec = new[] { Crystal.A_Axis / max, Crystal.B_Axis / max, Crystal.C_Axis / max };
+        C4[] color = [C4.Red, C4.Green, C4.Blue];
+        var obj = new List<GLObject>(7);
+        for (int i = 0; i < 3; i++)
+        {
+            obj.Add(new Cylinder(-vec[i], vec[i] * 2 - 0.3 * vec[i].Normarize(), 0.075, new Material(color[i]), DrawingMode.Surfaces));
+            obj.Add(new Cone(vec[i], -0.3 * vec[i].Normarize(), 0.15, new Material(color[i]), DrawingMode.Surfaces));
+            // obj.Add(new TextObject(label[i], 13, vec[i] + 0.1 * vec[i].Normarize(), 0, true, new Material(color[i]), glControlMasterPattern3DAxes)); // (260322Ch) MasterPattern3D axes inset は文字ラベルを表示しない
+        }
+        obj.Add(new Sphere(new V3(0, 0, 0), 0.2, new Material(C4.Gray), DrawingMode.Surfaces));
+
+        glControlMasterPattern3DAxes.DeleteAllObjects();
+        glControlMasterPattern3DAxes.AddObjects(obj);
+        SyncMasterPattern3DAxesWorldMatrix();
+        glControlMasterPattern3DAxes.Refresh();
+    }
+
+    private void SyncMasterPattern3DAxesWorldMatrix()
+    {
+        if (glControlMasterPattern3DAxes == null || glControlMasterPattern3D == null)
+            return;
+
+        glControlMasterPattern3DAxes.WorldMatrix = glControlMasterPattern3D.WorldMatrix; // (260322Ch) axes inset は MasterPattern3D と同じ回転状態を使う
+    }
+
     #endregion
 
     #region その他のイベント
@@ -375,6 +430,7 @@ public partial class FormEBSD : Form
     public void SetCrystal()
     {
         SetVector();
+        ResetMasterPattern3DAxes(); // (260322Ch) 結晶変更時は MasterPattern3D axes inset も描き直す
         Draw();
     }
 
@@ -392,8 +448,9 @@ public partial class FormEBSD : Form
     private void FormEBSD_VisibleChanged(object sender, EventArgs e)
     {
         SetVector();
+        ResetMasterPattern3DAxes(); // (260322Ch) 再表示時に MasterPattern3D axes inset も現在の結晶へ合わせる
         DrawGeometry();
-        DrawMasterPatternPreview(); // (260321Ch) 再表示時に MasterPattern preview も同期する
+        DrawMasterPattern2D(); // (260322Ch) 再表示時に MasterPattern2D も同期する
     }
 
     private void radioButtonKikuchiThresholdOfStructureFactor_CheckedChanged(object sender, EventArgs e)
@@ -419,8 +476,8 @@ public partial class FormEBSD : Form
     /// </summary>
     public void Draw(Graphics g = null)
     {
-        
-            DrawKikuchiLine();
+
+        DrawKikuchiLine();
 
         DrawGeometry();
     }
@@ -451,7 +508,7 @@ public partial class FormEBSD : Form
     /// 
     /// </summary>
     /// <param name="graphics"></param>
-    private void DrawKikuchiLine(Graphics graphics=null, int i=-1,int j=-1)
+    private void DrawKikuchiLine(Graphics graphics = null, int i = -1, int j = -1)
     {
         if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
         {
@@ -460,7 +517,7 @@ public partial class FormEBSD : Form
         }
         //グラフィックスボックスに描画する場合
         graphics ??= graphicsBox.Graphics;
-        
+
         if (!SetProjection(graphics)) return;
 
         graphics.Clear(colorControlBackGround.Color);
@@ -475,7 +532,7 @@ public partial class FormEBSD : Form
             graphics.DrawImage(bmp, new RectangleD(-DetR, -DetR - Foot.Y, DetR * 2, DetR * 2));
         }
 
-        
+
         if (checkBoxDrawKikuchiLinesKinematical.Checked)
         {
             graphics.SmoothingMode = SmoothingMode.HighQuality;
@@ -499,7 +556,7 @@ public partial class FormEBSD : Form
 
                 //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
                 var psi = Math.Atan2(vec2.X, vec2.Y);
-                var( sinPsi, cosPsi) = Math.SinCos(psi);
+                var (sinPsi, cosPsi) = Math.SinCos(psi);
                 var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
 
                 //vec3normは、vec3を規格化したベクトル
@@ -591,7 +648,7 @@ public partial class FormEBSD : Form
     }
 
     #endregion
-    
+
     #region 座標変換
 
     /// <summary>
@@ -627,7 +684,7 @@ public partial class FormEBSD : Form
     /// <returns></returns>
     private PointD convertDetectorToScreen(in PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
     #endregion
-    
+
     #region 菊池線 graphicsBoxのイベント (graphicsBox上のマウスイベントも含む)
 
     //private bool MouseRangingMode = false;
@@ -789,7 +846,7 @@ public partial class FormEBSD : Form
     #endregion
 
     #region 統計情報を計算しグラフ化
-    public void CalcStatistics(int i=-1, int j=-1)
+    public void CalcStatistics(int i = -1, int j = -1)
     {
         if (BSEs != null && BSEs.Length > 1 && poleFigureControl.Lines != null && poleFigureControl.Lines.Length > 0)
         {
@@ -799,9 +856,9 @@ public partial class FormEBSD : Form
             double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
 
             #region 検出器の範囲内におさまるbseを抽出し、変数bseに格納
-            PointD[] area=[];
+            PointD[] area = [];
             var areaStep = 120;
-            var f = new Func<double, double, PointD>((x, y) 
+            var f = new Func<double, double, PointD>((x, y)
                 => Stereonet.ConvertVectorToSchmidt(smpRot * (detRot * (DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
             if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)//
             {
@@ -822,8 +879,8 @@ public partial class FormEBSD : Form
             var bse2 = BSEs.AsParallel().Where(e =>
             Geometry.InsidePolygonalArea(area, e.Position)).ToArray();
             #endregion
-           // bse2 = bse2.Where(e => e[^1].e > energy - 2.5 && e[^1].e < energy - 1.5 && e.Length>2).ToArray();
-            
+            // bse2 = bse2.Where(e => e[^1].e > energy - 2.5 && e[^1].e < energy - 1.5 && e.Length>2).ToArray();
+
             var count = bse2.Length;
             //エネルギー分布を描画 ここから
             //if(false)
@@ -831,7 +888,7 @@ public partial class FormEBSD : Form
                 double step = 0.25;//kev単位
                 double lower = 0, upper = (energy - EnergyThreshold);
                 int nBuckets = (int)((upper - lower) / step);
-                var histogram = new MathNet.Numerics.Statistics.Histogram(bse2.Select(e => energy - e.Energy ), nBuckets, lower, lower + nBuckets * step);
+                var histogram = new MathNet.Numerics.Statistics.Histogram(bse2.Select(e => energy - e.Energy), nBuckets, lower, lower + nBuckets * step);
                 var pts = new List<PointD>();
                 for (int n = 0; n < histogram.BucketCount; n++)
                     pts.Add(new PointD((histogram[n].UpperBound + histogram[n].LowerBound) / 2, (double)histogram[n].Count / count));
@@ -893,10 +950,10 @@ public partial class FormEBSD : Form
         buttonStop.Visible = true;
         sw1.Restart();
         //FormDiffractionSimulator.SkipDrawing = true;
-     
+
 
         //方位配列を作る 
-        
+
         var (sin, cos) = Math.SinCos(DetTilt);
         var rotDet = new M4(1, 0, 0, 0,
                             0, cos, -sin, DetY - DetY * cos + DetZ * sin,
@@ -1087,8 +1144,8 @@ public partial class FormEBSD : Form
         area = [.. Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
         //まず検出器に入る電子を抽出し、これをbse1とする
         var bse1 = BSEs.AsParallel()
-            .Select(e=> (e.Depth,e.Position,e.Energy))
-            .Where(e =>Geometry.InsidePolygonalArea(area, e.Position)).ToArray();
+            .Select(e => (e.Depth, e.Position, e.Energy))
+            .Where(e => Geometry.InsidePolygonalArea(area, e.Position)).ToArray();
         var div = 15;//DetectorDivision;
         var r1 = Enumerable.Range(0, areaStep).Select(n => (double)n / areaStep);
         double[] values = new double[Pbmp.SrcValuesGrayOriginal.Length];
@@ -1114,12 +1171,12 @@ public partial class FormEBSD : Form
                 //検出器の(i,j)位置に該当する電子だけを抽出し、これをbse2とする
                 var bse2 = bse1.AsParallel()
                     .Where(e => Geometry.InsidePolygonalArea(area, e.Position))
-                    .Select(e=> (e.Depth,e.Energy)).ToArray();
+                    .Select(e => (e.Depth, e.Energy)).ToArray();
 
                 for (int eIndex = 0; eIndex < EnergyArray.Length - 1; eIndex++)
                 {
                     //bse2の中から特定のエネルギーを抽出し、これをbse3とする 
-                    var depths = bse2.Where(e => EnergyArray[eIndex] > e.Energy && EnergyArray[eIndex + 1] < e.Energy).Select(e=>e.Depth).ToArray();
+                    var depths = bse2.Where(e => EnergyArray[eIndex] > e.Energy && EnergyArray[eIndex + 1] < e.Energy).Select(e => e.Depth).ToArray();
 
                     //bse3に対する最大深さ分布　ここから
                     double lower = ThicknessArray[0] - numericBoxThicknessStep.Value / 2, upper = ThicknessArray[^1] + numericBoxThicknessStep.Value / 2;
@@ -1166,7 +1223,7 @@ public partial class FormEBSD : Form
         Clipboard.SetDataObject(sb.ToString());
     }
     #endregion
-    
+
     #region MasterPattern
     /// <summary>
     /// MasterPattern build 中だけ進捗イベントを購読する。
@@ -1203,7 +1260,7 @@ public partial class FormEBSD : Form
         if (masterPatternEbsd.IsBuilding)
             return;
 
-        EnsureMasterPatternPreviewControl();
+        // EnsureMasterPatternPreviewControl(); // (260322Ch) 旧実装: build 前に preview 初期化を再確認していた
 
         // var request = CreateMasterPatternBuildRequest(); // (260321Ch) 旧実装: request 生成を別 helper に切り出していた
         var request = new EBSD.MasterPatternBuildRequest(
@@ -1275,7 +1332,7 @@ public partial class FormEBSD : Form
             toolStripStatusLabel1.Text = e.Error.Message;
             labelMasterPatternInfo.Text = "MasterPattern build failed.";
             UpdateMasterPatternSelectors();
-            DrawMasterPatternPreview();
+            DrawMasterPattern2D();
             return;
         }
 
@@ -1285,12 +1342,12 @@ public partial class FormEBSD : Form
             toolStripStatusLabel1.Text = $"Elapsed {sec:f2} s.";
             labelMasterPatternInfo.Text = "MasterPattern build was cancelled.";
             UpdateMasterPatternSelectors();
-            DrawMasterPatternPreview();
+            DrawMasterPattern2D();
             return;
         }
 
         UpdateMasterPatternSelectors();
-        DrawMasterPatternPreview();
+        DrawMasterPattern2D();
         toolStripProgressBar.Value = 100;
         toolStripStatusLabel2.Text = "MasterPattern completed";
         // toolStripStatusLabel1.Text = $"MasterPattern built in {sec:f2} s. ({e.Request.GridSize} x {e.Request.GridSize}, {GetHemisphereText(e.Request.Hemisphere)})"; // (260321Ch) 旧案
@@ -1369,8 +1426,8 @@ public partial class FormEBSD : Form
     /// <summary>
     /// UI の hemisphere selector から、対応する enum 値を取得する。
     /// </summary>
-    private EbsdMasterPatternHemisphere GetSelectedMasterPatternHemisphere()
-        => comboBoxMasterPatternHemisphere.SelectedIndex == 1 ? EbsdMasterPatternHemisphere.NegativeZ : EbsdMasterPatternHemisphere.PositiveZ;
+    private EbsdMasterPatternHemisphere GetSelectedMasterPattern2DHemisphere()
+        => comboBoxMasterPattern2DHemisphere.SelectedIndex == 1 ? EbsdMasterPatternHemisphere.NegativeZ : EbsdMasterPatternHemisphere.PositiveZ;
 
     /// <summary>
     /// 現在の energy / depth trackbar の値を、表示用テキストへ反映する。
@@ -1401,47 +1458,46 @@ public partial class FormEBSD : Form
     #endregion
 
     #region MasterPatternの二次元描画と3Dレンダリング
+    #region MasterPattern2D
+
     /// <summary>
     /// preview 条件の selector が変化したときに表示を更新する。
     /// </summary>
-    private void MasterPatternPreviewSelectionChanged(object sender, EventArgs e)
+    private void MasterPatternSelectionChanged(object sender, EventArgs e) // (260322Ch) 旧名: MasterPatternPreviewSelectionChanged
     {
         UpdateMasterPatternSliceSelectorText(); // (260321Ch) energy / depth の数値表示を先に更新する
-        DrawMasterPatternPreview();
+        DrawMasterPattern2D();
     }
-
-    /// <summary>
-    /// ScalablePictureBoxAdvanced 側で輝度レンジやカラースケールが変わったときに、
-    /// 現在の 3D preview を同じ見え方で再描画する。
-    /// </summary>
-    private void scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged(object sender, EventArgs e)
-        => RedrawMasterPattern3DPreviewFromCache();
 
     /// <summary>
     /// 現在選択されている MasterPattern slice を preview 画像へ変換して表示する。
     /// </summary>
-    private void DrawMasterPatternPreview()
+    private void DrawMasterPattern2D() // (260322Ch) 旧名: DrawMasterPattern2DPreview
     {
-        if (scalablePictureBoxAdvancedMasterPattern == null)
+        if (scalablePictureBoxAdvancedMasterPattern2D == null)
             return;
 
         if (MasterPattern == null)
         {
+            int selectedGridSize = GetSelectedMasterPatternGridSize(); // (260322Ch) 未作成時も selector に合わせた正方格子サイズを使う
             labelMasterPatternInfo.Text = "MasterPattern preview is empty.";
-            ResetMasterPatternPreviewCache(); // (260321Ch) build 前は 3D 再描画用のキャッシュも空にしておく
-            SetMasterPatternPreviewBitmap(CreateMasterPatternPlaceholderValues(GetSelectedMasterPatternGridSize()), GetSelectedMasterPatternGridSize()); // (260321Ch)
-            ClearMasterPattern3DPreview(); // (260321Ch) MasterPattern 未作成時の 3D preview は空にする
+            ResetMasterPattern3DCache(); // (260321Ch) build 前は 3D 再描画用のキャッシュも空にしておく
+            // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(GetSelectedMasterPatternGridSize()), GetSelectedMasterPatternGridSize()); // (260322Ch) 旧実装: helper が新規配列を返していた
+            SetMasterPattern2DBitmap(new double[selectedGridSize * selectedGridSize], selectedGridSize); // (260322Ch) helper を介さず空の placeholder 配列をその場で生成する
+            ClearMasterPattern3D(); // (260321Ch) MasterPattern 未作成時の 3D preview は空にする
             return;
         }
 
-        var selectedHemisphere = GetSelectedMasterPatternHemisphere();
+        var selectedHemisphere = GetSelectedMasterPattern2DHemisphere();
         int selectedEnergyIndex = trackBarMasterPatternEnergy.Enabled ? trackBarMasterPatternEnergy.Value : -1;
         int selectedDepthIndex = trackBarMasterPatternDepth.Enabled ? trackBarMasterPatternDepth.Value : -1;
         if (selectedEnergyIndex < 0 || selectedDepthIndex < 0)
         {
-            ResetMasterPatternPreviewCache(); // (260321Ch) selector 未選択時は古い 3D preview を残さない
-            SetMasterPatternPreviewBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260321Ch)
-            ClearMasterPattern3DPreview(); // (260321Ch)
+            int gridSize = MasterPattern.GridSize; // (260322Ch)
+            ResetMasterPattern3DCache(); // (260321Ch) selector 未選択時は古い 3D preview を残さない
+            // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260322Ch) 旧実装
+            SetMasterPattern2DBitmap(new double[gridSize * gridSize], gridSize); // (260322Ch)
+            ClearMasterPattern3D(); // (260321Ch)
             return;
         }
 
@@ -1449,116 +1505,118 @@ public partial class FormEBSD : Form
         var plane = MasterPattern.GetPlane(selectedHemisphere, selectedEnergyIndex, selectedDepthIndex);
         if (plane == null || plane.Length == 0)
         {
-            ResetMasterPatternPreviewCache(); // (260321Ch) plane が存在しないときは cached slice を破棄する
-            SetMasterPatternPreviewBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260321Ch)
-            ClearMasterPattern3DPreview(); // (260321Ch)
+            int gridSize = MasterPattern.GridSize; // (260322Ch)
+            ResetMasterPattern3DCache(); // (260321Ch) plane が存在しないときは cached slice を破棄する
+            // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260322Ch) 旧実装
+            SetMasterPattern2DBitmap(new double[gridSize * gridSize], gridSize); // (260322Ch)
+            ClearMasterPattern3D(); // (260321Ch)
             return;
         }
 
-        var previewValues = CreateMasterPatternPreviewValues(plane, MasterPattern.GridSize); // (260321Ch) 2D / 3D preview で同じ正規化済み強度を共有する
-        var positivePreviewValues = CreateMasterPatternPreviewValues(MasterPattern.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, selectedEnergyIndex, selectedDepthIndex), MasterPattern.GridSize); // (260321Ch) 3D 表示では +Z を常に描画する
-        var negativePreviewValues = CreateMasterPatternPreviewValues(MasterPattern.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, selectedEnergyIndex, selectedDepthIndex), MasterPattern.GridSize); // (260321Ch) 3D 表示では -Z も常に描画する
+        var displayValues = CreateMasterPatternDisplayValues(plane, MasterPattern.GridSize); // (260322Ch) 2D / 3D 描画で共有する正規化済み強度
+        var positiveDisplayValues = CreateMasterPatternDisplayValues(MasterPattern.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, selectedEnergyIndex, selectedDepthIndex), MasterPattern.GridSize); // (260321Ch) 3D 表示では +Z を常に描画する
+        var negativeDisplayValues = CreateMasterPatternDisplayValues(MasterPattern.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, selectedEnergyIndex, selectedDepthIndex), MasterPattern.GridSize); // (260321Ch) 3D 表示では -Z も常に描画する
 
         var energy = MasterPattern.Energies[selectedEnergyIndex];
         var depth = MasterPattern.Depths[selectedDepthIndex];
         // labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(MasterPattern.Hemisphere)}, E = {energy:g} kV, depth = {depth:g} nm"; // (260321Ch) 旧案: build 済み hemisphere が 1 つだけだった
         labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm";
-        masterPatternPreviewValues2D = previewValues; // (260321Ch) 2D preview に表示している slice を保持する
-        masterPatternPreviewValues3DPositive = positivePreviewValues; // (260321Ch) 3D preview では +Z 半球を常に使う
-        masterPatternPreviewValues3DNegative = negativePreviewValues; // (260321Ch) 3D preview では -Z 半球も常に使う
-        masterPatternPreviewGridSize = MasterPattern.GridSize; // (260321Ch)
-        // SetMasterPatternPreviewBitmap(previewValues, MasterPattern.GridSize); // (260321Ch) 旧案: 2D preview のみ更新していた
-        SetMasterPatternPreviewBitmap(previewValues, MasterPattern.GridSize); // (260321Ch)
-        // DrawMasterPattern3DPreview(previewValues, MasterPattern.GridSize, MasterPattern.Hemisphere, masterPatternPreviewBitmap); // (260321Ch) 旧案: 2D で選択した半球だけを 3D に描いていた
-        RedrawMasterPattern3DPreviewFromCache(); // (260321Ch) 2D 用の見た目設定と同じカラースケールで 3D を描き直す
+        masterPattern2DValues = displayValues; // (260322Ch) MasterPattern2D に表示している slice を保持する
+        masterPattern3DValuesPositive = positiveDisplayValues; // (260322Ch) MasterPattern3D では +Z 半球を常に使う
+        masterPattern3DValuesNegative = negativeDisplayValues; // (260322Ch) MasterPattern3D では -Z 半球も常に使う
+        masterPattern3DCacheGridSize = MasterPattern.GridSize; // (260322Ch)
+        // SetMasterPattern2DBitmap(displayValues, MasterPattern.GridSize); // (260321Ch) 旧案: 2D preview のみ更新していた
+        SetMasterPattern2DBitmap(displayValues, MasterPattern.GridSize); // (260322Ch)
+        // DrawMasterPattern3D(displayValues, MasterPattern.GridSize, MasterPattern.Hemisphere, masterPattern2DBitmap); // (260321Ch) 旧案: 2D で選択した半球だけを 3D に描いていた
+        RedrawMasterPattern3DFromCache(); // (260321Ch) 2D 用の見た目設定と同じカラースケールで 3D を描き直す
     }
 
     /// <summary>
     /// 現在表示中の MasterPattern preview 値を破棄する。
     /// </summary>
-    private void ResetMasterPatternPreviewCache()
+    private void ResetMasterPattern3DCache() // (260322Ch) 旧名: ResetMasterPattern3DPreviewCache
     {
-        masterPatternPreviewValues2D = []; // (260321Ch)
-        masterPatternPreviewValues3DPositive = []; // (260321Ch)
-        masterPatternPreviewValues3DNegative = []; // (260321Ch)
-        masterPatternPreviewGridSize = 0; // (260321Ch)
+        masterPattern2DValues = []; // (260322Ch)
+        masterPattern3DValuesPositive = []; // (260322Ch)
+        masterPattern3DValuesNegative = []; // (260322Ch)
+        masterPattern3DCacheGridSize = 0; // (260322Ch)
     }
 
     /// <summary>
     /// キャッシュ済みの preview 値と現在の PseudoBitmap 設定を使って 3D を描き直す。
     /// 輝度レンジやカラースケール変更時に 2D 側の設定をそのまま反映するために使う。
     /// </summary>
-    private void RedrawMasterPattern3DPreviewFromCache()
+    private void RedrawMasterPattern3DFromCache() // (260322Ch) 旧名: RedrawMasterPattern3DPreviewFromCache
     {
-        if (masterPatternPreviewBitmap == null || masterPatternPreviewGridSize <= 0)
+        if (masterPattern2DBitmap == null || masterPattern3DCacheGridSize <= 0)
         {
-            ClearMasterPattern3DPreview();
+            ClearMasterPattern3D();
             return;
         }
 
-        if (masterPatternPreviewValues2D == null || masterPatternPreviewValues2D.Length != masterPatternPreviewGridSize * masterPatternPreviewGridSize)
+        if (masterPattern2DValues == null || masterPattern2DValues.Length != masterPattern3DCacheGridSize * masterPattern3DCacheGridSize)
         {
-            ClearMasterPattern3DPreview();
+            ClearMasterPattern3D();
             return;
         }
 
-        DrawMasterPattern3DPreview(
-            masterPatternPreviewValues3DPositive,
-            masterPatternPreviewValues3DNegative,
-            masterPatternPreviewGridSize,
-            masterPatternPreviewBitmap); // (260321Ch) ScalablePictureBoxAdvanced の見た目設定を OpenGL 側へ反映する
+        DrawMasterPattern3D(
+            masterPattern3DValuesPositive,
+            masterPattern3DValuesNegative,
+            masterPattern3DCacheGridSize,
+            masterPattern2DBitmap); // (260322Ch) ScalablePictureBoxAdvanced 2D の見た目設定を OpenGL 側へ反映する
     }
 
     /// <summary>
     /// 生の MasterPattern plane を、preview 用の 0-1 強度配列へ変換する。
     /// </summary>
-    private static double[] CreateMasterPatternPreviewValues(float[] plane, int gridSize)
+    private static double[] CreateMasterPatternDisplayValues(float[] plane, int gridSize) // (260322Ch) 旧名: CreateMasterPatternPreviewValues
     {
         if (plane == null || plane.Length != gridSize * gridSize)
-            return CreateMasterPatternPlaceholderValues(gridSize);
+            return new double[gridSize * gridSize]; // (260322Ch) helper を廃止し、空の placeholder 配列を直接返す
 
         var max = plane.Max();
         return max > 0
             ? [.. plane.Select(value => Math.Sqrt(Math.Max(0f, value) / max))]
-            : CreateMasterPatternPlaceholderValues(gridSize); // (260321Ch) 0 除算を避けつつ 2D / 3D で同じ見え方を維持する
+            : new double[gridSize * gridSize]; // (260322Ch) 0 除算を避けつつ 2D / 3D で同じ見え方を維持する
     }
 
     /// <summary>
     /// preview 用の数値配列を PseudoBitmap に変換し、ScalablePictureBoxAdvanced へ設定する。
     /// </summary>
-    private void SetMasterPatternPreviewBitmap(double[] values, int gridSize)
+    private void SetMasterPattern2DBitmap(double[] values, int gridSize)
     {
-        if (scalablePictureBoxAdvancedMasterPattern == null || gridSize <= 0)
+        if (scalablePictureBoxAdvancedMasterPattern2D == null || gridSize <= 0)
             return;
 
-        var previewValues = values != null && values.Length == gridSize * gridSize
+        var displayValues = values != null && values.Length == gridSize * gridSize
             ? values
-            : CreateMasterPatternPlaceholderValues(gridSize); // (260321Ch)
-        // var min = previewValues.Min(); // (260322Ch) 旧案: データ最小値をそのまま minimum intensity の下限にしていた
+            : new double[gridSize * gridSize]; // (260322Ch) helper を介さず空配列をその場で補う
+        // var min = displayValues.Min(); // (260322Ch) 旧案: データ最小値をそのまま minimum intensity の下限にしていた
         var min = 0.0; // (260322Ch) MasterPattern preview の minimum intensity 下限は常に 0 にそろえる
-        var max = previewValues.Max();
+        var max = displayValues.Max();
         if (Math.Abs(max - min) < 1e-12)
         {
-            // previewValues = CreateMasterPatternPlaceholderValues(gridSize); // (260321Ch) 旧案: 単色データのとき微小勾配を入れていた
+            // displayValues = CreateMasterPatternPlaceholderValues(gridSize); // (260321Ch) 旧案: 単色データのとき微小勾配を入れていた
             max = min + 1.0; // (260321Ch) 真っ黒な初期表示を維持したまま、PseudoBitmap のレンジだけ確保する
         }
 
-        var previousPreviewBitmap = masterPatternPreviewBitmap; // (260322Ch) polarity / scale / intensity の見た目設定を新 slice へ引き継ぐ
+        var previousPreviewBitmap = masterPattern2DBitmap; // (260322Ch) polarity / scale / intensity の見た目設定を新 slice へ引き継ぐ
         var previousColorScale = previousPreviewBitmap?.ColorScale; // (260322Ch)
         var previousGrayScale = previousPreviewBitmap?.GrayScale ?? true; // (260322Ch)
         var previousIsNegative = previousPreviewBitmap?.IsNegative ?? false; // (260322Ch)
         var previousLowerIntensity = previousPreviewBitmap?.MinValue ?? min; // (260322Ch)
         var previousUpperIntensity = previousPreviewBitmap?.MaxValue ?? max; // (260322Ch)
-        var preserveZoomAndCenter = scalablePictureBoxAdvancedMasterPattern.PseudoBitmap != null
-            && scalablePictureBoxAdvancedMasterPattern.PseudoBitmap.Width == gridSize
-            && scalablePictureBoxAdvancedMasterPattern.PseudoBitmap.Height == gridSize; // (260322Ch) energy / depth 切替時は表示領域を維持する
+        var preserveZoomAndCenter = scalablePictureBoxAdvancedMasterPattern2D.PseudoBitmap != null
+            && scalablePictureBoxAdvancedMasterPattern2D.PseudoBitmap.Width == gridSize
+            && scalablePictureBoxAdvancedMasterPattern2D.PseudoBitmap.Height == gridSize; // (260322Ch) energy / depth 切替時は表示領域を維持する
         var previousZoomAndCenter = preserveZoomAndCenter
-            ? scalablePictureBoxAdvancedMasterPattern.ZoomAndCenter
+            ? scalablePictureBoxAdvancedMasterPattern2D.ZoomAndCenter
             : default; // (260322Ch)
 
-        masterPatternPreviewBitmap?.Dispose();
-        // masterPatternPreviewBitmap = new PseudoBitmap(previewValues, gridSize, PseudoBitmap.ColorScaleFireLiner) // (260322Ch) 旧案: slice 切替のたびに polarity / scale が初期化され、見た目が negative 側へ崩れていた
-        masterPatternPreviewBitmap = new PseudoBitmap(previewValues, gridSize)
+        masterPattern2DBitmap?.Dispose();
+        // masterPattern2DBitmap = new PseudoBitmap(displayValues, gridSize, PseudoBitmap.ColorScaleFireLiner) // (260322Ch) 旧案: slice 切替のたびに polarity / scale が初期化され、見た目が negative 側へ崩れていた
+        masterPattern2DBitmap = new PseudoBitmap(displayValues, gridSize)
         {
             MinValue = previousLowerIntensity,
             MaxValue = previousUpperIntensity,
@@ -1566,58 +1624,30 @@ public partial class FormEBSD : Form
             IsNegative = previousIsNegative,
         };
         if (previousColorScale != null && previousColorScale.Length > 1)
-            masterPatternPreviewBitmap.ColorScale = previousColorScale; // (260322Ch) 現在のカラースケール設定も維持する
+            masterPattern2DBitmap.ColorScale = previousColorScale; // (260322Ch) 現在のカラースケール設定も維持する
 
-        scalablePictureBoxAdvancedMasterPattern.Symbols = CreateMasterPatternPreviewSymbols(gridSize); // (260321Ch)
-        scalablePictureBoxAdvancedMasterPattern.PseudoBitmap = masterPatternPreviewBitmap;
-        scalablePictureBoxAdvancedMasterPattern.MinimumIntensity = 0; // (260322Ch) minimum intensity の下限は 0 固定
+        // scalablePictureBoxAdvancedMasterPattern2D.Symbols = CreateMasterPatternPreviewSymbols(gridSize); // (260322Ch) MasterPattern2D の overlay 枠線・中心線描画は廃止
+        scalablePictureBoxAdvancedMasterPattern2D.PseudoBitmap = masterPattern2DBitmap;
+        scalablePictureBoxAdvancedMasterPattern2D.MinimumIntensity = 0; // (260322Ch) minimum intensity の下限は 0 固定
         if (preserveZoomAndCenter)
-            scalablePictureBoxAdvancedMasterPattern.ZoomAndCenter = previousZoomAndCenter; // (260322Ch) energy / depth 切替時に表示領域をリセットしない
-        scalablePictureBoxAdvancedMasterPattern.DrawPictureBox();
+            scalablePictureBoxAdvancedMasterPattern2D.ZoomAndCenter = previousZoomAndCenter; // (260322Ch) energy / depth 切替時に表示領域をリセットしない
+        scalablePictureBoxAdvancedMasterPattern2D.DrawPictureBox();
     }
 
     /// <summary>
-    /// MasterPattern が未作成のときや slice が空のときに表示する仮の背景画像を作る。
+    /// ScalablePictureBoxAdvanced 側で輝度レンジやカラースケールが変わったときに、
+    /// 現在の MasterPattern3D を同じ見え方で再描画する。
     /// </summary>
-    private static double[] CreateMasterPatternPlaceholderValues(int gridSize)
-    {
-        var values = new double[gridSize * gridSize];
-        // if (gridSize <= 1) { values[0] = 1; return values; } // (260321Ch) 旧案: 空 preview にもダミー勾配を入れていた
-        // var center = (gridSize - 1) * 0.5;
-        // var norm = Math.Max(1.0, center);
-        // for (int y = 0; y < gridSize; y++)
-        //     for (int x = 0; x < gridSize; x++)
-        //     {
-        //         var dx = (x - center) / norm;
-        //         var dy = (y - center) / norm;
-        //         values[y * gridSize + x] = 0.02 * (dx * dx + dy * dy);
-        //     }
-        // (260321Ch) 未作成時は物理的意味のない円環模様を出さず、全面黒で表示する
-        return values;
-    }
+    private void scalablePictureBoxAdvancedMasterPattern2D_BrightnessAndColorChanged(object sender, EventArgs e)
+        => RedrawMasterPattern3DFromCache(); // (260322Ch)
 
-    /// <summary>
-    /// preview 上へ重ねる枠線と中心線の symbol 群を作る。
-    /// </summary>
-    private static List<ScalablePictureBox.Symbol> CreateMasterPatternPreviewSymbols(int gridSize)
-    {
-        var max = Math.Max(1, gridSize - 1);
-        var center = max / 2.0;
-        return
-        [
-            new ScalablePictureBox.Symbol("", new PointD(0, 0), new PointD(max, 0), Color.Black) { LabelVisible = false },
-            new ScalablePictureBox.Symbol("", new PointD(max, 0), new PointD(max, max), Color.Black) { LabelVisible = false },
-            new ScalablePictureBox.Symbol("", new PointD(max, max), new PointD(0, max), Color.Black) { LabelVisible = false },
-            new ScalablePictureBox.Symbol("", new PointD(0, max), new PointD(0, 0), Color.Black) { LabelVisible = false },
-            new ScalablePictureBox.Symbol("", new PointD(center, 0), new PointD(center, max), Color.FromArgb(160, Color.Black)) { LabelVisible = false },
-            new ScalablePictureBox.Symbol("", new PointD(0, center), new PointD(max, center), Color.FromArgb(160, Color.Black)) { LabelVisible = false },
-        ];
-    }
+    #endregion
 
-    /// <summary>
-    /// 3D preview 上の既存オブジェクトを削除し、黒背景だけの状態へ戻す。
-    /// </summary>
-    private void ClearMasterPattern3DPreview()
+    #region MasterPattern3D
+
+
+    /// <summary>3D preview 上の既存オブジェクトを削除し、黒背景だけの状態へ戻す。 </summary>
+    private void ClearMasterPattern3D() // (260322Ch) 旧名: ClearMasterPattern3DPreview
     {
         if (glControlMasterPattern3D == null)
             return;
@@ -1630,7 +1660,7 @@ public partial class FormEBSD : Form
     /// 正規化済みの MasterPattern 値から、Rosca-Lambert 球面 preview を再描画する。
     /// 3D 側は +Z / -Z の両半球を同時に表示する。
     /// </summary>
-    private void DrawMasterPattern3DPreview(double[] positiveValues, double[] negativeValues, int gridSize, PseudoBitmap referenceBitmap)
+    private void DrawMasterPattern3D(double[] positiveValues, double[] negativeValues, int gridSize, PseudoBitmap referenceBitmap) // (260322Ch) 旧名: DrawMasterPattern3DPreview
     {
         if (glControlMasterPattern3D == null || gridSize <= 0)
             return;
@@ -1647,21 +1677,40 @@ public partial class FormEBSD : Form
         var glObjects = new List<GLObject>();
         if (positiveValues != null && positiveValues.Length == gridSize * gridSize)
         {
-            // glObjects.AddRange(CreateMasterPattern3DObjects(positiveValues, gridSize, EbsdMasterPatternHemisphere.PositiveZ, referenceBitmap)); // (260321Ch) 旧案: セルごとに Quads を 1 個ずつ生成していた
             var positiveObject = CreateMasterPattern3DObject(positiveValues, gridSize, EbsdMasterPatternHemisphere.PositiveZ, referenceBitmap); // (260321Ch) 半球全体を 1 メッシュへまとめて描画する
             if (positiveObject != null)
                 glObjects.Add(positiveObject);
         }
         if (negativeValues != null && negativeValues.Length == gridSize * gridSize)
         {
-            // glObjects.AddRange(CreateMasterPattern3DObjects(negativeValues, gridSize, EbsdMasterPatternHemisphere.NegativeZ, referenceBitmap)); // (260321Ch) 旧案
             var negativeObject = CreateMasterPattern3DObject(negativeValues, gridSize, EbsdMasterPatternHemisphere.NegativeZ, referenceBitmap); // (260321Ch)
             if (negativeObject != null)
                 glObjects.Add(negativeObject);
         }
+        glObjects.AddRange(CreateMasterPattern3DAxisLabelObjects()); // (260322Ch) 3D preview 上に a / b / c 軸ラベルを重ねる
         if (glObjects.Count > 0)
             glControlMasterPattern3D.AddObjects(glObjects);
         glControlMasterPattern3D.Refresh();
+    }
+
+    private IEnumerable<GLObject> CreateMasterPattern3DAxisLabelObjects()
+    {
+        if (glControlMasterPattern3D == null || !checkBoxMasterPattern3DAxisLabel.Checked || Crystal?.A_Axis == null || Crystal.B_Axis == null || Crystal.C_Axis == null)
+            return [];
+
+        var axisVectors = new[] { Crystal.A_Axis.Normarize(), Crystal.B_Axis.Normarize(), Crystal.C_Axis.Normarize() };
+        C4[] color = [C4.Red, C4.Green, C4.Blue];
+        string[] label = ["a", "b", "c"];
+        var objects = new List<GLObject>(3);
+        for (int i = 0; i < axisVectors.Length; i++)
+        {
+            if (axisVectors[i].Length2 < 1e-12)
+                continue;
+
+            var labelPosition = axisVectors[i].ToOpenTK(); // (260322Ch) 軸方向に対応する球面上の座標へそのまま配置する
+            objects.Add(new TextObject(label[i], 13f, labelPosition, 0.05, true, new Material(color[i]), glControlMasterPattern3D)); // (260322Ch) Main window と同じサイズ感で白縁付きにする
+        }
+        return objects;
     }
 
     /// <summary>
@@ -1670,10 +1719,8 @@ public partial class FormEBSD : Form
     /// </summary>
     private static GLObject CreateMasterPattern3DObject(double[] values, int gridSize, EbsdMasterPatternHemisphere hemisphere, PseudoBitmap referenceBitmap)
     {
-        var previewGrid = Math.Min(gridSize, MasterPattern3DPreviewGridMax);
-        var previewValues = previewGrid == gridSize
-            ? values
-            : DownsampleMasterPatternPreviewValues(values, gridSize, previewGrid); // (260321Ch) 3D 側は polygon 数を抑えるため平均化して間引く
+        var previewGrid = gridSize; // (260322Ch) メッシュ描画で十分高速なので元の格子サイズをそのまま使う
+        var previewValues = values; // (260322Ch)
         if (previewGrid <= 0 || previewValues.Length != previewGrid * previewGrid)
             return null; // (260321Ch)
 
@@ -1691,8 +1738,8 @@ public partial class FormEBSD : Form
                 var a = -squareLimit + x * step;
                 int index = rowOffset + x;
                 positions[index] = EbsdMasterPattern.RoscaLambertToSphere(a, b, hemisphere).ToOpenTK(); // (260321Ch)
-                var value = GetMasterPatternPreviewVertexValue(previewValues, previewGrid, x, y); // (260321Ch) 頂点色は隣接セル平均で滑らかにつなぐ
-                argbs[index] = GetMasterPatternPreviewColor(value, referenceBitmap).ToArgb();
+                var value = GetMasterPattern3DVertexValue(previewValues, previewGrid, x, y); // (260321Ch) 頂点色は隣接セル平均で滑らかにつなぐ
+                argbs[index] = GetMasterPattern3DColor(value, referenceBitmap).ToArgb();
             }
         }
 
@@ -1717,44 +1764,13 @@ public partial class FormEBSD : Form
             }
         }
 
-        return new ColoredSurfaceMesh(positions, argbs, indices, CreateMasterPattern3DMaterial(C4.White), DrawingMode.Surfaces) // (260321Ch)
-        {
-            IgnoreNormalSides = true
-        };
-    }
-
-    /// <summary>
-    /// 高解像度の preview 値を、3D 描画用の粗い格子へ平均化する。
-    /// </summary>
-    private static double[] DownsampleMasterPatternPreviewValues(double[] values, int sourceGrid, int targetGrid)
-    {
-        var results = new double[targetGrid * targetGrid];
-        for (int ty = 0; ty < targetGrid; ty++)
-        {
-            int y0 = ty * sourceGrid / targetGrid;
-            int y1 = Math.Max(y0 + 1, (ty + 1) * sourceGrid / targetGrid);
-            for (int tx = 0; tx < targetGrid; tx++)
-            {
-                int x0 = tx * sourceGrid / targetGrid;
-                int x1 = Math.Max(x0 + 1, (tx + 1) * sourceGrid / targetGrid);
-                double sum = 0;
-                int count = 0;
-                for (int y = y0; y < y1; y++)
-                    for (int x = x0; x < x1; x++)
-                    {
-                        sum += values[y * sourceGrid + x];
-                        count++;
-                    }
-                results[ty * targetGrid + tx] = count > 0 ? sum / count : 0;
-            }
-        }
-        return results;
+        return new ColoredSurfaceMesh(positions, argbs, indices, CreateMasterPattern3DMaterial(C4.White), DrawingMode.Surfaces) { IgnoreNormalSides = true };// (260321Ch)
     }
 
     /// <summary>
     /// セル中心値から頂点色を作るため、隣接する 1～4 セルを平均する。
     /// </summary>
-    private static double GetMasterPatternPreviewVertexValue(double[] values, int gridSize, int vertexX, int vertexY)
+    private static double GetMasterPattern3DVertexValue(double[] values, int gridSize, int vertexX, int vertexY) // (260322Ch) 旧名: GetMasterPatternPreviewVertexValue
     {
         double sum = 0;
         int count = 0;
@@ -1771,7 +1787,7 @@ public partial class FormEBSD : Form
     /// <summary>
     /// ScalablePictureBoxAdvanced と同じ PseudoBitmap の色変換で 3D polygon の色を返す。
     /// </summary>
-    private static C4 GetMasterPatternPreviewColor(double value, PseudoBitmap referenceBitmap)
+    private static C4 GetMasterPattern3DColor(double value, PseudoBitmap referenceBitmap) // (260322Ch) 旧名: GetMasterPatternPreviewColor
     {
         if (referenceBitmap?.ColorScale == null || referenceBitmap.ColorScale.Length == 0)
             return C4.Black;
@@ -1785,9 +1801,6 @@ public partial class FormEBSD : Form
         var coeff = colorScale.Length / (maxValue - minValue);
         var index = Math.Clamp((int)((value - minValue) * coeff + 0.5), 0, colorScale.Length - 1);
         var (r0, g0, b0) = colorScale[index];
-        // var ratio = maxValue > minValue ? Math.Clamp((value - minValue) / (maxValue - minValue), 0.0, 1.0) : 0.0; // (260321Ch) 旧案: OpenGL 側で Fire スケールの index を手計算していた
-        // var index = (int)Math.Round(ratio * (PseudoBitmap.ColorScaleFireLiner.Length - 1)); // (260321Ch)
-        // var (r0, g0, b0) = PseudoBitmap.ColorScaleFireLiner[index]; // (260321Ch)
         byte r, g, b;
         if (referenceBitmap.GrayScale)
             r = g = b = b0; // (260321Ch) PseudoBitmap.GetImage() は GrayScale 時に B 成分だけを全チャネルへ使う
@@ -1799,21 +1812,18 @@ public partial class FormEBSD : Form
         return new C4(r / 255f, g / 255f, b / 255f, 1f);
     }
 
-    /// <summary>
-    /// 3D preview 用の polygon material を作る。
-    /// 発光成分のみを使い、反射の影響を受けない色表示にする。
-    /// </summary>
-    private static Material CreateMasterPattern3DMaterial(C4 color)
-        => new(color)
-        {
-            Emission = 1f,
-            Ambient = 0f,
-            Diffuse = 0f,
-            Specular = 0f,
-            SpecularPower = 1f,
-        }; // (260321Ch)
+    /// <summary>3D preview 用の polygon material を作る。発光成分のみを使い、反射の影響を受けない色表示にする。</summary>
+    private static Material CreateMasterPattern3DMaterial(C4 color) => new(color) { Emission = 1f, Ambient = 0f, Diffuse = 0f, Specular = 0f, SpecularPower = 1f, }; // (260321Ch)
+
+    private void checkBoxMasterPattern3DAxisLabel_CheckedChanged(object sender, EventArgs e)  => RedrawMasterPattern3DFromCache(); // (260322Ch) MasterPattern3D 上の a / b / c ラベル表示を即座に切り替える
+
+    private void checkBoxMasterPattern3DAxisArrows_CheckedChanged(object sender, EventArgs e) => panelMasterPattern3DAxes.Visible = checkBoxMasterPattern3DAxisArrows.Checked; // (260322Ch) MasterPattern3D axes inset の表示可否を切り替える
 
     #endregion
+
+    #endregion
+
+
 
 }
 

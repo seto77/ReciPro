@@ -377,7 +377,6 @@
             crystalControl.Gamma = 0D;
             crystalControl.Name = "crystalControl";
             crystalControl.ScatteringFactorVisible = false;
-            crystalControl.SkipEvent = false;
             crystalControl.SymmetryInformationVisible = false;
             crystalControl.SymmetrySeriesNumber = 0;
             crystalControl.VisibleAtomTab = true;

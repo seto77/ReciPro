@@ -118,8 +118,8 @@
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            scalablePictureBoxAdvancedMasterPattern = new ScalablePictureBoxAdvanced();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            scalablePictureBoxAdvancedMasterPattern2D = new ScalablePictureBoxAdvanced();
+            flowLayoutPanelMasterPatternSelectors = new System.Windows.Forms.FlowLayoutPanel();
             labelMasterPatternEnergy = new System.Windows.Forms.Label();
             textBoxMasterPatternEnergy = new System.Windows.Forms.TextBox();
             labelMasterPatternEnergyUnit = new System.Windows.Forms.Label();
@@ -128,21 +128,28 @@
             textBoxMasterPatternDepth = new System.Windows.Forms.TextBox();
             labelMasterPatternDepthUnit = new System.Windows.Forms.Label();
             trackBarMasterPatternDepth = new System.Windows.Forms.TrackBar();
-            labelMasterPatternHemisphere = new System.Windows.Forms.Label();
-            comboBoxMasterPatternHemisphere = new System.Windows.Forms.ComboBox();
+            labelMasterPattern2DHemisphere = new System.Windows.Forms.Label();
+            comboBoxMasterPattern2DHemisphere = new System.Windows.Forms.ComboBox();
             buttonCreateMasterPattern = new System.Windows.Forms.Button();
             labelMasterPatternInfo = new System.Windows.Forms.Label();
             panelMasterPattern3D = new System.Windows.Forms.Panel();
+            panelMasterPattern3DAxes = new System.Windows.Forms.Panel();
             groupBox3 = new System.Windows.Forms.GroupBox();
-            button7 = new System.Windows.Forms.Button();
-            button6 = new System.Windows.Forms.Button();
-            button5 = new System.Windows.Forms.Button();
-            button4 = new System.Windows.Forms.Button();
-            button3 = new System.Windows.Forms.Button();
+            buttonMasterPattern3DViewAlong = new System.Windows.Forms.Button();
+            numericBoxMasterPattern3DViewAlongU = new NumericBox();
+            numericBoxMasterPattern3DViewAlongW = new NumericBox();
+            buttonMasterPattern3DCopy = new System.Windows.Forms.Button();
+            checkBoxMasterPattern3DAxisLabel = new System.Windows.Forms.CheckBox();
+            checkBoxMasterPattern3DAxisArrows = new System.Windows.Forms.CheckBox();
+            buttonMasterPattern2DCopy = new System.Windows.Forms.Button();
             groupBox6 = new System.Windows.Forms.GroupBox();
             panel1 = new System.Windows.Forms.Panel();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
+            numericBoxMasterPattern3DViewAlongV = new NumericBox();
+            flowLayoutPanelMasterPattern3DViewAlong = new System.Windows.Forms.FlowLayoutPanel();
+            labelMasterPattern3DViewAlongOpenBracket = new System.Windows.Forms.Label();
+            labelMasterPattern3DViewAlongCloseBracket = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
@@ -162,11 +169,13 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             statusStrip1.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanelMasterPatternSelectors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).BeginInit();
+            panelMasterPattern3D.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox6.SuspendLayout();
+            flowLayoutPanelMasterPattern3DViewAlong.SuspendLayout();
             SuspendLayout();
             // 
             // panelGeometry
@@ -242,7 +251,7 @@
             buttonViewQuarter.Location = new System.Drawing.Point(0, 0);
             buttonViewQuarter.Margin = new System.Windows.Forms.Padding(0);
             buttonViewQuarter.Name = "buttonViewQuarter";
-            buttonViewQuarter.Size = new System.Drawing.Size(146, 25);
+            buttonViewQuarter.Size = new System.Drawing.Size(140, 25);
             buttonViewQuarter.TabIndex = 98;
             buttonViewQuarter.Text = "Quarter view";
             buttonViewQuarter.UseVisualStyleBackColor = true;
@@ -253,10 +262,10 @@
             buttonViewFromSurfaceNormal.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonViewFromSurfaceNormal.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             buttonViewFromSurfaceNormal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonViewFromSurfaceNormal.Location = new System.Drawing.Point(146, 0);
+            buttonViewFromSurfaceNormal.Location = new System.Drawing.Point(140, 0);
             buttonViewFromSurfaceNormal.Margin = new System.Windows.Forms.Padding(0);
             buttonViewFromSurfaceNormal.Name = "buttonViewFromSurfaceNormal";
-            buttonViewFromSurfaceNormal.Size = new System.Drawing.Size(146, 25);
+            buttonViewFromSurfaceNormal.Size = new System.Drawing.Size(154, 25);
             buttonViewFromSurfaceNormal.TabIndex = 98;
             buttonViewFromSurfaceNormal.Text = "From the surface normal";
             buttonViewFromSurfaceNormal.UseVisualStyleBackColor = true;
@@ -270,7 +279,7 @@
             buttonFromX.Location = new System.Drawing.Point(0, 25);
             buttonFromX.Margin = new System.Windows.Forms.Padding(0);
             buttonFromX.Name = "buttonFromX";
-            buttonFromX.Size = new System.Drawing.Size(146, 25);
+            buttonFromX.Size = new System.Drawing.Size(140, 25);
             buttonFromX.TabIndex = 98;
             buttonFromX.Text = "From X (rotation axis)";
             buttonFromX.UseVisualStyleBackColor = true;
@@ -281,10 +290,10 @@
             buttonViewFromZ.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonViewFromZ.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             buttonViewFromZ.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonViewFromZ.Location = new System.Drawing.Point(146, 25);
+            buttonViewFromZ.Location = new System.Drawing.Point(140, 25);
             buttonViewFromZ.Margin = new System.Windows.Forms.Padding(0);
             buttonViewFromZ.Name = "buttonViewFromZ";
-            buttonViewFromZ.Size = new System.Drawing.Size(146, 25);
+            buttonViewFromZ.Size = new System.Drawing.Size(154, 25);
             buttonViewFromZ.TabIndex = 99;
             buttonViewFromZ.Text = "From Z (=beam direction)";
             buttonViewFromZ.UseVisualStyleBackColor = true;
@@ -1588,7 +1597,7 @@
             comboBoxMasterPatternGrid.Name = "comboBoxMasterPatternGrid";
             comboBoxMasterPatternGrid.Size = new System.Drawing.Size(76, 25);
             comboBoxMasterPatternGrid.TabIndex = 1;
-            comboBoxMasterPatternGrid.SelectedIndexChanged += MasterPatternPreviewSelectionChanged;
+            comboBoxMasterPatternGrid.SelectedIndexChanged += MasterPatternSelectionChanged;
             // 
             // statusStrip1
             // 
@@ -1616,60 +1625,62 @@
             toolStripStatusLabel2.Size = new System.Drawing.Size(16, 17);
             toolStripStatusLabel2.Text = "   ";
             // 
-            // scalablePictureBoxAdvancedMasterPattern
+            // scalablePictureBoxAdvancedMasterPattern2D
             // 
-            scalablePictureBoxAdvancedMasterPattern.ColorVisible = true;
-            scalablePictureBoxAdvancedMasterPattern.DecimalPlacesForIntensity = 5;
-            scalablePictureBoxAdvancedMasterPattern.FixZoomAndCenter = false;
-            scalablePictureBoxAdvancedMasterPattern.Font = new System.Drawing.Font("Segoe UI", 9F);
-            scalablePictureBoxAdvancedMasterPattern.FrequencyGraphVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.GradiaentVisible = true;
-            scalablePictureBoxAdvancedMasterPattern.ImageFilter_DustAndScratches = false;
-            scalablePictureBoxAdvancedMasterPattern.ImageFilter_DustAndScratchesRadius = 1D;
-            scalablePictureBoxAdvancedMasterPattern.ImageFilter_DustAndScratchesThreshold = 3D;
-            scalablePictureBoxAdvancedMasterPattern.ImageFilter_DustAndScratchesVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.ImageFilter_GaussianBlur = false;
-            scalablePictureBoxAdvancedMasterPattern.ImageFilter_GaussianBlurRadius = 1D;
-            scalablePictureBoxAdvancedMasterPattern.ImageFilter_GaussianBlurVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.ImageFilterVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.Location = new System.Drawing.Point(5, 53);
-            scalablePictureBoxAdvancedMasterPattern.LogScaleBar = false;
-            scalablePictureBoxAdvancedMasterPattern.LowerIntensity = 0D;
-            scalablePictureBoxAdvancedMasterPattern.MagInfoVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            scalablePictureBoxAdvancedMasterPattern.MaximumIntensity = 1D;
-            scalablePictureBoxAdvancedMasterPattern.MinimumIntensity = 0D;
-            scalablePictureBoxAdvancedMasterPattern.MousePositionLabelVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.Name = "scalablePictureBoxAdvancedMasterPattern";
-            scalablePictureBoxAdvancedMasterPattern.PictureSize = new System.Drawing.Size(280, 280);
-            scalablePictureBoxAdvancedMasterPattern.PolarityVisible = true;
-            scalablePictureBoxAdvancedMasterPattern.ScaleVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.ShowGradiaent = true;
-            scalablePictureBoxAdvancedMasterPattern.Size = new System.Drawing.Size(280, 365);
-            scalablePictureBoxAdvancedMasterPattern.StatusVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.TabIndex = 0;
-            scalablePictureBoxAdvancedMasterPattern.TitleVisible = false;
-            scalablePictureBoxAdvancedMasterPattern.TrackBarVisible = true;
-            scalablePictureBoxAdvancedMasterPattern.UpperIntensity = 1D;
-            scalablePictureBoxAdvancedMasterPattern.VisibleGradient = true;
+            scalablePictureBoxAdvancedMasterPattern2D.ClampIntensityRangeToNewData = false;
+            scalablePictureBoxAdvancedMasterPattern2D.ColorVisible = true;
+            scalablePictureBoxAdvancedMasterPattern2D.DecimalPlacesForIntensity = 5;
+            scalablePictureBoxAdvancedMasterPattern2D.FixZoomAndCenter = false;
+            scalablePictureBoxAdvancedMasterPattern2D.Font = new System.Drawing.Font("Segoe UI", 9F);
+            scalablePictureBoxAdvancedMasterPattern2D.FrequencyGraphVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.GradiaentVisible = true;
+            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratches = false;
+            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratchesRadius = 1D;
+            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratchesThreshold = 3D;
+            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratchesVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_GaussianBlur = false;
+            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_GaussianBlurRadius = 1D;
+            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_GaussianBlurVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.ImageFilterVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.Location = new System.Drawing.Point(5, 53);
+            scalablePictureBoxAdvancedMasterPattern2D.LogScaleBar = false;
+            scalablePictureBoxAdvancedMasterPattern2D.LowerIntensity = 0D;
+            scalablePictureBoxAdvancedMasterPattern2D.MagInfoVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            scalablePictureBoxAdvancedMasterPattern2D.MaximumIntensity = 1D;
+            scalablePictureBoxAdvancedMasterPattern2D.MinimumIntensity = 0D;
+            scalablePictureBoxAdvancedMasterPattern2D.MousePositionLabelVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.Name = "scalablePictureBoxAdvancedMasterPattern2D";
+            scalablePictureBoxAdvancedMasterPattern2D.PictureSize = new System.Drawing.Size(280, 280);
+            scalablePictureBoxAdvancedMasterPattern2D.PolarityVisible = true;
+            scalablePictureBoxAdvancedMasterPattern2D.ScaleVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.ShowGradiaent = true;
+            scalablePictureBoxAdvancedMasterPattern2D.Size = new System.Drawing.Size(280, 365);
+            scalablePictureBoxAdvancedMasterPattern2D.StatusVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.TabIndex = 0;
+            scalablePictureBoxAdvancedMasterPattern2D.TitleVisible = false;
+            scalablePictureBoxAdvancedMasterPattern2D.TrackBarVisible = true;
+            scalablePictureBoxAdvancedMasterPattern2D.UpperIntensity = 1D;
+            scalablePictureBoxAdvancedMasterPattern2D.VisibleGradient = true;
+            scalablePictureBoxAdvancedMasterPattern2D.BrightnessAndColorChanged += scalablePictureBoxAdvancedMasterPattern2D_BrightnessAndColorChanged;
             // 
-            // flowLayoutPanel5
+            // flowLayoutPanelMasterPatternSelectors
             // 
-            flowLayoutPanel5.AutoSize = true;
-            flowLayoutPanel5.Controls.Add(labelMasterPatternEnergy);
-            flowLayoutPanel5.Controls.Add(textBoxMasterPatternEnergy);
-            flowLayoutPanel5.Controls.Add(labelMasterPatternEnergyUnit);
-            flowLayoutPanel5.Controls.Add(trackBarMasterPatternEnergy);
-            flowLayoutPanel5.Controls.Add(labelMasterPatternDepth);
-            flowLayoutPanel5.Controls.Add(textBoxMasterPatternDepth);
-            flowLayoutPanel5.Controls.Add(labelMasterPatternDepthUnit);
-            flowLayoutPanel5.Controls.Add(trackBarMasterPatternDepth);
-            flowLayoutPanel5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            flowLayoutPanel5.Location = new System.Drawing.Point(8, 419);
-            flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new System.Drawing.Size(487, 27);
-            flowLayoutPanel5.TabIndex = 1;
+            flowLayoutPanelMasterPatternSelectors.AutoSize = true;
+            flowLayoutPanelMasterPatternSelectors.Controls.Add(labelMasterPatternEnergy);
+            flowLayoutPanelMasterPatternSelectors.Controls.Add(textBoxMasterPatternEnergy);
+            flowLayoutPanelMasterPatternSelectors.Controls.Add(labelMasterPatternEnergyUnit);
+            flowLayoutPanelMasterPatternSelectors.Controls.Add(trackBarMasterPatternEnergy);
+            flowLayoutPanelMasterPatternSelectors.Controls.Add(labelMasterPatternDepth);
+            flowLayoutPanelMasterPatternSelectors.Controls.Add(textBoxMasterPatternDepth);
+            flowLayoutPanelMasterPatternSelectors.Controls.Add(labelMasterPatternDepthUnit);
+            flowLayoutPanelMasterPatternSelectors.Controls.Add(trackBarMasterPatternDepth);
+            flowLayoutPanelMasterPatternSelectors.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            flowLayoutPanelMasterPatternSelectors.Location = new System.Drawing.Point(8, 419);
+            flowLayoutPanelMasterPatternSelectors.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanelMasterPatternSelectors.Name = "flowLayoutPanelMasterPatternSelectors";
+            flowLayoutPanelMasterPatternSelectors.Size = new System.Drawing.Size(487, 27);
+            flowLayoutPanelMasterPatternSelectors.TabIndex = 1;
             // 
             // labelMasterPatternEnergy
             // 
@@ -1711,7 +1722,7 @@
             trackBarMasterPatternEnergy.Name = "trackBarMasterPatternEnergy";
             trackBarMasterPatternEnergy.Size = new System.Drawing.Size(132, 21);
             trackBarMasterPatternEnergy.TabIndex = 8;
-            trackBarMasterPatternEnergy.ValueChanged += MasterPatternPreviewSelectionChanged;
+            trackBarMasterPatternEnergy.ValueChanged += MasterPatternSelectionChanged;
             // 
             // labelMasterPatternDepth
             // 
@@ -1753,31 +1764,31 @@
             trackBarMasterPatternDepth.Name = "trackBarMasterPatternDepth";
             trackBarMasterPatternDepth.Size = new System.Drawing.Size(132, 21);
             trackBarMasterPatternDepth.TabIndex = 12;
-            trackBarMasterPatternDepth.ValueChanged += MasterPatternPreviewSelectionChanged;
+            trackBarMasterPatternDepth.ValueChanged += MasterPatternSelectionChanged;
             // 
-            // labelMasterPatternHemisphere
+            // labelMasterPattern2DHemisphere
             // 
-            labelMasterPatternHemisphere.AutoSize = true;
-            labelMasterPatternHemisphere.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            labelMasterPatternHemisphere.Location = new System.Drawing.Point(73, 27);
-            labelMasterPatternHemisphere.Margin = new System.Windows.Forms.Padding(0, 8, 4, 0);
-            labelMasterPatternHemisphere.Name = "labelMasterPatternHemisphere";
-            labelMasterPatternHemisphere.Size = new System.Drawing.Size(78, 17);
-            labelMasterPatternHemisphere.TabIndex = 2;
-            labelMasterPatternHemisphere.Text = "Hemisphere";
+            labelMasterPattern2DHemisphere.AutoSize = true;
+            labelMasterPattern2DHemisphere.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            labelMasterPattern2DHemisphere.Location = new System.Drawing.Point(73, 27);
+            labelMasterPattern2DHemisphere.Margin = new System.Windows.Forms.Padding(0, 8, 4, 0);
+            labelMasterPattern2DHemisphere.Name = "labelMasterPattern2DHemisphere";
+            labelMasterPattern2DHemisphere.Size = new System.Drawing.Size(78, 17);
+            labelMasterPattern2DHemisphere.TabIndex = 2;
+            labelMasterPattern2DHemisphere.Text = "Hemisphere";
             // 
-            // comboBoxMasterPatternHemisphere
+            // comboBoxMasterPattern2DHemisphere
             // 
-            comboBoxMasterPatternHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxMasterPatternHemisphere.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            comboBoxMasterPatternHemisphere.FormattingEnabled = true;
-            comboBoxMasterPatternHemisphere.Items.AddRange(new object[] { "+Z hemisphere", "-Z hemisphere" });
-            comboBoxMasterPatternHemisphere.Location = new System.Drawing.Point(154, 24);
-            comboBoxMasterPatternHemisphere.Margin = new System.Windows.Forms.Padding(0, 2, 8, 0);
-            comboBoxMasterPatternHemisphere.Name = "comboBoxMasterPatternHemisphere";
-            comboBoxMasterPatternHemisphere.Size = new System.Drawing.Size(108, 25);
-            comboBoxMasterPatternHemisphere.TabIndex = 3;
-            comboBoxMasterPatternHemisphere.SelectedIndexChanged += MasterPatternPreviewSelectionChanged;
+            comboBoxMasterPattern2DHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxMasterPattern2DHemisphere.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            comboBoxMasterPattern2DHemisphere.FormattingEnabled = true;
+            comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { "+Z hemisphere", "-Z hemisphere" });
+            comboBoxMasterPattern2DHemisphere.Location = new System.Drawing.Point(154, 24);
+            comboBoxMasterPattern2DHemisphere.Margin = new System.Windows.Forms.Padding(0, 2, 8, 0);
+            comboBoxMasterPattern2DHemisphere.Name = "comboBoxMasterPattern2DHemisphere";
+            comboBoxMasterPattern2DHemisphere.Size = new System.Drawing.Size(108, 25);
+            comboBoxMasterPattern2DHemisphere.TabIndex = 3;
+            comboBoxMasterPattern2DHemisphere.SelectedIndexChanged += MasterPatternSelectionChanged;
             // 
             // buttonCreateMasterPattern
             // 
@@ -1809,26 +1820,36 @@
             // panelMasterPattern3D
             // 
             panelMasterPattern3D.BackColor = System.Drawing.SystemColors.Control;
+            panelMasterPattern3D.Controls.Add(panelMasterPattern3DAxes);
             panelMasterPattern3D.Location = new System.Drawing.Point(287, 53);
             panelMasterPattern3D.Margin = new System.Windows.Forms.Padding(0);
             panelMasterPattern3D.Name = "panelMasterPattern3D";
             panelMasterPattern3D.Size = new System.Drawing.Size(280, 280);
             panelMasterPattern3D.TabIndex = 147;
             // 
+            // panelMasterPattern3DAxes
+            // 
+            panelMasterPattern3DAxes.BackColor = System.Drawing.SystemColors.Control;
+            panelMasterPattern3DAxes.Location = new System.Drawing.Point(200, 0);
+            panelMasterPattern3DAxes.Margin = new System.Windows.Forms.Padding(0);
+            panelMasterPattern3DAxes.Name = "panelMasterPattern3DAxes";
+            panelMasterPattern3DAxes.Size = new System.Drawing.Size(80, 80);
+            panelMasterPattern3DAxes.TabIndex = 147;
+            // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(flowLayoutPanelMasterPattern3DViewAlong);
             groupBox3.Controls.Add(groupBox1);
-            groupBox3.Controls.Add(button7);
-            groupBox3.Controls.Add(button6);
-            groupBox3.Controls.Add(button5);
-            groupBox3.Controls.Add(button4);
+            groupBox3.Controls.Add(buttonMasterPattern3DCopy);
+            groupBox3.Controls.Add(checkBoxMasterPattern3DAxisLabel);
+            groupBox3.Controls.Add(checkBoxMasterPattern3DAxisArrows);
             groupBox3.Controls.Add(buttonStop);
-            groupBox3.Controls.Add(button3);
-            groupBox3.Controls.Add(scalablePictureBoxAdvancedMasterPattern);
+            groupBox3.Controls.Add(buttonMasterPattern2DCopy);
+            groupBox3.Controls.Add(scalablePictureBoxAdvancedMasterPattern2D);
             groupBox3.Controls.Add(panelMasterPattern3D);
-            groupBox3.Controls.Add(labelMasterPatternHemisphere);
-            groupBox3.Controls.Add(comboBoxMasterPatternHemisphere);
-            groupBox3.Controls.Add(flowLayoutPanel5);
+            groupBox3.Controls.Add(labelMasterPattern2DHemisphere);
+            groupBox3.Controls.Add(comboBoxMasterPattern2DHemisphere);
+            groupBox3.Controls.Add(flowLayoutPanelMasterPatternSelectors);
             groupBox3.Controls.Add(buttonCreateMasterPattern);
             groupBox3.Controls.Add(labelMasterPatternInfo);
             groupBox3.Dock = System.Windows.Forms.DockStyle.Right;
@@ -1840,70 +1861,118 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Master Pattern";
             // 
-            // button7
+            // buttonMasterPattern3DViewAlong
             // 
-            button7.AutoSize = true;
-            button7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            button7.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            button7.Location = new System.Drawing.Point(478, 356);
-            button7.Margin = new System.Windows.Forms.Padding(0);
-            button7.Name = "button7";
-            button7.Size = new System.Drawing.Size(83, 27);
-            button7.TabIndex = 148;
-            button7.Text = "from c-axis";
-            button7.UseVisualStyleBackColor = true;
+            buttonMasterPattern3DViewAlong.AutoSize = true;
+            buttonMasterPattern3DViewAlong.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonMasterPattern3DViewAlong.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            buttonMasterPattern3DViewAlong.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            buttonMasterPattern3DViewAlong.Location = new System.Drawing.Point(0, 0);
+            buttonMasterPattern3DViewAlong.Margin = new System.Windows.Forms.Padding(0);
+            buttonMasterPattern3DViewAlong.Name = "buttonMasterPattern3DViewAlong";
+            buttonMasterPattern3DViewAlong.Size = new System.Drawing.Size(123, 27);
+            buttonMasterPattern3DViewAlong.TabIndex = 150;
+            buttonMasterPattern3DViewAlong.Text = "Viw along the axis";
+            buttonMasterPattern3DViewAlong.UseVisualStyleBackColor = true;
+            buttonMasterPattern3DViewAlong.Click += buttonMasterPattern3DViewAlong_Click; // (260322Ch) 指定した [u v w] 晶帯軸方向から MasterPattern3D を見る
             // 
-            // button6
+            // numericBoxMasterPattern3DViewAlongU
             // 
-            button6.AutoSize = true;
-            button6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            button6.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            button6.Location = new System.Drawing.Point(394, 356);
-            button6.Margin = new System.Windows.Forms.Padding(0);
-            button6.Name = "button6";
-            button6.Size = new System.Drawing.Size(85, 27);
-            button6.TabIndex = 148;
-            button6.Text = "from b-axis";
-            button6.UseVisualStyleBackColor = true;
+            numericBoxMasterPattern3DViewAlongU.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            numericBoxMasterPattern3DViewAlongU.BackColor = System.Drawing.Color.Transparent;
+            numericBoxMasterPattern3DViewAlongU.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
+            numericBoxMasterPattern3DViewAlongU.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxMasterPattern3DViewAlongU.Location = new System.Drawing.Point(135, 0);
+            numericBoxMasterPattern3DViewAlongU.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxMasterPattern3DViewAlongU.Maximum = 9D;
+            numericBoxMasterPattern3DViewAlongU.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxMasterPattern3DViewAlongU.Minimum = -9D;
+            numericBoxMasterPattern3DViewAlongU.MinimumSize = new System.Drawing.Size(1, 20);
+            numericBoxMasterPattern3DViewAlongU.Name = "numericBoxMasterPattern3DViewAlongU";
+            numericBoxMasterPattern3DViewAlongU.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxMasterPattern3DViewAlongU.RadianValue = 0.017453292519943295D;
+            numericBoxMasterPattern3DViewAlongU.ShowUpDown = true;
+            numericBoxMasterPattern3DViewAlongU.Size = new System.Drawing.Size(38, 24);
+            numericBoxMasterPattern3DViewAlongU.SkipEventDuringInput = false;
+            numericBoxMasterPattern3DViewAlongU.TabIndex = 80;
+            numericBoxMasterPattern3DViewAlongU.ThonsandsSeparator = true;
+            numericBoxMasterPattern3DViewAlongU.Value = 1D;
             // 
-            // button5
+            // numericBoxMasterPattern3DViewAlongW
             // 
-            button5.AutoSize = true;
-            button5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            button5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            button5.Location = new System.Drawing.Point(310, 356);
-            button5.Margin = new System.Windows.Forms.Padding(0);
-            button5.Name = "button5";
-            button5.Size = new System.Drawing.Size(84, 27);
-            button5.TabIndex = 148;
-            button5.Text = "from a-axis";
-            button5.UseVisualStyleBackColor = true;
+            numericBoxMasterPattern3DViewAlongW.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            numericBoxMasterPattern3DViewAlongW.BackColor = System.Drawing.Color.Transparent;
+            numericBoxMasterPattern3DViewAlongW.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
+            numericBoxMasterPattern3DViewAlongW.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxMasterPattern3DViewAlongW.Location = new System.Drawing.Point(215, 0);
+            numericBoxMasterPattern3DViewAlongW.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            numericBoxMasterPattern3DViewAlongW.Maximum = 9D;
+            numericBoxMasterPattern3DViewAlongW.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxMasterPattern3DViewAlongW.Minimum = -9D;
+            numericBoxMasterPattern3DViewAlongW.MinimumSize = new System.Drawing.Size(1, 20);
+            numericBoxMasterPattern3DViewAlongW.Name = "numericBoxMasterPattern3DViewAlongW";
+            numericBoxMasterPattern3DViewAlongW.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxMasterPattern3DViewAlongW.RadianValue = 0.017453292519943295D;
+            numericBoxMasterPattern3DViewAlongW.ShowUpDown = true;
+            numericBoxMasterPattern3DViewAlongW.Size = new System.Drawing.Size(38, 24);
+            numericBoxMasterPattern3DViewAlongW.SkipEventDuringInput = false;
+            numericBoxMasterPattern3DViewAlongW.TabIndex = 80;
+            numericBoxMasterPattern3DViewAlongW.ThonsandsSeparator = true;
+            numericBoxMasterPattern3DViewAlongW.Value = 1D;
             // 
-            // button4
+            // buttonMasterPattern3DCopy
             // 
-            button4.AutoSize = true;
-            button4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            button4.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            button4.Location = new System.Drawing.Point(287, 22);
-            button4.Margin = new System.Windows.Forms.Padding(0);
-            button4.Name = "button4";
-            button4.Size = new System.Drawing.Size(48, 27);
-            button4.TabIndex = 148;
-            button4.Text = "Copy";
-            button4.UseVisualStyleBackColor = true;
+            buttonMasterPattern3DCopy.AutoSize = true;
+            buttonMasterPattern3DCopy.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonMasterPattern3DCopy.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            buttonMasterPattern3DCopy.Location = new System.Drawing.Point(287, 22);
+            buttonMasterPattern3DCopy.Margin = new System.Windows.Forms.Padding(0);
+            buttonMasterPattern3DCopy.Name = "buttonMasterPattern3DCopy";
+            buttonMasterPattern3DCopy.Size = new System.Drawing.Size(48, 27);
+            buttonMasterPattern3DCopy.TabIndex = 148;
+            buttonMasterPattern3DCopy.Text = "Copy";
+            buttonMasterPattern3DCopy.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // checkBoxMasterPattern3DAxisLabel
             // 
-            button3.AutoSize = true;
-            button3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            button3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            button3.Location = new System.Drawing.Point(6, 22);
-            button3.Margin = new System.Windows.Forms.Padding(0);
-            button3.Name = "button3";
-            button3.Size = new System.Drawing.Size(48, 27);
-            button3.TabIndex = 148;
-            button3.Text = "Copy";
-            button3.UseVisualStyleBackColor = true;
+            checkBoxMasterPattern3DAxisLabel.AutoSize = true;
+            checkBoxMasterPattern3DAxisLabel.Checked = true;
+            checkBoxMasterPattern3DAxisLabel.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxMasterPattern3DAxisLabel.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxMasterPattern3DAxisLabel.Location = new System.Drawing.Point(356, 29);
+            checkBoxMasterPattern3DAxisLabel.Name = "checkBoxMasterPattern3DAxisLabel";
+            checkBoxMasterPattern3DAxisLabel.Size = new System.Drawing.Size(88, 21);
+            checkBoxMasterPattern3DAxisLabel.TabIndex = 145;
+            checkBoxMasterPattern3DAxisLabel.Text = "Axis labels";
+            checkBoxMasterPattern3DAxisLabel.UseVisualStyleBackColor = true;
+            checkBoxMasterPattern3DAxisLabel.CheckedChanged += checkBoxMasterPattern3DAxisLabel_CheckedChanged;
+            // 
+            // checkBoxMasterPattern3DAxisArrows
+            // 
+            checkBoxMasterPattern3DAxisArrows.AutoSize = true;
+            checkBoxMasterPattern3DAxisArrows.Checked = true;
+            checkBoxMasterPattern3DAxisArrows.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxMasterPattern3DAxisArrows.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxMasterPattern3DAxisArrows.Location = new System.Drawing.Point(450, 29);
+            checkBoxMasterPattern3DAxisArrows.Name = "checkBoxMasterPattern3DAxisArrows";
+            checkBoxMasterPattern3DAxisArrows.Size = new System.Drawing.Size(94, 21);
+            checkBoxMasterPattern3DAxisArrows.TabIndex = 145;
+            checkBoxMasterPattern3DAxisArrows.Text = "Axis arrows";
+            checkBoxMasterPattern3DAxisArrows.UseVisualStyleBackColor = true;
+            checkBoxMasterPattern3DAxisArrows.CheckedChanged += checkBoxMasterPattern3DAxisArrows_CheckedChanged;
+            // 
+            // buttonMasterPattern2DCopy
+            // 
+            buttonMasterPattern2DCopy.AutoSize = true;
+            buttonMasterPattern2DCopy.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonMasterPattern2DCopy.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            buttonMasterPattern2DCopy.Location = new System.Drawing.Point(6, 22);
+            buttonMasterPattern2DCopy.Margin = new System.Windows.Forms.Padding(0);
+            buttonMasterPattern2DCopy.Name = "buttonMasterPattern2DCopy";
+            buttonMasterPattern2DCopy.Size = new System.Drawing.Size(48, 27);
+            buttonMasterPattern2DCopy.TabIndex = 148;
+            buttonMasterPattern2DCopy.Text = "Copy";
+            buttonMasterPattern2DCopy.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -1946,6 +2015,63 @@
             panel4.Name = "panel4";
             panel4.Size = new System.Drawing.Size(1420, 4);
             panel4.TabIndex = 153;
+            // 
+            // numericBoxMasterPattern3DViewAlongV
+            // 
+            numericBoxMasterPattern3DViewAlongV.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            numericBoxMasterPattern3DViewAlongV.BackColor = System.Drawing.Color.Transparent;
+            numericBoxMasterPattern3DViewAlongV.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
+            numericBoxMasterPattern3DViewAlongV.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxMasterPattern3DViewAlongV.Location = new System.Drawing.Point(175, 0);
+            numericBoxMasterPattern3DViewAlongV.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            numericBoxMasterPattern3DViewAlongV.Maximum = 9D;
+            numericBoxMasterPattern3DViewAlongV.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxMasterPattern3DViewAlongV.Minimum = -9D;
+            numericBoxMasterPattern3DViewAlongV.MinimumSize = new System.Drawing.Size(1, 20);
+            numericBoxMasterPattern3DViewAlongV.Name = "numericBoxMasterPattern3DViewAlongV";
+            numericBoxMasterPattern3DViewAlongV.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxMasterPattern3DViewAlongV.RadianValue = 0.017453292519943295D;
+            numericBoxMasterPattern3DViewAlongV.ShowUpDown = true;
+            numericBoxMasterPattern3DViewAlongV.Size = new System.Drawing.Size(38, 24);
+            numericBoxMasterPattern3DViewAlongV.SkipEventDuringInput = false;
+            numericBoxMasterPattern3DViewAlongV.TabIndex = 80;
+            numericBoxMasterPattern3DViewAlongV.ThonsandsSeparator = true;
+            numericBoxMasterPattern3DViewAlongV.Value = 1D;
+            // 
+            // flowLayoutPanelMasterPattern3DViewAlong
+            // 
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(buttonMasterPattern3DViewAlong);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(labelMasterPattern3DViewAlongOpenBracket);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongU);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongV);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongW);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(labelMasterPattern3DViewAlongCloseBracket);
+            flowLayoutPanelMasterPattern3DViewAlong.Location = new System.Drawing.Point(298, 336);
+            flowLayoutPanelMasterPattern3DViewAlong.Name = "flowLayoutPanelMasterPattern3DViewAlong";
+            flowLayoutPanelMasterPattern3DViewAlong.Size = new System.Drawing.Size(268, 25);
+            flowLayoutPanelMasterPattern3DViewAlong.TabIndex = 151;
+            // 
+            // labelMasterPattern3DViewAlongOpenBracket
+            // 
+            labelMasterPattern3DViewAlongOpenBracket.AutoSize = true;
+            labelMasterPattern3DViewAlongOpenBracket.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            labelMasterPattern3DViewAlongOpenBracket.Location = new System.Drawing.Point(123, 3);
+            labelMasterPattern3DViewAlongOpenBracket.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            labelMasterPattern3DViewAlongOpenBracket.Name = "labelMasterPattern3DViewAlongOpenBracket";
+            labelMasterPattern3DViewAlongOpenBracket.Size = new System.Drawing.Size(12, 17);
+            labelMasterPattern3DViewAlongOpenBracket.TabIndex = 7;
+            labelMasterPattern3DViewAlongOpenBracket.Text = "[";
+            // 
+            // labelMasterPattern3DViewAlongCloseBracket
+            // 
+            labelMasterPattern3DViewAlongCloseBracket.AutoSize = true;
+            labelMasterPattern3DViewAlongCloseBracket.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            labelMasterPattern3DViewAlongCloseBracket.Location = new System.Drawing.Point(253, 3);
+            labelMasterPattern3DViewAlongCloseBracket.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            labelMasterPattern3DViewAlongCloseBracket.Name = "labelMasterPattern3DViewAlongCloseBracket";
+            labelMasterPattern3DViewAlongCloseBracket.Size = new System.Drawing.Size(12, 17);
+            labelMasterPattern3DViewAlongCloseBracket.TabIndex = 7;
+            labelMasterPattern3DViewAlongCloseBracket.Text = "]";
             // 
             // FormEBSD
             // 
@@ -1995,14 +2121,17 @@
             groupBox1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanelMasterPatternSelectors.ResumeLayout(false);
+            flowLayoutPanelMasterPatternSelectors.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).EndInit();
+            panelMasterPattern3D.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
+            flowLayoutPanelMasterPattern3DViewAlong.ResumeLayout(false);
+            flowLayoutPanelMasterPattern3DViewAlong.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2097,11 +2226,11 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Panel panelMasterPattern3D;
-        private ScalablePictureBoxAdvanced scalablePictureBoxAdvancedMasterPattern;
+        private ScalablePictureBoxAdvanced scalablePictureBoxAdvancedMasterPattern2D;
         private System.Windows.Forms.Label labelMasterPatternGrid;
         private System.Windows.Forms.ComboBox comboBoxMasterPatternGrid;
-        private System.Windows.Forms.Label labelMasterPatternHemisphere;
-        private System.Windows.Forms.ComboBox comboBoxMasterPatternHemisphere;
+        private System.Windows.Forms.Label labelMasterPattern2DHemisphere;
+        private System.Windows.Forms.ComboBox comboBoxMasterPattern2DHemisphere;
         private System.Windows.Forms.Label labelMasterPatternEnergy;
         private System.Windows.Forms.TextBox textBoxMasterPatternEnergy;
         private System.Windows.Forms.Label labelMasterPatternEnergyUnit;
@@ -2112,19 +2241,26 @@
         private System.Windows.Forms.TrackBar trackBarMasterPatternDepth;
         private System.Windows.Forms.Button buttonCreateMasterPattern;
         private System.Windows.Forms.Label labelMasterPatternInfo;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPatternSelectors;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonMasterPattern3DCopy;
+        private System.Windows.Forms.Button buttonMasterPattern2DCopy;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.CheckBox checkBoxMasterPattern3DAxisLabel;
+        private System.Windows.Forms.CheckBox checkBoxMasterPattern3DAxisArrows;
+        private System.Windows.Forms.Panel panelMasterPattern3DAxes;
+        private NumericBox numericBoxMasterPattern3DViewAlongU;
+        private NumericBox numericBoxMasterPattern3DViewAlongW;
+        private System.Windows.Forms.Button buttonMasterPattern3DViewAlong;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPattern3DViewAlong;
+        private NumericBox numericBoxMasterPattern3DViewAlongV;
+        private System.Windows.Forms.Label labelMasterPattern3DViewAlongOpenBracket;
+        private System.Windows.Forms.Label labelMasterPattern3DViewAlongCloseBracket;
     }
 }
 
