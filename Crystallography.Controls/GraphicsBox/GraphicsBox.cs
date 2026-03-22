@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -10,7 +10,7 @@ namespace Crystallography.Controls;
 /// PictureBox の標準機能に、呼び出し側が継続して描画できる描画バッファとマウスホイール通知を加えたコントロール。
 /// </summary>
 [Serializable]
-public class GraphicBox : PictureBox
+public class GraphicsBox : PictureBox
 {
     /// <summary>
     /// マウスホイール入力後に通知するイベントデリゲート。
@@ -28,7 +28,7 @@ public class GraphicBox : PictureBox
     /// <summary>
     /// GraphicBox の既定コンストラクタ。
     /// </summary>
-    public GraphicBox()
+    public GraphicsBox()
     {
         InitializeGraphicBox();
     }
@@ -36,7 +36,7 @@ public class GraphicBox : PictureBox
     /// <summary>
     /// コンテナへ自動登録する互換コンストラクタ。
     /// </summary>
-    public GraphicBox(IContainer container)
+    public GraphicsBox(IContainer container)
         : this()
     {
         container?.Add(this); // (260322Ch) designer 生成コードからそのまま使えるようにする

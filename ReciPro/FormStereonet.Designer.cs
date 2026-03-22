@@ -37,7 +37,7 @@ namespace ReciPro
             splitContainer1 = new System.Windows.Forms.SplitContainer();
             // graphicsBox = new ImagingSolution.Control.GraphicsBox(components); // (260322Ch) 旧 GraphicsBox 依存
             // graphicsBox = new Crystallography.Controls.GraphicBox2(components); // (260322Ch) 仮名 GraphicBox2
-            graphicsBox = new Crystallography.Controls.GraphicBox(components); // (260322Ch) FormStereonet を正式名 GraphicBox へ置換
+            graphicsBox = new Crystallography.Controls.GraphicsBox(components); // (260322Ch) FormStereonet を正式名 GraphicBox へ置換
             trackBarStrSize = new System.Windows.Forms.TrackBar();
             trackBarPointSize = new System.Windows.Forms.TrackBar();
             groupBox2 = new System.Windows.Forms.GroupBox();
@@ -1978,7 +1978,7 @@ namespace ReciPro
         private ScalablePictureBoxAdvanced scalablePictureBoxAdvanced2;
         // public ImagingSolution.Control.GraphicsBox graphicsBox; // (260322Ch) 旧 GraphicsBox 型
         // public Crystallography.Controls.GraphicBox2 graphicsBox; // (260322Ch) 仮名 GraphicBox2
-        public Crystallography.Controls.GraphicBox graphicsBox; // (260322Ch) 正式名 GraphicBox へ移行
+        public Crystallography.Controls.GraphicsBox graphicsBox; // (260322Ch) 正式名 GraphicBox へ移行
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem asBitmapToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asMetafileToolStripMenuItem;

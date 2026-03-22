@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorHolder));
             // graphicsBox = new ImagingSolution.Control.GraphicsBox(components); // (260322Ch) 旧 GraphicsBox 依存
             // graphicsBox = new Crystallography.Controls.GraphicBox2(components); // (260322Ch) 仮名 GraphicBox2
-            graphicsBox = new Crystallography.Controls.GraphicBox(components); // (260322Ch) Holder 画面も正式名 GraphicBox へ差し替える
+            graphicsBox = new Crystallography.Controls.GraphicsBox(components); // (260322Ch) Holder 画面も正式名 GraphicBox へ差し替える
             label1 = new System.Windows.Forms.Label();
             numericBoxTiltXDirection = new NumericBox();
             numericBoxLinkTiltX = new NumericBox();
@@ -685,7 +685,7 @@
 
         // public ImagingSolution.Control.GraphicsBox graphicsBox; // (260322Ch) 旧 GraphicsBox 型
         // public Crystallography.Controls.GraphicBox2 graphicsBox; // (260322Ch) 仮名 GraphicBox2
-        public Crystallography.Controls.GraphicBox graphicsBox; // (260322Ch) 正式名 GraphicBox へ移行
+        public Crystallography.Controls.GraphicsBox graphicsBox; // (260322Ch) 正式名 GraphicBox へ移行
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
