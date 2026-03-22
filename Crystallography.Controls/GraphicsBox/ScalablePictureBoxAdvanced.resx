@@ -125,6 +125,9 @@
     <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 6</value>
   </data>
@@ -133,7 +136,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 15</value>
+    <value>33, 17</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -156,6 +159,9 @@
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 30</value>
   </data>
@@ -163,7 +169,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 15</value>
+    <value>36, 17</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -290,7 +296,7 @@
     <value>Bottom</value>
   </data>
   <data name="panelTrackBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 354</value>
+    <value>0, 352</value>
   </data>
   <data name="panelTrackBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -359,13 +365,13 @@
     <value>Fire</value>
   </data>
   <data name="comboBoxScale2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 0</value>
+    <value>42, 0</value>
   </data>
   <data name="comboBoxScale2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxScale2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
+    <value>80, 25</value>
   </data>
   <data name="comboBoxScale2.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -389,13 +395,13 @@
     <value>Liner</value>
   </data>
   <data name="comboBoxScale1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 0</value>
+    <value>40, 0</value>
   </data>
   <data name="comboBoxScale1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxScale1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 23</value>
+    <value>76, 25</value>
   </data>
   <data name="comboBoxScale1.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -419,13 +425,13 @@
     <value>Negative</value>
   </data>
   <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 0</value>
+    <value>53, 0</value>
   </data>
   <data name="comboBoxGradient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="comboBoxGradient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 23</value>
+    <value>68, 25</value>
   </data>
   <data name="comboBoxGradient.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -455,7 +461,7 @@
     <value>2, 4, 0, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 15</value>
+    <value>38, 17</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -488,7 +494,7 @@
     <value>2, 4, 0, 0</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 15</value>
+    <value>40, 17</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -521,7 +527,7 @@
     <value>2, 4, 0, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 15</value>
+    <value>51, 17</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -553,6 +559,9 @@
   <data name="flowLayoutPanelPolarity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="flowLayoutPanelPolarity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
   <data name="flowLayoutPanelPolarity.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 2</value>
   </data>
@@ -560,7 +569,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelPolarity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 23</value>
+    <value>121, 25</value>
   </data>
   <data name="flowLayoutPanelPolarity.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -583,14 +592,17 @@
   <data name="flowLayoutPanelScale.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="flowLayoutPanelScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
   <data name="flowLayoutPanelScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 2</value>
+    <value>121, 2</value>
   </data>
   <data name="flowLayoutPanelScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 23</value>
+    <value>116, 25</value>
   </data>
   <data name="flowLayoutPanelScale.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -613,14 +625,17 @@
   <data name="flowLayoutPanelColor.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="flowLayoutPanelColor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
   <data name="flowLayoutPanelColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>229, 2</value>
+    <value>237, 2</value>
   </data>
   <data name="flowLayoutPanelColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 23</value>
+    <value>122, 25</value>
   </data>
   <data name="flowLayoutPanelColor.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -641,7 +656,7 @@
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanelGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 478</value>
+    <value>0, 476</value>
   </data>
   <data name="flowLayoutPanelGradient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -650,7 +665,7 @@
     <value>0, 2, 0, 4</value>
   </data>
   <data name="flowLayoutPanelGradient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 29</value>
+    <value>397, 31</value>
   </data>
   <data name="flowLayoutPanelGradient.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -682,6 +697,9 @@
   <data name="checkBoxDustScratches.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBoxDustScratches.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
   <data name="checkBoxDustScratches.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
   </data>
@@ -689,7 +707,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="checkBoxDustScratches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 19</value>
+    <value>118, 21</value>
   </data>
   <data name="checkBoxDustScratches.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -712,41 +730,32 @@
   <data name="numericBoxDustScratchesRadius.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxDustScratchesRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
   <data name="numericBoxDustScratchesRadius.FooterText" xml:space="preserve">
     <value>pix</value>
-  </data>
-  <data name="numericBoxDustScratchesRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxDustScratchesRadius.HeaderText" xml:space="preserve">
     <value>Radius</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 0</value>
+    <value>122, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxDustScratchesRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 25</value>
+    <value>119, 25</value>
   </data>
   <data name="numericBoxDustScratchesRadius.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
-  </data>
-  <data name="numericBoxDustScratchesRadius.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -766,38 +775,29 @@
   <data name="numericBoxDustScratchesThreshold.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxDustScratchesThreshold.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxDustScratchesThreshold.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
   <data name="numericBoxDustScratchesThreshold.HeaderText" xml:space="preserve">
     <value>Threshold</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>221, 0</value>
+    <value>241, 0</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 10, 0</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 25</value>
+    <value>116, 25</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
-  </data>
-  <data name="numericBoxDustScratchesThreshold.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -821,7 +821,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelDustScratches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 25</value>
+    <value>357, 25</value>
   </data>
   <data name="flowLayoutPanelDustScratches.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -847,6 +847,9 @@
   <data name="checkBoxGaussianBlur.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBoxGaussianBlur.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
   <data name="checkBoxGaussianBlur.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
   </data>
@@ -854,7 +857,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="checkBoxGaussianBlur.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 19</value>
+    <value>105, 21</value>
   </data>
   <data name="checkBoxGaussianBlur.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -877,41 +880,32 @@
   <data name="numericBoxGaussianFWHM.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxGaussianFWHM.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
   <data name="numericBoxGaussianFWHM.FooterText" xml:space="preserve">
     <value>pix</value>
-  </data>
-  <data name="numericBoxGaussianFWHM.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxGaussianFWHM.HeaderText" xml:space="preserve">
     <value>FWHM</value>
   </data>
   <data name="numericBoxGaussianFWHM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 0</value>
+    <value>109, 0</value>
   </data>
   <data name="numericBoxGaussianFWHM.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxGaussianFWHM.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxGaussianFWHM.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxGaussianFWHM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxGaussianFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 25</value>
+    <value>124, 25</value>
   </data>
   <data name="numericBoxGaussianFWHM.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
-  </data>
-  <data name="numericBoxGaussianFWHM.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxGaussianFWHM.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -935,7 +929,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelGaussianBlur2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 25</value>
+    <value>233, 25</value>
   </data>
   <data name="flowLayoutPanelGaussianBlur2.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -1064,27 +1058,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="scalablePictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 295</value>
+    <value>397, 293</value>
   </data>
   <data name="scalablePictureBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="scalablePictureBox.Title" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0
-        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EEAQAAAK4DU3lzdGVtLlZh
-        bHVlVHVwbGVgNFtbU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVy
-        ZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkRyYXdpbmcu
-        Rm9udCwgU3lzdGVtLkRyYXdpbmcsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJs
-        aWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhXSxbU3lzdGVtLkRyYXdpbmcuQ29sb3IsIFN5c3RlbS5E
-        cmF3aW5nLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAz
-        ZjVmN2YxMWQ1MGEzYV0sW1N5c3RlbS5EcmF3aW5nLkNvbG9yLCBTeXN0ZW0uRHJhd2luZywgVmVyc2lv
-        bj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2Fd
-        XQQAAAAFSXRlbTEFSXRlbTIFSXRlbTMFSXRlbTQBBAQEE1N5c3RlbS5EcmF3aW5nLkZvbnQCAAAAFFN5
-        c3RlbS5EcmF3aW5nLkNvbG9yAgAAABRTeXN0ZW0uRHJhd2luZy5Db2xvcgIAAAAKCgX9////FFN5c3Rl
-        bS5EcmF3aW5nLkNvbG9yBAAAAARuYW1lBXZhbHVlCmtub3duQ29sb3IFc3RhdGUBAAAACQcHAgAAAAoA
-        AAAAAAAAAAAAAAAB/P////3///8KAAAAAAAAAAAAAAAACw==
-</value>
   </data>
   <data name="&gt;&gt;scalablePictureBox.Name" xml:space="preserve">
     <value>scalablePictureBox</value>
@@ -1101,15 +1078,11 @@
   <data name="graphControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <assembly alias="Crystallography" name="Crystallography, Culture=neutral, PublicKeyToken=null" />
-  <data name="graphControl.DrawingRange" type="Crystallography.RectangleD, Crystallography">
-    <value>0, 0, 1, 1</value>
-  </data>
   <data name="graphControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="graphControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 408</value>
+    <value>0, 406</value>
   </data>
   <data name="graphControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>

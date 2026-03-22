@@ -130,7 +130,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="pictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 300</value>
+    <value>300, 299</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pictureBox.TabIndex" type="System.Int32, mscorlib">
@@ -152,7 +152,7 @@
     <value>Bottom</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 300</value>
+    <value>0, 299</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 32</value>
@@ -175,14 +175,8 @@
   <data name="numericBoxResolution.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxResolution.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
   <data name="numericBoxResolution.FooterText" xml:space="preserve">
     <value>°</value>
-  </data>
-  <data name="numericBoxResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxResolution.HeaderText" xml:space="preserve">
     <value>Resolution</value>
@@ -194,19 +188,16 @@
     <value>6, 4, 0, 0</value>
   </data>
   <data name="numericBoxResolution.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxResolution.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxResolution.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 26</value>
   </data>
   <data name="numericBoxResolution.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
-  </data>
-  <data name="numericBoxResolution.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Name" xml:space="preserve">
     <value>numericBoxResolution</value>
@@ -224,13 +215,13 @@
     <value>True</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 6</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 15</value>
+    <value>40, 17</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -251,7 +242,7 @@
     <value>0</value>
   </data>
   <data name="comboBoxColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="comboBoxColor.Items" xml:space="preserve">
     <value>Cold-Warm scale</value>
@@ -266,7 +257,7 @@
     <value>3, 0, 3, 3</value>
   </data>
   <data name="comboBoxColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 23</value>
+    <value>89, 25</value>
   </data>
   <data name="comboBoxColor.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -286,12 +277,6 @@
   <data name="numericBoxMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxMax.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
   <data name="numericBoxMax.HeaderText" xml:space="preserve">
     <value>Max</value>
   </data>
@@ -302,19 +287,16 @@
     <value>6, 4, 0, 0</value>
   </data>
   <data name="numericBoxMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 26</value>
   </data>
   <data name="numericBoxMax.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
-  </data>
-  <data name="numericBoxMax.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxMax.Name" xml:space="preserve">
     <value>numericBoxMax</value>
@@ -331,12 +313,6 @@
   <data name="numericBoxMin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericBoxMin.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxMin.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
   <data name="numericBoxMin.HeaderText" xml:space="preserve">
     <value>Min</value>
   </data>
@@ -347,19 +323,16 @@
     <value>6, 4, 0, 0</value>
   </data>
   <data name="numericBoxMin.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMin.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMin.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 26</value>
   </data>
   <data name="numericBoxMin.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
-  </data>
-  <data name="numericBoxMin.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxMin.Name" xml:space="preserve">
     <value>numericBoxMin</value>
@@ -403,6 +376,9 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="panel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -413,7 +389,7 @@
     <value>6, 0, 0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 30</value>
+    <value>134, 31</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -437,10 +413,10 @@
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 332</value>
+    <value>0, 331</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 60</value>
+    <value>300, 61</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>

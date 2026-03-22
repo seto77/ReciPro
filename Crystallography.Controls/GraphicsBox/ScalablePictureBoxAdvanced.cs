@@ -75,7 +75,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
         set
         {
             label.Visible = value;
-            panelUpper.Visible = MousePositionLabelVisible;// || CopyButtonVisible;
+            UpdateUpperPanelVisibility(); // (260322Ch) panelUpper の表示条件を helper へ寄せる
         }
     }
 
@@ -217,6 +217,20 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool FixZoomAndCenter { get => scalablePictureBox.FixZoomAndCenter; set => scalablePictureBox.FixZoomAndCenter = value; }
 
+    /// <summary>
+    /// 新しい画像を設定したとき、現在の強度レンジをその画像のデータ範囲へクランプするかどうか
+    /// </summary>
+    /// <remarks>
+    /// true のときは、新しい画像の実データ範囲 <c>[dataMin, dataMax]</c> に合わせて
+    /// <c>LowerIntensity</c> / <c>UpperIntensity</c> を調整する。 false のときは、
+    /// 既存の <c>LowerIntensity</c> / <c>UpperIntensity</c> を優先して保持し、
+    /// それらを含めるように <c>MinimumIntensity</c> / <c>MaximumIntensity</c> を広げる。 // (260322Ch)
+    /// </remarks>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [Category("Intensity")]
+    // public bool ClampIntensityRange { get; set; } = true; // (260322Ch) 旧名
+    public bool ClampIntensityRangeToNewData { get; set; } = true; // (260322Ch) 既定では従来どおり新しい画像データ範囲へクランプする
+
 
     #region  Intensity
   
@@ -235,14 +249,12 @@ public partial class ScalablePictureBoxAdvanced : UserControl
             upperIntensity = value;
             trackBarAdvancedMaximum.Value = value;
 
-            int n = graphControl.VerticalLines[0].X > graphControl.VerticalLines[1].X ? 0 : 1;
-            graphControl.VerticalLines[n].X = value;
-            graphControl.Draw();
+            UpdateIntensityGraphPosition(isUpper: true, value); // (260322Ch) graph 側の同期処理を共通化する
 
             PseudoBitmap.MaxValue = value;
-            scalablePictureBox.drawPictureBox();
+            RedrawScalablePictureBox(); // (260322Ch) 再描画経路を一箇所に揃える
 
-            BrightnessAndColorChanged?.Invoke(this, new EventArgs());
+            BrightnessAndColorChanged?.Invoke(this, EventArgs.Empty); // (260322Ch) 共通 EventArgs を使う
         }
         get => upperIntensity;
     }
@@ -262,14 +274,12 @@ public partial class ScalablePictureBoxAdvanced : UserControl
             lowerIntensity = value;
             trackBarAdvancedMinimum.Value = value;
 
-            int n = graphControl.VerticalLines[0].X < graphControl.VerticalLines[1].X ? 0 : 1;
-            graphControl.VerticalLines[n].X = value;
-            graphControl.Draw();
+            UpdateIntensityGraphPosition(isUpper: false, value); // (260322Ch) lower 側も同じ helper で graph と同期する
 
             PseudoBitmap.MinValue = value;
-            scalablePictureBox.drawPictureBox();
+            RedrawScalablePictureBox(); // (260322Ch) 再描画経路を一箇所に揃える
 
-            BrightnessAndColorChanged?.Invoke(this, new EventArgs());
+            BrightnessAndColorChanged?.Invoke(this, EventArgs.Empty); // (260322Ch) 共通 EventArgs を使う
         }
         get => lowerIntensity;
     }
@@ -362,6 +372,138 @@ public partial class ScalablePictureBoxAdvanced : UserControl
 
     #endregion プロパティ
 
+    private void UpdateUpperPanelVisibility()
+    {
+        panelUpper.Visible = MousePositionLabelVisible; // (260322Ch) 現状の表示条件を一箇所へ寄せ、将来 CopyButtonVisible 復帰時も直しやすくする
+    }
+
+    private void UpdateResolutionLabel()
+    {
+        labelResolution.Text = scalablePictureBox.Zoom.ToString("g4"); // (260322Ch) ズーム表示更新を helper 化する
+    }
+
+    private void RedrawScalablePictureBox()
+    {
+        scalablePictureBox.drawPictureBox(); // (260322Ch) drawPictureBox 呼び出し箇所を共通化する
+    }
+
+    private bool InvokeMouseEventHandler(MouseEvent handler, object sender, MouseEventArgs e, PointD pt)
+        => handler != null && handler(sender, e, pt); // (260322Ch) 中継イベントの null 判定を共通化する
+
+    private void UpdateIntensityGraphPosition(bool isUpper, double value)
+    {
+        int index = isUpper
+            ? (graphControl.VerticalLines[0].X > graphControl.VerticalLines[1].X ? 0 : 1)
+            : (graphControl.VerticalLines[0].X < graphControl.VerticalLines[1].X ? 0 : 1);
+        graphControl.VerticalLines[index].X = value;
+        graphControl.Draw(); // (260322Ch) graph の vertical line 再描画を一箇所へ集約する
+    }
+
+    private void ApplyScaleSelectionToPseudoBitmap()
+    {
+        var linear = comboBoxScale1.SelectedIndex == 1;
+
+        if (comboBoxScale2.SelectedIndex == 0)//Gray
+            PseudoBitmap.SetScaleGray(linear);
+        else if (comboBoxScale2.SelectedIndex == 1)//Cold-Warm
+            PseudoBitmap.SetScaleColdWarm(linear);
+        else if (comboBoxScale2.SelectedIndex == 2)//Spectrum
+            PseudoBitmap.SetScaleSpectrum(linear);
+        else if (comboBoxScale2.SelectedIndex == 3)//Fire
+            PseudoBitmap.SetScaleFire(linear);
+    }
+
+    private void SyncScaleSelectionFromPseudoBitmap()
+    {
+        comboBoxGradient.SelectedIndex = PseudoBitmap.IsNegative ? 1 : 0;
+        comboBoxScale2.SelectedIndex = PseudoBitmap.GrayScale ? 0 : 1;
+        if (PseudoBitmap.GrayScale)
+            comboBoxScale1.SelectedIndex = PseudoBitmap.ColorScale == PseudoBitmap.ColorScaleGrayLog ? 0 : 1;
+        else
+            comboBoxScale1.SelectedIndex = PseudoBitmap.ColorScale == PseudoBitmap.ColorScaleColdWarmLog ? 0 : 1; // (260322Ch) 現状サポートする scale との対応を helper へまとめる
+    }
+
+    private void ApplyIntensityState(double min, double max, double lower, double upper)
+    {
+        // MaximumIntensity = max;
+        // MinimumIntensity = min;
+        // MaximumIntensity = max;
+        // UpperIntensity = upper;
+        // LowerIntensity = lower;
+        // UpperIntensity = upper;
+        MaximumIntensity = max;
+        MinimumIntensity = min;
+        MaximumIntensity = max; // (260322Ch) 旧コードの再代入を helper へ閉じ込め、trackbar/designer 同期の癖を維持する
+        UpperIntensity = upper;
+        LowerIntensity = lower;
+        UpperIntensity = upper;
+        if (PseudoBitmap.MaxValue != upper)
+            PseudoBitmap.MaxValue = upper;
+        if (PseudoBitmap.MinValue != lower)
+            PseudoBitmap.MinValue = lower;
+    }
+    /// <summary>
+    /// 画像更新時に使う intensity 関連 4 値を決める。
+    /// </summary>
+    /// <remarks>
+    /// 返り値の <c>Lower</c> / <c>Upper</c> は実際に表示へ使うレンジ、
+    /// <c>Minimum</c> / <c>Maximum</c> は trackbar が取り得る許容範囲。
+    /// <c>ClampIntensityRangeToNewData</c> が false のときは、新データ範囲より外でも
+    /// 既存の表示レンジを維持できるように <c>Minimum</c> / <c>Maximum</c> を広げる。 // (260322Ch)
+    /// </remarks>
+    private (double Minimum, double Maximum, double Lower, double Upper) ResolveIntensityRangeOnImageUpdate(double dataMin, double dataMax, double requestedLower, double requestedUpper)
+    {
+        var lower = requestedLower;
+        var upper = requestedUpper;
+
+        // if (ClampIntensityRange) // (260322Ch) 旧名
+        if (ClampIntensityRangeToNewData)
+        {
+            // if (upper > dataMax || upper < dataMin || upper < lower)
+            //     upper = dataMax;
+            if (upper > dataMax || upper < dataMin || upper < lower)
+                upper = dataMax; // (260322Ch) 既定では従来どおり新しい画像の上限へ合わせる
+
+            // if (lower < dataMin || lower < dataMin || lower > upper)
+            //     lower = dataMin;
+            if (lower < dataMin || lower < dataMin || lower > upper)
+                lower = dataMin; // (260322Ch) 既定では従来どおり新しい画像の下限へ合わせる
+
+            return (dataMin, dataMax, lower, upper);
+        }
+
+        if (upper < lower)
+        {
+            // upper = dataMax;
+            // lower = dataMin;
+            (lower, upper) = (Math.Min(lower, upper), Math.Max(lower, upper)); // (260322Ch) クランプ無効時でもレンジの前後関係だけは保つ
+        }
+
+        // minimum / maximum は新データ範囲と表示レンジの外側を採用し、
+        // lower / upper 自体は既存表示レンジをそのまま維持する。 // (260322Ch)
+        return (Math.Min(dataMin, lower), Math.Max(dataMax, upper), lower, upper); // (260322Ch) 現在レンジを維持できるよう trackbar 許容範囲も拡張する
+    }
+
+    private void UpdateIntensityGraphBounds(double minimum, double maximum)
+    {
+        graphControl.MinimalX = Math.Min(graphControl.MinimalX, minimum); // (260322Ch) クランプ無効時は保持レンジも histogram 上に載るようにする
+        graphControl.MaximalX = Math.Max(graphControl.MaximalX, maximum);
+        graphControl.LowerX = graphControl.MinimalX;
+        graphControl.UpperX = graphControl.MaximalX;
+    }
+
+    private void UpdateMousePositionInfo(PointD pt)
+    {
+        if (PseudoBitmap == null)
+            return;
+
+        string text = "X: " + ((int)pt.X).ToString("0000") + ", Y: " + ((int)pt.Y).ToString();
+        if (scalablePictureBox.PseudoBitmap.IsSrcGray)
+            text += ", Value: " + PseudoBitmap.GetPixelRawValue(pt);
+        label.Text = text;
+        UpdateResolutionLabel(); // (260322Ch) mouse move と倍率ボタンのズーム表示更新を同じ helper へ寄せる
+    }
+
     #region イベント
 
     /// <summary>
@@ -390,8 +532,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     /// <returns></returns>
     private bool scalablePictureBox_MouseDown2(object sender, MouseEventArgs e, PointD pt)
     {
-        if (MouseDown2 != null) return MouseDown2(sender, e, pt);
-        else return false;
+        return InvokeMouseEventHandler(MouseDown2, sender, e, pt); // (260322Ch) event 中継の null 判定を helper 化する
     }
 
     /// <summary>
@@ -403,8 +544,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     /// <returns></returns>
     private bool scalablePictureBox_MouseUp2(object sender, MouseEventArgs e, PointD pt)
     {
-        if (MouseUp2 != null) return MouseUp2(sender, e, pt);
-        else return false;
+        return InvokeMouseEventHandler(MouseUp2, sender, e, pt); // (260322Ch) event 中継の null 判定を helper 化する
     }
 
     /// <summary>
@@ -416,8 +556,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     /// <returns></returns>
     private bool scalablePictureBox_MouseWheel2(object sender, MouseEventArgs e, PointD pt)
     {
-        if (MouseWheel2 != null) return MouseWheel2(sender, e, pt);
-        else return false;
+        return InvokeMouseEventHandler(MouseWheel2, sender, e, pt); // (260322Ch) event 中継の null 判定を helper 化する
     }
 
     /// <summary>
@@ -429,21 +568,9 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     /// <returns></returns>
     private bool scalablePictureBox1_MouseMove2(object sender, MouseEventArgs e, PointD pt)
     {
-        if (PseudoBitmap != null)
-        {
-            string text = "X: " + ((int)pt.X).ToString("0000") + ", Y: " + ((int)pt.Y).ToString();
-
-            if (scalablePictureBox.PseudoBitmap.IsSrcGray)
-                text += ", Value: " + PseudoBitmap.GetPixelRawValue(pt);
-            label.Text = text;
-
-            labelResolution.Text = scalablePictureBox.Zoom.ToString("g4");
-        }
+        UpdateMousePositionInfo(pt); // (260322Ch) マウス位置ラベル更新を helper へまとめる
         scalablePictureBox.Refresh();
-        if (MouseMove2 != null)
-            return MouseMove2(sender, e, pt);
-        else
-            return false;
+        return InvokeMouseEventHandler(MouseMove2, sender, e, pt); // (260322Ch) event 中継の null 判定を helper 化する
     }
 
     /// <summary>
@@ -496,12 +623,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
 
         //画像のスケールの判定
         skipEvent = true;
-        comboBoxGradient.SelectedIndex = PseudoBitmap.IsNegative ? 1 : 0;
-        comboBoxScale2.SelectedIndex = PseudoBitmap.GrayScale ? 0 : 1;
-        if (PseudoBitmap.GrayScale)
-            comboBoxScale1.SelectedIndex = PseudoBitmap.ColorScale == PseudoBitmap.ColorScaleGrayLog ? 0 : 1;
-        else
-            comboBoxScale1.SelectedIndex = PseudoBitmap.ColorScale == PseudoBitmap.ColorScaleColdWarmLog ? 0 : 1;
+        SyncScaleSelectionFromPseudoBitmap(); // (260322Ch) UI への scale 反映を helper へ集約する
 
         //Blurの判定
         //checkBoxGaussianBlur.Checked = PseudoBitmap.BlurMode == Crystallography.PseudoBitmap.BlurModeEnum.Gaussian;
@@ -517,25 +639,21 @@ public partial class ScalablePictureBoxAdvanced : UserControl
         double upper = PseudoBitmap.MaxValue;
         double lower = PseudoBitmap.MinValue;
 
-        if (upper > max || upper < min || upper < lower)
-            upper = max;
-
-        if (lower < min || lower < min || lower > upper)
-            lower = min;
+        // if (upper > max || upper < min || upper < lower)
+        //     upper = max;
+        // if (lower < min || lower < min || lower > upper)
+        //     lower = min;
+        var (minimumIntensity, maximumIntensity, resolvedLower, resolvedUpper)
+            = ResolveIntensityRangeOnImageUpdate(min, max, lower, upper); // (260322Ch) 画像更新時の intensity clamp 可否をプロパティで切り替える
+        lower = resolvedLower;
+        upper = resolvedUpper;
+        UpdateIntensityGraphBounds(minimumIntensity, maximumIntensity); // (260322Ch) 保持した intensity range を graph / trackbar 両方で扱えるようにする
 
         graphControl.VerticalLines = [new PointD(lower, double.NaN), new PointD(upper, double.NaN)];
 
         //書き換えの干渉が起こっているようなので、同じのを繰り返す
-        MaximumIntensity = max;
-        MinimumIntensity = min;
-        MaximumIntensity = max;
-        UpperIntensity = upper;
-        LowerIntensity = lower;
-        UpperIntensity = upper;
-        if (PseudoBitmap.MaxValue != upper)
-            PseudoBitmap.MaxValue = upper;
-        if (PseudoBitmap.MinValue != lower)
-            PseudoBitmap.MinValue = lower;
+        ApplyIntensityState(minimumIntensity, maximumIntensity, lower, upper); // (260322Ch) clamp 無効時は保持レンジを含む trackbar 範囲で初期化する
+        UpdateResolutionLabel(); // (260322Ch) 初期化直後の倍率表示もここで揃える
         this.Refresh();
         graphControl.Draw();
     }
@@ -573,26 +691,15 @@ public partial class ScalablePictureBoxAdvanced : UserControl
     public void DrawPictureBox()
     {
         if (!SkipDrawing)
-            scalablePictureBox.drawPictureBox();
+            RedrawScalablePictureBox(); // (260322Ch) public wrapper も helper を通す
     }
 
     private void comboBoxScale_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (skipEvent) return;
         PseudoBitmap.IsNegative = comboBoxGradient.SelectedIndex == 1;
-
-        var linear = comboBoxScale1.SelectedIndex == 1;
-
-        if (comboBoxScale2.SelectedIndex == 0)//Gray
-            PseudoBitmap.SetScaleGray(linear);
-        else if (comboBoxScale2.SelectedIndex == 1)//Cold-Warm
-            PseudoBitmap.SetScaleColdWarm(linear);
-        else if (comboBoxScale2.SelectedIndex == 2)//Spectrum
-            PseudoBitmap.SetScaleSpectrum(linear);
-        else if (comboBoxScale2.SelectedIndex == 3)//Fire
-            PseudoBitmap.SetScaleFire(linear);
-
-        scalablePictureBox.drawPictureBox();
+        ApplyScaleSelectionToPseudoBitmap(); // (260322Ch) combo box 選択からの scale 適用を helper へまとめる
+        RedrawScalablePictureBox();
         BrightnessAndColorChanged?.Invoke(sender, e);
     }
 
@@ -637,7 +744,7 @@ public partial class ScalablePictureBoxAdvanced : UserControl
             StatusLabel = "";
         }
 
-        scalablePictureBox.drawPictureBox();
+        RedrawScalablePictureBox(); // (260322Ch) filter 後の再描画も helper 経由に揃える
     }
 
     #endregion ImageFilter関連
@@ -758,6 +865,6 @@ public partial class ScalablePictureBoxAdvanced : UserControl
             scalablePictureBox.Zoom = 0.125;
         else if (name.Contains("Mag_16"))
             scalablePictureBox.Zoom = 0.0625;
-        labelResolution.Text = scalablePictureBox.Zoom.ToString("g4");
+        UpdateResolutionLabel(); // (260322Ch) 倍率ボタン後の表示更新を helper へ寄せる
     }
 }

@@ -148,6 +148,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

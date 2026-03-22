@@ -337,7 +337,6 @@
             scalablePictureBox.Name = "scalablePictureBox";
             scalablePictureBox.ShowAreaRectangle = false;
             scalablePictureBox.ShowRimRentangle = false;
-            // scalablePictureBox.Title = ((string, System.Drawing.Font, System.Drawing.Color, System.Drawing.Color))resources.GetObject("scalablePictureBox.Title"); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             scalablePictureBox.TitleVisible = false;
             scalablePictureBox.VerticalFlip = false;
             scalablePictureBox.Zoom = 128D;
@@ -362,11 +361,9 @@
             graphControl.DivisionLineXVisible = true;
             graphControl.DivisionLineYVisible = true;
             resources.ApplyResources(graphControl, "graphControl");
-            // graphControl.DrawingRange = (RectangleD)resources.GetObject("graphControl.DrawingRange"); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             graphControl.FixRangeHorizontal = false;
             graphControl.FixRangeVertical = false;
             graphControl.GraphTitle = "";
-            graphControl.Interpolation = false;
             graphControl.IsIntegerX = false;
             graphControl.IsIntegerY = false;
             graphControl.LabelX = "X:";
@@ -385,8 +382,6 @@
             graphControl.MousePositionYDigit = -1;
             graphControl.Name = "graphControl";
             graphControl.OriginPosition = new System.Drawing.Point(20, 20);
-            graphControl.Profile = null;
-            graphControl.Smoothing = false;
             graphControl.UnitX = "";
             graphControl.UnitY = "";
             graphControl.UpperPanelFont = new System.Drawing.Font("メイリオ", 7F);

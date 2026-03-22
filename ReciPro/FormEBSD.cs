@@ -208,6 +208,8 @@ public partial class FormEBSD : Form
         // scalablePictureBoxAdvancedMasterPattern.BrightnessAndColorChanged += scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged; // (260321Ch) 旧案: 購読解除を考慮せず追加していた
         scalablePictureBoxAdvancedMasterPattern.BrightnessAndColorChanged -= scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged;
         scalablePictureBoxAdvancedMasterPattern.BrightnessAndColorChanged += scalablePictureBoxAdvancedMasterPattern_BrightnessAndColorChanged; // (260321Ch) 輝度やカラースケール変更時に 3D preview の色も同期する
+        // scalablePictureBoxAdvancedMasterPattern.ClampIntensityRangeToNewData = true; // (260322Ch) 旧既定挙動: 新しい slice の min/max に表示レンジを合わせる
+        scalablePictureBoxAdvancedMasterPattern.ClampIntensityRangeToNewData = false; // (260322Ch) MasterPattern preview は energy / depth 切替時も前回の明るさレンジを維持する
 
         if (comboBoxMasterPatternGrid != null && comboBoxMasterPatternGrid.SelectedIndex < 0)
         {
