@@ -377,11 +377,9 @@ public partial class FormCaptureGUI : Form
         infoList.Add(info);
     }
 
-    // 260323Cl: タブクリックエミュレーション用
-    [System.Runtime.InteropServices.DllImport("user32.dll")]
-    private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
-    private const int WM_LBUTTONDOWN = 0x0201;
-    private const int WM_LBUTTONUP = 0x0202;
+    // 260323Cl: タブ Click イベント発火用 (OnClick はprotectedのためリフレクション)
+    private static readonly System.Reflection.MethodInfo onClickMethod =
+        typeof(Control).GetMethod("OnClick", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
 
     /// <summary>TabControl の全タブを順にキャプチャ</summary>
     private static void CaptureTabControl(TabControl tabControl, string path, string outputDir, List<Dictionary<string, object>> infoList)
@@ -392,12 +390,10 @@ public partial class FormCaptureGUI : Form
         int originalIndex = tabControl.SelectedIndex;
         for (int i = 0; i < tabControl.TabPages.Count; i++)
         {
-            // 260323Cl: タブヘッダーをクリックエミュレーション (BringToFront 等のイベントハンドラを発火させる)
-            var tabRect = tabControl.GetTabRect(i);
-            var clickPos = new System.Drawing.Point(tabRect.X + tabRect.Width / 2, tabRect.Y + tabRect.Height / 2);
-            var lParam = (IntPtr)(clickPos.X | (clickPos.Y << 16));
-            SendMessage(tabControl.Handle, WM_LBUTTONDOWN, IntPtr.Zero, lParam);
-            SendMessage(tabControl.Handle, WM_LBUTTONUP, IntPtr.Zero, lParam);
+            // 260323Cl: タブ選択 + Click イベント発火 (BringToFront/SendToBack 等のハンドラを実行)
+            tabControl.SelectedIndex = i;
+            onClickMethod?.Invoke(tabControl, new object[] { EventArgs.Empty });
+            tabControl.Refresh();
             Application.DoEvents();
 
             var tabPage = tabControl.TabPages[i];
@@ -405,14 +401,12 @@ public partial class FormCaptureGUI : Form
             CaptureControl(tabControl, $"{tabPath}._tab_view", outputDir, infoList);
             CaptureControl(tabPage, tabPath, outputDir, infoList);
         }
-        // 260323Cl: 元のタブに戻す (同様にクリックエミュレーション)
+        // 260323Cl: 元のタブに戻す
         if (originalIndex >= 0 && originalIndex < tabControl.TabPages.Count)
         {
-            var tabRect = tabControl.GetTabRect(originalIndex);
-            var clickPos = new System.Drawing.Point(tabRect.X + tabRect.Width / 2, tabRect.Y + tabRect.Height / 2);
-            var lParam = (IntPtr)(clickPos.X | (clickPos.Y << 16));
-            SendMessage(tabControl.Handle, WM_LBUTTONDOWN, IntPtr.Zero, lParam);
-            SendMessage(tabControl.Handle, WM_LBUTTONUP, IntPtr.Zero, lParam);
+            tabControl.SelectedIndex = originalIndex;
+            onClickMethod?.Invoke(tabControl, new object[] { EventArgs.Empty });
+            tabControl.Refresh();
             Application.DoEvents();
         }
     }
