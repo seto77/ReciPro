@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -64,7 +64,10 @@ public partial class FormCaptureGUI : Form
                         return true; // キーイベントを消費
                     }
                 }
-                new FormCaptureGUI().Show();
+                // 260323Cl: ショートカット押下時のアクティブフォームを対象とする
+                var activeForm = Form.ActiveForm;
+                if (activeForm == null || activeForm is FormCaptureGUI) return true;
+                new FormCaptureGUI { targetForm = activeForm }.Show();
             }
             finally
             {
@@ -73,6 +76,9 @@ public partial class FormCaptureGUI : Form
             return true; // キーイベントを消費 (子フォームに伝播しない)
         }
     }
+
+    // 260323Cl: キャプチャ対象フォーム (ショートカット押下時のアクティブフォーム)
+    private Form targetForm;
 
     public FormCaptureGUI()
     {
@@ -86,21 +92,17 @@ public partial class FormCaptureGUI : Form
         BuildTree();
     }
 
-    /// <summary>Application.OpenForms から全フォームのコントロールツリーを構築</summary>
+    /// <summary>対象フォームのコントロールツリーを構築</summary>
     private void BuildTree()
     {
         treeViewControls.BeginUpdate();
         treeViewControls.Nodes.Clear();
 
-        var visited = new HashSet<Control>();
-
-        foreach (Form form in Application.OpenForms)
+        // 260323Cl: targetForm のみを対象にする (全フォーム列挙をやめる)
+        if (targetForm != null && !targetForm.IsDisposed)
         {
-            if (form == this) continue; // 自分自身は除外
-            if (visited.Contains(form)) continue;
-            visited.Add(form);
-
-            var node = CreateNode(form, form.Name, visited);
+            var visited = new HashSet<Control>();
+            var node = CreateNode(targetForm, targetForm.Name, visited);
             treeViewControls.Nodes.Add(node);
         }
 
@@ -219,10 +221,10 @@ public partial class FormCaptureGUI : Form
         BuildTree();
     }
 
-    /// <summary>デフォルトの保存先を取得 (実行ファイルの親の doc/captures/)</summary>
+    /// <summary>デフォルトの保存先を取得 (実行ファイルの親の doc/capture/)</summary>
     private static string GetDefaultOutputDir()
     {
-        // 260323Cl: ReciPro/doc/captures/ をデフォルトにする
+        // 260323Cl: ReciPro/doc/capture/ をデフォルトにする
         // 実行ファイルが bin/Debug/ 等にあるので、プロジェクトルートを探す
         var exeDir = AppDomain.CurrentDomain.BaseDirectory;
         var dir = new DirectoryInfo(exeDir);
@@ -231,10 +233,10 @@ public partial class FormCaptureGUI : Form
             dir = dir.Parent;
         var projectRoot = dir?.Parent;
         if (projectRoot != null)
-            return Path.Combine(projectRoot.FullName, "doc", "captures");
+            return Path.Combine(projectRoot.FullName, "doc", "capture");
 
         // フォールバック: 実行フォルダ直下
-        return Path.Combine(exeDir, "doc", "captures");
+        return Path.Combine(exeDir, "doc", "capture");
     }
 
     /// <summary>Capture ボタン</summary>
@@ -243,7 +245,7 @@ public partial class FormCaptureGUI : Form
         var defaultDir = GetDefaultOutputDir();
         using var dialog = new FolderBrowserDialog
         {
-            Description = "Select output folder for GUI captures",
+            Description = "Select output folder for GUI capture",
             SelectedPath = defaultDir,
             UseDescriptionForTitle = true
         };
@@ -273,6 +275,10 @@ public partial class FormCaptureGUI : Form
             var info = (ControlInfo)node.Tag;
             var control = info.Control;
             var path = info.Path;
+
+            // 260323Cl: CopyFromScreen のため対象フォームを前面に出す
+            control.FindForm()?.BringToFront();
+            Application.DoEvents();
 
             try
             {
@@ -312,22 +318,14 @@ public partial class FormCaptureGUI : Form
         if (control.Width < MinCaptureSize || control.Height < MinCaptureSize) return;
 
         var fileName = SanitizeFileName(path) + ".png";
-        Bitmap bmp;
 
-        // 260323Cl: OpenGL コントロールはリフレクションで GenerateBitmap() を呼ぶ
-        // (DrawToBitmap では GPU レンダリング内容を取得できないため)
-        var generateBitmapMethod = FindGenerateBitmapMethod(control);
-        if (generateBitmapMethod != null)
+        // 260323Cl: CopyFromScreen で画面上の実際の表示をキャプチャする
+        // DrawToBitmap (WM_PRINT) ではタブヘッダー等が正しく描画されず、GPU描画も取得できないため
+        var bmp = new Bitmap(control.Width, control.Height);
+        using (var g = Graphics.FromImage(bmp))
         {
-            bmp = (Bitmap)generateBitmapMethod.Invoke(control, null);
-        }
-        else
-        {
-            bmp = new Bitmap(control.Width, control.Height);
-            control.DrawToBitmap(bmp, new System.Drawing.Rectangle(0, 0, control.Width, control.Height));
-
-            // 260323Cl: 子孫に OpenGL コントロールがあればビットマップを合成
-            CompositeDescendantGLControls(control, bmp);
+            var screenPos = control.PointToScreen(System.Drawing.Point.Empty);
+            g.CopyFromScreen(screenPos, System.Drawing.Point.Empty, control.Size);
         }
 
         // 260323Cl: 単色ビットマップ (Visible=false のパネル等) はファイルを生成しない
@@ -415,24 +413,6 @@ public partial class FormCaptureGUI : Form
     }
 
     /// <summary>
-    /// 260323Cl 追加
-    /// コントロール自身またはその子コントロールから GenerateBitmap() メソッドを探す。
-    /// OpenGL系コントロール (GLControlAlpha 等) の画面取得に使用。
-    /// </summary>
-    private static System.Reflection.MethodInfo FindGenerateBitmapMethod(Control control)
-    {
-        // コントロール自身に GenerateBitmap() があるか
-        var method = control.GetType().GetMethod("GenerateBitmap",
-            System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance,
-            null, Type.EmptyTypes, null);
-        if (method != null && method.ReturnType == typeof(Bitmap))
-            return method;
-
-        // UserControl の場合、子コントロールに GenerateBitmap を持つものがあるか探す
-        // (GLControlAlpha は UserControl で、内部に glControl を持つ)
-        return null;
-    }
-
     /// <summary>
     /// 260323Cl 追加
     /// ビットマップの内側領域（上下左右5px除外）で 99% 以上が同一色であるかを判定する。
@@ -469,65 +449,6 @@ public partial class FormCaptureGUI : Form
         finally
         {
             bmp.UnlockBits(data);
-        }
-    }
-
-    /// <summary>
-    /// 260323Cl 追加
-    /// 子孫コントロールに OpenGL コントロール (GenerateBitmap を持つ) があれば、
-    /// そのビットマップを親ビットマップの対応位置に合成する。
-    /// DrawToBitmap では GPU レンダリング内容が黒抜けになるため、個別に取得して貼り付ける。
-    /// </summary>
-    private static void CompositeDescendantGLControls(Control root, Bitmap rootBmp)
-    {
-        var glControls = new List<(Control ctrl, System.Reflection.MethodInfo method)>();
-        FindDescendantGLControls(root, glControls);
-        if (glControls.Count == 0) return;
-
-        using var g = Graphics.FromImage(rootBmp);
-        var rootScreen = root.PointToScreen(System.Drawing.Point.Empty);
-        foreach (var (glCtrl, method) in glControls)
-        {
-            if (glCtrl.Width <= 0 || glCtrl.Height <= 0) continue;
-            try
-            {
-                var glBmp = (Bitmap)method.Invoke(glCtrl, null);
-                if (glBmp == null) continue;
-                var glScreen = glCtrl.PointToScreen(System.Drawing.Point.Empty);
-                g.DrawImage(glBmp, glScreen.X - rootScreen.X, glScreen.Y - rootScreen.Y, glCtrl.Width, glCtrl.Height);
-                glBmp.Dispose();
-            }
-            catch { /* GL キャプチャ失敗時は DrawToBitmap のフォールバックをそのまま使用 */ }
-        }
-    }
-
-    /// <summary>
-    /// 260323Cl 追加
-    /// 子孫コントロールから GenerateBitmap() メソッドを持つ OpenGL コントロールを再帰的に検索する。
-    /// GL コントロールが見つかった場合はその子孫はたどらない（GL コントロール自体が描画を担当するため）。
-    /// </summary>
-    private static void FindDescendantGLControls(Control parent, List<(Control, System.Reflection.MethodInfo)> result)
-    {
-        foreach (Control child in parent.Controls)
-        {
-            var m = FindGenerateBitmapMethod(child);
-            if (m != null)
-                result.Add((child, m));
-            else
-                FindDescendantGLControls(child, result);
-        }
-        // SplitContainer のパネルも走査
-        if (parent is SplitContainer sc)
-        {
-            FindDescendantGLControls(sc.Panel1, result);
-            FindDescendantGLControls(sc.Panel2, result);
-        }
-        // ToolStripContainer のパネルも走査
-        if (parent is ToolStripContainer tsc)
-        {
-            foreach (var panel in new Control[] { tsc.ContentPanel, tsc.TopToolStripPanel,
-                tsc.BottomToolStripPanel, tsc.LeftToolStripPanel, tsc.RightToolStripPanel })
-                FindDescendantGLControls(panel, result);
         }
     }
 
