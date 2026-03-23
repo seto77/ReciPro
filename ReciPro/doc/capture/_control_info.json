@@ -1,957 +1,2489 @@
 [
   {
-    "path": "FormTrajectory",
-    "type": "FormTrajectory",
-    "text": "Trajectory Calculation by Monte Carlo Method",
-    "image": "FormTrajectory.png",
+    "path": "FormDiffractionSimulator",
+    "type": "FormDiffractionSimulator",
+    "text": "Diffraction Simulator",
+    "image": "FormDiffractionSimulator.png",
     "bounds": {
-      "x": 3532,
-      "y": 311,
-      "w": 1290,
-      "h": 719
+      "x": 2923,
+      "y": 300,
+      "w": 824,
+      "h": 698
     }
   },
   {
-    "path": "FormTrajectory.groupBox6",
-    "type": "GroupBox",
-    "text": "Statistics",
-    "image": "FormTrajectory.groupBox6.png",
+    "path": "FormDiffractionSimulator.toolStripContainer1",
+    "type": "ToolStripContainer",
+    "text": "toolStripContainer1",
+    "image": "FormDiffractionSimulator.toolStripContainer1.png",
     "bounds": {
-      "x": 522,
-      "y": 5,
-      "w": 333,
-      "h": 128
+      "x": 2,
+      "y": 2,
+      "w": 587,
+      "h": 655
     }
   },
   {
-    "path": "FormTrajectory.groupBox6.labelBSEenergy",
-    "type": "Label",
-    "text": "11.75 kev",
-    "image": "FormTrajectory.groupBox6.labelBSEenergy.png",
-    "bounds": {
-      "x": 183,
-      "y": 104,
-      "w": 60,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox6.labelStoppingPower",
-    "type": "Label",
-    "text": "-3.94 ev/nm @ 20 kev",
-    "image": "FormTrajectory.groupBox6.labelStoppingPower.png",
-    "bounds": {
-      "x": 180,
-      "y": 66,
-      "w": 134,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox6.labelCrossSection",
-    "type": "Label",
-    "text": "0.000582 nm\u00B2 @ 20 kev",
-    "image": "FormTrajectory.groupBox6.labelCrossSection.png",
-    "bounds": {
-      "x": 186,
-      "y": 28,
-      "w": 144,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox6.labelMeanFreePath",
-    "type": "Label",
-    "text": "16.15 nm @ 20 kev",
-    "image": "FormTrajectory.groupBox6.labelMeanFreePath.png",
-    "bounds": {
-      "x": 185,
-      "y": 47,
-      "w": 118,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox6.labelBSEratio",
-    "type": "Label",
-    "text": "12.01 %",
-    "image": "FormTrajectory.groupBox6.labelBSEratio.png",
-    "bounds": {
-      "x": 226,
-      "y": 85,
-      "w": 51,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox6.label3",
-    "type": "Label",
-    "text": "Average energy of the BSEs",
-    "image": "FormTrajectory.groupBox6.label3.png",
-    "bounds": {
-      "x": 5,
-      "y": 104,
-      "w": 167,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox6.label6",
-    "type": "Label",
-    "text": "Scattering cross-section (\u03C3_E)",
-    "image": "FormTrajectory.groupBox6.label6.png",
-    "bounds": {
-      "x": 5,
-      "y": 28,
-      "w": 177,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox6.label5",
-    "type": "Label",
-    "text": "The stopping power (dE/ds)",
-    "image": "FormTrajectory.groupBox6.label5.png",
-    "bounds": {
-      "x": 5,
-      "y": 66,
-      "w": 169,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox6.label4",
-    "type": "Label",
-    "text": "Elastic mean free path (\u03BB)",
-    "image": "FormTrajectory.groupBox6.label4.png",
-    "bounds": {
-      "x": 5,
-      "y": 47,
-      "w": 153,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox6.label2",
-    "type": "Label",
-    "text": "Backscattered electron coefficient, \u03B7",
-    "image": "FormTrajectory.groupBox6.label2.png",
-    "bounds": {
-      "x": 5,
-      "y": 85,
-      "w": 217,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5",
-    "type": "GroupBox",
-    "text": "Direction distribution of BSEs (the center of stereonet corresponds to the surface normal direction)",
-    "image": "FormTrajectory.groupBox5.png",
-    "bounds": {
-      "x": 522,
-      "y": 139,
-      "w": 333,
-      "h": 512
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.radioButtonStandardDeviation",
-    "type": "RadioButton",
-    "text": "Standard deviation of energy",
-    "image": "FormTrajectory.groupBox5.radioButtonStandardDeviation.png",
-    "bounds": {
-      "x": 6,
-      "y": 60,
-      "w": 194,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.radioButtonAverageEnergy",
-    "type": "RadioButton",
-    "text": "Average energy",
-    "image": "FormTrajectory.groupBox5.radioButtonAverageEnergy.png",
-    "bounds": {
-      "x": 103,
-      "y": 39,
-      "w": 116,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.radioButtonFrequency",
-    "type": "RadioButton",
-    "text": "Frequency",
-    "image": "FormTrajectory.groupBox5.radioButtonFrequency.png",
-    "bounds": {
-      "x": 6,
-      "y": 39,
-      "w": 84,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl",
-    "type": "PoleFigureControl2",
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain",
+    "type": "Panel",
     "text": "",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.png",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.png",
     "bounds": {
-      "x": 6,
-      "y": 87,
-      "w": 322,
-      "h": 416
+      "x": 0,
+      "y": 141,
+      "w": 587,
+      "h": 413
     }
   },
   {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.pictureBox",
-    "type": "PictureBox",
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1",
+    "type": "SplitContainer",
     "text": "",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.pictureBox.png",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.png",
+    "bounds": {
+      "x": 0,
+      "y": 25,
+      "w": 587,
+      "h": 388
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.graphicsBox",
+    "type": "GraphicsBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.graphicsBox.png",
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 322,
-      "h": 323
-    }
+      "w": 587,
+      "h": 388
+    },
+    "toolTip": "Left drag (near the center of the screen): Rotate by the axis parallel to monitor\r\nLeft drag (at the edge of the screen):  Rotate by the axis normal to monitor\r\nRight click: Zoom out\r\nRight-drag: Zoom in the selected area\r\nMiddle drag: Drag the simulated image\r\nDouble left click: Display the information of the g-vector"
   },
   {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.pictureBox1",
-    "type": "PictureBox",
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.glControlAxes",
+    "type": "GLControlAlpha",
     "text": "",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.pictureBox1.png",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.glControlAxes.png",
     "bounds": {
       "x": 0,
-      "y": 323,
-      "w": 322,
-      "h": 32
+      "y": 0,
+      "w": 290,
+      "h": 380
     }
   },
   {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1",
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.glControlAxes.glControl2",
+    "type": "GLControl",
+    "text": "glControl2",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.glControlAxes.glControl2.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 286,
+      "h": 376
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7",
+    "type": "GroupBox",
+    "text": "Options",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.png",
+    "bounds": {
+      "x": 0,
+      "y": 380,
+      "w": 290,
+      "h": 151
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsNear",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsNear.png",
+    "bounds": {
+      "x": 184,
+      "y": 107,
+      "w": 152,
+      "h": 21
+    },
+    "toolTip": "Set a background color"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsNear.flowLayoutPanel",
     "type": "FlowLayoutPanel",
     "text": "",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.png",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsNear.flowLayoutPanel.png",
     "bounds": {
       "x": 0,
-      "y": 355,
-      "w": 322,
-      "h": 61
+      "y": 0,
+      "w": 152,
+      "h": 21
     }
   },
   {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMin",
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsNear.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsNear.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsNear.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Spot near Ewald sphere",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsNear.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 132,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.numericBox3D_SpotRadius",
     "type": "NumericBox",
     "text": "",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMin.png",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.numericBox3D_SpotRadius.png",
     "bounds": {
-      "x": 6,
-      "y": 4,
-      "w": 100,
-      "h": 26
+      "x": 170,
+      "y": 20,
+      "w": 164,
+      "h": 24
+    },
+    "toolTip": "Set a radius of the diffraction spots in the reciprocal space"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.numericBox3D_SpotRadius.labelFooter",
+    "type": "Label",
+    "text": "nm\u207B\u00B9",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.numericBox3D_SpotRadius.labelFooter.png",
+    "bounds": {
+      "x": 132,
+      "y": 0,
+      "w": 31,
+      "h": 23
     }
   },
   {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMin.textBox",
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.checkBox3D_ShowIndices",
+    "type": "CheckBox",
+    "text": "Label",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.checkBox3D_ShowIndices.png",
+    "bounds": {
+      "x": 105,
+      "y": 22,
+      "w": 52,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsFar",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsFar.png",
+    "bounds": {
+      "x": 184,
+      "y": 87,
+      "w": 191,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsFar.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsFar.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 191,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsFar.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsFar.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsFar.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Spots away from Ewald sphere",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_SpotsFar.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 171,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.checkBox3D_MakeSpotsTransparent",
+    "type": "CheckBox",
+    "text": "Make spots away from \r\nEwald sphere transparent",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.checkBox3D_MakeSpotsTransparent.png",
+    "bounds": {
+      "x": 7,
+      "y": 60,
+      "w": 161,
+      "h": 38
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8",
+    "type": "GroupBox",
+    "text": "View direction",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.png",
+    "bounds": {
+      "x": 376,
+      "y": 15,
+      "w": 104,
+      "h": 130
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1",
+    "type": "TableLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1.png",
+    "bounds": {
+      "x": 2,
+      "y": 20,
+      "w": 100,
+      "h": 58
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1.buttonTopLeft",
+    "type": "Button",
+    "text": "\u2B66",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1.buttonTopLeft.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 25,
+      "h": 20
+    },
+    "toolTip": "Rotate the crystal to the direction of the arrow."
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1.buttonLeft",
+    "type": "Button",
+    "text": "\u2B60",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1.buttonLeft.png",
+    "bounds": {
+      "x": 0,
+      "y": 20,
+      "w": 25,
+      "h": 20
+    },
+    "toolTip": "Rotate the crystal to the direction of the arrow.\r\n(CTRL\u002BSHIFT\u002B Left)"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1.buttonTop",
+    "type": "Button",
+    "text": "\u2B61",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1.buttonTop.png",
+    "bounds": {
+      "x": 25,
+      "y": 0,
+      "w": 50,
+      "h": 20
+    },
+    "toolTip": "Rotate the crystal to the direction of the arrow.\r\n(CTRL\u002BSHIFT\u002B Up)"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1.buttonTopRight",
+    "type": "Button",
+    "text": "\u2B67",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.groupBox8.tableLayoutPanel1.buttonTopRight.png",
+    "bounds": {
+      "x": 75,
+      "y": 0,
+      "w": 25,
+      "h": 20
+    },
+    "toolTip": "Rotate the crystal to the direction of the arrow."
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.label21",
+    "type": "Label",
+    "text": "Threadshold of \r\nrelative intensity",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.label21.png",
+    "bounds": {
+      "x": 5,
+      "y": 111,
+      "w": 96,
+      "h": 37
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_EwaldSphere",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_EwaldSphere.png",
+    "bounds": {
+      "x": 184,
+      "y": 67,
+      "w": 96,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_EwaldSphere.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_EwaldSphere.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 96,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_EwaldSphere.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_EwaldSphere.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_EwaldSphere.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Ewald sphere",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_EwaldSphere.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 76,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_Origin",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_Origin.png",
+    "bounds": {
+      "x": 285,
+      "y": 67,
+      "w": 58,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_Origin.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_Origin.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 58,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_Origin.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_Origin.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_Origin.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Origin",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_Origin.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 38,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_lText",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_lText.png",
+    "bounds": {
+      "x": 285,
+      "y": 47,
+      "w": 47,
+      "h": 21
+    },
+    "toolTip": "Set a background color"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_lText.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_lText.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 47,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_lText.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_lText.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_lText.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Text",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.colorControl3D_lText.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 27,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.checkBox3D_DirectionGuide",
+    "type": "CheckBox",
+    "text": "Direction guide",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.checkBox3D_DirectionGuide.png",
+    "bounds": {
+      "x": 7,
+      "y": 42,
+      "w": 107,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.checkBox3D_EwaldSphere",
+    "type": "CheckBox",
+    "text": "Ewald sphere",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.splitContainer1.groupBox7.checkBox3D_EwaldSphere.png",
+    "bounds": {
+      "x": 7,
+      "y": 22,
+      "w": 95,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl",
+    "type": "TabControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.png",
+    "bounds": {
+      "x": 0,
+      "y": 2,
+      "w": 423,
+      "h": 114
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral._tab_view",
+    "type": "TabControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral._tab_view.png",
+    "bounds": {
+      "x": 0,
+      "y": 2,
+      "w": 423,
+      "h": 114
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral",
+    "type": "TabPage",
+    "text": "General",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png",
+    "bounds": {
+      "x": 4,
+      "y": 26,
+      "w": 415,
+      "h": 84
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi._tab_view",
+    "type": "TabControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi._tab_view.png",
+    "bounds": {
+      "x": 0,
+      "y": 2,
+      "w": 423,
+      "h": 114
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi",
+    "type": "TabPage",
+    "text": "Kikuchi lines",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png",
+    "bounds": {
+      "x": 4,
+      "y": 26,
+      "w": 415,
+      "h": 84
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye._tab_view",
+    "type": "TabControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye._tab_view.png",
+    "bounds": {
+      "x": 0,
+      "y": 2,
+      "w": 423,
+      "h": 114
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye",
+    "type": "TabPage",
+    "text": "Debye rings",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png",
+    "bounds": {
+      "x": 4,
+      "y": 26,
+      "w": 415,
+      "h": 84
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale._tab_view",
+    "type": "TabControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale._tab_view.png",
+    "bounds": {
+      "x": 0,
+      "y": 2,
+      "w": 423,
+      "h": 114
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale",
+    "type": "TabPage",
+    "text": "Scale",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png",
+    "bounds": {
+      "x": 4,
+      "y": 26,
+      "w": 415,
+      "h": 84
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral",
+    "type": "TabPage",
+    "text": "General",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png",
+    "bounds": {
+      "x": 4,
+      "y": 26,
+      "w": 415,
+      "h": 84
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox4",
+    "type": "GroupBox",
+    "text": "String size",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox4.png",
+    "bounds": {
+      "x": 299,
+      "y": 0,
+      "w": 110,
+      "h": 56
+    },
+    "toolTip": "Set a string size"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox4.trackBarStrSize",
+    "type": "TrackBar",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox4.trackBarStrSize.png",
+    "bounds": {
+      "x": 9,
+      "y": 27,
+      "w": 95,
+      "h": 20
+    },
+    "toolTip": "Set a size of strings"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3",
+    "type": "GroupBox",
+    "text": "Color",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.png",
+    "bounds": {
+      "x": 3,
+      "y": 0,
+      "w": 288,
+      "h": 81
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlString",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlString.png",
+    "bounds": {
+      "x": 7,
+      "y": 49,
+      "w": 47,
+      "h": 21
+    },
+    "toolTip": "Set a color of strings"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlString.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlString.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 47,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlString.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlString.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlString.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Text",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlString.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 27,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.label14",
+    "type": "Label",
+    "text": "Foot of a perpendicular \r\n from the sample",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.label14.png",
+    "bounds": {
+      "x": 146,
+      "y": 45,
+      "w": 141,
+      "h": 37
+    },
+    "toolTip": "Set a color of the foot of a perpendicular from the sample"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlOrigin",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlOrigin.png",
+    "bounds": {
+      "x": 126,
+      "y": 18,
+      "w": 104,
+      "h": 21
+    },
+    "toolTip": "Set a color of the direct spot"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlOrigin.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlOrigin.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 104,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlOrigin.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlOrigin.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlOrigin.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Direct position",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlOrigin.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 84,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlFoot",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlFoot.png",
+    "bounds": {
+      "x": 126,
+      "y": 52,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlFoot.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlFoot.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlFoot.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlFoot.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlBackGround",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlBackGround.png",
+    "bounds": {
+      "x": 7,
+      "y": 21,
+      "w": 90,
+      "h": 21
+    },
+    "toolTip": "Set a background color"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlBackGround.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlBackGround.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 90,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlBackGround.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlBackGround.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlBackGround.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Background",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.groupBox3.colorControlBackGround.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 70,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi",
+    "type": "TabPage",
+    "text": "Kikuchi lines",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png",
+    "bounds": {
+      "x": 4,
+      "y": 26,
+      "w": 415,
+      "h": 84
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.radioButtonKikuchiThresholdOfStructureFactor",
+    "type": "RadioButton",
+    "text": "Structure factor",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.radioButtonKikuchiThresholdOfStructureFactor.png",
+    "bounds": {
+      "x": 162,
+      "y": 3,
+      "w": 115,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.checkBoxKikuchiLine_Kinematical",
+    "type": "CheckBox",
+    "text": "Reflect the structure factor in the Kikuchi line density",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.checkBoxKikuchiLine_Kinematical.png",
+    "bounds": {
+      "x": 75,
+      "y": 60,
+      "w": 335,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.radioButtonKikuchiThresholdOfLength",
+    "type": "RadioButton",
+    "text": "Threshold of 1/d",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.radioButtonKikuchiThresholdOfLength.png",
+    "bounds": {
+      "x": 162,
+      "y": 30,
+      "w": 121,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.numericBoxKikuchiThreadSholdOfStructureFactor",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.numericBoxKikuchiThreadSholdOfStructureFactor.png",
+    "bounds": {
+      "x": 291,
+      "y": 3,
+      "w": 102,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.numericBoxKikuchiThreadSholdOfStructureFactor.textBox",
     "type": "TextBox",
-    "text": "0",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMin.textBox.png",
+    "text": "100",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.numericBoxKikuchiThreadSholdOfStructureFactor.textBox.png",
     "bounds": {
       "x": 28,
-      "y": 0,
-      "w": 54,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMin.labelHeader",
-    "type": "Label",
-    "text": "Min",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMin.labelHeader.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 28,
-      "h": 24
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMax",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMax.png",
-    "bounds": {
-      "x": 112,
-      "y": 4,
-      "w": 100,
-      "h": 26
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMax.textBox",
-    "type": "TextBox",
-    "text": "10,530",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMax.textBox.png",
-    "bounds": {
-      "x": 30,
-      "y": 0,
-      "w": 52,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMax.labelHeader",
-    "type": "Label",
-    "text": "Max",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMax.labelHeader.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 30,
-      "h": 24
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxResolution",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxResolution.png",
-    "bounds": {
-      "x": 6,
-      "y": 34,
-      "w": 118,
-      "h": 26
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxResolution.textBox",
-    "type": "TextBox",
-    "text": "6",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxResolution.textBox.png",
-    "bounds": {
-      "x": 67,
-      "y": 0,
-      "w": 23,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxResolution.labelHeader",
-    "type": "Label",
-    "text": "Resolution",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxResolution.labelHeader.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 67,
-      "h": 24
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.panel1",
-    "type": "Panel",
-    "text": "",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.panel1.png",
-    "bounds": {
-      "x": 130,
-      "y": 30,
-      "w": 134,
-      "h": 31
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.panel1.label9",
-    "type": "Label",
-    "text": "Color",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.panel1.label9.png",
-    "bounds": {
-      "x": 0,
-      "y": 6,
-      "w": 37,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.panel1.comboBoxColor",
-    "type": "ComboBox",
-    "text": "Cold-Warm scale",
-    "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.panel1.comboBoxColor.png",
-    "bounds": {
-      "x": 42,
-      "y": 3,
-      "w": 89,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormTrajectory.groupBox5.checkBoxDrawAxesInStereonet",
-    "type": "CheckBox",
-    "text": "Draw\r\n axes",
-    "image": "FormTrajectory.groupBox5.checkBoxDrawAxesInStereonet.png",
-    "bounds": {
-      "x": 270,
-      "y": 43,
-      "w": 60,
-      "h": 41
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.png",
-    "bounds": {
-      "x": 863,
-      "y": 2,
-      "w": 406,
-      "h": 618
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1",
-    "type": "GroupBox",
-    "text": "Energy distribution of BSEs (\u0394E)",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.png",
-    "bounds": {
-      "x": 3,
-      "y": 3,
-      "w": 400,
-      "h": 200
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile",
-    "type": "GraphControl",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.png",
-    "bounds": {
-      "x": 3,
-      "y": 21,
-      "w": 394,
-      "h": 176
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.panel1",
-    "type": "Panel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.panel1.png",
-    "bounds": {
-      "x": 0,
-      "y": 27,
-      "w": 394,
-      "h": 149
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.panel1.pictureBox",
-    "type": "PictureBox",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.panel1.pictureBox.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 390,
-      "h": 145
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 394,
-      "h": 27
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.png",
-    "bounds": {
-      "x": 9,
-      "y": 3,
-      "w": 160,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelX",
-    "type": "Label",
-    "text": "kev: ",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelX.png",
-    "bounds": {
-      "x": 3,
-      "y": 0,
-      "w": 29,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue",
-    "type": "Label",
-    "text": "000",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue.png",
-    "bounds": {
-      "x": 38,
-      "y": 0,
-      "w": 24,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelY",
-    "type": "Label",
-    "text": "freq.: ",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelY.png",
-    "bounds": {
-      "x": 92,
-      "y": 0,
-      "w": 35,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue",
-    "type": "Label",
-    "text": "000",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue.png",
-    "bounds": {
-      "x": 133,
-      "y": 0,
-      "w": 24,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4",
-    "type": "GroupBox",
-    "text": "Maximum distance parallel to the surface of BSEs",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.png",
-    "bounds": {
-      "x": 3,
-      "y": 209,
-      "w": 400,
-      "h": 200
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance",
-    "type": "GraphControl",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.png",
-    "bounds": {
-      "x": 3,
-      "y": 21,
-      "w": 394,
-      "h": 176
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.panel1",
-    "type": "Panel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.panel1.png",
-    "bounds": {
-      "x": 0,
-      "y": 27,
-      "w": 394,
-      "h": 149
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.panel1.pictureBox",
-    "type": "PictureBox",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.panel1.pictureBox.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 390,
-      "h": 145
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 394,
-      "h": 27
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.png",
-    "bounds": {
-      "x": 9,
-      "y": 3,
-      "w": 156,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelX",
-    "type": "Label",
-    "text": "\u00B5m: ",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelX.png",
-    "bounds": {
-      "x": 3,
-      "y": 0,
-      "w": 28,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue",
-    "type": "Label",
-    "text": "000",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue.png",
-    "bounds": {
-      "x": 37,
-      "y": 0,
-      "w": 24,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelY",
-    "type": "Label",
-    "text": "freq.:",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelY.png",
-    "bounds": {
-      "x": 91,
-      "y": 0,
-      "w": 32,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue",
-    "type": "Label",
-    "text": "000",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue.png",
-    "bounds": {
-      "x": 129,
-      "y": 0,
-      "w": 24,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2",
-    "type": "GroupBox",
-    "text": "Maximum depth penetration of BSEs",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.png",
-    "bounds": {
-      "x": 3,
-      "y": 415,
-      "w": 400,
-      "h": 200
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile",
-    "type": "GraphControl",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.png",
-    "bounds": {
-      "x": 3,
-      "y": 21,
-      "w": 394,
-      "h": 176
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.panel1",
-    "type": "Panel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.panel1.png",
-    "bounds": {
-      "x": 0,
-      "y": 27,
-      "w": 394,
-      "h": 149
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.panel1.pictureBox",
-    "type": "PictureBox",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.panel1.pictureBox.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 390,
-      "h": 145
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 394,
-      "h": 27
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition.png",
-    "bounds": {
-      "x": 9,
-      "y": 3,
-      "w": 156,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelX",
-    "type": "Label",
-    "text": "\u00B5m: ",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelX.png",
-    "bounds": {
-      "x": 3,
-      "y": 0,
-      "w": 28,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue",
-    "type": "Label",
-    "text": "000",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue.png",
-    "bounds": {
-      "x": 37,
-      "y": 0,
-      "w": 24,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelY",
-    "type": "Label",
-    "text": "freq.:",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelY.png",
-    "bounds": {
-      "x": 91,
-      "y": 0,
-      "w": 32,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue",
-    "type": "Label",
-    "text": "000",
-    "image": "FormTrajectory.flowLayoutPanel2.groupBox2.graphControlDepthProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue.png",
-    "bounds": {
-      "x": 129,
-      "y": 0,
-      "w": 24,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.numericBoxCalcNum",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormTrajectory.numericBoxCalcNum.png",
-    "bounds": {
-      "x": 426,
-      "y": 28,
-      "w": 82,
-      "h": 26
-    }
-  },
-  {
-    "path": "FormTrajectory.numericBoxCalcNum.textBox",
-    "type": "TextBox",
-    "text": "100,000",
-    "image": "FormTrajectory.numericBoxCalcNum.textBox.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 64,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormTrajectory.label1",
-    "type": "Label",
-    "text": "Number of trajectories\r\n to calculate",
-    "image": "FormTrajectory.label1.png",
-    "bounds": {
-      "x": 337,
-      "y": 8,
-      "w": 144,
-      "h": 40
-    }
-  },
-  {
-    "path": "FormTrajectory.numericBoxSampleTilt",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormTrajectory.numericBoxSampleTilt.png",
-    "bounds": {
-      "x": 5,
-      "y": 32,
-      "w": 137,
-      "h": 26
-    }
-  },
-  {
-    "path": "FormTrajectory.numericBoxSampleTilt.textBox",
-    "type": "TextBox",
-    "text": "0",
-    "image": "FormTrajectory.numericBoxSampleTilt.textBox.png",
-    "bounds": {
-      "x": 68,
-      "y": 0,
-      "w": 41,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormTrajectory.numericBoxSampleTilt.labelHeader",
-    "type": "Label",
-    "text": "Sample tilt",
-    "image": "FormTrajectory.numericBoxSampleTilt.labelHeader.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 68,
-      "h": 24
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1",
-    "type": "WaveLengthControl",
-    "text": "",
-    "image": "FormTrajectory.waveLengthControl1.png",
-    "bounds": {
-      "x": 142,
-      "y": 7,
-      "w": 210,
-      "h": 55
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 210,
-      "h": 54
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.flowLayoutPanelElement",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.flowLayoutPanelElement.png",
-    "bounds": {
-      "x": 3,
-      "y": 0,
-      "w": 149,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.flowLayoutPanelElement.label1",
-    "type": "Label",
-    "text": "Element",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.flowLayoutPanelElement.label1.png",
-    "bounds": {
-      "x": 0,
-      "y": 3,
-      "w": 49,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.flowLayoutPanelElement.comboBoxXRayElement",
-    "type": "ComboBox",
-    "text": "0:  Custom",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.flowLayoutPanelElement.comboBoxXRayElement.png",
-    "bounds": {
-      "x": 49,
-      "y": 0,
-      "w": 100,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.flowLayoutPanelElement.comboBoxXrayLine",
-    "type": "ComboBox",
-    "text": "",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.flowLayoutPanelElement.comboBoxXrayLine.png",
-    "bounds": {
-      "x": 125,
       "y": 0,
       "w": 56,
       "h": 25
     }
   },
   {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxEnergy",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxEnergy.png",
-    "bounds": {
-      "x": 5,
-      "y": 0,
-      "w": 158,
-      "h": 27
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxEnergy.textBox",
-    "type": "TextBox",
-    "text": "20",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxEnergy.textBox.png",
-    "bounds": {
-      "x": 42,
-      "y": 2,
-      "w": 97,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxEnergy.labelHeader",
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.numericBoxKikuchiThreadSholdOfStructureFactor.labelHeader",
     "type": "Label",
-    "text": "Energy",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxEnergy.labelHeader.png",
+    "text": "Top",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.numericBoxKikuchiThreadSholdOfStructureFactor.labelHeader.png",
     "bounds": {
       "x": 0,
-      "y": 2,
-      "w": 42,
+      "y": 0,
+      "w": 28,
+      "h": 24
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.numericBoxKikuchiThresholdOfLength",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.numericBoxKikuchiThresholdOfLength.png",
+    "bounds": {
+      "x": 297,
+      "y": 29,
+      "w": 105,
+      "h": 25
+    },
+    "toolTip": "Set a threshold of d-spacings of Kikuchi lines.\r\nKikuchi lines under this value are simulated. \r\n"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.colorControlExcessLine",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.colorControlExcessLine.png",
+    "bounds": {
+      "x": 7,
+      "y": 3,
+      "w": 125,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.colorControlExcessLine.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.colorControlExcessLine.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 125,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.colorControlExcessLine.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.colorControlExcessLine.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.colorControlExcessLine.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Kikuchi line color",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.colorControlExcessLine.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 105,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.label11",
+    "type": "Label",
+    "text": "Line Width",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.label11.png",
+    "bounds": {
+      "x": 4,
+      "y": 29,
+      "w": 68,
+      "h": 22
+    },
+    "toolTip": "Line width of Kikuchi lines"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye",
+    "type": "TabPage",
+    "text": "Debye rings",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png",
+    "bounds": {
+      "x": 4,
+      "y": 26,
+      "w": 415,
+      "h": 84
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.colorControlDebyeRing",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.colorControlDebyeRing.png",
+    "bounds": {
+      "x": 8,
+      "y": 6,
+      "w": 123,
+      "h": 22
+    },
+    "toolTip": "Set a color of Debye rings"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.colorControlDebyeRing.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.colorControlDebyeRing.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 123,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.colorControlDebyeRing.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.colorControlDebyeRing.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.colorControlDebyeRing.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Debye ring color",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.colorControlDebyeRing.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 103,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.checkBoxDebyeRingLabel",
+    "type": "CheckBox",
+    "text": "Show index label",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.checkBoxDebyeRingLabel.png",
+    "bounds": {
+      "x": 190,
+      "y": 31,
+      "w": 123,
+      "h": 23
+    },
+    "toolTip": "By checking, index labels for Debye rings are displayed"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.checkBoxDebyeRingIgnoreIntensity",
+    "type": "CheckBox",
+    "text": "Ignore diffraction intensity\r\n",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.checkBoxDebyeRingIgnoreIntensity.png",
+    "bounds": {
+      "x": 190,
+      "y": 6,
+      "w": 186,
+      "h": 23
+    },
+    "toolTip": "By checking, all Debye rings are displayed as a same intensity"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.label6",
+    "type": "Label",
+    "text": "Line width",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.label6.png",
+    "bounds": {
+      "x": 5,
+      "y": 34,
+      "w": 70,
+      "h": 21
+    },
+    "toolTip": "Set the size of index strings"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale",
+    "type": "TabPage",
+    "text": "Scale",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png",
+    "bounds": {
+      "x": 4,
+      "y": 26,
+      "w": 415,
+      "h": 84
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.checkBoxScaleLabel",
+    "type": "CheckBox",
+    "text": "Show scale labels",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.checkBoxScaleLabel.png",
+    "bounds": {
+      "x": 183,
+      "y": 49,
+      "w": 126,
+      "h": 23
+    },
+    "toolTip": "By checking, scale labels are displayed"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.label12",
+    "type": "Label",
+    "text": "Division",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.label12.png",
+    "bounds": {
+      "x": 180,
+      "y": 4,
+      "w": 51,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.label16",
+    "type": "Label",
+    "text": "Line Width",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.label16.png",
+    "bounds": {
+      "x": 4,
+      "y": 53,
+      "w": 68,
+      "h": 22
+    },
+    "toolTip": "Line width of Kikuchi lines"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.flowLayoutPanel1",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.flowLayoutPanel1.png",
+    "bounds": {
+      "x": 201,
+      "y": 24,
+      "w": 173,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.flowLayoutPanel1.radioButtonScaleDivisionFine",
+    "type": "RadioButton",
+    "text": "Fine",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.flowLayoutPanel1.radioButtonScaleDivisionFine.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 45,
+      "h": 22
+    },
+    "toolTip": "Set the division of scale lines"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.flowLayoutPanel1.radioButtonScaleDivisionMedium",
+    "type": "RadioButton",
+    "text": "Medium",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.flowLayoutPanel1.radioButtonScaleDivisionMedium.png",
+    "bounds": {
+      "x": 45,
+      "y": 0,
+      "w": 68,
+      "h": 22
+    },
+    "toolTip": "Set the division of scale lines"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.flowLayoutPanel1.radioButtonScaleDivisionCoarse",
+    "type": "RadioButton",
+    "text": "Coarse",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.flowLayoutPanel1.radioButtonScaleDivisionCoarse.png",
+    "bounds": {
+      "x": 113,
+      "y": 0,
+      "w": 60,
+      "h": 22
+    },
+    "toolTip": "Set the division of scale lines"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScaleAzimuth",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScaleAzimuth.png",
+    "bounds": {
+      "x": 6,
+      "y": 29,
+      "w": 131,
+      "h": 22
+    },
+    "toolTip": "Set a color of azimuth scale lines"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScaleAzimuth.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScaleAzimuth.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 131,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScaleAzimuth.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScaleAzimuth.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScaleAzimuth.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Azimuth scale line",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScaleAzimuth.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 111,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScale2Theta",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScale2Theta.png",
+    "bounds": {
+      "x": 6,
+      "y": 4,
+      "w": 97,
+      "h": 22
+    },
+    "toolTip": "Set a color of 2\u03B8 scale lines"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScale2Theta.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScale2Theta.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 97,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScale2Theta.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScale2Theta.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScale2Theta.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "2\u03B8 scale line",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.colorControlScale2Theta.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 77,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.panel3",
+    "type": "Panel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.panel3.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 587,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMain.panel3.checkBoxReciprocalSpace",
+    "type": "CheckBox",
+    "text": "Reciprocal space",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMain.panel3.checkBoxReciprocalSpace.png",
+    "bounds": {
+      "x": 465,
+      "y": 0,
+      "w": 122,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition",
+    "type": "Panel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.png",
+    "bounds": {
+      "x": 0,
+      "y": 554,
+      "w": 587,
+      "h": 29
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2",
+    "type": "TableLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.png",
+    "bounds": {
+      "x": 3,
+      "y": 3,
+      "w": 482,
       "h": 23
     }
   },
   {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxWaveLength",
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.label24",
+    "type": "Label",
+    "text": "Mouse position:",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.label24.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 99,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.labelD",
+    "type": "Label",
+    "text": "d: 0.1184 nm",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.labelD.png",
+    "bounds": {
+      "x": 99,
+      "y": 0,
+      "w": 81,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.labelDinv",
+    "type": "Label",
+    "text": "d\u207B\u00B9: 8.4439 nm\u207B\u00B9",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.labelDinv.png",
+    "bounds": {
+      "x": 180,
+      "y": 0,
+      "w": 100,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.labelTwoThetaDeg",
+    "type": "Label",
+    "text": "2\u03B8: 1.213\u00B0",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.labelTwoThetaDeg.png",
+    "bounds": {
+      "x": 280,
+      "y": 0,
+      "w": 63,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.labelTwoThetaRad",
+    "type": "Label",
+    "text": "2\u03B8: 21.18 mrad",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanel2.labelTwoThetaRad.png",
+    "bounds": {
+      "x": 343,
+      "y": 0,
+      "w": 93,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanelMousePotionDetailed",
+    "type": "TableLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanelMousePotionDetailed.png",
+    "bounds": {
+      "x": 7,
+      "y": 29,
+      "w": 537,
+      "h": 54
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanelMousePotionDetailed.label20",
+    "type": "Label",
+    "text": "Reciprocal Coord. in nm\u207B\u00B9:",
+    "image": "FormDiffractionSimulator.toolStripContainer1.panelMousePosition.tableLayoutPanelMousePotionDetailed.label20.png",
+    "bounds": {
+      "x": 0,
+      "y": 34,
+      "w": 159,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 587,
+      "h": 141
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6",
+    "type": "GroupBox",
+    "text": "Monitor properties",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.png",
+    "bounds": {
+      "x": 4,
+      "y": 2,
+      "w": 299,
+      "h": 137
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.comboBoxCenter",
+    "type": "ComboBox",
+    "text": "perpendicular foot",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.comboBoxCenter.png",
+    "bounds": {
+      "x": 103,
+      "y": 81,
+      "w": 121,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.buttonResetCenter",
+    "type": "Button",
+    "text": "Set the center to",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.buttonResetCenter.png",
+    "bounds": {
+      "x": -1,
+      "y": 80,
+      "w": 105,
+      "h": 28
+    },
+    "toolTip": "Set the monitor center to the following point"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.checkBoxFixCenter",
+    "type": "CheckBox",
+    "text": "Fix",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.checkBoxFixCenter.png",
+    "bounds": {
+      "x": 231,
+      "y": 84,
+      "w": 38,
+      "h": 22
+    },
+    "toolTip": "Fix the monitor center to the following point"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.flowLayoutPanel13",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.flowLayoutPanel13.png",
+    "bounds": {
+      "x": 3,
+      "y": 112,
+      "w": 295,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.flowLayoutPanel13.checkBoxFlipHorizontally",
+    "type": "CheckBox",
+    "text": "Horizontal flip",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.flowLayoutPanel13.checkBoxFlipHorizontally.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 101,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.flowLayoutPanel13.checkBoxFlipVertically",
+    "type": "CheckBox",
+    "text": "Vertical flip",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.flowLayoutPanel13.checkBoxFlipVertically.png",
+    "bounds": {
+      "x": 101,
+      "y": 0,
+      "w": 85,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.flowLayoutPanel13.checkBoxNegativeImage",
+    "type": "CheckBox",
+    "text": "Negative image",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.flowLayoutPanel13.checkBoxNegativeImage.png",
+    "bounds": {
+      "x": 186,
+      "y": 0,
+      "w": 109,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.numericBoxClientHeight",
     "type": "NumericBox",
     "text": "",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxWaveLength.png",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.numericBoxClientHeight.png",
+    "bounds": {
+      "x": 158,
+      "y": 50,
+      "w": 75,
+      "h": 24
+    },
+    "toolTip": "Set pixel sizes of the simulated pattern"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.numericBoxClientHeight.textBox",
+    "type": "TextBox",
+    "text": "384",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.numericBoxClientHeight.textBox.png",
+    "bounds": {
+      "x": 13,
+      "y": 0,
+      "w": 43,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.numericBoxClientWidth",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.numericBoxClientWidth.png",
+    "bounds": {
+      "x": 77,
+      "y": 50,
+      "w": 77,
+      "h": 24
+    },
+    "toolTip": "Set pixel sizes of the simulated pattern"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.numericBoxClientWidth.textBox",
+    "type": "TextBox",
+    "text": "583",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.numericBoxClientWidth.textBox.png",
+    "bounds": {
+      "x": 16,
+      "y": 0,
+      "w": 42,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.label4",
+    "type": "Label",
+    "text": "Size (pixel): ",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox6.label4.png",
+    "bounds": {
+      "x": 4,
+      "y": 52,
+      "w": 74,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5",
+    "type": "Panel",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.png",
+    "bounds": {
+      "x": 307,
+      "y": 2,
+      "w": 272,
+      "h": 137
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox2",
+    "type": "GroupBox",
+    "text": "Misc",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox2.png",
+    "bounds": {
+      "x": 0,
+      "y": 52,
+      "w": 272,
+      "h": 86
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox2.buttonHolderSimulation",
+    "type": "Button",
+    "text": "TEM holder\r\n simulation",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox2.buttonHolderSimulation.png",
+    "bounds": {
+      "x": 10,
+      "y": 20,
+      "w": 89,
+      "h": 47
+    },
+    "toolTip": "Open the window to set the detailed optics"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox2.label23",
+    "type": "Label",
+    "text": "Rotation sensitivity",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox2.label23.png",
+    "bounds": {
+      "x": 134,
+      "y": 19,
+      "w": 117,
+      "h": 22
+    },
+    "toolTip": "Set/get camera length"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox1",
+    "type": "GroupBox",
+    "text": "Detector geometry \u0026\u0026  Overlay image",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox1.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 272,
+      "h": 52
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox1.label15",
+    "type": "Label",
+    "text": "Camera Length 2",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panel5.groupBox1.label15.png",
+    "bounds": {
+      "x": 2,
+      "y": 23,
+      "w": 105,
+      "h": 22
+    },
+    "toolTip": "Set/get camera length"
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5",
+    "type": "GroupBox",
+    "text": "Developer Code",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.png",
+    "bounds": {
+      "x": 279,
+      "y": 142,
+      "w": 178,
+      "h": 100
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.numericBoxDev",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.numericBoxDev.png",
+    "bounds": {
+      "x": 105,
+      "y": 45,
+      "w": 65,
+      "h": 24
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.numericBoxDev.textBox",
+    "type": "TextBox",
+    "text": "1.37",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.numericBoxDev.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 48,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.button1",
+    "type": "Button",
+    "text": "button1",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.button1.png",
+    "bounds": {
+      "x": 8,
+      "y": 21,
+      "w": 75,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.numericBoxAcc",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.numericBoxAcc.png",
+    "bounds": {
+      "x": 8,
+      "y": 46,
+      "w": 97,
+      "h": 24
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.numericBoxAcc.textBox",
+    "type": "TextBox",
+    "text": "12,400",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.numericBoxAcc.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 71,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.button2",
+    "type": "Button",
+    "text": "button1",
+    "image": "FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBox5.button2.png",
+    "bounds": {
+      "x": 8,
+      "y": 74,
+      "w": 75,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.menuStrip1",
+    "type": "MenuStrip",
+    "text": "menuStrip1",
+    "image": "FormDiffractionSimulator.toolStripContainer1.menuStrip1.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 587,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.toolStrip3",
+    "type": "ToolStrip",
+    "text": "toolStrip3",
+    "image": "FormDiffractionSimulator.toolStripContainer1.toolStrip3.png",
+    "bounds": {
+      "x": 3,
+      "y": 0,
+      "w": 284,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.toolStrip1",
+    "type": "ToolStrip",
+    "text": "toolStrip1",
+    "image": "FormDiffractionSimulator.toolStripContainer1.toolStrip1.png",
+    "bounds": {
+      "x": 287,
+      "y": 0,
+      "w": 268,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.toolStripContainer1.statusStrip1",
+    "type": "StatusStrip",
+    "text": "statusStrip1",
+    "image": "FormDiffractionSimulator.toolStripContainer1.statusStrip1.png",
+    "bounds": {
+      "x": 0,
+      "y": 25,
+      "w": 587,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty",
+    "type": "GroupBox",
+    "text": "Spot properties",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.png",
+    "bounds": {
+      "x": 593,
+      "y": 2,
+      "w": 213,
+      "h": 655
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2",
+    "type": "Panel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.png",
+    "bounds": {
+      "x": 2,
+      "y": 20,
+      "w": 209,
+      "h": 633
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.png",
+    "bounds": {
+      "x": 0,
+      "y": 541,
+      "w": 209,
+      "h": 79
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.label1",
+    "type": "Label",
+    "text": "Bloch wave property",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.label1.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 130,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxNumOfBlochWave",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxNumOfBlochWave.png",
+    "bounds": {
+      "x": 5,
+      "y": 25,
+      "w": 193,
+      "h": 24
+    },
+    "toolTip": "Set a number of the diffracted waves to be calculated"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxNumOfBlochWave.textBox",
+    "type": "TextBox",
+    "text": "240",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxNumOfBlochWave.textBox.png",
+    "bounds": {
+      "x": 138,
+      "y": 0,
+      "w": 36,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxNumOfBlochWave.labelHeader",
+    "type": "Label",
+    "text": "No of diffracted waves",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxNumOfBlochWave.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 138,
+      "h": 24
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxThickness",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxThickness.png",
+    "bounds": {
+      "x": 5,
+      "y": 51,
+      "w": 157,
+      "h": 24
+    },
+    "toolTip": "Set a thickness of the sample"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxThickness.textBox",
+    "type": "TextBox",
+    "text": "50.00",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxThickness.textBox.png",
+    "bounds": {
+      "x": 61,
+      "y": 0,
+      "w": 53,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxThickness.labelHeader",
+    "type": "Label",
+    "text": "Thickness",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxThickness.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 61,
+      "h": 24
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxThickness.labelFooter",
+    "type": "Label",
+    "text": "nm",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelBethe.numericBoxThickness.labelFooter.png",
+    "bounds": {
+      "x": 132,
+      "y": 0,
+      "w": 24,
+      "h": 24
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.png",
+    "bounds": {
+      "x": 0,
+      "y": 323,
+      "w": 209,
+      "h": 218
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.label19",
+    "type": "Label",
+    "text": "Appearance",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.label19.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 78,
+      "h": 22
+    },
+    "toolTip": "Set the size of index strings"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel4",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel4.png",
+    "bounds": {
+      "x": 0,
+      "y": 22,
+      "w": 191,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel4.radioButtonCircleArea",
+    "type": "RadioButton",
+    "text": "Solid sphere",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel4.radioButtonCircleArea.png",
+    "bounds": {
+      "x": 10,
+      "y": 0,
+      "w": 96,
+      "h": 23
+    },
+    "toolTip": "Spots are displayed as circles."
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel4.radioButtonPointSpread",
+    "type": "RadioButton",
+    "text": "Gaussian",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel4.radioButtonPointSpread.png",
+    "bounds": {
+      "x": 116,
+      "y": 0,
+      "w": 75,
+      "h": 23
+    },
+    "toolTip": "Spots are displayed as 2-dimensional Gauusians"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel7",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel7.png",
+    "bounds": {
+      "x": 10,
+      "y": 45,
+      "w": 141,
+      "h": 25
+    },
+    "toolTip": "Set an opacity of the diffraction spots"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel7.label8",
+    "type": "Label",
+    "text": "Opacity",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanel7.label8.png",
+    "bounds": {
+      "x": 0,
+      "y": 3,
+      "w": 50,
+      "h": 22
+    },
+    "toolTip": "Set the size of index strings"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.numericBoxSpotRadius",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.numericBoxSpotRadius.png",
+    "bounds": {
+      "x": 10,
+      "y": 70,
+      "w": 182,
+      "h": 24
+    },
+    "toolTip": "Set a radius of the diffraction spots in the reciprocal space"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.numericBoxSpotRadius.labelHeader",
+    "type": "Label",
+    "text": "Spot radius",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.numericBoxSpotRadius.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 72,
+      "h": 24
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption.png",
+    "bounds": {
+      "x": 10,
+      "y": 131,
+      "w": 190,
+      "h": 78
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption.flowLayoutPanel9",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption.flowLayoutPanel9.png",
+    "bounds": {
+      "x": 0,
+      "y": 22,
+      "w": 186,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption.flowLayoutPanel9.label25",
+    "type": "Label",
+    "text": "Color scale",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption.flowLayoutPanel9.label25.png",
+    "bounds": {
+      "x": 0,
+      "y": 3,
+      "w": 69,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption.flowLayoutPanel9.comboBoxScaleColorScale",
+    "type": "ComboBox",
+    "text": "Gray",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption.flowLayoutPanel9.comboBoxScaleColorScale.png",
+    "bounds": {
+      "x": 69,
+      "y": 0,
+      "w": 108,
+      "h": 23
+    },
+    "toolTip": "Set a color scale"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption.checkBoxLogScale",
+    "type": "CheckBox",
+    "text": "Log scale",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelGaussianOption.checkBoxLogScale.png",
+    "bounds": {
+      "x": 3,
+      "y": 47,
+      "w": 78,
+      "h": 23
+    },
+    "toolTip": "By checking, the intensities of the diffraction spos are logarithmically displayed"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.png",
+    "bounds": {
+      "x": 10,
+      "y": 103,
+      "w": 197,
+      "h": 111
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlScrewGlide",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlScrewGlide.png",
+    "bounds": {
+      "x": 5,
+      "y": 70,
+      "w": 182,
+      "h": 21
+    },
+    "toolTip": "Set a color of extinct spots (screw of glide)"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlScrewGlide.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlScrewGlide.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 182,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlScrewGlide.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlScrewGlide.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlScrewGlide.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Extinct spots (Screw or Glide)",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlScrewGlide.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 162,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlForbiddenLattice",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlForbiddenLattice.png",
+    "bounds": {
+      "x": 5,
+      "y": 92,
+      "w": 188,
+      "h": 21
+    },
+    "toolTip": "Set a color of extinct spots (lattice centering)"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlForbiddenLattice.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlForbiddenLattice.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 188,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlForbiddenLattice.flowLayoutPanel.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlForbiddenLattice.flowLayoutPanel.pictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "h": 20
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlForbiddenLattice.flowLayoutPanel.labelFooter",
+    "type": "Label",
+    "text": "Extinct spots (Lattice centring)",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanelAppearance.flowLayoutPanelSpotColor.colorControlForbiddenLattice.flowLayoutPanel.labelFooter.png",
+    "bounds": {
+      "x": 20,
+      "y": 0,
+      "w": 168,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.png",
+    "bounds": {
+      "x": 0,
+      "y": 200,
+      "w": 209,
+      "h": 123
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.label7",
+    "type": "Label",
+    "text": "Intensity calculation",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.label7.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 127,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.radioButtonIntensityExcitation",
+    "type": "RadioButton",
+    "text": "Only excitation error",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.radioButtonIntensityExcitation.png",
+    "bounds": {
+      "x": 10,
+      "y": 22,
+      "w": 144,
+      "h": 23
+    },
+    "toolTip": "In this mode, only the excitation error is considered for the intensity calculation.\r\n(The effect of the structure factor is ignored) "
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.flowLayoutPanelExtinctionOption",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.flowLayoutPanelExtinctionOption.png",
+    "bounds": {
+      "x": 15,
+      "y": 38,
+      "w": 198,
+      "h": 47
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.flowLayoutPanelExtinctionOption.checkBoxExtinctionAll",
+    "type": "CheckBox",
+    "text": "Exclude all prohibited reflections ",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.flowLayoutPanelExtinctionOption.checkBoxExtinctionAll.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 184,
+      "h": 20
+    },
+    "toolTip": "By checking, all prohibited refrections by the space group are not displayed"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.radioButtonIntensityKinematical",
+    "type": "RadioButton",
+    "text": "Kinematical \u0026\u0026 excitation error",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.radioButtonIntensityKinematical.png",
+    "bounds": {
+      "x": 10,
+      "y": 45,
+      "w": 186,
+      "h": 23
+    },
+    "toolTip": "In this mode, the intensity is by the structure factor and the excitation error."
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.radioButtonIntensityDynamical",
+    "type": "RadioButton",
+    "text": "Dynamical theory",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.radioButtonIntensityDynamical.png",
+    "bounds": {
+      "x": 10,
+      "y": 68,
+      "w": 126,
+      "h": 23
+    },
+    "toolTip": "In this mode, the intensity is calculated by the Bloch wave method.\r\nOnly valid for an electron source."
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.buttonDetailsOfSpots",
+    "type": "Button",
+    "text": "Details of spot information",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel3.buttonDetailsOfSpots.png",
+    "bounds": {
+      "x": 10,
+      "y": 91,
+      "w": 164,
+      "h": 28
+    },
+    "toolTip": "Open the window with details of spot information"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.png",
+    "bounds": {
+      "x": 0,
+      "y": 105,
+      "w": 209,
+      "h": 95
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.label13",
+    "type": "Label",
+    "text": "Optics",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.label13.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 44,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.png",
+    "bounds": {
+      "x": 0,
+      "y": 22,
+      "w": 165,
+      "h": 69
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamParallel",
+    "type": "RadioButton",
+    "text": "Parallel beam",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamParallel.png",
+    "bounds": {
+      "x": 2,
+      "y": 0,
+      "w": 102,
+      "h": 23
+    },
+    "toolTip": "Parallel beam mode (i.e., SAED mode)"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamPrecessionXray",
+    "type": "RadioButton",
+    "text": "Precession (X-ray,ZOLZ)",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamPrecessionXray.png",
+    "bounds": {
+      "x": 2,
+      "y": 23,
+      "w": 163,
+      "h": 23
+    },
+    "toolTip": "Precession beam mode (i.e. PED mode)"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamBackLaue",
+    "type": "RadioButton",
+    "text": "Back Laue (X-ray)",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamBackLaue.png",
+    "bounds": {
+      "x": 2,
+      "y": 42,
+      "w": 126,
+      "h": 21
+    },
+    "toolTip": "Precession beam mode (X-ray ZOLZ)"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamPrecessionElectron",
+    "type": "RadioButton",
+    "text": "Precession (electron)",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamPrecessionElectron.png",
+    "bounds": {
+      "x": 2,
+      "y": 23,
+      "w": 145,
+      "h": 23
+    },
+    "toolTip": "Precession beam mode (i.e. PED mode)"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamConvergence",
+    "type": "RadioButton",
+    "text": "Convergence (electron)",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel5.flowLayoutPanel10.radioButtonBeamConvergence.png",
+    "bounds": {
+      "x": 2,
+      "y": 46,
+      "w": 160,
+      "h": 23
+    },
+    "toolTip": "Convergent beam mode (i.e. CBED mode)"
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 209,
+      "h": 105
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11.waveLengthControl",
+    "type": "WaveLengthControl",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11.waveLengthControl.png",
+    "bounds": {
+      "x": 0,
+      "y": 22,
+      "w": 210,
+      "h": 79
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11.waveLengthControl.flowLayoutPanel2",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11.waveLengthControl.flowLayoutPanel2.png",
+    "bounds": {
+      "x": 0,
+      "y": 24,
+      "w": 210,
+      "h": 54
+    }
+  },
+  {
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength.png",
     "bounds": {
       "x": 5,
       "y": 27,
@@ -960,267 +2492,15 @@
     }
   },
   {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxWaveLength.textBox",
-    "type": "TextBox",
-    "text": "0.085885141045",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxWaveLength.textBox.png",
-    "bounds": {
-      "x": 70,
-      "y": 2,
-      "w": 104,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxWaveLength.labelHeader",
+    "path": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength.labelHeader",
     "type": "Label",
     "text": "Wavelength",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanel2.numericBoxWaveLength.labelHeader.png",
+    "image": "FormDiffractionSimulator.groupBoxSpotProperty.panel2.flowLayoutPanel11.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength.labelHeader.png",
     "bounds": {
       "x": 0,
       "y": 2,
-      "w": 70,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanelWaveSource",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanelWaveSource.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 210,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanelWaveSource.radioButtonXray",
-    "type": "RadioButton",
-    "text": "X-ray",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanelWaveSource.radioButtonXray.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 53,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanelWaveSource.radioButtonElectron",
-    "type": "RadioButton",
-    "text": "Electron",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanelWaveSource.radioButtonElectron.png",
-    "bounds": {
-      "x": 53,
-      "y": 0,
-      "w": 69,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.waveLengthControl1.flowLayoutPanelWaveSource.radioButtonNeutron",
-    "type": "RadioButton",
-    "text": "Neutron",
-    "image": "FormTrajectory.waveLengthControl1.flowLayoutPanelWaveSource.radioButtonNeutron.png",
-    "bounds": {
-      "x": 122,
-      "y": 0,
-      "w": 70,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.checkBoxDrawPathAfterEscape",
-    "type": "CheckBox",
-    "text": "Draw the path after escaping",
-    "image": "FormTrajectory.checkBoxDrawPathAfterEscape.png",
-    "bounds": {
-      "x": 299,
-      "y": 634,
-      "w": 194,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.checkBoxDrawAbsorved",
-    "type": "CheckBox",
-    "text": "Draw the trajectories absorved in the sample",
-    "image": "FormTrajectory.checkBoxDrawAbsorved.png",
-    "bounds": {
-      "x": 4,
-      "y": 634,
-      "w": 287,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.checkBoxDrawGuidCircles",
-    "type": "CheckBox",
-    "text": "Draw guide circles",
-    "image": "FormTrajectory.checkBoxDrawGuidCircles.png",
-    "bounds": {
-      "x": 358,
-      "y": 610,
-      "w": 131,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.checkBoxDrawAxes",
-    "type": "CheckBox",
-    "text": "Draw axes",
-    "image": "FormTrajectory.checkBoxDrawAxes.png",
-    "bounds": {
-      "x": 265,
-      "y": 609,
-      "w": 84,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormTrajectory.numericBoxDrawNum",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormTrajectory.numericBoxDrawNum.png",
-    "bounds": {
-      "x": 2,
-      "y": 606,
-      "w": 248,
+      "w": 76,
       "h": 25
-    }
-  },
-  {
-    "path": "FormTrajectory.numericBoxDrawNum.textBox",
-    "type": "TextBox",
-    "text": "500",
-    "image": "FormTrajectory.numericBoxDrawNum.textBox.png",
-    "bounds": {
-      "x": 187,
-      "y": 0,
-      "w": 43,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormTrajectory.numericBoxDrawNum.labelHeader",
-    "type": "Label",
-    "text": "Number of trajectories to draw",
-    "image": "FormTrajectory.numericBoxDrawNum.labelHeader.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 187,
-      "h": 24
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel1",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormTrajectory.flowLayoutPanel1.png",
-    "bounds": {
-      "x": 4,
-      "y": 579,
-      "w": 484,
-      "h": 28
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel1.buttonViewFromZ",
-    "type": "Button",
-    "text": "From Z-axis (=beam direction)",
-    "image": "FormTrajectory.flowLayoutPanel1.buttonViewFromZ.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 180,
-      "h": 28
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel1.buttonViewFromX",
-    "type": "Button",
-    "text": "From X-axis (rotation axis)",
-    "image": "FormTrajectory.flowLayoutPanel1.buttonViewFromX.png",
-    "bounds": {
-      "x": 180,
-      "y": 0,
-      "w": 156,
-      "h": 28
-    }
-  },
-  {
-    "path": "FormTrajectory.flowLayoutPanel1.buttonSurfaceNormal",
-    "type": "Button",
-    "text": "From the surface normal",
-    "image": "FormTrajectory.flowLayoutPanel1.buttonSurfaceNormal.png",
-    "bounds": {
-      "x": 336,
-      "y": 0,
-      "w": 148,
-      "h": 28
-    }
-  },
-  {
-    "path": "FormTrajectory.buttonCalc",
-    "type": "Button",
-    "text": "Calculate trajectories",
-    "image": "FormTrajectory.buttonCalc.png",
-    "bounds": {
-      "x": 2,
-      "y": 2,
-      "w": 138,
-      "h": 29
-    }
-  },
-  {
-    "path": "FormTrajectory.statusStrip1",
-    "type": "StatusStrip",
-    "text": "statusStrip1",
-    "image": "FormTrajectory.statusStrip1.png",
-    "bounds": {
-      "x": 0,
-      "y": 658,
-      "w": 1274,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormTrajectory.paneltTrajectory",
-    "type": "Panel",
-    "text": "",
-    "image": "FormTrajectory.paneltTrajectory.png",
-    "bounds": {
-      "x": 4,
-      "y": 64,
-      "w": 512,
-      "h": 512
-    }
-  },
-  {
-    "path": "FormTrajectory.paneltTrajectory.glControlAxes",
-    "type": "GLControlAlpha",
-    "text": "",
-    "image": "FormTrajectory.paneltTrajectory.glControlAxes.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 512,
-      "h": 512
-    }
-  },
-  {
-    "path": "FormTrajectory.paneltTrajectory.glControlAxes.glControl15",
-    "type": "GLControl",
-    "text": "glControl15",
-    "image": "FormTrajectory.paneltTrajectory.glControlAxes.glControl15.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 508,
-      "h": 508
     }
   }
 ]

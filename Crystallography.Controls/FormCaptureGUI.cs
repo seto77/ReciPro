@@ -377,6 +377,12 @@ public partial class FormCaptureGUI : Form
         infoList.Add(info);
     }
 
+    // 260323Cl: タブクリックエミュレーション用
+    [System.Runtime.InteropServices.DllImport("user32.dll")]
+    private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+    private const int WM_LBUTTONDOWN = 0x0201;
+    private const int WM_LBUTTONUP = 0x0202;
+
     /// <summary>TabControl の全タブを順にキャプチャ</summary>
     private static void CaptureTabControl(TabControl tabControl, string path, string outputDir, List<Dictionary<string, object>> infoList)
     {
@@ -386,8 +392,12 @@ public partial class FormCaptureGUI : Form
         int originalIndex = tabControl.SelectedIndex;
         for (int i = 0; i < tabControl.TabPages.Count; i++)
         {
-            tabControl.SelectedIndex = i;
-            tabControl.Refresh();
+            // 260323Cl: タブヘッダーをクリックエミュレーション (BringToFront 等のイベントハンドラを発火させる)
+            var tabRect = tabControl.GetTabRect(i);
+            var clickPos = new System.Drawing.Point(tabRect.X + tabRect.Width / 2, tabRect.Y + tabRect.Height / 2);
+            var lParam = (IntPtr)(clickPos.X | (clickPos.Y << 16));
+            SendMessage(tabControl.Handle, WM_LBUTTONDOWN, IntPtr.Zero, lParam);
+            SendMessage(tabControl.Handle, WM_LBUTTONUP, IntPtr.Zero, lParam);
             Application.DoEvents();
 
             var tabPage = tabControl.TabPages[i];
@@ -395,7 +405,16 @@ public partial class FormCaptureGUI : Form
             CaptureControl(tabControl, $"{tabPath}._tab_view", outputDir, infoList);
             CaptureControl(tabPage, tabPath, outputDir, infoList);
         }
-        tabControl.SelectedIndex = originalIndex;
+        // 260323Cl: 元のタブに戻す (同様にクリックエミュレーション)
+        if (originalIndex >= 0 && originalIndex < tabControl.TabPages.Count)
+        {
+            var tabRect = tabControl.GetTabRect(originalIndex);
+            var clickPos = new System.Drawing.Point(tabRect.X + tabRect.Width / 2, tabRect.Y + tabRect.Height / 2);
+            var lParam = (IntPtr)(clickPos.X | (clickPos.Y << 16));
+            SendMessage(tabControl.Handle, WM_LBUTTONDOWN, IntPtr.Zero, lParam);
+            SendMessage(tabControl.Handle, WM_LBUTTONUP, IntPtr.Zero, lParam);
+            Application.DoEvents();
+        }
     }
 
     /// <summary>チェックされたノードを収集</summary>
