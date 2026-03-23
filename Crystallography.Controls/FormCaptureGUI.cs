@@ -235,10 +235,12 @@ public partial class FormCaptureGUI : Form
         BuildTree();
     }
 
-    /// <summary>デフォルトの保存先を取得 (実行ファイルの親の doc/capture/)</summary>
+    /// <summary>デフォルトの保存先を取得 (言語に応じて doc/cap-en または doc/cap-ja)</summary>
     private static string GetDefaultOutputDir()
     {
         // 260323Cl: ReciPro/doc/capture/ をデフォルトにする
+        // 260323Cl: 言語に応じて cap-en / cap-ja を切り替え
+        var langDir = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "cap-ja" : "cap-en";
         // 実行ファイルが bin/Debug/ 等にあるので、プロジェクトルートを探す
         var exeDir = AppDomain.CurrentDomain.BaseDirectory;
         var dir = new DirectoryInfo(exeDir);
@@ -247,10 +249,10 @@ public partial class FormCaptureGUI : Form
             dir = dir.Parent;
         var projectRoot = dir?.Parent;
         if (projectRoot != null)
-            return Path.Combine(projectRoot.FullName, "doc", "capture");
+            return Path.Combine(projectRoot.FullName, "doc", langDir);
 
         // フォールバック: 実行フォルダ直下
-        return Path.Combine(exeDir, "doc", "capture");
+        return Path.Combine(exeDir, "doc", langDir);
     }
 
     /// <summary>Capture ボタン</summary>
