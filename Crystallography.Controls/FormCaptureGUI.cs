@@ -384,6 +384,11 @@ public partial class FormCaptureGUI : Form
     /// <summary>TabControl の全タブを順にキャプチャ</summary>
     private static void CaptureTabControl(TabControl tabControl, string path, string outputDir, List<Dictionary<string, object>> infoList)
     {
+        // 260323Cl: キャプチャ中は tabControl を前面に出す (z-order を保存して復元)
+        int originalZIndex = tabControl.Parent?.Controls.GetChildIndex(tabControl) ?? -1;
+        tabControl.BringToFront();
+        Application.DoEvents();
+
         // TabControl 全体もキャプチャ
         CaptureControl(tabControl, path, outputDir, infoList);
 
@@ -401,14 +406,16 @@ public partial class FormCaptureGUI : Form
             CaptureControl(tabControl, $"{tabPath}._tab_view", outputDir, infoList);
             CaptureControl(tabPage, tabPath, outputDir, infoList);
         }
-        // 260323Cl: 元のタブに戻す
+        // 260323Cl: 元のタブと z-order に戻す
         if (originalIndex >= 0 && originalIndex < tabControl.TabPages.Count)
         {
             tabControl.SelectedIndex = originalIndex;
             onClickMethod?.Invoke(tabControl, new object[] { EventArgs.Empty });
-            tabControl.Refresh();
-            Application.DoEvents();
         }
+        if (originalZIndex >= 0 && tabControl.Parent != null)
+            tabControl.Parent.Controls.SetChildIndex(tabControl, originalZIndex);
+        tabControl.Refresh();
+        Application.DoEvents();
     }
 
     /// <summary>チェックされたノードを収集</summary>
