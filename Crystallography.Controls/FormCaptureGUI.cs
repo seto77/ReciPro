@@ -309,7 +309,7 @@ public partial class FormCaptureGUI : Form
     /// <summary>単一コントロールをキャプチャ</summary>
     private static void CaptureControl(Control control, string path, string outputDir, List<Dictionary<string, object>> infoList)
     {
-        if (control.Width <= 0 || control.Height <= 0) return;
+        if (control.Width < MinCaptureSize || control.Height < MinCaptureSize) return;
 
         var fileName = SanitizeFileName(path) + ".png";
         Bitmap bmp;
@@ -325,6 +325,16 @@ public partial class FormCaptureGUI : Form
         {
             bmp = new Bitmap(control.Width, control.Height);
             control.DrawToBitmap(bmp, new System.Drawing.Rectangle(0, 0, control.Width, control.Height));
+
+            // 260323Cl: 子孫に OpenGL コントロールがあればビットマップを合成
+            CompositeDescendantGLControls(control, bmp);
+        }
+
+        // 260323Cl: 単色ビットマップ (Visible=false のパネル等) はファイルを生成しない
+        if (IsSolidColor(bmp))
+        {
+            bmp.Dispose();
+            return;
         }
 
         // 260323Cl: ImageSharp で最大圧縮 (8ビットパレット + 最高圧縮レベル)
@@ -421,6 +431,104 @@ public partial class FormCaptureGUI : Form
         // UserControl の場合、子コントロールに GenerateBitmap を持つものがあるか探す
         // (GLControlAlpha は UserControl で、内部に glControl を持つ)
         return null;
+    }
+
+    /// <summary>
+    /// 260323Cl 追加
+    /// ビットマップの内側領域（上下左右5px除外）で 99% 以上が同一色であるかを判定する。
+    /// Visible=false のパネルなどで灰色一色のビットマップが生成されるケースを検出し、
+    /// 無意味なファイルの保存を防止する。3D枠線の影響を避けるため端を除外する。
+    /// </summary>
+    private static bool IsSolidColor(Bitmap bmp)
+    {
+        const int margin = 5;
+        int x0 = margin, y0 = margin;
+        int x1 = bmp.Width - margin, y1 = bmp.Height - margin;
+        if (x1 <= x0 || y1 <= y0) return true; // margin で内側が残らない場合は単色扱い
+
+        var rect = new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height);
+        var data = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+        try
+        {
+            var row = new int[bmp.Width];
+            // 基準色は内側の最初のピクセルから取得
+            System.Runtime.InteropServices.Marshal.Copy(data.Scan0 + y0 * data.Stride, row, 0, bmp.Width);
+            int firstPixel = row[x0];
+
+            for (int y = y0; y < y1; y++)
+            {
+                System.Runtime.InteropServices.Marshal.Copy(data.Scan0 + y * data.Stride, row, 0, bmp.Width);
+                for (int x = x0; x < x1; x++)
+                {
+                    if (row[x] != firstPixel)
+                        return false;
+                }
+            }
+            return true;
+        }
+        finally
+        {
+            bmp.UnlockBits(data);
+        }
+    }
+
+    /// <summary>
+    /// 260323Cl 追加
+    /// 子孫コントロールに OpenGL コントロール (GenerateBitmap を持つ) があれば、
+    /// そのビットマップを親ビットマップの対応位置に合成する。
+    /// DrawToBitmap では GPU レンダリング内容が黒抜けになるため、個別に取得して貼り付ける。
+    /// </summary>
+    private static void CompositeDescendantGLControls(Control root, Bitmap rootBmp)
+    {
+        var glControls = new List<(Control ctrl, System.Reflection.MethodInfo method)>();
+        FindDescendantGLControls(root, glControls);
+        if (glControls.Count == 0) return;
+
+        using var g = Graphics.FromImage(rootBmp);
+        var rootScreen = root.PointToScreen(System.Drawing.Point.Empty);
+        foreach (var (glCtrl, method) in glControls)
+        {
+            if (glCtrl.Width <= 0 || glCtrl.Height <= 0) continue;
+            try
+            {
+                var glBmp = (Bitmap)method.Invoke(glCtrl, null);
+                if (glBmp == null) continue;
+                var glScreen = glCtrl.PointToScreen(System.Drawing.Point.Empty);
+                g.DrawImage(glBmp, glScreen.X - rootScreen.X, glScreen.Y - rootScreen.Y, glCtrl.Width, glCtrl.Height);
+                glBmp.Dispose();
+            }
+            catch { /* GL キャプチャ失敗時は DrawToBitmap のフォールバックをそのまま使用 */ }
+        }
+    }
+
+    /// <summary>
+    /// 260323Cl 追加
+    /// 子孫コントロールから GenerateBitmap() メソッドを持つ OpenGL コントロールを再帰的に検索する。
+    /// GL コントロールが見つかった場合はその子孫はたどらない（GL コントロール自体が描画を担当するため）。
+    /// </summary>
+    private static void FindDescendantGLControls(Control parent, List<(Control, System.Reflection.MethodInfo)> result)
+    {
+        foreach (Control child in parent.Controls)
+        {
+            var m = FindGenerateBitmapMethod(child);
+            if (m != null)
+                result.Add((child, m));
+            else
+                FindDescendantGLControls(child, result);
+        }
+        // SplitContainer のパネルも走査
+        if (parent is SplitContainer sc)
+        {
+            FindDescendantGLControls(sc.Panel1, result);
+            FindDescendantGLControls(sc.Panel2, result);
+        }
+        // ToolStripContainer のパネルも走査
+        if (parent is ToolStripContainer tsc)
+        {
+            foreach (var panel in new Control[] { tsc.ContentPanel, tsc.TopToolStripPanel,
+                tsc.BottomToolStripPanel, tsc.LeftToolStripPanel, tsc.RightToolStripPanel })
+                FindDescendantGLControls(panel, result);
+        }
     }
 
     /// <summary>
