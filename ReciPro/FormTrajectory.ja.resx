@@ -181,22 +181,22 @@
   <data name="numericBoxDrawNum.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 25</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxEnergyDistribution.Size" type="System.Drawing.Size, System.Drawing">
     <value>400, 158</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
+  <data name="groupBoxEnergyDistribution.Text" xml:space="preserve">
     <value>後方散乱電子の試料脱出時のエネルギー</value>
   </data>
   <data name="graphControlDepthProfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>394, 134</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxPenetrationDepth.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 331</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxPenetrationDepth.Size" type="System.Drawing.Size, System.Drawing">
     <value>400, 158</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxPenetrationDepth.Text" xml:space="preserve">
     <value>後方散乱電子の飛程における表面垂直な方向の最大距離 (深さ)</value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
@@ -217,13 +217,13 @@
   <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
     <value>394, 134</value>
   </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxSurfaceDistance.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 167</value>
   </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxSurfaceDistance.Size" type="System.Drawing.Size, System.Drawing">
     <value>400, 158</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
+  <data name="groupBoxSurfaceDistance.Text" xml:space="preserve">
     <value>後方散乱電子の飛程における表面平行な方向の最大距離</value>
   </data>
   <data name="poleFigureControl.Location" type="System.Drawing.Point, System.Drawing">
@@ -262,10 +262,10 @@
   <data name="button1.Text" xml:space="preserve">
     <value>表面法線方向から投影</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelViewAlong.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 577</value>
   </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelViewAlong.Size" type="System.Drawing.Size, System.Drawing">
     <value>430, 28</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
@@ -277,7 +277,7 @@
   <data name="label1.Text" xml:space="preserve">
     <value>計算する飛程の総数</value>
   </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelProfiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>406, 656</value>
   </data>
   <data name="checkBoxDrawAbsorved.Location" type="System.Drawing.Point, System.Drawing">
@@ -326,13 +326,13 @@
     <value>軸方向を
 描画</value>
   </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxDirectionDistribution.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 147</value>
   </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxDirectionDistribution.Size" type="System.Drawing.Size, System.Drawing">
     <value>333, 513</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
+  <data name="groupBoxDirectionDistribution.Text" xml:space="preserve">
     <value>後方散乱電子の方位分布 (ネット中心は表面法線方向)</value>
   </data>
   <data name="labelBSEenergy.Location" type="System.Drawing.Point, System.Drawing">
@@ -407,10 +407,10 @@
   <data name="label2.Text" xml:space="preserve">
     <value>後方散乱電子係数, η</value>
   </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxStatistics.Size" type="System.Drawing.Size, System.Drawing">
     <value>333, 136</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
+  <data name="groupBoxStatistics.Text" xml:space="preserve">
     <value>統計情報</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.Location" type="System.Drawing.Point, System.Drawing">

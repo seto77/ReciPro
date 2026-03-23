@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace Crystallography.Controls
 {
-    public partial class FormMacro : Form
+    public partial class FormMacro : CaptureFormBase
     {
         #region フィールド、プロパティ
         private const uint IMF_DUALFONT = 0x80;// //Font抑制の為の

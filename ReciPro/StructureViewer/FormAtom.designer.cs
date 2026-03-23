@@ -26,10 +26,12 @@
         /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
         /// コード エディタで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxMaterial
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxMaterial = new System.Windows.Forms.GroupBox();
             this.numericUpDownAtomTransparency = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAtomShininess = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAtomSpecular = new System.Windows.Forms.NumericUpDown();
@@ -53,7 +55,7 @@
             this.checkBoxIsDraw = new System.Windows.Forms.CheckBox();
             this.radioButtonAllSameElement = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox1.SuspendLayout();
+            this.groupBoxMaterial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomTransparency)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomShininess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomSpecular)).BeginInit();
@@ -64,27 +66,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomRadius)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxMaterial
             // 
-            this.groupBox1.Controls.Add(this.numericUpDownAtomTransparency);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomShininess);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomSpecular);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomEmmision);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomDiffusion);
-            this.groupBox1.Controls.Add(this.label37);
-            this.groupBox1.Controls.Add(this.numericUpDownAtomAmbient);
-            this.groupBox1.Controls.Add(this.label36);
-            this.groupBox1.Controls.Add(this.label38);
-            this.groupBox1.Controls.Add(this.label35);
-            this.groupBox1.Controls.Add(this.label34);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(211, 91);
-            this.groupBox1.TabIndex = 96;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Material";
+            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomTransparency);
+            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomShininess);
+            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomSpecular);
+            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomEmmision);
+            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomDiffusion);
+            this.groupBoxMaterial.Controls.Add(this.label37);
+            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomAmbient);
+            this.groupBoxMaterial.Controls.Add(this.label36);
+            this.groupBoxMaterial.Controls.Add(this.label38);
+            this.groupBoxMaterial.Controls.Add(this.label35);
+            this.groupBoxMaterial.Controls.Add(this.label34);
+            this.groupBoxMaterial.Controls.Add(this.label12);
+            this.groupBoxMaterial.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxMaterial.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxMaterial.Name = "groupBoxMaterial";
+            this.groupBoxMaterial.Size = new System.Drawing.Size(211, 91);
+            this.groupBoxMaterial.TabIndex = 96;
+            this.groupBoxMaterial.TabStop = false;
+            this.groupBoxMaterial.Text = "Material";
             // 
             // numericUpDownAtomTransparency
             // 
@@ -398,7 +400,7 @@
             this.Controls.Add(this.radioButtonApplyThis);
             this.Controls.Add(this.radioButtonAllSameElement);
             this.Controls.Add(this.radioButtonApplyEquivalentAtoms);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxMaterial);
             this.Controls.Add(this.pictureBoxAtomColor);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.numericUpDownAtomRadius);
@@ -406,7 +408,7 @@
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormAtom";
             this.Text = "Atom property";
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxMaterial.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomTransparency)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomShininess)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomSpecular)).EndInit();
@@ -422,7 +424,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxMaterial;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label38;

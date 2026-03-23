@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls;
-public partial class FormAnotherSpaceGroup : Form
+public partial class FormAnotherSpaceGroup : CaptureFormBase
 {
 
     private (int SeriesNum, string Notation)[] candidates;
@@ -123,3 +123,4 @@ public partial class FormAnotherSpaceGroup : Form
     }
     #endregion
 }
+

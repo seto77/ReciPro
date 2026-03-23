@@ -29,25 +29,35 @@ namespace ReciPro
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxCompressedRotation
+        // groupBox2 -> groupBoxReleasedRotation
+        // groupBox3 -> groupBoxEOS
+        // groupBox4 -> groupBoxShockedPlane
+        // groupBox5 -> groupBoxCompressedArea
+        // groupBox6 -> groupBoxReleasedArea
+        // groupBox7 -> groupBoxSampleParameters
+        // groupBox8 -> groupBoxOutputParameters
+        // groupBox9 -> groupBoxCompressionModel
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxCompressedRotation = new System.Windows.Forms.GroupBox();
             this.numericBoxCompressedThetaB = new Crystallography.Controls.NumericBox();
             this.numericBoxCompressedOmega = new Crystallography.Controls.NumericBox();
             this.numericBoxCompressedThetaA = new Crystallography.Controls.NumericBox();
             this.numericBoxCompressedOmegaSigma = new Crystallography.Controls.NumericBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxReleasedRotation = new System.Windows.Forms.GroupBox();
             this.numericBoxReleasedThetaB = new Crystallography.Controls.NumericBox();
             this.numericBoxReleasedOmegaSigma = new Crystallography.Controls.NumericBox();
             this.numericBoxReleasedOmega = new Crystallography.Controls.NumericBox();
             this.numericBoxReleasedThetaA = new Crystallography.Controls.NumericBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxEOS = new System.Windows.Forms.GroupBox();
             this.numericBoxEOS_K0 = new Crystallography.Controls.NumericBox();
             this.numericBoxEOS_Kprime = new Crystallography.Controls.NumericBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxShockedPlane = new System.Windows.Forms.GroupBox();
             this.numericBoxShockedPlaneH = new Crystallography.Controls.NumericBox();
             this.numericBoxShockedPlaneK = new Crystallography.Controls.NumericBox();
             this.numericBoxShockedPlaneL = new Crystallography.Controls.NumericBox();
@@ -56,15 +66,15 @@ namespace ReciPro
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.checkBoxSkipDrawing = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBoxCompressedArea = new System.Windows.Forms.GroupBox();
             this.radioButtonCompressedIsotropic = new System.Windows.Forms.RadioButton();
             this.radioButtonCompressedUniaxial = new System.Windows.Forms.RadioButton();
             this.numericBoxUp = new Crystallography.Controls.NumericBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBoxReleasedArea = new System.Windows.Forms.GroupBox();
             this.radioButtonReleasedIsotropic = new System.Windows.Forms.RadioButton();
             this.numericBoxUr = new Crystallography.Controls.NumericBox();
             this.radioButtonReleasedUniaxial = new System.Windows.Forms.RadioButton();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBoxSampleParameters = new System.Windows.Forms.GroupBox();
             this.numericBoxMassAbsorption = new Crystallography.Controls.NumericBox();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBoxSaveSimulatedPattern = new System.Windows.Forms.CheckBox();
@@ -74,7 +84,7 @@ namespace ReciPro
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.flowLayoutPanelSavePatterns = new System.Windows.Forms.FlowLayoutPanel();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.groupBoxOutputParameters = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanelOmegaStep = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxOmegaStep = new Crystallography.Controls.NumericBox();
             this.numericBoxOmegaTimes = new Crystallography.Controls.NumericBox();
@@ -85,7 +95,7 @@ namespace ReciPro
             this.trackBarAdvancedTime = new Crystallography.Controls.TrackBarAdvanced();
             this.trackBarAdvancedFront = new Crystallography.Controls.TrackBarAdvanced();
             this.graphControl = new Crystallography.Controls.GraphControl();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.groupBoxCompressionModel = new System.Windows.Forms.GroupBox();
             this.radioButton2019Model = new System.Windows.Forms.RadioButton();
             this.radioButton2018Model = new System.Windows.Forms.RadioButton();
             this.groupBoxSlipPlane = new System.Windows.Forms.GroupBox();
@@ -93,18 +103,18 @@ namespace ReciPro
             this.numericBoxSlipPlaneK = new Crystallography.Controls.NumericBox();
             this.numericBoxSlipPlaneL = new Crystallography.Controls.NumericBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBoxCompressedRotation.SuspendLayout();
+            this.groupBoxReleasedRotation.SuspendLayout();
+            this.groupBoxEOS.SuspendLayout();
+            this.groupBoxShockedPlane.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.groupBoxCompressedArea.SuspendLayout();
+            this.groupBoxReleasedArea.SuspendLayout();
+            this.groupBoxSampleParameters.SuspendLayout();
             this.flowLayoutPanelSavePatterns.SuspendLayout();
-            this.groupBox8.SuspendLayout();
+            this.groupBoxOutputParameters.SuspendLayout();
             this.flowLayoutPanelOmegaStep.SuspendLayout();
-            this.groupBox9.SuspendLayout();
+            this.groupBoxCompressionModel.SuspendLayout();
             this.groupBoxSlipPlane.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,19 +146,19 @@ namespace ReciPro
             this.label3.TabIndex = 3;
             this.label3.Text = "Back";
             // 
-            // groupBox1
+            // groupBoxCompressedRotation
             // 
-            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox1.Controls.Add(this.numericBoxCompressedThetaB);
-            this.groupBox1.Controls.Add(this.numericBoxCompressedOmega);
-            this.groupBox1.Controls.Add(this.numericBoxCompressedThetaA);
-            this.groupBox1.Controls.Add(this.numericBoxCompressedOmegaSigma);
-            this.groupBox1.Location = new System.Drawing.Point(12, 99);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(143, 135);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Rotation distribution";
+            this.groupBoxCompressedRotation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBoxCompressedRotation.Controls.Add(this.numericBoxCompressedThetaB);
+            this.groupBoxCompressedRotation.Controls.Add(this.numericBoxCompressedOmega);
+            this.groupBoxCompressedRotation.Controls.Add(this.numericBoxCompressedThetaA);
+            this.groupBoxCompressedRotation.Controls.Add(this.numericBoxCompressedOmegaSigma);
+            this.groupBoxCompressedRotation.Location = new System.Drawing.Point(12, 99);
+            this.groupBoxCompressedRotation.Name = "groupBoxCompressedRotation";
+            this.groupBoxCompressedRotation.Size = new System.Drawing.Size(143, 135);
+            this.groupBoxCompressedRotation.TabIndex = 4;
+            this.groupBoxCompressedRotation.TabStop = false;
+            this.groupBoxCompressedRotation.Text = "Rotation distribution";
             // 
             // numericBoxCompressedThetaB
             // 
@@ -265,18 +275,18 @@ namespace ReciPro
             this.numericBoxCompressedOmegaSigma.UpDown_Increment = 1D;
             this.numericBoxCompressedOmegaSigma.Value = 0.01D;
                         // 
-            // groupBox2
+            // groupBoxReleasedRotation
             // 
-            this.groupBox2.Controls.Add(this.numericBoxReleasedThetaB);
-            this.groupBox2.Controls.Add(this.numericBoxReleasedOmegaSigma);
-            this.groupBox2.Controls.Add(this.numericBoxReleasedOmega);
-            this.groupBox2.Controls.Add(this.numericBoxReleasedThetaA);
-            this.groupBox2.Location = new System.Drawing.Point(7, 99);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(143, 135);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Rotation distribution";
+            this.groupBoxReleasedRotation.Controls.Add(this.numericBoxReleasedThetaB);
+            this.groupBoxReleasedRotation.Controls.Add(this.numericBoxReleasedOmegaSigma);
+            this.groupBoxReleasedRotation.Controls.Add(this.numericBoxReleasedOmega);
+            this.groupBoxReleasedRotation.Controls.Add(this.numericBoxReleasedThetaA);
+            this.groupBoxReleasedRotation.Location = new System.Drawing.Point(7, 99);
+            this.groupBoxReleasedRotation.Name = "groupBoxReleasedRotation";
+            this.groupBoxReleasedRotation.Size = new System.Drawing.Size(143, 135);
+            this.groupBoxReleasedRotation.TabIndex = 4;
+            this.groupBoxReleasedRotation.TabStop = false;
+            this.groupBoxReleasedRotation.Text = "Rotation distribution";
             // 
             // numericBoxReleasedThetaB
             // 
@@ -393,16 +403,16 @@ namespace ReciPro
             this.numericBoxReleasedThetaA.ToolTip = "";
             this.numericBoxReleasedThetaA.UpDown_Increment = 1D;
                                     // 
-            // groupBox3
+            // groupBoxEOS
             // 
-            this.groupBox3.Controls.Add(this.numericBoxEOS_K0);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_Kprime);
-            this.groupBox3.Location = new System.Drawing.Point(12, 87);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(141, 74);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "EOS";
+            this.groupBoxEOS.Controls.Add(this.numericBoxEOS_K0);
+            this.groupBoxEOS.Controls.Add(this.numericBoxEOS_Kprime);
+            this.groupBoxEOS.Location = new System.Drawing.Point(12, 87);
+            this.groupBoxEOS.Name = "groupBoxEOS";
+            this.groupBoxEOS.Size = new System.Drawing.Size(141, 74);
+            this.groupBoxEOS.TabIndex = 5;
+            this.groupBoxEOS.TabStop = false;
+            this.groupBoxEOS.Text = "EOS";
             // 
             // numericBoxEOS_K0
             // 
@@ -461,18 +471,18 @@ namespace ReciPro
             this.numericBoxEOS_Kprime.UpDown_Increment = 1D;
             this.numericBoxEOS_Kprime.Value = 5.99D;
                         // 
-            // groupBox4
+            // groupBoxShockedPlane
             // 
-            this.groupBox4.Controls.Add(this.numericBoxShockedPlaneH);
-            this.groupBox4.Controls.Add(this.numericBoxShockedPlaneK);
-            this.groupBox4.Controls.Add(this.numericBoxShockedPlaneL);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Location = new System.Drawing.Point(12, 19);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(144, 62);
-            this.groupBox4.TabIndex = 6;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Shocked plane";
+            this.groupBoxShockedPlane.Controls.Add(this.numericBoxShockedPlaneH);
+            this.groupBoxShockedPlane.Controls.Add(this.numericBoxShockedPlaneK);
+            this.groupBoxShockedPlane.Controls.Add(this.numericBoxShockedPlaneL);
+            this.groupBoxShockedPlane.Controls.Add(this.label1);
+            this.groupBoxShockedPlane.Location = new System.Drawing.Point(12, 19);
+            this.groupBoxShockedPlane.Name = "groupBoxShockedPlane";
+            this.groupBoxShockedPlane.Size = new System.Drawing.Size(144, 62);
+            this.groupBoxShockedPlane.TabIndex = 6;
+            this.groupBoxShockedPlane.TabStop = false;
+            this.groupBoxShockedPlane.Text = "Shocked plane";
             // 
             // numericBoxShockedPlaneH
             // 
@@ -605,18 +615,18 @@ namespace ReciPro
             this.checkBoxSkipDrawing.Text = "Skip drawing during execution";
             this.checkBoxSkipDrawing.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // groupBoxCompressedArea
             // 
-            this.groupBox5.Controls.Add(this.radioButtonCompressedIsotropic);
-            this.groupBox5.Controls.Add(this.radioButtonCompressedUniaxial);
-            this.groupBox5.Controls.Add(this.groupBox1);
-            this.groupBox5.Controls.Add(this.numericBoxUp);
-            this.groupBox5.Location = new System.Drawing.Point(6, 85);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(166, 240);
-            this.groupBox5.TabIndex = 11;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Compressed area";
+            this.groupBoxCompressedArea.Controls.Add(this.radioButtonCompressedIsotropic);
+            this.groupBoxCompressedArea.Controls.Add(this.radioButtonCompressedUniaxial);
+            this.groupBoxCompressedArea.Controls.Add(this.groupBoxCompressedRotation);
+            this.groupBoxCompressedArea.Controls.Add(this.numericBoxUp);
+            this.groupBoxCompressedArea.Location = new System.Drawing.Point(6, 85);
+            this.groupBoxCompressedArea.Name = "groupBoxCompressedArea";
+            this.groupBoxCompressedArea.Size = new System.Drawing.Size(166, 240);
+            this.groupBoxCompressedArea.TabIndex = 11;
+            this.groupBoxCompressedArea.TabStop = false;
+            this.groupBoxCompressedArea.Text = "Compressed area";
             // 
             // radioButtonCompressedIsotropic
             // 
@@ -669,18 +679,18 @@ namespace ReciPro
             this.numericBoxUp.UpDown_Increment = 1D;
             this.numericBoxUp.Value = 5.5D;
                         // 
-            // groupBox6
+            // groupBoxReleasedArea
             // 
-            this.groupBox6.Controls.Add(this.radioButtonReleasedIsotropic);
-            this.groupBox6.Controls.Add(this.numericBoxUr);
-            this.groupBox6.Controls.Add(this.radioButtonReleasedUniaxial);
-            this.groupBox6.Controls.Add(this.groupBox2);
-            this.groupBox6.Location = new System.Drawing.Point(178, 85);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(166, 240);
-            this.groupBox6.TabIndex = 12;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Released area";
+            this.groupBoxReleasedArea.Controls.Add(this.radioButtonReleasedIsotropic);
+            this.groupBoxReleasedArea.Controls.Add(this.numericBoxUr);
+            this.groupBoxReleasedArea.Controls.Add(this.radioButtonReleasedUniaxial);
+            this.groupBoxReleasedArea.Controls.Add(this.groupBoxReleasedRotation);
+            this.groupBoxReleasedArea.Location = new System.Drawing.Point(178, 85);
+            this.groupBoxReleasedArea.Name = "groupBoxReleasedArea";
+            this.groupBoxReleasedArea.Size = new System.Drawing.Size(166, 240);
+            this.groupBoxReleasedArea.TabIndex = 12;
+            this.groupBoxReleasedArea.TabStop = false;
+            this.groupBoxReleasedArea.Text = "Released area";
             // 
             // radioButtonReleasedIsotropic
             // 
@@ -733,18 +743,18 @@ namespace ReciPro
             this.radioButtonReleasedUniaxial.Text = "Uniaxial compression";
             this.radioButtonReleasedUniaxial.UseVisualStyleBackColor = true;
             // 
-            // groupBox7
+            // groupBoxSampleParameters
             // 
-            this.groupBox7.Controls.Add(this.groupBox3);
-            this.groupBox7.Controls.Add(this.numericBoxMassAbsorption);
-            this.groupBox7.Controls.Add(this.groupBox4);
-            this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Location = new System.Drawing.Point(2, 1);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(176, 227);
-            this.groupBox7.TabIndex = 13;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Sample parameters";
+            this.groupBoxSampleParameters.Controls.Add(this.groupBoxEOS);
+            this.groupBoxSampleParameters.Controls.Add(this.numericBoxMassAbsorption);
+            this.groupBoxSampleParameters.Controls.Add(this.groupBoxShockedPlane);
+            this.groupBoxSampleParameters.Controls.Add(this.label4);
+            this.groupBoxSampleParameters.Location = new System.Drawing.Point(2, 1);
+            this.groupBoxSampleParameters.Name = "groupBoxSampleParameters";
+            this.groupBoxSampleParameters.Size = new System.Drawing.Size(176, 227);
+            this.groupBoxSampleParameters.TabIndex = 13;
+            this.groupBoxSampleParameters.TabStop = false;
+            this.groupBoxSampleParameters.Text = "Sample parameters";
             // 
             // numericBoxMassAbsorption
             // 
@@ -856,20 +866,20 @@ namespace ReciPro
             this.flowLayoutPanelSavePatterns.Size = new System.Drawing.Size(341, 28);
             this.flowLayoutPanelSavePatterns.TabIndex = 15;
             // 
-            // groupBox8
+            // groupBoxOutputParameters
             // 
-            this.groupBox8.Controls.Add(this.flowLayoutPanelOmegaStep);
-            this.groupBox8.Controls.Add(this.checkBoxOmegaStep);
-            this.groupBox8.Controls.Add(this.checkBoxSaveSimulatedPattern);
-            this.groupBox8.Controls.Add(this.numericBoxDivisionOfRotationAngle);
-            this.groupBox8.Controls.Add(this.numericBoxDivisionOfRotationAxis);
-            this.groupBox8.Controls.Add(this.flowLayoutPanelSavePatterns);
-            this.groupBox8.Location = new System.Drawing.Point(0, 622);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(547, 115);
-            this.groupBox8.TabIndex = 16;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Output parameters";
+            this.groupBoxOutputParameters.Controls.Add(this.flowLayoutPanelOmegaStep);
+            this.groupBoxOutputParameters.Controls.Add(this.checkBoxOmegaStep);
+            this.groupBoxOutputParameters.Controls.Add(this.checkBoxSaveSimulatedPattern);
+            this.groupBoxOutputParameters.Controls.Add(this.numericBoxDivisionOfRotationAngle);
+            this.groupBoxOutputParameters.Controls.Add(this.numericBoxDivisionOfRotationAxis);
+            this.groupBoxOutputParameters.Controls.Add(this.flowLayoutPanelSavePatterns);
+            this.groupBoxOutputParameters.Location = new System.Drawing.Point(0, 622);
+            this.groupBoxOutputParameters.Name = "groupBoxOutputParameters";
+            this.groupBoxOutputParameters.Size = new System.Drawing.Size(547, 115);
+            this.groupBoxOutputParameters.TabIndex = 16;
+            this.groupBoxOutputParameters.TabStop = false;
+            this.groupBoxOutputParameters.Text = "Output parameters";
             // 
             // flowLayoutPanelOmegaStep
             // 
@@ -1133,19 +1143,19 @@ namespace ReciPro
             this.graphControl.DivisionLineYVisible = true;
             this.graphControl.LinePositionChanged += new Crystallography.Controls.GraphControl.LinePositionChengedEventHandler(this.graphControl1_LinePositionChanged);
             // 
-            // groupBox9
+            // groupBoxCompressionModel
             // 
-            this.groupBox9.Controls.Add(this.radioButton2019Model);
-            this.groupBox9.Controls.Add(this.radioButton2018Model);
-            this.groupBox9.Controls.Add(this.groupBoxSlipPlane);
-            this.groupBox9.Controls.Add(this.groupBox6);
-            this.groupBox9.Controls.Add(this.groupBox5);
-            this.groupBox9.Location = new System.Drawing.Point(184, 1);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(353, 331);
-            this.groupBox9.TabIndex = 17;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Compression && rotation model";
+            this.groupBoxCompressionModel.Controls.Add(this.radioButton2019Model);
+            this.groupBoxCompressionModel.Controls.Add(this.radioButton2018Model);
+            this.groupBoxCompressionModel.Controls.Add(this.groupBoxSlipPlane);
+            this.groupBoxCompressionModel.Controls.Add(this.groupBoxReleasedArea);
+            this.groupBoxCompressionModel.Controls.Add(this.groupBoxCompressedArea);
+            this.groupBoxCompressionModel.Location = new System.Drawing.Point(184, 1);
+            this.groupBoxCompressionModel.Name = "groupBoxCompressionModel";
+            this.groupBoxCompressionModel.Size = new System.Drawing.Size(353, 331);
+            this.groupBoxCompressionModel.TabIndex = 17;
+            this.groupBoxCompressionModel.TabStop = false;
+            this.groupBoxCompressionModel.Text = "Compression && rotation model";
             // 
             // radioButton2019Model
             // 
@@ -1286,9 +1296,9 @@ namespace ReciPro
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 792);
-            this.Controls.Add(this.groupBox9);
-            this.Controls.Add(this.groupBox8);
-            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBoxCompressionModel);
+            this.Controls.Add(this.groupBoxOutputParameters);
+            this.Controls.Add(this.groupBoxSampleParameters);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.buttonExecute);
             this.Controls.Add(this.checkBoxSkipDrawing);
@@ -1310,26 +1320,26 @@ namespace ReciPro
             this.Load += new System.EventHandler(this.FormDiffractionSimulatorDynamicCompression_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormDiffractionSimulatorDynamicCompression_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormDiffractionSimulatorDynamicCompression_DragEnter);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBoxCompressedRotation.ResumeLayout(false);
+            this.groupBoxReleasedRotation.ResumeLayout(false);
+            this.groupBoxEOS.ResumeLayout(false);
+            this.groupBoxShockedPlane.ResumeLayout(false);
+            this.groupBoxShockedPlane.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.groupBoxCompressedArea.ResumeLayout(false);
+            this.groupBoxCompressedArea.PerformLayout();
+            this.groupBoxReleasedArea.ResumeLayout(false);
+            this.groupBoxReleasedArea.PerformLayout();
+            this.groupBoxSampleParameters.ResumeLayout(false);
+            this.groupBoxSampleParameters.PerformLayout();
             this.flowLayoutPanelSavePatterns.ResumeLayout(false);
             this.flowLayoutPanelSavePatterns.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
+            this.groupBoxOutputParameters.ResumeLayout(false);
+            this.groupBoxOutputParameters.PerformLayout();
             this.flowLayoutPanelOmegaStep.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
+            this.groupBoxCompressionModel.ResumeLayout(false);
+            this.groupBoxCompressionModel.PerformLayout();
             this.groupBoxSlipPlane.ResumeLayout(false);
             this.groupBoxSlipPlane.PerformLayout();
             this.ResumeLayout(false);
@@ -1352,12 +1362,12 @@ namespace ReciPro
         private Crystallography.Controls.NumericBox numericBoxEOS_Kprime;
         private Crystallography.Controls.NumericBox numericBoxCompressedOmega;
         private Crystallography.Controls.NumericBox numericBoxCompressedOmegaSigma;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxCompressedRotation;
+        private System.Windows.Forms.GroupBox groupBoxReleasedRotation;
         private Crystallography.Controls.NumericBox numericBoxReleasedOmegaSigma;
         private Crystallography.Controls.NumericBox numericBoxReleasedOmega;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxEOS;
+        private System.Windows.Forms.GroupBox groupBoxShockedPlane;
         private System.Windows.Forms.Button buttonExecute;
         private Crystallography.Controls.NumericBox numericBoxUp;
         private Crystallography.Controls.NumericBox numericBoxUr;
@@ -1366,13 +1376,13 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxSkipDrawing;
         private Crystallography.Controls.NumericBox numericBoxDivisionOfRotationAngle;
         private Crystallography.Controls.NumericBox numericBoxDivisionOfRotationAxis;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBoxCompressedArea;
         private System.Windows.Forms.RadioButton radioButtonCompressedIsotropic;
         private System.Windows.Forms.RadioButton radioButtonCompressedUniaxial;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBoxReleasedArea;
         private System.Windows.Forms.RadioButton radioButtonReleasedIsotropic;
         private System.Windows.Forms.RadioButton radioButtonReleasedUniaxial;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBoxSampleParameters;
         private Crystallography.Controls.NumericBox numericBoxMassAbsorption;
         private System.Windows.Forms.Label label4;
         private Crystallography.Controls.TrackBarAdvanced trackBarAdvancedTime;
@@ -1384,7 +1394,7 @@ namespace ReciPro
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSavePatterns;
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBoxOutputParameters;
         private Crystallography.Controls.NumericBox numericBoxOmegaStep;
         private System.Windows.Forms.CheckBox checkBoxOmegaStep;
         private Crystallography.Controls.NumericBox numericBoxOmegaTimes;
@@ -1393,7 +1403,7 @@ namespace ReciPro
         private Crystallography.Controls.NumericBox numericBoxCompressedThetaA;
         private Crystallography.Controls.NumericBox numericBoxReleasedThetaB;
         private Crystallography.Controls.NumericBox numericBoxReleasedThetaA;
-        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox groupBoxCompressionModel;
         private System.Windows.Forms.RadioButton radioButton2019Model;
         private System.Windows.Forms.RadioButton radioButton2018Model;
         private System.Windows.Forms.GroupBox groupBoxSlipPlane;

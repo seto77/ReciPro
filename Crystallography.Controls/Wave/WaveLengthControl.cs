@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class WaveLengthControl : UserControl
+public partial class WaveLengthControl : CaptureUserControlBase
 {
 
     public event EventHandler WavelengthChanged;
@@ -446,3 +446,4 @@ public partial class WaveLengthControl : UserControl
         WavelengthChanged?.Invoke(this, new EventArgs());
     }
 }
+

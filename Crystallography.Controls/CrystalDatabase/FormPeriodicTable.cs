@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class FormPeriodicTable : Form
+    public partial class FormPeriodicTable : CaptureFormBase
     {
         public byte[] Includes => button.Where(b => b.BackColor == IncludeColor).Select(b => (byte)((int)b.Tag)).ToArray();
         public string[] IncludesStr => Includes.Select(i => i.ToString("000")).ToArray();

@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace ReciPro;
-public partial class FormDiffractionSpotInfo : Form
+public partial class FormDiffractionSpotInfo : CaptureFormBase
 {
     public double AccVol { get; set; }
     public BetheMethod.Beam[] Beams { get; set; }
@@ -287,3 +287,4 @@ public partial class FormDiffractionSpotInfo : Form
         Clipboard.SetDataObject(sb.ToString());
     }
 }
+

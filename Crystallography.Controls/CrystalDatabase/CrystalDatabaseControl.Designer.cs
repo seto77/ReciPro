@@ -303,6 +303,7 @@
             bindingNavigator.AddNewItem = null;
             bindingNavigator.BindingSource = bindingSource;
             bindingNavigator.CountItem = bindingNavigatorCountItem;
+            bindingNavigator.DeleteItem = null;
             bindingNavigator.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { bindingNavigatorMoveFirstItem, bindingNavigatorMovePreviousItem, bindingNavigatorSeparator, bindingNavigatorPositionItem, bindingNavigatorCountItem, bindingNavigatorSeparator1, bindingNavigatorMoveNextItem, bindingNavigatorMoveLastItem });
             bindingNavigator.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
@@ -455,6 +456,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            captureExtender.SetCapture(this, true);
             Controls.Add(dataGridView);
             Controls.Add(bindingNavigator);
             Controls.Add(panel1);

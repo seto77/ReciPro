@@ -177,10 +177,10 @@
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
     <value>等価な指数を含める</value>
   </data>
-  <data name="groupBox6.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxIndexRange.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
+  <data name="groupBoxIndexRange.Text" xml:space="preserve">
     <value>軸指数範囲</value>
   </data>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
@@ -206,6 +206,22 @@
   </data>
   <data name="colorControlHolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 20</value>
+  </data>
+  <data name="colorControlHolder.ToolTip" xml:space="preserve">
+    <value>ホルダーの色</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>90度線の色</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>10度線の色</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>1度線の色
+「1°線を表示」がチェックされているときに有効</value>
+  </data>
+  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
+    <value>[100], [010], [001] 軸ラベルの色</value>
   </data>
   <data name="colorControlGeneralAxis.FooterText" xml:space="preserve">
     <value>一般軸</value>
@@ -234,10 +250,10 @@
   <data name="label18.Text" xml:space="preserve">
     <value>点サイズ</value>
   </data>
-  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxColorAndSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
+  <data name="groupBoxColorAndSize.Text" xml:space="preserve">
     <value>色とサイズ</value>
   </data>
   <data name="numericBoxDrawingArea.HeaderFont" type="System.Drawing.Font, System.Drawing">
@@ -329,21 +345,5 @@
   </data>
   <data name="checkBoxEnableArrow.Text" xml:space="preserve">
     <value>矢印キーを有効化</value>
-  </data>
-  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
-    <value>10度線の色</value>
-  </data>
-  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
-    <value>1度線の色
-「1°線を表示」がチェックされているときに有効</value>
-  </data>
-  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
-    <value>90度線の色</value>
-  </data>
-  <data name="colorControlHolder.ToolTip" xml:space="preserve">
-    <value>ホルダーの色</value>
-  </data>
-  <data name="colorControlUniqueAxis.ToolTip" xml:space="preserve">
-    <value>[100], [010], [001] 軸ラベルの色</value>
   </data>
 </root>

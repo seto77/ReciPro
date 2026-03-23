@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [TypeConverter(typeof(DefinitionOrderTypeConverter))]
-public partial class ColorControl : UserControl
+public partial class ColorControl : CaptureUserControlBase
 {
     public event EventHandler ColorChanged;
 

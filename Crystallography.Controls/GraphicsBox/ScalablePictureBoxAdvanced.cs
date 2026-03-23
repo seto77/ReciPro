@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [Serializable]
-public partial class ScalablePictureBoxAdvanced : UserControl
+public partial class ScalablePictureBoxAdvanced : CaptureUserControlBase
 {
     [System.ComponentModel.Browsable(false)]
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
@@ -868,3 +868,4 @@ public partial class ScalablePictureBoxAdvanced : UserControl
         UpdateResolutionLabel(); // (260322Ch) 倍率ボタン後の表示更新を helper へ寄せる
     }
 }
+

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class SymmetryControl : UserControl
+public partial class SymmetryControl : CaptureUserControlBase
 {
     #region プロパティ、フィールド、イベントハンドラ
     public new bool DesignMode
@@ -544,3 +544,4 @@ public partial class SymmetryControl : UserControl
         SkipEvent = false;
     }
 }
+

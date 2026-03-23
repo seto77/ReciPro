@@ -10,7 +10,7 @@ namespace Crystallography.Controls;
 
 [TypeConverter(typeof(DefinitionOrderTypeConverter))]
 [DefaultEvent("ValueChanged")]
-public partial class NumericBox : UserControl
+public partial class NumericBox : CaptureUserControlBase
 {
     #region イベント
 

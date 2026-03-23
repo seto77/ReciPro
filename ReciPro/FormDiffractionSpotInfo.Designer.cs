@@ -26,6 +26,12 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // flowLayoutPanel1 -> flowLayoutPanelVoltageWaveLength
+        // flowLayoutPanel2 -> flowLayoutPanelLatticeAngles
+        // flowLayoutPanel3 -> flowLayoutPanelVolumeThickness
+        // flowLayoutPanel4 -> flowLayoutPanelEnergyUnit
+        // flowLayoutPanel5 -> flowLayoutPanelSemiangle
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -49,13 +55,13 @@
             label12 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
             textBoxThickness = new System.Windows.Forms.TextBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelVoltageWaveLength = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelLatticeAngles = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelVolumeThickness = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonUnitEV = new System.Windows.Forms.RadioButton();
             radioButtonUnitNM = new System.Windows.Forms.RadioButton();
             label15 = new System.Windows.Forms.Label();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelEnergyUnit = new System.Windows.Forms.FlowLayoutPanel();
             label14 = new System.Windows.Forms.Label();
             dataGridView = new System.Windows.Forms.DataGridView();
             rDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,7 +88,7 @@
             dataSet = new DataSetReciPro();
             label16 = new System.Windows.Forms.Label();
             pictureBox = new System.Windows.Forms.PictureBox();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelSemiangle = new System.Windows.Forms.FlowLayoutPanel();
             label10 = new System.Windows.Forms.Label();
             textBoxSemiangle = new System.Windows.Forms.TextBox();
             label11 = new System.Windows.Forms.Label();
@@ -110,15 +116,15 @@
             checkBoxAutoRowSize = new System.Windows.Forms.CheckBox();
             numericBoxEffectiveDigit = new NumericBox();
             button1 = new System.Windows.Forms.Button();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanelVoltageWaveLength.SuspendLayout();
+            flowLayoutPanelLatticeAngles.SuspendLayout();
+            flowLayoutPanelVolumeThickness.SuspendLayout();
+            flowLayoutPanelEnergyUnit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSetBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
-            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanelSemiangle.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -314,51 +320,51 @@
             textBoxThickness.Size = new System.Drawing.Size(83, 24);
             textBoxThickness.TabIndex = 4;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelVoltageWaveLength
             // 
-            flowLayoutPanel1.AutoSize = true;
-            flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel1.Controls.Add(label5);
-            flowLayoutPanel1.Controls.Add(textBoxAccVoltage);
-            flowLayoutPanel1.Controls.Add(label6);
-            flowLayoutPanel1.Controls.Add(label1);
-            flowLayoutPanel1.Controls.Add(textBoxWaveLength);
-            flowLayoutPanel1.Controls.Add(label3);
-            flowLayoutPanel1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            flowLayoutPanel1.Location = new System.Drawing.Point(468, 24);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(491, 24);
-            flowLayoutPanel1.TabIndex = 6;
+            flowLayoutPanelVoltageWaveLength.AutoSize = true;
+            flowLayoutPanelVoltageWaveLength.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelVoltageWaveLength.Controls.Add(label5);
+            flowLayoutPanelVoltageWaveLength.Controls.Add(textBoxAccVoltage);
+            flowLayoutPanelVoltageWaveLength.Controls.Add(label6);
+            flowLayoutPanelVoltageWaveLength.Controls.Add(label1);
+            flowLayoutPanelVoltageWaveLength.Controls.Add(textBoxWaveLength);
+            flowLayoutPanelVoltageWaveLength.Controls.Add(label3);
+            flowLayoutPanelVoltageWaveLength.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelVoltageWaveLength.Location = new System.Drawing.Point(468, 24);
+            flowLayoutPanelVoltageWaveLength.Name = "flowLayoutPanelVoltageWaveLength";
+            flowLayoutPanelVoltageWaveLength.Size = new System.Drawing.Size(491, 24);
+            flowLayoutPanelVoltageWaveLength.TabIndex = 6;
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelLatticeAngles
             // 
-            flowLayoutPanel2.AutoSize = true;
-            flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel2.Controls.Add(label2);
-            flowLayoutPanel2.Controls.Add(textBoxGamma);
-            flowLayoutPanel2.Controls.Add(label4);
-            flowLayoutPanel2.Controls.Add(textBoxBeta);
-            flowLayoutPanel2.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            flowLayoutPanel2.Location = new System.Drawing.Point(468, 49);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new System.Drawing.Size(363, 24);
-            flowLayoutPanel2.TabIndex = 7;
+            flowLayoutPanelLatticeAngles.AutoSize = true;
+            flowLayoutPanelLatticeAngles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelLatticeAngles.Controls.Add(label2);
+            flowLayoutPanelLatticeAngles.Controls.Add(textBoxGamma);
+            flowLayoutPanelLatticeAngles.Controls.Add(label4);
+            flowLayoutPanelLatticeAngles.Controls.Add(textBoxBeta);
+            flowLayoutPanelLatticeAngles.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelLatticeAngles.Location = new System.Drawing.Point(468, 49);
+            flowLayoutPanelLatticeAngles.Name = "flowLayoutPanelLatticeAngles";
+            flowLayoutPanelLatticeAngles.Size = new System.Drawing.Size(363, 24);
+            flowLayoutPanelLatticeAngles.TabIndex = 7;
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanelVolumeThickness
             // 
-            flowLayoutPanel3.AutoSize = true;
-            flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel3.Controls.Add(label7);
-            flowLayoutPanel3.Controls.Add(textBoxLatticeVolume);
-            flowLayoutPanel3.Controls.Add(label8);
-            flowLayoutPanel3.Controls.Add(label12);
-            flowLayoutPanel3.Controls.Add(textBoxThickness);
-            flowLayoutPanel3.Controls.Add(label13);
-            flowLayoutPanel3.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            flowLayoutPanel3.Location = new System.Drawing.Point(468, 74);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new System.Drawing.Size(405, 24);
-            flowLayoutPanel3.TabIndex = 8;
+            flowLayoutPanelVolumeThickness.AutoSize = true;
+            flowLayoutPanelVolumeThickness.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelVolumeThickness.Controls.Add(label7);
+            flowLayoutPanelVolumeThickness.Controls.Add(textBoxLatticeVolume);
+            flowLayoutPanelVolumeThickness.Controls.Add(label8);
+            flowLayoutPanelVolumeThickness.Controls.Add(label12);
+            flowLayoutPanelVolumeThickness.Controls.Add(textBoxThickness);
+            flowLayoutPanelVolumeThickness.Controls.Add(label13);
+            flowLayoutPanelVolumeThickness.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelVolumeThickness.Location = new System.Drawing.Point(468, 74);
+            flowLayoutPanelVolumeThickness.Name = "flowLayoutPanelVolumeThickness";
+            flowLayoutPanelVolumeThickness.Size = new System.Drawing.Size(405, 24);
+            flowLayoutPanelVolumeThickness.TabIndex = 8;
             // 
             // radioButtonUnitEV
             // 
@@ -396,18 +402,18 @@
             label15.TabIndex = 2;
             label15.Text = "Unit of potential:";
             // 
-            // flowLayoutPanel4
+            // flowLayoutPanelEnergyUnit
             // 
-            flowLayoutPanel4.AutoSize = true;
-            flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel4.Controls.Add(label15);
-            flowLayoutPanel4.Controls.Add(radioButtonUnitEV);
-            flowLayoutPanel4.Controls.Add(radioButtonUnitNM);
-            flowLayoutPanel4.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            flowLayoutPanel4.Location = new System.Drawing.Point(468, 151);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(285, 27);
-            flowLayoutPanel4.TabIndex = 10;
+            flowLayoutPanelEnergyUnit.AutoSize = true;
+            flowLayoutPanelEnergyUnit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelEnergyUnit.Controls.Add(label15);
+            flowLayoutPanelEnergyUnit.Controls.Add(radioButtonUnitEV);
+            flowLayoutPanelEnergyUnit.Controls.Add(radioButtonUnitNM);
+            flowLayoutPanelEnergyUnit.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelEnergyUnit.Location = new System.Drawing.Point(468, 151);
+            flowLayoutPanelEnergyUnit.Name = "flowLayoutPanelEnergyUnit";
+            flowLayoutPanelEnergyUnit.Size = new System.Drawing.Size(285, 27);
+            flowLayoutPanelEnergyUnit.TabIndex = 10;
             // 
             // label14
             // 
@@ -647,18 +653,18 @@
             pictureBox.TabIndex = 1;
             pictureBox.TabStop = false;
             // 
-            // flowLayoutPanel5
+            // flowLayoutPanelSemiangle
             // 
-            flowLayoutPanel5.AutoSize = true;
-            flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel5.Controls.Add(label10);
-            flowLayoutPanel5.Controls.Add(textBoxSemiangle);
-            flowLayoutPanel5.Controls.Add(label11);
-            flowLayoutPanel5.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            flowLayoutPanel5.Location = new System.Drawing.Point(468, 99);
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new System.Drawing.Size(424, 24);
-            flowLayoutPanel5.TabIndex = 8;
+            flowLayoutPanelSemiangle.AutoSize = true;
+            flowLayoutPanelSemiangle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelSemiangle.Controls.Add(label10);
+            flowLayoutPanelSemiangle.Controls.Add(textBoxSemiangle);
+            flowLayoutPanelSemiangle.Controls.Add(label11);
+            flowLayoutPanelSemiangle.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelSemiangle.Location = new System.Drawing.Point(468, 99);
+            flowLayoutPanelSemiangle.Name = "flowLayoutPanelSemiangle";
+            flowLayoutPanelSemiangle.Size = new System.Drawing.Size(424, 24);
+            flowLayoutPanelSemiangle.TabIndex = 8;
             // 
             // label10
             // 
@@ -912,15 +918,16 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            captureExtender.SetCapture(this, true);
             ClientSize = new System.Drawing.Size(1087, 592);
             Controls.Add(checkBoxAutoRowSize);
             Controls.Add(statusStrip1);
             Controls.Add(label14);
-            Controls.Add(flowLayoutPanel4);
-            Controls.Add(flowLayoutPanel5);
-            Controls.Add(flowLayoutPanel3);
-            Controls.Add(flowLayoutPanel2);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(flowLayoutPanelEnergyUnit);
+            Controls.Add(flowLayoutPanelSemiangle);
+            Controls.Add(flowLayoutPanelVolumeThickness);
+            Controls.Add(flowLayoutPanelLatticeAngles);
+            Controls.Add(flowLayoutPanelVoltageWaveLength);
             Controls.Add(button1);
             Controls.Add(buttonCopyToClipboard);
             Controls.Add(label16);
@@ -932,20 +939,20 @@
             Name = "FormDiffractionSpotInfo";
             Text = "Diffraction Spot Information";
             FormClosing += FormDiffractionSimulatorTable_FormClosing;
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanelVoltageWaveLength.ResumeLayout(false);
+            flowLayoutPanelVoltageWaveLength.PerformLayout();
+            flowLayoutPanelLatticeAngles.ResumeLayout(false);
+            flowLayoutPanelLatticeAngles.PerformLayout();
+            flowLayoutPanelVolumeThickness.ResumeLayout(false);
+            flowLayoutPanelVolumeThickness.PerformLayout();
+            flowLayoutPanelEnergyUnit.ResumeLayout(false);
+            flowLayoutPanelEnergyUnit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataSetBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanelSemiangle.ResumeLayout(false);
+            flowLayoutPanelSemiangle.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ResumeLayout(false);
@@ -972,20 +979,20 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxThickness;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelVoltageWaveLength;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLatticeAngles;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelVolumeThickness;
         private System.Windows.Forms.RadioButton radioButtonUnitEV;
         private System.Windows.Forms.RadioButton radioButtonUnitNM;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEnergyUnit;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingSource dataSetBindingSource;
         private DataSetReciPro dataSet;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSemiangle;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxSemiangle;
         private System.Windows.Forms.Label label11;

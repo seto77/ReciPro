@@ -26,21 +26,24 @@
         /// デザイナー サポートに必要なメソッドです。このメソッドの内容を 
         /// コード エディターで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxDetectorProperty
+        // groupBox2 -> groupBoxOpticalProperty
         private void InitializeComponent()
         {
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxDetectorProperty = new System.Windows.Forms.GroupBox();
             this.numericBoxPixelWidth = new Crystallography.Controls.NumericBox();
             this.numericBoxPixelHeight = new Crystallography.Controls.NumericBox();
             this.numericBoxPixelSize = new Crystallography.Controls.NumericBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxOpticalProperty = new System.Windows.Forms.GroupBox();
             this.numericBoxFootY = new Crystallography.Controls.NumericBox();
             this.numericBoxFootX = new Crystallography.Controls.NumericBox();
             this.numericBoxPhi = new Crystallography.Controls.NumericBox();
             this.numericBoxTau = new Crystallography.Controls.NumericBox();
             this.numericBoxDistance = new Crystallography.Controls.NumericBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxDetectorProperty.SuspendLayout();
+            this.groupBoxOpticalProperty.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -53,17 +56,17 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Foot";
             // 
-            // groupBox1
+            // groupBoxDetectorProperty
             // 
-            this.groupBox1.Controls.Add(this.numericBoxPixelWidth);
-            this.groupBox1.Controls.Add(this.numericBoxPixelHeight);
-            this.groupBox1.Controls.Add(this.numericBoxPixelSize);
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(132, 100);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Detector property";
+            this.groupBoxDetectorProperty.Controls.Add(this.numericBoxPixelWidth);
+            this.groupBoxDetectorProperty.Controls.Add(this.numericBoxPixelHeight);
+            this.groupBoxDetectorProperty.Controls.Add(this.numericBoxPixelSize);
+            this.groupBoxDetectorProperty.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxDetectorProperty.Name = "groupBoxDetectorProperty";
+            this.groupBoxDetectorProperty.Size = new System.Drawing.Size(132, 100);
+            this.groupBoxDetectorProperty.TabIndex = 2;
+            this.groupBoxDetectorProperty.TabStop = false;
+            this.groupBoxDetectorProperty.Text = "Detector property";
             // 
             // numericBoxPixelWidth
             // 
@@ -140,20 +143,20 @@
             this.numericBoxPixelSize.Value = 0.05D;
             this.numericBoxPixelSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
-            // groupBox2
+            // groupBoxOpticalProperty
             // 
-            this.groupBox2.Controls.Add(this.numericBoxFootY);
-            this.groupBox2.Controls.Add(this.numericBoxFootX);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.numericBoxPhi);
-            this.groupBox2.Controls.Add(this.numericBoxTau);
-            this.groupBox2.Controls.Add(this.numericBoxDistance);
-            this.groupBox2.Location = new System.Drawing.Point(137, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(235, 100);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Optical property";
+            this.groupBoxOpticalProperty.Controls.Add(this.numericBoxFootY);
+            this.groupBoxOpticalProperty.Controls.Add(this.numericBoxFootX);
+            this.groupBoxOpticalProperty.Controls.Add(this.label3);
+            this.groupBoxOpticalProperty.Controls.Add(this.numericBoxPhi);
+            this.groupBoxOpticalProperty.Controls.Add(this.numericBoxTau);
+            this.groupBoxOpticalProperty.Controls.Add(this.numericBoxDistance);
+            this.groupBoxOpticalProperty.Location = new System.Drawing.Point(137, 0);
+            this.groupBoxOpticalProperty.Name = "groupBoxOpticalProperty";
+            this.groupBoxOpticalProperty.Size = new System.Drawing.Size(235, 100);
+            this.groupBoxOpticalProperty.TabIndex = 2;
+            this.groupBoxOpticalProperty.TabStop = false;
+            this.groupBoxOpticalProperty.Text = "Optical property";
             // 
             // numericBoxFootY
             // 
@@ -288,15 +291,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxOpticalProperty);
+            this.Controls.Add(this.groupBoxDetectorProperty);
             this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SaclaControl";
             this.Size = new System.Drawing.Size(375, 103);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxDetectorProperty.ResumeLayout(false);
+            this.groupBoxOpticalProperty.ResumeLayout(false);
+            this.groupBoxOpticalProperty.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -310,8 +313,8 @@
         private NumericBox numericBoxFootX;
         private NumericBox numericBoxFootY;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxDetectorProperty;
+        private System.Windows.Forms.GroupBox groupBoxOpticalProperty;
         private NumericBox numericBoxDistance;
         private NumericBox numericBoxPhi;
     }

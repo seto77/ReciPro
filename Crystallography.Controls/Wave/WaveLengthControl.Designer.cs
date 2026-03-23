@@ -98,7 +98,7 @@
             numericBoxEnergy.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergy.Name = "numericBoxEnergy";
             numericBoxEnergy.RoundErrorAccuracy = 8;
-            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip1"));
+            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip"));
             numericBoxEnergy.ValueChanged += numericBoxEnergy_ValueChanged;
             // 
             // label1
@@ -115,7 +115,7 @@
             numericBoxWaveLength.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxWaveLength.Name = "numericBoxWaveLength";
             numericBoxWaveLength.RoundErrorAccuracy = 12;
-            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip1"));
+            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip"));
             numericBoxWaveLength.ValueChanged += numericBoxWaveLength_ValueChanged;
             // 
             // radioButtonNeutron

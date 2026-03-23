@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 
 namespace Crystallography.Controls;
-public partial class FormSuperStructure : Form
+public partial class FormSuperStructure : CaptureFormBase
 {
     public int A => numericBoxA.ValueInteger;
     public int B => numericBoxB.ValueInteger;
@@ -25,3 +25,4 @@ public partial class FormSuperStructure : Form
         Close();
     }
 }
+

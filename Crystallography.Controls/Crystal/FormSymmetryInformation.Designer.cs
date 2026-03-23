@@ -26,13 +26,16 @@
         /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
         /// コード エディタで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxPointGroup
+        // groupBox2 -> groupBoxSpaceGroup
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             this.groupBoxSymmetryInformation = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxSpaceGroup = new System.Windows.Forms.GroupBox();
             this.richTextBoxSG_Hall = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -45,7 +48,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.richTextBoxCS = new System.Windows.Forms.RichTextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPointGroup = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.richTextBoxPG_HM = new System.Windows.Forms.RichTextBox();
@@ -136,8 +139,8 @@
             this.groupBoxSymmetryInformation.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxSpaceGroup.SuspendLayout();
+            this.groupBoxPointGroup.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -194,12 +197,12 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBoxSpaceGroup);
             this.tabPage1.Controls.Add(this.richTextBoxLG);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.label);
             this.tabPage1.Controls.Add(this.richTextBoxCS);
-            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.groupBoxPointGroup);
             this.tabPage1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
@@ -207,23 +210,23 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Group Info";
             // 
-            // groupBox2
+            // groupBoxSpaceGroup
             // 
-            this.groupBox2.Controls.Add(this.richTextBoxSG_Hall);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.richTextBoxSG_HM);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.richTextBoxSG_SF);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.richTextBoxSG_HM_full);
-            this.groupBox2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(204, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(336, 132);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Space Group";
+            this.groupBoxSpaceGroup.Controls.Add(this.richTextBoxSG_Hall);
+            this.groupBoxSpaceGroup.Controls.Add(this.label8);
+            this.groupBoxSpaceGroup.Controls.Add(this.label9);
+            this.groupBoxSpaceGroup.Controls.Add(this.richTextBoxSG_HM);
+            this.groupBoxSpaceGroup.Controls.Add(this.label5);
+            this.groupBoxSpaceGroup.Controls.Add(this.richTextBoxSG_SF);
+            this.groupBoxSpaceGroup.Controls.Add(this.label6);
+            this.groupBoxSpaceGroup.Controls.Add(this.richTextBoxSG_HM_full);
+            this.groupBoxSpaceGroup.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxSpaceGroup.Location = new System.Drawing.Point(204, 4);
+            this.groupBoxSpaceGroup.Name = "groupBoxSpaceGroup";
+            this.groupBoxSpaceGroup.Size = new System.Drawing.Size(336, 132);
+            this.groupBoxSpaceGroup.TabIndex = 5;
+            this.groupBoxSpaceGroup.TabStop = false;
+            this.groupBoxSpaceGroup.Text = "Space Group";
             // 
             // richTextBoxSG_Hall
             // 
@@ -357,19 +360,19 @@
             this.richTextBoxCS.TabIndex = 3;
             this.richTextBoxCS.Text = "";
             // 
-            // groupBox1
+            // groupBoxPointGroup
             // 
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.richTextBoxPG_HM);
-            this.groupBox1.Controls.Add(this.richTextBoxPG_SF);
-            this.groupBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(4, 64);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(196, 76);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Point Group";
+            this.groupBoxPointGroup.Controls.Add(this.label10);
+            this.groupBoxPointGroup.Controls.Add(this.label11);
+            this.groupBoxPointGroup.Controls.Add(this.richTextBoxPG_HM);
+            this.groupBoxPointGroup.Controls.Add(this.richTextBoxPG_SF);
+            this.groupBoxPointGroup.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxPointGroup.Location = new System.Drawing.Point(4, 64);
+            this.groupBoxPointGroup.Name = "groupBoxPointGroup";
+            this.groupBoxPointGroup.Size = new System.Drawing.Size(196, 76);
+            this.groupBoxPointGroup.TabIndex = 4;
+            this.groupBoxPointGroup.TabStop = false;
+            this.groupBoxPointGroup.Text = "Point Group";
             // 
             // label10
             // 
@@ -1305,8 +1308,8 @@
             this.groupBoxSymmetryInformation.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxSpaceGroup.ResumeLayout(false);
+            this.groupBoxPointGroup.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -1338,7 +1341,7 @@
         private System.Windows.Forms.GroupBox groupBoxSymmetryInformation;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxSpaceGroup;
         private System.Windows.Forms.RichTextBox richTextBoxSG_Hall;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -1351,7 +1354,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.RichTextBox richTextBoxCS;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxPointGroup;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.RichTextBox richTextBoxPG_HM;

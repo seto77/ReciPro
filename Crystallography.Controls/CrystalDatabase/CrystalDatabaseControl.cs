@@ -27,7 +27,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Crystallography.Controls;
 
-public partial class CrystalDatabaseControl : UserControl
+public partial class CrystalDatabaseControl : CaptureUserControlBase
 {
     //260317Cl 追加 HttpClientはstaticで再利用
     private static readonly HttpClient httpClient = new() { Timeout = TimeSpan.FromSeconds(600) };
@@ -747,4 +747,5 @@ public partial class CrystalDatabaseControl : UserControl
 
     }
 }
+
 

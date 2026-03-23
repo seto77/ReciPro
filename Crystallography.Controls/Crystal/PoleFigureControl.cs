@@ -19,7 +19,7 @@ internal enum StereonetDirection
     Equrtor, Pole
 }
 
-public partial class PoleFigureControl : UserControl
+public partial class PoleFigureControl : CaptureUserControlBase
 {
     private StereonetProjectionMode stereonetProjectionMode = StereonetProjectionMode.Schmidt;
     private StereonetDirection stereonetDirecion = StereonetDirection.Equrtor;

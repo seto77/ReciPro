@@ -28,6 +28,9 @@
         /// デザイナー サポートに必要なメソッドです。このメソッドの内容を 
         /// コード エディターで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox4 -> groupBoxDetectorProperty
+        // groupBox5 -> groupBoxWaveSource
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiffractionPatternControl));
@@ -76,7 +79,7 @@
             this.panelSimulationCheck = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBoxWaveSource = new System.Windows.Forms.GroupBox();
             this.numericBoxConvergentAngle = new Crystallography.Controls.NumericBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
@@ -84,7 +87,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.waveLengthControl = new Crystallography.Controls.WaveLengthControl();
             this.numericBoxMonochromaticity = new Crystallography.Controls.NumericBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxDetectorProperty = new System.Windows.Forms.GroupBox();
             this.numericUpDownImageWidth = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
             this.numericBoxImageResolution = new Crystallography.Controls.NumericBox();
@@ -149,8 +152,8 @@
             this.panelSimulationCheck.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBoxWaveSource.SuspendLayout();
+            this.groupBoxDetectorProperty.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownImageWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownImageHeight)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -771,8 +774,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox5);
-            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Controls.Add(this.groupBoxWaveSource);
+            this.tabPage1.Controls.Add(this.groupBoxDetectorProperty);
             this.tabPage1.Controls.Add(this.groupBoxGeometry);
             this.tabPage1.Location = new System.Drawing.Point(4, 46);
             this.tabPage1.Name = "tabPage1";
@@ -782,21 +785,21 @@
             this.tabPage1.Text = "Detector condition";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // groupBoxWaveSource
             // 
-            this.groupBox5.Controls.Add(this.numericBoxConvergentAngle);
-            this.groupBox5.Controls.Add(this.label46);
-            this.groupBox5.Controls.Add(this.label45);
-            this.groupBox5.Controls.Add(this.label44);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.waveLengthControl);
-            this.groupBox5.Controls.Add(this.numericBoxMonochromaticity);
-            this.groupBox5.Location = new System.Drawing.Point(6, 60);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(277, 169);
-            this.groupBox5.TabIndex = 185;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Wave source";
+            this.groupBoxWaveSource.Controls.Add(this.numericBoxConvergentAngle);
+            this.groupBoxWaveSource.Controls.Add(this.label46);
+            this.groupBoxWaveSource.Controls.Add(this.label45);
+            this.groupBoxWaveSource.Controls.Add(this.label44);
+            this.groupBoxWaveSource.Controls.Add(this.label12);
+            this.groupBoxWaveSource.Controls.Add(this.waveLengthControl);
+            this.groupBoxWaveSource.Controls.Add(this.numericBoxMonochromaticity);
+            this.groupBoxWaveSource.Location = new System.Drawing.Point(6, 60);
+            this.groupBoxWaveSource.Name = "groupBoxWaveSource";
+            this.groupBoxWaveSource.Size = new System.Drawing.Size(277, 169);
+            this.groupBoxWaveSource.TabIndex = 185;
+            this.groupBoxWaveSource.TabStop = false;
+            this.groupBoxWaveSource.Text = "Wave source";
             // 
             // numericBoxConvergentAngle
             // 
@@ -895,36 +898,36 @@
             this.numericBoxMonochromaticity.TabIndex = 191;
             this.numericBoxMonochromaticity.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
                                     // 
-            // groupBox4
+            // groupBoxDetectorProperty
             // 
-            this.groupBox4.Controls.Add(this.numericUpDownImageWidth);
-            this.groupBox4.Controls.Add(this.label20);
-            this.groupBox4.Controls.Add(this.numericBoxImageResolution);
-            this.groupBox4.Controls.Add(this.numericBoxMonitorResolution);
-            this.groupBox4.Controls.Add(this.label32);
-            this.groupBox4.Controls.Add(this.label19);
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.numericBoxCameraLength);
-            this.groupBox4.Controls.Add(this.label31);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label30);
-            this.groupBox4.Controls.Add(this.numericUpDownImageHeight);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.numericBoxCenterY);
-            this.groupBox4.Controls.Add(this.numericBoxCenterX);
-            this.groupBox4.Controls.Add(this.label37);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.label33);
-            this.groupBox4.Controls.Add(this.label39);
-            this.groupBox4.Controls.Add(this.checkBoxFilmBlur);
-            this.groupBox4.Controls.Add(this.label40);
-            this.groupBox4.Controls.Add(this.numericBoxFilmBlur);
-            this.groupBox4.Location = new System.Drawing.Point(3, 230);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(280, 219);
-            this.groupBox4.TabIndex = 184;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Detector Property";
+            this.groupBoxDetectorProperty.Controls.Add(this.numericUpDownImageWidth);
+            this.groupBoxDetectorProperty.Controls.Add(this.label20);
+            this.groupBoxDetectorProperty.Controls.Add(this.numericBoxImageResolution);
+            this.groupBoxDetectorProperty.Controls.Add(this.numericBoxMonitorResolution);
+            this.groupBoxDetectorProperty.Controls.Add(this.label32);
+            this.groupBoxDetectorProperty.Controls.Add(this.label19);
+            this.groupBoxDetectorProperty.Controls.Add(this.label2);
+            this.groupBoxDetectorProperty.Controls.Add(this.numericBoxCameraLength);
+            this.groupBoxDetectorProperty.Controls.Add(this.label31);
+            this.groupBoxDetectorProperty.Controls.Add(this.label13);
+            this.groupBoxDetectorProperty.Controls.Add(this.label30);
+            this.groupBoxDetectorProperty.Controls.Add(this.numericUpDownImageHeight);
+            this.groupBoxDetectorProperty.Controls.Add(this.label10);
+            this.groupBoxDetectorProperty.Controls.Add(this.numericBoxCenterY);
+            this.groupBoxDetectorProperty.Controls.Add(this.numericBoxCenterX);
+            this.groupBoxDetectorProperty.Controls.Add(this.label37);
+            this.groupBoxDetectorProperty.Controls.Add(this.label3);
+            this.groupBoxDetectorProperty.Controls.Add(this.label33);
+            this.groupBoxDetectorProperty.Controls.Add(this.label39);
+            this.groupBoxDetectorProperty.Controls.Add(this.checkBoxFilmBlur);
+            this.groupBoxDetectorProperty.Controls.Add(this.label40);
+            this.groupBoxDetectorProperty.Controls.Add(this.numericBoxFilmBlur);
+            this.groupBoxDetectorProperty.Location = new System.Drawing.Point(3, 230);
+            this.groupBoxDetectorProperty.Name = "groupBoxDetectorProperty";
+            this.groupBoxDetectorProperty.Size = new System.Drawing.Size(280, 219);
+            this.groupBoxDetectorProperty.TabIndex = 184;
+            this.groupBoxDetectorProperty.TabStop = false;
+            this.groupBoxDetectorProperty.Text = "Detector Property";
             // 
             // numericUpDownImageWidth
             // 
@@ -1640,10 +1643,10 @@
             this.panelSimulationCheck.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBoxWaveSource.ResumeLayout(false);
+            this.groupBoxWaveSource.PerformLayout();
+            this.groupBoxDetectorProperty.ResumeLayout(false);
+            this.groupBoxDetectorProperty.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownImageWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownImageHeight)).EndInit();
             this.tabPage2.ResumeLayout(false);
@@ -1733,7 +1736,7 @@
         private System.Windows.Forms.Button buttonSaveImage;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxDetectorProperty;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDownImageWidth;
         private System.Windows.Forms.Label label3;
@@ -1751,7 +1754,7 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.CheckBox checkBoxFilmBlur;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBoxWaveSource;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label44;

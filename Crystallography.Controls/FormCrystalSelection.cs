@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class FormCrystalSelection : Form
+public partial class FormCrystalSelection : CaptureFormBase
 {
     public FormCrystalSelection()
     {

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -121,6 +121,10 @@
   <data name="comboBoxXRayElement.Location" type="System.Drawing.Point, System.Drawing">
     <value>32, 0</value>
   </data>
+  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
+    <value>特性X線を発する元素（1:H～98:Cf）を選択します。
+「0:custom」を選択すると、エネルギーまたは波長を自由に入力できます。</value>
+  </data>
   <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -129,6 +133,9 @@
   </data>
   <data name="radioButtonXray.Text" xml:space="preserve">
     <value>X線</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>波源を選択</value>
   </data>
   <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -142,8 +149,14 @@
   <data name="radioButtonElectron.Text" xml:space="preserve">
     <value>電子線</value>
   </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>波源を選択</value>
+  </data>
   <data name="comboBoxXrayLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 0</value>
+  </data>
+  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
+    <value>特性X線の線を選択</value>
   </data>
   <data name="numericBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -160,6 +173,12 @@
   <data name="numericBoxEnergy.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 27</value>
   </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>波動エネルギーを入力</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
+    <value>波動エネルギーを入力</value>
+  </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -168,9 +187,6 @@
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>元素</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -187,6 +203,12 @@
   <data name="numericBoxWaveLength.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 27</value>
   </data>
+  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>波長を入力</value>
+  </data>
+  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
+    <value>波長を入力</value>
+  </data>
   <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -199,65 +221,22 @@
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>中性子線</value>
   </data>
-  <data name="labelFlatWhite.ToolTip" xml:space="preserve">
-    <value />
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>波源を選択</value>
   </data>
   <data name="flowLayoutPanelWaveSource.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
   </data>
-  <data name="flowLayoutPanelWaveSource.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelElement.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 25</value>
-  </data>
-  <data name="flowLayoutPanelElement.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 22</value>
   </data>
-  <data name="flowLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 118</value>
   </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 119</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
-    <value>波動エネルギーを入力</value>
-  </data>
-  <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
-    <value>特性X線の線を選択</value>
-  </data>
-  <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
-    <value>波長を入力</value>
-  </data>
-  <data name="radioButtonXray.ToolTip" xml:space="preserve">
-    <value>波源を選択</value>
-  </data>
-  <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
-    <value>特性X線を発する元素（1:H～98:Cf）を選択します。
-「0:custom」を選択すると、エネルギーまたは波長を自由に入力できます。</value>
-  </data>
-  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
-    <value>波源を選択</value>
-  </data>
-  <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
-    <value>波長を入力</value>
-  </data>
-  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
-    <value>波動エネルギーを入力</value>
-  </data>
-  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
-    <value>波源を選択</value>
   </data>
 </root>

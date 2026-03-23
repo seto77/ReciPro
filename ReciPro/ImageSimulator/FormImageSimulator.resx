@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -559,28 +562,28 @@
   <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelImageStatus.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelImageStatus.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelImageStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>576, 24</value>
   </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelImageStatus.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+  <data name="&gt;&gt;panelImageStatus.Name" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelImageStatus.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelImageStatus.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelImageStatus.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -835,34 +838,34 @@
   <data name="&gt;&gt;comboBoxScaleColorScale.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="groupBox3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="groupBoxAdjust.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxAdjust.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxAdjust.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxAdjust.Size" type="System.Drawing.Size, System.Drawing">
     <value>354, 105</value>
   </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxAdjust.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
+  <data name="groupBoxAdjust.Text" xml:space="preserve">
     <value>Adust</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAdjust.Name" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAdjust.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAdjust.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAdjust.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="panel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -920,7 +923,7 @@
     <value>for each image</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>157, 17</value>
   </metadata>
   <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
     <value>If checked, intensity is normalized for individual images.</value>
@@ -937,10 +940,10 @@
   <data name="&gt;&gt;checkBoxNormarizeIndividually.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelIntensityRange.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelIntensityRange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="checkBoxIntensityMin.AutoSize" type="System.Boolean, mscorlib">
@@ -1131,31 +1134,31 @@
   <data name="&gt;&gt;numericBoxIntensityMax.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="flowLayoutPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="flowLayoutPanelIntensityRange.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelIntensityRange.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 18</value>
   </data>
-  <data name="flowLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelIntensityRange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelIntensityRange.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 46</value>
   </data>
-  <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelIntensityRange.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel6.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelIntensityRange.Name" xml:space="preserve">
     <value>flowLayoutPanel6</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel6.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelIntensityRange.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel6.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelIntensityRange.Parent" xml:space="preserve">
     <value>groupBoxNormalization</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel6.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelIntensityRange.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="groupBoxNormalization.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -1762,64 +1765,64 @@
   <data name="&gt;&gt;checkBoxShowUnitcell.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="groupBoxDisplay.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxDisplay.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxDisplay.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 108</value>
   </data>
-  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxDisplay.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxDisplay.Size" type="System.Drawing.Size, System.Drawing">
     <value>570, 45</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxDisplay.TabIndex" type="System.Int32, mscorlib">
     <value>75</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxDisplay.Text" xml:space="preserve">
     <value>Display</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxDisplay.Name" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxDisplay.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxDisplay.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxDisplay.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelDisplaySettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelDisplaySettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 605</value>
   </data>
-  <data name="panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="panelDisplaySettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelDisplaySettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>576, 156</value>
   </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelDisplaySettings.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+  <data name="&gt;&gt;panelDisplaySettings.Name" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelDisplaySettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelDisplaySettings.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelDisplaySettings.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
@@ -1834,19 +1837,19 @@
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="groupBoxSimulation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="groupBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="groupBoxSimulation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="panel3.AutoScroll" type="System.Boolean, mscorlib">
+  <data name="panelModeOptions.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="panel3.AutoSize" type="System.Boolean, mscorlib">
+  <data name="panelModeOptions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="panel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="panelModeOptions.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="groupBoxSerialImage.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -2303,7 +2306,7 @@
   <data name="&gt;&gt;panelSerialThickness.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel5.AutoSize" type="System.Boolean, mscorlib">
+  <data name="panelSerialSettings.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBoxSerialThickness.AutoSize" type="System.Boolean, mscorlib">
@@ -2384,28 +2387,28 @@
   <data name="&gt;&gt;checkBoxSerialDefocus.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelSerialSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelSerialSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelSerialSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 22</value>
   </data>
-  <data name="panel5.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelSerialSettings.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
   </data>
-  <data name="&gt;&gt;panel5.Name" xml:space="preserve">
+  <data name="&gt;&gt;panelSerialSettings.Name" xml:space="preserve">
     <value>panel5</value>
   </data>
-  <data name="&gt;&gt;panel5.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelSerialSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelSerialSettings.Parent" xml:space="preserve">
     <value>panelSerial</value>
   </data>
-  <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelSerialSettings.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="flowLayoutPanelHorizontalDirection.AutoSize" type="System.Boolean, mscorlib">
@@ -2582,7 +2585,7 @@
   <data name="&gt;&gt;panelSerial.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelSimulationMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioButtonSingleMode.AutoSize" type="System.Boolean, mscorlib">
@@ -2657,31 +2660,31 @@
   <data name="&gt;&gt;radioButtonSerialMode.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="flowLayoutPanelSimulationMode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelSimulationMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 18</value>
   </data>
-  <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelSimulationMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
   </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelSimulationMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 23</value>
   </data>
-  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelSimulationMode.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSimulationMode.Name" xml:space="preserve">
     <value>flowLayoutPanel4</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSimulationMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSimulationMode.Parent" xml:space="preserve">
     <value>groupBoxSerialImage</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSimulationMode.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="groupBoxSerialImage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -2723,7 +2726,7 @@
   <data name="groupBoxPotentialOption.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel11.AutoScroll" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelPotentialMode.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioButtonPotentialModeMagAndPhase.AutoSize" type="System.Boolean, mscorlib">
@@ -3674,34 +3677,34 @@
   <data name="&gt;&gt;flowLayoutPanelRealAndImaiginary.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="flowLayoutPanel11.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="flowLayoutPanelPotentialMode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="flowLayoutPanel11.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+  <data name="flowLayoutPanelPotentialMode.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
     <value>TopDown</value>
   </data>
-  <data name="flowLayoutPanel11.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelPotentialMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 60</value>
   </data>
-  <data name="flowLayoutPanel11.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelPotentialMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 143</value>
   </data>
-  <data name="flowLayoutPanel11.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelPotentialMode.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="flowLayoutPanel11.WrapContents" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelPotentialMode.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel11.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelPotentialMode.Name" xml:space="preserve">
     <value>flowLayoutPanel11</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel11.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelPotentialMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel11.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelPotentialMode.Parent" xml:space="preserve">
     <value>groupBoxPotentialOption</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel11.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelPotentialMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="checkBoxPotentialUgPrime.AutoSize" type="System.Boolean, mscorlib">
@@ -3997,10 +4000,10 @@ Smaller values result in slower calculation speed but higher accuracy.</value>
   <data name="groupBoxHREMoption2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="flowLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelStemMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelStemMode.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="radioButtonModeQuasiCoherent.AutoSize" type="System.Boolean, mscorlib">
@@ -4087,25 +4090,25 @@ This model should be used for a strong scattering object which usually
   <data name="&gt;&gt;radioButtonModeTransmissionCrossCoefficient.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelStemMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>24, 37</value>
   </data>
-  <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelStemMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>277, 19</value>
   </data>
-  <data name="flowLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelStemMode.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel8.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelStemMode.Name" xml:space="preserve">
     <value>flowLayoutPanel8</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel8.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelStemMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel8.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelStemMode.Parent" xml:space="preserve">
     <value>groupBoxHREMoption2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel8.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelStemMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label32.AutoSize" type="System.Boolean, mscorlib">
@@ -4180,10 +4183,10 @@ This model should be used for a strong scattering object which usually
   <data name="&gt;&gt;groupBoxHREMoption2.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="panel6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="panelImageProperties.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="groupBox8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="groupBoxImageProperty.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxHeight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -4354,37 +4357,37 @@ This model should be used for a strong scattering object which usually
   <data name="&gt;&gt;numericBoxResolution.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="groupBox8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="groupBoxImageProperty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox8.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxImageProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxImageProperty.Location" type="System.Drawing.Point, System.Drawing">
     <value>108, 0</value>
   </data>
-  <data name="groupBox8.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxImageProperty.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
   </data>
-  <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxImageProperty.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 80</value>
   </data>
-  <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxImageProperty.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="groupBox8.Text" xml:space="preserve">
+  <data name="groupBoxImageProperty.Text" xml:space="preserve">
     <value>Image property</value>
   </data>
-  <data name="&gt;&gt;groupBox8.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxImageProperty.Name" xml:space="preserve">
     <value>groupBox8</value>
   </data>
-  <data name="&gt;&gt;groupBox8.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxImageProperty.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox8.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxImageProperty.Parent" xml:space="preserve">
     <value>panel6</value>
   </data>
-  <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxImageProperty.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="panel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -4411,7 +4414,7 @@ This model should be used for a strong scattering object which usually
   <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="groupBox7.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="groupBoxDiffractedWaves.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxNumOfBlochWave.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -4464,124 +4467,124 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="groupBoxDiffractedWaves.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="groupBox7.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxDiffractedWaves.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxDiffractedWaves.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="groupBox7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxDiffractedWaves.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxDiffractedWaves.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 80</value>
   </data>
-  <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxDiffractedWaves.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="groupBox7.Text" xml:space="preserve">
+  <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
     <value>Num. of dif- fracted waves</value>
   </data>
-  <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxDiffractedWaves.Name" xml:space="preserve">
     <value>groupBox7</value>
   </data>
-  <data name="&gt;&gt;groupBox7.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxDiffractedWaves.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox7.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxDiffractedWaves.Parent" xml:space="preserve">
     <value>panel6</value>
   </data>
-  <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxDiffractedWaves.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="panel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelImageProperties.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="panel6.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelImageProperties.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
   </data>
-  <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelImageProperties.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 80</value>
   </data>
-  <data name="panel6.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelImageProperties.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="&gt;&gt;panel6.Name" xml:space="preserve">
+  <data name="&gt;&gt;panelImageProperties.Name" xml:space="preserve">
     <value>panel6</value>
   </data>
-  <data name="&gt;&gt;panel6.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelImageProperties.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel6.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelImageProperties.Parent" xml:space="preserve">
     <value>panel3</value>
   </data>
-  <data name="&gt;&gt;panel6.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelImageProperties.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelModeOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelModeOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 18</value>
   </data>
-  <data name="panel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="panelModeOptions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelModeOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 229</value>
   </data>
-  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelModeOptions.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+  <data name="&gt;&gt;panelModeOptions.Name" xml:space="preserve">
     <value>panel3</value>
   </data>
-  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelModeOptions.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelModeOptions.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelModeOptions.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="groupBoxSimulation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxSimulation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxSimulation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 477</value>
   </data>
-  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxSimulation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxSimulation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 6, 6</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxSimulation.Size" type="System.Drawing.Size, System.Drawing">
     <value>332, 253</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxSimulation.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
+  <data name="groupBoxSimulation.Text" xml:space="preserve">
     <value>Simulation property</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxSimulation.Name" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxSimulation.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxSimulation.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxSimulation.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="groupBoxOpticalProperty.AutoSize" type="System.Boolean, mscorlib">
@@ -4591,7 +4594,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>GrowAndShrink</value>
   </data>
   <metadata name="contextMenuStripSTEM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>688, 19</value>
+    <value>700, 17</value>
   </metadata>
   <data name="typicalBF02MradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>249, 22</value>
@@ -4870,10 +4873,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="flowLayoutPanel15.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelOuterRadius.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel15.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelOuterRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="textBoxOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
@@ -4939,37 +4942,37 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel15.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="flowLayoutPanelOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="flowLayoutPanel15.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelOuterRadius.Location" type="System.Drawing.Point, System.Drawing">
     <value>243, 77</value>
   </data>
-  <data name="flowLayoutPanel15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelOuterRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel15.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelOuterRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 23</value>
   </data>
-  <data name="flowLayoutPanel15.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelOuterRadius.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel15.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelOuterRadius.Name" xml:space="preserve">
     <value>flowLayoutPanel15</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel15.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelOuterRadius.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel15.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelOuterRadius.Parent" xml:space="preserve">
     <value>groupBoxSTEMoption1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel15.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelOuterRadius.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="flowLayoutPanel9.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelInnerRadius.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelInnerRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="textBoxInnerRadius.Font" type="System.Drawing.Font, System.Drawing">
@@ -5038,34 +5041,34 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelInnerRadius.Location" type="System.Drawing.Point, System.Drawing">
     <value>243, 52</value>
   </data>
-  <data name="flowLayoutPanel9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelInnerRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelInnerRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 23</value>
   </data>
-  <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelInnerRadius.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel9.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelInnerRadius.Name" xml:space="preserve">
     <value>flowLayoutPanel9</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel9.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelInnerRadius.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel9.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelInnerRadius.Parent" xml:space="preserve">
     <value>groupBoxSTEMoption1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel9.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelInnerRadius.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelConvergenceRadius.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelConvergenceRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="textBoxConvRadius.Font" type="System.Drawing.Font, System.Drawing">
@@ -5134,28 +5137,28 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelConvergenceRadius.Location" type="System.Drawing.Point, System.Drawing">
     <value>243, 21</value>
   </data>
-  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelConvergenceRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelConvergenceRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 23</value>
   </data>
-  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelConvergenceRadius.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelConvergenceRadius.Name" xml:space="preserve">
     <value>flowLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelConvergenceRadius.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelConvergenceRadius.Parent" xml:space="preserve">
     <value>groupBoxSTEMoption1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelConvergenceRadius.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -5486,10 +5489,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;numericBoxHRTEM_ObjAperY.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelSpotCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelSpotCount.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="textBoxNumOfSpots.Location" type="System.Drawing.Point, System.Drawing">
@@ -5591,34 +5594,34 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;buttonDetailsOfSpots.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelSpotCount.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 79</value>
   </data>
-  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelSpotCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelSpotCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 25</value>
   </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelSpotCount.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSpotCount.Name" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSpotCount.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSpotCount.Parent" xml:space="preserve">
     <value>groupBoxHREMoption1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSpotCount.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="flowLayoutPanel5.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelObjectiveAperture.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelObjectiveAperture.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="textBoxObjAperRadius.Font" type="System.Drawing.Font, System.Drawing">
@@ -5687,28 +5690,28 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelObjectiveAperture.Location" type="System.Drawing.Point, System.Drawing">
     <value>242, 23</value>
   </data>
-  <data name="flowLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelObjectiveAperture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelObjectiveAperture.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 23</value>
   </data>
-  <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelObjectiveAperture.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel5.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelObjectiveAperture.Name" xml:space="preserve">
     <value>flowLayoutPanel5</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel5.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelObjectiveAperture.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelObjectiveAperture.Parent" xml:space="preserve">
     <value>groupBoxHREMoption1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelObjectiveAperture.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
@@ -5783,7 +5786,7 @@ shown in "Diffraction
     <value>1</value>
   </data>
   <metadata name="contextMenuStripTEMcondition.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>460, 17</value>
+    <value>477, 17</value>
   </metadata>
   <data name="setoZeroDefocusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 22</value>
@@ -6260,10 +6263,10 @@ shown in "Diffraction
   <data name="&gt;&gt;numericBoxAccVol.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelScherzer.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelScherzer.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
@@ -6372,61 +6375,61 @@ shown in "Diffraction
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="flowLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="flowLayoutPanelScherzer.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelScherzer.Location" type="System.Drawing.Point, System.Drawing">
     <value>175, 45</value>
   </data>
-  <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelScherzer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelScherzer.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 32</value>
   </data>
-  <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelScherzer.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelScherzer.Name" xml:space="preserve">
     <value>flowLayoutPanel3</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelScherzer.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelScherzer.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelScherzer.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="groupBox4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="groupBoxTEMConditions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxTEMConditions.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxTEMConditions.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 18</value>
   </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxTEMConditions.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 135</value>
   </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxTEMConditions.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
+  <data name="groupBoxTEMConditions.Text" xml:space="preserve">
     <value>TEM conditions</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxTEMConditions.Name" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxTEMConditions.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxTEMConditions.Parent" xml:space="preserve">
     <value>groupBoxOpticalProperty</value>
   </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxTEMConditions.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="groupBoxOpticalProperty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -6465,10 +6468,10 @@ shown in "Diffraction
   <data name="&gt;&gt;groupBoxOpticalProperty.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel14.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelModeSelection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel16.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelImageType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioButtonHRTEM.AutoSize" type="System.Boolean, mscorlib">
@@ -6597,61 +6600,61 @@ shown in "Diffraction
   <data name="&gt;&gt;radioButtonProjectedPotential.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="flowLayoutPanel16.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="flowLayoutPanelImageType.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="flowLayoutPanel16.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelImageType.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 18</value>
   </data>
-  <data name="flowLayoutPanel16.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelImageType.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 46</value>
   </data>
-  <data name="flowLayoutPanel16.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelImageType.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel16.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelImageType.Name" xml:space="preserve">
     <value>flowLayoutPanel16</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel16.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelImageType.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel16.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelImageType.Parent" xml:space="preserve">
     <value>groupBox6</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel16.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelImageType.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox6.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxImageMode.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
-  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxImageMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
   </data>
-  <data name="groupBox6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxImageMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 1</value>
   </data>
-  <data name="groupBox6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxImageMode.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 0, 8, 4</value>
   </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxImageMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 68</value>
   </data>
-  <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxImageMode.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
+  <data name="groupBoxImageMode.Text" xml:space="preserve">
     <value>Image mode</value>
   </data>
-  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxImageMode.Name" xml:space="preserve">
     <value>groupBox6</value>
   </data>
-  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxImageMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxImageMode.Parent" xml:space="preserve">
     <value>flowLayoutPanel14</value>
   </data>
-  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxImageMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="numericBoxThickness.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -6746,34 +6749,34 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;groupBoxSampleProperty.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="flowLayoutPanelModeSelection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="flowLayoutPanel14.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelModeSelection.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 2</value>
   </data>
-  <data name="flowLayoutPanel14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelModeSelection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel14.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelModeSelection.Size" type="System.Drawing.Size, System.Drawing">
     <value>332, 71</value>
   </data>
-  <data name="flowLayoutPanel14.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelModeSelection.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="flowLayoutPanel14.WrapContents" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelModeSelection.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel14.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelModeSelection.Name" xml:space="preserve">
     <value>flowLayoutPanel14</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel14.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelModeSelection.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel14.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelModeSelection.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel14.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelModeSelection.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="checkBoxPreset.AutoSize" type="System.Boolean, mscorlib">
@@ -6899,31 +6902,31 @@ This value is neglected when "Serial image" mode is selected, </value>
   <data name="&gt;&gt;buttonSimulate.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelSimulationActions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelSimulationActions.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 730</value>
   </data>
-  <data name="panel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="panelSimulationActions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 3, 1, 3</value>
   </data>
-  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelSimulationActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>332, 31</value>
   </data>
-  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelSimulationActions.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
   </data>
-  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+  <data name="&gt;&gt;panelSimulationActions.Name" xml:space="preserve">
     <value>panel4</value>
   </data>
-  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelSimulationActions.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelSimulationActions.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelSimulationActions.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="splitContainer1.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -6963,7 +6966,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>3</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>229, 17</value>
+    <value>248, 17</value>
   </metadata>
   <data name="toolStripMenuItemSavePNG.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 22</value>
@@ -7146,7 +7149,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>2</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>344, 17</value>
+    <value>362, 17</value>
   </metadata>
   <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 16</value>
@@ -7213,6 +7216,12 @@ This value is neglected when "Serial image" mode is selected, </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>HRTEM/STEM simulator</value>
+  </data>
+  <data name="&gt;&gt;captureExtender.Name" xml:space="preserve">
+    <value>captureExtender</value>
+  </data>
+  <data name="&gt;&gt;captureExtender.Type" xml:space="preserve">
+    <value>Crystallography.Controls.CaptureExtender, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;typicalBF02MradToolStripMenuItem.Name" xml:space="preserve">
     <value>typicalBF02MradToolStripMenuItem</value>
@@ -7428,6 +7437,6 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>FormImageSimulator</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Crystallography.Controls.CaptureFormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -26,13 +26,22 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxSimulationParameters
+        // groupBox2 -> groupBoxLatticePlanes
+        // groupBox3 -> groupBoxMasterPattern
+        // groupBox4 -> groupBoxSampleCondition
+        // groupBox5 -> groupBoxEBSDGeometry
+        // groupBox6 -> groupBoxEBSDPattern
+        // flowLayoutPanel1 -> flowLayoutPanelViewAlong
+        // flowLayoutPanel4 -> flowLayoutPanelOutputRange
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
             panelGeometry = new System.Windows.Forms.Panel();
             numericBoxSampleTilt = new NumericBox();
             waveLengthControl = new WaveLengthControl();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelViewAlong = new System.Windows.Forms.FlowLayoutPanel();
             buttonViewQuarter = new System.Windows.Forms.Button();
             buttonViewFromSurfaceNormal = new System.Windows.Forms.Button();
             buttonFromX = new System.Windows.Forms.Button();
@@ -71,7 +80,7 @@
             numericBoxDiskDiameter = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
             groupBoxOutput = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelOutputRange = new System.Windows.Forms.FlowLayoutPanel();
             label9 = new System.Windows.Forms.Label();
             textBoxEnergy = new System.Windows.Forms.TextBox();
             label12 = new System.Windows.Forms.Label();
@@ -102,16 +111,16 @@
             checkBoxDrawDetectorOutline = new System.Windows.Forms.CheckBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
-            groupBox5 = new System.Windows.Forms.GroupBox();
+            groupBoxEBSDGeometry = new System.Windows.Forms.GroupBox();
             label17 = new System.Windows.Forms.Label();
             label16 = new System.Windows.Forms.Label();
-            groupBox4 = new System.Windows.Forms.GroupBox();
+            groupBoxSampleCondition = new System.Windows.Forms.GroupBox();
             label18 = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
             label15 = new System.Windows.Forms.Label();
             tabPage3 = new System.Windows.Forms.TabPage();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            groupBox1 = new System.Windows.Forms.GroupBox();
+            groupBoxLatticePlanes = new System.Windows.Forms.GroupBox();
+            groupBoxSimulationParameters = new System.Windows.Forms.GroupBox();
             labelMasterPatternGrid = new System.Windows.Forms.Label();
             comboBoxMasterPatternGrid = new System.Windows.Forms.ComboBox();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -134,48 +143,48 @@
             labelMasterPatternInfo = new System.Windows.Forms.Label();
             panelMasterPattern3D = new System.Windows.Forms.Panel();
             panelMasterPattern3DAxes = new System.Windows.Forms.Panel();
-            groupBox3 = new System.Windows.Forms.GroupBox();
+            groupBoxMasterPattern = new System.Windows.Forms.GroupBox();
+            flowLayoutPanelMasterPattern3DViewAlong = new System.Windows.Forms.FlowLayoutPanel();
             buttonMasterPattern3DViewAlong = new System.Windows.Forms.Button();
+            labelMasterPattern3DViewAlongOpenBracket = new System.Windows.Forms.Label();
             numericBoxMasterPattern3DViewAlongU = new NumericBox();
+            numericBoxMasterPattern3DViewAlongV = new NumericBox();
             numericBoxMasterPattern3DViewAlongW = new NumericBox();
+            labelMasterPattern3DViewAlongCloseBracket = new System.Windows.Forms.Label();
             buttonMasterPattern3DCopy = new System.Windows.Forms.Button();
             checkBoxMasterPattern3DAxisLabel = new System.Windows.Forms.CheckBox();
             checkBoxMasterPattern3DAxisArrows = new System.Windows.Forms.CheckBox();
             buttonMasterPattern2DCopy = new System.Windows.Forms.Button();
-            groupBox6 = new System.Windows.Forms.GroupBox();
+            groupBoxEBSDPattern = new System.Windows.Forms.GroupBox();
             panel1 = new System.Windows.Forms.Panel();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
-            numericBoxMasterPattern3DViewAlongV = new NumericBox();
-            flowLayoutPanelMasterPattern3DViewAlong = new System.Windows.Forms.FlowLayoutPanel();
-            labelMasterPattern3DViewAlongOpenBracket = new System.Windows.Forms.Label();
-            labelMasterPattern3DViewAlongCloseBracket = new System.Windows.Forms.Label();
-            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanelViewAlong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).BeginInit();
             groupBoxOutput.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanelOutputRange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputEnergy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            groupBox5.SuspendLayout();
-            groupBox4.SuspendLayout();
+            groupBoxEBSDGeometry.SuspendLayout();
+            groupBoxSampleCondition.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox1.SuspendLayout();
+            groupBoxLatticePlanes.SuspendLayout();
+            groupBoxSimulationParameters.SuspendLayout();
             statusStrip1.SuspendLayout();
             flowLayoutPanelMasterPatternSelectors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).BeginInit();
             panelMasterPattern3D.SuspendLayout();
-            groupBox3.SuspendLayout();
-            groupBox6.SuspendLayout();
+            groupBoxMasterPattern.SuspendLayout();
             flowLayoutPanelMasterPattern3DViewAlong.SuspendLayout();
+            groupBoxEBSDPattern.SuspendLayout();
             SuspendLayout();
             // 
             // panelGeometry
@@ -229,19 +238,19 @@
             waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
             waveLengthControl.WavelengthChanged += waveLengthControl_WavelengthChanged;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelViewAlong
             // 
-            flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel1.Controls.Add(buttonViewQuarter);
-            flowLayoutPanel1.Controls.Add(buttonViewFromSurfaceNormal);
-            flowLayoutPanel1.Controls.Add(buttonFromX);
-            flowLayoutPanel1.Controls.Add(buttonViewFromZ);
-            flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            flowLayoutPanel1.Location = new System.Drawing.Point(3, 575);
-            flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(300, 55);
-            flowLayoutPanel1.TabIndex = 112;
+            flowLayoutPanelViewAlong.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelViewAlong.Controls.Add(buttonViewQuarter);
+            flowLayoutPanelViewAlong.Controls.Add(buttonViewFromSurfaceNormal);
+            flowLayoutPanelViewAlong.Controls.Add(buttonFromX);
+            flowLayoutPanelViewAlong.Controls.Add(buttonViewFromZ);
+            flowLayoutPanelViewAlong.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            flowLayoutPanelViewAlong.Location = new System.Drawing.Point(3, 575);
+            flowLayoutPanelViewAlong.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanelViewAlong.Name = "flowLayoutPanelViewAlong";
+            flowLayoutPanelViewAlong.Size = new System.Drawing.Size(300, 55);
+            flowLayoutPanelViewAlong.TabIndex = 112;
             // 
             // buttonViewQuarter
             // 
@@ -961,7 +970,7 @@
             // 
             // groupBoxOutput
             // 
-            groupBoxOutput.Controls.Add(flowLayoutPanel4);
+            groupBoxOutput.Controls.Add(flowLayoutPanelOutputRange);
             groupBoxOutput.Controls.Add(label3);
             groupBoxOutput.Controls.Add(label4);
             groupBoxOutput.Controls.Add(checkBox1);
@@ -982,23 +991,23 @@
             groupBoxOutput.TabStop = false;
             groupBoxOutput.Text = "Output parameters";
             // 
-            // flowLayoutPanel4
+            // flowLayoutPanelOutputRange
             // 
-            flowLayoutPanel4.AutoSize = true;
-            flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel4.Controls.Add(label9);
-            flowLayoutPanel4.Controls.Add(textBoxEnergy);
-            flowLayoutPanel4.Controls.Add(label12);
-            flowLayoutPanel4.Controls.Add(trackBarOutputEnergy);
-            flowLayoutPanel4.Controls.Add(label5);
-            flowLayoutPanel4.Controls.Add(textBoxThickness);
-            flowLayoutPanel4.Controls.Add(label6);
-            flowLayoutPanel4.Controls.Add(trackBarOutputThickness);
-            flowLayoutPanel4.Location = new System.Drawing.Point(10, 42);
-            flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(495, 25);
-            flowLayoutPanel4.TabIndex = 147;
+            flowLayoutPanelOutputRange.AutoSize = true;
+            flowLayoutPanelOutputRange.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelOutputRange.Controls.Add(label9);
+            flowLayoutPanelOutputRange.Controls.Add(textBoxEnergy);
+            flowLayoutPanelOutputRange.Controls.Add(label12);
+            flowLayoutPanelOutputRange.Controls.Add(trackBarOutputEnergy);
+            flowLayoutPanelOutputRange.Controls.Add(label5);
+            flowLayoutPanelOutputRange.Controls.Add(textBoxThickness);
+            flowLayoutPanelOutputRange.Controls.Add(label6);
+            flowLayoutPanelOutputRange.Controls.Add(trackBarOutputThickness);
+            flowLayoutPanelOutputRange.Location = new System.Drawing.Point(10, 42);
+            flowLayoutPanelOutputRange.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanelOutputRange.Name = "flowLayoutPanelOutputRange";
+            flowLayoutPanelOutputRange.Size = new System.Drawing.Size(495, 25);
+            flowLayoutPanelOutputRange.TabIndex = 147;
             // 
             // label9
             // 
@@ -1417,9 +1426,9 @@
             // tabPage1
             // 
             tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            tabPage1.Controls.Add(groupBox5);
-            tabPage1.Controls.Add(groupBox4);
-            tabPage1.Controls.Add(flowLayoutPanel1);
+            tabPage1.Controls.Add(groupBoxEBSDGeometry);
+            tabPage1.Controls.Add(groupBoxSampleCondition);
+            tabPage1.Controls.Add(flowLayoutPanelViewAlong);
             tabPage1.Controls.Add(panelGeometry);
             tabPage1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             tabPage1.Location = new System.Drawing.Point(4, 48);
@@ -1429,21 +1438,21 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "SEM-EBSD settings";
             // 
-            // groupBox5
+            // groupBoxEBSDGeometry
             // 
-            groupBox5.Controls.Add(label2);
-            groupBox5.Controls.Add(label17);
-            groupBox5.Controls.Add(label16);
-            groupBox5.Controls.Add(numericBoxYofDet);
-            groupBox5.Controls.Add(numericBoxDetRadius);
-            groupBox5.Controls.Add(numericBoxZofDet);
-            groupBox5.Controls.Add(numericBoxDetTilt);
-            groupBox5.Location = new System.Drawing.Point(7, 120);
-            groupBox5.Name = "groupBox5";
-            groupBox5.Size = new System.Drawing.Size(256, 141);
-            groupBox5.TabIndex = 117;
-            groupBox5.TabStop = false;
-            groupBox5.Text = "EBSD geometry";
+            groupBoxEBSDGeometry.Controls.Add(label2);
+            groupBoxEBSDGeometry.Controls.Add(label17);
+            groupBoxEBSDGeometry.Controls.Add(label16);
+            groupBoxEBSDGeometry.Controls.Add(numericBoxYofDet);
+            groupBoxEBSDGeometry.Controls.Add(numericBoxDetRadius);
+            groupBoxEBSDGeometry.Controls.Add(numericBoxZofDet);
+            groupBoxEBSDGeometry.Controls.Add(numericBoxDetTilt);
+            groupBoxEBSDGeometry.Location = new System.Drawing.Point(7, 120);
+            groupBoxEBSDGeometry.Name = "groupBoxEBSDGeometry";
+            groupBoxEBSDGeometry.Size = new System.Drawing.Size(256, 141);
+            groupBoxEBSDGeometry.TabIndex = 117;
+            groupBoxEBSDGeometry.TabStop = false;
+            groupBoxEBSDGeometry.Text = "EBSD geometry";
             // 
             // label17
             // 
@@ -1465,17 +1474,17 @@
             label16.TabIndex = 116;
             label16.Text = "Detector radius";
             // 
-            // groupBox4
+            // groupBoxSampleCondition
             // 
-            groupBox4.Controls.Add(waveLengthControl);
-            groupBox4.Controls.Add(label18);
-            groupBox4.Controls.Add(numericBoxSampleTilt);
-            groupBox4.Location = new System.Drawing.Point(6, 6);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new System.Drawing.Size(256, 108);
-            groupBox4.TabIndex = 117;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "SEM && Sample condition";
+            groupBoxSampleCondition.Controls.Add(waveLengthControl);
+            groupBoxSampleCondition.Controls.Add(label18);
+            groupBoxSampleCondition.Controls.Add(numericBoxSampleTilt);
+            groupBoxSampleCondition.Location = new System.Drawing.Point(6, 6);
+            groupBoxSampleCondition.Name = "groupBoxSampleCondition";
+            groupBoxSampleCondition.Size = new System.Drawing.Size(256, 108);
+            groupBoxSampleCondition.TabIndex = 117;
+            groupBoxSampleCondition.TabStop = false;
+            groupBoxSampleCondition.Text = "SEM && Sample condition";
             // 
             // label18
             // 
@@ -1521,7 +1530,7 @@
             // tabPage3
             // 
             tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            tabPage3.Controls.Add(groupBox2);
+            tabPage3.Controls.Add(groupBoxLatticePlanes);
             tabPage3.Controls.Add(label1);
             tabPage3.Controls.Add(button1);
             tabPage3.Controls.Add(trackBarStrSize);
@@ -1540,40 +1549,40 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Kinematical simulation";
             // 
-            // groupBox2
+            // groupBoxLatticePlanes
             // 
-            groupBox2.Controls.Add(radioButtonKikuchiThresholdOfLength);
-            groupBox2.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
-            groupBox2.Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
-            groupBox2.Controls.Add(numericBoxKikuchiThresholdOfLength);
-            groupBox2.Location = new System.Drawing.Point(14, 121);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(267, 93);
-            groupBox2.TabIndex = 129;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Lattice planes to display";
+            groupBoxLatticePlanes.Controls.Add(radioButtonKikuchiThresholdOfLength);
+            groupBoxLatticePlanes.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
+            groupBoxLatticePlanes.Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
+            groupBoxLatticePlanes.Controls.Add(numericBoxKikuchiThresholdOfLength);
+            groupBoxLatticePlanes.Location = new System.Drawing.Point(14, 121);
+            groupBoxLatticePlanes.Name = "groupBoxLatticePlanes";
+            groupBoxLatticePlanes.Size = new System.Drawing.Size(267, 93);
+            groupBoxLatticePlanes.TabIndex = 129;
+            groupBoxLatticePlanes.TabStop = false;
+            groupBoxLatticePlanes.Text = "Lattice planes to display";
             // 
-            // groupBox1
+            // groupBoxSimulationParameters
             // 
-            groupBox1.Controls.Add(numericBoxMaxNumOfG);
-            groupBox1.Controls.Add(labelMasterPatternGrid);
-            groupBox1.Controls.Add(checkBoxNonLocalAbsorption);
-            groupBox1.Controls.Add(comboBoxMasterPatternGrid);
-            groupBox1.Controls.Add(numericBoxThicknessStep);
-            groupBox1.Controls.Add(numericBoxEnergyStep);
-            groupBox1.Controls.Add(numericBoxEnergyStart);
-            groupBox1.Controls.Add(checkBoxTDSBackground);
-            groupBox1.Controls.Add(numericBoxThicknessStart);
-            groupBox1.Controls.Add(numericBoxEnergyEnd);
-            groupBox1.Controls.Add(numericBoxDiskDiameter);
-            groupBox1.Controls.Add(numericBoxThicknessEnd);
-            groupBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox1.Location = new System.Drawing.Point(13, 473);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(473, 163);
-            groupBox1.TabIndex = 143;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Dynamical simulation properties";
+            groupBoxSimulationParameters.Controls.Add(numericBoxMaxNumOfG);
+            groupBoxSimulationParameters.Controls.Add(labelMasterPatternGrid);
+            groupBoxSimulationParameters.Controls.Add(checkBoxNonLocalAbsorption);
+            groupBoxSimulationParameters.Controls.Add(comboBoxMasterPatternGrid);
+            groupBoxSimulationParameters.Controls.Add(numericBoxThicknessStep);
+            groupBoxSimulationParameters.Controls.Add(numericBoxEnergyStep);
+            groupBoxSimulationParameters.Controls.Add(numericBoxEnergyStart);
+            groupBoxSimulationParameters.Controls.Add(checkBoxTDSBackground);
+            groupBoxSimulationParameters.Controls.Add(numericBoxThicknessStart);
+            groupBoxSimulationParameters.Controls.Add(numericBoxEnergyEnd);
+            groupBoxSimulationParameters.Controls.Add(numericBoxDiskDiameter);
+            groupBoxSimulationParameters.Controls.Add(numericBoxThicknessEnd);
+            groupBoxSimulationParameters.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxSimulationParameters.Location = new System.Drawing.Point(13, 473);
+            groupBoxSimulationParameters.Name = "groupBoxSimulationParameters";
+            groupBoxSimulationParameters.Size = new System.Drawing.Size(473, 163);
+            groupBoxSimulationParameters.TabIndex = 143;
+            groupBoxSimulationParameters.TabStop = false;
+            groupBoxSimulationParameters.Text = "Dynamical simulation properties";
             // 
             // labelMasterPatternGrid
             // 
@@ -1782,8 +1791,7 @@
             comboBoxMasterPattern2DHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxMasterPattern2DHemisphere.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             comboBoxMasterPattern2DHemisphere.FormattingEnabled = true;
-            // comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { "+Z hemisphere", "-Z hemisphere" }); // (260322Ch) 旧表示
-            comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { "+Z", "-Z" }); // (260322Ch) Hemisphere コンボボックスは簡潔な表記へそろえる
+            comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { "+Z", "-Z" });
             comboBoxMasterPattern2DHemisphere.Location = new System.Drawing.Point(154, 24);
             comboBoxMasterPattern2DHemisphere.Margin = new System.Windows.Forms.Padding(0, 2, 8, 0);
             comboBoxMasterPattern2DHemisphere.Name = "comboBoxMasterPattern2DHemisphere";
@@ -1837,30 +1845,43 @@
             panelMasterPattern3DAxes.Size = new System.Drawing.Size(80, 80);
             panelMasterPattern3DAxes.TabIndex = 147;
             // 
-            // groupBox3
+            // groupBoxMasterPattern
             // 
-            groupBox3.Controls.Add(flowLayoutPanelMasterPattern3DViewAlong);
-            groupBox3.Controls.Add(groupBox1);
-            groupBox3.Controls.Add(buttonMasterPattern3DCopy);
-            groupBox3.Controls.Add(checkBoxMasterPattern3DAxisLabel);
-            groupBox3.Controls.Add(checkBoxMasterPattern3DAxisArrows);
-            groupBox3.Controls.Add(buttonStop);
-            groupBox3.Controls.Add(buttonMasterPattern2DCopy);
-            groupBox3.Controls.Add(scalablePictureBoxAdvancedMasterPattern2D);
-            groupBox3.Controls.Add(panelMasterPattern3D);
-            groupBox3.Controls.Add(labelMasterPattern2DHemisphere);
-            groupBox3.Controls.Add(comboBoxMasterPattern2DHemisphere);
-            groupBox3.Controls.Add(flowLayoutPanelMasterPatternSelectors);
-            groupBox3.Controls.Add(buttonCreateMasterPattern);
-            groupBox3.Controls.Add(labelMasterPatternInfo);
-            groupBox3.Dock = System.Windows.Forms.DockStyle.Right;
-            groupBox3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
-            groupBox3.Location = new System.Drawing.Point(852, 4);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(572, 699);
-            groupBox3.TabIndex = 148;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Master Pattern";
+            groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPattern3DViewAlong);
+            groupBoxMasterPattern.Controls.Add(groupBoxSimulationParameters);
+            groupBoxMasterPattern.Controls.Add(buttonMasterPattern3DCopy);
+            groupBoxMasterPattern.Controls.Add(checkBoxMasterPattern3DAxisLabel);
+            groupBoxMasterPattern.Controls.Add(checkBoxMasterPattern3DAxisArrows);
+            groupBoxMasterPattern.Controls.Add(buttonStop);
+            groupBoxMasterPattern.Controls.Add(buttonMasterPattern2DCopy);
+            groupBoxMasterPattern.Controls.Add(scalablePictureBoxAdvancedMasterPattern2D);
+            groupBoxMasterPattern.Controls.Add(panelMasterPattern3D);
+            groupBoxMasterPattern.Controls.Add(labelMasterPattern2DHemisphere);
+            groupBoxMasterPattern.Controls.Add(comboBoxMasterPattern2DHemisphere);
+            groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
+            groupBoxMasterPattern.Controls.Add(buttonCreateMasterPattern);
+            groupBoxMasterPattern.Controls.Add(labelMasterPatternInfo);
+            groupBoxMasterPattern.Dock = System.Windows.Forms.DockStyle.Right;
+            groupBoxMasterPattern.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
+            groupBoxMasterPattern.Location = new System.Drawing.Point(852, 4);
+            groupBoxMasterPattern.Name = "groupBoxMasterPattern";
+            groupBoxMasterPattern.Size = new System.Drawing.Size(572, 699);
+            groupBoxMasterPattern.TabIndex = 148;
+            groupBoxMasterPattern.TabStop = false;
+            groupBoxMasterPattern.Text = "Master Pattern";
+            // 
+            // flowLayoutPanelMasterPattern3DViewAlong
+            // 
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(buttonMasterPattern3DViewAlong);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(labelMasterPattern3DViewAlongOpenBracket);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongU);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongV);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongW);
+            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(labelMasterPattern3DViewAlongCloseBracket);
+            flowLayoutPanelMasterPattern3DViewAlong.Location = new System.Drawing.Point(298, 336);
+            flowLayoutPanelMasterPattern3DViewAlong.Name = "flowLayoutPanelMasterPattern3DViewAlong";
+            flowLayoutPanelMasterPattern3DViewAlong.Size = new System.Drawing.Size(268, 25);
+            flowLayoutPanelMasterPattern3DViewAlong.TabIndex = 151;
             // 
             // buttonMasterPattern3DViewAlong
             // 
@@ -1875,7 +1896,18 @@
             buttonMasterPattern3DViewAlong.TabIndex = 150;
             buttonMasterPattern3DViewAlong.Text = "Viw along the axis";
             buttonMasterPattern3DViewAlong.UseVisualStyleBackColor = true;
-            buttonMasterPattern3DViewAlong.Click += buttonMasterPattern3DViewAlong_Click; // (260322Ch) 指定した [u v w] 晶帯軸方向から MasterPattern3D を見る
+            buttonMasterPattern3DViewAlong.Click += buttonMasterPattern3DViewAlong_Click;
+            // 
+            // labelMasterPattern3DViewAlongOpenBracket
+            // 
+            labelMasterPattern3DViewAlongOpenBracket.AutoSize = true;
+            labelMasterPattern3DViewAlongOpenBracket.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            labelMasterPattern3DViewAlongOpenBracket.Location = new System.Drawing.Point(123, 3);
+            labelMasterPattern3DViewAlongOpenBracket.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            labelMasterPattern3DViewAlongOpenBracket.Name = "labelMasterPattern3DViewAlongOpenBracket";
+            labelMasterPattern3DViewAlongOpenBracket.Size = new System.Drawing.Size(12, 17);
+            labelMasterPattern3DViewAlongOpenBracket.TabIndex = 7;
+            labelMasterPattern3DViewAlongOpenBracket.Text = "[";
             // 
             // numericBoxMasterPattern3DViewAlongU
             // 
@@ -1896,8 +1928,32 @@
             numericBoxMasterPattern3DViewAlongU.Size = new System.Drawing.Size(38, 24);
             numericBoxMasterPattern3DViewAlongU.SkipEventDuringInput = false;
             numericBoxMasterPattern3DViewAlongU.TabIndex = 80;
+            numericBoxMasterPattern3DViewAlongU.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxMasterPattern3DViewAlongU.ThonsandsSeparator = true;
             numericBoxMasterPattern3DViewAlongU.Value = 1D;
+            // 
+            // numericBoxMasterPattern3DViewAlongV
+            // 
+            numericBoxMasterPattern3DViewAlongV.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            numericBoxMasterPattern3DViewAlongV.BackColor = System.Drawing.Color.Transparent;
+            numericBoxMasterPattern3DViewAlongV.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
+            numericBoxMasterPattern3DViewAlongV.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxMasterPattern3DViewAlongV.Location = new System.Drawing.Point(175, 0);
+            numericBoxMasterPattern3DViewAlongV.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            numericBoxMasterPattern3DViewAlongV.Maximum = 9D;
+            numericBoxMasterPattern3DViewAlongV.MaximumSize = new System.Drawing.Size(1000, 30);
+            numericBoxMasterPattern3DViewAlongV.Minimum = -9D;
+            numericBoxMasterPattern3DViewAlongV.MinimumSize = new System.Drawing.Size(1, 20);
+            numericBoxMasterPattern3DViewAlongV.Name = "numericBoxMasterPattern3DViewAlongV";
+            numericBoxMasterPattern3DViewAlongV.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxMasterPattern3DViewAlongV.RadianValue = 0.017453292519943295D;
+            numericBoxMasterPattern3DViewAlongV.ShowUpDown = true;
+            numericBoxMasterPattern3DViewAlongV.Size = new System.Drawing.Size(38, 24);
+            numericBoxMasterPattern3DViewAlongV.SkipEventDuringInput = false;
+            numericBoxMasterPattern3DViewAlongV.TabIndex = 80;
+            numericBoxMasterPattern3DViewAlongV.TextFont = new System.Drawing.Font("メイリオ", 9F);
+            numericBoxMasterPattern3DViewAlongV.ThonsandsSeparator = true;
+            numericBoxMasterPattern3DViewAlongV.Value = 1D;
             // 
             // numericBoxMasterPattern3DViewAlongW
             // 
@@ -1918,8 +1974,20 @@
             numericBoxMasterPattern3DViewAlongW.Size = new System.Drawing.Size(38, 24);
             numericBoxMasterPattern3DViewAlongW.SkipEventDuringInput = false;
             numericBoxMasterPattern3DViewAlongW.TabIndex = 80;
+            numericBoxMasterPattern3DViewAlongW.TextFont = new System.Drawing.Font("メイリオ", 9F);
             numericBoxMasterPattern3DViewAlongW.ThonsandsSeparator = true;
             numericBoxMasterPattern3DViewAlongW.Value = 1D;
+            // 
+            // labelMasterPattern3DViewAlongCloseBracket
+            // 
+            labelMasterPattern3DViewAlongCloseBracket.AutoSize = true;
+            labelMasterPattern3DViewAlongCloseBracket.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            labelMasterPattern3DViewAlongCloseBracket.Location = new System.Drawing.Point(253, 3);
+            labelMasterPattern3DViewAlongCloseBracket.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            labelMasterPattern3DViewAlongCloseBracket.Name = "labelMasterPattern3DViewAlongCloseBracket";
+            labelMasterPattern3DViewAlongCloseBracket.Size = new System.Drawing.Size(12, 17);
+            labelMasterPattern3DViewAlongCloseBracket.TabIndex = 7;
+            labelMasterPattern3DViewAlongCloseBracket.Text = "]";
             // 
             // buttonMasterPattern3DCopy
             // 
@@ -1975,23 +2043,23 @@
             buttonMasterPattern2DCopy.Text = "Copy";
             buttonMasterPattern2DCopy.UseVisualStyleBackColor = true;
             // 
-            // groupBox6
+            // groupBoxEBSDPattern
             // 
-            groupBox6.Controls.Add(graphicsBox);
-            groupBox6.Controls.Add(buttonSaveImage);
-            groupBox6.Controls.Add(checkBoxDrawKikuchiLinesKinematical);
-            groupBox6.Controls.Add(checkBoxDrawKikuchiLineDynamical);
-            groupBox6.Controls.Add(groupBoxOutput);
-            groupBox6.Controls.Add(checkBoxDrawDetectorOutline);
-            groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox6.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox6.Location = new System.Drawing.Point(324, 4);
-            groupBox6.Name = "groupBox6";
-            groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            groupBox6.Size = new System.Drawing.Size(522, 699);
-            groupBox6.TabIndex = 149;
-            groupBox6.TabStop = false;
-            groupBox6.Text = "EBSD pattern";
+            groupBoxEBSDPattern.Controls.Add(graphicsBox);
+            groupBoxEBSDPattern.Controls.Add(buttonSaveImage);
+            groupBoxEBSDPattern.Controls.Add(checkBoxDrawKikuchiLinesKinematical);
+            groupBoxEBSDPattern.Controls.Add(checkBoxDrawKikuchiLineDynamical);
+            groupBoxEBSDPattern.Controls.Add(groupBoxOutput);
+            groupBoxEBSDPattern.Controls.Add(checkBoxDrawDetectorOutline);
+            groupBoxEBSDPattern.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxEBSDPattern.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxEBSDPattern.Location = new System.Drawing.Point(324, 4);
+            groupBoxEBSDPattern.Name = "groupBoxEBSDPattern";
+            groupBoxEBSDPattern.Padding = new System.Windows.Forms.Padding(4);
+            groupBoxEBSDPattern.Size = new System.Drawing.Size(522, 699);
+            groupBoxEBSDPattern.TabIndex = 149;
+            groupBoxEBSDPattern.TabStop = false;
+            groupBoxEBSDPattern.Text = "EBSD pattern";
             // 
             // panel1
             // 
@@ -2017,72 +2085,16 @@
             panel4.Size = new System.Drawing.Size(1420, 4);
             panel4.TabIndex = 153;
             // 
-            // numericBoxMasterPattern3DViewAlongV
-            // 
-            numericBoxMasterPattern3DViewAlongV.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            numericBoxMasterPattern3DViewAlongV.BackColor = System.Drawing.Color.Transparent;
-            numericBoxMasterPattern3DViewAlongV.Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
-            numericBoxMasterPattern3DViewAlongV.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericBoxMasterPattern3DViewAlongV.Location = new System.Drawing.Point(175, 0);
-            numericBoxMasterPattern3DViewAlongV.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            numericBoxMasterPattern3DViewAlongV.Maximum = 9D;
-            numericBoxMasterPattern3DViewAlongV.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxMasterPattern3DViewAlongV.Minimum = -9D;
-            numericBoxMasterPattern3DViewAlongV.MinimumSize = new System.Drawing.Size(1, 20);
-            numericBoxMasterPattern3DViewAlongV.Name = "numericBoxMasterPattern3DViewAlongV";
-            numericBoxMasterPattern3DViewAlongV.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxMasterPattern3DViewAlongV.RadianValue = 0.017453292519943295D;
-            numericBoxMasterPattern3DViewAlongV.ShowUpDown = true;
-            numericBoxMasterPattern3DViewAlongV.Size = new System.Drawing.Size(38, 24);
-            numericBoxMasterPattern3DViewAlongV.SkipEventDuringInput = false;
-            numericBoxMasterPattern3DViewAlongV.TabIndex = 80;
-            numericBoxMasterPattern3DViewAlongV.ThonsandsSeparator = true;
-            numericBoxMasterPattern3DViewAlongV.Value = 1D;
-            // 
-            // flowLayoutPanelMasterPattern3DViewAlong
-            // 
-            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(buttonMasterPattern3DViewAlong);
-            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(labelMasterPattern3DViewAlongOpenBracket);
-            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongU);
-            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongV);
-            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongW);
-            flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(labelMasterPattern3DViewAlongCloseBracket);
-            flowLayoutPanelMasterPattern3DViewAlong.Location = new System.Drawing.Point(298, 336);
-            flowLayoutPanelMasterPattern3DViewAlong.Name = "flowLayoutPanelMasterPattern3DViewAlong";
-            flowLayoutPanelMasterPattern3DViewAlong.Size = new System.Drawing.Size(268, 25);
-            flowLayoutPanelMasterPattern3DViewAlong.TabIndex = 151;
-            // 
-            // labelMasterPattern3DViewAlongOpenBracket
-            // 
-            labelMasterPattern3DViewAlongOpenBracket.AutoSize = true;
-            labelMasterPattern3DViewAlongOpenBracket.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            labelMasterPattern3DViewAlongOpenBracket.Location = new System.Drawing.Point(123, 3);
-            labelMasterPattern3DViewAlongOpenBracket.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            labelMasterPattern3DViewAlongOpenBracket.Name = "labelMasterPattern3DViewAlongOpenBracket";
-            labelMasterPattern3DViewAlongOpenBracket.Size = new System.Drawing.Size(12, 17);
-            labelMasterPattern3DViewAlongOpenBracket.TabIndex = 7;
-            labelMasterPattern3DViewAlongOpenBracket.Text = "[";
-            // 
-            // labelMasterPattern3DViewAlongCloseBracket
-            // 
-            labelMasterPattern3DViewAlongCloseBracket.AutoSize = true;
-            labelMasterPattern3DViewAlongCloseBracket.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            labelMasterPattern3DViewAlongCloseBracket.Location = new System.Drawing.Point(253, 3);
-            labelMasterPattern3DViewAlongCloseBracket.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            labelMasterPattern3DViewAlongCloseBracket.Name = "labelMasterPattern3DViewAlongCloseBracket";
-            labelMasterPattern3DViewAlongCloseBracket.Size = new System.Drawing.Size(12, 17);
-            labelMasterPattern3DViewAlongCloseBracket.TabIndex = 7;
-            labelMasterPattern3DViewAlongCloseBracket.Text = "]";
-            // 
             // FormEBSD
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            captureExtender.SetCapture(this, true);
             ClientSize = new System.Drawing.Size(1428, 729);
-            Controls.Add(groupBox6);
+            Controls.Add(groupBoxEBSDPattern);
             Controls.Add(panel3);
             Controls.Add(panel1);
-            Controls.Add(groupBox3);
+            Controls.Add(groupBoxMasterPattern);
             Controls.Add(tabControl1);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(panel4);
@@ -2094,32 +2106,32 @@
             FormClosing += FormEBSD_FormClosing;
             Load += FormEBSD_Load;
             VisibleChanged += FormEBSD_VisibleChanged;
-            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanelViewAlong.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarLineWidth).EndInit();
             groupBoxOutput.ResumeLayout(false);
             groupBoxOutput.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanelOutputRange.ResumeLayout(false);
+            flowLayoutPanelOutputRange.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputEnergy).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).EndInit();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            groupBox5.ResumeLayout(false);
-            groupBox5.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
+            groupBoxEBSDGeometry.ResumeLayout(false);
+            groupBoxEBSDGeometry.PerformLayout();
+            groupBoxSampleCondition.ResumeLayout(false);
+            groupBoxSampleCondition.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            groupBoxLatticePlanes.ResumeLayout(false);
+            groupBoxLatticePlanes.PerformLayout();
+            groupBoxSimulationParameters.ResumeLayout(false);
+            groupBoxSimulationParameters.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             flowLayoutPanelMasterPatternSelectors.ResumeLayout(false);
@@ -2127,12 +2139,12 @@
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).EndInit();
             panelMasterPattern3D.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
+            groupBoxMasterPattern.ResumeLayout(false);
+            groupBoxMasterPattern.PerformLayout();
             flowLayoutPanelMasterPattern3DViewAlong.ResumeLayout(false);
             flowLayoutPanelMasterPattern3DViewAlong.PerformLayout();
+            groupBoxEBSDPattern.ResumeLayout(false);
+            groupBoxEBSDPattern.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2142,7 +2154,7 @@
         private System.Windows.Forms.Panel panelGeometry;
         private NumericBox numericBoxSampleTilt;
         private WaveLengthControl waveLengthControl;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelViewAlong;
         private System.Windows.Forms.Button buttonViewFromZ;
         private System.Windows.Forms.Button buttonFromX;
         private System.Windows.Forms.Button buttonViewFromSurfaceNormal;
@@ -2215,7 +2227,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxSimulationParameters;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -2224,8 +2236,8 @@
         private System.Windows.Forms.CheckBox checkBoxNonLocalAbsorption;
         private System.Windows.Forms.CheckBox checkBoxTDSBackground;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.GroupBox groupBoxLatticePlanes;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelOutputRange;
         private System.Windows.Forms.Panel panelMasterPattern3D;
         private ScalablePictureBoxAdvanced scalablePictureBoxAdvancedMasterPattern2D;
         private System.Windows.Forms.Label labelMasterPatternGrid;
@@ -2243,12 +2255,12 @@
         private System.Windows.Forms.Button buttonCreateMasterPattern;
         private System.Windows.Forms.Label labelMasterPatternInfo;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPatternSelectors;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxMasterPattern;
         private System.Windows.Forms.Button buttonMasterPattern3DCopy;
         private System.Windows.Forms.Button buttonMasterPattern2DCopy;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBoxSampleCondition;
+        private System.Windows.Forms.GroupBox groupBoxEBSDGeometry;
+        private System.Windows.Forms.GroupBox groupBoxEBSDPattern;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;

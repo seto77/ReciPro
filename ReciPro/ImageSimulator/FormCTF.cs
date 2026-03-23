@@ -9,7 +9,7 @@ using static System.Math;
 
 namespace ReciPro;
 
-public partial class FormCTF : Form
+public partial class FormCTF : CaptureFormBase
 {
     public FormImageSimulator FormImageSimulator;
 
@@ -281,3 +281,4 @@ public partial class FormCTF : Form
         Renew();
     }
 }
+

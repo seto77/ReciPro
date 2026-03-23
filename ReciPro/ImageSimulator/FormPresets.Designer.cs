@@ -55,7 +55,6 @@
             listBox.Dock = System.Windows.Forms.DockStyle.Fill;
             listBox.FormattingEnabled = true;
             listBox.IntegralHeight = false;
-            listBox.ItemHeight = 17;
             listBox.Location = new System.Drawing.Point(4, 5);
             listBox.Name = "listBox";
             listBox.Size = new System.Drawing.Size(233, 208);

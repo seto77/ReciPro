@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Windows.Forms;
 
 namespace ReciPro;
-public partial class FormMovie : Form
+public partial class FormMovie : CaptureFormBase
 {
     public FormMain FormMain;
     public Form Caller;//呼び出し元
@@ -157,3 +157,4 @@ public partial class FormMovie : Form
 
     }
 }
+

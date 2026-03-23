@@ -59,7 +59,7 @@ partial class FormMovie
         label11 = new System.Windows.Forms.Label();
         label12 = new System.Windows.Forms.Label();
         radioButtonCurrent = new System.Windows.Forms.RadioButton();
-        groupBox1 = new System.Windows.Forms.GroupBox();
+        groupBoxDirection = new System.Windows.Forms.GroupBox();
         radioButtonH264 = new System.Windows.Forms.RadioButton();
         radioButtonH265 = new System.Windows.Forms.RadioButton();
         comboBoxSpeed = new System.Windows.Forms.ComboBox();
@@ -68,7 +68,7 @@ partial class FormMovie
         tableLayoutPanel2.SuspendLayout();
         tableLayoutPanelAxis.SuspendLayout();
         tableLayoutPanelPlane.SuspendLayout();
-        groupBox1.SuspendLayout();
+        groupBoxDirection.SuspendLayout();
         SuspendLayout();
         // 
         // buttonOK
@@ -638,20 +638,20 @@ partial class FormMovie
         radioButtonCurrent.UseVisualStyleBackColor = true;
         radioButtonCurrent.CheckedChanged += radioButtonCurrent_CheckedChanged;
         // 
-        // groupBox1
+        // groupBoxDirection
         // 
-        groupBox1.Controls.Add(radioButtonCurrent);
-        groupBox1.Controls.Add(tableLayoutPanelPlane);
-        groupBox1.Controls.Add(tableLayoutPanelCurrent);
-        groupBox1.Controls.Add(tableLayoutPanelAxis);
-        groupBox1.Controls.Add(radioButtonAxis);
-        groupBox1.Controls.Add(radioButtonPlane);
-        groupBox1.Location = new System.Drawing.Point(9, 64);
-        groupBox1.Name = "groupBox1";
-        groupBox1.Size = new System.Drawing.Size(164, 249);
-        groupBox1.TabIndex = 89;
-        groupBox1.TabStop = false;
-        groupBox1.Text = "Direction";
+        groupBoxDirection.Controls.Add(radioButtonCurrent);
+        groupBoxDirection.Controls.Add(tableLayoutPanelPlane);
+        groupBoxDirection.Controls.Add(tableLayoutPanelCurrent);
+        groupBoxDirection.Controls.Add(tableLayoutPanelAxis);
+        groupBoxDirection.Controls.Add(radioButtonAxis);
+        groupBoxDirection.Controls.Add(radioButtonPlane);
+        groupBoxDirection.Location = new System.Drawing.Point(9, 64);
+        groupBoxDirection.Name = "groupBoxDirection";
+        groupBoxDirection.Size = new System.Drawing.Size(164, 249);
+        groupBoxDirection.TabIndex = 89;
+        groupBoxDirection.TabStop = false;
+        groupBoxDirection.Text = "Direction";
         // 
         // radioButtonH264
         // 
@@ -705,7 +705,7 @@ partial class FormMovie
         Controls.Add(comboBoxSpeed);
         Controls.Add(radioButtonH265);
         Controls.Add(radioButtonH264);
-        Controls.Add(groupBox1);
+        Controls.Add(groupBoxDirection);
         Controls.Add(numericBoxDuration);
         Controls.Add(numericBoxSpeed);
         Controls.Add(buttonCancel);
@@ -723,8 +723,8 @@ partial class FormMovie
         tableLayoutPanelAxis.PerformLayout();
         tableLayoutPanelPlane.ResumeLayout(false);
         tableLayoutPanelPlane.PerformLayout();
-        groupBox1.ResumeLayout(false);
-        groupBox1.PerformLayout();
+        groupBoxDirection.ResumeLayout(false);
+        groupBoxDirection.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -762,7 +762,7 @@ partial class FormMovie
     private System.Windows.Forms.Label label11;
     private System.Windows.Forms.Label label12;
     private System.Windows.Forms.RadioButton radioButtonCurrent;
-    private System.Windows.Forms.GroupBox groupBox1;
+    private System.Windows.Forms.GroupBox groupBoxDirection;
     private System.Windows.Forms.RadioButton radioButtonH264;
     private System.Windows.Forms.RadioButton radioButtonH265;
     private System.Windows.Forms.ComboBox comboBoxSpeed;

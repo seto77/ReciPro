@@ -26,6 +26,13 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxReciProCoordinate
+        // groupBox2 -> groupBoxExperimentalCoordinate
+        // flowLayoutPanel1 -> flowLayoutPanelFirstAxis
+        // flowLayoutPanel2 -> flowLayoutPanelSecondAxis
+        // flowLayoutPanel3 -> flowLayoutPanelThirdAxis
+        // panel2 -> panelViewOptions
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -57,9 +64,9 @@
             radioButton1stY = new System.Windows.Forms.RadioButton();
             radioButton1stX = new System.Windows.Forms.RadioButton();
             buttonResetExpEuler = new System.Windows.Forms.Button();
-            panel2 = new System.Windows.Forms.Panel();
+            panelViewOptions = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
-            groupBox1 = new System.Windows.Forms.GroupBox();
+            groupBoxReciProCoordinate = new System.Windows.Forms.GroupBox();
             label1 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -74,19 +81,19 @@
             numericBox32 = new NumericBox();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            groupBoxExperimentalCoordinate = new System.Windows.Forms.GroupBox();
+            flowLayoutPanelFirstAxis = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelSecondAxis = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelThirdAxis = new System.Windows.Forms.FlowLayoutPanel();
             label5 = new System.Windows.Forms.Label();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            panel2.SuspendLayout();
-            groupBox1.SuspendLayout();
+            panelViewOptions.SuspendLayout();
+            groupBoxReciProCoordinate.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
+            groupBoxExperimentalCoordinate.SuspendLayout();
+            flowLayoutPanelFirstAxis.SuspendLayout();
+            flowLayoutPanelSecondAxis.SuspendLayout();
+            flowLayoutPanelThirdAxis.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -359,14 +366,14 @@
             buttonResetExpEuler.UseVisualStyleBackColor = true;
             buttonResetExpEuler.Click += buttonResetExpEuler_Click;
             // 
-            // panel2
+            // panelViewOptions
             // 
-            resources.ApplyResources(panel2, "panel2");
-            panel2.Controls.Add(checkBoxLink);
-            panel2.Controls.Add(panel1);
-            panel2.Controls.Add(buttonViewIsometric);
-            panel2.Controls.Add(buttonViewAlongBeam);
-            panel2.Name = "panel2";
+            resources.ApplyResources(panelViewOptions, "panelViewOptions");
+            panelViewOptions.Controls.Add(checkBoxLink);
+            panelViewOptions.Controls.Add(panel1);
+            panelViewOptions.Controls.Add(buttonViewIsometric);
+            panelViewOptions.Controls.Add(buttonViewAlongBeam);
+            panelViewOptions.Name = "panelViewOptions";
             // 
             // panel1
             // 
@@ -374,21 +381,21 @@
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
-            // groupBox1
+            // groupBoxReciProCoordinate
             // 
-            groupBox1.Controls.Add(numericBoxPhi);
-            groupBox1.Controls.Add(numericBoxTheta);
-            groupBox1.Controls.Add(numericBoxPsi);
-            groupBox1.Controls.Add(buttonPaste);
-            groupBox1.Controls.Add(buttonCopy);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(tableLayoutPanel1);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Name = "groupBox1";
-            groupBox1.TabStop = false;
+            groupBoxReciProCoordinate.Controls.Add(numericBoxPhi);
+            groupBoxReciProCoordinate.Controls.Add(numericBoxTheta);
+            groupBoxReciProCoordinate.Controls.Add(numericBoxPsi);
+            groupBoxReciProCoordinate.Controls.Add(buttonPaste);
+            groupBoxReciProCoordinate.Controls.Add(buttonCopy);
+            groupBoxReciProCoordinate.Controls.Add(label1);
+            groupBoxReciProCoordinate.Controls.Add(label4);
+            groupBoxReciProCoordinate.Controls.Add(tableLayoutPanel1);
+            groupBoxReciProCoordinate.Controls.Add(label3);
+            groupBoxReciProCoordinate.Controls.Add(label2);
+            resources.ApplyResources(groupBoxReciProCoordinate, "groupBoxReciProCoordinate");
+            groupBoxReciProCoordinate.Name = "groupBoxReciProCoordinate";
+            groupBoxReciProCoordinate.TabStop = false;
             // 
             // label1
             // 
@@ -568,48 +575,48 @@
             resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
             // 
-            // groupBox2
+            // groupBoxExperimentalCoordinate
             // 
-            groupBox2.Controls.Add(buttonResetExpEuler);
-            groupBox2.Controls.Add(flowLayoutPanel1);
-            groupBox2.Controls.Add(flowLayoutPanel2);
-            groupBox2.Controls.Add(flowLayoutPanel3);
-            groupBox2.Controls.Add(checkBoxEnable3rd);
-            groupBox2.Controls.Add(checkBoxFix3rd);
-            groupBox2.Controls.Add(checkBoxFix2nd);
-            groupBox2.Controls.Add(checkBoxFix1st);
-            groupBox2.Controls.Add(checkBoxEnable2nd);
-            groupBox2.Controls.Add(numericBoxExp3);
-            groupBox2.Controls.Add(numericBoxExp2);
-            groupBox2.Controls.Add(numericBoxExp1);
-            groupBox2.Controls.Add(label5);
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
+            groupBoxExperimentalCoordinate.Controls.Add(buttonResetExpEuler);
+            groupBoxExperimentalCoordinate.Controls.Add(flowLayoutPanelFirstAxis);
+            groupBoxExperimentalCoordinate.Controls.Add(flowLayoutPanelSecondAxis);
+            groupBoxExperimentalCoordinate.Controls.Add(flowLayoutPanelThirdAxis);
+            groupBoxExperimentalCoordinate.Controls.Add(checkBoxEnable3rd);
+            groupBoxExperimentalCoordinate.Controls.Add(checkBoxFix3rd);
+            groupBoxExperimentalCoordinate.Controls.Add(checkBoxFix2nd);
+            groupBoxExperimentalCoordinate.Controls.Add(checkBoxFix1st);
+            groupBoxExperimentalCoordinate.Controls.Add(checkBoxEnable2nd);
+            groupBoxExperimentalCoordinate.Controls.Add(numericBoxExp3);
+            groupBoxExperimentalCoordinate.Controls.Add(numericBoxExp2);
+            groupBoxExperimentalCoordinate.Controls.Add(numericBoxExp1);
+            groupBoxExperimentalCoordinate.Controls.Add(label5);
+            resources.ApplyResources(groupBoxExperimentalCoordinate, "groupBoxExperimentalCoordinate");
+            groupBoxExperimentalCoordinate.Name = "groupBoxExperimentalCoordinate";
+            groupBoxExperimentalCoordinate.TabStop = false;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelFirstAxis
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(radioButton1stX);
-            flowLayoutPanel1.Controls.Add(radioButton1stY);
-            flowLayoutPanel1.Controls.Add(radioButton1stZ);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanelFirstAxis, "flowLayoutPanelFirstAxis");
+            flowLayoutPanelFirstAxis.Controls.Add(radioButton1stX);
+            flowLayoutPanelFirstAxis.Controls.Add(radioButton1stY);
+            flowLayoutPanelFirstAxis.Controls.Add(radioButton1stZ);
+            flowLayoutPanelFirstAxis.Name = "flowLayoutPanelFirstAxis";
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelSecondAxis
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(radioButton2ndX);
-            flowLayoutPanel2.Controls.Add(radioButton2ndY);
-            flowLayoutPanel2.Controls.Add(radioButton2ndZ);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanelSecondAxis, "flowLayoutPanelSecondAxis");
+            flowLayoutPanelSecondAxis.Controls.Add(radioButton2ndX);
+            flowLayoutPanelSecondAxis.Controls.Add(radioButton2ndY);
+            flowLayoutPanelSecondAxis.Controls.Add(radioButton2ndZ);
+            flowLayoutPanelSecondAxis.Name = "flowLayoutPanelSecondAxis";
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanelThirdAxis
             // 
-            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
-            flowLayoutPanel3.Controls.Add(radioButton3rdX);
-            flowLayoutPanel3.Controls.Add(radioButton3rdY);
-            flowLayoutPanel3.Controls.Add(radioButton3rdZ);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            resources.ApplyResources(flowLayoutPanelThirdAxis, "flowLayoutPanelThirdAxis");
+            flowLayoutPanelThirdAxis.Controls.Add(radioButton3rdX);
+            flowLayoutPanelThirdAxis.Controls.Add(radioButton3rdY);
+            flowLayoutPanelThirdAxis.Controls.Add(radioButton3rdZ);
+            flowLayoutPanelThirdAxis.Name = "flowLayoutPanelThirdAxis";
             // 
             // label5
             // 
@@ -619,9 +626,9 @@
             // tableLayoutPanel2
             // 
             resources.ApplyResources(tableLayoutPanel2, "tableLayoutPanel2");
-            tableLayoutPanel2.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel2.Controls.Add(groupBox2, 2, 0);
-            tableLayoutPanel2.Controls.Add(panel2, 1, 0);
+            tableLayoutPanel2.Controls.Add(groupBoxReciProCoordinate, 0, 0);
+            tableLayoutPanel2.Controls.Add(groupBoxExperimentalCoordinate, 2, 0);
+            tableLayoutPanel2.Controls.Add(panelViewOptions, 1, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // FormRotationMatrix
@@ -633,19 +640,19 @@
             FormClosing += FormRotationMatrix_FormClosing;
             Load += FormRotationMatrix_Load;
             VisibleChanged += FormRotationMatrix_VisibleChanged;
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            panelViewOptions.ResumeLayout(false);
+            panelViewOptions.PerformLayout();
+            groupBoxReciProCoordinate.ResumeLayout(false);
+            groupBoxReciProCoordinate.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
+            groupBoxExperimentalCoordinate.ResumeLayout(false);
+            groupBoxExperimentalCoordinate.PerformLayout();
+            flowLayoutPanelFirstAxis.ResumeLayout(false);
+            flowLayoutPanelFirstAxis.PerformLayout();
+            flowLayoutPanelSecondAxis.ResumeLayout(false);
+            flowLayoutPanelSecondAxis.PerformLayout();
+            flowLayoutPanelThirdAxis.ResumeLayout(false);
+            flowLayoutPanelThirdAxis.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
@@ -653,12 +660,12 @@
 
         #endregion
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelViewOptions;
         private System.Windows.Forms.CheckBox checkBoxLink;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonViewIsometric;
         private System.Windows.Forms.Button buttonViewAlongBeam;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxReciProCoordinate;
         private NumericBox numericBoxPhi;
         private NumericBox numericBoxTheta;
         private NumericBox numericBoxPsi;
@@ -678,17 +685,17 @@
         private NumericBox numericBox32;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxExperimentalCoordinate;
         private System.Windows.Forms.Button buttonResetExpEuler;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFirstAxis;
         private System.Windows.Forms.RadioButton radioButton1stX;
         private System.Windows.Forms.RadioButton radioButton1stY;
         private System.Windows.Forms.RadioButton radioButton1stZ;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSecondAxis;
         private System.Windows.Forms.RadioButton radioButton2ndX;
         private System.Windows.Forms.RadioButton radioButton2ndY;
         private System.Windows.Forms.RadioButton radioButton2ndZ;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelThirdAxis;
         private System.Windows.Forms.RadioButton radioButton3rdX;
         private System.Windows.Forms.RadioButton radioButton3rdY;
         private System.Windows.Forms.RadioButton radioButton3rdZ;

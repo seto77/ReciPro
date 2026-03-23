@@ -26,11 +26,13 @@
         /// デザイナー サポートに必要なメソッドです。このメソッドの内容を 
         /// コード エディターで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox4 -> groupBoxCellConstants
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SymmetryControl));
-            groupBox4 = new System.Windows.Forms.GroupBox();
+            groupBoxCellConstants = new System.Windows.Forms.GroupBox();
             panel2 = new System.Windows.Forms.Panel();
             radioButtonNanoMeter = new System.Windows.Forms.RadioButton();
             radioButtonAngstrom = new System.Windows.Forms.RadioButton();
@@ -73,20 +75,20 @@
             comboBoxSearchResult = new System.Windows.Forms.ComboBox();
             panel1 = new System.Windows.Forms.Panel();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            groupBox4.SuspendLayout();
+            groupBoxCellConstants.SuspendLayout();
             panel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBoxSymmetry.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox4
+            // groupBoxCellConstants
             // 
-            groupBox4.Controls.Add(panel2);
-            groupBox4.Controls.Add(checkBoxShowError);
-            groupBox4.Controls.Add(tableLayoutPanel1);
-            resources.ApplyResources(groupBox4, "groupBox4");
-            groupBox4.Name = "groupBox4";
-            groupBox4.TabStop = false;
+            groupBoxCellConstants.Controls.Add(panel2);
+            groupBoxCellConstants.Controls.Add(checkBoxShowError);
+            groupBoxCellConstants.Controls.Add(tableLayoutPanel1);
+            resources.ApplyResources(groupBoxCellConstants, "groupBoxCellConstants");
+            groupBoxCellConstants.Name = "groupBoxCellConstants";
+            groupBoxCellConstants.TabStop = false;
             // 
             // panel2
             // 
@@ -477,12 +479,12 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            Controls.Add(groupBox4);
+            Controls.Add(groupBoxCellConstants);
             Controls.Add(panel1);
             Controls.Add(groupBoxSymmetry);
             Name = "SymmetryControl";
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
+            groupBoxCellConstants.ResumeLayout(false);
+            groupBoxCellConstants.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
@@ -493,7 +495,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxCellConstants;
         private NumericBox numericBoxGammaErr;
         private NumericBox numericBoxBetaErr;
         private NumericBox numericBoxAlphaErr;

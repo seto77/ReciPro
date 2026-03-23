@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [Serializable]
-public partial class ScalablePictureBox : UserControl
+public partial class ScalablePictureBox : CaptureUserControlBase
 {
     private const string SymbolFontName = "Arial"; // (260322Ch) overlay 描画で使うフォント名を一箇所へ集約する
     public bool SkipEvent = false;
@@ -1160,3 +1160,4 @@ public partial class ScalablePictureBox : UserControl
             ShowRimRentangle = false;
     }
 }
+

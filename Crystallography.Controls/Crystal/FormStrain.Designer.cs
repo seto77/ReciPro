@@ -26,25 +26,30 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxStrain
+        // groupBox2 -> groupBoxStress
+        // groupBox3 -> groupBoxElasticConstant
+        // groupBox4 -> groupBoxCellConstants
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxStrain = new System.Windows.Forms.GroupBox();
             this.numericBoxStrain11 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain13 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain22 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain23 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain33 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain12 = new Crystallography.Controls.NumericBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxStress = new System.Windows.Forms.GroupBox();
             this.numericBoxStress11 = new Crystallography.Controls.NumericBox();
             this.numericBoxStress12 = new Crystallography.Controls.NumericBox();
             this.numericBoxStress22 = new Crystallography.Controls.NumericBox();
             this.numericBoxStress13 = new Crystallography.Controls.NumericBox();
             this.numericBoxStress33 = new Crystallography.Controls.NumericBox();
             this.numericBoxStress23 = new Crystallography.Controls.NumericBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxElasticConstant = new System.Windows.Forms.GroupBox();
             this.elasticityControl1 = new Crystallography.Controls.ElasticityControl();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxCellConstants = new System.Windows.Forms.GroupBox();
             this.numericBoxA = new Crystallography.Controls.NumericBox();
             this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
             this.numericBoxC = new Crystallography.Controls.NumericBox();
@@ -52,26 +57,26 @@
             this.numericBoxGamma = new Crystallography.Controls.NumericBox();
             this.numericBoxB = new Crystallography.Controls.NumericBox();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBoxStrain.SuspendLayout();
+            this.groupBoxStress.SuspendLayout();
+            this.groupBoxElasticConstant.SuspendLayout();
+            this.groupBoxCellConstants.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupBoxStrain
             // 
-            this.groupBox1.Controls.Add(this.numericBoxStrain11);
-            this.groupBox1.Controls.Add(this.numericBoxStrain13);
-            this.groupBox1.Controls.Add(this.numericBoxStrain22);
-            this.groupBox1.Controls.Add(this.numericBoxStrain23);
-            this.groupBox1.Controls.Add(this.numericBoxStrain33);
-            this.groupBox1.Controls.Add(this.numericBoxStrain12);
-            this.groupBox1.Location = new System.Drawing.Point(2, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(331, 130);
-            this.groupBox1.TabIndex = 294;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Strain";
+            this.groupBoxStrain.Controls.Add(this.numericBoxStrain11);
+            this.groupBoxStrain.Controls.Add(this.numericBoxStrain13);
+            this.groupBoxStrain.Controls.Add(this.numericBoxStrain22);
+            this.groupBoxStrain.Controls.Add(this.numericBoxStrain23);
+            this.groupBoxStrain.Controls.Add(this.numericBoxStrain33);
+            this.groupBoxStrain.Controls.Add(this.numericBoxStrain12);
+            this.groupBoxStrain.Location = new System.Drawing.Point(2, 12);
+            this.groupBoxStrain.Name = "groupBoxStrain";
+            this.groupBoxStrain.Size = new System.Drawing.Size(331, 130);
+            this.groupBoxStrain.TabIndex = 294;
+            this.groupBoxStrain.TabStop = false;
+            this.groupBoxStrain.Text = "Strain";
             // 
             // numericBoxStrain11
             // 
@@ -205,21 +210,21 @@
             this.numericBoxStrain12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain12.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
-            // groupBox2
+            // groupBoxStress
             // 
-            this.groupBox2.Controls.Add(this.numericBoxStress11);
-            this.groupBox2.Controls.Add(this.numericBoxStress12);
-            this.groupBox2.Controls.Add(this.numericBoxStress22);
-            this.groupBox2.Controls.Add(this.numericBoxStress13);
-            this.groupBox2.Controls.Add(this.numericBoxStress33);
-            this.groupBox2.Controls.Add(this.numericBoxStress23);
-            this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new System.Drawing.Point(490, 148);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(230, 130);
-            this.groupBox2.TabIndex = 295;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Stress";
+            this.groupBoxStress.Controls.Add(this.numericBoxStress11);
+            this.groupBoxStress.Controls.Add(this.numericBoxStress12);
+            this.groupBoxStress.Controls.Add(this.numericBoxStress22);
+            this.groupBoxStress.Controls.Add(this.numericBoxStress13);
+            this.groupBoxStress.Controls.Add(this.numericBoxStress33);
+            this.groupBoxStress.Controls.Add(this.numericBoxStress23);
+            this.groupBoxStress.Enabled = false;
+            this.groupBoxStress.Location = new System.Drawing.Point(490, 148);
+            this.groupBoxStress.Name = "groupBoxStress";
+            this.groupBoxStress.Size = new System.Drawing.Size(230, 130);
+            this.groupBoxStress.TabIndex = 295;
+            this.groupBoxStress.TabStop = false;
+            this.groupBoxStress.Text = "Stress";
             // 
             // numericBoxStress11
             // 
@@ -347,16 +352,16 @@
             this.numericBoxStress23.TabIndex = 273;
             this.numericBoxStress23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
-            // groupBox3
+            // groupBoxElasticConstant
             // 
-            this.groupBox3.Controls.Add(this.elasticityControl1);
-            this.groupBox3.Enabled = false;
-            this.groupBox3.Location = new System.Drawing.Point(6, 148);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(478, 175);
-            this.groupBox3.TabIndex = 296;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Elastic constant";
+            this.groupBoxElasticConstant.Controls.Add(this.elasticityControl1);
+            this.groupBoxElasticConstant.Enabled = false;
+            this.groupBoxElasticConstant.Location = new System.Drawing.Point(6, 148);
+            this.groupBoxElasticConstant.Name = "groupBoxElasticConstant";
+            this.groupBoxElasticConstant.Size = new System.Drawing.Size(478, 175);
+            this.groupBoxElasticConstant.TabIndex = 296;
+            this.groupBoxElasticConstant.TabStop = false;
+            this.groupBoxElasticConstant.Text = "Elastic constant";
             // 
             // elasticityControl1
             // 
@@ -369,21 +374,21 @@
             this.elasticityControl1.TabIndex = 291;
             this.elasticityControl1.ValueChanged += new Crystallography.Controls.ElasticityControl.MyEventHandler(this.elasticityControl1_ValueChanged);
             // 
-            // groupBox4
+            // groupBoxCellConstants
             // 
-            this.groupBox4.Controls.Add(this.numericBoxA);
-            this.groupBox4.Controls.Add(this.numericBoxAlpha);
-            this.groupBox4.Controls.Add(this.numericBoxC);
-            this.groupBox4.Controls.Add(this.numericBoxBeta);
-            this.groupBox4.Controls.Add(this.numericBoxGamma);
-            this.groupBox4.Controls.Add(this.numericBoxB);
-            this.groupBox4.Enabled = false;
-            this.groupBox4.Location = new System.Drawing.Point(339, 12);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(230, 130);
-            this.groupBox4.TabIndex = 297;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Cell constants";
+            this.groupBoxCellConstants.Controls.Add(this.numericBoxA);
+            this.groupBoxCellConstants.Controls.Add(this.numericBoxAlpha);
+            this.groupBoxCellConstants.Controls.Add(this.numericBoxC);
+            this.groupBoxCellConstants.Controls.Add(this.numericBoxBeta);
+            this.groupBoxCellConstants.Controls.Add(this.numericBoxGamma);
+            this.groupBoxCellConstants.Controls.Add(this.numericBoxB);
+            this.groupBoxCellConstants.Enabled = false;
+            this.groupBoxCellConstants.Location = new System.Drawing.Point(339, 12);
+            this.groupBoxCellConstants.Name = "groupBoxCellConstants";
+            this.groupBoxCellConstants.Size = new System.Drawing.Size(230, 130);
+            this.groupBoxCellConstants.TabIndex = 297;
+            this.groupBoxCellConstants.TabStop = false;
+            this.groupBoxCellConstants.Text = "Cell constants";
             // 
             // numericBoxA
             // 
@@ -529,21 +534,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(723, 327);
             this.Controls.Add(this.buttonApply);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxCellConstants);
+            this.Controls.Add(this.groupBoxElasticConstant);
+            this.Controls.Add(this.groupBoxStress);
+            this.Controls.Add(this.groupBoxStrain);
             this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormStrain";
             this.Text = "Strain Control";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStrain_FormClosing);
             this.Load += new System.EventHandler(this.FormStrain_Load);
             this.VisibleChanged += new System.EventHandler(this.FormStrain_VisibleChanged);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
+            this.groupBoxStrain.ResumeLayout(false);
+            this.groupBoxStress.ResumeLayout(false);
+            this.groupBoxElasticConstant.ResumeLayout(false);
+            this.groupBoxElasticConstant.PerformLayout();
+            this.groupBoxCellConstants.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,10 +574,10 @@
         private NumericBox numericBoxB;
         private NumericBox numericBoxGamma;
         private NumericBox numericBoxC;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxStrain;
+        private System.Windows.Forms.GroupBox groupBoxStress;
+        private System.Windows.Forms.GroupBox groupBoxElasticConstant;
+        private System.Windows.Forms.GroupBox groupBoxCellConstants;
         private System.Windows.Forms.Button buttonApply;
     }
 }

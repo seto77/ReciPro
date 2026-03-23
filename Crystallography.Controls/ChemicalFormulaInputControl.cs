@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class ChemicalFormulaInputControl : UserControl
+public partial class ChemicalFormulaInputControl : CaptureUserControlBase
 {
     private bool standardMode = true;
 

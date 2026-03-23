@@ -287,13 +287,13 @@
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>346, 82</value>
   </data>
-  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxCellConstants.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxCellConstants.Size" type="System.Drawing.Size, System.Drawing">
     <value>352, 132</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
+  <data name="groupBoxCellConstants.Text" xml:space="preserve">
     <value>格子定数</value>
   </data>
   <data name="comboBoxSpaceGroup.Location" type="System.Drawing.Point, System.Drawing">

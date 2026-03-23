@@ -28,6 +28,15 @@
         /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
         /// コード エディタで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox2 -> groupBoxArrows
+        // groupBox5 -> groupBoxProjectAlong
+        // groupBox6 -> groupBoxCrystalInformation
+        // flowLayoutPanel1 -> flowLayoutPanelSetAxis
+        // flowLayoutPanel2 -> flowLayoutPanelSetPlane
+        // flowLayoutPanel3 -> flowLayoutPanelCrystalEdit
+        // flowLayoutPanel4 -> flowLayoutPanelCrystalOrder
+        // panel4 -> panelArrowStep
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -39,21 +48,21 @@
             splitContainer = new System.Windows.Forms.SplitContainer();
             groupBoxCrystalList = new System.Windows.Forms.GroupBox();
             listBox = new System.Windows.Forms.ListBox();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelCrystalOrder = new System.Windows.Forms.FlowLayoutPanel();
             buttonAllClear = new System.Windows.Forms.Button();
             buttonDelete = new System.Windows.Forms.Button();
             buttonDuplicate = new System.Windows.Forms.Button();
             buttonLower = new System.Windows.Forms.Button();
             buttonUpper = new System.Windows.Forms.Button();
-            groupBox6 = new System.Windows.Forms.GroupBox();
+            groupBoxCrystalInformation = new System.Windows.Forms.GroupBox();
             crystalControl = new CrystalControl();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelCrystalEdit = new System.Windows.Forms.FlowLayoutPanel();
             buttonAdd = new System.Windows.Forms.Button();
             buttonChange = new System.Windows.Forms.Button();
             panel1 = new System.Windows.Forms.Panel();
-            groupBox5 = new System.Windows.Forms.GroupBox();
+            groupBoxProjectAlong = new System.Windows.Forms.GroupBox();
             tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelSetAxis = new System.Windows.Forms.FlowLayoutPanel();
             buttonSetAxis = new System.Windows.Forms.Button();
             checkBoxFixAxis = new System.Windows.Forms.CheckBox();
             tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -68,10 +77,10 @@
             numericBoxPlaneK = new NumericBox();
             label11 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelSetPlane = new System.Windows.Forms.FlowLayoutPanel();
             buttonSetPlane = new System.Windows.Forms.Button();
             checkBoxFixePlane = new System.Windows.Forms.CheckBox();
-            groupBox2 = new System.Windows.Forms.GroupBox();
+            groupBoxArrows = new System.Windows.Forms.GroupBox();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             buttonAntiClock = new System.Windows.Forms.Button();
@@ -84,7 +93,7 @@
             buttonTop = new System.Windows.Forms.Button();
             buttonTopRight = new System.Windows.Forms.Button();
             buttonRight = new System.Windows.Forms.Button();
-            panel4 = new System.Windows.Forms.Panel();
+            panelArrowStep = new System.Windows.Forms.Panel();
             numericBoxStep = new NumericBox();
             checkBoxAnimation = new System.Windows.Forms.CheckBox();
             groupBoxCurrentDirection = new System.Windows.Forms.GroupBox();
@@ -155,8 +164,8 @@
             toolStripMenuItemDisableTextRendering = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             powderDiffractionFunctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparatorCapture = new System.Windows.Forms.ToolStripSeparator(); // 260323Cl 追加
-            captureGUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem(); // 260323Cl 追加
+            toolStripSeparatorCapture = new System.Windows.Forms.ToolStripSeparator();
+            captureGUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
@@ -193,20 +202,20 @@
             splitContainer.Panel2.SuspendLayout();
             splitContainer.SuspendLayout();
             groupBoxCrystalList.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
-            groupBox6.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanelCrystalOrder.SuspendLayout();
+            groupBoxCrystalInformation.SuspendLayout();
+            flowLayoutPanelCrystalEdit.SuspendLayout();
             panel1.SuspendLayout();
-            groupBox5.SuspendLayout();
+            groupBoxProjectAlong.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanelSetAxis.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            groupBox2.SuspendLayout();
+            flowLayoutPanelSetPlane.SuspendLayout();
+            groupBoxArrows.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            panel4.SuspendLayout();
+            panelArrowStep.SuspendLayout();
             groupBoxCurrentDirection.SuspendLayout();
             panelCrystalDirection.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -278,15 +287,16 @@
             // splitContainer.Panel2
             // 
             splitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            splitContainer.Panel2.Controls.Add(groupBox6);
-            splitContainer.Panel2.Controls.Add(flowLayoutPanel3);
+            splitContainer.Panel2.Controls.Add(groupBoxCrystalInformation);
+            splitContainer.Panel2.Controls.Add(flowLayoutPanelCrystalEdit);
             resources.ApplyResources(splitContainer.Panel2, "splitContainer.Panel2");
             // 
             // groupBoxCrystalList
             // 
             groupBoxCrystalList.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(groupBoxCrystalList, true);
             groupBoxCrystalList.Controls.Add(listBox);
-            groupBoxCrystalList.Controls.Add(flowLayoutPanel4);
+            groupBoxCrystalList.Controls.Add(flowLayoutPanelCrystalOrder);
             resources.ApplyResources(groupBoxCrystalList, "groupBoxCrystalList");
             groupBoxCrystalList.Name = "groupBoxCrystalList";
             groupBoxCrystalList.TabStop = false;
@@ -301,15 +311,15 @@
             listBox.SelectedIndexChanged += ListBox_SelectedIndexChanged;
             listBox.MouseDown += listBox_MouseDown;
             // 
-            // flowLayoutPanel4
+            // flowLayoutPanelCrystalOrder
             // 
-            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(buttonAllClear);
-            flowLayoutPanel4.Controls.Add(buttonDelete);
-            flowLayoutPanel4.Controls.Add(buttonDuplicate);
-            flowLayoutPanel4.Controls.Add(buttonLower);
-            flowLayoutPanel4.Controls.Add(buttonUpper);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            resources.ApplyResources(flowLayoutPanelCrystalOrder, "flowLayoutPanelCrystalOrder");
+            flowLayoutPanelCrystalOrder.Controls.Add(buttonAllClear);
+            flowLayoutPanelCrystalOrder.Controls.Add(buttonDelete);
+            flowLayoutPanelCrystalOrder.Controls.Add(buttonDuplicate);
+            flowLayoutPanelCrystalOrder.Controls.Add(buttonLower);
+            flowLayoutPanelCrystalOrder.Controls.Add(buttonUpper);
+            flowLayoutPanelCrystalOrder.Name = "flowLayoutPanelCrystalOrder";
             // 
             // buttonAllClear
             // 
@@ -357,13 +367,14 @@
             buttonUpper.UseVisualStyleBackColor = false;
             buttonUpper.Click += ButtonUpper_Click;
             // 
-            // groupBox6
+            // groupBoxCrystalInformation
             // 
-            groupBox6.Controls.Add(crystalControl);
-            resources.ApplyResources(groupBox6, "groupBox6");
-            groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
-            groupBox6.Name = "groupBox6";
-            groupBox6.TabStop = false;
+            captureExtender.SetCapture(groupBoxCrystalInformation, true);
+            groupBoxCrystalInformation.Controls.Add(crystalControl);
+            resources.ApplyResources(groupBoxCrystalInformation, "groupBoxCrystalInformation");
+            groupBoxCrystalInformation.ForeColor = System.Drawing.SystemColors.ControlText;
+            groupBoxCrystalInformation.Name = "groupBoxCrystalInformation";
+            groupBoxCrystalInformation.TabStop = false;
             // 
             // crystalControl
             // 
@@ -395,12 +406,13 @@
             crystalControl.ScatteringFactor_VisibleChanged += crystalControl_ScatteringFactor_VisibleChanged;
             crystalControl.SymmetryInformation_VisibleChanged += CrystalControl_SymmetryInformation_VisibleChanged;
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanelCrystalEdit
             // 
-            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
-            flowLayoutPanel3.Controls.Add(buttonAdd);
-            flowLayoutPanel3.Controls.Add(buttonChange);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            resources.ApplyResources(flowLayoutPanelCrystalEdit, "flowLayoutPanelCrystalEdit");
+            captureExtender.SetCapture(flowLayoutPanelCrystalEdit, true);
+            flowLayoutPanelCrystalEdit.Controls.Add(buttonAdd);
+            flowLayoutPanelCrystalEdit.Controls.Add(buttonChange);
+            flowLayoutPanelCrystalEdit.Name = "flowLayoutPanelCrystalEdit";
             // 
             // buttonAdd
             // 
@@ -424,35 +436,37 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(groupBox5);
-            panel1.Controls.Add(groupBox2);
+            captureExtender.SetCapture(panel1, true);
+            panel1.Controls.Add(groupBoxProjectAlong);
+            panel1.Controls.Add(groupBoxArrows);
             panel1.Controls.Add(groupBoxCurrentDirection);
             panel1.Controls.Add(label8);
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
-            // groupBox5
+            // groupBoxProjectAlong
             // 
-            resources.ApplyResources(groupBox5, "groupBox5");
-            groupBox5.Controls.Add(tableLayoutPanel4);
-            groupBox5.Name = "groupBox5";
-            groupBox5.TabStop = false;
+            resources.ApplyResources(groupBoxProjectAlong, "groupBoxProjectAlong");
+            captureExtender.SetCapture(groupBoxProjectAlong, true);
+            groupBoxProjectAlong.Controls.Add(tableLayoutPanel4);
+            groupBoxProjectAlong.Name = "groupBoxProjectAlong";
+            groupBoxProjectAlong.TabStop = false;
             // 
             // tableLayoutPanel4
             // 
             resources.ApplyResources(tableLayoutPanel4, "tableLayoutPanel4");
-            tableLayoutPanel4.Controls.Add(flowLayoutPanel1, 0, 0);
+            tableLayoutPanel4.Controls.Add(flowLayoutPanelSetAxis, 0, 0);
             tableLayoutPanel4.Controls.Add(tableLayoutPanel5, 0, 1);
             tableLayoutPanel4.Controls.Add(tableLayoutPanel7, 0, 3);
-            tableLayoutPanel4.Controls.Add(flowLayoutPanel2, 0, 2);
+            tableLayoutPanel4.Controls.Add(flowLayoutPanelSetPlane, 0, 2);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelSetAxis
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(buttonSetAxis);
-            flowLayoutPanel1.Controls.Add(checkBoxFixAxis);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanelSetAxis, "flowLayoutPanelSetAxis");
+            flowLayoutPanelSetAxis.Controls.Add(buttonSetAxis);
+            flowLayoutPanelSetAxis.Controls.Add(checkBoxFixAxis);
+            flowLayoutPanelSetAxis.Name = "flowLayoutPanelSetAxis";
             // 
             // buttonSetAxis
             // 
@@ -594,12 +608,12 @@
             resources.ApplyResources(label12, "label12");
             label12.Name = "label12";
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelSetPlane
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(buttonSetPlane);
-            flowLayoutPanel2.Controls.Add(checkBoxFixePlane);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanelSetPlane, "flowLayoutPanelSetPlane");
+            flowLayoutPanelSetPlane.Controls.Add(buttonSetPlane);
+            flowLayoutPanelSetPlane.Controls.Add(checkBoxFixePlane);
+            flowLayoutPanelSetPlane.Name = "flowLayoutPanelSetPlane";
             // 
             // buttonSetPlane
             // 
@@ -617,14 +631,15 @@
             checkBoxFixePlane.UseVisualStyleBackColor = true;
             checkBoxFixePlane.CheckedChanged += checkBoxFixPlane_CheckedChanged;
             // 
-            // groupBox2
+            // groupBoxArrows
             // 
-            groupBox2.Controls.Add(tableLayoutPanel1);
-            groupBox2.Controls.Add(panel4);
-            groupBox2.Controls.Add(checkBoxAnimation);
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
+            captureExtender.SetCapture(groupBoxArrows, true);
+            groupBoxArrows.Controls.Add(tableLayoutPanel1);
+            groupBoxArrows.Controls.Add(panelArrowStep);
+            groupBoxArrows.Controls.Add(checkBoxAnimation);
+            resources.ApplyResources(groupBoxArrows, "groupBoxArrows");
+            groupBoxArrows.Name = "groupBoxArrows";
+            groupBoxArrows.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -727,11 +742,11 @@
             buttonRight.UseVisualStyleBackColor = false;
             buttonRight.Click += ButtonDirection_Click;
             // 
-            // panel4
+            // panelArrowStep
             // 
-            resources.ApplyResources(panel4, "panel4");
-            panel4.Controls.Add(numericBoxStep);
-            panel4.Name = "panel4";
+            resources.ApplyResources(panelArrowStep, "panelArrowStep");
+            panelArrowStep.Controls.Add(numericBoxStep);
+            panelArrowStep.Name = "panelArrowStep";
             // 
             // numericBoxStep
             // 
@@ -760,6 +775,7 @@
             // groupBoxCurrentDirection
             // 
             resources.ApplyResources(groupBoxCurrentDirection, "groupBoxCurrentDirection");
+            captureExtender.SetCapture(groupBoxCurrentDirection, true);
             groupBoxCurrentDirection.Controls.Add(panelCrystalDirection);
             groupBoxCurrentDirection.Controls.Add(labelCurrentIndex);
             groupBoxCurrentDirection.Name = "groupBoxCurrentDirection";
@@ -896,6 +912,7 @@
             // 
             // toolStrip1
             // 
+            captureExtender.SetCapture(toolStrip1, true);
             resources.ApplyResources(toolStrip1, "toolStrip1");
             toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -1065,6 +1082,7 @@
             // 
             // fileToolStripMenuItem
             // 
+            captureExtender.SetCapture(fileToolStripMenuItem, true);
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { readCrystalDataToolStripMenuItem, readCrystalDataAndAddToolStripMenuItem, toolStripMenuItemReadInitialCrystalList, toolStripSeparator21, readCrystalFromCIFOrAMCFileToolStripMenuItem, toolStripSeparator6, saveCrystalDataToolStripMenuItem, toolStripMenuItemExportCIF, toolStripSeparator5, toolStripMenuItem1, toolStripSeparator3, exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
@@ -1139,21 +1157,8 @@
             // 
             // optionToolStripMenuItem
             // 
+            captureExtender.SetCapture(optionToolStripMenuItem, true);
             optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolTipToolStripMenuItem, toolStripSeparator11, resetRegistryToolStripMenuItem, toolStripMenuItemDisableNative, disableOpneGLToolStripMenuItem, toolStripMenuItemDisableTextRendering, toolStripSeparator20, powderDiffractionFunctionToolStripMenuItem, toolStripSeparatorCapture, captureGUIToolStripMenuItem });
-            //
-            // toolStripSeparatorCapture
-            // 260323Cl 追加
-            //
-            toolStripSeparatorCapture.Name = "toolStripSeparatorCapture";
-            toolStripSeparatorCapture.Size = new System.Drawing.Size(247, 6);
-            //
-            // captureGUIToolStripMenuItem
-            // 260323Cl 追加
-            //
-            captureGUIToolStripMenuItem.Name = "captureGUIToolStripMenuItem";
-            captureGUIToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            captureGUIToolStripMenuItem.Text = "Capture GUI Components...";
-            captureGUIToolStripMenuItem.Click += captureGUIToolStripMenuItem_Click;
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             resources.ApplyResources(optionToolStripMenuItem, "optionToolStripMenuItem");
             // 
@@ -1207,8 +1212,20 @@
             resources.ApplyResources(powderDiffractionFunctionToolStripMenuItem, "powderDiffractionFunctionToolStripMenuItem");
             powderDiffractionFunctionToolStripMenuItem.CheckedChanged += powderDiffractionFunctionsToolStripMenuItem_CheckedChanged;
             // 
+            // toolStripSeparatorCapture
+            // 
+            toolStripSeparatorCapture.Name = "toolStripSeparatorCapture";
+            resources.ApplyResources(toolStripSeparatorCapture, "toolStripSeparatorCapture");
+            // 
+            // captureGUIToolStripMenuItem
+            // 
+            captureGUIToolStripMenuItem.Name = "captureGUIToolStripMenuItem";
+            resources.ApplyResources(captureGUIToolStripMenuItem, "captureGUIToolStripMenuItem");
+            captureGUIToolStripMenuItem.Click += captureGUIToolStripMenuItem_Click;
+            // 
             // helpToolStripMenuItem
             // 
+            captureExtender.SetCapture(helpToolStripMenuItem, true);
             helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { checkUpdatesToolStripMenuItem, toolStripSeparator16, hintToolStripMenuItem, versionHistoryToolStripMenuItem, licenseToolStripMenuItem, toolStripSeparator18, githubPageToolStripMenuItem, reportBugsRequestsOrCommentsToolStripMenuItem1, toolStripSeparator17, helpwebToolStripMenuItem, githubWikiToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
@@ -1279,6 +1296,7 @@
             // languageToolStripMenuItem
             // 
             languageToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            captureExtender.SetCapture(languageToolStripMenuItem, true);
             languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { englishToolStripMenuItem, japaneseToolStripMenuItem });
             languageToolStripMenuItem.Name = "languageToolStripMenuItem";
             resources.ApplyResources(languageToolStripMenuItem, "languageToolStripMenuItem");
@@ -1297,6 +1315,7 @@
             // 
             // macroToolStripMenuItem
             // 
+            captureExtender.SetCapture(macroToolStripMenuItem, true);
             macroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { editorToolStripMenuItem, toolStripSeparator22 });
             resources.ApplyResources(macroToolStripMenuItem, "macroToolStripMenuItem");
             macroToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -1364,6 +1383,7 @@
             AllowDrop = true;
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            captureExtender.SetCapture(this, true);
             Controls.Add(toolStripContainer1);
             ForeColor = System.Drawing.SystemColors.ControlText;
             KeyPreview = true;
@@ -1393,30 +1413,30 @@
             splitContainer.ResumeLayout(false);
             groupBoxCrystalList.ResumeLayout(false);
             groupBoxCrystalList.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
-            groupBox6.ResumeLayout(false);
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanelCrystalOrder.ResumeLayout(false);
+            flowLayoutPanelCrystalOrder.PerformLayout();
+            groupBoxCrystalInformation.ResumeLayout(false);
+            flowLayoutPanelCrystalEdit.ResumeLayout(false);
+            flowLayoutPanelCrystalEdit.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            groupBox5.ResumeLayout(false);
-            groupBox5.PerformLayout();
+            groupBoxProjectAlong.ResumeLayout(false);
+            groupBoxProjectAlong.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanelSetAxis.ResumeLayout(false);
+            flowLayoutPanelSetAxis.PerformLayout();
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
             tableLayoutPanel7.ResumeLayout(false);
             tableLayoutPanel7.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            flowLayoutPanelSetPlane.ResumeLayout(false);
+            flowLayoutPanelSetPlane.PerformLayout();
+            groupBoxArrows.ResumeLayout(false);
+            groupBoxArrows.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            panel4.ResumeLayout(false);
+            panelArrowStep.ResumeLayout(false);
             groupBoxCurrentDirection.ResumeLayout(false);
             groupBoxCurrentDirection.PerformLayout();
             panelCrystalDirection.ResumeLayout(false);
@@ -1448,9 +1468,9 @@
         public System.Windows.Forms.ToolStripButton toolStripButtonStereonet;
         public System.Windows.Forms.ToolStripButton toolStripButtonDiffractionSingle;
         public System.Windows.Forms.ToolStripButton toolStripButtonSpotIDv2;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBoxProjectAlong;
         private System.Windows.Forms.Button buttonSetAxis;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxArrows;
         private System.Windows.Forms.Button buttonClock;
         private System.Windows.Forms.Button buttonAntiClock;
         private System.Windows.Forms.Button buttonReset;
@@ -1474,7 +1494,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolTipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         public System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBoxCrystalInformation;
         private System.Windows.Forms.Button buttonSetPlane;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Label label11;
@@ -1507,7 +1527,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBoxCurrentDirection;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelArrowStep;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
@@ -1523,9 +1543,9 @@
         private NumericBox numericBoxStep;
         private System.Windows.Forms.CheckBox checkBoxAnimation;
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSetAxis;
         private System.Windows.Forms.CheckBox checkBoxFixAxis;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSetPlane;
         private System.Windows.Forms.CheckBox checkBoxFixePlane;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem disableOpneGLToolStripMenuItem;
@@ -1553,8 +1573,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripMenuItem reportBugsRequestsOrCommentsToolStripMenuItem1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCrystalOrder;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCrystalEdit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripMenuItem powderDiffractionFunctionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;

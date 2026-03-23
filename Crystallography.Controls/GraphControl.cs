@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class GraphControl : UserControl
+public partial class GraphControl : CaptureUserControlBase
 {
 
     #region コンストラクタ、ロード

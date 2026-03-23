@@ -1161,10 +1161,10 @@ angles</value>
   <data name="&gt;&gt;buttonResetExpEuler.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panel2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="panelViewOptions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="panel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="panelViewOptions.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
@@ -1179,25 +1179,25 @@ angles</value>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelViewOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>417, 3</value>
   </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelViewOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 82</value>
   </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelViewOptions.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
   </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+  <data name="&gt;&gt;panelViewOptions.Name" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelViewOptions.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelViewOptions.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelViewOptions.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
@@ -1284,34 +1284,34 @@ angles</value>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="groupBoxReciProCoordinate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxReciProCoordinate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxReciProCoordinate.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxReciProCoordinate.Size" type="System.Drawing.Size, System.Drawing">
     <value>408, 384</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxReciProCoordinate.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
+  <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciPro coordinate system (ZXZ)</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxReciProCoordinate.Name" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxReciProCoordinate.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxReciProCoordinate.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxReciProCoordinate.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
@@ -2004,40 +2004,40 @@ angles</value>
 
 
 
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelFirstAxis.Name" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelFirstAxis.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelFirstAxis.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelFirstAxis.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSecondAxis.Name" xml:space="preserve">
     <value>flowLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSecondAxis.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSecondAxis.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelSecondAxis.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelThirdAxis.Name" xml:space="preserve">
     <value>flowLayoutPanel3</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelThirdAxis.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelThirdAxis.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanelThirdAxis.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
@@ -2052,52 +2052,52 @@ angles</value>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="groupBoxExperimentalCoordinate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxExperimentalCoordinate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxExperimentalCoordinate.Location" type="System.Drawing.Point, System.Drawing">
     <value>537, 3</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxExperimentalCoordinate.Size" type="System.Drawing.Size, System.Drawing">
     <value>408, 384</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxExperimentalCoordinate.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxExperimentalCoordinate.Text" xml:space="preserve">
     <value>Experimental coordinate system</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxExperimentalCoordinate.Name" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxExperimentalCoordinate.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxExperimentalCoordinate.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxExperimentalCoordinate.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelFirstAxis.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelFirstAxis.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="flowLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="flowLayoutPanelFirstAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 8.25pt</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelFirstAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 20</value>
   </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelFirstAxis.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 23</value>
   </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelFirstAxis.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
 
@@ -2112,25 +2112,25 @@ angles</value>
 
 
 
-  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelSecondAxis.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelSecondAxis.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="flowLayoutPanel2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="flowLayoutPanelSecondAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 8.25pt</value>
   </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelSecondAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 50</value>
   </data>
-  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelSecondAxis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelSecondAxis.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 23</value>
   </data>
-  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelSecondAxis.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
 
@@ -2145,25 +2145,25 @@ angles</value>
 
 
 
-  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelThirdAxis.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanelThirdAxis.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="flowLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="flowLayoutPanelThirdAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 8.25pt</value>
   </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelThirdAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 80</value>
   </data>
-  <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelThirdAxis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelThirdAxis.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 23</value>
   </data>
-  <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
+  <data name="flowLayoutPanelThirdAxis.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
 

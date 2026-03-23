@@ -11,7 +11,7 @@ using V4 = OpenTK.Mathematics.Vector4d;
 
 namespace Crystallography.Controls;
 
-public partial class PoleFigureControl2 : UserControl
+public partial class PoleFigureControl2 : CaptureUserControlBase
 {
     /// <summary>
     /// Histogram:方位ベクトルの頻度,  Average: 方位ベクトルが持つ値の平均値,  Sigma: 方位ベクトルが持つ値の標準偏差 

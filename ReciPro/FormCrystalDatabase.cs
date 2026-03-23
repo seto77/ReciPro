@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormCrystalDatabase : Form
+public partial class FormCrystalDatabase : CaptureFormBase
 {
     public FormMain FormMain;
     public FormCrystalDatabase()
@@ -42,3 +42,4 @@ public partial class FormCrystalDatabase : Form
         toolStripProgressBar1.Value = (int)(progress * 100);
     }
 }
+

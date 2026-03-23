@@ -2,7 +2,7 @@
 
 namespace ReciPro;
 
-public partial class InputBox : UserControl
+public partial class InputBox : CaptureUserControlBase
 {
     public InputBox() => InitializeComponent();
 
@@ -104,3 +104,4 @@ public partial class InputBox : UserControl
         Click2?.Invoke(this, EventArgs.Empty);
     }
 }
+

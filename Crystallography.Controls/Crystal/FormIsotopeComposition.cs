@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class FormIsotopeComposition : Form
+    public partial class FormIsotopeComposition : CaptureFormBase
     {
         public FormIsotopeComposition()
         {

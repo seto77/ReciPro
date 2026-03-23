@@ -26,19 +26,22 @@
         /// デザイナー サポートに必要なメソッドです。このメソッドの内容を 
         /// コード エディターで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox2 -> groupBoxIsothermalPressure
+        // groupBox3 -> groupBoxThermalPressure
         private void InitializeComponent()
         {
             this.label83 = new System.Windows.Forms.Label();
             this.textBoxEOS_Note = new System.Windows.Forms.TextBox();
             this.checkBoxUseEOS = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxThermalPressure = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.radioButtonMieGruneisen = new System.Windows.Forms.RadioButton();
             this.radioButtonTdependenceK0andV0 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxIsothermalPressure = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.radioButtonEOS_ThirdBirchMurnaghan = new System.Windows.Forms.RadioButton();
@@ -66,9 +69,9 @@
             this.numericBoxEOS_T0 = new Crystallography.Controls.NumericBox();
             this.numericBoxTemperature = new Crystallography.Controls.NumericBox();
             this.numericBoxPressure = new Crystallography.Controls.NumericBox();
-            this.groupBox3.SuspendLayout();
+            this.groupBoxThermalPressure.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxIsothermalPressure.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
@@ -107,27 +110,27 @@
             this.checkBoxUseEOS.UseVisualStyleBackColor = true;
             this.checkBoxUseEOS.CheckedChanged += new System.EventHandler(this.parameters_Changed);
             // 
-            // groupBox3
+            // groupBoxThermalPressure
             // 
-            this.groupBox3.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_C);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_B);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_KperT);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.numericBoxEOS_A);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.radioButtonMieGruneisen);
-            this.groupBox3.Controls.Add(this.radioButtonTdependenceK0andV0);
-            this.groupBox3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(193, 26);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(281, 173);
-            this.groupBox3.TabIndex = 65;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Thermal pressure";
+            this.groupBoxThermalPressure.Controls.Add(this.flowLayoutPanel1);
+            this.groupBoxThermalPressure.Controls.Add(this.label1);
+            this.groupBoxThermalPressure.Controls.Add(this.numericBoxEOS_C);
+            this.groupBoxThermalPressure.Controls.Add(this.numericBoxEOS_B);
+            this.groupBoxThermalPressure.Controls.Add(this.numericBoxEOS_KperT);
+            this.groupBoxThermalPressure.Controls.Add(this.label13);
+            this.groupBoxThermalPressure.Controls.Add(this.numericBoxEOS_A);
+            this.groupBoxThermalPressure.Controls.Add(this.label3);
+            this.groupBoxThermalPressure.Controls.Add(this.radioButtonMieGruneisen);
+            this.groupBoxThermalPressure.Controls.Add(this.radioButtonTdependenceK0andV0);
+            this.groupBoxThermalPressure.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxThermalPressure.Location = new System.Drawing.Point(193, 26);
+            this.groupBoxThermalPressure.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxThermalPressure.Name = "groupBoxThermalPressure";
+            this.groupBoxThermalPressure.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxThermalPressure.Size = new System.Drawing.Size(281, 173);
+            this.groupBoxThermalPressure.TabIndex = 65;
+            this.groupBoxThermalPressure.TabStop = false;
+            this.groupBoxThermalPressure.Text = "Thermal pressure";
             // 
             // flowLayoutPanel1
             // 
@@ -202,19 +205,19 @@
             this.radioButtonTdependenceK0andV0.UseVisualStyleBackColor = true;
             this.radioButtonTdependenceK0andV0.CheckedChanged += new System.EventHandler(this.parameters_Changed);
             // 
-            // groupBox2
+            // groupBoxIsothermalPressure
             // 
-            this.groupBox2.Controls.Add(this.flowLayoutPanel5);
-            this.groupBox2.Controls.Add(this.flowLayoutPanel6);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(0, 26);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(191, 198);
-            this.groupBox2.TabIndex = 64;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Isothermal pressure at T₀";
+            this.groupBoxIsothermalPressure.Controls.Add(this.flowLayoutPanel5);
+            this.groupBoxIsothermalPressure.Controls.Add(this.flowLayoutPanel6);
+            this.groupBoxIsothermalPressure.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.groupBoxIsothermalPressure.Location = new System.Drawing.Point(0, 26);
+            this.groupBoxIsothermalPressure.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxIsothermalPressure.Name = "groupBoxIsothermalPressure";
+            this.groupBoxIsothermalPressure.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxIsothermalPressure.Size = new System.Drawing.Size(191, 198);
+            this.groupBoxIsothermalPressure.TabIndex = 64;
+            this.groupBoxIsothermalPressure.TabStop = false;
+            this.groupBoxIsothermalPressure.Text = "Isothermal pressure at T₀";
             // 
             // flowLayoutPanel5
             // 
@@ -813,8 +816,8 @@
             this.Controls.Add(this.label83);
             this.Controls.Add(this.textBoxEOS_Note);
             this.Controls.Add(this.checkBoxUseEOS);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxThermalPressure);
+            this.Controls.Add(this.groupBoxIsothermalPressure);
             this.Controls.Add(this.numericBoxEOS_T0);
             this.Controls.Add(this.numericBoxTemperature);
             this.Controls.Add(this.numericBoxPressure);
@@ -822,11 +825,11 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "EOSControl";
             this.Size = new System.Drawing.Size(477, 227);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBoxThermalPressure.ResumeLayout(false);
+            this.groupBoxThermalPressure.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxIsothermalPressure.ResumeLayout(false);
+            this.groupBoxIsothermalPressure.PerformLayout();
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel6.ResumeLayout(false);
             this.flowLayoutPanel6.PerformLayout();
@@ -840,7 +843,7 @@
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.TextBox textBoxEOS_Note;
         private System.Windows.Forms.CheckBox checkBoxUseEOS;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxThermalPressure;
         private System.Windows.Forms.Label label1;
         private NumericBox numericBoxEOS_C;
         private NumericBox numericBoxEOS_B;
@@ -853,7 +856,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButtonMieGruneisen;
         private System.Windows.Forms.RadioButton radioButtonTdependenceK0andV0;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxIsothermalPressure;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private NumericBox numericBoxEOS_V0perCell;
         private NumericBox numericBoxEOS_V0perMol;

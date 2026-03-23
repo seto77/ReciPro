@@ -21,7 +21,7 @@ using ZLinq;
 
 namespace ReciPro;
 
-public partial class FormEBSD : Form
+public partial class FormEBSD : CaptureFormBase
 {
     #region フィールド、プロパティ
     public FormMain FormMain;
@@ -1824,4 +1824,5 @@ public partial class FormEBSD : Form
 
 
 }
+
 

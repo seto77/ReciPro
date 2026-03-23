@@ -22,7 +22,7 @@ using ZLinq;
 
 namespace ReciPro;
 
-public partial class FormDiffractionSimulator : Form
+public partial class FormDiffractionSimulator : CaptureFormBase
 {
     #region フィールド、プロパティ
 
@@ -3290,3 +3290,4 @@ public partial class FormDiffractionSimulator : Form
 
    
 }
+

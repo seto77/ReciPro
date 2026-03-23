@@ -5,7 +5,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ReciPro;
 
-public partial class FormDiffractionSimulatorGeometry : Form
+public partial class FormDiffractionSimulatorGeometry : CaptureFormBase
 {
     #region フィールド、プロパティ
     public FormDiffractionSimulator FormDiffractionSimulator;
@@ -64,7 +64,7 @@ public partial class FormDiffractionSimulatorGeometry : Form
     private void FormDiffractionSimulatorGeometry_Load(object sender, EventArgs e)
     {
         panelSchematicDiagram.ClientSize = new Size(0, 0);
-        this.ClientSize = new Size(groupBoxDetectorAndOverlappedImage.Width, panel2.Location.Y + panel2.Height);
+        this.ClientSize = new Size(groupBoxDetectorAndOverlappedImage.Width, panelDetectorAreaAndOverlappedImage.Location.Y + panelDetectorAreaAndOverlappedImage.Height);
     }
 
     private void FormDiffractionSimulatorGeometry_FormClosing(object sender, FormClosingEventArgs e)
@@ -289,12 +289,12 @@ public partial class FormDiffractionSimulatorGeometry : Form
         if (checkBoxSchematicDiagram.Checked)
         {
             panelSchematicDiagram.ClientSize = pictureBoxSchematicDiagram.Size;
-            this.ClientSize = new Size(pictureBoxSchematicDiagram.Width, panel2.Location.Y + panel2.Height);
+            this.ClientSize = new Size(pictureBoxSchematicDiagram.Width, panelDetectorAreaAndOverlappedImage.Location.Y + panelDetectorAreaAndOverlappedImage.Height);
         }
         else
         {
             panelSchematicDiagram.ClientSize = new Size(1, 1);
-            this.ClientSize = new Size(groupBoxDetectorAndOverlappedImage.Width, panel2.Location.Y + panel2.Height);
+            this.ClientSize = new Size(groupBoxDetectorAndOverlappedImage.Width, panelDetectorAreaAndOverlappedImage.Location.Y + panelDetectorAreaAndOverlappedImage.Height);
         }
     }
 
@@ -383,3 +383,4 @@ public partial class FormDiffractionSimulatorGeometry : Form
         }
     }
 }
+

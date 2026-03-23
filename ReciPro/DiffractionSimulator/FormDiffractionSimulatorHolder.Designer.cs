@@ -26,26 +26,32 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxTEMSettings
+        // groupBox2 -> groupBoxLink
+        // groupBox3 -> groupBoxHolderAngles
+        // groupBox4 -> groupBoxColorAndSize
+        // groupBox5 -> groupBoxStereonetProperties
+        // groupBox6 -> groupBoxIndexRange
+        // flowLayoutPanel1 -> flowLayoutPanelStereonetColor
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorHolder));
-            // graphicsBox = new ImagingSolution.Control.GraphicsBox(components); // (260322Ch) 旧 GraphicsBox 依存
-            // graphicsBox = new Crystallography.Controls.GraphicBox2(components); // (260322Ch) 仮名 GraphicBox2
-            graphicsBox = new Crystallography.Controls.GraphicsBox(components); // (260322Ch) Holder 画面も正式名 GraphicBox へ差し替える
+            graphicsBox = new GraphicsBox(components);
             label1 = new System.Windows.Forms.Label();
             numericBoxTiltXDirection = new NumericBox();
             numericBoxLinkTiltX = new NumericBox();
             numericBoxLinkTiltY = new NumericBox();
             label4 = new System.Windows.Forms.Label();
-            groupBox1 = new System.Windows.Forms.GroupBox();
+            groupBoxTEMSettings = new System.Windows.Forms.GroupBox();
             radioButtonTiltY_Plus = new System.Windows.Forms.RadioButton();
             radioButtonTiltY_Minus = new System.Windows.Forms.RadioButton();
-            groupBox2 = new System.Windows.Forms.GroupBox();
+            groupBoxLink = new System.Windows.Forms.GroupBox();
             buttonRotate180 = new System.Windows.Forms.Button();
             buttonLink = new System.Windows.Forms.Button();
-            groupBox5 = new System.Windows.Forms.GroupBox();
-            groupBox6 = new System.Windows.Forms.GroupBox();
+            groupBoxStereonetProperties = new System.Windows.Forms.GroupBox();
+            groupBoxIndexRange = new System.Windows.Forms.GroupBox();
             numericBoxU = new NumericBox();
             label14 = new System.Windows.Forms.Label();
             checkBoxIncludingEquivalent = new System.Windows.Forms.CheckBox();
@@ -53,8 +59,8 @@
             numericBoxV = new NumericBox();
             label16 = new System.Windows.Forms.Label();
             numericBoxW = new NumericBox();
-            groupBox4 = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            groupBoxColorAndSize = new System.Windows.Forms.GroupBox();
+            flowLayoutPanelStereonetColor = new System.Windows.Forms.FlowLayoutPanel();
             colorControlBackGround = new ColorControl();
             colorControlHolder = new ColorControl();
             colorControl90DegLine = new ColorControl();
@@ -73,7 +79,7 @@
             checkBox1DegLine = new System.Windows.Forms.CheckBox();
             checkBoxShowIndexLabels = new System.Windows.Forms.CheckBox();
             label1MousePosition = new System.Windows.Forms.Label();
-            groupBox3 = new System.Windows.Forms.GroupBox();
+            groupBoxHolderAngles = new System.Windows.Forms.GroupBox();
             numericBoxArrowStep = new NumericBox();
             label19 = new System.Windows.Forms.Label();
             numericBoxTiltX = new NumericBox();
@@ -82,21 +88,22 @@
             checkBoxEnableArrow = new System.Windows.Forms.CheckBox();
             toolTip1 = new System.Windows.Forms.ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox5.SuspendLayout();
-            groupBox6.SuspendLayout();
-            groupBox4.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            groupBoxTEMSettings.SuspendLayout();
+            groupBoxLink.SuspendLayout();
+            groupBoxStereonetProperties.SuspendLayout();
+            groupBoxIndexRange.SuspendLayout();
+            groupBoxColorAndSize.SuspendLayout();
+            flowLayoutPanelStereonetColor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
-            groupBox3.SuspendLayout();
+            groupBoxHolderAngles.SuspendLayout();
             SuspendLayout();
             // 
             // graphicsBox
             // 
             resources.ApplyResources(graphicsBox, "graphicsBox");
             graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            graphicsBox.Fonts = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             graphicsBox.Name = "graphicsBox";
             graphicsBox.TabStop = false;
             toolTip1.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));
@@ -149,17 +156,18 @@
             label4.Name = "label4";
             toolTip1.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
-            // groupBox1
+            // groupBoxTEMSettings
             // 
-            resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Controls.Add(radioButtonTiltY_Plus);
-            groupBox1.Controls.Add(radioButtonTiltY_Minus);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(numericBoxTiltXDirection);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.TabStop = false;
-            toolTip1.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
+            resources.ApplyResources(groupBoxTEMSettings, "groupBoxTEMSettings");
+            captureExtender.SetCapture(groupBoxTEMSettings, true);
+            groupBoxTEMSettings.Controls.Add(radioButtonTiltY_Plus);
+            groupBoxTEMSettings.Controls.Add(radioButtonTiltY_Minus);
+            groupBoxTEMSettings.Controls.Add(label1);
+            groupBoxTEMSettings.Controls.Add(numericBoxTiltXDirection);
+            groupBoxTEMSettings.Controls.Add(label4);
+            groupBoxTEMSettings.Name = "groupBoxTEMSettings";
+            groupBoxTEMSettings.TabStop = false;
+            toolTip1.SetToolTip(groupBoxTEMSettings, resources.GetString("groupBoxTEMSettings.ToolTip"));
             // 
             // radioButtonTiltY_Plus
             // 
@@ -178,16 +186,17 @@
             toolTip1.SetToolTip(radioButtonTiltY_Minus, resources.GetString("radioButtonTiltY_Minus.ToolTip"));
             radioButtonTiltY_Minus.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // groupBoxLink
             // 
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Controls.Add(buttonRotate180);
-            groupBox2.Controls.Add(buttonLink);
-            groupBox2.Controls.Add(numericBoxLinkTiltX);
-            groupBox2.Controls.Add(numericBoxLinkTiltY);
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
-            toolTip1.SetToolTip(groupBox2, resources.GetString("groupBox2.ToolTip"));
+            resources.ApplyResources(groupBoxLink, "groupBoxLink");
+            captureExtender.SetCapture(groupBoxLink, true);
+            groupBoxLink.Controls.Add(buttonRotate180);
+            groupBoxLink.Controls.Add(buttonLink);
+            groupBoxLink.Controls.Add(numericBoxLinkTiltX);
+            groupBoxLink.Controls.Add(numericBoxLinkTiltY);
+            groupBoxLink.Name = "groupBoxLink";
+            groupBoxLink.TabStop = false;
+            toolTip1.SetToolTip(groupBoxLink, resources.GetString("groupBoxLink.ToolTip"));
             // 
             // buttonRotate180
             // 
@@ -205,32 +214,33 @@
             buttonLink.UseVisualStyleBackColor = true;
             buttonLink.Click += buttonLink_Click;
             // 
-            // groupBox5
+            // groupBoxStereonetProperties
             // 
-            resources.ApplyResources(groupBox5, "groupBox5");
-            groupBox5.Controls.Add(groupBox6);
-            groupBox5.Controls.Add(groupBox4);
-            groupBox5.Controls.Add(numericBoxDrawingArea);
-            groupBox5.Controls.Add(checkBoxTiltDirections);
-            groupBox5.Controls.Add(checkBox1DegLine);
-            groupBox5.Controls.Add(checkBoxShowIndexLabels);
-            groupBox5.Name = "groupBox5";
-            groupBox5.TabStop = false;
-            toolTip1.SetToolTip(groupBox5, resources.GetString("groupBox5.ToolTip"));
+            resources.ApplyResources(groupBoxStereonetProperties, "groupBoxStereonetProperties");
+            captureExtender.SetCapture(groupBoxStereonetProperties, true);
+            groupBoxStereonetProperties.Controls.Add(groupBoxIndexRange);
+            groupBoxStereonetProperties.Controls.Add(groupBoxColorAndSize);
+            groupBoxStereonetProperties.Controls.Add(numericBoxDrawingArea);
+            groupBoxStereonetProperties.Controls.Add(checkBoxTiltDirections);
+            groupBoxStereonetProperties.Controls.Add(checkBox1DegLine);
+            groupBoxStereonetProperties.Controls.Add(checkBoxShowIndexLabels);
+            groupBoxStereonetProperties.Name = "groupBoxStereonetProperties";
+            groupBoxStereonetProperties.TabStop = false;
+            toolTip1.SetToolTip(groupBoxStereonetProperties, resources.GetString("groupBoxStereonetProperties.ToolTip"));
             // 
-            // groupBox6
+            // groupBoxIndexRange
             // 
-            resources.ApplyResources(groupBox6, "groupBox6");
-            groupBox6.Controls.Add(numericBoxU);
-            groupBox6.Controls.Add(label14);
-            groupBox6.Controls.Add(checkBoxIncludingEquivalent);
-            groupBox6.Controls.Add(label15);
-            groupBox6.Controls.Add(numericBoxV);
-            groupBox6.Controls.Add(label16);
-            groupBox6.Controls.Add(numericBoxW);
-            groupBox6.Name = "groupBox6";
-            groupBox6.TabStop = false;
-            toolTip1.SetToolTip(groupBox6, resources.GetString("groupBox6.ToolTip"));
+            resources.ApplyResources(groupBoxIndexRange, "groupBoxIndexRange");
+            groupBoxIndexRange.Controls.Add(numericBoxU);
+            groupBoxIndexRange.Controls.Add(label14);
+            groupBoxIndexRange.Controls.Add(checkBoxIncludingEquivalent);
+            groupBoxIndexRange.Controls.Add(label15);
+            groupBoxIndexRange.Controls.Add(numericBoxV);
+            groupBoxIndexRange.Controls.Add(label16);
+            groupBoxIndexRange.Controls.Add(numericBoxW);
+            groupBoxIndexRange.Name = "groupBoxIndexRange";
+            groupBoxIndexRange.TabStop = false;
+            toolTip1.SetToolTip(groupBoxIndexRange, resources.GetString("groupBoxIndexRange.ToolTip"));
             // 
             // numericBoxU
             // 
@@ -305,32 +315,32 @@
             numericBoxW.Value = 2D;
             numericBoxW.ReadOnlyChanged += numericBoxU_ValueChanged;
             // 
-            // groupBox4
+            // groupBoxColorAndSize
             // 
-            resources.ApplyResources(groupBox4, "groupBox4");
-            groupBox4.Controls.Add(flowLayoutPanel1);
-            groupBox4.Controls.Add(label17);
-            groupBox4.Controls.Add(label18);
-            groupBox4.Controls.Add(trackBarStrSize);
-            groupBox4.Controls.Add(trackBarPointSize);
-            groupBox4.Name = "groupBox4";
-            groupBox4.TabStop = false;
-            toolTip1.SetToolTip(groupBox4, resources.GetString("groupBox4.ToolTip"));
+            resources.ApplyResources(groupBoxColorAndSize, "groupBoxColorAndSize");
+            groupBoxColorAndSize.Controls.Add(flowLayoutPanelStereonetColor);
+            groupBoxColorAndSize.Controls.Add(label17);
+            groupBoxColorAndSize.Controls.Add(label18);
+            groupBoxColorAndSize.Controls.Add(trackBarStrSize);
+            groupBoxColorAndSize.Controls.Add(trackBarPointSize);
+            groupBoxColorAndSize.Name = "groupBoxColorAndSize";
+            groupBoxColorAndSize.TabStop = false;
+            toolTip1.SetToolTip(groupBoxColorAndSize, resources.GetString("groupBoxColorAndSize.ToolTip"));
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelStereonetColor
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(colorControlBackGround);
-            flowLayoutPanel1.Controls.Add(colorControlHolder);
-            flowLayoutPanel1.Controls.Add(colorControl90DegLine);
-            flowLayoutPanel1.Controls.Add(colorControl10DegLine);
-            flowLayoutPanel1.Controls.Add(colorControl1DegLine);
-            flowLayoutPanel1.Controls.Add(colorControlUniqueAxis);
-            flowLayoutPanel1.Controls.Add(colorControlGeneralAxis);
-            flowLayoutPanel1.Controls.Add(colorControlTiltX);
-            flowLayoutPanel1.Controls.Add(colorControlTiltY);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            toolTip1.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
+            resources.ApplyResources(flowLayoutPanelStereonetColor, "flowLayoutPanelStereonetColor");
+            flowLayoutPanelStereonetColor.Controls.Add(colorControlBackGround);
+            flowLayoutPanelStereonetColor.Controls.Add(colorControlHolder);
+            flowLayoutPanelStereonetColor.Controls.Add(colorControl90DegLine);
+            flowLayoutPanelStereonetColor.Controls.Add(colorControl10DegLine);
+            flowLayoutPanelStereonetColor.Controls.Add(colorControl1DegLine);
+            flowLayoutPanelStereonetColor.Controls.Add(colorControlUniqueAxis);
+            flowLayoutPanelStereonetColor.Controls.Add(colorControlGeneralAxis);
+            flowLayoutPanelStereonetColor.Controls.Add(colorControlTiltX);
+            flowLayoutPanelStereonetColor.Controls.Add(colorControlTiltY);
+            flowLayoutPanelStereonetColor.Name = "flowLayoutPanelStereonetColor";
+            toolTip1.SetToolTip(flowLayoutPanelStereonetColor, resources.GetString("flowLayoutPanelStereonetColor.ToolTip"));
             // 
             // colorControlBackGround
             // 
@@ -572,18 +582,19 @@
             label1MousePosition.Name = "label1MousePosition";
             toolTip1.SetToolTip(label1MousePosition, resources.GetString("label1MousePosition.ToolTip"));
             // 
-            // groupBox3
+            // groupBoxHolderAngles
             // 
-            resources.ApplyResources(groupBox3, "groupBox3");
-            groupBox3.Controls.Add(numericBoxArrowStep);
-            groupBox3.Controls.Add(label19);
-            groupBox3.Controls.Add(numericBoxTiltX);
-            groupBox3.Controls.Add(label20);
-            groupBox3.Controls.Add(numericBoxTiltY);
-            groupBox3.Controls.Add(checkBoxEnableArrow);
-            groupBox3.Name = "groupBox3";
-            groupBox3.TabStop = false;
-            toolTip1.SetToolTip(groupBox3, resources.GetString("groupBox3.ToolTip"));
+            resources.ApplyResources(groupBoxHolderAngles, "groupBoxHolderAngles");
+            captureExtender.SetCapture(groupBoxHolderAngles, true);
+            groupBoxHolderAngles.Controls.Add(numericBoxArrowStep);
+            groupBoxHolderAngles.Controls.Add(label19);
+            groupBoxHolderAngles.Controls.Add(numericBoxTiltX);
+            groupBoxHolderAngles.Controls.Add(label20);
+            groupBoxHolderAngles.Controls.Add(numericBoxTiltY);
+            groupBoxHolderAngles.Controls.Add(checkBoxEnableArrow);
+            groupBoxHolderAngles.Name = "groupBoxHolderAngles";
+            groupBoxHolderAngles.TabStop = false;
+            toolTip1.SetToolTip(groupBoxHolderAngles, resources.GetString("groupBoxHolderAngles.ToolTip"));
             // 
             // numericBoxArrowStep
             // 
@@ -648,12 +659,13 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            captureExtender.SetCapture(this, true);
             Controls.Add(graphicsBox);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(groupBoxHolderAngles);
+            Controls.Add(groupBoxLink);
+            Controls.Add(groupBoxTEMSettings);
             Controls.Add(label1MousePosition);
-            Controls.Add(groupBox5);
+            Controls.Add(groupBoxStereonetProperties);
             KeyPreview = true;
             Name = "FormDiffractionSimulatorHolder";
             toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
@@ -661,22 +673,22 @@
             Load += FormDiffractionSimulatorHolder_Load;
             KeyDown += FormDiffractionSimulatorHolder_KeyDown;
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox5.ResumeLayout(false);
-            groupBox5.PerformLayout();
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
+            groupBoxTEMSettings.ResumeLayout(false);
+            groupBoxTEMSettings.PerformLayout();
+            groupBoxLink.ResumeLayout(false);
+            groupBoxLink.PerformLayout();
+            groupBoxStereonetProperties.ResumeLayout(false);
+            groupBoxStereonetProperties.PerformLayout();
+            groupBoxIndexRange.ResumeLayout(false);
+            groupBoxIndexRange.PerformLayout();
+            groupBoxColorAndSize.ResumeLayout(false);
+            groupBoxColorAndSize.PerformLayout();
+            flowLayoutPanelStereonetColor.ResumeLayout(false);
+            flowLayoutPanelStereonetColor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
+            groupBoxHolderAngles.ResumeLayout(false);
+            groupBoxHolderAngles.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -688,12 +700,12 @@
         public Crystallography.Controls.GraphicsBox graphicsBox; // (260322Ch) 正式名 GraphicBox へ移行
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxTEMSettings;
         private System.Windows.Forms.RadioButton radioButtonTiltY_Plus;
         private System.Windows.Forms.RadioButton radioButtonTiltY_Minus;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxLink;
         private System.Windows.Forms.Button buttonLink;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBoxStereonetProperties;
         private NumericBox numericBoxLinkTiltX;
         private NumericBox numericBoxLinkTiltY;
         private NumericBox numericBoxV;
@@ -721,21 +733,21 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox checkBoxTiltDirections;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelStereonetColor;
         private System.Windows.Forms.Label label1MousePosition;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TrackBar trackBarPointSize;
         private System.Windows.Forms.TrackBar trackBarStrSize;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxHolderAngles;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button buttonRotate180;
         private System.Windows.Forms.CheckBox checkBoxEnableArrow;
         private NumericBox numericBoxArrowStep;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxColorAndSize;
         private System.Windows.Forms.CheckBox checkBoxIncludingEquivalent;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBoxIndexRange;
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormDiffractionSimulatorCBED : Form
+public partial class FormDiffractionSimulatorCBED : CaptureFormBase
 {
     #region フィールド、プロパティ
 
@@ -414,3 +414,4 @@ public partial class FormDiffractionSimulatorCBED : Form
         FormDiffractionSimulator.copyCBEDPatternToolStripMenuItem.Visible = Visible;
     }
 }
+

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="flowLayoutPanel1.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -281,7 +284,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxSearchReference.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 21</value>
+    <value>85, 21</value>
   </data>
   <data name="checkBoxSearchReference.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
@@ -1514,7 +1517,7 @@
     <value>0</value>
   </data>
   <metadata name="backgroundWorkerSearch.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>157, 17</value>
   </metadata>
   <data name="buttonSearch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1564,6 +1567,12 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 635</value>
   </data>
+  <data name="&gt;&gt;captureExtender.Name" xml:space="preserve">
+    <value>captureExtender</value>
+  </data>
+  <data name="&gt;&gt;captureExtender.Type" xml:space="preserve">
+    <value>Crystallography.Controls.CaptureExtender, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;backgroundWorkerSearch.Name" xml:space="preserve">
     <value>backgroundWorkerSearch</value>
   </data>
@@ -1574,6 +1583,6 @@
     <value>SearchCrystalControl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Crystallography.Controls.CaptureUserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace ReciPro;
 
-public partial class DiffractionPatternControl : UserControl
+public partial class DiffractionPatternControl : CaptureUserControlBase
 {
     public DiffractionPatternControl() => InitializeComponent();
 
@@ -2037,3 +2037,4 @@ public partial class DiffractionPatternControl : UserControl
             ImageIO.IPAImageWriter(dlg.FileName, SimulatedPixels, Resolution, new Size(ImageWidth, ImageHeight), Center, Cameralength, new WaveProperty(WaveSource, Wavelength, 0, 0, 0));
     }
 }
+

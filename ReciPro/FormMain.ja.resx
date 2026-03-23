@@ -130,26 +130,26 @@
   <data name="groupBoxCrystalList.Text" xml:space="preserve">
     <value>結晶リスト</value>
   </data>
-  <data name="groupBox6.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxCrystalInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
-  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxCrystalInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 30</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="groupBox6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxCrystalInformation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
   </data>
-  <data name="groupBox6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxCrystalInformation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
   </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxCrystalInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>653, 499</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
+  <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>結晶情報</value>
   </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelCrystalEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>653, 28</value>
   </data>
   <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
@@ -199,10 +199,10 @@
 削除するには対象結晶を選択し、″削除″します。
 リストに載っているすべての結晶を削除するには″全削除″します。</value>
   </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelCrystalOrder.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 157</value>
   </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelCrystalOrder.Size" type="System.Drawing.Size, System.Drawing">
     <value>647, 27</value>
   </data>
   <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
@@ -311,19 +311,19 @@
     <value>リスト中の選択されている結晶を置き換えます。</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="groupBox5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="groupBoxProjectAlong.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxProjectAlong.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxProjectAlong.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 356</value>
   </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxProjectAlong.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 125</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
+  <data name="groupBoxProjectAlong.Text" xml:space="preserve">
     <value>軸/面投影</value>
   </data>
   <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
@@ -459,10 +459,10 @@
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 21</value>
   </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelSetPlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 49</value>
   </data>
-  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="flowLayoutPanelSetPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
   <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
@@ -490,19 +490,19 @@
   <data name="checkBoxFixePlane.Text" xml:space="preserve">
     <value>固定</value>
   </data>
-  <data name="groupBox2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="groupBoxArrows.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="groupBox2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="groupBoxArrows.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxArrows.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxArrows.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 216</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxArrows.Text" xml:space="preserve">
     <value>回転</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
@@ -592,16 +592,16 @@
   <data name="buttonRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 22</value>
   </data>
-  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelArrowStep.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 88</value>
   </data>
-  <data name="panel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="panelArrowStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 1, 4, 1</value>
   </data>
-  <data name="panel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="panelArrowStep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelArrowStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 28</value>
   </data>
   <data name="numericBoxStep.HeaderFont" type="System.Drawing.Font, System.Drawing">

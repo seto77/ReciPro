@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormDiffractionSimulatorDynamicCompression : Form
+public partial class FormDiffractionSimulatorDynamicCompression : CaptureFormBase
 {
     public FormDiffractionSimulator FormDiffractionSimulator;
     public Crystal OriginalCrystal = null;
@@ -559,3 +559,4 @@ public partial class FormDiffractionSimulatorDynamicCompression : Form
         public double X = x, Y = y, Intensity = intensity, Sigma = sigma;
     }
 }
+

@@ -10,7 +10,7 @@ using Windows.Devices.Radios;
 
 namespace ReciPro;
 
-public partial class FormDiffractionSimulatorHolder : Form
+public partial class FormDiffractionSimulatorHolder : CaptureFormBase
 {
     #region Fields and Properties
     public FormDiffractionSimulator FormDiffractionSimulator;
@@ -357,3 +357,4 @@ public partial class FormDiffractionSimulatorHolder : Form
         setVector(); Draw();
     }
 }
+

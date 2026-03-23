@@ -2,7 +2,7 @@
 
 namespace ReciPro;
 
-public partial class FormResolution : Form
+public partial class FormResolution : CaptureFormBase
 {
     public FormResolution() => InitializeComponent();
 
@@ -26,3 +26,4 @@ public partial class FormResolution : Form
         SkipEvent = false;
     }
 }
+

@@ -10,7 +10,7 @@ using OpenTK.Mathematics;
 
 namespace ReciPro;
 
-public partial class FormRotationMatrix : Form
+public partial class FormRotationMatrix : CaptureFormBase
 {
 
     #region プロパティ
@@ -168,13 +168,13 @@ public partial class FormRotationMatrix : Form
         this.glControlExpGonio.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
 
 
-        groupBox2.Controls.Add(glControlExpObjects);
-        groupBox2.Controls.Add(glControlExpAxes);
-        groupBox2.Controls.Add(glControlExpGonio);
+        groupBoxExperimentalCoordinate.Controls.Add(glControlExpObjects);
+        groupBoxExperimentalCoordinate.Controls.Add(glControlExpAxes);
+        groupBoxExperimentalCoordinate.Controls.Add(glControlExpGonio);
 
-        groupBox1.Controls.Add(glControlReciProObjects);
-        groupBox1.Controls.Add(glControlReciProAxes);
-        groupBox1.Controls.Add(glControlReciProGonio);
+        groupBoxReciProCoordinate.Controls.Add(glControlReciProObjects);
+        groupBoxReciProCoordinate.Controls.Add(glControlReciProAxes);
+        groupBoxReciProCoordinate.Controls.Add(glControlReciProGonio);
 
         #endregion
         glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
@@ -684,7 +684,7 @@ public partial class FormRotationMatrix : Form
         var check = (CheckBox)sender;
         if (check.Name.Contains("2nd"))
         {
-            checkBoxFix2nd.Enabled = numericBoxExp2.Enabled = checkBoxEnable3rd.Enabled = flowLayoutPanel2.Enabled = check.Checked;
+            checkBoxFix2nd.Enabled = numericBoxExp2.Enabled = checkBoxEnable3rd.Enabled = flowLayoutPanelSecondAxis.Enabled = check.Checked;
             if (!check.Checked)
             {
                 checkBoxFix2nd.Checked = checkBoxEnable3rd.Checked = checkBoxFix3rd.Checked = false;
@@ -693,7 +693,7 @@ public partial class FormRotationMatrix : Form
         }
         else if (check.Name.Contains("3rd"))
         {
-            checkBoxFix3rd.Enabled = numericBoxExp3.Enabled = flowLayoutPanel3.Enabled = check.Checked;
+            checkBoxFix3rd.Enabled = numericBoxExp3.Enabled = flowLayoutPanelThirdAxis.Enabled = check.Checked;
             if (!check.Checked)
             {
                 checkBoxFix3rd.Checked = false;
@@ -713,3 +713,4 @@ public partial class FormRotationMatrix : Form
 
 
 }
+

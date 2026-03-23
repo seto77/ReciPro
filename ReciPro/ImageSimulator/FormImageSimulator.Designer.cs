@@ -29,13 +29,39 @@ namespace ReciPro
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxSimulation
+        // groupBox2 -> groupBoxDisplay
+        // groupBox3 -> groupBoxAdjust
+        // groupBox4 -> groupBoxTEMConditions
+        // groupBox6 -> groupBoxImageMode
+        // groupBox7 -> groupBoxDiffractedWaves
+        // groupBox8 -> groupBoxImageProperty
+        // panel1 -> panelImageStatus
+        // panel2 -> panelDisplaySettings
+        // flowLayoutPanel6 -> flowLayoutPanelIntensityRange
+        // panel3 -> panelModeOptions
+        // panel5 -> panelSerialSettings
+        // flowLayoutPanel4 -> flowLayoutPanelSimulationMode
+        // flowLayoutPanel11 -> flowLayoutPanelPotentialMode
+        // flowLayoutPanel8 -> flowLayoutPanelStemMode
+        // panel6 -> panelImageProperties
+        // flowLayoutPanel15 -> flowLayoutPanelOuterRadius
+        // flowLayoutPanel9 -> flowLayoutPanelInnerRadius
+        // flowLayoutPanel2 -> flowLayoutPanelConvergenceRadius
+        // flowLayoutPanel1 -> flowLayoutPanelSpotCount
+        // flowLayoutPanel5 -> flowLayoutPanelObjectiveAperture
+        // flowLayoutPanel3 -> flowLayoutPanelScherzer
+        // flowLayoutPanel14 -> flowLayoutPanelModeSelection
+        // flowLayoutPanel16 -> flowLayoutPanelImageType
+        // panel4 -> panelSimulationActions
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImageSimulator));
             splitContainer1 = new System.Windows.Forms.SplitContainer();
             tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            panel1 = new System.Windows.Forms.Panel();
+            panelImageStatus = new System.Windows.Forms.Panel();
             pictureBoxScaleOfIntensity = new System.Windows.Forms.PictureBox();
             labelMousePositionValue = new System.Windows.Forms.Label();
             label33 = new System.Windows.Forms.Label();
@@ -47,8 +73,8 @@ namespace ReciPro
             label29 = new System.Windows.Forms.Label();
             label26 = new System.Windows.Forms.Label();
             label28 = new System.Windows.Forms.Label();
-            panel2 = new System.Windows.Forms.Panel();
-            groupBox3 = new System.Windows.Forms.GroupBox();
+            panelDisplaySettings = new System.Windows.Forms.Panel();
+            groupBoxAdjust = new System.Windows.Forms.GroupBox();
             numericBoxGaussianBlurRadius = new NumericBox();
             trackBarAdvancedMax = new TrackBarAdvanced();
             trackBarAdvancedMin = new TrackBarAdvanced();
@@ -58,7 +84,7 @@ namespace ReciPro
             panel7 = new System.Windows.Forms.Panel();
             groupBoxNormalization = new System.Windows.Forms.GroupBox();
             checkBoxNormarizeIndividually = new System.Windows.Forms.CheckBox();
-            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelIntensityRange = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxIntensityMin = new System.Windows.Forms.CheckBox();
             numericBoxIntensityMin = new NumericBox();
             checkBoxIntensityMax = new System.Windows.Forms.CheckBox();
@@ -68,7 +94,7 @@ namespace ReciPro
             radioButtonSTEM_target_TDS = new System.Windows.Forms.RadioButton();
             radioButtonSTEM_target_elas = new System.Windows.Forms.RadioButton();
             radioButtonSTEM_target_both = new System.Windows.Forms.RadioButton();
-            groupBox2 = new System.Windows.Forms.GroupBox();
+            groupBoxDisplay = new System.Windows.Forms.GroupBox();
             colorControlScale = new ColorControl();
             numericBoxScaleLength = new NumericBox();
             checkBoxShowScale = new System.Windows.Forms.CheckBox();
@@ -76,8 +102,8 @@ namespace ReciPro
             numericBoxLabelFontSize = new NumericBox();
             checkBoxShowLabel = new System.Windows.Forms.CheckBox();
             checkBoxShowUnitcell = new System.Windows.Forms.CheckBox();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            panel3 = new System.Windows.Forms.Panel();
+            groupBoxSimulation = new System.Windows.Forms.GroupBox();
+            panelModeOptions = new System.Windows.Forms.Panel();
             groupBoxSerialImage = new System.Windows.Forms.GroupBox();
             panelSerial = new System.Windows.Forms.Panel();
             panelSerialDefocus = new System.Windows.Forms.Panel();
@@ -90,18 +116,18 @@ namespace ReciPro
             numericBoxThicknessStep = new NumericBox();
             numericBoxThicknessStart = new NumericBox();
             textBoxThicknessList = new System.Windows.Forms.TextBox();
-            panel5 = new System.Windows.Forms.Panel();
+            panelSerialSettings = new System.Windows.Forms.Panel();
             checkBoxSerialThickness = new System.Windows.Forms.CheckBox();
             checkBoxSerialDefocus = new System.Windows.Forms.CheckBox();
             flowLayoutPanelHorizontalDirection = new System.Windows.Forms.FlowLayoutPanel();
             label6 = new System.Windows.Forms.Label();
             radioButtonHorizontalDefocus = new System.Windows.Forms.RadioButton();
             radioButtonHorizontalThickness = new System.Windows.Forms.RadioButton();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelSimulationMode = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonSingleMode = new System.Windows.Forms.RadioButton();
             radioButtonSerialMode = new System.Windows.Forms.RadioButton();
             groupBoxPotentialOption = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelPotentialMode = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonPotentialModeMagAndPhase = new System.Windows.Forms.RadioButton();
             flowLayoutPanelMagAndPhase = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonPotentialShowMagAndPhase = new System.Windows.Forms.RadioButton();
@@ -136,17 +162,17 @@ namespace ReciPro
             numericBoxSTEM_SliceThicknessForInelastic = new NumericBox();
             flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxHREMoption2 = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelStemMode = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonModeQuasiCoherent = new System.Windows.Forms.RadioButton();
             radioButtonModeTransmissionCrossCoefficient = new System.Windows.Forms.RadioButton();
             label32 = new System.Windows.Forms.Label();
-            panel6 = new System.Windows.Forms.Panel();
-            groupBox8 = new System.Windows.Forms.GroupBox();
+            panelImageProperties = new System.Windows.Forms.Panel();
+            groupBoxImageProperty = new System.Windows.Forms.GroupBox();
             numericBoxHeight = new NumericBox();
             numericBoxWidth = new NumericBox();
             numericBoxResolution = new NumericBox();
             panel8 = new System.Windows.Forms.Panel();
-            groupBox7 = new System.Windows.Forms.GroupBox();
+            groupBoxDiffractedWaves = new System.Windows.Forms.GroupBox();
             numericBoxNumOfBlochWave = new NumericBox();
             groupBoxOpticalProperty = new System.Windows.Forms.GroupBox();
             groupBoxSTEMoption1 = new System.Windows.Forms.GroupBox();
@@ -160,13 +186,13 @@ namespace ReciPro
             numericBoxSTEM_DetectorOuterAngle = new NumericBox();
             numericBoxSTEM_EffectiveSourceSize = new NumericBox();
             numericBoxSTEM_ConvergenceAngle = new NumericBox();
-            flowLayoutPanel15 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelOuterRadius = new System.Windows.Forms.FlowLayoutPanel();
             textBoxOuterRadius = new System.Windows.Forms.TextBox();
             label38 = new System.Windows.Forms.Label();
-            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelInnerRadius = new System.Windows.Forms.FlowLayoutPanel();
             textBoxInnerRadius = new System.Windows.Forms.TextBox();
             label37 = new System.Windows.Forms.Label();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelConvergenceRadius = new System.Windows.Forms.FlowLayoutPanel();
             textBoxConvRadius = new System.Windows.Forms.TextBox();
             label36 = new System.Windows.Forms.Label();
             numericBoxSTEM_DetectorInnerAngle = new NumericBox();
@@ -176,15 +202,15 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperX = new NumericBox();
             numericBoxObjAperRadius = new NumericBox();
             numericBoxHRTEM_ObjAperY = new NumericBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelSpotCount = new System.Windows.Forms.FlowLayoutPanel();
             textBoxNumOfSpots = new System.Windows.Forms.TextBox();
             label9 = new System.Windows.Forms.Label();
             buttonDetailsOfSpots = new System.Windows.Forms.Button();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelObjectiveAperture = new System.Windows.Forms.FlowLayoutPanel();
             textBoxObjAperRadius = new System.Windows.Forms.TextBox();
             label7 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
-            groupBox4 = new System.Windows.Forms.GroupBox();
+            groupBoxTEMConditions = new System.Windows.Forms.GroupBox();
             contextMenuStripTEMcondition = new System.Windows.Forms.ContextMenuStrip(components);
             setoZeroDefocusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             setoScherzerDefocusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -202,19 +228,19 @@ namespace ReciPro
             numericBoxCs = new NumericBox();
             numericBoxDefocus = new NumericBox();
             numericBoxAccVol = new NumericBox();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelScherzer = new System.Windows.Forms.FlowLayoutPanel();
             label3 = new System.Windows.Forms.Label();
             textBoxScherzer = new System.Windows.Forms.TextBox();
             label4 = new System.Windows.Forms.Label();
-            flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
-            groupBox6 = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel16 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelModeSelection = new System.Windows.Forms.FlowLayoutPanel();
+            groupBoxImageMode = new System.Windows.Forms.GroupBox();
+            flowLayoutPanelImageType = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonHRTEM = new System.Windows.Forms.RadioButton();
             radioButtonSTEM = new System.Windows.Forms.RadioButton();
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             numericBoxThickness = new NumericBox();
-            panel4 = new System.Windows.Forms.Panel();
+            panelSimulationActions = new System.Windows.Forms.Panel();
             checkBoxPreset = new System.Windows.Forms.CheckBox();
             checkBoxRealTimeSimulation = new System.Windows.Forms.CheckBox();
             buttonSimulate = new System.Windows.Forms.Button();
@@ -248,52 +274,52 @@ namespace ReciPro
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
-            panel1.SuspendLayout();
+            panelImageStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxScaleOfIntensity).BeginInit();
-            panel2.SuspendLayout();
-            groupBox3.SuspendLayout();
+            panelDisplaySettings.SuspendLayout();
+            groupBoxAdjust.SuspendLayout();
             groupBoxNormalization.SuspendLayout();
-            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanelIntensityRange.SuspendLayout();
             groupBoxSTEMoption3.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox1.SuspendLayout();
-            panel3.SuspendLayout();
+            groupBoxDisplay.SuspendLayout();
+            groupBoxSimulation.SuspendLayout();
+            panelModeOptions.SuspendLayout();
             groupBoxSerialImage.SuspendLayout();
             panelSerial.SuspendLayout();
             panelSerialDefocus.SuspendLayout();
             panelSerialThickness.SuspendLayout();
-            panel5.SuspendLayout();
+            panelSerialSettings.SuspendLayout();
             flowLayoutPanelHorizontalDirection.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanelSimulationMode.SuspendLayout();
             groupBoxPotentialOption.SuspendLayout();
-            flowLayoutPanel11.SuspendLayout();
+            flowLayoutPanelPotentialMode.SuspendLayout();
             flowLayoutPanelMagAndPhase.SuspendLayout();
             panelPhaseScale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhaseScale).BeginInit();
             flowLayoutPanelRealAndImaiginary.SuspendLayout();
             groupBoxSTEMoption2.SuspendLayout();
             groupBoxHREMoption2.SuspendLayout();
-            flowLayoutPanel8.SuspendLayout();
-            panel6.SuspendLayout();
-            groupBox8.SuspendLayout();
-            groupBox7.SuspendLayout();
+            flowLayoutPanelStemMode.SuspendLayout();
+            panelImageProperties.SuspendLayout();
+            groupBoxImageProperty.SuspendLayout();
+            groupBoxDiffractedWaves.SuspendLayout();
             groupBoxOpticalProperty.SuspendLayout();
             groupBoxSTEMoption1.SuspendLayout();
             contextMenuStripSTEM.SuspendLayout();
-            flowLayoutPanel15.SuspendLayout();
-            flowLayoutPanel9.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanelOuterRadius.SuspendLayout();
+            flowLayoutPanelInnerRadius.SuspendLayout();
+            flowLayoutPanelConvergenceRadius.SuspendLayout();
             groupBoxHREMoption1.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
-            groupBox4.SuspendLayout();
+            flowLayoutPanelSpotCount.SuspendLayout();
+            flowLayoutPanelObjectiveAperture.SuspendLayout();
+            groupBoxTEMConditions.SuspendLayout();
             contextMenuStripTEMcondition.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
-            flowLayoutPanel14.SuspendLayout();
-            groupBox6.SuspendLayout();
-            flowLayoutPanel16.SuspendLayout();
+            flowLayoutPanelScherzer.SuspendLayout();
+            flowLayoutPanelModeSelection.SuspendLayout();
+            groupBoxImageMode.SuspendLayout();
+            flowLayoutPanelImageType.SuspendLayout();
             groupBoxSampleProperty.SuspendLayout();
-            panel4.SuspendLayout();
+            panelSimulationActions.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -309,16 +335,16 @@ namespace ReciPro
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel);
-            splitContainer1.Panel1.Controls.Add(panel1);
-            splitContainer1.Panel1.Controls.Add(panel2);
+            splitContainer1.Panel1.Controls.Add(panelImageStatus);
+            splitContainer1.Panel1.Controls.Add(panelDisplaySettings);
             splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(groupBox1);
+            splitContainer1.Panel2.Controls.Add(groupBoxSimulation);
             splitContainer1.Panel2.Controls.Add(groupBoxOpticalProperty);
-            splitContainer1.Panel2.Controls.Add(flowLayoutPanel14);
-            splitContainer1.Panel2.Controls.Add(panel4);
+            splitContainer1.Panel2.Controls.Add(flowLayoutPanelModeSelection);
+            splitContainer1.Panel2.Controls.Add(panelSimulationActions);
             splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
             // 
@@ -332,21 +358,21 @@ namespace ReciPro
             tableLayoutPanel.Enter += TableLayoutPanel_Enter;
             tableLayoutPanel.Leave += TableLayoutPanel_Leave;
             // 
-            // panel1
+            // panelImageStatus
             // 
-            panel1.Controls.Add(pictureBoxScaleOfIntensity);
-            panel1.Controls.Add(labelMousePositionValue);
-            panel1.Controls.Add(label33);
-            panel1.Controls.Add(labelMousePositionY);
-            panel1.Controls.Add(labelMousePositionX);
-            panel1.Controls.Add(label31);
-            panel1.Controls.Add(label27);
-            panel1.Controls.Add(label30);
-            panel1.Controls.Add(label29);
-            panel1.Controls.Add(label26);
-            panel1.Controls.Add(label28);
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Name = "panel1";
+            panelImageStatus.Controls.Add(pictureBoxScaleOfIntensity);
+            panelImageStatus.Controls.Add(labelMousePositionValue);
+            panelImageStatus.Controls.Add(label33);
+            panelImageStatus.Controls.Add(labelMousePositionY);
+            panelImageStatus.Controls.Add(labelMousePositionX);
+            panelImageStatus.Controls.Add(label31);
+            panelImageStatus.Controls.Add(label27);
+            panelImageStatus.Controls.Add(label30);
+            panelImageStatus.Controls.Add(label29);
+            panelImageStatus.Controls.Add(label26);
+            panelImageStatus.Controls.Add(label28);
+            resources.ApplyResources(panelImageStatus, "panelImageStatus");
+            panelImageStatus.Name = "panelImageStatus";
             // 
             // pictureBoxScaleOfIntensity
             // 
@@ -404,28 +430,29 @@ namespace ReciPro
             resources.ApplyResources(label28, "label28");
             label28.Name = "label28";
             // 
-            // panel2
+            // panelDisplaySettings
             // 
-            panel2.Controls.Add(groupBox3);
-            panel2.Controls.Add(panel7);
-            panel2.Controls.Add(groupBoxNormalization);
-            panel2.Controls.Add(panel9);
-            panel2.Controls.Add(groupBoxSTEMoption3);
-            panel2.Controls.Add(groupBox2);
-            resources.ApplyResources(panel2, "panel2");
-            panel2.Name = "panel2";
+            panelDisplaySettings.Controls.Add(groupBoxAdjust);
+            panelDisplaySettings.Controls.Add(panel7);
+            panelDisplaySettings.Controls.Add(groupBoxNormalization);
+            panelDisplaySettings.Controls.Add(panel9);
+            panelDisplaySettings.Controls.Add(groupBoxSTEMoption3);
+            panelDisplaySettings.Controls.Add(groupBoxDisplay);
+            resources.ApplyResources(panelDisplaySettings, "panelDisplaySettings");
+            panelDisplaySettings.Name = "panelDisplaySettings";
             // 
-            // groupBox3
+            // groupBoxAdjust
             // 
-            groupBox3.Controls.Add(numericBoxGaussianBlurRadius);
-            groupBox3.Controls.Add(trackBarAdvancedMax);
-            groupBox3.Controls.Add(trackBarAdvancedMin);
-            groupBox3.Controls.Add(checkBoxGaussianBlur);
-            groupBox3.Controls.Add(label25);
-            groupBox3.Controls.Add(comboBoxScaleColorScale);
-            resources.ApplyResources(groupBox3, "groupBox3");
-            groupBox3.Name = "groupBox3";
-            groupBox3.TabStop = false;
+            captureExtender.SetCapture(groupBoxAdjust, true);
+            groupBoxAdjust.Controls.Add(numericBoxGaussianBlurRadius);
+            groupBoxAdjust.Controls.Add(trackBarAdvancedMax);
+            groupBoxAdjust.Controls.Add(trackBarAdvancedMin);
+            groupBoxAdjust.Controls.Add(checkBoxGaussianBlur);
+            groupBoxAdjust.Controls.Add(label25);
+            groupBoxAdjust.Controls.Add(comboBoxScaleColorScale);
+            resources.ApplyResources(groupBoxAdjust, "groupBoxAdjust");
+            groupBoxAdjust.Name = "groupBoxAdjust";
+            groupBoxAdjust.TabStop = false;
             // 
             // numericBoxGaussianBlurRadius
             // 
@@ -508,8 +535,9 @@ namespace ReciPro
             // groupBoxNormalization
             // 
             resources.ApplyResources(groupBoxNormalization, "groupBoxNormalization");
+            captureExtender.SetCapture(groupBoxNormalization, true);
             groupBoxNormalization.Controls.Add(checkBoxNormarizeIndividually);
-            groupBoxNormalization.Controls.Add(flowLayoutPanel6);
+            groupBoxNormalization.Controls.Add(flowLayoutPanelIntensityRange);
             groupBoxNormalization.Name = "groupBoxNormalization";
             groupBoxNormalization.TabStop = false;
             // 
@@ -523,14 +551,14 @@ namespace ReciPro
             checkBoxNormarizeIndividually.UseVisualStyleBackColor = true;
             checkBoxNormarizeIndividually.CheckedChanged += checkBoxIntensityMin_CheckedChanged;
             // 
-            // flowLayoutPanel6
+            // flowLayoutPanelIntensityRange
             // 
-            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
-            flowLayoutPanel6.Controls.Add(checkBoxIntensityMin);
-            flowLayoutPanel6.Controls.Add(numericBoxIntensityMin);
-            flowLayoutPanel6.Controls.Add(checkBoxIntensityMax);
-            flowLayoutPanel6.Controls.Add(numericBoxIntensityMax);
-            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            resources.ApplyResources(flowLayoutPanelIntensityRange, "flowLayoutPanelIntensityRange");
+            flowLayoutPanelIntensityRange.Controls.Add(checkBoxIntensityMin);
+            flowLayoutPanelIntensityRange.Controls.Add(numericBoxIntensityMin);
+            flowLayoutPanelIntensityRange.Controls.Add(checkBoxIntensityMax);
+            flowLayoutPanelIntensityRange.Controls.Add(numericBoxIntensityMax);
+            flowLayoutPanelIntensityRange.Name = "flowLayoutPanelIntensityRange";
             // 
             // checkBoxIntensityMin
             // 
@@ -591,6 +619,7 @@ namespace ReciPro
             // 
             // groupBoxSTEMoption3
             // 
+            captureExtender.SetCapture(groupBoxSTEMoption3, true);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_TDS);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_elas);
             groupBoxSTEMoption3.Controls.Add(radioButtonSTEM_target_both);
@@ -624,18 +653,19 @@ namespace ReciPro
             radioButtonSTEM_target_both.UseVisualStyleBackColor = true;
             radioButtonSTEM_target_both.CheckedChanged += radioButtonSTEM_target_both_CheckedChanged;
             // 
-            // groupBox2
+            // groupBoxDisplay
             // 
-            groupBox2.Controls.Add(colorControlScale);
-            groupBox2.Controls.Add(numericBoxScaleLength);
-            groupBox2.Controls.Add(checkBoxShowScale);
-            groupBox2.Controls.Add(colorControlLabel);
-            groupBox2.Controls.Add(numericBoxLabelFontSize);
-            groupBox2.Controls.Add(checkBoxShowLabel);
-            groupBox2.Controls.Add(checkBoxShowUnitcell);
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
+            captureExtender.SetCapture(groupBoxDisplay, true);
+            groupBoxDisplay.Controls.Add(colorControlScale);
+            groupBoxDisplay.Controls.Add(numericBoxScaleLength);
+            groupBoxDisplay.Controls.Add(checkBoxShowScale);
+            groupBoxDisplay.Controls.Add(colorControlLabel);
+            groupBoxDisplay.Controls.Add(numericBoxLabelFontSize);
+            groupBoxDisplay.Controls.Add(checkBoxShowLabel);
+            groupBoxDisplay.Controls.Add(checkBoxShowUnitcell);
+            resources.ApplyResources(groupBoxDisplay, "groupBoxDisplay");
+            groupBoxDisplay.Name = "groupBoxDisplay";
+            groupBoxDisplay.TabStop = false;
             // 
             // colorControlScale
             // 
@@ -651,7 +681,7 @@ namespace ReciPro
             colorControlScale.Name = "colorControlScale";
             colorControlScale.Red = 135;
             colorControlScale.RedF = 0.5294118F;
-            toolTip.SetToolTip(colorControlScale, resources.GetString("colorControlScale.ToolTip"));
+            toolTip.SetToolTip(colorControlScale, resources.GetString("colorControlScale.ToolTip1"));
             colorControlScale.ColorChanged += CheckBoxShowLabel_CheckedChanged;
             // 
             // numericBoxScaleLength
@@ -697,7 +727,7 @@ namespace ReciPro
             colorControlLabel.Name = "colorControlLabel";
             colorControlLabel.Red = 173;
             colorControlLabel.RedF = 0.6784314F;
-            toolTip.SetToolTip(colorControlLabel, resources.GetString("colorControlLabel.ToolTip"));
+            toolTip.SetToolTip(colorControlLabel, resources.GetString("colorControlLabel.ToolTip1"));
             colorControlLabel.ColorChanged += CheckBoxShowLabel_CheckedChanged;
             // 
             // numericBoxLabelFontSize
@@ -738,28 +768,28 @@ namespace ReciPro
             checkBoxShowUnitcell.UseVisualStyleBackColor = true;
             checkBoxShowUnitcell.CheckedChanged += CheckBoxShowLabel_CheckedChanged;
             // 
-            // groupBox1
+            // groupBoxSimulation
             // 
-            resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Controls.Add(panel3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.TabStop = false;
+            resources.ApplyResources(groupBoxSimulation, "groupBoxSimulation");
+            groupBoxSimulation.Controls.Add(panelModeOptions);
+            groupBoxSimulation.Name = "groupBoxSimulation";
+            groupBoxSimulation.TabStop = false;
             // 
-            // panel3
+            // panelModeOptions
             // 
-            resources.ApplyResources(panel3, "panel3");
-            panel3.Controls.Add(groupBoxSerialImage);
-            panel3.Controls.Add(groupBoxPotentialOption);
-            panel3.Controls.Add(groupBoxSTEMoption2);
-            panel3.Controls.Add(groupBoxHREMoption2);
-            panel3.Controls.Add(panel6);
-            panel3.Name = "panel3";
+            resources.ApplyResources(panelModeOptions, "panelModeOptions");
+            panelModeOptions.Controls.Add(groupBoxSerialImage);
+            panelModeOptions.Controls.Add(groupBoxPotentialOption);
+            panelModeOptions.Controls.Add(groupBoxSTEMoption2);
+            panelModeOptions.Controls.Add(groupBoxHREMoption2);
+            panelModeOptions.Controls.Add(panelImageProperties);
+            panelModeOptions.Name = "panelModeOptions";
             // 
             // groupBoxSerialImage
             // 
             resources.ApplyResources(groupBoxSerialImage, "groupBoxSerialImage");
             groupBoxSerialImage.Controls.Add(panelSerial);
-            groupBoxSerialImage.Controls.Add(flowLayoutPanel4);
+            groupBoxSerialImage.Controls.Add(flowLayoutPanelSimulationMode);
             groupBoxSerialImage.Name = "groupBoxSerialImage";
             groupBoxSerialImage.TabStop = false;
             // 
@@ -767,7 +797,7 @@ namespace ReciPro
             // 
             panelSerial.Controls.Add(panelSerialDefocus);
             panelSerial.Controls.Add(panelSerialThickness);
-            panelSerial.Controls.Add(panel5);
+            panelSerial.Controls.Add(panelSerialSettings);
             panelSerial.Controls.Add(flowLayoutPanelHorizontalDirection);
             resources.ApplyResources(panelSerial, "panelSerial");
             panelSerial.Name = "panelSerial";
@@ -900,12 +930,12 @@ namespace ReciPro
             resources.ApplyResources(textBoxThicknessList, "textBoxThicknessList");
             textBoxThicknessList.Name = "textBoxThicknessList";
             // 
-            // panel5
+            // panelSerialSettings
             // 
-            resources.ApplyResources(panel5, "panel5");
-            panel5.Controls.Add(checkBoxSerialThickness);
-            panel5.Controls.Add(checkBoxSerialDefocus);
-            panel5.Name = "panel5";
+            resources.ApplyResources(panelSerialSettings, "panelSerialSettings");
+            panelSerialSettings.Controls.Add(checkBoxSerialThickness);
+            panelSerialSettings.Controls.Add(checkBoxSerialDefocus);
+            panelSerialSettings.Name = "panelSerialSettings";
             // 
             // checkBoxSerialThickness
             // 
@@ -955,12 +985,12 @@ namespace ReciPro
             radioButtonHorizontalThickness.Name = "radioButtonHorizontalThickness";
             radioButtonHorizontalThickness.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel4
+            // flowLayoutPanelSimulationMode
             // 
-            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(radioButtonSingleMode);
-            flowLayoutPanel4.Controls.Add(radioButtonSerialMode);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            resources.ApplyResources(flowLayoutPanelSimulationMode, "flowLayoutPanelSimulationMode");
+            flowLayoutPanelSimulationMode.Controls.Add(radioButtonSingleMode);
+            flowLayoutPanelSimulationMode.Controls.Add(radioButtonSerialMode);
+            flowLayoutPanelSimulationMode.Name = "flowLayoutPanelSimulationMode";
             // 
             // radioButtonSingleMode
             // 
@@ -980,21 +1010,22 @@ namespace ReciPro
             // groupBoxPotentialOption
             // 
             resources.ApplyResources(groupBoxPotentialOption, "groupBoxPotentialOption");
-            groupBoxPotentialOption.Controls.Add(flowLayoutPanel11);
+            captureExtender.SetCapture(groupBoxPotentialOption, true);
+            groupBoxPotentialOption.Controls.Add(flowLayoutPanelPotentialMode);
             groupBoxPotentialOption.Controls.Add(checkBoxPotentialUgPrime);
             groupBoxPotentialOption.Controls.Add(checkBoxPotentialUg);
             groupBoxPotentialOption.Name = "groupBoxPotentialOption";
             groupBoxPotentialOption.TabStop = false;
             // 
-            // flowLayoutPanel11
+            // flowLayoutPanelPotentialMode
             // 
-            resources.ApplyResources(flowLayoutPanel11, "flowLayoutPanel11");
-            flowLayoutPanel11.Controls.Add(radioButtonPotentialModeMagAndPhase);
-            flowLayoutPanel11.Controls.Add(flowLayoutPanelMagAndPhase);
-            flowLayoutPanel11.Controls.Add(panelPhaseScale);
-            flowLayoutPanel11.Controls.Add(radioButtonPotentialModeRealAndImag);
-            flowLayoutPanel11.Controls.Add(flowLayoutPanelRealAndImaiginary);
-            flowLayoutPanel11.Name = "flowLayoutPanel11";
+            resources.ApplyResources(flowLayoutPanelPotentialMode, "flowLayoutPanelPotentialMode");
+            flowLayoutPanelPotentialMode.Controls.Add(radioButtonPotentialModeMagAndPhase);
+            flowLayoutPanelPotentialMode.Controls.Add(flowLayoutPanelMagAndPhase);
+            flowLayoutPanelPotentialMode.Controls.Add(panelPhaseScale);
+            flowLayoutPanelPotentialMode.Controls.Add(radioButtonPotentialModeRealAndImag);
+            flowLayoutPanelPotentialMode.Controls.Add(flowLayoutPanelRealAndImaiginary);
+            flowLayoutPanelPotentialMode.Name = "flowLayoutPanelPotentialMode";
             // 
             // radioButtonPotentialModeMagAndPhase
             // 
@@ -1188,6 +1219,7 @@ namespace ReciPro
             // 
             // groupBoxSTEMoption2
             // 
+            captureExtender.SetCapture(groupBoxSTEMoption2, true);
             groupBoxSTEMoption2.Controls.Add(numericBoxSTEM_AngleResolution);
             groupBoxSTEMoption2.Controls.Add(numericBoxSTEM_SliceThicknessForInelastic);
             groupBoxSTEMoption2.Controls.Add(flowLayoutPanel10);
@@ -1237,17 +1269,18 @@ namespace ReciPro
             // groupBoxHREMoption2
             // 
             resources.ApplyResources(groupBoxHREMoption2, "groupBoxHREMoption2");
-            groupBoxHREMoption2.Controls.Add(flowLayoutPanel8);
+            captureExtender.SetCapture(groupBoxHREMoption2, true);
+            groupBoxHREMoption2.Controls.Add(flowLayoutPanelStemMode);
             groupBoxHREMoption2.Controls.Add(label32);
             groupBoxHREMoption2.Name = "groupBoxHREMoption2";
             groupBoxHREMoption2.TabStop = false;
             // 
-            // flowLayoutPanel8
+            // flowLayoutPanelStemMode
             // 
-            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
-            flowLayoutPanel8.Controls.Add(radioButtonModeQuasiCoherent);
-            flowLayoutPanel8.Controls.Add(radioButtonModeTransmissionCrossCoefficient);
-            flowLayoutPanel8.Name = "flowLayoutPanel8";
+            resources.ApplyResources(flowLayoutPanelStemMode, "flowLayoutPanelStemMode");
+            flowLayoutPanelStemMode.Controls.Add(radioButtonModeQuasiCoherent);
+            flowLayoutPanelStemMode.Controls.Add(radioButtonModeTransmissionCrossCoefficient);
+            flowLayoutPanelStemMode.Name = "flowLayoutPanelStemMode";
             // 
             // radioButtonModeQuasiCoherent
             // 
@@ -1271,22 +1304,23 @@ namespace ReciPro
             label32.ForeColor = System.Drawing.Color.Black;
             label32.Name = "label32";
             // 
-            // panel6
+            // panelImageProperties
             // 
-            resources.ApplyResources(panel6, "panel6");
-            panel6.Controls.Add(groupBox8);
-            panel6.Controls.Add(panel8);
-            panel6.Controls.Add(groupBox7);
-            panel6.Name = "panel6";
+            resources.ApplyResources(panelImageProperties, "panelImageProperties");
+            panelImageProperties.Controls.Add(groupBoxImageProperty);
+            panelImageProperties.Controls.Add(panel8);
+            panelImageProperties.Controls.Add(groupBoxDiffractedWaves);
+            panelImageProperties.Name = "panelImageProperties";
             // 
-            // groupBox8
+            // groupBoxImageProperty
             // 
-            resources.ApplyResources(groupBox8, "groupBox8");
-            groupBox8.Controls.Add(numericBoxHeight);
-            groupBox8.Controls.Add(numericBoxWidth);
-            groupBox8.Controls.Add(numericBoxResolution);
-            groupBox8.Name = "groupBox8";
-            groupBox8.TabStop = false;
+            resources.ApplyResources(groupBoxImageProperty, "groupBoxImageProperty");
+            captureExtender.SetCapture(groupBoxImageProperty, true);
+            groupBoxImageProperty.Controls.Add(numericBoxHeight);
+            groupBoxImageProperty.Controls.Add(numericBoxWidth);
+            groupBoxImageProperty.Controls.Add(numericBoxResolution);
+            groupBoxImageProperty.Name = "groupBoxImageProperty";
+            groupBoxImageProperty.TabStop = false;
             // 
             // numericBoxHeight
             // 
@@ -1344,12 +1378,13 @@ namespace ReciPro
             resources.ApplyResources(panel8, "panel8");
             panel8.Name = "panel8";
             // 
-            // groupBox7
+            // groupBoxDiffractedWaves
             // 
-            resources.ApplyResources(groupBox7, "groupBox7");
-            groupBox7.Controls.Add(numericBoxNumOfBlochWave);
-            groupBox7.Name = "groupBox7";
-            groupBox7.TabStop = false;
+            resources.ApplyResources(groupBoxDiffractedWaves, "groupBoxDiffractedWaves");
+            captureExtender.SetCapture(groupBoxDiffractedWaves, true);
+            groupBoxDiffractedWaves.Controls.Add(numericBoxNumOfBlochWave);
+            groupBoxDiffractedWaves.Name = "groupBoxDiffractedWaves";
+            groupBoxDiffractedWaves.TabStop = false;
             // 
             // numericBoxNumOfBlochWave
             // 
@@ -1373,21 +1408,22 @@ namespace ReciPro
             resources.ApplyResources(groupBoxOpticalProperty, "groupBoxOpticalProperty");
             groupBoxOpticalProperty.Controls.Add(groupBoxSTEMoption1);
             groupBoxOpticalProperty.Controls.Add(groupBoxHREMoption1);
-            groupBoxOpticalProperty.Controls.Add(groupBox4);
+            groupBoxOpticalProperty.Controls.Add(groupBoxTEMConditions);
             groupBoxOpticalProperty.Name = "groupBoxOpticalProperty";
             groupBoxOpticalProperty.TabStop = false;
             // 
             // groupBoxSTEMoption1
             // 
+            captureExtender.SetCapture(groupBoxSTEMoption1, true);
             groupBoxSTEMoption1.ContextMenuStrip = contextMenuStripSTEM;
             groupBoxSTEMoption1.Controls.Add(label5);
             groupBoxSTEMoption1.Controls.Add(label34);
             groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_DetectorOuterAngle);
             groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_EffectiveSourceSize);
             groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_ConvergenceAngle);
-            groupBoxSTEMoption1.Controls.Add(flowLayoutPanel15);
-            groupBoxSTEMoption1.Controls.Add(flowLayoutPanel9);
-            groupBoxSTEMoption1.Controls.Add(flowLayoutPanel2);
+            groupBoxSTEMoption1.Controls.Add(flowLayoutPanelOuterRadius);
+            groupBoxSTEMoption1.Controls.Add(flowLayoutPanelInnerRadius);
+            groupBoxSTEMoption1.Controls.Add(flowLayoutPanelConvergenceRadius);
             groupBoxSTEMoption1.Controls.Add(numericBoxSTEM_DetectorInnerAngle);
             groupBoxSTEMoption1.Controls.Add(label1);
             resources.ApplyResources(groupBoxSTEMoption1, "groupBoxSTEMoption1");
@@ -1494,12 +1530,12 @@ namespace ReciPro
             numericBoxSTEM_ConvergenceAngle.Value = 25D;
             numericBoxSTEM_ConvergenceAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
             // 
-            // flowLayoutPanel15
+            // flowLayoutPanelOuterRadius
             // 
-            resources.ApplyResources(flowLayoutPanel15, "flowLayoutPanel15");
-            flowLayoutPanel15.Controls.Add(textBoxOuterRadius);
-            flowLayoutPanel15.Controls.Add(label38);
-            flowLayoutPanel15.Name = "flowLayoutPanel15";
+            resources.ApplyResources(flowLayoutPanelOuterRadius, "flowLayoutPanelOuterRadius");
+            flowLayoutPanelOuterRadius.Controls.Add(textBoxOuterRadius);
+            flowLayoutPanelOuterRadius.Controls.Add(label38);
+            flowLayoutPanelOuterRadius.Name = "flowLayoutPanelOuterRadius";
             // 
             // textBoxOuterRadius
             // 
@@ -1515,12 +1551,12 @@ namespace ReciPro
             label38.ForeColor = System.Drawing.Color.Black;
             label38.Name = "label38";
             // 
-            // flowLayoutPanel9
+            // flowLayoutPanelInnerRadius
             // 
-            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
-            flowLayoutPanel9.Controls.Add(textBoxInnerRadius);
-            flowLayoutPanel9.Controls.Add(label37);
-            flowLayoutPanel9.Name = "flowLayoutPanel9";
+            resources.ApplyResources(flowLayoutPanelInnerRadius, "flowLayoutPanelInnerRadius");
+            flowLayoutPanelInnerRadius.Controls.Add(textBoxInnerRadius);
+            flowLayoutPanelInnerRadius.Controls.Add(label37);
+            flowLayoutPanelInnerRadius.Name = "flowLayoutPanelInnerRadius";
             // 
             // textBoxInnerRadius
             // 
@@ -1536,12 +1572,12 @@ namespace ReciPro
             label37.ForeColor = System.Drawing.Color.Black;
             label37.Name = "label37";
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelConvergenceRadius
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(textBoxConvRadius);
-            flowLayoutPanel2.Controls.Add(label36);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanelConvergenceRadius, "flowLayoutPanelConvergenceRadius");
+            flowLayoutPanelConvergenceRadius.Controls.Add(textBoxConvRadius);
+            flowLayoutPanelConvergenceRadius.Controls.Add(label36);
+            flowLayoutPanelConvergenceRadius.Name = "flowLayoutPanelConvergenceRadius";
             // 
             // textBoxConvRadius
             // 
@@ -1582,12 +1618,13 @@ namespace ReciPro
             // 
             // groupBoxHREMoption1
             // 
+            captureExtender.SetCapture(groupBoxHREMoption1, true);
             groupBoxHREMoption1.Controls.Add(checkBoxOpenAperture);
             groupBoxHREMoption1.Controls.Add(numericBoxHRTEM_ObjAperX);
             groupBoxHREMoption1.Controls.Add(numericBoxObjAperRadius);
             groupBoxHREMoption1.Controls.Add(numericBoxHRTEM_ObjAperY);
-            groupBoxHREMoption1.Controls.Add(flowLayoutPanel1);
-            groupBoxHREMoption1.Controls.Add(flowLayoutPanel5);
+            groupBoxHREMoption1.Controls.Add(flowLayoutPanelSpotCount);
+            groupBoxHREMoption1.Controls.Add(flowLayoutPanelObjectiveAperture);
             groupBoxHREMoption1.Controls.Add(label8);
             resources.ApplyResources(groupBoxHREMoption1, "groupBoxHREMoption1");
             groupBoxHREMoption1.Name = "groupBoxHREMoption1";
@@ -1651,13 +1688,13 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperY.UpDown_Increment = 0.5D;
             numericBoxHRTEM_ObjAperY.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelSpotCount
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(textBoxNumOfSpots);
-            flowLayoutPanel1.Controls.Add(label9);
-            flowLayoutPanel1.Controls.Add(buttonDetailsOfSpots);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanelSpotCount, "flowLayoutPanelSpotCount");
+            flowLayoutPanelSpotCount.Controls.Add(textBoxNumOfSpots);
+            flowLayoutPanelSpotCount.Controls.Add(label9);
+            flowLayoutPanelSpotCount.Controls.Add(buttonDetailsOfSpots);
+            flowLayoutPanelSpotCount.Name = "flowLayoutPanelSpotCount";
             // 
             // textBoxNumOfSpots
             // 
@@ -1680,12 +1717,12 @@ namespace ReciPro
             buttonDetailsOfSpots.UseVisualStyleBackColor = true;
             buttonDetailsOfSpots.Click += ButtonDetailsOfSpots_Click;
             // 
-            // flowLayoutPanel5
+            // flowLayoutPanelObjectiveAperture
             // 
-            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
-            flowLayoutPanel5.Controls.Add(textBoxObjAperRadius);
-            flowLayoutPanel5.Controls.Add(label7);
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            resources.ApplyResources(flowLayoutPanelObjectiveAperture, "flowLayoutPanelObjectiveAperture");
+            flowLayoutPanelObjectiveAperture.Controls.Add(textBoxObjAperRadius);
+            flowLayoutPanelObjectiveAperture.Controls.Add(label7);
+            flowLayoutPanelObjectiveAperture.Name = "flowLayoutPanelObjectiveAperture";
             // 
             // textBoxObjAperRadius
             // 
@@ -1707,21 +1744,22 @@ namespace ReciPro
             label8.ForeColor = System.Drawing.Color.DimGray;
             label8.Name = "label8";
             // 
-            // groupBox4
+            // groupBoxTEMConditions
             // 
-            groupBox4.ContextMenuStrip = contextMenuStripTEMcondition;
-            groupBox4.Controls.Add(label35);
-            groupBox4.Controls.Add(checkBoxCTF);
-            groupBox4.Controls.Add(numericBoxCc);
-            groupBox4.Controls.Add(numericBoxDeltaV);
-            groupBox4.Controls.Add(numericBoxHRTEM_BetaAgnle);
-            groupBox4.Controls.Add(numericBoxCs);
-            groupBox4.Controls.Add(numericBoxDefocus);
-            groupBox4.Controls.Add(numericBoxAccVol);
-            groupBox4.Controls.Add(flowLayoutPanel3);
-            resources.ApplyResources(groupBox4, "groupBox4");
-            groupBox4.Name = "groupBox4";
-            groupBox4.TabStop = false;
+            captureExtender.SetCapture(groupBoxTEMConditions, true);
+            groupBoxTEMConditions.ContextMenuStrip = contextMenuStripTEMcondition;
+            groupBoxTEMConditions.Controls.Add(label35);
+            groupBoxTEMConditions.Controls.Add(checkBoxCTF);
+            groupBoxTEMConditions.Controls.Add(numericBoxCc);
+            groupBoxTEMConditions.Controls.Add(numericBoxDeltaV);
+            groupBoxTEMConditions.Controls.Add(numericBoxHRTEM_BetaAgnle);
+            groupBoxTEMConditions.Controls.Add(numericBoxCs);
+            groupBoxTEMConditions.Controls.Add(numericBoxDefocus);
+            groupBoxTEMConditions.Controls.Add(numericBoxAccVol);
+            groupBoxTEMConditions.Controls.Add(flowLayoutPanelScherzer);
+            resources.ApplyResources(groupBoxTEMConditions, "groupBoxTEMConditions");
+            groupBoxTEMConditions.Name = "groupBoxTEMConditions";
+            groupBoxTEMConditions.TabStop = false;
             // 
             // contextMenuStripTEMcondition
             // 
@@ -1901,14 +1939,14 @@ namespace ReciPro
             numericBoxAccVol.Value = 200D;
             numericBoxAccVol.ValueChanged += NumericBoxAccVol_ValueChanged;
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanelScherzer
             // 
-            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
-            flowLayoutPanel3.Controls.Add(label3);
-            flowLayoutPanel3.Controls.Add(textBoxScherzer);
-            flowLayoutPanel3.Controls.Add(label4);
-            flowLayoutPanel3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            resources.ApplyResources(flowLayoutPanelScherzer, "flowLayoutPanelScherzer");
+            flowLayoutPanelScherzer.Controls.Add(label3);
+            flowLayoutPanelScherzer.Controls.Add(textBoxScherzer);
+            flowLayoutPanelScherzer.Controls.Add(label4);
+            flowLayoutPanelScherzer.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            flowLayoutPanelScherzer.Name = "flowLayoutPanelScherzer";
             // 
             // label3
             // 
@@ -1932,27 +1970,28 @@ namespace ReciPro
             label4.Name = "label4";
             toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
-            // flowLayoutPanel14
+            // flowLayoutPanelModeSelection
             // 
-            resources.ApplyResources(flowLayoutPanel14, "flowLayoutPanel14");
-            flowLayoutPanel14.Controls.Add(groupBox6);
-            flowLayoutPanel14.Controls.Add(groupBoxSampleProperty);
-            flowLayoutPanel14.Name = "flowLayoutPanel14";
+            resources.ApplyResources(flowLayoutPanelModeSelection, "flowLayoutPanelModeSelection");
+            flowLayoutPanelModeSelection.Controls.Add(groupBoxImageMode);
+            flowLayoutPanelModeSelection.Controls.Add(groupBoxSampleProperty);
+            flowLayoutPanelModeSelection.Name = "flowLayoutPanelModeSelection";
             // 
-            // groupBox6
+            // groupBoxImageMode
             // 
-            groupBox6.Controls.Add(flowLayoutPanel16);
-            resources.ApplyResources(groupBox6, "groupBox6");
-            groupBox6.Name = "groupBox6";
-            groupBox6.TabStop = false;
+            captureExtender.SetCapture(groupBoxImageMode, true);
+            groupBoxImageMode.Controls.Add(flowLayoutPanelImageType);
+            resources.ApplyResources(groupBoxImageMode, "groupBoxImageMode");
+            groupBoxImageMode.Name = "groupBoxImageMode";
+            groupBoxImageMode.TabStop = false;
             // 
-            // flowLayoutPanel16
+            // flowLayoutPanelImageType
             // 
-            resources.ApplyResources(flowLayoutPanel16, "flowLayoutPanel16");
-            flowLayoutPanel16.Controls.Add(radioButtonHRTEM);
-            flowLayoutPanel16.Controls.Add(radioButtonSTEM);
-            flowLayoutPanel16.Controls.Add(radioButtonProjectedPotential);
-            flowLayoutPanel16.Name = "flowLayoutPanel16";
+            resources.ApplyResources(flowLayoutPanelImageType, "flowLayoutPanelImageType");
+            flowLayoutPanelImageType.Controls.Add(radioButtonHRTEM);
+            flowLayoutPanelImageType.Controls.Add(radioButtonSTEM);
+            flowLayoutPanelImageType.Controls.Add(radioButtonProjectedPotential);
+            flowLayoutPanelImageType.Name = "flowLayoutPanelImageType";
             // 
             // radioButtonHRTEM
             // 
@@ -1982,6 +2021,7 @@ namespace ReciPro
             // 
             // groupBoxSampleProperty
             // 
+            captureExtender.SetCapture(groupBoxSampleProperty, true);
             groupBoxSampleProperty.Controls.Add(numericBoxThickness);
             resources.ApplyResources(groupBoxSampleProperty, "groupBoxSampleProperty");
             groupBoxSampleProperty.Name = "groupBoxSampleProperty";
@@ -2005,13 +2045,14 @@ namespace ReciPro
             numericBoxThickness.Value = 20D;
             numericBoxThickness.ValueChanged += NumericBoxThickness_ValueChanged;
             // 
-            // panel4
+            // panelSimulationActions
             // 
-            panel4.Controls.Add(checkBoxPreset);
-            panel4.Controls.Add(checkBoxRealTimeSimulation);
-            panel4.Controls.Add(buttonSimulate);
-            resources.ApplyResources(panel4, "panel4");
-            panel4.Name = "panel4";
+            captureExtender.SetCapture(panelSimulationActions, true);
+            panelSimulationActions.Controls.Add(checkBoxPreset);
+            panelSimulationActions.Controls.Add(checkBoxRealTimeSimulation);
+            panelSimulationActions.Controls.Add(buttonSimulate);
+            resources.ApplyResources(panelSimulationActions, "panelSimulationActions");
+            panelSimulationActions.Name = "panelSimulationActions";
             // 
             // checkBoxPreset
             // 
@@ -2045,6 +2086,7 @@ namespace ReciPro
             // 
             // fileToolStripMenuItem
             // 
+            captureExtender.SetCapture(fileToolStripMenuItem, true);
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemSave, copyImageToolStripMenuItem, toolStripMenuItemOverprintSymbols, toolStripSeparator1, readTEMParameterToolStripMenuItem, saveTEMParametersToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
@@ -2124,6 +2166,7 @@ namespace ReciPro
             // 
             // helpToolStripMenuItem
             // 
+            captureExtender.SetCapture(helpToolStripMenuItem, true);
             helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { detailsOfHRTEMSimulationToolStripMenuItem, toolStripSeparator2, calculationLibraryToolStripMenuItem, toolStripComboBoxCaclulationLibrary });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
@@ -2193,6 +2236,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            captureExtender.SetCapture(this, true);
             Controls.Add(buttonStop);
             Controls.Add(splitContainer1);
             Controls.Add(statusStrip1);
@@ -2209,24 +2253,24 @@ namespace ReciPro
             splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelImageStatus.ResumeLayout(false);
+            panelImageStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxScaleOfIntensity).EndInit();
-            panel2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
+            panelDisplaySettings.ResumeLayout(false);
+            groupBoxAdjust.ResumeLayout(false);
+            groupBoxAdjust.PerformLayout();
             groupBoxNormalization.ResumeLayout(false);
             groupBoxNormalization.PerformLayout();
-            flowLayoutPanel6.ResumeLayout(false);
-            flowLayoutPanel6.PerformLayout();
+            flowLayoutPanelIntensityRange.ResumeLayout(false);
+            flowLayoutPanelIntensityRange.PerformLayout();
             groupBoxSTEMoption3.ResumeLayout(false);
             groupBoxSTEMoption3.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            groupBoxDisplay.ResumeLayout(false);
+            groupBoxDisplay.PerformLayout();
+            groupBoxSimulation.ResumeLayout(false);
+            groupBoxSimulation.PerformLayout();
+            panelModeOptions.ResumeLayout(false);
+            panelModeOptions.PerformLayout();
             groupBoxSerialImage.ResumeLayout(false);
             groupBoxSerialImage.PerformLayout();
             panelSerial.ResumeLayout(false);
@@ -2235,16 +2279,16 @@ namespace ReciPro
             panelSerialDefocus.PerformLayout();
             panelSerialThickness.ResumeLayout(false);
             panelSerialThickness.PerformLayout();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
+            panelSerialSettings.ResumeLayout(false);
+            panelSerialSettings.PerformLayout();
             flowLayoutPanelHorizontalDirection.ResumeLayout(false);
             flowLayoutPanelHorizontalDirection.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanelSimulationMode.ResumeLayout(false);
+            flowLayoutPanelSimulationMode.PerformLayout();
             groupBoxPotentialOption.ResumeLayout(false);
             groupBoxPotentialOption.PerformLayout();
-            flowLayoutPanel11.ResumeLayout(false);
-            flowLayoutPanel11.PerformLayout();
+            flowLayoutPanelPotentialMode.ResumeLayout(false);
+            flowLayoutPanelPotentialMode.PerformLayout();
             flowLayoutPanelMagAndPhase.ResumeLayout(false);
             flowLayoutPanelMagAndPhase.PerformLayout();
             panelPhaseScale.ResumeLayout(false);
@@ -2256,40 +2300,40 @@ namespace ReciPro
             groupBoxSTEMoption2.PerformLayout();
             groupBoxHREMoption2.ResumeLayout(false);
             groupBoxHREMoption2.PerformLayout();
-            flowLayoutPanel8.ResumeLayout(false);
-            flowLayoutPanel8.PerformLayout();
-            panel6.ResumeLayout(false);
-            groupBox8.ResumeLayout(false);
-            groupBox7.ResumeLayout(false);
+            flowLayoutPanelStemMode.ResumeLayout(false);
+            flowLayoutPanelStemMode.PerformLayout();
+            panelImageProperties.ResumeLayout(false);
+            groupBoxImageProperty.ResumeLayout(false);
+            groupBoxDiffractedWaves.ResumeLayout(false);
             groupBoxOpticalProperty.ResumeLayout(false);
             groupBoxSTEMoption1.ResumeLayout(false);
             groupBoxSTEMoption1.PerformLayout();
             contextMenuStripSTEM.ResumeLayout(false);
-            flowLayoutPanel15.ResumeLayout(false);
-            flowLayoutPanel15.PerformLayout();
-            flowLayoutPanel9.ResumeLayout(false);
-            flowLayoutPanel9.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanelOuterRadius.ResumeLayout(false);
+            flowLayoutPanelOuterRadius.PerformLayout();
+            flowLayoutPanelInnerRadius.ResumeLayout(false);
+            flowLayoutPanelInnerRadius.PerformLayout();
+            flowLayoutPanelConvergenceRadius.ResumeLayout(false);
+            flowLayoutPanelConvergenceRadius.PerformLayout();
             groupBoxHREMoption1.ResumeLayout(false);
             groupBoxHREMoption1.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
+            flowLayoutPanelSpotCount.ResumeLayout(false);
+            flowLayoutPanelSpotCount.PerformLayout();
+            flowLayoutPanelObjectiveAperture.ResumeLayout(false);
+            flowLayoutPanelObjectiveAperture.PerformLayout();
+            groupBoxTEMConditions.ResumeLayout(false);
+            groupBoxTEMConditions.PerformLayout();
             contextMenuStripTEMcondition.ResumeLayout(false);
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
-            flowLayoutPanel14.ResumeLayout(false);
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
-            flowLayoutPanel16.ResumeLayout(false);
-            flowLayoutPanel16.PerformLayout();
+            flowLayoutPanelScherzer.ResumeLayout(false);
+            flowLayoutPanelScherzer.PerformLayout();
+            flowLayoutPanelModeSelection.ResumeLayout(false);
+            groupBoxImageMode.ResumeLayout(false);
+            groupBoxImageMode.PerformLayout();
+            flowLayoutPanelImageType.ResumeLayout(false);
+            flowLayoutPanelImageType.PerformLayout();
             groupBoxSampleProperty.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            panelSimulationActions.ResumeLayout(false);
+            panelSimulationActions.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
@@ -2310,7 +2354,7 @@ namespace ReciPro
         private Crystallography.Controls.NumericBox numericBoxCc;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBoxOpticalProperty;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxSimulation;
         private System.Windows.Forms.RadioButton radioButtonSingleMode;
         private System.Windows.Forms.RadioButton radioButtonSerialMode;
         private Crystallography.Controls.NumericBox numericBoxDefocusStart;
@@ -2332,11 +2376,11 @@ namespace ReciPro
         private System.Windows.Forms.StatusStrip statusStrip1;
         private Crystallography.Controls.NumericBox numericBoxHRTEM_ObjAperY;
         private Crystallography.Controls.NumericBox numericBoxHRTEM_ObjAperX;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelScherzer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxScherzer;
         private System.Windows.Forms.GroupBox groupBoxHREMoption1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelObjectiveAperture;
         private System.Windows.Forms.TextBox textBoxObjAperRadius;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBoxShowUnitcell;
@@ -2366,7 +2410,7 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem readTEMParameterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveTEMParametersToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSpotCount;
         private System.Windows.Forms.TextBox textBoxNumOfSpots;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -2377,8 +2421,8 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripMenuItem calculationLibraryToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxCaclulationLibrary;
         private System.Windows.Forms.CheckBox checkBoxOpenAperture;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelStemMode;
+        private System.Windows.Forms.GroupBox groupBoxImageProperty;
         private System.Windows.Forms.GroupBox groupBoxSerialImage;
         private System.Windows.Forms.Panel panelSerial;
         private System.Windows.Forms.Panel panelSerialDefocus;
@@ -2405,14 +2449,14 @@ namespace ReciPro
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelDisplaySettings;
         private Crystallography.Controls.TrackBarAdvanced trackBarAdvancedMax;
         private Crystallography.Controls.TrackBarAdvanced trackBarAdvancedMin;
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.ComboBox comboBoxScaleColorScale;
         private System.Windows.Forms.CheckBox checkBoxGaussianBlur;
         private Crystallography.Controls.NumericBox numericBoxGaussianBlurRadius;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPotentialMode;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMagAndPhase;
         private System.Windows.Forms.RadioButton radioButtonPotentialShowMagAndPhase;
         private System.Windows.Forms.RadioButton radioButtonPotentialShowMag;
@@ -2422,7 +2466,7 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonPotentialShowRealAndImag;
         private System.Windows.Forms.RadioButton radioButtonPotentialShowReal;
         private System.Windows.Forms.RadioButton radioButtonPotentialShowImag;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelImageStatus;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.PictureBox pictureBoxScaleOfIntensity;
@@ -2435,10 +2479,10 @@ namespace ReciPro
         private System.Windows.Forms.Label labelMousePositionY;
         private System.Windows.Forms.Label labelMousePositionX;
         private System.Windows.Forms.CheckBox checkBoxRealTimeSimulation;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBoxTEMConditions;
+        private System.Windows.Forms.GroupBox groupBoxDiffractedWaves;
         private NumericBox numericBoxIntensityMax;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIntensityRange;
         private System.Windows.Forms.CheckBox checkBoxIntensityMin;
         private NumericBox numericBoxIntensityMin;
         private NumericBox numericBoxSTEM_ConvergenceAngle;
@@ -2451,15 +2495,15 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxCTF;
         private System.Windows.Forms.Label label4;
         private NumericBox numericBoxSTEM_SliceThicknessForInelastic;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelModeSelection;
+        private System.Windows.Forms.GroupBox groupBoxImageMode;
         private System.Windows.Forms.RadioButton radioButtonProjectedPotential;
         private System.Windows.Forms.RadioButton radioButtonSTEM;
         private System.Windows.Forms.RadioButton radioButtonHRTEM;
         private System.Windows.Forms.GroupBox groupBoxSampleProperty;
         private NumericBox numericBoxThickness;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSimulationMode;
+        private System.Windows.Forms.Panel panelModeOptions;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.GroupBox groupBoxSTEMoption1;
         private System.Windows.Forms.GroupBox groupBoxNormalization;
@@ -2474,7 +2518,7 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripMenuItem typicalHAADF80250MradToolStripMenuItem;
         private NumericBox numericBoxSTEM_EffectiveSourceSize;
         private System.Windows.Forms.ToolStripMenuItem setAllAToolStripMenuItem;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panelSerialSettings;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label1;
@@ -2484,27 +2528,27 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripMenuItem presets2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presets3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presets4ToolStripMenuItem;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelSimulationActions;
         private System.Windows.Forms.CheckBox checkBoxIntensityMax;
         private System.Windows.Forms.GroupBox groupBoxSTEMoption3;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxAdjust;
+        private System.Windows.Forms.GroupBox groupBoxDisplay;
         private System.Windows.Forms.CheckBox checkBoxPreset;
         private System.Windows.Forms.RadioButton radioButtonSTEM_target_TDS;
         private System.Windows.Forms.RadioButton radioButtonSTEM_target_elas;
         private System.Windows.Forms.RadioButton radioButtonSTEM_target_both;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel15;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelOuterRadius;
         private System.Windows.Forms.TextBox textBoxOuterRadius;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelInnerRadius;
         private System.Windows.Forms.TextBox textBoxInnerRadius;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelConvergenceRadius;
         private System.Windows.Forms.TextBox textBoxConvRadius;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel16;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelImageType;
+        private System.Windows.Forms.Panel panelImageProperties;
         private NumericBox numericBoxResolution;
         private NumericBox numericBoxWidth;
         private NumericBox numericBoxHeight;

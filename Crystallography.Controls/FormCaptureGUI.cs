@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -17,7 +18,7 @@ namespace Crystallography.Controls;
 /// 260323Cl 追加
 /// アプリケーションの全フォーム・コントロールのスクリーンショットを一括保存するための開発者向けフォーム。
 /// </summary>
-public partial class FormCaptureGUI : Form
+public partial class FormCaptureGUI : CaptureFormBase
 {
     /// <summary>キャプチャ対象の最小サイズ (px)</summary>
     private const int MinCaptureSize = 20;
@@ -79,6 +80,7 @@ public partial class FormCaptureGUI : Form
 
     // 260323Cl: キャプチャ対象フォーム (ショートカット押下時のアクティブフォーム)
     private Form targetForm;
+    private bool useCaptureExtenderMode = false; // (260323Ch) CaptureExtender が1つでも設定されているフォームでは flag 指定を最優先する
 
     public FormCaptureGUI()
     {
@@ -115,9 +117,14 @@ public partial class FormCaptureGUI : Form
         // 260323Cl: targetForm のみを対象にする (全フォーム列挙をやめる)
         if (targetForm != null && !targetForm.IsDisposed)
         {
-            var visited = new HashSet<Control>();
-            var node = CreateNode(targetForm, targetForm.Name, visited);
-            treeViewControls.Nodes.Add(node);
+            // useCaptureExtenderMode = false; // 旧実装: 常に FormCaptureGUI 側の既定ルールだけでツリーを構築していた
+            useCaptureExtenderMode = CaptureExtender.HasAnyCaptureTargets(targetForm); // (260323Ch) CaptureExtender が設定済みのフォームでは flag 付き対象だけをツリーに出す
+
+            var visitedControls = new HashSet<Control> { targetForm };
+            var visitedItems = new HashSet<ToolStripItem>();
+            var node = CreateControlNode(targetForm, targetForm.Name, visitedControls, visitedItems, isRoot: true);
+            if (node != null)
+                treeViewControls.Nodes.Add(node);
         }
 
         treeViewControls.EndUpdate();
@@ -126,70 +133,197 @@ public partial class FormCaptureGUI : Form
             treeViewControls.Nodes[0].Expand();
     }
 
-    /// <summary>コントロールのTreeNodeを再帰的に作成</summary>
-    private TreeNode CreateNode(Control control, string path, HashSet<Control> visited)
+    /// <summary>コントロールの TreeNode を再帰的に作成</summary>
+    private TreeNode CreateControlNode(Control control, string path, HashSet<Control> visitedControls, HashSet<ToolStripItem> visitedItems, bool isRoot = false)
     {
+        var childNodes = CreateChildNodes(control, path, visitedControls, visitedItems);
+        var captureEnabled = IsCaptureEnabled(control);
+
+        if (useCaptureExtenderMode && !isRoot && !captureEnabled && childNodes.Count == 0)
+            return null;
+
         var typeName = control.GetType().Name;
         var displayText = string.IsNullOrEmpty(control.Name)
             ? $"({typeName})"
             : $"{control.Name}  [{typeName}]  {control.Width}x{control.Height}";
 
-        var node = new TreeNode(displayText) { Tag = new ControlInfo(control, path), Checked = ShouldCapture(control) };
+        var node = new TreeNode(displayText)
+        {
+            Tag = new CaptureTargetInfo(control, path),
+            Checked = useCaptureExtenderMode ? captureEnabled : ShouldCapture(control)
+        };
 
-        AddChildNodes(control, path, visited, node);
+        foreach (var childNode in childNodes)
+            AddChildNode(node, childNode);
 
         return node;
     }
 
-    /// <summary>子コントロールを再帰的にノードに追加。名前のない中間コンテナは透過的にスキップして子をたどる</summary>
-    private void AddChildNodes(Control parent, string parentPath, HashSet<Control> visited, TreeNode parentNode)
+    /// <summary>ToolStripItem の TreeNode を再帰的に作成</summary>
+    private TreeNode CreateToolStripItemNode(ToolStripItem item, string path, HashSet<ToolStripItem> visitedItems)
     {
-        // if (parent is NumericBox || parent is ColorControl) return; // 旧実装: 複合コントロールの内部 UI も個別ノード化していた
-        if (ShouldStopChildTraversal(parent)) return; // (260323Ch) NumericBox / ColorControl は本体のみキャプチャし、内部 UI は列挙しない
+        var childNodes = CreateToolStripItemChildNodes(item, path, visitedItems);
+        var captureEnabled = IsCaptureEnabled(item);
+
+        if (!captureEnabled && childNodes.Count == 0)
+            return null;
+
+        var name = string.IsNullOrEmpty(item.Name) ? $"({item.GetType().Name})" : item.Name;
+        var node = new TreeNode($"{name}  [{item.GetType().Name}]  {item.Bounds.Width}x{item.Bounds.Height}")
+        {
+            Tag = new CaptureTargetInfo(item, path),
+            Checked = captureEnabled
+        };
+
+        foreach (var childNode in childNodes)
+            AddChildNode(node, childNode);
+
+        return node;
+    }
+
+    private List<TreeNode> CreateChildNodes(Control parent, string parentPath, HashSet<Control> visitedControls, HashSet<ToolStripItem> visitedItems)
+    {
+        var childNodes = new List<TreeNode>();
+
+        // if (ShouldStopChildTraversal(parent)) return childNodes; // 旧実装: FormCaptureGUI 側の固定除外ルールだけで複合コントロール配下を止めていた
+        if (!useCaptureExtenderMode && ShouldStopChildTraversal(parent)) return childNodes; // (260323Ch) CaptureExtender 未設定フォームのみ従来の固定除外ルールを使う
 
         foreach (Control child in parent.Controls)
         {
-            if (visited.Contains(child)) continue;
-            visited.Add(child);
+            if (!visitedControls.Add(child)) continue;
 
             if (string.IsNullOrEmpty(child.Name))
             {
-                // 名前のないコンテナ (ToolStripContainer.ContentPanel 等) は
-                // ノードを作らずに、その子を親ノードに直接追加する
-                AddChildNodes(child, parentPath, visited, parentNode);
-            }
-            else if (ShouldSkipStandaloneCapture(child))
-            {
-                // (260323Ch) 単体 Label / RadioButton は個別キャプチャ不要のためノード化しない
-                continue;
+                childNodes.AddRange(CreateChildNodes(child, parentPath, visitedControls, visitedItems));
             }
             else
             {
+                if (!useCaptureExtenderMode && ShouldSkipStandaloneCapture(child))
+                    continue;
+
                 var childPath = $"{parentPath}.{child.Name}";
-                parentNode.Nodes.Add(CreateNode(child, childPath, visited));
+                var childNode = CreateControlNode(child, childPath, visitedControls, visitedItems);
+                if (childNode != null)
+                    childNodes.Add(childNode);
             }
         }
 
-        // ToolStripContainer の特殊パネルも走査する
-        if (parent is ToolStripContainer tsc)
+        if (useCaptureExtenderMode && parent is ToolStrip toolStrip)
         {
-            foreach (var panel in new Control[] { tsc.TopToolStripPanel, tsc.BottomToolStripPanel,
-                                                   tsc.LeftToolStripPanel, tsc.RightToolStripPanel, tsc.ContentPanel })
+            for (int i = 0; i < toolStrip.Items.Count; i++)
             {
-                if (visited.Contains(panel)) continue;
-                visited.Add(panel);
-                AddChildNodes(panel, parentPath, visited, parentNode);
+                var item = toolStrip.Items[i];
+                if (!visitedItems.Add(item)) continue;
+
+                var itemPath = $"{parentPath}.{GetToolStripItemPathSegment(item, i)}";
+                var itemNode = CreateToolStripItemNode(item, itemPath, visitedItems);
+                if (itemNode != null)
+                    childNodes.Add(itemNode);
             }
         }
 
-        // SplitContainer のパネルも走査する
-        if (parent is SplitContainer sc)
+        if (useCaptureExtenderMode)
         {
-            foreach (var panel in new Control[] { sc.Panel1, sc.Panel2 })
+            foreach (var (ownedToolStrip, pathSegment) in GetOwnedToolStrips(parent))
             {
-                if (visited.Contains(panel)) continue;
-                visited.Add(panel);
-                AddChildNodes(panel, parentPath, visited, parentNode);
+                if (!visitedControls.Add(ownedToolStrip)) continue;
+
+                var toolStripPath = $"{parentPath}.{pathSegment}";
+                var toolStripNode = CreateControlNode(ownedToolStrip, toolStripPath, visitedControls, visitedItems);
+                if (toolStripNode != null)
+                    childNodes.Add(toolStripNode);
+            }
+        }
+
+        if (parent is ToolStripContainer toolStripContainer)
+        {
+            foreach (var panel in new Control[]
+                     {
+                         toolStripContainer.TopToolStripPanel,
+                         toolStripContainer.BottomToolStripPanel,
+                         toolStripContainer.LeftToolStripPanel,
+                         toolStripContainer.RightToolStripPanel,
+                         toolStripContainer.ContentPanel
+                     })
+            {
+                if (!visitedControls.Add(panel)) continue;
+                childNodes.AddRange(CreateChildNodes(panel, parentPath, visitedControls, visitedItems));
+            }
+        }
+
+        if (parent is SplitContainer splitContainer)
+        {
+            foreach (var panel in new Control[] { splitContainer.Panel1, splitContainer.Panel2 })
+            {
+                if (!visitedControls.Add(panel)) continue;
+                childNodes.AddRange(CreateChildNodes(panel, parentPath, visitedControls, visitedItems));
+            }
+        }
+
+        return childNodes;
+    }
+
+    private static List<TreeNode> CreateToolStripItemChildNodes(ToolStripItem item, string itemPath, HashSet<ToolStripItem> visitedItems)
+    {
+        var childNodes = new List<TreeNode>();
+        if (item is not ToolStripDropDownItem dropDownItem) return childNodes;
+
+        for (int i = 0; i < dropDownItem.DropDownItems.Count; i++)
+        {
+            var childItem = dropDownItem.DropDownItems[i];
+            if (!visitedItems.Add(childItem)) continue;
+
+            var childPath = $"{itemPath}.{GetToolStripItemPathSegment(childItem, i)}";
+            var captureEnabled = CaptureExtender.IsCaptureEnabled(childItem);
+            var grandChildren = CreateToolStripItemChildNodes(childItem, childPath, visitedItems);
+            if (!captureEnabled && grandChildren.Count == 0) continue;
+
+            var name = string.IsNullOrEmpty(childItem.Name) ? $"({childItem.GetType().Name})" : childItem.Name;
+            var childNode = new TreeNode($"{name}  [{childItem.GetType().Name}]  {childItem.Bounds.Width}x{childItem.Bounds.Height}")
+            {
+                Tag = new CaptureTargetInfo(childItem, childPath),
+                Checked = captureEnabled
+            };
+
+            foreach (var grandChild in grandChildren)
+                AddChildNode(childNode, grandChild);
+
+            childNodes.Add(childNode);
+        }
+
+        return childNodes;
+    }
+
+    private bool IsCaptureEnabled(Component component)
+    {
+        return useCaptureExtenderMode && CaptureExtender.IsCaptureEnabled(component);
+    }
+
+    private static void AddChildNode(TreeNode parentNode, TreeNode childNode)
+    {
+        parentNode.Nodes.Add(childNode); // (260323Ch) apply_patch の大きな差分を抑えるため Add を helper 化
+    }
+
+    private static string GetToolStripItemPathSegment(ToolStripItem item, int index)
+    {
+        return string.IsNullOrWhiteSpace(item.Name) ? $"{item.GetType().Name}{index}" : item.Name;
+    }
+
+    private static IEnumerable<(ToolStrip ToolStrip, string PathSegment)> GetOwnedToolStrips(object container)
+    {
+        var visitedToolStrips = new HashSet<ToolStrip>();
+        for (var type = container.GetType(); type != null; type = type.BaseType)
+        {
+            foreach (var field in type.GetFields(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.DeclaredOnly))
+            {
+                if (!typeof(ToolStrip).IsAssignableFrom(field.FieldType) || field.GetValue(container) is not ToolStrip toolStrip)
+                    continue;
+
+                if (!visitedToolStrips.Add(toolStrip))
+                    continue;
+
+                var pathSegment = string.IsNullOrWhiteSpace(toolStrip.Name) ? field.Name : toolStrip.Name;
+                yield return (toolStrip, pathSegment); // (260323Ch) ContextMenuStrip など Controls 配下にない ToolStrip も designer field から拾う
             }
         }
     }
@@ -200,7 +334,7 @@ public partial class FormCaptureGUI : Form
         // return c.Width >= MinCaptureSize && c.Height >= MinCaptureSize; // 旧実装: 最小サイズ以上はすべて個別キャプチャ対象
         return c.Width >= MinCaptureSize
             && c.Height >= MinCaptureSize
-            && !ShouldSkipStandaloneCapture(c); // (260323Ch) 単体 Label / RadioButton は既定で除外
+            && !ShouldSkipStandaloneCapture(c); // (260323Ch) CaptureExtender 未設定フォームでは従来の既定除外を維持
     }
 
     private static bool ShouldStopChildTraversal(Control control)
@@ -217,12 +351,12 @@ public partial class FormCaptureGUI : Form
             || control is ChemicalFormulaInputControl
             || control is CheckedListboxAlpha
             || control is SaclaControl
-            || control is HorizontalAxisUserControl; // (260323Ch) 優先候補の複合 UserControl も本体のみキャプチャし、内部 UI は列挙しない
+            || control is HorizontalAxisUserControl; // (260323Ch) CaptureExtender 未設定フォームでは、従来どおり優先候補の複合 UserControl を本体のみキャプチャする
     }
 
     private static bool ShouldSkipStandaloneCapture(Control control)
     {
-        return control.GetType() == typeof(Label) || control.GetType() == typeof(RadioButton); // (260323Ch) 単なる Label / RadioButton は個別キャプチャ不要
+        return control.GetType() == typeof(Label) || control.GetType() == typeof(RadioButton); // (260323Ch) CaptureExtender 未設定フォームでは単体 Label / RadioButton を既定除外する
     }
 
     /// <summary>ツリーのチェック連動: 親をチェックすると子もチェック</summary>
@@ -317,12 +451,12 @@ public partial class FormCaptureGUI : Form
 
         foreach (var node in checkedNodes)
         {
-            var info = (ControlInfo)node.Tag;
-            var control = info.Control;
+            var info = (CaptureTargetInfo)node.Tag;
+            var target = info.Target;
             var path = info.Path;
 
             // 260323Cl: CopyFromScreen のため対象フォームを前面に出す (フォームが変わったときだけ1秒待機)
-            var ownerForm = control.FindForm();
+            var ownerForm = GetOwnerForm(target);
             if (ownerForm != null && ownerForm != lastFrontForm)
             {
                 ownerForm.BringToFront();
@@ -333,14 +467,18 @@ public partial class FormCaptureGUI : Form
 
             try
             {
-                // TabControl の場合は全タブを順にキャプチャ
-                if (control is TabControl tabControl)
+                // if (control is TabControl tabControl) { CaptureTabControl(...); } else { CaptureControl(...); } // 旧実装: Control だけを前提に分岐していた
+                if (!useCaptureExtenderMode && target is TabControl tabControl)
                 {
                     CaptureTabControl(tabControl, path, outputDir, capturedInfoList);
                 }
-                else
+                else if (target is Control control)
                 {
-                    CaptureControl(control, path, outputDir, capturedInfoList);
+                    CaptureControl(control, path, outputDir, capturedInfoList, ignoreLegacyCaptureRules: useCaptureExtenderMode); // (260323Ch) CaptureExtender 指定時は明示 flag を優先する
+                }
+                else if (target is ToolStripItem item)
+                {
+                    CaptureToolStripItem(item, path, outputDir, capturedInfoList); // (260323Ch) ToolStripItem も個別キャプチャ対象に含める
                 }
                 successCount++;
             }
@@ -363,28 +501,41 @@ public partial class FormCaptureGUI : Form
             MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
-    /// <summary>単一コントロールをキャプチャ</summary>
-    private static void CaptureControl(Control control, string path, string outputDir, List<Dictionary<string, object>> infoList)
+    private static Form GetOwnerForm(Component target)
     {
-        // if (control.Width < MinCaptureSize || control.Height < MinCaptureSize) return; // 旧実装: サイズだけ見てキャプチャ可否を決めていた
-        if (!ShouldCapture(control)) return; // (260323Ch) ツリー外の Label / RadioButton が直接渡されても個別キャプチャしない
+        return target switch
+        {
+            Control control => control.FindForm(),
+            ToolStripItem item => item.Owner?.FindForm() ?? item.OwnerItem?.Owner?.FindForm(),
+            _ => null
+        };
+    }
+
+    /// <summary>単一コントロールをキャプチャ</summary>
+    private static void CaptureControl(Control control, string path, string outputDir, List<Dictionary<string, object>> infoList, bool ignoreLegacyCaptureRules = false)
+    {
+        if (control.Width <= 0 || control.Height <= 0) return;
+        // if (!ShouldCapture(control)) return; // 旧実装: FormCaptureGUI 側の既定ルールだけでキャプチャ可否を決めていた
+        if (!ignoreLegacyCaptureRules && !ShouldCapture(control)) return; // (260323Ch) CaptureExtender 未設定フォームのみ従来の既定除外を適用する
 
         // 260323Cl: コントロールが TabPage の子孫なら、そのタブを選択して前面に出す
         EnsureAncestorTabsSelected(control);
 
         var fileName = SanitizeFileName(path) + ".png";
+        // var captureTarget = control; // 旧実装: 常に対象コントロール自身の矩形だけをキャプチャしていた
+        var captureTarget = GetCaptureRegionControl(control, ignoreLegacyCaptureRules); // (260323Ch) extender 優先モードの TabPage は親 TabControl のタブ見出しも含めて撮る
 
         // 260323Cl: CopyFromScreen で画面上の実際の表示をキャプチャする
         // DrawToBitmap (WM_PRINT) ではタブヘッダー等が正しく描画されず、GPU描画も取得できないため
         // PointToScreen(Point.Empty) はクライアント領域原点を返すため、ボーダーやタイトルバー分ずれる。
         // Form は Bounds.Location、それ以外は Parent.PointToScreen(Location) でコントロールの実際の左上を取得する。
-        var screenPos = control is Form ? control.Bounds.Location
-                      : control.Parent != null ? control.Parent.PointToScreen(control.Location)
-                      : control.PointToScreen(System.Drawing.Point.Empty);
-        var bmp = new Bitmap(control.Width, control.Height);
+        var screenPos = captureTarget is Form ? captureTarget.Bounds.Location
+                      : captureTarget.Parent != null ? captureTarget.Parent.PointToScreen(captureTarget.Location)
+                      : captureTarget.PointToScreen(System.Drawing.Point.Empty);
+        var bmp = new Bitmap(captureTarget.Width, captureTarget.Height);
         using (var g = Graphics.FromImage(bmp))
         {
-            g.CopyFromScreen(screenPos, System.Drawing.Point.Empty, control.Size);
+            g.CopyFromScreen(screenPos, System.Drawing.Point.Empty, captureTarget.Size);
         }
 
         // 260323Cl: 単色ビットマップ (Visible=false のパネル等) はファイルを生成しない
@@ -404,7 +555,7 @@ public partial class FormCaptureGUI : Form
             ["type"] = control.GetType().Name,
             ["text"] = control.Text ?? "",
             ["image"] = fileName,
-            ["bounds"] = new { x = control.Left, y = control.Top, w = control.Width, h = control.Height }
+            ["bounds"] = new { x = captureTarget.Left, y = captureTarget.Top, w = captureTarget.Width, h = captureTarget.Height }
         };
 
         // ToolTip テキスト取得を試みる
@@ -413,6 +564,82 @@ public partial class FormCaptureGUI : Form
             info["toolTip"] = toolTipText;
 
         infoList.Add(info);
+    }
+
+    private static Control GetCaptureRegionControl(Control control, bool ignoreLegacyCaptureRules)
+    {
+        return ignoreLegacyCaptureRules && control is TabPage tabPage && tabPage.Parent is TabControl tabControl
+            ? tabControl // (260323Ch) TabPage 単体指定でも選択中タブ見出しを含めた見た目で残す
+            : control;
+    }
+
+    private static void CaptureToolStripItem(ToolStripItem item, string path, string outputDir, List<Dictionary<string, object>> infoList)
+    {
+        if (item.Owner == null || item.Bounds.Width <= 0 || item.Bounds.Height <= 0) return;
+
+        // var captureHost = item.Owner; // 旧実装: 選択項目 1 行ぶんの矩形だけを切り抜いていた
+        var captureHost = EnsureToolStripCaptureHostVisible(item); // (260323Ch) 開いたメニュー全体を撮るため、対象項目に対応する DropDown / ContextMenuStrip を前面表示する
+        captureHost.Refresh();
+        Application.DoEvents();
+
+        var fileName = SanitizeFileName(path) + ".png";
+        var screenPos = captureHost.PointToScreen(System.Drawing.Point.Empty);
+        using var bmp = new Bitmap(captureHost.Width, captureHost.Height);
+        using (var g = Graphics.FromImage(bmp))
+        {
+            g.CopyFromScreen(screenPos, System.Drawing.Point.Empty, captureHost.Size);
+        }
+
+        if (IsSolidColor(bmp))
+            return;
+
+        SaveCompressedPng(bmp, Path.Combine(outputDir, fileName));
+
+        var info = new Dictionary<string, object>
+        {
+            ["path"] = path,
+            ["type"] = item.GetType().Name,
+            ["text"] = item.Text ?? "",
+            ["image"] = fileName,
+            ["bounds"] = new { x = captureHost.Left, y = captureHost.Top, w = captureHost.Width, h = captureHost.Height }
+        };
+
+        if (!string.IsNullOrWhiteSpace(item.ToolTipText))
+            info["toolTip"] = item.ToolTipText;
+
+        infoList.Add(info);
+    }
+
+    private static ToolStrip EnsureToolStripCaptureHostVisible(ToolStripItem item)
+    {
+        EnsureAncestorDropDownsVisible(item);
+
+        if (item is ToolStripDropDownItem dropDownItem && dropDownItem.HasDropDownItems)
+        {
+            if (!dropDownItem.DropDown.Visible)
+            {
+                dropDownItem.ShowDropDown(); // (260323Ch) File のような親メニュー項目はドロップダウン全体を開いてから撮る
+                dropDownItem.DropDown.Refresh();
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+            }
+            return dropDownItem.DropDown;
+        }
+
+        if (item.Owner is ContextMenuStrip contextMenuStrip)
+        {
+            if (!contextMenuStrip.Visible && contextMenuStrip.SourceControl != null)
+            {
+                contextMenuStrip.Show(contextMenuStrip.SourceControl, new System.Drawing.Point(0, contextMenuStrip.SourceControl.Height));
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+            }
+            return contextMenuStrip;
+        }
+
+        return item.Owner is ToolStripDropDown toolStripDropDown
+            ? toolStripDropDown // (260323Ch) Open のような配下項目は属している開いたメニュー全体を撮る
+            : item.Owner;
     }
 
     /// <summary>260323Cl 追加: コントロールの祖先に TabPage があれば、そのタブを選択して TabControl を前面に出す</summary>
@@ -431,6 +658,20 @@ public partial class FormCaptureGUI : Form
                 tabCtrl.Refresh();
                 Application.DoEvents();
             }
+        }
+    }
+
+    private static void EnsureAncestorDropDownsVisible(ToolStripItem item)
+    {
+        if (item.OwnerItem is not ToolStripDropDownItem ownerItem) return;
+
+        EnsureAncestorDropDownsVisible(ownerItem);
+        if (!ownerItem.DropDown.Visible)
+        {
+            ownerItem.ShowDropDown();
+            ownerItem.DropDown.Refresh();
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(200);
         }
     }
 
@@ -480,7 +721,7 @@ public partial class FormCaptureGUI : Form
     {
         foreach (TreeNode node in nodes)
         {
-            if (node.Checked && node.Tag is ControlInfo)
+            if (node.Checked && node.Tag is CaptureTargetInfo)
                 result.Add(node);
             CollectCheckedNodes(node.Nodes, result);
         }
@@ -585,6 +826,7 @@ public partial class FormCaptureGUI : Form
         return name;
     }
 
-    /// <summary>ツリーノードに紐づけるコントロール情報</summary>
-    private record ControlInfo(Control Control, string Path);
+    /// <summary>ツリーノードに紐づけるキャプチャ対象情報</summary>
+    private record CaptureTargetInfo(Component Target, string Path);
 }
+

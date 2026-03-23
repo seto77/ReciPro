@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class FormSymmetryInformation : Form
+public partial class FormSymmetryInformation : CaptureFormBase
 {
     public Crystal Crystal => CrystalControl.Crystal;
     public CrystalControl CrystalControl;

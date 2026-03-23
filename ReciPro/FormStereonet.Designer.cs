@@ -30,29 +30,42 @@ namespace ReciPro
         /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
         /// コード エディタで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxColor
+        // groupBox2 -> groupBoxMode
+        // groupBox3 -> groupBoxOutline
+        // groupBox4 -> groupBoxSize
+        // groupBox5 -> groupBoxIndices
+        // groupBox6 -> groupBoxDelimiter
+        // groupBox7 -> groupBoxProjectionObject
+        // groupBox8 -> groupBoxSphere
+        // groupBox9 -> groupBoxProjectionScheme
+        // flowLayoutPanel1 -> flowLayoutPanelProjectionObject
+        // flowLayoutPanel2 -> flowLayoutPanelProjectionScheme
+        // flowLayoutPanel3 -> flowLayoutPanelIndices
+        // flowLayoutPanel4 -> flowLayoutPanelSphere
+        // flowLayoutPanel5 -> flowLayoutPanelIndexFilter
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStereonet));
             splitContainer1 = new System.Windows.Forms.SplitContainer();
-            // graphicsBox = new ImagingSolution.Control.GraphicsBox(components); // (260322Ch) 旧 GraphicsBox 依存
-            // graphicsBox = new Crystallography.Controls.GraphicBox2(components); // (260322Ch) 仮名 GraphicBox2
-            graphicsBox = new Crystallography.Controls.GraphicsBox(components); // (260322Ch) FormStereonet を正式名 GraphicBox へ置換
+            graphicsBox = new GraphicsBox(components);
             trackBarStrSize = new System.Windows.Forms.TrackBar();
             trackBarPointSize = new System.Windows.Forms.TrackBar();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            groupBox8 = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            groupBoxMode = new System.Windows.Forms.GroupBox();
+            groupBoxSphere = new System.Windows.Forms.GroupBox();
+            flowLayoutPanelSphere = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonUpperSphere = new System.Windows.Forms.RadioButton();
             radioButtonLowerSphere = new System.Windows.Forms.RadioButton();
-            groupBox9 = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            groupBoxProjectionScheme = new System.Windows.Forms.GroupBox();
+            flowLayoutPanelProjectionScheme = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonWulff = new System.Windows.Forms.RadioButton();
             radioButtonSchmidt = new System.Windows.Forms.RadioButton();
-            groupBox7 = new System.Windows.Forms.GroupBox();
+            groupBoxProjectionObject = new System.Windows.Forms.GroupBox();
             checkBoxReflectStructureFactor = new System.Windows.Forms.CheckBox();
             checkBoxShowIndexLabels = new System.Windows.Forms.CheckBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelProjectionObject = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonAxes = new System.Windows.Forms.RadioButton();
             radioButtonPlanes = new System.Windows.Forms.RadioButton();
             radioButtonKikuchiLinePairs = new System.Windows.Forms.RadioButton();
@@ -60,18 +73,18 @@ namespace ReciPro
             labelYpos = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
-            groupBox3 = new System.Windows.Forms.GroupBox();
+            groupBoxOutline = new System.Windows.Forms.GroupBox();
             checkBox1DegLine = new System.Windows.Forms.CheckBox();
             radioButtonOutlinePole = new System.Windows.Forms.RadioButton();
             radioButtonOutlineEquator = new System.Windows.Forms.RadioButton();
             tabControl = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
-            groupBox6 = new System.Windows.Forms.GroupBox();
+            groupBoxDelimiter = new System.Windows.Forms.GroupBox();
             radioButtonDelimiterComma = new System.Windows.Forms.RadioButton();
             radioButtonDelimiterSpace = new System.Windows.Forms.RadioButton();
             radioButtonDelimiterNone = new System.Windows.Forms.RadioButton();
-            groupBox4 = new System.Windows.Forms.GroupBox();
-            groupBox1 = new System.Windows.Forms.GroupBox();
+            groupBoxSize = new System.Windows.Forms.GroupBox();
+            groupBoxColor = new System.Windows.Forms.GroupBox();
             colorControlString = new ColorControl();
             colorControlKikuchi = new ColorControl();
             colorControlBackGround = new ColorControl();
@@ -169,7 +182,7 @@ namespace ReciPro
             labelLW = new System.Windows.Forms.Label();
             printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
-            groupBox5 = new System.Windows.Forms.GroupBox();
+            groupBoxIndices = new System.Windows.Forms.GroupBox();
             panelSpecifiedIndices = new System.Windows.Forms.Panel();
             listBoxSpecifiedIndices = new System.Windows.Forms.ListBox();
             flowLayoutPanelAddRemove = new System.Windows.Forms.FlowLayoutPanel();
@@ -178,8 +191,8 @@ namespace ReciPro
             colorControlIndex = new ColorControl();
             checkBoxRotateColor = new System.Windows.Forms.CheckBox();
             checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelIndices = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelIndexFilter = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxHighStructureFactor = new NumericBox();
             flowLayoutPanelIndex = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelH = new System.Windows.Forms.FlowLayoutPanel();
@@ -216,19 +229,19 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
-            groupBox2.SuspendLayout();
-            groupBox8.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
-            groupBox9.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            groupBox7.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
-            groupBox3.SuspendLayout();
+            groupBoxMode.SuspendLayout();
+            groupBoxSphere.SuspendLayout();
+            flowLayoutPanelSphere.SuspendLayout();
+            groupBoxProjectionScheme.SuspendLayout();
+            flowLayoutPanelProjectionScheme.SuspendLayout();
+            groupBoxProjectionObject.SuspendLayout();
+            flowLayoutPanelProjectionObject.SuspendLayout();
+            groupBoxOutline.SuspendLayout();
             tabControl.SuspendLayout();
             tabPage1.SuspendLayout();
-            groupBox6.SuspendLayout();
-            groupBox4.SuspendLayout();
-            groupBox1.SuspendLayout();
+            groupBoxDelimiter.SuspendLayout();
+            groupBoxSize.SuspendLayout();
+            groupBoxColor.SuspendLayout();
             tabPage2.SuspendLayout();
             panelPlanes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownCircleH1).BeginInit();
@@ -244,11 +257,11 @@ namespace ReciPro
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
             menuStrip1.SuspendLayout();
-            groupBox5.SuspendLayout();
+            groupBoxIndices.SuspendLayout();
             panelSpecifiedIndices.SuspendLayout();
             flowLayoutPanelAddRemove.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanelIndices.SuspendLayout();
+            flowLayoutPanelIndexFilter.SuspendLayout();
             flowLayoutPanelIndex.SuspendLayout();
             flowLayoutPanelH.SuspendLayout();
             flowLayoutPanelK.SuspendLayout();
@@ -273,6 +286,7 @@ namespace ReciPro
             // 
             graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(graphicsBox, "graphicsBox");
+            graphicsBox.Fonts = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             graphicsBox.Name = "graphicsBox";
             graphicsBox.TabStop = false;
             toolTip.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));
@@ -303,28 +317,29 @@ namespace ReciPro
             trackBarPointSize.Value = 5;
             trackBarPointSize.Scroll += trackBarStrSize_Scroll;
             // 
-            // groupBox2
+            // groupBoxMode
             // 
-            groupBox2.Controls.Add(groupBox8);
-            groupBox2.Controls.Add(groupBox9);
-            groupBox2.Controls.Add(groupBox7);
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
+            captureExtender.SetCapture(groupBoxMode, true);
+            groupBoxMode.Controls.Add(groupBoxSphere);
+            groupBoxMode.Controls.Add(groupBoxProjectionScheme);
+            groupBoxMode.Controls.Add(groupBoxProjectionObject);
+            resources.ApplyResources(groupBoxMode, "groupBoxMode");
+            groupBoxMode.Name = "groupBoxMode";
+            groupBoxMode.TabStop = false;
             // 
-            // groupBox8
+            // groupBoxSphere
             // 
-            groupBox8.Controls.Add(flowLayoutPanel4);
-            resources.ApplyResources(groupBox8, "groupBox8");
-            groupBox8.Name = "groupBox8";
-            groupBox8.TabStop = false;
+            groupBoxSphere.Controls.Add(flowLayoutPanelSphere);
+            resources.ApplyResources(groupBoxSphere, "groupBoxSphere");
+            groupBoxSphere.Name = "groupBoxSphere";
+            groupBoxSphere.TabStop = false;
             // 
-            // flowLayoutPanel4
+            // flowLayoutPanelSphere
             // 
-            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(radioButtonUpperSphere);
-            flowLayoutPanel4.Controls.Add(radioButtonLowerSphere);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            resources.ApplyResources(flowLayoutPanelSphere, "flowLayoutPanelSphere");
+            flowLayoutPanelSphere.Controls.Add(radioButtonUpperSphere);
+            flowLayoutPanelSphere.Controls.Add(radioButtonLowerSphere);
+            flowLayoutPanelSphere.Name = "flowLayoutPanelSphere";
             // 
             // radioButtonUpperSphere
             // 
@@ -341,19 +356,19 @@ namespace ReciPro
             radioButtonLowerSphere.Name = "radioButtonLowerSphere";
             toolTip.SetToolTip(radioButtonLowerSphere, resources.GetString("radioButtonLowerSphere.ToolTip"));
             // 
-            // groupBox9
+            // groupBoxProjectionScheme
             // 
-            groupBox9.Controls.Add(flowLayoutPanel2);
-            resources.ApplyResources(groupBox9, "groupBox9");
-            groupBox9.Name = "groupBox9";
-            groupBox9.TabStop = false;
+            groupBoxProjectionScheme.Controls.Add(flowLayoutPanelProjectionScheme);
+            resources.ApplyResources(groupBoxProjectionScheme, "groupBoxProjectionScheme");
+            groupBoxProjectionScheme.Name = "groupBoxProjectionScheme";
+            groupBoxProjectionScheme.TabStop = false;
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelProjectionScheme
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(radioButtonWulff);
-            flowLayoutPanel2.Controls.Add(radioButtonSchmidt);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanelProjectionScheme, "flowLayoutPanelProjectionScheme");
+            flowLayoutPanelProjectionScheme.Controls.Add(radioButtonWulff);
+            flowLayoutPanelProjectionScheme.Controls.Add(radioButtonSchmidt);
+            flowLayoutPanelProjectionScheme.Name = "flowLayoutPanelProjectionScheme";
             // 
             // radioButtonWulff
             // 
@@ -370,14 +385,14 @@ namespace ReciPro
             radioButtonSchmidt.Name = "radioButtonSchmidt";
             toolTip.SetToolTip(radioButtonSchmidt, resources.GetString("radioButtonSchmidt.ToolTip"));
             // 
-            // groupBox7
+            // groupBoxProjectionObject
             // 
-            resources.ApplyResources(groupBox7, "groupBox7");
-            groupBox7.Controls.Add(checkBoxReflectStructureFactor);
-            groupBox7.Controls.Add(checkBoxShowIndexLabels);
-            groupBox7.Controls.Add(flowLayoutPanel1);
-            groupBox7.Name = "groupBox7";
-            groupBox7.TabStop = false;
+            resources.ApplyResources(groupBoxProjectionObject, "groupBoxProjectionObject");
+            groupBoxProjectionObject.Controls.Add(checkBoxReflectStructureFactor);
+            groupBoxProjectionObject.Controls.Add(checkBoxShowIndexLabels);
+            groupBoxProjectionObject.Controls.Add(flowLayoutPanelProjectionObject);
+            groupBoxProjectionObject.Name = "groupBoxProjectionObject";
+            groupBoxProjectionObject.TabStop = false;
             // 
             // checkBoxReflectStructureFactor
             // 
@@ -394,13 +409,13 @@ namespace ReciPro
             checkBoxShowIndexLabels.UseVisualStyleBackColor = true;
             checkBoxShowIndexLabels.CheckedChanged += checkBoxShowIndexLabels_CheckedChanged;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelProjectionObject
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(radioButtonAxes);
-            flowLayoutPanel1.Controls.Add(radioButtonPlanes);
-            flowLayoutPanel1.Controls.Add(radioButtonKikuchiLinePairs);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanelProjectionObject, "flowLayoutPanelProjectionObject");
+            flowLayoutPanelProjectionObject.Controls.Add(radioButtonAxes);
+            flowLayoutPanelProjectionObject.Controls.Add(radioButtonPlanes);
+            flowLayoutPanelProjectionObject.Controls.Add(radioButtonKikuchiLinePairs);
+            flowLayoutPanelProjectionObject.Name = "flowLayoutPanelProjectionObject";
             // 
             // radioButtonAxes
             // 
@@ -447,14 +462,14 @@ namespace ReciPro
             label1.Name = "label1";
             toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
-            // groupBox3
+            // groupBoxOutline
             // 
-            groupBox3.Controls.Add(checkBox1DegLine);
-            groupBox3.Controls.Add(radioButtonOutlinePole);
-            groupBox3.Controls.Add(radioButtonOutlineEquator);
-            resources.ApplyResources(groupBox3, "groupBox3");
-            groupBox3.Name = "groupBox3";
-            groupBox3.TabStop = false;
+            groupBoxOutline.Controls.Add(checkBox1DegLine);
+            groupBoxOutline.Controls.Add(radioButtonOutlinePole);
+            groupBoxOutline.Controls.Add(radioButtonOutlineEquator);
+            resources.ApplyResources(groupBoxOutline, "groupBoxOutline");
+            groupBoxOutline.Name = "groupBoxOutline";
+            groupBoxOutline.TabStop = false;
             // 
             // checkBox1DegLine
             // 
@@ -492,21 +507,22 @@ namespace ReciPro
             // tabPage1
             // 
             tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            tabPage1.Controls.Add(groupBox6);
-            tabPage1.Controls.Add(groupBox4);
-            tabPage1.Controls.Add(groupBox3);
-            tabPage1.Controls.Add(groupBox1);
+            captureExtender.SetCapture(tabPage1, true);
+            tabPage1.Controls.Add(groupBoxDelimiter);
+            tabPage1.Controls.Add(groupBoxSize);
+            tabPage1.Controls.Add(groupBoxOutline);
+            tabPage1.Controls.Add(groupBoxColor);
             resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.Name = "tabPage1";
             // 
-            // groupBox6
+            // groupBoxDelimiter
             // 
-            groupBox6.Controls.Add(radioButtonDelimiterComma);
-            groupBox6.Controls.Add(radioButtonDelimiterSpace);
-            groupBox6.Controls.Add(radioButtonDelimiterNone);
-            resources.ApplyResources(groupBox6, "groupBox6");
-            groupBox6.Name = "groupBox6";
-            groupBox6.TabStop = false;
+            groupBoxDelimiter.Controls.Add(radioButtonDelimiterComma);
+            groupBoxDelimiter.Controls.Add(radioButtonDelimiterSpace);
+            groupBoxDelimiter.Controls.Add(radioButtonDelimiterNone);
+            resources.ApplyResources(groupBoxDelimiter, "groupBoxDelimiter");
+            groupBoxDelimiter.Name = "groupBoxDelimiter";
+            groupBoxDelimiter.TabStop = false;
             // 
             // radioButtonDelimiterComma
             // 
@@ -531,28 +547,28 @@ namespace ReciPro
             toolTip.SetToolTip(radioButtonDelimiterNone, resources.GetString("radioButtonDelimiterNone.ToolTip"));
             radioButtonDelimiterNone.CheckedChanged += radioButtonDelimiterNone_CheckedChanged;
             // 
-            // groupBox4
+            // groupBoxSize
             // 
-            groupBox4.Controls.Add(label1);
-            groupBox4.Controls.Add(label6);
-            groupBox4.Controls.Add(trackBarPointSize);
-            groupBox4.Controls.Add(trackBarStrSize);
-            resources.ApplyResources(groupBox4, "groupBox4");
-            groupBox4.Name = "groupBox4";
-            groupBox4.TabStop = false;
+            groupBoxSize.Controls.Add(label1);
+            groupBoxSize.Controls.Add(label6);
+            groupBoxSize.Controls.Add(trackBarPointSize);
+            groupBoxSize.Controls.Add(trackBarStrSize);
+            resources.ApplyResources(groupBoxSize, "groupBoxSize");
+            groupBoxSize.Name = "groupBoxSize";
+            groupBoxSize.TabStop = false;
             // 
-            // groupBox1
+            // groupBoxColor
             // 
-            groupBox1.Controls.Add(colorControlString);
-            groupBox1.Controls.Add(colorControlKikuchi);
-            groupBox1.Controls.Add(colorControlBackGround);
-            groupBox1.Controls.Add(colorControl10DegLine);
-            groupBox1.Controls.Add(colorControl1DegLine);
-            groupBox1.Controls.Add(colorControl90DegLine);
-            resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Name = "groupBox1";
-            groupBox1.TabStop = false;
-            toolTip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
+            groupBoxColor.Controls.Add(colorControlString);
+            groupBoxColor.Controls.Add(colorControlKikuchi);
+            groupBoxColor.Controls.Add(colorControlBackGround);
+            groupBoxColor.Controls.Add(colorControl10DegLine);
+            groupBoxColor.Controls.Add(colorControl1DegLine);
+            groupBoxColor.Controls.Add(colorControl90DegLine);
+            resources.ApplyResources(groupBoxColor, "groupBoxColor");
+            groupBoxColor.Name = "groupBoxColor";
+            groupBoxColor.TabStop = false;
+            toolTip.SetToolTip(groupBoxColor, resources.GetString("groupBoxColor.ToolTip"));
             // 
             // colorControlString
             // 
@@ -659,6 +675,7 @@ namespace ReciPro
             // tabPage2
             // 
             tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPage2, true);
             tabPage2.Controls.Add(panelPlanes);
             tabPage2.Controls.Add(colorControlGreatCircle);
             tabPage2.Controls.Add(panelAxis);
@@ -1348,13 +1365,14 @@ namespace ReciPro
             // 
             printDocument1.PrintPage += printDocument1_PrintPage;
             // 
-            // groupBox5
+            // groupBoxIndices
             // 
-            groupBox5.Controls.Add(panelSpecifiedIndices);
-            groupBox5.Controls.Add(flowLayoutPanel3);
-            resources.ApplyResources(groupBox5, "groupBox5");
-            groupBox5.Name = "groupBox5";
-            groupBox5.TabStop = false;
+            captureExtender.SetCapture(groupBoxIndices, true);
+            groupBoxIndices.Controls.Add(panelSpecifiedIndices);
+            groupBoxIndices.Controls.Add(flowLayoutPanelIndices);
+            resources.ApplyResources(groupBoxIndices, "groupBoxIndices");
+            groupBoxIndices.Name = "groupBoxIndices";
+            groupBoxIndices.TabStop = false;
             // 
             // panelSpecifiedIndices
             // 
@@ -1434,22 +1452,22 @@ namespace ReciPro
             checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
             checkBoxIncludingEquivalentPlanes.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanelIndices
             // 
-            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
-            flowLayoutPanel3.Controls.Add(flowLayoutPanel5);
-            flowLayoutPanel3.Controls.Add(flowLayoutPanelIndex);
-            flowLayoutPanel3.Controls.Add(checkBoxUseMillerBravaisIndex);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            resources.ApplyResources(flowLayoutPanelIndices, "flowLayoutPanelIndices");
+            flowLayoutPanelIndices.Controls.Add(flowLayoutPanelIndexFilter);
+            flowLayoutPanelIndices.Controls.Add(flowLayoutPanelIndex);
+            flowLayoutPanelIndices.Controls.Add(checkBoxUseMillerBravaisIndex);
+            flowLayoutPanelIndices.Name = "flowLayoutPanelIndices";
             // 
-            // flowLayoutPanel5
+            // flowLayoutPanelIndexFilter
             // 
-            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
-            flowLayoutPanel5.Controls.Add(radioButtonRange);
-            flowLayoutPanel5.Controls.Add(radioButtonSpecifiedIndices);
-            flowLayoutPanel5.Controls.Add(radioButtonHighStructureFactor);
-            flowLayoutPanel5.Controls.Add(numericBoxHighStructureFactor);
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            resources.ApplyResources(flowLayoutPanelIndexFilter, "flowLayoutPanelIndexFilter");
+            flowLayoutPanelIndexFilter.Controls.Add(radioButtonRange);
+            flowLayoutPanelIndexFilter.Controls.Add(radioButtonSpecifiedIndices);
+            flowLayoutPanelIndexFilter.Controls.Add(radioButtonHighStructureFactor);
+            flowLayoutPanelIndexFilter.Controls.Add(numericBoxHighStructureFactor);
+            flowLayoutPanelIndexFilter.Name = "flowLayoutPanelIndexFilter";
             // 
             // numericBoxHighStructureFactor
             // 
@@ -1574,10 +1592,10 @@ namespace ReciPro
             // 
             // panel3
             // 
-            panel3.Controls.Add(groupBox5);
+            panel3.Controls.Add(groupBoxIndices);
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(panel1);
-            panel3.Controls.Add(groupBox2);
+            panel3.Controls.Add(groupBoxMode);
             panel3.Controls.Add(panel3DOptions);
             resources.ApplyResources(panel3, "panel3");
             panel3.Name = "panel3";
@@ -1595,6 +1613,7 @@ namespace ReciPro
             // panel3DOptions
             // 
             resources.ApplyResources(panel3DOptions, "panel3DOptions");
+            captureExtender.SetCapture(panel3DOptions, true);
             panel3DOptions.Controls.Add(checkBoxDisplay3D);
             panel3DOptions.Controls.Add(groupBox3DOptions);
             panel3DOptions.Name = "panel3DOptions";
@@ -1686,9 +1705,13 @@ namespace ReciPro
             // 
             // scalablePictureBoxAdvanced1
             // 
+            scalablePictureBoxAdvanced1.ClampIntensityRangeToNewData = true;
+            scalablePictureBoxAdvanced1.ColorVisible = true;
+            scalablePictureBoxAdvanced1.DecimalPlacesForIntensity = 0;
             scalablePictureBoxAdvanced1.FixZoomAndCenter = false;
             resources.ApplyResources(scalablePictureBoxAdvanced1, "scalablePictureBoxAdvanced1");
             scalablePictureBoxAdvanced1.FrequencyGraphVisible = true;
+            scalablePictureBoxAdvanced1.GradiaentVisible = true;
             scalablePictureBoxAdvanced1.ImageFilter_DustAndScratches = false;
             scalablePictureBoxAdvanced1.ImageFilter_DustAndScratchesRadius = 1D;
             scalablePictureBoxAdvanced1.ImageFilter_DustAndScratchesThreshold = 3D;
@@ -1699,19 +1722,16 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.ImageFilterVisible = true;
             scalablePictureBoxAdvanced1.LogScaleBar = false;
             scalablePictureBoxAdvanced1.LowerIntensity = 0D;
+            scalablePictureBoxAdvanced1.MagInfoVisible = true;
             scalablePictureBoxAdvanced1.MaximumIntensity = 255D;
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            // scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, -615677845); // (260322Ch) 旧コード: 壊れた Designer 値
-            scalablePictureBoxAdvanced1.Size = new System.Drawing.Size(410, 583); // (260322Ch) ApplyResources の破損サイズを上書きして Designer を安定化
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 410); // (260322Ch) 表示領域は正方形に補正
+            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 410);
+            scalablePictureBoxAdvanced1.PolarityVisible = true;
+            scalablePictureBoxAdvanced1.ScaleVisible = true;
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
-            scalablePictureBoxAdvanced1.SkipDrawing = false;
-            scalablePictureBoxAdvanced1.StatusLabel = " ";
-            scalablePictureBoxAdvanced1.StatusProgress = 0D;
             scalablePictureBoxAdvanced1.StatusVisible = true;
-            // scalablePictureBoxAdvanced1.Title = ((string, System.Drawing.Font, System.Drawing.Color, System.Drawing.Color))resources.GetObject("scalablePictureBoxAdvanced1.Title"); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             scalablePictureBoxAdvanced1.TitleVisible = false;
             scalablePictureBoxAdvanced1.TrackBarVisible = true;
             scalablePictureBoxAdvanced1.UpperIntensity = 255D;
@@ -1719,9 +1739,13 @@ namespace ReciPro
             // 
             // scalablePictureBoxAdvanced2
             // 
+            scalablePictureBoxAdvanced2.ClampIntensityRangeToNewData = true;
+            scalablePictureBoxAdvanced2.ColorVisible = true;
+            scalablePictureBoxAdvanced2.DecimalPlacesForIntensity = 0;
             scalablePictureBoxAdvanced2.FixZoomAndCenter = false;
             resources.ApplyResources(scalablePictureBoxAdvanced2, "scalablePictureBoxAdvanced2");
             scalablePictureBoxAdvanced2.FrequencyGraphVisible = true;
+            scalablePictureBoxAdvanced2.GradiaentVisible = true;
             scalablePictureBoxAdvanced2.ImageFilter_DustAndScratches = false;
             scalablePictureBoxAdvanced2.ImageFilter_DustAndScratchesRadius = 1D;
             scalablePictureBoxAdvanced2.ImageFilter_DustAndScratchesThreshold = 3D;
@@ -1732,19 +1756,16 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.ImageFilterVisible = true;
             scalablePictureBoxAdvanced2.LogScaleBar = false;
             scalablePictureBoxAdvanced2.LowerIntensity = 0D;
+            scalablePictureBoxAdvanced2.MagInfoVisible = true;
             scalablePictureBoxAdvanced2.MaximumIntensity = 255D;
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            // scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, -615677845); // (260322Ch) 旧コード: 壊れた Designer 値
-            scalablePictureBoxAdvanced2.Size = new System.Drawing.Size(410, 583); // (260322Ch) ApplyResources の破損サイズを上書きして Designer を安定化
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 410); // (260322Ch) 表示領域は正方形に補正
+            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 410);
+            scalablePictureBoxAdvanced2.PolarityVisible = true;
+            scalablePictureBoxAdvanced2.ScaleVisible = true;
             scalablePictureBoxAdvanced2.ShowGradiaent = true;
-            scalablePictureBoxAdvanced2.SkipDrawing = false;
-            scalablePictureBoxAdvanced2.StatusLabel = " ";
-            scalablePictureBoxAdvanced2.StatusProgress = 0D;
             scalablePictureBoxAdvanced2.StatusVisible = true;
-            // scalablePictureBoxAdvanced2.Title = ((string, System.Drawing.Font, System.Drawing.Color, System.Drawing.Color))resources.GetObject("scalablePictureBoxAdvanced2.Title"); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             scalablePictureBoxAdvanced2.TitleVisible = false;
             scalablePictureBoxAdvanced2.TrackBarVisible = true;
             scalablePictureBoxAdvanced2.UpperIntensity = 255D;
@@ -1763,6 +1784,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            captureExtender.SetCapture(this, true);
             Controls.Add(panel3);
             Controls.Add(tabControl);
             Controls.Add(labelXpos);
@@ -1782,29 +1804,29 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
-            groupBox2.ResumeLayout(false);
-            groupBox8.ResumeLayout(false);
-            groupBox8.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
-            groupBox9.ResumeLayout(false);
-            groupBox9.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
-            groupBox7.ResumeLayout(false);
-            groupBox7.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
+            groupBoxMode.ResumeLayout(false);
+            groupBoxSphere.ResumeLayout(false);
+            groupBoxSphere.PerformLayout();
+            flowLayoutPanelSphere.ResumeLayout(false);
+            flowLayoutPanelSphere.PerformLayout();
+            groupBoxProjectionScheme.ResumeLayout(false);
+            groupBoxProjectionScheme.PerformLayout();
+            flowLayoutPanelProjectionScheme.ResumeLayout(false);
+            flowLayoutPanelProjectionScheme.PerformLayout();
+            groupBoxProjectionObject.ResumeLayout(false);
+            groupBoxProjectionObject.PerformLayout();
+            flowLayoutPanelProjectionObject.ResumeLayout(false);
+            flowLayoutPanelProjectionObject.PerformLayout();
+            groupBoxOutline.ResumeLayout(false);
+            groupBoxOutline.PerformLayout();
             tabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            groupBoxDelimiter.ResumeLayout(false);
+            groupBoxDelimiter.PerformLayout();
+            groupBoxSize.ResumeLayout(false);
+            groupBoxSize.PerformLayout();
+            groupBoxColor.ResumeLayout(false);
+            groupBoxColor.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             panelPlanes.ResumeLayout(false);
@@ -1826,15 +1848,15 @@ namespace ReciPro
             tabPage4.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            groupBox5.ResumeLayout(false);
+            groupBoxIndices.ResumeLayout(false);
             panelSpecifiedIndices.ResumeLayout(false);
             panelSpecifiedIndices.PerformLayout();
             flowLayoutPanelAddRemove.ResumeLayout(false);
             flowLayoutPanelAddRemove.PerformLayout();
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanelIndices.ResumeLayout(false);
+            flowLayoutPanelIndices.PerformLayout();
+            flowLayoutPanelIndexFilter.ResumeLayout(false);
+            flowLayoutPanelIndexFilter.PerformLayout();
             flowLayoutPanelIndex.ResumeLayout(false);
             flowLayoutPanelIndex.PerformLayout();
             flowLayoutPanelH.ResumeLayout(false);
@@ -1860,21 +1882,21 @@ namespace ReciPro
 
         private System.Windows.Forms.TrackBar trackBarStrSize;
         private System.Windows.Forms.TrackBar trackBarPointSize;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxMode;
         private System.Windows.Forms.RadioButton radioButtonAxes;
         private System.Windows.Forms.RadioButton radioButtonPlanes;
         private System.Windows.Forms.Label labelXpos;
         private System.Windows.Forms.Label labelYpos;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxOutline;
         private System.Windows.Forms.CheckBox checkBox1DegLine;
         private System.Windows.Forms.RadioButton radioButtonOutlinePole;
         private System.Windows.Forms.RadioButton radioButtonOutlineEquator;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxColor;
+        private System.Windows.Forms.GroupBox groupBoxSize;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
@@ -1923,10 +1945,10 @@ namespace ReciPro
         public ColorControl colorControl10DegLine;
         public ColorControl colorControl1DegLine;
         public ColorControl colorControlGreatCircle;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProjectionScheme;
         private System.Windows.Forms.RadioButton radioButtonSchmidt;
         private System.Windows.Forms.RadioButton radioButtonWulff;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProjectionObject;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
@@ -1953,7 +1975,7 @@ namespace ReciPro
         public NumericBox numericBoxRyStep;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBoxIndices;
         private System.Windows.Forms.Label labelKV;
         private System.Windows.Forms.RadioButton radioButtonRange;
         private System.Windows.Forms.RadioButton radioButtonSpecifiedIndices;
@@ -1987,7 +2009,7 @@ namespace ReciPro
         private NumericBox numericBox3;
         private NumericBox numericBox2;
         private NumericBox numericBox1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndices;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.CheckBox checkBoxDisplay3D;
@@ -2014,14 +2036,14 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonHighStructureFactor;
         private NumericBox numericBoxHighStructureFactor;
         private System.Windows.Forms.CheckBox checkBoxReflectStructureFactor;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSphere;
         private System.Windows.Forms.RadioButton radioButtonUpperSphere;
         private System.Windows.Forms.RadioButton radioButtonLowerSphere;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox groupBoxSphere;
+        private System.Windows.Forms.GroupBox groupBoxProjectionObject;
+        private System.Windows.Forms.GroupBox groupBoxProjectionScheme;
         private System.Windows.Forms.CheckBox checkBoxShowIndexLabels;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndexFilter;
         private System.Windows.Forms.CheckBox checkBoxUseMillerBravaisIndex;
         private NumericBox numericBox4;
         private System.Windows.Forms.Label labelI;
@@ -2030,7 +2052,7 @@ namespace ReciPro
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelI;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelL;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndex;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBoxDelimiter;
         private System.Windows.Forms.RadioButton radioButtonDelimiterComma;
         private System.Windows.Forms.RadioButton radioButtonDelimiterSpace;
         private System.Windows.Forms.RadioButton radioButtonDelimiterNone;

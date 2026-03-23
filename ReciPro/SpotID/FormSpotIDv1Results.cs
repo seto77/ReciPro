@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ReciPro
 {
-    public partial class FormSpotIDv1Results : Form
+    public partial class FormSpotIDv1Results : CaptureFormBase
     {
         public FormSpotIDv1 formTEMID = new();
         public List<ZoneAxes> zoneAxes;

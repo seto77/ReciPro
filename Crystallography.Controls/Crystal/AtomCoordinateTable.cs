@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class AtomCoordinateTable : UserControl
+public partial class AtomCoordinateTable : CaptureUserControlBase
 {
     readonly ReaderWriterLockSlim rwLock = new();
     private bool skipEvent { get; set; } = false;

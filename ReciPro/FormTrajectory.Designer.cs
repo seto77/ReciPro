@@ -26,6 +26,16 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxEnergyDistribution
+        // groupBox2 -> groupBoxPenetrationDepth
+        // groupBox4 -> groupBoxSurfaceDistance
+        // groupBox5 -> groupBoxDirectionDistribution
+        // groupBox6 -> groupBoxStatistics
+        // flowLayoutPanel1 -> flowLayoutPanelViewAlong
+        // flowLayoutPanel2 -> flowLayoutPanelProfiles
+        // panel1 -> panelCalculationConditions
+        // panel2 -> panelStereonetOptions
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTrajectory));
@@ -38,27 +48,27 @@
             graphControlEnergyProfile = new GraphControl();
             numericBoxCalcNum = new NumericBox();
             numericBoxDrawNum = new NumericBox();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            groupBox2 = new System.Windows.Forms.GroupBox();
+            groupBoxEnergyDistribution = new System.Windows.Forms.GroupBox();
+            groupBoxPenetrationDepth = new System.Windows.Forms.GroupBox();
             graphControlDepthProfile = new GraphControl();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            groupBox4 = new System.Windows.Forms.GroupBox();
+            groupBoxSurfaceDistance = new System.Windows.Forms.GroupBox();
             graphControlDistance = new GraphControl();
             poleFigureControl = new PoleFigureControl2();
             checkBoxDrawAxes = new System.Windows.Forms.CheckBox();
             checkBoxDrawGuidCircles = new System.Windows.Forms.CheckBox();
             buttonSurfaceNormal = new System.Windows.Forms.Button();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelViewAlong = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelProfiles = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxDrawAbsorved = new System.Windows.Forms.CheckBox();
-            groupBox5 = new System.Windows.Forms.GroupBox();
+            groupBoxDirectionDistribution = new System.Windows.Forms.GroupBox();
             radioButtonStandardDeviation = new System.Windows.Forms.RadioButton();
             radioButtonAverageEnergy = new System.Windows.Forms.RadioButton();
             radioButtonFrequency = new System.Windows.Forms.RadioButton();
             checkBoxDrawAxesInStereonet = new System.Windows.Forms.CheckBox();
-            groupBox6 = new System.Windows.Forms.GroupBox();
+            groupBoxStatistics = new System.Windows.Forms.GroupBox();
             labelBSEenergy = new System.Windows.Forms.Label();
             labelStoppingPower = new System.Windows.Forms.Label();
             labelCrossSection = new System.Windows.Forms.Label();
@@ -70,23 +80,27 @@
             label4 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             checkBoxDrawPathAfterEscape = new System.Windows.Forms.CheckBox();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            panelCalculationConditions = new System.Windows.Forms.Panel();
+            panelStereonetOptions = new System.Windows.Forms.Panel();
+            groupBoxEnergyDistribution.SuspendLayout();
+            groupBoxPenetrationDepth.SuspendLayout();
             statusStrip1.SuspendLayout();
-            groupBox4.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            groupBox5.SuspendLayout();
-            groupBox6.SuspendLayout();
+            groupBoxSurfaceDistance.SuspendLayout();
+            flowLayoutPanelViewAlong.SuspendLayout();
+            flowLayoutPanelProfiles.SuspendLayout();
+            groupBoxDirectionDistribution.SuspendLayout();
+            groupBoxStatistics.SuspendLayout();
+            panelCalculationConditions.SuspendLayout();
+            panelStereonetOptions.SuspendLayout();
             SuspendLayout();
             // 
-            // waveLengthControl1
+            // waveLengthControl
             // 
-            resources.ApplyResources(waveLengthControl, "waveLengthControl1");
+            resources.ApplyResources(waveLengthControl, "waveLengthControl");
             waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
             waveLengthControl.Monochrome = true;
-            waveLengthControl.Name = "waveLengthControl1";
+            waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = false;
             waveLengthControl.WaveLength = 0.0085885141045000009D;
             waveLengthControl.WaveSource = WaveSource.Electron;
@@ -109,7 +123,6 @@
             numericBoxSampleTilt.Maximum = 0D;
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
-            numericBoxSampleTilt.RoundErrorAccuracy = -1;
             numericBoxSampleTilt.ShowUpDown = true;
             numericBoxSampleTilt.UpDown_Increment = 10D;
             // 
@@ -146,11 +159,9 @@
             graphControlEnergyProfile.DivisionLineXVisible = true;
             graphControlEnergyProfile.DivisionLineYVisible = true;
             resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
-            // graphControlEnergyProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlEnergyProfile.DrawingRange"); // (260322Ch) GraphControl.DrawingRange は Hidden のため resx 非依存に戻す
             graphControlEnergyProfile.FixRangeHorizontal = false;
             graphControlEnergyProfile.FixRangeVertical = false;
             graphControlEnergyProfile.GraphTitle = "";
-            graphControlEnergyProfile.Interpolation = false;
             graphControlEnergyProfile.IsIntegerX = false;
             graphControlEnergyProfile.IsIntegerY = false;
             graphControlEnergyProfile.LabelX = "kev: ";
@@ -169,8 +180,6 @@
             graphControlEnergyProfile.MousePositionYDigit = 3;
             graphControlEnergyProfile.Name = "graphControlEnergyProfile";
             graphControlEnergyProfile.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControlEnergyProfile.Profile = null;
-            graphControlEnergyProfile.Smoothing = false;
             graphControlEnergyProfile.UnitX = "";
             graphControlEnergyProfile.UnitY = "";
             graphControlEnergyProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
@@ -191,7 +200,6 @@
             numericBoxCalcNum.Minimum = 100D;
             numericBoxCalcNum.Name = "numericBoxCalcNum";
             numericBoxCalcNum.RadianValue = 1745.3292519943295D;
-            numericBoxCalcNum.RoundErrorAccuracy = -1;
             numericBoxCalcNum.ShowUpDown = true;
             numericBoxCalcNum.SmartIncrement = true;
             numericBoxCalcNum.Value = 100000D;
@@ -205,25 +213,25 @@
             numericBoxDrawNum.Minimum = 1D;
             numericBoxDrawNum.Name = "numericBoxDrawNum";
             numericBoxDrawNum.RadianValue = 8.7266462599716466D;
-            numericBoxDrawNum.RoundErrorAccuracy = -1;
             numericBoxDrawNum.ShowUpDown = true;
             numericBoxDrawNum.SmartIncrement = true;
             numericBoxDrawNum.Value = 500D;
             numericBoxDrawNum.ValueChanged += checkBoxDrawAxes_CheckedChanged;
             // 
-            // groupBox1
+            // groupBoxEnergyDistribution
             // 
-            groupBox1.Controls.Add(graphControlEnergyProfile);
-            resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Name = "groupBox1";
-            groupBox1.TabStop = false;
+            captureExtender.SetCapture(groupBoxEnergyDistribution, true);
+            groupBoxEnergyDistribution.Controls.Add(graphControlEnergyProfile);
+            resources.ApplyResources(groupBoxEnergyDistribution, "groupBoxEnergyDistribution");
+            groupBoxEnergyDistribution.Name = "groupBoxEnergyDistribution";
+            groupBoxEnergyDistribution.TabStop = false;
             // 
-            // groupBox2
+            // groupBoxPenetrationDepth
             // 
-            groupBox2.Controls.Add(graphControlDepthProfile);
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
+            groupBoxPenetrationDepth.Controls.Add(graphControlDepthProfile);
+            resources.ApplyResources(groupBoxPenetrationDepth, "groupBoxPenetrationDepth");
+            groupBoxPenetrationDepth.Name = "groupBoxPenetrationDepth";
+            groupBoxPenetrationDepth.TabStop = false;
             // 
             // graphControlDepthProfile
             // 
@@ -239,11 +247,9 @@
             graphControlDepthProfile.DivisionLineXVisible = true;
             graphControlDepthProfile.DivisionLineYVisible = true;
             resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
-            // graphControlDepthProfile.DrawingRange = (RectangleD)resources.GetObject("graphControlDepthProfile.DrawingRange"); // (260322Ch) GraphControl.DrawingRange は Hidden のため resx 非依存に戻す
             graphControlDepthProfile.FixRangeHorizontal = false;
             graphControlDepthProfile.FixRangeVertical = false;
             graphControlDepthProfile.GraphTitle = "";
-            graphControlDepthProfile.Interpolation = false;
             graphControlDepthProfile.IsIntegerX = false;
             graphControlDepthProfile.IsIntegerY = false;
             graphControlDepthProfile.LabelX = "µm: ";
@@ -262,8 +268,6 @@
             graphControlDepthProfile.MousePositionYDigit = 3;
             graphControlDepthProfile.Name = "graphControlDepthProfile";
             graphControlDepthProfile.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControlDepthProfile.Profile = null;
-            graphControlDepthProfile.Smoothing = false;
             graphControlDepthProfile.UnitX = "µm";
             graphControlDepthProfile.UnitY = "%";
             graphControlDepthProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
@@ -286,12 +290,12 @@
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
-            // groupBox4
+            // groupBoxSurfaceDistance
             // 
-            groupBox4.Controls.Add(graphControlDistance);
-            resources.ApplyResources(groupBox4, "groupBox4");
-            groupBox4.Name = "groupBox4";
-            groupBox4.TabStop = false;
+            groupBoxSurfaceDistance.Controls.Add(graphControlDistance);
+            resources.ApplyResources(groupBoxSurfaceDistance, "groupBoxSurfaceDistance");
+            groupBoxSurfaceDistance.Name = "groupBoxSurfaceDistance";
+            groupBoxSurfaceDistance.TabStop = false;
             // 
             // graphControlDistance
             // 
@@ -307,11 +311,9 @@
             graphControlDistance.DivisionLineXVisible = true;
             graphControlDistance.DivisionLineYVisible = true;
             resources.ApplyResources(graphControlDistance, "graphControlDistance");
-            // graphControlDistance.DrawingRange = (RectangleD)resources.GetObject("graphControlDistance.DrawingRange"); // (260322Ch) GraphControl.DrawingRange は Hidden のため resx 非依存に戻す
             graphControlDistance.FixRangeHorizontal = false;
             graphControlDistance.FixRangeVertical = false;
             graphControlDistance.GraphTitle = "";
-            graphControlDistance.Interpolation = false;
             graphControlDistance.IsIntegerX = false;
             graphControlDistance.IsIntegerY = false;
             graphControlDistance.LabelX = "µm: ";
@@ -330,8 +332,6 @@
             graphControlDistance.MousePositionYDigit = 3;
             graphControlDistance.Name = "graphControlDistance";
             graphControlDistance.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControlDistance.Profile = null;
-            graphControlDistance.Smoothing = false;
             graphControlDistance.UnitX = "nm";
             graphControlDistance.UnitY = "%";
             graphControlDistance.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
@@ -347,7 +347,6 @@
             // 
             resources.ApplyResources(poleFigureControl, "poleFigureControl");
             poleFigureControl.Name = "poleFigureControl";
-            poleFigureControl.Vectors = null;
             // 
             // checkBoxDrawAxes
             // 
@@ -374,26 +373,27 @@
             buttonSurfaceNormal.UseVisualStyleBackColor = true;
             buttonSurfaceNormal.Click += buttonViewFromSurfaceNormal_Click;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelViewAlong
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(buttonViewFromZ);
-            flowLayoutPanel1.Controls.Add(buttonViewFromX);
-            flowLayoutPanel1.Controls.Add(buttonSurfaceNormal);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanelViewAlong, "flowLayoutPanelViewAlong");
+            flowLayoutPanelViewAlong.Controls.Add(buttonViewFromZ);
+            flowLayoutPanelViewAlong.Controls.Add(buttonViewFromX);
+            flowLayoutPanelViewAlong.Controls.Add(buttonSurfaceNormal);
+            flowLayoutPanelViewAlong.Name = "flowLayoutPanelViewAlong";
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelProfiles
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(groupBox1);
-            flowLayoutPanel2.Controls.Add(groupBox4);
-            flowLayoutPanel2.Controls.Add(groupBox2);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanelProfiles, "flowLayoutPanelProfiles");
+            captureExtender.SetCapture(flowLayoutPanelProfiles, true);
+            flowLayoutPanelProfiles.Controls.Add(groupBoxEnergyDistribution);
+            flowLayoutPanelProfiles.Controls.Add(groupBoxSurfaceDistance);
+            flowLayoutPanelProfiles.Controls.Add(groupBoxPenetrationDepth);
+            flowLayoutPanelProfiles.Name = "flowLayoutPanelProfiles";
             // 
             // checkBoxDrawAbsorved
             // 
@@ -402,16 +402,17 @@
             checkBoxDrawAbsorved.UseVisualStyleBackColor = true;
             checkBoxDrawAbsorved.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
             // 
-            // groupBox5
+            // groupBoxDirectionDistribution
             // 
-            groupBox5.Controls.Add(radioButtonStandardDeviation);
-            groupBox5.Controls.Add(radioButtonAverageEnergy);
-            groupBox5.Controls.Add(radioButtonFrequency);
-            groupBox5.Controls.Add(poleFigureControl);
-            groupBox5.Controls.Add(checkBoxDrawAxesInStereonet);
-            resources.ApplyResources(groupBox5, "groupBox5");
-            groupBox5.Name = "groupBox5";
-            groupBox5.TabStop = false;
+            captureExtender.SetCapture(groupBoxDirectionDistribution, true);
+            groupBoxDirectionDistribution.Controls.Add(radioButtonStandardDeviation);
+            groupBoxDirectionDistribution.Controls.Add(radioButtonAverageEnergy);
+            groupBoxDirectionDistribution.Controls.Add(radioButtonFrequency);
+            groupBoxDirectionDistribution.Controls.Add(poleFigureControl);
+            groupBoxDirectionDistribution.Controls.Add(checkBoxDrawAxesInStereonet);
+            resources.ApplyResources(groupBoxDirectionDistribution, "groupBoxDirectionDistribution");
+            groupBoxDirectionDistribution.Name = "groupBoxDirectionDistribution";
+            groupBoxDirectionDistribution.TabStop = false;
             // 
             // radioButtonStandardDeviation
             // 
@@ -447,21 +448,22 @@
             checkBoxDrawAxesInStereonet.UseVisualStyleBackColor = true;
             checkBoxDrawAxesInStereonet.CheckedChanged += checkBoxDrawAxesInStereonet_CheckedChanged;
             // 
-            // groupBox6
+            // groupBoxStatistics
             // 
-            groupBox6.Controls.Add(labelBSEenergy);
-            groupBox6.Controls.Add(labelStoppingPower);
-            groupBox6.Controls.Add(labelCrossSection);
-            groupBox6.Controls.Add(labelMeanFreePath);
-            groupBox6.Controls.Add(labelBSEratio);
-            groupBox6.Controls.Add(label3);
-            groupBox6.Controls.Add(label6);
-            groupBox6.Controls.Add(label5);
-            groupBox6.Controls.Add(label4);
-            groupBox6.Controls.Add(label2);
-            resources.ApplyResources(groupBox6, "groupBox6");
-            groupBox6.Name = "groupBox6";
-            groupBox6.TabStop = false;
+            captureExtender.SetCapture(groupBoxStatistics, true);
+            groupBoxStatistics.Controls.Add(labelBSEenergy);
+            groupBoxStatistics.Controls.Add(labelStoppingPower);
+            groupBoxStatistics.Controls.Add(labelCrossSection);
+            groupBoxStatistics.Controls.Add(labelMeanFreePath);
+            groupBoxStatistics.Controls.Add(labelBSEratio);
+            groupBoxStatistics.Controls.Add(label3);
+            groupBoxStatistics.Controls.Add(label6);
+            groupBoxStatistics.Controls.Add(label5);
+            groupBoxStatistics.Controls.Add(label4);
+            groupBoxStatistics.Controls.Add(label2);
+            resources.ApplyResources(groupBoxStatistics, "groupBoxStatistics");
+            groupBoxStatistics.Name = "groupBoxStatistics";
+            groupBoxStatistics.TabStop = false;
             // 
             // labelBSEenergy
             // 
@@ -522,41 +524,60 @@
             checkBoxDrawPathAfterEscape.UseVisualStyleBackColor = true;
             checkBoxDrawPathAfterEscape.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
             // 
+            // panelCalculationConditions
+            // 
+            captureExtender.SetCapture(panelCalculationConditions, true);
+            panelCalculationConditions.Controls.Add(numericBoxCalcNum);
+            panelCalculationConditions.Controls.Add(label1);
+            panelCalculationConditions.Controls.Add(buttonCalc);
+            panelCalculationConditions.Controls.Add(waveLengthControl);
+            panelCalculationConditions.Controls.Add(numericBoxSampleTilt);
+            resources.ApplyResources(panelCalculationConditions, "panelCalculationConditions");
+            panelCalculationConditions.Name = "panelCalculationConditions";
+            // 
+            // panelStereonetOptions
+            // 
+            captureExtender.SetCapture(panelStereonetOptions, true);
+            panelStereonetOptions.Controls.Add(checkBoxDrawAbsorved);
+            panelStereonetOptions.Controls.Add(flowLayoutPanelViewAlong);
+            panelStereonetOptions.Controls.Add(numericBoxDrawNum);
+            panelStereonetOptions.Controls.Add(checkBoxDrawAxes);
+            panelStereonetOptions.Controls.Add(checkBoxDrawGuidCircles);
+            panelStereonetOptions.Controls.Add(checkBoxDrawPathAfterEscape);
+            resources.ApplyResources(panelStereonetOptions, "panelStereonetOptions");
+            panelStereonetOptions.Name = "panelStereonetOptions";
+            // 
             // FormTrajectory
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            Controls.Add(groupBox6);
-            Controls.Add(groupBox5);
-            Controls.Add(flowLayoutPanel2);
-            Controls.Add(numericBoxCalcNum);
-            Controls.Add(label1);
-            Controls.Add(numericBoxSampleTilt);
-            Controls.Add(waveLengthControl);
-            Controls.Add(checkBoxDrawPathAfterEscape);
-            Controls.Add(checkBoxDrawAbsorved);
-            Controls.Add(checkBoxDrawGuidCircles);
-            Controls.Add(checkBoxDrawAxes);
-            Controls.Add(numericBoxDrawNum);
-            Controls.Add(flowLayoutPanel1);
-            Controls.Add(buttonCalc);
+            captureExtender.SetCapture(this, true);
+            Controls.Add(panelStereonetOptions);
+            Controls.Add(panelCalculationConditions);
+            Controls.Add(groupBoxStatistics);
+            Controls.Add(groupBoxDirectionDistribution);
+            Controls.Add(flowLayoutPanelProfiles);
             Controls.Add(statusStrip1);
             Controls.Add(paneltTrajectory);
             Name = "FormTrajectory";
             FormClosing += FormEBSD_FormClosing;
             Load += FormEBSD_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
+            groupBoxEnergyDistribution.ResumeLayout(false);
+            groupBoxPenetrationDepth.ResumeLayout(false);
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            groupBox5.ResumeLayout(false);
-            groupBox5.PerformLayout();
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
+            groupBoxSurfaceDistance.ResumeLayout(false);
+            flowLayoutPanelViewAlong.ResumeLayout(false);
+            flowLayoutPanelViewAlong.PerformLayout();
+            flowLayoutPanelProfiles.ResumeLayout(false);
+            groupBoxDirectionDistribution.ResumeLayout(false);
+            groupBoxDirectionDistribution.PerformLayout();
+            groupBoxStatistics.ResumeLayout(false);
+            groupBoxStatistics.PerformLayout();
+            panelCalculationConditions.ResumeLayout(false);
+            panelCalculationConditions.PerformLayout();
+            panelStereonetOptions.ResumeLayout(false);
+            panelStereonetOptions.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -572,24 +593,24 @@
         private GraphControl graphControlEnergyProfile;
         private NumericBox numericBoxCalcNum;
         private NumericBox numericBoxDrawNum;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxEnergyDistribution;
+        private System.Windows.Forms.GroupBox groupBoxPenetrationDepth;
         private GraphControl graphControlDepthProfile;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxSurfaceDistance;
         private GraphControl graphControlDistance;
         private PoleFigureControl2 poleFigureControl;
         private System.Windows.Forms.CheckBox checkBoxDrawAxes;
         private System.Windows.Forms.CheckBox checkBoxDrawGuidCircles;
         private System.Windows.Forms.Button buttonSurfaceNormal;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelViewAlong;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProfiles;
         private System.Windows.Forms.CheckBox checkBoxDrawAbsorved;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBoxDirectionDistribution;
         private System.Windows.Forms.CheckBox checkBoxDrawAxesInStereonet;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBoxStatistics;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelBSEratio;
         private System.Windows.Forms.Label labelBSEenergy;
@@ -604,5 +625,7 @@
         private System.Windows.Forms.RadioButton radioButtonStandardDeviation;
         private System.Windows.Forms.RadioButton radioButtonAverageEnergy;
         private System.Windows.Forms.RadioButton radioButtonFrequency;
+        private System.Windows.Forms.Panel panelCalculationConditions;
+        private System.Windows.Forms.Panel panelStereonetOptions;
     }
 }

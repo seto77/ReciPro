@@ -81,16 +81,16 @@
     <value>エクセル形式を
 張り付け</value>
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxReciProCoordinate.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
+  <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciProの座標系 (ZXZ)</value>
   </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxExperimentalCoordinate.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxExperimentalCoordinate.Text" xml:space="preserve">
     <value>実験室座標系</value>
   </data>
   <data name="buttonResetExpEuler.Font" type="System.Drawing.Font, System.Drawing">

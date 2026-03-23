@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class EOSControl : UserControl
+    public partial class EOSControl : CaptureUserControlBase
     {
         #region フィールド, プロパティ
         [System.ComponentModel.Browsable(false)]
@@ -201,3 +201,4 @@ namespace Crystallography.Controls
         }
     }
 }
+

@@ -330,10 +330,10 @@
   <data name="label13.Text" xml:space="preserve">
     <value>ソルバ</value>
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxInputParameters.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
+  <data name="groupBoxInputParameters.Text" xml:space="preserve">
     <value>入力パラメータ</value>
   </data>
   <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">

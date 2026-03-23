@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [TypeConverter(typeof(DefinitionOrderTypeConverter))]
-public partial class CrystalControl : UserControl
+public partial class CrystalControl : CaptureUserControlBase
 {
     #region プロパティ、フィールド、イベントハンドラ
 

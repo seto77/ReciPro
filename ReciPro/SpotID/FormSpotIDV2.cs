@@ -19,7 +19,7 @@ using ZLinq;
 
 namespace ReciPro;
 
-public partial class FormSpotIDV2 : Form
+public partial class FormSpotIDV2 : CaptureFormBase
 {
     #region プロパティ、フィールド
     public object tagObsSpot = "ObsCross";
@@ -1648,3 +1648,4 @@ public partial class FormSpotIDV2 : Form
         bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, 0));
     }
 }
+

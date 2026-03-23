@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class TrackBarAdvanced : UserControl
+    public partial class TrackBarAdvanced : CaptureUserControlBase
     {
         public TrackBarAdvanced()
         {

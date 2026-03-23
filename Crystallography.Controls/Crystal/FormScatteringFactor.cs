@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class FormScatteringFactor : Form
+public partial class FormScatteringFactor : CaptureFormBase
 {
     public Crystal Crystal { get => CrystalControl.Crystal; }
     public CrystalControl CrystalControl;

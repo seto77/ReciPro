@@ -93,7 +93,7 @@
   <data name="&gt;&gt;labelW.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
+  <data name="groupBoxProjectionScheme.Text" xml:space="preserve">
     <value>Projection Scheme</value>
   </data>
   <data name="&gt;&gt;radioButtonPoleFigure.Parent" xml:space="preserve">
@@ -121,7 +121,7 @@
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxProjectionScheme.Parent" xml:space="preserve">
     <value>tabPage1</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
@@ -139,7 +139,7 @@
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 15</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxProjectionObject.Name" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
@@ -160,7 +160,7 @@
   <data name="labelV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAppearance.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
@@ -193,10 +193,10 @@
   <data name="comboBoxColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 25</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="groupBoxProjectionObject.Text" xml:space="preserve">
     <value>Projection Object</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxProjectionObject.Parent" xml:space="preserve">
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
@@ -223,7 +223,7 @@
   <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 0, 0</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAppearance.Name" xml:space="preserve">
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
@@ -349,7 +349,7 @@
   <data name="numericUpDown3.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 21</value>
   </data>
-  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="groupBoxProjectionScheme.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="radioButtonInversePoleFigure.Text" xml:space="preserve">
@@ -382,7 +382,7 @@
   <data name="&gt;&gt;numericUpDown3.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxProjectionScheme.Location" type="System.Drawing.Point, System.Drawing">
     <value>324, 96</value>
   </data>
   <data name="&gt;&gt;numericUpDownFullscale.Type" xml:space="preserve">
@@ -433,7 +433,7 @@
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxProjectionObject.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="numericUpDown1.Font" type="System.Drawing.Font, System.Drawing">
@@ -514,7 +514,7 @@
   <data name="numericUpDown1.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxProjectionObject.Location" type="System.Drawing.Point, System.Drawing">
     <value>324, 5</value>
   </data>
   <data name="numericUpDown3.TabIndex" type="System.Int32, mscorlib">
@@ -541,7 +541,7 @@
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxProjectionObject.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
@@ -586,7 +586,7 @@
   <data name="numericUpDown3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAppearance.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -634,7 +634,7 @@
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxAppearance.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 178</value>
   </data>
   <data name="labelV.Location" type="System.Drawing.Point, System.Drawing">
@@ -670,7 +670,7 @@
   <data name="&gt;&gt;radioButtonPlanes.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxProjectionObject.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 84</value>
   </data>
   <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -682,7 +682,7 @@
   <data name="radioButtonInversePoleFigure.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxProjectionScheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 73</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
@@ -700,10 +700,10 @@
   <data name="radioButtonPoleFigure.Text" xml:space="preserve">
     <value>Pole figure</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxProjectionObject.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxProjectionScheme.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
@@ -742,7 +742,7 @@
   <data name="radioButtonAxes.Text" xml:space="preserve">
     <value>Axes</value>
   </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxAppearance.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
   </data>
   <data name="labelW.Size" type="System.Drawing.Size, System.Drawing">
@@ -769,7 +769,7 @@
   <data name="radioButtonPoleFigure.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 21</value>
   </data>
-  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="groupBoxProjectionObject.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
@@ -778,7 +778,7 @@
   <data name="&gt;&gt;comboBoxColor.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
+  <data name="groupBoxAppearance.Text" xml:space="preserve">
     <value>Appearance</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -802,7 +802,7 @@
   <data name="pictureBox.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxProjectionScheme.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
   </data>
   <data name="&gt;&gt;pictureBox.Type" xml:space="preserve">
@@ -811,7 +811,7 @@
   <data name="radioButtonInversePoleFigure.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxProjectionScheme.Name" xml:space="preserve">
     <value>groupBox1</value>
   </data>
   <data name="radioButtonPlanes.Location" type="System.Drawing.Point, System.Drawing">
@@ -844,7 +844,7 @@
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxProjectionScheme.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="radioButtonPlanes.Text" xml:space="preserve">
@@ -853,7 +853,7 @@
   <data name="labelV.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9.75pt, style=Italic</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAppearance.Parent" xml:space="preserve">
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;radioButtonPlanes.Parent" xml:space="preserve">
@@ -904,7 +904,7 @@
   <data name="numericUpDownFullscale.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 21</value>
   </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="groupBoxAppearance.Location" type="System.Drawing.Point, System.Drawing">
     <value>324, 169</value>
   </data>
   <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
@@ -931,7 +931,7 @@
   <data name="radioButtonAxes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="groupBoxAppearance.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">

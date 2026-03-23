@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormSpotIDv1 : Form
+public partial class FormSpotIDv1 : CaptureFormBase
 {
     public FormMain formMain;
     private PhotoInformation photo1, photo2, photo3;
@@ -377,3 +377,4 @@ public partial class FormSpotIDv1 : Form
         }
     }
 }
+

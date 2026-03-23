@@ -26,26 +26,34 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxCrystalProperty
+        // groupBox2 -> groupBoxAppearance
+        // groupBox3 -> groupBoxPatterns
+        // groupBox4 -> groupBoxPreferredOrientation
+        // groupBox6 -> groupBoxOrientationFitting
+        // groupBox7 -> groupBoxGonioScan
+        // groupBox8 -> groupBoxFittingOptions
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPolycrystallineDiffractionSimulator));
             this.backgroundWorkerMain = new System.ComponentModel.BackgroundWorker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxCrystalProperty = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonSimulateDebyeRing = new System.Windows.Forms.Button();
             this.tabControlCrystals = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.crystalControl1 = new Crystallography.Controls.CrystalControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBoxOrientationFitting = new System.Windows.Forms.GroupBox();
             this.buttonLoadSetting = new System.Windows.Forms.Button();
             this.buttonSaveCurrentSetting = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPreferredOrientation = new System.Windows.Forms.GroupBox();
             this.checkBoxCrystalNumPerStepThreshold = new System.Windows.Forms.CheckBox();
             this.numericBoxCrystalNumPerStep = new Crystallography.Controls.NumericBox();
             this.numericBoxInheritabiliry = new Crystallography.Controls.NumericBox();
@@ -55,7 +63,7 @@
             this.numericBoxDirectionalDensity = new Crystallography.Controls.NumericBox();
             this.numericBoxCrystalNumPerStepThreshold = new Crystallography.Controls.NumericBox();
             this.numericBoxDirectionalDensityThreshold = new Crystallography.Controls.NumericBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.groupBoxFittingOptions = new System.Windows.Forms.GroupBox();
             this.checkBoxRefineConvergence = new System.Windows.Forms.CheckBox();
             this.checkBoxRefineStress = new System.Windows.Forms.CheckBox();
             this.checkBoxRefineCenterOffset = new System.Windows.Forms.CheckBox();
@@ -69,7 +77,7 @@
             this.graphControlResidual = new Crystallography.Controls.GraphControl();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.buttonSearchUnrelatedOrientations = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBoxGonioScan = new System.Windows.Forms.GroupBox();
             this.checkBoxYusaGonioScan = new System.Windows.Forms.CheckBox();
             this.numericBoxRxSpeed = new Crystallography.Controls.NumericBox();
             this.checkBoxYusaGonio_ValidRx = new System.Windows.Forms.CheckBox();
@@ -95,8 +103,8 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label58 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPatterns = new System.Windows.Forms.GroupBox();
+            this.groupBoxAppearance = new System.Windows.Forms.GroupBox();
             this.comboBoxScale2 = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.comboBoxGradient = new System.Windows.Forms.ComboBox();
@@ -117,20 +125,20 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxCrystalProperty.SuspendLayout();
             this.tabControlCrystals.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.groupBoxOrientationFitting.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox8.SuspendLayout();
+            this.groupBoxPreferredOrientation.SuspendLayout();
+            this.groupBoxFittingOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChangeParameterThreshold)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.tabPage8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxGonioScan.SuspendLayout();
+            this.groupBoxPatterns.SuspendLayout();
+            this.groupBoxAppearance.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -154,34 +162,34 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox6);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox7);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBoxCrystalProperty);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBoxOrientationFitting);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBoxGonioScan);
             this.splitContainer1.Panel1MinSize = 334;
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBoxPatterns);
             this.splitContainer1.Size = new System.Drawing.Size(1538, 911);
             this.splitContainer1.SplitterDistance = 532;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 132;
             // 
-            // groupBox1
+            // groupBoxCrystalProperty
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.buttonSimulateDebyeRing);
-            this.groupBox1.Controls.Add(this.tabControlCrystals);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBox1.Size = new System.Drawing.Size(532, 609);
-            this.groupBox1.TabIndex = 129;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Crystal property";
+            this.groupBoxCrystalProperty.Controls.Add(this.button1);
+            this.groupBoxCrystalProperty.Controls.Add(this.buttonSimulateDebyeRing);
+            this.groupBoxCrystalProperty.Controls.Add(this.tabControlCrystals);
+            this.groupBoxCrystalProperty.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxCrystalProperty.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxCrystalProperty.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxCrystalProperty.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBoxCrystalProperty.Name = "groupBoxCrystalProperty";
+            this.groupBoxCrystalProperty.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBoxCrystalProperty.Size = new System.Drawing.Size(532, 609);
+            this.groupBoxCrystalProperty.TabIndex = 129;
+            this.groupBoxCrystalProperty.TabStop = false;
+            this.groupBoxCrystalProperty.Text = "Crystal property";
             // 
             // button1
             // 
@@ -281,22 +289,22 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // groupBox6
+            // groupBoxOrientationFitting
             // 
-            this.groupBox6.Controls.Add(this.buttonLoadSetting);
-            this.groupBox6.Controls.Add(this.buttonSaveCurrentSetting);
-            this.groupBox6.Controls.Add(this.buttonSearch);
-            this.groupBox6.Controls.Add(this.tabControl3);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox6.Location = new System.Drawing.Point(0, 609);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBox6.Size = new System.Drawing.Size(532, 302);
-            this.groupBox6.TabIndex = 129;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Fitting orientations";
+            this.groupBoxOrientationFitting.Controls.Add(this.buttonLoadSetting);
+            this.groupBoxOrientationFitting.Controls.Add(this.buttonSaveCurrentSetting);
+            this.groupBoxOrientationFitting.Controls.Add(this.buttonSearch);
+            this.groupBoxOrientationFitting.Controls.Add(this.tabControl3);
+            this.groupBoxOrientationFitting.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBoxOrientationFitting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxOrientationFitting.Location = new System.Drawing.Point(0, 609);
+            this.groupBoxOrientationFitting.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBoxOrientationFitting.Name = "groupBoxOrientationFitting";
+            this.groupBoxOrientationFitting.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBoxOrientationFitting.Size = new System.Drawing.Size(532, 302);
+            this.groupBoxOrientationFitting.TabIndex = 129;
+            this.groupBoxOrientationFitting.TabStop = false;
+            this.groupBoxOrientationFitting.Text = "Fitting orientations";
             // 
             // buttonLoadSetting
             // 
@@ -356,8 +364,8 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage4.Controls.Add(this.groupBox4);
-            this.tabPage4.Controls.Add(this.groupBox8);
+            this.tabPage4.Controls.Add(this.groupBoxPreferredOrientation);
+            this.tabPage4.Controls.Add(this.groupBoxFittingOptions);
             this.tabPage4.Controls.Add(this.checkBox6);
             this.tabPage4.Controls.Add(this.checkBoxAutomaticallyChangeParameter);
             this.tabPage4.Controls.Add(this.numericUpDownChangeParameterThreshold);
@@ -369,24 +377,24 @@
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Refinement option";
             // 
-            // groupBox4
+            // groupBoxPreferredOrientation
             // 
-            this.groupBox4.Controls.Add(this.checkBoxCrystalNumPerStepThreshold);
-            this.groupBox4.Controls.Add(this.numericBoxCrystalNumPerStep);
-            this.groupBox4.Controls.Add(this.numericBoxInheritabiliry);
-            this.groupBox4.Controls.Add(this.checkBoxInheritabiliryThreshold);
-            this.groupBox4.Controls.Add(this.numericBoxInheritabiliryThreshold);
-            this.groupBox4.Controls.Add(this.checkBoxDirectionalDensityThreshold);
-            this.groupBox4.Controls.Add(this.numericBoxDirectionalDensity);
-            this.groupBox4.Controls.Add(this.numericBoxCrystalNumPerStepThreshold);
-            this.groupBox4.Controls.Add(this.numericBoxDirectionalDensityThreshold);
-            this.groupBox4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.Location = new System.Drawing.Point(138, 4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(371, 121);
-            this.groupBox4.TabIndex = 409;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Fitting parameters for preferred orientatin";
+            this.groupBoxPreferredOrientation.Controls.Add(this.checkBoxCrystalNumPerStepThreshold);
+            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxCrystalNumPerStep);
+            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxInheritabiliry);
+            this.groupBoxPreferredOrientation.Controls.Add(this.checkBoxInheritabiliryThreshold);
+            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxInheritabiliryThreshold);
+            this.groupBoxPreferredOrientation.Controls.Add(this.checkBoxDirectionalDensityThreshold);
+            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxDirectionalDensity);
+            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxCrystalNumPerStepThreshold);
+            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxDirectionalDensityThreshold);
+            this.groupBoxPreferredOrientation.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxPreferredOrientation.Location = new System.Drawing.Point(138, 4);
+            this.groupBoxPreferredOrientation.Name = "groupBoxPreferredOrientation";
+            this.groupBoxPreferredOrientation.Size = new System.Drawing.Size(371, 121);
+            this.groupBoxPreferredOrientation.TabIndex = 409;
+            this.groupBoxPreferredOrientation.TabStop = false;
+            this.groupBoxPreferredOrientation.Text = "Fitting parameters for preferred orientatin";
             // 
             // checkBoxCrystalNumPerStepThreshold
             // 
@@ -605,21 +613,21 @@
             this.numericBoxDirectionalDensityThreshold.ThonsandsSeparator = true;
             this.numericBoxDirectionalDensityThreshold.Value = 1D;
             // 
-            // groupBox8
+            // groupBoxFittingOptions
             // 
-            this.groupBox8.Controls.Add(this.checkBoxRefineConvergence);
-            this.groupBox8.Controls.Add(this.checkBoxRefineStress);
-            this.groupBox8.Controls.Add(this.checkBoxRefineCenterOffset);
-            this.groupBox8.Controls.Add(this.checkBoxRefinePreferredOrientation);
-            this.groupBox8.Controls.Add(this.checkBoxRefineFilmBlur);
-            this.groupBox8.Location = new System.Drawing.Point(4, 4);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox8.Size = new System.Drawing.Size(127, 198);
-            this.groupBox8.TabIndex = 166;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Fitting Option";
+            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefineConvergence);
+            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefineStress);
+            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefineCenterOffset);
+            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefinePreferredOrientation);
+            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefineFilmBlur);
+            this.groupBoxFittingOptions.Location = new System.Drawing.Point(4, 4);
+            this.groupBoxFittingOptions.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBoxFittingOptions.Name = "groupBoxFittingOptions";
+            this.groupBoxFittingOptions.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxFittingOptions.Size = new System.Drawing.Size(127, 198);
+            this.groupBoxFittingOptions.TabIndex = 166;
+            this.groupBoxFittingOptions.TabStop = false;
+            this.groupBoxFittingOptions.Text = "Fitting Option";
             // 
             // checkBoxRefineConvergence
             // 
@@ -843,41 +851,41 @@
             this.buttonSearchUnrelatedOrientations.UseVisualStyleBackColor = true;
             this.buttonSearchUnrelatedOrientations.Click += new System.EventHandler(this.buttonSearchUnrelatedOrientations_Click);
             // 
-            // groupBox7
+            // groupBoxGonioScan
             // 
-            this.groupBox7.Controls.Add(this.checkBoxYusaGonioScan);
-            this.groupBox7.Controls.Add(this.numericBoxRxSpeed);
-            this.groupBox7.Controls.Add(this.checkBoxYusaGonio_ValidRx);
-            this.groupBox7.Controls.Add(this.label52);
-            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRySpeed);
-            this.groupBox7.Controls.Add(this.label51);
-            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRzSpeed);
-            this.groupBox7.Controls.Add(this.label53);
-            this.groupBox7.Controls.Add(this.label50);
-            this.groupBox7.Controls.Add(this.radioButtonZigzagScan);
-            this.groupBox7.Controls.Add(this.label54);
-            this.groupBox7.Controls.Add(this.label49);
-            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRyStep);
-            this.groupBox7.Controls.Add(this.label55);
-            this.groupBox7.Controls.Add(this.label48);
-            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRyOscillation);
-            this.groupBox7.Controls.Add(this.label56);
-            this.groupBox7.Controls.Add(this.label60);
-            this.groupBox7.Controls.Add(this.label47);
-            this.groupBox7.Controls.Add(this.numericBoxYusaGonioRzOscillation);
-            this.groupBox7.Controls.Add(this.label57);
-            this.groupBox7.Controls.Add(this.label59);
-            this.groupBox7.Controls.Add(this.checkBox2);
-            this.groupBox7.Controls.Add(this.checkBox3);
-            this.groupBox7.Controls.Add(this.label58);
-            this.groupBox7.Location = new System.Drawing.Point(6, 1026);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox7.Size = new System.Drawing.Size(312, 182);
-            this.groupBox7.TabIndex = 1001;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "groupBox7";
+            this.groupBoxGonioScan.Controls.Add(this.checkBoxYusaGonioScan);
+            this.groupBoxGonioScan.Controls.Add(this.numericBoxRxSpeed);
+            this.groupBoxGonioScan.Controls.Add(this.checkBoxYusaGonio_ValidRx);
+            this.groupBoxGonioScan.Controls.Add(this.label52);
+            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRySpeed);
+            this.groupBoxGonioScan.Controls.Add(this.label51);
+            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRzSpeed);
+            this.groupBoxGonioScan.Controls.Add(this.label53);
+            this.groupBoxGonioScan.Controls.Add(this.label50);
+            this.groupBoxGonioScan.Controls.Add(this.radioButtonZigzagScan);
+            this.groupBoxGonioScan.Controls.Add(this.label54);
+            this.groupBoxGonioScan.Controls.Add(this.label49);
+            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRyStep);
+            this.groupBoxGonioScan.Controls.Add(this.label55);
+            this.groupBoxGonioScan.Controls.Add(this.label48);
+            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRyOscillation);
+            this.groupBoxGonioScan.Controls.Add(this.label56);
+            this.groupBoxGonioScan.Controls.Add(this.label60);
+            this.groupBoxGonioScan.Controls.Add(this.label47);
+            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRzOscillation);
+            this.groupBoxGonioScan.Controls.Add(this.label57);
+            this.groupBoxGonioScan.Controls.Add(this.label59);
+            this.groupBoxGonioScan.Controls.Add(this.checkBox2);
+            this.groupBoxGonioScan.Controls.Add(this.checkBox3);
+            this.groupBoxGonioScan.Controls.Add(this.label58);
+            this.groupBoxGonioScan.Location = new System.Drawing.Point(6, 1026);
+            this.groupBoxGonioScan.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBoxGonioScan.Name = "groupBoxGonioScan";
+            this.groupBoxGonioScan.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxGonioScan.Size = new System.Drawing.Size(312, 182);
+            this.groupBoxGonioScan.TabIndex = 1001;
+            this.groupBoxGonioScan.TabStop = false;
+            this.groupBoxGonioScan.Text = "groupBoxGonioScan";
             // 
             // checkBoxYusaGonioScan
             // 
@@ -1231,41 +1239,41 @@
             this.label58.TabIndex = 20;
             this.label58.Text = "deg. / sec.";
             // 
-            // groupBox3
+            // groupBoxPatterns
             // 
-            this.groupBox3.Controls.Add(this.groupBox2);
-            this.groupBox3.Controls.Add(this.listBoxReferrence);
-            this.groupBox3.Controls.Add(this.buttonAddRefferencePattern);
-            this.groupBox3.Controls.Add(this.buttonRemoveReferrencePattern);
-            this.groupBox3.Controls.Add(this.tabControl1);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBox3.Size = new System.Drawing.Size(1001, 911);
-            this.groupBox3.TabIndex = 129;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Simulated / refference patterns";
+            this.groupBoxPatterns.Controls.Add(this.groupBoxAppearance);
+            this.groupBoxPatterns.Controls.Add(this.listBoxReferrence);
+            this.groupBoxPatterns.Controls.Add(this.buttonAddRefferencePattern);
+            this.groupBoxPatterns.Controls.Add(this.buttonRemoveReferrencePattern);
+            this.groupBoxPatterns.Controls.Add(this.tabControl1);
+            this.groupBoxPatterns.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxPatterns.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxPatterns.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxPatterns.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBoxPatterns.Name = "groupBoxPatterns";
+            this.groupBoxPatterns.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.groupBoxPatterns.Size = new System.Drawing.Size(1001, 911);
+            this.groupBoxPatterns.TabIndex = 129;
+            this.groupBoxPatterns.TabStop = false;
+            this.groupBoxPatterns.Text = "Simulated / refference patterns";
             // 
-            // groupBox2
+            // groupBoxAppearance
             // 
-            this.groupBox2.Controls.Add(this.comboBoxScale2);
-            this.groupBox2.Controls.Add(this.label26);
-            this.groupBox2.Controls.Add(this.comboBoxGradient);
-            this.groupBox2.Controls.Add(this.label30);
-            this.groupBox2.Controls.Add(this.comboBoxScale1);
-            this.groupBox2.Controls.Add(this.label28);
-            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(305, 28);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(650, 60);
-            this.groupBox2.TabIndex = 130;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Appearance";
+            this.groupBoxAppearance.Controls.Add(this.comboBoxScale2);
+            this.groupBoxAppearance.Controls.Add(this.label26);
+            this.groupBoxAppearance.Controls.Add(this.comboBoxGradient);
+            this.groupBoxAppearance.Controls.Add(this.label30);
+            this.groupBoxAppearance.Controls.Add(this.comboBoxScale1);
+            this.groupBoxAppearance.Controls.Add(this.label28);
+            this.groupBoxAppearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxAppearance.Location = new System.Drawing.Point(305, 28);
+            this.groupBoxAppearance.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBoxAppearance.Name = "groupBoxAppearance";
+            this.groupBoxAppearance.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxAppearance.Size = new System.Drawing.Size(650, 60);
+            this.groupBoxAppearance.TabIndex = 130;
+            this.groupBoxAppearance.TabStop = false;
+            this.groupBoxAppearance.Text = "Appearance";
             // 
             // comboBoxScale2
             // 
@@ -1488,28 +1496,28 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxCrystalProperty.ResumeLayout(false);
+            this.groupBoxCrystalProperty.PerformLayout();
             this.tabControlCrystals.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.groupBoxOrientationFitting.ResumeLayout(false);
+            this.groupBoxOrientationFitting.PerformLayout();
             this.tabControl3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
+            this.groupBoxPreferredOrientation.ResumeLayout(false);
+            this.groupBoxPreferredOrientation.PerformLayout();
+            this.groupBoxFittingOptions.ResumeLayout(false);
+            this.groupBoxFittingOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChangeParameterThreshold)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage8.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxGonioScan.ResumeLayout(false);
+            this.groupBoxGonioScan.PerformLayout();
+            this.groupBoxPatterns.ResumeLayout(false);
+            this.groupBoxAppearance.ResumeLayout(false);
+            this.groupBoxAppearance.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
@@ -1530,8 +1538,8 @@
         private System.Windows.Forms.Button buttonAddRefferencePattern;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxOrientationFitting;
+        private System.Windows.Forms.GroupBox groupBoxPatterns;
         private System.Windows.Forms.ListBox listBoxReferrence;
         private System.Windows.Forms.Button buttonRemoveReferrencePattern;
         private DiffractionPatternControl diffractionPatternControlSimulation;
@@ -1539,7 +1547,7 @@
         private Crystallography.Controls.GraphControl graphControlResidual;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button buttonSaveCurrentSetting;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxAppearance;
         private System.Windows.Forms.Button buttonLoadSetting;
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage4;
@@ -1550,7 +1558,7 @@
         private System.Windows.Forms.CheckBox checkBoxRefineCenterOffset;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.CheckBox checkBoxRefineStress;
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBoxFittingOptions;
         private System.Windows.Forms.CheckBox checkBoxRefinePreferredOrientation;
         public Crystallography.Controls.NumericBox numericBoxRxSpeed;
         public Crystallography.Controls.NumericBox numericBoxYusaGonioRySpeed;
@@ -1579,10 +1587,10 @@
         private System.Windows.Forms.CheckBox checkBoxYusaGonioScan;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.Button buttonSearchUnrelatedOrientations;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBoxGonioScan;
         private Crystallography.Controls.CrystalControl crystalControl1;
         private System.Windows.Forms.Button buttonSimulateDebyeRing;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxCrystalProperty;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelProgress;
@@ -1602,6 +1610,6 @@
         private Crystallography.Controls.NumericBox numericBoxCrystalNumPerStepThreshold;
         private Crystallography.Controls.NumericBox numericBoxDirectionalDensityThreshold;
         private Crystallography.Controls.NumericBox numericBoxInheritabiliryThreshold;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxPreferredOrientation;
     }
 }

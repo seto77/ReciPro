@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls;
-public partial class AtomControl : UserControl
+public partial class AtomControl : CaptureUserControlBase
 {
     #region プロパティ, フィールド, イベントハンドラ
     public new bool DesignMode
@@ -902,3 +902,4 @@ public partial class AtomControl : UserControl
 
 
 }
+

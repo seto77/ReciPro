@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class CommonDialog : Form
+    public partial class CommonDialog : CaptureFormBase
     {
         #region プロパティ,フィールド
 

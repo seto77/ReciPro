@@ -121,10 +121,10 @@
   <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 138</value>
   </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxAuthors.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 162</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
+  <data name="groupBoxAuthors.Text" xml:space="preserve">
     <value>著者</value>
   </data>
   <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
@@ -133,10 +133,10 @@
   <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
     <value>331, 138</value>
   </data>
-  <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
     <value>337, 162</value>
   </data>
-  <data name="groupBox8.Text" xml:space="preserve">
+  <data name="groupBoxTitle.Text" xml:space="preserve">
     <value>タイトル</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
@@ -206,10 +206,10 @@
   <data name="numericBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 25</value>
   </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelCellProperties.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 161</value>
   </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelCellProperties.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 113</value>
   </data>
   <data name="buttonConvertToSubgroup.Location" type="System.Drawing.Point, System.Drawing">
@@ -218,16 +218,16 @@
   <data name="buttonChangeAxesOriginSetting.Location" type="System.Drawing.Point, System.Drawing">
     <value>65, 0</value>
   </data>
-  <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flowLayoutPanelSymmetryActions.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 136</value>
   </data>
-  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelSymmetryActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 25</value>
   </data>
   <data name="symmetryControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 136</value>
   </data>
-  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelSymmetryInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 274</value>
   </data>
   <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
@@ -285,16 +285,16 @@
   <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 31</value>
   </data>
-  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 55</value>
   </data>
-  <data name="groupBox7.Text" xml:space="preserve">
+  <data name="groupBoxJournal.Text" xml:space="preserve">
     <value>雑誌名</value>
   </data>
   <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 33</value>
   </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxNote.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 57</value>
   </data>
   <data name="tabPageReference.Size" type="System.Drawing.Size, System.Drawing">
@@ -327,7 +327,7 @@
   <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 226</value>
   </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelRandomOrientationActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 27</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
@@ -351,7 +351,7 @@
   <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
     <value>358, 4</value>
   </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelRandomOrientationSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 27</value>
   </data>
   <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
@@ -430,10 +430,10 @@
   <data name="numericBoxZnumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 24</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelFormula.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 28</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelFormula.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 24</value>
   </data>
   <data name="scatteringFactorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
@@ -547,7 +547,7 @@
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 0</value>
   </data>
-  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelNameAndActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 28</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">

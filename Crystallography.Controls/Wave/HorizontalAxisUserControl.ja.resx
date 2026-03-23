@@ -118,58 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 433</value>
-  </data>
-  <data name="flowLayoutPanel7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 457</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>線源の設定</value>
-  </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 92</value>
-  </data>
-  <data name="flowLayoutPanel5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 2, 2</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 88</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>線種</value>
-  </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 20</value>
-  </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 66</value>
-  </data>
-  <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -178,9 +126,6 @@
   </data>
   <data name="radioButtonXray.Text" xml:space="preserve">
     <value>X線</value>
-  </data>
-  <data name="radioButtonXray.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -194,9 +139,6 @@
   <data name="radioButtonElectron.Text" xml:space="preserve">
     <value>電子線</value>
   </data>
-  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -209,44 +151,36 @@
   <data name="radioButtonNeutron.Text" xml:space="preserve">
     <value>中性子線</value>
   </data>
-  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelSourceType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 20</value>
+  </data>
+  <data name="flowLayoutPanelSourceType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 66</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 15</value>
   </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxSource.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 2</value>
+  <data name="groupBoxSource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
   </data>
-  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBoxSource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBoxSource.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 2, 2</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 88</value>
+  <data name="groupBoxSource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 88</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>単色/白色</value>
+  <data name="groupBoxSource.Text" xml:space="preserve">
+    <value>線種</value>
   </data>
-  <data name="groupBox3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 20</value>
-  </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 66</value>
-  </data>
-  <data name="flowLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="groupBoxSource.ToolTip" xml:space="preserve">
+    <value>波源を選択</value>
   </data>
   <data name="radioButtonMonochro.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -256,9 +190,6 @@
   </data>
   <data name="radioButtonMonochro.Text" xml:space="preserve">
     <value>単色</value>
-  </data>
-  <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonFlatWhite.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -272,6 +203,10 @@
   <data name="radioButtonFlatWhite.Text" xml:space="preserve">
     <value>白色</value>
   </data>
+  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
+    <value>X線の場合、入射ビームの単位エネルギー範囲あたりの強度が一定です。
+中性子の場合、単位波長間隔あたりの入射中性子数が一定です。</value>
+  </data>
   <data name="radioButtonCustomWhite.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -284,8 +219,41 @@
   <data name="radioButtonCustomWhite.Text" xml:space="preserve">
     <value>カスタム色</value>
   </data>
-  <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelWaveMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 20</value>
+  </data>
+  <data name="flowLayoutPanelWaveMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 66</value>
+  </data>
+  <data name="groupBoxColor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBoxColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 2</value>
+  </data>
+  <data name="groupBoxColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBoxColor.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 2, 2</value>
+  </data>
+  <data name="groupBoxColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 88</value>
+  </data>
+  <data name="groupBoxColor.Text" xml:space="preserve">
+    <value>単色/白色</value>
+  </data>
+  <data name="flowLayoutPanelSourceColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 92</value>
+  </data>
+  <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>188, 60</value>
+  </data>
+  <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 80</value>
   </data>
   <data name="groupBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -302,64 +270,17 @@
   <data name="groupBoxTwoTheta.Text" xml:space="preserve">
     <value>波長</value>
   </data>
-  <data name="groupBoxTwoTheta.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelWaveProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 433</value>
   </data>
-  <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>188, 60</value>
-  </data>
-  <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 80</value>
-  </data>
-  <data name="waveLengthControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxWaveProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt, style=Bold</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 0</value>
+  <data name="groupBoxWaveProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 457</value>
   </data>
-  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 463</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>横軸</value>
-  </data>
-  <data name="groupBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 18</value>
-  </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 445</value>
-  </data>
-  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="flowLayoutPanel3.WrapContents" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="flowLayoutPanel15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 110</value>
-  </data>
-  <data name="flowLayoutPanel15.ToolTip" xml:space="preserve">
-    <value />
+  <data name="groupBoxWaveProperty.Text" xml:space="preserve">
+    <value>線源の設定</value>
   </data>
   <data name="radioButtonTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -369,9 +290,6 @@
   </data>
   <data name="radioButtonTwoTheta.Text" xml:space="preserve">
     <value>2θ (角度)       </value>
-  </data>
-  <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonDspacing.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -385,9 +303,6 @@
   <data name="radioButtonDspacing.Text" xml:space="preserve">
     <value>d値</value>
   </data>
-  <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonWavenumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -399,9 +314,6 @@
   </data>
   <data name="radioButtonWavenumber.Text" xml:space="preserve">
     <value>波数</value>
-  </data>
-  <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonEnergy.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -415,9 +327,6 @@
   <data name="radioButtonEnergy.Text" xml:space="preserve">
     <value>エネルギー</value>
   </data>
-  <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonTOF.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -430,38 +339,8 @@
   <data name="radioButtonTOF.Text" xml:space="preserve">
     <value>中性子TOF</value>
   </data>
-  <data name="radioButtonTOF.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBoxOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBoxOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 119</value>
-  </data>
-  <data name="groupBoxOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 323</value>
-  </data>
-  <data name="groupBoxOption.Text" xml:space="preserve">
-    <value>単位</value>
-  </data>
-  <data name="groupBoxOption.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 299</value>
-  </data>
-  <data name="flowLayoutPanel12.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanelTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="flowLayoutPanelTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 88</value>
-  </data>
-  <data name="flowLayoutPanelTwoTheta.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelAxisType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 110</value>
   </data>
   <data name="radioButtonAngleUnitDegree.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -472,15 +351,14 @@
   <data name="radioButtonAngleUnitDegree.Text" xml:space="preserve">
     <value>度</value>
   </data>
-  <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
-    <value />
-  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="radioButtonAngleUnitCentiDegree.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioButtonAngleUnitCentiDegree.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="radioButtonAngleUnitCentiDegree.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -493,9 +371,6 @@
   <data name="radioButtonAngleUnitCentiDegree.Text" xml:space="preserve">
     <value>センチ度</value>
   </data>
-  <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonAngleUnitRadian.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -507,9 +382,6 @@
   </data>
   <data name="radioButtonAngleUnitRadian.Text" xml:space="preserve">
     <value>ラディアン</value>
-  </data>
-  <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonAngleUnitMilliRadian.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -526,8 +398,11 @@
   <data name="radioButtonAngleUnitMilliRadian.Text" xml:space="preserve">
     <value>ミリラディアン</value>
   </data>
-  <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="flowLayoutPanelTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 88</value>
   </data>
   <data name="flowLayoutPanelDspacing.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -535,47 +410,11 @@
   <data name="flowLayoutPanelDspacing.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 97</value>
   </data>
-  <data name="flowLayoutPanelDspacing.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelWavenumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="flowLayoutPanelWavenumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 124</value>
-  </data>
-  <data name="flowLayoutPanelWavenumber.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanelEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 151</value>
-  </data>
-  <data name="flowLayoutPanelEnergy.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
     <value>2θ値を設定</value>
@@ -583,23 +422,11 @@
   <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
     <value>2θ値を設定</value>
   </data>
-  <data name="flowLayoutPanelNeutronTOF.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="flowLayoutPanelEnergy.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="flowLayoutPanelNeutronTOF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 223</value>
-  </data>
-  <data name="flowLayoutPanelNeutronTOF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 73</value>
-  </data>
-  <data name="flowLayoutPanelNeutronTOF.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelEnergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 151</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
     <value>TOF角度を設定</value>
@@ -613,16 +440,67 @@
   <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
     <value>TOF飛行経路長を設定</value>
   </data>
-  <data name="flowLayoutPanel6.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="flowLayoutPanelNeutronTOF.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flowLayoutPanelNeutronTOF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 223</value>
+  </data>
+  <data name="flowLayoutPanelNeutronTOF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 73</value>
+  </data>
+  <data name="flowLayoutPanelAxisValues.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 299</value>
+  </data>
+  <data name="groupBoxOption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBoxOption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 119</value>
+  </data>
+  <data name="groupBoxOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 323</value>
+  </data>
+  <data name="groupBoxOption.Text" xml:space="preserve">
+    <value>単位</value>
+  </data>
+  <data name="flowLayoutPanelAxisSelection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 18</value>
+  </data>
+  <data name="flowLayoutPanelAxisSelection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 445</value>
+  </data>
+  <data name="flowLayoutPanelAxisSelection.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBoxHorizontalAxis.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="groupBoxHorizontalAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt, style=Bold</value>
+  </data>
+  <data name="groupBoxHorizontalAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 0</value>
+  </data>
+  <data name="groupBoxHorizontalAxis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBoxHorizontalAxis.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBoxHorizontalAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 463</value>
+  </data>
+  <data name="groupBoxHorizontalAxis.Text" xml:space="preserve">
+    <value>横軸</value>
+  </data>
+  <data name="flowLayoutPanelMain.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="flowLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>346, 463</value>
   </data>
-  <data name="flowLayoutPanel6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel6.WrapContents" type="System.Boolean, mscorlib">
+  <data name="flowLayoutPanelMain.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -633,15 +511,5 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 466</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox4.ToolTip" xml:space="preserve">
-    <value>波源を選択</value>
-  </data>
-  <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
-    <value>X線の場合、入射ビームの単位エネルギー範囲あたりの強度が一定です。
-中性子の場合、単位波長間隔あたりの入射中性子数が一定です。</value>
   </data>
 </root>

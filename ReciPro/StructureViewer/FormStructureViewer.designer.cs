@@ -27,6 +27,21 @@
         /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
         /// コード エディタで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxProjection
+        // groupBox2 -> groupBoxAccessoryControls
+        // groupBox3 -> groupBoxRenderingQuality
+        // groupBox4 -> groupBoxLabel
+        // groupBox5 -> groupBoxTransparency
+        // groupBox6 -> groupBoxBondedAtoms
+        // groupBox7 -> groupBoxProjectionCenter
+        // flowLayoutPanel1 -> flowLayoutPanelLatticePlaneOptions
+        // flowLayoutPanel2 -> flowLayoutPanelBoundType
+        // flowLayoutPanel3 -> flowLayoutPanelLatticePlaneOpacity
+        // flowLayoutPanel4 -> flowLayoutPanelGraphicsInfo
+        // flowLayoutPanel5 -> flowLayoutPanelCellEdgeColors
+        // flowLayoutPanel6 -> flowLayoutPanelCellPlaneColors
+        // panel1 -> panelClientSize
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -61,12 +76,12 @@
             label3 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             tabPageBoundPlane = new System.Windows.Forms.TabPage();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelLatticePlaneOptions = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxShowBoundPlanes = new System.Windows.Forms.CheckBox();
             numericBoxBoundPlanesOpacity = new NumericBox();
             checkBoxClipObjects = new System.Windows.Forms.CheckBox();
             checkBoxHideAllAtoms = new System.Windows.Forms.CheckBox();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelBoundType = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonBoundUnitCell = new System.Windows.Forms.RadioButton();
             radioButtonBoundPlane = new System.Windows.Forms.RadioButton();
             tabPageAtom = new System.Windows.Forms.TabPage();
@@ -75,7 +90,7 @@
             tabPageUnitCell = new System.Windows.Forms.TabPage();
             checkBoxUnitCell = new System.Windows.Forms.CheckBox();
             groupBoxShowUnitCell = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelCellPlaneColors = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonCellPlaneColorAll = new System.Windows.Forms.RadioButton();
             colorControlCellPlane = new ColorControl();
             radioButtonCellPlaneColorEach = new System.Windows.Forms.RadioButton();
@@ -83,7 +98,7 @@
             colorControlCellPlaneB = new ColorControl();
             colorControlCellPlaneC = new ColorControl();
             numericBoxCellPlaneAlpha = new NumericBox();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelCellEdgeColors = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonCellEdgeColorAll = new System.Windows.Forms.RadioButton();
             colorControlCellEdge = new ColorControl();
             radioButtonCellEdgeColorEach = new System.Windows.Forms.RadioButton();
@@ -106,17 +121,17 @@
             label16 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
             tabPageLatticePlane = new System.Windows.Forms.TabPage();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelLatticePlaneOpacity = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxLatticePlaneOpacity = new NumericBox();
             tabPageCoordinateInformation = new System.Windows.Forms.TabPage();
             atomCoordinateTable1 = new AtomCoordinateTable();
             tabPageInformation = new System.Windows.Forms.TabPage();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelGraphicsInfo = new System.Windows.Forms.FlowLayoutPanel();
             labelGraphicsCard = new System.Windows.Forms.Label();
             labelGraphicsDriver = new System.Windows.Forms.Label();
             labelOpenGLversion = new System.Windows.Forms.Label();
             tabPageProjection = new System.Windows.Forms.TabPage();
-            groupBox7 = new System.Windows.Forms.GroupBox();
+            groupBoxProjectionCenter = new System.Windows.Forms.GroupBox();
             flowLayoutPanelProjectionCenter = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxProjectionCenterX = new NumericBox();
             numericBoxProjectionCenterY = new NumericBox();
@@ -125,13 +140,13 @@
             radioButtonProjectionCenterCustom = new System.Windows.Forms.RadioButton();
             radioButtonProjectionCenter1 = new System.Windows.Forms.RadioButton();
             radioButtonProjectionCenter2 = new System.Windows.Forms.RadioButton();
-            groupBox1 = new System.Windows.Forms.GroupBox();
+            groupBoxProjection = new System.Windows.Forms.GroupBox();
             comboBoxProjectionMode = new System.Windows.Forms.ComboBox();
             trackBarPerspective = new System.Windows.Forms.TrackBar();
-            groupBox5 = new System.Windows.Forms.GroupBox();
+            groupBoxTransparency = new System.Windows.Forms.GroupBox();
             comboBoxTransparency = new System.Windows.Forms.ComboBox();
             checkBoxDepthFadingOut = new System.Windows.Forms.CheckBox();
-            groupBox3 = new System.Windows.Forms.GroupBox();
+            groupBoxRenderingQuality = new System.Windows.Forms.GroupBox();
             comboBoxRenderingQuality = new System.Windows.Forms.ComboBox();
             groupBoxDepthCueing = new System.Windows.Forms.GroupBox();
             trackBarAdvancedDepthCueingNear = new TrackBarAdvanced();
@@ -139,9 +154,9 @@
             trackBarAdvancedDepthCueingFar = new TrackBarAdvanced();
             label5 = new System.Windows.Forms.Label();
             tabPageMisc = new System.Windows.Forms.TabPage();
-            groupBox6 = new System.Windows.Forms.GroupBox();
+            groupBoxBondedAtoms = new System.Windows.Forms.GroupBox();
             checkBoxShowBondedAtoms = new System.Windows.Forms.CheckBox();
-            groupBox4 = new System.Windows.Forms.GroupBox();
+            groupBoxLabel = new System.Windows.Forms.GroupBox();
             colorControlLabelColor = new ColorControl();
             checkBoxShowLabel = new System.Windows.Forms.CheckBox();
             radioButtonUseMaterialColor = new System.Windows.Forms.RadioButton();
@@ -149,7 +164,7 @@
             numericBoxLabelSize = new NumericBox();
             checkBoxLabelWhiteEdge = new System.Windows.Forms.CheckBox();
             label7 = new System.Windows.Forms.Label();
-            groupBox2 = new System.Windows.Forms.GroupBox();
+            groupBoxAccessoryControls = new System.Windows.Forms.GroupBox();
             checkBoxGroupByElement = new System.Windows.Forms.CheckBox();
             numericBoxLegendSize = new NumericBox();
             numericBoxAxesSize = new NumericBox();
@@ -190,7 +205,7 @@
             printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             tabPageCrystal = new System.Windows.Forms.TabPage();
-            panel1 = new System.Windows.Forms.Panel();
+            panelClientSize = new System.Windows.Forms.Panel();
             timer = new System.Windows.Forms.Timer(components);
             printDialog1 = new System.Windows.Forms.PrintDialog();
             pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
@@ -210,37 +225,37 @@
             tabPageBounds.SuspendLayout();
             tabControlBoundOption.SuspendLayout();
             tabPageBoundUnitcell.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanelLatticePlaneOptions.SuspendLayout();
+            flowLayoutPanelBoundType.SuspendLayout();
             tabPageAtom.SuspendLayout();
             tabPageUnitCell.SuspendLayout();
             groupBoxShowUnitCell.SuspendLayout();
-            flowLayoutPanel6.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanelCellPlaneColors.SuspendLayout();
+            flowLayoutPanelCellEdgeColors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarCellEdgeWidth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellC).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellA).BeginInit();
             tabPageLatticePlane.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanelLatticePlaneOpacity.SuspendLayout();
             tabPageCoordinateInformation.SuspendLayout();
             tabPageInformation.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanelGraphicsInfo.SuspendLayout();
             tabPageProjection.SuspendLayout();
-            groupBox7.SuspendLayout();
+            groupBoxProjectionCenter.SuspendLayout();
             flowLayoutPanelProjectionCenter.SuspendLayout();
-            groupBox1.SuspendLayout();
+            groupBoxProjection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarPerspective).BeginInit();
-            groupBox5.SuspendLayout();
-            groupBox3.SuspendLayout();
+            groupBoxTransparency.SuspendLayout();
+            groupBoxRenderingQuality.SuspendLayout();
             groupBoxDepthCueing.SuspendLayout();
             tabPageMisc.SuspendLayout();
-            groupBox6.SuspendLayout();
-            groupBox4.SuspendLayout();
-            groupBox2.SuspendLayout();
+            groupBoxBondedAtoms.SuspendLayout();
+            groupBoxLabel.SuspendLayout();
+            groupBoxAccessoryControls.SuspendLayout();
             toolStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
-            panel1.SuspendLayout();
+            panelClientSize.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer2
@@ -339,9 +354,10 @@
             // 
             resources.ApplyResources(tabPageBounds, "tabPageBounds");
             tabPageBounds.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageBounds, true);
             tabPageBounds.Controls.Add(tabControlBoundOption);
-            tabPageBounds.Controls.Add(flowLayoutPanel1);
-            tabPageBounds.Controls.Add(flowLayoutPanel2);
+            tabPageBounds.Controls.Add(flowLayoutPanelLatticePlaneOptions);
+            tabPageBounds.Controls.Add(flowLayoutPanelBoundType);
             tabPageBounds.Name = "tabPageBounds";
             toolTip.SetToolTip(tabPageBounds, resources.GetString("tabPageBounds.ToolTip"));
             // 
@@ -593,15 +609,15 @@
             tabPageBoundPlane.Name = "tabPageBoundPlane";
             toolTip.SetToolTip(tabPageBoundPlane, resources.GetString("tabPageBoundPlane.ToolTip"));
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelLatticePlaneOptions
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(checkBoxShowBoundPlanes);
-            flowLayoutPanel1.Controls.Add(numericBoxBoundPlanesOpacity);
-            flowLayoutPanel1.Controls.Add(checkBoxClipObjects);
-            flowLayoutPanel1.Controls.Add(checkBoxHideAllAtoms);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
+            resources.ApplyResources(flowLayoutPanelLatticePlaneOptions, "flowLayoutPanelLatticePlaneOptions");
+            flowLayoutPanelLatticePlaneOptions.Controls.Add(checkBoxShowBoundPlanes);
+            flowLayoutPanelLatticePlaneOptions.Controls.Add(numericBoxBoundPlanesOpacity);
+            flowLayoutPanelLatticePlaneOptions.Controls.Add(checkBoxClipObjects);
+            flowLayoutPanelLatticePlaneOptions.Controls.Add(checkBoxHideAllAtoms);
+            flowLayoutPanelLatticePlaneOptions.Name = "flowLayoutPanelLatticePlaneOptions";
+            toolTip.SetToolTip(flowLayoutPanelLatticePlaneOptions, resources.GetString("flowLayoutPanelLatticePlaneOptions.ToolTip"));
             // 
             // checkBoxShowBoundPlanes
             // 
@@ -646,13 +662,13 @@
             checkBoxHideAllAtoms.UseVisualStyleBackColor = true;
             checkBoxHideAllAtoms.CheckedChanged += checkBoxShowBoundPlanes_CheckedChanged;
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelBoundType
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(radioButtonBoundUnitCell);
-            flowLayoutPanel2.Controls.Add(radioButtonBoundPlane);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            toolTip.SetToolTip(flowLayoutPanel2, resources.GetString("flowLayoutPanel2.ToolTip"));
+            resources.ApplyResources(flowLayoutPanelBoundType, "flowLayoutPanelBoundType");
+            flowLayoutPanelBoundType.Controls.Add(radioButtonBoundUnitCell);
+            flowLayoutPanelBoundType.Controls.Add(radioButtonBoundPlane);
+            flowLayoutPanelBoundType.Name = "flowLayoutPanelBoundType";
+            toolTip.SetToolTip(flowLayoutPanelBoundType, resources.GetString("flowLayoutPanelBoundType.ToolTip"));
             // 
             // radioButtonBoundUnitCell
             // 
@@ -674,6 +690,7 @@
             // tabPageAtom
             // 
             resources.ApplyResources(tabPageAtom, "tabPageAtom");
+            captureExtender.SetCapture(tabPageAtom, true);
             tabPageAtom.Controls.Add(labelMessage);
             tabPageAtom.Name = "tabPageAtom";
             toolTip.SetToolTip(tabPageAtom, resources.GetString("tabPageAtom.ToolTip"));
@@ -688,6 +705,7 @@
             // tabPageBond
             // 
             resources.ApplyResources(tabPageBond, "tabPageBond");
+            captureExtender.SetCapture(tabPageBond, true);
             tabPageBond.Name = "tabPageBond";
             toolTip.SetToolTip(tabPageBond, resources.GetString("tabPageBond.ToolTip"));
             // 
@@ -695,6 +713,7 @@
             // 
             resources.ApplyResources(tabPageUnitCell, "tabPageUnitCell");
             tabPageUnitCell.BackColor = System.Drawing.Color.Transparent;
+            captureExtender.SetCapture(tabPageUnitCell, true);
             tabPageUnitCell.Controls.Add(checkBoxUnitCell);
             tabPageUnitCell.Controls.Add(groupBoxShowUnitCell);
             tabPageUnitCell.Name = "tabPageUnitCell";
@@ -716,8 +735,8 @@
             // 
             resources.ApplyResources(groupBoxShowUnitCell, "groupBoxShowUnitCell");
             groupBoxShowUnitCell.BackColor = System.Drawing.SystemColors.Control;
-            groupBoxShowUnitCell.Controls.Add(flowLayoutPanel6);
-            groupBoxShowUnitCell.Controls.Add(flowLayoutPanel5);
+            groupBoxShowUnitCell.Controls.Add(flowLayoutPanelCellPlaneColors);
+            groupBoxShowUnitCell.Controls.Add(flowLayoutPanelCellEdgeColors);
             groupBoxShowUnitCell.Controls.Add(numericBoxCellTranslationC);
             groupBoxShowUnitCell.Controls.Add(numericBoxCellTranslationB);
             groupBoxShowUnitCell.Controls.Add(numericBoxCellTranslationA);
@@ -735,18 +754,18 @@
             groupBoxShowUnitCell.TabStop = false;
             toolTip.SetToolTip(groupBoxShowUnitCell, resources.GetString("groupBoxShowUnitCell.ToolTip"));
             // 
-            // flowLayoutPanel6
+            // flowLayoutPanelCellPlaneColors
             // 
-            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
-            flowLayoutPanel6.Controls.Add(radioButtonCellPlaneColorAll);
-            flowLayoutPanel6.Controls.Add(colorControlCellPlane);
-            flowLayoutPanel6.Controls.Add(radioButtonCellPlaneColorEach);
-            flowLayoutPanel6.Controls.Add(colorControlCellPlaneA);
-            flowLayoutPanel6.Controls.Add(colorControlCellPlaneB);
-            flowLayoutPanel6.Controls.Add(colorControlCellPlaneC);
-            flowLayoutPanel6.Controls.Add(numericBoxCellPlaneAlpha);
-            flowLayoutPanel6.Name = "flowLayoutPanel6";
-            toolTip.SetToolTip(flowLayoutPanel6, resources.GetString("flowLayoutPanel6.ToolTip"));
+            resources.ApplyResources(flowLayoutPanelCellPlaneColors, "flowLayoutPanelCellPlaneColors");
+            flowLayoutPanelCellPlaneColors.Controls.Add(radioButtonCellPlaneColorAll);
+            flowLayoutPanelCellPlaneColors.Controls.Add(colorControlCellPlane);
+            flowLayoutPanelCellPlaneColors.Controls.Add(radioButtonCellPlaneColorEach);
+            flowLayoutPanelCellPlaneColors.Controls.Add(colorControlCellPlaneA);
+            flowLayoutPanelCellPlaneColors.Controls.Add(colorControlCellPlaneB);
+            flowLayoutPanelCellPlaneColors.Controls.Add(colorControlCellPlaneC);
+            flowLayoutPanelCellPlaneColors.Controls.Add(numericBoxCellPlaneAlpha);
+            flowLayoutPanelCellPlaneColors.Name = "flowLayoutPanelCellPlaneColors";
+            toolTip.SetToolTip(flowLayoutPanelCellPlaneColors, resources.GetString("flowLayoutPanelCellPlaneColors.ToolTip"));
             // 
             // radioButtonCellPlaneColorAll
             // 
@@ -851,19 +870,19 @@
             numericBoxCellPlaneAlpha.Value = 0.3D;
             numericBoxCellPlaneAlpha.ValueChanged += unitCell_PropertyChanged;
             // 
-            // flowLayoutPanel5
+            // flowLayoutPanelCellEdgeColors
             // 
-            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
-            flowLayoutPanel5.Controls.Add(radioButtonCellEdgeColorAll);
-            flowLayoutPanel5.Controls.Add(colorControlCellEdge);
-            flowLayoutPanel5.Controls.Add(radioButtonCellEdgeColorEach);
-            flowLayoutPanel5.Controls.Add(colorControlCellEdgeA);
-            flowLayoutPanel5.Controls.Add(colorControlCellEdgeB);
-            flowLayoutPanel5.Controls.Add(colorControlCellEdgeC);
-            flowLayoutPanel5.Controls.Add(label8);
-            flowLayoutPanel5.Controls.Add(trackBarCellEdgeWidth);
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
-            toolTip.SetToolTip(flowLayoutPanel5, resources.GetString("flowLayoutPanel5.ToolTip"));
+            resources.ApplyResources(flowLayoutPanelCellEdgeColors, "flowLayoutPanelCellEdgeColors");
+            flowLayoutPanelCellEdgeColors.Controls.Add(radioButtonCellEdgeColorAll);
+            flowLayoutPanelCellEdgeColors.Controls.Add(colorControlCellEdge);
+            flowLayoutPanelCellEdgeColors.Controls.Add(radioButtonCellEdgeColorEach);
+            flowLayoutPanelCellEdgeColors.Controls.Add(colorControlCellEdgeA);
+            flowLayoutPanelCellEdgeColors.Controls.Add(colorControlCellEdgeB);
+            flowLayoutPanelCellEdgeColors.Controls.Add(colorControlCellEdgeC);
+            flowLayoutPanelCellEdgeColors.Controls.Add(label8);
+            flowLayoutPanelCellEdgeColors.Controls.Add(trackBarCellEdgeWidth);
+            flowLayoutPanelCellEdgeColors.Name = "flowLayoutPanelCellEdgeColors";
+            toolTip.SetToolTip(flowLayoutPanelCellEdgeColors, resources.GetString("flowLayoutPanelCellEdgeColors.ToolTip"));
             // 
             // radioButtonCellEdgeColorAll
             // 
@@ -1101,16 +1120,17 @@
             // 
             resources.ApplyResources(tabPageLatticePlane, "tabPageLatticePlane");
             tabPageLatticePlane.BackColor = System.Drawing.SystemColors.Control;
-            tabPageLatticePlane.Controls.Add(flowLayoutPanel3);
+            captureExtender.SetCapture(tabPageLatticePlane, true);
+            tabPageLatticePlane.Controls.Add(flowLayoutPanelLatticePlaneOpacity);
             tabPageLatticePlane.Name = "tabPageLatticePlane";
             toolTip.SetToolTip(tabPageLatticePlane, resources.GetString("tabPageLatticePlane.ToolTip"));
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanelLatticePlaneOpacity
             // 
-            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
-            flowLayoutPanel3.Controls.Add(numericBoxLatticePlaneOpacity);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
-            toolTip.SetToolTip(flowLayoutPanel3, resources.GetString("flowLayoutPanel3.ToolTip"));
+            resources.ApplyResources(flowLayoutPanelLatticePlaneOpacity, "flowLayoutPanelLatticePlaneOpacity");
+            flowLayoutPanelLatticePlaneOpacity.Controls.Add(numericBoxLatticePlaneOpacity);
+            flowLayoutPanelLatticePlaneOpacity.Name = "flowLayoutPanelLatticePlaneOpacity";
+            toolTip.SetToolTip(flowLayoutPanelLatticePlaneOpacity, resources.GetString("flowLayoutPanelLatticePlaneOpacity.ToolTip"));
             // 
             // numericBoxLatticePlaneOpacity
             // 
@@ -1131,6 +1151,7 @@
             // tabPageCoordinateInformation
             // 
             resources.ApplyResources(tabPageCoordinateInformation, "tabPageCoordinateInformation");
+            captureExtender.SetCapture(tabPageCoordinateInformation, true);
             tabPageCoordinateInformation.Controls.Add(atomCoordinateTable1);
             tabPageCoordinateInformation.Name = "tabPageCoordinateInformation";
             toolTip.SetToolTip(tabPageCoordinateInformation, resources.GetString("tabPageCoordinateInformation.ToolTip"));
@@ -1138,27 +1159,26 @@
             // atomCoordinateTable1
             // 
             resources.ApplyResources(atomCoordinateTable1, "atomCoordinateTable1");
-            atomCoordinateTable1.Atom = null;
-            atomCoordinateTable1.Crystal = null;
             atomCoordinateTable1.Name = "atomCoordinateTable1";
             toolTip.SetToolTip(atomCoordinateTable1, resources.GetString("atomCoordinateTable1.ToolTip"));
             // 
             // tabPageInformation
             // 
             resources.ApplyResources(tabPageInformation, "tabPageInformation");
+            captureExtender.SetCapture(tabPageInformation, true);
             tabPageInformation.Controls.Add(splitContainer2);
-            tabPageInformation.Controls.Add(flowLayoutPanel4);
+            tabPageInformation.Controls.Add(flowLayoutPanelGraphicsInfo);
             tabPageInformation.Name = "tabPageInformation";
             toolTip.SetToolTip(tabPageInformation, resources.GetString("tabPageInformation.ToolTip"));
             // 
-            // flowLayoutPanel4
+            // flowLayoutPanelGraphicsInfo
             // 
-            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(labelGraphicsCard);
-            flowLayoutPanel4.Controls.Add(labelGraphicsDriver);
-            flowLayoutPanel4.Controls.Add(labelOpenGLversion);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            toolTip.SetToolTip(flowLayoutPanel4, resources.GetString("flowLayoutPanel4.ToolTip"));
+            resources.ApplyResources(flowLayoutPanelGraphicsInfo, "flowLayoutPanelGraphicsInfo");
+            flowLayoutPanelGraphicsInfo.Controls.Add(labelGraphicsCard);
+            flowLayoutPanelGraphicsInfo.Controls.Add(labelGraphicsDriver);
+            flowLayoutPanelGraphicsInfo.Controls.Add(labelOpenGLversion);
+            flowLayoutPanelGraphicsInfo.Name = "flowLayoutPanelGraphicsInfo";
+            toolTip.SetToolTip(flowLayoutPanelGraphicsInfo, resources.GetString("flowLayoutPanelGraphicsInfo.ToolTip"));
             // 
             // labelGraphicsCard
             // 
@@ -1182,26 +1202,27 @@
             // 
             resources.ApplyResources(tabPageProjection, "tabPageProjection");
             tabPageProjection.BackColor = System.Drawing.SystemColors.Control;
-            tabPageProjection.Controls.Add(groupBox7);
-            tabPageProjection.Controls.Add(groupBox1);
-            tabPageProjection.Controls.Add(groupBox5);
+            captureExtender.SetCapture(tabPageProjection, true);
+            tabPageProjection.Controls.Add(groupBoxProjectionCenter);
+            tabPageProjection.Controls.Add(groupBoxProjection);
+            tabPageProjection.Controls.Add(groupBoxTransparency);
             tabPageProjection.Controls.Add(checkBoxDepthFadingOut);
-            tabPageProjection.Controls.Add(groupBox3);
+            tabPageProjection.Controls.Add(groupBoxRenderingQuality);
             tabPageProjection.Controls.Add(groupBoxDepthCueing);
             tabPageProjection.Name = "tabPageProjection";
             toolTip.SetToolTip(tabPageProjection, resources.GetString("tabPageProjection.ToolTip"));
             // 
-            // groupBox7
+            // groupBoxProjectionCenter
             // 
-            resources.ApplyResources(groupBox7, "groupBox7");
-            groupBox7.Controls.Add(flowLayoutPanelProjectionCenter);
-            groupBox7.Controls.Add(label9);
-            groupBox7.Controls.Add(radioButtonProjectionCenterCustom);
-            groupBox7.Controls.Add(radioButtonProjectionCenter1);
-            groupBox7.Controls.Add(radioButtonProjectionCenter2);
-            groupBox7.Name = "groupBox7";
-            groupBox7.TabStop = false;
-            toolTip.SetToolTip(groupBox7, resources.GetString("groupBox7.ToolTip"));
+            resources.ApplyResources(groupBoxProjectionCenter, "groupBoxProjectionCenter");
+            groupBoxProjectionCenter.Controls.Add(flowLayoutPanelProjectionCenter);
+            groupBoxProjectionCenter.Controls.Add(label9);
+            groupBoxProjectionCenter.Controls.Add(radioButtonProjectionCenterCustom);
+            groupBoxProjectionCenter.Controls.Add(radioButtonProjectionCenter1);
+            groupBoxProjectionCenter.Controls.Add(radioButtonProjectionCenter2);
+            groupBoxProjectionCenter.Name = "groupBoxProjectionCenter";
+            groupBoxProjectionCenter.TabStop = false;
+            toolTip.SetToolTip(groupBoxProjectionCenter, resources.GetString("groupBoxProjectionCenter.ToolTip"));
             // 
             // flowLayoutPanelProjectionCenter
             // 
@@ -1298,14 +1319,14 @@
             radioButtonProjectionCenter2.UseVisualStyleBackColor = true;
             radioButtonProjectionCenter2.CheckedChanged += radioButtonScreenCenter1_CheckedChanged;
             // 
-            // groupBox1
+            // groupBoxProjection
             // 
-            resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Controls.Add(comboBoxProjectionMode);
-            groupBox1.Controls.Add(trackBarPerspective);
-            groupBox1.Name = "groupBox1";
-            groupBox1.TabStop = false;
-            toolTip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
+            resources.ApplyResources(groupBoxProjection, "groupBoxProjection");
+            groupBoxProjection.Controls.Add(comboBoxProjectionMode);
+            groupBoxProjection.Controls.Add(trackBarPerspective);
+            groupBoxProjection.Name = "groupBoxProjection";
+            groupBoxProjection.TabStop = false;
+            toolTip.SetToolTip(groupBoxProjection, resources.GetString("groupBoxProjection.ToolTip"));
             // 
             // comboBoxProjectionMode
             // 
@@ -1328,13 +1349,13 @@
             trackBarPerspective.Value = 100;
             trackBarPerspective.Scroll += trackBarPerspective_Scroll;
             // 
-            // groupBox5
+            // groupBoxTransparency
             // 
-            resources.ApplyResources(groupBox5, "groupBox5");
-            groupBox5.Controls.Add(comboBoxTransparency);
-            groupBox5.Name = "groupBox5";
-            groupBox5.TabStop = false;
-            toolTip.SetToolTip(groupBox5, resources.GetString("groupBox5.ToolTip"));
+            resources.ApplyResources(groupBoxTransparency, "groupBoxTransparency");
+            groupBoxTransparency.Controls.Add(comboBoxTransparency);
+            groupBoxTransparency.Name = "groupBoxTransparency";
+            groupBoxTransparency.TabStop = false;
+            toolTip.SetToolTip(groupBoxTransparency, resources.GetString("groupBoxTransparency.ToolTip"));
             // 
             // comboBoxTransparency
             // 
@@ -1357,13 +1378,13 @@
             checkBoxDepthFadingOut.UseVisualStyleBackColor = true;
             checkBoxDepthFadingOut.CheckedChanged += checkBoxDepthCueing_CheckedChanged;
             // 
-            // groupBox3
+            // groupBoxRenderingQuality
             // 
-            resources.ApplyResources(groupBox3, "groupBox3");
-            groupBox3.Controls.Add(comboBoxRenderingQuality);
-            groupBox3.Name = "groupBox3";
-            groupBox3.TabStop = false;
-            toolTip.SetToolTip(groupBox3, resources.GetString("groupBox3.ToolTip"));
+            resources.ApplyResources(groupBoxRenderingQuality, "groupBoxRenderingQuality");
+            groupBoxRenderingQuality.Controls.Add(comboBoxRenderingQuality);
+            groupBoxRenderingQuality.Name = "groupBoxRenderingQuality";
+            groupBoxRenderingQuality.TabStop = false;
+            toolTip.SetToolTip(groupBoxRenderingQuality, resources.GetString("groupBoxRenderingQuality.ToolTip"));
             // 
             // comboBoxRenderingQuality
             // 
@@ -1438,19 +1459,20 @@
             // tabPageMisc
             // 
             resources.ApplyResources(tabPageMisc, "tabPageMisc");
-            tabPageMisc.Controls.Add(groupBox6);
-            tabPageMisc.Controls.Add(groupBox4);
-            tabPageMisc.Controls.Add(groupBox2);
+            captureExtender.SetCapture(tabPageMisc, true);
+            tabPageMisc.Controls.Add(groupBoxBondedAtoms);
+            tabPageMisc.Controls.Add(groupBoxLabel);
+            tabPageMisc.Controls.Add(groupBoxAccessoryControls);
             tabPageMisc.Name = "tabPageMisc";
             toolTip.SetToolTip(tabPageMisc, resources.GetString("tabPageMisc.ToolTip"));
             // 
-            // groupBox6
+            // groupBoxBondedAtoms
             // 
-            resources.ApplyResources(groupBox6, "groupBox6");
-            groupBox6.Controls.Add(checkBoxShowBondedAtoms);
-            groupBox6.Name = "groupBox6";
-            groupBox6.TabStop = false;
-            toolTip.SetToolTip(groupBox6, resources.GetString("groupBox6.ToolTip"));
+            resources.ApplyResources(groupBoxBondedAtoms, "groupBoxBondedAtoms");
+            groupBoxBondedAtoms.Controls.Add(checkBoxShowBondedAtoms);
+            groupBoxBondedAtoms.Name = "groupBoxBondedAtoms";
+            groupBoxBondedAtoms.TabStop = false;
+            toolTip.SetToolTip(groupBoxBondedAtoms, resources.GetString("groupBoxBondedAtoms.ToolTip"));
             // 
             // checkBoxShowBondedAtoms
             // 
@@ -1462,19 +1484,19 @@
             checkBoxShowBondedAtoms.UseVisualStyleBackColor = true;
             checkBoxShowBondedAtoms.CheckedChanged += checkBoxShowBoundPlanes_CheckedChanged;
             // 
-            // groupBox4
+            // groupBoxLabel
             // 
-            resources.ApplyResources(groupBox4, "groupBox4");
-            groupBox4.Controls.Add(colorControlLabelColor);
-            groupBox4.Controls.Add(checkBoxShowLabel);
-            groupBox4.Controls.Add(radioButtonUseMaterialColor);
-            groupBox4.Controls.Add(radioButtonLabelUseFixedColor);
-            groupBox4.Controls.Add(numericBoxLabelSize);
-            groupBox4.Controls.Add(checkBoxLabelWhiteEdge);
-            groupBox4.Controls.Add(label7);
-            groupBox4.Name = "groupBox4";
-            groupBox4.TabStop = false;
-            toolTip.SetToolTip(groupBox4, resources.GetString("groupBox4.ToolTip"));
+            resources.ApplyResources(groupBoxLabel, "groupBoxLabel");
+            groupBoxLabel.Controls.Add(colorControlLabelColor);
+            groupBoxLabel.Controls.Add(checkBoxShowLabel);
+            groupBoxLabel.Controls.Add(radioButtonUseMaterialColor);
+            groupBoxLabel.Controls.Add(radioButtonLabelUseFixedColor);
+            groupBoxLabel.Controls.Add(numericBoxLabelSize);
+            groupBoxLabel.Controls.Add(checkBoxLabelWhiteEdge);
+            groupBoxLabel.Controls.Add(label7);
+            groupBoxLabel.Name = "groupBoxLabel";
+            groupBoxLabel.TabStop = false;
+            toolTip.SetToolTip(groupBoxLabel, resources.GetString("groupBoxLabel.ToolTip"));
             // 
             // colorControlLabelColor
             // 
@@ -1550,16 +1572,16 @@
             label7.Name = "label7";
             toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
             // 
-            // groupBox2
+            // groupBoxAccessoryControls
             // 
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Controls.Add(checkBoxGroupByElement);
-            groupBox2.Controls.Add(numericBoxLegendSize);
-            groupBox2.Controls.Add(numericBoxAxesSize);
-            groupBox2.Controls.Add(numericBoxLightSize);
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
-            toolTip.SetToolTip(groupBox2, resources.GetString("groupBox2.ToolTip"));
+            resources.ApplyResources(groupBoxAccessoryControls, "groupBoxAccessoryControls");
+            groupBoxAccessoryControls.Controls.Add(checkBoxGroupByElement);
+            groupBoxAccessoryControls.Controls.Add(numericBoxLegendSize);
+            groupBoxAccessoryControls.Controls.Add(numericBoxAxesSize);
+            groupBoxAccessoryControls.Controls.Add(numericBoxLightSize);
+            groupBoxAccessoryControls.Name = "groupBoxAccessoryControls";
+            groupBoxAccessoryControls.TabStop = false;
+            toolTip.SetToolTip(groupBoxAccessoryControls, resources.GetString("groupBoxAccessoryControls.ToolTip"));
             // 
             // checkBoxGroupByElement
             // 
@@ -1622,6 +1644,7 @@
             // toolStrip1
             // 
             resources.ApplyResources(toolStrip1, "toolStrip1");
+            captureExtender.SetCapture(toolStrip1, true);
             toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonCrystalAxes, toolStripButtonLightDirection, toolStripButtonLegend, toolStripSeparator3, toolStripLabelStatusInitialization, toolStripLabelStatusRendering, toolStripButtonLikeVesta, toolStripButtonResetRotation });
             toolStrip1.Name = "toolStrip1";
@@ -1698,6 +1721,7 @@
             // menuStrip1
             // 
             resources.ApplyResources(menuStrip1, "menuStrip1");
+            captureExtender.SetCapture(menuStrip1, true);
             menuStrip1.GripMargin = new System.Windows.Forms.Padding(2);
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { saveImageToolStripMenuItem, toolToolStripMenuItem, helpToolStripMenuItem });
@@ -1707,6 +1731,7 @@
             // saveImageToolStripMenuItem
             // 
             resources.ApplyResources(saveImageToolStripMenuItem, "saveImageToolStripMenuItem");
+            captureExtender.SetCapture(saveImageToolStripMenuItem, true);
             saveImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveImageToolStripMenuItem1, copyToClipboardToolStripMenuItem, saveMovieToolStripMenuItem });
             saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
             // 
@@ -1789,6 +1814,7 @@
             // toolToolStripMenuItem
             // 
             resources.ApplyResources(toolToolStripMenuItem, "toolToolStripMenuItem");
+            captureExtender.SetCapture(toolToolStripMenuItem, true);
             toolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { iLikeVESTAToolStripMenuItem });
             toolToolStripMenuItem.Name = "toolToolStripMenuItem";
             // 
@@ -1882,13 +1908,13 @@
             tabPageCrystal.Name = "tabPageCrystal";
             toolTip.SetToolTip(tabPageCrystal, resources.GetString("tabPageCrystal.ToolTip"));
             // 
-            // panel1
+            // panelClientSize
             // 
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Controls.Add(numericBoxClientWidth);
-            panel1.Controls.Add(numericBoxClientHeight);
-            panel1.Name = "panel1";
-            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
+            resources.ApplyResources(panelClientSize, "panelClientSize");
+            panelClientSize.Controls.Add(numericBoxClientWidth);
+            panelClientSize.Controls.Add(numericBoxClientHeight);
+            panelClientSize.Name = "panelClientSize";
+            toolTip.SetToolTip(panelClientSize, resources.GetString("panelClientSize.ToolTip"));
             // 
             // printDialog1
             // 
@@ -1929,7 +1955,7 @@
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(splitContainer1);
-            Controls.Add(panel1);
+            Controls.Add(panelClientSize);
             Controls.Add(menuStrip1);
             Controls.Add(toolStrip1);
             KeyPreview = true;
@@ -1958,55 +1984,55 @@
             tabControlBoundOption.ResumeLayout(false);
             tabPageBoundUnitcell.ResumeLayout(false);
             tabPageBoundUnitcell.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanelLatticePlaneOptions.ResumeLayout(false);
+            flowLayoutPanelLatticePlaneOptions.PerformLayout();
+            flowLayoutPanelBoundType.ResumeLayout(false);
+            flowLayoutPanelBoundType.PerformLayout();
             tabPageAtom.ResumeLayout(false);
             tabPageAtom.PerformLayout();
             tabPageUnitCell.ResumeLayout(false);
             tabPageUnitCell.PerformLayout();
             groupBoxShowUnitCell.ResumeLayout(false);
             groupBoxShowUnitCell.PerformLayout();
-            flowLayoutPanel6.ResumeLayout(false);
-            flowLayoutPanel6.PerformLayout();
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanelCellPlaneColors.ResumeLayout(false);
+            flowLayoutPanelCellPlaneColors.PerformLayout();
+            flowLayoutPanelCellEdgeColors.ResumeLayout(false);
+            flowLayoutPanelCellEdgeColors.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarCellEdgeWidth).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellB).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellC).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellA).EndInit();
             tabPageLatticePlane.ResumeLayout(false);
             tabPageLatticePlane.PerformLayout();
-            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanelLatticePlaneOpacity.ResumeLayout(false);
             tabPageCoordinateInformation.ResumeLayout(false);
             tabPageInformation.ResumeLayout(false);
             tabPageInformation.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanelGraphicsInfo.ResumeLayout(false);
+            flowLayoutPanelGraphicsInfo.PerformLayout();
             tabPageProjection.ResumeLayout(false);
             tabPageProjection.PerformLayout();
-            groupBox7.ResumeLayout(false);
-            groupBox7.PerformLayout();
+            groupBoxProjectionCenter.ResumeLayout(false);
+            groupBoxProjectionCenter.PerformLayout();
             flowLayoutPanelProjectionCenter.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
+            groupBoxProjection.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)trackBarPerspective).EndInit();
-            groupBox5.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
+            groupBoxTransparency.ResumeLayout(false);
+            groupBoxRenderingQuality.ResumeLayout(false);
             groupBoxDepthCueing.ResumeLayout(false);
             groupBoxDepthCueing.PerformLayout();
             tabPageMisc.ResumeLayout(false);
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            groupBoxBondedAtoms.ResumeLayout(false);
+            groupBoxBondedAtoms.PerformLayout();
+            groupBoxLabel.ResumeLayout(false);
+            groupBoxLabel.PerformLayout();
+            groupBoxAccessoryControls.ResumeLayout(false);
+            groupBoxAccessoryControls.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            panel1.ResumeLayout(false);
+            panelClientSize.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2076,12 +2102,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPageBoundPlane;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLatticePlaneOptions;
         private System.Windows.Forms.CheckBox checkBoxShowBoundPlanes;
         private NumericBox numericBoxBoundPlanesOpacity;
         private System.Windows.Forms.CheckBox checkBoxClipObjects;
         private System.Windows.Forms.CheckBox checkBoxHideAllAtoms;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBoundType;
         private System.Windows.Forms.RadioButton radioButtonBoundUnitCell;
         private System.Windows.Forms.RadioButton radioButtonBoundPlane;
         private System.Windows.Forms.TabPage tabPageAtom;
@@ -2090,7 +2116,7 @@
         private System.Windows.Forms.TabPage tabPageUnitCell;
         private System.Windows.Forms.CheckBox checkBoxUnitCell;
         private System.Windows.Forms.GroupBox groupBoxShowUnitCell;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCellPlaneColors;
         private System.Windows.Forms.RadioButton radioButtonCellPlaneColorAll;
         private ColorControl colorControlCellPlane;
         private System.Windows.Forms.RadioButton radioButtonCellPlaneColorEach;
@@ -2098,7 +2124,7 @@
         private ColorControl colorControlCellPlaneB;
         private ColorControl colorControlCellPlaneC;
         private NumericBox numericBoxCellPlaneAlpha;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCellEdgeColors;
         private System.Windows.Forms.RadioButton radioButtonCellEdgeColorAll;
         private ColorControl colorControlCellEdge;
         private System.Windows.Forms.RadioButton radioButtonCellEdgeColorEach;
@@ -2121,7 +2147,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TabPage tabPageLatticePlane;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLatticePlaneOpacity;
         private NumericBox numericBoxLatticePlaneOpacity;
         private System.Windows.Forms.TabPage tabPageCoordinateInformation;
         private AtomCoordinateTable atomCoordinateTable1;
@@ -2129,15 +2155,15 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxCalcInformation;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelClientSize;
         public NumericBox numericBoxClientWidth;
         public NumericBox numericBoxClientHeight;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelGraphicsInfo;
         private System.Windows.Forms.Label labelGraphicsCard;
         private System.Windows.Forms.Label labelGraphicsDriver;
         private System.Windows.Forms.Label labelOpenGLversion;
         private System.Windows.Forms.TabPage tabPageProjection;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBoxProjectionCenter;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelProjectionCenter;
         private NumericBox numericBoxProjectionCenterX;
         private NumericBox numericBoxProjectionCenterY;
@@ -2146,13 +2172,13 @@
         private System.Windows.Forms.RadioButton radioButtonProjectionCenterCustom;
         private System.Windows.Forms.RadioButton radioButtonProjectionCenter1;
         private System.Windows.Forms.RadioButton radioButtonProjectionCenter2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxProjection;
         private System.Windows.Forms.ComboBox comboBoxProjectionMode;
         private System.Windows.Forms.TrackBar trackBarPerspective;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBoxTransparency;
         private System.Windows.Forms.ComboBox comboBoxTransparency;
         private System.Windows.Forms.CheckBox checkBoxDepthFadingOut;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxRenderingQuality;
         private System.Windows.Forms.ComboBox comboBoxRenderingQuality;
         private System.Windows.Forms.GroupBox groupBoxDepthCueing;
         private TrackBarAdvanced trackBarAdvancedDepthCueingNear;
@@ -2160,9 +2186,9 @@
         private TrackBarAdvanced trackBarAdvancedDepthCueingFar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TabPage tabPageMisc;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBoxBondedAtoms;
         private System.Windows.Forms.CheckBox checkBoxShowBondedAtoms;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxLabel;
         private ColorControl colorControlLabelColor;
         private System.Windows.Forms.CheckBox checkBoxShowLabel;
         private System.Windows.Forms.RadioButton radioButtonUseMaterialColor;
@@ -2170,7 +2196,7 @@
         private NumericBox numericBoxLabelSize;
         private System.Windows.Forms.CheckBox checkBoxLabelWhiteEdge;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxAccessoryControls;
         private System.Windows.Forms.CheckBox checkBoxGroupByElement;
         private NumericBox numericBoxLegendSize;
         private NumericBox numericBoxAxesSize;

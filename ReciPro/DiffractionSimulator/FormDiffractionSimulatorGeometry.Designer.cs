@@ -57,8 +57,8 @@
             numericBoxCameraLength2 = new NumericBox();
             numericBoxTau = new NumericBox();
             checkBoxSchematicDiagram = new System.Windows.Forms.CheckBox();
-            panel2 = new System.Windows.Forms.Panel();
-            panel1 = new System.Windows.Forms.Panel();
+            this.panelDetectorAreaAndOverlappedImage = new System.Windows.Forms.Panel();
+            panelDetectorGeometry = new System.Windows.Forms.Panel();
             numericBoxPhi = new NumericBox();
             panelSchematicDiagram = new System.Windows.Forms.Panel();
             pictureBoxSchematicDiagram = new System.Windows.Forms.PictureBox();
@@ -66,8 +66,8 @@
             ((System.ComponentModel.ISupportInitialize)trackBarMaxInt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMinInt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPictureOpacity1).BeginInit();
-            panel2.SuspendLayout();
-            panel1.SuspendLayout();
+            this.panelDetectorAreaAndOverlappedImage.SuspendLayout();
+            panelDetectorGeometry.SuspendLayout();
             panelSchematicDiagram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSchematicDiagram).BeginInit();
             SuspendLayout();
@@ -327,7 +327,6 @@
             numericBoxFootY.Name = "numericBoxFootY";
             numericBoxFootY.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxFootY.RadianValue = 8.9360857702109673D;
-            numericBoxFootY.RoundErrorAccuracy = -1;
             numericBoxFootY.Size = new System.Drawing.Size(123, 27);
             numericBoxFootY.SkipEventDuringInput = false;
             numericBoxFootY.SmartIncrement = true;
@@ -351,7 +350,6 @@
             numericBoxPixelWidth.Name = "numericBoxPixelWidth";
             numericBoxPixelWidth.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxPixelWidth.RadianValue = 17.872171540421935D;
-            numericBoxPixelWidth.RoundErrorAccuracy = -1;
             numericBoxPixelWidth.Size = new System.Drawing.Size(174, 27);
             numericBoxPixelWidth.SkipEventDuringInput = false;
             numericBoxPixelWidth.SmartIncrement = true;
@@ -375,7 +373,6 @@
             numericBoxFootX.Name = "numericBoxFootX";
             numericBoxFootX.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxFootX.RadianValue = 8.9360857702109673D;
-            numericBoxFootX.RoundErrorAccuracy = -1;
             numericBoxFootX.Size = new System.Drawing.Size(123, 27);
             numericBoxFootX.SkipEventDuringInput = false;
             numericBoxFootX.SmartIncrement = true;
@@ -399,7 +396,6 @@
             numericBoxPixelHeight.Name = "numericBoxPixelHeight";
             numericBoxPixelHeight.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxPixelHeight.RadianValue = 17.872171540421935D;
-            numericBoxPixelHeight.RoundErrorAccuracy = -1;
             numericBoxPixelHeight.Size = new System.Drawing.Size(113, 27);
             numericBoxPixelHeight.SkipEventDuringInput = false;
             numericBoxPixelHeight.SmartIncrement = true;
@@ -423,7 +419,6 @@
             numericBoxPixelSize.Name = "numericBoxPixelSize";
             numericBoxPixelSize.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxPixelSize.RadianValue = 0.0017453292519943296D;
-            numericBoxPixelSize.RoundErrorAccuracy = -1;
             numericBoxPixelSize.Size = new System.Drawing.Size(143, 27);
             numericBoxPixelSize.SkipEventDuringInput = false;
             numericBoxPixelSize.SmartIncrement = true;
@@ -461,7 +456,6 @@
             numericBoxCameraLength2.Name = "numericBoxCameraLength2";
             numericBoxCameraLength2.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxCameraLength2.RadianValue = 17.453292519943293D;
-            numericBoxCameraLength2.RoundErrorAccuracy = -1;
             numericBoxCameraLength2.Size = new System.Drawing.Size(220, 27);
             numericBoxCameraLength2.SkipEventDuringInput = false;
             numericBoxCameraLength2.SmartIncrement = true;
@@ -488,7 +482,6 @@
             numericBoxTau.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxTau.Name = "numericBoxTau";
             numericBoxTau.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxTau.RoundErrorAccuracy = -1;
             numericBoxTau.Size = new System.Drawing.Size(87, 27);
             numericBoxTau.SkipEventDuringInput = false;
             numericBoxTau.SmartIncrement = true;
@@ -508,33 +501,35 @@
             checkBoxSchematicDiagram.UseVisualStyleBackColor = true;
             checkBoxSchematicDiagram.CheckedChanged += CheckBoxShowSchematicDiagram_CheckedChanged;
             // 
-            // panel2
+            // panelDetectorAreaAndOverlappedImage
             // 
-            panel2.AutoSize = true;
-            panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            panel2.Controls.Add(checkBoxDetectorSizePosition);
-            panel2.Controls.Add(groupBoxDetectorAndOverlappedImage);
-            panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            panel2.Location = new System.Drawing.Point(0, 657);
-            panel2.Margin = new System.Windows.Forms.Padding(0);
-            panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(1007, 188);
-            panel2.TabIndex = 57;
+            this.panelDetectorAreaAndOverlappedImage.AutoSize = true;
+            this.panelDetectorAreaAndOverlappedImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            captureExtender.SetCapture(this.panelDetectorAreaAndOverlappedImage, true);
+            this.panelDetectorAreaAndOverlappedImage.Controls.Add(checkBoxDetectorSizePosition);
+            this.panelDetectorAreaAndOverlappedImage.Controls.Add(groupBoxDetectorAndOverlappedImage);
+            this.panelDetectorAreaAndOverlappedImage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelDetectorAreaAndOverlappedImage.Location = new System.Drawing.Point(0, 657);
+            this.panelDetectorAreaAndOverlappedImage.Margin = new System.Windows.Forms.Padding(0);
+            this.panelDetectorAreaAndOverlappedImage.Name = "panelDetectorAreaAndOverlappedImage";
+            this.panelDetectorAreaAndOverlappedImage.Size = new System.Drawing.Size(1007, 188);
+            this.panelDetectorAreaAndOverlappedImage.TabIndex = 57;
             // 
-            // panel1
+            // panelDetectorGeometry
             // 
-            panel1.AutoSize = true;
-            panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            panel1.Controls.Add(checkBoxSchematicDiagram);
-            panel1.Controls.Add(numericBoxCameraLength2);
-            panel1.Controls.Add(numericBoxPhi);
-            panel1.Controls.Add(numericBoxTau);
-            panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
-            panel1.Margin = new System.Windows.Forms.Padding(0);
-            panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(1007, 27);
-            panel1.TabIndex = 58;
+            panelDetectorGeometry.AutoSize = true;
+            panelDetectorGeometry.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            captureExtender.SetCapture(panelDetectorGeometry, true);
+            panelDetectorGeometry.Controls.Add(checkBoxSchematicDiagram);
+            panelDetectorGeometry.Controls.Add(numericBoxCameraLength2);
+            panelDetectorGeometry.Controls.Add(numericBoxPhi);
+            panelDetectorGeometry.Controls.Add(numericBoxTau);
+            panelDetectorGeometry.Dock = System.Windows.Forms.DockStyle.Top;
+            panelDetectorGeometry.Location = new System.Drawing.Point(0, 0);
+            panelDetectorGeometry.Margin = new System.Windows.Forms.Padding(0);
+            panelDetectorGeometry.Name = "panelDetectorGeometry";
+            panelDetectorGeometry.Size = new System.Drawing.Size(1007, 27);
+            panelDetectorGeometry.TabIndex = 58;
             // 
             // numericBoxPhi
             // 
@@ -551,7 +546,6 @@
             numericBoxPhi.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxPhi.Name = "numericBoxPhi";
             numericBoxPhi.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxPhi.RoundErrorAccuracy = -1;
             numericBoxPhi.Size = new System.Drawing.Size(87, 27);
             numericBoxPhi.SkipEventDuringInput = false;
             numericBoxPhi.SmartIncrement = true;
@@ -590,14 +584,13 @@
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.SystemColors.Control;
             ClientSize = new System.Drawing.Size(1007, 845);
-            Controls.Add(panel2);
+            Controls.Add(this.panelDetectorAreaAndOverlappedImage);
             Controls.Add(panelSchematicDiagram);
-            Controls.Add(panel1);
+            Controls.Add(panelDetectorGeometry);
             Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             MaximizeBox = false;
-            MinimizeBox = false;
             Name = "FormDiffractionSimulatorGeometry";
             ShowIcon = false;
             Text = "Detector geometry";
@@ -610,10 +603,10 @@
             ((System.ComponentModel.ISupportInitialize)trackBarMaxInt).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMinInt).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPictureOpacity1).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            this.panelDetectorAreaAndOverlappedImage.ResumeLayout(false);
+            this.panelDetectorAreaAndOverlappedImage.PerformLayout();
+            panelDetectorGeometry.ResumeLayout(false);
+            panelDetectorGeometry.PerformLayout();
             panelSchematicDiagram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBoxSchematicDiagram).EndInit();
             ResumeLayout(false);
@@ -650,8 +643,8 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox textBoxFileName;
         private System.Windows.Forms.CheckBox checkBoxSchematicDiagram;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelDetectorAreaAndOverlappedImage;
+        private System.Windows.Forms.Panel panelDetectorGeometry;
         private System.Windows.Forms.PictureBox pictureBoxSchematicDiagram;
         private System.Windows.Forms.Panel panelSchematicDiagram;
         private Crystallography.Controls.NumericBox numericBoxPhi;

@@ -26,26 +26,38 @@
         /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
         /// コード エディタで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox5 -> groupBoxNote
+        // groupBox6 -> groupBoxAuthors
+        // groupBox7 -> groupBoxJournal
+        // groupBox8 -> groupBoxTitle
+        // panel5 -> panelSymmetryInfo
+        // flowLayoutPanel4 -> flowLayoutPanelCellProperties
+        // flowLayoutPanel5 -> flowLayoutPanelSymmetryActions
+        // flowLayoutPanel3 -> flowLayoutPanelRandomOrientationActions
+        // flowLayoutPanel2 -> flowLayoutPanelRandomOrientationSettings
+        // panel1 -> panelFormula
+        // panel4 -> panelNameAndActions
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalControl));
             splitContainer1 = new System.Windows.Forms.SplitContainer();
-            groupBox6 = new System.Windows.Forms.GroupBox();
+            groupBoxAuthors = new System.Windows.Forms.GroupBox();
             textBoxAuthor = new System.Windows.Forms.TextBox();
-            groupBox8 = new System.Windows.Forms.GroupBox();
+            groupBoxTitle = new System.Windows.Forms.GroupBox();
             textBoxTitle = new System.Windows.Forms.TextBox();
             tabControl = new System.Windows.Forms.TabControl();
             tabPageBasicInfo = new System.Windows.Forms.TabPage();
-            panel5 = new System.Windows.Forms.Panel();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            panelSymmetryInfo = new System.Windows.Forms.Panel();
+            flowLayoutPanelCellProperties = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxVolumeAng = new NumericBox();
             numericBoxCellVolumeNm = new NumericBox();
             numericBoxCellMass = new NumericBox();
             numericBoxMolarVolume = new NumericBox();
             numericBoxMolarMass = new NumericBox();
             numericBoxDensity = new NumericBox();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelSymmetryActions = new System.Windows.Forms.FlowLayoutPanel();
             buttonConvertToSubgroup = new System.Windows.Forms.Button();
             buttonChangeAxesOriginSetting = new System.Windows.Forms.Button();
             symmetryControl = new SymmetryControl();
@@ -58,9 +70,9 @@
             tabPageBondsPolyhedra = new System.Windows.Forms.TabPage();
             bondControl = new BondInputControl();
             tabPageReference = new System.Windows.Forms.TabPage();
-            groupBox7 = new System.Windows.Forms.GroupBox();
+            groupBoxJournal = new System.Windows.Forms.GroupBox();
             textBoxJournal = new System.Windows.Forms.TextBox();
-            groupBox5 = new System.Windows.Forms.GroupBox();
+            groupBoxNote = new System.Windows.Forms.GroupBox();
             textBoxMemo = new System.Windows.Forms.TextBox();
             tabPageEOS = new System.Windows.Forms.TabPage();
             eosControl = new EOSControl();
@@ -106,9 +118,9 @@
             asTXTFileAllEulerAngleAndDensityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             poleFigureControl = new PoleFigureControl();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelRandomOrientationActions = new System.Windows.Forms.FlowLayoutPanel();
             buttonGenerateRandomOrientations = new System.Windows.Forms.Button();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelRandomOrientationSettings = new System.Windows.Forms.FlowLayoutPanel();
             label5 = new System.Windows.Forms.Label();
             numericUpDownAngleResolution = new System.Windows.Forms.NumericUpDown();
             label29 = new System.Windows.Forms.Label();
@@ -121,7 +133,7 @@
             tabPageLatticePlane = new System.Windows.Forms.TabPage();
             latticePlaneControl = new LatticePlaneControl();
             colorControl = new ColorControl();
-            panel1 = new System.Windows.Forms.Panel();
+            panelFormula = new System.Windows.Forms.Panel();
             textBoxFormula = new System.Windows.Forms.TextBox();
             label90 = new System.Windows.Forms.Label();
             numericBoxZnumber = new NumericBox();
@@ -145,40 +157,40 @@
             buttonScatteringFactor = new System.Windows.Forms.Button();
             buttonSymmetryInfo = new System.Windows.Forms.Button();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            panel4 = new System.Windows.Forms.Panel();
+            panelNameAndActions = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
-            groupBox6.SuspendLayout();
-            groupBox8.SuspendLayout();
+            groupBoxAuthors.SuspendLayout();
+            groupBoxTitle.SuspendLayout();
             tabControl.SuspendLayout();
             tabPageBasicInfo.SuspendLayout();
-            panel5.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
+            panelSymmetryInfo.SuspendLayout();
+            flowLayoutPanelCellProperties.SuspendLayout();
+            flowLayoutPanelSymmetryActions.SuspendLayout();
             tabPageAtom.SuspendLayout();
             panelAtom.SuspendLayout();
             contextMenuStrip2.SuspendLayout();
             tabPageBondsPolyhedra.SuspendLayout();
             tabPageReference.SuspendLayout();
-            groupBox7.SuspendLayout();
-            groupBox5.SuspendLayout();
+            groupBoxJournal.SuspendLayout();
+            groupBoxNote.SuspendLayout();
             tabPageEOS.SuspendLayout();
             tabPageElasticity.SuspendLayout();
             tabPageStrainStress.SuspendLayout();
             tabPagePolycrystalline.SuspendLayout();
             contextMenuStripPoleFigure.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanelRandomOrientationActions.SuspendLayout();
+            flowLayoutPanelRandomOrientationSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAngleResolution).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAngleSubDivision).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownCrystallineSize).BeginInit();
             tabPageBounds.SuspendLayout();
             tabPageLatticePlane.SuspendLayout();
-            panel1.SuspendLayout();
+            panelFormula.SuspendLayout();
             contextMenuStrip.SuspendLayout();
-            panel4.SuspendLayout();
+            panelNameAndActions.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -188,18 +200,18 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(groupBox6);
+            splitContainer1.Panel1.Controls.Add(groupBoxAuthors);
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(groupBox8);
+            splitContainer1.Panel2.Controls.Add(groupBoxTitle);
             // 
-            // groupBox6
+            // groupBoxAuthors
             // 
-            groupBox6.Controls.Add(textBoxAuthor);
-            resources.ApplyResources(groupBox6, "groupBox6");
-            groupBox6.Name = "groupBox6";
-            groupBox6.TabStop = false;
+            groupBoxAuthors.Controls.Add(textBoxAuthor);
+            resources.ApplyResources(groupBoxAuthors, "groupBoxAuthors");
+            groupBoxAuthors.Name = "groupBoxAuthors";
+            groupBoxAuthors.TabStop = false;
             // 
             // textBoxAuthor
             // 
@@ -207,12 +219,12 @@
             resources.ApplyResources(textBoxAuthor, "textBoxAuthor");
             textBoxAuthor.Name = "textBoxAuthor";
             // 
-            // groupBox8
+            // groupBoxTitle
             // 
-            groupBox8.Controls.Add(textBoxTitle);
-            resources.ApplyResources(groupBox8, "groupBox8");
-            groupBox8.Name = "groupBox8";
-            groupBox8.TabStop = false;
+            groupBoxTitle.Controls.Add(textBoxTitle);
+            resources.ApplyResources(groupBoxTitle, "groupBoxTitle");
+            groupBoxTitle.Name = "groupBoxTitle";
+            groupBoxTitle.TabStop = false;
             // 
             // textBoxTitle
             // 
@@ -243,29 +255,30 @@
             // tabPageBasicInfo
             // 
             tabPageBasicInfo.BackColor = System.Drawing.SystemColors.Control;
-            tabPageBasicInfo.Controls.Add(panel5);
+            captureExtender.SetCapture(tabPageBasicInfo, true);
+            tabPageBasicInfo.Controls.Add(panelSymmetryInfo);
             resources.ApplyResources(tabPageBasicInfo, "tabPageBasicInfo");
             tabPageBasicInfo.Name = "tabPageBasicInfo";
             toolTip.SetToolTip(tabPageBasicInfo, resources.GetString("tabPageBasicInfo.ToolTip"));
             // 
-            // panel5
+            // panelSymmetryInfo
             // 
-            panel5.Controls.Add(flowLayoutPanel4);
-            panel5.Controls.Add(flowLayoutPanel5);
-            panel5.Controls.Add(symmetryControl);
-            resources.ApplyResources(panel5, "panel5");
-            panel5.Name = "panel5";
+            panelSymmetryInfo.Controls.Add(flowLayoutPanelCellProperties);
+            panelSymmetryInfo.Controls.Add(flowLayoutPanelSymmetryActions);
+            panelSymmetryInfo.Controls.Add(symmetryControl);
+            resources.ApplyResources(panelSymmetryInfo, "panelSymmetryInfo");
+            panelSymmetryInfo.Name = "panelSymmetryInfo";
             // 
-            // flowLayoutPanel4
+            // flowLayoutPanelCellProperties
             // 
-            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(numericBoxVolumeAng);
-            flowLayoutPanel4.Controls.Add(numericBoxCellVolumeNm);
-            flowLayoutPanel4.Controls.Add(numericBoxCellMass);
-            flowLayoutPanel4.Controls.Add(numericBoxMolarVolume);
-            flowLayoutPanel4.Controls.Add(numericBoxMolarMass);
-            flowLayoutPanel4.Controls.Add(numericBoxDensity);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            resources.ApplyResources(flowLayoutPanelCellProperties, "flowLayoutPanelCellProperties");
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxVolumeAng);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxCellVolumeNm);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxCellMass);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxMolarVolume);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxMolarMass);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxDensity);
+            flowLayoutPanelCellProperties.Name = "flowLayoutPanelCellProperties";
             // 
             // numericBoxVolumeAng
             // 
@@ -360,12 +373,12 @@
             numericBoxDensity.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
             // 
-            // flowLayoutPanel5
+            // flowLayoutPanelSymmetryActions
             // 
-            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
-            flowLayoutPanel5.Controls.Add(buttonConvertToSubgroup);
-            flowLayoutPanel5.Controls.Add(buttonChangeAxesOriginSetting);
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            resources.ApplyResources(flowLayoutPanelSymmetryActions, "flowLayoutPanelSymmetryActions");
+            flowLayoutPanelSymmetryActions.Controls.Add(buttonConvertToSubgroup);
+            flowLayoutPanelSymmetryActions.Controls.Add(buttonChangeAxesOriginSetting);
+            flowLayoutPanelSymmetryActions.Name = "flowLayoutPanelSymmetryActions";
             // 
             // buttonConvertToSubgroup
             // 
@@ -392,13 +405,13 @@
             symmetryControl.LengthUnit = LengthUnitEnum.Angstrom;
             symmetryControl.Name = "symmetryControl";
             symmetryControl.ShowError = false;
-            symmetryControl.SkipEvent = false;
             symmetryControl.SymmetrySeriesNumber = 0;
             symmetryControl.ItemChanged += symmetryControl_ItemChanged;
             // 
             // tabPageAtom
             // 
             tabPageAtom.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageAtom, true);
             tabPageAtom.Controls.Add(atomControl);
             tabPageAtom.Controls.Add(panelAtom);
             resources.ApplyResources(tabPageAtom, "tabPageAtom");
@@ -428,7 +441,6 @@
             atomControl.AtomSubNoElectron = -1;
             atomControl.AtomSubNoXray = -1;
             resources.ApplyResources(atomControl, "atomControl");
-            atomControl.Crystal = null;
             atomControl.DebyeWallerError = false;
             atomControl.DebyeWallerTabVisible = true;
             atomControl.Diffusion = 0F;
@@ -436,7 +448,6 @@
             atomControl.Emission = 0F;
             atomControl.Iso = 0D;
             atomControl.IsoErr = 0D;
-            atomControl.IsotopicComposition = null;
             atomControl.Label = "";
             atomControl.Name = "atomControl";
             atomControl.Occ = 0D;
@@ -447,7 +458,6 @@
             atomControl.SelectedTabIndex = 0;
             atomControl.Shininess = 0F;
             atomControl.ShowLabel = false;
-            atomControl.SkipEvent = false;
             atomControl.Specular = 0F;
             atomControl.UseIsotropy = false;
             atomControl.UseTypeU = false;
@@ -487,6 +497,7 @@
             // tabPageBondsPolyhedra
             // 
             tabPageBondsPolyhedra.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageBondsPolyhedra, true);
             tabPageBondsPolyhedra.Controls.Add(bondControl);
             resources.ApplyResources(tabPageBondsPolyhedra, "tabPageBondsPolyhedra");
             tabPageBondsPolyhedra.Name = "tabPageBondsPolyhedra";
@@ -494,26 +505,24 @@
             // bondControl
             // 
             resources.ApplyResources(bondControl, "bondControl");
-            bondControl.Crystal = null;
-            bondControl.ElementList = null;
             bondControl.Name = "bondControl";
-            bondControl.SkipEvent = false;
             // 
             // tabPageReference
             // 
             tabPageReference.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageReference, true);
             tabPageReference.Controls.Add(splitContainer1);
-            tabPageReference.Controls.Add(groupBox7);
-            tabPageReference.Controls.Add(groupBox5);
+            tabPageReference.Controls.Add(groupBoxJournal);
+            tabPageReference.Controls.Add(groupBoxNote);
             resources.ApplyResources(tabPageReference, "tabPageReference");
             tabPageReference.Name = "tabPageReference";
             // 
-            // groupBox7
+            // groupBoxJournal
             // 
-            groupBox7.Controls.Add(textBoxJournal);
-            resources.ApplyResources(groupBox7, "groupBox7");
-            groupBox7.Name = "groupBox7";
-            groupBox7.TabStop = false;
+            groupBoxJournal.Controls.Add(textBoxJournal);
+            resources.ApplyResources(groupBoxJournal, "groupBoxJournal");
+            groupBoxJournal.Name = "groupBoxJournal";
+            groupBoxJournal.TabStop = false;
             // 
             // textBoxJournal
             // 
@@ -521,12 +530,12 @@
             resources.ApplyResources(textBoxJournal, "textBoxJournal");
             textBoxJournal.Name = "textBoxJournal";
             // 
-            // groupBox5
+            // groupBoxNote
             // 
-            groupBox5.Controls.Add(textBoxMemo);
-            resources.ApplyResources(groupBox5, "groupBox5");
-            groupBox5.Name = "groupBox5";
-            groupBox5.TabStop = false;
+            groupBoxNote.Controls.Add(textBoxMemo);
+            resources.ApplyResources(groupBoxNote, "groupBoxNote");
+            groupBoxNote.Name = "groupBoxNote";
+            groupBoxNote.TabStop = false;
             // 
             // textBoxMemo
             // 
@@ -536,20 +545,20 @@
             // tabPageEOS
             // 
             tabPageEOS.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageEOS, true);
             tabPageEOS.Controls.Add(eosControl);
             resources.ApplyResources(tabPageEOS, "tabPageEOS");
             tabPageEOS.Name = "tabPageEOS";
             // 
             // eosControl
             // 
-            eosControl.Crystal = null;
             resources.ApplyResources(eosControl, "eosControl");
             eosControl.Name = "eosControl";
-            eosControl.SkipEvent = false;
             // 
             // tabPageElasticity
             // 
             tabPageElasticity.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageElasticity, true);
             tabPageElasticity.Controls.Add(elasticityControl1);
             resources.ApplyResources(tabPageElasticity, "tabPageElasticity");
             tabPageElasticity.Name = "tabPageElasticity";
@@ -565,6 +574,7 @@
             // tabPageStrainStress
             // 
             tabPageStrainStress.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageStrainStress, true);
             tabPageStrainStress.Controls.Add(buttonStressSet);
             tabPageStrainStress.Controls.Add(numericBoxStrain33);
             tabPageStrainStress.Controls.Add(numericBoxHill);
@@ -833,10 +843,11 @@
             // tabPagePolycrystalline
             // 
             tabPagePolycrystalline.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPagePolycrystalline, true);
             tabPagePolycrystalline.ContextMenuStrip = contextMenuStripPoleFigure;
             tabPagePolycrystalline.Controls.Add(poleFigureControl);
-            tabPagePolycrystalline.Controls.Add(flowLayoutPanel3);
-            tabPagePolycrystalline.Controls.Add(flowLayoutPanel2);
+            tabPagePolycrystalline.Controls.Add(flowLayoutPanelRandomOrientationActions);
+            tabPagePolycrystalline.Controls.Add(flowLayoutPanelRandomOrientationSettings);
             resources.ApplyResources(tabPagePolycrystalline, "tabPagePolycrystalline");
             tabPagePolycrystalline.Name = "tabPagePolycrystalline";
             // 
@@ -885,15 +896,14 @@
             // 
             // poleFigureControl
             // 
-            poleFigureControl.Crystal = null;
             resources.ApplyResources(poleFigureControl, "poleFigureControl");
             poleFigureControl.Name = "poleFigureControl";
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanelRandomOrientationActions
             // 
-            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
-            flowLayoutPanel3.Controls.Add(buttonGenerateRandomOrientations);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            resources.ApplyResources(flowLayoutPanelRandomOrientationActions, "flowLayoutPanelRandomOrientationActions");
+            flowLayoutPanelRandomOrientationActions.Controls.Add(buttonGenerateRandomOrientations);
+            flowLayoutPanelRandomOrientationActions.Name = "flowLayoutPanelRandomOrientationActions";
             // 
             // buttonGenerateRandomOrientations
             // 
@@ -902,17 +912,17 @@
             buttonGenerateRandomOrientations.UseVisualStyleBackColor = true;
             buttonGenerateRandomOrientations.Click += buttonGenerateRandomOrientations_Click;
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelRandomOrientationSettings
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(label5);
-            flowLayoutPanel2.Controls.Add(numericUpDownAngleResolution);
-            flowLayoutPanel2.Controls.Add(label29);
-            flowLayoutPanel2.Controls.Add(numericUpDownAngleSubDivision);
-            flowLayoutPanel2.Controls.Add(label101);
-            flowLayoutPanel2.Controls.Add(numericUpDownCrystallineSize);
-            flowLayoutPanel2.Controls.Add(label99);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanelRandomOrientationSettings, "flowLayoutPanelRandomOrientationSettings");
+            flowLayoutPanelRandomOrientationSettings.Controls.Add(label5);
+            flowLayoutPanelRandomOrientationSettings.Controls.Add(numericUpDownAngleResolution);
+            flowLayoutPanelRandomOrientationSettings.Controls.Add(label29);
+            flowLayoutPanelRandomOrientationSettings.Controls.Add(numericUpDownAngleSubDivision);
+            flowLayoutPanelRandomOrientationSettings.Controls.Add(label101);
+            flowLayoutPanelRandomOrientationSettings.Controls.Add(numericUpDownCrystallineSize);
+            flowLayoutPanelRandomOrientationSettings.Controls.Add(label99);
+            flowLayoutPanelRandomOrientationSettings.Name = "flowLayoutPanelRandomOrientationSettings";
             // 
             // label5
             // 
@@ -966,16 +976,15 @@
             // 
             // tabPageBounds
             // 
+            captureExtender.SetCapture(tabPageBounds, true);
             tabPageBounds.Controls.Add(boundControl);
             resources.ApplyResources(tabPageBounds, "tabPageBounds");
             tabPageBounds.Name = "tabPageBounds";
             // 
             // boundControl
             // 
-            boundControl.Crystal = null;
             resources.ApplyResources(boundControl, "boundControl");
             boundControl.Name = "boundControl";
-            boundControl.SkipEvent = false;
             // 
             // tabPageLatticePlane
             // 
@@ -985,10 +994,9 @@
             // 
             // latticePlaneControl
             // 
-            latticePlaneControl.Crystal = null;
+            captureExtender.SetCapture(latticePlaneControl, true);
             resources.ApplyResources(latticePlaneControl, "latticePlaneControl");
             latticePlaneControl.Name = "latticePlaneControl";
-            latticePlaneControl.SkipEvent = false;
             // 
             // colorControl
             // 
@@ -1006,14 +1014,14 @@
             colorControl.RedF = 0.9411765F;
             toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip1"));
             // 
-            // panel1
+            // panelFormula
             // 
-            panel1.Controls.Add(textBoxFormula);
-            panel1.Controls.Add(label90);
-            panel1.Controls.Add(numericBoxZnumber);
-            panel1.Controls.Add(colorControl);
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Name = "panel1";
+            panelFormula.Controls.Add(textBoxFormula);
+            panelFormula.Controls.Add(label90);
+            panelFormula.Controls.Add(numericBoxZnumber);
+            panelFormula.Controls.Add(colorControl);
+            resources.ApplyResources(panelFormula, "panelFormula");
+            panelFormula.Name = "panelFormula";
             // 
             // textBoxFormula
             // 
@@ -1160,24 +1168,25 @@
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
-            // panel4
+            // panelNameAndActions
             // 
-            panel4.Controls.Add(textBoxName);
-            panel4.Controls.Add(buttonSymmetryInfo);
-            panel4.Controls.Add(buttonScatteringFactor);
-            panel4.Controls.Add(label22);
-            resources.ApplyResources(panel4, "panel4");
-            panel4.Name = "panel4";
+            panelNameAndActions.Controls.Add(textBoxName);
+            panelNameAndActions.Controls.Add(buttonSymmetryInfo);
+            panelNameAndActions.Controls.Add(buttonScatteringFactor);
+            panelNameAndActions.Controls.Add(label22);
+            resources.ApplyResources(panelNameAndActions, "panelNameAndActions");
+            panelNameAndActions.Name = "panelNameAndActions";
             // 
             // CrystalControl
             // 
             AllowDrop = true;
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            captureExtender.SetCapture(this, true);
             ContextMenuStrip = contextMenuStrip;
             Controls.Add(tabControl);
-            Controls.Add(panel1);
-            Controls.Add(panel4);
+            Controls.Add(panelFormula);
+            Controls.Add(panelNameAndActions);
             Controls.Add(flowLayoutPanel1);
             DoubleBuffered = true;
             Name = "CrystalControl";
@@ -1190,17 +1199,17 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
-            groupBox8.ResumeLayout(false);
-            groupBox8.PerformLayout();
+            groupBoxAuthors.ResumeLayout(false);
+            groupBoxAuthors.PerformLayout();
+            groupBoxTitle.ResumeLayout(false);
+            groupBoxTitle.PerformLayout();
             tabControl.ResumeLayout(false);
             tabPageBasicInfo.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
+            panelSymmetryInfo.ResumeLayout(false);
+            panelSymmetryInfo.PerformLayout();
+            flowLayoutPanelCellProperties.ResumeLayout(false);
+            flowLayoutPanelSymmetryActions.ResumeLayout(false);
+            flowLayoutPanelSymmetryActions.PerformLayout();
             tabPageAtom.ResumeLayout(false);
             tabPageAtom.PerformLayout();
             panelAtom.ResumeLayout(false);
@@ -1209,10 +1218,10 @@
             tabPageBondsPolyhedra.ResumeLayout(false);
             tabPageBondsPolyhedra.PerformLayout();
             tabPageReference.ResumeLayout(false);
-            groupBox7.ResumeLayout(false);
-            groupBox7.PerformLayout();
-            groupBox5.ResumeLayout(false);
-            groupBox5.PerformLayout();
+            groupBoxJournal.ResumeLayout(false);
+            groupBoxJournal.PerformLayout();
+            groupBoxNote.ResumeLayout(false);
+            groupBoxNote.PerformLayout();
             tabPageEOS.ResumeLayout(false);
             tabPageElasticity.ResumeLayout(false);
             tabPageElasticity.PerformLayout();
@@ -1221,20 +1230,20 @@
             tabPagePolycrystalline.ResumeLayout(false);
             tabPagePolycrystalline.PerformLayout();
             contextMenuStripPoleFigure.ResumeLayout(false);
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanelRandomOrientationActions.ResumeLayout(false);
+            flowLayoutPanelRandomOrientationActions.PerformLayout();
+            flowLayoutPanelRandomOrientationSettings.ResumeLayout(false);
+            flowLayoutPanelRandomOrientationSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAngleResolution).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAngleSubDivision).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownCrystallineSize).EndInit();
             tabPageBounds.ResumeLayout(false);
             tabPageLatticePlane.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelFormula.ResumeLayout(false);
+            panelFormula.PerformLayout();
             contextMenuStrip.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            panelNameAndActions.ResumeLayout(false);
+            panelNameAndActions.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1309,16 +1318,16 @@
         private System.Windows.Forms.Label label117;
         private System.Windows.Forms.Button buttonGenerateRandomOrientations;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Panel panelNameAndActions;
+        private System.Windows.Forms.GroupBox groupBoxTitle;
+        private System.Windows.Forms.GroupBox groupBoxAuthors;
+        private System.Windows.Forms.GroupBox groupBoxJournal;
+        private System.Windows.Forms.GroupBox groupBoxNote;
         private System.Windows.Forms.NumericUpDown numericUpDownAngleSubDivision;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Panel panelSymmetryInfo;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRandomOrientationActions;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRandomOrientationSettings;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripPoleFigure;
         private System.Windows.Forms.ToolStripMenuItem readToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
@@ -1336,11 +1345,11 @@
         private System.Windows.Forms.TabPage tabPageLatticePlane;
         public LatticePlaneControl latticePlaneControl;
         public BoundControl boundControl;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCellProperties;
         private NumericBox numericBoxZnumber;
         private NumericBox numericBoxDensity;
         public SymmetryControl symmetryControl;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelFormula;
         private NumericBox numericBoxMolarVolume;
         private NumericBox numericBoxCellMass;
         private NumericBox numericBoxMolarMass;
@@ -1352,7 +1361,7 @@
         private System.Windows.Forms.ToolStripMenuItem convertToSuperstructureToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem convertToAnotherSpacegroupToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSymmetryActions;
         private System.Windows.Forms.Button buttonConvertToSubgroup;
         private System.Windows.Forms.Button buttonChangeAxesOriginSetting;
         private NumericBox numericBoxCellVolumeNm;

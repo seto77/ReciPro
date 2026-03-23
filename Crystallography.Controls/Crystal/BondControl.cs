@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class BondInputControl : UserControl
+public partial class BondInputControl : CaptureUserControlBase
 {
     #region プロパティ, フィールド、イベントハンドラ
 
@@ -283,3 +283,4 @@ public partial class BondInputControl : UserControl
 
 
 }
+

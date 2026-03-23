@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [System.Runtime.InteropServices.Guid("99E21F3C-6FF6-4084-9097-A88566830F29")]
-public partial class BoundControl : UserControl
+public partial class BoundControl : CaptureUserControlBase
 {
     #region プロパティ
     [System.ComponentModel.Browsable(false)]
@@ -305,3 +305,4 @@ public partial class BoundControl : UserControl
 
 
 }
+

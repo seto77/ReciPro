@@ -2,7 +2,7 @@
 
 namespace Crystallography.Controls
 {
-    public partial class FormPDF : Form
+    public partial class FormPDF : CaptureFormBase
     {
         public FormPDF()
         {
@@ -20,3 +20,4 @@ namespace Crystallography.Controls
 
     }
 }
+

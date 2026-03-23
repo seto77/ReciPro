@@ -14,7 +14,7 @@ using V3 = OpenTK.Mathematics.Vector3d;
 #endregion
 namespace ReciPro;
 
-public partial class FormStereonet : Form
+public partial class FormStereonet : CaptureFormBase
 {
     #region フィールド、プロパティ
     public FormMain formMain;
@@ -1543,3 +1543,4 @@ public partial class FormStereonet : Form
    
    
 }
+
