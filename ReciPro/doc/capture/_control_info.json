@@ -5,8 +5,8 @@
     "text": "Trajectory Calculation by Monte Carlo Method",
     "image": "FormTrajectory.png",
     "bounds": {
-      "x": 452,
-      "y": 287,
+      "x": 3532,
+      "y": 311,
       "w": 1290,
       "h": 719
     }
@@ -26,7 +26,7 @@
   {
     "path": "FormTrajectory.groupBox6.labelBSEenergy",
     "type": "Label",
-    "text": "12.33 kev",
+    "text": "11.75 kev",
     "image": "FormTrajectory.groupBox6.labelBSEenergy.png",
     "bounds": {
       "x": 183,
@@ -38,7 +38,7 @@
   {
     "path": "FormTrajectory.groupBox6.labelStoppingPower",
     "type": "Label",
-    "text": "-2.26 ev/nm @ 20 kev",
+    "text": "-3.94 ev/nm @ 20 kev",
     "image": "FormTrajectory.groupBox6.labelStoppingPower.png",
     "bounds": {
       "x": 180,
@@ -50,7 +50,7 @@
   {
     "path": "FormTrajectory.groupBox6.labelCrossSection",
     "type": "Label",
-    "text": "0.000839 nm\u00B2 @ 20 kev",
+    "text": "0.000582 nm\u00B2 @ 20 kev",
     "image": "FormTrajectory.groupBox6.labelCrossSection.png",
     "bounds": {
       "x": 186,
@@ -62,7 +62,7 @@
   {
     "path": "FormTrajectory.groupBox6.labelMeanFreePath",
     "type": "Label",
-    "text": "24.04 nm @ 20 kev",
+    "text": "16.15 nm @ 20 kev",
     "image": "FormTrajectory.groupBox6.labelMeanFreePath.png",
     "bounds": {
       "x": 185,
@@ -74,7 +74,7 @@
   {
     "path": "FormTrajectory.groupBox6.labelBSEratio",
     "type": "Label",
-    "text": "17.14 %",
+    "text": "12.01 %",
     "image": "FormTrajectory.groupBox6.labelBSEratio.png",
     "bounds": {
       "x": 226,
@@ -290,7 +290,7 @@
   {
     "path": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMax.textBox",
     "type": "TextBox",
-    "text": "14,830",
+    "text": "10,530",
     "image": "FormTrajectory.groupBox5.poleFigureControl.flowLayoutPanel1.numericBoxMax.textBox.png",
     "bounds": {
       "x": 30,
@@ -475,7 +475,7 @@
     "bounds": {
       "x": 9,
       "y": 3,
-      "w": 170,
+      "w": 160,
       "h": 21
     }
   },
@@ -492,12 +492,24 @@
     }
   },
   {
+    "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue",
+    "type": "Label",
+    "text": "000",
+    "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue.png",
+    "bounds": {
+      "x": 38,
+      "y": 0,
+      "w": 24,
+      "h": 21
+    }
+  },
+  {
     "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelY",
     "type": "Label",
     "text": "freq.: ",
     "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelY.png",
     "bounds": {
-      "x": 79,
+      "x": 92,
       "y": 0,
       "w": 35,
       "h": 21
@@ -506,12 +518,12 @@
   {
     "path": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue",
     "type": "Label",
-    "text": "0.00864",
+    "text": "000",
     "image": "FormTrajectory.flowLayoutPanel2.groupBox1.graphControlEnergyProfile.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue.png",
     "bounds": {
-      "x": 120,
+      "x": 133,
       "y": 0,
-      "w": 47,
+      "w": 24,
       "h": 21
     }
   },
@@ -583,7 +595,7 @@
     "bounds": {
       "x": 9,
       "y": 3,
-      "w": 203,
+      "w": 156,
       "h": 21
     }
   },
@@ -602,12 +614,12 @@
   {
     "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue",
     "type": "Label",
-    "text": "2.69e\u002B03",
+    "text": "000",
     "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelXValue.png",
     "bounds": {
       "x": 37,
       "y": 0,
-      "w": 55,
+      "w": 24,
       "h": 21
     }
   },
@@ -617,7 +629,7 @@
     "text": "freq.:",
     "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelY.png",
     "bounds": {
-      "x": 122,
+      "x": 91,
       "y": 0,
       "w": 32,
       "h": 21
@@ -626,12 +638,12 @@
   {
     "path": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue",
     "type": "Label",
-    "text": "0.0417",
+    "text": "000",
     "image": "FormTrajectory.flowLayoutPanel2.groupBox4.graphControlDistance.flowLayoutPanel.flowLayoutPanelMousePosition.labelYValue.png",
     "bounds": {
-      "x": 160,
+      "x": 129,
       "y": 0,
-      "w": 40,
+      "w": 24,
       "h": 21
     }
   },
@@ -896,7 +908,7 @@
       "x": 125,
       "y": 0,
       "w": 56,
-      "h": 23
+      "h": 25
     }
   },
   {
@@ -1200,10 +1212,10 @@
     }
   },
   {
-    "path": "FormTrajectory.paneltTrajectory.glControlAxes.glControl8",
+    "path": "FormTrajectory.paneltTrajectory.glControlAxes.glControl15",
     "type": "GLControl",
-    "text": "glControl8",
-    "image": "FormTrajectory.paneltTrajectory.glControlAxes.glControl8.png",
+    "text": "glControl15",
+    "image": "FormTrajectory.paneltTrajectory.glControlAxes.glControl15.png",
     "bounds": {
       "x": 0,
       "y": 0,

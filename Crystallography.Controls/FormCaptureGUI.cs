@@ -89,7 +89,21 @@ public partial class FormCaptureGUI : Form
     protected override void OnShown(EventArgs e)
     {
         base.OnShown(e);
+        textBoxOutputDir.Text = GetDefaultOutputDir(); // 260323Cl
         BuildTree();
+    }
+
+    /// <summary>260323Cl 追加: Select... ボタン</summary>
+    private void buttonSelectDir_Click(object sender, EventArgs e)
+    {
+        using var dialog = new FolderBrowserDialog
+        {
+            Description = "Select output folder for GUI capture",
+            SelectedPath = textBoxOutputDir.Text,
+            UseDescriptionForTitle = true
+        };
+        if (dialog.ShowDialog() == DialogResult.OK)
+            textBoxOutputDir.Text = dialog.SelectedPath;
     }
 
     /// <summary>対象フォームのコントロールツリーを構築</summary>
@@ -242,16 +256,12 @@ public partial class FormCaptureGUI : Form
     /// <summary>Capture ボタン</summary>
     private void buttonCapture_Click(object sender, EventArgs e)
     {
-        var defaultDir = GetDefaultOutputDir();
-        using var dialog = new FolderBrowserDialog
+        var outputDir = textBoxOutputDir.Text; // 260323Cl
+        if (string.IsNullOrWhiteSpace(outputDir))
         {
-            Description = "Select output folder for GUI capture",
-            SelectedPath = defaultDir,
-            UseDescriptionForTitle = true
-        };
-        if (dialog.ShowDialog() != DialogResult.OK) return;
-
-        var outputDir = dialog.SelectedPath;
+            MessageBox.Show("Please select an output folder.", "Capture", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
         var checkedNodes = new List<TreeNode>();
         CollectCheckedNodes(treeViewControls.Nodes, checkedNodes);
 
@@ -269,6 +279,7 @@ public partial class FormCaptureGUI : Form
 
         var capturedInfoList = new List<Dictionary<string, object>>();
         int successCount = 0;
+        Form lastFrontForm = null; // 260323Cl: フォームが変わったときだけ BringToFront
 
         foreach (var node in checkedNodes)
         {
@@ -276,9 +287,15 @@ public partial class FormCaptureGUI : Form
             var control = info.Control;
             var path = info.Path;
 
-            // 260323Cl: CopyFromScreen のため対象フォームを前面に出す
-            control.FindForm()?.BringToFront();
-            Application.DoEvents();
+            // 260323Cl: CopyFromScreen のため対象フォームを前面に出す (フォームが変わったときだけ1秒待機)
+            var ownerForm = control.FindForm();
+            if (ownerForm != null && ownerForm != lastFrontForm)
+            {
+                ownerForm.BringToFront();
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(1000);
+                lastFrontForm = ownerForm;
+            }
 
             try
             {
@@ -321,10 +338,14 @@ public partial class FormCaptureGUI : Form
 
         // 260323Cl: CopyFromScreen で画面上の実際の表示をキャプチャする
         // DrawToBitmap (WM_PRINT) ではタブヘッダー等が正しく描画されず、GPU描画も取得できないため
+        // PointToScreen(Point.Empty) はクライアント領域原点を返すため、ボーダーやタイトルバー分ずれる。
+        // Form は Bounds.Location、それ以外は Parent.PointToScreen(Location) でコントロールの実際の左上を取得する。
+        var screenPos = control is Form ? control.Bounds.Location
+                      : control.Parent != null ? control.Parent.PointToScreen(control.Location)
+                      : control.PointToScreen(System.Drawing.Point.Empty);
         var bmp = new Bitmap(control.Width, control.Height);
         using (var g = Graphics.FromImage(bmp))
         {
-            var screenPos = control.PointToScreen(System.Drawing.Point.Empty);
             g.CopyFromScreen(screenPos, System.Drawing.Point.Empty, control.Size);
         }
 

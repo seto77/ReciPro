@@ -22,6 +22,8 @@ partial class FormCaptureGUI
         buttonRefresh = new System.Windows.Forms.Button();
         progressBar = new System.Windows.Forms.ProgressBar();
         labelStatus = new System.Windows.Forms.Label();
+        textBoxOutputDir = new System.Windows.Forms.TextBox();
+        buttonSelectDir = new System.Windows.Forms.Button();
         panelTop = new System.Windows.Forms.Panel();
         panelBottom = new System.Windows.Forms.Panel();
         panelTop.SuspendLayout();
@@ -81,37 +83,58 @@ partial class FormCaptureGUI
         panelBottom.Controls.Add(labelStatus);
         panelBottom.Controls.Add(progressBar);
         panelBottom.Controls.Add(buttonCapture);
+        panelBottom.Controls.Add(textBoxOutputDir);
+        panelBottom.Controls.Add(buttonSelectDir);
         panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-        panelBottom.Location = new System.Drawing.Point(0, 476);
+        panelBottom.Location = new System.Drawing.Point(0, 446);
         panelBottom.Name = "panelBottom";
-        panelBottom.Size = new System.Drawing.Size(500, 60);
+        panelBottom.Size = new System.Drawing.Size(500, 90);
         panelBottom.TabIndex = 2;
+        //
+        // textBoxOutputDir (260323Cl 追加)
+        //
+        textBoxOutputDir.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+        textBoxOutputDir.Location = new System.Drawing.Point(6, 6);
+        textBoxOutputDir.Name = "textBoxOutputDir";
+        textBoxOutputDir.Size = new System.Drawing.Size(406, 23);
+        textBoxOutputDir.TabIndex = 0;
+        textBoxOutputDir.ReadOnly = true;
+        //
+        // buttonSelectDir (260323Cl 追加)
+        //
+        buttonSelectDir.Anchor = System.Windows.Forms.AnchorStyles.Right;
+        buttonSelectDir.Location = new System.Drawing.Point(418, 5);
+        buttonSelectDir.Name = "buttonSelectDir";
+        buttonSelectDir.Size = new System.Drawing.Size(75, 25);
+        buttonSelectDir.TabIndex = 1;
+        buttonSelectDir.Text = "Select...";
+        buttonSelectDir.Click += buttonSelectDir_Click;
         //
         // buttonCapture
         //
         buttonCapture.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-        buttonCapture.Location = new System.Drawing.Point(6, 6);
+        buttonCapture.Location = new System.Drawing.Point(6, 35);
         buttonCapture.Name = "buttonCapture";
         buttonCapture.Size = new System.Drawing.Size(120, 30);
-        buttonCapture.TabIndex = 0;
+        buttonCapture.TabIndex = 2;
         buttonCapture.Text = "Capture";
         buttonCapture.Click += buttonCapture_Click;
         //
         // progressBar
         //
         progressBar.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-        progressBar.Location = new System.Drawing.Point(132, 6);
+        progressBar.Location = new System.Drawing.Point(132, 36);
         progressBar.Name = "progressBar";
         progressBar.Size = new System.Drawing.Size(362, 18);
-        progressBar.TabIndex = 1;
+        progressBar.TabIndex = 3;
         //
         // labelStatus
         //
         labelStatus.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-        labelStatus.Location = new System.Drawing.Point(132, 28);
+        labelStatus.Location = new System.Drawing.Point(132, 58);
         labelStatus.Name = "labelStatus";
         labelStatus.Size = new System.Drawing.Size(362, 20);
-        labelStatus.TabIndex = 2;
+        labelStatus.TabIndex = 4;
         labelStatus.Text = "Ready";
         //
         // FormCaptureGUI
@@ -139,6 +162,8 @@ partial class FormCaptureGUI
     private System.Windows.Forms.Button buttonRefresh;
     private System.Windows.Forms.ProgressBar progressBar;
     private System.Windows.Forms.Label labelStatus;
+    private System.Windows.Forms.TextBox textBoxOutputDir;
+    private System.Windows.Forms.Button buttonSelectDir;
     private System.Windows.Forms.Panel panelTop;
     private System.Windows.Forms.Panel panelBottom;
 }
