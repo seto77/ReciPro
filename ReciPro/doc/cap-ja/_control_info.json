@@ -1,0 +1,62 @@
+[
+  {
+    "path": "FormSpotIDV2",
+    "type": "FormSpotIDV2",
+    "text": "Spot ID v2",
+    "image": "FormSpotIDV2.png",
+    "bounds": {
+      "x": 706,
+      "y": 209,
+      "w": 1398,
+      "h": 866
+    }
+  },
+  {
+    "path": "FormSpotIDV2.splitContainer1.groupBoxSpot",
+    "type": "GroupBox",
+    "text": "Spot",
+    "image": "FormSpotIDV2.splitContainer1.groupBoxSpot.png",
+    "bounds": {
+      "x": 3,
+      "y": 104,
+      "w": 760,
+      "h": 480
+    }
+  },
+  {
+    "path": "FormSpotIDV2.splitContainer1.groupBoxIndex",
+    "type": "GroupBox",
+    "text": "Index",
+    "image": "FormSpotIDV2.splitContainer1.groupBoxIndex.png",
+    "bounds": {
+      "x": 7,
+      "y": 590,
+      "w": 756,
+      "h": 185
+    }
+  },
+  {
+    "path": "FormSpotIDV2.splitContainer1.groupBoxOptics",
+    "type": "GroupBox",
+    "text": "Optics",
+    "image": "FormSpotIDV2.splitContainer1.groupBoxOptics.png",
+    "bounds": {
+      "x": 196,
+      "y": 0,
+      "w": 567,
+      "h": 102
+    }
+  },
+  {
+    "path": "FormSpotIDV2.menuStrip.fileToolStripMenuItem",
+    "type": "ToolStripMenuItem",
+    "text": "File",
+    "image": "FormSpotIDV2.menuStrip.fileToolStripMenuItem.png",
+    "bounds": {
+      "x": 720,
+      "y": 261,
+      "w": 102,
+      "h": 70
+    }
+  }
+]
