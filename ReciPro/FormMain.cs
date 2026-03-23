@@ -272,6 +272,8 @@ public partial class FormMain : Form
     {
         if (DesignMode) return;
 
+        Crystallography.Controls.FormCaptureGUI.InstallShortcutFilter(); // 260323Cl 追加: Ctrl+Shift+Alt+C ショートカット
+
         englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
         japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
 
@@ -1000,6 +1002,12 @@ public partial class FormMain : Form
     {
         toolStripButtonDiffractionPoly.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
         toolStripSeparator19.Visible = powderDiffractionFunctionToolStripMenuItem.Checked;
+    }
+
+    // 260323Cl 追加
+    private void captureGUIToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        new Crystallography.Controls.FormCaptureGUI().Show();
     }
     private void FormTEMID_VisibleChanged(object sender, EventArgs e)
     {

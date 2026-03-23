@@ -1782,7 +1782,8 @@
             comboBoxMasterPattern2DHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxMasterPattern2DHemisphere.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             comboBoxMasterPattern2DHemisphere.FormattingEnabled = true;
-            comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { "+Z hemisphere", "-Z hemisphere" });
+            // comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { "+Z hemisphere", "-Z hemisphere" }); // (260322Ch) 旧表示
+            comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { "+Z", "-Z" }); // (260322Ch) Hemisphere コンボボックスは簡潔な表記へそろえる
             comboBoxMasterPattern2DHemisphere.Location = new System.Drawing.Point(154, 24);
             comboBoxMasterPattern2DHemisphere.Margin = new System.Windows.Forms.Padding(0, 2, 8, 0);
             comboBoxMasterPattern2DHemisphere.Name = "comboBoxMasterPattern2DHemisphere";

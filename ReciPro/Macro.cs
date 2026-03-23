@@ -82,20 +82,20 @@ public class Macro : MacroBase
         }
 
         [Help("Get a file name by a selection dialog. The returned string is a full path of the selected file.")]
-        public string GetFileName() => Execute(() => getFileName());
-        private static string getFileName()
+        // public string GetFileName() => Execute(() => getFileName()); // (260322Ch) 旧実装: 1 回しか使わない短い helper を経由していた
+        public string GetFileName() => Execute<string>(new Func<string>(() =>
         {
             var dlg = new OpenFileDialog();
             return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : "";
-        }
+        })); // (260322Ch) OpenFileDialog の取得処理をその場でインライン化
 
         [Help("Get file names by a selection dialog. Multiple selections are possible. The returned value is a string array, each of which is a full path of selected files.")]
-        public string[] GetFileNames() => Execute<string[]>(new Func<string[]>(() => getFileNames()));
-        private static string[] getFileNames()
+        // public string[] GetFileNames() => Execute<string[]>(new Func<string[]>(() => getFileNames())); // (260322Ch) 旧実装
+        public string[] GetFileNames() => Execute<string[]>(new Func<string[]>(() =>
         {
             var dlg = new OpenFileDialog() { Multiselect = true };
             return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : [];
-        }
+        })); // (260322Ch) 複数選択の file dialog 取得処理をその場でインライン化
 
         [Help("Read a crystal list file (xml format).", "string filename")]
         public void ReadCrystalList(string filename = "") => Execute(() => main.ReadCrystalList(filename, false, false));

@@ -347,14 +347,20 @@ public partial class FormRotationMatrix : Form
         var dirReciPro = new[] { new V3(0, 0, 1), new V3(1, 0, 0), new V3(0, 0, 1) };
         var angleReciPro = new[] { FormMain.Phi, FormMain.Theta, FormMain.Psi };
         setGonio(glControlReciProGonio, dirReciPro, angleReciPro);
-        setObject(glControlReciProObjects, dirReciPro, angleReciPro);
+        // setObject(glControlReciProObjects, dirReciPro, angleReciPro); // (260322Ch) 旧実装: 2 回しか使わない短い helper を経由していた
+        glControlReciProObjects.DeleteAllObjects();
+        glControlReciProObjects.AddObjects(createObject(glControlReciProObjects, dirReciPro, angleReciPro));
+        glControlReciProObjects.Refresh(); // (260322Ch) 短い helper は介さずその場で処理する
         setAxes(glControlReciProAxes);
 
         //Experimetal coordinatesの描画
         var dirExp = getExpDirections();
         var angleExp = new[] { numericBoxExp1.RadianValue, numericBoxExp2.RadianValue, numericBoxExp3.RadianValue };
         setGonio(glControlExpGonio, dirExp, angleExp);
-        setObject(glControlExpObjects, dirExp, angleExp);
+        // setObject(glControlExpObjects, dirExp, angleExp); // (260322Ch) 旧実装
+        glControlExpObjects.DeleteAllObjects();
+        glControlExpObjects.AddObjects(createObject(glControlExpObjects, dirExp, angleExp));
+        glControlExpObjects.Refresh(); // (260322Ch)
         setAxes(glControlExpAxes);
     }
 
@@ -468,14 +474,12 @@ public partial class FormRotationMatrix : Form
         gl.Refresh();
 
     }
-
-
-    private void setObject(GLControlAlpha gl, V3[] dir, double[] angle)
-    {
-        gl.DeleteAllObjects();
-        gl.AddObjects(createObject(gl, dir, angle));
-        gl.Refresh();
-    }
+    // private void setObject(GLControlAlpha gl, V3[] dir, double[] angle)
+    // {
+    //     gl.DeleteAllObjects();
+    //     gl.AddObjects(createObject(gl, dir, angle));
+    //     gl.Refresh();
+    // } // (260322Ch) 旧実装: 2 回しか使わない短い helper
 
     //球体オブジェクトを生成
     private List<GLObject> createObject(GLControlAlpha gl, V3[] dir, double[] angle)

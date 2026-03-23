@@ -91,17 +91,31 @@ public partial class Crystal2
     /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位. エラーの値は含まない.
     /// </summary>
     [MemoryPackIgnore]
-    public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellOnlyValue => ((
-                DecomposeOnlyValue(CellTexts[0]), DecomposeOnlyValue(CellTexts[1]), DecomposeOnlyValue(CellTexts[2]),
-                DecomposeOnlyValue(CellTexts[3]), DecomposeOnlyValue(CellTexts[4]), DecomposeOnlyValue(CellTexts[5])));
+    public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellOnlyValue
+    {
+        get
+        {
+            var cellTexts = CellTexts; // ローカルに持つことで呼び出しコスト削減
+            return (
+                DecomposeOnlyValue(cellTexts[0]), DecomposeOnlyValue(cellTexts[1]), DecomposeOnlyValue(cellTexts[2]),
+                DecomposeOnlyValue(cellTexts[3]), DecomposeOnlyValue(cellTexts[4]), DecomposeOnlyValue(cellTexts[5]));
+        }
+    }
 
     /// <summary>
     /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位. エラーの値は含まない.
     /// </summary>
     [MemoryPackIgnore]
-    public (float A, float B, float C, float Alpha, float Beta, float Gamma) CellOnlyValueFloat => ((
-                (float)DecomposeOnlyValue(CellTexts[0]), (float)DecomposeOnlyValue(CellTexts[1]), (float)DecomposeOnlyValue(CellTexts[2]),
-                (float)DecomposeOnlyValue(CellTexts[3]), (float)DecomposeOnlyValue(CellTexts[4]), (float)DecomposeOnlyValue(CellTexts[5])));
+    public (float A, float B, float C, float Alpha, float Beta, float Gamma) CellOnlyValueFloat
+    {
+        get
+        {
+            var cellTexts = CellTexts; // ローカルに持つことで呼び出しコスト削減
+            return (
+                (float)DecomposeOnlyValue(cellTexts[0]), (float)DecomposeOnlyValue(cellTexts[1]), (float)DecomposeOnlyValue(cellTexts[2]),
+                (float)DecomposeOnlyValue(cellTexts[3]), (float)DecomposeOnlyValue(cellTexts[4]), (float)DecomposeOnlyValue(cellTexts[5]));
+        }
+    }
 
 
     /// <summary>

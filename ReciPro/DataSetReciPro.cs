@@ -169,7 +169,9 @@ namespace ReciPro
                 }
                 else
                     Rows.Add(convertToDataRow(direct, range, x0, y0, h1, h2, theta, eta, a, b0, bx, by, r));
-                resetNumber();
+                // resetNumber(); // (260322Ch) 旧実装: 2 回しか使わない短い helper を経由していた
+                for (int i = 0; i < this.Rows.Count; i++)
+                    this.Rows[i]["No"] = i; // (260322Ch) 行番号の振り直しはその場で行う
             }
 
             /// <summary>
@@ -186,7 +188,9 @@ namespace ReciPro
                     ResetDspacing();
                 }
 
-                resetNumber();
+                // resetNumber(); // (260322Ch) 旧実装
+                for (int i = 0; i < this.Rows.Count; i++)
+                    this.Rows[i]["No"] = i; // (260322Ch)
             }
 
             /// <summary>
@@ -311,14 +315,11 @@ namespace ReciPro
                 }
             }
 
-            /// <summary>
-            ///
-            /// </summary>
-            private void resetNumber()
-            {
-                for (int i = 0; i < this.Rows.Count; i++)
-                    this.Rows[i]["No"] = i;
-            }
+            // private void resetNumber()
+            // {
+            //     for (int i = 0; i < this.Rows.Count; i++)
+            //         this.Rows[i]["No"] = i;
+            // } // (260322Ch) 旧実装: 2 回しか使わない短い helper
 
             public void SetHKL(int index, string hkl)
             {

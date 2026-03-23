@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
-using System.Text.RegularExpressions;
 
 namespace Crystallography.Controls;
 
@@ -276,8 +275,14 @@ public partial class DataSet
             (dr.CrystalSystem, dr.PointGroup, dr.SpaceGroup) = Coeff[c.sym];
 
             var auth = c.auth;
-            if (Regex.Matches(auth, ",").Count > 1)
-                auth = auth.Split(",")[0] + ", et al.";
+            //if (Regex.Matches(auth, ",").Count > 1)
+            //    auth = auth.Split(",")[0] + ", et al.";
+            if (!string.IsNullOrEmpty(auth)) // (260322Ch) Regex と Split を避けて CreateRow 内の著者整形コストを削減
+            {
+                var firstComma = auth.IndexOf(',');
+                if (firstComma >= 0 && auth.IndexOf(',', firstComma + 1) >= 0)
+                    auth = auth[..firstComma] + ", et al.";
+            }
             dr.Authors = auth;
 
             dr.Title = c.sect;

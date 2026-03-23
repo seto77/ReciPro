@@ -1055,19 +1055,37 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
         var gMax = 1 / dMin;
+        var gMin = 1 / dMax;
 
-        var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
+        //var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
+        // (260322Ch) 小さな LINQ 割り当てを避けるため、6方向を直接走査して最大シフトを求める
+        var shift = 0.0;
+        foreach (var dir in directions)
+        {
+            var candidate = (MatrixInverse * dir).Length;
+            if (candidate > shift)
+                shift = candidate;
+        }
 
         var maxNum = _maxNum;
+        //var outer = new List<(int H, int K, int L, double len)>() { (0, 0, 0, 0) };
+        // (260322Ch) frontier は sorted List のまま使い、毎回の Min/FindLastIndex を避けて先頭から処理する
         var outer = new List<(int H, int K, int L, double len)>() { (0, 0, 0, 0) };
         var whole = new HashSet<(int H, int K, int L)>((int)(maxNum * 8)) { (0, 0, 0) }; //全ての hkl を検索するため、composeを使えないことに注意
-        var minG = 0.0;
         var listPlane = new List<Plane>((int)(maxNum * 1.5));
 
-        while (listPlane.Count < maxNum && (minG = outer.Min(o => o.len)) < gMax)
+        //while (listPlane.Count < maxNum && (minG = outer.Min(o => o.len)) < gMax)
+        while (listPlane.Count < maxNum && outer.Count > 0 && outer[0].len < gMax)
         {
-            var end = outer.FindLastIndex(o => o.len - minG < shift * 2);
-            foreach (var (h1, k1, l1, _) in CollectionsMarshal.AsSpan(outer)[..(end + 1)])
+            var minG = outer[0].len;
+            //var end = outer.FindLastIndex(o => o.len - minG < shift * 2);
+            // (260322Ch) sort 済みの先頭から閾値を超えるまで進めればよいので、全体走査を避ける
+            var end = 1;
+            var expandLimit = minG + shift * 2;
+            while (end < outer.Count && outer[end].len < expandLimit)
+                end++;
+
+            foreach (var (h1, k1, l1, _) in CollectionsMarshal.AsSpan(outer)[..end])
             {
                 foreach (var (h2, k2, l2) in directions)
                 {
@@ -1077,11 +1095,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
                         var len = Math.Sqrt(x * x + y * y + z * z);
                         outer.Add((h, k, l, len));
-                        if (len < gMax && len > 1 / dMax)
+                        if (len < gMax && len > gMin)
                         {
                             var root = SymmetryStatic.IsRootPlane((h, k, l), Symmetry, out var indices);
-                            var extinction = Symmetry.CheckExtinctionRule(h, k, l);
-                            if ((!excludeEquivalentPlane || root) && (!excludeForbiddenPlane || extinction.Length == 0))
+                            //var extinction = Symmetry.CheckExtinctionRule(h, k, l);
+                            // (260322Ch) 禁制面を除外しない場合は消滅則チェックを省略して割り当てを減らす
+                            var hasExtinction = excludeForbiddenPlane && Symmetry.CheckExtinctionRule(h, k, l).Length != 0;
+                            if ((!excludeEquivalentPlane || root) && !hasExtinction)
                             {
                                 listPlane.Add(new Plane
                                 {
@@ -1098,7 +1118,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                     }
                 }
             }
-            outer.RemoveRange(0, end + 1);
+            //outer.RemoveRange(0, end + 1);
+            //outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
+            outer.RemoveRange(0, end);
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
         }
 

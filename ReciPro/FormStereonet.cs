@@ -671,12 +671,12 @@ public partial class FormStereonet : Form
     private PointF convertSrcToClient(PointD pt)
         => new((float)(graphicsBox.ClientSize.Width / 2.0 + mag * (pt.X - centerPt.X)), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * (pt.Y - centerPt.Y)));
 
-    private PointF convertSrcToClient(double x, double y) => convertSrcToClient(new PointD(x, y));
+    // private PointF convertSrcToClient(double x, double y) => convertSrcToClient(new PointD(x, y)); // (260322Ch) 旧実装: 未使用の短い overload helper
 
     private PointD convertClientToSrc(Point pt)
         => new(centerPt.X + (pt.X - graphicsBox.ClientSize.Width / 2) / mag, centerPt.Y + (graphicsBox.ClientSize.Height / 2 - pt.Y) / mag);
 
-    private PointD convertClientToSrc(int x, int y) => convertClientToSrc(new Point(x, y));
+    // private PointD convertClientToSrc(int x, int y) => convertClientToSrc(new Point(x, y)); // (260322Ch) 旧実装: 1 箇所だけで使う短い overload helper
 
     #endregion
 
@@ -745,7 +745,8 @@ public partial class FormStereonet : Form
             splitContainer1.BringToFront();
             graphicsBox.Refresh();
         }
-        PointD pt = convertClientToSrc(e.X, e.Y); ;
+        // PointD pt = convertClientToSrc(e.X, e.Y); ; // (260322Ch) 旧実装: int overload helper を経由していた
+        PointD pt = convertClientToSrc(new Point(e.X, e.Y)); ; // (260322Ch) その場で Point を作って直接変換する
         double azimuth = Math.Asin(2 * pt.Y / (1 + pt.X * pt.X + pt.Y * pt.Y));
         double tilt = (Math.Cos(azimuth) != 0) ? Math.Asin(2 * pt.X / (1 + pt.X * pt.X + pt.Y * pt.Y) / Math.Cos(azimuth)) : 0;
         labelYpos.Text = $"Tilt Y: {azimuth / Math.PI * 180:f3}°";

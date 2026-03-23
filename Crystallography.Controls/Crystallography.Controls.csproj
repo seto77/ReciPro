@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.3.22.0123</AssemblyVersion>
-    <FileVersion>2026.3.22.0123</FileVersion>
+    <AssemblyVersion>2026.3.22.0636</AssemblyVersion>
+    <FileVersion>2026.3.22.0636</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
@@ -41,12 +41,24 @@
     <PackageReference Include="MathNet.Numerics" Version="6.0.0-beta2" />
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.7.1" />
     <PackageReference Include="ZLinq" Version="1.5.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Crystallography\Crystallography.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 260322Ch: GraphicsBox 配下へ移した ScalablePictureBox 系と旧配置が暗黙 include で重複するため、旧配置だけビルド対象から外す -->
+    <Compile Remove="ScalablePictureBox.cs" />
+    <Compile Remove="ScalablePictureBox.Designer.cs" />
+    <Compile Remove="ScalablePictureBoxAdvanced.cs" />
+    <Compile Remove="ScalablePictureBoxAdvanced.Designer.cs" />
+    <EmbeddedResource Remove="ScalablePictureBox.resx" />
+    <EmbeddedResource Remove="ScalablePictureBoxAdvanced.resx" />
+    <EmbeddedResource Remove="ScalablePictureBoxAdvanced.ja.resx" />
   </ItemGroup>
 
 

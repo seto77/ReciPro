@@ -178,6 +178,9 @@ public partial class CrystalDatabaseControl : UserControl
             {
                 using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
                 int flag = readByte(fs), total = readInt(fs);
+                Table.BeginLoadData(); //260322Cl 追加 DataTable一括読み込み高速化
+                try //260322Cl 追加
+                {
                 if (flag == 100)//単一ファイルの時
                 {
                     while (fs.Length != fs.Position)
@@ -209,6 +212,8 @@ public partial class CrystalDatabaseControl : UserControl
                     });
 
                 }
+                } //260322Cl 追加
+                finally { Table.EndLoadData(); } //260322Cl 追加
             }
             else
                 return;

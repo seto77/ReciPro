@@ -155,6 +155,8 @@
             toolStripMenuItemDisableTextRendering = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             powderDiffractionFunctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparatorCapture = new System.Windows.Forms.ToolStripSeparator(); // 260323Cl 追加
+            captureGUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem(); // 260323Cl 追加
             helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             checkUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
@@ -1137,7 +1139,21 @@
             // 
             // optionToolStripMenuItem
             // 
-            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolTipToolStripMenuItem, toolStripSeparator11, resetRegistryToolStripMenuItem, toolStripMenuItemDisableNative, disableOpneGLToolStripMenuItem, toolStripMenuItemDisableTextRendering, toolStripSeparator20, powderDiffractionFunctionToolStripMenuItem });
+            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolTipToolStripMenuItem, toolStripSeparator11, resetRegistryToolStripMenuItem, toolStripMenuItemDisableNative, disableOpneGLToolStripMenuItem, toolStripMenuItemDisableTextRendering, toolStripSeparator20, powderDiffractionFunctionToolStripMenuItem, toolStripSeparatorCapture, captureGUIToolStripMenuItem });
+            //
+            // toolStripSeparatorCapture
+            // 260323Cl 追加
+            //
+            toolStripSeparatorCapture.Name = "toolStripSeparatorCapture";
+            toolStripSeparatorCapture.Size = new System.Drawing.Size(247, 6);
+            //
+            // captureGUIToolStripMenuItem
+            // 260323Cl 追加
+            //
+            captureGUIToolStripMenuItem.Name = "captureGUIToolStripMenuItem";
+            captureGUIToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            captureGUIToolStripMenuItem.Text = "Capture GUI Components...";
+            captureGUIToolStripMenuItem.Click += captureGUIToolStripMenuItem_Click;
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             resources.ApplyResources(optionToolStripMenuItem, "optionToolStripMenuItem");
             // 
@@ -1569,5 +1585,7 @@
         public System.Windows.Forms.Button buttonDuplicate;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDisableNative;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorCapture; // 260323Cl 追加
+        private System.Windows.Forms.ToolStripMenuItem captureGUIToolStripMenuItem; // 260323Cl 追加
     }
 }

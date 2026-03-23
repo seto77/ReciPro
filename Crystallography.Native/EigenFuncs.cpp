@@ -333,27 +333,15 @@ extern "C" {
 
 
 	// EBSD強度計算ソルバー
-	// [最適化] __restrict__ を追加し、ポインタ間のエイリアシングなしをコンパイラに宣言する。
-	// これにより MSVC/GCC がより積極的なベクトル化・レジスタ最適化を行える。
-	// 旧実装 (配列宣言形式、コンパイラがエイリアシングを保守的に仮定):
-	// EIGEN_FUNCS_API void _EBSDSolver(
-	//     int bLen, int nAtoms, int tLen,
-	//     double eigenValues[],
-	//     double eigenVectors[],
-	//     double alpha[],
-	//     double phaseNG[],
-	//     double sigma[],
-	//     double thicknesses[],
-	//     double intensity[])
 	EIGEN_FUNCS_API void _EBSDSolver(
 		int bLen, int nAtoms, int tLen,
-		double* __restrict__ eigenValues,
-		double* __restrict__ eigenVectors,
-		double* __restrict__ alpha,
-		double* __restrict__ phaseNG,
-		double* __restrict__ sigma,
-		double* __restrict__ thicknesses,
-		double* __restrict__ intensity)
+		double eigenValues[],
+		double eigenVectors[],
+		double alpha[],
+		double phaseNG[],
+		double sigma[],
+		double thicknesses[],
+		double intensity[])
 	{
 		auto vals = Map<Vec>((dcomplex*)eigenValues, bLen);
 		auto C = Map<Mat>((dcomplex*)eigenVectors, bLen, bLen);
@@ -364,26 +352,11 @@ extern "C" {
 		Mat B(nAtoms, bLen);
 		B.noalias() = P * C * a.asDiagonal();
 
-		// [最適化] S = B^H × diag(σ) × B を Hermitian として効率計算 (ZHERK 相当、計算量約50%削減)。
-		// diag(√σ) × B を使って S = (√σB)^H × (√σB) と変形し、
-		// selfadjointView<Upper>::rankUpdate で上三角のみ計算してから下三角を補完する。
-		//
-		// 旧実装 (フル ZGEMM、下三角も無駄に計算):
-		// Mat sigB(nAtoms, bLen);
-		// for (int n = 0; n < nAtoms; ++n)
-		//     sigB.row(n).noalias() = sigma[n] * B.row(n);
-		// Mat S(bLen, bLen);
-		// S.noalias() = B.adjoint() * sigB;
-		Mat sqrtSigB(nAtoms, bLen);
+		Mat sigB(nAtoms, bLen);
 		for (int n = 0; n < nAtoms; ++n)
-			sqrtSigB.row(n).noalias() = std::sqrt(sigma[n]) * B.row(n);
-
-		// S += sqrtSigB^H × sqrtSigB (上三角のみ、ZHERK 相当)
+			sigB.row(n).noalias() = sigma[n] * B.row(n);
 		Mat S(bLen, bLen);
-		S.setZero();
-		S.selfadjointView<Upper>().rankUpdate(sqrtSigB.adjoint());
-		// 下三角を上三角の共役で補完して完全行列化
-		S = S.selfadjointView<Upper>();
+		S.noalias() = B.adjoint() * sigB;
 
 		// λ_{jj'} = 2πi(γ_j - conj(γ_j'))
 		Mat lam(bLen, bLen);
@@ -418,7 +391,7 @@ extern "C" {
 				intensity[t] = max(0.0, sum.real());
 
 				if (t < tLen - 1)
-					expAccum = expAccum.cwiseProduct(expStep);
+					expAccum.array() *= expStep.array();
 			}
 		}
 		else
@@ -444,22 +417,18 @@ extern "C" {
 
 	// 260316Cl 追加
 	// EBSD強度 + TDS バックグラウンド一括計算ソルバー
-	// 弾性信号 (S行列) と TDS (M行列) で同じ F_{jj'}(t) を共有し、
-	// exp(λt) の重複計算を排除する。
-	// M = tdsCoeff × diag(α†) × C† × U'_back × C × diag(α)
-	// C†×U×C は Eigen BLAS で高速に実行される。
 	EIGEN_FUNCS_API void _EBSDSolverWithTDS(
 		int bLen, int nAtoms, int tLen,
-		double* __restrict__ eigenValues,
-		double* __restrict__ eigenVectors,
-		double* __restrict__ alpha,
-		double* __restrict__ phaseNG,
-		double* __restrict__ sigma,
-		double* __restrict__ muBack,
+		double eigenValues[],
+		double eigenVectors[],
+		double alpha[],
+		double phaseNG[],
+		double sigma[],
+		double muBack[],
 		double tdsCoeff,
-		double* __restrict__ thicknesses,
-		double* __restrict__ intensity,
-		double* __restrict__ tdsIntensity)
+		double thicknesses[],
+		double intensity[],
+		double tdsIntensity[])
 	{
 		auto vals = Map<Vec>((dcomplex*)eigenValues, bLen);
 		auto C = Map<Mat>((dcomplex*)eigenVectors, bLen, bLen);
@@ -471,19 +440,15 @@ extern "C" {
 		Mat B(nAtoms, bLen);
 		B.noalias() = P * C * a.asDiagonal();
 
-		Mat sqrtSigB(nAtoms, bLen);
+		Mat sigB(nAtoms, bLen);
 		for (int n = 0; n < nAtoms; ++n)
-			sqrtSigB.row(n).noalias() = std::sqrt(sigma[n]) * B.row(n);
-
+			sigB.row(n).noalias() = sigma[n] * B.row(n);
 		Mat S(bLen, bLen);
-		S.setZero();
-		S.selfadjointView<Upper>().rankUpdate(sqrtSigB.adjoint());
-		S = S.selfadjointView<Upper>();
+		S.noalias() = B.adjoint() * sigB;
 
 		// --- TDS: M = tdsCoeff × diag(α†) × C† × U × C × diag(α) ---
 		Mat CUC(bLen, bLen);
 		CUC.noalias() = C.adjoint() * U * C;
-		// α†...α のスケーリングを適用
 		for (int j = 0; j < bLen; ++j)
 			for (int jp = 0; jp < bLen; ++jp)
 				CUC(j, jp) *= tdsCoeff * conj(a[j]) * a[jp];
@@ -523,7 +488,7 @@ extern "C" {
 				tdsIntensity[t] = max(0.0, sumM.real());
 
 				if (t < tLen - 1)
-					expAccum = expAccum.cwiseProduct(expStep);
+					expAccum.array() *= expStep.array();
 			}
 		}
 		else

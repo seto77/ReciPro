@@ -1764,7 +1764,8 @@ public partial class FormEBSD : Form
             }
         }
 
-        return new ColoredSurfaceMesh(positions, argbs, indices, CreateMasterPattern3DMaterial(C4.White), DrawingMode.Surfaces) { IgnoreNormalSides = true };// (260321Ch)
+        // return new ColoredSurfaceMesh(positions, argbs, indices, CreateMasterPattern3DMaterial(C4.White), DrawingMode.Surfaces) { IgnoreNormalSides = true };// (260321Ch) 旧実装: material 生成を helper へ切り出していた
+        return new ColoredSurfaceMesh(positions, argbs, indices, new Material(C4.White) { Emission = 1f, Ambient = 0f, Diffuse = 0f, Specular = 0f, SpecularPower = 1f, }, DrawingMode.Surfaces) { IgnoreNormalSides = true };// (260322Ch) 呼び出し元が 1 箇所だけなので material 生成はインライン展開する
     }
 
     /// <summary>
@@ -1811,9 +1812,6 @@ public partial class FormEBSD : Form
             (r, g, b) = ((byte)(255 - r), (byte)(255 - g), (byte)(255 - b));
         return new C4(r / 255f, g / 255f, b / 255f, 1f);
     }
-
-    /// <summary>3D preview 用の polygon material を作る。発光成分のみを使い、反射の影響を受けない色表示にする。</summary>
-    private static Material CreateMasterPattern3DMaterial(C4 color) => new(color) { Emission = 1f, Ambient = 0f, Diffuse = 0f, Specular = 0f, SpecularPower = 1f, }; // (260321Ch)
 
     private void checkBoxMasterPattern3DAxisLabel_CheckedChanged(object sender, EventArgs e)  => RedrawMasterPattern3DFromCache(); // (260322Ch) MasterPattern3D 上の a / b / c ラベル表示を即座に切り替える
 
