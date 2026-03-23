@@ -144,6 +144,9 @@ public partial class FormCaptureGUI : Form
     /// <summary>子コントロールを再帰的にノードに追加。名前のない中間コンテナは透過的にスキップして子をたどる</summary>
     private void AddChildNodes(Control parent, string parentPath, HashSet<Control> visited, TreeNode parentNode)
     {
+        // if (parent is NumericBox || parent is ColorControl) return; // 旧実装: 複合コントロールの内部 UI も個別ノード化していた
+        if (ShouldStopChildTraversal(parent)) return; // (260323Ch) NumericBox / ColorControl は本体のみキャプチャし、内部 UI は列挙しない
+
         foreach (Control child in parent.Controls)
         {
             if (visited.Contains(child)) continue;
@@ -154,6 +157,11 @@ public partial class FormCaptureGUI : Form
                 // 名前のないコンテナ (ToolStripContainer.ContentPanel 等) は
                 // ノードを作らずに、その子を親ノードに直接追加する
                 AddChildNodes(child, parentPath, visited, parentNode);
+            }
+            else if (ShouldSkipStandaloneCapture(child))
+            {
+                // (260323Ch) 単体 Label / RadioButton は個別キャプチャ不要のためノード化しない
+                continue;
             }
             else
             {
@@ -186,11 +194,35 @@ public partial class FormCaptureGUI : Form
         }
     }
 
-    /// <summary>キャプチャ対象とすべきかの既定判定 (粒度の細かい画像まで総ざらいで保存する方針)</summary>
+    /// <summary>キャプチャ対象とすべきかの既定判定</summary>
     private static bool ShouldCapture(Control c)
     {
-        // 最小サイズ未満のみ除外。それ以外は全て対象とする。
-        return c.Width >= MinCaptureSize && c.Height >= MinCaptureSize;
+        // return c.Width >= MinCaptureSize && c.Height >= MinCaptureSize; // 旧実装: 最小サイズ以上はすべて個別キャプチャ対象
+        return c.Width >= MinCaptureSize
+            && c.Height >= MinCaptureSize
+            && !ShouldSkipStandaloneCapture(c); // (260323Ch) 単体 Label / RadioButton は既定で除外
+    }
+
+    private static bool ShouldStopChildTraversal(Control control)
+    {
+        // return control is NumericBox || control is ColorControl; // 旧実装: NumericBox / ColorControl のみ子 UI 列挙を止めていた
+        return control is NumericBox
+            || control is ColorControl
+            || control is WaveLengthControl
+            || control is TrackBarAdvanced
+            || control is ScalablePictureBox
+            || control is ScalablePictureBoxAdvanced
+            || control is GraphControl
+            || control is DistributionGraphControl
+            || control is ChemicalFormulaInputControl
+            || control is CheckedListboxAlpha
+            || control is SaclaControl
+            || control is HorizontalAxisUserControl; // (260323Ch) 優先候補の複合 UserControl も本体のみキャプチャし、内部 UI は列挙しない
+    }
+
+    private static bool ShouldSkipStandaloneCapture(Control control)
+    {
+        return control.GetType() == typeof(Label) || control.GetType() == typeof(RadioButton); // (260323Ch) 単なる Label / RadioButton は個別キャプチャ不要
     }
 
     /// <summary>ツリーのチェック連動: 親をチェックすると子もチェック</summary>
@@ -334,7 +366,8 @@ public partial class FormCaptureGUI : Form
     /// <summary>単一コントロールをキャプチャ</summary>
     private static void CaptureControl(Control control, string path, string outputDir, List<Dictionary<string, object>> infoList)
     {
-        if (control.Width < MinCaptureSize || control.Height < MinCaptureSize) return;
+        // if (control.Width < MinCaptureSize || control.Height < MinCaptureSize) return; // 旧実装: サイズだけ見てキャプチャ可否を決めていた
+        if (!ShouldCapture(control)) return; // (260323Ch) ツリー外の Label / RadioButton が直接渡されても個別キャプチャしない
 
         // 260323Cl: コントロールが TabPage の子孫なら、そのタブを選択して前面に出す
         EnsureAncestorTabsSelected(control);
