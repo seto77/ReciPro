@@ -1,50 +1,62 @@
 [
   {
-    "path": "FormSymmetryInformation",
-    "type": "FormSymmetryInformation",
-    "text": "Symmetry Information",
-    "image": "FormSymmetryInformation.png",
+    "path": "FormSpotIDV2",
+    "type": "FormSpotIDV2",
+    "text": "Spot ID v2",
+    "image": "FormSpotIDV2.png",
     "bounds": {
-      "x": 294,
-      "y": 298,
-      "w": 734,
-      "h": 367
+      "x": 529,
+      "y": 196,
+      "w": 1304,
+      "h": 799
     }
   },
   {
-    "path": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageGroupInfo",
-    "type": "TabPage",
-    "text": "Group Info",
-    "image": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageGroupInfo.png",
+    "path": "FormSpotIDV2.splitContainer1.groupBoxSpot",
+    "type": "GroupBox",
+    "text": "\u30B9\u30DD\u30C3\u30C8\u60C5\u5831",
+    "image": "FormSpotIDV2.splitContainer1.groupBoxSpot.png",
     "bounds": {
-      "x": 90,
-      "y": 14,
-      "w": 620,
-      "h": 168
+      "x": 3,
+      "y": 104,
+      "w": 769,
+      "h": 417
     }
   },
   {
-    "path": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageConditions",
-    "type": "TabPage",
-    "text": "Conditions",
-    "image": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageConditions.png",
+    "path": "FormSpotIDV2.splitContainer1.groupBoxIndex",
+    "type": "GroupBox",
+    "text": "Index",
+    "image": "FormSpotIDV2.splitContainer1.groupBoxIndex.png",
     "bounds": {
-      "x": 90,
-      "y": 14,
-      "w": 620,
-      "h": 168
+      "x": 6,
+      "y": 527,
+      "w": 766,
+      "h": 185
     }
   },
   {
-    "path": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageWyckoff",
-    "type": "TabPage",
-    "text": "Wyckoff Positions",
-    "image": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageWyckoff.png",
+    "path": "FormSpotIDV2.splitContainer1.groupBoxOptics",
+    "type": "GroupBox",
+    "text": "Optics",
+    "image": "FormSpotIDV2.splitContainer1.groupBoxOptics.png",
     "bounds": {
-      "x": 90,
-      "y": 14,
-      "w": 620,
-      "h": 168
+      "x": 195,
+      "y": 0,
+      "w": 577,
+      "h": 102
+    }
+  },
+  {
+    "path": "FormSpotIDV2.menuStrip.fileToolStripMenuItem",
+    "type": "ToolStripMenuItem",
+    "text": "\u30D5\u30A1\u30A4\u30EB",
+    "image": "FormSpotIDV2.menuStrip.fileToolStripMenuItem.png",
+    "bounds": {
+      "x": 543,
+      "y": 248,
+      "w": 121,
+      "h": 70
     }
   }
 ]

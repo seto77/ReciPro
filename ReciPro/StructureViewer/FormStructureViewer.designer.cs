@@ -377,6 +377,7 @@
             // 
             resources.ApplyResources(tabPageBoundUnitcell, "tabPageBoundUnitcell");
             tabPageBoundUnitcell.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            captureExtender.SetCapture(tabPageBoundUnitcell, true);
             tabPageBoundUnitcell.Controls.Add(buttonSetRange2);
             tabPageBoundUnitcell.Controls.Add(buttonSetRange4);
             tabPageBoundUnitcell.Controls.Add(buttonSetRange3);
@@ -606,6 +607,7 @@
             // 
             resources.ApplyResources(tabPageBoundPlane, "tabPageBoundPlane");
             tabPageBoundPlane.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            captureExtender.SetCapture(tabPageBoundPlane, true);
             tabPageBoundPlane.Name = "tabPageBoundPlane";
             toolTip.SetToolTip(tabPageBoundPlane, resources.GetString("tabPageBoundPlane.ToolTip"));
             // 

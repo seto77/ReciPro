@@ -146,7 +146,6 @@
             numericBoxPsi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPsi.Name = "numericBoxPsi";
             numericBoxPsi.ReadOnly = true;
-            numericBoxPsi.RoundErrorAccuracy = -1;
             numericBoxPsi.SkipEventDuringInput = false;
             numericBoxPsi.SmartIncrement = true;
             numericBoxPsi.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -162,7 +161,6 @@
             numericBoxTheta.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxTheta.Name = "numericBoxTheta";
             numericBoxTheta.ReadOnly = true;
-            numericBoxTheta.RoundErrorAccuracy = -1;
             numericBoxTheta.SkipEventDuringInput = false;
             numericBoxTheta.SmartIncrement = true;
             numericBoxTheta.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -178,7 +176,6 @@
             numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.Name = "numericBoxPhi";
             numericBoxPhi.ReadOnly = true;
-            numericBoxPhi.RoundErrorAccuracy = -1;
             numericBoxPhi.SkipEventDuringInput = false;
             numericBoxPhi.SmartIncrement = true;
             numericBoxPhi.TextBoxBackColor = System.Drawing.Color.Yellow;
@@ -193,7 +190,6 @@
             numericBoxExp1.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxExp1.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxExp1.Name = "numericBoxExp1";
-            numericBoxExp1.RoundErrorAccuracy = -1;
             numericBoxExp1.ShowUpDown = true;
             numericBoxExp1.SkipEventDuringInput = false;
             numericBoxExp1.ThonsandsSeparator = true;
@@ -208,7 +204,6 @@
             numericBoxExp2.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxExp2.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxExp2.Name = "numericBoxExp2";
-            numericBoxExp2.RoundErrorAccuracy = -1;
             numericBoxExp2.ShowUpDown = true;
             numericBoxExp2.SkipEventDuringInput = false;
             numericBoxExp2.ThonsandsSeparator = true;
@@ -223,7 +218,6 @@
             numericBoxExp3.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxExp3.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxExp3.Name = "numericBoxExp3";
-            numericBoxExp3.RoundErrorAccuracy = -1;
             numericBoxExp3.ShowUpDown = true;
             numericBoxExp3.SkipEventDuringInput = false;
             numericBoxExp3.ThonsandsSeparator = true;
@@ -430,7 +424,6 @@
             numericBox11.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox11.Name = "numericBox11";
             numericBox11.ReadOnly = true;
-            numericBox11.RoundErrorAccuracy = -1;
             numericBox11.SkipEventDuringInput = false;
             numericBox11.SmartIncrement = true;
             numericBox11.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -446,7 +439,6 @@
             numericBox12.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox12.Name = "numericBox12";
             numericBox12.ReadOnly = true;
-            numericBox12.RoundErrorAccuracy = -1;
             numericBox12.SkipEventDuringInput = false;
             numericBox12.SmartIncrement = true;
             numericBox12.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -462,7 +454,6 @@
             numericBox13.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox13.Name = "numericBox13";
             numericBox13.ReadOnly = true;
-            numericBox13.RoundErrorAccuracy = -1;
             numericBox13.SkipEventDuringInput = false;
             numericBox13.SmartIncrement = true;
             numericBox13.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -478,7 +469,6 @@
             numericBox21.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox21.Name = "numericBox21";
             numericBox21.ReadOnly = true;
-            numericBox21.RoundErrorAccuracy = -1;
             numericBox21.SkipEventDuringInput = false;
             numericBox21.SmartIncrement = true;
             numericBox21.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -494,7 +484,6 @@
             numericBox22.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox22.Name = "numericBox22";
             numericBox22.ReadOnly = true;
-            numericBox22.RoundErrorAccuracy = -1;
             numericBox22.SkipEventDuringInput = false;
             numericBox22.SmartIncrement = true;
             numericBox22.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -510,7 +499,6 @@
             numericBox33.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox33.Name = "numericBox33";
             numericBox33.ReadOnly = true;
-            numericBox33.RoundErrorAccuracy = -1;
             numericBox33.SkipEventDuringInput = false;
             numericBox33.SmartIncrement = true;
             numericBox33.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -526,7 +514,6 @@
             numericBox23.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox23.Name = "numericBox23";
             numericBox23.ReadOnly = true;
-            numericBox23.RoundErrorAccuracy = -1;
             numericBox23.SkipEventDuringInput = false;
             numericBox23.SmartIncrement = true;
             numericBox23.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -542,7 +529,6 @@
             numericBox31.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox31.Name = "numericBox31";
             numericBox31.ReadOnly = true;
-            numericBox31.RoundErrorAccuracy = -1;
             numericBox31.SkipEventDuringInput = false;
             numericBox31.SmartIncrement = true;
             numericBox31.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -558,7 +544,6 @@
             numericBox32.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox32.Name = "numericBox32";
             numericBox32.ReadOnly = true;
-            numericBox32.RoundErrorAccuracy = -1;
             numericBox32.SkipEventDuringInput = false;
             numericBox32.SmartIncrement = true;
             numericBox32.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -635,6 +620,7 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            captureExtender.SetCapture(this, true);
             Controls.Add(tableLayoutPanel2);
             Name = "FormRotationMatrix";
             FormClosing += FormRotationMatrix_FormClosing;

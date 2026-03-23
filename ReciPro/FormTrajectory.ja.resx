@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="waveLengthControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 7</value>
-  </data>
   <data name="buttonCalc.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10pt</value>
   </data>
@@ -142,30 +139,6 @@
   <data name="numericBoxSampleTilt.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 26</value>
   </data>
-  <data name="buttonViewIsometric.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonViewIsometric.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 0</value>
-  </data>
-  <data name="buttonViewIsometric.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 28</value>
-  </data>
-  <data name="buttonViewIsometric.Text" xml:space="preserve">
-    <value>X軸(回転軸)から投影</value>
-  </data>
-  <data name="buttonViewAlongBeam.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonViewAlongBeam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 28</value>
-  </data>
-  <data name="buttonViewAlongBeam.Text" xml:space="preserve">
-    <value>Z軸 (ビーム方向)から投影</value>
-  </data>
-  <data name="paneltTrajectory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 63</value>
-  </data>
   <data name="graphControlEnergyProfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>394, 134</value>
   </data>
@@ -176,7 +149,7 @@
     <value>描画する飛程の数</value>
   </data>
   <data name="numericBoxDrawNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 610</value>
+    <value>-2, 29</value>
   </data>
   <data name="numericBoxDrawNum.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 25</value>
@@ -202,17 +175,8 @@
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 665</value>
   </data>
-  <data name="graphControlDepthEBSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 134</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 495</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 158</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>後方散乱電子の脱出直前の深さ</value>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1274, 22</value>
   </data>
   <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
     <value>394, 134</value>
@@ -230,7 +194,7 @@
     <value>5, 73</value>
   </data>
   <data name="checkBoxDrawAxes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 612</value>
+    <value>261, 31</value>
   </data>
   <data name="checkBoxDrawAxes.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 22</value>
@@ -242,7 +206,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 613</value>
+    <value>354, 32</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
@@ -250,23 +214,8 @@
   <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
     <value>ガイド円を描画</value>
   </data>
-  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>292, 0</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 28</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>表面法線方向から投影</value>
-  </data>
   <data name="flowLayoutPanelViewAlong.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 577</value>
-  </data>
-  <data name="flowLayoutPanelViewAlong.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 28</value>
+    <value>0, 0</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>374, 8</value>
@@ -278,10 +227,10 @@
     <value>計算する飛程の総数</value>
   </data>
   <data name="flowLayoutPanelProfiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 656</value>
+    <value>406, 492</value>
   </data>
   <data name="checkBoxDrawAbsorved.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 638</value>
+    <value>0, 57</value>
   </data>
   <data name="checkBoxDrawAbsorved.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 22</value>
@@ -414,13 +363,19 @@
     <value>統計情報</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 638</value>
+    <value>237, 57</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.Size" type="System.Drawing.Size, System.Drawing">
     <value>265, 22</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.Text" xml:space="preserve">
     <value>試料から脱出した電子(後方散乱電子)を描画</value>
+  </data>
+  <data name="panelDrawingOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 578</value>
+  </data>
+  <data name="panelDrawingOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>513, 84</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 18</value>

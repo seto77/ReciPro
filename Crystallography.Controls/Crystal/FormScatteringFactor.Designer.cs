@@ -496,6 +496,7 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            captureExtender.SetCapture(this, true);
             Controls.Add(panel2);
             Controls.Add(checkBoxTest);
             Controls.Add(waveLengthControl1);
