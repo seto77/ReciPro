@@ -5,9 +5,9 @@
     "text": "Structure Viewer",
     "image": "FormStructureViewer.png",
     "bounds": {
-      "x": 2967,
-      "y": 233,
-      "w": 728,
+      "x": 2711,
+      "y": 348,
+      "w": 730,
       "h": 819
     }
   },
@@ -19,7 +19,7 @@
     "bounds": {
       "x": 0,
       "y": 51,
-      "w": 712,
+      "w": 714,
       "h": 704
     }
   },
@@ -79,7 +79,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 656,
+      "w": 658,
       "h": 430
     }
   },
@@ -91,7 +91,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 652,
+      "w": 654,
       "h": 426
     }
   },
@@ -101,7 +101,7 @@
     "text": "",
     "image": "FormStructureViewer.splitContainer1.flowLayoutPanelLegend.png",
     "bounds": {
-      "x": 656,
+      "x": 658,
       "y": 0,
       "w": 56,
       "h": 430
@@ -211,7 +211,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -223,7 +223,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -235,7 +235,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -247,7 +247,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -259,7 +259,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -271,7 +271,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -283,7 +283,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -295,7 +295,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -307,7 +307,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -319,7 +319,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -331,7 +331,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -343,7 +343,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -355,7 +355,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -367,7 +367,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -379,7 +379,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -391,7 +391,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -403,7 +403,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -415,7 +415,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 270
     }
   },
@@ -427,7 +427,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -439,7 +439,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -451,7 +451,7 @@
     "bounds": {
       "x": 3,
       "y": 29,
-      "w": 698,
+      "w": 700,
       "h": 185
     }
   },
@@ -463,7 +463,7 @@
     "bounds": {
       "x": 3,
       "y": 29,
-      "w": 698,
+      "w": 700,
       "h": 185
     }
   },
@@ -475,7 +475,7 @@
     "bounds": {
       "x": 7,
       "y": 4,
-      "w": 687,
+      "w": 689,
       "h": 177
     }
   },
@@ -487,7 +487,7 @@
     "bounds": {
       "x": 3,
       "y": 29,
-      "w": 698,
+      "w": 700,
       "h": 185
     }
   },
@@ -499,7 +499,7 @@
     "bounds": {
       "x": 7,
       "y": 4,
-      "w": 687,
+      "w": 689,
       "h": 177
     }
   },
@@ -511,7 +511,7 @@
     "bounds": {
       "x": 7,
       "y": 4,
-      "w": 687,
+      "w": 689,
       "h": 177
     }
   },
@@ -811,7 +811,7 @@
     "bounds": {
       "x": 7,
       "y": 4,
-      "w": 687,
+      "w": 689,
       "h": 177
     }
   },
@@ -823,7 +823,7 @@
     "bounds": {
       "x": 2,
       "y": 2,
-      "w": 681,
+      "w": 683,
       "h": 171
     }
   },
@@ -835,7 +835,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 681,
+      "w": 683,
       "h": 89
     }
   },
@@ -847,7 +847,7 @@
     "bounds": {
       "x": 0,
       "y": 89,
-      "w": 681,
+      "w": 683,
       "h": 29
     }
   },
@@ -876,6 +876,30 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel1.numericBoxMaximumDistanceFromOrigin.textBox",
+    "type": "TextBox",
+    "text": "15.000",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel1.numericBoxMaximumDistanceFromOrigin.textBox.png",
+    "bounds": {
+      "x": 152,
+      "y": 0,
+      "w": 54,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel1.numericBoxMaximumDistanceFromOrigin.labelHeader",
+    "type": "Label",
+    "text": "Max distance from origin",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel1.numericBoxMaximumDistanceFromOrigin.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 152,
+      "h": 27
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel1.buttonChangeBond",
     "type": "Button",
     "text": "Replace",
@@ -885,6 +909,18 @@
       "y": 0,
       "w": 72,
       "h": 28
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel1.buttonDeleteBond",
+    "type": "Button",
+    "text": "Delete",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel1.buttonDeleteBond.png",
+    "bounds": {
+      "x": 611,
+      "y": 0,
+      "w": 72,
+      "h": 29
     }
   },
   {
@@ -907,8 +943,32 @@
     "bounds": {
       "x": 0,
       "y": 118,
-      "w": 681,
+      "w": 683,
       "h": 53
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxTranslation",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxTranslation.png",
+    "bounds": {
+      "x": 483,
+      "y": 21,
+      "w": 79,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxTranslation.textBox",
+    "type": "TextBox",
+    "text": "0.000",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxTranslation.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 47,
+      "h": 25
     }
   },
   {
@@ -932,6 +992,30 @@
       "x": 0,
       "y": 0,
       "w": 115,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.flowLayoutPanel1.numericBoxDistanceD.textBox",
+    "type": "TextBox",
+    "text": "1.356",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.flowLayoutPanel1.numericBoxDistanceD.textBox.png",
+    "bounds": {
+      "x": 22,
+      "y": 0,
+      "w": 49,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.flowLayoutPanel1.numericBoxDistanceD.labelHeader",
+    "type": "Label",
+    "text": "d\u00D7",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.flowLayoutPanel1.numericBoxDistanceD.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 22,
       "h": 27
     }
   },
@@ -972,6 +1056,138 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.colorControl",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.colorControl.png",
+    "bounds": {
+      "x": 562,
+      "y": 3,
+      "w": 37,
+      "h": 46
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.colorControl.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.colorControl.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 37,
+      "h": 46
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.colorControl.flowLayoutPanel.labelHeader",
+    "type": "Label",
+    "text": "Color",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.colorControl.flowLayoutPanel.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 37,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxL",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxL.png",
+    "bounds": {
+      "x": 111,
+      "y": 17,
+      "w": 40,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxL.textBox",
+    "type": "TextBox",
+    "text": "1",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxL.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 21,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxK",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxK.png",
+    "bounds": {
+      "x": 65,
+      "y": 17,
+      "w": 40,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxK.textBox",
+    "type": "TextBox",
+    "text": "1",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxK.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 21,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.checkBoxEquivalency",
+    "type": "CheckBox",
+    "text": "Equivalency",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.checkBoxEquivalency.png",
+    "bounds": {
+      "x": 174,
+      "y": 16,
+      "w": 93,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxH",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxH.png",
+    "bounds": {
+      "x": 20,
+      "y": 17,
+      "w": 40,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxH.textBox",
+    "type": "TextBox",
+    "text": "1",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.numericBoxH.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 21,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.label3",
+    "type": "Label",
+    "text": "Translation",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.label3.png",
+    "bounds": {
+      "x": 472,
+      "y": 3,
+      "w": 70,
+      "h": 22
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.boundControl.panel2.label6",
     "type": "Label",
     "text": "Distance from origin",
@@ -991,7 +1207,7 @@
     "bounds": {
       "x": 3,
       "y": 214,
-      "w": 698,
+      "w": 700,
       "h": 26
     }
   },
@@ -1075,7 +1291,7 @@
     "bounds": {
       "x": 3,
       "y": 3,
-      "w": 698,
+      "w": 700,
       "h": 26
     }
   },
@@ -1111,7 +1327,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -1135,7 +1351,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -1147,7 +1363,7 @@
     "bounds": {
       "x": 3,
       "y": 3,
-      "w": 698,
+      "w": 700,
       "h": 237
     }
   },
@@ -1159,7 +1375,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 698,
+      "w": 700,
       "h": 97
     }
   },
@@ -1171,7 +1387,7 @@
     "bounds": {
       "x": 0,
       "y": 97,
-      "w": 698,
+      "w": 700,
       "h": 32
     }
   },
@@ -1188,108 +1404,24 @@
     }
   },
   {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlEdges",
-    "type": "ColorControl",
-    "text": "",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlEdges.png",
-    "bounds": {
-      "x": 420,
-      "y": 6,
-      "w": 54,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlEdges.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlEdges.flowLayoutPanel.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 54,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlEdges.flowLayoutPanel.labelHeader",
-    "type": "Label",
-    "text": "Color",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlEdges.flowLayoutPanel.labelHeader.png",
-    "bounds": {
-      "x": 0,
-      "y": 2,
-      "w": 34,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlEdges.flowLayoutPanel.pictureBox",
-    "type": "PictureBox",
-    "text": "",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlEdges.flowLayoutPanel.pictureBox.png",
-    "bounds": {
-      "x": 34,
-      "y": 0,
-      "w": 20,
-      "h": 20
-    }
-  },
-  {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlPolyhedron",
-    "type": "ColorControl",
-    "text": "",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlPolyhedron.png",
-    "bounds": {
-      "x": 364,
-      "y": 6,
-      "w": 54,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlPolyhedron.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlPolyhedron.flowLayoutPanel.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 54,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlPolyhedron.flowLayoutPanel.labelHeader",
-    "type": "Label",
-    "text": "Color",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlPolyhedron.flowLayoutPanel.labelHeader.png",
-    "bounds": {
-      "x": 0,
-      "y": 2,
-      "w": 34,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlPolyhedron.flowLayoutPanel.pictureBox",
-    "type": "PictureBox",
-    "text": "",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.colorControlPolyhedron.flowLayoutPanel.pictureBox.png",
-    "bounds": {
-      "x": 34,
-      "y": 0,
-      "w": 20,
-      "h": 20
-    }
-  },
-  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.buttonChangeBond",
     "type": "Button",
     "text": "Replace",
     "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.buttonChangeBond.png",
     "bounds": {
       "x": 64,
+      "y": 2,
+      "w": 64,
+      "h": 28
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.buttonDeleteBond",
+    "type": "Button",
+    "text": "Delete",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel1.buttonDeleteBond.png",
+    "bounds": {
+      "x": 636,
       "y": 2,
       "w": 64,
       "h": 28
@@ -1303,8 +1435,20 @@
     "bounds": {
       "x": 0,
       "y": 129,
-      "w": 698,
+      "w": 700,
       "h": 108
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.checkBoxShowBonds",
+    "type": "CheckBox",
+    "text": "Show Bonds",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.checkBoxShowBonds.png",
+    "bounds": {
+      "x": 7,
+      "y": 0,
+      "w": 90,
+      "h": 22
     }
   },
   {
@@ -1317,6 +1461,18 @@
       "y": 0,
       "w": 271,
       "h": 105
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.comboBoxBondingAtom1",
+    "type": "ComboBox",
+    "text": "13: Al",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.comboBoxBondingAtom1.png",
+    "bounds": {
+      "x": 98,
+      "y": 26,
+      "w": 69,
+      "h": 23
     }
   },
   {
@@ -1389,6 +1545,114 @@
       "y": 0,
       "w": 41,
       "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.label39",
+    "type": "Label",
+    "text": "Bonding Atoms",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.label39.png",
+    "bounds": {
+      "x": 3,
+      "y": 30,
+      "w": 89,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMaxLength",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMaxLength.png",
+    "bounds": {
+      "x": 163,
+      "y": 53,
+      "w": 88,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMaxLength.textBox",
+    "type": "TextBox",
+    "text": "2.107",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMaxLength.textBox.png",
+    "bounds": {
+      "x": 9,
+      "y": 0,
+      "w": 48,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMinLength",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMinLength.png",
+    "bounds": {
+      "x": 3,
+      "y": 53,
+      "w": 154,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMinLength.textBox",
+    "type": "TextBox",
+    "text": "0.000",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMinLength.textBox.png",
+    "bounds": {
+      "x": 92,
+      "y": 0,
+      "w": 43,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMinLength.labelHeader",
+    "type": "Label",
+    "text": "Length between",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.numericBoxBondMinLength.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 92,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.comboBoxBondingAtom2",
+    "type": "ComboBox",
+    "text": "8: O",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.comboBoxBondingAtom2.png",
+    "bounds": {
+      "x": 182,
+      "y": 26,
+      "w": 69,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.label57",
+    "type": "Label",
+    "text": "(center)",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.label57.png",
+    "bounds": {
+      "x": 106,
+      "y": 11,
+      "w": 46,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.label58",
+    "type": "Label",
+    "text": "(vertex)",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxBonds.label58.png",
+    "bounds": {
+      "x": 190,
+      "y": 11,
+      "w": 45,
+      "h": 21
     }
   },
   {
@@ -1512,6 +1776,18 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxPolyhedron.checkBoxShowInnerBonds",
+    "type": "CheckBox",
+    "text": "Inner Bonds",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxPolyhedron.checkBoxShowInnerBonds.png",
+    "bounds": {
+      "x": 5,
+      "y": 25,
+      "w": 89,
+      "h": 22
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxPolyhedron.checkBoxShowVertexAtoms",
     "type": "CheckBox",
     "text": "Vertex Atoms",
@@ -1524,6 +1800,18 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxPolyhedron.checkBoxShowCenterAtom",
+    "type": "CheckBox",
+    "text": "Center Atom",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageBond.bondControl.panel2.groupBoxPolyhedron.checkBoxShowCenterAtom.png",
+    "bounds": {
+      "x": 5,
+      "y": 50,
+      "w": 93,
+      "h": 22
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell",
     "type": "TabPage",
     "text": "Unit Cell",
@@ -1531,7 +1819,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -1555,7 +1843,7 @@
     "bounds": {
       "x": 3,
       "y": 3,
-      "w": 698,
+      "w": 700,
       "h": 237
     }
   },
@@ -1596,6 +1884,30 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.colorControlCellPlaneA",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.colorControlCellPlaneA.png",
+    "bounds": {
+      "x": 196,
+      "y": 3,
+      "w": 32,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.colorControlCellPlaneA.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.colorControlCellPlaneA.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 22
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.colorControlCellPlaneB",
     "type": "ColorControl",
     "text": "",
@@ -1617,18 +1929,6 @@
       "y": 0,
       "w": 33,
       "h": 22
-    }
-  },
-  {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.colorControlCellPlaneB.flowLayoutPanel.pictureBox",
-    "type": "PictureBox",
-    "text": "",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.colorControlCellPlaneB.flowLayoutPanel.pictureBox.png",
-    "bounds": {
-      "x": 13,
-      "y": 0,
-      "w": 20,
-      "h": 20
     }
   },
   {
@@ -1656,18 +1956,6 @@
     }
   },
   {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.colorControlCellPlaneC.flowLayoutPanel.pictureBox",
-    "type": "PictureBox",
-    "text": "",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.colorControlCellPlaneC.flowLayoutPanel.pictureBox.png",
-    "bounds": {
-      "x": 11,
-      "y": 0,
-      "w": 20,
-      "h": 20
-    }
-  },
-  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.numericBoxCellPlaneAlpha",
     "type": "NumericBox",
     "text": "",
@@ -1676,6 +1964,18 @@
       "x": 15,
       "y": 25,
       "w": 100,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.numericBoxCellPlaneAlpha.textBox",
+    "type": "TextBox",
+    "text": "0.3",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel6.numericBoxCellPlaneAlpha.textBox.png",
+    "bounds": {
+      "x": 50,
+      "y": 0,
+      "w": 31,
       "h": 25
     }
   },
@@ -1728,6 +2028,54 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeA",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeA.png",
+    "bounds": {
+      "x": 191,
+      "y": 3,
+      "w": 32,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeA.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeA.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeB",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeB.png",
+    "bounds": {
+      "x": 223,
+      "y": 3,
+      "w": 33,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeB.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeB.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 33,
+      "h": 22
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeC",
     "type": "ColorControl",
     "text": "",
@@ -1752,14 +2100,26 @@
     }
   },
   {
-    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeC.flowLayoutPanel.pictureBox",
-    "type": "PictureBox",
-    "text": "",
-    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.colorControlCellEdgeC.flowLayoutPanel.pictureBox.png",
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.label8",
+    "type": "Label",
+    "text": "Edge width",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.label8.png",
     "bounds": {
-      "x": 11,
-      "y": 0,
-      "w": 20,
+      "x": 15,
+      "y": 28,
+      "w": 71,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.trackBarCellEdgeWidth",
+    "type": "TrackBar",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.flowLayoutPanel5.trackBarCellEdgeWidth.png",
+    "bounds": {
+      "x": 92,
+      "y": 28,
+      "w": 74,
       "h": 20
     }
   },
@@ -1836,6 +2196,42 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.checkBoxShowSubCell",
+    "type": "CheckBox",
+    "text": "Show Subcell",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.checkBoxShowSubCell.png",
+    "bounds": {
+      "x": 5,
+      "y": 184,
+      "w": 102,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.checkBoxCellShowEdge",
+    "type": "CheckBox",
+    "text": "Show cell edge",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.checkBoxCellShowEdge.png",
+    "bounds": {
+      "x": 5,
+      "y": 124,
+      "w": 113,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.numericUpDownSubCellB",
+    "type": "NumericUpDown",
+    "text": "1",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.numericUpDownSubCellB.png",
+    "bounds": {
+      "x": 203,
+      "y": 184,
+      "w": 31,
+      "h": 25
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.label10",
     "type": "Label",
     "text": "Translation",
@@ -1860,6 +2256,30 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.numericUpDownSubCellC",
+    "type": "NumericUpDown",
+    "text": "1",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.numericUpDownSubCellC.png",
+    "bounds": {
+      "x": 278,
+      "y": 183,
+      "w": 31,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.numericUpDownSubCellA",
+    "type": "NumericUpDown",
+    "text": "1",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.groupBoxShowUnitCell.numericUpDownSubCellA.png",
+    "bounds": {
+      "x": 134,
+      "y": 184,
+      "w": 31,
+      "h": 25
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane",
     "type": "TabPage",
     "text": "Lattice Plane",
@@ -1867,7 +2287,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -1879,7 +2299,7 @@
     "bounds": {
       "x": 3,
       "y": 3,
-      "w": 698,
+      "w": 700,
       "h": 210
     }
   },
@@ -1891,7 +2311,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 698,
+      "w": 700,
       "h": 134
     }
   },
@@ -1903,7 +2323,7 @@
     "bounds": {
       "x": 0,
       "y": 134,
-      "w": 698,
+      "w": 700,
       "h": 28
     }
   },
@@ -1920,6 +2340,30 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel1.buttonChangeBond",
+    "type": "Button",
+    "text": "Replace",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel1.buttonChangeBond.png",
+    "bounds": {
+      "x": 39,
+      "y": 0,
+      "w": 57,
+      "h": 28
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel1.buttonDeleteBond",
+    "type": "Button",
+    "text": "Delete",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel1.buttonDeleteBond.png",
+    "bounds": {
+      "x": 650,
+      "y": 0,
+      "w": 50,
+      "h": 28
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2",
     "type": "Panel",
     "text": "",
@@ -1927,8 +2371,164 @@
     "bounds": {
       "x": 0,
       "y": 162,
-      "w": 698,
+      "w": 700,
       "h": 48
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxDistance",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxDistance.png",
+    "bounds": {
+      "x": 222,
+      "y": 19,
+      "w": 66,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxDistance.textBox",
+    "type": "TextBox",
+    "text": "0",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxDistance.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 24,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxDistance.labelFooter",
+    "type": "Label",
+    "text": "\u00D7 d",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxDistance.labelFooter.png",
+    "bounds": {
+      "x": 42,
+      "y": 0,
+      "w": 24,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxK",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxK.png",
+    "bounds": {
+      "x": 72,
+      "y": 19,
+      "w": 40,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxK.textBox",
+    "type": "TextBox",
+    "text": "1",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxK.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 22,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxL",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxL.png",
+    "bounds": {
+      "x": 124,
+      "y": 19,
+      "w": 40,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxL.textBox",
+    "type": "TextBox",
+    "text": "1",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxL.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 22,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.colorControl",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.colorControl.png",
+    "bounds": {
+      "x": 312,
+      "y": 5,
+      "w": 34,
+      "h": 41
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.colorControl.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.colorControl.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 34,
+      "h": 41
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.colorControl.flowLayoutPanel.labelHeader",
+    "type": "Label",
+    "text": "Color",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.colorControl.flowLayoutPanel.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 34,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxH",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxH.png",
+    "bounds": {
+      "x": 21,
+      "y": 19,
+      "w": 40,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxH.textBox",
+    "type": "TextBox",
+    "text": "1",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.numericBoxH.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 22,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.label6",
+    "type": "Label",
+    "text": "Translation",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.latticePlaneControl.panel2.label6.png",
+    "bounds": {
+      "x": 221,
+      "y": 3,
+      "w": 64,
+      "h": 21
     }
   },
   {
@@ -1939,7 +2539,7 @@
     "bounds": {
       "x": 3,
       "y": 213,
-      "w": 698,
+      "w": 700,
       "h": 27
     }
   },
@@ -1987,7 +2587,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -1999,7 +2599,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -2028,6 +2628,18 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.atomCoordinateTable1.numericUpDownMaxLength",
+    "type": "NumericUpDown",
+    "text": "5.0",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.atomCoordinateTable1.numericUpDownMaxLength.png",
+    "bounds": {
+      "x": 466,
+      "y": 5,
+      "w": 56,
+      "h": 25
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.atomCoordinateTable1.numericUpDownWidth",
     "type": "NumericUpDown",
     "text": "0.10",
@@ -2047,7 +2659,7 @@
     "bounds": {
       "x": 233,
       "y": 30,
-      "w": 468,
+      "w": 470,
       "h": 205
     }
   },
@@ -2095,7 +2707,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -2107,14 +2719,14 @@
     "bounds": {
       "x": 3,
       "y": 3,
-      "w": 698,
+      "w": 700,
       "h": 204
     }
   },
   {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageInformation.splitContainer2.textBoxCalcInformation",
     "type": "TextBox",
-    "text": "Calculate coordinates table: 27 ms.\r\nGeneration of cell planes: 0ms.\r\nInitialization of bounds: 0ms.\r\nGeneration of lattice planes: 0ms.\r\nGeneration of bound planes: 0ms.\r\nGeneration of legend control: 139ms.\r\nSelection of enabled aoms: 0ms.\r\nGeneration of aoms: 5ms.\r\nGeneration of bonds \u0026 polyhedra: 89ms.\r\nGeneration of label objects: 1ms.\r\nRemove tentative atoms: 1ms.\r\nTrasfer: 4ms.\r\n",
+    "text": "Calculate coordinates table: 24 ms.\r\nGeneration of cell planes: 0ms.\r\nInitialization of bounds: 0ms.\r\nGeneration of lattice planes: 0ms.\r\nGeneration of bound planes: 0ms.\r\nGeneration of legend control: 135ms.\r\nSelection of enabled aoms: 0ms.\r\nGeneration of aoms: 7ms.\r\nGeneration of bonds \u0026 polyhedra: 87ms.\r\nGeneration of label objects: 1ms.\r\nRemove tentative atoms: 1ms.\r\nTrasfer: 3ms.\r\n",
     "image": "FormStructureViewer.splitContainer1.tabControl.tabPageInformation.splitContainer2.textBoxCalcInformation.png",
     "bounds": {
       "x": 0,
@@ -2143,7 +2755,7 @@
     "bounds": {
       "x": 0,
       "y": 22,
-      "w": 486,
+      "w": 488,
       "h": 182
     }
   },
@@ -2167,7 +2779,7 @@
     "bounds": {
       "x": 3,
       "y": 207,
-      "w": 698,
+      "w": 700,
       "h": 33
     }
   },
@@ -2179,7 +2791,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -2280,6 +2892,18 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageProjection.groupBox7.label9",
+    "type": "Label",
+    "text": "Set the projection center to the fractional coordinates",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageProjection.groupBox7.label9.png",
+    "bounds": {
+      "x": 14,
+      "y": 21,
+      "w": 321,
+      "h": 22
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageProjection.groupBox7.radioButtonProjectionCenterCustom",
     "type": "RadioButton",
     "text": "Custom",
@@ -2288,6 +2912,30 @@
       "x": 22,
       "y": 64,
       "w": 68,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageProjection.groupBox7.radioButtonProjectionCenter1",
+    "type": "RadioButton",
+    "text": "(0 0 0)",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageProjection.groupBox7.radioButtonProjectionCenter1.png",
+    "bounds": {
+      "x": 22,
+      "y": 38,
+      "w": 60,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageProjection.groupBox7.radioButtonProjectionCenter2",
+    "type": "RadioButton",
+    "text": "(\u00BD \u00BD \u00BD)",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageProjection.groupBox7.radioButtonProjectionCenter2.png",
+    "bounds": {
+      "x": 85,
+      "y": 38,
+      "w": 76,
       "h": 23
     }
   },
@@ -2551,7 +3199,7 @@
     "bounds": {
       "x": 4,
       "y": 26,
-      "w": 704,
+      "w": 706,
       "h": 240
     }
   },
@@ -2616,6 +3264,18 @@
     }
   },
   {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageMisc.groupBox4.radioButtonLabelUseFixedColor",
+    "type": "RadioButton",
+    "text": "Use fixed color",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageMisc.groupBox4.radioButtonLabelUseFixedColor.png",
+    "bounds": {
+      "x": 230,
+      "y": 48,
+      "w": 110,
+      "h": 23
+    }
+  },
+  {
     "path": "FormStructureViewer.splitContainer1.tabControl.tabPageMisc.groupBox4.numericBoxLabelSize",
     "type": "NumericBox",
     "text": "",
@@ -2649,6 +3309,30 @@
       "y": 0,
       "w": 57,
       "h": 24
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageMisc.groupBox4.checkBoxLabelWhiteEdge",
+    "type": "CheckBox",
+    "text": "White edge",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageMisc.groupBox4.checkBoxLabelWhiteEdge.png",
+    "bounds": {
+      "x": 127,
+      "y": 50,
+      "w": 92,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormStructureViewer.splitContainer1.tabControl.tabPageMisc.groupBox4.label7",
+    "type": "Label",
+    "text": "(clik legend allows\r\nindivisual setting)",
+    "image": "FormStructureViewer.splitContainer1.tabControl.tabPageMisc.groupBox4.label7.png",
+    "bounds": {
+      "x": 3,
+      "y": 48,
+      "w": 126,
+      "h": 42
     }
   },
   {
@@ -2791,7 +3475,7 @@
     "bounds": {
       "x": 0,
       "y": 27,
-      "w": 712,
+      "w": 714,
       "h": 24
     }
   },
@@ -2810,7 +3494,7 @@
   {
     "path": "FormStructureViewer.panel1.numericBoxClientWidth.textBox",
     "type": "TextBox",
-    "text": "652",
+    "text": "654",
     "image": "FormStructureViewer.panel1.numericBoxClientWidth.textBox.png",
     "bounds": {
       "x": 78,
@@ -2875,7 +3559,7 @@
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 712,
+      "w": 714,
       "h": 27
     }
   },
@@ -2887,7 +3571,7 @@
     "bounds": {
       "x": 0,
       "y": 755,
-      "w": 712,
+      "w": 714,
       "h": 25
     }
   }

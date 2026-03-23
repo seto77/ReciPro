@@ -334,6 +334,9 @@ public partial class FormCaptureGUI : Form
     {
         if (control.Width < MinCaptureSize || control.Height < MinCaptureSize) return;
 
+        // 260323Cl: コントロールが TabPage の子孫なら、そのタブを選択して前面に出す
+        EnsureAncestorTabsSelected(control);
+
         var fileName = SanitizeFileName(path) + ".png";
 
         // 260323Cl: CopyFromScreen で画面上の実際の表示をキャプチャする
@@ -375,6 +378,25 @@ public partial class FormCaptureGUI : Form
             info["toolTip"] = toolTipText;
 
         infoList.Add(info);
+    }
+
+    /// <summary>260323Cl 追加: コントロールの祖先に TabPage があれば、そのタブを選択して TabControl を前面に出す</summary>
+    private static void EnsureAncestorTabsSelected(Control control)
+    {
+        for (var c = control; c != null; c = c.Parent)
+        {
+            if (c is TabPage tabPage && tabPage.Parent is TabControl tabCtrl)
+            {
+                if (tabCtrl.SelectedTab != tabPage)
+                {
+                    tabCtrl.SelectedTab = tabPage;
+                    onClickMethod?.Invoke(tabCtrl, new object[] { EventArgs.Empty });
+                }
+                tabCtrl.BringToFront();
+                tabCtrl.Refresh();
+                Application.DoEvents();
+            }
+        }
     }
 
     // 260323Cl: タブ Click イベント発火用 (OnClick はprotectedのためリフレクション)
