@@ -1,178 +1,929 @@
 [
   {
-    "path": "FormStereonet",
-    "type": "FormStereonet",
-    "text": "Stereonet",
-    "image": "FormStereonet.png",
+    "path": "FormImageSimulator",
+    "type": "FormImageSimulator",
+    "text": "HRTEM/STEM simulator",
+    "image": "FormImageSimulator.png",
     "bounds": {
-      "x": 2825,
-      "y": 267,
-      "w": 927,
-      "h": 762
+      "x": 3812,
+      "y": 345,
+      "w": 970,
+      "h": 843
     }
   },
   {
-    "path": "FormStereonet.splitContainer1",
+    "path": "FormImageSimulator.buttonStop",
+    "type": "Button",
+    "text": "Stop",
+    "image": "FormImageSimulator.buttonStop.png",
+    "bounds": {
+      "x": 875,
+      "y": 750,
+      "w": 70,
+      "h": 28
+    },
+    "toolTip": "Stop the current simulation"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1",
     "type": "SplitContainer",
     "text": "",
-    "image": "FormStereonet.splitContainer1.png",
+    "image": "FormImageSimulator.splitContainer1.png",
     "bounds": {
       "x": 0,
-      "y": 49,
-      "w": 908,
-      "h": 504
+      "y": 24,
+      "w": 954,
+      "h": 758
     }
   },
   {
-    "path": "FormStereonet.splitContainer1.graphicsBox",
-    "type": "GraphicsBox",
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel",
+    "type": "TableLayoutPanel",
     "text": "",
-    "image": "FormStereonet.splitContainer1.graphicsBox.png",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.png",
     "bounds": {
       "x": 0,
-      "y": 0,
-      "w": 454,
-      "h": 504
-    },
-    "toolTip": "Left drag (near the center of the screen): Rotate by the axis parallel to monitor\r\nLeft drag (at the edge of the screen):  Rotate by the axis normal to monitor\r\nRight click: Zoom out\r\nRight-drag: Zoom in the selected area\r\nMiddle drag: Drag the simulated image\r\n"
-  },
-  {
-    "path": "FormStereonet.splitContainer1.glControlAxes",
-    "type": "GLControlAlpha",
-    "text": "",
-    "image": "FormStereonet.splitContainer1.glControlAxes.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 450,
-      "h": 504
+      "y": 24,
+      "w": 602,
+      "h": 574
     }
   },
   {
-    "path": "FormStereonet.splitContainer1.glControlAxes.glControl3",
-    "type": "GLControl",
-    "text": "glControl3",
-    "image": "FormStereonet.splitContainer1.glControlAxes.glControl3.png",
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 446,
-      "h": 500
+      "w": 150,
+      "h": 143
     }
   },
   {
-    "path": "FormStereonet.panel3",
-    "type": "Panel",
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
     "text": "",
-    "image": "FormStereonet.panel3.png",
-    "bounds": {
-      "x": 0,
-      "y": 556,
-      "w": 911,
-      "h": 167
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5",
-    "type": "GroupBox",
-    "text": "Indices",
-    "image": "FormStereonet.panel3.groupBox5.png",
-    "bounds": {
-      "x": 269,
-      "y": 0,
-      "w": 429,
-      "h": 162
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices",
-    "type": "Panel",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.png",
-    "bounds": {
-      "x": 204,
-      "y": 18,
-      "w": 222,
-      "h": 141
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.listBoxSpecifiedIndices",
-    "type": "ListBox",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.listBoxSpecifiedIndices.png",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
     "bounds": {
       "x": 4,
       "y": 0,
-      "w": 218,
-      "h": 114
+      "w": 142,
+      "h": 142
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove",
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 150,
+      "y": 0,
+      "w": 150,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 4,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 300,
+      "y": 0,
+      "w": 150,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 4,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 450,
+      "y": 0,
+      "w": 152,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 5,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 143,
+      "w": 150,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 4,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 150,
+      "y": 143,
+      "w": 150,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 4,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 300,
+      "y": 143,
+      "w": 150,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 4,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 450,
+      "y": 143,
+      "w": 152,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 5,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 286,
+      "w": 150,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 4,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 150,
+      "y": 286,
+      "w": 150,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 4,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 300,
+      "y": 286,
+      "w": 150,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 4,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 450,
+      "y": 286,
+      "w": 152,
+      "h": 143
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 5,
+      "y": 0,
+      "w": 142,
+      "h": 142
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 429,
+      "w": 150,
+      "h": 145
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 3,
+      "y": 0,
+      "w": 144,
+      "h": 144
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 150,
+      "y": 429,
+      "w": 150,
+      "h": 145
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 3,
+      "y": 0,
+      "w": 144,
+      "h": 144
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 300,
+      "y": 429,
+      "w": 150,
+      "h": 145
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 3,
+      "y": 0,
+      "w": 144,
+      "h": 144
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox",
+    "type": "ScalablePictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.png",
+    "bounds": {
+      "x": 450,
+      "y": 429,
+      "w": 152,
+      "h": 145
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox",
+    "type": "PictureBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.tableLayoutPanel.ScalablePictureBox.pictureBox.png",
+    "bounds": {
+      "x": 4,
+      "y": 0,
+      "w": 144,
+      "h": 144
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel1",
+    "type": "Panel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel1.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 602,
+      "h": 24
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel1.labelMousePositionValue",
+    "type": "Label",
+    "text": "Value: 0.500089",
+    "image": "FormImageSimulator.splitContainer1.panel1.labelMousePositionValue.png",
+    "bounds": {
+      "x": 193,
+      "y": 3,
+      "w": 90,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel1.labelMousePositionY",
+    "type": "Label",
+    "text": "Y: 403.83 pm",
+    "image": "FormImageSimulator.splitContainer1.panel1.labelMousePositionY.png",
+    "bounds": {
+      "x": 95,
+      "y": 3,
+      "w": 75,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel1.labelMousePositionX",
+    "type": "Label",
+    "text": "X: -504.79 pm",
+    "image": "FormImageSimulator.splitContainer1.panel1.labelMousePositionX.png",
+    "bounds": {
+      "x": 4,
+      "y": 3,
+      "w": 80,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2",
+    "type": "Panel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.png",
+    "bounds": {
+      "x": 0,
+      "y": 598,
+      "w": 602,
+      "h": 156
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3",
+    "type": "GroupBox",
+    "text": "Adust",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.png",
+    "bounds": {
+      "x": 3,
+      "y": 3,
+      "w": 470,
+      "h": 105
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.numericBoxGaussianBlurRadius",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.numericBoxGaussianBlurRadius.png",
+    "bounds": {
+      "x": 270,
+      "y": 74,
+      "w": 72,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.numericBoxGaussianBlurRadius.textBox",
+    "type": "TextBox",
+    "text": "20.0",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.numericBoxGaussianBlurRadius.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.numericBoxGaussianBlurRadius.labelFooter",
+    "type": "Label",
+    "text": "pm",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.numericBoxGaussianBlurRadius.labelFooter.png",
+    "bounds": {
+      "x": 50,
+      "y": 0,
+      "w": 22,
+      "h": 24
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax",
+    "type": "TrackBarAdvanced",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.png",
+    "bounds": {
+      "x": 4,
+      "y": 46,
+      "w": 461,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer",
+    "type": "SplitContainer",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 461,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer.numericBox",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer.numericBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 95,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer.numericBox.textBox",
+    "type": "TextBox",
+    "text": "1",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer.numericBox.textBox.png",
+    "bounds": {
+      "x": 28,
+      "y": 0,
+      "w": 49,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer.numericBox.labelHeader",
+    "type": "Label",
+    "text": "Max",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer.numericBox.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 28,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer.trackBar",
+    "type": "TrackBar",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMax.splitContainer.trackBar.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 364,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin",
+    "type": "TrackBarAdvanced",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.png",
+    "bounds": {
+      "x": 4,
+      "y": 20,
+      "w": 461,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer",
+    "type": "SplitContainer",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 461,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer.numericBox",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer.numericBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 95,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer.numericBox.textBox",
+    "type": "TextBox",
+    "text": "0",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer.numericBox.textBox.png",
+    "bounds": {
+      "x": 26,
+      "y": 0,
+      "w": 51,
+      "h": 25
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer.numericBox.labelHeader",
+    "type": "Label",
+    "text": "Min",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer.numericBox.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 26,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer.trackBar",
+    "type": "TrackBar",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.trackBarAdvancedMin.splitContainer.trackBar.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 364,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.checkBoxGaussianBlur",
+    "type": "CheckBox",
+    "text": "Gaussian Blur (FWHM)",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.checkBoxGaussianBlur.png",
+    "bounds": {
+      "x": 126,
+      "y": 76,
+      "w": 145,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.label25",
+    "type": "Label",
+    "text": "Color",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.label25.png",
+    "bounds": {
+      "x": 4,
+      "y": 77,
+      "w": 34,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox3.comboBoxScaleColorScale",
+    "type": "ComboBox",
+    "text": "Gray scale",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox3.comboBoxScaleColorScale.png",
+    "bounds": {
+      "x": 40,
+      "y": 74,
+      "w": 71,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization",
+    "type": "GroupBox",
+    "text": "Normalization",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.png",
+    "bounds": {
+      "x": 479,
+      "y": 3,
+      "w": 114,
+      "h": 105
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.checkBoxNormarizeIndividually",
+    "type": "CheckBox",
+    "text": "for each image",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.checkBoxNormarizeIndividually.png",
+    "bounds": {
+      "x": 3,
+      "y": 70,
+      "w": 108,
+      "h": 24
+    },
+    "toolTip": "If checked, intensity is normalized for individual images."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6",
     "type": "FlowLayoutPanel",
     "text": "",
-    "image": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.png",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.png",
     "bounds": {
-      "x": 4,
-      "y": 114,
-      "w": 218,
-      "h": 27
+      "x": 3,
+      "y": 18,
+      "w": 108,
+      "h": 52
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.buttonAddIndex",
-    "type": "Button",
-    "text": "Add",
-    "image": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.buttonAddIndex.png",
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.checkBoxIntensityMin",
+    "type": "CheckBox",
+    "text": "Min",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.checkBoxIntensityMin.png",
+    "bounds": {
+      "x": 3,
+      "y": 1,
+      "w": 45,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.numericBoxIntensityMin",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.numericBoxIntensityMin.png",
+    "bounds": {
+      "x": 48,
+      "y": 0,
+      "w": 52,
+      "h": 23
+    },
+    "toolTip": "Minimum intensity of the simulated image\r\n(enabled when the left box is checked.)"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.numericBoxIntensityMin.textBox",
+    "type": "TextBox",
+    "text": "0",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.numericBoxIntensityMin.textBox.png",
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 39,
-      "h": 25
+      "w": 34,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.buttonRemoveIndex",
-    "type": "Button",
-    "text": "Remove",
-    "image": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.buttonRemoveIndex.png",
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.checkBoxIntensityMax",
+    "type": "CheckBox",
+    "text": "Max",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.checkBoxIntensityMax.png",
     "bounds": {
-      "x": 39,
-      "y": 0,
-      "w": 60,
-      "h": 25
+      "x": 3,
+      "y": 27,
+      "w": 47,
+      "h": 22
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.colorControlIndex",
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.numericBoxIntensityMax",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.numericBoxIntensityMax.png",
+    "bounds": {
+      "x": 50,
+      "y": 26,
+      "w": 52,
+      "h": 23
+    },
+    "toolTip": "Maximum intensity of the simulated image."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.numericBoxIntensityMax.textBox",
+    "type": "TextBox",
+    "text": "1",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxNormalization.flowLayoutPanel6.numericBoxIntensityMax.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 34,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxSTEMoption3",
+    "type": "GroupBox",
+    "text": "STEM image",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxSTEMoption3.png",
+    "bounds": {
+      "x": 509,
+      "y": 3,
+      "w": 90,
+      "h": 105
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxSTEMoption3.radioButtonSTEM_target_TDS",
+    "type": "RadioButton",
+    "text": "TDS",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxSTEMoption3.radioButtonSTEM_target_TDS.png",
+    "bounds": {
+      "x": 3,
+      "y": 81,
+      "w": 84,
+      "h": 23
+    },
+    "toolTip": "Display TDS (inelastic) electrons only"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxSTEMoption3.radioButtonSTEM_target_elas",
+    "type": "RadioButton",
+    "text": "Elastic",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxSTEMoption3.radioButtonSTEM_target_elas.png",
+    "bounds": {
+      "x": 3,
+      "y": 58,
+      "w": 84,
+      "h": 23
+    },
+    "toolTip": "Display elastic electrons only"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBoxSTEMoption3.radioButtonSTEM_target_both",
+    "type": "RadioButton",
+    "text": "Elastic\r\n\u0026\u0026TDS",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBoxSTEMoption3.radioButtonSTEM_target_both.png",
+    "bounds": {
+      "x": 3,
+      "y": 19,
+      "w": 84,
+      "h": 39
+    },
+    "toolTip": "Display both elastic and inelastic electrons."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2",
+    "type": "GroupBox",
+    "text": "Display",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.png",
+    "bounds": {
+      "x": 3,
+      "y": 108,
+      "w": 596,
+      "h": 45
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlScale",
     "type": "ColorControl",
     "text": "",
-    "image": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.colorControlIndex.png",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlScale.png",
     "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 57,
-      "h": 27
-    }
+      "x": 476,
+      "y": 18,
+      "w": 54,
+      "h": 24
+    },
+    "toolTip": "Color of scale bar"
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.colorControlIndex.flowLayoutPanel",
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlScale.flowLayoutPanel",
     "type": "FlowLayoutPanel",
     "text": "",
-    "image": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.colorControlIndex.flowLayoutPanel.png",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlScale.flowLayoutPanel.png",
     "bounds": {
       "x": 0,
-      "y": 4,
+      "y": 1,
       "w": 54,
       "h": 23
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.colorControlIndex.flowLayoutPanel.labelHeader",
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlScale.flowLayoutPanel.labelHeader",
     "type": "Label",
     "text": "Color",
-    "image": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.colorControlIndex.flowLayoutPanel.labelHeader.png",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlScale.flowLayoutPanel.labelHeader.png",
     "bounds": {
       "x": 0,
       "y": 2,
@@ -181,1438 +932,2140 @@
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.checkBoxRotateColor",
-    "type": "CheckBox",
-    "text": "Rotate color",
-    "image": "FormStereonet.panel3.groupBox5.panelSpecifiedIndices.flowLayoutPanelAddRemove.checkBoxRotateColor.png",
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxScaleLength",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxScaleLength.png",
     "bounds": {
-      "x": 57,
+      "x": 357,
+      "y": 18,
+      "w": 119,
+      "h": 24
+    },
+    "toolTip": "Length of scale bar in nm"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxScaleLength.textBox",
+    "type": "TextBox",
+    "text": "0.5",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxScaleLength.textBox.png",
+    "bounds": {
+      "x": 42,
       "y": 0,
-      "w": 93,
+      "w": 37,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxScaleLength.labelHeader",
+    "type": "Label",
+    "text": "Length",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxScaleLength.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 42,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxScaleLength.labelFooter",
+    "type": "Label",
+    "text": "nm",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxScaleLength.labelFooter.png",
+    "bounds": {
+      "x": 97,
+      "y": 0,
+      "w": 22,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.checkBoxShowScale",
+    "type": "CheckBox",
+    "text": "Scale bar",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.checkBoxShowScale.png",
+    "bounds": {
+      "x": 269,
+      "y": 18,
+      "w": 88,
+      "h": 24
+    },
+    "toolTip": "Show/hide scale bar"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlLabel",
+    "type": "ColorControl",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlLabel.png",
+    "bounds": {
+      "x": 215,
+      "y": 18,
+      "w": 54,
+      "h": 24
+    },
+    "toolTip": "Color of label"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlLabel.flowLayoutPanel",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlLabel.flowLayoutPanel.png",
+    "bounds": {
+      "x": 0,
+      "y": 1,
+      "w": 54,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlLabel.flowLayoutPanel.labelHeader",
+    "type": "Label",
+    "text": "Color",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.colorControlLabel.flowLayoutPanel.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 2,
+      "w": 34,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxLabelFontSize",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxLabelFontSize.png",
+    "bounds": {
+      "x": 148,
+      "y": 18,
+      "w": 67,
+      "h": 24
+    },
+    "toolTip": "Set font size of label in point"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxLabelFontSize.textBox",
+    "type": "TextBox",
+    "text": "9",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxLabelFontSize.textBox.png",
+    "bounds": {
+      "x": 26,
+      "y": 0,
+      "w": 23,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxLabelFontSize.labelHeader",
+    "type": "Label",
+    "text": "Size",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.numericBoxLabelFontSize.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 26,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.checkBoxShowLabel",
+    "type": "CheckBox",
+    "text": "Label",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.checkBoxShowLabel.png",
+    "bounds": {
+      "x": 81,
+      "y": 18,
+      "w": 67,
+      "h": 24
+    },
+    "toolTip": "Show/hide label"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.panel2.groupBox2.checkBoxShowUnitcell",
+    "type": "CheckBox",
+    "text": "Unit cell",
+    "image": "FormImageSimulator.splitContainer1.panel2.groupBox2.checkBoxShowUnitcell.png",
+    "bounds": {
+      "x": 3,
+      "y": 18,
+      "w": 78,
+      "h": 24
+    },
+    "toolTip": "Show/hide unit cell outline"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1",
+    "type": "GroupBox",
+    "text": "Simulation property",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.png",
+    "bounds": {
+      "x": 4,
+      "y": 342,
+      "w": 332,
+      "h": 381
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3",
+    "type": "Panel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.png",
+    "bounds": {
+      "x": 6,
+      "y": 18,
+      "w": 320,
+      "h": 357
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage",
+    "type": "GroupBox",
+    "text": "Single/serial mode",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.png",
+    "bounds": {
+      "x": 3,
+      "y": 143,
+      "w": 317,
+      "h": 177
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial",
+    "type": "Panel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.png",
+    "bounds": {
+      "x": 3,
+      "y": 44,
+      "w": 311,
+      "h": 130
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus",
+    "type": "Panel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.png",
+    "bounds": {
+      "x": 143,
+      "y": 25,
+      "w": 168,
+      "h": 82
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusNum",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusNum.png",
+    "bounds": {
+      "x": 69,
+      "y": 54,
+      "w": 99,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusNum.textBox",
+    "type": "TextBox",
+    "text": "4",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusNum.textBox.png",
+    "bounds": {
+      "x": 31,
+      "y": 0,
+      "w": 50,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusNum.labelHeader",
+    "type": "Label",
+    "text": "Num",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusNum.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 31,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStep",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStep.png",
+    "bounds": {
+      "x": 69,
+      "y": 27,
+      "w": 99,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStep.textBox",
+    "type": "TextBox",
+    "text": "-20.0",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStep.textBox.png",
+    "bounds": {
+      "x": 29,
+      "y": 0,
+      "w": 52,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStep.labelHeader",
+    "type": "Label",
+    "text": "Step",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStep.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 29,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStart",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStart.png",
+    "bounds": {
+      "x": 69,
+      "y": 0,
+      "w": 99,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStart.textBox",
+    "type": "TextBox",
+    "text": "-57.8",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStart.textBox.png",
+    "bounds": {
+      "x": 30,
+      "y": 0,
+      "w": 51,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStart.labelHeader",
+    "type": "Label",
+    "text": "Start",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.numericBoxDefocusStart.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 30,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.textBoxDefocusList",
+    "type": "TextBox",
+    "text": "-57.8265768832355\r\n-77.8265768832355\r\n-97.8265768832355\r\n-117.8265768832355",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialDefocus.textBoxDefocusList.png",
+    "bounds": {
+      "x": 6,
+      "y": 0,
+      "w": 63,
+      "h": 82
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness",
+    "type": "Panel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.png",
+    "bounds": {
+      "x": 0,
+      "y": 25,
+      "w": 143,
+      "h": 82
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessNum",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessNum.png",
+    "bounds": {
+      "x": 60,
+      "y": 54,
+      "w": 83,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessNum.textBox",
+    "type": "TextBox",
+    "text": "4",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessNum.textBox.png",
+    "bounds": {
+      "x": 31,
+      "y": 0,
+      "w": 34,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessNum.labelHeader",
+    "type": "Label",
+    "text": "Num",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessNum.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 31,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStep",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStep.png",
+    "bounds": {
+      "x": 60,
+      "y": 27,
+      "w": 83,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStep.textBox",
+    "type": "TextBox",
+    "text": "20.0",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStep.textBox.png",
+    "bounds": {
+      "x": 29,
+      "y": 0,
+      "w": 36,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStep.labelHeader",
+    "type": "Label",
+    "text": "Step",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStep.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 29,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStart",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStart.png",
+    "bounds": {
+      "x": 60,
+      "y": 0,
+      "w": 83,
+      "h": 27
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStart.textBox",
+    "type": "TextBox",
+    "text": "20.0",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStart.textBox.png",
+    "bounds": {
+      "x": 30,
+      "y": 0,
+      "w": 35,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStart.labelHeader",
+    "type": "Label",
+    "text": "Start",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.numericBoxThicknessStart.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 30,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.textBoxThicknessList",
+    "type": "TextBox",
+    "text": "20\r\n40\r\n60\r\n80",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panelSerialThickness.textBoxThicknessList.png",
+    "bounds": {
+      "x": 6,
+      "y": 0,
+      "w": 54,
+      "h": 82
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panel5",
+    "type": "Panel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panel5.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 311,
       "h": 25
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panel5.checkBoxSerialThickness",
+    "type": "CheckBox",
+    "text": "Thickness (nm)",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panel5.checkBoxSerialThickness.png",
+    "bounds": {
+      "x": 7,
+      "y": 3,
+      "w": 104,
+      "h": 22
+    },
+    "toolTip": "Create a series of images with different thicknesses"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panel5.checkBoxSerialDefocus",
+    "type": "CheckBox",
+    "text": "Defocus (nm)",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.panel5.checkBoxSerialDefocus.png",
+    "bounds": {
+      "x": 151,
+      "y": 3,
+      "w": 96,
+      "h": 22
+    },
+    "toolTip": "Create a series of images with different defocus values"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.flowLayoutPanelHorizontalDirection",
     "type": "FlowLayoutPanel",
     "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.png",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.flowLayoutPanelHorizontalDirection.png",
+    "bounds": {
+      "x": 0,
+      "y": 107,
+      "w": 311,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.flowLayoutPanelHorizontalDirection.label6",
+    "type": "Label",
+    "text": "Horizontal direction:",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.flowLayoutPanelHorizontalDirection.label6.png",
+    "bounds": {
+      "x": 0,
+      "y": 2,
+      "w": 115,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.flowLayoutPanelHorizontalDirection.radioButtonHorizontalDefocus",
+    "type": "RadioButton",
+    "text": "Defocus",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.flowLayoutPanelHorizontalDirection.radioButtonHorizontalDefocus.png",
+    "bounds": {
+      "x": 115,
+      "y": 0,
+      "w": 73,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.flowLayoutPanelHorizontalDirection.radioButtonHorizontalThickness",
+    "type": "RadioButton",
+    "text": "Thickness",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.panelSerial.flowLayoutPanelHorizontalDirection.radioButtonHorizontalThickness.png",
+    "bounds": {
+      "x": 188,
+      "y": 0,
+      "w": 75,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.flowLayoutPanel4",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.flowLayoutPanel4.png",
     "bounds": {
       "x": 3,
       "y": 18,
-      "w": 201,
-      "h": 141
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5.png",
-    "bounds": {
-      "x": 3,
-      "y": 0,
-      "w": 141,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5.radioButtonRange",
-    "type": "RadioButton",
-    "text": "Range",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5.radioButtonRange.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 60,
-      "h": 23
-    },
-    "toolTip": "Set indices to be displayed within the below range"
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5.radioButtonSpecifiedIndices",
-    "type": "RadioButton",
-    "text": "Specified",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5.radioButtonSpecifiedIndices.png",
-    "bounds": {
-      "x": 60,
-      "y": 0,
-      "w": 77,
-      "h": 23
-    },
-    "toolTip": "Specify indices to be displayed individually"
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5.radioButtonHighStructureFactor",
-    "type": "RadioButton",
-    "text": "Structure factor",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5.radioButtonHighStructureFactor.png",
-    "bounds": {
-      "x": 0,
-      "y": 21,
-      "w": 116,
-      "h": 21
-    },
-    "toolTip": "Specify indices to be displayed individually"
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5.numericBoxHighStructureFactor",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanel5.numericBoxHighStructureFactor.png",
-    "bounds": {
-      "x": 116,
-      "y": 21,
-      "w": 72,
+      "w": 311,
       "h": 26
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.png",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.flowLayoutPanel4.radioButtonSingleMode",
+    "type": "RadioButton",
+    "text": "Single image",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.flowLayoutPanel4.radioButtonSingleMode.png",
     "bounds": {
-      "x": 0,
-      "y": 23,
-      "w": 147,
-      "h": 46
+      "x": 3,
+      "y": 4,
+      "w": 93,
+      "h": 22
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelH",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelH.png",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.flowLayoutPanel4.radioButtonSerialMode",
+    "type": "RadioButton",
+    "text": "Serial image",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSerialImage.flowLayoutPanel4.radioButtonSerialMode.png",
     "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 49,
-      "h": 46
+      "x": 102,
+      "y": 4,
+      "w": 89,
+      "h": 22
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelH.numericBox1",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelH.numericBox1.png",
-    "bounds": {
-      "x": 0,
-      "y": 18,
-      "w": 49,
-      "h": 28
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelK",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelK.png",
-    "bounds": {
-      "x": 49,
-      "y": 0,
-      "w": 49,
-      "h": 46
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelK.numericBox2",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelK.numericBox2.png",
-    "bounds": {
-      "x": 0,
-      "y": 18,
-      "w": 49,
-      "h": 28
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelI",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelI.png",
-    "bounds": {
-      "x": 98,
-      "y": 0,
-      "w": 49,
-      "h": 43
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelI.numericBox4",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelI.numericBox4.png",
-    "bounds": {
-      "x": 26,
-      "y": 0,
-      "w": 49,
-      "h": 28
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelL",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelL.png",
-    "bounds": {
-      "x": 98,
-      "y": 0,
-      "w": 49,
-      "h": 46
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelL.numericBox3",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox5.flowLayoutPanel3.flowLayoutPanelIndex.flowLayoutPanelL.numericBox3.png",
-    "bounds": {
-      "x": 0,
-      "y": 18,
-      "w": 49,
-      "h": 28
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption",
     "type": "GroupBox",
-    "text": "Mode",
-    "image": "FormStereonet.panel3.groupBox2.png",
+    "text": "Potential option",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.png",
     "bounds": {
-      "x": 5,
-      "y": 0,
-      "w": 259,
-      "h": 162
+      "x": 3,
+      "y": 80,
+      "w": 300,
+      "h": 213
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox2.groupBox8",
-    "type": "GroupBox",
-    "text": "Sphere",
-    "image": "FormStereonet.panel3.groupBox2.groupBox8.png",
-    "bounds": {
-      "x": 156,
-      "y": 87,
-      "w": 99,
-      "h": 70
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2.groupBox8.flowLayoutPanel4",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11",
     "type": "FlowLayoutPanel",
     "text": "",
-    "image": "FormStereonet.panel3.groupBox2.groupBox8.flowLayoutPanel4.png",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.png",
     "bounds": {
-      "x": 7,
-      "y": 18,
-      "w": 59,
-      "h": 46
+      "x": 10,
+      "y": 66,
+      "w": 286,
+      "h": 143
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox2.groupBox8.flowLayoutPanel4.radioButtonUpperSphere",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.radioButtonPotentialModeMagAndPhase",
     "type": "RadioButton",
-    "text": "Upper",
-    "image": "FormStereonet.panel3.groupBox2.groupBox8.flowLayoutPanel4.radioButtonUpperSphere.png",
+    "text": "Magnitude and phase",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.radioButtonPotentialModeMagAndPhase.png",
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 59,
-      "h": 23
-    },
-    "toolTip": "Draw crystal axes"
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2.groupBox8.flowLayoutPanel4.radioButtonLowerSphere",
-    "type": "RadioButton",
-    "text": "Lower",
-    "image": "FormStereonet.panel3.groupBox2.groupBox8.flowLayoutPanel4.radioButtonLowerSphere.png",
-    "bounds": {
-      "x": 0,
-      "y": 23,
-      "w": 58,
-      "h": 23
-    },
-    "toolTip": "Draw crystal planes"
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2.groupBox9",
-    "type": "GroupBox",
-    "text": "Projection scheme",
-    "image": "FormStereonet.panel3.groupBox2.groupBox9.png",
-    "bounds": {
-      "x": 156,
-      "y": 16,
-      "w": 99,
-      "h": 67
+      "w": 142,
+      "h": 22
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox2.groupBox9.flowLayoutPanel2",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.flowLayoutPanelMagAndPhase",
     "type": "FlowLayoutPanel",
     "text": "",
-    "image": "FormStereonet.panel3.groupBox2.groupBox9.flowLayoutPanel2.png",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.flowLayoutPanelMagAndPhase.png",
     "bounds": {
-      "x": 7,
-      "y": 18,
-      "w": 85,
-      "h": 46
+      "x": 10,
+      "y": 22,
+      "w": 244,
+      "h": 24
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox2.groupBox9.flowLayoutPanel2.radioButtonWulff",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.flowLayoutPanelMagAndPhase.radioButtonPotentialShowMagAndPhase",
     "type": "RadioButton",
-    "text": "Equiangler",
-    "image": "FormStereonet.panel3.groupBox2.groupBox9.flowLayoutPanel2.radioButtonWulff.png",
+    "text": "Both",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.flowLayoutPanelMagAndPhase.radioButtonPotentialShowMagAndPhase.png",
     "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 85,
-      "h": 23
-    },
-    "toolTip": "Project directions by the Wulff net (equal-angle method)"
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2.groupBox9.flowLayoutPanel2.radioButtonSchmidt",
-    "type": "RadioButton",
-    "text": "Equiarea",
-    "image": "FormStereonet.panel3.groupBox2.groupBox9.flowLayoutPanel2.radioButtonSchmidt.png",
-    "bounds": {
-      "x": 0,
-      "y": 23,
-      "w": 74,
-      "h": 23
-    },
-    "toolTip": "Project directions by the Schmidt-net (equiarea method)"
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2.groupBox7",
-    "type": "GroupBox",
-    "text": "Projection object",
-    "image": "FormStereonet.panel3.groupBox2.groupBox7.png",
-    "bounds": {
-      "x": 5,
-      "y": 16,
-      "w": 145,
-      "h": 141
+      "x": 1,
+      "y": 1,
+      "w": 48,
+      "h": 22
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox2.groupBox7.checkBoxReflectStructureFactor",
-    "type": "CheckBox",
-    "text": "Reflect the structure\r\nfactor in the spot size\r\nor the Kikuchi line",
-    "image": "FormStereonet.panel3.groupBox2.groupBox7.checkBoxReflectStructureFactor.png",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.flowLayoutPanelMagAndPhase.radioButtonPotentialShowMag",
+    "type": "RadioButton",
+    "text": "Magnitude only",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.flowLayoutPanelMagAndPhase.radioButtonPotentialShowMag.png",
     "bounds": {
-      "x": 3,
-      "y": 90,
-      "w": 139,
-      "h": 48
+      "x": 51,
+      "y": 1,
+      "w": 109,
+      "h": 22
     }
   },
   {
-    "path": "FormStereonet.panel3.groupBox2.groupBox7.checkBoxShowIndexLabels",
-    "type": "CheckBox",
-    "text": "Draw index labels",
-    "image": "FormStereonet.panel3.groupBox2.groupBox7.checkBoxShowIndexLabels.png",
-    "bounds": {
-      "x": 3,
-      "y": 65,
-      "w": 139,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2.groupBox7.flowLayoutPanel1",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.panel3.groupBox2.groupBox7.flowLayoutPanel1.png",
-    "bounds": {
-      "x": 3,
-      "y": 21,
-      "w": 139,
-      "h": 44
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2.groupBox7.flowLayoutPanel1.radioButtonAxes",
-    "type": "RadioButton",
-    "text": "Axes",
-    "image": "FormStereonet.panel3.groupBox2.groupBox7.flowLayoutPanel1.radioButtonAxes.png",
-    "bounds": {
-      "x": 3,
-      "y": 0,
-      "w": 50,
-      "h": 23
-    },
-    "toolTip": "Draw crystal axes"
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2.groupBox7.flowLayoutPanel1.radioButtonPlanes",
-    "type": "RadioButton",
-    "text": "Planes",
-    "image": "FormStereonet.panel3.groupBox2.groupBox7.flowLayoutPanel1.radioButtonPlanes.png",
-    "bounds": {
-      "x": 53,
-      "y": 0,
-      "w": 61,
-      "h": 23
-    },
-    "toolTip": "Draw crystal planes"
-  },
-  {
-    "path": "FormStereonet.panel3.groupBox2.groupBox7.flowLayoutPanel1.radioButtonKikuchiLinePairs",
-    "type": "RadioButton",
-    "text": "Kikuchi line pairs",
-    "image": "FormStereonet.panel3.groupBox2.groupBox7.flowLayoutPanel1.radioButtonKikuchiLinePairs.png",
-    "bounds": {
-      "x": 3,
-      "y": 23,
-      "w": 122,
-      "h": 21
-    },
-    "toolTip": "Draw crystal axes"
-  },
-  {
-    "path": "FormStereonet.panel3.panel3DOptions",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.panelPhaseScale",
     "type": "Panel",
     "text": "",
-    "image": "FormStereonet.panel3.panel3DOptions.png",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.panelPhaseScale.png",
     "bounds": {
-      "x": 703,
-      "y": 0,
-      "w": 203,
-      "h": 162
+      "x": 10,
+      "y": 46,
+      "w": 271,
+      "h": 59
     }
   },
   {
-    "path": "FormStereonet.panel3.panel3DOptions.checkBoxDisplay3D",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.radioButtonPotentialModeRealAndImag",
+    "type": "RadioButton",
+    "text": "Real and imaginary part",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.radioButtonPotentialModeRealAndImag.png",
+    "bounds": {
+      "x": 0,
+      "y": 110,
+      "w": 152,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.flowLayoutPanelRealAndImaiginary",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.flowLayoutPanel11.flowLayoutPanelRealAndImaiginary.png",
+    "bounds": {
+      "x": 10,
+      "y": 117,
+      "w": 233,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.checkBoxPotentialUgPrime",
     "type": "CheckBox",
-    "text": "Render",
-    "image": "FormStereonet.panel3.panel3DOptions.checkBoxDisplay3D.png",
+    "text": "U\u0027g: Imaginary (absorption) potential for TDS",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.checkBoxPotentialUgPrime.png",
+    "bounds": {
+      "x": 10,
+      "y": 44,
+      "w": 286,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.checkBoxPotentialUg",
+    "type": "CheckBox",
+    "text": "Ug: Crystal potential for elastic scattering",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxPotentialOption.checkBoxPotentialUg.png",
+    "bounds": {
+      "x": 10,
+      "y": 22,
+      "w": 286,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2",
+    "type": "GroupBox",
+    "text": "STEM option",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.png",
     "bounds": {
       "x": 3,
-      "y": 3,
+      "y": 143,
+      "w": 300,
+      "h": 74
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_AngleResolution",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_AngleResolution.png",
+    "bounds": {
+      "x": 6,
+      "y": 19,
+      "w": 304,
+      "h": 23
+    },
+    "toolTip": "Angular resolution of incident electrons in mrad."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_AngleResolution.labelHeader",
+    "type": "Label",
+    "text": "Angular resolution of incident electrons",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_AngleResolution.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 220,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_SliceThicknessForInelastic",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_SliceThicknessForInelastic.png",
+    "bounds": {
+      "x": 6,
+      "y": 46,
+      "w": 261,
+      "h": 23
+    },
+    "toolTip": "Sets the thickness to slice the sample when calculating the TDS electron intensity.\r\nSmaller values result in slower calculation speed but higher accuracy."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_SliceThicknessForInelastic.textBox",
+    "type": "TextBox",
+    "text": "1.0",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_SliceThicknessForInelastic.textBox.png",
+    "bounds": {
+      "x": 188,
+      "y": 0,
+      "w": 33,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_SliceThicknessForInelastic.labelHeader",
+    "type": "Label",
+    "text": "Slice thickness for TDS calculation",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxSTEMoption2.numericBoxSTEM_SliceThicknessForInelastic.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 188,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2",
+    "type": "GroupBox",
+    "text": "HRTEM option",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2.png",
+    "bounds": {
+      "x": 3,
+      "y": 80,
+      "w": 317,
+      "h": 63
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2.flowLayoutPanel8",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2.flowLayoutPanel8.png",
+    "bounds": {
+      "x": 24,
+      "y": 37,
+      "w": 276,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2.flowLayoutPanel8.radioButtonModeQuasiCoherent",
+    "type": "RadioButton",
+    "text": "Linear image",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2.flowLayoutPanel8.radioButtonModeQuasiCoherent.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 92,
+      "h": 22
+    },
+    "toolTip": "Linear image model. Low comutation costs.\r\nThis model is preferable to be applied for a thin sample \r\nin which the weak phase object approximation holds\r\n"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2.flowLayoutPanel8.radioButtonModeTransmissionCrossCoefficient",
+    "type": "RadioButton",
+    "text": "Transmission cross coefficient",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2.flowLayoutPanel8.radioButtonModeTransmissionCrossCoefficient.png",
+    "bounds": {
+      "x": 92,
+      "y": 0,
+      "w": 184,
+      "h": 22
+    },
+    "toolTip": "Transmission cross coefficient (TCC) model. High computaion costs.\r\nThis model should be used for a strong scattering object which usually\r\n excites many strong diffracted beams.\r\n"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2.label32",
+    "type": "Label",
+    "text": "Partial coherency model",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.groupBoxHREMoption2.label32.png",
+    "bounds": {
+      "x": 13,
+      "y": 20,
+      "w": 136,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6",
+    "type": "Panel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.png",
+    "bounds": {
+      "x": 3,
+      "y": 0,
+      "w": 317,
+      "h": 80
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8",
+    "type": "GroupBox",
+    "text": "Image property",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.png",
+    "bounds": {
+      "x": 108,
+      "y": 0,
+      "w": 209,
+      "h": 80
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxHeight",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxHeight.png",
+    "bounds": {
+      "x": 132,
+      "y": 21,
+      "w": 71,
+      "h": 23
+    },
+    "toolTip": "Height of the image to be simulated in pixel"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxHeight.textBox",
+    "type": "TextBox",
+    "text": "512",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxHeight.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 33,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxHeight.labelFooter",
+    "type": "Label",
+    "text": "pix",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxHeight.labelFooter.png",
+    "bounds": {
+      "x": 51,
+      "y": 0,
+      "w": 20,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxWidth",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxWidth.png",
+    "bounds": {
+      "x": 5,
+      "y": 21,
+      "w": 128,
+      "h": 23
+    },
+    "toolTip": "Width of the image to be simulated in pixel"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxWidth.textBox",
+    "type": "TextBox",
+    "text": "512",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxWidth.textBox.png",
+    "bounds": {
+      "x": 66,
+      "y": 0,
+      "w": 31,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxWidth.labelHeader",
+    "type": "Label",
+    "text": "Size (W\u00D7H)",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxWidth.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
       "w": 66,
       "h": 23
     }
   },
   {
-    "path": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions",
-    "type": "GroupBox",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxResolution",
+    "type": "NumericBox",
     "text": "",
-    "image": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.png",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxResolution.png",
     "bounds": {
-      "x": 6,
-      "y": 1,
-      "w": 194,
-      "h": 127
+      "x": 8,
+      "y": 51,
+      "w": 169,
+      "h": 23
+    },
+    "toolTip": "Resolution of the simulated Image in picometer/pixel"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxResolution.textBox",
+    "type": "TextBox",
+    "text": "2.000",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxResolution.textBox.png",
+    "bounds": {
+      "x": 62,
+      "y": 0,
+      "w": 46,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.label29",
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxResolution.labelHeader",
     "type": "Label",
-    "text": "Depth fading out",
-    "image": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.label29.png",
+    "text": "Resolution",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxResolution.labelHeader.png",
     "bounds": {
-      "x": 1,
+      "x": 0,
+      "y": 0,
+      "w": 62,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxResolution.labelFooter",
+    "type": "Label",
+    "text": "pm/pix",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox8.numericBoxResolution.labelFooter.png",
+    "bounds": {
+      "x": 126,
+      "y": 0,
+      "w": 43,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox7",
+    "type": "GroupBox",
+    "text": "Num. of dif- fracted waves",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox7.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 102,
+      "h": 80
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox7.numericBoxNumOfBlochWave",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox7.numericBoxNumOfBlochWave.png",
+    "bounds": {
+      "x": 40,
+      "y": 45,
+      "w": 48,
+      "h": 23
+    },
+    "toolTip": "Maximum number of Bloch waves used in the Bethe\u0027s method.\r\nLarger values result in slower calculation speed but higher accuracy."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox7.numericBoxNumOfBlochWave.textBox",
+    "type": "TextBox",
+    "text": "128",
+    "image": "FormImageSimulator.splitContainer1.groupBox1.panel3.panel6.groupBox7.numericBoxNumOfBlochWave.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 30,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty",
+    "type": "GroupBox",
+    "text": "Optical property",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.png",
+    "bounds": {
+      "x": 4,
       "y": 73,
-      "w": 98,
+      "w": 332,
+      "h": 269
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1",
+    "type": "GroupBox",
+    "text": "STEM option",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png",
+    "bounds": {
+      "x": 6,
+      "y": 263,
+      "w": 320,
+      "h": 135
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.label5",
+    "type": "Label",
+    "text": "Effective source size (\u03C3s,  FWHM)",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.label5.png",
+    "bounds": {
+      "x": 5,
+      "y": 108,
+      "w": 199,
+      "h": 22
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.label34",
+    "type": "Label",
+    "text": "\u03B1 (convergence angle\r\n of incident beam)",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.label34.png",
+    "bounds": {
+      "x": 4,
+      "y": 20,
+      "w": 138,
+      "h": 40
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorOuterAngle",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorOuterAngle.png",
+    "bounds": {
+      "x": 116,
+      "y": 78,
+      "w": 127,
+      "h": 23
+    },
+    "toolTip": "Inner and outer radius of the annular detector in mrad."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorOuterAngle.textBox",
+    "type": "TextBox",
+    "text": "250.0",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorOuterAngle.textBox.png",
+    "bounds": {
+      "x": 36,
+      "y": 0,
+      "w": 40,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorOuterAngle.labelHeader",
+    "type": "Label",
+    "text": "Outer",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorOuterAngle.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 36,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorOuterAngle.labelFooter",
+    "type": "Label",
+    "text": "mrad",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorOuterAngle.labelFooter.png",
+    "bounds": {
+      "x": 94,
+      "y": 0,
+      "w": 33,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_EffectiveSourceSize",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_EffectiveSourceSize.png",
+    "bounds": {
+      "x": 211,
+      "y": 105,
+      "w": 84,
+      "h": 23
+    },
+    "toolTip": "Size of the effective electron source."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_EffectiveSourceSize.textBox",
+    "type": "TextBox",
+    "text": "20.0",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_EffectiveSourceSize.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 44,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_EffectiveSourceSize.labelFooter",
+    "type": "Label",
+    "text": "pm",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_EffectiveSourceSize.labelFooter.png",
+    "bounds": {
+      "x": 62,
+      "y": 0,
+      "w": 22,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_ConvergenceAngle",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_ConvergenceAngle.png",
+    "bounds": {
+      "x": 156,
+      "y": 22,
+      "w": 87,
+      "h": 23
+    },
+    "toolTip": "Angle of convergence of incident electrons in units of mrad."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_ConvergenceAngle.textBox",
+    "type": "TextBox",
+    "text": "25.0",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_ConvergenceAngle.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 36,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_ConvergenceAngle.labelFooter",
+    "type": "Label",
+    "text": "mrad",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_ConvergenceAngle.labelFooter.png",
+    "bounds": {
+      "x": 54,
+      "y": 0,
+      "w": 33,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel15",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel15.png",
+    "bounds": {
+      "x": 243,
+      "y": 77,
+      "w": 71,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel15.textBoxOuterRadius",
+    "type": "TextBox",
+    "text": "98.648",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel15.textBoxOuterRadius.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 40,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel9",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel9.png",
+    "bounds": {
+      "x": 243,
+      "y": 52,
+      "w": 71,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel9.textBoxInnerRadius",
+    "type": "TextBox",
+    "text": "31.865",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel9.textBoxInnerRadius.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 40,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel9.label37",
+    "type": "Label",
+    "text": "nm\u207B\u00B9",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel9.label37.png",
+    "bounds": {
+      "x": 40,
+      "y": 2,
+      "w": 31,
       "h": 21
     }
   },
   {
-    "path": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionSphere",
-    "type": "CheckBox",
-    "text": "Sphere outline",
-    "image": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionSphere.png",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel2",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel2.png",
     "bounds": {
-      "x": 1,
-      "y": 26,
+      "x": 243,
+      "y": 21,
+      "w": 71,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel2.textBoxConvRadius",
+    "type": "TextBox",
+    "text": "9.967",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel2.textBoxConvRadius.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 40,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel2.label36",
+    "type": "Label",
+    "text": "nm\u207B\u00B9",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.flowLayoutPanel2.label36.png",
+    "bounds": {
+      "x": 40,
+      "y": 2,
+      "w": 31,
+      "h": 21
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorInnerAngle",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorInnerAngle.png",
+    "bounds": {
+      "x": 120,
+      "y": 53,
+      "w": 123,
+      "h": 23
+    },
+    "toolTip": "Inner and outer radius of the annular detector in mrad."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorInnerAngle.textBox",
+    "type": "TextBox",
+    "text": "80.0",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorInnerAngle.textBox.png",
+    "bounds": {
+      "x": 33,
+      "y": 0,
+      "w": 39,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorInnerAngle.labelHeader",
+    "type": "Label",
+    "text": "Inner",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorInnerAngle.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 33,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorInnerAngle.labelFooter",
+    "type": "Label",
+    "text": "mrad",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.numericBoxSTEM_DetectorInnerAngle.labelFooter.png",
+    "bounds": {
+      "x": 90,
+      "y": 0,
+      "w": 33,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.label1",
+    "type": "Label",
+    "text": "(Anular) Detector\r\n range (radius)",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.label1.png",
+    "bounds": {
+      "x": 3,
+      "y": 59,
+      "w": 112,
+      "h": 40
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1",
+    "type": "GroupBox",
+    "text": "Object aperture (HRTEM option)",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png",
+    "bounds": {
+      "x": 6,
+      "y": 153,
+      "w": 320,
+      "h": 110
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.checkBoxOpenAperture",
+    "type": "CheckBox",
+    "text": "Open aperture",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.checkBoxOpenAperture.png",
+    "bounds": {
+      "x": 133,
+      "y": 25,
       "w": 103,
       "h": 22
     }
   },
   {
-    "path": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionSemisphere",
-    "type": "CheckBox",
-    "text": "Semisphere",
-    "image": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionSemisphere.png",
-    "bounds": {
-      "x": 109,
-      "y": 68,
-      "w": 87,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.trackBarDepthFadingOut",
-    "type": "TrackBar",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperX",
+    "type": "NumericBox",
     "text": "",
-    "image": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.trackBarDepthFadingOut.png",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperX.png",
     "bounds": {
-      "x": 1,
-      "y": 93,
-      "w": 97,
-      "h": 20
+      "x": 7,
+      "y": 51,
+      "w": 93,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.button3D_reset",
-    "type": "Button",
-    "text": "Reset",
-    "image": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.button3D_reset.png",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperX.textBox",
+    "type": "TextBox",
+    "text": "0.0",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperX.textBox.png",
     "bounds": {
-      "x": 109,
-      "y": 17,
-      "w": 44,
-      "h": 28
+      "x": 43,
+      "y": 0,
+      "w": 32,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionProjectionLine",
-    "type": "CheckBox",
-    "text": "Projection line",
-    "image": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionProjectionLine.png",
-    "bounds": {
-      "x": 1,
-      "y": 48,
-      "w": 101,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionStereonet",
-    "type": "CheckBox",
-    "text": "Stereonet",
-    "image": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionStereonet.png",
-    "bounds": {
-      "x": 109,
-      "y": 89,
-      "w": 76,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionLabel",
-    "type": "CheckBox",
-    "text": "Label",
-    "image": "FormStereonet.panel3.panel3DOptions.groupBox3DOptions.checkBox3dOptionLabel.png",
-    "bounds": {
-      "x": 109,
-      "y": 47,
-      "w": 52,
-      "h": 22
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl",
-    "type": "TabControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.png",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperX.labelHeader",
+    "type": "Label",
+    "text": "Shift  X",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperX.labelHeader.png",
     "bounds": {
       "x": 0,
-      "y": 28,
-      "w": 285,
-      "h": 278
+      "y": 0,
+      "w": 43,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1._tab_view",
-    "type": "TabControl",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxObjAperRadius",
+    "type": "NumericBox",
     "text": "",
-    "image": "FormStereonet.tabControl.tabPage1._tab_view.png",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxObjAperRadius.png",
     "bounds": {
-      "x": 0,
-      "y": 28,
-      "w": 285,
-      "h": 278
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1",
-    "type": "TabPage",
-    "text": "Appearance",
-    "image": "FormStereonet.tabControl.tabPage1.png",
-    "bounds": {
-      "x": 4,
-      "y": 25,
-      "w": 277,
-      "h": 249
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2._tab_view",
-    "type": "TabControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage2._tab_view.png",
-    "bounds": {
-      "x": 0,
-      "y": 28,
-      "w": 285,
-      "h": 278
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2",
-    "type": "TabPage",
-    "text": "Great Circle",
-    "image": "FormStereonet.tabControl.tabPage2.png",
-    "bounds": {
-      "x": 4,
-      "y": 25,
-      "w": 277,
-      "h": 249
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4._tab_view",
-    "type": "TabControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage4._tab_view.png",
-    "bounds": {
-      "x": 0,
-      "y": 28,
-      "w": 285,
-      "h": 278
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4",
-    "type": "TabPage",
-    "text": "Wave",
-    "image": "FormStereonet.tabControl.tabPage4.png",
-    "bounds": {
-      "x": 4,
-      "y": 25,
-      "w": 277,
-      "h": 249
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1",
-    "type": "TabPage",
-    "text": "Appearance",
-    "image": "FormStereonet.tabControl.tabPage1.png",
-    "bounds": {
-      "x": 4,
-      "y": 25,
-      "w": 277,
-      "h": 249
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox6",
-    "type": "GroupBox",
-    "text": "Delimiter character",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox6.png",
-    "bounds": {
-      "x": 3,
-      "y": 182,
-      "w": 266,
-      "h": 52
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox6.radioButtonDelimiterComma",
-    "type": "RadioButton",
-    "text": "Comma",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox6.radioButtonDelimiterComma.png",
-    "bounds": {
-      "x": 136,
-      "y": 19,
-      "w": 69,
+      "x": 6,
+      "y": 23,
+      "w": 124,
       "h": 23
     },
-    "toolTip": "Use comma as delimiter for index output"
+    "toolTip": "Object aperture size in mrad"
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox6.radioButtonDelimiterSpace",
-    "type": "RadioButton",
-    "text": "Space",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox6.radioButtonDelimiterSpace.png",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxObjAperRadius.textBox",
+    "type": "TextBox",
+    "text": "12.0",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxObjAperRadius.textBox.png",
     "bounds": {
-      "x": 73,
-      "y": 19,
-      "w": 58,
+      "x": 26,
+      "y": 0,
+      "w": 47,
       "h": 23
-    },
-    "toolTip": "Use space as delimiter for index output"
+    }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox6.radioButtonDelimiterNone",
-    "type": "RadioButton",
-    "text": "None",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox6.radioButtonDelimiterNone.png",
-    "bounds": {
-      "x": 11,
-      "y": 19,
-      "w": 55,
-      "h": 23
-    },
-    "toolTip": "No delimiter for index output"
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox4",
-    "type": "GroupBox",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxObjAperRadius.labelHeader",
+    "type": "Label",
     "text": "Size",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox4.png",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxObjAperRadius.labelHeader.png",
     "bounds": {
-      "x": 3,
+      "x": 0,
       "y": 0,
-      "w": 131,
-      "h": 63
+      "w": 26,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox4.label1",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxObjAperRadius.labelFooter",
     "type": "Label",
-    "text": "String",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox4.label1.png",
+    "text": "mrad",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxObjAperRadius.labelFooter.png",
     "bounds": {
-      "x": 4,
-      "y": 18,
-      "w": 40,
-      "h": 22
-    },
-    "toolTip": "Set a string size"
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox4.label6",
-    "type": "Label",
-    "text": "Point",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox4.label6.png",
-    "bounds": {
-      "x": 9,
-      "y": 38,
-      "w": 36,
-      "h": 22
-    },
-    "toolTip": "Set a point size"
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox3",
-    "type": "GroupBox",
-    "text": "Outline",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox3.png",
-    "bounds": {
-      "x": 139,
+      "x": 91,
       "y": 0,
-      "w": 131,
-      "h": 63
+      "w": 33,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox3.checkBox1DegLine",
-    "type": "CheckBox",
-    "text": "Show 1\u00B0 line",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox3.checkBox1DegLine.png",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperY",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperY.png",
+    "bounds": {
+      "x": 102,
+      "y": 51,
+      "w": 98,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperY.textBox",
+    "type": "TextBox",
+    "text": "0.0",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperY.textBox.png",
     "bounds": {
       "x": 12,
-      "y": 38,
-      "w": 97,
+      "y": 1,
+      "w": 34,
       "h": 23
-    },
-    "toolTip": "Display a line in 1 degree increments"
+    }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox3.radioButtonOutlinePole",
-    "type": "RadioButton",
-    "text": "Pole",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox3.radioButtonOutlinePole.png",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperY.labelFooter",
+    "type": "Label",
+    "text": "mrad",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.numericBoxHRTEM_ObjAperY.labelFooter.png",
     "bounds": {
-      "x": 79,
-      "y": 16,
-      "w": 48,
+      "x": 64,
+      "y": 1,
+      "w": 33,
       "h": 23
-    },
-    "toolTip": "Project the latitude and longitude lines from the polar direction."
+    }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox3.radioButtonOutlineEquator",
-    "type": "RadioButton",
-    "text": "Equator",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox3.radioButtonOutlineEquator.png",
-    "bounds": {
-      "x": 7,
-      "y": 16,
-      "w": 69,
-      "h": 23
-    },
-    "toolTip": "Project the latitude and longitude lines from the equatorial direction."
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1",
-    "type": "GroupBox",
-    "text": "Color",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.png",
-    "bounds": {
-      "x": 3,
-      "y": 64,
-      "w": 266,
-      "h": 112
-    },
-    "toolTip": "Change display colors"
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlString",
-    "type": "ColorControl",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel1",
+    "type": "FlowLayoutPanel",
     "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlString.png",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel1.png",
     "bounds": {
-      "x": 6,
+      "x": 15,
       "y": 79,
-      "w": 206,
-      "h": 21
+      "w": 164,
+      "h": 26
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlString.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlString.flowLayoutPanel.png",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel1.textBoxNumOfSpots",
+    "type": "TextBox",
+    "text": "128",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel1.textBoxNumOfSpots.png",
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 206,
-      "h": 21
+      "w": 31,
+      "h": 25
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlString.flowLayoutPanel.labelFooter",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel1.label9",
     "type": "Label",
-    "text": "Zone axis label in Kikuchi pattern",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlString.flowLayoutPanel.labelFooter.png",
+    "text": "spots inside",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel1.label9.png",
     "bounds": {
-      "x": 22,
-      "y": 0,
-      "w": 184,
-      "h": 21
+      "x": 31,
+      "y": 2,
+      "w": 75,
+      "h": 22
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlKikuchi",
-    "type": "ColorControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlKikuchi.png",
-    "bounds": {
-      "x": 6,
-      "y": 57,
-      "w": 219,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlKikuchi.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlKikuchi.flowLayoutPanel.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 219,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlKikuchi.flowLayoutPanel.labelFooter",
-    "type": "Label",
-    "text": "Zone axis symbol in Kikuchi pattern",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlKikuchi.flowLayoutPanel.labelFooter.png",
-    "bounds": {
-      "x": 22,
-      "y": 0,
-      "w": 197,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlBackGround",
-    "type": "ColorControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlBackGround.png",
-    "bounds": {
-      "x": 7,
-      "y": 22,
-      "w": 92,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlBackGround.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlBackGround.flowLayoutPanel.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 92,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlBackGround.flowLayoutPanel.labelFooter",
-    "type": "Label",
-    "text": "Background",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControlBackGround.flowLayoutPanel.labelFooter.png",
-    "bounds": {
-      "x": 22,
-      "y": 0,
-      "w": 70,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl10DegLine",
-    "type": "ColorControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl10DegLine.png",
-    "bounds": {
-      "x": 156,
-      "y": 22,
-      "w": 44,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl10DegLine.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl10DegLine.flowLayoutPanel.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 44,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl10DegLine.flowLayoutPanel.labelFooter",
-    "type": "Label",
-    "text": "10\u00B0",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl10DegLine.flowLayoutPanel.labelFooter.png",
-    "bounds": {
-      "x": 22,
-      "y": 0,
-      "w": 22,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl1DegLine",
-    "type": "ColorControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl1DegLine.png",
-    "bounds": {
-      "x": 207,
-      "y": 22,
-      "w": 38,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl1DegLine.flowLayoutPanel",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl1DegLine.flowLayoutPanel.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 38,
-      "h": 21
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl90DegLine",
-    "type": "ColorControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl90DegLine.png",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel1.buttonDetailsOfSpots",
+    "type": "Button",
+    "text": "Spot info",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel1.buttonDetailsOfSpots.png",
     "bounds": {
       "x": 106,
-      "y": 22,
-      "w": 44,
-      "h": 21
+      "y": 0,
+      "w": 58,
+      "h": 26
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl90DegLine.flowLayoutPanel",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel5",
     "type": "FlowLayoutPanel",
     "text": "",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl90DegLine.flowLayoutPanel.png",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel5.png",
+    "bounds": {
+      "x": 242,
+      "y": 23,
+      "w": 71,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel5.textBoxObjAperRadius",
+    "type": "TextBox",
+    "text": "\u221E",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel5.textBoxObjAperRadius.png",
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 44,
+      "w": 40,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel5.label7",
+    "type": "Label",
+    "text": "nm\u207B\u00B9",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.flowLayoutPanel5.label7.png",
+    "bounds": {
+      "x": 40,
+      "y": 2,
+      "w": 31,
       "h": 21
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl90DegLine.flowLayoutPanel.labelFooter",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.label8",
     "type": "Label",
-    "text": "90\u00B0",
-    "image": "FormStereonet.tabControl.tabPage1.groupBox1.colorControl90DegLine.flowLayoutPanel.labelFooter.png",
+    "text": "Aperture outline is \r\nshown in \u0022Diffraction\r\n Simulator\u0022 ",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.label8.png",
     "bounds": {
-      "x": 22,
+      "x": 198,
+      "y": 64,
+      "w": 111,
+      "h": 47
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4",
+    "type": "GroupBox",
+    "text": "TEM conditions",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.png",
+    "bounds": {
+      "x": 6,
+      "y": 18,
+      "w": 320,
+      "h": 135
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.label35",
+    "type": "Label",
+    "text": "\u0394V\r\n(FWHM)",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.label35.png",
+    "bounds": {
+      "x": 172,
+      "y": 17,
+      "w": 44,
+      "h": 33
+    },
+    "toolTip": "Scherzer defocus value in nm"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.checkBoxCTF",
+    "type": "CheckBox",
+    "text": "Contrast Transfer Function (CTF)",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.checkBoxCTF.png",
+    "bounds": {
+      "x": 10,
+      "y": 109,
+      "w": 213,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCc",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCc.png",
+    "bounds": {
+      "x": 109,
+      "y": 81,
+      "w": 105,
+      "h": 23
+    },
+    "toolTip": "Cc: Chromatic aberration in mm"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCc.textBox",
+    "type": "TextBox",
+    "text": "1.40",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCc.textBox.png",
+    "bounds": {
+      "x": 18,
+      "y": 0,
+      "w": 43,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCc.labelFooter",
+    "type": "Label",
+    "text": "mm",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCc.labelFooter.png",
+    "bounds": {
+      "x": 79,
+      "y": 0,
+      "w": 26,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDeltaV",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDeltaV.png",
+    "bounds": {
+      "x": 222,
+      "y": 20,
+      "w": 78,
+      "h": 23
+    },
+    "toolTip": "\u0394V: 1/e width of electron\r\n energy fluctuations\r\n(Note unit \u0022eV\u0022)"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDeltaV.textBox",
+    "type": "TextBox",
+    "text": "0.80",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDeltaV.textBox.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 41,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxHRTEM_BetaAgnle",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxHRTEM_BetaAgnle.png",
+    "bounds": {
+      "x": 214,
+      "y": 81,
+      "w": 104,
+      "h": 23
+    },
+    "toolTip": "\u03B2: Illumination semiangle (mrad)\r\n due to the finite source size effect"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxHRTEM_BetaAgnle.textBox",
+    "type": "TextBox",
+    "text": "0.00",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxHRTEM_BetaAgnle.textBox.png",
+    "bounds": {
+      "x": 11,
+      "y": 0,
+      "w": 42,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxHRTEM_BetaAgnle.labelFooter",
+    "type": "Label",
+    "text": "mrad",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxHRTEM_BetaAgnle.labelFooter.png",
+    "bounds": {
+      "x": 71,
+      "y": 0,
+      "w": 33,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCs",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCs.png",
+    "bounds": {
+      "x": 7,
+      "y": 81,
+      "w": 102,
+      "h": 23
+    },
+    "toolTip": "Cs: Spherical aberration in mm"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCs.textBox",
+    "type": "TextBox",
+    "text": "1.00",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCs.textBox.png",
+    "bounds": {
+      "x": 17,
+      "y": 0,
+      "w": 41,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCs.labelFooter",
+    "type": "Label",
+    "text": "mm",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxCs.labelFooter.png",
+    "bounds": {
+      "x": 76,
+      "y": 0,
+      "w": 26,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDefocus",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDefocus.png",
+    "bounds": {
+      "x": 7,
+      "y": 50,
+      "w": 154,
+      "h": 23
+    },
+    "toolTip": "Defocus value in nanometer"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDefocus.textBox",
+    "type": "TextBox",
+    "text": "-57.83",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDefocus.textBox.png",
+    "bounds": {
+      "x": 64,
+      "y": 0,
+      "w": 50,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDefocus.labelHeader",
+    "type": "Label",
+    "text": "Defocus \u0394f",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDefocus.labelHeader.png",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 64,
+      "h": 23
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDefocus.labelFooter",
+    "type": "Label",
+    "text": "nm",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxDefocus.labelFooter.png",
+    "bounds": {
+      "x": 132,
       "y": 0,
       "w": 22,
-      "h": 21
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2",
-    "type": "TabPage",
-    "text": "Great Circle",
-    "image": "FormStereonet.tabControl.tabPage2.png",
-    "bounds": {
-      "x": 4,
-      "y": 25,
-      "w": 277,
-      "h": 249
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2.panelPlanes",
-    "type": "Panel",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxAccVol",
+    "type": "NumericBox",
     "text": "",
-    "image": "FormStereonet.tabControl.tabPage2.panelPlanes.png",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxAccVol.png",
     "bounds": {
-      "x": 125,
-      "y": 159,
-      "w": 152,
-      "h": 83
+      "x": 8,
+      "y": 20,
+      "w": 154,
+      "h": 23
+    },
+    "toolTip": "Acc voltage of TEM (kV)"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxAccVol.textBox",
+    "type": "TextBox",
+    "text": "200",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxAccVol.textBox.png",
+    "bounds": {
+      "x": 69,
+      "y": 0,
+      "w": 49,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleH1",
-    "type": "NumericUpDown",
-    "text": "0",
-    "image": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleH1.png",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxAccVol.labelHeader",
+    "type": "Label",
+    "text": "Acc. Vol. (V)",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.numericBoxAccVol.labelHeader.png",
     "bounds": {
-      "x": 12,
-      "y": 14,
-      "w": 38,
-      "h": 25
+      "x": 0,
+      "y": 0,
+      "w": 69,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleH2",
-    "type": "NumericUpDown",
-    "text": "0",
-    "image": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleH2.png",
-    "bounds": {
-      "x": 12,
-      "y": 56,
-      "w": 38,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleL2",
-    "type": "NumericUpDown",
-    "text": "0",
-    "image": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleL2.png",
-    "bounds": {
-      "x": 100,
-      "y": 56,
-      "w": 38,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleL1",
-    "type": "NumericUpDown",
-    "text": "0",
-    "image": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleL1.png",
-    "bounds": {
-      "x": 100,
-      "y": 14,
-      "w": 38,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleK1",
-    "type": "NumericUpDown",
-    "text": "0",
-    "image": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleK1.png",
-    "bounds": {
-      "x": 56,
-      "y": 14,
-      "w": 38,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleK2",
-    "type": "NumericUpDown",
-    "text": "0",
-    "image": "FormStereonet.tabControl.tabPage2.panelPlanes.numericUpDownCircleK2.png",
-    "bounds": {
-      "x": 56,
-      "y": 56,
-      "w": 38,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2.colorControlGreatCircle",
-    "type": "ColorControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage2.colorControlGreatCircle.png",
-    "bounds": {
-      "x": 210,
-      "y": 81,
-      "w": 61,
-      "h": 24
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2.colorControlGreatCircle.flowLayoutPanel",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.flowLayoutPanel3",
     "type": "FlowLayoutPanel",
     "text": "",
-    "image": "FormStereonet.tabControl.tabPage2.colorControlGreatCircle.flowLayoutPanel.png",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.flowLayoutPanel3.png",
     "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 61,
-      "h": 24
+      "x": 175,
+      "y": 45,
+      "w": 119,
+      "h": 39
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2.colorControlGreatCircle.flowLayoutPanel.labelHeader",
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.flowLayoutPanel3.label3",
     "type": "Label",
-    "text": "Color",
-    "image": "FormStereonet.tabControl.tabPage2.colorControlGreatCircle.flowLayoutPanel.labelHeader.png",
+    "text": "Scherzer\r\n defocus",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.flowLayoutPanel3.label3.png",
     "bounds": {
       "x": 0,
-      "y": 0,
-      "w": 37,
-      "h": 22
+      "y": 2,
+      "w": 57,
+      "h": 37
+    },
+    "toolTip": "Scherzer defocus value in nm"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.flowLayoutPanel3.textBoxScherzer",
+    "type": "TextBox",
+    "text": "-57.83",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.flowLayoutPanel3.textBoxScherzer.png",
+    "bounds": {
+      "x": 57,
+      "y": 4,
+      "w": 40,
+      "h": 23
+    },
+    "toolTip": "Scherzer defocus value in nm"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.flowLayoutPanel3.label4",
+    "type": "Label",
+    "text": "nm",
+    "image": "FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBox4.flowLayoutPanel3.label4.png",
+    "bounds": {
+      "x": 97,
+      "y": 8,
+      "w": 22,
+      "h": 21
+    },
+    "toolTip": "Scherzer defocus value in nm"
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.png",
+    "bounds": {
+      "x": 4,
+      "y": 2,
+      "w": 332,
+      "h": 71
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2.panelAxis",
-    "type": "Panel",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage2.panelAxis.png",
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6",
+    "type": "GroupBox",
+    "text": "Image mode",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6.png",
     "bounds": {
-      "x": 125,
-      "y": 107,
-      "w": 152,
+      "x": 3,
+      "y": 0,
+      "w": 156,
+      "h": 68
+    }
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6.flowLayoutPanel16",
+    "type": "FlowLayoutPanel",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6.flowLayoutPanel16.png",
+    "bounds": {
+      "x": 8,
+      "y": 18,
+      "w": 140,
       "h": 46
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2.panelAxis.numericUpDownCircleU",
-    "type": "NumericUpDown",
-    "text": "0",
-    "image": "FormStereonet.tabControl.tabPage2.panelAxis.numericUpDownCircleU.png",
-    "bounds": {
-      "x": 12,
-      "y": 15,
-      "w": 38,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2.panelAxis.numericUpDownCircleV",
-    "type": "NumericUpDown",
-    "text": "0",
-    "image": "FormStereonet.tabControl.tabPage2.panelAxis.numericUpDownCircleV.png",
-    "bounds": {
-      "x": 56,
-      "y": 15,
-      "w": 38,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage2.radioButtonCircleByPlanes",
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6.flowLayoutPanel16.radioButtonHRTEM",
     "type": "RadioButton",
-    "text": "Zone determined \r\nby two planes",
-    "image": "FormStereonet.tabControl.tabPage2.radioButtonCircleByPlanes.png",
+    "text": "HRTEM",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6.flowLayoutPanel16.radioButtonHRTEM.png",
     "bounds": {
-      "x": 2,
-      "y": 181,
-      "w": 135,
-      "h": 41
+      "x": 0,
+      "y": 0,
+      "w": 68,
+      "h": 25
+    },
+    "toolTip": "Simulate HRTEM images."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6.flowLayoutPanel16.radioButtonSTEM",
+    "type": "RadioButton",
+    "text": "STEM",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6.flowLayoutPanel16.radioButtonSTEM.png",
+    "bounds": {
+      "x": 68,
+      "y": 0,
+      "w": 58,
+      "h": 25
+    },
+    "toolTip": "Simulate STEM images."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6.flowLayoutPanel16.radioButtonProjectedPotential",
+    "type": "RadioButton",
+    "text": "Potential",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBox6.flowLayoutPanel16.radioButtonProjectedPotential.png",
+    "bounds": {
+      "x": 0,
+      "y": 25,
+      "w": 77,
+      "h": 23
+    },
+    "toolTip": "Simulate Potential images."
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty",
+    "type": "GroupBox",
+    "text": "Sample property",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty.png",
+    "bounds": {
+      "x": 165,
+      "y": 0,
+      "w": 167,
+      "h": 68
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2.radioButtonCircleByAxis",
-    "type": "RadioButton",
-    "text": "Zone Axis Index",
-    "image": "FormStereonet.tabControl.tabPage2.radioButtonCircleByAxis.png",
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty.numericBoxThickness",
+    "type": "NumericBox",
+    "text": "",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty.numericBoxThickness.png",
     "bounds": {
-      "x": 3,
-      "y": 122,
-      "w": 116,
+      "x": 6,
+      "y": 29,
+      "w": 153,
+      "h": 23
+    },
+    "toolTip": "Sample thickness\r\nThis value is neglected when \u0022Serial image\u0022 mode is selected, "
+  },
+  {
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty.numericBoxThickness.textBox",
+    "type": "TextBox",
+    "text": "20.00",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty.numericBoxThickness.textBox.png",
+    "bounds": {
+      "x": 57,
+      "y": 0,
+      "w": 56,
       "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2.buttonAddCircle",
-    "type": "Button",
-    "text": "Add",
-    "image": "FormStereonet.tabControl.tabPage2.buttonAddCircle.png",
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty.numericBoxThickness.labelHeader",
+    "type": "Label",
+    "text": "Thickness",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty.numericBoxThickness.labelHeader.png",
     "bounds": {
-      "x": 5,
-      "y": 78,
-      "w": 39,
-      "h": 29
+      "x": 0,
+      "y": 0,
+      "w": 57,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2.buttonDeleteCircle",
-    "type": "Button",
-    "text": "Remove",
-    "image": "FormStereonet.tabControl.tabPage2.buttonDeleteCircle.png",
+    "path": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty.numericBoxThickness.labelFooter",
+    "type": "Label",
+    "text": "nm",
+    "image": "FormImageSimulator.splitContainer1.flowLayoutPanel14.groupBoxSampleProperty.numericBoxThickness.labelFooter.png",
     "bounds": {
-      "x": -461,
-      "y": 81,
-      "w": 63,
-      "h": 29
+      "x": 131,
+      "y": 0,
+      "w": 22,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage2.checkedListBoxCircles",
-    "type": "CheckedListBox",
+    "path": "FormImageSimulator.splitContainer1.panel4",
+    "type": "Panel",
     "text": "",
-    "image": "FormStereonet.tabControl.tabPage2.checkedListBoxCircles.png",
-    "bounds": {
-      "x": 6,
-      "y": 6,
-      "w": 269,
-      "h": 72
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4",
-    "type": "TabPage",
-    "text": "Wave",
-    "image": "FormStereonet.tabControl.tabPage4.png",
+    "image": "FormImageSimulator.splitContainer1.panel4.png",
     "bounds": {
       "x": 4,
-      "y": 25,
-      "w": 277,
-      "h": 249
+      "y": 723,
+      "w": 332,
+      "h": 31
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl",
-    "type": "WaveLengthControl",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.png",
-    "bounds": {
-      "x": 3,
-      "y": 3,
-      "w": 210,
-      "h": 78
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.png",
+    "path": "FormImageSimulator.splitContainer1.panel4.checkBoxPreset",
+    "type": "CheckBox",
+    "text": "Preset settings",
+    "image": "FormImageSimulator.splitContainer1.panel4.checkBoxPreset.png",
     "bounds": {
       "x": 0,
-      "y": 23,
-      "w": 210,
-      "h": 54
+      "y": 4,
+      "w": 112,
+      "h": 23
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.flowLayoutPanelElement",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.flowLayoutPanelElement.png",
+    "path": "FormImageSimulator.splitContainer1.panel4.checkBoxRealTimeSimulation",
+    "type": "CheckBox",
+    "text": "Real time simulation",
+    "image": "FormImageSimulator.splitContainer1.panel4.checkBoxRealTimeSimulation.png",
     "bounds": {
-      "x": 3,
+      "x": 121,
       "y": 0,
-      "w": 153,
-      "h": 25
-    }
+      "w": 144,
+      "h": 31
+    },
+    "toolTip": "When checked, image is immediately caluclated as the crystal rotates"
   },
   {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.flowLayoutPanelElement.label1",
-    "type": "Label",
-    "text": "Element",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.flowLayoutPanelElement.label1.png",
+    "path": "FormImageSimulator.splitContainer1.panel4.buttonSimulate",
+    "type": "Button",
+    "text": "Simulate",
+    "image": "FormImageSimulator.splitContainer1.panel4.buttonSimulate.png",
+    "bounds": {
+      "x": 265,
+      "y": 0,
+      "w": 67,
+      "h": 31
+    },
+    "toolTip": "Simulate image by the above setting"
+  },
+  {
+    "path": "FormImageSimulator.statusStrip1",
+    "type": "StatusStrip",
+    "text": "statusStrip1",
+    "image": "FormImageSimulator.statusStrip1.png",
     "bounds": {
       "x": 0,
-      "y": 3,
-      "w": 53,
+      "y": 782,
+      "w": 954,
       "h": 22
     }
   },
   {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.flowLayoutPanelElement.comboBoxXRayElement",
-    "type": "ComboBox",
-    "text": "0:  Custom",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.flowLayoutPanelElement.comboBoxXRayElement.png",
-    "bounds": {
-      "x": 53,
-      "y": 0,
-      "w": 100,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.flowLayoutPanelElement.comboBoxXrayLine",
-    "type": "ComboBox",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.flowLayoutPanelElement.comboBoxXrayLine.png",
-    "bounds": {
-      "x": 125,
-      "y": 0,
-      "w": 56,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxEnergy",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxEnergy.png",
-    "bounds": {
-      "x": 5,
-      "y": 0,
-      "w": 158,
-      "h": 27
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxEnergy.textBox",
-    "type": "TextBox",
-    "text": "20",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxEnergy.textBox.png",
-    "bounds": {
-      "x": 45,
-      "y": 2,
-      "w": 92,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxEnergy.labelHeader",
-    "type": "Label",
-    "text": "Energy",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxEnergy.labelHeader.png",
-    "bounds": {
-      "x": 0,
-      "y": 2,
-      "w": 45,
-      "h": 24
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxEnergy.labelFooter",
-    "type": "Label",
-    "text": "kV",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxEnergy.labelFooter.png",
-    "bounds": {
-      "x": 137,
-      "y": 2,
-      "w": 20,
-      "h": 24
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength",
-    "type": "NumericBox",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength.png",
-    "bounds": {
-      "x": 5,
-      "y": 27,
-      "w": 187,
-      "h": 27
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength.textBox",
-    "type": "TextBox",
-    "text": "0.085885141045",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength.textBox.png",
-    "bounds": {
-      "x": 75,
-      "y": 2,
-      "w": 98,
-      "h": 25
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength.labelHeader",
-    "type": "Label",
-    "text": "Wavelength",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanel2.numericBoxWaveLength.labelHeader.png",
-    "bounds": {
-      "x": 0,
-      "y": 2,
-      "w": 75,
-      "h": 24
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanelWaveSource",
-    "type": "FlowLayoutPanel",
-    "text": "",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanelWaveSource.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 210,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanelWaveSource.radioButtonXray",
-    "type": "RadioButton",
-    "text": "X-ray",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanelWaveSource.radioButtonXray.png",
-    "bounds": {
-      "x": 0,
-      "y": 0,
-      "w": 56,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanelWaveSource.radioButtonElectron",
-    "type": "RadioButton",
-    "text": "Electron",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanelWaveSource.radioButtonElectron.png",
-    "bounds": {
-      "x": 56,
-      "y": 0,
-      "w": 73,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanelWaveSource.radioButtonNeutron",
-    "type": "RadioButton",
-    "text": "Neutron",
-    "image": "FormStereonet.tabControl.tabPage4.waveLengthControl.flowLayoutPanelWaveSource.radioButtonNeutron.png",
-    "bounds": {
-      "x": 129,
-      "y": 0,
-      "w": 74,
-      "h": 23
-    }
-  },
-  {
-    "path": "FormStereonet.menuStrip1",
+    "path": "FormImageSimulator.menuStrip1",
     "type": "MenuStrip",
     "text": "menuStrip1",
-    "image": "FormStereonet.menuStrip1.png",
+    "image": "FormImageSimulator.menuStrip1.png",
     "bounds": {
       "x": 0,
       "y": 0,
-      "w": 911,
-      "h": 25
+      "w": 954,
+      "h": 24
     }
   }
 ]
