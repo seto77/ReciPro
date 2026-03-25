@@ -140,6 +140,7 @@
             labelMasterPattern2DHemisphere = new System.Windows.Forms.Label();
             comboBoxMasterPattern2DHemisphere = new System.Windows.Forms.ComboBox();
             buttonCreateMasterPattern = new System.Windows.Forms.Button();
+            buttonGenerateEBSDFromMaster = new System.Windows.Forms.Button(); // 260325Cl 追加
             labelMasterPatternInfo = new System.Windows.Forms.Label();
             panelMasterPattern3D = new System.Windows.Forms.Panel();
             panelMasterPattern3DAxes = new System.Windows.Forms.Panel();
@@ -1814,7 +1815,23 @@
             buttonCreateMasterPattern.Text = "Build MasterPattern";
             buttonCreateMasterPattern.UseVisualStyleBackColor = false;
             buttonCreateMasterPattern.Click += buttonCreateMasterPattern_Click;
-            // 
+            //
+            // buttonGenerateEBSDFromMaster // 260325Cl 追加
+            //
+            buttonGenerateEBSDFromMaster.AutoSize = true;
+            buttonGenerateEBSDFromMaster.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonGenerateEBSDFromMaster.BackColor = System.Drawing.Color.SteelBlue;
+            buttonGenerateEBSDFromMaster.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            buttonGenerateEBSDFromMaster.ForeColor = System.Drawing.Color.White;
+            buttonGenerateEBSDFromMaster.Location = new System.Drawing.Point(155, 641);
+            buttonGenerateEBSDFromMaster.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            buttonGenerateEBSDFromMaster.Name = "buttonGenerateEBSDFromMaster";
+            buttonGenerateEBSDFromMaster.Size = new System.Drawing.Size(90, 27);
+            buttonGenerateEBSDFromMaster.TabIndex = 148;
+            buttonGenerateEBSDFromMaster.Text = "Generate EBSD";
+            buttonGenerateEBSDFromMaster.UseVisualStyleBackColor = false;
+            buttonGenerateEBSDFromMaster.Click += buttonGenerateEBSDFromMaster_Click;
+            //
             // labelMasterPatternInfo
             // 
             labelMasterPatternInfo.AutoSize = true;
@@ -1860,6 +1877,7 @@
             groupBoxMasterPattern.Controls.Add(comboBoxMasterPattern2DHemisphere);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
             groupBoxMasterPattern.Controls.Add(buttonCreateMasterPattern);
+            groupBoxMasterPattern.Controls.Add(buttonGenerateEBSDFromMaster); // 260325Cl 追加
             groupBoxMasterPattern.Controls.Add(labelMasterPatternInfo);
             groupBoxMasterPattern.Dock = System.Windows.Forms.DockStyle.Right;
             groupBoxMasterPattern.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
@@ -2253,6 +2271,7 @@
         private System.Windows.Forms.Label labelMasterPatternDepthUnit;
         private System.Windows.Forms.TrackBar trackBarMasterPatternDepth;
         private System.Windows.Forms.Button buttonCreateMasterPattern;
+        private System.Windows.Forms.Button buttonGenerateEBSDFromMaster; // 260325Cl 追加
         private System.Windows.Forms.Label labelMasterPatternInfo;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPatternSelectors;
         private System.Windows.Forms.GroupBox groupBoxMasterPattern;

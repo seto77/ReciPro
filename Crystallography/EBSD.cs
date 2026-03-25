@@ -545,7 +545,90 @@ namespace Crystallography
             return directions;
         }
 
-public static double SqrtPI=Math.Sqrt(Math.PI);
+        public static double SqrtPI = Math.Sqrt(Math.PI);
+
+        /// <summary>
+        /// 球面方向を Rosca-Lambert 等積正方形上の座標 (a, b) へ逆変換する。260325Cl 追加
+        /// </summary>
+        public static (double a, double b) SphereToRoscaLambert(double x, double y, double z)
+        {
+            double len = Math.Sqrt(x * x + y * y + z * z);
+            if (len < 1e-15)
+                return (0, 0);
+            x /= len; y /= len; z /= len;
+
+            // 球面→ディスク (A, B)
+            double radialScale = z >= 0 ? Math.Sqrt(Math.Max(0.0, (1.0 + z) / 2.0))
+                                        : Math.Sqrt(Math.Max(0.0, (1.0 - z) / 2.0));
+            if (radialScale < 1e-15)
+                return (0, 0);
+
+            double A = x / radialScale, B = y / radialScale;
+
+            // ディスク→正方形 (a, b): Shirley/Rosca 逆変換
+            // 順変換では A = (2a/√π)cos(θ), B = (2a/√π)sin(θ) なので B/A = tan(θ)。
+            // a の符号によらず成立するため atan(B/A) を使う (atan2 は a<0 で θ±π を返し誤り)。
+            double a, b;
+            if (Math.Abs(A) < 1e-15 && Math.Abs(B) < 1e-15)
+                (a, b) = (0, 0);
+            else if (Math.Abs(A) >= Math.Abs(B))
+            {
+                double r = Math.Sqrt(A * A + B * B);
+                a = Math.Sign(A) * r * SqrtPI / 2.0;
+                b = 4.0 * a / Math.PI * Math.Atan(B / A); // 260325Cl: Atan2→Atan に修正
+            }
+            else
+            {
+                double r = Math.Sqrt(A * A + B * B);
+                b = Math.Sign(B) * r * SqrtPI / 2.0;
+                a = 4.0 * b / Math.PI * Math.Atan(A / B); // 260325Cl: Atan2→Atan に修正
+            }
+            return (a, b);
+        }
+
+        /// <summary>
+        /// Rosca-Lambert 正方形座標 (a, b) で plane 上の強度をバイリニア補間する。260325Cl 追加
+        /// </summary>
+        public static float InterpolatePlane(float[] plane, int gridSize, double a, double b)
+        {
+            if (plane == null || plane.Length != gridSize * gridSize || gridSize <= 0)
+                return 0;
+
+            var step = 2.0 * SquareLimit / gridSize;
+            var w = (a + SquareLimit) / step - 0.5;
+            var h = (SquareLimit - b) / step - 0.5;
+
+            int w0 = (int)Math.Floor(w), h0 = (int)Math.Floor(h);
+            double fw = w - w0, fh = h - h0;
+            int w1 = w0 + 1, h1 = h0 + 1;
+
+            w0 = Math.Clamp(w0, 0, gridSize - 1);
+            w1 = Math.Clamp(w1, 0, gridSize - 1);
+            h0 = Math.Clamp(h0, 0, gridSize - 1);
+            h1 = Math.Clamp(h1, 0, gridSize - 1);
+
+            var v00 = plane[h0 * gridSize + w0];
+            var v10 = plane[h0 * gridSize + w1];
+            var v01 = plane[h1 * gridSize + w0];
+            var v11 = plane[h1 * gridSize + w1];
+
+            return (float)((1 - fw) * (1 - fh) * v00 + fw * (1 - fh) * v10 + (1 - fw) * fh * v01 + fw * fh * v11);
+        }
+
+        /// <summary>
+        /// 指定 energy/depth の MasterPattern から、任意方向の強度をバイリニア補間で取得する。260325Cl 追加
+        /// direction は結晶座標系の単位ベクトル。
+        /// </summary>
+        public float LookupIntensity(int energyIndex, int depthIndex, double dirX, double dirY, double dirZ)
+        {
+            var hemisphere = dirZ >= 0 ? EbsdMasterPatternHemisphere.PositiveZ : EbsdMasterPatternHemisphere.NegativeZ;
+            var plane = GetPlane(hemisphere, energyIndex, depthIndex);
+            if (plane == null || plane.Length == 0)
+                return 0;
+
+            var (a, b) = SphereToRoscaLambert(dirX, dirY, dirZ);
+            return InterpolatePlane(plane, GridSize, a, b);
+        }
 
         /// <summary>
         /// Rosca-Lambert 等積正方形上の座標を球面方向へ変換する。
@@ -553,7 +636,7 @@ public static double SqrtPI=Math.Sqrt(Math.PI);
         public static Vector3DBase RoscaLambertToSphere(double a, double b, EbsdMasterPatternHemisphere hemisphere)
         {
             if (Math.Abs(a) < 1.0E-15 && Math.Abs(b) < 1.0E-15)
-                return hemisphere == EbsdMasterPatternHemisphere.PositiveZ                    ? new Vector3DBase(0, 0, 1)                    : new Vector3DBase(0, 0, -1);
+                return hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? new Vector3DBase(0, 0, 1) : new Vector3DBase(0, 0, -1);
 
             double A, B;
             if (Math.Abs(b) <= Math.Abs(a))
@@ -568,14 +651,14 @@ public static double SqrtPI=Math.Sqrt(Math.PI);
             {
                 // (260321Ch) Rosca の square -> disk 変換式。|a|<=|b| の枝。
                 var theta = a * Math.PI / (4.0 * b);
-                var (sin, cos)=Math.SinCos(theta);
+                var (sin, cos) = Math.SinCos(theta);
                 A = 2.0 * b / SqrtPI * sin;
                 B = 2.0 * b / SqrtPI * cos;
             }
 
             var rho2 = A * A + B * B;
             var radialScale = Math.Sqrt(Math.Max(0.0, 1.0 - rho2 / 4.0));
-            var z = hemisphere == EbsdMasterPatternHemisphere.PositiveZ                ? 1.0 - rho2 / 2.0                : -1.0 + rho2 / 2.0;
+            var z = hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? 1.0 - rho2 / 2.0 : -1.0 + rho2 / 2.0;
             return new Vector3DBase(radialScale * A, radialScale * B, z);
         }
     }
@@ -584,7 +667,7 @@ public static double SqrtPI=Math.Sqrt(Math.PI);
     /// MasterPattern が対応する半球。
     /// </summary>
     public enum EbsdMasterPatternHemisphere
-        {
+    {
         NegativeZ = -1,
         PositiveZ = 1,
     }

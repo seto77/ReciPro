@@ -134,6 +134,7 @@ public partial class FormEBSD : CaptureFormBase
 
         // InitializeMasterPatternPreviewControls(); // (260321Ch) 旧案: preview UI をコード側で組み立てていた
         buttonStop.Click += buttonStop_Click; // (260321Ch) 既存の Stop ボタンを通常 EBSD と MasterPattern の両方へ使う
+        UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を初期値で計算
     }
 
     private void Timer_Tick(object sender, EventArgs e)
@@ -441,6 +442,7 @@ public partial class FormEBSD : CaptureFormBase
     /// <param name="e"></param>
     private void numericBoxDetRadius_ValueChanged(object sender, EventArgs e)
     {
+        UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を再計算
         DrawGeometry();
         Draw();
     }
@@ -478,6 +480,8 @@ public partial class FormEBSD : CaptureFormBase
     {
 
         DrawKikuchiLine();
+
+        DrawEBSD();
 
         DrawGeometry();
     }
@@ -708,7 +712,7 @@ public partial class FormEBSD : CaptureFormBase
 
     private void graphicsBox_MouseUp(object sender, MouseEventArgs e)
     {
-
+        Draw();
     }
 
     private PointD lastMousePos = new();
@@ -1128,6 +1132,250 @@ public partial class FormEBSD : CaptureFormBase
             Clipboard.SetDataObject(Pbmp.GetImage());
     }
 
+    #region MasterPattern から EBSD パターンを生成 // 260325Cl 追加
+
+    /// <summary>
+    /// MasterPattern から単一 energy/depth の EBSD パターンを生成する。260325Cl 追加
+    /// groupBoxOutput 内の trackBarOutputEnergy / trackBarOutputThickness で選択されたスライスを使用。
+    /// </summary>
+    private void buttonGenerateEBSDFromMaster_Click(object sender, EventArgs e)
+    {
+        DrawEBSD();
+    }
+
+    bool skipEBSD_Rendering = false;
+    private double[] ebsdValues = []; // 260325Cl: EBSD パターン描画用バッファ (サイズ変更時のみ再割り当て)
+    private int ebsdCachedWidth = 0, ebsdCachedHeight = 0; // 260325Cl: PseudoBitmap 再生成判定用
+
+    // 260325Cl 追加: ピクセルごとの MasterPattern 参照テーブル (エネルギー・深さに依存しない)
+    // idx[i] = 左上グリッドインデックス, wt[i*2] = fw, wt[i*2+1] = fh, posZ[i] = 半球
+    private int[] ebsdLookupIdx = [];
+    private float[] ebsdLookupWt = [];
+    private bool[] ebsdLookupPosZ = [];
+    private int ebsdLookupGridSize; // 260325Cl: Apply で idx+gridSize の復元に使用
+
+    // 260325Cl 追加: DetTilt/SmpTilt 由来の回転係数キャッシュ (tilt 変更時のみ再計算)
+    private double ebsdYCoeffPy, ebsdZCoeffPy, ebsdYConst, ebsdZConst;
+
+    /// <summary>DetTilt/SmpTilt から回転係数を再計算する。260325Cl 追加</summary>
+    private void UpdateEbsdTiltCoeffs()
+    {
+        var (sinDet, cosDet) = Math.SinCos(DetTilt);
+        var (sinSmp, cosSmp) = Math.SinCos(SmpTilt);
+        ebsdYCoeffPy = cosSmp * cosDet + sinSmp * sinDet;
+        ebsdZCoeffPy = -sinSmp * cosDet + cosSmp * sinDet;
+        ebsdYConst = cosSmp * DetY + sinSmp * DetZ;
+        ebsdZConst = -sinSmp * DetY + cosSmp * DetZ;
+    }
+
+    /// <summary>
+    /// 検出器ジオメトリと結晶方位から、ピクセルごとの MasterPattern 参照テーブルを構築する。260325Cl 追加
+    /// エネルギー・深さに依存しないため、畳み込み時は 1 回だけ呼べばよい。
+    /// </summary>
+    private unsafe void BuildEbsdLookupTable(int width, int height) // 260325Cl: unsafe 化
+    {
+        var totalPixels = width * height;
+        // 260325Cl: idx は1個/pixel, wt は2個/pixel (fw, fh) に圧縮
+        if (ebsdLookupIdx.Length != totalPixels)
+        {
+            ebsdLookupIdx = new int[totalPixels];
+            ebsdLookupWt = new float[totalPixels * 2];
+            ebsdLookupPosZ = new bool[totalPixels];
+        }
+
+        // 260325Cl: tilt 係数はキャッシュ済み (UpdateEbsdTiltCoeffs で更新)
+        var yCoeffPy = ebsdYCoeffPy;
+        var zCoeffPy = ebsdZCoeffPy;
+        var yConst = ebsdYConst;
+        var zConst = ebsdZConst;
+
+        var Ri = Crystal.RotationMatrix.Inverse();
+        double ax = -Ri.E11, ay = -Ri.E21, az = -Ri.E31;
+        double bx = Ri.E12 * yCoeffPy + Ri.E13 * zCoeffPy;
+        double by = Ri.E22 * yCoeffPy + Ri.E23 * zCoeffPy;
+        double bz = Ri.E32 * yCoeffPy + Ri.E33 * zCoeffPy;
+        double cx = Ri.E12 * yConst + Ri.E13 * zConst;
+        double cy = Ri.E22 * yConst + Ri.E23 * zConst;
+        double cz = Ri.E32 * yConst + Ri.E33 * zConst;
+
+        double scaleW = DetR / width, scaleH = DetR / height;
+        double ax2 = ax * scaleW, ay2 = ay * scaleW, az2 = az * scaleW;
+        double bx2 = bx * scaleH, by2 = by * scaleH, bz2 = bz * scaleH;
+
+        var gridSize = MasterPattern.GridSize;
+        ebsdLookupGridSize = gridSize; // 260325Cl: Apply 用にキャッシュ
+        var sqLim = EbsdMasterPattern.SquareLimit;
+        var invStep = gridSize / (2.0 * sqLim);
+        var inv_PI = 1.0 / Math.PI;
+        var gridMax = gridSize - 1;
+        var startPxFactor = 1 - width; // (260325Ch) 列方向は等間隔なので、旧 pxFactor 再計算を増分更新へ置き換える
+        var dxStep = 2.0 * ax2; // (260325Ch)
+        var dyStep = 2.0 * ay2; // (260325Ch)
+        var dzStep = 2.0 * az2; // (260325Ch)
+        var roscaRadiusScale = Math.PI * 0.5; // (260325Ch) sqrt(π/2 * (1 - |z|)) — 260325Cl: π/2 が正しい (a² = π(1-|nz|)/2)
+
+        fixed (int* pIdx = ebsdLookupIdx)
+        fixed (float* pWt = ebsdLookupWt)
+        fixed (bool* pPosZ = ebsdLookupPosZ)
+        {
+            // ローカルコピーで Parallel.For のキャプチャを軽くする
+            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
+
+            System.Threading.Tasks.Parallel.For(0, height, h =>
+            {
+                double pyFactor = 2 * h + 1 - height;
+                double rowBx = bx2 * pyFactor + cx,rowBy = by2 * pyFactor + cy,rowBz = bz2 * pyFactor + cz;
+                int rowOffset = h * width;
+                // double pxFactor = 2 * w + 1 - width; // (260325Ch) 旧計算
+                double dx = ax2 * startPxFactor + rowBx,dy = ay2 * startPxFactor + rowBy,dz = az2 * startPxFactor + rowBz;
+
+                for (int w = 0; w < width; w++)
+                {
+                    int i = rowOffset + w;
+
+                    // 正規化
+                    double absDx = Math.Abs(dx),absDy = Math.Abs(dy);
+                    double invLen = 1.0 / Math.Sqrt(dx * dx + dy * dy + dz * dz);
+                    double absDzNorm = Math.Abs(dz) * invLen;
+                    pPosZ0[i] = dz >= 0;
+
+                    double a, b;
+                    if (absDx < 1e-15 && absDy < 1e-15) { a = 0; b = 0; }
+                    else
+                    {
+                        // (260325Ch) A/B は正規化と radialScale が打ち消し合うので dx/dy の比で十分
+                        double edgeRadius = Math.Sqrt(Math.Max(0.0, roscaRadiusScale * (1.0 - absDzNorm)));
+                        if (absDx >= absDy)
+                        {
+                            a = dx >= 0 ? edgeRadius : -edgeRadius;
+                            b = 4.0 * a * inv_PI * Math.Atan(dy / dx);
+                        }
+                        else
+                        {
+                            b = dy >= 0 ? edgeRadius : -edgeRadius;
+                            a = 4.0 * b * inv_PI * Math.Atan(dx / dy);
+                        }
+                    }
+
+                    // 260325Cl: グリッド座標 — 左上インデックス + fw, fh のみ保存
+                    double gw = (a + sqLim) * invStep - 0.5, gh = (sqLim - b) * invStep - 0.5;
+                    int w0 = (int)Math.Floor(gw), h0 = (int)Math.Floor(gh);
+                    double fw = gw - w0, fh = gh - h0;
+                    // 端点処理: w0, h0 を [0, gridMax-1] にクランプ (右下隣が常に有効)
+                    if (w0 < 0) { w0 = 0; fw = 0; } else if (w0 >= gridMax) { w0 = gridMax - 1; fw = 1; }
+                    if (h0 < 0) { h0 = 0; fh = 0; } else if (h0 >= gridMax) { h0 = gridMax - 1; fh = 1; }
+
+                    pIdx0[i] = h0 * gridSize + w0;
+                    int i2 = i * 2;
+                    pWt0[i2] = (float)fw;
+                    pWt0[i2 + 1] = (float)fh;
+
+                    dx += dxStep;
+                    dy += dyStep;
+                    dz += dzStep;
+                }
+            });
+        }
+    }
+
+    /// <summary>
+    /// 構築済みルックアップテーブルを使い、指定 energy/depth の EBSD パターンを values に書き込む。260325Cl 追加
+    /// </summary>
+    private unsafe void ApplyEbsdLookupSingleSlice(double[] values, int totalPixels, float[] posPlane, float[] negPlane) // 260325Cl: unsafe 化
+    {
+        if (posPlane == null && negPlane == null) return;
+
+        var gs = ebsdLookupGridSize; // 260325Cl: 左上 idx から右・下隣を復元
+
+        fixed (int* pIdx = ebsdLookupIdx)
+        fixed (float* pWt = ebsdLookupWt)
+        fixed (bool* pPosZ = ebsdLookupPosZ)
+        fixed (double* pVal = values)
+        fixed (float* pPos = posPlane ?? Array.Empty<float>())
+        fixed (float* pNeg = negPlane ?? Array.Empty<float>())
+        {
+            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
+            var pVal0 = pVal; var pPos0 = pPos; var pNeg0 = pNeg;
+            var hasPos = posPlane != null && posPlane.Length > 0;
+            var hasNeg = negPlane != null && negPlane.Length > 0;
+
+            System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+            {
+                float* plane = pPosZ0[i] ? pPos0 : pNeg0;
+                bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
+                if (!hasPlane) { pVal0[i] = 0; return; }
+                int idx = pIdx0[i];
+                int i2 = i * 2;
+                float fw = pWt0[i2], fh = pWt0[i2 + 1];
+                float w0 = (1 - fw), w1 = fw;
+                pVal0[i] = (w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
+                         + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh;
+            });
+        }
+    }
+
+    public void DrawEBSD()
+    {
+        if (MasterPattern == null)
+            return;
+
+        if (skipEBSD_Rendering) return;
+        skipEBSD_Rendering = true;
+
+        var energyIndex = trackBarOutputEnergy.Value;
+        var depthIndex = trackBarOutputThickness.Value;
+
+        if ((uint)energyIndex >= (uint)MasterPattern.Energies.Length || (uint)depthIndex >= (uint)MasterPattern.Depths.Length)
+        {
+            skipEBSD_Rendering = false;
+            return;
+        }
+
+        int width = graphicsBox.ClientRectangle.Width, height = graphicsBox.ClientRectangle.Height;
+        if (width <= 0 || height <= 0) { skipEBSD_Rendering = false; return; }
+
+        sw1.Restart();
+
+        // Step 1: ルックアップテーブル構築 (方向計算 + Rosca-Lambert + 補間係数)
+        BuildEbsdLookupTable(width, height);
+
+        // Step 2: 単一スライスの補間 (将来の畳み込みではここをループに変える)
+        var totalPixels = width * height;
+        if (ebsdValues.Length != totalPixels)
+            ebsdValues = new double[totalPixels];
+
+        var mp = MasterPattern;
+        var posPlane = mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, energyIndex, depthIndex);
+        var negPlane = mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, energyIndex, depthIndex);
+        ApplyEbsdLookupSingleSlice(ebsdValues, totalPixels, posPlane, negPlane);
+
+        // Step 3: 表示
+        if (Pbmp == null || ebsdCachedWidth != width || ebsdCachedHeight != height)
+        {
+            Pbmp?.Dispose();
+            Pbmp = new PseudoBitmap(ebsdValues, width) { AlphaEnabled = true };
+            Pbmp.FilterAlfha = Enumerable.Repeat((byte)255, totalPixels).ToList();
+            ebsdCachedWidth = width;
+            ebsdCachedHeight = height;
+            groupBoxOutput.Enabled = true;
+        }
+        else
+        {
+            Pbmp.SrcValuesGray = ebsdValues;
+            Pbmp.SrcValuesGrayOriginal = ebsdValues;
+        }
+
+        AdjustImage();
+
+        var energy = MasterPattern.Energies[energyIndex];
+        var depth = MasterPattern.Depths[depthIndex];
+        toolStripStatusLabel1.Text = $"EBSD from MasterPattern: E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms.";
+
+        skipEBSD_Rendering = false;
+    }
+
+    #endregion
+
     #region 画像を生成
     private void button1_Click(object sender, EventArgs e)
     {
@@ -1354,6 +1602,15 @@ public partial class FormEBSD : CaptureFormBase
         toolStripStatusLabel1.Text = $"MasterPattern built in {sec:f2} s. ({e.Request.GridSize} x {e.Request.GridSize}, full sphere)";
         // labelMasterPatternInfo.Text = $"Ready: {GetHemisphereText(e.Request.Hemisphere)}, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // (260321Ch) 旧案
         labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths.";
+
+        // 260325Cl 追加: MasterPattern 完了時に groupBoxOutput を有効化し、trackbar を同期する
+        groupBoxOutput.Enabled = true;
+        trackBarOutputEnergy.Maximum = Math.Max(0, MasterPattern.Energies.Length - 1);
+        trackBarOutputThickness.Maximum = Math.Max(0, MasterPattern.Depths.Length - 1);
+        trackBarOutputEnergy.Value = 0;
+        trackBarOutputThickness.Value = 0;
+        textBoxEnergy.Text = MasterPattern.Energies.Length > 0 ? MasterPattern.Energies[0].ToString() : "";
+        textBoxThickness.Text = MasterPattern.Depths.Length > 0 ? MasterPattern.Depths[0].ToString() : "";
     }
 
     /// <summary>
