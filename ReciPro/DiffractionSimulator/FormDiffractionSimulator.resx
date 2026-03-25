@@ -1,110 +1,51 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!--
-    Microsoft ResX Schema
-
-    Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
-    associated with the data types.
-
-    Example:
-
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-
-    There are any number of "resheader" rows that contain simple
-    name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
-    mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
-    extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
-    read any of the formats listed below.
-
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:schema id="root">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xs:element name="root" ns1:IsDataSet="true">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="metadata">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" />
+              </xs:sequence>
+              <xs:attribute name="name" use="required" type="xsd:string" />
+              <xs:attribute name="type" type="xsd:string" />
+              <xs:attribute name="mimetype" type="xsd:string" />
+              <xs:attribute ref="xml:space" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="assembly">
+            <xs:complexType>
+              <xs:attribute name="alias" type="xsd:string" />
+              <xs:attribute name="name" type="xsd:string" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="data">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" ns1:Ordinal="1" />
+                <xs:element name="comment" type="xsd:string" minOccurs="0" ns1:Ordinal="2" />
+              </xs:sequence>
+              <xs:attribute name="name" type="xsd:string" use="required" ns1:Ordinal="1" />
+              <xs:attribute name="type" type="xsd:string" ns1:Ordinal="3" />
+              <xs:attribute name="mimetype" type="xsd:string" ns1:Ordinal="4" />
+              <xs:attribute ref="xml:space" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="resheader">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" ns1:Ordinal="1" />
+              </xs:sequence>
+              <xs:attribute name="name" type="xsd:string" use="required" />
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -1087,18 +1028,6 @@
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;groupBoxStringSize.Name" xml:space="preserve">
     <value>groupBoxStringSize</value>
   </data>
@@ -1138,18 +1067,6 @@
   <data name="tabPageGeneral.Text" xml:space="preserve">
     <value>General</value>
   </data>
-  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;trackBarStrSize.Name" xml:space="preserve">
     <value>trackBarStrSize</value>
   </data>
@@ -1177,18 +1094,6 @@
   <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
     <value>Set a string size</value>
   </data>
-  <data name="&gt;&gt;groupBoxStringSize.Name" xml:space="preserve">
-    <value>groupBoxStringSize</value>
-  </data>
-  <data name="&gt;&gt;groupBoxStringSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxStringSize.Parent" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;groupBoxStringSize.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>271, 17</value>
   </metadata>
@@ -1209,18 +1114,6 @@
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
     <value>Set a size of strings</value>
-  </data>
-  <data name="&gt;&gt;trackBarStrSize.Name" xml:space="preserve">
-    <value>trackBarStrSize</value>
-  </data>
-  <data name="&gt;&gt;trackBarStrSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarStrSize.Parent" xml:space="preserve">
-    <value>groupBoxStringSize</value>
-  </data>
-  <data name="&gt;&gt;trackBarStrSize.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;colorControlString.Name" xml:space="preserve">
     <value>colorControlString</value>
@@ -1318,18 +1211,6 @@
   <data name="groupBoxColor.Text" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="&gt;&gt;groupBoxColor.Name" xml:space="preserve">
-    <value>groupBoxColor</value>
-  </data>
-  <data name="&gt;&gt;groupBoxColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxColor.Parent" xml:space="preserve">
-    <value>tabPageGeneral</value>
-  </data>
-  <data name="&gt;&gt;groupBoxColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="colorControlString.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1372,18 +1253,6 @@
   <data name="colorControlString.ToolTip1" xml:space="preserve">
     <value>Set a color of strings</value>
   </data>
-  <data name="&gt;&gt;colorControlString.Name" xml:space="preserve">
-    <value>colorControlString</value>
-  </data>
-  <data name="&gt;&gt;colorControlString.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlString.Parent" xml:space="preserve">
-    <value>groupBoxColor</value>
-  </data>
-  <data name="&gt;&gt;colorControlString.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1408,18 +1277,6 @@
   </data>
   <data name="label14.ToolTip" xml:space="preserve">
     <value>Set a color of the foot of a perpendicular from the sample</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>groupBoxColor</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="colorControlOrigin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1463,18 +1320,6 @@
   <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
     <value>Set a color of the direct spot</value>
   </data>
-  <data name="&gt;&gt;colorControlOrigin.Name" xml:space="preserve">
-    <value>colorControlOrigin</value>
-  </data>
-  <data name="&gt;&gt;colorControlOrigin.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlOrigin.Parent" xml:space="preserve">
-    <value>groupBoxColor</value>
-  </data>
-  <data name="&gt;&gt;colorControlOrigin.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="colorControlFoot.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1511,18 +1356,6 @@
   <data name="colorControlFoot.TabIndex" type="System.Int32, mscorlib">
     <value>74</value>
   </data>
-  <data name="&gt;&gt;colorControlFoot.Name" xml:space="preserve">
-    <value>colorControlFoot</value>
-  </data>
-  <data name="&gt;&gt;colorControlFoot.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlFoot.Parent" xml:space="preserve">
-    <value>groupBoxColor</value>
-  </data>
-  <data name="&gt;&gt;colorControlFoot.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="checkBoxShowFootPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1547,18 +1380,6 @@
   <data name="checkBoxShowFootPosition.ToolTip" xml:space="preserve">
     <value>Show foot position</value>
   </data>
-  <data name="&gt;&gt;checkBoxShowFootPosition.Name" xml:space="preserve">
-    <value>checkBoxShowFootPosition</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFootPosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFootPosition.Parent" xml:space="preserve">
-    <value>groupBoxColor</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFootPosition.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="checkBoxShowDirectPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1582,18 +1403,6 @@
   </data>
   <data name="checkBoxShowDirectPosition.ToolTip" xml:space="preserve">
     <value>Show direct position</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowDirectPosition.Name" xml:space="preserve">
-    <value>checkBoxShowDirectPosition</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowDirectPosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowDirectPosition.Parent" xml:space="preserve">
-    <value>groupBoxColor</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowDirectPosition.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="colorControlBackGround.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1636,18 +1445,6 @@
   </data>
   <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
     <value>Set a background color</value>
-  </data>
-  <data name="&gt;&gt;colorControlBackGround.Name" xml:space="preserve">
-    <value>colorControlBackGround</value>
-  </data>
-  <data name="&gt;&gt;colorControlBackGround.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlBackGround.Parent" xml:space="preserve">
-    <value>groupBoxColor</value>
-  </data>
-  <data name="&gt;&gt;colorControlBackGround.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="&gt;&gt;radioButtonKikuchiThresholdOfStructureFactor.Name" xml:space="preserve">
     <value>radioButtonKikuchiThresholdOfStructureFactor</value>
@@ -1763,18 +1560,6 @@
   <data name="tabPageKikuchi.ToolTipText" xml:space="preserve">
     <value>Kikuchi lines</value>
   </data>
-  <data name="&gt;&gt;tabPageKikuchi.Name" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;tabPageKikuchi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageKikuchi.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageKikuchi.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1793,18 +1578,6 @@
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>Structure factor</value>
   </data>
-  <data name="&gt;&gt;radioButtonKikuchiThresholdOfStructureFactor.Name" xml:space="preserve">
-    <value>radioButtonKikuchiThresholdOfStructureFactor</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiThresholdOfStructureFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiThresholdOfStructureFactor.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiThresholdOfStructureFactor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="checkBoxKikuchiLine_Kinematical.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1820,18 +1593,6 @@
   <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
     <value>Reflect the structure factor in the Kikuchi line density</value>
   </data>
-  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.Name" xml:space="preserve">
-    <value>checkBoxKikuchiLine_Kinematical</value>
-  </data>
-  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;checkBoxKikuchiLine_Kinematical.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="radioButtonKikuchiThresholdOfLength.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1846,18 +1607,6 @@
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
     <value>Threshold of 1/d</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiThresholdOfLength.Name" xml:space="preserve">
-    <value>radioButtonKikuchiThresholdOfLength</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiThresholdOfLength.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiThresholdOfLength.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiThresholdOfLength.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1885,18 +1634,6 @@
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiThreadSholdOfStructureFactor.Name" xml:space="preserve">
-    <value>numericBoxKikuchiThreadSholdOfStructureFactor</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiThreadSholdOfStructureFactor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiThreadSholdOfStructureFactor.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiThreadSholdOfStructureFactor.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1938,18 +1675,6 @@ Kikuchi lines under this value are simulated.
 Kikuchi lines under this value are simulated. 
 </value>
   </data>
-  <data name="&gt;&gt;numericBoxKikuchiThresholdOfLength.Name" xml:space="preserve">
-    <value>numericBoxKikuchiThresholdOfLength</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiThresholdOfLength.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiThresholdOfLength.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;numericBoxKikuchiThresholdOfLength.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="colorControlExcessLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1986,18 +1711,6 @@ Kikuchi lines under this value are simulated.
   <data name="colorControlExcessLine.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;colorControlExcessLine.Name" xml:space="preserve">
-    <value>colorControlExcessLine</value>
-  </data>
-  <data name="&gt;&gt;colorControlExcessLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlExcessLine.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;colorControlExcessLine.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="trackBarLineWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2015,18 +1728,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
     <value>Set a line width of Kikuchi lines</value>
-  </data>
-  <data name="&gt;&gt;trackBarLineWidth.Name" xml:space="preserve">
-    <value>trackBarLineWidth</value>
-  </data>
-  <data name="&gt;&gt;trackBarLineWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarLineWidth.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;trackBarLineWidth.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2051,18 +1752,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>Line width of Kikuchi lines</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>tabPageKikuchi</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="&gt;&gt;colorControlDebyeRing.Name" xml:space="preserve">
     <value>colorControlDebyeRing</value>
@@ -2139,18 +1828,6 @@ Kikuchi lines under this value are simulated.
   <data name="tabPageDebye.Text" xml:space="preserve">
     <value>Debye rings</value>
   </data>
-  <data name="&gt;&gt;tabPageDebye.Name" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;tabPageDebye.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageDebye.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageDebye.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="colorControlDebyeRing.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2193,18 +1870,6 @@ Kikuchi lines under this value are simulated.
   <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
     <value>Set a color of Debye rings</value>
   </data>
-  <data name="&gt;&gt;colorControlDebyeRing.Name" xml:space="preserve">
-    <value>colorControlDebyeRing</value>
-  </data>
-  <data name="&gt;&gt;colorControlDebyeRing.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlDebyeRing.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;colorControlDebyeRing.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="checkBoxDebyeRingLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2231,18 +1896,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
     <value>By checking, index labels for Debye rings are displayed</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingLabel.Name" xml:space="preserve">
-    <value>checkBoxDebyeRingLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingLabel.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2272,18 +1925,6 @@ Kikuchi lines under this value are simulated.
   <data name="checkBoxDebyeRingIgnoreIntensity.ToolTip" xml:space="preserve">
     <value>By checking, all Debye rings are displayed as a same intensity</value>
   </data>
-  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Name" xml:space="preserve">
-    <value>checkBoxDebyeRingIgnoreIntensity</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDebyeRingIgnoreIntensity.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -2305,18 +1946,6 @@ Kikuchi lines under this value are simulated.
   <data name="label6.ToolTip" xml:space="preserve">
     <value>Set the size of index strings</value>
   </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="trackBarDebyeRingWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2334,18 +1963,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="trackBarDebyeRingWidth.ToolTip" xml:space="preserve">
     <value>Set a line width of Debye rings</value>
-  </data>
-  <data name="&gt;&gt;trackBarDebyeRingWidth.Name" xml:space="preserve">
-    <value>trackBarDebyeRingWidth</value>
-  </data>
-  <data name="&gt;&gt;trackBarDebyeRingWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarDebyeRingWidth.Parent" xml:space="preserve">
-    <value>tabPageDebye</value>
-  </data>
-  <data name="&gt;&gt;trackBarDebyeRingWidth.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="&gt;&gt;checkBoxScaleLabel.Name" xml:space="preserve">
     <value>checkBoxScaleLabel</value>
@@ -2443,18 +2060,6 @@ Kikuchi lines under this value are simulated.
   <data name="tabPageScale.Text" xml:space="preserve">
     <value>Scale</value>
   </data>
-  <data name="&gt;&gt;tabPageScale.Name" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;tabPageScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageScale.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageScale.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="checkBoxScaleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2476,18 +2081,6 @@ Kikuchi lines under this value are simulated.
   <data name="checkBoxScaleLabel.ToolTip" xml:space="preserve">
     <value>By checking, scale labels are displayed</value>
   </data>
-  <data name="&gt;&gt;checkBoxScaleLabel.Name" xml:space="preserve">
-    <value>checkBoxScaleLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBoxScaleLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxScaleLabel.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;checkBoxScaleLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2506,18 +2099,6 @@ Kikuchi lines under this value are simulated.
   <data name="label12.Text" xml:space="preserve">
     <value>Division</value>
   </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="trackBarScaleLineWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2535,18 +2116,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="trackBarScaleLineWidth.ToolTip" xml:space="preserve">
     <value>Set a line width of scale lines</value>
-  </data>
-  <data name="&gt;&gt;trackBarScaleLineWidth.Name" xml:space="preserve">
-    <value>trackBarScaleLineWidth</value>
-  </data>
-  <data name="&gt;&gt;trackBarScaleLineWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarScaleLineWidth.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;trackBarScaleLineWidth.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2571,18 +2140,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="label16.ToolTip" xml:space="preserve">
     <value>Line width of Kikuchi lines</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="flowLayoutPanelScaleDivision.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2635,18 +2192,6 @@ Kikuchi lines under this value are simulated.
   <data name="flowLayoutPanelScaleDivision.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelScaleDivision.Name" xml:space="preserve">
-    <value>flowLayoutPanelScaleDivision</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelScaleDivision.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelScaleDivision.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelScaleDivision.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="radioButtonScaleDivisionFine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2673,18 +2218,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="radioButtonScaleDivisionFine.ToolTip" xml:space="preserve">
     <value>Set the division of scale lines</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionFine.Name" xml:space="preserve">
-    <value>radioButtonScaleDivisionFine</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionFine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionFine.Parent" xml:space="preserve">
-    <value>flowLayoutPanelScaleDivision</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionFine.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="radioButtonScaleDivisionMedium.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2713,18 +2246,6 @@ Kikuchi lines under this value are simulated.
   <data name="radioButtonScaleDivisionMedium.ToolTip" xml:space="preserve">
     <value>Set the division of scale lines</value>
   </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionMedium.Name" xml:space="preserve">
-    <value>radioButtonScaleDivisionMedium</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionMedium.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionMedium.Parent" xml:space="preserve">
-    <value>flowLayoutPanelScaleDivision</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionMedium.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="radioButtonScaleDivisionCoarse.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2751,18 +2272,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="radioButtonScaleDivisionCoarse.ToolTip" xml:space="preserve">
     <value>Set the division of scale lines</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionCoarse.Name" xml:space="preserve">
-    <value>radioButtonScaleDivisionCoarse</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionCoarse.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionCoarse.Parent" xml:space="preserve">
-    <value>flowLayoutPanelScaleDivision</value>
-  </data>
-  <data name="&gt;&gt;radioButtonScaleDivisionCoarse.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="colorControlScaleAzimuth.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2806,18 +2315,6 @@ Kikuchi lines under this value are simulated.
   <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
     <value>Set a color of azimuth scale lines</value>
   </data>
-  <data name="&gt;&gt;colorControlScaleAzimuth.Name" xml:space="preserve">
-    <value>colorControlScaleAzimuth</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleAzimuth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleAzimuth.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleAzimuth.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="colorControlScale2Theta.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2859,18 +2356,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
     <value>Set a color of 2θ scale lines</value>
-  </data>
-  <data name="&gt;&gt;colorControlScale2Theta.Name" xml:space="preserve">
-    <value>colorControlScale2Theta</value>
-  </data>
-  <data name="&gt;&gt;colorControlScale2Theta.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlScale2Theta.Parent" xml:space="preserve">
-    <value>tabPageScale</value>
-  </data>
-  <data name="&gt;&gt;colorControlScale2Theta.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3210,18 +2695,6 @@ Double left click: Display the information of the g-vector</value>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>68</value>
   </data>
-  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
-    <value>splitContainer1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="colorControl3D_SpotsNear.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3263,18 +2736,6 @@ Double left click: Display the information of the g-vector</value>
   </data>
   <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
     <value>Set a background color</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_SpotsNear.Name" xml:space="preserve">
-    <value>colorControl3D_SpotsNear</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_SpotsNear.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_SpotsNear.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_SpotsNear.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="numericBox3D_SpotRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3324,18 +2785,6 @@ Double left click: Display the information of the g-vector</value>
   <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
     <value>Set a radius of the diffraction spots in the reciprocal space</value>
   </data>
-  <data name="&gt;&gt;numericBox3D_SpotRadius.Name" xml:space="preserve">
-    <value>numericBox3D_SpotRadius</value>
-  </data>
-  <data name="&gt;&gt;numericBox3D_SpotRadius.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBox3D_SpotRadius.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;numericBox3D_SpotRadius.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="trackBar3D_Transparency.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -3353,18 +2802,6 @@ Double left click: Display the information of the g-vector</value>
   </data>
   <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
     <value>Set a size of strings</value>
-  </data>
-  <data name="&gt;&gt;trackBar3D_Transparency.Name" xml:space="preserve">
-    <value>trackBar3D_Transparency</value>
-  </data>
-  <data name="&gt;&gt;trackBar3D_Transparency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBar3D_Transparency.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;trackBar3D_Transparency.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="checkBox3D_ShowIndices.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3389,18 +2826,6 @@ Double left click: Display the information of the g-vector</value>
   </data>
   <data name="checkBox3D_ShowIndices.Text" xml:space="preserve">
     <value>Label</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_ShowIndices.Name" xml:space="preserve">
-    <value>checkBox3D_ShowIndices</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_ShowIndices.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_ShowIndices.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_ShowIndices.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="colorControl3D_SpotsFar.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3438,18 +2863,6 @@ Double left click: Display the information of the g-vector</value>
   <data name="colorControl3D_SpotsFar.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="&gt;&gt;colorControl3D_SpotsFar.Name" xml:space="preserve">
-    <value>colorControl3D_SpotsFar</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_SpotsFar.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_SpotsFar.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_SpotsFar.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="checkBox3D_MakeSpotsTransparent.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3474,18 +2887,6 @@ Double left click: Display the information of the g-vector</value>
   <data name="checkBox3D_MakeSpotsTransparent.Text" xml:space="preserve">
     <value>Make spots away from 
 Ewald sphere transparent</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_MakeSpotsTransparent.Name" xml:space="preserve">
-    <value>checkBox3D_MakeSpotsTransparent</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_MakeSpotsTransparent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_MakeSpotsTransparent.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_MakeSpotsTransparent.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="colorControl3D_Background.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3528,18 +2929,6 @@ Ewald sphere transparent</value>
   </data>
   <data name="colorControl3D_Background.ToolTip1" xml:space="preserve">
     <value>Set a background color</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_Background.Name" xml:space="preserve">
-    <value>colorControl3D_Background</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_Background.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_Background.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_Background.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="numericBoxReciprocalThreshold.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3585,18 +2974,6 @@ Ewald sphere transparent</value>
   </data>
   <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
     <value>Set pixel sizes of the simulated pattern</value>
-  </data>
-  <data name="&gt;&gt;numericBoxReciprocalThreshold.Name" xml:space="preserve">
-    <value>numericBoxReciprocalThreshold</value>
-  </data>
-  <data name="&gt;&gt;numericBoxReciprocalThreshold.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxReciprocalThreshold.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;numericBoxReciprocalThreshold.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -3657,18 +3034,6 @@ Ewald sphere transparent</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
     <value>View direction</value>
-  </data>
-  <data name="&gt;&gt;groupBoxViewDirection.Name" xml:space="preserve">
-    <value>groupBoxViewDirection</value>
-  </data>
-  <data name="&gt;&gt;groupBoxViewDirection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxViewDirection.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;groupBoxViewDirection.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3808,21 +3173,6 @@ Ewald sphere transparent</value>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
-    <value>groupBoxViewDirection</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel3" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonTopLeft" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonLeft" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonBottomLeft" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="buttonBottom" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonBottomRight" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonTop" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonTopRight" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonRight" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,50,Percent,25" /&gt;&lt;Rows Styles="Percent,33.333332,Percent,33.333332,Percent,33.333332" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -3868,21 +3218,6 @@ Ewald sphere transparent</value>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonAntiClock" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonClock" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="buttonAntiClock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -3916,18 +3251,6 @@ Ewald sphere transparent</value>
   <data name="buttonAntiClock.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
   </data>
-  <data name="&gt;&gt;buttonAntiClock.Name" xml:space="preserve">
-    <value>buttonAntiClock</value>
-  </data>
-  <data name="&gt;&gt;buttonAntiClock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAntiClock.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;buttonAntiClock.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="buttonClock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -3958,18 +3281,6 @@ Ewald sphere transparent</value>
   <data name="buttonClock.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
   </data>
-  <data name="&gt;&gt;buttonClock.Name" xml:space="preserve">
-    <value>buttonClock</value>
-  </data>
-  <data name="&gt;&gt;buttonClock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonClock.Parent" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;buttonClock.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="buttonTopLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -3999,18 +3310,6 @@ Ewald sphere transparent</value>
   </data>
   <data name="buttonTopLeft.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
-  </data>
-  <data name="&gt;&gt;buttonTopLeft.Name" xml:space="preserve">
-    <value>buttonTopLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonTopLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonTopLeft.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonTopLeft.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="buttonLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4043,18 +3342,6 @@ Ewald sphere transparent</value>
     <value>Rotate the crystal to the direction of the arrow.
 (CTRL+SHIFT+ Left)</value>
   </data>
-  <data name="&gt;&gt;buttonLeft.Name" xml:space="preserve">
-    <value>buttonLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonLeft.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonLeft.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="buttonBottomLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -4084,18 +3371,6 @@ Ewald sphere transparent</value>
   </data>
   <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomLeft.Name" xml:space="preserve">
-    <value>buttonBottomLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomLeft.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomLeft.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="buttonBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4128,18 +3403,6 @@ Ewald sphere transparent</value>
     <value>Rotate the crystal to the direction of the arrow.
 (CTRL+SHIFT+ Down)</value>
   </data>
-  <data name="&gt;&gt;buttonBottom.Name" xml:space="preserve">
-    <value>buttonBottom</value>
-  </data>
-  <data name="&gt;&gt;buttonBottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBottom.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonBottom.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="buttonBottomRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -4169,18 +3432,6 @@ Ewald sphere transparent</value>
   </data>
   <data name="buttonBottomRight.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomRight.Name" xml:space="preserve">
-    <value>buttonBottomRight</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomRight.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonBottomRight.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="buttonTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4213,18 +3464,6 @@ Ewald sphere transparent</value>
     <value>Rotate the crystal to the direction of the arrow.
 (CTRL+SHIFT+ Up)</value>
   </data>
-  <data name="&gt;&gt;buttonTop.Name" xml:space="preserve">
-    <value>buttonTop</value>
-  </data>
-  <data name="&gt;&gt;buttonTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonTop.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonTop.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="buttonTopRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -4254,18 +3493,6 @@ Ewald sphere transparent</value>
   </data>
   <data name="buttonTopRight.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.</value>
-  </data>
-  <data name="&gt;&gt;buttonTopRight.Name" xml:space="preserve">
-    <value>buttonTopRight</value>
-  </data>
-  <data name="&gt;&gt;buttonTopRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonTopRight.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonTopRight.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="buttonRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4297,18 +3524,6 @@ Ewald sphere transparent</value>
   <data name="buttonRight.ToolTip" xml:space="preserve">
     <value>Rotate the crystal to the direction of the arrow.
 (CTRL+SHIFT+ Right)</value>
-  </data>
-  <data name="&gt;&gt;buttonRight.Name" xml:space="preserve">
-    <value>buttonRight</value>
-  </data>
-  <data name="&gt;&gt;buttonRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRight.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonRight.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="panelViewStep.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4342,18 +3557,6 @@ Ewald sphere transparent</value>
   </data>
   <data name="panelViewStep.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
-  </data>
-  <data name="&gt;&gt;panelViewStep.Name" xml:space="preserve">
-    <value>panelViewStep</value>
-  </data>
-  <data name="&gt;&gt;panelViewStep.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelViewStep.Parent" xml:space="preserve">
-    <value>groupBoxViewDirection</value>
-  </data>
-  <data name="&gt;&gt;panelViewStep.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="numericBoxStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4400,18 +3603,6 @@ Ewald sphere transparent</value>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
     <value>Set angle step for above buttons, or rotatian speed</value>
   </data>
-  <data name="&gt;&gt;numericBoxStep.Name" xml:space="preserve">
-    <value>numericBoxStep</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.Parent" xml:space="preserve">
-    <value>panelViewStep</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStep.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="buttonResetAngle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4439,18 +3630,6 @@ Ewald sphere transparent</value>
   <data name="buttonResetAngle.Text" xml:space="preserve">
     <value>Reset</value>
   </data>
-  <data name="&gt;&gt;buttonResetAngle.Name" xml:space="preserve">
-    <value>buttonResetAngle</value>
-  </data>
-  <data name="&gt;&gt;buttonResetAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonResetAngle.Parent" xml:space="preserve">
-    <value>groupBoxViewDirection</value>
-  </data>
-  <data name="&gt;&gt;buttonResetAngle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="label21.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4475,18 +3654,6 @@ Ewald sphere transparent</value>
   <data name="label21.Text" xml:space="preserve">
     <value>Threadshold of 
 relative intensity</value>
-  </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
-  </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>9</value>
   </data>
   <data name="colorControl3D_EwaldSphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4524,18 +3691,6 @@ relative intensity</value>
   <data name="colorControl3D_EwaldSphere.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="&gt;&gt;colorControl3D_EwaldSphere.Name" xml:space="preserve">
-    <value>colorControl3D_EwaldSphere</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_EwaldSphere.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_EwaldSphere.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_EwaldSphere.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <data name="colorControl3D_Origin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4571,18 +3726,6 @@ relative intensity</value>
   </data>
   <data name="colorControl3D_Origin.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_Origin.Name" xml:space="preserve">
-    <value>colorControl3D_Origin</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_Origin.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_Origin.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_Origin.ZOrder" xml:space="preserve">
-    <value>11</value>
   </data>
   <data name="colorControl3D_rightDirection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4620,18 +3763,6 @@ relative intensity</value>
   <data name="colorControl3D_rightDirection.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="&gt;&gt;colorControl3D_rightDirection.Name" xml:space="preserve">
-    <value>colorControl3D_rightDirection</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_rightDirection.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_rightDirection.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_rightDirection.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
   <data name="colorControl3D_topDirection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4668,18 +3799,6 @@ relative intensity</value>
   <data name="colorControl3D_topDirection.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="&gt;&gt;colorControl3D_topDirection.Name" xml:space="preserve">
-    <value>colorControl3D_topDirection</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_topDirection.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_topDirection.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_topDirection.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
   <data name="colorControl3D_beamDirection.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4715,18 +3834,6 @@ relative intensity</value>
   </data>
   <data name="colorControl3D_beamDirection.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_beamDirection.Name" xml:space="preserve">
-    <value>colorControl3D_beamDirection</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_beamDirection.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_beamDirection.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_beamDirection.ZOrder" xml:space="preserve">
-    <value>14</value>
   </data>
   <data name="colorControl3D_lText.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4770,18 +3877,6 @@ relative intensity</value>
   <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
     <value>Set a background color</value>
   </data>
-  <data name="&gt;&gt;colorControl3D_lText.Name" xml:space="preserve">
-    <value>colorControl3D_lText</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_lText.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_lText.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;colorControl3D_lText.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
   <data name="checkBox3D_DirectionGuide.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4806,18 +3901,6 @@ relative intensity</value>
   <data name="checkBox3D_DirectionGuide.Text" xml:space="preserve">
     <value>Direction guide</value>
   </data>
-  <data name="&gt;&gt;checkBox3D_DirectionGuide.Name" xml:space="preserve">
-    <value>checkBox3D_DirectionGuide</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_DirectionGuide.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_DirectionGuide.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_DirectionGuide.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
   <data name="checkBox3D_EwaldSphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4838,18 +3921,6 @@ relative intensity</value>
   </data>
   <data name="checkBox3D_EwaldSphere.Text" xml:space="preserve">
     <value>Ewald sphere</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_EwaldSphere.Name" xml:space="preserve">
-    <value>checkBox3D_EwaldSphere</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_EwaldSphere.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_EwaldSphere.Parent" xml:space="preserve">
-    <value>groupBoxOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBox3D_EwaldSphere.ZOrder" xml:space="preserve">
-    <value>17</value>
   </data>
   <data name="&gt;&gt;checkBoxReciprocalSpace.Name" xml:space="preserve">
     <value>checkBoxReciprocalSpace</value>
@@ -4875,18 +3946,6 @@ relative intensity</value>
   <data name="panelReciprocalSpace.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
   </data>
-  <data name="&gt;&gt;panelReciprocalSpace.Name" xml:space="preserve">
-    <value>panelReciprocalSpace</value>
-  </data>
-  <data name="&gt;&gt;panelReciprocalSpace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelReciprocalSpace.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;panelReciprocalSpace.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="checkBoxReciprocalSpace.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4907,18 +3966,6 @@ relative intensity</value>
   </data>
   <data name="checkBoxReciprocalSpace.Text" xml:space="preserve">
     <value>Reciprocal space</value>
-  </data>
-  <data name="&gt;&gt;checkBoxReciprocalSpace.Name" xml:space="preserve">
-    <value>checkBoxReciprocalSpace</value>
-  </data>
-  <data name="&gt;&gt;checkBoxReciprocalSpace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxReciprocalSpace.Parent" xml:space="preserve">
-    <value>panelReciprocalSpace</value>
-  </data>
-  <data name="&gt;&gt;checkBoxReciprocalSpace.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
@@ -4995,21 +4042,6 @@ relative intensity</value>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
-    <value>panelMousePosition</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label24" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelD" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelDinv" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelTwoThetaDeg" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="labelTwoThetaRad" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,20" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="label24.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5036,18 +4068,6 @@ relative intensity</value>
   </data>
   <data name="label24.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;label24.Name" xml:space="preserve">
-    <value>label24</value>
-  </data>
-  <data name="&gt;&gt;label24.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="labelD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5076,18 +4096,6 @@ relative intensity</value>
   <data name="labelD.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;labelD.Name" xml:space="preserve">
-    <value>labelD</value>
-  </data>
-  <data name="&gt;&gt;labelD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelD.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;labelD.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="labelDinv.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5115,18 +4123,6 @@ relative intensity</value>
   <data name="labelDinv.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;labelDinv.Name" xml:space="preserve">
-    <value>labelDinv</value>
-  </data>
-  <data name="&gt;&gt;labelDinv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelDinv.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;labelDinv.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="labelTwoThetaDeg.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5151,18 +4147,6 @@ relative intensity</value>
   <data name="labelTwoThetaDeg.Text" xml:space="preserve">
     <value>2θ: 00.00°</value>
   </data>
-  <data name="&gt;&gt;labelTwoThetaDeg.Name" xml:space="preserve">
-    <value>labelTwoThetaDeg</value>
-  </data>
-  <data name="&gt;&gt;labelTwoThetaDeg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelTwoThetaDeg.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;labelTwoThetaDeg.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="labelTwoThetaRad.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5186,18 +4170,6 @@ relative intensity</value>
   </data>
   <data name="labelTwoThetaRad.Text" xml:space="preserve">
     <value>2θ: 00.00°</value>
-  </data>
-  <data name="&gt;&gt;labelTwoThetaRad.Name" xml:space="preserve">
-    <value>labelTwoThetaRad</value>
-  </data>
-  <data name="&gt;&gt;labelTwoThetaRad.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelTwoThetaRad.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;labelTwoThetaRad.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="tableLayoutPanelMousePotionDetailed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -5292,21 +4264,6 @@ relative intensity</value>
   <data name="tableLayoutPanelMousePotionDetailed.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanelMousePotionDetailed.Name" xml:space="preserve">
-    <value>tableLayoutPanelMousePotionDetailed</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanelMousePotionDetailed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanelMousePotionDetailed.Parent" xml:space="preserve">
-    <value>panelMousePosition</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanelMousePotionDetailed.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tableLayoutPanelMousePotionDetailed.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelMousePositionDetector" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelMousePositionReal" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelMousePositionReciprocal" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label17" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label20" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,50,Percent,50,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="labelMousePositionDetector.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5333,18 +4290,6 @@ relative intensity</value>
   </data>
   <data name="labelMousePositionDetector.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionDetector.Name" xml:space="preserve">
-    <value>labelMousePositionDetector</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionDetector.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionDetector.Parent" xml:space="preserve">
-    <value>tableLayoutPanelMousePotionDetailed</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionDetector.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="labelMousePositionReal.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5373,18 +4318,6 @@ relative intensity</value>
   <data name="labelMousePositionReal.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;labelMousePositionReal.Name" xml:space="preserve">
-    <value>labelMousePositionReal</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionReal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionReal.Parent" xml:space="preserve">
-    <value>tableLayoutPanelMousePotionDetailed</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionReal.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="labelMousePositionReciprocal.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5411,18 +4344,6 @@ relative intensity</value>
   </data>
   <data name="labelMousePositionReciprocal.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionReciprocal.Name" xml:space="preserve">
-    <value>labelMousePositionReciprocal</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionReciprocal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionReciprocal.Parent" xml:space="preserve">
-    <value>tableLayoutPanelMousePotionDetailed</value>
-  </data>
-  <data name="&gt;&gt;labelMousePositionReciprocal.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5451,18 +4372,6 @@ relative intensity</value>
   <data name="label17.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>tableLayoutPanelMousePotionDetailed</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="label20.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5490,18 +4399,6 @@ relative intensity</value>
   <data name="label20.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;label20.Name" xml:space="preserve">
-    <value>label20</value>
-  </data>
-  <data name="&gt;&gt;label20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
-    <value>tableLayoutPanelMousePotionDetailed</value>
-  </data>
-  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5528,18 +4425,6 @@ relative intensity</value>
   </data>
   <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>tableLayoutPanelMousePotionDetailed</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="checkBoxMousePositionDetailes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5570,18 +4455,6 @@ relative intensity</value>
   </data>
   <data name="checkBoxMousePositionDetailes.ToolTip" xml:space="preserve">
     <value>By checking, the detailed information panel on the cursor position opens</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMousePositionDetailes.Name" xml:space="preserve">
-    <value>checkBoxMousePositionDetailes</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMousePositionDetailes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMousePositionDetailes.Parent" xml:space="preserve">
-    <value>panelMousePosition</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMousePositionDetailes.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="groupBoxMonitor.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -5727,18 +4600,6 @@ relative intensity</value>
   <data name="groupBoxMonitor.Text" xml:space="preserve">
     <value>Monitor properties</value>
   </data>
-  <data name="&gt;&gt;groupBoxMonitor.Name" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMonitor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMonitor.Parent" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMonitor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="comboBoxCenter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
@@ -5759,18 +4620,6 @@ relative intensity</value>
   </data>
   <data name="comboBoxCenter.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
-  </data>
-  <data name="&gt;&gt;comboBoxCenter.Name" xml:space="preserve">
-    <value>comboBoxCenter</value>
-  </data>
-  <data name="&gt;&gt;comboBoxCenter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxCenter.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;comboBoxCenter.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="numericBoxResolution.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -5808,18 +4657,6 @@ relative intensity</value>
   <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
     <value>Set a resolution of the simulated pattern</value>
   </data>
-  <data name="&gt;&gt;numericBoxResolution.Name" xml:space="preserve">
-    <value>numericBoxResolution</value>
-  </data>
-  <data name="&gt;&gt;numericBoxResolution.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxResolution.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;numericBoxResolution.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="buttonResetCenter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5853,18 +4690,6 @@ relative intensity</value>
   <data name="buttonResetCenter.ToolTip" xml:space="preserve">
     <value>Set the monitor center to the following point</value>
   </data>
-  <data name="&gt;&gt;buttonResetCenter.Name" xml:space="preserve">
-    <value>buttonResetCenter</value>
-  </data>
-  <data name="&gt;&gt;buttonResetCenter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonResetCenter.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;buttonResetCenter.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="checkBoxFixCenter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5888,18 +4713,6 @@ relative intensity</value>
   </data>
   <data name="checkBoxFixCenter.ToolTip" xml:space="preserve">
     <value>Fix the monitor center to the following point</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixCenter.Name" xml:space="preserve">
-    <value>checkBoxFixCenter</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixCenter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixCenter.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixCenter.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="flowLayoutPanelImageOrientation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5958,18 +4771,6 @@ relative intensity</value>
   <data name="flowLayoutPanelImageOrientation.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelImageOrientation.Name" xml:space="preserve">
-    <value>flowLayoutPanelImageOrientation</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelImageOrientation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelImageOrientation.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelImageOrientation.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="checkBoxFlipHorizontally.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5987,18 +4788,6 @@ relative intensity</value>
   </data>
   <data name="checkBoxFlipHorizontally.Text" xml:space="preserve">
     <value>Horizontal flip</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFlipHorizontally.Name" xml:space="preserve">
-    <value>checkBoxFlipHorizontally</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFlipHorizontally.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFlipHorizontally.Parent" xml:space="preserve">
-    <value>flowLayoutPanelImageOrientation</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFlipHorizontally.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="checkBoxFlipVertically.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6018,18 +4807,6 @@ relative intensity</value>
   <data name="checkBoxFlipVertically.Text" xml:space="preserve">
     <value>Vertical flip</value>
   </data>
-  <data name="&gt;&gt;checkBoxFlipVertically.Name" xml:space="preserve">
-    <value>checkBoxFlipVertically</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFlipVertically.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFlipVertically.Parent" xml:space="preserve">
-    <value>flowLayoutPanelImageOrientation</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFlipVertically.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="checkBoxNegativeImage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6047,18 +4824,6 @@ relative intensity</value>
   </data>
   <data name="checkBoxNegativeImage.Text" xml:space="preserve">
     <value>Negative image</value>
-  </data>
-  <data name="&gt;&gt;checkBoxNegativeImage.Name" xml:space="preserve">
-    <value>checkBoxNegativeImage</value>
-  </data>
-  <data name="&gt;&gt;checkBoxNegativeImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxNegativeImage.Parent" xml:space="preserve">
-    <value>flowLayoutPanelImageOrientation</value>
-  </data>
-  <data name="&gt;&gt;checkBoxNegativeImage.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="numericBoxClientHeight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -6108,18 +4873,6 @@ relative intensity</value>
   <data name="numericBoxClientHeight.ToolTip1" xml:space="preserve">
     <value>Set pixel sizes of the simulated pattern</value>
   </data>
-  <data name="&gt;&gt;numericBoxClientHeight.Name" xml:space="preserve">
-    <value>numericBoxClientHeight</value>
-  </data>
-  <data name="&gt;&gt;numericBoxClientHeight.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxClientHeight.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;numericBoxClientHeight.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="numericBoxClientWidth.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -6168,18 +4921,6 @@ relative intensity</value>
   <data name="numericBoxClientWidth.ToolTip1" xml:space="preserve">
     <value>Set pixel sizes of the simulated pattern</value>
   </data>
-  <data name="&gt;&gt;numericBoxClientWidth.Name" xml:space="preserve">
-    <value>numericBoxClientWidth</value>
-  </data>
-  <data name="&gt;&gt;numericBoxClientWidth.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxClientWidth.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;numericBoxClientWidth.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="flowLayoutPanelResolutionUnit.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6222,18 +4963,6 @@ relative intensity</value>
   <data name="flowLayoutPanelResolutionUnit.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelResolutionUnit.Name" xml:space="preserve">
-    <value>flowLayoutPanelResolutionUnit</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelResolutionUnit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelResolutionUnit.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelResolutionUnit.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="radioButtonResoUnitMilliMeter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6254,18 +4983,6 @@ relative intensity</value>
   </data>
   <data name="radioButtonResoUnitMilliMeter.Text" xml:space="preserve">
     <value>mm/pix</value>
-  </data>
-  <data name="&gt;&gt;radioButtonResoUnitMilliMeter.Name" xml:space="preserve">
-    <value>radioButtonResoUnitMilliMeter</value>
-  </data>
-  <data name="&gt;&gt;radioButtonResoUnitMilliMeter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonResoUnitMilliMeter.Parent" xml:space="preserve">
-    <value>flowLayoutPanelResolutionUnit</value>
-  </data>
-  <data name="&gt;&gt;radioButtonResoUnitMilliMeter.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="radioButtonResoUnitNanometerInv.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6291,18 +5008,6 @@ relative intensity</value>
   <data name="radioButtonResoUnitNanometerInv.Text" xml:space="preserve">
     <value>nm⁻¹/pix</value>
   </data>
-  <data name="&gt;&gt;radioButtonResoUnitNanometerInv.Name" xml:space="preserve">
-    <value>radioButtonResoUnitNanometerInv</value>
-  </data>
-  <data name="&gt;&gt;radioButtonResoUnitNanometerInv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonResoUnitNanometerInv.Parent" xml:space="preserve">
-    <value>flowLayoutPanelResolutionUnit</value>
-  </data>
-  <data name="&gt;&gt;radioButtonResoUnitNanometerInv.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label22.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6324,18 +5029,6 @@ relative intensity</value>
   <data name="label22.Text" xml:space="preserve">
     <value>Resolution</value>
   </data>
-  <data name="&gt;&gt;label22.Name" xml:space="preserve">
-    <value>label22</value>
-  </data>
-  <data name="&gt;&gt;label22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6353,18 +5046,6 @@ relative intensity</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Size (pixel): </value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBoxMonitor</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;groupBoxMisc.Name" xml:space="preserve">
     <value>groupBoxMisc</value>
@@ -6401,18 +5082,6 @@ relative intensity</value>
   </data>
   <data name="panelDetectorAndMisc.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;panelDetectorAndMisc.Name" xml:space="preserve">
-    <value>panelDetectorAndMisc</value>
-  </data>
-  <data name="&gt;&gt;panelDetectorAndMisc.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelDetectorAndMisc.Parent" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;panelDetectorAndMisc.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;trackBarRotationSpeed.Name" xml:space="preserve">
     <value>trackBarRotationSpeed</value>
@@ -6474,18 +5143,6 @@ relative intensity</value>
   <data name="groupBoxMisc.Text" xml:space="preserve">
     <value>Misc</value>
   </data>
-  <data name="&gt;&gt;groupBoxMisc.Name" xml:space="preserve">
-    <value>groupBoxMisc</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMisc.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMisc.Parent" xml:space="preserve">
-    <value>panelDetectorAndMisc</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMisc.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="trackBarRotationSpeed.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -6503,18 +5160,6 @@ relative intensity</value>
   </data>
   <data name="trackBarRotationSpeed.ToolTip" xml:space="preserve">
     <value>Set rotation speed by mouse operation</value>
-  </data>
-  <data name="&gt;&gt;trackBarRotationSpeed.Name" xml:space="preserve">
-    <value>trackBarRotationSpeed</value>
-  </data>
-  <data name="&gt;&gt;trackBarRotationSpeed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarRotationSpeed.Parent" xml:space="preserve">
-    <value>groupBoxMisc</value>
-  </data>
-  <data name="&gt;&gt;trackBarRotationSpeed.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="buttonHolderSimulation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6547,18 +5192,6 @@ relative intensity</value>
   <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
     <value>Open the window to set the detailed optics</value>
   </data>
-  <data name="&gt;&gt;buttonHolderSimulation.Name" xml:space="preserve">
-    <value>buttonHolderSimulation</value>
-  </data>
-  <data name="&gt;&gt;buttonHolderSimulation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonHolderSimulation.Parent" xml:space="preserve">
-    <value>groupBoxMisc</value>
-  </data>
-  <data name="&gt;&gt;buttonHolderSimulation.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6585,18 +5218,6 @@ relative intensity</value>
   </data>
   <data name="label23.ToolTip" xml:space="preserve">
     <value>Set/get camera length</value>
-  </data>
-  <data name="&gt;&gt;label23.Name" xml:space="preserve">
-    <value>label23</value>
-  </data>
-  <data name="&gt;&gt;label23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
-    <value>groupBoxMisc</value>
-  </data>
-  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;numericUpDownCamaraLength2.Name" xml:space="preserve">
     <value>numericUpDownCamaraLength2</value>
@@ -6670,18 +5291,6 @@ relative intensity</value>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
     <value>Detector geometry &amp;&amp;  Overlay image</value>
   </data>
-  <data name="&gt;&gt;groupBoxDetectorGeometry.Name" xml:space="preserve">
-    <value>groupBoxDetectorGeometry</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDetectorGeometry.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDetectorGeometry.Parent" xml:space="preserve">
-    <value>panelDetectorAndMisc</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDetectorGeometry.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="numericUpDownCamaraLength2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -6705,18 +5314,6 @@ relative intensity</value>
   </data>
   <data name="numericUpDownCamaraLength2.ToolTip" xml:space="preserve">
     <value>Set camera length2, i.e, the distance from the sample to the detector (monitor)</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCamaraLength2.Name" xml:space="preserve">
-    <value>numericUpDownCamaraLength2</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCamaraLength2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCamaraLength2.Parent" xml:space="preserve">
-    <value>groupBoxDetectorGeometry</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCamaraLength2.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="buttonDetailedGeometry.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6751,18 +5348,6 @@ relative intensity</value>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
     <value>Open the window to set the detailed optics</value>
   </data>
-  <data name="&gt;&gt;buttonDetailedGeometry.Name" xml:space="preserve">
-    <value>buttonDetailedGeometry</value>
-  </data>
-  <data name="&gt;&gt;buttonDetailedGeometry.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonDetailedGeometry.Parent" xml:space="preserve">
-    <value>groupBoxDetectorGeometry</value>
-  </data>
-  <data name="&gt;&gt;buttonDetailedGeometry.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6790,18 +5375,6 @@ relative intensity</value>
   <data name="label18.ToolTip" xml:space="preserve">
     <value>Set/get camera length</value>
   </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
-  </data>
-  <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
-    <value>groupBoxDetectorGeometry</value>
-  </data>
-  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6828,18 +5401,6 @@ relative intensity</value>
   </data>
   <data name="label15.ToolTip" xml:space="preserve">
     <value>Set/get camera length</value>
-  </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>groupBoxDetectorGeometry</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="&gt;&gt;numericBoxDev.Name" xml:space="preserve">
     <value>numericBoxDev</value>
@@ -6907,18 +5468,6 @@ relative intensity</value>
   <data name="groupBoxDeveloperCode.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;groupBoxDeveloperCode.Name" xml:space="preserve">
-    <value>groupBoxDeveloperCode</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDeveloperCode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDeveloperCode.Parent" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDeveloperCode.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="numericBoxDev.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -6955,18 +5504,6 @@ relative intensity</value>
   <data name="numericBoxDev.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;numericBoxDev.Name" xml:space="preserve">
-    <value>numericBoxDev</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDev.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDev.Parent" xml:space="preserve">
-    <value>groupBoxDeveloperCode</value>
-  </data>
-  <data name="&gt;&gt;numericBoxDev.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -6984,18 +5521,6 @@ relative intensity</value>
   </data>
   <data name="button1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>groupBoxDeveloperCode</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="numericBoxAcc.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -7033,18 +5558,6 @@ relative intensity</value>
   <data name="numericBoxAcc.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;numericBoxAcc.Name" xml:space="preserve">
-    <value>numericBoxAcc</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAcc.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAcc.Parent" xml:space="preserve">
-    <value>groupBoxDeveloperCode</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAcc.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="button2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -7062,18 +5575,6 @@ relative intensity</value>
   </data>
   <data name="button2.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
-    <value>groupBoxDeveloperCode</value>
-  </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="saveAsImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
@@ -8773,18 +7274,6 @@ radius</value>
   <data name="radioButtonCircleArea.ToolTip" xml:space="preserve">
     <value>Spots are displayed as circles.</value>
   </data>
-  <data name="&gt;&gt;radioButtonCircleArea.Name" xml:space="preserve">
-    <value>radioButtonCircleArea</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCircleArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCircleArea.Parent" xml:space="preserve">
-    <value>flowLayoutPanelSpotShape</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCircleArea.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="radioButtonPointSpread.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -8811,18 +7300,6 @@ radius</value>
   </data>
   <data name="radioButtonPointSpread.ToolTip" xml:space="preserve">
     <value>Spots are displayed as 2-dimensional Gauusians</value>
-  </data>
-  <data name="&gt;&gt;radioButtonPointSpread.Name" xml:space="preserve">
-    <value>radioButtonPointSpread</value>
-  </data>
-  <data name="&gt;&gt;radioButtonPointSpread.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonPointSpread.Parent" xml:space="preserve">
-    <value>flowLayoutPanelSpotShape</value>
-  </data>
-  <data name="&gt;&gt;radioButtonPointSpread.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -8851,18 +7328,6 @@ radius</value>
   <data name="label8.ToolTip" xml:space="preserve">
     <value>Set the size of index strings</value>
   </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>flowLayoutPanelSpotOpacity</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="trackBarSpotOpacity.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -8883,18 +7348,6 @@ radius</value>
   </data>
   <data name="trackBarSpotOpacity.ToolTip" xml:space="preserve">
     <value>Set opacity of the diffraction spots</value>
-  </data>
-  <data name="&gt;&gt;trackBarSpotOpacity.Name" xml:space="preserve">
-    <value>trackBarSpotOpacity</value>
-  </data>
-  <data name="&gt;&gt;trackBarSpotOpacity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarSpotOpacity.Parent" xml:space="preserve">
-    <value>flowLayoutPanelSpotOpacity</value>
-  </data>
-  <data name="&gt;&gt;trackBarSpotOpacity.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
@@ -8932,18 +7385,6 @@ radius</value>
   <data name="flowLayoutPanelPointSpreadIntensity.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelPointSpreadIntensity.Name" xml:space="preserve">
-    <value>flowLayoutPanelPointSpreadIntensity</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelPointSpreadIntensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelPointSpreadIntensity.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGaussianOption</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelPointSpreadIntensity.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -8971,18 +7412,6 @@ radius</value>
   <data name="label10.ToolTip" xml:space="preserve">
     <value>Set the size of index strings</value>
   </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>flowLayoutPanelPointSpreadIntensity</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="trackBarIntensityForPointSpread.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -9006,18 +7435,6 @@ radius</value>
   </data>
   <data name="trackBarIntensityForPointSpread.ToolTip" xml:space="preserve">
     <value>Set a brightness of the diffraction spots</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityForPointSpread.Name" xml:space="preserve">
-    <value>trackBarIntensityForPointSpread</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityForPointSpread.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityForPointSpread.Parent" xml:space="preserve">
-    <value>flowLayoutPanelPointSpreadIntensity</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityForPointSpread.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;label25.Name" xml:space="preserve">
     <value>label25</value>
@@ -9055,18 +7472,6 @@ radius</value>
   <data name="flowLayoutPanelScaleColor.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelScaleColor.Name" xml:space="preserve">
-    <value>flowLayoutPanelScaleColor</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelScaleColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelScaleColor.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGaussianOption</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelScaleColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label25.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -9090,18 +7495,6 @@ radius</value>
   </data>
   <data name="label25.Text" xml:space="preserve">
     <value>Color scale</value>
-  </data>
-  <data name="&gt;&gt;label25.Name" xml:space="preserve">
-    <value>label25</value>
-  </data>
-  <data name="&gt;&gt;label25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
-    <value>flowLayoutPanelScaleColor</value>
-  </data>
-  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="comboBoxScaleColorScale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -9133,18 +7526,6 @@ radius</value>
   <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
     <value>Set a color scale</value>
   </data>
-  <data name="&gt;&gt;comboBoxScaleColorScale.Name" xml:space="preserve">
-    <value>comboBoxScaleColorScale</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScaleColorScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScaleColorScale.Parent" xml:space="preserve">
-    <value>flowLayoutPanelScaleColor</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScaleColorScale.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="checkBoxLogScale.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -9172,18 +7553,6 @@ radius</value>
   <data name="checkBoxLogScale.ToolTip" xml:space="preserve">
     <value>By checking, the intensities of the diffraction spos are logarithmically displayed</value>
   </data>
-  <data name="&gt;&gt;checkBoxLogScale.Name" xml:space="preserve">
-    <value>checkBoxLogScale</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLogScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLogScale.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGaussianOption</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLogScale.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="flowLayoutPanelColorScale.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -9204,18 +7573,6 @@ radius</value>
   </data>
   <data name="flowLayoutPanelColorScale.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelColorScale.Name" xml:space="preserve">
-    <value>flowLayoutPanelColorScale</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelColorScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelColorScale.Parent" xml:space="preserve">
-    <value>flowLayoutPanelGaussianOption</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelColorScale.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9240,18 +7597,6 @@ radius</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Spot color</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>flowLayoutPanelSpotColor</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="colorControlNoCondition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9295,18 +7640,6 @@ radius</value>
   <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
     <value>Set a color of general spots</value>
   </data>
-  <data name="&gt;&gt;colorControlNoCondition.Name" xml:space="preserve">
-    <value>colorControlNoCondition</value>
-  </data>
-  <data name="&gt;&gt;colorControlNoCondition.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlNoCondition.Parent" xml:space="preserve">
-    <value>flowLayoutPanelSpotColor</value>
-  </data>
-  <data name="&gt;&gt;colorControlNoCondition.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="colorControlScrewGlide.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -9348,18 +7681,6 @@ radius</value>
   </data>
   <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
     <value>Set a color of extinct spots (screw of glide)</value>
-  </data>
-  <data name="&gt;&gt;colorControlScrewGlide.Name" xml:space="preserve">
-    <value>colorControlScrewGlide</value>
-  </data>
-  <data name="&gt;&gt;colorControlScrewGlide.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlScrewGlide.Parent" xml:space="preserve">
-    <value>flowLayoutPanelSpotColor</value>
-  </data>
-  <data name="&gt;&gt;colorControlScrewGlide.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="colorControlForbiddenLattice.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9403,18 +7724,6 @@ radius</value>
   <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
     <value>Set a color of extinct spots (lattice centering)</value>
   </data>
-  <data name="&gt;&gt;colorControlForbiddenLattice.Name" xml:space="preserve">
-    <value>colorControlForbiddenLattice</value>
-  </data>
-  <data name="&gt;&gt;colorControlForbiddenLattice.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlForbiddenLattice.Parent" xml:space="preserve">
-    <value>flowLayoutPanelSpotColor</value>
-  </data>
-  <data name="&gt;&gt;colorControlForbiddenLattice.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="radioButtonBeamParallel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -9442,18 +7751,6 @@ radius</value>
   <data name="radioButtonBeamParallel.ToolTip" xml:space="preserve">
     <value>Parallel beam mode (i.e., SAED mode)</value>
   </data>
-  <data name="&gt;&gt;radioButtonBeamParallel.Name" xml:space="preserve">
-    <value>radioButtonBeamParallel</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamParallel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamParallel.Parent" xml:space="preserve">
-    <value>flowLayoutPanelBeamType</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamParallel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="radioButtonBeamPrecessionXray.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -9480,18 +7777,6 @@ radius</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
     <value>Precession beam mode (i.e. PED mode)</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionXray.Name" xml:space="preserve">
-    <value>radioButtonBeamPrecessionXray</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionXray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionXray.Parent" xml:space="preserve">
-    <value>flowLayoutPanelBeamType</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionXray.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="radioButtonBeamBackLaue.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -9523,18 +7808,6 @@ radius</value>
   <data name="radioButtonBeamBackLaue.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;radioButtonBeamBackLaue.Name" xml:space="preserve">
-    <value>radioButtonBeamBackLaue</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamBackLaue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamBackLaue.Parent" xml:space="preserve">
-    <value>flowLayoutPanelBeamType</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamBackLaue.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="radioButtonBeamPrecessionElectron.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -9562,18 +7835,6 @@ radius</value>
   <data name="radioButtonBeamPrecessionElectron.ToolTip" xml:space="preserve">
     <value>Precession beam mode (i.e. PED mode)</value>
   </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.Name" xml:space="preserve">
-    <value>radioButtonBeamPrecessionElectron</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.Parent" xml:space="preserve">
-    <value>flowLayoutPanelBeamType</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamPrecessionElectron.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="radioButtonBeamConvergence.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -9600,18 +7861,6 @@ radius</value>
   </data>
   <data name="radioButtonBeamConvergence.ToolTip" xml:space="preserve">
     <value>Convergent beam mode (i.e. CBED mode)</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamConvergence.Name" xml:space="preserve">
-    <value>radioButtonBeamConvergence</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamConvergence.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamConvergence.Parent" xml:space="preserve">
-    <value>flowLayoutPanelBeamType</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBeamConvergence.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>271, 17</value>

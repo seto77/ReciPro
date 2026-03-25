@@ -942,135 +942,146 @@ public partial class FormEBSD : CaptureFormBase
     #endregion
 
     #region 現在のパラメータでEBSDを動力学計算
-    private void buttonSimulateEBSD_Click(object sender, EventArgs e)
-    {
-        if (Crystal.Bethe.IsCBED_Busy) return;
-        if (masterPatternEbsd.IsBuilding)
-        {
-            toolStripStatusLabel1.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
-            return;
-        }
 
-        buttonStop.Visible = true;
-        sw1.Restart();
-        //FormDiffractionSimulator.SkipDrawing = true;
+    #region お蔵入り
+    //private void buttonSimulateEBSD_Click(object sender, EventArgs e)
+    //{
+    //    if (Crystal.Bethe.IsCBED_Busy) return;
+    //    if (masterPatternEbsd.IsBuilding)
+    //    {
+    //        toolStripStatusLabel1.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
+    //        return;
+    //    }
+
+    //    buttonStop.Visible = true;
+    //    sw1.Restart();
+    //    //FormDiffractionSimulator.SkipDrawing = true;
 
 
-        //方位配列を作る 
+    //    //方位配列を作る 
 
-        var (sin, cos) = Math.SinCos(DetTilt);
-        var rotDet = new M4(1, 0, 0, 0,
-                            0, cos, -sin, DetY - DetY * cos + DetZ * sin,
-                            0, sin, cos, DetZ - DetY * sin - DetZ * cos,
-                            0, 0, 0, 1);
+    //    var (sin, cos) = Math.SinCos(DetTilt);
+    //    var rotDet = new M4(1, 0, 0, 0,
+    //                        0, cos, -sin, DetY - DetY * cos + DetZ * sin,
+    //                        0, sin, cos, DetZ - DetY * sin - DetZ * cos,
+    //                        0, 0, 0, 1);
 
-        var rotSmp = M4.CreateRotationX(numericBoxSampleTilt.RadianValue + Math.PI);
+    //    var rotSmp = M4.CreateRotationX(numericBoxSampleTilt.RadianValue + Math.PI);
 
-        var size = numericBoxDiskDiameter.ValueInteger;
-        var directions = new List<Vector3DBase>();
-        for (int h = 0; h < size; h++)
-            for (int w = 0; w < size; w++)
-            {
-                //検出器の座標
-                var vec = rotDet * new V4(DetR * (2 * w + 1) / size - DetR, DetR * (2 * h + 1) / size - DetR + DetY, DetZ, 1);
-                vec = rotSmp * vec;
+    //    var size = numericBoxDiskDiameter.ValueInteger;
+    //    var directions = new List<Vector3DBase>();
+    //    for (int h = 0; h < size; h++)
+    //        for (int w = 0; w < size; w++)
+    //        {
+    //            //検出器の座標
+    //            var vec = rotDet * new V4(DetR * (2 * w + 1) / size - DetR, DetR * (2 * h + 1) / size - DetR + DetY, DetZ, 1);
+    //            vec = rotSmp * vec;
 
-                directions.Add(new Vector3DBase(-vec.X, -vec.Y, -vec.Z).Normarize());
-            }
+    //            directions.Add(new Vector3DBase(-vec.X, -vec.Y, -vec.Z).Normarize());
+    //        }
 
-        Directions = [.. directions];
+    //    Directions = [.. directions];
 
-        var solver = BetheMethod.Solver.Eigen_Eigen;
-        Crystal.Bethe.EBSD_Completed += Bethe_EBSD_Completed;
-        Crystal.Bethe.EBSD_ProgressChanged += Bethe_EBSD_ProgressChanged;
-        Crystal.Bethe.RunEBSD(MaxNumOfBloch, EnergyArray, Crystal.RotationMatrix, ThicknessArray, Directions, solver, 32, checkBoxNonLocalAbsorption.Checked, checkBoxTDSBackground.Checked);
-    }
+    //    var solver = BetheMethod.Solver.Eigen_Eigen;
+    //    Crystal.Bethe.EBSD_Completed += Bethe_EBSD_Completed;
+    //    Crystal.Bethe.EBSD_ProgressChanged += Bethe_EBSD_ProgressChanged;
+    //    Crystal.Bethe.RunEBSD(MaxNumOfBloch, EnergyArray, Crystal.RotationMatrix, ThicknessArray, Directions, solver, 32, checkBoxNonLocalAbsorption.Checked, checkBoxTDSBackground.Checked);
+    //}
+    #endregion
 
     #region BackgroundWorkerからのProgressChanged, Completed
 
     private bool skipProgressChangedEvent = false;
-    private void Bethe_EBSD_ProgressChanged(object sender, ProgressChangedEventArgs e)
-    {
-        if (skipProgressChangedEvent) return;
-        skipProgressChangedEvent = true;
 
-        var current = e.ProgressPercentage;
-        var message = (string)e.UserState;
-        if (message.StartsWith("Compiling disks", StringComparison.Ordinal))
-        {
-            //if (sw1.IsRunning)
-            //{
-            //    sw1.Stop();
-            //    sw2.Restart();
-            //}
-            //var sec = sw2.ElapsedMilliseconds / 1000.0;
-            //var totalsec = sec + sw1.ElapsedMilliseconds / 1000.0;
-            //toolStripProgressBar.Value = current / 10;
-            //toolStripStatusLabel2.Text = "Compiling disks:";
-            //toolStripStatusLabel1.Text = "Ellapsed time : " + totalsec.ToString("f2") + " s.,  ";
-            //toolStripStatusLabel1.Text += $"{current / 10.0:f1} % completed,  wait for more {sec * (1000 - current) / current:f2} s.";
-        }
-        else
-        {
-            var sec = sw1.ElapsedMilliseconds / 1000.0;
-            var progress = (int)(100.0 * current / DivisionNumber);
-            if (progress <= 100)
-                toolStripProgressBar.Value = (int)(100.0 * current / DivisionNumber);
-            toolStripStatusLabel2.Text = message;
-            toolStripStatusLabel1.Text = "Ellapsed time : " + sec.ToString("f2") + " s.,  time/pixel: ";
-            toolStripStatusLabel1.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
-            toolStripStatusLabel1.Text += $"{100.0 * current / DivisionNumber:f1} % completed,  wait for {sec * (DivisionNumber - current) / current:f2} s.";
-        }
-        Application.DoEvents();
-        skipProgressChangedEvent = false;
-    }
+    #region お蔵入り
+    //private void Bethe_EBSD_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    //{
+    //    if (skipProgressChangedEvent) return;
+    //    skipProgressChangedEvent = true;
 
-    private void Bethe_EBSD_Completed(object sender, RunWorkerCompletedEventArgs e)
-    {
-        buttonStop.Visible = false;
-        Crystal.Bethe.EBSD_Completed -= Bethe_EBSD_Completed;
-        Crystal.Bethe.EBSD_ProgressChanged -= Bethe_EBSD_ProgressChanged;
-        sw2.Stop();
-        var sec1 = sw1.ElapsedMilliseconds / 1000.0;
-        var sec2 = sw2.ElapsedMilliseconds / 1000.0;
+    //    var current = e.ProgressPercentage;
+    //    var message = (string)e.UserState;
+    //    if (message.StartsWith("Compiling disks", StringComparison.Ordinal))
+    //    {
+    //        //if (sw1.IsRunning)
+    //        //{
+    //        //    sw1.Stop();
+    //        //    sw2.Restart();
+    //        //}
+    //        //var sec = sw2.ElapsedMilliseconds / 1000.0;
+    //        //var totalsec = sec + sw1.ElapsedMilliseconds / 1000.0;
+    //        //toolStripProgressBar.Value = current / 10;
+    //        //toolStripStatusLabel2.Text = "Compiling disks:";
+    //        //toolStripStatusLabel1.Text = "Ellapsed time : " + totalsec.ToString("f2") + " s.,  ";
+    //        //toolStripStatusLabel1.Text += $"{current / 10.0:f1} % completed,  wait for more {sec * (1000 - current) / current:f2} s.";
+    //    }
+    //    else
+    //    {
+    //        var sec = sw1.ElapsedMilliseconds / 1000.0;
+    //        var progress = (int)(100.0 * current / DivisionNumber);
+    //        if (progress <= 100)
+    //            toolStripProgressBar.Value = (int)(100.0 * current / DivisionNumber);
+    //        toolStripStatusLabel2.Text = message;
+    //        toolStripStatusLabel1.Text = "Ellapsed time : " + sec.ToString("f2") + " s.,  time/pixel: ";
+    //        toolStripStatusLabel1.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
+    //        toolStripStatusLabel1.Text += $"{100.0 * current / DivisionNumber:f1} % completed,  wait for {sec * (DivisionNumber - current) / current:f2} s.";
+    //    }
+    //    Application.DoEvents();
+    //    skipProgressChangedEvent = false;
+    //}
+    #endregion
 
-        if (!e.Cancelled)
-        {
-            toolStripStatusLabel2.Text = "100% completed!  ";
-            toolStripStatusLabel1.Text = $"Total time: {sec1 + sec2:f2} s.   ";
-            toolStripStatusLabel1.Text += $"Bloch problem: {sec1:f2} s. (";
-            toolStripStatusLabel1.Text += sec1 / DivisionNumber > 1 ? $"{sec1 / DivisionNumber:f2} s " : $"{sec1 / DivisionNumber * 1000:f2} ms ";
-            toolStripStatusLabel1.Text += $"/pixes).   Compiling disks: {sec2:f2} s.";
+    #region お蔵入り
+    //private void Bethe_EBSD_Completed(object sender, RunWorkerCompletedEventArgs e)
+    //{
+    //    buttonStop.Visible = false;
+    //    Crystal.Bethe.EBSD_Completed -= Bethe_EBSD_Completed;
+    //    Crystal.Bethe.EBSD_ProgressChanged -= Bethe_EBSD_ProgressChanged;
+    //    sw2.Stop();
+    //    var sec1 = sw1.ElapsedMilliseconds / 1000.0;
+    //    var sec2 = sw2.ElapsedMilliseconds / 1000.0;
 
-            groupBoxOutput.Enabled = true;
-            generateImage();
-        }
-        else
-        {
-            toolStripStatusLabel1.Text = "Time ellapsed: " + (sec1 + sec2).ToString("f2") + " sec.,  Manually interupted.";
-            groupBoxOutput.Enabled = false;
-        }
-        Application.DoEvents();
-    }
+    //    if (!e.Cancelled)
+    //    {
+    //        toolStripStatusLabel2.Text = "100% completed!  ";
+    //        toolStripStatusLabel1.Text = $"Total time: {sec1 + sec2:f2} s.   ";
+    //        toolStripStatusLabel1.Text += $"Bloch problem: {sec1:f2} s. (";
+    //        toolStripStatusLabel1.Text += sec1 / DivisionNumber > 1 ? $"{sec1 / DivisionNumber:f2} s " : $"{sec1 / DivisionNumber * 1000:f2} ms ";
+    //        toolStripStatusLabel1.Text += $"/pixes).   Compiling disks: {sec2:f2} s.";
+
+    //        groupBoxOutput.Enabled = true;
+    //        generateImage();
+    //    }
+    //    else
+    //    {
+    //        toolStripStatusLabel1.Text = "Time ellapsed: " + (sec1 + sec2).ToString("f2") + " sec.,  Manually interupted.";
+    //        groupBoxOutput.Enabled = false;
+    //    }
+    //    Application.DoEvents();
+    //}
+    #endregion
 
     #endregion
 
     #endregion
 
     #region EBSD計算後、画像を生成
-    private void generateImage(bool resetDisks = true)
-    {
-        if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length || trackBarOutputThickness.Value >= Crystal.Bethe.Disks[0].Length)
-            return;
 
-        var disk = Crystal.Bethe.Disks[trackBarOutputEnergy.Value][trackBarOutputThickness.Value];
-        Pbmp = new PseudoBitmap(disk.Amplitudes.Select(e => e.MagnitudeSquared()).ToArray(), numericBoxDiskDiameter.ValueInteger) { AlphaEnabled = true };
+    #region　お蔵入り
+    //private void generateImage(bool resetDisks = true)
+    //{
+    //    if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length || trackBarOutputThickness.Value >= Crystal.Bethe.Disks[0].Length)
+    //        return;
 
-        Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
+    //    var disk = Crystal.Bethe.Disks[trackBarOutputEnergy.Value][trackBarOutputThickness.Value];
+    //    Pbmp = new PseudoBitmap(disk.Amplitudes.Select(e => e.MagnitudeSquared()).ToArray(), numericBoxDiskDiameter.ValueInteger) { AlphaEnabled = true };
 
-        AdjustImage();
+    //    Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
 
-    }
+    //    AdjustImage();
+
+    //}
+    #endregion
 
     private void AdjustImage()
     {
@@ -1109,18 +1120,20 @@ public partial class FormEBSD : CaptureFormBase
 
     private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
     {
-        if (Crystal.Bethe.Disks == null || Crystal.Bethe.Disks.Length < 1 || trackBarOutputThickness.Value >= Crystal.Bethe.Disks[0].Length)
-            return;
+        //if (Crystal.Bethe.Disks == null || Crystal.Bethe.Disks.Length < 1 || trackBarOutputThickness.Value >= Crystal.Bethe.Disks[0].Length)
+        //    return;
         textBoxThickness.Text = ThicknessArray[trackBarOutputThickness.Value].ToString();
-        generateImage();
+        Draw();
+        //generateImage();
     }
     private void trackBarOutputEnergy_ValueChanged(object sender, EventArgs e)
     {
-        if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length || trackBarOutputEnergy.Value < 0)
-            return;
+        //if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length || trackBarOutputEnergy.Value < 0)
+        //    return;
 
         textBoxEnergy.Text = EnergyArray[trackBarOutputEnergy.Value].ToString();
-        generateImage();
+        Draw();
+        //generateImage();
     }
     private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => AdjustImage();
 
@@ -1444,7 +1457,6 @@ public partial class FormEBSD : CaptureFormBase
         AdjustImage();
     }
     #endregion
-
 
     #region グラフをコピー
     private void buttonCopyEnergyProfile_Click(object sender, EventArgs e)

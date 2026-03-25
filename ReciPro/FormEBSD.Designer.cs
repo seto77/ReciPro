@@ -68,7 +68,6 @@
             radioButtonKikuchiThresholdOfLength = new System.Windows.Forms.RadioButton();
             numericBoxKikuchiThreadSholdOfStructureFactor = new NumericBox();
             numericBoxKikuchiThresholdOfLength = new NumericBox();
-            buttonSimulateEBSD = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxThicknessStep = new NumericBox();
@@ -104,7 +103,6 @@
             numericBoxEnergyEnd = new NumericBox();
             numericBoxEnergyStart = new NumericBox();
             numericBoxEnergyStep = new NumericBox();
-            button1 = new System.Windows.Forms.Button();
             label13 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
             checkBoxDrawKikuchiLineDynamical = new System.Windows.Forms.CheckBox();
@@ -140,7 +138,7 @@
             labelMasterPattern2DHemisphere = new System.Windows.Forms.Label();
             comboBoxMasterPattern2DHemisphere = new System.Windows.Forms.ComboBox();
             buttonCreateMasterPattern = new System.Windows.Forms.Button();
-            buttonGenerateEBSDFromMaster = new System.Windows.Forms.Button(); // 260325Cl 追加
+            buttonGenerateEBSDFromMaster = new System.Windows.Forms.Button();
             labelMasterPatternInfo = new System.Windows.Forms.Label();
             panelMasterPattern3D = new System.Windows.Forms.Panel();
             panelMasterPattern3DAxes = new System.Windows.Forms.Panel();
@@ -761,21 +759,6 @@
             numericBoxKikuchiThresholdOfLength.Value = 10D;
             numericBoxKikuchiThresholdOfLength.ValueChanged += numericBoxKikuchiThreadSholdOfStructureFactor_ValueChanged;
             // 
-            // buttonSimulateEBSD
-            // 
-            buttonSimulateEBSD.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            buttonSimulateEBSD.AutoSize = true;
-            buttonSimulateEBSD.BackColor = System.Drawing.Color.SteelBlue;
-            buttonSimulateEBSD.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
-            buttonSimulateEBSD.ForeColor = System.Drawing.Color.White;
-            buttonSimulateEBSD.Location = new System.Drawing.Point(106, 600);
-            buttonSimulateEBSD.Name = "buttonSimulateEBSD";
-            buttonSimulateEBSD.Size = new System.Drawing.Size(176, 29);
-            buttonSimulateEBSD.TabIndex = 129;
-            buttonSimulateEBSD.Text = "Simulate dynamical EBSD";
-            buttonSimulateEBSD.UseVisualStyleBackColor = false;
-            buttonSimulateEBSD.Click += buttonSimulateEBSD_Click;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -961,7 +944,7 @@
             buttonStop.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             buttonStop.ForeColor = System.Drawing.Color.White;
             buttonStop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonStop.Location = new System.Drawing.Point(158, 641);
+            buttonStop.Location = new System.Drawing.Point(261, 641);
             buttonStop.Name = "buttonStop";
             buttonStop.Size = new System.Drawing.Size(45, 27);
             buttonStop.TabIndex = 138;
@@ -1341,20 +1324,6 @@
             numericBoxEnergyStep.Value = 1D;
             numericBoxEnergyStep.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
-            // button1
-            // 
-            button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            button1.AutoSize = true;
-            button1.BackColor = System.Drawing.Color.SteelBlue;
-            button1.ForeColor = System.Drawing.Color.White;
-            button1.Location = new System.Drawing.Point(14, 601);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(93, 27);
-            button1.TabIndex = 129;
-            button1.Text = "calc";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -1533,14 +1502,12 @@
             tabPage3.BackColor = System.Drawing.SystemColors.Control;
             tabPage3.Controls.Add(groupBoxLatticePlanes);
             tabPage3.Controls.Add(label1);
-            tabPage3.Controls.Add(button1);
             tabPage3.Controls.Add(trackBarStrSize);
             tabPage3.Controls.Add(colorControlExcessLine);
             tabPage3.Controls.Add(label11);
             tabPage3.Controls.Add(colorControlBackGround);
             tabPage3.Controls.Add(trackBarLineWidth);
             tabPage3.Controls.Add(colorControlString);
-            tabPage3.Controls.Add(buttonSimulateEBSD);
             tabPage3.Controls.Add(checkBoxKikuchiLine_Kinematical);
             tabPage3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             tabPage3.Location = new System.Drawing.Point(4, 48);
@@ -1815,28 +1782,28 @@
             buttonCreateMasterPattern.Text = "Build MasterPattern";
             buttonCreateMasterPattern.UseVisualStyleBackColor = false;
             buttonCreateMasterPattern.Click += buttonCreateMasterPattern_Click;
-            //
-            // buttonGenerateEBSDFromMaster // 260325Cl 追加
-            //
+            // 
+            // buttonGenerateEBSDFromMaster
+            // 
             buttonGenerateEBSDFromMaster.AutoSize = true;
             buttonGenerateEBSDFromMaster.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonGenerateEBSDFromMaster.BackColor = System.Drawing.Color.SteelBlue;
             buttonGenerateEBSDFromMaster.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             buttonGenerateEBSDFromMaster.ForeColor = System.Drawing.Color.White;
-            buttonGenerateEBSDFromMaster.Location = new System.Drawing.Point(155, 641);
+            buttonGenerateEBSDFromMaster.Location = new System.Drawing.Point(154, 641);
             buttonGenerateEBSDFromMaster.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
             buttonGenerateEBSDFromMaster.Name = "buttonGenerateEBSDFromMaster";
-            buttonGenerateEBSDFromMaster.Size = new System.Drawing.Size(90, 27);
+            buttonGenerateEBSDFromMaster.Size = new System.Drawing.Size(105, 27);
             buttonGenerateEBSDFromMaster.TabIndex = 148;
             buttonGenerateEBSDFromMaster.Text = "Generate EBSD";
             buttonGenerateEBSDFromMaster.UseVisualStyleBackColor = false;
             buttonGenerateEBSDFromMaster.Click += buttonGenerateEBSDFromMaster_Click;
-            //
+            // 
             // labelMasterPatternInfo
             // 
             labelMasterPatternInfo.AutoSize = true;
             labelMasterPatternInfo.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            labelMasterPatternInfo.Location = new System.Drawing.Point(249, 647);
+            labelMasterPatternInfo.Location = new System.Drawing.Point(19, 670);
             labelMasterPatternInfo.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
             labelMasterPatternInfo.Name = "labelMasterPatternInfo";
             labelMasterPatternInfo.Size = new System.Drawing.Size(195, 17);
@@ -1877,7 +1844,7 @@
             groupBoxMasterPattern.Controls.Add(comboBoxMasterPattern2DHemisphere);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
             groupBoxMasterPattern.Controls.Add(buttonCreateMasterPattern);
-            groupBoxMasterPattern.Controls.Add(buttonGenerateEBSDFromMaster); // 260325Cl 追加
+            groupBoxMasterPattern.Controls.Add(buttonGenerateEBSDFromMaster);
             groupBoxMasterPattern.Controls.Add(labelMasterPatternInfo);
             groupBoxMasterPattern.Dock = System.Windows.Forms.DockStyle.Right;
             groupBoxMasterPattern.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
@@ -2198,7 +2165,6 @@
         private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfLength;
         private NumericBox numericBoxKikuchiThreadSholdOfStructureFactor;
         private NumericBox numericBoxKikuchiThresholdOfLength;
-        private System.Windows.Forms.Button buttonSimulateEBSD;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private NumericBox numericBoxThicknessStep;
@@ -2232,7 +2198,6 @@
         private NumericBox numericBoxEnergyEnd;
         private NumericBox numericBoxEnergyStart;
         private NumericBox numericBoxEnergyStep;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonViewQuarter;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;

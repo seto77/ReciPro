@@ -1,110 +1,51 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!--
-    Microsoft ResX Schema
-
-    Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
-    associated with the data types.
-
-    Example:
-
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-
-    There are any number of "resheader" rows that contain simple
-    name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
-    mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
-    extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
-    read any of the formats listed below.
-
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:schema id="root">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xs:element name="root" ns1:IsDataSet="true">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="metadata">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" />
+              </xs:sequence>
+              <xs:attribute name="name" use="required" type="xsd:string" />
+              <xs:attribute name="type" type="xsd:string" />
+              <xs:attribute name="mimetype" type="xsd:string" />
+              <xs:attribute ref="xml:space" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="assembly">
+            <xs:complexType>
+              <xs:attribute name="alias" type="xsd:string" />
+              <xs:attribute name="name" type="xsd:string" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="data">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" ns1:Ordinal="1" />
+                <xs:element name="comment" type="xsd:string" minOccurs="0" ns1:Ordinal="2" />
+              </xs:sequence>
+              <xs:attribute name="name" type="xsd:string" use="required" ns1:Ordinal="1" />
+              <xs:attribute name="type" type="xsd:string" ns1:Ordinal="3" />
+              <xs:attribute name="mimetype" type="xsd:string" ns1:Ordinal="4" />
+              <xs:attribute ref="xml:space" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="resheader">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" ns1:Ordinal="1" />
+              </xs:sequence>
+              <xs:attribute name="name" type="xsd:string" use="required" />
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -501,18 +442,6 @@ Middle drag: Drag the simulated image
   <data name="flowLayoutPanelSphere.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelSphere.Name" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelSphere.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelSphere.Parent" xml:space="preserve">
-    <value>groupBox8</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelSphere.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="radioButtonUpperSphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -540,18 +469,6 @@ Middle drag: Drag the simulated image
   <data name="radioButtonUpperSphere.ToolTip" xml:space="preserve">
     <value>Draw crystal axes</value>
   </data>
-  <data name="&gt;&gt;radioButtonUpperSphere.Name" xml:space="preserve">
-    <value>radioButtonUpperSphere</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUpperSphere.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUpperSphere.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUpperSphere.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="radioButtonLowerSphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -578,18 +495,6 @@ Middle drag: Drag the simulated image
   </data>
   <data name="radioButtonLowerSphere.ToolTip" xml:space="preserve">
     <value>Draw crystal planes</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLowerSphere.Name" xml:space="preserve">
-    <value>radioButtonLowerSphere</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLowerSphere.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLowerSphere.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLowerSphere.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="flowLayoutPanelProjectionScheme.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -636,18 +541,6 @@ Middle drag: Drag the simulated image
   <data name="flowLayoutPanelProjectionScheme.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelProjectionScheme.Name" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelProjectionScheme.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelProjectionScheme.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelProjectionScheme.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="radioButtonWulff.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -675,18 +568,6 @@ Middle drag: Drag the simulated image
   <data name="radioButtonWulff.ToolTip" xml:space="preserve">
     <value>Project directions by the Wulff net (equal-angle method)</value>
   </data>
-  <data name="&gt;&gt;radioButtonWulff.Name" xml:space="preserve">
-    <value>radioButtonWulff</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWulff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWulff.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonWulff.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="radioButtonSchmidt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -713,18 +594,6 @@ Middle drag: Drag the simulated image
   </data>
   <data name="radioButtonSchmidt.ToolTip" xml:space="preserve">
     <value>Project directions by the Schmidt-net (equiarea method)</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSchmidt.Name" xml:space="preserve">
-    <value>radioButtonSchmidt</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSchmidt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSchmidt.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSchmidt.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="checkBoxReflectStructureFactor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -758,18 +627,6 @@ Middle drag: Drag the simulated image
 factor in the spot size
 or the Kikuchi line</value>
   </data>
-  <data name="&gt;&gt;checkBoxReflectStructureFactor.Name" xml:space="preserve">
-    <value>checkBoxReflectStructureFactor</value>
-  </data>
-  <data name="&gt;&gt;checkBoxReflectStructureFactor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxReflectStructureFactor.Parent" xml:space="preserve">
-    <value>groupBox7</value>
-  </data>
-  <data name="&gt;&gt;checkBoxReflectStructureFactor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="checkBoxShowIndexLabels.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -793,18 +650,6 @@ or the Kikuchi line</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
     <value>Draw index labels</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowIndexLabels.Name" xml:space="preserve">
-    <value>checkBoxShowIndexLabels</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowIndexLabels.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowIndexLabels.Parent" xml:space="preserve">
-    <value>groupBox7</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowIndexLabels.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="flowLayoutPanelProjectionObject.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -860,18 +705,6 @@ or the Kikuchi line</value>
   <data name="flowLayoutPanelProjectionObject.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelProjectionObject.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelProjectionObject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelProjectionObject.Parent" xml:space="preserve">
-    <value>groupBox7</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelProjectionObject.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="radioButtonAxes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -898,18 +731,6 @@ or the Kikuchi line</value>
   </data>
   <data name="radioButtonAxes.ToolTip" xml:space="preserve">
     <value>Draw crystal axes</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAxes.Name" xml:space="preserve">
-    <value>radioButtonAxes</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAxes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAxes.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAxes.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="radioButtonPlanes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -938,18 +759,6 @@ or the Kikuchi line</value>
   <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
     <value>Draw crystal planes</value>
   </data>
-  <data name="&gt;&gt;radioButtonPlanes.Name" xml:space="preserve">
-    <value>radioButtonPlanes</value>
-  </data>
-  <data name="&gt;&gt;radioButtonPlanes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonPlanes.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonPlanes.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="radioButtonKikuchiLinePairs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -976,18 +785,6 @@ or the Kikuchi line</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
     <value>Draw crystal axes</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiLinePairs.Name" xml:space="preserve">
-    <value>radioButtonKikuchiLinePairs</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiLinePairs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiLinePairs.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonKikuchiLinePairs.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="labelXpos.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1211,18 +1008,6 @@ or the Kikuchi line</value>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
     <value>Display a line in 1 degree increments</value>
   </data>
-  <data name="&gt;&gt;checkBox1DegLine.Name" xml:space="preserve">
-    <value>checkBox1DegLine</value>
-  </data>
-  <data name="&gt;&gt;checkBox1DegLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox1DegLine.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;checkBox1DegLine.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="radioButtonOutlinePole.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1250,18 +1035,6 @@ or the Kikuchi line</value>
   <data name="radioButtonOutlinePole.ToolTip" xml:space="preserve">
     <value>Project the latitude and longitude lines from the polar direction.</value>
   </data>
-  <data name="&gt;&gt;radioButtonOutlinePole.Name" xml:space="preserve">
-    <value>radioButtonOutlinePole</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOutlinePole.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOutlinePole.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOutlinePole.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="radioButtonOutlineEquator.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1288,18 +1061,6 @@ or the Kikuchi line</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
     <value>Project the latitude and longitude lines from the equatorial direction.</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOutlineEquator.Name" xml:space="preserve">
-    <value>radioButtonOutlineEquator</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOutlineEquator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOutlineEquator.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOutlineEquator.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;radioButtonDelimiterComma.Name" xml:space="preserve">
     <value>radioButtonDelimiterComma</value>
@@ -2616,18 +2377,6 @@ by two planes</value>
   <data name="radioButtonDelimiterComma.ToolTip" xml:space="preserve">
     <value>Use comma as delimiter for index output</value>
   </data>
-  <data name="&gt;&gt;radioButtonDelimiterComma.Name" xml:space="preserve">
-    <value>radioButtonDelimiterComma</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterComma.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterComma.Parent" xml:space="preserve">
-    <value>groupBox6</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterComma.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="radioButtonDelimiterSpace.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2655,18 +2404,6 @@ by two planes</value>
   <data name="radioButtonDelimiterSpace.ToolTip" xml:space="preserve">
     <value>Use space as delimiter for index output</value>
   </data>
-  <data name="&gt;&gt;radioButtonDelimiterSpace.Name" xml:space="preserve">
-    <value>radioButtonDelimiterSpace</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterSpace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterSpace.Parent" xml:space="preserve">
-    <value>groupBox6</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterSpace.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="radioButtonDelimiterNone.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2693,18 +2430,6 @@ by two planes</value>
   </data>
   <data name="radioButtonDelimiterNone.ToolTip" xml:space="preserve">
     <value>No delimiter for index output</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterNone.Name" xml:space="preserve">
-    <value>radioButtonDelimiterNone</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterNone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterNone.Parent" xml:space="preserve">
-    <value>groupBox6</value>
-  </data>
-  <data name="&gt;&gt;radioButtonDelimiterNone.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="colorControlString.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2742,18 +2467,6 @@ by two planes</value>
   <data name="colorControlString.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
-  <data name="&gt;&gt;colorControlString.Name" xml:space="preserve">
-    <value>colorControlString</value>
-  </data>
-  <data name="&gt;&gt;colorControlString.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlString.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControlString.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="colorControlKikuchi.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2789,18 +2502,6 @@ by two planes</value>
   </data>
   <data name="colorControlKikuchi.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
-  </data>
-  <data name="&gt;&gt;colorControlKikuchi.Name" xml:space="preserve">
-    <value>colorControlKikuchi</value>
-  </data>
-  <data name="&gt;&gt;colorControlKikuchi.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlKikuchi.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControlKikuchi.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="colorControlBackGround.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2838,18 +2539,6 @@ by two planes</value>
   <data name="colorControlBackGround.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
-  <data name="&gt;&gt;colorControlBackGround.Name" xml:space="preserve">
-    <value>colorControlBackGround</value>
-  </data>
-  <data name="&gt;&gt;colorControlBackGround.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlBackGround.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControlBackGround.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="colorControl10DegLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2885,18 +2574,6 @@ by two planes</value>
   </data>
   <data name="colorControl10DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
-  </data>
-  <data name="&gt;&gt;colorControl10DegLine.Name" xml:space="preserve">
-    <value>colorControl10DegLine</value>
-  </data>
-  <data name="&gt;&gt;colorControl10DegLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl10DegLine.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControl10DegLine.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="colorControl1DegLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2934,18 +2611,6 @@ by two planes</value>
   <data name="colorControl1DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
-  <data name="&gt;&gt;colorControl1DegLine.Name" xml:space="preserve">
-    <value>colorControl1DegLine</value>
-  </data>
-  <data name="&gt;&gt;colorControl1DegLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl1DegLine.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControl1DegLine.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="colorControl90DegLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2982,18 +2647,6 @@ by two planes</value>
   <data name="colorControl90DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
-  <data name="&gt;&gt;colorControl90DegLine.Name" xml:space="preserve">
-    <value>colorControl90DegLine</value>
-  </data>
-  <data name="&gt;&gt;colorControl90DegLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControl90DegLine.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;colorControl90DegLine.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 11pt, style=Italic</value>
   </data>
@@ -3011,18 +2664,6 @@ by two planes</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>h1        k1        l1</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3042,18 +2683,6 @@ by two planes</value>
   <data name="label13.Text" xml:space="preserve">
     <value>(</value>
   </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3071,18 +2700,6 @@ by two planes</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>(</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3102,18 +2719,6 @@ by two planes</value>
   <data name="label14.Text" xml:space="preserve">
     <value>)</value>
   </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3131,18 +2736,6 @@ by two planes</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>)</value>
-  </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="numericUpDownCircleH1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3162,18 +2755,6 @@ by two planes</value>
   <data name="numericUpDownCircleH1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;numericUpDownCircleH1.Name" xml:space="preserve">
-    <value>numericUpDownCircleH1</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleH1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleH1.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleH1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="numericUpDownCircleH2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -3191,18 +2772,6 @@ by two planes</value>
   </data>
   <data name="numericUpDownCircleH2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleH2.Name" xml:space="preserve">
-    <value>numericUpDownCircleH2</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleH2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleH2.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleH2.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="numericUpDownCircleL2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3222,18 +2791,6 @@ by two planes</value>
   <data name="numericUpDownCircleL2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;numericUpDownCircleL2.Name" xml:space="preserve">
-    <value>numericUpDownCircleL2</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleL2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleL2.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleL2.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 11pt, style=Italic</value>
   </data>
@@ -3251,18 +2808,6 @@ by two planes</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>h2        k2        l2</value>
-  </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="numericUpDownCircleL1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3282,18 +2827,6 @@ by two planes</value>
   <data name="numericUpDownCircleL1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;numericUpDownCircleL1.Name" xml:space="preserve">
-    <value>numericUpDownCircleL1</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleL1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleL1.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleL1.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="numericUpDownCircleK1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -3311,18 +2844,6 @@ by two planes</value>
   </data>
   <data name="numericUpDownCircleK1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleK1.Name" xml:space="preserve">
-    <value>numericUpDownCircleK1</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleK1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleK1.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleK1.ZOrder" xml:space="preserve">
-    <value>10</value>
   </data>
   <data name="numericUpDownCircleK2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3342,18 +2863,6 @@ by two planes</value>
   <data name="numericUpDownCircleK2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;numericUpDownCircleK2.Name" xml:space="preserve">
-    <value>numericUpDownCircleK2</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleK2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleK2.Parent" xml:space="preserve">
-    <value>panelPlanes</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleK2.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 11pt, style=Italic</value>
   </data>
@@ -3371,18 +2880,6 @@ by two planes</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>u          v           w</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>panelAxis</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3402,18 +2899,6 @@ by two planes</value>
   <data name="label5.Text" xml:space="preserve">
     <value>[</value>
   </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>panelAxis</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3431,18 +2916,6 @@ by two planes</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>]</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>panelAxis</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="numericUpDownCircleU.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3462,18 +2935,6 @@ by two planes</value>
   <data name="numericUpDownCircleU.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;numericUpDownCircleU.Name" xml:space="preserve">
-    <value>numericUpDownCircleU</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleU.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleU.Parent" xml:space="preserve">
-    <value>panelAxis</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleU.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="numericUpDownCircleV.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -3491,18 +2952,6 @@ by two planes</value>
   </data>
   <data name="numericUpDownCircleV.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleV.Name" xml:space="preserve">
-    <value>numericUpDownCircleV</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleV.Parent" xml:space="preserve">
-    <value>panelAxis</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleV.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="numericUpDownCircleW.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3522,18 +2971,6 @@ by two planes</value>
   <data name="numericUpDownCircleW.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;numericUpDownCircleW.Name" xml:space="preserve">
-    <value>numericUpDownCircleW</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleW.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleW.Parent" xml:space="preserve">
-    <value>panelAxis</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownCircleW.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="buttonYusaModeStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3549,18 +2986,6 @@ by two planes</value>
   <data name="buttonYusaModeStop.Text" xml:space="preserve">
     <value>Stop</value>
   </data>
-  <data name="&gt;&gt;buttonYusaModeStop.Name" xml:space="preserve">
-    <value>buttonYusaModeStop</value>
-  </data>
-  <data name="&gt;&gt;buttonYusaModeStop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonYusaModeStop.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;buttonYusaModeStop.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="buttonYusaModeStart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3575,18 +3000,6 @@ by two planes</value>
   </data>
   <data name="buttonYusaModeStart.Text" xml:space="preserve">
     <value>Start</value>
-  </data>
-  <data name="&gt;&gt;buttonYusaModeStart.Name" xml:space="preserve">
-    <value>buttonYusaModeStart</value>
-  </data>
-  <data name="&gt;&gt;buttonYusaModeStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonYusaModeStart.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;buttonYusaModeStart.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="radioButtonRotationalScan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3606,18 +3019,6 @@ by two planes</value>
   <data name="radioButtonRotationalScan.Text" xml:space="preserve">
     <value>θ^2 + ω^2 = constant (Rotational scan)</value>
   </data>
-  <data name="&gt;&gt;radioButtonRotationalScan.Name" xml:space="preserve">
-    <value>radioButtonRotationalScan</value>
-  </data>
-  <data name="&gt;&gt;radioButtonRotationalScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonRotationalScan.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonRotationalScan.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="radioButtonZigzagScan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3635,18 +3036,6 @@ by two planes</value>
   </data>
   <data name="radioButtonZigzagScan.Text" xml:space="preserve">
     <value>+θ &gt; +ω &gt; -θ &gt; +ω .... (Zigzag scan)</value>
-  </data>
-  <data name="&gt;&gt;radioButtonZigzagScan.Name" xml:space="preserve">
-    <value>radioButtonZigzagScan</value>
-  </data>
-  <data name="&gt;&gt;radioButtonZigzagScan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonZigzagScan.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonZigzagScan.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="checkBox3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3666,18 +3055,6 @@ by two planes</value>
   <data name="checkBox3.Text" xml:space="preserve">
     <value>Ry (ω)</value>
   </data>
-  <data name="&gt;&gt;checkBox3.Name" xml:space="preserve">
-    <value>checkBox3</value>
-  </data>
-  <data name="&gt;&gt;checkBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;checkBox3.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="checkBox2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3695,18 +3072,6 @@ by two planes</value>
   </data>
   <data name="checkBox2.Text" xml:space="preserve">
     <value>Rz (θ)</value>
-  </data>
-  <data name="&gt;&gt;checkBox2.Name" xml:space="preserve">
-    <value>checkBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox2.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;checkBox2.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="label37.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3726,18 +3091,6 @@ by two planes</value>
   <data name="label37.Text" xml:space="preserve">
     <value>±</value>
   </data>
-  <data name="&gt;&gt;label37.Name" xml:space="preserve">
-    <value>label37</value>
-  </data>
-  <data name="&gt;&gt;label37.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3755,18 +3108,6 @@ by two planes</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>total time</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3786,18 +3127,6 @@ by two planes</value>
   <data name="label8.Text" xml:space="preserve">
     <value>angular speed </value>
   </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="label32.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3815,18 +3144,6 @@ by two planes</value>
   </data>
   <data name="label32.Text" xml:space="preserve">
     <value>±</value>
-  </data>
-  <data name="&gt;&gt;label32.Name" xml:space="preserve">
-    <value>label32</value>
-  </data>
-  <data name="&gt;&gt;label32.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
-    <value>9</value>
   </data>
   <data name="label26.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3846,18 +3163,6 @@ by two planes</value>
   <data name="label26.Text" xml:space="preserve">
     <value>step</value>
   </data>
-  <data name="&gt;&gt;label26.Name" xml:space="preserve">
-    <value>label26</value>
-  </data>
-  <data name="&gt;&gt;label26.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <data name="label27.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3875,18 +3180,6 @@ by two planes</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
     <value>radial angle</value>
-  </data>
-  <data name="&gt;&gt;label27.Name" xml:space="preserve">
-    <value>label27</value>
-  </data>
-  <data name="&gt;&gt;label27.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
-    <value>11</value>
   </data>
   <data name="label36.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3906,18 +3199,6 @@ by two planes</value>
   <data name="label36.Text" xml:space="preserve">
     <value>oscillation</value>
   </data>
-  <data name="&gt;&gt;label36.Name" xml:space="preserve">
-    <value>label36</value>
-  </data>
-  <data name="&gt;&gt;label36.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label36.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
   <data name="label30.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3935,18 +3216,6 @@ by two planes</value>
   </data>
   <data name="label30.Text" xml:space="preserve">
     <value>oscillation</value>
-  </data>
-  <data name="&gt;&gt;label30.Name" xml:space="preserve">
-    <value>label30</value>
-  </data>
-  <data name="&gt;&gt;label30.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
-    <value>13</value>
   </data>
   <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3966,18 +3235,6 @@ by two planes</value>
   <data name="checkBox1.Text" xml:space="preserve">
     <value>Rx (φ)</value>
   </data>
-  <data name="&gt;&gt;checkBox1.Name" xml:space="preserve">
-    <value>checkBox1</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
   <data name="label28.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3995,18 +3252,6 @@ by two planes</value>
   </data>
   <data name="label28.Text" xml:space="preserve">
     <value>sec.</value>
-  </data>
-  <data name="&gt;&gt;label28.Name" xml:space="preserve">
-    <value>label28</value>
-  </data>
-  <data name="&gt;&gt;label28.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
-    <value>15</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4026,18 +3271,6 @@ by two planes</value>
   <data name="label2.Text" xml:space="preserve">
     <value>deg.</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
   <data name="label25.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4055,18 +3288,6 @@ by two planes</value>
   </data>
   <data name="label25.Text" xml:space="preserve">
     <value>motor speed</value>
-  </data>
-  <data name="&gt;&gt;label25.Name" xml:space="preserve">
-    <value>label25</value>
-  </data>
-  <data name="&gt;&gt;label25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
-    <value>17</value>
   </data>
   <data name="label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4086,18 +3307,6 @@ by two planes</value>
   <data name="label23.Text" xml:space="preserve">
     <value>deg.</value>
   </data>
-  <data name="&gt;&gt;label23.Name" xml:space="preserve">
-    <value>label23</value>
-  </data>
-  <data name="&gt;&gt;label23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4115,18 +3324,6 @@ by two planes</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>deg.</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>19</value>
   </data>
   <data name="label34.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4146,18 +3343,6 @@ by two planes</value>
   <data name="label34.Text" xml:space="preserve">
     <value>motor speed</value>
   </data>
-  <data name="&gt;&gt;label34.Name" xml:space="preserve">
-    <value>label34</value>
-  </data>
-  <data name="&gt;&gt;label34.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
   <data name="label33.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4175,18 +3360,6 @@ by two planes</value>
   </data>
   <data name="label33.Text" xml:space="preserve">
     <value>deg.</value>
-  </data>
-  <data name="&gt;&gt;label33.Name" xml:space="preserve">
-    <value>label33</value>
-  </data>
-  <data name="&gt;&gt;label33.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
-    <value>21</value>
   </data>
   <data name="label24.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4206,18 +3379,6 @@ by two planes</value>
   <data name="label24.Text" xml:space="preserve">
     <value>motor speed</value>
   </data>
-  <data name="&gt;&gt;label24.Name" xml:space="preserve">
-    <value>label24</value>
-  </data>
-  <data name="&gt;&gt;label24.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
   <data name="label31.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4235,18 +3396,6 @@ by two planes</value>
   </data>
   <data name="label31.Text" xml:space="preserve">
     <value>deg.</value>
-  </data>
-  <data name="&gt;&gt;label31.Name" xml:space="preserve">
-    <value>label31</value>
-  </data>
-  <data name="&gt;&gt;label31.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label31.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
-    <value>23</value>
   </data>
   <data name="label21.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4266,18 +3415,6 @@ by two planes</value>
   <data name="label21.Text" xml:space="preserve">
     <value>deg. / sec.</value>
   </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
-  </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
   <data name="label20.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4296,18 +3433,6 @@ by two planes</value>
   <data name="label20.Text" xml:space="preserve">
     <value>deg. / sec.</value>
   </data>
-  <data name="&gt;&gt;label20.Name" xml:space="preserve">
-    <value>label20</value>
-  </data>
-  <data name="&gt;&gt;label20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
   <data name="label22.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4325,18 +3450,6 @@ by two planes</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>deg. / sec.</value>
-  </data>
-  <data name="&gt;&gt;label22.Name" xml:space="preserve">
-    <value>label22</value>
-  </data>
-  <data name="&gt;&gt;label22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>26</value>
   </data>
   <data name="numericBoxRxSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4374,18 +3487,6 @@ by two planes</value>
   <data name="numericBoxRxSpeed.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12.1875pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxRxSpeed.Name" xml:space="preserve">
-    <value>numericBoxRxSpeed</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRxSpeed.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRxSpeed.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRxSpeed.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
   <data name="numericBoxRySpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -4421,18 +3522,6 @@ by two planes</value>
   </data>
   <data name="numericBoxRySpeed.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12.1875pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRySpeed.Name" xml:space="preserve">
-    <value>numericBoxRySpeed</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRySpeed.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRySpeed.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRySpeed.ZOrder" xml:space="preserve">
-    <value>28</value>
   </data>
   <data name="numericBoxRzSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4470,18 +3559,6 @@ by two planes</value>
   <data name="numericBoxRzSpeed.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12.1875pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxRzSpeed.Name" xml:space="preserve">
-    <value>numericBoxRzSpeed</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRzSpeed.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRzSpeed.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRzSpeed.ZOrder" xml:space="preserve">
-    <value>29</value>
-  </data>
   <data name="numericBoxTotalTime.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -4517,18 +3594,6 @@ by two planes</value>
   </data>
   <data name="numericBoxTotalTime.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12.1875pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTotalTime.Name" xml:space="preserve">
-    <value>numericBoxTotalTime</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTotalTime.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTotalTime.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxTotalTime.ZOrder" xml:space="preserve">
-    <value>30</value>
   </data>
   <data name="numericBoxAngularSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4566,18 +3631,6 @@ by two planes</value>
   <data name="numericBoxAngularSpeed.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12.1875pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxAngularSpeed.Name" xml:space="preserve">
-    <value>numericBoxAngularSpeed</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAngularSpeed.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAngularSpeed.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxAngularSpeed.ZOrder" xml:space="preserve">
-    <value>31</value>
-  </data>
   <data name="numericBoxRyStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -4613,18 +3666,6 @@ by two planes</value>
   </data>
   <data name="numericBoxRyStep.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12.1875pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRyStep.Name" xml:space="preserve">
-    <value>numericBoxRyStep</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRyStep.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRyStep.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRyStep.ZOrder" xml:space="preserve">
-    <value>32</value>
   </data>
   <data name="numericBoxRadialAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4662,18 +3703,6 @@ by two planes</value>
   <data name="numericBoxRadialAngle.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12.1875pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxRadialAngle.Name" xml:space="preserve">
-    <value>numericBoxRadialAngle</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRadialAngle.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRadialAngle.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRadialAngle.ZOrder" xml:space="preserve">
-    <value>33</value>
-  </data>
   <data name="numericBoxRyOscillation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -4710,18 +3739,6 @@ by two planes</value>
   <data name="numericBoxRyOscillation.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12.1875pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxRyOscillation.Name" xml:space="preserve">
-    <value>numericBoxRyOscillation</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRyOscillation.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRyOscillation.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRyOscillation.ZOrder" xml:space="preserve">
-    <value>34</value>
-  </data>
   <data name="numericBoxRzOscillation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -4757,18 +3774,6 @@ by two planes</value>
   </data>
   <data name="numericBoxRzOscillation.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12.1875pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRzOscillation.Name" xml:space="preserve">
-    <value>numericBoxRzOscillation</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRzOscillation.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRzOscillation.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxRzOscillation.ZOrder" xml:space="preserve">
-    <value>35</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
@@ -5519,18 +4524,6 @@ by two planes</value>
   <data name="listBoxSpecifiedIndices.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="&gt;&gt;listBoxSpecifiedIndices.Name" xml:space="preserve">
-    <value>listBoxSpecifiedIndices</value>
-  </data>
-  <data name="&gt;&gt;listBoxSpecifiedIndices.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBoxSpecifiedIndices.Parent" xml:space="preserve">
-    <value>panelSpecifiedIndices</value>
-  </data>
-  <data name="&gt;&gt;listBoxSpecifiedIndices.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="flowLayoutPanelAddRemove.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5609,18 +4602,6 @@ by two planes</value>
   <data name="flowLayoutPanelAddRemove.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelAddRemove.Name" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelAddRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelAddRemove.Parent" xml:space="preserve">
-    <value>panelSpecifiedIndices</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelAddRemove.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="buttonAddIndex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5651,18 +4632,6 @@ by two planes</value>
   <data name="buttonAddIndex.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;buttonAddIndex.Name" xml:space="preserve">
-    <value>buttonAddIndex</value>
-  </data>
-  <data name="&gt;&gt;buttonAddIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAddIndex.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;buttonAddIndex.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="buttonRemoveIndex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5692,18 +4661,6 @@ by two planes</value>
   </data>
   <data name="buttonRemoveIndex.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveIndex.Name" xml:space="preserve">
-    <value>buttonRemoveIndex</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveIndex.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveIndex.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="colorControlIndex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5747,18 +4704,6 @@ by two planes</value>
   <data name="colorControlIndex.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="&gt;&gt;colorControlIndex.Name" xml:space="preserve">
-    <value>colorControlIndex</value>
-  </data>
-  <data name="&gt;&gt;colorControlIndex.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlIndex.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;colorControlIndex.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="checkBoxRotateColor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5782,18 +4727,6 @@ by two planes</value>
   </data>
   <data name="checkBoxRotateColor.Text" xml:space="preserve">
     <value>Rotate color</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRotateColor.Name" xml:space="preserve">
-    <value>checkBoxRotateColor</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRotateColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRotateColor.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRotateColor.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5824,18 +4757,6 @@ by two planes</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.Name" xml:space="preserve">
-    <value>checkBoxIncludingEquivalentPlanes</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="flowLayoutPanelIndexFilter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5868,18 +4789,6 @@ by two planes</value>
     <value>190, 47</value>
   </data>
   <data name="flowLayoutPanelIndexFilter.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelIndexFilter.Name" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelIndexFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelIndexFilter.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelIndexFilter.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="numericBoxHighStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
@@ -5920,18 +4829,6 @@ by two planes</value>
   </data>
   <data name="numericBoxHighStructureFactor.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHighStructureFactor.Name" xml:space="preserve">
-    <value>numericBoxHighStructureFactor</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHighStructureFactor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHighStructureFactor.Parent" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHighStructureFactor.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="flowLayoutPanelIndex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5999,18 +4896,6 @@ by two planes</value>
   <data name="flowLayoutPanelIndex.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelIndex.Name" xml:space="preserve">
-    <value>flowLayoutPanelIndex</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelIndex.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelIndex.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="flowLayoutPanelH.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6040,18 +4925,6 @@ by two planes</value>
   </data>
   <data name="flowLayoutPanelH.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelH.Name" xml:space="preserve">
-    <value>flowLayoutPanelH</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelH.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelH.Parent" xml:space="preserve">
-    <value>flowLayoutPanelIndex</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelH.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="numericBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -6089,18 +4962,6 @@ by two planes</value>
   <data name="numericBox1.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBox1.Name" xml:space="preserve">
-    <value>numericBox1</value>
-  </data>
-  <data name="&gt;&gt;numericBox1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBox1.Parent" xml:space="preserve">
-    <value>flowLayoutPanelH</value>
-  </data>
-  <data name="&gt;&gt;numericBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="flowLayoutPanelK.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6129,18 +4990,6 @@ by two planes</value>
     <value>49, 43</value>
   </data>
   <data name="flowLayoutPanelK.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelK.Name" xml:space="preserve">
-    <value>flowLayoutPanelK</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelK.Parent" xml:space="preserve">
-    <value>flowLayoutPanelIndex</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelK.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="numericBox2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -6178,18 +5027,6 @@ by two planes</value>
   </data>
   <data name="numericBox2.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="&gt;&gt;numericBox2.Name" xml:space="preserve">
-    <value>numericBox2</value>
-  </data>
-  <data name="&gt;&gt;numericBox2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBox2.Parent" xml:space="preserve">
-    <value>flowLayoutPanelK</value>
-  </data>
-  <data name="&gt;&gt;numericBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="flowLayoutPanelI.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6236,18 +5073,6 @@ by two planes</value>
   <data name="flowLayoutPanelI.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelI.Name" xml:space="preserve">
-    <value>flowLayoutPanelI</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelI.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelI.Parent" xml:space="preserve">
-    <value>flowLayoutPanelIndex</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelI.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="labelI.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6277,18 +5102,6 @@ by two planes</value>
   </data>
   <data name="labelI.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
-  </data>
-  <data name="&gt;&gt;labelI.Name" xml:space="preserve">
-    <value>labelI</value>
-  </data>
-  <data name="&gt;&gt;labelI.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelI.Parent" xml:space="preserve">
-    <value>flowLayoutPanelI</value>
-  </data>
-  <data name="&gt;&gt;labelI.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="numericBox4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -6326,18 +5139,6 @@ by two planes</value>
   <data name="numericBox4.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBox4.Name" xml:space="preserve">
-    <value>numericBox4</value>
-  </data>
-  <data name="&gt;&gt;numericBox4.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBox4.Parent" xml:space="preserve">
-    <value>flowLayoutPanelI</value>
-  </data>
-  <data name="&gt;&gt;numericBox4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="flowLayoutPanelL.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6367,18 +5168,6 @@ by two planes</value>
   </data>
   <data name="flowLayoutPanelL.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelL.Name" xml:space="preserve">
-    <value>flowLayoutPanelL</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelL.Parent" xml:space="preserve">
-    <value>flowLayoutPanelIndex</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelL.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="numericBox3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -6416,18 +5205,6 @@ by two planes</value>
   <data name="numericBox3.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBox3.Name" xml:space="preserve">
-    <value>numericBox3</value>
-  </data>
-  <data name="&gt;&gt;numericBox3.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBox3.Parent" xml:space="preserve">
-    <value>flowLayoutPanelL</value>
-  </data>
-  <data name="&gt;&gt;numericBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="checkBoxUseMillerBravaisIndex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6460,18 +5237,6 @@ by two planes</value>
   </data>
   <data name="checkBoxUseMillerBravaisIndex.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;checkBoxUseMillerBravaisIndex.Name" xml:space="preserve">
-    <value>checkBoxUseMillerBravaisIndex</value>
-  </data>
-  <data name="&gt;&gt;checkBoxUseMillerBravaisIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxUseMillerBravaisIndex.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxUseMillerBravaisIndex.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -6749,18 +5514,6 @@ by two planes</value>
   <data name="label29.Text" xml:space="preserve">
     <value>Depth fading out</value>
   </data>
-  <data name="&gt;&gt;label29.Name" xml:space="preserve">
-    <value>label29</value>
-  </data>
-  <data name="&gt;&gt;label29.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
-    <value>groupBox3DOptions</value>
-  </data>
-  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="checkBox3dOptionSphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6778,18 +5531,6 @@ by two planes</value>
   </data>
   <data name="checkBox3dOptionSphere.Text" xml:space="preserve">
     <value>Sphere outline</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSphere.Name" xml:space="preserve">
-    <value>checkBox3dOptionSphere</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSphere.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSphere.Parent" xml:space="preserve">
-    <value>groupBox3DOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSphere.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="checkBox3dOptionSemisphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6812,18 +5553,6 @@ by two planes</value>
   <data name="checkBox3dOptionSemisphere.Text" xml:space="preserve">
     <value>Semisphere</value>
   </data>
-  <data name="&gt;&gt;checkBox3dOptionSemisphere.Name" xml:space="preserve">
-    <value>checkBox3dOptionSemisphere</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSemisphere.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSemisphere.Parent" xml:space="preserve">
-    <value>groupBox3DOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSemisphere.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="trackBarDepthFadingOut.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -6835,18 +5564,6 @@ by two planes</value>
   </data>
   <data name="trackBarDepthFadingOut.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;trackBarDepthFadingOut.Name" xml:space="preserve">
-    <value>trackBarDepthFadingOut</value>
-  </data>
-  <data name="&gt;&gt;trackBarDepthFadingOut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarDepthFadingOut.Parent" xml:space="preserve">
-    <value>groupBox3DOptions</value>
-  </data>
-  <data name="&gt;&gt;trackBarDepthFadingOut.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="button3D_reset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6869,18 +5586,6 @@ by two planes</value>
   <data name="button3D_reset.Text" xml:space="preserve">
     <value>Reset</value>
   </data>
-  <data name="&gt;&gt;button3D_reset.Name" xml:space="preserve">
-    <value>button3D_reset</value>
-  </data>
-  <data name="&gt;&gt;button3D_reset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button3D_reset.Parent" xml:space="preserve">
-    <value>groupBox3DOptions</value>
-  </data>
-  <data name="&gt;&gt;button3D_reset.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="checkBox3dOptionProjectionLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6898,18 +5603,6 @@ by two planes</value>
   </data>
   <data name="checkBox3dOptionProjectionLine.Text" xml:space="preserve">
     <value>Projection line</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionProjectionLine.Name" xml:space="preserve">
-    <value>checkBox3dOptionProjectionLine</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionProjectionLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionProjectionLine.Parent" xml:space="preserve">
-    <value>groupBox3DOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionProjectionLine.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="checkBox3dOptionStereonet.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6932,18 +5625,6 @@ by two planes</value>
   <data name="checkBox3dOptionStereonet.Text" xml:space="preserve">
     <value>Stereonet</value>
   </data>
-  <data name="&gt;&gt;checkBox3dOptionStereonet.Name" xml:space="preserve">
-    <value>checkBox3dOptionStereonet</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionStereonet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionStereonet.Parent" xml:space="preserve">
-    <value>groupBox3DOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionStereonet.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="checkBox3dOptionLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6964,18 +5645,6 @@ by two planes</value>
   </data>
   <data name="checkBox3dOptionLabel.Text" xml:space="preserve">
     <value>Label</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionLabel.Name" xml:space="preserve">
-    <value>checkBox3dOptionLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionLabel.Parent" xml:space="preserve">
-    <value>groupBox3DOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
