@@ -39,6 +39,8 @@ public partial class FormEBSD : CaptureFormBase
     private double[] masterPattern3DValuesNegative = []; // (260322Ch) 旧名: masterPattern3DPreviewValuesNegative。MasterPattern3D 用の -Z 半球強度を保持する
     private int masterPattern3DCacheGridSize = 0; // (260322Ch) 旧名: masterPattern3DPreviewGridSize。0 は有効な MasterPattern3D キャッシュが未作成であることを示す
 
+    private EbsdMonteCarloDistribution mcDistribution = null; // 260325Cl 追加: MC フィッティング結果
+
     /// <summary>
     /// 飛程計算の際の打ち切りエネルギー (kev)
     /// </summary>
@@ -1327,6 +1329,95 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
+    /// <summary>
+    /// 構築済みルックアップテーブルと MC フィッティング結果を使い、
+    /// 全エネルギー・深さの加重平均 EBSD パターンを計算する。260325Cl 追加
+    /// </summary>
+    private unsafe void ApplyEbsdLookupWeighted(double[] values, int width, int height)
+    {
+        var mp = MasterPattern;
+        var dist = mcDistribution;
+        int eLen = mp.Energies.Length, dLen = mp.Depths.Length;
+        int totalPixels = width * height;
+        int binCount = dist.BinCount;
+        var gs = ebsdLookupGridSize;
+
+        Array.Clear(values);
+
+        // ピクセルごとの加重合計を並列で計算
+        fixed (int* pIdx = ebsdLookupIdx)
+        fixed (float* pWt = ebsdLookupWt)
+        fixed (bool* pPosZ = ebsdLookupPosZ)
+        fixed (double* pVal = values)
+        {
+            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
+
+            System.Threading.Tasks.Parallel.For(0, height, h =>
+            {
+                // この行のピクセルの検出器 Y 座標 (ビン補間用)
+                // 260325Cl: スクリーン h=0 → pyFactor≈-DetR (検出器底) → detNormY≈-1, 符号反転しない
+                double detNormY = (2.0 * h + 1 - height) / (double)height;
+                double by = (1 - detNormY) * 0.5 * binCount - 0.5;
+                int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
+                double fy = Math.Clamp(by - bj0, 0, 1);
+
+                for (int w = 0; w < width; w++)
+                {
+                    int i = h * width + w;
+
+                    // 検出器 X 座標
+                    double detNormX = -(2.0 * w + 1 - width) / (double)width; // 260325Cl: スクリーン X は検出器面 X と反転 (BuildEbsdLookupTable で -Ri.E11 を使用)
+                    double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
+                    int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
+                    double fx = Math.Clamp(bx - bi0, 0, 1);
+
+                    // ビン重みのバイリニア補間係数
+                    double c00 = (1 - fx) * (1 - fy);
+                    double c10 = fx * (1 - fy);
+                    double c01 = (1 - fx) * fy;
+                    double c11 = fx * fy;
+
+                    var bw00 = dist.BinWeights[bi0, bj0];
+                    var bw10 = dist.BinWeights[bi0 + 1, bj0];
+                    var bw01 = dist.BinWeights[bi0, bj0 + 1];
+                    var bw11 = dist.BinWeights[bi0 + 1, bj0 + 1];
+
+                    // ルックアップテーブルからマスターパターン補間パラメータ取得
+                    int idx = pIdx0[i];
+                    int i2 = i * 2;
+                    float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
+                    float mpW0 = 1 - mpFw, mpW1 = mpFw;
+                    float mpFh1 = 1 - mpFh;
+                    bool posZ = pPosZ0[i];
+
+                    // 全エネルギー・深さで加重合計
+                    double sum = 0;
+                    for (int ei = 0; ei < eLen; ei++)
+                    {
+                        for (int di = 0; di < dLen; di++)
+                        {
+                            int wIdx = ei * dLen + di;
+                            double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
+                                          + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                            if (weight < 1e-15) continue;
+
+                            // マスターパターン強度をバイリニア補間
+                            var plane = posZ
+                                ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
+                                : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                            if (plane == null || plane.Length == 0) continue;
+
+                            double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
+                                             + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
+                            sum += weight * intensity;
+                        }
+                    }
+                    pVal0[i] = sum;
+                }
+            });
+        }
+    }
+
     public void DrawEBSD()
     {
         if (MasterPattern == null)
@@ -1334,15 +1425,6 @@ public partial class FormEBSD : CaptureFormBase
 
         if (skipEBSD_Rendering) return;
         skipEBSD_Rendering = true;
-
-        var energyIndex = trackBarOutputEnergy.Value;
-        var depthIndex = trackBarOutputThickness.Value;
-
-        if ((uint)energyIndex >= (uint)MasterPattern.Energies.Length || (uint)depthIndex >= (uint)MasterPattern.Depths.Length)
-        {
-            skipEBSD_Rendering = false;
-            return;
-        }
 
         int width = graphicsBox.ClientRectangle.Width, height = graphicsBox.ClientRectangle.Height;
         if (width <= 0 || height <= 0) { skipEBSD_Rendering = false; return; }
@@ -1352,15 +1434,39 @@ public partial class FormEBSD : CaptureFormBase
         // Step 1: ルックアップテーブル構築 (方向計算 + Rosca-Lambert + 補間係数)
         BuildEbsdLookupTable(width, height);
 
-        // Step 2: 単一スライスの補間 (将来の畳み込みではここをループに変える)
         var totalPixels = width * height;
         if (ebsdValues.Length != totalPixels)
             ebsdValues = new double[totalPixels];
 
-        var mp = MasterPattern;
-        var posPlane = mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, energyIndex, depthIndex);
-        var negPlane = mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, energyIndex, depthIndex);
-        ApplyEbsdLookupSingleSlice(ebsdValues, totalPixels, posPlane, negPlane);
+        string statusText;
+
+        // 260325Cl: MC 分布がある場合は加重平均、ない場合は単一スライス
+        if (mcDistribution != null)
+        {
+            // Step 2a: 全エネルギー・深さの加重平均パターン
+            ApplyEbsdLookupWeighted(ebsdValues, width, height);
+            statusText = $"EBSD weighted pattern ({MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {sw1.ElapsedMilliseconds} ms.";
+        }
+        else
+        {
+            // Step 2b: 単一スライス (従来動作)
+            var energyIndex = trackBarOutputEnergy.Value;
+            var depthIndex = trackBarOutputThickness.Value;
+            if ((uint)energyIndex >= (uint)MasterPattern.Energies.Length || (uint)depthIndex >= (uint)MasterPattern.Depths.Length)
+            {
+                skipEBSD_Rendering = false;
+                return;
+            }
+
+            var mp = MasterPattern;
+            var posPlane = mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, energyIndex, depthIndex);
+            var negPlane = mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, energyIndex, depthIndex);
+            ApplyEbsdLookupSingleSlice(ebsdValues, totalPixels, posPlane, negPlane);
+
+            var energy = MasterPattern.Energies[energyIndex];
+            var depth = MasterPattern.Depths[depthIndex];
+            statusText = $"EBSD from MasterPattern: E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms.";
+        }
 
         // Step 3: 表示
         if (Pbmp == null || ebsdCachedWidth != width || ebsdCachedHeight != height)
@@ -1379,10 +1485,7 @@ public partial class FormEBSD : CaptureFormBase
         }
 
         AdjustImage();
-
-        var energy = MasterPattern.Energies[energyIndex];
-        var depth = MasterPattern.Depths[depthIndex];
-        toolStripStatusLabel1.Text = $"EBSD from MasterPattern: E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms.";
+        toolStripStatusLabel1.Text = statusText;
 
         skipEBSD_Rendering = false;
     }
@@ -1507,6 +1610,43 @@ public partial class FormEBSD : CaptureFormBase
     }
 
     /// <summary>
+    /// 既存の buttonBSE_Click で MC を実行した後、エネルギー・深さ範囲を決定して
+    /// numericBox を更新し、8×8 ビンのフィッティング結果を mcDistribution に保持する。260325Cl 追加
+    /// </summary>
+    private void RunMonteCarloAndSetRanges()
+    {
+        // ① 既存の BSE ボタンと同じ処理を実行 (PoleFigure・ヒストグラムも更新)
+        buttonBSE_Click(null, EventArgs.Empty);
+        if (BSEs == null || BSEs.Length == 0) return;
+
+        double energy = Voltage;
+
+        // BSEs → (Depth, Vec, Energy) に変換
+        var bseRaw = BSEs.Select(e => (e.Depth, e.Vec, e.Energy)).ToArray();
+
+        // ② 累積頻度からレンジを決定 (エネルギー80%, 深さ95%)
+        var (energyLoss80, depth95) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy);
+        var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss80, depth95);
+
+        // numericBox にレンジを設定
+        numericBoxEnergyStart.Value = grid.energyStart;
+        numericBoxEnergyEnd.Value = grid.energyEnd;
+        numericBoxEnergyStep.Value = grid.energyStep;
+        numericBoxThicknessStart.Value = grid.depthStart;
+        numericBoxThicknessEnd.Value = grid.depthEnd;
+        numericBoxThicknessStep.Value = grid.depthStep;
+
+        // ③ 8×8 ビンの分布フィッティング
+        sw1.Restart();
+        mcDistribution = new EbsdMonteCarloDistribution(
+            bseRaw, energy,
+            SmpTilt, DetTilt, DetY, DetZ, DetR,
+            grid.energies, grid.depths);
+        toolStripStatusLabel1.Text += $" | Fitting: {sw1.ElapsedMilliseconds} ms.";
+        Application.DoEvents();
+    }
+
+    /// <summary>
     /// UI 上の設定値を読み取り、MasterPattern の作成を開始する。
     /// 実際の計算本体は Crystallography.EBSD に委譲し、このメソッドでは UI の状態遷移だけを扱う。
     /// </summary>
@@ -1520,7 +1660,8 @@ public partial class FormEBSD : CaptureFormBase
         if (masterPatternEbsd.IsBuilding)
             return;
 
-        // EnsureMasterPatternPreviewControl(); // (260322Ch) 旧実装: build 前に preview 初期化を再確認していた
+        // 260325Cl: まず MC を実行してレンジとフィッティングを決定
+        RunMonteCarloAndSetRanges();
 
         // var request = CreateMasterPatternBuildRequest(); // (260321Ch) 旧実装: request 生成を別 helper に切り出していた
         var request = new EBSD.MasterPatternBuildRequest(
@@ -1623,6 +1764,8 @@ public partial class FormEBSD : CaptureFormBase
         trackBarOutputThickness.Value = 0;
         textBoxEnergy.Text = MasterPattern.Energies.Length > 0 ? MasterPattern.Energies[0].ToString() : "";
         textBoxThickness.Text = MasterPattern.Depths.Length > 0 ? MasterPattern.Depths[0].ToString() : "";
+
+        Draw(); // 260325Cl: MasterPattern 完了後すぐに EBSD パターンを描画
     }
 
     /// <summary>
