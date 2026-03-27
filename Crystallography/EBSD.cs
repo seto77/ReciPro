@@ -229,7 +229,8 @@ namespace Crystallography
         /// <summary>
         /// Bethe 計算中または plane 変換中かどうかを返す。
         /// </summary>
-        public bool IsBuilding => bwMasterPattern.IsBusy || masterPatternBethe?.bwEBSD?.IsBusy == true || masterPatternBethe?.bwEBSDNew?.IsBusy == true; // (260321Ch) 新旧どちらの EBSD worker でも build 中と見なす
+        //public bool IsBuilding => bwMasterPattern.IsBusy || masterPatternBethe?.bwEBSD?.IsBusy == true || masterPatternBethe?.bwEBSDNew?.IsBusy == true; // (260321Ch) 新旧どちらの EBSD worker でも build 中と見なす
+        public bool IsBuilding => bwMasterPattern.IsBusy || masterPatternBethe?.bwEBSDNew?.IsBusy == true; // (260327Ch) 旧 bwEBSD はお蔵入りにしたので ebsdNew 側だけを見る
 
         /// <summary>
         /// MasterPattern 作成中の進捗通知。
@@ -290,10 +291,12 @@ namespace Crystallography
         /// </summary>
         public void CancelMasterPatternBuild()
         {
-            if (masterPatternBethe?.bwEBSD?.IsBusy == true)
-                masterPatternBethe.CancelEBSD();
+            #region お蔵入り // (260327Ch) 旧 bwEBSD 側の cancel 経路は退避
+            //if (masterPatternBethe?.bwEBSD?.IsBusy == true)
+            //    masterPatternBethe.CancelEBSD();
+            #endregion
             if (masterPatternBethe?.bwEBSDNew?.IsBusy == true)
-                masterPatternBethe.CancelEBSDNew(); // (260321Ch) 新しい master pattern 経路も停止できるようにする
+                masterPatternBethe.bwEBSDNew.CancelAsync(); // (260327Ch) 1 か所しか使わない helper はここへ畳み込む
             if (bwMasterPattern.IsBusy)
                 bwMasterPattern.CancelAsync();
         }

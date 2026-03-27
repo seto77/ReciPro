@@ -12,35 +12,20 @@ namespace Crystallography;
 /// </summary>
 public sealed class EbsdMonteCarloDistribution
 {
-    /// <summary>検出器ビン数 (各軸)。</summary>
     public int BinCount { get; }
-
-    /// <summary>マスターパターンで使うエネルギー配列 (keV, 降順)。</summary>
     public double[] Energies { get; }
-
-    /// <summary>マスターパターンで使う深さ配列 (nm, 昇順)。</summary>
     public double[] Depths { get; }
 
     /// <summary>
-    /// ビンごとの重み配列。BinWeights[binI, binJ] は double[Energies.Length * Depths.Length]。
-    /// 添字は energyIndex * Depths.Length + depthIndex。
+    /// ビンごとの正規化重み。BinWeights[binI, binJ] は double[Energies.Length * Depths.Length]。
     /// </summary>
     public double[,][] BinWeights { get; }
 
     /// <summary>
-    /// BSE をモンテカルロで得た後、検出器ビンに割り当て、
-    /// エネルギー・深さ分布をフィッティングして重みを計算する。
+    /// model 2 用。detector bin の absolute 強度を保った depth-slice 重み。260325Ch 追加
     /// </summary>
-    /// <param name="bseList">MC 結果 (depth_nm, direction, energy_keV) の配列</param>
-    /// <param name="beamEnergy">入射エネルギー (keV)</param>
-    /// <param name="smpTilt">試料傾斜角 (rad)</param>
-    /// <param name="detTilt">検出器傾斜角 (rad)</param>
-    /// <param name="detY">検出器中心 Y (mm)</param>
-    /// <param name="detZ">検出器中心 Z (mm)</param>
-    /// <param name="detR">検出器半径 (mm)</param>
-    /// <param name="energies">使用するエネルギー配列 (keV)</param>
-    /// <param name="depths">使用する深さ配列 (nm)</param>
-    /// <param name="binCount">検出器ビン分割数 (既定 8)</param>
+    public double[,][] BinAbsoluteSliceWeights { get; }
+
     public EbsdMonteCarloDistribution(
         (double Depth, V3 Vec, double Energy)[] bseList,
         double beamEnergy,
@@ -53,13 +38,9 @@ public sealed class EbsdMonteCarloDistribution
         Energies = energies;
         Depths = depths;
 
-        // 260325Cl: 検出器ジオメトリの前計算
-        // BSE の出射方向 vec はビーム座標系で定義されており、検出器もビーム座標系に配置されている。
-        // smpRot は不要 (smpRot はスクリーン表示用に Schmidt 投影するときだけ使う)。
         var (sinDet, cosDet) = Math.SinCos(detTilt);
-        double dNumer = -(detY * sinDet + detZ * cosDet); // 検出器面までの法線距離
+        double dNumer = -(detY * sinDet + detZ * cosDet);
 
-        // BSE をビンに振り分け
         var bins = new List<(double depth, double energy)>[binCount, binCount];
         for (int i = 0; i < binCount; i++)
             for (int j = 0; j < binCount; j++)
@@ -67,16 +48,11 @@ public sealed class EbsdMonteCarloDistribution
 
         foreach (var (depth, vec, energy) in bseList)
         {
-            // 260325Cl: ビーム座標系のまま検出器面と交差計算 (smpRot は適用しない)
             double dDenom = vec.Y * sinDet + vec.Z * cosDet;
             if (Math.Abs(dDenom) < 1e-15) continue;
             double k = dNumer / dDenom;
-            if (k <= 0) continue; // 検出器の反対側へ飛んだ
+            if (k <= 0) continue;
 
-            // 検出器面上の正規化座標 [-1, 1]
-            // 検出器 Y 軸 = RotX(-detTilt) * (0,1,0) = (0, cosDet, -sinDet)
-            // hitRel = k*vec - detCenter = (k*vX, k*vY + detY, k*vZ + detZ)
-            // localY = hitRel · detYaxis = (k*vY + detY)*cosDet - (k*vZ + detZ)*sinDet
             double localY = cosDet * (k * vec.Y + detY) - sinDet * (k * vec.Z + detZ);
             double px = k * vec.X / detR;
             double py = localY / detR;
@@ -88,8 +64,9 @@ public sealed class EbsdMonteCarloDistribution
             bins[bi, bj].Add((depth, energy));
         }
 
-        // 各ビンでフィッティングして重みを計算
+        // BinWeights = new double[binCount, binCount][]; // (260325Ch) 旧実装
         BinWeights = new double[binCount, binCount][];
+        BinAbsoluteSliceWeights = new double[binCount, binCount][]; // (260325Ch) model 2 用
         int eLen = energies.Length, dLen = depths.Length;
 
         for (int bi = 0; bi < binCount; bi++)
@@ -97,37 +74,41 @@ public sealed class EbsdMonteCarloDistribution
             {
                 var binData = bins[bi, bj];
                 var weights = new double[eLen * dLen];
+                var absoluteSliceWeights = new double[eLen * dLen]; // (260325Ch) model 2 用
+                double binFraction = bseList.Length > 0 ? (double)binData.Count / bseList.Length : 0.0; // (260325Ch)
 
                 if (binData.Count < 10)
                 {
-                    // データ不足の場合は一様重み
-                    double uniform = binData.Count > 0 ? 1.0 / (eLen * dLen) : 0;
+                    double uniform = binData.Count > 0 ? 1.0 / (eLen * dLen) : 0.0;
                     Array.Fill(weights, uniform);
+
+                    double absoluteUniform = binData.Count > 0 ? binFraction / (eLen * dLen) : 0.0; // (260325Ch)
+                    Array.Fill(absoluteSliceWeights, absoluteUniform);
                 }
                 else
                 {
+                    // FitBinDistribution(binData, beamEnergy, energies, depths, weights); // (260325Ch) 旧実装
                     FitBinDistribution(binData, beamEnergy, energies, depths, weights);
+                    FitBinDistribution(binData, beamEnergy, energies, depths, absoluteSliceWeights, useSliceMass: true, totalScale: binFraction); // (260325Ch)
                 }
+
                 BinWeights[bi, bj] = weights;
+                BinAbsoluteSliceWeights[bi, bj] = absoluteSliceWeights; // (260325Ch)
             }
     }
 
-    /// <summary>
-    /// 1 つのビンの BSE データから w(E, z) = g(E) × h(z|E) をフィッティングし、
-    /// 離散グリッド上の重みを計算する。260325Cl 追加
-    /// </summary>
     private static void FitBinDistribution(
         List<(double depth, double energy)> data,
         double beamEnergy,
         double[] energies, double[] depths,
-        double[] weights)
+        double[] weights,
+        bool useSliceMass = false,
+        double totalScale = 1.0)
     {
         int eLen = energies.Length, dLen = depths.Length;
         int count = data.Count;
         if (count == 0) return;
 
-        // --- g(E): 非対称ガウシアンのフィッティング ---
-        // エネルギーロスのヒストグラムから Ep, σL, σR を推定
         double sumE = 0;
         foreach (var d in data) sumE += d.energy;
         double meanE = sumE / count;
@@ -145,7 +126,6 @@ public sealed class EbsdMonteCarloDistribution
         if (sigmaL < 0.01) sigmaL = 0.5;
         if (sigmaR < 0.01) sigmaR = 0.5;
 
-        // g(E_i) を計算
         var gE = new double[eLen];
         for (int ei = 0; ei < eLen; ei++)
         {
@@ -154,8 +134,6 @@ public sealed class EbsdMonteCarloDistribution
             gE[ei] = Math.Exp(-dE * dE / (2 * sigma * sigma));
         }
 
-        // --- h(z|E): エネルギー依存の指数減衰 λ(E) のフィッティング ---
-        // 各エネルギービンで深さ分布を作り、指数フィットで λ を求める
         double eStep = eLen > 1 ? Math.Abs(energies[0] - energies[^1]) / (eLen - 1) : 1.0;
         var lambdaPerEnergy = new double[eLen];
 
@@ -164,7 +142,6 @@ public sealed class EbsdMonteCarloDistribution
             double eLow = energies[ei] - eStep * 0.5;
             double eHigh = energies[ei] + eStep * 0.5;
 
-            // このエネルギー範囲の深さデータを収集
             var depthsInBin = new List<double>();
             foreach (var d in data)
                 if (d.energy >= eLow && d.energy < eHigh)
@@ -172,22 +149,18 @@ public sealed class EbsdMonteCarloDistribution
 
             if (depthsInBin.Count > 3)
             {
-                // λ = 平均深さ (指数分布の最尤推定)
                 double sum = 0;
                 foreach (var z in depthsInBin) sum += z;
                 lambdaPerEnergy[ei] = Math.Max(1.0, sum / depthsInBin.Count);
             }
             else
             {
-                lambdaPerEnergy[ei] = -1; // データ不足マーカー
+                lambdaPerEnergy[ei] = -1;
             }
         }
 
-        // λ(E) を E の 2 次多項式でフィット: λ = a + b*E + c*E²
-        // データが少ないビンは除外してフィット
         FitLambdaPolynomial(energies, lambdaPerEnergy, out double la, out double lb, out double lc);
 
-        // 重み w(E_i, z_j) = g(E_i) × h(z_j | E_i) を計算し正規化
         double totalWeight = 0;
         for (int ei = 0; ei < eLen; ei++)
         {
@@ -196,25 +169,32 @@ public sealed class EbsdMonteCarloDistribution
 
             for (int di = 0; di < dLen; di++)
             {
-                double w = gE[ei] * Math.Exp(-depths[di] / lambda) / lambda;
+                // double w = gE[ei] * Math.Exp(-depths[di] / lambda) / lambda; // (260325Ch) 旧実装
+                double w;
+                if (useSliceMass)
+                {
+                    double lowerDepth = di == 0 ? 0.0 : depths[di - 1];
+                    double upperDepth = depths[di];
+                    w = gE[ei] * (Math.Exp(-lowerDepth / lambda) - Math.Exp(-upperDepth / lambda)); // (260325Ch) model 2 は depth slice 区間質量
+                }
+                else
+                {
+                    w = gE[ei] * Math.Exp(-depths[di] / lambda) / lambda;
+                }
+
                 weights[ei * dLen + di] = w;
                 totalWeight += w;
             }
         }
 
-        // 正規化
         if (totalWeight > 0)
             for (int k = 0; k < weights.Length; k++)
-                weights[k] /= totalWeight;
+                // weights[k] /= totalWeight; // (260325Ch) 旧実装
+                weights[k] = weights[k] / totalWeight * totalScale; // (260325Ch)
     }
 
-    /// <summary>
-    /// λ(E) を 2 次多項式 a + b*E + c*E² で最小二乗フィットする。260325Cl 追加
-    /// lambdaValues[i] が負なら欠損として除外する。
-    /// </summary>
     private static void FitLambdaPolynomial(double[] energies, double[] lambdaValues, out double a, out double b, out double c)
     {
-        // 有効データだけ収集
         var validE = new List<double>();
         var validL = new List<double>();
         for (int i = 0; i < energies.Length; i++)
@@ -226,7 +206,7 @@ public sealed class EbsdMonteCarloDistribution
 
         if (validE.Count == 0)
         {
-            a = 10; b = 0; c = 0; // デフォルト λ=10nm
+            a = 10; b = 0; c = 0;
             return;
         }
         if (validE.Count == 1)
@@ -236,7 +216,6 @@ public sealed class EbsdMonteCarloDistribution
         }
         if (validE.Count == 2)
         {
-            // 1 次フィット
             double e0 = validE[0], e1 = validE[1], l0 = validL[0], l1 = validL[1];
             b = (l1 - l0) / (e1 - e0);
             a = l0 - b * e0;
@@ -244,8 +223,6 @@ public sealed class EbsdMonteCarloDistribution
             return;
         }
 
-        // 正規方程式で 2 次多項式フィット
-        // Σ w_k (a + b*e_k + c*e_k^2 - λ_k)^2 → min
         int n = validE.Count;
         double s0 = n, s1 = 0, s2 = 0, s3 = 0, s4 = 0;
         double r0 = 0, r1 = 0, r2 = 0;
@@ -257,13 +234,9 @@ public sealed class EbsdMonteCarloDistribution
             r0 += l; r1 += l * e; r2 += l * e2;
         }
 
-        // [s0 s1 s2] [a]   [r0]
-        // [s1 s2 s3] [b] = [r1]
-        // [s2 s3 s4] [c]   [r2]
         double det = s0 * (s2 * s4 - s3 * s3) - s1 * (s1 * s4 - s3 * s2) + s2 * (s1 * s3 - s2 * s2);
         if (Math.Abs(det) < 1e-30)
         {
-            // 退化した場合は定数
             a = r0 / s0; b = 0; c = 0;
             return;
         }
@@ -274,18 +247,12 @@ public sealed class EbsdMonteCarloDistribution
         c = ((s1 * s3 - s2 * s2) * r0 + (s1 * s2 - s0 * s3) * r1 + (s0 * s2 - s1 * s1) * r2) * invDet;
     }
 
-    /// <summary>
-    /// 検出器上の正規化座標 (detX, detY) ∈ [-1, 1] における重みを、
-    /// 周囲 4 ビンからバイリニア補間して返す。260325Cl 追加
-    /// 戻り値は double[Energies.Length * Depths.Length]。
-    /// </summary>
     public double[] GetPixelWeights(double detX, double detY)
     {
         int eLen = Energies.Length, dLen = Depths.Length;
         int wLen = eLen * dLen;
         var result = new double[wLen];
 
-        // ビン中心座標: ビン i の中心は (2*i + 1) / (2*binCount) * 2 - 1 = (2*i+1)/binCount - 1
         double bx = (detX + 1) * 0.5 * BinCount - 0.5;
         double by = (1 - detY) * 0.5 * BinCount - 0.5;
 
@@ -310,21 +277,12 @@ public sealed class EbsdMonteCarloDistribution
         return result;
     }
 
-    /// <summary>
-    /// MC 結果から全検出器領域での累積分布を使い、
-    /// 80% をカバーするエネルギーロスと深さの閾値を返す。260325Cl 追加
-    /// </summary>
-    /// <param name="bseList">MC 結果 (depth_nm, direction, energy_keV)</param>
-    /// <param name="beamEnergy">入射エネルギー (keV)</param>
-    /// <param name="cumulativeFraction">累積頻度の閾値 (既定 0.8)</param>
-    /// <returns>(energyLoss80: 80% カバーするエネルギーロス keV, depth80: 80% カバーする深さ nm)</returns>
-    // 260325Cl: depth は累積95%に変更、energy は累積80%のまま
-    public static (double energyLoss80, double depth95) ComputeRangesFromMC(
+    public static (double energyLoss80, double depth99) ComputeRangesFromMC(
         (double Depth, V3 Vec, double Energy)[] bseList,
         double beamEnergy)
     {
         if (bseList == null || bseList.Length == 0)
-            return (5.0, 50.0); // デフォルト
+            return (5.0, 50.0);
 
         int n = bseList.Length;
         var losses = new double[n];
@@ -339,21 +297,15 @@ public sealed class EbsdMonteCarloDistribution
         Array.Sort(depths);
 
         int idxLoss80 = Math.Min((int)(n * 0.8), n - 1);
-        int idxDepth95 = Math.Min((int)(n * 0.95), n - 1);
+        int idxDepth99 = Math.Min((int)(n * 0.99), n - 1); // (260326Ch)
 
-        return (losses[idxLoss80], depths[idxDepth95]);
+        return (losses[idxLoss80], depths[idxDepth99]);
     }
 
-    /// <summary>
-    /// エネルギーと深さの配列を生成する。260325Cl 追加・修正
-    /// エネルギー: beamEnergy から energyLoss80 分下がるまでを 8 段階 (0.1 keV 刻み)。
-    /// 深さ: 累積95%深さ x に対し、ステップ y = x * 0.025、範囲 y～x。
-    /// </summary>
     public static (double[] energies, double energyStart, double energyEnd, double energyStep,
                     double[] depths, double depthStart, double depthEnd, double depthStep)
-        ComputeGridFromRanges(double beamEnergy, double energyLoss80, double depth95)
+        ComputeGridFromRanges(double beamEnergy, double energyLoss80, double depth99)
     {
-        // エネルギー: 8 段階, ステップは 0.1 keV の倍数
         int numEnergyLevels = 8;
         double rawEnergyStep = energyLoss80 / (numEnergyLevels - 1);
         double energyStep = Math.Max(0.1, Math.Round(rawEnergyStep / 0.1) * 0.1);
@@ -361,19 +313,20 @@ public sealed class EbsdMonteCarloDistribution
         double energyEnd = Math.Round((beamEnergy - energyStep * (numEnergyLevels - 1)) / 0.1) * 0.1;
         if (energyEnd < 1) energyEnd = 1;
 
-        // 実際に使うエネルギー配列 (降順)
         var energyList = new List<double>();
         for (double e = energyStart; e >= energyEnd - 0.001; e -= energyStep)
-            energyList.Add(Math.Round(e * 10) / 10.0); // 0.1 keV 精度に丸め
+            energyList.Add(Math.Round(e * 10) / 10.0);
         var energies = energyList.ToArray();
 
-        // 260325Cl: 深さ: 累積95%深さ x に対し、ステップ y = x * 0.025、範囲 y～x
-        double depthStep = Math.Max(0.1, Math.Round(depth95 * 0.025 * 10) / 10.0); // 0.1 nm 精度に丸め
+        int maxDepthDivisions = 40;
+        double depthStep = Math.Max(0.01, Math.Round(depth99 / maxDepthDivisions * 100) / 100.0); // (260326Ch)
         double depthStart = depthStep;
-        double depthEnd = Math.Max(depthStep, Math.Round(depth95 * 10) / 10.0);
+        double depthEnd = Math.Max(depthStep, Math.Round(depth99 * 100) / 100.0); // (260326Ch)
         var depthList = new List<double>();
-        for (double d = depthStart; d <= depthEnd + 0.001; d += depthStep)
-            depthList.Add(Math.Round(d * 10) / 10.0);
+        for (double d = depthStart; d <= depthEnd + 0.0001; d += depthStep)
+            depthList.Add(Math.Round(d * 100) / 100.0);
+        if (depthList.Count > maxDepthDivisions)
+            depthList.RemoveRange(maxDepthDivisions, depthList.Count - maxDepthDivisions);
         var depths = depthList.ToArray();
 
         return (energies, energyStart, energyEnd, energyStep,

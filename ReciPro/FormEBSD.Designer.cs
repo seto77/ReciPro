@@ -90,7 +90,7 @@
             trackBarOutputThickness = new System.Windows.Forms.TrackBar();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
-            checkBox1 = new System.Windows.Forms.CheckBox();
+            checkBoxWithBSEDistribution = new System.Windows.Forms.CheckBox();
             comboBoxGradient = new System.Windows.Forms.ComboBox();
             comboBoxScale = new System.Windows.Forms.ComboBox();
             trackBarIntensityBrightnessMax = new System.Windows.Forms.TrackBar();
@@ -138,7 +138,6 @@
             labelMasterPattern2DHemisphere = new System.Windows.Forms.Label();
             comboBoxMasterPattern2DHemisphere = new System.Windows.Forms.ComboBox();
             buttonCreateMasterPattern = new System.Windows.Forms.Button();
-            buttonGenerateEBSDFromMaster = new System.Windows.Forms.Button();
             labelMasterPatternInfo = new System.Windows.Forms.Label();
             panelMasterPattern3D = new System.Windows.Forms.Panel();
             panelMasterPattern3DAxes = new System.Windows.Forms.Panel();
@@ -158,6 +157,7 @@
             panel1 = new System.Windows.Forms.Panel();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
+            toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             flowLayoutPanelViewAlong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
@@ -949,7 +949,7 @@
             buttonStop.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             buttonStop.ForeColor = System.Drawing.Color.White;
             buttonStop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            buttonStop.Location = new System.Drawing.Point(261, 641);
+            buttonStop.Location = new System.Drawing.Point(154, 641);
             buttonStop.Name = "buttonStop";
             buttonStop.Size = new System.Drawing.Size(45, 27);
             buttonStop.TabIndex = 138;
@@ -962,7 +962,7 @@
             groupBoxOutput.Controls.Add(flowLayoutPanelOutputRange);
             groupBoxOutput.Controls.Add(label3);
             groupBoxOutput.Controls.Add(label4);
-            groupBoxOutput.Controls.Add(checkBox1);
+            groupBoxOutput.Controls.Add(checkBoxWithBSEDistribution);
             groupBoxOutput.Controls.Add(comboBoxGradient);
             groupBoxOutput.Controls.Add(comboBoxScale);
             groupBoxOutput.Controls.Add(trackBarIntensityBrightnessMax);
@@ -992,6 +992,7 @@
             flowLayoutPanelOutputRange.Controls.Add(textBoxThickness);
             flowLayoutPanelOutputRange.Controls.Add(label6);
             flowLayoutPanelOutputRange.Controls.Add(trackBarOutputThickness);
+            flowLayoutPanelOutputRange.Enabled = false;
             flowLayoutPanelOutputRange.Location = new System.Drawing.Point(10, 42);
             flowLayoutPanelOutputRange.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanelOutputRange.Name = "flowLayoutPanelOutputRange";
@@ -1118,16 +1119,19 @@
             label4.TabIndex = 44;
             label4.Text = "Color";
             // 
-            // checkBox1
+            // checkBoxWithBSEDistribution
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            checkBox1.Location = new System.Drawing.Point(13, 19);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new System.Drawing.Size(313, 21);
-            checkBox1.TabIndex = 146;
-            checkBox1.Text = "Show image with BSE angular/energy distribution";
-            checkBox1.UseVisualStyleBackColor = true;
+            checkBoxWithBSEDistribution.AutoSize = true;
+            checkBoxWithBSEDistribution.Checked = true;
+            checkBoxWithBSEDistribution.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxWithBSEDistribution.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxWithBSEDistribution.Location = new System.Drawing.Point(13, 19);
+            checkBoxWithBSEDistribution.Name = "checkBoxWithBSEDistribution";
+            checkBoxWithBSEDistribution.Size = new System.Drawing.Size(319, 21);
+            checkBoxWithBSEDistribution.TabIndex = 146;
+            checkBoxWithBSEDistribution.Text = "Show image with BSE angular/energy distributions";
+            checkBoxWithBSEDistribution.UseVisualStyleBackColor = true;
+            checkBoxWithBSEDistribution.CheckedChanged += checkBoxWithBSEDistribution_CheckedChanged;
             // 
             // comboBoxGradient
             // 
@@ -1588,7 +1592,7 @@
             // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel1, toolStripStatusLabel2 });
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
             statusStrip1.Location = new System.Drawing.Point(4, 707);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new System.Drawing.Size(1420, 22);
@@ -1793,22 +1797,6 @@
             buttonCreateMasterPattern.UseVisualStyleBackColor = false;
             buttonCreateMasterPattern.Click += buttonCreateMasterPattern_Click;
             // 
-            // buttonGenerateEBSDFromMaster
-            // 
-            buttonGenerateEBSDFromMaster.AutoSize = true;
-            buttonGenerateEBSDFromMaster.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonGenerateEBSDFromMaster.BackColor = System.Drawing.Color.SteelBlue;
-            buttonGenerateEBSDFromMaster.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            buttonGenerateEBSDFromMaster.ForeColor = System.Drawing.Color.White;
-            buttonGenerateEBSDFromMaster.Location = new System.Drawing.Point(154, 641);
-            buttonGenerateEBSDFromMaster.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            buttonGenerateEBSDFromMaster.Name = "buttonGenerateEBSDFromMaster";
-            buttonGenerateEBSDFromMaster.Size = new System.Drawing.Size(105, 27);
-            buttonGenerateEBSDFromMaster.TabIndex = 148;
-            buttonGenerateEBSDFromMaster.Text = "Generate EBSD";
-            buttonGenerateEBSDFromMaster.UseVisualStyleBackColor = false;
-            buttonGenerateEBSDFromMaster.Click += buttonGenerateEBSDFromMaster_Click;
-            // 
             // labelMasterPatternInfo
             // 
             labelMasterPatternInfo.AutoSize = true;
@@ -1854,7 +1842,6 @@
             groupBoxMasterPattern.Controls.Add(comboBoxMasterPattern2DHemisphere);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
             groupBoxMasterPattern.Controls.Add(buttonCreateMasterPattern);
-            groupBoxMasterPattern.Controls.Add(buttonGenerateEBSDFromMaster);
             groupBoxMasterPattern.Controls.Add(labelMasterPatternInfo);
             groupBoxMasterPattern.Dock = System.Windows.Forms.DockStyle.Right;
             groupBoxMasterPattern.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
@@ -2080,6 +2067,12 @@
             panel4.Size = new System.Drawing.Size(1420, 4);
             panel4.TabIndex = 153;
             // 
+            // toolStripStatusLabel3
+            // 
+            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            toolStripStatusLabel3.Size = new System.Drawing.Size(16, 17);
+            toolStripStatusLabel3.Text = "   ";
+            // 
             // FormEBSD
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2228,7 +2221,7 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.CheckBox checkBoxNonLocalAbsorption;
         private System.Windows.Forms.CheckBox checkBoxTDSBackground;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxWithBSEDistribution;
         private System.Windows.Forms.GroupBox groupBoxLatticePlanes;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelOutputRange;
         private System.Windows.Forms.Panel panelMasterPattern3D;
@@ -2246,7 +2239,6 @@
         private System.Windows.Forms.Label labelMasterPatternDepthUnit;
         private System.Windows.Forms.TrackBar trackBarMasterPatternDepth;
         private System.Windows.Forms.Button buttonCreateMasterPattern;
-        private System.Windows.Forms.Button buttonGenerateEBSDFromMaster; // 260325Cl 追加
         private System.Windows.Forms.Label labelMasterPatternInfo;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPatternSelectors;
         private System.Windows.Forms.GroupBox groupBoxMasterPattern;
@@ -2268,6 +2260,7 @@
         private NumericBox numericBoxMasterPattern3DViewAlongV;
         private System.Windows.Forms.Label labelMasterPattern3DViewAlongOpenBracket;
         private System.Windows.Forms.Label labelMasterPattern3DViewAlongCloseBracket;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
     }
 }
 
