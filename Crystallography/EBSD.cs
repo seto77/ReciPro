@@ -89,26 +89,14 @@ namespace Crystallography
             /// <summary>
             /// 進捗情報を初期化する。
             /// </summary>
-            public MasterPatternProgressChangedEventArgs(MasterPatternBuildRequest request, int progressPercentage, int currentDivision, int totalDivision, object userState)
+            public MasterPatternProgressChangedEventArgs(int progressPercentage, object userState)
             {
-                Request = request;
                 ProgressPercentage = progressPercentage;
-                CurrentDivision = currentDivision;
-                TotalDivision = totalDivision;
                 UserState = userState;
             }
 
-            /// <summary>今回の build 条件。</summary>
-            public MasterPatternBuildRequest Request { get; }
-
             /// <summary>0 から 100 までの正規化済み進捗率。</summary>
             public int ProgressPercentage { get; }
-
-            /// <summary>現在の進捗カウンタ。</summary>
-            public int CurrentDivision { get; }
-
-            /// <summary>進捗カウンタの総数。</summary>
-            public int TotalDivision { get; }
 
             /// <summary>進捗表示用の補足文字列。</summary>
             public object UserState { get; }
@@ -159,23 +147,6 @@ namespace Crystallography
         }
 
         /// <summary>
-        /// plane 変換中の進捗状態。
-        /// </summary>
-        private sealed class MasterPatternCompilationProgressState
-        {
-            public MasterPatternCompilationProgressState(int currentPlane, int totalPlane, string message)
-            {
-                CurrentPlane = currentPlane;
-                TotalPlane = totalPlane;
-                Message = message;
-            }
-
-            public int CurrentPlane { get; }
-            public int TotalPlane { get; }
-            public string Message { get; }
-        }
-
-        /// <summary>
         /// plane 変換 worker の完了結果。
         /// </summary>
         private sealed class MasterPatternCompilationResult
@@ -221,10 +192,7 @@ namespace Crystallography
         /// </summary>
         public EbsdMasterPattern MasterPattern { get; private set; } = null;
 
-        /// <summary>
-        /// 現在処理中、または直前に使った build 条件。
-        /// </summary>
-        public MasterPatternBuildRequest CurrentMasterPatternBuildRequest { get; private set; } = null;
+        private MasterPatternBuildRequest currentMasterPatternBuildRequest = null; // (260327Ch) build 条件はクラス内部だけで保持する
 
         /// <summary>
         /// Bethe 計算中または plane 変換中かどうかを返す。
@@ -254,18 +222,17 @@ namespace Crystallography
                 return false;
 
             DetachMasterPatternBetheHandlers(); // (260321Ch) 前回の solver が残っていてもイベント配線を解除してから張り直す
-            CurrentMasterPatternBuildRequest = request.Clone();
+            currentMasterPatternBuildRequest = request.Clone(); // (260327Ch)
             MasterPattern = null;
 
-            // var directions = EbsdMasterPattern.CreateDirections(CurrentMasterPatternBuildRequest.GridSize, CurrentMasterPatternBuildRequest.Hemisphere); // (260321Ch) 旧案: 単一半球だけの exitDirection を作っていた
-            var positiveDirections = EbsdMasterPattern.CreateDirections(CurrentMasterPatternBuildRequest.GridSize, EbsdMasterPatternHemisphere.PositiveZ);
-            var negativeDirections = EbsdMasterPattern.CreateDirections(CurrentMasterPatternBuildRequest.GridSize, EbsdMasterPatternHemisphere.NegativeZ);
+            var positiveDirections = EbsdMasterPattern.CreateDirections(currentMasterPatternBuildRequest.GridSize, EbsdMasterPatternHemisphere.PositiveZ);
+            var negativeDirections = EbsdMasterPattern.CreateDirections(currentMasterPatternBuildRequest.GridSize, EbsdMasterPatternHemisphere.NegativeZ);
             var directions = new Vector3DBase[positiveDirections.Length + negativeDirections.Length]; // (260321Ch) 全球分の方向配列をここで素直に連結する
             Array.Copy(positiveDirections, 0, directions, 0, positiveDirections.Length);
             Array.Copy(negativeDirections, 0, directions, positiveDirections.Length, negativeDirections.Length);
-            masterPatternBethe = new BetheMethod(CurrentMasterPatternBuildRequest.Crystal);
-            masterPatternBethe.EbsdRepresentativeDirectionBlockSize = CurrentMasterPatternBuildRequest.GridSize <= 512 ? 1
-                : CurrentMasterPatternBuildRequest.GridSize <= 1024 ? 3
+            masterPatternBethe = new BetheMethod(currentMasterPatternBuildRequest.Crystal);
+            masterPatternBethe.EbsdRepresentativeDirectionBlockSize = currentMasterPatternBuildRequest.GridSize <= 512 ? 1
+                : currentMasterPatternBuildRequest.GridSize <= 1024 ? 3
                 : 5; // (260321Ch) 解像度に応じて 1 / 3 / 5 をその場で決める
             // masterPatternBethe.UseLocalSurfacePerBeamDirection = true; // (260321Ch) 旧案: 既存 ebsd_DoWork に局所表面近似を持ち込んでいた
             masterPatternBethe.UseLocalSurfacePerBeamDirection = false; // (260321Ch) 新経路では結晶を回すので、既存 worker 側の局所表面近似は使わない
@@ -274,7 +241,7 @@ namespace Crystallography
 
             try
             {
-                masterPatternBethe.RunEBSDNew(CurrentMasterPatternBuildRequest.MaxNumOfBloch, CurrentMasterPatternBuildRequest.Energies, Matrix3D.IdentityMatrix, CurrentMasterPatternBuildRequest.Depths, directions, CurrentMasterPatternBuildRequest.Solver, CurrentMasterPatternBuildRequest.Thread, CurrentMasterPatternBuildRequest.UseNonLocalAbsorption, CurrentMasterPatternBuildRequest.IncludeTDSBackground);
+                masterPatternBethe.RunEBSDNew(currentMasterPatternBuildRequest.MaxNumOfBloch, currentMasterPatternBuildRequest.Energies, Matrix3D.IdentityMatrix, currentMasterPatternBuildRequest.Depths, directions, currentMasterPatternBuildRequest.Solver, currentMasterPatternBuildRequest.Thread, currentMasterPatternBuildRequest.UseNonLocalAbsorption, currentMasterPatternBuildRequest.IncludeTDSBackground);
                 return true;
             }
             catch
@@ -304,14 +271,14 @@ namespace Crystallography
         /// <summary>BetheMethod から届いた進捗を MasterPattern 全体の進捗へ換算して通知する。</summary>
         private void MasterPatternBethe_EBSD_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            var request = CurrentMasterPatternBuildRequest;
+            var request = currentMasterPatternBuildRequest; // (260327Ch)
             if (request == null)
                 return;
 
             var current = Math.Max(1, e.ProgressPercentage);
             var total = request.DivisionCount;
             var progress = Math.Min(BetheStageWeight, (int)Math.Round((double)current / total * BetheStageWeight));
-            MasterPatternProgressChanged?.Invoke(this, new MasterPatternProgressChangedEventArgs(request, progress, current, total, e.UserState));
+            MasterPatternProgressChanged?.Invoke(this, new MasterPatternProgressChangedEventArgs(progress, e.UserState)); // (260327Ch) 未使用の詳細カウンタ通知を削除
         }
 
         /// <summary>
@@ -320,7 +287,7 @@ namespace Crystallography
         /// </summary>
         private void MasterPatternBethe_EBSD_Completed(object sender, RunWorkerCompletedEventArgs e)
         {
-            var request = CurrentMasterPatternBuildRequest;
+            var request = currentMasterPatternBuildRequest; // (260327Ch)
             var completedBethe = masterPatternBethe;
 
             DetachMasterPatternBetheHandlers();
@@ -362,7 +329,7 @@ namespace Crystallography
             var negativePlanes = new float[planeCount][];
             var count = 0;
 
-            bwMasterPattern.ReportProgress(0, new MasterPatternCompilationProgressState(0, planeCountForProgress, "Compiling master planes"));
+            bwMasterPattern.ReportProgress(0, "Compiling master planes"); // (260327Ch) 未使用の plane 数 state を持たない
 
             for (int energyIndex = 0; energyIndex < request.Energies.Length; energyIndex++)
                 for (int depthIndex = 0; depthIndex < request.Depths.Length; depthIndex++)
@@ -406,7 +373,7 @@ namespace Crystallography
                     if (count == planeCountForProgress || count == 1 || count % reportStep == 0)
                     {
                         var progress = Math.Min(100, (int)Math.Round((double)count / planeCountForProgress * 100.0));
-                        bwMasterPattern.ReportProgress(progress, new MasterPatternCompilationProgressState(count, planeCountForProgress, "Compiling master planes"));
+                        bwMasterPattern.ReportProgress(progress, "Compiling master planes"); // (260327Ch)
                     }
                 }
 
@@ -421,19 +388,13 @@ namespace Crystallography
         /// </summary>
         private void MasterPattern_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            var request = CurrentMasterPatternBuildRequest;
+            var request = currentMasterPatternBuildRequest; // (260327Ch)
             if (request == null)
                 return;
 
-            var state = e.UserState as MasterPatternCompilationProgressState;
             var localProgress = Math.Clamp(e.ProgressPercentage, 0, 100);
             var progress = BetheStageWeight + Math.Min(CompileStageWeight, (int)Math.Round(localProgress / 100.0 * CompileStageWeight));
-            MasterPatternProgressChanged?.Invoke(this, new MasterPatternProgressChangedEventArgs(
-                request,
-                progress,
-                state?.CurrentPlane ?? 0,
-                state?.TotalPlane ?? 0,
-                state?.Message ?? e.UserState));
+            MasterPatternProgressChanged?.Invoke(this, new MasterPatternProgressChangedEventArgs(progress, e.UserState)); // (260327Ch)
         }
 
         /// <summary>
@@ -441,7 +402,7 @@ namespace Crystallography
         /// </summary>
         private void MasterPattern_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var request = CurrentMasterPatternBuildRequest;
+            var request = currentMasterPatternBuildRequest; // (260327Ch)
 
             if (e.Error != null)
             {
@@ -523,12 +484,6 @@ namespace Crystallography
             var planeIndex = energyIndex * Depths.Length + depthIndex;
             var planes = hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? PositivePlanes : NegativePlanes;
             return (uint)planeIndex < (uint)planes.Length ? planes[planeIndex] : null;
-        }
-
-        public bool ContainsHemisphere(EbsdMasterPatternHemisphere hemisphere) // (260321Ch) 指定半球の plane が保持されているかどうか
-        {
-            var planes = hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? PositivePlanes : NegativePlanes;
-            return planes is { Length: > 0 } && planes.Any(static plane => plane is { Length: > 0 });
         }
 
         /// <summary>
@@ -616,21 +571,6 @@ namespace Crystallography
             var v11 = plane[h1 * gridSize + w1];
 
             return (float)((1 - fw) * (1 - fh) * v00 + fw * (1 - fh) * v10 + (1 - fw) * fh * v01 + fw * fh * v11);
-        }
-
-        /// <summary>
-        /// 指定 energy/depth の MasterPattern から、任意方向の強度をバイリニア補間で取得する。260325Cl 追加
-        /// direction は結晶座標系の単位ベクトル。
-        /// </summary>
-        public float LookupIntensity(int energyIndex, int depthIndex, double dirX, double dirY, double dirZ)
-        {
-            var hemisphere = dirZ >= 0 ? EbsdMasterPatternHemisphere.PositiveZ : EbsdMasterPatternHemisphere.NegativeZ;
-            var plane = GetPlane(hemisphere, energyIndex, depthIndex);
-            if (plane == null || plane.Length == 0)
-                return 0;
-
-            var (a, b) = SphereToRoscaLambert(dirX, dirY, dirZ);
-            return InterpolatePlane(plane, GridSize, a, b);
         }
 
         /// <summary>

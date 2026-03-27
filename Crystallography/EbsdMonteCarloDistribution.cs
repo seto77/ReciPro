@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using V3 = OpenTK.Mathematics.Vector3d;
 
 namespace Crystallography;
@@ -13,11 +12,9 @@ namespace Crystallography;
 public sealed class EbsdMonteCarloDistribution
 {
     public int BinCount { get; }
-    public double[] Energies { get; }
-    public double[] Depths { get; }
 
     /// <summary>
-    /// ビンごとの正規化重み。BinWeights[binI, binJ] は double[Energies.Length * Depths.Length]。
+    /// ビンごとの正規化重み。BinWeights[binI, binJ] は double[energyCount * depthCount]。 // (260327Ch)
     /// </summary>
     public double[,][] BinWeights { get; }
 
@@ -35,8 +32,6 @@ public sealed class EbsdMonteCarloDistribution
         int binCount = 8)
     {
         BinCount = binCount;
-        Energies = energies;
-        Depths = depths;
 
         var (sinDet, cosDet) = Math.SinCos(detTilt);
         double dNumer = -(detY * sinDet + detZ * cosDet);
@@ -97,6 +92,7 @@ public sealed class EbsdMonteCarloDistribution
             }
     }
 
+    // private static void FitBinDistribution(... 旧シグネチャ同じ) // 260327Cl 最適化
     private static void FitBinDistribution(
         List<(double depth, double energy)> data,
         double beamEnergy,
@@ -126,32 +122,48 @@ public sealed class EbsdMonteCarloDistribution
         if (sigmaL < 0.01) sigmaL = 0.5;
         if (sigmaR < 0.01) sigmaR = 0.5;
 
+        // 260327Cl: 2*sigma*sigma を事前計算して Exp 内の除算を軽減
+        double inv2SigmaSqL = 1.0 / (2 * sigmaL * sigmaL);
+        double inv2SigmaSqR = 1.0 / (2 * sigmaR * sigmaR);
+
         var gE = new double[eLen];
         for (int ei = 0; ei < eLen; ei++)
         {
             double dE = energies[ei] - Ep;
-            double sigma = dE < 0 ? sigmaL : sigmaR;
-            gE[ei] = Math.Exp(-dE * dE / (2 * sigma * sigma));
+            // double sigma = dE < 0 ? sigmaL : sigmaR; // 260327Cl 旧実装
+            // gE[ei] = Math.Exp(-dE * dE / (2 * sigma * sigma)); // 260327Cl 旧実装
+            double inv2SigmaSq = dE < 0 ? inv2SigmaSqL : inv2SigmaSqR;
+            gE[ei] = Math.Exp(-dE * dE * inv2SigmaSq);
         }
 
         double eStep = eLen > 1 ? Math.Abs(energies[0] - energies[^1]) / (eLen - 1) : 1.0;
         var lambdaPerEnergy = new double[eLen];
 
+        // 260327Cl: List<double> 割り当てを除去し、カウント＋合計を直接計算
         for (int ei = 0; ei < eLen; ei++)
         {
             double eLow = energies[ei] - eStep * 0.5;
             double eHigh = energies[ei] + eStep * 0.5;
 
-            var depthsInBin = new List<double>();
+            // var depthsInBin = new List<double>(); // 260327Cl 旧実装
+            // foreach (var d in data)               // 260327Cl 旧実装
+            //     if (d.energy >= eLow && d.energy < eHigh) // 260327Cl 旧実装
+            //         depthsInBin.Add(d.depth);     // 260327Cl 旧実装
+            int depthCount = 0;
+            double depthSum = 0;
             foreach (var d in data)
                 if (d.energy >= eLow && d.energy < eHigh)
-                    depthsInBin.Add(d.depth);
+                {
+                    depthSum += d.depth;
+                    depthCount++;
+                }
 
-            if (depthsInBin.Count > 3)
+            // if (depthsInBin.Count > 3) // 260327Cl 旧実装
+            if (depthCount > 3)
             {
-                double sum = 0;
-                foreach (var z in depthsInBin) sum += z;
-                lambdaPerEnergy[ei] = Math.Max(1.0, sum / depthsInBin.Count);
+                // double sum = 0; // 260327Cl 旧実装
+                // foreach (var z in depthsInBin) sum += z; // 260327Cl 旧実装
+                lambdaPerEnergy[ei] = Math.Max(1.0, depthSum / depthCount);
             }
             else
             {
@@ -166,24 +178,29 @@ public sealed class EbsdMonteCarloDistribution
         {
             double lambda = la + lb * energies[ei] + lc * energies[ei] * energies[ei];
             if (lambda < 1.0) lambda = 1.0;
+            double invLambda = 1.0 / lambda; // 260327Cl: 除算を事前計算
 
-            for (int di = 0; di < dLen; di++)
+            // 260327Cl: useSliceMass 時、隣接スライスで Exp 値を再利用
+            if (useSliceMass)
             {
-                // double w = gE[ei] * Math.Exp(-depths[di] / lambda) / lambda; // (260325Ch) 旧実装
-                double w;
-                if (useSliceMass)
+                double expPrev = Math.Exp(0); // di==0 の lowerDepth=0 → exp(0)=1
+                for (int di = 0; di < dLen; di++)
                 {
-                    double lowerDepth = di == 0 ? 0.0 : depths[di - 1];
-                    double upperDepth = depths[di];
-                    w = gE[ei] * (Math.Exp(-lowerDepth / lambda) - Math.Exp(-upperDepth / lambda)); // (260325Ch) model 2 は depth slice 区間質量
+                    double expCur = Math.Exp(-depths[di] * invLambda);
+                    double w = gE[ei] * (expPrev - expCur); // (260325Ch) model 2 は depth slice 区間質量
+                    weights[ei * dLen + di] = w;
+                    totalWeight += w;
+                    expPrev = expCur; // 260327Cl: 次スライスの lowerDepth 用にキャッシュ
                 }
-                else
+            }
+            else
+            {
+                for (int di = 0; di < dLen; di++)
                 {
-                    w = gE[ei] * Math.Exp(-depths[di] / lambda) / lambda;
+                    double w = gE[ei] * Math.Exp(-depths[di] * invLambda) * invLambda;
+                    weights[ei * dLen + di] = w;
+                    totalWeight += w;
                 }
-
-                weights[ei * dLen + di] = w;
-                totalWeight += w;
             }
         }
 
@@ -193,28 +210,38 @@ public sealed class EbsdMonteCarloDistribution
                 weights[k] = weights[k] / totalWeight * totalScale; // (260325Ch)
     }
 
+    // 260327Cl: List<double> を固定長配列に置き換えて GC 圧力を軽減
     private static void FitLambdaPolynomial(double[] energies, double[] lambdaValues, out double a, out double b, out double c)
     {
-        var validE = new List<double>();
-        var validL = new List<double>();
+        // var validE = new List<double>(); // 260327Cl 旧実装
+        // var validL = new List<double>(); // 260327Cl 旧実装
+        int validCount = 0;
         for (int i = 0; i < energies.Length; i++)
-            if (lambdaValues[i] > 0)
-            {
-                validE.Add(energies[i]);
-                validL.Add(lambdaValues[i]);
-            }
+            if (lambdaValues[i] > 0) validCount++;
 
-        if (validE.Count == 0)
+        if (validCount == 0)
         {
             a = 10; b = 0; c = 0;
             return;
         }
-        if (validE.Count == 1)
+
+        var validE = new double[validCount];
+        var validL = new double[validCount];
+        int idx = 0;
+        for (int i = 0; i < energies.Length; i++)
+            if (lambdaValues[i] > 0)
+            {
+                validE[idx] = energies[i];
+                validL[idx] = lambdaValues[i];
+                idx++;
+            }
+
+        if (validCount == 1)
         {
             a = validL[0]; b = 0; c = 0;
             return;
         }
-        if (validE.Count == 2)
+        if (validCount == 2)
         {
             double e0 = validE[0], e1 = validE[1], l0 = validL[0], l1 = validL[1];
             b = (l1 - l0) / (e1 - e0);
@@ -223,7 +250,7 @@ public sealed class EbsdMonteCarloDistribution
             return;
         }
 
-        int n = validE.Count;
+        int n = validCount;
         double s0 = n, s1 = 0, s2 = 0, s3 = 0, s4 = 0;
         double r0 = 0, r1 = 0, r2 = 0;
         for (int k = 0; k < n; k++)
@@ -245,36 +272,6 @@ public sealed class EbsdMonteCarloDistribution
         a = ((s2 * s4 - s3 * s3) * r0 + (s2 * s3 - s1 * s4) * r1 + (s1 * s3 - s2 * s2) * r2) * invDet;
         b = ((s2 * s3 - s1 * s4) * r0 + (s0 * s4 - s2 * s2) * r1 + (s1 * s2 - s0 * s3) * r2) * invDet;
         c = ((s1 * s3 - s2 * s2) * r0 + (s1 * s2 - s0 * s3) * r1 + (s0 * s2 - s1 * s1) * r2) * invDet;
-    }
-
-    public double[] GetPixelWeights(double detX, double detY)
-    {
-        int eLen = Energies.Length, dLen = Depths.Length;
-        int wLen = eLen * dLen;
-        var result = new double[wLen];
-
-        double bx = (detX + 1) * 0.5 * BinCount - 0.5;
-        double by = (1 - detY) * 0.5 * BinCount - 0.5;
-
-        int bi0 = Math.Clamp((int)Math.Floor(bx), 0, BinCount - 2);
-        int bj0 = Math.Clamp((int)Math.Floor(by), 0, BinCount - 2);
-        double fx = Math.Clamp(bx - bi0, 0, 1);
-        double fy = Math.Clamp(by - bj0, 0, 1);
-
-        var w00 = BinWeights[bi0, bj0];
-        var w10 = BinWeights[bi0 + 1, bj0];
-        var w01 = BinWeights[bi0, bj0 + 1];
-        var w11 = BinWeights[bi0 + 1, bj0 + 1];
-
-        double c00 = (1 - fx) * (1 - fy);
-        double c10 = fx * (1 - fy);
-        double c01 = (1 - fx) * fy;
-        double c11 = fx * fy;
-
-        for (int k = 0; k < wLen; k++)
-            result[k] = c00 * w00[k] + c10 * w10[k] + c01 * w01[k] + c11 * w11[k];
-
-        return result;
     }
 
     public static (double energyLoss80, double depth99) ComputeRangesFromMC(

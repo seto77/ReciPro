@@ -468,7 +468,7 @@ public class BetheMethod
                             for (int g2 = 0; g2 < Beams.Length; g2++)
                                 if (g2 != g1 && diskTemp[g2].Rect.IsInside(pos))
                                 {
-                                    var r2 = getIndex(pos, diskTemp[g2].Pos, width);
+                                    var r2 = getIndex(pos.X,pos.Y, diskTemp[g2].Pos, width);
                                     if (r2 >= 0 && Disks[0][g2].RawAmplitudes[r2] != 0)
                                         for (int t = 0; t < Thicknesses.Length; t++)
                                             intensities[t][r1] += Disks[t][g2].RawAmplitudes[r2].MagnitudeSquared();
@@ -485,6 +485,38 @@ public class BetheMethod
 
         if (bwCBED.CancellationPending)
             e.Cancel = true;
+    }
+
+    private static readonly int[] pow = [4, 1]; 
+    //与えられたposに最も近いインデックスを返す
+    static int getIndex(in double x, double y, in PointD[] pts, int w)
+    {
+        var w2 = (uint)(w * w);
+        int i = (int)w2 / 2, m;
+        double min = (x - pts[i].X) * (x - pts[i].X) + (y - pts[i].Y) * (y - pts[i].Y), temp;
+
+        bool flag;
+        //中心から、縦横に検索
+        foreach (var n in pow)
+            do
+            {
+                flag = false;
+
+                if (((uint)(m = i + n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min) ||
+                   ((uint)(m = i - n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min))
+                {
+                    i = m; min = temp; flag = true;
+                }
+
+                if (((uint)(m = i + n) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min) ||
+                    ((uint)(m = i - n) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min))
+                {
+                    i = m; min = temp; flag = true;
+                }
+
+            } while (flag);
+
+        return i / w == 0 || i / w == w - 1 || i % w == 0 || i % w == w - 1 ? -1 : i;
     }
     #endregion
 
@@ -564,18 +596,11 @@ public class BetheMethod
     /// BaseRotation を固定し、Find_gVectors の gCache を再利用できるようにする。
     /// </summary>
     private static (Vector3DBase BeamDirection, Vector3DBase Surface) GetCrystalFixedMasterEquivalentBeamAndSurface(
-        Vector3DBase beamDirection,
-        Vector3DBase referenceSurface,
-        Vector3DBase referenceBeamDirection,
-        Vector3DBase referenceAxisU,
-        Vector3DBase referenceAxisV)
+        Vector3DBase beamDirection, Vector3DBase referenceSurface, Vector3DBase referenceBeamDirection, Vector3DBase referenceAxisU, Vector3DBase referenceAxisV)
     {
-        var localSurface = beamDirection == null
-            ? Vector3DBase.Normarize(referenceSurface)
-            : Vector3DBase.Normarize(-beamDirection); // (260321Ch) exit direction に対する内向き法線
+        var localSurface = beamDirection == null ? Vector3DBase.Normarize(referenceSurface) : Vector3DBase.Normarize(-beamDirection); // (260321Ch) exit direction に対する内向き法線
         var (localAxisU, localAxisV) = GetSurfaceTangentialAxes(localSurface);
         var crystalToReference = Geometry.GetRotation(localAxisU, localAxisV, referenceAxisU, referenceAxisV); // (260321Ch) 旧 GetCrystalFixedMasterRotation をここへ畳み込む
-        // var referenceToCrystal = crystalToReference.Inverse(); // (260321Ch) 旧案: 一般逆行列で戻していた
         var referenceToCrystal = crystalToReference.Transpose(); // (260321Ch) 回転行列なので転置を使って軽く戻す
         var equivalentSurface = Vector3DBase.Normarize(referenceToCrystal * referenceSurface);
         var equivalentBeamDirection = Vector3DBase.Normarize(referenceToCrystal * referenceBeamDirection);
@@ -588,7 +613,6 @@ public class BetheMethod
     private Complex[] CreatePhaseFactors((double x, double y, double z, double sigma)[] atomArray, int nAtoms, Beam[] beams)
     {
         var beamCount = beams?.Length ?? 0;
-        // var phaseNG = new Complex[nAtoms * beamCount]; // (260321Ch) 旧実装: 代表方向ごとに新規確保していた
         var phaseNG = Shared.Rent(nAtoms * beamCount); // (260321Ch) MasterPattern の代表方向前計算では ArrayPool を使って GC 負荷を下げる
         for (int n = 0; n < nAtoms; n++)
         {
@@ -596,7 +620,6 @@ public class BetheMethod
             for (int g = 0; g < beamCount; g++)
             {
                 var (h, k, l) = beams[g].Index;
-                // phaseNG[g * nAtoms + n] = Exp(TwoPiI * (h * xn + k * yn + l * zn)); // 260321Cl 変更前: Complex.Exp 経由
                 var (sin, cos) = Math.SinCos(TwoPi * (h * xn + k * yn + l * zn)); // 260321Cl: 中間 Complex 不要・Math.SinCos 直接呼び出し
                 phaseNG[g * nAtoms + n] = new Complex(cos, sin);
             }
@@ -650,165 +673,122 @@ public class BetheMethod
             Shared.Return(buffer); // (260321Ch)
     }
 
-    // (260327Ch) Rosca-Lambert 正方格子上で厳密に index を写せる 4/mmm 系の操作だけを列挙する
-    private enum MasterPatternSquareSymmetryOperation
+    // (260327Ch) Rosca-Lambert 正方格子上で厳密に index を写せる 4/mmm 系の対称操作 (Symmetry Operation) だけを列挙する
+    private enum SymmOper
     {
+        #region
+        /// <summary> 何も変換しない恒等操作</summary>
         Identity,
-        RotateZ180,
-        RotateZ90,
-        RotateZ270,
+        /// <summary>  正方格子中心まわりの Z 軸 180 度回転</summary>
+        RotZ180,
+        /// <summary> 正方格子中心まわりの Z 軸 90 度回転</summary>
+        RotZ90,
+        /// <summary>  正方格子中心まわりの Z 軸 270 度回転</summary>
+        RotZ270,
+        /// <summary>  正方格子の左右反転</summary>
         MirrorX,
+        /// <summary> 正方格子の上下反転</summary>
         MirrorY,
+        /// <summary> 対角線 y = -x に関する鏡映</summary>
         MirrorDiagXY,
-        MirrorDiagXMinusY,
+        /// <summary> 対角線 y = x に関する鏡映</summary>
+        MirrorDiagX_Y,
+        /// <summary> 格子座標は保ったまま半球だけを反転する鏡映</summary>
         MirrorZ,
+        /// <summary> Z 軸 180 度回転と半球反転を同時に行う反転操作</summary>
         Inversion,
-        RotateZ90MirrorZ,
-        RotateZ270MirrorZ,
-        RotateX180,
-        RotateY180,
-        RotateDiagXY180,
-        RotateDiagXMinusY180,
+        /// <summary> Z 軸 90 度回転後に半球を反転する合成操作</summary>
+        RotZ90MirrorZ,
+        /// <summary> Z 軸 270 度回転後に半球を反転する合成操作</summary>
+        RotZ270MirrorZ,
+        /// <summary> X 軸 180 度回転に対応し、半球も反転する</summary>
+        RotX180,
+        /// <summary> Y 軸 180 度回転に対応し、半球も反転する</summary>
+        RotY180,
+        /// <summary> 対角軸 [110] まわり 180 度回転に対応し、半球も反転する</summary>
+        RotDiagXY180,
+        /// <summary>  対角軸 [1-10] まわり 180 度回転に対応し、半球も反転する</summary>
+        RotDiagX_Y180,
+        #endregion
     }
 
     /// <summary>
     /// 現在の point group から、Rosca-Lambert 正方格子上で補間なしに使える対称操作だけを返す。
     /// 単斜晶は主軸 canonical frame をまだ導入していないため、一旦 identity のみへ落とす。 // (260327Ch)
     /// </summary>
-    private static MasterPatternSquareSymmetryOperation[] GetMasterPatternSquareSymmetryOperations(Symmetry sym)
+    private static SymmOper[] GetMasterPatternSquareSymmetryOperations(Symmetry sym)
         => sym.PointGroupNumber switch
         {
-            0 or 1 => [MasterPatternSquareSymmetryOperation.Identity],
-            2 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.Inversion],
-            3 or 4 or 5 => [MasterPatternSquareSymmetryOperation.Identity], // (260327Ch) monoclinic は後回し
-            6 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180, MasterPatternSquareSymmetryOperation.RotateZ180],
+            #region
+            0 or 1 => [SymmOper.Identity],
+            2 => [SymmOper.Identity, SymmOper.Inversion],
+            3 or 4 or 5 => [SymmOper.Identity], // (260327Ch) monoclinic は後回し
+            6 => [SymmOper.Identity, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotZ180],
             7 => sym.PointGroupHMStr switch
             {
-                "2mm" => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.MirrorY, MasterPatternSquareSymmetryOperation.MirrorZ],
-                "m2m" => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateY180, MasterPatternSquareSymmetryOperation.MirrorX, MasterPatternSquareSymmetryOperation.MirrorZ],
-                _ => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.MirrorX, MasterPatternSquareSymmetryOperation.MirrorY],
+                "2mm" => [SymmOper.Identity, SymmOper.RotX180, SymmOper.MirrorY, SymmOper.MirrorZ],
+                "m2m" => [SymmOper.Identity, SymmOper.RotY180, SymmOper.MirrorX, SymmOper.MirrorZ],
+                _ => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorX, SymmOper.MirrorY],
             },
-            8 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.MirrorX, MasterPatternSquareSymmetryOperation.MirrorY, MasterPatternSquareSymmetryOperation.MirrorZ, MasterPatternSquareSymmetryOperation.Inversion],
-            9 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.RotateZ90, MasterPatternSquareSymmetryOperation.RotateZ270],
-            10 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.RotateZ90MirrorZ, MasterPatternSquareSymmetryOperation.RotateZ270MirrorZ],
-            11 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.RotateZ90, MasterPatternSquareSymmetryOperation.RotateZ270, MasterPatternSquareSymmetryOperation.MirrorZ, MasterPatternSquareSymmetryOperation.Inversion, MasterPatternSquareSymmetryOperation.RotateZ90MirrorZ, MasterPatternSquareSymmetryOperation.RotateZ270MirrorZ],
-            12 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.RotateZ90, MasterPatternSquareSymmetryOperation.RotateZ270, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180, MasterPatternSquareSymmetryOperation.RotateDiagXY180, MasterPatternSquareSymmetryOperation.RotateDiagXMinusY180],
-            13 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.RotateZ90, MasterPatternSquareSymmetryOperation.RotateZ270, MasterPatternSquareSymmetryOperation.MirrorX, MasterPatternSquareSymmetryOperation.MirrorY, MasterPatternSquareSymmetryOperation.MirrorDiagXY, MasterPatternSquareSymmetryOperation.MirrorDiagXMinusY],
-            14 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.MirrorDiagXY, MasterPatternSquareSymmetryOperation.MirrorDiagXMinusY, MasterPatternSquareSymmetryOperation.RotateZ90MirrorZ, MasterPatternSquareSymmetryOperation.RotateZ270MirrorZ, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180],
-            15 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.RotateZ90, MasterPatternSquareSymmetryOperation.RotateZ270, MasterPatternSquareSymmetryOperation.MirrorX, MasterPatternSquareSymmetryOperation.MirrorY, MasterPatternSquareSymmetryOperation.MirrorDiagXY, MasterPatternSquareSymmetryOperation.MirrorDiagXMinusY, MasterPatternSquareSymmetryOperation.MirrorZ, MasterPatternSquareSymmetryOperation.Inversion, MasterPatternSquareSymmetryOperation.RotateZ90MirrorZ, MasterPatternSquareSymmetryOperation.RotateZ270MirrorZ, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180, MasterPatternSquareSymmetryOperation.RotateDiagXY180, MasterPatternSquareSymmetryOperation.RotateDiagXMinusY180],
-            16 => [MasterPatternSquareSymmetryOperation.Identity],
-            17 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.Inversion],
-            18 => [MasterPatternSquareSymmetryOperation.Identity], // (260327Ch) 32 は square-grid に自然な 2 回軸をまだ固定できていない
-            19 => [MasterPatternSquareSymmetryOperation.Identity], // (260327Ch) 3m も同様に conservative に落とす
-            20 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.Inversion],
-            21 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180],
-            22 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.MirrorZ],
-            23 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.MirrorZ, MasterPatternSquareSymmetryOperation.Inversion],
-            24 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180], // (260327Ch) 622 はまず C2z だけを exact に使う
-            25 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180], // (260327Ch) 6mm はまず C2z だけを exact に使う
-            26 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.MirrorZ],
-            27 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.MirrorZ, MasterPatternSquareSymmetryOperation.Inversion],
-            28 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180, MasterPatternSquareSymmetryOperation.RotateZ180],
-            29 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.MirrorX, MasterPatternSquareSymmetryOperation.MirrorY, MasterPatternSquareSymmetryOperation.MirrorZ, MasterPatternSquareSymmetryOperation.Inversion],
-            30 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.RotateZ90, MasterPatternSquareSymmetryOperation.RotateZ270, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180, MasterPatternSquareSymmetryOperation.RotateDiagXY180, MasterPatternSquareSymmetryOperation.RotateDiagXMinusY180],
-            31 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.MirrorDiagXY, MasterPatternSquareSymmetryOperation.MirrorDiagXMinusY, MasterPatternSquareSymmetryOperation.RotateZ90MirrorZ, MasterPatternSquareSymmetryOperation.RotateZ270MirrorZ, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180],
-            32 => [MasterPatternSquareSymmetryOperation.Identity, MasterPatternSquareSymmetryOperation.RotateZ180, MasterPatternSquareSymmetryOperation.RotateZ90, MasterPatternSquareSymmetryOperation.RotateZ270, MasterPatternSquareSymmetryOperation.MirrorX, MasterPatternSquareSymmetryOperation.MirrorY, MasterPatternSquareSymmetryOperation.MirrorDiagXY, MasterPatternSquareSymmetryOperation.MirrorDiagXMinusY, MasterPatternSquareSymmetryOperation.MirrorZ, MasterPatternSquareSymmetryOperation.Inversion, MasterPatternSquareSymmetryOperation.RotateZ90MirrorZ, MasterPatternSquareSymmetryOperation.RotateZ270MirrorZ, MasterPatternSquareSymmetryOperation.RotateX180, MasterPatternSquareSymmetryOperation.RotateY180, MasterPatternSquareSymmetryOperation.RotateDiagXY180, MasterPatternSquareSymmetryOperation.RotateDiagXMinusY180],
-            _ => [MasterPatternSquareSymmetryOperation.Identity],
+            8 => [SymmOper.Identity, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotZ180, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorZ, SymmOper.Inversion],
+            9 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270],
+            10 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ],
+            11 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorZ, SymmOper.Inversion, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ],
+            12 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
+            13 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y],
+            14 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180],
+            15 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.MirrorZ, SymmOper.Inversion, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
+            16 => [SymmOper.Identity],
+            17 => [SymmOper.Identity, SymmOper.Inversion],
+            18 => [SymmOper.Identity], // (260327Ch) 32 は square-grid に自然な 2 回軸をまだ固定できていない
+            19 => [SymmOper.Identity], // (260327Ch) 3m も同様に conservative に落とす
+            20 => [SymmOper.Identity, SymmOper.Inversion],
+            21 => [SymmOper.Identity, SymmOper.RotZ180],
+            22 => [SymmOper.Identity, SymmOper.MirrorZ],
+            23 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorZ, SymmOper.Inversion],
+            24 => [SymmOper.Identity, SymmOper.RotZ180], // (260327Ch) 622 はまず C2z だけを exact に使う
+            25 => [SymmOper.Identity, SymmOper.RotZ180], // (260327Ch) 6mm はまず C2z だけを exact に使う
+            26 => [SymmOper.Identity, SymmOper.MirrorZ],
+            27 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorZ, SymmOper.Inversion],
+            28 => [SymmOper.Identity, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotZ180],
+            29 => [SymmOper.Identity, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotZ180, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorZ, SymmOper.Inversion],
+            30 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
+            31 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180],
+            32 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.MirrorZ, SymmOper.Inversion, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
+            _ => [SymmOper.Identity],
+            #endregion
         };
 
     /// <summary>
-    /// Rosca-Lambert の 2 半球正方格子 index に、4/mmm 系の厳密対称操作を適用する。 // (260327Ch)
+    /// Rosca-Lambert の 2 半球正方格子 index に、4/mmm 系の厳密対称操作を適用する。 
     /// </summary>
-    private static int TransformMasterPatternSquareIndex(int index, int hemisphereLength, int gridSize, MasterPatternSquareSymmetryOperation operation)
+    private static int TransformMasterPatternSquareIndex(int index, int hemisphereLength, int gridSize, SymmOper operation)
     {
-        var hemisphereIndex = index / hemisphereLength;
-        var localIndex = index - hemisphereIndex * hemisphereLength;
-        var w = localIndex % gridSize;
-        var h = localIndex / gridSize;
-        var transformedHemisphere = hemisphereIndex;
-        int transformedW, transformedH;
-
-        switch (operation)
+        var sphere = index / hemisphereLength;
+        var localIndex = index - sphere * hemisphereLength;
+        int w = localIndex % gridSize, h = localIndex / gridSize;
+        (int Sphere, int W, int H) = operation switch //  半球反転も含めて switch 式にまとめる
         {
-            case MasterPatternSquareSymmetryOperation.Identity:
-                transformedW = w;
-                transformedH = h;
-                break;
-            case MasterPatternSquareSymmetryOperation.RotateZ180:
-                transformedW = gridSize - 1 - w;
-                transformedH = gridSize - 1 - h;
-                break;
-            case MasterPatternSquareSymmetryOperation.RotateZ90:
-                transformedW = h;
-                transformedH = gridSize - 1 - w;
-                break;
-            case MasterPatternSquareSymmetryOperation.RotateZ270:
-                transformedW = gridSize - 1 - h;
-                transformedH = w;
-                break;
-            case MasterPatternSquareSymmetryOperation.MirrorX:
-                transformedW = gridSize - 1 - w;
-                transformedH = h;
-                break;
-            case MasterPatternSquareSymmetryOperation.MirrorY:
-                transformedW = w;
-                transformedH = gridSize - 1 - h;
-                break;
-            case MasterPatternSquareSymmetryOperation.MirrorDiagXY:
-                transformedW = gridSize - 1 - h;
-                transformedH = gridSize - 1 - w;
-                break;
-            case MasterPatternSquareSymmetryOperation.MirrorDiagXMinusY:
-                transformedW = h;
-                transformedH = w;
-                break;
-            case MasterPatternSquareSymmetryOperation.MirrorZ:
-                transformedW = w;
-                transformedH = h;
-                transformedHemisphere = 1 - hemisphereIndex;
-                break;
-            case MasterPatternSquareSymmetryOperation.Inversion:
-                transformedW = gridSize - 1 - w;
-                transformedH = gridSize - 1 - h;
-                transformedHemisphere = 1 - hemisphereIndex;
-                break;
-            case MasterPatternSquareSymmetryOperation.RotateZ90MirrorZ:
-                transformedW = h;
-                transformedH = gridSize - 1 - w;
-                transformedHemisphere = 1 - hemisphereIndex;
-                break;
-            case MasterPatternSquareSymmetryOperation.RotateZ270MirrorZ:
-                transformedW = gridSize - 1 - h;
-                transformedH = w;
-                transformedHemisphere = 1 - hemisphereIndex;
-                break;
-            case MasterPatternSquareSymmetryOperation.RotateX180:
-                transformedW = w;
-                transformedH = gridSize - 1 - h;
-                transformedHemisphere = 1 - hemisphereIndex;
-                break;
-            case MasterPatternSquareSymmetryOperation.RotateY180:
-                transformedW = gridSize - 1 - w;
-                transformedH = h;
-                transformedHemisphere = 1 - hemisphereIndex;
-                break;
-            case MasterPatternSquareSymmetryOperation.RotateDiagXY180:
-                transformedW = gridSize - 1 - h;
-                transformedH = gridSize - 1 - w;
-                transformedHemisphere = 1 - hemisphereIndex;
-                break;
-            case MasterPatternSquareSymmetryOperation.RotateDiagXMinusY180:
-                transformedW = h;
-                transformedH = w;
-                transformedHemisphere = 1 - hemisphereIndex;
-                break;
-            default:
-                transformedW = w;
-                transformedH = h;
-                break;
-        }
+            SymmOper.Identity => (sphere, w, h),
+            SymmOper.RotZ180 => (sphere, gridSize - 1 - w, gridSize - 1 - h),
+            SymmOper.RotZ90 => (sphere, h, gridSize - 1 - w),
+            SymmOper.RotZ270 => (sphere, gridSize - 1 - h, w),
+            SymmOper.MirrorX => (sphere, gridSize - 1 - w, h),
+            SymmOper.MirrorY => (sphere, w, gridSize - 1 - h),
+            SymmOper.MirrorDiagXY => (sphere, gridSize - 1 - h, gridSize - 1 - w),
+            SymmOper.MirrorDiagX_Y => (sphere, h, w),
+            SymmOper.MirrorZ => (1 - sphere, w, h),
+            SymmOper.Inversion => (1 - sphere, gridSize - 1 - w, gridSize - 1 - h),
+            SymmOper.RotZ90MirrorZ => (1 - sphere, h, gridSize - 1 - w),
+            SymmOper.RotZ270MirrorZ => (1 - sphere, gridSize - 1 - h, w),
+            SymmOper.RotX180 => (1 - sphere, w, gridSize - 1 - h),
+            SymmOper.RotY180 => (1 - sphere, gridSize - 1 - w, h),
+            SymmOper.RotDiagXY180 => (1 - sphere, gridSize - 1 - h, gridSize - 1 - w),
+            SymmOper.RotDiagX_Y180 => (1 - sphere, h, w),
+            _ => (sphere, w, h),
+        };
 
-        return transformedHemisphere * hemisphereLength + transformedH * gridSize + transformedW;
+        return Sphere * hemisphereLength + H * gridSize + W;
     }
 
     /// <summary>
@@ -2213,39 +2193,7 @@ public class BetheMethod
     #endregion
 
 
-    private static readonly int[] pow = [4, 1]; // (260327Ch) getIndex は CBED 側でまだ使うので active のまま残す
-    static int getIndex(in PointD p, in PointD[] pts, int w) => getIndex(p.X, p.Y, pts, w);
-
-    //与えられたposに最も近いインデックスを返す
-    static int getIndex(in double x, double y, in PointD[] pts, int w)
-    {
-        var w2 = (uint)(w * w);
-        int i = (int)w2 / 2, m;
-        double min = (x - pts[i].X) * (x - pts[i].X) + (y - pts[i].Y) * (y - pts[i].Y), temp;
-
-        bool flag;
-        //中心から、縦横に検索
-        foreach (var n in pow)
-            do
-            {
-                flag = false;
-
-                if (((uint)(m = i + n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min) ||
-                   ((uint)(m = i - n * w) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min))
-                {
-                    i = m; min = temp; flag = true;
-                }
-
-                if (((uint)(m = i + n) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min) ||
-                    ((uint)(m = i - n) < w2 && (temp = (x - pts[m].X) * (x - pts[m].X) + (y - pts[m].Y) * (y - pts[m].Y)) < min))
-                {
-                    i = m; min = temp; flag = true;
-                }
-
-            } while (flag);
-
-        return i / w == 0 || i / w == w - 1 || i % w == 0 || i % w == w - 1 ? -1 : i;
-    }
+ 
 
     #endregion
 
