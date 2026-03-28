@@ -609,10 +609,6 @@ namespace Crystallography
     /// <summary>
     /// MasterPattern が対応する半球。
     /// </summary>
-    public enum EbsdMasterPatternHemisphere
-    {
-        NegativeZ = -1,
-        PositiveZ = 1,
-    }
+    public enum EbsdMasterPatternHemisphere    {        NegativeZ = -1,        PositiveZ = 1,    }
 }
 

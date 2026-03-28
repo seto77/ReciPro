@@ -30,7 +30,8 @@ public partial class FormEBSD : CaptureFormBase
     public GLControlAlpha glControlMasterPattern3D; // (260321Ch) Rosca-Lambert 球面 preview 用の OpenGL コントロール
     private GLControlAlpha glControlMasterPattern3DAxes; // (260322Ch) MasterPattern3D と同期する結晶軸 inset
     private readonly Stopwatch sw1 = new(), sw2 = new();
-    private const int BackscatterMonteCarloLoopCount = 5_000_000; // (260327Ch) MasterPattern 前処理と手動 BSE で共有する MC 試行回数
+    //private const int BackscatterMonteCarloLoopCount = 5_000_000; // (260327Ch) MasterPattern 前処理と手動 BSE で共有する MC 試行回数
+    private const int BackscatterMonteCarloLoopCount = 2_500_000; // 260329Cl 変更: 500万→250万に削減（パラメトリックフィッティングには十分な統計量）
     private readonly Timer timer = new();
 
     private readonly EBSD masterPatternEbsd = new(); // (260321Ch) MasterPattern build の実行ロジックは Crystallography.EBSD 側へ移す
@@ -98,9 +99,6 @@ public partial class FormEBSD : CaptureFormBase
 
     public int MaxNumOfBloch => numericBoxMaxNumOfG.ValueInteger;
     private double Voltage => waveLengthControl.Energy;
-
-    //private int DivisionNumber => (int)(numericBoxDiskDiameter.ValueInteger * numericBoxDiskDiameter.ValueInteger * Math.PI / 4.0 * EnergyArray.Length);
-    private int DivisionNumber => (int)(numericBoxDiskDiameter.ValueInteger * numericBoxDiskDiameter.ValueInteger * EnergyArray.Length);
     public double[] ThicknessArray
     {
         get
@@ -1155,20 +1153,13 @@ public partial class FormEBSD : CaptureFormBase
 
     private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
     {
-        //if (Crystal.Bethe.Disks == null || Crystal.Bethe.Disks.Length < 1 || trackBarOutputThickness.Value >= Crystal.Bethe.Disks[0].Length)
-        //    return;
         textBoxThickness.Text = ThicknessArray[trackBarOutputThickness.Value].ToString();
         Draw();
-        //generateImage();
     }
     private void trackBarOutputEnergy_ValueChanged(object sender, EventArgs e)
     {
-        //if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length || trackBarOutputEnergy.Value < 0)
-        //    return;
-
         textBoxEnergy.Text = EnergyArray[trackBarOutputEnergy.Value].ToString();
         Draw();
-        //generateImage();
     }
     private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => AdjustImage();
 
@@ -1854,73 +1845,73 @@ public partial class FormEBSD : CaptureFormBase
 
     #endregion
 
-    #region 画像を生成
-    private void button1_Click(object sender, EventArgs e)
-    {
-        var imgSize = (int)Math.Sqrt(Crystal.Bethe.Disks[0][0].Amplitudes.Length);
+    #region 画像を生成 お蔵入り
+    //private void button1_Click(object sender, EventArgs e)
+    //{
+    //    var imgSize = (int)Math.Sqrt(Crystal.Bethe.Disks[0][0].Amplitudes.Length);
 
-        M3 smpRot = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
-        var (sinTilt, cosTilt) = Math.SinCos(SmpTilt);
-        //double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
+    //    M3 smpRot = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
+    //    var (sinTilt, cosTilt) = Math.SinCos(SmpTilt);
+    //    //double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
 
-        PointD[] area = [];
-        var areaStep = 32;
-        var f = new Func<double, double, PointD>((x, y)
-            => Stereonet.ConvertVectorToSchmidt(smpRot * (detRot * (DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
-        area = [.. Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
-        //まず検出器に入る電子を抽出し、これをbse1とする
-        var bse1 = BSEs.AsParallel()
-            .Select(e => (e.Depth, e.Position, e.Energy))
-            .Where(e => Geometry.InsidePolygonalArea(area, e.Position)).ToArray();
-        var div = 15;//DetectorDivision;
-        var r1 = Enumerable.Range(0, areaStep).Select(n => (double)n / areaStep);
-        double[] values = new double[Pbmp.SrcValuesGrayOriginal.Length];
+    //    PointD[] area = [];
+    //    var areaStep = 32;
+    //    var f = new Func<double, double, PointD>((x, y)
+    //        => Stereonet.ConvertVectorToSchmidt(smpRot * (detRot * (DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
+    //    area = [.. Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
+    //    //まず検出器に入る電子を抽出し、これをbse1とする
+    //    var bse1 = BSEs.AsParallel()
+    //        .Select(e => (e.Depth, e.Position, e.Energy))
+    //        .Where(e => Geometry.InsidePolygonalArea(area, e.Position)).ToArray();
+    //    var div = 15;//DetectorDivision;
+    //    var r1 = Enumerable.Range(0, areaStep).Select(n => (double)n / areaStep);
+    //    double[] values = new double[Pbmp.SrcValuesGrayOriginal.Length];
 
-        int[,][] mask = new int[div, div][];
-        for (int i = 0; i < div; i++)
-            for (int j = 0; j < div; j++)
-                mask[i, j] = Enumerable.Range(0, imgSize * imgSize).Where(k =>
-                {
-                    double x = (k % imgSize) / (double)imgSize * div;
-                    double y = (k / imgSize) / (double)imgSize * div;
-                    return (x >= i && x < i + 1 && y >= j && y < j + 1);
-                }).ToArray();
+    //    int[,][] mask = new int[div, div][];
+    //    for (int i = 0; i < div; i++)
+    //        for (int j = 0; j < div; j++)
+    //            mask[i, j] = Enumerable.Range(0, imgSize * imgSize).Where(k =>
+    //            {
+    //                double x = (k % imgSize) / (double)imgSize * div;
+    //                double y = (k / imgSize) / (double)imgSize * div;
+    //                return (x >= i && x < i + 1 && y >= j && y < j + 1);
+    //            }).ToArray();
 
-        for (int i = 0; i < div; i++)
-            for (int j = 0; j < div; j++)
-            {
-                area = [..r1.Select(x => f(2.0 * i / div - 1, 2.0 * (- j - 1 + x)/ div + 1)),
-                        ..r1.Select(x => f(2.0 * (i + x) / div - 1, 2.0 * (- j) / div + 1 )),
-                        ..r1.Select(x => f(2.0 * (i + 1) / div - 1, 2.0 * (- j - x) / div + 1)),
-                        ..r1.Select(x => f(2.0 * (i + 1 - x) / div - 1, 2.0 * (- j - 1) / div + 1 ))];
+    //    for (int i = 0; i < div; i++)
+    //        for (int j = 0; j < div; j++)
+    //        {
+    //            area = [..r1.Select(x => f(2.0 * i / div - 1, 2.0 * (- j - 1 + x)/ div + 1)),
+    //                    ..r1.Select(x => f(2.0 * (i + x) / div - 1, 2.0 * (- j) / div + 1 )),
+    //                    ..r1.Select(x => f(2.0 * (i + 1) / div - 1, 2.0 * (- j - x) / div + 1)),
+    //                    ..r1.Select(x => f(2.0 * (i + 1 - x) / div - 1, 2.0 * (- j - 1) / div + 1 ))];
 
-                //検出器の(i,j)位置に該当する電子だけを抽出し、これをbse2とする
-                var bse2 = bse1.AsParallel()
-                    .Where(e => Geometry.InsidePolygonalArea(area, e.Position))
-                    .Select(e => (e.Depth, e.Energy)).ToArray();
+    //            //検出器の(i,j)位置に該当する電子だけを抽出し、これをbse2とする
+    //            var bse2 = bse1.AsParallel()
+    //                .Where(e => Geometry.InsidePolygonalArea(area, e.Position))
+    //                .Select(e => (e.Depth, e.Energy)).ToArray();
 
-                for (int eIndex = 0; eIndex < EnergyArray.Length - 1; eIndex++)
-                {
-                    //bse2の中から特定のエネルギーを抽出し、これをbse3とする 
-                    var depths = bse2.Where(e => EnergyArray[eIndex] > e.Energy && EnergyArray[eIndex + 1] < e.Energy).Select(e => e.Depth).ToArray();
+    //            for (int eIndex = 0; eIndex < EnergyArray.Length - 1; eIndex++)
+    //            {
+    //                //bse2の中から特定のエネルギーを抽出し、これをbse3とする 
+    //                var depths = bse2.Where(e => EnergyArray[eIndex] > e.Energy && EnergyArray[eIndex + 1] < e.Energy).Select(e => e.Depth).ToArray();
 
-                    //bse3に対する最大深さ分布　ここから
-                    double lower = ThicknessArray[0] - numericBoxThicknessStep.Value / 2, upper = ThicknessArray[^1] + numericBoxThicknessStep.Value / 2;
-                    double step = numericBoxThicknessStep.Value;//nm単位
-                    int nBuckets = (int)((upper - lower) / step + 1);
-                    var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
-                    for (int t = 0; t < ThicknessArray.Length; t++)
-                    {
-                        foreach (var k in mask[i, j])
-                            values[k] += histogram[t].Count * Crystal.Bethe.Disks[eIndex][t].Amplitudes[k].MagnitudeSquared();
-                    }
-                }
-            }
-        Pbmp = new PseudoBitmap(values, numericBoxDiskDiameter.ValueInteger) { AlphaEnabled = true };
-        Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
+    //                //bse3に対する最大深さ分布　ここから
+    //                double lower = ThicknessArray[0] - numericBoxThicknessStep.Value / 2, upper = ThicknessArray[^1] + numericBoxThicknessStep.Value / 2;
+    //                double step = numericBoxThicknessStep.Value;//nm単位
+    //                int nBuckets = (int)((upper - lower) / step + 1);
+    //                var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
+    //                for (int t = 0; t < ThicknessArray.Length; t++)
+    //                {
+    //                    foreach (var k in mask[i, j])
+    //                        values[k] += histogram[t].Count * Crystal.Bethe.Disks[eIndex][t].Amplitudes[k].MagnitudeSquared();
+    //                }
+    //            }
+    //        }
+    //    Pbmp = new PseudoBitmap(values, numericBoxDiskDiameter.ValueInteger) { AlphaEnabled = true };
+    //    Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
 
-        AdjustImage();
-    }
+    //    AdjustImage();
+    //}
     #endregion
 
     #region グラフをコピー

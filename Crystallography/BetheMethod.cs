@@ -157,8 +157,7 @@ public class BetheMethod
     public event ProgressChangedEventHandler StemProgressChanged;
     public event RunWorkerCompletedEventHandler StemCompleted;
 
-    private readonly Lock lockObj1 = new();
-    private readonly Lock lockObj2 = new();
+    private readonly Lock lockObj1 = new(), lockObj2 = new();
 
     /// <summary>
     /// Result_STEM_Ela[thickness][defocus]

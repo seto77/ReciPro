@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using V3 = OpenTK.Mathematics.Vector3d;
 
@@ -130,8 +130,6 @@ public sealed class EbsdMonteCarloDistribution
         for (int ei = 0; ei < eLen; ei++)
         {
             double dE = energies[ei] - Ep;
-            // double sigma = dE < 0 ? sigmaL : sigmaR; // 260327Cl 旧実装
-            // gE[ei] = Math.Exp(-dE * dE / (2 * sigma * sigma)); // 260327Cl 旧実装
             double inv2SigmaSq = dE < 0 ? inv2SigmaSqL : inv2SigmaSqR;
             gE[ei] = Math.Exp(-dE * dE * inv2SigmaSq);
         }
@@ -145,10 +143,6 @@ public sealed class EbsdMonteCarloDistribution
             double eLow = energies[ei] - eStep * 0.5;
             double eHigh = energies[ei] + eStep * 0.5;
 
-            // var depthsInBin = new List<double>(); // 260327Cl 旧実装
-            // foreach (var d in data)               // 260327Cl 旧実装
-            //     if (d.energy >= eLow && d.energy < eHigh) // 260327Cl 旧実装
-            //         depthsInBin.Add(d.depth);     // 260327Cl 旧実装
             int depthCount = 0;
             double depthSum = 0;
             foreach (var d in data)
@@ -158,17 +152,10 @@ public sealed class EbsdMonteCarloDistribution
                     depthCount++;
                 }
 
-            // if (depthsInBin.Count > 3) // 260327Cl 旧実装
             if (depthCount > 3)
-            {
-                // double sum = 0; // 260327Cl 旧実装
-                // foreach (var z in depthsInBin) sum += z; // 260327Cl 旧実装
                 lambdaPerEnergy[ei] = Math.Max(1.0, depthSum / depthCount);
-            }
             else
-            {
                 lambdaPerEnergy[ei] = -1;
-            }
         }
 
         FitLambdaPolynomial(energies, lambdaPerEnergy, out double la, out double lb, out double lc);
@@ -206,15 +193,12 @@ public sealed class EbsdMonteCarloDistribution
 
         if (totalWeight > 0)
             for (int k = 0; k < weights.Length; k++)
-                // weights[k] /= totalWeight; // (260325Ch) 旧実装
                 weights[k] = weights[k] / totalWeight * totalScale; // (260325Ch)
     }
 
     // 260327Cl: List<double> を固定長配列に置き換えて GC 圧力を軽減
     private static void FitLambdaPolynomial(double[] energies, double[] lambdaValues, out double a, out double b, out double c)
     {
-        // var validE = new List<double>(); // 260327Cl 旧実装
-        // var validL = new List<double>(); // 260327Cl 旧実装
         int validCount = 0;
         for (int i = 0; i < energies.Length; i++)
             if (lambdaValues[i] > 0) validCount++;
