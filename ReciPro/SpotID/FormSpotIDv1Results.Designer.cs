@@ -401,8 +401,8 @@
             // 
             // FormTEMIDResults
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(976, 341);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);

@@ -202,9 +202,9 @@
             numericBoxSampleTilt.Location = new System.Drawing.Point(80, 78);
             numericBoxSampleTilt.Margin = new System.Windows.Forms.Padding(0);
             numericBoxSampleTilt.Maximum = 0D;
-            numericBoxSampleTilt.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxSampleTilt.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxSampleTilt.Minimum = -90D;
-            numericBoxSampleTilt.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxSampleTilt.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
             numericBoxSampleTilt.RadianValue = -1.2217304763960306D;
             numericBoxSampleTilt.ShowUpDown = true;
@@ -229,7 +229,7 @@
             waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = false;
-            waveLengthControl.Size = new System.Drawing.Size(210, 50);
+            waveLengthControl.Size = new System.Drawing.Size(210, 55);
             waveLengthControl.TabIndex = 109;
             waveLengthControl.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             waveLengthControl.WaveLength = 0.0085885141045000009D;
@@ -451,9 +451,9 @@
             numericBoxDetTilt.Location = new System.Drawing.Point(136, 19);
             numericBoxDetTilt.Margin = new System.Windows.Forms.Padding(0);
             numericBoxDetTilt.Maximum = 180D;
-            numericBoxDetTilt.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxDetTilt.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxDetTilt.Minimum = 0D;
-            numericBoxDetTilt.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxDetTilt.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxDetTilt.Name = "numericBoxDetTilt";
             numericBoxDetTilt.RadianValue = 1.5707963267948966D;
             numericBoxDetTilt.ShowUpDown = true;
@@ -474,9 +474,9 @@
             numericBoxDetRadius.Location = new System.Drawing.Point(136, 51);
             numericBoxDetRadius.Margin = new System.Windows.Forms.Padding(0);
             numericBoxDetRadius.Maximum = 180D;
-            numericBoxDetRadius.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxDetRadius.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxDetRadius.Minimum = 0D;
-            numericBoxDetRadius.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxDetRadius.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxDetRadius.Name = "numericBoxDetRadius";
             numericBoxDetRadius.RadianValue = 0.43633231299858238D;
             numericBoxDetRadius.ShowUpDown = true;
@@ -498,9 +498,9 @@
             numericBoxZofDet.Location = new System.Drawing.Point(121, 110);
             numericBoxZofDet.Margin = new System.Windows.Forms.Padding(0);
             numericBoxZofDet.Maximum = 1000D;
-            numericBoxZofDet.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxZofDet.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxZofDet.Minimum = -1000D;
-            numericBoxZofDet.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxZofDet.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxZofDet.Name = "numericBoxZofDet";
             numericBoxZofDet.ShowUpDown = true;
             numericBoxZofDet.Size = new System.Drawing.Size(102, 24);
@@ -520,9 +520,9 @@
             numericBoxYofDet.Location = new System.Drawing.Point(121, 82);
             numericBoxYofDet.Margin = new System.Windows.Forms.Padding(0);
             numericBoxYofDet.Maximum = 1000D;
-            numericBoxYofDet.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxYofDet.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxYofDet.Minimum = -1000D;
-            numericBoxYofDet.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxYofDet.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxYofDet.Name = "numericBoxYofDet";
             numericBoxYofDet.RadianValue = -0.52359877559829882D;
             numericBoxYofDet.ShowUpDown = true;
@@ -736,9 +736,9 @@
             numericBoxKikuchiThreadSholdOfStructureFactor.Location = new System.Drawing.Point(135, 24);
             numericBoxKikuchiThreadSholdOfStructureFactor.Margin = new System.Windows.Forms.Padding(0);
             numericBoxKikuchiThreadSholdOfStructureFactor.Maximum = 1000D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxKikuchiThreadSholdOfStructureFactor.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxKikuchiThreadSholdOfStructureFactor.Minimum = 1D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxKikuchiThreadSholdOfStructureFactor.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxKikuchiThreadSholdOfStructureFactor.Name = "numericBoxKikuchiThreadSholdOfStructureFactor";
             numericBoxKikuchiThreadSholdOfStructureFactor.RadianValue = 0.69813170079773179D;
             numericBoxKikuchiThreadSholdOfStructureFactor.ShowUpDown = true;
@@ -760,9 +760,9 @@
             numericBoxKikuchiThresholdOfLength.Location = new System.Drawing.Point(151, 57);
             numericBoxKikuchiThresholdOfLength.Margin = new System.Windows.Forms.Padding(0);
             numericBoxKikuchiThresholdOfLength.Maximum = 100D;
-            numericBoxKikuchiThresholdOfLength.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxKikuchiThresholdOfLength.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxKikuchiThresholdOfLength.Minimum = 0D;
-            numericBoxKikuchiThresholdOfLength.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxKikuchiThresholdOfLength.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxKikuchiThresholdOfLength.Name = "numericBoxKikuchiThresholdOfLength";
             numericBoxKikuchiThresholdOfLength.RadianValue = 0.17453292519943295D;
             numericBoxKikuchiThresholdOfLength.ShowUpDown = true;
@@ -810,9 +810,9 @@
             numericBoxThicknessStep.Location = new System.Drawing.Point(286, 68);
             numericBoxThicknessStep.Margin = new System.Windows.Forms.Padding(0);
             numericBoxThicknessStep.Maximum = 10D;
-            numericBoxThicknessStep.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxThicknessStep.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxThicknessStep.Minimum = 0.001D;
-            numericBoxThicknessStep.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxThicknessStep.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
             numericBoxThicknessStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxThicknessStep.RadianValue = 0.017453292519943295D;
@@ -839,9 +839,9 @@
             numericBoxMaxNumOfG.Location = new System.Drawing.Point(6, 35);
             numericBoxMaxNumOfG.Margin = new System.Windows.Forms.Padding(0);
             numericBoxMaxNumOfG.Maximum = 2048D;
-            numericBoxMaxNumOfG.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxMaxNumOfG.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxMaxNumOfG.Minimum = 1D;
-            numericBoxMaxNumOfG.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxMaxNumOfG.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
             numericBoxMaxNumOfG.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxMaxNumOfG.RadianValue = 0.55850536063818546D;
@@ -891,9 +891,9 @@
             numericBoxThicknessStart.Location = new System.Drawing.Point(6, 68);
             numericBoxThicknessStart.Margin = new System.Windows.Forms.Padding(0);
             numericBoxThicknessStart.Maximum = 1000D;
-            numericBoxThicknessStart.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxThicknessStart.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxThicknessStart.Minimum = 0.001D;
-            numericBoxThicknessStart.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxThicknessStart.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
             numericBoxThicknessStart.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxThicknessStart.RadianValue = 0.017453292519943295D;
@@ -922,9 +922,9 @@
             numericBoxThicknessEnd.Location = new System.Drawing.Point(179, 68);
             numericBoxThicknessEnd.Margin = new System.Windows.Forms.Padding(0);
             numericBoxThicknessEnd.Maximum = 1000D;
-            numericBoxThicknessEnd.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxThicknessEnd.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxThicknessEnd.Minimum = 0.001D;
-            numericBoxThicknessEnd.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxThicknessEnd.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
             numericBoxThicknessEnd.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxThicknessEnd.RadianValue = 0.87266462599716477D;
@@ -1262,9 +1262,9 @@
             numericBoxEnergyEnd.Location = new System.Drawing.Point(182, 101);
             numericBoxEnergyEnd.Margin = new System.Windows.Forms.Padding(0);
             numericBoxEnergyEnd.Maximum = 1000D;
-            numericBoxEnergyEnd.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxEnergyEnd.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxEnergyEnd.Minimum = 0.001D;
-            numericBoxEnergyEnd.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxEnergyEnd.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxEnergyEnd.Name = "numericBoxEnergyEnd";
             numericBoxEnergyEnd.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxEnergyEnd.RadianValue = 0.26179938779914941D;
@@ -1293,9 +1293,9 @@
             numericBoxEnergyStart.Location = new System.Drawing.Point(21, 101);
             numericBoxEnergyStart.Margin = new System.Windows.Forms.Padding(0);
             numericBoxEnergyStart.Maximum = 1000D;
-            numericBoxEnergyStart.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxEnergyStart.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxEnergyStart.Minimum = 1D;
-            numericBoxEnergyStart.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxEnergyStart.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxEnergyStart.Name = "numericBoxEnergyStart";
             numericBoxEnergyStart.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxEnergyStart.RadianValue = 0.3490658503988659D;
@@ -1325,9 +1325,9 @@
             numericBoxEnergyStep.Location = new System.Drawing.Point(287, 101);
             numericBoxEnergyStep.Margin = new System.Windows.Forms.Padding(0);
             numericBoxEnergyStep.Maximum = 10D;
-            numericBoxEnergyStep.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxEnergyStep.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxEnergyStep.Minimum = 0.001D;
-            numericBoxEnergyStep.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxEnergyStep.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxEnergyStep.Name = "numericBoxEnergyStep";
             numericBoxEnergyStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxEnergyStep.RadianValue = 0.017453292519943295D;
@@ -1498,7 +1498,7 @@
             tabPage2.Location = new System.Drawing.Point(4, 48);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            tabPage2.Size = new System.Drawing.Size(192, 48);
+            tabPage2.Size = new System.Drawing.Size(306, 639);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Distribution of BSEs";
             // 
@@ -1527,10 +1527,10 @@
             tabPage3.Controls.Add(colorControlString);
             tabPage3.Controls.Add(checkBoxKikuchiLine_Kinematical);
             tabPage3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            tabPage3.Location = new System.Drawing.Point(4, 70);
+            tabPage3.Location = new System.Drawing.Point(4, 48);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            tabPage3.Size = new System.Drawing.Size(192, 26);
+            tabPage3.Size = new System.Drawing.Size(306, 639);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Kinematical simulation";
             // 
@@ -1572,7 +1572,7 @@
             // 
             labelMasterPatternGrid.AutoSize = true;
             labelMasterPatternGrid.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            labelMasterPatternGrid.Location = new System.Drawing.Point(255, 37);
+            labelMasterPatternGrid.Location = new System.Drawing.Point(255, 39);
             labelMasterPatternGrid.Margin = new System.Windows.Forms.Padding(0, 8, 4, 0);
             labelMasterPatternGrid.Name = "labelMasterPatternGrid";
             labelMasterPatternGrid.Size = new System.Drawing.Size(33, 17);
@@ -1585,7 +1585,7 @@
             comboBoxMasterPatternGrid.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             comboBoxMasterPatternGrid.FormattingEnabled = true;
             comboBoxMasterPatternGrid.Items.AddRange(new object[] { "64", "128", "192", "256", "384", "512", "756", "1024", "1536", "2048" });
-            comboBoxMasterPatternGrid.Location = new System.Drawing.Point(292, 31);
+            comboBoxMasterPatternGrid.Location = new System.Drawing.Point(292, 36);
             comboBoxMasterPatternGrid.Margin = new System.Windows.Forms.Padding(0, 2, 8, 0);
             comboBoxMasterPatternGrid.Name = "comboBoxMasterPatternGrid";
             comboBoxMasterPatternGrid.Size = new System.Drawing.Size(76, 25);
@@ -1610,19 +1610,19 @@
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new System.Drawing.Size(27, 25);
+            toolStripStatusLabel1.Size = new System.Drawing.Size(16, 25);
             toolStripStatusLabel1.Text = "   ";
             // 
             // toolStripStatusLabel2
             // 
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            toolStripStatusLabel2.Size = new System.Drawing.Size(27, 25);
+            toolStripStatusLabel2.Size = new System.Drawing.Size(16, 25);
             toolStripStatusLabel2.Text = "   ";
             // 
             // toolStripStatusLabel3
             // 
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            toolStripStatusLabel3.Size = new System.Drawing.Size(27, 25);
+            toolStripStatusLabel3.Size = new System.Drawing.Size(16, 25);
             toolStripStatusLabel3.Text = "   ";
             // 
             // scalablePictureBoxAdvancedMasterPattern2D
@@ -1651,7 +1651,7 @@
             scalablePictureBoxAdvancedMasterPattern2D.MinimumIntensity = 0D;
             scalablePictureBoxAdvancedMasterPattern2D.MousePositionLabelVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.Name = "scalablePictureBoxAdvancedMasterPattern2D";
-            scalablePictureBoxAdvancedMasterPattern2D.PictureSize = new System.Drawing.Size(280, 207);
+            scalablePictureBoxAdvancedMasterPattern2D.PictureSize = new System.Drawing.Size(280, 280);
             scalablePictureBoxAdvancedMasterPattern2D.PolarityVisible = true;
             scalablePictureBoxAdvancedMasterPattern2D.ScaleVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.ShowGradiaent = true;
@@ -1869,7 +1869,7 @@
             flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongV);
             flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(numericBoxMasterPattern3DViewAlongW);
             flowLayoutPanelMasterPattern3DViewAlong.Controls.Add(labelMasterPattern3DViewAlongCloseBracket);
-            flowLayoutPanelMasterPattern3DViewAlong.Location = new System.Drawing.Point(298, 336);
+            flowLayoutPanelMasterPattern3DViewAlong.Location = new System.Drawing.Point(292, 336);
             flowLayoutPanelMasterPattern3DViewAlong.Name = "flowLayoutPanelMasterPattern3DViewAlong";
             flowLayoutPanelMasterPattern3DViewAlong.Size = new System.Drawing.Size(268, 25);
             flowLayoutPanelMasterPattern3DViewAlong.TabIndex = 151;
@@ -1911,9 +1911,9 @@
             numericBoxMasterPattern3DViewAlongU.Location = new System.Drawing.Point(135, 0);
             numericBoxMasterPattern3DViewAlongU.Margin = new System.Windows.Forms.Padding(0);
             numericBoxMasterPattern3DViewAlongU.Maximum = 9D;
-            numericBoxMasterPattern3DViewAlongU.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxMasterPattern3DViewAlongU.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxMasterPattern3DViewAlongU.Minimum = -9D;
-            numericBoxMasterPattern3DViewAlongU.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxMasterPattern3DViewAlongU.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxMasterPattern3DViewAlongU.Name = "numericBoxMasterPattern3DViewAlongU";
             numericBoxMasterPattern3DViewAlongU.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxMasterPattern3DViewAlongU.RadianValue = 0.017453292519943295D;
@@ -1936,9 +1936,9 @@
             numericBoxMasterPattern3DViewAlongV.Location = new System.Drawing.Point(175, 0);
             numericBoxMasterPattern3DViewAlongV.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             numericBoxMasterPattern3DViewAlongV.Maximum = 9D;
-            numericBoxMasterPattern3DViewAlongV.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxMasterPattern3DViewAlongV.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxMasterPattern3DViewAlongV.Minimum = -9D;
-            numericBoxMasterPattern3DViewAlongV.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxMasterPattern3DViewAlongV.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxMasterPattern3DViewAlongV.Name = "numericBoxMasterPattern3DViewAlongV";
             numericBoxMasterPattern3DViewAlongV.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxMasterPattern3DViewAlongV.RadianValue = 0.017453292519943295D;
@@ -1961,9 +1961,9 @@
             numericBoxMasterPattern3DViewAlongW.Location = new System.Drawing.Point(215, 0);
             numericBoxMasterPattern3DViewAlongW.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
             numericBoxMasterPattern3DViewAlongW.Maximum = 9D;
-            numericBoxMasterPattern3DViewAlongW.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxMasterPattern3DViewAlongW.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxMasterPattern3DViewAlongW.Minimum = -9D;
-            numericBoxMasterPattern3DViewAlongW.MinimumSize = new System.Drawing.Size(1, 14);
+            numericBoxMasterPattern3DViewAlongW.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxMasterPattern3DViewAlongW.Name = "numericBoxMasterPattern3DViewAlongW";
             numericBoxMasterPattern3DViewAlongW.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxMasterPattern3DViewAlongW.RadianValue = 0.017453292519943295D;
@@ -2084,7 +2084,7 @@
             // 
             // FormEBSD
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             ClientSize = new System.Drawing.Size(1428, 729);

@@ -14,7 +14,8 @@ internal static class Program
     private static void Main()
     {
         Application.EnableVisualStyles();
-        Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
+        //Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled); // 260329Cl 変更: csproj の PerMonitorV2 と統一
+        Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
         Application.SetCompatibleTextRenderingDefault(true);
         Application.Run(new FormMain());
     }

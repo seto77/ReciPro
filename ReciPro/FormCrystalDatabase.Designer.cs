@@ -104,8 +104,8 @@
             // 
             // FormCrystalDatabase
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             ClientSize = new System.Drawing.Size(915, 400);
             Controls.Add(crystalDatabaseControl);

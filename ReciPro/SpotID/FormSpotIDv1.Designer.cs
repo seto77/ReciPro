@@ -1370,7 +1370,8 @@
             // 
             // FormSpotIDv1
             // 
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: None→Dpi, 96dpi基準に統一
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             resources.ApplyResources(this, "$this");
             captureExtender.SetCapture(this, true);
             Controls.Add(flowLayoutPanelPhotos);

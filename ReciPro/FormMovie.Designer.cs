@@ -695,8 +695,8 @@ partial class FormMovie
         // 
         // FormMovie
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
         AutoSize = true;
         AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         ClientSize = new System.Drawing.Size(180, 401);

@@ -2705,6 +2705,7 @@
             // 
             AllowDrop = true;
             resources.ApplyResources(this, "$this");
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: 96dpi基準
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(toolStripContainer1);

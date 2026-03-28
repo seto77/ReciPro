@@ -1293,8 +1293,8 @@ namespace ReciPro
             // FormDiffractionSimulatorDynamicCompression
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(556, 792);
             this.Controls.Add(this.groupBoxCompressionModel);
             this.Controls.Add(this.groupBoxOutputParameters);

@@ -1479,7 +1479,8 @@
             // FormPolycrystallineDiffractionSimulator
             // 
             this.AllowDrop = true;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: None→Dpi, 96dpi基準に統一
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1538, 933);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
