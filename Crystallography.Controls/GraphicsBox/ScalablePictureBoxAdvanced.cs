@@ -182,7 +182,11 @@ public partial class ScalablePictureBoxAdvanced : CaptureUserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleGradient { set => flowLayoutPanelGradient.Visible = value; get => flowLayoutPanelGradient.Visible; }
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    //[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)] // 260329Cl 変更: Visible→Hidden+ReadOnly (Designer.csへのシリアライズを抑止。resources.ApplyResources()で設定したSizeを上書きしてしまうため)
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    [System.ComponentModel.Browsable(true)]
+    [System.ComponentModel.ReadOnly(true)]
+    [System.ComponentModel.Description("現在の画像表示領域サイズ (読み取り専用)。サイズ変更はコントロールのSizeプロパティで行ってください。")]
     public Size PictureSize
     {
         set

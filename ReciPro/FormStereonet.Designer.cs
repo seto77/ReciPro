@@ -1727,7 +1727,6 @@ namespace ReciPro
             scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PictureSize = new System.Drawing.Size(410, 410);
             scalablePictureBoxAdvanced1.PolarityVisible = true;
             scalablePictureBoxAdvanced1.ScaleVisible = true;
             scalablePictureBoxAdvanced1.ShowGradiaent = true;
@@ -1761,7 +1760,6 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PictureSize = new System.Drawing.Size(410, 410);
             scalablePictureBoxAdvanced2.PolarityVisible = true;
             scalablePictureBoxAdvanced2.ScaleVisible = true;
             scalablePictureBoxAdvanced2.ShowGradiaent = true;

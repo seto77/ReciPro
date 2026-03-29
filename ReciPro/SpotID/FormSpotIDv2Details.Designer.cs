@@ -77,7 +77,6 @@
             this.scalablePictureBoxAdvanced.MinimumIntensity = 0D;
             this.scalablePictureBoxAdvanced.MousePositionLabelVisible = false;
             this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(391, 391);
             this.scalablePictureBoxAdvanced.ShowGradiaent = true;
             this.scalablePictureBoxAdvanced.Size = new System.Drawing.Size(391, 474);
             this.scalablePictureBoxAdvanced.StatusLabel = " ";

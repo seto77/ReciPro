@@ -216,7 +216,6 @@ namespace ReciPro
             scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
             scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            scalablePictureBoxAdvanced.PictureSize = new System.Drawing.Size(604, 604);
             scalablePictureBoxAdvanced.PolarityVisible = true;
             scalablePictureBoxAdvanced.ScaleVisible = true;
             scalablePictureBoxAdvanced.ShowGradiaent = true;
