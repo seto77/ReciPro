@@ -24,6 +24,12 @@ namespace ReciPro;
 
 public partial class FormEBSD : CaptureFormBase
 {
+    private enum MonteCarloDistributionDepthMode
+    {
+        LastInelasticEventDepth,
+        LastTransportEventDepth,
+    }
+
     #region フィールド、プロパティ
     public FormMain FormMain;
     public GLControlAlpha glControlGeo;
@@ -45,6 +51,7 @@ public partial class FormEBSD : CaptureFormBase
     private long masterPatternMonteCarloElapsedMilliseconds = 0; // (260327Ch) MasterPattern build 前段の MC + fitting の経過時間
 
     private EbsdMonteCarloDistribution mcDistribution = null; // 260325Cl 追加: MC フィッティング結果
+    private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
 
     /// <summary>
     /// 飛程計算の際の打ち切りエネルギー (kev)
@@ -59,7 +66,7 @@ public partial class FormEBSD : CaptureFormBase
 
     public double SmpTilt => numericBoxSampleTilt.RadianValue;
 
-    (double Depth, V3 Vec, PointD Position, double Energy)[] BSEs = [];
+    (double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)[] BSEs = []; // (260331Ch) 最後の非弾性散乱情報も保持する
 
     public Crystal Crystal => FormMain.Crystal;
 
@@ -484,11 +491,10 @@ public partial class FormEBSD : CaptureFormBase
     /// </summary>
     public void Draw(Graphics g = null)
     {
-
-        DrawKikuchiLine();
-
-        DrawEBSD();
-
+        // DrawKikuchiLine(); // (260331Ch) 旧順序: EBSD 更新前に overlay を描いていた
+        // DrawEBSD(); // (260331Ch) 旧順序
+        DrawEBSD(); // (260331Ch) まず Pbmp を更新してから
+        DrawKikuchiLine(g); // (260331Ch) その上に Kikuchi 線と指数ラベルを重ねる
         DrawGeometry();
     }
     #endregion
@@ -868,20 +874,21 @@ public partial class FormEBSD : CaptureFormBase
     /// <summary>
     /// モンテカルロによる飛程シミュレーション
     /// </summary>
-    private static (double Depth, V3 Vec, PointD Position, double Energy)[] RunBackscatterMonteCarlo(
+    private static (double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)[] RunBackscatterMonteCarlo(
         MonteCarlo monte, int loop, double energyThreshold, M3 sampleRotation, Action<int, int> reportProgress = null)
     {
-        var bseLists = new System.Collections.Concurrent.ConcurrentBag<List<(double Depth, V3 Vec, PointD Position, double Energy)>>(); // (260327Ch) スレッドごとの結果を最後にまとめる
+        var bseLists = new System.Collections.Concurrent.ConcurrentBag<List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>>(); // (260331Ch) 最後の非弾性散乱情報も保持する
         var reportStep = reportProgress == null ? int.MaxValue : Math.Max(1, loop / 100); // (260327Ch) UI へは 1% ごとにだけ流す
         int completed = 0;
 
         System.Threading.Tasks.Parallel.For(0, loop,
-            () => new List<(double Depth, V3 Vec, PointD Position, double Energy)>(256),
+            () => new List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>(256),
             (index, state, localList) =>
             {
-                var electron = monte.GetBackscatteredElectrons();
-                if (electron.e > energyThreshold)
-                    localList.Add((electron.d, electron.v, Stereonet.ConvertVectorToSchmidt(sampleRotation * electron.v), electron.e));
+                var electron = monte.GetBackscatteredElectronDetail();
+                if (electron.Energy > energyThreshold)
+                    localList.Add((electron.Depth, electron.Direction, Stereonet.ConvertVectorToSchmidt(sampleRotation * electron.Direction), electron.Energy,
+                        electron.TotalEnergyLoss, electron.HasLastInelasticEvent, electron.LastInelasticDepth, electron.LastInelasticEnergyBeforeLoss, electron.LastInelasticEnergyAfterLoss, electron.LastInelasticDirection)); // (260331Ch)
 
                 var current = System.Threading.Interlocked.Increment(ref completed);
                 if (reportProgress != null && (current == loop || current % reportStep == 0))
@@ -924,6 +931,7 @@ public partial class FormEBSD : CaptureFormBase
             cry.Atoms.Select(a => (a.AtomicNumber, AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity))); // (260331Ch) Jablonski/TPP-2M 用の平均 Nv
         var monte = new MonteCarlo(Z, A, ρ, energy, SmpTilt, EnergyThreshold,
             elasticScatteringModel: MonteCarloElasticScatteringModel.MottNistSampler2023,
+            inelasticScatteringModel: MonteCarloInelasticScatteringModel.DiscreteBulkDiimfpApproximation,
             valenceElectronCount: valenceElectronCount,
             atoms: cry.Atoms); // (260331Ch) 元素組成込みの Mott/NIST sampler
 
@@ -1212,7 +1220,9 @@ public partial class FormEBSD : CaptureFormBase
         Pbmp.MaxValue = dev * maxRatio + min;
         Pbmp.MinValue = dev * minRatio + min;
 
-        Draw();
+        // Draw(); // (260331Ch) 旧実装: DrawEBSD -> AdjustImage -> DrawEBSD の再入を招きやすかった
+        DrawKikuchiLine();
+        DrawGeometry();
         Application.DoEvents();
     }
 
@@ -2216,6 +2226,7 @@ public partial class FormEBSD : CaptureFormBase
         {
             var monte = new MonteCarlo(z, a, rho, energy, sampleTilt, energyThreshold,
                 elasticScatteringModel: MonteCarloElasticScatteringModel.MottNistSampler2023,
+                inelasticScatteringModel: MonteCarloInelasticScatteringModel.DiscreteBulkDiimfpApproximation,
                 valenceElectronCount: valenceElectronCount,
                 atoms: cry.Atoms); // (260331Ch)
             var bses = RunBackscatterMonteCarlo(monte, loop, energyThreshold, sampleRotation, (completed, total) =>
@@ -2225,7 +2236,12 @@ public partial class FormEBSD : CaptureFormBase
                     energyStart: 0.0, energyEnd: 0.0, energyStep: 0.0, depthStart: 0.0, depthEnd: 0.0, depthStep: 0.0);
 
             progress.Report((92, "Analyzing Monte Carlo ranges"));
-            var bseRaw = bses.Select(e => (e.Depth, e.Vec, e.Energy)).ToArray();
+            var bseRaw = bses.Select(e => (
+                monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent
+                    ? e.LastInelasticDepth
+                    : e.Depth,
+                e.Vec,
+                e.Energy)).ToArray(); // (260331Ch) P(z_last_inelastic, Ω_exit, E_exit) と P(z_last_event, Ω_exit, E_exit) を切替
             var (energyLoss80, depth99) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy); // (260327Ch)
             var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss80, depth99); // (260327Ch)
 
@@ -2562,7 +2578,7 @@ public partial class FormEBSD : CaptureFormBase
             ResetMasterPattern3DCache(); // (260321Ch) build 前は 3D 再描画用のキャッシュも空にしておく
             // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(GetSelectedMasterPatternGridSize()), GetSelectedMasterPatternGridSize()); // (260322Ch) 旧実装: helper が新規配列を返していた
             SetMasterPattern2DBitmap(new double[selectedGridSize * selectedGridSize], selectedGridSize); // (260322Ch) helper を介さず空の placeholder 配列をその場で生成する
-            ClearMasterPattern3D(); // (260321Ch) MasterPattern 未作成時の 3D preview は空にする
+            ClearMesh(); // (260321Ch) MasterPattern 未作成時の 3D preview は空にする
             return;
         }
 
@@ -2575,7 +2591,7 @@ public partial class FormEBSD : CaptureFormBase
             ResetMasterPattern3DCache(); // (260321Ch) selector 未選択時は古い 3D preview を残さない
             // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260322Ch) 旧実装
             SetMasterPattern2DBitmap(new double[gridSize * gridSize], gridSize); // (260322Ch)
-            ClearMasterPattern3D(); // (260321Ch)
+            ClearMesh(); // (260321Ch)
             return;
         }
 
@@ -2587,7 +2603,7 @@ public partial class FormEBSD : CaptureFormBase
             ResetMasterPattern3DCache(); // (260321Ch) plane が存在しないときは cached slice を破棄する
             // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260322Ch) 旧実装
             SetMasterPattern2DBitmap(new double[gridSize * gridSize], gridSize); // (260322Ch)
-            ClearMasterPattern3D(); // (260321Ch)
+            ClearMesh(); // (260321Ch)
             return;
         }
 
@@ -2633,13 +2649,13 @@ public partial class FormEBSD : CaptureFormBase
     {
         if (masterPattern2DBitmap == null || masterPattern3DCacheGridSize <= 0)
         {
-            ClearMasterPattern3D();
+            ClearMesh();
             return;
         }
 
         if (masterPattern2DValues == null || masterPattern2DValues.Length != masterPattern3DCacheGridSize * masterPattern3DCacheGridSize)
         {
-            ClearMasterPattern3D();
+            ClearMesh();
             return;
         }
 
@@ -2731,7 +2747,7 @@ public partial class FormEBSD : CaptureFormBase
 
 
     /// <summary>3D preview 上の既存オブジェクトを削除し、黒背景だけの状態へ戻す。 </summary>
-    private void ClearMasterPattern3D() // (260322Ch) 旧名: ClearMasterPattern3DPreview
+    private void ClearMesh() // (260322Ch) 旧名: ClearMasterPattern3DPreview
     {
         if (glControlMasterPattern3D == null)
             return;
@@ -2762,16 +2778,16 @@ public partial class FormEBSD : CaptureFormBase
         if (positiveValues != null && positiveValues.Length == gridSize * gridSize)
         {
             var positiveObject = gridType == MasterPattern.Types.Hexagonal
-                ? CreateMasterPattern3DObjectHex(positiveValues, gridSize, MasterPattern.Hemisphere.PositiveZ, referenceBitmap)
-                : CreateMasterPattern3DObject(positiveValues, gridSize, MasterPattern.Hemisphere.PositiveZ, referenceBitmap);
+                ? CreateMesh_Hex(positiveValues, gridSize, MasterPattern.Hemisphere.PositiveZ, referenceBitmap)
+                : CreateMesh_Square(positiveValues, gridSize, MasterPattern.Hemisphere.PositiveZ, referenceBitmap);
             if (positiveObject != null)
                 glObjects.Add(positiveObject);
         }
         if (negativeValues != null && negativeValues.Length == gridSize * gridSize)
         {
             var negativeObject = gridType == MasterPattern.Types.Hexagonal
-                ? CreateMasterPattern3DObjectHex(negativeValues, gridSize, MasterPattern.Hemisphere.NegativeZ, referenceBitmap)
-                : CreateMasterPattern3DObject(negativeValues, gridSize, MasterPattern.Hemisphere.NegativeZ, referenceBitmap);
+                ? CreateMesh_Hex(negativeValues, gridSize, MasterPattern.Hemisphere.NegativeZ, referenceBitmap)
+                : CreateMesh_Square(negativeValues, gridSize, MasterPattern.Hemisphere.NegativeZ, referenceBitmap);
             if (negativeObject != null)
                 glObjects.Add(negativeObject);
         }
@@ -2805,7 +2821,7 @@ public partial class FormEBSD : CaptureFormBase
     /// Rosca-Lambert 等積正方形の強度分布を、球面上の三角形メッシュへ変換する。
     /// 以前のようにセルごとに GLObject を分けず、半球ごとに 1 メッシュへまとめて描画負荷を下げる。
     /// </summary>
-    private static GLObject CreateMasterPattern3DObject(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
+    private static GLObject CreateMesh_Square(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
     {
         var previewGrid = gridSize; // (260322Ch) メッシュ描画で十分高速なので元の格子サイズをそのまま使う
         var previewValues = values; // (260322Ch)
@@ -2860,7 +2876,7 @@ public partial class FormEBSD : CaptureFormBase
     /// 六方格子の plane データを六方 Lambert 座標系のまま球面メッシュに変換する。260331Cl 追加
     /// セル中心を頂点とし、隣接 3 セルで三角形を構成する。
     /// </summary>
-    private static GLObject CreateMasterPattern3DObjectHex(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
+    private static GLObject CreateMesh_Hex(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
     {
         if (gridSize <= 1 || values == null || values.Length != gridSize * gridSize)
             return null;

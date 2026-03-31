@@ -111,13 +111,14 @@ public partial class FormTrajectory : CaptureFormBase
             cry.Atoms.Select(a => (a.AtomicNumber, AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity))); // (260331Ch) Jablonski/TPP-2M 用の平均 Nv
         var monte = new MonteCarlo(Z, A, ρ, energy, tilt,
             elasticScatteringModel: MonteCarloElasticScatteringModel.MottNistSampler2023,
+            inelasticScatteringModel: MonteCarloInelasticScatteringModel.DiscreteBulkDiimfpApproximation,
             valenceElectronCount: valenceElectronCount,
             atoms: cry.Atoms); // (260331Ch) 元素組成込みの Mott/NIST sampler を試せるようにする
 
         var (_, CrossSection, MeanFreePath, StoppingPower) = monte.GetParameters(energy);
         labelCrossSection.Text = $"{CrossSection:g3} nm² @ {energy} kev ({monte.ElasticScatteringModel})"; // (260331Ch)
         labelMeanFreePath.Text = $"{MeanFreePath:f2} nm @ {energy} kev";
-        labelStoppingPower.Text = $"{StoppingPower * 1000:f2} ev/nm @ {energy} kev ({monte.StoppingPowerModel})"; // (260331Ch) 現在の阻止能モデルが分かるように表示
+        labelStoppingPower.Text = $"{StoppingPower * 1000:f2} ev/nm @ {energy} kev ({monte.StoppingPowerModel}, {monte.InelasticScatteringModel})"; // (260331Ch) 現在の阻止能/非弾性モデルが分かるように表示
 
         //飛程計算ループ
         sw.Restart();
