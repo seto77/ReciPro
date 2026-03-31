@@ -683,7 +683,7 @@ public class BetheMethod
         if (beamDirectionCount <= 0 || hemisphereLength <= 0 || gridSize <= 0)
             return [];
 
-        bool isHex = EbsdMasterPattern.ShouldUseHexGrid(Crystal.Symmetry); // 260331Cl
+        bool isHex = MasterPattern.ShouldUseHexGrid(Crystal.Symmetry); // 260331Cl
         int N = isHex ? (gridSize - 1) / 2 : 0;
 
         var mapping = new int[beamDirectionCount];
@@ -696,15 +696,15 @@ public class BetheMethod
             for (int i = 0; i < beamDirectionCount; i++)
             {
                 int localIndex = i % hemisphereLength;
-                var (u, v) = EbsdMasterPattern.HexFromLinearIndex(localIndex, N);
-                if (!EbsdMasterPattern.IsValidHexCell(u, v, N))
+                var (u, v) = MasterPattern.HexFromLinearIndex(localIndex, N);
+                if (!MasterPattern.IsValidHexCell(u, v, N))
                     mapping[i] = -1;
             }
         }
 
         if (isHex)
         {
-            var hexOps = EbsdMasterPattern.GetMasterPatternHexSymmetryOperations(Crystal.Symmetry);
+            var hexOps = MasterPattern.GetMasterPatternHexSymmetryOperations(Crystal.Symmetry);
             if (hexOps.Length <= 1)
                 return mapping;
 
@@ -714,7 +714,7 @@ public class BetheMethod
                 var representativeIndex = i;
                 for (int opIndex = 1; opIndex < hexOps.Length; opIndex++)
                 {
-                    var transformedIndex = EbsdMasterPattern.TransformMasterPatternHexIndex(i, hemisphereLength, gridSize, hexOps[opIndex]);
+                    var transformedIndex = MasterPattern.TransformMasterPatternHexIndex(i, hemisphereLength, gridSize, hexOps[opIndex]);
                     if (transformedIndex < representativeIndex)
                         representativeIndex = transformedIndex;
                 }
@@ -723,7 +723,7 @@ public class BetheMethod
         }
         else
         {
-            var operations = EbsdMasterPattern.GetMasterPatternSquareSymmetryOperations(Crystal.Symmetry);
+            var operations = MasterPattern.GetMasterPatternSquareSymmetryOperations(Crystal.Symmetry);
             if (operations.Length <= 1)
                 return mapping;
 
@@ -732,7 +732,7 @@ public class BetheMethod
                 var representativeIndex = i;
                 for (int opIndex = 1; opIndex < operations.Length; opIndex++)
                 {
-                    var transformedIndex = EbsdMasterPattern.TransformMasterPatternSquareIndex(i, hemisphereLength, gridSize, operations[opIndex]);
+                    var transformedIndex = MasterPattern.TransformMasterPatternSquareIndex(i, hemisphereLength, gridSize, operations[opIndex]);
                     if (transformedIndex < representativeIndex)
                         representativeIndex = transformedIndex;
                 }

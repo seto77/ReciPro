@@ -1551,7 +1551,6 @@
         private System.Windows.Forms.Label labelMasterPattern3DViewAlongOpenBracket;
         private System.Windows.Forms.Label labelMasterPattern3DViewAlongCloseBracket;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBoxShowGIndices;
         private System.Windows.Forms.CheckBox checkBoxShowZoneAxisIndices;
     }

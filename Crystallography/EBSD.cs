@@ -5,6 +5,9 @@ using System.Numerics;
 
 namespace Crystallography
 {
+
+
+
     /// <summary>
     /// MasterPattern の作成処理を UI から切り離して管理するクラス。
     /// BetheMethod による EBSD ディスク計算と、その結果を plane 配列へ並べ替える処理を担当する。
@@ -35,9 +38,9 @@ namespace Crystallography
                 Energies = energies?.ToArray() ?? [];
                 Depths = depths?.ToArray() ?? [];
                 GridSize = gridSize;
-                GridType = EbsdMasterPattern.ShouldUseHexGrid(crystal.Symmetry) // 260331Cl 追加: 結晶系から自動判定
-                    ? EbsdMasterPatternGridType.Hexagonal
-                    : EbsdMasterPatternGridType.Square;
+                GridType = MasterPattern.ShouldUseHexGrid(crystal.Symmetry) // 260331Cl 追加: 結晶系から自動判定
+                    ? MasterPattern.Types.Hexagonal
+                    : MasterPattern.Types.Square;
                 Solver = solver;
                 Thread = thread;
                 UseNonLocalAbsorption = useNonLocalAbsorption;
@@ -60,7 +63,7 @@ namespace Crystallography
             public int GridSize { get; }
 
             /// <summary>格子タイプ（正方/六方）。結晶系から自動判定。260331Cl 追加</summary>
-            public EbsdMasterPatternGridType GridType { get; }
+            public MasterPattern.Types GridType { get; }
 
             /// <summary>BetheMethod で使う solver 種別。</summary>
             public BetheMethod.Solver Solver { get; }
@@ -116,7 +119,7 @@ namespace Crystallography
             /// <summary>
             /// 完了結果を初期化する。
             /// </summary>
-            public MasterPatternCompletedEventArgs(MasterPatternBuildRequest request, EbsdMasterPattern masterPattern, Exception error, bool cancelled)
+            public MasterPatternCompletedEventArgs(MasterPatternBuildRequest request, MasterPattern masterPattern, Exception error, bool cancelled)
             {
                 Request = request;
                 MasterPattern = masterPattern;
@@ -128,7 +131,7 @@ namespace Crystallography
             public MasterPatternBuildRequest Request { get; }
 
             /// <summary>作成された MasterPattern。失敗またはキャンセル時は null。</summary>
-            public EbsdMasterPattern MasterPattern { get; }
+            public MasterPattern MasterPattern { get; }
 
             /// <summary>失敗時の例外。成功時は null。</summary>
             public Exception Error { get; }
@@ -157,14 +160,14 @@ namespace Crystallography
         /// </summary>
         private sealed class MasterPatternCompilationResult
         {
-            public MasterPatternCompilationResult(MasterPatternBuildRequest request, EbsdMasterPattern masterPattern)
+            public MasterPatternCompilationResult(MasterPatternBuildRequest request, MasterPattern masterPattern)
             {
                 Request = request;
                 MasterPattern = masterPattern;
             }
 
             public MasterPatternBuildRequest Request { get; }
-            public EbsdMasterPattern MasterPattern { get; }
+            public MasterPattern MasterPattern { get; }
         }
 
         private const int BetheStageWeight = 99; // (260321Ch) 全体進捗のうち Bethe 計算へ割り当てる比率
@@ -196,7 +199,7 @@ namespace Crystallography
         /// <summary>
         /// 最後に正常終了した MasterPattern。
         /// </summary>
-        public EbsdMasterPattern MasterPattern { get; private set; } = null;
+        public MasterPattern MasterPattern { get; private set; } = null;
 
         private MasterPatternBuildRequest currentMasterPatternBuildRequest = null; // (260327Ch) build 条件はクラス内部だけで保持する
 
@@ -233,22 +236,22 @@ namespace Crystallography
 
             // 260331Cl 格子タイプに応じた方向生成
             var gs = currentMasterPatternBuildRequest.GridSize;
-            var isHex = currentMasterPatternBuildRequest.GridType == EbsdMasterPatternGridType.Hexagonal;
+            var isHex = currentMasterPatternBuildRequest.GridType == MasterPattern.Types.Hexagonal;
             var positiveDirections = isHex
-                ? EbsdMasterPattern.CreateDirectionsHex(gs, EbsdMasterPatternHemisphere.PositiveZ)
-                : EbsdMasterPattern.CreateDirections(gs, EbsdMasterPatternHemisphere.PositiveZ);
+                ? MasterPattern.CreateDirectionsHex(gs, MasterPattern.Hemisphere.PositiveZ)
+                : MasterPattern.CreateDirectionsSquare(gs, MasterPattern.Hemisphere.PositiveZ);
             var negativeDirections = isHex
-                ? EbsdMasterPattern.CreateDirectionsHex(gs, EbsdMasterPatternHemisphere.NegativeZ)
-                : EbsdMasterPattern.CreateDirections(gs, EbsdMasterPatternHemisphere.NegativeZ);
+                ? MasterPattern.CreateDirectionsHex(gs, MasterPattern.Hemisphere.NegativeZ)
+                : MasterPattern.CreateDirectionsSquare(gs, MasterPattern.Hemisphere.NegativeZ);
             var directions = new Vector3DBase[positiveDirections.Length + negativeDirections.Length]; // (260321Ch) 全球分の方向配列をここで素直に連結する
             Array.Copy(positiveDirections, 0, directions, 0, positiveDirections.Length);
             Array.Copy(negativeDirections, 0, directions, positiveDirections.Length, negativeDirections.Length);
-            masterPatternBethe = new BetheMethod(currentMasterPatternBuildRequest.Crystal);
-            masterPatternBethe.EbsdRepresentativeDirectionBlockSize = currentMasterPatternBuildRequest.GridSize <= 512 ? 1
-                : currentMasterPatternBuildRequest.GridSize <= 1024 ? 3
-                : 5; // (260321Ch) 解像度に応じて 1 / 3 / 5 をその場で決める
-            // masterPatternBethe.UseLocalSurfacePerBeamDirection = true; // (260321Ch) 旧案: 既存 ebsd_DoWork に局所表面近似を持ち込んでいた
-            masterPatternBethe.UseLocalSurfacePerBeamDirection = false; // (260321Ch) 新経路では結晶を回すので、既存 worker 側の局所表面近似は使わない
+            masterPatternBethe = new BetheMethod(currentMasterPatternBuildRequest.Crystal)
+            {
+                EbsdRepresentativeDirectionBlockSize = currentMasterPatternBuildRequest.GridSize <= 512 ? 1
+                    : currentMasterPatternBuildRequest.GridSize <= 1024 ? 3 : 5, // (260321Ch) 解像度に応じて 1 / 3 / 5 をその場で決める
+                UseLocalSurfacePerBeamDirection = false // (260321Ch) 新経路では結晶を回すので、既存 worker 側の局所表面近似は使わない
+            };
             masterPatternBethe.EBSD_ProgressChanged += MasterPatternBethe_EBSD_ProgressChanged;
             masterPatternBethe.EBSD_Completed += MasterPatternBethe_EBSD_Completed;
 
@@ -271,10 +274,6 @@ namespace Crystallography
         /// </summary>
         public void CancelMasterPatternBuild()
         {
-            #region お蔵入り // (260327Ch) 旧 bwEBSD 側の cancel 経路は退避
-            //if (masterPatternBethe?.bwEBSD?.IsBusy == true)
-            //    masterPatternBethe.CancelEBSD();
-            #endregion
             if (masterPatternBethe?.bwEBSDNew?.IsBusy == true)
                 masterPatternBethe.bwEBSDNew.CancelAsync(); // (260327Ch) 1 か所しか使わない helper はここへ畳み込む
             if (bwMasterPattern.IsBusy)
@@ -393,7 +392,7 @@ namespace Crystallography
             e.Result = new MasterPatternCompilationResult(
                 request,
                 // new EbsdMasterPattern(request.GridSize, [.. request.Energies], [.. request.Depths], request.Hemisphere, planes)); // (260321Ch) 旧案: 単一半球の plane 配列だけを保持していた
-                new EbsdMasterPattern(request.GridSize, [.. request.Energies], [.. request.Depths], positivePlanes, negativePlanes, request.GridType)); // 260331Cl gridType 追加
+                new MasterPattern(request.GridSize, [.. request.Energies], [.. request.Depths], positivePlanes, negativePlanes, request.GridType)); // 260331Cl gridType 追加
         }
 
         /// <summary>
@@ -454,26 +453,41 @@ namespace Crystallography
     /// 正方格子または六方格子を選択可能。
     /// 1 つの energy-depth 組に対して 1 枚の plane を持つ。
     /// </summary>
-    public sealed class EbsdMasterPattern
+    public sealed class MasterPattern
     {
+        #region 両グリッド共通
+
+        public static double SqrtPI = Math.Sqrt(Math.PI);
+
         public static readonly double SquareLimit = Math.Sqrt(Math.PI / 2.0); // (260321Ch) 等積正方形投影の境界値
+
+        /// <summary>六方格子を有効にするフラグ。false のとき全結晶系で正方格子を使う。260331Cl 追加</summary>
+        public static bool UseHexGridEnabled = true; // 260331Cl デバッグ用: true で六方格子有効
+
+        /// <summary>結晶系に応じて六方格子を使うべきか判定する。260331Cl 追加</summary>
+        public static bool ShouldUseHexGrid(Symmetry sym) => UseHexGridEnabled && (sym.CrystalSystemNumber == 5 || sym.CrystalSystemNumber == 6);
+
+
+        /// <summary>MasterPattern が対応する半球。 </summary>
+        public enum Hemisphere { NegativeZ = -1, PositiveZ = 1, }
+
+        /// <summary> MasterPattern の格子タイプ </summary>
+        public enum Types { Square, Hexagonal }
 
         /// <summary>一辺の分割数。正方格子: gridSize、六方格子: 2N+1。</summary>
         public int GridSize { get; }
 
         /// <summary>格子タイプ。260331Cl 追加</summary>
-        public EbsdMasterPatternGridType GridType { get; }
+        public Types GridType { get; }
 
         /// <summary>六方格子の半径 N (GridSize = 2N+1)。正方格子では 0。260331Cl 追加</summary>
-        public int HexRadius => GridType == EbsdMasterPatternGridType.Hexagonal ? (GridSize - 1) / 2 : 0;
+        public int HexRadius => GridType == Types.Hexagonal ? (GridSize - 1) / 2 : 0;
 
         /// <summary>保持しているエネルギー列。</summary>
         public double[] Energies { get; }
 
         /// <summary>保持している深さ列。</summary>
         public double[] Depths { get; }
-
-        /// <summary>対応する半球。</summary>
 
         /// <summary>plane 本体。添字は energy-major で並ぶ。</summary>
         public float[][] PositivePlanes { get; } // (260321Ch) +Z 半球の plane 配列
@@ -482,10 +496,9 @@ namespace Crystallography
         /// <summary> plane 数を返す。 </summary>
         public int PlaneCount => Energies.Length * Depths.Length;
 
-        // 260331Cl 旧シグネチャ: public EbsdMasterPattern(int gridSize, double[] energies, double[] depths, float[][] positivePlanes, float[][] negativePlanes)
         /// <summary> MasterPattern 本体を初期化する。 </summary>
-        public EbsdMasterPattern(int gridSize, double[] energies, double[] depths, float[][] positivePlanes, float[][] negativePlanes,
-            EbsdMasterPatternGridType gridType = EbsdMasterPatternGridType.Square) // 260331Cl gridType 追加
+        public MasterPattern(int gridSize, double[] energies, double[] depths, float[][] positivePlanes, float[][] negativePlanes,
+            Types gridType = Types.Square) // 260331Cl gridType 追加
         {
             GridSize = gridSize;
             GridType = gridType;
@@ -494,46 +507,29 @@ namespace Crystallography
             PositivePlanes = positivePlanes ?? [];
             NegativePlanes = negativePlanes ?? [];
         }
-
-        /// <summary>六方格子を有効にするフラグ。false のとき全結晶系で正方格子を使う。260331Cl 追加</summary>
-        public static bool UseHexGridEnabled = true; // 260331Cl デバッグ用: true で六方格子有効
-
-        /// <summary>結晶系に応じて六方格子を使うべきか判定する。260331Cl 追加</summary>
-        public static bool ShouldUseHexGrid(Symmetry sym) => UseHexGridEnabled && (sym.CrystalSystemNumber == 5 || sym.CrystalSystemNumber == 6);
-
-        /// <summary>軸座標 (u, v) が六方格子の有効領域内か判定する。260331Cl 追加</summary>
-        public static bool IsValidHexCell(int u, int v, int N) => Math.Abs(u) <= N && Math.Abs(v) <= N && Math.Abs(u + v) <= N;
-
-        /// <summary>軸座標 (u, v) を菱形配列の線形インデックスに変換する。260331Cl 追加</summary>
-        public static int HexLinearIndex(int u, int v, int N) => (v + N) * (2 * N + 1) + (u + N);
-
-        /// <summary>線形インデックスを軸座標 (u, v) に逆変換する。260331Cl 追加</summary>
-        public static (int u, int v) HexFromLinearIndex(int index, int N)
-        {
-            int side = 2 * N + 1;
-            int v = index / side - N;
-            int u = index % side - N;
-            return (u, v);
-        }
-
+     
         /// <summary>
         /// 指定した energy-depth 組の plane を返す。
         /// 範囲外のときは null を返す。
         /// </summary>
-        public float[] GetPlane(EbsdMasterPatternHemisphere hemisphere, int energyIndex, int depthIndex)
+        public float[] GetPlane(Hemisphere hemisphere, int energyIndex, int depthIndex)
         {
             if ((uint)energyIndex >= (uint)Energies.Length || (uint)depthIndex >= (uint)Depths.Length)
                 return null;
 
             var planeIndex = energyIndex * Depths.Length + depthIndex;
-            var planes = hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? PositivePlanes : NegativePlanes;
+            var planes = hemisphere == Hemisphere.PositiveZ ? PositivePlanes : NegativePlanes;
             return (uint)planeIndex < (uint)planes.Length ? planes[planeIndex] : null;
         }
+
+        #endregion
+
+        #region SquareGrid 関連
 
         /// <summary>
         /// Rosca-Lambert 格子の各セル中心に対応する出射方向を生成する。
         /// </summary>
-        public static Vector3DBase[] CreateDirections(int gridSize, EbsdMasterPatternHemisphere hemisphere)
+        public static Vector3DBase[] CreateDirectionsSquare(int gridSize, Hemisphere hemisphere)
         {
             var directions = new Vector3DBase[gridSize * gridSize];
             var step = 2.0 * SquareLimit / gridSize;
@@ -542,17 +538,15 @@ namespace Crystallography
                 {
                     var a = -SquareLimit + (w + 0.5) * step;
                     var b = SquareLimit - (h + 0.5) * step; // (260321Ch) preview 表示の上方向が +Y に見えるよう Y を反転する
-                    directions[h * gridSize + w] = RoscaLambertToSphere(a, b, hemisphere);
+                    directions[h * gridSize + w] = RoscaLambertToSphereSquare(a, b, hemisphere);
                 }
             return directions;
         }
 
-        public static double SqrtPI = Math.Sqrt(Math.PI);
-
         /// <summary>
         /// 球面方向を Rosca-Lambert 等積正方形上の座標 (a, b) へ逆変換する。260325Cl 追加
         /// </summary>
-        public static (double a, double b) SphereToRoscaLambert(double x, double y, double z)
+        public static (double a, double b) SphereToRoscaLambertSquare(double x, double y, double z)
         {
             double len = Math.Sqrt(x * x + y * y + z * z);
             if (len < 1e-15)
@@ -591,7 +585,7 @@ namespace Crystallography
         /// <summary>
         /// Rosca-Lambert 正方形座標 (a, b) で plane 上の強度をバイリニア補間する。260325Cl 追加
         /// </summary>
-        public static float InterpolatePlane(float[] plane, int gridSize, double a, double b)
+        public static float InterpolatePlaneSquare(float[] plane, int gridSize, double a, double b)
         {
             if (plane == null || plane.Length != gridSize * gridSize || gridSize <= 0)
                 return 0;
@@ -620,10 +614,10 @@ namespace Crystallography
         /// <summary>
         /// Rosca-Lambert 等積正方形上の座標を球面方向へ変換する。
         /// </summary>
-        public static Vector3DBase RoscaLambertToSphere(double a, double b, EbsdMasterPatternHemisphere hemisphere)
+        public static Vector3DBase RoscaLambertToSphereSquare(double a, double b, Hemisphere hemisphere)
         {
             if (Math.Abs(a) < 1.0E-15 && Math.Abs(b) < 1.0E-15)
-                return hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? new Vector3DBase(0, 0, 1) : new Vector3DBase(0, 0, -1);
+                return hemisphere == Hemisphere.PositiveZ ? new Vector3DBase(0, 0, 1) : new Vector3DBase(0, 0, -1);
 
             double A, B;
             if (Math.Abs(b) <= Math.Abs(a))
@@ -645,7 +639,7 @@ namespace Crystallography
 
             var rho2 = A * A + B * B;
             var radialScale = Math.Sqrt(Math.Max(0.0, 1.0 - rho2 / 4.0));
-            var z = hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? 1.0 - rho2 / 2.0 : -1.0 + rho2 / 2.0;
+            var z = hemisphere == Hemisphere.PositiveZ ? 1.0 - rho2 / 2.0 : -1.0 + rho2 / 2.0;
             return new Vector3DBase(radialScale * A, radialScale * B, z);
         }
 
@@ -731,18 +725,21 @@ namespace Crystallography
                 11 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorZ, SymmOper.Inversion, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ],
                 12 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
                 13 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y],
-                14 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180],
+                // 260331Cl 修正: -42m と -4m2 で C2'/σ_d の方向が異なる
+                14 => sym.StrSE2p == "2"
+                    ? [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180]             // -42m: C2' ∥ a,b + σ_d ∥ diag
+                    : [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180], // -4m2: σ ⊥ a,b + C2' ∥ diag
                 15 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.MirrorZ, SymmOper.Inversion, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
                 16 => [SymmOper.Identity],
                 17 => [SymmOper.Identity, SymmOper.Inversion],
-                18 => [SymmOper.Identity], // (260327Ch) 32 は square-grid に自然な 2 回軸をまだ固定できていない
-                19 => [SymmOper.Identity], // (260327Ch) 3m も同様に conservative に落とす
+                18 => [SymmOper.Identity],
+                19 => [SymmOper.Identity],
                 20 => [SymmOper.Identity, SymmOper.Inversion],
                 21 => [SymmOper.Identity, SymmOper.RotZ180],
                 22 => [SymmOper.Identity, SymmOper.MirrorZ],
                 23 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorZ, SymmOper.Inversion],
-                24 => [SymmOper.Identity, SymmOper.RotZ180], // (260327Ch) 622 はまず C2z だけを exact に使う
-                25 => [SymmOper.Identity, SymmOper.RotZ180], // (260327Ch) 6mm はまず C2z だけを exact に使う
+                24 => [SymmOper.Identity, SymmOper.RotZ180],
+                25 => [SymmOper.Identity, SymmOper.RotZ180],
                 26 => [SymmOper.Identity, SymmOper.MirrorZ],
                 27 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorZ, SymmOper.Inversion],
                 28 => [SymmOper.Identity, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotZ180],
@@ -786,7 +783,26 @@ namespace Crystallography
             return Sphere * hemisphereLength + H * gridSize + W;
         }
 
-        #region 六方格子の対称操作 (260331Cl 追加)
+        #endregion
+
+        #region HexGrid 関連
+
+        /// <summary>軸座標 (u, v) が六方格子の有効領域内か判定する。260331Cl 追加</summary>
+        public static bool IsValidHexCell(int u, int v, int N) => Math.Abs(u) <= N && Math.Abs(v) <= N && Math.Abs(u + v) <= N;
+
+        /// <summary>軸座標 (u, v) を菱形配列の線形インデックスに変換する。260331Cl 追加</summary>
+        public static int HexLinearIndex(int u, int v, int N) => (v + N) * (2 * N + 1) + (u + N);
+
+        /// <summary>線形インデックスを軸座標 (u, v) に逆変換する。260331Cl 追加</summary>
+        public static (int u, int v) HexFromLinearIndex(int index, int N)
+        {
+            int side = 2 * N + 1;
+            int v = index / side - N;
+            int u = index % side - N;
+            return (u, v);
+        }
+
+        // --- 六方格子の対称操作 ---
 
         /// <summary>
         /// 六方格子上で厳密に index を写せる 6/mmm 系の対称操作。260331Cl 追加
@@ -794,6 +810,7 @@ namespace Crystallography
         /// </summary>
         internal enum HexSymmOper
         {
+            #region
             // --- 半球保存 (12 操作) ---
             /// <summary>恒等操作 (u, v)</summary>
             Identity,
@@ -807,44 +824,45 @@ namespace Crystallography
             RotZ240,
             /// <summary>300° 回転 (u,v)→(u+v, -u)</summary>
             RotZ300,
-            /// <summary>鏡映 M1: (u,v)→(v, u) — u 軸と v 軸を交換</summary>
+            /// <summary>A0 軸 (0°) に直交する鏡映 (鏡映線 90°): (u,v)→(-u-v, v)</summary>
+            MirrorA0,
+            /// <summary>A1 軸 (30°) に直交する鏡映 (鏡映線 120°): (u,v)→(-v, -u)</summary>
             MirrorA1,
-            /// <summary>鏡映 M2: (u,v)→(-v, -u)</summary>
+            /// <summary>A2 軸 (60°) に直交する鏡映 (鏡映線 150°): (u,v)→(u, -u-v)</summary>
             MirrorA2,
-            /// <summary>鏡映 M3: (u,v)→(-u-v, v)</summary>
+            /// <summary>A3 軸 (90°) に直交する鏡映 (鏡映線 0°): (u,v)→(u+v, -v)</summary>
             MirrorA3,
-            /// <summary>鏡映 M4: (u,v)→(u+v, -v)</summary>
+            /// <summary>A4 軸 (120°) に直交する鏡映 (鏡映線 30°): (u,v)→(v, u)</summary>
             MirrorA4,
-            /// <summary>鏡映 M5: (u,v)→(u, -u-v)</summary>
+            /// <summary>A5 軸 (150°) に直交する鏡映 (鏡映線 60°): (u,v)→(-u, u+v)</summary>
             MirrorA5,
-            /// <summary>鏡映 M6: (u,v)→(-u, u+v)</summary>
-            MirrorA6,
 
             // --- 半球反転を伴う操作 (12 操作) ---
-            /// <summary>半球反転のみ</summary>
+            /// <summary>半球反転のみ (σ_h)</summary>
             MirrorZ,
-            /// <summary>60° 回転 + 半球反転</summary>
+            /// <summary>60° 回転 + 半球反転 (S₆)</summary>
             RotZ60MirrorZ,
-            /// <summary>120° 回転 + 半球反転</summary>
+            /// <summary>120° 回転 + 半球反転 (S₃)</summary>
             RotZ120MirrorZ,
-            /// <summary>180° 回転 + 半球反転 (= 反転操作)</summary>
+            /// <summary>180° 回転 + 半球反転 (= 反転 i)</summary>
             Inversion,
-            /// <summary>240° 回転 + 半球反転</summary>
+            /// <summary>240° 回転 + 半球反転 (S₃⁻¹)</summary>
             RotZ240MirrorZ,
-            /// <summary>300° 回転 + 半球反転</summary>
+            /// <summary>300° 回転 + 半球反転 (S₆⁻¹)</summary>
             RotZ300MirrorZ,
-            /// <summary>M1 + 半球反転</summary>
-            MirrorA1MirrorZ,
-            /// <summary>M2 + 半球反転</summary>
-            MirrorA2MirrorZ,
-            /// <summary>M3 + 半球反転</summary>
-            MirrorA3MirrorZ,
-            /// <summary>M4 + 半球反転</summary>
-            MirrorA4MirrorZ,
-            /// <summary>M5 + 半球反転</summary>
-            MirrorA5MirrorZ,
-            /// <summary>M6 + 半球反転</summary>
-            MirrorA6MirrorZ,
+            /// <summary>A0 軸 (0°) 周りの 180° 回転 (C₂')</summary>
+            RotA0_180,
+            /// <summary>A1 軸 (30°) 周りの 180° 回転 (C₂')</summary>
+            RotA1_180,
+            /// <summary>A2 軸 (60°) 周りの 180° 回転 (C₂')</summary>
+            RotA2_180,
+            /// <summary>A3 軸 (90°) 周りの 180° 回転 (C₂')</summary>
+            RotA3_180,
+            /// <summary>A4 軸 (120°) 周りの 180° 回転 (C₂')</summary>
+            RotA4_180,
+            /// <summary>A5 軸 (150°) 周りの 180° 回転 (C₂')</summary>
+            RotA5_180,
+            #endregion
         }
 
         /// <summary>
@@ -854,66 +872,95 @@ namespace Crystallography
         internal static HexSymmOper[] GetMasterPatternHexSymmetryOperations(Symmetry sym)
             => sym.PointGroupNumber switch
             {
-                // --- trigonal ---
-                16 => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240], // 3 (C3)
-                17 => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240, // -3 (S6)
-                       HexSymmOper.Inversion, HexSymmOper.RotZ120MirrorZ, HexSymmOper.RotZ240MirrorZ],
-                18 => sym.PointGroupHMStr switch // 32 (D3): C2' 軸の方向で分岐
-                {
-                    "321" => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
-                              HexSymmOper.MirrorA1MirrorZ, HexSymmOper.MirrorA3MirrorZ, HexSymmOper.MirrorA5MirrorZ],
-                    _ =>     [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240, // "312"
-                              HexSymmOper.MirrorA2MirrorZ, HexSymmOper.MirrorA4MirrorZ, HexSymmOper.MirrorA6MirrorZ],
-                },
-                19 => sym.PointGroupHMStr switch // 3m (C3v): 鏡映面の方向で分岐
-                {
-                    "3m1" => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
-                              HexSymmOper.MirrorA1, HexSymmOper.MirrorA3, HexSymmOper.MirrorA5],
-                    _ =>     [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240, // "31m"
-                              HexSymmOper.MirrorA2, HexSymmOper.MirrorA4, HexSymmOper.MirrorA6],
-                },
-                20 => sym.PointGroupHMStr switch // -3m (D3d)
-                {
-                    "-3m1" => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
-                               HexSymmOper.MirrorA1, HexSymmOper.MirrorA3, HexSymmOper.MirrorA5,
-                               HexSymmOper.Inversion, HexSymmOper.RotZ120MirrorZ, HexSymmOper.RotZ240MirrorZ,
-                               HexSymmOper.MirrorA2MirrorZ, HexSymmOper.MirrorA4MirrorZ, HexSymmOper.MirrorA6MirrorZ],
-                    _ =>      [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
-                               HexSymmOper.MirrorA2, HexSymmOper.MirrorA4, HexSymmOper.MirrorA6,
-                               HexSymmOper.Inversion, HexSymmOper.RotZ120MirrorZ, HexSymmOper.RotZ240MirrorZ,
-                               HexSymmOper.MirrorA1MirrorZ, HexSymmOper.MirrorA3MirrorZ, HexSymmOper.MirrorA5MirrorZ],
-                },
+                #region
+                // 3 (C3)
+                16 => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240],
 
-                // --- hexagonal ---
-                21 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120, // 6 (C6)
+                // -3 (C3i)
+                17 => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
+                       HexSymmOper.Inversion, HexSymmOper.RotZ60MirrorZ, HexSymmOper.RotZ300MirrorZ],
+
+                // 32 (D3): C2' 軸の方向で分岐
+                18 => sym.StrSE2p != "1"
+                    // "321"
+                    ? [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
+                       HexSymmOper.RotA1_180, HexSymmOper.RotA3_180, HexSymmOper.RotA5_180]
+                    // "312"
+                    : [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
+                       HexSymmOper.RotA0_180, HexSymmOper.RotA2_180,  HexSymmOper.RotA4_180],
+
+                // 3m (C3v): 鏡映面の方向で分岐
+                19 => sym.StrSE2p != "1"
+                    // "3m1": σ ⊥ a (a は奇数軸方向)
+                    ? [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
+                       HexSymmOper.MirrorA1, HexSymmOper.MirrorA3, HexSymmOper.MirrorA5]
+                    // "31m": σ ⊥ [1-10] (偶数軸方向)
+                    : [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
+                       HexSymmOper.MirrorA0, HexSymmOper.MirrorA2, HexSymmOper.MirrorA4],
+
+                // -3m (D3d): MirrorAn と Rot180An は同じ index (σ_d ⊥ C2')
+                20 => sym.StrSE2p != "1"
+                    // "-3m1"あるいは"-3m"
+                    ? [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
+                       HexSymmOper.Inversion, HexSymmOper.RotZ60MirrorZ, HexSymmOper.RotZ300MirrorZ,
+                       HexSymmOper.MirrorA1, HexSymmOper.MirrorA3, HexSymmOper.MirrorA5,
+                       HexSymmOper.RotA1_180, HexSymmOper.RotA3_180, HexSymmOper.RotA5_180]
+                    // "-31m"
+                    : [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
+                       HexSymmOper.Inversion, HexSymmOper.RotZ60MirrorZ, HexSymmOper.RotZ300MirrorZ,
+                       HexSymmOper.MirrorA0, HexSymmOper.MirrorA2, HexSymmOper.MirrorA4,
+                       HexSymmOper.RotA0_180, HexSymmOper.RotA2_180, HexSymmOper.RotA4_180],
+
+                // 6 (C6)
+                21 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120,
                        HexSymmOper.RotZ180, HexSymmOper.RotZ240, HexSymmOper.RotZ300],
-                22 => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240, // -6 (C3h)
+
+                // -6 (C3h)
+                22 => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
                        HexSymmOper.MirrorZ, HexSymmOper.RotZ120MirrorZ, HexSymmOper.RotZ240MirrorZ],
-                23 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120, // 6/m (C6h)
+
+                // 6/m (C6h)
+                23 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120,
                        HexSymmOper.RotZ180, HexSymmOper.RotZ240, HexSymmOper.RotZ300,
                        HexSymmOper.MirrorZ, HexSymmOper.RotZ60MirrorZ, HexSymmOper.RotZ120MirrorZ,
                        HexSymmOper.Inversion, HexSymmOper.RotZ240MirrorZ, HexSymmOper.RotZ300MirrorZ],
-                24 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120, // 622 (D6)
+
+                // 622 (D6): 全 6 軸の C2'
+                24 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120,
                        HexSymmOper.RotZ180, HexSymmOper.RotZ240, HexSymmOper.RotZ300,
-                       HexSymmOper.MirrorA1MirrorZ, HexSymmOper.MirrorA2MirrorZ, HexSymmOper.MirrorA3MirrorZ,
-                       HexSymmOper.MirrorA4MirrorZ, HexSymmOper.MirrorA5MirrorZ, HexSymmOper.MirrorA6MirrorZ],
-                25 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120, // 6mm (C6v)
+                       HexSymmOper.RotA0_180, HexSymmOper.RotA1_180, HexSymmOper.RotA2_180,
+                       HexSymmOper.RotA3_180, HexSymmOper.RotA4_180, HexSymmOper.RotA5_180],
+
+                // 6mm (C6v): 全 6 軸の鏡映
+                25 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120,
                        HexSymmOper.RotZ180, HexSymmOper.RotZ240, HexSymmOper.RotZ300,
-                       HexSymmOper.MirrorA1, HexSymmOper.MirrorA2, HexSymmOper.MirrorA3,
-                       HexSymmOper.MirrorA4, HexSymmOper.MirrorA5, HexSymmOper.MirrorA6],
-                26 => [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240, // -6m2 (D3h)
+                       HexSymmOper.MirrorA0, HexSymmOper.MirrorA1, HexSymmOper.MirrorA2,
+                       HexSymmOper.MirrorA3, HexSymmOper.MirrorA4, HexSymmOper.MirrorA5],
+
+                // -6m2/-62m (D3h): D3h では MirrorAn と Rot180An は index が 3 ずれる (σ_v ∥ C2')
+                26 => sym.StrSE2p == "2"
+                    // P-62m: C2' ∥ a (奇数)
+                    ? [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
+                       HexSymmOper.MirrorA0, HexSymmOper.MirrorA2, HexSymmOper.MirrorA4,
+                       HexSymmOper.MirrorZ, HexSymmOper.RotZ120MirrorZ, HexSymmOper.RotZ240MirrorZ,
+                       HexSymmOper.RotA1_180, HexSymmOper.RotA3_180, HexSymmOper.RotA5_180]
+                    // P-6m2: σ_v ⊥ a (奇数)
+                    : [HexSymmOper.Identity, HexSymmOper.RotZ120, HexSymmOper.RotZ240,
                        HexSymmOper.MirrorA1, HexSymmOper.MirrorA3, HexSymmOper.MirrorA5,
                        HexSymmOper.MirrorZ, HexSymmOper.RotZ120MirrorZ, HexSymmOper.RotZ240MirrorZ,
-                       HexSymmOper.MirrorA2MirrorZ, HexSymmOper.MirrorA4MirrorZ, HexSymmOper.MirrorA6MirrorZ],
-                27 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120, // 6/mmm (D6h)
+                       HexSymmOper.RotA0_180, HexSymmOper.RotA2_180, HexSymmOper.RotA4_180],
+
+                // 6/mmm (D6h): 全操作
+                27 => [HexSymmOper.Identity, HexSymmOper.RotZ60, HexSymmOper.RotZ120,
                        HexSymmOper.RotZ180, HexSymmOper.RotZ240, HexSymmOper.RotZ300,
-                       HexSymmOper.MirrorA1, HexSymmOper.MirrorA2, HexSymmOper.MirrorA3,
-                       HexSymmOper.MirrorA4, HexSymmOper.MirrorA5, HexSymmOper.MirrorA6,
+                       HexSymmOper.MirrorA0, HexSymmOper.MirrorA1, HexSymmOper.MirrorA2,
+                       HexSymmOper.MirrorA3, HexSymmOper.MirrorA4, HexSymmOper.MirrorA5,
                        HexSymmOper.MirrorZ, HexSymmOper.RotZ60MirrorZ, HexSymmOper.RotZ120MirrorZ,
                        HexSymmOper.Inversion, HexSymmOper.RotZ240MirrorZ, HexSymmOper.RotZ300MirrorZ,
-                       HexSymmOper.MirrorA1MirrorZ, HexSymmOper.MirrorA2MirrorZ, HexSymmOper.MirrorA3MirrorZ,
-                       HexSymmOper.MirrorA4MirrorZ, HexSymmOper.MirrorA5MirrorZ, HexSymmOper.MirrorA6MirrorZ],
+                       HexSymmOper.RotA0_180, HexSymmOper.RotA1_180, HexSymmOper.RotA2_180,
+                       HexSymmOper.RotA3_180, HexSymmOper.RotA4_180, HexSymmOper.RotA5_180],
                 _ => [HexSymmOper.Identity],
+                #endregion
             };
 
         /// <summary>
@@ -935,33 +982,31 @@ namespace Crystallography
                 HexSymmOper.RotZ180 => (sphere, -u, -v),
                 HexSymmOper.RotZ240 => (sphere, v, -u - v),
                 HexSymmOper.RotZ300 => (sphere, u + v, -u),
-                HexSymmOper.MirrorA1 => (sphere, v, u),
-                HexSymmOper.MirrorA2 => (sphere, -v, -u),
-                HexSymmOper.MirrorA3 => (sphere, -u - v, v),
-                HexSymmOper.MirrorA4 => (sphere, u + v, -v),
-                HexSymmOper.MirrorA5 => (sphere, u, -u - v),
-                HexSymmOper.MirrorA6 => (sphere, -u, u + v),
+                HexSymmOper.MirrorA0 => (sphere, -u - v, v),      // ⊥ 0° → 鏡映線 90°
+                HexSymmOper.MirrorA1 => (sphere, -v, -u),         // ⊥ 30° → 鏡映線 120°
+                HexSymmOper.MirrorA2 => (sphere, u, -u - v),      // ⊥ 60° → 鏡映線 150°
+                HexSymmOper.MirrorA3 => (sphere, u + v, -v),      // ⊥ 90° → 鏡映線 0°
+                HexSymmOper.MirrorA4 => (sphere, v, u),            // ⊥ 120° → 鏡映線 30°
+                HexSymmOper.MirrorA5 => (sphere, -u, u + v),      // ⊥ 150° → 鏡映線 60°
                 HexSymmOper.MirrorZ => (1 - sphere, u, v),
                 HexSymmOper.RotZ60MirrorZ => (1 - sphere, -v, u + v),
                 HexSymmOper.RotZ120MirrorZ => (1 - sphere, -u - v, u),
                 HexSymmOper.Inversion => (1 - sphere, -u, -v),
                 HexSymmOper.RotZ240MirrorZ => (1 - sphere, v, -u - v),
                 HexSymmOper.RotZ300MirrorZ => (1 - sphere, u + v, -u),
-                HexSymmOper.MirrorA1MirrorZ => (1 - sphere, v, u),
-                HexSymmOper.MirrorA2MirrorZ => (1 - sphere, -v, -u),
-                HexSymmOper.MirrorA3MirrorZ => (1 - sphere, -u - v, v),
-                HexSymmOper.MirrorA4MirrorZ => (1 - sphere, u + v, -v),
-                HexSymmOper.MirrorA5MirrorZ => (1 - sphere, u, -u - v),
-                HexSymmOper.MirrorA6MirrorZ => (1 - sphere, -u, u + v),
+                HexSymmOper.RotA0_180 => (1 - sphere, u + v, -v),  // 0°
+                HexSymmOper.RotA1_180 => (1 - sphere, v, u),       // 30°
+                HexSymmOper.RotA2_180 => (1 - sphere, -u, u + v),  // 60°
+                HexSymmOper.RotA3_180 => (1 - sphere, -u - v, v),  // 90°
+                HexSymmOper.RotA4_180 => (1 - sphere, -v, -u),     // 120°
+                HexSymmOper.RotA5_180 => (1 - sphere, u, -u - v),  // 150°
                 _ => (sphere, u, v),
             };
 
             return Sphere * hemisphereLength + HexLinearIndex(U, V, N);
         }
 
-        #endregion
-
-        #region 六方格子 Rosca-Lambert 変換 (260331Cl 追加)
+        // --- 六方格子 Rosca-Lambert 変換 ---
 
         // EMsoft Lambert.f90 / constants.f90 由来の定数
         static readonly double Hex_srt = Math.Sqrt(3.0) / 2.0;                               // sqrt(3)/2
@@ -1099,24 +1144,24 @@ namespace Crystallography
         /// <summary>
         /// 六方格子の直交座標 (hx, hy) を球面方向に変換する。260331Cl 追加
         /// </summary>
-        public static Vector3DBase HexRoscaLambertToSphere(double hx, double hy, EbsdMasterPatternHemisphere hemisphere)
+        public static Vector3DBase RoscaLambertToSphereHexSquare(double hx, double hy, Hemisphere hemisphere)
         {
             if (Math.Abs(hx) < 1e-15 && Math.Abs(hy) < 1e-15)
-                return hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? new Vector3DBase(0, 0, 1) : new Vector3DBase(0, 0, -1);
+                return hemisphere == Hemisphere.PositiveZ ? new Vector3DBase(0, 0, 1) : new Vector3DBase(0, 0, -1);
 
             var (A, B) = HexagonToDisk(hx, hy);
 
             // 円盤 → 球面 (Lambert 逆投影、正方格子版と同一)
             double rho2 = A * A + B * B;
             double radialScale = Math.Sqrt(Math.Max(0.0, 1.0 - rho2 / 4.0));
-            double z = hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? 1.0 - rho2 / 2.0 : -1.0 + rho2 / 2.0;
+            double z = hemisphere == Hemisphere.PositiveZ ? 1.0 - rho2 / 2.0 : -1.0 + rho2 / 2.0;
             return new Vector3DBase(radialScale * A, radialScale * B, z);
         }
 
         /// <summary>
         /// 球面方向を六方格子の直交座標 (hx, hy) に逆変換する。260331Cl 追加
         /// </summary>
-        public static (double hx, double hy) SphereToHexRoscaLambert(double x, double y, double z)
+        public static (double hx, double hy) SphereToRoscaLambertHex(double x, double y, double z)
         {
             double len = Math.Sqrt(x * x + y * y + z * z);
             if (len < 1e-15)
@@ -1126,8 +1171,7 @@ namespace Crystallography
             // 球面 → 円盤 (Lambert 投影)
             double absZ = Math.Abs(z);
             double q = Math.Sqrt(Math.Max(0.0, 2.0 / (1.0 + absZ)));
-            double A = q * x;
-            double B = q * y;
+            double A = q * x, B = q * y;
 
             return DiskToHexagon(A, B);
         }
@@ -1136,7 +1180,7 @@ namespace Crystallography
         /// 六方格子の各有効セル中心に対応する出射方向を生成する。260331Cl 追加
         /// 無効セル (|u+v| > N) には null を格納する。
         /// </summary>
-        public static Vector3DBase[] CreateDirectionsHex(int gridSize, EbsdMasterPatternHemisphere hemisphere)
+        public static Vector3DBase[] CreateDirectionsHex(int gridSize, Hemisphere hemisphere)
         {
             int N = (gridSize - 1) / 2;
             double spacing = HexSpacing(N);
@@ -1151,7 +1195,7 @@ namespace Crystallography
                         continue;
                     }
                     var (hx, hy) = HexAxialToCartesian(u, v, spacing);
-                    directions[idx] = HexRoscaLambertToSphere(hx, hy, hemisphere);
+                    directions[idx] = RoscaLambertToSphereHexSquare(hx, hy, hemisphere);
                 }
             return directions;
         }
@@ -1189,14 +1233,14 @@ namespace Crystallography
             if (fu + fv >= 0)
             {
                 if (fu >= 0 && fv >= 0) { u1 = ru + 1; v1 = rv; u2 = ru; v2 = rv + 1; }        // sextant 0: e_u 方向と e_v 方向
-                else if (fu >= 0)       { u1 = ru + 1; v1 = rv; u2 = ru + 1; v2 = rv - 1; }     // sextant 5: e_u 方向と e_u-e_v 方向
-                else                    { u1 = ru; v1 = rv + 1; u2 = ru - 1; v2 = rv + 1; }     // sextant 1: e_v 方向と -e_u+e_v 方向
+                else if (fu >= 0) { u1 = ru + 1; v1 = rv; u2 = ru + 1; v2 = rv - 1; }     // sextant 5: e_u 方向と e_u-e_v 方向
+                else { u1 = ru; v1 = rv + 1; u2 = ru - 1; v2 = rv + 1; }     // sextant 1: e_v 方向と -e_u+e_v 方向
             }
             else
             {
                 if (fu <= 0 && fv <= 0) { u1 = ru - 1; v1 = rv; u2 = ru; v2 = rv - 1; }        // sextant 3: -e_u 方向と -e_v 方向
-                else if (fu <= 0)       { u1 = ru - 1; v1 = rv; u2 = ru - 1; v2 = rv + 1; }     // sextant 2: -e_u 方向と -e_u+e_v 方向
-                else                    { u1 = ru; v1 = rv - 1; u2 = ru + 1; v2 = rv - 1; }     // sextant 4: -e_v 方向と e_u-e_v 方向
+                else if (fu <= 0) { u1 = ru - 1; v1 = rv; u2 = ru - 1; v2 = rv + 1; }     // sextant 2: -e_u 方向と -e_u+e_v 方向
+                else { u1 = ru; v1 = rv - 1; u2 = ru + 1; v2 = rv - 1; }     // sextant 4: -e_v 方向と e_u-e_v 方向
             }
 
             // バリセントリック重み: 三角形 (ru,rv)-(u1,v1)-(u2,v2) 内の点 (uf, vf) の重み
@@ -1285,6 +1329,30 @@ namespace Crystallography
         }
 
         /// <summary>
+        /// 六方格子の plane データを六方格子座標系のまま N×N 正方画像に描画する。260331Cl 追加
+        /// N = gridSize とし、六方格子の最大対角線（2×Hex_preg）が画像幅に収まるようにする。
+        /// 六方格子領域外のピクセルは 0 になる。
+        /// </summary>
+        public static float[] RenderHexPlaneToImage(float[] hexPlane, int gridSize)
+        {
+            if (hexPlane == null || hexPlane.Length != gridSize * gridSize || gridSize <= 1)
+                return new float[gridSize * gridSize];
+
+            int N = (gridSize - 1) / 2;
+            double extent = Hex_preg; // 六方格子の外接円半径 = 最大対角線の半分
+            double step = 2.0 * extent / gridSize;
+            var image = new float[gridSize * gridSize];
+            for (int py = 0; py < gridSize; py++)
+                for (int px = 0; px < gridSize; px++)
+                {
+                    double hx = -extent + (px + 0.5) * step;
+                    double hy = extent - (py + 0.5) * step; // Y 軸は画面上方が正
+                    image[py * gridSize + px] = InterpolatePlaneHex(hexPlane, gridSize, hx, hy);
+                }
+            return image;
+        }
+
+        /// <summary>
         /// 六方格子の plane データを正方格子にリサンプリングする。260331Cl 追加
         /// 出力は gridSize × gridSize の正方 Rosca-Lambert 座標系。
         /// </summary>
@@ -1301,8 +1369,8 @@ namespace Crystallography
                     double a = -SquareLimit + (w + 0.5) * step;
                     double b = SquareLimit - (h + 0.5) * step;
                     // 正方格子座標 → 球面方向 → 六方格子座標 → 補間
-                    var dir = RoscaLambertToSphere(a, b, EbsdMasterPatternHemisphere.PositiveZ);
-                    var (hx, hy) = SphereToHexRoscaLambert(dir.X, dir.Y, dir.Z);
+                    var dir = RoscaLambertToSphereSquare(a, b, Hemisphere.PositiveZ);
+                    var (hx, hy) = SphereToRoscaLambertHex(dir.X, dir.Y, dir.Z);
                     squarePlane[h * gridSize + w] = InterpolatePlaneHex(hexPlane, gridSize, hx, hy);
                 }
             return squarePlane;
@@ -1311,14 +1379,6 @@ namespace Crystallography
         #endregion
     }
 
-    /// <summary>
-    /// MasterPattern が対応する半球。
-    /// </summary>
-    public enum EbsdMasterPatternHemisphere { NegativeZ = -1, PositiveZ = 1, }
 
-    /// <summary>
-    /// MasterPattern の格子タイプ。260331Cl 追加
-    /// </summary>
-    public enum EbsdMasterPatternGridType { Square, Hexagonal }
 }
 

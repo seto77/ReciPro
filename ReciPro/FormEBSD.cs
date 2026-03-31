@@ -35,12 +35,13 @@ public partial class FormEBSD : CaptureFormBase
     private readonly Timer timer = new();
 
     private readonly EBSD masterPatternEbsd = new(); // (260321Ch) MasterPattern build の実行ロジックは Crystallography.EBSD 側へ移す
-    private EbsdMasterPattern MasterPattern => masterPatternEbsd.MasterPattern; // (260321Ch)
+    private MasterPattern MasterPattern => masterPatternEbsd.MasterPattern; // (260321Ch)
     private PseudoBitmap masterPattern2DBitmap = null; // (260322Ch) ScalablePictureBoxAdvanced 2D に渡す MasterPattern2D 画像
     private double[] masterPattern2DValues = []; // (260322Ch) 旧名: masterPattern2DPreviewValues。MasterPattern2D に現在表示している強度配列を保持する
     private double[] masterPattern3DValuesPositive = []; // (260322Ch) 旧名: masterPattern3DPreviewValuesPositive。MasterPattern3D 用の +Z 半球強度を保持する
     private double[] masterPattern3DValuesNegative = []; // (260322Ch) 旧名: masterPattern3DPreviewValuesNegative。MasterPattern3D 用の -Z 半球強度を保持する
     private int masterPattern3DCacheGridSize = 0; // (260322Ch) 旧名: masterPattern3DPreviewGridSize。0 は有効な MasterPattern3D キャッシュが未作成であることを示す
+    private MasterPattern.Types masterPattern3DCacheGridType = MasterPattern.Types.Square; // 260331Cl
     private long masterPatternMonteCarloElapsedMilliseconds = 0; // (260327Ch) MasterPattern build 前段の MC + fitting の経過時間
 
     private EbsdMonteCarloDistribution mcDistribution = null; // 260325Cl 追加: MC フィッティング結果
@@ -919,7 +920,12 @@ public partial class FormEBSD : CaptureFormBase
         //サンプルの傾き
         double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
 
-        var monte = new MonteCarlo(Z, A, ρ, energy, SmpTilt, EnergyThreshold);
+        var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
+            cry.Atoms.Select(a => (a.AtomicNumber, AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity))); // (260331Ch) Jablonski/TPP-2M 用の平均 Nv
+        var monte = new MonteCarlo(Z, A, ρ, energy, SmpTilt, EnergyThreshold,
+            elasticScatteringModel: MonteCarloElasticScatteringModel.MottNistSampler2023,
+            valenceElectronCount: valenceElectronCount,
+            atoms: cry.Atoms); // (260331Ch) 元素組成込みの Mott/NIST sampler
 
         //飛程計算ループ
         sw1.Restart();
@@ -1251,7 +1257,7 @@ public partial class FormEBSD : CaptureFormBase
     private int ebsdCachedWidth = 0, ebsdCachedHeight = 0; // 260325Cl: PseudoBitmap 再生成判定用
     private int masterPatternCombinationModel = 2; // (260325Ch) 0=current, 1=globally normalized master, 2=absolute MC x differential master
     private double[] masterPatternGlobalNormalizationFactors = []; // (260325Ch) model 1 用。各 energy/depth slice の全球積算強度を 1 にそろえる係数
-    private EbsdMasterPattern masterPatternGlobalNormalizationSource = null; // (260325Ch) 現在の model 1 規格化係数が対応している MasterPattern
+    private MasterPattern masterPatternGlobalNormalizationSource = null; // (260325Ch) 現在の model 1 規格化係数が対応している MasterPattern
 
     // 260325Cl 追加: ピクセルごとの MasterPattern 参照テーブル (エネルギー・深さに依存しない)
     // 正方格子: idx[i] = 左上グリッドインデックス, wt[i*2] = fw, wt[i*2+1] = fh, posZ[i] = 半球
@@ -1260,7 +1266,7 @@ public partial class FormEBSD : CaptureFormBase
     private float[] ebsdLookupWt = [];
     private bool[] ebsdLookupPosZ = [];
     private int ebsdLookupGridSize; // 260325Cl: Apply で idx+gridSize の復元に使用
-    private bool ebsdLookupIsHex; // 260331Cl: 六方格子モードかどうか
+    private MasterPattern.Types ebsdLookupGridType; // 260331Cl: 六方格子モードかどうか
 
     // 260325Cl 追加: DetTilt/SmpTilt 由来の回転係数キャッシュ (tilt 変更時のみ再計算)
     private double ebsdYCoeffPy, ebsdZCoeffPy, ebsdYConst, ebsdZConst;
@@ -1283,12 +1289,12 @@ public partial class FormEBSD : CaptureFormBase
     private unsafe void BuildEbsdLookupTable(int width, int height) // 260325Cl: unsafe 化
     {
         var totalPixels = width * height;
-        var isHex = MasterPattern.GridType == EbsdMasterPatternGridType.Hexagonal; // 260331Cl
-        ebsdLookupIsHex = isHex; // 260331Cl
+        ebsdLookupGridType = MasterPattern.GridType; // 260331Cl
+        var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
         // 260331Cl: 六方格子は 3 idx + 3 wt/pixel、正方格子は 1 idx + 2 wt/pixel
-        var idxCount = isHex ? totalPixels * 3 : totalPixels;
-        var wtCount = isHex ? totalPixels * 3 : totalPixels * 2;
+        var idxCount = isHexGrid ? totalPixels * 3 : totalPixels;
+        var wtCount = isHexGrid ? totalPixels * 3 : totalPixels * 2;
         if (ebsdLookupIdx.Length != idxCount)
         {
             ebsdLookupIdx = new int[idxCount];
@@ -1328,7 +1334,7 @@ public partial class FormEBSD : CaptureFormBase
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
 
-            if (isHex) // 260331Cl: 六方格子パス
+            if (isHexGrid) // 260331Cl: 六方格子パス
             {
                 var gs = gridSize; // Parallel.For のキャプチャ用ローカル
                 System.Threading.Tasks.Parallel.For(0, height, h =>
@@ -1346,8 +1352,8 @@ public partial class FormEBSD : CaptureFormBase
                         pPosZ0[i] = nz >= 0;
 
                         // 球面→六方格子
-                        var (hx, hy) = EbsdMasterPattern.SphereToHexRoscaLambert(nx, ny, Math.Abs(nz));
-                        EbsdMasterPattern.GetHexBarycentricLookup(hx, hy, gs,
+                        var (hx, hy) = MasterPattern.SphereToRoscaLambertHex(nx, ny, Math.Abs(nz));
+                        MasterPattern.GetHexBarycentricLookup(hx, hy, gs,
                             out int idx0, out int idx1, out int idx2,
                             out float bw0, out float bw1, out float bw2);
 
@@ -1361,7 +1367,7 @@ public partial class FormEBSD : CaptureFormBase
             }
             else // 正方格子パス (既存)
             {
-                var sqLim = EbsdMasterPattern.SquareLimit;
+                var sqLim = MasterPattern.SquareLimit;
                 var invStep = gridSize / (2.0 * sqLim);
                 var inv_PI = 1.0 / Math.PI;
                 var gridMax = gridSize - 1;
@@ -1425,7 +1431,7 @@ public partial class FormEBSD : CaptureFormBase
         if (posPlane == null && negPlane == null) return;
 
         var gs = ebsdLookupGridSize;
-        var isHex = ebsdLookupIsHex; // 260331Cl
+        var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
@@ -1439,7 +1445,7 @@ public partial class FormEBSD : CaptureFormBase
             var hasPos = posPlane != null && posPlane.Length > 0;
             var hasNeg = negPlane != null && negPlane.Length > 0;
 
-            if (isHex) // 260331Cl: 六方格子パス — 3 近傍バリセントリック補間
+            if (isHexGrid) // 260331Cl: 六方格子パス — 3 近傍バリセントリック補間
             {
                 System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
                 {
@@ -1518,7 +1524,7 @@ public partial class FormEBSD : CaptureFormBase
 
         var gs = ebsdLookupGridSize;
         var scaleFactor = planeScaleFactor;
-        var isHex = ebsdLookupIsHex; // 260331Cl
+        var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
@@ -1532,7 +1538,7 @@ public partial class FormEBSD : CaptureFormBase
             var hasPos = posPlane != null && posPlane.Length > 0;
             var hasNeg = negPlane != null && negPlane.Length > 0;
 
-            if (isHex) // 260331Cl
+            if (isHexGrid) // 260331Cl
             {
                 System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
                 {
@@ -1571,7 +1577,7 @@ public partial class FormEBSD : CaptureFormBase
         if (posPlane == null && negPlane == null) return;
 
         var gs = ebsdLookupGridSize;
-        var isHex = ebsdLookupIsHex; // 260331Cl
+        var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
@@ -1589,7 +1595,7 @@ public partial class FormEBSD : CaptureFormBase
             var hasPosPrev = posPlanePrevious != null && posPlanePrevious.Length > 0;
             var hasNegPrev = negPlanePrevious != null && negPlanePrevious.Length > 0;
 
-            if (isHex) // 260331Cl
+            if (isHexGrid) // 260331Cl
             {
                 System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
                 {
@@ -1655,7 +1661,7 @@ public partial class FormEBSD : CaptureFormBase
         fixed (double* pVal = values)
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
-            var isHexLocal = ebsdLookupIsHex; // 260331Cl
+            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
             System.Threading.Tasks.Parallel.For(0, height, h =>
             {
@@ -1693,7 +1699,7 @@ public partial class FormEBSD : CaptureFormBase
                     // 全エネルギー・深さで加重合計
                     double sum = 0;
 
-                    if (isHexLocal) // 260331Cl: 六方格子
+                    if (isHexGrid) // 260331Cl: 六方格子
                     {
                         int i3 = i * 3;
                         int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
@@ -1706,8 +1712,8 @@ public partial class FormEBSD : CaptureFormBase
                                               + c01 * bw01[wIdx] + c11 * bw11[wIdx];
                                 if (weight < 1e-15) continue;
                                 var plane = posZ
-                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
                                 if (plane == null || plane.Length == 0) continue;
                                 sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]);
                             }
@@ -1727,8 +1733,8 @@ public partial class FormEBSD : CaptureFormBase
                                               + c01 * bw01[wIdx] + c11 * bw11[wIdx];
                                 if (weight < 1e-15) continue;
                                 var plane = posZ
-                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
                                 if (plane == null || plane.Length == 0) continue;
                                 double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
                                                  + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
@@ -1799,8 +1805,8 @@ public partial class FormEBSD : CaptureFormBase
             }
 
             var mp = MasterPattern;
-            var posPlane = mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, energyIndex, depthIndex);
-            var negPlane = mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, energyIndex, depthIndex);
+            var posPlane = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex);
+            var negPlane = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, energyIndex, depthIndex);
             var energy = MasterPattern.Energies[energyIndex];
             var depth = MasterPattern.Depths[depthIndex];
             switch (masterPatternCombinationModel)
@@ -1813,8 +1819,8 @@ public partial class FormEBSD : CaptureFormBase
                     statusText = $"EBSD from MasterPattern (model=1): E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
                     break;
                 case 2:
-                    var posPlanePrevious = depthIndex > 0 ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
-                    var negPlanePrevious = depthIndex > 0 ? mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
+                    var posPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
+                    var negPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
                     ApplyEbsdLookupSingleSliceModel2(ebsdValues, totalPixels, posPlane, negPlane, posPlanePrevious, negPlanePrevious);
                     statusText = $"EBSD from MasterPattern (model=2): E={energy:g} kV, depth slice={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
                     break;
@@ -1869,7 +1875,7 @@ public partial class FormEBSD : CaptureFormBase
         fixed (double* pVal = values)
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
-            var isHexLocal = ebsdLookupIsHex; // 260331Cl
+            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
             System.Threading.Tasks.Parallel.For(0, height, h =>
             {
@@ -1898,7 +1904,7 @@ public partial class FormEBSD : CaptureFormBase
                     bool posZ = pPosZ0[i];
 
                     double sum = 0;
-                    if (isHexLocal) // 260331Cl
+                    if (isHexGrid) // 260331Cl
                     {
                         int i3 = i * 3;
                         int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
@@ -1913,8 +1919,8 @@ public partial class FormEBSD : CaptureFormBase
                                 double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
                                 if (planeScaleFactor < 1e-30) continue;
                                 var plane = posZ
-                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
                                 if (plane == null || plane.Length == 0) continue;
                                 sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]) * planeScaleFactor;
                             }
@@ -1936,8 +1942,8 @@ public partial class FormEBSD : CaptureFormBase
                                 double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
                                 if (planeScaleFactor < 1e-30) continue;
                                 var plane = posZ
-                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
                                 if (plane == null || plane.Length == 0) continue;
                                 double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
                                                  + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
@@ -1970,7 +1976,7 @@ public partial class FormEBSD : CaptureFormBase
         fixed (double* pVal = values)
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
-            var isHexLocal = ebsdLookupIsHex; // 260331Cl
+            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
             System.Threading.Tasks.Parallel.For(0, height, h =>
             {
@@ -1999,7 +2005,7 @@ public partial class FormEBSD : CaptureFormBase
                     bool posZ = pPosZ0[i];
 
                     double sum = 0;
-                    if (isHexLocal) // 260331Cl
+                    if (isHexGrid) // 260331Cl
                     {
                         int i3 = i * 3;
                         int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
@@ -2012,13 +2018,13 @@ public partial class FormEBSD : CaptureFormBase
                                               + c01 * bw01[wIdx] + c11 * bw11[wIdx];
                                 if (weight < 1e-15) continue;
                                 var plane = posZ
-                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
                                 if (plane == null || plane.Length == 0) continue;
                                 var planePrevious = di > 0
                                     ? posZ
-                                        ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di - 1)
-                                        : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di - 1)
+                                        ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di - 1)
+                                        : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di - 1)
                                     : null;
                                 double intensity = hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2];
                                 if (planePrevious != null && planePrevious.Length > 0)
@@ -2041,13 +2047,13 @@ public partial class FormEBSD : CaptureFormBase
                                               + c01 * bw01[wIdx] + c11 * bw11[wIdx];
                                 if (weight < 1e-15) continue;
                                 var plane = posZ
-                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
                                 if (plane == null || plane.Length == 0) continue;
                                 var planePrevious = di > 0
                                     ? posZ
-                                        ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di - 1)
-                                        : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di - 1)
+                                        ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di - 1)
+                                        : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di - 1)
                                     : null;
                                 double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
                                                  + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
@@ -2184,6 +2190,8 @@ public partial class FormEBSD : CaptureFormBase
         double z = sum1 / sum2;
         double a = sum2 / sum3;
         double rho = cry.Density;
+        var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
+            cry.Atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260331Ch)
         double energy = Voltage;
         double sampleTilt = SmpTilt;
         double detectorTilt = DetTilt;
@@ -2206,7 +2214,10 @@ public partial class FormEBSD : CaptureFormBase
         progress.Report((0, "MonteCarlo"));
         var result = await Task.Run(() =>
         {
-            var monte = new MonteCarlo(z, a, rho, energy, sampleTilt, energyThreshold);
+            var monte = new MonteCarlo(z, a, rho, energy, sampleTilt, energyThreshold,
+                elasticScatteringModel: MonteCarloElasticScatteringModel.MottNistSampler2023,
+                valenceElectronCount: valenceElectronCount,
+                atoms: cry.Atoms); // (260331Ch)
             var bses = RunBackscatterMonteCarlo(monte, loop, energyThreshold, sampleRotation, (completed, total) =>
                 progress.Report(((int)Math.Round(90.0 * completed / total), "MonteCarlo"))); // (260327Ch) fitting 分を残して 90% まで使う
             if (bses.Length == 0)
@@ -2493,8 +2504,8 @@ public partial class FormEBSD : CaptureFormBase
     /// <summary>
     /// UI の hemisphere selector から、対応する enum 値を取得する。
     /// </summary>
-    private EbsdMasterPatternHemisphere GetSelectedMasterPattern2DHemisphere()
-        => comboBoxMasterPattern2DHemisphere.SelectedIndex == 1 ? EbsdMasterPatternHemisphere.NegativeZ : EbsdMasterPatternHemisphere.PositiveZ;
+    private MasterPattern.Hemisphere GetSelectedMasterPattern2DHemisphere()
+        => comboBoxMasterPattern2DHemisphere.SelectedIndex == 1 ? MasterPattern.Hemisphere.NegativeZ : MasterPattern.Hemisphere.PositiveZ;
 
     /// <summary>
     /// 現在の energy / depth trackbar の値を、表示用テキストへ反映する。
@@ -2519,8 +2530,8 @@ public partial class FormEBSD : CaptureFormBase
     /// <summary>
     /// hemisphere enum を UI 表示用の文字列へ変換する。
     /// </summary>
-    private static string GetHemisphereText(EbsdMasterPatternHemisphere hemisphere)
-        => hemisphere == EbsdMasterPatternHemisphere.PositiveZ ? "+Z hemisphere" : "-Z hemisphere";
+    private static string GetHemisphereText(MasterPattern.Hemisphere hemisphere)
+        => hemisphere == MasterPattern.Hemisphere.PositiveZ ? "+Z hemisphere" : "-Z hemisphere";
 
     #endregion
 
@@ -2580,26 +2591,23 @@ public partial class FormEBSD : CaptureFormBase
             return;
         }
 
-        // 260331Cl 六方格子の場合は表示用に正方格子へリサンプリングする
-        var isHexGrid = MasterPattern.GridType == EbsdMasterPatternGridType.Hexagonal;
-        var displayPlane = isHexGrid ? EbsdMasterPattern.ResampleHexToSquarePlane(plane, MasterPattern.GridSize) : plane;
-        var posPlane = MasterPattern.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, selectedEnergyIndex, selectedDepthIndex);
-        var negPlane = MasterPattern.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, selectedEnergyIndex, selectedDepthIndex);
-        var displayPosPlane = isHexGrid ? EbsdMasterPattern.ResampleHexToSquarePlane(posPlane, MasterPattern.GridSize) : posPlane;
-        var displayNegPlane = isHexGrid ? EbsdMasterPattern.ResampleHexToSquarePlane(negPlane, MasterPattern.GridSize) : negPlane;
-
-        var displayValues = CreateMasterPatternDisplayValues(displayPlane, MasterPattern.GridSize); // (260322Ch) 2D / 3D 描画で共有する正規化済み強度
-        var positiveDisplayValues = CreateMasterPatternDisplayValues(displayPosPlane, MasterPattern.GridSize); // (260321Ch) 3D 表示では +Z を常に描画する
-        var negativeDisplayValues = CreateMasterPatternDisplayValues(displayNegPlane, MasterPattern.GridSize); // (260321Ch) 3D 表示では -Z も常に描画する
+        // 260331Cl 2D: 六方格子座標系のまま表示、3D: 正方Lambert格子に変換して球面投影
+        var gridType = MasterPattern.GridType;
+        var displayPlane = gridType == MasterPattern.Types.Hexagonal ? MasterPattern.RenderHexPlaneToImage(plane, MasterPattern.GridSize) : plane;
+        var posPlane = MasterPattern.GetPlane(MasterPattern.Hemisphere.PositiveZ, selectedEnergyIndex, selectedDepthIndex); // (260331Ch) enum 名の取り残しを合わせてビルドを通す
+        var negPlane = MasterPattern.GetPlane(MasterPattern.Hemisphere.NegativeZ, selectedEnergyIndex, selectedDepthIndex); // (260331Ch)
+        var displayValues = CreateMasterPatternDisplayValues(displayPlane, MasterPattern.GridSize); // 260331Cl 2D 表示用
+        var positiveDisplayValues = CreateMasterPatternDisplayValues(posPlane, MasterPattern.GridSize); // 260331Cl 3D 球面用 (生データ)
+        var negativeDisplayValues = CreateMasterPatternDisplayValues(negPlane, MasterPattern.GridSize); // 260331Cl 3D 球面用 (生データ)
 
         var energy = MasterPattern.Energies[selectedEnergyIndex];
         var depth = MasterPattern.Depths[selectedDepthIndex];
-        // labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(MasterPattern.Hemisphere)}, E = {energy:g} kV, depth = {depth:g} nm"; // (260321Ch) 旧案: build 済み hemisphere が 1 つだけだった
         labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm";
-        masterPattern2DValues = displayValues; // (260322Ch) MasterPattern2D に表示している slice を保持する
-        masterPattern3DValuesPositive = positiveDisplayValues; // (260322Ch) MasterPattern3D では +Z 半球を常に使う
-        masterPattern3DValuesNegative = negativeDisplayValues; // (260322Ch) MasterPattern3D では -Z 半球も常に使う
+        masterPattern2DValues = displayValues; // 260331Cl 2D 表示キャッシュ (六方格子座標)
+        masterPattern3DValuesPositive = positiveDisplayValues; // 260331Cl 3D 球面キャッシュ
+        masterPattern3DValuesNegative = negativeDisplayValues; // 260331Cl 3D 球面キャッシュ
         masterPattern3DCacheGridSize = MasterPattern.GridSize; // (260322Ch)
+        masterPattern3DCacheGridType = gridType; // 260331Cl
         // SetMasterPattern2DBitmap(displayValues, MasterPattern.GridSize); // (260321Ch) 旧案: 2D preview のみ更新していた
         SetMasterPattern2DBitmap(displayValues, MasterPattern.GridSize); // (260322Ch)
         // DrawMasterPattern3D(displayValues, MasterPattern.GridSize, MasterPattern.Hemisphere, masterPattern2DBitmap); // (260321Ch) 旧案: 2D で選択した半球だけを 3D に描いていた
@@ -2639,6 +2647,7 @@ public partial class FormEBSD : CaptureFormBase
             masterPattern3DValuesPositive,
             masterPattern3DValuesNegative,
             masterPattern3DCacheGridSize,
+            masterPattern3DCacheGridType, // 260331Cl
             masterPattern2DBitmap); // (260322Ch) ScalablePictureBoxAdvanced 2D の見た目設定を OpenGL 側へ反映する
     }
 
@@ -2735,7 +2744,7 @@ public partial class FormEBSD : CaptureFormBase
     /// 正規化済みの MasterPattern 値から、Rosca-Lambert 球面 preview を再描画する。
     /// 3D 側は +Z / -Z の両半球を同時に表示する。
     /// </summary>
-    private void DrawMasterPattern3D(double[] positiveValues, double[] negativeValues, int gridSize, PseudoBitmap referenceBitmap) // (260322Ch) 旧名: DrawMasterPattern3DPreview
+    private void DrawMasterPattern3D(double[] positiveValues, double[] negativeValues, int gridSize, MasterPattern.Types gridType, PseudoBitmap referenceBitmap) // 260331Cl gridType 追加
     {
         if (glControlMasterPattern3D == null || gridSize <= 0)
             return;
@@ -2752,13 +2761,17 @@ public partial class FormEBSD : CaptureFormBase
         var glObjects = new List<GLObject>();
         if (positiveValues != null && positiveValues.Length == gridSize * gridSize)
         {
-            var positiveObject = CreateMasterPattern3DObject(positiveValues, gridSize, EbsdMasterPatternHemisphere.PositiveZ, referenceBitmap); // (260321Ch) 半球全体を 1 メッシュへまとめて描画する
+            var positiveObject = gridType == MasterPattern.Types.Hexagonal
+                ? CreateMasterPattern3DObjectHex(positiveValues, gridSize, MasterPattern.Hemisphere.PositiveZ, referenceBitmap)
+                : CreateMasterPattern3DObject(positiveValues, gridSize, MasterPattern.Hemisphere.PositiveZ, referenceBitmap);
             if (positiveObject != null)
                 glObjects.Add(positiveObject);
         }
         if (negativeValues != null && negativeValues.Length == gridSize * gridSize)
         {
-            var negativeObject = CreateMasterPattern3DObject(negativeValues, gridSize, EbsdMasterPatternHemisphere.NegativeZ, referenceBitmap); // (260321Ch)
+            var negativeObject = gridType == MasterPattern.Types.Hexagonal
+                ? CreateMasterPattern3DObjectHex(negativeValues, gridSize, MasterPattern.Hemisphere.NegativeZ, referenceBitmap)
+                : CreateMasterPattern3DObject(negativeValues, gridSize, MasterPattern.Hemisphere.NegativeZ, referenceBitmap);
             if (negativeObject != null)
                 glObjects.Add(negativeObject);
         }
@@ -2792,14 +2805,14 @@ public partial class FormEBSD : CaptureFormBase
     /// Rosca-Lambert 等積正方形の強度分布を、球面上の三角形メッシュへ変換する。
     /// 以前のようにセルごとに GLObject を分けず、半球ごとに 1 メッシュへまとめて描画負荷を下げる。
     /// </summary>
-    private static GLObject CreateMasterPattern3DObject(double[] values, int gridSize, EbsdMasterPatternHemisphere hemisphere, PseudoBitmap referenceBitmap)
+    private static GLObject CreateMasterPattern3DObject(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
     {
         var previewGrid = gridSize; // (260322Ch) メッシュ描画で十分高速なので元の格子サイズをそのまま使う
         var previewValues = values; // (260322Ch)
         if (previewGrid <= 0 || previewValues.Length != previewGrid * previewGrid)
             return null; // (260321Ch)
 
-        var squareLimit = EbsdMasterPattern.SquareLimit;
+        var squareLimit = MasterPattern.SquareLimit;
         var step = 2.0 * squareLimit / previewGrid;
         int vertexGrid = previewGrid + 1;
         var positions = GC.AllocateUninitializedArray<V3>(vertexGrid * vertexGrid);
@@ -2812,7 +2825,7 @@ public partial class FormEBSD : CaptureFormBase
             {
                 var a = -squareLimit + x * step;
                 int index = rowOffset + x;
-                positions[index] = EbsdMasterPattern.RoscaLambertToSphere(a, b, hemisphere).ToOpenTK(); // (260321Ch)
+                positions[index] = MasterPattern.RoscaLambertToSphereSquare(a, b, hemisphere).ToOpenTK(); // (260321Ch)
                 var value = GetMasterPattern3DVertexValue(previewValues, previewGrid, x, y); // (260321Ch) 頂点色は隣接セル平均で滑らかにつなぐ
                 argbs[index] = GetMasterPattern3DColor(value, referenceBitmap).ToArgb();
             }
@@ -2841,6 +2854,78 @@ public partial class FormEBSD : CaptureFormBase
 
         // return new ColoredSurfaceMesh(positions, argbs, indices, CreateMasterPattern3DMaterial(C4.White), DrawingMode.Surfaces) { IgnoreNormalSides = true };// (260321Ch) 旧実装: material 生成を helper へ切り出していた
         return new ColoredSurfaceMesh(positions, argbs, indices, new Material(C4.White) { Emission = 1f, Ambient = 0f, Diffuse = 0f, Specular = 0f, SpecularPower = 1f, }, DrawingMode.Surfaces) { IgnoreNormalSides = true };// (260322Ch) 呼び出し元が 1 箇所だけなので material 生成はインライン展開する
+    }
+
+    /// <summary>
+    /// 六方格子の plane データを六方 Lambert 座標系のまま球面メッシュに変換する。260331Cl 追加
+    /// セル中心を頂点とし、隣接 3 セルで三角形を構成する。
+    /// </summary>
+    private static GLObject CreateMasterPattern3DObjectHex(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
+    {
+        if (gridSize <= 1 || values == null || values.Length != gridSize * gridSize)
+            return null;
+
+        int N = (gridSize - 1) / 2;
+        double spacing = MasterPattern.HexSpacing(N);
+
+        // 頂点: 有効な六方格子セル中心 → 球面座標
+        // vertexMap[linearIndex] → 頂点配列中の index (-1 なら無効セル)
+        var vertexMap = new int[gridSize * gridSize];
+        Array.Fill(vertexMap, -1);
+        var positionList = new List<V3>();
+        var argbList = new List<int>();
+
+        for (int v = -N; v <= N; v++)
+            for (int u = -N; u <= N; u++)
+            {
+                if (!MasterPattern.IsValidHexCell(u, v, N))
+                    continue;
+                int linIdx = MasterPattern.HexLinearIndex(u, v, N);
+                var (hx, hy) = MasterPattern.HexAxialToCartesian(u, v, spacing);
+                var spherePos = MasterPattern.RoscaLambertToSphereHexSquare(hx, hy, hemisphere);
+                vertexMap[linIdx] = positionList.Count;
+                positionList.Add(spherePos.ToOpenTK());
+                var value = linIdx < values.Length ? values[linIdx] : 0;
+                argbList.Add(GetMasterPattern3DColor(value, referenceBitmap).ToArgb());
+            }
+
+        if (positionList.Count == 0)
+            return null;
+
+        // 三角形: 菱形 (u,v)-(u+1,v)-(u,v+1)-(u+1,v+1) を 2 三角形に分割
+        var indexList = new List<uint>();
+        for (int v = -N; v <= N - 1; v++)
+            for (int u = -N; u <= N - 1; u++)
+            {
+                int i00 = MasterPattern.IsValidHexCell(u, v, N) ? vertexMap[MasterPattern.HexLinearIndex(u, v, N)] : -1;
+                int i10 = MasterPattern.IsValidHexCell(u + 1, v, N) ? vertexMap[MasterPattern.HexLinearIndex(u + 1, v, N)] : -1;
+                int i01 = MasterPattern.IsValidHexCell(u, v + 1, N) ? vertexMap[MasterPattern.HexLinearIndex(u, v + 1, N)] : -1;
+                int i11 = MasterPattern.IsValidHexCell(u + 1, v + 1, N) ? vertexMap[MasterPattern.HexLinearIndex(u + 1, v + 1, N)] : -1;
+
+                // 上三角形: (u,v), (u+1,v), (u,v+1)
+                if (i00 >= 0 && i10 >= 0 && i01 >= 0)
+                {
+                    indexList.Add((uint)i00);
+                    indexList.Add((uint)i10);
+                    indexList.Add((uint)i01);
+                }
+                // 下三角形: (u+1,v), (u+1,v+1), (u,v+1)
+                if (i10 >= 0 && i11 >= 0 && i01 >= 0)
+                {
+                    indexList.Add((uint)i10);
+                    indexList.Add((uint)i11);
+                    indexList.Add((uint)i01);
+                }
+            }
+
+        if (indexList.Count == 0)
+            return null;
+
+        return new ColoredSurfaceMesh(
+            positionList.ToArray(), argbList.ToArray(), indexList.ToArray(),
+            new Material(C4.White) { Emission = 1f, Ambient = 0f, Diffuse = 0f, Specular = 0f, SpecularPower = 1f },
+            DrawingMode.Surfaces)
+        { IgnoreNormalSides = true };
     }
 
     /// <summary>
