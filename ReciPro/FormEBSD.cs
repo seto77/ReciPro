@@ -598,7 +598,7 @@ public partial class FormEBSD : CaptureFormBase
                         graphics.DrawLines(penExcess, pts.ToArray());
 
                         //ラベル描画
-                        //if (toolStripButtonIndexLabels.Checked)
+                        if (checkBoxShowGIndices.Checked) // 260331Cl checkBoxShowGIndices で制御
                         {
                             //まず傾きをみて線のどちら側にラベルを付けるかを決める。θは -π ~ +πの範囲で調節
                             var original = graphics.Transform;
@@ -619,6 +619,70 @@ public partial class FormEBSD : CaptureFormBase
                     }
                 }
             }
+        }
+
+        // 260331Cl 追加: 晶帯軸ラベルをバンド交点に表示
+        if (checkBoxShowZoneAxisIndices.Checked && checkBoxDrawKikuchiLinesKinematical.Checked && Crystal.VectorOfG_KikuchiLine.Count >= 2)
+        {
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            var fontZA = new Font("Tahoma", (float)(trackBarStrSize.Value / 8.0 * Resolution * 0.85));
+            var brushZA = new SolidBrush(Color.FromArgb(220, colorControlString.Color));
+            var Tau = numericBoxDetTilt.RadianValue - numericBoxSampleTilt.RadianValue;
+            var rot = Crystal.RotationMatrix;
+            var rotTau = Matrix3D.Rot(new Vector3DBase(1, 0, 0), -Tau);
+
+            var drawnZoneAxes = new HashSet<(int, int, int)>();
+            var gList = Crystal.VectorOfG_KikuchiLine;
+            for (int ii = 0; ii < gList.Count - 1; ii++)
+                for (int jj = ii + 1; jj < gList.Count; jj++)
+                {
+                    var g1 = gList[ii]; var g2 = gList[jj];
+                    // g ベクトルの外積 → 晶帯軸方向（直交座標系、回転前）
+                    var cross = Vector3DBase.VectorProduct(g1, g2);
+                    if (cross.Length2 < 1e-20) continue;
+
+                    // 指数 [uvw] を求める: cross (直交座標) = u*A_Axis + v*B_Axis + w*C_Axis
+                    // → (u,v,w) = MatrixReal⁻¹ * cross = MatrixInverse * cross
+                    var uvwVec = Crystal.MatrixInverse * cross;
+                    double maxComp = Math.Max(Math.Max(Math.Abs(uvwVec.X), Math.Abs(uvwVec.Y)), Math.Abs(uvwVec.Z));
+                    if (maxComp < 1e-10) continue;
+                    double scale = 1.0 / maxComp;
+                    int bestU = 0, bestV = 0, bestW = 0;
+                    double bestError = double.MaxValue;
+                    for (int m = 1; m <= 12; m++)
+                    {
+                        double su = uvwVec.X * scale * m, sv = uvwVec.Y * scale * m, sw = uvwVec.Z * scale * m;
+                        int ru2 = (int)Math.Round(su), rv2 = (int)Math.Round(sv), rw2 = (int)Math.Round(sw);
+                        double err = Math.Abs(su - ru2) + Math.Abs(sv - rv2) + Math.Abs(sw - rw2);
+                        if (err < bestError) { bestError = err; bestU = ru2; bestV = rv2; bestW = rw2; }
+                        if (err < 0.05) break;
+                    }
+                    if (bestU == 0 && bestV == 0 && bestW == 0) continue;
+                    static int Gcd(int a, int b) { a = Math.Abs(a); b = Math.Abs(b); while (b != 0) { (a, b) = (b, a % b); } return a; }
+                    int gcd = Gcd(Gcd(Math.Abs(bestU), Math.Abs(bestV)), Math.Abs(bestW));
+                    if (gcd > 1) { bestU /= gcd; bestV /= gcd; bestW /= gcd; }
+                    if (bestU < 0 || (bestU == 0 && bestV < 0) || (bestU == 0 && bestV == 0 && bestW < 0))
+                    { bestU = -bestU; bestV = -bestV; bestW = -bestW; }
+                    if (drawnZoneAxes.Contains((bestU, bestV, bestW))) continue;
+                    drawnZoneAxes.Add((bestU, bestV, bestW));
+
+                    // 晶帯軸方向を検出器座標に投影（実空間ベクトルを使用）
+                    var zoneAxisReal = bestU * Crystal.A_Axis + bestV * Crystal.B_Axis + bestW * Crystal.C_Axis;
+                    var dir = rotTau * (rot * zoneAxisReal);
+                    if (dir.Z < 0) dir = -dir; // 検出器に向く方を選択
+                    if (dir.Z < 1e-15) continue;
+
+                    // 中心投影: EBSD は試料側から見た図形なので X 方向を反転 (BuildEbsdLookupTable の ax = -Ri.E11 と整合)
+                    double detX = -CameraLength2 * dir.X / dir.Z;
+                    double detY2 = CameraLength2 * dir.Y / dir.Z;
+
+                    var ptZA = new PointD(detX, detY2);
+                    if (!IsScreenArea(ptZA, -20)) continue;
+
+                    string label = $"[{bestU} {bestV} {bestW}]";
+                    var size = graphics.MeasureString(label, fontZA);
+                    graphics.DrawString(label, fontZA, brushZA, new PointF((float)ptZA.X - size.Width / 2, (float)ptZA.Y - size.Height / 2));
+                }
         }
 
         if (checkBoxDrawDetectorOutline.Checked)
@@ -1190,11 +1254,13 @@ public partial class FormEBSD : CaptureFormBase
     private EbsdMasterPattern masterPatternGlobalNormalizationSource = null; // (260325Ch) 現在の model 1 規格化係数が対応している MasterPattern
 
     // 260325Cl 追加: ピクセルごとの MasterPattern 参照テーブル (エネルギー・深さに依存しない)
-    // idx[i] = 左上グリッドインデックス, wt[i*2] = fw, wt[i*2+1] = fh, posZ[i] = 半球
+    // 正方格子: idx[i] = 左上グリッドインデックス, wt[i*2] = fw, wt[i*2+1] = fh, posZ[i] = 半球
+    // 六方格子: idx[i*3..i*3+2] = 3近傍インデックス, wt[i*3..i*3+2] = バリセントリック重み (260331Cl)
     private int[] ebsdLookupIdx = [];
     private float[] ebsdLookupWt = [];
     private bool[] ebsdLookupPosZ = [];
     private int ebsdLookupGridSize; // 260325Cl: Apply で idx+gridSize の復元に使用
+    private bool ebsdLookupIsHex; // 260331Cl: 六方格子モードかどうか
 
     // 260325Cl 追加: DetTilt/SmpTilt 由来の回転係数キャッシュ (tilt 変更時のみ再計算)
     private double ebsdYCoeffPy, ebsdZCoeffPy, ebsdYConst, ebsdZConst;
@@ -1217,11 +1283,16 @@ public partial class FormEBSD : CaptureFormBase
     private unsafe void BuildEbsdLookupTable(int width, int height) // 260325Cl: unsafe 化
     {
         var totalPixels = width * height;
-        // 260325Cl: idx は1個/pixel, wt は2個/pixel (fw, fh) に圧縮
-        if (ebsdLookupIdx.Length != totalPixels)
+        var isHex = MasterPattern.GridType == EbsdMasterPatternGridType.Hexagonal; // 260331Cl
+        ebsdLookupIsHex = isHex; // 260331Cl
+
+        // 260331Cl: 六方格子は 3 idx + 3 wt/pixel、正方格子は 1 idx + 2 wt/pixel
+        var idxCount = isHex ? totalPixels * 3 : totalPixels;
+        var wtCount = isHex ? totalPixels * 3 : totalPixels * 2;
+        if (ebsdLookupIdx.Length != idxCount)
         {
-            ebsdLookupIdx = new int[totalPixels];
-            ebsdLookupWt = new float[totalPixels * 2];
+            ebsdLookupIdx = new int[idxCount];
+            ebsdLookupWt = new float[wtCount];
             ebsdLookupPosZ = new bool[totalPixels];
         }
 
@@ -1246,77 +1317,103 @@ public partial class FormEBSD : CaptureFormBase
 
         var gridSize = MasterPattern.GridSize;
         ebsdLookupGridSize = gridSize; // 260325Cl: Apply 用にキャッシュ
-        var sqLim = EbsdMasterPattern.SquareLimit;
-        var invStep = gridSize / (2.0 * sqLim);
-        var inv_PI = 1.0 / Math.PI;
-        var gridMax = gridSize - 1;
         var startPxFactor = 1 - width; // (260325Ch) 列方向は等間隔なので、旧 pxFactor 再計算を増分更新へ置き換える
         var dxStep = 2.0 * ax2; // (260325Ch)
         var dyStep = 2.0 * ay2; // (260325Ch)
         var dzStep = 2.0 * az2; // (260325Ch)
-        var roscaRadiusScale = Math.PI * 0.5; // (260325Ch) sqrt(π/2 * (1 - |z|)) — 260325Cl: π/2 が正しい (a² = π(1-|nz|)/2)
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
         fixed (bool* pPosZ = ebsdLookupPosZ)
         {
-            // ローカルコピーで Parallel.For のキャプチャを軽くする
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
 
-            System.Threading.Tasks.Parallel.For(0, height, h =>
+            if (isHex) // 260331Cl: 六方格子パス
             {
-                double pyFactor = 2 * h + 1 - height;
-                double rowBx = bx2 * pyFactor + cx, rowBy = by2 * pyFactor + cy, rowBz = bz2 * pyFactor + cz;
-                int rowOffset = h * width;
-                // double pxFactor = 2 * w + 1 - width; // (260325Ch) 旧計算
-                double dx = ax2 * startPxFactor + rowBx, dy = ay2 * startPxFactor + rowBy, dz = az2 * startPxFactor + rowBz;
-
-                for (int w = 0; w < width; w++)
+                var gs = gridSize; // Parallel.For のキャプチャ用ローカル
+                System.Threading.Tasks.Parallel.For(0, height, h =>
                 {
-                    int i = rowOffset + w;
+                    double pyFactor = 2 * h + 1 - height;
+                    double rowBx = bx2 * pyFactor + cx, rowBy = by2 * pyFactor + cy, rowBz = bz2 * pyFactor + cz;
+                    int rowOffset = h * width;
+                    double dx = ax2 * startPxFactor + rowBx, dy = ay2 * startPxFactor + rowBy, dz = az2 * startPxFactor + rowBz;
 
-                    // 正規化
-                    double absDx = Math.Abs(dx), absDy = Math.Abs(dy);
-                    double invLen = 1.0 / Math.Sqrt(dx * dx + dy * dy + dz * dz);
-                    double absDzNorm = Math.Abs(dz) * invLen;
-                    pPosZ0[i] = dz >= 0;
-
-                    double a, b;
-                    if (absDx < 1e-15 && absDy < 1e-15) { a = 0; b = 0; }
-                    else
+                    for (int w = 0; w < width; w++)
                     {
-                        // (260325Ch) A/B は正規化と radialScale が打ち消し合うので dx/dy の比で十分
-                        double edgeRadius = Math.Sqrt(Math.Max(0.0, roscaRadiusScale * (1.0 - absDzNorm)));
-                        if (absDx >= absDy)
-                        {
-                            a = dx >= 0 ? edgeRadius : -edgeRadius;
-                            b = 4.0 * a * inv_PI * Math.Atan(dy / dx);
-                        }
+                        int i = rowOffset + w;
+                        double invLen = 1.0 / Math.Sqrt(dx * dx + dy * dy + dz * dz);
+                        double nx = dx * invLen, ny = dy * invLen, nz = dz * invLen;
+                        pPosZ0[i] = nz >= 0;
+
+                        // 球面→六方格子
+                        var (hx, hy) = EbsdMasterPattern.SphereToHexRoscaLambert(nx, ny, Math.Abs(nz));
+                        EbsdMasterPattern.GetHexBarycentricLookup(hx, hy, gs,
+                            out int idx0, out int idx1, out int idx2,
+                            out float bw0, out float bw1, out float bw2);
+
+                        int i3 = i * 3;
+                        pIdx0[i3] = idx0; pIdx0[i3 + 1] = idx1; pIdx0[i3 + 2] = idx2;
+                        pWt0[i3] = bw0; pWt0[i3 + 1] = bw1; pWt0[i3 + 2] = bw2;
+
+                        dx += dxStep; dy += dyStep; dz += dzStep;
+                    }
+                });
+            }
+            else // 正方格子パス (既存)
+            {
+                var sqLim = EbsdMasterPattern.SquareLimit;
+                var invStep = gridSize / (2.0 * sqLim);
+                var inv_PI = 1.0 / Math.PI;
+                var gridMax = gridSize - 1;
+                var roscaRadiusScale = Math.PI * 0.5;
+
+                System.Threading.Tasks.Parallel.For(0, height, h =>
+                {
+                    double pyFactor = 2 * h + 1 - height;
+                    double rowBx = bx2 * pyFactor + cx, rowBy = by2 * pyFactor + cy, rowBz = bz2 * pyFactor + cz;
+                    int rowOffset = h * width;
+                    double dx = ax2 * startPxFactor + rowBx, dy = ay2 * startPxFactor + rowBy, dz = az2 * startPxFactor + rowBz;
+
+                    for (int w = 0; w < width; w++)
+                    {
+                        int i = rowOffset + w;
+                        double absDx = Math.Abs(dx), absDy = Math.Abs(dy);
+                        double invLen = 1.0 / Math.Sqrt(dx * dx + dy * dy + dz * dz);
+                        double absDzNorm = Math.Abs(dz) * invLen;
+                        pPosZ0[i] = dz >= 0;
+
+                        double a, b;
+                        if (absDx < 1e-15 && absDy < 1e-15) { a = 0; b = 0; }
                         else
                         {
-                            b = dy >= 0 ? edgeRadius : -edgeRadius;
-                            a = 4.0 * b * inv_PI * Math.Atan(dx / dy);
+                            double edgeRadius = Math.Sqrt(Math.Max(0.0, roscaRadiusScale * (1.0 - absDzNorm)));
+                            if (absDx >= absDy)
+                            {
+                                a = dx >= 0 ? edgeRadius : -edgeRadius;
+                                b = 4.0 * a * inv_PI * Math.Atan(dy / dx);
+                            }
+                            else
+                            {
+                                b = dy >= 0 ? edgeRadius : -edgeRadius;
+                                a = 4.0 * b * inv_PI * Math.Atan(dx / dy);
+                            }
                         }
+
+                        double gw = (a + sqLim) * invStep - 0.5, gh = (sqLim - b) * invStep - 0.5;
+                        int w0 = (int)Math.Floor(gw), h0 = (int)Math.Floor(gh);
+                        double fw = gw - w0, fh = gh - h0;
+                        if (w0 < 0) { w0 = 0; fw = 0; } else if (w0 >= gridMax) { w0 = gridMax - 1; fw = 1; }
+                        if (h0 < 0) { h0 = 0; fh = 0; } else if (h0 >= gridMax) { h0 = gridMax - 1; fh = 1; }
+
+                        pIdx0[i] = h0 * gridSize + w0;
+                        int i2 = i * 2;
+                        pWt0[i2] = (float)fw;
+                        pWt0[i2 + 1] = (float)fh;
+
+                        dx += dxStep; dy += dyStep; dz += dzStep;
                     }
-
-                    // 260325Cl: グリッド座標 — 左上インデックス + fw, fh のみ保存
-                    double gw = (a + sqLim) * invStep - 0.5, gh = (sqLim - b) * invStep - 0.5;
-                    int w0 = (int)Math.Floor(gw), h0 = (int)Math.Floor(gh);
-                    double fw = gw - w0, fh = gh - h0;
-                    // 端点処理: w0, h0 を [0, gridMax-1] にクランプ (右下隣が常に有効)
-                    if (w0 < 0) { w0 = 0; fw = 0; } else if (w0 >= gridMax) { w0 = gridMax - 1; fw = 1; }
-                    if (h0 < 0) { h0 = 0; fh = 0; } else if (h0 >= gridMax) { h0 = gridMax - 1; fh = 1; }
-
-                    pIdx0[i] = h0 * gridSize + w0;
-                    int i2 = i * 2;
-                    pWt0[i2] = (float)fw;
-                    pWt0[i2 + 1] = (float)fh;
-
-                    dx += dxStep;
-                    dy += dyStep;
-                    dz += dzStep;
-                }
-            });
+                });
+            }
         }
     }
 
@@ -1327,7 +1424,8 @@ public partial class FormEBSD : CaptureFormBase
     {
         if (posPlane == null && negPlane == null) return;
 
-        var gs = ebsdLookupGridSize; // 260325Cl: 左上 idx から右・下隣を復元
+        var gs = ebsdLookupGridSize;
+        var isHex = ebsdLookupIsHex; // 260331Cl
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
@@ -1341,18 +1439,34 @@ public partial class FormEBSD : CaptureFormBase
             var hasPos = posPlane != null && posPlane.Length > 0;
             var hasNeg = negPlane != null && negPlane.Length > 0;
 
-            System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+            if (isHex) // 260331Cl: 六方格子パス — 3 近傍バリセントリック補間
             {
-                float* plane = pPosZ0[i] ? pPos0 : pNeg0;
-                bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
-                if (!hasPlane) { pVal0[i] = 0; return; }
-                int idx = pIdx0[i];
-                int i2 = i * 2;
-                float fw = pWt0[i2], fh = pWt0[i2 + 1];
-                float w0 = (1 - fw), w1 = fw;
-                pVal0[i] = (w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
-                         + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh;
-            });
+                System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+                {
+                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
+                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
+                    if (!hasPlane) { pVal0[i] = 0; return; }
+                    int i3 = i * 3;
+                    pVal0[i] = pWt0[i3] * plane[pIdx0[i3]]
+                             + pWt0[i3 + 1] * plane[pIdx0[i3 + 1]]
+                             + pWt0[i3 + 2] * plane[pIdx0[i3 + 2]];
+                });
+            }
+            else // 正方格子パス (既存)
+            {
+                System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+                {
+                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
+                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
+                    if (!hasPlane) { pVal0[i] = 0; return; }
+                    int idx = pIdx0[i];
+                    int i2 = i * 2;
+                    float fw = pWt0[i2], fh = pWt0[i2 + 1];
+                    float w0 = (1 - fw), w1 = fw;
+                    pVal0[i] = (w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
+                             + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh;
+                });
+            }
         }
     }
 
@@ -1404,6 +1518,7 @@ public partial class FormEBSD : CaptureFormBase
 
         var gs = ebsdLookupGridSize;
         var scaleFactor = planeScaleFactor;
+        var isHex = ebsdLookupIsHex; // 260331Cl
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
@@ -1417,18 +1532,34 @@ public partial class FormEBSD : CaptureFormBase
             var hasPos = posPlane != null && posPlane.Length > 0;
             var hasNeg = negPlane != null && negPlane.Length > 0;
 
-            System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+            if (isHex) // 260331Cl
             {
-                float* plane = pPosZ0[i] ? pPos0 : pNeg0;
-                bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
-                if (!hasPlane) { pVal0[i] = 0; return; }
-                int idx = pIdx0[i];
-                int i2 = i * 2;
-                float fw = pWt0[i2], fh = pWt0[i2 + 1];
-                float w0 = (1 - fw), w1 = fw;
-                pVal0[i] = scaleFactor * ((w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
-                         + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh); // (260325Ch) model 1 は global sum をそろえた角度分布として扱う
-            });
+                System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+                {
+                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
+                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
+                    if (!hasPlane) { pVal0[i] = 0; return; }
+                    int i3 = i * 3;
+                    pVal0[i] = scaleFactor * (pWt0[i3] * plane[pIdx0[i3]]
+                             + pWt0[i3 + 1] * plane[pIdx0[i3 + 1]]
+                             + pWt0[i3 + 2] * plane[pIdx0[i3 + 2]]);
+                });
+            }
+            else
+            {
+                System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+                {
+                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
+                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
+                    if (!hasPlane) { pVal0[i] = 0; return; }
+                    int idx = pIdx0[i];
+                    int i2 = i * 2;
+                    float fw = pWt0[i2], fh = pWt0[i2 + 1];
+                    float w0 = (1 - fw), w1 = fw;
+                    pVal0[i] = scaleFactor * ((w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
+                             + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh);
+                });
+            }
         }
     }
 
@@ -1440,6 +1571,7 @@ public partial class FormEBSD : CaptureFormBase
         if (posPlane == null && negPlane == null) return;
 
         var gs = ebsdLookupGridSize;
+        var isHex = ebsdLookupIsHex; // 260331Cl
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
@@ -1457,24 +1589,47 @@ public partial class FormEBSD : CaptureFormBase
             var hasPosPrev = posPlanePrevious != null && posPlanePrevious.Length > 0;
             var hasNegPrev = negPlanePrevious != null && negPlanePrevious.Length > 0;
 
-            System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+            if (isHex) // 260331Cl
             {
-                float* plane = pPosZ0[i] ? pPos0 : pNeg0;
-                float* planePrev = pPosZ0[i] ? pPosPrev0 : pNegPrev0;
-                bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
-                bool hasPlanePrev = pPosZ0[i] ? hasPosPrev : hasNegPrev;
-                if (!hasPlane) { pVal0[i] = 0; return; }
-                int idx = pIdx0[i];
-                int i2 = i * 2;
-                float fw = pWt0[i2], fh = pWt0[i2 + 1];
-                float w0 = (1 - fw), w1 = fw;
-                double intensity = (w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
-                                 + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh;
-                if (hasPlanePrev)
-                    intensity -= (w0 * planePrev[idx] + w1 * planePrev[idx + 1]) * (1 - fh)
-                               + (w0 * planePrev[idx + gs] + w1 * planePrev[idx + gs + 1]) * fh; // (260325Ch) model 2 は cumulative plane の差分を depth slice 寄与とみなす
-                pVal0[i] = Math.Max(0.0, intensity);
-            });
+                System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+                {
+                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
+                    float* planePrev = pPosZ0[i] ? pPosPrev0 : pNegPrev0;
+                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
+                    bool hasPlanePrev = pPosZ0[i] ? hasPosPrev : hasNegPrev;
+                    if (!hasPlane) { pVal0[i] = 0; return; }
+                    int i3 = i * 3;
+                    double intensity = pWt0[i3] * plane[pIdx0[i3]]
+                                     + pWt0[i3 + 1] * plane[pIdx0[i3 + 1]]
+                                     + pWt0[i3 + 2] * plane[pIdx0[i3 + 2]];
+                    if (hasPlanePrev)
+                        intensity -= pWt0[i3] * planePrev[pIdx0[i3]]
+                                   + pWt0[i3 + 1] * planePrev[pIdx0[i3 + 1]]
+                                   + pWt0[i3 + 2] * planePrev[pIdx0[i3 + 2]];
+                    pVal0[i] = Math.Max(0.0, intensity);
+                });
+            }
+            else
+            {
+                System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+                {
+                    float* plane = pPosZ0[i] ? pPos0 : pNeg0;
+                    float* planePrev = pPosZ0[i] ? pPosPrev0 : pNegPrev0;
+                    bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
+                    bool hasPlanePrev = pPosZ0[i] ? hasPosPrev : hasNegPrev;
+                    if (!hasPlane) { pVal0[i] = 0; return; }
+                    int idx = pIdx0[i];
+                    int i2 = i * 2;
+                    float fw = pWt0[i2], fh = pWt0[i2 + 1];
+                    float w0 = (1 - fw), w1 = fw;
+                    double intensity = (w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
+                                     + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh;
+                    if (hasPlanePrev)
+                        intensity -= (w0 * planePrev[idx] + w1 * planePrev[idx + 1]) * (1 - fh)
+                                   + (w0 * planePrev[idx + gs] + w1 * planePrev[idx + gs + 1]) * fh;
+                    pVal0[i] = Math.Max(0.0, intensity);
+                });
+            }
         }
     }
 
@@ -1500,6 +1655,7 @@ public partial class FormEBSD : CaptureFormBase
         fixed (double* pVal = values)
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
+            var isHexLocal = ebsdLookupIsHex; // 260331Cl
 
             System.Threading.Tasks.Parallel.For(0, height, h =>
             {
@@ -1532,34 +1688,52 @@ public partial class FormEBSD : CaptureFormBase
                     var bw11 = dist.BinWeights[bi0 + 1, bj0 + 1];
 
                     // ルックアップテーブルからマスターパターン補間パラメータ取得
-                    int idx = pIdx0[i];
-                    int i2 = i * 2;
-                    float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
-                    float mpW0 = 1 - mpFw, mpW1 = mpFw;
-                    float mpFh1 = 1 - mpFh;
                     bool posZ = pPosZ0[i];
 
                     // 全エネルギー・深さで加重合計
                     double sum = 0;
-                    for (int ei = 0; ei < eLen; ei++)
+
+                    if (isHexLocal) // 260331Cl: 六方格子
                     {
-                        for (int di = 0; di < dLen; di++)
-                        {
-                            int wIdx = ei * dLen + di;
-                            double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                          + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                            if (weight < 1e-15) continue;
-
-                            // マスターパターン強度をバイリニア補間
-                            var plane = posZ
-                                ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
-                                : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
-                            if (plane == null || plane.Length == 0) continue;
-
-                            double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
-                                             + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
-                            sum += weight * intensity;
-                        }
+                        int i3 = i * 3;
+                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
+                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
+                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                var plane = posZ
+                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]);
+                            }
+                    }
+                    else // 正方格子
+                    {
+                        int idx = pIdx0[i];
+                        int i2 = i * 2;
+                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
+                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
+                        float mpFh1 = 1 - mpFh;
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
+                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                var plane = posZ
+                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
+                                                 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
+                                sum += weight * intensity;
+                            }
                     }
                     pVal0[i] = sum;
                 }
@@ -1695,6 +1869,7 @@ public partial class FormEBSD : CaptureFormBase
         fixed (double* pVal = values)
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
+            var isHexLocal = ebsdLookupIsHex; // 260331Cl
 
             System.Threading.Tasks.Parallel.For(0, height, h =>
             {
@@ -1720,35 +1895,54 @@ public partial class FormEBSD : CaptureFormBase
                     var bw10 = dist.BinWeights[bi0 + 1, bj0];
                     var bw01 = dist.BinWeights[bi0, bj0 + 1];
                     var bw11 = dist.BinWeights[bi0 + 1, bj0 + 1];
-
-                    int idx = pIdx0[i];
-                    int i2 = i * 2;
-                    float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
-                    float mpW0 = 1 - mpFw, mpW1 = mpFw;
-                    float mpFh1 = 1 - mpFh;
                     bool posZ = pPosZ0[i];
 
                     double sum = 0;
-                    for (int ei = 0; ei < eLen; ei++)
+                    if (isHexLocal) // 260331Cl
                     {
-                        for (int di = 0; di < dLen; di++)
-                        {
-                            int wIdx = ei * dLen + di;
-                            double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                          + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                            if (weight < 1e-15) continue;
-                            double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
-                            if (planeScaleFactor < 1e-30) continue;
-
-                            var plane = posZ
-                                ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
-                                : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
-                            if (plane == null || plane.Length == 0) continue;
-
-                            double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
-                                             + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
-                            sum += weight * intensity * planeScaleFactor;
-                        }
+                        int i3 = i * 3;
+                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
+                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
+                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
+                                if (planeScaleFactor < 1e-30) continue;
+                                var plane = posZ
+                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]) * planeScaleFactor;
+                            }
+                    }
+                    else
+                    {
+                        int idx = pIdx0[i];
+                        int i2 = i * 2;
+                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
+                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
+                        float mpFh1 = 1 - mpFh;
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
+                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
+                                if (planeScaleFactor < 1e-30) continue;
+                                var plane = posZ
+                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
+                                                 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
+                                sum += weight * intensity * planeScaleFactor;
+                            }
                     }
                     pVal0[i] = sum;
                 }
@@ -1776,6 +1970,7 @@ public partial class FormEBSD : CaptureFormBase
         fixed (double* pVal = values)
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
+            var isHexLocal = ebsdLookupIsHex; // 260331Cl
 
             System.Threading.Tasks.Parallel.For(0, height, h =>
             {
@@ -1801,41 +1996,66 @@ public partial class FormEBSD : CaptureFormBase
                     var bw10 = dist.BinAbsoluteSliceWeights[bi0 + 1, bj0];
                     var bw01 = dist.BinAbsoluteSliceWeights[bi0, bj0 + 1];
                     var bw11 = dist.BinAbsoluteSliceWeights[bi0 + 1, bj0 + 1];
-
-                    int idx = pIdx0[i];
-                    int i2 = i * 2;
-                    float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
-                    float mpW0 = 1 - mpFw, mpW1 = mpFw;
-                    float mpFh1 = 1 - mpFh;
                     bool posZ = pPosZ0[i];
 
                     double sum = 0;
-                    for (int ei = 0; ei < eLen; ei++)
+                    if (isHexLocal) // 260331Cl
                     {
-                        for (int di = 0; di < dLen; di++)
-                        {
-                            int wIdx = ei * dLen + di;
-                            double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                          + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                            if (weight < 1e-15) continue;
-
-                            var plane = posZ
-                                ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
-                                : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
-                            if (plane == null || plane.Length == 0) continue;
-                            var planePrevious = di > 0
-                                ? posZ
-                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di - 1)
-                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di - 1)
-                                : null;
-
-                            double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
-                                             + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
-                            if (planePrevious != null && planePrevious.Length > 0)
-                                intensity -= (mpW0 * planePrevious[idx] + mpW1 * planePrevious[idx + 1]) * mpFh1
-                                         + (mpW0 * planePrevious[idx + gs] + mpW1 * planePrevious[idx + gs + 1]) * mpFh;
-                            sum += weight * Math.Max(0.0, intensity);
-                        }
+                        int i3 = i * 3;
+                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
+                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
+                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                var plane = posZ
+                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                var planePrevious = di > 0
+                                    ? posZ
+                                        ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di - 1)
+                                        : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di - 1)
+                                    : null;
+                                double intensity = hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2];
+                                if (planePrevious != null && planePrevious.Length > 0)
+                                    intensity -= hw0 * planePrevious[hIdx0] + hw1 * planePrevious[hIdx1] + hw2 * planePrevious[hIdx2];
+                                sum += weight * Math.Max(0.0, intensity);
+                            }
+                    }
+                    else
+                    {
+                        int idx = pIdx0[i];
+                        int i2 = i * 2;
+                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
+                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
+                        float mpFh1 = 1 - mpFh;
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
+                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                var plane = posZ
+                                    ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                var planePrevious = di > 0
+                                    ? posZ
+                                        ? mp.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, ei, di - 1)
+                                        : mp.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, ei, di - 1)
+                                    : null;
+                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
+                                                 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
+                                if (planePrevious != null && planePrevious.Length > 0)
+                                    intensity -= (mpW0 * planePrevious[idx] + mpW1 * planePrevious[idx + 1]) * mpFh1
+                                             + (mpW0 * planePrevious[idx + gs] + mpW1 * planePrevious[idx + gs + 1]) * mpFh;
+                                sum += weight * Math.Max(0.0, intensity);
+                            }
                     }
                     pVal0[i] = sum;
                 }
@@ -2360,9 +2580,17 @@ public partial class FormEBSD : CaptureFormBase
             return;
         }
 
-        var displayValues = CreateMasterPatternDisplayValues(plane, MasterPattern.GridSize); // (260322Ch) 2D / 3D 描画で共有する正規化済み強度
-        var positiveDisplayValues = CreateMasterPatternDisplayValues(MasterPattern.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, selectedEnergyIndex, selectedDepthIndex), MasterPattern.GridSize); // (260321Ch) 3D 表示では +Z を常に描画する
-        var negativeDisplayValues = CreateMasterPatternDisplayValues(MasterPattern.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, selectedEnergyIndex, selectedDepthIndex), MasterPattern.GridSize); // (260321Ch) 3D 表示では -Z も常に描画する
+        // 260331Cl 六方格子の場合は表示用に正方格子へリサンプリングする
+        var isHexGrid = MasterPattern.GridType == EbsdMasterPatternGridType.Hexagonal;
+        var displayPlane = isHexGrid ? EbsdMasterPattern.ResampleHexToSquarePlane(plane, MasterPattern.GridSize) : plane;
+        var posPlane = MasterPattern.GetPlane(EbsdMasterPatternHemisphere.PositiveZ, selectedEnergyIndex, selectedDepthIndex);
+        var negPlane = MasterPattern.GetPlane(EbsdMasterPatternHemisphere.NegativeZ, selectedEnergyIndex, selectedDepthIndex);
+        var displayPosPlane = isHexGrid ? EbsdMasterPattern.ResampleHexToSquarePlane(posPlane, MasterPattern.GridSize) : posPlane;
+        var displayNegPlane = isHexGrid ? EbsdMasterPattern.ResampleHexToSquarePlane(negPlane, MasterPattern.GridSize) : negPlane;
+
+        var displayValues = CreateMasterPatternDisplayValues(displayPlane, MasterPattern.GridSize); // (260322Ch) 2D / 3D 描画で共有する正規化済み強度
+        var positiveDisplayValues = CreateMasterPatternDisplayValues(displayPosPlane, MasterPattern.GridSize); // (260321Ch) 3D 表示では +Z を常に描画する
+        var negativeDisplayValues = CreateMasterPatternDisplayValues(displayNegPlane, MasterPattern.GridSize); // (260321Ch) 3D 表示では -Z も常に描画する
 
         var energy = MasterPattern.Energies[selectedEnergyIndex];
         var depth = MasterPattern.Depths[selectedDepthIndex];

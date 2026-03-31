@@ -133,7 +133,4 @@
   <data name="groupBoxSimulationParameters.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 464</value>
   </data>
-  <data name="scalablePictureBoxAdvancedMasterPattern2D.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 363</value>
-  </data>
 </root>

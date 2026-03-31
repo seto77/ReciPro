@@ -672,150 +672,72 @@ public class BetheMethod
             Shared.Return(buffer); // (260321Ch)
     }
 
-    // (260327Ch) Rosca-Lambert 正方格子上で厳密に index を写せる 4/mmm 系の対称操作 (Symmetry Operation) だけを列挙する
-    private enum SymmOper
-    {
-        #region
-        /// <summary> 何も変換しない恒等操作</summary>
-        Identity,
-        /// <summary>  正方格子中心まわりの Z 軸 180 度回転</summary>
-        RotZ180,
-        /// <summary> 正方格子中心まわりの Z 軸 90 度回転</summary>
-        RotZ90,
-        /// <summary>  正方格子中心まわりの Z 軸 270 度回転</summary>
-        RotZ270,
-        /// <summary>  正方格子の左右反転</summary>
-        MirrorX,
-        /// <summary> 正方格子の上下反転</summary>
-        MirrorY,
-        /// <summary> 対角線 y = -x に関する鏡映</summary>
-        MirrorDiagXY,
-        /// <summary> 対角線 y = x に関する鏡映</summary>
-        MirrorDiagX_Y,
-        /// <summary> 格子座標は保ったまま半球だけを反転する鏡映</summary>
-        MirrorZ,
-        /// <summary> Z 軸 180 度回転と半球反転を同時に行う反転操作</summary>
-        Inversion,
-        /// <summary> Z 軸 90 度回転後に半球を反転する合成操作</summary>
-        RotZ90MirrorZ,
-        /// <summary> Z 軸 270 度回転後に半球を反転する合成操作</summary>
-        RotZ270MirrorZ,
-        /// <summary> X 軸 180 度回転に対応し、半球も反転する</summary>
-        RotX180,
-        /// <summary> Y 軸 180 度回転に対応し、半球も反転する</summary>
-        RotY180,
-        /// <summary> 対角軸 [110] まわり 180 度回転に対応し、半球も反転する</summary>
-        RotDiagXY180,
-        /// <summary>  対角軸 [1-10] まわり 180 度回転に対応し、半球も反転する</summary>
-        RotDiagX_Y180,
-        #endregion
-    }
+    // 260331Cl SymmOper, GetMasterPatternSquareSymmetryOperations, TransformMasterPatternSquareIndex は EbsdMasterPattern へ移動
 
     /// <summary>
-    /// 現在の point group から、Rosca-Lambert 正方格子上で補間なしに使える対称操作だけを返す。
-    /// 単斜晶は主軸 canonical frame をまだ導入していないため、一旦 identity のみへ落とす。 // (260327Ch)
-    /// </summary>
-    private static SymmOper[] GetMasterPatternSquareSymmetryOperations(Symmetry sym)
-        => sym.PointGroupNumber switch
-        {
-            #region
-            0 or 1 => [SymmOper.Identity],
-            2 => [SymmOper.Identity, SymmOper.Inversion],
-            3 or 4 or 5 => [SymmOper.Identity], // (260327Ch) monoclinic は後回し
-            6 => [SymmOper.Identity, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotZ180],
-            7 => sym.PointGroupHMStr switch
-            {
-                "2mm" => [SymmOper.Identity, SymmOper.RotX180, SymmOper.MirrorY, SymmOper.MirrorZ],
-                "m2m" => [SymmOper.Identity, SymmOper.RotY180, SymmOper.MirrorX, SymmOper.MirrorZ],
-                _ => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorX, SymmOper.MirrorY],
-            },
-            8 => [SymmOper.Identity, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotZ180, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorZ, SymmOper.Inversion],
-            9 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270],
-            10 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ],
-            11 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorZ, SymmOper.Inversion, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ],
-            12 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
-            13 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y],
-            14 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180],
-            15 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.MirrorZ, SymmOper.Inversion, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
-            16 => [SymmOper.Identity],
-            17 => [SymmOper.Identity, SymmOper.Inversion],
-            18 => [SymmOper.Identity], // (260327Ch) 32 は square-grid に自然な 2 回軸をまだ固定できていない
-            19 => [SymmOper.Identity], // (260327Ch) 3m も同様に conservative に落とす
-            20 => [SymmOper.Identity, SymmOper.Inversion],
-            21 => [SymmOper.Identity, SymmOper.RotZ180],
-            22 => [SymmOper.Identity, SymmOper.MirrorZ],
-            23 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorZ, SymmOper.Inversion],
-            24 => [SymmOper.Identity, SymmOper.RotZ180], // (260327Ch) 622 はまず C2z だけを exact に使う
-            25 => [SymmOper.Identity, SymmOper.RotZ180], // (260327Ch) 6mm はまず C2z だけを exact に使う
-            26 => [SymmOper.Identity, SymmOper.MirrorZ],
-            27 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorZ, SymmOper.Inversion],
-            28 => [SymmOper.Identity, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotZ180],
-            29 => [SymmOper.Identity, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotZ180, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorZ, SymmOper.Inversion],
-            30 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
-            31 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180],
-            32 => [SymmOper.Identity, SymmOper.RotZ180, SymmOper.RotZ90, SymmOper.RotZ270, SymmOper.MirrorX, SymmOper.MirrorY, SymmOper.MirrorDiagXY, SymmOper.MirrorDiagX_Y, SymmOper.MirrorZ, SymmOper.Inversion, SymmOper.RotZ90MirrorZ, SymmOper.RotZ270MirrorZ, SymmOper.RotX180, SymmOper.RotY180, SymmOper.RotDiagXY180, SymmOper.RotDiagX_Y180],
-            _ => [SymmOper.Identity],
-            #endregion
-        };
-
-    /// <summary>
-    /// Rosca-Lambert の 2 半球正方格子 index に、4/mmm 系の厳密対称操作を適用する。 
-    /// </summary>
-    private static int TransformMasterPatternSquareIndex(int index, int hemisphereLength, int gridSize, SymmOper operation)
-    {
-        var sphere = index / hemisphereLength;
-        var localIndex = index - sphere * hemisphereLength;
-        int w = localIndex % gridSize, h = localIndex / gridSize;
-        (int Sphere, int W, int H) = operation switch //  半球反転も含めて switch 式にまとめる
-        {
-            SymmOper.Identity => (sphere, w, h),
-            SymmOper.RotZ180 => (sphere, gridSize - 1 - w, gridSize - 1 - h),
-            SymmOper.RotZ90 => (sphere, h, gridSize - 1 - w),
-            SymmOper.RotZ270 => (sphere, gridSize - 1 - h, w),
-            SymmOper.MirrorX => (sphere, gridSize - 1 - w, h),
-            SymmOper.MirrorY => (sphere, w, gridSize - 1 - h),
-            SymmOper.MirrorDiagXY => (sphere, gridSize - 1 - h, gridSize - 1 - w),
-            SymmOper.MirrorDiagX_Y => (sphere, h, w),
-            SymmOper.MirrorZ => (1 - sphere, w, h),
-            SymmOper.Inversion => (1 - sphere, gridSize - 1 - w, gridSize - 1 - h),
-            SymmOper.RotZ90MirrorZ => (1 - sphere, h, gridSize - 1 - w),
-            SymmOper.RotZ270MirrorZ => (1 - sphere, gridSize - 1 - h, w),
-            SymmOper.RotX180 => (1 - sphere, w, gridSize - 1 - h),
-            SymmOper.RotY180 => (1 - sphere, gridSize - 1 - w, h),
-            SymmOper.RotDiagXY180 => (1 - sphere, gridSize - 1 - h, gridSize - 1 - w),
-            SymmOper.RotDiagX_Y180 => (1 - sphere, h, w),
-            _ => (sphere, w, h),
-        };
-
-        return Sphere * hemisphereLength + H * gridSize + W;
-    }
-
-    /// <summary>
-    /// 正方格子上の各方向を、その orbit 内で最小 index の exact representative へ写す。 // (260327Ch)
+    /// 格子上の各方向を、その orbit 内で最小 index の exact representative へ写す。 // (260327Ch)
+    /// 六方格子の場合、無効セル (|u+v| > N) は -1 にマッピングされスキップ対象となる。 // 260331Cl
     /// </summary>
     private int[] CreateMasterPatternSymmetryRepresentativeDirectionMapping(int beamDirectionCount, int hemisphereLength, int gridSize)
     {
         if (beamDirectionCount <= 0 || hemisphereLength <= 0 || gridSize <= 0)
             return [];
 
+        bool isHex = EbsdMasterPattern.ShouldUseHexGrid(Crystal.Symmetry); // 260331Cl
+        int N = isHex ? (gridSize - 1) / 2 : 0;
+
         var mapping = new int[beamDirectionCount];
         for (int i = 0; i < beamDirectionCount; i++)
             mapping[i] = i;
 
-        var operations = GetMasterPatternSquareSymmetryOperations(Crystal.Symmetry);
-        if (operations.Length <= 1)
-            return mapping;
-
-        for (int i = 0; i < beamDirectionCount; i++)
+        // 260331Cl 六方格子の無効セルを -1 にマーク
+        if (isHex)
         {
-            var representativeIndex = i;
-            for (int opIndex = 1; opIndex < operations.Length; opIndex++)
+            for (int i = 0; i < beamDirectionCount; i++)
             {
-                var transformedIndex = TransformMasterPatternSquareIndex(i, hemisphereLength, gridSize, operations[opIndex]);
-                if (transformedIndex < representativeIndex)
-                    representativeIndex = transformedIndex;
+                int localIndex = i % hemisphereLength;
+                var (u, v) = EbsdMasterPattern.HexFromLinearIndex(localIndex, N);
+                if (!EbsdMasterPattern.IsValidHexCell(u, v, N))
+                    mapping[i] = -1;
             }
-            mapping[i] = representativeIndex;
+        }
+
+        if (isHex)
+        {
+            var hexOps = EbsdMasterPattern.GetMasterPatternHexSymmetryOperations(Crystal.Symmetry);
+            if (hexOps.Length <= 1)
+                return mapping;
+
+            for (int i = 0; i < beamDirectionCount; i++)
+            {
+                if (mapping[i] == -1) continue; // 無効セルはスキップ
+                var representativeIndex = i;
+                for (int opIndex = 1; opIndex < hexOps.Length; opIndex++)
+                {
+                    var transformedIndex = EbsdMasterPattern.TransformMasterPatternHexIndex(i, hemisphereLength, gridSize, hexOps[opIndex]);
+                    if (transformedIndex < representativeIndex)
+                        representativeIndex = transformedIndex;
+                }
+                mapping[i] = representativeIndex;
+            }
+        }
+        else
+        {
+            var operations = EbsdMasterPattern.GetMasterPatternSquareSymmetryOperations(Crystal.Symmetry);
+            if (operations.Length <= 1)
+                return mapping;
+
+            for (int i = 0; i < beamDirectionCount; i++)
+            {
+                var representativeIndex = i;
+                for (int opIndex = 1; opIndex < operations.Length; opIndex++)
+                {
+                    var transformedIndex = EbsdMasterPattern.TransformMasterPatternSquareIndex(i, hemisphereLength, gridSize, operations[opIndex]);
+                    if (transformedIndex < representativeIndex)
+                        representativeIndex = transformedIndex;
+                }
+                mapping[i] = representativeIndex;
+            }
         }
         return mapping;
     }
@@ -1359,13 +1281,14 @@ public class BetheMethod
         var hemisphereLength = BeamDirections.Length / 2;
         var directionGridSize = (int)Math.Sqrt(hemisphereLength);
         if (directionGridSize * directionGridSize != hemisphereLength)
-            throw new InvalidOperationException("MasterPattern directions must be stored as two square hemisphere grids."); // (260327Ch)
-        var symmetryRepresentativeMapping = CreateMasterPatternSymmetryRepresentativeDirectionMapping(BeamDirections.Length, hemisphereLength, directionGridSize); // (260327Ch) exact square-grid symmetry representative
+            throw new InvalidOperationException("MasterPattern directions must be stored as two hemisphere grids."); // (260327Ch)
+        var symmetryRepresentativeMapping = CreateMasterPatternSymmetryRepresentativeDirectionMapping(BeamDirections.Length, hemisphereLength, directionGridSize); // (260327Ch) exact grid symmetry representative
         var symmetryRepresentativeWeights = new int[BeamDirections.Length]; // (260327Ch) 進捗報告と埋め戻しに使う orbit サイズ
         var symmetryRepresentativeIndices = new List<int>();
         for (int i = 0; i < BeamDirections.Length; i++)
         {
             var representativeIndex = symmetryRepresentativeMapping[i];
+            if (representativeIndex < 0) continue; // 260331Cl 六方格子の無効セルをスキップ
             symmetryRepresentativeWeights[representativeIndex]++;
             if (representativeIndex == i)
                 symmetryRepresentativeIndices.Add(i); // (260327Ch) orbit ごとの最小 index を代表点に採用
@@ -1670,7 +1593,7 @@ public class BetheMethod
                     for (int i = 0; i < BeamDirections.Length; i++)
                     {
                         var representativeIndex = symmetryRepresentativeMapping[i];
-                        if (representativeIndex == i)
+                        if (representativeIndex < 0 || representativeIndex == i) // 260331Cl 無効セル (-1) もスキップ
                             continue;
 
                         ebsdIntensity[i] = ebsdIntensity[representativeIndex]; // (260327Ch) 未計算方向は exact representative から埋め戻す

@@ -169,6 +169,7 @@
             // WaveLengthControl
             // 
             resources.ApplyResources(this, "$this");
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel2);

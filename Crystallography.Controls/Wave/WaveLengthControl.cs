@@ -313,16 +313,19 @@ public partial class WaveLengthControl : CaptureUserControlBase
     {
         if (!radioButtonXray.Checked) return;
 
+        var dpiScale = DeviceDpi / 96f; // 260331Cl 追加: DPIスケーリング対応
         if (comboBoxXRayElement.SelectedIndex == 0)//Customが選択されたとき
         {
             comboBoxXrayLine.Visible = false;
-            comboBoxXRayElement.Width = 100;
+            //comboBoxXRayElement.Width = 100; // 260331Cl 変更: DPIスケーリング対応
+            comboBoxXRayElement.Width = (int)(100 * dpiScale);
             numericBoxEnergy.Enabled = true;
             numericBoxWaveLength.Enabled = true;
         }
         else
         {
-            comboBoxXRayElement.Width = 70;
+            //comboBoxXRayElement.Width = 70; // 260331Cl 変更: DPIスケーリング対応
+            comboBoxXRayElement.Width = (int)(70 * dpiScale);
             comboBoxXrayLine.Visible = true;
             numericBoxEnergy.Enabled = false;
 

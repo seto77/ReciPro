@@ -67,103 +67,107 @@ public partial class FormRotationMatrix : CaptureFormBase
     {
         #region glControlの追加 (デザイナが壊れるため)
 
-        // 
+        // 260331Cl 追加: Load時に追加するコントロールはPerformAutoScale対象外のため手動スケーリング
+        var s = DeviceDpi / 96f;
+        int S(int v) => (int)(v * s);
+
+        //
         // glControlReciProObjects
-        // 
+        //
         this.glControlReciProObjects = new GLControlAlpha
         {
             AllowMouseScaling = false,
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
-            Location = new Point(273, 248),
+            Location = new Point(S(273), S(248)),
             Margin = new Padding(0),
             Name = "glControlReciProObjects",
             NodeCoefficient = 1,
             ProjWidth = 1D,
-            Size = new Size(130, 130),
+            Size = new Size(S(130), S(130)),
         };
         this.glControlReciProObjects.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
 
-        // 
+        //
         // glControlReciProAxes
-        // 
+        //
         this.glControlReciProAxes = new GLControlAlpha
         {
             AllowMouseScaling = false,
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
-            Location = new Point(273, 114),
+            Location = new Point(S(273), S(114)),
             Margin = new Padding(0),
             Name = "glControlReciProAxes",
             NodeCoefficient = 1,
             ProjWidth = 2.8D,
-            Size = new Size(130, 130),
+            Size = new Size(S(130), S(130)),
         };
         glControlReciProAxes.WorldMatrixChanged += new EventHandler(GlControlReciProAxes_WorldMatrixChanged);
 
-        // 
+        //
         // glControlReciProGonio
-        // 
+        //
         this.glControlReciProGonio = new GLControlAlpha
         {
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
-            Location = new Point(5, 114),
+            Location = new Point(S(5), S(114)),
             Margin = new Padding(0),
             Name = "glControlReciProGonio",
             ProjWidth = 5D,
-            Size = new Size(264, 264),
+            Size = new Size(S(264), S(264)),
         };
         glControlReciProGonio.WorldMatrixChanged += new EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
 
-        // 
+        //
         // glControlExpObjects
-        // 
+        //
         this.glControlExpObjects = new GLControlAlpha
         {
             AllowMouseScaling = false,
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
-            Location = new Point(273, 248),
+            Location = new Point(S(273), S(248)),
             Margin = new Padding(0),
             Name = "glControlExpObjects",
             ProjWidth = 1D,
-            Size = new Size(130, 130),
+            Size = new Size(S(130), S(130)),
         };
         this.glControlExpObjects.WorldMatrixChanged += new EventHandler(GlControlReciProAxes_WorldMatrixChanged);
-        // 
+        //
         // glControlExpAxes
-        // 
+        //
         this.glControlExpAxes = new GLControlAlpha
         {
             AllowMouseScaling = false,
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
-            Location = new Point(273, 114),
+            Location = new Point(S(273), S(114)),
             Margin = new System.Windows.Forms.Padding(0),
             Name = "glControlExpAxes",
             ProjWidth = 2.8D,
-            Size = new Size(130, 130),
+            Size = new Size(S(130), S(130)),
         };
         this.glControlExpAxes.WorldMatrixChanged += new EventHandler(GlControlReciProAxes_WorldMatrixChanged);
-        // 
+        //
         // glControlExpGonio
-        // 
+        //
         this.glControlExpGonio = new GLControlAlpha
         {
             AllowMouseTranslating = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
             BorderStyle = BorderStyle.Fixed3D,
-            Location = new Point(5, 114),
+            Location = new Point(S(5), S(114)),
             Margin = new Padding(0),
             Name = "glControlExpGonio",
             ProjWidth = 5D,
-            Size = new Size(264, 264),
+            Size = new Size(S(264), S(264)),
         };
         this.glControlExpGonio.WorldMatrixChanged += new System.EventHandler(this.GlControlReciProAxes_WorldMatrixChanged);
 
