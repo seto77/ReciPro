@@ -308,7 +308,7 @@
     <value>Segoe UI Symbol, 12.1875pt</value>
   </data>
   <data name="checkBoxImmediateUpdate.Text" xml:space="preserve">
-    <value>Immediate updates</value>
+    <value>Update Immediately</value>
   </data>
   <data name="&gt;&gt;checkBoxImmediateUpdate.Name" xml:space="preserve">
     <value>checkBoxImmediateUpdate</value>
@@ -521,8 +521,8 @@
     <value>60</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.ToolTip" xml:space="preserve">
-    <value>If the drawing range is not closed by the crystal planes, 
-limit the range by the distance from the origin.</value>
+    <value>If the drawing range is not closed by crystal planes,
+limit it by this distance from the origin.</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.Size" type="System.Drawing.Size, System.Drawing">
     <value>298, 34</value>
@@ -1095,7 +1095,7 @@ limit the range by the distance from the origin.</value>
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxEquivalency.Text" xml:space="preserve">
-    <value>Equivalency</value>
+    <value>Equivalent Planes</value>
   </data>
   <data name="&gt;&gt;lDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1209,8 +1209,8 @@ limit the range by the distance from the origin.</value>
     <value>h</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.ToolTip1" xml:space="preserve">
-    <value>If the drawing range is not closed by the crystal planes, 
-limit the range by the distance from the origin.</value>
+    <value>If the drawing range is not closed by crystal planes,
+limit it by this distance from the origin.</value>
   </data>
   <data name="&gt;&gt;MultipleOfD.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1273,7 +1273,7 @@ limit the range by the distance from the origin.</value>
     <value>4, 2, 4, 2</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.HeaderText" xml:space="preserve">
-    <value>Max distance from origin</value>
+    <value>Max Distance from Origin</value>
   </data>
   <data name="numericBoxL.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1288,7 +1288,7 @@ limit the range by the distance from the origin.</value>
     <value>3</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Distance from origin</value>
+    <value>Distance from Origin</value>
   </data>
   <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

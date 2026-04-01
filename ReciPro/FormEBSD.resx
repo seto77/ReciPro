@@ -131,7 +131,7 @@
     <value>1000, 30</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set the range and step size for the sample thickness.</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="trackBarMasterPatternEnergy.AutoSize" type="System.Boolean, mscorlib">
@@ -481,7 +481,7 @@ Kikuchi lines under this value are simulated.
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set the range and step size for the sample thickness.</value>
   </data>
   <data name="&gt;&gt;numericBoxZofDet.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -502,7 +502,7 @@ Kikuchi lines under this value are simulated.
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
-    <value>Threshold of 1/d</value>
+    <value>1/d Cutoff</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1075,8 +1075,8 @@ Kikuchi lines under this value are simulated.
     <value>0, 0, 1, 0</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>Reflect the structure factor
- in the Kikuchi line density</value>
+    <value>Apply structure factors
+to Kikuchi line intensity</value>
   </data>
   <data name="buttonCreateMasterPattern.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 0</value>
@@ -1133,7 +1133,7 @@ Kikuchi lines under this value are simulated.
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
-    <value>EBSD geometry</value>
+    <value>EBSD Geometry</value>
   </data>
   <data name="labelMasterPatternInfo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1160,7 +1160,7 @@ Kikuchi lines under this value are simulated.
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
-    <value>Viw along the axis</value>
+    <value>View Along</value>
   </data>
   <data name="trackBarMasterPatternEnergy.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 4</value>
@@ -1190,7 +1190,7 @@ Kikuchi lines under this value are simulated.
     <value>label17</value>
   </data>
   <data name="buttonFromX.Text" xml:space="preserve">
-    <value>From X (rotation axis)</value>
+    <value>X Axis (Rotation Axis)</value>
   </data>
   <data name="&gt;&gt;colorControlString.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1415,7 +1415,7 @@ Kikuchi lines under this value are simulated.
     <value>410, 95</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>String size</value>
+    <value>Text Size</value>
   </data>
   <data name="flowLayoutPanelMasterPatternSelectors.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 419</value>
@@ -1505,7 +1505,7 @@ Kikuchi lines under this value are simulated.
     <value>495, 25</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
-    <value>Set a color of strings</value>
+    <value>Set the color of strings</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1640,7 +1640,7 @@ Kikuchi lines under this value are simulated.
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="buttonViewQuarter.Text" xml:space="preserve">
-    <value>Quarter view</value>
+    <value>Bird's-Eye View</value>
   </data>
   <data name="colorControlExcessLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1832,7 +1832,7 @@ Kikuchi lines under this value are simulated.
     <value>label14</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>EBSD simulator</value>
+    <value>EBSD Simulator</value>
   </data>
   <data name="labelMasterPatternGrid.Text" xml:space="preserve">
     <value>Grid</value>
@@ -1841,7 +1841,7 @@ Kikuchi lines under this value are simulated.
     <value>Right</value>
   </data>
   <data name="tabPage3.Text" xml:space="preserve">
-    <value>Overlay</value>
+    <value>Overlays</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 19</value>
@@ -1958,7 +1958,7 @@ Kikuchi lines under this value are simulated.
     <value>0, 2, 0, 0</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Gradient</value>
+    <value>Polarity</value>
   </data>
   <data name="flowLayoutPanelMasterPattern3DViewAlong.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1970,7 +1970,7 @@ Kikuchi lines under this value are simulated.
     <value>6</value>
   </data>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set the energy range and step size.</value>
   </data>
   <data name="numericBoxThicknessStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -2632,7 +2632,7 @@ Kikuchi lines under this value are simulated.
     <value>113</value>
   </data>
   <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set the energy range and step size.</value>
   </data>
   <data name="&gt;&gt;labelMasterPatternDepthUnit.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -2818,7 +2818,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
-    <value>Dynamical simulation properties</value>
+    <value>Dynamical Simulation Parameters</value>
   </data>
   <data name="graphicsBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>512, 512</value>
@@ -3145,7 +3145,7 @@ Kikuchi lines under this value are simulated.
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.Text" xml:space="preserve">
-    <value>Axis arrows</value>
+    <value>Show Axis Arrows</value>
   </data>
   <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -3268,7 +3268,7 @@ Kikuchi lines under this value are simulated.
     <value>2, 0, 0, 0</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
-    <value>Text</value>
+    <value>Text Settings</value>
   </data>
   <data name="&gt;&gt;label16.Parent" xml:space="preserve">
     <value>groupBoxEBSDGeometry</value>
@@ -3364,7 +3364,7 @@ Kikuchi lines under this value are simulated.
     <value>checkBoxWithBSEDistribution</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.Text" xml:space="preserve">
-    <value>From the surface normal</value>
+    <value>Surface Normal</value>
   </data>
   <data name="&gt;&gt;trackBarMasterPatternDepth.Parent" xml:space="preserve">
     <value>flowLayoutPanelMasterPatternSelectors</value>
@@ -3559,10 +3559,10 @@ Kikuchi lines under this value are simulated.
     <value>False</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
-    <value>From Z (=beam direction)</value>
+    <value>Z Axis (Beam Direction)</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
-    <value>Show Mesh</value>
+    <value>Show mesh</value>
   </data>
   <data name="labelMasterPatternInfo.Text" xml:space="preserve">
     <value>MasterPattern preview is empty.</value>
@@ -3853,7 +3853,7 @@ Kikuchi lines under this value are simulated.
     <value>1000, 30</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
-    <value>Show Dynamical EBSD pattern (master pattern required)</value>
+    <value>Show Dynamical EBSD Pattern (Master Pattern Required)</value>
   </data>
   <data name="&gt;&gt;numericBoxDetRadius.Parent" xml:space="preserve">
     <value>groupBoxEBSDGeometry</value>
@@ -3865,7 +3865,7 @@ Kikuchi lines under this value are simulated.
     <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
-    <value>Set a number of diffracted waves to be calculated</value>
+    <value>Set the number of diffracted waves to be calculated</value>
   </data>
   <data name="checkBoxShowZoneAxisIndices.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 245</value>
@@ -3895,7 +3895,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>Output parameters</value>
+    <value>Output Parameters</value>
   </data>
   <data name="&gt;&gt;numericBoxYofDet.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -4096,7 +4096,7 @@ Kikuchi lines under this value are simulated.
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
-    <value>Axis labels</value>
+    <value>Show Axis Labels</value>
   </data>
   <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4234,7 +4234,7 @@ Kikuchi lines under this value are simulated.
     <value>73, 24</value>
   </data>
   <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set the energy range and step size.</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
@@ -4333,7 +4333,7 @@ Kikuchi lines under this value are simulated.
     <value>0</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>Set a range and step of the sample thichnesses</value>
+    <value>Set the range and step size for the sample thickness.</value>
   </data>
   <data name="numericBoxEnergyEnd.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
@@ -4444,7 +4444,7 @@ Kikuchi lines under this value are simulated.
     <value>flowLayoutPanelMasterPattern3DViewAlong</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
-    <value>Calc BSE</value>
+    <value>Calculate</value>
   </data>
   <data name="&gt;&gt;labelMasterPatternEnergyUnit.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4564,7 +4564,7 @@ Kikuchi lines under this value are simulated.
     <value>groupBoxEBSDGeometry</value>
   </data>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
-    <value>SEM &amp;&amp; Sample condition</value>
+    <value>SEM &amp; Sample Conditions</value>
   </data>
   <data name="&gt;&gt;label12.Name" xml:space="preserve">
     <value>label12</value>

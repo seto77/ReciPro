@@ -174,17 +174,17 @@
     <value>1, 27</value>
   </data>
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
-    <value>Standard deviation of energy</value>
+    <value>Energy Standard Deviation</value>
   </data>
   <data name="checkBoxDrawAbsorved.Text" xml:space="preserve">
-    <value>Draw the trajectories absorved in the sample</value>
+    <value>Draw trajectories absorbed in the sample</value>
   </data>
   <data name="&gt;&gt;buttonCalc.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Number of trajectories
- to calculate</value>
+to calculate</value>
   </data>
   <data name="&gt;&gt;checkBoxDrawAxes.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -320,7 +320,7 @@
     <value>groupBoxPenetrationDepth</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>The stopping power (dE/ds)</value>
+    <value>Stopping Power (dE/ds)</value>
   </data>
   <data name="&gt;&gt;groupBoxDirectionDistribution.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -371,7 +371,7 @@
     <value>Crystallography.Controls.PoleFigureControl2, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Trajectory Calculation by Monte Carlo Method</value>
+    <value>Trajectory Simulator (Monte Carlo Method)</value>
   </data>
   <data name="&gt;&gt;groupBoxStatistics.Parent" xml:space="preserve">
     <value>$this</value>
@@ -492,7 +492,7 @@
     <value>9</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
-    <value>Sample tilt</value>
+    <value>Sample Tilt</value>
   </data>
   <data name="&gt;&gt;buttonViewFromX.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -510,7 +510,7 @@
     <value>panelDrawingOptions</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Average energy of the BSEs</value>
+    <value>Average BSE Energy</value>
   </data>
   <data name="&gt;&gt;poleFigureControl.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -675,7 +675,7 @@
     <value>6</value>
   </data>
   <data name="groupBoxEnergyDistribution.Text" xml:space="preserve">
-    <value>Energy distribution of BSEs (ΔE)</value>
+    <value>BSE Energy Distribution at Escape</value>
   </data>
   <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>210, 0</value>
@@ -790,7 +790,7 @@
   </data>
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>Draw
- axes</value>
+axes</value>
   </data>
   <data name="numericBoxDrawNum.HeaderText" xml:space="preserve">
     <value>Number of trajectories to draw</value>
@@ -898,7 +898,7 @@
     <value>Elastic mean free path (λ)</value>
   </data>
   <data name="groupBoxDirectionDistribution.Text" xml:space="preserve">
-    <value>Direction distribution of BSEs (the center of stereonet corresponds to the surface normal direction)</value>
+    <value>BSE Direction Distribution (the stereonet center corresponds to the surface normal direction)</value>
   </data>
   <data name="&gt;&gt;checkBoxDrawAxesInStereonet.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -925,7 +925,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="groupBoxPenetrationDepth.Text" xml:space="preserve">
-    <value>Maximum depth penetration of BSEs</value>
+    <value>Maximum BSE Penetration Depth</value>
   </data>
   <data name="numericBoxDrawNum.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -958,7 +958,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="groupBoxSurfaceDistance.Text" xml:space="preserve">
-    <value>Maximum distance parallel to the surface of BSEs</value>
+    <value>Maximum BSE Surface-Parallel Distance</value>
   </data>
   <data name="buttonViewFromZ.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

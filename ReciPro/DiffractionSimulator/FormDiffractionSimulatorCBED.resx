@@ -471,7 +471,7 @@ All solvers produce the same results, but at different computational speeds.</va
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxThread.HeaderText" xml:space="preserve">
-    <value>Thread</value>
+    <value>Threads</value>
   </data>
   <data name="numericBoxThread.Location" type="System.Drawing.Point, System.Drawing">
     <value>288, 27</value>
@@ -603,10 +603,10 @@ All solvers produce the same results, but at different computational speeds.</va
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
-    <value>Set a number of diffracted waves to be calculated</value>
+    <value>Set the number of diffracted waves to be calculated</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
-    <value>Set a number of diffracted waves to be calculated</value>
+    <value>Set the number of diffracted waves to be calculated</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
     <value>numericBoxMaxNumOfG</value>
@@ -786,11 +786,11 @@ All solvers produce the same results, but at different computational speeds.</va
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
-    <value>Set a number of divisions along the diameter.
+    <value>Set the number of divisions along the diameter.
 The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip1" xml:space="preserve">
-    <value>Set a number of divisions along the diameter.
+    <value>Set the number of divisions along the diameter.
 The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;numericBoxDiskResolution.Name" xml:space="preserve">
@@ -851,7 +851,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>0</value>
   </data>
   <data name="groupBoxInputParameters.Text" xml:space="preserve">
-    <value>Input parameters</value>
+    <value>Input Parameters</value>
   </data>
   <data name="&gt;&gt;groupBoxInputParameters.Name" xml:space="preserve">
     <value>groupBoxInputParameters</value>
@@ -884,10 +884,10 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>45</value>
   </data>
   <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
-    <value>for individual disks.</value>
+    <value>for individual disks</value>
   </data>
   <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
-    <value>A brightness level is applied to each upper/lower limits of individual disc.</value>
+    <value>Separate brightness ranges are applied to each individual disk.</value>
   </data>
   <data name="&gt;&gt;radioButtonIndividualDisk.Name" xml:space="preserve">
     <value>radioButtonIndividualDisk</value>
@@ -920,7 +920,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>for all disks</value>
   </data>
   <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
-    <value>A same brightness level (Min/Max) is applied to all discs.</value>
+    <value>The same brightness range (Min/Max) is applied to all disks.</value>
   </data>
   <data name="&gt;&gt;radioButtonAllDisks.Name" xml:space="preserve">
     <value>radioButtonAllDisks</value>
@@ -1323,7 +1323,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>30</value>
   </data>
   <data name="labelGamma.Text" xml:space="preserve">
-    <value>Gamma (enhance outer diks)</value>
+    <value>Gamma (Enhance Outer Disks)</value>
   </data>
   <data name="&gt;&gt;labelGamma.Name" xml:space="preserve">
     <value>labelGamma</value>
@@ -1356,7 +1356,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>30</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Max</value>
+    <value>Min</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -1389,7 +1389,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>30</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Min</value>
+    <value>Max</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -1422,7 +1422,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>30</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Adjust brightness </value>
+    <value>Adjust Brightness</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -1485,7 +1485,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>1</value>
   </data>
   <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>Output parameters</value>
+    <value>Output Parameters</value>
   </data>
   <data name="&gt;&gt;groupBoxOutput.Name" xml:space="preserve">
     <value>groupBoxOutput</value>

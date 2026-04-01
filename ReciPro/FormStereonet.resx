@@ -467,7 +467,7 @@ Middle drag: Drag the simulated image
     <value>Upper</value>
   </data>
   <data name="radioButtonUpperSphere.ToolTip" xml:space="preserve">
-    <value>Draw crystal axes</value>
+    <value>Draw the upper hemisphere.</value>
   </data>
   <data name="radioButtonLowerSphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -494,7 +494,7 @@ Middle drag: Drag the simulated image
     <value>Lower</value>
   </data>
   <data name="radioButtonLowerSphere.ToolTip" xml:space="preserve">
-    <value>Draw crystal planes</value>
+    <value>Draw the lower hemisphere.</value>
   </data>
   <data name="flowLayoutPanelProjectionScheme.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -563,7 +563,7 @@ Middle drag: Drag the simulated image
     <value>0</value>
   </data>
   <data name="radioButtonWulff.Text" xml:space="preserve">
-    <value>Equiangler</value>
+    <value>Equal-Angle</value>
   </data>
   <data name="radioButtonWulff.ToolTip" xml:space="preserve">
     <value>Project directions by the Wulff net (equal-angle method)</value>
@@ -623,9 +623,9 @@ Middle drag: Drag the simulated image
     <value>48</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
-    <value>Reflect the structure
-factor in the spot size
-or the Kikuchi line</value>
+    <value>Apply structure factors
+to spot size or
+Kikuchi line intensity</value>
   </data>
   <data name="checkBoxShowIndexLabels.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -784,7 +784,7 @@ or the Kikuchi line</value>
     <value>Kikuchi line pairs</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
-    <value>Draw crystal axes</value>
+    <value>Draw Kikuchi line pairs.</value>
   </data>
   <data name="labelXpos.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1003,10 +1003,10 @@ or the Kikuchi line</value>
     <value>48</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
-    <value>Show 1° line</value>
+    <value>Show 1° Lines</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
-    <value>Display a line in 1 degree increments</value>
+    <value>Display lines at 1° intervals.</value>
   </data>
   <data name="radioButtonOutlinePole.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1609,8 +1609,8 @@ or the Kikuchi line</value>
     <value>55</value>
   </data>
   <data name="radioButtonCircleByPlanes.Text" xml:space="preserve">
-    <value>Zone determined 
-by two planes</value>
+    <value>Zone Defined by
+Two Planes</value>
   </data>
   <data name="&gt;&gt;radioButtonCircleByPlanes.Name" xml:space="preserve">
     <value>radioButtonCircleByPlanes</value>
@@ -2447,7 +2447,7 @@ by two planes</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlString.FooterText" xml:space="preserve">
-    <value>Zone axis label in Kikuchi pattern</value>
+    <value>Zone Axis Label Color in Kikuchi Pattern</value>
   </data>
   <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -2483,7 +2483,7 @@ by two planes</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlKikuchi.FooterText" xml:space="preserve">
-    <value>Zone axis symbol in Kikuchi pattern</value>
+    <value>Zone Axis Color in Kikuchi Pattern</value>
   </data>
   <data name="colorControlKikuchi.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3845,7 +3845,7 @@ by two planes</value>
     <value>140, 22</value>
   </data>
   <data name="asBitmapToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Image</value>
+    <value>As Image</value>
   </data>
   <data name="asMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 22</value>
@@ -4004,7 +4004,7 @@ by two planes</value>
     <value>Structure factor</value>
   </data>
   <data name="radioButtonHighStructureFactor.ToolTip" xml:space="preserve">
-    <value>Specify indices to be displayed individually</value>
+    <value>Select indices by structure-factor ranking.</value>
   </data>
   <data name="radioButtonHighStructureFactor.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -5305,7 +5305,7 @@ by two planes</value>
     <value>0</value>
   </data>
   <data name="checkBoxDisplay3D.Text" xml:space="preserve">
-    <value>Render</value>
+    <value>3D View</value>
   </data>
   <data name="&gt;&gt;checkBoxDisplay3D.Name" xml:space="preserve">
     <value>checkBoxDisplay3D</value>
@@ -5509,7 +5509,7 @@ by two planes</value>
     <value>3</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
-    <value>Depth fading out</value>
+    <value>Depth Fade</value>
   </data>
   <data name="checkBox3dOptionSphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5548,7 +5548,7 @@ by two planes</value>
     <value>0</value>
   </data>
   <data name="checkBox3dOptionSemisphere.Text" xml:space="preserve">
-    <value>Semisphere</value>
+    <value>Hemisphere</value>
   </data>
   <data name="trackBarDepthFadingOut.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -5599,7 +5599,7 @@ by two planes</value>
     <value>0</value>
   </data>
   <data name="checkBox3dOptionProjectionLine.Text" xml:space="preserve">
-    <value>Projection line</value>
+    <value>Projection Lines</value>
   </data>
   <data name="checkBox3dOptionStereonet.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

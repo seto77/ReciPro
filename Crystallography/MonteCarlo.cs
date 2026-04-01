@@ -229,7 +229,8 @@ public class MonteCarlo
     }
 
     /// <summary>DiscreteBulkDiimfpApproximation 用のエネルギー損失サンプラー。低損失・プラズモン・高損失テールの 3 成分混合 PDF から CDF を構築し、逆関数法でサンプリングする。</summary>
-    private sealed class BulkLossSamplerEntry(double minLossKev, double lossStepKev, double[] cumulativeProbabilities) // (260331Ch)
+    // private sealed class BulkLossSamplerEntry(double minLossKev, double lossStepKev, double[] cumulativeProbabilities) // 260401Cl 旧シグネチャ
+    private sealed class BulkLossSamplerEntry(double minLossKev, double lossStepKev, double[] cumulativeProbabilities, byte[] guideTable) // 260401Cl GuideTable 追加
     {
         /// <summary>260401Cl 損失スペクトルの最小エネルギー損失 (keV)。バンドギャップ以上の値</summary>
         public readonly double MinLossKev = minLossKev;
@@ -237,6 +238,8 @@ public class MonteCarlo
         public readonly double LossStepKev = lossStepKev;
         /// <summary>260401Cl エネルギー損失分布の累積確率 (256 ビン)。逆関数法でサンプリング</summary>
         public readonly double[] CumulativeProbabilities = cumulativeProbabilities;
+        /// <summary>260401Cl CDF バイナリサーチを O(1) に高速化するガイドテーブル (64 エントリ)</summary>
+        public readonly byte[] GuideTable = guideTable;
     }
 
     /// <summary>後方散乱電子の詳細情報。EBSD パターン形成に寄与する電子の最後の非弾性散乱の深さ・エネルギー・方向を記録する。</summary>
@@ -260,8 +263,12 @@ public class MonteCarlo
     /// <param name="StoppingPowerKevPerNm">260401Cl 阻止能 dE/ds [keV/nm] (負値)。単位飛行距離あたりのエネルギー損失率</param>
     /// <param name="InelasticMeanFreePathNm">260401Cl 非弾性平均自由行程 λ_in [nm]。TPP-2M で計算。連続する非弾性散乱間の平均飛行距離</param>
     /// <param name="MeanInelasticLossKev">260401Cl 1 回の非弾性散乱あたりの平均エネルギー損失 &lt;ΔE&gt; = |dE/ds|·λ_in [keV]</param>
+    /// <param name="TotalRate">260401Cl 弾性+非弾性の全散乱レート 1/λ_el + 1/λ_in [1/nm]。ホットループ内の除算を事前計算で除去</param>
+    /// <param name="ElasticProbability">260401Cl 散乱イベントが弾性である確率 = ElasticRate / TotalRate。ホットループ内の乗算を除去</param>
+    /// <param name="NearestNistElasticEnergyIndex">260401Cl NIST 101 エネルギー点上の最近傍インデックス。ホットループ内の Math.Log を事前計算で除去</param>
     private readonly record struct TransportParameters( // (260331Ch) 1 ステップで使う輸送パラメータをまとめて扱う
-        double ScreeningParameter, double ElasticCrossSectionNm2, double ElasticMeanFreePathNm, double StoppingPowerKevPerNm, double InelasticMeanFreePathNm, double MeanInelasticLossKev);
+        double ScreeningParameter, double ElasticCrossSectionNm2, double ElasticMeanFreePathNm, double StoppingPowerKevPerNm, double InelasticMeanFreePathNm, double MeanInelasticLossKev,
+        double TotalRate, double ElasticProbability, int NearestNistElasticEnergyIndex); // 260401Cl 追加: ホットループの除算・Math.Log を排除
     #endregion
 
     /// <summary>コンストラクタ</summary>
@@ -529,7 +536,19 @@ public class MonteCarlo
             cumulativeProbabilities[i] = cumulative;
         }
         cumulativeProbabilities[^1] = 1.0;
-        return new BulkLossSamplerEntry(minLossEv * 0.001, lossStepEv * 0.001, cumulativeProbabilities);
+        // 260401Cl 追加: CDF バイナリサーチを O(1) に高速化するガイドテーブル構築
+        const int guideSize = 64;
+        var guide = new byte[guideSize];
+        int bin = 0;
+        for (int k = 0; k < guideSize; k++)
+        {
+            double v = k / (double)(guideSize - 1);
+            while (bin < cumulativeProbabilities.Length - 1 && cumulativeProbabilities[bin] < v)
+                bin++;
+            guide[k] = (byte)Math.Max(0, bin > 0 ? bin - 1 : 0);
+        }
+        // return new BulkLossSamplerEntry(minLossEv * 0.001, lossStepEv * 0.001, cumulativeProbabilities); // 260401Cl 旧
+        return new BulkLossSamplerEntry(minLossEv * 0.001, lossStepEv * 0.001, cumulativeProbabilities, guide); // 260401Cl GuideTable 追加
     }
 
     /// <summary>3 つの確率密度関数を重み付き線形結合する。destination[i] = w1·pdf1[i] + w2·pdf2[i] + w3·pdf3[i]</summary>
@@ -608,7 +627,14 @@ public class MonteCarlo
         var sp = GetStoppingPower(kev, mv2); // (260331Ch)
         var λ_in = GetInelasticMeanFreePathAngstrom(kev * 1000.0) * 0.1; // (260331Ch) TPP-2M の IMFP [A] -> [nm]
         var meanLossKev = λ_in > 0 && sp < 0 ? -sp * λ_in : double.NaN; // (260331Ch) 平均的には <ΔE>/λ_in = stopping power を満たす
-        return new TransportParameters(α, σ_E, λ_el, sp, λ_in, meanLossKev);
+        // 260401Cl 追加: ホットループ内の除算・Math.Log を事前計算で排除
+        var elasticRate = λ_el > 0 ? 1.0 / λ_el : 0.0;
+        var inelasticRate = λ_in > 0 && meanLossKev > 0 ? 1.0 / λ_in : 0.0;
+        var totalRate = elasticRate + inelasticRate;
+        var elasticProbability = totalRate > 0 ? elasticRate / totalRate : 1.0;
+        var energyEv = kev * 1000.0;
+        var nearestNistIndex = energyEv >= 50.0 && energyEv <= 20000.0 ? GetNearestNistElasticEnergyIndex(energyEv) : 0;
+        return new TransportParameters(α, σ_E, λ_el, sp, λ_in, meanLossKev, totalRate, elasticProbability, nearestNistIndex);
     }
 
     /// <summary>
@@ -638,10 +664,11 @@ public class MonteCarlo
     /// 弾性散乱角 cosθ をサンプリングする。Mott/NIST テーブルが利用可能ならそちらを使い、
     /// なければ Screened Rutherford の解析式 cosθ = 1 - 2αR/(1+α-R) (R: 一様乱数) でサンプリング。
     /// </summary>
-    private double SampleElasticScatteringCosTheta(double kev, double α)
+    // private double SampleElasticScatteringCosTheta(double kev, double α) // 260401Cl 旧シグネチャ
+    private double SampleElasticScatteringCosTheta(double kev, double α, int nistEnergyIndex) // 260401Cl nistEnergyIndex 追加
     {
         if (ElasticScatteringModel == ElasticScatteringModels.MottNistSampler2023 &&
-            TrySampleMottElasticCosTheta(kev, out var cosTheta))
+            TrySampleMottElasticCosTheta(kev, nistEnergyIndex, out var cosTheta)) // 260401Cl
             return cosTheta;
 
         var rnd = Rnd.NextDouble();
@@ -652,7 +679,8 @@ public class MonteCarlo
     /// NIST SRD 64 の累積角度分布 Φ(cosθ) テーブルから弾性散乱角 cosθ を逆関数法でサンプリングする。
     /// 混合物系では巨視的断面積の比で散乱元素を確率的に選択した後、その元素の Φ テーブルを使う。
     /// </summary>
-    private bool TrySampleMottElasticCosTheta(double kev, out double cosTheta)
+    // private bool TrySampleMottElasticCosTheta(double kev, out double cosTheta) // 260401Cl 旧シグネチャ
+    private bool TrySampleMottElasticCosTheta(double kev, int nistEnergyIndex, out double cosTheta) // 260401Cl nistEnergyIndex 追加
     {
         cosTheta = double.NaN;
         if (ElasticComponents.Length == 0 || MottElasticMixtureCache.Length == 0)
@@ -662,7 +690,8 @@ public class MonteCarlo
         if (energyEv < 50.0 || energyEv > 20000.0)
             return false;
 
-        int energyIndex = GetNearestNistElasticEnergyIndex(energyEv);
+        // int energyIndex = GetNearestNistElasticEnergyIndex(energyEv); // 260401Cl 事前計算済み
+        int energyIndex = nistEnergyIndex; // 260401Cl
         var mixture = MottElasticMixtureCache[energyIndex];
         var choice = Rnd.NextDouble();
         int speciesIndex;
@@ -920,9 +949,21 @@ public class MonteCarlo
             return meanLossKev;
 
         var target = Rnd.NextDouble();
-        int upper = Array.BinarySearch(entry.CumulativeProbabilities, target);
-        if (upper < 0)
-            upper = ~upper;
+        // int upper = Array.BinarySearch(entry.CumulativeProbabilities, target); // 260401Cl 旧: O(log 256) バイナリサーチ
+        // 260401Cl ガイドテーブルで O(1) に高速化
+        int upper;
+        var guide = entry.GuideTable;
+        if (guide is not null)
+        {
+            upper = guide[Math.Min((int)(target * (guide.Length - 1)), guide.Length - 1)];
+            while (upper < entry.CumulativeProbabilities.Length - 1 && entry.CumulativeProbabilities[upper] < target)
+                upper++;
+        }
+        else
+        {
+            upper = Array.BinarySearch(entry.CumulativeProbabilities, target);
+            if (upper < 0) upper = ~upper;
+        }
         upper = Math.Clamp(upper, 1, entry.CumulativeProbabilities.Length - 1);
         int lower = upper - 1;
         var p0 = entry.CumulativeProbabilities[lower];
@@ -959,7 +1000,7 @@ public class MonteCarlo
             if (n++ != 0)
             {
                 double rnd3 = Rnd.NextDouble();
-                double cosθ = SampleElasticScatteringCosTheta(trajectory[^1].e, α), sinθ = Math.Sqrt(1 - cosθ * cosθ); // (260331Ch) Mott/NIST sampler が使えれば cosθ を差し替える
+                double cosθ = SampleElasticScatteringCosTheta(trajectory[^1].e, α, GetNearestNistElasticEnergyIndex(trajectory[^1].e * 1000.0)), sinθ = Math.Sqrt(1 - cosθ * cosθ); // 260401Cl nistEnergyIndex 追加 (CSDA パスは性能非優先)
                 double φ = 2 * Math.PI * rnd3;
                 var (sinφ, cosφ) = Math.SinCos(φ);
                 double sinθcosφ = sinθ * cosφ, sinθsinφ = sinθ * sinφ;
@@ -1005,18 +1046,15 @@ public class MonteCarlo
         while (trajectory[^1].e > ThresholdKev && trajectory[^1].p.Y * tan >= trajectory[^1].p.Z)
         {
             var parameters = GetTransportParameters(trajectory[^1].e);
-            if (!(parameters.ElasticMeanFreePathNm > 0))
+            // if (!(parameters.ElasticMeanFreePathNm > 0)) break; // 260401Cl TotalRate に統合
+            // var elasticRate = 1.0 / parameters.ElasticMeanFreePathNm; // 260401Cl 事前計算済み
+            // var inelasticRate = parameters.InelasticMeanFreePathNm > 0 && parameters.MeanInelasticLossKev > 0 // 260401Cl
+            //     ? 1.0 / parameters.InelasticMeanFreePathNm : 0.0;
+            // var totalRate = elasticRate + inelasticRate; // 260401Cl 事前計算済み
+            if (!(parameters.TotalRate > 0)) // 260401Cl
                 break;
 
-            var elasticRate = 1.0 / parameters.ElasticMeanFreePathNm;
-            var inelasticRate = parameters.InelasticMeanFreePathNm > 0 && parameters.MeanInelasticLossKev > 0
-                ? 1.0 / parameters.InelasticMeanFreePathNm
-                : 0.0; // (260331Ch) IMFP が破綻した点では弾性散乱だけで継続する
-            var totalRate = elasticRate + inelasticRate;
-            if (!(totalRate > 0))
-                break;
-
-            var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) / totalRate;
+            var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) / parameters.TotalRate; // 260401Cl
             var nextPoint = trajectory[^1].p + s * new V3(vX, vY, vZ);
             if (nextPoint.Y * tan < nextPoint.Z)
             {
@@ -1024,12 +1062,12 @@ public class MonteCarlo
                 break;
             }
 
-            bool isElastic = inelasticRate <= 0 || Rnd.NextDouble() * totalRate < elasticRate;
+            bool isElastic = parameters.ElasticProbability >= 1.0 || Rnd.NextDouble() < parameters.ElasticProbability; // 260401Cl 事前計算済み
             double nextEnergy = trajectory[^1].e;
             if (isElastic)
             {
                 double rnd3 = Rnd.NextDouble();
-                double cosθ = SampleElasticScatteringCosTheta(trajectory[^1].e, parameters.ScreeningParameter), sinθ = Math.Sqrt(1 - cosθ * cosθ); // (260331Ch)
+                double cosθ = SampleElasticScatteringCosTheta(trajectory[^1].e, parameters.ScreeningParameter, parameters.NearestNistElasticEnergyIndex), sinθ = Math.Sqrt(1 - cosθ * cosθ); // 260401Cl nistEnergyIndex 追加
                 double φ = 2 * Math.PI * rnd3;
                 var (sinφ, cosφ) = Math.SinCos(φ);
                 double sinθcosφ = sinθ * cosφ, sinθsinφ = sinθ * sinφ;
@@ -1101,7 +1139,7 @@ public class MonteCarlo
             var s = -λ_el * Math.Log(rnd1);
             if (n++ != 0)
             {
-                double cosθ = SampleElasticScatteringCosTheta(e, α), sinθ = Math.Sqrt(1 - cosθ * cosθ); // (260331Ch)
+                double cosθ = SampleElasticScatteringCosTheta(e, α, GetNearestNistElasticEnergyIndex(e * 1000.0)), sinθ = Math.Sqrt(1 - cosθ * cosθ); // 260401Cl nistEnergyIndex 追加 (CSDA パスは性能非優先)
                 double φ = 2 * Math.PI * rnd3;
                 var (sinφ, cosφ) = Math.SinCos(φ);
                 double sinθcosφ = sinθ * cosφ, sinθsinφ = sinθ * sinφ;
@@ -1158,28 +1196,25 @@ public class MonteCarlo
         while (e > ThresholdKev)
         {
             var parameters = GetTransportParameters(e);
-            if (!(parameters.ElasticMeanFreePathNm > 0))
+            // if (!(parameters.ElasticMeanFreePathNm > 0)) break; // 260401Cl TotalRate に統合
+            // var elasticRate = 1.0 / parameters.ElasticMeanFreePathNm; // 260401Cl 事前計算済み
+            // var inelasticRate = parameters.InelasticMeanFreePathNm > 0 && parameters.MeanInelasticLossKev > 0 // 260401Cl
+            //     ? 1.0 / parameters.InelasticMeanFreePathNm : 0.0;
+            // var totalRate = elasticRate + inelasticRate; // 260401Cl 事前計算済み
+            if (!(parameters.TotalRate > 0)) // 260401Cl
                 break;
 
-            var elasticRate = 1.0 / parameters.ElasticMeanFreePathNm;
-            var inelasticRate = parameters.InelasticMeanFreePathNm > 0 && parameters.MeanInelasticLossKev > 0
-                ? 1.0 / parameters.InelasticMeanFreePathNm
-                : 0.0;
-            var totalRate = elasticRate + inelasticRate;
-            if (!(totalRate > 0))
-                break;
-
-            var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) / totalRate;
+            var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) / parameters.TotalRate; // 260401Cl
             var dtmp = d + s * (sin * vY - cos * vZ); // (260331Ch) 現在の進行方向で次イベント位置まで進む
             if (dtmp < 0)
                 break;
             d = dtmp;
 
-            bool isElastic = inelasticRate <= 0 || Rnd.NextDouble() * totalRate < elasticRate;
+            bool isElastic = parameters.ElasticProbability >= 1.0 || Rnd.NextDouble() < parameters.ElasticProbability; // 260401Cl 事前計算済み
             if (isElastic)
             {
                 double rnd3 = Rnd.NextDouble();
-                double cosθ = SampleElasticScatteringCosTheta(e, parameters.ScreeningParameter), sinθ = Math.Sqrt(1 - cosθ * cosθ); // (260331Ch)
+                double cosθ = SampleElasticScatteringCosTheta(e, parameters.ScreeningParameter, parameters.NearestNistElasticEnergyIndex), sinθ = Math.Sqrt(1 - cosθ * cosθ); // 260401Cl nistEnergyIndex 追加
                 double φ = 2 * Math.PI * rnd3;
                 var (sinφ, cosφ) = Math.SinCos(φ);
                 double sinθcosφ = sinθ * cosφ, sinθsinφ = sinθ * sinφ;

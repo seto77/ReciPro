@@ -125,7 +125,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonViewQuarter.Text" xml:space="preserve">
-    <value>鳥観図</value>
+    <value>鳥瞰図</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -248,7 +248,7 @@
     <value>98, 22</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
-    <value>構造散乱因子</value>
+    <value>構造因子</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

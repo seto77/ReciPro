@@ -177,7 +177,7 @@
     <value>711, 17</value>
   </metadata>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>When publishing a paper that includes data here, please be sure to cite the following reference or the references listed on the web page.   AMCSD: Downs &amp; Hall-Wallace (2003) American Mineralogist 88, 247-250.     COD: https://wiki.crystallography.net/cod/citing/</value>
+    <value>If you publish a paper using data from this database, please cite the following reference or the references listed on the corresponding web page. AMCSD: Downs &amp; Hall-Wallace (2003) American Mineralogist 88, 247-250. COD: https://wiki.crystallography.net/cod/citing/</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>165</value>

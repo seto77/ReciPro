@@ -337,7 +337,7 @@
     <value>53, 18</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
-    <value>Division</value>
+    <value>分割</value>
   </data>
   <data name="numericUpDownAngleSubDivision.Location" type="System.Drawing.Point, System.Drawing">
     <value>219, 2</value>
@@ -530,7 +530,7 @@
     <value>90, 26</value>
   </data>
   <data name="buttonScatteringFactor.Text" xml:space="preserve">
-    <value>構造散乱因子</value>
+    <value>散乱因子</value>
   </data>
   <data name="buttonSymmetryInfo.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

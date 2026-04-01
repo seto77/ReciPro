@@ -100,7 +100,7 @@
     <value>Spots</value>
   </data>
   <data name="toolStripButtonDiffractionSpots.ToolTipText" xml:space="preserve">
-    <value>By checking, diffraction spots are simulated.</value>
+    <value>When checked, diffraction spots are simulated.</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -130,7 +130,7 @@
     <value>Kikuchi Lines</value>
   </data>
   <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
-    <value>By checking, Kikuchi lines are simulated.</value>
+    <value>When checked, Kikuchi lines are simulated.</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -160,7 +160,7 @@
     <value>Debye rings</value>
   </data>
   <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
-    <value>By checking, Debye rings are simulated.</value>
+    <value>When checked, Debye rings are simulated.</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -190,7 +190,7 @@
     <value>Scale</value>
   </data>
   <data name="toolStripButtonScale.ToolTipText" xml:space="preserve">
-    <value>By checking, scale lines are simulated.</value>
+    <value>When checked, scale lines are simulated.</value>
   </data>
   <data name="toolStrip3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -663,7 +663,7 @@
     <value>60, 21</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Option</value>
+    <value>Options</value>
   </data>
   <data name="electron300KVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
@@ -798,7 +798,7 @@
     <value>Index</value>
   </data>
   <data name="toolStripButtonIndexLabels.ToolTipText" xml:space="preserve">
-    <value>By checking, index labels are displayed</value>
+    <value>When checked, index labels are displayed</value>
   </data>
   <data name="toolStripButtonDspacing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -825,7 +825,7 @@
     <value>d</value>
   </data>
   <data name="toolStripButtonDspacing.ToolTipText" xml:space="preserve">
-    <value>By checking, d-spacings are displayed</value>
+    <value>When checked, d-spacings are displayed</value>
   </data>
   <data name="toolStripButtonDspacingInv.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -852,7 +852,7 @@
     <value>1/d</value>
   </data>
   <data name="toolStripButtonDspacingInv.ToolTipText" xml:space="preserve">
-    <value>By checking, inverses of d-spacing (i.e., length of g vector) are displayed</value>
+    <value>When checked, inverses of d-spacing (i.e., length of g vector) are displayed</value>
   </data>
   <data name="toolStripButtonDistance.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -879,7 +879,7 @@
     <value>Distance</value>
   </data>
   <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
-    <value>By checking, distances (mm) from spots to the direct spot are displayed</value>
+    <value>When checked, distances (mm) from spots to the direct spot are displayed</value>
   </data>
   <data name="toolStripButtonExcitationError.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -906,7 +906,7 @@
     <value>Excit. Err.</value>
   </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
-    <value>By checking, excitation errors (s_g) are displayed</value>
+    <value>When checked, excitation errors (s_g) are displayed</value>
   </data>
   <data name="toolStripButtonFg.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -933,7 +933,7 @@
     <value>|Fg|</value>
   </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>By checking, magnitudes of structure factors are displayed</value>
+    <value>When checked, magnitudes of structure factors are displayed</value>
   </data>
   <data name="toolStripStatusLabelTimeForSearchingG.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 17</value>
@@ -1089,7 +1089,7 @@
     <value>1</value>
   </data>
   <data name="groupBoxStringSize.Text" xml:space="preserve">
-    <value>String size</value>
+    <value>Text Size</value>
   </data>
   <data name="groupBoxStringSize.ToolTip" xml:space="preserve">
     <value>Set a string size</value>
@@ -1248,10 +1248,10 @@
     <value>1</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
-    <value>Set a color of strings</value>
+    <value>Set the color of strings</value>
   </data>
   <data name="colorControlString.ToolTip1" xml:space="preserve">
-    <value>Set a color of strings</value>
+    <value>Set the color of strings</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1272,11 +1272,11 @@
     <value>3</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>Foot of a perpendicular 
- from the sample</value>
+    <value>Foot of the Perpendicular
+from the Sample</value>
   </data>
   <data name="label14.ToolTip" xml:space="preserve">
-    <value>Set a color of the foot of a perpendicular from the sample</value>
+    <value>Set the color of the foot of a perpendicular from the sample</value>
   </data>
   <data name="colorControlOrigin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1315,10 +1315,10 @@
     <value>1</value>
   </data>
   <data name="colorControlOrigin.ToolTip" xml:space="preserve">
-    <value>Set a color of the direct spot</value>
+    <value>Set the color of the direct spot</value>
   </data>
   <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
-    <value>Set a color of the direct spot</value>
+    <value>Set the color of the direct spot</value>
   </data>
   <data name="colorControlFoot.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1591,7 +1591,7 @@
     <value>56</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
-    <value>Reflect the structure factor in the Kikuchi line density</value>
+    <value>Apply Kinematical Intensity to Kikuchi Lines</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1606,7 +1606,7 @@
     <value>57</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
-    <value>Threshold of 1/d</value>
+    <value>1/d Cutoff</value>
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1666,13 +1666,13 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
-    <value>Set a threshold of d-spacings of Kikuchi lines.
-Kikuchi lines under this value are simulated. 
+    <value>Set the d-spacing threshold for Kikuchi lines.
+Kikuchi lines below this value are simulated.
 </value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
-    <value>Set a threshold of d-spacings of Kikuchi lines.
-Kikuchi lines under this value are simulated. 
+    <value>Set the d-spacing threshold for Kikuchi lines.
+Kikuchi lines below this value are simulated.
 </value>
   </data>
   <data name="colorControlExcessLine.AutoSize" type="System.Boolean, mscorlib">
@@ -1865,10 +1865,10 @@ Kikuchi lines under this value are simulated.
     <value>0</value>
   </data>
   <data name="colorControlDebyeRing.ToolTip" xml:space="preserve">
-    <value>Set a color of Debye rings</value>
+    <value>Set the color of Debye rings</value>
   </data>
   <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
-    <value>Set a color of Debye rings</value>
+    <value>Set the color of Debye rings</value>
   </data>
   <data name="checkBoxDebyeRingLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1892,10 +1892,10 @@ Kikuchi lines under this value are simulated.
     <value>3</value>
   </data>
   <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
-    <value>Show index label</value>
+    <value>Show Index Labels</value>
   </data>
   <data name="checkBoxDebyeRingLabel.ToolTip" xml:space="preserve">
-    <value>By checking, index labels for Debye rings are displayed</value>
+    <value>When checked, index labels for Debye rings are displayed.</value>
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1923,7 +1923,7 @@ Kikuchi lines under this value are simulated.
 </value>
   </data>
   <data name="checkBoxDebyeRingIgnoreIntensity.ToolTip" xml:space="preserve">
-    <value>By checking, all Debye rings are displayed as a same intensity</value>
+    <value>When checked, all Debye rings are displayed at the same intensity.</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -2079,7 +2079,7 @@ Kikuchi lines under this value are simulated.
     <value>Show scale labels</value>
   </data>
   <data name="checkBoxScaleLabel.ToolTip" xml:space="preserve">
-    <value>By checking, scale labels are displayed</value>
+    <value>When checked, scale labels are displayed</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2310,10 +2310,10 @@ Kikuchi lines under this value are simulated.
     <value>2</value>
   </data>
   <data name="colorControlScaleAzimuth.ToolTip" xml:space="preserve">
-    <value>Set a color of azimuth scale lines</value>
+    <value>Set the color of azimuth scale lines</value>
   </data>
   <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
-    <value>Set a color of azimuth scale lines</value>
+    <value>Set the color of azimuth scale lines</value>
   </data>
   <data name="colorControlScale2Theta.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2352,10 +2352,10 @@ Kikuchi lines under this value are simulated.
     <value>1</value>
   </data>
   <data name="colorControlScale2Theta.ToolTip" xml:space="preserve">
-    <value>Set a color of 2θ scale lines</value>
+    <value>Set the color of 2θ scale lines</value>
   </data>
   <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
-    <value>Set a color of 2θ scale lines</value>
+    <value>Set the color of 2θ scale lines</value>
   </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2801,7 +2801,7 @@ Double left click: Display the information of the g-vector</value>
     <value>32</value>
   </data>
   <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
-    <value>Set a size of strings</value>
+    <value>Set the transparency of the 3D spots.</value>
   </data>
   <data name="checkBox3D_ShowIndices.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3033,7 +3033,7 @@ Ewald sphere transparent</value>
     <value>3</value>
   </data>
   <data name="groupBoxViewDirection.Text" xml:space="preserve">
-    <value>View direction</value>
+    <value>View Direction</value>
   </data>
   <data name="tableLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3249,7 +3249,7 @@ Ewald sphere transparent</value>
     <value>⭯</value>
   </data>
   <data name="buttonAntiClock.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal in the direction of the arrow.</value>
   </data>
   <data name="buttonClock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3279,7 +3279,7 @@ Ewald sphere transparent</value>
     <value>⭮</value>
   </data>
   <data name="buttonClock.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal in the direction of the arrow.</value>
   </data>
   <data name="buttonTopLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3309,7 +3309,7 @@ Ewald sphere transparent</value>
     <value>⭦</value>
   </data>
   <data name="buttonTopLeft.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal in the direction of the arrow.</value>
   </data>
   <data name="buttonLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3339,8 +3339,8 @@ Ewald sphere transparent</value>
     <value>⭠</value>
   </data>
   <data name="buttonLeft.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.
-(CTRL+SHIFT+ Left)</value>
+    <value>Rotate the crystal in the direction of the arrow.
+(Ctrl+Shift+Left)</value>
   </data>
   <data name="buttonBottomLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3370,7 +3370,7 @@ Ewald sphere transparent</value>
     <value>⭩</value>
   </data>
   <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal in the direction of the arrow.</value>
   </data>
   <data name="buttonBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3400,8 +3400,8 @@ Ewald sphere transparent</value>
     <value>⭣</value>
   </data>
   <data name="buttonBottom.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.
-(CTRL+SHIFT+ Down)</value>
+    <value>Rotate the crystal in the direction of the arrow.
+(Ctrl+Shift+Down)</value>
   </data>
   <data name="buttonBottomRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3431,7 +3431,7 @@ Ewald sphere transparent</value>
     <value>⭨</value>
   </data>
   <data name="buttonBottomRight.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal in the direction of the arrow.</value>
   </data>
   <data name="buttonTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3461,8 +3461,8 @@ Ewald sphere transparent</value>
     <value>⭡</value>
   </data>
   <data name="buttonTop.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.
-(CTRL+SHIFT+ Up)</value>
+    <value>Rotate the crystal in the direction of the arrow.
+(Ctrl+Shift+Up)</value>
   </data>
   <data name="buttonTopRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3492,7 +3492,7 @@ Ewald sphere transparent</value>
     <value>⭧</value>
   </data>
   <data name="buttonTopRight.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.</value>
+    <value>Rotate the crystal in the direction of the arrow.</value>
   </data>
   <data name="buttonRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3522,8 +3522,8 @@ Ewald sphere transparent</value>
     <value>⭢</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
-    <value>Rotate the crystal to the direction of the arrow.
-(CTRL+SHIFT+ Right)</value>
+    <value>Rotate the crystal in the direction of the arrow.
+(Ctrl+Shift+Right)</value>
   </data>
   <data name="panelViewStep.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3598,10 +3598,10 @@ Ewald sphere transparent</value>
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
-    <value>Set angle step for above buttons, or rotatian speed</value>
+    <value>Set the angle step for the buttons above, or the rotation speed.</value>
   </data>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
-    <value>Set angle step for above buttons, or rotatian speed</value>
+    <value>Set the angle step for the buttons above, or the rotation speed.</value>
   </data>
   <data name="buttonResetAngle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3652,8 +3652,8 @@ Ewald sphere transparent</value>
     <value>29</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
-    <value>Threadshold of 
-relative intensity</value>
+    <value>Threshold of
+Relative Intensity</value>
   </data>
   <data name="colorControl3D_EwaldSphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4367,7 +4367,7 @@ relative intensity</value>
     <value>29</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
-    <value>Real Coord. in mm (origin: sample):</value>
+    <value>Real-Space Coordinates in mm (Origin: Crystal):</value>
   </data>
   <data name="label17.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -4394,7 +4394,7 @@ relative intensity</value>
     <value>29</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Reciprocal Coord. in nm⁻¹:</value>
+    <value>Reciprocal-Space Coordinates in nm⁻¹:</value>
   </data>
   <data name="label20.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -4448,13 +4448,13 @@ relative intensity</value>
     <value>79</value>
   </data>
   <data name="checkBoxMousePositionDetailes.Text" xml:space="preserve">
-    <value>details</value>
+    <value>Details</value>
   </data>
   <data name="checkBoxMousePositionDetailes.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
   <data name="checkBoxMousePositionDetailes.ToolTip" xml:space="preserve">
-    <value>By checking, the detailed information panel on the cursor position opens</value>
+    <value>When checked, the detailed information panel at the cursor position opens.</value>
   </data>
   <data name="groupBoxMonitor.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4598,7 +4598,7 @@ relative intensity</value>
     <value>1</value>
   </data>
   <data name="groupBoxMonitor.Text" xml:space="preserve">
-    <value>Monitor properties</value>
+    <value>Display Settings</value>
   </data>
   <data name="comboBoxCenter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -5190,7 +5190,7 @@ relative intensity</value>
  simulation</value>
   </data>
   <data name="buttonHolderSimulation.ToolTip" xml:space="preserve">
-    <value>Open the window to set the detailed optics</value>
+    <value>Open the TEM holder simulation window.</value>
   </data>
   <data name="label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5289,7 +5289,7 @@ relative intensity</value>
     <value>2</value>
   </data>
   <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
-    <value>Detector geometry &amp;&amp;  Overlay image</value>
+    <value>Detector Geometry &amp;&amp; Overlay Image</value>
   </data>
   <data name="numericUpDownCamaraLength2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -5313,7 +5313,7 @@ relative intensity</value>
     <value>True</value>
   </data>
   <data name="numericUpDownCamaraLength2.ToolTip" xml:space="preserve">
-    <value>Set camera length2, i.e, the distance from the sample to the detector (monitor)</value>
+    <value>Set Camera Length 2, i.e., the distance from the sample to the detector (monitor).</value>
   </data>
   <data name="buttonDetailedGeometry.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5346,7 +5346,7 @@ relative intensity</value>
     <value>Details</value>
   </data>
   <data name="buttonDetailedGeometry.ToolTip" xml:space="preserve">
-    <value>Open the window to set the detailed optics</value>
+    <value>Open the detailed optics settings window.</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5604,13 +5604,13 @@ relative intensity</value>
     <value>271, 22</value>
   </data>
   <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
-    <value>as indivisual image  (PNG format)</value>
+    <value>As Individual Images (PNG Format)</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 22</value>
   </data>
   <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
-    <value>as indivisual image (Tiff format)</value>
+    <value>As Individual Images (TIFF Format)</value>
   </data>
   <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 22</value>
@@ -5788,10 +5788,10 @@ Only valid for an electron source.</value>
     <value>0</value>
   </data>
   <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
-    <value>Assigned color of each crystals</value>
+    <value>Use Assigned Color for Each Crystal</value>
   </data>
   <data name="checkBoxUseCrystalColor.ToolTip" xml:space="preserve">
-    <value>By checking, a drawing color of diffraction spots is set to the color of crystal</value>
+    <value>When checked, diffraction spots are drawn using each crystal's assigned color.</value>
   </data>
   <data name="&gt;&gt;checkBoxUseCrystalColor.Name" xml:space="preserve">
     <value>checkBoxUseCrystalColor</value>
@@ -5830,10 +5830,10 @@ Only valid for an electron source.</value>
     <value>0</value>
   </data>
   <data name="checkBoxExtinctionAll.Text" xml:space="preserve">
-    <value>Exclude all prohibited reflections </value>
+    <value>Exclude all prohibited reflections</value>
   </data>
   <data name="checkBoxExtinctionAll.ToolTip" xml:space="preserve">
-    <value>By checking, all prohibited refrections by the space group are not displayed</value>
+    <value>When checked, all reflections forbidden by the space group are hidden.</value>
   </data>
   <data name="&gt;&gt;checkBoxExtinctionAll.Name" xml:space="preserve">
     <value>checkBoxExtinctionAll</value>
@@ -5873,7 +5873,7 @@ Only valid for an electron source.</value>
  by lattice centring</value>
   </data>
   <data name="checkBoxExtinctionLattice.ToolTip" xml:space="preserve">
-    <value>By checking, prohibited refrections by the lattice centering are not displayed</value>
+    <value>When checked, reflections forbidden by lattice centring are hidden.</value>
   </data>
   <data name="&gt;&gt;checkBoxExtinctionLattice.Name" xml:space="preserve">
     <value>checkBoxExtinctionLattice</value>
@@ -6020,12 +6020,12 @@ Only valid for an electron source.</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
-    <value>Set a number of divisions for the PED simulation.
-Inciden beams along a cone are simulated for this number.</value>
+    <value>Set the number of divisions for the PED simulation.
+Incident beams along the cone are simulated using this number of divisions.</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
-    <value>Set a number of divisions for the PED simulation.
-Inciden beams along a cone are simulated for this number.</value>
+    <value>Set the number of divisions for the PED simulation.
+Incident beams along the cone are simulated using this number of divisions.</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Step.Name" xml:space="preserve">
     <value>numericBoxPED_Step</value>
@@ -6100,7 +6100,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Bloch wave property</value>
+    <value>Bloch Wave Settings</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -6121,7 +6121,7 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
-    <value>No of diffracted waves</value>
+    <value>Number of Diffracted Waves</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 20</value>
@@ -6148,10 +6148,10 @@ Inciden beams along a cone are simulated for this number.</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
-    <value>Set a number of the diffracted waves to be calculated</value>
+    <value>Set the number of diffracted waves to be calculated</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
-    <value>Set a number of the diffracted waves to be calculated</value>
+    <value>Set the number of diffracted waves to be calculated</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Name" xml:space="preserve">
     <value>numericBoxNumOfBlochWave</value>
@@ -6485,7 +6485,7 @@ Inciden beams along a cone are simulated for this number.</value>
 radius</value>
   </data>
   <data name="checkBoxDrawSameSize.ToolTip" xml:space="preserve">
-    <value>By checking, all diffraction spos are drawn with a same size.</value>
+    <value>When checked, all diffraction spots are drawn at the same size.</value>
   </data>
   <data name="checkBoxDrawSameSize.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -6876,7 +6876,7 @@ radius</value>
     <value>Kinematical &amp;&amp; excitation error</value>
   </data>
   <data name="radioButtonIntensityKinematical.ToolTip" xml:space="preserve">
-    <value>In this mode, the intensity is by the structure factor and the excitation error.</value>
+    <value>In this mode, the intensity is calculated from the structure factor and the excitation error.</value>
   </data>
   <data name="&gt;&gt;radioButtonIntensityKinematical.Name" xml:space="preserve">
     <value>radioButtonIntensityKinematical</value>
@@ -6915,10 +6915,10 @@ radius</value>
     <value>3</value>
   </data>
   <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
-    <value>Details of spot information</value>
+    <value>Spot Details</value>
   </data>
   <data name="buttonDetailsOfSpots.ToolTip" xml:space="preserve">
-    <value>Open the window with details of spot information</value>
+    <value>Open the spot details window.</value>
   </data>
   <data name="&gt;&gt;buttonDetailsOfSpots.Name" xml:space="preserve">
     <value>buttonDetailsOfSpots</value>
@@ -7233,7 +7233,7 @@ radius</value>
     <value>4</value>
   </data>
   <data name="groupBoxSpotProperty.Text" xml:space="preserve">
-    <value>Spot properties</value>
+    <value>Simulation Settings</value>
   </data>
   <data name="&gt;&gt;groupBoxSpotProperty.Name" xml:space="preserve">
     <value>groupBoxSpotProperty</value>
@@ -7299,7 +7299,7 @@ radius</value>
     <value>Gaussian</value>
   </data>
   <data name="radioButtonPointSpread.ToolTip" xml:space="preserve">
-    <value>Spots are displayed as 2-dimensional Gauusians</value>
+    <value>Spots are displayed as two-dimensional Gaussians.</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7524,7 +7524,7 @@ radius</value>
     <value>0</value>
   </data>
   <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
-    <value>Set a color scale</value>
+    <value>Set the color scale</value>
   </data>
   <data name="checkBoxLogScale.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7551,7 +7551,7 @@ radius</value>
     <value>Log scale</value>
   </data>
   <data name="checkBoxLogScale.ToolTip" xml:space="preserve">
-    <value>By checking, the intensities of the diffraction spos are logarithmically displayed</value>
+    <value>When checked, diffraction spot intensities are displayed on a logarithmic scale.</value>
   </data>
   <data name="flowLayoutPanelColorScale.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7635,10 +7635,10 @@ radius</value>
     <value>2</value>
   </data>
   <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
-    <value>Set a color of general spots</value>
+    <value>Set the color of general spots</value>
   </data>
   <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
-    <value>Set a color of general spots</value>
+    <value>Set the color of general spots</value>
   </data>
   <data name="colorControlScrewGlide.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7677,10 +7677,10 @@ radius</value>
     <value>3</value>
   </data>
   <data name="colorControlScrewGlide.ToolTip" xml:space="preserve">
-    <value>Set a color of extinct spots (screw of glide)</value>
+    <value>Set the color of extinct spots (screw or glide)</value>
   </data>
   <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
-    <value>Set a color of extinct spots (screw of glide)</value>
+    <value>Set the color of extinct spots (screw or glide)</value>
   </data>
   <data name="colorControlForbiddenLattice.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7719,10 +7719,10 @@ radius</value>
     <value>4</value>
   </data>
   <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
-    <value>Set a color of extinct spots (lattice centering)</value>
+    <value>Set the color of extinct spots (lattice centring)</value>
   </data>
   <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
-    <value>Set a color of extinct spots (lattice centering)</value>
+    <value>Set the color of extinct spots (lattice centring)</value>
   </data>
   <data name="radioButtonBeamParallel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7773,7 +7773,7 @@ radius</value>
     <value>1</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.Text" xml:space="preserve">
-    <value>Precession (X-ray,ZOLZ)</value>
+    <value>Precession (X-ray, ZOLZ)</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
     <value>Precession beam mode (i.e. PED mode)</value>

@@ -2415,7 +2415,7 @@
 左ダブルクリック: gベクトルの情報を表示</value>
   </data>
   <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
-    <value>文字列のサイズを設定</value>
+    <value>3Dスポットの透明度を設定</value>
   </data>
   <data name="colorControl3D_Background.ToolTip" xml:space="preserve">
     <value>背景色を設定</value>

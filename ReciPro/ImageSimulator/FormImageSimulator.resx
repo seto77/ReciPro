@@ -854,7 +854,7 @@
     <value>76</value>
   </data>
   <data name="groupBoxAdjust.Text" xml:space="preserve">
-    <value>Adust</value>
+    <value>Adjust</value>
   </data>
   <data name="&gt;&gt;groupBoxAdjust.Name" xml:space="preserve">
     <value>groupBox3</value>
@@ -920,13 +920,13 @@
     <value>44</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
-    <value>for each image</value>
+    <value>For Each Image</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
   </metadata>
   <data name="checkBoxNormarizeIndividually.ToolTip" xml:space="preserve">
-    <value>If checked, intensity is normalized for individual images.</value>
+    <value>When checked, the intensity is normalized for each image individually.</value>
   </data>
   <data name="&gt;&gt;checkBoxNormarizeIndividually.Name" xml:space="preserve">
     <value>checkBoxNormarizeIndividually</value>
@@ -3801,7 +3801,7 @@
     <value>11</value>
   </data>
   <data name="groupBoxPotentialOption.Text" xml:space="preserve">
-    <value>Potential option</value>
+    <value>Potential Options</value>
   </data>
   <data name="groupBoxPotentialOption.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3980,7 +3980,7 @@ Smaller values result in slower calculation speed but higher accuracy.</value>
     <value>10</value>
   </data>
   <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
-    <value>STEM option</value>
+    <value>STEM Options</value>
   </data>
   <data name="groupBoxSTEMoption2.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4031,9 +4031,9 @@ Smaller values result in slower calculation speed but higher accuracy.</value>
     <value>Linear image</value>
   </data>
   <data name="radioButtonModeQuasiCoherent.ToolTip" xml:space="preserve">
-    <value>Linear image model. Low comutation costs.
-This model is preferable to be applied for a thin sample 
-in which the weak phase object approximation holds
+    <value>Linear image model with low computational cost.
+This model is suitable for thin samples
+for which the weak phase object approximation holds.
 </value>
   </data>
   <data name="&gt;&gt;radioButtonModeQuasiCoherent.Name" xml:space="preserve">
@@ -4073,9 +4073,9 @@ in which the weak phase object approximation holds
     <value>Transmission cross coefficient</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.ToolTip" xml:space="preserve">
-    <value>Transmission cross coefficient (TCC) model. High computaion costs.
-This model should be used for a strong scattering object which usually
- excites many strong diffracted beams.
+    <value>Transmission cross-coefficient (TCC) model with high computational cost.
+This model should be used for strongly scattering objects that
+excite many strong diffracted beams.
 </value>
   </data>
   <data name="&gt;&gt;radioButtonModeTransmissionCrossCoefficient.Name" xml:space="preserve">
@@ -4169,7 +4169,7 @@ This model should be used for a strong scattering object which usually
     <value>9</value>
   </data>
   <data name="groupBoxHREMoption2.Text" xml:space="preserve">
-    <value>HRTEM option</value>
+    <value>HRTEM Options</value>
   </data>
   <data name="&gt;&gt;groupBoxHREMoption2.Name" xml:space="preserve">
     <value>groupBoxHREMoption2</value>
@@ -4340,10 +4340,10 @@ This model should be used for a strong scattering object which usually
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
-    <value>Resolution of the simulated Image in picometer/pixel</value>
+    <value>Resolution of the simulated image in picometers per pixel</value>
   </data>
   <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
-    <value>Resolution of the simulated Image in picometer/pixel</value>
+    <value>Resolution of the simulated image in picometers per pixel</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Name" xml:space="preserve">
     <value>numericBoxResolution</value>
@@ -4376,7 +4376,7 @@ This model should be used for a strong scattering object which usually
     <value>8</value>
   </data>
   <data name="groupBoxImageProperty.Text" xml:space="preserve">
-    <value>Image property</value>
+    <value>Image Properties</value>
   </data>
   <data name="&gt;&gt;groupBoxImageProperty.Name" xml:space="preserve">
     <value>groupBox8</value>
@@ -4486,7 +4486,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>7</value>
   </data>
   <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
-    <value>Num. of dif- fracted waves</value>
+    <value>Diffracted Waves</value>
   </data>
   <data name="&gt;&gt;groupBoxDiffractedWaves.Name" xml:space="preserve">
     <value>groupBox7</value>
@@ -4573,7 +4573,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>53</value>
   </data>
   <data name="groupBoxSimulation.Text" xml:space="preserve">
-    <value>Simulation property</value>
+    <value>Simulation Settings</value>
   </data>
   <data name="&gt;&gt;groupBoxSimulation.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -5240,8 +5240,8 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>53</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>(Anular) Detector
- range (radius)</value>
+    <value>Annular Detector
+Radius Range</value>
   </data>
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -5280,7 +5280,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>6</value>
   </data>
   <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
-    <value>STEM option</value>
+    <value>STEM Options</value>
   </data>
   <data name="groupBoxSTEMoption1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -5418,10 +5418,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+    <value>Objective aperture size in mrad</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
-    <value>Object aperture size in mrad</value>
+    <value>Objective aperture size in mrad</value>
   </data>
   <data name="&gt;&gt;numericBoxObjAperRadius.Name" xml:space="preserve">
     <value>numericBoxObjAperRadius</value>
@@ -5733,9 +5733,9 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>53</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Aperture outline is 
-shown in "Diffraction
- Simulator" </value>
+    <value>The aperture outline is
+shown in the "Diffraction
+Simulator"</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -5771,7 +5771,7 @@ shown in "Diffraction
     <value>5</value>
   </data>
   <data name="groupBoxHREMoption1.Text" xml:space="preserve">
-    <value>Object aperture (HRTEM option)</value>
+    <value>Objective Aperture (HRTEM Option)</value>
   </data>
   <data name="&gt;&gt;groupBoxHREMoption1.Name" xml:space="preserve">
     <value>groupBoxHREMoption1</value>
@@ -5792,7 +5792,7 @@ shown in "Diffraction
     <value>357, 22</value>
   </data>
   <data name="setoZeroDefocusToolStripMenuItem.Text" xml:space="preserve">
-    <value>Seto defocus to 0 nm</value>
+    <value>Set Defocus to 0 nm</value>
   </data>
   <data name="setoScherzerDefocusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 22</value>
@@ -6222,7 +6222,7 @@ shown in "Diffraction
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
-    <value>Acc. Vol. (V)</value>
+    <value>Acc. Vol. (kV)</value>
   </data>
   <data name="numericBoxAccVol.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 20</value>
@@ -6418,7 +6418,7 @@ shown in "Diffraction
     <value>3</value>
   </data>
   <data name="groupBoxTEMConditions.Text" xml:space="preserve">
-    <value>TEM conditions</value>
+    <value>TEM Conditions</value>
   </data>
   <data name="&gt;&gt;groupBoxTEMConditions.Name" xml:space="preserve">
     <value>groupBox4</value>
@@ -6454,7 +6454,7 @@ shown in "Diffraction
     <value>54</value>
   </data>
   <data name="groupBoxOpticalProperty.Text" xml:space="preserve">
-    <value>Optical property</value>
+    <value>Optical Properties</value>
   </data>
   <data name="&gt;&gt;groupBoxOpticalProperty.Name" xml:space="preserve">
     <value>groupBoxOpticalProperty</value>
@@ -6697,12 +6697,12 @@ shown in "Diffraction
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxThickness.ToolTip" xml:space="preserve">
-    <value>Sample thickness
-This value is neglected when "Serial image" mode is selected, </value>
+    <value>Sample thickness.
+This value is ignored when "Serial image" mode is selected.</value>
   </data>
   <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
-    <value>Sample thickness
-This value is neglected when "Serial image" mode is selected, </value>
+    <value>Sample thickness.
+This value is ignored when "Serial image" mode is selected.</value>
   </data>
   <data name="&gt;&gt;numericBoxThickness.Name" xml:space="preserve">
     <value>numericBoxThickness</value>
@@ -6735,7 +6735,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>2</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
-    <value>Sample property</value>
+    <value>Sample Properties</value>
   </data>
   <data name="&gt;&gt;groupBoxSampleProperty.Name" xml:space="preserve">
     <value>groupBoxSampleProperty</value>
@@ -6840,10 +6840,10 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>57</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
-    <value>Real time simulation</value>
+    <value>Real-Time Simulation</value>
   </data>
   <data name="checkBoxRealTimeSimulation.ToolTip" xml:space="preserve">
-    <value>When checked, image is immediately caluclated as the crystal rotates</value>
+    <value>When checked, the image is calculated immediately as the crystal rotates.</value>
   </data>
   <data name="&gt;&gt;checkBoxRealTimeSimulation.Name" xml:space="preserve">
     <value>checkBoxRealTimeSimulation</value>
@@ -6888,7 +6888,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>Simulate</value>
   </data>
   <data name="buttonSimulate.ToolTip" xml:space="preserve">
-    <value>Simulate image by the above setting</value>
+    <value>Simulate the image using the settings above.</value>
   </data>
   <data name="&gt;&gt;buttonSimulate.Name" xml:space="preserve">
     <value>buttonSimulate</value>
@@ -7215,7 +7215,7 @@ This value is neglected when "Serial image" mode is selected, </value>
     <value>16, 700</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>HRTEM/STEM simulator</value>
+    <value>HRTEM/STEM Simulator</value>
   </data>
   <data name="&gt;&gt;captureExtender.Name" xml:space="preserve">
     <value>captureExtender</value>

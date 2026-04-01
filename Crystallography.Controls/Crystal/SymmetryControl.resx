@@ -233,7 +233,7 @@
     <value>17, 17</value>
   </metadata>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Search space group</value>
+    <value>Select the length unit.</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -293,10 +293,10 @@
     <value>0</value>
   </data>
   <data name="checkBoxShowError.Text" xml:space="preserve">
-    <value>Show error</value>
+    <value>Show Errors</value>
   </data>
   <data name="checkBoxShowError.ToolTip" xml:space="preserve">
-    <value>Show error</value>
+    <value>Show errors.</value>
   </data>
   <data name="&gt;&gt;checkBoxShowError.Name" xml:space="preserve">
     <value>checkBoxShowError</value>
@@ -1451,7 +1451,7 @@
     <value>0</value>
   </data>
   <data name="groupBoxCellConstants.Text" xml:space="preserve">
-    <value>Cell constants</value>
+    <value>Cell Constants</value>
   </data>
   <data name="&gt;&gt;groupBoxCellConstants.Name" xml:space="preserve">
     <value>groupBox4</value>

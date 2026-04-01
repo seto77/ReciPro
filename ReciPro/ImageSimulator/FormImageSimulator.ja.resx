@@ -1511,7 +1511,7 @@
     <value>TEMの条件</value>
   </data>
   <data name="setoZeroDefocusToolStripMenuItem.Text" xml:space="preserve">
-    <value>Set defocus to 0 nm</value>
+    <value>デフォーカスを0 nmに設定</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 7pt</value>

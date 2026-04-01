@@ -497,7 +497,7 @@
     <value>0</value>
   </data>
   <data name="checkBoxShowInnerBonds.Text" xml:space="preserve">
-    <value>Inner Bonds</value>
+    <value>Show Inner Bonds</value>
   </data>
   <data name="&gt;&gt;checkBoxShowInnerBonds.Name" xml:space="preserve">
     <value>checkBoxShowInnerBonds</value>
@@ -536,7 +536,7 @@
     <value>2</value>
   </data>
   <data name="checkBoxShowVertexAtoms.Text" xml:space="preserve">
-    <value>Vertex Atoms</value>
+    <value>Show Vertex Atoms</value>
   </data>
   <data name="&gt;&gt;checkBoxShowVertexAtoms.Name" xml:space="preserve">
     <value>checkBoxShowVertexAtoms</value>
@@ -575,7 +575,7 @@
     <value>1</value>
   </data>
   <data name="checkBoxShowCenterAtom.Text" xml:space="preserve">
-    <value>Center Atom</value>
+    <value>Show Center Atom</value>
   </data>
   <data name="&gt;&gt;checkBoxShowCenterAtom.Name" xml:space="preserve">
     <value>checkBoxShowCenterAtom</value>
@@ -905,7 +905,7 @@
     <value>Add</value>
   </data>
   <data name="buttonAddBond.ToolTip" xml:space="preserve">
-    <value>Add the below bonds &amp; polyhedron</value>
+    <value>Add the bond/polyhedron settings below.</value>
   </data>
   <data name="&gt;&gt;buttonAddBond.Name" xml:space="preserve">
     <value>buttonAddBond</value>
@@ -941,7 +941,7 @@
     <value>Replace</value>
   </data>
   <data name="buttonChangeBond.ToolTip" xml:space="preserve">
-    <value>Replace the selected bonds &amp; polyhedron with the below</value>
+    <value>Replace the selected bond/polyhedron with the settings below.</value>
   </data>
   <data name="&gt;&gt;buttonChangeBond.Name" xml:space="preserve">
     <value>buttonChangeBond</value>
@@ -983,7 +983,7 @@
     <value>Delete</value>
   </data>
   <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
-    <value>Delete the selected bonds &amp; polyhedron</value>
+    <value>Delete the selected bond/polyhedron.</value>
   </data>
   <data name="&gt;&gt;buttonDeleteBond.Name" xml:space="preserve">
     <value>buttonDeleteBond</value>

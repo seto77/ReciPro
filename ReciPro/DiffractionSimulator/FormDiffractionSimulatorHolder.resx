@@ -392,7 +392,7 @@
     <value>groupBoxLink</value>
   </data>
   <data name="groupBoxColorAndSize.Text" xml:space="preserve">
-    <value>Color and size</value>
+    <value>Color and Size</value>
   </data>
   <data name="groupBoxHolderAngles.Size" type="System.Drawing.Size, System.Drawing">
     <value>235, 105</value>
@@ -485,9 +485,9 @@
     <value>2</value>
   </data>
   <data name="buttonLink.Text" xml:space="preserve">
-    <value>Link to 
- the current
- direction</value>
+    <value>Link to
+Current
+Direction</value>
   </data>
   <data name="buttonLink.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -511,7 +511,7 @@
     <value>95</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
-    <value>String size</value>
+    <value>Text Size</value>
   </data>
   <data name="&gt;&gt;radioButtonTiltY_Minus.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -764,7 +764,7 @@
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Polarity of
- the Tilt Y</value>
+Tilt Y</value>
   </data>
   <data name="colorControlGeneralAxis.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 20</value>
@@ -800,7 +800,7 @@
     <value>6, 60</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
-    <value>Show Index labels</value>
+    <value>Show Index Labels</value>
   </data>
   <data name="&gt;&gt;colorControl1DegLine.Name" xml:space="preserve">
     <value>colorControl1DegLine</value>
@@ -1274,7 +1274,7 @@
     <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="groupBoxIndexRange.Text" xml:space="preserve">
-    <value>Index range</value>
+    <value>Index Range</value>
   </data>
   <data name="checkBoxEnableArrow.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1382,7 +1382,7 @@
     <value>1, 20</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
-    <value>Point size</value>
+    <value>Point Size</value>
   </data>
   <data name="groupBoxTEMSettings.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
@@ -1410,7 +1410,7 @@
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>Color of 1-degree lines
-Active when "Show 1° line" is checked</value>
+Active when "Show 1° Lines" is checked</value>
   </data>
   <data name="groupBoxIndexRange.TabIndex" type="System.Int32, mscorlib">
     <value>96</value>
@@ -1612,13 +1612,13 @@ Active when "Show 1° line" is checked</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Direction of
- the Tilt X</value>
+Tilt X</value>
   </data>
   <data name="label1MousePosition.Text" xml:space="preserve">
     <value>Tilt-X: ##.#°    Tilt-Y:##.# °</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
-    <value>Show 1° line</value>
+    <value>Show 1° Lines</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 25</value>

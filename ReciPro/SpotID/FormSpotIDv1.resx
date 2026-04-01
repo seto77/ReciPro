@@ -135,7 +135,8 @@
     <value>66</value>
   </data>
   <data name="buttonSearchPhoto1.Text" xml:space="preserve">
-    <value>Search　zone axis</value>
+    <value>Find Zone
+Axis</value>
   </data>
   <data name="&gt;&gt;buttonSearchPhoto1.Name" xml:space="preserve">
     <value>buttonSearchPhoto1</value>
@@ -223,7 +224,7 @@
     <value>1</value>
   </data>
   <data name="radioButtonPhoto1Mode2.Text" xml:space="preserve">
-    <value>Two sides and an angle</value>
+    <value>Two Sides and an Angle</value>
   </data>
   <data name="&gt;&gt;radioButtonPhoto1Mode2.Name" xml:space="preserve">
     <value>radioButtonPhoto1Mode2</value>
@@ -253,7 +254,7 @@
     <value>2</value>
   </data>
   <data name="radioButtonPhoto1Mode1.Text" xml:space="preserve">
-    <value>Three sides</value>
+    <value>Three Sides</value>
   </data>
   <data name="&gt;&gt;radioButtonPhoto1Mode1.Name" xml:space="preserve">
     <value>radioButtonPhoto1Mode1</value>
@@ -914,7 +915,7 @@
     <value>53</value>
   </data>
   <data name="label67.Text" xml:space="preserve">
-    <value>Wave Length</value>
+    <value>Wavelength</value>
   </data>
   <data name="&gt;&gt;label67.Name" xml:space="preserve">
     <value>label67</value>
@@ -1085,7 +1086,7 @@
     <value>47</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Acc. Voltage</value>
+    <value>Acceleration Voltage</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -1511,7 +1512,7 @@
     <value>65</value>
   </data>
   <data name="groupBoxPhoto1HolderCondition.Text" xml:space="preserve">
-    <value>Holder Condition</value>
+    <value>Holder Conditions</value>
   </data>
   <data name="&gt;&gt;groupBoxPhoto1HolderCondition.Name" xml:space="preserve">
     <value>groupBoxPhoto1HolderCondition</value>
@@ -1793,7 +1794,8 @@
     <value>66</value>
   </data>
   <data name="buttonSearchPhoto2.Text" xml:space="preserve">
-    <value>Search zone axis</value>
+    <value>Find Zone
+Axis</value>
   </data>
   <data name="&gt;&gt;buttonSearchPhoto2.Name" xml:space="preserve">
     <value>buttonSearchPhoto2</value>
@@ -1910,7 +1912,7 @@
     <value>1</value>
   </data>
   <data name="radioButtonPhoto2Mode2.Text" xml:space="preserve">
-    <value>Two sides and an angle</value>
+    <value>Two Sides and an Angle</value>
   </data>
   <data name="&gt;&gt;radioButtonPhoto2Mode2.Name" xml:space="preserve">
     <value>radioButtonPhoto2Mode2</value>
@@ -1970,7 +1972,7 @@
     <value>2</value>
   </data>
   <data name="radioButtonPhoto2Mode1.Text" xml:space="preserve">
-    <value>Three sides</value>
+    <value>Three Sides</value>
   </data>
   <data name="&gt;&gt;radioButtonPhoto2Mode1.Name" xml:space="preserve">
     <value>radioButtonPhoto2Mode1</value>
@@ -2885,7 +2887,7 @@
     <value>65</value>
   </data>
   <data name="groupBoxPhoto2HolderCondition.Text" xml:space="preserve">
-    <value>Holder Condition</value>
+    <value>Holder Conditions</value>
   </data>
   <data name="&gt;&gt;groupBoxPhoto2HolderCondition.Name" xml:space="preserve">
     <value>groupBoxPhoto2HolderCondition</value>
@@ -3041,7 +3043,8 @@
     <value>66</value>
   </data>
   <data name="buttonSearchPhoto3.Text" xml:space="preserve">
-    <value>Search zone axis</value>
+    <value>Find Zone
+Axis</value>
   </data>
   <data name="&gt;&gt;buttonSearchPhoto3.Name" xml:space="preserve">
     <value>buttonSearchPhoto3</value>
@@ -3122,7 +3125,7 @@
     <value>1</value>
   </data>
   <data name="radioButtonPhoto3Mode2.Text" xml:space="preserve">
-    <value>Two sides and an angle</value>
+    <value>Two Sides and an Angle</value>
   </data>
   <data name="&gt;&gt;radioButtonPhoto3Mode2.Name" xml:space="preserve">
     <value>radioButtonPhoto3Mode2</value>
@@ -3152,7 +3155,7 @@
     <value>2</value>
   </data>
   <data name="radioButtonPhoto3Mode1.Text" xml:space="preserve">
-    <value>Three sides</value>
+    <value>Three Sides</value>
   </data>
   <data name="&gt;&gt;radioButtonPhoto3Mode1.Name" xml:space="preserve">
     <value>radioButtonPhoto3Mode1</value>
@@ -4037,7 +4040,7 @@
     <value>65</value>
   </data>
   <data name="groupBoxPhoto3HolderCondition.Text" xml:space="preserve">
-    <value>Holder Condition</value>
+    <value>Holder Conditions</value>
   </data>
   <data name="&gt;&gt;groupBoxPhoto3HolderCondition.Name" xml:space="preserve">
     <value>groupBoxPhoto3HolderCondition</value>
@@ -4253,7 +4256,7 @@
     <value>66</value>
   </data>
   <data name="buttonSearchAll.Text" xml:space="preserve">
-    <value>Search zone axes from three patterns</value>
+    <value>Find Zone Axes from Three Patterns</value>
   </data>
   <data name="&gt;&gt;buttonSearchAll.Name" xml:space="preserve">
     <value>buttonSearchAll</value>

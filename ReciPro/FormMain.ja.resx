@@ -310,7 +310,7 @@
   </data>
   <data name="buttonSetAxis.ToolTip" xml:space="preserve">
     <value>指定した軸を画面手前方向にセットします。
-面指数が指定されているときは、その麺方向が画面上向きに表示されます。</value>
+面指数が指定されているときは、その面方向が画面上向きに表示されます。</value>
   </data>
   <data name="checkBoxFixAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1362,7 +1362,7 @@ v2</value>
     <value>粉末回折機能を開く</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 673</value>
+    <value>121, 654</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>930, 778</value>

@@ -1296,7 +1296,7 @@
   </data>
   <data name="checkBoxDetailAtomicPositionError.Text" xml:space="preserve">
     <value>Show
- error</value>
+Error</value>
   </data>
   <data name="&gt;&gt;checkBoxDetailAtomicPositionError.Name" xml:space="preserve">
     <value>checkBoxDetailAtomicPositionError</value>
@@ -2463,7 +2463,7 @@
     <value>4</value>
   </data>
   <data name="tabPageOriginShift.Text" xml:space="preserve">
-    <value>Origin shift</value>
+    <value>Origin Shift</value>
   </data>
   <data name="&gt;&gt;tabPageOriginShift.Name" xml:space="preserve">
     <value>tabPageOriginShift</value>
@@ -2646,7 +2646,7 @@
     <value>U</value>
   </data>
   <data name="radioButtonDebyeWallerTypeU.ToolTip" xml:space="preserve">
-    <value>U,  the average atomic displacement parameter</value>
+    <value>U, the average atomic displacement parameter</value>
   </data>
   <data name="&gt;&gt;radioButtonDebyeWallerTypeU.Name" xml:space="preserve">
     <value>radioButtonDebyeWallerTypeU</value>
@@ -2807,7 +2807,7 @@ B = 8 pi^2 * U.</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.Text" xml:space="preserve">
     <value>Show
- error</value>
+Error</value>
   </data>
   <data name="&gt;&gt;checkBoxDetailsDebyeWallerError.Name" xml:space="preserve">
     <value>checkBoxDetailsDebyeWallerError</value>
@@ -3428,10 +3428,10 @@ B = 8 pi^2 * U.</value>
     <value>1</value>
   </data>
   <data name="tabPageDebyeWaller.Text" xml:space="preserve">
-    <value>Debye Waller factor</value>
+    <value>Debye-Waller Factor</value>
   </data>
   <data name="tabPageDebyeWaller.ToolTip" xml:space="preserve">
-    <value>Setting tab of Debye-Waller factor</value>
+    <value>Settings tab for the Debye-Waller factor</value>
   </data>
   <data name="&gt;&gt;tabPageDebyeWaller.Name" xml:space="preserve">
     <value>tabPageDebyeWaller</value>
@@ -4082,7 +4082,7 @@ B = 8 pi^2 * U.</value>
     <value>89</value>
   </data>
   <data name="checkBoxShowLabel.Text" xml:space="preserve">
-    <value>Show label</value>
+    <value>Show Labels</value>
   </data>
   <data name="&gt;&gt;checkBoxShowLabel.Name" xml:space="preserve">
     <value>checkBoxShowLabel</value>
@@ -4493,7 +4493,7 @@ B = 8 pi^2 * U.</value>
     <value>2</value>
   </data>
   <data name="buttonApplyToSameElement.Text" xml:space="preserve">
-    <value>Apply to same elements</value>
+    <value>Apply to Same Element</value>
   </data>
   <data name="buttonApplyToSameElement.ToolTip" xml:space="preserve">
     <value>Apply the appearance properties to atoms of the same element</value>
@@ -4544,10 +4544,10 @@ B = 8 pi^2 * U.</value>
     <value>0</value>
   </data>
   <data name="buttonAddAtom.Text" xml:space="preserve">
-    <value>Add </value>
+    <value>Add</value>
   </data>
   <data name="buttonAddAtom.ToolTip" xml:space="preserve">
-    <value>Add the below atom to above list</value>
+    <value>Add the atom below to the list above.</value>
   </data>
   <data name="&gt;&gt;buttonAddAtom.Name" xml:space="preserve">
     <value>buttonAddAtom</value>
@@ -4634,7 +4634,7 @@ B = 8 pi^2 * U.</value>
     <value>Apply to all elements</value>
   </data>
   <data name="buttonApplyToAllElements.ToolTip" xml:space="preserve">
-    <value>Apply to all elements</value>
+    <value>Apply the current appearance settings to all atoms.</value>
   </data>
   <data name="buttonApplyToAllElements.Visible" type="System.Boolean, mscorlib">
     <value>False</value>

@@ -326,7 +326,7 @@
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonAngleUnitRadian.Text" xml:space="preserve">
-    <value>radian</value>
+    <value>Radian</value>
   </data>
   <data name="radioButtonWavenumberAngInv.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -389,7 +389,7 @@
     <value>113, 21</value>
   </data>
   <data name="groupBoxWaveProperty.Text" xml:space="preserve">
-    <value>Wave Property</value>
+    <value>Wave Properties</value>
   </data>
   <data name="&gt;&gt;radioButtonDspacingUnitNm.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -560,7 +560,7 @@
     <value>groupBoxWaveProperty</value>
   </data>
   <data name="radioButtonAngleUnitMilliRadian.Text" xml:space="preserve">
-    <value>milli-radian</value>
+    <value>Milliradian</value>
   </data>
   <data name="radioButtonAngleUnitDegree.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -800,7 +800,7 @@
     <value>flowLayoutPanelWaveProperty</value>
   </data>
   <data name="groupBoxTwoTheta.Text" xml:space="preserve">
-    <value>Wave length</value>
+    <value>Wavelength</value>
   </data>
   <data name="radioButtonDspacingUnitNm.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -974,7 +974,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBoxOption.Text" xml:space="preserve">
-    <value>Unit option</value>
+    <value>Unit Options</value>
   </data>
   <data name="numericBoxTofAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -1049,7 +1049,7 @@
     <value>flowLayoutPanelDspacing</value>
   </data>
   <data name="groupBoxColor.Text" xml:space="preserve">
-    <value>Color</value>
+    <value>Color Mode</value>
   </data>
   <data name="numericBoxTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1082,7 +1082,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="radioButtonMonochro.Text" xml:space="preserve">
-    <value>Monochrome</value>
+    <value>Monochromatic</value>
   </data>
   <data name="radioButtonAngleUnitRadian.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 45</value>
@@ -1421,7 +1421,7 @@
     <value>flowLayoutPanelAxisType</value>
   </data>
   <data name="radioButtonTwoTheta.Text" xml:space="preserve">
-    <value>2θ (angle)       </value>
+    <value>2θ (Angle)</value>
   </data>
   <data name="numericBoxTofAngle.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -1671,7 +1671,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>True</value>
   </data>
   <data name="radioButtonFlatWhite.Text" xml:space="preserve">
-    <value>Flat White </value>
+    <value>Flat White</value>
   </data>
   <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 21</value>
@@ -1818,7 +1818,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>Set TOF flight path length</value>
   </data>
   <data name="radioButtonAngleUnitDegree.Text" xml:space="preserve">
-    <value>degree</value>
+    <value>Degree</value>
   </data>
   <data name="flowLayoutPanelTwoTheta.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -1845,7 +1845,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>88</value>
   </data>
   <data name="radioButtonAngleUnitCentiDegree.Text" xml:space="preserve">
-    <value>centi-degree</value>
+    <value>Centi-degree</value>
   </data>
   <data name="flowLayoutPanelAxisValues.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="comboBoxProjectionMode.ToolTip" xml:space="preserve">
-    <value>Select orhographic or perspective projection</value>
+    <value>Select orthographic or perspective projection.</value>
   </data>
   <data name="&gt;&gt;copyLightToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -147,14 +147,14 @@
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlCellEdge.ToolTip" xml:space="preserve">
-    <value>Set a color for all cell edges</value>
+    <value>Set the color for all cell edges</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="colorControlCellEdge.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
-    <value>Set a color of the cell planes individually</value>
+    <value>Set the color of the cell planes individually</value>
   </data>
   <data name="&gt;&gt;groupBoxBondedAtoms.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -166,7 +166,7 @@
     <value>Set display center to (1/4, 1/4, 1/4)</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
-    <value>Set a color of the cell planes individually</value>
+    <value>Set the color of the cell planes individually</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="colorControlCellPlaneA.TabIndex" type="System.Int32, mscorlib">
@@ -311,7 +311,7 @@
     <value>Light Direction</value>
   </data>
   <data name="numericBoxProjectionCenterX.ToolTip1" xml:space="preserve">
-    <value>Translate unit cell (fractional coordinates)</value>
+    <value>Set the projection center using fractional coordinates.</value>
   </data>
   <data name="tabPageBoundUnitcell.ToolTip" xml:space="preserve">
     <value />
@@ -362,7 +362,7 @@
     <value>groupBoxProjectionCenter</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
-    <value>Opacity of cell plane (1: opaque, 0; transparent)</value>
+    <value>Opacity of cell planes (1: opaque, 0: transparent)</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value />
@@ -635,7 +635,7 @@
     <value>17</value>
   </data>
   <data name="numericBoxClientWidth.ToolTip" xml:space="preserve">
-    <value>Set pixel sizes of the simulated pattern</value>
+    <value>Set the pixel dimensions of the rendered image.</value>
   </data>
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -717,7 +717,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
-    <value>Set a color of the cell planes individually</value>
+    <value>Set the color of the cell planes individually</value>
   </data>
   <data name="colorControlCellPlane.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -741,7 +741,7 @@
     <value>Set a drawing range</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
-    <value>Set a color of the cell planes individually</value>
+    <value>Set the color of the cell planes individually</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -948,7 +948,7 @@
     <value>160, 22</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.ToolTip" xml:space="preserve">
-    <value>If checked, legend letters are edged with white color</value>
+    <value>When checked, legend labels are outlined in white.</value>
   </data>
   <data name="&gt;&gt;buttonSetRange1.Name" xml:space="preserve">
     <value>buttonSetRange1</value>
@@ -1140,7 +1140,7 @@
     <value>1000, 30</value>
   </data>
   <data name="numericBoxProjectionCenterX.ToolTip" xml:space="preserve">
-    <value>Translate unit cell (fractional coordinates)</value>
+    <value>Set the projection center using fractional coordinates.</value>
   </data>
   <data name="colorControlCellPlaneB.Location" type="System.Drawing.Point, System.Drawing">
     <value>236, 3</value>
@@ -1152,7 +1152,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxClientWidth.ToolTip1" xml:space="preserve">
-    <value>Set pixel sizes of the simulated pattern</value>
+    <value>Set the pixel dimensions of the rendered image.</value>
   </data>
   <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>15, 3, 3, 0</value>
@@ -1302,7 +1302,7 @@
     <value>0, 1</value>
   </data>
   <data name="groupBoxAccessoryControls.Text" xml:space="preserve">
-    <value>Accessory control properties</value>
+    <value>Accessory Controls</value>
   </data>
   <data name="labelGraphicsCard.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1374,7 +1374,7 @@
     <value>groupBoxAccessoryControls</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
-    <value>Bounds defined by unit cell</value>
+    <value>Bounds Defined by Unit Cell</value>
   </data>
   <data name="flowLayoutPanelLatticePlaneOpacity.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 213</value>
@@ -1494,7 +1494,7 @@
     <value>groupBoxAccessoryControls</value>
   </data>
   <data name="numericBoxProjectionCenterY.ToolTip" xml:space="preserve">
-    <value>Translate unit cell (fractional coordinates)</value>
+    <value>Set the projection center using fractional coordinates.</value>
   </data>
   <data name="buttonSetRange1.Location" type="System.Drawing.Point, System.Drawing">
     <value>367, 46</value>
@@ -1542,7 +1542,7 @@
     <value>saveAxesToolStripMenuItem</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
-    <value>Set a color of the cell edges individually</value>
+    <value>Set the color of the cell edges individually</value>
   </data>
   <data name="&gt;&gt;tabPageCoordinateInformation.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1584,7 +1584,7 @@
     <value>True</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
-    <value>Set a color of the cell edges individually</value>
+    <value>Set the color of the cell edges individually</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1719,7 +1719,7 @@
     <value>True</value>
   </data>
   <data name="toolToolStripMenuItem.Text" xml:space="preserve">
-    <value>Tool</value>
+    <value>Tools</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1746,7 +1746,7 @@
     <value>colorControlLabelColor</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
-    <value>Set a color of the cell edges individually</value>
+    <value>Set the color of the cell edges individually</value>
   </data>
   <data name="numericBoxBCenter.HeaderText" xml:space="preserve">
     <value>b: </value>
@@ -1776,7 +1776,7 @@
     <value>True</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
-    <value>Set a color of the cell planes individually</value>
+    <value>Set the color of the cell planes individually</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 17</value>
@@ -1884,7 +1884,7 @@
     <value />
   </data>
   <data name="tabPageLatticePlane.Text" xml:space="preserve">
-    <value>Lattice Plane</value>
+    <value>Lattice Planes</value>
   </data>
   <data name="&gt;&gt;numericBoxLatticePlaneOpacity.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -1929,7 +1929,7 @@
     <value>3, 3, 3, 0</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
-    <value>Set a color of the cell edges individually</value>
+    <value>Set the color of the cell edges individually</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Name" xml:space="preserve">
     <value>numericBoxACenter</value>
@@ -2225,7 +2225,7 @@
     <value>96</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
-    <value>Show bound planes</value>
+    <value>Show Bounding Planes</value>
   </data>
   <data name="labelGraphicsCard.ToolTip" xml:space="preserve">
     <value />
@@ -2378,7 +2378,7 @@
     <value>4</value>
   </data>
   <data name="numericBoxProjectionCenterZ.ToolTip" xml:space="preserve">
-    <value>Translate unit cell (fractional coordinates)</value>
+    <value>Set the projection center using fractional coordinates.</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>615, 22</value>
@@ -2492,7 +2492,7 @@
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
-    <value>Set a color of the cell edges individually</value>
+    <value>Set the color of the cell edges individually</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2516,7 +2516,7 @@
     <value>615, 22</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
-    <value>Set a color of the cell edges individually</value>
+    <value>Set the color of the cell edges individually</value>
   </data>
   <data name="checkBoxHideAllAtoms.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3272,7 +3272,7 @@ even if they are outside the boundaries</value>
     <value>tabPageBounds</value>
   </data>
   <data name="tabPageCoordinateInformation.Text" xml:space="preserve">
-    <value>Coordinates</value>
+    <value>Coordination</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdgeB.Type" xml:space="preserve">
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -3383,7 +3383,7 @@ even if they are outside the boundaries</value>
     <value>4</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save movie</value>
+    <value>Save Movie</value>
   </data>
   <data name="&gt;&gt;checkBoxShowLabel.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3422,7 +3422,7 @@ even if they are outside the boundaries</value>
     <value>343, 50</value>
   </data>
   <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
-    <value>Translate unit cell (fractional coordinates)</value>
+    <value>Set the projection center using fractional coordinates.</value>
   </data>
   <data name="numericBoxLegendSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3596,7 +3596,7 @@ even if they are outside the boundaries</value>
     <value />
   </data>
   <data name="radioButtonCellPlaneColorAll.ToolTip" xml:space="preserve">
-    <value>Set a color for all cell planes</value>
+    <value>Set the color for all cell planes</value>
   </data>
   <data name="buttonSetRange0.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3611,7 +3611,7 @@ even if they are outside the boundaries</value>
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
-    <value>Set a color of the cell planes individually</value>
+    <value>Set the color of the cell planes individually</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3905,7 +3905,7 @@ even if they are outside the boundaries</value>
     <value>tabPageBounds</value>
   </data>
   <data name="radioButtonCellEdgeColorEach.ToolTip" xml:space="preserve">
-    <value>Set a color of the cell edges individually</value>
+    <value>Set the color of the cell edges individually</value>
   </data>
   <data name="buttonSetRange3.Text" xml:space="preserve">
     <value>(±1 ±1 ±1)</value>
@@ -4001,7 +4001,7 @@ even if they are outside the boundaries</value>
     <value>10</value>
   </data>
   <data name="checkBoxDepthFadingOut.Text" xml:space="preserve">
-    <value>Depth fading out</value>
+    <value>Depth Fade</value>
   </data>
   <data name="colorControlLabelColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4025,7 +4025,7 @@ even if they are outside the boundaries</value>
     <value>628, 240</value>
   </data>
   <data name="numericBoxClientHeight.ToolTip1" xml:space="preserve">
-    <value>Set pixel sizes of the simulated pattern</value>
+    <value>Set the pixel dimensions of the rendered image.</value>
   </data>
   <data name="tabPageBond.Size" type="System.Drawing.Size, System.Drawing">
     <value>628, 240</value>
@@ -4127,7 +4127,7 @@ even if they are outside the boundaries</value>
     <value>$this</value>
   </data>
   <data name="radioButtonBoundPlane.Text" xml:space="preserve">
-    <value>Bounds defined by crystal plane</value>
+    <value>Bounds Defined by Crystal Planes</value>
   </data>
   <data name="&gt;&gt;copyAxesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4286,7 +4286,7 @@ even if they are outside the boundaries</value>
     <value>16, 17</value>
   </data>
   <data name="radioButtonCellEdgeColorAll.ToolTip" xml:space="preserve">
-    <value>Set a color for all cell edges</value>
+    <value>Set the color for all cell edges</value>
   </data>
   <data name="labelGraphicsDriver.ToolTip" xml:space="preserve">
     <value />
@@ -4376,7 +4376,7 @@ even if they are outside the boundaries</value>
     <value>5</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Shortcut hint</value>
+    <value>Shortcut Hints</value>
   </data>
   <data name="splitContainer2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -4955,7 +4955,7 @@ even if they are outside the boundaries</value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxProjectionCenterY.ToolTip1" xml:space="preserve">
-    <value>Translate unit cell (fractional coordinates)</value>
+    <value>Set the projection center using fractional coordinates.</value>
   </data>
   <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
     <value>628, 240</value>
@@ -5162,7 +5162,7 @@ even if they are outside the boundaries</value>
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxClientHeight.ToolTip" xml:space="preserve">
-    <value>Set pixel sizes of the simulated pattern</value>
+    <value>Set the pixel dimensions of the rendered image.</value>
   </data>
   <data name="&gt;&gt;comboBoxTransparency.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -5369,7 +5369,7 @@ even if they are outside the boundaries</value>
     <value>230, 48</value>
   </data>
   <data name="radioButtonCellPlaneColorEach.ToolTip" xml:space="preserve">
-    <value>Set a color of the cell planes individually</value>
+    <value>Set the color of the cell planes individually</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5387,7 +5387,7 @@ even if they are outside the boundaries</value>
     <value>True</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
-    <value>Opacity of cell plane (1: opaque, 0; transparent)</value>
+    <value>Opacity of cell planes (1: opaque, 0: transparent)</value>
   </data>
   <data name="comboBoxProjectionMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 25</value>
@@ -5798,7 +5798,7 @@ even if they are outside the boundaries</value>
     <value>11</value>
   </data>
   <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
-    <value>Set a color for all cell edges</value>
+    <value>Set the color for all cell edges</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -5816,7 +5816,7 @@ even if they are outside the boundaries</value>
     <value>15, 0, 0, 0</value>
   </data>
   <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
-    <value>Set a color for all cell planes</value>
+    <value>Set the color for all cell planes</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
     <value>208</value>
@@ -5873,8 +5873,8 @@ even if they are outside the boundaries</value>
     <value>104</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>(clik legend allows
-indivisual setting)</value>
+    <value>(Click a legend entry to
+adjust it individually)</value>
   </data>
   <data name="&gt;&gt;radioButtonProjectionCenter1.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5907,7 +5907,7 @@ indivisual setting)</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="colorControlCellPlane.ToolTip1" xml:space="preserve">
-    <value>Set a color for all cell planes</value>
+    <value>Set the color for all cell planes</value>
   </data>
   <data name="&gt;&gt;labelMessage.Name" xml:space="preserve">
     <value>labelMessage</value>

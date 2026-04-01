@@ -353,7 +353,7 @@
     <value>38</value>
   </data>
   <data name="checkBoxCloseWindow.Text" xml:space="preserve">
-    <value>Close this window after initial loading</value>
+    <value>Close this window automatically after startup</value>
   </data>
   <data name="&gt;&gt;checkBoxCloseWindow.Name" xml:space="preserve">
     <value>checkBoxCloseWindow</value>
@@ -389,7 +389,7 @@
     <value>32</value>
   </data>
   <data name="labelAuthor.Text" xml:space="preserve">
-    <value>Y. Seto</value>
+    <value>Yusuke Seto</value>
   </data>
   <data name="&gt;&gt;labelAuthor.Name" xml:space="preserve">
     <value>labelAuthor</value>
@@ -503,7 +503,7 @@
     <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Calculating .... </value>
+    <value>Calculating...</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CommonDialog</value>

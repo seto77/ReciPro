@@ -129,7 +129,7 @@
     <value>71:  Lu</value>
   </data>
   <data name="radioButtonElectron.ToolTip" xml:space="preserve">
-    <value>Select wave source</value>
+    <value>Select the wave source.</value>
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
@@ -638,7 +638,7 @@
     <value>False</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
-    <value>Input wave length</value>
+    <value>Enter the wavelength.</value>
   </data>
   <data name="comboBoxXrayLine.Items4" xml:space="preserve">
     <value>KβI2</value>
@@ -713,8 +713,8 @@
     <value>True</value>
   </data>
   <data name="comboBoxXRayElement.ToolTip" xml:space="preserve">
-    <value>Select an element (1:H to 98:Cf) emitting characteristic X-ray.
- If "0:custom" is selected,  you can input energy or wave length without restraint.
+    <value>Select an element (1:H to 98:Cf) that emits characteristic X-rays.
+If "0:custom" is selected, you can freely enter the energy or wavelength.
 </value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
@@ -736,7 +736,7 @@
     <value>captureExtender</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
-    <value>Input wave length</value>
+    <value>Enter the wavelength.</value>
   </data>
   <data name="&gt;&gt;radioButtonElectron.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -796,13 +796,13 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonXray.ToolTip" xml:space="preserve">
-    <value>Select wave source</value>
+    <value>Select the wave source.</value>
   </data>
   <data name="radioButtonXray.Text" xml:space="preserve">
     <value>X-ray</value>
   </data>
   <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
-    <value>Input wave energy</value>
+    <value>Enter the beam energy.</value>
   </data>
   <data name="radioButtonElectron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -811,7 +811,7 @@
     <value>2:  He</value>
   </data>
   <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
-    <value>Select wave source</value>
+    <value>Select the wave source.</value>
   </data>
   <data name="comboBoxXRayElement.Items89" xml:space="preserve">
     <value>89:  Ac</value>
@@ -928,7 +928,7 @@
     <value>96:  Cm</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
-    <value>Input wave energy</value>
+    <value>Enter the beam energy.</value>
   </data>
   <data name="comboBoxXRayElement.Items29" xml:space="preserve">
     <value>29:  Cu</value>

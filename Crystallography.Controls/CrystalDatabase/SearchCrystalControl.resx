@@ -215,7 +215,7 @@
     <value>64</value>
   </data>
   <data name="checkBoxSearchElements.Text" xml:space="preserve">
-    <value>Element</value>
+    <value>Elements</value>
   </data>
   <data name="&gt;&gt;checkBoxSearchElements.Name" xml:space="preserve">
     <value>checkBoxSearchElements</value>
@@ -449,7 +449,7 @@
     <value>64</value>
   </data>
   <data name="checkBoxSearchCellParameter.Text" xml:space="preserve">
-    <value>Cell Param</value>
+    <value>Cell Params</value>
   </data>
   <data name="&gt;&gt;checkBoxSearchCellParameter.Name" xml:space="preserve">
     <value>checkBoxSearchCellParameter</value>

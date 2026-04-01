@@ -200,7 +200,7 @@
     <value>1192, 17</value>
   </metadata>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
-    <value>Clear all spots</value>
+    <value>Delete the selected spot.</value>
   </data>
   <data name="&gt;&gt;buttonDeleteSpot.Name" xml:space="preserve">
     <value>buttonDeleteSpot</value>
@@ -236,7 +236,7 @@
     <value>8</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Clear</value>
+    <value>Clear All</value>
   </data>
   <data name="buttonClearSpots.ToolTip" xml:space="preserve">
     <value>Clear all spots</value>
@@ -281,7 +281,7 @@
     <value>Copy</value>
   </data>
   <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
-    <value>Copy the above information to clipboard</value>
+    <value>Copy the above information to the clipboard.</value>
   </data>
   <data name="&gt;&gt;buttonCopyToClipboard.Name" xml:space="preserve">
     <value>buttonCopyToClipboard</value>
@@ -539,10 +539,10 @@
     <value>4</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Text" xml:space="preserve">
-    <value>Reset range</value>
+    <value>Apply to All</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
-    <value>Reset fitting range for all spots to default</value>
+    <value>Apply the current fitting range to all spots.</value>
   </data>
   <data name="&gt;&gt;buttonResetRangeForAllSpots.Name" xml:space="preserve">
     <value>buttonResetRangeForAllSpots</value>
@@ -626,12 +626,12 @@
     <value>2</value>
   </data>
   <data name="buttonFindSpots.Text" xml:space="preserve">
-    <value>Detect &amp;&amp; fit spots</value>
+    <value>Detect &amp;&amp; Fit Spots</value>
   </data>
   <data name="buttonFindSpots.ToolTip" xml:space="preserve">
-    <value>Detect diffraction spots in the loaded image and fit with the function.
+    <value>Detect diffraction spots in the loaded image and fit them with the selected function.
 Specify the number of spots to search, the minimum distance between spots,
-and the fitting range in the right box .</value>
+and the fitting range in the box on the right.</value>
   </data>
   <data name="&gt;&gt;buttonFindSpots.Name" xml:space="preserve">
     <value>buttonFindSpots</value>
@@ -736,10 +736,10 @@ and the fitting range in the right box .</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
-    <value>Set a fitting range (radius) in pixel unit</value>
+    <value>Set the fitting range (radius) in pixels.</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
-    <value>Set a fitting range (radius) in pixel unit</value>
+    <value>Set the fitting range (radius) in pixels.</value>
   </data>
   <data name="&gt;&gt;numericBoxFittingRange.Name" xml:space="preserve">
     <value>numericBoxFittingRange</value>
@@ -1123,7 +1123,7 @@ and the fitting range in the right box .</value>
     <value>1</value>
   </data>
   <data name="groupBoxSpot.Text" xml:space="preserve">
-    <value>Spot</value>
+    <value>Spot Information</value>
   </data>
   <data name="&gt;&gt;groupBoxSpot.Name" xml:space="preserve">
     <value>groupBoxSpot</value>
@@ -1475,7 +1475,7 @@ and the fitting range in the right box .</value>
     <value>9</value>
   </data>
   <data name="radioButtonMultiGrain.Text" xml:space="preserve">
-    <value>Multi grains</value>
+    <value>Multiple Grains</value>
   </data>
   <data name="radioButtonMultiGrain.ToolTip" xml:space="preserve">
     <value>Search for multiple crystal grain orientations</value>
@@ -1505,7 +1505,7 @@ and the fitting range in the right box .</value>
     <value>8</value>
   </data>
   <data name="radioButtonSingleGrain.Text" xml:space="preserve">
-    <value>Single grain</value>
+    <value>Single Grain</value>
   </data>
   <data name="radioButtonSingleGrain.ToolTip" xml:space="preserve">
     <value>Search for a single crystal grain orientation</value>
@@ -2150,7 +2150,7 @@ and the fitting range in the right box .</value>
     <value>292, 22</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>Left drag : Translate</value>
+    <value>Left drag : Drag the image</value>
   </data>
   <data name="toolStripMenuItem7.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2195,7 +2195,7 @@ and the fitting range in the right box .</value>
     <value>292, 22</value>
   </data>
   <data name="toolStripMenuItem4.Text" xml:space="preserve">
-    <value>Ctrl + Left double click : Add a direct spot</value>
+    <value>Ctrl + Left double click : Add the direct spot</value>
   </data>
   <data name="toolStripMenuItem3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>

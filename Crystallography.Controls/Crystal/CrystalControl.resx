@@ -401,7 +401,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
-    <value>Cell volume in nm</value>
+    <value>Cell volume in nm³</value>
   </data>
   <data name="&gt;&gt;numericBoxCellVolumeNm.Name" xml:space="preserve">
     <value>numericBoxCellVolumeNm</value>
@@ -947,7 +947,7 @@
     <value>217, 22</value>
   </data>
   <data name="resetToolStripMenuItem.Text" xml:space="preserve">
-    <value>Reset Debye-Waller factor</value>
+    <value>Set Debye-Waller Factors to Zero</value>
   </data>
   <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 26</value>
@@ -1091,7 +1091,7 @@
     <value>3</value>
   </data>
   <data name="tabPageBondsPolyhedra.Text" xml:space="preserve">
-    <value>Bonds ( &amp; Polyhedra)</value>
+    <value>Bonds &amp; Polyhedra</value>
   </data>
   <data name="&gt;&gt;tabPageBondsPolyhedra.Name" xml:space="preserve">
     <value>tabPageBondsPolyhedra</value>
@@ -2769,7 +2769,7 @@
     <value>138</value>
   </data>
   <data name="label29.Text" xml:space="preserve">
-    <value>division</value>
+    <value>Division</value>
   </data>
   <data name="&gt;&gt;label29.Name" xml:space="preserve">
     <value>label29</value>
@@ -3296,10 +3296,10 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
-    <value>Z (Number of formula in the unit cell)</value>
+    <value>Z (Number of formula units in the unit cell)</value>
   </data>
   <data name="numericBoxZnumber.ToolTip1" xml:space="preserve">
-    <value>Z (Number of formula in the unit cell)</value>
+    <value>Z (Number of formula units in the unit cell)</value>
   </data>
   <data name="&gt;&gt;numericBoxZnumber.Name" xml:space="preserve">
     <value>numericBoxZnumber</value>
@@ -3359,7 +3359,7 @@
     <value>252, 22</value>
   </data>
   <data name="importCrystalFromCIFAMCToolStripMenuItem.Text" xml:space="preserve">
-    <value>Import from CIF, AMC...</value>
+    <value>Import from CIF or AMC...</value>
   </data>
   <data name="exportThisCrystalAsCIFToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 22</value>
@@ -3401,7 +3401,7 @@
     <value>252, 22</value>
   </data>
   <data name="convertToP1SymmetryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Convert to P1 spacegroup</value>
+    <value>Convert to P1 Space Group</value>
   </data>
   <data name="convertToSuperstructureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 22</value>
@@ -3533,7 +3533,7 @@
     <value>Scattering factor</value>
   </data>
   <data name="buttonScatteringFactor.ToolTip" xml:space="preserve">
-    <value>Open another window with the structure factors</value>
+    <value>Open the structure factors in a separate window.</value>
   </data>
   <data name="&gt;&gt;buttonScatteringFactor.Name" xml:space="preserve">
     <value>buttonScatteringFactor</value>
@@ -3578,7 +3578,7 @@
     <value>Symmetry info.</value>
   </data>
   <data name="buttonSymmetryInfo.ToolTip" xml:space="preserve">
-    <value>Open another window with the detailed symmetry information</value>
+    <value>Open the detailed symmetry information in a separate window.</value>
   </data>
   <data name="&gt;&gt;buttonSymmetryInfo.Name" xml:space="preserve">
     <value>buttonSymmetryInfo</value>

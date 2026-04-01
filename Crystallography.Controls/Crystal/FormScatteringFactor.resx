@@ -290,7 +290,7 @@
     <value>6</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Threshold of d-spacing</value>
+    <value>d-Spacing Cutoff</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -473,8 +473,8 @@
     <value>8</value>
   </data>
   <data name="checkBoxBragBrentano.Text" xml:space="preserve">
-    <value>Powder diffraction intensities 
-(Bragg Brentano optics)</value>
+    <value>Powder Diffraction Intensities
+(Bragg-Brentano Optics)</value>
   </data>
   <data name="&gt;&gt;checkBoxBragBrentano.Name" xml:space="preserve">
     <value>checkBoxBragBrentano</value>
@@ -561,7 +561,7 @@
     <value>Unit</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
-    <value>Search space group</value>
+    <value>Select the unit.</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>

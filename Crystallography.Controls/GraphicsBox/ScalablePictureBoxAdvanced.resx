@@ -713,7 +713,7 @@
     <value>40</value>
   </data>
   <data name="checkBoxDustScratches.Text" xml:space="preserve">
-    <value>Dust&amp;&amp;Scratches</value>
+    <value>Dust &amp;&amp; Scratches</value>
   </data>
   <data name="&gt;&gt;checkBoxDustScratches.Name" xml:space="preserve">
     <value>checkBoxDustScratches</value>

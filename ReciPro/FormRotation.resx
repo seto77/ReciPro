@@ -226,7 +226,7 @@
     <value>Link</value>
   </data>
   <data name="checkBoxLink.ToolTip" xml:space="preserve">
-    <value>By checking, both ReciPro and Experimental coodinates are linked</value>
+    <value>When checked, the ReciPro and experimental coordinate systems are linked.</value>
   </data>
   <data name="&gt;&gt;checkBoxLink.Name" xml:space="preserve">
     <value>checkBoxLink</value>
@@ -269,7 +269,7 @@
     <value>Copy to Excel</value>
   </data>
   <data name="buttonCopy.ToolTip" xml:space="preserve">
-    <value>Copy rotation matrix values to a clipboard as Excel format</value>
+    <value>Copy the rotation matrix values to the clipboard in Excel format.</value>
   </data>
   <data name="&gt;&gt;buttonCopy.Name" xml:space="preserve">
     <value>buttonCopy</value>
@@ -312,7 +312,7 @@
  Excel</value>
   </data>
   <data name="buttonPaste.ToolTip" xml:space="preserve">
-    <value>Paste rotation matrix values from a clipboard as Excel format</value>
+    <value>Paste rotation matrix values from the clipboard in Excel format.</value>
   </data>
   <data name="&gt;&gt;buttonPaste.Name" xml:space="preserve">
     <value>buttonPaste</value>
@@ -615,10 +615,10 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxExp3.ToolTip" xml:space="preserve">
-    <value>Set angle for the 2md axis</value>
+    <value>Set the angle for the 3rd axis.</value>
   </data>
   <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
-    <value>Set angle for the 2md axis</value>
+    <value>Set the angle for the 3rd axis.</value>
   </data>
   <data name="&gt;&gt;numericBoxExp3.Name" xml:space="preserve">
     <value>numericBoxExp3</value>
@@ -657,7 +657,7 @@
     <value>2nd axis</value>
   </data>
   <data name="checkBoxEnable2nd.ToolTip" xml:space="preserve">
-    <value>By checking, the 2nd axis is enabled</value>
+    <value>When checked, the 2nd axis is enabled</value>
   </data>
   <data name="&gt;&gt;checkBoxEnable2nd.Name" xml:space="preserve">
     <value>checkBoxEnable2nd</value>
@@ -735,7 +735,7 @@
     <value>Fix</value>
   </data>
   <data name="checkBoxFix2nd.ToolTip" xml:space="preserve">
-    <value>Fix the 2md angle at the current value</value>
+    <value>Fix the 2nd angle at the current value.</value>
   </data>
   <data name="&gt;&gt;checkBoxFix2nd.Name" xml:space="preserve">
     <value>checkBoxFix2nd</value>
@@ -774,7 +774,7 @@
     <value>Fix</value>
   </data>
   <data name="checkBoxFix3rd.ToolTip" xml:space="preserve">
-    <value>Fix the 3rdangle at the current value</value>
+    <value>Fix the 3rd angle at the current value.</value>
   </data>
   <data name="&gt;&gt;checkBoxFix3rd.Name" xml:space="preserve">
     <value>checkBoxFix3rd</value>
@@ -813,7 +813,7 @@
     <value>3rd axis</value>
   </data>
   <data name="checkBoxEnable3rd.ToolTip" xml:space="preserve">
-    <value>By checking, the 3rd axis is enabled</value>
+    <value>When checked, the 3rd axis is enabled</value>
   </data>
   <data name="&gt;&gt;checkBoxEnable3rd.Name" xml:space="preserve">
     <value>checkBoxEnable3rd</value>
@@ -855,7 +855,7 @@
     <value>Z</value>
   </data>
   <data name="radioButton3rdZ.ToolTip" xml:space="preserve">
-    <value>Select 3rd axis</value>
+    <value>Select the 3rd axis.</value>
   </data>
   <data name="&gt;&gt;radioButton3rdZ.Name" xml:space="preserve">
     <value>radioButton3rdZ</value>
@@ -894,7 +894,7 @@
     <value>Y</value>
   </data>
   <data name="radioButton3rdY.ToolTip" xml:space="preserve">
-    <value>Select 3rd axis</value>
+    <value>Select the 3rd axis.</value>
   </data>
   <data name="&gt;&gt;radioButton3rdY.Name" xml:space="preserve">
     <value>radioButton3rdY</value>
@@ -933,7 +933,7 @@
     <value>X</value>
   </data>
   <data name="radioButton3rdX.ToolTip" xml:space="preserve">
-    <value>Select 3rd axis</value>
+    <value>Select the 3rd axis.</value>
   </data>
   <data name="&gt;&gt;radioButton3rdX.Name" xml:space="preserve">
     <value>radioButton3rdX</value>
@@ -1207,7 +1207,7 @@
   </data>
   <data name="buttonResetExpEuler.Text" xml:space="preserve">
     <value>Reset
-angles</value>
+Angles</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>Reset all angles to zero</value>
@@ -1870,7 +1870,7 @@ angles</value>
     <value>98</value>
   </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
-    <value>ReciPro coordinate system (ZXZ)</value>
+    <value>ReciPro Coordinate System (ZXZ)</value>
   </data>
   <data name="&gt;&gt;groupBoxReciProCoordinate.Name" xml:space="preserve">
     <value>groupBoxReciProCoordinate</value>
@@ -2032,7 +2032,7 @@ angles</value>
     <value>102</value>
   </data>
   <data name="groupBoxExperimentalCoordinate.Text" xml:space="preserve">
-    <value>Experimental coordinate system</value>
+    <value>Experimental Coordinate System</value>
   </data>
   <data name="&gt;&gt;groupBoxExperimentalCoordinate.Name" xml:space="preserve">
     <value>groupBoxExperimentalCoordinate</value>
