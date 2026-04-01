@@ -118,8 +118,318 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonFromX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 89</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 36</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>検出器の
+中心位置</value>
+  </data>
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlExcessLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlExcessLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 20</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 18</value>
+  </data>
+  <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlString.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlString.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlBackGround.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="colorControlBackGround.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 20</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 22</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 40</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 18</value>
+  </data>
+  <data name="numericBoxThicknessStep.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>ステップ</value>
+  </data>
+  <data name="numericBoxThicknessStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 68</value>
+  </data>
+  <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 24</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
+    <value>計算に取り入れる波の数</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
+    <value>非局所形式の吸収モデルを使う</value>
+  </data>
+  <data name="checkBoxTDSBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxTDSBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 22</value>
+  </data>
+  <data name="checkBoxTDSBackground.Text" xml:space="preserve">
+    <value>熱散漫散乱 (TDS) 由来のバックグラウンドを含める</value>
+  </data>
+  <data name="numericBoxThicknessStart.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>深さ範囲</value>
+  </data>
+  <data name="numericBoxThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 68</value>
+  </data>
+  <data name="numericBoxThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 24</value>
+  </data>
+  <data name="numericBoxThicknessEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
+    <value>～</value>
+  </data>
+  <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>177, 68</value>
+  </data>
+  <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>164, 641</value>
+  </data>
+  <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 28</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 18</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>エネルギー</value>
+  </data>
+  <data name="textBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 0</value>
+  </data>
+  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 3</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 18</value>
+  </data>
+  <data name="trackBarOutputEnergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 3</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>273, 3</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>深さ</value>
+  </data>
+  <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 0</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>341, 3</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 18</value>
+  </data>
+  <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>371, 3</value>
+  </data>
+  <data name="flowLayoutPanelOutputRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="flowLayoutPanelOutputRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>506, 25</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 18</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>ネガ/ポジ</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.Size" type="System.Drawing.Size, System.Drawing">
+    <value>351, 22</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
+    <value>後方散乱電子のエネルギー・方位分布を考慮して画像を合成</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 96</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 18</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 72</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 18</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 95</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 71</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>明るさ</value>
+  </data>
+  <data name="checkBoxDrawKikuchiLinesKinematical.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxDrawKikuchiLinesKinematical.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 22</value>
   </data>
   <data name="buttonSaveImage.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -130,7 +440,353 @@
   <data name="buttonSaveImage.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
+  <data name="numericBoxEnergyEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyEnd.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyEnd.HeaderText" xml:space="preserve">
+    <value>～</value>
+  </data>
+  <data name="numericBoxEnergyEnd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 101</value>
+  </data>
+  <data name="numericBoxEnergyStart.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
+    <value>エネルギー範囲</value>
+  </data>
+  <data name="numericBoxEnergyStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 101</value>
+  </data>
+  <data name="numericBoxEnergyStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 24</value>
+  </data>
+  <data name="numericBoxEnergyStep.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
+    <value>ステップ</value>
+  </data>
+  <data name="numericBoxEnergyStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 101</value>
+  </data>
+  <data name="numericBoxEnergyStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 24</value>
+  </data>
+  <data name="checkBoxDrawKikuchiLineDynamical.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxDrawKikuchiLineDynamical.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 28</value>
+  </data>
+  <data name="checkBoxDrawKikuchiLineDynamical.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 22</value>
+  </data>
+  <data name="checkBoxDrawKikuchiLineDynamical.Text" xml:space="preserve">
+    <value>動力学EBSDパターン</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
+    <value>検出器の輪郭</value>
+  </data>
+  <data name="groupBoxEBSDGeometry.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
+    <value>EBSDのセッティング</value>
+  </data>
+  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 18</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>検出器の傾き</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 55</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 18</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>検出器の半径</value>
+  </data>
+  <data name="groupBoxSampleCondition.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 18</value>
+  </data>
+  <data name="groupBoxLatticePlanes.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="checkBoxShowGIndices.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowGIndices.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 22</value>
+  </data>
+  <data name="labelMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="labelMasterPatternGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
+  <data name="labelMasterPatternGrid.Text" xml:space="preserve">
+    <value>グリッド</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 35</value>
+  </data>
   <data name="groupBoxSimulationParameters.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 464</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flowLayoutPanelMasterPatternSelectors.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flowLayoutPanelMasterPatternSelectors.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanelMasterPatternSelectors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>498, 27</value>
+  </data>
+  <data name="labelMasterPatternEnergy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="labelMasterPatternEnergy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 18</value>
+  </data>
+  <data name="labelMasterPatternEnergy.Text" xml:space="preserve">
+    <value>エネルギー</value>
+  </data>
+  <data name="textBoxMasterPatternEnergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 2</value>
+  </data>
+  <data name="labelMasterPatternEnergyUnit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="labelMasterPatternEnergyUnit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 3</value>
+  </data>
+  <data name="labelMasterPatternEnergyUnit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 18</value>
+  </data>
+  <data name="trackBarMasterPatternEnergy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 4</value>
+  </data>
+  <data name="labelMasterPatternDepth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="labelMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>271, 3</value>
+  </data>
+  <data name="labelMasterPatternDepth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="labelMasterPatternDepth.Text" xml:space="preserve">
+    <value>深さ</value>
+  </data>
+  <data name="textBoxMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 2</value>
+  </data>
+  <data name="labelMasterPatternDepthUnit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="labelMasterPatternDepthUnit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>333, 3</value>
+  </data>
+  <data name="labelMasterPatternDepthUnit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 18</value>
+  </data>
+  <data name="trackBarMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>366, 4</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 28</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.Text" xml:space="preserve">
+    <value>半球</value>
+  </data>
+  <data name="buttonCreateMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonCreateMasterPattern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 28</value>
+  </data>
+  <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
+    <value>Master Pattern を構築</value>
+  </data>
+  <data name="flowLayoutPanelMasterPattern3DViewAlong.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelMasterPattern3DViewAlong.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 28</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 28</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 22</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 22</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 28</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 28</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
+    <value>指定軸から投影</value>
+  </data>
+  <data name="labelMasterPattern3DViewAlongOpenBracket.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 3</value>
+  </data>
+  <data name="numericBoxMasterPattern3DViewAlongU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 0</value>
+  </data>
+  <data name="numericBoxMasterPattern3DViewAlongV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 0</value>
+  </data>
+  <data name="numericBoxMasterPattern3DViewAlongW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 0</value>
+  </data>
+  <data name="labelMasterPattern3DViewAlongCloseBracket.Location" type="System.Drawing.Point, System.Drawing">
+    <value>232, 3</value>
+  </data>
+  <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAAAAAAGACoDAAAJgAAABAQAAAAABgAaAMAAM4MAAAoAAAAIAAAAEAAAAABABgAAAAAAAAM
+        AAAAAAAAAAAAAAAAAAAAAAAAa2trbW1tampqVFRUSUlJWlpaX19fenp6lpaWhISEioqKhoaGjIyMfX19
+        ampqenp6kpKSra2thoaGbm5ul5eXkZGRj4+PlpaWqampiIiIfHx8jIyMioqKioqKhYWFdXV1ZGRkZ2dn
+        ZmZmaGhoTk5OU1NTYmJidnZ2enp6bW1thYWFlZWVlpaWgICAa2trdHR0jo6OlZWVgoKCc3NzjIyMk5OT
+        jo6Ojo6Oq6urlZWVd3d3hYWFkpKSkpKSfHx8gICAT09PYWFhYGBgX19fYWFhS0tLYmJiaWlpYmJiVlZW
+        bm5ugICAlZWVkZGRgICAf39/kZGRkpKSe3t7dXV1jo6Om5ubk5OTlZWVvr6+ra2tioqKmpqaqKioq6ur
+        jo6Oh4eHOTk5SUlJYGBgWFhYYGBgYWFhW1tbXFxcU1NTXl5ebGxsdnZ2gICAjIyMlpaWrq6uqampn5+f
+        j4+PioqKm5ubqqqqpqamqKioycnJvb29oKCgqamprq6uoaGhfn5+fHx8SEhIQEBASkpKXV1dZmZmiYmJ
+        bW1tUFBQXFxcc3NzhYWFkpKSjIyMlZWVnJycwcHB1NTUy8vLv7+/n5+foqKiqqqqpaWlkJCQsrKypaWl
+        i4uLkpKSh4eHbGxscXFxlJSUTU1NTk5OSUlJYGBgjY2Npqamp6enZGRkY2NjeHh4i4uLl5eXjY2NlZWV
+        g4ODnZ2drKysuLi4t7e3pKSkk5OTi4uLgoKCcHBwkpKSmJiYh4eHenp6bGxsg4ODnJycjIyMWFhYUlJS
+        VVVVSkpKhYWFpKSkmZmZfHx8Xl5efn5+e3t7fX19dHR0eXl5aGhofHx8m5ubi4uLiIiIqKiopqamo6Oj
+        iIiIcnJyenp6jY2NfHx8cXFxlZWVsLCwnZ2dlJSUT09PS0tLQkJCREREUVFRgICAgICAcHBwZ2dnXl5e
+        dHR0dHR0cnJydHR0ZmZmfHx8n5+fgICAb29vjo6Ol5eXsrKyo6OjgYGBb29vgICAdnZ2lZWVnJycpqam
+        pqamc3NzOzs7Ojo6QkJCS0tLU1NTVFRUZ2dnXV1ddnZ2cnJyZ2dnbm5ufX19e3t7eXl5ioqKoaGhe3t7
+        bW1tgYGBgYGBkpKSmZmZiIiIbm5ulJSUoaGhh4eHkJCQmZmZbm5ua2trRERERUVFT09PXl5eZGRkXl5e
+        WFhYeHh4goKCk5OTcXFxbm5uiYmJiIiIj4+PnJycr6+vm5ubgICAjY2NgoKCioqKkJCQeXl5m5ub5OTk
+        0NDQkZGRhYWFaWlpb29vh4eHSUlJSEhIWFhYbW1tYmJiZGRkUlJSbm5ujIyMjIyMjY2NXl5eeXl5fn5+
+        i4uLmpqaqKiolJSUkJCQmJiYhISEfX19dHR0iIiIpaWlz8/P29vbjY2NbW1td3d3enp6lJSUUVFRTk5O
+        YWFhbGxsYGBgXFxcW1tbXFxcdnZ2kJCQhoaGgoKCaGhob29vf39/lpaWoKCglZWVhYWFkZGRdnZ2hoaG
+        ra2thoaGiIiIpaWliIiIbm5uhYWFgICAfX19iIiIUVFRU1NTX19fXl5eUlJSVVVVWVlZZGRkUlJSenp6
+        hISElJSUeHh4WVlZcXFxjY2NjIyMeXl5eXl5dXV1gYGBrq6urKyso6OjioqKc3NzdnZ2aGhodXV1lpaW
+        qqqqnZ2dU1NTWVlZYGBgXFxcT09PWlpaZmZmcXFxZmZmXV1dh4eHmJiYl5eXZGRkbGxslJSUj4+Pampq
+        ZmZmj4+PoKCgo6Ojra2tlJSUb29vkpKSj4+Pe3t7YmJifX19paWlpqama2trcHBwXFxcR0dHQkJCSEhI
+        Xl5ea2trZWVlYGBgX19fj4+PmZmZiIiIaWlpkJCQeXl5ZWVllpaWqqqqpaWlm5ubdnZ2eHh4fX19h4eH
+        np6eh4eHdHR0ioqKjY2NeHh4bm5uc3NzYWFhTU1NTU1NUlJSbW1tbGxsa2trWlpaTU1NYGBghoaGfHx8
+        hISEampqdXV1kJCQpaWlp6enkpKScXFxeXl5iYmJenp6e3t7m5ubj4+Pf39/mJiYgYGBcnJycHBwd3d3
+        Xl5eXl5eZGRkampqeHh4dHR0dnZ2aWlpb29vXl5ednZ2fn5+cXFxh4eHeXl5hYWFkZGRenp6XV1ddHR0
+        hoaGjY2Nf39/dHR0kpKSiYmJiYmJj4+Pf39/dnZ2aWlpbW1tW1tbS0tLUVFRXl5ecnJyeHh4e3t7c3Nz
+        f39/hYWFZWVlbGxsoaGhxMTEiIiIfn5+dnZ2aGhocHBweXl5hoaGh4eHaWlpZWVlgoKCjo6Oh4eHb29v
+        ampqeXl5VFRUWFhYTk5OPz8/Pz8/TU1NZmZmZ2dnampqYGBgaWlpYGBgZGRkbm5uqampvb29sLCwYmJi
+        gYGBk5OTjIyMjIyMkpKSkpKSdXV1b29vhYWFsLCwh4eHYGBgXl5eXFxcSEhIUFBQW1tbTk5ORUVFS0tL
+        W1tbXl5eVFRUTExMREREYGBgenp6c3NzdHR0mpqab29vf39/aGhofn5+g4ODjo6Om5uboKCgkJCQjY2N
+        kZGRt7e3hYWFdHR0cnJyfHx8Q0NDRkZGV1dXTU1NRUVFUVFRXV1dYmJiV1dXT09Pa2trhYWFfHx8eXl5
+        ZmZmXl5efn5+e3t7e3t7VVVVZGRkfHx8g4ODhYWFaWlpcHBwlJSUra2tfHx8e3t7i4uLkJCQOjo6QkJC
+        XFxcVlZWS0tLS0tLUFBQSUlJTU1Nbm5ufn5+gYGBeHh4WlpaaWlpa2trb29vioqKlJSUcnJyYWFhcXFx
+        fX19bGxsXFxcZWVlh4eHl5eXaGhoYGBgY2NjdHR0NjY2Ojo6UFBQUVFRTk5OSUlJR0dHVlZWcHBwZmZm
+        dXV1bGxsSUlJVlZWeHh4dXV1UVFRdHR0kJCQjo6OaWlpaWlpfHx8cXFxZWVlf39/g4ODfHx8aGhoWVlZ
+        VFRUXl5eKysrLy8vPT09R0dHTExMPDw8WVlZbm5ubW1tcHBwXV1dT09PUFBQW1tbcXFxbm5uVFRUVFRU
+        fn5+gICAg4ODXV1dZ2dnZ2dnbGxshISEc3Nze3t7e3t7bGxsb29vaWlpODg4MDAwMDAwNjY2PDw8SUlJ
+        TExMXl5ebW1tU1NTR0dHX19fWFhYbGxse3t7cXFxX19fYmJiWVlZgYGBioqKhISEXFxcaWlpcnJygoKC
+        ZGRkdHR0eHh4ZGRkYmJiYWFhODg4Ozs7MDAwTExMZWVlVVVVSEhIVVVVSEhIS0tLV1dXY2NjYGBgZmZm
+        fn5+bW1tZ2dnbm5uXl5eY2Njh4eHf39/bW1tW1tbbm5uZmZmU1NTYmJidHR0Xl5eYWFhZ2dnKioqLCws
+        QEBAZmZmc3NzaGhoSUlJOzs7SEhITExMTExMV1dXUVFRZWVlenp6bGxsYWFhaWlpX19fWVlZampqZGRk
+        ZGRkYGBgUFBQS0tLVFRUbm5uh4eHeXl5b29vbW1tMjIyOjo6Ojo6SkpKZmZmVFRUNzc3TExMUVFRT09P
+        R0dHSkpKQUFBUFBQaWlpT09PSUlJWlpaWFhYX19fUlJSXV1dfn5+mZmZZGRkV1dXYmJibGxsfX19Z2dn
+        U1NTT09PPz8/Ojo6ODg4PDw8Ozs7MTExMTExQUFBVVVVYGBgVlZWVlZWQ0NDUVFRYmJiTExMSkpKVFRU
+        YGBgZGRkZmZmT09Pi4uLnJycdHR0TExMVFRUVlZWZGRkU1NTSEhIU1NTPj4+Pz8/PT09KysrMzMzPj4+
+        MDAwNDQ0QUFBTk5OU1NTW1tbXV1dZmZmZmZmYWFhXl5eaGhocXFxampqVVVVQ0NDUlJSampqV1dXX19f
+        RUVFUVFRaGhoX19fVlZWVVVVPz8/NTU1JycnLCwsNjY2QEBAPj4+MDAwPz8/RUVFS0tLU1NTa2trdXV1
+        e3t7d3d3XV1dVVVVU1NTTU1NQEBASkpKUVFRSEhIXl5eY2NjXFxcQUFBaGhoampqUFBQUVFRMDAwHx8f
+        LS0tMzMzMzMzT09PQEBAPz8/VVVVW1tbVVVVUFBQV1dXX19faGhoXV1dW1tbWFhYSUlJQEBATExMVVVV
+        UFBQREREaGhobGxsZWVlNzc3YmJiWVlZWFhYUFBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAEAAAACAAAAABABgAAAAAAAAD
+        AAAAAAAAAAAAAAAAAAAAAAAAXl5eUlJSbm5uhYWFkZGRcnJyh4eHiYmJmJiYr6+vn5+fgICAhYWFg4OD
+        l5eXe3t7ampqYWFhg4ODi4uLjY2NXV1df39/hoaGkJCQrq6ul5eXlZWVjY2Nf39/cnJyhYWFVFRUWFhY
+        W1tbX19fgoKCkZGRcHBwYWFhhYWFkJCQhYWFhISEbm5uf39/ra2tkpKSV1dXWlpabm5uVFRUaWlpmJiY
+        i4uLYWFhjIyMlZWVgYGBcnJyioqKoaGhrq6uoaGhT09PVFRUcHBwaWlpXl5elZWVmZmZiIiIiIiIkZGR
+        c3Nzk5OTqKiompqakZGReHh4WFhYYWFhbW1tb29vYmJiV1dXgoKCfX19aGhodXV1jY2NpKSkioqKbm5u
+        jIyMioqKaWlpcXFxfn5+dXV1bm5uZmZmbGxsfX19m5ube3t7gICAgoKCWlpaXl5eh4eHhYWFUlJSX19f
+        dHR0cnJycHBwhISEZWVlXV1dwMDAqqqqfHx8a2trenp6dnZ2iYmJiIiIT09PU1NTXl5eVVVVTExMampq
+        d3d3dHR0hYWFbm5uenp6ZmZmfHx8e3t7kZGRlZWVT09PU1NTX19fVFRUT09PhYWFfHx8d3d3WFhYenp6
+        e3t7YGBgXFxcaGhohISEfX19Tk5OSkpKRUVFVVVVbm5ugYGBeHh4Xl5ed3d3ZWVlfn5+i4uLXl5eZ2dn
+        fHx8ZWVlOTk5Pz8/bGxscHBwcHBwT09PUFBQVlZWcnJyW1tbTExMh4eHf39/fX19ZmZmZ2dnQUFBTExM
+        aGhobW1tXV1dW1tbVlZWY2NjcXFxYWFhWlpad3d3g4ODi4uLXl5ebGxsVFRUTU1NXl5eTk5OSkpKZGRk
+        YGBgZmZmdnZ2ampqZWVlU1NTgoKChoaGXV1dampqampqVFRUUFBQUFBQTk5OTU1NQkJCS0tLWlpaTU1N
+        VVVVXFxcVVVVUlJSfX19h4eHVVVVMzMzUVFRTk5OUVFRR0dHR0dHUFBQSkpKRkZGXl5eYmJiVFRUR0dH
+        jIyMlpaWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
   </data>
 </root>
