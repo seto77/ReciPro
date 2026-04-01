@@ -821,10 +821,10 @@ public partial class FormEBSD : CaptureFormBase
     /// <summary>描画関数</summary>
     public void Draw(Graphics g = null)
     {
-        // DrawKikuchiLine(); // (260331Ch) 旧順序: EBSD 更新前に overlay を描いていた
-        // DrawEBSD(); // (260331Ch) 旧順序
-        DrawEBSD(); // (260331Ch) まず Pbmp を更新してから
-        DrawKikuchiLine(g); // (260331Ch) その上に Kikuchi 線と指数ラベルを重ねる
+        if (checkBoxShowDyanmicalEBSD.Checked)
+            DrawEBSD();
+        if (checkBoxShowOverlays.Checked)
+            DrawKikuchiLine(g);
         DrawGeometry();
     }
     #endregion
@@ -864,7 +864,7 @@ public partial class FormEBSD : CaptureFormBase
 
         graphics.Clear(colorControlBackGround.Color);
 
-        if (checkBoxDrawKikuchiLineDynamical.Checked && Pbmp != null)
+        if (checkBoxShowDyanmicalEBSD.Checked && Pbmp != null)
         {
             graphics.SmoothingMode = SmoothingMode.None;
             graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
@@ -875,7 +875,7 @@ public partial class FormEBSD : CaptureFormBase
         }
 
 
-        if (checkBoxDrawKikuchiLinesKinematical.Checked)
+        if (checkBoxShowOverlays.Checked)
         {
             graphics.SmoothingMode = SmoothingMode.HighQuality;
             graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
@@ -926,9 +926,14 @@ public partial class FormEBSD : CaptureFormBase
 
                     if (pts.Count > 1)
                     {
-                        if (checkBoxKikuchiLine_Kinematical.Checked)
-                            penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
-                        graphics.DrawLines(penExcess, pts.ToArray());
+                        //菊池線描画
+                        if (checkBoxShowKikuchiLines.Checked)
+                        {
+                            if (checkBoxKikuchiLine_Kinematical.Checked)
+                                penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
+                            graphics.DrawLines(penExcess, pts.ToArray());
+                        }
+
 
                         //ラベル描画
                         if (checkBoxShowGIndices.Checked) // 260331Cl checkBoxShowGIndices で制御
@@ -952,88 +957,89 @@ public partial class FormEBSD : CaptureFormBase
                     }
                 }
             }
-        }
 
-        // 260331Cl 追加: 晶帯軸ラベルをバンド交点に表示
-        if (checkBoxShowZoneAxisIndices.Checked && checkBoxDrawKikuchiLinesKinematical.Checked && Crystal.VectorOfG_KikuchiLine.Count >= 2)
-        {
-            graphics.SmoothingMode = SmoothingMode.HighQuality;
-            var fontZA = new Font("Tahoma", (float)(trackBarStrSize.Value / 8.0 * Resolution * 0.85));
-            var brushZA = new SolidBrush(Color.FromArgb(220, colorControlString.Color));
-            var Tau = numericBoxDetTilt.RadianValue - numericBoxSampleTilt.RadianValue;
-            var rot = Crystal.RotationMatrix;
-            var rotTau = Matrix3D.Rot(new Vector3DBase(1, 0, 0), -Tau);
 
-            var drawnZoneAxes = new HashSet<(int, int, int)>();
-            var gList = Crystal.VectorOfG_KikuchiLine;
-            for (int ii = 0; ii < gList.Count - 1; ii++)
-                for (int jj = ii + 1; jj < gList.Count; jj++)
-                {
-                    var g1 = gList[ii]; var g2 = gList[jj];
-                    // g ベクトルの外積 → 晶帯軸方向（直交座標系、回転前）
-                    var cross = Vector3DBase.VectorProduct(g1, g2);
-                    if (cross.Length2 < 1e-20) continue;
+            // 260331Cl 追加: 晶帯軸ラベルをバンド交点に表示
+            if (checkBoxShowZoneAxisIndices.Checked && checkBoxShowOverlays.Checked && Crystal.VectorOfG_KikuchiLine.Count >= 2)
+            {
+                var rot = Crystal.RotationMatrix;
+                var rotTau = Matrix3D.Rot(new Vector3DBase(1, 0, 0), -Tau);
 
-                    // 指数 [uvw] を求める: cross (直交座標) = u*A_Axis + v*B_Axis + w*C_Axis
-                    // → (u,v,w) = MatrixReal⁻¹ * cross = MatrixInverse * cross
-                    var uvwVec = Crystal.MatrixInverse * cross;
-                    double maxComp = Math.Max(Math.Max(Math.Abs(uvwVec.X), Math.Abs(uvwVec.Y)), Math.Abs(uvwVec.Z));
-                    if (maxComp < 1e-10) continue;
-                    double scale = 1.0 / maxComp;
-                    int bestU = 0, bestV = 0, bestW = 0;
-                    double bestError = double.MaxValue;
-                    for (int m = 1; m <= 12; m++)
+                var drawnZoneAxes = new HashSet<(int, int, int)>();
+                var gList = Crystal.VectorOfG_KikuchiLine;
+                for (int ii = 0; ii < gList.Count - 1; ii++)
+                    for (int jj = ii + 1; jj < gList.Count; jj++)
                     {
-                        double su = uvwVec.X * scale * m, sv = uvwVec.Y * scale * m, sw = uvwVec.Z * scale * m;
-                        int ru2 = (int)Math.Round(su), rv2 = (int)Math.Round(sv), rw2 = (int)Math.Round(sw);
-                        double err = Math.Abs(su - ru2) + Math.Abs(sv - rv2) + Math.Abs(sw - rw2);
-                        if (err < bestError) { bestError = err; bestU = ru2; bestV = rv2; bestW = rw2; }
-                        if (err < 0.05) break;
+                        var g1 = gList[ii]; var g2 = gList[jj];
+                        // g ベクトルの外積 → 晶帯軸方向（直交座標系、回転前）
+                        var cross = Vector3DBase.VectorProduct(g1, g2);
+                        if (cross.Length2 < 1e-20) continue;
+
+                        // 指数 [uvw] を求める: cross (直交座標) = u*A_Axis + v*B_Axis + w*C_Axis
+                        // → (u,v,w) = MatrixReal⁻¹ * cross = MatrixInverse * cross
+                        var uvwVec = Crystal.MatrixInverse * cross;
+                        double maxComp = Math.Max(Math.Max(Math.Abs(uvwVec.X), Math.Abs(uvwVec.Y)), Math.Abs(uvwVec.Z));
+                        if (maxComp < 1e-10) continue;
+                        double scale = 1.0 / maxComp;
+                        int bestU = 0, bestV = 0, bestW = 0;
+                        double bestError = double.MaxValue;
+                        for (int m = 1; m <= 12; m++)
+                        {
+                            double su = uvwVec.X * scale * m, sv = uvwVec.Y * scale * m, sw = uvwVec.Z * scale * m;
+                            int ru2 = (int)Math.Round(su), rv2 = (int)Math.Round(sv), rw2 = (int)Math.Round(sw);
+                            double err = Math.Abs(su - ru2) + Math.Abs(sv - rv2) + Math.Abs(sw - rw2);
+                            if (err < bestError) { bestError = err; bestU = ru2; bestV = rv2; bestW = rw2; }
+                            if (err < 0.05) break;
+                        }
+                        if (bestU == 0 && bestV == 0 && bestW == 0) continue;
+                        static int Gcd(int a, int b) { a = Math.Abs(a); b = Math.Abs(b); while (b != 0) { (a, b) = (b, a % b); } return a; }
+                        int gcd = Gcd(Gcd(Math.Abs(bestU), Math.Abs(bestV)), Math.Abs(bestW));
+                        if (gcd > 1) { bestU /= gcd; bestV /= gcd; bestW /= gcd; }
+                        if (bestU < 0 || (bestU == 0 && bestV < 0) || (bestU == 0 && bestV == 0 && bestW < 0))
+                        { bestU = -bestU; bestV = -bestV; bestW = -bestW; }
+                        if (drawnZoneAxes.Contains((bestU, bestV, bestW))) continue;
+                        drawnZoneAxes.Add((bestU, bestV, bestW));
+
+                        // 晶帯軸方向を検出器座標に投影（実空間ベクトルを使用）
+                        var zoneAxisReal = bestU * Crystal.A_Axis + bestV * Crystal.B_Axis + bestW * Crystal.C_Axis;
+                        var dir = rotTau * (rot * zoneAxisReal);
+                        if (dir.Z < 0) dir = -dir; // 検出器に向く方を選択
+                        if (dir.Z < 1e-15) continue;
+
+                        // 中心投影: EBSD は試料側から見た図形なので X 方向を反転 (BuildEbsdLookupTable の ax = -Ri.E11 と整合)
+                        double detX = -CameraLength2 * dir.X / dir.Z;
+                        double detY2 = CameraLength2 * dir.Y / dir.Z;
+
+                        var ptZA = new PointD(detX, detY2);
+                        if (!IsScreenArea(ptZA, -20)) continue;
+
+                        string label = $"[{bestU} {bestV} {bestW}]";
+                        var size = graphics.MeasureString(label, font);
+                        graphics.DrawString(label, font, brush, new PointF((float)ptZA.X - size.Width / 2, (float)ptZA.Y - size.Height / 2));
                     }
-                    if (bestU == 0 && bestV == 0 && bestW == 0) continue;
-                    static int Gcd(int a, int b) { a = Math.Abs(a); b = Math.Abs(b); while (b != 0) { (a, b) = (b, a % b); } return a; }
-                    int gcd = Gcd(Gcd(Math.Abs(bestU), Math.Abs(bestV)), Math.Abs(bestW));
-                    if (gcd > 1) { bestU /= gcd; bestV /= gcd; bestW /= gcd; }
-                    if (bestU < 0 || (bestU == 0 && bestV < 0) || (bestU == 0 && bestV == 0 && bestW < 0))
-                    { bestU = -bestU; bestV = -bestV; bestW = -bestW; }
-                    if (drawnZoneAxes.Contains((bestU, bestV, bestW))) continue;
-                    drawnZoneAxes.Add((bestU, bestV, bestW));
-
-                    // 晶帯軸方向を検出器座標に投影（実空間ベクトルを使用）
-                    var zoneAxisReal = bestU * Crystal.A_Axis + bestV * Crystal.B_Axis + bestW * Crystal.C_Axis;
-                    var dir = rotTau * (rot * zoneAxisReal);
-                    if (dir.Z < 0) dir = -dir; // 検出器に向く方を選択
-                    if (dir.Z < 1e-15) continue;
-
-                    // 中心投影: EBSD は試料側から見た図形なので X 方向を反転 (BuildEbsdLookupTable の ax = -Ri.E11 と整合)
-                    double detX = -CameraLength2 * dir.X / dir.Z;
-                    double detY2 = CameraLength2 * dir.Y / dir.Z;
-
-                    var ptZA = new PointD(detX, detY2);
-                    if (!IsScreenArea(ptZA, -20)) continue;
-
-                    string label = $"[{bestU} {bestV} {bestW}]";
-                    var size = graphics.MeasureString(label, fontZA);
-                    graphics.DrawString(label, fontZA, brushZA, new PointF((float)ptZA.X - size.Width / 2, (float)ptZA.Y - size.Height / 2));
-                }
-        }
-
-        if (checkBoxDrawDetectorOutline.Checked)
-        {
-            //検出器を示す円を描画
-            graphics.DrawArc(new Pen(Color.Yellow, ResolutionF * 2), -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360);
-            //検出器の分割線
-            for (int n = 0; n < DetectorDivision; n++)
-            {
-                var x = 2.0 * n / DetectorDivision - 1;
-                graphics.DrawLine(new Pen(Color.Orange, ResolutionF), -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y);
-                graphics.DrawLine(new Pen(Color.Orange, ResolutionF), x * DetR, -DetR - Foot.Y, x * DetR, DetR - Foot.Y);
             }
-            if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
-            {
-                double x = 2.0 * i / DetectorDivision - 1, y = 2.0 * j / DetectorDivision - 1;
 
-                graphics.FillRectangle(new SolidBrush(Color.FromArgb(32, Color.Orange)), DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision);
+            if (checkBoxDrawDetectorOutline.Checked)
+            {
+                //検出器を示す円を描画
+                if (checkBoxShowCircle.Checked)
+                    graphics.DrawArc(new Pen(Color.Yellow, ResolutionF * 2), -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360);
+                //検出器の分割線
+                if (checkBoxShowMesh.Checked)
+                {
+                    for (int n = 0; n < DetectorDivision; n++)
+                    {
+                        var x = 2.0 * n / DetectorDivision - 1;
+                        graphics.DrawLine(new Pen(Color.Orange, ResolutionF), -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y);
+                        graphics.DrawLine(new Pen(Color.Orange, ResolutionF), x * DetR, -DetR - Foot.Y, x * DetR, DetR - Foot.Y);
+                    }
+                    if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
+                    {
+                        double x = 2.0 * i / DetectorDivision - 1, y = 2.0 * j / DetectorDivision - 1;
+
+                        graphics.FillRectangle(new SolidBrush(Color.FromArgb(32, Color.Orange)), DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision);
+                    }
+                }
             }
         }
         graphicsBox.Refresh();
@@ -2368,7 +2374,7 @@ public partial class FormEBSD : CaptureFormBase
 
     #endregion
 
-   
+
 
     #region グラフをコピー
     private void buttonCopyEnergyProfile_Click(object sender, EventArgs e)
@@ -2425,8 +2431,8 @@ public partial class FormEBSD : CaptureFormBase
         var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
             cry.Atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260331Ch)
         double energy = Voltage;
-        double sampleTilt = SmpTilt,detectorTilt = DetTilt;
-        double detectorY = DetY,detectorZ = DetZ, detectorR = DetR;
+        double sampleTilt = SmpTilt, detectorTilt = DetTilt;
+        double detectorY = DetY, detectorZ = DetZ, detectorR = DetR;
         double energyThreshold = EnergyThreshold;
         var loop = BackscatterMonteCarloLoopCount;
         var sampleRotation = M3.CreateRotationX(sampleTilt);
@@ -3190,6 +3196,18 @@ public partial class FormEBSD : CaptureFormBase
     {
         flowLayoutPanelOutputRange.Enabled = !checkBoxWithBSEDistribution.Checked;
         DrawEBSD(); // (260327Ch) BSE 分布つき合成と単一スライス表示を即座に切り替える
+    }
+
+    private void checkBoxDrawDetectorOutline_CheckedChanged(object sender, EventArgs e)
+    {
+        groupBoxDetectorOutline.Enabled = checkBoxDrawDetectorOutline.Checked;
+        Draw();
+    }
+
+    private void checkBoxShowKikuchiLines_CheckedChanged(object sender, EventArgs e)
+    {
+        groupBoxKikuchiLines.Enabled=checkBoxShowKikuchiLines.Checked;
+        Draw();
     }
 }
 
